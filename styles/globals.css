@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+.homepage-img {
+    background-image: url('https://saving-satoshi.s3.amazonaws.com/main-image.png');
+}
+
+.ch1-background-img {
+    background-image: url('https://saving-satoshi.s3.amazonaws.com/ch2.png');
+}
+
+@layer base {
+    body {
+      @apply bg-base-blue;
+    }
+}
