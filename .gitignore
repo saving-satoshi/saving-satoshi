@@ -4,3 +4,4 @@ dist
 .contentlayer
 yarn.lock
 .DS_Store
+.vscode

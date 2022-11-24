@@ -16,9 +16,7 @@ export const Tab = ({
   let href = slug ? path + '/' + slug : path;
   href = opt ? href + '/' + opt : path;
   const isActive =
-    // Example home pages e.g. `/layouts`
     (!slug && segment === null) ||
-    // Nested pages e.g. `/layouts/electronics`
     segment === slug;
 
   return (
