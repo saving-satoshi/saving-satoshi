@@ -1,13 +1,13 @@
-import { Caveat_Brush as cBrush, Inter, Nunito } from '@next/font/google'
+import { Caveat_Brush, Space_Mono, Nunito } from '@next/font/google'
 
-const cbrush = cBrush({
+const cbrush = Caveat_Brush({
     weight: '400',
     variable: '--cbrush-font',
     preload: true,
     display: 'swap',
 })
 
-const inter = Inter({
+const smono = Space_Mono({
     weight: ['400', '700'],
     variable: '--inter-font',
     preload: true,
@@ -30,7 +30,7 @@ export default function Fonts() {
                 __html: `
                 :root {
                   --cbrush-font: ${cbrush.style.fontFamily};
-                  --inter-font: ${inter.style.fontFamily};
+                  --space-mono-font: ${smono.style.fontFamily};
                   --nunito-font: ${nunito.style.fontFamily};
                 }`
             }}>

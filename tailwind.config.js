@@ -12,7 +12,7 @@ module.exports = {
       },
       fontFamily: {
         cbrush: ['var(--cbrush-font)'],
-        inter: ['var(--inter-font)'], 
+        'space-mono': ['var(--space-mono-font)'], 
         nunito: ['var(--nunito-font)'], 
       },
     },
