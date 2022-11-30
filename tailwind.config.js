@@ -11,9 +11,9 @@ module.exports = {
         'base-blue': '#293A60',
       },
       fontFamily: {
-        caveat: ['var(--font-caveat-brush)'],
-        inter: ['var(--font-inter)'], 
-        nunito: ['var(--font-nunito)'], 
+        cbrush: ['var(--cbrush-font)'],
+        inter: ['var(--inter-font)'], 
+        nunito: ['var(--nunito-font)'], 
       },
     },
   },
