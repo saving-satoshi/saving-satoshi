@@ -1,5 +1,5 @@
-import { cBrushFont as font } from "./font"
 import '../styles/globals.css'
+import Fonts from "components/Fonts"
 
 export default function RootLayout ({
   children
@@ -7,9 +7,12 @@ export default function RootLayout ({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={font.className }>
+    <html lang="en">
       <head />
-      <body>{children}</body>
+      <body>
+        <Fonts />
+        {children}
+        </body>
     </html>
   )
 }
