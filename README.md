@@ -6,36 +6,57 @@ We made an intro video for you:
 
 Watched it? Awesome, let's continue...
 
-## The mystery
+A cypherpunk travels back in time to discover clues about Satoshi’s disappearance encountering Satoshi imposters, social attacks, and totalitarians that don’t want bitcoin to survive.
 
-The year is 2139. The very last bitcoin is slated to be mined in two weeks. For months, a final countdown has been taking place in Satoshi Square for the last block when there will officially be no more bitcoin issued.
+Saving Satoshi is an engaging first point of contact for devs of all ages learning about bitcoin development.
 
-And then suddenly, the network goes offline. Payments worldwide stop.
+Learners will complete test-driven, repl-based lessons by completing missions traveling through bitcoin history.
 
-In the midst of the crisis, someone senses an opportunity. The mysterious and world-renowned computer scientist Dr. B.S. Wrong steps into the spotlight. He claims that, lo and behold, he's been Satoshi Nakamoto all along, and until further notice, the 21 million cap has been lifted, and the network will issue 1 million bitcoin every day indefinitely.
+Beginners can breeze through the basics while more advanced learners can dive into the harder challenges and easter eggs. In the future, pay for lesson completion or pass on real work in the form of challenges for pay Ender’s game style.
 
-There is a knock at your door, and when you open it, a yellowed age-weathered envelope has been left for you. Inside, you discover the first clue of the most important mission of your life. 
+## Contributing
 
-And so begins your journey to save Satoshi…
+To contribute to the project, use issues and discussions in this GitHub repo (`saving-satoshi/saving-satoshi`), or join our Slack channel in the Bitcoin Design Community here:
+https://bitcoindesign.slack.com/archives/C0442BRGJ5U
 
-Project's roadmap and next steps
-We are looking to launch a V1 of the experience that includes 2 chapters by the end of the year.
+Generally, we have four tracks in this project:
 
-## Below is a sample of things on the roadmap:
+- Story
+- Lessons
+- Design
+- Code
 
-- [ ] Develop the front-end further
-- [ ] Extract the lessons and put them into their own repository so that we can edit the content independently from the platform.
-- [ ] Authentication using private keys
-- [ ] Real-time collaboration with other players via public keys
-- [ ] Built in REPLs (possibly with repl.it)
-- [ ] Collaborative challenges
-- [ ] More advanced lessons for learners looking to go deeper
-- [ ] Generate updated imagery via AI art tools once the storyline has been refined further
-- [ ] User testing and feedback gathering to refine the experience
+The more these are in tune with each other, the better the final user experience. We are currently still in a phase where we try to bring everything together in a coherent and interesting storyline.
 
+The design for this project is handled in [this Figma file](https://www.figma.com/file/LqjK3Tpvd9KJ4buFArCJBQ/Saving-Satoshi?node-id=0%3A1&t=HMELTIqCz6Nh68LI-1).
 
-Thank you so much for your interest in our project. If we put our heads together, maybe we stand a chance to defeat Dr. B.S. Wrong and save Satoshi.
+Images are generated via AI tools (mostly [DiffusionBee](https://diffusionbee.com)). The prompts consist of two parts, the scene description and the stylistic direction. The latter was `illustration concept art anime key visual trending, by victo ngai, by makoto shinkai, by takashi takeuchi, by studio ghibli`. You're welcome to contribute more images. We're still fleshing this process out a bit further.
 
-To be continued...
+## Local development setup
 
+To run this project locally:
 
+1. First download the code from this repository
+2. Ensure you have the npm version 16.13.0 or higher installed
+2. Run `npm install` to download the required code libraries
+3. Run `npm run start` to spin up the development environment
+3. Open `http://localhost:3000` in your browser to access the site
+
+## Roadmap
+
+This project was started during the [Bitcoin Designathon](http://event.bitcoin.design) in October 2022. It then continued with the [bolt.fun Legends of Lightning Tournament](https://makers.bolt.fun/project/saving-satoshi).
+
+Our first goal is to launch a V1 that provides a great basic experience around 2 chapters with lessons. Then we'd like to get feedback from the community to ensure that we are building something that resonates. Ideally, we'd then like to make necessary adjustments and open up contributions to everyone. 
+
+Some ideas we have for the future
+
+- Build out 10 chapter lessons
+- Extract lessons into their own repository for independent editing
+- Authentication using private keys
+- Real-time collaboration with other players via public keys
+- Built in REPLs (possibly with repl.it)
+- Collaborative challenges
+- More advanced lessons for learners looking to go deeper
+- Localization to other languages if there is interest
+
+Thank you so much for your interest in the project. We'd love to hear your feedback.
