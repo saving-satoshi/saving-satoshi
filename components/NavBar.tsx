@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export const Navbar = () => {
     return (
-        <div className='fixed left-0 top-0 w-screen font-cbrush'>
+        <div className='fixed left-0 top-0 w-screen'>
             <div className='m-auto flex justify-between items-center px-6 py-4 text-white'>
                 <Link href='/'>
                     <h1 className='text-xl md:text-3xl'>Saving Satoshi</h1>
