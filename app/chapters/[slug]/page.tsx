@@ -20,7 +20,8 @@ export async function getIntro(slug: string) {
 export default async function Page({ params }) {
     const intro = await getIntro(params.slug)
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 w-screen justify-center'>
+        <div className="w-screen">
+        <div className='grid grid-cols-1 md:grid-cols-2 justify-center'>
             <div className='flex justify-start w-full text-white '>
                 <div className='content-center justify-items-start sm:p-10 px-1 py-6 sm:py-36'>
                     <div
@@ -46,6 +47,7 @@ export default async function Page({ params }) {
                     objectFit="cover"
                 />
             </div>
+        </div>
         </div>
     )
 
