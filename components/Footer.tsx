@@ -1,5 +1,3 @@
-import Link from "next/link"
-
 export const Footer = () => {
     return (
         <div className='left-0 bottom-0 w-screen'>

@@ -18,7 +18,7 @@ export const Overview = ({
              <div className='pt-8'>
              <Link
                 href={slug} 
-                className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-xl font-nunito'
+                className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-xl font-nunito font-bold'
             >
             Start chapter {position}
             </Link>

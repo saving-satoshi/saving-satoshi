@@ -7,18 +7,17 @@ import { useSelectedLayoutSegment } from 'next/navigation';
 
 export const Tab = ({
   path,
-  item: { slug, text, opt },
+  item: { slug, text },
 }: {
   path: string;
   item: Item;
 }) => {
   const segment = useSelectedLayoutSegment();
-  let href = slug ? path + '/' + slug : path;
-  href = opt ? href + '/' + opt : path;
+  const href = slug ? path + '/' + slug : path;
   const isActive =
     (!slug && segment === null) ||
     segment === slug;
-
+  
   return (
     <Link
       href={href} 
