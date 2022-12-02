@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export const Hero = () => {
     return (
-        <div className='flex items-end justify-center h-screen mb-12 bg-fixed bg-left bg-cover homepage-img'>
+        <div className='flex items-end justify-center h-screen mb-12 bg-fixed bg-cover homepage-img md:bg-[0] bg-[-10em]'>
             <div className='p-10 text-white flex justify-center flex-col w-screen bg-gradient-to-b from-base-blue/0 to-base-blue/100 font-cbrush'>
                 <h1 className='text-6xl sm:text-7xl lg:text-8xl text-center'>Saving Satoshi</h1>
                 <p className='text-2xl sm:text-3xl lg:text-4xl text-center'>Time travel through the history of bitcoin  and learn bitcoin coding along the way.</p>
