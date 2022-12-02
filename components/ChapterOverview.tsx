@@ -5,7 +5,7 @@ import { TabGroup } from "./partials/TabGroup"
 
 export const ChapterOverview = (chapter: Chapter) => {
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 w-screen justify-center'>
+        <div className='grid grid-cols-1 md:grid-cols-2 justify-center'>
             <div className='flex justify-center w-full text-white'>
                 <div className='content-center justify-items-start sm:px-12 px-1 py-6 sm:py-36'>
                     <h2 className='text-3xl md:text-5xl text-left text-white text-opacity-75'>Chapter {chapter.position}</h2>

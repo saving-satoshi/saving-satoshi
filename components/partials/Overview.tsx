@@ -15,12 +15,12 @@ export const Overview = ({
         <div className='py-8'>
             <div
              dangerouslySetInnerHTML={{ __html: desc.html }}
-             className='text-lg'>
+             className='text-lg text-justify'>
              </div>
-             <div className='pt-8'>
+             <div className='pt-8 md:w-full flex'>
              <Link
                 href={slug} 
-                className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-2xl'
+                className='py-2.5 px-12 w-full text-center md:w-auto justify-center bg-white text-base-blue text-2xl'
             >
             Start chapter {position}
             </Link>
