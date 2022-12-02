@@ -11,7 +11,7 @@ function transformLessonMeta(lessons: String[]) : (Item[]) {
     }))
 }
 
-export async function getLessons({ params }) : Promise<Item[]> {
+async function getLessons({ params }) : Promise<Item[]> {
     const chapter = await allChapters.find((chapter: Chapter) => chapter.slugAsParams === params.slug )
 
     const metadata = transformLessonMeta(chapter.lessons)

@@ -11,7 +11,7 @@ async function _getIntro(slug: string) {
     return intro
 }
 
-export async function getIntro(slug: string) {
+async function getIntro(slug: string) {
     const chapter = await allChapters.find((chapter: Chapter) => chapter.slugAsParams === slug)
     const intro = await _getIntro(chapter.intro[0])
     return intro;
