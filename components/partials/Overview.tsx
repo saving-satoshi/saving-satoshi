@@ -15,7 +15,7 @@ export const Overview = ({
         <div className='py-8'>
             <div
              dangerouslySetInnerHTML={{ __html: desc.html }}
-             className='text-lg'>
+             className='text-lg text-justify'>
              </div>
              <div className='pt-8'>
              <Link
