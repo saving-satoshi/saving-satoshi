@@ -13,12 +13,12 @@ export const Overview = ({
         <div className='py-8 font-nunito'>
             <div
              dangerouslySetInnerHTML={{ __html: desc.html }}
-             className='text-lg text-white'>
+             className='text-lg text-justify'>
              </div>
-             <div className='pt-8'>
+             <div className='pt-8 md:w-full flex'>
              <Link
                 href={slug} 
-                className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-xl font-nunito font-bold'
+                className='py-2.5 px-12 w-full text-center md:w-auto justify-center bg-white text-base-blue text-2xl font-nunito font-bold'
             >
             Start chapter {position}
             </Link>
