@@ -15,7 +15,8 @@
     "next": "13.0.4",
     "next-contentlayer": "latest",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "xterm": "^5.0.0"
   },
   "devDependencies": {
     "@types/react": "18.0.25",

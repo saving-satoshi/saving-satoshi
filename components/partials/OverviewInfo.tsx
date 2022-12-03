@@ -9,19 +9,19 @@ export const OverviewInfo = (chapter: Chapter) => {
             <h2 className='text-xl md:text-3xl text-left text-white text-opacity-75 font-nunito font-bold'>Chapter {chapter.position}</h2>
             <h2 className='text-3xl md:text-5xl text-left text-white'>{chapter.title}</h2>
             <TabGroup
-                path="/"
+                path={`chapters/chapter-${chapter.position}`}
                 items={[
                     {
                         text: 'Info',
-                        slug: `${chapter.slug}`,
-                        opt: 'overview'
+                        slug: 'overview',
                     },
                     {
-                        text: 'Challenges'
+                        text: 'Challenges',
+                        slug: 'challenges',
                     }
                 ]}
             />
-            <Overview 
+            <Overview
                 desc= {chapter.body}
                 slug= {chapter.slug}
                 position= {chapter.position}
