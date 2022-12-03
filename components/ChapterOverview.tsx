@@ -5,7 +5,7 @@ import { OverviewInfo } from './partials/OverviewInfo'
 export const ChapterOverview = (chapter: Chapter) => {
     if (chapter.position %2 == 0 ){
         return (
-            <div className='grid grid-cols-1 lg:grid-cols-2 w-screen justify-center'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 justify-center'>
                 <div className='flex justify-center order-2 lg:order-1'>
                     <OverviewInfo {...chapter} />
                 </div>
@@ -16,7 +16,7 @@ export const ChapterOverview = (chapter: Chapter) => {
         ) 
     }
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-2 w-screen justify-center'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 justify-center'>
             <div className='flex justify-center order-2 lg:order-2'>
                 <OverviewInfo {...chapter} />
             </div>

@@ -26,7 +26,7 @@ export default async function Page({ params }) {
                     <div className='content-center justify-items-start sm:p-10 px-1 py-6 sm:py-36'>
                         <div
                             dangerouslySetInnerHTML={{ __html: intro.body.html }}
-                            className='pt-8 text-xl'
+                            className='pt-8 intro'
                         ></div>
                         <div className='pt-8'>
                             <Link

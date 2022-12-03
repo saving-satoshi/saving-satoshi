@@ -13,7 +13,7 @@ export const Overview = ({
         <div className='py-8 font-nunito'>
             <div
              dangerouslySetInnerHTML={{ __html: desc.html }}
-             className='text-lg text-justify'>
+             className='text-lg text-justify text-white'>
              </div>
              <div className='pt-8 md:w-full flex'>
              <Link
