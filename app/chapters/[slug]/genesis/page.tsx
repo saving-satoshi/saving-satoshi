@@ -24,6 +24,7 @@ export default async function Genesis() {
                     <div className='pb-16 pt-9'>
                         <Link
                             href='https://blockstream.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f'
+                            target='_blank'
                             className='py-2.5 px-12 w-full w-auto justify-center bg-white text-base-blue text-2xl'>
                             View Block 0
                         </Link>
