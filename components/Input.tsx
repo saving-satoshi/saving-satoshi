@@ -1,58 +1,40 @@
-import { useMemo } from 'react';
+'use client'
 
-export type Props = {
-    value: string;
-    valueLength: number;
-    onChange: (value: string) => void;
-};
+import { Space_Mono } from '@next/font/google';
+import { validateTsconfig } from 'contentlayer/core';
+import RICIBs from 'react-individual-character-input-boxes';
 
-export default function OtpInput({ value, valueLength, onChange }: Props) {
+const smono = Space_Mono({
+    weight: ['400', '700'],
+    variable: '--inter-font',
+    preload: true,
+    display: 'swap'
+})
 
-    const valueItems = useMemo(() => {
-        const charArray = value.split('');
-        const items: Array<string> = [];
-
-        for (let i = 0; i < valueLength; i++) {
-            items.push(charArray[i])
-        }
-        return items;
-    }, [value, valueLength]);
-
-
-    const inputOnChange = (
-        e: React.ChangeEvent<HTMLInputElement>,
-        idx: number
-    ) => {
-        const target = e.target;
-        const targetValue = target.value;
-
-
-        const newValue =
-            value.substring(0, idx) + targetValue + value.substring(idx + 1);
-        
-        const nextElementSibling =
-            target.nextElementSibling as HTMLInputElement | null;
-      
-        if (nextElementSibling) {
-            nextElementSibling.focus();
-          }
-
-        onChange(newValue);
+export const Input = () =>  {
+    function handleOutput(string) {
+        console.log(string)
     }
 
     return (
-        <div className='flex'>
-            {valueItems.map((letter, idx) => (
-                <input
-                    key={idx}
-                    type='text'
-                    inputMode='text'
-                    maxLength={valueLength}
-                    className='w-full text-lg md:text-3xl border-b border-black/50 text-center'
-                    value={letter}
-                    onChange={(e) => inputOnChange(e, idx)}
-                />
-            ))}
-        </div>
+        <div>
+            <RICIBs
+                amount={154}
+                autoFocus
+                handleOutputString={handleOutput}
+                inputProps={
+                 {  className: 'bg-transparent',
+                    placeholder: '_',
+                    style: {
+                       'font-size': '20px',
+                       'width': '20px',
+                       'height': '20px',
+                       'font-family': `${smono.style.fontFamily}`,
+                       'margin': '0px'
+                    }
+                }}
+                inputRegExp={/^[a-zA-Z0-9_.-]*$/}
+            />
+      </div>
     );
 }

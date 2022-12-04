@@ -1,3 +1,4 @@
+import { Input } from 'components/Input'
 import { allLessons, Lesson } from 'contentlayer/generated'
 import Link from 'next/link'
 
@@ -35,10 +36,7 @@ export default async function Genesis() {
                 <div className='content-center justify-items-center '>
                     <h1 className='text-xl'>Paste the ScriptSig HEX Representation</h1>
                     <div className='pt-8 w-full'>
-                        <input
-                            type="textarea" 
-                            name="textValue"
-                            className='w-full bg-transparent divide-y-3'></input>
+                        <Input></Input>
                     </div>
                 </div>
             </div>

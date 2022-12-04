@@ -16,6 +16,7 @@
     "next-contentlayer": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-individual-character-input-boxes": "^1.2.1",
     "xterm": "^5.0.0"
   },
   "devDependencies": {
