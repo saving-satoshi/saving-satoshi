@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Modal from "react-modal";
 
-export const SaveProgressButton = () => {
-  const [modalIsOpen, setIsOpen] = useState(false);
+export const SaveProgressButton = (props) => {
+  const [modalIsOpen, setIsOpen] = useState(props.open);
 
   function closeModal() {
     setIsOpen(false);
