@@ -8,16 +8,16 @@ export const Hero = () => {
                 <p className='text-2xl sm:text-3xl lg:text-4xl text-center'>Time travel through the history of bitcoin  and learn bitcoin coding along the way.</p>
                 <div className='flex grid grid-cols-1 md:grid-cols-2 justify-center md:space-x-5 pt-8 pb-12'>
                     <div className='flex justify-center sm:justify-end'>
-                    <button className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-2xl'>
+                    <button className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-2xl hover:opacity-75 transition ease-in-out duration-150'>
                         <Link href='/chapters' legacyBehavior>
                             <text className='font-nunito font-bold'>
-                                Enter the time machine
+                                Start your journey
                             </text>
                         </Link>
                     </button>
                     </div>
                     <div className='flex justify-center sm:justify-start pt-4 md:pt-0'>
-                        <button className='py-2.5 px-12 w-full md:w-auto justify-center border text-2xl'>
+                        <button className='py-2.5 px-12 w-full md:w-auto justify-center border text-2xl hover:bg-black/25 transition ease-in-out duration-150'>
                             <Link href='/about' legacyBehavior>
                                 <text className='font-nunito font-bold'>
                                  Tell me more

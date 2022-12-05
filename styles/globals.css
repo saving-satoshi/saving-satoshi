@@ -33,7 +33,7 @@ modules, extending theme perhaps ????
     font-size: 1.375rem; 
     font-family: var(--nunito-font);
     font-weight: 900;
-    line-height: 1.875rem;
+    line-height: 140%;
     padding-top: 0.625rem;
 }
 
@@ -41,7 +41,7 @@ modules, extending theme perhaps ????
     font-size: 1.375rem; 
     font-family: var(--nunito-font);
     font-style: normal;
-    line-height: 100%;
+    line-height: 140%;
     padding-top: 0.625rem;
 }
 
@@ -58,7 +58,7 @@ modules, extending theme perhaps ????
     font-size: 1.125rem; 
     font-family: var(--nunito-font);
     font-style: normal;
-    line-height: 100%;
+    line-height: 140%;
     padding-top: 0.625rem;
 }
 
@@ -75,10 +75,15 @@ modules, extending theme perhaps ????
     font-size: 1.375rem; 
     font-family: var(--nunito-font);
     font-style: normal;
-    line-height: 100%;
+    line-height: 140%;
     padding-top: 0.625rem;
 }
 
+.fix-grow-issue [data-nextjs-scroll-focus-boundary] {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
 
 
 @layer base {
