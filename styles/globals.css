@@ -91,3 +91,8 @@ modules, extending theme perhaps ????
       @apply bg-base-blue;
     }
 }
+
+.react-terminal-line {
+    white-space: unset!important;
+    line-break: anywhere;
+}
