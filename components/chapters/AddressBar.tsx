@@ -6,7 +6,7 @@ export function AddressBar() {
 
   return (
     <div className="items-center px-5 py-3">
-      <div className="flex text-sm font-medium">
+      <div className="flex flex-col text-sm font-medium">
         {pathname ? (
           <>
             {pathname
@@ -15,24 +15,18 @@ export function AddressBar() {
               .map((segment, index) => {
                 return (
                   <React.Fragment key={segment}>
-                    <div className='flex flex-col flex-wrap justify-center items-center'>
-                      <div>
-                        {index == 0  && <span
-                          key={segment}
-                          className='px-0.5 text-lg text-white/50'
-                        >
-                          {segment}
-                        </span> }
-                      </div>
-                      <div>
-                      {index >= 1  && <span
-                        key={segment}
-                        className='px-0.5 text-2xl text-white'
-                      >
-                        {segment}
-                      </span> }
-                      </div>
-                    </div>
+                    {index == 0  && <p
+                      key={segment}
+                      className='px-0.5 text-lg text-white/50 leading-none'
+                    >
+                      {segment}
+                    </p> }
+                    {index >= 1  && <p
+                      key={segment}
+                      className='px-0.5 text-2xl text-white leading-none'
+                    >
+                      {segment}
+                    </p> }
                   </React.Fragment>
                 );
               })}

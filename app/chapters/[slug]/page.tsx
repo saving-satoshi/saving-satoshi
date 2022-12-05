@@ -20,24 +20,24 @@ async function getIntro(slug: string) {
 export default async function Page({ params }) {
     const intro = await getIntro(params.slug)
     return (
-        <div className="w-screen min-h-screen">
-            <div className='grid grid-cols-1 md:grid-cols-2 justify-center px-6 lg:px-0'>
-                <div className='flex justify-start w-full text-white '>
-                    <div className='content-center justify-items-start sm:p-10 px-1 py-6 sm:py-36'>
+        <div className="w-screen min-h-screen flex grow">
+            <div className='flex grow justify-center px-6 lg:px-0'>
+                <div className='flex basis-1/2 shrink justify-start w-full text-white '>
+                    <div className='content-center flex flex-col justify-items-start sm:p-10 px-1 py-1 sm:py-1'>
                         <div
                             dangerouslySetInnerHTML={{ __html: intro.body.html }}
                             className='pt-8 intro'
                         ></div>
-                        <div className='pt-8'>
+                        <div className='mt-8'>
                             <Link
                                 href='/chapters/chapter-1/genesis'
-                                className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-2xl font-nunito font-bold'>
+                                className='inline-block py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-2xl font-nunito font-bold'>
                                 Start
                             </Link>
                         </div>
                     </div>
                 </div>
-                <div className='flex justify-center'>
+                <div className='flex basis-1/2 shrink justify-center'>
                     <Image
                         src={intro.image}
                         alt={intro.title}
