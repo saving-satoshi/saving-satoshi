@@ -15,9 +15,9 @@ export default async function Genesis() {
     const genesis = await getGenesis()
 
     return (
-        <div className='grid grid-cols-1 justify-items-center w-screen h-screen justify-center'>
+        <div className='grid grid-cols-1 justify-items-center w-screen h-screen px-6 lg:px-0 justify-center'>
             <div className='flex md:w-1/2 w-screen text-white pt-16'>
-                <div className='content-center justify-items-center px-1 font-nunito'>
+                <div className='content-center justify-items-center px-6 lg:px-0 font-nunito'>
                     <div
                         className='lg:pt-8 pt-2 genesis'
                         dangerouslySetInnerHTML={{ __html: genesis.body.html }}
@@ -41,11 +41,11 @@ export default async function Genesis() {
                 </div>
             </div>
             <div className='w-screen'>
-                <div className='m-0 flex justify-between items-center text-white border-t border-white/25' aria-disabled>
-                    <h2>Complete the challenge above to continue</h2>
+                <div className='m-0 flex justify-between items-center border-t border-white/25' aria-disabled>
+                    <h2 className='lg:px-5 text-white/50 font-nunito'>Complete the challenge above to continue</h2>
                     <Link
                         href='/chapters/chapter-1/genesis/genesis-pt2'
-                        className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-2xl'>
+                        className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-2xl font-bold font-nunito'>
                         Next
                     </Link>
                 </div>

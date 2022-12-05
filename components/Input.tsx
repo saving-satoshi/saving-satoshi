@@ -17,7 +17,6 @@ export const Input = () =>  {
     }
 
     return (
-        <div>
             <RICIBs
                 amount={154}
                 autoFocus
@@ -30,11 +29,13 @@ export const Input = () =>  {
                        'width': '20px',
                        'height': '20px',
                        'font-family': `${smono.style.fontFamily}`,
-                       'margin': '0px'
+                       'margin': '0px',
+                       'border-radius': '0px',
+                       'text-align': 'center',
+                       'justify-content': 'space-evenly'
                     }
                 }}
                 inputRegExp={/^[a-zA-Z0-9_.-]*$/}
             />
-      </div>
-    );
+    )
 }
