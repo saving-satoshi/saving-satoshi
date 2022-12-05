@@ -33,7 +33,7 @@ export default function Genesis() {
     }
 
 
-    // Todo use a more nextjs13 way of validating 
+    // Todo create utils for repetitive validation
     const validateInput = (string) => {
         if (string == answer) {
             enableNext()
@@ -88,6 +88,7 @@ export default function Genesis() {
                     </div>
                 </div>
             </div>
+            /* This should be a component itself, refactor */
             <div className='w-screen md:pb-[30px] border-t border-white/25'>
                 <div className='flex grid grid-cols-1 md:grid-cols-2 justify-between items-center'>
                     <div className='flex justify-center md:justify-start pt-4 md:pt-0'>
