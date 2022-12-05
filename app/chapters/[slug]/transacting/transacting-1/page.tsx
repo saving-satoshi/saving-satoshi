@@ -1,26 +1,28 @@
 'use client'
 
+import { Input } from 'components/Input'
 import { allLessons, Lesson } from 'contentlayer/generated'
 import Link from 'next/link'
-import RICIBs from 'react-individual-character-input-boxes'
 import { useState } from "react";
 import clsx from 'clsx';
+import RICIBs from 'react-individual-character-input-boxes';
 
-// TODO use environment
-const inputAmount = 154
-const answer = '04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73'
+const inputAmount = 40
+const answer = '6a127461636f7320666f722065766572796f6e65'
 
 
 //Am i going to to this boilerplate for every view? 
-// TODO make a factory (or other pattern) to populate component data
-function getGenesis() {
-    const slug = 'genesis'
+// TODO make a factory (or other pattnern) to populate component data
+
+function getTx2() {
+    const slug = 'transacting-1'
     const data = allLessons.find((challenge: Lesson) => challenge.slugAsParams === slug)
     return data
 }
 
-export default function Genesis() {
-    const genesis = getGenesis()
+
+export default  function Genesispt2() {
+    const genesis = getTx2()
 
     const [correctAnswer, setCorrectAnswer] = useState(false);
 
@@ -33,7 +35,7 @@ export default function Genesis() {
     }
 
 
-    // Todo create utils for repetitive validation
+    // Todo use a more nextjs13 way of validating 
     const validateInput = (string) => {
         if (string == answer) {
             enableNext()
@@ -53,17 +55,17 @@ export default function Genesis() {
                     ></div>
                     <div className='pb-16 pt-9'>
                         <Link
-                            href='https://blockstream.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f'
+                            href='https://blockstream.info/tx/75764fd0c95b4c17b728d10f7555509adfc0789ddc47683c45aeddd1c34727f8?expand'
                             className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-xl font-nunito font-bold'>
-                            View Block 0
+                            View transaction
                         </Link>
                     </div>
                 </div>
             </div>
             <hr className='border-1 border-white/25 h-1 w-screen'></hr>
             <div className='flex lg:w-1/2 text-white font-space-mono justify-center'>
-                <div className='content-center justify-items-center '>
-                    <h1 className='text-xl text-center'>Paste the ScriptSig HEX Representation</h1>
+                <div className='content-center justify-items-center pb-16'>
+                    <h1 className='text-xl text-center'>Enter the OP_RETURN type</h1>
                     <div className='pt-8 w-full'>
                         <RICIBs
                             amount={inputAmount}
@@ -88,21 +90,20 @@ export default function Genesis() {
                     </div>
                 </div>
             </div>
-            /* This should be a component itself, refactor */
             <div className='w-screen md:pb-[30px] border-t border-white/25'>
                 <div className='flex grid grid-cols-1 md:grid-cols-2 justify-between items-center'>
                     <div className='flex justify-center md:justify-start pt-4 md:pt-0'>
-                        <h2 className='px-5 text-white/50 text-[21px] font-nunito'>{correctAnswer ? 'Challenge completed!' : 'Complete the challenge above to continue'}</h2>
+                    <h2 className='px-5 text-white/50 text-[21px] font-nunito'>{correctAnswer ? 'Challenge completed!' : 'Complete the challenge above to continue'}</h2>
                     </div>
                     <div className='flex justify-center md:justify-end pt-4 px-6 md:px-0 md:pt-0 pb-[30px] md:pb-0'>
-                        <Link
-                            href='/chapters/chapter-1/genesis/genesis-pt2'
-                            className={clsx('py-2.5 px-12 w-full md:w-auto justify-center text-center bg-white text-base-blue text-[21px] font-bold font-nunito', {
-                                'pointer-events-none': !correctAnswer,
-                                'pointer-events-auto': correctAnswer
-                            })}>
-                            Next
-                        </Link>
+                    <Link
+                        href='/chapters/chapter-1/transacting/transacting-2'
+                        className={clsx('py-2.5 px-12 w-full md:w-auto justify-center text-center bg-white text-base-blue text-[21px] font-bold font-nunito', {
+                            'pointer-events-none': !correctAnswer,
+                            'pointer-events-auto': correctAnswer
+                        })}>
+                        Next
+                    </Link>
                     </div>
                 </div>
             </div>
