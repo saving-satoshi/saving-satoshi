@@ -17,7 +17,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-individual-character-input-boxes": "^1.2.1",
-    "xterm": "^5.0.0"
+    "react-modal": "^3.16.1"
   },
   "devDependencies": {
     "@types/react": "18.0.25",
