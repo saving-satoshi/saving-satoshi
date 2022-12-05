@@ -15,10 +15,10 @@ export default async function Transacting() {
 
     return (
         <div className='grid grid-cols-1 justify-items-center w-screen h-screen justify-center'>
-            <div className='flex w-1/2 items-center text-white pt-16'>
+            <div className='flex lg:w-1/2 w-screen items-center text-white px-6 lg:px-0'>
                 <div className='content-center justify-items-center px-1 font-nunito'>
                     <div
-                        className='lg:pt-8 pt-2 genesis'
+                        className='genesis'
                         dangerouslySetInnerHTML={{ __html: transacting.body.html }}
                     ></div>
                     <div className='pt-8'>

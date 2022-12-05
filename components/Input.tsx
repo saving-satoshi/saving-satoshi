@@ -11,14 +11,14 @@ const smono = Space_Mono({
     display: 'swap'
 })
 
-export const Input = () =>  {
+export const Input = ({amount}:{amount: number}) =>  {
     function handleOutput(string) {
         console.log(string)
     }
 
     return (
             <RICIBs
-                amount={154}
+                amount={amount}
                 autoFocus
                 handleOutputString={handleOutput}
                 inputProps={
