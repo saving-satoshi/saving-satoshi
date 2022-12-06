@@ -14,6 +14,7 @@ export const ChaptersNavbar = ({ items, slug }) => {
             <div className='flex justify-between items-stretch text-white border-b border-white/80'>
                 <div className='flex items-stretch'>
                     <button
+                        title="Back"
                         className='text-white border-r border-white/25 hover:bg-black/20 text-sm p-5 items-center transition ease-in-out duration-100 group'
                         onClick={() => router.back()}
                     >

@@ -46,25 +46,27 @@ export default  function Genesispt2() {
     }
 
     return (
-        <div className='grid grid-cols-1 justify-items-center w-screen h-screen px-6 lg:px-0 justify-center'>
-            <div className='flex lg:w-1/2 w-screen text-white pt-16'>
-                <div className='content-center justify-items-center px-6 lg:px-0 font-nunito'>
+        <div className='flex flex-col items-center w-screen grow px-6 lg:px-0'>
+            <div className='flex grow lg:w-1/2 w-screen text-white py-4'>
+                <div className='flex flex-col justify-center px-6 lg:px-0 font-nunito'>
                     <div
-                        className='lg:pt-8 pt-2 genesis'
+                        className='genesis'
                         dangerouslySetInnerHTML={{ __html: genesis.body.html }}
                     ></div>
-                    <div className='pb-16 pt-9'>
+                    <div className='flex mt-8'>
                         <Link
                             href='https://blockstream.info/tx/75764fd0c95b4c17b728d10f7555509adfc0789ddc47683c45aeddd1c34727f8?expand'
-                            className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-xl font-nunito font-bold'>
+                            target="_blank"
+                            rel="noreferrer nofollow"
+                            className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-xl font-nunito font-bold transition ease-in-out duration-150 hover:opacity-75'>
                             View transaction
                         </Link>
                     </div>
                 </div>
             </div>
             <hr className='border-1 border-white/25 h-1 w-screen'></hr>
-            <div className='flex lg:w-1/2 text-white font-space-mono justify-center'>
-                <div className='content-center justify-items-center pb-16'>
+            <div className='flex grow lg:w-1/2 text-white font-space-mono justify-center'>
+                <div className='flex flex-col justify-center'>
                     <h1 className='text-xl text-center'>Enter the OP_RETURN type</h1>
                     <div className='pt-8 w-full'>
                         <RICIBs
@@ -82,7 +84,9 @@ export default  function Genesispt2() {
                                         'margin': '0px',
                                         'border-radius': '0px',
                                         'text-align': 'center',
-                                        'justify-content': 'space-evenly'
+                                        'justify-content': 'space-evenly',
+                                        'outline': 'none',
+                                        'font-family': 'var(--space-mono-font)'
                                     }
                                 }}
                             inputRegExp={/^[a-zA-Z0-9_.-]*$/}
@@ -90,21 +94,23 @@ export default  function Genesispt2() {
                     </div>
                 </div>
             </div>
-            <div className='w-screen md:pb-[30px] border-t border-white/25'>
-                <div className='flex grid grid-cols-1 md:grid-cols-2 justify-between items-center'>
-                    <div className='flex justify-center md:justify-start pt-4 md:pt-0'>
-                    <h2 className='px-5 text-white/50 text-[21px] font-nunito'>{correctAnswer ? 'Challenge completed!' : 'Complete the challenge above to continue'}</h2>
+            <div className='w-screen border-t border-white/25'>
+                <div className='flex items-center'>
+                    <div className={clsx('flex items-center px-5 w-full align-middle transition ease-in-out duration-150', {
+                        'bg-success/25': correctAnswer
+                    })}>
+                        <h2 className={clsx('text-white opacity-50 text-[21px] font-nunito transition ease-in-out duration-150', {
+                            'opacity-100': correctAnswer
+                        })}>{correctAnswer ? 'Challenge completed!' : 'Complete the challenge above to continue'}</h2>
                     </div>
-                    <div className='flex justify-center md:justify-end pt-4 px-6 md:px-0 md:pt-0 pb-[30px] md:pb-0'>
                     <Link
                         href='/chapters/chapter-1/transacting/transacting-2'
-                        className={clsx('py-2.5 px-12 w-full md:w-auto justify-center text-center bg-white text-base-blue text-[21px] font-bold font-nunito', {
-                            'pointer-events-none': !correctAnswer,
-                            'pointer-events-auto': correctAnswer
+                        className={clsx('py-4 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-[21px] font-bold font-nunito transition ease-in-out duration-150', {
+                            'pointer-events-none opacity-50': !correctAnswer,
+                            'pointer-events-auto hover:opacity-75': correctAnswer
                         })}>
                         Next
                     </Link>
-                    </div>
                 </div>
             </div>
         </div>

@@ -4,8 +4,8 @@ import { Navbar } from "components/NavBar";
 
 export default function Home() {
   return (
-      <div className='w-screen'>
-        <Navbar/>
+      <div className='w-screen h-screen flex flex-col'>
+        <Navbar />
         <Hero/>
         <Footer/>
       </div>

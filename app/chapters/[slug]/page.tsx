@@ -31,13 +31,13 @@ export default async function Page({ params }) {
                         <div className='mt-8'>
                             <Link
                                 href='/chapters/chapter-1/genesis'
-                                className='inline-block py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-2xl font-nunito font-bold'>
+                                className='inline-block py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-2xl font-nunito font-bold transition ease-in-out duration-150 hover:opacity-75'>
                                 Start
                             </Link>
                         </div>
                     </div>
                 </div>
-                <div className='flex basis-1/2 shrink justify-center'>
+                <div className='flex basis-1/2 shrink justify-center border-l border-white/25'>
                     <Image
                         src={intro.image}
                         alt={intro.title}
