@@ -7,11 +7,11 @@ export type Item = {
   
   export const TabGroup = ({ path, items }: { path: string; items: Item[] }) => {
     return (
-      <div className="flex items-stretch">
+      <nav className="flex items-stretch">
         {items.map((item) => (
           <Tab key={ path + item.slug + item.id } item={item} path={path} />
         ))}
-      </div>
+      </nav>
     );
   };
   

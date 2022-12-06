@@ -42,7 +42,7 @@ export default function Genesispt2() {
     }
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 w-screen md:divide-x justify-center px-6 lg:px-0'>
+        <div className='grow grid grid-cols-1 md:grid-cols-2 w-screen md:divide-x justify-center px-6 lg:px-0'>
             <div className='flex justify-center w-full text-white'>
                 <div className='content-center justify-items-start sm:px-12 px-1 py-6'>
                     <div
@@ -51,17 +51,26 @@ export default function Genesispt2() {
                     ></div>
                 </div>
             </div>
-            <div className='flex grow items-center text-white font-space-mono justify-center'>
-                <div className='flex items-start h-screen text-white'>
+            <div className='flex flex-col grow items-center text-white font-space-mono justify-center'>
+                <div className='flex flex-col grow items-start text-white items-stretch'>
                     <Terminal lines={lines} onInput={onInput} />
-                    <div className='absolute bottom-0 flex-1'>
-                        <div className='flex justify-center md:justify-start bg-black/[.15] '>
-                            <h2 className={clsx('px-5 text-white/50 text-[21px] font-nunito', {
-                                'bg-success/25': success
+                    <div className='flex flex-col'>
+                        <div className='flex justify-center md:justify-start bg-black/[.15] p-[20px] border-t border-white/25'>
+                            <h2 className={clsx('text-white/50 text-[18px] font-space-mono', {
+                                'bg-success/25': success,
+                                'opacity-50': !success
                             })}>{success ? answer : 'Waiting for you to write and run the script...'}</h2>
                         </div>
-                        <div className='flex justify-center md:justify-start pt-4 px-6 md:px-0 md:pt-0 pb-[30px] md:pb-0'>
-                        {success && <SaveProgressButton open={success} />}
+                        <div className='flex sm:flex-col md:flex-row pt-4 pl-6 md:pl-5 md:pt-0 pb-[30px] md:pb-0 text-[18px] border-t border-white/25'>
+                            <button className="flex grow gap-2 items-center hover:opacity-75 transition ease-in-out duration-150 py-5">
+                                <span className="flex bg-white w-7 h-7 justify-center items-center rounded">
+                                    <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.5 13.4194V1.58062C0.5 0.742119 1.46993 0.275946 2.1247 0.799757L9.52391 6.71913C10.0243 7.11946 10.0243 7.88054 9.52391 8.28087L2.1247 14.2002C1.46993 14.7241 0.5 14.2579 0.5 13.4194Z" className="fill-black" />
+                                    </svg>
+                                </span>
+                                Run the script
+                            </button>
+                            {success && <SaveProgressButton open={success} />}
                         </div>
                     </div>
                 </div>

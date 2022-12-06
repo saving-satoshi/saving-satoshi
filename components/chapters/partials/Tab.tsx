@@ -20,6 +20,7 @@ export const Tab = ({
   return (
     <Link
       href={href} 
+      title={slug}
       className={clsx('hover:bg-black/25 hover:text-white px-7 text-center border-l border-white/25 text-lg justify-center flex items-center transition ease-in-out duration-100', {
         'text-white text-opacity-50 hover:text-opacity-100':
           !isActive,

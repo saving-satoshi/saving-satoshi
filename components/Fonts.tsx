@@ -9,7 +9,7 @@ const cbrush = Caveat_Brush({
 
 const smono = Space_Mono({
     weight: ['400', '700'],
-    variable: '--inter-font',
+    variable: '--space-mono-font',
     preload: true,
     display: 'swap'
 })

@@ -14,7 +14,7 @@ export default async function Transacting() {
     const transacting = await getTransacting()
 
     return (
-        <div className='grid grid-cols-1 justify-items-center w-screen h-screen justify-center'>
+        <div className='grid grid-cols-1 justify-items-center w-screen justify-center'>
             <div className='flex lg:w-1/2 w-screen items-center text-white px-6 lg:px-0'>
                 <div className='content-center justify-items-center px-1 font-nunito'>
                     <div
@@ -24,7 +24,7 @@ export default async function Transacting() {
                     <div className='pt-8'>
                         <Link
                             href='/chapters/chapter-1/transacting/transacting-1'
-                            className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-xl font-nunito font-bold'>
+                            className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-xl font-nunito font-bold hover:opacity-75 transition ease-in-out duration-150'>
                             Continue
                         </Link>
                     </div>
