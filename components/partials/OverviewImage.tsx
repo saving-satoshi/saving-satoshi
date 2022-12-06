@@ -9,7 +9,7 @@ export const OverviewImage = (chapter: Chapter) => {
             width={1440}
             height={715}
             layout="responsive"
-            objectFit="cover"
+            objectFit="contain"
         />
     )
 }

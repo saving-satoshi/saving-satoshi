@@ -60,7 +60,7 @@ export default function Genesis() {
             </div>
             <hr className='border-1 border-white/25 h-1 w-screen'></hr>
             <div className='flex grow items-center lg:w-1/2 text-white font-space-mono justify-center'>
-                <div className='content-center justify-items-center '>
+                <div className='content-center justify-items-center'>
                     <h1 className='text-xl text-center'>Paste the ScriptSig HEX Representation</h1>
                     <div className='pt-8 w-full'>
                         <RICIBs
@@ -88,7 +88,10 @@ export default function Genesis() {
             </div>
             <div className='w-screen sm:pb-[30px] md:pb-[0px] border-t border-white/25'>
                 <div className='flex sm:flex-col md:flex-row justify-between items-center'>
-                    <h2 className='px-5 text-white/50 text-[21px] font-nunito'>{correctAnswer ? 'Challenge completed!' : 'Complete the challenge above to continue'}</h2>
+                    <h2 className={clsx('px-5 text-white/50 text-[21px] font-nunito', {
+                        'bg-success/25': correctAnswer 
+                    })}>
+                        {correctAnswer ? 'Challenge completed!' : 'Complete the challenge above to continue'}</h2>
                     <Link
                         href='/chapters/chapter-1/genesis/genesis-pt2'
                         className={clsx('py-4 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-[21px] font-bold font-nunito transition ease-in-out duration-150', {

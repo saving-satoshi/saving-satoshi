@@ -13,8 +13,12 @@ function transformLessonMeta(lessons: String[]) : (Item[]) {
 
 async function getLessons({ params }) : Promise<Item[]> {
     const chapter = await allChapters.find((chapter: Chapter) => chapter.slugAsParams === params.slug )
-    const metadata = transformLessonMeta(chapter.lessons)
-    return metadata;
+    let res: Item[]
+    if (chapter.lessons) {
+        res = transformLessonMeta(chapter.lessons)
+    } 
+    
+    return res;
 }
 
 
@@ -24,9 +28,18 @@ export default async function Layout({ children, params }: {
 }) {
     const navinfo = await getLessons({ params })
     return (
-        <div className="min-h-screen fix-grow-issue flex flex-col">
-            <ChaptersNavbar slug={params.slug} items={navinfo}  />
-            {children}
+        <div className='flex flex-col ch1-background'>
+            <div className='min-h-screen fix-grow-issue flex flex-col blur' >
+            {navinfo ?
+            <>
+                <ChaptersNavbar slug={params.slug} items={navinfo}  />
+                {children}
+            </> :
+            <div className='flex items-center justify-center h-screen mb-12'>
+                <h1 className='text-6xl sm:text-7xl lg:text-8xl text-center text-white'>Coming Soon...</h1>
+            </div>
+            }
+         </div>
         </div>
     )
   }

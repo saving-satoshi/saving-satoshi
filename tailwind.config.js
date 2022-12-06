@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         'base-blue': '#293A60',
+        'success': '#28b123',
       },
       fontFamily: {
         cbrush: ['var(--cbrush-font)'],

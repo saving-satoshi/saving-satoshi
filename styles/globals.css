@@ -10,9 +10,18 @@ html {
     background-image: url('https://saving-satoshi.s3.amazonaws.com/main-image.png');
 }
 
-.ch1-background-img {
+.ch1-background {
     background-image: url('https://saving-satoshi.s3.amazonaws.com/ch2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+.blur {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    backdrop-filter: blur(75px);
+    background: rgba(46, 64, 90, 0.75);
+}
+
 
 
 /* TODO check if there's a better way to add
@@ -92,7 +101,54 @@ modules, extending theme perhaps ????
     }
 }
 
-.react-terminal-line {
+/* Overriding terminal styles */
+div.react-terminal-wrapper.react-terminal-light {
+    background: transparent;
+    display: block;
+    width: auto;
+    font-family: var(--space-mono-font);
+    font-size: 18px;
+    width: 50vw;
+
+}
+
+div.react-terminal-wrapper:after {
+    content: '';
+    display: none;
+}
+
+div.react-terminal-input[data-terminal-prompt]:before {
+    content: '>';
+    color: white;
+    opacity: 50%;
+  }
+
+div.react-terminal-input:before {
+    margin-right: 0.75em;
+    content: '>';
+  }
+  
+
+div.react-terminal-wrapper:before {
+    content: '';
+    display: none;
+
+  }
+
+  div.react-terminal-wrapper:focus-within .react-terminal-active-input:after {
+    content: '▋';
+    color: white;
+    opacity: 50%;
+    font-family: monospace;
+    font-family: var(--space-mono-font);
+    -webkit-animation: blink 1s infinite;
+            animation: blink 1s infinite;
+  }
+
+
+div.react-terminal-line {
     white-space: unset!important;
     line-break: anywhere;
+    color: white;
+    opacity: 50%;
 }
