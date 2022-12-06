@@ -53,6 +53,7 @@ export default function Genesis() {
                     ></div>
                     <Link
                         href='https://blockstream.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f'
+                        target='_blank'
                         className='mt-8 py-2.5 px-12 inline-block w-full md:w-auto justify-center bg-white text-base-blue text-xl font-nunito font-bold hover:opacity-80 transition ease-in-out duration-150'>
                         View Block 0
                     </Link>
