@@ -8,7 +8,7 @@ const TerminalController = (props) => {
     <div className='container h-screen w-full'>
       <Terminal name='Saving Satoshi' colorMode={ ColorMode.Light } onInput={props.onInput} >
            {props.lines.map((line, index) => (
-            <TerminalOutput key={index}>$ {line}</TerminalOutput>
+            <TerminalOutput key={index}>{`> ${line}`}</TerminalOutput>
           ))}
       </Terminal>
     </div>

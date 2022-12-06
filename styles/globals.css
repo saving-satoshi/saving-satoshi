@@ -123,6 +123,12 @@ div.react-terminal-input[data-terminal-prompt]:before {
     opacity: 50%;
   }
 
+div.react-terminal-input:before {
+    margin-right: 0.75em;
+    content: '>';
+  }
+  
+
 div.react-terminal-wrapper:before {
     content: '';
     display: none;
