@@ -19,11 +19,11 @@ export const Hero = () => {
                     <div className='flex justify-center sm:justify-start pt-4 md:pt-0'>
                         <button className='py-2.5 px-12 w-full md:w-auto justify-center border text-2xl hover:bg-black/25 transition ease-in-out duration-150'>
                             <Link href='/about' legacyBehavior>
-                                <text className='font-nunito font-bold'>
-                                 Tell me more
-                                </text>
-                        </Link>
-                    </button>
+                            <text className='font-nunito font-bold'>
+                                Tell me more
+                            </text>
+                            </Link>
+                        </button>
                     </div>
                 </div>
             </div>

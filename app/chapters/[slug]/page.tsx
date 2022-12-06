@@ -20,7 +20,7 @@ async function getIntro(slug: string) {
 export default async function Page({ params }) {
     const intro = await getIntro(params.slug)
     return (
-        <div className="w-screen min-h-screen flex grow">
+        <div className="w-screen flex grow">
             <div className='flex grow justify-center px-6 lg:px-0'>
                 <div className='flex basis-1/2 shrink justify-start w-full text-white '>
                     <div className='content-center flex flex-col justify-items-start sm:p-10 px-1 py-1 sm:py-1'>
