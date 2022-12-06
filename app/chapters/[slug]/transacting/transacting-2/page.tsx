@@ -3,6 +3,8 @@
 import { allLessons, Lesson } from 'contentlayer/generated'
 import { useState } from 'react';
 import Terminal from 'components/Terminal';
+import Link from 'next/link';
+import clsx from 'clsx';
 
 //Am i going to to this boilerplate for every view? 
 // TODO make a factory (or other pattnern) to populate component data
@@ -18,6 +20,7 @@ export default function Genesispt2() {
 
     const [lines, setLines] = useState([]);
     const [success, setSuccess] = useState(false);
+    const [answer, setAnswer] = useState('');
 
     function onInput(input) {
         setLines(lines => [...lines, input]);
@@ -32,6 +35,7 @@ export default function Genesispt2() {
                 setTimeout(() => {
                     setSuccess(true)
                 }, 1000);
+                setAnswer(scriptSig)
             }
         }
     }
@@ -48,6 +52,21 @@ export default function Genesispt2() {
             </div>
             <div className='flex justify-center w-full text-white'>
                 <Terminal lines={lines} onInput={onInput} />
+                <div className='flex grid grid-cols-1 md:grid-cols-2 justify-between items-center'>
+                    <div className='flex justify-center md:justify-start pt-4 md:pt-0'>
+                    <h2 className='px-5 text-white/50 text-[21px] font-nunito'>{true ? 'Challenge completed!' : 'Complete the challenge above to continue'}</h2>
+                    </div>
+                    <div className='flex justify-center md:justify-end pt-4 px-6 md:px-0 md:pt-0 pb-[30px] md:pb-0'>
+                    <Link
+                        href='/chapters/chapter-1/transacting/transacting-2'
+                        className={clsx('py-2.5 px-12 w-full md:w-auto justify-center text-center bg-white text-base-blue text-[21px] font-bold font-nunito', {
+                            'pointer-events-none': !true,
+                            'pointer-events-auto': false
+                        })}>
+                        Next
+                    </Link>
+                    </div>
+                </div>
             </div>
         </div>
     )

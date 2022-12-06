@@ -21,6 +21,7 @@ export default function Genesispt2() {
 
     const [lines, setLines] = useState([]);
     const [success, setSuccess] = useState(false);
+    const [answer, setAnswer] = useState('')
 
     function onInput(input) {
         setLines(lines => [...lines, input]);
@@ -35,6 +36,7 @@ export default function Genesispt2() {
                 setTimeout(() => {
                     setSuccess(true)
                 }, 1000);
+                setAnswer(scriptSig)
             }
         }
     }
@@ -49,9 +51,26 @@ export default function Genesispt2() {
                     ></div>
                 </div>
             </div>
-            <div className='flex grow items-center lg:w-1/2 text-white font-space-mono justify-center'>
-            <div className='flex justify-center w-full h-screen text-white'>
+            <div className='flex grow items-center text-white font-space-mono justify-center'>
+            <div className='flex items-start h-screen text-white'>
                 <Terminal lines={lines} onInput={onInput} />
+                <div className='absolute bottom-0 flex-1'>
+                    <div className='flex justify-center md:justify-start bg-black/[.15] '>
+                    <h2 className={clsx('px-5 text-white/50 text-[21px] font-nunito', {
+                        'bg-success/25': success 
+                    })}>{success ? answer : 'Waiting for you to write and run the script...'}</h2>
+                    </div>
+                    <div className='flex justify-center md:justify-start pt-4 px-6 md:px-0 md:pt-0 pb-[30px] md:pb-0'>
+                    <Link
+                        href='/chapters/chapter-1/transacting/'
+                        className={clsx('py-2.5 px-12 w-full md:w-auto justify-center text-center bg-white text-base-blue text-[21px] font-bold font-nunito', {
+                            'pointer-events-none': !success,
+                            'pointer-events-auto': success
+                        })}>
+                        Next
+                    </Link>
+                    </div>
+                </div>
             </div>
             </div>
         </div>
