@@ -19,19 +19,15 @@ export default function About() {
           </p>
 
           <p className="text-xl text-justify pt-4 pb-20">
-            And then suddenly, the network goes offline. Payments worldwide
-            stop. In the midst of the crisis, someone senses an opportunity. The
-            mysterious and world-renowned computer scientist Dr. B.S. Wrong
-            steps into the spotlight. He claims that, lo and behold, he's been
-            Satoshi Nakamoto all along, and until further notice, the 21 million
-            cap has been lifted, and the network will issue 1 million bitcoin
-            every day indefinately.
+            And then suddenly, the network comes to a crawl. Instead of the normal
+            ten-minute block interval, blocks are coming in just a few times a day,
+            if not longer. Your mom's bitcoin node stops syncing. The media starts
+            reporting on the situation. It's everywhere on social media.
             <br />
             <br />
-            There is a knock at your door, and when you open it, a yellowed
-            age-weathered envelope has been left for you. Inside, you discover
-            the first clue of the most important mission of your life. And so
-            beings your journey to save satoshi.
+            The price of bitcoin is falling. There is a knock at your door, and when
+            you open it, a yellowed, age-weathered envelope has been left for you.
+            There's no name or return address. What could be inside?
           </p>
 
           <h3 className="text-4xl">Built with love</h3>
@@ -51,8 +47,13 @@ export default function About() {
 
           <h3 className="text-4xl">Enjoy!</h3>
           <p className="text-xl text-justify pt-4 pb-20">
-            Contributions by @satsie, @adamcjonas, @gbks, ... add other
-            contributors ...
+            Contributions by <a target="_blank" rel="noreferrer" href="https://twitter.com/GBKS">@gbks</a>
+            , <a target="_blank" rel="noreferrer" href="https://twitter.com/adamcjonas">@adamcjonas</a>
+            , <a target="_blank" rel="noreferrer" href="https://twitter.com/satsie">@satsie</a>
+            , <a target="_blank" rel="noreferrer" href="https://github.com/ggwilin">@ggwilin</a>
+            , <a target="_blank" rel="noreferrer" href="https://twitter.com/netrebelking">@netrebelking</a>
+            , <a target="_blank" rel="noreferrer" href="https://github.com/aureleoules">@aureleoules</a>
+            , and many more!
           </p>
         </div>
 

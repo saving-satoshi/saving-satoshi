@@ -1,18 +1,16 @@
 # Saving Satoshi
 
-We made an intro video for you:
+Saving Satoshi is a light-hearted, first point of contact for developers of all ages that want to learn how bitcoin works.
 
-[Saving Satoshi Pitch Video](https://www.youtube.com/watch?v=ZX6oqDKzVx4)
+At its core, this is a video game. But if you look beneath the surface, it's much more than that. It’s an interactive science fiction story designed to inspire a generation to fall in love with bitcoin. The goal is to be a 0-to-1 experience that transmits the cultural values of bitcoin. We do this by immersing learners into a fictional world that they navigate with technical lessons. 
 
-Watched it? Awesome, let's continue...
+Gameplay is made up of a mix of technical text and code-based challenges. The challenges should be doable for anyone with basic coding skills.
 
-A cypherpunk travels back in time to discover clues about Satoshi’s disappearance encountering Satoshi imposters, social attacks, and totalitarians that don’t want bitcoin to survive.
+Learners will complete test-driven, repl-based lessons, while learning some bitcoin history along the way. Beginners can breeze through the basics while more advanced learners can dive into the harder challenges and easter eggs. 
 
-Saving Satoshi is an engaging first point of contact for devs of all ages learning about bitcoin development.
+Bitcoin is serious, but this game is designed to be fun. We hope you enjoy what we have created and welcome contributions.
 
-Learners will complete test-driven, repl-based lessons by completing missions traveling through bitcoin history.
-
-Beginners can breeze through the basics while more advanced learners can dive into the harder challenges and easter eggs. In the future, pay for lesson completion or pass on real work in the form of challenges for pay Ender’s game style.
+Now be quick, Satoshi needs you!
 
 ## Contributing
 
@@ -37,10 +35,11 @@ Images are generated via AI tools (mostly [DiffusionBee](https://diffusionbee.co
 To run this project locally:
 
 1. First download the code from this repository
-2. Ensure you have the npm version 16.13.0 or higher installed
-2. Run `npm install` to download the required code libraries
-3. Run `npm run start` to spin up the development environment
-3. Open `http://localhost:3000` in your browser to access the site
+2. Ensure you have NodeJS version 16.13.0 or higher installed
+3. Run `npm install` to download the required code libraries
+4. Run `npm run build` to build
+5. Run `npm run start` to spin up the development environment
+6. Open `http://localhost:3000` in your browser to access the site
 
 ## Roadmap
 
