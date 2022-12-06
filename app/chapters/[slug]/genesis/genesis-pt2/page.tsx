@@ -1,9 +1,11 @@
 'use client'
 
-import { SaveProgressButton } from 'components/chapters/SaveProgressButton'
 import { allLessons, Lesson } from 'contentlayer/generated'
 import Terminal from 'components/Terminal';
 import { useState } from 'react';
+import Link from 'next/link';
+import clsx from 'clsx';
+import { TerminalOutput } from 'react-terminal-ui';
 
 //Am i going to to this boilerplate for every view? 
 // TODO make a factory (or other pattnern) to populate component data
@@ -38,8 +40,30 @@ export default function Genesispt2() {
     }
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 w-screen justify-center'>
-            <div className='flex justify-center w-full text-white'>
+        <div className='flex flex-row grow items-center justify-items-center w-screen px-6 lg:px-0 justify-center'>
+            <div className='flex grow items-center lg:w-1/2 w-screen text-white py-4'>
+                <div className='content-center justify-items-center px-6 lg:px-0 font-nunito'>
+                    <div
+                        className='genesis'
+                        dangerouslySetInnerHTML={{ __html: genesis.body.html }}
+                    ></div>
+                </div>
+            </div>
+            <div className='flex grow items-center lg:w-1/2 text-white font-space-mono justify-center'>
+            <div className='flex justify-center w-full h-screen text-white'>
+                <Terminal lines={lines} onInput={onInput} />
+            </div>
+            </div>
+        </div>
+        
+    )
+
+}
+
+
+            /*
+            <div className='flex flex-row grow w-screen justify-center'>
+            <div className='flex grow justify-center w-full text-white'>
                 <div className='content-center justify-items-start sm:px-12 px-1 py-6'>
                 <div
                     className='genesis-p2'
@@ -47,16 +71,14 @@ export default function Genesispt2() {
                 ></div>
                 </div>
             </div>
-            <div className='flex justify-center w-full text-white'>
+            <div className='flex justify-center w-full h-screen text-white'>
                 <Terminal lines={lines} onInput={onInput} />
             </div>
+        </div>
             <div className='left-0 bottom-0 w-screen'>
                 <div className='m-0 flex justify-between items-center text-white border-t border-white/25' aria-disabled>
                     <h2>Complete the challenge above to continue</h2>
                     {success && <SaveProgressButton open={success} />}
                 </div>
             </div>
-        </div>
-    )
-
-}
+            */

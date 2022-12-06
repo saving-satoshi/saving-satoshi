@@ -28,7 +28,8 @@ export default async function Layout({ children, params }: {
 }) {
     const navinfo = await getLessons({ params })
     return (
-        <div className="min-h-screen fix-grow-issue flex flex-col">
+        <div className='min-h-screen fix-grow-issue flex flex-col ch1-background'>
+            <div className='blur' >
             {navinfo ?
             <>
                 <ChaptersNavbar slug={params.slug} items={navinfo}  />
@@ -38,7 +39,7 @@ export default async function Layout({ children, params }: {
                 <h1 className='text-6xl sm:text-7xl lg:text-8xl text-center text-white'>Coming Soon...</h1>
             </div>
             }
-            
+        </div>
         </div>
     )
   }
