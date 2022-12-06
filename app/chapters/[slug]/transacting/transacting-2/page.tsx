@@ -37,7 +37,7 @@ export default function Genesispt2() {
     }
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 w-screen justify-center'>
+        <div className='grid grid-cols-1 md:grid-cols-2 w-screen md:divide-x justify-center px-6 lg:px-0'>
             <div className='flex justify-center w-full text-white'>
                 <div className='content-center justify-items-start sm:px-12 px-1 py-6'>
                 <div

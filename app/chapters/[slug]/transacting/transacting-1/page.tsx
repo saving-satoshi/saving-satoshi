@@ -90,7 +90,7 @@ export default  function Genesispt2() {
                     </div>
                 </div>
             </div>
-            <div className='w-screen m:pb-[30px] border-t border-white/25'>
+            <div className='w-screen md:pb-[30px] border-t border-white/25'>
                 <div className='flex grid grid-cols-1 md:grid-cols-2 justify-between items-center'>
                     <div className='flex justify-center md:justify-start pt-4 md:pt-0'>
                     <h2 className='px-5 text-white/50 text-[21px] font-nunito'>{correctAnswer ? 'Challenge completed!' : 'Complete the challenge above to continue'}</h2>

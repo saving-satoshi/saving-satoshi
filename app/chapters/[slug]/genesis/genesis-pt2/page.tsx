@@ -40,9 +40,9 @@ export default function Genesispt2() {
     }
 
     return (
-        <div className='flex flex-row grow items-center justify-items-center w-screen px-6 lg:px-0 justify-center'>
-            <div className='flex grow items-center lg:w-1/2 w-screen text-white py-4'>
-                <div className='content-center justify-items-center px-6 lg:px-0 font-nunito'>
+        <div className='grid grid-cols-1 md:grid-cols-2 md:divide-x w-screen justify-center px-6 lg:px-0'>
+        <div className='flex justify-center w-full text-white'>
+                <div className='ccontent-center justify-items-start sm:px-12 px-1 py-6'>
                     <div
                         className='genesis'
                         dangerouslySetInnerHTML={{ __html: genesis.body.html }}
