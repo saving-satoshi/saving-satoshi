@@ -78,26 +78,3 @@ export default function Genesispt2() {
     )
 
 }
-
-
-/*
-<div className='flex flex-row grow w-screen justify-center'>
-<div className='flex grow justify-center w-full text-white'>
-    <div className='content-center justify-items-start sm:px-12 px-1 py-6'>
-    <div
-        className='genesis-p2'
-        dangerouslySetInnerHTML={{ __html: genesis.body.html }}
-    ></div>
-    </div>
-</div>
-<div className='flex justify-center w-full h-screen text-white'>
-    <Terminal lines={lines} onInput={onInput} />
-</div>
-</div>
-<div className='left-0 bottom-0 w-screen'>
-    <div className='m-0 flex justify-between items-center text-white border-t border-white/25' aria-disabled>
-        <h2>Complete the challenge above to continue</h2>
-        {success && <SaveProgressButton open={success} />}
-    </div>
-</div>
-*/
