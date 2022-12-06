@@ -20,10 +20,10 @@ export const Tab = ({
   return (
     <Link
       href={href} 
-      className={clsx('text-white border border-white/50 hover:bg-blue-700 hover:text-white text-sm p-5 text-center inline-flex items-center', {
-        'text-white text-opacity-75 border-2 border-black/25 hover:text-opacity-50':
+      className={clsx('hover:bg-black/25 hover:text-white px-7 text-center border-l border-white/25 text-lg justify-center flex items-center transition ease-in-out duration-100', {
+        'text-white text-opacity-50 hover:text-opacity-100':
           !isActive,
-        'bg-black bg-opacity-25 text-white': isActive,
+        'bg-black/25 text-opacity-100': isActive,
       })}
     >
       {id}

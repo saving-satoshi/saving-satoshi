@@ -1,5 +1,5 @@
 import { ChaptersNavbar } from 'components/chapters/ChaptersNavbar';
-import { allChapters, Chapter } from 'contentlayer/generated'
+import { allChapters, Chapter, allLessons,  } from 'contentlayer/generated'
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import { Item } from 'components/chapters/partials/TabGroup';
 
@@ -13,7 +13,6 @@ function transformLessonMeta(lessons: String[]) : (Item[]) {
 
 async function getLessons({ params }) : Promise<Item[]> {
     const chapter = await allChapters.find((chapter: Chapter) => chapter.slugAsParams === params.slug )
-
     const metadata = transformLessonMeta(chapter.lessons)
     return metadata;
 }
@@ -25,9 +24,9 @@ export default async function Layout({ children, params }: {
 }) {
     const navinfo = await getLessons({ params })
     return (
-        <div className='bg-fixed bg-left bg-cover'>
+        <div className="min-h-screen fix-grow-issue flex flex-col">
             <ChaptersNavbar slug={params.slug} items={navinfo}  />
-            <div>{children}</div>
+            {children}
         </div>
     )
   }

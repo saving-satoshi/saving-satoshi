@@ -7,9 +7,9 @@ export default function RootLayout ({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <head />
-      <body>
+      <body className='font-cbrush'>
         <Fonts />
         {children}
         </body>

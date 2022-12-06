@@ -5,34 +5,36 @@ export function AddressBar() {
   const pathname = usePathname();
 
   return (
-    <div className="flex items-center space-x-2 px-5 py-3">
-      <div className="flex space-x-1 text-sm font-medium">
-        <div>
-        </div>
+    <div className="items-center px-5 py-3">
+      <div className="flex flex-col text-sm font-medium">
         {pathname ? (
           <>
-            <span className="text-gray-600">/</span>
             {pathname
               .split('/')
-              .slice(2)
-              .map((segment) => {
+              .slice(2,4)
+              .map((segment, index) => {
                 return (
                   <React.Fragment key={segment}>
-                    <span>
-                      <span
-                        key={segment}
-                        className="animate-[highlight_1s_ease-in-out_1] rounded-full px-1.5 py-0.5 text-gray-100"
-                      >
-                        {segment}
-                      </span>
-                    </span>
-                    <span className="text-gray-600">/</span>
+                    {index == 0  && <p
+                      key={segment}
+                      className='px-0.5 text-lg text-white/50 leading-none'
+                    >
+                      {segment}
+                    </p> }
+                    {index >= 1  && <p
+                      key={segment}
+                      className='px-0.5 text-2xl text-white leading-none'
+                    >
+                      {segment}
+                    </p> }
                   </React.Fragment>
                 );
               })}
           </>
         ) : null}
       </div>
+      <div>
+        </div>
     </div>
   );
 }

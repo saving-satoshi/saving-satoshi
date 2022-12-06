@@ -2,6 +2,9 @@ import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/sou
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 
+
+// fields to be calculated on the fly
+// TODO add dates (creation, update)
 const computedFields: ComputedFields = {
   slug: {
     type: "string",
@@ -13,6 +16,29 @@ const computedFields: ComputedFields = {
   },
 }
 
+
+// Pages contains different pages that are not part of the main
+// content (Chapters, Lessons) e.g: About, terms, privacy, contibuting, etc.
+const Pages = defineDocumentType( () => ({
+  name: 'Page',
+  filePathPattern: '**/pages/*.mdx',
+  fields: {
+    title: {
+      type: 'string',
+      description: 'page title',
+      required: true
+    },
+    subtitle: {
+      type: 'string',
+      description: 'page subtitle',
+      required: false
+    },
+  },
+  computedFields
+}))
+
+// Special document that contains all the parts needed for
+// chapter introductions (A title, a related image URL and some descriptive text)
 const Introduction = defineDocumentType( () => ({
   name: 'Introduction',
   filePathPattern: '**/introductions/*.mdx',
@@ -31,6 +57,7 @@ const Introduction = defineDocumentType( () => ({
   computedFields
 }))
 
+// Lesson content 
 const Lesson = defineDocumentType( () => ({
   name: 'Lesson',
   filePathPattern: '**/lessons/*.mdx',
@@ -56,6 +83,8 @@ const Lesson = defineDocumentType( () => ({
   computedFields
 }))
 
+
+// Chapter Overview
 const Chapter = defineDocumentType( () =>({
   name: 'Chapter',
   filePathPattern: '**/chapters/*.mdx',

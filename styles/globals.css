@@ -14,8 +14,85 @@ html {
     background-image: url('https://saving-satoshi.s3.amazonaws.com/ch2.png');
 }
 
+
+/* TODO check if there's a better way to add
+styles to contentlayer innerhtml
+modules, extending theme perhaps ????
+*/
+
+/* Contentlayer InnerHtml classes */
+
+.intro > h1 {
+    font-size: 3rem; 
+    font-family: var(--cbrush-font);
+    font-style: normal;
+    line-height: 100%;
+}
+
+.intro > h2 {
+    font-size: 1.375rem; 
+    font-family: var(--nunito-font);
+    font-weight: 900;
+    line-height: 140%;
+    padding-top: 0.625rem;
+}
+
+.intro > p {
+    font-size: 1.375rem; 
+    font-family: var(--nunito-font);
+    font-style: normal;
+    line-height: 140%;
+    padding-top: 0.625rem;
+}
+
+.genesis > h1 {
+    font-size: 1.5rem; 
+    font-family: var(--nunito-font);
+    font-style: normal;
+    line-height: 100%;
+    font-weight: 700;
+    padding-top: 0.625rem;
+}
+
+.genesis > p {
+    font-size: 1.125rem; 
+    font-family: var(--nunito-font);
+    font-style: normal;
+    line-height: 140%;
+    padding-top: 0.625rem;
+}
+
+.genesis-p2 > h1 {
+    font-size: 1.5rem; 
+    font-family: var(--nunito-font);
+    font-style: normal;
+    line-height: 100%;
+    font-weight: 700;
+    padding-top: 0.625rem;
+}
+
+.genesis-p2 > p {
+    font-size: 1.375rem; 
+    font-family: var(--nunito-font);
+    font-style: normal;
+    line-height: 140%;
+    padding-top: 0.625rem;
+}
+
+.fix-grow-issue [data-nextjs-scroll-focus-boundary] {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
 @layer base {
     body {
       @apply bg-base-blue;
     }
+}
+
+.react-terminal-line {
+    white-space: unset!important;
+    line-break: anywhere;
 }

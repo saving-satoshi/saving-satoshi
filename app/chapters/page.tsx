@@ -7,10 +7,10 @@ export default async function ChaptersPage() {
         <>
             <Navbar/>
             <div className="w-screen">
-                <div className='px-6'>
+                <div className='px-6 lg:px-0'>
                     <div className='text-white flex justify-center flex-col'>
                         <h1 className='text-6xl sm:text-7xl lg:text-8xl text-center pt-20 px-2.5'>Chapters</h1>
-                        <p className='text-2xl sm:text-3xl lg:text-4xl text-center pt-4 pb-20'>Time travel through the history of bitcoin  and learn bitcoin coding along the way.</p>
+                        <p className='text-2xl sm:text-3xl lg:text-4xl text-center pt-4 pb-20'>Explore the mysteries of Satoshi and learn about Bitcoin along the way.</p>
                     </div>
                     <section>
                         {/* @ts-expect-error Server Component */}
