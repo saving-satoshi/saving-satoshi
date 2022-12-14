@@ -3,7 +3,7 @@ import { siteConfig } from 'config/site'
 export const Footer = () => {
   return (
     <div className="left-0 bottom-0 w-screen">
-      <div className="m-auto flex items-center justify-center px-6 py-4 text-white">
+      <div className="flex flex-col items-center justify-center px-6 py-4 text-white sm:flex-row">
         <p className="p-1">
           An open-source production by the bitcoin community.
         </p>
