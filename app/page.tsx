@@ -1,13 +1,9 @@
-import { Footer } from "components/Footer";
-import { Hero } from "components/Hero";
-import { Navbar } from "components/NavBar";
+import { Hero } from 'components/Hero'
 
-export default function Home() {
+export default function IndexPage() {
   return (
-      <div className='w-screen h-screen flex flex-col'>
-        <Navbar />
-        <Hero/>
-        <Footer/>
-      </div>
+    <div className="flex h-screen w-screen">
+      <Hero />
+    </div>
   )
 }
