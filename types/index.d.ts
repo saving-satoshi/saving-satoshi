@@ -6,3 +6,13 @@ export type SiteConfig = {
     twitter: string
   }
 }
+
+export type NavItem = {
+  title: string
+  href: string
+  disabled?: boolean
+}
+
+export type SectionsConfig = {
+  mainNav: NavItem[]
+}
