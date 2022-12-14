@@ -24,7 +24,7 @@ const nunito = Nunito({
 export default function Fonts() {
     return (
         <style 
-            jsx="true"
+            jsx='true'
             global="true"
             dangerouslySetInnerHTML={{
                 __html: `
