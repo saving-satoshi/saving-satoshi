@@ -25,7 +25,7 @@ export default function Fonts() {
     return (
         <style 
             jsx={true}
-            global="true"
+            global={true}
             dangerouslySetInnerHTML={{
                 __html: `
                 :root {

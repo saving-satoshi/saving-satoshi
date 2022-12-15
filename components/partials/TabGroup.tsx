@@ -22,14 +22,15 @@ export const TabGroup = ({ chapter, items }: { chapter: Chapter, items: Item[] }
   return (
     <div className="flex grow grid grid-cols-1 mt-6">
       <div className='flex grow gap-2' >
-        {items.map((item, idx) => (
+        {items.map((item, index) => (
           <button
+            key={index}
             className={clsx('flex justify-center text-center w-auto px-4 text-lg font-nunito font-bold min-w-[140px]', {
               'text-white text-opacity-75 border-2 border-black/25 hover:text-opacity-50 transition ease-in-out duration-150':
-                toggleState !== idx,
-              'bg-black bg-opacity-25 border-0 border-black/25 py-[2px] text-white': toggleState == idx,
+                toggleState !== index,
+              'bg-black bg-opacity-25 border-0 border-black/25 py-[2px] text-white': toggleState == index,
             })
-            } onClick={() => toggleTab(idx)}>
+            } onClick={() => toggleTab(index)}>
             {item.text}
           </button>
         ))}
