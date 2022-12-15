@@ -1,8 +1,8 @@
-import React from 'react';
-import { usePathname } from 'next/navigation';
+import React from 'react'
+import { usePathname } from 'next/navigation'
 
 export function AddressBar() {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
     <div className="items-center px-5 py-3">
@@ -11,30 +11,33 @@ export function AddressBar() {
           <>
             {pathname
               .split('/')
-              .slice(2,4)
+              .slice(2, 4)
               .map((segment, index) => {
                 return (
                   <React.Fragment key={segment}>
-                    {index == 0  && <p
-                      key={segment}
-                      className='px-0.5 text-lg text-white/50 leading-none'
-                    >
-                      {segment}
-                    </p> }
-                    {index >= 1  && <p
-                      key={segment}
-                      className='px-0.5 text-2xl text-white leading-none'
-                    >
-                      {segment}
-                    </p> }
+                    {index == 0 && (
+                      <p
+                        key={segment}
+                        className="px-0.5 text-lg leading-none text-white/50"
+                      >
+                        {segment}
+                      </p>
+                    )}
+                    {index >= 1 && (
+                      <p
+                        key={segment}
+                        className="px-0.5 text-2xl leading-none text-white"
+                      >
+                        {segment}
+                      </p>
+                    )}
                   </React.Fragment>
-                );
+                )
               })}
           </>
         ) : null}
       </div>
-      <div>
-        </div>
+      <div></div>
     </div>
-  );
+  )
 }
