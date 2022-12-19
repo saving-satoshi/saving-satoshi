@@ -9,7 +9,7 @@ export const ChallengeList = ({ challenges }) => {
     <div className="justify-stretch mt-6 flex w-full grow items-start font-nunito text-white">
       {challengesData ? (
         <ul className="grid w-full items-start">
-          {challenges.map((challenge, index) => (
+          {challengesData.map((challenge, index) => (
             <ListItem key={index + 1} position={index + 1} title={challenge.title} slug={challenge.slug} />
           ))}
         </ul>
