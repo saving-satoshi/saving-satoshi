@@ -41,6 +41,7 @@ export const SaveProgressButton = (props) => {
   const [code, _] = useState(randomHex(64))
 
   let [copied, setCopied] = useState(false)
+  let [avatar, setAvatar] = useState<number>()
 
   function copy() {
     navigator.clipboard.writeText(code)
@@ -89,50 +90,22 @@ export const SaveProgressButton = (props) => {
         <h2 className="mb-4 text-xl font-bold">Choose an avatar</h2>
 
         <div className="mb-5 flex cursor-pointer justify-between">
+          {[1, 2, 3, 4, 5].map((i) => (
           <div className="flex flex-col items-center">
             <img
-              src={'/assets/avatars/1.png'}
+              src={`/assets/avatars/${i}.png`}
               alt="avatar"
-              className="h-20 w-20 rounded-full"
+              onClick={() => setAvatar(i)}
+              className={`h-20 w-20 rounded-full ${avatar === i ? 'border-2 border-blue-500' : ''}`}
             />
           </div>
-          <div className="flex flex-col items-center">
-            <img
-              src={'/assets/avatars/2.png'}
-              alt="avatar"
-              className="h-20 w-20 rounded-full"
-            />
-          </div>
-          <div className="flex flex-col items-center">
-            <img
-              src={'/assets/avatars/3.png'}
-              alt="avatar"
-              className="h-20 w-20 rounded-full"
-            />
-          </div>
-          <div className="flex flex-col items-center">
-            <img
-              src={'/assets/avatars/4.png'}
-              alt="avatar"
-              className="h-20 w-20 rounded-full"
-            />
-          </div>
-          <div className="flex flex-col items-center">
-            <img
-              src={'/assets/avatars/5.png'}
-              alt="avatar"
-              className="h-20 w-20 rounded-full"
-            />
-          </div>
+          ))}
         </div>
 
         <h2 className="mb-4 text-xl font-bold">Back up your personal code</h2>
 
         <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
           <code className="whitespace-pre-wrap break-all">{code}</code>
-          {/* <button className="bg-[#233346] text-white rounded-md px-4 py-2 mt-4 w-full">
-            Copy
-          </button> */}
           {copied ? (
             <button
               className="mt-4 w-full rounded-md bg-green-500 px-4 py-2 text-green-800"
@@ -155,7 +128,7 @@ export const SaveProgressButton = (props) => {
           recovered if you lose it.
         </p>
         <button
-          onClick={copy}
+          onClick={() => props.onConfirm({ code, avatar })}
           className="mt-4 w-full rounded-md border border-white px-4 py-2 text-white"
         >
           I’ve copied and backed up my code
