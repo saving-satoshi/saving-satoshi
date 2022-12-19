@@ -1,71 +1,73 @@
-import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files'
+import {
+  ComputedFields,
+  defineDocumentType,
+  makeSource,
+} from 'contentlayer/source-files'
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
-
 
 // fields to be calculated on the fly
 // TODO add dates (creation, update)
 const computedFields: ComputedFields = {
   slug: {
-    type: "string",
+    type: 'string',
     resolve: (doc) => `/${doc._raw.flattenedPath}`,
   },
   slugAsParams: {
-    type: "string",
-    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    type: 'string',
+    resolve: (doc) => doc._raw.flattenedPath.split('/').slice(1).join('/'),
   },
 }
 
-
 // Pages contains different pages that are not part of the main
 // content (Chapters, Lessons) e.g: About, terms, privacy, contibuting, etc.
-const Pages = defineDocumentType( () => ({
+const Pages = defineDocumentType(() => ({
   name: 'Page',
   filePathPattern: '**/pages/*.mdx',
   fields: {
     title: {
       type: 'string',
       description: 'page title',
-      required: true
+      required: true,
     },
     subtitle: {
       type: 'string',
       description: 'page subtitle',
-      required: false
+      required: false,
     },
   },
-  computedFields
+  computedFields,
 }))
 
 // Special document that contains all the parts needed for
 // chapter introductions (A title, a related image URL and some descriptive text)
-const Introduction = defineDocumentType( () => ({
+const Introduction = defineDocumentType(() => ({
   name: 'Introduction',
   filePathPattern: '**/introductions/*.mdx',
   fields: {
-    title: { 
+    title: {
       type: 'string',
       description: 'Section title',
-      required: true 
+      required: true,
     },
-    image: { 
-      type: 'string', 
+    image: {
+      type: 'string',
       description: 'Associated image',
-      required: true 
-    }
+      required: true,
+    },
   },
-  computedFields
+  computedFields,
 }))
 
-// Lesson content 
-const Lesson = defineDocumentType( () => ({
+// Lesson content
+const Lesson = defineDocumentType(() => ({
   name: 'Lesson',
   filePathPattern: '**/lessons/*.mdx',
   fields: {
-    title: { 
+    title: {
       type: 'string',
       description: 'Lesson/Challenge title',
-      required: true 
+      required: true,
     },
     // TODO add this type as nested
     contentType: {
@@ -74,51 +76,50 @@ const Lesson = defineDocumentType( () => ({
       options: ['lesson', 'challenge', 'end'],
       default: 'lesson',
     },
-    image: { 
-      type: 'string', 
+    image: {
+      type: 'string',
       description: 'Associated image',
-      required: false 
-    }
+      required: false,
+    },
   },
-  computedFields
+  computedFields,
 }))
 
-
 // Chapter Overview
-const Chapter = defineDocumentType( () =>({
+const Chapter = defineDocumentType(() => ({
   name: 'Chapter',
   filePathPattern: '**/chapters/*.mdx',
   fields: {
-      title: { 
-        type: 'string',
-        description: 'Chapter title',
-        required: true 
-      },
-      image: { 
-        type: 'string', 
-        description: 'Associated image',
-        required: true 
-      },
-      position: { 
-        type: 'number',
-        description: 'Chapter index',
-        required: true 
-      },
-      lessons: {
-        type: 'list',
-        of: Lesson,
-        required: false,
-      },
-      intro: {
-        type: 'list',
-        of: Introduction,
-        required: true,
-      },
-  }, 
-  computedFields
+    title: {
+      type: 'string',
+      description: 'Chapter title',
+      required: true,
+    },
+    image: {
+      type: 'string',
+      description: 'Associated image',
+      required: true,
+    },
+    position: {
+      type: 'number',
+      description: 'Chapter index',
+      required: true,
+    },
+    lessons: {
+      type: 'list',
+      of: Lesson,
+      required: false,
+    },
+    intro: {
+      type: 'list',
+      of: Introduction,
+      required: true,
+    },
+  },
+  computedFields,
 }))
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Lesson, Introduction, Chapter,],
+  documentTypes: [Lesson, Introduction, Chapter],
 })
