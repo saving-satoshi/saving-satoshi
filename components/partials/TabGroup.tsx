@@ -27,19 +27,19 @@ export const TabGroup = ({
   return (
     <div className="mt-6 flex grid grow grid-cols-1">
       <div className="flex grow gap-2">
-        {items.map((item, idx) => (
+        {items.map((item, index) => (
           <button
-            key={idx}
+            key={index}
             className={clsx(
               'flex w-auto min-w-[140px] justify-center px-4 text-center font-nunito text-lg font-bold',
               {
                 'border-2 border-black/25 text-white text-opacity-75 transition duration-150 ease-in-out hover:text-opacity-50':
-                  toggleState !== idx,
+                  toggleState !== index,
                 'border-0 border-black/25 bg-black bg-opacity-25 py-[2px] text-white':
-                  toggleState == idx,
+                  toggleState == index,
               }
             )}
-            onClick={() => toggleTab(idx)}
+            onClick={() => toggleTab(index)}
           >
             {item.text}
           </button>
@@ -48,7 +48,7 @@ export const TabGroup = ({
       <div className="flex grow">
         {toggleState == 0 && <Overview chapter={chapter}></Overview>}
         {toggleState == 1 && (
-          <ChallengeList challenges={chapter.lessons}></ChallengeList>
+          <ChallengeList challenges={chapter.lessons} path={chapter.slug} ></ChallengeList>
         )}
       </div>
     </div>
