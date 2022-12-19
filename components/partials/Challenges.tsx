@@ -1,4 +1,4 @@
-import { allLessons } from 'contentlayer/generated'
+import { allLessons, Lesson } from 'contentlayer/generated'
 import Link from 'next/link'
 import { ListItem } from './ListItem'
 
@@ -10,7 +10,7 @@ export const ChallengeList = ({ challenges }) => {
       {challengesData ? (
         <ul className="grid w-full items-start">
           {challenges.map((challenge, index) => (
-            <ListItem key={index + 1} pos={index + 1} title={challenge.title} slug={challenge.slug} />
+            <ListItem key={index + 1} position={index + 1} title={challenge.title} slug={challenge.slug} />
           ))}
         </ul>
       ) : (
