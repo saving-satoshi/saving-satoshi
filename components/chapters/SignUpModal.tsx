@@ -8,10 +8,13 @@ const Secp256k1 = require('@lionello/secp256k1-js')
 
 export const SignUpModal = (props) => {
   function generateKeyPair() {
-    const privateKeyBuf = crypto.randomBytes(32)
-    const privateKey = Secp256k1.uint256(privateKeyBuf, 16)
-
-    const publicKey = Secp256k1.generatePublicKeyFromPrivateKeyData(privateKey);
+    let publicKey = null;
+    let privateKey = null;
+    do {
+      const privateKeyBuf = crypto.randomBytes(32)
+      privateKey = Secp256k1.uint256(privateKeyBuf, 16)
+      publicKey = Secp256k1.generatePublicKeyFromPrivateKeyData(privateKey);
+    } while (!publicKey || privateKey.gte(Secp256k1.uint256("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141", 16)))
 
     return {
       privateKey,
