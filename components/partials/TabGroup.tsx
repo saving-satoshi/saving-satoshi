@@ -48,7 +48,7 @@ export const TabGroup = ({
       <div className="flex grow">
         {toggleState == 0 && <Overview chapter={chapter}></Overview>}
         {toggleState == 1 && (
-          <ChallengeList challenges={chapter.lessons}></ChallengeList>
+          <ChallengeList challenges={chapter.lessons} path={chapter.slug} ></ChallengeList>
         )}
       </div>
     </div>

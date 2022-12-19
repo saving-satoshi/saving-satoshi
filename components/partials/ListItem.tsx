@@ -1,10 +1,11 @@
 import clsx from 'clsx'
 import Link from "next/link"
 
-export const ListItem = ({ position, title, slug }) => {
+export const ListItem = ({ position, title, slug, path }) => {
+  const href = path + '/' + slug
   return (
     <Link
-      href={slug}
+      href={href}
       className={clsx(
         'justify-left flex w-full px-[15px] py-[11px] font-cbrush text-xl transition duration-150 ease-in-out hover:bg-black/20',
         {
