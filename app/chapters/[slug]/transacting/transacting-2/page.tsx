@@ -46,7 +46,16 @@ export default function Genesispt2() {
   }
 
   function onSignUp(data) {
-    console.log(data);
+    localStorage.setItem('user', JSON.stringify({
+      publicKey: data.keyPair.publicKey,
+      avatar: data.avatar,
+      progress: {
+        chapter: 'transacting',
+        lesson: 'transacting-2',
+      }
+    }))
+
+    setOpenModal(false)
   }
 
   return (
