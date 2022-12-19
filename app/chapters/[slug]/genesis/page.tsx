@@ -76,15 +76,15 @@ export default function Genesis() {
                 className: 'bg-transparent',
                 placeholder: '_',
                 style: {
-                  'font-size': '20px',
+                  fontSize: '20px',
                   width: '20px',
                   height: '20px',
                   margin: '0px',
-                  'border-radius': '0px',
-                  'text-align': 'center',
-                  'justify-content': 'space-evenly',
+                  borderRadius: '0px',
+                  textAlign: 'center',
+                  justifyContent: 'space-evenly',
                   outline: 'none',
-                  'font-family': 'var(--space-mono-font)',
+                  fontFamily: 'var(--space-mono-font)',
                 },
               }}
               inputRegExp={/^[a-zA-Z0-9_.-]*$/}
