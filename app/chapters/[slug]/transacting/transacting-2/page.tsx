@@ -46,7 +46,7 @@ export default function Genesispt2() {
   }
 
   function onSignUp(data) {
-    localStorage.setItem('user', JSON.stringify({
+    window.localStorage.setItem('user', JSON.stringify({
       publicKey: data.keyPair.publicKey,
       avatar: data.avatar,
       progress: {
