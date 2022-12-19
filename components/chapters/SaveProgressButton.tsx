@@ -1,54 +1,54 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import Modal from "react-modal";
+import { useState } from 'react'
+import Modal from 'react-modal'
 
 export const SaveProgressButton = (props) => {
-  const [modalIsOpen, setIsOpen] = useState(props.open);
+  const [modalIsOpen, setIsOpen] = useState(props.open)
 
   function closeModal() {
-    setIsOpen(false);
+    setIsOpen(false)
   }
 
   function openModal() {
-    setIsOpen(true);
+    setIsOpen(true)
   }
 
   function randomHex(length) {
-    let result = "";
-    let characters = "0123456789abcdef";
-    let charactersLength = characters.length;
+    let result = ''
+    let characters = '0123456789abcdef'
+    let charactersLength = characters.length
     for (var i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      result += characters.charAt(Math.floor(Math.random() * charactersLength))
     }
-    return result;
+    return result
   }
 
   const customStyles = {
     content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      backgroundColor: "#32455D",
-      color: "#fff",
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      backgroundColor: '#32455D',
+      color: '#fff',
       width: 550,
     },
-  };
+  }
 
-  const [code, _] = useState(randomHex(64));
+  const [code, _] = useState(randomHex(64))
 
-  let [copied, setCopied] = useState(false);
+  let [copied, setCopied] = useState(false)
 
   function copy() {
-    navigator.clipboard.writeText(code);
-    setCopied(true);
+    navigator.clipboard.writeText(code)
+    setCopied(true)
 
     setTimeout(() => {
-        setCopied(false);
-    }, 2000);
+      setCopied(false)
+    }, 2000)
   }
 
   return (
@@ -60,7 +60,7 @@ export const SaveProgressButton = (props) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <div className="flex justify-end float-right">
+        <div className="float-right flex justify-end">
           <button onClick={closeModal}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -79,85 +79,88 @@ export const SaveProgressButton = (props) => {
           </button>
         </div>
 
-        <h2 className="text-xl mb-4 font-bold">Want to save your progress?</h2>
-        <p className="text-sm mb-5">
+        <h2 className="mb-4 text-xl font-bold">Want to save your progress?</h2>
+        <p className="mb-5 text-sm">
           Copy and store a simple code to save and load your progress on any
           device and browser. If you already have a code, load your progress
           here.
         </p>
 
-        <h2 className="text-xl mb-4 font-bold">Choose an avatar</h2>
+        <h2 className="mb-4 text-xl font-bold">Choose an avatar</h2>
 
-        <div className="flex cursor-pointer justify-between mb-5">
+        <div className="mb-5 flex cursor-pointer justify-between">
           <div className="flex flex-col items-center">
             <img
-              src={"/assets/avatars/1.png"}
+              src={'/assets/avatars/1.png'}
               alt="avatar"
-              className="w-20 h-20 rounded-full"
+              className="h-20 w-20 rounded-full"
             />
           </div>
           <div className="flex flex-col items-center">
             <img
-              src={"/assets/avatars/2.png"}
+              src={'/assets/avatars/2.png'}
               alt="avatar"
-              className="w-20 h-20 rounded-full"
+              className="h-20 w-20 rounded-full"
             />
           </div>
           <div className="flex flex-col items-center">
             <img
-              src={"/assets/avatars/3.png"}
+              src={'/assets/avatars/3.png'}
               alt="avatar"
-              className="w-20 h-20 rounded-full"
+              className="h-20 w-20 rounded-full"
             />
           </div>
           <div className="flex flex-col items-center">
             <img
-              src={"/assets/avatars/4.png"}
+              src={'/assets/avatars/4.png'}
               alt="avatar"
-              className="w-20 h-20 rounded-full"
+              className="h-20 w-20 rounded-full"
             />
           </div>
           <div className="flex flex-col items-center">
             <img
-              src={"/assets/avatars/5.png"}
+              src={'/assets/avatars/5.png'}
               alt="avatar"
-              className="w-20 h-20 rounded-full"
+              className="h-20 w-20 rounded-full"
             />
           </div>
         </div>
 
-        <h2 className="text-xl mb-4 font-bold">Back up your personal code</h2>
+        <h2 className="mb-4 text-xl font-bold">Back up your personal code</h2>
 
-        <pre className="border-dotted border-2 border-white/25 p-4 rounded-md flex flex-col mb-5">
-          <code className="break-all whitespace-pre-wrap">{code}</code>
+        <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
+          <code className="whitespace-pre-wrap break-all">{code}</code>
           {/* <button className="bg-[#233346] text-white rounded-md px-4 py-2 mt-4 w-full">
             Copy
           </button> */}
           {copied ? (
             <button
-              className="bg-green-500 text-green-800 rounded-md px-4 py-2 mt-4 w-full"
+              className="mt-4 w-full rounded-md bg-green-500 px-4 py-2 text-green-800"
               onClick={copy}
             >
-                Copied!
+              Copied!
             </button>
-            ) : (
+          ) : (
             <button
-                className="bg-[#233346] text-white rounded-md px-4 py-2 mt-4 w-full"
-                onClick={copy}
+              className="mt-4 w-full rounded-md bg-[#233346] px-4 py-2 text-white"
+              onClick={copy}
             >
-                Copy
+              Copy
             </button>
-            )}
+          )}
         </pre>
 
-        <p className="text-sm mt-5">
+        <p className="mt-5 text-sm">
           All set? Code copied and backed-up? Make sure your do, as it can’t be
           recovered if you lose it.
         </p>
-        <button onClick={copy} className="border border-white text-white rounded-md px-4 py-2 mt-4 w-full">
+        <button
+          onClick={copy}
+          className="mt-4 w-full rounded-md border border-white px-4 py-2 text-white"
+        >
           I’ve copied and backed up my code
         </button>
       </Modal>
     </>
-  );
-};
+  )
+}

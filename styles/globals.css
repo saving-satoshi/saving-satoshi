@@ -3,26 +3,24 @@
 @tailwind utilities;
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 .homepage-img {
-    background-image: url('https://saving-satoshi.s3.amazonaws.com/main-image.png');
+  background-image: url('https://saving-satoshi.s3.amazonaws.com/main-image.png');
 }
 
 .ch1-background {
-    background-image: url('https://saving-satoshi.s3.amazonaws.com/ch2.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url('https://saving-satoshi.s3.amazonaws.com/ch2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .blur {
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    backdrop-filter: blur(75px);
-    background: rgba(46, 64, 90, 0.75);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  backdrop-filter: blur(75px);
+  background: rgba(46, 64, 90, 0.75);
 }
-
-
 
 /* TODO check if there's a better way to add
 styles to contentlayer innerhtml
@@ -32,134 +30,129 @@ modules, extending theme perhaps ????
 /* Contentlayer InnerHtml classes */
 
 .intro > h1 {
-    font-size: 3rem; 
-    font-family: var(--cbrush-font);
-    font-style: normal;
-    line-height: 100%;
+  font-size: 3rem;
+  font-family: var(--cbrush-font);
+  font-style: normal;
+  line-height: 100%;
 }
 
 .intro > h2 {
-    font-size: 1.375rem; 
-    font-family: var(--nunito-font);
-    font-weight: 900;
-    line-height: 140%;
-    padding-top: 0.625rem;
+  font-size: 1.375rem;
+  font-family: var(--nunito-font);
+  font-weight: 900;
+  line-height: 140%;
+  padding-top: 0.625rem;
 }
 
 .intro > p {
-    font-size: 1.375rem; 
-    font-family: var(--nunito-font);
-    font-style: normal;
-    line-height: 140%;
-    padding-top: 0.625rem;
+  font-size: 1.375rem;
+  font-family: var(--nunito-font);
+  font-style: normal;
+  line-height: 140%;
+  padding-top: 0.625rem;
 }
 
 .genesis > h1 {
-    font-size: 1.5rem; 
-    font-family: var(--nunito-font);
-    font-style: normal;
-    line-height: 100%;
-    font-weight: 700;
-    padding-top: 0.625rem;
+  font-size: 1.5rem;
+  font-family: var(--nunito-font);
+  font-style: normal;
+  line-height: 100%;
+  font-weight: 700;
+  padding-top: 0.625rem;
 }
 
 .genesis > p {
-    font-size: 1.125rem; 
-    font-family: var(--nunito-font);
-    font-style: normal;
-    line-height: 140%;
-    padding-top: 0.625rem;
+  font-size: 1.125rem;
+  font-family: var(--nunito-font);
+  font-style: normal;
+  line-height: 140%;
+  padding-top: 0.625rem;
 }
 
 .genesis > pre,
 .genesis-p2 > pre {
-    padding: 10px;
-    border: 1px dashed white;
-    margin-top: 15px;
+  padding: 10px;
+  border: 1px dashed white;
+  margin-top: 15px;
 }
 
 .genesis-p2 > h1 {
-    font-size: 1.5rem; 
-    font-family: var(--nunito-font);
-    font-style: normal;
-    line-height: 100%;
-    font-weight: 700;
-    padding-top: 0.625rem;
+  font-size: 1.5rem;
+  font-family: var(--nunito-font);
+  font-style: normal;
+  line-height: 100%;
+  font-weight: 700;
+  padding-top: 0.625rem;
 }
 
 .genesis-p2 > p {
-    font-size: 1.375rem; 
-    font-family: var(--nunito-font);
-    font-style: normal;
-    line-height: 140%;
-    padding-top: 0.625rem;
+  font-size: 1.375rem;
+  font-family: var(--nunito-font);
+  font-style: normal;
+  line-height: 140%;
+  padding-top: 0.625rem;
 }
 
 .fix-grow-issue [data-nextjs-scroll-focus-boundary] {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-
 @layer base {
-    body {
-      @apply bg-base-blue;
-    }
+  body {
+    @apply bg-base-blue;
+  }
 }
 
 /* Overriding terminal styles */
 div.react-terminal-wrapper {
-    padding: 20px;
+  padding: 20px;
 }
 
 div.react-terminal-wrapper.react-terminal-light {
-    background: transparent;
-    display: block;
-    width: auto;
-    font-family: var(--space-mono-font);
-    font-size: 18px;
-    width: 50vw;
-
+  background: transparent;
+  display: block;
+  width: auto;
+  font-family: var(--space-mono-font);
+  font-size: 18px;
+  width: 50vw;
 }
 
 div.react-terminal-wrapper:after {
-    content: '';
-    display: none;
+  content: '';
+  display: none;
 }
 
 div.react-terminal-input[data-terminal-prompt]:before {
-    content: '>';
-    color: white;
-    opacity: 50%;
-  }
+  content: '>';
+  color: white;
+  opacity: 50%;
+}
 
 div.react-terminal-input:before {
-    margin-right: 0.75em;
-    content: '>';
-  }
-  
+  margin-right: 0.75em;
+  content: '>';
+}
 
 div.react-terminal-wrapper:before {
-    content: '';
-    display: none;
+  content: '';
+  display: none;
+}
 
-  }
-
-  div.react-terminal-wrapper:focus-within .react-terminal-active-input:after {
-    content: '▋';
-    color: white;
-    opacity: 50%;
-    font-family: monospace;
-    font-family: var(--space-mono-font);
-    -webkit-animation: blink 1s infinite;
-            animation: blink 1s infinite;
-  }
-
+div.react-terminal-wrapper:focus-within .react-terminal-active-input:after {
+  content: '▋';
+  color: white;
+  opacity: 50%;
+  font-family: monospace;
+  font-family: var(--space-mono-font);
+  -webkit-animation: blink 1s infinite;
+  animation: blink 1s infinite;
+}
 
 div.react-terminal-line {
-    white-space: unset!important;
-    line-break: anywhere;
-    color: white;
-    opacity: 50%;
+  white-space: unset !important;
+  line-break: anywhere;
+  color: white;
+  opacity: 50%;
 }

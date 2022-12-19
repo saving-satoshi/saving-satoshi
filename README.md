@@ -2,11 +2,11 @@
 
 Saving Satoshi is a light-hearted, first point of contact for developers of all ages that want to learn how bitcoin works.
 
-At its core, this is a video game. But if you look beneath the surface, it's much more than that. It’s an interactive science fiction story designed to inspire a generation to fall in love with bitcoin. The goal is to be a 0-to-1 experience that transmits the cultural values of bitcoin. We do this by immersing learners into a fictional world that they navigate with technical lessons. 
+At its core, this is a video game. But if you look beneath the surface, it's much more than that. It’s an interactive science fiction story designed to inspire a generation to fall in love with bitcoin. The goal is to be a 0-to-1 experience that transmits the cultural values of bitcoin. We do this by immersing learners into a fictional world that they navigate with technical lessons.
 
 Gameplay is made up of a mix of technical text and code-based challenges. The challenges should be doable for anyone with basic coding skills.
 
-Learners will complete test-driven, repl-based lessons, while learning some bitcoin history along the way. Beginners can breeze through the basics while more advanced learners can dive into the harder challenges and easter eggs. 
+Learners will complete test-driven, repl-based lessons, while learning some bitcoin history along the way. Beginners can breeze through the basics while more advanced learners can dive into the harder challenges and easter eggs.
 
 Bitcoin is serious, but this game is designed to be fun. We hope you enjoy what we have created and welcome contributions.
 
@@ -45,7 +45,7 @@ To run this project locally:
 
 This project was started during the [Bitcoin Designathon](http://event.bitcoin.design) in October 2022. It then continued with the [bolt.fun Legends of Lightning Tournament](https://makers.bolt.fun/project/saving-satoshi).
 
-Our first goal is to launch a V1 that provides a great basic experience around 2 chapters with lessons. Then we'd like to get feedback from the community to ensure that we are building something that resonates. Ideally, we'd then like to make necessary adjustments and open up contributions to everyone. 
+Our first goal is to launch a V1 that provides a great basic experience around 2 chapters with lessons. Then we'd like to get feedback from the community to ensure that we are building something that resonates. Ideally, we'd then like to make necessary adjustments and open up contributions to everyone.
 
 Some ideas we have for the future
 
