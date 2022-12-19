@@ -40,7 +40,7 @@ export const SignUpModal = (props) => {
       contentLabel="Example Modal">
 
         <div className="float-right flex justify-end">
-          <button onClick={props.onClose}>
+          <button onClick={props.onClose} aria-label="Close">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
