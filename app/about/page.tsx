@@ -1,7 +1,7 @@
 import { Footer } from 'components/ui/Footer'
 import { Navbar } from 'components/ui/NavBar'
 import { sectionsConfig } from 'config/sections'
-import Link from 'next/link'
+import { BoxButton } from 'components/ui/BoxButton'
 
 export default function About() {
   return (
@@ -119,12 +119,10 @@ export default function About() {
           <p className="pt-4 pb-8 text-center font-nunito text-xl">
             Now be quick, Satoshi needs you.
           </p>
-          <Link
+          <BoxButton
+            text="Start your journey"
             href="/chapters"
-            className="w-1/2 bg-white py-2.5 px-12 text-center text-2xl text-base-blue transition duration-150 ease-in-out hover:opacity-80"
-          >
-            Start your journey
-          </Link>
+          />
         </div>
       </div>
       <Footer />

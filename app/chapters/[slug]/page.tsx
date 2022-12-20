@@ -5,7 +5,7 @@ import {
   Introduction,
   allIntroductions,
 } from 'contentlayer/generated'
-import Link from 'next/link'
+import { BoxButton } from 'components/ui/BoxButton'
 
 //TODO define better load
 
@@ -36,12 +36,10 @@ export default async function Page({ params }) {
               className="intro pt-8"
             ></div>
             <div className="mt-8">
-              <Link
+              <BoxButton
+                text="Start"
                 href="/chapters/chapter-1/genesis"
-                className="inline-block w-full justify-center bg-white py-2.5 px-12 font-nunito text-2xl font-bold text-base-blue transition duration-150 ease-in-out hover:opacity-75 md:w-auto"
-              >
-                Start
-              </Link>
+              />
             </div>
           </div>
         </div>
