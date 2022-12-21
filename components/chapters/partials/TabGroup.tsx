@@ -1,15 +1,15 @@
 import { Tab } from './Tab'
-
-export type Item = {
-  slug: string
-  id: number
-}
+import { allLessons, Lesson } from 'contentlayer/generated'
 
 export const TabGroup = ({ path, items }: { path: string; items: Item[] }) => {
+  const itemSlugs = items.map(item => item.slug)
+  const challengesData = items ? allLessons.filter((challenge: Lesson) => itemSlugs.indexOf(challenge.slugAsParams) !== -1) : null
+  const count = challengesData.length
+
   return (
     <nav className="flex items-stretch">
-      {items.map((item) => (
-        <Tab key={path + item.slug + item.id} item={item} path={path} />
+      {challengesData.map((challenge, index) => (
+        <Tab key={index} count={count} index={index} challenge={challenge} path={path} />
       ))}
     </nav>
   )
