@@ -1,17 +1,20 @@
 import clsx from 'clsx'
+import Link from "next/link"
 
-export const ListItem = ({ pos, title }) => {
+export const ListItem = ({ position, title, slug, path }) => {
+  const href = path + '/' + slug
   return (
-    <li
+    <Link
+      href={href}
       className={clsx(
         'justify-left flex w-full px-[15px] py-[11px] font-cbrush text-xl transition duration-150 ease-in-out hover:bg-black/20',
         {
-          'border-t border-white/25': pos !== 1,
+          'border-t border-white/25': position !== 1,
         }
       )}
     >
-      <span className="pr-1 opacity-50">{pos + '. '}</span>
+      <span className="pr-1 opacity-50">{position + '. '}</span>
       {title}
-    </li>
+    </Link>
   )
 }
