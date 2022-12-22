@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { TabData } from './TabGroup'
+import { TabData } from './Tabs'
 
 export const Tab = ({
   activeId,
@@ -27,7 +27,7 @@ export const Tab = ({
             stretch
         }
       )}
-      disbled={tabData.disabled}
+      disabled={tabData.disabled}
     >
       {tabData.text}
     </button>
