@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import Link from "next/link"
 
-export const ListItem = ({ position, title, slug, path }) => {
+export const ChallengeItem = ({ position, title, slug, path }) => {
   const href = path + '/' + slug
   return (
     <Link
