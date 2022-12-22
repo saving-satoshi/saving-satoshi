@@ -24,14 +24,14 @@ export const Input = ({ amount }: { amount: number }) => {
         className: 'bg-transparent',
         placeholder: '_',
         style: {
-          'font-size': '20px',
+          fontSize: '20px',
           width: '20px',
           height: '20px',
-          'font-family': `${smono.style.fontFamily}`,
+          fontFamily: `${smono.style.fontFamily}`,
           margin: '0px',
-          'border-radius': '0px',
-          'text-align': 'center',
-          'justify-content': 'space-evenly',
+          borderRadius: '0px',
+          textAlign: 'center',
+          justifyContent: 'space-evenly',
         },
       }}
       inputRegExp={/^[a-zA-Z0-9_.-]*$/}
