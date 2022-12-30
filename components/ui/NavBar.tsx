@@ -11,14 +11,28 @@ import Image from 'next/image';
 export const Navbar = ({ items }: { items: NavItem[] }) => {
   const [openSignInModal, setOpenSignInModal] = useState(false)
   const [loggedIn, setLoggedIn] = useState(false)
+  const [user, setUser] = useState<any>({})
 
   useEffect(() => {
-    setLoggedIn(window.localStorage.getItem('loggedIn') ? true : false)
+    const logged = !!window.localStorage.getItem('loggedIn');
+    setLoggedIn(logged);
   }, [])
+
+  useEffect(() => {
+    const user = window.localStorage.getItem('user');
+    if (user) {
+      setUser(JSON.parse(user));
+    }
+  }, [loggedIn])
 
   function onLogin() {
     setOpenSignInModal(false)
     setLoggedIn(true)
+  }
+
+  function onLogout() {
+    window.localStorage.removeItem('loggedIn');
+    setLoggedIn(false);
   }
 
   return (
@@ -63,7 +77,7 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
           </svg>
         </button>}
         
-        {loggedIn && <button className="text-grey-300 w-10 h-10 ml-4 cursor-pointer">
+        {loggedIn && <button onClick={() => setOpenSignInModal(true)} className="text-grey-300 w-10 h-10 ml-4 cursor-pointer">
             <Image
               src={`/assets/avatars/${JSON.parse(window.localStorage.getItem('user')).avatar}.png`}
               alt="Avatar"
@@ -76,7 +90,14 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
 
       </div>
 
-      <LoginModal onLogin={onLogin} open={openSignInModal} onClose={() => setOpenSignInModal(false)} />
+      <LoginModal 
+        signedIn={loggedIn}
+        user={user}
+        onLogin={onLogin}
+        onLogout={onLogout}
+        open={openSignInModal}
+        onClose={() => setOpenSignInModal(false)} 
+      />
     </div>
   )
 }
