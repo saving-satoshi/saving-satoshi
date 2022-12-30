@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export const BoxButton = ({ href, text, title, style, size, disabled, external, classes, onClick }: { href?: string, text: string, title?: string, style?: string, size?: string, disabled?: boolean, external?: boolean, classes?:string, onClick?: any }) => {
+export const BoxButton = ({ href, children, title, style, size, disabled, external, classes, onClick }: { href?: string, children: any, title?: string, style?: string, size?: string, disabled?: boolean, external?: boolean, classes?:string, onClick?: any }) => {
 
   const isLink = href !== undefined
   let className = "w-full inline-block justify-center px-12 text-center font-nunito font-bold transition duration-150 ease-in-out md:w-auto"
@@ -64,7 +64,7 @@ export const BoxButton = ({ href, text, title, style, size, disabled, external, 
         rel={external ? 'noreferrer nofollow' : null}
         target={external ? '_blank' : null}
       >
-        {text}
+        {children}
       </Link>
     )
   } else {
@@ -76,7 +76,7 @@ export const BoxButton = ({ href, text, title, style, size, disabled, external, 
         disabled={disabled}
         title={title}
       >
-        {text}
+        {children}
       </button>
     )
   }

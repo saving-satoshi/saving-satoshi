@@ -120,9 +120,8 @@ export default function About() {
             Now be quick, Satoshi needs you.
           </p>
           <BoxButton
-            text="Start your journey"
             href="/chapters"
-          />
+          >Start your journey</BoxButton>
         </div>
       </div>
       <Footer />

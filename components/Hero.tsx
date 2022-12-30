@@ -12,10 +12,10 @@ export const Hero = () => {
         </p>
         <div className="flex grid grid-cols-1 justify-center pt-8  pb-2 sm:pb-10 md:grid-cols-2 md:space-x-5">
           <div className="flex items-center justify-center sm:justify-end">
-            <BoxButton href="/chapters" text="Start your journey" />
+            <BoxButton href="/chapters">Start your journey</BoxButton>
           </div>
           <div className="flex justify-center pt-4 sm:justify-start md:pt-0">
-            <BoxButton href="/about" style="outline" text="Tell me more" />
+            <BoxButton href="/about" style="outline">Tell me more</BoxButton>
           </div>
         </div>
       </div>

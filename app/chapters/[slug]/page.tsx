@@ -37,9 +37,8 @@ export default async function Page({ params }) {
             ></div>
             <div className="mt-8">
               <BoxButton
-                text="Start"
                 href="/chapters/chapter-1/genesis"
-              />
+              >Start</BoxButton>
             </div>
           </div>
         </div>

@@ -23,10 +23,9 @@ export default async function Transacting() {
             dangerouslySetInnerHTML={{ __html: transacting.body.html }}
           ></div>
           <BoxButton
-            text="Continue"
             href="/chapters/chapter-1/transacting/transacting-1"
             classes="mt-8"
-          />
+          >Continue</BoxButton>
         </div>
       </div>
     </div>

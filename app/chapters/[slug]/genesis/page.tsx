@@ -53,11 +53,10 @@ export default function Genesis() {
             dangerouslySetInnerHTML={{ __html: genesis.body.html }}
           ></div>
           <BoxButton
-            text="View Block 0"
             href="https://blockstream.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
             external={true}
             classes="mt-8"
-          />
+          >View Block 0</BoxButton>
         </div>
       </div>
       <hr className="border-1 h-1 w-screen border-white/25"></hr>
@@ -115,11 +114,10 @@ export default function Genesis() {
             </h2>
           </div>
           <BoxButton
-            text="Next"
             href="/chapters/chapter-1/genesis/genesis-pt2"
             disabled={!correctAnswer}
             size="big"
-          />
+          >Next</BoxButton>
         </div>
       </div>
     </div>

@@ -53,10 +53,9 @@ export default function Genesispt2() {
           ></div>
           <div className="mt-8 flex">
             <BoxButton
-              text="View transaction"
               href="https://blockstream.info/tx/75764fd0c95b4c17b728d10f7555509adfc0789ddc47683c45aeddd1c34727f8?expand"
               external={true}
-            />
+            >View transaction</BoxButton>
           </div>
         </div>
       </div>
@@ -113,11 +112,10 @@ export default function Genesispt2() {
             </h2>
           </div>
           <BoxButton
-            text="Next"
             href="/chapters/chapter-1/transacting/transacting-2"
             disabled={!correctAnswer}
             size="big"
-          />
+          >Next</BoxButton>
         </div>
       </div>
     </div>

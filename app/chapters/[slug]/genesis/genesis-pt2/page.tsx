@@ -91,11 +91,10 @@ export default function Genesispt2() {
                 Run the script
               </button>
               <BoxButton
-                text="Next"
                 href="/chapters/chapter-1/transacting/"
                 disabled={!success}
                 size="big"
-              />
+              >Next</BoxButton>
             </div>
           </div>
         </div>

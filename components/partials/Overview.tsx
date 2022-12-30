@@ -14,10 +14,10 @@ export const Overview = ({ chapter }: { chapter: Chapter }) => {
         <BoxButton
           href={chapter.slug}
           disabled={!chapter.lessons}
-          text={chapter.lessons
-                ? `Start chapter ${chapter.position}`
-                : 'Coming soon'}
-        />
+        >{chapter.lessons
+          ? `Start chapter ${chapter.position}`
+          : 'Coming soon'}
+        </BoxButton>
       </div>
     </div>
   )
