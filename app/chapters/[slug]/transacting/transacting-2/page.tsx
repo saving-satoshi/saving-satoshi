@@ -3,7 +3,6 @@
 import { allLessons, Lesson } from 'contentlayer/generated'
 import { useState } from 'react'
 import Terminal from 'components/Terminal'
-import Link from 'next/link'
 import clsx from 'clsx'
 import { SaveProgressButton } from 'components/chapters/SaveProgressButton'
 

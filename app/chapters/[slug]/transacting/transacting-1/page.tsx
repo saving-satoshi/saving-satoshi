@@ -2,7 +2,7 @@
 
 import { Input } from 'components/Input'
 import { allLessons, Lesson } from 'contentlayer/generated'
-import Link from 'next/link'
+import { BoxButton } from 'components/ui/BoxButton'
 import { useState } from 'react'
 import clsx from 'clsx'
 import RICIBs from 'react-individual-character-input-boxes'
@@ -52,14 +52,10 @@ export default function Genesispt2() {
             dangerouslySetInnerHTML={{ __html: genesis.body.html }}
           ></div>
           <div className="mt-8 flex">
-            <Link
+            <BoxButton
               href="https://blockstream.info/tx/75764fd0c95b4c17b728d10f7555509adfc0789ddc47683c45aeddd1c34727f8?expand"
-              target="_blank"
-              rel="noreferrer nofollow"
-              className="w-full justify-center bg-white py-2.5 px-12 font-nunito text-xl font-bold text-base-blue transition duration-150 ease-in-out hover:opacity-75 md:w-auto"
-            >
-              View transaction
-            </Link>
+              external={true}
+            >View transaction</BoxButton>
           </div>
         </div>
       </div>
@@ -115,18 +111,11 @@ export default function Genesispt2() {
                 : 'Complete the challenge above to continue'}
             </h2>
           </div>
-          <Link
+          <BoxButton
             href="/chapters/chapter-1/transacting/transacting-2"
-            className={clsx(
-              'w-full justify-center bg-white py-4 px-12 font-nunito text-[21px] font-bold text-base-blue transition duration-150 ease-in-out md:w-auto',
-              {
-                'pointer-events-none opacity-50': !correctAnswer,
-                'pointer-events-auto hover:opacity-75': correctAnswer,
-              }
-            )}
-          >
-            Next
-          </Link>
+            disabled={!correctAnswer}
+            size="big"
+          >Next</BoxButton>
         </div>
       </div>
     </div>

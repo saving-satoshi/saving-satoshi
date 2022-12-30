@@ -2,8 +2,8 @@
 
 import { allLessons, Lesson } from 'contentlayer/generated'
 import Terminal from 'components/Terminal'
+import { BoxButton } from 'components/ui/BoxButton'
 import { useState } from 'react'
-import Link from 'next/link'
 import clsx from 'clsx'
 import { TerminalOutput } from 'react-terminal-ui'
 
@@ -90,18 +90,11 @@ export default function Genesispt2() {
                 </span>
                 Run the script
               </button>
-              <Link
+              <BoxButton
                 href="/chapters/chapter-1/transacting/"
-                className={clsx(
-                  'w-full justify-center bg-white py-5 px-12 text-center font-nunito text-[21px] font-bold text-base-blue transition duration-150 ease-in-out md:w-auto',
-                  {
-                    'pointer-events-none opacity-50': !success,
-                    'pointer-events-auto hover:opacity-75': success,
-                  }
-                )}
-              >
-                Next
-              </Link>
+                disabled={!success}
+                size="big"
+              >Next</BoxButton>
             </div>
           </div>
         </div>
