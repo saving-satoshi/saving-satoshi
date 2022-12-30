@@ -22,7 +22,8 @@
     "react-dom": "18.2.0",
     "react-individual-character-input-boxes": "^1.2.1",
     "react-modal": "^3.16.1",
-    "react-terminal-ui": "^1.0.0"
+    "react-terminal-ui": "^1.0.0",
+    "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",

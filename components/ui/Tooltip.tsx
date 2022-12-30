@@ -1,5 +1,6 @@
-
+import React, { useRef } from 'react';
 import clsx from 'clsx'
+import { CSSTransition } from 'react-transition-group'
 
 /*
 
@@ -20,6 +21,13 @@ Position options:
 
  */
 
+const transitionStyles = {
+  entering: { opacity: 1 },
+  entered:  { opacity: 1 },
+  exiting:  { opacity: 0 },
+  exited:  { opacity: 0 }
+};
+
 export const Tooltip = ({
     title,
     text,
@@ -31,7 +39,9 @@ export const Tooltip = ({
     show: boolean,
     position?: string
   }) => {
-    let classes = 'absolute bg-black border border-white pointer-events-none shadow-lg shadow-black/25'
+    const nodeRef = useRef(null);
+
+    let classes = 'absolute bg-black border border-white pointer-events-none shadow-lg shadow-black/25 transition ease-in-out duration-250'
     let arrowDirection = null
     let arrowClasses = "relative flex flex-col items-center px-5 py-2 after:content-[''] after:w-3 after:h-3 after:absolute after:bg-black"
 
@@ -96,22 +106,22 @@ export const Tooltip = ({
     }
 
     return (
-      <div
-          className={clsx(classes, {
-            'hidden': !show,
-          })}
-        >
-        <div className={arrowClasses}>
-          {title && <p className="
-            text-m
-            text-white/50
-            leading-none
-            whitespace-nowrap
-          ">{ title }</p>}
-          <p className="
-            whitespace-nowrap
-          ">{ text }</p>
-        </div>
-      </div>
+      <CSSTransition in={show} nodeRef={nodeRef} timeout={100} unmountOnExit>
+        {state => (
+          <div className={classes} ref={nodeRef} style={transitionStyles[state]}>
+            <div className={arrowClasses}>
+              {title && <p className="
+                text-m
+                text-white/50
+                leading-none
+                whitespace-nowrap
+              ">{ title }</p>}
+              <p className="
+                whitespace-nowrap
+              ">{ text }</p>
+            </div>
+          </div>
+        )}
+      </CSSTransition>
     )
   }
