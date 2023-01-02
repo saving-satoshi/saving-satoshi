@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --back: #324760;
+}
+
+.-theme-purple {
+  --back: #4D2859;
+}
+
+.-theme-red {
+  --back: #6F272D;
+}
+
+.-theme-brown {
+  --back: #524445;
+}
+
 html {
   scroll-behavior: smooth;
 }
