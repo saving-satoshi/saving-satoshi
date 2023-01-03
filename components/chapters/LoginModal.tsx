@@ -72,7 +72,7 @@ export const LoginModal = (props) => {
   return (
     <Modal
       isOpen={props.open}
-      className="top-1/2 left-1/2 outline-none p-5 transform -translate-x-1/2 -translate-y-1/2 absolute w-[32rem] rounded-lg shadow-lg bg-[var(--back)] text-white"
+      className="font-nunito top-1/2 left-1/2 outline-none p-5 transform -translate-x-1/2 -translate-y-1/2 absolute w-[32rem] rounded-lg shadow-lg bg-[var(--back)] text-white"
       contentLabel="Login Modal"
     >
       <div className="float-right flex justify-end">
@@ -99,14 +99,14 @@ export const LoginModal = (props) => {
         <>
           <img src="/assets/avatars/1.png" width={80} height={80} />
           <h2 className="mb-4 mt-5 text-3xl font-bold">Load your progress</h2>
-          <p className="mb-5 text-xl">
+          <p className="mb-5">
             Enter your personal code below to restore your chapter and challenge progress, as well as your avatar. <a href="#" className='text-white underline'>No code yet?</a>
           </p>
 
           <div className="flex flex-col justify-between">
             <div className="flex w-full">
               <input
-                className="bg-transparent outline-none text-white border-dotted border-white border-2 p-1 w-full text-lg"
+                className="font-space-mono bg-transparent outline-none text-white border-dotted border-white border-2 p-1 w-full text-lg"
                 type="text"
                 placeholder="Enter your code"
                 value={userPrivateKey}
@@ -146,7 +146,7 @@ export const LoginModal = (props) => {
             className="rounded-full mb-2"
           />
           <h2 className="mb-2 text-3xl font-bold">Load your progress</h2>
-          <p className="mb-5 text-xl">
+          <p className="mb-5">
             Your progress is stored in this browser. Use the code below to restore it after taking a break.
           </p>
 
@@ -183,7 +183,7 @@ export const LoginModal = (props) => {
             className="rounded-full mb-2"
           />
           <h2 className="mb-2 text-3xl font-bold">Progress loaded</h2>
-          <p className="mb-5 text-xl">
+          <p className="mb-5">
             {`You're all set to continue with Chapter ${user.progress.chapter}, Challenge ${user.progress.lesson}.`}
           </p>
 
