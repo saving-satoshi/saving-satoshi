@@ -12,6 +12,7 @@
     "test": "yarn prettier:check && yarn lint"
   },
   "dependencies": {
+    "@lionello/secp256k1-js": "^1.1.0",
     "@next/font": "^13.0.4",
     "clsx": "^1.2.1",
     "contentlayer": "latest",
