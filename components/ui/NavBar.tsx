@@ -7,6 +7,7 @@ import { NavItem } from 'types'
 import { useEffect, useState } from 'react'
 import { LoginModal } from 'components/chapters/LoginModal';
 import Image from 'next/image';
+import { Avatar } from './Avatar';
 
 export const Navbar = ({ items }: { items: NavItem[] }) => {
   const [openSignInModal, setOpenSignInModal] = useState(false)
@@ -78,12 +79,9 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
         </button>}
         
         {loggedIn && <button onClick={() => setOpenSignInModal(true)} className="text-grey-300 w-10 h-10 ml-4 cursor-pointer">
-            <Image
-              src={`/assets/avatars/${JSON.parse(window.localStorage.getItem('user')).avatar}.png`}
-              alt="Avatar"
-              width={30}
-              height={30}
-              className="rounded-full"
+            <Avatar
+              avatar={JSON.parse(window.localStorage.getItem('user')).avatar}
+              size={30}
           />
         </button>}
         </nav>

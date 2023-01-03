@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Modal from 'react-modal'
 import crypto from 'crypto';
 import Secp256k1 from '@lionello/secp256k1-js';
+import { Avatar } from 'components/ui/Avatar';
 
 export const LoginModal = (props) => {
   const [loaded, setLoaded] = useState(false);
@@ -97,7 +98,7 @@ export const LoginModal = (props) => {
       <div className="p-4">
       {!loaded && !props.signedIn && (
         <>
-          <img src="/assets/avatars/1.png" width={80} height={80} />
+          <Avatar avatar={1} size={80} />
           <h2 className="mb-4 mt-5 text-3xl font-bold">Load your progress</h2>
           <p className="mb-5">
             Enter your personal code below to restore your chapter and challenge progress, as well as your avatar. <a href="#" className='text-white underline'>No code yet?</a>
@@ -138,14 +139,11 @@ export const LoginModal = (props) => {
         </>)}
       {props.signedIn && (
         <>
-          <Image
-            alt="avatar"
-            src={`/assets/avatars/${props.user.avatar}.png`}
-            width={80}
-            height={80}
-            className="rounded-full mb-2"
+          <Avatar
+            avatar={props.user.avatar}
+            size={80}
           />
-          <h2 className="mb-2 text-3xl font-bold">Load your progress</h2>
+          <h2 className="mt-2 mb-2 text-3xl font-bold">Load your progress</h2>
           <p className="mb-5">
             Your progress is stored in this browser. Use the code below to restore it after taking a break.
           </p>
@@ -175,14 +173,11 @@ export const LoginModal = (props) => {
 
       {loaded && !props.signedIn && (
         <>
-          <Image
-            alt="avatar"
-            src={`/assets/avatars/${user.avatar}.png`}
-            width={80}
-            height={80}
-            className="rounded-full mb-2"
+          <Avatar
+            avatar={user.avatar}
+            size={80}
           />
-          <h2 className="mb-2 text-3xl font-bold">Progress loaded</h2>
+          <h2 className="mt-2 mb-2 text-3xl font-bold">Progress loaded</h2>
           <p className="mb-5">
             {`You're all set to continue with Chapter ${user.progress.chapter}, Challenge ${user.progress.lesson}.`}
           </p>
