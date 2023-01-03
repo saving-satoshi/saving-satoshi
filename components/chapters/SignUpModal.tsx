@@ -1,5 +1,6 @@
 'use client'
 
+import { Avatar } from 'components/ui/Avatar'
 import Image from 'next/image'
 import { useState } from 'react'
 import Modal from 'react-modal'
@@ -61,13 +62,11 @@ export const SignUpModal = (props) => {
       <div className="mb-5 flex cursor-pointer justify-between">
         {[1, 2, 3, 4, 5].map((i) => (
         <div className="flex flex-col items-center" key={i}>
-          <Image
-            src={`/assets/avatars/${i}.png`}
-            alt="avatar"
-            width={80}
-            height={80}
+          <Avatar
+            avatar={i}
+            size={80}
             onClick={() => setAvatar(i)}
-            className={`h-20 w-20 rounded-full ${avatar === i ? 'border-2 border-blue-500' : ''}`}
+            classes={`h-20 w-20 rounded-full ${avatar === i ? 'border-2 border-blue-500' : ''}`}
           />
         </div>
         ))}
