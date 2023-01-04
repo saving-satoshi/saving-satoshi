@@ -6,6 +6,7 @@ import { BoxButton } from 'components/ui/BoxButton'
 import { useState } from 'react'
 import clsx from 'clsx'
 import { TerminalOutput } from 'react-terminal-ui'
+import PlayIcon from 'public/assets/icons/play.svg'
 
 //Am i going to to this boilerplate for every view?
 // TODO make a factory (or other pattnern) to populate component data
@@ -75,18 +76,7 @@ export default function Genesispt2() {
             <div className="flex border-t border-white/25 pt-4 pl-6 pb-[30px] text-[18px] sm:flex-col md:flex-row md:pl-5 md:pt-0 md:pb-0">
               <button className="flex grow items-center gap-2 transition duration-150 ease-in-out hover:opacity-75">
                 <span className="flex h-7 w-7 items-center justify-center rounded bg-white">
-                  <svg
-                    width="10"
-                    height="15"
-                    viewBox="0 0 10 15"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M0.5 13.4194V1.58062C0.5 0.742119 1.46993 0.275946 2.1247 0.799757L9.52391 6.71913C10.0243 7.11946 10.0243 7.88054 9.52391 8.28087L2.1247 14.2002C1.46993 14.7241 0.5 14.2579 0.5 13.4194Z"
-                      className="fill-black"
-                    />
-                  </svg>
+                  <PlayIcon className="text-black" />
                 </span>
                 Run the script
               </button>
