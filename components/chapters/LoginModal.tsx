@@ -5,6 +5,8 @@ import { useState } from 'react'
 import Modal from 'react-modal'
 import crypto from 'crypto';
 import Secp256k1 from '@lionello/secp256k1-js';
+import Close from 'public/assets/icons/close.svg'
+import Warning from 'public/assets/icons/warning.svg'
 
 export const LoginModal = (props) => {
   const [loaded, setLoaded] = useState(false);
@@ -77,20 +79,7 @@ export const LoginModal = (props) => {
     >
       <div className="float-right flex justify-end">
         <button onClick={props.onClose} aria-label="Close">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          <Close className="h-6 w-6" />
         </button>
       </div>
 
@@ -119,11 +108,7 @@ export const LoginModal = (props) => {
             <div className="flex w-full mt-4 mb-4">
               {userPrivateKey && !checkValidKey() && (
                 <div className='flex items-center'>
-                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="30" height="30" rx="15" fill="#F3241D" fill-opacity="0.25"/>
-                    <circle cx="15" cy="10.25" r="1.25" fill="#F3241D"/>
-                    <rect x="14" y="13" width="2" height="8" fill="#F3241D"/>
-                  </svg>
+                  <Warning className="fill-red-500" />
                   <p className="text-red-500 text-sm ml-2">Sorry, that’s not the right code for the progress stored in this browser.</p>
                 </div>
               )}

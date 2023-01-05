@@ -7,6 +7,7 @@ import { NavItem } from 'types'
 import { useEffect, useState } from 'react'
 import { LoginModal } from 'components/chapters/LoginModal';
 import Image from 'next/image';
+import User from 'public/assets/icons/avatar.svg';
 
 export const Navbar = ({ items }: { items: NavItem[] }) => {
   const [openSignInModal, setOpenSignInModal] = useState(false)
@@ -58,23 +59,7 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
         ) : null}
         {}
         {!loggedIn && <button onClick={() => setOpenSignInModal(true)} className="text-grey-300 w-10 h-10 ml-4 cursor-pointer">
-          <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_393_10135)">
-            <g clip-path="url(#clip1_393_10135)">
-            <circle cx="15" cy="32.5" r="10" stroke="white" stroke-width="1.5"/>
-            <circle cx="15" cy="13.5" r="5" stroke="white" stroke-width="1.5"/>
-            </g>
-            <rect x="0.75" y="1.25" width="28.5" height="28.5" rx="14.25" stroke="white" stroke-width="1.5"/>
-            </g>
-            <defs>
-            <clipPath id="clip0_393_10135">
-            <rect width="30" height="30" fill="white" transform="translate(0 0.5)"/>
-            </clipPath>
-            <clipPath id="clip1_393_10135">
-            <rect y="0.5" width="30" height="30" rx="15" fill="white"/>
-            </clipPath>
-            </defs>
-          </svg>
+            <User />
         </button>}
         
         {loggedIn && <button onClick={() => setOpenSignInModal(true)} className="text-grey-300 w-10 h-10 ml-4 cursor-pointer">

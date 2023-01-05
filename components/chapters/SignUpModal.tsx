@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Modal from 'react-modal'
 const crypto = require('crypto')
 const Secp256k1 = require('@lionello/secp256k1-js')
+import Close from 'public/assets/icons/close.svg'
 
 export const SignUpModal = (props) => {
   function generateKeyPair() {
@@ -44,20 +45,7 @@ export const SignUpModal = (props) => {
 
         <div className="float-right flex justify-end">
           <button onClick={props.onClose} aria-label="Close">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <Close className="h-6 w-6" />
           </button>
         </div>
 
