@@ -28,6 +28,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
+    "@svgr/webpack": "^6.5.1",
     "@types/react": "18.0.25",
     "autoprefixer": "^10.4.13",
     "eslint": "latest",

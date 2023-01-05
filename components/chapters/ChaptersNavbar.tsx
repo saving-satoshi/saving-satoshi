@@ -5,6 +5,7 @@ import { AddressBar } from './AddressBar'
 import { TabGroup } from './partials/TabGroup'
 import { Item } from './partials/TabGroup'
 import { useRouter } from 'next/navigation'
+import ArrowLeftIcon from 'public/assets/icons/arrow-left.svg'
 
 export const ChaptersNavbar = ({ items, slug }) => {
   const router = useRouter()
@@ -17,20 +18,7 @@ export const ChaptersNavbar = ({ items, slug }) => {
             className="group items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
             onClick={() => router.back()}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="h-6 w-6 opacity-50 transition duration-100 ease-in-out group-hover:opacity-100"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
-              />
-            </svg>
+            <ArrowLeftIcon className="h-6 w-6 opacity-50 transition duration-100 ease-in-out group-hover:opacity-100" />
           </button>
           <AddressBar />
         </div>
