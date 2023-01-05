@@ -8,6 +8,7 @@ import Secp256k1 from '@lionello/secp256k1-js';
 import Close from 'public/assets/icons/close.svg'
 import Warning from 'public/assets/icons/warning.svg'
 import { Avatar } from 'components/ui/Avatar';
+import { BoxButton } from 'components/ui/BoxButton';
 
 export const LoginModal = (props) => {
   const [loaded, setLoaded] = useState(false);
@@ -109,7 +110,7 @@ export const LoginModal = (props) => {
               />
             </div>
             <div className="flex w-full mt-4">
-              <button disabled={!userPrivateKey} onClick={loadProgress} className={`border-white border-2 w-full p-1 text-xl ${!userPrivateKey && 'opacity-50'}`}>Load my progress</button>
+              <BoxButton full size='small' style='outline' disabled={!userPrivateKey || !checkValidKey()} onClick={loadProgress} classes={`border-white border-2 p-1 text-xl md:w-full ${!userPrivateKey && 'opacity-50'}`}>Load my progress</BoxButton>
             </div>
             <div className="flex w-full mt-4 mb-4">
               {userPrivateKey && !checkValidKey() && (
@@ -172,7 +173,7 @@ export const LoginModal = (props) => {
             {`You're all set to continue with Chapter ${user.progress.chapter}, Challenge ${user.progress.lesson}.`}
           </p>
 
-          <button onClick={props.onLogin} className="border-white border-2 w-full p-1 text-xl">Continue</button>
+          <BoxButton full size='small' style='outline' onClick={props.onLogin} classes='border-white border-2 p-1 text-xl'>Continue</BoxButton>
         </>
       )}
       </div>

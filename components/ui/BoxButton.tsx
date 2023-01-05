@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
-export const BoxButton = ({ href, children, title, style, size, disabled, external, classes, onClick }: { href?: string, children: any, title?: string, style?: string, size?: string, disabled?: boolean, external?: boolean, classes?:string, onClick?: any }) => {
+export const BoxButton = ({ href, children, title, style, size, disabled, external, classes, onClick, full }: { href?: string, children: any, title?: string, style?: string, size?: string, disabled?: boolean, external?: boolean, classes?:string, onClick?: any, full?: boolean }) => {
 
   const isLink = href !== undefined
-  let className = "w-full inline-block justify-center px-12 text-center font-nunito font-bold transition duration-150 ease-in-out md:w-auto"
+  let className = `inline-block justify-center px-12 text-center font-nunito font-bold transition duration-150 ease-in-out ${full ? 'w-full' : 'md:w-auto'}`;
 
   // Apply visual style classes
   if(style == 'outline') {
