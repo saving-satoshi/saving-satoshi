@@ -60,7 +60,6 @@ export default function Genesis() {
       )}
       {(!isSmallScreen || (isSmallScreen && activeTab == 'info')) && (
         <Info
-          isSmallScreen={isSmallScreen}
           genesis={genesis}
         />
       )}
