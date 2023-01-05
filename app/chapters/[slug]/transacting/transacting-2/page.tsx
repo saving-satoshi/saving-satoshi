@@ -4,7 +4,7 @@ import { allLessons, Lesson } from 'contentlayer/generated'
 import { useState } from 'react'
 import Terminal from 'components/Terminal'
 import clsx from 'clsx'
-import { SaveProgressButton } from 'components/chapters/SaveProgressButton'
+import { SignUpModal } from 'components/chapters/SignUpModal'
 import PlayIcon from 'public/assets/icons/play.svg'
 
 //Am i going to to this boilerplate for every view?
@@ -22,7 +22,8 @@ export default function Genesispt2() {
   const genesis = getTx2()
 
   const [lines, setLines] = useState([])
-  const [success, setSuccess] = useState(false)
+  const [openModal, setOpenModal] = useState(false)
+  const [success, setSuccess] = useState(false);
   const [answer, setAnswer] = useState('')
 
   function onInput(input) {
@@ -36,11 +37,16 @@ export default function Genesispt2() {
 
       if (scriptSigHex === '6a127461636f7320666f722065766572796f6e65') {
         setTimeout(() => {
+          setOpenModal(true)
           setSuccess(true)
         }, 1000)
         setAnswer(scriptSig)
       }
     }
+  }
+
+  function onSignUp(data) {
+    console.log(data);
   }
 
   return (
@@ -76,7 +82,7 @@ export default function Genesispt2() {
                 </span>
                 Run the script
               </button>
-              {success && <SaveProgressButton open={success} />}
+              <SignUpModal onConfirm={onSignUp} onClose={() => setOpenModal(false)} open={openModal} />
             </div>
           </div>
         </div>
