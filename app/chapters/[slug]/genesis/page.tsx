@@ -3,14 +3,12 @@
 import { allLessons, Lesson } from 'contentlayer/generated'
 import Link from 'next/link'
 import { BoxButton } from 'components/ui/BoxButton'
-import RICIBs from 'react-individual-character-input-boxes'
-import { useState } from 'react'
+import { Tabs } from 'components/ui/Tabs'
+import { useState, useEffect } from 'react'
 import clsx from 'clsx'
-
-// TODO use environment
-const inputAmount = 154
-const answer =
-  '04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73'
+import { useMediaQuery } from 'react-responsive'
+import { Info } from './info'
+import { Code } from './code'
 
 //Am i going to to this boilerplate for every view?
 // TODO make a factory (or other pattern) to populate component data
@@ -23,103 +21,56 @@ function getGenesis() {
 }
 
 export default function Genesis() {
+  const [hydrated, setHydrated] = useState(false);
+  const [activeTab, setActiveTab] = useState('info')
   const genesis = getGenesis()
-
-  const [correctAnswer, setCorrectAnswer] = useState(false)
-
-  function disableNext() {
-    setCorrectAnswer(false)
-  }
-
-  function enableNext() {
-    setCorrectAnswer(true)
-  }
-
-  // Todo create utils for repetitive validation
-  const validateInput = (string) => {
-    if (string == answer) {
-      enableNext()
-    } else {
-      disableNext()
+  const isSmallScreen = useMediaQuery({ query: '(max-width: 767px)' })
+  const tabData = [
+    {
+      id: 'info',
+      text: 'Info'
+    },
+    {
+      id: 'code',
+      text: 'Code',
     }
-  }
+  ]
 
-  return (
-    <div className="flex w-screen grow flex-col items-center justify-center justify-items-center px-6 lg:px-0">
-      <div className="flex w-screen grow items-center py-4 text-white lg:w-1/2">
-        <div className="content-center justify-items-center px-6 font-nunito lg:px-0">
-          <div
-            className="genesis"
-            dangerouslySetInnerHTML={{ __html: genesis.body.html }}
-          ></div>
-          <BoxButton
-            href="https://blockstream.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
-            external={true}
-            classes="mt-8"
-          >View Block 0</BoxButton>
-        </div>
-      </div>
-      <hr className="border-1 h-1 w-screen border-white/25"></hr>
-      <div className="flex grow items-center justify-center font-space-mono text-white lg:w-1/2">
-        <div className="content-center justify-items-center">
-          <h1 className="text-center text-xl">
-            Paste the ScriptSig HEX Representation
-          </h1>
-          <div className="w-full pt-8">
-            <RICIBs
-              amount={inputAmount}
-              autoFocus
-              handleOutputString={validateInput}
-              inputProps={{
-                className: 'bg-transparent',
-                placeholder: '_',
-                style: {
-                  fontSize: '20px',
-                  width: '20px',
-                  height: '20px',
-                  margin: '0px',
-                  borderRadius: '0px',
-                  textAlign: 'center',
-                  justifyContent: 'space-evenly',
-                  outline: 'none',
-                  fontFamily: 'var(--space-mono-font)',
-                },
-              }}
-              inputRegExp={/^[a-zA-Z0-9_.-]*$/}
-            />
-          </div>
-        </div>
-      </div>
-      <div className="w-screen border-t border-white/25 sm:pb-[30px] md:pb-[0px]">
-        <div className="flex items-stretch justify-between sm:flex-col md:flex-row">
-          <div
-            className={clsx(
-              'flex w-full items-center px-5 align-middle transition duration-150 ease-in-out',
-              {
-                'bg-success/25': correctAnswer,
-              }
-            )}
-          >
-            <h2
-              className={clsx(
-                'font-nunito text-[21px] text-white opacity-50 transition duration-150 ease-in-out',
-                {
-                  'opacity-100': correctAnswer,
-                }
-              )}
-            >
-              {correctAnswer
-                ? 'Challenge completed!'
-                : 'Complete the challenge above to continue'}
-            </h2>
-          </div>
-          <BoxButton
-            href="/chapters/chapter-1/genesis/genesis-pt2"
-            disabled={!correctAnswer}
-            size="big"
-          >Next</BoxButton>
-        </div>
-      </div>
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  return (hydrated && (
+    <div className="
+      flex
+      w-screen
+      grow
+      flex-col
+      items-center
+      justify-center
+    ">
+      {isSmallScreen && (
+        <Tabs
+          items={tabData}
+          activeId={activeTab}
+          onChange={setActiveTab}
+          classes="px-4 py-2 w-full"
+          stretch={true}
+        />
+      )}
+      {(!isSmallScreen || (isSmallScreen && activeTab == 'info')) && (
+        <Info
+          genesis={genesis}
+        />
+      )}
+      {!isSmallScreen && (
+        <hr className="border-1 h-1 w-screen border-white/25"></hr>
+      )}
+      {(!isSmallScreen || (isSmallScreen && activeTab == 'code')) && (
+        <Code
+          isSmallScreen={isSmallScreen}
+        />
+      )}
     </div>
-  )
+  ))
 }
