@@ -1,10 +1,8 @@
 import { BoxButton } from 'components/ui/BoxButton'
 
 export const Info = ({
-  isSmallScreen,
   genesis
 }: {
-  isSmallScreen: boolean,
   genesis: any
 }) => {
   return (
