@@ -3,25 +3,29 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import Modal from 'react-modal'
+const crypto = require('crypto')
+const Secp256k1 = require('@lionello/secp256k1-js')
 
 export const SignUpModal = (props) => {
-  function randomHex(length) {
-    let result = ''
-    let characters = '0123456789abcdef'
-    let charactersLength = characters.length
-    for (var i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength))
-    }
-    return result
+  function generateKeyPair() {
+    const privateKeyBuf = crypto.randomBytes(32)
+    const privateKey = Secp256k1.uint256(privateKeyBuf, 16)
+
+    const publicKey = Secp256k1.generatePublicKeyFromPrivateKeyData(privateKey);
+
+    return {
+      privateKey,
+      publicKey
+    };
   }
 
-  const [code, _] = useState(randomHex(64))
+  const [keyPair, _] = useState(generateKeyPair());
 
   let [copied, setCopied] = useState(false)
   let [avatar, setAvatar] = useState(1)
 
   function copy() {
-    navigator.clipboard.writeText(code)
+    navigator.clipboard.writeText(keyPair.privateKey.toString(16))
     setCopied(true)
 
     setTimeout(() => {
@@ -81,7 +85,7 @@ export const SignUpModal = (props) => {
       <h2 className="mb-4 text-xl font-bold">Back up your personal code</h2>
 
       <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
-        <code className="whitespace-pre-wrap break-all">{code}</code>
+        <code className="whitespace-pre-wrap break-all">{keyPair.privateKey.toString(16)}</code>
         {copied ? (
           <button
             className="mt-4 w-full rounded-md bg-green-500 px-4 py-2 text-green-800"
@@ -104,7 +108,7 @@ export const SignUpModal = (props) => {
         recovered if you lose it.
       </p>
       <button
-        onClick={() => props.onConfirm({ code, avatar })}
+        onClick={() => props.onConfirm({ keyPair, avatar })}
         className="mt-4 w-full rounded-md border border-white px-4 py-2 text-white"
       >
         I’ve copied and backed up my code
