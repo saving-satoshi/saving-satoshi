@@ -29,9 +29,9 @@ export const BoxButton = ({ href, children, title, style, size, disabled, extern
     className += ''
 
     if(disabled) {
-      className += ' bg-white/50 text-black/50'
+      className += ' bg-white text-[var(--back)] opacity-50'
     } else {
-      className += ' bg-white text-black hover:bg-white/75'
+      className += ' bg-white text-[var(--back)] hover:bg-white/75'
     }
   }
 

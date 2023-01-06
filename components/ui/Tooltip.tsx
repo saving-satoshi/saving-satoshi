@@ -41,9 +41,9 @@ export const Tooltip = ({
   }) => {
     const nodeRef = useRef(null);
 
-    let classes = 'absolute bg-black border border-white pointer-events-none shadow-lg shadow-black/25 transition ease-in-out duration-250'
+    let classes = 'absolute bg-[var(--back)] border border-white pointer-events-none shadow-lg shadow-black/25 transition ease-in-out duration-250'
     let arrowDirection = null
-    let arrowClasses = "relative flex flex-col items-center px-5 py-2 after:content-[''] after:w-3 after:h-3 after:absolute after:bg-black"
+    let arrowClasses = "relative flex flex-col items-center px-5 py-2 after:content-[''] after:w-3 after:h-3 after:absolute after:bg-[var(--back)]"
 
     if(position == 'above-left') {
       classes += ' -top-full left-0'
