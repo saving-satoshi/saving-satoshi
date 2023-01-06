@@ -121,5 +121,5 @@ const Chapter = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Lesson, Introduction, Chapter],
+  documentTypes: [Pages, Lesson, Introduction, Chapter],
 })
