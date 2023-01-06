@@ -41,7 +41,7 @@ export const SignUpModal = (props) => {
   return (
     <Modal
       isOpen={props.open}
-      className="top-1/2 left-1/2 outline-none p-5 transform -translate-x-1/2 -translate-y-1/2 absolute w-[32rem] rounded-lg shadow-lg bg-[#32455D] text-white"
+      className="top-1/2 left-1/2 outline-none p-5 transform -translate-x-1/2 -translate-y-1/2 absolute w-[32rem] rounded-lg shadow-lg bg-[var(--back)] text-white"
       contentLabel="Example Modal">
 
         <div className="float-right flex justify-end">
@@ -85,7 +85,7 @@ export const SignUpModal = (props) => {
           </button>
         ) : (
           <button
-            className="mt-4 w-full rounded-md bg-[#233346] px-4 py-2 text-white"
+            className="mt-4 w-full rounded-md bg-black  bg-opacity-25 px-4 py-2 text-white"
             onClick={copy}
           >
             Copy
