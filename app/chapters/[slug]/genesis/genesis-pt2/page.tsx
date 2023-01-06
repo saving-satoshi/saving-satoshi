@@ -7,6 +7,8 @@ import { useState } from 'react'
 import clsx from 'clsx'
 import { TerminalOutput } from 'react-terminal-ui'
 import PlayIcon from 'public/assets/icons/play.svg'
+import { Tips } from 'components/Tips'
+import { Tip } from 'components/Tip'
 
 //Am i going to to this boilerplate for every view?
 // TODO make a factory (or other pattnern) to populate component data
@@ -50,11 +52,18 @@ export default function Genesispt2() {
   return (
     <div className="justify-stretch grid w-screen grow grid-cols-1 px-6 md:grid-cols-2 lg:px-0">
       <div className="flex w-full justify-center text-white">
-        <div className="ccontent-center justify-items-start px-1 py-6 sm:px-12">
+        <div className="ccontent-center justify-items-start px-1 py-6 sm:px-12 flex flex-col">
           <div
             className="genesis"
             dangerouslySetInnerHTML={{ __html: genesis.body.html }}
           ></div>
+          <Tips>
+            <Tip title='How do I find the scriptSigHex value again?'>
+              This is the ScriptSig value you found in the previous challenge. Press the button below to copy it to your clipboard.
+              <br/>
+              <BoxButton classes='mt-2' size='small'>Copy ScriptSig value</BoxButton>
+            </Tip>
+          </Tips>
         </div>
       </div>
       <div className="flex grow flex-col border-white/25 font-space-mono text-white md:border-l">
