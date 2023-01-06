@@ -7,6 +7,8 @@ import { useState } from 'react'
 import clsx from 'clsx'
 import { TerminalOutput } from 'react-terminal-ui'
 import PlayIcon from 'public/assets/icons/play.svg'
+import { Tips } from 'components/Tips'
+import { Tip } from 'components/Tip'
 import { FindChallengeBottomBar } from 'components/chapters/FindChallengeBottomBar'
 import { CopyButton } from 'components/ui/CopyButton'
 import { setUserProgress } from 'lib/user'
@@ -66,13 +68,22 @@ export default function Genesispt2() {
   return (
     <div className="justify-stretch grid w-screen grow grid-cols-1 px-6 md:grid-cols-2 lg:px-0">
       <div className="flex w-full justify-center text-white">
-        <div className="ccontent-center justify-items-start px-1 py-6 sm:px-12">
+        <div className="ccontent-center justify-items-start px-1 py-6 sm:px-12 flex flex-col">
           <div
             className="genesis"
             dangerouslySetInnerHTML={{ __html: genesis.body.html }}
           >
           </div>
           <CopyableCode code={'echo scriptSigHex | xxd -r -p'} language='shell'/>
+          <Tips>
+            <Tip title='What was the scriptSigHex value again?'>
+              This is the scriptSigHex value you found in the previous challenge. Press the button below to copy it to your clipboard.
+              <br/>
+              <CopyButton classes='mt-2' content={
+                '04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73'
+              }>Copy ScriptSigHex value</CopyButton>
+            </Tip>
+          </Tips>
         </div>
       </div>
       <div className="flex grow flex-col border-white/25 font-space-mono text-white md:border-l">
