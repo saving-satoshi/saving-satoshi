@@ -81,7 +81,7 @@ export const LoginModal = (props) => {
   return (
     <Modal
       isOpen={props.open}
-      className="font-nunito top-1/2 left-1/2 outline-none p-5 transform -translate-x-1/2 -translate-y-1/2 absolute w-[32rem] rounded-lg shadow-lg bg-[var(--back)] text-white"
+      className="font-nunito top-1/2 left-1/2 outline-none p-5 transform -translate-x-1/2 -translate-y-1/2 absolute w-[32rem] rounded-lg shadow-lg bg-back text-white"
       contentLabel="Login Modal"
     >
       <div className="float-right flex justify-end">

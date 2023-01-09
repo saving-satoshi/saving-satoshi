@@ -3,7 +3,7 @@ import { BoxButton } from './ui/BoxButton'
 export const Hero = () => {
   return (
     <div className="homepage-img -mt-20 flex grow items-end justify-center bg-cover bg-fixed bg-[-10em] md:bg-[0]">
-      <div className="flex w-screen flex-col justify-center bg-gradient-to-b from-base-blue/0 to-base-blue/100 p-10 font-cbrush text-white">
+      <div className="flex w-screen flex-col justify-center bg-gradient-to-b from-back/0 to-back/100 p-10 font-cbrush text-white">
         <h1 className="text-center text-6xl sm:text-7xl lg:text-8xl">
           Saving Satoshi
         </h1>
