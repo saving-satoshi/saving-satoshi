@@ -83,7 +83,7 @@ export default function Genesispt2() {
             </div>
             )}
             {success && (
-              <FindChallengeBottomBar next="/" input={"true"} expected={"true"} />
+              <FindChallengeBottomBar next="/chapters/chapter-1/done" input={"true"} expected={"true"} />
             )}
           </div>
         </div>
