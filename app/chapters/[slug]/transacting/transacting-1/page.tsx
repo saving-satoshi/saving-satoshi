@@ -94,7 +94,7 @@ export default function Genesispt2() {
             className={clsx(
               'flex w-full items-center px-5 align-middle transition duration-150 ease-in-out',
               {
-                'bg-success/25': correctAnswer,
+                'bg-green/25': correctAnswer,
               }
             )}
           >

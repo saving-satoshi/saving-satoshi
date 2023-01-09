@@ -104,7 +104,7 @@ export const Code = ({
             className={clsx(
               'flex w-full items-center align-middle transition duration-150 ease-in-out md:px-5',
               {
-                'bg-success/25': correctAnswer,
+                'bg-green/25': correctAnswer,
               }
             )}
           >

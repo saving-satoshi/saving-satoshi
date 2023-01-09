@@ -24,14 +24,23 @@ export const BoxButton = ({ href, children, title, style, size, disabled, extern
     } else {
       className += ' text-white hover:bg-black/50'
     }
+  } else if(style == 'green') {
+    // Green background with opacity, green text
+    className += ' bg-green/20'
+
+    if(disabled) {
+      className += ' text-green/50'
+    } else {
+      className += ' text-green hover:bg-green/25'
+    }
   } else {
     // Filled white background, dark text
     className += ''
 
     if(disabled) {
-      className += ' bg-white text-[var(--back)] opacity-50'
+      className += ' bg-white text-back opacity-50'
     } else {
-      className += ' bg-white text-[var(--back)] hover:bg-white/75'
+      className += ' bg-white text-back hover:bg-white/75'
     }
   }
 
@@ -43,6 +52,8 @@ export const BoxButton = ({ href, children, title, style, size, disabled, extern
   // Apply size classes
   if(size == 'small') {
     className += ' text-xl py-2.5'
+  } else if(size == 'tiny') {
+    className += ' text-sm py-2'
   } else if(size == 'big') {
     className += ' text-2xl py-4'
   } else {
