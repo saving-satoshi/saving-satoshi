@@ -6,6 +6,7 @@ import { BoxButton } from 'components/ui/BoxButton'
 import { useState } from 'react'
 import clsx from 'clsx'
 import RICIBs from 'react-individual-character-input-boxes'
+import { FindChallengeBottomBar, Status } from 'components/chapters/FindChallengeBottomBar'
 
 const inputAmount = 40
 const answer = '6a127461636f7320666f722065766572796f6e65'
@@ -24,24 +25,7 @@ function getTx2() {
 export default function Genesispt2() {
   const genesis = getTx2()
 
-  const [correctAnswer, setCorrectAnswer] = useState(false)
-
-  function disableNext() {
-    setCorrectAnswer(false)
-  }
-
-  function enableNext() {
-    setCorrectAnswer(true)
-  }
-
-  // Todo use a more nextjs13 way of validating
-  const validateInput = (string) => {
-    if (string == answer) {
-      enableNext()
-    } else {
-      disableNext()
-    }
-  }
+  const [userInput, setUserInput] = useState('')
 
   return (
     <div className="flex w-screen grow flex-col items-center px-6 lg:px-0">
@@ -67,7 +51,7 @@ export default function Genesispt2() {
             <RICIBs
               amount={inputAmount}
               autoFocus
-              handleOutputString={validateInput}
+              handleOutputString={str => setUserInput(str)}
               inputProps={{
                 className: 'bg-transparent',
                 placeholder: '_',
@@ -88,36 +72,7 @@ export default function Genesispt2() {
           </div>
         </div>
       </div>
-      <div className="w-screen border-t border-white/25">
-        <div className="flex items-center">
-          <div
-            className={clsx(
-              'flex w-full items-center px-5 align-middle transition duration-150 ease-in-out',
-              {
-                'bg-success/25': correctAnswer,
-              }
-            )}
-          >
-            <h2
-              className={clsx(
-                'font-nunito text-[21px] text-white opacity-50 transition duration-150 ease-in-out',
-                {
-                  'opacity-100': correctAnswer,
-                }
-              )}
-            >
-              {correctAnswer
-                ? 'Challenge completed!'
-                : 'Complete the challenge above to continue'}
-            </h2>
-          </div>
-          <BoxButton
-            href="/chapters/chapter-1/transacting/transacting-2"
-            disabled={!correctAnswer}
-            size="big"
-          >Next</BoxButton>
-        </div>
-      </div>
+      <FindChallengeBottomBar next="/chapters/chapter-1/transacting/transacting-2" full input={userInput} expected={answer} />
     </div>
   )
 }

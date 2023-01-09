@@ -7,6 +7,7 @@ import { useState } from 'react'
 import clsx from 'clsx'
 import { TerminalOutput } from 'react-terminal-ui'
 import PlayIcon from 'public/assets/icons/play.svg'
+import { FindChallengeBottomBar } from 'components/chapters/FindChallengeBottomBar'
 
 //Am i going to to this boilerplate for every view?
 // TODO make a factory (or other pattnern) to populate component data
@@ -73,19 +74,19 @@ export default function Genesispt2() {
                   : 'Waiting for you to write and run the script...'}
               </h2>
             </div>
-            <div className="flex border-t border-white/25 pt-4 pl-6 pb-[30px] text-[18px] sm:flex-col md:flex-row md:pl-5 md:pt-0 md:pb-0">
+            {!success && (
+            <div className="flex border-t h-16 border-white/25 pt-4 pl-6 pb-[30px] text-[18px] sm:flex-col md:flex-row md:pl-5 md:pt-0 md:pb-0">
               <button className="flex grow items-center gap-2 transition duration-150 ease-in-out hover:opacity-75">
                 <span className="flex h-7 w-7 items-center justify-center rounded bg-white">
                   <PlayIcon className="text-black" />
                 </span>
                 Run the script
               </button>
-              <BoxButton
-                href="/chapters/chapter-1/transacting/"
-                disabled={!success}
-                size="big"
-              >Next</BoxButton>
             </div>
+            )}
+            {success && (
+              <FindChallengeBottomBar input={"true"} expected={"true"} next="/chapters/chapter-1/transacting/" />
+            )}
           </div>
         </div>
       </div>
