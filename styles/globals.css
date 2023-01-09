@@ -4,6 +4,7 @@
 
 :root {
   --back: #324760;
+  --terminal-output: #3DCFEF;
 }
 
 .-theme-purple {
@@ -143,7 +144,7 @@ div.react-terminal-wrapper:after {
 div.react-terminal-input[data-terminal-prompt]:before {
   content: '>';
   color: white;
-  opacity: 50%;
+  opacity: 80%;
 }
 
 div.react-terminal-input:before {
@@ -159,7 +160,6 @@ div.react-terminal-wrapper:before {
 div.react-terminal-wrapper:focus-within .react-terminal-active-input:after {
   content: '▋';
   color: white;
-  opacity: 50%;
   font-family: monospace;
   font-family: var(--space-mono-font);
   -webkit-animation: blink 1s infinite;
@@ -169,6 +169,9 @@ div.react-terminal-wrapper:focus-within .react-terminal-active-input:after {
 div.react-terminal-line {
   white-space: unset !important;
   line-break: anywhere;
+}
+
+div.react-terminal-active-input {
   color: white;
-  opacity: 50%;
+  opacity: 0.8;
 }
