@@ -2,6 +2,7 @@ import { BoxButton } from 'components/ui/BoxButton'
 import { useState } from 'react'
 import RICIBs from 'react-individual-character-input-boxes'
 import clsx from 'clsx'
+import { FindChallengeBottomBar, Status } from 'components/chapters/FindChallengeBottomBar'
 
 // TODO use environment
 const inputAmount = 154
@@ -13,24 +14,7 @@ export const Code = ({
 }: {
   isSmallScreen: boolean
 }) => {
-  const [correctAnswer, setCorrectAnswer] = useState(false)
-
-  function disableNext() {
-    setCorrectAnswer(false)
-  }
-
-  function enableNext() {
-    setCorrectAnswer(true)
-  }
-
-  // Todo create utils for repetitive validation
-  const validateInput = (string) => {
-    if (string == answer) {
-      enableNext()
-    } else {
-      disableNext()
-    }
-  }
+  const [userInput, setUserInput] = useState('');
 
   return (
     <div className="
@@ -64,7 +48,7 @@ export const Code = ({
             <RICIBs
               amount={inputAmount}
               autoFocus
-              handleOutputString={validateInput}
+              handleOutputString={str => setUserInput(str)}
               inputProps={{
                 className: 'bg-transparent',
                 placeholder: '_',
@@ -85,49 +69,7 @@ export const Code = ({
           </div>
         </div>
       </div>
-      <div className="
-          w-screen
-          border-t
-          border-white/25
-          max-md:px-4
-          max-md:py-8
-        ">
-        <div className="
-            flex
-            flex-col
-            md:flex-row
-            items-stretch
-            justify-between
-            max-md:gap-4
-          ">
-          <div
-            className={clsx(
-              'flex w-full items-center align-middle transition duration-150 ease-in-out md:px-5',
-              {
-                'bg-success/25': correctAnswer,
-              }
-            )}
-          >
-            <p
-              className={clsx(
-                'font-nunito text-[21px] text-white transition duration-150 ease-in-out',
-                {
-                  'opacity-50': !correctAnswer,
-                }
-              )}
-            >
-              {correctAnswer
-                ? 'Challenge completed!'
-                : 'Complete the challenge above to continue'}
-            </p>
-          </div>
-          <BoxButton
-            href="/chapters/chapter-1/genesis/genesis-pt2"
-            disabled={!correctAnswer}
-            size={!isSmallScreen ? 'big' : null}
-          >Next</BoxButton>
-        </div>
-      </div>
+      <FindChallengeBottomBar full next="/chapters/chapter-1/genesis/genesis-pt2" input={userInput} expected={answer} />
     </div>
   )
 }
