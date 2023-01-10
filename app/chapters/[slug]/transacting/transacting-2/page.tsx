@@ -6,6 +6,7 @@ import Terminal from 'components/Terminal'
 import clsx from 'clsx'
 import { SignUpModal } from 'components/chapters/SignUpModal'
 import PlayIcon from 'public/assets/icons/play.svg'
+import { FindChallengeBottomBar } from 'components/chapters/FindChallengeBottomBar'
 
 //Am i going to to this boilerplate for every view?
 // TODO make a factory (or other pattnern) to populate component data
@@ -22,7 +23,6 @@ export default function Genesispt2() {
   const genesis = getTx2()
 
   const [lines, setLines] = useState([])
-  const [openModal, setOpenModal] = useState(false)
   const [success, setSuccess] = useState(false);
   const [answer, setAnswer] = useState('')
 
@@ -35,28 +35,15 @@ export default function Genesispt2() {
       const scriptSig = Buffer.from(scriptSigHex, 'hex').toString('utf8')
       setLines((lines) => [...lines, scriptSig])
 
+      console.log(scriptSigHex)
+
       if (scriptSigHex === '6a127461636f7320666f722065766572796f6e65') {
         setTimeout(() => {
-          setOpenModal(true)
           setSuccess(true)
         }, 1000)
         setAnswer(scriptSig)
       }
     }
-  }
-
-  function onSignUp(data) {
-    window.localStorage.setItem('user', JSON.stringify({
-      publicKey: data.keyPair.publicKey,
-      privateKey: data.keyPair.privateKey,
-      avatar: data.avatar,
-      progress: {
-        chapter: 'transacting',
-        lesson: 'transacting-2',
-      }
-    }))
-
-    setOpenModal(false)
   }
 
   return (
@@ -85,6 +72,7 @@ export default function Genesispt2() {
                   : 'Waiting for you to write and run the script...'}
               </h2>
             </div>
+            {!success && (
             <div className="flex border-t border-white/25 pt-4 pl-6 pb-[30px] text-[18px] sm:flex-col md:flex-row md:pl-5 md:pt-0 md:pb-0">
               <button className="flex grow items-center gap-2 py-5 transition duration-150 ease-in-out hover:opacity-75">
                 <span className="flex h-7 w-7 items-center justify-center rounded bg-white">
@@ -92,8 +80,11 @@ export default function Genesispt2() {
                 </span>
                 Run the script
               </button>
-              <SignUpModal onConfirm={onSignUp} onClose={() => setOpenModal(false)} open={openModal} />
             </div>
+            )}
+            {success && (
+              <FindChallengeBottomBar next="/" input={"true"} expected={"true"} />
+            )}
           </div>
         </div>
       </div>
