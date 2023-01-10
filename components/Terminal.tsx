@@ -12,7 +12,9 @@ const TerminalController = (props) => {
         onInput={props.onInput}
       >
         {props.lines.map((line, index) => (
-          <TerminalOutput key={index}>{`> ${line}`}</TerminalOutput>
+          <span key={index} className={`${line.type === 'input' ? 'text-white' : 'text-[var(--terminal-output)]'} react-terminal-line-blue`}>
+            <TerminalOutput>{`> ${line.value}`}</TerminalOutput>
+          </span>
         ))}
       </Terminal>
     </div>
