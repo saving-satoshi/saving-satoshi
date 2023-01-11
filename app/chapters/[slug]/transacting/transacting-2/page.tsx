@@ -22,7 +22,10 @@ function getTx2() {
 export default function Genesispt2() {
   const genesis = getTx2()
 
-  const [lines, setLines] = useState([])
+  const [lines, setLines] = useState([{
+    value: 'Enter your commands here and press Enter...',
+    type: 'output'
+  }])
   const [success, setSuccess] = useState(false);
   const [answer, setAnswer] = useState('')
 
