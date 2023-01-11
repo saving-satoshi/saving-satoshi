@@ -27,13 +27,13 @@ export default function Genesispt2() {
   const [answer, setAnswer] = useState('')
 
   function onInput(input) {
-    setLines((lines) => [...lines, input])
+    setLines((lines) => [...lines, {value: input, type: 'input'}])
 
     // echo scriptSigHex | xxd -r -p
     if (input.startsWith('echo') && input.endsWith('| xxd -r -p')) {
       const scriptSigHex = input.split(' ')[1]
       const scriptSig = Buffer.from(scriptSigHex, 'hex').toString('utf8')
-      setLines((lines) => [...lines, scriptSig])
+      setLines((lines) => [...lines, {value: scriptSig, type: 'output'}])
 
       console.log(scriptSigHex)
 
