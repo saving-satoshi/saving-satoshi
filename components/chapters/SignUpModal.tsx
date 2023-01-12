@@ -29,6 +29,19 @@ export const SignUpModal = (props) => {
   let [copied, setCopied] = useState(false)
   let [avatar, setAvatar] = useState(1)
 
+  function saveLocally() {
+    window.localStorage.setItem('user', JSON.stringify({
+      publicKey: keyPair.publicKey,
+      privateKey: keyPair.privateKey,
+      avatar: avatar,
+      progress: {
+        chapter: 'chapter-1',
+        lesson: 'genesis',
+      }
+    }))
+    window.localStorage.setItem('loggedIn', "true");
+  }
+
   function copy() {
     navigator.clipboard.writeText(keyPair.privateKey.toString(16))
     setCopied(true)
@@ -36,6 +49,12 @@ export const SignUpModal = (props) => {
     setTimeout(() => {
       setCopied(false)
     }, 2000)
+  }
+
+  function confirm() {
+    saveLocally()
+
+    props.onConfirm({ keyPair, avatar })
   }
 
   return (
@@ -98,7 +117,7 @@ export const SignUpModal = (props) => {
         recovered if you lose it.
       </p>
       <button
-        onClick={() => props.onConfirm({ keyPair, avatar })}
+        onClick={confirm}
         className="mt-4 w-full rounded-md border border-white px-4 py-2 text-white"
       >
         I’ve copied and backed up my code

@@ -125,7 +125,16 @@ modules, extending theme perhaps ????
 
 /* Overriding terminal styles */
 div.react-terminal-wrapper {
-  padding: 20px;
+  display: flex !important;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px 20px 0 20px;
+}
+
+div.react-terminal {
+  gap: 10px;
+  display: flex;
+  flex-grow: 1;
 }
 
 div.react-terminal-wrapper.react-terminal-light {
@@ -145,11 +154,10 @@ div.react-terminal-wrapper:after {
 div.react-terminal-input[data-terminal-prompt]:before {
   content: '>';
   color: white;
-  opacity: 80%;
 }
 
 div.react-terminal-input:before {
-  margin-right: 0.75em;
+  margin-right: 0.25em;
   content: '>';
 }
 
@@ -167,6 +175,19 @@ div.react-terminal-wrapper:focus-within .react-terminal-active-input:after {
   animation: blink 1s infinite;
 }
 
+.react-terminal-previous-input .react-terminal-line:before {
+  margin-right: 0.25em;
+  content: '>';
+  color: white !important;
+  opacity: 0.8;
+}
+
+.react-terminal-output .react-terminal-line:before {
+  margin-right: 0.25em;
+  content: '>';
+  color: var(--terminal-output) !important;
+}
+
 div.react-terminal-line {
   white-space: unset !important;
   line-break: anywhere;
@@ -174,5 +195,4 @@ div.react-terminal-line {
 
 div.react-terminal-active-input {
   color: white;
-  opacity: 0.8;
 }

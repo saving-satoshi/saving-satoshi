@@ -23,7 +23,10 @@ function getGenesis() {
 export default function Genesispt2() {
   const genesis = getGenesis()
 
-  const [lines, setLines] = useState([])
+  const [lines, setLines] = useState([{
+    value: 'Enter your commands here and press Enter...',
+    type: 'output'
+  }])
   const [success, setSuccess] = useState(false)
   const [answer, setAnswer] = useState('')
 
