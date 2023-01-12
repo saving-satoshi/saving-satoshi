@@ -68,7 +68,7 @@ export default function Genesispt2() {
             <div className="flex justify-center border-t border-white/25 bg-black/[.15] p-[20px] md:justify-start">
               <h2
                 className={clsx('font-space-mono text-[18px] text-white/50', {
-                  'bg-success/25': success,
+                  'bg-green/25': success,
                   'opacity-50': !success,
                 })}
               >
