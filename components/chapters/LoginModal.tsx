@@ -60,6 +60,7 @@ export const LoginModal = (props) => {
     window.localStorage.removeItem('user');
     window.localStorage.removeItem('loggedIn');
 
+    props.onClearProgress();
     props.onClose();
   }
 

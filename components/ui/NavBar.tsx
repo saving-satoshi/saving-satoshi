@@ -6,12 +6,14 @@ import { siteConfig } from 'config/site'
 import { NavItem } from 'types'
 import { useEffect, useState } from 'react'
 import { LoginModal } from 'components/chapters/LoginModal';
+import { SignUpModal } from 'components/chapters/SignUpModal';
 import Image from 'next/image';
 import User from 'public/assets/icons/avatar.svg';
 import { Avatar } from './Avatar';
 
 export const Navbar = ({ items }: { items: NavItem[] }) => {
   const [openSignInModal, setOpenSignInModal] = useState(false)
+  const [openSignUpModal, setOpenSignUpModal] = useState(false)
   const [loggedIn, setLoggedIn] = useState(false)
   const [user, setUser] = useState<any>({});
 
@@ -21,10 +23,7 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
   }, [])
 
   useEffect(() => {
-    const user = window.localStorage.getItem('user');
-    if (user) {
-      setUser(JSON.parse(user));
-    }
+    updateUser()
   }, [loggedIn])
 
   function onLogin() {
@@ -32,9 +31,39 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
     setLoggedIn(true)
   }
 
+  function updateUser() {
+    const userData = window.localStorage.getItem('user');
+    if (userData && userData.length > 0) {
+      setUser(JSON.parse(userData));
+    }
+  }
+
+  function onClearProgress() {
+    setUser(null)
+  }
+
   function onLogout() {
     window.localStorage.removeItem('loggedIn');
     setLoggedIn(false);
+  }
+
+  function onSignupConfirm() {
+    updateUser()
+    setLoggedIn(true)
+    setOpenSignUpModal(false)
+  }
+
+  function toggleModal(show) {
+    if (user && user.publicKey) {
+      setOpenSignInModal(show)
+    } else {
+      setOpenSignUpModal(show)
+    }
+  }
+
+  function hideModals() {
+    setOpenSignInModal(false)
+    setOpenSignUpModal(false)
   }
 
   return (
@@ -47,7 +76,7 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
           <h1 className="text-xl md:text-3xl">{siteConfig.name}</h1>
         </Link>
         <nav className="flex text-xl md:text-2xl">
-        {items?.length ? (
+          {items?.length ? (
             items?.map((item, idx) => (
               <Link
                 key={idx}
@@ -57,29 +86,36 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
                 {item.title}
               </Link>
             ))
-        ) : null}
-        {}
-        {!loggedIn && <button onClick={() => setOpenSignInModal(true)} className="text-grey-300 w-10 h-10 ml-4 cursor-pointer">
+          ) : null}
+
+          {!loggedIn && <button onClick={() => toggleModal(true)} className="text-grey-300 w-10 h-10 ml-4 cursor-pointer">
             <User />
-        </button>}
-        
-        {loggedIn && <button onClick={() => setOpenSignInModal(true)} className="text-grey-300 w-10 h-10 ml-4 cursor-pointer">
+          </button>}
+
+          {loggedIn && <button onClick={() => setOpenSignInModal(true)} className="text-grey-300 w-10 h-10 ml-4 cursor-pointer">
             <Avatar
-              avatar={JSON.parse(window.localStorage.getItem('user')).avatar}
+              avatar={user.avatar}
               size={30}
-          />
-        </button>}
+            />
+          </button>}
         </nav>
 
       </div>
 
-      <LoginModal 
+      <LoginModal
         signedIn={loggedIn}
         user={user}
         onLogin={onLogin}
         onLogout={onLogout}
         open={openSignInModal}
-        onClose={() => setOpenSignInModal(false)} 
+        onClearProgress={onClearProgress}
+        onClose={() => hideModals()}
+      />
+
+      <SignUpModal
+        onConfirm={onSignupConfirm}
+        open={openSignUpModal}
+        onClose={() => hideModals()}
       />
     </div>
   )
