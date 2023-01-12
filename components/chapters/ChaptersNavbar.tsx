@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { AddressBar } from './AddressBar'
 import { TabGroup } from './partials/TabGroup'
-import { Item } from './partials/TabGroup'
 import { useRouter } from 'next/navigation'
 import ArrowLeftIcon from 'public/assets/icons/arrow-left.svg'
 
@@ -23,7 +22,7 @@ export const ChaptersNavbar = ({ items, slug }) => {
           <AddressBar />
         </div>
         <div className="flex items-stretch">
-          <TabGroup path={`chapters/${slug}`} items={[...items]}></TabGroup>
+          <TabGroup path={`chapters/${slug}`} items={items} />
         </div>
       </div>
     </div>

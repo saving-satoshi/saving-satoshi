@@ -1,16 +1,14 @@
 import { allLessons, Lesson } from 'contentlayer/generated'
-import Link from 'next/link'
 import { ChallengeItem } from './ChallengeItem'
 
 export const ChallengeList = ({ challenges, path }) => {
-  const challengesData = challenges ? allLessons.filter((challenge: Lesson) => challenges.indexOf(challenge.slugAsParams) !== -1) : null
 
   return (
     <div className="justify-stretch mt-6 flex w-full grow items-start font-nunito text-white">
-      {challengesData ? (
+      {challenges ? (
         <ul className="grid w-full items-start">
-          {challengesData.map((challenge, index) => (
-            <ChallengeItem key={index + 1} position={index + 1} title={challenge.title} slug={challenge.slugAsParams} path={path} />
+          {challenges.map((challenge, index) => (
+            <ChallengeItem key={index + 1} position={index + 1} title={challenge.title} path={challenge.path} />
           ))}
         </ul>
       ) : (

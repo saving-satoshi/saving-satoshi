@@ -1,0 +1,28 @@
+[
+  {
+    "chapter": 1,
+    "title": "Secrets in plain sight",
+    "image": "https://saving-satoshi.s3.amazonaws.com/ch1.png",
+    "slug": "/chapters/chapter-1",
+    "lessons": [
+      {
+        "path": "/chapters/chapter-1/genesis/genesis-1",
+        "title": "Genesis"
+      },
+      {
+        "path": "/chapters/chapter-1/transacting",
+        "title": "Transacting"
+      }
+    ]
+  },
+  {
+    "chapter": 2,
+    "title": "The 51% attack",
+    "image": "https://saving-satoshi.s3.amazonaws.com/ch2.png"
+  },
+  {
+    "chapter": 3,
+    "title": "Claiming your rewards",
+    "image": "https://saving-satoshi.s3.amazonaws.com/ch3.png"
+  }
+]

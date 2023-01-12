@@ -1,11 +1,11 @@
 import { Chapter } from 'contentlayer/generated'
 import Image from 'next/image'
 
-export const OverviewImage = (chapter: Chapter) => {
+export const OverviewImage = ({image, title}: {image: string, title: string}) => {
   return (
     <Image
-      src={chapter.image}
-      alt={chapter.title}
+      src={image}
+      alt={title}
       width={600}
       height={600}
       className="w-full h-full object-cover"

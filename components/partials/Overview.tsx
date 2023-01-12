@@ -1,21 +1,17 @@
-import clsx from 'clsx'
-import { Markdown } from 'contentlayer/core'
-import { Chapter } from 'contentlayer/generated'
 import { BoxButton } from 'components/ui/BoxButton'
 
-export const Overview = ({ chapter }: { chapter: Chapter }) => {
-  return (
+export const Overview = ({ chapter, children }: { chapter: any, children?: any }) => {
+    return (
     <div className="mt-6 font-nunito">
-      <div
-        dangerouslySetInnerHTML={{ __html: chapter.body.html }}
-        className="text-lg text-white"
-      ></div>
+      <div className="text-lg text-white">
+        {children}
+      </div>
       <div className="flex pt-8 md:w-full">
         <BoxButton
           href={chapter.slug}
           disabled={!chapter.lessons}
         >{chapter.lessons
-          ? `Start chapter ${chapter.position}`
+          ? `Start chapter ${chapter.chapter}`
           : 'Coming soon'}
         </BoxButton>
       </div>

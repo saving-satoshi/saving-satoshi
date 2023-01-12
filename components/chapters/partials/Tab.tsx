@@ -1,28 +1,26 @@
 'use client'
 
-import { Lesson } from 'contentlayer/generated'
 import { Tooltip } from 'components/ui/Tooltip'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { useSelectedLayoutSegment } from 'next/navigation'
+import { useRouter, useSelectedLayoutSegment } from 'next/navigation'
 import { useState } from 'react'
+import Router from 'next/router'
 
 export const Tab = ({
   index,
-  count,
-  path,
+  last,
   challenge,
 }: {
   index: number,
-  count: number,
-  path: string,
-  challenge: Lesson
+  last: boolean
+  challenge: {
+    title: string,
+    path: string,
+  }
 }) => {
   const segment = useSelectedLayoutSegment()
-  const slug = challenge.slugAsParams
-  const href = path + '/' + slug
-  const isActive = (!slug && segment === null) || segment === slug
-  const isLast = index == count - 1
+  const isActive = (!challenge.path && segment === null) || segment === challenge.path.split('/')[3];
 
   const [showTooltip, setShowTooltip] = useState(false)
 
@@ -33,7 +31,7 @@ export const Tab = ({
       onMouseLeave={() => setShowTooltip(false)}
     >
       <Link
-        href={href}
+        href={challenge.path}
         title={challenge.title}
         className={clsx(
           'flex items-center justify-center border-l border-white/25 px-7 text-center text-lg transition duration-100 ease-in-out hover:bg-black/25 hover:text-white',
@@ -49,7 +47,7 @@ export const Tab = ({
         title={'Challenge ' + (index + 1)}
         text={challenge.title}
         show={showTooltip}
-        position={isLast ? 'below-right' : 'below'}
+        position={last ? 'below-right' : 'below'}
       />
     </div>
   )

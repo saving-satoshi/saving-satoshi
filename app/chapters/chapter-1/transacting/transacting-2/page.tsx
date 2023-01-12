@@ -8,20 +8,7 @@ import { SignUpModal } from 'components/chapters/SignUpModal'
 import PlayIcon from 'public/assets/icons/play.svg'
 import { FindChallengeBottomBar } from 'components/chapters/FindChallengeBottomBar'
 
-//Am i going to to this boilerplate for every view?
-// TODO make a factory (or other pattnern) to populate component data
-
-function getTx2() {
-  const slug = 'transacting-2'
-  const data = allLessons.find(
-    (challenge: Lesson) => challenge.slugAsParams === slug
-  )
-  return data
-}
-
 export default function Genesispt2() {
-  const genesis = getTx2()
-
   const [lines, setLines] = useState([{
     value: 'Enter your commands here and press Enter...',
     type: 'output'
@@ -53,10 +40,19 @@ export default function Genesispt2() {
     <div className="grid w-screen grow grid-cols-1 justify-center px-6 md:grid-cols-2 md:divide-x lg:px-0">
       <div className="flex w-full justify-center text-white">
         <div className="content-center justify-items-start px-1 py-6 sm:px-12">
-          <div
-            className="genesis-p2"
-            dangerouslySetInnerHTML={{ __html: genesis.body.html }}
-          ></div>
+          <div className='genesis-p2'>
+            <h1>Another secret message</h1>
+            <p>
+              Then, look for the hex representation of the ScriptPubKey field.
+            </p>
+            <p>
+              Once you've found it, decode the hidden message, just like we did in the previous exercise.
+            </p>
+            <p>
+              And remember, 'Bitcoin is for everyone.'
+            </p>
+            <pre><code>echo scriptSigHex | xxd -r -p</code></pre>
+          </div>
         </div>
       </div>
       <div className="flex grow flex-col items-center justify-center font-space-mono text-white">

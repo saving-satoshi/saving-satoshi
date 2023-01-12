@@ -6,7 +6,7 @@ import { Tabs } from 'components/ui/Tabs'
 import { useState } from 'react'
 import { ChallengeList } from './ChallengeList'
 
-export const OverviewInfo = (chapter: Chapter) => {
+export const OverviewInfo = ({chapter, children}) => {
   const [activeTab, setActiveTab] = useState('info')
   const tabData = [
     {
@@ -22,7 +22,7 @@ export const OverviewInfo = (chapter: Chapter) => {
   return (
     <div className="w-full ml-3.5 mr-3.5 content-center justify-items-start px-1">
       <h2 className="text-left mt-6 font-nunito text-xl font-bold text-white text-opacity-75 md:text-3xl">
-        Chapter {chapter.position}
+        Chapter {chapter.chapter}
       </h2>
       <h2 className="text-left mb-6 text-3xl text-white md:text-5xl">
         {chapter.title}
@@ -35,7 +35,7 @@ export const OverviewInfo = (chapter: Chapter) => {
       />
       <div className="flex grow">
         {activeTab == 'info' &&
-          <Overview chapter={chapter}></Overview>
+          <Overview chapter={chapter}>{children}</Overview>
         }
         {activeTab == 'challenges' && (
           <ChallengeList challenges={chapter.lessons} path={chapter.slug} ></ChallengeList>

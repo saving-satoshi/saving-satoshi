@@ -69,7 +69,7 @@ export const Code = ({
           </div>
         </div>
       </div>
-      <FindChallengeBottomBar full next="/chapters/chapter-1/genesis/genesis-pt2" input={userInput} expected={answer} />
+      <FindChallengeBottomBar full next="/chapters/chapter-1/genesis/genesis-2" input={userInput} expected={answer} />
     </div>
   )
 }
