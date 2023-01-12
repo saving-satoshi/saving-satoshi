@@ -65,7 +65,7 @@ export const LoginModal = (props) => {
   }
 
   function copy() {
-    navigator.clipboard.writeText(userPrivateKey)
+    navigator.clipboard.writeText(user.privateKey)
     setCopied(true)
 
     setTimeout(() => {
