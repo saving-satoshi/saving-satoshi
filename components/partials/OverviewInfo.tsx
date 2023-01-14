@@ -20,11 +20,11 @@ export const OverviewInfo = (chapter: Chapter) => {
   ]
 
   return (
-    <div className="w-full content-center justify-items-start px-1">
-      <h2 className="text-left font-nunito text-xl font-bold text-white text-opacity-75 md:text-3xl">
+    <div className="w-full ml-3.5 mr-3.5 content-center justify-items-start px-1">
+      <h2 className="text-left mt-6 font-nunito text-xl font-bold text-white text-opacity-75 md:text-3xl">
         Chapter {chapter.position}
       </h2>
-      <h2 className="text-left text-3xl text-white md:text-5xl">
+      <h2 className="text-left mb-6 text-3xl text-white md:text-5xl">
         {chapter.title}
       </h2>
       <Tabs
