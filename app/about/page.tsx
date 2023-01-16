@@ -45,6 +45,7 @@ export default function About() {
           <p className="mt-2 font-nunito text-xl">
             Open an issue or a PR on{' '}
             <a
+               className="hover:underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://github.com/saving-satoshi/saving-satoshi"
@@ -59,6 +60,7 @@ export default function About() {
           <p className="mt-2 font-nunito text-xl">
             Contributions by{' '}
             <a
+              className="hover:underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://twitter.com/GBKS"
