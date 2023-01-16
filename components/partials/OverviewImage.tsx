@@ -6,12 +6,9 @@ export const OverviewImage = (chapter: Chapter) => {
     <Image
       src={chapter.image}
       alt={chapter.title}
-      width={1440}
-      height={715}
-      style={{
-        maxWidth: '100%',
-        height: 'auto',
-      }}
+      width={600}
+      height={600}
+      className="w-full h-full object-cover"
     />
   )
 }

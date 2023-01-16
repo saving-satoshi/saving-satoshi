@@ -4,13 +4,13 @@ import { OverviewInfo } from './partials/OverviewInfo'
 
 export const ChapterOverview = (chapter: Chapter) => {
   return (
-    <div className="flex grid grid-cols-1 justify-center px-6 lg:grid-cols-2 lg:px-0">
+    <div className="flex grid grid-cols-1 justify-center lg:grid-cols-2 lg:px-0">
       {chapter.position % 2 == 0 ? (
         <>
           <div className="order-2 flex justify-start lg:order-1 lg:py-[112px] lg:px-[50px]">
             <OverviewInfo {...chapter} />
           </div>
-          <div className="order-1 flex justify-center lg:order-2">
+          <div className="order-1 flex justify-center lg:order-2 lg:mt-0 mt-6">
             <OverviewImage {...chapter} />
           </div>
         </>
@@ -19,7 +19,7 @@ export const ChapterOverview = (chapter: Chapter) => {
           <div className="order-2 flex justify-start lg:order-2 lg:py-[112px] lg:px-[50px]">
             <OverviewInfo {...chapter} />
           </div>
-          <div className="order-1 flex justify-center lg:order-1">
+          <div className="order-1 flex justify-center lg:order-1 lg:mt-0 mt-6">
             <OverviewImage {...chapter} />
           </div>
         </>
