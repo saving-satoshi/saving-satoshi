@@ -196,3 +196,14 @@ div.react-terminal-line {
 div.react-terminal-active-input {
   color: white;
 }
+
+.tab-content {
+  display: block;
+  visibility: hidden;
+  margin-right: -100%;
+  width: 100%;
+}
+
+.tab-content-active {
+  visibility: visible;
+}
