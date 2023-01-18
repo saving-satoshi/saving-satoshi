@@ -25,7 +25,8 @@ module.exports = {
         },
       },
       opacity: {
-        '15': '0.15'
+        '15': '0.15',
+        '25': '0.25'
       },
       fontFamily: {
         cbrush: ['var(--cbrush-font)'],

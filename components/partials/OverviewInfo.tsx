@@ -38,7 +38,11 @@ export const OverviewInfo = (chapter: Chapter) => {
           <Overview chapter={chapter}></Overview>
         }
         {activeTab == 'challenges' && (
-          <ChallengeList challenges={chapter.lessons} path={chapter.slug} ></ChallengeList>
+          <ChallengeList
+            challenges={chapter.lessons}
+            chapterId={chapter.slugAsParams}
+            path={chapter.slug}
+          ></ChallengeList>
         )}
       </div>
     </div>

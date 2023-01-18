@@ -46,7 +46,7 @@ export function FindChallengeBottomBar({ next, input, expected, successMsg, inPr
               )}
             >
               {getStatus() === Status.Success
-                ? successMsg || <span className="flex"><CheckIcon className='mr-2'/> Nicely done!</span>
+                ? successMsg || <span className="flex"><CheckIcon className='mr-2 w-8 h-8'/> Nicely done!</span>
                 : getStatus() === Status.InProgress ? inProgressMsg || 'Complete the challenge above to continue...'
                 : getStatus() === Status.Error ? errorMsg || 'Hm... that is not quite right yet...' : ''}
             </p>
