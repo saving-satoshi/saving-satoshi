@@ -8,6 +8,7 @@ import clsx from 'clsx'
 import { TerminalOutput } from 'react-terminal-ui'
 import PlayIcon from 'public/assets/icons/play.svg'
 import { FindChallengeBottomBar } from 'components/chapters/FindChallengeBottomBar'
+import { CopyButton } from 'components/ui/CopyButton'
 import { setUserProgress } from 'lib/user'
 import { getUserLessonStatus } from 'lib/content'
 
@@ -68,7 +69,14 @@ export default function Genesispt2() {
           <div
             className="genesis"
             dangerouslySetInnerHTML={{ __html: genesis.body.html }}
-          ></div>
+          >
+          </div>
+          <div className='genesis'>
+          <pre><code className='language-shell pl-2 pr-2 items-center flex justify-between'>
+echo scriptSigHex | xxd -r -p
+          <CopyButton compact content='echo scriptSigHex | xxd -r -p'/>
+</code></pre>
+          </div>
         </div>
       </div>
       <div className="flex grow flex-col border-white/25 font-space-mono text-white md:border-l">

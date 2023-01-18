@@ -9,6 +9,7 @@ import Close from 'public/assets/icons/close.svg'
 import Warning from 'public/assets/icons/warning.svg'
 import { Avatar } from 'components/ui/Avatar';
 import { BoxButton } from 'components/ui/BoxButton';
+import { CopyButton } from 'components/ui/CopyButton';
 import { getUser, loginUser, isUserLoggedIn, isUserRegistered, clearUser } from 'lib/user'
 
 export const LoginModal = (props) => {
@@ -64,15 +65,6 @@ export const LoginModal = (props) => {
 
     props.onClearProgress()
     props.onClose();
-  }
-
-  function copy() {
-    navigator.clipboard.writeText(user.privateKey)
-    setCopied(true)
-
-    setTimeout(() => {
-      setCopied(false)
-    }, 2000)
   }
 
   function signOut() {
@@ -149,22 +141,8 @@ export const LoginModal = (props) => {
           </p>
 
         <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
-          <code className="whitespace-pre-wrap break-all">{user.privateKey}</code>
-          {copied ? (
-            <button
-              className="mt-4 w-full rounded-md bg-green-500 px-4 py-2 text-green-800"
-              onClick={copy}
-            >
-              Copied!
-            </button>
-          ) : (
-            <button
-              className="mt-4 w-full rounded-md bg-black bg-opacity-25 px-4 py-2 text-white"
-              onClick={copy}
-            >
-              Copy
-            </button>
-          )}
+          <code className="whitespace-pre-wrap break-all mb-2">{user.privateKey}</code>
+            <CopyButton content={user.privateKey}>Copy</CopyButton>
         </pre>
         <div className='flex items-center mt-auto'>
           <button onClick={signOut} className="border-red-500 bg-red-500 border-2 w-full p-1 text-xl text-white">Sign out</button>

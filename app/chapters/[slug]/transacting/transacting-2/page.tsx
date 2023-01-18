@@ -7,6 +7,7 @@ import clsx from 'clsx'
 import { SignUpModal } from 'components/chapters/SignUpModal'
 import PlayIcon from 'public/assets/icons/play.svg'
 import { FindChallengeBottomBar } from 'components/chapters/FindChallengeBottomBar'
+import { CopyButton } from 'components/ui/CopyButton'
 
 //Am i going to to this boilerplate for every view?
 // TODO make a factory (or other pattnern) to populate component data
@@ -57,6 +58,14 @@ export default function Genesispt2() {
             className="genesis-p2"
             dangerouslySetInnerHTML={{ __html: genesis.body.html }}
           ></div>
+          <div className='genesis-p2'>
+            <pre>
+              <code className='language-shell flex justify-between items-center'>
+                echo scriptSigHex | xxd -r -p
+                <CopyButton compact content='echo scriptSigHex | xxd -r -p' />
+              </code>
+            </pre>
+          </div>
         </div>
       </div>
       <div className="flex grow flex-col items-center justify-center font-space-mono text-white">
