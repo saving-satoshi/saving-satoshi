@@ -6,8 +6,8 @@ export default function Finished() {
         <ChapterEnd 
             image="/assets/images/chapter-1-finish.jpg"
             checkpoint={{
-                chapter: 1,
-                lesson: 2,
+                chapter: 'chapter-2',
+                lesson: null,
                 next: '/chapters/chapter-2'
             }}
             description='Amazing. You completed the first chapter and learned a lot about hashes and transactions. Are you ready for more?'

@@ -2,48 +2,26 @@
 
 import { Avatar } from 'components/ui/Avatar'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Modal from 'react-modal'
 const crypto = require('crypto')
 const Secp256k1 = require('@lionello/secp256k1-js')
 import Close from 'public/assets/icons/close.svg'
+import { getUser, loginUser, setUserAvatar, setUserRegistered } from 'lib/user'
 
 export const SignUpModal = (props) => {
-  function generateKeyPair() {
-    let publicKey = null;
-    let privateKey = null;
-    do {
-      const privateKeyBuf = crypto.randomBytes(32)
-      privateKey = Secp256k1.uint256(privateKeyBuf, 16)
-      publicKey = Secp256k1.generatePublicKeyFromPrivateKeyData(privateKey);
-    } while (!publicKey || privateKey.gte(Secp256k1.uint256("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141", 16)))
-
-    return {
-      privateKey,
-      publicKey
-    };
-  }
-
-  const [keyPair, _] = useState(generateKeyPair());
+  const [user, setUser] = useState(null)
 
   let [copied, setCopied] = useState(false)
   let [avatar, setAvatar] = useState(1)
 
   function saveLocally() {
-    window.localStorage.setItem('user', JSON.stringify({
-      publicKey: keyPair.publicKey,
-      privateKey: keyPair.privateKey,
-      avatar: avatar,
-      progress: {
-        chapter: 'chapter-1',
-        lesson: 'genesis',
-      }
-    }))
-    window.localStorage.setItem('loggedIn', "true");
+    setUserAvatar(avatar)
+    loginUser()
   }
 
   function copy() {
-    navigator.clipboard.writeText(keyPair.privateKey.toString(16))
+    navigator.clipboard.writeText(user.privateKey.toString(16))
     setCopied(true)
 
     setTimeout(() => {
@@ -53,9 +31,14 @@ export const SignUpModal = (props) => {
 
   function confirm() {
     saveLocally()
+    setUserRegistered()
 
-    props.onConfirm({ keyPair, avatar })
+    props.onConfirm()
   }
+
+  useEffect(() => {
+    setUser(getUser())
+  }, []);
 
   return (
     <Modal
@@ -94,7 +77,7 @@ export const SignUpModal = (props) => {
       <h2 className="mb-4 text-xl font-bold">Back up your personal code</h2>
 
       <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
-        <code className="whitespace-pre-wrap break-all">{keyPair.privateKey.toString(16)}</code>
+        <code className="whitespace-pre-wrap break-all">{user ? user.privateKey.toString(16) : ''}</code>
         {copied ? (
           <button
             className="mt-4 w-full rounded-md bg-green-500 px-4 py-2 text-green-800"

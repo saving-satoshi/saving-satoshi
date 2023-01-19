@@ -9,30 +9,34 @@ import Close from 'public/assets/icons/close.svg'
 import Warning from 'public/assets/icons/warning.svg'
 import { Avatar } from 'components/ui/Avatar';
 import { BoxButton } from 'components/ui/BoxButton';
+import { getUser, loginUser, isUserLoggedIn, isUserRegistered, clearUser } from 'lib/user'
 
 export const LoginModal = (props) => {
   const [loaded, setLoaded] = useState(false);
   const [userPrivateKey, setPrivateKey] = useState('');
   const [user, setUser] = useState<any>({});
   const [copied, setCopied] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isRegistered, setRegistered] = useState(false);
 
   useEffect(() => {
-    setUser(JSON.parse(window.localStorage.getItem('user') || '{}'))
-    setLoaded(!!window.localStorage.getItem('loggedIn'))
+    setUser(getUser())
+    setLoggedIn(isUserLoggedIn())
+    setRegistered(isUserRegistered())
+    // setLoaded(isUserLoggedIn())
   }, []);
 
   function loadProgress() {
     const privateKey = Secp256k1.uint256(Buffer.from(userPrivateKey, 'hex'), 16)
     const publicKey = Secp256k1.generatePublicKeyFromPrivateKeyData(privateKey);
 
-    let user: any = window.localStorage.getItem('user')
+    let user: any = getUser()
     if (user) {
-      user = JSON.parse(user)
-
       if (user.publicKey.x === publicKey.x && user.publicKey.y === publicKey.y) {
-        window.localStorage.setItem('loggedIn', "true");
-        setUser(user);
-        setLoaded(true);
+        loginUser()
+        setLoggedIn(true)
+        setUser(user)
+        setLoaded(true)
       } else {
         alert('Invalid private key')
       }
@@ -40,15 +44,14 @@ export const LoginModal = (props) => {
   }
 
   function checkValidKey() {
-    if (userPrivateKey.length !== 64) return false;
+    if (userPrivateKey.length !== 64) return false
 
-    const user = window.localStorage.getItem('user');
+    const user = getUser()
     if (user) {
-      const userObj = JSON.parse(user);
       const privateKey = Secp256k1.uint256(Buffer.from(userPrivateKey, 'hex'), 16)
-      const publicKey = Secp256k1.generatePublicKeyFromPrivateKeyData(privateKey);
+      const publicKey = Secp256k1.generatePublicKeyFromPrivateKeyData(privateKey)
 
-      if (userObj.publicKey.x === publicKey.x && userObj.publicKey.y === publicKey.y) {
+      if (user.publicKey.x === publicKey.x && user.publicKey.y === publicKey.y) {
         return true;
       }
     }
@@ -57,10 +60,9 @@ export const LoginModal = (props) => {
   }
 
   function clearProgress() {
-    window.localStorage.removeItem('user');
-    window.localStorage.removeItem('loggedIn');
+    clearUser()
 
-    props.onClearProgress();
+    props.onClearProgress()
     props.onClose();
   }
 
@@ -74,9 +76,15 @@ export const LoginModal = (props) => {
   }
 
   function signOut() {
-    setLoaded(false);
-    props.onLogout();
-    props.onClose();
+    setLoggedIn(false)
+    setLoaded(false)
+    props.onLogout()
+    props.onClose()
+  }
+
+  function onContinue() {
+    props.onLogin()
+    setLoaded(false)
   }
 
   return (
@@ -92,7 +100,7 @@ export const LoginModal = (props) => {
       </div>
 
       <div className="p-4">
-      {!loaded && !props.signedIn && (
+      {!isLoggedIn && (
         <>
           <Avatar avatar={user.avatar} size={80} />
           <h2 className="mb-4 mt-5 text-3xl font-bold">Load your progress</h2>
@@ -129,10 +137,10 @@ export const LoginModal = (props) => {
             </div>
           </div>
         </>)}
-      {props.signedIn && (
+      {isLoggedIn && !loaded && (
         <>
           <Avatar
-            avatar={props.user.avatar}
+            avatar={user.avatar}
             size={80}
           />
           <h2 className="mt-2 mb-2 text-3xl font-bold">Load your progress</h2>
@@ -141,7 +149,7 @@ export const LoginModal = (props) => {
           </p>
 
         <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
-          <code className="whitespace-pre-wrap break-all">{props.user.privateKey}</code>
+          <code className="whitespace-pre-wrap break-all">{user.privateKey}</code>
           {copied ? (
             <button
               className="mt-4 w-full rounded-md bg-green-500 px-4 py-2 text-green-800"
@@ -163,7 +171,7 @@ export const LoginModal = (props) => {
         </div>
       </>)}
 
-      {loaded && !props.signedIn && (
+      {isLoggedIn && loaded && (
         <>
           <Avatar
             avatar={user.avatar || 1}
@@ -174,7 +182,7 @@ export const LoginModal = (props) => {
             {`You're all set to continue with Chapter ${user.progress.chapter}, Challenge ${user.progress.lesson}.`}
           </p>
 
-          <BoxButton full size='small' style='outline' onClick={props.onLogin} classes='border-white border-2 p-1 text-xl'>Continue</BoxButton>
+          <BoxButton full size='small' style='outline' onClick={onContinue} classes='border-white border-2 p-1 text-xl'>Continue</BoxButton>
         </>
       )}
       </div>
