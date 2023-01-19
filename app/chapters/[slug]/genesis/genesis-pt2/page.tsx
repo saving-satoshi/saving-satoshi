@@ -11,6 +11,7 @@ import { FindChallengeBottomBar } from 'components/chapters/FindChallengeBottomB
 import { CopyButton } from 'components/ui/CopyButton'
 import { setUserProgress } from 'lib/user'
 import { getUserLessonStatus } from 'lib/content'
+import { CopyableCode } from 'components/ui/CopyableCode'
 
 //Am i going to to this boilerplate for every view?
 // TODO make a factory (or other pattnern) to populate component data
@@ -71,12 +72,7 @@ export default function Genesispt2() {
             dangerouslySetInnerHTML={{ __html: genesis.body.html }}
           >
           </div>
-          <div className='genesis'>
-          <pre><code className='language-shell pl-2 pr-0 items-center flex justify-between'>
-echo scriptSigHex | xxd -r -p
-          <CopyButton compact content='echo scriptSigHex | xxd -r -p'/>
-</code></pre>
-          </div>
+          <CopyableCode code={'echo scriptSigHex | xxd -r -p'} language='shell'/>
         </div>
       </div>
       <div className="flex grow flex-col border-white/25 font-space-mono text-white md:border-l">
