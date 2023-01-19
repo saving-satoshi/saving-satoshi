@@ -72,7 +72,7 @@ export default function Genesispt2() {
           >
           </div>
           <div className='genesis'>
-          <pre><code className='language-shell pl-2 pr-2 items-center flex justify-between'>
+          <pre><code className='language-shell pl-2 pr-0 items-center flex justify-between'>
 echo scriptSigHex | xxd -r -p
           <CopyButton compact content='echo scriptSigHex | xxd -r -p'/>
 </code></pre>

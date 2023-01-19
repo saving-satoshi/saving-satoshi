@@ -22,20 +22,20 @@ export const CopyButton = ({ content, children, compact, classes }: {content: st
 
     if (compact) {
         return (
-            <div className={`${classes} cursor-pointer`} onClick={copy} title={copied ? 'Copied!' : 'Copy'}>
-                {!copied && <CopyIcon />}
-                {copied && <CopyActiveIcon />}
-            </div>
+            <button className={`${classes} cursor-pointer`} onClick={copy} title={copied ? 'Copied!' : 'Copy'}>
+                {!copied && <CopyIcon className="w-8" />}
+                {copied && <CopyActiveIcon className="w-8" />}
+            </button >
         );
     }
     
     return (
         copied ?
-            <BoxButton classes={classes} round style='green' size='small' onClick={copy}>
+            <BoxButton classes={classes} round style='green' size='tiny' onClick={copy}>
                 Copied!
             </BoxButton>
         :
-            <BoxButton classes={classes} round style='dark' size='small' onClick={copy}>
+            <BoxButton classes={classes} round style='dark' size='tiny' onClick={copy}>
                 {children}
             </BoxButton>
     );
