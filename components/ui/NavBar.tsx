@@ -10,6 +10,7 @@ import { SignUpModal } from 'components/chapters/SignUpModal';
 import Image from 'next/image';
 import User from 'public/assets/icons/avatar.svg';
 import { Avatar } from './Avatar';
+import { getUser, isUserLoggedIn, isUserRegistered, logoutUser } from 'lib/user'
 
 export const Navbar = ({ items }: { items: NavItem[] }) => {
   const [openSignInModal, setOpenSignInModal] = useState(false)
@@ -18,8 +19,7 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
   const [user, setUser] = useState<any>({});
 
   useEffect(() => {
-    const logged = !!window.localStorage.getItem('loggedIn');
-    setLoggedIn(logged);
+    setLoggedIn(isUserLoggedIn())
   }, [])
 
   useEffect(() => {
@@ -32,10 +32,7 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
   }
 
   function updateUser() {
-    const userData = window.localStorage.getItem('user');
-    if (userData && userData.length > 0) {
-      setUser(JSON.parse(userData));
-    }
+    setUser(getUser())
   }
 
   function onClearProgress() {
@@ -43,7 +40,7 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
   }
 
   function onLogout() {
-    window.localStorage.removeItem('loggedIn');
+    logoutUser()
     setLoggedIn(false);
   }
 
@@ -54,7 +51,7 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
   }
 
   function toggleModal(show) {
-    if (user && user.publicKey) {
+    if (user && user.publicKey && isUserRegistered()) {
       setOpenSignInModal(show)
     } else {
       setOpenSignUpModal(show)
@@ -103,8 +100,6 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
       </div>
 
       <LoginModal
-        signedIn={loggedIn}
-        user={user}
         onLogin={onLogin}
         onLogout={onLogout}
         open={openSignInModal}

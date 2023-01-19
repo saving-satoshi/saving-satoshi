@@ -8,6 +8,8 @@ import clsx from 'clsx'
 import { TerminalOutput } from 'react-terminal-ui'
 import PlayIcon from 'public/assets/icons/play.svg'
 import { FindChallengeBottomBar } from 'components/chapters/FindChallengeBottomBar'
+import { setUserProgress } from 'lib/user'
+import { getUserLessonStatus } from 'lib/content'
 
 //Am i going to to this boilerplate for every view?
 // TODO make a factory (or other pattnern) to populate component data
@@ -18,6 +20,13 @@ function getGenesis() {
     (challenge: Lesson) => challenge.slugAsParams === slug
   )
   return data
+}
+
+function saveProgress() {
+  const status = getUserLessonStatus('chapter-1', 'transacting')
+  if(!status.completed) {
+    setUserProgress('chapter-1', 'transacting')
+  }
 }
 
 export default function Genesispt2() {
@@ -44,6 +53,7 @@ export default function Genesispt2() {
         '04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73'
       ) {
         setTimeout(() => {
+          saveProgress()
           setSuccess(true)
         }, 1000)
         setAnswer(scriptSig)

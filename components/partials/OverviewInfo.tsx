@@ -46,7 +46,11 @@ export const OverviewInfo = (chapter: Chapter) => {
               <Overview chapter={chapter}></Overview>
             }
             {activeTab == 'challenges' && (
-              <ChallengeList challenges={chapter.lessons} path={chapter.slug} ></ChallengeList>
+              <ChallengeList
+                challenges={chapter.lessons}
+                chapterId={chapter.slugAsParams}
+                path={chapter.slug}
+              ></ChallengeList>
             )}
           </div>
         ) : (
@@ -59,7 +63,11 @@ export const OverviewInfo = (chapter: Chapter) => {
             <div 
               aria-hidden={(activeTab != 'challenges' ? 'true' : 'false')} 
               className={'tab-content ' + (activeTab != 'challenges' ? '' : 'tab-content-active')}>
-              <ChallengeList challenges={chapter.lessons} path={chapter.slug} ></ChallengeList>
+              <ChallengeList
+                challenges={chapter.lessons}
+                chapterId={chapter.slugAsParams}
+                path={chapter.slug}
+              ></ChallengeList>
             </div>
           </div>
         )}
