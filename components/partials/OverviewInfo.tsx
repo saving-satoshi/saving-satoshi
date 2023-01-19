@@ -57,12 +57,12 @@ export const OverviewInfo = (chapter: Chapter) => {
           <div className='flex'>
             <div 
               aria-hidden={(activeTab != 'info' ? 'true' : 'false')} 
-              className={'tab-content ' + (activeTab != 'info' ? '' : 'tab-content-active')}>
+              className={'block -mr-[100%] w-full ' + (activeTab != 'info' ? 'invisible' : 'visible')}>
               <Overview chapter={chapter}></Overview>
             </div>
             <div 
               aria-hidden={(activeTab != 'challenges' ? 'true' : 'false')} 
-              className={'tab-content ' + (activeTab != 'challenges' ? '' : 'tab-content-active')}>
+              className={'block -mr-[100%] w-full ' + (activeTab != 'challenges' ? 'invisible' : 'visible')}>
               <ChallengeList
                 challenges={chapter.lessons}
                 chapterId={chapter.slugAsParams}
