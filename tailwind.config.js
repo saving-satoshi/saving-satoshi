@@ -33,9 +33,6 @@ module.exports = {
         'space-mono': ['var(--space-mono-font)'],
         nunito: ['var(--nunito-font)'],
       },
-      spacing: {
-        '100': '100%'
-      }
     },
   },
   plugins: [],
