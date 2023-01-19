@@ -1,13 +1,13 @@
 'use client'
 
-import CodingLayout from 'components/templates/CodingLayout'
+import TerminalChallengeLayout from 'components/templates/TerminalChallenge/TerminalChallengeLayout'
 
 export default function TransactingPt2() {
 
   return (
-    <CodingLayout 
+    <TerminalChallengeLayout 
       slug="transacting-2" 
-      solutionScriptSigHex='6a127461636f7320666f722065766572796f6e65'
+      expectedInput='6a127461636f7320666f722065766572796f6e65'
       next="/chapters/chapter-1/done"
     />
   )

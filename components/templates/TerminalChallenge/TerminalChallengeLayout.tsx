@@ -12,23 +12,23 @@ import { Code } from './Code'
  * @solutionScriptSigHex {string} answer to the challenge problem
  * @next {string} link to next part of chapter
  */
-export default function CodingLayout({ 
+export default function TerminalChallengeLayout({ 
         slug, 
-        solutionScriptSigHex, 
+        expectedInput, 
         next 
     } : {
         slug : string,
-        solutionScriptSigHex : string,
+        expectedInput : string,
         next : string
     }) {
-    function getGenesis() {
+    function getLessonContent() {
         const data = allLessons.find(
             (challenge: Lesson) => challenge.slugAsParams === slug
         )
         return data
     }
     
-    const genesis = getGenesis()
+    const genesis = getLessonContent()
     const [hydrated, setHydrated] = useState(false);
     const [activeTab, setActiveTab] = useState('info')
     const isSmallScreen = useMediaQuery({ query: '(max-width: 767px)' })
@@ -70,15 +70,15 @@ export default function CodingLayout({
                             </div>
                         )}
                         {(activeTab == 'code') && (
-                            <Code solutionScriptSigHex={solutionScriptSigHex} next={next} isSmallScreen={isSmallScreen} />
+                            <Code expectedInput={expectedInput} next={next} isSmallScreen={isSmallScreen} />
                         )}
                     </div>
                     
                 ) : (
                     <div className="justify-stretch grid w-screen grow grid-cols-1 md:grid-cols-2 px-0">
                         <Info genesis={genesis} />
-                        <Code solutionScriptSigHex={solutionScriptSigHex} next={next} isSmallScreen={isSmallScreen} />
-                    </div>
+                        <Code expectedInput={expectedInput} next={next} isSmallScreen={isSmallScreen} />
+                        </div>
                 )
             }
         </>

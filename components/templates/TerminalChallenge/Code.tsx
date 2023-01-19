@@ -5,11 +5,11 @@ import { useState } from 'react'
 import { FindChallengeBottomBar } from 'components/chapters/FindChallengeBottomBar'
 
 export const Code = ({
-    solutionScriptSigHex, 
+    expectedInput, 
     next,
     isSmallScreen
   }: {
-    solutionScriptSigHex : string,
+    expectedInput : string,
     next : string,
     isSmallScreen: boolean
   }) => {
@@ -30,7 +30,7 @@ export const Code = ({
             setLines((lines) => [...lines, {value: scriptSig, type: 'output'}])
 
             if (
-                scriptSigHex === solutionScriptSigHex
+                scriptSigHex === expectedInput
             ) {
                 setTimeout(() => {
                 setSuccess(true)
