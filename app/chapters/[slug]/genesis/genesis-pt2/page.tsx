@@ -3,7 +3,6 @@
 import TerminalChallengeLayout from "components/templates/TerminalChallenge/TerminalChallengeLayout"
 
 export default function GenesisPt2() {
-
   return (
     <TerminalChallengeLayout 
       slug="genesis-pt2" 

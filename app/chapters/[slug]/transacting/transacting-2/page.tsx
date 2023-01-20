@@ -3,7 +3,6 @@
 import TerminalChallengeLayout from 'components/templates/TerminalChallenge/TerminalChallengeLayout'
 
 export default function TransactingPt2() {
-
   return (
     <TerminalChallengeLayout 
       slug="transacting-2" 
