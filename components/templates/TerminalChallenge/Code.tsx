@@ -1,17 +1,23 @@
+import { FindChallengeBottomBar } from 'components/chapters/FindChallengeBottomBar'
+import { getUserLessonStatus } from 'lib/content'
+import { setUserProgress } from 'lib/user'
+import { useState } from 'react'
+import PlayIcon from 'public/assets/icons/play.svg'
 import Terminal from 'components/Terminal'
 import clsx from 'clsx'
-import PlayIcon from 'public/assets/icons/play.svg'
-import { useState } from 'react'
-import { FindChallengeBottomBar } from 'components/chapters/FindChallengeBottomBar'
 
 export const Code = ({
   expectedInput, 
   next,
-  isSmallScreen
+  isSmallScreen,
+	chapterInfo,
+	challengeInfo
 } : {
   expectedInput : string,
   next : string,
-  isSmallScreen: boolean
+  isSmallScreen: boolean,
+	chapterInfo : string,
+	challengeInfo : string
 }) => {
   const [lines, setLines] = useState([{
     value: 'Enter your commands here and press Enter...',
@@ -19,6 +25,13 @@ export const Code = ({
   }])
   const [success, setSuccess] = useState(false)
   const [answer, setAnswer] = useState('')
+
+	function saveProgress() {
+		const status = getUserLessonStatus(chapterInfo, challengeInfo)
+		if(!status.completed) {
+			setUserProgress(chapterInfo, challengeInfo)
+		}
+	}
 
   function onInput(input) {
     setLines((lines) => [...lines, {value: input, type: 'input'}])
@@ -32,7 +45,8 @@ export const Code = ({
         givenInput === expectedInput
       ) {
         setTimeout(() => {
-        setSuccess(true)
+					saveProgress()
+					setSuccess(true)
         }, 1000)
         setAnswer(answerValue)
       }
