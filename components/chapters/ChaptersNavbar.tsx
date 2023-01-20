@@ -23,7 +23,7 @@ export const ChaptersNavbar = ({ items, slug }) => {
           <AddressBar />
         </div>
         <div className="flex items-stretch">
-          <TabGroup path={`chapters/${slug}`} items={[...items]}></TabGroup>
+          <TabGroup chapterId={slug} path={`chapters/${slug}`} items={[...items]}></TabGroup>
         </div>
       </div>
     </div>

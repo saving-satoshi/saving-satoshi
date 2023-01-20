@@ -45,6 +45,7 @@ export default function About() {
           <p className="mt-2 font-nunito text-xl">
             Open an issue or a PR on{' '}
             <a
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://github.com/saving-satoshi/saving-satoshi"
@@ -59,6 +60,7 @@ export default function About() {
           <p className="mt-2 font-nunito text-xl">
             Contributions by{' '}
             <a
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://twitter.com/GBKS"
@@ -67,7 +69,7 @@ export default function About() {
             </a>
             ,{' '}
             <a
-              className="hover:underline"
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://twitter.com/adamcjonas"
@@ -76,7 +78,7 @@ export default function About() {
             </a>
             ,{' '}
             <a
-              className="hover:underline"
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://twitter.com/satsie"
@@ -85,7 +87,7 @@ export default function About() {
             </a>
             ,{' '}
             <a
-              className="hover:underline"
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://github.com/ggwilin"
@@ -94,7 +96,7 @@ export default function About() {
             </a>
             ,{' '}
             <a
-              className="hover:underline"
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://twitter.com/netrebelking"
@@ -103,7 +105,7 @@ export default function About() {
             </a>
             ,{' '}
             <a
-              className="hover:underline"
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://github.com/aureleoules"
