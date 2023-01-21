@@ -10,13 +10,13 @@ const smono = Space_Mono({
     display: 'swap',
   })
 
-interface TextAreaProps {
+interface UserInputProps {
     inputAmount: number;
     value: string;
     userInput: (value: string) => void
 }
 
-export const TransactionInput: React.FC<TextAreaProps> = ({ inputAmount, value, userInput }) => {
+export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userInput }) => {
     const [textAreaValue, setTextAreaValue] = useState(value);
     
     return (

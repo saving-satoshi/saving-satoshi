@@ -3,7 +3,7 @@ import { useState } from 'react'
 import RICIBs from 'react-individual-character-input-boxes'
 import clsx from 'clsx'
 import { FindChallengeBottomBar, Status } from 'components/chapters/FindChallengeBottomBar'
-import { TransactionInput } from 'components/TransactionInput'
+import { UserInput } from 'components/UserInput'
 
 // TODO use environment
 const inputAmount = 154
@@ -46,7 +46,7 @@ export const Code = ({
             Paste the ScriptSig HEX Representation
           </h2>
           <div className="w-full pt-8">
-            <TransactionInput inputAmount={inputAmount} value={userInput} userInput={setUserInput}/>
+            <UserInput inputAmount={inputAmount} value={userInput} userInput={setUserInput}/>
           </div>
         </div>
       </div>
