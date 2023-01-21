@@ -3,6 +3,7 @@ import { useState } from 'react'
 import RICIBs from 'react-individual-character-input-boxes'
 import clsx from 'clsx'
 import { FindChallengeBottomBar, Status } from 'components/chapters/FindChallengeBottomBar'
+import { TransactionInput } from 'components/TransactionInput'
 
 // TODO use environment
 const inputAmount = 154
@@ -45,27 +46,7 @@ export const Code = ({
             Paste the ScriptSig HEX Representation
           </h2>
           <div className="w-full pt-8">
-            <RICIBs
-              amount={inputAmount}
-              autoFocus
-              handleOutputString={str => setUserInput(str)}
-              inputProps={{
-                className: 'bg-transparent',
-                placeholder: '_',
-                style: {
-                  fontSize: '20px',
-                  width: '20px',
-                  height: '20px',
-                  margin: '0px',
-                  borderRadius: '0px',
-                  textAlign: 'center',
-                  justifyContent: 'space-evenly',
-                  outline: 'none',
-                  fontFamily: 'var(--space-mono-font)',
-                }
-              }}
-              inputRegExp={/^[a-zA-Z0-9_.-]*$/}
-            />
+            <TransactionInput inputAmount={inputAmount} value={userInput} userInput={setUserInput}/>
           </div>
         </div>
       </div>
