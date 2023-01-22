@@ -10,7 +10,7 @@ import ArrowLeftIcon from 'public/assets/icons/arrow-left.svg'
 export const ChaptersNavbar = ({ items, slug }) => {
   const router = useRouter()
   return (
-    <div className="left-0 top-0 w-screen">
+    <div className="left-0 top-0 w-full">
       <div className="flex items-stretch justify-between border-b border-white/80 text-white">
         <div className="flex items-stretch">
           <button
