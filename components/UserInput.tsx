@@ -18,50 +18,55 @@ interface UserInputProps {
 
 export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userInput }) => {
     const [textAreaValue, setTextAreaValue] = useState(value);
+
+    const blankSpace = () => {
+      let spaces = ('&nbsp;'.repeat(value.length) + '_'.repeat(inputAmount - value.length));
+    return <span dangerouslySetInnerHTML={{ __html: spaces.replace(/ /g, "&nbsp;") }} />;
+      // return ('&nbsp;'.repeat(value.length) + '_'.repeat(inputAmount - value.length))
+    }
     
     return (
-        <form style={{position:'relative'}} >
-              <br/>
+        <form style={{
+          position:'relative',
+          textAlign: 'center'
+          }} >
+            <div style={{display: 'inline-block'}}>
               <textarea 
                 onChange={(e) => {setTextAreaValue(e.target.value)
                     userInput(e.target.value);
                 }}
                 value={textAreaValue}  
-                id="text" name="text"
-                rows={4} cols={40}
                 maxLength={inputAmount}
                 spellCheck="false"
                 style={{
-                    width: '900px',
-                    height: '120px',
-                    fontSize: '20px',
-                    color:'white',
-                    letterSpacing: '10px',
-                    background: 'transparent',
-                    fontFamily: `${smono.style.fontFamily}`,
-                    position: 'absolute',
-                    top: '0',
-                    left: '0',
-                    zIndex: '1',
-                    outline: 'none',
-                    resize: 'none'
+                  width: '804px',
+                  height: '150px',
+                  fontSize: '20px',
+                  textAlign: 'left',
+                  color:'white',
+                  letterSpacing: '10px',
+                  background: 'transparent',
+                  fontFamily: `${smono.style.fontFamily}`,
+                  position: 'absolute',
+                  top: '0',
+                  left: '0',
+                  outline: 'none',
+                  resize: 'none'
                 }}
                 />
               <p style={{
-                    display: 'block',
-                    width: '900px',
-                    height: '120px',
-                    lineBreak: 'anywhere',
-                    fontSize: '20px',
-                    color:'white',
-                    letterSpacing: '10px',
-                    position: 'relative',
-                    top: '-20px',
-                    zIndex: '0'
+                display: 'block',
+                maxWidth: '804px',
+                height: '150px',
+                lineBreak: 'anywhere',
+                fontSize: '20px',
+                color:'white',
+                letterSpacing: '10px',
+                pointerEvents: 'none',
               }}>
-                {`_`.repeat(inputAmount)}
+                {blankSpace()}
               </p>
-              <br/>
+              </div>
             </form>
     )
 }
