@@ -1,14 +1,6 @@
 'use client'
 
-import { Space_Mono } from '@next/font/google'
-import { useState, useRef, useEffect } from 'react';
-
-const smono = Space_Mono({
-    weight: ['400', '700'],
-    variable: '--inter-font',
-    preload: true,
-    display: 'swap',
-  })
+import { useState } from 'react';
 
 interface UserInputProps {
     inputAmount: number;
@@ -35,9 +27,7 @@ export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userIn
     }
     
     return (
-        <form style={{
-          position:'relative'
-          }}>
+        <form className='relative'>
             <textarea 
                 onChange={(e) => {setTextAreaValue(e.target.value)
                     userInput(e.target.value);
@@ -49,7 +39,7 @@ export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userIn
                 className='w-full h-40 text-inherit text-left text-xl tracking-code bg-transparent font-space-mono absolute top-0 left-0 outline-none resize-none'
                 />
               <p
-              className='w-full h-40 text-inherit text-xl tracking-code pointer-events-none'
+              className='w-full h-40 text-inherit text-xl tracking-code pointer-events-none font-space-mono'
               style={{
                 lineBreak: 'anywhere',
                 textAlignLast: 'center'
