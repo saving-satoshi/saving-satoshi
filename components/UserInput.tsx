@@ -19,6 +19,7 @@ interface UserInputProps {
 
 export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userInput, answer }) => {
     const [textAreaValue, setTextAreaValue] = useState(value);
+    const [matching, setMatching] = useState(true);
 
     const blankSpace = () => {
       let underscores = '_'.repeat(inputAmount);
