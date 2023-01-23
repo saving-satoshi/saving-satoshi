@@ -31,12 +31,14 @@ export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userIn
             <textarea 
                 onChange={(e) => {setTextAreaValue(e.target.value)
                     userInput(e.target.value);
-                    setMatching(e.target.value.split('').every((val, i) => val === answer[i]));
+                    setMatching(e.target.value.split('').every((val, i) => (val === answer[i]) && (value.length === inputAmount - 1)));
                 }}
                 value={textAreaValue}  
                 maxLength={inputAmount}
-                spellCheck="false"
-                className='w-full h-40 text-inherit text-left text-xl tracking-code bg-transparent font-space-mono absolute top-0 left-0 outline-none resize-none'
+                spellCheck='false'
+                className={
+                  `${matching ? 'text-green/100' : 'text-inherit'} w-full h-40 text-left text-xl tracking-code bg-transparent font-space-mono absolute top-0 left-0 outline-none resize-none`
+                }
                 />
               <p
               className='w-full h-40 text-inherit text-xl tracking-code pointer-events-none font-space-mono'
