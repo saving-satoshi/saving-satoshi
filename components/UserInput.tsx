@@ -20,9 +20,19 @@ export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userIn
     const [textAreaValue, setTextAreaValue] = useState(value);
 
     const blankSpace = () => {
-      let spaces = ('&nbsp;'.repeat(value.length) + '_'.repeat(inputAmount - value.length));
-    return <span dangerouslySetInnerHTML={{ __html: spaces.replace(/ /g, "&nbsp;") }} />;
+    //   let spaces = ('&nbsp;'.repeat(value.length) + '_'.repeat(inputAmount - value.length));
+    // return <span dangerouslySetInnerHTML={{ __html: spaces.replace(/ /g, "&nbsp;") }} />;
       // return ('&nbsp;'.repeat(value.length) + '_'.repeat(inputAmount - value.length))
+      let underscores = '_'.repeat(inputAmount);
+    underscores = underscores.substring(0, inputAmount - value.length);
+    return (
+      <>
+      {Array.from({length: inputAmount}, (_, i) => {
+          if(i >= inputAmount - underscores.length) return <span key={i}>_</span>
+          return <span key={i}>&nbsp;</span>
+      })}
+  </>
+    );
     }
     
     return (
