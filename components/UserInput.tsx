@@ -1,7 +1,7 @@
 'use client'
 
 import { Space_Mono } from '@next/font/google'
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const smono = Space_Mono({
     weight: ['400', '700'],
@@ -13,10 +13,11 @@ const smono = Space_Mono({
 interface UserInputProps {
     inputAmount: number;
     value: string;
-    userInput: (value: string) => void
+    userInput: (value: string) => void;
+    answer: string;
 }
 
-export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userInput }) => {
+export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userInput, answer }) => {
     const [textAreaValue, setTextAreaValue] = useState(value);
 
     const blankSpace = () => {
@@ -34,46 +35,26 @@ export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userIn
     
     return (
         <form style={{
-          position:'relative',
-          textAlign: 'center'
-          }} >
-            <div style={{display: 'inline-block'}}>
-              <textarea 
+          position:'relative'
+          }}>
+            <textarea 
                 onChange={(e) => {setTextAreaValue(e.target.value)
                     userInput(e.target.value);
+                    setMatching(e.target.value.split('').every((val, i) => val === answer[i]));
                 }}
                 value={textAreaValue}  
                 maxLength={inputAmount}
                 spellCheck="false"
-                style={{
-                  width: '804px',
-                  height: '150px',
-                  fontSize: '20px',
-                  textAlign: 'left',
-                  color:'white',
-                  letterSpacing: '10px',
-                  background: 'transparent',
-                  fontFamily: `${smono.style.fontFamily}`,
-                  position: 'absolute',
-                  top: '0',
-                  left: '0',
-                  outline: 'none',
-                  resize: 'none'
-                }}
+                className='w-full h-40 text-inherit text-left text-xl tracking-code bg-transparent font-space-mono absolute top-0 left-0 outline-none resize-none'
                 />
-              <p style={{
-                display: 'block',
-                maxWidth: '804px',
-                height: '150px',
+              <p
+              className='w-full h-40 text-inherit text-xl tracking-code pointer-events-none'
+              style={{
                 lineBreak: 'anywhere',
-                fontSize: '20px',
-                color:'white',
-                letterSpacing: '10px',
-                pointerEvents: 'none',
+                textAlignLast: 'center'
               }}>
                 {blankSpace()}
               </p>
-              </div>
             </form>
     )
 }
