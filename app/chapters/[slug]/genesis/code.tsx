@@ -46,7 +46,7 @@ export const Code = ({
             Paste the ScriptSig HEX Representation
           </h2>
           <div className="w-full pt-8">
-            <UserInput inputAmount={inputAmount} value={userInput} userInput={setUserInput}/>
+            <UserInput inputAmount={inputAmount} value={userInput} userInput={setUserInput} answer={answer}/>
           </div>
         </div>
       </div>
