@@ -11,7 +11,7 @@ interface UserInputProps {
 
 export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userInput, answer }) => {
     const [textAreaValue, setTextAreaValue] = useState(value);
-    const [matching, setMatching] = useState(true);
+    const [matching, setMatching] = useState(false);
 
     const blankSpace = () => {
       let underscores = '_'.repeat(inputAmount);
@@ -31,13 +31,18 @@ export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userIn
             <textarea 
                 onChange={(e) => {setTextAreaValue(e.target.value)
                     userInput(e.target.value);
-                    setMatching(e.target.value.split('').every((val, i) => (val === answer[i]) && (value.length === inputAmount - 1)));
+                    // setMatching(e.target.value.split('').every((val, i) => (val === answer[i]) && (value.length === inputAmount - 1)));
+                    if(((e.target.value === answer) && (e.target.value.length === inputAmount))) {
+                      setMatching(true)
+                    } else {
+                      setMatching(false)
+                    }
                 }}
                 value={textAreaValue}  
                 maxLength={inputAmount}
                 spellCheck='false'
                 className={
-                  `${matching ? 'text-green/100' : 'text-inherit'} w-full h-40 text-left text-2xl tracking-code bg-transparent font-space-mono absolute top-0 left-0 outline-none resize-none`
+                  `${matching ? 'text-green/100' : 'text-inherit'} w-full h-44 text-left text-2xl tracking-code bg-transparent font-space-mono absolute top-0 left-0 outline-none resize-none`
                 }
                 />
               <p
