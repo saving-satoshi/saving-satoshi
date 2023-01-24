@@ -25,7 +25,7 @@ export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userIn
         </>
       );
     }
-    
+
     return (
         <form className='relative'>
             <textarea 
@@ -42,11 +42,11 @@ export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userIn
                 maxLength={inputAmount}
                 spellCheck='false'
                 className={
-                  `${matching ? 'text-green/100' : 'text-inherit'} w-full h-44 text-left text-2xl tracking-code bg-transparent font-space-mono absolute top-0 left-0 outline-none resize-none`
+                  `${matching ? 'text-green/100' : 'text-inherit'} w-full h-full overflow-hidden text-2xl tracking-code bg-transparent font-space-mono absolute top-0 left-0 outline-none resize-none`
                 }
                 />
               <p
-              className='w-full h-40 text-inherit text-2xl tracking-code pointer-events-none font-space-mono'
+              className='w-full h-full text-inherit text-2xl tracking-code pointer-events-none font-space-mono'
               style={{
                 lineBreak: 'anywhere',
                 textAlignLast: 'center'
