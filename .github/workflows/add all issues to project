@@ -1,4 +1,4 @@
-name: Add bugs to bugs project
+name: Add issues to bugs project
 
 on:
   issues:
@@ -13,6 +13,6 @@ jobs:
       - uses: actions/add-to-project@RELEASE_VERSION
         with:
           project-url: https://github.com/orgs/saving-satoshi/projects/2
-          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
-          labeled: bug, needs-triage
-          label-operator: OR
+          github-token: ${{ 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 }}
+          labeled: 
+          label-operator: 
