@@ -8,8 +8,10 @@ import clsx from 'clsx'
 import { TerminalOutput } from 'react-terminal-ui'
 import PlayIcon from 'public/assets/icons/play.svg'
 import { FindChallengeBottomBar } from 'components/chapters/FindChallengeBottomBar'
+import { CopyButton } from 'components/ui/CopyButton'
 import { setUserProgress } from 'lib/user'
 import { getUserLessonStatus } from 'lib/content'
+import { CopyableCode } from 'components/ui/CopyableCode'
 
 //Am i going to to this boilerplate for every view?
 // TODO make a factory (or other pattnern) to populate component data
@@ -68,7 +70,9 @@ export default function Genesispt2() {
           <div
             className="genesis"
             dangerouslySetInnerHTML={{ __html: genesis.body.html }}
-          ></div>
+          >
+          </div>
+          <CopyableCode code={'echo scriptSigHex | xxd -r -p'} language='shell'/>
         </div>
       </div>
       <div className="flex grow flex-col border-white/25 font-space-mono text-white md:border-l">
