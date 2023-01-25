@@ -13,19 +13,22 @@ import { Code } from './Code'
  * @next {string} link to next part of chapter
  * @chapterInfo {string} chapter number / info
  * @challegneInfo {string} challenge number / info
+ * @copyableCodeContent {string} Copyable code content / text
  */
 export default function TerminalChallengeLayout({ 
   slug, 
   expectedInput, 
   next,
 	chapterInfo,
-	challengeInfo
+	challengeInfo,
+  copyableCodeContent
 } : {
   slug : string,
   expectedInput : string,
   next : string,
 	chapterInfo : string,
-	challengeInfo : string
+	challengeInfo : string,
+  copyableCodeContent: string
 }) {
   function getLessonContent() {
 		const data = allLessons.find(
@@ -72,7 +75,7 @@ export default function TerminalChallengeLayout({
       />
       {(activeTab == 'info') && (
         <div className='p-3.5'>
-        	<Info genesis={genesis} />
+        	<Info genesis={genesis} copyableCodeContent={copyableCodeContent} />
         </div>
       )}
       {(activeTab == 'code') && (
@@ -81,7 +84,7 @@ export default function TerminalChallengeLayout({
       </div>
     ) : (
       <div className="justify-stretch grid w-screen grow grid-cols-1 md:grid-cols-2 px-0">
-				<Info genesis={genesis} />
+				<Info genesis={genesis} copyableCodeContent={copyableCodeContent} />
 				<Code expectedInput={expectedInput} next={next} isSmallScreen={isSmallScreen} chapterInfo={chapterInfo} challengeInfo={challengeInfo} />
       </div>
     )

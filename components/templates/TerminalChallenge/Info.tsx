@@ -1,7 +1,11 @@
+import { CopyableCode } from 'components/ui/CopyableCode'
+
 export const Info = ({
-  genesis
+  genesis,
+  copyableCodeContent
 }: {
-  genesis: any
+  genesis: any,
+  copyableCodeContent: string
 }) => {
   return (
     <div className="flex w-full justify-center text-white">
@@ -10,6 +14,7 @@ export const Info = ({
           className="genesis"
           dangerouslySetInnerHTML={{ __html: genesis.body.html }}
         ></div>
+        <CopyableCode code={copyableCodeContent} language='shell' />
       </div>
     </div>
   )
