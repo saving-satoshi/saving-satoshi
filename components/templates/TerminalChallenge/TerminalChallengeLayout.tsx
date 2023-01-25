@@ -62,7 +62,7 @@ export default function TerminalChallengeLayout({
     isSmallScreen ? (
       <div className="
       flex
-      w-screen
+      w-full
       grow
       flex-col
       ">
@@ -83,7 +83,7 @@ export default function TerminalChallengeLayout({
       )}
       </div>
     ) : (
-      <div className="justify-stretch grid w-screen grow grid-cols-1 md:grid-cols-2 px-0">
+      <div className="justify-stretch grid w-full grow grid-cols-1 md:grid-cols-2 px-0">
 				<Info genesis={genesis} copyableCodeContent={copyableCodeContent} />
 				<Code expectedInput={expectedInput} next={next} isSmallScreen={isSmallScreen} chapterInfo={chapterInfo} challengeInfo={challengeInfo} />
       </div>

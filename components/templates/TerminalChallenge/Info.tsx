@@ -8,8 +8,8 @@ export const Info = ({
   copyableCodeContent: string
 }) => {
   return (
-    <div className="flex w-full justify-center text-white">
-      <div className="ccontent-center justify-items-start px-1 py-6 sm:px-12">
+    <div className="flex">
+      <div className="px-1 py-6 sm:px-12 text-white">
         <div
           className="genesis"
           dangerouslySetInnerHTML={{ __html: genesis.body.html }}
