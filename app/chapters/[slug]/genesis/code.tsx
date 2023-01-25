@@ -29,7 +29,7 @@ export const Code = ({
         flex
         grow
         md:items-center
-        max-w-[840px]
+        max-w-[1020px]
         px-4
         py-8"
       >
