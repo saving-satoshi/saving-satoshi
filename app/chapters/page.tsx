@@ -6,7 +6,7 @@ import { Chapters } from './chapters'
 export default async function ChaptersPage() {
   return (
     <>
-      <div className="w-full">
+      <div className="w-screen">
         <Navbar items={sectionsConfig.mainNav} />
         <div className="lg:px-0">
           <div className="flex flex-col justify-center text-white">

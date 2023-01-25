@@ -64,7 +64,7 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
   }
 
   return (
-    <div className="absolute left-0 top-0 w-full">
+    <div className="absolute left-0 top-0 w-screen">
       <div className="m-auto flex items-center justify-between px-6 py-4 text-white">
         <Link
           href="/"
