@@ -5,7 +5,7 @@ import { BoxButton } from 'components/ui/BoxButton'
 
 export default function About() {
   return (
-    <div className="w-screen">
+    <div className="w-full">
       <Navbar items={sectionsConfig.mainNav} />
       <div className="m-auto px-6 lg:w-9/12 2xl:w-1/2">
         <div className="flex flex-col justify-center text-white">
