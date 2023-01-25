@@ -38,27 +38,27 @@ export default function ChapterIntroLayout({
   const intro =  getIntro(slug)
 
   return (
-    <div className="flex w-full grow">
-      <div className="lg:flex lg:grow lg:justify-center lg:px-0">
-        <div className="lg:order-last lg:flex lg:shrink lg:basis-1/2 lg:justify-center lg:border-l lg:border-white/25">
+    <div className="flex grow">
+      <div className="lg:flex lg:grow">
+        <div className="lg:order-last lg:flex lg:shrink lg:basis-1/2 lg:border-l lg:border-white/25">
           <Image
             src={intro.image}
             alt={intro.title}
             width={600}
             height={600}
-            className="w-full h-full object-cover"
+            className="w-full object-cover"
           />
         </div>
-        <div className="flex w-full shrink basis-1/2 justify-start text-white ">
-          <div className="flex flex-col content-center justify-items-start mx-[15px] lg:mx-10 ">
+        <div className="flex shrink basis-1/2">
+          <div className="flex flex-col px-[15px] lg:px-10 py-10 gap-10">
             <div
               dangerouslySetInnerHTML={{ __html: intro.body.html }}
-              className="intro my-10"
+              className="intro text-white"
             ></div>
-            <div className="mb-10">
+            <div>
               <BoxButton
                 href={next}
-                classes="w-full"
+                classes="w-full sm:w-auto"
               >Start</BoxButton>
             </div>
           </div>
