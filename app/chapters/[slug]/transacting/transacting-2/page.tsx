@@ -10,6 +10,7 @@ export default function TransactingPt2() {
       next="/chapters/chapter-1/done"
       chapterInfo="chapter-1"
       challengeInfo="done"
+      copyableCodeContent="echo scriptPubKeyHex | xxd -r -p"
     />
   )
 }

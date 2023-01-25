@@ -7,6 +7,7 @@ import Modal from 'react-modal'
 const crypto = require('crypto')
 const Secp256k1 = require('@lionello/secp256k1-js')
 import Close from 'public/assets/icons/close.svg'
+import { CopyButton } from 'components/ui/CopyButton'
 import { getUser, loginUser, setUserAvatar, setUserRegistered } from 'lib/user'
 
 export const SignUpModal = (props) => {
@@ -77,22 +78,8 @@ export const SignUpModal = (props) => {
       <h2 className="mb-4 text-xl font-bold">Back up your personal code</h2>
 
       <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
-        <code className="whitespace-pre-wrap break-all">{user ? user.privateKey.toString(16) : ''}</code>
-        {copied ? (
-          <button
-            className="mt-4 w-full rounded-md bg-green-500 px-4 py-2 text-green-800"
-            onClick={copy}
-          >
-            Copied!
-          </button>
-        ) : (
-          <button
-            className="mt-4 w-full rounded-md bg-black  bg-opacity-25 px-4 py-2 text-white"
-            onClick={copy}
-          >
-            Copy
-          </button>
-        )}
+        <code className="whitespace-pre-wrap break-all mb-2">{user ? user.privateKey.toString(16) : ''}</code>
+        <CopyButton content={user ? user.privateKey.toString(16) : ''}>Copy</CopyButton>
       </pre>
 
       <p className="mt-5 text-sm">

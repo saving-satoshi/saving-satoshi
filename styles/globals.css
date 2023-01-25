@@ -87,13 +87,6 @@ modules, extending theme perhaps ????
   padding-top: 0.625rem;
 }
 
-.genesis > pre,
-.genesis-p2 > pre {
-  padding: 10px;
-  border: 1px dashed white;
-  margin-top: 15px;
-}
-
 .genesis-p2 > h1 {
   font-size: 1.5rem;
   font-family: var(--nunito-font);

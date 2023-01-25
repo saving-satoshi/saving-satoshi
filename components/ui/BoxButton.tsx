@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export const BoxButton = ({ href, children, title, style, size, disabled, external, classes, onClick, full }: { href?: string, children: any, title?: string, style?: string, size?: string, disabled?: boolean, external?: boolean, classes?:string, onClick?: any, full?: boolean }) => {
+export const BoxButton = ({ href, children, title, style, size, disabled, external, classes, onClick, full, round }: { href?: string, children: any, title?: string, style?: string, size?: string, disabled?: boolean, external?: boolean, classes?:string, onClick?: any, full?: boolean, round?: boolean }) => {
 
   const isLink = href !== undefined
   let className = `inline-block justify-center px-12 text-center font-nunito font-bold transition duration-150 ease-in-out ${full ? 'w-full' : 'md:w-auto'}`;
@@ -63,6 +63,10 @@ export const BoxButton = ({ href, children, title, style, size, disabled, extern
   // Append custom classe, useful for layout like margins
   if(classes) {
     className += ' '+classes
+  }
+
+  if (round) {
+    className += ' rounded'
   }
 
   if(isLink) {

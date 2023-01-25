@@ -10,6 +10,7 @@ export default function GenesisPt2() {
       next="/chapters/chapter-1/transacting/"
       chapterInfo="chapter-1"
       challengeInfo="transacting"
+      copyableCodeContent="echo scriptSigHex | xxd -r -p"
     />
   )
 }
