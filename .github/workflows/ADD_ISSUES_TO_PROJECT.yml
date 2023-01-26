@@ -10,7 +10,7 @@ jobs:
     name: Add issue to project
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/add-to-project@v3
+      - uses: actions/add-to-project@v4
         with:
           project-url: https://github.com/orgs/saving-satoshi/projects/2
           github-token: ${{ secrets.SS_ISSUES2TASK }}        
