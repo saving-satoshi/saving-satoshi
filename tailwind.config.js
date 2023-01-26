@@ -31,9 +31,6 @@ module.exports = {
         cbrush: ['var(--cbrush-font)'],
         'space-mono': ['var(--space-mono-font)'],
         nunito: ['var(--nunito-font)'],
-      },
-      letterSpacing: {
-        code: ['10px']
       }
     },
   },
