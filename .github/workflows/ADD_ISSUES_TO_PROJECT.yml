@@ -12,5 +12,5 @@ jobs:
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
-          project-url: https://github.com/orgs/saving-satoshi/projects/2
+          project-url: https://github.com/users/ecurrencyhodler/projects/2/views/1
           github-token: ${{ secrets.SS_ISSUES2TASK }}        
