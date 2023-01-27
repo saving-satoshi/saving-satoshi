@@ -13,4 +13,4 @@ jobs:
       - uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/saving-satoshi/projects/2
-          github-token: ${{ secrets.SS_ISSUES2TASK }}        
+          github-token: ${{ secrets.ISSUE2TASK }}       
