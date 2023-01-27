@@ -34,6 +34,7 @@
     "autoprefixer": "^10.4.13",
     "eslint": "latest",
     "eslint-config-next": "latest",
+    "eslint-config-prettier": "^8.6.0",
     "husky": "^8.0.2",
     "postcss": "^8.4.18",
     "prettier": "^2.8.1",
