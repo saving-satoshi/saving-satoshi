@@ -1,6 +1,6 @@
-import { BoxButton } from './ui/BoxButton'
+import { Button } from 'shared'
 
-export const Hero = () => {
+export default function Hero() {
   return (
     <div className="homepage-img -mt-20 flex grow items-end justify-center bg-cover bg-fixed bg-[-10em] md:bg-[0]">
       <div className="flex w-screen flex-col justify-center bg-gradient-to-b from-back/0 to-back/100 p-10 font-cbrush text-white">
@@ -12,10 +12,12 @@ export const Hero = () => {
         </p>
         <div className="flex grid grid-cols-1 justify-center pt-8  pb-2 sm:pb-10 md:grid-cols-2 md:space-x-5">
           <div className="flex items-center justify-center sm:justify-end">
-            <BoxButton href="/chapters">Start your journey</BoxButton>
+            <Button href="/chapters">Start your journey</Button>
           </div>
           <div className="flex justify-center pt-4 sm:justify-start md:pt-0">
-            <BoxButton href="/about" style="outline">Tell me more</BoxButton>
+            <Button href="/about" style="outline">
+              Tell me more
+            </Button>
           </div>
         </div>
       </div>

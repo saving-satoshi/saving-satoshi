@@ -1,10 +1,11 @@
-import ChapterIntroLayout from "components/templates/ChapterIntro/ChapterIntroLayout"
+import chapters from 'content/chapters'
+import introductions from 'content/introductions'
 
 export default async function Page({ params }) {
-  return (
-    <ChapterIntroLayout 
-      slug={params.slug}
-      next="/chapters/chapter-1/genesis"
-    />
-  )
+  const chapter = chapters[params.slug]
+  const intro = introductions[chapter.metadata.intro]
+
+  const Intro = intro.default
+
+  return <Intro params={params} />
 }
