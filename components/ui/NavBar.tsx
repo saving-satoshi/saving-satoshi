@@ -72,7 +72,7 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
         >
           <h1 className="text-xl md:text-3xl">{siteConfig.name}</h1>
         </Link>
-        <nav className="flex text-xl md:text-2xl">
+        <nav className="flex items-center text-xl md:text-2xl">
           {items?.length ? (
             items?.map((item, idx) => (
               <Link
