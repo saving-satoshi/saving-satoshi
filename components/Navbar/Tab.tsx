@@ -3,7 +3,7 @@
 import clsx from 'clsx'
 import { useState } from 'react'
 import Link from 'next/link'
-import { useSelectedLayoutSegment } from 'next/navigation'
+import { usePathname, useSelectedLayoutSegment } from 'next/navigation'
 
 import Tooltip from './Tooltip'
 import CheckIcon from 'public/assets/icons/check.svg'
@@ -11,6 +11,7 @@ import LockIcon from 'public/assets/icons/lock.svg'
 
 import { useStatus } from 'hooks'
 import { Lesson } from 'types'
+import chapters from 'content/chapters'
 
 export default function Tab({
   index,
@@ -25,13 +26,15 @@ export default function Tab({
 }) {
   const { slug } = params
 
-  const [showTooltip, setShowTooltip] = useState(false)
+  const pathName = usePathname()
+  const pathData = pathName.split('/')
+  const isRouteLesson = pathData.length === 4
 
   const status = useStatus(slug, challenge.lessonId)
-  const segment = useSelectedLayoutSegment()
+  const [showTooltip, setShowTooltip] = useState(false)
 
-  const href = `/chapters/${slug}/${challenge.lessonId}`
-  const isActive = (!slug && segment === null) || segment === slug
+  const challengeId = isRouteLesson ? pathData.pop().split('-')[0] : undefined
+  const isActive = challenge.lessonId === challengeId
   const isLast = index == count - 1
 
   const ComponentType = status && status.unlocked ? Link : 'p'
@@ -43,7 +46,7 @@ export default function Tab({
       onMouseLeave={() => setShowTooltip(false)}
     >
       <ComponentType
-        href={href}
+        href={`/chapters/${slug}/${challenge.lessonId}`}
         title={challenge.title}
         className={clsx(
           'relative flex items-center justify-center border-l border-white/25 px-7 text-center text-lg transition duration-100 ease-in-out',
