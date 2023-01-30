@@ -64,7 +64,7 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
   }
 
   return (
-    <div className="absolute left-0 top-0 w-screen">
+    <div className="absolute left-0 top-0 w-full">
       <div className="m-auto flex items-center justify-between px-6 py-4 text-white">
         <Link
           href="/"
@@ -72,7 +72,7 @@ export const Navbar = ({ items }: { items: NavItem[] }) => {
         >
           <h1 className="text-xl md:text-3xl">{siteConfig.name}</h1>
         </Link>
-        <nav className="flex text-xl md:text-2xl">
+        <nav className="flex items-center text-xl md:text-2xl">
           {items?.length ? (
             items?.map((item, idx) => (
               <Link

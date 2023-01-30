@@ -94,7 +94,7 @@ export const LoginModal = (props) => {
       <div className="p-4">
       {!isLoggedIn && (
         <>
-          <Avatar avatar={user.avatar} size={80} />
+          <Avatar avatar={(user && user.avatar)} size={80} />
           <h2 className="mb-4 mt-5 text-3xl font-bold">Load your progress</h2>
           <p className="mb-5">
             Enter your personal code below to restore your chapter and challenge progress, as well as your avatar. <a href="#" className='text-white underline'>No code yet?</a>
