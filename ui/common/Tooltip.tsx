@@ -24,7 +24,7 @@ export default function Tooltip({
     const arrowHeight = 12
 
     const x = targetRect.left + targetRect.width / 2 - tooltipRect.width / 2
-    const y = targetRect.top - tooltipRect.height - arrowHeight
+    const y = targetRect.top - tooltipRect.height - arrowHeight + window.scrollY
 
     tooltip.style.transform = `translate3d(${x}px, ${y}px, 0px)`
 

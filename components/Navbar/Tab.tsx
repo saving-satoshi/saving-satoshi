@@ -10,7 +10,6 @@ import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
 import { useStatus } from 'hooks'
-import { Lesson } from 'types'
 import chapters from 'content/chapters'
 
 export default function Tab({
@@ -22,7 +21,7 @@ export default function Tab({
   index: number
   count: number
   params: any
-  challenge: Lesson
+  challenge: { lessonId: string; title: string }
 }) {
   const { slug } = params
 

@@ -26,12 +26,22 @@ export type TabData = {
   disabled?: boolean
 }
 
+export type Translation = {
+  [key: string]: string
+}
+
+export type Translations = {
+  [key: string]: Translation
+}
+
 export type Lesson = {
-  title: string
-  lessonId: string
+  default: any
+  metadata: Object
+  translations: Translations
 }
 
 export type Chapter = {
   default: any
-  meta: Object
+  metadata: Object
+  translations: Translations
 }

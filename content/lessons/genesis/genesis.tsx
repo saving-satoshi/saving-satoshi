@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'hooks'
 import { useState } from 'react'
 import {
   StatusBar,
@@ -9,7 +10,6 @@ import {
   LessonTabs,
   Title,
   Text,
-  Tooltip,
   LessonPrompt,
 } from 'ui'
 
@@ -30,44 +30,24 @@ const tabData = [
 
 export default function Genesis1() {
   const [userInput, setUserInput] = useState('')
+  const t = useTranslations()
 
   return (
     <Lesson>
       <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
 
       <LessonInfo>
-        <Title>Find block 0</Title>
+        <Title>{t('genesis.title')}</Title>
 
-        <Text className="text-lg">
-          Let’s find the very first block in the Bitcoin blockchain. Go to a
-          <Tooltip
-            content="We recommend https://blockstream.info/"
-            href="https://blockstream.info/"
-          >
-            block explorer
-          </Tooltip>
-          and search for ’0’. This will take you to the block at height 0. As
-          you can see, this block only contains one transaction.
-        </Text>
-
-        <Text className="text-lg">
-          <span>
-            Open up the transaction so you can take a closer look at the
-            details. On the left is an input called ’Coinbase’. Inside that is a
-            field called ’ScriptSig’. Find the
-          </span>
-          <Tooltip content="Short for hexadecimal, a numeral system that represents numbers using a base of 16.">
-            HEX
-          </Tooltip>
-          <span>representation and paste it below.</span>
-        </Text>
+        <Text className="text-lg">{t('genesis.paragraph_one')}</Text>
+        <Text className="text-lg">{t('genesis.paragraph_two')}</Text>
 
         <Button
           href="https://blockstream.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
           external={true}
           classes="mt-4"
         >
-          View Block 0
+          {t('genesis.view_block_0')}
         </Button>
       </LessonInfo>
 
@@ -75,7 +55,7 @@ export default function Genesis1() {
 
       <LessonPrompt
         className="max-w-[840px] px-4 py-8 md:items-center"
-        label="Paste the ScriptSig HEX Representation"
+        label={t('genesis.placeholder')}
         amount={inputAmount}
         onChange={setUserInput}
       />
@@ -88,6 +68,21 @@ export default function Genesis1() {
       />
     </Lesson>
   )
+}
+
+export const translations = {
+  en: {
+    genesis: {
+      title: 'Find block 0',
+      paragraph_one: `Let's find the very first block in the Bitcoin blockchain. Go to a <Tooltip content="genesis.tooltip_block_explorer" href="https://blockstream.info/">block explorer</Tooltip> and search for '0'. This will take you to the block at height 0. As you can see, this block only contains one transaction.`,
+      paragraph_two: `Open up the transaction so you can take a closer look at the details. On the left is an input called 'Coinbase'. Inside that is a field called 'ScriptSig'. Find the <Tooltip content="genesis.tooltip_hex">HEX</Tooltip> representation and paste it below.`,
+      tooltip_block_explorer: 'We recommend https://blockstream.info/',
+      tooltip_hex:
+        'Short for hexadecimal, a numeral system that represents numbers using a base of 16.',
+      view_block_0: 'View Block 0',
+      placeholder: 'Paste the ScriptSig HEX Representation',
+    },
+  },
 }
 
 export const metadata = {
