@@ -1,9 +1,8 @@
 'use client'
 
 import clsx from 'clsx'
-import { useContext } from 'react'
 
-import { LessonContext } from 'ui'
+import { useLessonContext } from 'ui'
 import LessonTab from './Tab'
 import { TabData } from 'types'
 
@@ -16,7 +15,7 @@ export default function Tabs({
   classes: string
   stretch?: boolean
 }) {
-  const { activeView, setActiveView } = useContext(LessonContext)
+  const { activeView, setActiveView } = useLessonContext()
 
   return (
     <div className={clsx('flex gap-2 md:hidden', classes)}>

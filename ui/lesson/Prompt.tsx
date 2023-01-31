@@ -1,7 +1,6 @@
 import clsx from 'clsx'
-import { useContext } from 'react'
 import { LessonView } from 'types'
-import { Input, LessonContext } from 'ui'
+import { Input, useLessonContext } from 'ui'
 
 export default function LessonPrompt({
   className,
@@ -14,7 +13,7 @@ export default function LessonPrompt({
   amount: number
   onChange: Function
 }) {
-  const { activeView } = useContext(LessonContext)
+  const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
 
   return (

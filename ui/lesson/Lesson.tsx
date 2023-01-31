@@ -1,9 +1,11 @@
 'use client'
 
-import { createContext, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { LessonDirection, LessonContextType, LessonView } from 'types'
 
-export const LessonContext = createContext<LessonContextType | null>(null)
+const LessonContext = createContext<LessonContextType | null>(null)
+
+export const useLessonContext = () => useContext(LessonContext)
 
 export default function Lesson(props) {
   const [activeView, setActiveView] = useState(LessonView.Info)

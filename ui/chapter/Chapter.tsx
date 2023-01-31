@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
 
@@ -11,7 +11,9 @@ import chapters from 'content/chapters'
 
 import { ChapterContextType } from 'types'
 
-export const ChapterContext = createContext<ChapterContextType | null>(null)
+const ChapterContext = createContext<ChapterContextType | null>(null)
+
+export const useChapterContext = () => useContext(ChapterContext)
 
 const tabData = [
   {

@@ -12,9 +12,6 @@ export default function Address() {
   const lessonId = isLessonRoute ? pathData.pop() : undefined
   const chapterId = pathData.pop()
 
-  const hasLesson = lessonId in lessons
-  const hasChapter = chapterId in chapters
-
   const chapter = chapters[chapterId]?.metadata
   const lesson = lessons[lessonId]?.metadata
 
@@ -23,12 +20,12 @@ export default function Address() {
       <div className="flex flex-col text-sm font-medium">
         {pathName && (
           <>
-            {hasChapter && (
+            {chapter && (
               <p className="px-0.5 text-lg leading-none text-white/50">
                 Chapter {chapter.position + 1} - {chapter.title}
               </p>
             )}
-            {hasLesson && (
+            {lesson && (
               <p className="px-0.5 text-2xl leading-none text-white">
                 {lesson.title}
               </p>

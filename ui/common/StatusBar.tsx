@@ -1,8 +1,8 @@
 import clsx from 'clsx'
-import { Button, LessonContext } from 'ui'
+import { Button } from 'ui'
 import CheckIcon from 'public/assets/icons/check.svg'
-import { useContext } from 'react'
 import { LessonView } from 'types'
+import { useLessonContext } from 'ui'
 
 export enum Status {
   InProgress,
@@ -27,7 +27,7 @@ export default function StatusBar({
   errorMsg?: string
   full?: boolean
 }) {
-  const { activeView, direction } = useContext(LessonContext)
+  const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
 
   const getStatus = () => {

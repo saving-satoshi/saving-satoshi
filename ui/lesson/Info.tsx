@@ -1,10 +1,9 @@
 import clsx from 'clsx'
-import { useContext } from 'react'
 import { LessonDirection, LessonView } from 'types'
-import { LessonContext } from 'ui'
+import { useLessonContext } from 'ui'
 
 export default function LessonInfo({ children }) {
-  const { activeView, direction } = useContext(LessonContext)
+  const { activeView, direction } = useLessonContext()
   const isActive = activeView === LessonView.Info
 
   if (direction === LessonDirection.Horizontal) {
