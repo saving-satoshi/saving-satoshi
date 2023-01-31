@@ -21,7 +21,13 @@ export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userIn
         <>
           {Array.from({length: inputAmount}, (_, i) => {
             if(i >= inputAmount - underscores.length) return <span key={i}>_</span>
-            return <span key={i}>&nbsp;</span>
+            if(textAreaValue[i] === answer[i]) {
+              return <span className='overlay correct' key={i}>{textAreaValue[i]}</span>
+            } else if(textAreaValue[i] !== answer[i]) {
+              return <span className='overlay incorrect' key={i}>{textAreaValue[i]}</span>
+            } else if(textAreaValue[i] === answer[i] && textAreaValue.length === answer.length) {
+              return <span className='overlay correct answer' key={i}>{textAreaValue[i]}</span>
+            }
           })}
         </>
       );
@@ -54,8 +60,11 @@ export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userIn
                 maxLength={inputAmount}
                 spellCheck='false'
                 className={
-                  `${matching ? 'text-green/100' : 'text-inherit'} w-full h-full overflow-hidden text-[18px] md:text-[30px] tracking-[5px] bg-transparent font-space-mono absolute top-0 left-0 outline-none resize-none leading-[180%]`
+                  `${matching ? 'text-green/100' : 'text-transparent'} w-full h-full overflow-hidden text-[18px] md:text-[30px] tracking-[5px] bg-transparent font-space-mono absolute top-0 left-0 outline-none resize-none leading-[180%]`
                 }
+                style={{
+                  caretColor: 'white'
+                }}
                 />
               <p
               className='w-full h-full text-inherit text-[18px] md:text-[30px] tracking-[5px] pointer-events-none font-space-mono leading-[180%]'
