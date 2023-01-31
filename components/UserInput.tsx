@@ -20,7 +20,7 @@ export const UserInput: React.FC<UserInputProps> = ({ inputAmount, value, userIn
       return (
         <>
           {Array.from({length: inputAmount}, (_, i) => {
-            if(i >= inputAmount - underscores.length) return <span key={i}>_</span>
+            if(i >= inputAmount - underscores.length) return <span className='underscore' key={i}>_</span>
             if(textAreaValue[i] === answer[i]) {
               return <span className='overlay correct' key={i}>{textAreaValue[i]}</span>
             } else if(textAreaValue[i] !== answer[i]) {
