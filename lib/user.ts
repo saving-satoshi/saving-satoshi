@@ -2,20 +2,29 @@ const crypto = require('crypto')
 const Secp256k1 = require('@lionello/secp256k1-js')
 
 export function getUser() {
+  if (!process.browser) {
+    return
+  }
   let result = JSON.parse(window.localStorage.getItem('user'))
-  if(!result) {
+  if (!result) {
     result = createUser(null)
   }
   return result
 }
 
 export function getUserProgress() {
-  return (!isUserRegistered() || isUserLoggedIn()) ? getUser().progress : null
+  const user = getUser()
+
+  if (!user) {
+    return null
+  }
+
+  return !isUserRegistered() || isUserLoggedIn() ? user.progress : null
 }
 
 export function setUserProgress(chapter, lesson) {
   const user = getUser()
-  if(user) {
+  if (user) {
     user.progress.chapter = chapter
     user.progress.lesson = lesson
     saveUser(user)
@@ -24,7 +33,7 @@ export function setUserProgress(chapter, lesson) {
 
 export function setUserAvatar(avatar) {
   const user = getUser()
-  if(user) {
+  if (user) {
     user.avatar = avatar
     saveUser(user)
   }
@@ -32,20 +41,28 @@ export function setUserAvatar(avatar) {
 
 export function setUserRegistered() {
   const user = getUser()
-  if(user) {
+  if (user) {
     user.registered = true
     saveUser(user)
   }
 }
 
 function createUser(avatar) {
-  let publicKey = null;
-  let privateKey = null;
+  let publicKey = null
+  let privateKey = null
   do {
     const privateKeyBuf = crypto.randomBytes(32)
     privateKey = Secp256k1.uint256(privateKeyBuf, 16)
-    publicKey = Secp256k1.generatePublicKeyFromPrivateKeyData(privateKey);
-  } while (!publicKey || privateKey.gte(Secp256k1.uint256("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141", 16)))
+    publicKey = Secp256k1.generatePublicKeyFromPrivateKeyData(privateKey)
+  } while (
+    !publicKey ||
+    privateKey.gte(
+      Secp256k1.uint256(
+        'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141',
+        16
+      )
+    )
+  )
 
   const user = {
     publicKey: publicKey,
@@ -54,34 +71,55 @@ function createUser(avatar) {
     registered: false,
     progress: {
       chapter: 'chapter-1',
-      lesson: 'genesis'
-    }
+      lesson: 'genesis',
+    },
   }
 
   saveUser(user)
 }
 
 export function saveUser(user) {
+  if (!process.browser) {
+    return
+  }
   window.localStorage.setItem('user', JSON.stringify(user))
 }
 
 export function isUserLoggedIn() {
+  if (!process.browser) {
+    return
+  }
   return JSON.parse(window.localStorage.getItem('loggedIn')) === true
 }
 
 export function isUserRegistered() {
-  return getUser().registered
+  const user = getUser()
+
+  if (!user) {
+    return false
+  }
+
+  return user.registered
 }
 
 export function loginUser() {
-  window.localStorage.setItem('loggedIn', "true");
+  if (!process.browser) {
+    return
+  }
+  window.localStorage.setItem('loggedIn', 'true')
 }
 
 export function logoutUser() {
-  window.localStorage.setItem('loggedIn', "false");
+  if (!process.browser) {
+    return
+  }
+  window.localStorage.setItem('loggedIn', 'false')
 }
 
 export function clearUser() {
-  window.localStorage.removeItem('user');
-  window.localStorage.removeItem('loggedIn');
+  if (!process.browser) {
+    return
+  }
+  window.localStorage.removeItem('user')
+  window.localStorage.removeItem('loggedIn')
 }

@@ -24,15 +24,13 @@ const nunito = Nunito({
 export default function Fonts() {
   return (
     <style
-      jsx={true}
-      global={true}
       dangerouslySetInnerHTML={{
         __html: `
-                :root {
-                  --cbrush-font: ${cbrush.style.fontFamily};
-                  --space-mono-font: ${smono.style.fontFamily};
-                  --nunito-font: ${nunito.style.fontFamily};
-                }`,
+          :root {
+            --cbrush-font: ${cbrush.style.fontFamily};
+            --space-mono-font: ${smono.style.fontFamily};
+            --nunito-font: ${nunito.style.fontFamily};
+          }`,
       }}
     ></style>
   )
