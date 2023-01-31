@@ -197,6 +197,10 @@ div.react-terminal-active-input {
   color: white;
 }
 
+.underscore {
+  color: #6e7d92;
+}
+
 .correct {
   color: white;
 }
