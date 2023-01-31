@@ -196,3 +196,11 @@ div.react-terminal-line {
 div.react-terminal-active-input {
   color: white;
 }
+
+.correct {
+  color: white;
+}
+
+.incorrect {
+  color: blue;
+}
