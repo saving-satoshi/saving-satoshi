@@ -1,18 +1,20 @@
 'use client'
 
+import Avatar from 'components/Avatar'
 import { useState, useEffect } from 'react'
 import Modal from 'react-modal'
-
-import Avatar from 'components/Avatar'
-import { CopyButton } from 'shared'
 import CloseIcon from 'public/assets/icons/close.svg'
+import { CopyButton } from 'shared'
+import {
+  loginUser,
+  setUserAvatar,
+  setUserRegistered,
+  createUser,
+} from 'lib/user'
+import { useUser } from 'hooks'
 
-import { getUser, loginUser, setUserAvatar, setUserRegistered } from 'lib/user'
-
-export default function SignUpModal(props) {
-  const [user, setUser] = useState(null)
-
-  let [copied, setCopied] = useState(false)
+export default function SignUpModal({ open, onClose, onConfirm }) {
+  const { user } = useUser()
   let [avatar, setAvatar] = useState(1)
 
   function saveLocally() {
@@ -20,34 +22,26 @@ export default function SignUpModal(props) {
     loginUser()
   }
 
-  function copy() {
-    navigator.clipboard.writeText(user.privateKey.toString(16))
-    setCopied(true)
-
-    setTimeout(() => {
-      setCopied(false)
-    }, 2000)
-  }
-
   function confirm() {
     saveLocally()
     setUserRegistered()
-
-    props.onConfirm()
+    onConfirm()
   }
 
   useEffect(() => {
-    setUser(getUser())
-  }, [])
+    if (!user) {
+      createUser(null)
+    }
+  }, [user])
 
   return (
     <Modal
-      isOpen={props.open}
+      isOpen={open}
       className="absolute top-1/2 left-1/2 w-[32rem] -translate-x-1/2 -translate-y-1/2 transform rounded-lg bg-back p-5 text-white shadow-lg outline-none"
       contentLabel="Example Modal"
     >
       <div className="float-right flex justify-end">
-        <button onClick={props.onClose} aria-label="Close">
+        <button onClick={onClose} aria-label="Close">
           <CloseIcon className="h-6 w-6" />
         </button>
       </div>
