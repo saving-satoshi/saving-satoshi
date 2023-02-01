@@ -205,6 +205,10 @@ div.react-terminal-active-input {
   color: white;
 }
 
+.overlay-complete > .correct {
+  color: #2a9f2d;
+}
+
 .incorrect {
   color: #00bfe0;
 }
