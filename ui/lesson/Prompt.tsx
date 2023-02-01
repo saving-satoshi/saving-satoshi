@@ -5,12 +5,12 @@ import { Input, useLessonContext } from 'ui'
 export default function LessonPrompt({
   className,
   label,
-  amount,
+  answer,
   onChange,
 }: {
   className?: string
   label: string
-  amount: number
+  answer: string
   onChange: Function
 }) {
   const { activeView } = useLessonContext()
@@ -31,7 +31,7 @@ export default function LessonPrompt({
         <h2 className="text-center text-xl">{label}</h2>
 
         <div className="w-full pt-8">
-          <Input amount={amount} onChange={onChange} />
+          <Input onChange={onChange} answer={answer} hints={true} />
         </div>
       </div>
     </div>
