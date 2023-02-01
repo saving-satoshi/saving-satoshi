@@ -13,8 +13,8 @@ export const UserInput: React.FC<UserInputProps> = ({ value, userInput, answer, 
     const [textAreaValue, setTextAreaValue] = useState(value);
     const [correctAns, setCorrectAns] = useState(false);
 
-    const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-      if (event.keyCode === 32) {
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (event.key === ' ') {
         event.preventDefault();
       }
     };
