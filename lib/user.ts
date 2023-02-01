@@ -2,6 +2,9 @@ const crypto = require('crypto')
 const Secp256k1 = require('@lionello/secp256k1-js')
 
 function getUser() {
+  if (!process.browser) {
+    return
+  }
   try {
     return JSON.parse(window.localStorage.getItem('user'))
   } catch {
@@ -70,10 +73,16 @@ export function createUser(avatar) {
 }
 
 export function saveUser(user) {
+  if (!process.browser) {
+    return
+  }
   window.localStorage.setItem('user', JSON.stringify(user))
 }
 
 function isUserLoggedIn() {
+  if (!process.browser) {
+    return
+  }
   return JSON.parse(window.localStorage.getItem('loggedIn')) === true
 }
 
@@ -82,14 +91,23 @@ function isUserRegistered() {
 }
 
 export function loginUser() {
+  if (!process.browser) {
+    return
+  }
   window.localStorage.setItem('loggedIn', 'true')
 }
 
 export function logoutUser() {
+  if (!process.browser) {
+    return
+  }
   window.localStorage.setItem('loggedIn', 'false')
 }
 
 export function clearUser() {
+  if (!process.browser) {
+    return
+  }
   window.localStorage.removeItem('user')
   window.localStorage.removeItem('loggedIn')
 }
