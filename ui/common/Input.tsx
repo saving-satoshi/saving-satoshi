@@ -3,12 +3,12 @@
 import { useState } from 'react'
 
 interface UserInputProps {
-  onChange: (value: string) => void
+  onChange: Function
   answer: string
   hints?: boolean
 }
 
-export default function Input({ onChange, answer, hints }) {
+export default function Input({ onChange, answer, hints }: UserInputProps) {
   const [textAreaValue, setTextAreaValue] = useState('')
   const [correctAns, setCorrectAns] = useState(false)
 
