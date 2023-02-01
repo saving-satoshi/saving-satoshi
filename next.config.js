@@ -1,5 +1,3 @@
-const { withContentlayer } = require('next-contentlayer')
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -20,7 +18,7 @@ const nextConfig = {
       use: ['@svgr/webpack'],
     })
     return config
-  }
+  },
 }
 
-module.exports = withContentlayer({ ...nextConfig })
+module.exports = nextConfig

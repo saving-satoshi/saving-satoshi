@@ -1,12 +1,14 @@
-import { Footer } from 'components/ui/Footer'
-import { Navbar } from 'components/ui/NavBar'
+import Topbar from 'components/Topbar'
+import Footer from 'components/Footer'
+import { Button } from 'shared'
+
 import { sectionsConfig } from 'config/sections'
-import { BoxButton } from 'components/ui/BoxButton'
 
 export default function About() {
   return (
-    <div className="w-screen">
-      <Navbar items={sectionsConfig.mainNav} />
+    <div className="w-full">
+      <Topbar items={sectionsConfig.mainNav} />
+
       <div className="m-auto px-6 lg:w-9/12 2xl:w-1/2">
         <div className="flex flex-col justify-center text-white">
           <h1 className="px-2.5 pt-20 text-center text-6xl sm:text-7xl lg:text-8xl">
@@ -22,14 +24,14 @@ export default function About() {
           <p className="mt-8 font-nunito text-xl">
             And then suddenly, the network comes to a crawl. Instead of the
             normal ten-minute block interval, blocks are coming in just a few
-            times a day, if not longer. Your mom's bitcoin node stops syncing.
-            The media starts reporting on the situation. It's everywhere on
+            times a day, if not longer. Your mom’s bitcoin node stops syncing.
+            The media starts reporting on the situation. It’s everywhere on
             social media.
             <br />
             <br />
             The price of bitcoin is falling. There is a knock at your door, and
             when you open it, a yellowed, age-weathered envelope has been left
-            for you. There's no name or return address. What could be inside?
+            for you. There’s no name or return address. What could be inside?
           </p>
 
           <h3 className="mt-8 text-4xl">Built with love</h3>
@@ -45,6 +47,7 @@ export default function About() {
           <p className="mt-2 font-nunito text-xl">
             Open an issue or a PR on{' '}
             <a
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://github.com/saving-satoshi/saving-satoshi"
@@ -59,6 +62,7 @@ export default function About() {
           <p className="mt-2 font-nunito text-xl">
             Contributions by{' '}
             <a
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://twitter.com/GBKS"
@@ -67,7 +71,7 @@ export default function About() {
             </a>
             ,{' '}
             <a
-              className="hover:underline"
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://twitter.com/adamcjonas"
@@ -76,7 +80,7 @@ export default function About() {
             </a>
             ,{' '}
             <a
-              className="hover:underline"
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://twitter.com/satsie"
@@ -85,7 +89,7 @@ export default function About() {
             </a>
             ,{' '}
             <a
-              className="hover:underline"
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://github.com/ggwilin"
@@ -94,7 +98,7 @@ export default function About() {
             </a>
             ,{' '}
             <a
-              className="hover:underline"
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://twitter.com/netrebelking"
@@ -103,7 +107,7 @@ export default function About() {
             </a>
             ,{' '}
             <a
-              className="hover:underline"
+              className="underline"
               target="_blank"
               rel="noreferrer nofollow"
               href="https://github.com/aureleoules"
@@ -119,11 +123,10 @@ export default function About() {
           <p className="pt-4 pb-8 text-center font-nunito text-xl">
             Now be quick, Satoshi needs you.
           </p>
-          <BoxButton
-            href="/chapters"
-          >Start your journey</BoxButton>
+          <Button href="/chapters">Start your journey</Button>
         </div>
       </div>
+
       <Footer />
     </div>
   )
