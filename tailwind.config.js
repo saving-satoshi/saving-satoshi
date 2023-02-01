@@ -20,15 +20,6 @@ module.exports = {
           }
           return `rgb(var(--back))`
         },
-        green: ({ opacityVariable, opacityValue }) => {
-          if (opacityValue !== undefined) {
-            return `rgba(var(--green), ${opacityValue})`
-          }
-          if (opacityVariable !== undefined) {
-            return `rgba(var(--green), var(${opacityVariable}, 1))`
-          }
-          return `rgb(var(--green))`
-        },
       },
       opacity: {
         15: '0.15',
