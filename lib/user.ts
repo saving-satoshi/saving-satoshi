@@ -13,7 +13,13 @@ function getUser() {
 }
 
 export function getUserProgress() {
-  return !isUserRegistered() || isUserLoggedIn() ? getUser().progress : null
+  const user = getUser()
+
+  if (!user) {
+    return null
+  }
+
+  return !isUserRegistered() || isUserLoggedIn() ? user.progress : null
 }
 
 export function setUserProgress(chapter, lesson) {
@@ -87,7 +93,13 @@ function isUserLoggedIn() {
 }
 
 function isUserRegistered() {
-  return getUser().registered
+  const user = getUser()
+
+  if (!user) {
+    return false
+  }
+
+  return user.registered
 }
 
 export function loginUser() {
