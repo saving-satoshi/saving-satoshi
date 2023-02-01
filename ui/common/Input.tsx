@@ -59,12 +59,12 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
       <textarea
         onKeyDown={handleKeyDown}
         onChange={(e) => {
-          setTextAreaValue(e.target.value.toLowerCase())
-          onChange(e.target.value.toLowerCase())
-          // setMatching(e.target.value.split('').every((val, i) => (val === answer[i]) && (value.length === inputAmount - 1)));
+          let noSpace = e.target.value.split(' ').join('').split(/\r?\n|\r/).join('').slice(0, answer.length).toLowerCase()
+          setTextAreaValue(noSpace)
+          onChange(noSpace)
           if (
-            e.target.value === answer &&
-            e.target.value.length === answer.length
+            noSpace === answer &&
+            noSpace.length === answer.length
           ) {
             setCorrectAns(true)
           } else {
@@ -72,7 +72,6 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
           }
         }}
         value={textAreaValue}
-        maxLength={answer.length}
         spellCheck="false"
         className={`absolute top-0 left-0 h-full w-full resize-none overflow-hidden bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[5px] text-transparent outline-none md:text-[30px]`}
         style={{
