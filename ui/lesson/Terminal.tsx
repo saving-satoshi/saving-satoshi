@@ -34,7 +34,7 @@ export default function Terminal({ success, answer, lines, next, onChange }) {
         <div className="flex justify-center border-t border-white/25 bg-black/[.15] p-[20px] md:justify-start">
           <h2
             className={clsx('font-space-mono text-[18px] text-white/50', {
-              'bg-green/25': success,
+              'bg-green-400/25': success,
               'opacity-50': !success,
             })}
           >
