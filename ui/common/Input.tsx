@@ -41,8 +41,8 @@ export default function Input({ onChange, answer, hints }) {
         <form className='relative'>
             <textarea 
               onKeyDown={handleKeyDown}
-                onChange={(e) => {setTextAreaValue(e.target.value)
-                    onChange(e.target.value);
+                onChange={(e) => {setTextAreaValue(e.target.value.toLowerCase())
+                    onChange(e.target.value.toLowerCase());
                     // setMatching(e.target.value.split('').every((val, i) => (val === answer[i]) && (value.length === inputAmount - 1)));
                     if(((e.target.value === answer) && (e.target.value.length === answer.length))) {
                       setCorrectAns(true)
