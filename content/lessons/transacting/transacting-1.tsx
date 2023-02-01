@@ -12,7 +12,6 @@ import {
   Title,
 } from 'ui'
 
-const inputAmount = 40
 const answer = '6a127461636f7320666f722065766572796f6e65'
 
 const tabData = [
@@ -58,7 +57,7 @@ export default function Transacting1() {
       <LessonPrompt
         className="max-w-[840px] px-4 py-8 md:items-center"
         label="Enter the OP_RETURN type"
-        amount={inputAmount}
+        answer={answer}
         onChange={setUserInput}
       />
 
