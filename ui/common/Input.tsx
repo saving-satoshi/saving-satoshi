@@ -59,7 +59,7 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
       <textarea
         onKeyDown={handleKeyDown}
         onChange={(e) => {
-          let noSpace = e.target.value.split(' ').join('').split(/\r?\n|\r/).join('').slice(0, answer.length).toLowerCase()
+          let noSpace = e.target.value.replace(/[\s\u00A0]+/g, '').replace(/\r?\n|\r/g, '').slice(0, answer.length).toLowerCase()
           setTextAreaValue(noSpace)
           onChange(noSpace)
           if (
