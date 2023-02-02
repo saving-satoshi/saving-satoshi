@@ -11,9 +11,10 @@ import {
   setUserRegistered,
   createUser,
 } from 'lib/user'
-import { useUser } from 'hooks'
+import { useUser, useHasMounted } from 'hooks'
 
 export default function SignUpModal({ open, onClose, onConfirm }) {
+  const hasMounted = useHasMounted()
   const { user } = useUser()
   let [avatar, setAvatar] = useState(1)
 
@@ -29,10 +30,10 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
   }
 
   useEffect(() => {
-    if (!user) {
+    if (hasMounted && !user) {
       createUser(null)
     }
-  }, [user])
+  }, [hasMounted, user])
 
   return (
     <Modal

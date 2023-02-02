@@ -4,18 +4,39 @@ import Link from 'next/link'
 
 import { siteConfig } from 'config/site'
 import { NavItem } from 'types'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import LoginModal from 'components/Modals/Login'
 import SignUpModal from 'components/Modals/SignUp'
 import UserIcon from 'public/assets/icons/avatar.svg'
 import Avatar from 'components/Avatar'
-import { useUser } from 'hooks'
+import { useUser, useHasMounted } from 'hooks'
 
 export default function Topbar({ items }: { items: NavItem[] }) {
-  const [isMounted, setIsMounted] = useState(false)
+  const hasMounted = useHasMounted()
   const [openSignInModal, setOpenSignInModal] = useState(false)
   const [openSignUpModal, setOpenSignUpModal] = useState(false)
   const { user, isLoggedIn, isRegistered } = useUser()
+  const renderIconButton = () => {
+    if (!hasMounted) {
+      return <div className="ml-4 h-10 w-10" />
+    }
+
+    return isLoggedIn ? (
+      <button
+        onClick={() => setOpenSignInModal(true)}
+        className="text-grey-300 ml-4 h-10 w-10 cursor-pointer"
+      >
+        <Avatar avatar={user.avatar} size={30} />
+      </button>
+    ) : (
+      <button
+        onClick={() => toggleModal(true)}
+        className="text-grey-300 ml-4 h-10 w-10 cursor-pointer"
+      >
+        <UserIcon />
+      </button>
+    )
+  }
 
   function toggleModal(show) {
     if (user && user.publicKey && isRegistered) {
@@ -29,10 +50,6 @@ export default function Topbar({ items }: { items: NavItem[] }) {
     setOpenSignInModal(false)
     setOpenSignUpModal(false)
   }
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
 
   return (
     <div className="absolute left-0 top-0 w-full">
@@ -55,21 +72,7 @@ export default function Topbar({ items }: { items: NavItem[] }) {
                 </Link>
               ))
             : null}
-          {isMounted && isLoggedIn ? (
-            <button
-              onClick={() => setOpenSignInModal(true)}
-              className="text-grey-300 ml-4 h-10 w-10 cursor-pointer"
-            >
-              <Avatar avatar={user.avatar} size={30} />
-            </button>
-          ) : (
-            <button
-              onClick={() => toggleModal(true)}
-              className="text-grey-300 ml-4 h-10 w-10 cursor-pointer"
-            >
-              <UserIcon />
-            </button>
-          )}
+          {renderIconButton()}
         </nav>
       </div>
       {isRegistered ? (
