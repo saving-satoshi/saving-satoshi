@@ -47,7 +47,7 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
     )
   }
 
-  const formatOnPaste = (clipboard) => {
+  const handlePaste = (clipboard) => {
     const formattedText = clipboard.replace(/[\s\u00A0]+/g, '').replace(/\r?\n|\r/g, '').slice(0, answer.length).toLowerCase()
     return formattedText
   }
@@ -59,7 +59,7 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
   }
 
   const handleChange = (e) => {
-    let formattedText = formatOnPaste(e.target.value)
+    let formattedText = handlePaste(e.target.value)
     setTextAreaValue(formattedText)
     onChange(formattedText)
     if (
