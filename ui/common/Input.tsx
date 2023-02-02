@@ -12,7 +12,7 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
   const [textAreaValue, setTextAreaValue] = useState('')
   const [correctAnswer, setCorrectAnswer] = useState(false)
 
-  const blankSpace = () => {
+  const displayOverlay = () => {
     const underscores = '_'.repeat(Math.max(0, answer.length - textAreaValue.length))
     return (
       <>
@@ -92,7 +92,7 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
           lineBreak: 'anywhere',
         }}
       >
-        {blankSpace()}
+        {displayOverlay()}
       </p>
     </form>
   )
