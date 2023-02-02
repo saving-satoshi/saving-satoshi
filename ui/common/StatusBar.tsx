@@ -63,8 +63,8 @@ export default function StatusBar({
         'w-full': !full,
         'bg-success/25': getStatus() === Status.Success,
         'bg-black/20': getStatus() !== Status.Success,
-        'hidden md:block': Status.InProgress,
-        'block': Status.Success,
+        'hidden md:block': getStatus() !== Status.Success,
+        'block': getStatus() === Status.Success,
       })}
     >
       <div className="flex flex-col items-stretch justify-between max-md:gap-4 md:flex-row">
