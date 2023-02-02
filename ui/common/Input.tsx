@@ -13,35 +13,41 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
   const [correctAnswer, setCorrectAnswer] = useState(false)
 
   const displayOverlay = () => {
-    const underscores = '_'.repeat(Math.max(0, answer.length - textAreaValue.length))
+    const underscores = '_'.repeat(
+      Math.max(0, answer.length - textAreaValue.length)
+    )
     return (
       <>
         {Array.from({ length: answer.length }, (_, i) => {
-          {if (i >= answer.length - underscores.length)
-            return (
-              <span className="underscore" key={i}>
-                _
-              </span>
-            )}
-          {if (textAreaValue[i] === answer[i]) {
-            return (
-              <span className="overlay correct" key={i}>
-                {textAreaValue[i]}
-              </span>
-            )
-          } else if (textAreaValue[i] !== answer[i] && !!hints) {
-            return (
-              <span className="overlay incorrect" key={i}>
-                {textAreaValue[i]}
-              </span>
-            )
-          } else {
-            return (
-              <span className="overlay" key={i}>
-                {textAreaValue[i]}
-              </span>
-            )
-          }}
+          {
+            if (i >= answer.length - underscores.length)
+              return (
+                <span className="underscore" key={i}>
+                  _
+                </span>
+              )
+          }
+          {
+            if (textAreaValue[i] === answer[i]) {
+              return (
+                <span className="overlay correct" key={i}>
+                  {textAreaValue[i]}
+                </span>
+              )
+            } else if (textAreaValue[i] !== answer[i] && !!hints) {
+              return (
+                <span className="overlay incorrect" key={i}>
+                  {textAreaValue[i]}
+                </span>
+              )
+            } else {
+              return (
+                <span className="overlay" key={i}>
+                  {textAreaValue[i]}
+                </span>
+              )
+            }
+          }
         })}
       </>
     )
@@ -50,12 +56,13 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
   const handlePaste = (event) => {
     event.preventDefault()
 
-    const pasteData = (event.Clipboard || window.Clipboard).getData('text')
+    const pasteData = (event.Clipboard || window.Clipboard)
+      .getData('text')
       .replace(/\s+/g, '')
-  
+
     document.execCommand('insertText', false, pasteData)
   }
-  
+
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === ' ') {
       event.preventDefault()
