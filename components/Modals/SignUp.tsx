@@ -14,7 +14,7 @@ import {
 import { useUser } from 'hooks'
 
 export default function SignUpModal({ open, onClose, onConfirm }) {
-  const { user } = useUser()
+  const { user, isRegistered } = useUser()
   let [avatar, setAvatar] = useState(1)
 
   function saveLocally() {
@@ -29,10 +29,10 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
   }
 
   useEffect(() => {
-    if (!user) {
+    if (!isRegistered) {
       createUser(null)
     }
-  }, [user])
+  }, [isRegistered])
 
   return (
     <Modal
