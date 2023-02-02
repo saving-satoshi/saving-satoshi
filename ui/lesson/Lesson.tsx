@@ -21,12 +21,12 @@ export default function Lesson(props) {
   return (
     <LessonContext.Provider value={context}>
       {direction === LessonDirection.Horizontal && (
-        <div className="justify-stretch grid w-full grow grid-cols-1 px-6 md:grid-cols-2 lg:px-0">
+        <div className="justify-stretch grid w-full grow grid-cols-1 md:grid-cols-2 lg:px-0">
           {props.children}
         </div>
       )}
       {direction === LessonDirection.Vertical && (
-        <div className="flex w-full grow flex-col items-center justify-center">
+        <div className="flex w-full grow flex-col md:items-center md:justify-center">
           {props.children}
         </div>
       )}

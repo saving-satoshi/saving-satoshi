@@ -1,48 +1,19 @@
 'use client'
 
-import { useState } from 'react'
-import {
-  Lesson,
-  LessonInfo,
-  CodeExample,
-  Text,
-  Title,
-  LessonTerminal,
-} from 'ui'
-import { LessonDirection } from 'types'
+import { LessonInfo, CodeExample, Text, Title, TerminalChallenge } from 'ui'
 
 export default function Transacting2() {
-  const [lines, setLines] = useState([
-    {
-      value: 'Enter your commands here and press Enter...',
-      type: 'output',
-    },
-  ])
-  const [success, setSuccess] = useState(false)
-  const [answer, setAnswer] = useState('')
-
-  function onChange(input) {
-    setLines((lines) => [...lines, { value: input, type: 'input' }])
-
-    // echo scriptSigHex | xxd -r -p
-    if (input.startsWith('echo') && input.endsWith('| xxd -r -p')) {
-      const scriptSigHex = input.split(' ')[1]
-      const scriptSig = Buffer.from(scriptSigHex, 'hex').toString('utf8')
-      setLines((lines) => [...lines, { value: scriptSig, type: 'output' }])
-
-      console.log(scriptSigHex)
-
-      if (scriptSigHex === '6a127461636f7320666f722065766572796f6e65') {
-        setTimeout(() => {
-          setSuccess(true)
-        }, 1000)
-        setAnswer(scriptSig)
-      }
-    }
-  }
-
   return (
-    <Lesson direction={LessonDirection.Horizontal}>
+    <TerminalChallenge
+      expectedInput={'6a127461636f7320666f722065766572796f6e65'}
+      saveInfo={{
+        chapter: 'chapter-1',
+        challenge: 'done',
+      }}
+      next="/chapters/chapter-1/done"
+      instruction="Waiting for you to write and run the script...."
+      successMessage="jtacos for everyone"
+    >
       <LessonInfo>
         <Title>Another secret message</Title>
 
@@ -55,22 +26,16 @@ export default function Transacting2() {
           the previous exercise.
         </Text>
 
-        <Text>And remember, ’Bitcoin is for everyone’.</Text>
+        <Text className="text-lg">
+          And remember, ’Bitcoin is for everyone’.
+        </Text>
 
         <CodeExample
           code={'echo scriptPubKeyHex | xxd -r -p'}
           language="shell"
         />
       </LessonInfo>
-
-      <LessonTerminal
-        answer={answer}
-        success={success}
-        onChange={onChange}
-        lines={lines}
-        next="/chapters/chapter-1/done"
-      />
-    </Lesson>
+    </TerminalChallenge>
   )
 }
 
