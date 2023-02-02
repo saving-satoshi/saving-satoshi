@@ -12,16 +12,6 @@ function getUser() {
   }
 }
 
-export function getUserProgress() {
-  const user = getUser()
-
-  if (!user) {
-    return null
-  }
-
-  return !isUserRegistered() || isUserLoggedIn() ? user.progress : null
-}
-
 export function setUserProgress(chapter, lesson) {
   const user = getUser()
   if (user) {
@@ -83,23 +73,6 @@ export function saveUser(user) {
     return
   }
   window.localStorage.setItem('user', JSON.stringify(user))
-}
-
-function isUserLoggedIn() {
-  if (!process.browser) {
-    return
-  }
-  return JSON.parse(window.localStorage.getItem('loggedIn')) === true
-}
-
-function isUserRegistered() {
-  const user = getUser()
-
-  if (!user) {
-    return false
-  }
-
-  return user.registered
 }
 
 export function loginUser() {
