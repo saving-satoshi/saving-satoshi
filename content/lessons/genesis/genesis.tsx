@@ -77,6 +77,7 @@ export default function Genesis1() {
         label="Paste the ScriptSig HEX Representation"
         answer={answer}
         onChange={setUserInput}
+        hints
       />
 
       <StatusBar

@@ -59,6 +59,7 @@ export default function Transacting1() {
         label="Enter the OP_RETURN type"
         answer={answer}
         onChange={setUserInput}
+        hints
       />
 
       <StatusBar
