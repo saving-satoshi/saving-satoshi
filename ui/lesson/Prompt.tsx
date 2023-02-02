@@ -7,11 +7,13 @@ export default function LessonPrompt({
   label,
   answer,
   onChange,
+  hints
 }: {
   className?: string
   label: string
   answer: string
   onChange: Function
+  hints?: boolean
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
@@ -31,7 +33,7 @@ export default function LessonPrompt({
         <h2 className="text-center text-xl">{label}</h2>
 
         <div className="w-full pt-8">
-          <Input onChange={onChange} answer={answer} hints={true} />
+          <Input onChange={onChange} answer={answer} hints={hints} />
         </div>
       </div>
     </div>
