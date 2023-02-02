@@ -47,9 +47,13 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
     )
   }
 
-  const handlePaste = (clipboard) => {
-    const formattedText = clipboard.replace(/[\s\u00A0]+/g, '').replace(/\r?\n|\r/g, '').slice(0, answer.length).toLowerCase()
-    return formattedText
+  const handlePaste = (event) => {
+    event.preventDefault()
+
+    const pasteData = (event.Clipboard || window.Clipboard).getData('text')
+      .replace(/\s+/g, '')
+  
+    document.execCommand('insertText', false, pasteData)
   }
   
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -58,13 +62,12 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
     }
   }
 
-  const handleChange = (e) => {
-    let formattedText = handlePaste(e.target.value)
-    setTextAreaValue(formattedText)
-    onChange(formattedText)
+  const handleChange = (event) => {
+    setTextAreaValue(event.target.value)
+    onChange(event.target.value)
     if (
-      formattedText === answer &&
-      formattedText.length === answer.length
+      event.target.value === answer &&
+      event.target.value.length === answer.length
     ) {
       setCorrectAnswer(true)
     } else {
@@ -75,6 +78,7 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
   return (
     <form className="relative">
       <textarea
+        onPaste={handlePaste}
         onKeyDown={handleKeyDown}
         onChange={handleChange}
         value={textAreaValue}
