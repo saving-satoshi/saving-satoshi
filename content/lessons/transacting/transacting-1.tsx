@@ -55,7 +55,7 @@ export default function Transacting1() {
       <hr className="border-1 invisible h-1 w-full border-white/25 md:visible" />
 
       <LessonPrompt
-        className="max-w-[840px] px-4 py-8 md:items-center"
+        className="max-w-[1280px] px-4 py-8 md:items-center"
         label="Enter the OP_RETURN type"
         answer={answer}
         onChange={setUserInput}
