@@ -19,7 +19,7 @@ export default function LessonPrompt({
   return (
     <div
       className={clsx(
-        'grow justify-center font-space-mono text-white lg:w-1/2',
+        'grow justify-center font-space-mono text-white lg:w-9/12 md:w-9/12',
         className,
         {
           'hidden md:flex': !isActive,
