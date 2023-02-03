@@ -8,6 +8,8 @@ import { Button } from 'shared'
 import ChapterTabs from './Tabs'
 import ChallengeList from './ChallengeList'
 import chapters from 'content/chapters'
+import { getUserProgress } from 'lib/user'
+import LockIcon from 'public/assets/icons/lock.svg'
 
 import { ChapterContextType } from 'types'
 
@@ -32,8 +34,16 @@ export default function Chapter({ children, metadata }) {
   const chapter = chapters[metadata.slug]
   const position = metadata.position + 1
   const isEven = position % 2 == 0
+  var display = false
 
   const context = {}
+  function getSecondPart(str) {
+    return Number(str.split('-')[1])
+  }
+  const currentChapter = getSecondPart(getUserProgress().chapter)
+  if (currentChapter >= position) {
+    display = true
+  }
 
   return (
     <ChapterContext.Provider value={context}>
@@ -56,49 +66,58 @@ export default function Chapter({ children, metadata }) {
               {chapter.metadata.title}
             </h3>
 
-            <ChapterTabs
-              items={tabData}
-              activeId={activeTab}
-              onChange={setActiveTab}
-              classes="mt-8"
-            />
+            {display ? (
+              <div>
+                <ChapterTabs
+                  items={tabData}
+                  activeId={activeTab}
+                  onChange={setActiveTab}
+                  classes="mt-8"
+                />
 
-            <div className="flex grow lg:grow-0">
-              <div
-                aria-hidden={activeTab !== 'info' ? 'true' : 'false'}
-                className={clsx('w-full lg:-mr-[100%] lg:block', {
-                  visible: activeTab === 'info',
-                  invisible: activeTab !== 'info',
-                })}
-              >
-                <div className="mt-6 font-nunito">
-                  <div className="text-lg text-white">{children}</div>
-                  <div className="flex pt-8 md:w-full">
-                    <Button
-                      href={`/chapters/${chapter.metadata.slug}`}
-                      disabled={chapter.metadata.lessons.length === 0}
-                    >
-                      {chapter.metadata.lessons.length > 0
-                        ? `Start chapter ${position}`
-                        : 'Coming soon'}
-                    </Button>
+                <div className="flex grow lg:grow-0">
+                  <div
+                    aria-hidden={activeTab !== 'info' ? 'true' : 'false'}
+                    className={clsx('w-full lg:-mr-[100%] lg:block', {
+                      visible: activeTab === 'info',
+                      invisible: activeTab !== 'info',
+                    })}
+                  >
+                    <div className="mt-6 font-nunito">
+                      <div className="text-lg text-white">{children}</div>
+                      <div className="flex pt-8 md:w-full">
+                        <Button
+                          href={`/chapters/${chapter.metadata.slug}`}
+                          disabled={chapter.metadata.lessons.length === 0}
+                        >
+                          {chapter.metadata.lessons.length > 0
+                            ? `Start chapter ${position}`
+                            : 'Coming soon'}
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    aria-hidden={activeTab !== 'challenges' ? 'true' : 'false'}
+                    className={clsx('w-full lg:-mr-[100%] lg:block', {
+                      visible: activeTab === 'challenges',
+                      invisible: activeTab !== 'challenges',
+                    })}
+                  >
+                    <ChallengeList
+                      challenges={chapter.metadata.challenges}
+                      chapterId={chapter.metadata.slug}
+                    />
                   </div>
                 </div>
               </div>
-
-              <div
-                aria-hidden={activeTab !== 'challenges' ? 'true' : 'false'}
-                className={clsx('w-full lg:-mr-[100%] lg:block', {
-                  visible: activeTab === 'challenges',
-                  invisible: activeTab !== 'challenges',
-                })}
-              >
-                <ChallengeList
-                  challenges={chapter.metadata.challenges}
-                  chapterId={chapter.metadata.slug}
-                />
+            ) : (
+              <div className="flex font-nunito text-lg text-white">
+                <LockIcon className="my-auto mr-2 justify-center" />
+                Complete Chapter {position - 1} to unlock.
               </div>
-            </div>
+            )}
           </div>
         </div>
 
