@@ -8,7 +8,7 @@ import { Button } from 'shared'
 import ChapterTabs from './Tabs'
 import ChallengeList from './ChallengeList'
 import chapters from 'content/chapters'
-import { getUserProgress } from 'lib/user'
+import { getUserChapterStatus } from 'lib/content'
 import LockIcon from 'public/assets/icons/lock.svg'
 
 import { ChapterContextType } from 'types'
@@ -31,19 +31,13 @@ const tabData = [
 export default function Chapter({ children, metadata }) {
   const [activeTab, setActiveTab] = useState('info')
 
-  const chapter = chapters[metadata.slug]
+  const chapter = chapters[metadata.slug] || 0
   const position = metadata.position + 1
   const isEven = position % 2 == 0
-  var display = false
 
   const context = {}
-  function getSecondPart(str) {
-    return Number(str.split('-')[1])
-  }
-  const currentChapter = getSecondPart(getUserProgress().chapter)
-  if (currentChapter >= position) {
-    display = true
-  }
+  const currentChapter = 'chapter-' + position
+  const display = getUserChapterStatus(currentChapter).unlocked
 
   return (
     <ChapterContext.Provider value={context}>
