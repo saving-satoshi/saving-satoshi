@@ -31,7 +31,12 @@ export default function Genesis2() {
         <Text className="text-lg">{`Use the following command to decode Satoshi's secret HEX message
             into ASCII, a more human readable format:`}</Text>
 
-        <CodeExample code={'echo scriptSigHex | xxd -r -p'} language="shell" />
+        <div className="mb-[30px]">
+          <CodeExample
+            code={'echo scriptSigHex | xxd -r -p'}
+            language="shell"
+          />
+        </div>
 
         <Tips>
           <Tip title="What was the scriptSigHex value again?">
