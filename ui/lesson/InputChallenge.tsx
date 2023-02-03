@@ -15,8 +15,8 @@ const tabData = [
 ]
 
 /**
- * @inputAmount {number} answer to the challenge problem
- * @answer {chapter, challenge} information required for saving user progress
+ * @inputAmount {number} number of input fields
+ * @answer {string} correct answer to the challenge problem
  * @next {string} link to next part of chapter
  * @label {string} label on top of input field
  */
