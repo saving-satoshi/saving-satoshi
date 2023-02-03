@@ -5,7 +5,7 @@ import { LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonTerminal } from 'ui'
 import { useMediaQuery } from 'react-responsive'
 import { setUserProgress } from 'lib/user'
-import { getUserLessonStatus } from 'lib/content'
+import { useStatus } from 'hooks'
 
 const tabData = [
   {
@@ -45,9 +45,9 @@ export default function TerminalChallenge({
 
   const isSmallScreen = useMediaQuery({ query: '(max-width: 767px)' })
 
-  function saveProgress() {
-    const status = getUserLessonStatus(saveInfo.chapter, saveInfo.challenge)
+  const status = useStatus(saveInfo.chapter, saveInfo.challenge)
 
+  function saveProgress() {
     if (!status.completed) {
       setUserProgress(saveInfo.chapter, saveInfo.challenge)
     }
