@@ -62,7 +62,7 @@ export default function StatusBar({
       className={clsx('border-t border-white/25 max-md:px-4 max-md:py-8', {
         'w-screen': full,
         'w-full': !full,
-        'bg-success/25': getStatus() === Status.Success,
+        'bg-success/25 fixed bottom-0': getStatus() === Status.Success,
         'bg-black/20': getStatus() !== Status.Success,
         'hidden md:block': !isActive,
         block: isActive,
