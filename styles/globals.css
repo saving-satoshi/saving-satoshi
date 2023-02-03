@@ -135,11 +135,11 @@ div.react-terminal-active-input {
 }
 
 .overlay-complete > .correct {
-  color: #2a9f2d;
+  color: #28B123;
 }
 
 .incorrect {
-  color: #00bfe0;
+  color: #3DCFEF;
 }
 .code::-webkit-scrollbar {
   height: 8px;
