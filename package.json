@@ -24,7 +24,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-individual-character-input-boxes": "^1.2.1",
-    "react-jsx-parser": "^1.29.0",
     "react-modal": "^3.16.1",
     "react-responsive": "^9.0.2",
     "react-terminal-ui": "^1.0.0",
@@ -33,6 +32,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
+    "@types/node": "18.11.19",
     "@types/react": "18.0.25",
     "autoprefixer": "^10.4.13",
     "eslint": "latest",
