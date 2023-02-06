@@ -28,7 +28,7 @@ export default function LessonPrompt({
       )}
     >
       <div className="flex flex-col justify-center">
-        <h2 className="text-center text-xl">{label}</h2>
+        <h2 className="text-left text-xl font-bold">{label}</h2>
 
         <div className="w-full pt-8">
           <Input amount={amount} onChange={onChange} />
