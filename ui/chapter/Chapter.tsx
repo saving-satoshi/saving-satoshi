@@ -68,6 +68,8 @@ export default function Chapter({ children, metadata }) {
                 aria-hidden={activeTab !== 'info' ? 'true' : 'false'}
                 className={clsx('w-full lg:-mr-[100%] lg:block', {
                   visible: activeTab === 'info',
+                  block: activeTab === 'info',
+                  hidden: activeTab !== 'info',
                   invisible: activeTab !== 'info',
                 })}
               >
@@ -77,6 +79,7 @@ export default function Chapter({ children, metadata }) {
                     <Button
                       href={`/chapters/${chapter.metadata.slug}`}
                       disabled={chapter.metadata.lessons.length === 0}
+                      full
                     >
                       {chapter.metadata.lessons.length > 0
                         ? `Start chapter ${position}`
@@ -90,6 +93,8 @@ export default function Chapter({ children, metadata }) {
                 aria-hidden={activeTab !== 'challenges' ? 'true' : 'false'}
                 className={clsx('w-full lg:-mr-[100%] lg:block', {
                   visible: activeTab === 'challenges',
+                  block: activeTab === 'challenges',
+                  hidden: activeTab !== 'challenges',
                   invisible: activeTab !== 'challenges',
                 })}
               >
