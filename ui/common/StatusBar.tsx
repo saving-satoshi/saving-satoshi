@@ -59,7 +59,7 @@ export default function StatusBar({
 
   return (
     <div
-      className={clsx('max-md:bottom-0 max-md:fixed border-t border-white/25 max-md:px-4 max-md:py-8', {
+      className={clsx('border-t border-white/25 max-md:px-4 max-md:py-8 max-md:bottom-0 max-md:fixed', {
         'w-screen': full,
         'w-full': !full,
         'bg-success/25 statusbar-bottom': getStatus() === Status.Success,
