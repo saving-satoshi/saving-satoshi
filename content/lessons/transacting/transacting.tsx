@@ -10,21 +10,21 @@ export default function Transacting() {
           <div className="genesis">
             <Title>{`What's in a transaction?`}</Title>
 
-            <Text className="pt-2 text-lg">
+            <Text className="pt-3 text-lg font-semibold">
               Bitcoin is censorship resistant money. Anybody can send money by
               broadcasting a transaction to the network. After broadcast,
               transactions are packaged up into blocks by miners. Miners compete
               against other miners for the privilege of building on the chain.
             </Text>
 
-            <Text className="pt-2 text-lg">
+            <Text className="pt-4 text-lg font-semibold">
               Transactions have two parts: inputs and outputs. In the previous
               exercise we decoded a secret message found inside a transaction
               input. This time we’ll decode a message that belongs to the output
               part.
             </Text>
 
-            <Text className="pt-2 text-lg">
+            <Text className="pt-4 text-lg font-semibold">
               For the following transaction, identify the output of type
               OP_RETURN.
             </Text>
