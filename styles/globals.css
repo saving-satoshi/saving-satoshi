@@ -139,8 +139,3 @@ div.react-terminal-active-input {
   outline: #243142;
   border-radius: 4px;
 }
-
-:not(.terminal) ~ .statusbar-bottom {
-  position: fixed;
-  bottom: 0;
-}
