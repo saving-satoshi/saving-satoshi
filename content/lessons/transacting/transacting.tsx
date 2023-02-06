@@ -30,7 +30,7 @@ export default function Transacting() {
             </Text>
           </div>
 
-          <Button href="/chapters/chapter-1/transacting-1" classes="mt-8">
+          <Button href="/chapters/chapter-1/transacting-1" classes="mt-8 max-md:w-full">
             Continue
           </Button>
         </div>
