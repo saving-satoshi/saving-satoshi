@@ -13,7 +13,7 @@ import {
   LessonPrompt,
 } from 'ui'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { formattedMessages } from './messages'
+import messages from './messages'
 
 const inputAmount = 154
 const answer =
@@ -43,16 +43,14 @@ export default function Genesis1() {
 
         <Text className="text-lg">
           <FormattedMessage
-            {...formattedMessages.firstParagraph}
+            {...messages.firstParagraph}
             values={{
               blockExplorerTooltip: (
                 <Tooltip
-                  content={formatMessage(
-                    formattedMessages.blockExplorerTooltipContent
-                  )}
+                  content={formatMessage(messages.blockExplorerTooltipContent)}
                   href="https://blockstream.info/"
                 >
-                  <FormattedMessage {...formattedMessages.blockExplorer} />
+                  <FormattedMessage {...messages.blockExplorer} />
                 </Tooltip>
               ),
             }}
