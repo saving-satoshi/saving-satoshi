@@ -55,6 +55,7 @@ export default function Tab({
             'hover:bg-black/25 hover:text-white hover:text-opacity-100':
               status && status.unlocked && !isActive,
             'bg-black/25 text-opacity-100': isActive,
+            'border-r': isLast,
           }
         )}
       >
