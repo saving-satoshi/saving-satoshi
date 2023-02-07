@@ -11,7 +11,6 @@ interface UserInputProps {
 
 export default function Input({ onChange, answer, pattern, hints }: UserInputProps) {
   const [textAreaValue, setTextAreaValue] = useState('')
-  // const [formattedText, setFormattedText] = useState('')
   const [correctAnswer, setCorrectAnswer] = useState(false)
 
   const displayOverlay = () => {
@@ -63,12 +62,6 @@ export default function Input({ onChange, answer, pattern, hints }: UserInputPro
     .match(pattern)
     .join('')
     .replace(/\s+/g, '')
-
-    // const matchedText = pasteData
-    // .toString()
-    // .match(pattern)
-    // .join('')
-    // .replace(/\s+/g, '')
 
   document.execCommand('insertText', false, pasteData)
   }
