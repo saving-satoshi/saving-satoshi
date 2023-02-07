@@ -6,19 +6,20 @@ export default function LessonPrompt({
   className,
   label,
   answer,
-  pattern,
   onChange,
+  pattern,
   hints
 }: {
   className?: string
   label: string
   answer: string
-  pattern: RegExp
   onChange: Function
+  pattern?: RegExp
   hints?: boolean
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
+  const inputPattern = pattern ? pattern : (/./g)
 
   return (
     <div
@@ -35,7 +36,7 @@ export default function LessonPrompt({
         <h2 className="text-center text-xl">{label}</h2>
 
         <div className="w-full pt-8">
-          <Input onChange={onChange} answer={answer} pattern={pattern} hints={hints} />
+          <Input onChange={onChange} answer={answer} pattern={inputPattern} hints={hints} />
         </div>
       </div>
     </div>
