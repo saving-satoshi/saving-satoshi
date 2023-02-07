@@ -5,11 +5,13 @@ import { useState } from 'react'
 interface UserInputProps {
   onChange: Function
   answer: string
+  pattern: RegExp
   hints?: boolean
 }
 
-export default function Input({ onChange, answer, hints }: UserInputProps) {
+export default function Input({ onChange, answer, pattern, hints }: UserInputProps) {
   const [textAreaValue, setTextAreaValue] = useState('')
+  // const [formattedText, setFormattedText] = useState('')
   const [correctAnswer, setCorrectAnswer] = useState(false)
 
   const displayOverlay = () => {
@@ -54,25 +56,33 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
   }
 
   const handlePaste = (event) => {
-    const formattedText = event
-      .replace(/[\s\u00A0]+/g, '')
-      .replace(/\r?\n|\r/g, '')
-      .slice(0, answer.length)
-      .toLowerCase()
-    return formattedText
+    event.preventDefault()
+
+    const pasteData= (event.clipboardData || window.Clipboard).getData('text')
+    .toString()
+    .match(pattern)
+    .join('')
+    .replace(/\s+/g, '')
+
+    // const matchedText = pasteData
+    // .toString()
+    // .match(pattern)
+    // .join('')
+    // .replace(/\s+/g, '')
+
+  document.execCommand('insertText', false, pasteData)
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === ' ') {
+    if (!event.key.match(pattern)) {
       event.preventDefault()
     }
   }
 
   const handleChange = (event) => {
-    let formattedText = handlePaste(event.target.value)
-    setTextAreaValue(formattedText)
-    onChange(formattedText)
-    if (formattedText === answer && formattedText.length === answer.length) {
+    setTextAreaValue((event.target.value).slice(0, answer.length))
+    onChange(event.target.value)
+    if (event.target.value === answer && event.target.value.length === answer.length) {
       setCorrectAnswer(true)
     } else {
       setCorrectAnswer(false)
@@ -83,6 +93,7 @@ export default function Input({ onChange, answer, hints }: UserInputProps) {
     <form className="relative">
       <textarea
         onKeyDown={handleKeyDown}
+        onPaste={handlePaste}
         onChange={handleChange}
         value={textAreaValue}
         spellCheck="false"
