@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
 
@@ -8,7 +8,7 @@ import { Button } from 'shared'
 import ChapterTabs from './Tabs'
 import ChallengeList from './ChallengeList'
 import chapters from 'content/chapters'
-import { getUserChapterStatus } from 'lib/content'
+import { useStatus } from 'hooks'
 import LockIcon from 'public/assets/icons/lock.svg'
 
 import { ChapterContextType } from 'types'
@@ -30,14 +30,22 @@ const tabData = [
 
 export default function Chapter({ children, metadata }) {
   const [activeTab, setActiveTab] = useState('info')
+  const [display, setDisplay] = useState(false)
 
   const chapter = chapters[metadata.slug] || 0
   const position = metadata.position + 1
   const isEven = position % 2 == 0
 
+  const status = useStatus(metadata.slug, 'done')
+
+  useEffect(() => {
+    setDisplay(status?.unlocked)
+    if (metadata.slug === 'chapter-1') {
+      setDisplay(true)
+    }
+  }, [status])
+
   const context = {}
-  const currentChapter = 'chapter-' + position
-  const display = getUserChapterStatus(currentChapter).unlocked
 
   return (
     <ChapterContext.Provider value={context}>
@@ -71,7 +79,7 @@ export default function Chapter({ children, metadata }) {
                 <div className="flex grow lg:grow-0">
                   <div
                     aria-hidden={activeTab !== 'info' ? 'true' : 'false'}
-                    className={clsx('w-full lg:-mr-[100%] lg:block', {
+                    className={clsx('-mr-[100%] block w-full', {
                       visible: activeTab === 'info',
                       invisible: activeTab !== 'info',
                     })}

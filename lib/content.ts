@@ -44,33 +44,3 @@ export function getUserLessonStatus(chapterId, lessonId, userProgress) {
 
   return result
 }
-
-export function getUserChapterStatus(chapterId) {
-  const result = {
-    unlocked: false,
-    completed: false,
-  }
-
-  const userProgress = getUserProgress()
-
-  if (userProgress) {
-    const userChapterId = userProgress.chapter
-    const userChapter = chapters[userChapterId].metadata
-    const currentChapter = chapters[chapterId].metadata
-
-    const userChapterIdIndex = userChapter.position
-    const chapterIdIndex = currentChapter.position
-
-    // Has the user reached this chapter?
-    if (userChapterIdIndex > chapterIdIndex) {
-      result.completed = true
-      result.unlocked = true
-    } else if (userChapterIdIndex == chapterIdIndex) {
-      result.unlocked = true
-    }
-  } else if (chapterId == 'chapter-1') {
-    result.unlocked = true
-  }
-
-  return result
-}
