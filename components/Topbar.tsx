@@ -1,57 +1,45 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import Avatar from 'components/Avatar'
+import { siteConfig } from 'config/site'
+import { NavItem } from 'types'
+import { useState } from 'react'
 import LoginModal from 'components/Modals/Login'
 import SignUpModal from 'components/Modals/SignUp'
 import UserIcon from 'public/assets/icons/avatar.svg'
-
-import { siteConfig } from 'config/site'
-import { getUser, isUserLoggedIn, isUserRegistered, logoutUser } from 'lib/user'
-import { NavItem } from 'types'
+import Avatar from 'components/Avatar'
+import { useUser, useHasMounted } from 'hooks'
 
 export default function Topbar({ items }: { items: NavItem[] }) {
+  const hasMounted = useHasMounted()
   const [openSignInModal, setOpenSignInModal] = useState(false)
   const [openSignUpModal, setOpenSignUpModal] = useState(false)
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [user, setUser] = useState<any>({})
+  const { user, isLoggedIn, isRegistered } = useUser()
+  const renderIconButton = () => {
+    if (!hasMounted) {
+      return <div className="ml-4 h-10 w-10" />
+    }
 
-  useEffect(() => {
-    setLoggedIn(isUserLoggedIn())
-  }, [])
-
-  useEffect(() => {
-    updateUser()
-  }, [loggedIn])
-
-  function onLogin() {
-    setOpenSignInModal(false)
-    setLoggedIn(true)
-  }
-
-  function updateUser() {
-    setUser(getUser())
-  }
-
-  function onClearProgress() {
-    setUser(null)
-  }
-
-  function onLogout() {
-    logoutUser()
-    setLoggedIn(false)
-  }
-
-  function onSignupConfirm() {
-    updateUser()
-    setLoggedIn(true)
-    setOpenSignUpModal(false)
+    return isLoggedIn ? (
+      <button
+        onClick={() => setOpenSignInModal(true)}
+        className="text-grey-300 ml-4 h-10 w-10 cursor-pointer"
+      >
+        <Avatar avatar={user.avatar} size={30} />
+      </button>
+    ) : (
+      <button
+        onClick={() => toggleModal(true)}
+        className="text-grey-300 ml-4 h-10 w-10 cursor-pointer"
+      >
+        <UserIcon />
+      </button>
+    )
   }
 
   function toggleModal(show) {
-    if (user && user.publicKey && isUserRegistered()) {
+    if (user && user.publicKey && isRegistered) {
       setOpenSignInModal(show)
     } else {
       setOpenSignUpModal(show)
@@ -84,40 +72,22 @@ export default function Topbar({ items }: { items: NavItem[] }) {
                 </Link>
               ))
             : null}
-
-          {!loggedIn && (
-            <button
-              onClick={() => toggleModal(true)}
-              className="text-grey-300 ml-4 h-10 w-10 cursor-pointer"
-            >
-              <UserIcon />
-            </button>
-          )}
-
-          {loggedIn && (
-            <button
-              onClick={() => setOpenSignInModal(true)}
-              className="text-grey-300 ml-4 h-10 w-10 cursor-pointer"
-            >
-              <Avatar avatar={user.avatar} size={30} />
-            </button>
-          )}
+          {renderIconButton()}
         </nav>
       </div>
-
-      <LoginModal
-        onLogin={onLogin}
-        onLogout={onLogout}
-        open={openSignInModal}
-        onClearProgress={onClearProgress}
-        onClose={() => hideModals()}
-      />
-
-      <SignUpModal
-        onConfirm={onSignupConfirm}
-        open={openSignUpModal}
-        onClose={() => hideModals()}
-      />
+      {isRegistered ? (
+        <LoginModal
+          onLogin={() => setOpenSignInModal(false)}
+          open={openSignInModal}
+          onClose={hideModals}
+        />
+      ) : (
+        <SignUpModal
+          onConfirm={() => setOpenSignUpModal(false)}
+          open={openSignUpModal}
+          onClose={hideModals}
+        />
+      )}
     </div>
   )
 }
