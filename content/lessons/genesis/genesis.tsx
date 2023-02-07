@@ -80,6 +80,7 @@ export default function Genesis1() {
         className="max-w-[1280px] px-4 py-8 md:items-center"
         label="Paste the ScriptSig HEX Representation"
         answer={answer}
+        pattern={/[a-z0-9]+/gi}
         onChange={setUserInput}
         hints
       />
