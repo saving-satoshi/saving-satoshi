@@ -1,15 +1,11 @@
-import { getUserProgress } from 'lib/user'
-
 import chapters from 'content/chapters'
 
 // Find out if the user has unlocked or completed a specific lesson
-export function getUserLessonStatus(chapterId, lessonId) {
+export function getUserLessonStatus(chapterId, lessonId, userProgress) {
   const result = {
     unlocked: false,
     completed: false,
   }
-
-  const userProgress = getUserProgress()
 
   if (userProgress) {
     const userChapterId = userProgress.chapter

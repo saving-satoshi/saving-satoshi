@@ -68,7 +68,6 @@ export default function Chapter({ children, metadata }) {
                   onChange={setActiveTab}
                   classes="mt-8"
                 />
-
                 <div className="flex grow lg:grow-0">
                   <div
                     aria-hidden={activeTab !== 'info' ? 'true' : 'false'}
@@ -83,6 +82,7 @@ export default function Chapter({ children, metadata }) {
                         <Button
                           href={`/chapters/${chapter.metadata.slug}`}
                           disabled={chapter.metadata.lessons.length === 0}
+                          classes={'w-full'}
                         >
                           {chapter.metadata.lessons.length > 0
                             ? `Start chapter ${position}`
@@ -91,10 +91,9 @@ export default function Chapter({ children, metadata }) {
                       </div>
                     </div>
                   </div>
-
                   <div
                     aria-hidden={activeTab !== 'challenges' ? 'true' : 'false'}
-                    className={clsx('w-full lg:-mr-[100%] lg:block', {
+                    className={clsx('-mr-[100%] block w-full', {
                       visible: activeTab === 'challenges',
                       invisible: activeTab !== 'challenges',
                     })}
