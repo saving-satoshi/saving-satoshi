@@ -10,7 +10,8 @@
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
     "test": "yarn prettier:check && yarn lint",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "generate-translations": "extract-messages -l=en,es -o translations -d en --flat true **/messages.js"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": "prettier --write"
@@ -36,9 +37,11 @@
     "@svgr/webpack": "^6.5.1",
     "@types/react": "18.0.25",
     "autoprefixer": "^10.4.13",
+    "babel-plugin-react-intl-auto": "^3.3.0",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "^8.6.0",
+    "extract-react-intl-messages": "^4.1.1",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
     "postcss": "^8.4.18",

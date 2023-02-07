@@ -12,6 +12,8 @@ import {
   Tooltip,
   LessonPrompt,
 } from 'ui'
+import { FormattedMessage, useIntl } from 'react-intl'
+import { formattedMessages } from './messages'
 
 const inputAmount = 154
 const answer =
@@ -30,6 +32,7 @@ const tabData = [
 
 export default function Genesis1() {
   const [userInput, setUserInput] = useState('')
+  const { formatMessage } = useIntl()
 
   return (
     <Lesson>
@@ -39,15 +42,21 @@ export default function Genesis1() {
         <Title>Find block 0</Title>
 
         <Text className="text-lg">
-          Let’s find the very first block in the Bitcoin blockchain. Go to a
-          <Tooltip
-            content="We recommend https://blockstream.info/"
-            href="https://blockstream.info/"
-          >
-            block explorer
-          </Tooltip>
-          and search for ’0’. This will take you to the block at height 0. As
-          you can see, this block only contains one transaction.
+          <FormattedMessage
+            {...formattedMessages.firstParagraph}
+            values={{
+              blockExplorerTooltip: (
+                <Tooltip
+                  content={formatMessage(
+                    formattedMessages.blockExplorerTooltipContent
+                  )}
+                  href="https://blockstream.info/"
+                >
+                  <FormattedMessage {...formattedMessages.blockExplorer} />
+                </Tooltip>
+              ),
+            }}
+          />
         </Text>
 
         <Text className="text-lg">

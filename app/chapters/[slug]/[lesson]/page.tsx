@@ -1,6 +1,9 @@
+'use client'
+
 import chapters from 'content/chapters'
 import lessons from 'content/lessons'
 import { Button } from 'shared'
+import { IntlProvider } from 'components'
 
 export default function Page({ params }) {
   if (!(params.lesson in lessons) || !(params.slug in chapters)) {
@@ -18,5 +21,9 @@ export default function Page({ params }) {
 
   const Lesson = lessons[params.lesson].default
 
-  return <Lesson />
+  return (
+    <IntlProvider>
+      <Lesson />
+    </IntlProvider>
+  )
 }

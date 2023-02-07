@@ -1,0 +1,5 @@
+{
+  "content.lessons.genesis.blockExplorer": "block explorer",
+  "content.lessons.genesis.blockExplorerTooltipContent": "We recommend https://blockstream.info/",
+  "content.lessons.genesis.firstParagraph": "Let’s find the very first block in the Bitcoin blockchain. Go to a {blockExplorerTooltip} and search for ’0’. This will take you to the block at height 0 you can see, this block only contains one transaction."
+}
