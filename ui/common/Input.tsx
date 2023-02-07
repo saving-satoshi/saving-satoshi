@@ -61,7 +61,6 @@ export default function Input({ onChange, answer, pattern, hints }: UserInputPro
     .toString()
     .match(pattern)
     .join('')
-    .replace(/\s+/g, '')
 
   document.execCommand('insertText', false, pasteData)
   }
