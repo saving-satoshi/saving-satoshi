@@ -39,11 +39,15 @@ export default function Genesis1() {
 
         <Text className="text-lg">
           Let’s find the very first block in the Bitcoin blockchain. Go to a
-          <Tooltip
-            content="We recommend https://blockstream.info/"
-            href="https://blockstream.info/"
-          >
-            block explorer
+          <Tooltip content="We recommend https://blockstream.info/">
+            <a
+              href="https://blockstream.info"
+              target="_blank"
+              rel="noreferrer"
+              className="underline"
+            >
+              block explorer
+            </a>
           </Tooltip>
           and search for ’0’. This will take you to the block at height 0. As
           you can see, this block only contains one transaction.
@@ -56,7 +60,7 @@ export default function Genesis1() {
             field called ’ScriptSig’. Find the
           </span>
           <Tooltip content="Short for hexadecimal, a numeral system that represents numbers using a base of 16.">
-            HEX
+            <span className="underline">HEX</span>
           </Tooltip>
           <span>representation and paste it below.</span>
         </Text>
