@@ -80,7 +80,7 @@ export default function Input({ onChange, answer, pattern, hints }: UserInputPro
   }
 
   const handleChange = (event) => {
-    setTextAreaValue((event.target.value).slice(0, answer.length))
+    setTextAreaValue((event.target.value).slice(0, answer.length).toLowerCase())
     onChange(event.target.value)
     if (event.target.value === answer && event.target.value.length === answer.length) {
       setCorrectAnswer(true)
