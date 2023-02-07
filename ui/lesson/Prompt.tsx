@@ -6,12 +6,14 @@ export default function LessonPrompt({
   className,
   label,
   answer,
+  pattern,
   onChange,
   hints
 }: {
   className?: string
   label: string
   answer: string
+  pattern: RegExp
   onChange: Function
   hints?: boolean
 }) {
@@ -33,7 +35,7 @@ export default function LessonPrompt({
         <h2 className="text-center text-xl">{label}</h2>
 
         <div className="w-full pt-8">
-          <Input onChange={onChange} answer={answer} hints={hints} />
+          <Input onChange={onChange} answer={answer} pattern={pattern} hints={hints} />
         </div>
       </div>
     </div>
