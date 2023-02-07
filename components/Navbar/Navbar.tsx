@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import Address from 'components/Navbar/Address'
 import TabGroup from 'components/Navbar/TabGroup'
 import ArrowLeftIcon from 'public/assets/icons/arrow-left.svg'
+import UserButton from './UserButton'
 
 export default function Navbar({ params }) {
   const router = useRouter()
@@ -22,9 +23,10 @@ export default function Navbar({ params }) {
 
           <Address />
         </div>
-        <div className="flex items-stretch">
+        <nav className="flex items-center">
           <TabGroup params={params} />
-        </div>
+          <UserButton />
+        </nav>
       </div>
     </div>
   )
