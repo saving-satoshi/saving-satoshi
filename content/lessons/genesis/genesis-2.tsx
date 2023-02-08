@@ -35,6 +35,7 @@ export default function Genesis2() {
           <CodeExample
             code={'echo scriptSigHex | xxd -r -p'}
             language="shell"
+            copy
           />
         </div>
 
