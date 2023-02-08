@@ -59,9 +59,9 @@ export default function Input({ onChange, answer, pattern, hints }: UserInputPro
 
     const pasteData= (event.clipboardData || window.Clipboard).getData('text')
     .toString()
-    .slice(0, answer.length)
     .match(pattern)
     .join('')
+    .slice(0, answer.length)
 
   document.execCommand('insertText', false, pasteData)
   }
