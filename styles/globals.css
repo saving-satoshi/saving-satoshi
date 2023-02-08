@@ -118,8 +118,8 @@ div.react-terminal-wrapper:focus-within .react-terminal-active-input:after {
 }
 
 div.react-terminal-line {
-  white-space: unset !important;
-  line-break: anywhere;
+  white-space: pre-line !important;
+  line-break: auto;
 }
 
 div.react-terminal-active-input {
