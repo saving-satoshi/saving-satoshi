@@ -18,7 +18,7 @@ export default function TabGroup({ params }) {
   })
 
   return (
-    <nav className="flex items-stretch">
+    <div className="flex flex-l h-full items-stretch">
       {challenges.map((challenge, index) => (
         <Tab
           key={index}
@@ -28,6 +28,6 @@ export default function TabGroup({ params }) {
           params={params}
         />
       ))}
-    </nav>
+    </div>
   )
 }
