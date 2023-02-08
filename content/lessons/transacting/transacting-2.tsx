@@ -13,6 +13,11 @@ export default function Transacting2() {
       next="/chapters/chapter-1/done"
       instruction="Waiting for you to write and run the script...."
       successMessage="jtacos for everyone"
+      customLines={'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyHex is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge'}
+      commonError={{
+        error: '$scriptPubKeyHex',
+        message: 'Almost. Take another look to find the correct value'
+      }}
     >
       <LessonInfo>
         <Title>Another secret message</Title>
@@ -31,8 +36,9 @@ export default function Transacting2() {
         </Text>
 
         <CodeExample
-          code={'echo scriptPubKeyHex | xxd -r -p'}
+          code={'echo $scriptPubKeyHex | xxd -r -p'}
           language="shell"
+          copy
         />
       </LessonInfo>
     </TerminalChallenge>
