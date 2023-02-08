@@ -59,6 +59,7 @@ export default function Input({ onChange, answer, pattern, hints }: UserInputPro
 
     const pasteData= (event.clipboardData || window.Clipboard).getData('text')
     .toString()
+    .slice(0, answer.length)
     .match(pattern)
     .join('')
 
@@ -76,6 +77,7 @@ export default function Input({ onChange, answer, pattern, hints }: UserInputPro
     onChange(event.target.value)
     if (event.target.value === answer && event.target.value.length === answer.length) {
       setCorrectAnswer(true)
+      event.target.blur()
     } else {
       setCorrectAnswer(false)
     }
