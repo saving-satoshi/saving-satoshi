@@ -19,11 +19,13 @@ const tabData = [
 ]
 
 /**
- * @expectedInput {string} answer to the challenge problem
+ * @expectedInput {string} | {userVariable, value} answer to the challenge problem or the input variable and the expected value
  * @saveInfo {chapter, challenge} information required for saving user progress
  * @next {string} link to next part of chapter
  * @instruction {string} terminal instruction for user
  * @successMessage {string} Message displayed to the user upon finishing a challenge
+ * @customLines {string} Custom message displayed in terminal for the user to read
+ * @commonError {error, message} Common error the user may make in completing this challenge and a return tip to help them
  */
 export default function TerminalChallenge({
   children,
@@ -32,16 +34,38 @@ export default function TerminalChallenge({
   next,
   instruction,
   successMessage,
+  customLines,
+  commonError,
+}: {
+  children: any
+  expectedInput: string | any
+  saveInfo: any
+  next: string
+  instruction: string
+  successMessage: string
+  customLines?: string
+  commonError?: any
 }) {
   const [hydrated, setHydrated] = useState(false)
   const [answer, setAnswer] = useState('')
   const [success, setSuccess] = useState(false)
-  const [lines, setLines] = useState([
-    {
-      value: 'Enter your commands here and press Enter...',
-      type: 'output',
-    },
-  ])
+  const [lines, setLines] = useState(
+    customLines
+      ? [
+          {
+            value: customLines,
+            type: 'output',
+          },
+        ]
+      : [
+          {
+            value: 'Enter your commands here and press Enter...',
+            type: 'output',
+          },
+        ]
+  )
+
+  console.log(typeof saveInfo)
 
   const isSmallScreen = useMediaQuery({ query: '(max-width: 767px)' })
 
@@ -56,7 +80,7 @@ export default function TerminalChallenge({
   const onChange = (input) => {
     setLines((lines) => [...lines, { value: input, type: 'input' }])
 
-    if (input.startsWith('echo') && input.endsWith('| xxd -r -p')) {
+    if (input === `echo ${expectedInput} | xxd -r -p`) {
       const givenInput = input.split(' ')[1]
       const answerValue = Buffer.from(givenInput, 'hex').toString('utf8')
       setLines((lines) => [...lines, { value: answerValue, type: 'output' }])
@@ -68,6 +92,29 @@ export default function TerminalChallenge({
         }, 1000)
         setAnswer(answerValue)
       }
+    } else if (input === `echo ${expectedInput.userVariable} | xxd -r -p`) {
+      const varInput = `echo ${expectedInput.value} | xxd -r -p`
+      const givenInput = varInput.split(' ')[1]
+      const answerValue = Buffer.from(givenInput, 'hex').toString('utf8')
+      setLines((lines) => [...lines, { value: answerValue, type: 'output' }])
+
+      if (givenInput === expectedInput.value) {
+        setTimeout(() => {
+          saveProgress()
+          setSuccess(true)
+        }, 1000)
+        setAnswer(answerValue)
+      }
+    } else if (commonError && input.includes(commonError.error)) {
+      setLines((lines) => [
+        ...lines,
+        { value: commonError.message, type: 'output' },
+      ])
+    } else {
+      setLines((lines) => [
+        ...lines,
+        { value: 'Hmm... Sorry that’s not quite right.', type: 'output' },
+      ])
     }
   }
 
