@@ -90,7 +90,7 @@ export default function TerminalChallenge({
         }, 1000)
         setAnswer(answerValue)
       }
-    } else if (input === `echo ${expectedInput.userVariable} | xxd -r -p`) {
+    } else if ((input === `echo ${expectedInput.userVariable} | xxd -r -p`) || (input === `echo ${expectedInput.value} | xxd -r -p`)) {
       const varInput = `echo ${expectedInput.value} | xxd -r -p`
       const givenInput = varInput.split(' ')[1]
       const answerValue = Buffer.from(givenInput, 'hex').toString('utf8')
