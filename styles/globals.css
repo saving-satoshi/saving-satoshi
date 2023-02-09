@@ -6,6 +6,7 @@
   --back: 50, 71, 96; /* Theme background color (#324760) */
   --green: 40, 177, 35; /* Success color (#28B123) */
   --terminal-output: #3DCFEF;
+  --input-text: #6e7d92;
 }
 
 .-theme-purple {
@@ -127,7 +128,7 @@ div.react-terminal-active-input {
 }
 
 .underscore {
-  color: #6e7d92;
+  color: var(--input-text);
 }
 
 .correct {
@@ -135,11 +136,11 @@ div.react-terminal-active-input {
 }
 
 .overlay-complete > .correct {
-  color: #28B123;
+  color: var(--green)
 }
 
 .incorrect {
-  color: #3DCFEF;
+  color: var(--terminal-output);
 }
 .code::-webkit-scrollbar {
   height: 8px;
