@@ -56,7 +56,7 @@ export default function Button({
     if (disabled) {
       className += ' text-green/50'
     } else {
-      className += ' text-green hover:bg-green-400/25'
+      className += ' text-green hover:bg-green/25'
     }
   } else {
     // Filled white background, dark text
