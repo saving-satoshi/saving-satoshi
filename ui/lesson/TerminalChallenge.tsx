@@ -82,35 +82,56 @@ export default function TerminalChallenge({
       `echo ${expectedInput} | xxd -r -p`,
       `echo ${expectedInput.userVariable} | xxd -r -p`,
       `echo ${expectedInput.value} | xxd -r -p`,
+      `echo ${input.split(' ')[1]?.match(/^[\da-f]+$/i)} | xxd -r -p`,
     ]
+    let varInput: string
 
     if (inputs.includes(input)) {
-      const varInput =
-        input === `echo ${expectedInput} | xxd -r -p`
-          ? `echo ${expectedInput} | xxd -r -p`
-          : `echo ${expectedInput.value} | xxd -r -p`
+      if (input === `echo ${expectedInput} | xxd -r -p`) {
+        varInput = expectedInput
+      } else if (input === `echo ${expectedInput.userVariable || expectedInput.value} | xxd -r -p`) {
+        varInput = expectedInput.value
+      } else {
+        varInput = input.split(' ')[1]
+      }
 
-      const givenInput = varInput.split(' ')[1]
-      const answerValue = Buffer.from(givenInput, 'hex').toString('utf8')
+      const answerValue = Buffer.from(varInput, 'hex').toString('utf8')
+      setTimeout(() => {
       setLines((lines) => [...lines, { value: answerValue, type: 'output' }])
+      }, 250)
 
-      if (givenInput === expectedInput.value || expectedInput) {
+      if (varInput === (expectedInput.value || expectedInput)) {
         setTimeout(() => {
           saveProgress()
           setSuccess(true)
+          setAnswer(answerValue)
+          setLines((lines) => [
+            ...lines,
+            { value: successMessage, type: 'answer' },
+          ])
         }, 1000)
-        setAnswer(answerValue)
+      } else {
+        setTimeout(() => {
+          setLines((lines) => [
+            ...lines,
+            { value: 'Sorry that’s not quite right.', type: 'output' },
+          ])
+        }, 500)
       }
     } else if (commonError && input.includes(commonError.error)) {
-      setLines((lines) => [
-        ...lines,
-        { value: commonError.message, type: 'output' },
-      ])
+      setTimeout(() => {
+        setLines((lines) => [
+          ...lines,
+          { value: commonError.message, type: 'output' },
+        ])
+      }, 250)
     } else {
-      setLines((lines) => [
-        ...lines,
-        { value: 'Hmm... Sorry that’s not quite right.', type: 'output' },
-      ])
+      setTimeout(() => {
+        setLines((lines) => [
+          ...lines,
+          { value: 'Hmm... Sorry that’s not quite right.', type: 'output' },
+        ])
+      }, 250)
     }
   }
 
