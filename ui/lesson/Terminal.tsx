@@ -4,11 +4,30 @@ import clsx from 'clsx'
 import React from 'react'
 import ReactTerminal, { ColorMode, TerminalOutput } from 'react-terminal-ui'
 import PlayIcon from 'public/assets/icons/play.svg'
-import { StatusBar } from 'ui'
+import { StatusBar, useLessonContext } from 'ui'
+import { LessonView } from 'types'
 
-export default function Terminal({ success, answer, lines, next, onChange }) {
+export default function Terminal({
+  success,
+  answer,
+  lines,
+  next,
+  onChange,
+  successMessage,
+  instruction,
+}) {
+  const { activeView } = useLessonContext()
+  const isActive = activeView === LessonView.Code
   return (
-    <div className="flex grow flex-col border-white/25 font-space-mono text-white md:border-l">
+    <div
+      className={clsx(
+        'flex grow flex-col border-white/25 font-space-mono text-white md:border-l',
+        {
+          'hidden md:flex': !isActive,
+          flex: isActive,
+        }
+      )}
+    >
       <div className="flex grow flex-col items-stretch text-white">
         <div className="flex grow">
           <ReactTerminal
@@ -38,9 +57,7 @@ export default function Terminal({ success, answer, lines, next, onChange }) {
               'opacity-50': !success,
             })}
           >
-            {success
-              ? answer
-              : 'Waiting for you to write and run the script...'}
+            {success ? successMessage : instruction}
           </h2>
         </div>
 
