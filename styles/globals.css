@@ -104,10 +104,10 @@ div.react-terminal-wrapper:focus-within .react-terminal-active-input:after {
   animation: blink 1s infinite;
 }
 
-.react-terminal-previous-input .react-terminal-line:before {
+.react-terminal-answer .react-terminal-line:before {
   margin-right: 0.25em;
   content: '>';
-  color: white !important;
+  color: var(--green) !important;
   opacity: 0.8;
 }
 
