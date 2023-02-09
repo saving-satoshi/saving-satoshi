@@ -4,53 +4,9 @@ import Link from 'next/link'
 
 import { siteConfig } from 'config/site'
 import { NavItem } from 'types'
-import { useState } from 'react'
-import LoginModal from 'components/Modals/Login'
-import SignUpModal from 'components/Modals/SignUp'
-import UserIcon from 'public/assets/icons/avatar.svg'
-import Avatar from 'components/Avatar'
-import { useUser, useHasMounted } from 'hooks'
+import UserButton from './Navbar/UserButton'
 
 export default function Topbar({ items }: { items: NavItem[] }) {
-  const hasMounted = useHasMounted()
-  const [openSignInModal, setOpenSignInModal] = useState(false)
-  const [openSignUpModal, setOpenSignUpModal] = useState(false)
-  const { user, isLoggedIn, isRegistered } = useUser()
-  const renderIconButton = () => {
-    if (!hasMounted) {
-      return <div className="ml-4 h-10 w-10" />
-    }
-
-    return isLoggedIn ? (
-      <button
-        onClick={() => setOpenSignInModal(true)}
-        className="text-grey-300 ml-4 h-10 w-10 cursor-pointer"
-      >
-        <Avatar avatar={user.avatar} size={30} />
-      </button>
-    ) : (
-      <button
-        onClick={() => toggleModal(true)}
-        className="text-grey-300 ml-4 h-10 w-10 cursor-pointer"
-      >
-        <UserIcon />
-      </button>
-    )
-  }
-
-  function toggleModal(show) {
-    if (user && user.publicKey && isRegistered) {
-      setOpenSignInModal(show)
-    } else {
-      setOpenSignUpModal(show)
-    }
-  }
-
-  function hideModals() {
-    setOpenSignInModal(false)
-    setOpenSignUpModal(false)
-  }
-
   return (
     <div className="absolute left-0 top-0 w-full">
       <div className="m-auto flex items-center justify-between px-6 py-4 text-white">
@@ -72,22 +28,9 @@ export default function Topbar({ items }: { items: NavItem[] }) {
                 </Link>
               ))
             : null}
-          {renderIconButton()}
+          <UserButton />
         </nav>
       </div>
-      {isRegistered ? (
-        <LoginModal
-          onLogin={() => setOpenSignInModal(false)}
-          open={openSignInModal}
-          onClose={hideModals}
-        />
-      ) : (
-        <SignUpModal
-          onConfirm={() => setOpenSignUpModal(false)}
-          open={openSignUpModal}
-          onClose={hideModals}
-        />
-      )}
     </div>
   )
 }
