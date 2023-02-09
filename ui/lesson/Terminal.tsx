@@ -39,8 +39,8 @@ export default function Terminal({
               <span
                 key={index}
                 className={`${
-                  line.type === 'input'
-                    ? 'react-terminal-previous-input text-white/80'
+                  line.type === 'answer'
+                    ? 'react-terminal-answer text-green bg-green/25 rounded pl-1 pr-1'
                     : 'react-terminal-output text-[var(--terminal-output)]'
                 }`}
               >
@@ -49,18 +49,6 @@ export default function Terminal({
             ))}
           </ReactTerminal>
         </div>
-
-        <div className="flex justify-center border-t border-white/25 bg-black/[.15] p-[20px] md:justify-start">
-          <h2
-            className={clsx('font-space-mono text-[18px] text-white/50', {
-              'bg-green/25': success,
-              'opacity-50': !success,
-            })}
-          >
-            {success ? successMessage : instruction}
-          </h2>
-        </div>
-
         {!success && (
           <div className="flex h-16 border-t border-white/25 pt-4 pl-6 pb-[30px] text-[18px] sm:flex-col md:flex-row md:pl-5 md:pt-0 md:pb-0">
             <button className="flex grow items-center gap-2 transition duration-150 ease-in-out hover:opacity-75">
