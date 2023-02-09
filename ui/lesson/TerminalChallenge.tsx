@@ -78,25 +78,23 @@ export default function TerminalChallenge({
   const onChange = (input) => {
     setLines((lines) => [...lines, { value: input, type: 'input' }])
 
-    if (input === `echo ${expectedInput} | xxd -r -p`) {
-      const givenInput = input.split(' ')[1]
-      const answerValue = Buffer.from(givenInput, 'hex').toString('utf8')
-      setLines((lines) => [...lines, { value: answerValue, type: 'output' }])
+    const inputs = [
+      `echo ${expectedInput} | xxd -r -p`,
+      `echo ${expectedInput.userVariable} | xxd -r -p`,
+      `echo ${expectedInput.value} | xxd -r -p`,
+    ]
 
-      if (givenInput === expectedInput) {
-        setTimeout(() => {
-          saveProgress()
-          setSuccess(true)
-        }, 1000)
-        setAnswer(answerValue)
-      }
-    } else if ((input === `echo ${expectedInput.userVariable} | xxd -r -p`) || (input === `echo ${expectedInput.value} | xxd -r -p`)) {
-      const varInput = `echo ${expectedInput.value} | xxd -r -p`
+    if (inputs.includes(input)) {
+      const varInput =
+        input === `echo ${expectedInput} | xxd -r -p`
+          ? `echo ${expectedInput} | xxd -r -p`
+          : `echo ${expectedInput.value} | xxd -r -p`
+
       const givenInput = varInput.split(' ')[1]
       const answerValue = Buffer.from(givenInput, 'hex').toString('utf8')
       setLines((lines) => [...lines, { value: answerValue, type: 'output' }])
 
-      if (givenInput === expectedInput.value) {
+      if (givenInput === expectedInput.value || expectedInput) {
         setTimeout(() => {
           saveProgress()
           setSuccess(true)
