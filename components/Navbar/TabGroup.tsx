@@ -1,6 +1,5 @@
 import Tab from './Tab'
-import chapters from 'content/chapters'
-import lessons from 'content/lessons'
+import { chapters, lessons } from 'content'
 
 export default function TabGroup({ params }) {
   const { slug } = params

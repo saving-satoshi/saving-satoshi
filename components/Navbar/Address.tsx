@@ -1,7 +1,6 @@
 import React from 'react'
 import { usePathname } from 'next/navigation'
-import chapters from 'content/chapters'
-import lessons from 'content/lessons'
+import { chapters, lessons } from 'content'
 
 export default function Address() {
   const pathName = usePathname()

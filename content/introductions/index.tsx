@@ -1,7 +1,9 @@
 import * as ReapingRewards from './reaping-rewards'
 
-const Introductions = {
+import { translations as ReapingRewardsTranslations } from './reaping-rewards/translations'
+
+export const introductions = {
   'reaping-rewards': ReapingRewards,
 }
 
-export default Introductions
+export const translations = [ReapingRewardsTranslations]

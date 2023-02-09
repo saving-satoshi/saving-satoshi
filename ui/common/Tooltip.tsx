@@ -100,7 +100,7 @@ function Tooltip({
             {children}
           </a>
         )}
-        {!href && <span className={className}> {children} </span>}
+        {!href && <span className={className}>{children}</span>}
       </span>
     </>
   )

@@ -18,6 +18,7 @@
   "dependencies": {
     "@lionello/secp256k1-js": "^1.1.0",
     "@next/font": "13.0.4",
+    "accept-language": "^3.0.18",
     "clsx": "^1.2.1",
     "date-fns": "2.29.3",
     "lodash": "^4.17.21",
