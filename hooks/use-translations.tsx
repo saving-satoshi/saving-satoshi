@@ -8,6 +8,7 @@ import { Chapter, Lesson, Translations } from 'types'
 const tooltipRegex = /<Tooltip(.*?)>(.*?)<\/Tooltip>/gim
 const contentRegex = /content="(.*?)"/
 const hrefRegex = /href="(.*?)"/
+const classNameRegex = /className="(.*?)"/
 const targetRegex = />(.*?)</
 const translations = {}
 
@@ -57,15 +58,19 @@ export default function useTranslations() {
     while ((match = tooltipRegex.exec(result))) {
       const tooltipHtml = match[0]
       const tkey = tooltipHtml.match(contentRegex)[1]
+
       const hrefMatch = tooltipHtml.match(hrefRegex)
       const href = hrefMatch?.length > 0 ? hrefMatch[1] : null
+
+      const classNameMatch = tooltipHtml.match(classNameRegex)
+      const className = classNameMatch?.length > 0 ? classNameMatch[1] : null
 
       const label = tooltipHtml.match(targetRegex)[1]
       const tvalue = get(translations, `${locale}.${tkey}`) || tkey
 
       parts.push(result.slice(lastIndex, match.index))
       parts.push(
-        <Tooltip key={tkey} href={href} content={tvalue}>
+        <Tooltip key={tkey} href={href} className={className} content={tvalue}>
           {label}
         </Tooltip>
       )
