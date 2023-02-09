@@ -51,12 +51,12 @@ export default function Button({
     }
   } else if (style == 'green') {
     // Green background with opacity, green text
-    className += ' bg-green-400/20'
+    className += ' bg-green/20'
 
     if (disabled) {
-      className += ' text-green-500/50'
+      className += ' text-green/50'
     } else {
-      className += ' text-green-500 hover:bg-green-400/25'
+      className += ' text-green hover:bg-green-400/25'
     }
   } else {
     // Filled white background, dark text
