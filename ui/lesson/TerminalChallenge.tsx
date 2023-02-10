@@ -76,6 +76,7 @@ export default function TerminalChallenge({
     setLines((lines) => [...lines, { value: input, type: 'input' }])
     setLines((lines) => [...lines, { value: '...decoding...', type: 'output' }])
 
+    const newLines = [...lines]
     const inputs = [
       `echo ${expectedInput} | xxd -r -p`,
       `echo ${expectedInput.userVariable} | xxd -r -p`,
@@ -97,7 +98,6 @@ export default function TerminalChallenge({
       answerValue = Buffer.from(varInput, 'hex').toString('utf8')
       setTimeout(() => {
         setLines((lines) => {
-          const newLines = [...lines]
           newLines[newLines.length - 1] = { value: answerValue, type: 'output' }
           return newLines
         })
@@ -125,7 +125,6 @@ export default function TerminalChallenge({
       setTimeout(() => {
         setSuccess('false')
         setLines((lines) => {
-          const newLines = [...lines]
           newLines[newLines.length - 1] = { value: commonError.message, type: 'output' }
           return newLines
         })
@@ -134,8 +133,7 @@ export default function TerminalChallenge({
       setTimeout(() => {
         setSuccess('false')
         setLines((lines) => {
-          const newLines = [...lines]
-          newLines[newLines.length - 1] = { value: 'Hmm... Sorry that’s not quite right.', type: 'output' }
+          newLines[newLines.length - 1] = { value: 'Sorry that’s not quite right.', type: 'output' }
           return newLines
         })
       }, 500)
