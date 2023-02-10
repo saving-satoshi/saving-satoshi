@@ -11,7 +11,7 @@ export default function Transacting2() {
         challenge: 'done',
       }}
       next="/chapters/chapter-1/done"
-      successMessage="jtacos for everyone"
+      successMessage={"That’s correct! Nice work. We don’t know why tacos were so important to the anonymous sender of this transaction, but here we are. And it’s an admirable goal at least"}
       customLines={'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyHex is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge'}
       commonError={{
         error: '$scriptPubKeyHex',
