@@ -32,7 +32,6 @@ export default function TerminalChallenge({
   expectedInput,
   saveInfo,
   next,
-  instruction,
   successMessage,
   customLines,
   commonError,
@@ -85,6 +84,7 @@ export default function TerminalChallenge({
       `echo ${input.split(' ')[1]?.match(/^[\da-f]+$/i)} | xxd -r -p`,
     ]
     let varInput: string
+    let answerValue: string
 
     if (inputs.includes(input)) {
       if (input === `echo ${expectedInput} | xxd -r -p`) {
@@ -95,7 +95,7 @@ export default function TerminalChallenge({
         varInput = input.split(' ')[1]
       }
 
-      const answerValue = Buffer.from(varInput, 'hex').toString('utf8')
+      answerValue = Buffer.from(varInput, 'hex').toString('utf8')
       setTimeout(() => {
       setLines((lines) => [...lines, { value: answerValue, type: 'output' }])
       }, 250)
@@ -112,6 +112,7 @@ export default function TerminalChallenge({
         }, 1000)
       } else {
         setTimeout(() => {
+          setAnswer(answerValue)
           setLines((lines) => [
             ...lines,
             { value: 'Sorry that’s not quite right.', type: 'output' },
@@ -120,6 +121,7 @@ export default function TerminalChallenge({
       }
     } else if (commonError && input.includes(commonError.error)) {
       setTimeout(() => {
+        setAnswer(input)
         setLines((lines) => [
           ...lines,
           { value: commonError.message, type: 'output' },
@@ -127,6 +129,7 @@ export default function TerminalChallenge({
       }, 250)
     } else {
       setTimeout(() => {
+        setAnswer(input)
         setLines((lines) => [
           ...lines,
           { value: 'Hmm... Sorry that’s not quite right.', type: 'output' },
@@ -150,12 +153,9 @@ export default function TerminalChallenge({
         {children}
 
         <LessonTerminal
-          success={success}
           answer={answer}
           lines={lines}
           onChange={onChange}
-          successMessage={successMessage}
-          instruction={instruction}
           next={next}
         />
       </Lesson>
