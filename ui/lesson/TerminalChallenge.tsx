@@ -46,8 +46,7 @@ export default function TerminalChallenge({
   commonError?: any
 }) {
   const [hydrated, setHydrated] = useState(false)
-  const [answer, setAnswer] = useState('')
-  const [success, setSuccess] = useState(false)
+  const [success, setSuccess] = useState('')
   const [lines, setLines] = useState(
     customLines
       ? [
@@ -103,8 +102,7 @@ export default function TerminalChallenge({
       if (varInput === (expectedInput.value || expectedInput)) {
         setTimeout(() => {
           saveProgress()
-          setSuccess(true)
-          setAnswer(answerValue)
+          setSuccess('true')
           setLines((lines) => [
             ...lines,
             { value: successMessage, type: 'answer' },
@@ -112,7 +110,7 @@ export default function TerminalChallenge({
         }, 1000)
       } else {
         setTimeout(() => {
-          setAnswer(answerValue)
+          setSuccess('false')
           setLines((lines) => [
             ...lines,
             { value: 'Sorry that’s not quite right.', type: 'output' },
@@ -121,7 +119,7 @@ export default function TerminalChallenge({
       }
     } else if (commonError && input.includes(commonError.error)) {
       setTimeout(() => {
-        setAnswer(input)
+        setSuccess('false')
         setLines((lines) => [
           ...lines,
           { value: commonError.message, type: 'output' },
@@ -129,7 +127,7 @@ export default function TerminalChallenge({
       }, 250)
     } else {
       setTimeout(() => {
-        setAnswer(input)
+        setSuccess('false')
         setLines((lines) => [
           ...lines,
           { value: 'Hmm... Sorry that’s not quite right.', type: 'output' },
@@ -153,7 +151,7 @@ export default function TerminalChallenge({
         {children}
 
         <LessonTerminal
-          answer={answer}
+          success={success}
           lines={lines}
           onChange={onChange}
           next={next}
