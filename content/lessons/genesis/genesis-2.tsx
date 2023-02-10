@@ -23,7 +23,6 @@ export default function Genesis2() {
         challenge: 'transacting',
       }}
       next={'/chapters/chapter-1/transacting'}
-      instruction={"Waiting for you to write and run the script..."}
       successMessage={"That’s correct! Nice work. We don’t know why tacos were so important to the anonymous sender of this transaction, but here we are. Some more lesson and story copy here..."}
       customLines={'Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = \'04fff...e6b73\''}
     >

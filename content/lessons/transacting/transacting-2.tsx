@@ -11,7 +11,6 @@ export default function Transacting2() {
         challenge: 'done',
       }}
       next="/chapters/chapter-1/done"
-      instruction="Waiting for you to write and run the script...."
       successMessage="jtacos for everyone"
       customLines={'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyHex is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge'}
       commonError={{
