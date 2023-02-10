@@ -31,7 +31,7 @@ export default function Terminal({ success, lines, next, onChange }) {
                 key={index}
                 className={`${
                   (line.type === 'answer' &&
-                    'react-terminal-answer rounded bg-green/25 text-green') ||
+                    'react-terminal-answer text-green') ||
                   (line.type === 'output' &&
                     'react-terminal-output text-[var(--terminal-output)]') ||
                   (line.type === 'input' &&
