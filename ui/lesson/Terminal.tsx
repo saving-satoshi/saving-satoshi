@@ -39,9 +39,9 @@ export default function Terminal({
               <span
                 key={index}
                 className={`${
-                  line.type === 'answer'
-                    ? 'react-terminal-answer text-green bg-green/25 rounded pl-1 pr-1'
-                    : 'react-terminal-output text-[var(--terminal-output)]'
+                  (line.type === 'answer' && 'react-terminal-answer text-green bg-green/25 rounded') ||
+                  (line.type === 'output' && 'react-terminal-output text-[var(--terminal-output)]') ||
+                  (line.type === 'input' && 'react-terminal-previous-input text-white/80')
                 }`}
               >
                 <TerminalOutput>{`${line.value}`}</TerminalOutput>
