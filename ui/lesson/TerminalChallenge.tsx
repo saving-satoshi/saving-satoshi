@@ -74,6 +74,7 @@ export default function TerminalChallenge({
 
   const onChange = (input) => {
     setLines((lines) => [...lines, { value: input, type: 'input' }])
+    setLines((lines) => [...lines, { value: '...decoding...', type: 'output' }])
 
     const inputs = [
       `echo ${expectedInput} | xxd -r -p`,
@@ -95,8 +96,12 @@ export default function TerminalChallenge({
 
       answerValue = Buffer.from(varInput, 'hex').toString('utf8')
       setTimeout(() => {
-      setLines((lines) => [...lines, { value: answerValue, type: 'output' }])
-      }, 250)
+        setLines((lines) => {
+          const newLines = [...lines]
+          newLines[newLines.length - 1] = { value: answerValue, type: 'output' }
+          return newLines
+        })
+      }, 500);
 
       if (varInput === (expectedInput.value || expectedInput)) {
         setTimeout(() => {
@@ -106,7 +111,7 @@ export default function TerminalChallenge({
             ...lines,
             { value: successMessage, type: 'answer' },
           ])
-        }, 1000)
+        }, 750)
       } else {
         setTimeout(() => {
           setSuccess('false')
@@ -114,24 +119,26 @@ export default function TerminalChallenge({
             ...lines,
             { value: 'Sorry that’s not quite right.', type: 'output' },
           ])
-        }, 500)
+        }, 750)
       }
     } else if (commonError && input.includes(commonError.error)) {
       setTimeout(() => {
         setSuccess('false')
-        setLines((lines) => [
-          ...lines,
-          { value: commonError.message, type: 'output' },
-        ])
-      }, 250)
+        setLines((lines) => {
+          const newLines = [...lines]
+          newLines[newLines.length - 1] = { value: commonError.message, type: 'output' }
+          return newLines
+        })
+      }, 500)
     } else {
       setTimeout(() => {
         setSuccess('false')
-        setLines((lines) => [
-          ...lines,
-          { value: 'Hmm... Sorry that’s not quite right.', type: 'output' },
-        ])
-      }, 250)
+        setLines((lines) => {
+          const newLines = [...lines]
+          newLines[newLines.length - 1] = { value: 'Hmm... Sorry that’s not quite right.', type: 'output' }
+          return newLines
+        })
+      }, 500)
     }
   }
 
