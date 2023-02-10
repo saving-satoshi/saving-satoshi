@@ -1,7 +1,11 @@
 export const translations = {
   done: {
-    en: {},
+    en: {
+      title: 'Done',
+    },
 
-    nl: {},
+    nl: {
+      title: 'Einde',
+    },
   },
 }

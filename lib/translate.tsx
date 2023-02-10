@@ -2,8 +2,7 @@ import React from 'react'
 import get from 'lodash/get'
 
 import { Tooltip } from 'ui'
-import { Translations } from 'types'
-import { locales } from 'config/locales'
+import { i18n } from 'config/i18n'
 
 const tooltipRegex = /<Tooltip(.*?)>(.*?)<\/Tooltip>/gim
 const contentRegex = /content="(.*?)"/
@@ -47,7 +46,7 @@ export function loadTranslations() {
   const contentTranslations = [chapters, introductions, lessons]
   const appTranslations = [components]
 
-  const translations = locales.reduce(
+  const translations = i18n.locales.reduce(
     (r, locale) => ({ ...r, [locale]: {} }),
     {}
   )
@@ -58,7 +57,7 @@ export function loadTranslations() {
   return translations
 }
 
-export function t(key: string, locale: string) {
+export function t(key: string, lang: string) {
   if (Object.keys(translations).length === 0) {
     translations = loadTranslations()
   }
@@ -67,7 +66,7 @@ export function t(key: string, locale: string) {
     return '{missing_translation_key}'
   }
 
-  let result = get(translations, `${locale}.${key}`)
+  let result = get(translations, `${lang}.${key}`)
 
   if (!result) {
     return `{${key}}`
@@ -92,7 +91,7 @@ export function t(key: string, locale: string) {
     const className = classNameMatch?.length > 0 ? classNameMatch[1] : null
 
     const label = tooltipHtml.match(targetRegex)[1]
-    const tvalue = get(translations, `${locale}.${tkey}`) || tkey
+    const tvalue = get(translations, `${lang}.${tkey}`) || tkey
 
     parts.push(result.slice(lastIndex, match.index))
     parts.push(

@@ -27,10 +27,10 @@ const tabData = [
   },
 ]
 
-export default function Chapter({ children, metadata, locale }) {
+export default function Chapter({ children, metadata, lang }) {
   const [activeTab, setActiveTab] = useState('info')
 
-  const t = useTranslations(locale)
+  const t = useTranslations(lang)
 
   const chapter = chapters[metadata.slug]
   const position = metadata.position + 1

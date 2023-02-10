@@ -6,5 +6,12 @@ export const translations = {
       start_journey: 'Start your journey',
       tell_more: 'Tell me more',
     },
+
+    nl: {
+      title: 'Saving Satoshi',
+      description: 'Programmeer je weg door de mysteries van bitcoin.',
+      start_journey: 'Start je reis',
+      tell_more: 'Vertel me meer',
+    },
   },
 }

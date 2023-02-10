@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { getUserLessonStatus } from 'lib/content'
 import { useUser } from 'hooks'
 
-export default function useStatus(chapterId, lessonId) {
+export const useStatus = (chapterId, lessonId) => {
   const [status, setStatus] = useState(undefined)
   const { user, isLoggedIn, isRegistered } = useUser()
   const userProgress = !isRegistered || isLoggedIn ? user?.progress : null

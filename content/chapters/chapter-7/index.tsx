@@ -1,11 +1,11 @@
 import { useTranslations } from 'hooks'
 import { Chapter, Text } from 'ui'
 
-export default function Chapter7({ locale }) {
-  const t = useTranslations(locale)
+export default function Chapter7({ lang }) {
+  const t = useTranslations(lang)
 
   return (
-    <Chapter metadata={metadata} locale={locale}>
+    <Chapter metadata={metadata} lang={lang}>
       <Text>
         Things are finally settling down. But people are confused and uncertain
         about whether the bitcoin supply has been tampered with. Your friend, a

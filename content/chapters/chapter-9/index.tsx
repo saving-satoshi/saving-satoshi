@@ -1,11 +1,11 @@
 import { useTranslations } from 'hooks'
 import { Chapter, Text } from 'ui'
 
-export default function Chapter9({ locale }) {
-  const t = useTranslations(locale)
+export default function Chapter9({ lang }) {
+  const t = useTranslations(lang)
 
   return (
-    <Chapter metadata={metadata} locale={locale}>
+    <Chapter metadata={metadata} lang={lang}>
       <Text>
         At last, the moment has arrived. The final block has been mined to much
         celebration.

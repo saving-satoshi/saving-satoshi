@@ -17,5 +17,5 @@ export default function Page({ params }) {
 
   const Lesson = lessons[params.lesson].default
 
-  return <Lesson locale={params.locale} />
+  return <Lesson lang={params.lang} />
 }

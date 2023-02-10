@@ -26,7 +26,7 @@ export default async function ChaptersPage({ params }) {
 
         <section>
           {sortedChapters.map(({ default: Chapter }, i) => (
-            <Chapter key={i} locale={params.locale} />
+            <Chapter key={i} lang={params.lang} />
           ))}
         </section>
       </div>

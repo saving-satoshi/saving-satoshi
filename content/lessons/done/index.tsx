@@ -14,7 +14,7 @@ export default function Done() {
 }
 
 export const metadata = {
-  title: 'Done',
+  title: 'done.title',
   image: '/assets/images/chapter-1-finish.jpg',
   description:
     'Amazing. You completed the first chapter and learned a lot about hashes and transactions. Are you ready for more?',

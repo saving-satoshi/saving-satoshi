@@ -7,8 +7,8 @@ import { introductions } from 'content'
 import { redirect, usePathname } from 'next/navigation'
 import { useTranslations } from 'hooks'
 
-export default function Introduction({ children, locale }) {
-  const t = useTranslations(locale)
+export default function Introduction({ children, lang }) {
+  const t = useTranslations(lang)
   const chapterId = usePathname().split('/').pop()
   const chapter = chapters[chapterId]
 

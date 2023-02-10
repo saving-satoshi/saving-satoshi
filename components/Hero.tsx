@@ -1,8 +1,11 @@
+'use client'
+
 import { Button } from 'shared'
-import { useTranslations } from 'hooks'
+import { useLang, useTranslations } from 'hooks'
 
 export default function Hero() {
-  const t = useTranslations('en')
+  const lang = useLang()
+  const t = useTranslations(lang)
 
   return (
     <div className="homepage-img -mt-20 flex grow items-end justify-center bg-cover bg-fixed bg-[-10em] md:bg-[0]">

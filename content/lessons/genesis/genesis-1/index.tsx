@@ -28,16 +28,17 @@ const tabData = [
   },
 ]
 
-export default function Genesis1({ locale }) {
+export default function Genesis1({ lang }) {
+  const t = useTranslations(lang)
+
   const [userInput, setUserInput] = useState('')
-  const t = useTranslations(locale)
 
   return (
     <Lesson>
       <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
 
       <LessonInfo>
-        <Title>{t('genesis_one.title')}</Title>
+        <Title>{t('genesis_one.heading')}</Title>
 
         <Text className="text-lg">{t('genesis_one.paragraph_one')}</Text>
         <Text className="text-lg">{t('genesis_one.paragraph_two')}</Text>
@@ -71,5 +72,5 @@ export default function Genesis1({ locale }) {
 }
 
 export const metadata = {
-  title: 'Genesis',
+  title: 'genesis_one.title',
 }

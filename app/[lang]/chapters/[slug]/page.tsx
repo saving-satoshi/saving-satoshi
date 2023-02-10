@@ -15,5 +15,5 @@ export default async function Page({ params }) {
   const chapter = chapters[params.slug]
   const Intro = introductions[chapter?.metadata?.intro]
 
-  return Intro ? <Intro.default locale={params.locale} /> : <ComingSoon />
+  return Intro ? <Intro.default lang={params.lang} /> : <ComingSoon />
 }

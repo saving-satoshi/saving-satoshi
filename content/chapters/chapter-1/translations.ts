@@ -9,7 +9,7 @@ export const translations = {
     },
 
     nl: {
-      title: 'Geheimen in het volle zicht verborgen',
+      title: 'Verborgen geheimen in het volle zicht',
       paragraph_one:
         'Het is het jaar 2139. Over twee weken zal de allerlaatste bitcoin worden gemined. Al maanden wordt er op Times Square afgeteld voor het laatste block waarna er officieel geen bitcoin meer zal worden uitgegeven.',
       paragraph_two: `En plotseling komt het netwerk tot stilstand. In plaats van het normale blockinterval van tien minuten, komen er maar een paar keer per dag blocks binnen. De bitcoin-node van je moeder stopt met synchroniseren. De media beginnen verslag uit te brengen over de situatie. Het is overal op sociale media.`,

@@ -1,11 +1,11 @@
 import { useTranslations } from 'hooks'
 import { Introduction, Text } from 'ui'
 
-export default function ReapingRewards({ locale }) {
-  const t = useTranslations(locale)
+export default function ReapingRewards({ lang }) {
+  const t = useTranslations(lang)
 
   return (
-    <Introduction locale={locale}>
+    <Introduction lang={lang}>
       <Text className="pt-2">{t('reaping_rewards.paragraph_one')}</Text>
       <Text className="pt-2">{t('reaping_rewards.paragraph_two')}</Text>
     </Introduction>

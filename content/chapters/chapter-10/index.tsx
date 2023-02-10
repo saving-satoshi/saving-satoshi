@@ -1,11 +1,11 @@
 import { useTranslations } from 'hooks'
 import { Chapter, Text } from 'ui'
 
-export default function Chapter10({ locale }) {
-  const t = useTranslations(locale)
+export default function Chapter10({ lang }) {
+  const t = useTranslations(lang)
 
   return (
-    <Chapter metadata={metadata} locale={locale}>
+    <Chapter metadata={metadata} lang={lang}>
       <Text>
         Trust has been reestablished and more and more of the miners that were
         attacked are coming back online. The halving passes, and the fee market

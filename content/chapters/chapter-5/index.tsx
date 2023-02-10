@@ -1,11 +1,11 @@
 import { useTranslations } from 'hooks'
 import { Chapter, Text } from 'ui'
 
-export default function Chapter5({ locale }) {
-  const t = useTranslations(locale)
+export default function Chapter5({ lang }) {
+  const t = useTranslations(lang)
 
   return (
-    <Chapter metadata={metadata} locale={locale}>
+    <Chapter metadata={metadata} lang={lang}>
       <Text>
         Wow, you proved Vanderpoole wrong. Everyone’s talking about it and
         you’re famous. Meanwhile, Vanderpoole has disappeared and he’s silent on

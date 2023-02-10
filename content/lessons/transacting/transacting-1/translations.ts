@@ -1,7 +1,11 @@
 export const translations = {
   transacting_one: {
-    en: {},
+    en: {
+      title: 'Transacting',
+    },
 
-    nl: {},
+    nl: {
+      title: 'Transacting',
+    },
   },
 }

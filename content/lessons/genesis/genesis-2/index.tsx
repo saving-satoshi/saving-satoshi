@@ -12,8 +12,8 @@ import {
   TerminalChallenge,
 } from 'ui'
 
-export default function Genesis2({ locale }) {
-  const t = useTranslations(locale)
+export default function Genesis2({ lang }) {
+  const t = useTranslations(lang)
 
   return (
     <TerminalChallenge
@@ -29,7 +29,7 @@ export default function Genesis2({ locale }) {
       successMessage={t('genesis_two.success')}
     >
       <LessonInfo>
-        <Title>{`Let's make sense of this`}</Title>
+        <Title>{t('genesis_two.heading')}</Title>
 
         <Text className="text-lg">{`Use the following command to decode Satoshi's secret HEX message
             into ASCII, a more human readable format:`}</Text>
@@ -62,5 +62,5 @@ export default function Genesis2({ locale }) {
 }
 
 export const metadata = {
-  title: 'Genesis',
+  title: 'genesis_two.title',
 }

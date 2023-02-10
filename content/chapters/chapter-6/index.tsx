@@ -1,11 +1,11 @@
 import { useTranslations } from 'hooks'
 import { Chapter, Text } from 'ui'
 
-export default function Chapter6({ locale }) {
-  const t = useTranslations(locale)
+export default function Chapter6({ lang }) {
+  const t = useTranslations(lang)
 
   return (
-    <Chapter metadata={metadata} locale={locale}>
+    <Chapter metadata={metadata} lang={lang}>
       <Text>
         You get a phone call. It’s the reporter. He tracked down Vanderpoole who
         is hiding on one of his private islands and plotting his revenge.

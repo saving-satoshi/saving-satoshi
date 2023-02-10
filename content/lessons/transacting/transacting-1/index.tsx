@@ -40,5 +40,5 @@ export default function Transacting() {
 }
 
 export const metadata = {
-  title: 'Transacting',
+  title: 'transacting_one.title',
 }
