@@ -3,22 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --back: #324760; /* Theme background color (#324760) */
-  --green: #28b123; /* Success color (#28B123) */
+  --back: 50, 71, 96; /* Theme background color (#324760) */
+  --green: 40, 177, 35; /* Success color (#28B123) */
   --terminal-output: #3DCFEF;
   --input-text: #6e7d92;
 }
 
 .-theme-purple {
-  --back: rgba(77, 40, 89); /* #4D2859 */
+  --back: 77, 40, 89; /* #4D2859 */
 }
 
 .-theme-red {
-  --back: rgba(111, 39, 45); /* #6F272D */
+  --back: 111, 39, 45; /* #6F272D */
 }
 
 .-theme-brown {
-  --back: rgba(82, 68, 69); /* #524445 */
+  --back: 82, 68, 69; /* #524445 */
 }
 
 html {
@@ -136,7 +136,7 @@ div.react-terminal-active-input {
 }
 
 .overlay-complete > .correct {
-  color: var(--green)
+  color: #28B123
 }
 
 .incorrect {

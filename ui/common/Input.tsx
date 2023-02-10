@@ -91,7 +91,7 @@ export default function Input({ onChange, answer, pattern, hints }: UserInputPro
         onChange={handleChange}
         value={textAreaValue}
         spellCheck="false"
-        className={`absolute top-0 left-0 h-full w-full resize-none overflow-hidden bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[5px] text-transparent outline-none md:text-[30px]`}
+        className={`absolute top-0 left-0 h-full w-full resize-none overflow-hidden bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] md:tracking-[5px] text-transparent outline-none md:text-[30px]`}
         style={{
           caretColor: '#6e7d92',
         }}
@@ -99,7 +99,7 @@ export default function Input({ onChange, answer, pattern, hints }: UserInputPro
       <p
         className={`${
           correctAnswer ? 'overlay-complete' : 'overlay-incomplete'
-        } pointer-events-none h-full w-full font-space-mono text-[18px] leading-[180%] tracking-[5px] text-inherit md:text-[30px]`}
+        } pointer-events-none h-full w-full font-space-mono text-[18px] leading-[180%] tracking-[1px] md:tracking-[5px] text-inherit md:text-[30px]`}
         style={{
           lineBreak: 'anywhere',
         }}
