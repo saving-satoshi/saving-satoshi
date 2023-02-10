@@ -32,6 +32,7 @@ export default function Tab({
 
   const challengeId = isRouteLesson ? pathData.pop().split('-')[0] : undefined
   const isActive = challenge.lessonId === challengeId
+  const isLast = index === count - 1
 
   return (
     <Tooltip
