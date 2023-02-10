@@ -40,7 +40,6 @@ export default function TerminalChallenge({
   expectedInput: string | any
   saveInfo: any
   next: string
-  instruction: string
   successMessage: string
   customLines?: string
   commonError?: any
