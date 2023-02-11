@@ -68,9 +68,15 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
                 avatar={i}
                 size={80}
                 onClick={() => setAvatar(i)}
-                classes={clsx('h-20 w-20 rounded-full', {
-                  'border-2 border-white h-[84px] w-[84px]': avatar === i,
-                })}
+                classes={clsx(
+                  'h-20 w-20 rounded-full',
+                  {
+                    'border-2 border-white': avatar === i,
+                  },
+                  {
+                    'border-2 border-transparent': avatar !== i,
+                  }
+                )}
               />
             </div>
           ))}
