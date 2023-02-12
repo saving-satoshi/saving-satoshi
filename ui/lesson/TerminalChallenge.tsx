@@ -19,29 +19,48 @@ const tabData = [
 ]
 
 /**
- * @expectedInput {string} answer to the challenge problem
+ * @expectedInput {string} | {userVariable, value} answer to the challenge problem or the input variable and the expected value
  * @saveInfo {chapter, challenge} information required for saving user progress
  * @next {string} link to next part of chapter
  * @instruction {string} terminal instruction for user
  * @successMessage {string} Message displayed to the user upon finishing a challenge
+ * @customLines {string} Custom message displayed in terminal for the user to read
+ * @commonError {error, message} Common error the user may make in completing this challenge and a return tip to help them
  */
 export default function TerminalChallenge({
   children,
   expectedInput,
   saveInfo,
   next,
-  instruction,
   successMessage,
+  customLines,
+  commonError,
+}: {
+  children: any
+  expectedInput: string | any
+  saveInfo: any
+  next: string
+  successMessage: string
+  customLines?: string
+  commonError?: any
 }) {
   const [hydrated, setHydrated] = useState(false)
-  const [answer, setAnswer] = useState('')
-  const [success, setSuccess] = useState(false)
-  const [lines, setLines] = useState([
-    {
-      value: 'Enter your commands here and press Enter...',
-      type: 'output',
-    },
-  ])
+  const [success, setSuccess] = useState('')
+  const [lines, setLines] = useState(
+    customLines
+      ? [
+          {
+            value: customLines,
+            type: 'output',
+          },
+        ]
+      : [
+          {
+            value: 'Enter your commands here and press Enter...',
+            type: 'output',
+          },
+        ]
+  )
 
   const isSmallScreen = useMediaQuery({ query: '(max-width: 767px)' })
 
@@ -55,19 +74,72 @@ export default function TerminalChallenge({
 
   const onChange = (input) => {
     setLines((lines) => [...lines, { value: input, type: 'input' }])
+    setLines((lines) => [...lines, { value: '...decoding...', type: 'output' }])
 
-    if (input.startsWith('echo') && input.endsWith('| xxd -r -p')) {
-      const givenInput = input.split(' ')[1]
-      const answerValue = Buffer.from(givenInput, 'hex').toString('utf8')
-      setLines((lines) => [...lines, { value: answerValue, type: 'output' }])
+    const inputs = [
+      `echo ${expectedInput} | xxd -r -p`,
+      `echo ${expectedInput.userVariable} | xxd -r -p`,
+      `echo ${expectedInput.value} | xxd -r -p`,
+      `echo ${input.split(' ')[1]?.match(/^[\da-f]+$/i)} | xxd -r -p`,
+    ]
+    let varInput: string
+    let answerValue: string
+    let newLines: {value: string, type: string}[]
 
-      if (givenInput === expectedInput) {
+    if (inputs.includes(input)) {
+      if (input === `echo ${expectedInput} | xxd -r -p`) {
+        varInput = expectedInput
+      } else if (input === `echo ${expectedInput.userVariable || expectedInput.value} | xxd -r -p`) {
+        varInput = expectedInput.value
+      } else {
+        varInput = input.split(' ')[1]
+      }
+
+      answerValue = Buffer.from(varInput, 'hex').toString('utf8')
+      setTimeout(() => {
+        setLines((lines) => {
+          newLines = [...lines]
+          newLines[newLines.length - 1] = { value: answerValue, type: 'output' }
+          return newLines
+        })
+      }, 500);
+
+      if (varInput === (expectedInput.value || expectedInput)) {
         setTimeout(() => {
           saveProgress()
-          setSuccess(true)
-        }, 1000)
-        setAnswer(answerValue)
+          setSuccess('true')
+          setLines((lines) => [
+            ...lines,
+            { value: successMessage, type: 'answer' },
+          ])
+        }, 750)
+      } else {
+        setTimeout(() => {
+          setSuccess('false')
+          setLines((lines) => [
+            ...lines,
+            { value: 'Sorry that’s not quite right.', type: 'output' },
+          ])
+        }, 750)
       }
+    } else if (commonError && input.includes(commonError.error)) {
+      setTimeout(() => {
+        setSuccess('false')
+        setLines((lines) => {
+          newLines = [...lines]
+          newLines[newLines.length - 1] = { value: commonError.message, type: 'output' }
+          return newLines
+        })
+      }, 500)
+    } else {
+      setTimeout(() => {
+        setSuccess('false')
+        setLines((lines) => {
+          newLines = [...lines]
+          newLines[newLines.length - 1] = { value: 'Sorry that’s not quite right.', type: 'output' }
+          return newLines
+        })
+      }, 500)
     }
   }
 
@@ -87,11 +159,8 @@ export default function TerminalChallenge({
 
         <LessonTerminal
           success={success}
-          answer={answer}
           lines={lines}
           onChange={onChange}
-          successMessage={successMessage}
-          instruction={instruction}
           next={next}
         />
       </Lesson>

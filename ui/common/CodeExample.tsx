@@ -1,14 +1,14 @@
 import { CopyButton } from 'ui'
 
-export default function CodeExample({ code, language }) {
+export default function CodeExample({ code, language, copy }: {code: string; language: string; copy?: boolean}) {
   return (
     <pre className="mt-2 border-2 border-dashed border-white p-2">
-      <code
-        className={`language-${language} flex items-center justify-between pl-2 pr-0`}
+      <span
+        className={`language-${language} flex break-all whitespace-pre-line items-center justify-between pl-2 pr-0`}
       >
         {code}
-        <CopyButton compact content={code} />
-      </code>
+        {copy ? <CopyButton compact content={code} /> : null}
+      </span>
     </pre>
   )
 }
