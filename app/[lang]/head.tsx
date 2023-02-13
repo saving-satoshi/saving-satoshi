@@ -70,7 +70,10 @@ export default async function Head() {
       <meta property="og:url" content="https://savingsatoshi.com/" />
       <meta property="og:title" content="Saving Satoshi" />
       <meta property="og:site_name" content="Saving Satoshi" />
-      <meta property="og:image" content="/preview.jpg" />
+      <meta
+        property="og:image"
+        content="https://savingsatoshi.com/preview.jpg"
+      />
       <meta
         property="og:description"
         content="Explore the mysteries of Satoshi and learn about bitcoin along the way."
@@ -81,7 +84,10 @@ export default async function Head() {
         property="twitter:title"
         content="Explore the mysteries of Satoshi and learn about bitcoin along the way."
       />
-      <meta property="twitter:image" content="/preview.jpg" />
+      <meta
+        property="twitter:image"
+        content="https://savingsatoshi.com/preview.jpg"
+      />
     </>
   )
 }
