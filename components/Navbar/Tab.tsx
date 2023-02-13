@@ -8,8 +8,7 @@ import { Tooltip } from 'ui'
 import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
-import { useStatus } from 'hooks'
-import { Lesson } from 'types'
+import { useLang, useStatus, useTranslations } from 'hooks'
 
 export default function Tab({
   index,
@@ -20,11 +19,14 @@ export default function Tab({
   index: number
   count: number
   params: any
-  challenge: Lesson
+  challenge: { lessonId: string; title: string }
 }) {
   const { slug } = params
 
+  const lang = useLang()
+  const t = useTranslations(lang)
   const pathName = usePathname()
+
   const pathData = pathName.split('/')
   const isRouteLesson = pathData.length === 4
 
@@ -43,13 +45,13 @@ export default function Tab({
           <span className="text-m whitespace-nowrap leading-none text-white/50">
             Challenge {index + 1}
           </span>
-          <span className="whitespace-nowrap">{challenge.title}</span>
+          <span className="whitespace-nowrap">{t(challenge.title)}</span>
         </div>
       }
     >
       <Link
         href={`/chapters/${slug}/${challenge.lessonId}`}
-        title={challenge.title}
+        title={t(challenge.title)}
         className={clsx(
           'relative flex h-full items-center justify-center border-l border-white/25 px-7 text-center text-lg transition duration-100 ease-in-out',
           {

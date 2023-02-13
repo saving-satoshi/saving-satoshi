@@ -25,11 +25,11 @@ html {
 }
 
 .homepage-img {
-  background-image: url('https://saving-satoshi.s3.amazonaws.com/main-image.png');
+  background-image: url('/assets/images/main-image.png');
 }
 
 .ch1-background {
-  background-image: url('https://saving-satoshi.s3.amazonaws.com/ch2.png');
+  background-image: url('/assets/images/chapter-2-cover.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }

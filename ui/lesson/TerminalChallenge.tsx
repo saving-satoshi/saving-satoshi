@@ -84,12 +84,15 @@ export default function TerminalChallenge({
     ]
     let varInput: string
     let answerValue: string
-    let newLines: {value: string, type: string}[]
+    let newLines: { value: string; type: string }[]
 
     if (inputs.includes(input)) {
       if (input === `echo ${expectedInput} | xxd -r -p`) {
         varInput = expectedInput
-      } else if (input === `echo ${expectedInput.userVariable || expectedInput.value} | xxd -r -p`) {
+      } else if (
+        input ===
+        `echo ${expectedInput.userVariable || expectedInput.value} | xxd -r -p`
+      ) {
         varInput = expectedInput.value
       } else {
         varInput = input.split(' ')[1]
@@ -102,7 +105,7 @@ export default function TerminalChallenge({
           newLines[newLines.length - 1] = { value: answerValue, type: 'output' }
           return newLines
         })
-      }, 500);
+      }, 500)
 
       if (varInput === (expectedInput.value || expectedInput)) {
         setTimeout(() => {
@@ -127,7 +130,10 @@ export default function TerminalChallenge({
         setSuccess('false')
         setLines((lines) => {
           newLines = [...lines]
-          newLines[newLines.length - 1] = { value: commonError.message, type: 'output' }
+          newLines[newLines.length - 1] = {
+            value: commonError.message,
+            type: 'output',
+          }
           return newLines
         })
       }, 500)
@@ -136,7 +142,10 @@ export default function TerminalChallenge({
         setSuccess('false')
         setLines((lines) => {
           newLines = [...lines]
-          newLines[newLines.length - 1] = { value: 'Sorry that’s not quite right.', type: 'output' }
+          newLines[newLines.length - 1] = {
+            value: 'Sorry that’s not quite right.',
+            type: 'output',
+          }
           return newLines
         })
       }, 500)

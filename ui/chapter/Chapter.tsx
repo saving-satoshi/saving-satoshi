@@ -7,9 +7,10 @@ import clsx from 'clsx'
 import { Button } from 'shared'
 import ChapterTabs from './Tabs'
 import ChallengeList from './ChallengeList'
-import chapters from 'content/chapters'
+import { chapters } from 'content'
 
 import { ChapterContextType } from 'types'
+import { useTranslations } from 'hooks'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -26,8 +27,10 @@ const tabData = [
   },
 ]
 
-export default function Chapter({ children, metadata }) {
+export default function Chapter({ children, metadata, lang }) {
   const [activeTab, setActiveTab] = useState('info')
+
+  const t = useTranslations(lang)
 
   const chapter = chapters[metadata.slug]
   const position = metadata.position + 1
@@ -53,7 +56,7 @@ export default function Chapter({ children, metadata }) {
             </h2>
 
             <h3 className="mb-6 text-left text-3xl text-white md:text-5xl">
-              {chapter.metadata.title}
+              {t(chapter.metadata.title)}
             </h3>
 
             <ChapterTabs
