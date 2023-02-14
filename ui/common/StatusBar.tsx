@@ -56,6 +56,7 @@ export default function StatusBar({
         return ''
     }
   }
+
   return (
     <div
       className={clsx(
