@@ -12,6 +12,8 @@ export default function Genesis1({ lang }) {
       }
       next={'/chapters/chapter-1/genesis-2'}
       label={t('genesis_one.placeholder')}
+      pattern={/[a-z0-9]+/gi}
+      hints
     >
       <LessonInfo>
         <Title>{t('genesis_one.heading')}</Title>
