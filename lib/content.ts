@@ -1,4 +1,4 @@
-import chapters from 'content/chapters'
+import { chapters } from 'content'
 
 // Find out if the user has unlocked or completed a specific lesson
 export function getUserLessonStatus(chapterId, lessonId, userProgress) {
@@ -38,7 +38,7 @@ export function getUserLessonStatus(chapterId, lessonId, userProgress) {
         result.unlocked = true
       }
     }
-  } else if (chapterId == 'chapter-1' && lessonId == 'genesis') {
+  } else if (chapterId == 'chapter-1' && lessonId == 'genesis-1') {
     result.unlocked = true
   }
 

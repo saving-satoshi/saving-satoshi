@@ -12,5 +12,5 @@ export {
   LessonTerminal,
   LessonTabs,
   useLessonContext,
-  TerminalChallenge
+  TerminalChallenge,
 }

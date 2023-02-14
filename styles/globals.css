@@ -25,11 +25,11 @@ html {
 }
 
 .homepage-img {
-  background-image: url('https://saving-satoshi.s3.amazonaws.com/main-image.png');
+  background-image: url('/assets/images/main-image.png');
 }
 
 .ch1-background {
-  background-image: url('https://saving-satoshi.s3.amazonaws.com/ch2.png');
+  background-image: url('/assets/images/chapter-2-cover.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -111,6 +111,13 @@ div.react-terminal-wrapper:focus-within .react-terminal-active-input:after {
   opacity: 0.8;
 }
 
+.react-terminal-answer .react-terminal-line:before {
+  margin-right: 0.25em;
+  content: '>';
+  color: var(--green) !important;
+  opacity: 0.8;
+}
+
 .react-terminal-output .react-terminal-line:before {
   margin-right: 0.25em;
   content: '>';
@@ -118,8 +125,8 @@ div.react-terminal-wrapper:focus-within .react-terminal-active-input:after {
 }
 
 div.react-terminal-line {
-  white-space: unset !important;
-  line-break: anywhere;
+  white-space: pre-line !important;
+  line-break: auto;
 }
 
 div.react-terminal-active-input {

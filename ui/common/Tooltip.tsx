@@ -5,19 +5,30 @@ import React, { useRef, useState } from 'react'
 
 interface TooltipProps {
   children: React.ReactNode
+  className?: string
   content: any
   position?: string
   offset?: number
+  href?: string
 }
 
 function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(value, max))
 }
 
-function Tooltip({ children, content, position, offset }: TooltipProps) {
+function Tooltip({
+  children,
+  className,
+  content,
+  position,
+  offset,
+  href,
+}: TooltipProps) {
   const tooltipRef = useRef<HTMLDivElement>()
   const arrowRef = useRef<HTMLDivElement>()
   const [visible, setVisible] = useState(false)
+
+  const ComponentType = href ? 'a' : 'span'
 
   const handleMouseEnter = (e) => {
     const target = e.target
@@ -84,7 +95,12 @@ function Tooltip({ children, content, position, offset }: TooltipProps) {
         onMouseLeave={handleMouseLeave}
         className="font-bold"
       >
-        <span> {children} </span>
+        {href && (
+          <a href={href} className={className}>
+            {children}
+          </a>
+        )}
+        {!href && <span className={className}>{children}</span>}
       </span>
     </>
   )
