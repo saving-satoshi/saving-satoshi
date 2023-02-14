@@ -1,25 +1,15 @@
 const crypto = require('crypto')
 const Secp256k1 = require('@lionello/secp256k1-js')
 
-export function getUser() {
+function getUser() {
   if (!process.browser) {
     return
   }
-  let result = JSON.parse(window.localStorage.getItem('user'))
-  if (!result) {
-    result = createUser(null)
-  }
-  return result
-}
-
-export function getUserProgress() {
-  const user = getUser()
-
-  if (!user) {
+  try {
+    return JSON.parse(window.localStorage.getItem('user'))
+  } catch {
     return null
   }
-
-  return !isUserRegistered() || isUserLoggedIn() ? user.progress : null
 }
 
 export function setUserProgress(chapter, lesson) {
@@ -47,7 +37,7 @@ export function setUserRegistered() {
   }
 }
 
-function createUser(avatar) {
+export function createUser(avatar) {
   let publicKey = null
   let privateKey = null
   do {
@@ -71,7 +61,7 @@ function createUser(avatar) {
     registered: false,
     progress: {
       chapter: 'chapter-1',
-      lesson: 'genesis',
+      lesson: 'genesis-1',
     },
   }
 
@@ -83,23 +73,6 @@ export function saveUser(user) {
     return
   }
   window.localStorage.setItem('user', JSON.stringify(user))
-}
-
-export function isUserLoggedIn() {
-  if (!process.browser) {
-    return
-  }
-  return JSON.parse(window.localStorage.getItem('loggedIn')) === true
-}
-
-export function isUserRegistered() {
-  const user = getUser()
-
-  if (!user) {
-    return false
-  }
-
-  return user.registered
 }
 
 export function loginUser() {

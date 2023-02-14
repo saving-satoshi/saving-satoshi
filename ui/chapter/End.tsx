@@ -4,7 +4,7 @@ import SignUpModal from 'components/Modals/SignUp'
 import { Button } from 'ui'
 import { useState } from 'react'
 import { setUserProgress } from 'lib/user'
-import { getUserLessonStatus } from 'lib/content'
+import { useStatus } from 'hooks'
 
 export default function End({
   title,
@@ -22,6 +22,7 @@ export default function End({
   }
 }) {
   const [openModal, setOpenModal] = useState(false)
+  const status = useStatus(checkpoint.chapter, checkpoint.lesson)
 
   function onSaveProgress() {
     saveProgressLocally()
@@ -37,7 +38,6 @@ export default function End({
   }
 
   function saveProgressLocally() {
-    const status = getUserLessonStatus(checkpoint.chapter, checkpoint.lesson)
     if (!status.completed) {
       setUserProgress(checkpoint.chapter, checkpoint.lesson)
     }
