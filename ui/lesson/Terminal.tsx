@@ -3,19 +3,10 @@
 import clsx from 'clsx'
 import React from 'react'
 import ReactTerminal, { ColorMode, TerminalOutput } from 'react-terminal-ui'
-import PlayIcon from 'public/assets/icons/play.svg'
 import { StatusBar, useLessonContext } from 'ui'
 import { LessonView } from 'types'
 
-export default function Terminal({
-  success,
-  answer,
-  lines,
-  next,
-  onChange,
-  successMessage,
-  instruction,
-}) {
+export default function Terminal({ success, lines, next, onChange }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
   return (
@@ -39,9 +30,12 @@ export default function Terminal({
               <span
                 key={index}
                 className={`${
-                  line.type === 'input'
-                    ? 'react-terminal-previous-input text-white/80'
-                    : 'react-terminal-output text-[var(--terminal-output)]'
+                  (line.type === 'answer' &&
+                    'react-terminal-answer text-green') ||
+                  (line.type === 'output' &&
+                    'react-terminal-output text-[var(--terminal-output)]') ||
+                  (line.type === 'input' &&
+                    'react-terminal-previous-input text-white/80')
                 }`}
               >
                 <TerminalOutput>{`${line.value}`}</TerminalOutput>
@@ -49,30 +43,7 @@ export default function Terminal({
             ))}
           </ReactTerminal>
         </div>
-
-        <div className="flex justify-center border-t border-white/25 bg-black/[.15] p-[20px] md:justify-start">
-          <h2
-            className={clsx('font-space-mono text-[18px] text-white/50', {
-              'bg-green/25': success,
-              'opacity-50': !success,
-            })}
-          >
-            {success ? successMessage : instruction}
-          </h2>
-        </div>
-
-        {!success && (
-          <div className="flex h-16 border-t border-white/25 pt-4 pl-6 pb-[30px] text-[18px] sm:flex-col md:flex-row md:pl-5 md:pt-0 md:pb-0">
-            <button className="flex grow items-center gap-2 transition duration-150 ease-in-out hover:opacity-75">
-              <span className="flex h-7 w-7 items-center justify-center rounded bg-white">
-                <PlayIcon className="text-black" />
-              </span>
-              Run the script
-            </button>
-          </div>
-        )}
-
-        {success && <StatusBar input={'true'} expected={'true'} next={next} />}
+        <StatusBar input={success} expected={'true'} next={next} />
       </div>
     </div>
   )

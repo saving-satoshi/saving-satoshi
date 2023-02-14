@@ -1,7 +1,7 @@
 'use client'
 
 import ChallengeListItem from './ChallengeListItem'
-import lessons from 'content/lessons'
+import { lessons } from 'content'
 
 export default function ChallengeList({ challenges, chapterId }) {
   const challengesData = challenges.map((lessonId) => {
