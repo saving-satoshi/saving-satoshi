@@ -61,7 +61,7 @@ export function createUser(avatar) {
     registered: false,
     progress: {
       chapter: 'chapter-1',
-      lesson: 'genesis',
+      lesson: 'genesis-1',
     },
   }
 

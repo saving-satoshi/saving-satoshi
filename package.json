@@ -16,10 +16,14 @@
     "**/*.{js,jsx,ts,tsx}": "prettier --write"
   },
   "dependencies": {
+    "@formatjs/intl-localematcher": "^0.2.32",
     "@lionello/secp256k1-js": "^1.1.0",
     "@next/font": "13.0.4",
+    "accept-language": "^3.0.18",
     "clsx": "^1.2.1",
     "date-fns": "2.29.3",
+    "lodash": "^4.17.21",
+    "negotiator": "^0.6.3",
     "next": "13.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
