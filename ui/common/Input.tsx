@@ -9,7 +9,12 @@ interface UserInputProps {
   hints?: boolean
 }
 
-export default function Input({ onChange, answer, pattern, hints }: UserInputProps) {
+export default function Input({
+  onChange,
+  answer,
+  pattern,
+  hints,
+}: UserInputProps) {
   const [textAreaValue, setTextAreaValue] = useState('')
   const [correctAnswer, setCorrectAnswer] = useState(false)
 
@@ -57,13 +62,14 @@ export default function Input({ onChange, answer, pattern, hints }: UserInputPro
   const handlePaste = (event) => {
     event.preventDefault()
 
-    const pasteData= (event.clipboardData || window.Clipboard).getData('text')
-    .toString()
-    .match(pattern)
-    .join('')
-    .slice(0, answer.length)
+    const pasteData = (event.clipboardData || window.Clipboard)
+      .getData('text')
+      .toString()
+      .match(pattern)
+      .join('')
+      .slice(0, answer.length)
 
-  document.execCommand('insertText', false, pasteData)
+    document.execCommand('insertText', false, pasteData)
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -73,9 +79,12 @@ export default function Input({ onChange, answer, pattern, hints }: UserInputPro
   }
 
   const handleChange = (event) => {
-    setTextAreaValue((event.target.value).slice(0, answer.length).toLowerCase())
+    setTextAreaValue(event.target.value.slice(0, answer.length).toLowerCase())
     onChange(event.target.value)
-    if (event.target.value === answer && event.target.value.length === answer.length) {
+    if (
+      event.target.value === answer &&
+      event.target.value.length === answer.length
+    ) {
       setCorrectAnswer(true)
       event.target.blur()
     } else {
@@ -91,7 +100,7 @@ export default function Input({ onChange, answer, pattern, hints }: UserInputPro
         onChange={handleChange}
         value={textAreaValue}
         spellCheck="false"
-        className={`absolute top-0 left-0 h-full w-full resize-none overflow-hidden bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] md:tracking-[5px] text-transparent outline-none md:text-[30px]`}
+        className={`absolute top-0 left-0 h-full w-full resize-none overflow-hidden bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] text-transparent outline-none md:text-[30px] md:tracking-[5px]`}
         style={{
           caretColor: '#6e7d92',
         }}
@@ -99,7 +108,7 @@ export default function Input({ onChange, answer, pattern, hints }: UserInputPro
       <p
         className={`${
           correctAnswer ? 'overlay-complete' : 'overlay-incomplete'
-        } pointer-events-none h-full w-full font-space-mono text-[18px] leading-[180%] tracking-[1px] md:tracking-[5px] text-inherit md:text-[30px]`}
+        } pointer-events-none h-full w-full font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:text-[30px] md:tracking-[5px]`}
         style={{
           lineBreak: 'anywhere',
         }}
