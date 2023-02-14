@@ -4,13 +4,14 @@ import SignUpModal from 'components/Modals/SignUp'
 import { Button } from 'ui'
 import { useState } from 'react'
 import { setUserProgress } from 'lib/user'
-import { useStatus } from 'hooks'
+import { useStatus, useTranslations } from 'hooks'
 
 export default function End({
   title,
   description,
   image,
   checkpoint,
+  lang,
 }: {
   title?: string
   description?: string
@@ -20,7 +21,9 @@ export default function End({
     lesson: any
     next: string
   }
+  lang: string
 }) {
+  const t = useTranslations(lang)
   const [openModal, setOpenModal] = useState(false)
   const status = useStatus(checkpoint.chapter, checkpoint.lesson)
 
@@ -50,11 +53,9 @@ export default function End({
     >
       {/* bottom left */}
       <div className="left-unset absolute bottom-10 ml-auto w-11/12 bg-[var(--back)] p-4 sm:left-10 sm:w-1/2 sm:bg-transparent lg:w-1/3">
-        <h1 className="text-4xl font-bold text-white">
-          {title || 'You did it!!!'}
-        </h1>
+        <h1 className="text-4xl font-bold text-white">{t(title)}</h1>
         <p className="text-justify font-nunito text-xl text-white">
-          {description || ''}
+          {t(description)}
         </p>
 
         <div className="mt-4 flex w-full flex-col gap-4 xl:w-2/3">

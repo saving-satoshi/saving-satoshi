@@ -1,9 +1,10 @@
 import { ChapterEnd } from 'ui'
 
-export default function Done() {
+export default function Done({ lang }) {
   return (
     <ChapterEnd
       {...metadata}
+      lang={lang}
       checkpoint={{
         chapter: 'chapter-2',
         lesson: null,
@@ -16,6 +17,5 @@ export default function Done() {
 export const metadata = {
   title: 'done.title',
   image: '/assets/images/chapter-1-finish.jpg',
-  description:
-    'Amazing. You completed the first chapter and learned a lot about hashes and transactions. Are you ready for more?',
+  description: 'done.description',
 }
