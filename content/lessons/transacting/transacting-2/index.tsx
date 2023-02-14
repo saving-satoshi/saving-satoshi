@@ -6,7 +6,7 @@ import { InputChallenge } from 'ui'
 export default function Transacting1() {
   return (
     <InputChallenge
-      inputAmount={40}
+      numOfInputFields={40}
       answer={'6a127461636f7320666f722065766572796f6e65'}
       next={'/chapters/chapter-1/transacting-3'}
       label={'Enter the OP_RETURN type'}

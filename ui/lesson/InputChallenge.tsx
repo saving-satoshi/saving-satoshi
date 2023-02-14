@@ -15,14 +15,14 @@ const tabData = [
 ]
 
 /**
- * @inputAmount {number} number of input fields
+ * @numOfInputFields {number} number of input fields
  * @answer {string} correct answer to the challenge problem
  * @next {string} link to next part of chapter
  * @label {string} label on top of input field
  */
 export default function InputChallenge({
   children,
-  inputAmount,
+  numOfInputFields,
   answer,
   next,
   label,
@@ -40,7 +40,7 @@ export default function InputChallenge({
       <LessonPrompt
         className="max-w-[840px] px-4 py-8 md:items-center"
         label={label}
-        amount={inputAmount}
+        amount={numOfInputFields}
         onChange={setUserInput}
       />
 
