@@ -15,10 +15,11 @@ const tabData = [
 ]
 
 /**
- * @numOfInputFields {number} number of input fields
  * @answer {string} correct answer to the challenge problem
  * @next {string} link to next part of chapter
  * @label {string} label on top of input field
+ * @pattern {RegEx} pattern for input field
+ * @hints {boolean} determine whether the input field displays hints for the user
  */
 export default function InputChallenge({
   children,
