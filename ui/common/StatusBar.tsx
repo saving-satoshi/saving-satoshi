@@ -56,7 +56,6 @@ export default function StatusBar({
         return ''
     }
   }
-  //       max-md:fixed
   return (
     <div
       className={clsx(
