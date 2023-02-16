@@ -47,7 +47,7 @@ export default function InputChallenge({
       <hr className="border-1 invisible h-1 w-full border-white/25 md:visible" />
 
       <LessonPrompt
-        className="max-w-[1280px] px-4 py-8 md:items-center"
+        className="max-w-[1280px] items-start px-4 py-8 md:items-center"
         label={label}
         answer={answer}
         onChange={setUserInput}

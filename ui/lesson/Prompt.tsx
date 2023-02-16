@@ -8,7 +8,7 @@ export default function LessonPrompt({
   answer,
   onChange,
   pattern,
-  hints
+  hints,
 }: {
   className?: string
   label: string
@@ -19,12 +19,12 @@ export default function LessonPrompt({
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
-  const inputPattern = pattern ? pattern : (/./g)
+  const inputPattern = pattern ? pattern : /./g
 
   return (
     <div
       className={clsx(
-        'grow justify-center font-space-mono text-white lg:w-9/12 md:w-9/12',
+        'grow justify-center font-space-mono text-white md:w-9/12 lg:w-9/12',
         className,
         {
           'hidden md:flex': !isActive,
@@ -33,10 +33,15 @@ export default function LessonPrompt({
       )}
     >
       <div className="flex flex-col justify-center">
-        <h2 className="text-center text-xl">{label}</h2>
+        <h2 className="text-left text-xl font-bold md:text-center">{label}</h2>
 
         <div className="w-full pt-8">
-          <Input onChange={onChange} answer={answer} pattern={inputPattern} hints={hints} />
+          <Input
+            onChange={onChange}
+            answer={answer}
+            pattern={inputPattern}
+            hints={hints}
+          />
         </div>
       </div>
     </div>
