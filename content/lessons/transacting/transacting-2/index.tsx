@@ -1,23 +1,24 @@
 'use client'
 
+import { useTranslations } from 'hooks'
 import { Button, LessonInfo, CodeExample, Text, Title } from 'ui'
 import { InputChallenge } from 'ui'
 
-export default function Transacting1() {
+export default function Transacting2({ lang }) {
+  const t = useTranslations(lang)
+
   return (
     <InputChallenge
       answer={'6a127461636f7320666f722065766572796f6e65'}
       next={'/chapters/chapter-1/transacting-3'}
-      label={'Enter the OP_RETURN type'}
+      label={t('transacting_two.inputChallengeLabel')}
       pattern={/[a-z0-9]+/gi}
       hints
     >
       <LessonInfo>
-        <Title>OP_RETURN</Title>
+        <Title>{t('transacting_two.heading')}</Title>
 
-        <Text className="text-lg">
-          For the following transaction, identify the output of type OP_RETURN.
-        </Text>
+        <Text className="text-lg">{t('transacting_two.paragraph_one')}</Text>
 
         <CodeExample
           code={
@@ -31,7 +32,7 @@ export default function Transacting1() {
           external={true}
           classes="mt-4"
         >
-          View transaction
+          {t('transacting_two.link')}
         </Button>
       </LessonInfo>
     </InputChallenge>
