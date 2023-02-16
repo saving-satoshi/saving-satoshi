@@ -5,13 +5,15 @@ import Link from 'next/link'
 import { siteConfig } from 'config/site'
 import { NavItem } from 'types'
 import UserButton from './Navbar/UserButton'
+import { useLang } from 'hooks'
 
 export default function Topbar({ items }: { items: NavItem[] }) {
+  const lang = useLang()
   return (
     <div className="absolute left-0 top-0 w-full">
       <div className="m-auto flex items-center justify-between px-6 py-4 text-white">
         <Link
-          href="/en"
+          href={`/${lang}`}
           className="transition duration-150 ease-in-out hover:opacity-75"
         >
           <h1 className="text-xl md:text-3xl">{siteConfig.name}</h1>
