@@ -5,21 +5,26 @@ import { Input, useLessonContext } from 'ui'
 export default function LessonPrompt({
   className,
   label,
-  amount,
+  answer,
   onChange,
+  pattern,
+  hints,
 }: {
   className?: string
   label: string
-  amount: number
+  answer: string
   onChange: Function
+  pattern?: RegExp
+  hints?: boolean
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
+  const inputPattern = pattern ? pattern : /./g
 
   return (
     <div
       className={clsx(
-        'grow justify-center font-space-mono text-white lg:w-1/2',
+        'grow justify-center font-space-mono text-white md:w-9/12 lg:w-9/12',
         className,
         {
           'hidden md:flex': !isActive,
@@ -31,7 +36,12 @@ export default function LessonPrompt({
         <h2 className="text-center text-xl">{label}</h2>
 
         <div className="w-full pt-8">
-          <Input amount={amount} onChange={onChange} />
+          <Input
+            onChange={onChange}
+            answer={answer}
+            pattern={inputPattern}
+            hints={hints}
+          />
         </div>
       </div>
     </div>

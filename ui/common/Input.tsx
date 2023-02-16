@@ -1,39 +1,120 @@
 'use client'
 
-import RICIBs from 'react-individual-character-input-boxes'
+import { useState } from 'react'
+
+interface UserInputProps {
+  onChange: Function
+  answer: string
+  pattern: RegExp
+  hints?: boolean
+}
 
 export default function Input({
-  amount,
   onChange,
-}: {
-  amount: number
-  onChange: Function
-}) {
-  const handleChange = (value: string) => {
-    onChange(value)
+  answer,
+  pattern,
+  hints,
+}: UserInputProps) {
+  const [textAreaValue, setTextAreaValue] = useState('')
+  const [correctAnswer, setCorrectAnswer] = useState(false)
+
+  const displayOverlay = () => {
+    const underscores = '_'.repeat(
+      Math.max(0, answer.length - textAreaValue.length)
+    )
+    return (
+      <>
+        {Array.from({ length: answer.length }, (_, i) => {
+          {
+            if (i >= answer.length - underscores.length)
+              return (
+                <span className="underscore" key={i}>
+                  _
+                </span>
+              )
+          }
+          {
+            if (textAreaValue[i] === answer[i]) {
+              return (
+                <span className="overlay correct" key={i}>
+                  {textAreaValue[i]}
+                </span>
+              )
+            } else if (textAreaValue[i] !== answer[i] && !!hints) {
+              return (
+                <span className="overlay incorrect" key={i}>
+                  {textAreaValue[i]}
+                </span>
+              )
+            } else {
+              return (
+                <span className="overlay" key={i}>
+                  {textAreaValue[i]}
+                </span>
+              )
+            }
+          }
+        })}
+      </>
+    )
+  }
+
+  const handlePaste = (event) => {
+    event.preventDefault()
+
+    const pasteData = (event.clipboardData || window.Clipboard)
+      .getData('text')
+      .toString()
+      .match(pattern)
+      .join('')
+      .slice(0, answer.length)
+
+    document.execCommand('insertText', false, pasteData)
+  }
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (!event.key.match(pattern)) {
+      event.preventDefault()
+    }
+  }
+
+  const handleChange = (event) => {
+    setTextAreaValue(event.target.value.slice(0, answer.length).toLowerCase())
+    onChange(event.target.value)
+    if (
+      event.target.value === answer &&
+      event.target.value.length === answer.length
+    ) {
+      setCorrectAnswer(true)
+      event.target.blur()
+    } else {
+      setCorrectAnswer(false)
+    }
   }
 
   return (
-    <RICIBs
-      amount={amount}
-      autoFocus
-      handleOutputString={handleChange}
-      inputProps={{
-        className: 'bg-transparent',
-        placeholder: '_',
-        style: {
-          fontSize: '20px',
-          width: '20px',
-          height: '20px',
-          margin: '0px',
-          borderRadius: '0px',
-          textAlign: 'center',
-          justifyContent: 'space-evenly',
-          outline: 'none',
-          fontFamily: 'var(--space-mono-font)',
-        },
-      }}
-      inputRegExp={/^[a-zA-Z0-9_.-]*$/}
-    />
+    <form className="relative">
+      <textarea
+        onKeyDown={handleKeyDown}
+        onPaste={handlePaste}
+        onChange={handleChange}
+        value={textAreaValue}
+        spellCheck="false"
+        className={`absolute top-0 left-0 h-full w-full resize-none overflow-hidden bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] text-transparent outline-none md:text-[30px] md:tracking-[5px]`}
+        style={{
+          caretColor: '#6e7d92',
+        }}
+      />
+      <p
+        className={`${
+          correctAnswer ? 'overlay-complete' : 'overlay-incomplete'
+        } pointer-events-none h-full w-full font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:text-[30px] md:tracking-[5px]`}
+        style={{
+          lineBreak: 'anywhere',
+        }}
+      >
+        {displayOverlay()}
+      </p>
+    </form>
   )
 }

@@ -1,6 +1,5 @@
 import Tab from './Tab'
-import chapters from 'content/chapters'
-import lessons from 'content/lessons'
+import { chapters, lessons } from 'content'
 
 export default function TabGroup({ params }) {
   const { slug } = params
@@ -18,7 +17,7 @@ export default function TabGroup({ params }) {
   })
 
   return (
-    <nav className="flex items-stretch">
+    <div className="flex-l flex h-full items-stretch">
       {challenges.map((challenge, index) => (
         <Tab
           key={index}
@@ -28,6 +27,6 @@ export default function TabGroup({ params }) {
           params={params}
         />
       ))}
-    </nav>
+    </div>
   )
 }
