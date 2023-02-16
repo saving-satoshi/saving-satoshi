@@ -6,7 +6,8 @@ export default function Transacting1({ lang }) {
   const t = useTranslations(lang)
   return (
     <Intro
-      title={t('transacting_one.heading')}
+      title={t('transacting_one.title')}
+      heading={t('transacting_one.heading')}
       next={'/chapters/chapter-1/transacting-2'}
     >
       <p className="pt-2 text-lg">{t('transacting_one.paragraph_one')}</p>
