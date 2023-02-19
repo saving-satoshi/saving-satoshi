@@ -100,7 +100,7 @@ export default function Input({
         onChange={handleChange}
         value={textAreaValue}
         spellCheck="false"
-        className={`absolute top-0 left-0 h-full w-full resize-none overflow-hidden bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] text-transparent outline-none md:text-[30px] md:tracking-[5px]`}
+        className={`absolute top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] text-transparent outline-none md:text-[30px] md:tracking-[5px]`}
         style={{
           caretColor: '#6e7d92',
         }}
@@ -108,7 +108,7 @@ export default function Input({
       <p
         className={`${
           correctAnswer ? 'overlay-complete' : 'overlay-incomplete'
-        } pointer-events-none h-full w-full font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:text-[30px] md:tracking-[5px]`}
+        } pointer-events-none h-full w-full break-all font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:text-[30px] md:tracking-[5px]`}
         style={{
           lineBreak: 'anywhere',
         }}
