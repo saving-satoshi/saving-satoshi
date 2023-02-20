@@ -166,7 +166,7 @@ export default function LoginModal({ onClose, onLogin, open }) {
               <code className="mb-2 whitespace-pre-wrap break-all">
                 {user.privateKey}
               </code>
-              <CopyButton style="transparent" content={user.privateKey}>
+              <CopyButton style="dark" content={user.privateKey}>
                 Copy
               </CopyButton>
             </pre>
