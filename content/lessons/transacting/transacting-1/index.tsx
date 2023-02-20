@@ -1,41 +1,19 @@
 'use client'
+import { useTranslations } from 'hooks'
+import { Intro } from 'ui'
 
-import { Button, Text, Title } from 'ui'
-
-export default function Transacting() {
+export default function Transacting1({ lang }) {
+  const t = useTranslations(lang)
   return (
-    <div className="grid w-full grid-cols-1 justify-center justify-items-center">
-      <div className="flex w-full items-center px-6 text-white lg:w-1/2 lg:px-0">
-        <div className="content-center justify-items-center px-1 font-nunito">
-          <div className="genesis">
-            <Title>{`What's in a transaction?`}</Title>
-
-            <Text className="pt-2 text-lg">
-              Bitcoin is censorship resistant money. Anybody can send money by
-              broadcasting a transaction to the network. After broadcast,
-              transactions are packaged up into blocks by miners. Miners compete
-              against other miners for the privilege of building on the chain.
-            </Text>
-
-            <Text className="pt-2 text-lg">
-              Transactions have two parts: inputs and outputs. In the previous
-              exercise we decoded a secret message found inside a transaction
-              input. This time we’ll decode a message that belongs to the output
-              part.
-            </Text>
-
-            <Text className="pt-2 text-lg">
-              For the following transaction, identify the output of type
-              OP_RETURN.
-            </Text>
-          </div>
-
-          <Button href="/chapters/chapter-1/transacting-2" classes="mt-8">
-            Continue
-          </Button>
-        </div>
-      </div>
-    </div>
+    <Intro
+      title={t('transacting_one.title')}
+      heading={t('transacting_one.heading')}
+      next={'/chapters/chapter-1/transacting-2'}
+    >
+      <p className="pt-2 text-lg">{t('transacting_one.paragraph_one')}</p>
+      <p className="pt-2 text-lg">{t('transacting_one.paragraph_two')}</p>
+      <p className="pt-2 text-lg">{t('transacting_one.paragraph_three')}</p>
+    </Intro>
   )
 }
 
