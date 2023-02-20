@@ -11,7 +11,7 @@ export default function Transacting2({ lang }) {
     <InputChallenge
       answer={'6a127461636f7320666f722065766572796f6e65'}
       next={'/chapters/chapter-1/transacting-3'}
-      label={t('transacting_two.inputChallengeLabel')}
+      label={t('transacting_two.input_challenge_label')}
       pattern={/[a-z0-9]+/gi}
       hints
     >
