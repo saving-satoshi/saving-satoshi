@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { ReactElement, useState } from 'react'
 import { Lesson, LessonTabs, LessonPrompt, StatusBar } from 'ui'
 
 const tabData = [
@@ -28,6 +28,7 @@ export default function InputChallenge({
   label,
   pattern,
   hints,
+  opcode,
 }: {
   children: any
   answer: string
@@ -35,6 +36,7 @@ export default function InputChallenge({
   label: string
   pattern?: RegExp
   hints?: boolean
+  opcode?: ReactElement
 }) {
   const [userInput, setUserInput] = useState('')
 
@@ -53,9 +55,16 @@ export default function InputChallenge({
         onChange={setUserInput}
         pattern={pattern}
         hints={hints}
+        opcode={opcode}
       />
 
-      <StatusBar full next={next} input={userInput} expected={answer} />
+      <StatusBar
+        full
+        next={next}
+        input={userInput}
+        expected={answer}
+        hints={hints}
+      />
     </Lesson>
   )
 }

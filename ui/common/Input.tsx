@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 
 interface UserInputProps {
   onChange: Function
   answer: string
   pattern: RegExp
   hints?: boolean
+  opcode?: ReactElement
 }
 
 export default function Input({
@@ -14,9 +15,21 @@ export default function Input({
   answer,
   pattern,
   hints,
+  opcode,
 }: UserInputProps) {
   const [textAreaValue, setTextAreaValue] = useState('')
   const [correctAnswer, setCorrectAnswer] = useState(false)
+
+  const opCodeOverlay = (opcode) => {
+    let OPCodeColor =
+      !textAreaValue ||
+      (answer.includes(textAreaValue) && answer[0] === textAreaValue[0])
+    return (
+      <span className={OPCodeColor ? 'overlay correct' : 'overlay incorrect'}>
+        {opcode}
+      </span>
+    )
+  }
 
   const displayOverlay = () => {
     const underscores = '_'.repeat(
@@ -40,7 +53,7 @@ export default function Input({
                   {textAreaValue[i]}
                 </span>
               )
-            } else if (textAreaValue[i] !== answer[i] && !!hints) {
+            } else if (textAreaValue[i] !== answer[i] && hints) {
               return (
                 <span className="overlay incorrect" key={i}>
                   {textAreaValue[i]}
@@ -93,28 +106,34 @@ export default function Input({
   }
 
   return (
-    <form className="relative">
-      <textarea
-        onKeyDown={handleKeyDown}
-        onPaste={handlePaste}
-        onChange={handleChange}
-        value={textAreaValue}
-        spellCheck="false"
-        className={`absolute top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] text-transparent outline-none md:text-[30px] md:tracking-[5px]`}
-        style={{
-          caretColor: '#6e7d92',
-        }}
-      />
+    <>
       <p
         className={`${
           correctAnswer ? 'overlay-complete' : 'overlay-incomplete'
-        } pointer-events-none h-full w-full break-all font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:text-[30px] md:tracking-[5px]`}
-        style={{
-          lineBreak: 'anywhere',
-        }}
+        } pointer-events-none h-full w-full break-all text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] md:text-center md:text-[30px] md:tracking-[5px]`}
       >
-        {displayOverlay()}
+        {hints ? opCodeOverlay(opcode) : <span>{opcode}</span>}
       </p>
-    </form>
+      <form className="relative">
+        <textarea
+          onKeyDown={handleKeyDown}
+          onPaste={handlePaste}
+          onChange={handleChange}
+          value={textAreaValue}
+          spellCheck="false"
+          className={`absolute top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] text-transparent outline-none md:text-[30px] md:tracking-[5px]`}
+          style={{
+            caretColor: '#6e7d92',
+          }}
+        />
+        <p
+          className={`${
+            correctAnswer ? 'overlay-complete' : 'overlay-incomplete'
+          } pointer-events-none h-full w-full break-all font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:text-[30px] md:tracking-[5px]`}
+        >
+          {displayOverlay()}
+        </p>
+      </form>
+    </>
   )
 }

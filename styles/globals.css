@@ -6,6 +6,7 @@
   --back: 50, 71, 96; /* Theme background color (#324760) */
   --green: 40, 177, 35; /* Success color (#28B123) */
   --terminal-output: #3DCFEF;
+  --incorrect-answer: #EF960B;
   --input-text: #6e7d92;
 }
 
@@ -23,22 +24,6 @@
 
 html {
   scroll-behavior: smooth;
-}
-
-.homepage-img {
-  background-image: url('/assets/images/main-image.png');
-}
-
-.ch1-background {
-  background-image: url('/assets/images/chapter-2-cover.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.blur {
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  backdrop-filter: blur(75px);
-  background: rgba(46, 64, 90, 0.75);
 }
 
 .fix-grow-issue [data-nextjs-scroll-focus-boundary] {
@@ -142,12 +127,12 @@ div.react-terminal-active-input {
   color: white;
 }
 
-.overlay-complete > .correct {
+.overlay-complete > .correct, .overlay-complete {
   color: #28B123
 }
 
 .incorrect {
-  color: var(--terminal-output);
+  color: var(--incorrect-answer);
 }
 .code::-webkit-scrollbar {
   height: 8px;

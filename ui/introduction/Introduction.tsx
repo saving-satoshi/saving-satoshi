@@ -21,13 +21,14 @@ export default function Introduction({ children, lang }) {
   return (
     <div className="flex grow">
       <div className="lg:flex lg:grow">
-        <div className="lg:order-last lg:flex lg:shrink lg:basis-1/2 lg:border-l lg:border-white/25">
+        <div className="relative h-[375px] overflow-hidden lg:order-last lg:flex lg:h-full lg:shrink lg:basis-1/2 lg:border-l lg:border-white/25">
           <Image
             src={intro.metadata.image}
             alt={t(intro.metadata.title)}
-            width={600}
-            height={600}
-            className="w-full object-cover"
+            fill
+            objectFit="cover"
+            objectPosition="bottom"
+            className="relative"
           />
         </div>
         <div className="flex shrink basis-1/2">
@@ -45,12 +46,12 @@ export default function Introduction({ children, lang }) {
               {chapter.metadata.lessons.length > 0 ? (
                 <Button
                   href={`/chapters/${chapterId}/${chapter.metadata.lessons[0]}`}
-                  classes="w-full sm:w-auto"
+                  classes="w-full md:w-auto"
                 >
                   Start
                 </Button>
               ) : (
-                <Button classes="w-full sm-w-auto" disabled>
+                <Button classes="w-full md:w-auto" disabled>
                   Coming soon
                 </Button>
               )}

@@ -1,18 +1,28 @@
 import React from 'react'
+import Link from 'next/link'
 import get from 'lodash/get'
 
 import { Tooltip } from 'ui'
-import { i18n } from 'config/i18n'
+import { i18n } from 'i18n/config'
+import { InjectableComponentType as ComponentType } from 'types'
 
-const tooltipRegex = /<Tooltip(.*?)>(.*?)<\/Tooltip>/gim
 const contentRegex = /content="(.*?)"/
 const hrefRegex = /href="(.*?)"/
+const targetRegex = /target="(.*?)"/
+const relRegex = /rel="(.*?)"/
+const idRegex = /id="(.*?)"/
 const classNameRegex = /className="(.*?)"/
-const targetRegex = />(.*?)</
+const labelRegex = />(.*?)</
+
+const componentRegexes = {
+  [ComponentType.Link]: /<Link(.*?)>(.*?)<\/Link>/gim,
+  [ComponentType.Tooltip]: /<Tooltip(.*?)>(.*?)<\/Tooltip>/gim,
+  [ComponentType.A]: /<a(.*?)>(.*?)<\/a>/gim,
+}
 
 let translations = {}
 
-function parseContentTranslations(arr, result) {
+function parseTranslations(arr, result) {
   arr.forEach((v) =>
     Object.entries(v).forEach(([ns, tr]) =>
       Object.keys(result).forEach(
@@ -26,84 +36,139 @@ function parseContentTranslations(arr, result) {
   )
 }
 
-function parseAppTranslations(obj, result) {
-  Object.entries(obj).forEach(([namespace, tr]) => {
-    Object.keys(result).forEach((locale) => {
-      result[locale] = {
-        ...result[locale],
-        [namespace]: tr[locale],
-      }
-    })
-  })
-}
+export function loadTranslations(lang) {
+  const {
+    translations: localeTranslations,
+  } = require(`../i18n/locales/${lang}`)
 
-export function loadTranslations() {
-  const { translations: chapters } = require('content/chapters')
-  const { translations: introductions } = require('content/introductions')
-  const { translations: lessons } = require('content/lessons')
-  const { translations: components } = require('components/translations')
-
-  const contentTranslations = [chapters, introductions, lessons]
-  const appTranslations = [components]
+  const Translations = [localeTranslations]
 
   const translations = i18n.locales.reduce(
     (r, locale) => ({ ...r, [locale]: {} }),
     {}
   )
 
-  contentTranslations.forEach((t) => parseContentTranslations(t, translations))
-  appTranslations.forEach((t) => parseAppTranslations(t, translations))
+  Translations.forEach((t) => parseTranslations(t, translations))
 
   return translations
 }
 
 export function t(key: string, lang: string) {
   if (Object.keys(translations).length === 0) {
-    translations = loadTranslations()
+    translations = loadTranslations(lang)
   }
 
   if (!key) {
     return '{missing_translation_key}'
   }
 
-  let result = get(translations, `${lang}.${key}`)
+  let translation = get(translations, `${lang}.${key}`)
 
-  if (!result) {
-    return `{${key}}`
+  if (!translation) {
+    // Fallback translation
+    return get(translations, `en.${key}`)
   }
 
-  if (result.indexOf('</Tooltip>') === -1) {
-    return result
+  if (
+    translation.indexOf('</Tooltip>') === -1 &&
+    translation.indexOf('</Link>') === -1 &&
+    translation.indexOf('</a>') === -1
+  ) {
+    return translation
   }
 
-  const parts = []
-  let match
-  let lastIndex = 0
+  let result = []
 
-  while ((match = tooltipRegex.exec(result))) {
-    const tooltipHtml = match[0]
-    const tkey = tooltipHtml.match(contentRegex)[1]
+  result = injectComponent([translation], ComponentType.Link)
+  result = injectComponent(result, ComponentType.Tooltip)
+  result = injectComponent(result, ComponentType.A)
 
-    const hrefMatch = tooltipHtml.match(hrefRegex)
-    const href = hrefMatch?.length > 0 ? hrefMatch[1] : null
+  return result
+}
 
-    const classNameMatch = tooltipHtml.match(classNameRegex)
-    const className = classNameMatch?.length > 0 ? classNameMatch[1] : null
+function injectComponent(result, type) {
+  return result.map((part) => {
+    if (typeof part !== 'string') {
+      return part
+    }
 
-    const label = tooltipHtml.match(targetRegex)[1]
-    const tvalue = get(translations, `${lang}.${tkey}`) || tkey
+    const regex = componentRegexes[type]
+    const parts = []
+    let match
+    let index = 0
+    let lastIndex = 0
 
-    parts.push(result.slice(lastIndex, match.index))
-    parts.push(
-      <Tooltip key={tkey} href={href} className={className} content={tvalue}>
-        {label}
-      </Tooltip>
-    )
+    while ((match = regex.exec(part))) {
+      parts.push(part.slice(lastIndex, match.index))
 
-    lastIndex = tooltipRegex.lastIndex
-  }
+      const html = match[0]
+      const label = getFirstMatch(html, labelRegex)
+      const href = getFirstMatch(html, hrefRegex)
+      const className = getFirstMatch(html, classNameRegex)
 
-  parts.push(result.slice(lastIndex))
+      switch (type) {
+        case ComponentType.A: {
+          const target = getFirstMatch(html, targetRegex)
+          const rel = getFirstMatch(html, relRegex)
 
-  return parts
+          parts.push(
+            <a
+              key={index}
+              href={href}
+              target={target}
+              rel={rel}
+              className="underline"
+            >
+              {label}
+            </a>
+          )
+          break
+        }
+
+        case ComponentType.Link: {
+          parts.push(
+            <Link
+              href={href}
+              className={`${className} cursor-pointer`}
+              target="_blank"
+            >
+              {label}
+            </Link>
+          )
+          break
+        }
+
+        case ComponentType.Tooltip: {
+          const id = getFirstMatch(html, idRegex)
+          const tkey = getFirstMatch(html, contentRegex)
+
+          parts.push(
+            <Tooltip
+              id={id}
+              key={tkey}
+              href={href}
+              className={`${className} cursor-pointer`}
+              content={tkey}
+            >
+              {label}
+            </Tooltip>
+          )
+          break
+        }
+      }
+
+      lastIndex = regex.lastIndex
+      index++
+    }
+
+    parts.push(part.slice(lastIndex))
+
+    return parts.length > 1 ? parts : parts[0]
+  })
+}
+
+function getFirstMatch(input: string, regex: RegExp) {
+  const match = input.match(regex)
+
+  return match?.length > 0 ? match[1] : null
 }

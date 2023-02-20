@@ -5,6 +5,7 @@ import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
 
 export enum Status {
+  Begin,
   InProgress,
   Error,
   Success,
@@ -14,25 +15,34 @@ export default function StatusBar({
   next,
   input,
   expected,
+  beginMsg,
   successMsg,
   inProgressMsg,
   errorMsg,
   full,
+  hints,
 }: {
   next: string
   input: string
   expected: string
+  beginMsg?: string
   successMsg?: string
   inProgressMsg?: string
   errorMsg?: string
   full?: boolean
+  hints?: boolean
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
 
   const getStatus = () => {
-    if (!input) return Status.InProgress
+    if (!input) return Status.Begin
     if (input === expected) return Status.Success
+    if (
+      hints &&
+      (!input || (expected.includes(input) && expected[0] === input[0]))
+    )
+      return Status.InProgress
     return Status.Error
   }
 
@@ -48,10 +58,12 @@ export default function StatusBar({
             </span>
           )
         )
-      case Status.InProgress:
-        return inProgressMsg || 'Complete the challenge above to continue...'
+      case Status.Begin:
+        return beginMsg || 'Complete the challenge above to continue...'
       case Status.Error:
         return errorMsg || 'Hm... that is not quite right yet...'
+      case Status.InProgress:
+        return inProgressMsg || 'Looking good so far...'
       default:
         return ''
     }
@@ -77,7 +89,10 @@ export default function StatusBar({
             className={clsx(
               'font-nunito text-[21px] text-white transition duration-150 ease-in-out',
               {
-                'opacity-50': getStatus() === Status.InProgress,
+                'opacity-50': getStatus() === Status.Begin,
+              },
+              {
+                'text-[#EF960B]': getStatus() === Status.Error,
               }
             )}
           >

@@ -45,7 +45,7 @@ export default function Chapter({ children, metadata, lang }) {
     if (metadata.slug === 'chapter-1') {
       setDisplay(true)
     }
-  }, [status])
+  }, [status, metadata.slug])
 
   const context = {}
 
@@ -63,64 +63,78 @@ export default function Chapter({ children, metadata, lang }) {
         >
           <div className="ml-3.5 mr-3.5 w-full content-center justify-items-start px-1">
             <h2 className="mt-6 text-left font-nunito text-xl font-bold text-white text-opacity-75 md:text-3xl">
-              Chapter {position}
+              {t('shared.chapter')} {position}
             </h2>
 
             <h3 className="mb-6 text-left text-3xl text-white md:text-5xl">
               {t(chapter.metadata.title)}
             </h3>
 
-            {display ? (
-              <div>
+            <div>
+              {chapter.metadata.lessons.length > 0 && display ? (
                 <ChapterTabs
                   items={tabData}
                   activeId={activeTab}
                   onChange={setActiveTab}
                   classes="mt-8"
                 />
-                <div className="flex grow lg:grow-0">
-                  <div
-                    aria-hidden={activeTab !== 'info' ? 'true' : 'false'}
-                    className={clsx('-mr-[100%] block w-full', {
-                      visible: activeTab === 'info',
-                      invisible: activeTab !== 'info',
-                    })}
-                  >
-                    <div className="mt-6 font-nunito">
+              ) : null}
+              <div className="flex grow lg:grow-0">
+                <div
+                  aria-hidden={activeTab !== 'info' ? 'true' : 'false'}
+                  className={clsx('-mr-[100%] block w-full', {
+                    visible: activeTab === 'info',
+                    invisible: activeTab !== 'info',
+                  })}
+                >
+                  <div className="mt-6 font-nunito">
+                    {(chapter.metadata.lessons.length > 0 && display && (
                       <div className="text-lg text-white">{children}</div>
-                      <div className="flex pt-8 md:w-full">
-                        <Button
-                          href={`/chapters/${chapter.metadata.slug}`}
-                          disabled={chapter.metadata.lessons.length === 0}
-                          classes={'w-full'}
-                        >
-                          {chapter.metadata.lessons.length > 0
-                            ? `Start chapter ${position}`
-                            : 'Coming soon'}
-                        </Button>
-                      </div>
+                    )) ||
+                      (chapter.metadata.lessons.length > 0 && !display && (
+                        <div className="flex font-nunito text-lg text-white">
+                          <LockIcon className="my-auto mr-2 justify-center" />
+                          {t('chapter.chapter_locked_one')} {position - 1}{' '}
+                          {t('chapter.chapter_locked_two')}
+                        </div>
+                      )) ||
+                      (chapter.metadata.lessons.length === 0 && null)}
+                    <div className="flex pt-8 md:w-full">
+                      <Button
+                        href={`/chapters/${chapter.metadata.slug}`}
+                        disabled={
+                          chapter.metadata.lessons.length === 0 || !display
+                        }
+                        classes={'w-full'}
+                      >
+                        {(chapter.metadata.lessons.length > 0 &&
+                          display &&
+                          `${t('shared.start_chapter')} ${position}`) ||
+                          (chapter.metadata.lessons.length > 0 &&
+                            !display &&
+                            `${t('chapter.chapter_locked_one')} ${
+                              position - 1
+                            } ${t('chapter.chapter_locked_two')}`) ||
+                          (chapter.metadata.lessons.length === 0 &&
+                            t('shared.coming_soon'))}
+                      </Button>
                     </div>
                   </div>
-                  <div
-                    aria-hidden={activeTab !== 'challenges' ? 'true' : 'false'}
-                    className={clsx('-mr-[100%] block w-full', {
-                      visible: activeTab === 'challenges',
-                      invisible: activeTab !== 'challenges',
-                    })}
-                  >
-                    <ChallengeList
-                      challenges={chapter.metadata.challenges}
-                      chapterId={chapter.metadata.slug}
-                    />
-                  </div>
+                </div>
+                <div
+                  aria-hidden={activeTab !== 'challenges' ? 'true' : 'false'}
+                  className={clsx('-mr-[100%] block w-full', {
+                    visible: activeTab === 'challenges',
+                    invisible: activeTab !== 'challenges',
+                  })}
+                >
+                  <ChallengeList
+                    challenges={chapter.metadata.challenges}
+                    chapterId={chapter.metadata.slug}
+                  />
                 </div>
               </div>
-            ) : (
-              <div className="flex font-nunito text-lg text-white">
-                <LockIcon className="my-auto mr-2 justify-center" />
-                Complete Chapter {position - 1} to unlock.
-              </div>
-            )}
+            </div>
           </div>
         </div>
 
@@ -136,6 +150,9 @@ export default function Chapter({ children, metadata, lang }) {
             width={600}
             height={600}
             className="h-full w-full object-cover"
+            loading={
+              chapter.metadata.title === 'chapter_one.title' ? 'eager' : 'lazy'
+            }
           />
         </div>
       </div>

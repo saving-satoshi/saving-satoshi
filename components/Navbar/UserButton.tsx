@@ -14,20 +14,22 @@ export default function UserButton() {
   const { user, isLoggedIn, isRegistered } = useUser()
   const renderIconButton = () => {
     if (!hasMounted) {
-      return <div className="ml-4 h-10 w-10" />
+      return <div />
     }
 
     return isLoggedIn ? (
       <button
-        onClick={() => setOpenSignInModal(true)}
-        className="text-grey-300 ml-4 h-10 w-10 cursor-pointer"
+        onClick={() => setOpenSignInModal(true) }
+        aria-label="profile"
+        className="text-grey-300 h-10 w-10 cursor-pointer"
       >
         <Avatar avatar={user.avatar} size={30} />
       </button>
     ) : (
       <button
-        onClick={() => toggleModal(true)}
-        className="text-grey-300 ml-4 h-10 w-10 cursor-pointer"
+        onClick={() => toggleModal(true) }
+        aria-label="profile"
+        className="text-grey-300 h-10 w-10 cursor-pointer"
       >
         <UserIcon />
       </button>
@@ -49,7 +51,7 @@ export default function UserButton() {
 
   return (
     <div>
-      <div>{renderIconButton()}</div>
+      <div className="ml-4">{renderIconButton()}</div>
       {isRegistered ? (
         <LoginModal
           onLogin={() => setOpenSignInModal(false)}

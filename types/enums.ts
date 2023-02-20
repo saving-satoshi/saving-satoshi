@@ -7,3 +7,9 @@ export enum LessonView {
   Info = 'info',
   Code = 'code',
 }
+
+export enum InjectableComponentType {
+  A,
+  Link,
+  Tooltip,
+}
