@@ -11,7 +11,7 @@ export const translations = {
       paragraph_one:
         'For the following transaction, identify the output of type OP_RETURN.',
       link: 'View transaction',
-      inputChallengeLabel: 'Enter the OP_RETURN type',
+      input_challenge_label: 'Enter the OP_RETURN type',
     },
 
     nl: {
@@ -20,7 +20,7 @@ export const translations = {
       paragraph_one:
         'For the following transaction, identify the output of type OP_RETURN.',
       link: 'View transaction',
-      inputChallengeLabel: 'Enter the OP_RETURN type',
+      input_challenge_label: 'Enter the OP_RETURN type',
     },
   },
 }
