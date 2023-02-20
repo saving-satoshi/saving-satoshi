@@ -6,10 +6,11 @@ import { InputChallenge } from 'ui'
 export default function Transacting1() {
   return (
     <InputChallenge
-      answer={'6a127461636f7320666f722065766572796f6e65'}
+      answer={'7461636f7320666f722065766572796f6e65'}
       next={'/chapters/chapter-1/transacting-3'}
       label={'Enter the OP_RETURN type'}
       pattern={/[a-z0-9]+/gi}
+      opcode={<span>OP_RETURN OP_PUSHBYTES_18</span>}
       hints
     >
       <LessonInfo>

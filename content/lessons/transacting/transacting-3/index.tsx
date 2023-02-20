@@ -5,7 +5,7 @@ import { LessonInfo, CodeExample, Text, Title, TerminalChallenge } from 'ui'
 export default function Transacting2() {
   return (
     <TerminalChallenge
-      expectedInput={'6a127461636f7320666f722065766572796f6e65'}
+      expectedInput={'7461636f7320666f722065766572796f6e65'}
       saveInfo={{
         chapter: 'chapter-1',
         challenge: 'done',
