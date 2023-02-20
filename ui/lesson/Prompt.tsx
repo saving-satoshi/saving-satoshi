@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { ReactElement } from 'react'
 import { LessonView } from 'types'
 import { Input, useLessonContext } from 'ui'
 
@@ -9,6 +10,7 @@ export default function LessonPrompt({
   onChange,
   pattern,
   hints,
+  opcode,
 }: {
   className?: string
   label: string
@@ -16,6 +18,7 @@ export default function LessonPrompt({
   onChange: Function
   pattern?: RegExp
   hints?: boolean
+  opcode?: ReactElement
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
@@ -41,6 +44,7 @@ export default function LessonPrompt({
             answer={answer}
             pattern={inputPattern}
             hints={hints}
+            opcode={opcode}
           />
         </div>
       </div>
