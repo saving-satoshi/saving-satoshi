@@ -142,7 +142,7 @@ div.react-terminal-active-input {
   color: white;
 }
 
-.overlay-complete > .correct {
+.overlay-complete > .correct, .overlay-complete {
   color: #28B123
 }
 
