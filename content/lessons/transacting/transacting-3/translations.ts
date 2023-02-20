@@ -17,7 +17,7 @@ export const translations = {
         'That’s correct! Nice work. We don’t know why tacos were so important to the anonymous sender of this transaction, but here we are. And it’s an admirable goal at least.',
       terminal_challenge_lines:
         'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyHex is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge',
-      terminal_challenge_err_message:
+      terminal_challenge_error:
         'Almost. Take another look to find the correct value',
     },
 
@@ -33,7 +33,7 @@ export const translations = {
         'That’s correct! Nice work. We don’t know why tacos were so important to the anonymous sender of this transaction, but here we are. And it’s an admirable goal at least.',
       terminal_challenge_lines:
         'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyHex is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge',
-      terminal_challenge_err_message:
+      terminal_challenge_error:
         'Almost. Take another look to find the correct value',
     },
   },

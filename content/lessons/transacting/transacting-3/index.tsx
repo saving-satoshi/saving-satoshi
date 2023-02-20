@@ -12,11 +12,11 @@ export default function Transacting3({ lang }) {
         challenge: 'done',
       }}
       next="/chapters/chapter-1/done"
-      successMessage={t('transacting_three.terminalChallengeSuccess')}
-      customLines={t('transacting_three.terminalChallengeLines')}
+      successMessage={t('transacting_three.terminal_challenge_success')}
+      customLines={t('transacting_three.terminal_challenge_lines')}
       commonError={{
         error: '$scriptPubKeyHex',
-        message: t('transacting_three.terminalChallengeErrMessage'),
+        message: t('transacting_three.terminal_challenge_error'),
       }}
     >
       <LessonInfo>
