@@ -78,7 +78,7 @@ export default function LoginModal({ onClose, onLogin, open }) {
   return (
     <Modal
       isOpen={open}
-      className="absolute top-1/2 left-1/2 w-[550px] -translate-x-1/2 -translate-y-1/2 transform  rounded-lg bg-back p-5 font-nunito text-white shadow-lg outline-none"
+      className="absolute top-1/2 left-1/2 h-screen w-screen -translate-x-1/2 -translate-y-1/2 transform bg-back  p-5 font-nunito text-white shadow-lg outline-none sm:h-fit sm:w-[550px] sm:rounded-lg"
       contentLabel="Login Modal"
     >
       <div className="float-right flex justify-end">

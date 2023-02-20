@@ -39,7 +39,7 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
   return (
     <Modal
       isOpen={open}
-      className="absolute top-1/2 left-1/2 w-[550px] -translate-x-1/2 -translate-y-1/2 transform rounded-lg bg-back p-5 font-nunito text-white shadow-lg outline-none"
+      className="absolute top-1/2 left-1/2 h-screen w-screen  -translate-x-1/2 -translate-y-1/2 transform overflow-y-auto bg-back p-5 font-nunito text-white shadow-lg outline-none sm:h-fit sm:w-[550px] sm:rounded-lg"
       contentLabel="Sign up Modal"
     >
       <div className="float-right flex justify-end">
@@ -58,12 +58,9 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
 
         <h2 className="mb-4 text-xl font-bold">Choose an avatar</h2>
 
-        <div className="mb-5 flex cursor-pointer justify-between">
+        <div className="mb-5 flex cursor-pointer flex-wrap justify-between">
           {[1, 2, 3, 4, 5].map((i) => (
-            <div
-              className="flex h-[84px] w-[84px] flex-col items-center"
-              key={i}
-            >
+            <div className="h-[84px] w-[84px] flex-col items-center" key={i}>
               <Avatar
                 avatar={i}
                 size={80}
