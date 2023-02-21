@@ -39,7 +39,7 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
   return (
     <Modal
       isOpen={open}
-      className="absolute top-1/2 left-1/2 h-screen w-screen  -translate-x-1/2 -translate-y-1/2 transform overflow-y-auto bg-back p-5 font-nunito text-white shadow-lg outline-none sm:h-fit sm:w-[550px] sm:rounded-lg"
+      className="fixed inset-0 top-1/2 left-1/2 h-full w-screen -translate-x-1/2 -translate-y-1/2 transform overflow-y-auto bg-back p-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:w-[550px] sm:rounded-lg sm:pt-5"
       contentLabel="Sign up Modal"
     >
       <div className="float-right flex justify-end">
@@ -48,7 +48,7 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
         </button>
       </div>
 
-      <div className="p-[30px]">
+      <div className="sm:p-[30px]">
         <h2 className="mb-4 text-2xl font-bold">Want to save your progress?</h2>
         <p className="mb-5 text-lg">
           Copy and store a simple code to save and load your progress on any
