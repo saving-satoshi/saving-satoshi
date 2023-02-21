@@ -1,3 +1,8 @@
+/**
+ *  TODO TRANSLATIONS
+ *  @nl
+ */
+
 export const translations = {
   hero: {
     en: {
@@ -12,6 +17,12 @@ export const translations = {
       description: 'Programmeer je weg door de mysteries van bitcoin.',
       start_journey: 'Start je reis',
       tell_more: 'Vertel me meer',
+    },
+  },
+  footer: {
+    en: {
+      paragraph_one: 'An open-source production by the bitcoin community.',
+      link: 'Check the code',
     },
   },
 }
