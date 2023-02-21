@@ -10,11 +10,13 @@ export default function CopyButton({
   children,
   compact,
   classes,
+  style,
 }: {
   content: string
   children?: any
   compact?: boolean
   classes?: string
+  style?: string
 }) {
   const [copied, setCopied] = useState(false)
 
@@ -44,7 +46,13 @@ export default function CopyButton({
   }
 
   return (
-    <Button classes={classes} round style="green" size="tiny" onClick={copy}>
+    <Button
+      classes={classes}
+      round
+      style={style || 'green'}
+      size="tiny"
+      onClick={copy}
+    >
       {copied ? 'Copied!' : children}
     </Button>
   )
