@@ -1,9 +1,4 @@
 export const translations = {
-  intro: {
-    en: {
-      next: 'Continue',
-    },
-  },
   end: {
     en: {
       save: 'Save my progress',

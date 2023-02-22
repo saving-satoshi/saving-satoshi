@@ -26,29 +26,22 @@ function parseTranslations(arr, result) {
   )
 }
 
-// function parseAppTranslations(arr, result) {
-//   arr.forEach((v) =>
-//     Object.entries(v).forEach(([ns, tr]) =>
-//       Object.keys(result).forEach(
-//         (locale) =>
-//           (result[locale] = {
-//             ...result[locale],
-//             [ns]: tr[locale],
-//           })
-//       )
-//     )
-//   )
-// }
-
 export function loadTranslations() {
   const { translations: chapters } = require('content/chapters')
   const { translations: introductions } = require('content/introductions')
   const { translations: lessons } = require('content/lessons')
   const { translations: components } = require('components')
   const { translations: chapterUi } = require('ui/chapter')
+  const { translations: Shared } = require('shared')
 
-  const Translations = [chapters, introductions, lessons, components, chapterUi]
-  // const appTranslations = [components]
+  const Translations = [
+    chapters,
+    introductions,
+    lessons,
+    components,
+    chapterUi,
+    Shared,
+  ]
 
   const translations = i18n.locales.reduce(
     (r, locale) => ({ ...r, [locale]: {} }),
@@ -56,7 +49,6 @@ export function loadTranslations() {
   )
 
   Translations.forEach((t) => parseTranslations(t, translations))
-  // appTranslations.forEach((t) => parseAppTranslations(t, translations))
 
   return translations
 }
