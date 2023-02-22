@@ -21,7 +21,6 @@ export const translations = {
       heading: 'You are logged in',
       paragraph_one:
         'Your progress is stored in this browser. You will be automatically logged out after 30 days. Use the code below to restore it after taking a break.',
-      copy: 'Copy',
       signout: 'Sign out',
     },
   },

@@ -82,7 +82,7 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
             {user ? user.privateKey.toString(16) : ''}
           </code>
           <CopyButton content={user ? user.privateKey.toString(16) : ''}>
-            Copy
+            {t('shared.copy')}
           </CopyButton>
         </pre>
 

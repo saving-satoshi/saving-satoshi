@@ -24,7 +24,7 @@ export default function Intro({
           </div>
 
           <Button href={next} classes="mt-8 max-md:w-full">
-            {t('intro.next')}
+            {t('shared.next')}
           </Button>
         </div>
       </div>
