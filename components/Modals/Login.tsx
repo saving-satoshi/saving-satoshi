@@ -93,12 +93,13 @@ export default function LoginModal({ onClose, onLogin, open }) {
         {!isLoggedIn && (
           <>
             <Avatar avatar={user && user.avatar} size={80} />
-            <h2 className="mb-4 mt-5 text-3xl font-bold">Load your progress</h2>
+            <h2 className="mb-4 mt-5 text-3xl font-bold">
+              {t('login.heading')}
+            </h2>
             <p className="mb-5">
-              Enter your personal code below to restore your chapter and
-              challenge progress, as well as your avatar.{' '}
+              {t('login.paragraph_one')}{' '}
               <a href="#" className="text-white underline">
-                No code yet?
+                {t('login.clear')}
               </a>
             </p>
 
@@ -107,7 +108,7 @@ export default function LoginModal({ onClose, onLogin, open }) {
                 <input
                   className="w-full border-2 border-dotted border-white bg-transparent p-1 font-space-mono text-lg text-white outline-none"
                   type="text"
-                  placeholder="Enter your code"
+                  placeholder={t('login.prompt')}
                   value={userPrivateKey}
                   onChange={(e) => setPrivateKey(e.target.value)}
                 />
@@ -123,7 +124,7 @@ export default function LoginModal({ onClose, onLogin, open }) {
                     !userPrivateKey && 'opacity-50'
                   }`}
                 >
-                  Load my progress
+                  {t('login.confirm')}
                 </Button>
               </div>
               <div className="mt-4 mb-4 flex w-full">
@@ -131,8 +132,7 @@ export default function LoginModal({ onClose, onLogin, open }) {
                   <div className="flex items-center">
                     <WarningIcon className="fill-red-500" />
                     <p className="ml-2 text-sm text-red-500">
-                      Sorry, that’s not the right code for the progress stored
-                      in this browser.
+                      {t('login.paragraph_two')}
                     </p>
                   </div>
                 )}
@@ -140,12 +140,12 @@ export default function LoginModal({ onClose, onLogin, open }) {
 
               <div className="mt-auto flex items-center">
                 <p>
-                  Want to start again?{' '}
+                  {t('login.paragraph_three')}{' '}
                   <button
                     onClick={handleClearProgressClick}
                     className="underline"
                   >
-                    Clear saved progress
+                    {t('login.quit')}
                   </button>
                   .
                 </p>
