@@ -4,7 +4,7 @@ export { default as ChapterChallengeListItem } from './ChallengeListItem'
 export { default as ChapterEnd } from './End'
 export { default as ChapterTabs } from './Tabs'
 export { default as ChapterTab } from './Tab'
-export { default as Intro } from './Intro'
+export { default as ChapterIntro } from './Intro'
 
 import { translations as ChapterUITranslations } from './translations'
 
