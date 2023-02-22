@@ -3,6 +3,8 @@ export const translations = {
     en: {
       next: 'Continue',
       copy: 'Copy',
+      chapter: 'Chapter',
+      challenge: 'Challenge',
     },
   },
 }
