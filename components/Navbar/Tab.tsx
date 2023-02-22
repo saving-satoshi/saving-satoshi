@@ -43,7 +43,7 @@ export default function Tab({
       content={
         <div className="flex flex-col">
           <span className="text-m whitespace-nowrap leading-none text-white/50">
-            Challenge {index + 1}
+            {t('shared.challenge')} {index + 1}
           </span>
           <span className="whitespace-nowrap">{t(challenge.title)}</span>
         </div>

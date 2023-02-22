@@ -12,7 +12,9 @@ export const translations = {
       clear: 'No code yet?',
       prompt: 'Enter your code',
       confirm: 'Load my progress',
-      paragraph_two: 'No code yet or want to start again?',
+      paragraph_two:
+        'Sorry, that’s not the right code for the progress stored in this browser.',
+      paragraph_three: 'No code yet or want to start again?',
       quit: 'Clear save progress.',
     },
   },

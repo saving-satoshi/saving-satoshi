@@ -24,7 +24,8 @@ export default function Address() {
           <>
             {chapter && (
               <p className="px-0.5 text-lg leading-none text-white/50">
-                Chapter {chapter.position + 1} - {t(chapter.title)}
+                {t('shared.chapter')} {chapter.position + 1} -{' '}
+                {t(chapter.title)}
               </p>
             )}
             <p className="px-0.5 text-2xl leading-none text-white">
