@@ -37,7 +37,7 @@ export default function Address() {
                 </span>
                 {lesson && !isChapterCompletePage && (
                   <>
-                    <span> - </span>
+                    <span>, </span>
                     <span>
                       {t('navbar.challenge')} {challengeIndex + 1}
                     </span>
