@@ -21,7 +21,7 @@ export default function Introduction({ children, lang }) {
   return (
     <div className="flex grow">
       <div className="lg:flex lg:grow">
-        <div className="relative flex h-[375px] overflow-hidden lg:hidden lg:shrink">
+        <div className="relative flex h-[375px] overflow-hidden lg:hidden">
           <Image
             src={intro.metadata.image}
             alt={t(intro.metadata.title)}
