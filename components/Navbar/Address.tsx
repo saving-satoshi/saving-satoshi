@@ -17,13 +17,13 @@ export default function Address() {
   const chapter = chapters[chapterId]?.metadata
   const lesson = lessons[lessonId]?.metadata
 
-  const uniqueLessons = chapter.lessons
+  const challenges = chapter.lessons
     .map((l) => l.split('-')[0])
     .filter((value, index, arr) => arr.indexOf(value) === index)
 
   const challengeName = lessonId?.split('-')[0]
-  const challengeIndex = uniqueLessons.indexOf(challengeName)
-  const isChapterCompletePage = uniqueLessons.length - 1 === challengeIndex
+  const challengeIndex = challenges.indexOf(challengeName)
+  const isChapterCompletePage = challenges.length - 1 === challengeIndex
 
   return (
     <div className="items-center px-5 py-3">
