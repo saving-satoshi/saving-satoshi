@@ -51,10 +51,12 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
       </div>
 
       <div className="sm:p-[30px]">
-        <h2 className="mb-4 text-2xl font-bold">{t('signup.heading')}</h2>
-        <p className="mb-5 text-lg">{t('signup.paragraph_one')}</p>
+        <h2 className="mb-4 text-2xl font-bold">{t('modal_signup.heading')}</h2>
+        <p className="mb-5 text-lg">{t('modal_signup.paragraph_one')}</p>
 
-        <h2 className="mb-4 text-xl font-bold">{t('signup.subheading_one')}</h2>
+        <h2 className="mb-4 text-xl font-bold">
+          {t('modal_signup.subheading_one')}
+        </h2>
 
         <div className="mb-5 flex cursor-pointer flex-wrap justify-between">
           {[1, 2, 3, 4, 5].map((i) => (
@@ -72,7 +74,9 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
           ))}
         </div>
 
-        <h2 className="mb-4 text-xl font-bold">{t('signup.subheading_two')}</h2>
+        <h2 className="mb-4 text-xl font-bold">
+          {t('modal_signup.subheading_two')}
+        </h2>
 
         <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
           <code className="mb-2 whitespace-pre-wrap break-all text-base">
@@ -83,12 +87,12 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
           </CopyButton>
         </pre>
 
-        <p className="mt-5 text-base">{t('signup.paragraph_two')}</p>
+        <p className="mt-5 text-base">{t('modal_signup.paragraph_two')}</p>
         <button
           onClick={confirm}
           className="mt-4 w-full rounded-md border border-white px-4 py-2 text-xl text-white"
         >
-          {t('signup.confirm')}
+          {t('modal_signup.confirm')}
         </button>
       </div>
     </Modal>

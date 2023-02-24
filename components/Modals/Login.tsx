@@ -94,12 +94,12 @@ export default function LoginModal({ onClose, onLogin, open }) {
           <>
             <Avatar avatar={user && user.avatar} size={80} />
             <h2 className="mb-4 mt-5 text-3xl font-bold">
-              {t('login.heading')}
+              {t('modal_login.heading')}
             </h2>
             <p className="mb-5">
-              {t('login.paragraph_one')}{' '}
+              {t('modal_login.paragraph_one')}{' '}
               <a href="#" className="text-white underline">
-                {t('login.clear')}
+                {t('modal_login.clear')}
               </a>
             </p>
 
@@ -108,7 +108,7 @@ export default function LoginModal({ onClose, onLogin, open }) {
                 <input
                   className="w-full border-2 border-dotted border-white bg-transparent p-1 font-space-mono text-lg text-white outline-none"
                   type="text"
-                  placeholder={t('login.prompt')}
+                  placeholder={t('modal_login.prompt')}
                   value={userPrivateKey}
                   onChange={(e) => setPrivateKey(e.target.value)}
                 />
@@ -124,7 +124,7 @@ export default function LoginModal({ onClose, onLogin, open }) {
                     !userPrivateKey && 'opacity-50'
                   }`}
                 >
-                  {t('login.confirm')}
+                  {t('modal_login.confirm')}
                 </Button>
               </div>
               <div className="mt-4 mb-4 flex w-full">
@@ -132,7 +132,7 @@ export default function LoginModal({ onClose, onLogin, open }) {
                   <div className="flex items-center">
                     <WarningIcon className="fill-red-500" />
                     <p className="ml-2 text-sm text-red-500">
-                      {t('login.paragraph_two')}
+                      {t('modal_login.paragraph_two')}
                     </p>
                   </div>
                 )}
@@ -140,12 +140,12 @@ export default function LoginModal({ onClose, onLogin, open }) {
 
               <div className="mt-auto flex items-center">
                 <p>
-                  {t('login.paragraph_three')}{' '}
+                  {t('modal_login.paragraph_three')}{' '}
                   <button
                     onClick={handleClearProgressClick}
                     className="underline"
                   >
-                    {t('login.quit')}
+                    {t('modal_login.quit')}
                   </button>
                   .
                 </p>
@@ -157,19 +157,17 @@ export default function LoginModal({ onClose, onLogin, open }) {
           <>
             <Avatar avatar={user.avatar} size={75} />
             <div className="my-[30px]">
-              <h2 className="mb-1.5 text-2xl font-bold">You are logged in</h2>
-              <p className="text-lg">
-                Your progress is stored in this browser. You will be
-                automatically logged out after 30 days. Use the code below to
-                restore it after taking a break.
-              </p>
+              <h2 className="mb-1.5 text-2xl font-bold">
+                {t('modal_logout.heading')}
+              </h2>
+              <p className="text-lg">{t('modal_logout.paragraph_one')}</p>
             </div>
             <pre className="mb-[30px] flex flex-col rounded-md border-2 border-dotted border-white/25 p-2.5">
               <code className="mb-2 whitespace-pre-wrap break-all">
                 {user.privateKey}
               </code>
               <CopyButton style="dark" content={user.privateKey}>
-                Copy
+                {t('shared.copy')}
               </CopyButton>
             </pre>
             <div className="mt-auto flex items-center">
@@ -177,7 +175,7 @@ export default function LoginModal({ onClose, onLogin, open }) {
                 onClick={handleSignOutClick}
                 className="w-full border-2 py-2.5 text-xl text-white"
               >
-                Sign out
+                {t('modal_logout.signout')}
               </button>
             </div>
           </>
@@ -186,9 +184,13 @@ export default function LoginModal({ onClose, onLogin, open }) {
         {isLoggedIn && willShowProgressRestored && (
           <>
             <Avatar avatar={user.avatar || 1} size={80} />
-            <h2 className="mt-2 mb-2 text-3xl font-bold">Progress loaded</h2>
+            <h2 className="mt-2 mb-2 text-3xl font-bold">
+              {t('modal_login.success')}
+            </h2>
             <p className="mb-5">
-              {`You're all set to continue with Chapter ${user.progress.chapter}, Challenge ${user.progress.lesson}.`}
+              {`${t('modal_login.success_message')} ${
+                user.progress.chapter
+              }, ${t('shared.challenge')} ${user.progress.lesson}.`}
             </p>
 
             <Button
@@ -198,7 +200,7 @@ export default function LoginModal({ onClose, onLogin, open }) {
               onClick={handleContinueClick}
               classes="border-white border-2 p-1 text-xl"
             >
-              Continue
+              {t('shared.continue')}
             </Button>
           </>
         )}
