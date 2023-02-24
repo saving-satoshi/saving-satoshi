@@ -21,13 +21,24 @@ export default function Introduction({ children, lang }) {
   return (
     <div className="flex grow">
       <div className="lg:flex lg:grow">
-        <div className="lg:order-last lg:flex lg:shrink lg:basis-1/2 lg:border-l lg:border-white/25">
+        <div className="relative flex h-[375px] overflow-hidden lg:hidden">
           <Image
             src={intro.metadata.image}
             alt={t(intro.metadata.title)}
-            width={600}
-            height={600}
-            className="w-full object-cover"
+            fill
+            objectFit="cover"
+            objectPosition="bottom"
+            className="relative"
+          />
+        </div>
+        <div className="relative overflow-hidden lg:order-last lg:flex lg:shrink lg:basis-1/2 lg:border-l lg:border-white/25">
+          <Image
+            src={intro.metadata.image}
+            alt={t(intro.metadata.title)}
+            fill
+            objectFit="cover"
+            objectPosition="bottom"
+            className="relative"
           />
         </div>
         <div className="flex shrink basis-1/2">
