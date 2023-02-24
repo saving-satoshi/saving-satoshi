@@ -43,6 +43,8 @@ export default function Address() {
                     </span>
                   </>
                 )}
+                {t('shared.chapter')} {chapter.position + 1} -{' '}
+                {t(chapter.title)}
               </p>
             )}
             <p className="px-0.5 text-2xl leading-none text-white">

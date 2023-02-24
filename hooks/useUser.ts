@@ -14,8 +14,8 @@ interface User {
 }
 
 export const useUser = () => {
-  const [user] = useLocalStorageState<User>('user')
-  const [isLoggedIn] = useLocalStorageState<boolean>('loggedIn', {
+  const [user] = useLocalStorageState<User>('SavingSatoshiUser')
+  const [isLoggedIn] = useLocalStorageState<boolean>('SavingSatoshiLoggedIn', {
     defaultValue: false,
   })
 

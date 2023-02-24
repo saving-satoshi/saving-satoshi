@@ -2,8 +2,11 @@
 
 import ChallengeListItem from './ChallengeListItem'
 import { lessons } from 'content'
+import { useLang, useTranslations } from 'hooks'
 
 export default function ChallengeList({ challenges, chapterId }) {
+  const lang = useLang()
+  const t = useTranslations(lang)
   const challengesData = challenges.map((lessonId) => {
     const { title } = lessons[lessonId].metadata
 
@@ -25,7 +28,7 @@ export default function ChallengeList({ challenges, chapterId }) {
           ))}
         </ul>
       ) : (
-        <p>Coming soon. Hang tight.</p>
+        <p>{t('challenge_list.coming_soon')}</p>
       )}
     </div>
   )

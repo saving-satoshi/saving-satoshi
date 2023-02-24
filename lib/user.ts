@@ -6,7 +6,7 @@ function getUser() {
     return
   }
   try {
-    return JSON.parse(window.localStorage.getItem('user'))
+    return JSON.parse(window.localStorage.getItem('SavingSatoshiUser'))
   } catch {
     return null
   }
@@ -72,27 +72,27 @@ export function saveUser(user) {
   if (!process.browser) {
     return
   }
-  window.localStorage.setItem('user', JSON.stringify(user))
+  window.localStorage.setItem('SavingSatoshiUser', JSON.stringify(user))
 }
 
 export function loginUser() {
   if (!process.browser) {
     return
   }
-  window.localStorage.setItem('loggedIn', 'true')
+  window.localStorage.setItem('SavingSatoshiLoggedIn', 'true')
 }
 
 export function logoutUser() {
   if (!process.browser) {
     return
   }
-  window.localStorage.setItem('loggedIn', 'false')
+  window.localStorage.setItem('SavingSatoshiLoggedIn', 'false')
 }
 
 export function clearUser() {
   if (!process.browser) {
     return
   }
-  window.localStorage.removeItem('user')
-  window.localStorage.removeItem('loggedIn')
+  window.localStorage.removeItem('SavingSatoshiUser')
+  window.localStorage.removeItem('SavingSatoshiLoggedIn')
 }
