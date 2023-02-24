@@ -4,13 +4,17 @@ import get from 'lodash/get'
 
 import { Tooltip } from 'ui'
 import { i18n } from 'config/i18n'
+import { InjectableComponentType as ComponentType } from 'types'
 
-const tooltipRegex = /<Tooltip(.*?)>(.*?)<\/Tooltip>/gim
-const linkRegex = /<Link(.*?)>(.*?)<\/Link>/gim
 const contentRegex = /content="(.*?)"/
 const hrefRegex = /href="(.*?)"/
 const classNameRegex = /className="(.*?)"/
 const targetRegex = />(.*?)</
+
+const componentRegexes = {
+  [ComponentType.Link]: /<Link(.*?)>(.*?)<\/Link>/gim,
+  [ComponentType.Tooltip]: /<Tooltip(.*?)>(.*?)<\/Tooltip>/gim,
+}
 
 let translations = {}
 
@@ -59,94 +63,6 @@ export function loadTranslations() {
   return translations
 }
 
-function injectLinks(result) {
-  return result
-    .map((translation) => {
-      if (typeof translation === 'object') {
-        return translation
-      }
-
-      const parts = []
-      let match
-      let lastIndex = 0
-
-      while ((match = linkRegex.exec(translation))) {
-        const linkHtml = match[0]
-
-        const hrefMatch = linkHtml.match(hrefRegex)
-        const href = hrefMatch?.length > 0 ? hrefMatch[1] : null
-
-        const classNameMatch = linkHtml.match(classNameRegex)
-        const className = classNameMatch?.length > 0 ? classNameMatch[1] : null
-
-        const label = linkHtml.match(targetRegex)[1]
-
-        parts.push(translation.slice(lastIndex, match.index))
-
-        parts.push(
-          <Link href={href} className={className} target="_blank">
-            {label}
-          </Link>
-        )
-
-        lastIndex = linkRegex.lastIndex
-      }
-
-      parts.push(translation.slice(lastIndex))
-
-      return parts
-    })
-    .flat()
-}
-
-function injectTooltips(result, lang) {
-  return result
-    .map((translation) => {
-      if (typeof translation === 'object') {
-        return translation
-      }
-
-      const parts = []
-      let match
-      let lastIndex = 0
-
-      while ((match = tooltipRegex.exec(translation))) {
-        const tooltipHtml = match[0]
-        const tkey = tooltipHtml.match(contentRegex)[1]
-
-        const hrefMatch = tooltipHtml.match(hrefRegex)
-        const href = hrefMatch?.length > 0 ? hrefMatch[1] : null
-
-        const classNameMatch = tooltipHtml.match(classNameRegex)
-        const className = classNameMatch?.length > 0 ? classNameMatch[1] : null
-
-        const label = tooltipHtml.match(targetRegex)[1]
-        const tvalue = get(translations, `${lang}.${tkey}`) || tkey
-
-        console.log(lang, tkey, tvalue)
-
-        parts.push(translation.slice(lastIndex, match.index))
-        parts.push(
-          <Tooltip
-            key={tkey}
-            href={href}
-            className={className}
-            content={tvalue}
-          >
-            {label}
-          </Tooltip>
-        )
-
-        lastIndex = tooltipRegex.lastIndex
-      }
-
-      parts.push(translation.slice(lastIndex))
-
-      return parts
-    })
-    .flat()
-}
-
 export function t(key: string, lang: string) {
   if (Object.keys(translations).length === 0) {
     translations = loadTranslations()
@@ -171,8 +87,68 @@ export function t(key: string, lang: string) {
 
   let result = []
 
-  result = injectLinks([translation])
-  result = injectTooltips(result, lang)
+  result = injectComponent([translation], ComponentType.Link, lang)
+  result = injectComponent(result, ComponentType.Tooltip, lang)
 
   return result
+}
+
+function injectComponent(result, type, lang) {
+  return result.map((part) => {
+    if (typeof part !== 'string') {
+      return part
+    }
+
+    const regex = componentRegexes[type]
+    const parts = []
+    let match
+    let lastIndex = 0
+
+    while ((match = regex.exec(part))) {
+      parts.push(part.slice(lastIndex, match.index))
+
+      const html = match[0]
+      const label = html.match(targetRegex)[1]
+      const hrefMatch = html.match(hrefRegex)
+      const href = hrefMatch?.length > 0 ? hrefMatch[1] : null
+
+      const classNameMatch = html.match(classNameRegex)
+      const className = classNameMatch?.length > 0 ? classNameMatch[1] : null
+
+      switch (type) {
+        case ComponentType.Link: {
+          parts.push(
+            <Link href={href} className={className} target="_blank">
+              {label}
+            </Link>
+          )
+
+          break
+        }
+
+        case ComponentType.Tooltip: {
+          const tkey = html.match(contentRegex)[1]
+          const tvalue = get(translations, `${lang}.${tkey}`) || tkey
+
+          parts.push(
+            <Tooltip
+              key={tkey}
+              href={href}
+              className={className}
+              content={tvalue}
+            >
+              {label}
+            </Tooltip>
+          )
+          break
+        }
+      }
+
+      lastIndex = regex.lastIndex
+    }
+
+    parts.push(part.slice(lastIndex))
+
+    return parts.length > 1 ? parts : parts[0]
+  })
 }
