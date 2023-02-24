@@ -31,16 +31,16 @@ export function loadTranslations() {
   const { translations: introductions } = require('content/introductions')
   const { translations: lessons } = require('content/lessons')
   const { translations: components } = require('components')
-  const { translations: chapterUi } = require('ui/chapter')
-  const { translations: Shared } = require('shared')
+  const { translations: ui } = require('ui')
+  const { translations: shared } = require('shared')
 
   const Translations = [
     chapters,
     introductions,
     lessons,
     components,
-    chapterUi,
-    Shared,
+    ui,
+    shared,
   ]
 
   const translations = i18n.locales.reduce(
@@ -65,7 +65,9 @@ export function t(key: string, lang: string) {
   let result = get(translations, `${lang}.${key}`)
 
   if (!result) {
-    return `{${key}}`
+    console.log(`No translation for {${lang}.${key}}`)
+    let fallbackResult = get(translations, `en.${key}`)
+    return fallbackResult
   }
 
   if (result.indexOf('</Tooltip>') === -1) {
