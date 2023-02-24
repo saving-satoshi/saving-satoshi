@@ -14,4 +14,20 @@ export const translations = {
       tell_more: 'Vertel me meer',
     },
   },
+
+  navbar: {
+    en: {
+      intro: 'Intro',
+      chapter: 'Chapter',
+      chapter_complete: 'Chapter complete',
+      challenge: 'Challenge',
+    },
+
+    nl: {
+      intro: 'Intro',
+      chapter: 'Hoofdstuk',
+      chapter_complete: 'Hoofdstuk compleet',
+      challenge: 'Uitdaging',
+    },
+  },
 }

@@ -17,6 +17,14 @@ export default function Address() {
   const chapter = chapters[chapterId]?.metadata
   const lesson = lessons[lessonId]?.metadata
 
+  const challenges = chapter.lessons
+    .map((l) => l.split('-')[0])
+    .filter((value, index, arr) => arr.indexOf(value) === index)
+
+  const challengeName = lessonId?.split('-')[0]
+  const challengeIndex = challenges.indexOf(challengeName)
+  const isChapterCompletePage = challenges.length - 1 === challengeIndex
+
   return (
     <div className="items-center px-5 py-3">
       <div className="flex flex-col text-sm font-medium">
@@ -24,11 +32,27 @@ export default function Address() {
           <>
             {chapter && (
               <p className="px-0.5 text-lg leading-none text-white/50">
-                Chapter {chapter.position + 1} - {t(chapter.title)}
+                <span>
+                  {t('navbar.chapter')} {chapter.position + 1}
+                </span>
+                {lesson && !isChapterCompletePage && (
+                  <>
+                    <span>, </span>
+                    <span>
+                      {t('navbar.challenge')} {challengeIndex + 1}
+                    </span>
+                  </>
+                )}
               </p>
             )}
             <p className="px-0.5 text-2xl leading-none text-white">
-              {lesson ? t(lesson.title) : 'Intro'}
+              {t(
+                isChapterCompletePage
+                  ? 'navbar.chapter_complete'
+                  : lesson
+                  ? lesson.title
+                  : 'navbar.intro'
+              )}
             </p>
           </>
         )}
