@@ -28,7 +28,7 @@ export default function ChallengeList({ challenges, chapterId }) {
           ))}
         </ul>
       ) : (
-        <p>{t('challenge-list.coming_soon')}</p>
+        <p>{t('challenge_list.coming_soon')}</p>
       )}
     </div>
   )

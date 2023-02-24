@@ -63,7 +63,7 @@ export default function Chapter({ children, metadata, lang }) {
         >
           <div className="ml-3.5 mr-3.5 w-full content-center justify-items-start px-1">
             <h2 className="mt-6 text-left font-nunito text-xl font-bold text-white text-opacity-75 md:text-3xl">
-              Chapter {position}
+              {t('shared.chapter')} {position}
             </h2>
 
             <h3 className="mb-6 text-left text-3xl text-white md:text-5xl">
@@ -95,8 +95,8 @@ export default function Chapter({ children, metadata, lang }) {
                           classes={'w-full'}
                         >
                           {chapter.metadata.lessons.length > 0
-                            ? `Start chapter ${position}`
-                            : 'Coming soon'}
+                            ? `${t('shared.start_chapter')} ${position}`
+                            : t('shared.coming_soon')}
                         </Button>
                       </div>
                     </div>
@@ -118,7 +118,8 @@ export default function Chapter({ children, metadata, lang }) {
             ) : (
               <div className="flex font-nunito text-lg text-white">
                 <LockIcon className="my-auto mr-2 justify-center" />
-                Complete Chapter {position - 1} to unlock.
+                {t('chapter.chapter_locked_one')} {position - 1}{' '}
+                {t('chapter.chapter_locked_two')}
               </div>
             )}
           </div>
