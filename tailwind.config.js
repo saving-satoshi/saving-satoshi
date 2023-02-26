@@ -36,7 +36,12 @@ module.exports = {
       },
       fontFamily: {
         cbrush: ['var(--cbrush-font)'],
-        'space-mono': ['var(--space-mono-font)'],
+        'space-mono': [
+          'var(--space-mono-font)',
+          {
+            fontFeatureSettings: '"liga" 0',
+          },
+        ],
         nunito: ['var(--nunito-font)'],
       },
     },
