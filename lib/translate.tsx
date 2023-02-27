@@ -70,12 +70,8 @@ export function t(key: string, lang: string) {
 
   let translation = get(translations, `${lang}.${key}`)
 
-  if (!lang) {
-    lang === 'en'
-  }
-
   if (!translation) {
-    console.log(`No translation for {${lang}.${key}}`)
+    // console.log(`No translation for {${lang}.${key}}`)
     let fallbackTranslation = get(translations, `en.${key}`)
     return fallbackTranslation
   }
@@ -145,6 +141,7 @@ function injectComponent(result, type, lang) {
           break
         }
       }
+
       lastIndex = regex.lastIndex
     }
 
