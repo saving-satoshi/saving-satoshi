@@ -27,13 +27,13 @@ export default function Tab({
   const t = useTranslations(lang)
   const pathName = usePathname()
 
-  const pathData = pathName.split('/')
+  const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
 
   const status = useStatus(slug, challenge.lessonId)
 
   const challengeId = isRouteLesson ? pathData.pop().split('-')[0] : undefined
-  const isActive = challenge.lessonId === challengeId
+  const isActive = challenge.lessonId.split('-')[0] === challengeId
   const isLast = index === count - 1
 
   return (
