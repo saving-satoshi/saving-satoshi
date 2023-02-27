@@ -9,6 +9,7 @@ import { LessonView } from 'types'
 export default function Terminal({ success, lines, next, onChange }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
+
   return (
     <div
       className={clsx(
@@ -38,7 +39,7 @@ export default function Terminal({ success, lines, next, onChange }) {
                     'react-terminal-previous-input text-white/80')
                 }`}
               >
-                <TerminalOutput>{`${line.value}`}</TerminalOutput>
+                <TerminalOutput>{line.value}</TerminalOutput>
               </span>
             ))}
           </ReactTerminal>
