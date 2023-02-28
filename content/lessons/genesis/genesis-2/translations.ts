@@ -4,14 +4,15 @@ export const translations = {
       title: 'Genesis',
       heading: 'Let’s make sense of this',
       waiting_for_input: 'Waiting for you to write and run the script...',
-      success: 'Great Job!',
+      success: `Interesting! The message references a news article on the same day Satoshi mined the genesis block. This gives us an important clue about Satoshi's motivation for creating Bitcoin. You can read more about it <Link href="https://bitcoinmagazine.com/culture/ten-years-later-reflection-bitcoins-genesis-and-satoshis-timing" className="underline">here</Link>.`,
     },
 
     nl: {
       title: 'Genesis',
       heading: 'Laten we dit duidelijk maken',
       waiting_for_input: 'Wachten tot de script wordt uitgevoerd...',
-      success: 'Goed gedaan!',
+      success:
+        'Interessant! Het bericht verwijst naar een nieuwsartikel dat op dezelfde dag dat Satoshi het genesis block heeft gemined, gepubliceerd is. Dit geeft ons een belangrijke aanwijzing over de motivatie van Satoshi voor het maken van Bitcoin. Je kunt er <Link href="https://bitcoinmagazine.com/culture/ten-years-later-reflection-bitcoins-genesis-and-satoshis-timing" className="underline">hier</Link> meer over lezen.',
     },
   },
 }
