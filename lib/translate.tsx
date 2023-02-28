@@ -3,7 +3,7 @@ import Link from 'next/link'
 import get from 'lodash/get'
 
 import { Tooltip } from 'ui'
-import { i18n } from 'config/i18n'
+import { i18n } from 'i18n/config'
 import { InjectableComponentType as ComponentType } from 'types'
 
 const contentRegex = /content="(.*?)"/
