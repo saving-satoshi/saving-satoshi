@@ -1,3 +1,3 @@
 export const translations = {
-  shared: {},
+  global: {},
 }
