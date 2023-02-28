@@ -1,7 +1,7 @@
 import { usePathname } from 'next/navigation'
 import { chapters } from 'content'
 
-const handlePath = (pathName: string) => {
+const getPathData = (pathName: string) => {
   const pathArray = pathName.split('/').filter((p) => p)
   const isLessonRoute = pathArray.length === 4
 
@@ -21,9 +21,9 @@ const handlePath = (pathName: string) => {
   }
 }
 
-const writePrevLessonPath = (pathName) => {
+const getPreviousLessonPath = (pathName) => {
   const { lang, chapterId, lessons, indexOfCurrentLesson } =
-    handlePath(pathName)
+    getPathData(pathName)
 
   let currentChapterAndLesson
 
@@ -39,9 +39,9 @@ const writePrevLessonPath = (pathName) => {
   return `${lang}/chapters/${currentChapterAndLesson}`
 }
 
-export const useLessonNav = () => {
+export const useContentRoute = () => {
   const pathName = usePathname()
   return {
-    prevLessonPath: writePrevLessonPath(pathName),
+    prevLessonPath: getPreviousLessonPath(pathName),
   }
 }

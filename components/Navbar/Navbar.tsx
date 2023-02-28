@@ -5,10 +5,10 @@ import Address from 'components/Navbar/Address'
 import TabGroup from 'components/Navbar/TabGroup'
 import ArrowLeftIcon from 'public/assets/icons/arrow-left.svg'
 import UserButton from './UserButton'
-import { useLessonNav } from 'hooks'
+import { useContentRoute } from 'hooks'
 
 export default function Navbar({ params }) {
-  const { prevLessonPath } = useLessonNav()
+  const { prevLessonPath } = useContentRoute()
 
   return (
     <div className="left-0 top-0 w-full">

@@ -1,6 +1,6 @@
 export * from './useStatus'
 export * from './useTranslations'
 export * from './useLang'
-export * from './useLessonNav'
+export * from './useContentRoute'
 export * from './useUser'
 export * from './useHasMounted'
