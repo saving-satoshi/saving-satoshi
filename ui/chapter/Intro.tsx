@@ -1,4 +1,5 @@
-import { Button, Text, Title } from 'ui'
+import { useLang, useTranslations } from 'hooks'
+import { Button, Title } from 'ui'
 
 export default function Intro({
   title,
@@ -11,6 +12,8 @@ export default function Intro({
   children: any
   next: string
 }) {
+  const lang = useLang()
+  const t = useTranslations(lang)
   return (
     <div className="my-auto grid w-full grid-cols-1 justify-center justify-items-center">
       <div className="flex w-full items-center px-6 text-white lg:w-1/2 lg:px-0">
@@ -21,7 +24,7 @@ export default function Intro({
           </div>
 
           <Button href={next} classes="mt-8 max-md:w-full">
-            Continue
+            {t('shared.next')}
           </Button>
         </div>
       </div>

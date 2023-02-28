@@ -60,11 +60,11 @@ export default function End({
 
         <div className="mt-4 flex w-full flex-col gap-4 xl:w-2/3">
           <Button size="small" onClick={() => setOpenModal(true)}>
-            Save my progress
+            {t('end.save')}
           </Button>
           {/* TODO */}
           <Button size="small" onClick={onContinue}>
-            Continue without saving
+            {t('end.next')}
           </Button>
         </div>
       </div>

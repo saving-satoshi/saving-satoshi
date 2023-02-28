@@ -18,7 +18,7 @@ const componentRegexes = {
 
 let translations = {}
 
-function parseContentTranslations(arr, result) {
+function parseTranslations(arr, result) {
   arr.forEach((v) =>
     Object.entries(v).forEach(([ns, tr]) =>
       Object.keys(result).forEach(
@@ -32,33 +32,29 @@ function parseContentTranslations(arr, result) {
   )
 }
 
-function parseAppTranslations(obj, result) {
-  Object.entries(obj).forEach(([namespace, tr]) => {
-    Object.keys(result).forEach((locale) => {
-      result[locale] = {
-        ...result[locale],
-        [namespace]: tr[locale],
-      }
-    })
-  })
-}
-
 export function loadTranslations() {
   const { translations: chapters } = require('content/chapters')
   const { translations: introductions } = require('content/introductions')
   const { translations: lessons } = require('content/lessons')
-  const { translations: components } = require('components/translations')
+  const { translations: components } = require('components')
+  const { translations: ui } = require('ui')
+  const { translations: shared } = require('shared')
 
-  const contentTranslations = [chapters, introductions, lessons]
-  const appTranslations = [components]
+  const Translations = [
+    chapters,
+    introductions,
+    lessons,
+    components,
+    ui,
+    shared,
+  ]
 
   const translations = i18n.locales.reduce(
     (r, locale) => ({ ...r, [locale]: {} }),
     {}
   )
 
-  contentTranslations.forEach((t) => parseContentTranslations(t, translations))
-  appTranslations.forEach((t) => parseAppTranslations(t, translations))
+  Translations.forEach((t) => parseTranslations(t, translations))
 
   return translations
 }
@@ -75,7 +71,8 @@ export function t(key: string, lang: string) {
   let translation = get(translations, `${lang}.${key}`)
 
   if (!translation) {
-    return `{${key}}`
+    // Fallback translation
+    return get(translations, `en.${key}`)
   }
 
   if (
