@@ -13,9 +13,6 @@ Instead add any strings to the English translation file:
 i18n/locales/en/translations.ts
 ```
 
-Then, use the `i18next-react` [translation hook](https://react.i18next.com/latest/usetranslation-hook) in source files.
-Don't worry about other languages.
-
 ### Example
 
 Source File:
@@ -59,24 +56,15 @@ To add a new language:
 
 1. [Add it](https://docs.transifex.com/projects/adding-and-removing-project-languages) on [Transifex]().
 1. Trigger a [manual sync](https://docs.transifex.com/transifex-github-integrations/github-tx-ui#manual-sync) from Transifex to GitHub.
-1. Transifex will open a pull request. On this branch, add the new language in `i18n/languages.js`. For example, when adding `de`:
+1. Transifex will open a pull request. On this branch, add the new language in `i18n/config.ts`. For example, when adding `de`:
 
 ```js
-import en from './locales/en/translation.json'
-import de from './locales/de/translation.json' // This file should have been created by Transifex in the PR.
+export const i18n = {
+  defaultLocale: 'en',
+  locales: ['en', 'de'],
+} as const
 
-const languages = [
-  {
-    key: 'en',
-    description: 'English',
-    translation: en,
-  },
-  {
-    key: 'nl',
-    description: 'Dansk',
-    translation: nl,
-  },
-]
+export type Locale = typeof i18n['locales'][number]
 ```
 
 ## Translators
