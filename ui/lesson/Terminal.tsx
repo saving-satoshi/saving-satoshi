@@ -110,7 +110,7 @@ export default function Terminal({ success, lines, next, onChange }) {
               >
                 <span className="mr-[5px]">&gt;</span>
                 <input
-                  className="w-full border-none bg-transparent focus:outline-none"
+                  className="w-full border-none bg-transparent font-space-mono focus:outline-none"
                   type="text"
                   value={input}
                   onChange={handleInputChange}
