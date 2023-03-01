@@ -33,21 +33,10 @@ function parseTranslations(arr, result) {
 }
 
 export function loadTranslations() {
-  const { translations: chapters } = require('content/chapters')
-  const { translations: introductions } = require('content/introductions')
-  const { translations: lessons } = require('content/lessons')
-  const { translations: components } = require('components')
-  const { translations: ui } = require('ui')
-  const { translations: shared } = require('shared')
+  const { translations: enTranslations } = require(`i18n/locales/en`)
+  const { translations: nlTranslations } = require(`i18n/locales/nl`)
 
-  const Translations = [
-    chapters,
-    introductions,
-    lessons,
-    components,
-    ui,
-    shared,
-  ]
+  const Translations = [enTranslations, nlTranslations]
 
   const translations = i18n.locales.reduce(
     (r, locale) => ({ ...r, [locale]: {} }),
