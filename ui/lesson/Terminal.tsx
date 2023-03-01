@@ -60,6 +60,10 @@ export default function Terminal({ success, lines, next, onChange }) {
     setFocus(false)
   }
 
+  const autoFocus = () => {
+    inputRef.current.focus()
+  }
+
   const performScrolldown = useRef(false)
   useEffect(() => {
     if (performScrolldown.current) {
@@ -87,7 +91,10 @@ export default function Terminal({ success, lines, next, onChange }) {
     >
       <div className="flex grow flex-col items-stretch text-white">
         <div className="flex grow">
-          <div className="react-terminal-wrapper relative box-border w-full rounded p-5 text-lg">
+          <div
+            className="react-terminal-wrapper relative box-border w-full rounded p-5 text-lg"
+            onClick={autoFocus}
+          >
             <div className="flex h-[600px] flex-col overflow-auto">
               {lines.map((line, index) => (
                 <span
