@@ -12,6 +12,7 @@ export default function Terminal({ success, lines, next, onChange }) {
   const [commandHistory, setCommandHistory] = useState<string[]>([])
   const [historyIndex, setHistoryIndex] = useState<number>(0)
   const [currentIndex, setCurrentIndex] = useState<number>(0)
+  const [focus, setFocus] = useState<boolean>(true)
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newInput = event.target.value
@@ -51,7 +52,13 @@ export default function Terminal({ success, lines, next, onChange }) {
     }
   }
 
-  const terminalRef = useRef<HTMLDivElement>(null)
+  const terminalRef = useRef(null)
+  const inputRef = useRef(null)
+
+  if (success === 'true' && focus) {
+    inputRef.current.blur()
+    setFocus(false)
+  }
 
   const performScrolldown = useRef(false)
   useEffect(() => {
@@ -66,7 +73,7 @@ export default function Terminal({ success, lines, next, onChange }) {
       )
     }
     performScrolldown.current = true
-  })
+  }, [lines])
 
   return (
     <div
@@ -94,7 +101,7 @@ export default function Terminal({ success, lines, next, onChange }) {
                     'mt-2.5': index != 0,
                   })}
                 >
-                  <div className="react-terminal-line">{`${line.value}`}</div>
+                  <div className="react-terminal-line">{line.value}</div>
                 </span>
               ))}
               <div
@@ -111,6 +118,7 @@ export default function Terminal({ success, lines, next, onChange }) {
                   autoFocus={onChange != null}
                   autoComplete="off"
                   spellCheck="false"
+                  ref={inputRef}
                 />
               </div>
             </div>
