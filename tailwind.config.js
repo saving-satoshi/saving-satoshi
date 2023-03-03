@@ -33,11 +33,18 @@ module.exports = {
       opacity: {
         15: '0.15',
         25: '0.25',
+        75: '0.75',
       },
       fontFamily: {
         cbrush: ['var(--cbrush-font)'],
         'space-mono': ['var(--space-mono-font)'],
         nunito: ['var(--nunito-font)'],
+      },
+      backdropBlur: {
+        '4xl': '75px',
+      },
+      dropShadow: {
+        '3xl': '0 4px 4px rgba(0, 0, 0, 0.25)',
       },
     },
   },
