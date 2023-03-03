@@ -113,7 +113,7 @@ export default function Terminal({ success, lines, next, onChange }) {
               <div className=" flex text-white" ref={terminalRef}>
                 <span className="mr-[5px]">&gt;</span>
                 <textarea
-                  className="overflow-wrap-normal w-full break-all border-none bg-transparent font-space-mono focus:outline-none"
+                  className="overflow-wrap-normal w-full resize-none break-all border-none bg-transparent font-space-mono focus:outline-none"
                   value={input}
                   onChange={handleInputChange}
                   onKeyDown={handleKeyDown}
@@ -122,7 +122,6 @@ export default function Terminal({ success, lines, next, onChange }) {
                   spellCheck="false"
                   ref={inputRef}
                   rows={5} // Increase rows based on text length
-                  style={{ resize: 'none' }}
                 />
               </div>
             </div>
