@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonTerminal } from 'ui'
-import { useMediaQuery } from 'hooks'
+import { useMediaQuery } from 'react-responsive'
 import { setUserProgress } from 'lib/user'
 import { useStatus } from 'hooks'
 
