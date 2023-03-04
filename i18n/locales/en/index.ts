@@ -1,3 +1,3 @@
-import { translations as enTranslations } from './translations'
+import { translations as localeTranslations } from './translations'
 
-export const translations = [enTranslations]
+export const translations = [localeTranslations]

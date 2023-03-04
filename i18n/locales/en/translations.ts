@@ -18,13 +18,6 @@ export const translations = {
       paragraph_two: `And then suddenly, the network comes to a crawl. Instead of the normal ten-minute block interval, blocks are coming in just a few times a day, if not longer. Your mom's bitcoin node stops syncing. The media starts reporting on the situation. It's everywhere on social media.`,
       paragraph_three: `The price of bitcoin is falling. There is a knock at your door, and when you open it, a yellowed, age-weathered envelope has been left for you. There's no name or return address. What could be inside?`,
     },
-    nl: {
-      title: 'Verborgen geheimen in het volle zicht',
-      paragraph_one:
-        'Het is het jaar 2139. Over twee weken zal de allerlaatste bitcoin worden gemined. Al maanden wordt er op Times Square afgeteld voor het laatste block waarna er officieel geen bitcoin meer zal worden uitgegeven.',
-      paragraph_two: `En plotseling komt het netwerk tot stilstand. In plaats van het normale blockinterval van tien minuten, komen er maar een paar keer per dag blocks binnen. De bitcoin-node van je moeder stopt met synchroniseren. De media beginnen verslag uit te brengen over de situatie. Het is overal op sociale media.`,
-      paragraph_three: `De prijs van bitcoin daalt. Er wordt op je deur geklopt en als je opendoet, ligt er een vergeelde, verweerde envelop voor je klaar. Er is geen naam of retouradres. Wat zou erin kunnen zitten?`,
-    },
   },
 
   chapter_two: {
@@ -34,13 +27,6 @@ export const translations = {
         'The network outage has to be related to the block subsidy. There’s no way this is a coincidence.',
       paragraph_two:
         'You hop on your computer to do some research on mining when you notice something unusual about the few blocks that are being mined. They all seem to be coming from the same place, possibly even the same mining pool. What happened to the rest of the miners?',
-    },
-    nl: {
-      title: 'De 51% aanval',
-      paragraph_one:
-        'De netwerkstoring moet iets te maken hebben met de block subsidie. Dit kan geen toeval zijn',
-      paragraph_two:
-        'Je springt achter je computer om wat onderzoek te doen naar minen wanneer je iets ongewoons opmerkt aan de weinige blocks die worden gemined. Ze lijken allemaal op dezelfde plaats te worden gemined, mogelijk zelfs uit dezelfde mining pool. Wat is er met de rest van de miners gebeurd?',
     },
   },
 
@@ -54,9 +40,6 @@ export const translations = {
       paragraph_three:
         'Suddenly, you realize that you never claimed the block rewards from yourcompetition with Amestris. Your bitcoin wallet is running low, so now’sa good time to top it up again.',
     },
-    nl: {
-      title: 'Je beloning claimen',
-    },
   },
 
   chapter_four: {
@@ -67,17 +50,11 @@ export const translations = {
       paragraph_two:
         'While the public debate is largely focused on the spectacle, you have an inkling that it might be possible to disarm the claim using your knowledge of cryptography.',
     },
-    nl: {
-      title: 'Wil de echte Satoshi opstaan?',
-    },
   },
 
   chapter_five: {
     en: {
       title: 'The keyholder',
-    },
-    nl: {
-      title: 'De sleutelhouder',
     },
   },
 
@@ -85,17 +62,11 @@ export const translations = {
     en: {
       title: `Offense is the best defense`,
     },
-    nl: {
-      title: 'Aanvallen is de beste verdediging',
-    },
   },
 
   chapter_seven: {
     en: {
       title: `Twentyone`,
-    },
-    nl: {
-      title: 'Twentyone',
     },
   },
 
@@ -103,26 +74,17 @@ export const translations = {
     en: {
       title: 'A matter of sustainability',
     },
-    nl: {
-      title: 'Een kwestie van duurzaamheid',
-    },
   },
 
   chapter_nine: {
     en: {
       title: `Don't compute, verify.`,
     },
-    nl: {
-      title: `Niet berekenen, verifiëren.`,
-    },
   },
 
   chapter_ten: {
     en: {
       title: '10 billion connections',
-    },
-    nl: {
-      title: '10 miljard verbindingen',
     },
   },
 
@@ -133,13 +95,6 @@ export const translations = {
         '"To understand the mystery and magic, you must start at the beginning…"',
       paragraph_one: `Satoshi, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left you a hidden clue in the very first bitcoin transaction that was ever made.`,
       paragraph_two: `Each block in the bitcoin blockchain contains a set of transactions. A nice way to view these blocks and the things they contain is by using a block explorer.`,
-    },
-    nl: {
-      title: 'Blocks en miners',
-      subtitle:
-        '"Om het mysterie en de magie te begrijpen, moet je bij het begin beginnen…"',
-      paragraph_one: `Satoshi, de pseudonieme uitvinder van bitcoin, ontgonnen ook het eerste bitcoin-blok. Hij liet je een verborgen aanwijzing achter in de allereerste bitcoin-transactie die ooit is gemaakt.`,
-      paragraph_two: `Elk blok in de bitcoin-blockchain bevat een reeks transacties. Een leuke manier om deze blokken en de dingen die ze bevatten te bekijken, is door een blokverkenner te gebruiken.`,
     },
   },
 
@@ -163,17 +118,6 @@ export const translations = {
       view_block_0: 'View Block 0',
       placeholder: 'Paste the ScriptSig HEX Representation',
     },
-    nl: {
-      title: 'Genesis',
-      heading: 'Vind block 0',
-      paragraph_one: `Laten we het allereerste block in de Bitcoin blockchain vinden. Gebruik een <Tooltip content="genesis_one.tooltip_block_explorer" href="https://blockstream.info" className="underline">block explorer</Tooltip> en zoek naar ’0’. Dit zal je naar het block op hoogte 0 nemen. Zoals je kunt zien bevat dit blok maar één transactie.`,
-      paragraph_two: `Klap de transactie uit zodat u de details beter kunt bekijken. Aan de linkerzijde is er een input genaamd 'Coinbase'. Daarbinnen bevindt zich een veld met de naam 'ScriptSig'. Kopieer de <Tooltip content="genesis_one.tooltip_hex" className="underline">HEX</Tooltip> versie van de ScriptSig en plak deze hieronder.`,
-      tooltip_block_explorer: 'We recommend https://blockstream.info/',
-      tooltip_hex:
-        'Short for hexadecimal, a numeral system that represents numbers using a base of 16.',
-      view_block_0: 'Vind Block 0',
-      placeholder: 'Plak de HEX versie van de ScriptSig',
-    },
   },
   genesis_two: {
     en: {
@@ -181,14 +125,6 @@ export const translations = {
       heading: 'Let’s make sense of this',
       waiting_for_input: 'Waiting for you to write and run the script...',
       success: `Interesting! The message references a news article on the same day Satoshi mined the genesis block. This gives us an important clue about Satoshi's motivation for creating Bitcoin. You can read more about it <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">here</Link>.`,
-    },
-
-    nl: {
-      title: 'Genesis',
-      heading: 'Laten we dit duidelijk maken',
-      waiting_for_input: 'Wachten tot de script wordt uitgevoerd...',
-      success:
-        'Interessant! Het bericht verwijst naar een nieuwsartikel dat op dezelfde dag dat Satoshi het genesis block heeft gemined, gepubliceerd is. Dit geeft ons een belangrijke aanwijzing over de motivatie van Satoshi voor het maken van Bitcoin. Je kunt er <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">hier</Link> meer over lezen.',
     },
   },
   transacting_one: {
@@ -256,13 +192,6 @@ export const translations = {
       start_journey: 'Start your journey',
       tell_more: 'Tell me more',
     },
-
-    nl: {
-      title: 'Saving Satoshi',
-      description: 'Programmeer je weg door de mysteries van bitcoin.',
-      start_journey: 'Start je reis',
-      tell_more: 'Vertel me meer',
-    },
   },
 
   footer: {
@@ -278,13 +207,6 @@ export const translations = {
       chapter: 'Chapter',
       chapter_complete: 'Chapter complete',
       challenge: 'Challenge',
-    },
-
-    nl: {
-      intro: 'Intro',
-      chapter: 'Hoofdstuk',
-      chapter_complete: 'Hoofdstuk compleet',
-      challenge: 'Uitdaging',
     },
   },
 
