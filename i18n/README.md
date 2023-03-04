@@ -1,6 +1,6 @@
 # Translating Saving Satoshi
 
-We use [github](https://github.com/saving-satoshi/saving-satoshi) for managing Saving Satoshi's translations.
+We use [Github](https://github.com/saving-satoshi/saving-satoshi) for managing Saving Satoshi's translations.
 
 ## For Developers
 
@@ -52,7 +52,7 @@ Translation file:
 
 export const translations = {
     hello_world: {
-        en: {
+        ko: {
             heading: "안녕 세상!"
         }
     }
