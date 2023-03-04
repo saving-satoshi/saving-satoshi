@@ -14,12 +14,12 @@ export default function Terminal({ success, lines, next, onChange }) {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [focus, setFocus] = useState<boolean>(true)
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event) => {
     const newInput = event.target.value
     setInput(newInput)
   }
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (event) => {
     if (event.key === 'ArrowUp') {
       event.preventDefault()
       if (currentIndex > 0) {
@@ -92,10 +92,10 @@ export default function Terminal({ success, lines, next, onChange }) {
       <div className="flex grow flex-col items-stretch text-white">
         <div className="flex grow">
           <div
-            className="react-terminal-wrapper relative box-border w-full rounded p-5 text-lg"
+            className="react-terminal-wrapper react-terminal-light relative box-border w-full rounded text-lg "
             onClick={autoFocus}
           >
-            <div className="flex h-[600px] flex-col overflow-auto">
+            <div className="react-terminal flex h-[600px] flex-col overflow-auto">
               {lines.map((line, index) => (
                 <span
                   key={index}
@@ -103,22 +103,17 @@ export default function Terminal({ success, lines, next, onChange }) {
                     'react-terminal-answer text-green': line.type === 'answer',
                     'react-terminal-output text-[var(--terminal-output)]':
                       line.type === 'output',
-                    'react-terminal-previous-input text-white/80':
+                    'react-terminal-previous-input overflow-wrap-normal break-all text-white/80':
                       line.type === 'input',
-                    'mt-2.5': index != 0,
                   })}
                 >
-                  <div className="react-terminal-line">{line.value}</div>
+                  <div className="react-terminal-line ">{line.value}</div>
                 </span>
               ))}
-              <div
-                className="mt-2.5 flex items-center scroll-smooth text-white"
-                ref={terminalRef}
-              >
+              <div className=" flex text-white" ref={terminalRef}>
                 <span className="mr-[5px]">&gt;</span>
-                <input
-                  className="w-full border-none bg-transparent font-space-mono focus:outline-none"
-                  type="text"
+                <textarea
+                  className="overflow-wrap-normal w-full resize-none break-all border-none bg-transparent font-space-mono focus:outline-none"
                   value={input}
                   onChange={handleInputChange}
                   onKeyDown={handleKeyDown}
@@ -126,6 +121,7 @@ export default function Terminal({ success, lines, next, onChange }) {
                   autoComplete="off"
                   spellCheck="false"
                   ref={inputRef}
+                  rows={5} // Increase rows based on text length
                 />
               </div>
             </div>
