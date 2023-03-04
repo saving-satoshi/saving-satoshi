@@ -3,8 +3,7 @@
 import clsx from 'clsx'
 import { useLang, useTranslations } from 'hooks'
 import React, { useEffect, useRef, useState } from 'react'
-
-let mouse = { x: 0, y: 0 }
+import { clamp, isWithinRect, modifyRect } from 'utils'
 
 function Tooltip({
   children,
@@ -21,16 +20,42 @@ function Tooltip({
   offset?: number
   href?: string
 }) {
+  const targetRef = useRef<HTMLDivElement>()
   const tooltipRef = useRef<HTMLDivElement>()
   const arrowRef = useRef<HTMLDivElement>()
   const [visible, setVisible] = useState(false)
-  const [deactivateTimeout, setDeactivateTimeout] = useState(null)
 
   const lang = useLang()
   const t = useTranslations(lang)
 
   const handleMouseEnter = (e) => {
-    const target = e.target
+    updatePosition()
+    updateZIndex()
+    setVisible(true)
+  }
+
+  const handleMouseMove = (e) => {
+    if (!visible) {
+      return
+    }
+
+    const mouse = { x: e.clientX, y: e.clientY }
+    const targetEl = targetRef.current
+    const tooltipEl = tooltipRef.current
+    const targetRect = targetEl.getBoundingClientRect()
+    const tooltipRect = tooltipEl.getBoundingClientRect()
+    const prop = position !== 'top' ? 'top' : 'bottom'
+
+    if (
+      !isWithinRect(mouse, targetRect) &&
+      !isWithinRect(mouse, modifyRect(tooltipRect, { [prop]: offset }))
+    ) {
+      setVisible(false)
+    }
+  }
+
+  const updatePosition = () => {
+    const target = targetRef.current
     const tooltip = tooltipRef.current
     const arrow = arrowRef.current
 
@@ -56,43 +81,24 @@ function Tooltip({
     const arrowRotation = position === 'top' ? 225 : 45
 
     arrow.style.transform = `translate3d(${arrowX}, ${arrowY}, 0px) rotate(${arrowRotation}deg)`
-
-    setVisible(true)
   }
 
-  const handleMouseLeave = (duration = 500) => {
-    if (deactivateTimeout) {
-      clearTimeout(deactivateTimeout)
-    }
+  const updateZIndex = () => {
+    tooltipRef.current.style.zIndex = '20'
 
-    const timeout = setTimeout(() => {
-      const tooltipEl = tooltipRef.current
-      const tooltipRect = tooltipEl.getBoundingClientRect()
-
-      if (!isWithinRect(mouse, tooltipRect)) {
-        setVisible(false)
+    findTooltips().forEach((otherTooltip: HTMLElement) => {
+      if (otherTooltip === tooltipRef.current) {
+        return
       }
-    }, duration)
 
-    setDeactivateTimeout(timeout)
+      otherTooltip.style.zIndex = '10'
+    })
   }
 
-  const handleMouseMove = (e) => {
-    if (!visible) {
-      return
-    }
+  const findTooltips = () => {
+    const tooltips = Array.from(document.querySelectorAll('.tooltip'))
 
-    mouse = { x: e.clientX, y: e.clientY }
-  }
-
-  const isWithinRect = ({ x, y }: { x: number; y: number }, rect: DOMRect) => {
-    return (
-      x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
-    )
-  }
-
-  const clamp = (value: number, min: number, max: number) => {
-    return Math.max(min, Math.min(value, max))
+    return tooltips.filter((tooltip) => tooltip !== tooltipRef.current)
   }
 
   useEffect(() => {
@@ -106,14 +112,13 @@ function Tooltip({
     <>
       <span
         className={clsx(
-          'absolute top-0 left-0 z-10 max-w-md border border-white bg-back px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
+          'tooltip absolute top-0 left-0 z-10 max-w-md border border-white bg-back px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
           {
             'pointer-events-all opacity-100': visible,
             'pointer-events-none opacity-0': !visible,
           }
         )}
         ref={tooltipRef}
-        onMouseLeave={() => handleMouseLeave(0)}
       >
         <span
           className={clsx(
@@ -125,13 +130,15 @@ function Tooltip({
           )}
           ref={arrowRef}
         />
-        <span className="font-nunitoleading-none text-white">{t(content)}</span>
+        <span className="font-nunitoleading-none text-white">
+          {typeof content === 'string' ? t(content) : content}
+        </span>
       </span>
 
       <span
         onMouseEnter={handleMouseEnter}
-        onMouseLeave={() => handleMouseLeave()}
         className="font-bold"
+        ref={targetRef}
       >
         {href && (
           <a href={href} className={className}>
