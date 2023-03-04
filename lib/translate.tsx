@@ -32,11 +32,12 @@ function parseTranslations(arr, result) {
   )
 }
 
-export function loadTranslations() {
-  const { translations: enTranslations } = require(`i18n/locales/en`)
-  const { translations: nlTranslations } = require(`i18n/locales/nl`)
+export function loadTranslations(lang) {
+  const {
+    translations: localeTranslations,
+  } = require(`../i18n/locales/${lang}`)
 
-  const Translations = [enTranslations, nlTranslations]
+  const Translations = [localeTranslations]
 
   const translations = i18n.locales.reduce(
     (r, locale) => ({ ...r, [locale]: {} }),
@@ -50,7 +51,7 @@ export function loadTranslations() {
 
 export function t(key: string, lang: string) {
   if (Object.keys(translations).length === 0) {
-    translations = loadTranslations()
+    translations = loadTranslations(lang)
   }
 
   if (!key) {
