@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonTerminal } from 'ui'
-import { useMediaQuery } from 'react-responsive'
+import { useMediaQuery } from 'hooks'
 import { setUserProgress } from 'lib/user'
 import { useStatus } from 'hooks'
 
@@ -46,6 +46,7 @@ export default function TerminalChallenge({
 }) {
   const [hydrated, setHydrated] = useState(false)
   const [success, setSuccess] = useState('')
+  const [challengeState, setChallengeState] = useState<string>('incomplete')
   const [lines, setLines] = useState(
     customLines
       ? [
@@ -113,6 +114,7 @@ export default function TerminalChallenge({
         setTimeout(() => {
           saveProgress()
           setSuccess('true')
+          setChallengeState('complete')
           setLines((lines) => [
             ...lines,
             { value: successMessage, type: 'answer' },
@@ -120,7 +122,9 @@ export default function TerminalChallenge({
         }, 750)
       } else {
         setTimeout(() => {
-          setSuccess('false')
+          if (challengeState === 'incomplete') {
+            setSuccess('false')
+          }
           setLines((lines) => [
             ...lines,
             { value: 'Sorry that’s not quite right.', type: 'output' },
@@ -129,7 +133,9 @@ export default function TerminalChallenge({
       }
     } else if (commonError && sanitizedInput.includes(commonError.error)) {
       setTimeout(() => {
-        setSuccess('false')
+        if (challengeState === 'incomplete') {
+          setSuccess('false')
+        }
         setLines((lines) => {
           newLines = [...lines]
           newLines[newLines.length - 1] = {
@@ -141,7 +147,9 @@ export default function TerminalChallenge({
       }, 500)
     } else {
       setTimeout(() => {
-        setSuccess('false')
+        if (challengeState === 'incomplete') {
+          setSuccess('false')
+        }
         setLines((lines) => {
           newLines = [...lines]
           newLines[newLines.length - 1] = {

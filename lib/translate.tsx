@@ -104,7 +104,11 @@ function injectComponent(result, type, lang) {
       switch (type) {
         case ComponentType.Link: {
           parts.push(
-            <Link href={href} className={className} target="_blank">
+            <Link
+              href={href}
+              className={`${className} cursor-pointer`}
+              target="_blank"
+            >
               {label}
             </Link>
           )
@@ -120,7 +124,7 @@ function injectComponent(result, type, lang) {
             <Tooltip
               key={tkey}
               href={href}
-              className={className}
+              className={`${className} cursor-pointer`}
               content={tvalue}
             >
               {label}
