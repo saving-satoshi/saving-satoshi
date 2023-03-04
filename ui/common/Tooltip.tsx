@@ -1,20 +1,10 @@
 'use client'
 
 import clsx from 'clsx'
-import React, { useRef, useState } from 'react'
+import { useLang, useTranslations } from 'hooks'
+import React, { useEffect, useRef, useState } from 'react'
 
-interface TooltipProps {
-  children: React.ReactNode
-  className?: string
-  content: any
-  position?: string
-  offset?: number
-  href?: string
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.max(min, Math.min(value, max))
-}
+let mouse = { x: 0, y: 0 }
 
 function Tooltip({
   children,
@@ -23,12 +13,21 @@ function Tooltip({
   position,
   offset,
   href,
-}: TooltipProps) {
+}: {
+  children: React.ReactNode
+  className?: string
+  content: any
+  position?: string
+  offset?: number
+  href?: string
+}) {
   const tooltipRef = useRef<HTMLDivElement>()
   const arrowRef = useRef<HTMLDivElement>()
   const [visible, setVisible] = useState(false)
+  const [deactivateTimeout, setDeactivateTimeout] = useState(null)
 
-  const ComponentType = href ? 'a' : 'span'
+  const lang = useLang()
+  const t = useTranslations(lang)
 
   const handleMouseEnter = (e) => {
     const target = e.target
@@ -61,21 +60,60 @@ function Tooltip({
     setVisible(true)
   }
 
-  const handleMouseLeave = (e) => {
-    setVisible(false)
+  const handleMouseLeave = (duration = 500) => {
+    if (deactivateTimeout) {
+      clearTimeout(deactivateTimeout)
+    }
+
+    const timeout = setTimeout(() => {
+      const tooltipEl = tooltipRef.current
+      const tooltipRect = tooltipEl.getBoundingClientRect()
+
+      if (!isWithinRect(mouse, tooltipRect)) {
+        setVisible(false)
+      }
+    }, duration)
+
+    setDeactivateTimeout(timeout)
   }
+
+  const handleMouseMove = (e) => {
+    if (!visible) {
+      return
+    }
+
+    mouse = { x: e.clientX, y: e.clientY }
+  }
+
+  const isWithinRect = ({ x, y }: { x: number; y: number }, rect: DOMRect) => {
+    return (
+      x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
+    )
+  }
+
+  const clamp = (value: number, min: number, max: number) => {
+    return Math.max(min, Math.min(value, max))
+  }
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [visible])
 
   return (
     <>
       <span
         className={clsx(
-          'pointer-events-none absolute top-0 left-0 z-10 max-w-md border border-white bg-back px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
+          'absolute top-0 left-0 z-10 max-w-md border border-white bg-back px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
           {
-            'opacity-100': visible,
+            'pointer-events-all opacity-100': visible,
             'pointer-events-none opacity-0': !visible,
           }
         )}
         ref={tooltipRef}
+        onMouseLeave={() => handleMouseLeave(0)}
       >
         <span
           className={clsx(
@@ -87,12 +125,12 @@ function Tooltip({
           )}
           ref={arrowRef}
         />
-        <span className="font-nunitoleading-none text-white">{content}</span>
+        <span className="font-nunitoleading-none text-white">{t(content)}</span>
       </span>
 
       <span
         onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onMouseLeave={() => handleMouseLeave()}
         className="font-bold"
       >
         {href && (
