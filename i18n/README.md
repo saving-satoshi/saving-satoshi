@@ -1,6 +1,6 @@
 # Translating Saving Satoshi
 
-We use [Transifex](https://www.transifex.com/joinmarket/jam/) for managing Saving Satoshi's translations.
+We use [github](https://github.com/saving-satoshi/saving-satoshi) for managing Saving Satoshi's translations.
 
 ## For Developers
 
@@ -14,6 +14,19 @@ i18n/locales/en/translations.ts
 ```
 
 ### Example
+
+To begin you will need to add your choice locale in the `/i18n/config.ts` file as below.
+
+Config File:
+
+```jsx
+// i18n/config.ts
+export const i18n = {
+  defaultLocale: 'en',
+  locales: ['en', 'nl', 'ko'],
+} as const
+```
+Then you may begin adding your own translations to test as you go.
 
 Source File:
 
@@ -30,6 +43,8 @@ export default function HelloWorldComponent() {
 }
 ```
 
+Be sure to add your copy directly to the `translation.ts` file and not the component when creating new components.
+
 Translation file:
 
 ```jsx
@@ -38,38 +53,24 @@ Translation file:
 export const translations = {
     hello_world: {
         en: {
-            heading: "Hello, world!"
+            heading: "안녕 세상!"
         }
     }
 }
 ```
 
-### Background
-
-Transifex [is connected with our GitHub repo](https://docs.transifex.com/transifex-github-integrations/github-tx-ui).
-Whenever new translation strings land on `master` (e.g. when being added as part of a new feature in a PR), [Transifex]() will automatically add those new strings to the Transifex web app.
-Whenever translations on Transifex are done and reviewed, Transifex will open a PR on GitHub to integrate newly translated texts into the app.
-
 ### Adding a new Language
 
 To add a new language:
 
-1. [Add it](https://docs.transifex.com/projects/adding-and-removing-project-languages) on [Transifex]().
-1. Trigger a [manual sync](https://docs.transifex.com/transifex-github-integrations/github-tx-ui#manual-sync) from Transifex to GitHub.
-1. Transifex will open a pull request. On this branch, add the new language in `i18n/config.ts`. For example, when adding `de`:
-
-```js
-export const i18n = {
-  defaultLocale: 'en',
-  locales: ['en', 'de'],
-} as const
-
-export type Locale = typeof i18n['locales'][number]
-```
+1. Look in the `/i18n/locales/` folder to determine if there is any existing translation.
+1. Create an [issue](https://github.com/saving-satoshi/saving-satoshi/issues/new/choose) detailing the language and scope you wish to add to on Github.
+1. [Add it](https://github.com/saving-satoshi/saving-satoshi/compare) on Github.
+1. Invite some review and get it merged!
 
 ## Translators
 
-Let us know [on Slack]() or [GitHub](https://github.com/saving-satoshi/saving-satoshi/issues/new) if you would like to help out translating!
+Let us know [on Slack](https://bitcoindesign.slack.com/archives/C0442BRGJ5U) or [GitHub](https://github.com/saving-satoshi/saving-satoshi/issues/new) if you would like to help out translating!
 
 ### Special Thanks
 
