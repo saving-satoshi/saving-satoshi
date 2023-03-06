@@ -26,14 +26,15 @@ export default function Transacting2({ lang }) {
           }
           language={'string'}
         />
-
-        <Button
-          href="https://blockstream.info/tx/ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d?expand"
-          external={true}
-          classes="mt-4"
-        >
-          {t('transacting_two.link')}
-        </Button>
+        <div className="flex">
+          <Button
+            href="https://blockstream.info/tx/ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d?expand"
+            external={true}
+            classes="mt-4 w-full md:auto"
+          >
+            {t('transacting_two.link')}
+          </Button>
+        </div>
       </LessonInfo>
     </InputChallenge>
   )
