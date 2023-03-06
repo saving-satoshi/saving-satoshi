@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react'
 import { LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonTerminal } from 'ui'
 import { setUserProgress } from 'lib/user'
-import { useStatus } from 'hooks'
-import useMediaQuery from 'hooks/useMediaQuery'
+import { useStatus, useMediaQuery } from 'hooks'
 
 const tabData = [
   {

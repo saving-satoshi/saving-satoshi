@@ -1,12 +1,11 @@
 'use client'
-
 import { useState, useEffect } from 'react'
 
-interface UseWidthParams {
+interface UseMediaQueryParams {
   width: number
 }
 
-const useMediaQuery = ({ width }: UseWidthParams): boolean => {
+export const useMediaQuery = ({ width }: UseMediaQueryParams): boolean => {
   const [isWidthMet, setIsWidthMet] = useState<boolean>(
     window.innerWidth <= width
   )
@@ -25,5 +24,3 @@ const useMediaQuery = ({ width }: UseWidthParams): boolean => {
 
   return isWidthMet
 }
-
-export default useMediaQuery
