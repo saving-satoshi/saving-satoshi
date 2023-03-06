@@ -82,7 +82,7 @@ export default function Terminal({ success, lines, next, onChange }) {
   return (
     <div
       className={clsx(
-        'flex grow flex-col border-white/25 font-space-mono text-white md:border-l',
+        'flex grow flex-col border-white/25 font-space-mono text-white md:basis-1/3 md:border-l',
         {
           'hidden md:flex': !isActive,
           flex: isActive,
