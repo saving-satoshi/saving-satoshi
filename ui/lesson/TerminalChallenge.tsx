@@ -3,9 +3,8 @@
 import { useState, useEffect } from 'react'
 import { LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonTerminal } from 'ui'
-import { useMediaQuery } from 'hooks'
 import { setUserProgress } from 'lib/user'
-import { useStatus } from 'hooks'
+import { useStatus, useMediaQuery } from 'hooks'
 
 const tabData = [
   {
@@ -63,7 +62,7 @@ export default function TerminalChallenge({
         ]
   )
 
-  const isSmallScreen = useMediaQuery({ query: '(max-width: 767px)' })
+  const isSmallScreen = useMediaQuery({ width: 767 })
 
   const status = useStatus(saveInfo.chapter, saveInfo.challenge)
 

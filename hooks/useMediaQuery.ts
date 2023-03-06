@@ -1,21 +1,26 @@
 'use client'
 import { useState, useEffect } from 'react'
 
-export const useMediaQuery = (query) => {
-  const [matches, setMatches] = useState(false)
+interface UseMediaQueryParams {
+  width: number
+}
+
+export const useMediaQuery = ({ width }: UseMediaQueryParams): boolean => {
+  const [isWidthMet, setIsWidthMet] = useState<boolean>(
+    window.innerWidth <= width
+  )
 
   useEffect(() => {
-    const media = window.matchMedia(query)
-
-    if (media.matches !== matches) {
-      setMatches(media.matches)
+    const handleResize = () => {
+      setIsWidthMet(window.innerWidth <= width)
     }
 
-    const listener = () => setMatches(media.matches)
-    window.addEventListener('resize', listener)
+    window.addEventListener('resize', handleResize)
 
-    return () => window.removeEventListener('resize', listener)
-  }, [matches, query])
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [width])
 
-  return matches
+  return isWidthMet
 }
