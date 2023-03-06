@@ -9,7 +9,7 @@ export default function Transacting2({ lang }) {
 
   return (
     <InputChallenge
-      answer={'6a127461636f7320666f722065766572796f6e65'}
+      answer={'6a1c5361746f7368693433335061726b53744368696e6f43413933323433'}
       next={'/chapters/chapter-1/transacting-3'}
       label={t('transacting_two.input_challenge_label')}
       pattern={/[a-z0-9]+/gi}
@@ -22,13 +22,13 @@ export default function Transacting2({ lang }) {
 
         <CodeExample
           code={
-            '75764fd0c95b4c17b728d10f7555509adfc0789ddc47683c45aeddd1c34727f8'
+            'ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d'
           }
           language={'string'}
         />
 
         <Button
-          href="https://blockstream.info/tx/75764fd0c95b4c17b728d10f7555509adfc0789ddc47683c45aeddd1c34727f8?expand"
+          href="https://blockstream.info/tx/ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d?expand"
           external={true}
           classes="mt-4"
         >
