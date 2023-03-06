@@ -88,18 +88,33 @@ export default function Chapter({ children, metadata, lang }) {
                   })}
                 >
                   <div className="mt-6 font-nunito">
-                    {chapter.metadata.lessons.length > 0 ? (
+                    {(chapter.metadata.lessons.length > 0 && display && (
                       <div className="text-lg text-white">{children}</div>
-                    ) : null}
+                    )) ||
+                      (chapter.metadata.lessons.length > 0 && !display && (
+                        <div className="flex font-nunito text-lg text-white">
+                          <LockIcon className="my-auto mr-2 justify-center" />
+                          {t('chapter.chapter_locked_one')} {position - 1}{' '}
+                          {t('chapter.chapter_locked_two')}
+                        </div>
+                      )) ||
+                      (chapter.metadata.lessons.length === 0 && null)}
                     <div className="flex pt-8 md:w-full">
                       <Button
                         href={`/chapters/${chapter.metadata.slug}`}
-                        disabled={chapter.metadata.lessons.length === 0}
+                        disabled={!display}
                         classes={'w-full'}
                       >
-                        {chapter.metadata.lessons.length > 0
-                          ? `${t('shared.start_chapter')} ${position}`
-                          : t('shared.coming_soon')}
+                        {(chapter.metadata.lessons.length > 0 &&
+                          display &&
+                          `${t('shared.start_chapter')} ${position}`) ||
+                          (chapter.metadata.lessons.length > 0 &&
+                            !display &&
+                            `${t('chapter.chapter_locked_one')} ${
+                              position - 1
+                            } ${t('chapter.chapter_locked_two')}`) ||
+                          (chapter.metadata.lessons.length === 0 &&
+                            t('shared.coming_soon'))}
                       </Button>
                     </div>
                   </div>
