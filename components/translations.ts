@@ -8,14 +8,14 @@ export const translations = {
     en: {
       title: 'Saving Satoshi',
       description: 'Code your way through the mysteries of bitcoin.',
-      start_journey: 'Start your journey',
+      start_journey: 'Start the demo',
       tell_more: 'Tell me more',
     },
 
     nl: {
       title: 'Saving Satoshi',
       description: 'Programmeer je weg door de mysteries van bitcoin.',
-      start_journey: 'Start je reis',
+      start_journey: 'Start de demo',
       tell_more: 'Vertel me meer',
     },
   },
@@ -79,6 +79,19 @@ export const translations = {
       paragraph_two:
         'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
       confirm: 'I’ve copied and backed up my code',
+    },
+  },
+
+  demo_disclaimer: {
+    en: {
+      title: 'This is a demo',
+      description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love your feedback.`,
+    },
+
+    nl: {
+      title: 'Dit is een demo',
+      description:
+        'We zijn nog in een vroeg stadium van dit project. Hoofdstuk 1 werkt, de rest is nog in ontwikkeling. Probeer het eens uit en laat ons weten wat je ervan vindt, we zouden graag je feedback horen.',
     },
   },
 }
