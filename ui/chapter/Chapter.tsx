@@ -88,7 +88,9 @@ export default function Chapter({ children, metadata, lang }) {
                   })}
                 >
                   <div className="mt-6 font-nunito">
-                    <div className="text-lg text-white">{children}</div>
+                    {chapter.metadata.lessons.length > 0 ? null : (
+                      <div className="text-lg text-white">{children}</div>
+                    )}
                     <div className="flex pt-8 md:w-full">
                       <Button
                         href={`/chapters/${chapter.metadata.slug}`}
