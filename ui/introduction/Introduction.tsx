@@ -56,12 +56,12 @@ export default function Introduction({ children, lang }) {
               {chapter.metadata.lessons.length > 0 ? (
                 <Button
                   href={`/chapters/${chapterId}/${chapter.metadata.lessons[0]}`}
-                  classes="w-full sm:w-auto"
+                  classes="w-full md:w-auto"
                 >
                   Start
                 </Button>
               ) : (
-                <Button classes="w-full sm-w-auto" disabled>
+                <Button classes="w-full md:w-auto" disabled>
                   Coming soon
                 </Button>
               )}

@@ -1,16 +1,7 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import {
-  CopyButton,
-  CodeExample,
-  LessonInfo,
-  Title,
-  Text,
-  Tips,
-  Tip,
-  TerminalChallenge,
-} from 'ui'
+import { CodeExample, LessonInfo, Title, Text, TerminalChallenge } from 'ui'
 
 export default function Genesis2({ lang }) {
   const t = useTranslations(lang)

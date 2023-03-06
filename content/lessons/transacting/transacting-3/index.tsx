@@ -6,7 +6,9 @@ export default function Transacting3({ lang }) {
   const t = useTranslations(lang)
   return (
     <TerminalChallenge
-      expectedInput={'6a127461636f7320666f722065766572796f6e65'}
+      expectedInput={
+        '6a1c5361746f7368693433335061726b53744368696e6f43413933323433'
+      }
       saveInfo={{
         chapter: 'chapter-1',
         challenge: 'done',
