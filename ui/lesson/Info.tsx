@@ -8,7 +8,7 @@ export default function LessonInfo({ children }) {
 
   if (direction === LessonDirection.Horizontal) {
     return (
-      <div className={clsx('w-full justify-center text-white')}>
+      <div className="grow justify-center text-white md:basis-1/3">
         <div className="flex h-full flex-col content-center justify-items-start gap-1 px-1 py-6 sm:px-12">
           {children}
         </div>

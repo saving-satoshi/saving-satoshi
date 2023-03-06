@@ -4,8 +4,6 @@ import * as Navbar from './Navbar/Navbar'
 import * as Hero from './Hero'
 import * as Footer from './Footer'
 
-import { translations as ComponentTranslations } from './translations'
-
 export const component = {
   login: LoginModal,
   signup: SignUpModal,
@@ -13,5 +11,3 @@ export const component = {
   hero: Hero,
   footer: Footer,
 }
-
-export const translations = [ComponentTranslations]
