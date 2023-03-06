@@ -64,7 +64,6 @@ export default function TerminalChallenge({
   )
 
   const isSmallScreen = useMediaQuery({ width: 767 })
-  console.log(isSmallScreen)
 
   const status = useStatus(saveInfo.chapter, saveInfo.challenge)
 
