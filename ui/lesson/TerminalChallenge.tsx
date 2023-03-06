@@ -5,6 +5,7 @@ import { LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonTerminal } from 'ui'
 import { setUserProgress } from 'lib/user'
 import { useStatus } from 'hooks'
+import useMediaQuery from 'hooks/useMediaQuery'
 
 const tabData = [
   {
@@ -46,7 +47,6 @@ export default function TerminalChallenge({
   const [hydrated, setHydrated] = useState(false)
   const [success, setSuccess] = useState('')
   const [challengeState, setChallengeState] = useState<string>('incomplete')
-  const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false)
   const [lines, setLines] = useState(
     customLines
       ? [
@@ -62,25 +62,9 @@ export default function TerminalChallenge({
           },
         ]
   )
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
-  useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth)
-    }
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (windowWidth < 767) {
-      setIsSmallScreen(true)
-    } else {
-      setIsSmallScreen(false)
-    }
-  }, [windowWidth])
+  const isSmallScreen = useMediaQuery({ width: 767 })
+  console.log(isSmallScreen)
 
   const status = useStatus(saveInfo.chapter, saveInfo.challenge)
 
