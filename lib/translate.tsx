@@ -19,11 +19,6 @@ const componentRegexes = {
   [ComponentType.A]: /<a(.*?)>(.*?)<\/a>/gim,
 }
 
-const componentRegexes = {
-  [ComponentType.Link]: /<Link(.*?)>(.*?)<\/Link>/gim,
-  [ComponentType.Tooltip]: /<Tooltip(.*?)>(.*?)<\/Tooltip>/gim,
-}
-
 let translations = {}
 
 function parseTranslations(arr, result) {

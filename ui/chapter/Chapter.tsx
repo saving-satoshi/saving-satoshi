@@ -71,7 +71,7 @@ export default function Chapter({ children, metadata, lang }) {
             </h3>
 
             <div>
-              {display ? (
+              {chapter.metadata.lessons.length > 0 && display ? (
                 <ChapterTabs
                   items={tabData}
                   activeId={activeTab}
@@ -102,7 +102,9 @@ export default function Chapter({ children, metadata, lang }) {
                     <div className="flex pt-8 md:w-full">
                       <Button
                         href={`/chapters/${chapter.metadata.slug}`}
-                        disabled={!display}
+                        disabled={
+                          chapter.metadata.lessons.length === 0 || !display
+                        }
                         classes={'w-full'}
                       >
                         {(chapter.metadata.lessons.length > 0 &&
