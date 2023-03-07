@@ -110,8 +110,8 @@ export const translations = {
     en: {
       title: 'Genesis',
       heading: 'Find block 0',
-      paragraph_one: `Let's find the very first block in the Bitcoin blockchain. Go to a <Tooltip content="genesis_one.tooltip_block_explorer" className="underline">block explorer</Tooltip> and search for ’0’. This will take you to the block at height 0. As you can see, this block only contains one transaction.`,
-      paragraph_two: `Open up the transaction so you can take a closer look at the details. On the left is an input called 'Coinbase'. Inside that is a field called 'ScriptSig'. Find the <Tooltip content="genesis_one.tooltip_hex" className="underline">HEX</Tooltip> representation and paste it below.`,
+      paragraph_one: `Let's find the very first block in the Bitcoin blockchain. Go to a <Tooltip id="genesis_one_paragraph_one" content="genesis_one.tooltip_block_explorer" className="underline">block explorer</Tooltip> and search for ’0’. This will take you to the block at height 0. As you can see, this block only contains one transaction.`,
+      paragraph_two: `Open up the transaction so you can take a closer look at the details. On the left is an input called 'Coinbase'. Inside that is a field called 'ScriptSig'. Find the <Tooltip id="genesis_one_paragraph_two" content="genesis_one.tooltip_hex" className="underline">HEX</Tooltip> representation and paste it below.`,
       tooltip_block_explorer:
         'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
       tooltip_hex:
@@ -120,6 +120,7 @@ export const translations = {
       placeholder: 'Paste the ScriptSig HEX Representation',
     },
   },
+
   genesis_two: {
     en: {
       title: 'Genesis',
@@ -128,6 +129,7 @@ export const translations = {
       success: `Interesting! The message references a news article on the same day Satoshi mined the genesis block. This gives us an important clue about Satoshi's motivation for creating Bitcoin. You can read more about it <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">here</Link>.`,
     },
   },
+
   transacting_one: {
     en: {
       title: 'Transacting',
@@ -169,23 +171,27 @@ export const translations = {
         'Almost. Take another look to find the correct value',
     },
   },
+
   end: {
     en: {
       save: 'Save my progress',
       next: 'Continue without saving',
     },
   },
+
   challenge_list: {
     en: {
       coming_soon: 'Coming soon. Hang tight.',
     },
   },
+
   chapter: {
     en: {
       chapter_locked_one: 'Complete Chapter',
       chapter_locked_two: 'to unlock.',
     },
   },
+
   hero: {
     en: {
       title: 'Saving Satoshi',

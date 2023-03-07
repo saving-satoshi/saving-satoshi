@@ -8,6 +8,7 @@ import { clamp, isWithinRect, modifyRect } from 'utils'
 function Tooltip({
   children,
   className,
+  id,
   content,
   position,
   offset,
@@ -15,6 +16,7 @@ function Tooltip({
 }: {
   children: React.ReactNode
   className?: string
+  id: string
   content: any
   position?: string
   offset?: number
@@ -119,6 +121,8 @@ function Tooltip({
           }
         )}
         ref={tooltipRef}
+        role="tooltip"
+        id={id}
       >
         <span
           className={clsx(
@@ -139,6 +143,7 @@ function Tooltip({
         onMouseEnter={handleMouseEnter}
         className="font-bold"
         ref={targetRef}
+        aria-describedby={id}
       >
         {href && (
           <a href={href} className={className}>
