@@ -1,20 +1,9 @@
 'use client'
 
 import clsx from 'clsx'
-import React, { useRef, useState } from 'react'
-
-interface TooltipProps {
-  children: React.ReactNode
-  className?: string
-  content: any
-  position?: string
-  offset?: number
-  href?: string
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.max(min, Math.min(value, max))
-}
+import { useLang, useTranslations } from 'hooks'
+import React, { useEffect, useRef, useState } from 'react'
+import { clamp, isWithinRect, modifyRect } from 'utils'
 
 function Tooltip({
   children,
@@ -23,15 +12,50 @@ function Tooltip({
   position,
   offset,
   href,
-}: TooltipProps) {
+}: {
+  children: React.ReactNode
+  className?: string
+  content: any
+  position?: string
+  offset?: number
+  href?: string
+}) {
+  const targetRef = useRef<HTMLDivElement>()
   const tooltipRef = useRef<HTMLDivElement>()
   const arrowRef = useRef<HTMLDivElement>()
   const [visible, setVisible] = useState(false)
 
-  const ComponentType = href ? 'a' : 'span'
+  const lang = useLang()
+  const t = useTranslations(lang)
 
   const handleMouseEnter = (e) => {
-    const target = e.target
+    updatePosition()
+    updateZIndex()
+    setVisible(true)
+  }
+
+  const handleMouseMove = (e) => {
+    if (!visible) {
+      return
+    }
+
+    const mouse = { x: e.clientX, y: e.clientY }
+    const targetEl = targetRef.current
+    const tooltipEl = tooltipRef.current
+    const targetRect = targetEl.getBoundingClientRect()
+    const tooltipRect = tooltipEl.getBoundingClientRect()
+    const prop = position !== 'top' ? 'top' : 'bottom'
+
+    if (
+      !isWithinRect(mouse, targetRect) &&
+      !isWithinRect(mouse, modifyRect(tooltipRect, { [prop]: offset }))
+    ) {
+      setVisible(false)
+    }
+  }
+
+  const updatePosition = () => {
+    const target = targetRef.current
     const tooltip = tooltipRef.current
     const arrow = arrowRef.current
 
@@ -57,21 +81,40 @@ function Tooltip({
     const arrowRotation = position === 'top' ? 225 : 45
 
     arrow.style.transform = `translate3d(${arrowX}, ${arrowY}, 0px) rotate(${arrowRotation}deg)`
-
-    setVisible(true)
   }
 
-  const handleMouseLeave = (e) => {
-    setVisible(false)
+  const updateZIndex = () => {
+    tooltipRef.current.style.zIndex = '20'
+
+    findTooltips().forEach((otherTooltip: HTMLElement) => {
+      if (otherTooltip === tooltipRef.current) {
+        return
+      }
+
+      otherTooltip.style.zIndex = '10'
+    })
   }
+
+  const findTooltips = () => {
+    const tooltips = Array.from(document.querySelectorAll('.tooltip'))
+
+    return tooltips.filter((tooltip) => tooltip !== tooltipRef.current)
+  }
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [visible])
 
   return (
     <>
       <span
         className={clsx(
-          'pointer-events-none absolute top-0 left-0 z-10 max-w-md border border-white bg-back px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
+          'tooltip absolute top-0 left-0 z-10 max-w-md border border-white bg-back px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
           {
-            'opacity-100': visible,
+            'pointer-events-all opacity-100': visible,
             'pointer-events-none opacity-0': !visible,
           }
         )}
@@ -87,13 +130,15 @@ function Tooltip({
           )}
           ref={arrowRef}
         />
-        <span className="font-nunitoleading-none text-white">{content}</span>
+        <span className="font-nunitoleading-none text-white">
+          {typeof content === 'string' ? t(content) : content}
+        </span>
       </span>
 
       <span
         onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
         className="font-bold"
+        ref={targetRef}
       >
         {href && (
           <a href={href} className={className}>

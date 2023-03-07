@@ -7,9 +7,9 @@ export default function Footer() {
   const lang = useLang()
   const t = useTranslations(lang)
   return (
-    <div className="bottom-0 h-auto w-full bg-back">
-      <div className="flex flex-col items-center justify-center px-6 py-2 text-white sm:flex-row">
-        <p className="p-1 text-center">{t('footer.paragraph_one')}</p>
+    <div className="h-auto w-full">
+      <div className="flex flex-col items-center justify-center px-6 py-4 text-white sm:flex-row">
+        <p className="p-1">{t('footer.paragraph_one')}</p>
         <a
           href={siteConfig.links.github}
           target="_blank"

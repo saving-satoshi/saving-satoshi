@@ -70,11 +70,12 @@ export const translations = {
     nl: {
       title: 'Genesis',
       heading: 'Vind block 0',
-      paragraph_one: `Laten we het allereerste block in de Bitcoin blockchain vinden. Gebruik een <Tooltip content="genesis_one.tooltip_block_explorer" href="https://blockstream.info" className="underline">block explorer</Tooltip> en zoek naar ’0’. Dit zal je naar het block op hoogte 0 nemen. Zoals je kunt zien bevat dit blok maar één transactie.`,
+      paragraph_one: `Laten we het allereerste block in de Bitcoin blockchain vinden. Gebruik een <Tooltip content="genesis_one.tooltip_block_explorer" className="underline">block explorer</Tooltip> en zoek naar ’0’. Dit zal je naar het block op hoogte 0 nemen. Zoals je kunt zien bevat dit blok maar één transactie.`,
       paragraph_two: `Klap de transactie uit zodat u de details beter kunt bekijken. Aan de linkerzijde is er een input genaamd 'Coinbase'. Daarbinnen bevindt zich een veld met de naam 'ScriptSig'. Kopieer de <Tooltip content="genesis_one.tooltip_hex" className="underline">HEX</Tooltip> versie van de ScriptSig en plak deze hieronder.`,
-      tooltip_block_explorer: 'We recommend https://blockstream.info/',
+      tooltip_block_explorer:
+        'Een <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is een handige tool om snel informatie over bitcoin transacties op te zoeken.',
       tooltip_hex:
-        'Short for hexadecimal, a numeral system that represents numbers using a base of 16.',
+        'Afkorting van hexadecimaal, een cijfersysteem dat getallen vertegenwoordigt met een basis van 16.',
       view_block_0: 'Vind Block 0',
       placeholder: 'Plak de HEX versie van de ScriptSig',
     },
@@ -101,7 +102,7 @@ export const translations = {
     nl: {
       title: 'Saving Satoshi',
       description: 'Programmeer je weg door de mysteries van bitcoin.',
-      start_journey: 'Start je reis',
+      start_journey: 'Start de demo',
       tell_more: 'Vertel me meer',
     },
   },
@@ -111,6 +112,14 @@ export const translations = {
       chapter: 'Hoofdstuk',
       chapter_complete: 'Hoofdstuk compleet',
       challenge: 'Uitdaging',
+    },
+  },
+
+  demo_disclaimer: {
+    nl: {
+      title: 'Dit is een demo',
+      description:
+        'We zijn nog in een vroeg stadium van dit project. Hoofdstuk 1 werkt, de rest is nog in ontwikkeling. Probeer het eens uit en laat ons weten wat je ervan vindt, we zouden graag je feedback horen.',
     },
   },
 }

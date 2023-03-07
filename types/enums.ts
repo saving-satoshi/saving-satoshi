@@ -9,6 +9,7 @@ export enum LessonView {
 }
 
 export enum InjectableComponentType {
+  A,
   Link,
   Tooltip,
 }

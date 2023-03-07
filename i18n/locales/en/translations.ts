@@ -110,9 +110,10 @@ export const translations = {
     en: {
       title: 'Genesis',
       heading: 'Find block 0',
-      paragraph_one: `Let's find the very first block in the Bitcoin blockchain. Go to a <Tooltip content="genesis_one.tooltip_block_explorer" href="https://blockstream.info" className="underline">block explorer</Tooltip> and search for ’0’. This will take you to the block at height 0. As you can see, this block only contains one transaction.`,
+      paragraph_one: `Let's find the very first block in the Bitcoin blockchain. Go to a <Tooltip content="genesis_one.tooltip_block_explorer" className="underline">block explorer</Tooltip> and search for ’0’. This will take you to the block at height 0. As you can see, this block only contains one transaction.`,
       paragraph_two: `Open up the transaction so you can take a closer look at the details. On the left is an input called 'Coinbase'. Inside that is a field called 'ScriptSig'. Find the <Tooltip content="genesis_one.tooltip_hex" className="underline">HEX</Tooltip> representation and paste it below.`,
-      tooltip_block_explorer: 'We recommend https://blockstream.info/',
+      tooltip_block_explorer:
+        'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
       tooltip_hex:
         'Short for hexadecimal, a numeral system that represents numbers using a base of 16.',
       view_block_0: 'View Block 0',
@@ -161,7 +162,7 @@ export const translations = {
         'Once you’ve found it, decode the hidden message, just like we did in the previous exercise.',
       paragraph_three: 'And remember, ’Bitcoin is for everyone’.',
       terminal_challenge_success:
-        'That’s correct! Nice work. We don’t know why tacos were so important to the anonymous sender of this transaction, but here we are. And it’s an admirable goal at least.',
+        'That’s correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n There you’ll find an abandoned warehouse with all the tools you need to fight BitRey and bring equilibrium back to bitcoin.\n\n Your next challenge awaits you.',
       terminal_challenge_lines:
         'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyHex is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge',
       terminal_challenge_error:
@@ -189,7 +190,7 @@ export const translations = {
     en: {
       title: 'Saving Satoshi',
       description: 'Code your way through the mysteries of bitcoin.',
-      start_journey: 'Start your journey',
+      start_journey: 'Start the demo',
       tell_more: 'Tell me more',
     },
   },
@@ -246,6 +247,13 @@ export const translations = {
       paragraph_two:
         'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
       confirm: 'I’ve copied and backed up my code',
+    },
+  },
+
+  demo_disclaimer: {
+    en: {
+      title: 'This is a demo',
+      description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love your feedback.`,
     },
   },
 }
