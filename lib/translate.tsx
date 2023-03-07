@@ -3,7 +3,7 @@ import Link from 'next/link'
 import get from 'lodash/get'
 
 import { Tooltip } from 'ui'
-import { i18n } from 'config/i18n'
+import { i18n } from 'i18n/config'
 import { InjectableComponentType as ComponentType } from 'types'
 
 const contentRegex = /content="(.*?)"/
@@ -35,22 +35,12 @@ function parseTranslations(arr, result) {
   )
 }
 
-export function loadTranslations() {
-  const { translations: chapters } = require('content/chapters')
-  const { translations: introductions } = require('content/introductions')
-  const { translations: lessons } = require('content/lessons')
-  const { translations: components } = require('components')
-  const { translations: ui } = require('ui')
-  const { translations: shared } = require('shared')
+export function loadTranslations(lang) {
+  const {
+    translations: localeTranslations,
+  } = require(`../i18n/locales/${lang}`)
 
-  const Translations = [
-    chapters,
-    introductions,
-    lessons,
-    components,
-    ui,
-    shared,
-  ]
+  const Translations = [localeTranslations]
 
   const translations = i18n.locales.reduce(
     (r, locale) => ({ ...r, [locale]: {} }),
@@ -64,7 +54,7 @@ export function loadTranslations() {
 
 export function t(key: string, lang: string) {
   if (Object.keys(translations).length === 0) {
-    translations = loadTranslations()
+    translations = loadTranslations(lang)
   }
 
   if (!key) {

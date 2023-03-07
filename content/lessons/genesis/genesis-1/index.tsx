@@ -20,14 +20,15 @@ export default function Genesis1({ lang }) {
 
         <Text className="text-lg">{t('genesis_one.paragraph_one')}</Text>
         <Text className="text-lg">{t('genesis_one.paragraph_two')}</Text>
-
-        <Button
-          href="https://blockstream.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
-          external={true}
-          classes="mt-4"
-        >
-          {t('genesis_one.view_block_0')}
-        </Button>
+        <div className="flex">
+          <Button
+            href="https://blockstream.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
+            external={true}
+            classes="mt-4 w-full md:w-auto"
+          >
+            {t('genesis_one.view_block_0')}
+          </Button>
+        </div>
       </LessonInfo>
     </InputChallenge>
   )
