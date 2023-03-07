@@ -23,12 +23,17 @@ Generally, we have four tracks in this project:
 - Lessons
 - Design
 - Code
+- Translation
 
 The more these are in tune with each other, the better the final user experience. We are currently still in a phase where we try to bring everything together in a coherent and interesting storyline.
 
 The design for this project is handled in [this Figma file](https://www.figma.com/file/LqjK3Tpvd9KJ4buFArCJBQ/Saving-Satoshi?node-id=0%3A1&t=HMELTIqCz6Nh68LI-1).
 
 Images are generated via AI tools (mostly [DiffusionBee](https://diffusionbee.com)). The prompts consist of two parts, the scene description and the stylistic direction. The latter was `illustration concept art anime key visual trending, by victo ngai, by makoto shinkai, by takashi takeuchi, by studio ghibli`. You're welcome to contribute more images. We're still fleshing this process out a bit further.
+
+## Translation support
+
+To help with translations and review head over to our translation [README.md](https://github.com/saving-satoshi/saving-satoshi/tree/master/i18n/README.md)
 
 ## Local development setup
 

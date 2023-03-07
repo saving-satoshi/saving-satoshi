@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import Modal from 'react-modal'
 import CloseIcon from 'public/assets/icons/close.svg'
 import { CopyButton } from 'shared'
+import HorizontalScrollView from 'components/HorizontalScrollView'
 import {
   loginUser,
   setUserAvatar,
@@ -58,21 +59,20 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
           {t('modal_signup.subheading_one')}
         </h2>
 
-        <div className="mb-5 flex cursor-pointer flex-wrap justify-between">
+        <HorizontalScrollView>
           {[1, 2, 3, 4, 5].map((i) => (
-            <div className="h-[84px] w-[84px] flex-col items-center" key={i}>
-              <Avatar
-                avatar={i}
-                size={80}
-                onClick={() => setAvatar(i)}
-                classes={clsx('border-2 h-20 w-20 rounded-full', {
-                  'border-white': avatar === i,
-                  'border-transparent': avatar !== i,
-                })}
-              />
-            </div>
+            <Avatar
+              key={i}
+              avatar={i}
+              size={80}
+              onClick={() => setAvatar(i)}
+              classes={clsx('border-2 h-20 w-20 rounded-full inline-block', {
+                'border-white': avatar === i,
+                'border-transparent': avatar !== i,
+              })}
+            />
           ))}
-        </div>
+        </HorizontalScrollView>
 
         <h2 className="mb-4 text-xl font-bold">
           {t('modal_signup.subheading_two')}

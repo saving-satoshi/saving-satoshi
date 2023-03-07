@@ -3,17 +3,20 @@ import Link from 'next/link'
 import get from 'lodash/get'
 
 import { Tooltip } from 'ui'
-import { i18n } from 'config/i18n'
+import { i18n } from 'i18n/config'
 import { InjectableComponentType as ComponentType } from 'types'
 
 const contentRegex = /content="(.*?)"/
 const hrefRegex = /href="(.*?)"/
+const targetRegex = /target="(.*?)"/
+const relRegex = /rel="(.*?)"/
 const classNameRegex = /className="(.*?)"/
-const targetRegex = />(.*?)</
+const labelRegex = />(.*?)</
 
 const componentRegexes = {
   [ComponentType.Link]: /<Link(.*?)>(.*?)<\/Link>/gim,
   [ComponentType.Tooltip]: /<Tooltip(.*?)>(.*?)<\/Tooltip>/gim,
+  [ComponentType.A]: /<a(.*?)>(.*?)<\/a>/gim,
 }
 
 let translations = {}
@@ -32,22 +35,12 @@ function parseTranslations(arr, result) {
   )
 }
 
-export function loadTranslations() {
-  const { translations: chapters } = require('content/chapters')
-  const { translations: introductions } = require('content/introductions')
-  const { translations: lessons } = require('content/lessons')
-  const { translations: components } = require('components')
-  const { translations: ui } = require('ui')
-  const { translations: shared } = require('shared')
+export function loadTranslations(lang) {
+  const {
+    translations: localeTranslations,
+  } = require(`../i18n/locales/${lang}`)
 
-  const Translations = [
-    chapters,
-    introductions,
-    lessons,
-    components,
-    ui,
-    shared,
-  ]
+  const Translations = [localeTranslations]
 
   const translations = i18n.locales.reduce(
     (r, locale) => ({ ...r, [locale]: {} }),
@@ -61,7 +54,7 @@ export function loadTranslations() {
 
 export function t(key: string, lang: string) {
   if (Object.keys(translations).length === 0) {
-    translations = loadTranslations()
+    translations = loadTranslations(lang)
   }
 
   if (!key) {
@@ -77,20 +70,22 @@ export function t(key: string, lang: string) {
 
   if (
     translation.indexOf('</Tooltip>') === -1 &&
-    translation.indexOf('</Link>') === -1
+    translation.indexOf('</Link>') === -1 &&
+    translation.indexOf('</a>') === -1
   ) {
     return translation
   }
 
   let result = []
 
-  result = injectComponent([translation], ComponentType.Link, lang)
-  result = injectComponent(result, ComponentType.Tooltip, lang)
+  result = injectComponent([translation], ComponentType.Link)
+  result = injectComponent(result, ComponentType.Tooltip)
+  result = injectComponent(result, ComponentType.A)
 
   return result
 }
 
-function injectComponent(result, type, lang) {
+function injectComponent(result, type) {
   return result.map((part) => {
     if (typeof part !== 'string') {
       return part
@@ -99,40 +94,57 @@ function injectComponent(result, type, lang) {
     const regex = componentRegexes[type]
     const parts = []
     let match
+    let index = 0
     let lastIndex = 0
 
     while ((match = regex.exec(part))) {
       parts.push(part.slice(lastIndex, match.index))
 
       const html = match[0]
-      const label = html.match(targetRegex)[1]
-      const hrefMatch = html.match(hrefRegex)
-      const href = hrefMatch?.length > 0 ? hrefMatch[1] : null
-
-      const classNameMatch = html.match(classNameRegex)
-      const className = classNameMatch?.length > 0 ? classNameMatch[1] : null
+      const label = getFirstMatch(html, labelRegex)
+      const href = getFirstMatch(html, hrefRegex)
+      const className = getFirstMatch(html, classNameRegex)
 
       switch (type) {
+        case ComponentType.A: {
+          const target = getFirstMatch(html, targetRegex)
+          const rel = getFirstMatch(html, relRegex)
+          parts.push(
+            <a
+              key={index}
+              href={href}
+              target={target}
+              rel={rel}
+              className="underline"
+            >
+              {label}
+            </a>
+          )
+          break
+        }
+
         case ComponentType.Link: {
           parts.push(
-            <Link href={href} className={className} target="_blank">
+            <Link
+              href={href}
+              className={`${className} cursor-pointer`}
+              target="_blank"
+            >
               {label}
             </Link>
           )
-
           break
         }
 
         case ComponentType.Tooltip: {
           const tkey = html.match(contentRegex)[1]
-          const tvalue = get(translations, `${lang}.${tkey}`) || tkey
 
           parts.push(
             <Tooltip
               key={tkey}
               href={href}
-              className={className}
-              content={tvalue}
+              className={`${className} cursor-pointer`}
+              content={tkey}
             >
               {label}
             </Tooltip>
@@ -142,10 +154,17 @@ function injectComponent(result, type, lang) {
       }
 
       lastIndex = regex.lastIndex
+      index++
     }
 
     parts.push(part.slice(lastIndex))
 
     return parts.length > 1 ? parts : parts[0]
   })
+}
+
+function getFirstMatch(input: string, regex: RegExp) {
+  const match = input.match(regex)
+
+  return match?.length > 0 ? match[1] : null
 }
