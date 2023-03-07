@@ -1,6 +1,7 @@
 import { sectionsConfig } from 'config/sections'
 import Topbar from 'components/Topbar'
 import Footer from 'components/Footer'
+import DemoDisclaimer from 'components/DemoDisclaimer'
 import { chapters } from 'content'
 
 export default async function ChaptersPage({ params }) {
@@ -18,11 +19,13 @@ export default async function ChaptersPage({ params }) {
             Chapters
           </h1>
 
-          <p className="pt-4 pr-10 pl-10 pb-3.5 text-center  text-2xl sm:text-3xl lg:pb-20 lg:text-4xl">
+          <p className="pt-4 pr-10 pl-10 pb-8 text-center text-2xl sm:text-3xl lg:text-4xl">
             Explore the mysteries of Satoshi and learn about Bitcoin along the
             way.
           </p>
         </div>
+
+        <DemoDisclaimer />
 
         <section>
           {sortedChapters.map(({ default: Chapter }, i) => (

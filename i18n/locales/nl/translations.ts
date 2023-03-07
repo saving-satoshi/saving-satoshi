@@ -101,7 +101,7 @@ export const translations = {
     nl: {
       title: 'Saving Satoshi',
       description: 'Programmeer je weg door de mysteries van bitcoin.',
-      start_journey: 'Start je reis',
+      start_journey: 'Start de demo',
       tell_more: 'Vertel me meer',
     },
   },
@@ -111,6 +111,14 @@ export const translations = {
       chapter: 'Hoofdstuk',
       chapter_complete: 'Hoofdstuk compleet',
       challenge: 'Uitdaging',
+    },
+  },
+
+  demo_disclaimer: {
+    nl: {
+      title: 'Dit is een demo',
+      description:
+        'We zijn nog in een vroeg stadium van dit project. Hoofdstuk 1 werkt, de rest is nog in ontwikkeling. Probeer het eens uit en laat ons weten wat je ervan vindt, we zouden graag je feedback horen.',
     },
   },
 }

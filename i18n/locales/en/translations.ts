@@ -189,7 +189,7 @@ export const translations = {
     en: {
       title: 'Saving Satoshi',
       description: 'Code your way through the mysteries of bitcoin.',
-      start_journey: 'Start your journey',
+      start_journey: 'Start the demo',
       tell_more: 'Tell me more',
     },
   },
@@ -246,6 +246,13 @@ export const translations = {
       paragraph_two:
         'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
       confirm: 'I’ve copied and backed up my code',
+    },
+  },
+
+  demo_disclaimer: {
+    en: {
+      title: 'This is a demo',
+      description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love your feedback.`,
     },
   },
 }
