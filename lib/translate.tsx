@@ -6,6 +6,8 @@ import { Tooltip } from 'ui'
 import { i18n } from 'i18n/config'
 import { InjectableComponentType as ComponentType } from 'types'
 
+let TRANSLATIONS = {}
+
 const contentRegex = /content="(.*?)"/
 const hrefRegex = /href="(.*?)"/
 const targetRegex = /target="(.*?)"/
@@ -21,53 +23,47 @@ const componentRegexes = {
   [ComponentType.LineBreak]: /<br(.*?)>/gim,
 }
 
-let translations = {}
-
-function parseTranslations(arr, result) {
-  arr.forEach((v) =>
-    Object.entries(v).forEach(([ns, tr]) =>
-      Object.keys(result).forEach(
-        (locale) =>
-          (result[locale] = {
-            ...result[locale],
-            [ns]: tr[locale],
-          })
-      )
-    )
-  )
-}
-
 export function loadTranslations(lang) {
   const {
     translations: localeTranslations,
   } = require(`../i18n/locales/${lang}`)
 
-  const Translations = [localeTranslations]
+  const result = {}
 
-  const translations = i18n.locales.reduce(
-    (r, locale) => ({ ...r, [locale]: {} }),
-    {}
+  // For each locale create an object on result that we can use to store translations into.
+  i18n.locales.forEach((locale) => {
+    result[locale] = {}
+  })
+
+  // Loop over each group in the translation file and make sure it ends up in the result object.
+  localeTranslations.forEach((group) =>
+    Object.entries(group).forEach(([groupName, translations]) =>
+      Object.keys(result).forEach((locale) => {
+        result[locale] = {
+          ...result[locale],
+          [groupName]: translations,
+        }
+      })
+    )
   )
 
-  Translations.forEach((t) => parseTranslations(t, translations))
-
-  return translations
+  return result
 }
 
 export function t(key: string, lang: string) {
-  if (Object.keys(translations).length === 0) {
-    translations = loadTranslations(lang)
+  if (Object.keys(TRANSLATIONS).length === 0) {
+    TRANSLATIONS = loadTranslations(lang)
   }
 
   if (!key) {
     return '{missing_translation_key}'
   }
 
-  let translation = get(translations, `${lang}.${key}`)
+  const translation = get(TRANSLATIONS, `${lang}.${key}`)
 
   if (!translation) {
-    // Fallback translation
-    return get(translations, `en.${key}`)
+    // If the translation is unavailable in the locale we just return the key.
+    return key
   }
 
   if (
