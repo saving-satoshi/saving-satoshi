@@ -10,6 +10,7 @@ export const translations = {
 
   about: {
     title: 'About',
+    mobile_title: 'What it’s about',
     subtitle:
       'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square.',
     intro:

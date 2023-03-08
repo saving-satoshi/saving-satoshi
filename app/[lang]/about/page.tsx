@@ -29,11 +29,17 @@ export default function About({ params }) {
 
       <div className="m-auto px-6 lg:w-9/12 2xl:w-1/2">
         <div className="flex flex-col justify-center text-white">
-          <h1 className="px-2.5 pt-20 text-center text-6xl sm:text-7xl lg:text-8xl">
+          <h1 className="hidden px-2.5 pt-20 text-center text-7xl sm:block lg:text-8xl">
             {t('about.title')}
           </h1>
 
-          <p className="mt-4 text-center text-4xl">{t('about.subtitle')}</p>
+          <h1 className="block px-2.5 pt-20 text-center text-5xl sm:hidden lg:text-8xl">
+            {t('about.mobile_title')}
+          </h1>
+
+          <p className="mt-4 text-center text-2xl sm:text-4xl">
+            {t('about.subtitle')}
+          </p>
           <p className="mt-8 font-nunito text-xl">{t('about.intro')}</p>
 
           <Divider />
