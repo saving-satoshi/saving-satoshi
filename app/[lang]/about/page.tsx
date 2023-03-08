@@ -38,7 +38,7 @@ export default function About({ params }) {
 
           <Divider />
 
-          <h3 className="text-5xl">{t('about.project.title')}</h3>
+          <h3 className="text-4xl sm:text-5xl">{t('about.project.title')}</h3>
 
           <div className="mt-4 flex flex-col gap-8 font-nunito text-xl">
             <p>{t('about.project.paragraph_one')}</p>
@@ -48,7 +48,9 @@ export default function About({ params }) {
 
           <Divider />
 
-          <h3 className="text-5xl">{t('about.contributing.title')}</h3>
+          <h3 className="text-4xl sm:text-5xl">
+            {t('about.contributing.title')}
+          </h3>
 
           <p className="mt-4 font-nunito text-xl">
             {t('about.contributing.paragraph_one')}
@@ -76,7 +78,9 @@ export default function About({ params }) {
 
           <Divider />
 
-          <h3 className="text-5xl">{t('about.contributors.title')}</h3>
+          <h3 className="text-4xl sm:text-5xl">
+            {t('about.contributors.title')}
+          </h3>
 
           <div className="mt-4 font-nunito text-xl font-semibold">
             <span>{t('about.contributors.contributions_by')} </span>
