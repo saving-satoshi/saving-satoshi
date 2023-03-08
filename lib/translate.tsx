@@ -12,6 +12,7 @@ const contentRegex = /content="(.*?)"/
 const hrefRegex = /href="(.*?)"/
 const targetRegex = /target="(.*?)"/
 const relRegex = /rel="(.*?)"/
+const idRegex = /id="(.*?)"/
 const classNameRegex = /className="(.*?)"/
 const labelRegex = />(.*?)</
 
@@ -105,6 +106,7 @@ function injectComponent(result, type) {
         case ComponentType.A: {
           const target = getFirstMatch(html, targetRegex)
           const rel = getFirstMatch(html, relRegex)
+
           parts.push(
             <a
               key={index}
@@ -133,10 +135,12 @@ function injectComponent(result, type) {
         }
 
         case ComponentType.Tooltip: {
-          const tkey = html.match(contentRegex)[1]
+          const id = getFirstMatch(html, idRegex)
+          const tkey = getFirstMatch(html, contentRegex)
 
           parts.push(
             <Tooltip
+              id={id}
               key={tkey}
               href={href}
               className={`${className} cursor-pointer`}

@@ -83,8 +83,8 @@ export const translations = {
   genesis_one: {
     title: 'Genesis',
     heading: 'Find block 0',
-    paragraph_one: `Let's find the very first block in the Bitcoin blockchain. Go to a <Tooltip content="genesis_one.tooltip_block_explorer" className="underline">block explorer</Tooltip> and search for ’0’. This will take you to the block at height 0. As you can see, this block only contains one transaction.`,
-    paragraph_two: `Open up the transaction so you can take a closer look at the details. On the left is an input called 'Coinbase'. Inside that is a field called 'ScriptSig'. Find the <Tooltip content="genesis_one.tooltip_hex" className="underline">HEX</Tooltip> representation and paste it below.`,
+    paragraph_one: `Let's find the very first block in the Bitcoin blockchain. Go to a <Tooltip id="genesis_one_paragraph_one" content="genesis_one.tooltip_block_explorer" className="underline">block explorer</Tooltip> and search for ’0’. This will take you to the block at height 0. As you can see, this block only contains one transaction.`,
+    paragraph_two: `Open up the transaction so you can take a closer look at the details. On the left is an input called 'Coinbase'. Inside that is a field called 'ScriptSig'. Find the <Tooltip id="genesis_one_paragraph_two" content="genesis_one.tooltip_hex" className="underline">HEX</Tooltip> representation and paste it below.`,
     tooltip_block_explorer:
       'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
     tooltip_hex:
