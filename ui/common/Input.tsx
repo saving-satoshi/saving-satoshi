@@ -1,13 +1,13 @@
 'use client'
 
-import { ReactElement, useEffect, useState } from 'react'
+import { useState } from 'react'
 
 interface UserInputProps {
   onChange: Function
   answer: string
   pattern: RegExp
   hints?: boolean
-  opcode?: ReactElement
+  opcode?: string
 }
 
 export default function Input({
@@ -23,9 +23,13 @@ export default function Input({
   const opCodeOverlay = (opcode) => {
     let OPCodeColor =
       !textAreaValue ||
-      (answer.includes(textAreaValue) && answer[0] === textAreaValue[0])
+      (answer.startsWith(textAreaValue) && answer[0] === textAreaValue[0])
     return (
-      <span className={OPCodeColor ? 'overlay correct' : 'overlay incorrect'}>
+      <span
+        className={`${
+          OPCodeColor ? 'overlay correct' : 'overlay incorrect'
+        } break-keep`}
+      >
         {opcode}
       </span>
     )

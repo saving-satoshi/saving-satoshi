@@ -9,11 +9,11 @@ export default function Transacting2({ lang }) {
 
   return (
     <InputChallenge
-      answer={'6a1c5361746f7368693433335061726b53744368696e6f43413933323433'}
+      answer={'5361746f7368693433335061726b53744368696e6f43413933323433'}
       next={'/chapters/chapter-1/transacting-3'}
       label={t('transacting_two.input_challenge_label')}
       pattern={/[a-z0-9]+/gi}
-      opcode={<span>OP_RETURN OP_PUSHBYTES_18</span>}
+      opcode={'OP_RETURN OP_PUSHBYTES_28'}
       hints
     >
       <LessonInfo>

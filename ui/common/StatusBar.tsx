@@ -40,7 +40,7 @@ export default function StatusBar({
     if (input === expected) return Status.Success
     if (
       hints &&
-      (!input || (expected.includes(input) && expected[0] === input[0]))
+      (!input || (expected.startsWith(input) && expected[0] === input[0]))
     )
       return Status.InProgress
     return Status.Error
