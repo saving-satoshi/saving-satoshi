@@ -24,6 +24,10 @@ const componentRegexes = {
 }
 
 export function loadTranslations(lang) {
+  // defaults lang to en if lang is not provided
+  if (!lang) {
+    lang = 'en'
+  }
   const {
     translations: localeTranslations,
   } = require(`../i18n/locales/${lang}`)
