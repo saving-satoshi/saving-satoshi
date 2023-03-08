@@ -8,14 +8,16 @@ import { Tooltip } from 'ui'
 import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
-import { useLang, useStatus, useTranslations } from 'hooks'
+import { useStatus, useTranslations } from 'hooks'
 
 export default function Tab({
+  lang,
   index,
   count,
   params,
   challenge,
 }: {
+  lang: string
   index: number
   count: number
   params: any
@@ -23,7 +25,6 @@ export default function Tab({
 }) {
   const { slug } = params
 
-  const lang = useLang()
   const t = useTranslations(lang)
   const pathName = usePathname()
 
@@ -39,6 +40,7 @@ export default function Tab({
   return (
     <Tooltip
       id={`navbar-tab-tooltip-${index + 1}`}
+      lang={lang}
       position="bottom"
       offset={0}
       content={

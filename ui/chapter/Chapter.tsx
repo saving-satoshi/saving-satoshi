@@ -129,6 +129,7 @@ export default function Chapter({ children, metadata, lang }) {
                   })}
                 >
                   <ChallengeList
+                    lang={lang}
                     challenges={chapter.metadata.challenges}
                     chapterId={chapter.metadata.slug}
                   />

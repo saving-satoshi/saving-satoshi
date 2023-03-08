@@ -79,14 +79,14 @@ export function t(key: string, lang: string) {
 
   let result = []
 
-  result = injectComponent([translation], ComponentType.Link)
-  result = injectComponent(result, ComponentType.Tooltip)
-  result = injectComponent(result, ComponentType.A)
+  result = injectComponent([translation], ComponentType.Link, lang)
+  result = injectComponent(result, ComponentType.Tooltip, lang)
+  result = injectComponent(result, ComponentType.A, lang)
 
   return result
 }
 
-function injectComponent(result, type) {
+function injectComponent(result, type, lang) {
   return result.map((part) => {
     if (typeof part !== 'string') {
       return part
@@ -144,6 +144,7 @@ function injectComponent(result, type) {
 
           parts.push(
             <Tooltip
+              lang={lang}
               id={id}
               key={tkey}
               href={href}

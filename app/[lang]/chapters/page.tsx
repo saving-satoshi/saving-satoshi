@@ -5,13 +5,15 @@ import DemoDisclaimer from 'components/DemoDisclaimer'
 import { chapters } from 'content'
 
 export default async function ChaptersPage({ params }) {
+  const lang = params.lang
+
   const sortedChapters = Object.values(chapters).sort(
     (a, b) => a.metadata.position - b.metadata.position
   )
 
   return (
     <div className="w-full">
-      <Topbar items={sectionsConfig.mainNav} />
+      <Topbar lang={lang} items={sectionsConfig.mainNav} />
 
       <div className="lg:px-0">
         <div className="flex flex-col justify-center text-white">
@@ -25,16 +27,16 @@ export default async function ChaptersPage({ params }) {
           </p>
         </div>
 
-        <DemoDisclaimer />
+        <DemoDisclaimer lang={lang} />
 
         <section>
           {sortedChapters.map(({ default: Chapter }, i) => (
-            <Chapter key={i} lang={params.lang} />
+            <Chapter key={i} lang={lang} />
           ))}
         </section>
       </div>
 
-      <Footer />
+      <Footer lang={lang} />
     </div>
   )
 }

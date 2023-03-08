@@ -1,13 +1,12 @@
 import TabMobile from './TabMobile'
 import { chapters, lessons } from 'content'
-import { useLang, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 
 import clsx from 'clsx'
 
-export default function TabGroup({ isOpen, clicked, params }) {
+export default function TabGroupMobile({ lang, isOpen, clicked, params }) {
   const { slug } = params
 
-  const lang = useLang()
   const t = useTranslations(lang)
 
   const chapter = chapters[slug]

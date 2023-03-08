@@ -1,9 +1,8 @@
 'use client'
 
-import { useLang, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 
-export default function DemoDisclaimer() {
-  const lang = useLang()
+export default function DemoDisclaimer({ lang }) {
   const t = useTranslations(lang)
 
   return (

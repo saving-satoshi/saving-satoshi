@@ -4,10 +4,12 @@ import { Button } from 'shared'
 
 import { sectionsConfig } from 'config/sections'
 
-export default function About() {
+export default function About({ params }) {
+  const lang = params.lang
+
   return (
     <div className="w-full">
-      <Topbar items={sectionsConfig.mainNav} />
+      <Topbar lang={lang} items={sectionsConfig.mainNav} />
 
       <div className="m-auto px-6 lg:w-9/12 2xl:w-1/2">
         <div className="flex flex-col justify-center text-white">
@@ -127,7 +129,7 @@ export default function About() {
         </div>
       </div>
 
-      <Footer />
+      <Footer lang={lang} />
     </div>
   )
 }

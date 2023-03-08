@@ -1,10 +1,9 @@
 import React from 'react'
 import { usePathname } from 'next/navigation'
 import { chapters, lessons } from 'content'
-import { useLang, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 
-export default function Address() {
-  const lang = useLang()
+export default function Address({ lang }) {
   const t = useTranslations(lang)
 
   const pathName = usePathname()

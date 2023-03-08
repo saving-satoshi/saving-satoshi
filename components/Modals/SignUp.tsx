@@ -12,11 +12,10 @@ import {
   setUserRegistered,
   createUser,
 } from 'lib/user'
-import { useUser, useHasMounted, useTranslations, useLang } from 'hooks'
+import { useUser, useHasMounted, useTranslations } from 'hooks'
 import clsx from 'clsx'
 
-export default function SignUpModal({ open, onClose, onConfirm }) {
-  const lang = useLang()
+export default function SignUpModal({ lang, open, onClose, onConfirm }) {
   const t = useTranslations(lang)
   const hasMounted = useHasMounted()
   const { user } = useUser()

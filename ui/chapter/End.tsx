@@ -70,6 +70,7 @@ export default function End({
         </div>
       </div>
       <SignUpModal
+        lang={lang}
         onConfirm={onSaveProgress}
         onClose={() => setOpenModal(false)}
         open={openModal}

@@ -7,9 +7,9 @@ import { usePathname } from 'next/navigation'
 import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
-import { useLang, useStatus, useTranslations } from 'hooks'
+import { useStatus, useTranslations } from 'hooks'
 
-export default function Tab({
+export default function TabMobile({
   index,
   count,
   params,
@@ -22,9 +22,9 @@ export default function Tab({
   challenge: { lessonId: string; title: string }
   clicked: any
 }) {
-  const { slug } = params
+  const lang = params.lang
+  const slug = params.slug
 
-  const lang = useLang()
   const t = useTranslations(lang)
   const pathName = usePathname()
 

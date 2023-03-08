@@ -4,15 +4,15 @@ import Link from 'next/link'
 import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
-import { useLang, useStatus, useTranslations } from 'hooks'
+import { useStatus, useTranslations } from 'hooks'
 
 export default function ChallengeItem({
+  lang,
   position,
   title,
   chapterId,
   lessonId,
 }) {
-  const lang = useLang()
   const t = useTranslations(lang)
 
   const status = useStatus(chapterId, lessonId)

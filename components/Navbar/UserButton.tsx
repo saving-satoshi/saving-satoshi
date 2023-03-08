@@ -7,7 +7,7 @@ import UserIcon from 'public/assets/icons/avatar.svg'
 import Avatar from 'components/Avatar'
 import { useUser, useHasMounted } from 'hooks'
 
-export default function UserButton() {
+export default function UserButton({ lang }) {
   const hasMounted = useHasMounted()
   const [openSignInModal, setOpenSignInModal] = useState(false)
   const [openSignUpModal, setOpenSignUpModal] = useState(false)
@@ -54,12 +54,14 @@ export default function UserButton() {
       <div className="ml-4">{renderIconButton()}</div>
       {isRegistered ? (
         <LoginModal
+          lang={lang}
           onLogin={() => setOpenSignInModal(false)}
           open={openSignInModal}
           onClose={hideModals}
         />
       ) : (
         <SignUpModal
+          lang={lang}
           onConfirm={() => setOpenSignUpModal(false)}
           open={openSignUpModal}
           onClose={hideModals}

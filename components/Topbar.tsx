@@ -5,10 +5,14 @@ import Link from 'next/link'
 import { siteConfig } from 'config/site'
 import { NavItem } from 'types'
 import UserButton from './Navbar/UserButton'
-import { useLang } from 'hooks'
 
-export default function Topbar({ items }: { items: NavItem[] }) {
-  const lang = useLang()
+export default function Topbar({
+  lang,
+  items,
+}: {
+  lang: string
+  items: NavItem[]
+}) {
   return (
     <div className="absolute left-0 top-0 w-full">
       <div className="flex items-center justify-between px-6 py-4 text-white sm:m-auto">
@@ -30,7 +34,7 @@ export default function Topbar({ items }: { items: NavItem[] }) {
                 </Link>
               ))
             : null}
-          <UserButton />
+          <UserButton lang={lang} />
         </nav>
       </div>
     </div>

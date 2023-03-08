@@ -10,6 +10,7 @@ import Menu from './Menu'
 import clsx from 'clsx'
 
 export default function NavbarMobile({ params }) {
+  const lang = params.lang
   const router = useRouter()
 
   const [isOpen, setIsOpen] = useState(false)
@@ -40,7 +41,7 @@ export default function NavbarMobile({ params }) {
             'bg-opacity-20': isOpen,
           })}
         >
-          <Address />
+          <Address lang={lang} />
         </div>
         <div
           className={clsx('flex', 'flex-1', 'items-center', 'justify-end', {
@@ -51,7 +52,7 @@ export default function NavbarMobile({ params }) {
           <HamburgerMenu isOpen={isOpen} clicked={handleButtonClick} />
         </div>
         <div className="flex items-center">
-          <UserButton />
+          <UserButton lang={lang} />
         </div>
       </div>
       <Menu isOpen={isOpen} params={params} clicked={handleTabClick} />

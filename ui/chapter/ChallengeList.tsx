@@ -2,10 +2,9 @@
 
 import ChallengeListItem from './ChallengeListItem'
 import { lessons } from 'content'
-import { useLang, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 
-export default function ChallengeList({ challenges, chapterId }) {
-  const lang = useLang()
+export default function ChallengeList({ lang, challenges, chapterId }) {
   const t = useTranslations(lang)
   const challengesData = challenges.map((lessonId) => {
     const { title } = lessons[lessonId].metadata
@@ -20,6 +19,7 @@ export default function ChallengeList({ challenges, chapterId }) {
           {challengesData.map((challenge, index) => (
             <ChallengeListItem
               key={index + 1}
+              lang={lang}
               position={index + 1}
               title={challenge.title}
               chapterId={chapterId}

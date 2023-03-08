@@ -1,11 +1,12 @@
 'use client'
 
 import clsx from 'clsx'
-import { useLang, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 import React, { useEffect, useRef, useState } from 'react'
 import { clamp, isWithinRect, modifyRect } from 'utils'
 
 function Tooltip({
+  lang,
   children,
   className,
   id,
@@ -14,6 +15,7 @@ function Tooltip({
   offset,
   href,
 }: {
+  lang: string
   children: React.ReactNode
   className?: string
   id: string
@@ -27,7 +29,6 @@ function Tooltip({
   const arrowRef = useRef<HTMLDivElement>()
   const [visible, setVisible] = useState(false)
 
-  const lang = useLang()
   const t = useTranslations(lang)
 
   const handleMouseEnter = (e) => {

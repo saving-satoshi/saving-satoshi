@@ -7,6 +7,7 @@ import ArrowLeftIcon from 'public/assets/icons/arrow-left.svg'
 import UserButton from '../UserButton'
 
 export default function NavbarDesktop({ params }) {
+  const lang = params.lang
   const router = useRouter()
 
   return (
@@ -21,11 +22,11 @@ export default function NavbarDesktop({ params }) {
             <ArrowLeftIcon className="h-6 w-6 opacity-50 transition duration-100 ease-in-out group-hover:opacity-100" />
           </button>
 
-          <Address />
+          <Address lang={lang} />
         </div>
         <nav className="flex items-center">
           <TabGroup params={params} />
-          <UserButton />
+          <UserButton lang={lang} />
         </nav>
       </div>
     </div>

@@ -8,10 +8,9 @@ import WarningIcon from 'public/assets/icons/warning.svg'
 import Avatar from 'components/Avatar'
 import { Button, CopyButton } from 'shared'
 import { loginUser, logoutUser, clearUser } from 'lib/user'
-import { useUser, useTranslations, useLang } from 'hooks'
+import { useUser, useTranslations } from 'hooks'
 
-export default function LoginModal({ onClose, onLogin, open }) {
-  const lang = useLang()
+export default function LoginModal({ lang, onClose, onLogin, open }) {
   const t = useTranslations(lang)
   const [willShowProgressRestored, setWillShowProgressRestored] =
     useState(false)

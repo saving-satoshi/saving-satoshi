@@ -1,11 +1,11 @@
 'use client'
 
 import { siteConfig } from 'config/site'
-import { useLang, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 
-export default function Footer() {
-  const lang = useLang()
+export default function Footer({ lang }) {
   const t = useTranslations(lang)
+
   return (
     <div className="bg-back">
       <div className="flex flex-col items-center justify-center px-6 py-2 text-white sm:flex-row">

@@ -1,11 +1,10 @@
 'use client'
 
 import { Button } from 'shared'
-import { useLang, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 import Image from 'next/image'
 
-export default function Hero() {
-  const lang = useLang()
+export default function Hero({ lang }) {
   const t = useTranslations(lang)
 
   return (
