@@ -2,26 +2,38 @@
 
 import { Button } from 'shared'
 import { useLang, useTranslations } from 'hooks'
+import Image from 'next/image'
 
 export default function Hero() {
   const lang = useLang()
   const t = useTranslations(lang)
 
   return (
-    <div className="homepage-img -mt-20 flex grow items-end justify-center bg-cover bg-fixed bg-[-10em] md:bg-[0]">
-      <div className="flex w-screen flex-col justify-center bg-gradient-to-b from-back/0 to-back/100 p-10 font-cbrush text-white">
-        <h1 className="text-center text-6xl sm:text-7xl lg:text-8xl">
+    <div className="flex h-full grow items-end justify-center">
+      <Image
+        src={'/assets/images/main-image.png'}
+        alt={'Saving Satoshi'}
+        fill
+        quality={100}
+        loading="eager"
+        priority
+        className="-z-20 h-full w-full object-cover"
+      />
+      <div className="flex w-screen flex-col justify-center bg-gradient-to-b from-transparent via-[#00000040] to-[#00000080] px-5 pt-5 font-cbrush text-white md:p-10">
+        <h1 className="-mx-3 text-center text-6xl sm:text-7xl lg:text-8xl">
           {t('hero.title')}
         </h1>
-        <p className="text-center text-2xl sm:text-3xl lg:text-4xl">
+        <p className="px-8 pt-2 text-center text-2xl sm:text-3xl md:pt-5 lg:text-4xl">
           {t('hero.description')}
         </p>
-        <div className="flex grid grid-cols-1 justify-center pt-8  pb-2 sm:pb-10 md:grid-cols-2 md:space-x-5">
-          <div className="flex items-center justify-center sm:justify-end">
-            <Button href="/chapters">{t('hero.start_journey')}</Button>
+        <div className="grid grid-cols-1 justify-center pt-5 pb-2 sm:pb-8 md:grid-cols-2 md:space-x-5 md:pt-8">
+          <div className="flex items-center justify-center md:justify-end">
+            <Button classes={'text-xl w-full'} href="/chapters">
+              {t('hero.start_journey')}
+            </Button>
           </div>
-          <div className="flex justify-center pt-4 sm:justify-start md:pt-0">
-            <Button href="/about" style="outline">
+          <div className="flex justify-center pt-5 md:justify-start md:pt-0">
+            <Button classes={'text-xl w-full'} href="/about" style="outline">
               {t('hero.tell_more')}
             </Button>
           </div>

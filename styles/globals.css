@@ -25,16 +25,6 @@ html {
   scroll-behavior: smooth;
 }
 
-.homepage-img {
-  background-image: url('/assets/images/main-image.png');
-}
-
-.ch1-background {
-  background-image: url('/assets/images/chapter-2-cover.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .fix-grow-issue [data-nextjs-scroll-focus-boundary] {
   flex-grow: 1;
   display: flex;

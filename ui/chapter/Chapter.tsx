@@ -45,7 +45,7 @@ export default function Chapter({ children, metadata, lang }) {
     if (metadata.slug === 'chapter-1') {
       setDisplay(true)
     }
-  }, [status])
+  }, [status, metadata.slug])
 
   const context = {}
 
@@ -71,7 +71,7 @@ export default function Chapter({ children, metadata, lang }) {
             </h3>
 
             <div>
-              {display ? (
+              {chapter.metadata.lessons.length > 0 && display ? (
                 <ChapterTabs
                   items={tabData}
                   activeId={activeTab}
@@ -102,7 +102,9 @@ export default function Chapter({ children, metadata, lang }) {
                     <div className="flex pt-8 md:w-full">
                       <Button
                         href={`/chapters/${chapter.metadata.slug}`}
-                        disabled={!display}
+                        disabled={
+                          chapter.metadata.lessons.length === 0 || !display
+                        }
                         classes={'w-full'}
                       >
                         {(chapter.metadata.lessons.length > 0 &&
@@ -148,6 +150,9 @@ export default function Chapter({ children, metadata, lang }) {
             width={600}
             height={600}
             className="h-full w-full object-cover"
+            loading={
+              chapter.metadata.title === 'chapter_one.title' ? 'eager' : 'lazy'
+            }
           />
         </div>
       </div>
