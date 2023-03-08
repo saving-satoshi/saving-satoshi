@@ -4,8 +4,10 @@ import { ChapterIntro } from 'ui'
 
 export default function Transacting1({ lang }) {
   const t = useTranslations(lang)
+
   return (
     <ChapterIntro
+      lang={lang}
       title={t('transacting_one.title')}
       heading={t('transacting_one.heading')}
       next={'/chapters/chapter-1/transacting-2'}
