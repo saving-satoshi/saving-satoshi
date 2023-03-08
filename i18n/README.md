@@ -65,7 +65,11 @@ To add a new language:
 
 1. Look in the `/i18n/locales/` folder to determine if there is any existing translation.
 1. Create an [issue](https://github.com/saving-satoshi/saving-satoshi/issues/new/choose) detailing the language and scope you wish to add to on Github.
-1. [Add it](https://github.com/saving-satoshi/saving-satoshi/compare) on Github.
+1. Create a locale folder in /i18n/locales in your own repo.
+1. Create the same two files that the other locales also have (index.ts and translation.ts ) and copy over the contents.
+1. Add the new locale to /i18n/config.ts.
+1. Open up /i18n/locales/<your-locale>/translations.ts and add start translating.
+1. [Submit a pull request](https://github.com/saving-satoshi/saving-satoshi/compare) on Github.
 1. Invite some review and get it merged!
 
 ## Translators
