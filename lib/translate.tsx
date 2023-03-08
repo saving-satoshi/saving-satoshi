@@ -66,7 +66,7 @@ export function t(key: string, lang: string) {
 
   if (!translation) {
     // If the translation is unavailable in the locale we just return the key.
-    return key
+    return get(TRANSLATIONS, `en.${key}`)
   }
 
   if (
