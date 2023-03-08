@@ -9,7 +9,7 @@ const CONTRIBUTORS = [
   { username: 'adamcjonas', url: 'https://twitter.com/adamcjonas' },
   { username: 'afterburn', url: 'https://github.com/afterburn' },
   { username: 'benalleng', url: 'https://github.com/benalleng' },
-  { username: 'ecurrencyholder', url: 'https://github.com/ecurrencyholder' },
+  { username: 'ecurrencyhodler', url: 'https://twitter.com/ecurrencyhodler' },
   { username: 'gbks', url: 'https://twitter.com/gbks' },
   { username: 'satsie', url: 'https://twitter.com/satsie' },
   { username: 'shaavan', url: 'https://github.com/shaavan' },
