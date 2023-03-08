@@ -1,3 +1,4 @@
+import url from 'lib/url'
 import { ChapterEnd } from 'ui'
 
 export default function Done({ lang }) {
@@ -8,7 +9,7 @@ export default function Done({ lang }) {
       checkpoint={{
         chapter: 'chapter-2',
         lesson: null,
-        next: '/chapters/chapter-2',
+        next: url('chapters/chapter-2', lang),
       }}
     />
   )

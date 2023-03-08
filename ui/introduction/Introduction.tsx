@@ -6,6 +6,7 @@ import { chapters } from 'content'
 import { introductions } from 'content'
 import { redirect, usePathname } from 'next/navigation'
 import { useTranslations } from 'hooks'
+import url from 'lib/url'
 
 export default function Introduction({ children, lang }) {
   const t = useTranslations(lang)
@@ -13,7 +14,7 @@ export default function Introduction({ children, lang }) {
   const chapter = chapters[chapterId]
 
   if (!chapter) {
-    return redirect('/chapters')
+    return redirect(url('/chapters', lang))
   }
 
   const intro = introductions[chapter.metadata.intro]
@@ -45,7 +46,10 @@ export default function Introduction({ children, lang }) {
             <div>
               {chapter.metadata.lessons.length > 0 ? (
                 <Button
-                  href={`/chapters/${chapterId}/${chapter.metadata.lessons[0]}`}
+                  href={url(
+                    `/chapters/${chapterId}/${chapter.metadata.lessons[0]}`,
+                    lang
+                  )}
                   classes="w-full md:w-auto"
                 >
                   Start

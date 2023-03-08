@@ -1,5 +1,6 @@
 'use client'
 import { useTranslations } from 'hooks'
+import url from 'lib/url'
 import { LessonInfo, CodeExample, Text, Title, TerminalChallenge } from 'ui'
 
 export default function Transacting3({ lang }) {
@@ -13,7 +14,7 @@ export default function Transacting3({ lang }) {
         chapter: 'chapter-1',
         challenge: 'done',
       }}
-      next="/chapters/chapter-1/done"
+      next={url('/chapters/chapter-1/done', lang)}
       successMessage={t('transacting_three.terminal_challenge_success')}
       customLines={t('transacting_three.terminal_challenge_lines')}
       commonError={{

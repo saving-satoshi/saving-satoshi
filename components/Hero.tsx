@@ -3,6 +3,7 @@
 import { Button } from 'shared'
 import { useTranslations } from 'hooks'
 import Image from 'next/image'
+import url from 'lib/url'
 
 export default function Hero({ lang }) {
   const t = useTranslations(lang)
@@ -27,7 +28,7 @@ export default function Hero({ lang }) {
         </p>
         <div className="grid grid-cols-1 justify-center pt-5 pb-2 sm:pb-8 md:grid-cols-2 md:space-x-5 md:pt-8">
           <div className="flex items-center justify-center md:justify-end">
-            <Button classes={'text-xl w-full'} href="/chapters">
+            <Button classes={'text-xl w-full'} href={url('/chapters', lang)}>
               {t('hero.start_journey')}
             </Button>
           </div>

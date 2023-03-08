@@ -9,6 +9,7 @@ import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
 import { useStatus, useTranslations } from 'hooks'
+import url from 'lib/url'
 
 export default function Tab({
   lang,
@@ -53,7 +54,7 @@ export default function Tab({
       }
     >
       <Link
-        href={`/chapters/${slug}/${challenge.lessonId}`}
+        href={url(`/chapters/${slug}/${challenge.lessonId}`, lang)}
         title={t(challenge.title)}
         className={clsx(
           'relative flex h-full items-center justify-center border-l border-white/25 px-7 text-center text-lg transition duration-100 ease-in-out',

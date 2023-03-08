@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'hooks'
+import url from 'lib/url'
 import { Button, LessonInfo, CodeExample, Text, Title } from 'ui'
 import { InputChallenge } from 'ui'
 
@@ -10,7 +11,7 @@ export default function Transacting2({ lang }) {
   return (
     <InputChallenge
       answer={'6a1c5361746f7368693433335061726b53744368696e6f43413933323433'}
-      next={'/chapters/chapter-1/transacting-3'}
+      next={url('/chapters/chapter-1/transacting-3', lang)}
       label={t('transacting_two.input_challenge_label')}
       pattern={/[a-z0-9]+/gi}
       hints

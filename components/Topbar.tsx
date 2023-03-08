@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { siteConfig } from 'config/site'
 import { NavItem } from 'types'
 import UserButton from './Navbar/UserButton'
+import url from 'lib/url'
 
 export default function Topbar({
   lang,
@@ -17,7 +18,7 @@ export default function Topbar({
     <div className="absolute left-0 top-0 w-full">
       <div className="flex items-center justify-between px-6 py-4 text-white sm:m-auto">
         <Link
-          href={`/${lang}`}
+          href={url('/', lang)}
           className="transition duration-150 ease-in-out hover:opacity-75"
         >
           <h1 className="text-xl sm:text-3xl">{siteConfig.name}</h1>

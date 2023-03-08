@@ -3,6 +3,7 @@ import Footer from 'components/Footer'
 import { Button } from 'shared'
 
 import { sectionsConfig } from 'config/sections'
+import url from 'lib/url'
 
 export default function About({ params }) {
   const lang = params.lang
@@ -125,7 +126,7 @@ export default function About({ params }) {
           <p className="pt-4 pb-8 text-center font-nunito text-xl">
             Now be quick, Satoshi needs you.
           </p>
-          <Button href="/chapters">Start your journey</Button>
+          <Button href={url('/chapters', lang)}>Start your journey</Button>
         </div>
       </div>
 

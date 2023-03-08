@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'hooks'
+import url from 'lib/url'
 import { CodeExample, LessonInfo, Title, Text, TerminalChallenge } from 'ui'
 
 export default function Genesis2({ lang }) {
@@ -17,7 +18,7 @@ export default function Genesis2({ lang }) {
         chapter: 'chapter-1',
         challenge: 'transacting-1',
       }}
-      next={'/chapters/chapter-1/transacting-1'}
+      next={url('/chapters/chapter-1/transacting-1', lang)}
       successMessage={t('genesis_two.success')}
       customLines={
         "Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'"

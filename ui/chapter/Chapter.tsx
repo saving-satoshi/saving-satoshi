@@ -13,6 +13,7 @@ import { chapters } from 'content'
 
 import { ChapterContextType } from 'types'
 import { useTranslations } from 'hooks'
+import url from 'lib/url'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -101,7 +102,7 @@ export default function Chapter({ children, metadata, lang }) {
                       (chapter.metadata.lessons.length === 0 && null)}
                     <div className="flex pt-8 md:w-full">
                       <Button
-                        href={`/chapters/${chapter.metadata.slug}`}
+                        href={url(`/chapters/${chapter.metadata.slug}`, lang)}
                         disabled={
                           chapter.metadata.lessons.length === 0 || !display
                         }

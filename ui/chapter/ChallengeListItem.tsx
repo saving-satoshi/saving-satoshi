@@ -5,6 +5,7 @@ import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
 import { useStatus, useTranslations } from 'hooks'
+import url from 'lib/url'
 
 export default function ChallengeItem({
   lang,
@@ -16,7 +17,7 @@ export default function ChallengeItem({
   const t = useTranslations(lang)
 
   const status = useStatus(chapterId, lessonId)
-  const href = `/chapters/${chapterId}/${lessonId}`
+  const href = url(`/chapters/${chapterId}/${lessonId}`, lang)
   const ComponentType = status && status.unlocked ? Link : 'p'
 
   return (

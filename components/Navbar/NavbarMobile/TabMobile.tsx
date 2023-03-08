@@ -8,6 +8,7 @@ import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
 import { useStatus, useTranslations } from 'hooks'
+import url from 'lib/url'
 
 export default function TabMobile({
   index,
@@ -39,7 +40,7 @@ export default function TabMobile({
 
   return (
     <Link
-      href={`/chapters/${slug}/${challenge.lessonId}`}
+      href={url(`/chapters/${slug}/${challenge.lessonId}`, lang)}
       title={t(challenge.title)}
       onClick={() => clicked()}
       className={clsx(

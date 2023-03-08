@@ -1,5 +1,6 @@
 'use client'
 import { useTranslations } from 'hooks'
+import url from 'lib/url'
 import { ChapterIntro } from 'ui'
 
 export default function Transacting1({ lang }) {
@@ -10,7 +11,7 @@ export default function Transacting1({ lang }) {
       lang={lang}
       title={t('transacting_one.title')}
       heading={t('transacting_one.heading')}
-      next={'/chapters/chapter-1/transacting-2'}
+      next={url('/chapters/chapter-1/transacting-2', lang)}
     >
       <p className="pt-2 text-lg">{t('transacting_one.paragraph_one')}</p>
       <p className="pt-2 text-lg">{t('transacting_one.paragraph_two')}</p>
