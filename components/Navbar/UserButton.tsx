@@ -19,7 +19,7 @@ export default function UserButton() {
 
     return isLoggedIn ? (
       <button
-        onClick={() => setOpenSignInModal(true) }
+        onClick={() => setOpenSignInModal(true)}
         aria-label="profile"
         className="text-grey-300 h-10 w-10 cursor-pointer"
       >
@@ -27,7 +27,7 @@ export default function UserButton() {
       </button>
     ) : (
       <button
-        onClick={() => toggleModal(true) }
+        onClick={() => toggleModal(true)}
         aria-label="profile"
         className="text-grey-300 h-10 w-10 cursor-pointer"
       >
