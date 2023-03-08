@@ -34,7 +34,7 @@ export default async function ChaptersPage({ params }) {
         </section>
       </div>
 
-      <Footer />
+      <Footer className="bg-back" />
     </div>
   )
 }

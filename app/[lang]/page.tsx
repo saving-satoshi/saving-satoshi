@@ -9,8 +9,10 @@ export default function Home() {
       <div className="bg-gradient-to-b from-[#00000060] via-[#00000020] to-transparent pb-28">
         <Topbar items={sectionsConfig.mainNav} />
       </div>
+
       <Hero />
-      <Footer />
+
+      <Footer className="bg-back" />
     </div>
   )
 }
