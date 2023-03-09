@@ -11,6 +11,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        overlayColor:'#01010180',
         back: ({ opacityVariable, opacityValue }) => {
           if (opacityValue !== undefined) {
             return `rgba(var(--back), ${opacityValue})`

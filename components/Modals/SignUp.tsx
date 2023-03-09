@@ -42,6 +42,7 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
   return (
     <Modal
       isOpen={open}
+      overlayClassName="fixed inset-0 bg-overlayColor"
       className="fixed inset-0 top-1/2 left-1/2 h-full w-screen -translate-x-1/2 -translate-y-1/2 transform overflow-y-auto bg-back p-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:w-[550px] sm:rounded-lg sm:pt-5"
       contentLabel="Sign up Modal"
     >
