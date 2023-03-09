@@ -34,13 +34,13 @@ export default function Introduction({ children, lang }) {
         <div className="flex shrink basis-1/2">
           <div className="flex flex-col gap-10 px-[15px] py-10 lg:px-10">
             <div className="intro text-white">
-              <h1 className="font-cbrush text-5xl">
+              <h1 className="font-cbrush text-3xl md:text-5xl">
                 {t(intro.metadata.title)}
               </h1>
-              <h2 className="pt-3 font-nunito text-xl font-black">
+              <h2 className="pt-3 font-nunito text-lg md:text-xl font-bold">
                 {t(intro.metadata.subtitle)}
               </h2>
-              <div className="pt-3 font-nunito text-2xl">{children}</div>
+              <div className="pt-3 font-nunito text-lg md:text-xl">{children}</div>
             </div>
             <div>
               {chapter.metadata.lessons.length > 0 ? (
@@ -48,11 +48,11 @@ export default function Introduction({ children, lang }) {
                   href={`/chapters/${chapterId}/${chapter.metadata.lessons[0]}`}
                   classes="w-full md:w-auto"
                 >
-                  Start
+                  {t('shared.next')}
                 </Button>
               ) : (
                 <Button classes="w-full md:w-auto" disabled>
-                  Coming soon
+                  {t('shared.coming_soon')}
                 </Button>
               )}
             </div>

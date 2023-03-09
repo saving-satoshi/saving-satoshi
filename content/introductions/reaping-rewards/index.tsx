@@ -6,8 +6,9 @@ export default function ReapingRewards({ lang }) {
 
   return (
     <Introduction lang={lang}>
-      <Text className="pt-2">{t('reaping_rewards.paragraph_one')}</Text>
-      <Text className="pt-2">{t('reaping_rewards.paragraph_two')}</Text>
+      <Text className="">{t('reaping_rewards.paragraph_one')}</Text>
+      <Text className="mt-3">{t('reaping_rewards.paragraph_two')}</Text>
+      <Text className="mt-3">{t('reaping_rewards.paragraph_three')}</Text>
     </Introduction>
   )
 }
@@ -15,5 +16,5 @@ export default function ReapingRewards({ lang }) {
 export const metadata = {
   title: 'reaping_rewards.title',
   subtitle: `reaping_rewards.subtitle`,
-  image: '/assets/images/chapter-1-cover.jpg',
+  image: '/assets/images/chapter-1-intro-1.jpg',
 }

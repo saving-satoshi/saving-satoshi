@@ -141,7 +141,6 @@ function Tooltip({
 
       <span
         onMouseEnter={handleMouseEnter}
-        className="font-bold"
         ref={targetRef}
         aria-describedby={id}
       >
