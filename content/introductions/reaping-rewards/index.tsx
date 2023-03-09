@@ -6,8 +6,14 @@ export default function ReapingRewards({ lang }) {
 
   return (
     <Introduction lang={lang}>
-      <Text className="pt-2">{t('reaping_rewards.paragraph_one')}</Text>
-      <Text className="pt-2">{t('reaping_rewards.paragraph_two')}</Text>
+      <h1 className="font-cbrush text-5xl">{t('reaping_rewards.title')}</h1>
+      <h2 className="pt-3 font-nunito text-xl font-black">
+        {t('reaping_rewards.subtitle')}
+      </h2>
+      <div className="pt-3 font-nunito text-2xl">
+        <Text className="pt-2">{t('reaping_rewards.paragraph_one')}</Text>
+        <Text className="pt-2">{t('reaping_rewards.paragraph_two')}</Text>
+      </div>
     </Introduction>
   )
 }
