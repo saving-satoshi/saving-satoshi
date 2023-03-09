@@ -8,6 +8,54 @@ export const translations = {
     start_chapter: 'Start chapter',
   },
 
+  about: {
+    title: 'About',
+    mobile_title: 'What it’s about',
+    subtitle:
+      'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square.',
+    intro:
+      'The world awaits the last block. Then, suddenly, the network grinds to a halt.<br><br>You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat). You open the holocat by booping its nose curious to hear what it has to say...',
+
+    project: {
+      title: 'Built with fun',
+      paragraph_one:
+        'Saving Satoshi is a light-hearted first point of contact for developers who are curious about bitcoin development. Saving Satoshi has a mix of technical text and code-based challenges, but the challenges should be doable for anyone with basic coding skills. The project is free and open source and all the art has been generated using text-to-image (aka AI) tools like Midjourney.',
+      paragraph_two:
+        'This version of the project is currently in a demo state with a goal of getting feedback on the overall experience and providing a proof of concept for early users. In light of this, user progress is stored locally in the browser and the story along with images are not finalized.',
+      paragraph_three:
+        'Based on the feedback we receive, we will then work towards an official release (we call it V1) that includes 2-3 full lesson chapters, accounts, and more. 10 chapters are planned out and will be released over time as they are completed. Additional features may include collaborative learning, badges, extra-challenging side quests, and more.',
+    },
+
+    contributing: {
+      title: 'How to contribute',
+      paragraph_one:
+        'We’re an open-source project, so all doors are open for you to help shape it.',
+
+      feedback: {
+        title: 'Feedback',
+        paragraph_one:
+          'A really great way to contribute is to go through Chapter 1 and give us any feedback on the overall experience you might have using this form.',
+      },
+
+      contribute: {
+        title: 'Contribute',
+        paragraph_one:
+          'All suggestions are welcome, including content changes, game mechanics – really anything. We are also always looking for help reviewing and <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">QA-ing code changes</a>. For code improvements, you can directly open an issue or submit a pull request on GitHub.',
+        paragraph_two:
+          'If you want to get involved with design, story, or anything else, join us in the #saving-satoshi channel in the <a href="https://bitcoin.design/contribute/" target="_blank" rel="noreferrer">Bitcoin Design slack</a>. Mention how you’d like to contribute and we’ll help point you in the right direction.',
+      },
+    },
+
+    contributors: {
+      title: 'Enjoy!',
+      contributions_by: 'Contributions by',
+      many_more:
+        'and <a href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" target="_blank" rel="noreferrer">many more</a>.',
+    },
+
+    satoshi_needs_you: 'Now be quick, Satoshi needs you.',
+  },
+
   chapter_one: {
     title: 'Secrets in plain sight',
     paragraph_one:
