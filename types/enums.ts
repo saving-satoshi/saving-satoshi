@@ -12,4 +12,5 @@ export enum InjectableComponentType {
   A,
   Link,
   Tooltip,
+  LineBreak,
 }

@@ -15,5 +15,5 @@ export default function ReapingRewards({ lang }) {
 export const metadata = {
   title: 'reaping_rewards.title',
   subtitle: `reaping_rewards.subtitle`,
-  image: 'https://saving-satoshi.s3.amazonaws.com/ch2.png',
+  image: '/assets/images/chapter-1-cover.jpg',
 }

@@ -38,6 +38,7 @@ export default function Tab({
 
   return (
     <Tooltip
+      id={`navbar-tab-tooltip-${index + 1}`}
       position="bottom"
       offset={0}
       content={

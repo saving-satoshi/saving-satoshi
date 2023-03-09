@@ -3,12 +3,13 @@
 import { siteConfig } from 'config/site'
 import { useLang, useTranslations } from 'hooks'
 
-export default function Footer() {
+export default function Footer({ className }: { className?: string }) {
   const lang = useLang()
   const t = useTranslations(lang)
+
   return (
-    <div className="h-auto w-full">
-      <div className="flex flex-col items-center justify-center px-6 py-4 text-white sm:flex-row">
+    <div className={className}>
+      <div className="flex flex-col items-center justify-center px-6 py-2 text-white sm:flex-row">
         <p className="p-1">{t('footer.paragraph_one')}</p>
         <a
           href={siteConfig.links.github}

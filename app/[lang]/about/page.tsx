@@ -3,131 +3,126 @@ import Footer from 'components/Footer'
 import { Button } from 'shared'
 
 import { sectionsConfig } from 'config/sections'
+import { useTranslations } from 'hooks'
 
-export default function About() {
+const CONTRIBUTORS = [
+  { username: 'adamcjonas', url: 'https://twitter.com/adamcjonas' },
+  { username: 'afterburn', url: 'https://github.com/afterburn' },
+  { username: 'benalleng', url: 'https://github.com/benalleng' },
+  { username: 'ecurrencyhodler', url: 'https://twitter.com/ecurrencyhodler' },
+  { username: 'gbks', url: 'https://twitter.com/gbks' },
+  { username: 'satsie', url: 'https://twitter.com/satsie' },
+  { username: 'shaavan', url: 'https://github.com/shaavan' },
+  { username: 'vinayaksh42', url: 'https://github.com/vinayaksh42' },
+]
+
+function Divider() {
+  return <div className="my-12 h-[1px] w-full bg-white bg-opacity-25" />
+}
+
+export default function About({ params }) {
+  const t = useTranslations(params.lang)
+
   return (
-    <div className="w-full">
+    <div className="w-full bg-[#2A3B61]">
       <Topbar items={sectionsConfig.mainNav} />
 
       <div className="m-auto px-6 lg:w-9/12 2xl:w-1/2">
         <div className="flex flex-col justify-center text-white">
-          <h1 className="px-2.5 pt-20 text-center text-6xl sm:text-7xl lg:text-8xl">
-            About
+          <h1 className="hidden px-2.5 pt-20 text-center text-7xl sm:block lg:text-8xl">
+            {t('about.title')}
           </h1>
-          <p className="mt-4 text-center text-3xl">
-            The year is 2139. The very last bitcoin is slated to be mined in two
-            weeks. For months, a final countdown has been taking place in
-            Satoshi Square for the last block when there will officially be no
-            more bitcoin issued.
+
+          <h1 className="block px-2.5 pt-20 text-center text-5xl sm:hidden lg:text-8xl">
+            {t('about.mobile_title')}
+          </h1>
+
+          <p className="mt-4 text-center text-2xl sm:text-4xl">
+            {t('about.subtitle')}
+          </p>
+          <p className="mt-8 font-nunito text-xl">{t('about.intro')}</p>
+
+          <Divider />
+
+          <h3 className="text-4xl sm:text-5xl">{t('about.project.title')}</h3>
+
+          <div className="mt-4 flex flex-col gap-8 font-nunito text-xl">
+            <p>{t('about.project.paragraph_one')}</p>
+            <p>{t('about.project.paragraph_two')}</p>
+            <p>{t('about.project.paragraph_three')}</p>
+          </div>
+
+          <Divider />
+
+          <h3 className="text-4xl sm:text-5xl">
+            {t('about.contributing.title')}
+          </h3>
+
+          <p className="mt-4 font-nunito text-xl">
+            {t('about.contributing.paragraph_one')}
+          </p>
+
+          <h4 className="mt-8 font-nunito text-xl font-semibold">
+            {t('about.contributing.feedback.title')}
+          </h4>
+
+          <p className="font-nunito text-xl">
+            {t('about.contributing.feedback.paragraph_one')}
+          </p>
+
+          <h4 className="mt-8 font-nunito text-xl font-semibold">
+            {t('about.contributing.contribute.title')}
+          </h4>
+
+          <p className="font-nunito text-xl">
+            {t('about.contributing.contribute.paragraph_one')}
           </p>
 
           <p className="mt-8 font-nunito text-xl">
-            And then suddenly, the network comes to a crawl. Instead of the
-            normal ten-minute block interval, blocks are coming in just a few
-            times a day, if not longer. Your mom’s bitcoin node stops syncing.
-            The media starts reporting on the situation. It’s everywhere on
-            social media.
-            <br />
-            <br />
-            The price of bitcoin is falling. There is a knock at your door, and
-            when you open it, a yellowed, age-weathered envelope has been left
-            for you. There’s no name or return address. What could be inside?
+            {t('about.contributing.contribute.paragraph_two')}
           </p>
 
-          <h3 className="mt-8 text-4xl">Built with love</h3>
-          <p className="mt-2 font-nunito text-xl">
-            Bitcoin is serious, but this game is designed to be fun. Saving
-            Satoshi is a light-hearted first point of contact for developers of
-            all ages curious about bitcoin development. Saving Satoshi has a mix
-            of technical text and code-based challenges, but the challenges
-            should be doable for anyone with basic coding skills.
-          </p>
+          <Divider />
 
-          <h3 className="mt-8 text-4xl">How to contribute</h3>
-          <p className="mt-2 font-nunito text-xl">
-            Open an issue or a PR on{' '}
-            <a
-              className="underline"
-              target="_blank"
-              rel="noreferrer nofollow"
-              href="https://github.com/saving-satoshi/saving-satoshi"
-            >
-              GitHub
-            </a>
-            . All suggestions are welcome, including content changes, game
-            mechanics – really anything.
-          </p>
+          <h3 className="text-4xl sm:text-5xl">
+            {t('about.contributors.title')}
+          </h3>
 
-          <h3 className="mt-8 text-4xl">Enjoy!</h3>
-          <p className="mt-2 font-nunito text-xl">
-            Contributions by{' '}
-            <a
-              className="underline"
-              target="_blank"
-              rel="noreferrer nofollow"
-              href="https://twitter.com/GBKS"
-            >
-              @gbks
-            </a>
-            ,{' '}
-            <a
-              className="underline"
-              target="_blank"
-              rel="noreferrer nofollow"
-              href="https://twitter.com/adamcjonas"
-            >
-              @adamcjonas
-            </a>
-            ,{' '}
-            <a
-              className="underline"
-              target="_blank"
-              rel="noreferrer nofollow"
-              href="https://twitter.com/satsie"
-            >
-              @satsie
-            </a>
-            ,{' '}
-            <a
-              className="underline"
-              target="_blank"
-              rel="noreferrer nofollow"
-              href="https://github.com/ggwilin"
-            >
-              @ggwilin
-            </a>
-            ,{' '}
-            <a
-              className="underline"
-              target="_blank"
-              rel="noreferrer nofollow"
-              href="https://twitter.com/netrebelking"
-            >
-              @netrebelking
-            </a>
-            ,{' '}
-            <a
-              className="underline"
-              target="_blank"
-              rel="noreferrer nofollow"
-              href="https://github.com/aureleoules"
-            >
-              @aureleoules
-            </a>
-            , and many more!
-          </p>
+          <div className="mt-4 font-nunito text-xl font-semibold">
+            <span>{t('about.contributors.contributions_by')} </span>
+            <span>
+              {CONTRIBUTORS.map((contributor, i) => {
+                return (
+                  <>
+                    <a
+                      key={i}
+                      className="underline"
+                      target="_blank"
+                      rel="noreferrer nofollow"
+                      href={contributor.url}
+                    >
+                      @{contributor.username}
+                    </a>
+                    ,{' '}
+                  </>
+                )
+              })}
+            </span>
+            <span>{t('about.contributors.many_more')}</span>
+          </div>
         </div>
 
-        <hr className="border-1 mt-12 border-white/25" />
+        <Divider />
+
         <div className="mt-12 flex-col justify-center px-6 pb-12 text-center text-white">
           <p className="pt-4 pb-8 text-center font-nunito text-xl">
-            Now be quick, Satoshi needs you.
+            {t('about.satoshi_needs_you')}
           </p>
-          <Button href="/chapters">Start your journey</Button>
+          <Button href="/chapters">{t('hero.start_journey')}</Button>
         </div>
       </div>
 
-      <Footer />
+      <Footer className="bg-[#2A3B61]" />
     </div>
   )
 }
