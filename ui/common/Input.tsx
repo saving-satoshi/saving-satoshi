@@ -116,7 +116,11 @@ export default function Input({
           correctAnswer ? 'overlay-complete' : 'overlay-incomplete'
         } pointer-events-none h-full w-full break-all text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] md:text-center md:text-[30px] md:tracking-[5px]`}
       >
-        {hints ? opCodeOverlay(opcode) : <span>{opcode}</span>}
+        {hints ? (
+          opCodeOverlay(opcode)
+        ) : (
+          <span className="break-keep">{opcode}</span>
+        )}
       </p>
       <form className="relative">
         <textarea

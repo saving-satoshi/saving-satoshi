@@ -18,7 +18,7 @@ export default function LessonPrompt({
   onChange: Function
   pattern?: RegExp
   hints?: boolean
-  opcode?: ReactElement
+  opcode?: string
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code

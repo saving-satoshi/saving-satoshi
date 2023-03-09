@@ -36,7 +36,7 @@ export default function InputChallenge({
   label: string
   pattern?: RegExp
   hints?: boolean
-  opcode?: ReactElement
+  opcode?: string
 }) {
   const [userInput, setUserInput] = useState('')
 
