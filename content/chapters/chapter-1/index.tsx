@@ -19,6 +19,7 @@ export const metadata = {
   image: '/assets/images/chapter-1-cover.jpg',
   lessons: [
     'genesis-1',
+     'success1-page'
     'genesis-2',
     'transacting-1',
     'transacting-2',
