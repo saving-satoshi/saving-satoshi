@@ -42,11 +42,11 @@ export default function IntroductionLayout({
             <div>
               {nextStatus ? (
                 <Button href={next} classes="w-full md:w-auto">
-                  Continue
+                  {t('shared.next')}
                 </Button>
               ) : (
                 <Button classes="w-full md:w-auto" disabled>
-                  Coming soon
+                  {t('shared.coming_soon')}
                 </Button>
               )}
             </div>
