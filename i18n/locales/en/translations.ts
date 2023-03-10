@@ -12,8 +12,8 @@ export const translations = {
     title: 'Secrets in plain sight',
     paragraph_one:
       'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. The world awaits the last block. Then, suddenly, the network grinds to a halt.',
-      paragraph_two: null,
-      paragraph_three: null
+      paragraph_two: ' ',
+      paragraph_three: ' '
   },
 
   chapter_two: {

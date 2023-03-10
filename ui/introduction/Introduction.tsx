@@ -33,15 +33,7 @@ export default function Introduction({ children, lang }) {
         </div>
         <div className="flex shrink basis-1/2">
           <div className="flex flex-col gap-10 px-[15px] py-10 lg:px-10">
-            <div className="intro text-white">
-              <h1 className="font-cbrush text-3xl md:text-5xl">
-                {t(intro.metadata.title)}
-              </h1>
-              <h2 className="pt-3 font-nunito text-lg md:text-xl font-bold">
-                {t(intro.metadata.subtitle)}
-              </h2>
-              <div className="pt-3 font-nunito text-lg md:text-xl">{children}</div>
-            </div>
+            <div className="intro text-white">{children}</div>
             <div>
               {chapter.metadata.lessons.length > 0 ? (
                 <Button

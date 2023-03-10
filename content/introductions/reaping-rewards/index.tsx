@@ -6,9 +6,9 @@ export default function ReapingRewards({ lang }) {
 
   return (
     <Introduction lang={lang}>
-      <Text>{t('reaping_rewards.paragraph_one')}</Text>
-      <Text className="mt-3">{t('reaping_rewards.paragraph_two')}</Text>
-      <Text className="mt-3">{t('reaping_rewards.paragraph_three')}</Text>
+      <Text className="text-lg md:text-xl">{t('reaping_rewards.paragraph_one')}</Text>
+      <Text className="text-lg md:text-xl mt-4">{t('reaping_rewards.paragraph_two')}</Text>
+      <Text className="text-lg md:text-xl mt-4">{t('reaping_rewards.paragraph_three')}</Text>
     </Introduction>
   )
 }
