@@ -26,6 +26,7 @@ export const i18n = {
   locales: ['en', 'nl', 'ko'],
 } as const
 ```
+
 Then you may begin adding your own translations to test as you go.
 
 Source File:
@@ -51,11 +52,11 @@ Translation file:
 // i18n/locales/en/translation.ts
 
 export const translations = {
-    hello_world: {
-        ko: {
-            heading: "안녕 세상!"
-        }
-    }
+  hello_world: {
+    ko: {
+      heading: '안녕 세상!',
+    },
+  },
 }
 ```
 

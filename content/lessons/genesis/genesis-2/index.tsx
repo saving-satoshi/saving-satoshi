@@ -17,15 +17,20 @@ export default function Genesis2({ lang }) {
         chapter: 'chapter-1',
         challenge: 'transacting-1',
       }}
-      next={'/chapters/chapter-1/transacting-1'}
+      next="/chapters/chapter-1/transacting-1"
       successMessage={t('genesis_two.success')}
       customLines={t('genesis_two.terminal_challenge_lines')}
     >
       <LessonInfo>
         <Title>{t('genesis_two.heading')}</Title>
 
-        <Text className="text-lg md:text-xl mt-2">{t('genesis_two.paragraph_one')}</Text>
-        <Text className="text-lg md:text-xl mt-2">{t('genesis_two.paragraph_two')}</Text>
+        <Text className="mt-2 text-lg md:text-xl">
+          {t('genesis_two.paragraph_one')}
+        </Text>
+
+        <Text className="mt-2 text-lg md:text-xl">
+          {t('genesis_two.paragraph_two')}
+        </Text>
 
         <CodeExample
           className="mt-4"

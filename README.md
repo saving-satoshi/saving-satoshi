@@ -16,7 +16,6 @@ Now be quick, Satoshi needs you!
 
 To contribute to the project, use issues and discussions in this GitHub repo (`saving-satoshi/saving-satoshi`), or join [our Slack channel](https://bitcoindesign.slack.com/archives/C0442BRGJ5U) in the [Bitcoin Design Community](https://bitcoin.design/).
 
-
 Generally, we have four tracks in this project:
 
 - Story
