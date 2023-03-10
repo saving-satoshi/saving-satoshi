@@ -285,7 +285,7 @@ export const translations = {
 
   demo_disclaimer: {
     title: 'This is a demo',
-    description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love your feedback.`,
+    description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">your feedback</Link>.`,
   },
   holocat: {
     title: 'holocat',
