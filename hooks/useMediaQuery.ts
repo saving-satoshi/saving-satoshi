@@ -7,7 +7,7 @@ interface UseMediaQueryParams {
 
 export const useMediaQuery = ({ width }: UseMediaQueryParams): boolean => {
   const [isWidthMet, setIsWidthMet] = useState<boolean>(
-    window.innerWidth <= width
+    typeof window !== 'undefined' && window.innerWidth <= width
   )
 
   useEffect(() => {

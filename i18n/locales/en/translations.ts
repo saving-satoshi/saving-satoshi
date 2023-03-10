@@ -5,15 +5,61 @@ export const translations = {
     chapter: 'Chapter',
     challenge: 'Challenge',
     coming_soon: 'Coming soon',
-    start_chapter: 'Start chapter',
+    start_chapter: 'Start chapter'
+  },
+
+  about: {
+    title: 'About',
+    mobile_title: 'What it’s about',
+    subtitle:
+      'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square.',
+    intro:
+      'The world awaits the last block. Then, suddenly, the network grinds to a halt.<br><br>You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat). You open the holocat by booping its nose curious to hear what it has to say...',
+
+    project: {
+      title: 'Built with fun',
+      paragraph_one:
+        'Saving Satoshi is a light-hearted first point of contact for developers who are curious about bitcoin development. Saving Satoshi has a mix of technical text and code-based challenges, but the challenges should be doable for anyone with basic coding skills. The project is free and open source and all the art has been generated using text-to-image (aka AI) tools like Midjourney.',
+      paragraph_two:
+        'This version of the project is currently in a demo state with a goal of getting feedback on the overall experience and providing a proof of concept for early users. In light of this, user progress is stored locally in the browser and the story along with images are not finalized.',
+      paragraph_three:
+        'Based on the feedback we receive, we will then work towards an official release (we call it V1) that includes 2-3 full lesson chapters, accounts, and more. 10 chapters are planned out and will be released over time as they are completed. Additional features may include collaborative learning, badges, extra-challenging side quests, and more.',
+    },
+
+    contributing: {
+      title: 'How to contribute',
+      paragraph_one:
+        'We’re an open-source project, so all doors are open for you to help shape it.',
+
+      feedback: {
+        title: 'Feedback',
+        paragraph_one:
+          'A really great way to contribute is to go through Chapter 1 and give us any feedback on the overall experience you might have using this form.',
+      },
+
+      contribute: {
+        title: 'Contribute',
+        paragraph_one:
+          'All suggestions are welcome, including content changes, game mechanics – really anything. We are also always looking for help reviewing and <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">QA-ing code changes</a>. For code improvements, you can directly open an issue or submit a pull request on GitHub.',
+        paragraph_two:
+          'If you want to get involved with design, story, or anything else, join us in the #saving-satoshi channel in the <a href="https://bitcoin.design/contribute/" target="_blank" rel="noreferrer">Bitcoin Design slack</a>. Mention how you’d like to contribute and we’ll help point you in the right direction.',
+      },
+    },
+
+    contributors: {
+      title: 'Enjoy!',
+      contributions_by: 'Contributions by',
+      many_more:
+        'and <a href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" target="_blank" rel="noreferrer">many more</a>.',
+    },
+
+    satoshi_needs_you: 'Now be quick, Satoshi needs you.',
   },
 
   chapter_one: {
     title: 'Secrets in plain sight',
     paragraph_one:
-      'The year is 2139. The very last bitcoin is slated to be mined in two weeks. For months, a final countdown has been taking place in Times Square for the last block when there will be officially no more bitcoin issued.',
-    paragraph_two: `And then suddenly, the network comes to a crawl. Instead of the normal ten-minute block interval, blocks are coming in just a few times a day, if not longer. Your mom's bitcoin node stops syncing. The media starts reporting on the situation. It's everywhere on social media.`,
-    paragraph_three: `The price of bitcoin is falling. There is a knock at your door, and when you open it, a yellowed, age-weathered envelope has been left for you. There's no name or return address. What could be inside?`,
+      'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. The world awaits the last block. Then, suddenly, the network grinds to a halt.'
   },
 
   chapter_two: {
@@ -31,7 +77,7 @@ export const translations = {
     paragraph_two:
       'As you settle at your desk, you take a deep breath and drift off toreplay the day’s events. Your hands keep themselves busy playing withthe mysterious envelope, as you wonder who sent it. Who still usesenvelopes anyways, it’s 2139 after all. Even more curious is that thereis a stamp on it, from 2008...could this be another hint?',
     paragraph_three:
-      'Suddenly, you realize that you never claimed the block rewards from yourcompetition with Amestris. Your bitcoin wallet is running low, so now’sa good time to top it up again.',
+      'Suddenly, you realize that you never claimed the block rewards from your competition with Amestris. Your bitcoin wallet is running low, so now is a good time to top it up again.',
   },
 
   chapter_four: {
@@ -67,71 +113,72 @@ export const translations = {
   },
 
   reaping_rewards: {
-    title: 'Of blocks and miners',
-    subtitle:
-      '"To understand the mystery and magic, you must start at the beginning…"',
-    paragraph_one: `Satoshi, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left you a hidden clue in the very first bitcoin transaction that was ever made.`,
-    paragraph_two: `Each block in the bitcoin blockchain contains a set of transactions. A nice way to view these blocks and the things they contain is by using a block explorer.`,
+    title: 'Illustration of a young man sitting at home having breakfast and looking at a TV',
+    paragraph_one: `Moments later, your Hover Screen activates.`,
+    paragraph_two: `—Deborah Chunk: “Thomas Vanderpool. As the CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
+    paragraph_three: `—Vanderpool: “Yes I do, Deborah. Like my daddy and his daddy before him. The Vanderpoole’s have been mining since Block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. We cannot survive on fees alone.”`,
+    start: 'Continue'
   },
 
   done: {
     title: 'You did it!!!',
     description:
-      'Amazing. You completed the first chapter and learned a lot about hashes and transactions. Are you ready for more?',
+      'Amazing. You completed the first chapter and learned a lot about bitcoin. Follow us at <Link href="https://twitter.com/savingsatoshi" className="underline">@savingsatoshi</Link> to know when we launch new chapters and challenges.',
   },
 
   genesis_one: {
     title: 'Genesis',
-    heading: 'Find block 0',
-    paragraph_one: `Let's find the very first block in the Bitcoin blockchain. Go to a <Tooltip id="genesis_one_paragraph_one" content="genesis_one.tooltip_block_explorer" className="underline">block explorer</Tooltip> and search for ’0’. This will take you to the block at height 0. As you can see, this block only contains one transaction.`,
-    paragraph_two: `Open up the transaction so you can take a closer look at the details. On the left is an input called 'Coinbase'. Inside that is a field called 'ScriptSig'. Find the <Tooltip id="genesis_one_paragraph_two" content="genesis_one.tooltip_hex" className="underline">HEX</Tooltip> representation and paste it below.`,
+    heading: 'Find the hidden message',
+    paragraph_one: 'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_one_paragraph_one" content="genesis_one.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+    paragraph_two: 'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_one_paragraph_two" content="genesis_one.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
+    paragraph_three: 'Copy that value and paste it below.',
     tooltip_block_explorer:
       'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
     tooltip_hex:
       'Short for hexadecimal, a numeral system that represents numbers using a base of 16.',
     view_block_0: 'View Block 0',
-    placeholder: 'Paste the ScriptSig HEX Representation',
+    placeholder: 'Paste the value you found here',
   },
 
   genesis_two: {
     title: 'Genesis',
-    heading: 'Let’s make sense of this',
+    heading: 'Let’s decode the message',
+    paragraph_one: 'The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.',
+    paragraph_two: 'Copy and paste the command below into the Terminal to the right and press “Enter”.',
+    terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'`,
     waiting_for_input: 'Waiting for you to write and run the script...',
-    success: `Interesting! The message references a news article on the same day Satoshi mined the genesis block. This gives us an important clue about Satoshi's motivation for creating Bitcoin. You can read more about it <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">here</Link>.`,
+    success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n It’s time to expand on what you just learned. Decode the clue we’ve left for you in the next transaction.`
   },
 
   transacting_one: {
     title: 'Transacting',
     heading: 'What’s in a transaction?',
-    paragraph_one:
-      'Bitcoin is censorship resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain.',
-    paragraph_two:
-      'Transactions have two parts: inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
-    paragraph_three:
-      'For the following transaction, identify the output of type OP_RETURN.',
+    paragraph_one: 'Transactions have two parts: inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
+    paragraph_two: 'For the following transaction, we’re going to identify the output of type OP_RETURN.',
   },
 
   transacting_two: {
     title: 'Transacting',
     heading: 'OP_RETURN',
-    paragraph_one:
-      'For the following transaction, identify the output of type OP_RETURN.',
-    link: 'View transaction',
+    paragraph_one: 'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
+    paragraph_two: '1. Click <Link href="https://blockstream.info/tx/ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d?expand" className="underline">here</Link> to look at a specific transaction.',
+    paragraph_three: '2. Open up the details and find the part that is of type “OP_RETURN”.',
+    paragraph_four: '3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSH_BYTES_28” part? These are called opcodes. We’re actually interested in what comes after them.',
+    paragraph_five: '4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_28” and paste it below. ',
     input_challenge_label: 'Enter the OP_RETURN type',
   },
 
   transacting_three: {
     title: 'Transacting',
     heading: 'Another secret message',
-    paragraph_one:
-      'Then, look for the hex representation of the ScriptPubKey field.',
-    paragraph_two:
-      'Once you’ve found it, decode the hidden message, just like we did in the previous exercise.',
-    paragraph_three: 'And remember, ’Bitcoin is for everyone’.',
+    paragraph_one: 'We’ve identified the part of the transaction output that holds the message.',
+    paragraph_two: 'All that’s left now is to decode it, just like we did in the previous exercise.',
+    paragraph_three: 'Need to look up $scriptPubKeyBytes again? Here you go.',
+    link: 'View transaction',
     terminal_challenge_success:
-      'That’s correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n There you’ll find an abandoned warehouse with all the tools you need to fight BitRey and bring equilibrium back to bitcoin.\n\n Your next challenge awaits you.',
+      'That’s correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n Your next challenge awaits you.',
     terminal_challenge_lines:
-      'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyHex is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge',
+      'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyBytes is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge',
     terminal_challenge_error:
       'Almost. Take another look to find the correct value',
   },
@@ -139,6 +186,7 @@ export const translations = {
   end: {
     save: 'Save my progress',
     next: 'Continue without saving',
+    feedback: 'Share your feedback',
   },
 
   challenge_list: {

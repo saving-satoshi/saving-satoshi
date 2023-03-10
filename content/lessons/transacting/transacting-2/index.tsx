@@ -19,23 +19,11 @@ export default function Transacting2({ lang }) {
       <LessonInfo>
         <Title>{t('transacting_two.heading')}</Title>
 
-        <Text className="text-lg">{t('transacting_two.paragraph_one')}</Text>
-
-        <CodeExample
-          code={
-            'ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d'
-          }
-          language={'string'}
-        />
-        <div className="flex">
-          <Button
-            href="https://blockstream.info/tx/ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d?expand"
-            external={true}
-            classes="mt-4 w-full md:auto"
-          >
-            {t('transacting_two.link')}
-          </Button>
-        </div>
+        <Text className="text-lg mt-2">{t('transacting_two.paragraph_one')}</Text>
+        <Text className="text-lg mt-2">{t('transacting_two.paragraph_two')}</Text>
+        <Text className="text-lg mt-2">{t('transacting_two.paragraph_three')}</Text>
+        <Text className="text-lg mt-2">{t('transacting_two.paragraph_four')}</Text>
+        <Text className="text-lg mt-2">{t('transacting_two.paragraph_five')}</Text>
       </LessonInfo>
     </InputChallenge>
   )
