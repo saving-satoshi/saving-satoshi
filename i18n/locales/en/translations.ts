@@ -70,8 +70,9 @@ export const translations = {
     title: 'Of blocks and miners',
     subtitle:
       '"To understand the mystery and magic, you must start at the beginning…"',
-    paragraph_one: `Satoshi, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left you a hidden clue in the very first bitcoin transaction that was ever made.`,
-    paragraph_two: `Each block in the bitcoin blockchain contains a set of transactions. A nice way to view these blocks and the things they contain is by using a block explorer.`,
+    paragraph_one: `Moments later, your Hover Screen activates.`,
+    paragraph_two: `—Deborah Chunk: “Thomas Vanderpool. As the CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
+    paragraph_three: `—Vanderpool: “Yes I do, Deborah. Like my daddy and his daddy before him. The Vanderpoole’s have been mining since Block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. We cannot survive on fees alone.”`,
   },
 
   done: {
@@ -205,5 +206,17 @@ export const translations = {
   demo_disclaimer: {
     title: 'This is a demo',
     description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love your feedback.`,
+  },
+  holocat: {
+    title: 'holocat',
+    paragraph_one:
+      'You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
+    paragraph_two:
+      '—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto',
+    paragraph_three:
+      '—Satoshi? The Satoshi? No, it couldn’t be. They’ve been presumed dead for over a century. Haven’t they?',
+    paragraph_four: 'Haven’t they?',
+    paragraph_five:
+      'Holocat: “You better get to work. I can help, but you have to start meow.”',
   },
 }
