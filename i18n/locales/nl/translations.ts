@@ -8,6 +8,53 @@ export const translations = {
     start_chapter: 'Hoofstuk starten',
   },
 
+  about: {
+    title: 'About',
+    subtitle:
+      'Het jaar is 2139. De laatste bitcoin zal over twee weken worden gemined. Maandenlang heeft er een klok afgetikt op Satoshi Square.',
+    intro:
+      'De wereld wacht op het laatste blok. Dan plotseling stopt het netwerk met werken.<br><br>Je ontvangt een holocat van iemand die de naam Satoshi Nakamoto gebruikt. (Het is als elke andere e-hologram, maar deze is gevormd als een kat). Je opent de holocat door op zijn neus te tikken en bent nieuwsgierig naar wat het te zeggen heeft...',
+
+    project: {
+      title: 'Gebouwd met plezier',
+      paragraph_one:
+        'Saving Satoshi is een luchtig eerste contactpunt voor ontwikkelaars die nieuwsgierig zijn naar bitcoin-ontwikkeling. Saving Satoshi bevat een mix van technische tekst en uitdagingen gebaseerd op code, maar de uitdagingen zouden haalbaar moeten zijn voor iedereen met basis programmeervaardigheden. Het project is gratis en open source en alle afbeeldingen zijn gegenereerd met behulp van text-to-image (ook bekend als AI) tools zoals Midjourney.',
+      paragraph_two:
+        'Deze versie van het project bevindt zich momenteel in een demofase met als doel feedback te krijgen over de algehele ervaring en het leveren van een proof of concept voor vroege gebruikers. Gebruikersvoortgang wordt lokaal opgeslagen in de browser en het verhaal samen met afbeeldingen zijn nog niet definitief.',
+      paragraph_three:
+        'Op basis van de feedback die we ontvangen, zullen we werken aan een officiële release (die we V1 noemen) die 2 à 3 volledige hoofdstukken, accounts en meer zal bevatten. In totaal zijn er 10 hoofdstukken gepland welke in de loop van de tijd zullen worden uitgebracht. Extra functies kunnen samenwerkend leren, badges, uitdagende side-quests en meer omvatten.',
+    },
+
+    contributing: {
+      title: 'Hoe kun je bijdragen?',
+      paragraph_one:
+        'We zijn een open-source project, dus voel je vrij om het platform naar eigen inzicht vorm te geven en ideeën aan te dragen.',
+
+      feedback: {
+        title: 'Feedback',
+        paragraph_one:
+          'Een geweldige manier om bij te dragen is door Hoofdstuk 1 door te nemen en ons feedback te geven over je ervaring via dit formulier.',
+      },
+
+      contribute: {
+        title: 'Contribute',
+        paragraph_one:
+          'Alle suggesties zijn welkom, inclusief inhoudswijzigingen, spelmechanica - echt alles. We zijn ook altijd op zoek naar hulp bij het <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">beoordelen en testen van code-wijzigingen</a>. Voor codeverbeteringen kun je rechtstreeks een issue openen of een pull-request indienen op GitHub.',
+        paragraph_two:
+          'Als je betrokken wilt raken bij het ontwerp, het verhaal of iets anders, sluit je dan aan bij ons in het #saving-satoshi-kanaal in de <a href="https://bitcoin.design/contribute/" target="_blank" rel="noreferrer">Bitcoin Design slack</a>. Vermeld hoe je wilt bijdragen en we helpen je graag op weg.',
+      },
+    },
+
+    contributors: {
+      title: 'Veel plezier!',
+      contributions_by: 'Contributies door',
+      many_more:
+        'en <a href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" target="_blank" rel="noreferrer">veel meer</a>.',
+    },
+
+    satoshi_needs_you: 'Wees snel nu, Satoshi heeft je nodig.',
+  },
+
   chapter_one: {
     title: 'Verborgen geheimen in het volle zicht',
     paragraph_one:

@@ -5,6 +5,7 @@ import get from 'lodash/get'
 import { Tooltip } from 'ui'
 import { i18n } from 'i18n/config'
 import { InjectableComponentType as ComponentType } from 'types'
+import clsx from 'clsx'
 
 let TRANSLATIONS = {}
 
@@ -20,6 +21,7 @@ const componentRegexes = {
   [ComponentType.Link]: /<Link(.*?)>(.*?)<\/Link>/gim,
   [ComponentType.Tooltip]: /<Tooltip(.*?)>(.*?)<\/Tooltip>/gim,
   [ComponentType.A]: /<a(.*?)>(.*?)<\/a>/gim,
+  [ComponentType.LineBreak]: /<br(.*?)>/gim,
 }
 
 export function loadTranslations(lang) {
@@ -72,7 +74,8 @@ export function t(key: string, lang: string) {
   if (
     translation.indexOf('</Tooltip>') === -1 &&
     translation.indexOf('</Link>') === -1 &&
-    translation.indexOf('</a>') === -1
+    translation.indexOf('</a>') === -1 &&
+    translation.indexOf('<br') === -1
   ) {
     return translation
   }
@@ -82,6 +85,7 @@ export function t(key: string, lang: string) {
   result = injectComponent([translation], ComponentType.Link)
   result = injectComponent(result, ComponentType.Tooltip)
   result = injectComponent(result, ComponentType.A)
+  result = injectComponent(result, ComponentType.LineBreak)
 
   return result
 }
@@ -128,8 +132,9 @@ function injectComponent(result, type) {
         case ComponentType.Link: {
           parts.push(
             <Link
+              key={index}
               href={href}
-              className={`${className} cursor-pointer`}
+              className={clsx('cursor-pointer', className)}
               target="_blank"
             >
               {label}
@@ -147,12 +152,17 @@ function injectComponent(result, type) {
               id={id}
               key={tkey}
               href={href}
-              className={`${className} cursor-pointer`}
+              className={clsx('cursor-pointer', className)}
               content={tkey}
             >
               {label}
             </Tooltip>
           )
+          break
+        }
+
+        case ComponentType.LineBreak: {
+          parts.push(<br />)
           break
         }
       }

@@ -17,25 +17,27 @@ export default function Genesis2({ lang }) {
         chapter: 'chapter-1',
         challenge: 'transacting-1',
       }}
-      next={'/chapters/chapter-1/transacting-1'}
+      next="/chapters/chapter-1/transacting-1"
       successMessage={t('genesis_two.success')}
-      customLines={
-        "Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'"
-      }
+      customLines={t('genesis_two.terminal_challenge_lines')}
     >
       <LessonInfo>
         <Title>{t('genesis_two.heading')}</Title>
 
-        <Text className="text-lg">{`Use the following command to decode Satoshi's secret HEX message
-            into ASCII, a more human readable format:`}</Text>
+        <Text className="mt-2 text-lg md:text-xl">
+          {t('genesis_two.paragraph_one')}
+        </Text>
 
-        <div className="mb-[30px]">
-          <CodeExample
-            code={`echo $scriptSigHex | xxd -r -p`}
-            language="shell"
-            copy
-          />
-        </div>
+        <Text className="mt-2 text-lg md:text-xl">
+          {t('genesis_two.paragraph_two')}
+        </Text>
+
+        <CodeExample
+          className="mt-4"
+          code={`echo $scriptSigHex | xxd -r -p`}
+          language="shell"
+          copy
+        />
       </LessonInfo>
     </TerminalChallenge>
   )

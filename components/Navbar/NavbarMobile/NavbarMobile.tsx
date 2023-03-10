@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useContentRoute } from 'hooks'
 import Address from 'components/Navbar/Address'
 import ArrowLeftIcon from 'public/assets/icons/arrow-left.svg'
 import UserButton from '../UserButton'
@@ -8,9 +8,10 @@ import HamburgerMenu from './HamburgerMenu'
 import { useState } from 'react'
 import Menu from './Menu'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 export default function NavbarMobile({ params }) {
-  const router = useRouter()
+  const { getChaptersPath } = useContentRoute()
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -26,13 +27,13 @@ export default function NavbarMobile({ params }) {
     <div className="left-0 top-0 w-full md:hidden">
       <div className="flex items-stretch border-b border-white/80 text-white">
         <div>
-          <button
+          <Link
             title="Back"
             className="group h-full items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
-            onClick={() => router.back()}
+            href={getChaptersPath()}
           >
             <ArrowLeftIcon className="h-6 w-6 opacity-50 transition duration-100 ease-in-out group-hover:opacity-100" />
-          </button>
+          </Link>
         </div>
         <div
           className={clsx('flex', 'items-stretch', {
