@@ -1,6 +1,7 @@
 export const translations = {
   shared: {
     next: 'Continue',
+    start: 'Start',
     copy: 'Copy',
     chapter: 'Chapter',
     challenge: 'Challenge',
@@ -129,11 +130,20 @@ export const translations = {
 
   genesis_one: {
     title: 'Genesis',
+    heading: 'Your first challenge',
+    paragraph_one:
+      'Bitcoin is censorship resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
+    paragraph_two:
+      'We’ll now take a look at one of those blocks and see if we can find the hidden message that was mentioned.',
+  },
+
+  genesis_two: {
+    title: 'Genesis',
     heading: 'Find the hidden message',
     paragraph_one:
-      'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_one_paragraph_one" content="genesis_one.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+      'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="genesis_two.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
     paragraph_two:
-      'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_one_paragraph_two" content="genesis_one.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
+      'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
     paragraph_three: 'Copy that value and paste it below.',
     tooltip_block_explorer:
       'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
@@ -143,7 +153,7 @@ export const translations = {
     placeholder: 'Paste the value you found here',
   },
 
-  genesis_two: {
+  genesis_three: {
     title: 'Genesis',
     heading: 'Let’s decode the message',
     paragraph_one:

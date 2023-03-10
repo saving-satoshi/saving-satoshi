@@ -20,6 +20,7 @@ export const metadata = {
   lessons: [
     'genesis-1',
     'genesis-2',
+    'genesis-3',
     'transacting-1',
     'transacting-2',
     'transacting-3',
