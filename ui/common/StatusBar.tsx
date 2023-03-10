@@ -5,6 +5,7 @@ import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
 
 export enum Status {
+  Begin,
   InProgress,
   Error,
   Success,
@@ -14,25 +15,36 @@ export default function StatusBar({
   next,
   input,
   expected,
-  successMsg,
-  inProgressMsg,
-  errorMsg,
+  beginMessage,
+  successMessage,
+  inProgressMessage,
+  errorMessage,
   full,
+  hints,
 }: {
   next: string
   input: string
   expected: string
-  successMsg?: string
-  inProgressMsg?: string
-  errorMsg?: string
+  beginMessage?: string
+  successMessage?: string
+  inProgressMessage?: string
+  errorMessage?: string
   full?: boolean
+  hints?: boolean
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
 
   const getStatus = () => {
-    if (!input) return Status.InProgress
-    if (input === expected) return Status.Success
+    if (!input) {
+      return Status.Begin
+    }
+    if (input === expected) {
+      return Status.Success
+    }
+    if (hints && (!input || expected.startsWith(input))) {
+      return Status.InProgress
+    }
     return Status.Error
   }
 
@@ -42,16 +54,18 @@ export default function StatusBar({
     switch (status) {
       case Status.Success:
         return (
-          successMsg || (
+          successMessage || (
             <span className="flex">
               <CheckIcon className="mr-2 h-8 w-8" /> Nicely done!
             </span>
           )
         )
-      case Status.InProgress:
-        return inProgressMsg || 'Complete the challenge above to continue...'
+      case Status.Begin:
+        return beginMessage || 'Complete the challenge above to continue...'
       case Status.Error:
-        return errorMsg || 'Hm... that is not quite right yet...'
+        return errorMessage || 'Hm... that is not quite right yet...'
+      case Status.InProgress:
+        return inProgressMessage || 'Looking good so far...'
       default:
         return ''
     }
@@ -77,7 +91,8 @@ export default function StatusBar({
             className={clsx(
               'font-nunito text-[21px] text-white transition duration-150 ease-in-out',
               {
-                'opacity-50': getStatus() === Status.InProgress,
+                'opacity-50': getStatus() === Status.Begin,
+                'text-[#EF960B]': getStatus() === Status.Error,
               }
             )}
           >
