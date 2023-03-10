@@ -65,6 +65,7 @@ export const translations = {
   },
 
   reaping_rewards: {
+    title: 'Illustration of a young man sitting at home having breakfast and looking at a TV',
     paragraph_one: `Moments later, your Hover Screen activates.`,
     paragraph_two: `—Deborah Chunk: “Thomas Vanderpool. As the CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
     paragraph_three: `—Vanderpool: “Yes I do, Deborah. Like my daddy and his daddy before him. The Vanderpoole’s have been mining since Block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. We cannot survive on fees alone.”`,

@@ -14,5 +14,6 @@ export default function ReapingRewards({ lang }) {
 }
 
 export const metadata = {
+  title: 'reaping_rewards.title',
   image: '/assets/images/chapter-1-intro-1.jpg',
 }
