@@ -112,11 +112,11 @@ export const translations = {
 
   genesis_one: {
     title: 'Genesis',
-    heading: 'Your first challenge',
+    heading: 'Je eerste uitdaging',
     paragraph_one:
-      'Bitcoin is censorship resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
+      'Bitcoin is censuurbestendig geld. Iedereen kan geld sturen door een transactie naar het netwerk te versturen. Na verzending worden transacties door miners aan blocks toegevoegd. Miners strijden tegen andere miners om het voorrecht om op de blockchain te mogen bouwen. Dit is wat bitcoin gedecentraliseerd houdt.',
     paragraph_two:
-      'We’ll now take a look at one of those blocks and see if we can find the hidden message that was mentioned.',
+      'We gaan nu een van die blocks bekijken om te zien of we de verborgen boodschap kunnen vinden.',
   },
 
   genesis_two: {
