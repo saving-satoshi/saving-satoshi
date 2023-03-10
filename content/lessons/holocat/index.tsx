@@ -18,9 +18,7 @@ export default function Holocat({ lang }) {
       next={`/chapters/chapter-1/genesis-1`}
       nextStatus={true}
     >
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('holocat.paragraph_one')}
-      </Text>
+      <Text className="text-lg md:text-xl">{t('holocat.paragraph_one')}</Text>
       <Text className="mt-4 text-lg md:text-xl">
         {t('holocat.paragraph_two')}
       </Text>
