@@ -1,11 +1,12 @@
 export const translations = {
   shared: {
     next: 'Continue',
+    start: 'Start',
     copy: 'Copy',
     chapter: 'Chapter',
     challenge: 'Challenge',
     coming_soon: 'Coming soon',
-    start_chapter: 'Start chapter'
+    start_chapter: 'Start chapter',
   },
 
   about: {
@@ -59,7 +60,7 @@ export const translations = {
   chapter_one: {
     title: 'Secrets in plain sight',
     paragraph_one:
-      'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. The world awaits the last block. Then, suddenly, the network grinds to a halt.'
+      'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. The world awaits the last block. Then, suddenly, the network grinds to a halt.',
   },
 
   chapter_two: {
@@ -113,11 +114,12 @@ export const translations = {
   },
 
   reaping_rewards: {
-    title: 'Illustration of a young man sitting at home having breakfast and looking at a TV',
+    title:
+      'Illustration of a young man sitting at home having breakfast and looking at a TV',
     paragraph_one: `Moments later, your Hover Screen activates.`,
     paragraph_two: `—Deborah Chunk: “Thomas Vanderpool. As the CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
     paragraph_three: `—Vanderpool: “Yes I do, Deborah. Like my daddy and his daddy before him. The Vanderpoole’s have been mining since Block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. We cannot survive on fees alone.”`,
-    start: 'Continue'
+    start: 'Continue',
   },
 
   done: {
@@ -128,9 +130,20 @@ export const translations = {
 
   genesis_one: {
     title: 'Genesis',
+    heading: 'Your first challenge',
+    paragraph_one:
+      'Bitcoin is censorship resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
+    paragraph_two:
+      'We’ll now take a look at one of those blocks and see if we can find the hidden message that was mentioned.',
+  },
+
+  genesis_two: {
+    title: 'Genesis',
     heading: 'Find the hidden message',
-    paragraph_one: 'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_one_paragraph_one" content="genesis_one.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
-    paragraph_two: 'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_one_paragraph_two" content="genesis_one.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
+    paragraph_one:
+      'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="genesis_two.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+    paragraph_two:
+      'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
     paragraph_three: 'Copy that value and paste it below.',
     tooltip_block_explorer:
       'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
@@ -140,39 +153,50 @@ export const translations = {
     placeholder: 'Paste the value you found here',
   },
 
-  genesis_two: {
+  genesis_three: {
     title: 'Genesis',
     heading: 'Let’s decode the message',
-    paragraph_one: 'The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.',
-    paragraph_two: 'Copy and paste the command below into the Terminal to the right and press “Enter”.',
+    paragraph_one:
+      'The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.',
+    paragraph_two:
+      'Copy and paste the command below into the Terminal to the right and press “Enter”.',
     terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'`,
     waiting_for_input: 'Waiting for you to write and run the script...',
-    success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n It’s time to expand on what you just learned. Decode the clue we’ve left for you in the next transaction.`
+    success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n It’s time to expand on what you just learned. Decode the clue we’ve left for you in the next transaction.`,
   },
 
   transacting_one: {
     title: 'Transacting',
     heading: 'What’s in a transaction?',
-    paragraph_one: 'Transactions have two parts: inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
-    paragraph_two: 'For the following transaction, we’re going to identify the output of type OP_RETURN.',
+    paragraph_one:
+      'Transactions have two parts: inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
+    paragraph_two:
+      'For the following transaction, we’re going to identify the output of type OP_RETURN.',
   },
 
   transacting_two: {
     title: 'Transacting',
     heading: 'OP_RETURN',
-    paragraph_one: 'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
-    paragraph_two: '1. Click <Link href="https://blockstream.info/tx/ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d?expand" className="underline">here</Link> to look at a specific transaction.',
-    paragraph_three: '2. Open up the details and find the part that is of type “OP_RETURN”.',
-    paragraph_four: '3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSH_BYTES_28” part? These are called opcodes. We’re actually interested in what comes after them.',
-    paragraph_five: '4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_28” and paste it below. ',
+    paragraph_one:
+      'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
+    paragraph_two:
+      '1. Click <Link href="https://blockstream.info/tx/ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d?expand" className="underline">here</Link> to look at a specific transaction.',
+    paragraph_three:
+      '2. Open up the details and find the part that is of type “OP_RETURN”.',
+    paragraph_four:
+      '3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSH_BYTES_28” part? These are called opcodes. We’re actually interested in what comes after them.',
+    paragraph_five:
+      '4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_28” and paste it below. ',
     input_challenge_label: 'Enter the OP_RETURN type',
   },
 
   transacting_three: {
     title: 'Transacting',
     heading: 'Another secret message',
-    paragraph_one: 'We’ve identified the part of the transaction output that holds the message.',
-    paragraph_two: 'All that’s left now is to decode it, just like we did in the previous exercise.',
+    paragraph_one:
+      'We’ve identified the part of the transaction output that holds the message.',
+    paragraph_two:
+      'All that’s left now is to decode it, just like we did in the previous exercise.',
     paragraph_three: 'Need to look up $scriptPubKeyBytes again? Here you go.',
     link: 'View transaction',
     terminal_challenge_success:
@@ -253,5 +277,17 @@ export const translations = {
   demo_disclaimer: {
     title: 'This is a demo',
     description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love your feedback.`,
+  },
+  holocat: {
+    title: 'holocat',
+    paragraph_one:
+      'You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
+    paragraph_two:
+      '—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto',
+    paragraph_three:
+      '—Satoshi? The Satoshi? No, it couldn’t be. They’ve been presumed dead for over a century. Haven’t they?',
+    paragraph_four: 'Haven’t they?',
+    paragraph_five:
+      'Holocat: “You better get to work. I can help, but you have to start meow.”',
   },
 }

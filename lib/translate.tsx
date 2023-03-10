@@ -5,6 +5,7 @@ import get from 'lodash/get'
 import { Tooltip } from 'ui'
 import { i18n } from 'i18n/config'
 import { InjectableComponentType as ComponentType } from 'types'
+import clsx from 'clsx'
 
 let TRANSLATIONS = {}
 
@@ -131,8 +132,9 @@ function injectComponent(result, type) {
         case ComponentType.Link: {
           parts.push(
             <Link
+              key={index}
               href={href}
-              className={`${className} cursor-pointer`}
+              className={clsx('cursor-pointer', className)}
               target="_blank"
             >
               {label}
@@ -150,7 +152,7 @@ function injectComponent(result, type) {
               id={id}
               key={tkey}
               href={href}
-              className={`${className} cursor-pointer`}
+              className={clsx('cursor-pointer', className)}
               content={tkey}
             >
               {label}

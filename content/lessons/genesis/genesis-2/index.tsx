@@ -1,40 +1,45 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { CodeExample, LessonInfo, Title, Text, TerminalChallenge } from 'ui'
+import { Button, LessonInfo, Title, Text, InputChallenge } from 'ui'
 
 export default function Genesis2({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <TerminalChallenge
-      expectedInput={{
-        userVariable: '$scriptSigHex',
-        value:
-          '04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73',
-      }}
-      saveInfo={{
-        chapter: 'chapter-1',
-        challenge: 'transacting-1',
-      }}
-      next={'/chapters/chapter-1/transacting-1'}
-      successMessage={t('genesis_two.success')}
-      customLines={t('genesis_two.terminal_challenge_lines')}
+    <InputChallenge
+      answer="04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73"
+      next="/chapters/chapter-1/genesis-3"
+      label={t('genesis_two.placeholder')}
+      pattern={/[a-z0-9]+/gi}
+      hints
     >
       <LessonInfo>
         <Title>{t('genesis_two.heading')}</Title>
 
-        <Text className="text-lg md:text-xl mt-2">{t('genesis_two.paragraph_one')}</Text>
-        <Text className="text-lg md:text-xl mt-2">{t('genesis_two.paragraph_two')}</Text>
+        <Text className="mt-2 text-lg md:text-xl">
+          {t('genesis_two.paragraph_one')}
+        </Text>
 
-        <CodeExample
-          className="mt-4"
-          code={`echo $scriptSigHex | xxd -r -p`}
-          language="shell"
-          copy
-        />
+        <Text className="mt-2 text-lg md:text-xl">
+          {t('genesis_two.paragraph_two')}
+        </Text>
+
+        <Text className="mt-2 text-lg md:text-xl">
+          {t('genesis_two.paragraph_three')}
+        </Text>
+
+        <div className="mt-4 flex">
+          <Button
+            href="https://blockstream.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
+            external={true}
+            classes="w-full md:w-auto"
+          >
+            {t('genesis_two.view_block_0')}
+          </Button>
+        </div>
       </LessonInfo>
-    </TerminalChallenge>
+    </InputChallenge>
   )
 }
 

@@ -28,6 +28,7 @@ export default function InputChallenge({
   label,
   pattern,
   hints,
+  precedingText,
 }: {
   children: any
   answer: string
@@ -35,6 +36,7 @@ export default function InputChallenge({
   label: string
   pattern?: RegExp
   hints?: boolean
+  precedingText?: string
 }) {
   const [userInput, setUserInput] = useState('')
 
@@ -53,9 +55,16 @@ export default function InputChallenge({
         onChange={setUserInput}
         pattern={pattern}
         hints={hints}
+        precedingText={precedingText}
       />
 
-      <StatusBar full next={next} input={userInput} expected={answer} />
+      <StatusBar
+        full
+        next={next}
+        input={userInput}
+        expected={answer}
+        hints={hints}
+      />
     </Lesson>
   )
 }
