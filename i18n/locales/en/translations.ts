@@ -278,4 +278,16 @@ export const translations = {
     title: 'This is a demo',
     description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love your feedback.`,
   },
+  holocat: {
+    title: 'holocat',
+    paragraph_one:
+      'You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
+    paragraph_two:
+      '—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto',
+    paragraph_three:
+      '—Satoshi? The Satoshi? No, it couldn’t be. They’ve been presumed dead for over a century. Haven’t they?',
+    paragraph_four: 'Haven’t they?',
+    paragraph_five:
+      'Holocat: “You better get to work. I can help, but you have to start meow.”',
+  },
 }

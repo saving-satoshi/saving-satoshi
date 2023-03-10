@@ -18,6 +18,7 @@ export const metadata = {
   title: 'chapter_one.title',
   image: '/assets/images/chapter-1-cover.jpg',
   lessons: [
+    'holocat',
     'genesis-1',
     'genesis-2',
     'genesis-3',
