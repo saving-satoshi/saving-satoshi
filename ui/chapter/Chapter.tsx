@@ -105,7 +105,7 @@ export default function Chapter({ children, metadata, lang }) {
                         disabled={
                           chapter.metadata.lessons.length === 0 || !display
                         }
-                        classes={'w-full'}
+                        classes="w-full"
                       >
                         {(chapter.metadata.lessons.length > 0 &&
                           display &&

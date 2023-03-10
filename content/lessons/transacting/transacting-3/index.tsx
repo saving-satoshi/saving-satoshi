@@ -1,9 +1,18 @@
 'use client'
+
 import { useTranslations } from 'hooks'
-import { Button, LessonInfo, CodeExample, Text, Title, TerminalChallenge } from 'ui'
+import {
+  Button,
+  LessonInfo,
+  CodeExample,
+  Text,
+  Title,
+  TerminalChallenge,
+} from 'ui'
 
 export default function Transacting3({ lang }) {
   const t = useTranslations(lang)
+
   return (
     <TerminalChallenge
       expectedInput="5361746f7368693433335061726b53744368696e6f43413933323433"
@@ -22,19 +31,26 @@ export default function Transacting3({ lang }) {
       <LessonInfo>
         <Title>{t('transacting_three.heading')}</Title>
 
-        <Text className="text-lg md:text-xl mt-2">{t('transacting_three.paragraph_one')}</Text>
-        <Text className="text-lg md:text-xl mt-2">{t('transacting_three.paragraph_two')}</Text>
+        <Text className="mt-2 text-lg md:text-xl">
+          {t('transacting_three.paragraph_one')}
+        </Text>
+
+        <Text className="mt-2 text-lg md:text-xl">
+          {t('transacting_three.paragraph_two')}
+        </Text>
 
         <CodeExample
           className="mt-4"
-          code={'echo $scriptPubKeyBytes | xxd -r -p'}
+          code="echo $scriptPubKeyBytes | xxd -r -p"
           language="shell"
           copy
         />
 
-        <Text className="text-lg md:text-xl mt-4">{t('transacting_three.paragraph_three')}</Text>
+        <Text className="mt-4 text-lg md:text-xl">
+          {t('transacting_three.paragraph_three')}
+        </Text>
 
-        <div className="flex mt-4">
+        <div className="mt-4 flex">
           <Button
             size="small"
             href="https://blockstream.info/tx/ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d?expand"

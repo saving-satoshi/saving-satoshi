@@ -39,12 +39,15 @@ export default function StatusBar({
     if (!input) {
       return Status.Begin
     }
+
     if (input === expected) {
       return Status.Success
     }
+
     if (hints && (!input || expected.startsWith(input))) {
       return Status.InProgress
     }
+
     return Status.Error
   }
 

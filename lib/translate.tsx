@@ -132,6 +132,7 @@ function injectComponent(result, type) {
         case ComponentType.Link: {
           parts.push(
             <Link
+              key={index}
               href={href}
               className={clsx('cursor-pointer', className)}
               target="_blank"

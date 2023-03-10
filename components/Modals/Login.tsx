@@ -83,7 +83,7 @@ export default function LoginModal({ onClose, onLogin, open }) {
       overlayClassName="fixed inset-0 bg-overlayColor"
       className="fixed inset-0 top-1/2 left-1/2 h-full w-screen -translate-x-1/2 -translate-y-1/2 transform bg-back p-5  pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:w-[550px] sm:rounded-lg sm:pt-5"
       contentLabel="Login Modal"
-     >
+    >
       <div className="float-right flex justify-end">
         <button onClick={handleCloseClick} aria-label="Close">
           <CloseIcon className="h-6 w-6" />
