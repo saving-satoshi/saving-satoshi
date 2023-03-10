@@ -18,11 +18,21 @@ export default function Holocat({ lang }) {
       next={`/chapters/chapter-1/genesis-1`}
       nextStatus={true}
     >
-      <Text className="pt-4">{t('holocat.paragraph_one')}</Text>
-      <Text className="pt-4">{t('holocat.paragraph_two')}</Text>
-      <Text className="pt-4">{t('holocat.paragraph_three')}</Text>
-      <Text className="pt-4">{t('holocat.paragraph_four')}</Text>
-      <Text className="pt-4">{t('holocat.paragraph_five')}</Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('holocat.paragraph_one')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('holocat.paragraph_two')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('holocat.paragraph_three')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('holocat.paragraph_four')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('holocat.paragraph_five')}
+      </Text>
     </IntroductionLayout>
   )
 }
