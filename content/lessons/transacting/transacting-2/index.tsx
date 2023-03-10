@@ -13,7 +13,7 @@ export default function Transacting2({ lang }) {
       next={'/chapters/chapter-1/transacting-3'}
       label={t('transacting_two.input_challenge_label')}
       pattern={/[a-z0-9]+/gi}
-      opcode={'OP_RETURN OP_PUSHBYTES_28'}
+      precedingText={'OP_RETURN OP_PUSHBYTES_28'}
       hints
     >
       <LessonInfo>

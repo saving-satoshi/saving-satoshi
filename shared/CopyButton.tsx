@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Button from './Button'
 import CopyIcon from 'public/assets/icons/copy.svg'
 import CopyActiveIcon from 'public/assets/icons/copy_active.svg'
+import clsx from 'clsx'
 
 export default function CopyButton({
   content,
@@ -35,7 +36,7 @@ export default function CopyButton({
   if (compact) {
     return (
       <button
-        className={`${classes} cursor-pointer`}
+        className={clsx('cursor-pointer', classes)}
         onClick={copy}
         title={copied ? 'Copied!' : 'Copy'}
       >

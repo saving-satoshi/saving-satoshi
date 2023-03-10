@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import { useState } from 'react'
 
 interface UserInputProps {
@@ -7,7 +8,7 @@ interface UserInputProps {
   answer: string
   pattern: RegExp
   hints?: boolean
-  opcode?: string
+  precedingText?: string
 }
 
 export default function Input({
@@ -15,22 +16,22 @@ export default function Input({
   answer,
   pattern,
   hints,
-  opcode,
+  precedingText,
 }: UserInputProps) {
   const [textAreaValue, setTextAreaValue] = useState('')
   const [correctAnswer, setCorrectAnswer] = useState(false)
 
-  const opCodeOverlay = (opcode) => {
-    let OPCodeColor =
-      !textAreaValue ||
-      (answer.startsWith(textAreaValue) && answer[0] === textAreaValue[0])
+  const precedingTextOverlay = (precedingText) => {
+    const precedingTextColor =
+      !textAreaValue || answer.startsWith(textAreaValue)
     return (
       <span
-        className={`${
-          OPCodeColor ? 'overlay correct' : 'overlay incorrect'
-        } break-keep`}
+        className={clsx('break-keep', {
+          'overlay-correct': precedingTextColor === true,
+          'overlay-incorrect': precedingTextColor === false,
+        })}
       >
-        {opcode}
+        {precedingText}
       </span>
     )
   }
@@ -112,14 +113,18 @@ export default function Input({
   return (
     <>
       <p
-        className={`${
-          correctAnswer ? 'overlay-complete' : 'overlay-incomplete'
-        } pointer-events-none h-full w-full break-all text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] md:text-center md:text-[30px] md:tracking-[5px]`}
+        className={clsx(
+          'pointer-events-none h-full w-full break-all text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] md:text-center md:text-[30px] md:tracking-[5px]',
+          {
+            'overlay-complete': correctAnswer === true,
+            'overlay-incomplete': correctAnswer === false,
+          }
+        )}
       >
         {hints ? (
-          opCodeOverlay(opcode)
+          precedingTextOverlay(precedingText)
         ) : (
-          <span className="break-keep">{opcode}</span>
+          <span className="break-keep">{precedingText}</span>
         )}
       </p>
       <form className="relative">
@@ -129,15 +134,19 @@ export default function Input({
           onChange={handleChange}
           value={textAreaValue}
           spellCheck="false"
-          className={`absolute top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] text-transparent outline-none md:text-[30px] md:tracking-[5px]`}
+          className="absolute top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] text-transparent outline-none md:text-[30px] md:tracking-[5px]"
           style={{
             caretColor: '#6e7d92',
           }}
         />
         <p
-          className={`${
-            correctAnswer ? 'overlay-complete' : 'overlay-incomplete'
-          } pointer-events-none h-full w-full break-all font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:text-[30px] md:tracking-[5px]`}
+          className={clsx(
+            'pointer-events-none h-full w-full break-all font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:text-[30px] md:tracking-[5px]',
+            {
+              'overlay-complete': correctAnswer === true,
+              'overlay-incomplete': correctAnswer === false,
+            }
+          )}
         >
           {displayOverlay()}
         </p>
