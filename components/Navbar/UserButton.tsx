@@ -21,7 +21,7 @@ export default function UserButton() {
       <button
         onClick={() => setOpenSignInModal(true)}
         aria-label="profile"
-        className="text-grey-300 h-10 w-10 cursor-pointer"
+        className="text-grey-300 h-10 cursor-pointer"
       >
         <Avatar avatar={user.avatar} size={30} />
       </button>
@@ -29,7 +29,7 @@ export default function UserButton() {
       <button
         onClick={() => toggleModal(true)}
         aria-label="profile"
-        className="text-grey-300 h-10 w-10 cursor-pointer"
+        className="text-grey-300 h-10 cursor-pointer"
       >
         <UserIcon />
       </button>
@@ -51,7 +51,7 @@ export default function UserButton() {
 
   return (
     <div>
-      <div className="ml-4">{renderIconButton()}</div>
+      <div className="ml-4 h-10 w-10">{renderIconButton()}</div>
       {isRegistered ? (
         <LoginModal
           onLogin={() => setOpenSignInModal(false)}
