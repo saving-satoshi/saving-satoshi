@@ -11,9 +11,7 @@ export const translations = {
   chapter_one: {
     title: 'Secrets in plain sight',
     paragraph_one:
-      'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. The world awaits the last block. Then, suddenly, the network grinds to a halt.',
-      paragraph_two: ' ',
-      paragraph_three: ' '
+      'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. The world awaits the last block. Then, suddenly, the network grinds to a halt.'
   },
 
   chapter_two: {
@@ -67,8 +65,6 @@ export const translations = {
   },
 
   reaping_rewards: {
-    title: null,
-    subtitle: null,
     paragraph_one: `Moments later, your Hover Screen activates.`,
     paragraph_two: `—Deborah Chunk: “Thomas Vanderpool. As the CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
     paragraph_three: `—Vanderpool: “Yes I do, Deborah. Like my daddy and his daddy before him. The Vanderpoole’s have been mining since Block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. We cannot survive on fees alone.”`,
@@ -133,7 +129,7 @@ export const translations = {
     terminal_challenge_success:
       'That’s correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n Your next challenge awaits you.',
     terminal_challenge_lines:
-      'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyHex is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge',
+      'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyBytes is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge',
     terminal_challenge_error:
       'Almost. Take another look to find the correct value',
   },

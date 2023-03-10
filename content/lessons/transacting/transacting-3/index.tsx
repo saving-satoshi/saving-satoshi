@@ -29,7 +29,7 @@ export default function Transacting3({ lang }) {
 
         <CodeExample
           className="mt-4"
-          code={'echo $scriptPubKeyHex | xxd -r -p'}
+          code={'echo $scriptPubKeyBytes | xxd -r -p'}
           language="shell"
           copy
         />
