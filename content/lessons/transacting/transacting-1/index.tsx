@@ -1,23 +1,27 @@
 'use client'
+
 import { useTranslations } from 'hooks'
-import { ChapterIntro } from 'ui'
+import { Button, ChapterIntro } from 'ui'
 
 export default function Transacting1({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <ChapterIntro
-      title={t('transacting_one.title')}
-      heading={t('transacting_one.heading')}
-      next="/chapters/chapter-1/transacting-2"
-    >
+    <ChapterIntro heading={t('transacting_one.heading')}>
       <p className="mt-2 text-lg md:text-xl">
         {t('transacting_one.paragraph_one')}
       </p>
 
-      <p className="mt-2 text-lg md:text-xl">
+      <p className="mt-8 text-lg md:text-xl">
         {t('transacting_one.paragraph_two')}
       </p>
+
+      <Button
+        href="/chapters/chapter-1/transacting-2"
+        classes="mt-10 max-md:w-full"
+      >
+        {t('shared.next')}
+      </Button>
     </ChapterIntro>
   )
 }
