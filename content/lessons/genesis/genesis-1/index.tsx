@@ -18,13 +18,14 @@ export default function Genesis1({ lang }) {
       <LessonInfo>
         <Title>{t('genesis_one.heading')}</Title>
 
-        <Text className="text-lg">{t('genesis_one.paragraph_one')}</Text>
-        <Text className="text-lg">{t('genesis_one.paragraph_two')}</Text>
-        <div className="flex">
+        <Text className="text-lg md:text-xl mt-2">{t('genesis_one.paragraph_one')}</Text>
+        <Text className="text-lg md:text-xl mt-2">{t('genesis_one.paragraph_two')}</Text>
+        <Text className="text-lg md:text-xl mt-2">{t('genesis_one.paragraph_three')}</Text>
+        <div className="flex mt-4">
           <Button
             href="https://blockstream.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
             external={true}
-            classes="mt-4 w-full md:w-auto"
+            classes="w-full md:w-auto"
           >
             {t('genesis_one.view_block_0')}
           </Button>
