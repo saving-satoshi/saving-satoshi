@@ -3,7 +3,7 @@ import { useTranslations } from 'hooks'
 import { IntroductionLayout, Text } from 'ui'
 
 export const metadata = {
-  title: 'Genesis1Success.title',
+  title: 'genesis1success.title',
   image: '/assets/images/chapter-1-challenge-1-success.jpg',
 }
 
