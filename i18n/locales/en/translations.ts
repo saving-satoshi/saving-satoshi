@@ -290,4 +290,10 @@ export const translations = {
     paragraph_five:
       'Holocat: “You better get to work. I can help, but you have to start meow.”',
   },
+  genesis_one_success: {
+    title: 'Success',
+    subtitle: 'Congrats! You completed the first challenge!',
+    paragraph_one:
+      'You found the secret message Satoshi Nakamoto embedded in the genesis block. But...it’s encoded and we can’t read it. Let’s see if there’s a way we can decode it.',
+  },
 }

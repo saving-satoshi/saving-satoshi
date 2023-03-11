@@ -1,30 +1,36 @@
 'use client'
 import { useTranslations } from 'hooks'
-import { Button, ChapterIntro } from 'ui'
+import { IntroductionLayout, Text } from 'ui'
+
+export const metadata = {
+  title: 'holocat.title',
+  image: '/assets/images/chapter-1-holocat.jpg',
+}
 
 export default function Genesis1({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <ChapterIntro heading={t('genesis_one.heading')}>
-      <p className="mt-2 text-lg md:text-xl">
-        {t('genesis_one.paragraph_one')}
-      </p>
-
-      <p className="mt-8 text-lg md:text-xl">
-        {t('genesis_one.paragraph_two')}
-      </p>
-
-      <Button
-        href="/chapters/chapter-1/genesis-2"
-        classes="mt-10 max-md:w-full"
-      >
-        {t('shared.start')}
-      </Button>
-    </ChapterIntro>
+    <IntroductionLayout
+      lang={lang}
+      image={metadata.image}
+      title={metadata.title}
+      next={`/chapters/chapter-1/genesis-2`}
+      nextStatus={true}
+    >
+      <Text className="text-lg md:text-xl">{t('holocat.paragraph_one')}</Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('holocat.paragraph_two')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('holocat.paragraph_three')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('holocat.paragraph_four')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('holocat.paragraph_five')}
+      </Text>
+    </IntroductionLayout>
   )
-}
-
-export const metadata = {
-  title: 'genesis_one.title',
 }
