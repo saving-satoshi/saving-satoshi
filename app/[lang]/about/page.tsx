@@ -2,7 +2,6 @@ import Topbar from 'components/Topbar'
 import Footer from 'components/Footer'
 import { Button } from 'shared'
 
-import { sectionsConfig } from 'config/sections'
 import { useTranslations } from 'hooks'
 
 const CONTRIBUTORS = [
@@ -25,7 +24,7 @@ export default function About({ params }) {
 
   return (
     <div className="w-full bg-[#2A3B61]">
-      <Topbar items={sectionsConfig.mainNav} />
+      <Topbar />
 
       <div className="m-auto px-6 lg:w-9/12 2xl:w-1/2">
         <div className="flex flex-col justify-center text-white">

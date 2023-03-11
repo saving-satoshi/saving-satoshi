@@ -2,7 +2,10 @@ import { chapters, lessons } from 'content'
 import { Button } from 'shared'
 
 export default function Page({ params }) {
-  if (!(params.lesson in lessons) || !(params.slug in chapters)) {
+  const chapterId = params.slug
+  const chapterLessons = lessons[chapterId]
+
+  if (!(params.lesson in chapterLessons) || !(params.slug in chapters)) {
     return (
       <div className="flex h-full w-full grow flex-col items-center justify-center">
         <span className="mb-10 text-4xl text-white">
@@ -15,7 +18,7 @@ export default function Page({ params }) {
     )
   }
 
-  const Lesson = lessons[params.lesson].default
+  const Lesson = chapterLessons[params.lesson].default
 
   return <Lesson lang={params.lang} />
 }

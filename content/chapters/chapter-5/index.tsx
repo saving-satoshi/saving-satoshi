@@ -27,7 +27,8 @@ export const metadata = {
   slug: 'chapter-5',
   title: 'chapter_five.title',
   image: '/assets/images/chapter-5-cover.jpg',
-  intro: 'reaping-rewards',
+  intros: [],
   lessons: [],
+  outros: [],
   challenges: [],
 }

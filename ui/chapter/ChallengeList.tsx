@@ -8,7 +8,7 @@ export default function ChallengeList({ challenges, chapterId }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const challengesData = challenges.map((lessonId) => {
-    const { title } = lessons[lessonId].metadata
+    const { title } = lessons[chapterId][lessonId].metadata
 
     return { lessonId, title }
   })

@@ -1,6 +1,6 @@
 'use client'
 
-import { useContentRoute } from 'hooks'
+import { useLocalizedRoutes } from 'hooks'
 import Address from 'components/Navbar/Address'
 import ArrowLeftIcon from 'public/assets/icons/arrow-left.svg'
 import UserButton from '../UserButton'
@@ -11,7 +11,7 @@ import clsx from 'clsx'
 import Link from 'next/link'
 
 export default function NavbarMobile({ params }) {
-  const { getChaptersPath } = useContentRoute()
+  const { chaptersUrl } = useLocalizedRoutes()
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -30,7 +30,7 @@ export default function NavbarMobile({ params }) {
           <Link
             title="Back"
             className="group h-full items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
-            href={getChaptersPath()}
+            href={chaptersUrl}
           >
             <ArrowLeftIcon className="h-6 w-6 opacity-50 transition duration-100 ease-in-out group-hover:opacity-100" />
           </Link>

@@ -20,7 +20,7 @@ export default function Transacting3({ lang }) {
         chapter: 'chapter-1',
         challenge: 'done',
       }}
-      next="/chapters/chapter-1/done"
+      next="/chapters/chapter-1/outro-1"
       successMessage={t('transacting_three.terminal_challenge_success')}
       customLines={t('transacting_three.terminal_challenge_lines')}
       commonError={{
