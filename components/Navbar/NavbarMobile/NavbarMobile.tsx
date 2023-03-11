@@ -26,7 +26,7 @@ export default function NavbarMobile({ params }) {
   return (
     <div className="left-0 top-0 w-full md:hidden">
       <div className="flex items-stretch border-b border-white/80 text-white">
-        <div>
+        <div className="flex items-stretch">
           <Link
             title="Back"
             className="group h-full items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
