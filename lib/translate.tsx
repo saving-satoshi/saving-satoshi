@@ -1,13 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import get from 'lodash/get'
-
-import { Tooltip } from 'ui'
-import { i18n } from 'i18n/config'
-import { InjectableComponentType as ComponentType } from 'types'
 import clsx from 'clsx'
 
-let TRANSLATIONS = {}
+import { Tooltip } from 'ui'
+import { InjectableComponentType as ComponentType } from 'types'
+import translations from 'i18n/locales'
 
 const contentRegex = /content="(.*?)"/
 const hrefRegex = /href="(.*?)"/
@@ -24,47 +22,12 @@ const componentRegexes = {
   [ComponentType.LineBreak]: /<br(.*?)>/gim,
 }
 
-export function loadTranslations(lang) {
-  // defaults lang to en if lang is not provided
-  if (!lang) {
-    lang = 'en'
-  }
-  const {
-    translations: localeTranslations,
-  } = require(`../i18n/locales/${lang}`)
-
-  const result = {}
-
-  // For each locale create an object on result that we can use to store translations into.
-  i18n.locales.forEach((locale) => {
-    result[locale] = {}
-  })
-
-  // Loop over each group in the translation file and make sure it ends up in the result object.
-  localeTranslations.forEach((group) =>
-    Object.entries(group).forEach(([groupName, translations]) =>
-      Object.keys(result).forEach((locale) => {
-        result[locale] = {
-          ...result[locale],
-          [groupName]: translations,
-        }
-      })
-    )
-  )
-
-  return result
-}
-
 export function t(key: string, lang: string) {
-  if (Object.keys(TRANSLATIONS).length === 0) {
-    TRANSLATIONS = loadTranslations(lang)
-  }
-
   if (!key) {
     return '{missing_translation_key}'
   }
 
-  const translation = get(TRANSLATIONS, `${lang}.${key}`)
+  const translation = get(translations, `${lang}.${key}`)
 
   if (!translation) {
     // If the translation is unavailable in the locale we just return the key.

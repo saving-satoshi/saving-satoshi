@@ -1,4 +1,4 @@
-export const translations = {
+const translations = {
   shared: {
     next: 'Continue',
     start: 'Start',
@@ -291,3 +291,5 @@ export const translations = {
       'Holocat: “You better get to work. I can help, but you have to start meow.”',
   },
 }
+
+export default translations
