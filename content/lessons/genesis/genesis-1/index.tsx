@@ -7,7 +7,7 @@ export const metadata = {
   image: '/assets/images/chapter-1-holocat.jpg',
 }
 
-export default function Holocat({ lang }) {
+export default function Genesis1({ lang }) {
   const t = useTranslations(lang)
 
   return (

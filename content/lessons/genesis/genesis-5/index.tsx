@@ -3,7 +3,7 @@
 import { useTranslations } from 'hooks'
 import { CodeExample, LessonInfo, Title, Text, TerminalChallenge } from 'ui'
 
-export default function Genesis3({ lang }) {
+export default function Genesis5({ lang }) {
   const t = useTranslations(lang)
 
   return (

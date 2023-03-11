@@ -3,11 +3,11 @@ import { useTranslations } from 'hooks'
 import { IntroductionLayout, Text } from 'ui'
 
 export const metadata = {
-  title: 'genesis1success.title',
+  title: 'genesis_one_success.title',
   image: '/assets/images/chapter-1-challenge-1-success.jpg',
 }
 
-export default function Genesis1Success({ lang }) {
+export default function Genesis4({ lang }) {
   const t = useTranslations(lang)
 
   return (
@@ -19,10 +19,10 @@ export default function Genesis1Success({ lang }) {
       nextStatus={true}
     >
       <Text className="font-nunito text-2xl font-bold">
-        {t('genesis1success.subtitle')}
+        {t('genesis_one_success.subtitle')}
       </Text>
       <Text className="mt-2.5 text-lg md:text-xl">
-        {t('genesis1success.paragraph_one')}
+        {t('genesis_one_success.paragraph_one')}
       </Text>
     </IntroductionLayout>
   )

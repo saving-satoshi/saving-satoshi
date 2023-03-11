@@ -290,7 +290,7 @@ export const translations = {
     paragraph_five:
       'Holocat: “You better get to work. I can help, but you have to start meow.”',
   },
-  genesis1success: {
+  genesis_one_success: {
     title: 'Success',
     subtitle: 'Congrats! You completed the first challenge!',
     paragraph_one:

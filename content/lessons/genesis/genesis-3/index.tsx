@@ -3,7 +3,7 @@
 import { useTranslations } from 'hooks'
 import { Button, LessonInfo, Title, Text, InputChallenge } from 'ui'
 
-export default function Genesis2({ lang }) {
+export default function Genesis3({ lang }) {
   const t = useTranslations(lang)
 
   return (
