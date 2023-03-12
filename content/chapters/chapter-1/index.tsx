@@ -26,6 +26,7 @@ export const metadata = {
     'transacting-1',
     'transacting-2',
     'transacting-3',
+    'transacting-4',
     'done',
   ],
   challenges: ['genesis-1', 'transacting-1'],

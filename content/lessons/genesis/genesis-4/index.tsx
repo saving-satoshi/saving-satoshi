@@ -1,6 +1,6 @@
 'use client'
 import { useTranslations } from 'hooks'
-import { IntroductionLayout, Text } from 'ui'
+import { TextImage, Text } from 'ui'
 
 export const metadata = {
   title: 'genesis_one_success.title',
@@ -11,12 +11,12 @@ export default function Genesis4({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <IntroductionLayout
+    <TextImage
       lang={lang}
-      image={metadata.image}
-      title={metadata.title}
+      imageSrc={metadata.image}
+      imageAlt={metadata.title}
       next={`/chapters/chapter-1/genesis-5`}
-      nextStatus={true}
+      btnEnabled={true}
     >
       <Text className="font-nunito text-2xl font-bold">
         {t('genesis_one_success.subtitle')}
@@ -24,6 +24,6 @@ export default function Genesis4({ lang }) {
       <Text className="mt-2.5 text-lg md:text-xl">
         {t('genesis_one_success.paragraph_one')}
       </Text>
-    </IntroductionLayout>
+    </TextImage>
   )
 }

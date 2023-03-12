@@ -3,7 +3,7 @@
 import { chapters } from 'content'
 import { introductions } from 'content'
 import { redirect, usePathname } from 'next/navigation'
-import { IntroductionLayout } from 'ui'
+import { TextImage } from 'ui'
 
 export default function Introduction({ children, lang }) {
   const chapterId = usePathname().split('/').pop()
@@ -16,14 +16,14 @@ export default function Introduction({ children, lang }) {
   const intro = introductions[chapter.metadata.intro]
 
   return (
-    <IntroductionLayout
+    <TextImage
       lang={lang}
-      image={intro.metadata.image}
-      title={intro.metadata.title}
+      imageSrc={intro.metadata.image}
+      imageAlt={intro.metadata.title}
       next={`/chapters/${chapterId}/${chapter.metadata.lessons[0]}`}
-      nextStatus={chapter.metadata.lessons.length > 0}
+      btnEnabled={chapter.metadata.lessons.length > 0}
     >
       {children}
-    </IntroductionLayout>
+    </TextImage>
   )
 }

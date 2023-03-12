@@ -207,6 +207,15 @@ const translations = {
       'Almost. Take another look to find the correct value',
   },
 
+  outro: {
+    title: 'Outro',
+    paragraph_one:
+      'You run down to your garage, step into your dad’s old solocopter, punch in the coordinates, and make your way to the abandoned warehouse.',
+    paragraph_two:
+      'Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.',
+    button_text: 'Complete chapter 1',
+  },
+
   end: {
     save: 'Save my progress',
     next: 'Continue without saving',
@@ -276,7 +285,7 @@ const translations = {
 
   demo_disclaimer: {
     title: 'This is a demo',
-    description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love your feedback.`,
+    description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">your feedback</Link>.`,
   },
   holocat: {
     title: 'holocat',
