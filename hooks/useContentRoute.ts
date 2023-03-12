@@ -1,4 +1,6 @@
-import { usePathname } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
+import { chapters } from 'content'
+import { useUser } from 'hooks'
 
 const getPathData = (pathName: string) => {
   const pathArray = pathName.split('/').filter((p) => p)
@@ -16,9 +18,29 @@ const getChaptersPath = (pathName) => {
   return `/${lang}/chapters`
 }
 
+const checkChallengeAllowed = (pathName, user, router) => {
+  const { chapterId, lessonId } = getPathData(pathName)
+  let lessonArray = chapters[chapterId].metadata.lessons
+
+  const currentLessonIndex = lessonArray.indexOf(lessonId)
+
+  const userFinalLesson = user.progress.lesson
+  const userFinalLessonIndex = lessonArray.indexOf(userFinalLesson)
+
+  const result = currentLessonIndex - userFinalLessonIndex > 0 ? false : true
+  if (!result) {
+    router.push(`/chapters/${chapterId}/${userFinalLesson}`)
+  }
+  return result
+}
+
 export const useContentRoute = () => {
   const pathName = usePathname()
+  const { user } = useUser()
+  const router = useRouter()
+
   return {
     getChaptersPath: () => getChaptersPath(pathName),
+    checkChallengeAllowed: () => checkChallengeAllowed(pathName, user, router),
   }
 }
