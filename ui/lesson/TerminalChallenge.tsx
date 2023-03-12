@@ -64,12 +64,8 @@ export default function TerminalChallenge({
 
   const isSmallScreen = useMediaQuery({ width: 767 })
 
-  const status = useStatus(saveInfo.chapter, saveInfo.challenge)
-
   function saveProgress() {
-    if (!status.completed) {
-      setUserProgress(saveInfo.chapter, saveInfo.challenge)
-    }
+    setUserProgress(saveInfo.chapter, saveInfo.challenge)
   }
 
   const onChange = (input) => {

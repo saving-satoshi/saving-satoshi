@@ -21,14 +21,20 @@ export function getUserLessonStatus(chapterId, lessonId, userProgress) {
     if (userChapterIdIndex > chapterIdIndex) {
       result.completed = true
       result.unlocked = true
-    } else if (userChapterIdIndex == chapterIdIndex) {
+    } else if (userChapterIdIndex === chapterIdIndex) {
       const chapter = chapters[userChapterId]
       const chapterLessons = chapter.metadata.lessons
         ? chapter.metadata.lessons
         : []
 
+      const isOutro = chapter.metadata.outros.indexOf(userLessonId) !== -1
       const lessonIdIndex = chapterLessons.indexOf(lessonId)
       const userLessonIdIndex = chapterLessons.indexOf(userLessonId)
+
+      if (isOutro) {
+        result.completed = true
+        result.unlocked = true
+      }
 
       if (userLessonIdIndex > lessonIdIndex) {
         result.completed = true

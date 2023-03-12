@@ -18,7 +18,7 @@ export default function Transacting3({ lang }) {
       expectedInput="5361746f7368693433335061726b53744368696e6f43413933323433"
       saveInfo={{
         chapter: 'chapter-1',
-        challenge: 'outro-2',
+        challenge: 'outro-1',
       }}
       next="/chapters/chapter-1/outro-1"
       successMessage={t('transacting_three.terminal_challenge_success')}
