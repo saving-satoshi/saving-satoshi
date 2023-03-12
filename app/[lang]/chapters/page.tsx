@@ -1,4 +1,3 @@
-import { sectionsConfig } from 'config/sections'
 import Topbar from 'components/Topbar'
 import Footer from 'components/Footer'
 import DemoDisclaimer from 'components/DemoDisclaimer'
@@ -11,7 +10,7 @@ export default async function ChaptersPage({ params }) {
 
   return (
     <div className="w-full">
-      <Topbar items={sectionsConfig.mainNav} />
+      <Topbar />
 
       <div className="lg:px-0">
         <div className="flex flex-col justify-center text-white">

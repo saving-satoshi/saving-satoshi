@@ -16,7 +16,7 @@ export default function Genesis2({ lang }) {
       </p>
 
       <Button
-        href="/chapters/chapter-1/genesis-3"
+        href="/chapters/chapter-1/genesis-2"
         classes="mt-10 max-md:w-full"
       >
         {t('shared.start')}

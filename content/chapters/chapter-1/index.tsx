@@ -14,9 +14,9 @@ export default function Chapter1({ lang }) {
 export const metadata = {
   position: 0,
   slug: 'chapter-1',
-  intro: 'reaping-rewards',
   title: 'chapter_one.title',
   image: '/assets/images/chapter-1-cover.jpg',
+  intros: ['intro-1', 'intro-2'],
   lessons: [
     'genesis-1',
     'genesis-2',
@@ -26,8 +26,7 @@ export const metadata = {
     'transacting-1',
     'transacting-2',
     'transacting-3',
-    'outro-1',
-    'outro-2',
   ],
+  outros: ['outro-1', 'outro-2'],
   challenges: ['genesis-1', 'transacting-1'],
 }

@@ -101,7 +101,7 @@ export default function Chapter({ children, metadata, lang }) {
                       (chapter.metadata.lessons.length === 0 && null)}
                     <div className="flex pt-8 md:w-full">
                       <Button
-                        href={`/chapters/${chapter.metadata.slug}`}
+                        href={`/chapters/${chapter.metadata.slug}/${chapter.metadata.intros[0]}`}
                         disabled={
                           chapter.metadata.lessons.length === 0 || !display
                         }

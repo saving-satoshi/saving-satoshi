@@ -1,9 +1,11 @@
 'use client'
+
 import { useTranslations } from 'hooks'
 import { TextImage } from 'ui'
 
 export default function Transacting4({ lang }) {
   const t = useTranslations(lang)
+
   return (
     <TextImage
       lang={lang}

@@ -19,7 +19,7 @@ export default function TabGroup({ isOpen, clicked, params }) {
   const chapterMeta = chapter?.metadata
 
   const challenges = chapter.metadata.challenges.map((lessonId) => {
-    const { title } = lessons[lessonId].metadata
+    const { title } = lessons[slug][lessonId].metadata
 
     return { lessonId, title }
   })

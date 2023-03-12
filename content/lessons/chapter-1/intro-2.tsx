@@ -3,11 +3,11 @@ import { useTranslations } from 'hooks'
 import { TextImage, Text } from 'ui'
 
 export const metadata = {
-  title: 'holocat.title',
+  title: 'intro_two.title',
   image: '/assets/images/chapter-1-holocat.jpg',
 }
 
-export default function Genesis1({ lang }) {
+export default function Holocat({ lang }) {
   const t = useTranslations(lang)
 
   return (
@@ -15,21 +15,21 @@ export default function Genesis1({ lang }) {
       lang={lang}
       imageSrc={metadata.image}
       imageAlt={metadata.title}
-      next={`/chapters/chapter-1/genesis-2`}
+      next={`/chapters/chapter-1/genesis-1`}
       btnEnabled={true}
     >
-      <Text className="text-lg md:text-xl">{t('holocat.paragraph_one')}</Text>
+      <Text className="text-lg md:text-xl">{t('intro_two.paragraph_one')}</Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('holocat.paragraph_two')}
+        {t('intro_two.paragraph_two')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('holocat.paragraph_three')}
+        {t('intro_two.paragraph_three')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('holocat.paragraph_four')}
+        {t('intro_two.paragraph_four')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('holocat.paragraph_five')}
+        {t('intro_two.paragraph_five')}
       </Text>
     </TextImage>
   )

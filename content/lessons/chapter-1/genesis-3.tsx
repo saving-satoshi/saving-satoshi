@@ -17,7 +17,7 @@ export default function Genesis5({ lang }) {
         chapter: 'chapter-1',
         challenge: 'transacting-1',
       }}
-      next="/chapters/chapter-1/transacting-1"
+      next="/chapters/chapter-1/genesis-4"
       successMessage={t('genesis_three.success')}
       customLines={t('genesis_three.terminal_challenge_lines')}
     >

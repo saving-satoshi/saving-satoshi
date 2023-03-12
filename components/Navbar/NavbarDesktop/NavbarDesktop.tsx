@@ -1,6 +1,6 @@
 'use client'
 
-import { useContentRoute } from 'hooks'
+import { useLocalizedRoutes } from 'hooks'
 import Address from 'components/Navbar/Address'
 import TabGroup from 'components/Navbar/NavbarDesktop/TabGroup'
 import ArrowLeftIcon from 'public/assets/icons/arrow-left.svg'
@@ -8,7 +8,7 @@ import UserButton from '../UserButton'
 import Link from 'next/link'
 
 export default function NavbarDesktop({ params }) {
-  const { getChaptersPath } = useContentRoute()
+  const { chaptersUrl } = useLocalizedRoutes()
 
   return (
     <div className="left-0 top-0 hidden w-full md:block">
@@ -17,7 +17,7 @@ export default function NavbarDesktop({ params }) {
           <Link
             title="Back"
             className="group items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
-            href={getChaptersPath()}
+            href={chaptersUrl}
           >
             <ArrowLeftIcon className="h-6 w-6 opacity-50 transition duration-100 ease-in-out group-hover:opacity-100" />
           </Link>
