@@ -1,6 +1,6 @@
 'use client'
 import { useTranslations } from 'hooks'
-import { IntroductionLayout, Text } from 'ui'
+import { TextImage, Text } from 'ui'
 
 export const metadata = {
   title: 'holocat.title',
@@ -11,12 +11,12 @@ export default function Genesis1({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <IntroductionLayout
+    <TextImage
       lang={lang}
-      image={metadata.image}
-      title={metadata.title}
+      imageSrc={metadata.image}
+      imageAlt={metadata.title}
       next={`/chapters/chapter-1/genesis-2`}
-      nextStatus={true}
+      btnEnabled={true}
     >
       <Text className="text-lg md:text-xl">{t('holocat.paragraph_one')}</Text>
       <Text className="mt-4 text-lg md:text-xl">
@@ -31,6 +31,6 @@ export default function Genesis1({ lang }) {
       <Text className="mt-4 text-lg md:text-xl">
         {t('holocat.paragraph_five')}
       </Text>
-    </IntroductionLayout>
+    </TextImage>
   )
 }
