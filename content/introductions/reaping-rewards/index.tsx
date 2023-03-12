@@ -1,6 +1,11 @@
 import { useTranslations } from 'hooks'
 import { Introduction, Text } from 'ui'
 
+export const metadata = {
+  title: 'reaping_rewards.title',
+  image: '/assets/images/chapter-1-intro-1.jpg',
+}
+
 export default function ReapingRewards({ lang }) {
   const t = useTranslations(lang)
 
@@ -17,9 +22,4 @@ export default function ReapingRewards({ lang }) {
       </Text>
     </Introduction>
   )
-}
-
-export const metadata = {
-  title: 'reaping_rewards.title',
-  image: '/assets/images/chapter-1-intro-1.jpg',
 }

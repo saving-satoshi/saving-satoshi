@@ -1,4 +1,4 @@
-export const translations = {
+const translations = {
   shared: {
     next: 'Continue',
     start: 'Start',
@@ -306,3 +306,5 @@ export const translations = {
       'You found the secret message Satoshi Nakamoto embedded in the genesis block. But...it’s encoded and we can’t read it. Let’s see if there’s a way we can decode it.',
   },
 }
+
+export default translations

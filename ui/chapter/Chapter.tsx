@@ -38,7 +38,7 @@ export default function Chapter({ children, metadata, lang }) {
   const position = metadata.position + 1
   const isEven = position % 2 == 0
 
-  const status = useStatus(metadata.slug, 'done')
+  const status = useStatus(metadata.slug, 'outro-2')
 
   useEffect(() => {
     setDisplay(status?.unlocked)
