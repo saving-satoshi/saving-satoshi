@@ -1,4 +1,4 @@
-export const translations = {
+const translations = {
   shared: {
     next: 'Doorgaan',
     copy: 'Kopiëren',
@@ -160,3 +160,5 @@ export const translations = {
       'We zijn nog in een vroeg stadium van dit project. Hoofdstuk 1 werkt, de rest is nog in ontwikkeling. Probeer het eens uit en laat ons weten wat je ervan vindt, we zouden graag je feedback horen.',
   },
 }
+
+export default translations

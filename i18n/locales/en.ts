@@ -1,4 +1,4 @@
-export const translations = {
+const translations = {
   shared: {
     next: 'Continue',
     start: 'Start',
@@ -113,13 +113,25 @@ export const translations = {
     title: '10 billion connections',
   },
 
-  reaping_rewards: {
-    title:
-      'Illustration of a young man sitting at home having breakfast and looking at a TV',
+  intro_one: {
+    title: 'Genesis',
     paragraph_one: `Moments later, your Hover Screen activates.`,
     paragraph_two: `—Deborah Chunk: “Thomas Vanderpool. As the CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
     paragraph_three: `—Vanderpool: “Yes I do, Deborah. Like my daddy and his daddy before him. The Vanderpoole’s have been mining since Block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. We cannot survive on fees alone.”`,
     start: 'Continue',
+  },
+
+  intro_two: {
+    title: 'Genesis',
+    paragraph_one:
+      'You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
+    paragraph_two:
+      '—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto',
+    paragraph_three:
+      '—Satoshi? The Satoshi? No, it couldn’t be. They’ve been presumed dead for over a century. Haven’t they?',
+    paragraph_four: 'Haven’t they?',
+    paragraph_five:
+      'Holocat: “You better get to work. I can help, but you have to start meow.”',
   },
 
   done: {
@@ -165,6 +177,13 @@ export const translations = {
     success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n It’s time to expand on what you just learned. Decode the clue we’ve left for you in the next transaction.`,
   },
 
+  genesis_four: {
+    title: 'Genesis',
+    subtitle: 'Congrats! You completed the first challenge!',
+    paragraph_one:
+      'You found the secret message Satoshi Nakamoto embedded in the genesis block. But...it’s encoded and we can’t read it. Let’s see if there’s a way we can decode it.',
+  },
+
   transacting_one: {
     title: 'Transacting',
     heading: 'What’s in a transaction?',
@@ -205,6 +224,15 @@ export const translations = {
       'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyBytes is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge',
     terminal_challenge_error:
       'Almost. Take another look to find the correct value',
+  },
+
+  outro: {
+    title: 'Outro',
+    paragraph_one:
+      'You run down to your garage, step into your dad’s old solocopter, punch in the coordinates, and make your way to the abandoned warehouse.',
+    paragraph_two:
+      'Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.',
+    button_text: 'Complete chapter 1',
   },
 
   end: {
@@ -276,18 +304,8 @@ export const translations = {
 
   demo_disclaimer: {
     title: 'This is a demo',
-    description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love your feedback.`,
-  },
-  holocat: {
-    title: 'holocat',
-    paragraph_one:
-      'You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
-    paragraph_two:
-      '—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto',
-    paragraph_three:
-      '—Satoshi? The Satoshi? No, it couldn’t be. They’ve been presumed dead for over a century. Haven’t they?',
-    paragraph_four: 'Haven’t they?',
-    paragraph_five:
-      'Holocat: “You better get to work. I can help, but you have to start meow.”',
+    description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">your feedback</Link>.`,
   },
 }
+
+export default translations

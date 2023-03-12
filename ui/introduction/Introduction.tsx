@@ -1,9 +1,9 @@
 'use client'
 
+import { chapters } from 'content'
+import { lessons } from 'content'
 import { redirect } from 'next/navigation'
-
-import { chapters, lessons } from 'content'
-import { IntroductionLayout } from 'ui'
+import { TextImage } from 'ui'
 import { usePathData } from 'hooks'
 
 export default function Introduction({ children, lang }) {
@@ -23,14 +23,14 @@ export default function Introduction({ children, lang }) {
     : chapter.metadata.intros[introIndex + 1]
 
   return (
-    <IntroductionLayout
+    <TextImage
       lang={lang}
-      image={intro.metadata.image}
-      title={intro.metadata.title}
+      imageSrc={intro.metadata.image}
+      imageAlt={intro.metadata.title}
       next={`/chapters/${chapterId}/${nextLessonId}`}
-      nextStatus={chapter.metadata.lessons.length > 0}
+      btnEnabled={chapter.metadata.lessons.length > 0}
     >
       {children}
-    </IntroductionLayout>
+    </TextImage>
   )
 }

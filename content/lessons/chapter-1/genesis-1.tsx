@@ -2,7 +2,7 @@
 import { useTranslations } from 'hooks'
 import { Button, ChapterIntro } from 'ui'
 
-export default function Genesis1({ lang }) {
+export default function Genesis2({ lang }) {
   const t = useTranslations(lang)
 
   return (

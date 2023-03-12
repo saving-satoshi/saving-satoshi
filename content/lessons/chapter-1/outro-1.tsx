@@ -1,21 +1,27 @@
-import { ChapterEnd } from 'ui'
+'use client'
 
-export default function Done({ lang }) {
+import { useTranslations } from 'hooks'
+import { TextImage } from 'ui'
+
+export default function Transacting4({ lang }) {
+  const t = useTranslations(lang)
+
   return (
-    <ChapterEnd
-      {...metadata}
+    <TextImage
       lang={lang}
-      checkpoint={{
-        chapter: 'chapter-2',
-        lesson: null,
-        next: '/chapters/chapter-2',
-      }}
-    />
+      imageSrc="/assets/images/chapter-1-outro.jpg"
+      imageAlt={t('outro.title')}
+      btnText={t('outro.button_text')}
+      btnEnabled={true}
+      next={'/chapters/chapter-1/outro-2'}
+    >
+      <p>{t('outro.paragraph_one')}</p>
+      <p className="pt-6">{t('outro.paragraph_two')}</p>
+    </TextImage>
   )
 }
 
 export const metadata = {
-  title: 'done.title',
-  image: '/assets/images/chapter-1-finish.jpg',
-  description: 'done.description',
+  title: 'outro.title',
+  image: '/assets/images/chapter-1-outro.jpg',
 }

@@ -2,22 +2,24 @@
 
 import Image from 'next/image'
 import { Button } from 'shared'
-import { useTranslations } from 'hooks'
+import { useLang, useTranslations } from 'hooks'
 
-export default function IntroductionLayout({
+export default function TextImageDisplay({
   children,
   lang,
-  image,
-  title,
+  imageSrc,
+  imageAlt,
+  btnText,
+  btnEnabled,
   next,
-  nextStatus,
 }: {
   children: any
   lang: any
-  image: any
-  title: any
-  next: any
-  nextStatus: boolean
+  imageSrc: string
+  imageAlt: string
+  btnText?: string
+  btnEnabled: boolean
+  next: string
 }) {
   const t = useTranslations(lang)
 
@@ -26,8 +28,8 @@ export default function IntroductionLayout({
       <div className="lg:flex lg:grow">
         <div className="relative h-[375px] overflow-hidden lg:order-last lg:flex lg:h-full lg:shrink lg:basis-1/2 lg:border-l lg:border-white/25">
           <Image
-            src={image}
-            alt={t(title)}
+            src={imageSrc}
+            alt={t(imageAlt)}
             fill
             objectFit="cover"
             objectPosition="bottom"
@@ -35,14 +37,14 @@ export default function IntroductionLayout({
           />
         </div>
         <div className="flex shrink basis-1/2">
-          <div className="flex flex-col gap-10 px-[15px] py-10 lg:px-10">
+          <div className="flex flex-col gap-10 px-[15px] py-11 lg:px-10">
             <div className="intro text-white">
-              <div className="pt-3 font-nunito text-2xl">{children}</div>
+              <div className="font-nunito text-xl">{children}</div>
             </div>
             <div>
-              {nextStatus ? (
+              {btnEnabled ? (
                 <Button href={next} classes="w-full md:w-auto">
-                  {t('shared.next')}
+                  {btnText ? btnText : t('shared.next')}
                 </Button>
               ) : (
                 <Button classes="w-full md:w-auto" disabled>

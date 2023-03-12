@@ -15,7 +15,8 @@ export default function Address() {
   const chapterId = pathData.pop()
 
   const chapter = chapters[chapterId]?.metadata
-  const lesson = lessons[lessonId]?.metadata
+  const chapterLessons = lessons[chapterId]
+  const lesson = chapterLessons[lessonId]?.metadata
 
   const challenges = chapter.lessons
     .map((l) => l.split('-')[0])
@@ -23,7 +24,8 @@ export default function Address() {
 
   const challengeName = lessonId?.split('-')[0]
   const challengeIndex = challenges.indexOf(challengeName)
-  const isChapterCompletePage = challenges.length - 1 === challengeIndex
+  const lastLessonId = chapter.outros[chapter.outros.length - 1]
+  const isChapterCompletePage = lessonId === lastLessonId
 
   return (
     <div className="items-center px-5 py-3">
@@ -35,7 +37,7 @@ export default function Address() {
                 <span>
                   {t('navbar.chapter')} {chapter.position + 1}
                 </span>
-                {lesson && !isChapterCompletePage && (
+                {lesson && !isChapterCompletePage && challengeIndex >= 0 && (
                   <>
                     <span>, </span>
                     <span>
