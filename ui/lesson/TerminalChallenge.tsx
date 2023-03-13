@@ -81,11 +81,15 @@ export default function TerminalChallenge({
       `echo ${expectedInput} | xxd -r -p`,
       `echo ${expectedInput.userVariable} | xxd -r -p`,
       `echo ${expectedInput.value} | xxd -r -p`,
-      `echo ${sanitizedInput.split(' ')[1]?.match(/^[\da-f]+$/i)} | xxd -r -p`,
+      `echo ${sanitizedInput
+        .split(' ')[1]
+        ?.match(/^[\da-f\'\"]+$/i)} | xxd -r -p`,
     ]
     let varInput: string
     let answerValue: string
     let newLines: { value: string; type: string }[]
+
+    console.log(sanitizedInput)
 
     if (inputs.includes(sanitizedInput)) {
       if (sanitizedInput === `echo ${expectedInput} | xxd -r -p`) {
@@ -94,9 +98,9 @@ export default function TerminalChallenge({
         sanitizedInput ===
         `echo ${expectedInput.userVariable || expectedInput.value} | xxd -r -p`
       ) {
-        varInput = expectedInput.value
+        varInput = expectedInput.value.replace(/[\'\"]/g, '')
       } else {
-        varInput = sanitizedInput.split(' ')[1]
+        varInput = sanitizedInput.replace(/[\'\"]/g, '').split(' ')[1]
       }
 
       answerValue = Buffer.from(varInput, 'hex').toString('utf8')
