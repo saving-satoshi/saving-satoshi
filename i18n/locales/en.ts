@@ -201,7 +201,7 @@ const translations = {
     paragraph_one:
       'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
     paragraph_two:
-      '1. Click <Link href="https://blockstream.info/tx/ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d?expand" className="underline">here</Link> to look at a specific transaction.',
+      '1. Click <Link href="https://blockstream.info/tx/ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d" className="underline">here</Link> to look at a specific transaction.',
     paragraph_three:
       '2. Open up the details and find the part that is of type “OP_RETURN”.',
     paragraph_four:
