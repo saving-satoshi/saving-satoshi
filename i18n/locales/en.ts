@@ -229,7 +229,7 @@ const translations = {
   outro: {
     title: 'Outro',
     paragraph_one:
-      'You run down to your garage, step into your dad’s old solocopter, punch in the coordinates, and make your way to the abandoned warehouse.',
+      'You run down to your garage, step into your dad’s old solocopter, punch in the coordinates, and make your way to the address.',
     paragraph_two:
       'Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.',
     button_text: 'Complete chapter 1',
