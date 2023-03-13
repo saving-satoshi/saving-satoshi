@@ -119,6 +119,7 @@ export default function Terminal({ success, lines, next, onChange }) {
                   onKeyDown={handleKeyDown}
                   autoFocus={onChange != null}
                   autoComplete="off"
+                  autoCapitalize="none"
                   spellCheck="false"
                   ref={inputRef}
                   rows={5} // Increase rows based on text length
