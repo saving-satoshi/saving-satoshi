@@ -69,7 +69,10 @@ export default function TerminalChallenge({
   }
 
   const onChange = (input) => {
-    const sanitizedInput = input.replace(/[\t\r\n]/g, '')
+    const sanitizedInput = input
+      .replace(/[\t\r\n]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
 
     setLines((lines) => [...lines, { value: sanitizedInput, type: 'input' }])
     setLines((lines) => [...lines, { value: '...decoding...', type: 'output' }])
