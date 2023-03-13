@@ -91,7 +91,7 @@ export default function Input({
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (!event.key.match(pattern)) {
+    if (!event.key.match(pattern) || event.key === 'Enter') {
       event.preventDefault()
     }
   }
