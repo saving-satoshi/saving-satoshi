@@ -8,7 +8,7 @@ const translations = {
     coming_soon: 'Coming soon',
     start_chapter: 'Start chapter',
   },
-
+///ABOUT PAGE
   about: {
     title: 'About',
     mobile_title: 'What it’s about',
@@ -57,6 +57,7 @@ const translations = {
     satoshi_needs_you: 'Now be quick, Satoshi needs you.',
   },
 
+  ///CHAPTERS TITLE PAGE
   chapter_one: {
     title: 'Secrets in plain sight',
     paragraph_one:
@@ -113,6 +114,7 @@ const translations = {
     title: '10 billion connections',
   },
 
+  ///CHAPTER 1
   intro_one: {
     title: 'Genesis',
     paragraph_one: `Moments later, your Hover Screen activates.`,
@@ -146,7 +148,7 @@ const translations = {
     paragraph_one:
       'Bitcoin is censorship resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
     paragraph_two:
-      'We’ll now take a look at one of those blocks and see if we can find the hidden message that was mentioned.',
+      'Satoshi Nakamoto, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left the world a secret message in the very first bitcoin transaction that was ever made. Your first challenge is to find and decode it.',
   },
 
   genesis_two: {
@@ -241,6 +243,7 @@ const translations = {
     feedback: 'Share your feedback',
   },
 
+  ///CHALLENGE PAGE
   challenge_list: {
     coming_soon: 'Coming soon. Hang tight.',
   },
