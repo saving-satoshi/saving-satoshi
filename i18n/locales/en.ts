@@ -174,14 +174,14 @@ const translations = {
       'Copy and paste the command below into the Terminal to the right and press “Enter”.',
     terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'`,
     waiting_for_input: 'Waiting for you to write and run the script...',
-    success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n It’s time to expand on what you just learned. Decode the clue we’ve left for you in the next transaction.`,
+    success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.`,
   },
 
   genesis_four: {
     title: 'Genesis',
     subtitle: 'Congrats! You completed the first challenge!',
     paragraph_one:
-      'You found the secret message Satoshi Nakamoto embedded in the genesis block. But...it’s encoded and we can’t read it. Let’s see if there’s a way we can decode it.',
+      'You found the secret message Satoshi Nakamoto embedded in the genesis block. It’s time to expand on what you just learned. Decode an important clue about the story in the next challenge.',
   },
 
   transacting_one: {
