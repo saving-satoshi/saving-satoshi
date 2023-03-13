@@ -1,48 +1,30 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { CodeExample, LessonInfo, Title, Text, TerminalChallenge } from 'ui'
+import { TextImage, Text } from 'ui'
 
-export default function Genesis5({ lang }) {
+export const metadata = {
+  title: 'genesis_four.title',
+  image: '/assets/images/chapter-1-challenge-1-success.jpg',
+}
+
+export default function Genesis3({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <TerminalChallenge
-      expectedInput={{
-        userVariable: '$scriptSigHex',
-        value:
-          '04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73',
-      }}
-      saveInfo={{
-        chapter: 'chapter-1',
-        challenge: 'transacting-1',
-      }}
+    <TextImage
+      lang={lang}
+      imageSrc={metadata.image}
+      imageAlt={metadata.title}
       next="/chapters/chapter-1/genesis-4"
-      successMessage={t('genesis_three.success')}
-      customLines={t('genesis_three.terminal_challenge_lines')}
+      btnEnabled={true}
     >
-      <LessonInfo>
-        <Title>{t('genesis_three.heading')}</Title>
-
-        <Text className="mt-2 text-lg md:text-xl">
-          {t('genesis_three.paragraph_one')}
-        </Text>
-
-        <Text className="mt-2 text-lg md:text-xl">
-          {t('genesis_three.paragraph_two')}
-        </Text>
-
-        <CodeExample
-          className="mt-4"
-          code={`echo $scriptSigHex | xxd -r -p`}
-          language="shell"
-          copy
-        />
-      </LessonInfo>
-    </TerminalChallenge>
+      <Text className="font-nunito text-2xl font-bold">
+        {t('genesis_four.subtitle')}
+      </Text>
+      <Text className="mt-2.5 text-lg md:text-xl">
+        {t('genesis_four.paragraph_one')}
+      </Text>
+    </TextImage>
   )
-}
-
-export const metadata = {
-  title: 'genesis_three.title',
 }
