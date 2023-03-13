@@ -55,7 +55,7 @@ export default  function Genesispt2() {
                     ></div>
                     <div className='pb-16 pt-9'>
                         <Link
-                            href='https://blockstream.info/tx/75764fd0c95b4c17b728d10f7555509adfc0789ddc47683c45aeddd1c34727f8?expand'
+                            href='https://blockstream.info/tx/75764fd0c95b4c17b728d10f7555509adfc0789ddc47683c45aeddd1c34727f8'
                             className='py-2.5 px-12 w-full md:w-auto justify-center bg-white text-base-blue text-xl font-nunito font-bold'>
                             View transaction
                         </Link>
