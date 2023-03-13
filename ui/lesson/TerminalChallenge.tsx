@@ -89,8 +89,6 @@ export default function TerminalChallenge({
     let answerValue: string
     let newLines: { value: string; type: string }[]
 
-    console.log(sanitizedInput)
-
     if (inputs.includes(sanitizedInput)) {
       if (sanitizedInput === `echo ${expectedInput} | xxd -r -p`) {
         varInput = expectedInput
