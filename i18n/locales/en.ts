@@ -7,6 +7,7 @@ const translations = {
     challenge: 'Challenge',
     coming_soon: 'Coming soon',
     start_chapter: 'Start chapter',
+    back: 'Back'
   },
   ///ABOUT PAGE
   about: {
