@@ -1,25 +1,27 @@
 'use client'
 
-import { useLocalizedRoutes } from 'hooks'
+import { useLocalizedRoutes, useTranslations, useLang } from 'hooks'
 import Address from 'components/Navbar/Address'
 import TabGroup from 'components/Navbar/NavbarDesktop/TabGroup'
-import ArrowLeftIcon from 'public/assets/icons/arrow-left.svg'
+import PowerOffIcon from 'public/assets/icons/power-off.svg'
 import UserButton from '../UserButton'
 import Link from 'next/link'
 
 export default function NavbarDesktop({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
+  const lang = useLang()
+  const t = useTranslations(lang)
 
   return (
     <div className="left-0 top-0 hidden w-full md:block">
       <div className="flex items-stretch justify-between border-b border-white/80 text-white">
-        <div className="flex items-stretch">
+        <div className="flex">
           <Link
-            title="Back"
-            className="group items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
+            title={t('shared.back')}
+            className="group flex items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
             href={chaptersUrl}
           >
-            <ArrowLeftIcon className="h-6 w-6 opacity-50 transition duration-100 ease-in-out group-hover:opacity-100" />
+            <PowerOffIcon className="h-[30px] w-[30px] opacity-75 transition duration-100 ease-in-out group-hover:opacity-100" />
           </Link>
 
           <Address />
