@@ -24,7 +24,7 @@ export default function Transacting3({ lang }) {
       successMessage={t('transacting_three.terminal_challenge_success')}
       customLines={t('transacting_three.terminal_challenge_lines')}
       commonError={{
-        error: '$scriptPubKeyHex',
+        error: '$scriptPubKeyBytes',
         message: t('transacting_three.terminal_challenge_error'),
       }}
     >

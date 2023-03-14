@@ -8,7 +8,7 @@ const translations = {
     coming_soon: 'Coming soon',
     start_chapter: 'Start chapter',
   },
-///ABOUT PAGE
+  ///ABOUT PAGE
   about: {
     title: 'About',
     mobile_title: 'What it’s about',
@@ -225,7 +225,7 @@ const translations = {
     terminal_challenge_lines:
       'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyBytes is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge',
     terminal_challenge_error:
-      'Almost. Take another look to find the correct value',
+      'Almost! Remember that the variable $scriptPubKeyBytes is not set for you this time.',
   },
 
   outro: {
