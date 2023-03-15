@@ -3,6 +3,8 @@ import { Button } from 'ui'
 import CheckIcon from 'public/assets/icons/check.svg'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
+import Lottie from 'lottie-react'
+import successAnimation from '../../public/assets/icons/79952-successful.json'
 
 export enum Status {
   Begin,
@@ -58,8 +60,19 @@ export default function StatusBar({
       case Status.Success:
         return (
           successMessage || (
-            <span className="flex">
-              <CheckIcon className="mr-2 h-8 w-8" /> Nicely done!
+            <span className="flex space-x-2.5">
+              <Lottie
+                animationData={successAnimation}
+                style={{
+                  display: 'flex',
+                  width: '10rem',
+                  height: '10rem',
+                  margin: '-4.0rem',
+                }}
+                loop={false}
+              />
+              {/* <CheckIcon className="mr-2 h-8 w-8" />  */}
+              <span>Nicely done!</span>
             </span>
           )
         )
