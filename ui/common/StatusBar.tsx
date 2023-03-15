@@ -63,15 +63,10 @@ export default function StatusBar({
             <span className="flex space-x-2.5">
               <Lottie
                 animationData={successAnimation}
-                style={{
-                  display: 'flex',
-                  width: '10rem',
-                  height: '10rem',
-                  margin: '-4.0rem',
-                }}
+                initialSegment={[0, 33]}
+                className="-m-16 h-[10rem] w-[10rem]"
                 loop={false}
               />
-              {/* <CheckIcon className="mr-2 h-8 w-8" />  */}
               <span>Nicely done!</span>
             </span>
           )
@@ -103,7 +98,7 @@ export default function StatusBar({
     >
       <div className="flex flex-col items-stretch justify-between max-md:gap-4 md:flex-row">
         <div className="flex w-full items-center align-middle transition duration-150 ease-in-out md:px-5">
-          <p
+          <div
             className={clsx(
               'font-nunito text-[21px] text-white transition duration-150 ease-in-out',
               {
@@ -113,7 +108,7 @@ export default function StatusBar({
             )}
           >
             {statusMessage()}
-          </p>
+          </div>
         </div>
 
         <Button
