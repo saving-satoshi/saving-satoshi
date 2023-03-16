@@ -7,7 +7,7 @@ const nextConfig = {
     ],
   },
   reactStrictMode: true,
-  swcMinify: true,
+  swcMinify: false,
   images: {
     domains: ['saving-satoshi.s3.amazonaws.com'],
   },
