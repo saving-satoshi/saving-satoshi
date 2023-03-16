@@ -1,10 +1,12 @@
+'use client'
+
 import clsx from 'clsx'
 import { Button } from 'ui'
 import CheckIcon from 'public/assets/icons/check.svg'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
-import Lottie from 'lottie-react'
-import successAnimation from '../../public/assets/icons/87795-loading-success.json'
+import Lottie from 'react-lottie'
+import * as successAnimation from '../../public/assets/icons/87795-loading-success.json'
 
 export enum Status {
   Begin,
@@ -62,10 +64,24 @@ export default function StatusBar({
           successMessage || (
             <span className="flex space-x-3.5">
               <Lottie
-                animationData={successAnimation}
-                initialSegment={[0, 90]}
-                className="-m-[1.5rem] flex h-[4.5rem] w-[4.5rem]"
-                loop={false}
+                className="-m-[2.5rem] h-[4.5rem] w-[4.5rem]"
+                style={{
+                  cursor: 'default',
+                  marginTop: '-1rem',
+                  marginRight: '-0.5rem',
+                  marginBottom: '-1rem',
+                  marginLeft: '-1rem',
+                  height: '3.75rem',
+                  width: '3.75rem',
+                }}
+                options={{
+                  loop: false,
+                  autoplay: true,
+                  animationData: successAnimation,
+                  rendererSettings: {
+                    preserveAspectRatio: 'xMidYMid slice',
+                  },
+                }}
               />
               <span>Nicely done!</span>
             </span>
