@@ -6,7 +6,7 @@ import CheckIcon from 'public/assets/icons/check.svg'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
 import Lottie from 'react-lottie'
-import * as successAnimation from '../../public/assets/icons/87795-loading-success.json'
+import * as successAnimation from '../../public/assets/icons/79952-successful.json'
 
 export enum Status {
   Begin,
@@ -64,14 +64,13 @@ export default function StatusBar({
           successMessage || (
             <span className="flex space-x-3.5">
               <Lottie
-                className="-m-[2.5rem] h-[4.5rem] w-[4.5rem]"
                 style={{
                   cursor: 'default',
-                  marginTop: '-1rem',
+                  marginTop: '-2.5rem',
                   marginRight: '-0.5rem',
-                  marginBottom: '-1rem',
+                  marginBottom: '-2rem',
                   marginLeft: '-1rem',
-                  height: '3.75rem',
+                  height: '6.75rem',
                   width: '3.75rem',
                 }}
                 options={{
