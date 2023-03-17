@@ -98,11 +98,8 @@ export default function Input({
 
   const handleChange = (event) => {
     setTextAreaValue(event.target.value.slice(0, answer.length).toLowerCase())
-    onChange(event.target.value)
-    if (
-      event.target.value === answer &&
-      event.target.value.length === answer.length
-    ) {
+    onChange(event.target.value.slice(0, answer.length).toLowerCase())
+    if (event.target.value.slice(0, answer.length) === answer) {
       setCorrectAnswer(true)
       event.target.blur()
     } else {
