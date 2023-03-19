@@ -8,12 +8,10 @@ const siteConfig = {
   },
   navItems: [
     {
-      title: 'Chapters',
-      href: '/chapters',
+      title: 'chapters',
     },
     {
-      title: 'About',
-      href: '/about',
+      title: 'about',
     },
   ],
 }

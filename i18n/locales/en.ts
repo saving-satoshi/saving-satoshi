@@ -3,11 +3,13 @@ const translations = {
     next: 'Continue',
     start: 'Start',
     copy: 'Copy',
+    about: 'About',
     chapter: 'Chapter',
+    chapters: 'Chapters',
     challenge: 'Challenge',
     coming_soon: 'Coming soon',
     start_chapter: 'Start chapter',
-    back: 'Back'
+    back: 'Back',
   },
   ///ABOUT PAGE
   about: {
