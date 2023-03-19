@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
-import { useLang, useStatus, useTranslations } from 'hooks'
+import { useLang, useLocalizedRoutes, useStatus, useTranslations } from 'hooks'
 
 export default function Tab({
   index,
@@ -24,6 +24,7 @@ export default function Tab({
 }) {
   const { slug } = params
 
+  const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
   const pathName = usePathname()
@@ -39,7 +40,7 @@ export default function Tab({
 
   return (
     <Link
-      href={`/chapters/${slug}/${challenge.lessonId}`}
+      href={`${routes.chaptersUrl}/${slug}/${challenge.lessonId}`}
       title={t(challenge.title)}
       onClick={() => clicked()}
       className={clsx(

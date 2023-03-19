@@ -8,7 +8,7 @@ import { Tooltip } from 'ui'
 import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
-import { useLang, useStatus, useTranslations } from 'hooks'
+import { useLang, useLocalizedRoutes, useStatus, useTranslations } from 'hooks'
 
 export default function Tab({
   index,
@@ -23,6 +23,7 @@ export default function Tab({
 }) {
   const { slug } = params
 
+  const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
   const pathName = usePathname()
@@ -51,7 +52,7 @@ export default function Tab({
       }
     >
       <Link
-        href={`/chapters/${slug}/${challenge.lessonId}`}
+        href={`${routes.chaptersUrl}/${slug}/${challenge.lessonId}`}
         title={t(challenge.title)}
         className={clsx(
           'relative flex h-full items-center justify-center border-l border-white/25 px-7 text-center text-lg transition duration-100 ease-in-out',

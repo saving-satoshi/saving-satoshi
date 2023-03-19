@@ -1,10 +1,11 @@
 'use client'
 
 import { Button } from 'shared'
-import { useLang, useTranslations } from 'hooks'
+import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import Image from 'next/image'
 
 export default function Hero() {
+  const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
 
@@ -28,12 +29,16 @@ export default function Hero() {
         </p>
         <div className="grid grid-cols-1 justify-center pt-5 pb-2 sm:pb-8 md:grid-cols-2 md:space-x-5 md:pt-8">
           <div className="flex items-center justify-center md:justify-end">
-            <Button classes="text-xl w-full" href="/chapters">
+            <Button classes="text-xl w-full" href={routes.chaptersUrl}>
               {t('hero.start_journey')}
             </Button>
           </div>
           <div className="flex justify-center pt-5 md:justify-start md:pt-0">
-            <Button classes="text-xl w-full" href="/about" style="outline">
+            <Button
+              classes="text-xl w-full"
+              href={routes.aboutUrl}
+              style="outline"
+            >
               {t('hero.tell_more')}
             </Button>
           </div>

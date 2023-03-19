@@ -8,7 +8,7 @@ import UserButton from '../UserButton'
 import Link from 'next/link'
 
 export default function NavbarDesktop({ params }) {
-  const { chaptersUrl } = useLocalizedRoutes()
+  const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
 
@@ -19,7 +19,7 @@ export default function NavbarDesktop({ params }) {
           <Link
             title={t('shared.back')}
             className="group flex items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
-            href={chaptersUrl}
+            href={routes.chaptersUrl}
           >
             <PowerOffIcon className="h-[30px] w-[30px] opacity-75 transition duration-100 ease-in-out group-hover:opacity-100" />
           </Link>
