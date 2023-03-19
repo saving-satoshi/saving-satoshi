@@ -11,6 +11,13 @@ const translations = {
     start_chapter: 'Start chapter',
     back: 'Back',
   },
+  status_bar: {
+    begin_message: 'Complete the challenge above to continue...',
+    error_message: 'Hm... that is not quite right yet...',
+    in_progress_message: 'Looking good so far...',
+    success_message: 'Nicely done!',
+    next: 'Next',
+  },
   ///ABOUT PAGE
   about: {
     title: 'About',
