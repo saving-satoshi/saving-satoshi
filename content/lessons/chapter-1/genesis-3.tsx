@@ -1,9 +1,10 @@
 'use client'
 
-import { useTranslations } from 'hooks'
+import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { CodeExample, LessonInfo, Title, Text, TerminalChallenge } from 'ui'
 
 export default function Genesis5({ lang }) {
+  const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
@@ -17,7 +18,7 @@ export default function Genesis5({ lang }) {
         chapter: 'chapter-1',
         challenge: 'transacting-1',
       }}
-      next="/chapters/chapter-1/genesis-4"
+      next={`${routes.chaptersUrl}/chapter-1/genesis-4`}
       successMessage={t('genesis_three.success')}
       customLines={t('genesis_three.terminal_challenge_lines')}
     >
