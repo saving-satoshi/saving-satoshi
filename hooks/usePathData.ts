@@ -1,9 +1,13 @@
 import { usePathname } from 'next/navigation'
 
 export const usePathData = () => {
-  const [lang, pageId, chapterId, lessonId] = usePathname()
+  let [lang, pageId, chapterId, lessonId] = usePathname()
     .split('/')
     .filter((p) => p)
+
+  if (!lang) {
+    lang = 'en'
+  }
 
   return {
     lang,
