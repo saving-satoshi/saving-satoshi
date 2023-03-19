@@ -3,6 +3,7 @@ import { Button } from 'ui'
 import CheckIcon from 'public/assets/icons/check.svg'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
+import { useLang } from 'hooks'
 
 export enum Status {
   Begin,
@@ -32,6 +33,7 @@ export default function StatusBar({
   full?: boolean
   hints?: boolean
 }) {
+  const lang = useLang()
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
 
