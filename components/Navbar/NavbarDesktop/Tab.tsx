@@ -61,6 +61,7 @@ export default function Tab({
               status && status.unlocked && !isActive,
             'bg-black/25 text-opacity-100': isActive,
             'border-r': isLast,
+            'pointer-events-none': !status?.unlocked,
           }
         )}
       >

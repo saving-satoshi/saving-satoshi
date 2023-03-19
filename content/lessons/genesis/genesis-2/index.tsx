@@ -1,9 +1,10 @@
 'use client'
-import { useTranslations } from 'hooks'
+import { useContentRoute, useTranslations } from 'hooks'
 import { Button, ChapterIntro } from 'ui'
 
 export default function Genesis2({ lang }) {
   const t = useTranslations(lang)
+  const { handleNextPathProgress } = useContentRoute()
 
   return (
     <ChapterIntro heading={t('genesis_one.heading')}>
@@ -18,6 +19,7 @@ export default function Genesis2({ lang }) {
       <Button
         href="/chapters/chapter-1/genesis-3"
         classes="mt-10 max-md:w-full"
+        onClick={handleNextPathProgress('/chapters/chapter-1/genesis-3')}
       >
         {t('shared.start')}
       </Button>

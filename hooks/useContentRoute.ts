@@ -1,6 +1,7 @@
 import { useRouter, usePathname } from 'next/navigation'
 import { chapters } from 'content'
 import { useUser } from 'hooks'
+import { setUserProgress } from 'lib/user'
 
 const getPathData = (pathName: string) => {
   const pathArray = pathName.split('/').filter((p) => p)
@@ -24,7 +25,7 @@ const checkChallengeAllowed = (pathName, user, router) => {
 
   const currentLessonIndex = lessonArray.indexOf(lessonId)
 
-  const userFinalLesson = user.progress.lesson
+  const userFinalLesson = user?.progress?.lesson
   const userFinalLessonIndex = lessonArray.indexOf(userFinalLesson)
 
   const result = currentLessonIndex - userFinalLessonIndex > 0 ? false : true
@@ -32,6 +33,12 @@ const checkChallengeAllowed = (pathName, user, router) => {
     router.push(`/chapters/${chapterId}/${userFinalLesson}`)
   }
   return result
+}
+
+const handleNextPathProgress = (path) => () => {
+  const pathArray = path.split('/').filter((p) => p)
+  const [, chapterId, lessonId] = pathArray
+  setUserProgress(chapterId, lessonId)
 }
 
 export const useContentRoute = () => {
@@ -42,5 +49,6 @@ export const useContentRoute = () => {
   return {
     getChaptersPath: () => getChaptersPath(pathName),
     checkChallengeAllowed: () => checkChallengeAllowed(pathName, user, router),
+    handleNextPathProgress,
   }
 }

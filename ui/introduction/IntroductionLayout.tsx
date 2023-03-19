@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { Button } from 'shared'
-import { useTranslations } from 'hooks'
+import { useContentRoute, useTranslations } from 'hooks'
 
 export default function IntroductionLayout({
   children,
@@ -20,6 +20,8 @@ export default function IntroductionLayout({
   nextStatus: boolean
 }) {
   const t = useTranslations(lang)
+
+  const { handleNextPathProgress } = useContentRoute()
 
   return (
     <div className="flex grow">
@@ -41,11 +43,19 @@ export default function IntroductionLayout({
             </div>
             <div>
               {nextStatus ? (
-                <Button href={next} classes="w-full md:w-auto">
+                <Button
+                  href={next}
+                  classes="w-full md:w-auto"
+                  onClick={handleNextPathProgress(next)}
+                >
                   {t('shared.next')}
                 </Button>
               ) : (
-                <Button classes="w-full md:w-auto" disabled>
+                <Button
+                  classes="w-full md:w-auto"
+                  disabled
+                  onClick={handleNextPathProgress(next)}
+                >
                   {t('shared.coming_soon')}
                 </Button>
               )}

@@ -103,6 +103,7 @@ export default function Button({
         title={title}
         rel={external ? 'noreferrer nofollow' : null}
         target={external ? '_blank' : null}
+        onClick={onClick}
       >
         {children}
       </Link>

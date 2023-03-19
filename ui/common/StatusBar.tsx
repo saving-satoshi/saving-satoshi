@@ -3,6 +3,7 @@ import { Button } from 'ui'
 import CheckIcon from 'public/assets/icons/check.svg'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
+import { useContentRoute } from 'hooks'
 
 export enum Status {
   Begin,
@@ -33,6 +34,8 @@ export default function StatusBar({
   hints?: boolean
 }) {
   const { activeView } = useLessonContext()
+  const { handleNextPathProgress } = useContentRoute()
+
   const isActive = activeView === LessonView.Code
 
   const getStatus = () => {
@@ -105,6 +108,7 @@ export default function StatusBar({
 
         <Button
           href={next}
+          onClick={handleNextPathProgress(next)}
           disabled={getStatus() !== Status.Success}
           classes="md:text-2xl md:py-4"
         >
