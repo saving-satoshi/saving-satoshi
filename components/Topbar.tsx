@@ -29,8 +29,9 @@ export default function Topbar() {
               <Link
                 key={idx}
                 href={
-                  (item.title === 'chapters' && routes.chaptersUrl) ||
-                  (item.title === 'about' && routes.aboutUrl)
+                  item.title === 'chapters'
+                    ? routes.chaptersUrl
+                    : routes.aboutUrl
                 }
                 className="mr-2 text-lg text-white text-opacity-75 transition duration-150 ease-in-out hover:text-opacity-100 sm:text-xl"
               >
