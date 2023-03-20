@@ -96,3 +96,18 @@ export function clearUser() {
   window.localStorage.removeItem('SavingSatoshiUser')
   window.localStorage.removeItem('SavingSatoshiLoggedIn')
 }
+
+export function setUserLocale(locale) {
+  window.localStorage.setItem('SavingSatoshiCurrentLocale', locale)
+}
+
+export function getUserLocale() {
+  if (!process.browser) {
+    return
+  }
+  try {
+    return window.localStorage.getItem('SavingSatoshiCurrentLocale')
+  } catch {
+    return 'English'
+  }
+}

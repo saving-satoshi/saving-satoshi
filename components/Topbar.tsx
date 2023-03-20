@@ -5,6 +5,7 @@ import Link from 'next/link'
 import config from 'config'
 
 import UserButton from './Navbar/UserButton'
+import LangSwitch from './Navbar/LangSwitch'
 
 export default function Topbar() {
   const { name, navItems } = config
@@ -29,6 +30,7 @@ export default function Topbar() {
                 {item.title}
               </Link>
             ))}
+          <LangSwitch />
           <UserButton />
         </nav>
       </div>

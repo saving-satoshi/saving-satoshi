@@ -18,6 +18,12 @@ export const useUser = () => {
   const [isLoggedIn] = useLocalStorageState<boolean>('SavingSatoshiLoggedIn', {
     defaultValue: false,
   })
+  const [currentLocale] = useLocalStorageState<number>(
+    'SavingSatoshiCurrentLocale',
+    {
+      defaultValue: 0,
+    }
+  )
 
-  return { user, isLoggedIn, isRegistered: user?.registered }
+  return { user, isLoggedIn, currentLocale, isRegistered: user?.registered }
 }
