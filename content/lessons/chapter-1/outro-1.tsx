@@ -1,9 +1,10 @@
 'use client'
 
-import { useTranslations } from 'hooks'
+import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { TextImage } from 'ui'
 
 export default function Transacting4({ lang }) {
+  const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
@@ -13,7 +14,7 @@ export default function Transacting4({ lang }) {
       imageAlt={t('outro.title')}
       btnText={t('outro.button_text')}
       btnEnabled={true}
-      next={'/chapters/chapter-1/outro-2'}
+      next={`${routes.chaptersUrl}/chapter-1/outro-2`}
     >
       <p>{t('outro.paragraph_one')}</p>
       <p className="pt-6">{t('outro.paragraph_two')}</p>

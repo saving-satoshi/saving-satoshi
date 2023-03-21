@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations } from 'hooks'
+import { useLocalizedRoutes, useTranslations } from 'hooks'
 import {
   Button,
   LessonInfo,
@@ -11,6 +11,7 @@ import {
 } from 'ui'
 
 export default function Transacting3({ lang }) {
+  const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
@@ -20,7 +21,7 @@ export default function Transacting3({ lang }) {
         chapter: 'chapter-1',
         challenge: 'outro-1',
       }}
-      next="/chapters/chapter-1/outro-1"
+      next={`${routes.chaptersUrl}/chapter-1/outro-1`}
       successMessage={t('transacting_three.terminal_challenge_success')}
       customLines={t('transacting_three.terminal_challenge_lines')}
       commonError={{

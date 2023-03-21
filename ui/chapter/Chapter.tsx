@@ -7,7 +7,7 @@ import clsx from 'clsx'
 import { Button } from 'shared'
 import ChapterTabs from './Tabs'
 import ChallengeList from './ChallengeList'
-import { useStatus } from 'hooks'
+import { useLocalizedRoutes, useStatus } from 'hooks'
 import LockIcon from 'public/assets/icons/lock.svg'
 import { chapters } from 'content'
 
@@ -33,6 +33,7 @@ export default function Chapter({ children, metadata, lang }) {
   const [activeTab, setActiveTab] = useState('info')
   const [display, setDisplay] = useState(false)
 
+  const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
   const chapter = chapters[metadata.slug]
   const position = metadata.position + 1
@@ -101,7 +102,7 @@ export default function Chapter({ children, metadata, lang }) {
                       (chapter.metadata.lessons.length === 0 && null)}
                     <div className="flex pt-8 md:w-full">
                       <Button
-                        href={`/chapters/${chapter.metadata.slug}/${chapter.metadata.intros[0]}`}
+                        href={`${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}`}
                         disabled={
                           chapter.metadata.lessons.length === 0 || !display
                         }
