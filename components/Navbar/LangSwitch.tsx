@@ -1,10 +1,11 @@
 'use client'
 
-import LangBtn from 'public/assets/icons/langBtn.svg'
+import LangBtn from 'public/assets/icons/language.svg'
 import { i18n } from 'i18n/config'
 import { useState, useEffect } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { getCurrentLocale, generateNewUrl } from 'hooks'
+import clsx from 'clsx'
 
 export default function LangSwitch() {
   const router = useRouter()
@@ -29,35 +30,42 @@ export default function LangSwitch() {
         <button
           type="button"
           className="text-grey-300 h-10 cursor-pointer"
-          id="language-menu"
-          aria-label="profile"
+          aria-label="Choose language"
           aria-haspopup="true"
           aria-expanded={isOpen}
           onClick={() => setIsOpen(!isOpen)}
         >
-          <LangBtn />
+          <LangBtn className="h-6 w-6" />
         </button>
       </div>
 
       <div
-        className={`${
-          isOpen ? 'block' : 'hidden'
-        } absolute right-0 mt-2 w-[125px] origin-top-right  border border-white border-opacity-25 bg-back shadow-lg`}
-        role="menu"
+        className={clsx(
+          'absolute right-0 mt-2 w-[125px] origin-top-right  border border-white border-opacity-25 bg-back shadow-lg',
+          {
+            block: isOpen,
+            hidden: !isOpen,
+          }
+        )}
         aria-orientation="vertical"
         aria-labelledby="language-menu"
       >
-        <div className="py-1" role="none">
+        <div className="py-1">
           {i18n.languages.map((language, index) => (
             <button
               key={index}
-              className={`${
-                currentLanguage == i18n.locales[index]
-                  ? 'text-white'
-                  : 'text-white text-opacity-75'
-              }  px-5 py-2 text-left font-nunito text-lg font-bold `}
-              role="menuitem"
+              className={clsx(
+                'px-5 py-2 text-left font-nunito text-lg font-bold',
+                {
+                  'text-white': currentLanguage == i18n.locales[index],
+                  'text-white text-opacity-75':
+                    currentLanguage != i18n.locales[index],
+                }
+              )}
               onClick={() => handleLanguageClick(index)}
+              aria-selected={
+                currentLanguage == i18n.locales[index] ? true : false
+              }
             >
               {language}
             </button>
