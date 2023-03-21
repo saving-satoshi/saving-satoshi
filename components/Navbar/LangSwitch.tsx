@@ -3,20 +3,24 @@
 import LangBtn from 'public/assets/icons/langBtn.svg'
 import { i18n } from 'i18n/config'
 import { useState, useEffect } from 'react'
-import { setUserLocale, getUserLocale } from 'lib/user'
+import { useRouter, usePathname } from 'next/navigation'
+import { getCurrentLocale, generateNewUrl } from 'hooks'
 
 export default function LangSwitch() {
+  const router = useRouter()
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [currentLanguage, setCurrentLanguage] = useState<any>(1)
 
   useEffect(() => {
-    setCurrentLanguage(getUserLocale())
+    setCurrentLanguage(getCurrentLocale(pathname))
   }, [])
 
   const handleLanguageClick = (language) => {
     setCurrentLanguage(language)
-    setUserLocale(language)
     setIsOpen(false)
+    const newLocale = i18n.locales[language]
+    router.replace(generateNewUrl(pathname, newLocale))
   }
 
   return (
@@ -48,7 +52,7 @@ export default function LangSwitch() {
             <button
               key={index}
               className={`${
-                currentLanguage == index
+                currentLanguage == i18n.locales[index]
                   ? 'text-white'
                   : 'text-white text-opacity-75'
               }  px-5 py-2 text-left font-nunito text-lg font-bold `}
