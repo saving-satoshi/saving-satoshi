@@ -2,26 +2,47 @@
 
 import LangBtn from 'public/assets/icons/language.svg'
 import { i18n } from 'i18n/config'
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { getCurrentLocale, generateNewUrl } from 'hooks'
+import { usePathData } from 'hooks'
 import clsx from 'clsx'
+
+function generateNewUrl(pathname, language) {
+  const pathnameWithoutLanguage = pathname.replace(/^\/(en|nl)\b/, '')
+  const newUrl = `/${language}${pathnameWithoutLanguage}`
+  return newUrl
+}
 
 export default function LangSwitch() {
   const router = useRouter()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [currentLanguage, setCurrentLanguage] = useState<any>(1)
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const divRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    setCurrentLanguage(getCurrentLocale(pathname))
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
   }, [])
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      buttonRef.current &&
+      divRef.current &&
+      !buttonRef.current.contains(event.target as Node) &&
+      !divRef.current.contains(event.target as Node)
+    ) {
+      setIsOpen(false)
+    }
+  }
+
+  const { lang } = usePathData()
+
   const handleLanguageClick = (language) => {
-    setCurrentLanguage(language)
     setIsOpen(false)
-    const newLocale = i18n.locales[language]
-    router.replace(generateNewUrl(pathname, newLocale))
+    router.replace(generateNewUrl(pathname, language))
   }
 
   return (
@@ -33,6 +54,7 @@ export default function LangSwitch() {
           aria-label="Choose language"
           aria-haspopup="true"
           aria-expanded={isOpen}
+          ref={buttonRef}
           onClick={() => setIsOpen(!isOpen)}
         >
           <LangBtn className="h-6 w-6" />
@@ -48,26 +70,24 @@ export default function LangSwitch() {
           }
         )}
         aria-orientation="vertical"
+        ref={divRef}
         aria-labelledby="language-menu"
       >
         <div className="py-1">
-          {i18n.languages.map((language, index) => (
+          {i18n.locales.map((language, index) => (
             <button
               key={index}
               className={clsx(
                 'px-5 py-2 text-left font-nunito text-lg font-bold',
                 {
-                  'text-white': currentLanguage == i18n.locales[index],
-                  'text-white text-opacity-75':
-                    currentLanguage != i18n.locales[index],
+                  'text-white': lang == language.locale,
+                  'text-white text-opacity-75': lang != language.locale,
                 }
               )}
-              onClick={() => handleLanguageClick(index)}
-              aria-selected={
-                currentLanguage == i18n.locales[index] ? true : false
-              }
+              onClick={() => handleLanguageClick(language.locale)}
+              aria-selected={lang == language.locale ? true : false}
             >
-              {language}
+              {language.label}
             </button>
           ))}
         </div>
