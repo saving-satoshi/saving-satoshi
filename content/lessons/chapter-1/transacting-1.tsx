@@ -1,9 +1,10 @@
 'use client'
 
-import { useTranslations } from 'hooks'
+import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { Button, ChapterIntro } from 'ui'
 
 export default function Transacting1({ lang }) {
+  const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
@@ -17,7 +18,7 @@ export default function Transacting1({ lang }) {
       </p>
 
       <Button
-        href="/chapters/chapter-1/transacting-2"
+        href={`${routes.chaptersUrl}/chapter-1/transacting-2`}
         classes="mt-10 max-md:w-full"
       >
         {t('shared.next')}

@@ -1,5 +1,5 @@
 'use client'
-import { useTranslations } from 'hooks'
+import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { TextImage, Text } from 'ui'
 
 export const metadata = {
@@ -8,6 +8,7 @@ export const metadata = {
 }
 
 export default function Holocat({ lang }) {
+  const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
@@ -15,7 +16,7 @@ export default function Holocat({ lang }) {
       lang={lang}
       imageSrc={metadata.image}
       imageAlt={metadata.title}
-      next={`/chapters/chapter-1/genesis-1`}
+      next={`${routes.chaptersUrl}/chapter-1/genesis-1`}
       btnEnabled={true}
     >
       <Text className="text-lg md:text-xl">{t('intro_two.paragraph_one')}</Text>

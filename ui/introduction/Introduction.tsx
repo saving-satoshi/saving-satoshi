@@ -4,14 +4,15 @@ import { chapters } from 'content'
 import { lessons } from 'content'
 import { redirect } from 'next/navigation'
 import { TextImage } from 'ui'
-import { usePathData } from 'hooks'
+import { useLocalizedRoutes, usePathData } from 'hooks'
 
 export default function Introduction({ children, lang }) {
+  const routes = useLocalizedRoutes()
   const { chapterId, lessonId } = usePathData()
   const chapter = chapters[chapterId]
 
   if (!chapter) {
-    return redirect('/chapters')
+    return redirect(routes.chaptersUrl)
   }
 
   const chapterLessons = lessons[chapterId]
@@ -27,7 +28,7 @@ export default function Introduction({ children, lang }) {
       lang={lang}
       imageSrc={intro.metadata.image}
       imageAlt={intro.metadata.title}
-      next={`/chapters/${chapterId}/${nextLessonId}`}
+      next={`${routes.chaptersUrl}/${chapterId}/${nextLessonId}`}
       btnEnabled={chapter.metadata.lessons.length > 0}
     >
       {children}

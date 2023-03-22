@@ -9,7 +9,7 @@ export default async function ChaptersPage({ params }) {
   )
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-[#2A3B61]">
       <Topbar />
 
       <div className="lg:px-0">

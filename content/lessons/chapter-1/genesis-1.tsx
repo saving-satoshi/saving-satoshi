@@ -1,8 +1,9 @@
 'use client'
-import { useTranslations } from 'hooks'
+import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { Button, ChapterIntro } from 'ui'
 
 export default function Genesis2({ lang }) {
+  const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
@@ -16,7 +17,7 @@ export default function Genesis2({ lang }) {
       </p>
 
       <Button
-        href="/chapters/chapter-1/genesis-2"
+        href={`${routes.chaptersUrl}/chapter-1/genesis-2`}
         classes="mt-10 max-md:w-full"
       >
         {t('shared.start')}

@@ -31,9 +31,7 @@ export default function TextImageDisplay({
             src={imageSrc}
             alt={t(imageAlt)}
             fill
-            objectFit="cover"
-            objectPosition="bottom"
-            className="relative"
+            className="relative object-cover object-bottom"
           />
         </div>
         <div className="flex shrink basis-1/2">

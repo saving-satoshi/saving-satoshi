@@ -4,7 +4,7 @@ import Link from 'next/link'
 import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
-import { useLang, useStatus, useTranslations } from 'hooks'
+import { useLang, useLocalizedRoutes, useStatus, useTranslations } from 'hooks'
 
 export default function ChallengeItem({
   position,
@@ -12,11 +12,12 @@ export default function ChallengeItem({
   chapterId,
   lessonId,
 }) {
+  const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
 
   const status = useStatus(chapterId, lessonId)
-  const href = `/chapters/${chapterId}/${lessonId}`
+  const href = `${routes.chaptersUrl}/${chapterId}/${lessonId}`
   const ComponentType = status && status.unlocked ? Link : 'p'
 
   return (
