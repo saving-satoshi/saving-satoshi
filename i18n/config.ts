@@ -4,7 +4,6 @@ export const i18n = {
     { locale: 'en', label: 'English' },
     { locale: 'nl', label: 'Dutch' },
   ],
-  old: ['en', 'nl'],
 } as const
 
 export type Locale = typeof i18n['locales'][number]
