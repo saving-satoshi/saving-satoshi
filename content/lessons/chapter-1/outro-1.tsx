@@ -25,4 +25,5 @@ export default function Transacting4({ lang }) {
 export const metadata = {
   title: 'chapter_one.outro_one.title',
   image: '/assets/images/chapter-1-outro.jpg',
+  theme: 'bg-[#2C3A3F]',
 }
