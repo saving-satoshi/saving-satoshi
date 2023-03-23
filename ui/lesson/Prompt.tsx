@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { LessonView } from 'types'
 import { Input, useLessonContext } from 'ui'
+import Hashing from 'ui/common/Hasher'
 
 export default function LessonPrompt({
   className,
@@ -38,13 +39,14 @@ export default function LessonPrompt({
         <h2 className="text-left text-xl font-bold md:text-center">{label}</h2>
 
         <div className="w-full pt-8">
-          <Input
+          {/* <Input
             onChange={onChange}
             answer={answer}
             pattern={inputPattern}
             hints={hints}
             precedingText={precedingText}
-          />
+          /> */}
+          <Hashing />
         </div>
       </div>
     </div>
