@@ -3,6 +3,7 @@ import { Button } from 'ui'
 import CheckIcon from 'public/assets/icons/check.svg'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
+import { useLang, useTranslations } from 'hooks'
 
 export enum Status {
   Begin,
@@ -32,6 +33,8 @@ export default function StatusBar({
   full?: boolean
   hints?: boolean
 }) {
+  const lang = useLang()
+  const t = useTranslations(lang)
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
 
@@ -59,16 +62,17 @@ export default function StatusBar({
         return (
           successMessage || (
             <span className="flex">
-              <CheckIcon className="mr-2 h-8 w-8" /> Nicely done!
+              <CheckIcon className="mr-2 h-8 w-8" />{' '}
+              {t('status_bar.success_message')}
             </span>
           )
         )
       case Status.Begin:
-        return beginMessage || 'Complete the challenge above to continue...'
+        return beginMessage || t('status_bar.begin_message')
       case Status.Error:
-        return errorMessage || 'Hm... that is not quite right yet...'
+        return errorMessage || t(`status_bar.error_message`)
       case Status.InProgress:
-        return inProgressMessage || 'Looking good so far...'
+        return inProgressMessage || t('status_bar.in_progress_message')
       default:
         return ''
     }
@@ -108,7 +112,7 @@ export default function StatusBar({
           disabled={getStatus() !== Status.Success}
           classes="md:text-2xl md:py-4"
         >
-          Next
+          {t('status_bar.next')}
         </Button>
       </div>
     </div>

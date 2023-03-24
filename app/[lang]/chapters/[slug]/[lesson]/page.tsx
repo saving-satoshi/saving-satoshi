@@ -11,7 +11,10 @@ export default function Page({ params }) {
         <span className="mb-10 text-4xl text-white">
           Sorry, we could not find the ’{params.lesson}’ lesson.
         </span>
-        <Button href={`/chapters/${params.slug}`} size="small">
+        <Button
+          href={`/${params.lang}/chapters/${params.slug}/intro-1`}
+          size="small"
+        >
           &larr; Back to Chapter Overview
         </Button>
       </div>

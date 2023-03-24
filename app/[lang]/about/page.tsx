@@ -117,7 +117,9 @@ export default function About({ params }) {
           <p className="pt-4 pb-8 text-center font-nunito text-xl">
             {t('about.satoshi_needs_you')}
           </p>
-          <Button href="/chapters">{t('hero.start_journey')}</Button>
+          <Button href={`/${params.lang}/chapters`}>
+            {t('hero.start_journey')}
+          </Button>
         </div>
       </div>
 
