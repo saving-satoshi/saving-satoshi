@@ -1,5 +1,4 @@
-import sdk from './sdk'
-import py_sdk from './py_sdk'
+import langs from './langs'
 
 export function create(program: string, config: { language: string }) {
   const events = {}
@@ -11,7 +10,7 @@ export function create(program: string, config: { language: string }) {
   }
 
   return {
-    run(input: string, entry: string) {
+    async run(input: string, entry: string) {
       const iframe = document.createElement('iframe')
       iframe.style.width = '0px'
       iframe.style.height = '0px'
@@ -40,47 +39,7 @@ export function create(program: string, config: { language: string }) {
 
       window.addEventListener('message', handleMessage)
 
-      let code
-
-      switch (config.language) {
-        case 'javascript': {
-          code = `<script>
-            ${sdk}
-            async function vm_run() {
-              ${input}
-              ${program}
-            }
-            vm_run()
-          </script>`
-          break
-        }
-
-        case 'python': {
-          code = `
-          <script src="https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js"></script>
-          <script>
-            ${sdk}
-
-            function handleMessage(e) {
-              const { action, payload } = JSON.parse(e.data)
-              vm_send(action, payload)
-            }
-
-            window.addEventListener('message', handleMessage)
-
-            async function vm_run() {
-              let pyodide = await loadPyodide();
-              pyodide.runPython(\`${py_sdk}${input}${program}\`)
-              console.log('done')
-              // window.removeEventListener('message', handleMessage)
-            }
-
-            vm_run()
-          </script>`
-          break
-        }
-      }
-
+      const code = langs[config.language].compile(input, program)
       const doc = iframe.contentDocument
       doc.open()
       doc.write(code)

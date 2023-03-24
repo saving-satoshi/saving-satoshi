@@ -5,18 +5,7 @@ import { useRef, useState } from 'react'
 import MonacoEditor from '@monaco-editor/react'
 
 import * as VM from 'lib/vm'
-
-interface EditorLanguages {
-  [language: string]: {
-    program: string
-    defaultCode?: string
-  }
-}
-
-interface EditorConfig {
-  defaultLanguage: string
-  languages: EditorLanguages
-}
+import { EditorConfig } from 'types'
 
 const languageMeta = {
   javascript: {

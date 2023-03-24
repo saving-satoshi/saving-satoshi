@@ -15,3 +15,15 @@ export interface Modals {
 export interface ModalContextType {
   modals: Modals
 }
+
+export interface EditorLanguages {
+  [language: string]: {
+    program: string
+    defaultCode?: string
+  }
+}
+
+export interface EditorConfig {
+  defaultLanguage: string
+  languages: EditorLanguages
+}
