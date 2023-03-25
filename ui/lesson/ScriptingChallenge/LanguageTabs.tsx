@@ -12,7 +12,7 @@ export default function LanguageTabs({
   onChange: (val: string) => void
 }) {
   return (
-    <div className="flex h-10 items-center justify-start border-b border-white border-opacity-30 bg-[#432A43]">
+    <div className="flex h-10 items-center justify-start border-b border-white border-opacity-30">
       {Object.keys(languages).map((l, i) => {
         const meta = languageMeta[l]
 

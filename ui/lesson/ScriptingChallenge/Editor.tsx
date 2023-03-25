@@ -18,7 +18,7 @@ export default function Editor({
 }) {
   const handleBeforeMount = (monaco) => {
     monaco.editor.defineTheme('satoshi', {
-      base: 'vs-dark',
+      base: monacoOptions.theme,
       inherit: true,
       rules: [],
       colors: {
@@ -44,7 +44,7 @@ export default function Editor({
   }
 
   return (
-    <div className="bg-[#432A43] font-mono text-sm text-white">
+    <div className="font-mono text-sm text-white">
       <MonacoEditor
         width="calc(100vw / 2)"
         height="calc(100vh - 71px - 48px - 40px - 160px)"

@@ -113,14 +113,14 @@ export default function Runner({
       <Script src="https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js" />
 
       <div
-        className="h-40 overflow-y-auto border-t border-white border-opacity-30 bg-[#432A43] p-4"
+        className="h-40 overflow-y-auto border-t border-white border-opacity-30 p-4"
         ref={outputRef}
       >
         <div className={clsx('font-mono text-sm text-white')}>
           {defaultTerminalMessage}
         </div>
       </div>
-      <div className="flex h-12 w-full items-center border-t border-white border-opacity-30 bg-[#432A43] px-2">
+      <div className="flex h-12 w-full items-center border-t border-white border-opacity-30 px-2">
         <button
           className="h-8 rounded bg-emerald-500 px-4 font-mono text-white"
           onClick={handleRun}

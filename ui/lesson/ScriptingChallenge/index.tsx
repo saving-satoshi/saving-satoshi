@@ -37,7 +37,7 @@ export default function ScriptingChallenge({
 
   return (
     <div className="grid grid-cols-2">
-      <div className="border-r border-white border-opacity-30 bg-gradient-to-b from-[#7B1810] to-[#432A43D9] p-10">
+      <div className="border-r border-white border-opacity-30 p-10">
         <p className="font-nunito text-xl text-white">
           Alright, time to write and run your own code. When you press “Run the
           script”, the{' '}
