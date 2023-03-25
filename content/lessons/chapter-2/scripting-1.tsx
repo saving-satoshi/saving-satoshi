@@ -4,7 +4,7 @@ import ScriptingChallenge from 'ui/lesson/ScriptingChallenge'
 import { EditorConfig } from 'types'
 
 const config: EditorConfig = {
-  defaultLanguage: 'python',
+  defaultLanguage: 'javascript',
   languages: {
     javascript: {
       program: `
@@ -12,16 +12,16 @@ const config: EditorConfig = {
 
     for (let i=0;i<iter;i++) {
       const hash = findHash(i)
-      await vm_sleep(10)
-      vm_log(hash)
+      await sleep(10)
+      console.log(hash)
     }
 
     const hash = findHash(iter+1)
     const hashResult = '00000' + hash.substring(5,hash.length-1)
 
-    vm_log(hashResult)
-    vm_log(' ')
-    vm_log(\`It took \$\{iter+1\} tries to find a hash starting with 5 zero's\`)
+    console.log(hashResult)
+    console.log(' ')
+    console.log(\`It took \$\{iter+1\} tries to find a hash starting with 5 zero's\`)
 
     vm_close()
     `,
@@ -37,8 +37,7 @@ function findHash(nonce) {
       program: `
 for i in range(20):
   hash = find_hash(i)
-  vm_log(hash)
-  time.sleep(0.5)`,
+  print(hash)`,
       defaultCode: `from hashlib import sha256
 
 def find_hash(nonce):

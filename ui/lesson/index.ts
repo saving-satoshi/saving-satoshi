@@ -5,7 +5,7 @@ import LessonTerminal from './Terminal'
 import LessonTabs from './Tabs'
 import TerminalChallenge from './TerminalChallenge'
 import InputChallenge from './InputChallenge'
-import Editor from './Editor'
+import ScriptingChallenge from './ScriptingChallenge'
 
 export {
   Lesson,
@@ -16,5 +16,5 @@ export {
   useLessonContext,
   TerminalChallenge,
   InputChallenge,
-  Editor,
+  ScriptingChallenge,
 }

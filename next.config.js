@@ -29,6 +29,7 @@ const nextConfig = {
       include: [path.resolve(__dirname, 'lib', 'vm', 'langs')],
       use: 'raw-loader',
     })
+
     return config
   },
 }
