@@ -38,9 +38,9 @@ VM.close()
   defaultCode: `const crypto = require('crypto')
 
 function findHash(nonce) {
-const hash = crypto.createHash('sha256').update(nonce).digest('hex')
+  const hash = crypto.createHash('sha256').update(nonce).digest('hex')
 
-return hash
+  return hash
 }`,
   validate: async (answer) => {
     return answer.startsWith('00000') && answer.length === 64
