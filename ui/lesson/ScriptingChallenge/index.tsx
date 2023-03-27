@@ -27,12 +27,16 @@ export default function ScriptingChallenge({
     setCode(val)
   }
 
-  const handleValidate = (markers) => {
+  const handleEditorValidate = (markers) => {
     setErrors(
       markers.filter(
         (marker) => marker.code !== '80001' && marker.code !== '6133'
       )
     )
+  }
+
+  const handleRunnerValidate = async (answer) => {
+    return config.languages[language].validate(answer)
   }
 
   return (
@@ -60,7 +64,7 @@ export default function ScriptingChallenge({
           language={language}
           value={code}
           onChange={handleChange}
-          onValidate={handleValidate}
+          onValidate={handleEditorValidate}
         />
 
         <Runner
@@ -68,6 +72,7 @@ export default function ScriptingChallenge({
           code={code}
           program={config.languages[language].program}
           errors={errors}
+          onValidate={handleRunnerValidate}
         />
       </div>
     </div>

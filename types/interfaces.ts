@@ -20,6 +20,7 @@ export interface EditorLanguages {
   [language: string]: {
     program: string
     defaultCode?: string
+    validate: (answer: any) => Promise<boolean>
   }
 }
 

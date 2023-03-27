@@ -13,14 +13,17 @@ export default function Runner({
   code,
   program,
   errors,
+  onValidate,
 }: {
   language: string
   code: string
   program: string
   errors: string[]
+  onValidate: (output: string | number) => Promise<boolean>
 }) {
   const outputRef = useRef()
   const [loading, setLoading] = useState<boolean>(true)
+  const [isRunning, setIsRunning] = useState<boolean>(false)
 
   const handleRun = async () => {
     const outputEl = outputRef.current as HTMLElement
@@ -28,34 +31,75 @@ export default function Runner({
       return
     }
 
-    outputEl.innerHTML = `<div class="text-sm text-white font-mono">${defaultTerminalMessage}</div>`
+    setIsRunning(true)
 
-    if (errors.length > 0) {
-      outputEl.innerHTML += `<div class="text-sm text-red-500 font-mono">Did not compile, your code has errors</div>`
-    }
+    outputEl.innerHTML = `<div class="text-sm text-white font-mono">${defaultTerminalMessage}</div>`
 
     const iframe = document.createElement('iframe')
     iframe.style.width = '0px'
     iframe.style.height = '0px'
     document.body.appendChild(iframe)
 
-    function handleMessage(e) {
+    function destroyIframe() {
+      window.removeEventListener('message', handleMessage)
+      document.body.removeChild(iframe)
+    }
+
+    if (errors.length > 0) {
+      outputEl.innerHTML += `<div class="text-sm text-red-500 font-mono">Did not compile, your code has errors</div>`
+      setIsRunning(false)
+      return destroyIframe()
+    }
+
+    function print(message, config = { color: '#FFFFFF' }) {
+      outputEl.innerHTML += `<div class="text-sm font-mono" style="color: ${config.color};">${message}</div>`
+      outputEl.scrollTop = outputEl.scrollHeight
+    }
+
+    async function handleMessage(e) {
       try {
-        const { action, payload } = JSON.parse(e.data)
+        const { action, payload, requestId } = JSON.parse(e.data)
+        const isRequest = requestId !== undefined
+
         switch (action) {
           case 'log': {
-            outputEl.innerHTML += `<div class="text-sm text-white font-mono">${payload}</div>`
-            outputEl.scrollTop = outputEl.scrollHeight
+            print(payload)
             break
           }
           case 'error': {
-            outputEl.innerHTML += `<div class="text-sm text-red font-mono">${payload}</div>`
-            outputEl.scrollTop = outputEl.scrollHeight
+            print(payload, { color: '#FF0000' })
+            setIsRunning(false)
+            break
+          }
+          case 'validate': {
+            const success = await onValidate(payload)
+            if (success) {
+              print('You found a hash!', { color: '#00FF00' })
+            } else {
+              print('Your script does not work, please try again.', {
+                color: '#FFA500',
+              })
+            }
+
+            if (isRequest) {
+              iframe.contentWindow.postMessage(
+                JSON.stringify({
+                  action: 'result',
+                  payload: success,
+                  requestId,
+                })
+              )
+            }
             break
           }
           case 'close': {
-            window.removeEventListener('message', handleMessage)
-            document.body.removeChild(iframe)
+            setIsRunning(false)
+            destroyIframe()
+            break
+          }
+
+          default: {
+            console.log(action, payload, requestId)
             break
           }
         }
@@ -95,6 +139,7 @@ export default function Runner({
       const { action, payload } = JSON.parse(e.data)
       switch (action) {
         case 'pyodide_ready': {
+          console.log('pyodide ready')
           setLoading(false)
           break
         }
@@ -122,10 +167,15 @@ export default function Runner({
       </div>
       <div className="flex h-12 w-full items-center border-t border-white border-opacity-30 px-2">
         <button
-          className="h-8 rounded bg-emerald-500 px-4 font-mono text-white"
+          disabled={isRunning || loading}
+          className={clsx('h-8 rounded px-4 font-mono text-white', {
+            'bg-emerald-500': !isRunning && !loading,
+            'pointer-events-none cursor-default bg-gray-500':
+              isRunning || loading,
+          })}
           onClick={handleRun}
         >
-          Run
+          {isRunning ? 'Running' : 'Run'}
         </button>
       </div>
     </>
