@@ -3,6 +3,7 @@
 import clsx from 'clsx'
 import Script from 'next/script'
 import { useEffect, useRef, useState } from 'react'
+import { Loader } from 'shared'
 import langs from './langs'
 
 let worker
@@ -14,12 +15,14 @@ export default function Runner({
   program,
   errors,
   onValidate,
+  onReady,
 }: {
   language: string
   code: string
   program: string
   errors: string[]
   onValidate: (output: string | number) => Promise<boolean>
+  onReady?: () => void
 }) {
   const outputRef = useRef()
   const [loading, setLoading] = useState<boolean>(true)
@@ -82,13 +85,23 @@ export default function Runner({
             }
 
             if (isRequest) {
-              iframe.contentWindow.postMessage(
-                JSON.stringify({
-                  action: 'result',
-                  payload: success,
-                  requestId,
-                })
-              )
+              if (language === 'javascript') {
+                iframe.contentWindow.postMessage(
+                  JSON.stringify({
+                    action: 'result',
+                    payload: success,
+                    requestId,
+                  })
+                )
+              } else {
+                worker.postMessage(
+                  JSON.stringify({
+                    action: 'result',
+                    payload: success,
+                    requestId,
+                  })
+                )
+              }
             }
             break
           }
@@ -139,8 +152,11 @@ export default function Runner({
       const { action, payload } = JSON.parse(e.data)
       switch (action) {
         case 'pyodide_ready': {
-          console.log('pyodide ready')
           setLoading(false)
+
+          if (typeof onReady === 'function') {
+            onReady()
+          }
           break
         }
       }
@@ -156,16 +172,22 @@ export default function Runner({
   return (
     <>
       <Script src="https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js" />
-
-      <div
-        className="h-40 overflow-y-auto border-t border-white border-opacity-30 p-4"
-        ref={outputRef}
-      >
-        <div className={clsx('font-mono text-sm text-white')}>
-          {defaultTerminalMessage}
+      {loading && (
+        <div className="h-40 overflow-y-auto border-t border-white border-opacity-30 bg-[#253547] p-4">
+          <Loader />
         </div>
-      </div>
-      <div className="flex h-12 w-full items-center border-t border-white border-opacity-30 px-2">
+      )}
+      {!loading && (
+        <div
+          className="h-40 overflow-y-auto border-t border-white border-opacity-30 bg-[#253547] p-4"
+          ref={outputRef}
+        >
+          <div className="font-mono text-sm text-white">
+            {defaultTerminalMessage}
+          </div>
+        </div>
+      )}
+      <div className="flex h-12 w-full items-center border-t border-white border-opacity-30 bg-[#253547] px-2">
         <button
           disabled={isRunning || loading}
           className={clsx('h-8 rounded px-4 font-mono text-white', {

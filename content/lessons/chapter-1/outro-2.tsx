@@ -1,3 +1,5 @@
+'use client'
+
 import { ChapterEnd } from 'ui'
 
 export default function Done({ lang }) {

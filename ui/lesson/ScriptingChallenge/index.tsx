@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import LanguageTabs from './LanguageTabs'
 import Editor from './Editor'
@@ -17,6 +17,7 @@ export default function ScriptingChallenge({
   )
   const [language, setLanguage] = useState(config.defaultLanguage)
   const [errors, setErrors] = useState([])
+  const [runnerReady, setRunnerReady] = useState<boolean>(false)
 
   const handleSetLanguage = (value) => {
     setLanguage(value)
@@ -36,7 +37,17 @@ export default function ScriptingChallenge({
   }
 
   const handleRunnerValidate = async (answer) => {
-    return config.languages[language].validate(answer)
+    const success = config.languages[language].validate(answer)
+
+    if (success) {
+      console.log('challenge complete')
+    }
+
+    return success
+  }
+
+  const handleRunnerReady = () => {
+    setRunnerReady(true)
   }
 
   return (
@@ -73,6 +84,7 @@ export default function ScriptingChallenge({
           program={config.languages[language].program}
           errors={errors}
           onValidate={handleRunnerValidate}
+          onReady={handleRunnerReady}
         />
       </div>
     </div>

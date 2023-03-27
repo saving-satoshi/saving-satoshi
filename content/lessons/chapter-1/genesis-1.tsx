@@ -1,4 +1,5 @@
 'use client'
+
 import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { Button, ChapterIntro } from 'ui'
 
