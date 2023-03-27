@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import Script from 'next/script'
 import { useEffect, useRef, useState } from 'react'
 import { Loader } from 'shared'
-import langs from './langs'
+import compilers from './compilers'
 
 let worker
 const defaultTerminalMessage = 'Saving Satoshi Runner v0.0.1'
@@ -121,7 +121,7 @@ export default function Runner({
 
     window.addEventListener('message', handleMessage)
 
-    const compiledCode = langs[language].compile(code, program)
+    const compiledCode = compilers[language].compile(code, program)
 
     switch (language) {
       case 'javascript': {

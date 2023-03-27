@@ -63,7 +63,7 @@ def print(*args, **kwargs):
   js.postMessage(json.dumps({"action":"log","payload":args}))
 
 def run():
-${indent(input, 2)}
+${indent(input.trim(), 2)}
   # Overrides
   class sha256:
     def __init__(self, input):
@@ -71,7 +71,7 @@ ${indent(input, 2)}
 
     def hexdigest(self):
       return VM.random_string()
-${indent(program, 2)}
+${indent(program.trim(), 2)}
 
 run()
 `.trim()
