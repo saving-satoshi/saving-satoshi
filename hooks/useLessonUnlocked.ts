@@ -24,7 +24,7 @@ export const useLessonUnlocked = () => {
     // the URL contains intro or outro
     if (lessonId.includes('intro') || lessonId.includes('outro')) {
       if (lessonId.includes('outro')) {
-        if (removeAfterHyphen(userProgress) === removeAfterHyphen(lessonId)) {
+        if (userProgress.includes('outro')) {
           // the user has completed the chapter
           return true
         } else {
@@ -36,7 +36,10 @@ export const useLessonUnlocked = () => {
         return true
       }
     } else {
-      if (removeAfterHyphen(userProgress) === removeAfterHyphen(lessonId)) {
+      if (
+        removeAfterHyphen(userProgress) === removeAfterHyphen(lessonId) ||
+        userProgress.includes('outro')
+      ) {
         // the user is on a chapter that is unlocked
         return true
       } else {
