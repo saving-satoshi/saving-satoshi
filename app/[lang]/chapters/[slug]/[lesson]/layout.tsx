@@ -1,9 +1,9 @@
-import PageLocked from 'components/PageLocked'
+import LessonLocked from 'components/LessonLocked'
 
 export default function Layout({ children }) {
   return (
-    <PageLocked>
+    <LessonLocked>
       <div className="flex grow flex-col">{children}</div>
-    </PageLocked>
+    </LessonLocked>
   )
 }

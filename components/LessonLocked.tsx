@@ -4,7 +4,7 @@ import { useLessonUnlocked } from 'hooks'
 import { Button } from 'shared'
 import { useState, useEffect } from 'react'
 
-export default function PageLocked({ children }) {
+export default function LessonLocked({ children }) {
   useEffect(() => {
     setHydrated(true)
   }, [])
