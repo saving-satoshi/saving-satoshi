@@ -1,4 +1,4 @@
-import PageLocked from 'components/pageLocked'
+import PageLocked from 'components/PageLocked'
 
 export default function Layout({ children }) {
   return (
