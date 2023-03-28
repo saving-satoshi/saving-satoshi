@@ -26,4 +26,5 @@ export default function pageLocked({ children }) {
       )
     )
   }
+  return children
 }
