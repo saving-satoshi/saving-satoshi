@@ -22,6 +22,7 @@ export default function StatusBar({
   errorMessage,
   full,
   hints,
+  alwaysShow,
 }: {
   next: string
   input: string
@@ -32,6 +33,7 @@ export default function StatusBar({
   errorMessage?: string
   full?: boolean
   hints?: boolean
+  alwaysShow?: boolean
 }) {
   const lang = useLang()
   const t = useTranslations(lang)
@@ -87,8 +89,9 @@ export default function StatusBar({
           'w-full': !full,
           'bg-green/25': getStatus() === Status.Success,
           'bg-black/20': getStatus() !== Status.Success,
-          block: getStatus() === Status.Success || isActive,
-          'hidden md:block': getStatus() !== Status.Success && !isActive,
+          block: getStatus() === Status.Success && isActive,
+          'hidden md:block':
+            getStatus() !== Status.Success && !isActive && !alwaysShow,
         }
       )}
     >

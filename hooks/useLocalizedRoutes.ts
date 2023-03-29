@@ -1,3 +1,5 @@
+// 'use client'
+
 import { usePathData } from 'hooks'
 
 export const useLocalizedRoutes = () => {
