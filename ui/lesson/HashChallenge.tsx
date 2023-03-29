@@ -13,14 +13,14 @@ import clsx from 'clsx'
  * @hints {boolean} determine whether the input field displays hints for the user
  */
 export default function HashChallenge({
-  children,
+  // children,
   answer,
   next,
   label,
   label2,
   auto,
 }: {
-  children: any
+  // children: any
   answer: string
   next: any
   label: string

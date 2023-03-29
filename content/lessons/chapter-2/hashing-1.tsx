@@ -17,7 +17,7 @@ export default function Hashing1({ lang }) {
       }
       label2={'Below you will see your input converted to a hash'}
       auto={false}
-    ></HashChallenge>
+    />
   )
 }
 
