@@ -17,40 +17,36 @@ export const useLessonUnlocked = () => {
   if (userInfo.user === undefined) {
     return `/${lang}`
   } else {
-    const userProgress = userInfo.user.progress.lesson
+    const userLesson = userInfo.user.progress.lesson
+    const userChapter = userInfo.user.progress.chapter
     const lessonArray = chapters[chapterId].metadata.lessons
-    const reDirectURL = `/${lang}/${pageId}/${chapterId}/${userProgress}`
+    const reDirectURL = `/${lang}/${pageId}/${userChapter}/${userLesson}`
 
-    // the URL contains intro or outro
-    if (lessonId.includes('intro') || lessonId.includes('outro')) {
-      if (lessonId.includes('outro')) {
-        if (userProgress.includes('outro')) {
-          // the user has completed the chapter
-          return true
-        } else {
-          // the URL contains outro for a chapter that is not fully completed, redirect to last unlocked lesson
-          return reDirectURL
-        }
-      } else {
-        // intro for a chapter can be viewed, might require work when we add new chapter as we don't want the user to view a locked chapter
-        return true
-      }
+    if (userChapter.split('-')[1] < chapterId.split('-')[1]) {
+      return reDirectURL
     } else {
-      if (
-        removeAfterHyphen(userProgress) === removeAfterHyphen(lessonId) ||
-        userProgress.includes('outro')
-      ) {
-        // the user is on a chapter that is unlocked
+      if (lessonId.includes('intro')) {
         return true
       } else {
-        if (
-          getIndex(lessonArray, userProgress) < getIndex(lessonArray, lessonId)
-        ) {
-          // the user is on a chapter that is locked
-          return reDirectURL
+        if (lessonId.includes('outro')) {
+          if (removeAfterHyphen(userLesson) === 'outro') {
+            return true
+          } else {
+            return reDirectURL
+          }
         } else {
-          // the user is on a chapter lower than the unlocked chapter
-          return true
+          if (removeAfterHyphen(userLesson) === removeAfterHyphen(lessonId)) {
+            return true
+          } else {
+            if (
+              getIndex(lessonArray, userLesson) <
+              getIndex(lessonArray, lessonId)
+            ) {
+              return reDirectURL
+            } else {
+              return true
+            }
+          }
         }
       }
     }
