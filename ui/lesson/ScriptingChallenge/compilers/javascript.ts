@@ -73,6 +73,10 @@ function compile(input: string, program: string) {
       return VM.request('validate', output)
     }
 
+    static result(r) {
+      VM.send('result', r)
+    }
+
     static async run() {
       ${input}
       ${program}

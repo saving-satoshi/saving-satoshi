@@ -16,10 +16,16 @@ export interface ModalContextType {
   modals: Modals
 }
 
+export interface EditorFunction {
+  name: string
+  args: string[]
+}
+
 export interface EditorLanguages {
   [language: string]: {
     program: string
     defaultCode?: string
+    defaultFunction: EditorFunction
     validate: (answer: any) => Promise<boolean>
   }
 }

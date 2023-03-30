@@ -8,9 +8,15 @@ import Runner from './Runner'
 import { EditorConfig } from 'types'
 
 export default function ScriptingChallenge({
+  children,
+  lang,
   config,
+  successMessage,
 }: {
+  children?: React.ReactNode
+  lang: string
   config: EditorConfig
+  successMessage: string
 }) {
   const [code, setCode] = useState(
     config.languages[config.defaultLanguage].defaultCode
@@ -52,16 +58,8 @@ export default function ScriptingChallenge({
 
   return (
     <div className="grid grid-cols-2">
-      <div className="border-r border-white border-opacity-30 p-10">
-        <p className="font-nunito text-xl text-white">
-          Alright, time to write and run your own code. When you press “Run the
-          script”, the{' '}
-          <b>{language === 'javascript' ? 'findHash' : 'find_hash'}</b> function
-          will be called over and over with an ever-increasing nonce.
-        </p>
-        <p className="mt-8 font-nunito text-xl text-white">
-          Some other instructions go here...
-        </p>
+      <div className="flex flex-col gap-4 border-r border-white border-opacity-30 p-10">
+        {children}
       </div>
 
       <div className="flex flex-col">
@@ -79,12 +77,15 @@ export default function ScriptingChallenge({
         />
 
         <Runner
+          lang={lang}
+          config={config}
           language={language}
           code={code}
           program={config.languages[language].program}
           errors={errors}
           onValidate={handleRunnerValidate}
           onReady={handleRunnerReady}
+          successMessage={successMessage}
         />
       </div>
     </div>

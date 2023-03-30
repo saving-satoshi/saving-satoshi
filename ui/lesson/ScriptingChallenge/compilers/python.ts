@@ -55,6 +55,9 @@ class VM:
   def validate(output, callback):
     VM.request('validate', output, callback)
 
+  def result(r):
+    VM.send('result', r)
+
   def close():
     js.removeEventListener('message', proxy)
 

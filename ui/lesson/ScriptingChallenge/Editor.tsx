@@ -63,7 +63,7 @@ export default function Editor({
       )}
       <MonacoEditor
         width="calc(100vw / 2)"
-        height="calc(100vh - 71px - 48px - 40px - 160px)"
+        height="calc(100vh - 71px - 48px - 40px - 240px)"
         // theme="satoshi"
         // defaultLanguage={language}
         // defaultValue={code}
