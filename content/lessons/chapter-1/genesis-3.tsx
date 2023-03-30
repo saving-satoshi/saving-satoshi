@@ -19,18 +19,18 @@ export default function Genesis5({ lang }) {
         challenge: 'transacting-1',
       }}
       next={`${routes.chaptersUrl}/chapter-1/genesis-4`}
-      successMessage={t('genesis_three.success')}
-      customLines={t('genesis_three.terminal_challenge_lines')}
+      successMessage={t('chapter_one.genesis_three.success')}
+      customLines={t('chapter_one.genesis_three.terminal_challenge_lines')}
     >
       <LessonInfo>
-        <Title>{t('genesis_three.heading')}</Title>
+        <Title>{t('chapter_one.genesis_three.heading')}</Title>
 
         <Text className="mt-2 text-lg md:text-xl">
-          {t('genesis_three.paragraph_one')}
+          {t('chapter_one.genesis_three.paragraph_one')}
         </Text>
 
         <Text className="mt-2 text-lg md:text-xl">
-          {t('genesis_three.paragraph_two')}
+          {t('chapter_one.genesis_three.paragraph_two')}
         </Text>
 
         <CodeExample
@@ -45,5 +45,5 @@ export default function Genesis5({ lang }) {
 }
 
 export const metadata = {
-  title: 'genesis_three.title',
+  title: 'chapter_one.genesis_three.title',
 }

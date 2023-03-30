@@ -1,4 +1,5 @@
 'use client'
+
 import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { Button, ChapterIntro } from 'ui'
 
@@ -7,13 +8,13 @@ export default function Genesis2({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <ChapterIntro heading={t('genesis_one.heading')}>
+    <ChapterIntro heading={t('chapter_one.genesis_one.heading')}>
       <p className="mt-2 text-lg md:text-xl">
-        {t('genesis_one.paragraph_one')}
+        {t('chapter_one.genesis_one.paragraph_one')}
       </p>
 
       <p className="mt-8 text-lg md:text-xl">
-        {t('genesis_one.paragraph_two')}
+        {t('chapter_one.genesis_one.paragraph_two')}
       </p>
 
       <Button
@@ -27,5 +28,5 @@ export default function Genesis2({ lang }) {
 }
 
 export const metadata = {
-  title: 'genesis_one.title',
+  title: 'chapter_one.genesis_one.title',
 }

@@ -22,22 +22,24 @@ export default function Transacting3({ lang }) {
         challenge: 'outro-1',
       }}
       next={`${routes.chaptersUrl}/chapter-1/outro-1`}
-      successMessage={t('transacting_three.terminal_challenge_success')}
-      customLines={t('transacting_three.terminal_challenge_lines')}
+      successMessage={t(
+        'chapter_one.transacting_three.terminal_challenge_success'
+      )}
+      customLines={t('chapter_one.transacting_three.terminal_challenge_lines')}
       commonError={{
         error: '$scriptPubKeyBytes',
-        message: t('transacting_three.terminal_challenge_error'),
+        message: t('chapter_one.transacting_three.terminal_challenge_error'),
       }}
     >
       <LessonInfo>
-        <Title>{t('transacting_three.heading')}</Title>
+        <Title>{t('chapter_one.transacting_three.heading')}</Title>
 
         <Text className="mt-2 text-lg md:text-xl">
-          {t('transacting_three.paragraph_one')}
+          {t('chapter_one.transacting_three.paragraph_one')}
         </Text>
 
         <Text className="mt-2 text-lg md:text-xl">
-          {t('transacting_three.paragraph_two')}
+          {t('chapter_one.transacting_three.paragraph_two')}
         </Text>
 
         <CodeExample
@@ -48,7 +50,7 @@ export default function Transacting3({ lang }) {
         />
 
         <Text className="mt-4 text-lg md:text-xl">
-          {t('transacting_three.paragraph_three')}
+          {t('chapter_one.transacting_three.paragraph_three')}
         </Text>
 
         <div className="mt-4 flex">
@@ -58,7 +60,7 @@ export default function Transacting3({ lang }) {
             external={true}
             classes="w-full md:auto"
           >
-            {t('transacting_three.link')}
+            {t('chapter_one.transacting_three.link')}
           </Button>
         </div>
       </LessonInfo>
@@ -67,5 +69,5 @@ export default function Transacting3({ lang }) {
 }
 
 export const metadata = {
-  title: 'transacting_three.title',
+  title: 'chapter_one.transacting_three.title',
 }
