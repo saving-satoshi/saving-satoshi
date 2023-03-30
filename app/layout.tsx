@@ -1,5 +1,6 @@
 import 'styles/globals.css'
 import Fonts from 'components/Fonts'
+import AuthProvider from 'providers/AuthProvider'
 
 export default function RootLayout({
   children,
@@ -11,7 +12,7 @@ export default function RootLayout({
       <head />
       <body className="font-cbrush">
         <Fonts />
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   )

@@ -7,7 +7,6 @@ import config from 'config'
 import UserButton from './Navbar/UserButton'
 import LangSwitch from './Navbar/LangSwitch'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
-import { t } from 'lib/translate'
 
 export default function Topbar() {
   const routes = useLocalizedRoutes()
