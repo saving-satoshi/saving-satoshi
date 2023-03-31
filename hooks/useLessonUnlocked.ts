@@ -23,15 +23,19 @@ export const useLessonUnlocked = () => {
   console.log(lessonArray)
   const redirectURL = `/${lang}/${pageId}/${userChapter}/${userLesson}`
 
+  if (userChapter.split('-')[1] > chapterId.split('-')[1]) {
+    return true
+  }
+
   if (
-    userChapter.split('-')[1] >= chapterId.split('-')[1] &&
+    userChapter.split('-')[1] == chapterId.split('-')[1] &&
     getIndex(lessonArray, userLesson) >= getIndex(lessonArray, lessonId)
   ) {
     return true
   }
 
   if (
-    userChapter.split('-')[1] >= chapterId.split('-')[1] &&
+    userChapter.split('-')[1] == chapterId.split('-')[1] &&
     removeAfterHyphen(userLesson) === removeAfterHyphen(lessonId)
   ) {
     return true
