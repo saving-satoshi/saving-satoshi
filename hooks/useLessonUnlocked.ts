@@ -9,14 +9,8 @@ function getIndex(arr: string[], searchStr: string): number {
   return arr.indexOf(searchStr)
 }
 
-export const useLessonUnlocked = () => {
+export const useLessonUnlocked = (userInfo) => {
   let { lang, pageId, chapterId, lessonId } = usePathData()
-  const userInfo = useUser()
-
-  if (userInfo.user === undefined) {
-    return `/${lang}`
-  }
-
   const userLesson = userInfo.user.progress.lesson
   const userChapter = userInfo.user.progress.chapter
   const lessonArray = [

@@ -1,6 +1,6 @@
 'use client'
 
-import { useLessonUnlocked } from 'hooks'
+import { useLessonUnlocked, useUser } from 'hooks'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Navbar from 'components/Navbar'
@@ -8,7 +8,8 @@ import { lessons } from 'content'
 
 export default function Layout({ children, params }) {
   const router = useRouter()
-  const result = useLessonUnlocked()
+  const userInfo = useUser()
+  const result = useLessonUnlocked(userInfo)
   const [displayLesson, setDisplayLesson] = useState<boolean>(false)
   const { slug, lesson: lessonId } = params
 
@@ -25,10 +26,10 @@ export default function Layout({ children, params }) {
 
   return displayLesson ? (
     <div className={`${theme} flex flex-col`}>
-        <div className="fix-grow-issue flex min-h-screen flex-col overflow-hidden drop-shadow-3xl backdrop-blur-4xl">
-          <Navbar params={params} />
-          {children}
-        </div>
+      <div className="fix-grow-issue flex min-h-screen flex-col overflow-hidden drop-shadow-3xl backdrop-blur-4xl">
+        <Navbar params={params} />
+        {children}
+      </div>
     </div>
   ) : (
     <div className="flex h-full w-full grow flex-col items-center justify-center">
