@@ -17,7 +17,7 @@ export default function Layout({ children }) {
   }, [])
 
   return displayLesson ? (
-    children
+    <div className="flex grow flex-col">{children}</div>
   ) : (
     <div className="flex h-full w-full grow flex-col items-center justify-center">
       <span className="mb-10 text-4xl text-white">Loading Challenge...</span>
