@@ -6,6 +6,7 @@ import { Introduction, Text } from 'ui'
 export const metadata = {
   title: 'chapter_one.intro_one.title',
   image: '/assets/images/chapter-1-intro-1.jpg',
+  theme: 'bg-[#2C3A3F]',
 }
 
 export default function ReapingRewards({ lang }) {

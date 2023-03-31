@@ -6,6 +6,7 @@ import { TextImage, Text } from 'ui'
 export const metadata = {
   title: 'chapter_one.genesis_four.title',
   image: '/assets/images/chapter-1-challenge-1-success.jpg',
+  theme: 'bg-[#4F5252]',
 }
 
 export default function Genesis4({ lang }) {
