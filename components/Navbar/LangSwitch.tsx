@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { usePathData } from 'hooks'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 function generateNewUrl(pathname, language) {
   const pathnameWithoutLanguage = pathname.replace(/^\/(en|nl)\b/, '')
@@ -63,7 +64,7 @@ export default function LangSwitch() {
 
       <div
         className={clsx(
-          'absolute right-0 mt-2 w-[125px] origin-top-right  border border-white border-opacity-25 bg-back shadow-lg',
+          'absolute right-0 mt-2 w-auto origin-top-right  border border-white border-opacity-25 bg-back shadow-lg',
           {
             block: isOpen,
             hidden: !isOpen,
@@ -75,6 +76,7 @@ export default function LangSwitch() {
       >
         <div className="py-1">
           {i18n.locales.map((language, index) => (
+            // eslint-disable-next-line jsx-a11y/role-supports-aria-props
             <button
               key={index}
               className={clsx(
@@ -90,6 +92,17 @@ export default function LangSwitch() {
               {language.label}
             </button>
           ))}
+          <div className="pb-2">
+            <Link
+              className="whitespace-nowrap px-5 py-2 text-left font-nunito text-lg font-bold text-white text-opacity-75 underline"
+              href={
+                'https://github.com/saving-satoshi/saving-satoshi/tree/master/i18n'
+              }
+              target="_blank"
+            >
+              Your Language
+            </Link>
+          </div>
         </div>
       </div>
     </div>
