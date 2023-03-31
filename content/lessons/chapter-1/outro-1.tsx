@@ -2,10 +2,13 @@
 
 import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { TextImage } from 'ui'
+import { setUserProgress } from 'lib/user'
 
 export default function Transacting4({ lang }) {
   const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
+
+  setUserProgress('chapter-2', 'scripting-1')
 
   return (
     <TextImage
