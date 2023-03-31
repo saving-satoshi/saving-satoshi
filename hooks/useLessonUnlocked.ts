@@ -13,6 +13,10 @@ export const useLessonUnlocked = () => {
   let { lang, pageId, chapterId, lessonId } = usePathData()
   const userInfo = useUser()
 
+  if (userInfo.user === undefined) {
+    return `/${lang}`
+  }
+
   const userLesson = userInfo.user.progress.lesson
   const userChapter = userInfo.user.progress.chapter
   const lessonArray = [
@@ -20,7 +24,6 @@ export const useLessonUnlocked = () => {
     ...chapters[chapterId].metadata.lessons,
     ...chapters[chapterId].metadata.outros,
   ]
-  console.log(lessonArray)
   const redirectURL = `/${lang}/${pageId}/${userChapter}/${userLesson}`
 
   if (userChapter.split('-')[1] > chapterId.split('-')[1]) {
