@@ -12,8 +12,9 @@ export default function Layout({ children }) {
   useEffect(() => {
     if (typeof result === 'string') {
       router.replace(result)
+    } else {
+      setDisplayLesson(true)
     }
-    setDisplayLesson(true)
   }, [])
 
   return displayLesson ? (
