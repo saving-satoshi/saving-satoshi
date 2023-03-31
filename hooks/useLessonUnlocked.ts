@@ -13,42 +13,32 @@ export const useLessonUnlocked = () => {
   let { lang, pageId, chapterId, lessonId } = usePathData()
   const userInfo = useUser()
 
-  // if someone vists the website for the first time
   if (userInfo.user === undefined) {
     return `/${lang}`
   } else {
     const userLesson = userInfo.user.progress.lesson
     const userChapter = userInfo.user.progress.chapter
-    const lessonArray = chapters[chapterId].metadata.lessons
-    const reDirectURL = `/${lang}/${pageId}/${userChapter}/${userLesson}`
+    const lessonArray = [
+      ...chapters[chapterId].metadata.intros,
+      ...chapters[chapterId].metadata.lessons,
+      ...chapters[chapterId].metadata.outros,
+    ]
+    const redirectURL = `/${lang}/${pageId}/${userChapter}/${userLesson}`
 
-    if (userChapter.split('-')[1] < chapterId.split('-')[1]) {
-      return reDirectURL
-    } else {
-      if (lessonId.includes('intro')) {
-        return true
-      } else {
-        if (lessonId.includes('outro')) {
-          if (removeAfterHyphen(userLesson) === 'outro') {
-            return true
-          } else {
-            return reDirectURL
-          }
-        } else {
-          if (removeAfterHyphen(userLesson) === removeAfterHyphen(lessonId)) {
-            return true
-          } else {
-            if (
-              getIndex(lessonArray, userLesson) <
-              getIndex(lessonArray, lessonId)
-            ) {
-              return reDirectURL
-            } else {
-              return true
-            }
-          }
-        }
-      }
+    if (
+      userChapter.split('-')[1] >= chapterId.split('-')[1] &&
+      getIndex(lessonArray, userLesson) >= getIndex(lessonArray, lessonId)
+    ) {
+      return true
     }
+
+    if (
+      userChapter.split('-')[1] >= chapterId.split('-')[1] &&
+      removeAfterHyphen(userLesson) === removeAfterHyphen(lessonId)
+    ) {
+      return true
+    }
+
+    return redirectURL
   }
 }
