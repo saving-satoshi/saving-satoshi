@@ -1,3 +1,5 @@
+'use client'
+
 import { ChapterEnd } from 'ui'
 
 export default function Done({ lang }) {
@@ -15,7 +17,7 @@ export default function Done({ lang }) {
 }
 
 export const metadata = {
-  title: 'done.title',
+  title: 'chapter_one.outro_two.title',
   image: '/assets/images/chapter-1-finish.jpg',
-  description: 'done.description',
+  description: 'chapter_one.outro_two.description',
 }

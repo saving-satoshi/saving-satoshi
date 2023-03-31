@@ -15,20 +15,24 @@ function getLocale(request: NextRequest): string | undefined {
   // Use negotiator and intl-localematcher to get best locale
   let languages = new Negotiator({ headers: negotiatorHeaders }).languages()
   // @ts-ignore locales are readonly
-  const locales: string[] = i18n.locales
+  const locales: string[] = i18n.locales.map((language) => language.locale)
   return matchLocale(languages, locales, i18n.defaultLocale)
 }
 
 export function middleware(request: NextRequest) {
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname
+  if (['/vm', '/webworker'].some((p) => pathname.startsWith(p))) {
+    return
+  }
+
   // Redirect to '/' for homepage
   if (pathname !== '/' || getLocale(request) !== 'en') {
     const pathnameIsMissingLocale = i18n.locales.every(
-      (locale) =>
-        !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+      (language) =>
+        !pathname.startsWith(`/${language.locale}/`) &&
+        pathname !== `/${language.locale}`
     )
-
     // Redirect if there is no locale
     if (pathnameIsMissingLocale) {
       const locale = getLocale(request)

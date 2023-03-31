@@ -5,8 +5,8 @@ import Link from 'next/link'
 import config from 'config'
 
 import UserButton from './Navbar/UserButton'
+import LangSwitch from './Navbar/LangSwitch'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
-import { t } from 'lib/translate'
 
 export default function Topbar() {
   const routes = useLocalizedRoutes()
@@ -38,6 +38,7 @@ export default function Topbar() {
                 {t(`shared.${item.title}`)}
               </Link>
             ))}
+          <LangSwitch />
           <UserButton />
         </nav>
       </div>

@@ -66,7 +66,7 @@ export default function End({
               href="https://forms.gle/WhdJwcKKetB9sFL79"
               external={true}
             >
-              {t('end.feedback')}
+              {t('chapter_one.end.feedback')}
             </Button>
           </div>
         </div>

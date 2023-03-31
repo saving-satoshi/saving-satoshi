@@ -8,13 +8,13 @@ export default function Transacting1({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <ChapterIntro heading={t('transacting_one.heading')}>
+    <ChapterIntro heading={t('chapter_one.transacting_one.heading')}>
       <p className="mt-2 text-lg md:text-xl">
-        {t('transacting_one.paragraph_one')}
+        {t('chapter_one.transacting_one.paragraph_one')}
       </p>
 
       <p className="mt-8 text-lg md:text-xl">
-        {t('transacting_one.paragraph_two')}
+        {t('chapter_one.transacting_one.paragraph_two')}
       </p>
 
       <Button
@@ -28,5 +28,5 @@ export default function Transacting1({ lang }) {
 }
 
 export const metadata = {
-  title: 'transacting_one.title',
+  title: 'chapter_one.transacting_one.title',
 }

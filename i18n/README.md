@@ -10,7 +10,7 @@ If you add text to the app, make sure not to use plain language in source files.
 Instead add any strings to the English translation file:
 
 ```
-i18n/locales/en/translations.ts
+i18n/locales/en.ts
 ```
 
 ### Example
@@ -23,7 +23,11 @@ Config File:
 // i18n/config.ts
 export const i18n = {
   defaultLocale: 'en',
-  locales: ['en', 'nl', 'ko'],
+  locales: [
+    { locale: 'en', label: 'English' },
+    { locale: 'nl', label: 'Dutch' },
+    { locale: 'ko', label: '한국어'}
+  ],
 } as const
 ```
 
@@ -33,29 +37,25 @@ Source File:
 
 ```jsx
 // components/HelloWorld.tsx
-
-import React from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation, useLang } from 'react-i18next'
 
 export default function HelloWorldComponent() {
-  const { t } = useTranslation()
+  const lang = useLang()
+  const t = useTranslation(lang)
 
   return <h1>{t('hello_world.heading')}</h1>
 }
 ```
 
-Be sure to add your copy directly to the `translation.ts` file and not the component when creating new components.
+Be sure to add your copy directly to the `/{your-locale}.ts` file and not the component when creating new components.
 
 Translation file:
 
 ```jsx
-// i18n/locales/en/translation.ts
-
-export const translations = {
+// i18n/locales/ko.ts
+const translations = {
   hello_world: {
-    ko: {
       heading: '안녕 세상!',
-    },
   },
 }
 ```
@@ -66,9 +66,9 @@ To add a new language:
 
 1. Look in the `/i18n/locales/` folder to determine if there are any existing translations in your preferred language
 1. If no translations in your language exist create an [issue](https://github.com/saving-satoshi/saving-satoshi/issues/new/choose) detailing the language and scope you wish to add to on Github.
-1. Add the new locale to /i18n/config.ts. and create a new folder in `/i18n/locales/{your-locale}`
-1. Be sure to populate this new folder with an `index.ts` and `translations.ts`
-1. Open up `/i18n/locales/{your-locale}/translations.ts` and add start translating.
+1. Add the new locale to /i18n/config.ts. and create a new folder in `/i18n/locales/{your-locale}.ts`
+1. Be sure to populate your new language in the `/i18n/locales/index.ts` file for easy imports.
+1. Open up `/i18n/locales/{your-locale}.ts` and add start translating.
 1. [Submit a pull request](https://github.com/saving-satoshi/saving-satoshi/compare) on Github.
 1. Invite some review and get it merged!
 

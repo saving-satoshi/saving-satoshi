@@ -1,3 +1,5 @@
+const path = require('path')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -6,7 +8,7 @@ const nextConfig = {
       { loader: '@next/font/google', options: { subsets: ['latin'] } },
     ],
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   images: {
     domains: ['saving-satoshi.s3.amazonaws.com'],
@@ -17,6 +19,17 @@ const nextConfig = {
       issuer: /\.[jt]sx?$/,
       use: ['@svgr/webpack'],
     })
+
+    config.module.rules.push({
+      test: /\.py$/,
+      use: 'raw-loader',
+    })
+    config.module.rules.push({
+      test: /\.js$/,
+      include: [path.resolve(__dirname, 'lib', 'vm', 'langs')],
+      use: 'raw-loader',
+    })
+
     return config
   },
 }
