@@ -12,32 +12,32 @@ export default function Transacting2({ lang }) {
     <InputChallenge
       answer="5361746f7368693433335061726b53744368696e6f43413933323433"
       next={`${routes.chaptersUrl}/chapter-1/transacting-3`}
-      label={t('transacting_two.input_challenge_label')}
+      label={t('chapter_one.transacting_two.input_challenge_label')}
       pattern={/[a-z0-9]+/gi}
       precedingText="OP_RETURN OP_PUSHBYTES_28"
       hints
     >
       <LessonInfo>
-        <Title>{t('transacting_two.heading')}</Title>
+        <Title>{t('chapter_one.transacting_two.heading')}</Title>
 
         <Text className="mt-2 text-lg">
-          {t('transacting_two.paragraph_one')}
+          {t('chapter_one.transacting_two.paragraph_one')}
         </Text>
 
         <Text className="mt-2 text-lg">
-          {t('transacting_two.paragraph_two')}
+          {t('chapter_one.transacting_two.paragraph_two')}
         </Text>
 
         <Text className="mt-2 text-lg">
-          {t('transacting_two.paragraph_three')}
+          {t('chapter_one.transacting_two.paragraph_three')}
         </Text>
 
         <Text className="mt-2 text-lg">
-          {t('transacting_two.paragraph_four')}
+          {t('chapter_one.transacting_two.paragraph_four')}
         </Text>
 
         <Text className="mt-2 text-lg">
-          {t('transacting_two.paragraph_five')}
+          {t('chapter_one.transacting_two.paragraph_five')}
         </Text>
       </LessonInfo>
     </InputChallenge>
@@ -45,5 +45,5 @@ export default function Transacting2({ lang }) {
 }
 
 export const metadata = {
-  title: 'transacting_two.title',
+  title: 'chapter_one.transacting_two.title',
 }

@@ -17,6 +17,14 @@ export default function Terminal({ success, lines, next, onChange }) {
   const handleInputChange = (event) => {
     const newInput = event.target.value
     setInput(newInput)
+    const answerText = event.target.value
+    if (answerText.match(/.*\n$/)) {
+      onChange(input)
+      setCommandHistory([...commandHistory, input])
+      setHistoryIndex(historyIndex + 1)
+      setCurrentIndex(historyIndex + 1)
+      setInput('')
+    }
   }
 
   const handleKeyDown = (event) => {

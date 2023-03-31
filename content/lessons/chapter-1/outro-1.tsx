@@ -11,18 +11,19 @@ export default function Transacting4({ lang }) {
     <TextImage
       lang={lang}
       imageSrc="/assets/images/chapter-1-outro.jpg"
-      imageAlt={t('outro.title')}
-      btnText={t('outro.button_text')}
+      imageAlt={t('chapter_one.outro_one.title')}
+      btnText={t('chapter_one.outro_one.button_text')}
       btnEnabled={true}
-      next={`${routes.chaptersUrl}/chapter-1/outro-2`}
+      next={`${routes.chaptersUrl}/chapter-2/intro-1`}
     >
-      <p>{t('outro.paragraph_one')}</p>
-      <p className="pt-6">{t('outro.paragraph_two')}</p>
+      <p>{t('chapter_one.outro_one.paragraph_one')}</p>
+      <p className="pt-6">{t('chapter_one.outro_one.paragraph_two')}</p>
     </TextImage>
   )
 }
 
 export const metadata = {
-  title: 'outro.title',
+  title: 'chapter_one.outro_one.title',
   image: '/assets/images/chapter-1-outro.jpg',
+  theme: 'bg-[#2C3A3F]',
 }

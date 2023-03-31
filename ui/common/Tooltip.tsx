@@ -13,6 +13,7 @@ function Tooltip({
   position,
   offset,
   href,
+  theme = 'bg-back',
 }: {
   children: React.ReactNode
   className?: string
@@ -21,6 +22,7 @@ function Tooltip({
   position?: string
   offset?: number
   href?: string
+  theme?: string
 }) {
   const targetRef = useRef<HTMLDivElement>()
   const tooltipRef = useRef<HTMLDivElement>()
@@ -115,6 +117,7 @@ function Tooltip({
       <span
         className={clsx(
           'tooltip absolute top-0 left-0 z-10 max-w-md border border-white bg-back px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
+          `${theme}`,
           {
             'pointer-events-all opacity-100': visible,
             'pointer-events-none opacity-0': !visible,
@@ -126,7 +129,8 @@ function Tooltip({
       >
         <span
           className={clsx(
-            'absolute left-1/2 h-3 w-3 border-l border-t border-white bg-back',
+            'absolute left-1/2 h-3 w-3 border-l border-t border-white',
+            `${theme}`,
             {
               'top-0': position !== 'top',
               'bottom-0': position === 'top',

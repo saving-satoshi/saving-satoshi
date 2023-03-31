@@ -72,6 +72,135 @@ const translations = {
     title: 'Secrets in plain sight',
     paragraph_one:
       'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. The world awaits the last block. Then, suddenly, the network grinds to a halt.',
+
+    ///CHAPTER 1
+    intro_one: {
+      title: 'Genesis',
+      paragraph_one: `Moments later, your Hover Screen activates.`,
+      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
+      paragraph_three: `—Vanderpoole: “Yes I do, Deborah. Like my daddy and his daddy before him. The Vanderpooles have been mining since Block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. We cannot survive on fees alone.”`,
+      start: 'Continue',
+    },
+
+    intro_two: {
+      title: 'Genesis',
+      paragraph_one:
+        'You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
+      paragraph_two:
+        '—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto',
+      paragraph_three:
+        '—Satoshi? The Satoshi? No, it couldn’t be. They’ve been presumed dead for over a century. Haven’t they?',
+      paragraph_four: 'Haven’t they?',
+      paragraph_five:
+        'Holocat: “You better get to work. I can help, but you have to start meow.”',
+    },
+
+    genesis_one: {
+      title: 'Genesis',
+      heading: 'Your first challenge',
+      paragraph_one:
+        'Bitcoin is censorship resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
+      paragraph_two:
+        'Satoshi Nakamoto, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left the world a secret message in the very first bitcoin transaction that was ever made. Your first challenge is to find and decode it.',
+    },
+
+    genesis_two: {
+      title: 'Genesis',
+      heading: 'Find the hidden message',
+      paragraph_one:
+        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="genesis_two.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+      paragraph_two:
+        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
+      paragraph_three: 'Copy that value and paste it below.',
+      tooltip_block_explorer:
+        'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
+      tooltip_hex:
+        'Short for hexadecimal, a numeral system that represents numbers using a base of 16.',
+      view_block_0: 'View Block 0',
+      placeholder: 'Paste the value you found here',
+    },
+
+    genesis_three: {
+      title: 'Genesis',
+      heading: 'Let’s decode the message',
+      paragraph_one:
+        'The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.',
+      paragraph_two:
+        'Copy and paste the command below into the Terminal to the right and press “Enter”.',
+      terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'`,
+      waiting_for_input: 'Waiting for you to write and run the script...',
+      success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.`,
+    },
+
+    genesis_four: {
+      title: 'Genesis',
+      subtitle: 'Congrats! You completed the first challenge!',
+      paragraph_one:
+        'You found the secret message Satoshi Nakamoto embedded in the genesis block. It’s time to expand on what you just learned. Decode an important clue about the story in the next challenge.',
+    },
+
+    transacting_one: {
+      title: 'Transacting',
+      heading: 'What’s in a transaction?',
+      paragraph_one:
+        'Transactions have two parts: inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
+      paragraph_two:
+        'For the following transaction, we’re going to identify the output of type OP_RETURN.',
+    },
+
+    transacting_two: {
+      title: 'Transacting',
+      heading: 'OP_RETURN',
+      paragraph_one:
+        'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
+      paragraph_two:
+        '1. Click <Link href="https://blockstream.info/tx/ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d" className="underline">here</Link> to look at a specific transaction.',
+      paragraph_three:
+        '2. Open up the details and find the part that is of type “OP_RETURN”.',
+      paragraph_four:
+        '3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSH_BYTES_28” part? These are called opcodes. We’re actually interested in what comes after them.',
+      paragraph_five:
+        '4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_28” and paste it below. ',
+      input_challenge_label: 'Enter the OP_RETURN type',
+    },
+
+    transacting_three: {
+      title: 'Transacting',
+      heading: 'Another secret message',
+      paragraph_one:
+        'We’ve identified the part of the transaction output that holds the message.',
+      paragraph_two:
+        'All that’s left now is to decode it, just like we did in the previous exercise.',
+      paragraph_three: 'Need to look up $scriptPubKeyBytes again? Here you go.',
+      link: 'View transaction',
+      terminal_challenge_success:
+        'That’s correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n Your next challenge awaits you.',
+      terminal_challenge_lines:
+        'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyBytes is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge',
+      terminal_challenge_error:
+        'Almost! Remember that the variable $scriptPubKeyBytes is not set for you this time.',
+    },
+
+    outro_one: {
+      title: 'Outro',
+      paragraph_one:
+        'You run down to your garage, step into your dad’s old solocopter, punch in the coordinates, and make your way to the address.',
+      paragraph_two:
+        'Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.',
+      button_text: 'Complete chapter 1',
+    },
+
+    outro_two: {
+      title: 'You did it!!!',
+      description:
+        'Amazing. You completed the first chapter and learned a lot about bitcoin. Follow us at <Link href="https://twitter.com/savingsatoshi" className="underline">@savingsatoshi</Link> to know when we launch new chapters and challenges.',
+    },
+
+    end: {
+      save: 'Save my progress',
+      next: 'Continue without saving',
+      feedback: 'Share your feedback',
+    },
   },
 
   chapter_two: {
@@ -80,6 +209,47 @@ const translations = {
       'The network outage has to be related to the block subsidy. There’s no way this is a coincidence.',
     paragraph_two:
       'You hop on your computer to do some research on mining when you notice something unusual about the few blocks that are being mined. They all seem to be coming from the same place, possibly even the same mining pool. What happened to the rest of the miners?',
+
+    intro_one: {
+      title: 'Hashing out a plan',
+      paragraph_one:
+        'HOLOCAT: “Boy, what a dump. This place had better store some sardines or dried fish. I’d even settle for some e-nip.',
+      paragraph_two:
+        'You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.',
+      paragraph_three:
+        'HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family ASIC miners. Application-specific integrated circuit miners were all the rage back in bitcoin’s early days. Can you believe that people mined other coins at one point?”',
+    },
+
+    intro_two: {
+      title: 'Hashing out a plan',
+      paragraph_one:
+        'In the corner, a dim, barely working computer monitor with a note stuck to it sits blinking. The note says “Turn them on, stupid."',
+      paragraph_two: 'HOLOCAT: “How rude.”',
+      paragraph_three:
+        'Wow, a mechanical keyboard. Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.',
+    },
+
+    scripting_one: {
+      title: 'Automation',
+      heading: 'Let’s make the computer do this for us.',
+      paragraph_one:
+        'OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.',
+      paragraph_two:
+        'Miners take all the stuff they want to put in a block, the transactions and a bunch of related metadata, and combine it with a random number called a nonce. They send all of this into the hash function to create something called the block hash.',
+      paragraph_three:
+        'The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is revisited every 2016 blocks.',
+      paragraph_four:
+        'For the next challenge, write a script that finds a hash that starts with five zeroes (“00000”).',
+    },
+
+    scripting_two: {
+      title: 'Automation',
+      paragraph_one:
+        'Alright, time to write and run your own code. Write a script that finds a hash that starts with five zeroes (“00000”).',
+      paragraph_two:
+        'When you press “Run the script”, the findHash function will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce.',
+      success: 'Five zeroes! That’s it!',
+    },
   },
 
   chapter_three: {
@@ -122,135 +292,6 @@ const translations = {
 
   chapter_ten: {
     title: '10 billion connections',
-  },
-
-  ///CHAPTER 1
-  intro_one: {
-    title: 'Genesis',
-    paragraph_one: `Moments later, your Hover Screen activates.`,
-    paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
-    paragraph_three: `—Vanderpoole: “Yes I do, Deborah. Like my daddy and his daddy before him. The Vanderpooles have been mining since Block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. We cannot survive on fees alone.”`,
-    start: 'Continue',
-  },
-
-  intro_two: {
-    title: 'Genesis',
-    paragraph_one:
-      'You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
-    paragraph_two:
-      '—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto',
-    paragraph_three:
-      '—Satoshi? The Satoshi? No, it couldn’t be. They’ve been presumed dead for over a century. Haven’t they?',
-    paragraph_four: 'Haven’t they?',
-    paragraph_five:
-      'Holocat: “You better get to work. I can help, but you have to start meow.”',
-  },
-
-  done: {
-    title: 'You did it!!!',
-    description:
-      'Amazing. You completed the first chapter and learned a lot about bitcoin. Follow us at <Link href="https://twitter.com/savingsatoshi" className="underline">@savingsatoshi</Link> to know when we launch new chapters and challenges.',
-  },
-
-  genesis_one: {
-    title: 'Genesis',
-    heading: 'Your first challenge',
-    paragraph_one:
-      'Bitcoin is censorship resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
-    paragraph_two:
-      'Satoshi Nakamoto, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left the world a secret message in the very first bitcoin transaction that was ever made. Your first challenge is to find and decode it.',
-  },
-
-  genesis_two: {
-    title: 'Genesis',
-    heading: 'Find the hidden message',
-    paragraph_one:
-      'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="genesis_two.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
-    paragraph_two:
-      'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
-    paragraph_three: 'Copy that value and paste it below.',
-    tooltip_block_explorer:
-      'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
-    tooltip_hex:
-      'Short for hexadecimal, a numeral system that represents numbers using a base of 16.',
-    view_block_0: 'View Block 0',
-    placeholder: 'Paste the value you found here',
-  },
-
-  genesis_three: {
-    title: 'Genesis',
-    heading: 'Let’s decode the message',
-    paragraph_one:
-      'The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.',
-    paragraph_two:
-      'Copy and paste the command below into the Terminal to the right and press “Enter”.',
-    terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'`,
-    waiting_for_input: 'Waiting for you to write and run the script...',
-    success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.`,
-  },
-
-  genesis_four: {
-    title: 'Genesis',
-    subtitle: 'Congrats! You completed the first challenge!',
-    paragraph_one:
-      'You found the secret message Satoshi Nakamoto embedded in the genesis block. It’s time to expand on what you just learned. Decode an important clue about the story in the next challenge.',
-  },
-
-  transacting_one: {
-    title: 'Transacting',
-    heading: 'What’s in a transaction?',
-    paragraph_one:
-      'Transactions have two parts: inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
-    paragraph_two:
-      'For the following transaction, we’re going to identify the output of type OP_RETURN.',
-  },
-
-  transacting_two: {
-    title: 'Transacting',
-    heading: 'OP_RETURN',
-    paragraph_one:
-      'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
-    paragraph_two:
-      '1. Click <Link href="https://blockstream.info/tx/ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d" className="underline">here</Link> to look at a specific transaction.',
-    paragraph_three:
-      '2. Open up the details and find the part that is of type “OP_RETURN”.',
-    paragraph_four:
-      '3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSH_BYTES_28” part? These are called opcodes. We’re actually interested in what comes after them.',
-    paragraph_five:
-      '4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_28” and paste it below. ',
-    input_challenge_label: 'Enter the OP_RETURN type',
-  },
-
-  transacting_three: {
-    title: 'Transacting',
-    heading: 'Another secret message',
-    paragraph_one:
-      'We’ve identified the part of the transaction output that holds the message.',
-    paragraph_two:
-      'All that’s left now is to decode it, just like we did in the previous exercise.',
-    paragraph_three: 'Need to look up $scriptPubKeyBytes again? Here you go.',
-    link: 'View transaction',
-    terminal_challenge_success:
-      'That’s correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n Your next challenge awaits you.',
-    terminal_challenge_lines:
-      'Enter your commands here and press Enter...\n\n Note that $scriptPubKeyBytes is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous challenge',
-    terminal_challenge_error:
-      'Almost! Remember that the variable $scriptPubKeyBytes is not set for you this time.',
-  },
-
-  outro: {
-    title: 'Outro',
-    paragraph_one:
-      'You run down to your garage, step into your dad’s old solocopter, punch in the coordinates, and make your way to the address.',
-    paragraph_two:
-      'Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.',
-    button_text: 'Complete chapter 1',
-  },
-
-  end: {
-    save: 'Save my progress',
-    next: 'Continue without saving',
-    feedback: 'Share your feedback',
   },
 
   ///CHALLENGE PAGE
@@ -318,6 +359,16 @@ const translations = {
   demo_disclaimer: {
     title: 'This is a demo',
     description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">your feedback</Link>.`,
+  },
+
+  runner: {
+    run: 'Run the script',
+    running: 'Running',
+    pause: 'Pause',
+    result: 'Result',
+    evaluation: 'Evaluation',
+    script_output: 'Script output',
+    waiting: 'Waiting for your input above...',
   },
 }
 

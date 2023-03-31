@@ -22,6 +22,10 @@ function getLocale(request: NextRequest): string | undefined {
 export function middleware(request: NextRequest) {
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname
+  if (['/vm', '/webworker'].some((p) => pathname.startsWith(p))) {
+    return
+  }
+
   // Redirect to '/' for homepage
   if (pathname !== '/' || getLocale(request) !== 'en') {
     const pathnameIsMissingLocale = i18n.locales.every(
