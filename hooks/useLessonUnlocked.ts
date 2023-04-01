@@ -1,3 +1,5 @@
+'use client'
+
 import { useUser, usePathData } from 'hooks'
 import { chapters } from 'content'
 
@@ -9,8 +11,14 @@ function getIndex(arr: string[], searchStr: string): number {
   return arr.indexOf(searchStr)
 }
 
-export const useLessonUnlocked = (userInfo) => {
+export const useLessonUnlocked = () => {
   let { lang, pageId, chapterId, lessonId } = usePathData()
+  const userInfo = useUser()
+
+  if (userInfo.user === undefined) {
+    return false
+  }
+
   const userLesson = userInfo.user.progress.lesson
   const userChapter = userInfo.user.progress.chapter
   const lessonArray = [

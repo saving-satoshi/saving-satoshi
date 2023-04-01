@@ -1,6 +1,6 @@
 'use client'
 
-import { useLessonUnlocked, useUser } from 'hooks'
+import { useLessonUnlocked } from 'hooks'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Navbar from 'components/Navbar'
@@ -8,11 +8,9 @@ import { lessons } from 'content'
 
 export default function Layout({ children, params }) {
   const router = useRouter()
-  const userInfo = useUser()
-  const result = useLessonUnlocked(userInfo)
+  const result = useLessonUnlocked()
   const [displayLesson, setDisplayLesson] = useState<boolean>(false)
   const { slug, lesson: lessonId } = params
-
   const defaultTheme = 'bg-back'
   const { theme = defaultTheme } = lessons[slug][lessonId].metadata
 
@@ -20,9 +18,9 @@ export default function Layout({ children, params }) {
     if (typeof result === 'string') {
       router.replace(result)
     } else {
-      setDisplayLesson(true)
+      setDisplayLesson(result)
     }
-  }, [])
+  }, [result])
 
   return displayLesson ? (
     <div className={`${theme} flex flex-col`}>
