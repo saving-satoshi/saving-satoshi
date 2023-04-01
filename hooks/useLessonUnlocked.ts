@@ -16,7 +16,7 @@ export const useLessonUnlocked = () => {
   const userInfo = useUser()
 
   if (userInfo.user === undefined) {
-    return false
+    return `/${lang}`
   }
 
   const userLesson = userInfo.user.progress.lesson
