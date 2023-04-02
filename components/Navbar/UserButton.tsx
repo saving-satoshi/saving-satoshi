@@ -19,17 +19,19 @@ export default function UserButton() {
 
     return isLoggedIn ? (
       <button
+        id="navbar-tab-user-icon"
         onClick={() => setOpenSignInModal(true)}
         aria-label="profile"
-        className="text-grey-300 h-10 cursor-pointer"
+        className="text-grey-300 relative flex h-full w-12 cursor-pointer items-center justify-center md:w-16"
       >
         <Avatar avatar={user.avatar} size={30} />
       </button>
     ) : (
       <button
+        id="navbar-tab-user-login"
         onClick={() => toggleModal(true)}
         aria-label="profile"
-        className="text-grey-300 h-10 cursor-pointer"
+        className="text-grey-300 relative flex h-full w-12 cursor-pointer items-center justify-center md:w-16"
       >
         <UserIcon />
       </button>
@@ -50,8 +52,11 @@ export default function UserButton() {
   }
 
   return (
-    <div>
-      <div className="ml-4 h-10 w-10">{renderIconButton()}</div>
+    <div className="flex-l flex h-full items-stretch">
+      <span aria-describedby="navbar-tab-user">
+        <span>{renderIconButton()}</span>
+      </span>
+
       {isRegistered ? (
         <LoginModal
           onLogin={() => setOpenSignInModal(false)}
