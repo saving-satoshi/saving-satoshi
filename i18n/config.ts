@@ -4,6 +4,7 @@ export const i18n = {
     { locale: 'en', label: 'English' },
     { locale: 'es', label: 'Español' },
     { locale: 'nl', label: 'Dutch' },
+    { locale: 'hi', label: 'Hindi' },
   ],
 } as const
 
