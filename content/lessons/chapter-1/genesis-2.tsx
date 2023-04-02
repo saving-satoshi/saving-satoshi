@@ -2,7 +2,6 @@
 
 import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { Button, LessonInfo, Title, Text, InputChallenge } from 'ui'
-import HashChallenge from 'ui/lesson/HashChallenge'
 
 export default function Genesis3({ lang }) {
   const routes = useLocalizedRoutes()
