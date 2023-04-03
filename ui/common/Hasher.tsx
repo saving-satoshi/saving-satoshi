@@ -22,11 +22,9 @@ export default function Hasher({
   const [clicked, setClicked] = useState(false)
 
   const handleAutoChange = () => {
-    setHash(
-      sjcl.codec.hex.fromBits(
-        sjcl.hash.sha256.hash(Math.random() * 1000000000000000000)
-      )
-    )
+    let randomNum = (Math.random() * 1000000000000000000).toString()
+    setHash(sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(randomNum)))
+    console.log(randomNum)
   }
 
   const handleHash = (input) => {
@@ -43,18 +41,21 @@ export default function Hasher({
   }
 
   useEffect(() => {
-    handleHash(input)
+    const miner =
+      clicked &&
+      typeof answer === 'string' &&
+      !hash.startsWith(answer) &&
+      setInterval(() => {
+        handleAutoChange()
+      }, 10)
+    !clicked && handleHash(input)
     if (typeof answer === 'string') {
       onChange(hash.substring(0, answer.length))
-      const miner =
-        clicked &&
-        !hash.startsWith(answer) &&
-        setInterval(() => {
-          handleAutoChange()
-        }, 50)
-      return () => clearInterval(miner)
     } else {
       onChange(hash)
+    }
+    return () => {
+      clearInterval(miner)
     }
   })
 
@@ -113,11 +114,11 @@ export default function Hasher({
           >
             {(clicked && !hash.startsWith(answer) && 'Hashing...') ||
               (!clicked && !hash.startsWith(answer) && 'Click') ||
-              (clicked && hash.startsWith(answer) && 'Found!')}
+              (hash.startsWith(answer) && 'Found!')}
           </Button>
           <p
             className={clsx(
-              'top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent text-center font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:text-[30px] md:tracking-[5px]',
+              'top-0 left-0 h-full w-full resize-none overflow-hidden break-words bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:text-[30px] md:tracking-[5px]',
               {
                 'overlay-complete': hash.startsWith(answer) === true,
                 'overlay-incomplete': hash.startsWith(answer) === false,

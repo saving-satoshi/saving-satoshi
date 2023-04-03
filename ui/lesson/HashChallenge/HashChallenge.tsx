@@ -62,10 +62,9 @@ export default function HashChallenge({
     const hintTimeout = () => {
       setTimeout(() => {
         setHintTimer(true)
-        console.log('hint set')
       }, 15000)
     }
-    hintTimeout()
+    answerHint && hintTimeout()
   })
 
   return (
@@ -139,11 +138,7 @@ export default function HashChallenge({
         alwaysShow
         full
         next={next}
-        input={
-          typeof answer === 'number'
-            ? input.length >= answer && userInput
-            : userInput
-        }
+        input={userInput}
         expected={
           (typeof answer === 'string' && answer) ||
           (typeof answer === 'number' &&
