@@ -30,7 +30,7 @@ export default function Hasher({
   }
 
   const handleHash = (input) => {
-    if (!!input) {
+    if (input) {
       const bitArray = sjcl.hash.sha256.hash(input)
       setHash(sjcl.codec.hex.fromBits(bitArray))
     } else {
@@ -44,7 +44,7 @@ export default function Hasher({
 
   useEffect(() => {
     handleHash(input)
-    hash && onChange(hash.substring(0, answer.length))
+    onChange(hash.substring(0, answer.length))
     const miner =
       clicked &&
       !hash.startsWith(answer) &&
@@ -54,48 +54,40 @@ export default function Hasher({
     return () => clearInterval(miner)
   })
 
-  console.log(hash.startsWith(answer))
-
   return (
     <>
       {!auto && (
         <>
-          <form className="flex">
-            <div className="flex justify-center">
-              {/* <input
-                placeholder="Type here..."
-                className={clsx(
-                  'top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:text-[30px] md:tracking-[5px]',
-                  {
-                    'overlay-complete': hash.startsWith(answer) === true,
-                    'overlay-incomplete': hash.startsWith(answer) === false,
-                  }
-                )}
-                onChange={handleChange}
-                value={input}
-              /> */}
-            </div>
-          </form>
-
-          {/* <hr className="border-1 invisible h-1 w-screen border-white/25 md:visible" /> */}
-
-          <div>
-            <h2 className="text-left text-xl font-bold md:text-center">
+          <div className="flex flex-col">
+            <h2 className="text-left text-[18px] font-bold md:text-center">
               {label}
             </h2>
             <p
               className={clsx(
-                'top-0 left-0 h-full w-full resize-none overflow-hidden break-words bg-transparent text-center font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:text-[30px] md:tracking-[5px]',
+                'top-0 left-0 h-full w-4/5 resize-none overflow-hidden break-words bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:w-3/5 md:text-[30px] md:tracking-[5px]',
                 {
-                  'overlay-complete':
-                    input.length > 4 && hash.startsWith(answer) === true,
+                  'overlay-complete': hash.startsWith(answer) === true,
                   'overlay-incomplete': hash.startsWith(answer) === false,
+                  underscore: !hash || !answer,
                 }
               )}
             >
               {hash
-                ? hash
-                : '____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____'}
+                ? `${hash.substring(0, 4)} ${hash.substring(
+                    4,
+                    8
+                  )} ${hash.substring(8, 12)} ${hash.substring(
+                    12,
+                    16
+                  )} ${hash.substring(16, 20)} ${hash.substring(20, 24)}
+                 ${hash.substring(24, 28)} ${hash.substring(
+                    32,
+                    36
+                  )} ${hash.substring(40, 44)} ${hash.substring(
+                    44,
+                    48
+                  )} ${hash.substring(52, 56)} ${hash.substring(60, 64)}`
+                : '____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____'}
             </p>
           </div>
         </>
@@ -123,8 +115,21 @@ export default function Hasher({
             )}
           >
             {hash
-              ? hash
-              : '________________________________________________________________'}
+              ? `${hash.substring(0, 4)} ${hash.substring(
+                  4,
+                  8
+                )} ${hash.substring(8, 12)} ${hash.substring(
+                  12,
+                  16
+                )} ${hash.substring(16, 20)} ${hash.substring(20, 24)}
+                 ${hash.substring(24, 28)} ${hash.substring(
+                  32,
+                  36
+                )} ${hash.substring(40, 44)} ${hash.substring(
+                  44,
+                  48
+                )} ${hash.substring(52, 56)} ${hash.substring(60, 64)}`
+              : '____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____'}
           </p>
         </>
       )}
@@ -133,5 +138,6 @@ export default function Hasher({
 }
 
 /*
+'000'
 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvccxcvxcvxcvxcvxcvxcvcvcvcvvbbbbbbbbbbbbbgggggggggggggggggggggggggggggggggggggggggggdddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeerrrrrrrrrrrrrrrrrrrrrrrrrrewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwdddddddsaaaaaaaaaaaaaaaaaaaaaaqqwwweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefffffffffggggggggggggggggggggggggggggggggggggtttttttttttreerwerwerwerwerwerwerwerwerwererererwewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewwwwwwwwwwwwwwwwwwwwwwwwwqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqwweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 */

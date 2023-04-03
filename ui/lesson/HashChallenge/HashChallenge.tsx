@@ -33,23 +33,25 @@ export default function HashChallenge({
   const handleChange = (event) => {
     setInput(event.target.value)
   }
-  // console.log(userInput, answer)
+
+  console.log(userInput, input, answer)
 
   return (
     <Lesson>
       <div className="flex w-full grow justify-center">
-        <div className='lg:w-9/12" flex grow justify-center font-space-mono text-white md:w-9/12'>
+        <div className="flex max-w-[1280px] grow items-start justify-center px-4 py-8 font-space-mono text-white md:w-9/12 md:items-center lg:w-9/12">
           <div className="flex flex-col justify-center">
-            <div className="w-full pt-8">
-              <h2 className="text-center text-xl font-bold text-white md:text-center">
+            <div className="w-full">
+              <h2 className="text-left text-[18px] font-bold text-white md:text-center">
                 {label}
               </h2>
               <input
                 placeholder="Type here..."
                 className={clsx(
-                  'top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] text-white outline-none md:text-[30px] md:tracking-[5px]',
+                  'top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[24px] leading-[180%] tracking-[1px] text-white outline-none md:text-[30px] md:tracking-[5px]',
                   {
-                    'overlay-complete': userInput === answer,
+                    'overlay-complete':
+                      userInput === answer && input.length > 0,
                     'overlay-incomplete': userInput !== answer,
                   }
                 )}
@@ -67,7 +69,7 @@ export default function HashChallenge({
           label={label2}
           answer={answer}
           onChange={setUserInput}
-          auto={false}
+          auto={auto}
           input={input}
         />
       </div>

@@ -17,9 +17,7 @@ export default function LessonHasher({
   auto: boolean
   input: string
 }) {
-  // const { activeView } = useLessonMobileContext()
   const isActive = LessonView.Code
-  //   const inputPattern = pattern ? pattern : /./g
 
   return (
     <div
