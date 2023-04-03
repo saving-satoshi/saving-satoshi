@@ -15,6 +15,7 @@ export default function Hashing3({ lang }) {
         'Enter anything until you find a hash that starts with two zeroes ("00")'
       }
       label2={'Below you will see your input converted to a hash'}
+      answerHint={'trigonometry'}
     />
   )
 }

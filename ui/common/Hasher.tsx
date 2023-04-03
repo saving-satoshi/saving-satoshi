@@ -45,7 +45,6 @@ export default function Hasher({
   useEffect(() => {
     handleHash(input)
     if (typeof answer === 'string') {
-      console.log('checked', answer, hash)
       onChange(hash.substring(0, answer.length))
       const miner =
         clicked &&

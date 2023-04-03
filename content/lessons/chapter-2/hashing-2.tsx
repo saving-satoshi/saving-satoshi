@@ -15,6 +15,7 @@ export default function Hashing2({ lang }) {
         'Enter anything until you find a hash that starts with one zeroes ("0")'
       }
       label2={'Below you will see your input converted to a hash'}
+      answerHint={'something s'}
     />
   )
 }

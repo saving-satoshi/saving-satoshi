@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { Lesson, LessonTabs, LessonPrompt, StatusBar } from 'ui'
+import { useEffect, useState } from 'react'
+import { Lesson, LessonTabs, LessonPrompt, StatusBar, Tooltip } from 'ui'
 import LessonHasher from './HashPrompt'
 import clsx from 'clsx'
 
@@ -15,6 +15,7 @@ import clsx from 'clsx'
 export default function HashChallenge({
   // children,
   answer,
+  answerHint,
   next,
   label,
   label2,
@@ -26,18 +27,46 @@ export default function HashChallenge({
   next: any
   label: string
   label2: string
+  answerHint?: string
   auto?: boolean
   hints?: boolean
 }) {
   const [input, setInput] = useState('')
   const [userInput, setUserInput] = useState('')
+  const [hintTimer, setHintTimer] = useState(false)
+
+  const inputView = (
+    <>
+      hintTimer && (
+      <Tooltip
+        id={`challenge-hint-tooltip}`}
+        position="top"
+        offset={0}
+        content={
+          <div className="flex flex-col">
+            <span className="whitespace-nowrap">Need a hint?</span>
+          </div>
+        }
+      >
+        {input}
+      </Tooltip>
+      ) || input
+    </>
+  )
 
   const handleChange = (event) => {
     setInput(event.target.value)
   }
 
-  console.log('challenge checked', userInput, answer)
-  console.log(userInput === answer ? 'correct' : 'wrong')
+  useEffect(() => {
+    const hintTimeout = () => {
+      setTimeout(() => {
+        setHintTimer(true)
+        console.log('hint set')
+      }, 15000)
+    }
+    hintTimeout()
+  })
 
   return (
     <Lesson>
@@ -46,7 +75,30 @@ export default function HashChallenge({
           <div className="flex flex-col justify-center">
             <div className="w-full">
               <h2 className="text-left text-[18px] font-bold text-white md:text-center">
-                {label}
+                {label}{' '}
+                {answerHint && hintTimer && (
+                  <>
+                    <span>Need a </span>
+                    <Tooltip
+                      id={`challenge-hint-tooltip}`}
+                      position="bottom"
+                      offset={0}
+                      content={
+                        <div className="flex flex-col">
+                          <span className="text-m whitespace-nowrap leading-none text-white/50">
+                            Hover to see the answer
+                          </span>
+                          <span className=" cursor-pointer whitespace-nowrap bg-black/20 text-transparent hover:text-white">
+                            {answerHint}
+                          </span>
+                        </div>
+                      }
+                    >
+                      <u className="cursor-pointer">hint</u>
+                    </Tooltip>
+                    ?
+                  </>
+                )}
               </h2>
               <input
                 placeholder="Type here..."
