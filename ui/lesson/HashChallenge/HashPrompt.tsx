@@ -12,12 +12,12 @@ export default function LessonHasher({
 }: {
   className?: string
   label: string
-  answer: string
+  answer: string | number
   onChange: Function
   auto: boolean
   input: string
 }) {
-  const isActive = LessonView.Code
+  // const isActive = LessonView.Code
 
   return (
     <div

@@ -19,13 +19,15 @@ export default function HashChallenge({
   label,
   label2,
   auto,
+  hints,
 }: {
   // children: any
-  answer: string
+  answer: string | number
   next: any
   label: string
   label2: string
-  auto: boolean
+  auto?: boolean
+  hints?: boolean
 }) {
   const [input, setInput] = useState('')
   const [userInput, setUserInput] = useState('')
@@ -34,7 +36,8 @@ export default function HashChallenge({
     setInput(event.target.value)
   }
 
-  console.log(userInput, input, answer)
+  console.log('challenge checked', userInput, answer)
+  console.log(userInput === answer ? 'correct' : 'wrong')
 
   return (
     <Lesson>
@@ -47,12 +50,18 @@ export default function HashChallenge({
               </h2>
               <input
                 placeholder="Type here..."
+                maxLength={24}
                 className={clsx(
                   'top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[24px] leading-[180%] tracking-[1px] text-white outline-none md:text-[30px] md:tracking-[5px]',
                   {
                     'overlay-complete':
-                      userInput === answer && input.length > 0,
-                    'overlay-incomplete': userInput !== answer,
+                      (typeof answer === 'string' &&
+                        userInput === answer &&
+                        input.length > 0) ||
+                      (typeof answer === 'number' && input.length >= answer),
+                    'overlay-incomplete':
+                      (typeof answer === 'string' && userInput !== answer) ||
+                      (typeof answer === 'number' && input.length < answer),
                   }
                 )}
                 value={input}
@@ -78,8 +87,17 @@ export default function HashChallenge({
         alwaysShow
         full
         next={next}
-        input={userInput}
-        expected={answer}
+        input={
+          typeof answer === 'number'
+            ? input.length >= answer && userInput
+            : userInput
+        }
+        expected={
+          (typeof answer === 'string' && answer) ||
+          (typeof answer === 'number' &&
+            ((input.length >= answer && userInput) || userInput + '_'))
+        }
+        hints={hints}
       />
     </Lesson>
   )

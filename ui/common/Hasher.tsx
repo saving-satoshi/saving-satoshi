@@ -12,7 +12,7 @@ export default function Hasher({
   auto,
   input,
 }: {
-  answer: string
+  answer: string | number
   label: string
   onChange: any
   auto: boolean
@@ -44,14 +44,19 @@ export default function Hasher({
 
   useEffect(() => {
     handleHash(input)
-    onChange(hash.substring(0, answer.length))
-    const miner =
-      clicked &&
-      !hash.startsWith(answer) &&
-      setInterval(() => {
-        handleAutoChange()
-      }, 50)
-    return () => clearInterval(miner)
+    if (typeof answer === 'string') {
+      console.log('checked', answer, hash)
+      onChange(hash.substring(0, answer.length))
+      const miner =
+        clicked &&
+        !hash.startsWith(answer) &&
+        setInterval(() => {
+          handleAutoChange()
+        }, 50)
+      return () => clearInterval(miner)
+    } else {
+      onChange(hash)
+    }
   })
 
   return (
@@ -66,8 +71,14 @@ export default function Hasher({
               className={clsx(
                 'top-0 left-0 h-full w-4/5 resize-none overflow-hidden break-words bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:w-3/5 md:text-[30px] md:tracking-[5px]',
                 {
-                  'overlay-complete': hash.startsWith(answer) === true,
-                  'overlay-incomplete': hash.startsWith(answer) === false,
+                  'overlay-complete':
+                    (typeof answer === 'string' &&
+                      hash.startsWith(answer) === true) ||
+                    (typeof answer === 'number' && input.length >= answer),
+                  'overlay-incomplete':
+                    (typeof answer === 'string' &&
+                      hash.startsWith(answer) === false) ||
+                    (typeof answer === 'number' && input.length < answer),
                   underscore: !hash || !answer,
                 }
               )}
@@ -92,7 +103,7 @@ export default function Hasher({
           </div>
         </>
       )}
-      {auto && (
+      {auto && typeof answer === 'string' && (
         <>
           <Button
             full
