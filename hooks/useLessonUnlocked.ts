@@ -1,5 +1,3 @@
-'use client'
-
 import { useUser, usePathData } from 'hooks'
 import { chapters } from 'content'
 
@@ -15,12 +13,8 @@ export const useLessonUnlocked = () => {
   let { lang, pageId, chapterId, lessonId } = usePathData()
   const userInfo = useUser()
 
-  if (userInfo.user === undefined) {
-    return `/${lang}`
-  }
-
-  const userLesson = userInfo.user.progress.lesson
-  const userChapter = userInfo.user.progress.chapter
+  const userLesson = userInfo?.user?.progress?.lesson
+  const userChapter = userInfo?.user?.progress?.chapter
   const lessonArray = [
     ...chapters[chapterId].metadata.intros,
     ...chapters[chapterId].metadata.lessons,

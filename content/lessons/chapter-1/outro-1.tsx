@@ -1,6 +1,6 @@
 'use client'
 
-import { useLocalizedRoutes, useUser, useTranslations } from 'hooks'
+import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { TextImage } from 'ui'
 
 export default function Transacting4({ lang }) {

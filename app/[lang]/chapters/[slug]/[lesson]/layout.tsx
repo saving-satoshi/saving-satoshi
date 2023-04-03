@@ -22,16 +22,20 @@ export default function Layout({ children, params }) {
     }
   }, [result])
 
-  return displayLesson ? (
+  return (
     <div className={`${theme} flex flex-col`}>
       <div className="fix-grow-issue flex min-h-screen flex-col overflow-hidden drop-shadow-3xl backdrop-blur-4xl">
         <Navbar params={params} />
-        {children}
+        {displayLesson ? (
+          children
+        ) : (
+          <div className="flex h-full w-full grow flex-col items-center justify-center">
+            <span className="mb-10 text-4xl text-white">
+              Loading Challenge...
+            </span>
+          </div>
+        )}
       </div>
-    </div>
-  ) : (
-    <div className="flex h-full w-full grow flex-col items-center justify-center">
-      <span className="mb-10 text-4xl text-white">Loading Challenge...</span>
     </div>
   )
 }
