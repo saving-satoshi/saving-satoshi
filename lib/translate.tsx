@@ -19,7 +19,7 @@ const componentRegexes = {
   [ComponentType.Link]: /<Link(.*?)>(.*?)<\/Link>/gim,
   [ComponentType.Tooltip]: /<Tooltip(.*?)>(.*?)<\/Tooltip>/gim,
   [ComponentType.A]: /<a(.*?)>(.*?)<\/a>/gim,
-  [ComponentType.LineBreak]: /<br\/>/gim,
+  [ComponentType.LineBreak]: /<br(.*?)>/gim,
   [ComponentType.Span]: /<span(.*?)>(.*?)<\/span>/gim,
 }
 
@@ -39,7 +39,7 @@ export function t(key: string, lang: string) {
     translation.indexOf('</Tooltip>') === -1 &&
     translation.indexOf('</Link>') === -1 &&
     translation.indexOf('</a>') === -1 &&
-    translation.indexOf('<br/>') === -1 &&
+    translation.indexOf('<br') === -1 &&
     translation.indexOf('</span>') === -1
   ) {
     return translation

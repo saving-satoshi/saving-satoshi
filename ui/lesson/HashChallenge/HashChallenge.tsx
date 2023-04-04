@@ -1,10 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { Lesson, StatusBar, Tooltip, Hasher } from 'ui'
+import { useEffect, useRef, useState } from 'react'
+import { Lesson, StatusBar, Hasher } from 'ui'
 import clsx from 'clsx'
 import { useLang, useTranslations } from 'hooks'
-import { chapters } from 'content/chapters'
 import { usePathname } from 'next/navigation'
 
 /**
@@ -39,6 +38,7 @@ export default function HashChallenge({
   const [input, setInput] = useState('')
   const [userInput, setUserInput] = useState('')
   const [hintTimer, setHintTimer] = useState(false)
+  const inputRef = useRef(null)
 
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
@@ -83,6 +83,13 @@ export default function HashChallenge({
     hintTimeout()
   }
 
+  useEffect(() => {
+    if (typeof answer === 'string' && userInput.startsWith(answer)) {
+      console.log(userInput, answer)
+      inputRef.current?.blur()
+    }
+  }, [answer, userInput])
+
   return (
     <Lesson>
       <div className="flex w-full justify-center py-12 md:grow">
@@ -116,6 +123,7 @@ export default function HashChallenge({
                   }
                 )}
                 value={input}
+                ref={inputRef}
                 onChange={handleChange}
               />
             </div>
