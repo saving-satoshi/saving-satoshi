@@ -103,10 +103,17 @@ export default function Hasher({
           </Button>
           <p
             className={clsx(
-              'h-full max-w-3xl resize-none overflow-hidden break-words bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:text-center md:text-[30px] md:tracking-[5px]',
+              'h-full w-4/5 resize-none overflow-hidden break-words bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:w-full md:max-w-5xl md:text-center md:text-[30px] md:tracking-[5px]',
               {
-                'overlay-complete': hash.startsWith(answer) === true,
-                'overlay-incomplete': hash.startsWith(answer) === false,
+                'overlay-complete':
+                  (typeof answer === 'string' &&
+                    hash.startsWith(answer) === true) ||
+                  (typeof answer === 'number' && input.length >= answer),
+                'overlay-incomplete':
+                  (typeof answer === 'string' &&
+                    hash.startsWith(answer) === false) ||
+                  (typeof answer === 'number' && input.length < answer),
+                underscore: !hash || !answer,
               }
             )}
           >
