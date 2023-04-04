@@ -4,6 +4,10 @@ import { useTranslations } from 'hooks'
 import { Button, Title, InfoBox, ProgressBar } from 'ui'
 import { useState } from 'react'
 
+function getRandomNumber(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
 export default function Mining1({ lang }) {
   const t = useTranslations(lang)
   const [nonce, setNone] = useState(0)
@@ -59,9 +63,9 @@ export default function Mining1({ lang }) {
       </div>
 
       <div className="my-8 ml-0 grid w-full grid-cols-1 items-center px-6 md:my-0 md:ml-8 lg:w-1/2 lg:px-0">
-        <div className="font-nunito text-lg font-semibold text-white">
+        <div className="relative mb-2.5 font-nunito text-lg font-semibold text-white">
           <span>{t('chapter_two.mining_one.progress_bar_title')}</span>{' '}
-          <span>{blocks} of 1,000</span>
+          <span className="absolute right-0">{blocks} of 1,000</span>
         </div>
         <ProgressBar avatar="1" progress={blocks / 10} />
         <InfoBox
