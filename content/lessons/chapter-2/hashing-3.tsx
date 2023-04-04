@@ -9,13 +9,11 @@ export default function Hashing3({ lang }) {
 
   return (
     <HashChallenge
-      answer={'00'}
+      answer="00"
       next={`${routes.chaptersUrl}/chapter-2/hashing-4`}
-      label={
-        'Enter anything until you find a hash that starts with two zeroes ("00")'
-      }
-      label2={'Below you will see your input converted to a hash'}
-      answerHint={'trigonometry'}
+      inputLabel='Enter anything until you find a hash that starts with two zeroes ("00")'
+      returnLabel="Below you will see your input converted to a hash"
+      answerHint="trigonometry"
     />
   )
 }

@@ -11,8 +11,8 @@ export default function Hashing1({ lang }) {
     <HashChallenge
       answer={8}
       next={`${routes.chaptersUrl}/chapter-2/hashing-2`}
-      label={'Enter anything'}
-      label2={'Below you will see your input converted to a hash'}
+      inputLabel="Enter anything"
+      returnLabel="Below you will see your input converted to a hash"
       hints
     />
   )

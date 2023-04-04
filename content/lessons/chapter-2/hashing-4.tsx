@@ -9,10 +9,10 @@ export default function Hashing3({ lang }) {
 
   return (
     <HashChallenge
-      answer={'000'}
+      answer="000"
       next={`${routes.chaptersUrl}/chapter-2/scripting-1`}
-      label={'Beware the Button!!'}
-      label2={'Below you will see your input converted to a hash'}
+      inputLabel="Beware the Button!!"
+      returnLabel="Below you will see your input converted to a hash"
       auto
     />
   )
