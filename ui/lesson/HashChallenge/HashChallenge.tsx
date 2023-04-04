@@ -37,9 +37,8 @@ export default function HashChallenge({
 
   const [input, setInput] = useState('')
   const [userInput, setUserInput] = useState('')
-  const [hintTimer, setHintTimer] = useState(false)
+  const [hintTooltip, setHintTooltip] = useState(false)
   const [success, setSuccess] = useState<string>('')
-  const [challengeState, setChallengeState] = useState<string>('incomplete')
   const inputRef = useRef(null)
 
   const pathData = pathName.split('/').filter((p) => p)
@@ -65,30 +64,25 @@ export default function HashChallenge({
   }
 
   useEffect(() => {
-    const hintTimeout = () => {
-      setTimeout(() => {
-        if (
-          answerHint &&
-          success === 'true' &&
-          typeof answer === 'string' &&
-          userInput.startsWith(answer)
-        ) {
-          setHintTimer(false)
-        } else if (answerHint && success === 'false') {
-          setHintTimer(true)
-        }
-      }, 15000)
-    }
-    hintTimeout()
+    let timeoutId = setTimeout(() => {
+      if (answerHint && success === 'false') {
+        setHintTooltip(true)
+      }
+    }, 15000)
+
     if (
-      (typeof answer === 'string' && userInput.startsWith(answer)) ||
-      (typeof answer === 'number' && input.length === answer)
+      success !== 'true' &&
+      ((typeof answer === 'string' && userInput.startsWith(answer)) ||
+        (typeof answer === 'number' && input.length >= answer))
     ) {
       inputRef.current?.blur()
       setSuccess('true')
-    } else if (input.length > 0) {
+    } else if (input.length > 0 && success !== 'true') {
       setSuccess('false')
+    } else {
+      return
     }
+    return () => clearTimeout(timeoutId)
   }, [answer, userInput, input.length, answerHint, success])
 
   return (
@@ -99,7 +93,7 @@ export default function HashChallenge({
             <div className="w-full">
               <h2 className="text-left text-[18px] font-bold text-white md:text-center">
                 {inputLabel}
-                {answerHint && hintTimer && (
+                {answerHint && hintTooltip && (
                   <div className="text-left">
                     <span>
                       {t(`chapter_two.hashing_${challengeIdWord}.hint_prompt`)}
@@ -152,16 +146,8 @@ export default function HashChallenge({
         alwaysShow
         full
         next={next}
-        input={
-          // userInput
-          success
-        }
-        expected={
-          // (typeof answer === 'string' && answer) ||
-          // (typeof answer === 'number' &&
-          //   ((input.length >= answer && userInput) || userInput + '_'))
-          'true'
-        }
+        input={success}
+        expected={'true'}
         hints={hints}
       />
     </Lesson>
