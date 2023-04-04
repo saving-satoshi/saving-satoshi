@@ -280,6 +280,7 @@ const translations = {
     chapter: 'Chapter',
     chapter_complete: 'Chapter complete',
     challenge: 'Challenge',
+    help_tooltip: 'Need help?',
   },
 
   modal_login: {

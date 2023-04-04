@@ -12,31 +12,6 @@ export default function UserButton() {
   const [openSignInModal, setOpenSignInModal] = useState(false)
   const [openSignUpModal, setOpenSignUpModal] = useState(false)
   const { user, isLoggedIn, isRegistered } = useUser()
-  const renderIconButton = () => {
-    if (!hasMounted) {
-      return <div />
-    }
-
-    return isLoggedIn ? (
-      <button
-        id="navbar-tab-user-icon"
-        onClick={() => setOpenSignInModal(true)}
-        aria-label="profile"
-        className="text-grey-300 relative flex h-full w-12 cursor-pointer items-center justify-center md:w-16"
-      >
-        <Avatar avatar={user.avatar} size={30} />
-      </button>
-    ) : (
-      <button
-        id="navbar-tab-user-login"
-        onClick={() => toggleModal(true)}
-        aria-label="profile"
-        className="text-grey-300 relative flex h-full w-12 cursor-pointer items-center justify-center md:w-16"
-      >
-        <UserIcon />
-      </button>
-    )
-  }
 
   function toggleModal(show) {
     if (user && user.publicKey && isRegistered) {
@@ -53,10 +28,6 @@ export default function UserButton() {
 
   return (
     <div className="flex-l flex h-full items-stretch">
-      <span aria-describedby="navbar-tab-user">
-        <span>{renderIconButton()}</span>
-      </span>
-
       {isRegistered ? (
         <LoginModal
           onLogin={() => setOpenSignInModal(false)}
@@ -70,6 +41,29 @@ export default function UserButton() {
           onClose={hideModals}
         />
       )}
+      <span aria-describedby="navbar-tab-user">
+        {!hasMounted && <div />}
+        {hasMounted && isLoggedIn && (
+          <button
+            id="navbar-tab-user-icon"
+            onClick={() => setOpenSignInModal(true)}
+            aria-label="profile"
+            className="text-grey-300 relative flex h-full w-12 cursor-pointer items-center justify-center md:w-16"
+          >
+            <Avatar avatar={user.avatar} size={30} />
+          </button>
+        )}
+        {hasMounted && !isLoggedIn && (
+          <button
+            id="navbar-tab-user-login"
+            onClick={() => toggleModal(true)}
+            aria-label="profile"
+            className="text-grey-300 relative flex h-full w-12 cursor-pointer items-center justify-center md:w-16"
+          >
+            <UserIcon />
+          </button>
+        )}
+      </span>
     </div>
   )
 }
