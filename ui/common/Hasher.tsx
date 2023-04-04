@@ -20,6 +20,7 @@ export default function Hasher({
 }) {
   const [hash, setHash] = useState('')
   const [clicked, setClicked] = useState(false)
+  const hashString = (hash ? hash : '_'.repeat(64)).match(/.{1,4}/g).join(' ')
 
   const handleAutoChange = () => {
     const randomNum = (Math.random() * 1000000000000000000).toString()
@@ -68,7 +69,7 @@ export default function Hasher({
             </h2>
             <p
               className={clsx(
-                'h-full max-w-3xl resize-none overflow-hidden break-words bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:text-center md:text-[30px] md:tracking-[5px]',
+                'h-full w-4/5 resize-none overflow-hidden break-words bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:w-full md:max-w-5xl md:text-center md:text-[30px] md:tracking-[5px]',
                 {
                   'overlay-complete':
                     (typeof answer === 'string' &&
@@ -82,22 +83,7 @@ export default function Hasher({
                 }
               )}
             >
-              {hash
-                ? `${hash.substring(0, 4)} ${hash.substring(
-                    4,
-                    8
-                  )} ${hash.substring(8, 12)} ${hash.substring(
-                    12,
-                    16
-                  )} ${hash.substring(16, 20)} ${hash.substring(20, 24)}
-                 ${hash.substring(24, 28)} ${hash.substring(
-                    32,
-                    36
-                  )} ${hash.substring(40, 44)} ${hash.substring(
-                    44,
-                    48
-                  )} ${hash.substring(52, 56)} ${hash.substring(60, 64)}`
-                : '____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____'}
+              {hashString}
             </p>
           </div>
         </>
@@ -124,22 +110,7 @@ export default function Hasher({
               }
             )}
           >
-            {hash
-              ? `${hash.substring(0, 4)} ${hash.substring(
-                  4,
-                  8
-                )} ${hash.substring(8, 12)} ${hash.substring(
-                  12,
-                  16
-                )} ${hash.substring(16, 20)} ${hash.substring(20, 24)}
-                 ${hash.substring(24, 28)} ${hash.substring(
-                  32,
-                  36
-                )} ${hash.substring(40, 44)} ${hash.substring(
-                  44,
-                  48
-                )} ${hash.substring(52, 56)} ${hash.substring(60, 64)}`
-              : '____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____'}
+            {hashString}
           </p>
         </>
       )}
