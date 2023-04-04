@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation'
 
 /**
  * @answer {string} correct answer to the challenge problem
+ * @answerHint {boolean} determine if an answer hint tooltip should be shown
  * @next {string} link to next part of chapter
  * @inputLabel {string} label on top of input field
  * @returnLabel {string} label on the top of the return field
