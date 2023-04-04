@@ -64,28 +64,22 @@ export default function HashChallenge({
     setInput(event.target.value)
   }
 
-  const hintTimeout = () => {
-    setTimeout(() => {
-      if (
-        answerHint &&
-        typeof answer === 'string' &&
-        !userInput.startsWith(answer)
-      ) {
-        setHintTimer(true)
-      } else {
-        return
-      }
-    }, 15000)
-  }
-  if (
-    answerHint &&
-    typeof answer === 'string' &&
-    !userInput.startsWith(answer)
-  ) {
-    hintTimeout()
-  }
-
   useEffect(() => {
+    const hintTimeout = () => {
+      setTimeout(() => {
+        if (
+          answerHint &&
+          success === 'true' &&
+          typeof answer === 'string' &&
+          userInput.startsWith(answer)
+        ) {
+          setHintTimer(false)
+        } else if (answerHint && success === 'false') {
+          setHintTimer(true)
+        }
+      }, 15000)
+    }
+    hintTimeout()
     if (
       (typeof answer === 'string' && userInput.startsWith(answer)) ||
       (typeof answer === 'number' && input.length === answer)
@@ -95,7 +89,7 @@ export default function HashChallenge({
     } else if (input.length > 0) {
       setSuccess('false')
     }
-  }, [answer, userInput, input.length])
+  }, [answer, userInput, input.length, answerHint, success])
 
   return (
     <Lesson>
