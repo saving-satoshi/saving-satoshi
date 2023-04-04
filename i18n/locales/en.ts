@@ -250,6 +250,27 @@ const translations = {
         'When you press “Run the script”, the findHash function will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce.',
       success: 'Five zeroes! That’s it!',
     },
+
+    mining_one: {
+      title: 'Into the mine',
+      heading_one: 'Now that we know how mining works, let’s see it in action',
+      heading_two: 'You’re mining now',
+      paragraph_one:
+        'Right now, the Bitcoin network requires blocks to have a hash with ten leading zeros. Let’s get to it!',
+      paragraph_two:
+        'For this simple simulation, we’ll just assume that every block contains 2,000 transactions.',
+      paragraph_three:
+        'The code you wrote in the previous lesson to compute hashes over and over again is running.',
+      paragraph_four:
+        'It will stop once it’s found a hash with ten leading zeroes.',
+      paragraph_five:
+        'See the nonce field incrementing? That’s how many hashes you have tried so far!',
+      progress_bar_title: 'Blocks found',
+      progress_bar_one: 'Nonce',
+      progress_bar_two: 'Hash power',
+      progress_bar_three: 'Transactions confirmed',
+      progress_bar_four: 'Bitcoin mined',
+    },
   },
 
   chapter_three: {
