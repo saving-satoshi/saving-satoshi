@@ -13,7 +13,7 @@ export default function Hashing5({ lang, params }) {
       next={`${routes.chaptersUrl}/chapter-2/hashing-6`}
       inputLabel={t('chapter_two.hashing_five.heading')}
       returnLabel={t('hasher.return_hash')}
-      answerHint={t('chapter_two.hashing_five.answer_hint')}
+      answerHint
     />
   )
 }

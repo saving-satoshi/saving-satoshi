@@ -38,6 +38,8 @@ export default function HashChallenge({
   const [input, setInput] = useState('')
   const [userInput, setUserInput] = useState('')
   const [hintTimer, setHintTimer] = useState(false)
+  const [success, setSuccess] = useState<string>('')
+  const [challengeState, setChallengeState] = useState<string>('incomplete')
   const inputRef = useRef(null)
 
   const pathData = pathName.split('/').filter((p) => p)
@@ -84,11 +86,16 @@ export default function HashChallenge({
   }
 
   useEffect(() => {
-    if (typeof answer === 'string' && userInput.startsWith(answer)) {
-      console.log(userInput, answer)
+    if (
+      (typeof answer === 'string' && userInput.startsWith(answer)) ||
+      (typeof answer === 'number' && input.length === answer)
+    ) {
       inputRef.current?.blur()
+      setSuccess('true')
+    } else if (input.length > 0) {
+      setSuccess('false')
     }
-  }, [answer, userInput])
+  }, [answer, userInput, input.length])
 
   return (
     <Lesson>
@@ -151,11 +158,15 @@ export default function HashChallenge({
         alwaysShow
         full
         next={next}
-        input={userInput}
+        input={
+          // userInput
+          success
+        }
         expected={
-          (typeof answer === 'string' && answer) ||
-          (typeof answer === 'number' &&
-            ((input.length >= answer && userInput) || userInput + '_'))
+          // (typeof answer === 'string' && answer) ||
+          // (typeof answer === 'number' &&
+          //   ((input.length >= answer && userInput) || userInput + '_'))
+          'true'
         }
         hints={hints}
       />

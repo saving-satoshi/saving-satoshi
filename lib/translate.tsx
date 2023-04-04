@@ -133,7 +133,11 @@ function injectComponent(result, type) {
         }
 
         case ComponentType.Span: {
-          parts.push(<span className={className}>{label}</span>)
+          parts.push(
+            <span key={index} className={className}>
+              {label}
+            </span>
+          )
           break
         }
       }
