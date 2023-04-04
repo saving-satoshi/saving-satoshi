@@ -19,7 +19,8 @@ const componentRegexes = {
   [ComponentType.Link]: /<Link(.*?)>(.*?)<\/Link>/gim,
   [ComponentType.Tooltip]: /<Tooltip(.*?)>(.*?)<\/Tooltip>/gim,
   [ComponentType.A]: /<a(.*?)>(.*?)<\/a>/gim,
-  [ComponentType.LineBreak]: /<br(.*?)>/gim,
+  [ComponentType.LineBreak]: /<br\/>/gim,
+  [ComponentType.Span]: /<span(.*?)>(.*?)<\/span>/gim,
 }
 
 export function t(key: string, lang: string) {
@@ -38,7 +39,8 @@ export function t(key: string, lang: string) {
     translation.indexOf('</Tooltip>') === -1 &&
     translation.indexOf('</Link>') === -1 &&
     translation.indexOf('</a>') === -1 &&
-    translation.indexOf('<br') === -1
+    translation.indexOf('<br/>') === -1 &&
+    translation.indexOf('</span>') === -1
   ) {
     return translation
   }
@@ -49,6 +51,7 @@ export function t(key: string, lang: string) {
   result = injectComponent(result, ComponentType.Tooltip)
   result = injectComponent(result, ComponentType.A)
   result = injectComponent(result, ComponentType.LineBreak)
+  result = injectComponent(result, ComponentType.Span)
 
   return result
 }
@@ -126,6 +129,11 @@ function injectComponent(result, type) {
 
         case ComponentType.LineBreak: {
           parts.push(<br />)
+          break
+        }
+
+        case ComponentType.Span: {
+          parts.push(<span className={className}>{label}</span>)
           break
         }
       }

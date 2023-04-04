@@ -21,6 +21,13 @@ export default function Hasher({
   const [hash, setHash] = useState('')
   const [clicked, setClicked] = useState(false)
   const hashString = (hash ? hash : '_'.repeat(64)).match(/.{1,4}/g).join(' ')
+  const miner =
+    clicked &&
+    typeof answer === 'string' &&
+    !hash.startsWith(answer) &&
+    setInterval(() => {
+      handleAutoChange()
+    }, 10)
 
   const handleAutoChange = () => {
     const randomNum = (Math.random() * 1000000000000000000).toString()
@@ -41,13 +48,6 @@ export default function Hasher({
   }
 
   useEffect(() => {
-    const miner =
-      clicked &&
-      typeof answer === 'string' &&
-      !hash.startsWith(answer) &&
-      setInterval(() => {
-        handleAutoChange()
-      }, 10)
     !clicked && handleHash(input)
     if (typeof answer === 'string') {
       onChange(hash.substring(0, answer.length))
@@ -57,7 +57,7 @@ export default function Hasher({
     return () => {
       clearInterval(miner)
     }
-  }, [answer, clicked, hash, input, onChange])
+  }, [answer, clicked, hash, input, onChange, miner])
 
   return (
     <>

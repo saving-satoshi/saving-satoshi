@@ -1,24 +1,23 @@
 'use client'
 
-import { chapters } from 'content/chapters'
 import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { HashChallenge } from 'ui'
 
-export default function Hashing4({ lang, params }) {
+export default function Hashing5({ lang, params }) {
   const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
     <HashChallenge
-      answer="0"
-      next={`${routes.chaptersUrl}/chapter-2/hashing-5`}
-      inputLabel={t('chapter_two.hashing_four.heading')}
+      answer="00"
+      next={`${routes.chaptersUrl}/chapter-2/hashing-6`}
+      inputLabel={t('chapter_two.hashing_five.heading')}
       returnLabel={t('hasher.return_hash')}
-      answerHint
+      answerHint={t('chapter_two.hashing_five.answer_hint')}
     />
   )
 }
 
 export const metadata = {
-  title: 'chapter_two.hashing_four.title',
+  title: 'chapter_two.hashing_five.title',
 }

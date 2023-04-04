@@ -229,6 +229,65 @@ const translations = {
         'Wow, a mechanical keyboard. Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.',
     },
 
+    hashing_one: {
+      title: 'Zeroes',
+      paragraph_one:
+        'Either by chance, or because Holocat actually knew what he was doing, the computer turns the random letters and numbers he stepped on turn into... more random letters and numbers?',
+      paragraph_two:
+        '> QX23Y6VGECTTTTTTTTTTTTTTUB[P[pihof <br> > 1c31d1d9fb848a505fc0cdbea848ff1bdd46',
+      paragraph_three: 'The monitor displays "INCORRECT HASH. TRY AGAIN."',
+      paragraph_four:
+        'Of course whatever gibberish Holocat typed was wrong. He’s just a holographic cat!',
+      paragraph_five: 'What happens if you type something different?',
+    },
+
+    hashing_two: {
+      title: 'Zeroes',
+      heading: 'Enter Anything',
+      return_hash: 'Below you will see your input converted to a hash',
+    },
+
+    hashing_three: {
+      title: 'Zeroes',
+      heading: 'Did you notice anything special about the hashes?',
+      list_one:
+        'Just like fingerprints, hashes are unique. Barring some exceptional circumstances, the hashes for two different things should never be the same.',
+      list_two:
+        'Hash functions are one way streets. You can’t reverse engineer a hash and figure out the data used to make it.',
+      list_three:
+        'Hashes are extremely reliable in the sense that they are deterministic. This means you can hash the same piece of data over and over again and you’ll always get the same result.',
+      paragraph_one:
+        'The function used here is called SHA-256, a very popular choice.',
+      paragraph_two: 'Now, let’s see if you can find a specific hash.',
+      paragraph_three:
+        'Find a hash that starts with a zero (“0”). Keep typing different things below until you find a hash that we want.',
+    },
+
+    hashing_four: {
+      title: 'Zeroes',
+      heading:
+        'Enter anything until you find a hash that starts with a zero (“0”)',
+      hint_prompt:
+        'Need a <Tooltip id="hint_prompt" content="chapter_two.hashing_four.hint_tooltip" className="underline">hint</Tooltip>?',
+      hint_tooltip:
+        '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="whitespace-nowrap bg-black/20 text-transparent hover:text-white">popcorn</span>',
+    },
+
+    hashing_five: {
+      title: 'Zeroes',
+      heading:
+        'Enter anything until you find a hash that starts with two zeroes (“00”)',
+      hint_prompt:
+        'Need a <Tooltip id="hint_prompt" content="chapter_two.hashing_five.hint_tooltip" className="underline">hint</Tooltip>?',
+      hint_tooltip:
+        '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="whitespace-nowrap bg-black/20 text-transparent hover:text-white">trigonometry</span>',
+    },
+
+    hashing_six: {
+      title: 'Zeroes',
+      heading: 'Beware the button!',
+    },
+
     scripting_one: {
       title: 'Automation',
       heading: 'Let’s make the computer do this for us.',
@@ -359,6 +418,11 @@ const translations = {
   demo_disclaimer: {
     title: 'This is a demo',
     description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">your feedback</Link>.`,
+  },
+
+  hasher: {
+    placeholder: 'Type here...',
+    return_hash: 'Below you will see your input converted to a hash',
   },
 
   runner: {

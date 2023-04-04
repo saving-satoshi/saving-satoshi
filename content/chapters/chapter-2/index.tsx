@@ -18,7 +18,15 @@ export const metadata = {
   title: 'chapter_two.title',
   image: '/assets/images/chapter-2-cover.jpg',
   intros: ['intro-1', 'intro-2'],
-  lessons: ['hashing-1', 'scripting-1'],
+  lessons: [
+    'hashing-1',
+    'hashing-2',
+    'hashing-3',
+    'hashing-4',
+    'hashing-5',
+    'hashing-6',
+    'scripting-1',
+  ],
   outros: [],
   challenges: ['hashing-1', 'scripting-1'],
 }

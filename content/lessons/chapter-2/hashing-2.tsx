@@ -3,21 +3,21 @@
 import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { HashChallenge } from 'ui'
 
-export default function Hashing2({ lang }) {
+export default function Hashing2({ lang, params }) {
   const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
     <HashChallenge
-      answer="0"
+      answer={8}
       next={`${routes.chaptersUrl}/chapter-2/hashing-3`}
-      inputLabel='Enter anything until you find a hash that starts with one zeroes ("0")'
-      returnLabel="Below you will see your input converted to a hash"
-      answerHint="popcorn"
+      inputLabel={t('chapter_two.hashing_two.heading')}
+      returnLabel={t('hasher.return_hash')}
+      hints
     />
   )
 }
 
 export const metadata = {
-  title: 'hashing_two.title',
+  title: 'chapter_two.hashing_two.title',
 }

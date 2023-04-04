@@ -3,6 +3,9 @@
 import { useEffect, useState } from 'react'
 import { Lesson, StatusBar, Tooltip, Hasher } from 'ui'
 import clsx from 'clsx'
+import { useLang, useTranslations } from 'hooks'
+import { chapters } from 'content/chapters'
+import { usePathname } from 'next/navigation'
 
 /**
  * @answer {string} correct answer to the challenge problem
@@ -13,7 +16,6 @@ import clsx from 'clsx'
  * @hints {boolean} determine whether the input field displays hints for the user
  */
 export default function HashChallenge({
-  // children,
   answer,
   answerHint,
   next,
@@ -22,31 +24,64 @@ export default function HashChallenge({
   auto,
   hints,
 }: {
-  // children: any
   answer: string | number
   next: any
   inputLabel: string
   returnLabel: string
-  answerHint?: string
+  answerHint?: boolean
   auto?: boolean
   hints?: boolean
 }) {
+  const lang = useLang()
+  const t = useTranslations(lang)
+  const pathName = usePathname()
+
   const [input, setInput] = useState('')
   const [userInput, setUserInput] = useState('')
   const [hintTimer, setHintTimer] = useState(false)
+
+  const pathData = pathName.split('/').filter((p) => p)
+  const isRouteLesson = pathData.length === 4
+  const challengeId = isRouteLesson ? pathData.pop().split('-')[1] : undefined
+
+  const numbers = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ]
+  const challengeIdWord = challengeId.replace(/\b\d\b/g, (m) => numbers[m])
 
   const handleChange = (event) => {
     setInput(event.target.value)
   }
 
-  useEffect(() => {
-    const hintTimeout = () => {
-      setTimeout(() => {
+  const hintTimeout = () => {
+    setTimeout(() => {
+      if (
+        answerHint &&
+        typeof answer === 'string' &&
+        !userInput.startsWith(answer)
+      ) {
         setHintTimer(true)
-      }, 15000)
-    }
-    answerHint && hintTimeout()
-  })
+      } else {
+        return
+      }
+    }, 15000)
+  }
+  if (
+    answerHint &&
+    typeof answer === 'string' &&
+    !userInput.startsWith(answer)
+  ) {
+    hintTimeout()
+  }
 
   return (
     <Lesson>
@@ -55,33 +90,17 @@ export default function HashChallenge({
           <div className="flex flex-col justify-center">
             <div className="w-full">
               <h2 className="text-left text-[18px] font-bold text-white md:text-center">
-                {inputLabel}{' '}
+                {inputLabel}
                 {answerHint && hintTimer && (
                   <div className="text-left">
-                    <span>Need a </span>
-                    <Tooltip
-                      id={`challenge-hint-tooltip}`}
-                      position="bottom"
-                      offset={0}
-                      content={
-                        <div className="relative flex flex-col">
-                          <span className="text-m whitespace-nowrap leading-none text-white/50">
-                            Hover to see the answer
-                          </span>
-                          <span className=" cursor-pointer whitespace-nowrap bg-black/20 text-transparent hover:text-white">
-                            {answerHint}
-                          </span>
-                        </div>
-                      }
-                    >
-                      <u className="cursor-pointer">hint</u>
-                    </Tooltip>
-                    ?
+                    <span>
+                      {t(`chapter_two.hashing_${challengeIdWord}.hint_prompt`)}
+                    </span>
                   </div>
                 )}
               </h2>
               <input
-                placeholder="Type here..."
+                placeholder={t('hasher.placeholder')}
                 maxLength={24}
                 className={clsx(
                   'top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[24px] leading-[180%] tracking-[1px] text-white outline-none md:text-[30px] md:tracking-[5px]',

@@ -1,23 +1,50 @@
 'use client'
 
 import { useLocalizedRoutes, useTranslations } from 'hooks'
-import { HashChallenge } from 'ui'
+import { Button, ChapterIntro } from 'ui'
 
 export default function Hashing3({ lang }) {
   const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
-    <HashChallenge
-      answer="00"
-      next={`${routes.chaptersUrl}/chapter-2/hashing-4`}
-      inputLabel='Enter anything until you find a hash that starts with two zeroes ("00")'
-      returnLabel="Below you will see your input converted to a hash"
-      answerHint="trigonometry"
-    />
+    <ChapterIntro heading={t('chapter_two.hashing_three.heading')}>
+      <ul className="list-disc pl-5">
+        <li className="mt-2 text-lg md:text-xl">
+          {t('chapter_two.hashing_three.list_one')}
+        </li>
+
+        <li className="text-lg md:text-xl">
+          {t('chapter_two.hashing_three.list_two')}
+        </li>
+
+        <li className="text-lg md:text-xl">
+          {t('chapter_two.hashing_three.list_three')}
+        </li>
+      </ul>
+
+      <p className="mt-8 text-lg md:text-xl">
+        {t('chapter_two.hashing_three.paragraph_one')}
+      </p>
+
+      <p className="mt-8 text-lg md:text-xl">
+        {t('chapter_two.hashing_three.paragraph_two')}
+      </p>
+
+      <p className="mt-8 text-lg md:text-xl">
+        {t('chapter_two.hashing_three.paragraph_three')}
+      </p>
+
+      <Button
+        href={`${routes.chaptersUrl}/chapter-2/hashing-4`}
+        classes="mt-10 max-md:w-full"
+      >
+        {t('shared.next')}
+      </Button>
+    </ChapterIntro>
   )
 }
 
 export const metadata = {
-  title: 'hashing_three.title',
+  title: 'chapter_two.hashing_three.title',
 }
