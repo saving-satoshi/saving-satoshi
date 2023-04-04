@@ -22,9 +22,8 @@ export default function Hasher({
   const [clicked, setClicked] = useState(false)
 
   const handleAutoChange = () => {
-    let randomNum = (Math.random() * 1000000000000000000).toString()
+    const randomNum = (Math.random() * 1000000000000000000).toString()
     setHash(sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(randomNum)))
-    console.log(randomNum)
   }
 
   const handleHash = (input) => {
@@ -57,7 +56,7 @@ export default function Hasher({
     return () => {
       clearInterval(miner)
     }
-  })
+  }, [answer, clicked, hash, input, onChange])
 
   return (
     <>
@@ -147,8 +146,3 @@ export default function Hasher({
     </>
   )
 }
-
-/*
-'000'
-vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvccxcvxcvxcvxcvxcvxcvcvcvcvvbbbbbbbbbbbbbgggggggggggggggggggggggggggggggggggggggggggdddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeerrrrrrrrrrrrrrrrrrrrrrrrrrewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwdddddddsaaaaaaaaaaaaaaaaaaaaaaqqwwweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefffffffffggggggggggggggggggggggggggggggggggggtttttttttttreerwerwerwerwerwerwerwerwerwererererwewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewwwwwwwwwwwwwwwwwwwwwwwwwqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqwweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-*/
