@@ -68,7 +68,7 @@ export default function Hasher({
             </h2>
             <p
               className={clsx(
-                'top-0 left-0 h-full w-4/5 resize-none overflow-hidden break-words bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:w-3/5 md:text-[30px] md:tracking-[5px]',
+                'h-full max-w-3xl resize-none overflow-hidden break-words bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:text-center md:text-[30px] md:tracking-[5px]',
                 {
                   'overlay-complete':
                     (typeof answer === 'string' &&
@@ -117,7 +117,7 @@ export default function Hasher({
           </Button>
           <p
             className={clsx(
-              'top-0 left-0 h-full w-full resize-none overflow-hidden break-words bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:text-[30px] md:tracking-[5px]',
+              'h-full max-w-3xl resize-none overflow-hidden break-words bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:text-center md:text-[30px] md:tracking-[5px]',
               {
                 'overlay-complete': hash.startsWith(answer) === true,
                 'overlay-incomplete': hash.startsWith(answer) === false,

@@ -13,7 +13,7 @@ export default function Hashing2({ lang }) {
       next={`${routes.chaptersUrl}/chapter-2/hashing-3`}
       inputLabel='Enter anything until you find a hash that starts with one zeroes ("0")'
       returnLabel="Below you will see your input converted to a hash"
-      answerHint="something s"
+      answerHint="popcorn"
     />
   )
 }

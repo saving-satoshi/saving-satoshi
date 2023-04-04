@@ -50,21 +50,21 @@ export default function HashChallenge({
 
   return (
     <Lesson>
-      <div className="flex w-full grow justify-center">
-        <div className="flex max-w-[1280px] grow items-start justify-center px-4 py-8 font-space-mono text-white md:w-9/12 md:items-center lg:w-9/12">
+      <div className="flex w-full justify-center py-12 md:grow">
+        <div className="flex max-w-[1280px] items-start justify-center px-4 py-8 font-space-mono text-white md:w-9/12 md:items-center lg:w-9/12">
           <div className="flex flex-col justify-center">
             <div className="w-full">
               <h2 className="text-left text-[18px] font-bold text-white md:text-center">
                 {inputLabel}{' '}
                 {answerHint && hintTimer && (
-                  <>
+                  <div className="text-left">
                     <span>Need a </span>
                     <Tooltip
                       id={`challenge-hint-tooltip}`}
                       position="bottom"
                       offset={0}
                       content={
-                        <div className="flex flex-col">
+                        <div className="relative flex flex-col">
                           <span className="text-m whitespace-nowrap leading-none text-white/50">
                             Hover to see the answer
                           </span>
@@ -77,7 +77,7 @@ export default function HashChallenge({
                       <u className="cursor-pointer">hint</u>
                     </Tooltip>
                     ?
-                  </>
+                  </div>
                 )}
               </h2>
               <input
