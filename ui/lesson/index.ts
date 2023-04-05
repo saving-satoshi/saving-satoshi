@@ -1,11 +1,12 @@
 import Lesson, { useLessonContext } from './Lesson'
 import LessonInfo from './Info'
-import LessonPrompt from './Prompt'
-import LessonTerminal from './Terminal'
+import LessonPrompt from './InputChallenge/Prompt'
+import LessonTerminal from './TerminalChallenge/Terminal'
 import LessonTabs from './Tabs'
-import TerminalChallenge from './TerminalChallenge'
-import InputChallenge from './InputChallenge'
+import TerminalChallenge from './TerminalChallenge/TerminalChallenge'
+import InputChallenge from './InputChallenge/InputChallenge'
 import ScriptingChallenge from './ScriptingChallenge'
+import HashChallenge from './HashChallenge/HashChallenge'
 
 export {
   Lesson,
@@ -17,4 +18,5 @@ export {
   TerminalChallenge,
   InputChallenge,
   ScriptingChallenge,
+  HashChallenge,
 }
