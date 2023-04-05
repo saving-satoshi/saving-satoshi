@@ -148,3 +148,6 @@ div.react-terminal-active-input {
   outline: #243142;
   border-radius: 4px;
 }
+.notfound-img{
+  background-image: url("/public/assets/images/404.jpg");
+ }
