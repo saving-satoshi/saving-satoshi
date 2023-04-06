@@ -13,6 +13,11 @@ export default function UserButton() {
   const [openSignInModal, setOpenSignInModal] = useState(false)
   const [openSignUpModal, setOpenSignUpModal] = useState(false)
   const { user, isLoggedIn, isRegistered } = useUser()
+  const { account, isLoading } = useAuthContext()
+
+  if (!isLoading) {
+    console.log(account)
+  }
 
   function toggleModal(show) {
     if (user && user.publicKey && isRegistered) {
@@ -28,7 +33,7 @@ export default function UserButton() {
   }
 
   return (
-    <div className="flex-l flex h-full items-stretch">
+    <div className="relative inline-block">
       {isRegistered ? (
         <LoginModal
           onLogin={() => setOpenSignInModal(false)}
@@ -42,14 +47,14 @@ export default function UserButton() {
           onClose={hideModals}
         />
       )}
-      <span aria-describedby="navbar-tab-user">
+      <div className="flex h-10 w-12 justify-center md:w-16">
         {!hasMounted && <div />}
         {hasMounted && isLoggedIn && (
           <button
             id="navbar-tab-user-icon"
             onClick={() => setOpenSignInModal(true)}
             aria-label="profile"
-            className="text-grey-300 relative flex h-full w-12 cursor-pointer items-center justify-center md:w-16"
+            className="text-grey-300 relative flex h-full cursor-pointer items-center justify-center"
           >
             <Avatar avatar={user.avatar} size={30} />
           </button>
@@ -59,12 +64,12 @@ export default function UserButton() {
             id="navbar-tab-user-login"
             onClick={() => toggleModal(true)}
             aria-label="profile"
-            className="text-grey-300 relative flex h-full w-12 cursor-pointer items-center justify-center md:w-16"
+            className="text-grey-300 relative flex h-full cursor-pointer items-center justify-center"
           >
             <UserIcon />
           </button>
         )}
-      </span>
+      </div>
     </div>
   )
 }
