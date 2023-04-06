@@ -13,35 +13,6 @@ export default function UserButton() {
   const [openSignInModal, setOpenSignInModal] = useState(false)
   const [openSignUpModal, setOpenSignUpModal] = useState(false)
   const { user, isLoggedIn, isRegistered } = useUser()
-  const { account, isLoading } = useAuthContext()
-
-  if (!isLoading) {
-    console.log(account)
-  }
-
-  const renderIconButton = () => {
-    if (!hasMounted) {
-      return <div />
-    }
-
-    return isLoggedIn ? (
-      <button
-        onClick={() => setOpenSignInModal(true)}
-        aria-label="profile"
-        className="text-grey-300 h-10 cursor-pointer"
-      >
-        <Avatar avatar={user.avatar} size={30} />
-      </button>
-    ) : (
-      <button
-        onClick={() => toggleModal(true)}
-        aria-label="profile"
-        className="text-grey-300 h-10 cursor-pointer"
-      >
-        <UserIcon />
-      </button>
-    )
-  }
 
   function toggleModal(show) {
     if (user && user.publicKey && isRegistered) {
@@ -57,8 +28,7 @@ export default function UserButton() {
   }
 
   return (
-    <div>
-      <div className="ml-4 h-10 w-10">{renderIconButton()}</div>
+    <div className="flex-l flex h-full items-stretch">
       {isRegistered ? (
         <LoginModal
           onLogin={() => setOpenSignInModal(false)}
@@ -72,6 +42,29 @@ export default function UserButton() {
           onClose={hideModals}
         />
       )}
+      <span aria-describedby="navbar-tab-user">
+        {!hasMounted && <div />}
+        {hasMounted && isLoggedIn && (
+          <button
+            id="navbar-tab-user-icon"
+            onClick={() => setOpenSignInModal(true)}
+            aria-label="profile"
+            className="text-grey-300 relative flex h-full w-12 cursor-pointer items-center justify-center md:w-16"
+          >
+            <Avatar avatar={user.avatar} size={30} />
+          </button>
+        )}
+        {hasMounted && !isLoggedIn && (
+          <button
+            id="navbar-tab-user-login"
+            onClick={() => toggleModal(true)}
+            aria-label="profile"
+            className="text-grey-300 relative flex h-full w-12 cursor-pointer items-center justify-center md:w-16"
+          >
+            <UserIcon />
+          </button>
+        )}
+      </span>
     </div>
   )
 }
