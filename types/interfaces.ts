@@ -51,3 +51,5 @@ export interface AuthContextType {
   account: Account | undefined
   isLoading: boolean
 }
+
+export interface ProgressContextType {}
