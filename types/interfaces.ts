@@ -52,4 +52,8 @@ export interface AuthContextType {
   isLoading: boolean
 }
 
-export interface ProgressContextType {}
+export interface ProgressContextType {
+  progress: string
+  isLoading: boolean
+  saveProgress: (key: string) => void | undefined
+}

@@ -3,6 +3,11 @@
 import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { Button, LessonInfo, Title, Text, InputChallenge } from 'ui'
 
+export const metadata = {
+  title: 'chapter_one.genesis_two.title',
+  key: 'CH1GEN2',
+}
+
 export default function Genesis3({ lang }) {
   const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
@@ -10,7 +15,6 @@ export default function Genesis3({ lang }) {
   return (
     <InputChallenge
       answer="04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73"
-      next={`${routes.chaptersUrl}/chapter-1/genesis-3`}
       label={t('chapter_one.genesis_two.placeholder')}
       pattern={/[a-z0-9]+/gi}
       hints
@@ -42,8 +46,4 @@ export default function Genesis3({ lang }) {
       </LessonInfo>
     </InputChallenge>
   )
-}
-
-export const metadata = {
-  title: 'chapter_one.genesis_two.title',
 }

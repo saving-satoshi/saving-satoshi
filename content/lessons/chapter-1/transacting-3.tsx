@@ -1,6 +1,6 @@
 'use client'
 
-import { useLocalizedRoutes, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 import {
   Button,
   LessonInfo,
@@ -10,8 +10,12 @@ import {
   TerminalChallenge,
 } from 'ui'
 
+export const metadata = {
+  title: 'chapter_one.transacting_three.title',
+  key: 'CH1TRA3',
+}
+
 export default function Transacting3({ lang }) {
-  const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
@@ -21,7 +25,6 @@ export default function Transacting3({ lang }) {
         chapter: 'chapter-1',
         challenge: 'outro-1',
       }}
-      next={`${routes.chaptersUrl}/chapter-1/outro-1`}
       successMessage={t(
         'chapter_one.transacting_three.terminal_challenge_success'
       )}
@@ -66,8 +69,4 @@ export default function Transacting3({ lang }) {
       </LessonInfo>
     </TerminalChallenge>
   )
-}
-
-export const metadata = {
-  title: 'chapter_one.transacting_three.title',
 }

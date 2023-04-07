@@ -3,6 +3,11 @@
 import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { CodeExample, LessonInfo, Title, Text, TerminalChallenge } from 'ui'
 
+export const metadata = {
+  title: 'chapter_one.genesis_three.title',
+  key: 'CH1GEN3',
+}
+
 export default function Genesis5({ lang }) {
   const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
@@ -18,7 +23,6 @@ export default function Genesis5({ lang }) {
         chapter: 'chapter-1',
         challenge: 'transacting-1',
       }}
-      next={`${routes.chaptersUrl}/chapter-1/genesis-4`}
       successMessage={t('chapter_one.genesis_three.success')}
       customLines={t('chapter_one.genesis_three.terminal_challenge_lines')}
     >
@@ -42,8 +46,4 @@ export default function Genesis5({ lang }) {
       </LessonInfo>
     </TerminalChallenge>
   )
-}
-
-export const metadata = {
-  title: 'chapter_one.genesis_three.title',
 }

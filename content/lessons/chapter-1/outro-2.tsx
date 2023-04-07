@@ -2,22 +2,13 @@
 
 import { ChapterEnd } from 'ui'
 
-export default function Done({ lang }) {
-  return (
-    <ChapterEnd
-      {...metadata}
-      lang={lang}
-      checkpoint={{
-        chapter: 'chapter-2',
-        lesson: null,
-        next: '/chapters/chapter-2',
-      }}
-    />
-  )
-}
-
 export const metadata = {
   title: 'chapter_one.outro_two.title',
   image: '/assets/images/chapter-1-finish.jpg',
   description: 'chapter_one.outro_two.description',
+  key: 'CH1OUT2',
+}
+
+export default function Done({ lang }) {
+  return <ChapterEnd {...metadata} lang={lang} />
 }

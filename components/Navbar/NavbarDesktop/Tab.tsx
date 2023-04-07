@@ -8,8 +8,11 @@ import { Tooltip } from 'ui'
 import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
-import { useLang, useLocalizedRoutes, useStatus, useTranslations } from 'hooks'
+import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { lessons } from 'content'
+import { isLessonUnlocked } from 'lib/progress'
+import { useProgressContext } from 'providers/ProgressProvider'
+import { useEffect } from 'react'
 
 export default function Tab({
   index,
@@ -35,7 +38,13 @@ export default function Tab({
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
 
-  const status = useStatus(slug, challenge.lessonId)
+  const { progress, isLoading: isProgressLoading } = useProgressContext()
+
+  useEffect(() => {
+    if (progress && !isProgressLoading && lessonId) {
+      const lessonUnlocked = isLessonUnlocked(progress, lessonId)
+    }
+  }, [progress, isProgressLoading, lessonId])
 
   const challengeId = isRouteLesson ? pathData.pop().split('-')[0] : undefined
   const isActive = challenge.lessonId.split('-')[0] === challengeId

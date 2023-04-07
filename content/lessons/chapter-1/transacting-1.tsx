@@ -1,11 +1,16 @@
 'use client'
 
-import { useLocalizedRoutes, useTranslations } from 'hooks'
+import { useSaveAndProceed, useTranslations } from 'hooks'
 import { Button, ChapterIntro } from 'ui'
 
+export const metadata = {
+  title: 'chapter_one.transacting_one.title',
+  key: 'CH1TRA1',
+}
+
 export default function Transacting1({ lang }) {
-  const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
+  const saveAndProceed = useSaveAndProceed()
 
   return (
     <ChapterIntro heading={t('chapter_one.transacting_one.heading')}>
@@ -17,16 +22,9 @@ export default function Transacting1({ lang }) {
         {t('chapter_one.transacting_one.paragraph_two')}
       </p>
 
-      <Button
-        href={`${routes.chaptersUrl}/chapter-1/transacting-2`}
-        classes="mt-10 max-md:w-full"
-      >
+      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
         {t('shared.next')}
       </Button>
     </ChapterIntro>
   )
-}
-
-export const metadata = {
-  title: 'chapter_one.transacting_one.title',
 }

@@ -5,7 +5,11 @@ import { ProgressContextType } from 'types'
 import { getProgress, setProgress } from 'api/progress'
 import { useAuthContext } from './AuthProvider'
 
-export const ProgressContext = createContext<ProgressContextType>({})
+export const ProgressContext = createContext<ProgressContextType>({
+  progress: undefined,
+  isLoading: true,
+  saveProgress: undefined,
+})
 
 export const useProgressContext = () => useContext(ProgressContext)
 
@@ -33,6 +37,8 @@ export default function AuthProvider({
   const saveProgress = async (key: string) => {
     try {
       setIsLoading(true)
+
+      setAccountProgress(key)
       await setProgress(key)
     } catch (ex) {
       console.error(ex)
