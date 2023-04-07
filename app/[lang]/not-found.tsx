@@ -1,9 +1,14 @@
-import '../../styles/globals.css'
+'use client'
 import { Button } from 'shared'
 import Topbar from 'components/Topbar'
 import Image from 'next/image'
+import { useTranslations, useLang, useLocalizedRoutes } from 'hooks'
 
 export default function NotFound() {
+  const routes = useLocalizedRoutes()
+  const lang = useLang()
+  const t = useTranslations(lang)
+
   return (
     <div className="flex h-full grow items-end justify-center">
       <Image
@@ -15,21 +20,21 @@ export default function NotFound() {
         priority
         className="-z-20 h-full w-full object-cover"
       />
-      <Topbar />
 
+      <Topbar />
       <div className="absolute top-1/2 left-1/2 z-10 flex w-screen -translate-x-1/2 -translate-y-1/2 flex-col justify-center">
         <h1 className=" text-center font-cbrush text-6xl text-white">
-          Hmm...where are we?
+          {t('notfound.first')}
         </h1>
         <h1 className="text-center font-cbrush text-4xl text-white">
-          It’s not quite clear where or what this place is.
+          {t('notfound.second')}
         </h1>
         <h1 className="text-center font-cbrush text-4xl text-white">
-          We might have gotten lost in space (or time).
+          {t('notfound.third')}
         </h1>
 
         <div className=" mt-8 text-center font-cbrush text-2xl">
-          <Button href="/">Back to safety</Button>
+          <Button href="/">{t('notfound.back_safety')}</Button>
         </div>
       </div>
     </div>
