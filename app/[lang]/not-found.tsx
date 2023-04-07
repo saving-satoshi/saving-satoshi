@@ -2,10 +2,10 @@
 import { Button } from 'shared'
 import Topbar from 'components/Topbar'
 import Image from 'next/image'
-import { useTranslations, useLang, useLocalizedRoutes } from 'hooks'
+import { useTranslations, useLang } from 'hooks'
 
 export default function NotFound() {
-  const routes = useLocalizedRoutes()
+  
   const lang = useLang()
   const t = useTranslations(lang)
   
