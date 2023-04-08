@@ -1,18 +1,26 @@
 'use client'
 
-import { useLessonUnlocked, useLocalStorage } from 'hooks'
+import { useLessonUnlocked } from 'hooks'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Navbar from 'components/Navbar'
 import { lessons } from 'content'
+import { useState, useEffect } from 'react'
 
 export default function Layout({ children, params }) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const dev = searchParams.get('dev')
-  const userInfo = useLocalStorage('SavingSatoshiUser')
   const { slug, lesson: lessonId } = params
   const defaultTheme = 'bg-back'
   const { theme = defaultTheme } = lessons[slug][lessonId].metadata
+  const [userInfo, setUserInfo] = useState(undefined)
+
+  useEffect(() => {
+    const storedValue = localStorage.getItem('SavingSatoshiUser')
+    if (storedValue !== null) {
+      setUserInfo(storedValue)
+    }
+  }, [])
 
   const result = useLessonUnlocked(userInfo)
 
