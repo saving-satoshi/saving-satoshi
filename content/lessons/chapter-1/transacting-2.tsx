@@ -10,11 +10,11 @@ export default function Transacting2({ lang }) {
 
   return (
     <InputChallenge
-      answer="5361746f7368693433335061726b53744368696e6f43413933323433"
+      answer="44697374726963742032312c20426974636f696e2046726565646f6d205a6f6e65"
       next={`${routes.chaptersUrl}/chapter-1/transacting-3`}
       label={t('chapter_one.transacting_two.input_challenge_label')}
       pattern={/[a-z0-9]+/gi}
-      precedingText="OP_RETURN OP_PUSHBYTES_28"
+      precedingText="OP_RETURN OP_PUSHBYTES_33"
       hints
     >
       <LessonInfo>
