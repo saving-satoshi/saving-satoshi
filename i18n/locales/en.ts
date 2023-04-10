@@ -154,13 +154,13 @@ const translations = {
       paragraph_one:
         'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
       paragraph_two:
-        '1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">here</Link> to look at a specific transaction.',
+        '1. Click <Link href="https://blockstream.info/tx/ee3b8caaeb58245338dd299467de89ec6833d2a4235493c95059934603b5e98d?expand" className="underline">here</Link> to look at a specific transaction.',
       paragraph_three:
         '2. Open up the details and find the part that is of type “OP_RETURN”.',
       paragraph_four:
-        '3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSHBYTES_33" part? These are called opcodes. We’re actually interested in what comes after them.',
+        '3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSHBYTES_28" part? These are called opcodes. We’re actually interested in what comes after them.',
       paragraph_five:
-        '4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_33” and paste it below. ',
+        '4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_28” and paste it below. ',
       input_challenge_label: 'Enter the OP_RETURN type',
     },
 
