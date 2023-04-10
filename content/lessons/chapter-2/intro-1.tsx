@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 
 import { useTranslations } from 'hooks'
 import { Introduction, Text } from 'ui'
