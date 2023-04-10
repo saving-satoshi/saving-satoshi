@@ -17,8 +17,7 @@ export const metadata = {
   slug: 'chapter-2',
   title: 'chapter_two.title',
   image: '/assets/images/chapter-2-cover.jpg',
-  theme:
-    'from-[#7b1810d9] to-[#432a43d9] bg-gradient-[180deg] backdrop-blur-[75px]',
+  theme: 'backdrop-blur-[75px] bg-chapter-2-square',
   intros: ['intro-1', 'intro-2'],
   lessons: ['scripting-1'],
   outros: [],
