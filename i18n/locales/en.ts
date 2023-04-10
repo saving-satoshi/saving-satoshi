@@ -369,6 +369,12 @@ const translations = {
     script_output: 'Script output',
     waiting: 'Waiting for your input above...',
   },
+   notfound: {
+    first: 'Hmm...where are we?',
+    second: 'It’s not quite clear where or what this place is.',
+    third: 'We might have gotten lost in space (or time).',
+    back_safety: 'Back to safety',
+  },
 }
 
 export default translations
