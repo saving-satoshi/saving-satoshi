@@ -9,9 +9,11 @@ import { useRouter } from 'next/navigation'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { usePathData } from './usePathData'
 import { lessons } from 'content'
+import { useAuthContext } from 'providers/AuthProvider'
 
 export const useSaveAndProceed = () => {
   const router = useRouter()
+  const { account } = useAuthContext()
   const { progress, saveProgress } = useProgressContext()
   const { chapterId, lessonId } = usePathData()
 
@@ -23,7 +25,7 @@ export const useSaveAndProceed = () => {
     const nextLessonKey = getNextLessonKey(currentLessonKey)
     const nextLessonPath = getNextLessonPath(currentLessonKey)
 
-    if (!isLessonUnlocked(progress, nextLessonKey)) {
+    if (account && !isLessonUnlocked(progress, nextLessonKey)) {
       await saveProgress(nextLessonKey)
     }
 

@@ -1,4 +1,4 @@
-import { fetchContext, post } from 'utils'
+import { post } from 'utils'
 
 export default async function login(privateKey) {
   try {
@@ -9,7 +9,7 @@ export default async function login(privateKey) {
       },
     })
 
-    fetchContext.token = token
+    window.localStorage.setItem('saving-satoshi-token', token)
 
     return true
   } catch (errors) {

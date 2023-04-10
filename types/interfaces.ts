@@ -8,14 +8,6 @@ export interface LessonContextType {
   setActiveView: Function
 }
 
-export interface Modals {
-  [key: string]: boolean
-}
-
-export interface ModalContextType {
-  modals: Modals
-}
-
 export interface EditorFunction {
   name: string
   args: string[]
@@ -50,10 +42,18 @@ export interface Account {
 export interface AuthContextType {
   account: Account | undefined
   isLoading: boolean
+  login: (privateKey: string) => Promise<boolean>
+  logout: () => Promise<void>
 }
 
 export interface ProgressContextType {
   progress: string
   isLoading: boolean
   saveProgress: (key: string) => void | undefined
+}
+
+export interface ModalContextType {
+  modals: { [name: string]: boolean }
+  show: (name: string) => void
+  close: (name: string) => void
 }

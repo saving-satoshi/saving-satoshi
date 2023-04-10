@@ -10,9 +10,9 @@ import LockIcon from 'public/assets/icons/lock.svg'
 
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { lessons } from 'content'
-import { isLessonUnlocked } from 'lib/progress'
+import { getLessonKey } from 'lib/progress'
 import { useProgressContext } from 'providers/ProgressProvider'
-import { useEffect } from 'react'
+import useLessonStatus from 'hooks/useLessonStatus'
 
 export default function Tab({
   index,
@@ -38,13 +38,11 @@ export default function Tab({
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
 
-  const { progress, isLoading: isProgressLoading } = useProgressContext()
-
-  useEffect(() => {
-    if (progress && !isProgressLoading && lessonId) {
-      const lessonUnlocked = isLessonUnlocked(progress, lessonId)
-    }
-  }, [progress, isProgressLoading, lessonId])
+  const { progress } = useProgressContext()
+  const { isUnlocked, isCompleted } = useLessonStatus(
+    progress,
+    getLessonKey(slug, challenge.lessonId)
+  )
 
   const challengeId = isRouteLesson ? pathData.pop().split('-')[0] : undefined
   const isActive = challenge.lessonId.split('-')[0] === challengeId
@@ -73,17 +71,17 @@ export default function Tab({
           {
             'text-white text-opacity-50': !isActive,
             'hover:bg-black/25 hover:text-white hover:text-opacity-100':
-              status && status.unlocked && !isActive,
+              isUnlocked && !isActive,
             'bg-black/25 text-opacity-100': isActive,
             'border-r': isLast,
           }
         )}
       >
         {index + 1}
-        {status && !status.unlocked && (
+        {!isUnlocked && (
           <LockIcon className="absolute right-[10px] top-[10px] opacity-50" />
         )}
-        {status && status.completed && (
+        {isCompleted && (
           <CheckIcon className="absolute right-[5px] top-[5px] h-[20px] w-[20px]" />
         )}
       </Link>

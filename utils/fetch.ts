@@ -16,7 +16,10 @@ export async function get(options: FetchOptions) {
     }
 
     if (options.includeToken) {
-      fetchOptions.headers['Authorization'] = `Bearer ${fetchContext.token}`
+      const token = window.localStorage.getItem('saving-satoshi-token')
+      if (token) {
+        fetchOptions.headers['Authorization'] = `Bearer ${token}`
+      }
     }
 
     const res = await fetch(url(options.url), fetchOptions)
@@ -43,7 +46,10 @@ export async function post(options: FetchOptions) {
     }
 
     if (options.includeToken) {
-      fetchOptions.headers['Authorization'] = `Bearer ${fetchContext.token}`
+      const token = window.localStorage.getItem('saving-satoshi-token')
+      if (token) {
+        fetchOptions.headers['Authorization'] = `Bearer ${token}`
+      }
     }
 
     if (options.body) {
@@ -74,7 +80,10 @@ export async function put(options: FetchOptions) {
     }
 
     if (options.includeToken) {
-      fetchOptions.headers['Authorization'] = `Bearer ${fetchContext.token}`
+      const token = window.localStorage.getItem('saving-satoshi-token')
+      if (token) {
+        fetchOptions.headers['Authorization'] = `Bearer ${token}`
+      }
     }
 
     if (options.body) {
@@ -92,8 +101,4 @@ export async function put(options: FetchOptions) {
   } catch (ex) {
     throw ex
   }
-}
-
-export const fetchContext = {
-  token: undefined,
 }

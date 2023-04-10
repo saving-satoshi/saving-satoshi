@@ -6,38 +6,36 @@ import Modal from 'react-modal'
 import CloseIcon from 'public/assets/icons/close.svg'
 import { CopyButton } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
-import {
-  loginUser,
-  setUserAvatar,
-  setUserRegistered,
-  createUser,
-} from 'lib/user'
-import { useUser, useHasMounted, useTranslations, useLang } from 'hooks'
+import { useHasMounted, useTranslations, useLang } from 'hooks'
 import clsx from 'clsx'
+import { useAuthContext } from 'providers/AuthProvider'
 
 export default function SignUpModal({ open, onClose, onConfirm }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const hasMounted = useHasMounted()
-  const { user } = useUser()
+  // const { user } = useUser()
+  const { account, isLoading } = useAuthContext()
   let [avatar, setAvatar] = useState(1)
 
   function saveLocally() {
-    setUserAvatar(avatar)
-    loginUser()
+    // setUserAvatar(avatar)
+    // loginUser()
   }
 
   function confirm() {
     saveLocally()
-    setUserRegistered()
+    // setUserRegistered()
     onConfirm()
   }
 
   useEffect(() => {
-    if (hasMounted && !user) {
-      createUser(null)
-    }
-  }, [hasMounted, user])
+    // if (hasMounted && !user) {
+    //   createUser(null)
+    // }
+  }, [hasMounted, account])
+
+  console.log(account)
 
   return (
     <Modal
@@ -65,7 +63,7 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
           {[1, 2, 3, 4, 5].map((i) => (
             <Avatar
               key={i}
-              avatar={i}
+              avatar={`/assets/avatars/${i}.png`}
               size={80}
               onClick={() => setAvatar(i)}
               classes={clsx('border-2 h-20 w-20 rounded-full inline-block', {
@@ -82,9 +80,14 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
 
         <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
           <code className="mb-2 whitespace-pre-wrap break-all text-base">
-            {user ? user.privateKey.toString(16) : ''}
+            {/* {!isLoading && account ? account.private_key.toString() : ''} */}
           </code>
-          <CopyButton content={user ? user.privateKey.toString(16) : ''}>
+          <CopyButton
+            content={
+              ''
+              // !isLoading && account ? account.private_key.toString(16) : ''
+            }
+          >
             {t('shared.copy')}
           </CopyButton>
         </pre>

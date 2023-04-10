@@ -1,3 +1,5 @@
+import { lessons } from 'content'
+
 export const keys = [
   'CH1INT1',
   'CH1INT2',
@@ -38,12 +40,29 @@ export const isLessonUnlocked = (
   userProgressKey: string,
   lessonKey: string
 ) => {
+  if (!userProgressKey || !lessonKey) {
+    return false
+  }
+
   const ida = keys.indexOf(userProgressKey)
   const idb = keys.indexOf(lessonKey)
 
   return ida >= idb
 }
 
+export const isLessonCompleted = (
+  userProgressKey: string,
+  lessonKey: string
+) => {
+  if (!userProgressKey || !lessonKey) {
+    return false
+  }
+
+  const ida = keys.indexOf(userProgressKey)
+  const idb = keys.indexOf(lessonKey)
+
+  return ida > idb
+}
 export const getLastUnlockedLessonPath = (userProgressKey: string): string => {
   const { path } = keysMeta[userProgressKey]
 
@@ -72,4 +91,22 @@ export const getNextLessonPath = (userProgressKey: string): string => {
   }
 
   return keysMeta[result].path
+}
+
+export const getLessonKey = (chapterId, lessonId) => {
+  if (!(chapterId in lessons)) {
+    return undefined
+  }
+
+  const chapterLessons = lessons[chapterId]
+  if (!(lessonId in chapterLessons)) {
+    return undefined
+  }
+
+  const lesson = chapterLessons[lessonId]
+  if (!lesson) {
+    return undefined
+  }
+
+  return lesson.metadata.key
 }

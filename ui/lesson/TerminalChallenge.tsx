@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonTerminal } from 'ui'
-import { setUserProgress } from 'lib/user'
 import { useMediaQuery } from 'hooks'
 
 const tabData = [
@@ -62,7 +61,8 @@ export default function TerminalChallenge({
   const isSmallScreen = useMediaQuery({ width: 767 })
 
   function saveProgress() {
-    setUserProgress(saveInfo.chapter, saveInfo.challenge)
+    console.log('todo: save user progress')
+    // setUserProgress(saveInfo.chapter, saveInfo.challenge)
   }
 
   const onChange = (input) => {

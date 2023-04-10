@@ -9,26 +9,28 @@ import { Button, CopyButton, Loader } from 'shared'
 import { useTranslations, useLang } from 'hooks'
 import { useAuthContext } from 'providers/AuthProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
+import Account from './Account'
 
 export default function LoginModal({ onClose, open }) {
   const lang = useLang()
-  const { account, isLoading: isAccountLoading, login } = useAuthContext()
+  const { account, isLoading: isAccountLoading, logout } = useAuthContext()
   const { isLoading: isProgressLoading } = useProgressContext()
   const t = useTranslations(lang)
 
   const isLoaded = !isAccountLoading && !isProgressLoading
-  const [privateKey, setPrivateKey] = useState('')
 
-  const handleConfirm = async () => {
-    const loginSuccess = await login(privateKey)
-    if (loginSuccess) {
-      setPrivateKey('')
-    }
+  const handleSignOut = async () => {
+    const logoutSuccess = await logout()
+
     onClose()
   }
 
   function handleCloseClick() {
     onClose()
+  }
+
+  if (!isLoaded || !account) {
+    return
   }
 
   return (
@@ -52,35 +54,31 @@ export default function LoginModal({ onClose, open }) {
       )}
       {isLoaded && (
         <div className="sm:p-[30px]">
-          <h2 className="mb-4 text-3xl font-bold">
-            {t('modal_login.heading')}
-          </h2>
-          <p className="mb-5">{t('modal_login.paragraph_one')}</p>
+          <Avatar avatar={account.avatar} size={75} />
+          <div className="my-[30px]">
+            <h2 className="mb-1.5 text-2xl font-bold">
+              {t('modal_logout.heading')}
+            </h2>
+            <p className="text-lg">{t('modal_logout.paragraph_one')}</p>
+          </div>
 
-          <div className="flex flex-col justify-between">
-            <div className="flex w-full">
-              <input
-                className="w-full border-2 border-dotted border-white bg-transparent p-1 font-space-mono text-lg text-white outline-none"
-                type="text"
-                placeholder={t('modal_login.prompt')}
-                value={privateKey}
-                onChange={(e) => setPrivateKey(e.target.value)}
-              />
-            </div>
-            <div className="mt-4 flex w-full">
-              <Button
-                full
-                size="small"
-                style="outline"
-                disabled={!privateKey}
-                onClick={handleConfirm}
-                classes={`border-white border-2 p-1 text-xl md:w-full ${
-                  !privateKey && 'opacity-50'
-                }`}
-              >
-                {t('modal_login.confirm')}
-              </Button>
-            </div>
+          <pre className="mb-[30px] flex flex-col rounded-md border-2 border-dotted border-white/25 p-2.5">
+            <code className="mb-2 whitespace-pre-wrap break-all">
+              {account.private_key}
+            </code>
+
+            <CopyButton style="dark" content={account.private_key}>
+              {t('shared.copy')}
+            </CopyButton>
+          </pre>
+
+          <div className="mt-auto flex items-center">
+            <button
+              onClick={handleSignOut}
+              className="w-full border-2 py-2.5 text-xl text-white"
+            >
+              {t('modal_logout.signout')}
+            </button>
           </div>
         </div>
       )}

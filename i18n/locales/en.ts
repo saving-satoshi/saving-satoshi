@@ -324,12 +324,12 @@ const translations = {
   },
 
   modal_login: {
-    heading: 'Load your progress',
+    heading: 'Sign in',
     paragraph_one:
-      'Enter your personal code below to restore your chapter and challenge progress, as well as your avatar.',
+      'Enter or generate your private key below to restore your account and progress.',
     clear: 'No code yet?',
-    prompt: 'Enter your code',
-    confirm: 'Load my progress',
+    prompt: 'Enter your private key',
+    confirm: 'Sign in',
     paragraph_two:
       'Sorry, that’s not the right code for the progress stored in this browser.',
     paragraph_three: 'No code yet or want to start again?',
@@ -341,7 +341,7 @@ const translations = {
   modal_logout: {
     heading: 'You are logged in',
     paragraph_one:
-      'Your progress is stored in this browser. You will be automatically logged out after 30 days. Use the code below to restore it after taking a break.',
+      'Your session will remain active until you sign out using the button below.',
     signout: 'Sign out',
   },
 

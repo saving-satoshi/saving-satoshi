@@ -1,9 +1,7 @@
 'use client'
 
-import SignUpModal from 'components/Modals/SignUp'
 import { Button } from 'ui'
-import { useState } from 'react'
-import { useSaveAndProceed, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 
 export default function End({
   title,
@@ -17,8 +15,6 @@ export default function End({
   lang: string
 }) {
   const t = useTranslations(lang)
-  const [openModal, setOpenModal] = useState(false)
-  const saveAndProceed = useSaveAndProceed()
 
   return (
     <div
@@ -45,11 +41,6 @@ export default function End({
           </div>
         </div>
       </div>
-      <SignUpModal
-        onConfirm={saveAndProceed}
-        onClose={() => setOpenModal(false)}
-        open={openModal}
-      />
     </div>
   )
 }

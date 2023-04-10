@@ -1,7 +1,7 @@
 'use client'
 
 import { chapters, lessons } from 'content'
-import { getLastUnlockedLessonPath, isLessonUnlocked } from 'lib/progress'
+import { getLastUnlockedLessonPath, isLessonUnlocked, keys } from 'lib/progress'
 import { redirect } from 'next/navigation'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { useEffect, useState } from 'react'
@@ -15,10 +15,11 @@ export default function Page({ params }) {
   const { progress, isLoading: isProgressLoading } = useProgressContext()
 
   useEffect(() => {
-    if (progress && !isProgressLoading && params.lesson) {
+    if (!isProgressLoading && progress && params.lesson) {
       const lesson = chapterLessons[params.lesson].metadata
+      const lessonUnlocked = isLessonUnlocked(progress, lesson.key)
 
-      if (!isLessonUnlocked(progress, lesson.key)) {
+      if (!lessonUnlocked) {
         const path = getLastUnlockedLessonPath(progress)
 
         redirect(path)
@@ -26,7 +27,7 @@ export default function Page({ params }) {
 
       setLoading(false)
     }
-  }, [progress, isProgressLoading, params.lesson, chapterLessons])
+  }, [progress, isProgressLoading, params.lesson, chapterLessons, chapterId])
 
   if (!(params.lesson in chapterLessons) || !(params.slug in chapters)) {
     return (
