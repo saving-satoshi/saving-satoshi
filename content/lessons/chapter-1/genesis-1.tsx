@@ -1,32 +1,29 @@
 'use client'
 
-import { useLocalizedRoutes, useTranslations } from 'hooks'
-import { Button, ChapterIntro } from 'ui'
+import { useTranslations, useLocalizedRoutes } from 'hooks'
+import { Introduction, Text } from 'ui'
 
-export default function Genesis2({ lang }) {
+export const metadata = {
+  title: 'chapter_one.intro_one.title',
+  image: '/assets/images/chapter-1-intro-1.jpg',
+  theme: 'bg-[#2C3A3F]',
+}
+
+export default function ReapingRewards({ lang }) {
   const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
-    <ChapterIntro heading={t('chapter_one.genesis_one.heading')}>
-      <p className="mt-2 text-lg md:text-xl">
-        {t('chapter_one.genesis_one.paragraph_one')}
-      </p>
-
-      <p className="mt-8 text-lg md:text-xl">
-        {t('chapter_one.genesis_one.paragraph_two')}
-      </p>
-
-      <Button
-        href={`${routes.chaptersUrl}/chapter-1/genesis-2`}
-        classes="mt-10 max-md:w-full"
-      >
-        {t('shared.start')}
-      </Button>
-    </ChapterIntro>
+    <Introduction lang={lang}>
+      <Text className="text-lg md:text-xl">
+        {t('chapter_one.intro_one.paragraph_one')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('chapter_one.intro_one.paragraph_two')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('chapter_one.intro_one.paragraph_three')}
+      </Text>
+    </Introduction>
   )
-}
-
-export const metadata = {
-  title: 'chapter_one.genesis_one.title',
 }
