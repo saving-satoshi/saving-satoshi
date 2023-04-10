@@ -9,7 +9,7 @@ import { monaco } from 'react-monaco-editor'
 import { useState } from 'react'
 import { Loader } from 'shared'
 import { LessonView } from 'types'
-import { useLessonContext } from 'ui'
+import { useLessonContext, StatusBar } from 'ui'
 
 export default function Editor({
   language,
@@ -66,7 +66,7 @@ export default function Editor({
   return (
     <div
       className={clsx(
-        'flex w-full max-w-[840px] grow flex-col gap-1 px-4 py-6 font-nunito text-white md:justify-center',
+        'flex w-full flex-col gap-1 px-4 py-6 font-nunito text-white md:justify-center',
         {
           'hidden md:flex': !isActive,
           flex: isActive,
@@ -79,8 +79,9 @@ export default function Editor({
         </div>
       )}
       <MonacoEditor
-        width="calc(100vw / 2)"
-        height="calc(100vh - 71px - 48px - 40px - 240px)"
+        className="w-full md:w-1/2"
+        // width="w-[100vw] md:w-[calc(100vw / 2)]"
+        height="465px"
         // theme="satoshi"
         // defaultLanguage={language}
         // defaultValue={code}
@@ -92,6 +93,7 @@ export default function Editor({
         onValidate={onValidate}
         options={monacoOptions}
       />
+      {/* <StatusBar input={'success'} expected="true" next={next} /> */}
     </div>
   )
 }

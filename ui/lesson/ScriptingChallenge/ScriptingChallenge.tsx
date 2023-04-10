@@ -6,7 +6,7 @@ import LanguageTabs from './LanguageTabs'
 import Editor from './Editor'
 import Runner from './Runner'
 import { EditorConfig, LessonDirection } from 'types'
-import { Lesson, LessonTabs } from 'ui'
+import { Lesson, LessonTabs, StatusBar } from 'ui'
 import { useMediaQuery } from 'hooks'
 
 const tabData = [
@@ -19,8 +19,8 @@ const tabData = [
     text: 'Code',
   },
   {
-    id: 'run',
-    text: 'Run',
+    id: 'execute',
+    text: 'Execute',
   },
 ]
 
@@ -83,36 +83,36 @@ export default function ScriptingChallenge({
     >
       {/* <div className="grid grid-cols-2"> */}
       <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
-      {/* <div className="flex flex-col gap-4 border-r border-white border-opacity-30 p-10"> */}
+      {/* <div className="flex h-full flex-col content-center justify-items-start gap-1 px-1 py-6 sm:px-12"> */}
       {children}
       {/* </div> */}
 
-      {/* <div className="flex flex-col"> */}
-      <LanguageTabs
-        languages={config.languages}
-        value={language}
-        onChange={handleSetLanguage}
-      />
+      <div className="flex max-h-[92.5vh] max-w-full grow flex-col border-white/25 font-space-mono text-white md:max-w-[50%] md:basis-1/3 md:border-l">
+        <LanguageTabs
+          languages={config.languages}
+          value={language}
+          onChange={handleSetLanguage}
+        />
 
-      <Editor
-        language={language}
-        value={code}
-        onChange={handleChange}
-        onValidate={handleEditorValidate}
-      />
+        <Editor
+          language={language}
+          value={code}
+          onChange={handleChange}
+          onValidate={handleEditorValidate}
+        />
 
-      <Runner
-        lang={lang}
-        config={config}
-        language={language}
-        code={code}
-        program={config.languages[language].program}
-        errors={errors}
-        onValidate={handleRunnerValidate}
-        onReady={handleRunnerReady}
-        successMessage={successMessage}
-      />
-      {/* </div> */}
+        <Runner
+          lang={lang}
+          config={config}
+          language={language}
+          code={code}
+          program={config.languages[language].program}
+          errors={errors}
+          onValidate={handleRunnerValidate}
+          onReady={handleRunnerReady}
+          successMessage={successMessage}
+        />
+      </div>
       {/* </div> */}
     </Lesson>
   )

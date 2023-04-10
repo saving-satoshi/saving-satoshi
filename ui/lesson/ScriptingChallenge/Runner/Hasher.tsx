@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useTranslations } from 'hooks'
 import { EditorConfig, LessonView } from 'types'
-import { useLessonContext } from 'ui'
+import { useLessonContext, StatusBar } from 'ui'
 
 export enum HasherState {
   Waiting = 0,
@@ -30,7 +30,7 @@ export default function Hasher({
   const t = useTranslations(lang)
   const languageConfig = config.languages[language]
   const { activeView } = useLessonContext()
-  const isActive = activeView === LessonView.Run
+  const isActive = activeView === LessonView.Execute
 
   const formatArgs = () => {
     return languageConfig.defaultFunction.args.join(', ')
@@ -81,7 +81,7 @@ export default function Hasher({
     return result
   }
 
-  console.log(LessonView)
+  console.log(LessonView, isActive, activeView)
 
   return (
     <div
