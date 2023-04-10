@@ -19,30 +19,6 @@ export default function UserButton() {
     console.log(account)
   }
 
-  const renderIconButton = () => {
-    if (!hasMounted) {
-      return <div />
-    }
-
-    return isLoggedIn ? (
-      <button
-        onClick={() => setOpenSignInModal(true)}
-        aria-label="profile"
-        className="text-grey-300 h-10 cursor-pointer"
-      >
-        <Avatar avatar={user.avatar} size={30} />
-      </button>
-    ) : (
-      <button
-        onClick={() => toggleModal(true)}
-        aria-label="profile"
-        className="text-grey-300 h-10 cursor-pointer"
-      >
-        <UserIcon />
-      </button>
-    )
-  }
-
   function toggleModal(show) {
     if (user && user.publicKey && isRegistered) {
       setOpenSignInModal(show)
@@ -57,8 +33,7 @@ export default function UserButton() {
   }
 
   return (
-    <div>
-      <div className="ml-4 h-10 w-10">{renderIconButton()}</div>
+    <div className="relative inline-block">
       {isRegistered ? (
         <LoginModal
           onLogin={() => setOpenSignInModal(false)}
@@ -72,6 +47,29 @@ export default function UserButton() {
           onClose={hideModals}
         />
       )}
+      <div className="flex h-10 w-12 justify-center md:w-16">
+        {!hasMounted && <div />}
+        {hasMounted && isLoggedIn && (
+          <button
+            id="navbar-tab-user-icon"
+            onClick={() => setOpenSignInModal(true)}
+            aria-label="profile"
+            className="text-grey-300 relative flex h-full cursor-pointer items-center justify-center"
+          >
+            <Avatar avatar={user.avatar} size={30} />
+          </button>
+        )}
+        {hasMounted && !isLoggedIn && (
+          <button
+            id="navbar-tab-user-login"
+            onClick={() => toggleModal(true)}
+            aria-label="profile"
+            className="text-grey-300 relative flex h-full cursor-pointer items-center justify-center"
+          >
+            <UserIcon />
+          </button>
+        )}
+      </div>
     </div>
   )
 }
