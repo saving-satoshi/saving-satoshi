@@ -9,7 +9,7 @@ import { monaco } from 'react-monaco-editor'
 import { useState } from 'react'
 import { Loader } from 'shared'
 import { LessonView } from 'types'
-import { useLessonContext, StatusBar } from 'ui'
+import { useLessonContext } from 'ui'
 
 export default function Editor({
   language,
@@ -93,7 +93,6 @@ export default function Editor({
         onValidate={onValidate}
         options={monacoOptions}
       />
-      {/* <StatusBar input={'success'} expected="true" next={next} /> */}
     </div>
   )
 }

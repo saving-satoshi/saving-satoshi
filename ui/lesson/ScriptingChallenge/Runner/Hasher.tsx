@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useTranslations } from 'hooks'
 import { EditorConfig, LessonView } from 'types'
-import { useLessonContext, StatusBar } from 'ui'
+import { useLessonContext } from 'ui'
 
 export enum HasherState {
   Waiting = 0,
@@ -86,7 +86,7 @@ export default function Hasher({
   return (
     <div
       className={clsx(
-        'flex h-60 flex-col gap-4 overflow-y-auto border-t border-white border-opacity-30 p-4 font-mono text-white',
+        'flex h-60 flex-col gap-4 overflow-hidden border-t border-white border-opacity-30 p-4 font-mono text-white',
         {
           'bg-[#28B123] bg-opacity-25': state === HasherState.Success,
           'bg-[#253547]': state !== HasherState.Success,

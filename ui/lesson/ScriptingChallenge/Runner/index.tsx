@@ -274,7 +274,11 @@ export default function Runner({
           </button>
         )}
       </div>
-      <StatusBar input={'success'} expected="true" next={next} />
+      <StatusBar
+        input={result ? result.substring(0, 5) : ''}
+        expected="00000"
+        next={'/chapters/chapter-1/outro-2'}
+      />
     </>
   )
 }

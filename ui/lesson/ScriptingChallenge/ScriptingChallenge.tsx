@@ -6,7 +6,7 @@ import LanguageTabs from './LanguageTabs'
 import Editor from './Editor'
 import Runner from './Runner'
 import { EditorConfig, LessonDirection } from 'types'
-import { Lesson, LessonTabs, StatusBar } from 'ui'
+import { Lesson, LessonTabs } from 'ui'
 import { useMediaQuery } from 'hooks'
 
 const tabData = [
