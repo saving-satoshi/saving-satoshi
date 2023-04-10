@@ -18,7 +18,7 @@ export default function Transacting4({ lang }) {
       imageAlt={t('chapter_one.outro_one.title')}
       btnText={t('chapter_one.outro_one.button_text')}
       btnEnabled={true}
-      next={`${routes.chaptersUrl}/chapter-2/intro-1`}
+      next={`${routes.chaptersUrl}/chapter-1/outro-2`}
     >
       <p>{t('chapter_one.outro_one.paragraph_one')}</p>
       <p className="pt-6">{t('chapter_one.outro_one.paragraph_two')}</p>

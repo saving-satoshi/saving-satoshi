@@ -10,7 +10,7 @@ export default function Done({ lang }) {
       checkpoint={{
         chapter: 'chapter-2',
         lesson: null,
-        next: '/chapters/chapter-2',
+        next: '/chapters/chapter-2/hasshing-1',
       }}
     />
   )
