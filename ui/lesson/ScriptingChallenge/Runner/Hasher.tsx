@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { useTranslations } from 'hooks'
-import { EditorConfig } from 'types'
+import { EditorConfig, LessonView } from 'types'
+import { useLessonContext } from 'ui'
 
 export enum HasherState {
   Waiting = 0,
@@ -28,6 +29,8 @@ export default function Hasher({
 }) {
   const t = useTranslations(lang)
   const languageConfig = config.languages[language]
+  const { activeView } = useLessonContext()
+  const isActive = activeView === LessonView.Run
 
   const formatArgs = () => {
     return languageConfig.defaultFunction.args.join(', ')
@@ -78,6 +81,8 @@ export default function Hasher({
     return result
   }
 
+  console.log(LessonView)
+
   return (
     <div
       className={clsx(
@@ -85,6 +90,10 @@ export default function Hasher({
         {
           'bg-[#28B123] bg-opacity-25': state === HasherState.Success,
           'bg-[#253547]': state !== HasherState.Success,
+        },
+        {
+          'hidden md:flex': !isActive,
+          flex: isActive,
         }
       )}
     >

@@ -1,23 +1,32 @@
 'use client'
 
+import clsx from 'clsx'
+
 import MonacoEditor from '@monaco-editor/react'
 
 import { monacoOptions } from './config'
 import { monaco } from 'react-monaco-editor'
 import { useState } from 'react'
 import { Loader } from 'shared'
+import { LessonView } from 'types'
+import { useLessonContext } from 'ui'
 
 export default function Editor({
   language,
   value,
+
   onChange,
   onValidate,
 }: {
   language: string
   value: string
+
   onChange?: (value: string) => void
   onValidate?: (value: monaco.editor.IMarker[]) => void
 }) {
+  const { activeView } = useLessonContext()
+  const isActive = activeView === LessonView.Code
+
   const [loading, setLoading] = useState<boolean>(true)
 
   const handleBeforeMount = (monaco) => {
@@ -55,7 +64,15 @@ export default function Editor({
   }
 
   return (
-    <div className="relative font-mono text-sm text-white">
+    <div
+      className={clsx(
+        'flex w-full max-w-[840px] grow flex-col gap-1 px-4 py-6 font-nunito text-white md:justify-center',
+        {
+          'hidden md:flex': !isActive,
+          flex: isActive,
+        }
+      )}
+    >
       {loading && (
         <div className="absolute inset-0 -top-10 z-10 flex items-center justify-center bg-[#253547]">
           <Loader />

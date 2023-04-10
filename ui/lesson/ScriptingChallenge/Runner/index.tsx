@@ -9,7 +9,8 @@ import Icon from 'shared/Icon'
 import Terminal from './Terminal'
 import compilers from '../compilers'
 import Hasher, { HasherState } from './Hasher'
-import { EditorConfig } from 'types'
+import { EditorConfig, LessonView } from 'types'
+import { useLessonContext } from 'ui'
 
 let worker
 const defaultTerminalMessage = 'Saving Satoshi Runner v0.0.1'
@@ -40,6 +41,8 @@ export default function Runner({
   const [loading, setLoading] = useState<boolean>(true)
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const [result, setResult] = useState<any | undefined>(undefined)
+  const { activeView } = useLessonContext()
+  const isActive = activeView === LessonView.Run
 
   const handleRun = async () => {
     const outputEl = outputRef.current as HTMLElement
@@ -199,7 +202,15 @@ export default function Runner({
       <Script src="https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js" />
 
       {loading && (
-        <div className="h-60 overflow-y-auto border-t border-white border-opacity-30 bg-[#253547] p-4">
+        <div
+          className={clsx(
+            'h-60 overflow-y-auto border-t border-white border-opacity-30 bg-[#253547] p-4',
+            {
+              'hidden md:flex': !isActive,
+              flex: isActive,
+            }
+          )}
+        >
           <Loader />
         </div>
       )}
