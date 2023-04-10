@@ -21,7 +21,6 @@ export default function HashChallenge({
   next,
   inputLabel,
   returnLabel,
-  auto,
   hints,
 }: {
   answer: string | number
@@ -29,7 +28,6 @@ export default function HashChallenge({
   inputLabel: string
   returnLabel: string
   answerHint?: boolean
-  auto?: boolean
   hints?: boolean
 }) {
   const lang = useLang()
@@ -135,7 +133,6 @@ export default function HashChallenge({
                 onChange={setUserInput}
                 answer={answer}
                 label={returnLabel}
-                auto={auto}
                 input={input}
               />
             </div>

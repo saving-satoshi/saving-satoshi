@@ -24,7 +24,6 @@ export const metadata = {
     'hashing-3',
     'hashing-4',
     'hashing-5',
-    'hashing-6',
     'scripting-1',
   ],
   outros: [],
