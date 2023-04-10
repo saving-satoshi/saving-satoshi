@@ -51,3 +51,14 @@ export interface AuthContextType {
   account: Account | undefined
   isLoading: boolean
 }
+
+export interface User {
+  publicKey: { x: string; y: string }
+  privateKey: any // TODO: figure out the proper type for this
+  avatar: number
+  registered: boolean
+  progress: {
+    chapter: string
+    lesson: string
+  }
+}
