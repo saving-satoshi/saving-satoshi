@@ -14,6 +14,8 @@ module.exports = {
       backgroundImage: {
         'chapter-2-square':
           "linear-gradient(180deg, #7b1810d9 0%, #432a43d9 100%), url('/assets/images/chapter-2-background.png')",
+        'chapter-1-numbers':
+          "linear-gradient(180deg, #243654d9 0%, #3D5163d9 100%), url('/assets/images/chapter-1-background.png')",
       },
       colors: {
         overlayColor: '#01010180',
