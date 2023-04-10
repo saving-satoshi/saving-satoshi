@@ -11,7 +11,7 @@ export default function Layout({ children, params }) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const dev = searchParams.get('dev')
-  const { slug, lesson: lessonId, chapter: chapterId } = params
+  const { slug, lesson: lessonId } = params
   const defaultTheme = 'bg-back'
   const { theme = defaultTheme } = lessons[slug][lessonId].metadata?.theme
     ? lessons[slug][lessonId].metadata
