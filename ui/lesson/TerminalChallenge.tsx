@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonTerminal } from 'ui'
 import { useMediaQuery } from 'hooks'
+import { useProgressContext } from 'providers/ProgressProvider'
 
 const tabData = [
   {
@@ -27,18 +28,19 @@ const tabData = [
 export default function TerminalChallenge({
   children,
   expectedInput,
-  saveInfo,
+  lessonKey,
   successMessage,
   customLines,
   commonError,
 }: {
   children: any
   expectedInput: string | any
-  saveInfo: any
+  lessonKey: string
   successMessage: string
   customLines?: string
   commonError?: any
 }) {
+  const { saveProgress } = useProgressContext()
   const [hydrated, setHydrated] = useState(false)
   const [success, setSuccess] = useState('')
   const [challengeState, setChallengeState] = useState<string>('incomplete')
@@ -59,11 +61,6 @@ export default function TerminalChallenge({
   )
 
   const isSmallScreen = useMediaQuery({ width: 767 })
-
-  function saveProgress() {
-    console.log('todo: save user progress')
-    // setUserProgress(saveInfo.chapter, saveInfo.challenge)
-  }
 
   const onChange = (input) => {
     const sanitizedInput = input
@@ -109,7 +106,7 @@ export default function TerminalChallenge({
 
       if (varInput === (expectedInput.value || expectedInput)) {
         setTimeout(() => {
-          saveProgress()
+          saveProgress(lessonKey)
           setSuccess('true')
           setChallengeState('complete')
           setLines((lines) => [

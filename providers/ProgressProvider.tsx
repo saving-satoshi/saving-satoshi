@@ -21,6 +21,7 @@ export default function AuthProvider({
   const { account } = useAuthContext()
   const [accountProgress, setAccountProgress] = useState(undefined)
   const [isLoading, setIsLoading] = useState(true)
+  const [savePending, setSavePending] = useState(false)
 
   const init = async () => {
     try {
@@ -36,14 +37,13 @@ export default function AuthProvider({
 
   const saveProgress = async (key: string) => {
     try {
-      setIsLoading(true)
-
+      setSavePending(true)
       setAccountProgress(key)
       await setProgress(key)
     } catch (ex) {
       console.error(ex)
     } finally {
-      setIsLoading(false)
+      setSavePending(false)
     }
   }
 
