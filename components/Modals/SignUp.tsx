@@ -4,38 +4,56 @@ import Avatar from 'components/Avatar'
 import { useState, useEffect } from 'react'
 import Modal from 'react-modal'
 import CloseIcon from 'public/assets/icons/close.svg'
-import { CopyButton } from 'shared'
+import { CopyButton, Loader, RadioButton, RadioGroup } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
 import { useHasMounted, useTranslations, useLang } from 'hooks'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
+import { generateKeypair, generateKeyPairFromString } from 'lib/crypto'
+import { register } from 'api/auth'
+import { Input } from 'shared'
+import { PrivateKey } from 'types'
 
-export default function SignUpModal({ open, onClose, onConfirm }) {
+export default function SignUpModal({ open, onClose }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const hasMounted = useHasMounted()
-  // const { user } = useUser()
-  const { account, isLoading } = useAuthContext()
-  let [avatar, setAvatar] = useState(1)
+  const { account } = useAuthContext()
 
-  function saveLocally() {
-    // setUserAvatar(avatar)
-    // loginUser()
+  const [loading, setLoading] = useState<boolean>(false)
+  const [avatar, setAvatar] = useState(1)
+  const [view, setView] = useState<string>('generate')
+  const [privateKey, setPrivateKey] = useState<PrivateKey | undefined>(
+    undefined
+  )
+
+  const handleSetPrivateKey = (pk: string) => {
+    const { sec } = generateKeyPairFromString(pk)
+
+    setPrivateKey(sec)
   }
 
-  function confirm() {
-    saveLocally()
-    // setUserRegistered()
-    onConfirm()
+  async function handleConfirm() {
+    try {
+      setLoading(true)
+
+      await register(privateKey, `/assets/avatars/${avatar}.png`)
+
+      onClose()
+    } catch (ex) {
+      console.error(ex)
+    } finally {
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
-    // if (hasMounted && !user) {
-    //   createUser(null)
-    // }
-  }, [hasMounted, account])
+    if (view === 'generate') {
+      const { sec } = generateKeypair()
 
-  console.log(account)
+      setPrivateKey(sec)
+    }
+  }, [view])
 
   return (
     <Modal
@@ -78,26 +96,52 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
           {t('modal_signup.subheading_two')}
         </h2>
 
-        <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
-          <code className="mb-2 whitespace-pre-wrap break-all text-base">
-            {/* {!isLoading && account ? account.private_key.toString() : ''} */}
-          </code>
-          <CopyButton
-            content={
-              ''
-              // !isLoading && account ? account.private_key.toString(16) : ''
-            }
-          >
-            {t('shared.copy')}
-          </CopyButton>
-        </pre>
+        <RadioGroup value={view} onChange={setView}>
+          <RadioButton name="generate" value="generate">
+            Generate
+          </RadioButton>
+          <RadioButton name="enter" value="enter">
+            Enter my own
+          </RadioButton>
+        </RadioGroup>
 
-        <p className="mt-5 text-base">{t('modal_signup.paragraph_two')}</p>
+        {view === 'generate' && (
+          <>
+            <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
+              {privateKey && (
+                <>
+                  <code className="mb-2 whitespace-pre-wrap break-all text-base">
+                    {privateKey.toString(16)}
+                  </code>
+                  <CopyButton content={privateKey.toString(16)}>
+                    {t('shared.copy')}
+                  </CopyButton>
+                </>
+              )}
+            </pre>
+            <p className="mt-5 text-base">{t('modal_signup.generate')}</p>
+          </>
+        )}
+
+        {view === 'enter' && (
+          <>
+            <Input
+              type="text"
+              name="private_key"
+              placeholder="Enter your private key"
+              onInput={handleSetPrivateKey}
+            />
+            <p className="mt-5 text-base">{t('modal_signup.generate')}</p>
+          </>
+        )}
+
         <button
-          onClick={confirm}
-          className="mt-4 w-full rounded-md border border-white px-4 py-2 text-xl text-white"
+          onClick={handleConfirm}
+          disabled={loading}
+          className="mt-4 w-full rounded-md border border-white px-4 py-2 text-xl text-white disabled:border-opacity-50 disabled:text-opacity-50"
         >
-          {t('modal_signup.confirm')}
+          {loading && <Loader className="h-7 w-7" />}
+          {!loading && t('modal_signup.confirm')}
         </button>
       </div>
     </Modal>

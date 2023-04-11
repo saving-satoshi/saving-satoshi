@@ -1,14 +1,7 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import {
-  Button,
-  LessonInfo,
-  CodeExample,
-  Text,
-  Title,
-  TerminalChallenge,
-} from 'ui'
+import { LessonInfo, Text, Title, TerminalChallenge } from 'ui'
 
 export const metadata = {
   title: 'chapter_one.transacting_three.title',

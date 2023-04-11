@@ -1,7 +1,8 @@
 'use client'
 
 import { useLocalizedRoutes, useTranslations } from 'hooks'
-import { Button, LessonInfo, Title, Text, InputChallenge } from 'ui'
+import { LessonInfo, Title, Text, InputChallenge } from 'ui'
+import { Button } from 'shared'
 
 export const metadata = {
   title: 'chapter_one.genesis_two.title',

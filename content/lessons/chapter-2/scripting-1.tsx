@@ -1,7 +1,8 @@
 'use client'
 
 import { useSaveAndProceed, useTranslations } from 'hooks'
-import { Button, ChapterIntro } from 'ui'
+import { ChapterIntro } from 'ui'
+import { Button } from 'shared'
 
 export const metadata = {
   title: 'chapter_two.scripting_one.title',

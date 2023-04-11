@@ -335,6 +335,7 @@ const translations = {
     quit: 'Clear save progress.',
     success: 'Progress loaded',
     success_message: 'You’re all set to continue with Chapter',
+    create_account: 'Don’t have an account?',
   },
 
   modal_logout: {
@@ -345,14 +346,16 @@ const translations = {
   },
 
   modal_signup: {
-    heading: 'Want to save your progress?',
+    heading: 'Create an account',
     paragraph_one:
-      'Copy and store a simple code to save and load your progress on any device and browser. If you already have a code, load your progress here.',
+      'At Saving Satoshi, private keys are used as accounts. You have the option to generate a private key here, or you can enter your own.',
     subheading_one: 'Choose an avatar',
-    subheading_two: 'Back up your personal code',
+    subheading_two: 'Your private key',
+    generate:
+      'If you lose your private key, you lose access to your account. Make sure you store it somewhere save.',
     paragraph_two:
       'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
-    confirm: 'I’ve copied and backed up my code',
+    confirm: 'Create account',
   },
 
   demo_disclaimer: {

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from 'ui'
+import { Button } from 'shared'
 import { useTranslations } from 'hooks'
 
 export default function End({

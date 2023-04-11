@@ -62,16 +62,6 @@ export default function LoginModal({ onClose, open }) {
             <p className="text-lg">{t('modal_logout.paragraph_one')}</p>
           </div>
 
-          <pre className="mb-[30px] flex flex-col rounded-md border-2 border-dotted border-white/25 p-2.5">
-            <code className="mb-2 whitespace-pre-wrap break-all">
-              {account.private_key}
-            </code>
-
-            <CopyButton style="dark" content={account.private_key}>
-              {t('shared.copy')}
-            </CopyButton>
-          </pre>
-
           <div className="mt-auto flex items-center">
             <button
               onClick={handleSignOut}

@@ -5,26 +5,39 @@ import Modal from 'react-modal'
 import Secp256k1 from '@lionello/secp256k1-js'
 import CloseIcon from 'public/assets/icons/close.svg'
 import Avatar from 'components/Avatar'
-import { Button, CopyButton, Loader } from 'shared'
+import { Button, CopyButton, Input, Loader } from 'shared'
 import { useTranslations, useLang } from 'hooks'
 import { useAuthContext } from 'providers/AuthProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
+import { useModalContext } from 'providers/ModalProvider'
 
 export default function LoginModal({ onClose, open }) {
   const lang = useLang()
-  const { account, isLoading: isAccountLoading, login } = useAuthContext()
-  const { isLoading: isProgressLoading } = useProgressContext()
+  const modals = useModalContext()
+  const { login } = useAuthContext()
   const t = useTranslations(lang)
 
-  const isLoaded = !isAccountLoading && !isProgressLoading
-  const [privateKey, setPrivateKey] = useState('')
+  const [loading, setLoading] = useState<boolean>(false)
+  const [privateKey, setPrivateKey] = useState<string>('')
 
   const handleConfirm = async () => {
-    const loginSuccess = await login(privateKey)
-    if (loginSuccess) {
-      setPrivateKey('')
+    try {
+      setLoading(true)
+      const loginSuccess = await login(privateKey)
+      if (loginSuccess) {
+        setPrivateKey('')
+      }
+      onClose()
+    } catch (ex) {
+      console.error(ex)
+    } finally {
+      setLoading(false)
     }
-    onClose()
+  }
+
+  function handleCreateClick() {
+    modals.close('login')
+    modals.show('signup')
   }
 
   function handleCloseClick() {
@@ -44,46 +57,43 @@ export default function LoginModal({ onClose, open }) {
           <CloseIcon className="h-6 w-6" />
         </button>
       </div>
+      <div className="sm:p-[30px]">
+        <h2 className="mb-4 text-3xl font-bold">{t('modal_login.heading')}</h2>
+        <p className="mb-5">{t('modal_login.paragraph_one')}</p>
 
-      {!isLoaded && (
-        <div className="sm:p-[30px]">
-          <Loader />
-        </div>
-      )}
-      {isLoaded && (
-        <div className="sm:p-[30px]">
-          <h2 className="mb-4 text-3xl font-bold">
-            {t('modal_login.heading')}
-          </h2>
-          <p className="mb-5">{t('modal_login.paragraph_one')}</p>
-
-          <div className="flex flex-col justify-between">
-            <div className="flex w-full">
-              <input
-                className="w-full border-2 border-dotted border-white bg-transparent p-1 font-space-mono text-lg text-white outline-none"
-                type="text"
-                placeholder={t('modal_login.prompt')}
-                value={privateKey}
-                onChange={(e) => setPrivateKey(e.target.value)}
-              />
-            </div>
-            <div className="mt-4 flex w-full">
-              <Button
-                full
-                size="small"
-                style="outline"
-                disabled={!privateKey}
-                onClick={handleConfirm}
-                classes={`border-white border-2 p-1 text-xl md:w-full ${
-                  !privateKey && 'opacity-50'
-                }`}
-              >
-                {t('modal_login.confirm')}
-              </Button>
-            </div>
+        <div className="flex flex-col justify-between">
+          <div className="flex w-full">
+            <Input
+              type="text"
+              name="private_key"
+              placeholder={t('modal_login.prompt')}
+              value={privateKey}
+              onInput={setPrivateKey}
+              disabled={loading}
+            />
+          </div>
+          <div className="mt-4 flex w-full">
+            <Button
+              full
+              size="small"
+              style="outline"
+              disabled={!privateKey || loading}
+              onClick={handleConfirm}
+              classes={`border-white border-2 p-1 text-xl md:w-full ${
+                !privateKey && 'opacity-50'
+              }`}
+            >
+              {loading && <Loader className="h-7 w-7" />}
+              {!loading && t('modal_login.confirm')}
+            </Button>
+          </div>
+          <div className="mt-4 flex items-center justify-center">
+            <button className="underline" onClick={handleCreateClick}>
+              {t('modal_login.create_account')}
+            </button>
           </div>
         </div>
-      )}
+      </div>
     </Modal>
   )
 }

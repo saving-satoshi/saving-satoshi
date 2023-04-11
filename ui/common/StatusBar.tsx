@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { Button } from 'ui'
+import { Button } from 'shared'
 import CheckIcon from 'public/assets/icons/check.svg'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
