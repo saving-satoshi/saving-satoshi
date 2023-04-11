@@ -140,7 +140,7 @@ const translations = {
     },
 
     transacting_one: {
-      title: 'Transaccionando',
+      title: 'Ejecutando transacciones',
       heading: '¿Qué hay en una transacción?',
       paragraph_one:
         'Las transacciones tienen dos partes: entradas y salidas. En el ejercicio anterior desciframos un mensaje secreto que se encontraba dentro de la entrada de una transacción. Esta vez descifraremos un mensaje que pertenece a la parte de salida',
