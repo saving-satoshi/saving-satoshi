@@ -150,10 +150,10 @@ div.react-terminal-active-input {
 }
 
 /* Chapter Default themes */
-.chapter-1-numbers {
+.bg-chapter-1-numbers {
   background-image: linear-gradient(180deg, #243654d9 0%, #3D5163d9 100%), url('/assets/images/chapter-1-background.png');
 }
 
-.chapter-2-square {
+.bg-chapter-2-square {
   background-image: linear-gradient(180deg, #7b1810d9 0%, #432a43d9 100%), url('/assets/images/chapter-2-background.png');
 }
