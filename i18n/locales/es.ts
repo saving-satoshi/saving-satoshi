@@ -158,7 +158,7 @@ const translations = {
       paragraph_three:
         '2. Abra los detalles y busque la parte que es de tipo "OP_RETURN".',
       párrafo_cuarto:
-        '3. Ahora localice el campo "SCRIPTPUBKEY (ASM)". ¿Ves la parte "OP_RETURN OP_PUSHBYTES_33"? Esto se llama opcodes. En realidad nos interesa lo que viene después de ellos',
+        '3. Ahora encuentra el campo "SCRIPTPUBKEY (ASM)". ¿Ves la parte "OP_RETURN OP_PUSHBYTES_33"? Esto se llama opcodes. En realidad nos interesa lo que viene después de ellos',
       paragraph_five:
         '4. Copia la larga cadena de números después de "OP_RETURN OP_PUSHBYTES_33" y pégala debajo. ',
       input_challenge_label: 'Introduce el tipo de OP_RETURN',
