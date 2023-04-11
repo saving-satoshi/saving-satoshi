@@ -1,7 +1,7 @@
 const translations = {
   shared: {
-    next: 'Continúa',
-    start: 'Inicio',
+    next: 'Continuar',
+    start: 'Iniciar',
     copy: 'Copiar',
     about: 'Info',
     chapter: 'Capítulo',
