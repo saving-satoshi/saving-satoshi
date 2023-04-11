@@ -5,7 +5,7 @@ import UserIcon from 'public/assets/icons/avatar.svg'
 import Avatar from 'components/Avatar'
 import { useHasMounted } from 'hooks'
 import { useAuthContext } from 'providers/AuthProvider'
-import { useModalContext } from 'providers/ModalProvider'
+import { Modal, useModalContext } from 'providers/ModalProvider'
 
 export default function UserButton() {
   const hasMounted = useHasMounted()
@@ -13,8 +13,8 @@ export default function UserButton() {
 
   const { account, isLoading } = useAuthContext()
 
-  const handleClick = (name: string) => {
-    modals.show(name)
+  const handleClick = (name: Modal) => {
+    modals.open(name)
   }
 
   return (
@@ -25,7 +25,7 @@ export default function UserButton() {
           <>
             {account && (
               <button
-                onClick={() => handleClick('account')}
+                onClick={() => handleClick(Modal.Account)}
                 aria-label="profile"
                 className="text-grey-300 flex h-10 cursor-pointer items-center"
               >
@@ -34,7 +34,7 @@ export default function UserButton() {
             )}
             {!account && (
               <button
-                onClick={() => handleClick('login')}
+                onClick={() => handleClick(Modal.SignIn)}
                 aria-label="profile"
                 className="text-grey-300 h-10 cursor-pointer"
               >

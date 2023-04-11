@@ -1,10 +1,10 @@
 'use client'
 
-import { useModalContext } from 'providers/ModalProvider'
+import { Modal, useModalContext } from 'providers/ModalProvider'
 
 import AccountModal from 'components/Modals/Account'
 import SignUpModal from 'components/Modals/SignUp'
-import LoginModal from 'components/Modals/Login'
+import SignInModal from 'components/Modals/SignIn'
 
 export default function Layout({ children }: { children?: React.ReactNode }) {
   const { modals, close } = useModalContext()
@@ -13,11 +13,17 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
     <>
       {children}
       <>
-        <LoginModal open={modals['login']} onClose={() => close('login')} />
-        <SignUpModal open={modals['signup']} onClose={() => close('signup')} />
+        <SignInModal
+          open={modals[Modal.SignIn]}
+          onClose={() => close(Modal.SignIn)}
+        />
+        <SignUpModal
+          open={modals[Modal.SignUp]}
+          onClose={() => close(Modal.SignUp)}
+        />
         <AccountModal
-          open={modals['account']}
-          onClose={() => close('account')}
+          open={modals[Modal.Account]}
+          onClose={() => close(Modal.Account)}
         />
       </>
     </>

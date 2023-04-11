@@ -353,8 +353,8 @@ const translations = {
     subheading_two: 'Your private key',
     generate:
       'If you lose your private key, you lose access to your account. Make sure you store it somewhere save.',
-    paragraph_two:
-      'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
+    input:
+      'If you lose your private key, you lose access to your account. Make sure you store it somewhere save.',
     confirm: 'Create account',
   },
 

@@ -3,9 +3,15 @@
 import { createContext, useContext, useState } from 'react'
 import { ModalContextType } from 'types'
 
+export enum Modal {
+  Account = 'account',
+  SignIn = 'signin',
+  SignUp = 'signup',
+}
+
 export const ModalContext = createContext<ModalContextType>({
   modals: {},
-  show: () => {},
+  open: () => {},
   close: () => {},
 })
 
@@ -17,11 +23,12 @@ export default function ModalProvider({
   children?: React.ReactNode
 }) {
   const [modals, setModals] = useState({
-    login: false,
-    account: false,
+    [Modal.Account]: false,
+    [Modal.SignIn]: false,
+    [Modal.SignUp]: false,
   })
 
-  const show = (name: string) => {
+  const open = (name: string) => {
     const newModals = { ...modals }
     newModals[name] = true
     setModals(newModals)
@@ -39,7 +46,7 @@ export default function ModalProvider({
   }
 
   return (
-    <ModalContext.Provider value={{ modals, show, close }}>
+    <ModalContext.Provider value={{ modals, open, close }}>
       {children}
     </ModalContext.Provider>
   )

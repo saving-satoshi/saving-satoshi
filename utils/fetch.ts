@@ -1,5 +1,6 @@
 import { url } from 'utils'
 import { FetchOptions } from 'types'
+import { SAVING_SATOSHI_TOKEN } from 'config/keys'
 
 const defaultHeaders = {
   'Content-Type': 'application/json',
@@ -16,7 +17,7 @@ export async function get(options: FetchOptions) {
     }
 
     if (options.includeToken) {
-      const token = window.localStorage.getItem('saving-satoshi-token')
+      const token = window.localStorage.getItem(SAVING_SATOSHI_TOKEN)
       if (token) {
         fetchOptions.headers['Authorization'] = `Bearer ${token}`
       }
@@ -46,7 +47,7 @@ export async function post(options: FetchOptions) {
     }
 
     if (options.includeToken) {
-      const token = window.localStorage.getItem('saving-satoshi-token')
+      const token = window.localStorage.getItem(SAVING_SATOSHI_TOKEN)
       if (token) {
         fetchOptions.headers['Authorization'] = `Bearer ${token}`
       }
@@ -80,7 +81,7 @@ export async function put(options: FetchOptions) {
     }
 
     if (options.includeToken) {
-      const token = window.localStorage.getItem('saving-satoshi-token')
+      const token = window.localStorage.getItem(SAVING_SATOSHI_TOKEN)
       if (token) {
         fetchOptions.headers['Authorization'] = `Bearer ${token}`
       }

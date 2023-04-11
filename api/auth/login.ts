@@ -1,3 +1,4 @@
+import { SAVING_SATOSHI_TOKEN } from 'config/keys'
 import { post } from 'utils'
 
 export default async function login(privateKey) {
@@ -9,7 +10,7 @@ export default async function login(privateKey) {
       },
     })
 
-    window.localStorage.setItem('saving-satoshi-token', token)
+    window.localStorage.setItem(SAVING_SATOSHI_TOKEN, token)
 
     return true
   } catch (errors) {

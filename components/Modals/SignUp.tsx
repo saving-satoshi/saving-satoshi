@@ -14,15 +14,18 @@ import { register } from 'api/auth'
 import { Input } from 'shared'
 import { PrivateKey } from 'types'
 
+enum View {
+  Generate = 'generate',
+  Input = 'input',
+}
+
 export default function SignUpModal({ open, onClose }) {
   const lang = useLang()
   const t = useTranslations(lang)
-  const hasMounted = useHasMounted()
-  const { account } = useAuthContext()
 
   const [loading, setLoading] = useState<boolean>(false)
   const [avatar, setAvatar] = useState(1)
-  const [view, setView] = useState<string>('generate')
+  const [view, setView] = useState<string>(View.Generate)
   const [privateKey, setPrivateKey] = useState<PrivateKey | undefined>(
     undefined
   )
@@ -48,7 +51,7 @@ export default function SignUpModal({ open, onClose }) {
   }
 
   useEffect(() => {
-    if (view === 'generate') {
+    if (view === View.Generate) {
       const { sec } = generateKeypair()
 
       setPrivateKey(sec)
@@ -100,12 +103,13 @@ export default function SignUpModal({ open, onClose }) {
           <RadioButton name="generate" value="generate">
             Generate
           </RadioButton>
+
           <RadioButton name="enter" value="enter">
             Enter my own
           </RadioButton>
         </RadioGroup>
 
-        {view === 'generate' && (
+        {view === View.Generate && (
           <>
             <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
               {privateKey && (
@@ -123,7 +127,7 @@ export default function SignUpModal({ open, onClose }) {
           </>
         )}
 
-        {view === 'enter' && (
+        {view === View.Input && (
           <>
             <Input
               type="text"
@@ -131,7 +135,7 @@ export default function SignUpModal({ open, onClose }) {
               placeholder="Enter your private key"
               onInput={handleSetPrivateKey}
             />
-            <p className="mt-5 text-base">{t('modal_signup.generate')}</p>
+            <p className="mt-5 text-base">{t('modal_signup.input')}</p>
           </>
         )}
 

@@ -11,7 +11,7 @@ import {
 } from 'lib/progress'
 import { redirect, useSearchParams } from 'next/navigation'
 import { useAuthContext } from 'providers/AuthProvider'
-import { useModalContext } from 'providers/ModalProvider'
+import { Modal, useModalContext } from 'providers/ModalProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { useEffect, useState } from 'react'
 import { Button, Loader } from 'shared'
@@ -32,7 +32,7 @@ export default function Page({ params }) {
   const [unlocked, setUnlocked] = useState<number>(LoadingState.Idle)
 
   const handleSignInClick = () => {
-    modals.show('login')
+    modals.open(Modal.SignIn)
   }
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function Page({ params }) {
   if (!(params.lesson in chapterLessons) || !(params.slug in chapters)) {
     return (
       <div className="flex h-full w-full grow flex-col items-center justify-center">
-        <span className="mb-10 text-4xl text-white">
+        <span className="mb-10 font-nunito text-2xl text-white">
           Sorry, we could not find the ’{params.lesson}’ lesson.
         </span>
         <Button
@@ -90,7 +90,7 @@ export default function Page({ params }) {
   if (!account || !progress) {
     return (
       <div className="flex h-full w-full grow flex-col items-center justify-center">
-        <span className="mb-10 text-4xl text-white">
+        <span className="mb-10 font-nunito text-2xl text-white">
           Sorry, you need to be signed in to access this lesson
         </span>
         <Button onClick={handleSignInClick} size="small">

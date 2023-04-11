@@ -1,3 +1,4 @@
+import { SAVING_SATOSHI_TOKEN } from 'config/keys'
 import { post } from 'utils'
 
 export default async function logout() {
@@ -8,7 +9,7 @@ export default async function logout() {
       includeToken: true,
     })
 
-    window.localStorage.removeItem('saving-satoshi-token')
+    window.localStorage.removeItem(SAVING_SATOSHI_TOKEN)
 
     return true
   } catch (errors) {

@@ -54,7 +54,7 @@ export interface ProgressContextType {
 
 export interface ModalContextType {
   modals: { [name: string]: boolean }
-  show: (name: string) => void
+  open: (name: string) => void
   close: (name: string) => void
 }
 
