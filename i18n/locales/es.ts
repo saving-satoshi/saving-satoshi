@@ -7,8 +7,8 @@ const translations = {
     chapter: 'Capítulo',
     chapters: 'Capítulos',
     challenge: 'Desafío',
-    coming_soon: 'Muy Pronto',
-    start_chapter: 'Iniciar Capítulo',
+    coming_soon: 'Muy pronto',
+    start_chapter: 'Iniciar capítulo',
     back: 'Atrás',
   },
   status_bar: {
