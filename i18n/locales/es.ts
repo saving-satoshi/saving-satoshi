@@ -113,7 +113,7 @@ const translations = {
         'Desplázate hacia abajo y expande los detalles de la única transacción que se almacena en este bloque. Busca la entrada llamada "Coinbase". Ahora busca la etiqueta "SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)". El valor que aparece junto a él es un mensaje codificado',
       paragraph_three: 'Copia este valor y pégalo aquí abajo.',
       tooltip_block_explorer:
-        'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
+        'Un <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">explorador de bloques</a> es una herramienta útil para buscar rápidamente información sobre transacciones bitcoin.',
       tooltip_hex:
         'Abreviatura de hexadecimal, un sistema numérico que representa números utilizando una base de 16.',
       view_block_0: 'Ver bloque 0',
