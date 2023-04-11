@@ -156,7 +156,7 @@ const translations = {
       paragraph_two:
         '1. Haga clic en <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">aquí</Link> para ver una transacción específica.',
       paragraph_three:
-        '2. Abra los detalles y busque la parte que es de tipo "OP_RETURN".',
+        '2. Abre los detalles y busca la parte que es de tipo "OP_RETURN".',
       párrafo_cuarto:
         '3. Ahora encuentra el campo "SCRIPTPUBKEY (ASM)". ¿Ves la parte "OP_RETURN OP_PUSHBYTES_33"? Esto se llama opcodes. En realidad nos interesa lo que viene después de ellos',
       paragraph_five:
