@@ -170,7 +170,7 @@ const translations = {
       paragraph_one:
         'Hemos identificado la parte de la salida de la transacción que contiene el mensaje',
       paragraph_two:
-        'Ahora sólo queda descodificarlo, igual que hicimos en el ejercicio anterior',
+        'Ahora solo queda decodificarlo, igual que hicimos en el ejercicio anterior',
       paragraph_three: '¿Necesitas buscar $scriptPubKeyBytes otra vez? Aquí tienes',
       link: 'Ver transacción',
       terminal_challenge_success:
