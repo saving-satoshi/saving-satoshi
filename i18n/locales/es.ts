@@ -30,7 +30,7 @@ const translations = {
     project: {
       title: 'Construido para divertirse',
       paragraph_one:
-        '<strong>Salvando Satoshi</strong> es un primer punto de contacto desenfadado para desarrolladores que sientan curiosidad por el desarrollo de bitcoins. Salvando Satoshi tiene una mezcla de texto técnico y retos basados en código, pero los retos deberían ser factibles para cualquiera con conocimientos básicos de codificación. El proyecto es gratuito y de código abierto, y todo el arte se ha generado utilizando herramientas de conversión de texto en imagen (también conocidas como IA) como Midjourney.',
+        '<strong>Saving Satoshi</strong> es un primer punto de contacto para desarrolladores que sientan curiosidad por el desarrollo bitcoin. Saving Satoshi es una mezcla de texto técnico y retos basados en código, aunque los retos deberían ser aptos para cualquiera con conocimientos básicos de programación. El proyecto es gratuito y de código abierto, y todo el arte se ha generado utilizando herramientas de conversión de texto en imagen (también conocidas como IA) como Midjourney.',
       paragraph_two:
         'Esta versión del proyecto se encuentra actualmente en estado de demostración con el objetivo de obtener comentarios sobre la experiencia general y proporcionar una prueba de concepto para los primeros usuarios. Por ello, el progreso del usuario se almacena localmente en el navegador y la historia y las imágenes no están finalizadas.',
       paragraph_three:
