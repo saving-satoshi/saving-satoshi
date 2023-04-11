@@ -154,7 +154,7 @@ const translations = {
       paragraph_one:
         'Hay otra forma de ocultar mensajes secretos en las transacciones. Bitcoin tiene un tipo especial de código llamado OP_RETURN que permite a los usuarios adjuntar mensajes a las salidas de las transacciones. Veamos si podemos encontrar uno',
       paragraph_two:
-        '1. Haga clic en <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">aquí</Link> para ver una transacción específica.',
+        '1. Haz clic <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">aquí</Link> para ver una transacción específica.',
       paragraph_three:
         '2. Abre los detalles y busca la parte que es de tipo "OP_RETURN".',
       párrafo_cuarto:
