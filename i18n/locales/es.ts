@@ -76,7 +76,7 @@ const translations = {
     ///CHAPTER 1
     intro_one: {
       title: 'Génesis',
-      paragraph_one: 'Unos instantes después, tu Pantalla se activa.',
+      paragraph_one: 'Unos instantes después, tu pantalla se activa.',
       paragraph_two: '-Deborah Chunk: "Thomas Vanderpoole. Como CEO de BitRey, diriges uno de los mayores pools de minería de bitcoins del mundo. También fabrica máquinas de minería bitcoin. ¿Qué está ocurriendo? ¿Está muriendo bitcoin?”',
       paragraph_three: '-Vanderpoole: "Sí, Deborah. Como mi padre y su padre antes que él. Los Vanderpoole han estado minando desde el Bloque 21.000. Por eso puedo decir con seguridad que los mineros de todo el mundo están causando estos retrasos al apagar sus máquinas. Esto es una protesta. Nadie quiere que bitcoin deje de emitirse a los 21 millones. No podemos sobrevivir sólo con las comisiones.”',
       start: 'Continúa',
