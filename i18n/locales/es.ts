@@ -111,7 +111,7 @@ const translations = {
         'Vamos a encontrar el primer bloque de la blockchain de bitcoin. Haz clic en el botón de abajo para abrir un <Tooltip id="genesis_two_paragraph_one" content="genesis_two.tooltip_block_explorer" className="underline">explorador de bloques</Tooltip> exactamente en el bloque 0, que se llama bloque génesis.',
       paragraph_two:
         'Desplázate hacia abajo y expande los detalles de la única transacción que se almacena en este bloque. Busca la entrada llamada "Coinbase". Ahora busca la etiqueta "SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)". El valor que aparece junto a él es un mensaje codificado',
-      paragraph_three: 'Copia ese valor y pégalo debajo.',
+      paragraph_three: 'Copia este valor y pégalo aquí abajo.',
       tooltip_block_explorer:
         'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
       tooltip_hex:
