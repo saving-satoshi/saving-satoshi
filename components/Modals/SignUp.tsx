@@ -140,7 +140,7 @@ export default function SignUpModal({ open, onClose }) {
           disabled={loading}
           className="mt-4 w-full rounded-md border border-white px-4 py-2 text-xl text-white disabled:border-opacity-50 disabled:text-opacity-50"
         >
-          {loading && <Loader className="h-7 w-7" />}
+          {loading && <Loader className="h-7 w-7 text-white" />}
           {!loading && t('modal_signup.confirm')}
         </button>
       </div>

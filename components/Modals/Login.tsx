@@ -83,7 +83,7 @@ export default function LoginModal({ onClose, open }) {
                 !privateKey && 'opacity-50'
               }`}
             >
-              {loading && <Loader className="h-7 w-7" />}
+              {loading && <Loader className="h-7 w-7 text-white" />}
               {!loading && t('modal_login.confirm')}
             </Button>
           </div>

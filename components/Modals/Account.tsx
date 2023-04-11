@@ -49,7 +49,7 @@ export default function LoginModal({ onClose, open }) {
 
       {!isLoaded && (
         <div className="sm:p-[30px]">
-          <Loader />
+          <Loader className="h-10 w-10 text-white" />
         </div>
       )}
       {isLoaded && (

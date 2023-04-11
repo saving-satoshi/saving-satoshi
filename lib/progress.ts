@@ -63,6 +63,7 @@ export const isLessonCompleted = (
 
   return ida > idb
 }
+
 export const getLastUnlockedLessonPath = (userProgressKey: string): string => {
   const { path } = keysMeta[userProgressKey]
 

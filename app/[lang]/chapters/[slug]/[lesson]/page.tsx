@@ -1,34 +1,60 @@
 'use client'
 
 import { chapters, lessons } from 'content'
-import { getLastUnlockedLessonPath, isLessonUnlocked, keys } from 'lib/progress'
-import { redirect } from 'next/navigation'
+import { usePathData } from 'hooks'
+import {
+  getLastUnlockedLessonPath,
+  getLessonKey,
+  isLessonCompleted,
+  isLessonUnlocked,
+  keys,
+} from 'lib/progress'
+import { redirect, useSearchParams } from 'next/navigation'
+import { useAuthContext } from 'providers/AuthProvider'
+import { useModalContext } from 'providers/ModalProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { useEffect, useState } from 'react'
 import { Button, Loader } from 'shared'
+import { LoadingState } from 'types'
 
 export default function Page({ params }) {
+  const searchParams = useSearchParams()
+  const dev = searchParams.get('dev') === 'true'
+
   const chapterId = params.slug
   const chapterLessons = lessons[chapterId]
-  const [loading, setLoading] = useState<boolean>(true)
+  const modals = useModalContext()
+  const pathData = usePathData()
 
+  const { account, isLoading: isAccountLoading } = useAuthContext()
   const { progress, isLoading: isProgressLoading } = useProgressContext()
 
+  const [unlocked, setUnlocked] = useState<number>(LoadingState.Idle)
+
+  const handleSignInClick = () => {
+    modals.show('login')
+  }
+
   useEffect(() => {
-    if (!isProgressLoading && progress && params.lesson) {
-      const lesson = chapterLessons[params.lesson].metadata
-      const lessonUnlocked = isLessonUnlocked(progress, lesson.key)
-
-      if (!lessonUnlocked) {
-        const path = getLastUnlockedLessonPath(progress)
-
-        redirect(path)
+    if (!isAccountLoading && !isProgressLoading) {
+      if (progress && params.lesson) {
+        const lesson = chapterLessons[params.lesson].metadata
+        const lessonUnlocked = isLessonUnlocked(progress, lesson.key)
+        setUnlocked(lessonUnlocked ? LoadingState.Success : LoadingState.Failed)
+      } else {
+        setUnlocked(LoadingState.Failed)
       }
-
-      setLoading(false)
     }
-  }, [progress, isProgressLoading, params.lesson, chapterLessons, chapterId])
+  }, [
+    progress,
+    params.lesson,
+    chapterLessons,
+    chapterId,
+    isAccountLoading,
+    isProgressLoading,
+  ])
 
+  // If the lesson does not exist, we show this error message.
   if (!(params.lesson in chapterLessons) || !(params.slug in chapters)) {
     return (
       <div className="flex h-full w-full grow flex-col items-center justify-center">
@@ -45,15 +71,49 @@ export default function Page({ params }) {
     )
   }
 
-  if (loading) {
+  const Lesson = chapterLessons[params.lesson].default
+
+  if (dev) {
+    return <Lesson lang={params.lang} />
+  }
+
+  // If account or progress data is being loaded, we show a loader.
+  if (unlocked === LoadingState.Idle || isAccountLoading || isProgressLoading) {
     return (
       <div className="flex grow items-center justify-center">
-        <Loader />
+        <Loader className="h-10 w-10 text-white" />
       </div>
     )
   }
 
-  const Lesson = chapterLessons[params.lesson].default
+  // If account and progress data have been loaded, but there is no progress obj
+  if (!account || !progress) {
+    return (
+      <div className="flex h-full w-full grow flex-col items-center justify-center">
+        <span className="mb-10 text-4xl text-white">
+          Sorry, you need to be signed in to access this lesson
+        </span>
+        <Button onClick={handleSignInClick} size="small">
+          Sign in
+        </Button>
+      </div>
+    )
+  }
+
+  const lastUnlockedLessonPath = getLastUnlockedLessonPath(progress)
+  const currentLessonPath = `/${pathData.pageId}/${pathData.chapterId}/${pathData.lessonId}`
+  const isRestrictedFromLesson = isLessonCompleted(
+    getLessonKey(pathData.chapterId, pathData.lessonId),
+    progress
+  )
+
+  if (
+    unlocked === LoadingState.Failed &&
+    lastUnlockedLessonPath !== currentLessonPath &&
+    isRestrictedFromLesson
+  ) {
+    return redirect(lastUnlockedLessonPath)
+  }
 
   return <Lesson lang={params.lang} />
 }
