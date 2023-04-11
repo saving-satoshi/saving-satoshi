@@ -57,3 +57,14 @@ export interface ModalContextType {
   show: (name: string) => void
   close: (name: string) => void
 }
+
+export interface User {
+  publicKey: { x: string; y: string }
+  privateKey: any // TODO: figure out the proper type for this
+  avatar: number
+  registered: boolean
+  progress: {
+    chapter: string
+    lesson: string
+  }
+}

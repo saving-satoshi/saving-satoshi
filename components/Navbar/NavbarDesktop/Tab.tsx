@@ -74,6 +74,7 @@ export default function Tab({
               isUnlocked && !isActive,
             'bg-black/25 text-opacity-100': isActive,
             'border-r': isLast,
+            'pointer-events-none': isUnlocked,
           }
         )}
       >
