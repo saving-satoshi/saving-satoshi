@@ -9,7 +9,7 @@ const translations = {
     challenge: 'Desafío',
     coming_soon: 'Muy pronto',
     start_chapter: 'Iniciar capítulo',
-    back: 'Atrás',
+    back: 'Volver',
   },
   status_bar: {
     begin_message: 'Completa el desafío anterior para continuar...',
