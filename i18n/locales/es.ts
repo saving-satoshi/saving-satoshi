@@ -127,7 +127,7 @@ const translations = {
         'El mensaje que encontraste estaba codificado en un formato llamado HEX. Ahora ejecutaremos un comando para convertirlo en ASCII, el cual podremos leer',
       paragraph_two:
         'Copia y pega el comando de abajo en el Terminal de la derecha y pulsa "Enter"',
-      terminal_challenge_lines: 'Introduzca sus comandos aquí y pulse Intro...\n\n La variable $scriptSigHex ya está definida para usted.\n\n var $scriptSigHex = "04fff...e6b73"',
+      terminal_challenge_lines: 'Introduce tus comandos aquí y pulsa Intro...\n\n La variable $scriptSigHex ya está definida para ti.\n\n var $scriptSigHex = "04fff...e6b73"',
       waiting_for_input: 'Esperando a que escribas y ejecutes el script...',
       success: '¡Buen trabajo! El mensaje descifrado hace referencia a la portada de <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">The Times</Link> del 3 de enero de 2009, el mismo día que Satoshi minó el bloque génesis. ¿No es genial? Este mensaje también nos da una idea de su motivación para crear bitcoin,',
     },
