@@ -58,7 +58,7 @@ const translations = {
     },
 
     contributors: {
-      title: 'Disfrutalo!',
+      title: '¡Disfrútalo!',
       contributions_by: 'Contribuciones de',
       many_more:
         ', <href="https://VEINTIUNO.world/libro/salvando-satoshi/" target="_blank">@VEINTIUNO.world</a> y <a href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" target="_blank" rel="noreferrer">muchos más</a>.',
