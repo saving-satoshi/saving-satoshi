@@ -85,7 +85,7 @@ const translations = {
     intro_two: {
       title: 'Génesis',
       paragraph_one:
-        'Recibes un holocat de alguien que usa el nombre de Satoshi Nakamoto. (Es como cualquier otro e-holograma, pero este tiene forma de gato.) Abres el holocat abucheando su nariz.',
+        'Recibes un holocat de alguien que usa el nombre de Satoshi Nakamoto. (Es como cualquier otro e-holograma, pero este tiene forma de gato.) Abres el holocat golpeando su nariz.',
       paragraph_two:
         '-"Bitcoin no se está muriendo, pero necesita tu ayuda. No te olvides del gato". - Satoshi Nakamoto',
       paragraph_three:
