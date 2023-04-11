@@ -13,7 +13,7 @@ const translations = {
   },
   status_bar: {
     begin_message: 'Completa el desafío anterior para continuar...',
-    error_message: 'Hm... eso aún no es del totalmente correcto...',
+    error_message: 'Mmm... eso aún no es del todo correcto...',
     in_progress_message: 'De momento tiene buena pinta...',
     success_message: '¡Bien hecho!',
     next: 'Siguiente',
