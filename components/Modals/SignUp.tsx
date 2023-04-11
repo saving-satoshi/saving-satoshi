@@ -100,11 +100,11 @@ export default function SignUpModal({ open, onClose }) {
         </h2>
 
         <RadioGroup value={view} onChange={setView}>
-          <RadioButton name="generate" value="generate">
+          <RadioButton name="generate" value={View.Generate}>
             Generate
           </RadioButton>
 
-          <RadioButton name="enter" value="enter">
+          <RadioButton name="inpit" value={View.Input}>
             Enter my own
           </RadioButton>
         </RadioGroup>
