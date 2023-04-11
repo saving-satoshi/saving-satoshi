@@ -124,7 +124,7 @@ const translations = {
       title: 'Génesis',
       heading: 'Descifremos el mensaje',
       paragraph_one:
-        'El mensaje que encontraste estaba codificado en un formato llamado HEX. Ahora ejecutaremos un comando para convertirlo en ASCII, que podremos leer',
+        'El mensaje que encontraste estaba codificado en un formato llamado HEX. Ahora ejecutaremos un comando para convertirlo en ASCII, el cual podremos leer',
       paragraph_two:
         'Copia y pega el comando de abajo en el Terminal de la derecha y pulsa "Enter"',
       terminal_challenge_lines: 'Introduzca sus comandos aquí y pulse Intro...\n\n La variable $scriptSigHex ya está definida para usted.\n\n var $scriptSigHex = "04fff...e6b73"',
