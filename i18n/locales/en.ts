@@ -61,7 +61,7 @@ const translations = {
       title: 'Enjoy!',
       contributions_by: 'Contributions by',
       many_more:
-        ', <href="https://twitter.com/VEINTIUNow" target="_blank">@VEINTIUNow</a> and <a href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" target="_blank" rel="noreferrer">many more</a>.',
+        'and <a href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" target="_blank" rel="noreferrer">many more</a>.',
     },
 
     satoshi_needs_you: 'Now be quick, Satoshi needs you.',
@@ -76,9 +76,9 @@ const translations = {
     ///CHAPTER 1
     intro_one: {
       title: 'Genesis',
-      paragraph_one: 'Moments later, your Hover Screen activates.',
-      paragraph_two: '—Deborah Chunk: “Thomas Vanderpoole. As the CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”',
-      paragraph_three: '—Vanderpoole: “Yes I do, Deborah. Like my daddy and his daddy before him. The Vanderpooles have been mining since Block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. We cannot survive on fees alone.”',
+      paragraph_one: `Moments later, your Hover Screen activates.`,
+      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
+      paragraph_three: `—Vanderpoole: “Yes I do, Deborah. Like my daddy and his daddy before him. The Vanderpooles have been mining since Block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. We cannot survive on fees alone.”`,
       start: 'Continue',
     },
 
@@ -127,9 +127,9 @@ const translations = {
         'The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.',
       paragraph_two:
         'Copy and paste the command below into the Terminal to the right and press “Enter”.',
-      terminal_challenge_lines: 'Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'',
+      terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'`,
       waiting_for_input: 'Waiting for you to write and run the script...',
-      success: 'Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.',
+      success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.`,
     },
 
     genesis_four: {
@@ -275,11 +275,11 @@ const translations = {
   },
 
   chapter_six: {
-    title: 'Offense is the best defense',
+    title: `Offense is the best defense`,
   },
 
   chapter_seven: {
-    title: 'Twentyone',
+    title: `Twentyone`,
   },
 
   chapter_eight: {
@@ -287,7 +287,7 @@ const translations = {
   },
 
   chapter_nine: {
-    title: 'Don't compute, verify.',
+    title: `Don't compute, verify.`,
   },
 
   chapter_ten: {
@@ -359,7 +359,7 @@ const translations = {
 
   demo_disclaimer: {
     title: 'This is a demo',
-    description: 'We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">your feedback</Link>.',
+    description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">your feedback</Link>.`,
   },
 
   runner: {
