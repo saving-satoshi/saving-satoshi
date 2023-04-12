@@ -10,6 +10,7 @@ import translations from 'i18n/locales'
 const contentRegex = /content="(.*?)"/
 const hrefRegex = /href="(.*?)"/
 const positionRegex = /position="(.*?)"/
+const offsetRegex = /offset="(.*?)"/
 const targetRegex = /target="(.*?)"/
 const relRegex = /rel="(.*?)"/
 const idRegex = /id="(.*?)"/
@@ -77,6 +78,7 @@ function injectComponent(result, type) {
       const href = getFirstMatch(html, hrefRegex)
       const className = getFirstMatch(html, classNameRegex)
       const position = getFirstMatch(html, positionRegex)
+      const offset = getFirstMatch(html, offsetRegex)
 
       switch (type) {
         case ComponentType.A: {
@@ -114,13 +116,18 @@ function injectComponent(result, type) {
         case ComponentType.Tooltip: {
           const id = getFirstMatch(html, idRegex)
           const tkey = getFirstMatch(html, contentRegex)
+          const defaultTooltipProps = {
+            offset: 12,
+            position: 'top',
+          }
 
           parts.push(
             <Tooltip
               id={id}
               key={tkey}
               href={href}
-              position={position}
+              position={!!position ? position : defaultTooltipProps.position}
+              offset={!!offset ? parseInt(offset) : defaultTooltipProps.offset}
               className={clsx('cursor-pointer', className)}
               content={tkey}
             >
