@@ -1,5 +1,6 @@
 'use client'
 
+import SignIn from 'components/SignIn'
 import { chapters, lessons } from 'content'
 import { usePathData } from 'hooks'
 import {
@@ -90,12 +91,7 @@ export default function Page({ params }) {
   if (!account || !progress) {
     return (
       <div className="flex h-full w-full grow flex-col items-center justify-center">
-        <span className="mb-10 font-nunito text-2xl text-white">
-          Sorry, you need to be signed in to access this lesson
-        </span>
-        <Button onClick={handleSignInClick} size="small">
-          Sign in
-        </Button>
+        <SignIn lang={params.lang} />
       </div>
     )
   }
