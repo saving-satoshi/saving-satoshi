@@ -38,6 +38,9 @@ export default function HashChallenge({
   const [userInput, setUserInput] = useState('')
   const [hintTooltip, setHintTooltip] = useState(false)
   const [success, setSuccess] = useState<string>('')
+  const [inputPlaceholder, setInputPlaceholder] = useState(
+    t('hasher.placeholder')
+  )
   const inputRef = useRef(null)
 
   const pathData = pathName.split('/').filter((p) => p)
@@ -62,6 +65,14 @@ export default function HashChallenge({
     setInput(event.target.value)
   }
 
+  const handleFocus = () => {
+    if (inputPlaceholder !== '') {
+      setInputPlaceholder('')
+    } else {
+      setInputPlaceholder(t('hasher.placeholder'))
+    }
+  }
+
   useEffect(() => {
     let timeoutId = setTimeout(() => {
       if (answerHint && success === 'false') {
@@ -76,6 +87,13 @@ export default function HashChallenge({
     ) {
       inputRef.current?.blur()
       setSuccess('true')
+    } else if (
+      typeof answer === 'number' &&
+      input.length < answer &&
+      input.length > 0 &&
+      success !== 'true'
+    ) {
+      setSuccess('t')
     } else if (input.length > 0 && success !== 'true') {
       setSuccess('false')
     } else {
@@ -94,10 +112,12 @@ export default function HashChallenge({
                 {inputLabel}
               </h2>
               <input
-                placeholder={t('hasher.placeholder')}
+                onFocus={handleFocus}
+                onBlur={handleFocus}
+                placeholder={inputPlaceholder}
                 maxLength={24}
                 className={clsx(
-                  'top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent text-center font-space-mono text-[24px] leading-[180%] tracking-[1px] text-white outline-none md:text-[30px] md:tracking-[5px]',
+                  'top-0 left-0 w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[24px] leading-[180%] tracking-[1px] text-white outline-none md:text-center md:text-[30px] md:tracking-[5px]',
                   {
                     'overlay-complete':
                       (typeof answer === 'string' &&
@@ -146,6 +166,7 @@ export default function HashChallenge({
       <StatusBar
         alwaysShow
         full
+        inProgressMessage="Keep going..."
         next={next}
         input={success}
         expected={'true'}
