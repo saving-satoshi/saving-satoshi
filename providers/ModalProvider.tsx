@@ -30,6 +30,9 @@ export default function ModalProvider({
 
   const open = (name: string) => {
     const newModals = { ...modals }
+    Object.keys(newModals).forEach((modal) => {
+      newModals[modal] = false
+    })
     newModals[name] = true
     setModals(newModals)
   }

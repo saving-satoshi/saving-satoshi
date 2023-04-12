@@ -22,6 +22,7 @@ enum View {
 export default function SignUpModal({ open, onClose }) {
   const lang = useLang()
   const t = useTranslations(lang)
+  const { login } = useAuthContext()
 
   const [loading, setLoading] = useState<boolean>(false)
   const [avatar, setAvatar] = useState(1)
@@ -47,6 +48,8 @@ export default function SignUpModal({ open, onClose }) {
       setLoading(true)
 
       await register(privateKey, `/assets/avatars/${avatar}.png`)
+
+      await login(privateKey.toString(16))
 
       onClose()
     } catch (ex) {
