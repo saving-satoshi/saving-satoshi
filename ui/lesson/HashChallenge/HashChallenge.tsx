@@ -92,19 +92,12 @@ export default function HashChallenge({
             <div className="w-full">
               <h2 className="text-left text-[18px] font-bold text-white md:text-center">
                 {inputLabel}
-                {answerHint && hintTooltip && (
-                  <div className="text-left">
-                    <span>
-                      {t(`chapter_two.hashing_${challengeIdWord}.hint_prompt`)}
-                    </span>
-                  </div>
-                )}
               </h2>
               <input
                 placeholder={t('hasher.placeholder')}
                 maxLength={24}
                 className={clsx(
-                  'top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[24px] leading-[180%] tracking-[1px] text-white outline-none md:text-[30px] md:tracking-[5px]',
+                  'top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent text-center font-space-mono text-[24px] leading-[180%] tracking-[1px] text-white outline-none md:text-[30px] md:tracking-[5px]',
                   {
                     'overlay-complete':
                       (typeof answer === 'string' &&
@@ -120,6 +113,16 @@ export default function HashChallenge({
                 ref={inputRef}
                 onChange={handleChange}
               />
+              <div
+                className={clsx('text-center', {
+                  block: answerHint && hintTooltip,
+                  invisible: !hintTooltip,
+                })}
+              >
+                <span>
+                  {t(`chapter_two.hashing_${challengeIdWord}.hint_prompt`)}
+                </span>
+              </div>
             </div>
           </div>
         </div>
