@@ -9,6 +9,7 @@ import translations from 'i18n/locales'
 
 const contentRegex = /content="(.*?)"/
 const hrefRegex = /href="(.*?)"/
+const positionRegex = /position="(.*?)"/
 const targetRegex = /target="(.*?)"/
 const relRegex = /rel="(.*?)"/
 const idRegex = /id="(.*?)"/
@@ -75,6 +76,7 @@ function injectComponent(result, type) {
       const label = getFirstMatch(html, labelRegex)
       const href = getFirstMatch(html, hrefRegex)
       const className = getFirstMatch(html, classNameRegex)
+      const position = getFirstMatch(html, positionRegex)
 
       switch (type) {
         case ComponentType.A: {
@@ -118,6 +120,7 @@ function injectComponent(result, type) {
               id={id}
               key={tkey}
               href={href}
+              position={position}
               className={clsx('cursor-pointer', className)}
               content={tkey}
             >
