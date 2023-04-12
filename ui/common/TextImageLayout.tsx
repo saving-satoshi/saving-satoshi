@@ -32,7 +32,7 @@ export default function TextImageDisplay({
     if (saveInfo) {
       setUserProgress(saveInfo.chapter, saveInfo.challenge)
     }
-    router.replace(next)
+    router.push(next)
   }
 
   return (
