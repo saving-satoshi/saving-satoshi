@@ -4,7 +4,7 @@ import Avatar from 'components/Avatar'
 import { useState, useEffect } from 'react'
 import Modal from 'react-modal'
 import CloseIcon from 'public/assets/icons/close.svg'
-import { CopyButton, Loader, RadioButton, RadioGroup } from 'shared'
+import { Checkbox, CopyButton, Loader, RadioButton, RadioGroup } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
 import { useHasMounted, useTranslations, useLang } from 'hooks'
 import clsx from 'clsx'
@@ -26,9 +26,15 @@ export default function SignUpModal({ open, onClose }) {
   const [loading, setLoading] = useState<boolean>(false)
   const [avatar, setAvatar] = useState(1)
   const [view, setView] = useState<string>(View.Generate)
+  const [copyAcknowledged, setCopyAcknowledged] = useState<boolean>(false)
   const [privateKey, setPrivateKey] = useState<PrivateKey | undefined>(
     undefined
   )
+
+  const handleChangeView = (view: View) => {
+    setView(view)
+    setCopyAcknowledged(false)
+  }
 
   const handleSetPrivateKey = (pk: string) => {
     const { sec } = generateKeyPairFromString(pk)
@@ -46,6 +52,8 @@ export default function SignUpModal({ open, onClose }) {
     } catch (ex) {
       console.error(ex)
     } finally {
+      setPrivateKey(undefined)
+      setCopyAcknowledged(false)
       setLoading(false)
     }
   }
@@ -99,7 +107,7 @@ export default function SignUpModal({ open, onClose }) {
           {t('modal_signup.subheading_two')}
         </h2>
 
-        <RadioGroup value={view} onChange={setView}>
+        <RadioGroup value={view} onChange={handleChangeView}>
           <RadioButton name="generate" value={View.Generate}>
             Generate
           </RadioButton>
@@ -139,9 +147,17 @@ export default function SignUpModal({ open, onClose }) {
           </>
         )}
 
+        <Checkbox
+          name="checkbox"
+          className="my-4"
+          value={copyAcknowledged}
+          onChange={setCopyAcknowledged}
+          label={t('modal_signup.acknowledge_copy')}
+        />
+
         <button
           onClick={handleConfirm}
-          disabled={loading}
+          disabled={loading || !copyAcknowledged}
           className="mt-4 w-full rounded-md border border-white px-4 py-2 text-xl text-white disabled:border-opacity-50 disabled:text-opacity-50"
         >
           {loading && <Loader className="h-7 w-7 text-white" />}

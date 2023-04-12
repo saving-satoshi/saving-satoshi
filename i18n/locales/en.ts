@@ -349,6 +349,7 @@ const translations = {
     input:
       'If you lose your private key, you lose access to your account. Make sure you store it somewhere save.',
     confirm: 'Create account',
+    acknowledge_copy: 'I acknowledge to have copied and stored my private key.',
   },
 
   demo_disclaimer: {

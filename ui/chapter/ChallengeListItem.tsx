@@ -40,7 +40,7 @@ export default function ChallengeItem({
     >
       <span className="pr-1 opacity-50">{position + '. '}</span>
       {t(title)}
-      {isUnlocked && (
+      {!isUnlocked && (
         <LockIcon className="absolute right-[15px] top-1/2 -translate-y-1/2 opacity-25" />
       )}
       {isCompleted && (
