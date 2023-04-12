@@ -55,15 +55,15 @@ export default function LoginModal({ onClose, open }) {
         </button>
       </div>
       <div className="sm:p-[30px]">
-        <h2 className="mb-4 text-3xl font-bold">{t('modal_login.heading')}</h2>
-        <p className="mb-5">{t('modal_login.paragraph_one')}</p>
+        <h2 className="mb-4 text-3xl font-bold">{t('modal_signin.heading')}</h2>
+        <p className="mb-5">{t('modal_signin.paragraph_one')}</p>
 
         <div className="flex flex-col justify-between">
           <div className="flex w-full">
             <Input
               type="text"
               name="private_key"
-              placeholder={t('modal_login.prompt')}
+              placeholder={t('modal_signin.prompt')}
               value={privateKey}
               onInput={setPrivateKey}
               disabled={loading}
@@ -81,12 +81,12 @@ export default function LoginModal({ onClose, open }) {
               }`}
             >
               {loading && <Loader className="h-7 w-7 text-white" />}
-              {!loading && t('modal_login.confirm')}
+              {!loading && t('modal_signin.confirm')}
             </Button>
           </div>
           <div className="mt-4 flex items-center justify-center">
             <button className="underline" onClick={handleCreateClick}>
-              {t('modal_login.create_account')}
+              {t('modal_signin.create_account')}
             </button>
           </div>
         </div>

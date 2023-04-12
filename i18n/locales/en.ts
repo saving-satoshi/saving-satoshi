@@ -322,19 +322,12 @@ const translations = {
     help_tooltip: 'Need help?',
   },
 
-  modal_login: {
+  modal_signin: {
     heading: 'Sign in',
     paragraph_one:
-      'Enter or generate your private key below to restore your account and progress.',
-    clear: 'No code yet?',
+      'Enter your private key below to restore your account and progress.',
     prompt: 'Enter your private key',
     confirm: 'Sign in',
-    paragraph_two:
-      'Sorry, that’s not the right code for the progress stored in this browser.',
-    paragraph_three: 'No code yet or want to start again?',
-    quit: 'Clear save progress.',
-    success: 'Progress loaded',
-    success_message: 'You’re all set to continue with Chapter',
     create_account: 'Don’t have an account?',
   },
 
