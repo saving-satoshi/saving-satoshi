@@ -108,9 +108,9 @@ const translations = {
       title: 'Genesis',
       heading: 'Find the hidden message',
       paragraph_one:
-        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="genesis_two.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" position="top" content="chapter_one.genesis_two.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
       paragraph_two:
-        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
+        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" position="top" content="chapter_one.genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
       paragraph_three: 'Copy that value and paste it below.',
       tooltip_block_explorer:
         'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
@@ -278,7 +278,7 @@ const translations = {
       heading:
         'Enter anything until you find a hash that starts with two zeroes (“00”)',
       hint_prompt:
-        'Need a <Tooltip id="hint_prompt" content="chapter_two.hashing_five.hint_tooltip" className="underline">hint</Tooltip>?',
+        'Need a <Tooltip id="hint_prompt" position="bottom" content="chapter_two.hashing_five.hint_tooltip" className="underline">hint</Tooltip>?',
       hint_tooltip:
         '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="whitespace-nowrap bg-black/20 text-transparent hover:text-white">trigonometry</span>',
     },
@@ -290,7 +290,7 @@ const translations = {
 
     scripting_one: {
       title: 'Automation',
-      heading: 'Let’s make the computer do this for us.',
+      heading: 'Let’s make the computem do this for us.',
       paragraph_one:
         'OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.',
       paragraph_two:
