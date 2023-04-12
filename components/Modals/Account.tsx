@@ -1,15 +1,12 @@
 'use client'
 
-import { useState } from 'react'
-import Modal from 'react-modal'
-import Secp256k1 from '@lionello/secp256k1-js'
+import ReactModal from 'react-modal'
 import CloseIcon from 'public/assets/icons/close.svg'
 import Avatar from 'components/Avatar'
-import { Button, CopyButton, Loader } from 'shared'
+import { Loader } from 'shared'
 import { useTranslations, useLang } from 'hooks'
 import { useAuthContext } from 'providers/AuthProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
-import Account from './Account'
 
 export default function LoginModal({ onClose, open }) {
   const lang = useLang()
@@ -34,7 +31,7 @@ export default function LoginModal({ onClose, open }) {
   }
 
   return (
-    <Modal
+    <ReactModal
       isOpen={open}
       overlayClassName="fixed inset-0 bg-overlayColor"
       className="fixed inset-0 top-1/2 left-1/2 h-full w-screen -translate-x-1/2 -translate-y-1/2 transform bg-back p-5  pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:w-[550px] sm:rounded-lg sm:pt-5"
@@ -72,6 +69,6 @@ export default function LoginModal({ onClose, open }) {
           </div>
         </div>
       )}
-    </Modal>
+    </ReactModal>
   )
 }

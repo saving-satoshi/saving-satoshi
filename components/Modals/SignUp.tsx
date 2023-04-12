@@ -2,11 +2,11 @@
 
 import Avatar from 'components/Avatar'
 import { useState, useEffect } from 'react'
-import Modal from 'react-modal'
+import ReactModal from 'react-modal'
 import CloseIcon from 'public/assets/icons/close.svg'
 import { Checkbox, CopyButton, Loader, RadioButton, RadioGroup } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
-import { useHasMounted, useTranslations, useLang } from 'hooks'
+import { useTranslations, useLang } from 'hooks'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { generateKeypair, generateKeyPairFromString } from 'lib/crypto'
@@ -70,9 +70,9 @@ export default function SignUpModal({ open, onClose }) {
   }, [view])
 
   return (
-    <Modal
+    <ReactModal
       isOpen={open}
-      overlayClassName="fixed inset-0 bg-overlayColor"
+      overlayClassName="fixed inset-0 bg-overlayColor z-10"
       className="fixed inset-0 top-1/2 left-1/2 h-full w-screen -translate-x-1/2 -translate-y-1/2 transform overflow-y-auto bg-back p-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:w-[550px] sm:rounded-lg sm:pt-5"
       contentLabel="Sign up Modal"
       onRequestClose={onClose}
@@ -167,6 +167,6 @@ export default function SignUpModal({ open, onClose }) {
           {!loading && t('modal_signup.confirm')}
         </button>
       </div>
-    </Modal>
+    </ReactModal>
   )
 }
