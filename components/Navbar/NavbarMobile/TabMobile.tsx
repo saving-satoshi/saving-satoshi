@@ -9,6 +9,8 @@ import LockIcon from 'public/assets/icons/lock.svg'
 
 import { useLang, useLocalizedRoutes, useStatus, useTranslations } from 'hooks'
 
+import { chapters } from 'content'
+
 export default function Tab({
   index,
   count,
@@ -29,18 +31,27 @@ export default function Tab({
   const t = useTranslations(lang)
   const pathName = usePathname()
 
-  const pathData = pathName.split('/')
+  const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
 
   const status = useStatus(slug, challenge.lessonId)
 
-  const challengeId = isRouteLesson ? pathData.pop().split('-')[0] : undefined
-  const isActive = challenge.lessonId === challengeId
-  const isLast = index == count - 1
+  const challengeId = isRouteLesson
+    ? pathData
+        .pop()
+        .split('-')[0]
+        .replace('intro', chapters[slug].metadata.challenges[0].split('-')[0])
+    : undefined
+  const isActive = challenge.lessonId.split('-')[0] === challengeId
+  const isLast = index === count - 1
+  const tabHref =
+    challenge.lessonId === chapters[slug].metadata.challenges[0]
+      ? chapters[slug].metadata.intros[0]
+      : challenge.lessonId
 
   return (
     <Link
-      href={`${routes.chaptersUrl}/${slug}/${challenge.lessonId}`}
+      href={`${routes.chaptersUrl}/${slug}/${tabHref}`}
       title={t(challenge.title)}
       onClick={() => clicked()}
       className={clsx(

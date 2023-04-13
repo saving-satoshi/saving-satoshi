@@ -1,49 +1,32 @@
 'use client'
 
 import { useLocalizedRoutes, useTranslations } from 'hooks'
-import { Button, LessonInfo, Title, Text, InputChallenge } from 'ui'
+import { TextImage, Text } from 'ui'
 
-export default function Genesis3({ lang }) {
+export const metadata = {
+  title: 'chapter_one.genesis_four.title',
+  image: '/assets/images/chapter-1-challenge-1-success.jpg',
+  theme: 'bg-[#4F5252]',
+}
+
+export default function Genesis4({ lang }) {
   const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
-    <InputChallenge
-      answer="04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73"
-      next={`${routes.chaptersUrl}/chapter-1/genesis-5`}
-      label={t('chapter_one.genesis_two.placeholder')}
-      pattern={/[a-z0-9]+/gi}
-      hints
+    <TextImage
+      lang={lang}
+      imageSrc={metadata.image}
+      imageAlt={metadata.title}
+      next={`${routes.chaptersUrl}/chapter-1/transacting-1`}
+      btnEnabled={true}
     >
-      <LessonInfo>
-        <Title>{t('chapter_one.genesis_two.heading')}</Title>
-
-        <Text className="mt-2 text-lg md:text-xl">
-          {t('chapter_one.genesis_two.paragraph_one')}
-        </Text>
-
-        <Text className="mt-2 text-lg md:text-xl">
-          {t('chapter_one.genesis_two.paragraph_two')}
-        </Text>
-
-        <Text className="mt-2 text-lg md:text-xl">
-          {t('chapter_one.genesis_two.paragraph_three')}
-        </Text>
-
-        <div className="mt-4 flex">
-          <Button
-            href="https://blockstream.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
-            external={true}
-            classes="w-full md:w-auto"
-          >
-            {t('chapter_one.genesis_two.view_block_0')}
-          </Button>
-        </div>
-      </LessonInfo>
-    </InputChallenge>
+      <Text className="font-nunito text-2xl font-bold">
+        {t('chapter_one.genesis_four.subtitle')}
+      </Text>
+      <Text className="mt-2.5 text-lg md:text-xl">
+        {t('chapter_one.genesis_four.paragraph_one')}
+      </Text>
+    </TextImage>
   )
-}
-
-export const metadata = {
-  title: 'chapter_one.genesis_two.title',
 }

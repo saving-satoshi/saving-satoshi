@@ -2,7 +2,7 @@
 
 import { ChapterEnd } from 'ui'
 
-export default function Done({ lang }) {
+export default function Outro2({ lang }) {
   return (
     <ChapterEnd
       {...metadata}
@@ -10,7 +10,7 @@ export default function Done({ lang }) {
       checkpoint={{
         chapter: 'chapter-2',
         lesson: null,
-        next: '/chapters/chapter-2/hasshing-1',
+        next: '/chapters/chapter-2',
       }}
     />
   )

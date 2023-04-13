@@ -9,7 +9,7 @@ import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
 import { useLang, useLocalizedRoutes, useStatus, useTranslations } from 'hooks'
-import { lessons } from 'content'
+import { lessons, chapters } from 'content'
 
 export default function Tab({
   index,
@@ -37,9 +37,21 @@ export default function Tab({
 
   const status = useStatus(slug, challenge.lessonId)
 
-  const challengeId = isRouteLesson ? pathData.pop().split('-')[0] : undefined
+  const challengeId = isRouteLesson
+    ? pathData
+        .pop()
+        .split('-')[0]
+        .replace('intro', chapters[slug].metadata.challenges[0].split('-')[0])
+    : undefined
   const isActive = challenge.lessonId.split('-')[0] === challengeId
   const isLast = index === count - 1
+  const tabHref =
+    challenge.lessonId === chapters[slug].metadata.challenges[0]
+      ? chapters[slug].metadata.intros[0]
+      : challenge.lessonId
+
+  // console.log(isRouteLesson, pathName.split('/').filter((p) => p), pathData.length === 4)
+  // console.log(lessons[slug][lessonId].metadata)
 
   return (
     <Tooltip
@@ -57,7 +69,7 @@ export default function Tab({
       }
     >
       <Link
-        href={`${routes.chaptersUrl}/${slug}/${challenge.lessonId}`}
+        href={`${routes.chaptersUrl}/${slug}/${tabHref}`}
         title={t(challenge.title)}
         className={clsx(
           'relative flex h-full items-center justify-center border-l border-white/25 px-7 text-center text-lg transition duration-100 ease-in-out',

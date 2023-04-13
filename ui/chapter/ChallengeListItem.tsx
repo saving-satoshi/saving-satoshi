@@ -6,6 +6,8 @@ import LockIcon from 'public/assets/icons/lock.svg'
 
 import { useLang, useLocalizedRoutes, useStatus, useTranslations } from 'hooks'
 
+import { chapters } from 'content'
+
 export default function ChallengeItem({
   position,
   title,
@@ -17,7 +19,11 @@ export default function ChallengeItem({
   const t = useTranslations(lang)
 
   const status = useStatus(chapterId, lessonId)
-  const href = `${routes.chaptersUrl}/${chapterId}/${lessonId}`
+  const intro =
+    lessonId === chapters['chapter-1'].metadata['challenges'][0]
+      ? 'intro-1'
+      : lessonId
+  const href = `${routes.chaptersUrl}/${chapterId}/${intro}`
   const ComponentType = status && status.unlocked ? Link : 'p'
 
   return (

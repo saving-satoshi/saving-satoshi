@@ -3,7 +3,7 @@
 import { useLocalizedRoutes, useTranslations } from 'hooks'
 import { TextImage } from 'ui'
 
-export default function Transacting4({ lang }) {
+export default function Outro1({ lang }) {
   const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
