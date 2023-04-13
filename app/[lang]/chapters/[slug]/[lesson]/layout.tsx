@@ -12,8 +12,7 @@ export default function Layout({ children, params }) {
   const searchParams = useSearchParams()
   const dev = searchParams.get('dev')
   const { slug, lesson: lessonId } = params
-  const defaultTheme = 'bg-back'
-  const { theme = defaultTheme } = lessons[slug][lessonId].metadata?.theme
+  const { theme = 'bg-back' } = lessons[slug][lessonId].metadata?.theme
     ? lessons[slug][lessonId].metadata
     : chapters[slug].metadata
   const [userInfo, setUserInfo] = useState(undefined)
