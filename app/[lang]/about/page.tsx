@@ -12,6 +12,7 @@ const CONTRIBUTORS = [
   { username: 'gbks', url: 'https://twitter.com/gbks' },
   { username: 'satsie', url: 'https://twitter.com/satsie' },
   { username: 'shaavan', url: 'https://github.com/shaavan' },
+  { username: 'VEINTIUNO.world', url: 'https://twitter.com/VEINTIUNow' },
   { username: 'vinayaksh42', url: 'https://github.com/vinayaksh42' },
 ]
 
