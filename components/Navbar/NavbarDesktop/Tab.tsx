@@ -50,9 +50,6 @@ export default function Tab({
       ? chapters[slug].metadata.intros[0]
       : challenge.lessonId
 
-  // console.log(isRouteLesson, pathName.split('/').filter((p) => p), pathData.length === 4)
-  // console.log(lessons[slug][lessonId].metadata)
-
   return (
     <Tooltip
       id={`navbar-tab-tooltip-${index + 1}`}
