@@ -1,6 +1,6 @@
 'use client'
 
-import { useLocalizedRoutes, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 import { Introduction, Text } from 'ui'
 
 export const metadata = {
@@ -10,7 +10,6 @@ export const metadata = {
 }
 
 export default function Intro2({ lang }) {
-  const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
