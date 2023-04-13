@@ -9,10 +9,9 @@ import { usePathData } from 'hooks'
 import clsx from 'clsx'
 import Link from 'next/link'
 
-const languageCodes = Object.keys(locales).join('|')
-const regexPattern = new RegExp(`^\\/${languageCodes}\\b`)
-
 function generateNewUrl(pathname, language) {
+  const languageCodes = Object.keys(locales).join('|')
+  const regexPattern = new RegExp(`^\\/${languageCodes}\\b`)
   const pathnameWithoutLanguage = pathname.replace(regexPattern, '')
   const newUrl = `/${language}${pathnameWithoutLanguage}`
   return newUrl
