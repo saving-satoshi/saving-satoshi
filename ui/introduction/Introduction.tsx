@@ -20,8 +20,10 @@ export default function Introduction({ children, lang }) {
   const introIndex = chapter.metadata.intros.indexOf(lessonId)
   const isLastIntro = introIndex >= chapter.metadata.intros.length - 1
   const nextLessonId = isLastIntro
-    ? chapter.metadata.lessons[introIndex + 1]
+    ? chapter.metadata.lessons[0]
     : chapter.metadata.intros[introIndex + 1]
+
+  console.log(nextLessonId, introIndex)
 
   return (
     <TextImage
