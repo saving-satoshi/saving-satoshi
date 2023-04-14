@@ -23,8 +23,6 @@ export default function Introduction({ children, lang }) {
     ? chapter.metadata.lessons[0]
     : chapter.metadata.intros[introIndex + 1]
 
-  console.log(nextLessonId, introIndex)
-
   return (
     <TextImage
       lang={lang}

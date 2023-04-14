@@ -19,11 +19,11 @@ export default function ChallengeItem({
   const t = useTranslations(lang)
 
   const status = useStatus(chapterId, lessonId)
-  const intro =
+  const lessonHref =
     lessonId === chapters['chapter-1'].metadata['challenges'][0]
       ? 'intro-1'
       : lessonId
-  const href = `${routes.chaptersUrl}/${chapterId}/${intro}`
+  const href = `${routes.chaptersUrl}/${chapterId}/${lessonHref}`
   const ComponentType = status && status.unlocked ? Link : 'p'
 
   return (
