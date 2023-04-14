@@ -44,14 +44,14 @@ export default function Tab({
     : undefined
   const isActive = challenge.lessonId.split('-')[0] === challengeId
   const isLast = index === count - 1
-  const tabHref =
+  const lessonHref =
     challenge.lessonId === chapters[slug].metadata.challenges[0]
       ? chapters[slug].metadata.intros[0]
       : challenge.lessonId
 
   return (
     <Link
-      href={`${routes.chaptersUrl}/${slug}/${tabHref}`}
+      href={`${routes.chaptersUrl}/${slug}/${lessonHref}`}
       title={t(challenge.title)}
       onClick={() => clicked()}
       className={clsx(
