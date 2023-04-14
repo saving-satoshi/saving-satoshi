@@ -48,10 +48,11 @@ export default function Tab({
     challenge.lessonId === chapters[slug].metadata.challenges[0]
       ? chapters[slug].metadata.intros[0]
       : challenge.lessonId
+  const href = `${routes.chaptersUrl}/${slug}/${lessonHref}`
 
   return (
     <Link
-      href={`${routes.chaptersUrl}/${slug}/${lessonHref}`}
+      href={href}
       title={t(challenge.title)}
       onClick={() => clicked()}
       className={clsx(

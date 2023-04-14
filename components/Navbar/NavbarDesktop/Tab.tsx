@@ -49,6 +49,7 @@ export default function Tab({
     challenge.lessonId === chapters[slug].metadata.challenges[0]
       ? chapters[slug].metadata.intros[0]
       : challenge.lessonId
+  const href = `${routes.chaptersUrl}/${slug}/${lessonHref}`
 
   return (
     <Tooltip
@@ -66,7 +67,7 @@ export default function Tab({
       }
     >
       <Link
-        href={`${routes.chaptersUrl}/${slug}/${lessonHref}`}
+        href={href}
         title={t(challenge.title)}
         className={clsx(
           'relative flex h-full items-center justify-center border-l border-white/25 px-7 text-center text-lg transition duration-100 ease-in-out',
