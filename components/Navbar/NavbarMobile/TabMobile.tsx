@@ -43,8 +43,6 @@ export default function Tab({
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
 
-  const status = useStatus(slug, challenge.lessonId)
-
   const challengeId = isRouteLesson
     ? pathData
         .pop()

@@ -23,7 +23,6 @@ export default function ChallengeItem({
   const lessonMeta = lessons[chapterId][lessonId].metadata
   const { isUnlocked, isCompleted } = useLessonStatus(progress, lessonMeta.key)
 
-  const status = useStatus(chapterId, lessonId)
   const lessonHref =
     lessonId === chapters['chapter-1'].metadata['challenges'][0]
       ? 'intro-1'
