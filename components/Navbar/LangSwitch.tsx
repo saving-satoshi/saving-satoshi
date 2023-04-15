@@ -2,6 +2,7 @@
 
 import LangBtn from 'public/assets/icons/language.svg'
 import { i18n } from 'i18n/config'
+import locales from 'i18n/locales'
 import { useState, useRef, useEffect } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { usePathData } from 'hooks'
@@ -9,7 +10,9 @@ import clsx from 'clsx'
 import Link from 'next/link'
 
 function generateNewUrl(pathname, language) {
-  const pathnameWithoutLanguage = pathname.replace(/^\/(en|nl)\b/, '')
+  const languageCodes = Object.keys(locales).join('|')
+  const regexPattern = new RegExp(`^\\/${languageCodes}\\b`)
+  const pathnameWithoutLanguage = pathname.replace(regexPattern, '')
   const newUrl = `/${language}${pathnameWithoutLanguage}`
   return newUrl
 }
