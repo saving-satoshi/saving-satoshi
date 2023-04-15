@@ -1,32 +1,19 @@
-const crypto = require('crypto')
-const Secp256k1 = require('@lionello/secp256k1-js')
+import * as secp from '@noble/secp256k1'
 
 import { KeyPair } from 'types'
 
 export function generateKeypair(): KeyPair {
-  let publicKey = null
-  let privateKey = null
+  const sec = secp.utils.randomPrivateKey()
+  const pub = secp.getPublicKey(sec)
 
-  do {
-    const privateKeyBuf = crypto.randomBytes(32)
-    privateKey = Secp256k1.uint256(privateKeyBuf, 16)
-    publicKey = Secp256k1.generatePublicKeyFromPrivateKeyData(privateKey)
-  } while (
-    !publicKey ||
-    privateKey.gte(
-      Secp256k1.uint256(
-        'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141',
-        16
-      )
-    )
-  )
-
-  return { pub: publicKey, sec: privateKey }
+  return {
+    pub: secp.etc.bytesToHex(pub),
+    sec: secp.etc.bytesToHex(sec),
+  }
 }
 
-export function generateKeyPairFromString(val: string): KeyPair {
-  const privateKey = Secp256k1.uint256(val, 16)
-  const publicKey = Secp256k1.generatePublicKeyFromPrivateKeyData(privateKey)
+export function generateKeypairFromPrivateKey(sec: string): KeyPair {
+  const pub = secp.getPublicKey(secp.etc.hexToBytes(sec))
 
-  return { pub: publicKey, sec: privateKey }
+  return { pub: secp.etc.bytesToHex(pub), sec: sec }
 }

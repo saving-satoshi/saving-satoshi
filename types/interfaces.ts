@@ -69,20 +69,7 @@ export interface User {
   }
 }
 
-export interface PublicKey {
-  x: string
-  y: string
-}
-
-export interface PrivateKey {
-  length: number
-  negative: number
-  words: number[]
-
-  toString: (n: number) => string
-}
-
 export interface KeyPair {
-  pub: PublicKey
-  sec: PrivateKey
+  pub: string
+  sec: string
 }

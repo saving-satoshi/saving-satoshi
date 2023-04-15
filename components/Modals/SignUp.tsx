@@ -9,10 +9,9 @@ import HorizontalScrollView from 'components/HorizontalScrollView'
 import { useTranslations, useLang } from 'hooks'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
-import { generateKeypair, generateKeyPairFromString } from 'lib/crypto'
+import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import { Input } from 'shared'
-import { PrivateKey } from 'types'
 
 enum View {
   Generate = 'generate',
@@ -28,9 +27,7 @@ export default function SignUpModal({ open, onClose }) {
   const [avatar, setAvatar] = useState(1)
   const [view, setView] = useState<string>(View.Generate)
   const [copyAcknowledged, setCopyAcknowledged] = useState<boolean>(false)
-  const [privateKey, setPrivateKey] = useState<PrivateKey | undefined>(
-    undefined
-  )
+  const [privateKey, setPrivateKey] = useState<string | undefined>(undefined)
 
   const handleChangeView = (view: View) => {
     setView(view)
@@ -38,9 +35,7 @@ export default function SignUpModal({ open, onClose }) {
   }
 
   const handleSetPrivateKey = (pk: string) => {
-    const { sec } = generateKeyPairFromString(pk)
-
-    setPrivateKey(sec)
+    setPrivateKey(pk)
   }
 
   async function handleConfirm() {
@@ -49,7 +44,7 @@ export default function SignUpModal({ open, onClose }) {
 
       await register(privateKey, `/assets/avatars/${avatar}.png`)
 
-      await login(privateKey.toString(16))
+      await login(privateKey)
 
       onClose()
     } catch (ex) {
@@ -126,9 +121,9 @@ export default function SignUpModal({ open, onClose }) {
               {privateKey && (
                 <>
                   <code className="mb-2 whitespace-pre-wrap break-all text-base">
-                    {privateKey.toString(16)}
+                    {privateKey}
                   </code>
-                  <CopyButton content={privateKey.toString(16)}>
+                  <CopyButton content={privateKey}>
                     {t('shared.copy')}
                   </CopyButton>
                 </>
