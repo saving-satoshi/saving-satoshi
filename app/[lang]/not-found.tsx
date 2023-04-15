@@ -5,10 +5,9 @@ import Image from 'next/image'
 import { useTranslations, useLang } from 'hooks'
 
 export default function NotFound() {
-  
   const lang = useLang()
   const t = useTranslations(lang)
-  
+
   return (
     <div className="flex h-full grow items-end justify-center">
       <Image
@@ -30,7 +29,7 @@ export default function NotFound() {
           {t('notfound.second')}
         </h1>
         <h1 className="text-center font-cbrush text-4xl text-white">
-        {t('notfound.third')}
+          {t('notfound.third')}
         </h1>
 
         <div className=" mt-8 text-center font-cbrush text-2xl">

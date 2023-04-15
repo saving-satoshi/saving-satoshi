@@ -1,11 +1,13 @@
 'use client'
 
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { login, getSession } from 'api/auth'
+import { login, getSession, logout } from 'api/auth'
 import { AuthContextType } from 'types'
 
 export const AuthContext = createContext<AuthContextType>({
   account: undefined,
+  login: async (privateKey: string) => false,
+  logout: async () => {},
   isLoading: true,
 })
 
@@ -19,23 +21,39 @@ export default function AuthProvider({
   const [account, setAccount] = useState(undefined)
   const [isLoading, setIsLoading] = useState(true)
 
-  const attemptLogin = async () => {
+  const attemptLogin = async (privateKey: string) => {
     try {
       setIsLoading(true)
 
-      // TODO: Get users private key
-      const privateKey =
-        '85f5e10431f69bc2a14046a13aabaefc660103b6de7a84f75c4b96181d03f0b5'
-      if (!privateKey) {
-        return
-      }
-
       const loginSuccess = await login(privateKey)
-      if (loginSuccess) {
-        const account = await getSession()
-
-        setAccount(account)
+      if (!loginSuccess) {
+        return false
       }
+
+      const account = await getSession()
+      setAccount(account)
+
+      return true
+    } catch (ex) {
+      console.error(ex)
+      return false
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const attemptLogout = async () => {
+    await logout()
+    setAccount(undefined)
+  }
+
+  const check = async () => {
+    try {
+      setIsLoading(true)
+
+      const account = await getSession()
+
+      setAccount(account)
     } catch (ex) {
       console.error(ex)
     } finally {
@@ -44,11 +62,13 @@ export default function AuthProvider({
   }
 
   useEffect(() => {
-    attemptLogin()
+    check()
   }, [])
 
   return (
-    <AuthContext.Provider value={{ account, isLoading }}>
+    <AuthContext.Provider
+      value={{ account, isLoading, login: attemptLogin, logout: attemptLogout }}
+    >
       {children}
     </AuthContext.Provider>
   )

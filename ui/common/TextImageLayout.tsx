@@ -2,9 +2,7 @@
 
 import Image from 'next/image'
 import { Button } from 'shared'
-import { useTranslations } from 'hooks'
-import { setUserProgress } from 'lib/user'
-import { useRouter } from 'next/navigation'
+import { useSaveAndProceed, useTranslations } from 'hooks'
 
 export default function TextImageDisplay({
   children,
@@ -13,8 +11,6 @@ export default function TextImageDisplay({
   imageAlt,
   btnText,
   btnEnabled,
-  next,
-  saveInfo,
 }: {
   children: any
   lang: any
@@ -22,18 +18,9 @@ export default function TextImageDisplay({
   imageAlt: string
   btnText?: string
   btnEnabled: boolean
-  next: string
-  saveInfo?: any
 }) {
-  const router = useRouter()
   const t = useTranslations(lang)
-
-  function saveProgress() {
-    if (saveInfo) {
-      setUserProgress(saveInfo.chapter, saveInfo.challenge)
-    }
-    router.push(next)
-  }
+  const saveAndProceed = useSaveAndProceed()
 
   return (
     <div className="flex grow">
@@ -53,7 +40,7 @@ export default function TextImageDisplay({
             </div>
             <div>
               {btnEnabled ? (
-                <Button classes="w-full md:w-auto" onClick={saveProgress}>
+                <Button onClick={saveAndProceed} classes="w-full md:w-auto">
                   {btnText ? btnText : t('shared.next')}
                 </Button>
               ) : (

@@ -322,37 +322,34 @@ const translations = {
     help_tooltip: 'Need help?',
   },
 
-  modal_login: {
-    heading: 'Load your progress',
+  modal_signin: {
+    heading: 'Sign in',
     paragraph_one:
-      'Enter your personal code below to restore your chapter and challenge progress, as well as your avatar.',
-    clear: 'No code yet?',
-    prompt: 'Enter your code',
-    confirm: 'Load my progress',
-    paragraph_two:
-      'Sorry, that’s not the right code for the progress stored in this browser.',
-    paragraph_three: 'No code yet or want to start again?',
-    quit: 'Clear save progress.',
-    success: 'Progress loaded',
-    success_message: 'You’re all set to continue with Chapter',
+      'Enter your private key below to restore your account and progress.',
+    prompt: 'Enter your private key',
+    confirm: 'Sign in',
+    create_account: 'Don’t have an account?',
   },
 
   modal_logout: {
     heading: 'You are logged in',
     paragraph_one:
-      'Your progress is stored in this browser. You will be automatically logged out after 30 days. Use the code below to restore it after taking a break.',
+      'Your session will remain active until you sign out using the button below.',
     signout: 'Sign out',
   },
 
   modal_signup: {
-    heading: 'Want to save your progress?',
+    heading: 'Create an account',
     paragraph_one:
-      'Copy and store a simple code to save and load your progress on any device and browser. If you already have a code, load your progress here.',
+      'At Saving Satoshi, private keys are used as accounts. You have the option to generate a private key here, or you can enter your own.',
     subheading_one: 'Choose an avatar',
-    subheading_two: 'Back up your personal code',
-    paragraph_two:
-      'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
-    confirm: 'I’ve copied and backed up my code',
+    subheading_two: 'Your private key',
+    generate:
+      'If you lose your private key, you lose access to your account. Make sure you store it somewhere save.',
+    input:
+      'If you lose your private key, you lose access to your account. Make sure you store it somewhere save.',
+    confirm: 'Create account',
+    acknowledge_copy: 'I acknowledge to have copied and stored my private key.',
   },
 
   demo_disclaimer: {
@@ -369,7 +366,7 @@ const translations = {
     script_output: 'Script output',
     waiting: 'Waiting for your input above...',
   },
-   notfound: {
+  notfound: {
     first: 'Hmm...where are we?',
     second: 'It’s not quite clear where or what this place is.',
     third: 'We might have gotten lost in space (or time).',

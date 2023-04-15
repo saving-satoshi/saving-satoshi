@@ -8,8 +8,11 @@ import { Tooltip } from 'ui'
 import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
-import { useLang, useLocalizedRoutes, useStatus, useTranslations } from 'hooks'
+import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { lessons } from 'content'
+import { getLessonKey } from 'lib/progress'
+import { useProgressContext } from 'providers/ProgressProvider'
+import useLessonStatus from 'hooks/useLessonStatus'
 
 export default function Tab({
   index,
@@ -35,7 +38,11 @@ export default function Tab({
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
 
-  const status = useStatus(slug, challenge.lessonId)
+  const { progress } = useProgressContext()
+  const { isUnlocked, isCompleted } = useLessonStatus(
+    progress,
+    getLessonKey(slug, challenge.lessonId)
+  )
 
   const challengeId = isRouteLesson ? pathData.pop().split('-')[0] : undefined
   const isActive = challenge.lessonId.split('-')[0] === challengeId
@@ -64,18 +71,18 @@ export default function Tab({
           {
             'text-white text-opacity-50': !isActive,
             'hover:bg-black/25 hover:text-white hover:text-opacity-100':
-              status && status.unlocked && !isActive,
+              isUnlocked && !isActive,
             'bg-black/25 text-opacity-100': isActive,
             'border-r': isLast,
-            'pointer-events-none': !status?.unlocked,
+            'pointer-events-none': isUnlocked,
           }
         )}
       >
         {index + 1}
-        {status && !status.unlocked && (
+        {!isUnlocked && (
           <LockIcon className="absolute right-[10px] top-[10px] opacity-50" />
         )}
-        {status && status.completed && (
+        {isCompleted && (
           <CheckIcon className="absolute right-[5px] top-[5px] h-[20px] w-[20px]" />
         )}
       </Link>
