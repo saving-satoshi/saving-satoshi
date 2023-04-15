@@ -24,6 +24,7 @@ const nextConfig = {
       test: /\.py$/,
       use: 'raw-loader',
     })
+
     config.module.rules.push({
       test: /\.js$/,
       include: [path.resolve(__dirname, 'lib', 'vm', 'langs')],

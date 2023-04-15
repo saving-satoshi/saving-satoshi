@@ -1,10 +1,17 @@
 'use client'
 
-import { useLocalizedRoutes, useTranslations } from 'hooks'
-import { Button, ChapterIntro } from 'ui'
+import { useTranslations } from 'hooks'
+import { ChapterIntro } from 'ui'
+import { Button } from 'shared'
+import { useSaveAndProceed } from 'hooks'
+
+export const metadata = {
+  title: 'chapter_one.genesis_one.title',
+  key: 'CH1GEN1',
+}
 
 export default function Genesis1({ lang }) {
-  const routes = useLocalizedRoutes()
+  const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
 
   return (
@@ -17,16 +24,9 @@ export default function Genesis1({ lang }) {
         {t('chapter_one.genesis_one.paragraph_two')}
       </p>
 
-      <Button
-        href={`${routes.chaptersUrl}/chapter-1/genesis-2`}
-        classes="mt-10 max-md:w-full"
-      >
+      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
         {t('shared.start')}
       </Button>
     </ChapterIntro>
   )
-}
-
-export const metadata = {
-  title: 'chapter_one.genesis_one.title',
 }

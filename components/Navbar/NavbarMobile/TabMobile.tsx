@@ -7,7 +7,10 @@ import { usePathname } from 'next/navigation'
 import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
-import { useLang, useLocalizedRoutes, useStatus, useTranslations } from 'hooks'
+import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
+import { getLessonKey } from 'lib/progress'
+import { useProgressContext } from 'providers/ProgressProvider'
+import useLessonStatus from 'hooks/useLessonStatus'
 
 import { chapters } from 'content'
 
@@ -25,6 +28,12 @@ export default function Tab({
   clicked: any
 }) {
   const { slug } = params
+
+  const { progress } = useProgressContext()
+  const { isUnlocked, isCompleted } = useLessonStatus(
+    progress,
+    getLessonKey(slug, challenge.lessonId)
+  )
 
   const routes = useLocalizedRoutes()
   const lang = useLang()
@@ -60,20 +69,18 @@ export default function Tab({
         {
           'text-white text-opacity-50': !isActive,
           'hover:bg-black/25 hover:text-white hover:text-opacity-100':
-            status && status.unlocked && !isActive,
+            isUnlocked && !isActive,
           'bg-black/25 text-opacity-100': isActive,
           'border-b': isLast,
-          'pointer-events-none': !status?.unlocked,
+          'pointer-events-none': isUnlocked,
         }
       )}
     >
       {index + 1}. <span className="ml-1 text-white">{t(challenge.title)}</span>
-      {status && !status.unlocked && (
+      {!isUnlocked && (
         <LockIcon className="absolute right-[15px] -mr-2 opacity-50" />
       )}
-      {status && status.completed && (
-        <CheckIcon className="absolute right-[5px] h-5 w-5" />
-      )}
+      {isCompleted && <CheckIcon className="absolute right-[5px] h-5 w-5" />}
     </Link>
   )
 }

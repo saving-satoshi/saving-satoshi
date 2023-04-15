@@ -1069,13 +1069,6 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@lionello/secp256k1-js@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@lionello/secp256k1-js/-/secp256k1-js-1.1.0.tgz#4b708dd387a6222f76c1a1c50dd502840aca9583"
-  integrity sha512-frvrdwwgWm0gq43rYcGwwZee+k5sX9HfWnB80740h1dvRT0FO0Z6Wt5C5I7bS0dXKy1pt6IomkR1VcXirP+g4Q==
-  dependencies:
-    bn.js "^4.11.8"
-
 "@monaco-editor/loader@^1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@monaco-editor/loader/-/loader-1.3.2.tgz#04effbb87052d19cd7d3c9d81c0635490f9bb6d8"
@@ -1172,6 +1165,11 @@
   version "13.0.4"
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.0.4.tgz#2c3ede793e90d632e1dbdb0e4851f6f32132fba8"
   integrity sha512-vXtbo9N1FdtZZRcv4BliU28tTYrkb1EnVpUiiFFe88I6kS9aZVTMY9Z/OtDR52rl1JF1hgs9sL/59D/TQqSATQ==
+
+"@noble/secp256k1@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@noble/secp256k1/-/secp256k1-2.0.0.tgz#c214269d45e0233ad6a8ae5104655453636e253d"
+  integrity sha512-rUGBd95e2a45rlmFTqQJYEFA4/gdIARFfuTuTqLglz0PZ6AKyzyXsEZZq7UZn8hZsvaBgpCzKKBJizT2cJERXw==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -1662,11 +1660,6 @@ binary-extensions@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
-
-bn.js@^4.11.8:
-  version "4.12.0"
-  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.12.0.tgz#775b3f278efbb9718eec7361f483fb36fbbfea88"
-  integrity sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==
 
 boolbase@^1.0.0:
   version "1.0.0"

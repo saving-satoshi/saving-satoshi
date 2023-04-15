@@ -58,7 +58,7 @@ export default function Editor({
     <div className="relative font-mono text-sm text-white">
       {loading && (
         <div className="absolute inset-0 -top-10 z-10 flex items-center justify-center bg-[#253547]">
-          <Loader />
+          <Loader className="h-10 w-10 text-white" />
         </div>
       )}
       <MonacoEditor

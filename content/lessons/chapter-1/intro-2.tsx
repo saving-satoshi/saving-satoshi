@@ -7,6 +7,7 @@ export const metadata = {
   title: 'chapter_one.intro_two.title',
   image: '/assets/images/chapter-1-holocat.jpg',
   theme: 'bg-[#32303D]',
+  key: 'CH1INT2',
 }
 
 export default function Intro2({ lang }) {
