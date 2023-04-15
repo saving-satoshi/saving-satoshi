@@ -57,12 +57,12 @@ export default function SignUpModal({ open, onClose }) {
   }
 
   useEffect(() => {
-    if (view === View.Generate) {
+    if (open && view === View.Generate) {
       const { sec } = generateKeypair()
 
       setPrivateKey(sec)
     }
-  }, [view])
+  }, [open, view])
 
   return (
     <ReactModal
