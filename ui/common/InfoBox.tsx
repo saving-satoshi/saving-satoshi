@@ -2,22 +2,6 @@
 
 import clsx from 'clsx'
 
-function addCommas(number: number): string {
-  const numberString = number.toString()
-  if (numberString.length <= 3) {
-    return numberString // return the number as-is if it has three or fewer digits
-  }
-  const digits = numberString.split('')
-  let position = 1
-  for (let i = digits.length - 1; i >= 0; i--) {
-    if (position % 3 === 0 && position !== 1 && i !== 0) {
-      digits.splice(i, 0, ',') // add a comma every three digits, except for the first and last digit
-    }
-    position++
-  }
-  return digits.join('')
-}
-
 export default function InfoBox({
   title,
   content,
@@ -38,7 +22,11 @@ export default function InfoBox({
       )}
     >
       <div className="text-base">{title}</div>
-      <div className="text-2xl">{addCommas(content)}</div>
+      <div className="text-2xl">
+        {Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(
+          content
+        )}
+      </div>
     </div>
   )
 }
