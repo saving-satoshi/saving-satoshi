@@ -59,9 +59,18 @@ export const isLessonCompleted = (
   }
 
   const ida = keys.indexOf(userProgressKey)
-  const idb = keys.indexOf(lessonKey)
+  const challengeCode = lessonKey.slice(-4, -1)
 
-  return ida > idb
+  let idb
+
+  keys.slice().forEach((element, index) => {
+    if (element.includes(challengeCode)) {
+      idb = index
+      return
+    }
+  })
+
+  return ida >= idb
 }
 
 export const getLastUnlockedLessonPath = (userProgressKey: string): string => {

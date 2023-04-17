@@ -9,7 +9,7 @@ import ChapterTabs from './Tabs'
 import ChallengeList from './ChallengeList'
 import { useLocalizedRoutes } from 'hooks'
 import LockIcon from 'public/assets/icons/lock.svg'
-import { lessons, chapters } from 'content'
+import { chapters } from 'content'
 
 import { ChapterContextType } from 'types'
 import { useTranslations } from 'hooks'

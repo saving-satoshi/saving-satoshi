@@ -13,6 +13,7 @@ import { lessons, chapters } from 'content'
 import { getLessonKey } from 'lib/progress'
 import { useProgressContext } from 'providers/ProgressProvider'
 import useLessonStatus from 'hooks/useLessonStatus'
+import { metadata } from 'content/chapters/chapter-1'
 
 export default function Tab({
   index,
@@ -39,7 +40,17 @@ export default function Tab({
   const isRouteLesson = pathData.length === 4
 
   const { progress } = useProgressContext()
-  const { isUnlocked, isCompleted } = useLessonStatus(
+
+  const { isUnlocked } = useLessonStatus(
+    progress,
+    getLessonKey(
+      slug,
+      challenge.lessonId === chapters[slug].metadata.lessons[0]
+        ? 'intro-1'
+        : challenge.lessonId
+    )
+  )
+  const { isCompleted } = useLessonStatus(
     progress,
     getLessonKey(slug, challenge.lessonId)
   )
@@ -84,7 +95,7 @@ export default function Tab({
               isUnlocked && !isActive,
             'bg-black/25 text-opacity-100': isActive,
             'border-r': isLast,
-            'pointer-events-none': isUnlocked,
+            'pointer-events-none': !isUnlocked,
           }
         )}
       >

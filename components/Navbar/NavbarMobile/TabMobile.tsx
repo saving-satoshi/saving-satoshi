@@ -30,7 +30,16 @@ export default function Tab({
   const { slug } = params
 
   const { progress } = useProgressContext()
-  const { isUnlocked, isCompleted } = useLessonStatus(
+  const { isUnlocked } = useLessonStatus(
+    progress,
+    getLessonKey(
+      slug,
+      challenge.lessonId === chapters[slug].metadata.lessons[0]
+        ? 'intro-1'
+        : challenge.lessonId
+    )
+  )
+  const { isCompleted } = useLessonStatus(
     progress,
     getLessonKey(slug, challenge.lessonId)
   )
@@ -70,7 +79,7 @@ export default function Tab({
             isUnlocked && !isActive,
           'bg-black/25 text-opacity-100': isActive,
           'border-b': isLast,
-          'pointer-events-none': isUnlocked,
+          'pointer-events-none': !isUnlocked,
         }
       )}
     >
