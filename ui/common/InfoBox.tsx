@@ -22,11 +22,7 @@ export default function InfoBox({
       )}
     >
       <div className="text-base">{title}</div>
-      <div className="text-2xl">
-        {Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(
-          content
-        )}
-      </div>
+      <div className="text-2xl">{Intl.NumberFormat().format(content)}</div>
     </div>
   )
 }
