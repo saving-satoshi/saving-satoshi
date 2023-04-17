@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react'
 import { LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonTerminal } from 'ui'
-import { setUserProgress } from 'lib/user'
 import { useMediaQuery } from 'hooks'
+import { useProgressContext } from 'providers/ProgressProvider'
 
 const tabData = [
   {
@@ -20,7 +20,6 @@ const tabData = [
 /**
  * @expectedInput {string} | {userVariable, value} answer to the challenge problem or the input variable and the expected value
  * @saveInfo {chapter, challenge} information required for saving user progress
- * @next {string} link to next part of chapter
  * @instruction {string} terminal instruction for user
  * @successMessage {string} Message displayed to the user upon finishing a challenge
  * @customLines {string} Custom message displayed in terminal for the user to read
@@ -29,20 +28,19 @@ const tabData = [
 export default function TerminalChallenge({
   children,
   expectedInput,
-  saveInfo,
-  next,
+  lessonKey,
   successMessage,
   customLines,
   commonError,
 }: {
   children: any
   expectedInput: string | any
-  saveInfo: any
-  next: string
+  lessonKey: string
   successMessage: string
   customLines?: string
   commonError?: any
 }) {
+  const { saveProgress } = useProgressContext()
   const [hydrated, setHydrated] = useState(false)
   const [success, setSuccess] = useState('')
   const [challengeState, setChallengeState] = useState<string>('incomplete')
@@ -63,10 +61,6 @@ export default function TerminalChallenge({
   )
 
   const isSmallScreen = useMediaQuery({ width: 767 })
-
-  function saveProgress() {
-    setUserProgress(saveInfo.chapter, saveInfo.challenge)
-  }
 
   const onChange = (input) => {
     const sanitizedInput = input
@@ -112,7 +106,7 @@ export default function TerminalChallenge({
 
       if (varInput === (expectedInput.value || expectedInput)) {
         setTimeout(() => {
-          saveProgress()
+          saveProgress(lessonKey)
           setSuccess('true')
           setChallengeState('complete')
           setLines((lines) => [
@@ -176,12 +170,7 @@ export default function TerminalChallenge({
         <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
         {children}
 
-        <LessonTerminal
-          success={success}
-          lines={lines}
-          onChange={onChange}
-          next={next}
-        />
+        <LessonTerminal success={success} lines={lines} onChange={onChange} />
       </Lesson>
     )
   )

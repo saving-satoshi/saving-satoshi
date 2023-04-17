@@ -1,17 +1,20 @@
 'use client'
 
-import { useLocalizedRoutes, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 import { LessonInfo, Text, Title } from 'ui'
 import { InputChallenge } from 'ui'
 
+export const metadata = {
+  title: 'chapter_one.transacting_two.title',
+  key: 'CH1TRA2',
+}
+
 export default function Transacting2({ lang }) {
-  const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
     <InputChallenge
       answer="44697374726963742032312c20426974636f696e2046726565646f6d205a6f6e65"
-      next={`${routes.chaptersUrl}/chapter-1/transacting-3`}
       label={t('chapter_one.transacting_two.input_challenge_label')}
       pattern={/[a-z0-9]+/gi}
       precedingText="OP_RETURN OP_PUSHBYTES_33"
@@ -42,8 +45,4 @@ export default function Transacting2({ lang }) {
       </LessonInfo>
     </InputChallenge>
   )
-}
-
-export const metadata = {
-  title: 'chapter_one.transacting_two.title',
 }

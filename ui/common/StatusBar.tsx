@@ -1,9 +1,9 @@
 import clsx from 'clsx'
-import { Button } from 'ui'
+import { Button } from 'shared'
 import CheckIcon from 'public/assets/icons/check.svg'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
-import { useLang, useTranslations } from 'hooks'
+import { useLang, useSaveAndProceed, useTranslations } from 'hooks'
 
 export enum Status {
   Begin,
@@ -13,7 +13,6 @@ export enum Status {
 }
 
 export default function StatusBar({
-  next,
   input,
   expected,
   beginMessage,
@@ -24,7 +23,6 @@ export default function StatusBar({
   hints,
   alwaysShow,
 }: {
-  next: string
   input: string
   expected: string
   beginMessage?: string
@@ -39,6 +37,7 @@ export default function StatusBar({
   const t = useTranslations(lang)
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
+  const saveAndProceed = useSaveAndProceed()
 
   const getStatus = () => {
     if (!input) {
@@ -111,7 +110,7 @@ export default function StatusBar({
         </div>
 
         <Button
-          href={next}
+          onClick={saveAndProceed}
           disabled={getStatus() !== Status.Success}
           classes="md:text-2xl md:py-4"
         >
