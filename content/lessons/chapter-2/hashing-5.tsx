@@ -1,23 +1,24 @@
 'use client'
 
 import { useLocalizedRoutes, useTranslations } from 'hooks'
+import { getLessonKey } from 'lib/progress'
 import { HashChallenge } from 'ui'
 
-export default function Hashing5({ lang, params }) {
-  const routes = useLocalizedRoutes()
+export const metadata = {
+  title: 'chapter_two.hashing_five.title',
+  key: 'CH2HSH5',
+}
+
+export default function Hashing5({ lang }) {
   const t = useTranslations(lang)
 
   return (
     <HashChallenge
       answer="00"
-      next={`${routes.chaptersUrl}/chapter-2/scripting-1`}
       inputLabel={t('chapter_two.hashing_five.heading')}
       returnLabel={t('hasher.return_hash')}
+      lessonKey={getLessonKey('chapter-2', 'hashing-5')}
       answerHint
     />
   )
-}
-
-export const metadata = {
-  title: 'chapter_two.hashing_five.title',
 }

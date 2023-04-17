@@ -1,7 +1,13 @@
 'use client'
 
 import { useLocalizedRoutes, useTranslations } from 'hooks'
-import { Button, ChapterIntro } from 'ui'
+import { ChapterIntro } from 'ui'
+import { Button } from 'shared'
+
+export const metadata = {
+  title: 'chapter_two.hashing_one.title',
+  key: 'CH2HSH1',
+}
 
 export default function Hashing1({ lang }) {
   const routes = useLocalizedRoutes()
@@ -37,8 +43,4 @@ export default function Hashing1({ lang }) {
       </Button>
     </ChapterIntro>
   )
-}
-
-export const metadata = {
-  title: 'chapter_two.hashing_one.title',
 }

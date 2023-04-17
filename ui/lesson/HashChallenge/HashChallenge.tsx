@@ -5,6 +5,7 @@ import { Lesson, StatusBar, Hasher } from 'ui'
 import clsx from 'clsx'
 import { useLang, useTranslations } from 'hooks'
 import { usePathname } from 'next/navigation'
+import { useProgressContext } from 'providers/ProgressProvider'
 
 /**
  * @answer {string} correct answer to the challenge problem
@@ -17,19 +18,20 @@ import { usePathname } from 'next/navigation'
  */
 export default function HashChallenge({
   answer,
-  answerHint,
-  next,
   inputLabel,
   returnLabel,
+  lessonKey,
+  answerHint,
   hints,
 }: {
   answer: string | number
-  next: any
   inputLabel: string
   returnLabel: string
+  lessonKey: string
   answerHint?: boolean
   hints?: boolean
 }) {
+  const { saveProgress } = useProgressContext()
   const lang = useLang()
   const t = useTranslations(lang)
   const pathName = usePathname()
@@ -87,6 +89,7 @@ export default function HashChallenge({
     ) {
       inputRef.current?.blur()
       setSuccess('true')
+      saveProgress(lessonKey)
     } else if (
       typeof answer === 'number' &&
       input.length < answer &&
@@ -167,7 +170,6 @@ export default function HashChallenge({
         alwaysShow
         full
         inProgressMessage="Keep going..."
-        next={next}
         input={success}
         expected={'true'}
         hints={hints}
