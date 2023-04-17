@@ -24,7 +24,6 @@ const tabData = [
 export default function InputChallenge({
   children,
   answer,
-  next,
   label,
   pattern,
   hints,
@@ -32,7 +31,6 @@ export default function InputChallenge({
 }: {
   children: any
   answer: string
-  next: any
   label: string
   pattern?: RegExp
   hints?: boolean
@@ -58,13 +56,7 @@ export default function InputChallenge({
         precedingText={precedingText}
       />
 
-      <StatusBar
-        full
-        next={next}
-        input={userInput}
-        expected={answer}
-        hints={hints}
-      />
+      <StatusBar full input={userInput} expected={answer} hints={hints} />
     </Lesson>
   )
 }

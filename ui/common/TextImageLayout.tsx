@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { Button } from 'shared'
-import { useLang, useTranslations } from 'hooks'
+import { useSaveAndProceed, useTranslations } from 'hooks'
 
 export default function TextImageDisplay({
   children,
@@ -11,7 +11,6 @@ export default function TextImageDisplay({
   imageAlt,
   btnText,
   btnEnabled,
-  next,
 }: {
   children: any
   lang: any
@@ -19,9 +18,9 @@ export default function TextImageDisplay({
   imageAlt: string
   btnText?: string
   btnEnabled: boolean
-  next: string
 }) {
   const t = useTranslations(lang)
+  const saveAndProceed = useSaveAndProceed()
 
   return (
     <div className="flex grow">
@@ -41,7 +40,7 @@ export default function TextImageDisplay({
             </div>
             <div>
               {btnEnabled ? (
-                <Button href={next} classes="w-full md:w-auto">
+                <Button onClick={saveAndProceed} classes="w-full md:w-auto">
                   {btnText ? btnText : t('shared.next')}
                 </Button>
               ) : (
