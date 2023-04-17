@@ -11,6 +11,7 @@ export const keys = [
   'CH1TRA2',
   'CH1TRA3',
   'CH1OUT1',
+  'CH1OUT2',
 
   'CH2INT1',
   'CH2INT2',
@@ -29,6 +30,7 @@ const keysMeta = {
   CH1TRA2: { path: '/chapters/chapter-1/transacting-2' },
   CH1TRA3: { path: '/chapters/chapter-1/transacting-3' },
   CH1OUT1: { path: '/chapters/chapter-1/outro-1' },
+  CH1OUT2: { path: '/chapters/chapter-1/outro-2' },
 
   CH2INT1: { path: '/chapters/chapter-2/intro-1' },
   CH2INT2: { path: '/chapters/chapter-2/intro-2' },
@@ -70,7 +72,9 @@ export const isLessonCompleted = (
     }
   })
 
-  return ida >= idb
+  console.log(ida, idb)
+
+  return ida > idb
 }
 
 export const getLastUnlockedLessonPath = (userProgressKey: string): string => {
