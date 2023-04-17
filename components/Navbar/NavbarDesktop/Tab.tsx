@@ -9,7 +9,7 @@ import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
 
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
-import { lessons } from 'content'
+import { lessons, chapters } from 'content'
 import { getLessonKey } from 'lib/progress'
 import { useProgressContext } from 'providers/ProgressProvider'
 import useLessonStatus from 'hooks/useLessonStatus'
@@ -27,7 +27,8 @@ export default function Tab({
 }) {
   const { slug, lesson: lessonId } = params
 
-  const { theme = 'bg-back' } = lessons[slug][lessonId].metadata
+  const { theme = chapters[slug].metadata.theme } =
+    lessons[slug][lessonId].metadata
 
   const routes = useLocalizedRoutes()
   const lang = useLang()
