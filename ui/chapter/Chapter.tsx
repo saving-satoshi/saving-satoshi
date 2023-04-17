@@ -36,7 +36,7 @@ export default function Chapter({ children, metadata, lang }) {
   const { progress } = useProgressContext()
   const { isUnlocked } = useLessonStatus(
     progress,
-    getLessonKey(metadata.slug, 'outro-1')
+    getLessonKey(metadata.slug, 'intro-1')
   )
 
   const display = metadata.slug === 'chapter-1' || isUnlocked
