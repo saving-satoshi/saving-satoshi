@@ -20,7 +20,10 @@ export default function ChallengeItem({
   const t = useTranslations(lang)
   const { progress } = useProgressContext()
 
-  const lessonMeta = lessons[chapterId][lessonId].metadata
+  const lessonMeta =
+    lessons[chapterId][lessonId].metadata.key === 'CH1GEN1'
+      ? lessons[chapterId]['intro-1'].metadata
+      : lessons[chapterId][lessonId].metadata
   const { isUnlocked, isCompleted } = useLessonStatus(progress, lessonMeta.key)
 
   const lessonHref =
