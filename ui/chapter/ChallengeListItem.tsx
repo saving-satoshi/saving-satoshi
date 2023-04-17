@@ -30,7 +30,7 @@ export default function ChallengeItem({
   const { isCompleted } = useLessonStatus(progress, lessonMetaCompleted.key)
 
   const lessonHref =
-    lessonId === chapters['chapter-1'].metadata['challenges'][0]
+    lessonId === chapters[chapterId].metadata['challenges'][0]
       ? 'intro-1'
       : lessonId
   const href = `${routes.chaptersUrl}/${chapterId}/${lessonHref}`
