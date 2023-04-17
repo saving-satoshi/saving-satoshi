@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation'
+
 const translations = {
   shared: {
     next: 'Continue',
@@ -366,12 +368,17 @@ const translations = {
     script_output: 'Script output',
     waiting: 'Waiting for your input above...',
   },
-  notfound: {
+notfound: {
     first: 'Hmm...where are we?',
     second: 'It’s not quite clear where or what this place is.',
     third: 'We might have gotten lost in space (or time).',
     back_safety: 'Back to safety',
   },
+  error: {
+    first: 'Hmm...something went wrong.',
+    second: "It's not quite clear what happened.",
+    third: 'Our solocopter must have crashed!',
+    back_safety: 'Land safely',
+  },
 }
-
 export default translations
