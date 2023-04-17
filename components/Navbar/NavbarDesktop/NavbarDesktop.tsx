@@ -29,7 +29,7 @@ export default function NavbarDesktop({ params }) {
         </div>
         <nav className="flex items-center">
           <TabGroup params={params} />
-          <HelpLink />
+          <HelpLink params={params} />
           <UserButton />
         </nav>
       </div>
