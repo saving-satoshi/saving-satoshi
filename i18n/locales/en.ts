@@ -373,7 +373,12 @@ const translations = {
     waiting: 'Waiting for your input above...',
   },
 
-  
+notfound: {
+    first: 'Hmm...where are we?',
+    second: 'It’s not quite clear where or what this place is.',
+    third: 'We might have gotten lost in space (or time).',
+    back_safety: 'Back to safety',
+  },
   error: {
     first: 'Hmm...something went wrong.',
     second: "It's not quite clear what happened.",
