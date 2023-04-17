@@ -9,7 +9,7 @@ export const metadata = {
   key: 'CH1GEN2',
 }
 
-export default function Genesis3({ lang }) {
+export default function Genesis2({ lang }) {
   const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 

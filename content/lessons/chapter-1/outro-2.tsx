@@ -9,6 +9,6 @@ export const metadata = {
   key: 'CH1OUT2',
 }
 
-export default function Done({ lang }) {
+export default function Outro2({ lang }) {
   return <ChapterEnd {...metadata} lang={lang} />
 }

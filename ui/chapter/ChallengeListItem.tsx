@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import Link from 'next/link'
-import { lessons } from 'content'
+import { lessons, chapters } from 'content'
 
 import CheckIcon from 'public/assets/icons/check.svg'
 import LockIcon from 'public/assets/icons/lock.svg'
@@ -20,10 +20,20 @@ export default function ChallengeItem({
   const t = useTranslations(lang)
   const { progress } = useProgressContext()
 
-  const lessonMeta = lessons[chapterId][lessonId].metadata
-  const { isUnlocked, isCompleted } = useLessonStatus(progress, lessonMeta.key)
+  const lessonMetaUnlocked =
+    lessonId === chapters[chapterId].metadata['challenges'][0]
+      ? lessons[chapterId]['intro-1'].metadata
+      : lessons[chapterId][lessonId].metadata
 
-  const href = `${routes.chaptersUrl}/${chapterId}/${lessonId}`
+  const lessonMetaCompleted = lessons[chapterId][lessonId].metadata
+  const { isUnlocked } = useLessonStatus(progress, lessonMetaUnlocked.key)
+  const { isCompleted } = useLessonStatus(progress, lessonMetaCompleted.key)
+
+  const lessonHref =
+    lessonId === chapters[chapterId].metadata['challenges'][0]
+      ? 'intro-1'
+      : lessonId
+  const href = `${routes.chaptersUrl}/${chapterId}/${lessonHref}`
   const ComponentType = isUnlocked ? Link : 'p'
 
   return (

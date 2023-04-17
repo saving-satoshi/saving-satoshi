@@ -11,6 +11,7 @@ export const keys = [
   'CH1TRA2',
   'CH1TRA3',
   'CH1OUT1',
+  'CH1OUT2',
 
   'CH2INT1',
   'CH2INT2',
@@ -34,6 +35,7 @@ const keysMeta = {
   CH1TRA2: { path: '/chapters/chapter-1/transacting-2' },
   CH1TRA3: { path: '/chapters/chapter-1/transacting-3' },
   CH1OUT1: { path: '/chapters/chapter-1/outro-1' },
+  CH1OUT2: { path: '/chapters/chapter-1/outro-2' },
 
   CH2INT1: { path: '/chapters/chapter-2/intro-1' },
   CH2INT2: { path: '/chapters/chapter-2/intro-2' },
@@ -69,7 +71,18 @@ export const isLessonCompleted = (
   }
 
   const ida = keys.indexOf(userProgressKey)
-  const idb = keys.indexOf(lessonKey)
+  const challengeCode = lessonKey.slice(-4, -1)
+
+  let idb
+
+  keys.slice().forEach((element, index) => {
+    if (element.includes(challengeCode)) {
+      idb = index
+      return
+    }
+  })
+
+  console.log(ida, idb)
 
   return ida > idb
 }

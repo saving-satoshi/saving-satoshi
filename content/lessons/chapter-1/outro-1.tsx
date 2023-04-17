@@ -10,7 +10,7 @@ export const metadata = {
   key: 'CH1OUT1',
 }
 
-export default function Transacting4({ lang }) {
+export default function Outro1({ lang }) {
   const t = useTranslations(lang)
 
   return (

@@ -22,11 +22,10 @@ export const metadata = {
     'genesis-2',
     'genesis-3',
     'genesis-4',
-    'genesis-5',
     'transacting-1',
     'transacting-2',
     'transacting-3',
   ],
-  outros: ['outro-1'],
+  outros: ['outro-1, outro-2'],
   challenges: ['genesis-1', 'transacting-1'],
 }

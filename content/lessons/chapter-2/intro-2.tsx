@@ -9,7 +9,7 @@ export const metadata = {
   key: 'CH2INT2',
 }
 
-export default function ReapingRewards({ lang }) {
+export default function Intro2({ lang }) {
   const t = useTranslations(lang)
 
   return (

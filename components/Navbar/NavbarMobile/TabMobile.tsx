@@ -12,6 +12,8 @@ import { getLessonKey } from 'lib/progress'
 import { useProgressContext } from 'providers/ProgressProvider'
 import useLessonStatus from 'hooks/useLessonStatus'
 
+import { chapters } from 'content'
+
 export default function Tab({
   index,
   count,
@@ -28,7 +30,16 @@ export default function Tab({
   const { slug } = params
 
   const { progress } = useProgressContext()
-  const { isUnlocked, isCompleted } = useLessonStatus(
+  const { isUnlocked } = useLessonStatus(
+    progress,
+    getLessonKey(
+      slug,
+      challenge.lessonId === chapters[slug].metadata.lessons[0]
+        ? 'intro-1'
+        : challenge.lessonId
+    )
+  )
+  const { isCompleted } = useLessonStatus(
     progress,
     getLessonKey(slug, challenge.lessonId)
   )
@@ -38,16 +49,26 @@ export default function Tab({
   const t = useTranslations(lang)
   const pathName = usePathname()
 
-  const pathData = pathName.split('/')
+  const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
 
-  const challengeId = isRouteLesson ? pathData.pop().split('-')[0] : undefined
-  const isActive = challenge.lessonId === challengeId
-  const isLast = index == count - 1
+  const challengeId = isRouteLesson
+    ? pathData
+        .pop()
+        .split('-')[0]
+        .replace('intro', chapters[slug].metadata.challenges[0].split('-')[0])
+    : undefined
+  const isActive = challenge.lessonId.split('-')[0] === challengeId
+  const isLast = index === count - 1
+  const lessonHref =
+    challenge.lessonId === chapters[slug].metadata.challenges[0]
+      ? chapters[slug].metadata.intros[0]
+      : challenge.lessonId
+  const href = `${routes.chaptersUrl}/${slug}/${lessonHref}`
 
   return (
     <Link
-      href={`${routes.chaptersUrl}/${slug}/${challenge.lessonId}`}
+      href={href}
       title={t(challenge.title)}
       onClick={() => clicked()}
       className={clsx(
@@ -58,7 +79,7 @@ export default function Tab({
             isUnlocked && !isActive,
           'bg-black/25 text-opacity-100': isActive,
           'border-b': isLast,
-          'pointer-events-none': isUnlocked,
+          'pointer-events-none': !isUnlocked,
         }
       )}
     >
