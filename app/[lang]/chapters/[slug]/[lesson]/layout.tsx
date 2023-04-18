@@ -6,7 +6,8 @@ export default function Layout({ children, params }) {
   const { slug, lesson: lessonId } = params
 
   const defaultTheme = 'bg-back'
-  const { theme = defaultTheme } = lessons[slug][lessonId].metadata
+  const { theme = defaultTheme } =
+    lessons[slug][lessonId]?.metadata ?? defaultTheme
 
   return (
     <div className={`${theme} flex flex-col`}>
