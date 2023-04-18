@@ -1,5 +1,5 @@
 'use client'
-import { lessons } from 'content'
+import { chapters, lessons } from 'content'
 import { useLang, useTranslations } from 'hooks'
 import Link from 'next/link'
 import { Tooltip } from 'ui'
@@ -9,8 +9,8 @@ export default function HelpLink({ params }: { params: any }) {
   const t = useTranslations(lang)
 
   const { slug, lesson: lessonId } = params
-  const defaultTheme = 'bg-back'
-  const { theme = defaultTheme } = lessons[slug][lessonId].metadata
+  const { theme = chapters[slug].metadata.theme } =
+    lessons[slug][lessonId]?.metadata ?? 'bg-back'
 
   return (
     <div className="flex-l flex h-full items-stretch">
