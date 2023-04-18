@@ -61,7 +61,7 @@ export const isLessonCompleted = (
   }
 
   const ida = keys.indexOf(userProgressKey)
-  let idb = keys.indexOf(lessonKey)
+  const idb = keys.indexOf(lessonKey)
 
   return ida > idb
 }
