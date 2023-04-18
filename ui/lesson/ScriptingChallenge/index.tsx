@@ -62,7 +62,7 @@ export default function ScriptingChallenge({
         {children}
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col bg-[#253547]">
         <LanguageTabs
           languages={config.languages}
           value={language}
