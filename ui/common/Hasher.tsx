@@ -16,7 +16,6 @@ export default function Hasher({
   input: string
 }) {
   const [hash, setHash] = useState('')
-  const [clicked, setClicked] = useState(false)
   const hashString = (hash ? hash : '_'.repeat(64)).match(/.{1,4}/g).join(' ')
 
   const handleHash = (input) => {
@@ -45,7 +44,7 @@ export default function Hasher({
         </h2>
         <p
           className={clsx(
-            'h-full w-4/5 resize-none overflow-hidden break-words bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:w-full md:max-w-5xl md:text-center md:text-[30px] md:tracking-[5px]',
+            'h-full w-full resize-none overflow-hidden break-words bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:w-full md:max-w-5xl md:text-center md:text-[30px] md:tracking-[5%]',
             {
               'overlay-complete':
                 (typeof answer === 'string' &&

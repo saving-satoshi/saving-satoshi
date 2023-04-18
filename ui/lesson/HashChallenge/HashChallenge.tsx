@@ -107,9 +107,9 @@ export default function HashChallenge({
 
   return (
     <Lesson>
-      <div className="flex w-full justify-center py-12 md:grow">
+      <div className="flex w-full justify-start md:grow md:justify-center">
         <div className="flex max-w-[1280px] items-start justify-center px-4 py-8 font-space-mono text-white md:w-9/12 md:items-center lg:w-9/12">
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col">
             <div className="w-full">
               <h2 className="text-left text-[18px] font-bold text-white md:text-center">
                 {inputLabel}
@@ -120,7 +120,7 @@ export default function HashChallenge({
                 placeholder={inputPlaceholder}
                 maxLength={24}
                 className={clsx(
-                  'top-0 left-0 w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[24px] leading-[180%] tracking-[1px] text-white outline-none md:text-center md:text-[30px] md:tracking-[5px]',
+                  'top-0 left-0 w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[24px] leading-[180%] tracking-[1px] text-white outline-none md:text-center md:text-[30px] md:tracking-[5%]',
                   {
                     'overlay-complete':
                       (typeof answer === 'string' &&
@@ -137,10 +137,14 @@ export default function HashChallenge({
                 onChange={handleChange}
               />
               <div
-                className={clsx('text-center', {
-                  block: answerHint && hintTooltip,
-                  invisible: !hintTooltip,
-                })}
+                className={clsx(
+                  'text-left transition-opacity duration-[2500ms] ease-in-out md:text-center',
+                  {
+                    'opacity-100':
+                      answerHint && hintTooltip && success !== 'true',
+                    'opacity-0': !hintTooltip,
+                  }
+                )}
               >
                 <span>
                   {t(`chapter_two.hashing_${challengeIdWord}.hint_prompt`)}
