@@ -32,10 +32,6 @@ export default function Page({ params }) {
 
   const [unlocked, setUnlocked] = useState<number>(LoadingState.Idle)
 
-  const handleSignInClick = () => {
-    modals.open(Modal.SignIn)
-  }
-
   useEffect(() => {
     if (!isAccountLoading && !isProgressLoading) {
       if (progress && params.lesson) {
