@@ -5,10 +5,8 @@ import { lessons, chapters } from 'content'
 
 export default function Layout({ children, params }) {
   const { slug, lesson: lessonId } = params
-  const { theme = 'bg-back' } = lessons[slug][lessonId].metadata?.theme
-    ? lessons[slug][lessonId].metadata
-    : chapters[slug].metadata
-
+  const { theme = chapters[slug].metadata } =
+    lessons[slug][lessonId]?.metadata ?? 'bg-back'
   return (
     <div className={`${theme} flex flex-col`}>
       <div className="fix-grow-issue flex min-h-screen flex-col overflow-hidden">

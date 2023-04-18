@@ -7,7 +7,7 @@ export default function Menu(props) {
   const { slug, lesson: lessonId } = props.params
 
   const { theme = chapters[slug].metadata.theme } =
-    lessons[slug][lessonId].metadata
+    lessons[slug][lessonId]?.metadata ?? 'bg-back'
 
   return (
     <div
