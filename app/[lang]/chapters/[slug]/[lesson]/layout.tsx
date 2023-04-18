@@ -8,8 +8,6 @@ export default function Layout({ children, params }) {
   const { theme = chapters[slug].metadata.theme } =
     lessons[slug][lessonId]?.metadata ?? 'bg-back'
 
-  console.log(chapters[slug].metadata.theme, lessons[slug][lessonId].metadata)
-
   return (
     <div className={`${theme} flex flex-col`}>
       <div className="fix-grow-issue flex min-h-screen flex-col overflow-hidden">
