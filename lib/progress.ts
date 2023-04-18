@@ -61,18 +61,7 @@ export const isLessonCompleted = (
   }
 
   const ida = keys.indexOf(userProgressKey)
-  const challengeCode = lessonKey.slice(-4, -1)
-
-  let idb
-
-  keys.slice().forEach((element, index) => {
-    if (element.includes(challengeCode)) {
-      idb = index
-      return
-    }
-  })
-
-  console.log(ida, idb)
+  let idb = keys.indexOf(lessonKey)
 
   return ida > idb
 }
