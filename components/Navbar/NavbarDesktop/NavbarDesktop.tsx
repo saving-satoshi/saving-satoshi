@@ -6,6 +6,7 @@ import TabGroup from 'components/Navbar/NavbarDesktop/TabGroup'
 import PowerOffIcon from 'public/assets/icons/power-off.svg'
 import UserButton from '../UserButton'
 import Link from 'next/link'
+import HelpLink from '../HelpLink'
 
 export default function NavbarDesktop({ params }) {
   const routes = useLocalizedRoutes()
@@ -28,6 +29,7 @@ export default function NavbarDesktop({ params }) {
         </div>
         <nav className="flex items-center">
           <TabGroup params={params} />
+          <HelpLink params={params} />
           <UserButton />
         </nav>
       </div>

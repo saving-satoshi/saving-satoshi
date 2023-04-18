@@ -200,7 +200,7 @@ export default function Runner({
 
       {loading && (
         <div className="h-60 overflow-y-auto border-t border-white border-opacity-30 bg-[#253547] p-4">
-          <Loader />
+          <Loader className="h-10 w-10 text-white" />
         </div>
       )}
 

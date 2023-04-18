@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { CopyButton } from 'ui'
+import { CopyButton } from 'shared'
 
 export default function CodeExample({
   code,

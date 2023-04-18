@@ -9,6 +9,7 @@ import { useState } from 'react'
 import Menu from './Menu'
 import clsx from 'clsx'
 import Link from 'next/link'
+import HelpLink from '../HelpLink'
 
 export default function NavbarMobile({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
@@ -54,6 +55,7 @@ export default function NavbarMobile({ params }) {
           <HamburgerMenu isOpen={isOpen} clicked={handleButtonClick} />
         </div>
         <div className="flex items-center">
+          <HelpLink params={params} />
           <UserButton />
         </div>
       </div>
