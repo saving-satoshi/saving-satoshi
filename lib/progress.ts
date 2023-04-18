@@ -82,8 +82,6 @@ export const isLessonCompleted = (
     }
   })
 
-  console.log(ida, idb)
-
   return ida > idb
 }
 
