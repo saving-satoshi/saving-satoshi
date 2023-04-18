@@ -1,4 +1,4 @@
-import { lessons } from 'content'
+import { chapters, lessons } from 'content'
 
 export const keys = [
   'CH1INT1',
@@ -73,6 +73,28 @@ export const isLessonCompleted = (
   })
 
   console.log(ida, idb)
+
+  return ida > idb
+}
+
+export const isChallengeCompleted = (
+  userProgressKey: string,
+  lessonKey: string
+) => {
+  if (!userProgressKey || !lessonKey) {
+    return false
+  }
+
+  const ida = keys.indexOf(userProgressKey)
+  const challengeCode = lessonKey.slice(-4, -1)
+
+  let idb
+
+  keys.forEach((element, index) => {
+    if (element.includes(challengeCode)) {
+      idb = index
+    }
+  })
 
   return ida > idb
 }
