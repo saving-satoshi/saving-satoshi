@@ -1,6 +1,6 @@
 'use client'
 
-import { isLessonCompleted, isLessonUnlocked } from 'lib/progress'
+import { isChallengeCompleted, isLessonUnlocked } from 'lib/progress'
 import { useEffect, useState } from 'react'
 
 export default function useLessonStatus(
@@ -18,7 +18,7 @@ export default function useLessonStatus(
     }
 
     const unlocked = isLessonUnlocked(progress, lesson)
-    const completed = isLessonCompleted(progress, lesson)
+    const completed = isChallengeCompleted(progress, lesson)
 
     setIsUnlocked(unlocked)
     setIsCompleted(completed)
