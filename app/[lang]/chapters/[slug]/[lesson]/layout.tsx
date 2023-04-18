@@ -1,14 +1,12 @@
 'use client'
 
 import Navbar from 'components/Navbar'
-import { lessons } from 'content'
+import { lessons, chapters } from 'content'
 
 export default function Layout({ children, params }) {
   const { slug, lesson: lessonId } = params
-
-  const defaultTheme = 'bg-back'
-  const { theme = defaultTheme } =
-    lessons[slug][lessonId]?.metadata ?? defaultTheme
+  const { theme = chapters[slug].metadata.theme } =
+    lessons[slug][lessonId]?.metadata ?? 'bg-back'
 
   return (
     <div className={`${theme} flex flex-col`}>

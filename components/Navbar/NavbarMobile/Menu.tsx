@@ -1,14 +1,13 @@
 import React from 'react'
 import TabGroupMobile from 'components/Navbar/NavbarMobile/TabGroupMobile'
 import clsx from 'clsx'
-import { lessons } from 'content'
+import { lessons, chapters } from 'content'
 
 export default function Menu(props) {
   const { slug, lesson: lessonId } = props.params
 
-  const defaultTheme = 'bg-back'
-  const { theme = defaultTheme } =
-    lessons[slug][lessonId]?.metadata ?? defaultTheme
+  const { theme = chapters[slug].metadata.theme } =
+    lessons[slug][lessonId]?.metadata ?? 'bg-back'
 
   return (
     <div
