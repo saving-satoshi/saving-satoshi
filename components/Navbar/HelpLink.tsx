@@ -10,7 +10,8 @@ export default function HelpLink({ params }: { params: any }) {
 
   const { slug, lesson: lessonId } = params
   const defaultTheme = 'bg-back'
-  const { theme = defaultTheme } = lessons[slug][lessonId].metadata
+  const { theme = defaultTheme } =
+    lessons[slug][lessonId]?.metadata ?? defaultTheme
 
   return (
     <div className="flex-l flex h-full items-stretch">

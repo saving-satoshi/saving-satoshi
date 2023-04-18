@@ -28,7 +28,8 @@ export default function Tab({
   const { slug, lesson: lessonId } = params
 
   const defaultTheme = 'bg-back'
-  const { theme = defaultTheme } = lessons[slug][lessonId].metadata
+  const { theme = defaultTheme } =
+    lessons[slug][lessonId]?.metadata ?? defaultTheme
 
   const routes = useLocalizedRoutes()
   const lang = useLang()
