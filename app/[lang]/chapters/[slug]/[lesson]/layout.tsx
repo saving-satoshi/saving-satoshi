@@ -5,8 +5,10 @@ import { lessons, chapters } from 'content'
 
 export default function Layout({ children, params }) {
   const { slug, lesson: lessonId } = params
-  const { theme = chapters[slug].metadata } =
+  const { theme = chapters[slug].metadata.theme } =
     lessons[slug][lessonId]?.metadata ?? 'bg-back'
+
+  console.log(chapters[slug].metadata.theme, lessons[slug][lessonId].metadata)
 
   return (
     <div className={`${theme} flex flex-col`}>
