@@ -241,7 +241,7 @@ export default function Runner({
           'flex h-12 w-full items-center border-t border-white border-opacity-30 bg-[#253547]',
           {
             'hidden md:flex': !isActive && success !== 'true',
-            hidden: success === 'true',
+            hidden: success === 'true' || loading,
             flex: isActive,
           }
         )}
