@@ -96,7 +96,7 @@ export default async function Head() {
   "name": "Saving Satoshi",
   "teaches": "Bitcoin, coding",
   "thumbnailUrl": "https://imagedelivery.net/wyrwp3c-j0gDDUWgnE7lig/6818cd1b-ea0d-49a4-ea14-d34c1bbae100/public"
-}</script>
+</script>
     </>
   )
 }
