@@ -70,8 +70,7 @@ export default async function Head() {
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://savingsatoshi.com/" />
   <meta property="twitter:image" content="https://savingsatoshi.com/_next/image?url=%2Fassets%2Fpreviews%2Fmain-image-preview.jpg&w=3840&q=100" />
-
-//Schema      
+    
 <script type="application/ld+json" className="schemantra">
   "@context": "https://schema.org",
   "@type": "CreativeWork",
