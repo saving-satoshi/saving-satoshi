@@ -3,6 +3,7 @@
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import sjcl from 'sjcl'
+import formatHash from 'lib/formatHash'
 
 export default function Hasher({
   answer,
@@ -58,7 +59,7 @@ export default function Hasher({
             }
           )}
         >
-          {hashString}
+          {formatHash(hash)}
         </p>
       </div>
     </>
