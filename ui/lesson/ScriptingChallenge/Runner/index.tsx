@@ -41,8 +41,9 @@ export default function Runner({
   const [loading, setLoading] = useState<boolean>(true)
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const [result, setResult] = useState<any | undefined>(undefined)
+  const [success, setSuccess] = useState('false')
   const { activeView } = useLessonContext()
-  const isActive = activeView === LessonView.Execute
+  const isActive = activeView !== LessonView.Info
 
   const handleRun = async () => {
     const outputEl = outputRef.current as HTMLElement
@@ -101,6 +102,7 @@ export default function Runner({
             }
 
             if (isRequest) {
+              setSuccess('true')
               if (language === 'javascript') {
                 iframe.contentWindow.postMessage(
                   JSON.stringify({
@@ -197,6 +199,8 @@ export default function Runner({
     }
   }, [])
 
+  console.log(success)
+
   return (
     <>
       <Script src="https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js" />
@@ -230,13 +234,14 @@ export default function Runner({
           value={result}
         />
       )}
-      <div className="h-full grow md:hidden" />
+      {/*<div className="h-full grow md:hidden" />*/}
 
       <div
         className={clsx(
           'flex h-12 w-full items-center border-t border-white border-opacity-30 bg-[#253547]',
           {
-            'hidden md:flex': !isActive,
+            'hidden md:flex': !isActive && success !== 'true',
+            hidden: success === 'true',
             flex: isActive,
           }
         )}
@@ -274,10 +279,7 @@ export default function Runner({
           </button>
         )}
       </div>
-      <StatusBar
-        input={result ? result.substring(0, 5) : ''}
-        expected="00000"
-      />
+      {success === 'true' && <StatusBar input={success} expected="true" />}
     </>
   )
 }

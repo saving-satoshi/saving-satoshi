@@ -81,11 +81,8 @@ export default function ScriptingChallenge({
         isSmallScreen ? LessonDirection.Vertical : LessonDirection.Horizontal
       }
     >
-      {/* <div className="grid grid-cols-2"> */}
       <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
-      {/* <div className="flex h-full flex-col content-center justify-items-start gap-1 px-1 py-6 sm:px-12"> */}
       {children}
-      {/* </div> */}
 
       <div className="flex max-h-[92.5vh] max-w-full grow flex-col border-white/25 font-space-mono text-white md:max-w-[50%] md:basis-1/3 md:border-l">
         <LanguageTabs
@@ -93,14 +90,12 @@ export default function ScriptingChallenge({
           value={language}
           onChange={handleSetLanguage}
         />
-
         <Editor
           language={language}
           value={code}
           onChange={handleChange}
           onValidate={handleEditorValidate}
         />
-
         <Runner
           lang={lang}
           config={config}
@@ -113,7 +108,6 @@ export default function ScriptingChallenge({
           successMessage={successMessage}
         />
       </div>
-      {/* </div> */}
     </Lesson>
   )
 }

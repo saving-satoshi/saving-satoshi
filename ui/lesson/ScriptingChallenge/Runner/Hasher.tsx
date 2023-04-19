@@ -81,8 +81,6 @@ export default function Hasher({
     return result
   }
 
-  console.log(LessonView, isActive, activeView)
-
   return (
     <div
       className={clsx(

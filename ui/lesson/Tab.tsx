@@ -18,7 +18,7 @@ export default function Tab({
     <button
       onClick={() => onSelect(tabData.id)}
       className={clsx(
-        'min-w-[140px] border-black/25 px-4 text-center font-nunito text-lg font-bold text-white',
+        'border-black/25 px-4 text-center font-nunito text-lg font-bold text-white',
         {
           'border-2 text-opacity-75 transition duration-150 ease-in-out hover:text-opacity-50':
             !isActive,

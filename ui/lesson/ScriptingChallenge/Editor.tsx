@@ -6,7 +6,7 @@ import MonacoEditor from '@monaco-editor/react'
 
 import { monacoOptions } from './config'
 import { monaco } from 'react-monaco-editor'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Loader } from 'shared'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
@@ -26,7 +26,7 @@ export default function Editor({
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
-
+  const [width, setWidth] = useState('calc(100vw / 2)')
   const [loading, setLoading] = useState<boolean>(true)
 
   const handleBeforeMount = (monaco) => {
@@ -63,15 +63,26 @@ export default function Editor({
     setLoading(false)
   }
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setWidth('100vw')
+      } else {
+        setWidth('calc(100vw / 2)')
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    handleResize() // set initial value
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
     <div
-      className={clsx(
-        'flex w-full flex-col gap-1 px-4 py-6 font-nunito text-white md:justify-center',
-        {
-          'hidden md:flex': !isActive,
-          flex: isActive,
-        }
-      )}
+      className={clsx('relative font-mono text-sm text-white', {
+        'hidden md:flex': !isActive,
+        flex: isActive,
+      })}
     >
       {loading && (
         <div className="absolute inset-0 -top-10 z-10 flex items-center justify-center bg-[#253547]">
@@ -79,9 +90,9 @@ export default function Editor({
         </div>
       )}
       <MonacoEditor
-        className="w-full md:w-1/2"
-        // width="w-[100vw] md:w-[calc(100vw / 2)]"
-        height="465px"
+        //className="w-full md:w-1/2"
+        width={width}
+        height="calc(100vh - 71px - 48px - 40px - 240px)"
         // theme="satoshi"
         // defaultLanguage={language}
         // defaultValue={code}
