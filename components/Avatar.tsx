@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import UserIcon from 'public/assets/icons/avatar.svg'
 
 export default function Avatar({
   avatar,
@@ -6,14 +7,18 @@ export default function Avatar({
   classes,
   onClick,
 }: {
-  avatar?: number
+  avatar?: string
   size?: number
   classes?: string
   onClick?: () => void
 }) {
+  if (!avatar) {
+    return <UserIcon />
+  }
+
   return (
     <Image
-      src={`/assets/avatars/${avatar || 1}.png`}
+      src={avatar}
       alt="Avatar"
       width={size || 30}
       height={size || 30}

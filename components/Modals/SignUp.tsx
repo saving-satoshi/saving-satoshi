@@ -2,47 +2,72 @@
 
 import Avatar from 'components/Avatar'
 import { useState, useEffect } from 'react'
-import Modal from 'react-modal'
+import ReactModal from 'react-modal'
 import CloseIcon from 'public/assets/icons/close.svg'
-import { CopyButton } from 'shared'
+import { Checkbox, CopyButton, Loader, RadioButton, RadioGroup } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
-import {
-  loginUser,
-  setUserAvatar,
-  setUserRegistered,
-  createUser,
-} from 'lib/user'
-import { useUser, useHasMounted, useTranslations, useLang } from 'hooks'
+import { useTranslations, useLang } from 'hooks'
 import clsx from 'clsx'
+import { useAuthContext } from 'providers/AuthProvider'
+import { generateKeypair } from 'lib/crypto'
+import { register } from 'api/auth'
+import { Input } from 'shared'
 
-export default function SignUpModal({ open, onClose, onConfirm }) {
+enum View {
+  Generate = 'generate',
+  Input = 'input',
+}
+
+export default function SignUpModal({ open, onClose }) {
   const lang = useLang()
   const t = useTranslations(lang)
-  const hasMounted = useHasMounted()
-  const { user } = useUser()
-  let [avatar, setAvatar] = useState(1)
+  const { login } = useAuthContext()
 
-  function saveLocally() {
-    setUserAvatar(avatar)
-    loginUser()
+  const [loading, setLoading] = useState<boolean>(false)
+  const [avatar, setAvatar] = useState(1)
+  const [view, setView] = useState<string>(View.Generate)
+  const [copyAcknowledged, setCopyAcknowledged] = useState<boolean>(false)
+  const [privateKey, setPrivateKey] = useState<string | undefined>(undefined)
+
+  const handleChangeView = (view: View) => {
+    setView(view)
+    setCopyAcknowledged(false)
   }
 
-  function confirm() {
-    saveLocally()
-    setUserRegistered()
-    onConfirm()
+  const handleSetPrivateKey = (pk: string) => {
+    setPrivateKey(pk)
+  }
+
+  async function handleConfirm() {
+    try {
+      setLoading(true)
+
+      await register(privateKey, `/assets/avatars/${avatar}.png`)
+
+      await login(privateKey)
+
+      onClose()
+    } catch (ex) {
+      console.error(ex)
+    } finally {
+      setPrivateKey(undefined)
+      setCopyAcknowledged(false)
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
-    if (hasMounted && !user) {
-      createUser(null)
+    if (open && view === View.Generate) {
+      const { sec } = generateKeypair()
+
+      setPrivateKey(sec)
     }
-  }, [hasMounted, user])
+  }, [open, view])
 
   return (
-    <Modal
+    <ReactModal
       isOpen={open}
-      overlayClassName="fixed inset-0 bg-overlayColor"
+      overlayClassName="fixed inset-0 bg-overlayColor z-10"
       className="fixed inset-0 top-1/2 left-1/2 h-full w-screen -translate-x-1/2 -translate-y-1/2 transform overflow-y-auto bg-back p-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:w-[550px] sm:rounded-lg sm:pt-5"
       contentLabel="Sign up Modal"
       onRequestClose={onClose}
@@ -65,7 +90,7 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
           {[1, 2, 3, 4, 5].map((i) => (
             <Avatar
               key={i}
-              avatar={i}
+              avatar={`/assets/avatars/${i}.png`}
               size={80}
               onClick={() => setAvatar(i)}
               classes={clsx('border-2 h-20 w-20 rounded-full inline-block', {
@@ -80,23 +105,63 @@ export default function SignUpModal({ open, onClose, onConfirm }) {
           {t('modal_signup.subheading_two')}
         </h2>
 
-        <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
-          <code className="mb-2 whitespace-pre-wrap break-all text-base">
-            {user ? user.privateKey.toString(16) : ''}
-          </code>
-          <CopyButton content={user ? user.privateKey.toString(16) : ''}>
-            {t('shared.copy')}
-          </CopyButton>
-        </pre>
+        <RadioGroup value={view} onChange={handleChangeView}>
+          <RadioButton name="generate" value={View.Generate}>
+            Generate
+          </RadioButton>
 
-        <p className="mt-5 text-base">{t('modal_signup.paragraph_two')}</p>
+          <RadioButton name="inpit" value={View.Input}>
+            Enter my own
+          </RadioButton>
+        </RadioGroup>
+
+        {view === View.Generate && (
+          <>
+            <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
+              {privateKey && (
+                <>
+                  <code className="mb-2 whitespace-pre-wrap break-all text-base">
+                    {privateKey}
+                  </code>
+                  <CopyButton content={privateKey}>
+                    {t('shared.copy')}
+                  </CopyButton>
+                </>
+              )}
+            </pre>
+            <p className="mt-5 text-base">{t('modal_signup.generate')}</p>
+          </>
+        )}
+
+        {view === View.Input && (
+          <>
+            <Input
+              type="text"
+              name="private_key"
+              placeholder="Enter your private key"
+              onInput={handleSetPrivateKey}
+            />
+            <p className="mt-5 text-base">{t('modal_signup.input')}</p>
+          </>
+        )}
+
+        <Checkbox
+          name="checkbox"
+          className="my-4"
+          value={copyAcknowledged}
+          onChange={setCopyAcknowledged}
+          label={t('modal_signup.acknowledge_copy')}
+        />
+
         <button
-          onClick={confirm}
-          className="mt-4 w-full rounded-md border border-white px-4 py-2 text-xl text-white"
+          onClick={handleConfirm}
+          disabled={loading || !copyAcknowledged}
+          className="mt-4 w-full rounded-md border border-white px-4 py-2 text-xl text-white disabled:border-opacity-50 disabled:text-opacity-50"
         >
-          {t('modal_signup.confirm')}
+          {loading && <Loader className="h-7 w-7 text-white" />}
+          {!loading && t('modal_signup.confirm')}
         </button>
       </div>
-    </Modal>
+    </ReactModal>
   )
 }

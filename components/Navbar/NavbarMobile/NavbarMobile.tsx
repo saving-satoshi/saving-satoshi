@@ -55,7 +55,7 @@ export default function NavbarMobile({ params }) {
           <HamburgerMenu isOpen={isOpen} clicked={handleButtonClick} />
         </div>
         <div className="flex items-center">
-          <HelpLink />
+          <HelpLink params={params} />
           <UserButton />
         </div>
       </div>

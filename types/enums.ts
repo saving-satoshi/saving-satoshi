@@ -15,3 +15,9 @@ export enum InjectableComponentType {
   Tooltip,
   LineBreak,
 }
+
+export enum LoadingState {
+  Idle = 0,
+  Failed = 1,
+  Success = 2,
+}

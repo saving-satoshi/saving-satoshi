@@ -1,4 +1,4 @@
-export { get, post, fetchContext } from './fetch'
+export { get, put, post } from './fetch'
 export { default as url } from './url'
 
 export const isWithinRect = (

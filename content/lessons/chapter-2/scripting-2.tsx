@@ -4,6 +4,11 @@ import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 
+export const metadata = {
+  title: 'chapter_two.scripting_one.title',
+  key: 'CH2SCR2',
+}
+
 const javascript = {
   program: `
 // Validate whether the user code will produce a string with a length of 64.
@@ -133,8 +138,4 @@ export default function Scripting2({ lang }) {
       </LessonInfo>
     </ScriptingChallenge>
   )
-}
-
-export const metadata = {
-  title: 'chapter_two.scripting_one.title',
 }

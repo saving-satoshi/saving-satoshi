@@ -211,7 +211,7 @@ export default function Runner({
             }
           )}
         >
-          <Loader />
+          <Loader className="h-10 w-10 text-white" />
         </div>
       )}
 

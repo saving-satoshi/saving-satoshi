@@ -1,17 +1,23 @@
 'use client'
-
+import { chapters, lessons } from 'content'
 import { useLang, useTranslations } from 'hooks'
 import Link from 'next/link'
 import { Tooltip } from 'ui'
 
-export default function HelpLink() {
+export default function HelpLink({ params }: { params: any }) {
   const lang = useLang()
   const t = useTranslations(lang)
+
+  const { slug, lesson: lessonId } = params
+  const { theme = chapters[slug].metadata.theme } =
+    lessons[slug][lessonId]?.metadata ?? 'bg-back'
+
   return (
     <div className="flex-l flex h-full items-stretch">
       <Tooltip
         id={`navbar-tab-tooltip-3`}
         position="bottom"
+        theme={theme}
         offset={0}
         content={
           <div className="flex">
