@@ -277,7 +277,6 @@ export default function Runner({
       <StatusBar
         input={result ? result.substring(0, 5) : ''}
         expected="00000"
-        next={'/chapters/chapter-1/outro-2'}
       />
     </>
   )
