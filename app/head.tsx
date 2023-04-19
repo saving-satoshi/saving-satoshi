@@ -61,33 +61,42 @@ export default async function Head() {
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
       <meta name="theme-color" content="#ffffff" />
 
-      <title>Saving Satoshi</title>
-      <meta
-        name="description"
-        content="Explore the mysteries of Satoshi and learn about bitcoin along the way."
-      />
+      <title>Saving Satoshi - Code your way through the mysteries of Bitcoin!</title>
+  <meta name="description" content="A fun learning resource for developers to learn about how to build on bitcoin." />
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://imagedelivery.net/wyrwp3c-j0gDDUWgnE7lig/6818cd1b-ea0d-49a4-ea14-d34c1bbae100/public" />
+  <meta property="og:title" content="Saving Satoshi - Code your way through the mysteries of Bitcoin!" />
+  <meta property="og:description" content="A fun learning resource for developers to learn about how to build on bitcoin." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://savingsatoshi.com/" />
+  <meta property="twitter:image" content="https://savingsatoshi.com/_next/image?url=%2Fassets%2Fpreviews%2Fmain-image-preview.jpg&w=3840&q=100" />
 
-      <meta property="og:url" content="https://savingsatoshi.com/" />
-      <meta property="og:title" content="Saving Satoshi" />
-      <meta property="og:site_name" content="Saving Satoshi" />
-      <meta
-        property="og:image"
-        content="https://savingsatoshi.com/_next/image?url=%2Fassets%2Fpreviews%2Fmain-image-preview.jpg&w=3840&q=100"
-      />
-      <meta
-        property="og:description"
-        content="Explore the mysteries of Satoshi and learn about bitcoin along the way."
-      />
-
-      <meta name="twitter:card" content="summary" />
-      <meta
-        property="twitter:title"
-        content="Explore the mysteries of Satoshi and learn about bitcoin along the way."
-      />
-      <meta
-        property="twitter:image"
-        content="https://savingsatoshi.com/_next/image?url=%2Fassets%2Fpreviews%2Fmain-image-preview.jpg&w=3840&q=100"
-      />
+//Schema      
+<script type="application/ld+json" class="schemantra">{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "@id": "CreativeWork",
+  "abstract": "Saving Satoshi is a light-hearted first point of contact for developers who are curious about bitcoin development. Saving Satoshi has a mix of technical text and code-based challenges, but the challenges should be doable for anyone with basic coding skills. The project is free and open source and all the art has been generated using text-to-image (aka AI) tools like Midjourney.",
+  "creativeWorkStatus": "Published",
+  "dateCreated": "2022-10-06",
+  "sameAs": [
+      "https://twitter.com/savingsatoshi",
+      "https://makers.bolt.fun/project/saving-satoshi",
+      "https://github.com/saving-satoshi"
+    ],
+  "datePublished": "2023-03-24",
+  "description": "A fun learning resource for developers to learn about how to build on bitcoin.",
+  "educationalLevel": "beginner",
+  "genre": "Education Platform",
+  "headline": "Code your way through the mysteries of bitcoin!",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "keywords": "bitcoin, bitcoin developer, bitcoin development, btc",
+  "learningResourceType": "Coding game platform",
+  "name": "Saving Satoshi",
+  "teaches": "Bitcoin, coding",
+  "thumbnailUrl": "https://imagedelivery.net/wyrwp3c-j0gDDUWgnE7lig/6818cd1b-ea0d-49a4-ea14-d34c1bbae100/public"
+}</script>
     </>
   )
 }
