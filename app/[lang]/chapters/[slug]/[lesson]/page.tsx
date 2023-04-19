@@ -35,7 +35,7 @@ export default function Page({ params }) {
   useEffect(() => {
     if (!isAccountLoading && !isProgressLoading) {
       if (progress && params.lesson) {
-        const lesson = chapterLessons[params.lesson].metadata
+        const lesson = chapterLessons[params.lesson]?.metadata ?? false
         const lessonUnlocked = isLessonUnlocked(progress, lesson.key)
         setUnlocked(lessonUnlocked ? LoadingState.Success : LoadingState.Failed)
       } else {

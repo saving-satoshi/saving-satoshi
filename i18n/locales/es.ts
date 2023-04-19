@@ -23,11 +23,11 @@ const translations = {
     title: `Info`,
     mobile_title: `De qué se trata`,
     subtitle: `El año es 2139. Faltan dos semanas para que se extraiga el último bitcoin. Durante meses, un reloj ha hecho tic-tac en el la Plaza Satoshi.`,
-    intro: `El mundo espera el último bloque. Entonces, de repente, la red se detiene. <br><br>Recibes un <em>holocat</em> (es como cualquier otro e-holograma, pero éste tiene forma de gato) de alguien que usa el nombre de Satoshi Nakamoto. Abres el holocat tocándole la nariz con curiosidad por escuchar lo que tiene que decir...`,
+    intro: `El mundo espera el último bloque. Entonces, de repente, la red se detiene. <br><br>Recibes un holocat (es como cualquier otro e-holograma, pero éste tiene forma de gato) de alguien que usa el nombre de Satoshi Nakamoto. Abres el holocat tocándole la nariz con curiosidad por escuchar lo que tiene que decir...`,
 
     project: {
       title: `Construido para divertirse`,
-      paragraph_one: `<strong>Saving Satoshi</strong> es un primer punto de contacto para desarrolladores que sientan curiosidad por el desarrollo bitcoin. Saving Satoshi es una mezcla de texto técnico y retos basados en código, aunque los retos deberían ser aptos para cualquiera con conocimientos básicos de programación. El proyecto es gratuito y de código abierto, y todo el arte se ha generado utilizando herramientas de conversión de texto en imagen (también conocidas como IA) como Midjourney.`,
+      paragraph_one: `Saving Satoshi es un primer punto de contacto para desarrolladores que sientan curiosidad por el desarrollo bitcoin. Saving Satoshi es una mezcla de texto técnico y retos basados en código, aunque los retos deberían ser aptos para cualquiera con conocimientos básicos de programación. El proyecto es gratuito y de código abierto, y todo el arte se ha generado utilizando herramientas de conversión de texto en imagen (también conocidas como IA) como Midjourney.`,
       paragraph_two: `Esta versión del proyecto se encuentra actualmente en estado de demostración con el objetivo de obtener comentarios sobre la experiencia general y proporcionar una prueba de concepto para los primeros usuarios. Por ello, el progreso del usuario se almacena localmente en el navegador y la historia y las imágenes no están finalizadas.`,
       paragraph_three: `En función de los comentarios que recibamos, trabajaremos para lanzar una versión oficial (que llamaremos V1) que incluya 2-3 capítulos completos de lecciones, cuentas y mucho más. Se han planificado 10 capítulos que se irán publicando a medida que se completen. Entre las funciones adicionales se incluyen el aprendizaje colaborativo, las insignias, las misiones secundarias más desafiantes, etc.`,
     },
@@ -51,7 +51,7 @@ const translations = {
     contributors: {
       title: `¡Disfrútalo!`,
       contributions_by: `Contribuciones de`,
-      many_more: `, <href="https://VEINTIUNO.world/libro/salvando-satoshi/" target="_blank">@VEINTIUNO.world</a> y <a href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" target="_blank" rel="noreferrer">muchos más</a>.`,
+      many_more: `, <a href="https://VEINTIUNO.world/libro/salvando-satoshi/" target="_blank">@VEINTIUNO.world</a> y <a href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" target="_blank" rel="noreferrer">muchos más</a>.`,
     },
 
     satoshi_needs_you: `Ahora date prisa, Satoshi te necesita.`,
