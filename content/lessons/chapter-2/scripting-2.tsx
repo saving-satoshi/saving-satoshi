@@ -3,6 +3,7 @@
 import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
+import { Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_two.scripting_one.title',
@@ -129,12 +130,12 @@ export default function Scripting2({ lang }) {
       successMessage={t('chapter_two.scripting_two.success')}
     >
       <LessonInfo>
-        <span className="font-nunito text-xl text-white">
+        <Text className="font-nunito text-xl text-white">
           {t('chapter_two.scripting_two.paragraph_one')}
-        </span>
-        <span className="font-nunito text-xl text-white">
+        </Text>
+        <Text className="font-nunito text-xl text-white">
           {t('chapter_two.scripting_two.paragraph_two')}
-        </span>
+        </Text>
       </LessonInfo>
     </ScriptingChallenge>
   )
