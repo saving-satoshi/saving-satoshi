@@ -80,7 +80,7 @@ export default function HashChallenge({
       if (answerHint && success === 'false') {
         setHintTooltip(true)
       }
-    }, 15000)
+    }, 1500)
 
     if (
       success !== 'true' &&
@@ -107,7 +107,7 @@ export default function HashChallenge({
 
   return (
     <Lesson>
-      <div className="flex w-full justify-start md:grow md:justify-center">
+      <div className="flex justify-start md:grow md:justify-center">
         <div className="flex max-w-[1280px] items-start justify-center px-4 py-8 font-space-mono text-white md:w-9/12 md:items-center lg:w-9/12">
           <div className="flex flex-col">
             <div className="w-full">
@@ -120,7 +120,7 @@ export default function HashChallenge({
                 placeholder={inputPlaceholder}
                 maxLength={24}
                 className={clsx(
-                  'top-0 left-0 w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[24px] leading-[180%] tracking-[1px] text-white outline-none md:text-center md:text-[30px] md:tracking-[5%]',
+                  'top-0 left-0 w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] text-white outline-none md:text-center md:text-[30px] md:tracking-[5%]',
                   {
                     'overlay-complete':
                       (typeof answer === 'string' &&
@@ -142,7 +142,7 @@ export default function HashChallenge({
                   {
                     'opacity-100':
                       answerHint && hintTooltip && success !== 'true',
-                    'opacity-0': !hintTooltip,
+                    'invisible opacity-0': !hintTooltip,
                   }
                 )}
               >
@@ -155,7 +155,7 @@ export default function HashChallenge({
         </div>
       </div>
       <hr className="border-1 h-1 w-full border-white/25" />
-      <div className="flex w-full grow justify-center">
+      <div className="flex grow justify-center">
         <div className="flex max-w-[1280px] grow items-start justify-center px-4 py-8 font-space-mono text-white md:w-9/12 md:items-center lg:w-9/12">
           <div className="flex flex-col justify-center">
             <div className="flex w-full justify-center">
