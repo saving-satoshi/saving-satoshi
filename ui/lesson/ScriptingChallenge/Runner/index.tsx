@@ -199,7 +199,7 @@ export default function Runner({
       <Script src="https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js" />
 
       {loading && (
-        <div className="h-60 overflow-y-auto border-t border-white border-opacity-30 bg-[#253547] p-4">
+        <div className="mt-40 h-20 overflow-y-auto border-t border-white border-opacity-30 bg-[#253547] p-4">
           <Loader className="h-10 w-10 text-white" />
         </div>
       )}
