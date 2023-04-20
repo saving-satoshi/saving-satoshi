@@ -13,12 +13,12 @@ export default function LanguageTabs({
   onChange: (val: string) => void
 }) {
   const { activeView } = useLessonContext()
-  const isActive = activeView !== LessonView.Info
+  const isActive = activeView === LessonView.Code
 
   return (
     <div
       className={clsx(
-        'flex h-10 items-center justify-start border-b border-white border-opacity-30',
+        'flex h-10 items-center justify-start border-b border-t border-white border-opacity-30 md:border-t-0',
         {
           'hidden md:flex': !isActive,
           flex: isActive,

@@ -22,7 +22,7 @@ export default function Tab({
         {
           'border-2 text-opacity-75 transition duration-150 ease-in-out hover:text-opacity-50':
             !isActive,
-          'border-0 bg-black bg-opacity-25 py-[2px]': isActive,
+          'mx-[2px] border-0 bg-black bg-opacity-25': isActive,
           grow: stretch,
         }
       )}
