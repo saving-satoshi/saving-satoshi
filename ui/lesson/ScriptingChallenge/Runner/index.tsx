@@ -42,10 +42,11 @@ export default function Runner({
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const [result, setResult] = useState<any | undefined>(undefined)
   const [success, setSuccess] = useState('false')
-  const { activeView } = useLessonContext()
+  const { activeView, setActiveView } = useLessonContext()
   const isActive = activeView !== LessonView.Info
 
   const handleRun = async () => {
+    setActiveView(LessonView.Execute)
     const outputEl = outputRef.current as HTMLElement
     setIsRunning(true)
 
