@@ -133,7 +133,7 @@ export default function Scripting2({ lang }) {
         <Text className="font-nunito text-xl text-white">
           {t('chapter_two.scripting_two.paragraph_one')}
         </Text>
-        <Text className="font-nunito text-xl text-white">
+        <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_two.scripting_two.paragraph_two')}
         </Text>
       </LessonInfo>
