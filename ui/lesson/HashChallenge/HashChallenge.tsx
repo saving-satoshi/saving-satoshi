@@ -80,7 +80,7 @@ export default function HashChallenge({
       if (answerHint && success === 'false') {
         setHintTooltip(true)
       }
-    }, 1500)
+    }, 15000)
 
     if (
       success !== 'true' &&
