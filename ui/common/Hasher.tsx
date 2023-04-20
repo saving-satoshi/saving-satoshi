@@ -39,12 +39,12 @@ export default function Hasher({
 
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col justify-center">
         <h2 className="text-left text-[18px] font-bold md:text-center">
           {label}
         </h2>
-        <span className="h-full w-full resize-none overflow-hidden bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:w-full md:max-w-5xl md:text-center md:text-[30px] md:tracking-[5%]">
-          {formatHash(hash, 64, true)}
+        <span className="flex h-full w-full resize-none self-center overflow-hidden bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:w-3/4 md:text-center md:text-[30px] md:tracking-[5px]">
+          {formatHash(hash, 64, 4, 1, true)}
         </span>
       </div>
     </>

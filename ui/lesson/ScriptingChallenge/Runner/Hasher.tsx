@@ -66,7 +66,9 @@ export default function Hasher({
           <span className="text-sm text-[#F3241D]">Error</span>
         )}
         {state !== HasherState.Error && value && (
-          <div className="flex flex-col gap-1">{formatHash(value)}</div>
+          <div className="flex flex-col gap-1">
+            {formatHash(value, 64, 4, 2, null)}
+          </div>
         )}
       </div>
 

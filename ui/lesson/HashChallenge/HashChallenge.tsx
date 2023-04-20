@@ -158,7 +158,7 @@ export default function HashChallenge({
       <div className="flex w-full grow justify-center">
         <div className="flex max-w-[1280px] grow items-start justify-center px-4 py-8 font-space-mono text-white md:w-9/12 md:items-center lg:w-9/12">
           <div className="flex flex-col justify-center">
-            <div className="w-full">
+            <div className="flex w-full justify-center">
               <Hasher
                 onChange={setUserInput}
                 answer={answer}
