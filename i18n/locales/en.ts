@@ -1,5 +1,3 @@
-import { notFound } from 'next/navigation'
-
 const translations = {
   shared: {
     next: 'Continue',
@@ -112,7 +110,7 @@ const translations = {
       paragraph_one:
         'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
       paragraph_two:
-        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
+        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
       paragraph_three: 'Copy that value and paste it in the code block.',
       tooltip_block_explorer:
         'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
@@ -268,9 +266,9 @@ const translations = {
       heading:
         'Enter anything until you find a hash that starts with a zero (“0”)',
       hint_prompt:
-        'Need a <Tooltip id="hint_prompt" position="bottom" offset="-1" content="chapter_two.hashing_four.hint_tooltip" className="underline">hint</Tooltip>?',
+        'Need a <Tooltip id="hint_prompt" position="bottom" theme="red" offset="-1" content="chapter_two.hashing_four.hint_tooltip" className="underline">hint</Tooltip>?',
       hint_tooltip:
-        '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="whitespace-nowrap bg-black/20 text-transparent hover:text-white">popcorn</span>',
+        '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="cursor-pointer whitespace-nowrap bg-black/20 text-transparent hover:text-white">popcorn</span>',
     },
 
     hashing_five: {
@@ -278,9 +276,9 @@ const translations = {
       heading:
         'Enter anything until you find a hash that starts with two zeroes (“00”)',
       hint_prompt:
-        'Need a <Tooltip id="hint_prompt" position="bottom" offset="-1" content="chapter_two.hashing_five.hint_tooltip" className="underline">hint</Tooltip>?',
+        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-red" offset="-1" content="chapter_two.hashing_five.hint_tooltip" className="underline">hint</Tooltip>?',
       hint_tooltip:
-        '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="whitespace-nowrap bg-black/20 text-transparent hover:text-white">trigonometry</span>',
+        '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="cursor-pointer whitespace-nowrap bg-black/20 text-transparent hover:text-white">trigonometry</span>',
     },
 
     hashing_six: {
