@@ -1,11 +1,13 @@
 export default function formatHash(
   hash: string,
   length?: number,
+  chunkLength?: number,
+  rows?: number,
   underscores?: boolean
 ) {
   const result = []
-  const chunkSize = 4
-  const numberOfRows = 2
+  const chunkSize = !!chunkLength ? chunkLength : 4
+  const numberOfRows = !!rows ? rows : 2
   const matches = hash.match(/^0+/)
   const leadingZeros = matches && matches.length > 0 ? matches[0].length : 0
   let zeroCount = 0
@@ -48,21 +50,27 @@ export default function formatHash(
             return char
           })
 
-      !!hash && underscores
+      !hash && underscores
         ? row.push(
-            <span key={startIndex} className="text-white text-opacity-50">
-              {chunk}
+            <span
+              key={startIndex}
+              className="mr-3 inline-block text-white text-opacity-50"
+            >
+              {placeholderChunk}
             </span>
           )
         : row.push(
-            <span key={startIndex} className="text-white text-opacity-50">
-              {placeholderChunk}
+            <span
+              key={startIndex}
+              className="mr-3 inline-block text-white text-opacity-50"
+            >
+              {chunk}
             </span>
           )
     }
 
     result.push(
-      <div key={i} className="flex items-center justify-start gap-3">
+      <div key={i} className="inline-block">
         {row}
       </div>
     )
