@@ -67,7 +67,7 @@ export default function Hasher({
         )}
         {state !== HasherState.Error && value && (
           <div className="flex flex-col gap-1">
-            {formatHash(value, 64, 4, 2, null)}
+            {formatHash(value, 64, 4, 1, null)}
           </div>
         )}
       </div>
