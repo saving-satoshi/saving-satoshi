@@ -45,7 +45,7 @@ const translations = {
       feedback: {
         title: 'Feedback',
         paragraph_one:
-          'A great way to contribute is to go through Chapter 1 and give us any feedback on the overall experience you might have using this form.',
+          'A great way to contribute is to go through Chapter 1 and give us any feedback on the overall experience you might have using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this form</a>.',
       },
 
       contribute: {
