@@ -51,9 +51,7 @@ VM.close()
   defaultCode: `const crypto = require('crypto')
 
 function findHash(nonce) {
-  const hash = crypto.createHash('sha256').update(nonce).digest('hex')
-
-  return hash
+  // Enter your script here (should return a 64 character long string)
 }`,
   validate: async (answer) => {
     return answer.startsWith('00000') && answer.length === 64
@@ -98,13 +96,10 @@ VM.result(hash)
     name: 'find_hash',
     args: ['nonce'],
   },
-  defaultCode: `
-from hashlib import sha256
+  defaultCode: `from hashlib import sha256
 
 def find_hash(nonce):
-  hash = sha256(str(nonce).encode('utf-8')).hexdigest()
-
-  return hash
+  # Enter your script here (should return a 64 character long string)
 `,
   validate: async (answer) => {
     return answer.startsWith('00000') && answer.length === 64
