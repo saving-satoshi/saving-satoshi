@@ -35,7 +35,7 @@ export default function Editor({
       inherit: true,
       rules: [],
       colors: {
-        'editor.background': '#253547',
+        'editor.background': '#00000003',
         'editor.lineHighlightBorder': '#00000000', // 4th channel is for transparency
         // 'editor.selectionBackground': '#ff0000',
         // 'editor.lineHighlightBackground': '#ff0000',
@@ -85,18 +85,15 @@ export default function Editor({
       })}
     >
       {loading && (
-        <div className="absolute inset-0 -top-10 z-10 flex items-center justify-center bg-[#253547]">
+        <div className="absolute inset-0 -top-10 z-10 flex items-center justify-center bg-black/15">
           <Loader className="h-10 w-10 text-white" />
         </div>
       )}
       <MonacoEditor
-        //className="w-full md:w-1/2"
         width={width}
         height="calc(100vh - 71px - 48px - 40px - 240px)"
-        // theme="satoshi"
-        // defaultLanguage={language}
-        // defaultValue={code}
         language={language}
+        theme={'satoshi'}
         value={value}
         beforeMount={handleBeforeMount}
         onMount={handleMount}

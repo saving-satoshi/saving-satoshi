@@ -87,7 +87,7 @@ export default function Hasher({
         'flex h-60 flex-col gap-4 overflow-hidden border-t border-white border-opacity-30 p-4 font-mono text-white',
         {
           'bg-[#28B123] bg-opacity-25': state === HasherState.Success,
-          'bg-[#253547]': state !== HasherState.Success,
+          'bg-black/15': state !== HasherState.Success,
         },
         {
           'hidden md:flex': !isActive,

@@ -200,8 +200,6 @@ export default function Runner({
     }
   }, [])
 
-  console.log(success)
-
   return (
     <>
       <Script src="https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js" />
@@ -209,7 +207,7 @@ export default function Runner({
       {loading && (
         <div
           className={clsx(
-            'h-60 overflow-y-auto border-t border-white border-opacity-30 bg-[#253547] p-4',
+            'h-60 overflow-y-auto border-t border-white border-opacity-30 p-4',
             {
               'hidden md:flex': !isActive,
               flex: isActive,
@@ -235,11 +233,10 @@ export default function Runner({
           value={result}
         />
       )}
-      {/*<div className="h-full grow md:hidden" />*/}
 
       <div
         className={clsx(
-          'flex h-12 w-full items-center border-t border-white border-opacity-30 bg-[#253547]',
+          'flex h-12 w-full items-center border-t border-white border-opacity-30',
           {
             'hidden md:flex': !isActive && success !== 'true',
             hidden: success === 'true' || loading,
