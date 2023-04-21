@@ -121,10 +121,15 @@ export default function Chapter({ children, metadata, lang }) {
                         {(chapter.metadata.lessons.length > 0 &&
                           display &&
                           progress &&
-                          progress.substring(3, 6) === 'INT1') ||
-                          (!progress &&
+                          progress.substring(3, 7) === 'INT1' &&
+                          `${t('shared.start_chapter')} ${position}`) ||
+                          (chapter.metadata.lessons.length > 0 &&
+                            display &&
+                            !progress &&
                             `${t('shared.start_chapter')} ${position}`) ||
-                          (progress &&
+                          (chapter.metadata.lessons.length > 0 &&
+                            display &&
+                            progress &&
                             keysMeta[progress].path.split('/')[2] !==
                               chapter.metadata.slug &&
                             `${t('shared.start_chapter')} ${position}`) ||
