@@ -82,7 +82,7 @@ for i in range(n):
   hash = find_hash(i)
   log(hash, i)
   VM.result(hash)
-  time.sleep(1)
+  time.sleep(50)
 
 # After n amount of tries have failed, force a hash starting with 5 zeroes.
 hash = find_hash(n+1)
