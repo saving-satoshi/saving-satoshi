@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
 
@@ -15,7 +15,7 @@ import { ChapterContextType } from 'types'
 import { useTranslations } from 'hooks'
 import useLessonStatus from 'hooks/useLessonStatus'
 import { useProgressContext } from 'providers/ProgressProvider'
-import { getLessonKey } from 'lib/progress'
+import { getLessonKey, keysMeta } from 'lib/progress'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -103,7 +103,16 @@ export default function Chapter({ children, metadata, lang }) {
                       (chapter.metadata.lessons.length === 0 && null)}
                     <div className="flex pt-8 md:w-full">
                       <Button
-                        href={`${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}`}
+                        href={
+                          !progress ||
+                          (progress &&
+                            keysMeta[progress].path.split('/')[2] !==
+                              chapter.metadata.slug)
+                            ? `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}`
+                            : `${routes.chaptersUrl}/${chapter.metadata.slug}/${
+                                keysMeta[progress].path.split('/')[3]
+                              }`
+                        }
                         disabled={
                           chapter.metadata.lessons.length === 0 || !display
                         }
@@ -111,14 +120,28 @@ export default function Chapter({ children, metadata, lang }) {
                       >
                         {(chapter.metadata.lessons.length > 0 &&
                           display &&
-                          `${t('shared.start_chapter')} ${position}`) ||
+                          progress &&
+                          progress.substring(3, 6) === 'INT1') ||
+                          (!progress &&
+                            `${t('shared.start_chapter')} ${position}`) ||
+                          (progress &&
+                            keysMeta[progress].path.split('/')[2] !==
+                              chapter.metadata.slug &&
+                            `${t('shared.start_chapter')} ${position}`) ||
+                          (chapter.metadata.lessons.length > 0 &&
+                            display &&
+                            progress &&
+                            keysMeta[progress].path.split('/')[2] ===
+                              chapter.metadata.slug &&
+                            `${t('shared.next')}`) ||
                           (chapter.metadata.lessons.length > 0 &&
                             !display &&
                             `${t('chapter.chapter_locked_one')} ${
                               position - 1
                             } ${t('chapter.chapter_locked_two')}`) ||
                           (chapter.metadata.lessons.length === 0 &&
-                            t('shared.coming_soon'))}
+                            t('shared.coming_soon')) ||
+                          t('shared.start_chapter')}
                       </Button>
                     </div>
                   </div>
