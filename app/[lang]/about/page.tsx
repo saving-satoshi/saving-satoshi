@@ -49,7 +49,6 @@ export default function About({ params }) {
           <div className="mt-4 flex flex-col gap-8 font-nunito text-xl">
             <p>{t('about.project.paragraph_one')}</p>
             <p>{t('about.project.paragraph_two')}</p>
-            <p>{t('about.project.paragraph_three')}</p>
           </div>
 
           <Divider />
