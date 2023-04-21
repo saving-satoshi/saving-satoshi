@@ -207,7 +207,7 @@ export default function Runner({
       {loading && (
         <div
           className={clsx(
-            'h-60 overflow-y-auto border-t border-white border-opacity-30 p-4',
+            'mt-40 h-20 overflow-y-auto border-t border-white border-opacity-30 p-4',
             {
               'hidden md:flex': !isActive,
               flex: isActive,
