@@ -88,12 +88,12 @@ export default function Hasher({
         {
           'bg-[#28B123] bg-opacity-25': state === HasherState.Success,
           'bg-black/15': state !== HasherState.Success,
+          'mt-40 h-20': state === HasherState.Waiting,
+          'h-60': state !== HasherState.Waiting,
         },
         {
           'hidden md:flex': !isActive,
           flex: isActive,
-          'mt-40 h-20': state === HasherState.Waiting,
-          'h-60': state !== HasherState.Waiting,
         }
       )}
     >

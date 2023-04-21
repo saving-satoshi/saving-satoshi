@@ -6,10 +6,11 @@ import MonacoEditor from '@monaco-editor/react'
 
 import { monacoOptions } from './config'
 import { monaco } from 'react-monaco-editor'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Loader } from 'shared'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
+import { useMediaQuery } from 'hooks'
 
 export default function Editor({
   language,
@@ -26,7 +27,6 @@ export default function Editor({
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
-  const [width, setWidth] = useState('calc(100vw / 2)')
   const [loading, setLoading] = useState<boolean>(true)
 
   const handleBeforeMount = (monaco) => {
@@ -63,19 +63,7 @@ export default function Editor({
     setLoading(false)
   }
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setWidth('100vw')
-      } else {
-        setWidth('calc(100vw / 2)')
-      }
-    }
-
-    window.addEventListener('resize', handleResize)
-    handleResize() // set initial value
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  const isSmallScreen = useMediaQuery({ width: 767 })
 
   return (
     <div
@@ -90,7 +78,7 @@ export default function Editor({
         </div>
       )}
       <MonacoEditor
-        width={width}
+        width={isSmallScreen ? '100vw' : 'calc(100vw / 2)'}
         height="calc(100vh - 71px - 48px - 40px - 240px)"
         language={language}
         theme={'satoshi'}
