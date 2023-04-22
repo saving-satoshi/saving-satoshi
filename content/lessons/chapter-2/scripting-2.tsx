@@ -1,8 +1,9 @@
 'use client'
 
-import ScriptingChallenge from 'ui/lesson/ScriptingChallenge'
+import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
+import { Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_two.scripting_one.title',
@@ -128,12 +129,14 @@ export default function Scripting2({ lang }) {
       config={config}
       successMessage={t('chapter_two.scripting_two.success')}
     >
-      <span className="font-nunito text-xl text-white">
-        {t('chapter_two.scripting_two.paragraph_one')}
-      </span>
-      <span className="font-nunito text-xl text-white">
-        {t('chapter_two.scripting_two.paragraph_two')}
-      </span>
+      <LessonInfo>
+        <Text className="font-nunito text-xl text-white">
+          {t('chapter_two.scripting_two.paragraph_one')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_two.scripting_two.paragraph_two')}
+        </Text>
+      </LessonInfo>
     </ScriptingChallenge>
   )
 }
