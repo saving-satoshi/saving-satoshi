@@ -81,7 +81,7 @@ export default function ScriptingChallenge({
   }, [])
 
   if (!hydrated) {
-    return <></>
+    return null
   }
 
   return (

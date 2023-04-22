@@ -15,7 +15,7 @@ export default function Address() {
   const chapterId = pathData.pop()
 
   if (!chapterId) {
-    return <></>
+    return null
   }
 
   const chapter = chapters[chapterId]?.metadata

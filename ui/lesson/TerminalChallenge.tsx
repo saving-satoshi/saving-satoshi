@@ -161,7 +161,7 @@ export default function TerminalChallenge({
   }, [])
 
   if (!hydrated) {
-    return <></>
+    return null
   }
 
   return (

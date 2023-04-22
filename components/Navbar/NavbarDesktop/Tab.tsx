@@ -53,7 +53,7 @@ export default function Tab({
 
   const pnLessonId = pathData.pop()
   if (!pnLessonId) {
-    return <></>
+    return null
   }
 
   const challengeId = isRouteLesson

@@ -27,7 +27,7 @@ export default function LoginModal({ onClose, open }) {
   }
 
   if (!isLoaded || !account) {
-    return <></>
+    return null
   }
 
   return (
