@@ -10,7 +10,7 @@ export const metadata = {
   key: 'CH1GEN1',
 }
 
-export default function Genesis2({ lang }) {
+export default function Genesis1({ lang }) {
   const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
 

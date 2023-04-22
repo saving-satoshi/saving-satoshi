@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { TextImage, Text } from 'ui'
+import { Introduction, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_one.intro_two.title',
@@ -10,16 +10,11 @@ export const metadata = {
   key: 'CH1INT2',
 }
 
-export default function Holocat({ lang }) {
+export default function Intro2({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <TextImage
-      lang={lang}
-      imageSrc={metadata.image}
-      imageAlt={metadata.title}
-      btnEnabled={true}
-    >
+    <Introduction lang={lang}>
       <Text className="text-lg md:text-xl">
         {t('chapter_one.intro_two.paragraph_one')}
       </Text>
@@ -35,6 +30,6 @@ export default function Holocat({ lang }) {
       <Text className="mt-4 text-lg md:text-xl">
         {t('chapter_one.intro_two.paragraph_five')}
       </Text>
-    </TextImage>
+    </Introduction>
   )
 }

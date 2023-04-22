@@ -39,14 +39,33 @@ export default function Tab({
   const isRouteLesson = pathData.length === 4
 
   const { progress } = useProgressContext()
-  const { isUnlocked, isCompleted } = useLessonStatus(
+  const { isUnlocked } = useLessonStatus(
+    progress,
+    getLessonKey(
+      slug,
+      challenge.lessonId === chapters[slug].metadata.lessons[0]
+        ? 'intro-1'
+        : challenge.lessonId
+    )
+  )
+  const { isCompleted } = useLessonStatus(
     progress,
     getLessonKey(slug, challenge.lessonId)
   )
 
-  const challengeId = isRouteLesson ? pathData.pop().split('-')[0] : undefined
+  const challengeId = isRouteLesson
+    ? pathData
+        .pop()
+        .split('-')[0]
+        .replace('intro', chapters[slug].metadata.challenges[0].split('-')[0])
+    : undefined
   const isActive = challenge.lessonId.split('-')[0] === challengeId
   const isLast = index === count - 1
+  const lessonHref =
+    challenge.lessonId === chapters[slug].metadata.challenges[0]
+      ? chapters[slug].metadata.intros[0]
+      : challenge.lessonId
+  const href = `${routes.chaptersUrl}/${slug}/${lessonHref}`
 
   return (
     <Tooltip
@@ -64,7 +83,7 @@ export default function Tab({
       }
     >
       <Link
-        href={`${routes.chaptersUrl}/${slug}/${challenge.lessonId}`}
+        href={href}
         title={t(challenge.title)}
         className={clsx(
           'relative flex h-full items-center justify-center border-l border-white/25 px-7 text-center text-lg transition duration-100 ease-in-out',
@@ -74,7 +93,7 @@ export default function Tab({
               isUnlocked && !isActive,
             'bg-black/25 text-opacity-100': isActive,
             'border-r': isLast,
-            'pointer-events-none': isUnlocked,
+            'pointer-events-none': !isUnlocked,
           }
         )}
       >

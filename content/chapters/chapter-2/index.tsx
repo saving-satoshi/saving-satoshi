@@ -21,5 +21,5 @@ export const metadata = {
   intros: ['intro-1', 'intro-2'],
   lessons: ['scripting-1'],
   outros: [],
-  challenges: [],
+  challenges: ['scripting-1'],
 }
