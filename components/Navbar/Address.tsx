@@ -7,12 +7,16 @@ export default function Address() {
   const lang = useLang()
   const t = useTranslations(lang)
 
-  const pathName = usePathname()
+  const pathName = usePathname() || ''
   const pathData = pathName.split('/').filter((p) => p)
   const isLessonRoute = pathData.length === 4
 
   const lessonId = isLessonRoute ? pathData.pop() : undefined
   const chapterId = pathData.pop()
+
+  if (!chapterId) {
+    return <></>
+  }
 
   const chapter = chapters[chapterId]?.metadata
   const chapterLessons = lessons[chapterId]

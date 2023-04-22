@@ -5,7 +5,7 @@ interface UseMediaQueryParams {
   width: number
 }
 
-export const useMediaQuery = ({ width }: UseMediaQueryParams): boolean => {
+export default function useMediaQuery({ width }: UseMediaQueryParams): boolean {
   const [isWidthMet, setIsWidthMet] = useState<boolean>(
     typeof window !== 'undefined' && window.innerWidth <= width
   )

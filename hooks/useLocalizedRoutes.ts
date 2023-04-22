@@ -1,6 +1,6 @@
 import { usePathData } from 'hooks'
 
-export const useLocalizedRoutes = () => {
+export default function useLocalizedRoutes() {
   const { lang } = usePathData()
 
   return {

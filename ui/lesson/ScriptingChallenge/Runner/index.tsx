@@ -27,7 +27,7 @@ export default function Runner({
   successMessage,
 }: {
   language: string
-  code: string
+  code?: string
   config: EditorConfig
   program: string
   errors: string[]
@@ -47,9 +47,10 @@ export default function Runner({
 
   const handleRun = async () => {
     setActiveView(LessonView.Execute)
-    const outputEl = outputRef.current as HTMLElement
     setIsRunning(true)
 
+    // const output = outputRef.current
+    // const outputEl = output as HTMLElement
     // outputEl.innerHTML = `<div class="text-sm text-white font-mono">${defaultTerminalMessage}</div>`
 
     const iframe = document.createElement('iframe')
@@ -105,7 +106,7 @@ export default function Runner({
             if (isRequest) {
               setSuccess('true')
               if (language === 'javascript') {
-                iframe.contentWindow.postMessage(
+                iframe.contentWindow?.postMessage(
                   JSON.stringify({
                     action: 'result',
                     payload: success,
@@ -145,9 +146,11 @@ export default function Runner({
     switch (language) {
       case 'javascript': {
         const doc = iframe.contentDocument
-        doc.open()
-        doc.write(compiledCode)
-        doc.close()
+        if (doc) {
+          doc.open()
+          doc.write(compiledCode)
+          doc.close()
+        }
         break
       }
       case 'python': {

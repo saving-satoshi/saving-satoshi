@@ -5,7 +5,7 @@ export interface ChapterContextType {}
 export interface LessonContextType {
   direction: LessonDirection
   activeView: LessonView
-  setActiveView: Function
+  setActiveView: (view: LessonView) => void
 }
 
 export interface EditorFunction {
@@ -47,9 +47,9 @@ export interface AuthContextType {
 }
 
 export interface ProgressContextType {
-  progress: string
+  progress: string | undefined
   isLoading: boolean
-  saveProgress: (key: string) => void | undefined
+  saveProgress: (key: string) => Promise<void>
 }
 
 export interface ModalContextType {

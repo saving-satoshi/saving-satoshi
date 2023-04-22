@@ -63,7 +63,7 @@ export default function ScriptingChallenge({
   }
 
   const handleRunnerValidate = async (answer) => {
-    const success = config.languages[language].validate(answer)
+    const success = await config.languages[language].validate(answer)
 
     if (success) {
       console.log('challenge complete')
@@ -80,41 +80,43 @@ export default function ScriptingChallenge({
     setHydrated(true)
   }, [])
 
-  return (
-    hydrated && (
-      <Lesson
-        direction={
-          isSmallScreen ? LessonDirection.Vertical : LessonDirection.Horizontal
-        }
-      >
-        <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
-        {children}
+  if (!hydrated) {
+    return <></>
+  }
 
-        <div className="flex grow flex-col border-white/25 md:basis-1/3 md:border-l">
-          <LanguageTabs
-            languages={config.languages}
-            value={language}
-            onChange={handleSetLanguage}
-          />
-          <Editor
-            language={language}
-            value={code}
-            onChange={handleChange}
-            onValidate={handleEditorValidate}
-          />
-          <Runner
-            lang={lang}
-            config={config}
-            language={language}
-            code={code}
-            program={config.languages[language].program}
-            errors={errors}
-            onValidate={handleRunnerValidate}
-            onReady={handleRunnerReady}
-            successMessage={successMessage}
-          />
-        </div>
-      </Lesson>
-    )
+  return (
+    <Lesson
+      direction={
+        isSmallScreen ? LessonDirection.Vertical : LessonDirection.Horizontal
+      }
+    >
+      <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
+      {children}
+
+      <div className="flex grow flex-col border-white/25 md:basis-1/3 md:border-l">
+        <LanguageTabs
+          languages={config.languages}
+          value={language}
+          onChange={handleSetLanguage}
+        />
+        <Editor
+          language={language}
+          value={code}
+          onChange={handleChange}
+          onValidate={handleEditorValidate}
+        />
+        <Runner
+          lang={lang}
+          config={config}
+          language={language}
+          code={code}
+          program={config.languages[language].program}
+          errors={errors}
+          onValidate={handleRunnerValidate}
+          onReady={handleRunnerReady}
+          successMessage={successMessage}
+        />
+      </div>
+    </Lesson>
   )
 }

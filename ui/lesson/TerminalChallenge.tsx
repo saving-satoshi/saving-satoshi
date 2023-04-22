@@ -160,18 +160,20 @@ export default function TerminalChallenge({
     setHydrated(true)
   }, [])
 
-  return (
-    hydrated && (
-      <Lesson
-        direction={
-          isSmallScreen ? LessonDirection.Vertical : LessonDirection.Horizontal
-        }
-      >
-        <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
-        {children}
+  if (!hydrated) {
+    return <></>
+  }
 
-        <LessonTerminal success={success} lines={lines} onChange={onChange} />
-      </Lesson>
-    )
+  return (
+    <Lesson
+      direction={
+        isSmallScreen ? LessonDirection.Vertical : LessonDirection.Horizontal
+      }
+    >
+      <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
+      {children}
+
+      <LessonTerminal success={success} lines={lines} onChange={onChange} />
+    </Lesson>
   )
 }

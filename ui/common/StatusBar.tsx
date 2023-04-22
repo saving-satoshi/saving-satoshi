@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 import { Button } from 'shared'
-import CheckIcon from 'public/assets/icons/check.svg'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
 import { useLang, useSaveAndProceed, useTranslations } from 'hooks'
+import Icon from 'shared/Icon'
 
 export enum Status {
   Begin,
@@ -63,7 +63,7 @@ export default function StatusBar({
         return (
           successMessage || (
             <span className="flex">
-              <CheckIcon className="mr-2 h-8 w-8" />{' '}
+              <Icon icon="check" className="mr-2 h-8 w-8" />{' '}
               {t('status_bar.success_message')}
             </span>
           )

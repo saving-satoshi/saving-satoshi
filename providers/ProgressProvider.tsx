@@ -8,7 +8,7 @@ import { useAuthContext } from './AuthProvider'
 export const ProgressContext = createContext<ProgressContextType>({
   progress: undefined,
   isLoading: true,
-  saveProgress: undefined,
+  saveProgress: (key: string) => Promise.resolve(),
 })
 
 export const useProgressContext = () => useContext(ProgressContext)
@@ -19,7 +19,9 @@ export default function AuthProvider({
   children: React.ReactNode
 }) {
   const { account } = useAuthContext()
-  const [accountProgress, setAccountProgress] = useState(undefined)
+  const [accountProgress, setAccountProgress] = useState<string | undefined>(
+    undefined
+  )
   const [isLoading, setIsLoading] = useState(true)
   const [savePending, setSavePending] = useState(false)
 

@@ -5,9 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { Tooltip } from 'ui'
-import CheckIcon from 'public/assets/icons/check.svg'
-import LockIcon from 'public/assets/icons/lock.svg'
-
+import Icon from 'shared/Icon'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { lessons, chapters } from 'content'
 import { getLessonKey } from 'lib/progress'
@@ -33,7 +31,7 @@ export default function Tab({
   const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
-  const pathName = usePathname()
+  const pathName = usePathname() || ''
 
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
@@ -53,9 +51,13 @@ export default function Tab({
     getLessonKey(slug, challenge.lessonId)
   )
 
+  const pnLessonId = pathData.pop()
+  if (!pnLessonId) {
+    return <></>
+  }
+
   const challengeId = isRouteLesson
-    ? pathData
-        .pop()
+    ? pnLessonId
         .split('-')[0]
         .replace('intro', chapters[slug].metadata.challenges[0].split('-')[0])
     : undefined
@@ -99,10 +101,16 @@ export default function Tab({
       >
         {index + 1}
         {!isUnlocked && (
-          <LockIcon className="absolute right-[10px] top-[10px] opacity-50" />
+          <Icon
+            icon="lock"
+            className="absolute right-[10px] top-[10px] opacity-50"
+          />
         )}
         {isCompleted && (
-          <CheckIcon className="absolute right-[5px] top-[5px] h-[20px] w-[20px]" />
+          <Icon
+            icon="check"
+            className="absolute right-[5px] top-[5px] h-[20px] w-[20px]"
+          />
         )}
       </Link>
     </Tooltip>

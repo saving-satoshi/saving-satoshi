@@ -37,7 +37,7 @@ export default function Hasher({
   }
 
   const formatHash = (hash) => {
-    const result = []
+    const result: any = []
     const chunkSize = 4
     const numberOfRows = 2
     const matches = hash.match(/^0+/)
@@ -45,7 +45,7 @@ export default function Hasher({
     let zeroCount = 0
 
     for (let i = 0; i < numberOfRows; i++) {
-      const row = []
+      const row: any = []
 
       for (let j = 0; j < hash.length / (chunkSize * numberOfRows); j++) {
         const startIndex = i * (hash.length / numberOfRows) + j * chunkSize

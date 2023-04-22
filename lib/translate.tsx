@@ -22,7 +22,7 @@ const componentRegexes = {
   [ComponentType.LineBreak]: /<br(.*?)>/gim,
 }
 
-export function t(key: string, lang: string) {
+export function t(key: string | undefined, lang: string) {
   if (!key) {
     return '{missing_translation_key}'
   }
@@ -60,7 +60,7 @@ function injectComponent(result, type) {
     }
 
     const regex = componentRegexes[type]
-    const parts = []
+    const parts: any = []
     let match
     let index = 0
     let lastIndex = 0
@@ -96,7 +96,7 @@ function injectComponent(result, type) {
           parts.push(
             <Link
               key={index}
-              href={href}
+              href={href as any}
               className={clsx('cursor-pointer', className)}
               target="_blank"
             >
@@ -140,8 +140,11 @@ function injectComponent(result, type) {
   })
 }
 
-function getFirstMatch(input: string, regex: RegExp) {
+function getFirstMatch(input: string, regex: RegExp): string {
   const match = input.match(regex)
+  if (!match) {
+    return ''
+  }
 
-  return match?.length > 0 ? match[1] : null
+  return match.length > 0 ? match[1] : ''
 }
