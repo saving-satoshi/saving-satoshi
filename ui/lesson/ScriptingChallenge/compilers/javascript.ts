@@ -78,8 +78,12 @@ function compile(input: string, program: string) {
     }
 
     static async run() {
-      ${input}
-      ${program}
+      try {
+        ${input}
+        ${program}
+      } catch(ex) {
+        VM.result({ value: undefined, error: ex.message })
+      }
     }
   }
 
