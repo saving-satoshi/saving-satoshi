@@ -1,50 +1,21 @@
 'use client'
 
-import SignUpModal from 'components/Modals/SignUp'
-import { Button } from 'ui'
-import { useState } from 'react'
-import { setUserProgress } from 'lib/user'
-import { useStatus, useTranslations } from 'hooks'
+import { Button } from 'shared'
+import { useSaveAndProceed, useTranslations } from 'hooks'
 
 export default function End({
   title,
   description,
   image,
-  checkpoint,
   lang,
 }: {
   title?: string
   description?: string
   image: string
-  checkpoint: {
-    chapter: any
-    lesson: any
-    next: string
-  }
   lang: string
 }) {
   const t = useTranslations(lang)
-  const [openModal, setOpenModal] = useState(false)
-  const status = useStatus(checkpoint.chapter, checkpoint.lesson)
-
-  function onSaveProgress() {
-    saveProgressLocally()
-    setOpenModal(false)
-
-    window.location.href = checkpoint.next
-  }
-
-  function onContinue() {
-    saveProgressLocally()
-
-    window.location.href = checkpoint.next
-  }
-
-  function saveProgressLocally() {
-    if (!status.completed) {
-      setUserProgress(checkpoint.chapter, checkpoint.lesson)
-    }
-  }
+  const saveAndProceed = useSaveAndProceed()
 
   return (
     <div
@@ -68,14 +39,16 @@ export default function End({
             >
               {t('chapter_one.end.feedback')}
             </Button>
+            {/*Secret Button*/}
+            <Button
+              onClick={saveAndProceed}
+              classes="w-full md:w-auto bg-transparent text-transparent hover:bg-transparent hover:cursor-default"
+            >
+              {t('shared.next')}
+            </Button>
           </div>
         </div>
       </div>
-      <SignUpModal
-        onConfirm={onSaveProgress}
-        onClose={() => setOpenModal(false)}
-        open={openModal}
-      />
     </div>
   )
 }

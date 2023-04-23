@@ -1,9 +1,9 @@
 import clsx from 'clsx'
-import { Button } from 'ui'
+import { Button } from 'shared'
 import CheckIcon from 'public/assets/icons/check.svg'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
-import { useLang, useTranslations } from 'hooks'
+import { useLang, useSaveAndProceed, useTranslations } from 'hooks'
 
 export enum Status {
   Begin,
@@ -13,7 +13,6 @@ export enum Status {
 }
 
 export default function StatusBar({
-  next,
   input,
   expected,
   beginMessage,
@@ -22,8 +21,8 @@ export default function StatusBar({
   errorMessage,
   full,
   hints,
+  alwaysShow,
 }: {
-  next: string
   input: string
   expected: string
   beginMessage?: string
@@ -32,11 +31,13 @@ export default function StatusBar({
   errorMessage?: string
   full?: boolean
   hints?: boolean
+  alwaysShow?: boolean
 }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { activeView } = useLessonContext()
-  const isActive = activeView === LessonView.Code
+  const isActive = activeView !== LessonView.Info
+  const saveAndProceed = useSaveAndProceed()
 
   const getStatus = () => {
     if (!input) {
@@ -81,14 +82,15 @@ export default function StatusBar({
   return (
     <div
       className={clsx(
-        'border-t border-white/25 max-md:bottom-0 max-md:px-4 max-md:py-8',
+        'grow border-t border-white/25 max-md:bottom-0 max-md:px-4 max-md:py-8',
         {
           'w-screen': full,
           'w-full': !full,
-          'bg-green/25': getStatus() === Status.Success,
+          'bg-green/15': getStatus() === Status.Success,
           'bg-black/20': getStatus() !== Status.Success,
-          block: getStatus() === Status.Success || isActive,
-          'hidden md:block': getStatus() !== Status.Success && !isActive,
+          block: getStatus() === Status.Success && isActive,
+          'hidden md:block':
+            getStatus() !== Status.Success && !isActive && !alwaysShow,
         }
       )}
     >
@@ -108,7 +110,7 @@ export default function StatusBar({
         </div>
 
         <Button
-          href={next}
+          onClick={saveAndProceed}
           disabled={getStatus() !== Status.Success}
           classes="md:text-2xl md:py-4"
         >

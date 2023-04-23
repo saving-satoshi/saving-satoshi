@@ -9,7 +9,8 @@ import Icon from 'shared/Icon'
 import Terminal from './Terminal'
 import compilers from '../compilers'
 import Hasher, { HasherState } from './Hasher'
-import { EditorConfig } from 'types'
+import { EditorConfig, LessonView } from 'types'
+import { useLessonContext, StatusBar } from 'ui'
 
 let worker
 const defaultTerminalMessage = 'Saving Satoshi Runner v0.0.1'
@@ -40,8 +41,12 @@ export default function Runner({
   const [loading, setLoading] = useState<boolean>(true)
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const [result, setResult] = useState<any | undefined>(undefined)
+  const [success, setSuccess] = useState('false')
+  const { activeView, setActiveView } = useLessonContext()
+  const isActive = activeView !== LessonView.Info
 
   const handleRun = async () => {
+    setActiveView(LessonView.Execute)
     const outputEl = outputRef.current as HTMLElement
     setIsRunning(true)
 
@@ -98,6 +103,7 @@ export default function Runner({
             }
 
             if (isRequest) {
+              setSuccess('true')
               if (language === 'javascript') {
                 iframe.contentWindow.postMessage(
                   JSON.stringify({
@@ -199,8 +205,16 @@ export default function Runner({
       <Script src="https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js" />
 
       {loading && (
-        <div className="h-60 overflow-y-auto border-t border-white border-opacity-30 bg-[#253547] p-4">
-          <Loader />
+        <div
+          className={clsx(
+            'h-20 overflow-y-auto border-t border-white border-opacity-30 p-4',
+            {
+              'hidden md:flex': !isActive,
+              flex: isActive,
+            }
+          )}
+        >
+          <Loader className="h-10 w-10 text-white" />
         </div>
       )}
 
@@ -220,7 +234,16 @@ export default function Runner({
         />
       )}
 
-      <div className="flex h-12 w-full items-center border-t border-white border-opacity-30 bg-[#253547]">
+      <div
+        className={clsx(
+          'flex h-12 w-full items-center border-t border-white border-opacity-30',
+          {
+            'hidden md:flex': !isActive && success !== 'true',
+            hidden: success === 'true' || loading,
+            flex: isActive,
+          }
+        )}
+      >
         {!isRunning && (
           <button
             disabled={loading}
@@ -254,6 +277,7 @@ export default function Runner({
           </button>
         )}
       </div>
+      {success === 'true' && <StatusBar input={success} expected="true" />}
     </>
   )
 }

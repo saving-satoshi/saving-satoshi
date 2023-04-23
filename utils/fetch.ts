@@ -1,5 +1,6 @@
 import { url } from 'utils'
 import { FetchOptions } from 'types'
+import { SAVING_SATOSHI_TOKEN } from 'config/keys'
 
 const defaultHeaders = {
   'Content-Type': 'application/json',
@@ -16,7 +17,10 @@ export async function get(options: FetchOptions) {
     }
 
     if (options.includeToken) {
-      fetchOptions.headers['Authorization'] = `Bearer ${fetchContext.token}`
+      const token = window.localStorage.getItem(SAVING_SATOSHI_TOKEN)
+      if (token) {
+        fetchOptions.headers['Authorization'] = `Bearer ${token}`
+      }
     }
 
     const res = await fetch(url(options.url), fetchOptions)
@@ -43,7 +47,10 @@ export async function post(options: FetchOptions) {
     }
 
     if (options.includeToken) {
-      fetchOptions.headers['Authorization'] = `Bearer ${fetchContext.token}`
+      const token = window.localStorage.getItem(SAVING_SATOSHI_TOKEN)
+      if (token) {
+        fetchOptions.headers['Authorization'] = `Bearer ${token}`
+      }
     }
 
     if (options.body) {
@@ -63,6 +70,36 @@ export async function post(options: FetchOptions) {
   }
 }
 
-export const fetchContext = {
-  token: undefined,
+export async function put(options: FetchOptions) {
+  try {
+    const fetchOptions: any = {
+      method: 'PUT',
+      headers: {
+        ...defaultHeaders,
+        ...options.headers,
+      },
+    }
+
+    if (options.includeToken) {
+      const token = window.localStorage.getItem(SAVING_SATOSHI_TOKEN)
+      if (token) {
+        fetchOptions.headers['Authorization'] = `Bearer ${token}`
+      }
+    }
+
+    if (options.body) {
+      fetchOptions.body = JSON.stringify(options.body)
+    }
+
+    const res = await fetch(url(options.url), fetchOptions)
+    const json = await res.json()
+
+    if (json.errors) {
+      throw json.errors
+    }
+
+    return json
+  } catch (ex) {
+    throw ex
+  }
 }

@@ -6,9 +6,10 @@ import { Introduction, Text } from 'ui'
 export const metadata = {
   title: 'chapter_two.intro_two.title',
   image: '/assets/images/chapter-2-intro-2.jpg',
+  key: 'CH2INT2',
 }
 
-export default function ReapingRewards({ lang }) {
+export default function Intro2({ lang }) {
   const t = useTranslations(lang)
 
   return (

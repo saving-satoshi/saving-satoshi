@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { StatusBar, useLessonContext } from 'ui'
 import { LessonView } from 'types'
 
-export default function Terminal({ success, lines, next, onChange }) {
+export default function Terminal({ success, lines, onChange }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
   const [input, setInput] = useState('')
@@ -90,7 +90,7 @@ export default function Terminal({ success, lines, next, onChange }) {
   return (
     <div
       className={clsx(
-        'flex grow flex-col border-white/25 font-space-mono text-white md:basis-1/3 md:border-l',
+        'flex max-w-full grow flex-col border-white/25 font-space-mono text-white md:max-w-[50%] md:basis-1/3 md:border-l',
         {
           'hidden md:flex': !isActive,
           flex: isActive,
@@ -136,7 +136,7 @@ export default function Terminal({ success, lines, next, onChange }) {
             </div>
           </div>
         </div>
-        <StatusBar input={success} expected="true" next={next} />
+        <StatusBar input={success} expected="true" />
       </div>
     </div>
   )
