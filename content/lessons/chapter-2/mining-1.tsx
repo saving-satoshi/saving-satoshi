@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { Button, Title, InfoBox, ProgressBar } from 'ui'
+import { Button, Title, MiningStatistic, ProgressBar } from 'ui'
 import { use, useState } from 'react'
 
 export default function Mining1({ lang }) {
@@ -296,22 +296,22 @@ export default function Mining1({ lang }) {
           <span className="absolute right-0">{blocks} of 1,000</span>
         </div>
         <ProgressBar avatar="1" progress={blocks / 10} />
-        <InfoBox
+        <MiningStatistic
           title={t('chapter_two.mining_one.progress_bar_one')}
           content={nonce}
           highlight={nonceHighlight}
         />
-        <InfoBox
+        <MiningStatistic
           title={t('chapter_two.mining_one.progress_bar_two')}
           content={hashPower}
           highlight={hashPowerHighlight}
         />
-        <InfoBox
+        <MiningStatistic
           title={t('chapter_two.mining_one.progress_bar_three')}
           content={transactionsConfirmed}
           highlight={transactionsConfirmedHighlight}
         />
-        <InfoBox
+        <MiningStatistic
           title={t('chapter_two.mining_one.progress_bar_four')}
           content={bitcoinMined}
           highlight={bitcoinMinedHighlight}
