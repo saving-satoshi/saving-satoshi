@@ -1,8 +1,9 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { Button, Title, MiningStatistic, ProgressBar } from 'ui'
-import { use, useState } from 'react'
+import { Title, MiningStatistic, ProgressBar } from 'ui'
+import { useState } from 'react'
+import { Button } from 'shared'
 
 export default function Mining1({ lang }) {
   const t = useTranslations(lang)
