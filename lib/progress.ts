@@ -1,4 +1,4 @@
-import { chapters, lessons } from 'content'
+import { lessons } from 'content'
 
 export const keys = [
   'CH1INT1',

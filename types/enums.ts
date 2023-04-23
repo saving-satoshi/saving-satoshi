@@ -6,6 +6,7 @@ export enum LessonDirection {
 export enum LessonView {
   Info = 'info',
   Code = 'code',
+  Execute = 'execute',
 }
 
 export enum InjectableComponentType {

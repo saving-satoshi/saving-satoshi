@@ -40,7 +40,6 @@ export default function Tab({
   const isRouteLesson = pathData.length === 4
 
   const { progress } = useProgressContext()
-
   const { isUnlocked } = useLessonStatus(
     progress,
     getLessonKey(

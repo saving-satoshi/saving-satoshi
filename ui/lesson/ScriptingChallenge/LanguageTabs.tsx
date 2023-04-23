@@ -1,5 +1,6 @@
 import clsx from 'clsx'
-import { EditorLanguages } from 'types'
+import { EditorLanguages, LessonView } from 'types'
+import { useLessonContext } from 'ui'
 import { languageMeta } from './config'
 
 export default function LanguageTabs({
@@ -11,8 +12,19 @@ export default function LanguageTabs({
   value: string
   onChange: (val: string) => void
 }) {
+  const { activeView } = useLessonContext()
+  const isActive = activeView === LessonView.Code
+
   return (
-    <div className="flex h-10 items-center justify-start border-b border-white border-opacity-30">
+    <div
+      className={clsx(
+        'flex h-10 items-center justify-start border-b border-t border-white border-opacity-30 md:border-t-0',
+        {
+          'hidden md:flex': !isActive,
+          flex: isActive,
+        }
+      )}
+    >
       {Object.keys(languages).map((l, i) => {
         const meta = languageMeta[l]
 

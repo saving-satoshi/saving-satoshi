@@ -7,11 +7,12 @@ import {
 } from 'lib/progress'
 import { useRouter } from 'next/navigation'
 import { useProgressContext } from 'providers/ProgressProvider'
-import { usePathData } from './usePathData'
+import { usePathData, useLang } from 'hooks'
 import { lessons } from 'content'
 import { useAuthContext } from 'providers/AuthProvider'
 
 export const useSaveAndProceed = () => {
+  const lang = useLang()
   const router = useRouter()
   const { account } = useAuthContext()
   const { progress, saveProgress } = useProgressContext()
@@ -29,7 +30,7 @@ export const useSaveAndProceed = () => {
       await saveProgress(nextLessonKey)
     }
 
-    router.push(nextLessonPath)
+    router.push(lang + '/' + nextLessonPath)
   }
 
   return saveAndProceed

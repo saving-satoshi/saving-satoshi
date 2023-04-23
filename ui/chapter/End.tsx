@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from 'shared'
-import { useTranslations } from 'hooks'
+import { useSaveAndProceed, useTranslations } from 'hooks'
 
 export default function End({
   title,
@@ -15,6 +15,7 @@ export default function End({
   lang: string
 }) {
   const t = useTranslations(lang)
+  const saveAndProceed = useSaveAndProceed()
 
   return (
     <div
@@ -37,6 +38,13 @@ export default function End({
               external={true}
             >
               {t('chapter_one.end.feedback')}
+            </Button>
+            {/*Secret Button*/}
+            <Button
+              onClick={saveAndProceed}
+              classes="w-full md:w-auto bg-transparent text-transparent hover:bg-transparent hover:cursor-default"
+            >
+              {t('shared.next')}
             </Button>
           </div>
         </div>

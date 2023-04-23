@@ -1,7 +1,8 @@
 import clsx from 'clsx'
 import { useTranslations } from 'hooks'
-import { EditorConfig } from 'types'
+import { EditorConfig, LessonView } from 'types'
 import formatHash from 'lib/formatHash'
+import { useLessonContext } from 'ui'
 
 export enum HasherState {
   Waiting = 0,
@@ -29,6 +30,8 @@ export default function Hasher({
 }) {
   const t = useTranslations(lang)
   const languageConfig = config.languages[language]
+  const { activeView } = useLessonContext()
+  const isActive = activeView === LessonView.Execute
 
   const formatArgs = () => {
     return languageConfig.defaultFunction.args.join(', ')
@@ -37,10 +40,16 @@ export default function Hasher({
   return (
     <div
       className={clsx(
-        'flex h-60 flex-col gap-4 overflow-y-auto border-t border-white border-opacity-30 p-4 font-mono text-white',
+        'flex flex-col gap-4 overflow-y-auto border-t border-white border-opacity-30 p-4 font-mono text-white',
         {
           'bg-[#28B123] bg-opacity-25': state === HasherState.Success,
-          'bg-[#253547]': state !== HasherState.Success,
+          'bg-black/15': state !== HasherState.Success,
+          'mt-40 h-20': state === HasherState.Waiting,
+          'h-60': state !== HasherState.Waiting,
+        },
+        {
+          'hidden md:flex': !isActive,
+          flex: isActive,
         }
       )}
     >
@@ -53,37 +62,39 @@ export default function Hasher({
         </div>
       )}
 
-      <div className="flex flex-col">
-        <span className="text-sm font-bold">{t('runner.running')}</span>
-        <span className="text-sm">
-          {languageConfig.defaultFunction.name}({formatArgs()})
-        </span>
-      </div>
-
-      <div className="flex flex-col">
-        <span className="text-sm font-bold">{t('runner.result')}</span>
-        {state === HasherState.Error && (
-          <span className="text-sm text-[#F3241D]">Error</span>
-        )}
-        {state !== HasherState.Error && value && (
-          <div className="flex flex-col gap-1">
-            {formatHash(value, 64, 4, 1, null)}
+      {state !== HasherState.Waiting && (
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col">
+            <span className="text-sm font-bold">{t('runner.running')}</span>
+            <span className="text-sm">
+              {languageConfig.defaultFunction.name}({formatArgs()})
+            </span>
           </div>
-        )}
-      </div>
 
-      <div className="flex flex-col">
-        <span className="text-sm font-bold">{t('runner.evaluation')}</span>
-        {state === HasherState.Error && (
-          <span className="text-sm">{errorMessage}</span>
-        )}
-        {state === HasherState.Success && (
-          <span className="text-sm">{successMessage}</span>
-        )}
-        {state !== HasherState.Error && state !== HasherState.Success && (
-          <span className="text-sm">Custom validation message</span>
-        )}
-      </div>
+          <div className="flex flex-col">
+            <span className="text-sm font-bold">{t('runner.result')}</span>
+            {state === HasherState.Error && (
+              <span className="text-sm text-[#F3241D]">Error</span>
+            )}
+            {state !== HasherState.Error && value && (
+              <div className="flex flex-col gap-1">{formatHash(value)}</div>
+            )}
+          </div>
+
+          <div className="flex flex-col">
+            <span className="text-sm font-bold">{t('runner.evaluation')}</span>
+            {state === HasherState.Error && (
+              <span className="text-sm">{errorMessage}</span>
+            )}
+            {state === HasherState.Success && (
+              <span className="text-sm">{successMessage}</span>
+            )}
+            {state !== HasherState.Error && state !== HasherState.Success && (
+              <span className="text-sm">Custom validation message</span>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
