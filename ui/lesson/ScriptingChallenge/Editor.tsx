@@ -64,6 +64,12 @@ export default function Editor({
   }
 
   const isSmallScreen = useMediaQuery({ width: 767 })
+  const headerHeight = 70
+  const languageTabsHeight = 40
+  const statusBarHeight = 64
+  const runnerHeight = 240
+  const totalHeight =
+    headerHeight + languageTabsHeight + statusBarHeight + runnerHeight
 
   return (
     <div
@@ -72,14 +78,10 @@ export default function Editor({
         flex: isActive,
       })}
     >
-      {loading && (
-        <div className="absolute inset-0 -top-10 z-10 flex items-center justify-center bg-black/15">
-          <Loader className="h-10 w-10 text-white" />
-        </div>
-      )}
       <MonacoEditor
+        loading={<Loader className="h-10 w-10 text-white" />}
         width={isSmallScreen ? '100vw' : 'calc(100vw / 2)'}
-        height="calc(100vh - 71px - 48px - 40px - 240px)"
+        height={`calc(100vh - ${totalHeight}px)`}
         language={language}
         theme={'satoshi'}
         value={value}

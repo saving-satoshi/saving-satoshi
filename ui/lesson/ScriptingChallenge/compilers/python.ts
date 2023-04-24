@@ -2,11 +2,12 @@ function compile(input, program) {
   return `
 import js
 import json
-import time
 import string
 import random
 import pyodide
 import builtins as __builtin__
+
+from pyodide.ffi import to_js
 from random import randrange
 
 def on_message(event):
@@ -18,6 +19,11 @@ proxy = pyodide.create_proxy(on_message)
 
 js.addEventListener('message', proxy)
 
+class time:
+  def sleep(timeout):
+    x=js.WebAssembly.Memory.new(to_js({"shared":True,"initial":1,"maximum":1}, dict_converter = js.Object.fromEntries))
+    b=js.Int32Array.new(x.buffer)
+    js.Atomics.wait(b,0,0,timeout)
 
 class VM:
   request_id = 0
