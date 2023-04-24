@@ -1,7 +1,6 @@
 import clsx from 'clsx'
 import { useTranslations } from 'hooks'
 import { EditorConfig, LessonView } from 'types'
-import formatHash from 'lib/formatHash'
 import { useLessonContext } from 'ui'
 
 export enum HasherState {
@@ -37,12 +36,61 @@ export default function Hasher({
     return languageConfig.defaultFunction.args.join(', ')
   }
 
+  const formatHash = (hash) => {
+    const result = []
+    if (!hash) {
+      return result
+    }
+
+    const chunkSize = 4
+    const numberOfRows = 2
+    const matches = hash.match(/^0+/)
+    const leadingZeros = matches && matches.length > 0 ? matches[0].length : 0
+    let zeroCount = 0
+
+    for (let i = 0; i < numberOfRows; i++) {
+      const row = []
+
+      for (let j = 0; j < hash.length / (chunkSize * numberOfRows); j++) {
+        const startIndex = i * (hash.length / numberOfRows) + j * chunkSize
+        const chunk = hash
+          .slice(startIndex, startIndex + chunkSize)
+          .split('')
+          .map((char, idx) => {
+            if (zeroCount < leadingZeros && char === '0') {
+              zeroCount++
+              return (
+                <span key={idx} className="text-white">
+                  {char}
+                </span>
+              )
+            }
+            return char
+          })
+
+        row.push(
+          <span key={startIndex} className="text-white text-opacity-50">
+            {chunk}
+          </span>
+        )
+      }
+
+      result.push(
+        <div key={i} className="flex items-center justify-start gap-3">
+          {row}
+        </div>
+      )
+    }
+
+    return result
+  }
+
   const formattedHash = formatHash(value)
 
   return (
     <div
       className={clsx(
-        'flex h-60 grow flex-col gap-4 overflow-y-auto border-t border-white border-opacity-30 p-4 font-mono text-white',
+        'flex max-h-60 grow flex-col gap-4 overflow-y-auto border-t border-white border-opacity-30 p-4 font-mono text-white',
         {
           'bg-[#28B123] bg-opacity-25': state === HasherState.Success,
           'bg-black/15': state !== HasherState.Success,

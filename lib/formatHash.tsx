@@ -8,7 +8,7 @@ export default function formatHash(
   const result = []
   const chunkSize = !!chunkLength ? chunkLength : 4
   const numberOfRows = !!rows ? rows : 2
-  const matches = hash.match(/^0+/)
+  const matches = hash?.match(/^0+/)
   const leadingZeros = matches && matches.length > 0 ? matches[0].length : 0
   let zeroCount = 0
 

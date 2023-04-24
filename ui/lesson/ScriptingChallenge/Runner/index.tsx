@@ -240,7 +240,7 @@ export default function Runner({
 
       <div
         className={clsx(
-          'flex h-16 w-full items-center border-t border-white border-opacity-30',
+          'flex h-16 w-full items-start border-t border-white border-opacity-30',
           {
             'hidden md:flex': !isActive && hasherState !== HasherState.Success,
             hidden: hasherState === HasherState.Success || loading,
@@ -282,7 +282,7 @@ export default function Runner({
         )}
       </div>
       {hasherState === HasherState.Success && (
-        <StatusBar className="h-16" input="answer" expected="answer" />
+        <StatusBar className="max-h-40 grow" input="answer" expected="answer" />
       )}
     </>
   )
