@@ -1,12 +1,7 @@
-const path = require('path')
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
     appDir: true,
-    fontLoaders: [
-      { loader: '@next/font/google', options: { subsets: ['latin'] } },
-    ],
   },
   reactStrictMode: false,
   swcMinify: true,
@@ -20,16 +15,16 @@ const nextConfig = {
       use: ['@svgr/webpack'],
     })
 
-    config.module.rules.push({
-      test: /\.py$/,
-      use: 'raw-loader',
-    })
+    // config.module.rules.push({
+    //   test: /\.py$/,
+    //   use: 'raw-loader',
+    // })
 
-    config.module.rules.push({
-      test: /\.js$/,
-      include: [path.resolve(__dirname, 'lib', 'vm', 'langs')],
-      use: 'raw-loader',
-    })
+    // config.module.rules.push({
+    //   test: /\.js$/,
+    //   include: [path.resolve(__dirname, 'lib', 'vm', 'langs')],
+    //   use: 'raw-loader',
+    // })
 
     return config
   },

@@ -18,7 +18,9 @@ export default function Input({
   disabled?: boolean
 }) {
   const handleInput = (e: any) => {
-    onInput(e.target.value)
+    if (typeof onInput === 'function') {
+      onInput(e.target.value)
+    }
   }
 
   return (

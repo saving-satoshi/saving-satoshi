@@ -1,19 +1,19 @@
+import Icon from 'shared/Icon'
 import Image from 'next/image'
-import UserIcon from 'public/assets/icons/avatar.svg'
 
 export default function Avatar({
   avatar,
   size,
-  classes,
+  className,
   onClick,
 }: {
   avatar?: string
   size?: number
-  classes?: string
+  className?: string
   onClick?: () => void
 }) {
   if (!avatar) {
-    return <UserIcon />
+    return <Icon icon="avatar" />
   }
 
   return (
@@ -22,7 +22,7 @@ export default function Avatar({
       alt="Avatar"
       width={size || 30}
       height={size || 30}
-      className={`rounded-full ${classes}`}
+      className={`rounded-full ${className}`}
       onClick={onClick}
     />
   )

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-export const useHasMounted = () => {
+export default function useHasMounted() {
   const [hasMounted, setHasMounted] = useState(false)
 
   useEffect(() => {

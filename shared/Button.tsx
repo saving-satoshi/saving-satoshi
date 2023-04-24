@@ -101,8 +101,8 @@ export default function Button({
         href={href}
         className={className}
         title={title}
-        rel={external ? 'noreferrer nofollow' : null}
-        target={external ? '_blank' : null}
+        rel={external ? 'noreferrer nofollow' : undefined}
+        target={external ? '_blank' : undefined}
       >
         {children}
       </Link>

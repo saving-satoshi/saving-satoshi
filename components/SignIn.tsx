@@ -24,11 +24,15 @@ export default function SignIn({
   const handleConfirm = async () => {
     try {
       setLoading(true)
+
       const loginSuccess = await login(privateKey)
       if (loginSuccess) {
         setPrivateKey('')
       }
-      onSignIn()
+
+      if (typeof onSignIn === 'function') {
+        onSignIn()
+      }
     } catch (ex) {
       console.error(ex)
     } finally {

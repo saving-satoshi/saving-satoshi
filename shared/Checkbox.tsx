@@ -14,7 +14,9 @@ export default function Checkbox({
   label?: string
 }) {
   const handleChange = (e) => {
-    onChange(e.target.checked)
+    if (typeof onChange === 'function') {
+      onChange(e.target.checked)
+    }
   }
 
   return (

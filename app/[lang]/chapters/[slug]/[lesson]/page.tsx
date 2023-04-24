@@ -20,7 +20,8 @@ import { LoadingState } from 'types'
 
 export default function Page({ params }) {
   const searchParams = useSearchParams()
-  const dev = searchParams.get('dev') === 'true'
+  const devParam = searchParams?.get('dev') || ''
+  const dev = devParam === 'true'
 
   const chapterId = params.slug
   const chapterLessons = lessons[chapterId]

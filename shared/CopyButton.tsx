@@ -2,9 +2,8 @@
 
 import { useState } from 'react'
 import Button from './Button'
-import CopyIcon from 'public/assets/icons/copy.svg'
-import CopyActiveIcon from 'public/assets/icons/copy_active.svg'
 import clsx from 'clsx'
+import Icon from './Icon'
 
 export default function CopyButton({
   content,
@@ -40,8 +39,8 @@ export default function CopyButton({
         onClick={copy}
         title={copied ? 'Copied!' : 'Copy'}
       >
-        {!copied && <CopyIcon className="w-8" />}
-        {copied && <CopyActiveIcon className="w-8" />}
+        {!copied && <Icon icon="copy" className="w-8" />}
+        {copied && <Icon icon="copyActive" className="w-8" />}
       </button>
     )
   }
