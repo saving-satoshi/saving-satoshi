@@ -1,24 +1,37 @@
 'use client'
 
 import { useLocalizedRoutes, useTranslations } from 'hooks'
-import { getLessonKey } from 'lib/progress'
-import { HashChallenge } from 'ui'
+import { ChapterIntro } from 'ui'
+import { Button } from 'shared'
 
 export const metadata = {
-  title: 'chapter_two.hashing_five.title',
+  title: 'chapter_two.hashing_one.title',
   key: 'CH2HSH5',
 }
 
 export default function Hashing5({ lang }) {
+  const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (
-    <HashChallenge
-      answer="00"
-      inputLabel={t('chapter_two.hashing_five.heading')}
-      returnLabel={t('hasher.return_hash')}
-      lessonKey={getLessonKey('chapter-2', 'hashing-5')}
-      answerHint
-    />
+    <ChapterIntro>
+      <div className="flex flex-col justify-center">
+        <p className="mt-2 text-center text-xl md:text-2xl">
+          {t('chapter_two.hashing_five.heading')}
+        </p>
+
+        <p className="mt-2.5 break-keep text-center text-lg md:text-xl">
+          {t('chapter_two.hashing_five.paragraph_one')}
+        </p>
+        <div className="flex justify-center">
+          <Button
+            href={`${routes.chaptersUrl}/chapter-2/hashing-6`}
+            classes="mt-10 max-md:w-full"
+          >
+            {t('shared.next')}
+          </Button>
+        </div>
+      </div>
+    </ChapterIntro>
   )
 }

@@ -273,17 +273,19 @@ const translations = {
 
     hashing_five: {
       title: 'Zeroes',
+      heading: 'That wasn’t too hard!',
+      paragraph_one:
+        'Let’s make it a bit more tricky. try to find a hash <br> that starts with two zeroes ("00").',
+    },
+
+    hashing_six: {
+      title: 'Zeroes',
       heading:
         'Enter anything until you find a hash that starts with two zeroes (“00”)',
       hint_prompt:
         'Need a <Tooltip id="hint_prompt" position="bottom" offset="-1" content="chapter_two.hashing_five.hint_tooltip" className="underline">hint</Tooltip>?',
       hint_tooltip:
         '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="cursor-pointer whitespace-nowrap bg-black/20 text-transparent hover:text-white">trigonometry</span>',
-    },
-
-    hashing_six: {
-      title: 'Zeroes',
-      heading: 'Beware the button!',
     },
 
     scripting_one: {

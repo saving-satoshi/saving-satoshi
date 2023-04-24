@@ -5,19 +5,19 @@ import { getLessonKey } from 'lib/progress'
 import { HashChallenge } from 'ui'
 
 export const metadata = {
-  title: 'chapter_two.hashing_four.title',
-  key: 'CH2HSH4',
+  title: 'chapter_two.hashing_five.title',
+  key: 'CH2HSH6',
 }
 
-export default function Hashing4({ lang }) {
+export default function Hashing6({ lang }) {
   const t = useTranslations(lang)
 
   return (
     <HashChallenge
-      answer="0"
-      inputLabel={t('chapter_two.hashing_four.heading')}
+      answer="00"
+      inputLabel={t('chapter_two.hashing_six.heading')}
       returnLabel={t('hasher.return_hash')}
-      lessonKey={getLessonKey('chapter-2', 'hashing-4')}
+      lessonKey={getLessonKey('chapter-2', 'hashing-6')}
       answerHint
     />
   )
