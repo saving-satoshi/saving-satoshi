@@ -15,7 +15,7 @@ export default function NavbarDesktop({ params }) {
 
   return (
     <div className="left-0 top-0 hidden w-full md:block">
-      <div className="flex items-stretch justify-between border-b border-white/80 text-white">
+      <div className="flex h-[70px] items-stretch justify-between border-b border-white/80 text-white">
         <div className="flex">
           <Link
             title={t('shared.back')}

@@ -22,6 +22,7 @@ export default function StatusBar({
   full,
   hints,
   alwaysShow,
+  className,
 }: {
   input: string
   expected: string
@@ -32,6 +33,7 @@ export default function StatusBar({
   full?: boolean
   hints?: boolean
   alwaysShow?: boolean
+  className?: string
 }) {
   const lang = useLang()
   const t = useTranslations(lang)
@@ -82,7 +84,8 @@ export default function StatusBar({
   return (
     <div
       className={clsx(
-        'grow border-t border-white/25 max-md:bottom-0 max-md:px-4 max-md:py-8',
+        className,
+        'border-t border-white/25 max-md:bottom-0 max-md:px-4 max-md:py-8',
         {
           'w-screen': full,
           'w-full': !full,
@@ -94,7 +97,7 @@ export default function StatusBar({
         }
       )}
     >
-      <div className="flex flex-col items-stretch justify-between max-md:gap-4 md:flex-row">
+      <div className="flex h-full flex-col items-stretch justify-between max-md:gap-4 md:flex-row">
         <div className="flex w-full items-center align-middle transition duration-150 ease-in-out md:px-5">
           <p
             className={clsx(
@@ -112,7 +115,7 @@ export default function StatusBar({
         <Button
           onClick={saveAndProceed}
           disabled={getStatus() !== Status.Success}
-          classes="md:text-2xl md:py-4"
+          classes="md:text-2xl h-full"
         >
           {t('status_bar.next')}
         </Button>
