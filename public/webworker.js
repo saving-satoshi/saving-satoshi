@@ -18,9 +18,10 @@ self.onmessage = async (event) => {
       try {
         await self.pyodide.loadPackagesFromImports(payload)
         const result = await self.pyodide.runPythonAsync(payload)
-        emit('close')
       } catch (error) {
-        emit('error', error.message)
+        emit('result', { value: undefined, error: error.message })
+      } finally {
+        emit('close')
       }
       break
     }

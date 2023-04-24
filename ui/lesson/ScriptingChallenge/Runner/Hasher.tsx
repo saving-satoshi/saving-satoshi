@@ -17,7 +17,7 @@ export default function Hasher({
   state,
   config,
   successMessage,
-  errorMessage,
+  errors,
   value,
 }: {
   lang: string
@@ -25,7 +25,7 @@ export default function Hasher({
   state: HasherState
   config: EditorConfig
   successMessage: string
-  errorMessage: string
+  errors: string[]
   value: any
 }) {
   const t = useTranslations(lang)
@@ -37,15 +37,15 @@ export default function Hasher({
     return languageConfig.defaultFunction.args.join(', ')
   }
 
+  const formattedHash = formatHash(value)
+
   return (
     <div
       className={clsx(
-        'flex flex-col gap-4 overflow-y-auto border-t border-white border-opacity-30 p-4 font-mono text-white',
+        'flex h-60 grow flex-col gap-4 overflow-y-auto border-t border-white border-opacity-30 p-4 font-mono text-white',
         {
           'bg-[#28B123] bg-opacity-25': state === HasherState.Success,
           'bg-black/15': state !== HasherState.Success,
-          'mt-40 h-20': state === HasherState.Waiting,
-          'h-60': state !== HasherState.Waiting,
         },
         {
           'hidden md:flex': !isActive,
@@ -63,36 +63,57 @@ export default function Hasher({
       )}
 
       {state !== HasherState.Waiting && (
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col">
-            <span className="text-sm font-bold">{t('runner.running')}</span>
+        <div className="flex flex-col">
+          <span className="text-sm font-bold">{t('runner.running')}</span>
+          <span className="text-sm">
+            {languageConfig.defaultFunction.name}({formatArgs()})
+          </span>
+        </div>
+      )}
+
+      {state === HasherState.Error && (
+        <div className="flex flex-col">
+          <span className="text-sm font-bold">{t('runner.result')}</span>
+          {value && value.length === 64 && formattedHash.length > 0 ? (
+            <div className="flex flex-col gap-1">{formattedHash}</div>
+          ) : (
+            <>
+              {value !== undefined && value !== null && value !== '' ? (
+                <span className="text-sm">{value}</span>
+              ) : (
+                <span className="text-sm">No output</span>
+              )}
+            </>
+          )}
+        </div>
+      )}
+
+      {(state === HasherState.Success || state === HasherState.Running) && (
+        <div className="flex flex-col">
+          <span className="text-sm font-bold">{t('runner.result')}</span>
+          {value && (
+            <div className="flex flex-col gap-1">{formatHash(value)}</div>
+          )}
+        </div>
+      )}
+
+      {state !== HasherState.Waiting && (
+        <div className="flex flex-col">
+          <span className="text-sm font-bold">{t('runner.evaluation')}</span>
+          {state === HasherState.Error &&
+            errors.map((error, i) => (
+              <span key={i} className="text-sm">
+                {error}
+              </span>
+            ))}
+          {state === HasherState.Success && (
+            <span className="text-sm">{successMessage}</span>
+          )}
+          {state !== HasherState.Error && state !== HasherState.Success && (
             <span className="text-sm">
-              {languageConfig.defaultFunction.name}({formatArgs()})
+              Waiting for you to run the script...
             </span>
-          </div>
-
-          <div className="flex flex-col">
-            <span className="text-sm font-bold">{t('runner.result')}</span>
-            {state === HasherState.Error && (
-              <span className="text-sm text-[#F3241D]">Error</span>
-            )}
-            {state !== HasherState.Error && value && (
-              <div className="flex flex-col gap-1">{formatHash(value)}</div>
-            )}
-          </div>
-
-          <div className="flex flex-col">
-            <span className="text-sm font-bold">{t('runner.evaluation')}</span>
-            {state === HasherState.Error && (
-              <span className="text-sm">{errorMessage}</span>
-            )}
-            {state === HasherState.Success && (
-              <span className="text-sm">{successMessage}</span>
-            )}
-            {state !== HasherState.Error && state !== HasherState.Success && (
-              <span className="text-sm">Custom validation message</span>
-            )}
-          </div>
+          )}
         </div>
       )}
     </div>

@@ -63,7 +63,7 @@ export default function ScriptingChallenge({
   }
 
   const handleRunnerValidate = async (answer) => {
-    const success = config.languages[language].validate(answer)
+    const success = await config.languages[language].validate(answer)
 
     if (success) {
       console.log('challenge complete')
@@ -90,7 +90,7 @@ export default function ScriptingChallenge({
         <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
         {children}
 
-        <div className="flex grow flex-col border-white/25 md:basis-1/3 md:border-l">
+        <div className="h-screen-excluding-navbar flex grow flex-col border-white/25 md:basis-1/3 md:border-l">
           <LanguageTabs
             languages={config.languages}
             value={language}
@@ -109,6 +109,7 @@ export default function ScriptingChallenge({
             code={code}
             program={config.languages[language].program}
             errors={errors}
+            setErrors={setErrors}
             onValidate={handleRunnerValidate}
             onReady={handleRunnerReady}
             successMessage={successMessage}

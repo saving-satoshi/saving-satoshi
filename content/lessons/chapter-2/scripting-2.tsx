@@ -16,7 +16,9 @@ const javascript = {
 const testResult = findHash(0)
 if (!testResult || testResult.length !== 64) {
   await VM.validate()
-  return VM.close()
+  VM.result({ value: testResult, error: 'Your script does not return a valid hash' })
+  VM.close()
+  return
 }
 
 // Helpers
@@ -31,7 +33,7 @@ let n = VM.randomBetween(5,20)
 for (let nonce=0;nonce<n;nonce++) {
   const hash = findHash(nonce)
   log(hash, nonce)
-  VM.result(hash)
+  VM.result({ value: hash, error: null })
   await sleep(50)
 }
 
@@ -42,7 +44,7 @@ log(result, n+1)
 
 // Validate the answer.
 const success = await VM.validate(result)
-VM.result(result)
+VM.result({ value: result, error: null })
 VM.close()
 `,
   defaultFunction: {
@@ -52,9 +54,7 @@ VM.close()
   defaultCode: `const crypto = require('crypto')
 
 function findHash(nonce) {
-  const hash = crypto.createHash('sha256').update(nonce).digest('hex')
-
-  return hash
+  // Enter your script here (should return a 64 character long string)
 }`,
   validate: async (answer) => {
     return answer.startsWith('00000') && answer.length === 64
@@ -70,6 +70,7 @@ def validate_cb(success):
 test_result = find_hash(0)
 if not isinstance(test_result, str) or len(test_result) != 64:
   VM.validate('', validate_cb)
+  VM.result({ 'value': test_result, 'error': 'Your script does not return a valid hash' })
   return VM.close()
 
 # Helpers
@@ -83,8 +84,8 @@ n = VM.random_between(5,20)
 for i in range(n):
   hash = find_hash(i)
   log(hash, i)
-  VM.result(hash)
-  time.sleep(1)
+  VM.result({ 'value': hash, 'error': None })
+  time.sleep(50)
 
 # After n amount of tries have failed, force a hash starting with 5 zeroes.
 hash = find_hash(n+1)
@@ -93,19 +94,16 @@ log(hash, n+1)
 
 # Validate the answer.
 VM.validate(hash, validate_cb)
-VM.result(hash)
+VM.result({ 'value': hash, 'error': None })
 `,
   defaultFunction: {
     name: 'find_hash',
     args: ['nonce'],
   },
-  defaultCode: `
-from hashlib import sha256
+  defaultCode: `from hashlib import sha256
 
 def find_hash(nonce):
-  hash = sha256(str(nonce).encode('utf-8')).hexdigest()
-
-  return hash
+  # Enter your script here (should return a 64 character long string)
 `,
   validate: async (answer) => {
     return answer.startsWith('00000') && answer.length === 64

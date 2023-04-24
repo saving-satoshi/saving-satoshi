@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import UserIcon from 'public/assets/icons/avatar.svg'
 import Avatar from 'components/Avatar'
 import { useHasMounted } from 'hooks'
