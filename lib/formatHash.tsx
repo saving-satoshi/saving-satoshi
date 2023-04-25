@@ -1,23 +1,39 @@
 export default function formatHash(
   hash: string,
-  length?: number,
-  chunkLength?: number,
-  rows?: number,
-  underscores?: boolean
+  chunkLength: number,
+  rows: number,
+  length?: number
 ) {
   const result = []
   const chunkSize = !!chunkLength ? chunkLength : 4
   const numberOfRows = !!rows ? rows : 2
   const matches = hash?.match(/^0+/)
+  const hashLength = length ?? 64
   const leadingZeros = matches && matches.length > 0 ? matches[0].length : 0
   let zeroCount = 0
 
   for (let i = 0; i < numberOfRows; i++) {
     const row = []
 
-    for (let j = 0; j < length / (chunkSize * numberOfRows); j++) {
-      const startIndex = i * (length / numberOfRows) + j * chunkSize
+    for (let j = 0; j < hashLength / (chunkSize * numberOfRows); j++) {
+      const startIndex = i * (hashLength / numberOfRows) + j * chunkSize
       const chunk = hash
+        ?.slice(startIndex, startIndex + chunkSize)
+        .split('')
+        .map((char, idx) => {
+          if (zeroCount < leadingZeros && char === '0') {
+            zeroCount++
+            return (
+              <span key={idx} className="text-white">
+                {char}
+              </span>
+            )
+          }
+          return char
+        })
+
+      const placeholder = '_'.repeat(hashLength)
+      const placeholderChunk = placeholder
         .slice(startIndex, startIndex + chunkSize)
         .split('')
         .map((char, idx) => {
@@ -32,25 +48,7 @@ export default function formatHash(
           return char
         })
 
-      const placeholder = '_'.repeat(length)
-      const placeholderChunk =
-        underscores &&
-        placeholder
-          .slice(startIndex, startIndex + chunkSize)
-          .split('')
-          .map((char, idx) => {
-            if (zeroCount < leadingZeros && char === '0') {
-              zeroCount++
-              return (
-                <span key={idx} className="text-white">
-                  {char}
-                </span>
-              )
-            }
-            return char
-          })
-
-      !hash && underscores
+      !hash
         ? row.push(
             <span
               key={startIndex}

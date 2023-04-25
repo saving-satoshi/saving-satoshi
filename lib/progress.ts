@@ -45,7 +45,7 @@ const keysMeta = {
   CH2HSH3: { path: '/chapters/chapter-2/hashing-3' },
   CH2HSH4: { path: '/chapters/chapter-2/hashing-4' },
   CH2HSH5: { path: '/chapters/chapter-2/hashing-5' },
-  CH2HSH6: { path: '/chapters/chpater-2/hashing-6' },
+  CH2HSH6: { path: '/chapters/chapter-2/hashing-6' },
   CH2SCR1: { path: '/chapters/chapter-2/scripting-1' },
   CH2SCR2: { path: '/chapters/chapter-2/scripting-2' },
 }

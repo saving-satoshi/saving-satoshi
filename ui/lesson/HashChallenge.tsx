@@ -175,7 +175,7 @@ export default function HashChallenge({
         full
         inProgressMessage="Keep going..."
         input={success}
-        expected={'true'}
+        expected="true"
         hints={hints}
       />
     </Lesson>
