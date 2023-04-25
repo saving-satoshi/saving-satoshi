@@ -1,5 +1,3 @@
-import { JSXElementConstructor } from 'react'
-
 export default function formatHash(
   hash: string,
   chunkLength: number,
