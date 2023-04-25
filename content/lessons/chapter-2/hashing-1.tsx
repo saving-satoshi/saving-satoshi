@@ -1,7 +1,8 @@
 'use client'
 
-import { useLocalizedRoutes, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 import { ChapterIntro } from 'ui'
+import { useSaveAndProceed } from 'hooks'
 import { Button } from 'shared'
 
 export const metadata = {
@@ -10,7 +11,7 @@ export const metadata = {
 }
 
 export default function Hashing1({ lang }) {
-  const routes = useLocalizedRoutes()
+  const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
 
   return (
@@ -35,10 +36,7 @@ export default function Hashing1({ lang }) {
         {t('chapter_two.hashing_one.paragraph_five')}
       </p>
 
-      <Button
-        href={`${routes.chaptersUrl}/chapter-2/hashing-2`}
-        classes="mt-10 max-md:w-full"
-      >
+      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
         {t('shared.next')}
       </Button>
     </ChapterIntro>

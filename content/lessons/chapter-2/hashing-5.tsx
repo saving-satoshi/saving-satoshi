@@ -1,6 +1,6 @@
 'use client'
 
-import { useLocalizedRoutes, useTranslations } from 'hooks'
+import { useLocalizedRoutes, useSaveAndProceed, useTranslations } from 'hooks'
 import { ChapterIntro } from 'ui'
 import { Button } from 'shared'
 
@@ -10,7 +10,7 @@ export const metadata = {
 }
 
 export default function Hashing5({ lang }) {
-  const routes = useLocalizedRoutes()
+  const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
 
   return (
@@ -24,10 +24,7 @@ export default function Hashing5({ lang }) {
           {t('chapter_two.hashing_five.paragraph_one')}
         </p>
         <div className="flex justify-center">
-          <Button
-            href={`${routes.chaptersUrl}/chapter-2/hashing-6`}
-            classes="mt-10 max-md:w-full"
-          >
+          <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
             {t('shared.next')}
           </Button>
         </div>
