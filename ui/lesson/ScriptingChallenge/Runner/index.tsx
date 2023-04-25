@@ -46,6 +46,7 @@ export default function Runner({
   const [loading, setLoading] = useState<boolean>(true)
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const [result, setResult] = useState<any | undefined>(undefined)
+  const [success, setSuccess] = useState<boolean | null>(null)
   const isActive = activeView !== LessonView.Info
   const [hasherState, setHasherState] = useState<HasherState>(
     HasherState.Waiting
@@ -115,6 +116,7 @@ export default function Runner({
 
             if (result) {
               setHasherState(HasherState.Success)
+              setSuccess(true)
             }
 
             if (isRequest) {
@@ -286,7 +288,7 @@ export default function Runner({
         )}
       </div>
       {hasherState === HasherState.Success && (
-        <StatusBar className="max-h-40 grow" input="answer" expected="answer" />
+        <StatusBar className="max-h-40 grow" success={success} />
       )}
     </>
   )

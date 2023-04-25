@@ -39,7 +39,8 @@ export default function HashChallenge({
   const [input, setInput] = useState('')
   const [userInput, setUserInput] = useState('')
   const [hintTooltip, setHintTooltip] = useState(false)
-  const [success, setSuccess] = useState<string>('')
+  const [success, setSuccess] = useState<boolean | null>(null)
+  const [userHint, setUserHint] = useState<boolean | null>(null)
   const [inputPlaceholder, setInputPlaceholder] = useState(
     t('hasher.placeholder')
   )
@@ -77,28 +78,29 @@ export default function HashChallenge({
 
   useEffect(() => {
     let timeoutId = setTimeout(() => {
-      if (answerHint && success === 'false') {
+      if (answerHint && success === false) {
         setHintTooltip(true)
       }
     }, 15000)
 
     if (
-      success !== 'true' &&
+      success !== true &&
       ((typeof answer === 'string' && userInput.startsWith(answer)) ||
         (typeof answer === 'number' && input.length >= answer))
     ) {
       inputRef.current?.blur()
-      setSuccess('true')
+      setSuccess(true)
       saveProgress(lessonKey)
     } else if (
       typeof answer === 'number' &&
       input.length < answer &&
       input.length > 0 &&
-      success !== 'true'
+      success !== true
     ) {
-      setSuccess('t')
-    } else if (input.length > 0 && success !== 'true') {
-      setSuccess('false')
+      setSuccess(false)
+      hints && setUserHint(true)
+    } else if (input.length > 0 && success !== true) {
+      setSuccess(false)
     } else {
       return
     }
@@ -141,7 +143,7 @@ export default function HashChallenge({
                   'text-left transition-opacity duration-[2500ms] ease-in-out md:text-center',
                   {
                     'opacity-100':
-                      answerHint && hintTooltip && success !== 'true',
+                      answerHint && hintTooltip && success !== true,
                     'invisible opacity-0': !hintTooltip,
                   }
                 )}
@@ -174,9 +176,8 @@ export default function HashChallenge({
         alwaysShow
         full
         inProgressMessage="Keep going..."
-        input={success}
-        expected="true"
-        hints={hints}
+        success={success}
+        hints={userHint}
       />
     </Lesson>
   )
