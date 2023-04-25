@@ -8,7 +8,6 @@ import {
   getLessonKey,
   isLessonCompleted,
   isLessonUnlocked,
-  keys,
 } from 'lib/progress'
 import { redirect, useSearchParams } from 'next/navigation'
 import { useAuthContext } from 'providers/AuthProvider'
