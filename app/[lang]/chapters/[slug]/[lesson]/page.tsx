@@ -88,11 +88,11 @@ export default function Page({ params }) {
     )
   }
 
-  const lastUnlockedLessonPath = getLastUnlockedLessonPath(progress)
+  const lastUnlockedLessonPath = getLastUnlockedLessonPath(progress!)
   const currentLessonPath = `/${pathData.pageId}/${pathData.chapterId}/${pathData.lessonId}`
   const isRestrictedFromLesson = isLessonCompleted(
     getLessonKey(pathData.chapterId, pathData.lessonId),
-    progress
+    progress!
   )
 
   if (
