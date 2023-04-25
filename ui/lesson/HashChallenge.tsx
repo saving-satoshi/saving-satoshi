@@ -78,7 +78,7 @@ export default function HashChallenge({
 
   useEffect(() => {
     let timeoutId = setTimeout(() => {
-      if (answerHint && success === false) {
+      if (answerHint && success !== false) {
         setHintTooltip(true)
       }
     }, 15000)
@@ -109,9 +109,9 @@ export default function HashChallenge({
 
   return (
     <Lesson>
-      <div className="flex justify-start md:grow md:justify-center">
+      <div className="flex w-full justify-start md:grow md:justify-center">
         <div className="flex max-w-[1280px] items-start justify-center px-4 py-8 font-space-mono text-white md:w-9/12 md:items-center lg:w-9/12">
-          <div className="flex flex-col">
+          <div className="flex w-full flex-col">
             <div className="w-full">
               <h2 className="text-left text-[18px] font-bold text-white md:text-center">
                 {inputLabel}
@@ -120,7 +120,6 @@ export default function HashChallenge({
                 onFocus={handleFocus}
                 onBlur={handleFocus}
                 placeholder={inputPlaceholder}
-                maxLength={24}
                 className={clsx(
                   'top-0 left-0 w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] text-white outline-none md:text-center md:text-[30px] md:tracking-[5%]',
                   {

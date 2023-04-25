@@ -1,6 +1,6 @@
 'use client'
 
-import { useLocalizedRoutes, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
 import { HashChallenge } from 'ui'
 
@@ -9,7 +9,7 @@ export const metadata = {
   key: 'CH2HSH2',
 }
 
-export default function Hashing2({ lang, params }) {
+export default function Hashing2({ lang }) {
   const t = useTranslations(lang)
 
   return (

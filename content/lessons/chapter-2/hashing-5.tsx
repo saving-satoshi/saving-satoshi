@@ -1,6 +1,6 @@
 'use client'
 
-import { useLocalizedRoutes, useSaveAndProceed, useTranslations } from 'hooks'
+import { useSaveAndProceed, useTranslations } from 'hooks'
 import { ChapterIntro } from 'ui'
 import { Button } from 'shared'
 
