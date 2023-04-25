@@ -4,7 +4,7 @@ import { usePathData } from 'hooks'
 import { chapters } from 'content'
 import { User } from 'types'
 
-export const useLessonUnlocked = (userInfo) => {
+export default function useLessonUnlocked(userInfo) {
   const user: User = userInfo ? JSON.parse(userInfo) : null
   const { lang, pageId, chapterId, lessonId } = usePathData()
 

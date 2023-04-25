@@ -8,9 +8,8 @@ import { Button } from 'shared'
 import ChapterTabs from './Tabs'
 import ChallengeList from './ChallengeList'
 import { useLocalizedRoutes } from 'hooks'
-import LockIcon from 'public/assets/icons/lock.svg'
 import { chapters } from 'content'
-
+import Icon from 'shared/Icon'
 import { ChapterContextType } from 'types'
 import { useTranslations } from 'hooks'
 import useLessonStatus from 'hooks/useLessonStatus'
@@ -56,7 +55,7 @@ export default function Chapter({ children, metadata, lang }) {
       <div className="grid grid-cols-1 justify-center lg:grid-cols-2 lg:px-0">
         <div
           className={clsx(
-            'order-2 flex justify-start lg:py-[112px] lg:px-[50px]',
+            'order-2 flex justify-start lg:px-[50px] lg:py-[112px]',
             {
               'lg:order-1': isEven,
               'lg:order-2': !isEven,
@@ -95,7 +94,10 @@ export default function Chapter({ children, metadata, lang }) {
                     )) ||
                       (chapter.metadata.lessons.length > 0 && !display && (
                         <div className="flex font-nunito text-lg text-white">
-                          <LockIcon className="my-auto mr-2 justify-center" />
+                          <Icon
+                            icon="lock"
+                            className="my-auto mr-2 justify-center"
+                          />
                           {t('chapter.chapter_locked_one')} {position - 1}{' '}
                           {t('chapter.chapter_locked_two')}
                         </div>

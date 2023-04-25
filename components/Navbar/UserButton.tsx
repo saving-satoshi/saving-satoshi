@@ -1,6 +1,6 @@
 'use client'
 
-import UserIcon from 'public/assets/icons/avatar.svg'
+import Icon from 'shared/Icon'
 import Avatar from 'components/Avatar'
 import { useHasMounted } from 'hooks'
 import { useAuthContext } from 'providers/AuthProvider'
@@ -37,7 +37,7 @@ export default function UserButton() {
                 aria-label="profile"
                 className="text-grey-300 h-10 cursor-pointer"
               >
-                <UserIcon />
+                <Icon icon="avatar" />
               </button>
             )}
           </>

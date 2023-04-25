@@ -4,13 +4,11 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import CheckIcon from 'public/assets/icons/check.svg'
-import LockIcon from 'public/assets/icons/lock.svg'
-
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
 import { useProgressContext } from 'providers/ProgressProvider'
 import useLessonStatus from 'hooks/useLessonStatus'
+import Icon from 'shared/Icon'
 
 import { chapters } from 'content'
 
@@ -47,14 +45,18 @@ export default function Tab({
   const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
-  const pathName = usePathname()
+  const pathName = usePathname() || ''
 
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
 
+  const pnLessonId = pathData.pop()
+  if (!pnLessonId) {
+    return null
+  }
+
   const challengeId = isRouteLesson
-    ? pathData
-        .pop()
+    ? pnLessonId
         .split('-')[0]
         .replace('intro', chapters[slug].metadata.challenges[0].split('-')[0])
     : undefined
@@ -85,9 +87,11 @@ export default function Tab({
     >
       {index + 1}. <span className="ml-1 text-white">{t(challenge.title)}</span>
       {!isUnlocked && (
-        <LockIcon className="absolute right-[15px] -mr-2 opacity-50" />
+        <Icon icon="lock" className="absolute right-[15px] -mr-2 opacity-50" />
       )}
-      {isCompleted && <CheckIcon className="absolute right-[5px] h-5 w-5" />}
+      {isCompleted && (
+        <Icon icon="check" className="absolute right-[5px] h-5 w-5" />
+      )}
     </Link>
   )
 }

@@ -40,7 +40,7 @@ export default function ScriptingChallenge({
   )
   const [language, setLanguage] = useState(config.defaultLanguage)
   const [hydrated, setHydrated] = useState(false)
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState<string[]>([])
   const [runnerReady, setRunnerReady] = useState<boolean>(false)
 
   const isSmallScreen = useMediaQuery({ width: 767 })
@@ -79,6 +79,10 @@ export default function ScriptingChallenge({
   useEffect(() => {
     setHydrated(true)
   }, [])
+
+  if (!hydrated) {
+    return null
+  }
 
   return (
     hydrated && (

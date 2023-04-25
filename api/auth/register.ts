@@ -1,6 +1,6 @@
 import { post } from 'utils'
 
-export default async function register(privateKey, avatar) {
+export default async function register(privateKey: string, avatar: string) {
   const res = await post({
     url: '/v1/auth/register',
     body: {
@@ -9,5 +9,5 @@ export default async function register(privateKey, avatar) {
     },
   })
 
-  console.log(res)
+  return res
 }

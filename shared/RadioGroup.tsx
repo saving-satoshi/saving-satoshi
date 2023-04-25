@@ -15,7 +15,10 @@ export default function RadioGroup({
 
   const handleChange = (val) => {
     setCurrentValue(val)
-    onChange(val)
+
+    if (typeof onChange === 'function') {
+      onChange(val)
+    }
   }
 
   return (

@@ -1,10 +1,11 @@
-import { Caveat_Brush, Space_Mono, Nunito } from '@next/font/google'
+import { Caveat_Brush, Space_Mono, Nunito } from 'next/font/google'
 
 const cbrush = Caveat_Brush({
   weight: '400',
   variable: '--cbrush-font',
   preload: true,
   display: 'swap',
+  subsets: ['latin'],
 })
 
 const smono = Space_Mono({
@@ -12,6 +13,7 @@ const smono = Space_Mono({
   variable: '--space-mono-font',
   preload: true,
   display: 'swap',
+  subsets: ['latin'],
 })
 
 const nunito = Nunito({
@@ -19,6 +21,7 @@ const nunito = Nunito({
   variable: '--nunito-font',
   preload: true,
   display: 'swap',
+  subsets: ['latin'],
 })
 
 export default function Fonts() {

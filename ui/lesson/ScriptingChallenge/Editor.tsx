@@ -20,8 +20,7 @@ export default function Editor({
   onValidate,
 }: {
   language: string
-  value: string
-
+  value?: string
   onChange?: (value: string) => void
   onValidate?: (value: monaco.editor.IMarker[]) => void
 }) {
