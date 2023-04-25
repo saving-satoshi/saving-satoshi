@@ -34,7 +34,7 @@ export default function HashChallenge({
   const { saveProgress } = useProgressContext()
   const lang = useLang()
   const t = useTranslations(lang)
-  const pathName = usePathname()
+  const pathName = usePathname() || ''
 
   const [input, setInput] = useState('')
   const [userInput, setUserInput] = useState('')
@@ -43,11 +43,11 @@ export default function HashChallenge({
   const [inputPlaceholder, setInputPlaceholder] = useState(
     t('hasher.placeholder')
   )
-  const inputRef = useRef(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
-  const challengeId = isRouteLesson ? pathData.pop().split('-')[1] : undefined
+  const challengeId = isRouteLesson ? pathData.pop()?.split('-')[1] : undefined
 
   const numbers = [
     'zero',
@@ -61,7 +61,7 @@ export default function HashChallenge({
     'eight',
     'nine',
   ]
-  const challengeIdWord = challengeId.replace(/\b\d\b/g, (m) => numbers[m])
+  const challengeIdWord = challengeId?.replace(/\b\d\b/g, (m) => numbers[m])
 
   const handleChange = (event) => {
     setInput(event.target.value)

@@ -1,10 +1,12 @@
+import { JSXElementConstructor } from 'react'
+
 export default function formatHash(
   hash: string,
   chunkLength: number,
   rows: number,
   length?: number
 ) {
-  const result = []
+  const result: JSX.Element[] = []
   const chunkSize = !!chunkLength ? chunkLength : 4
   const numberOfRows = !!rows ? rows : 2
   const matches = hash?.match(/^0+/)
@@ -13,7 +15,7 @@ export default function formatHash(
   let zeroCount = 0
 
   for (let i = 0; i < numberOfRows; i++) {
-    const row = []
+    const row: JSX.Element[] = []
 
     for (let j = 0; j < hashLength / (chunkSize * numberOfRows); j++) {
       const startIndex = i * (hashLength / numberOfRows) + j * chunkSize

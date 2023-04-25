@@ -1,4 +1,4 @@
-import { Caveat_Brush, Space_Mono, Nunito } from 'next/font/google'
+import { Caveat_Brush, Space_Mono, Nunito } from '@next/font/google'
 
 const cbrush = Caveat_Brush({
   weight: '400',
