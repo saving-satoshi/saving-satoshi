@@ -2,6 +2,10 @@ import Topbar from 'components/Topbar'
 import Hero from 'components/Hero'
 import Footer from 'components/Footer'
 
+export const metadata = {
+  title: 'Saving Satoshi',
+}
+
 export default function Home() {
   return (
     <div className="flex h-screen w-screen flex-col">

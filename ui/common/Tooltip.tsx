@@ -10,9 +10,9 @@ function Tooltip({
   className,
   id,
   content,
-  position,
+  position = 'top',
   href,
-  offset = 0,
+  offset = 12,
   theme = 'bg-back',
 }: {
   children: React.ReactNode
@@ -172,11 +172,6 @@ function Tooltip({
       </span>
     </>
   )
-}
-
-Tooltip.defaultProps = {
-  offset: 12,
-  position: 'top',
 }
 
 export default Tooltip
