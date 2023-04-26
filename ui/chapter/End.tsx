@@ -1,7 +1,8 @@
 'use client'
 
 import { Button } from 'shared'
-import { useSaveAndProceed, useTranslations } from 'hooks'
+import { useSaveAndReturn, useTranslations } from 'hooks'
+import { Modal, useModalContext } from 'providers/ModalProvider'
 
 export default function End({
   title,
@@ -15,7 +16,12 @@ export default function End({
   lang: string
 }) {
   const t = useTranslations(lang)
-  const saveAndProceed = useSaveAndProceed()
+  const modals = useModalContext()
+  const saveAndReturn = useSaveAndReturn()
+
+  function handleCreateClick() {
+    modals.open(Modal.SignUp)
+  }
 
   return (
     <div
@@ -32,18 +38,10 @@ export default function End({
           </p>
 
           <div className="mt-4 flex w-full flex-col gap-4 xl:w-2/3">
-            <Button
-              size="small"
-              href="https://forms.gle/WhdJwcKKetB9sFL79"
-              external={true}
-            >
-              {t('chapter_one.end.feedback')}
+            <Button onClick={handleCreateClick} size="small">
+              {t('chapter_one.end.save')}
             </Button>
-            {/*Secret Button*/}
-            <Button
-              onClick={saveAndProceed}
-              classes="w-full md:w-auto bg-transparent text-transparent hover:bg-transparent hover:cursor-default"
-            >
+            <Button onClick={saveAndReturn} size="small">
               {t('shared.next')}
             </Button>
           </div>

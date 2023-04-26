@@ -193,7 +193,7 @@ const translations = {
     outro_two: {
       title: 'You did it!!!',
       description:
-        'Amazing. You completed the first chapter and learned a lot about bitcoin. Follow us at <Link href="https://twitter.com/savingsatoshi" className="underline">@savingsatoshi</Link> to know when we launch new chapters and challenges.',
+        'Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go? Share your <Link href="https://forms.gle/WhdJwcKKetB9sFL79" className="underline">feedback</Link>',
     },
 
     end: {
