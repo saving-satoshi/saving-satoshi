@@ -50,6 +50,21 @@ export default function Chapter({ children, metadata, lang }) {
 
   const context = {}
 
+  useEffect(() => {
+    if (window.location.href.split('#')[1]) {
+      const element = document.getElementById(
+        window.location.href.split('#')[1]
+      )
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        })
+      }
+    }
+  }, [])
+
   return (
     <ChapterContext.Provider value={context}>
       <div
