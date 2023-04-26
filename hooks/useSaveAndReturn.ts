@@ -24,7 +24,7 @@ export default function useSaveAndReturn() {
     if (account && progress && !isLessonUnlocked(progress, nextLessonKey)) {
       await saveProgress(nextLessonKey)
     }
-    router.prefetch('/chapters')
+    router.prefetch(lang + '/chapters#chapter-' + nextLessonKey.charAt(2))
     router.push(lang + '/chapters#chapter-' + nextLessonKey.charAt(2))
   }
 
