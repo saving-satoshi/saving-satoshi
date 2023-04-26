@@ -5,6 +5,7 @@ import { Modal, useModalContext } from 'providers/ModalProvider'
 import AccountModal from 'components/Modals/Account'
 import SignUpModal from 'components/Modals/SignUp'
 import SignInModal from 'components/Modals/SignIn'
+import ProgressModal from 'components/Modals/Progress'
 
 export default function Layout({ children }: { children?: React.ReactNode }) {
   const { modals, close } = useModalContext()
@@ -24,6 +25,10 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
         <AccountModal
           open={modals[Modal.Account]}
           onClose={() => close(Modal.Account)}
+        />
+        <ProgressModal
+          open={modals[Modal.Progress]}
+          onClose={() => close(Modal.Progress)}
         />
       </>
     </>
