@@ -11,13 +11,21 @@ export default function NotFound() {
   return (
     <div className="flex h-full grow items-end justify-center">
       <Image
-        src="/assets/images/404.jpg"
+        src="/assets/images/404-background.jpg"
         alt="page not found"
         fill
         quality={100}
         loading="eager"
         priority
         className="-z-20 h-full w-full object-cover"
+      />
+
+      <Image
+        src="/assets/images/404-cat.png"
+        alt="cat"
+        className="absolute top-1/4 left-1/2 z-0 flex -translate-x-1/2 -translate-y-1/2 flex-col justify-center "
+        width={250}
+        height={253.65}
       />
       <Topbar />
 
