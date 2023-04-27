@@ -1,27 +1,29 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import SignIn from 'components/SignIn'
 import { chapters, lessons } from 'content'
-import { usePathData } from 'hooks'
+import { usePathData, useTranslations } from 'hooks'
 import {
   getLastUnlockedLessonPath,
   getLessonKey,
   isLessonCompleted,
   isLessonUnlocked,
-  keys,
 } from 'lib/progress'
-import { redirect, useSearchParams } from 'next/navigation'
+
+import * as navigation from 'next/navigation'
 import { useAuthContext } from 'providers/AuthProvider'
 import { Modal, useModalContext } from 'providers/ModalProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
-import { useEffect, useState } from 'react'
 import { Button, Loader } from 'shared'
 import { LoadingState } from 'types'
 
 export default function Page({ params }) {
-  const searchParams = useSearchParams()
+  const searchParams = navigation.useSearchParams()
   const devParam = searchParams?.get('dev') || ''
   const dev = devParam === 'true'
+  const t = useTranslations(params.lang)
 
   const chapterId = params.slug
   const chapterLessons = lessons[chapterId]
@@ -56,35 +58,69 @@ export default function Page({ params }) {
     isProgressLoading,
   ])
 
+  const Head = () => {
+    const lesson = chapterLessons[params.lesson]
+    const title = lesson ? t(lesson.metadata.title) : 'Page not found'
+
+    return (
+      <head>
+        <title>{`${title} - Saving Satoshi`}</title>
+      </head>
+    )
+  }
+
   // If the lesson does not exist, we show this error message.
   if (!(params.lesson in chapterLessons) || !(params.slug in chapters)) {
     return (
-      <div className="flex h-full w-full grow flex-col items-center justify-center">
-        <span className="mb-10 font-nunito text-2xl text-white">
-          Sorry, we could not find the ’{params.lesson}’ lesson.
-        </span>
-        <Button
-          href={`/${params.lang}/chapters/${params.slug}/intro-1`}
-          size="small"
-        >
-          &larr; Back to Chapter Overview
-        </Button>
-      </div>
+      <>
+        <Head />
+        <div className="flex h-full w-full grow flex-col items-center justify-center">
+          <span className="mb-10 font-nunito text-2xl text-white">
+            Sorry, we could not find the ’{params.lesson}’ lesson.
+          </span>
+          <Button
+            href={`/${params.lang}/chapters/${params.slug}/intro-1`}
+            size="small"
+          >
+            &larr; Back to Chapter Overview
+          </Button>
+        </div>
+      </>
     )
   }
 
   const Lesson = chapterLessons[params.lesson].default
 
   if (dev) {
-    return <Lesson lang={params.lang} />
+    return (
+      <>
+        <Head />
+        <Lesson lang={params.lang} />
+      </>
+    )
   }
 
   // If account or progress data is being loaded, we show a loader.
   if (unlocked === LoadingState.Idle || isAccountLoading || isProgressLoading) {
     return (
-      <div className="flex grow items-center justify-center">
-        <Loader className="h-10 w-10 text-white" />
-      </div>
+      <>
+        <Head />
+        <div className="flex grow items-center justify-center">
+          <Loader className="h-10 w-10 text-white" />
+        </div>
+      </>
+    )
+  }
+
+  // If account and progress data have been loaded, but there is no progress obj
+  if (!account || !progress) {
+    return (
+      <>
+        <Head />
+        <div className="flex h-full w-full grow flex-col items-center justify-center">
+          <SignIn lang={params.lang} />
+        </div>
+      </>
     )
   }
 
@@ -100,8 +136,13 @@ export default function Page({ params }) {
     lastUnlockedLessonPath !== currentLessonPath &&
     isRestrictedFromLesson
   ) {
-    return redirect(lastUnlockedLessonPath)
+    return navigation.redirect(lastUnlockedLessonPath)
   }
 
-  return <Lesson lang={params.lang} />
+  return (
+    <>
+      <Head />
+      <Lesson lang={params.lang} />
+    </>
+  )
 }
