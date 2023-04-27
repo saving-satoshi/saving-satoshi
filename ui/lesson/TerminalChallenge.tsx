@@ -66,6 +66,7 @@ export default function TerminalChallenge({
     const sanitizedInput = input
       .replace(/[\t\r\n]/g, '')
       .replace(/\s+/g, ' ')
+      .replace(/\s*\|\s*/g, ' | ')
       .trim()
 
     setLines((lines) => [...lines, { value: sanitizedInput, type: 'input' }])
