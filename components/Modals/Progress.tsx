@@ -1,8 +1,8 @@
 'use client'
 
 import Avatar from 'components/Avatar'
+import Modal from 'components/Modals/Modal'
 import { useState, useEffect } from 'react'
-import ReactModal from 'react-modal'
 import Icon from 'shared/Icon'
 import { Checkbox, CopyButton, Loader, RadioButton, RadioGroup } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
@@ -67,13 +67,7 @@ export default function ProgressModal({ open, onClose }) {
   }, [open, view])
 
   return (
-    <ReactModal
-      isOpen={open}
-      overlayClassName="fixed inset-0 bg-overlayColor z-10"
-      className="fixed inset-0 left-1/2 top-1/2 h-full w-screen -translate-x-1/2 -translate-y-1/2 transform overflow-y-auto bg-back p-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:w-[550px] sm:rounded-lg sm:pt-5"
-      contentLabel="Save Progress Modal"
-      onRequestClose={onClose}
-    >
+    <Modal active={open} onRequestClose={onClose}>
       <div className="float-right flex justify-end">
         <button onClick={onClose} aria-label="Close">
           <Icon icon="close" className="h-6 w-6" />
@@ -164,6 +158,6 @@ export default function ProgressModal({ open, onClose }) {
           {!loading && t('modal_signup.confirm')}
         </button>
       </div>
-    </ReactModal>
+    </Modal>
   )
 }

@@ -26,11 +26,11 @@ export default function useSaveAndReturn() {
     if (account && progress && !isLessonUnlocked(progress, nextLessonKey)) {
       await saveProgress(nextLessonKey)
     }
-    if (nextLessonKey !== currentLessonKey) {
-      router.push(lang + '/chapters#chapter-' + nextLessonKey.charAt(2))
-    } else {
-      router.push(lang + '/chapters')
-    }
+    router.push(
+      lang +
+        '/chapters#chapter-' +
+        (parseInt(currentLessonKey.charAt(2)) + 1).toString()
+    )
   }
 
   return saveAndReturn
