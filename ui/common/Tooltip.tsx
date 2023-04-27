@@ -21,7 +21,7 @@ function Tooltip({
   content: any
   position?: string
   href?: string
-  offset: number
+  offset?: number
   theme?: string
 }) {
   const targetRef = useRef<HTMLSpanElement>(null)
