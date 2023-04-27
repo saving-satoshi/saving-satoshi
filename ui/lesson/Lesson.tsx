@@ -3,7 +3,11 @@
 import { createContext, useContext, useState } from 'react'
 import { LessonDirection, LessonContextType, LessonView } from 'types'
 
-const LessonContext = createContext<LessonContextType | null>(null)
+const LessonContext = createContext<LessonContextType>({
+  direction: LessonDirection.Horizontal,
+  activeView: LessonView.Info,
+  setActiveView: (view: LessonView) => {},
+})
 
 export const useLessonContext = () => useContext(LessonContext)
 

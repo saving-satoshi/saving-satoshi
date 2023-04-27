@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonTerminal } from 'ui'
 import { useMediaQuery } from 'hooks'
+import { useAuthContext } from 'providers/AuthProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
 
 const tabData = [
@@ -40,9 +41,10 @@ export default function TerminalChallenge({
   customLines?: string
   commonError?: any
 }) {
-  const { saveProgress } = useProgressContext()
+  const { saveProgress, saveProgressLocal } = useProgressContext()
+  const { account } = useAuthContext()
   const [hydrated, setHydrated] = useState(false)
-  const [success, setSuccess] = useState('')
+  const [success, setSuccess] = useState<boolean | null>(null)
   const [challengeState, setChallengeState] = useState<string>('incomplete')
   const [lines, setLines] = useState(
     customLines
@@ -66,6 +68,7 @@ export default function TerminalChallenge({
     const sanitizedInput = input
       .replace(/[\t\r\n]/g, '')
       .replace(/\s+/g, ' ')
+      .replace(/\s*\|\s*/g, ' | ')
       .trim()
 
     setLines((lines) => [...lines, { value: sanitizedInput, type: 'input' }])
@@ -106,8 +109,12 @@ export default function TerminalChallenge({
 
       if (varInput === (expectedInput.value || expectedInput)) {
         setTimeout(() => {
-          saveProgress(lessonKey)
-          setSuccess('true')
+          if (account) {
+            saveProgress(lessonKey)
+          } else {
+            saveProgressLocal(lessonKey)
+          }
+          setSuccess(true)
           setChallengeState('complete')
           setLines((lines) => [
             ...lines,
@@ -117,7 +124,7 @@ export default function TerminalChallenge({
       } else {
         setTimeout(() => {
           if (challengeState === 'incomplete') {
-            setSuccess('false')
+            setSuccess(false)
           }
           setLines((lines) => [
             ...lines,
@@ -128,7 +135,7 @@ export default function TerminalChallenge({
     } else if (commonError && sanitizedInput.includes(commonError.error)) {
       setTimeout(() => {
         if (challengeState === 'incomplete') {
-          setSuccess('false')
+          setSuccess(false)
         }
         setLines((lines) => {
           newLines = [...lines]
@@ -142,7 +149,7 @@ export default function TerminalChallenge({
     } else {
       setTimeout(() => {
         if (challengeState === 'incomplete') {
-          setSuccess('false')
+          setSuccess(false)
         }
         setLines((lines) => {
           newLines = [...lines]
@@ -160,18 +167,20 @@ export default function TerminalChallenge({
     setHydrated(true)
   }, [])
 
-  return (
-    hydrated && (
-      <Lesson
-        direction={
-          isSmallScreen ? LessonDirection.Vertical : LessonDirection.Horizontal
-        }
-      >
-        <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
-        {children}
+  if (!hydrated) {
+    return null
+  }
 
-        <LessonTerminal success={success} lines={lines} onChange={onChange} />
-      </Lesson>
-    )
+  return (
+    <Lesson
+      direction={
+        isSmallScreen ? LessonDirection.Vertical : LessonDirection.Horizontal
+      }
+    >
+      <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
+      {children}
+
+      <LessonTerminal success={success} lines={lines} onChange={onChange} />
+    </Lesson>
   )
 }

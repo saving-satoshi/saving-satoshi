@@ -13,6 +13,12 @@ export default function RadioButton({
   currentValue?: string
   setCurrentValue?: (val: string) => void
 }) {
+  const handleChange = () => {
+    if (typeof setCurrentValue === 'function') {
+      setCurrentValue(value)
+    }
+  }
+
   return (
     <div className="flex gap-2">
       <input
@@ -20,7 +26,7 @@ export default function RadioButton({
         id={name}
         name={name}
         checked={value === currentValue}
-        onChange={() => setCurrentValue(value)}
+        onChange={handleChange}
         className="cursor-pointer"
       />
       <label htmlFor={name} className="cursor-pointer">

@@ -11,11 +11,11 @@ import { usePathData, useLang } from 'hooks'
 import { lessons } from 'content'
 import { useAuthContext } from 'providers/AuthProvider'
 
-export const useSaveAndProceed = () => {
+export default function useSaveAndProceed() {
   const lang = useLang()
   const router = useRouter()
   const { account } = useAuthContext()
-  const { progress, saveProgress } = useProgressContext()
+  const { progress, saveProgress, saveProgressLocal } = useProgressContext()
   const { chapterId, lessonId } = usePathData()
 
   const chapterLessons = lessons[chapterId]
@@ -26,8 +26,12 @@ export const useSaveAndProceed = () => {
     const nextLessonKey = getNextLessonKey(currentLessonKey)
     const nextLessonPath = getNextLessonPath(currentLessonKey)
 
-    if (account && !isLessonUnlocked(progress, nextLessonKey)) {
-      await saveProgress(nextLessonKey)
+    if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
+      if (account) {
+        await saveProgress(nextLessonKey)
+      } else {
+        await saveProgressLocal(nextLessonKey)
+      }
     }
 
     router.push(lang + '/' + nextLessonPath)

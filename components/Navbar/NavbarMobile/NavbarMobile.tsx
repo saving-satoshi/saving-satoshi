@@ -2,7 +2,6 @@
 
 import { useLocalizedRoutes, useTranslations, useLang } from 'hooks'
 import Address from 'components/Navbar/Address'
-import PowerOffIcon from 'public/assets/icons/power-off.svg'
 import UserButton from '../UserButton'
 import HamburgerMenu from './HamburgerMenu'
 import { useState } from 'react'
@@ -10,6 +9,7 @@ import Menu from './Menu'
 import clsx from 'clsx'
 import Link from 'next/link'
 import HelpLink from '../HelpLink'
+import Icon from 'shared/Icon'
 
 export default function NavbarMobile({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
@@ -35,7 +35,10 @@ export default function NavbarMobile({ params }) {
             className="group flex items-center border-r border-white/25 p-4 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
             href={chaptersUrl}
           >
-            <PowerOffIcon className="h-[30px] w-[30px] opacity-75 transition duration-100 ease-in-out group-hover:opacity-100" />
+            <Icon
+              icon="powerOff"
+              className="h-[30px] w-[30px] opacity-75 transition duration-100 ease-in-out group-hover:opacity-100"
+            />
           </Link>
         </div>
         <div

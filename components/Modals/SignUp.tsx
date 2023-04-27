@@ -2,8 +2,7 @@
 
 import Avatar from 'components/Avatar'
 import { useState, useEffect } from 'react'
-import ReactModal from 'react-modal'
-import CloseIcon from 'public/assets/icons/close.svg'
+import Icon from 'shared/Icon'
 import { Checkbox, CopyButton, Loader, RadioButton, RadioGroup } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
 import { useTranslations, useLang } from 'hooks'
@@ -12,6 +11,7 @@ import { useAuthContext } from 'providers/AuthProvider'
 import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import { Input } from 'shared'
+import Modal from './Modal'
 
 enum View {
   Generate = 'generate',
@@ -42,11 +42,11 @@ export default function SignUpModal({ open, onClose }) {
     try {
       setLoading(true)
 
-      await register(privateKey, `/assets/avatars/${avatar}.png`)
-
-      await login(privateKey)
-
-      onClose()
+      if (privateKey) {
+        await register(privateKey, `/assets/avatars/${avatar}.png`)
+        await login(privateKey)
+        onClose()
+      }
     } catch (ex) {
       console.error(ex)
     } finally {
@@ -65,16 +65,10 @@ export default function SignUpModal({ open, onClose }) {
   }, [open, view])
 
   return (
-    <ReactModal
-      isOpen={open}
-      overlayClassName="fixed inset-0 bg-overlayColor z-10"
-      className="fixed inset-0 top-1/2 left-1/2 h-full w-screen -translate-x-1/2 -translate-y-1/2 transform overflow-y-auto bg-back p-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:w-[550px] sm:rounded-lg sm:pt-5"
-      contentLabel="Sign up Modal"
-      onRequestClose={onClose}
-    >
+    <Modal active={open} onRequestClose={onClose}>
       <div className="float-right flex justify-end">
         <button onClick={onClose} aria-label="Close">
-          <CloseIcon className="h-6 w-6" />
+          <Icon icon="close" className="h-6 w-6" />
         </button>
       </div>
 
@@ -93,7 +87,7 @@ export default function SignUpModal({ open, onClose }) {
               avatar={`/assets/avatars/${i}.png`}
               size={80}
               onClick={() => setAvatar(i)}
-              classes={clsx('border-2 h-20 w-20 rounded-full inline-block', {
+              className={clsx('inline-block h-20 w-20 rounded-full border-2', {
                 'border-white': avatar === i,
                 'border-transparent': avatar !== i,
               })}
@@ -162,6 +156,6 @@ export default function SignUpModal({ open, onClose }) {
           {!loading && t('modal_signup.confirm')}
         </button>
       </div>
-    </ReactModal>
+    </Modal>
   )
 }

@@ -3,6 +3,10 @@ import Footer from 'components/Footer'
 import DemoDisclaimer from 'components/DemoDisclaimer'
 import { chapters } from 'content'
 
+export const metadata = {
+  title: 'Chapters - Saving Satoshi',
+}
+
 export default async function ChaptersPage({ params }) {
   const sortedChapters = Object.values(chapters).sort(
     (a, b) => a.metadata.position - b.metadata.position
@@ -18,7 +22,7 @@ export default async function ChaptersPage({ params }) {
             Chapters
           </h1>
 
-          <p className="pt-4 pr-10 pl-10 pb-8 text-center text-2xl sm:text-3xl lg:text-4xl">
+          <p className="pb-8 pl-10 pr-10 pt-4 text-center text-2xl sm:text-3xl lg:text-4xl">
             Explore the mysteries of Satoshi and learn about Bitcoin along the
             way.
           </p>

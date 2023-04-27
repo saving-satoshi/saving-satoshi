@@ -150,3 +150,6 @@ div.react-terminal-active-input {
   border-radius: 4px;
 }
 
+.h-screen-excluding-navbar {
+  height: calc(100vh - 70px);
+}

@@ -10,23 +10,23 @@ function Tooltip({
   className,
   id,
   content,
-  position,
-  offset,
+  position = 'top',
   href,
-  theme = 'bg-back',
+  theme,
+  offset = 12,
 }: {
   children: React.ReactNode
   className?: string
   id: string
   content: any
   position?: string
-  offset?: number
   href?: string
+  offset?: number
   theme?: string
 }) {
-  const targetRef = useRef<HTMLDivElement>()
-  const tooltipRef = useRef<HTMLDivElement>()
-  const arrowRef = useRef<HTMLDivElement>()
+  const targetRef = useRef<HTMLSpanElement>(null)
+  const tooltipRef = useRef<HTMLSpanElement>(null)
+  const arrowRef = useRef<HTMLSpanElement>(null)
   const [visible, setVisible] = useState(false)
 
   const lang = useLang()
@@ -46,15 +46,18 @@ function Tooltip({
     const mouse = { x: e.clientX, y: e.clientY }
     const targetEl = targetRef.current
     const tooltipEl = tooltipRef.current
-    const targetRect = targetEl.getBoundingClientRect()
-    const tooltipRect = tooltipEl.getBoundingClientRect()
-    const prop = position !== 'top' ? 'top' : 'bottom'
 
-    if (
-      !isWithinRect(mouse, targetRect) &&
-      !isWithinRect(mouse, modifyRect(tooltipRect, { [prop]: offset }))
-    ) {
-      setVisible(false)
+    if (targetEl && tooltipEl) {
+      const targetRect = targetEl.getBoundingClientRect()
+      const tooltipRect = tooltipEl.getBoundingClientRect()
+      const prop = position !== 'top' ? 'top' : 'bottom'
+
+      if (
+        !isWithinRect(mouse, targetRect) &&
+        !isWithinRect(mouse, modifyRect(tooltipRect, { [prop]: offset }))
+      ) {
+        setVisible(false)
+      }
     }
   }
 
@@ -63,40 +66,52 @@ function Tooltip({
     const tooltip = tooltipRef.current
     const arrow = arrowRef.current
 
-    const targetRect = target.getBoundingClientRect()
-    const tooltipRect = tooltip.getBoundingClientRect()
+    if (target && tooltip) {
+      const targetRect = target.getBoundingClientRect()
+      const tooltipRect = tooltip.getBoundingClientRect()
 
-    const tooltipX =
-      targetRect.left + targetRect.width / 2 - tooltipRect.width / 2
-    const tooltipY =
-      position === 'top'
-        ? targetRect.top - tooltipRect.height - offset
-        : targetRect.bottom + offset
+      const tooltipX =
+        targetRect.left + targetRect.width / 2 - tooltipRect.width / 2
+      const tooltipY =
+        position === 'top'
+          ? targetRect.top - tooltipRect.height - offset
+          : targetRect.bottom + offset
 
-    const resultX = clamp(tooltipX, 0, window.innerWidth - tooltipRect.width)
-    const resultY = clamp(tooltipY, 0, window.innerHeight - tooltipRect.height)
+      const resultX = clamp(tooltipX, 0, window.innerWidth - tooltipRect.width)
+      const resultY = clamp(
+        tooltipY,
+        0,
+        window.innerHeight - tooltipRect.height
+      )
 
-    tooltip.style.transform = `translate3d(${resultX}px, ${resultY}px, 0px)`
+      tooltip.style.transform = `translate3d(${resultX}px, ${resultY}px, 0px)`
 
-    const arrowOffsetX = Math.ceil(Math.abs(resultX - tooltipX))
-    const arrowX =
-      arrowOffsetX !== 0 ? `calc(-50% + ${arrowOffsetX}px)` : '-50%'
-    const arrowY = position === 'top' ? '50%' : '-50%'
-    const arrowRotation = position === 'top' ? 225 : 45
+      if (arrow) {
+        const arrowOffsetX = Math.ceil(Math.abs(resultX - tooltipX))
+        const arrowX =
+          arrowOffsetX !== 0 ? `calc(-50% + ${arrowOffsetX}px)` : '-50%'
+        const arrowY = position === 'top' ? '50%' : '-50%'
+        const arrowRotation = position === 'top' ? 225 : 45
 
-    arrow.style.transform = `translate3d(${arrowX}, ${arrowY}, 0px) rotate(${arrowRotation}deg)`
+        arrow.style.transform = `translate3d(${arrowX}, ${arrowY}, 0px) rotate(${arrowRotation}deg)`
+      }
+    }
   }
 
   const updateZIndex = () => {
-    tooltipRef.current.style.zIndex = '20'
+    const tooltip = tooltipRef.current
 
-    findTooltips().forEach((otherTooltip: HTMLElement) => {
-      if (otherTooltip === tooltipRef.current) {
-        return
-      }
+    if (tooltip) {
+      tooltip.style.zIndex = '20'
 
-      otherTooltip.style.zIndex = '10'
-    })
+      findTooltips().forEach((otherTooltip: HTMLElement) => {
+        if (otherTooltip === tooltipRef.current) {
+          return
+        }
+
+        otherTooltip.style.zIndex = '10'
+      })
+    }
   }
 
   const findTooltips = () => {
@@ -116,8 +131,7 @@ function Tooltip({
     <>
       <span
         className={clsx(
-          'tooltip absolute top-0 left-0 z-10 max-w-md border border-white bg-back px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
-          `${theme}`,
+          'tooltip absolute top-0 left-0 z-10 max-w-md border border-white bg-transparent px-5 py-2 text-center shadow-lg shadow-black/25 backdrop-blur-3xl transition-opacity delay-150 ease-in-out',
           {
             'pointer-events-all opacity-100': visible,
             'pointer-events-none opacity-0': !visible,
@@ -129,11 +143,11 @@ function Tooltip({
       >
         <span
           className={clsx(
-            'absolute left-1/2 h-3 w-3 border-l border-t border-white',
+            'absolute left-1/2 h-3 w-3 border-l border-t border-white backdrop-blur-sm',
             `${theme}`,
             {
-              'top-0': position !== 'top',
-              'bottom-0': position === 'top',
+              'top-[-1px]': position !== 'top',
+              'bottom-[-1px]': position === 'top',
             }
           )}
           ref={arrowRef}
@@ -157,11 +171,6 @@ function Tooltip({
       </span>
     </>
   )
-}
-
-Tooltip.defaultProps = {
-  offset: 12,
-  position: 'top',
 }
 
 export default Tooltip

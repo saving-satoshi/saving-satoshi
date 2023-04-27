@@ -3,23 +3,27 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { ProgressContextType } from 'types'
 import { getProgress, setProgress } from 'api/progress'
+import { getProgressLocal, setProgressLocal } from 'api/local'
 import { useAuthContext } from './AuthProvider'
 
 export const ProgressContext = createContext<ProgressContextType>({
   progress: undefined,
   isLoading: true,
-  saveProgress: undefined,
+  saveProgress: (key: string) => Promise.resolve(),
+  saveProgressLocal: (key: string) => Promise.resolve(),
 })
 
 export const useProgressContext = () => useContext(ProgressContext)
 
-export default function AuthProvider({
+export default function ProgressProvider({
   children,
 }: {
   children: React.ReactNode
 }) {
   const { account } = useAuthContext()
-  const [accountProgress, setAccountProgress] = useState(undefined)
+  const [accountProgress, setAccountProgress] = useState<string | undefined>(
+    undefined
+  )
   const [isLoading, setIsLoading] = useState(true)
   const [savePending, setSavePending] = useState(false)
 
@@ -27,6 +31,18 @@ export default function AuthProvider({
     try {
       setIsLoading(true)
       const { progress } = await getProgress()
+      setAccountProgress(progress)
+    } catch (ex) {
+      console.error(ex)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const initLocal = async () => {
+    try {
+      setIsLoading(true)
+      const progress = await getProgressLocal()
       setAccountProgress(progress)
     } catch (ex) {
       console.error(ex)
@@ -47,18 +63,34 @@ export default function AuthProvider({
     }
   }
 
+  const saveProgressLocal = async (key: string) => {
+    try {
+      setSavePending(true)
+      setAccountProgress(key)
+      await setProgressLocal(key)
+    } catch (ex) {
+      console.error(ex)
+    } finally {
+      setSavePending(false)
+    }
+  }
+
   useEffect(() => {
     if (account) {
       init()
     } else {
-      setAccountProgress(undefined)
-      setIsLoading(false)
+      initLocal()
     }
   }, [account])
 
   return (
     <ProgressContext.Provider
-      value={{ progress: accountProgress, saveProgress, isLoading }}
+      value={{
+        progress: accountProgress,
+        saveProgress,
+        saveProgressLocal,
+        isLoading,
+      }}
     >
       {children}
     </ProgressContext.Provider>

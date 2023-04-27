@@ -1,6 +1,6 @@
 'use client'
 
-import LangBtn from 'public/assets/icons/language.svg'
+import Icon from 'shared/Icon'
 import { i18n } from 'i18n/config'
 import locales from 'i18n/locales'
 import { useState, useRef, useEffect } from 'react'
@@ -61,7 +61,7 @@ export default function LangSwitch() {
           ref={buttonRef}
           onClick={() => setIsOpen(!isOpen)}
         >
-          <LangBtn className="h-6 w-6" />
+          <Icon icon="language" className="h-6 w-6" />
         </button>
       </div>
 

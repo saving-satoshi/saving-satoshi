@@ -1,7 +1,8 @@
 'use client'
-import CarretRight from 'public/assets/icons/carret-right.svg'
+
 import { useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
+import Icon from 'shared/Icon'
 
 const transitionStyles = {
   entering: { opacity: 0.5 },
@@ -27,9 +28,9 @@ export default function Tip({
         className="flex items-center font-semibold"
       >
         {!collapsed ? (
-          <CarretRight className="mr-2" />
+          <Icon icon="caretRight" className="mr-2" />
         ) : (
-          <CarretRight className="mr-2 rotate-90 transform" />
+          <Icon icon="caretRight" className="mr-2 rotate-90 transform" />
         )}{' '}
         {title}
       </button>

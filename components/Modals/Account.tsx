@@ -1,7 +1,7 @@
 'use client'
 
-import ReactModal from 'react-modal'
-import CloseIcon from 'public/assets/icons/close.svg'
+import Modal from 'components/Modals/Modal'
+import Icon from 'shared/Icon'
 import Avatar from 'components/Avatar'
 import { Loader } from 'shared'
 import { useTranslations, useLang } from 'hooks'
@@ -27,20 +27,14 @@ export default function LoginModal({ onClose, open }) {
   }
 
   if (!isLoaded || !account) {
-    return
+    return null
   }
 
   return (
-    <ReactModal
-      isOpen={open}
-      overlayClassName="fixed inset-0 bg-overlayColor"
-      className="fixed inset-0 top-1/2 left-1/2 h-full w-screen -translate-x-1/2 -translate-y-1/2 transform bg-back p-5  pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:w-[550px] sm:rounded-lg sm:pt-5"
-      contentLabel="Login Modal"
-      onRequestClose={onClose}
-    >
+    <Modal active={open} onRequestClose={onClose}>
       <div className="float-right flex justify-end">
         <button onClick={handleCloseClick} aria-label="Close">
-          <CloseIcon className="h-6 w-6" />
+          <Icon icon="close" className="h-6 w-6" />
         </button>
       </div>
 
@@ -69,6 +63,6 @@ export default function LoginModal({ onClose, open }) {
           </div>
         </div>
       )}
-    </ReactModal>
+    </Modal>
   )
 }

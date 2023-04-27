@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Lesson, LessonTabs, LessonPrompt, StatusBar } from 'ui'
 
 const tabData = [
@@ -37,6 +37,32 @@ export default function InputChallenge({
   precedingText?: string
 }) {
   const [userInput, setUserInput] = useState('')
+  const [success, setSuccess] = useState<boolean | null>(null)
+  const [userHint, setUserHint] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    if (!userInput && !success) {
+      setSuccess(null)
+      console.log('1')
+    } else if (
+      userInput &&
+      !success &&
+      hints &&
+      answer.startsWith(userInput) &&
+      userInput !== answer
+    ) {
+      setSuccess(false)
+      setUserHint(true)
+      console.log('2')
+    } else if (userInput && !success && !answer.startsWith(userInput)) {
+      setSuccess(false)
+      setUserHint(false)
+      console.log('3')
+    } else if (userInput === answer) {
+      setSuccess(true)
+      console.log('4')
+    }
+  }, [answer, userInput])
 
   return (
     <Lesson>
@@ -56,7 +82,7 @@ export default function InputChallenge({
         precedingText={precedingText}
       />
 
-      <StatusBar full input={userInput} expected={answer} hints={hints} />
+      <StatusBar full success={success} hints={userHint} />
     </Lesson>
   )
 }
