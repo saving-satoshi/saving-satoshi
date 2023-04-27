@@ -13,7 +13,7 @@ export default function Outro2({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <ChapterEnd {...metadata} lang={lang}>
+    <ChapterEnd {...metadata} direction="left" lang={lang}>
       <h1 className="text-3xl font-bold text-white md:text-5xl">
         {t('chapter_one.outro_two.title')}
       </h1>

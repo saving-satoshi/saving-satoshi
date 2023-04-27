@@ -20,6 +20,6 @@ export const metadata = {
   theme: 'bg-gradient-to-tl from-[#7b1810d9] to-[#432a43d9]',
   intros: ['intro-1', 'intro-2'],
   lessons: ['scripting-1'],
-  outros: [],
+  outros: ['outro-1'],
   challenges: ['scripting-1'],
 }
