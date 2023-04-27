@@ -44,7 +44,7 @@ export default function TerminalChallenge({
   const { saveProgress, saveProgressLocal } = useProgressContext()
   const { account } = useAuthContext()
   const [hydrated, setHydrated] = useState(false)
-  const [success, setSuccess] = useState('')
+  const [success, setSuccess] = useState<boolean | null>(null)
   const [challengeState, setChallengeState] = useState<string>('incomplete')
   const [lines, setLines] = useState(
     customLines
@@ -114,8 +114,7 @@ export default function TerminalChallenge({
           } else {
             saveProgressLocal(lessonKey)
           }
-
-          setSuccess('true')
+          setSuccess(true)
           setChallengeState('complete')
           setLines((lines) => [
             ...lines,
@@ -125,7 +124,7 @@ export default function TerminalChallenge({
       } else {
         setTimeout(() => {
           if (challengeState === 'incomplete') {
-            setSuccess('false')
+            setSuccess(false)
           }
           setLines((lines) => [
             ...lines,
@@ -136,7 +135,7 @@ export default function TerminalChallenge({
     } else if (commonError && sanitizedInput.includes(commonError.error)) {
       setTimeout(() => {
         if (challengeState === 'incomplete') {
-          setSuccess('false')
+          setSuccess(false)
         }
         setLines((lines) => {
           newLines = [...lines]
@@ -150,7 +149,7 @@ export default function TerminalChallenge({
     } else {
       setTimeout(() => {
         if (challengeState === 'incomplete') {
-          setSuccess('false')
+          setSuccess(false)
         }
         setLines((lines) => {
           newLines = [...lines]

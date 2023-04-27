@@ -1,5 +1,3 @@
-import { notFound } from 'next/navigation'
-
 const translations = {
   shared: {
     next: 'Continue',
@@ -110,9 +108,9 @@ const translations = {
       title: 'Genesis',
       heading: 'Find the hidden message',
       paragraph_one:
-        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="genesis_two.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
       paragraph_two:
-        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
+        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
       paragraph_three: 'Copy that value and paste it in the code block.',
       tooltip_block_explorer:
         'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
@@ -229,9 +227,70 @@ const translations = {
         'Wow, a mechanical keyboard. Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.',
     },
 
+    hashing_one: {
+      title: 'Zeroes',
+      paragraph_one:
+        'Either by chance, or because Holocat actually knew what he was doing, the computer turns the random letters and numbers he stepped on turn into... more random letters and numbers?',
+      paragraph_two:
+        '> QX23Y6VGECTTTTTTTTTTTTTTUB[P[pihof <br> > 1c31d1d9fb848a505fc0cdbea848ff1bdd46',
+      paragraph_three: 'The monitor displays "INCORRECT HASH. TRY AGAIN."',
+      paragraph_four:
+        'Of course whatever gibberish Holocat typed was wrong. He’s just a holographic cat!',
+      paragraph_five: 'What happens if you type something different?',
+    },
+
+    hashing_two: {
+      title: 'Zeroes',
+      heading: 'Enter Anything',
+      return_hash: 'Below you will see your input converted to a hash',
+    },
+
+    hashing_three: {
+      title: 'Zeroes',
+      heading: 'Did you notice anything special about the hashes?',
+      list_one:
+        'Just like fingerprints, hashes are unique. Barring some exceptional circumstances, the hashes for two different things should never be the same.',
+      list_two:
+        'Hash functions are one way streets. You can’t reverse engineer a hash and figure out the data used to make it.',
+      list_three:
+        'Hashes are extremely reliable in the sense that they are deterministic. This means you can hash the same piece of data over and over again and you’ll always get the same result.',
+      paragraph_one:
+        'The function used here is called SHA-256, a very popular choice.',
+      paragraph_two: 'Now, let’s see if you can find a specific hash.',
+      paragraph_three:
+        'Find a hash that starts with a zero (“0”). Keep typing different things below until you find a hash that we want.',
+    },
+
+    hashing_four: {
+      title: 'Zeroes',
+      heading:
+        'Enter anything until you find a hash that starts with a zero (“0”)',
+      hint_prompt:
+        'Need a <Tooltip id="hint_prompt" position="bottom" offset="-1" content="chapter_two.hashing_four.hint_tooltip" className="underline">hint</Tooltip>?',
+      hint_tooltip:
+        '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="cursor-pointer whitespace-nowrap bg-black/20 text-transparent hover:text-white">popcorn</span>',
+    },
+
+    hashing_five: {
+      title: 'Zeroes',
+      heading: 'That wasn’t too hard!',
+      paragraph_one:
+        'Let’s make it a bit more tricky. try to find a hash <br> that starts with two zeroes ("00").',
+    },
+
+    hashing_six: {
+      title: 'Zeroes',
+      heading:
+        'Enter anything until you find a hash that starts with two zeroes (“00”)',
+      hint_prompt:
+        'Need a <Tooltip id="hint_prompt" position="bottom" offset="-1" content="chapter_two.hashing_six.hint_tooltip" className="underline">hint</Tooltip>?',
+      hint_tooltip:
+        '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="cursor-pointer whitespace-nowrap bg-black/20 text-transparent hover:text-white">trigonometry</span>',
+    },
+
     scripting_one: {
       title: 'Automation',
-      heading: 'Let’s make the computer do this for us.',
+      heading: 'Let’s make the computem do this for us.',
       paragraph_one:
         'OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.',
       paragraph_two:
@@ -357,6 +416,11 @@ const translations = {
   demo_disclaimer: {
     title: 'This is a demo',
     description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">your feedback</Link>.`,
+  },
+
+  hasher: {
+    placeholder: 'Type here...',
+    return_hash: 'Below you will see your input converted to a hash',
   },
 
   runner: {

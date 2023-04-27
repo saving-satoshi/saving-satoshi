@@ -33,6 +33,7 @@
     "react-dom": "18.2.0",
     "react-monaco-editor": "^0.52.0",
     "react-transition-group": "^4.4.5",
+    "sjcl": "^1.0.8",
     "use-local-storage-state": "^18.1.2"
   },
   "devDependencies": {
