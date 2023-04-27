@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonTerminal } from 'ui'
 import { useMediaQuery } from 'hooks'
+import { useAuthContext } from 'providers/AuthProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
 
 const tabData = [
@@ -40,7 +41,8 @@ export default function TerminalChallenge({
   customLines?: string
   commonError?: any
 }) {
-  const { saveProgress } = useProgressContext()
+  const { saveProgress, saveProgressLocal } = useProgressContext()
+  const { account } = useAuthContext()
   const [hydrated, setHydrated] = useState(false)
   const [success, setSuccess] = useState('')
   const [challengeState, setChallengeState] = useState<string>('incomplete')
@@ -106,7 +108,12 @@ export default function TerminalChallenge({
 
       if (varInput === (expectedInput.value || expectedInput)) {
         setTimeout(() => {
-          saveProgress(lessonKey)
+          if (account) {
+            saveProgress(lessonKey)
+          } else {
+            saveProgressLocal(lessonKey)
+          }
+
           setSuccess('true')
           setChallengeState('complete')
           setLines((lines) => [
