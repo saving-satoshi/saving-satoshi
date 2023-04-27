@@ -13,24 +13,22 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
   return (
     <>
       {children}
-      <>
-        <SignInModal
-          open={modals[Modal.SignIn]}
-          onClose={() => close(Modal.SignIn)}
-        />
-        <SignUpModal
-          open={modals[Modal.SignUp]}
-          onClose={() => close(Modal.SignUp)}
-        />
-        <AccountModal
-          open={modals[Modal.Account]}
-          onClose={() => close(Modal.Account)}
-        />
-        <ProgressModal
-          open={modals[Modal.Progress]}
-          onClose={() => close(Modal.Progress)}
-        />
-      </>
+      <SignInModal
+        open={modals[Modal.SignIn]}
+        onClose={() => close(Modal.SignIn)}
+      />
+      <SignUpModal
+        open={modals[Modal.SignUp]}
+        onClose={() => close(Modal.SignUp)}
+      />
+      <AccountModal
+        open={modals[Modal.Account]}
+        onClose={() => close(Modal.Account)}
+      />
+      <ProgressModal
+        open={modals[Modal.Progress]}
+        onClose={() => close(Modal.Progress)}
+      />
     </>
   )
 }

@@ -31,9 +31,9 @@
     "raw-loader": "^4.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-modal": "^3.16.1",
     "react-monaco-editor": "^0.52.0",
     "react-transition-group": "^4.4.5",
+    "sjcl": "^1.0.8",
     "use-local-storage-state": "^18.1.2"
   },
   "devDependencies": {

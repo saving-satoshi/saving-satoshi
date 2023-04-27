@@ -10,10 +10,10 @@ function Tooltip({
   className,
   id,
   content,
-  position,
+  position = 'top',
   href,
-  offset = 0,
-  theme = 'bg-back',
+  theme,
+  offset = 12,
 }: {
   children: React.ReactNode
   className?: string
@@ -21,7 +21,7 @@ function Tooltip({
   content: any
   position?: string
   href?: string
-  offset: number
+  offset?: number
   theme?: string
 }) {
   const targetRef = useRef<HTMLSpanElement>(null)
@@ -131,8 +131,7 @@ function Tooltip({
     <>
       <span
         className={clsx(
-          'tooltip absolute left-0 top-0 z-10 max-w-md border border-white bg-back px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
-          `${theme}`,
+          'tooltip absolute top-0 left-0 z-10 max-w-md border border-white bg-transparent px-5 py-2 text-center shadow-lg shadow-black/25 backdrop-blur-3xl transition-opacity delay-150 ease-in-out',
           {
             'pointer-events-all opacity-100': visible,
             'pointer-events-none opacity-0': !visible,
@@ -144,11 +143,11 @@ function Tooltip({
       >
         <span
           className={clsx(
-            'absolute left-1/2 h-3 w-3 border-l border-t border-white',
+            'absolute left-1/2 h-3 w-3 border-l border-t border-white backdrop-blur-sm',
             `${theme}`,
             {
-              'top-0': position !== 'top',
-              'bottom-0': position === 'top',
+              'top-[-1px]': position !== 'top',
+              'bottom-[-1px]': position === 'top',
             }
           )}
           ref={arrowRef}
@@ -172,11 +171,6 @@ function Tooltip({
       </span>
     </>
   )
-}
-
-Tooltip.defaultProps = {
-  offset: 12,
-  position: 'top',
 }
 
 export default Tooltip

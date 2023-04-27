@@ -13,8 +13,7 @@ export enum Status {
 }
 
 export default function StatusBar({
-  input,
-  expected,
+  success,
   beginMessage,
   successMessage,
   inProgressMessage,
@@ -24,14 +23,13 @@ export default function StatusBar({
   alwaysShow,
   className,
 }: {
-  input: string
-  expected: string
+  success: boolean | null
   beginMessage?: string
   successMessage?: string
   inProgressMessage?: string
   errorMessage?: string
   full?: boolean
-  hints?: boolean
+  hints?: boolean | null
   alwaysShow?: boolean
   className?: string
 }) {
@@ -42,15 +40,15 @@ export default function StatusBar({
   const saveAndProceed = useSaveAndProceed()
 
   const getStatus = () => {
-    if (!input) {
+    if (success === null) {
       return Status.Begin
     }
 
-    if (input === expected) {
+    if (success === true) {
       return Status.Success
     }
 
-    if (hints && (!input || expected.startsWith(input))) {
+    if (hints && success === false) {
       return Status.InProgress
     }
 

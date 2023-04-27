@@ -6,6 +6,7 @@ import LessonTabs from './Tabs'
 import TerminalChallenge from './TerminalChallenge'
 import InputChallenge from './InputChallenge'
 import ScriptingChallenge from './ScriptingChallenge'
+import HashChallenge from './HashChallenge'
 
 export {
   Lesson,
@@ -17,4 +18,5 @@ export {
   TerminalChallenge,
   InputChallenge,
   ScriptingChallenge,
+  HashChallenge,
 }
