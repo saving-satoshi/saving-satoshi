@@ -309,6 +309,16 @@ const translations = {
         'When you press “Run the script”, the findHash function will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce.',
       success: 'Five zeroes! That’s it!',
     },
+    outro_one: {
+      title: 'Outro',
+      heading: 'Great Job!',
+      paragraph_one:
+        'The machines roar to life. Everything seems to be working. A map appears on the computer that appears to show the locations of other warehouses filled with ASICs that have come back to life across the world.',
+      paragraph_two: 'HOLOCAT: “Look, there’s a message.”',
+      paragraph_three:
+        '“Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto',
+      paragraph_four: 'Him again?',
+    },
   },
 
   chapter_three: {

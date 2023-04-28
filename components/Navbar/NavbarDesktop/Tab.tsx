@@ -11,7 +11,6 @@ import { lessons, chapters } from 'content'
 import { getLessonKey } from 'lib/progress'
 import { useProgressContext } from 'providers/ProgressProvider'
 import useLessonStatus from 'hooks/useLessonStatus'
-import { metadata } from 'content/chapters/chapter-1'
 
 export default function Tab({
   index,

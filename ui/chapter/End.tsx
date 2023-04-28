@@ -5,6 +5,7 @@ import { useSaveAndReturn, useTranslations } from 'hooks'
 import { Modal, useModalContext } from 'providers/ModalProvider'
 import { useAuthContext } from 'providers/AuthProvider'
 import clsx from 'clsx'
+import Image from 'next/image'
 
 export default function End({
   image,
@@ -32,10 +33,13 @@ export default function End({
   }
 
   return (
-    <div
-      className="flex w-screen grow justify-center bg-cover bg-fixed bg-center bg-no-repeat"
-      style={{ backgroundImage: `url('${image}')` }}
-    >
+    <div>
+      <Image
+        src={image}
+        alt={t('chapter_two.title')}
+        fill
+        className="relative -z-10 object-cover object-bottom"
+      />
       <div className="absolute bottom-0 ml-auto w-full bg-gradient-to-b from-transparent via-[#00000040] to-[#00000080] p-4 pb-12 text-left md:p-16">
         <div
           className={clsx('max-w-[500px]', {
