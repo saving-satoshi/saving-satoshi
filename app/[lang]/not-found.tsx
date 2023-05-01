@@ -10,7 +10,6 @@ export default function NotFound() {
 
   return (
     <div className="flex h-full grow items-end justify-center">
-      
       <Image
         src="/assets/images/404-background.jpg"
         alt="page not found"
@@ -21,7 +20,7 @@ export default function NotFound() {
         className="-z-20 h-full w-full object-cover"
       />
       <Topbar />
-      
+
       <Image
         src="/assets/images/404-cat.png"
         alt="cat"
@@ -29,7 +28,6 @@ export default function NotFound() {
         width={250}
         height={253.65}
       />
-      
 
       <div className="absolute left-1/2 top-1/2 z-0 flex w-screen -translate-x-1/2 -translate-y-1/2 flex-col justify-center">
         <h1 className=" text-center font-cbrush text-6xl text-white md:text-5xl">
@@ -37,12 +35,12 @@ export default function NotFound() {
         </h1>
         <h2 className="text-center font-cbrush text-4xl text-white md:text-2xl">
           {t('notfound.second')}
-        </h1>
+        </h2>
         <h2 className="text-center font-cbrush text-4xl text-white md:text-2xl">
           {t('notfound.third')}
-        </h1>
+        </h2>
 
-        <div className=" mt-8 text-center font-cbrush text-2xl w-full md:w-auto">
+        <div className=" mt-8 w-full text-center font-cbrush text-2xl md:w-auto">
           <Button href="/">{t('notfound.back_safety')}</Button>
         </div>
       </div>
