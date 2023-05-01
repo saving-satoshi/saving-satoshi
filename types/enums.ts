@@ -14,6 +14,7 @@ export enum InjectableComponentType {
   Link,
   Tooltip,
   LineBreak,
+  Span,
 }
 
 export enum LoadingState {

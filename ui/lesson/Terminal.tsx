@@ -137,7 +137,7 @@ export default function Terminal({ success, lines, onChange }) {
             </div>
           </div>
         </div>
-        <StatusBar input={success} expected="true" />
+        <StatusBar success={success} />
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 'use client'
 
-import { useLocalizedRoutes, useTranslations } from 'hooks'
+import { useTranslations } from 'hooks'
 import { LessonInfo, Title, Text, InputChallenge } from 'ui'
 import { Button } from 'shared'
 
@@ -10,7 +10,6 @@ export const metadata = {
 }
 
 export default function Genesis2({ lang }) {
-  const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
 
   return (

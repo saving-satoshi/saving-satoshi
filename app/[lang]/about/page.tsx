@@ -20,6 +20,10 @@ function Divider() {
   return <div className="my-12 h-[1px] w-full bg-white bg-opacity-25" />
 }
 
+export const metadata = {
+  title: 'About - Saving Satoshi',
+}
+
 export default function About({ params }) {
   const t = useTranslations(params.lang)
 
@@ -115,7 +119,7 @@ export default function About({ params }) {
         <Divider />
 
         <div className="mt-12 flex-col justify-center px-6 pb-12 text-center text-white">
-          <p className="pt-4 pb-8 text-center font-nunito text-xl">
+          <p className="pb-8 pt-4 text-center font-nunito text-xl">
             {t('about.satoshi_needs_you')}
           </p>
           <Button href={`/${params.lang}/chapters`}>

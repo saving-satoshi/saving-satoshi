@@ -29,7 +29,7 @@ export default function NotFound() {
       />
       <Topbar />
 
-      <div className="absolute top-1/2 left-1/2 z-0 flex w-screen -translate-x-1/2 -translate-y-1/2 flex-col justify-center">
+      <div className="absolute left-1/2 top-1/2 z-0 flex w-screen -translate-x-1/2 -translate-y-1/2 flex-col justify-center">
         <h1 className=" text-center font-cbrush text-6xl text-white">
           {t('notfound.first')}
         </h1>
