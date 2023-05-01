@@ -2,7 +2,8 @@ export default function formatHash(
   hash: string,
   chunkLength: number,
   rows: number,
-  length?: number
+  length?: number,
+  hashStatus?: number
 ) {
   const result: JSX.Element[] = []
   const chunkSize = !!chunkLength ? chunkLength : 4
@@ -24,7 +25,16 @@ export default function formatHash(
           if (zeroCount < leadingZeros && char === '0') {
             zeroCount++
             return (
-              <span key={idx} className="text-white">
+              <span
+                key={idx}
+                className={
+                  hashStatus
+                    ? hashStatus === 1
+                      ? 'text-[#EDA081]'
+                      : 'text-white'
+                    : 'text-[#5DBC59]'
+                }
+              >
                 {char}
               </span>
             )
@@ -40,7 +50,16 @@ export default function formatHash(
           if (zeroCount < leadingZeros && char === '0') {
             zeroCount++
             return (
-              <span key={idx} className="text-white">
+              <span
+                key={idx}
+                className={
+                  hashStatus
+                    ? hashStatus === 1
+                      ? 'text-[#EDA081]'
+                      : 'text-white'
+                    : 'text-[#5DBC59]'
+                }
+              >
                 {char}
               </span>
             )
@@ -52,23 +71,29 @@ export default function formatHash(
         ? row.push(
             <span
               key={startIndex}
-              className="mr-3 inline-block text-white text-opacity-50"
+              className="mr-3 inline-block text-opacity-50"
             >
               {placeholderChunk}
             </span>
           )
         : row.push(
-            <span
-              key={startIndex}
-              className="mr-3 inline-block text-white text-opacity-50"
-            >
+            <span key={startIndex} className="mr-3 inline-block">
               {chunk}
             </span>
           )
     }
 
     result.push(
-      <div key={i} className="inline-block">
+      <div
+        key={i}
+        className={
+          hashStatus
+            ? hashStatus === 1
+              ? 'inline-block text-[#EDA081]'
+              : 'inline-block text-white text-opacity-50'
+            : 'inline-block text-[#5DBC59]'
+        }
+      >
         {row}
       </div>
     )

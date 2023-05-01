@@ -3,26 +3,75 @@
 import clsx from 'clsx'
 
 export default function InfoBox({
-  title,
-  content,
-  highlight,
+  titleTransaction,
+  titleBitcoin,
+  transaction,
+  bitcoin,
+  transactionHighlight,
+  bitcoinHighlight,
 }: {
-  title: string
-  content: number
-  highlight: boolean
+  titleTransaction: string
+  titleBitcoin: string
+  transaction: number
+  bitcoin: number
+  transactionHighlight: boolean
+  bitcoinHighlight: boolean
 }) {
   return (
-    <div
-      className={clsx(
-        'mt-2.5 w-full bg-black/15 p-4 font-nunito font-semibold text-white',
-        {
-          'border border-[var(--terminal-output)] bg-[var(--terminal-bg)] text-[var(--terminal-output)]':
-            highlight === true,
-        }
-      )}
-    >
-      <div className="text-base">{title}</div>
-      <div className="text-2xl">{Intl.NumberFormat().format(content)}</div>
+    <div className="mt-5 flex items-center justify-between gap-x-2.5 text-center font-space-mono">
+      <div
+        className={clsx(
+          'w-full rounded-[5px] bg-black/15 p-4 font-space-mono  font-semibold',
+          {
+            'border-2 border-[#FBEBC6] drop-shadow-2xl':
+              transactionHighlight === true,
+          }
+        )}
+      >
+        <div
+          className={clsx('text-2xl font-normal', {
+            'text-black/25': transaction === 0,
+            'text-white': transaction !== 0,
+          })}
+        >
+          {Intl.NumberFormat().format(transaction)}
+        </div>
+        <div
+          className={clsx('text-[13px] font-bold', {
+            'text-black/25': transaction === 0,
+            'text-[#EDA081]': transaction !== 0,
+          })}
+        >
+          {titleTransaction}
+        </div>
+      </div>
+      <div
+        className={clsx(
+          'w-full rounded-[5px] bg-black/15 p-4 font-space-mono ',
+          {
+            'border-2 border-[#FBEBC6] drop-shadow-2xl':
+              bitcoinHighlight === true,
+          }
+        )}
+      >
+        <div
+          className={clsx('text-2xl font-normal', {
+            'text-black/25': bitcoin === 0,
+            'text-white': bitcoin !== 0,
+          })}
+        >
+          {bitcoin.toFixed(4)}
+        </div>
+        <div
+          className={clsx('text-[13px] font-bold', {
+            'text-black/25': bitcoin === 0,
+            'text-[#EDA081]': bitcoin !== 0,
+          })}
+        >
+          Bitcoin<br></br>
+          earned
+        </div>
+      </div>
     </div>
   )
 }
