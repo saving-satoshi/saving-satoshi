@@ -40,7 +40,7 @@ export default function Error({
           {t('error.second')}
         </h1>
 
-        <div className=" mt-8 text-center font-cbrush text-2xl">
+        <div className=" mt-8 text-center font-cbrush text-2xl w-full md:w-auto">
           <Button href="/">{t('error.back_safety')}</Button>
         </div>
       </div>
