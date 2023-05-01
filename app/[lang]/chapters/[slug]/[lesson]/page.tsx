@@ -35,6 +35,17 @@ export default function Page({ params }) {
 
   const [unlocked, setUnlocked] = useState<number>(LoadingState.Idle)
 
+  const Head = () => {
+    const lesson = chapterLessons[params.lesson]
+    const title = lesson ? t(lesson.metadata.title) : 'Page not found'
+
+    return (
+      <head>
+        <title>{`${title} - Saving Satoshi`}</title>
+      </head>
+    )
+  }
+
   useEffect(() => {
     if (!isAccountLoading && !isProgressLoading) {
       if (progress && params.lesson) {
@@ -53,17 +64,6 @@ export default function Page({ params }) {
     isAccountLoading,
     isProgressLoading,
   ])
-
-  const Head = () => {
-    const lesson = chapterLessons[params.lesson]
-    const title = lesson ? t(lesson.metadata.title) : 'Page not found'
-
-    return (
-      <head>
-        <title>{`${title} - Saving Satoshi`}</title>
-      </head>
-    )
-  }
 
   // If the lesson does not exist, we show this error message.
   if (!(params.lesson in chapterLessons) || !(params.slug in chapters)) {

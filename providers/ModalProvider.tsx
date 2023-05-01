@@ -7,7 +7,6 @@ export enum Modal {
   Account = 'account',
   SignIn = 'signin',
   SignUp = 'signup',
-  Progress = 'progress',
 }
 
 export const ModalContext = createContext<ModalContextType>({
@@ -25,7 +24,6 @@ export default function ModalProvider({
 }) {
   const [modals, setModals] = useState({
     [Modal.Account]: false,
-    [Modal.Progress]: false,
     [Modal.SignIn]: false,
     [Modal.SignUp]: false,
   })

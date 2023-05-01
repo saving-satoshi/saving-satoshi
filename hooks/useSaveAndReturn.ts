@@ -15,9 +15,7 @@ export default function useSaveAndReturn() {
   const { chapterId, lessonId } = usePathData()
 
   const chapterLessons = lessons[chapterId] ? lessons[chapterId] : 'chapter-1'
-  const lesson = chapterLessons[lessonId]?.metadata
-    ? chapterLessons[lessonId].metadata
-    : { key: 'CH1TRA2' }
+  const lesson = chapterLessons[lessonId].metadata
   const currentLessonKey = lesson.key
 
   const saveAndReturn = async () => {

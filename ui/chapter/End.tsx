@@ -26,7 +26,7 @@ export default function End({
 
   const handleClick = () => {
     if (!account) {
-      modals.open(Modal.Progress)
+      modals.open(Modal.SignUp)
     } else {
       saveAndReturn()
     }
