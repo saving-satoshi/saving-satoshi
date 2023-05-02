@@ -101,25 +101,11 @@ export default function Page({ params }) {
     )
   }
 
-  // If account and progress data have been loaded, but there is no progress obj
-  if (!account || !progress) {
-    return (
-      hydrated && (
-        <>
-          <Head />
-          <div className="flex h-full w-full grow flex-col items-center justify-center">
-            <SignIn lang={params.lang} />
-          </div>
-        </>
-      )
-    )
-  }
-
   const lastUnlockedLessonPath = getLastUnlockedLessonPath(progress!)
   const currentLessonPath = `/${pathData.pageId}/${pathData.chapterId}/${pathData.lessonId}`
   const isRestrictedFromLesson = !isLessonCompleted(
     getLessonKey(pathData.chapterId, pathData.lessonId),
-    progress!
+    progress ?? 'CH1INT1'
   )
 
   if (

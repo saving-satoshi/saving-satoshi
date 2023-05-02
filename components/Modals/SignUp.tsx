@@ -18,7 +18,7 @@ enum View {
   Input = 'input',
 }
 
-export default function SignUpModal({ open, onClose }) {
+export default function SignUpModal({ open, onClose, save }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { login } = useAuthContext()
@@ -46,6 +46,7 @@ export default function SignUpModal({ open, onClose }) {
         await register(privateKey, `/assets/avatars/${avatar}.png`)
         await login(privateKey)
         onClose()
+        save && useSaveAndReturn()
       }
     } catch (ex) {
       console.error(ex)

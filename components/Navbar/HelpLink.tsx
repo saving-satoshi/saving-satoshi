@@ -10,7 +10,7 @@ export default function HelpLink({ params }: { params: any }) {
 
   const { slug, lesson: lessonId } = params
   const theme =
-    lessons[slug]?.[lessonId]?.metadata ??
+    lessons[slug]?.[lessonId]?.metadata.theme ??
     chapters[slug]?.metadata.theme ??
     'bg-back'
 

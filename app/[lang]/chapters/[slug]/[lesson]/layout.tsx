@@ -6,7 +6,7 @@ import { lessons, chapters } from 'content'
 export default function Layout({ children, params }) {
   const { slug, lesson: lessonId } = params
   const theme =
-    lessons[slug]?.[lessonId]?.metadata ??
+    lessons[slug]?.[lessonId]?.metadata.theme ??
     chapters[slug]?.metadata.theme ??
     'bg-back'
 
