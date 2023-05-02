@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import Icon from 'shared/Icon'
 import { Checkbox, CopyButton, Loader, RadioButton, RadioGroup } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
-import { useTranslations, useLang } from 'hooks'
+import { useTranslations, useLang, useSaveAndReturn } from 'hooks'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { generateKeypair } from 'lib/crypto'
@@ -18,9 +18,10 @@ enum View {
   Input = 'input',
 }
 
-export default function SignUpModal({ open, onClose }) {
+export default function EndSignUpModal({ open, onClose }) {
   const lang = useLang()
   const t = useTranslations(lang)
+  const saveAndReturn = useSaveAndReturn()
   const { login } = useAuthContext()
 
   const [loading, setLoading] = useState<boolean>(false)
@@ -45,6 +46,7 @@ export default function SignUpModal({ open, onClose }) {
       if (privateKey) {
         await register(privateKey, `/assets/avatars/${avatar}.png`)
         await login(privateKey)
+        saveAndReturn()
         onClose()
       }
     } catch (ex) {
