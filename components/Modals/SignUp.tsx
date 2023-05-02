@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import Icon from 'shared/Icon'
 import { Checkbox, CopyButton, Loader, RadioButton, RadioGroup } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
-import { useTranslations, useLang } from 'hooks'
+import { useTranslations, useLang, useSaveAndReturn } from 'hooks'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { generateKeypair } from 'lib/crypto'
@@ -115,15 +115,14 @@ export default function SignUpModal({ open, onClose }) {
               {privateKey && (
                 <>
                   <code className="mb-2 whitespace-pre-wrap break-all text-base">
-                    {privateKey}
+                    {privateKey.toUpperCase()}
                   </code>
-                  <CopyButton content={privateKey}>
+                  <CopyButton style={'w-full'} content={privateKey}>
                     {t('shared.copy')}
                   </CopyButton>
                 </>
               )}
             </pre>
-            <p className="mt-5 text-base">{t('modal_signup.generate')}</p>
           </>
         )}
 
@@ -135,9 +134,9 @@ export default function SignUpModal({ open, onClose }) {
               placeholder="Enter your private key"
               onInput={handleSetPrivateKey}
             />
-            <p className="mt-5 text-base">{t('modal_signup.input')}</p>
           </>
         )}
+        <p className="mt-5 text-base">{t('modal_signup.generate')}</p>
 
         <Checkbox
           name="checkbox"

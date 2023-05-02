@@ -14,10 +14,10 @@ import {
 
 import * as navigation from 'next/navigation'
 import { useAuthContext } from 'providers/AuthProvider'
-import { Modal, useModalContext } from 'providers/ModalProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
-import { Button, Loader } from 'shared'
+import { Loader } from 'shared'
 import { LoadingState } from 'types'
+import { notFound } from 'next/navigation'
 
 export default function Page({ params }) {
   const searchParams = navigation.useSearchParams()
@@ -27,13 +27,33 @@ export default function Page({ params }) {
 
   const chapterId = params.slug
   const chapterLessons = lessons[chapterId]
-  const modals = useModalContext()
   const pathData = usePathData()
 
   const { account, isLoading: isAccountLoading } = useAuthContext()
   const { progress, isLoading: isProgressLoading } = useProgressContext()
 
   const [unlocked, setUnlocked] = useState<number>(LoadingState.Idle)
+  const [hydrated, setHydrated] = useState(false)
+
+  useEffect(() => {
+    if (!isAccountLoading && !isProgressLoading) {
+      if (progress && params.lesson) {
+        const lesson = chapterLessons[params.lesson]?.metadata ?? false
+        const lessonUnlocked = isLessonUnlocked(progress, lesson.key)
+        setUnlocked(lessonUnlocked ? LoadingState.Success : LoadingState.Failed)
+      } else {
+        setUnlocked(LoadingState.Failed)
+      }
+    }
+    setHydrated(true)
+  }, [
+    progress,
+    params.lesson,
+    chapterLessons,
+    chapterId,
+    isAccountLoading,
+    isProgressLoading,
+  ])
 
   const Head = () => {
     const lesson = chapterLessons[params.lesson]
@@ -46,83 +66,58 @@ export default function Page({ params }) {
     )
   }
 
-  useEffect(() => {
-    if (!isAccountLoading && !isProgressLoading) {
-      if (progress && params.lesson) {
-        const lesson = chapterLessons[params.lesson]?.metadata ?? false
-        const lessonUnlocked = isLessonUnlocked(progress, lesson.key)
-        setUnlocked(lessonUnlocked ? LoadingState.Success : LoadingState.Failed)
-      } else {
-        setUnlocked(LoadingState.Failed)
-      }
-    }
-  }, [
-    progress,
-    params.lesson,
-    chapterLessons,
-    chapterId,
-    isAccountLoading,
-    isProgressLoading,
-  ])
-
   // If the lesson does not exist, we show this error message.
-  if (!(params.lesson in chapterLessons) || !(params.slug in chapters)) {
-    return (
-      <>
-        <Head />
-        <div className="flex h-full w-full grow flex-col items-center justify-center">
-          <span className="mb-10 font-nunito text-2xl text-white">
-            Sorry, we could not find the ’{params.lesson}’ lesson.
-          </span>
-          <Button
-            href={`/${params.lang}/chapters/${params.slug}/intro-1`}
-            size="small"
-          >
-            &larr; Back to Chapter Overview
-          </Button>
-        </div>
-      </>
-    )
+  if (
+    (chapterLessons && !(params.lesson in chapterLessons)) ||
+    !(params.slug in chapters)
+  ) {
+    return notFound()
   }
 
   const Lesson = chapterLessons[params.lesson].default
 
   if (dev) {
     return (
-      <>
-        <Head />
-        <Lesson lang={params.lang} />
-      </>
+      hydrated && (
+        <>
+          <Head />
+          <Lesson lang={params.lang} />
+        </>
+      )
     )
   }
 
   // If account or progress data is being loaded, we show a loader.
   if (unlocked === LoadingState.Idle || isAccountLoading || isProgressLoading) {
     return (
-      <>
-        <Head />
-        <div className="flex grow items-center justify-center">
-          <Loader className="h-10 w-10 text-white" />
-        </div>
-      </>
+      hydrated && (
+        <>
+          <Head />
+          <div className="flex grow items-center justify-center">
+            <Loader className="h-10 w-10 text-white" />
+          </div>
+        </>
+      )
     )
   }
 
   // If account and progress data have been loaded, but there is no progress obj
   if (!account || !progress) {
     return (
-      <>
-        <Head />
-        <div className="flex h-full w-full grow flex-col items-center justify-center">
-          <SignIn lang={params.lang} />
-        </div>
-      </>
+      hydrated && (
+        <>
+          <Head />
+          <div className="flex h-full w-full grow flex-col items-center justify-center">
+            <SignIn lang={params.lang} />
+          </div>
+        </>
+      )
     )
   }
 
   const lastUnlockedLessonPath = getLastUnlockedLessonPath(progress!)
   const currentLessonPath = `/${pathData.pageId}/${pathData.chapterId}/${pathData.lessonId}`
-  const isRestrictedFromLesson = isLessonCompleted(
+  const isRestrictedFromLesson = !isLessonCompleted(
     getLessonKey(pathData.chapterId, pathData.lessonId),
     progress!
   )
@@ -136,9 +131,12 @@ export default function Page({ params }) {
   }
 
   return (
-    <>
-      <Head />
-      <Lesson lang={params.lang} />
-    </>
+    hydrated &&
+    unlocked && (
+      <>
+        <Head />
+        <Lesson lang={params.lang} />
+      </>
+    )
   )
 }

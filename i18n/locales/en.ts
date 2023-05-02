@@ -410,17 +410,14 @@ const translations = {
   },
 
   modal_signup: {
-    heading: 'Create an account',
+    heading: 'Want to save your progress',
     paragraph_one:
-      'At Saving Satoshi, private keys are used as accounts. You have the option to generate a private key here, or you can enter your own.',
+      'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.',
     subheading_one: 'Choose an avatar',
-    subheading_two: 'Your private key',
+    subheading_two: 'Back up your personal code',
     generate:
-      'If you lose your private key, you lose access to your account. Make sure you store it somewhere save.',
-    input:
-      'If you lose your private key, you lose access to your account. Make sure you store it somewhere save.',
-    confirm: 'Create account',
-    acknowledge_copy: 'I acknowledge to have copied and stored my private key.',
+      'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
+    confirm: 'Done',
   },
 
   demo_disclaimer: {

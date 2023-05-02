@@ -9,8 +9,10 @@ export default function HelpLink({ params }: { params: any }) {
   const t = useTranslations(lang)
 
   const { slug, lesson: lessonId } = params
-  const { theme = chapters[slug].metadata.theme } =
-    lessons[slug][lessonId]?.metadata ?? 'bg-back'
+  const theme =
+    lessons[slug]?.[lessonId]?.metadata ??
+    chapters[slug]?.metadata.theme ??
+    'bg-back'
 
   return (
     <div className="flex-l flex h-full items-stretch">

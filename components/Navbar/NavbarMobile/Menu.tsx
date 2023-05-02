@@ -6,8 +6,10 @@ import { lessons, chapters } from 'content'
 export default function Menu(props) {
   const { slug, lesson: lessonId } = props.params
 
-  const { theme = chapters[slug].metadata.theme } =
-    lessons[slug][lessonId]?.metadata ?? 'bg-back'
+  const theme =
+    lessons[slug]?.[lessonId]?.metadata ??
+    chapters[slug]?.metadata.theme ??
+    'bg-back'
 
   return (
     <div
