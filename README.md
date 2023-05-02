@@ -1,6 +1,6 @@
 # Saving Satoshi
 
-Saving Satoshi is a light-hearted, first point of contact for developers of all ages that want to learn how bitcoin works!
+Saving Satoshi is a light-hearted, first point of contact for developers of all ages that want to learn how bitcoin works!!
 
 At its core, this is a video game. But if you look beneath the surface, it's much more than that. It’s an interactive science fiction story designed to inspire a generation to fall in love with bitcoin. The goal is to be a 0-to-1 experience that transmits the cultural values of bitcoin. We do this by immersing learners into a fictional world that they navigate with technical lessons.
 
