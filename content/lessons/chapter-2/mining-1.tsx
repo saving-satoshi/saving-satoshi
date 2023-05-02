@@ -233,7 +233,11 @@ export default function Mining1({ lang }) {
             <p className="mt-8 text-lg">
               {t('chapter_two.mining_one.paragraph_fourteen')}
             </p>
-            <Button onClick={finalStep} classes="mt-10 max-md:w-full">
+            <Button
+              onClick={finalStep}
+              style="outline"
+              classes="mt-10 max-md:w-full"
+            >
               {t('shared.next')}
             </Button>
           </div>
