@@ -14,9 +14,9 @@ export default function useSaveAndReturn() {
   const { progress, saveProgress } = useProgressContext()
   const { chapterId, lessonId } = usePathData()
 
-  const chapterLessons = lessons[chapterId] ? lessons[chapterId] : 'chapter-1'
-  const lesson = chapterLessons[lessonId].metadata
-  const currentLessonKey = lesson.key
+  const chapterLessons = lessons?.[chapterId]
+  const lesson = chapterLessons?.[lessonId]?.metadata ?? null
+  const currentLessonKey = lesson?.key ?? 'CH1INT1'
 
   const saveAndReturn = async () => {
     const nextLessonKey = getNextLessonKey(currentLessonKey)

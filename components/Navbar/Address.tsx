@@ -14,13 +14,18 @@ export default function Address() {
   const lessonId = isLessonRoute ? pathData.pop() : undefined
   const chapterId = pathData.pop()
 
-  if (!(chapterId! in chapters) || !(lessonId! in lessons)) {
+  if (
+    (chapterId && !(chapterId in chapters)) ||
+    (lessonId && !(lessonId in lessons))
+  ) {
     return null
   }
 
-  const chapter = chapters[chapterId!]?.metadata
-  const chapterLessons = lessons[chapterId!]
-  const lesson = chapterLessons[lessonId]!?.metadata
+  const chapter =
+    chapterId !== undefined ? chapters[chapterId]?.metadata : 'chapter-1'
+  const chapterLessons = chapterId !== undefined ? lessons[chapterId] : null
+  const lesson =
+    lessonId !== undefined ? chapterLessons[lessonId].metadata : null
 
   const challenges = chapter.lessons
     .map((l) => l.split('-')[0])

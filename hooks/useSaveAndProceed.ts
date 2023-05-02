@@ -18,9 +18,9 @@ export default function useSaveAndProceed() {
   const { progress, saveProgress, saveProgressLocal } = useProgressContext()
   const { chapterId, lessonId } = usePathData()
 
-  const chapterLessons = lessons[chapterId]
-  const lesson = chapterLessons[lessonId].metadata
-  const currentLessonKey = lesson.key
+  const chapterLessons = lessons?.[chapterId]
+  const lesson = chapterLessons?.[lessonId]?.metadata ?? null
+  const currentLessonKey = lesson?.key ?? 'CH1INT1'
 
   const saveAndProceed = async () => {
     const nextLessonKey = getNextLessonKey(currentLessonKey)

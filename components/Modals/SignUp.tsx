@@ -21,6 +21,7 @@ enum View {
 export default function SignUpModal({ open, onClose }) {
   const lang = useLang()
   const t = useTranslations(lang)
+  const saveAndReturn = useSaveAndReturn()
   const { login } = useAuthContext()
 
   const [loading, setLoading] = useState<boolean>(false)
@@ -45,6 +46,7 @@ export default function SignUpModal({ open, onClose }) {
       if (privateKey) {
         await register(privateKey, `/assets/avatars/${avatar}.png`)
         await login(privateKey)
+        saveAndReturn()
         onClose()
       }
     } catch (ex) {
