@@ -30,13 +30,13 @@ export default function NotFound() {
         />
 
         <div className="flex flex-col justify-center">
-          <h1 className=" text-center font-cbrush text-6xl text-white md:text-6xl">
+          <h1 className=" text-center font-cbrush text-5xl text-white md:text-6xl">
             {t('notfound.first')}
           </h1>
-          <h2 className="text-center font-cbrush text-4xl text-white md:text-4xl">
+          <h2 className="text-center font-cbrush text-2xl text-white md:text-4xl">
             {t('notfound.second')}
           </h2>
-          <h2 className="text-center font-cbrush text-4xl text-white md:text-4xl">
+          <h2 className="text-center font-cbrush text-2xl text-white md:text-4xl">
             {t('notfound.third')}
           </h2>
 

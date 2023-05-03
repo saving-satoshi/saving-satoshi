@@ -22,21 +22,22 @@ export default function Error({
   }, [error])
 
   return (
-    <div className="flex h-screen flex-col justify-center">
+    <div className="flex h-screen flex-col justify-center bg-gradient-to-br from-[#0A1B2A] to-[#2A323C]">
+      <Topbar />
       <Image
         src="/assets/images/error-page_cat.jpg"
         alt="page not found"
         width={250}
         height={250}
-        className="flex self-center"
+        className="flex self-center rounded-full"
       />
       <div className="flex flex-col justify-center">
-        <h1 className=" text-center font-cbrush text-6xl text-white">
+        <h1 className=" text-center font-cbrush text-5xl text-white md:text-6xl">
           {t('error.first')}
         </h1>
-        <h1 className="text-center font-cbrush text-4xl text-white">
+        <h2 className="text-center font-cbrush text-2xl text-white md:text-4xl">
           {t('error.second')}
-        </h1>
+        </h2>
 
         <div className=" mt-8 w-full text-center font-cbrush text-2xl md:w-auto">
           <Button href="/">{t('error.back_safety')}</Button>
