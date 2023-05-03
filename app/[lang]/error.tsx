@@ -22,17 +22,15 @@ export default function Error({
   }, [error])
 
   return (
-    <div className="w-full bg-[#2A3B61]">
-      <Topbar />
-
+    <div className="flex h-screen flex-col justify-center">
       <Image
         src="/assets/images/error-page_cat.jpg"
         alt="page not found"
         width={250}
         height={250}
-        className="absolute top-1/4 left-1/2 z-0 flex -translate-x-1/2 -translate-y-1/2 flex-col justify-center"
+        className="flex self-center"
       />
-      <div className="absolute top-1/2 left-1/2 z-0 flex w-screen -translate-x-1/2 -translate-y-1/2 flex-col justify-center">
+      <div className="flex flex-col justify-center">
         <h1 className=" text-center font-cbrush text-6xl text-white">
           {t('error.first')}
         </h1>
@@ -40,7 +38,7 @@ export default function Error({
           {t('error.second')}
         </h1>
 
-        <div className=" mt-8 text-center font-cbrush text-2xl w-full md:w-auto">
+        <div className=" mt-8 w-full text-center font-cbrush text-2xl md:w-auto">
           <Button href="/">{t('error.back_safety')}</Button>
         </div>
       </div>
