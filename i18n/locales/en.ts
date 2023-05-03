@@ -440,7 +440,7 @@ const translations = {
   },
   error: {
     first: 'Something is wrong!',
-    second: 'Holocat may have chewed on some cables again.Bad cat!',
+    second: 'Holocat may have chewed on some cables again. Bad cat!',
 
     back_safety: 'Retry',
   },
