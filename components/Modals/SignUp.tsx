@@ -47,7 +47,8 @@ export default function SignUpModal({ open, onClose }) {
       if (privateKey) {
         await register(privateKey, `/assets/avatars/${avatar}.png`)
         await login(privateKey)
-        saveProgress(progress!)
+        //The following line saves the latest localStorage progress to the backend.
+        saveProgress(progress)
         onClose()
       }
     } catch (ex) {

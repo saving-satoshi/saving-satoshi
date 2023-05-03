@@ -7,7 +7,7 @@ import { getProgressLocal, setProgressLocal } from 'api/local'
 import { useAuthContext } from './AuthProvider'
 
 export const ProgressContext = createContext<ProgressContextType>({
-  progress: undefined,
+  progress: '',
   isLoading: true,
   saveProgress: (key: string) => Promise.resolve(),
   saveProgressLocal: (key: string) => Promise.resolve(),
@@ -86,7 +86,7 @@ export default function ProgressProvider({
   return (
     <ProgressContext.Provider
       value={{
-        progress: accountProgress,
+        progress: accountProgress ?? 'CH1INT1',
         saveProgress,
         saveProgressLocal,
         isLoading,

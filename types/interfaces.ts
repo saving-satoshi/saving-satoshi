@@ -47,7 +47,7 @@ export interface AuthContextType {
 }
 
 export interface ProgressContextType {
-  progress: string | undefined
+  progress: string
   isLoading: boolean
   saveProgress: (key: string) => Promise<void>
   saveProgressLocal: (key: string) => Promise<void>
