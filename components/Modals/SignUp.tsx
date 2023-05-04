@@ -3,11 +3,12 @@
 import Avatar from 'components/Avatar'
 import { useState, useEffect } from 'react'
 import Icon from 'shared/Icon'
-import { Checkbox, CopyButton, Loader, RadioButton, RadioGroup } from 'shared'
+import { Button, Loader, RadioButton, RadioGroup } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
 import { useTranslations, useLang } from 'hooks'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
+import { useProgressContext } from 'providers/ProgressProvider'
 import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import { Input } from 'shared'
@@ -28,6 +29,8 @@ export default function SignUpModal({ open, onClose }) {
   const [view, setView] = useState<string>(View.Generate)
   const [copyAcknowledged, setCopyAcknowledged] = useState<boolean>(false)
   const [privateKey, setPrivateKey] = useState<string | undefined>(undefined)
+  const { progress, saveProgress } = useProgressContext()
+  const [copied, setCopied] = useState(false)
 
   const handleChangeView = (view: View) => {
     setView(view)
@@ -38,6 +41,19 @@ export default function SignUpModal({ open, onClose }) {
     setPrivateKey(pk)
   }
 
+  const copy = () => {
+    const el = document.createElement('textarea')
+    el.value = privateKey ?? ''
+    document.body.appendChild(el)
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
+
+    setCopied(true)
+    setCopyAcknowledged(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   async function handleConfirm() {
     try {
       setLoading(true)
@@ -45,6 +61,8 @@ export default function SignUpModal({ open, onClose }) {
       if (privateKey) {
         await register(privateKey, `/assets/avatars/${avatar}.png`)
         await login(privateKey)
+        //The following line saves the latest localStorage progress to the backend.
+        saveProgress(progress ?? 'CH1INT1')
         onClose()
       }
     } catch (ex) {
@@ -104,7 +122,7 @@ export default function SignUpModal({ open, onClose }) {
             Generate
           </RadioButton>
 
-          <RadioButton name="inpit" value={View.Input}>
+          <RadioButton name="input" value={View.Input}>
             Enter my own
           </RadioButton>
         </RadioGroup>
@@ -117,9 +135,9 @@ export default function SignUpModal({ open, onClose }) {
                   <code className="mb-2 whitespace-pre-wrap break-all text-base">
                     {privateKey.toUpperCase()}
                   </code>
-                  <CopyButton style={'w-full'} content={privateKey}>
-                    {t('shared.copy')}
-                  </CopyButton>
+                  <Button round size="tiny" style={'w-full'} onClick={copy}>
+                    {copied ? t('shared.copy_acknowledged') : t('shared.copy')}
+                  </Button>
                 </>
               )}
             </pre>
@@ -137,14 +155,6 @@ export default function SignUpModal({ open, onClose }) {
           </>
         )}
         <p className="mt-5 text-base">{t('modal_signup.generate')}</p>
-
-        <Checkbox
-          name="checkbox"
-          className="my-4"
-          value={copyAcknowledged}
-          onChange={setCopyAcknowledged}
-          label={t('modal_signup.acknowledge_copy')}
-        />
 
         <button
           onClick={handleConfirm}
