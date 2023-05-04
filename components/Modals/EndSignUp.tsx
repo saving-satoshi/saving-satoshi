@@ -41,6 +41,7 @@ export default function EndSignUpModal({ open, onClose }) {
 
   const handleSetPrivateKey = (pk: string) => {
     setPrivateKey(pk)
+    setCopyAcknowledged(true)
   }
 
   const copy = () => {
