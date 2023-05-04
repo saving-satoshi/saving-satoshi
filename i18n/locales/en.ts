@@ -3,6 +3,7 @@ const translations = {
     next: 'Continue',
     start: 'Start',
     copy: 'Copy',
+    copy_acknowledged: 'Copied!',
     about: 'About',
     chapter: 'Chapter',
     chapters: 'Chapters',
