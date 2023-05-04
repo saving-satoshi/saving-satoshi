@@ -447,10 +447,10 @@ const translations = {
     back_safety: 'Back to safety',
   },
   error: {
-    first: 'Hmm...something went wrong.',
-    second: "It's not quite clear what happened.",
-    third: 'Our solocopter must have crashed!',
-    back_safety: 'Land safely',
+    first: 'Something is wrong!',
+    second: 'Holocat may have chewed on some cables again. Bad cat!',
+
+    back_safety: 'Retry',
   },
 }
 export default translations

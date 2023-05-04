@@ -11,7 +11,7 @@ export default function NotFound() {
   return (
     <div className="flex h-full grow items-end justify-center">
       <Image
-        src="/assets/images/404.jpg"
+        src="/assets/images/404-background.jpg"
         alt="page not found"
         fill
         quality={100}
@@ -20,20 +20,29 @@ export default function NotFound() {
         className="-z-20 h-full w-full object-cover"
       />
       <Topbar />
+      <div className="flex h-screen flex-col justify-center">
+        <Image
+          src="/assets/images/404-cat.png"
+          alt="cat"
+          className="flex self-center"
+          width={250}
+          height={253.65}
+        />
 
-      <div className="absolute left-1/2 top-1/2 z-0 flex w-screen -translate-x-1/2 -translate-y-1/2 flex-col justify-center">
-        <h1 className=" text-center font-cbrush text-6xl text-white">
-          {t('notfound.first')}
-        </h1>
-        <h1 className="text-center font-cbrush text-4xl text-white">
-          {t('notfound.second')}
-        </h1>
-        <h1 className="text-center font-cbrush text-4xl text-white">
-          {t('notfound.third')}
-        </h1>
+        <div className="flex flex-col justify-center">
+          <h1 className=" text-center font-cbrush text-5xl text-white md:text-6xl">
+            {t('notfound.first')}
+          </h1>
+          <h2 className="text-center font-cbrush text-2xl text-white md:text-4xl">
+            {t('notfound.second')}
+          </h2>
+          <h2 className="text-center font-cbrush text-2xl text-white md:text-4xl">
+            {t('notfound.third')}
+          </h2>
 
-        <div className=" mt-8 text-center font-cbrush text-2xl">
-          <Button href="/">{t('notfound.back_safety')}</Button>
+          <div className=" mt-8 w-full text-center font-cbrush text-2xl md:w-auto">
+            <Button href="/">{t('notfound.back_safety')}</Button>
+          </div>
         </div>
       </div>
     </div>
