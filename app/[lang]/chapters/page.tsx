@@ -1,6 +1,6 @@
 import Topbar from 'components/Topbar'
 import Footer from 'components/Footer'
-import DemoDisclaimer from 'components/DemoDisclaimer'
+import Disclaimer from 'components/Disclaimer'
 import { chapters } from 'content'
 
 export const metadata = {
@@ -22,13 +22,13 @@ export default async function ChaptersPage({ params }) {
             Chapters
           </h1>
 
-          <p className="pb-8 pl-10 pr-10 pt-4 text-center text-2xl sm:text-3xl lg:text-4xl">
+          <p className="pb-2.5 pl-10 pr-10 pt-4 text-center text-2xl sm:text-3xl lg:text-4xl">
             Explore the mysteries of Satoshi and learn about Bitcoin along the
             way.
           </p>
         </div>
 
-        <DemoDisclaimer />
+        <Disclaimer />
 
         <section>
           {sortedChapters.map(({ default: Chapter }, i) => (

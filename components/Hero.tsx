@@ -29,15 +29,20 @@ export default function Hero() {
         </p>
         <div className="grid grid-cols-1 justify-center pt-5 pb-2 sm:pb-8 md:grid-cols-2 md:space-x-5 md:pt-8">
           <div className="flex items-center justify-center md:justify-end">
-            <Button classes="text-xl w-full" href={routes.chaptersUrl}>
+            <Button
+              full={true}
+              classes="text-xl w-64"
+              href={routes.chaptersUrl}
+            >
               {t('hero.start_journey')}
             </Button>
           </div>
           <div className="flex justify-center pt-5 md:justify-start md:pt-0">
             <Button
-              classes="text-xl w-full"
+              classes="text-xl w-64"
               href={routes.aboutUrl}
               style="outline"
+              full={true}
             >
               {t('hero.tell_more')}
             </Button>
