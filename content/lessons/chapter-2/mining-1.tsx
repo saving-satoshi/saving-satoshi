@@ -114,6 +114,43 @@ export default function Mining1({ lang }) {
 
   return (
     <div className="mx-0 my-0 grid grid-cols-1 justify-center justify-items-center md:my-auto md:mx-80 md:flex md:flex-row">
+      <div className="my-8 ml-0 grid w-full grid-cols-1 items-center px-6 md:my-0 md:ml-8 lg:order-last lg:w-1/2 lg:px-0">
+        <div
+          className={clsx('relative mb-2.5 font-nunito text-lg font-semibold', {
+            'text-white': blocks !== 0,
+            'text-black/50': blocks === 0,
+          })}
+        >
+          <span className={clsx({ 'text-[#EDA081]': blocks !== 0 })}>
+            {t('chapter_two.mining_one.progress_bar_title')}
+          </span>{' '}
+          <span className="absolute right-0">{blocks} of 1,000</span>
+        </div>
+        <ProgressBar progress={blocks / 10} />
+        <MiningStatisticNonce
+          title={t('chapter_two.mining_one.progress_bar_one')}
+          content={nonce}
+          highlight={nonceHighlight}
+          disabled={nonce === 0}
+          step={step}
+          finalHash={
+            '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
+          }
+        />
+        <MiningStatisticHash
+          title={t('chapter_two.mining_one.progress_bar_two')}
+          highlight={hashPowerHighlight}
+          disabled={nonce === 0}
+          onButtonClick={turnOnButton}
+          step={step}
+        />
+        <MiningStatistic
+          transaction={transactionsConfirmed}
+          bitcoin={bitcoinMined}
+          transactionHighlight={transactionsConfirmedHighlight}
+          bitcoinHighlight={bitcoinMinedHighlight}
+        />
+      </div>
       <div className="mt-8 flex w-full items-center px-6 md:mt-0 lg:w-1/2 lg:px-0">
         {step === 0 && (
           <div className="font-nunito text-white">
@@ -242,44 +279,6 @@ export default function Mining1({ lang }) {
             </Button>
           </div>
         )}
-      </div>
-
-      <div className="my-8 ml-0 grid w-full grid-cols-1 items-center px-6 md:my-0 md:ml-8 lg:w-1/2 lg:px-0">
-        <div
-          className={clsx('relative mb-2.5 font-nunito text-lg font-semibold', {
-            'text-white': blocks !== 0,
-            'text-black/50': blocks === 0,
-          })}
-        >
-          <span className={clsx({ 'text-[#EDA081]': blocks !== 0 })}>
-            {t('chapter_two.mining_one.progress_bar_title')}
-          </span>{' '}
-          <span className="absolute right-0">{blocks} of 1,000</span>
-        </div>
-        <ProgressBar progress={blocks / 10} />
-        <MiningStatisticNonce
-          title={t('chapter_two.mining_one.progress_bar_one')}
-          content={nonce}
-          highlight={nonceHighlight}
-          disabled={nonce === 0}
-          step={step}
-          finalHash={
-            '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
-          }
-        />
-        <MiningStatisticHash
-          title={t('chapter_two.mining_one.progress_bar_two')}
-          highlight={hashPowerHighlight}
-          disabled={nonce === 0}
-          onButtonClick={turnOnButton}
-          step={step}
-        />
-        <MiningStatistic
-          transaction={transactionsConfirmed}
-          bitcoin={bitcoinMined}
-          transactionHighlight={transactionsConfirmedHighlight}
-          bitcoinHighlight={bitcoinMinedHighlight}
-        />
       </div>
     </div>
   )
