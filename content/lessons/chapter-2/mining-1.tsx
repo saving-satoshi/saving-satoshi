@@ -91,7 +91,7 @@ export default function Mining1({ lang }) {
     if (step === 0) {
       setStep(1)
       const time = 1 * 60 * 1000
-      displayRandomNumbers(200, 0, 0, time)
+      displayRandomNumbers(1760, 0, 0, time)
       setTimeout(() => {
         setStep(2)
         setBlocks(1)
@@ -103,12 +103,12 @@ export default function Mining1({ lang }) {
     if (step === 2) {
       setStep(3)
       const time = 1 * 30 * 1000
-      displayRandomNumbers(200, 400, 1, time)
+      displayRandomNumbers(1760, 400, 1, time)
     }
 
     if (step === 3) {
       const time = 1 * 60 * 1000
-      displayRandomNumbers(16000000, 1000, 3, time)
+      displayRandomNumbers(17600, 1000, 3, time)
     }
   }
 
@@ -191,7 +191,7 @@ export default function Mining1({ lang }) {
               {t('chapter_two.mining_one.paragraph_six')}
             </p>
             <p className="mt-2 border border-dashed border-white p-2.5 font-space-mono text-lg">
-              {Intl.NumberFormat().format(nonce)}
+              {Intl.NumberFormat().format(nonce * 10 ** 15)}
             </p>
             <p className="mt-8 text-lg">
               {t('chapter_two.mining_one.paragraph_seven')}

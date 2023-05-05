@@ -57,7 +57,12 @@ export default function MiningStatisticNonce({
             'text-white': !disabled,
           })}
         >
-          {Intl.NumberFormat().format(content)}
+          {(content / 10 ** (content.toString().length - 2)).toFixed(2)}
+          {!disabled && (
+            <span className="text-white/50">
+              *10<sup>{content.toString().length + 11}</sup>
+            </span>
+          )}
         </div>
       </div>
       {disabled && (
@@ -73,15 +78,14 @@ export default function MiningStatisticNonce({
           </div>
         </div>
       )}
-      {step === 2 ||
-        (step === 4 && (
-          <div className="order-last flex items-center justify-center">
-            <div className="flex  w-[110px] overflow-hidden font-space-mono text-[6px] !text-[#5DBC59]">
-              {formatHash(finalHash, 4, 1, 64)}
-            </div>
-            <Icon icon="greenCheck" className="h-8 w-8 py-2" />
+      {(step === 2 || step === 4) && (
+        <div className="order-last flex items-center justify-center">
+          <div className="flex  w-[110px] overflow-hidden font-space-mono text-[6px] !text-[#5DBC59]">
+            {formatHash(finalHash, 4, 1, 64)}
           </div>
-        ))}
+          <Icon icon="greenCheck" className="h-8 w-8 py-2" />
+        </div>
+      )}
     </div>
   )
 }
