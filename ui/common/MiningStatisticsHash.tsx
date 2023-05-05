@@ -80,7 +80,7 @@ export default function MiningStatisticHash({
       className={clsx(
         'mt-5  w-full rounded-[5px] border-2 border-transparent bg-black/15 p-4 font-space-mono',
         {
-          'border-2 border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+          'border-2 !border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
             highlight === true,
         }
       )}
