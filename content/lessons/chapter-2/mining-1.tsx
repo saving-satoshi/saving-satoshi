@@ -275,8 +275,6 @@ export default function Mining1({ lang }) {
           step={step}
         />
         <MiningStatistic
-          titleTransaction={t('chapter_two.mining_one.progress_bar_three')}
-          titleBitcoin={t('chapter_two.mining_one.progress_bar_four')}
           transaction={transactionsConfirmed}
           bitcoin={bitcoinMined}
           transactionHighlight={transactionsConfirmedHighlight}

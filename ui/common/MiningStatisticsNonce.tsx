@@ -35,9 +35,10 @@ export default function MiningStatisticNonce({
   return (
     <div
       className={clsx(
-        'mt-5 flex w-full items-center justify-between rounded-[5px] bg-black/15 p-4 font-space-mono',
+        'mt-5 flex w-full items-center justify-between rounded-[5px] border-2 border-transparent bg-black/15 p-4 font-space-mono',
         {
-          'border-2 border-[#FBEBC6] drop-shadow-2xl': highlight === true,
+          'border-2 border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+            highlight === true,
         }
       )}
     >

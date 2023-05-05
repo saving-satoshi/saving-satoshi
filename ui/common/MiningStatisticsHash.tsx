@@ -17,7 +17,7 @@ export default function MiningStatisticHash({
   step: number
 }) {
   const [hasherState, setHasherState] = useState<boolean>(false)
-  const [hashPower, setHashPower] = useState(0)
+  const [hashPower, sethashPower] = useState(0)
   const [powerUp, setPowerUp] = useState<boolean>(false)
 
   function displayRandomNumbers(
@@ -41,15 +41,15 @@ export default function MiningStatisticHash({
         maxHash
       )
 
-      currentHash -= Math.floor(Math.random() * (100 - 50 + 1) + 50)
-      setHashPower(currentHash)
+      currentHash -= Math.floor(Math.random() * (10 - 5 + 1) + 5)
+      sethashPower(currentHash)
     }, 40)
   }
 
   function handleClick() {
     if (!hasherState && step === 0) {
       const time = 1 * 60 * 1000
-      displayRandomNumbers(44000, 2000, time)
+      displayRandomNumbers(4400, 200, time)
       onButtonClick(true)
       setHasherState(true)
       setTimeout(() => {
@@ -59,7 +59,7 @@ export default function MiningStatisticHash({
 
     if (!hasherState && step === 2) {
       const time = 1 * 30 * 1000
-      displayRandomNumbers(44000, 2000, time)
+      displayRandomNumbers(4400, 200, time)
       onButtonClick(true)
       setHasherState(true)
       setTimeout(() => {
@@ -69,7 +69,7 @@ export default function MiningStatisticHash({
 
     if (powerUp && step === 3) {
       const time = 1 * 60 * 1000
-      displayRandomNumbers(450000, 30000, time)
+      displayRandomNumbers(45000, 3000, time)
       onButtonClick(true)
       setPowerUp(false)
     }
@@ -78,9 +78,10 @@ export default function MiningStatisticHash({
   return (
     <div
       className={clsx(
-        'mt-5  w-full  rounded-[5px] bg-black/15 p-4 font-space-mono',
+        'mt-5  w-full rounded-[5px] border-2 border-transparent bg-black/15 p-4 font-space-mono',
         {
-          'border-2 border-[#FBEBC6] drop-shadow-2xl': highlight === true,
+          'border-2 border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+            highlight === true,
         }
       )}
     >
@@ -100,8 +101,24 @@ export default function MiningStatisticHash({
               'text-white': !disabled,
             })}
           >
-            {step < 4 && <span>{Intl.NumberFormat().format(hashPower)}</span>}
-            {step >= 4 && <span>{Intl.NumberFormat().format(450121)}</span>}
+            {step < 4 && (
+              <span>
+                {(hashPower / 100).toFixed(2)}
+                {!disabled && (
+                  <span className="text-white/50">
+                    *10<sup>15</sup>
+                  </span>
+                )}
+              </span>
+            )}
+            {step >= 4 && (
+              <span>
+                {(45012 / 100).toFixed(2)}
+                <span className="text-white/50">
+                  *10<sup>15</sup>
+                </span>
+              </span>
+            )}
           </div>
         </div>
 
@@ -111,7 +128,8 @@ export default function MiningStatisticHash({
               'order-last mr-2.5 flex cursor-pointer items-center justify-center rounded-[3px] border-2  px-2 py-[5px] ',
               {
                 'border-black/25 text-black/25': powerUp === false,
-                'border-white text-white': powerUp === true,
+                ' animate-duration-500 animate-pulse border-[#FBEBC6] bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
+                  powerUp === true,
               }
             )}
             onClick={handleClick}
@@ -120,11 +138,13 @@ export default function MiningStatisticHash({
           </div>
           <div
             className={clsx(
-              'order-last flex cursor-pointer items-center justify-center rounded-[3px] px-2.5 py-[7px] text-[#571A1F] ',
+              'order-last flex cursor-pointer items-center justify-center rounded-[3px] border-2 px-2 py-[5px] ',
               {
-                'bg-[#FBEBC6]/25': hasherState,
-                'bg-[#FBEBC6] hover:drop-shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
+                'border-transparent bg-[#FBEBC6]/25 text-[#571A1F]':
+                  hasherState && step < 4,
+                'border-transparent bg-[#FBEBC6] text-[#571A1F] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)] ':
                   !hasherState,
+                ' border-black/25 text-black/25': step >= 4,
               }
             )}
             onClick={handleClick}
@@ -136,202 +156,242 @@ export default function MiningStatisticHash({
       <div className="mt-5 flex items-center justify-between">
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 10000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 1000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 20000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 2000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 30000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 3000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 40000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 4000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 50000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 5000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 60000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 6000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 70000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 7000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 80000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 8000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 90000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 9000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 100000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 10000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 110000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 11000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 120000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 12000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 130000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 13000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 140000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 14000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 150000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 15000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 160000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 16000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 170000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 17000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 180000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 18000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 190000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 19000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 200000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 20000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 210000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 21000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 220000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 22000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 230000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 23000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 240000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 24000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 250000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 25000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 260000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 26000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 270000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 27000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 280000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 28000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 290000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 29000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 300000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 30000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 310000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 31000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 320000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 32000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 330000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 33000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 340000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 34000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 350000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 35000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 360000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 36000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 370000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 37000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 380000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 38000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 390000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 39000,
           })}
         ></div>
         <div
           className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-            '!bg-[#FBEBC6]': hashPower > 400000,
+            '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+              hashPower > 40000,
           })}
         ></div>
       </div>

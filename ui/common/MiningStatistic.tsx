@@ -3,15 +3,11 @@
 import clsx from 'clsx'
 
 export default function InfoBox({
-  titleTransaction,
-  titleBitcoin,
   transaction,
   bitcoin,
   transactionHighlight,
   bitcoinHighlight,
 }: {
-  titleTransaction: string
-  titleBitcoin: string
   transaction: number
   bitcoin: number
   transactionHighlight: boolean
@@ -21,9 +17,9 @@ export default function InfoBox({
     <div className="mt-5 flex items-center justify-between gap-x-2.5 text-center font-space-mono">
       <div
         className={clsx(
-          'w-full rounded-[5px] bg-black/15 p-4 font-space-mono  font-semibold',
+          'w-full rounded-[5px] border-2 border-transparent bg-black/15 p-4  font-space-mono font-semibold',
           {
-            'border-2 border-[#FBEBC6] drop-shadow-2xl':
+            ' border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
               transactionHighlight === true,
           }
         )}
@@ -42,14 +38,15 @@ export default function InfoBox({
             'text-[#EDA081]': transaction !== 0,
           })}
         >
-          {titleTransaction}
+          Transactions<br></br>
+          confirmed
         </div>
       </div>
       <div
         className={clsx(
-          'w-full rounded-[5px] bg-black/15 p-4 font-space-mono ',
+          'w-full rounded-[5px] border-2 border-transparent bg-black/15 p-4 font-space-mono ',
           {
-            'border-2 border-[#FBEBC6] drop-shadow-2xl':
+            ' border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
               bitcoinHighlight === true,
           }
         )}

@@ -347,7 +347,7 @@ const translations = {
         'Today, miners use a special type of chip called an Application-Specific Integrated Circut, or ASIC for short. Nowadays, people buy machines with ASICs that are dedicated to just mining! This explains all the machines in the Vanderpoole family collection.',
       progress_bar_title: 'Blocks found',
       progress_bar_one: 'Nonce',
-      progress_bar_two: 'Petahashes per second',
+      progress_bar_two: 'Hashes per second',
       progress_bar_three: 'Transactions confirmed',
       progress_bar_four: 'Bitcoin mined',
       button_hash: '10x hash power, please',
