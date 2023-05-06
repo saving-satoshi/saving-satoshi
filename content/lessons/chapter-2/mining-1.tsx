@@ -90,7 +90,7 @@ export default function Mining1({ lang }) {
   const turnOnButton = () => {
     if (step === 0) {
       setStep(1)
-      const time = 1 * 60 * 1000
+      const time = 1 * 45 * 1000
       displayRandomNumbers(1760, 0, 0, time)
       setTimeout(() => {
         setStep(2)
@@ -102,7 +102,7 @@ export default function Mining1({ lang }) {
 
     if (step === 2) {
       setStep(3)
-      const time = 1 * 30 * 1000
+      const time = 1 * 15 * 1000
       displayRandomNumbers(1760, 400, 1, time)
     }
 
