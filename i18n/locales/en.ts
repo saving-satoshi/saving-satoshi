@@ -361,6 +361,8 @@ const translations = {
   chapter: {
     chapter_locked_one: 'Complete Chapter',
     chapter_locked_two: 'to unlock.',
+    description:
+      'Explore the mysteries of Satoshi and learn about Bitcoin along the way.',
   },
 
   hero: {

@@ -17,19 +17,7 @@ export default async function ChaptersPage({ params }) {
       <Topbar />
 
       <div className="lg:px-0">
-        <div className="flex flex-col justify-center text-white">
-          <h1 className="px-2.5 pt-20 text-center text-6xl sm:text-7xl lg:text-8xl">
-            Chapters
-          </h1>
-
-          <p className="pb-2.5 pl-10 pr-10 pt-4 text-center text-2xl sm:text-3xl lg:text-4xl">
-            Explore the mysteries of Satoshi and learn about Bitcoin along the
-            way.
-          </p>
-        </div>
-
         <Disclaimer />
-
         <section>
           {sortedChapters.map(({ default: Chapter }, i) => (
             <Chapter key={i} lang={params.lang} />
