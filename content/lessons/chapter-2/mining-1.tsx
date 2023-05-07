@@ -113,7 +113,7 @@ export default function Mining1({ lang }) {
   }
 
   return (
-    <div className="mx-0 my-0 grid grid-cols-1 justify-center justify-items-center md:my-auto md:mx-80 md:flex md:flex-row">
+    <div className="mx-0 my-0 grid grid-cols-1 justify-center justify-items-center md:my-auto md:mx-72 md:flex md:flex-row">
       <div className="my-8 ml-0 grid w-full grid-cols-1 items-center px-6 md:my-0 md:ml-8 lg:order-last lg:w-1/2 lg:px-0">
         <div
           className={clsx('relative mb-2.5 font-nunito text-lg font-semibold', {
