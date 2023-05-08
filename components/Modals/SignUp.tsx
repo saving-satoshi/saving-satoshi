@@ -29,13 +29,13 @@ export default function SignUpModal({
   const lang = useLang()
   const t = useTranslations(lang)
   const { login } = useAuthContext()
+  const { progress, saveProgress } = useProgressContext()
 
   const [loading, setLoading] = useState<boolean>(false)
   const [avatar, setAvatar] = useState(1)
   const [view, setView] = useState<string>(View.Generate)
   const [copyAcknowledged, setCopyAcknowledged] = useState<boolean>(false)
   const [privateKey, setPrivateKey] = useState<string | undefined>(undefined)
-  const { progress, saveProgress } = useProgressContext()
   const [copied, setCopied] = useState(false)
 
   const handleChangeView = (view: View) => {
@@ -64,7 +64,7 @@ export default function SignUpModal({
         await register(privateKey, `/assets/avatars/${avatar}.png`)
         await login(privateKey)
         //The following line saves the latest localStorage progress to the backend.
-        saveProgress(progress ?? 'CH1INT1')
+        saveProgress(progress)
         onClose()
       }
     } catch (ex) {
