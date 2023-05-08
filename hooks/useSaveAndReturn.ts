@@ -20,7 +20,7 @@ export default function useSaveAndReturn() {
 
   const saveAndReturn = async () => {
     const nextLessonKey = getNextLessonKey(currentLessonKey)
-    const chapterIndex = parseInt(nextLessonKey.charAt(2)).toString()
+    const chapterIndex = (parseInt(currentLessonKey.charAt(2)) + 1).toString()
 
     if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
       if (account) {

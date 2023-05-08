@@ -48,8 +48,8 @@ export default function SignUpModal({
     setCopyAcknowledged(true)
   }
 
-  const copy = (privateKey) => {
-    navigator.clipboard.writeText(privateKey)
+  const copy = (text) => {
+    navigator.clipboard.writeText(text)
 
     setCopied(true)
     setCopyAcknowledged(true)
