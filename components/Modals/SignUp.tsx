@@ -8,6 +8,7 @@ import HorizontalScrollView from 'components/HorizontalScrollView'
 import { useTranslations, useLang } from 'hooks'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
+import { useProgressContext } from 'providers/ProgressProvider'
 import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import { Input } from 'shared'
@@ -28,6 +29,7 @@ export default function SignUpModal({ open, onClose }) {
   const [view, setView] = useState<string>(View.Generate)
   const [copyAcknowledged, setCopyAcknowledged] = useState<boolean>(false)
   const [privateKey, setPrivateKey] = useState<string | undefined>(undefined)
+  const { progress, saveProgress } = useProgressContext()
 
   const handleChangeView = (view: View) => {
     setView(view)
@@ -45,6 +47,8 @@ export default function SignUpModal({ open, onClose }) {
       if (privateKey) {
         await register(privateKey, `/assets/avatars/${avatar}.png`)
         await login(privateKey)
+        //The following line saves the latest localStorage progress to the backend.
+        saveProgress(progress)
         onClose()
       }
     } catch (ex) {
