@@ -154,7 +154,7 @@ const translations = {
       paragraph_one:
         'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
       paragraph_two:
-        '1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">here</Link> to look at a specific transaction.',
+        '1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" className="underline">here</Link> to look at a specific transaction.',
       paragraph_three:
         '2. Open up the details and find the part that is of type “OP_RETURN”.',
       paragraph_four:
@@ -243,6 +243,8 @@ const translations = {
       title: 'Zeroes',
       heading: 'Enter Anything',
       return_hash: 'Below you will see your input converted to a hash',
+      progress_message: 'Keep going...',
+      success_message: 'Alright, nice work playing around. Let’s move on.',
     },
 
     hashing_three: {
@@ -268,7 +270,7 @@ const translations = {
       hint_prompt:
         'Need a <Tooltip id="hint_prompt" position="bottom" offset="-1" content="chapter_two.hashing_four.hint_tooltip" className="underline">hint</Tooltip>?',
       hint_tooltip:
-        '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="cursor-pointer whitespace-nowrap bg-black/20 text-transparent hover:text-white">popcorn</span>',
+        '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">popcorn</span>',
     },
 
     hashing_five: {
@@ -285,12 +287,12 @@ const translations = {
       hint_prompt:
         'Need a <Tooltip id="hint_prompt" position="bottom" offset="-1" content="chapter_two.hashing_six.hint_tooltip" className="underline">hint</Tooltip>?',
       hint_tooltip:
-        '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="cursor-pointer whitespace-nowrap bg-black/20 text-transparent hover:text-white">trigonometry</span>',
+        '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">trigonometry</span>',
     },
 
     scripting_one: {
       title: 'Automation',
-      heading: 'Let’s make the computem do this for us.',
+      heading: 'Let’s make the computer do this for us.',
       paragraph_one:
         'OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.',
       paragraph_two:

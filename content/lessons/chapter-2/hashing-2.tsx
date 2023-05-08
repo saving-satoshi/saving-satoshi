@@ -18,6 +18,8 @@ export default function Hashing2({ lang }) {
       inputLabel={t('chapter_two.hashing_two.heading')}
       returnLabel={t('hasher.return_hash')}
       lessonKey={getLessonKey('chapter-2', 'hashing-2')}
+      inProgressMessage={t('chapter_two.hashing_two.progress_message')}
+      successMessage={t('chapter_two.hashing_two.success_message')}
       hints
     />
   )

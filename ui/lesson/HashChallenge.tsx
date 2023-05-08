@@ -23,6 +23,8 @@ export default function HashChallenge({
   lessonKey,
   answerHint,
   hints,
+  inProgressMessage,
+  successMessage,
 }: {
   answer: string | number
   inputLabel: string
@@ -30,6 +32,8 @@ export default function HashChallenge({
   lessonKey: string
   answerHint?: boolean
   hints?: boolean
+  inProgressMessage?: string
+  successMessage?: string
 }) {
   const { saveProgress } = useProgressContext()
   const lang = useLang()
@@ -174,7 +178,8 @@ export default function HashChallenge({
       <StatusBar
         alwaysShow
         full
-        inProgressMessage="Keep going..."
+        inProgressMessage={inProgressMessage}
+        successMessage={successMessage}
         success={success}
         hints={userHint}
       />
