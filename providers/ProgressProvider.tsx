@@ -6,12 +6,16 @@ import { getProgress, setProgress } from 'api/progress'
 import { getProgressLocal, setProgressLocal } from 'api/local'
 import { useAuthContext } from './AuthProvider'
 
-export const ProgressContext = createContext<ProgressContextType>({
+export const defaultProgressContext = {
   progress: 'CH1INT1',
   isLoading: true,
   saveProgress: (key: string) => Promise.resolve(),
   saveProgressLocal: (key: string) => Promise.resolve(),
-})
+}
+
+export const ProgressContext = createContext<ProgressContextType>(
+  defaultProgressContext
+)
 
 export const useProgressContext = () => useContext(ProgressContext)
 
@@ -21,7 +25,9 @@ export default function ProgressProvider({
   children: React.ReactNode
 }) {
   const { account } = useAuthContext()
-  const [accountProgress, setAccountProgress] = useState<string>('CH1INT1')
+  const [accountProgress, setAccountProgress] = useState<string>(
+    defaultProgressContext.progress
+  )
   const [isLoading, setIsLoading] = useState(true)
   const [savePending, setSavePending] = useState(false)
 
