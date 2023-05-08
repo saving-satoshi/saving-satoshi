@@ -2,7 +2,6 @@
 
 import { Button } from 'shared'
 import { useSaveAndReturn, useTranslations } from 'hooks'
-import { Modal, useModalContext } from 'providers/ModalProvider'
 import SignUpModal from 'components/Modals/SignUp'
 import { useAuthContext } from 'providers/AuthProvider'
 import clsx from 'clsx'
