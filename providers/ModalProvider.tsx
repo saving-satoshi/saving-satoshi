@@ -7,7 +7,6 @@ export enum Modal {
   Account = 'account',
   SignIn = 'signin',
   SignUp = 'signup',
-  EndSignUp = 'endsignup',
 }
 
 export const ModalContext = createContext<ModalContextType>({
@@ -27,7 +26,6 @@ export default function ModalProvider({
     [Modal.Account]: false,
     [Modal.SignIn]: false,
     [Modal.SignUp]: false,
-    [Modal.EndSignUp]: false,
   })
 
   const open = (name: string) => {

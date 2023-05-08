@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 
-import SignIn from 'components/SignIn'
 import { chapters, lessons } from 'content'
 import { usePathData, useTranslations } from 'hooks'
 import {
@@ -29,11 +28,10 @@ export default function Page({ params }) {
   const chapterLessons = lessons[chapterId]
   const pathData = usePathData()
 
-  const { account, isLoading: isAccountLoading } = useAuthContext()
+  const { isLoading: isAccountLoading } = useAuthContext()
   const { progress, isLoading: isProgressLoading } = useProgressContext()
 
   const [unlocked, setUnlocked] = useState<number>(LoadingState.Idle)
-  const [hydrated, setHydrated] = useState(false)
 
   useEffect(() => {
     if (!isAccountLoading && !isProgressLoading) {
@@ -45,7 +43,6 @@ export default function Page({ params }) {
         setUnlocked(LoadingState.Failed)
       }
     }
-    setHydrated(true)
   }, [
     progress,
     params.lesson,
@@ -78,26 +75,22 @@ export default function Page({ params }) {
 
   if (dev) {
     return (
-      hydrated && (
-        <>
-          <Head />
-          <Lesson lang={params.lang} />
-        </>
-      )
+      <>
+        <Head />
+        <Lesson lang={params.lang} />
+      </>
     )
   }
 
   // If account or progress data is being loaded, we show a loader.
   if (unlocked === LoadingState.Idle || isAccountLoading || isProgressLoading) {
     return (
-      hydrated && (
-        <>
-          <Head />
-          <div className="flex grow items-center justify-center">
-            <Loader className="h-10 w-10 text-white" />
-          </div>
-        </>
-      )
+      <>
+        <Head />
+        <div className="flex grow items-center justify-center">
+          <Loader className="h-10 w-10 text-white" />
+        </div>
+      </>
     )
   }
 
@@ -117,7 +110,6 @@ export default function Page({ params }) {
   }
 
   return (
-    hydrated &&
     unlocked && (
       <>
         <Head />

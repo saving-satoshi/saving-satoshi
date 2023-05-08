@@ -1,5 +1,3 @@
-'use client'
-
 import Avatar from 'components/Avatar'
 import { useState, useEffect } from 'react'
 import Icon from 'shared/Icon'
@@ -19,7 +17,15 @@ enum View {
   Input = 'input',
 }
 
-export default function SignUpModal({ open, onClose }) {
+export default function SignUpModal({
+  open,
+  onClose,
+  onSignUpComplete,
+}: {
+  open: boolean
+  onClose: () => void
+  onSignUpComplete?: Function | undefined
+}) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { login } = useAuthContext()
@@ -42,13 +48,8 @@ export default function SignUpModal({ open, onClose }) {
     setCopyAcknowledged(true)
   }
 
-  const copy = () => {
-    const el = document.createElement('textarea')
-    el.value = privateKey ?? ''
-    document.body.appendChild(el)
-    el.select()
-    document.execCommand('copy')
-    document.body.removeChild(el)
+  const copy = (privateKey) => {
+    navigator.clipboard.writeText(privateKey)
 
     setCopied(true)
     setCopyAcknowledged(true)
@@ -69,6 +70,9 @@ export default function SignUpModal({ open, onClose }) {
     } catch (ex) {
       console.error(ex)
     } finally {
+      if (typeof onSignUpComplete === 'function') {
+        onSignUpComplete()
+      }
       setPrivateKey(undefined)
       setCopyAcknowledged(false)
       setLoading(false)
@@ -136,7 +140,12 @@ export default function SignUpModal({ open, onClose }) {
                   <code className="mb-2 whitespace-pre-wrap break-all text-base">
                     {privateKey.toUpperCase()}
                   </code>
-                  <Button round size="tiny" style={'w-full'} onClick={copy}>
+                  <Button
+                    round
+                    size="tiny"
+                    style="w-full"
+                    onClick={() => copy(privateKey)}
+                  >
                     {copied ? t('shared.copy_acknowledged') : t('shared.copy')}
                   </Button>
                 </>

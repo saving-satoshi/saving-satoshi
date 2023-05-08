@@ -20,6 +20,7 @@ export default function useSaveAndReturn() {
 
   const saveAndReturn = async () => {
     const nextLessonKey = getNextLessonKey(currentLessonKey)
+    const chapterIndex = parseInt(nextLessonKey.charAt(2)).toString()
 
     if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
       if (account) {
@@ -29,11 +30,7 @@ export default function useSaveAndReturn() {
       }
     }
 
-    router.push(
-      lang +
-        '/chapters#chapter-' +
-        (parseInt(currentLessonKey.charAt(2)) + 1).toString()
-    )
+    router.push(`${lang}/chapters#chapter-${chapterIndex}`)
   }
 
   return saveAndReturn

@@ -3,6 +3,7 @@ import { Button, Input, Loader } from 'shared'
 import { useTranslations } from 'hooks'
 import { useAuthContext } from 'providers/AuthProvider'
 import { Modal, useModalContext } from 'providers/ModalProvider'
+import SignUpModal from 'components/Modals/SignUp'
 import clsx from 'clsx'
 
 export default function SignIn({
@@ -15,11 +16,12 @@ export default function SignIn({
   onSignIn?: () => void
 }) {
   const t = useTranslations(lang)
-  const modals = useModalContext()
+  const { close } = useModalContext()
   const { login } = useAuthContext()
 
   const [loading, setLoading] = useState<boolean>(false)
   const [privateKey, setPrivateKey] = useState<string>('')
+  const [modalOpen, setModalOpen] = useState(false)
 
   const handleConfirm = async () => {
     try {
@@ -41,7 +43,7 @@ export default function SignIn({
   }
 
   function handleCreateClick() {
-    modals.open(Modal.SignUp)
+    setModalOpen(true)
   }
 
   return (
@@ -83,6 +85,13 @@ export default function SignIn({
           </button>
         </div>
       </div>
+      <SignUpModal
+        open={modalOpen}
+        onClose={() => {
+          setModalOpen(false)
+          close(Modal.SignIn)
+        }}
+      />
     </div>
   )
 }

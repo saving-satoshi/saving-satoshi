@@ -9,6 +9,8 @@ export default function HelpLink({ params }: { params: any }) {
   const t = useTranslations(lang)
 
   const { slug, lesson: lessonId } = params
+
+  //If theme was specified on lesson it should take priority over a theme that was specified on a chapter, otherwise fallback to bg-back
   const theme =
     lessons[slug]?.[lessonId]?.metadata.theme ??
     chapters[slug]?.metadata.theme ??
