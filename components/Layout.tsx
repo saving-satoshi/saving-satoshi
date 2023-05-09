@@ -12,11 +12,11 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
     <>
       {children}
       <SignInModal
-        open={modals[Modal.SignIn]}
+        state={modals[Modal.SignIn]}
         onClose={() => close(Modal.SignIn)}
       />
       <AccountModal
-        open={modals[Modal.Account]}
+        state={modals[Modal.Account]}
         onClose={() => close(Modal.Account)}
       />
     </>
