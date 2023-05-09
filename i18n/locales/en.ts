@@ -320,7 +320,7 @@ const translations = {
       paragraph_one:
         'Right now, the Bitcoin network requires blocks to have a hash with ten leading zeros. Let’s get to it!',
       paragraph_two:
-        'For this simple simulation, we’ll just assume that every block contains 2,000 transactions.',
+        'For this simple simulation, we’ll just assume that every block contains 3,500 transactions.',
       paragraph_two_one: 'See if you can turn on the miners.',
       paragraph_three:
         'The code you wrote in the previous lesson to compute hashes over and over again is running.',
@@ -338,7 +338,7 @@ const translations = {
       paragraph_ten:
         'Wow! That took quite a bit of computing power to do all that hashing. Just look how many nonces were tried!  It really helped to have that boost in hash power, the number of hashes your computer can try in a second.',
       paragraph_eleven:
-        'As expected, since each block contains 2,000 transactions, a total of 2,000,000 transactions have been confirmed by the 1,000 blocks that were mined.',
+        'As expected, since each block contains 3,500 transactions, a total of 3,500,000 transactions have been confirmed by the 1,000 blocks that were mined.',
       paragraph_twelve:
         'And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. ',
       paragraph_thirteen:
@@ -349,7 +349,7 @@ const translations = {
       progress_bar_one: 'Nonce',
       progress_bar_two: 'Hashes per second',
       progress_bar_three: 'Transactions confirmed',
-      progress_bar_four: 'Bitcoin mined',
+      progress_bar_four: 'Bitcoin earned',
       button_hash: '10x hash power, please',
     },
   },

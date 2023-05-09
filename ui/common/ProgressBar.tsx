@@ -12,7 +12,9 @@ export default function ProgressBar({ progress }: { progress: number }) {
             '!bg-[#5DBC59]': progress === 100,
           }
         )}
-        style={{ width: `${progress}%` }}
+        style={{
+          width: `${progress <= 0.5 && progress > 0 ? 0.5 : progress}%`,
+        }}
       ></div>
     </div>
   )

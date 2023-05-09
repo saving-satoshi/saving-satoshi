@@ -78,17 +78,17 @@ export default function MiningStatisticHash({
   return (
     <div
       className={clsx(
-        'mt-5  w-full rounded-[5px] border-2 border-transparent bg-black/15 p-4 font-space-mono',
+        'mt-5 w-full rounded-[5px] border-2 border-transparent bg-black/15 p-4 font-space-mono',
         {
-          'border-2 !border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+          'animate-duration-500 animate-pulse border-2 !border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
             highlight === true,
         }
       )}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between ">
         <div className="flex-initial">
           <div
-            className={clsx('text-base font-bold', {
+            className={clsx('font-nunito text-[15px] font-bold', {
               'text-black/25': disabled,
               'text-[#EDA081]': !disabled,
             })}
@@ -122,10 +122,10 @@ export default function MiningStatisticHash({
           </div>
         </div>
 
-        <div className="order-last flex items-center justify-center font-bold">
+        <div className="order-last flex items-center justify-center text-[15px] font-bold">
           <div
             className={clsx(
-              'order-last mr-2.5 flex cursor-pointer items-center justify-center rounded-[3px] border-2  px-2 py-[5px] ',
+              'order-last mr-2.5 flex h-[29px] w-[44px] cursor-pointer items-center justify-center  rounded-[3px] border-2 ',
               {
                 'border-black/25 text-black/25': powerUp === false,
                 ' animate-duration-500 animate-pulse border-[#FBEBC6] bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
@@ -138,11 +138,11 @@ export default function MiningStatisticHash({
           </div>
           <div
             className={clsx(
-              'order-last flex cursor-pointer items-center justify-center rounded-[3px] border-2 px-2 py-[5px] ',
+              'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
               {
                 'border-transparent bg-[#FBEBC6]/25 text-[#571A1F]':
                   hasherState && step < 4,
-                'border-transparent bg-[#FBEBC6] text-[#571A1F] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)] ':
+                'animate-duration-500 animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)] ':
                   !hasherState,
                 ' border-black/25 text-black/25': step >= 4,
               }

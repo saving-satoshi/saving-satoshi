@@ -3,7 +3,8 @@ export default function formatHash(
   chunkLength: number,
   rows: number,
   length?: number,
-  hashStatus?: number
+  hashStatus?: number,
+  margin?: boolean
 ) {
   const result: JSX.Element[] = []
   const chunkSize = !!chunkLength ? chunkLength : 4
@@ -71,13 +72,20 @@ export default function formatHash(
         ? row.push(
             <span
               key={startIndex}
-              className="mr-3 inline-block text-opacity-50"
+              className={
+                margin
+                  ? 'mr-1 inline-block text-opacity-50'
+                  : 'mr-3 inline-block text-opacity-50'
+              }
             >
               {placeholderChunk}
             </span>
           )
         : row.push(
-            <span key={startIndex} className="mr-3 inline-block">
+            <span
+              key={startIndex}
+              className={margin ? 'mr-[2px] inline-block' : 'mr-3 inline-block'}
+            >
               {chunk}
             </span>
           )

@@ -37,14 +37,14 @@ export default function MiningStatisticNonce({
       className={clsx(
         'mt-5 flex w-full items-center justify-between rounded-[5px] border-2 border-transparent bg-black/15 p-4 font-space-mono',
         {
-          'border-2 !border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+          'animate-duration-500 animate-pulse border-2 !border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
             highlight === true,
         }
       )}
     >
       <div className="flex-initial">
         <div
-          className={clsx('text-base font-bold', {
+          className={clsx('font-nunito text-[15px] font-bold', {
             'text-black/25': disabled,
             'text-[#EDA081]': !disabled,
           })}
@@ -65,23 +65,18 @@ export default function MiningStatisticNonce({
           )}
         </div>
       </div>
-      {disabled && (
-        <div className=" order-last flex h-8 w-8 flex-initial items-center justify-center rounded-full bg-black/25"></div>
-      )}
-      {!disabled && step !== 2 && step !== 4 && (
+      {!disabled && step !== 2 && step < 4 && (
         <div className="order-last flex items-center justify-center">
-          <div className="flex  w-[120px] overflow-hidden font-space-mono text-[6px] !text-[#EDA081]">
-            {formatHash(hash, 4, 1, 64, 1)}
+          <div className="flex  w-[76px] overflow-hidden font-space-mono text-[6px] !text-[#EDA081]">
+            {formatHash(hash, 4, 4, 64, 1, true)}
           </div>
-          <div className="flex h-8 w-8 font-nunito text-[24px] font-bold text-[#E3941D]">
-            X
-          </div>
+          <Icon icon="Cross" className="h-8 w-8 py-2" />
         </div>
       )}
-      {(step === 2 || step === 4) && (
+      {(step === 2 || step >= 4) && (
         <div className="order-last flex items-center justify-center">
-          <div className="flex  w-[110px] overflow-hidden font-space-mono text-[6px] !text-[#5DBC59]">
-            {formatHash(finalHash, 4, 1, 64)}
+          <div className="flex  w-[76px] overflow-hidden font-space-mono text-[6px] !text-[#5DBC59]">
+            {formatHash(finalHash, 4, 4, 64, 0, true)}
           </div>
           <Icon icon="greenCheck" className="h-8 w-8 py-2" />
         </div>
