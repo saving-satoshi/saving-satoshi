@@ -25,10 +25,6 @@ export default function End({
 
   const [modalOpen, setModalOpen] = useState(false)
 
-  const handleSignUpComplete = () => {
-    saveAndReturn()
-  }
-
   const handleClick = () => {
     if (!account) {
       setModalOpen(true)
@@ -64,7 +60,7 @@ export default function End({
       <SignUpModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
-        onSignUpComplete={handleSignUpComplete}
+        onSignUpComplete={true}
       />
     </div>
   )

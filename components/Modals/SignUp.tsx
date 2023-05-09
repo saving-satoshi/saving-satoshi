@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react'
 import Icon from 'shared/Icon'
 import { Button, Loader, RadioButton, RadioGroup } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
-import { useTranslations, useLang } from 'hooks'
+import { useTranslations, useLang, useSaveAndReturn } from 'hooks'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
+import { getNextLessonKey } from 'lib/progress'
 import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import { Input } from 'shared'
@@ -24,12 +25,14 @@ export default function SignUpModal({
 }: {
   open: boolean
   onClose: () => void
-  onSignUpComplete?: Function | undefined
+  onSignUpComplete?: boolean
 }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { login } = useAuthContext()
   const { progress, saveProgress } = useProgressContext()
+  const saveAndReturn = useSaveAndReturn()
+  const nextLessonKey = getNextLessonKey(progress)
 
   const [loading, setLoading] = useState<boolean>(false)
   const [avatar, setAvatar] = useState(1)
@@ -64,19 +67,17 @@ export default function SignUpModal({
         await register(privateKey, `/assets/avatars/${avatar}.png`)
         await login(privateKey)
         //The following line saves the latest localStorage progress to the backend.
-        saveProgress(progress)
+        saveProgress(onSignUpComplete ? nextLessonKey : progress)
         onClose()
       }
     } catch (ex) {
       console.error(ex)
     } finally {
-      if (typeof onSignUpComplete === 'function') {
-        onSignUpComplete()
-      }
       setPrivateKey(undefined)
       setCopyAcknowledged(false)
       setLoading(false)
     }
+    onSignUpComplete && saveAndReturn()
   }
 
   useEffect(() => {
