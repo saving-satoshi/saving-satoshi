@@ -56,6 +56,7 @@ export default function ProgressProvider({
   }
 
   const saveProgress = async (key: string) => {
+    debugger
     try {
       setSavePending(true)
       setAccountProgress(key)
@@ -68,6 +69,7 @@ export default function ProgressProvider({
   }
 
   const saveProgressLocal = async (key: string) => {
+    debugger
     try {
       setSavePending(true)
       setAccountProgress(key)
