@@ -363,12 +363,14 @@ const translations = {
   chapter: {
     chapter_locked_one: 'Complete Chapter',
     chapter_locked_two: 'to unlock.',
+    description:
+      'Explore the mysteries of Satoshi and learn about Bitcoin along the way.',
   },
 
   hero: {
     title: 'Saving Satoshi',
     description: 'Code your way through the mysteries of bitcoin.',
-    start_journey: 'Start the demo',
+    start_journey: 'Start',
     tell_more: 'Tell me more',
   },
 
@@ -415,9 +417,8 @@ const translations = {
     acknowledge_copy: 'I acknowledge to have copied and stored my private key.',
   },
 
-  demo_disclaimer: {
-    title: 'This is a demo',
-    description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">your feedback</Link>.`,
+  disclaimer: {
+    description: `We’re excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>.`,
   },
 
   hasher: {
