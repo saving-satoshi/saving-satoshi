@@ -2,11 +2,10 @@
 
 import { Button } from 'shared'
 import { useSaveAndReturn, useTranslations } from 'hooks'
-import SignUpModal from 'components/Modals/SignUp'
+import { Modal, useModalContext } from 'providers/ModalProvider'
 import { useAuthContext } from 'providers/AuthProvider'
 import clsx from 'clsx'
 import Image from 'next/image'
-import { useState } from 'react'
 
 export default function End({
   image,
@@ -20,14 +19,14 @@ export default function End({
   direction: 'left' | 'right'
 }) {
   const t = useTranslations(lang)
-  const { account } = useAuthContext()
+  const modals = useModalContext()
   const saveAndReturn = useSaveAndReturn()
 
-  const [modalOpen, setModalOpen] = useState(false)
+  const { account } = useAuthContext()
 
   const handleClick = () => {
     if (!account) {
-      setModalOpen(true)
+      modals.open(Modal.SignUp, { onSignUpComplete: true })
     } else {
       saveAndReturn()
     }
@@ -51,17 +50,12 @@ export default function End({
           {children}
           <div className="mt-4 flex w-full flex-col gap-4 xl:w-2/3">
             <Button onClick={handleClick} size="small">
-              {!account && t('chapter_one.end.save')}
-              {account && t('shared.next')}
+              {(!account && t('chapter_one.end.save')) ||
+                (account && t('shared.next'))}
             </Button>
           </div>
         </div>
       </div>
-      <SignUpModal
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
-        onSignUpComplete={true}
-      />
     </div>
   )
 }

@@ -12,26 +12,18 @@ import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import { Input } from 'shared'
 import Modal from './Modal'
-import { ModalState } from 'types'
 
 enum View {
   Generate = 'generate',
   Input = 'input',
 }
 
-export default function SignUpModal({
-  state,
-  onClose,
-  onSignUpComplete,
-}: {
-  state: ModalState,
-  onClose: () => void
-  onSignUpComplete?: boolean
-}) {
+export default function LoginModal({ onClose, state }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { login } = useAuthContext()
   const { progress, saveProgress } = useProgressContext()
+  const { onSignUpComplete } = state.meta
   const saveAndReturn = useSaveAndReturn()
   const nextLessonKey = getNextLessonKey(progress)
 
@@ -70,6 +62,7 @@ export default function SignUpModal({
         //The following line saves the latest localStorage progress to the backend.
         saveProgress(onSignUpComplete ? nextLessonKey : progress)
         onClose()
+        onSignUpComplete && saveAndReturn()
       }
     } catch (ex) {
       console.error(ex)
@@ -78,7 +71,6 @@ export default function SignUpModal({
       setCopyAcknowledged(false)
       setLoading(false)
     }
-    onSignUpComplete && saveAndReturn()
   }
 
   useEffect(() => {
