@@ -23,7 +23,7 @@ export default function LoginModal({ onClose, state }) {
   const t = useTranslations(lang)
   const { login } = useAuthContext()
   const { progress, saveProgress } = useProgressContext()
-  const { onSignUpComplete } = state.meta
+  const { onSignUpComplete } = state.meta ?? false
   const saveAndReturn = useSaveAndReturn()
   const nextLessonKey = getNextLessonKey(progress)
 
