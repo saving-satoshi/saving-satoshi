@@ -60,7 +60,7 @@ export interface ModalState {
 
 export interface ModalContextType {
   modals: { [name: string]: ModalState }
-  open: (name: string) => void
+  open: (name: string, meta?: any) => void
   close: (name: string) => void
 }
 
