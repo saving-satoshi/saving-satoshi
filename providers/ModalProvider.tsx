@@ -23,17 +23,17 @@ export default function ModalProvider({
   children?: React.ReactNode
 }) {
   const [modals, setModals] = useState({
-    [Modal.Account]: false,
-    [Modal.SignIn]: false,
-    [Modal.SignUp]: false,
+    [Modal.Account]: { open: false, meta: undefined },
+    [Modal.SignIn]: { open: false, meta: undefined },
+    [Modal.SignUp]: { open: false, meta: undefined },
   })
 
-  const open = (name: string) => {
+  const open = (name: string, meta = {}) => {
     const newModals = { ...modals }
     Object.keys(newModals).forEach((modal) => {
-      newModals[modal] = false
+      newModals[modal].open = false
     })
-    newModals[name] = true
+    newModals[name] = { open: true, meta }
     setModals(newModals)
   }
 
@@ -44,7 +44,7 @@ export default function ModalProvider({
       return
     }
 
-    newModals[name] = false
+    newModals[name].open = false
     setModals(newModals)
   }
 

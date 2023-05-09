@@ -8,7 +8,7 @@ import { useTranslations, useLang } from 'hooks'
 import { useAuthContext } from 'providers/AuthProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
 
-export default function LoginModal({ onClose, open }) {
+export default function LoginModal({ onClose, state }) {
   const lang = useLang()
   const { account, isLoading: isAccountLoading, logout } = useAuthContext()
   const { isLoading: isProgressLoading } = useProgressContext()
@@ -31,7 +31,7 @@ export default function LoginModal({ onClose, open }) {
   }
 
   return (
-    <Modal active={open} onRequestClose={onClose}>
+    <Modal active={state.open} onRequestClose={onClose}>
       <div className="float-right flex justify-end">
         <button onClick={handleCloseClick} aria-label="Close">
           <Icon icon="close" className="h-6 w-6" />

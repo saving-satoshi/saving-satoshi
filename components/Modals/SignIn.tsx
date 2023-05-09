@@ -5,7 +5,7 @@ import SignIn from 'components/SignIn'
 import { useLang } from 'hooks'
 import Icon from 'shared/Icon'
 
-export default function LoginModal({ onClose, open }) {
+export default function LoginModal({ onClose, state }) {
   const lang = useLang()
 
   function handleCloseClick() {
@@ -13,7 +13,7 @@ export default function LoginModal({ onClose, open }) {
   }
 
   return (
-    <Modal active={open} onRequestClose={onClose}>
+    <Modal active={state.open} onRequestClose={onClose}>
       <div className="float-right flex justify-end">
         <button onClick={handleCloseClick} aria-label="Close">
           <Icon icon="close" className="h-6 w-6" />

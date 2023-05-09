@@ -19,7 +19,7 @@ enum View {
   Input = 'input',
 }
 
-export default function SignUpModal({ open, onClose }) {
+export default function SignUpModal({ state, onClose }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { login } = useAuthContext()
@@ -61,15 +61,15 @@ export default function SignUpModal({ open, onClose }) {
   }
 
   useEffect(() => {
-    if (open && view === View.Generate) {
+    if (state.open && view === View.Generate) {
       const { sec } = generateKeypair()
 
       setPrivateKey(sec)
     }
-  }, [open, view])
+  }, [state.open, view])
 
   return (
-    <Modal active={open} onRequestClose={onClose}>
+    <Modal active={state.open} onRequestClose={onClose}>
       <div className="float-right flex justify-end">
         <button onClick={onClose} aria-label="Close">
           <Icon icon="close" className="h-6 w-6" />
