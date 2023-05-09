@@ -8,7 +8,7 @@ import {
   MiningStatisticHash,
   ProgressBar,
 } from 'ui'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, use } from 'react'
 import { Button } from 'shared'
 import clsx from 'clsx'
 
@@ -30,6 +30,7 @@ export default function Mining1({ lang }) {
     useState(false)
   const [bitcoinMinedHighlight, setBitcoinMinedHighlight] = useState(false)
   const [hydrated, setHydrated] = useState(false)
+  const [ramdomNonce, setRandomNonce] = useState(false)
 
   useEffect(() => {
     setHydrated(true)
@@ -74,6 +75,18 @@ export default function Mining1({ lang }) {
     }, 40)
   }
 
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+    let currentNonce = nonce
+    if (ramdomNonce) {
+      interval = setInterval(() => {
+        currentNonce = currentNonce + Math.floor(Math.random() * 1760)
+        setNonce(currentNonce)
+      }, 40)
+    }
+    return () => clearInterval(interval)
+  }, [ramdomNonce])
+
   const transactionStep = () => {
     setStep(5)
     setNonceHighlight(false)
@@ -107,11 +120,11 @@ export default function Mining1({ lang }) {
 
     if (step === 2) {
       setStep(3)
-      const time = 1 * 15 * 1000
-      displayRandomNumbers(1760, 400, 1, time)
+      setRandomNonce(true)
     }
 
     if (step === 3) {
+      setRandomNonce(false)
       const time = 1 * 60 * 1000
       displayRandomNumbers(17600, 1000, 3, time)
     }
@@ -149,6 +162,7 @@ export default function Mining1({ lang }) {
             finalHash={
               '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
             }
+            blockFound={blocks}
           />
           <MiningStatisticHash
             title={t('chapter_two.mining_one.progress_bar_two')}
@@ -168,7 +182,15 @@ export default function Mining1({ lang }) {
         </div>
         <div className="mx-2.5 mb-5 flex max-w-[405px] items-center md:mx-0 md:mt-0 md:mb-0 lg:w-1/2 lg:px-0">
           {step === 0 && (
-            <div className="font-nunito text-white">
+            <div
+              className={clsx(
+                'font-nunito text-white transition-all duration-200',
+                {
+                  'opacity-0': step !== 0,
+                  'opacity-100': step === 0,
+                }
+              )}
+            >
               <Title>{t('chapter_two.mining_one.heading_one')}</Title>
               <div className="mt-2 text-lg">
                 {t('chapter_two.mining_one.paragraph_one')}
@@ -184,7 +206,14 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 1 && (
-            <div className="font-nunito text-white">
+            <div
+              className={clsx(
+                'font-nunito text-white opacity-0 transition-opacity duration-1000',
+                {
+                  'opacity-100': step === 1,
+                }
+              )}
+            >
               <Title>{t('chapter_two.mining_one.heading_two')}</Title>
               <div className="mt-2 text-lg">
                 {t('chapter_two.mining_one.paragraph_three')}
@@ -200,7 +229,7 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 2 && (
-            <div className="font-nunito text-white">
+            <div className="font-nunito text-white transition-all duration-200">
               <Title>{t('chapter_two.mining_one.heading_three')}</Title>
               <div className="mt-2 text-lg">
                 {t('chapter_two.mining_one.paragraph_six')}
@@ -227,7 +256,7 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 3 && (
-            <div className="font-nunito text-white">
+            <div className="font-nunito text-white transition-all duration-200">
               <Title>{t('chapter_two.mining_one.heading_four')}</Title>
               <div className="mt-2 text-lg">
                 {t('chapter_two.mining_one.paragraph_nine')}
@@ -235,7 +264,7 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 4 && (
-            <div className="font-nunito text-white">
+            <div className="font-nunito text-white transition-all duration-200">
               <Title>{t('chapter_two.mining_one.heading_five')}</Title>
               <div className="mt-8 text-lg">
                 {t('chapter_two.mining_one.paragraph_ten')}
@@ -250,7 +279,7 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 5 && (
-            <div className="font-nunito text-white">
+            <div className="font-nunito text-white transition-all duration-200">
               <div className="mt-8 text-lg">
                 {t('chapter_two.mining_one.paragraph_eleven')}
               </div>
@@ -264,7 +293,7 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 6 && (
-            <div className="font-nunito text-white">
+            <div className="font-nunito text-white transition-all duration-200">
               <div className="mt-8 text-lg">
                 {t('chapter_two.mining_one.paragraph_twelve')}
               </div>
@@ -278,7 +307,7 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 7 && (
-            <div className="font-nunito text-white">
+            <div className="font-nunito text-white transition-all duration-200">
               <div className="mt-8 text-lg">
                 {t('chapter_two.mining_one.paragraph_thirteen')}
               </div>

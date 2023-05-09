@@ -1,4 +1,4 @@
-export default function CrossIcon({ className }: { className: string }) {
+export default function CrossIcon({ className, title }) {
   return (
     <svg
       width="15"
@@ -8,6 +8,7 @@ export default function CrossIcon({ className }: { className: string }) {
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
+      <title>{title}</title>
       <path
         d="M1 1.5L13 13.5M13 1.5L1.00001 13.5"
         stroke="#E3941D"

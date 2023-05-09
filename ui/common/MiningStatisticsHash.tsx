@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useState, useEffect, use } from 'react'
 
 export default function MiningStatisticHash({
   title,
@@ -19,6 +19,7 @@ export default function MiningStatisticHash({
   const [hasherState, setHasherState] = useState<boolean>(false)
   const [hashPower, sethashPower] = useState(0)
   const [powerUp, setPowerUp] = useState<boolean>(false)
+  const [randomHash, setRandomHash] = useState(false)
 
   function displayRandomNumbers(
     maxHash: number,
@@ -46,6 +47,22 @@ export default function MiningStatisticHash({
     }, 40)
   }
 
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+    let currentHash = hashPower
+    if (randomHash) {
+      interval = setInterval(() => {
+        currentHash = Math.min(
+          currentHash + Math.floor(Math.random() * 200),
+          4400
+        )
+        currentHash -= Math.floor(Math.random() * (10 - 5 + 1) + 5)
+        sethashPower(currentHash)
+      }, 40)
+    }
+    return () => clearInterval(interval)
+  }, [randomHash])
+
   function handleClick() {
     if (!hasherState && step === 0) {
       const time = 1 * 45 * 1000
@@ -59,15 +76,16 @@ export default function MiningStatisticHash({
 
     if (!hasherState && step === 2) {
       const time = 1 * 15 * 1000
-      displayRandomNumbers(4400, 200, time)
       onButtonClick(true)
       setHasherState(true)
+      setRandomHash(true)
       setTimeout(() => {
         setPowerUp(true)
       }, time)
     }
 
     if (powerUp && step === 3) {
+      setRandomHash(false)
       const time = 1 * 60 * 1000
       displayRandomNumbers(45000, 3000, time)
       onButtonClick(true)
