@@ -1,6 +1,7 @@
 'use client'
 
 import { useLocalizedRoutes, useTranslations, useLang } from 'hooks'
+import { chapters, lessons } from 'content'
 import Address from 'components/Navbar/Address'
 import UserButton from '../UserButton'
 import HamburgerMenu from './HamburgerMenu'
@@ -26,8 +27,16 @@ export default function NavbarMobile({ params }) {
     setIsOpen(false)
   }
 
+  const { slug, lesson: lessonId } = params
+
+  //If theme was specified on lesson it should take priority over a theme that was specified on a chapter, otherwise fallback to bg-back. In this case it is used to apply an opacity for transparent outro screens
+  const theme =
+    lessons[slug]?.[lessonId]?.metadata.theme ??
+    chapters[slug]?.metadata.theme ??
+    'bg-back'
+
   return (
-    <div className="left-0 top-0 w-full md:hidden">
+    <div className={`${theme} w-full md:hidden`}>
       <div className="flex items-stretch border-b border-white/80 text-white">
         <div className="flex">
           <Link
