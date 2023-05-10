@@ -3,6 +3,7 @@ const translations = {
     next: 'Continue',
     start: 'Start',
     copy: 'Copy',
+    copy_acknowledged: 'Copied!',
     about: 'About',
     chapter: 'Chapter',
     chapters: 'Chapters',
@@ -191,7 +192,7 @@ const translations = {
     outro_two: {
       title: 'You did it!!!',
       description:
-        'Amazing. You completed the first chapter and learned a lot about bitcoin. Follow us at <Link href="https://twitter.com/savingsatoshi" className="underline">@savingsatoshi</Link> to know when we launch new chapters and challenges.',
+        'Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go? Share your <Link href="https://forms.gle/WhdJwcKKetB9sFL79" className="underline">feedback</Link>',
     },
 
     end: {
@@ -311,6 +312,16 @@ const translations = {
         'When you press “Run the script”, the findHash function will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce.',
       success: 'Five zeroes! That’s it!',
     },
+    outro_one: {
+      title: 'Outro',
+      heading: 'Great Job!',
+      paragraph_one:
+        'The machines roar to life. Everything seems to be working. A map appears on the computer that appears to show the locations of other warehouses filled with ASICs that have come back to life across the world.',
+      paragraph_two: 'HOLOCAT: “Look, there’s a message.”',
+      paragraph_three:
+        '“Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto',
+      paragraph_four: 'Him again?',
+    },
   },
 
   chapter_three: {
@@ -404,17 +415,14 @@ const translations = {
   },
 
   modal_signup: {
-    heading: 'Create an account',
+    heading: 'Want to save your progress',
     paragraph_one:
-      'At Saving Satoshi, private keys are used as accounts. You have the option to generate a private key here, or you can enter your own.',
+      'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.',
     subheading_one: 'Choose an avatar',
-    subheading_two: 'Your private key',
+    subheading_two: 'Back up your personal code',
     generate:
-      'If you lose your private key, you lose access to your account. Make sure you store it somewhere save.',
-    input:
-      'If you lose your private key, you lose access to your account. Make sure you store it somewhere save.',
-    confirm: 'Create account',
-    acknowledge_copy: 'I acknowledge to have copied and stored my private key.',
+      'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
+    confirm: 'Done',
   },
 
   disclaimer: {

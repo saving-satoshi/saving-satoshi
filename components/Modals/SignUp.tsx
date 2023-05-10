@@ -1,14 +1,13 @@
-'use client'
-
 import Avatar from 'components/Avatar'
 import { useState, useEffect } from 'react'
 import Icon from 'shared/Icon'
-import { Checkbox, CopyButton, Loader, RadioButton, RadioGroup } from 'shared'
+import { Button, Loader, RadioButton, RadioGroup } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
-import { useTranslations, useLang } from 'hooks'
+import { useTranslations, useLang, useSaveAndReturn } from 'hooks'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
+import { getNextLessonKey } from 'lib/progress'
 import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import { Input } from 'shared'
@@ -19,17 +18,21 @@ enum View {
   Input = 'input',
 }
 
-export default function SignUpModal({ state, onClose }) {
+export default function LoginModal({ onClose, state }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { login } = useAuthContext()
+  const { progress, saveProgress } = useProgressContext()
+  const { onSignUpComplete } = state.meta ?? false
+  const saveAndReturn = useSaveAndReturn()
+  const nextLessonKey = getNextLessonKey(progress)
 
   const [loading, setLoading] = useState<boolean>(false)
   const [avatar, setAvatar] = useState(1)
   const [view, setView] = useState<string>(View.Generate)
   const [copyAcknowledged, setCopyAcknowledged] = useState<boolean>(false)
   const [privateKey, setPrivateKey] = useState<string | undefined>(undefined)
-  const { progress, saveProgress } = useProgressContext()
+  const [copied, setCopied] = useState(false)
 
   const handleChangeView = (view: View) => {
     setView(view)
@@ -38,6 +41,15 @@ export default function SignUpModal({ state, onClose }) {
 
   const handleSetPrivateKey = (pk: string) => {
     setPrivateKey(pk)
+    setCopyAcknowledged(true)
+  }
+
+  const copy = (text) => {
+    navigator.clipboard.writeText(text)
+
+    setCopied(true)
+    setCopyAcknowledged(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   async function handleConfirm() {
@@ -48,8 +60,9 @@ export default function SignUpModal({ state, onClose }) {
         await register(privateKey, `/assets/avatars/${avatar}.png`)
         await login(privateKey)
         //The following line saves the latest localStorage progress to the backend.
-        saveProgress(progress)
+        saveProgress(onSignUpComplete ? nextLessonKey : progress)
         onClose()
+        onSignUpComplete && saveAndReturn()
       }
     } catch (ex) {
       console.error(ex)
@@ -108,7 +121,7 @@ export default function SignUpModal({ state, onClose }) {
             Generate
           </RadioButton>
 
-          <RadioButton name="inpit" value={View.Input}>
+          <RadioButton name="input" value={View.Input}>
             Enter my own
           </RadioButton>
         </RadioGroup>
@@ -119,15 +132,19 @@ export default function SignUpModal({ state, onClose }) {
               {privateKey && (
                 <>
                   <code className="mb-2 whitespace-pre-wrap break-all text-base">
-                    {privateKey}
+                    {privateKey.toUpperCase()}
                   </code>
-                  <CopyButton content={privateKey}>
-                    {t('shared.copy')}
-                  </CopyButton>
+                  <Button
+                    round
+                    size="tiny"
+                    style="w-full"
+                    onClick={() => copy(privateKey)}
+                  >
+                    {copied ? t('shared.copy_acknowledged') : t('shared.copy')}
+                  </Button>
                 </>
               )}
             </pre>
-            <p className="mt-5 text-base">{t('modal_signup.generate')}</p>
           </>
         )}
 
@@ -139,17 +156,9 @@ export default function SignUpModal({ state, onClose }) {
               placeholder="Enter your private key"
               onInput={handleSetPrivateKey}
             />
-            <p className="mt-5 text-base">{t('modal_signup.input')}</p>
           </>
         )}
-
-        <Checkbox
-          name="checkbox"
-          className="my-4"
-          value={copyAcknowledged}
-          onChange={setCopyAcknowledged}
-          label={t('modal_signup.acknowledge_copy')}
-        />
+        <p className="mt-5 text-base">{t('modal_signup.generate')}</p>
 
         <button
           onClick={handleConfirm}

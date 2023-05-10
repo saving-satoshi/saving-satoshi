@@ -1,50 +1,57 @@
 'use client'
 
 import { Button } from 'shared'
-import { useSaveAndProceed, useTranslations } from 'hooks'
+import { useSaveAndReturn, useTranslations } from 'hooks'
+import { Modal, useModalContext } from 'providers/ModalProvider'
+import { useAuthContext } from 'providers/AuthProvider'
+import clsx from 'clsx'
+import Image from 'next/image'
 
 export default function End({
-  title,
-  description,
   image,
   lang,
+  children,
+  direction,
 }: {
-  title?: string
-  description?: string
+  children: any
   image: string
   lang: string
+  direction: 'left' | 'right'
 }) {
   const t = useTranslations(lang)
-  const saveAndProceed = useSaveAndProceed()
+  const modals = useModalContext()
+  const saveAndReturn = useSaveAndReturn()
+
+  const { account } = useAuthContext()
+
+  const handleClick = () => {
+    if (!account) {
+      modals.open(Modal.SignUp, { onSignUpComplete: true })
+    } else {
+      saveAndReturn()
+    }
+  }
 
   return (
-    <div
-      className="flex w-screen grow justify-center bg-cover bg-fixed bg-center bg-no-repeat"
-      style={{ backgroundImage: `url('${image}')` }}
-    >
-      <div className="left-unset absolute bottom-0 ml-auto w-full bg-gradient-to-b from-transparent via-[#00000040] to-[#00000080] p-4 pb-12 md:p-16">
-        <div className="md:max-w-[500px]">
-          <h1 className="text-3xl font-bold text-white md:text-5xl">
-            {t(title)}
-          </h1>
-          <p className="mt-4 font-nunito text-xl text-white md:text-2xl">
-            {t(description)}
-          </p>
-
+    <div>
+      <Image
+        src={image}
+        alt={t('chapter_two.title')}
+        fill
+        className="relative -z-10 object-cover object-bottom"
+      />
+      <div className="absolute bottom-0 ml-auto w-full bg-gradient-to-b from-transparent via-[#00000040] to-[#00000080] p-4 pb-12 text-left md:p-16">
+        <div
+          className={clsx('max-w-[500px]', {
+            'float-left': direction === 'left',
+            'float-right': direction === 'right',
+          })}
+        >
+          {children}
           <div className="mt-4 flex w-full flex-col gap-4 xl:w-2/3">
-            <Button
-              size="small"
-              href="https://forms.gle/WhdJwcKKetB9sFL79"
-              external={true}
-            >
-              {t('chapter_one.end.feedback')}
-            </Button>
-            {/*Secret Button*/}
-            <Button
-              onClick={saveAndProceed}
-              classes="w-full md:w-auto bg-transparent text-transparent hover:bg-transparent hover:cursor-default"
-            >
-              {t('shared.next')}
+            <Button onClick={handleClick} size="small">
+              {(!account && t('chapter_one.end.save')) ||
+                (account && t('shared.next'))}
             </Button>
           </div>
         </div>

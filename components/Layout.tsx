@@ -3,8 +3,8 @@
 import { Modal, useModalContext } from 'providers/ModalProvider'
 
 import AccountModal from 'components/Modals/Account'
-import SignUpModal from 'components/Modals/SignUp'
 import SignInModal from 'components/Modals/SignIn'
+import SignUpModal from 'components/Modals/SignUp'
 
 export default function Layout({ children }: { children?: React.ReactNode }) {
   const { modals, close } = useModalContext()

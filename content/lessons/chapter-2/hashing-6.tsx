@@ -5,7 +5,7 @@ import { getLessonKey } from 'lib/progress'
 import { HashChallenge } from 'ui'
 
 export const metadata = {
-  title: 'chapter_two.hashing_five.title',
+  title: 'chapter_two.hashing_six.title',
   key: 'CH2HSH6',
 }
 

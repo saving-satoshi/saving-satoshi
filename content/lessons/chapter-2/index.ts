@@ -1,5 +1,6 @@
 import * as Intro1 from './intro-1'
 import * as Intro2 from './intro-2'
+import * as Outro1 from './outro-1'
 import * as Hashing1 from './hashing-1'
 import * as Hashing2 from './hashing-2'
 import * as Hashing3 from './hashing-3'
@@ -20,6 +21,7 @@ const Chapter2 = {
   'hashing-6': Hashing6,
   'scripting-1': Scripting1,
   'scripting-2': Scripting2,
+  'outro-1': Outro1,
 }
 
 export default Chapter2

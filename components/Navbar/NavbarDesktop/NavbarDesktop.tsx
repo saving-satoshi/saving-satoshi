@@ -1,6 +1,9 @@
 'use client'
 
+import clsx from 'clsx'
+
 import { useLocalizedRoutes, useTranslations, useLang } from 'hooks'
+import { chapters, lessons } from 'content'
 import Address from 'components/Navbar/Address'
 import TabGroup from 'components/Navbar/NavbarDesktop/TabGroup'
 import UserButton from '../UserButton'
@@ -13,8 +16,20 @@ export default function NavbarDesktop({ params }) {
   const lang = useLang()
   const t = useTranslations(lang)
 
+  const { slug, lesson: lessonId } = params
+
+  //If theme was specified on lesson it should take priority over a theme that was specified on a chapter, otherwise fallback to bg-back. In this case it is used to apply an opacity for transparent outro screens
+  const theme =
+    lessons[slug]?.[lessonId]?.metadata.theme ??
+    chapters[slug]?.metadata.theme ??
+    'bg-back'
+
   return (
-    <div className="left-0 top-0 hidden w-full md:block">
+    <div
+      className={clsx('left-0 top-0 hidden w-full md:block', {
+        'bg-transparent/20': theme === 'bg-transparent',
+      })}
+    >
       <div className="flex h-[70px] items-stretch justify-between border-b border-white/80 text-white">
         <div className="flex">
           <Link

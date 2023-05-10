@@ -90,7 +90,7 @@ export default function ProgressProvider({
   return (
     <ProgressContext.Provider
       value={{
-        progress: accountProgress,
+        progress: accountProgress ?? 'CH1INT1',
         saveProgress,
         saveProgressLocal,
         isLoading,

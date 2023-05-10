@@ -50,9 +50,27 @@ export default function Chapter({ children, metadata, lang }) {
 
   const context = {}
 
+  useEffect(() => {
+    if (window.location.href.split('#')[1]) {
+      const element = document.getElementById(
+        window.location.href.split('#')[1]
+      )
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        })
+      }
+    }
+  }, [])
+
   return (
     <ChapterContext.Provider value={context}>
-      <div className="grid grid-cols-1 justify-center lg:grid-cols-2 lg:px-0">
+      <div
+        id={chapter.metadata.slug}
+        className="grid grid-cols-1 justify-center lg:grid-cols-2 lg:px-0"
+      >
         <div
           className={clsx(
             'order-2 flex justify-start lg:px-[50px] lg:py-[112px]',
