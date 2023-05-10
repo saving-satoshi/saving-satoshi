@@ -33,12 +33,15 @@ export default function End({
   }
 
   return (
-    <div>
+    <div className="fixed h-[100vh] w-screen flex-col">
       <Image
         src={image}
         alt={t('chapter_two.title')}
         fill
-        className="relative -z-10 object-cover object-bottom"
+        quality={100}
+        loading="eager"
+        priority
+        className="h-full w-full object-cover"
       />
       <div className="absolute bottom-0 ml-auto w-full bg-gradient-to-b from-transparent via-[#00000040] to-[#00000080] p-4 pb-12 text-left md:p-16">
         <div
