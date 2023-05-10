@@ -32,9 +32,9 @@ const translations = {
     project: {
       title: 'Built with fun',
       paragraph_one:
-        'Saving Satoshi is a light-hearted first point of contact for coders who are curious about bitcoin development. Saving Satoshi has a mix of technical text and code-based challenges, but the challenges should be doable for anyone with basic coding skills. The project is free and open source and all the art has been generated using text-to-image tools like Midjourney.',
+        'Saving Satoshi is a light-hearted first point of contact for coders who are curious about Bitcoin development. Saving Satoshi has a mix of technical text and code-based challenges, but the challenges should be doable for anyone with basic coding skills. The project is free and open source (FOSS) and all the art has been generated using text-to-image tools like Midjourney.',
       paragraph_two:
-        'This free and open source software (FOSS) project is in continuous development. Our goal is to take an iterative approach to incorporate feedback as we release new chapters. There are currently 10 chapters mapped out, however more may be added as the project continues to grow.',
+        'This project is in continuous development and takes an iterative approach to incorporate feedback as we release new chapters. There are currently ten chapters mapped out. However more may be added as the project continues to grow.',
     },
 
     contributing: {
