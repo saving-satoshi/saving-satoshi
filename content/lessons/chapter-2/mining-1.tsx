@@ -108,7 +108,7 @@ export default function Mining1({ lang }) {
   const turnOnButton = () => {
     if (step === 0) {
       setStep(1)
-      const time = 1 * 45 * 1000
+      const time = 1 * 25 * 1000
       displayRandomNumbers(1760, 0, 0, time)
       setTimeout(() => {
         setStep(2)
@@ -137,7 +137,7 @@ export default function Mining1({ lang }) {
   return (
     hydrated && (
       <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
-        <div className="grid w-[345px] grid-cols-1 items-center py-[25px] md:my-0 md:mx-[30px] md:w-[405px] lg:order-last lg:px-0">
+        <div className="grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:my-0 md:mx-[30px] md:w-[405px] md:p-[25px]">
           <div
             className={clsx(
               'relative mb-2.5 font-nunito text-lg font-semibold',
@@ -180,7 +180,7 @@ export default function Mining1({ lang }) {
             transactionTitle={t('chapter_two.mining_one.progress_bar_three')}
           />
         </div>
-        <div className="mx-2.5 mb-5 flex max-w-[405px] items-center md:mx-0 md:mt-0 md:mb-0 lg:w-1/2 lg:px-0">
+        <div className="mb-5 flex w-full items-center px-[15px] md:mx-0 md:mt-0 md:mb-0 md:w-1/2 md:max-w-[405px] md:pr-0 md:pl-[15px]">
           {step === 0 && (
             <div
               className={clsx(
@@ -266,7 +266,7 @@ export default function Mining1({ lang }) {
           {step === 4 && (
             <div className="font-nunito text-white transition-all duration-200">
               <Title>{t('chapter_two.mining_one.heading_five')}</Title>
-              <div className="mt-8 text-lg">
+              <div className="mt-2 text-lg">
                 {t('chapter_two.mining_one.paragraph_ten')}
               </div>
               <Button

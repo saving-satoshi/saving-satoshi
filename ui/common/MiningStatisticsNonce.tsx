@@ -39,7 +39,7 @@ export default function MiningStatisticNonce({
       className={clsx(
         'mt-5 flex w-full items-center justify-between rounded-[5px] border-2 border-transparent bg-black/15 p-4 font-space-mono',
         {
-          'animate-duration-500 animate-pulse border-2 !border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+          'animate-duration-200 animate-pulse border-2 !border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
             highlight === true,
         }
       )}

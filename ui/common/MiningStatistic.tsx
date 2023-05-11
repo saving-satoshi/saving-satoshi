@@ -23,7 +23,7 @@ export default function InfoBox({
         className={clsx(
           'h-[72px] w-full rounded-[5px] border-2 border-transparent bg-black/15  py-2.5 font-space-mono font-semibold',
           {
-            'animate-duration-500 animate-pulse !border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+            'animate-duration-200 animate-pulse !border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
               transactionHighlight === true,
           }
         )}
@@ -49,7 +49,7 @@ export default function InfoBox({
         className={clsx(
           'h-[72px] w-full rounded-[5px] border-2 border-transparent bg-black/15 p-4 px-[15px] py-2.5 font-space-mono ',
           {
-            'animate-duration-500 animate-pulse  !border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+            'animate-duration-200 animate-pulse  !border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
               bitcoinHighlight === true,
           }
         )}
