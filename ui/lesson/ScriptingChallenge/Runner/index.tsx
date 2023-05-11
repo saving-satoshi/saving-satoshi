@@ -92,8 +92,19 @@ export default function Runner({
             setResult(payload)
 
             if (payload.error) {
-              setErrors([payload.error])
-              setHasherState(HasherState.Error)
+              if (payload.error.split('Traceback')[1]) {
+                const pythonPayload = payload.error
+                  .split('line 7')[1]
+                  .split(' ')
+                pythonPayload.shift()
+                setErrors([pythonPayload.join(' ')])
+                setHasherState(HasherState.Error)
+                setIsRunning(false)
+              } else {
+                setErrors([payload.error])
+                setHasherState(HasherState.Error)
+                setIsRunning(false)
+              }
               return
             }
             break

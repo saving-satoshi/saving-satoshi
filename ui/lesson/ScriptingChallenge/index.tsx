@@ -29,11 +29,13 @@ export default function ScriptingChallenge({
   lang,
   config,
   successMessage,
+  languageCopy,
 }: {
   children?: React.ReactNode
   lang: string
   config: EditorConfig
   successMessage: string
+  languageCopy: any
 }) {
   const [code, setCode] = useState(
     config.languages[config.defaultLanguage].defaultCode
@@ -47,6 +49,7 @@ export default function ScriptingChallenge({
 
   const handleSetLanguage = (value) => {
     setLanguage(value)
+    languageCopy(value)
     setCode(config.languages[value].defaultCode)
   }
 
@@ -94,7 +97,7 @@ export default function ScriptingChallenge({
         <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
         {children}
 
-        <div className="h-screen-excluding-navbar flex grow flex-col border-white/25 md:basis-1/3 md:border-l">
+        <div className="h-screen-excluding-navbar flex grow flex-col border-white/25 bg-[#00000026] md:basis-1/3 md:border-l">
           <LanguageTabs
             languages={config.languages}
             value={language}
