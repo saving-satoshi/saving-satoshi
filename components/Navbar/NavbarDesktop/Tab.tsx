@@ -11,7 +11,6 @@ import { lessons, chapters } from 'content'
 import { getLessonKey } from 'lib/progress'
 import { useProgressContext } from 'providers/ProgressProvider'
 import useLessonStatus from 'hooks/useLessonStatus'
-import { metadata } from 'content/chapters/chapter-1'
 
 export default function Tab({
   index,
@@ -26,8 +25,11 @@ export default function Tab({
 }) {
   const { slug, lesson: lessonId } = params
 
-  const { theme = chapters[slug].metadata.theme } =
-    lessons[slug][lessonId]?.metadata ?? 'bg-back'
+  //If theme was specified on lesson it should take priority over a theme that was specified on a chapter, otherwise fallback to bg-back
+  const theme =
+    lessons[slug]?.[lessonId]?.metadata.theme ??
+    chapters[slug]?.metadata.theme ??
+    'bg-back'
 
   const routes = useLocalizedRoutes()
   const lang = useLang()

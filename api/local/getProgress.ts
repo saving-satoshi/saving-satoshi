@@ -1,12 +1,16 @@
-// TO BE Edited
+import { defaultProgressContext } from 'providers/ProgressProvider'
 
-export default async function getProgressLocal() {
+export default async function getProgressLocal(): Promise<string> {
   try {
-    const res = localStorage.getItem('SavingSatoshiProgress') ?? 'CH1INT1'
+    const res = localStorage.getItem('SavingSatoshiProgress')
+
+    if (!res) {
+      throw new Error('Could not read progress from LocalStorage')
+    }
 
     return res
   } catch (errors) {
     console.error(errors)
-    return undefined
+    return defaultProgressContext.progress
   }
 }

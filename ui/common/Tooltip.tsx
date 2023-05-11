@@ -131,8 +131,10 @@ function Tooltip({
     <>
       <span
         className={clsx(
-          'tooltip absolute top-0 left-0 z-10 max-w-md border border-white bg-transparent px-5 py-2 text-center shadow-lg shadow-black/25 backdrop-blur-3xl transition-opacity delay-150 ease-in-out',
+          'tooltip absolute top-0 left-0 z-10 max-w-md border border-white px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
+          `${theme}`,
           {
+            'bg-transparent backdrop-blur-3xl': !theme,
             'pointer-events-all opacity-100': visible,
             'pointer-events-none opacity-0': !visible,
           }

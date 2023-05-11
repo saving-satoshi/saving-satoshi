@@ -1,15 +1,16 @@
+import { defaultProgressContext } from 'providers/ProgressProvider'
 import { get } from 'utils'
 
-export default async function getProgress() {
+export default async function getProgress(): Promise<string> {
   try {
     const res = await get({
       url: '/v1/progress',
       includeToken: true,
     })
 
-    return res
+    return res.progress
   } catch (errors) {
     console.error(errors)
-    return undefined
+    return defaultProgressContext.progress
   }
 }

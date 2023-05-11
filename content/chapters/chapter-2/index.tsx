@@ -25,10 +25,11 @@ export const metadata = {
     'hashing-3',
     'hashing-4',
     'hashing-5',
+    'hashing-6',
     'scripting-1',
     'scripting-2',
     'mining-1'
   ],
-  outros: [],
+  outros: ['outro-1'],
   challenges: ['hashing-1', 'scripting-1', 'mining-1'],
 }

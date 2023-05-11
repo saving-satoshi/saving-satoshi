@@ -3,8 +3,8 @@
 import { Modal, useModalContext } from 'providers/ModalProvider'
 
 import AccountModal from 'components/Modals/Account'
-import SignUpModal from 'components/Modals/SignUp'
 import SignInModal from 'components/Modals/SignIn'
+import SignUpModal from 'components/Modals/SignUp'
 
 export default function Layout({ children }: { children?: React.ReactNode }) {
   const { modals, close } = useModalContext()
@@ -13,15 +13,15 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
     <>
       {children}
       <SignInModal
-        open={modals[Modal.SignIn]}
+        state={modals[Modal.SignIn]}
         onClose={() => close(Modal.SignIn)}
       />
       <SignUpModal
-        open={modals[Modal.SignUp]}
+        state={modals[Modal.SignUp]}
         onClose={() => close(Modal.SignUp)}
       />
       <AccountModal
-        open={modals[Modal.Account]}
+        state={modals[Modal.Account]}
         onClose={() => close(Modal.Account)}
       />
     </>
