@@ -312,7 +312,7 @@ const translations = {
         'When you press “Run the script”, the findHash function will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce.',
       success: 'Five zeroes! That’s it!',
     },
-    
+
     mining_one: {
       title: 'Into the mine',
       heading_one: 'Now that we know how mining works, let’s see it in action',
@@ -354,8 +354,8 @@ const translations = {
       progress_bar_three: 'Transactions confirmed',
       progress_bar_four: 'Bitcoin earned',
       button_hash: '10x hash power, please',
-   },
-   outro_one: {
+    },
+    outro_one: {
       title: 'Outro',
       heading: 'Great Job!',
       paragraph_one:
@@ -364,8 +364,8 @@ const translations = {
       paragraph_three:
         '“Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto',
       paragraph_four: 'Him again?',
+    },
   },
-
   chapter_three: {
     title: 'Claiming your rewards',
     paragraph_one:

@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations } from 'hooks'
+import { useTranslations, useSaveAndProceed } from 'hooks'
 import {
   Title,
   MiningStatistic,
@@ -8,7 +8,7 @@ import {
   MiningStatisticHash,
   ProgressBar,
 } from 'ui'
-import { useState, useEffect, use } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import clsx from 'clsx'
 
@@ -31,6 +31,8 @@ export default function Mining1({ lang }) {
   const [bitcoinMinedHighlight, setBitcoinMinedHighlight] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [ramdomNonce, setRandomNonce] = useState(false)
+
+  const saveAndProceed = useSaveAndProceed()
 
   useEffect(() => {
     setHydrated(true)
@@ -314,7 +316,7 @@ export default function Mining1({ lang }) {
               <div className="mt-8 text-lg">
                 {t('chapter_two.mining_one.paragraph_fourteen')}
               </div>
-              <Button onClick={finalStep} classes="mt-10 max-md:w-full">
+              <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
                 {t('shared.next')}
               </Button>
             </div>
