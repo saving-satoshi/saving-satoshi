@@ -152,3 +152,7 @@ div.react-terminal-active-input {
 .h-screen-excluding-navbar {
   height: calc(100vh - 70px);
 }
+
+.h-screen-excluding-navbar-mobile {
+  height: calc(100vh - 63px);
+}
