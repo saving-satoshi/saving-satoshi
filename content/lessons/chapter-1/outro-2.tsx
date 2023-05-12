@@ -7,6 +7,7 @@ export const metadata = {
   title: 'chapter_one.outro_one.title',
   image: '/assets/images/chapter-1-finish.jpg',
   theme: 'bg-transparent',
+  solidTheme: 'bg-transparent/25',
   key: 'CH1OUT2',
 }
 
