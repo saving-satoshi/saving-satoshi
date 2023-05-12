@@ -20,16 +20,12 @@ export default function NavbarDesktop({ params }) {
 
   //If theme was specified on lesson it should take priority over a theme that was specified on a chapter, otherwise fallback to bg-back. In this case it is used to apply an opacity for transparent outro screens
   const theme =
-    lessons[slug]?.[lessonId]?.metadata.theme ??
-    chapters[slug]?.metadata.theme ??
+    lessons[slug]?.[lessonId]?.metadata.solidTheme ??
+    chapters[slug]?.metadata.solidTheme ??
     'bg-back'
 
   return (
-    <div
-      className={clsx('left-0 top-0 hidden w-full md:block', {
-        'bg-transparent/20': theme === 'bg-transparent',
-      })}
-    >
+    <div className={clsx('left-0 top-0 hidden w-full md:block', theme)}>
       <div className="flex h-[70px] items-stretch justify-between border-b border-white/80 text-white">
         <div className="flex">
           <Link

@@ -15,14 +15,10 @@ export default function Menu(props) {
   return (
     <div
       id="lesson-navigation-menu"
-      className={clsx(
-        'absolute z-10 w-full bg-back duration-[400ms]',
-        `${theme}`,
-        {
-          'h-full': props.isOpen,
-          'h-0 delay-200': !props.isOpen,
-        }
-      )}
+      className={clsx('absolute z-10 w-full bg-back duration-[400ms]', theme, {
+        'h-full': props.isOpen,
+        'h-0 delay-200': !props.isOpen,
+      })}
       aria-modal="true"
       aria-hidden={!props.isOpen}
       aria-label="Lesson Navigation Menu"
