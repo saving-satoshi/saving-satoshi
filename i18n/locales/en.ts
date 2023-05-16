@@ -31,11 +31,9 @@ const translations = {
     project: {
       title: 'Built with fun',
       paragraph_one:
-        'Saving Satoshi is a light-hearted first point of contact for developers who are curious about bitcoin development. Saving Satoshi has a mix of technical text and code-based challenges, but the challenges should be doable for anyone with basic coding skills. The project is free and open source and all the art has been generated using text-to-image (aka AI) tools like Midjourney.',
+        'Saving Satoshi is a light-hearted first point of contact for coders who are curious about Bitcoin development. Saving Satoshi has a mix of technical text and code-based challenges, but the challenges should be doable for anyone with basic coding skills. The project is free and open source (FOSS) and all the art has been generated using text-to-image tools like Midjourney.',
       paragraph_two:
-        'This version of the project is currently in a demo state with a goal of getting feedback on the overall experience and providing a proof of concept for early users. In light of this, user progress is stored locally in the browser and the story along with images are not finalized.',
-      paragraph_three:
-        'Based on the feedback we receive, we will then work towards an official release (we call it V1) that includes 2-3 full lesson chapters, accounts, and more. 10 chapters are planned out and will be released over time as they are completed. Additional features may include collaborative learning, badges, extra-challenging side quests, and more.',
+        'This project is in continuous development and takes an iterative approach to incorporate feedback as we release new chapters. There are currently ten chapters mapped out. However more may be added as the project continues to grow.',
     },
 
     contributing: {
@@ -46,7 +44,7 @@ const translations = {
       feedback: {
         title: 'Feedback',
         paragraph_one:
-          'A really great way to contribute is to go through Chapter 1 and give us any feedback on the overall experience you might have using this form.',
+          'A great way to contribute is to go through Chapter 1 and give us any feedback on the overall experience you might have using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this form</a>.',
       },
 
       contribute: {
