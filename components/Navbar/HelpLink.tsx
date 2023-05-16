@@ -32,7 +32,7 @@ export default function HelpLink({ params }: { params: any }) {
           target="_blank"
           href="https://forms.gle/NVcg9ukPvUBYjw1u7"
         >
-          ?
+          <span className="sr-only">Need help</span>?
         </Link>
       </Tooltip>
     </div>

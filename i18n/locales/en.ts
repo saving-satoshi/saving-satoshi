@@ -10,6 +10,7 @@ const translations = {
     coming_soon: 'Coming soon',
     start_chapter: 'Start chapter',
     back: 'Back',
+    poweroff: 'restart game',
   },
   status_bar: {
     begin_message: 'Complete the challenge above to continue...',

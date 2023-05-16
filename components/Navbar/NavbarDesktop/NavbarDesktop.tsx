@@ -18,7 +18,7 @@ export default function NavbarDesktop({ params }) {
       <div className="flex h-[70px] items-stretch justify-between border-b border-white/80 text-white">
         <div className="flex">
           <Link
-            title={t('shared.back')}
+            title={t('shared.poweroff')}
             className="group flex items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
             href={routes.chaptersUrl}
           >
