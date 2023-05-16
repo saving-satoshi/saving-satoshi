@@ -85,25 +85,27 @@ export default function Runner({
 
         switch (action) {
           case 'log': {
-            print(payload)
+            typeof payload === 'string' && print(payload)
             break
           }
           case 'result': {
-            setResult(payload)
+            typeof payload.value === 'string' && setResult(payload)
 
             if (payload.error) {
               if (payload.error.split('Traceback')[1]) {
                 const pythonPayload = payload.error
-                  .split('line 7')[1]
+                  .split('Error:')[1]
                   .split(' ')
                 pythonPayload.shift()
                 setErrors([pythonPayload.join(' ')])
                 setHasherState(HasherState.Error)
                 setIsRunning(false)
+                destroyIframe()
               } else {
                 setErrors([payload.error])
                 setHasherState(HasherState.Error)
                 setIsRunning(false)
+                destroyIframe()
               }
               return
             }
@@ -238,10 +240,6 @@ export default function Runner({
           <Loader className="h-10 w-10 text-white" />
         </div>
       )}
-
-      {/* {!loading && (
-        <Terminal defaultMessage={defaultTerminalMessage} ref={outputRef} />
-      )} */}
 
       {!loading && (
         <Hasher
