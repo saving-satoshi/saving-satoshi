@@ -339,7 +339,7 @@ const translations = {
       paragraph_nine:
         'This might take some time. But this shows you how hard it is to mine blocks and confirm transactions.',
       paragraph_ten:
-        'Wow! That took quite a bit of computing power to do all that hashing. Just look how many nonces were tried!  It really helped to have that boost in hash power, the number of hashes your computer can try in a second.',
+        'Wow! That took quite a bit of computing power to do all that hashing. Just look how many nonces were tried!  It really helped to have that boost in hash power i.e. the number of hashes your computer can try in a second.',
       paragraph_eleven:
         'As expected, since each block contains 3,500 transactions, a total of 3,500,000 transactions have been confirmed by the 1,000 blocks that were mined.',
       paragraph_twelve:

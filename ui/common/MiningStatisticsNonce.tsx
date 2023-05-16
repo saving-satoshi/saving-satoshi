@@ -76,9 +76,9 @@ export default function MiningStatisticNonce({
               {formatHash(hash, 4, 4, 64, 1, true)}
             </div>
             <Icon
-              icon="Cross"
+              icon="cross"
               title="Hash does not have 10 leading zeroes"
-              className="h-8 w-8 py-2"
+              className="h-8 w-8 py-2 text-[#E3941D]"
             />
           </div>
         )}
@@ -89,7 +89,7 @@ export default function MiningStatisticNonce({
           <div className="flex  w-[76px] overflow-hidden font-space-mono text-[6px] !text-[#5DBC59]">
             {formatHash(finalHash, 4, 4, 64, 0, true)}
           </div>
-          <Icon icon="greenCheck" className="h-8 w-8 py-2" />
+          <Icon icon="greenCheck" className="h-8 w-8 py-2 text-[#5DBC59]" />
         </div>
       )}
     </div>
