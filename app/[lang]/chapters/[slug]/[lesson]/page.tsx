@@ -17,7 +17,7 @@ import { useProgressContext } from 'providers/ProgressProvider'
 import { Loader } from 'shared'
 import { LoadingState } from 'types'
 import { notFound } from 'next/navigation'
-import ClientOnly from 'components/ClientOnly'
+import Client from 'components/Client'
 
 export default function Page({ params }) {
   const searchParams = navigation.useSearchParams()
@@ -58,11 +58,11 @@ export default function Page({ params }) {
     const title = lesson ? t(lesson.metadata.title) : 'Page not found'
 
     return (
-      <ClientOnly>
+      <Client>
         <head>
           <title>{`${title} - Saving Satoshi`}</title>
         </head>
-      </ClientOnly>
+      </Client>
     )
   }
 

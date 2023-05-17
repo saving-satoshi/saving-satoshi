@@ -7,7 +7,7 @@ import { PropsWithChildren, useEffect, useState } from 'react'
  * different than the initial hydration from the server. Examples are
  * when rendering things like times, which might be in a different timezone than the server
  */
-export default function ClientOnly({ children }: PropsWithChildren<unknown>) {
+export default function Client({ children }: PropsWithChildren<unknown>) {
   const [hasMounted, setHasMounted] = useState(false)
 
   useEffect(() => {
