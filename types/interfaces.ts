@@ -47,15 +47,20 @@ export interface AuthContextType {
 }
 
 export interface ProgressContextType {
-  progress: string | undefined
+  progress: string
   isLoading: boolean
   saveProgress: (key: string) => Promise<void>
   saveProgressLocal: (key: string) => Promise<void>
 }
 
+export interface ModalState {
+  open: boolean
+  meta: any
+}
+
 export interface ModalContextType {
-  modals: { [name: string]: boolean }
-  open: (name: string) => void
+  modals: { [name: string]: ModalState }
+  open: (name: string, meta?: any) => void
   close: (name: string) => void
 }
 

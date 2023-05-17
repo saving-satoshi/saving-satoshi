@@ -41,7 +41,7 @@ export default function SignIn({
   }
 
   function handleCreateClick() {
-    modals.open(Modal.SignUp)
+    modals.open(Modal.SignUp, { onSignUpComplete: false })
   }
 
   return (

@@ -5,7 +5,7 @@ import { ChapterIntro } from 'ui'
 import { Button } from 'shared'
 
 export const metadata = {
-  title: 'chapter_two.hashing_one.title',
+  title: 'chapter_two.hashing_five.title',
   key: 'CH2HSH5',
 }
 

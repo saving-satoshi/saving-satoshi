@@ -43,7 +43,6 @@ export default function InputChallenge({
   useEffect(() => {
     if (!userInput && !success) {
       setSuccess(null)
-      console.log('1')
     } else if (
       userInput &&
       !success &&
@@ -53,14 +52,11 @@ export default function InputChallenge({
     ) {
       setSuccess(false)
       setUserHint(true)
-      console.log('2')
     } else if (userInput && !success && !answer.startsWith(userInput)) {
       setSuccess(false)
       setUserHint(false)
-      console.log('3')
     } else if (userInput === answer) {
       setSuccess(true)
-      console.log('4')
     }
   }, [answer, userInput])
 

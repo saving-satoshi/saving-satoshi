@@ -3,6 +3,7 @@ const translations = {
     next: 'Continue',
     start: 'Start',
     copy: 'Copy',
+    copy_acknowledged: 'Copied!',
     about: 'About',
     chapter: 'Chapter',
     chapters: 'Chapters',
@@ -31,11 +32,9 @@ const translations = {
     project: {
       title: 'Built with fun',
       paragraph_one:
-        'Saving Satoshi is a light-hearted first point of contact for developers who are curious about bitcoin development. Saving Satoshi has a mix of technical text and code-based challenges, but the challenges should be doable for anyone with basic coding skills. The project is free and open source and all the art has been generated using text-to-image (aka AI) tools like Midjourney.',
+        'Saving Satoshi is a light-hearted first point of contact for coders who are curious about Bitcoin development. Saving Satoshi has a mix of technical text and code-based challenges, but the challenges should be doable for anyone with basic coding skills. The project is free and open source (FOSS) and all the art has been generated using text-to-image tools like Midjourney.',
       paragraph_two:
-        'This version of the project is currently in a demo state with a goal of getting feedback on the overall experience and providing a proof of concept for early users. In light of this, user progress is stored locally in the browser and the story along with images are not finalized.',
-      paragraph_three:
-        'Based on the feedback we receive, we will then work towards an official release (we call it V1) that includes 2-3 full lesson chapters, accounts, and more. 10 chapters are planned out and will be released over time as they are completed. Additional features may include collaborative learning, badges, extra-challenging side quests, and more.',
+        'This project is in continuous development and takes an iterative approach to incorporate feedback as we release new chapters. There are currently ten chapters mapped out. However more may be added as the project continues to grow.',
     },
 
     contributing: {
@@ -46,7 +45,7 @@ const translations = {
       feedback: {
         title: 'Feedback',
         paragraph_one:
-          'A really great way to contribute is to go through Chapter 1 and give us any feedback on the overall experience you might have using this form.',
+          'A great way to contribute is to go through Chapter 1 and give us any feedback on the overall experience you might have using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this form</a>.',
       },
 
       contribute: {
@@ -155,7 +154,7 @@ const translations = {
       paragraph_one:
         'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
       paragraph_two:
-        '1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">here</Link> to look at a specific transaction.',
+        '1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" className="underline">here</Link> to look at a specific transaction.',
       paragraph_three:
         '2. Open up the details and find the part that is of type “OP_RETURN”.',
       paragraph_four:
@@ -192,7 +191,7 @@ const translations = {
     outro_two: {
       title: 'You did it!!!',
       description:
-        'Amazing. You completed the first chapter and learned a lot about bitcoin. Follow us at <Link href="https://twitter.com/savingsatoshi" className="underline">@savingsatoshi</Link> to know when we launch new chapters and challenges.',
+        'Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go? Share your <Link href="https://forms.gle/WhdJwcKKetB9sFL79" className="underline">feedback</Link>',
     },
 
     end: {
@@ -244,6 +243,8 @@ const translations = {
       title: 'Zeroes',
       heading: 'Enter Anything',
       return_hash: 'Below you will see your input converted to a hash',
+      progress_message: 'Keep going...',
+      success_message: 'Alright, nice work playing around. Let’s move on.',
     },
 
     hashing_three: {
@@ -269,7 +270,7 @@ const translations = {
       hint_prompt:
         'Need a <Tooltip id="hint_prompt" position="bottom" offset="-1" content="chapter_two.hashing_four.hint_tooltip" className="underline">hint</Tooltip>?',
       hint_tooltip:
-        '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="cursor-pointer whitespace-nowrap bg-black/20 text-transparent hover:text-white">popcorn</span>',
+        '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">popcorn</span>',
     },
 
     hashing_five: {
@@ -286,12 +287,12 @@ const translations = {
       hint_prompt:
         'Need a <Tooltip id="hint_prompt" position="bottom" offset="-1" content="chapter_two.hashing_six.hint_tooltip" className="underline">hint</Tooltip>?',
       hint_tooltip:
-        '<span className="text-m whitespace-nowrap leading-none text-white/50">Answer:</span> <span className="cursor-pointer whitespace-nowrap bg-black/20 text-transparent hover:text-white">trigonometry</span>',
+        '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">trigonometry</span>',
     },
 
     scripting_one: {
       title: 'Automation',
-      heading: 'Let’s make the computem do this for us.',
+      heading: 'Let’s make the computer do this for us.',
       paragraph_one:
         'OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.',
       paragraph_two:
@@ -309,6 +310,16 @@ const translations = {
       paragraph_two:
         'When you press “Run the script”, the findHash function will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce.',
       success: 'Five zeroes! That’s it!',
+    },
+    outro_one: {
+      title: 'Outro',
+      heading: 'Great Job!',
+      paragraph_one:
+        'The machines roar to life. Everything seems to be working. A map appears on the computer that appears to show the locations of other warehouses filled with ASICs that have come back to life across the world.',
+      paragraph_two: 'HOLOCAT: “Look, there’s a message.”',
+      paragraph_three:
+        '“Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto',
+      paragraph_four: 'Him again?',
     },
   },
 
@@ -362,12 +373,14 @@ const translations = {
   chapter: {
     chapter_locked_one: 'Complete Chapter',
     chapter_locked_two: 'to unlock.',
+    description:
+      'Explore the mysteries of Satoshi and learn about Bitcoin along the way.',
   },
 
   hero: {
     title: 'Saving Satoshi',
     description: 'Code your way through the mysteries of bitcoin.',
-    start_journey: 'Start the demo',
+    start_journey: 'Start',
     tell_more: 'Tell me more',
   },
 
@@ -401,22 +414,18 @@ const translations = {
   },
 
   modal_signup: {
-    heading: 'Create an account',
+    heading: 'Want to save your progress',
     paragraph_one:
-      'At Saving Satoshi, private keys are used as accounts. You have the option to generate a private key here, or you can enter your own.',
+      'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.',
     subheading_one: 'Choose an avatar',
-    subheading_two: 'Your private key',
+    subheading_two: 'Back up your personal code',
     generate:
-      'If you lose your private key, you lose access to your account. Make sure you store it somewhere save.',
-    input:
-      'If you lose your private key, you lose access to your account. Make sure you store it somewhere save.',
-    confirm: 'Create account',
-    acknowledge_copy: 'I acknowledge to have copied and stored my private key.',
+      'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
+    confirm: 'Done',
   },
 
-  demo_disclaimer: {
-    title: 'This is a demo',
-    description: `We are still in the early stages of this project. Chapter 1 is functional, the rest is in development. Give it a try and let us know what you think, we'd love <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">your feedback</Link>.`,
+  disclaimer: {
+    description: `We’re excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>.`,
   },
 
   hasher: {

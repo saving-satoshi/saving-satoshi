@@ -14,11 +14,15 @@ export default function Address() {
   const lessonId = isLessonRoute ? pathData.pop() : undefined
   const chapterId = pathData.pop()
 
-  if (!chapterId) {
+  if (!chapterId || !(chapterId in chapters)) {
     return null
   }
 
-  const chapter = chapters[chapterId]?.metadata
+  if (!lessonId || !(lessonId in lessons)) {
+    return null
+  }
+
+  const chapter = chapters[chapterId].metadata
   const chapterLessons = lessons[chapterId]
   const lesson = chapterLessons[lessonId]?.metadata
 
