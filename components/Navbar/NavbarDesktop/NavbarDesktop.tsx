@@ -10,7 +10,7 @@ import UserButton from '../UserButton'
 import Link from 'next/link'
 import HelpLink from '../HelpLink'
 import Icon from 'shared/Icon'
-import { themeSwitch } from 'lib/themeSwitch'
+import { themeSelector } from 'lib/themeSelector'
 
 export default function NavbarDesktop({ params }) {
   const routes = useLocalizedRoutes()
@@ -19,7 +19,7 @@ export default function NavbarDesktop({ params }) {
 
   const { slug, lesson: lessonId } = params
 
-  const theme = themeSwitch(lessons, lessonId, chapters, slug)
+  const theme = themeSelector(lessons, lessonId, chapters, slug)
 
   return (
     <div className={clsx('left-0 top-0 hidden w-full md:block', theme)}>
