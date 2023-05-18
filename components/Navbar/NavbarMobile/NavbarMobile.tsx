@@ -41,7 +41,7 @@ export default function NavbarMobile({ params }) {
     'bg-back'
 
   return (
-    <div className={`${theme} z-10 w-full md:hidden`}>
+    <div className={clsx('z-10 w-full md:hidden', theme)}>
       <div className="flex items-stretch border-b border-white/80 text-white">
         <div className="flex">
           <Link

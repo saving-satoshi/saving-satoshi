@@ -13,11 +13,10 @@ export default function Intro({
 }) {
   return (
     <div
-      className={`${className} grid w-full grid-cols-1 justify-center justify-items-center md:my-auto`}
-      /*{
-          'my-auto': mobileCentered,
-          'my-8': !mobileCentered,
-        }*/
+      className={clsx(
+        'grid w-full grid-cols-1 justify-center justify-items-center md:my-auto',
+        className
+      )}
     >
       <div className="flex w-full justify-center px-6 text-white lg:w-1/2 lg:px-0">
         <div className="content-center justify-items-center px-1 font-nunito">
