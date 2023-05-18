@@ -33,7 +33,7 @@ export default function End({
   }
 
   return (
-    <div className="fixed h-screen w-screen flex-col">
+    <div>
       <Image
         src={image}
         alt={t('chapter_two.title')}
