@@ -29,13 +29,13 @@ export default function ScriptingChallenge({
   lang,
   config,
   successMessage,
-  languageCopy,
+  onSelectLanguage,
 }: {
   children?: React.ReactNode
   lang: string
   config: EditorConfig
   successMessage: string
-  languageCopy: any
+  onSelectLanguage: (language: string) => void
 }) {
   const [code, setCode] = useState(
     config.languages[config.defaultLanguage].defaultCode
@@ -51,7 +51,7 @@ export default function ScriptingChallenge({
   const handleSetLanguage = (value) => {
     if (!challengeSuccess) {
       setLanguage(value)
-      languageCopy(value)
+      onSelectLanguage(value)
       setCode(config.languages[value].defaultCode)
     }
   }

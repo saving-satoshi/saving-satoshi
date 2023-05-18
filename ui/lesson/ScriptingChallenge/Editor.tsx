@@ -36,24 +36,8 @@ export default function Editor({
       colors: {
         'editor.background': '#00000000',
         'editor.lineHighlightBorder': '#00000000', // 4th channel is for transparency
-        // 'editor.selectionBackground': '#ff0000',
-        // 'editor.lineHighlightBackground': '#ff0000',
-        // 'editor.selectionHighlightBorder': '#ff0000',
       },
     })
-
-    /* Define custom types */
-    // monaco.languages.typescript.javascriptDefaults.addExtraLib(
-    //   [
-    //     'declare const Facts = {',
-    //     '    /**',
-    //     '     * Returns the next fact',
-    //     '     */',
-    //     '    static next():string',
-    //     '}',
-    //   ].join('\n'),
-    //   'filename/facts.d.ts'
-    // )
   }
 
   const handleMount = (editor, monaco) => {
