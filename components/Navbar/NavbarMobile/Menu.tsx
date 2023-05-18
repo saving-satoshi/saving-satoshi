@@ -19,7 +19,7 @@ export default function Menu(props) {
         'absolute z-10 w-full bg-back duration-[400ms]',
         `${theme}`,
         {
-          'h-screen-excluding-navbar-mobile': props.isOpen,
+          'h-full': props.isOpen,
           'h-0 delay-200': !props.isOpen,
         }
       )}
