@@ -24,6 +24,9 @@ export default function NavbarDesktop({ params }) {
     chapters[slug]?.metadata.theme ??
     'bg-back'
 
+  const isChapterEnd =
+    Object.entries(lessons?.[slug]).pop()?.[0].toString() === lessonId
+
   return (
     <div className={clsx('z-10 hidden w-full md:block', theme)}>
       <div className="flex h-[70px] items-stretch justify-between border-b border-white/80 text-white">
@@ -42,9 +45,11 @@ export default function NavbarDesktop({ params }) {
           <Address />
         </div>
         <nav className="flex items-center">
-          <TabGroup params={params} />
-          <HelpLink params={params} />
-          <UserButton />
+          {!isChapterEnd && <TabGroup params={params} />}
+          {!isChapterEnd && <HelpLink params={params} />}
+          <span className="flex h-full items-center border-l border-white/25">
+            <UserButton />
+          </span>
         </nav>
       </div>
     </div>

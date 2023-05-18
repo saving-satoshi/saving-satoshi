@@ -40,6 +40,9 @@ export default function NavbarMobile({ params }) {
     chapters[slug]?.metadata.theme ??
     'bg-back'
 
+  const isChapterEnd =
+    Object.entries(lessons?.[slug]).pop()?.[0].toString() === lessonId
+
   return (
     <div className={clsx('z-10 w-full md:hidden', theme)}>
       <div className="flex items-stretch border-b border-white/80 text-white">
@@ -69,10 +72,12 @@ export default function NavbarMobile({ params }) {
             'bg-opacity-20': isOpen,
           })}
         >
-          <HamburgerMenu isOpen={isOpen} clicked={handleButtonClick} />
+          {!isChapterEnd && (
+            <HamburgerMenu isOpen={isOpen} clicked={handleButtonClick} />
+          )}
         </div>
-        <div className="flex items-center">
-          <HelpLink params={params} />
+        <div className="flex items-center border-l border-white/25">
+          {!isChapterEnd && <HelpLink params={params} />}
           <UserButton />
         </div>
       </div>
