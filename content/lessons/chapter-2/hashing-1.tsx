@@ -15,7 +15,7 @@ export default function Hashing1({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <ChapterIntro>
+    <ChapterIntro className="my-8">
       <p className="mt-2 text-lg md:text-xl">
         {t('chapter_two.hashing_one.paragraph_one')}
       </p>

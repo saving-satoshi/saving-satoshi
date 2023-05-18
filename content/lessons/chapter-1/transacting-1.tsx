@@ -14,7 +14,10 @@ export default function Transacting1({ lang }) {
   const saveAndProceed = useSaveAndProceed()
 
   return (
-    <ChapterIntro heading={t('chapter_one.transacting_one.heading')}>
+    <ChapterIntro
+      className="my-8"
+      heading={t('chapter_one.transacting_one.heading')}
+    >
       <p className="mt-2 text-lg md:text-xl">
         {t('chapter_one.transacting_one.paragraph_one')}
       </p>

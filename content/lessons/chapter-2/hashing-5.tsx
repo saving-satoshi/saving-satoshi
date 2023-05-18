@@ -14,7 +14,7 @@ export default function Hashing5({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <ChapterIntro mobileCentered>
+    <ChapterIntro className="my-auto">
       <p className="mt-2 w-full text-center text-xl font-bold sm:w-[28rem] md:text-2xl">
         {t('chapter_two.hashing_five.heading')}
       </p>
