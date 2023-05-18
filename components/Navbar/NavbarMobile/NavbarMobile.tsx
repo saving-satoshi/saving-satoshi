@@ -20,6 +20,11 @@ export default function NavbarMobile({ params }) {
   const [isOpen, setIsOpen] = useState(false)
 
   function handleButtonClick() {
+    if (!isOpen) {
+      document.body.classList.add('overflow-y-hidden')
+    } else {
+      document.body.classList.remove('overflow-y-hidden')
+    }
     setIsOpen(!isOpen)
   }
 
@@ -36,7 +41,7 @@ export default function NavbarMobile({ params }) {
     'bg-back'
 
   return (
-    <div className={`${theme} w-full md:hidden`}>
+    <div className={`${theme} z-10 w-full md:hidden`}>
       <div className="flex items-stretch border-b border-white/80 text-white">
         <div className="flex">
           <Link

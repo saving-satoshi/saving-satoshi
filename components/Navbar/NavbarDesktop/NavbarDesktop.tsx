@@ -25,7 +25,7 @@ export default function NavbarDesktop({ params }) {
     'bg-back'
 
   return (
-    <div className={`${theme} hidden w-full md:block`}>
+    <div className={`${theme} z-10 hidden w-full md:block`}>
       <div className="flex h-[70px] items-stretch justify-between border-b border-white/80 text-white">
         <div className="flex">
           <Link
