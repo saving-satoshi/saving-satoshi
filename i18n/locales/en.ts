@@ -308,18 +308,22 @@ const translations = {
         'Alright, time to write and run your own code. Write a function that returns a sha256 hash. The code should calculate and return a hash based on the nonce argument.',
       paragraph_two:
         'When you press "Run the script", the function you wrote will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce. We are trying to run this function until we find a hash that starts with five zeroes (“00000”).',
-      python_paragraph_three:
-        'We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
-      javascript_paragraph_three:
-        'We are using the crypto library in javascript to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
-      python_list_one:
-        '<Link href="https://docs.python.org/3/library/hashlib.html" className="underline">hashlib documentation</Link>',
-      python_list_two:
-        '<Link href="https://datagy.io/python-sha256/" className="underline">Tutorial python function</Link>',
-      javascript_list_one:
-        '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" className="underline">crypto documentation</Link>',
-      javascript_list_two:
-        '<Link href="https://www.educative.io/answers/what-is-node-cryptocreatehashalgorithm-options" className="underline">Tutorial javascript function</Link>',
+      python: {
+        paragraph_three:
+          'We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
+        list_one:
+          '<Link href="https://docs.python.org/3/library/hashlib.html" className="underline">hashlib documentation</Link>',
+        list_two:
+          '<Link href="https://datagy.io/python-sha256/" className="underline">Tutorial python function</Link>',
+      },
+      javascript: {
+        paragraph_three:
+          'We are using the crypto library in javascript to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
+        list_one:
+          '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" className="underline">crypto documentation</Link>',
+        list_two:
+          '<Link href="https://www.educative.io/answers/what-is-node-cryptocreatehashalgorithm-options" className="underline">Tutorial javascript function</Link>',
+      },
       success: 'Five zeroes! That’s it!',
     },
     outro_one: {

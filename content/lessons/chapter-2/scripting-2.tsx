@@ -127,7 +127,7 @@ export default function Scripting2({ lang }) {
 
   const [language, setLanguage] = useState(config.defaultLanguage)
 
-  const handleLanguageCopy = (language) => {
+  const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
 
@@ -136,7 +136,7 @@ export default function Scripting2({ lang }) {
       lang={lang}
       config={config}
       successMessage={t('chapter_two.scripting_two.success')}
-      languageCopy={handleLanguageCopy}
+      onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>
         <Text className="font-nunito text-xl text-white">
@@ -146,14 +146,14 @@ export default function Scripting2({ lang }) {
           {t('chapter_two.scripting_two.paragraph_two')}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_two.scripting_two.${language}_paragraph_three`)}
+          {t(`chapter_two.scripting_two.${language}.paragraph_three`)}
         </Text>
         <ul className="list-disc pl-4">
           <li className="mt-4 font-nunito text-xl text-white">
-            {t(`chapter_two.scripting_two.${language}_list_one`)}
+            {t(`chapter_two.scripting_two.${language}.list_one`)}
           </li>
           <li className="mt-4 font-nunito text-xl text-white">
-            {t(`chapter_two.scripting_two.${language}_list_two`)}
+            {t(`chapter_two.scripting_two.${language}.list_two`)}
           </li>
         </ul>
       </LessonInfo>
