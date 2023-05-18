@@ -9,7 +9,7 @@ import Icon from 'shared/Icon'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { lessons, chapters } from 'content'
 import { getLessonKey } from 'lib/progress'
-import { themeSwitch } from 'lib/themeSwitch'
+import { themeSelector } from 'lib/themeSelector'
 import { useProgressContext } from 'providers/ProgressProvider'
 import useLessonStatus from 'hooks/useLessonStatus'
 
@@ -26,7 +26,7 @@ export default function Tab({
 }) {
   const { slug, lesson: lessonId } = params
 
-  const theme = themeSwitch(lessons, lessonId, chapters, slug)
+  const theme = themeSelector(lessons, lessonId, chapters, slug)
 
   const routes = useLocalizedRoutes()
   const lang = useLang()
