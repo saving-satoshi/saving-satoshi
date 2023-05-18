@@ -21,10 +21,10 @@ export default function Modal({
 
   return (
     <div
-      className="modal-backdrop fixed inset-0 z-10 flex items-center justify-center bg-overlayColor"
+      className="modal-backdrop fixed inset-0 z-10 flex items-center justify-center overflow-y-auto bg-overlayColor"
       onClick={handleClick}
     >
-      <div className="h-full w-screen transform bg-back p-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:w-[550px] sm:rounded-lg sm:pt-5">
+      <div className="h-full w-screen transform overflow-y-auto bg-back p-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:w-[550px] sm:rounded-lg sm:pt-5">
         {children}
       </div>
     </div>
