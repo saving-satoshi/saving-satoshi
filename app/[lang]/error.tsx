@@ -40,7 +40,9 @@ export default function Error({
         </h2>
 
         <div className=" mt-8 w-full text-center font-cbrush text-2xl md:w-auto">
-          <Button href="/">{t('error.back_safety')}</Button>
+          <Button onClick={() => window.location.reload()}>
+            {t('error.reload')}
+          </Button>
         </div>
       </div>
     </div>
