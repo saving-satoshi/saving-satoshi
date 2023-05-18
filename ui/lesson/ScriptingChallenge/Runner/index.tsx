@@ -254,7 +254,15 @@ export default function Runner({
             )}
             onClick={handleRun}
           >
-            <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-white">
+            <div
+              className={clsx(
+                'flex h-6 w-6 items-center justify-center rounded-sm',
+                {
+                  'bg-white': !loading,
+                  'bg-white/50': loading,
+                }
+              )}
+            >
               <Icon icon="play" className="text-[#334454]" />
             </div>
 

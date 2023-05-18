@@ -87,9 +87,7 @@ run()
 }
 
 function parseError(error) {
-  console.log('compiler', error)
-  const pythonError = error.split('Error:')[1].split(' ')
-  pythonError.shift()
+  const pythonError = error.split('Error:')[1].toString()
   return pythonError
 }
 
