@@ -9,6 +9,7 @@ import Icon from 'shared/Icon'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { lessons, chapters } from 'content'
 import { getLessonKey } from 'lib/progress'
+import { themeSwitch } from 'lib/themeSwitch'
 import { useProgressContext } from 'providers/ProgressProvider'
 import useLessonStatus from 'hooks/useLessonStatus'
 
@@ -25,11 +26,7 @@ export default function Tab({
 }) {
   const { slug, lesson: lessonId } = params
 
-  //If theme was specified on lesson it should take priority over a theme that was specified on a chapter, otherwise fallback to bg-back
-  const theme =
-    lessons[slug]?.[lessonId]?.metadata.solidTheme ??
-    chapters[slug]?.metadata.solidTheme ??
-    'bg-back'
+  const theme = themeSwitch(lessons, lessonId, chapters, slug)
 
   const routes = useLocalizedRoutes()
   const lang = useLang()

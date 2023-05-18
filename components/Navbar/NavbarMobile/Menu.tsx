@@ -2,15 +2,12 @@ import React from 'react'
 import TabGroupMobile from 'components/Navbar/NavbarMobile/TabGroupMobile'
 import clsx from 'clsx'
 import { lessons, chapters } from 'content'
+import { themeSelector } from 'lib/themeSelector'
 
 export default function Menu(props) {
   const { slug, lesson: lessonId } = props.params
 
-  //If theme was specified on lesson it should take priority over a theme that was specified on a chapter, otherwise fallback to bg-back
-  const theme =
-    lessons[slug]?.[lessonId]?.metadata.solidTheme ??
-    chapters[slug]?.metadata.solidTheme ??
-    'bg-back'
+  const theme = themeSelector(lessons, lessonId, chapters, slug)
 
   return (
     <div

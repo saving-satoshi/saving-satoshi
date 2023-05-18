@@ -1,6 +1,7 @@
 'use client'
 
 import { useLocalizedRoutes, useTranslations, useLang } from 'hooks'
+import { chapters, lessons } from 'content'
 import Address from 'components/Navbar/Address'
 import UserButton from '../UserButton'
 import HamburgerMenu from './HamburgerMenu'
@@ -10,6 +11,7 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import HelpLink from '../HelpLink'
 import Icon from 'shared/Icon'
+import { themeSelector } from 'lib/themeSelector'
 
 export default function NavbarMobile({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
@@ -17,6 +19,10 @@ export default function NavbarMobile({ params }) {
   const t = useTranslations(lang)
 
   const [isOpen, setIsOpen] = useState(false)
+
+  const { slug, lesson: lessonId } = params
+
+  const theme = themeSelector(lessons, lessonId, chapters, slug)
 
   function handleButtonClick() {
     setIsOpen(!isOpen)
@@ -27,7 +33,7 @@ export default function NavbarMobile({ params }) {
   }
 
   return (
-    <div className="left-0 top-0 w-full md:hidden">
+    <div className={clsx('left-0 top-0 w-full md:hidden', theme)}>
       <div className="flex items-stretch border-b border-white/80 text-white">
         <div className="flex">
           <Link
