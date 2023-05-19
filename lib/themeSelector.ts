@@ -8,3 +8,16 @@ export const themeSelector = (lessons, lessonId, chapters, slug) => {
 
   return theme
 }
+
+export const navbarThemeSelector = (lessons, lessonId, chapters, slug) => {
+  const transparent =
+    lessons[slug]?.[lessonId]?.metadata.theme?.startsWith('bg-transparent')
+
+  const theme = transparent
+    ? lessons[slug]?.[lessonId]?.metadata.theme ??
+      chapters[slug]?.metadata.theme ??
+      'bg-back'
+    : 'bg-transparent'
+
+  return theme
+}

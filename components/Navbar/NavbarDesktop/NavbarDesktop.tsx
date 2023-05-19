@@ -10,7 +10,7 @@ import UserButton from '../UserButton'
 import Link from 'next/link'
 import HelpLink from '../HelpLink'
 import Icon from 'shared/Icon'
-import { themeSelector } from 'lib/themeSelector'
+import { navbarThemeSelector } from 'lib/themeSelector'
 
 export default function NavbarDesktop({ params }) {
   const routes = useLocalizedRoutes()
@@ -19,10 +19,7 @@ export default function NavbarDesktop({ params }) {
 
   const { slug, lesson: lessonId } = params
 
-  const theme = themeSelector(lessons, lessonId, chapters, slug)
-
-  const isChapterEnd =
-    Object.entries(lessons?.[slug]).pop()?.[0].toString() === lessonId
+  const theme = navbarThemeSelector(lessons, lessonId, chapters, slug)
 
   return (
     <div className={clsx('z-10 hidden w-full md:block', theme)}>
@@ -42,9 +39,9 @@ export default function NavbarDesktop({ params }) {
           <Address />
         </div>
         <nav className="flex items-center">
-          {!isChapterEnd && <TabGroup params={params} />}
-          {!isChapterEnd && <HelpLink params={params} />}
-          <span className="flex h-full items-center border-l border-white/25">
+          <TabGroup params={params} />
+          <HelpLink params={params} />
+          <span className="flex h-full items-center">
             <UserButton />
           </span>
         </nav>
