@@ -25,6 +25,11 @@ export default function NavbarMobile({ params }) {
   const theme = themeSelector(lessons, lessonId, chapters, slug)
 
   function handleButtonClick() {
+    if (!isOpen) {
+      document.body.classList.add('overflow-y-hidden')
+    } else {
+      document.body.classList.remove('overflow-y-hidden')
+    }
     setIsOpen(!isOpen)
   }
 
@@ -32,8 +37,11 @@ export default function NavbarMobile({ params }) {
     setIsOpen(false)
   }
 
+  const isChapterEnd =
+    Object.entries(lessons?.[slug]).pop()?.[0].toString() === lessonId
+
   return (
-    <div className={clsx('left-0 top-0 w-full md:hidden', theme)}>
+    <div className={clsx('z-10 w-full md:hidden', theme)}>
       <div className="flex items-stretch border-b border-white/80 text-white">
         <div className="flex">
           <Link
@@ -61,10 +69,12 @@ export default function NavbarMobile({ params }) {
             'bg-opacity-20': isOpen,
           })}
         >
-          <HamburgerMenu isOpen={isOpen} clicked={handleButtonClick} />
+          {!isChapterEnd && (
+            <HamburgerMenu isOpen={isOpen} clicked={handleButtonClick} />
+          )}
         </div>
-        <div className="flex items-center">
-          <HelpLink params={params} />
+        <div className="flex items-center border-l border-white/25">
+          {!isChapterEnd && <HelpLink params={params} />}
           <UserButton />
         </div>
       </div>

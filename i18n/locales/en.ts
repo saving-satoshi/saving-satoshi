@@ -190,7 +190,7 @@ const translations = {
     outro_two: {
       title: 'You did it!!!',
       description:
-        'Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go? Share your <Link href="https://forms.gle/WhdJwcKKetB9sFL79" className="underline">feedback</Link>',
+        'Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go? <Link href="https://forms.gle/WhdJwcKKetB9sFL79" className="underline">Share your feedback</Link>.',
     },
 
     end: {
@@ -230,12 +230,13 @@ const translations = {
       title: 'Zeroes',
       paragraph_one:
         'Either by chance, or because Holocat actually knew what he was doing, the computer turns the random letters and numbers he stepped on turn into... more random letters and numbers?',
-      paragraph_two:
-        '> QX23Y6VGECTTTTTTTTTTTTTTUB[P[pihof <br> > 1c31d1d9fb848a505fc0cdbea848ff1bdd46',
-      paragraph_three: 'The monitor displays "INCORRECT HASH. TRY AGAIN."',
-      paragraph_four:
+      list_one: '> QX23Y6VGECTUKSNIEUTUB[P[pihof',
+      list_two:
+        '> 1c31d1d9fb848a505fc0cdbea848ff1bdd46a9ed4d639d413d3a93035194eedf',
+      paragraph_two: 'The monitor displays "INCORRECT HASH. TRY AGAIN."',
+      paragraph_three:
         'Of course whatever gibberish Holocat typed was wrong. He’s just a holographic cat!',
-      paragraph_five: 'What happens if you type something different?',
+      paragraph_four: 'What happens if you type something different?',
     },
 
     hashing_two: {
@@ -276,7 +277,7 @@ const translations = {
       title: 'Zeroes',
       heading: 'That wasn’t too hard!',
       paragraph_one:
-        'Let’s make it a bit more tricky. try to find a hash <br> that starts with two zeroes ("00").',
+        'Let’s make it a bit more tricky. Try to find a hash that starts with two zeroes ("00").',
     },
 
     hashing_six: {
