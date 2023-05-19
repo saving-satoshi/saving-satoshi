@@ -25,7 +25,9 @@ export default function NavbarMobile({ params }) {
   const theme = !isOpen
     ? navbarThemeSelector(lessons, lessonId, chapters, slug)
     : lessons[slug]?.[lessonId]?.metadata.secondaryTheme ??
+      lessons[slug]?.[lessonId]?.metadata.theme ??
       chapters[slug]?.metadata.secondaryTheme ??
+      chapters[slug]?.metadata.theme ??
       'bg-back'
 
   function handleButtonClick() {
