@@ -14,7 +14,10 @@ export default function Scripting1({ lang }) {
   const saveAndProceed = useSaveAndProceed()
 
   return (
-    <ChapterIntro heading={t('chapter_two.scripting_one.heading')}>
+    <ChapterIntro
+      className="my-8"
+      heading={t('chapter_two.scripting_one.heading')}
+    >
       <p className="mt-2 text-lg md:text-xl">
         {t('chapter_two.scripting_one.paragraph_one')}
       </p>

@@ -1,14 +1,23 @@
+import clsx from 'clsx'
+
 import { Title } from 'ui'
 
 export default function Intro({
   children,
   heading,
+  className,
 }: {
   children: any
   heading?: string
+  className?: string
 }) {
   return (
-    <div className="my-auto grid w-full grid-cols-1 justify-center justify-items-center">
+    <div
+      className={clsx(
+        'grid w-full grid-cols-1 justify-center justify-items-center md:my-auto',
+        className
+      )}
+    >
       <div className="flex w-full justify-center px-6 text-white lg:w-1/2 lg:px-0">
         <div className="content-center justify-items-center px-1 font-nunito">
           {heading && <Title>{heading}</Title>}

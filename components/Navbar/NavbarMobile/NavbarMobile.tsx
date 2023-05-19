@@ -1,6 +1,7 @@
 'use client'
 
 import { useLocalizedRoutes, useTranslations, useLang } from 'hooks'
+import { chapters, lessons } from 'content'
 import Address from 'components/Navbar/Address'
 import UserButton from '../UserButton'
 import HamburgerMenu from './HamburgerMenu'
@@ -19,6 +20,11 @@ export default function NavbarMobile({ params }) {
   const [isOpen, setIsOpen] = useState(false)
 
   function handleButtonClick() {
+    if (!isOpen) {
+      document.body.classList.add('overflow-y-hidden')
+    } else {
+      document.body.classList.remove('overflow-y-hidden')
+    }
     setIsOpen(!isOpen)
   }
 
@@ -26,8 +32,19 @@ export default function NavbarMobile({ params }) {
     setIsOpen(false)
   }
 
+  const { slug, lesson: lessonId } = params
+
+  //If theme was specified on lesson it should take priority over a theme that was specified on a chapter, otherwise fallback to bg-back. In this case it is used to apply an opacity for transparent outro screens
+  const theme =
+    lessons[slug]?.[lessonId]?.metadata.theme ??
+    chapters[slug]?.metadata.theme ??
+    'bg-back'
+
+  const isChapterEnd =
+    Object.entries(lessons?.[slug]).pop()?.[0].toString() === lessonId
+
   return (
-    <div className="left-0 top-0 w-full md:hidden">
+    <div className={clsx('z-10 w-full md:hidden', theme)}>
       <div className="flex items-stretch border-b border-white/80 text-white">
         <div className="flex">
           <Link
@@ -55,10 +72,12 @@ export default function NavbarMobile({ params }) {
             'bg-opacity-20': isOpen,
           })}
         >
-          <HamburgerMenu isOpen={isOpen} clicked={handleButtonClick} />
+          {!isChapterEnd && (
+            <HamburgerMenu isOpen={isOpen} clicked={handleButtonClick} />
+          )}
         </div>
-        <div className="flex items-center">
-          <HelpLink params={params} />
+        <div className="flex items-center border-l border-white/25">
+          {!isChapterEnd && <HelpLink params={params} />}
           <UserButton />
         </div>
       </div>
