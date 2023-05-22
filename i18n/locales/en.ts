@@ -268,7 +268,7 @@ const translations = {
       heading:
         'Enter anything until you find a hash that starts with a zero (“0”)',
       hint_prompt:
-        'Need a <Tooltip id="hint_prompt" position="bottom" offset="-1" content="chapter_two.hashing_four.hint_tooltip" className="underline">hint</Tooltip>?',
+        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip" className="underline">hint</Tooltip>?',
       hint_tooltip:
         '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">popcorn</span>',
     },
@@ -285,7 +285,7 @@ const translations = {
       heading:
         'Enter anything until you find a hash that starts with two zeroes (“00”)',
       hint_prompt:
-        'Need a <Tooltip id="hint_prompt" position="bottom" offset="-1" content="chapter_two.hashing_six.hint_tooltip" className="underline">hint</Tooltip>?',
+        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip" className="underline">hint</Tooltip>?',
       hint_tooltip:
         '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">trigonometry</span>',
     },
