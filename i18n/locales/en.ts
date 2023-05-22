@@ -107,9 +107,9 @@ const translations = {
       title: 'Genesis',
       heading: 'Find the hidden message',
       paragraph_one:
-        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
       paragraph_two:
-        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
+        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
       paragraph_three: 'Copy that value and paste it in the code block.',
       tooltip_block_explorer:
         'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',

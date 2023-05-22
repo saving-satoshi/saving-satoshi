@@ -18,6 +18,7 @@ export const metadata = {
   title: 'chapter_two.title',
   image: '/assets/images/chapter-2-cover.jpg',
   theme: 'bg-gradient-to-tl from-[#7b1810] to-[#432a43]',
+  secondaryTheme: 'bg-[#5e212a]',
   intros: ['intro-1', 'intro-2'],
   lessons: [
     'hashing-1',
