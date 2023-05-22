@@ -15,7 +15,10 @@ export default function Genesis1({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <ChapterIntro heading={t('chapter_one.genesis_one.heading')}>
+    <ChapterIntro
+      className="my-8"
+      heading={t('chapter_one.genesis_one.heading')}
+    >
       <p className="mt-2 text-lg md:text-xl">
         {t('chapter_one.genesis_one.paragraph_one')}
       </p>

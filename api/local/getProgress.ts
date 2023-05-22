@@ -2,11 +2,13 @@ import { defaultProgressContext } from 'providers/ProgressProvider'
 
 export default async function getProgressLocal(): Promise<string> {
   try {
-    const res = localStorage.getItem('SavingSatoshiProgress')
+    const progress = localStorage.getItem('SavingSatoshiProgress')
 
-    if (!res) {
+    if (!progress) {
       throw new Error('Could not read progress from LocalStorage')
     }
+
+    const res = progress.replace(/['"]/g, '')
 
     return res
   } catch (errors) {

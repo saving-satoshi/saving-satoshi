@@ -18,7 +18,7 @@ export default function Disclaimer() {
         </p>
       </div>
 
-      <div className="mx-4 mb-0 lg:mx-auto lg:mb-20 lg:w-9/12 2xl:w-1/2">
+      <div className="mx-4 mb-6 lg:mx-auto lg:mb-20 lg:w-9/12 2xl:w-1/2">
         <p className="text-center font-nunito text-lg text-white">
           {t('disclaimer.description')}
         </p>
