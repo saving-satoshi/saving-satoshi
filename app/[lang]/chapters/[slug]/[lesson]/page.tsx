@@ -104,8 +104,8 @@ export default function Page({ params }) {
     getLessonKey(pathData.chapterId, pathData.lessonId)
   )
   const isRestrictedFromLesson = !isLessonCompleted(
-    getLessonKey(pathData.chapterId, pathData.lessonId),
-    progress
+    progress,
+    getLessonKey(pathData.chapterId, pathData.lessonId)
   )
 
   if (
