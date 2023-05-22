@@ -311,6 +311,49 @@ const translations = {
         'When you press “Run the script”, the findHash function will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce.',
       success: 'Five zeroes! That’s it!',
     },
+
+    mining_one: {
+      title: 'Into the mine',
+      heading_one: 'Now that we know how mining works, let’s see it in action',
+      heading_two: 'You’re mining now',
+      heading_three: 'Nice work!',
+      heading_four: 'Let’s get to 1,000 blocks',
+      heading_five: 'You did it!',
+      paragraph_one:
+        'Right now, the Bitcoin network requires blocks to have a hash with ten leading zeros. Let’s get to it!',
+      paragraph_two:
+        'For this simple simulation, we’ll just assume that every block contains 3,500 transactions.',
+      paragraph_two_one: 'See if you can turn on the miners.',
+      paragraph_three:
+        'The code you wrote in the previous lesson to compute hashes over and over again is running.',
+      paragraph_four:
+        'It will stop once it’s found a hash with ten leading zeroes.',
+      paragraph_five:
+        'See the nonce field incrementing? That’s how many hashes you have tried so far!',
+      paragraph_six: 'With the following nonce:',
+      paragraph_seven: 'The resulting hash is:',
+      paragraph_eight:
+        'It has the ten leading zeros that all new blocks require. Let’s mine a few more blocks.',
+      paragraph_eight_one: 'Turn the miners back on.',
+      paragraph_nine:
+        'This might take some time. But this shows you how hard it is to mine blocks and confirm transactions.',
+      paragraph_ten:
+        'Wow! That took quite a bit of computing power to do all that hashing. Just look how many nonces were tried!  It really helped to have that boost in hash power i.e. the number of hashes your computer can try in a second.',
+      paragraph_eleven:
+        'As expected, since each block contains 3,500 transactions, a total of 3,500,000 transactions have been confirmed by the 1,000 blocks that were mined.',
+      paragraph_twelve:
+        'And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. ',
+      paragraph_thirteen:
+        'In the early days of bitcoin, it was possible to mine with your average computer, just like we did in this simulation.',
+      paragraph_fourteen:
+        'Today, miners use a special type of chip called an Application-Specific Integrated Circut, or ASIC for short. Nowadays, people buy machines with ASICs that are dedicated to just mining! This explains all the machines in the Vanderpoole family collection.',
+      progress_bar_title: 'Blocks found',
+      progress_bar_one: 'Nonce',
+      progress_bar_two: 'Hashes per second',
+      progress_bar_three: 'Transactions confirmed',
+      progress_bar_four: 'Bitcoin earned',
+      button_hash: '10x hash power, please',
+    },
     outro_one: {
       title: 'Outro',
       heading: 'Great Job!',
@@ -322,7 +365,6 @@ const translations = {
       paragraph_four: 'Him again?',
     },
   },
-
   chapter_three: {
     title: 'Claiming your rewards',
     paragraph_one:
