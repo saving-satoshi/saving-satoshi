@@ -35,6 +35,7 @@ export default function ProgressProvider({
     try {
       setIsLoading(true)
       const progress = await getProgress()
+      console.log(progress)
       setAccountProgress(progress)
     } catch (ex) {
       console.error(ex)
@@ -47,6 +48,7 @@ export default function ProgressProvider({
     try {
       setIsLoading(true)
       const progress = await getProgressLocal()
+      console.log(progress)
       setAccountProgress(progress)
     } catch (ex) {
       console.error(ex)

@@ -4,6 +4,7 @@ import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
+import { getLessonKey } from 'lib/progress'
 
 export const metadata = {
   title: 'chapter_two.scripting_one.title',
@@ -125,6 +126,7 @@ export default function Scripting2({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
+      lessonKey={getLessonKey('chapter-2', 'scripting-2')}
       successMessage={t('chapter_two.scripting_two.success')}
     >
       <LessonInfo>

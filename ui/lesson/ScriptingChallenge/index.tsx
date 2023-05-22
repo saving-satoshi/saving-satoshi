@@ -8,6 +8,8 @@ import Runner from './Runner'
 import { EditorConfig, LessonDirection } from 'types'
 import { Lesson, LessonTabs } from 'ui'
 import { useMediaQuery } from 'hooks'
+import { useProgressContext } from 'providers/ProgressProvider'
+import { useAuthContext } from 'providers/AuthProvider'
 
 const tabData = [
   {
@@ -27,14 +29,18 @@ const tabData = [
 export default function ScriptingChallenge({
   children,
   lang,
+  lessonKey,
   config,
   successMessage,
 }: {
   children?: React.ReactNode
   lang: string
+  lessonKey: string
   config: EditorConfig
   successMessage: string
 }) {
+  const { saveProgress, saveProgressLocal } = useProgressContext()
+  const { account } = useAuthContext()
   const [code, setCode] = useState(
     config.languages[config.defaultLanguage].defaultCode
   )
@@ -66,7 +72,11 @@ export default function ScriptingChallenge({
     const success = await config.languages[language].validate(answer)
 
     if (success) {
-      console.log('challenge complete')
+      if (account) {
+        saveProgress(lessonKey)
+      } else {
+        saveProgressLocal(lessonKey)
+      }
     }
 
     return success
