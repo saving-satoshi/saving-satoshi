@@ -5,6 +5,7 @@ import { ProgressContextType } from 'types'
 import { getProgress, setProgress } from 'api/progress'
 import { getProgressLocal, setProgressLocal } from 'api/local'
 import { useAuthContext } from './AuthProvider'
+import { keys } from 'lib/progress'
 
 export const defaultProgressContext = {
   progress: 'CH1INT1',
@@ -56,26 +57,32 @@ export default function ProgressProvider({
   }
 
   const saveProgress = async (key: string) => {
-    try {
-      setSavePending(true)
-      setAccountProgress(key)
-      await setProgress(key)
-    } catch (ex) {
-      console.error(ex)
-    } finally {
-      setSavePending(false)
+    const progress = await getProgress()
+    if (keys.indexOf(progress) < keys.indexOf(key)) {
+      try {
+        setSavePending(true)
+        setAccountProgress(key)
+        await setProgress(key)
+      } catch (ex) {
+        console.error(ex)
+      } finally {
+        setSavePending(false)
+      }
     }
   }
 
   const saveProgressLocal = async (key: string) => {
-    try {
-      setSavePending(true)
-      setAccountProgress(key)
-      await setProgressLocal(key)
-    } catch (ex) {
-      console.error(ex)
-    } finally {
-      setSavePending(false)
+    const progress = await getProgressLocal()
+    if (keys.indexOf(progress) < keys.indexOf(key)) {
+      try {
+        setSavePending(true)
+        setAccountProgress(key)
+        await setProgressLocal(key)
+      } catch (ex) {
+        console.error(ex)
+      } finally {
+        setSavePending(false)
+      }
     }
   }
 
