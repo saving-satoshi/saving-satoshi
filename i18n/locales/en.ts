@@ -210,7 +210,7 @@ const translations = {
     intro_one: {
       title: 'Hashing out a plan',
       paragraph_one:
-        'HOLOCAT: “Boy, what a dump. This place had better store some sardines or dried fish. I’d even settle for some e-nip.',
+        'HOLOCAT: “Boy, what a dump. This place had better store some sardines or dried fish. I’d even settle for some e-nip."',
       paragraph_two:
         'You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.',
       paragraph_three:
@@ -358,7 +358,7 @@ const translations = {
       title: 'Outro',
       heading: 'Great Job!',
       paragraph_one:
-        'The machines roar to life. Everything seems to be working. A map appears on the computer that appears to show the locations of other warehouses filled with ASICs that have come back to life across the world.',
+        'The machines roar to life. Everything seems to be working. A map appears on the computer that shows the locations of other warehouses filled with ASICs that have come online across the world. Looks like they were activated when you completed the mining challenge!',
       paragraph_two: 'HOLOCAT: “Look, there’s a message.”',
       paragraph_three:
         '“Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto',
