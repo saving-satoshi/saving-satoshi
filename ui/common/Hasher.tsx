@@ -18,14 +18,12 @@ export default function Hasher({
 }) {
   const [success, setSuccess] = useState(false)
   const [hash, setHash] = useState('')
-  const [hashColor, setHashColor] = useState(false)
 
   const handleHash = (input) => {
     if (input) {
       const bitArray = sjcl.hash.sha256.hash(input)
       setHash(sjcl.codec.hex.fromBits(bitArray))
       if (typeof answer === 'number') {
-        setHashColor(true)
       } else if (
         typeof answer === 'string' &&
         hash &&
@@ -34,7 +32,6 @@ export default function Hasher({
         setSuccess(true)
       } else {
         setSuccess(false)
-        setHashColor(false)
       }
     } else {
       setHash('')
