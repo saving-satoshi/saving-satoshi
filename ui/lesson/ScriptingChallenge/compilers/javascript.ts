@@ -126,8 +126,14 @@ function compile(input: string, program: string) {
 `.trim()
 }
 
+function parseError(error) {
+  const javascriptError = error
+  return javascriptError
+}
+
 const javascript = {
   compile,
+  parseError,
 }
 
 export default javascript

@@ -32,12 +32,14 @@ export default function ScriptingChallenge({
   lessonKey,
   config,
   successMessage,
+  onSelectLanguage,
 }: {
   children?: React.ReactNode
   lang: string
   lessonKey: string
   config: EditorConfig
   successMessage: string
+  onSelectLanguage: (language: string) => void
 }) {
   const { saveProgress, saveProgressLocal } = useProgressContext()
   const { account } = useAuthContext()
@@ -45,6 +47,7 @@ export default function ScriptingChallenge({
     config.languages[config.defaultLanguage].defaultCode
   )
   const [language, setLanguage] = useState(config.defaultLanguage)
+  const [challengeSuccess, setChallengeSuccess] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [errors, setErrors] = useState<string[]>([])
   const [runnerReady, setRunnerReady] = useState<boolean>(false)
@@ -52,12 +55,15 @@ export default function ScriptingChallenge({
   const isSmallScreen = useMediaQuery({ width: 767 })
 
   const handleSetLanguage = (value) => {
-    setLanguage(value)
-    setCode(config.languages[value].defaultCode)
+    if (!challengeSuccess) {
+      setLanguage(value)
+      onSelectLanguage(value)
+      setCode(config.languages[value].defaultCode)
+    }
   }
 
   const handleChange = (val) => {
-    setCode(val)
+    !challengeSuccess && setCode(val)
   }
 
   const handleEditorValidate = (markers) => {
@@ -72,6 +78,7 @@ export default function ScriptingChallenge({
     const success = await config.languages[language].validate(answer)
 
     if (success) {
+      setChallengeSuccess(true)
       if (account) {
         saveProgress(lessonKey)
       } else {

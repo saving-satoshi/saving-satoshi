@@ -32,13 +32,13 @@ const tabData = [
 ]
 
 export default function Chapter({ children, metadata, lang }) {
-  const { progress } = useProgressContext()
+  const { progress, isLoading } = useProgressContext()
   const { isUnlocked } = useLessonStatus(
     progress,
     getLessonKey(metadata.slug, 'intro-1')
   )
 
-  const display = metadata.slug === 'chapter-1' || isUnlocked
+  const display = metadata.slug === 'chapter-1' || (isUnlocked && !isLoading)
 
   const [activeTab, setActiveTab] = useState('info')
 

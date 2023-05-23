@@ -3,17 +3,15 @@
 import clsx from 'clsx'
 import { useTranslations } from 'hooks'
 import Script from 'next/script'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Loader } from 'shared'
 import Icon from 'shared/Icon'
-import Terminal from './Terminal'
 import compilers from '../compilers'
 import Hasher, { HasherState } from './Hasher'
 import { EditorConfig, LessonView } from 'types'
 import { useLessonContext, StatusBar } from 'ui'
 
 let worker
-const defaultTerminalMessage = 'Saving Satoshi Runner v0.0.1'
 
 export default function Runner({
   language,
@@ -41,8 +39,6 @@ export default function Runner({
   const t = useTranslations(lang)
   const { activeView, setActiveView } = useLessonContext()
 
-  const outputRef = useRef()
-
   const [loading, setLoading] = useState<boolean>(true)
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const [result, setResult] = useState<any | undefined>(undefined)
@@ -58,10 +54,6 @@ export default function Runner({
     setHasherState(HasherState.Running)
     setActiveView(LessonView.Execute)
     setIsRunning(true)
-
-    // const output = outputRef.current
-    // const outputEl = output as HTMLElement
-    // outputEl.innerHTML = `<div class="text-sm text-white font-mono">${defaultTerminalMessage}</div>`
 
     const iframe = document.createElement('iframe')
     iframe.style.width = '0px'
@@ -85,15 +77,18 @@ export default function Runner({
 
         switch (action) {
           case 'log': {
-            print(payload)
+            typeof payload === 'string' && print(payload)
             break
           }
           case 'result': {
-            setResult(payload)
+            typeof payload.value === 'string' && setResult(payload)
 
             if (payload.error) {
-              setErrors([payload.error])
+              const parsedError = compilers[language].parseError(payload.error)
+              setErrors([parsedError])
               setHasherState(HasherState.Error)
+              setIsRunning(false)
+              destroyIframe()
               return
             }
             break
@@ -186,7 +181,7 @@ export default function Runner({
   useEffect(() => {
     worker = new Worker('/webworker.js')
     worker.onmessage = (e) => {
-      const { action, payload } = JSON.parse(e.data)
+      const { action } = JSON.parse(e.data)
       switch (action) {
         case 'pyodide_ready': {
           setLoading(false)
@@ -228,10 +223,6 @@ export default function Runner({
         </div>
       )}
 
-      {/* {!loading && (
-        <Terminal defaultMessage={defaultTerminalMessage} ref={outputRef} />
-      )} */}
-
       {!loading && (
         <Hasher
           lang={lang}
@@ -263,7 +254,15 @@ export default function Runner({
             )}
             onClick={handleRun}
           >
-            <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-white">
+            <div
+              className={clsx(
+                'flex h-6 w-6 items-center justify-center rounded-sm',
+                {
+                  'bg-white': !loading,
+                  'bg-white/50': loading,
+                }
+              )}
+            >
               <Icon icon="play" className="text-[#334454]" />
             </div>
 
