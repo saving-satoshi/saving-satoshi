@@ -29,7 +29,7 @@ export default function HelpLink({ params }: { params: any }) {
         }
       >
         <Link
-          className="relative flex h-full w-12 cursor-pointer items-center justify-center border-r border-white/25 text-center text-2xl text-white transition duration-100 ease-in-out hover:bg-black/25 md:w-16"
+          className="relative flex h-full w-12 cursor-pointer items-center justify-center border-r border-white/25 text-center font-nunito text-2xl text-white transition duration-100 ease-in-out hover:bg-black/25 md:w-16"
           target="_blank"
           href="https://forms.gle/NVcg9ukPvUBYjw1u7"
         >
