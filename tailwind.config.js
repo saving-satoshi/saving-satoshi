@@ -30,6 +30,7 @@ module.exports = {
           }
           return `rgb(var(--green))`
         },
+        red: '#BC0E13',
       },
       opacity: {
         15: '0.15',

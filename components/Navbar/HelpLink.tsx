@@ -3,6 +3,7 @@ import { chapters, lessons } from 'content'
 import { useLang, useTranslations } from 'hooks'
 import Link from 'next/link'
 import { Tooltip } from 'ui'
+import { themeSelector } from 'lib/themeSelector'
 
 export default function HelpLink({ params }: { params: any }) {
   const lang = useLang()
@@ -10,11 +11,7 @@ export default function HelpLink({ params }: { params: any }) {
 
   const { slug, lesson: lessonId } = params
 
-  //If theme was specified on lesson it should take priority over a theme that was specified on a chapter, otherwise fallback to bg-back
-  const theme =
-    lessons[slug]?.[lessonId]?.metadata.theme ??
-    chapters[slug]?.metadata.theme ??
-    'bg-back'
+  const theme = themeSelector(lessons, lessonId, chapters, slug)
 
   return (
     <div className="flex-l flex h-full items-stretch">
@@ -32,7 +29,7 @@ export default function HelpLink({ params }: { params: any }) {
         }
       >
         <Link
-          className="relative flex h-full w-12 cursor-pointer items-center justify-center text-center text-2xl text-white transition duration-100 ease-in-out hover:bg-black/25 md:w-16"
+          className="relative flex h-full w-12 cursor-pointer items-center justify-center border-r border-white/25 text-center text-2xl text-white transition duration-100 ease-in-out hover:bg-black/25 md:w-16"
           target="_blank"
           href="https://forms.gle/NVcg9ukPvUBYjw1u7"
         >

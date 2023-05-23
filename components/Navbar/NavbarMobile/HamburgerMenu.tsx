@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React, { useState } from 'react'
+import React from 'react'
 
 export default function HamburgerMenu(props) {
   const ariaLabel = props.isOpen ? 'Close Menu' : 'Open Menu'

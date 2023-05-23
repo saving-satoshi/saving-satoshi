@@ -11,6 +11,7 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import HelpLink from '../HelpLink'
 import Icon from 'shared/Icon'
+import { navbarThemeSelector } from 'lib/themeSelector'
 
 export default function NavbarMobile({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
@@ -18,6 +19,16 @@ export default function NavbarMobile({ params }) {
   const t = useTranslations(lang)
 
   const [isOpen, setIsOpen] = useState(false)
+
+  const { slug, lesson: lessonId } = params
+
+  const theme = !isOpen
+    ? navbarThemeSelector(lessons, lessonId, chapters, slug)
+    : lessons[slug]?.[lessonId]?.metadata.secondaryTheme ??
+      lessons[slug]?.[lessonId]?.metadata.theme ??
+      chapters[slug]?.metadata.secondaryTheme ??
+      chapters[slug]?.metadata.theme ??
+      'bg-back'
 
   function handleButtonClick() {
     if (!isOpen) {
@@ -32,19 +43,16 @@ export default function NavbarMobile({ params }) {
     setIsOpen(false)
   }
 
-  const { slug, lesson: lessonId } = params
-
-  //If theme was specified on lesson it should take priority over a theme that was specified on a chapter, otherwise fallback to bg-back. In this case it is used to apply an opacity for transparent outro screens
-  const theme =
-    lessons[slug]?.[lessonId]?.metadata.theme ??
-    chapters[slug]?.metadata.theme ??
-    'bg-back'
-
-  const isChapterEnd =
-    Object.entries(lessons?.[slug]).pop()?.[0].toString() === lessonId
-
   return (
-    <div className={clsx('z-10 w-full md:hidden', theme)}>
+    <div
+      className={clsx(
+        'z-10 w-full transition duration-100 ease-in-out md:hidden',
+        theme,
+        {
+          'delay-500': !isOpen,
+        }
+      )}
+    >
       <div className="flex items-stretch border-b border-white/80 text-white">
         <div className="flex">
           <Link
@@ -72,12 +80,10 @@ export default function NavbarMobile({ params }) {
             'bg-opacity-20': isOpen,
           })}
         >
-          {!isChapterEnd && (
-            <HamburgerMenu isOpen={isOpen} clicked={handleButtonClick} />
-          )}
+          <HamburgerMenu isOpen={isOpen} clicked={handleButtonClick} />
         </div>
-        <div className="flex items-center border-l border-white/25">
-          {!isChapterEnd && <HelpLink params={params} />}
+        <div className="flex items-center">
+          <HelpLink params={params} />
           <UserButton />
         </div>
       </div>

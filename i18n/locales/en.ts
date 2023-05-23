@@ -108,9 +108,9 @@ const translations = {
       title: 'Genesis',
       heading: 'Find the hidden message',
       paragraph_one:
-        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
       paragraph_two:
-        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
+        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
       paragraph_three: 'Copy that value and paste it in the code block.',
       tooltip_block_explorer:
         'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
@@ -211,7 +211,7 @@ const translations = {
     intro_one: {
       title: 'Hashing out a plan',
       paragraph_one:
-        'HOLOCAT: “Boy, what a dump. This place had better store some sardines or dried fish. I’d even settle for some e-nip.',
+        'HOLOCAT: “Boy, what a dump. This place had better store some sardines or dried fish. I’d even settle for some e-nip."',
       paragraph_two:
         'You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.',
       paragraph_three:
@@ -269,7 +269,7 @@ const translations = {
       heading:
         'Enter anything until you find a hash that starts with a zero (“0”)',
       hint_prompt:
-        'Need a <Tooltip id="hint_prompt" position="bottom" offset="-1" content="chapter_two.hashing_four.hint_tooltip" className="underline">hint</Tooltip>?',
+        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip" className="underline">hint</Tooltip>?',
       hint_tooltip:
         '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">popcorn</span>',
     },
@@ -286,7 +286,7 @@ const translations = {
       heading:
         'Enter anything until you find a hash that starts with two zeroes (“00”)',
       hint_prompt:
-        'Need a <Tooltip id="hint_prompt" position="bottom" offset="-1" content="chapter_two.hashing_six.hint_tooltip" className="underline">hint</Tooltip>?',
+        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip" className="underline">hint</Tooltip>?',
       hint_tooltip:
         '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">trigonometry</span>',
     },
@@ -312,18 +312,60 @@ const translations = {
         'When you press “Run the script”, the findHash function will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce.',
       success: 'Five zeroes! That’s it!',
     },
+
+    mining_one: {
+      title: 'Into the mine',
+      heading_one: 'Now that we know how mining works, let’s see it in action',
+      heading_two: 'You’re mining now',
+      heading_three: 'Nice work!',
+      heading_four: 'Let’s get to 1,000 blocks',
+      heading_five: 'You did it!',
+      paragraph_one:
+        'Right now, the Bitcoin network requires blocks to have a hash with ten leading zeros. Let’s get to it!',
+      paragraph_two:
+        'For this simple simulation, we’ll just assume that every block contains 3,500 transactions.',
+      paragraph_two_one: 'See if you can turn on the miners.',
+      paragraph_three:
+        'The code you wrote in the previous lesson to compute hashes over and over again is running.',
+      paragraph_four:
+        'It will stop once it’s found a hash with ten leading zeroes.',
+      paragraph_five:
+        'See the nonce field incrementing? That’s how many hashes you have tried so far!',
+      paragraph_six: 'With the following nonce:',
+      paragraph_seven: 'The resulting hash is:',
+      paragraph_eight:
+        'It has the ten leading zeros that all new blocks require. Let’s mine a few more blocks.',
+      paragraph_eight_one: 'Turn the miners back on.',
+      paragraph_nine:
+        'This might take some time. But this shows you how hard it is to mine blocks and confirm transactions.',
+      paragraph_ten:
+        'Wow! That took quite a bit of computing power to do all that hashing. Just look how many nonces were tried!  It really helped to have that boost in hash power i.e. the number of hashes your computer can try in a second.',
+      paragraph_eleven:
+        'As expected, since each block contains 3,500 transactions, a total of 3,500,000 transactions have been confirmed by the 1,000 blocks that were mined.',
+      paragraph_twelve:
+        'And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. ',
+      paragraph_thirteen:
+        'In the early days of bitcoin, it was possible to mine with your average computer, just like we did in this simulation.',
+      paragraph_fourteen:
+        'Today, miners use a special type of chip called an Application-Specific Integrated Circut, or ASIC for short. Nowadays, people buy machines with ASICs that are dedicated to just mining! This explains all the machines in the Vanderpoole family collection.',
+      progress_bar_title: 'Blocks found',
+      progress_bar_one: 'Nonce',
+      progress_bar_two: 'Hashes per second',
+      progress_bar_three: 'Transactions confirmed',
+      progress_bar_four: 'Bitcoin earned',
+      button_hash: '10x hash power, please',
+    },
     outro_one: {
       title: 'Outro',
       heading: 'Great Job!',
       paragraph_one:
-        'The machines roar to life. Everything seems to be working. A map appears on the computer that appears to show the locations of other warehouses filled with ASICs that have come back to life across the world.',
+        'The machines roar to life. Everything seems to be working. A map appears on the computer that shows the locations of other warehouses filled with ASICs that have come online across the world. Looks like they were activated when you completed the mining challenge!',
       paragraph_two: 'HOLOCAT: “Look, there’s a message.”',
       paragraph_three:
         '“Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto',
       paragraph_four: 'Him again?',
     },
   },
-
   chapter_three: {
     title: 'Claiming your rewards',
     paragraph_one:

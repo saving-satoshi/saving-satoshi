@@ -7,8 +7,10 @@ import { usePathData, useTranslations } from 'hooks'
 import {
   getLastUnlockedLessonPath,
   getLessonKey,
+  getNextLessonKey,
   isLessonCompleted,
   isLessonUnlocked,
+  keys,
 } from 'lib/progress'
 
 import * as navigation from 'next/navigation'
@@ -98,15 +100,17 @@ export default function Page({ params }) {
   }
 
   const lastUnlockedLessonPath = getLastUnlockedLessonPath(progress)
-  const currentLessonPath = `/${pathData.pageId}/${pathData.chapterId}/${pathData.lessonId}`
+  const nextLessonKey = getNextLessonKey(
+    getLessonKey(pathData.chapterId, pathData.lessonId)
+  )
   const isRestrictedFromLesson = !isLessonCompleted(
-    getLessonKey(pathData.chapterId, pathData.lessonId),
-    progress
+    progress,
+    getLessonKey(pathData.chapterId, pathData.lessonId)
   )
 
   if (
     unlocked === LoadingState.Failed &&
-    lastUnlockedLessonPath !== currentLessonPath &&
+    keys.indexOf(progress) <= keys.indexOf(nextLessonKey) - 1 &&
     isRestrictedFromLesson
   ) {
     return navigation.redirect(lastUnlockedLessonPath)

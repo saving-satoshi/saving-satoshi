@@ -6,6 +6,7 @@ import clsx from 'clsx'
 import { useLang, useTranslations } from 'hooks'
 import { usePathname } from 'next/navigation'
 import { useProgressContext } from 'providers/ProgressProvider'
+import { useAuthContext } from 'providers/AuthProvider'
 
 /**
  * @answer {string} correct answer to the challenge problem
@@ -35,7 +36,8 @@ export default function HashChallenge({
   inProgressMessage?: string
   successMessage?: string
 }) {
-  const { saveProgress } = useProgressContext()
+  const { saveProgress, saveProgressLocal } = useProgressContext()
+  const { account } = useAuthContext()
   const lang = useLang()
   const t = useTranslations(lang)
   const pathName = usePathname() || ''
@@ -94,7 +96,11 @@ export default function HashChallenge({
     ) {
       inputRef.current?.blur()
       setSuccess(true)
-      saveProgress(lessonKey)
+      if (account) {
+        saveProgress(lessonKey)
+      } else {
+        saveProgressLocal(lessonKey)
+      }
     } else if (
       typeof answer === 'number' &&
       input.length < answer &&
