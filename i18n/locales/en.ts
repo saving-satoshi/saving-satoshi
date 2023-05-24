@@ -11,6 +11,7 @@ const translations = {
     coming_soon: 'Coming soon',
     start_chapter: 'Start chapter',
     back: 'Back',
+    poweroff: 'Back to chapter selection',
   },
   status_bar: {
     begin_message: 'Complete the challenge above to continue...',
