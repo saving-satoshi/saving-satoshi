@@ -19,7 +19,7 @@ export default function Hero() {
       ? (parseInt(progress.substring(2, 3)) + 1).toString()
       : progress.substring(2, 3)
   const chapterHref =
-    account && progress.substring(2, 3) !== '1'
+    account && progressHrefFragement !== '1'
       ? `${routes.chaptersUrl}#chapter-${progressHrefFragement}`
       : routes.chaptersUrl
 
