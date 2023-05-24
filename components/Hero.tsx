@@ -3,11 +3,25 @@
 import { Button } from 'shared'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import Image from 'next/image'
+import { useAuthContext } from 'providers/AuthProvider'
+import { useProgressContext } from 'providers/ProgressProvider'
+import { keys } from 'lib/progress'
 
 export default function Hero() {
   const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
+  const { account } = useAuthContext()
+  const { progress } = useProgressContext()
+
+  const progressHrefFragement =
+    progress === keys[keys.length - 1]
+      ? (parseInt(progress.substring(2, 3)) + 1).toString()
+      : progress.substring(2, 3)
+  const chapterHref =
+    account && progress.substring(2, 3) !== '1'
+      ? `${routes.chaptersUrl}#chapter-${progressHrefFragement}`
+      : routes.chaptersUrl
 
   return (
     <div className="flex h-full grow items-end justify-center">
@@ -29,7 +43,7 @@ export default function Hero() {
         </p>
         <div className="grid grid-cols-1 justify-center pt-5 pb-2 sm:pb-8 md:grid-cols-2 md:space-x-5 md:pt-8">
           <div className="flex items-center justify-center md:justify-end">
-            <Button classes="text-xl md:!w-64 w-full" href={routes.chaptersUrl}>
+            <Button classes="text-xl md:!w-64 w-full" href={chapterHref}>
               {t('hero.start_journey')}
             </Button>
           </div>
