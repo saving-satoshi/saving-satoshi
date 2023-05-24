@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import sjcl from 'sjcl'
 import formatHash from 'lib/formatHash'
@@ -15,12 +16,23 @@ export default function Hasher({
   onChange: any
   input: string
 }) {
+  const [success, setSuccess] = useState(false)
   const [hash, setHash] = useState('')
 
   const handleHash = (input) => {
     if (input) {
       const bitArray = sjcl.hash.sha256.hash(input)
       setHash(sjcl.codec.hex.fromBits(bitArray))
+      if (typeof answer === 'number') {
+      } else if (
+        typeof answer === 'string' &&
+        hash &&
+        hash.substring(0, answer.length) === answer
+      ) {
+        setSuccess(true)
+      } else {
+        setSuccess(false)
+      }
     } else {
       setHash('')
     }
@@ -41,8 +53,16 @@ export default function Hasher({
         <h2 className="text-left text-[18px] font-bold md:text-center">
           {label}
         </h2>
-        <span className="flex h-full w-full resize-none self-center overflow-hidden bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:w-[758px] md:text-center md:text-[24px] md:tracking-[5px] lg:w-[858px] lg:text-[30px]">
-          {formatHash(hash, 4, 1)}
+        <span
+          className={clsx(
+            'flex h-full w-full resize-none self-center overflow-hidden bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:w-[758px] md:text-center md:text-[24px] md:tracking-[5px] lg:w-[858px] lg:text-[30px]',
+            {
+              'text-white': typeof answer === 'number' && input !== '',
+              'text-white/50': input === '' || typeof answer === 'string',
+            }
+          )}
+        >
+          {formatHash(hash, 4, 1, undefined, success)}
         </span>
       </div>
     </>
