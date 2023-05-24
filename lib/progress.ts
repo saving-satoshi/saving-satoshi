@@ -23,6 +23,7 @@ export const keys = [
   'CH2HSH6',
   'CH2SCR1',
   'CH2SCR2',
+  'CH2MIN1',
   'CH2OUT1',
 ]
 
@@ -49,6 +50,7 @@ const keysMeta = {
   CH2HSH6: { path: '/chapters/chapter-2/hashing-6' },
   CH2SCR1: { path: '/chapters/chapter-2/scripting-1' },
   CH2SCR2: { path: '/chapters/chapter-2/scripting-2' },
+  CH2MIN1: { path: '/chapters/chapter-2/mining-1' },
   CH2OUT1: { path: '/chapters/chapter-2/outro-1' },
 }
 

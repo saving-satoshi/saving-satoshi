@@ -16,6 +16,7 @@ const relRegex = /rel="(.*?)"/
 const idRegex = /id="(.*?)"/
 const classNameRegex = /className="(.*?)"/
 const labelRegex = />(.*?)</
+const themeRegex = /theme="(.*?)"/
 
 const componentRegexes = {
   [ComponentType.Link]: /<Link(.*?)>(.*?)<\/Link>/gim,
@@ -116,6 +117,7 @@ function injectComponent(result, type) {
         case ComponentType.Tooltip: {
           const id = getFirstMatch(html, idRegex)
           const tkey = getFirstMatch(html, contentRegex)
+          const theme = getFirstMatch(html, themeRegex)
           const defaultTooltipProps = {
             offset: 12,
             position: 'top',
@@ -126,6 +128,7 @@ function injectComponent(result, type) {
               id={id}
               key={tkey}
               href={href}
+              theme={theme}
               position={!!position ? position : defaultTooltipProps.position}
               offset={!!offset ? parseInt(offset) : defaultTooltipProps.offset}
               className={clsx('cursor-pointer', className)}

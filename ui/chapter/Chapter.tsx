@@ -73,7 +73,7 @@ export default function Chapter({ children, metadata, lang }) {
       >
         <div
           className={clsx(
-            'order-2 flex justify-start lg:px-[50px] lg:py-[112px]',
+            'order-2 mb-6 flex justify-start lg:mb-0 lg:px-[50px] lg:py-[112px]',
             {
               'lg:order-1': isEven,
               'lg:order-2': !isEven,
@@ -161,7 +161,7 @@ export default function Chapter({ children, metadata, lang }) {
         </div>
 
         <div
-          className={clsx('order-1 mt-6 flex justify-center lg:mt-0', {
+          className={clsx('order-1 flex justify-center', {
             'lg:order-2': isEven,
             'lg:order-1': !isEven,
           })}

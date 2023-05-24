@@ -4,9 +4,11 @@ import * as icons from './icons'
 export default function Icon({
   className,
   icon,
+  title,
 }: {
   className?: string
   icon: string
+  title?: string
 }) {
   if (!(icon in icons)) {
     return null
@@ -16,7 +18,7 @@ export default function Icon({
 
   return (
     <div className={clsx(className, 'min-w-2 min-h-2')}>
-      <IconComponent className="h-full w-full" />
+      <IconComponent className="h-full w-full" title={title} />
     </div>
   )
 }

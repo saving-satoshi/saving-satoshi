@@ -1,8 +1,12 @@
+import clsx from 'clsx'
+
 export default function formatHash(
   hash: string,
   chunkLength: number,
   rows: number,
-  length?: number
+  length?: number,
+  hashStatus?: number,
+  margin?: boolean
 ) {
   const result: JSX.Element[] = []
   const chunkSize = !!chunkLength ? chunkLength : 4
@@ -24,7 +28,14 @@ export default function formatHash(
           if (zeroCount < leadingZeros && char === '0') {
             zeroCount++
             return (
-              <span key={idx} className="text-white">
+              <span
+                key={idx}
+                className={clsx({
+                  'text-[#5DBC48]': !hashStatus,
+                  'text-[#EDA081]': hashStatus && hashStatus === 1,
+                  'text-white': hashStatus && hashStatus !== 1,
+                })}
+              >
                 {char}
               </span>
             )
@@ -40,7 +51,14 @@ export default function formatHash(
           if (zeroCount < leadingZeros && char === '0') {
             zeroCount++
             return (
-              <span key={idx} className="text-white">
+              <span
+                key={idx}
+                className={clsx({
+                  'text-[#5DBC48]': !hashStatus,
+                  'text-[#EDA081]': hashStatus && hashStatus === 1,
+                  'text-white': hashStatus && hashStatus !== 1,
+                })}
+              >
                 {char}
               </span>
             )
@@ -52,7 +70,10 @@ export default function formatHash(
         ? row.push(
             <span
               key={startIndex}
-              className="mr-3 inline-block text-white text-opacity-50"
+              className={clsx('inline-block text-opacity-50', {
+                'mr-1': margin,
+                'mr-3': !margin,
+              })}
             >
               {placeholderChunk}
             </span>
@@ -60,7 +81,10 @@ export default function formatHash(
         : row.push(
             <span
               key={startIndex}
-              className="mr-3 inline-block text-white text-opacity-50"
+              className={clsx('inline-block', {
+                'mr-[2px]': margin,
+                'mr-3': !margin,
+              })}
             >
               {chunk}
             </span>
@@ -68,7 +92,14 @@ export default function formatHash(
     }
 
     result.push(
-      <div key={i} className="inline-block">
+      <div
+        key={i}
+        className={clsx('inline-block', {
+          'text-[#5DBC59]': !hashStatus,
+          'text-[#EDA081]': hashStatus && hashStatus === 1,
+          'text-white text-opacity-50': hashStatus && hashStatus !== 1,
+        })}
+      >
         {row}
       </div>
     )

@@ -6,7 +6,8 @@ import { ChapterEnd } from 'ui'
 export const metadata = {
   title: 'chapter_one.outro_one.title',
   image: '/assets/images/chapter-1-finish.jpg',
-  theme: 'bg-transparent',
+  theme: 'bg-transparent/20',
+  secondaryTheme: 'bg-[#353f37]',
   key: 'CH1OUT2',
 }
 

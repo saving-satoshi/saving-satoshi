@@ -8,6 +8,8 @@ import Runner from './Runner'
 import { EditorConfig, LessonDirection } from 'types'
 import { Lesson, LessonTabs } from 'ui'
 import { useMediaQuery } from 'hooks'
+import { useProgressContext } from 'providers/ProgressProvider'
+import { useAuthContext } from 'providers/AuthProvider'
 
 const tabData = [
   {
@@ -27,16 +29,20 @@ const tabData = [
 export default function ScriptingChallenge({
   children,
   lang,
+  lessonKey,
   config,
   successMessage,
   onSelectLanguage,
 }: {
   children?: React.ReactNode
   lang: string
+  lessonKey: string
   config: EditorConfig
   successMessage: string
   onSelectLanguage: (language: string) => void
 }) {
+  const { saveProgress, saveProgressLocal } = useProgressContext()
+  const { account } = useAuthContext()
   const [code, setCode] = useState(
     config.languages[config.defaultLanguage].defaultCode
   )
@@ -73,7 +79,11 @@ export default function ScriptingChallenge({
 
     if (success) {
       setChallengeSuccess(true)
-      console.log('challenge complete')
+      if (account) {
+        saveProgress(lessonKey)
+      } else {
+        saveProgressLocal(lessonKey)
+      }
     }
 
     return success
@@ -101,7 +111,7 @@ export default function ScriptingChallenge({
         <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
         {children}
 
-        <div className="h-screen-excluding-navbar flex grow flex-col border-white/25 bg-[#00000026] md:basis-1/3 md:border-l">
+        <div className="flex grow flex-col border-white/25 md:basis-1/3 md:border-l">
           <LanguageTabs
             languages={config.languages}
             value={language}

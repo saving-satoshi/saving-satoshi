@@ -14,7 +14,10 @@ export default function Hashing3({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <ChapterIntro heading={t('chapter_two.hashing_three.heading')}>
+    <ChapterIntro
+      className="my-8"
+      heading={t('chapter_two.hashing_three.heading')}
+    >
       <ul className="list-disc pl-5">
         <li className="mt-2 text-lg md:text-xl">
           {t('chapter_two.hashing_three.list_one')}

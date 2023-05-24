@@ -112,7 +112,7 @@ export default function Input({
     <>
       <p
         className={clsx(
-          'pointer-events-none h-full w-full break-all text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] md:text-center md:text-[30px] md:tracking-[5px]',
+          'pointer-events-none h-full w-full break-all text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] md:text-center md:text-[24px] md:tracking-[5px] lg:text-[30px]',
           {
             'overlay-complete': correctAnswer === true,
             'overlay-incomplete': correctAnswer === false,
@@ -132,14 +132,14 @@ export default function Input({
           onChange={handleChange}
           value={textAreaValue}
           spellCheck="false"
-          className="absolute top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] text-transparent outline-none md:text-[30px] md:tracking-[5px]"
+          className="absolute top-0 left-0 h-full w-full resize-none overflow-hidden break-all bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] text-transparent outline-none md:text-[24px] md:tracking-[5px] lg:text-[30px]"
           style={{
             caretColor: '#6e7d92',
           }}
         />
         <p
           className={clsx(
-            'pointer-events-none h-full w-full break-all font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:text-[30px] md:tracking-[5px]',
+            'pointer-events-none h-full w-full break-all font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:text-[24px] md:tracking-[5px] lg:text-[30px]',
             {
               'overlay-complete': correctAnswer === true,
               'overlay-incomplete': correctAnswer === false,

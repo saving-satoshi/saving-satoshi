@@ -1,6 +1,7 @@
 'use client'
 
 import { useLocalizedRoutes, useTranslations, useLang } from 'hooks'
+import { chapters, lessons } from 'content'
 import Address from 'components/Navbar/Address'
 import UserButton from '../UserButton'
 import HamburgerMenu from './HamburgerMenu'
@@ -10,6 +11,7 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import HelpLink from '../HelpLink'
 import Icon from 'shared/Icon'
+import { navbarThemeSelector } from 'lib/themeSelector'
 
 export default function NavbarMobile({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
@@ -18,7 +20,22 @@ export default function NavbarMobile({ params }) {
 
   const [isOpen, setIsOpen] = useState(false)
 
+  const { slug, lesson: lessonId } = params
+
+  const theme = !isOpen
+    ? navbarThemeSelector(lessons, lessonId, chapters, slug)
+    : lessons[slug]?.[lessonId]?.metadata.secondaryTheme ??
+      lessons[slug]?.[lessonId]?.metadata.theme ??
+      chapters[slug]?.metadata.secondaryTheme ??
+      chapters[slug]?.metadata.theme ??
+      'bg-back'
+
   function handleButtonClick() {
+    if (!isOpen) {
+      document.body.classList.add('overflow-y-hidden')
+    } else {
+      document.body.classList.remove('overflow-y-hidden')
+    }
     setIsOpen(!isOpen)
   }
 
@@ -27,7 +44,15 @@ export default function NavbarMobile({ params }) {
   }
 
   return (
-    <div className="left-0 top-0 w-full md:hidden">
+    <div
+      className={clsx(
+        'z-10 w-full transition duration-100 ease-in-out md:hidden',
+        theme,
+        {
+          'delay-500': !isOpen,
+        }
+      )}
+    >
       <div className="flex items-stretch border-b border-white/80 text-white">
         <div className="flex">
           <Link
