@@ -79,9 +79,9 @@ export default function Hasher({
           ) : (
             <>
               {value !== undefined && value !== null && value !== '' ? (
-                <span className="text-sm">{value}</span>
+                <span className="text-sm text-[#f3241d]">{value}</span>
               ) : (
-                <span className="text-sm">No output</span>
+                <span className="text-sm text-[#f3241d]">Error</span>
               )}
             </>
           )}
