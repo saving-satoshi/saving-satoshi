@@ -16,6 +16,7 @@ import useLessonStatus from 'hooks/useLessonStatus'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { getLessonKey } from 'lib/progress'
 import { keys } from 'lib/progress'
+import { ProgressLinkFrag } from 'ui/common'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -54,6 +55,8 @@ export default function Chapter({ children, metadata, lang }) {
   const isBetweenChapter =
     progress !== chapterLessons[0] && progress !== chapterLessons.pop()
   const context = {}
+
+  const linkFrag = ProgressLinkFrag(progress, chapter.metadata)
 
   useEffect(() => {
     if (window.location.href.split('#')[1]) {
@@ -128,7 +131,7 @@ export default function Chapter({ children, metadata, lang }) {
                       (chapter.metadata.lessons.length === 0 && null)}
                     <div className="flex pt-8 md:w-full">
                       <Button
-                        href={`${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}`}
+                        href={`${routes.chaptersUrl}/${chapter.metadata.slug}/${linkFrag}`}
                         disabled={
                           chapter.metadata.lessons.length === 0 || !display
                         }
