@@ -15,8 +15,7 @@ import { useTranslations } from 'hooks'
 import useLessonStatus from 'hooks/useLessonStatus'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { getLessonKey } from 'lib/progress'
-import { keys } from 'lib/progress'
-import { ProgressLinkFrag } from 'ui/common'
+import { keys, keysMeta } from 'lib/progress'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -53,10 +52,10 @@ export default function Chapter({ children, metadata, lang }) {
     ele.includes(progress.substring(0, 3))
   )
   const isBetweenChapter =
-    progress !== chapterLessons[0] && progress !== chapterLessons.pop()
+    progress !== chapterLessons[0] &&
+    progress !== keys[keys.length - 1] &&
+    position === parseInt(progress.substring(2, 3))
   const context = {}
-
-  const linkFrag = ProgressLinkFrag(progress, chapter.metadata)
 
   useEffect(() => {
     if (window.location.href.split('#')[1]) {
@@ -131,7 +130,11 @@ export default function Chapter({ children, metadata, lang }) {
                       (chapter.metadata.lessons.length === 0 && null)}
                     <div className="flex pt-8 md:w-full">
                       <Button
-                        href={`${routes.chaptersUrl}/${chapter.metadata.slug}/${linkFrag}`}
+                        href={
+                          isBetweenChapter
+                            ? `${keysMeta[progress].path}`
+                            : `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}`
+                        }
                         disabled={
                           chapter.metadata.lessons.length === 0 || !display
                         }
