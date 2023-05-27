@@ -16,13 +16,13 @@ export default function LoginModal({ onClose, state }) {
 
   const isLoaded = !isAccountLoading && !isProgressLoading
 
+  if (state.open) {
+    document.body.classList.add('overflow-y-hidden')
+  }
+
   const handleSignOut = async () => {
     const logoutSuccess = await logout()
 
-    onClose()
-  }
-
-  function handleCloseClick() {
     onClose()
   }
 
@@ -33,7 +33,7 @@ export default function LoginModal({ onClose, state }) {
   return (
     <Modal active={state.open} onRequestClose={onClose}>
       <div className="float-right flex justify-end">
-        <button onClick={handleCloseClick} aria-label="Close">
+        <button onClick={onClose} aria-label="Close">
           <Icon icon="close" className="h-6 w-6" />
         </button>
       </div>

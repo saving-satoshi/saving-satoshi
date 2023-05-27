@@ -34,6 +34,10 @@ export default function LoginModal({ onClose, state }) {
   const [privateKey, setPrivateKey] = useState<string | undefined>(undefined)
   const [copied, setCopied] = useState(false)
 
+  if (state.open) {
+    document.body.classList.add('overflow-y-hidden')
+  }
+
   const handleChangeView = (view: View) => {
     setView(view)
     setCopyAcknowledged(false)
