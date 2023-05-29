@@ -15,6 +15,7 @@ import { useTranslations } from 'hooks'
 import useLessonStatus from 'hooks/useLessonStatus'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { getLessonKey } from 'lib/progress'
+import { keys, keysMeta } from 'lib/progress'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -47,7 +48,13 @@ export default function Chapter({ children, metadata, lang }) {
   const chapter = chapters[metadata.slug]
   const position = metadata.position + 1
   const isEven = position % 2 == 0
-
+  const chapterLessons = keys.filter((ele) =>
+    ele.includes(progress.substring(0, 3))
+  )
+  const isBetweenChapter =
+    progress !== chapterLessons[0] &&
+    progress !== keys[keys.length - 1] &&
+    position === parseInt(progress.substring(2, 3))
   const context = {}
 
   useEffect(() => {
@@ -123,15 +130,21 @@ export default function Chapter({ children, metadata, lang }) {
                       (chapter.metadata.lessons.length === 0 && null)}
                     <div className="flex pt-8 md:w-full">
                       <Button
-                        href={`${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}`}
+                        href={
+                          isBetweenChapter
+                            ? `${keysMeta[progress].path}`
+                            : `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}`
+                        }
                         disabled={
                           chapter.metadata.lessons.length === 0 || !display
                         }
                         classes="w-full"
                       >
                         {(chapter.metadata.lessons.length > 0 &&
-                          display &&
-                          `${t('shared.start_chapter')} ${position}`) ||
+                        display &&
+                        isBetweenChapter
+                          ? `Continue`
+                          : `${t('shared.start_chapter')} ${position}`) ||
                           (chapter.metadata.lessons.length > 0 &&
                             !display &&
                             `${t('chapter.chapter_locked_one')} ${

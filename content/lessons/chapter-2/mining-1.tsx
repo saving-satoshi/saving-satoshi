@@ -152,7 +152,9 @@ export default function Mining1({ lang }) {
             <span className={clsx({ 'text-[#EDA081]': blocks !== 0 })}>
               {t('chapter_two.mining_one.progress_bar_title')}
             </span>{' '}
-            <span className="absolute right-0">{blocks} of 1,000</span>
+            <span className="absolute right-0">
+              {Intl.NumberFormat().format(blocks)} of 1,000
+            </span>
           </div>
           <ProgressBar progress={blocks / 10} />
           <MiningStatisticNonce
