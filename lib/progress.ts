@@ -160,3 +160,21 @@ export const getLessonKey = (chapterId, lessonId) => {
 
   return lesson.metadata.key
 }
+
+export const chapterProgressUrl = (
+  userProgressKey: string,
+  forceFragment?: boolean
+): string => {
+  const progressHrefFragement =
+    userProgressKey === keys[keys.length - 1]
+      ? (parseInt(userProgressKey.substring(2, 3)) + 1).toString()
+      : userProgressKey.substring(2, 3)
+  if (
+    !userProgressKey ||
+    (userProgressKey.startsWith('CH1') && !forceFragment)
+  ) {
+    return ''
+  } else {
+    return `#chapter-${progressHrefFragement}`
+  }
+}
