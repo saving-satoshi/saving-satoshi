@@ -12,7 +12,7 @@ import HelpLink from '../HelpLink'
 import Icon from 'shared/Icon'
 import { usePathData } from 'hooks'
 import { navbarThemeSelector } from 'lib/themeSelector'
-import { getChapterProgressUrl } from 'lib/progress'
+import { getChapterFragment } from 'lib/progress'
 
 export default function NavbarDesktop({ params }) {
   const routes = useLocalizedRoutes()
@@ -25,7 +25,7 @@ export default function NavbarDesktop({ params }) {
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null
   const currentLessonKey = lesson?.key ?? 'CH1INT1'
 
-  const progressFragment = getChapterProgressUrl(currentLessonKey, true)
+  const progressFragment = getChapterFragment(currentLessonKey, true)
 
   const theme = navbarThemeSelector(lessons, lessonId, chapters, slug)
 

@@ -161,7 +161,7 @@ export const getLessonKey = (chapterId, lessonId) => {
   return lesson.metadata.key
 }
 
-export const getChapterProgressUrl = (
+export const getChapterFragment = (
   userProgressKey: string,
   forceFragment?: boolean
 ): string => {

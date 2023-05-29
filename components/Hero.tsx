@@ -4,14 +4,14 @@ import { Button } from 'shared'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import Image from 'next/image'
 import { useProgressContext } from 'providers/ProgressProvider'
-import { getChapterProgressUrl } from 'lib/progress'
+import { getChapterFragment } from 'lib/progress'
 export default function Hero() {
   const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
   const { progress } = useProgressContext()
 
-  const progressFragment = getChapterProgressUrl(progress)
+  const progressFragment = getChapterFragment(progress)
 
   return (
     <div className="flex h-full grow items-end justify-center">

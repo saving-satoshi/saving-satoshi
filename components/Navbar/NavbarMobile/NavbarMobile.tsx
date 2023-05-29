@@ -17,7 +17,7 @@ import Link from 'next/link'
 import HelpLink from '../HelpLink'
 import Icon from 'shared/Icon'
 import { navbarThemeSelector } from 'lib/themeSelector'
-import { getChapterProgressUrl } from 'lib/progress'
+import { getChapterFragment } from 'lib/progress'
 
 export default function NavbarMobile({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
@@ -32,7 +32,7 @@ export default function NavbarMobile({ params }) {
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null
   const currentLessonKey = lesson?.key ?? 'CH1INT1'
 
-  const progressFragment = getChapterProgressUrl(currentLessonKey, true)
+  const progressFragment = getChapterFragment(currentLessonKey, true)
 
   const theme = !isOpen
     ? navbarThemeSelector(lessons, lessonId, chapters, slug)
