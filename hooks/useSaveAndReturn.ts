@@ -1,6 +1,10 @@
 'use client'
 
-import { getNextLessonKey, isLessonUnlocked } from 'lib/progress'
+import {
+  getNextLessonKey,
+  isLessonUnlocked,
+  getChapterProgressUrl,
+} from 'lib/progress'
 import { useRouter } from 'next/navigation'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { usePathData, useLang } from 'hooks'
@@ -20,7 +24,7 @@ export default function useSaveAndReturn() {
 
   const saveAndReturn = async () => {
     const nextLessonKey = getNextLessonKey(currentLessonKey)
-    const chapterIndex = (parseInt(currentLessonKey.charAt(2)) + 1).toString()
+    const progressFragment = getChapterProgressUrl(nextLessonKey, true)
 
     if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
       if (account) {
@@ -30,7 +34,7 @@ export default function useSaveAndReturn() {
       }
     }
 
-    router.push(`${lang}/chapters#chapter-${chapterIndex}`)
+    router.push(`${lang}/chapters${progressFragment}`)
   }
 
   return saveAndReturn
