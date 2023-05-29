@@ -27,7 +27,7 @@ export const keys = [
   'CH2OUT1',
 ]
 
-const keysMeta = {
+export const keysMeta = {
   CH1INT1: { path: '/chapters/chapter-1/intro-1' },
   CH1INT2: { path: '/chapters/chapter-1/intro-2' },
   CH1GEN1: { path: '/chapters/chapter-1/genesis-1' },
