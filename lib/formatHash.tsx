@@ -5,7 +5,7 @@ export default function formatHash(
   chunkLength: number,
   rows: number,
   length?: number,
-  hashStatus?: number,
+  success?: boolean,
   margin?: boolean
 ) {
   const result: JSX.Element[] = []
@@ -31,9 +31,7 @@ export default function formatHash(
               <span
                 key={idx}
                 className={clsx({
-                  'text-[#5DBC48]': !hashStatus,
-                  'text-[#EDA081]': hashStatus && hashStatus === 1,
-                  'text-white': hashStatus && hashStatus !== 1,
+                  'text-white': success,
                 })}
               >
                 {char}
@@ -51,14 +49,7 @@ export default function formatHash(
           if (zeroCount < leadingZeros && char === '0') {
             zeroCount++
             return (
-              <span
-                key={idx}
-                className={clsx({
-                  'text-[#5DBC48]': !hashStatus,
-                  'text-[#EDA081]': hashStatus && hashStatus === 1,
-                  'text-white': hashStatus && hashStatus !== 1,
-                })}
-              >
+              <span key={idx} className="text-white opacity-50">
                 {char}
               </span>
             )
@@ -70,7 +61,7 @@ export default function formatHash(
         ? row.push(
             <span
               key={startIndex}
-              className={clsx('inline-block text-opacity-50', {
+              className={clsx('inline-block', {
                 'mr-1': margin,
                 'mr-3': !margin,
               })}
@@ -92,14 +83,7 @@ export default function formatHash(
     }
 
     result.push(
-      <div
-        key={i}
-        className={clsx('inline-block', {
-          'text-[#5DBC59]': !hashStatus,
-          'text-[#EDA081]': hashStatus && hashStatus === 1,
-          'text-white text-opacity-50': hashStatus && hashStatus !== 1,
-        })}
-      >
+      <div key={i} className="inline-block">
         {row}
       </div>
     )
