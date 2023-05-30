@@ -20,7 +20,7 @@ export default function useSaveAndReturn() {
 
   const saveAndReturn = async () => {
     const nextLessonKey = getNextLessonKey(currentLessonKey)
-    const progressFragment = getChapterKey(nextLessonKey)
+    const chapterKey = getChapterKey(nextLessonKey)
 
     if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
       if (account) {
@@ -30,7 +30,7 @@ export default function useSaveAndReturn() {
       }
     }
 
-    router.push(`${chaptersUrl}#${progressFragment}`)
+    router.push(`${chaptersUrl}#${chapterKey}`)
   }
 
   return saveAndReturn

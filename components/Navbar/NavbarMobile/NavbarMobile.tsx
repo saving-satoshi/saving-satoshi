@@ -32,7 +32,7 @@ export default function NavbarMobile({ params }) {
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null
   const currentLessonKey = lesson?.key ?? keys[0]
 
-  const progressFragment = getChapterKey(currentLessonKey)
+  const chapterKey = getChapterKey(currentLessonKey)
 
   const theme = !isOpen
     ? navbarThemeSelector(lessons, lessonId, chapters, slug)
@@ -70,7 +70,7 @@ export default function NavbarMobile({ params }) {
           <Link
             title={t('shared.back')}
             className="group flex items-center border-r border-white/25 p-4 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
-            href={`${chaptersUrl}#${progressFragment}`}
+            href={`${chaptersUrl}#${chapterKey}`}
           >
             <Icon
               icon="powerOff"

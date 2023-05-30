@@ -25,7 +25,7 @@ export default function NavbarDesktop({ params }) {
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null
   const currentLessonKey = lesson?.key ?? keys[0]
 
-  const progressFragment = getChapterKey(currentLessonKey)
+  const chapterKey = getChapterKey(currentLessonKey)
 
   const theme = navbarThemeSelector(lessons, lessonId, chapters, slug)
 
@@ -36,7 +36,7 @@ export default function NavbarDesktop({ params }) {
           <Link
             title={t('shared.poweroff')}
             className="group flex items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
-            href={`${chaptersUrl}#${progressFragment}`}
+            href={`${chaptersUrl}#${chapterKey}`}
           >
             <Icon
               icon="powerOff"

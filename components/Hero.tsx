@@ -11,7 +11,7 @@ export default function Hero() {
   const t = useTranslations(lang)
   const { progress } = useProgressContext()
 
-  const progressFragment = progress !== keys[0] ? getChapterKey(progress) : ''
+  const chapterKey = progress !== keys[0] ? getChapterKey(progress) : ''
 
   return (
     <div className="flex h-full grow items-end justify-center">
@@ -35,7 +35,7 @@ export default function Hero() {
           <div className="flex items-center justify-center md:justify-end">
             <Button
               classes="text-xl md:!w-64 w-full"
-              href={`${chaptersUrl}#${progressFragment}`}
+              href={`${chaptersUrl}#${chapterKey}`}
             >
               {t('hero.start_journey')}
             </Button>
