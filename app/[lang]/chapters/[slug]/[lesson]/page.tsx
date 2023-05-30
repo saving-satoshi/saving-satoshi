@@ -18,7 +18,7 @@ import { useAuthContext } from 'providers/AuthProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { Loader } from 'shared'
 import { LoadingState } from 'types'
-import { notFound } from 'next/navigation'
+import { notFound, usePathname } from 'next/navigation'
 import Client from 'components/Client'
 
 export default function Page({ params }) {
@@ -35,6 +35,9 @@ export default function Page({ params }) {
   const { progress, isLoading: isProgressLoading } = useProgressContext()
 
   const [unlocked, setUnlocked] = useState<number>(LoadingState.Idle)
+
+  const pathname = usePathname()
+  useEffect(() => window.scroll(0, 0), [pathname])
 
   useEffect(() => {
     if (!isAccountLoading && !isProgressLoading) {
