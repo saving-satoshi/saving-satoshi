@@ -113,7 +113,7 @@ export default function Chapter({ children, metadata, lang }) {
                     invisible: activeTab !== 'info',
                   })}
                 >
-                  <div className="mt-6 font-nunito">
+                  <div className="font-nunito md:mt-6">
                     {(chapter.metadata.lessons.length > 0 && display && (
                       <div className="text-lg text-white">{children}</div>
                     )) ||
