@@ -89,7 +89,7 @@ export default function Tab({
       {!isUnlocked && (
         <Icon
           icon="lock"
-          className="absolute right-[15px] -mr-2 h-[12px] w-[12px] opacity-50"
+          className="absolute right-[15px] -mr-2 h-3 w-3 opacity-50"
         />
       )}
       {isCompleted && (
