@@ -11,6 +11,7 @@ export default function Modal({
 }) {
   const handleClick = (e) => {
     if (e.target.classList.contains('modal-backdrop')) {
+      document.body.classList.remove('overflow-y-hidden')
       onRequestClose()
     }
   }

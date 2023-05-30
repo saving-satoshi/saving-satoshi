@@ -22,10 +22,6 @@ export default function LoginModal({ onClose, state }) {
     onClose()
   }
 
-  function handleCloseClick() {
-    onClose()
-  }
-
   if (!isLoaded || !account) {
     return null
   }
@@ -33,7 +29,7 @@ export default function LoginModal({ onClose, state }) {
   return (
     <Modal active={state.open} onRequestClose={onClose}>
       <div className="float-right flex justify-end">
-        <button onClick={handleCloseClick} aria-label="Close">
+        <button onClick={onClose} aria-label="Close">
           <Icon icon="close" className="h-6 w-6" />
         </button>
       </div>
