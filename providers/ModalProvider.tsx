@@ -44,10 +44,9 @@ export default function ModalProvider({
     if (!newModals.hasOwnProperty(name)) {
       return
     }
-    document.body.classList.remove('overflow-y-hidden')
-
     newModals[name].open = false
     setModals(newModals)
+    document.body.classList.remove('overflow-y-hidden')
   }
 
   return (
