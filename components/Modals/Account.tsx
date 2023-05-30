@@ -16,10 +16,6 @@ export default function LoginModal({ onClose, state }) {
 
   const isLoaded = !isAccountLoading && !isProgressLoading
 
-  if (state.open) {
-    document.body.classList.add('overflow-y-hidden')
-  }
-
   const handleSignOut = async () => {
     const logoutSuccess = await logout()
 

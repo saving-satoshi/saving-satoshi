@@ -8,10 +8,6 @@ import Icon from 'shared/Icon'
 export default function LoginModal({ onClose, state }) {
   const lang = useLang()
 
-  if (state.open) {
-    document.body.classList.add('overflow-y-hidden')
-  }
-
   return (
     <Modal active={state.open} onRequestClose={onClose}>
       <div className="float-right flex justify-end">

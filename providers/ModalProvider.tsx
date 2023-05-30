@@ -35,6 +35,7 @@ export default function ModalProvider({
     })
     newModals[name] = { open: true, meta }
     setModals(newModals)
+    document.body.classList.add('overflow-y-hidden')
   }
 
   const close = (name: string) => {
@@ -43,7 +44,6 @@ export default function ModalProvider({
     if (!newModals.hasOwnProperty(name)) {
       return
     }
-
     document.body.classList.remove('overflow-y-hidden')
 
     newModals[name].open = false
