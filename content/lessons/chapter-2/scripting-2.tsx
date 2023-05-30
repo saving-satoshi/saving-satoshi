@@ -4,6 +4,7 @@ import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
+import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 
 export const metadata = {
@@ -55,7 +56,9 @@ VM.close()
   defaultCode: `const crypto = require('crypto')
 
 function findHash(nonce) {
-  // Enter your script here (should return a 64 character long string)
+  /* Enter a function that returns a sha256 hash based on
+  the nonce argument provided */
+  return hash
 }`,
   validate: async (answer) => {
     return answer.startsWith('00000') && answer.length === 64
@@ -104,8 +107,9 @@ VM.result({ 'value': hash, 'error': None })
   defaultCode: `from hashlib import sha256
 
 def find_hash(nonce):
-  # Enter your script here (should return a 64 character long string)
-`,
+  # Enter a function that returns a sha256 hash based on
+  # the nonce argument provided
+  return hash`,
   validate: async (answer) => {
     return answer.startsWith('00000') && answer.length === 64
   },
@@ -122,12 +126,19 @@ const config: EditorConfig = {
 export default function Scripting2({ lang }) {
   const t = useTranslations(lang)
 
+  const [language, setLanguage] = useState(config.defaultLanguage)
+
+  const handleSelectLanguage = (language: string) => {
+    setLanguage(language)
+  }
+
   return (
     <ScriptingChallenge
       lang={lang}
       config={config}
       lessonKey={getLessonKey('chapter-2', 'scripting-2')}
       successMessage={t('chapter_two.scripting_two.success')}
+      onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>
         <Text className="font-nunito text-xl text-white">
@@ -136,6 +147,17 @@ export default function Scripting2({ lang }) {
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_two.scripting_two.paragraph_two')}
         </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t(`chapter_two.scripting_two.${language}.paragraph_three`)}
+        </Text>
+        <ul className="list-disc pl-4">
+          <li className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_two.scripting_two.${language}.list_one`)}
+          </li>
+          <li className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_two.scripting_two.${language}.list_two`)}
+          </li>
+        </ul>
       </LessonInfo>
     </ScriptingChallenge>
   )

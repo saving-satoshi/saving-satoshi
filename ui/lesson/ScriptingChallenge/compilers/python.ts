@@ -86,6 +86,11 @@ run()
 `.trim()
 }
 
+function parseError(error) {
+  const pythonError = error.split('Error:')[1].toString()
+  return pythonError
+}
+
 function indent(code, indentation = 0) {
   return code
     .split('\n')
@@ -96,6 +101,7 @@ function indent(code, indentation = 0) {
 
 const python = {
   compile,
+  parseError,
 }
 
 export default python
