@@ -121,7 +121,7 @@ export default function Chapter({ children, metadata, lang }) {
                         <div className="flex font-nunito text-lg text-white">
                           <Icon
                             icon="lock"
-                            className="my-auto mr-2 justify-center"
+                            className="my-auto mr-2 h-[12px] w-[12px] justify-center"
                           />
                           {t('chapter.chapter_locked_one')} {position - 1}{' '}
                           {t('chapter.chapter_locked_two')}
