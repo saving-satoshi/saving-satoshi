@@ -17,7 +17,7 @@ export default function Outro1({ lang }) {
   return (
     <ChapterEnd
       image={metadata.image}
-      className="relative -mt-[63px] flex h-[1200px] overflow-y-scroll md:-mt-[70px] md:h-screen"
+      className="relative -mt-[63px] flex h-[1150px] overflow-y-scroll md:-mt-[70px] md:h-screen"
       direction="right"
       lang={lang}
     >
