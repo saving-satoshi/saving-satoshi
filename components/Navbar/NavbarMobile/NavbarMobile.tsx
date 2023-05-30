@@ -17,7 +17,7 @@ import Link from 'next/link'
 import HelpLink from '../HelpLink'
 import Icon from 'shared/Icon'
 import { navbarThemeSelector } from 'lib/themeSelector'
-import { getChapterKey } from 'lib/progress'
+import { getChapterKey, keys } from 'lib/progress'
 
 export default function NavbarMobile({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
@@ -30,7 +30,7 @@ export default function NavbarMobile({ params }) {
 
   const chapterLessons = lessons?.[chapterId]
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null
-  const currentLessonKey = lesson?.key ?? 'CH1INT1'
+  const currentLessonKey = lesson?.key ?? keys[0]
 
   const progressFragment = getChapterKey(currentLessonKey)
 
