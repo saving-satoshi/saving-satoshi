@@ -17,8 +17,8 @@ export default function UserButton() {
   }
 
   return (
-    <div className="flex items-center">
-      <div className="ml-4 h-10 w-10">
+    <div className="flex h-full items-center justify-center text-left">
+      <div className="flex h-full w-full items-center justify-center">
         {!hasMounted || (isLoading && <div />)}
         {hasMounted && !isLoading && (
           <>
@@ -26,7 +26,7 @@ export default function UserButton() {
               <button
                 onClick={() => handleClick(Modal.Account)}
                 aria-label="profile"
-                className="text-grey-300 flex h-10 cursor-pointer items-center"
+                className="text-grey-300 flex h-full w-full cursor-pointer items-center justify-center hover:bg-black/25"
               >
                 <Avatar avatar={account.avatar} size={30} />
               </button>
@@ -35,9 +35,9 @@ export default function UserButton() {
               <button
                 onClick={() => handleClick(Modal.SignIn)}
                 aria-label="profile"
-                className="text-grey-300 h-10 cursor-pointer"
+                className="text-grey-300 flex h-full w-full cursor-pointer items-center justify-center hover:bg-black/25"
               >
-                <Icon icon="avatar" />
+                <Icon icon="avatar" className="h-[30px] w-[30px]" />
               </button>
             )}
           </>

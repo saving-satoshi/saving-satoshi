@@ -84,7 +84,9 @@ export default function NavbarMobile({ params }) {
         </div>
         <div className="flex items-center">
           <HelpLink params={params} />
-          <UserButton />
+          <span className="h-[62px] w-12">
+            <UserButton />
+          </span>
         </div>
       </div>
       <Menu isOpen={isOpen} params={params} clicked={handleTabClick} />

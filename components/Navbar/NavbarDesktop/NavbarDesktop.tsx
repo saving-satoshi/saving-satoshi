@@ -41,7 +41,7 @@ export default function NavbarDesktop({ params }) {
         <nav className="flex items-center">
           <TabGroup params={params} />
           <HelpLink params={params} />
-          <span className="flex h-full items-center">
+          <span className="h-[69px] w-16">
             <UserButton />
           </span>
         </nav>
