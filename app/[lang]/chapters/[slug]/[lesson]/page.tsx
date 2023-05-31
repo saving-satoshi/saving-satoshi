@@ -38,8 +38,21 @@ export default function Page({ params }) {
   // For testing of NumericInput. TO BE REMOVED
   const [value, setValue] = useState(0)
 
-  function handleKeyDown(value) {
-    console.log(value)
+  function handleChangeControlled(evt) {
+    const newVal = evt.target.valueAsNumber
+    setValue(newVal)
+  }
+
+  function handleChangeUnControlled(evt) {
+    const newVal = evt.target.valueAsNumber
+    console.log(newVal)
+  }
+
+  function handleKeyDown(evt) {
+    if (evt.key === 'Enter') {
+      const newVal = evt.target.valueAsNumber
+      console.log(newVal)
+    }
   }
   //^^TO BE REMOVED
 
@@ -130,11 +143,16 @@ export default function Page({ params }) {
         <NumericInput
           label={'Controlled'}
           value={value}
-          onChange={setValue}
+          onChange={handleChangeControlled}
           onKeyDown={handleKeyDown}
         />
         {/* Uncontrolled Component */}
-        <NumericInput label={'Uncontrolled'} defaultValue={20} />
+        <NumericInput
+          label={'Uncontrolled'}
+          defaultValue={20}
+          onChange={handleChangeUnControlled}
+          onKeyDown={handleKeyDown}
+        />
         <Lesson lang={params.lang} />
       </>
     )
