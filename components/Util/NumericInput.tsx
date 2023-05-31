@@ -18,37 +18,39 @@ export default function NumericInput({
   step?: number
   defaultValue?: number
   value?: number
-  onChange?: Dispatch<SetStateAction<number>>
-  onKeyDown?: (value: number | undefined) => void
+  onChange?: (evt: any) => void
+  onKeyDown?: (evt: any) => void
 }) {
   // The logical operation here simulates XOR operation
   // Only either of them should be TRUE at one time.
   // This operation ensures that
-  if ((value && onChange) === defaultValue) {
+  if (value && defaultValue) {
     throw new Error('Provide only either of value or defaultValue.')
   }
 
-  const isControlled = value !== undefined && onChange !== undefined
+  const isControlled = value !== undefined
 
-  const [internalValue, setInternelValue] = useState(
+  const [internalValue, setInternalValue] = useState(
     isControlled ? value : defaultValue
   )
 
   function handleChange(evt) {
-    const newValue = evt.target.valueAsNumber
-
-    if (isControlled) {
-      onChange(newValue)
-    } else {
-      setInternelValue(newValue)
+    if (onChange) {
+      onChange(evt)
+    }
+    if (!isControlled) {
+      const newValue = evt.target.valueAsNumber
+      setInternalValue(newValue)
     }
   }
 
   function handleKeyDown(evt) {
-    if (evt.key == 'Enter') {
-      if (isControlled && onKeyDown) {
-        onKeyDown(internalValue)
-      } else {
+    if (onKeyDown) {
+      onKeyDown(evt)
+    }
+    if (!isControlled) {
+      // Dummy Keydown Handler
+      if (evt.key === 'Enter') {
         console.log(internalValue)
       }
     }
@@ -56,7 +58,7 @@ export default function NumericInput({
 
   useEffect(() => {
     if (isControlled) {
-      setInternelValue(value)
+      setInternalValue(value)
     }
   }, [isControlled, value])
 
