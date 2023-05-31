@@ -8,7 +8,7 @@ import { useAuthContext } from './AuthProvider'
 import { keys } from 'lib/progress'
 
 export const defaultProgressContext = {
-  progress: 'CH1INT1',
+  progress: keys[0],
   isLoading: true,
   saveProgress: (key: string) => Promise.resolve(),
   saveProgressLocal: (key: string) => Promise.resolve(),
@@ -30,12 +30,14 @@ export default function ProgressProvider({
     defaultProgressContext.progress
   )
   const [isLoading, setIsLoading] = useState(true)
-  const [savePending, setSavePending] = useState(false)
 
   const init = async () => {
     try {
       setIsLoading(true)
-      const progress = await getProgress()
+      let progress = await getProgress()
+      if (progress === keys[0]) {
+        progress = await getProgressLocal()
+      }
       setAccountProgress(progress)
     } catch (ex) {
       console.error(ex)
@@ -60,13 +62,13 @@ export default function ProgressProvider({
     const progress = await getProgress()
     if (keys.indexOf(progress) < keys.indexOf(key)) {
       try {
-        setSavePending(true)
+        setIsLoading(true)
         setAccountProgress(key)
         await setProgress(key)
       } catch (ex) {
         console.error(ex)
       } finally {
-        setSavePending(false)
+        setIsLoading(false)
       }
     }
   }
@@ -75,13 +77,13 @@ export default function ProgressProvider({
     const progress = await getProgressLocal()
     if (keys.indexOf(progress) < keys.indexOf(key)) {
       try {
-        setSavePending(true)
+        setIsLoading(true)
         setAccountProgress(key)
         await setProgressLocal(key)
       } catch (ex) {
         console.error(ex)
       } finally {
-        setSavePending(false)
+        setIsLoading(false)
       }
     }
   }
@@ -97,7 +99,7 @@ export default function ProgressProvider({
   return (
     <ProgressContext.Provider
       value={{
-        progress: accountProgress ?? 'CH1INT1',
+        progress: accountProgress ?? keys[0],
         saveProgress,
         saveProgressLocal,
         isLoading,

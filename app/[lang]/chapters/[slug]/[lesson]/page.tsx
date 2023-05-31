@@ -113,6 +113,7 @@ export default function Page({ params }) {
     keys.indexOf(progress) <= keys.indexOf(nextLessonKey) - 1 &&
     isRestrictedFromLesson
   ) {
+    console.warn(`lesson ${pathData.lessonId} is locked.`)
     return navigation.redirect(lastUnlockedLessonPath)
   }
 
