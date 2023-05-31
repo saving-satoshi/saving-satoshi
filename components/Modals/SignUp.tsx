@@ -12,6 +12,9 @@ import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import { Input } from 'shared'
 import Modal from './Modal'
+{
+  /*import Profile from 'components/utils/Profile'*/
+}
 
 enum View {
   Generate = 'generate',
@@ -169,6 +172,8 @@ export default function LoginModal({ onClose, state }) {
           {!loading && t('modal_signup.confirm')}
         </button>
       </div>
+      {/* Testing Profile Component
+      <Profile name='friend' description="good friend"></Profile>*/}
     </Modal>
   )
 }

@@ -6,19 +6,19 @@ export default function Profile({
   description,
   children,
 }: {
-  avatar: string
+  avatar?: string
   name: string
-  description: string
-  children: React.ReactNode
+  description?: string
+  children?: React.ReactNode
 }) {
   return (
-    <div>
+    <div className="flex w-full flex-col items-center p-4">
       <Avatar avatar={avatar} />
-      <div>
-        {name}
-        {description}
+      <div className="my-5 flex flex-col gap-4">
+        <span className="text-xl font-bold text-white">{name}</span>
+        <span className="text-xl font-bold text-white">{description}</span>
       </div>
-      <div>{children}</div>
+      <div className="w-full">{children}</div>
     </div>
   )
 }
