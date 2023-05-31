@@ -87,7 +87,10 @@ export default function Tab({
     >
       {index + 1}. <span className="ml-1 text-white">{t(challenge.title)}</span>
       {!isUnlocked && (
-        <Icon icon="lock" className="absolute right-[15px] -mr-2 opacity-50" />
+        <Icon
+          icon="lock"
+          className="absolute right-[15px] -mr-2 h-3 w-3 opacity-50"
+        />
       )}
       {isCompleted && (
         <Icon icon="check" className="absolute right-[5px] h-5 w-5" />
