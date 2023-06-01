@@ -1,9 +1,11 @@
 'use client'
 
 import { Button } from 'shared'
-import { useSaveAndReturn, useTranslations } from 'hooks'
+import { useSaveAndReturn, useTranslations, usePathData } from 'hooks'
 import { Modal, useModalContext } from 'providers/ModalProvider'
 import { useAuthContext } from 'providers/AuthProvider'
+import { keys } from 'lib/progress'
+import { lessons } from 'content'
 import clsx from 'clsx'
 import Image from 'next/image'
 
@@ -20,9 +22,13 @@ export default function End({
 }) {
   const t = useTranslations(lang)
   const modals = useModalContext()
-  const saveAndReturn = useSaveAndReturn()
-
   const { account } = useAuthContext()
+  const saveAndReturn = useSaveAndReturn()
+  const { chapterId, lessonId } = usePathData()
+
+  const chapterLessons = lessons?.[chapterId]
+  const lesson = chapterLessons?.[lessonId]?.metadata ?? null
+  const currentLessonKey = lesson?.key ?? 'CH1INT1'
 
   const handleClick = () => {
     if (!account) {
@@ -56,6 +62,16 @@ export default function End({
               {(!account && t('chapter_one.end.save')) ||
                 (account && t('shared.next'))}
             </Button>
+            {keys[keys.length - 1] === currentLessonKey && (
+              <Button
+                href="https://forms.gle/WhdJwcKKetB9sFL79"
+                external
+                style="outline"
+                size="small"
+              >
+                {t('chapter_one.end.feedback')}
+              </Button>
+            )}
           </div>
         </div>
       </div>
