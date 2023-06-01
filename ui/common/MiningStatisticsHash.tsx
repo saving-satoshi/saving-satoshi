@@ -79,7 +79,7 @@ export default function MiningStatisticHash({
     }
 
     if (!hasherState && step === 2) {
-      const time = 1 * 15 * 1000
+      const time = 1 * 10 * 1000
       onButtonClick(true)
       setHasherState(true)
       setRandomHash(true)
