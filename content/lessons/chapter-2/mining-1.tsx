@@ -245,10 +245,10 @@ export default function Mining1({ lang }) {
                 {t('chapter_two.mining_one.paragraph_seven')}
               </div>
               <div className="mt-2 break-all border border-dashed border-white p-2.5 font-space-mono text-[15px] font-normal">
-                0000 0000 00
+                0000 2f22 2f
                 <span className="text-white text-opacity-50">
-                  72 947e 2f22 250f ac0d dd88<br></br> 2fcb f37c f6e2 340a 4112
-                  9b6r 23a2 823a
+                  cb 4112 0000 250f f37c 9b6r<br></br> 0072 ac0d f6e2 23a2 947e
+                  dd88 340a 823a
                 </span>
               </div>
               <div className="mt-8 text-lg">
