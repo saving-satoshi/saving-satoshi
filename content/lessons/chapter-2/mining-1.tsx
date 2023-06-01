@@ -98,7 +98,7 @@ export default function Mining1({ lang }) {
         setBlocks(currentBlock)
         setTransactionsConfirmed(currentBlock * 3500)
         setBitcoinMined(currentBlock * 0.0061)
-      }, 1 * 15 * 1000)
+      }, 1 * 8 * 1000)
     }
     return () => clearInterval(interval)
   }, [ramdomNonce])
