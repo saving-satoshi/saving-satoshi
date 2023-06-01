@@ -70,7 +70,7 @@ export default function MiningStatisticNonce({
       {!disabled &&
         step !== 2 &&
         step < 4 &&
-        (blockFound % 4 !== 0 || blockFound === 0 || step === 3) && (
+        (blockFound % 4 !== 0 || blockFound === 0) && (
           <div className="order-last flex items-center justify-center">
             <div className="flex  w-[76px] overflow-hidden font-space-mono text-[6px] !text-[#EDA081]">
               {formatHash(hash, 4, 4, 64, false, true)}
@@ -84,7 +84,7 @@ export default function MiningStatisticNonce({
         )}
       {(step === 2 ||
         step >= 4 ||
-        (blockFound % 4 === 0 && blockFound !== 0 && step !== 3)) && (
+        (blockFound % 4 === 0 && blockFound !== 0)) && (
         <div className="order-last flex items-center justify-center">
           <div className="flex  w-[76px] overflow-hidden font-space-mono text-[6px] !text-[#5DBC59]">
             {formatHash(finalHash, 4, 4, 64, false, true)}
