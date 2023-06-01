@@ -18,7 +18,6 @@ import { Loader } from 'shared'
 import { LoadingState } from 'types'
 import { notFound } from 'next/navigation'
 import Client from 'components/Client'
-import NumericInput from 'components/Util/NumericInput'
 
 export default function Page({ params }) {
   const searchParams = navigation.useSearchParams()
@@ -34,27 +33,6 @@ export default function Page({ params }) {
   const { progress, isLoading: isProgressLoading } = useProgressContext()
 
   const [unlocked, setUnlocked] = useState<number>(LoadingState.Idle)
-
-  // For testing of NumericInput. TO BE REMOVED
-  const [value, setValue] = useState(0)
-
-  function handleChangeControlled(evt) {
-    const newVal = evt.target.valueAsNumber
-    setValue(newVal)
-  }
-
-  function handleChangeUnControlled(evt) {
-    const newVal = evt.target.valueAsNumber
-    console.log(newVal)
-  }
-
-  function handleKeyDown(evt) {
-    if (evt.key === 'Enter') {
-      const newVal = evt.target.valueAsNumber
-      console.log(newVal)
-    }
-  }
-  //^^TO BE REMOVED
 
   useEffect(() => {
     if (!isAccountLoading && !isProgressLoading) {
@@ -138,21 +116,6 @@ export default function Page({ params }) {
     unlocked && (
       <>
         <Head />
-        {/* FOR TESTING. TO BE REMOVED */}
-        {/* Controlled Component */}
-        <NumericInput
-          label={'Controlled'}
-          value={value}
-          onChange={handleChangeControlled}
-          onKeyDown={handleKeyDown}
-        />
-        {/* Uncontrolled Component */}
-        <NumericInput
-          label={'Uncontrolled'}
-          defaultValue={20}
-          onChange={handleChangeUnControlled}
-          onKeyDown={handleKeyDown}
-        />
         <Lesson lang={params.lang} />
       </>
     )
