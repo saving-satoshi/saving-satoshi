@@ -31,12 +31,17 @@ export default function Mining1({ lang }) {
   const [bitcoinMinedHighlight, setBitcoinMinedHighlight] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [ramdomNonce, setRandomNonce] = useState(false)
+  const [showText, setShowText] = useState(true)
 
   const saveAndProceed = useSaveAndProceed()
 
   useEffect(() => {
     setHydrated(true)
   }, [])
+
+  useEffect(() => {
+    setShowText(true)
+  }, [step])
 
   function displayRandomNumbers(
     NonceStepSize: number,
@@ -67,7 +72,10 @@ export default function Mining1({ lang }) {
         setTransactionsConfirmed(currentBlock * 3500)
         setBitcoinMined(currentBlock * 0.0061)
         if (currentBlock === 1000) {
-          setStep(4)
+          setShowText(false)
+          setTimeout(() => {
+            setStep(4)
+          }, 300)
           setNonceHighlight(true)
           setHashPowerHighlight(true)
           clearInterval(intervalId)
@@ -90,30 +98,45 @@ export default function Mining1({ lang }) {
   }, [ramdomNonce])
 
   const transactionStep = () => {
-    setStep(5)
+    setShowText(false)
+    setTimeout(() => {
+      setStep(5)
+    }, 300)
     setNonceHighlight(false)
     setHashPowerHighlight(false)
     setTransactionsConfirmedHighlight(true)
   }
 
   const bitcoinStep = () => {
-    setStep(6)
+    setShowText(false)
+    setTimeout(() => {
+      setStep(6)
+    }, 300)
     setTransactionsConfirmedHighlight(false)
     setBitcoinMinedHighlight(true)
   }
 
   const finalStep = () => {
-    setStep(7)
+    setShowText(false)
+    setTimeout(() => {
+      setStep(7)
+    }, 300)
     setBitcoinMinedHighlight(false)
   }
 
   const turnOnButton = () => {
     if (step === 0) {
-      setStep(1)
+      setShowText(false)
+      setTimeout(() => {
+        setStep(1)
+      }, 300)
       const time = 1 * 15 * 1000
       displayRandomNumbers(1760, 0, 0, time)
       setTimeout(() => {
-        setStep(2)
+        setShowText(false)
+        setTimeout(() => {
+          setStep(2)
+        }, 300)
         setBlocks(1)
         setTransactionsConfirmed(3500)
         setBitcoinMined(0.0061)
@@ -121,7 +144,10 @@ export default function Mining1({ lang }) {
     }
 
     if (step === 2) {
-      setStep(3)
+      setShowText(false)
+      setTimeout(() => {
+        setStep(3)
+      }, 300)
       setRandomNonce(true)
     }
 
@@ -184,143 +210,141 @@ export default function Mining1({ lang }) {
             transactionTitle={t('chapter_two.mining_one.progress_bar_three')}
           />
         </div>
-        <div className="mb-5 flex w-full items-center px-[15px] md:mx-0 md:mt-0 md:mb-0 md:w-1/2 md:max-w-[405px] md:pr-0 md:pl-[15px]">
-          {step === 0 && (
-            <div
-              className={clsx(
-                'font-nunito text-white transition-all duration-200',
-                {
-                  'opacity-0': step !== 0,
-                  'opacity-100': step === 0,
-                }
+        <div
+          className={`mb-5 flex w-full items-center px-[15px] transition-opacity md:mx-0 md:mt-0 md:mb-0 md:w-1/2 md:max-w-[405px] md:pr-0 md:pl-[15px] ${
+            showText ? 'fade-in' : 'fade-out'
+          }`}
+        >
+          {showText && (
+            <div>
+              {step === 0 && (
+                <div className={clsx('font-nunito text-white ')}>
+                  <Title>{t('chapter_two.mining_one.heading_one')}</Title>
+                  <div className="mt-2 text-lg">
+                    {t('chapter_two.mining_one.paragraph_one')}
+                  </div>
+
+                  <div className="mt-8 text-lg">
+                    {t('chapter_two.mining_one.paragraph_two')}
+                  </div>
+
+                  <div className="mt-8 text-lg">
+                    {t('chapter_two.mining_one.paragraph_two_one')}
+                  </div>
+                </div>
               )}
-            >
-              <Title>{t('chapter_two.mining_one.heading_one')}</Title>
-              <div className="mt-2 text-lg">
-                {t('chapter_two.mining_one.paragraph_one')}
-              </div>
+              {step === 1 && (
+                <div className={clsx('font-nunito text-white ')}>
+                  <Title>{t('chapter_two.mining_one.heading_two')}</Title>
+                  <div className="mt-2 text-lg">
+                    {t('chapter_two.mining_one.paragraph_three')}
+                  </div>
 
-              <div className="mt-8 text-lg">
-                {t('chapter_two.mining_one.paragraph_two')}
-              </div>
+                  <div className="mt-8 text-lg">
+                    {t('chapter_two.mining_one.paragraph_four')}
+                  </div>
 
-              <div className="mt-8 text-lg">
-                {t('chapter_two.mining_one.paragraph_two_one')}
-              </div>
-            </div>
-          )}
-          {step === 1 && (
-            <div
-              className={clsx(
-                'font-nunito text-white opacity-0 transition-opacity duration-1000',
-                {
-                  'opacity-100': step === 1,
-                }
+                  <div className="mt-8 text-lg">
+                    {t('chapter_two.mining_one.paragraph_five')}
+                  </div>
+                </div>
               )}
-            >
-              <Title>{t('chapter_two.mining_one.heading_two')}</Title>
-              <div className="mt-2 text-lg">
-                {t('chapter_two.mining_one.paragraph_three')}
-              </div>
-
-              <div className="mt-8 text-lg">
-                {t('chapter_two.mining_one.paragraph_four')}
-              </div>
-
-              <div className="mt-8 text-lg">
-                {t('chapter_two.mining_one.paragraph_five')}
-              </div>
-            </div>
-          )}
-          {step === 2 && (
-            <div className="font-nunito text-white transition-all duration-200">
-              <Title>{t('chapter_two.mining_one.heading_three')}</Title>
-              <div className="mt-2 text-lg">
-                {t('chapter_two.mining_one.paragraph_six')}
-              </div>
-              <div className="mt-2 border border-dashed border-white p-2.5 font-space-mono text-[15px] font-normal">
-                {Intl.NumberFormat().format(nonce * 10 ** 13 + 2352853282471)}
-              </div>
-              <div className="mt-8 text-lg">
-                {t('chapter_two.mining_one.paragraph_seven')}
-              </div>
-              <div className="mt-2 break-all border border-dashed border-white p-2.5 font-space-mono text-[15px] font-normal">
-                0000 0000 00
-                <span className="text-white text-opacity-50">
-                  72 947e 2f22 250f ac0d dd88<br></br> 2fcb f37c f6e2 340a 4112
-                  9b6r 23a2 823a
-                </span>
-              </div>
-              <div className="mt-8 text-lg">
-                {t('chapter_two.mining_one.paragraph_eight')}
-              </div>
-              <div className="mt-8 text-lg">
-                {t('chapter_two.mining_one.paragraph_eight_one')}
-              </div>
-            </div>
-          )}
-          {step === 3 && (
-            <div className="font-nunito text-white transition-all duration-200">
-              <Title>{t('chapter_two.mining_one.heading_four')}</Title>
-              <div className="mt-2 text-lg">
-                {t('chapter_two.mining_one.paragraph_nine')}
-              </div>
-            </div>
-          )}
-          {step === 4 && (
-            <div className="font-nunito text-white transition-all duration-200">
-              <Title>{t('chapter_two.mining_one.heading_five')}</Title>
-              <div className="mt-2 text-lg">
-                {t('chapter_two.mining_one.paragraph_ten')}
-              </div>
-              <Button
-                onClick={transactionStep}
-                style="outline"
-                classes="mt-10 max-md:w-full"
-              >
-                {t('hero.tell_more')}
-              </Button>
-            </div>
-          )}
-          {step === 5 && (
-            <div className="font-nunito text-white transition-all duration-200">
-              <div className="mt-8 text-lg">
-                {t('chapter_two.mining_one.paragraph_eleven')}
-              </div>
-              <Button
-                onClick={bitcoinStep}
-                style="outline"
-                classes="mt-10 max-md:w-full"
-              >
-                {t('hero.tell_more')}
-              </Button>
-            </div>
-          )}
-          {step === 6 && (
-            <div className="font-nunito text-white transition-all duration-200">
-              <div className="mt-8 text-lg">
-                {t('chapter_two.mining_one.paragraph_twelve')}
-              </div>
-              <Button
-                onClick={finalStep}
-                style="outline"
-                classes="mt-10 max-md:w-full"
-              >
-                {t('hero.tell_more')}
-              </Button>
-            </div>
-          )}
-          {step === 7 && (
-            <div className="font-nunito text-white transition-all duration-200">
-              <div className="mt-8 text-lg">
-                {t('chapter_two.mining_one.paragraph_thirteen')}
-              </div>
-              <div className="mt-8 text-lg">
-                {t('chapter_two.mining_one.paragraph_fourteen')}
-              </div>
-              <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
-                {t('shared.next')}
-              </Button>
+              {step === 2 && (
+                <div className="font-nunito text-white">
+                  <Title>{t('chapter_two.mining_one.heading_three')}</Title>
+                  <div className="mt-2 text-lg">
+                    {t('chapter_two.mining_one.paragraph_six')}
+                  </div>
+                  <div className="mt-2 border border-dashed border-white p-2.5 font-space-mono text-[15px] font-normal">
+                    {Intl.NumberFormat().format(
+                      nonce * 10 ** 13 + 2352853282471
+                    )}
+                  </div>
+                  <div className="mt-8 text-lg">
+                    {t('chapter_two.mining_one.paragraph_seven')}
+                  </div>
+                  <div className="mt-2 break-all border border-dashed border-white p-2.5 font-space-mono text-[15px] font-normal">
+                    0000 0000 00
+                    <span className="text-white text-opacity-50">
+                      72 947e 2f22 250f ac0d dd88<br></br> 2fcb f37c f6e2 340a
+                      4112 9b6r 23a2 823a
+                    </span>
+                  </div>
+                  <div className="mt-8 text-lg">
+                    {t('chapter_two.mining_one.paragraph_eight')}
+                  </div>
+                  <div className="mt-8 text-lg">
+                    {t('chapter_two.mining_one.paragraph_eight_one')}
+                  </div>
+                </div>
+              )}
+              {step === 3 && (
+                <div className="font-nunito text-white">
+                  <Title>{t('chapter_two.mining_one.heading_four')}</Title>
+                  <div className="mt-2 text-lg">
+                    {t('chapter_two.mining_one.paragraph_nine')}
+                  </div>
+                </div>
+              )}
+              {step === 4 && (
+                <div className="font-nunito text-white">
+                  <Title>{t('chapter_two.mining_one.heading_five')}</Title>
+                  <div className="mt-2 text-lg">
+                    {t('chapter_two.mining_one.paragraph_ten')}
+                  </div>
+                  <Button
+                    onClick={transactionStep}
+                    style="outline"
+                    classes="mt-10 max-md:w-full"
+                  >
+                    {t('hero.tell_more')}
+                  </Button>
+                </div>
+              )}
+              {step === 5 && (
+                <div className="font-nunito text-white">
+                  <div className="mt-8 text-lg">
+                    {t('chapter_two.mining_one.paragraph_eleven')}
+                  </div>
+                  <Button
+                    onClick={bitcoinStep}
+                    style="outline"
+                    classes="mt-10 max-md:w-full"
+                  >
+                    {t('hero.tell_more')}
+                  </Button>
+                </div>
+              )}
+              {step === 6 && (
+                <div className="font-nunito text-white">
+                  <div className="mt-8 text-lg">
+                    {t('chapter_two.mining_one.paragraph_twelve')}
+                  </div>
+                  <Button
+                    onClick={finalStep}
+                    style="outline"
+                    classes="mt-10 max-md:w-full"
+                  >
+                    {t('hero.tell_more')}
+                  </Button>
+                </div>
+              )}
+              {step === 7 && (
+                <div className="font-nunito text-white">
+                  <div className="mt-8 text-lg">
+                    {t('chapter_two.mining_one.paragraph_thirteen')}
+                  </div>
+                  <div className="mt-8 text-lg">
+                    {t('chapter_two.mining_one.paragraph_fourteen')}
+                  </div>
+                  <Button
+                    onClick={saveAndProceed}
+                    classes="mt-10 max-md:w-full"
+                  >
+                    {t('shared.next')}
+                  </Button>
+                </div>
+              )}
             </div>
           )}
         </div>
