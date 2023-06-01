@@ -103,6 +103,15 @@ export default function Mining1({ lang }) {
     return () => clearInterval(interval)
   }, [ramdomNonce])
 
+  useEffect(() => {
+    if (blocks === 1000) {
+      setStep(4)
+      setNonceHighlight(true)
+      setHashPowerHighlight(true)
+      setRandomNonce(false)
+    }
+  }, [blocks])
+
   const transactionStep = () => {
     setStep(5)
     setNonceHighlight(false)
