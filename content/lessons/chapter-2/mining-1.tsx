@@ -80,13 +80,19 @@ export default function Mining1({ lang }) {
   useEffect(() => {
     let interval: NodeJS.Timeout
     let currentNonce = nonce
-    let currentBlock = blocks
     if (ramdomNonce) {
       interval = setInterval(() => {
         currentNonce = currentNonce + Math.floor(Math.random() * 1760)
         setNonce(currentNonce)
       }, 40)
+    }
+    return () => clearInterval(interval)
+  }, [ramdomNonce])
 
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+    let currentBlock = blocks
+    if (ramdomNonce) {
       interval = setInterval(() => {
         currentBlock = currentBlock + 1
         setBlocks(currentBlock)
