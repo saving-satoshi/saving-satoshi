@@ -172,8 +172,8 @@ export default function LoginModal({ onClose, state }) {
           {!loading && t('modal_signup.confirm')}
         </button>
       </div>
-      { Testing Profile Component
-      <Profile name='friend' description="good friend"></Profile>}
+     
+      <Profile name='friend' description="good friend"></Profile>
     </Modal>
   )
 }
