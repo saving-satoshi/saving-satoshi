@@ -27,7 +27,7 @@ export default function NavbarDesktop({ params }) {
         <div className="flex">
           <Link
             title={t('shared.poweroff')}
-            className="group flex items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
+            className="group flex w-[70px] items-center justify-center border-r border-white/25 text-sm text-white transition duration-100 ease-in-out hover:bg-black/25"
             href={routes.chaptersUrl}
           >
             <Icon
@@ -41,7 +41,7 @@ export default function NavbarDesktop({ params }) {
         <nav className="flex items-center">
           <TabGroup params={params} />
           <HelpLink params={params} />
-          <span className="h-[69px] w-16">
+          <span className="h-full w-[70px] items-stretch hover:bg-black/25">
             <UserButton />
           </span>
         </nav>

@@ -53,11 +53,11 @@ export default function NavbarMobile({ params }) {
         }
       )}
     >
-      <div className="flex items-stretch border-b border-white/80 text-white">
+      <div className="flex h-[70px] items-stretch border-b border-white/80 text-white">
         <div className="flex">
           <Link
             title={t('shared.back')}
-            className="group flex items-center border-r border-white/25 p-4 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
+            className="flex w-[50px] items-center justify-center border-r border-white/25 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
             href={chaptersUrl}
           >
             <Icon
@@ -84,7 +84,7 @@ export default function NavbarMobile({ params }) {
         </div>
         <div className="flex items-center">
           <HelpLink params={params} />
-          <span className="h-[62px] w-12">
+          <span className="h-full w-[50px]">
             <UserButton />
           </span>
         </div>
