@@ -12,9 +12,9 @@ import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import { Input } from 'shared'
 import Modal from './Modal'
-{
-  /*import Profile from 'components/utils/Profile'*/
-}
+
+import Profile from 'components/utils/Profile'
+
 
 enum View {
   Generate = 'generate',
