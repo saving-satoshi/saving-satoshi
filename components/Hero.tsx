@@ -3,11 +3,15 @@
 import { Button } from 'shared'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import Image from 'next/image'
-
+import { useProgressContext } from 'providers/ProgressProvider'
+import { getChapterKey, keys } from 'lib/progress'
 export default function Hero() {
-  const routes = useLocalizedRoutes()
+  const { chaptersUrl, aboutUrl } = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
+  const { progress } = useProgressContext()
+
+  const chapterKey = progress !== keys[0] ? getChapterKey(progress) : ''
 
   return (
     <div className="flex h-full grow items-end justify-center">
@@ -29,14 +33,17 @@ export default function Hero() {
         </p>
         <div className="grid grid-cols-1 justify-center pt-5 pb-2 sm:pb-8 md:grid-cols-2 md:space-x-5 md:pt-8">
           <div className="flex items-center justify-center md:justify-end">
-            <Button classes="text-xl md:!w-64 w-full" href={routes.chaptersUrl}>
+            <Button
+              classes="text-xl md:!w-64 w-full"
+              href={`${chaptersUrl}#${chapterKey}`}
+            >
               {t('hero.start_journey')}
             </Button>
           </div>
           <div className="flex justify-center pt-5 md:justify-start md:pt-0">
             <Button
               classes="text-xl md:!w-64 w-full"
-              href={routes.aboutUrl}
+              href={aboutUrl}
               style="outline"
             >
               {t('hero.tell_more')}

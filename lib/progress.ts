@@ -160,3 +160,11 @@ export const getLessonKey = (chapterId, lessonId) => {
 
   return lesson.metadata.key
 }
+
+export const getChapterKey = (userProgressKey: string): string => {
+  const chapterKey =
+    userProgressKey === keys[keys.length - 1]
+      ? (parseInt(userProgressKey.substring(2, 3)) + 1).toString()
+      : userProgressKey.substring(2, 3)
+  return `chapter-${chapterKey}`
+}
