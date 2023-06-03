@@ -150,3 +150,40 @@ div.react-terminal-active-input {
   border-radius: 4px;
 }
 
+.terminal::-webkit-scrollbar {
+  width: 14px;
+}
+
+.terminal::-webkit-scrollbar-track:vertical {
+  background-color: transparent;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.terminal::-webkit-scrollbar-track:horizontal {
+  background-color: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.terminal::-webkit-scrollbar-corner {
+  background-color: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.terminal::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0);
+}
+
+.terminal:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.terminal > .output {
+  @apply font-mono text-xs text-white;
+}
+
+.code-editor {
+  display: grid;
+  height: calc(100vh - 70px);
+  grid-template-rows: 40px auto auto 56px;
+}

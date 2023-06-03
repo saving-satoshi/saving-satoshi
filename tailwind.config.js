@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      minHeight: {
+        16: '64px',
+      },
       colors: {
         overlayColor: '#01010180',
         back: ({ opacityVariable, opacityValue }) => {

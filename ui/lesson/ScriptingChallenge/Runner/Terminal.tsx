@@ -1,17 +1,20 @@
 import React from 'react'
+import clsx from 'clsx'
 
-function Terminal({ defaultMessage }: { defaultMessage?: string }, ref) {
+function Terminal(
+  { className, defaultMessage }: { className?: string; defaultMessage: string },
+  ref
+) {
   return (
-    <>
-      <div
-        className="h-40 overflow-y-auto border-t border-white border-opacity-30 bg-black/15 p-4"
-        ref={ref}
-      >
-        {defaultMessage && (
-          <div className="font-mono text-sm text-white">{defaultMessage}</div>
-        )}
-      </div>
-    </>
+    <div
+      ref={ref}
+      className={clsx(
+        'terminal h-[217px] overflow-y-auto border-t border-white border-opacity-30 bg-black/15 p-4',
+        className
+      )}
+    >
+      <div className="output">{defaultMessage}</div>
+    </div>
   )
 }
 

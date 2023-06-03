@@ -40,7 +40,7 @@ export default function Hasher({
   return (
     <div
       className={clsx(
-        'flex max-h-60 grow flex-col gap-4 overflow-y-auto border-t border-white border-opacity-30 p-4 font-mono text-white',
+        'flex h-full grow flex-col gap-4 overflow-y-auto border-t border-white border-opacity-30 p-4 font-mono text-white',
         {
           'bg-[#28B123] bg-opacity-25': state === HasherState.Success,
           'bg-black/15': state !== HasherState.Success,
@@ -52,7 +52,7 @@ export default function Hasher({
       )}
     >
       {state === HasherState.Waiting && (
-        <div className="flex flex-col">
+        <div className="flex grow flex-col">
           <span className="text-sm font-bold">{t('runner.script_output')}</span>
           <span className="text-sm text-white text-opacity-50">
             {t('runner.waiting')}

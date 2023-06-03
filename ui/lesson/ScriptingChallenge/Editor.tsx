@@ -49,14 +49,19 @@ export default function Editor({
   const isSmallScreen = useMediaQuery({ width: 767 })
   const headerHeight = 70
   const languageTabsHeight = 40
-  const statusBarHeight = 64
-  const runnerHeight = 240
+  const statusBarHeight = 56
+  const terminalHeight = 217
+  const terminalTabsHeight = 32
   const totalHeight =
-    headerHeight + languageTabsHeight + statusBarHeight + runnerHeight
+    headerHeight +
+    languageTabsHeight +
+    statusBarHeight +
+    terminalHeight +
+    terminalTabsHeight
 
   return (
     <div
-      className={clsx('relative font-mono text-sm text-white', {
+      className={clsx('relative grow font-mono text-sm text-white', {
         'hidden md:flex': !isActive,
         flex: isActive,
       })}
