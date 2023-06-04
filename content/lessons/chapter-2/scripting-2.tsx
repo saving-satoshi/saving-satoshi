@@ -73,19 +73,26 @@ const python = {
 import time
 
 max_tries = 30
-found = False
+is_searching = True
 n = 0
 difficulty = 5
 
-while found is False:
+while is_searching is True:
   h = find_hash(n)
+
+  if not isinstance(h, str):
+    print('Error: find_hash does not return a string')
+    is_searching = False
+    continue
+
   print(h)
+
   if h.startswith('0' * difficulty) or n == max_tries:
     if not h.startswith('0' * difficulty):
       h = find_hash(n + 1)
       h = '0' * difficulty + h[difficulty:]
       print(h)
-    found = True
+    is_searching = False
 
   n += 1
   time.sleep(0.05)
