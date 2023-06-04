@@ -77,13 +77,7 @@ export default function Hasher({
           formatHash(value, 4, 2).length > 0 ? (
             <div className="flex flex-col gap-1">{formatHash(value, 4, 2)}</div>
           ) : (
-            <>
-              {value !== undefined && value !== null && value !== '' ? (
-                <span className="text-sm text-[#f3241d]">{value}</span>
-              ) : (
-                <span className="text-sm text-[#f3241d]">Error</span>
-              )}
-            </>
+            <span className="text-sm text-[#f3241d]">Error</span>
           )}
         </div>
       )}
