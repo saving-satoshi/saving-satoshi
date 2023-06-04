@@ -16,6 +16,8 @@ import TabMenu from '../TabMenu'
 const defaultConsoleMessage = 'Console v0.0.1'
 const defaultSystemMessage = 'System Monitor v0.0.1'
 const convert = new Convert()
+const wsEndpoint =
+  process.env.NEXT_PUBLIC_WS_ENDPOINT || 'wss://api.savingsatoshi.com'
 
 export default function Runner({
   language,
@@ -75,7 +77,7 @@ export default function Runner({
       setIsRunning(true)
       setHasherState(HasherState.Running)
 
-      const ws = new WebSocket('ws://localhost:3002')
+      const ws = new WebSocket(wsEndpoint)
 
       const send = (action: string, payload: any) => {
         ws.send(JSON.stringify({ action, payload }))
