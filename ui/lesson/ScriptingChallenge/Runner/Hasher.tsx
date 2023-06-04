@@ -99,13 +99,14 @@ export default function Hasher({
 
       {state !== HasherState.Waiting && (
         <div className="flex flex-col">
-          <span className="text-sm font-bold">{t('runner.evaluation')}</span>
-          {state === HasherState.Error &&
-            errors.map((error, i) => (
-              <span key={i} className="text-sm">
-                {error}
-              </span>
-            ))}
+          <span className="text-sm font-bold">
+            {state === HasherState.Error ? 'Error' : t('runner.evaluation')}
+          </span>
+          {state === HasherState.Error && (
+            <span className="text-sm">
+              Check the Console tab for more information
+            </span>
+          )}
           {state === HasherState.Success && (
             <span className="text-sm">{successMessage}</span>
           )}

@@ -3,18 +3,19 @@
 import clsx from 'clsx'
 import { useTranslations } from 'hooks'
 import { useEffect, useRef, useState } from 'react'
+import Convert from 'ansi-to-html'
+
 import { Loader } from 'shared'
 import Icon from 'shared/Icon'
 import Hasher, { HasherState } from './Hasher'
 import { EditorConfig, LessonView } from 'types'
 import { useLessonContext, StatusBar } from 'ui'
-import { prepare } from 'api/repl'
-import { url } from 'utils'
 import Terminal from './Terminal'
 import TabMenu from '../TabMenu'
 
 const defaultConsoleMessage = 'Console v0.0.1'
 const defaultSystemMessage = 'System Monitor v0.0.1'
+const convert = new Convert()
 
 export default function Runner({
   language,
@@ -58,10 +59,12 @@ export default function Runner({
       return
     }
 
+    const messageEl = convert.toHtml(message.replace(/ /gim, '&nbsp;'))
+
     if (mode === 'a') {
-      el.innerHTML += `<div class="output">${message}</div>`
+      el.innerHTML += `<div class="output">${messageEl}</div>`
     } else {
-      el.innerHTML = `<div class="output">${message}</div>`
+      el.innerHTML = `<div class="output">${messageEl}</div>`
     }
     el.scrollTop = el.scrollHeight
   }
@@ -72,19 +75,31 @@ export default function Runner({
       setIsRunning(true)
       setHasherState(HasherState.Running)
 
-      const output = outputRef.current as any
-      const sysmon = systemRef.current as any
+      const ws = new WebSocket('ws://localhost:3002')
 
-      print(output, defaultConsoleMessage, 'w')
-      print(sysmon, defaultSystemMessage, 'w')
+      const send = (action: string, payload: any) => {
+        ws.send(JSON.stringify({ action, payload }))
+      }
 
-      const id = await prepare(`${code}\n${program}`, language)
-      const events = new EventSource(url(`/repl/run/${language}/${id}`))
+      ws.onopen = () => {
+        print(sysmon, '[system] Websocket connection established.')
+        send('repl', { code: `${code}\n${program}`, language })
+      }
 
-      events.onmessage = async (event) => {
-        const { type, payload } = JSON.parse(event.data)
-
+      ws.onmessage = async (e) => {
+        const { type, payload } = JSON.parse(e.data)
         switch (type) {
+          case 'error': {
+            print(output, payload)
+            setErrors([...errors, payload])
+            setHasherState(HasherState.Error)
+            setIsRunning(false)
+            break
+          }
+          case 'debug': {
+            print(sysmon, payload)
+            break
+          }
           case 'output': {
             print(output, payload)
             setResult(payload)
@@ -93,28 +108,22 @@ export default function Runner({
             if (success) {
               setHasherState(HasherState.Success)
               setSuccess(true)
+              setIsRunning(false)
             }
             break
           }
-          case 'debug': {
-            print(sysmon, payload)
-            break
-          }
-
-          case 'error': {
-            print(output, payload.replace(/ /gim, '&nbsp;'))
-            setErrors([...errors, payload])
-            setHasherState(HasherState.Error)
-          }
         }
       }
 
-      events.onerror = (event) => {
-        if (event.eventPhase == EventSource.CLOSED) {
-          events.close()
-          setIsRunning(false)
-        }
+      ws.onerror = (err) => {
+        setIsRunning(false)
       }
+
+      const output = outputRef.current as any
+      const sysmon = systemRef.current as any
+
+      print(output, defaultConsoleMessage, 'w')
+      print(sysmon, defaultSystemMessage, 'w')
     } catch (ex) {
       console.error(ex)
       setIsRunning(false)

@@ -66,7 +66,9 @@ TabMenu.Tab = function Tab({
   active?: boolean
 }) {
   return (
-    <div className={clsx('h-full grow', { hidden: !active })}>{children}</div>
+    <div className={clsx('h-full w-[50vw]', { hidden: !active })}>
+      {children}
+    </div>
   )
 }
 
