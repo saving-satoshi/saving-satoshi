@@ -92,8 +92,9 @@ export default function Runner({
         const { type, payload } = JSON.parse(e.data)
         switch (type) {
           case 'error': {
-            print(output, payload)
-            setErrors([...errors, payload])
+            const lines = payload.trim().split('\n')
+            lines.forEach((line) => print(output, line))
+            setErrors([...errors, ...lines])
             setHasherState(HasherState.Error)
             setIsRunning(false)
             break
