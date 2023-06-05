@@ -111,7 +111,7 @@ export default function ScriptingChallenge({
         <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
         {children}
 
-        <div className="code-editor max-w-[50vw] grow border-white/25 md:basis-1/3 md:border-l">
+        <div className="code-editor grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l">
           <LanguageTabs
             languages={config.languages}
             value={language}

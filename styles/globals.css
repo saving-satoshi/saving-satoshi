@@ -150,6 +150,16 @@ div.react-terminal-active-input {
   border-radius: 4px;
 }
 
+.terminal {
+  height: calc(100vh - 64px - 48px - 40px - 56px);
+}
+
+@media (min-width: 768px) {
+  .terminal {
+    height: 218px;
+  }
+}
+
 .terminal::-webkit-scrollbar {
   width: 14px;
 }
@@ -183,7 +193,13 @@ div.react-terminal-active-input {
 }
 
 .code-editor {
-  display: grid;
-  height: calc(100vh - 70px);
-  grid-template-rows: 40px auto auto 56px;
+  height: calc(100vh - 70px - 48px);
+}
+
+@media (min-width: 768px) {
+  .code-editor {
+    display: grid;
+    height: calc(100vh - 70px);
+    grid-template-rows: 40px auto auto 56px;
+  }
 }

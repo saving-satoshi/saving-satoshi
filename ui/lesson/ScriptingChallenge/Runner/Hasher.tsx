@@ -40,7 +40,7 @@ export default function Hasher({
   return (
     <div
       className={clsx(
-        'flex h-full grow flex-col gap-4 overflow-y-auto border-t border-white border-opacity-30 p-4 font-mono text-white',
+        'terminal flex grow flex-col gap-4 overflow-y-auto border-t border-white border-opacity-30 p-4 font-mono text-white',
         {
           'bg-[#28B123] bg-opacity-25': state === HasherState.Success,
           'bg-black/15': state !== HasherState.Success,

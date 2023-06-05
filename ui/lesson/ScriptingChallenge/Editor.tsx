@@ -47,17 +47,20 @@ export default function Editor({
   }
 
   const isSmallScreen = useMediaQuery({ width: 767 })
-  const headerHeight = 70
+  const headerHeight = isSmallScreen ? 63 : 70
   const languageTabsHeight = 40
   const statusBarHeight = 56
-  const terminalHeight = 217
-  const terminalTabsHeight = 32
-  const totalHeight =
-    headerHeight +
-    languageTabsHeight +
-    statusBarHeight +
-    terminalHeight +
-    terminalTabsHeight
+  const terminalHeight = 218
+  const terminalTabsHeight = 40
+  const mobileMenuHeight = 48
+
+  const totalHeight = isSmallScreen
+    ? headerHeight + mobileMenuHeight + languageTabsHeight + statusBarHeight
+    : headerHeight +
+      languageTabsHeight +
+      statusBarHeight +
+      terminalHeight +
+      terminalTabsHeight
 
   return (
     <div

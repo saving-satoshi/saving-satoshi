@@ -12,6 +12,7 @@ import { EditorConfig, LessonView } from 'types'
 import { useLessonContext, StatusBar } from 'ui'
 import Terminal from './Terminal'
 import TabMenu from '../TabMenu'
+import { useMediaQuery } from 'hooks'
 
 const defaultConsoleMessage = 'Console v0.0.1'
 const defaultSystemMessage = 'System Monitor v0.0.1'
@@ -55,6 +56,7 @@ export default function Runner({
   const [hasherState, setHasherState] = useState<HasherState>(
     HasherState.Waiting
   )
+  const isSmallScreen = useMediaQuery({ width: 767 })
 
   const print = (el, message, mode = 'a') => {
     if (!el) {
@@ -178,7 +180,13 @@ export default function Runner({
             { label: 'System monitor', value: 'system' },
           ]}
           defaultValue="hasher"
-          className="h-[249px] border-t border-white border-opacity-30"
+          className={clsx(
+            'terminal-wrapper border-t border-white border-opacity-30',
+            {
+              hidden: isSmallScreen && activeView !== LessonView.Execute,
+              flex: isSmallScreen && activeView === LessonView.Execute,
+            }
+          )}
         >
           <TabMenu.Tab value="hasher">
             <Hasher

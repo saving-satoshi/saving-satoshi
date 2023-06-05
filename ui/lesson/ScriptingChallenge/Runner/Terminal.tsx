@@ -9,7 +9,7 @@ function Terminal(
     <div
       ref={ref}
       className={clsx(
-        'terminal h-[217px] overflow-auto border-t border-white border-opacity-30 bg-black/15 p-4',
+        'terminal overflow-auto border-t border-white border-opacity-30 bg-black/15 p-4',
         className
       )}
     >

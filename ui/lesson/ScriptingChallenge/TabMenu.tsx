@@ -23,22 +23,28 @@ function TabMenu({
 
   return (
     <div className={clsx('flex grow flex-col justify-start', className)}>
-      <div className="flex h-8  bg-black/15">
+      <div className="flex h-10">
         {tabs.map((tab, i) => {
           return (
             <button
               key={i}
               className={clsx(
-                'h-8 border-r border-white border-opacity-30 bg-white px-3 font-mono text-xs text-white',
+                'group h-full border-r border-white border-opacity-30 bg-black px-4',
                 {
-                  'cursor-default bg-opacity-10': tab.value === activeTab,
-                  'cursor-pointer bg-opacity-0 hover:bg-opacity-10':
-                    tab.value !== activeTab,
+                  'cursor-default bg-opacity-20': tab.value === activeTab,
+                  'cursor-pointer bg-opacity-0': tab.value !== activeTab,
                 }
               )}
               onClick={() => setActiveTab(tab.value)}
             >
-              {tab.label}
+              <span
+                className={clsx('font-nunito text-xs text-white', {
+                  'text-opacity-100': tab.value === activeTab,
+                  'text-opacity-40': tab.value !== activeTab,
+                })}
+              >
+                {tab.label}
+              </span>
             </button>
           )
         })}
@@ -66,7 +72,7 @@ TabMenu.Tab = function Tab({
   active?: boolean
 }) {
   return (
-    <div className={clsx('h-full w-[50vw]', { hidden: !active })}>
+    <div className={clsx('h-full w-full md:w-[50vw]', { hidden: !active })}>
       {children}
     </div>
   )
