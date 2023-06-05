@@ -7,7 +7,6 @@ import { useAuthContext } from 'providers/AuthProvider'
 import { Modal, useModalContext } from 'providers/ModalProvider'
 
 export default function UserButton() {
-  const hasMounted = useHasMounted()
   const modals = useModalContext()
 
   const { account, isLoading } = useAuthContext()
@@ -17,32 +16,30 @@ export default function UserButton() {
   }
 
   return (
-    <div className="flex h-full items-center justify-center text-left">
-      <div className="flex h-full w-full items-center justify-center">
-        {isLoading && <Icon icon="avatar" className="h-[30px] w-[30px]" />}
-        {!isLoading && (
-          <>
-            {account && (
-              <button
-                onClick={() => handleClick(Modal.Account)}
-                aria-label="profile"
-                className="text-grey-300 flex h-full w-full cursor-pointer items-center justify-center"
-              >
-                <Avatar avatar={account.avatar} size={30} />
-              </button>
-            )}
-            {!account && (
-              <button
-                onClick={() => handleClick(Modal.SignIn)}
-                aria-label="profile"
-                className="text-grey-300 flex h-full w-full cursor-pointer items-center justify-center"
-              >
-                <Icon icon="avatar" className="h-[30px] w-[30px]" />
-              </button>
-            )}
-          </>
-        )}
-      </div>
+    <div className="flex h-full w-full items-center justify-center">
+      {isLoading && <Icon icon="avatar" className="h-[30px] w-[30px]" />}
+      {!isLoading && (
+        <>
+          {account && (
+            <button
+              onClick={() => handleClick(Modal.Account)}
+              aria-label="profile"
+              className="text-grey-300 flex h-full w-full cursor-pointer items-center justify-center"
+            >
+              <Avatar avatar={account.avatar} size={30} />
+            </button>
+          )}
+          {!account && (
+            <button
+              onClick={() => handleClick(Modal.SignIn)}
+              aria-label="profile"
+              className="text-grey-300 flex h-full w-full cursor-pointer items-center justify-center"
+            >
+              <Icon icon="avatar" className="h-[30px] w-[30px]" />
+            </button>
+          )}
+        </>
+      )}
     </div>
   )
 }
