@@ -9,6 +9,7 @@
   --terminal-bg: rgba(61, 207, 239, 0.25);
   --incorrect-answer: #ef960b;
   --input-text: #6e7d92;
+  --dynamic-height: 100vh;
 }
 
 .-theme-purple {
@@ -151,7 +152,15 @@ div.react-terminal-active-input {
 }
 
 .terminal {
-  height: calc(100vh - 64px - 48px - 40px - 56px);
+  --header-height: 64px;
+  --language-tabs-height: 40px;
+  --status-bar-height: 56px;
+  --mobile-tabs-height: 48px;
+
+  height: calc(
+    var(--dynamic-height) - var(--header-height) - var(--mobile-tabs-height) -
+      var(--language-tabs-height) - var(--status-bar-height)
+  );
 }
 
 @media (min-width: 768px) {

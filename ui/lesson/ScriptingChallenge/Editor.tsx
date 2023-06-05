@@ -72,7 +72,7 @@ export default function Editor({
       <MonacoEditor
         loading={<Loader className="h-10 w-10 text-white" />}
         width={isSmallScreen ? '100vw' : 'calc(100vw / 2)'}
-        height={`calc(100vh - ${totalHeight}px)`}
+        height={`calc(var(--dynamic-height) - ${totalHeight}px)`}
         language={language}
         theme={'satoshi'}
         value={value}
