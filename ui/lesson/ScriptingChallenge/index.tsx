@@ -100,8 +100,9 @@ export default function ScriptingChallenge({
 
   useEffect(() => {
     setHydrated(true)
-    window.addEventListener('resize', handleResize)
 
+    handleResize()
+    window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
     }
