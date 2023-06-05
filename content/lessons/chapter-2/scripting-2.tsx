@@ -20,8 +20,21 @@ let found = false;
 let n = 0;
 
 async function run() {
+  let hash = findHash(n)
+  if (typeof hash !== 'string') {
+    console.log('Error: findHash does not return a string')
+    found = true
+    return
+  }
+
+  if (hash.length !== 64) {
+    console.log('Error: findHash should return a string of 64 characters')
+    found = true
+    return
+  }
+
   while (!found) {
-    let hash = findHash(n);
+    hash = findHash(n);
     console.log(hash);
 
     if (hash.startsWith("0" * difficulty) || n === maxTries) {
@@ -38,6 +51,8 @@ async function run() {
     n++;
     await sleep(50);
   }
+
+  console.log('KILL')
 }
 
 function sleep(t) {
@@ -82,6 +97,11 @@ while is_searching is True:
 
   if not isinstance(h, str):
     print('Error: find_hash does not return a string')
+    is_searching = False
+    continue
+
+  if len(h) != 64:
+    print('Error: find_hash should return a string of 64 characters')
     is_searching = False
     continue
 
