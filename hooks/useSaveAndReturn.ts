@@ -1,14 +1,14 @@
 'use client'
 
-import { getNextLessonKey, isLessonUnlocked } from 'lib/progress'
+import { getNextLessonKey, isLessonUnlocked, getChapterKey } from 'lib/progress'
 import { useRouter } from 'next/navigation'
 import { useProgressContext } from 'providers/ProgressProvider'
-import { usePathData, useLang } from 'hooks'
+import { usePathData, useLocalizedRoutes } from 'hooks'
 import { lessons } from 'content'
 import { useAuthContext } from 'providers/AuthProvider'
 
 export default function useSaveAndReturn() {
-  const lang = useLang()
+  const { chaptersUrl } = useLocalizedRoutes()
   const router = useRouter()
   const { account } = useAuthContext()
   const { progress, saveProgress, saveProgressLocal } = useProgressContext()
@@ -20,7 +20,7 @@ export default function useSaveAndReturn() {
 
   const saveAndReturn = async () => {
     const nextLessonKey = getNextLessonKey(currentLessonKey)
-    const chapterIndex = (parseInt(currentLessonKey.charAt(2)) + 1).toString()
+    const chapterKey = getChapterKey(nextLessonKey)
 
     if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
       if (account) {
@@ -30,7 +30,7 @@ export default function useSaveAndReturn() {
       }
     }
 
-    router.push(`${lang}/chapters#chapter-${chapterIndex}`)
+    router.push(`${chaptersUrl}#${chapterKey}`)
   }
 
   return saveAndReturn

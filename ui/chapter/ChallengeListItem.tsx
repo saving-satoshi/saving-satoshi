@@ -51,7 +51,7 @@ export default function ChallengeItem({
       {!isUnlocked && (
         <Icon
           icon="lock"
-          className="absolute right-[15px] top-1/2 -translate-y-1/2 opacity-25"
+          className="absolute right-[15px] top-1/2 h-3 w-3 -translate-y-1/2 opacity-25"
         />
       )}
       {isCompleted && (

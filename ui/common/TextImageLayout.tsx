@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { Button } from 'shared'
 import { useSaveAndProceed, useTranslations } from 'hooks'
+import { useEffect } from 'react'
 
 export default function TextImageDisplay({
   children,
@@ -21,6 +22,10 @@ export default function TextImageDisplay({
 }) {
   const t = useTranslations(lang)
   const saveAndProceed = useSaveAndProceed()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className="flex grow">

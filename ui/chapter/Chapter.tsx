@@ -33,13 +33,13 @@ const tabData = [
 ]
 
 export default function Chapter({ children, metadata, lang }) {
-  const { progress } = useProgressContext()
+  const { progress, isLoading } = useProgressContext()
   const { isUnlocked } = useLessonStatus(
     progress,
     getLessonKey(metadata.slug, 'intro-1')
   )
 
-  const display = metadata.slug === 'chapter-1' || isUnlocked
+  const display = metadata.slug === 'chapter-1' || (isUnlocked && !isLoading)
 
   const [activeTab, setActiveTab] = useState('info')
 
@@ -113,7 +113,7 @@ export default function Chapter({ children, metadata, lang }) {
                     invisible: activeTab !== 'info',
                   })}
                 >
-                  <div className="mt-6 font-nunito">
+                  <div className="font-nunito md:mt-6">
                     {(chapter.metadata.lessons.length > 0 && display && (
                       <div className="text-lg text-white">{children}</div>
                     )) ||
@@ -121,7 +121,7 @@ export default function Chapter({ children, metadata, lang }) {
                         <div className="flex font-nunito text-lg text-white">
                           <Icon
                             icon="lock"
-                            className="my-auto mr-2 justify-center"
+                            className="my-auto mr-2 h-3 w-3 justify-center"
                           />
                           {t('chapter.chapter_locked_one')} {position - 1}{' '}
                           {t('chapter.chapter_locked_two')}

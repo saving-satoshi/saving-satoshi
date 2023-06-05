@@ -1,6 +1,11 @@
 'use client'
 
-import { useLocalizedRoutes, useTranslations, useLang } from 'hooks'
+import {
+  useLocalizedRoutes,
+  useTranslations,
+  useLang,
+  usePathData,
+} from 'hooks'
 import { chapters, lessons } from 'content'
 import Address from 'components/Navbar/Address'
 import UserButton from '../UserButton'
@@ -12,15 +17,22 @@ import Link from 'next/link'
 import HelpLink from '../HelpLink'
 import Icon from 'shared/Icon'
 import { navbarThemeSelector } from 'lib/themeSelector'
+import { getChapterKey, keys } from 'lib/progress'
 
 export default function NavbarMobile({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
+  const { chapterId } = usePathData()
+  const { slug, lesson: lessonId } = params
 
   const [isOpen, setIsOpen] = useState(false)
 
-  const { slug, lesson: lessonId } = params
+  const chapterLessons = lessons?.[chapterId]
+  const lesson = chapterLessons?.[lessonId]?.metadata ?? null
+  const currentLessonKey = lesson?.key ?? keys[0]
+
+  const chapterKey = getChapterKey(currentLessonKey)
 
   const theme = !isOpen
     ? navbarThemeSelector(lessons, lessonId, chapters, slug)
@@ -57,8 +69,8 @@ export default function NavbarMobile({ params }) {
         <div className="flex">
           <Link
             title={t('shared.back')}
-            className="flex w-[50px] items-center justify-center border-r border-white/25 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
-            href={chaptersUrl}
+            className="group flex items-center border-r border-white/25 p-4 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
+            href={`${chaptersUrl}#${chapterKey}`}
           >
             <Icon
               icon="powerOff"

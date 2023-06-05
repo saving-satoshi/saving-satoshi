@@ -10,14 +10,22 @@ import UserButton from '../UserButton'
 import Link from 'next/link'
 import HelpLink from '../HelpLink'
 import Icon from 'shared/Icon'
+import { usePathData } from 'hooks'
 import { navbarThemeSelector } from 'lib/themeSelector'
+import { getChapterKey, keys } from 'lib/progress'
 
 export default function NavbarDesktop({ params }) {
-  const routes = useLocalizedRoutes()
+  const { chaptersUrl } = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
-
   const { slug, lesson: lessonId } = params
+  const { chapterId } = usePathData()
+
+  const chapterLessons = lessons?.[chapterId]
+  const lesson = chapterLessons?.[lessonId]?.metadata ?? null
+  const currentLessonKey = lesson?.key ?? keys[0]
+
+  const chapterKey = getChapterKey(currentLessonKey)
 
   const theme = navbarThemeSelector(lessons, lessonId, chapters, slug)
 
@@ -27,8 +35,8 @@ export default function NavbarDesktop({ params }) {
         <div className="flex">
           <Link
             title={t('shared.poweroff')}
-            className="group flex w-[70px] items-center justify-center border-r border-white/25 text-sm text-white transition duration-100 ease-in-out hover:bg-black/25"
-            href={routes.chaptersUrl}
+            className="group flex items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
+            href={`${chaptersUrl}#${chapterKey}`}
           >
             <Icon
               icon="powerOff"
