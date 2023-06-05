@@ -79,7 +79,15 @@ function findHash(nonce) {
 }
 `,
   validate: async (answer) => {
-    return answer.startsWith('00000') && answer.length === 64
+    if (!answer.startsWith('00000')) {
+      return [false, 'Hash must start with 5 zeroes.']
+    }
+
+    if (answer.length !== 64) {
+      return [false, 'Hash must be 64 characters long']
+    }
+
+    return [true, undefined]
   },
 }
 
@@ -130,7 +138,15 @@ def find_hash(nonce):
   # the nonce argument provided
   return hash`,
   validate: async (answer) => {
-    return answer.startsWith('00000') && answer.length === 64
+    if (!answer.startsWith('00000')) {
+      return [false, 'Hash must start with 5 zeroes.']
+    }
+
+    if (answer.length !== 64) {
+      return [false, 'Hash must be 64 characters long']
+    }
+
+    return [true, undefined]
   },
 }
 

@@ -37,7 +37,7 @@ export default function Runner({
   config: EditorConfig
   program: string
   errors: string[]
-  onValidate: (output: string | number) => Promise<boolean>
+  onValidate: (output: string | number) => Promise<any[]>
   lang: string
   successMessage: string
   setErrors: (errors: string[]) => void
@@ -52,6 +52,9 @@ export default function Runner({
   const [result, setResult] = useState<any | undefined>(undefined)
   const [success, setSuccess] = useState<boolean | null>(null)
   const isActive = activeView !== LessonView.Info
+  const [validationError, setValidationError] = useState<string | undefined>(
+    undefined
+  )
   const [hasherState, setHasherState] = useState<HasherState>(
     HasherState.Waiting
   )
@@ -95,11 +98,13 @@ export default function Runner({
             print(output, payload)
             setResult(payload)
 
-            const success = await onValidate(payload)
+            const [success, err] = await onValidate(payload)
             if (success) {
               setHasherState(HasherState.Success)
               setSuccess(true)
               setIsRunning(false)
+            } else {
+              setValidationError(err)
             }
             break
           }
@@ -170,7 +175,7 @@ export default function Runner({
               config={config}
               state={hasherState}
               successMessage={successMessage}
-              errors={errors}
+              validationError={validationError}
               value={result}
             />
           </TabMenu.Tab>

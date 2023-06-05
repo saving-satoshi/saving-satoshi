@@ -17,7 +17,7 @@ export default function Hasher({
   state,
   config,
   successMessage,
-  errors,
+  validationError,
   value,
 }: {
   lang: string
@@ -25,7 +25,7 @@ export default function Hasher({
   state: HasherState
   config: EditorConfig
   successMessage: string
-  errors: string[]
+  validationError?: string
   value: any
 }) {
   const t = useTranslations(lang)
@@ -104,11 +104,11 @@ export default function Hasher({
           {state === HasherState.Success && (
             <span className="text-sm">{successMessage}</span>
           )}
-          {state !== HasherState.Error && state !== HasherState.Success && (
-            <span className="text-sm">
-              Waiting for you to run the script...
-            </span>
-          )}
+          {state !== HasherState.Error &&
+            state !== HasherState.Success &&
+            validationError && (
+              <span className="text-sm">{validationError}</span>
+            )}
         </div>
       )}
     </div>

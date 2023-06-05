@@ -75,7 +75,7 @@ export default function ScriptingChallenge({
   }
 
   const handleRunnerValidate = async (answer) => {
-    const success = await config.languages[language].validate(answer)
+    const [success, errors] = await config.languages[language].validate(answer)
 
     if (success) {
       setChallengeSuccess(true)
@@ -86,7 +86,7 @@ export default function ScriptingChallenge({
       }
     }
 
-    return success
+    return [success, errors]
   }
 
   useEffect(() => {
