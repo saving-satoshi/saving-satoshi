@@ -52,7 +52,7 @@ async function run() {
     await sleep(50);
   }
 
-  // console.log('KILL')
+  console.log('KILL')
 }
 
 function sleep(t) {
@@ -117,7 +117,7 @@ while is_searching is True:
   n += 1
   time.sleep(0.05)
 
-# print('KILL')
+print('KILL')
 `,
   defaultFunction: {
     name: 'find_hash',
