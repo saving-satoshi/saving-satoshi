@@ -144,6 +144,19 @@ export default function Runner({
     setHasherState(HasherState.Waiting)
   }, [code])
 
+  const handleResize = () => {
+    const cssRoot = document.documentElement
+    cssRoot.style.setProperty('--dynamic-height', `${window.innerHeight}px`)
+  }
+
+  useEffect(() => {
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [activeView])
+
   return (
     <>
       {loading && (

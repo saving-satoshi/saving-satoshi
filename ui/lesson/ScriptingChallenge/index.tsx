@@ -93,21 +93,6 @@ export default function ScriptingChallenge({
     setRunnerReady(true)
   }
 
-  const handleResize = (e) => {
-    const cssRoot = document.documentElement
-    cssRoot.style.setProperty('--dynamic-height', `${window.innerHeight}px`)
-  }
-
-  useEffect(() => {
-    setHydrated(true)
-
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
   if (!hydrated) {
     return null
   }
