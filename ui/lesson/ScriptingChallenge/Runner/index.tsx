@@ -28,7 +28,6 @@ export default function Runner({
   program,
   errors,
   onValidate,
-  onReady,
   lang,
   successMessage,
   setErrors,
@@ -39,13 +38,12 @@ export default function Runner({
   program: string
   errors: string[]
   onValidate: (output: string | number) => Promise<boolean>
-  onReady?: () => void
   lang: string
   successMessage: string
   setErrors: (errors: string[]) => void
 }) {
   const t = useTranslations(lang)
-  const { activeView, setActiveView } = useLessonContext()
+  const { activeView } = useLessonContext()
   const systemRef = useRef()
   const outputRef = useRef()
 
@@ -60,21 +58,6 @@ export default function Runner({
 
   useDynamicHeight([activeView])
   const isSmallScreen = useMediaQuery({ width: 767 })
-
-  const print = (el, message, mode = 'a') => {
-    if (!el) {
-      return
-    }
-
-    const messageEl = convert.toHtml(message.replace(/ /gim, '&nbsp;'))
-
-    if (mode === 'a') {
-      el.innerHTML += `<div class="output">${messageEl}</div>`
-    } else {
-      el.innerHTML = `<div class="output">${messageEl}</div>`
-    }
-    el.scrollTop = el.scrollHeight
-  }
 
   const handleRun = async () => {
     try {
@@ -162,18 +145,6 @@ export default function Runner({
           <Loader className="h-10 w-10 text-white" />
         </div>
       )}
-
-      {/* {!loading && (
-        <Hasher
-          lang={lang}
-          language={language}
-          config={config}
-          state={hasherState}
-          successMessage={successMessage}
-          errors={errors}
-          value={result}
-        />
-      )} */}
 
       {!loading && (
         <TabMenu
@@ -270,4 +241,17 @@ export default function Runner({
   )
 }
 
-declare function loadPyodide(): any
+const print = (element, message, mode = 'a') => {
+  if (!element) {
+    return
+  }
+
+  const messageEl = convert.toHtml(message.replace(/ /gim, '&nbsp;'))
+  if (mode === 'a') {
+    element.innerHTML += `<div class="output">${messageEl}</div>`
+  } else {
+    element.innerHTML = `<div class="output">${messageEl}</div>`
+  }
+
+  element.scrollTop = element.scrollHeight
+}

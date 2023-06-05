@@ -50,7 +50,6 @@ export default function ScriptingChallenge({
   const [challengeSuccess, setChallengeSuccess] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [errors, setErrors] = useState<string[]>([])
-  const [runnerReady, setRunnerReady] = useState<boolean>(false)
 
   useDynamicHeight()
   const isSmallScreen = useMediaQuery({ width: 767 })
@@ -88,10 +87,6 @@ export default function ScriptingChallenge({
     }
 
     return success
-  }
-
-  const handleRunnerReady = () => {
-    setRunnerReady(true)
   }
 
   useEffect(() => {
@@ -133,7 +128,6 @@ export default function ScriptingChallenge({
             errors={errors}
             setErrors={setErrors}
             onValidate={handleRunnerValidate}
-            onReady={handleRunnerReady}
             successMessage={successMessage}
           />
         </div>
