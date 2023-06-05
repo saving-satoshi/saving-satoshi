@@ -116,6 +116,7 @@ while is_searching is True:
 
   n += 1
   time.sleep(0.05)
+print('KILL')
 `,
   defaultFunction: {
     name: 'find_hash',
@@ -133,7 +134,7 @@ def find_hash(nonce):
 }
 
 const config: EditorConfig = {
-  defaultLanguage: 'python',
+  defaultLanguage: 'javascript',
   languages: {
     javascript,
     python,
