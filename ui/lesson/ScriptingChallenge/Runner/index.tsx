@@ -13,6 +13,7 @@ import { useLessonContext, StatusBar } from 'ui'
 import Terminal from './Terminal'
 import TabMenu from '../TabMenu'
 import { useMediaQuery } from 'hooks'
+import { useDynamicHeight } from 'hooks'
 
 const defaultConsoleMessage = 'Console v0.0.1'
 const defaultSystemMessage = 'System Monitor v0.0.1'
@@ -56,6 +57,8 @@ export default function Runner({
   const [hasherState, setHasherState] = useState<HasherState>(
     HasherState.Waiting
   )
+
+  useDynamicHeight([activeView])
   const isSmallScreen = useMediaQuery({ width: 767 })
 
   const print = (el, message, mode = 'a') => {
@@ -143,19 +146,6 @@ export default function Runner({
   useEffect(() => {
     setHasherState(HasherState.Waiting)
   }, [code])
-
-  const handleResize = () => {
-    const cssRoot = document.documentElement
-    cssRoot.style.setProperty('--dynamic-height', `${window.innerHeight}px`)
-  }
-
-  useEffect(() => {
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [activeView])
 
   return (
     <>

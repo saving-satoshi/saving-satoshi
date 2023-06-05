@@ -7,7 +7,7 @@ import Editor from './Editor'
 import Runner from './Runner'
 import { EditorConfig, LessonDirection } from 'types'
 import { Lesson, LessonTabs } from 'ui'
-import { useMediaQuery } from 'hooks'
+import { useMediaQuery, useDynamicHeight } from 'hooks'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { useAuthContext } from 'providers/AuthProvider'
 
@@ -52,6 +52,7 @@ export default function ScriptingChallenge({
   const [errors, setErrors] = useState<string[]>([])
   const [runnerReady, setRunnerReady] = useState<boolean>(false)
 
+  useDynamicHeight()
   const isSmallScreen = useMediaQuery({ width: 767 })
 
   const handleSetLanguage = (value) => {
@@ -92,6 +93,10 @@ export default function ScriptingChallenge({
   const handleRunnerReady = () => {
     setRunnerReady(true)
   }
+
+  useEffect(() => {
+    setHydrated(true)
+  }, [])
 
   if (!hydrated) {
     return null
