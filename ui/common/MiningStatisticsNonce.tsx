@@ -87,7 +87,7 @@ export default function MiningStatisticNonce({
         )}
       </div>
       {highlight && (
-        <div className="absolute inset-0 mt-5 animate-pulse rounded-[5px] border-2 border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]"></div>
+        <div className="absolute inset-0 mt-5 animate-pulse rounded-[5px] border-2 border-[#FBEBC6] shadow-3xl"></div>
       )}
     </div>
   )

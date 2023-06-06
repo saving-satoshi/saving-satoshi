@@ -174,8 +174,7 @@ export default function MiningStatisticHash({
               <div
                 key={index}
                 className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-                  'fade-in !bg-[#FBEBC6]  shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
-                    hashPower > i * 1000,
+                  'fade-in !bg-[#FBEBC6]  shadow-3xl': hashPower > i * 1000,
                 })}
               ></div>
             )
@@ -183,7 +182,7 @@ export default function MiningStatisticHash({
         </div>
       </div>
       {highlight && (
-        <div className="absolute inset-0 mt-5 animate-pulse rounded-[5px] border-2 border-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]"></div>
+        <div className="absolute inset-0 mt-5 animate-pulse rounded-[5px] border-2 border-[#FBEBC6] shadow-3xl"></div>
       )}
     </div>
   )

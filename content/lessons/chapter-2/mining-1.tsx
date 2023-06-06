@@ -11,6 +11,7 @@ import {
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import clsx from 'clsx'
+import { sleep } from 'utils'
 
 export const metadata = {
   title: 'chapter_two.mining_one.title',
@@ -54,7 +55,7 @@ export default function Mining1({ lang }) {
     const startTime = new Date().getTime()
     const endTime = startTime + time
 
-    const intervalId = setInterval(() => {
+    const intervalId = setInterval(async () => {
       const currentTime = new Date().getTime()
       if (currentTime >= endTime) {
         clearInterval(intervalId)
@@ -73,9 +74,8 @@ export default function Mining1({ lang }) {
         setBitcoinMined(currentBlock * 0.0061)
         if (currentBlock === 1000) {
           setShowText(false)
-          setTimeout(() => {
-            setStep(4)
-          }, 300)
+          await sleep(300)
+          setStep(4)
           setNonceHighlight(true)
           setHashPowerHighlight(true)
           clearInterval(intervalId)
@@ -97,46 +97,41 @@ export default function Mining1({ lang }) {
     return () => clearInterval(interval)
   }, [ramdomNonce])
 
-  const transactionStep = () => {
+  const transactionStep = async () => {
     setShowText(false)
-    setTimeout(() => {
-      setStep(5)
-    }, 300)
+    await sleep(300)
+    setStep(5)
     setNonceHighlight(false)
     setHashPowerHighlight(false)
     setTransactionsConfirmedHighlight(true)
   }
 
-  const bitcoinStep = () => {
+  const bitcoinStep = async () => {
     setShowText(false)
-    setTimeout(() => {
-      setStep(6)
-    }, 300)
+    await sleep(300)
+    setStep(6)
     setTransactionsConfirmedHighlight(false)
     setBitcoinMinedHighlight(true)
   }
 
-  const finalStep = () => {
+  const finalStep = async () => {
     setShowText(false)
-    setTimeout(() => {
-      setStep(7)
-    }, 300)
+    await sleep(300)
+    setStep(7)
     setBitcoinMinedHighlight(false)
   }
 
-  const turnOnButton = () => {
+  const turnOnButton = async () => {
     if (step === 0) {
       setShowText(false)
-      setTimeout(() => {
-        setStep(1)
-      }, 300)
+      await sleep(300)
+      setStep(1)
       const time = 1 * 15 * 1000
       displayRandomNumbers(1760, 0, 0, time)
-      setTimeout(() => {
+      setTimeout(async () => {
         setShowText(false)
-        setTimeout(() => {
-          setStep(2)
-        }, 300)
+        await sleep(300)
+        setStep(2)
         setBlocks(1)
         setTransactionsConfirmed(3500)
         setBitcoinMined(0.0061)
@@ -145,9 +140,8 @@ export default function Mining1({ lang }) {
 
     if (step === 2) {
       setShowText(false)
-      setTimeout(() => {
-        setStep(3)
-      }, 300)
+      await sleep(300)
+      setStep(3)
       setRandomNonce(true)
     }
 
