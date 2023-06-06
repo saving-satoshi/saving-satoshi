@@ -105,7 +105,7 @@ export default function MiningStatisticHash({
             <div
               className={clsx('font-nunito text-[15px] font-bold', {
                 'text-black/25': disabled,
-                'text-[#EDA081]': !disabled,
+                'fade-in text-[#EDA081]': !disabled,
               })}
             >
               {title}
@@ -113,14 +113,14 @@ export default function MiningStatisticHash({
             <div
               className={clsx('text-2xl font-normal', {
                 'text-black/25': disabled,
-                'text-white': !disabled,
+                'fade-in text-white': !disabled,
               })}
             >
               {step < 4 && (
                 <span>
                   {(hashPower / 100).toFixed(2)}
                   {!disabled && (
-                    <span className="text-white/50">
+                    <span className="fade-in text-white/50">
                       *10<sup>15</sup>
                     </span>
                   )}
@@ -157,7 +157,7 @@ export default function MiningStatisticHash({
                 {
                   'border-transparent bg-[#FBEBC6]/25 text-[#571A1F]':
                     hasherState && step < 4,
-                  'animate-duration-500 animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)] ':
+                  'animate-duration-500 fade-in animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
                     !hasherState,
                   ' border-black/25 text-black/25': step >= 4,
                 }
@@ -174,7 +174,7 @@ export default function MiningStatisticHash({
               <div
                 key={index}
                 className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-                  '!bg-[#FBEBC6] shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
+                  'fade-in !bg-[#FBEBC6]  shadow-[0_0px_8px_rgba(251,235,198,0.5)]':
                     hashPower > i * 1000,
                 })}
               ></div>

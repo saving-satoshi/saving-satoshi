@@ -24,7 +24,7 @@ export default function InfoBox({
           <div
             className={clsx('text-2xl font-normal', {
               'text-black/25': transaction === 0,
-              'text-white': transaction !== 0,
+              'fade-in text-white': transaction !== 0,
             })}
           >
             {Intl.NumberFormat().format(transaction)}
@@ -32,7 +32,7 @@ export default function InfoBox({
           <div
             className={clsx('font-nunito text-[13px] font-bold', {
               'text-black/25': transaction === 0,
-              'text-[#EDA081]': transaction !== 0,
+              'fade-in text-[#EDA081]': transaction !== 0,
             })}
           >
             {transactionTitle}
@@ -47,7 +47,7 @@ export default function InfoBox({
           <div
             className={clsx('text-2xl font-normal', {
               'text-black/25': bitcoin === 0,
-              'text-white': bitcoin !== 0,
+              'fade-in text-white': bitcoin !== 0,
             })}
           >
             {bitcoin.toFixed(4)}
@@ -55,7 +55,7 @@ export default function InfoBox({
           <div
             className={clsx('font-nunito text-[13px] font-bold', {
               'text-black/25': bitcoin === 0,
-              'text-[#EDA081]': bitcoin !== 0,
+              'fade-in text-[#EDA081]': bitcoin !== 0,
             })}
           >
             {bitcoinTitle}

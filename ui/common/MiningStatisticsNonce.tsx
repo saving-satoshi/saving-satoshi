@@ -41,7 +41,7 @@ export default function MiningStatisticNonce({
           <div
             className={clsx('font-nunito text-[15px] font-bold', {
               'text-black/25': disabled,
-              'text-[#EDA081]': !disabled,
+              'fade-in text-[#EDA081]': !disabled,
             })}
           >
             {title}
@@ -49,12 +49,12 @@ export default function MiningStatisticNonce({
           <div
             className={clsx('text-2xl font-normal', {
               'text-black/25': disabled,
-              'text-white': !disabled,
+              'fade-in text-white': !disabled,
             })}
           >
             {(content / 10 ** (content.toString().length - 2)).toFixed(2)}
             {!disabled && (
-              <span className="text-white/50">
+              <span className="fade-in text-white/50">
                 *10<sup>{content.toString().length + 11}</sup>
               </span>
             )}
