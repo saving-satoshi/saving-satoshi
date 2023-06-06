@@ -69,7 +69,7 @@ export default function MiningStatisticHash({
 
   function handleClick() {
     if (!hasherState && step === 0) {
-      const time = 1 * 15 * 1000
+      const time = 15 * 1000
       displayRandomNumbers(4400, 200, time)
       onButtonClick(true)
       setHasherState(true)
@@ -79,7 +79,7 @@ export default function MiningStatisticHash({
     }
 
     if (!hasherState && step === 2) {
-      const time = 1 * 10 * 1000
+      const time = 10 * 1000
       onButtonClick(true)
       setHasherState(true)
       setRandomHash(true)
@@ -90,7 +90,7 @@ export default function MiningStatisticHash({
 
     if (powerUp && step === 3) {
       setRandomHash(false)
-      const time = 1 * 60 * 1000
+      const time = 60 * 1000
       displayRandomNumbers(45000, 3000, time)
       onButtonClick(true)
       setPowerUp(false)

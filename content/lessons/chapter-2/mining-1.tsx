@@ -98,7 +98,7 @@ export default function Mining1({ lang }) {
         setBlocks(currentBlock)
         setTransactionsConfirmed(currentBlock * 3500)
         setBitcoinMined(currentBlock * 0.0061)
-      }, 1 * 8 * 1000)
+      }, 8 * 1000)
     }
     return () => clearInterval(interval)
   }, [ramdomNonce])
@@ -133,7 +133,7 @@ export default function Mining1({ lang }) {
   const turnOnButton = () => {
     if (step === 0) {
       setStep(1)
-      const time = 1 * 15 * 1000
+      const time = 15 * 1000
       displayRandomNumbers(1760, 0, 0, time)
       setTimeout(() => {
         setStep(2)
@@ -150,7 +150,7 @@ export default function Mining1({ lang }) {
 
     if (step === 3) {
       setRandomNonce(false)
-      const time = 1 * 60 * 1000
+      const time = 60 * 1000
       displayRandomNumbers(17600, 1000, 3, time)
     }
   }
