@@ -14,48 +14,47 @@ export const metadata = {
 
 const javascript = {
   program: `
-const maxTries = 30;
+const timeLimit = 3000;
 const difficulty = 5;
 let found = false;
 let n = 0;
 
-async function run() {
+async function _runScript() {
   let hash = findHash(n)
   if (typeof hash !== 'string') {
     console.log('Error: findHash does not return a string')
-    found = true
     return console.log('KILL')
   }
 
   if (hash.length !== 64) {
     console.log('Error: findHash should return a string of 64 characters')
-    found = true
     return console.log('KILL')
   }
+
+  function forceSolution() {
+    hash = findHash(n + 1);
+    hash = new Array(difficulty + 1).join("0") + hash.slice(0, hash.length - difficulty);
+    console.log(hash);
+    found = true
+  }
+
+  setTimeout(() => {
+    if (!found) {
+      forceSolution()
+    }
+  }, timeLimit)
 
   while (!found) {
     hash = findHash(n);
     console.log(hash);
-
-    if (hash.startsWith("0" * difficulty) || n === maxTries) {
-      if (!hash.startsWith("0" * difficulty)) {
-        hash = findHash(n + 1);
-        hash =
-          new Array(difficulty + 1).join("0") +
-          hash.slice(0, hash.length - difficulty);
-        console.log(hash);
-      }
-      found = true;
-    }
-
     n++;
-    await sleep(50);
+    await _sleep(50);
   }
 
   console.log('KILL')
 }
 
-function sleep(t) {
+function _sleep(t) {
   return new Promise((resolve) => {
     const timeout = setTimeout(() => {
       resolve();
@@ -64,7 +63,7 @@ function sleep(t) {
   });
 }
 
-run();
+_runScript();
 `,
   defaultFunction: {
     name: 'findHash',
@@ -94,40 +93,49 @@ function findHash(nonce) {
 const python = {
   program: `
 import time
+import threading
 
-max_tries = 30
-is_searching = True
-n = 0
-difficulty = 5
 
-while is_searching is True:
-  h = find_hash(n)
+def _run_script():
+  is_searching = True
+  n = 0
+  difficulty = 5
+  time_limit = 3
 
-  if not isinstance(h, str):
+  hash = find_hash(n)
+
+  if not isinstance(hash, str):
     print('Error: find_hash does not return a string')
-    is_searching = False
-    print('KILL')
-    continue
+    return print('KILL')
 
-  if len(h) != 64:
+  if len(hash) != 64:
     print('Error: find_hash should return a string of 64 characters')
-    is_searching = False
-    print('KILL')
-    continue
+    return print('KILL')
 
-  print(h)
-
-  if h.startswith('0' * difficulty) or n == max_tries:
-    if not h.startswith('0' * difficulty):
-      h = find_hash(n + 1)
-      h = '0' * difficulty + h[difficulty:]
-      print(h)
+  def force_solution():
+    nonlocal is_searching
+    h = find_hash(n + 1)
+    h = '0' * difficulty + h[difficulty:]
+    print(h)
     is_searching = False
 
-  n += 1
-  time.sleep(0.05)
+  def handle_time_limit():
+    time.sleep(time_limit)
+    if is_searching:
+      force_solution()
 
-print('KILL')
+  thread = threading.Thread(target=handle_time_limit)
+  thread.start()
+
+  while is_searching:
+    hash = find_hash(n)
+    print(hash)
+    n += 1
+    time.sleep(0.05)
+
+  print('KILL')
+
+_run_script()
 `,
   defaultFunction: {
     name: 'find_hash',

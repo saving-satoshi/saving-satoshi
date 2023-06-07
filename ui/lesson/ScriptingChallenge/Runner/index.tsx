@@ -21,6 +21,15 @@ const convert = new Convert()
 const wsEndpoint =
   process.env.NEXT_PUBLIC_WS_ENDPOINT || 'wss://api.savingsatoshi.com'
 
+let ws: WebSocket | undefined = undefined
+
+const send = (action: string, payload: any) => {
+  if (!ws) {
+    throw new Error('WebSocket uninitialized')
+  }
+  ws.send(JSON.stringify({ action, payload }))
+}
+
 export default function Runner({
   language,
   code,
@@ -68,11 +77,7 @@ export default function Runner({
       setIsRunning(true)
       setHasherState(HasherState.Running)
 
-      const ws = new WebSocket(wsEndpoint)
-
-      const send = (action: string, payload: any) => {
-        ws.send(JSON.stringify({ action, payload }))
-      }
+      ws = new WebSocket(wsEndpoint)
 
       ws.onopen = () => {
         print(sysmon, '[system] Websocket connection established.')
@@ -127,6 +132,10 @@ export default function Runner({
   }
 
   useEffect(() => {
+    if (ws) {
+      ws.close()
+    }
+
     print(outputRef.current, defaultConsoleMessage, 'w')
     print(systemRef.current, defaultSystemMessage, 'w')
   }, [language])
