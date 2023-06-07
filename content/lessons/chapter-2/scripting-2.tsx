@@ -18,6 +18,8 @@ const timeLimit = 3000;
 const difficulty = 5;
 let found = false;
 let n = 0;
+let prev_result = ''
+let prev_hit_num = 0
 
 async function _runScript() {
   let hash = findHash(n)
@@ -46,7 +48,17 @@ async function _runScript() {
 
   while (!found) {
     hash = findHash(n);
+
+    if (hash === prev_result) {
+      prev_hit_num += 1
+      if (prev_hit_num === 3) {
+        console.log('Error: Your script keeps generating the same hash, make sure you use the nonce')
+        break
+      }
+    }
+
     console.log(hash);
+    prev_result = hash
     n++;
     await _sleep(50);
   }
@@ -95,12 +107,13 @@ const python = {
 import time
 import threading
 
-
 def _run_script():
   is_searching = True
   n = 0
   difficulty = 5
   time_limit = 3
+  prev_result = ''
+  prev_hit_num = 0
 
   hash = find_hash(n)
 
@@ -129,7 +142,15 @@ def _run_script():
 
   while is_searching:
     hash = find_hash(n)
+
+    if hash == prev_result:
+      prev_hit_num += 1
+      if prev_hit_num == 3:
+        print('Error: Your script keeps generating the same hash, make sure you use the nonce')
+        break
+
     print(hash)
+    prev_result = hash
     n += 1
     time.sleep(0.05)
 
