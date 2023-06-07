@@ -24,13 +24,13 @@ async function run() {
   if (typeof hash !== 'string') {
     console.log('Error: findHash does not return a string')
     found = true
-    return
+    return console.log('KILL')
   }
 
   if (hash.length !== 64) {
     console.log('Error: findHash should return a string of 64 characters')
     found = true
-    return
+    return console.log('KILL')
   }
 
   while (!found) {
@@ -106,11 +106,13 @@ while is_searching is True:
   if not isinstance(h, str):
     print('Error: find_hash does not return a string')
     is_searching = False
+    print('KILL')
     continue
 
   if len(h) != 64:
     print('Error: find_hash should return a string of 64 characters')
     is_searching = False
+    print('KILL')
     continue
 
   print(h)
