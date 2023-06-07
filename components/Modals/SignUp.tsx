@@ -173,7 +173,6 @@ export default function LoginModal({ onClose, state }) {
         </button>
       </div>
      
-      <Profile name='friend' description="good friend"></Profile>
-    </Modal>
+      </Modal>
   )
 }
