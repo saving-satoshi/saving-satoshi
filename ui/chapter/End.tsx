@@ -14,11 +14,13 @@ export default function End({
   lang,
   children,
   direction,
+  className,
 }: {
   children: any
   image: string
   lang: string
   direction: 'left' | 'right'
+  className?: string
 }) {
   const t = useTranslations(lang)
   const modals = useModalContext()
@@ -39,7 +41,7 @@ export default function End({
   }
 
   return (
-    <div>
+    <div className={className}>
       <Image
         src={image}
         alt={t('chapter_two.title')}
@@ -47,7 +49,7 @@ export default function End({
         quality={100}
         loading="eager"
         priority
-        className="h-full w-full object-cover"
+        className="object-cover"
       />
       <div className="absolute bottom-0 ml-auto w-full bg-gradient-to-b from-transparent via-[#00000040] to-[#00000080] p-4 pb-12 text-left md:p-16">
         <div

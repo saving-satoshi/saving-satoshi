@@ -51,10 +51,10 @@ export default function LangSwitch() {
 
   return (
     <div className="relative inline-block text-left">
-      <div className="ml-4 h-10 w-10">
+      <div className="h-6 w-6">
         <button
           type="button"
-          className="text-grey-300 h-10 cursor-pointer"
+          className="text-grey-300 cursor-pointer"
           aria-label="Choose language"
           aria-haspopup="true"
           aria-expanded={isOpen}
