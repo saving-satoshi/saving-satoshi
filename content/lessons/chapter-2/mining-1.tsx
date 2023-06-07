@@ -89,6 +89,29 @@ export default function Mining1({ lang }) {
     return () => clearInterval(interval)
   }, [ramdomNonce])
 
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+    let currentBlock = blocks
+    if (ramdomNonce) {
+      interval = setInterval(() => {
+        currentBlock = currentBlock + 1
+        setBlocks(currentBlock)
+        setTransactionsConfirmed(currentBlock * 3500)
+        setBitcoinMined(currentBlock * 0.0061)
+      }, 8 * 1000)
+    }
+    return () => clearInterval(interval)
+  }, [ramdomNonce])
+
+  useEffect(() => {
+    if (blocks === 1000) {
+      setStep(4)
+      setNonceHighlight(true)
+      setHashPowerHighlight(true)
+      setRandomNonce(false)
+    }
+  }, [blocks])
+
   const transactionStep = () => {
     setStep(5)
     setNonceHighlight(false)
@@ -110,7 +133,7 @@ export default function Mining1({ lang }) {
   const turnOnButton = () => {
     if (step === 0) {
       setStep(1)
-      const time = 1 * 15 * 1000
+      const time = 15 * 1000
       displayRandomNumbers(1760, 0, 0, time)
       setTimeout(() => {
         setStep(2)
@@ -127,7 +150,7 @@ export default function Mining1({ lang }) {
 
     if (step === 3) {
       setRandomNonce(false)
-      const time = 1 * 60 * 1000
+      const time = 60 * 1000
       displayRandomNumbers(17600, 1000, 3, time)
     }
   }
