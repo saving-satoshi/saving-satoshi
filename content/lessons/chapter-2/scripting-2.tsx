@@ -16,13 +16,13 @@ const javascript = {
   program: `
 const timeLimit = 3000;
 const difficulty = 5;
-let found = false;
-let n = 0;
-let prev_result = ''
-let prev_hit_num = 0
+let hashFound = false;
+let nonce = 0;
+let previousHash = ''
+let previousHashMatchCount = 0
 
 async function _runScript() {
-  let hash = findHash(n)
+  let hash = findHash(nonce)
   if (typeof hash !== 'string') {
     console.log('Error: findHash does not return a string')
     return console.log('KILL')
@@ -34,32 +34,32 @@ async function _runScript() {
   }
 
   function forceSolution() {
-    hash = findHash(n + 1);
+    hash = findHash(nonce + 1);
     hash = new Array(difficulty + 1).join("0") + hash.slice(0, hash.length - difficulty);
     console.log(hash);
-    found = true
+    hashFound = true
   }
 
   setTimeout(() => {
-    if (!found) {
+    if (!hashFound) {
       forceSolution()
     }
   }, timeLimit)
 
-  while (!found) {
-    hash = findHash(n);
+  while (!hashFound) {
+    hash = findHash(nonce);
 
-    if (hash === prev_result) {
-      prev_hit_num += 1
-      if (prev_hit_num === 3) {
+    if (hash === previousHash) {
+      previousHashMatchCount += 1
+      if (previousHashMatchCount === 3) {
         console.log('Error: Your script keeps generating the same hash, make sure you use the nonce')
         break
       }
     }
 
     console.log(hash);
-    prev_result = hash
-    n++;
+    previousHash = hash
+    nonce++;
     await _sleep(50);
   }
 
@@ -108,14 +108,14 @@ import time
 import threading
 
 def _run_script():
-  is_searching = True
-  n = 0
+  hash_found = False
+  nonce = 0
   difficulty = 5
   time_limit = 3
   prev_result = ''
   prev_hit_num = 0
 
-  hash = find_hash(n)
+  hash = find_hash(nonce)
 
   if not isinstance(hash, str):
     print('Error: find_hash does not return a string')
@@ -126,22 +126,22 @@ def _run_script():
     return print('KILL')
 
   def force_solution():
-    nonlocal is_searching
-    h = find_hash(n + 1)
+    nonlocal hash_found
+    h = find_hash(nonce + 1)
     h = '0' * difficulty + h[difficulty:]
     print(h)
-    is_searching = False
+    hash_found = True
 
   def handle_time_limit():
     time.sleep(time_limit)
-    if is_searching:
+    if not hash_found:
       force_solution()
 
   thread = threading.Thread(target=handle_time_limit)
   thread.start()
 
-  while is_searching:
-    hash = find_hash(n)
+  while not hash_found:
+    hash = find_hash(nonce)
 
     if hash == prev_result:
       prev_hit_num += 1
@@ -151,7 +151,7 @@ def _run_script():
 
     print(hash)
     prev_result = hash
-    n += 1
+    nonce += 1
     time.sleep(0.05)
 
   print('KILL')
