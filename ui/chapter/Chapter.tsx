@@ -132,7 +132,7 @@ export default function Chapter({ children, metadata, lang }) {
                       <Button
                         href={
                           isBetweenChapter
-                            ? `${keysMeta[progress].path}`
+                            ? `${routes.chaptersUrl + keysMeta[progress].path}`
                             : `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}`
                         }
                         disabled={

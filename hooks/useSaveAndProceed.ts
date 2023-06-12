@@ -7,16 +7,16 @@ import {
 } from 'lib/progress'
 import { useRouter } from 'next/navigation'
 import { useProgressContext } from 'providers/ProgressProvider'
-import { usePathData, useLang } from 'hooks'
+import { usePathData, useLocalizedRoutes } from 'hooks'
 import { lessons } from 'content'
 import { useAuthContext } from 'providers/AuthProvider'
 
 export default function useSaveAndProceed() {
-  const lang = useLang()
   const router = useRouter()
   const { account } = useAuthContext()
   const { progress, saveProgress, saveProgressLocal } = useProgressContext()
   const { chapterId, lessonId } = usePathData()
+  const routes = useLocalizedRoutes()
 
   const chapterLessons = lessons?.[chapterId]
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null
@@ -25,6 +25,7 @@ export default function useSaveAndProceed() {
   const saveAndProceed = async () => {
     const nextLessonKey = getNextLessonKey(currentLessonKey)
     const nextLessonPath = getNextLessonPath(currentLessonKey)
+    const route = routes.chaptersUrl + nextLessonPath
 
     if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
       if (account) {
@@ -33,8 +34,7 @@ export default function useSaveAndProceed() {
         await saveProgressLocal(nextLessonKey)
       }
     }
-
-    router.push(lang + '/' + nextLessonPath)
+    router.push(route)
   }
 
   return saveAndProceed
