@@ -204,9 +204,9 @@ const translations = {
   chapter_two: {
     title: 'Hashing out a plan',
     paragraph_one:
-      'The coordinates Satoshi gave takes you to an abandoned warehouse in the middle of nowhere.',
+      'The coordinates Satoshi gave takes you to an abandoned warehouse.',
     paragraph_two:
-      'You circle around the building to get a better view of what you are getting yourself into. What kind of secrets does this dusty old building hold?',
+      'You circle the warehouse in your Budgetcopter no less than three times. Your Budgetcopter’s heat detector picks up nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.',
 
     intro_one: {
       title: 'Hashing out a plan',
