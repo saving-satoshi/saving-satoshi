@@ -191,7 +191,7 @@ const translations = {
     outro_two: {
       title: 'You did it!!!',
       description:
-        'Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go? <Link href="https://forms.gle/WhdJwcKKetB9sFL79" className="underline">Share your feedback</Link>.',
+        'Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go?',
     },
 
     end: {
