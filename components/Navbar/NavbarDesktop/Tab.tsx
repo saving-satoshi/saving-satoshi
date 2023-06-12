@@ -88,7 +88,7 @@ export default function Tab({
         href={href}
         title={t(challenge.title)}
         className={clsx(
-          'relative flex h-full items-center justify-center border-l border-white/25 px-7 text-center text-lg transition duration-100 ease-in-out',
+          'relative flex h-full w-[70px] items-center justify-center border-l border-white/25 text-center font-nunito text-lg font-bold transition duration-100 ease-in-out',
           {
             'text-white text-opacity-50': !isActive,
             'hover:bg-black/25 hover:text-white hover:text-opacity-100':

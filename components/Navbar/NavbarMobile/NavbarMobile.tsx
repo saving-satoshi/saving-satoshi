@@ -65,7 +65,7 @@ export default function NavbarMobile({ params }) {
         }
       )}
     >
-      <div className="flex items-stretch border-b border-white/80 text-white">
+      <div className="flex h-[70px] items-stretch border-b border-white/80 text-white">
         <div className="flex">
           <Link
             title={t('shared.back')}
@@ -96,7 +96,9 @@ export default function NavbarMobile({ params }) {
         </div>
         <div className="flex items-center">
           <HelpLink params={params} />
-          <UserButton />
+          <span className="h-full w-[50px]">
+            <UserButton />
+          </span>
         </div>
       </div>
       <Menu isOpen={isOpen} params={params} clicked={handleTabClick} />
