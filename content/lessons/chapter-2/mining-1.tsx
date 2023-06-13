@@ -32,6 +32,7 @@ export default function Mining1({ lang }) {
   const [bitcoinMinedHighlight, setBitcoinMinedHighlight] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [ramdomNonce, setRandomNonce] = useState(false)
+  const [finalMining, setFinalMining] = useState(false)
   const [showText, setShowText] = useState(true)
 
   const saveAndProceed = useSaveAndProceed()
@@ -44,14 +45,8 @@ export default function Mining1({ lang }) {
     setShowText(true)
   }, [step])
 
-  function displayRandomNumbers(
-    NonceStepSize: number,
-    maxBlock: number,
-    BlockStepSize: number,
-    time: number
-  ): void {
+  function displayRandomNumbers(NonceStepSize: number, time: number): void {
     let currentNonce = nonce
-    let currentBlock = blocks
     const startTime = new Date().getTime()
     const endTime = startTime + time
 
@@ -63,25 +58,6 @@ export default function Mining1({ lang }) {
       }
       currentNonce = currentNonce + Math.floor(Math.random() * NonceStepSize)
       setNonce(currentNonce)
-
-      if (maxBlock !== 0) {
-        currentBlock = Math.min(
-          currentBlock + Math.floor(Math.random() * BlockStepSize),
-          maxBlock
-        )
-        setBlocks(currentBlock)
-        setTransactionsConfirmed(currentBlock * 3500)
-        setBitcoinMined(currentBlock * 0.0061)
-        if (currentBlock === 1000) {
-          setShowText(false)
-          await sleep(300)
-          setStep(4)
-          setNonceHighlight(true)
-          setHashPowerHighlight(true)
-          clearInterval(intervalId)
-          return
-        }
-      }
     }, 40)
   }
 
@@ -112,11 +88,41 @@ export default function Mining1({ lang }) {
   }, [ramdomNonce])
 
   useEffect(() => {
+    let interval: NodeJS.Timeout
+    let currentNonce = nonce
+    if (finalMining) {
+      interval = setInterval(() => {
+        currentNonce = currentNonce + Math.floor(Math.random() * 17600)
+        setNonce(currentNonce)
+      }, 40)
+    }
+    return () => clearInterval(interval)
+  }, [finalMining])
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+    let currentBlock = blocks
+    if (finalMining) {
+      interval = setInterval(() => {
+        currentBlock = Math.min(
+          currentBlock + Math.floor(Math.random() * 3),
+          1000
+        )
+        setBlocks(currentBlock)
+        setTransactionsConfirmed(currentBlock * 3500)
+        setBitcoinMined(currentBlock * 0.0061)
+      }, 40)
+    }
+    return () => clearInterval(interval)
+  }, [finalMining])
+
+  useEffect(() => {
     if (blocks === 1000) {
       setStep(4)
       setNonceHighlight(true)
       setHashPowerHighlight(true)
       setRandomNonce(false)
+      setFinalMining(false)
     }
   }, [blocks])
 
@@ -150,7 +156,7 @@ export default function Mining1({ lang }) {
       await sleep(300)
       setStep(1)
       const time = 15 * 1000
-      displayRandomNumbers(1760, 0, 0, time)
+      displayRandomNumbers(1760, time)
       setTimeout(async () => {
         setShowText(false)
         await sleep(300)
@@ -170,8 +176,7 @@ export default function Mining1({ lang }) {
 
     if (step === 3) {
       setRandomNonce(false)
-      const time = 60 * 1000
-      displayRandomNumbers(17600, 1000, 3, time)
+      setFinalMining(true)
     }
   }
 
