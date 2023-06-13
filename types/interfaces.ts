@@ -18,7 +18,7 @@ export interface EditorLanguages {
     program: string
     defaultCode?: string
     defaultFunction: EditorFunction
-    validate: (answer: any) => Promise<boolean>
+    validate: (answer: any) => Promise<any[]>
   }
 }
 
