@@ -338,7 +338,7 @@ const translations = {
       heading_one: 'Now that we know how mining works, let’s see it in action',
       heading_two: 'You’re mining now',
       heading_three: 'Nice work!',
-      heading_four: 'Let’s get to 1,000 blocks',
+      heading_four: 'Let’s get to 100 blocks',
       heading_five: 'You did it!',
       paragraph_one:
         'Right now, the Bitcoin network requires blocks to have a hash with ten leading zeros. Let’s get to it!',
@@ -361,7 +361,7 @@ const translations = {
       paragraph_ten:
         'Wow! That took quite a bit of computing power to do all that hashing. Just look how many nonces were tried!  It really helped to have that boost in hash power i.e. the number of hashes your computer can try in a second.',
       paragraph_eleven:
-        'As expected, since each block contains 3,500 transactions, a total of 3,500,000 transactions have been confirmed by the 1,000 blocks that were mined.',
+        'As expected, since each block contains 3,500 transactions, a total of 350,000 transactions have been confirmed by the 100 blocks that were mined.',
       paragraph_twelve:
         'And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. ',
       paragraph_thirteen:

@@ -81,7 +81,7 @@ export default function Mining1({ lang }) {
         currentBlock = currentBlock + 1
         setBlocks(currentBlock)
         setTransactionsConfirmed(currentBlock * 3500)
-        setBitcoinMined(currentBlock * 0.0061)
+        setBitcoinMined(currentBlock * 0.061)
       }, 8 * 1000)
     }
     return () => clearInterval(interval)
@@ -104,20 +104,17 @@ export default function Mining1({ lang }) {
     let currentBlock = blocks
     if (finalMining) {
       interval = setInterval(() => {
-        currentBlock = Math.min(
-          currentBlock + Math.floor(Math.random() * 3),
-          1000
-        )
+        currentBlock = currentBlock + 1
         setBlocks(currentBlock)
         setTransactionsConfirmed(currentBlock * 3500)
-        setBitcoinMined(currentBlock * 0.0061)
-      }, 40)
+        setBitcoinMined(currentBlock * 0.061)
+      }, 0.3 * 1000)
     }
     return () => clearInterval(interval)
   }, [finalMining])
 
   useEffect(() => {
-    if (blocks === 1000) {
+    if (blocks === 100) {
       setStep(4)
       setNonceHighlight(true)
       setHashPowerHighlight(true)
@@ -163,7 +160,7 @@ export default function Mining1({ lang }) {
         setStep(2)
         setBlocks(1)
         setTransactionsConfirmed(3500)
-        setBitcoinMined(0.0061)
+        setBitcoinMined(0.061)
       }, time)
     }
 
@@ -201,10 +198,10 @@ export default function Mining1({ lang }) {
               {t('chapter_two.mining_one.progress_bar_title')}
             </span>{' '}
             <span className="absolute right-0">
-              {Intl.NumberFormat().format(blocks)} of 1,000
+              {Intl.NumberFormat().format(blocks)} of 100
             </span>
           </div>
-          <ProgressBar progress={blocks / 10} />
+          <ProgressBar progress={blocks} />
           <MiningStatisticNonce
             title={t('chapter_two.mining_one.progress_bar_one')}
             content={nonce}
