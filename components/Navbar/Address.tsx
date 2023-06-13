@@ -18,7 +18,7 @@ export default function Address() {
     return null
   }
 
-  if (!lessonId || !(lessonId in lessons)) {
+  if (!lessonId || !(lessonId in lessons[chapterId])) {
     return null
   }
 
