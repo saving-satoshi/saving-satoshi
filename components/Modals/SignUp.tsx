@@ -99,23 +99,24 @@ export default function LoginModal({ onClose, state }) {
 
         <HorizontalScrollView>
           {[1, 2, 3, 4, 5].map((i) => (
-            <div>
-              <button>
-                <Avatar
-                  key={i}
-                  avatar={`/assets/avatars/${i}.png`}
-                  size={80}
-                  onClick={() => setAvatar(i)}
-                  className={clsx(
-                    'inline-block h-20 w-20 rounded-full border-2',
-                    {
-                      'border-white': avatar === i,
-                      'border-transparent': avatar !== i,
-                    }
-                  )}
-                />
-              </button>
-            </div>
+            <button
+              aria-label="select one out of the five avatar"
+              aria-pressed="false"
+            >
+              <Avatar
+                key={i}
+                avatar={`/assets/avatars/${i}.png`}
+                size={80}
+                onClick={() => setAvatar(i)}
+                className={clsx(
+                  'inline-block h-20 w-20 rounded-full border-2',
+                  {
+                    'border-white': avatar === i,
+                    'border-transparent': avatar !== i,
+                  }
+                )}
+              />
+            </button>
           ))}
         </HorizontalScrollView>
 
