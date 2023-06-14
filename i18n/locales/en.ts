@@ -305,7 +305,7 @@ const translations = {
       paragraph_five:
         'The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.',
       paragraph_six:
-        'For the next challenge, write a script that finds a hash that starts with three zeroes (000).',
+        'For the next challenge, write a script that finds a hash that starts with four zeroes ("0000").',
     },
 
     scripting_two: {
@@ -313,7 +313,7 @@ const translations = {
       paragraph_one:
         'Alright, time to write and run your own code. Write a function that returns a sha256 hash. The code should calculate and return a hash based on the nonce argument.',
       paragraph_two:
-        'When you press "Run the script", the function you wrote will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce. We are trying to run this function until we find a hash that starts with three zeroes (“000”).',
+        'When you press "Run the script", the function you wrote will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce. We are trying to run this function until we find a hash that starts with four zeroes (“0000”).',
       python: {
         paragraph_three:
           'We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
