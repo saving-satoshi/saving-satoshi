@@ -343,7 +343,7 @@ const translations = {
       paragraph_one:
         'Right now, the Bitcoin network requires blocks to have a hash with ten leading zeros. Let’s get to it!',
       paragraph_two:
-        'For this simple simulation, we’ll just assume that every block contains 3,500 transactions.',
+        'For this simple simulation, we’ll just assume that every block contains 3,500 transactions and 0.061 BTC in fees.',
       paragraph_two_one: 'See if you can turn on the miners.',
       paragraph_three:
         'The code you wrote in the previous lesson to compute hashes over and over again is running.',
