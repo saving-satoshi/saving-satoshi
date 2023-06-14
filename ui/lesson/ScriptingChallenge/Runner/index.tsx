@@ -30,6 +30,8 @@ const send = (action: string, payload: any) => {
   ws.send(JSON.stringify({ action, payload }))
 }
 
+let success = false
+
 export default function Runner({
   language,
   code,
@@ -59,7 +61,6 @@ export default function Runner({
   const [loading, setLoading] = useState<boolean>(false)
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const [result, setResult] = useState<any | undefined>(undefined)
-  const [success, setSuccess] = useState<boolean | null>(null)
   const isActive = activeView !== LessonView.Info
   const [validationError, setValidationError] = useState<string | undefined>(
     undefined
@@ -73,6 +74,7 @@ export default function Runner({
 
   const handleRun = async () => {
     try {
+      success = false
       setErrors([])
       setIsRunning(true)
       setHasherState(HasherState.Running)
@@ -86,10 +88,10 @@ export default function Runner({
 
       ws.onmessage = async (e) => {
         let { type, payload } = JSON.parse(e.data)
-        payload = payload.trim()
 
         switch (type) {
           case 'error': {
+            payload = payload.trim()
             const lines = payload.split('\n')
             lines.forEach((line) => print(output, line))
             setErrors([...errors, ...lines])
@@ -98,28 +100,34 @@ export default function Runner({
             break
           }
           case 'debug': {
+            payload = payload.trim()
             print(sysmon, payload)
-
-            if (/Container(.*)killed/gim.test(payload) && !success) {
-              ws?.close()
-              setErrors([...errors, 'Script took too long to finish running'])
-              setHasherState(HasherState.Error)
-              setIsRunning(false)
-            }
             break
           }
           case 'output': {
+            payload = payload.trim()
             print(output, payload)
             setResult(payload)
 
-            const [success, err] = await onValidate(payload)
-            if (success) {
+            const [res, err] = await onValidate(payload)
+            if (res) {
               setHasherState(HasherState.Success)
-              setSuccess(true)
+              success = true
               setIsRunning(false)
             } else {
               setValidationError(err)
             }
+            break
+          }
+          case 'end': {
+            if (!success) {
+              ws?.close()
+            }
+
+            print(
+              sysmon,
+              `[system] Process exited with code ${payload ? 1 : 0}`
+            )
             break
           }
         }

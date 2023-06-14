@@ -20,11 +20,11 @@ const javascript = {
   },
   defaultCode: `const crypto = require('crypto')
 
-// Create a program that finds a sha256 hash starting with 3 zeroes.
+// Create a program that finds a sha256 hash starting with 4 zeroes.
 `,
   validate: async (answer) => {
-    if (!answer.startsWith('000')) {
-      return [false, 'Hash must start with 3 zeroes.']
+    if (!answer.startsWith('0000')) {
+      return [false, 'Hash must start with 4 zeroes.']
     }
 
     if (answer.length !== 64) {
@@ -43,10 +43,10 @@ const python = {
   },
   defaultCode: `from hashlib import sha256
 
-# Create a program that finds a sha256 hash starting with 3 zeroes.`,
+# Create a program that finds a sha256 hash starting with 4 zeroes.`,
   validate: async (answer) => {
-    if (!answer.startsWith('000')) {
-      return [false, 'Hash must start with 3 zeroes.']
+    if (!answer.startsWith('0000')) {
+      return [false, 'Hash must start with 4 zeroes.']
     }
 
     if (answer.length !== 64) {
