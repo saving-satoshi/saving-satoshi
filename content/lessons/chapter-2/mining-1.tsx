@@ -115,13 +115,19 @@ export default function Mining1({ lang }) {
 
   useEffect(() => {
     if (blocks === 100) {
-      setStep(4)
-      setNonceHighlight(true)
-      setHashPowerHighlight(true)
-      setRandomNonce(false)
-      setFinalMining(false)
+      explanationStep()
     }
   }, [blocks])
+
+  const explanationStep = async () => {
+    setShowText(false)
+    setRandomNonce(false)
+    setFinalMining(false)
+    await sleep(300)
+    setStep(4)
+    setNonceHighlight(true)
+    setHashPowerHighlight(true)
+  }
 
   const transactionStep = async () => {
     setShowText(false)
