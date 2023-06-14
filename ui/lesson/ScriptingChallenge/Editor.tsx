@@ -34,6 +34,7 @@ export default function Editor({
       inherit: true,
       rules: [],
       colors: {
+        'menu.background': '#66211FFF',
         'editor.background': '#00000000',
         'editor.lineHighlightBorder': '#00000000', // 4th channel is for transparency
       },
