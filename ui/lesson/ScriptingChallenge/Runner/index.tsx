@@ -100,7 +100,7 @@ export default function Runner({
           case 'debug': {
             print(sysmon, payload)
 
-            if (/Container(.*)removed/gim.test(payload) && !success) {
+            if (/Container(.*)killed/gim.test(payload) && !success) {
               ws?.close()
               setErrors([...errors, 'Script took too long to finish running'])
               setHasherState(HasherState.Error)
