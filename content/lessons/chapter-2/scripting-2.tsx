@@ -14,40 +14,68 @@ export const metadata = {
 
 const javascript = {
   program: `
-// Validate whether the user code will produce a string with a length of 64.
-const testResult = findHash(0)
-if (!testResult || testResult.length !== 64) {
-  await VM.validate()
-  VM.result({ value: testResult, error: 'Your script does not return a valid hash' })
-  VM.close()
-  return
+const timeLimit = 3000;
+const difficulty = 5;
+let hashFound = false;
+let nonce = 0;
+let previousHash = ''
+let previousHashMatchCount = 0
+
+async function _runScript() {
+  let hash = findHash(nonce)
+  if (typeof hash !== 'string') {
+    console.log('Error: findHash does not return a string')
+    return console.log('KILL')
+  }
+
+  if (hash.length !== 64) {
+    console.log('Error: findHash should return a string of 64 characters')
+    return console.log('KILL')
+  }
+
+  function forceSolution() {
+    hash = findHash(nonce + 1);
+    hash = new Array(difficulty + 1).join("0") + hash.slice(0, hash.length - difficulty);
+    console.log(hash);
+    hashFound = true
+  }
+
+  setTimeout(() => {
+    if (!hashFound) {
+      forceSolution()
+    }
+  }, timeLimit)
+
+  while (!hashFound) {
+    hash = findHash(nonce);
+
+    if (hash === previousHash) {
+      previousHashMatchCount += 1
+      if (previousHashMatchCount === 3) {
+        console.log('Error: Your script keeps generating the same hash, make sure you use the nonce')
+        break
+      }
+    }
+
+    console.log(hash);
+    previousHash = hash
+    nonce++;
+    await _sleep(50);
+  }
+
+  console.log('KILL')
 }
 
-// Helpers
-function log(hash, nonce) {
-  console.log(hash + ' (nonce: ' + nonce + ')')
+function _sleep(t) {
+  return new Promise((resolve) => {
+    const timeout = setTimeout(() => {
+      resolve();
+      clearTimeout(timeout);
+    }, t);
+  });
 }
 
-// Get a number for the amount of fake tries the script will perform.
-let n = VM.randomBetween(5,20)
-
-// Run the user script 'n' amount of times.
-for (let nonce=0;nonce<n;nonce++) {
-  const hash = findHash(nonce)
-  log(hash, nonce)
-  VM.result({ value: hash, error: null })
-  await sleep(50)
-}
-
-// After n amount of tries have failed, force a hash starting with 5 zeroes.
-const hash = findHash(n+1)
-const result = '00000' + hash.substring(5, hash.length)
-log(result, n+1)
-
-// Validate the answer.
-const success = await VM.validate(result)
-VM.result({ value: result, error: null })
-VM.close()
+_runScript();
 `,
   defaultFunction: {
     name: 'findHash',
@@ -59,46 +87,76 @@ function findHash(nonce) {
   /* Enter a function that returns a sha256 hash based on
   the nonce argument provided */
   return hash
-}`,
+}
+`,
   validate: async (answer) => {
-    return answer.startsWith('00000') && answer.length === 64
+    if (!answer.startsWith('00000')) {
+      return [false, 'Hash must start with 5 zeroes.']
+    }
+
+    if (answer.length !== 64) {
+      return [false, 'Hash must be 64 characters long']
+    }
+
+    return [true, undefined]
   },
 }
 
 const python = {
   program: `
-def validate_cb(success):
-  VM.close()
+import time
+import threading
 
-# Validate whether the user code will produce a string with a length of 64.
-test_result = find_hash(0)
-if not isinstance(test_result, str) or len(test_result) != 64:
-  VM.validate('', validate_cb)
-  VM.result({ 'value': test_result, 'error': 'Your script does not return a valid hash' })
-  return VM.close()
+def _run_script():
+  hash_found = False
+  nonce = 0
+  difficulty = 5
+  time_limit = 3
+  prev_result = ''
+  prev_hit_num = 0
 
-# Helpers
-def log(hash, nonce):
-  print(hash + ' (nonce: '+ str(nonce)+')')
+  hash = find_hash(nonce)
 
-# Get a number for the amount of fake tries the script will perform.
-n = VM.random_between(5,20)
+  if not isinstance(hash, str):
+    print('Error: find_hash does not return a string')
+    return print('KILL')
 
-# Run the user script 'n' amount of times.
-for i in range(n):
-  hash = find_hash(i)
-  log(hash, i)
-  VM.result({ 'value': hash, 'error': None })
-  time.sleep(50)
+  if len(hash) != 64:
+    print('Error: find_hash should return a string of 64 characters')
+    return print('KILL')
 
-# After n amount of tries have failed, force a hash starting with 5 zeroes.
-hash = find_hash(n+1)
-hash = '00000' + hash[5:len(hash)]
-log(hash, n+1)
+  def force_solution():
+    nonlocal hash_found
+    h = find_hash(nonce + 1)
+    h = '0' * difficulty + h[difficulty:]
+    print(h)
+    hash_found = True
 
-# Validate the answer.
-VM.validate(hash, validate_cb)
-VM.result({ 'value': hash, 'error': None })
+  def handle_time_limit():
+    time.sleep(time_limit)
+    if not hash_found:
+      force_solution()
+
+  thread = threading.Thread(target=handle_time_limit)
+  thread.start()
+
+  while not hash_found:
+    hash = find_hash(nonce)
+
+    if hash == prev_result:
+      prev_hit_num += 1
+      if prev_hit_num == 3:
+        print('Error: Your script keeps generating the same hash, make sure you use the nonce')
+        break
+
+    print(hash)
+    prev_result = hash
+    nonce += 1
+    time.sleep(0.05)
+
+  print('KILL')
+
+_run_script()
 `,
   defaultFunction: {
     name: 'find_hash',
@@ -111,12 +169,20 @@ def find_hash(nonce):
   # the nonce argument provided
   return hash`,
   validate: async (answer) => {
-    return answer.startsWith('00000') && answer.length === 64
+    if (!answer.startsWith('00000')) {
+      return [false, 'Hash must start with 5 zeroes.']
+    }
+
+    if (answer.length !== 64) {
+      return [false, 'Hash must be 64 characters long']
+    }
+
+    return [true, undefined]
   },
 }
 
 const config: EditorConfig = {
-  defaultLanguage: 'python',
+  defaultLanguage: 'javascript',
   languages: {
     javascript,
     python,

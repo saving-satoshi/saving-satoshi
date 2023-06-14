@@ -28,3 +28,9 @@ export const modifyRect = (
 export const clamp = (value: number, min: number, max: number) => {
   return Math.max(min, Math.min(value, max))
 }
+
+export const sleep = (time: number): Promise<void> => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, time)
+  })
+}

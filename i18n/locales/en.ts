@@ -202,11 +202,11 @@ const translations = {
   },
 
   chapter_two: {
-    title: 'The 51% attack',
+    title: 'Hashing out a plan',
     paragraph_one:
-      'The network outage has to be related to the block subsidy. There’s no way this is a coincidence.',
+      'The coordinates Satoshi gave takes you to an abandoned warehouse.',
     paragraph_two:
-      'You hop on your computer to do some research on mining when you notice something unusual about the few blocks that are being mined. They all seem to be coming from the same place, possibly even the same mining pool. What happened to the rest of the miners?',
+      'You circle the warehouse in your Budgetcopter no less than three times. Your Budgetcopter’s heat detector picks up nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.',
 
     intro_one: {
       title: 'Hashing out a plan',
@@ -297,10 +297,14 @@ const translations = {
       paragraph_one:
         'OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.',
       paragraph_two:
-        'Miners take all the stuff they want to put in a block, the transactions and a bunch of related metadata, and combine it with a random number called a nonce. They send all of this into the hash function to create something called the block hash.',
+        'Miners gather all the information they want to put in a block such as the previous block header hash, a hash of transactions to be included in block (including the coinbase transaction), time, and combine it with a random number called a nonce (which stands for “number only used once”). They send all of this into the hash function to create something called the block hash.',
       paragraph_three:
-        'The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is revisited every 2016 blocks.',
+        'When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data by 1 in the 32-bit field. But since miners are so powerful now and difficulty is so high, they cycle through this pretty quickly and normally don’t find a solution below the target difficulty.',
       paragraph_four:
+        'So what miners need to do is change other parts of the block header, such as the time or transactions included in the block.',
+      paragraph_five:
+        'The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.',
+      paragraph_six:
         'For the next challenge, write a script that finds a hash that starts with five zeroes (“00000”).',
     },
 
