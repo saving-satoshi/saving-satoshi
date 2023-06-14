@@ -47,16 +47,24 @@ export default function Editor({
   }
 
   const isSmallScreen = useMediaQuery({ width: 767 })
-  const headerHeight = 70
+  const headerHeight = isSmallScreen ? 63 : 70
   const languageTabsHeight = 40
-  const statusBarHeight = 64
-  const runnerHeight = 240
-  const totalHeight =
-    headerHeight + languageTabsHeight + statusBarHeight + runnerHeight
+  const statusBarHeight = 56
+  const terminalHeight = 218
+  const terminalTabsHeight = 40
+  const mobileMenuHeight = 48
+
+  const totalHeight = isSmallScreen
+    ? headerHeight + mobileMenuHeight + languageTabsHeight + statusBarHeight
+    : headerHeight +
+      languageTabsHeight +
+      statusBarHeight +
+      terminalHeight +
+      terminalTabsHeight
 
   return (
     <div
-      className={clsx('relative font-mono text-sm text-white', {
+      className={clsx('relative grow font-mono text-sm text-white', {
         'hidden md:flex': !isActive,
         flex: isActive,
       })}
@@ -64,7 +72,7 @@ export default function Editor({
       <MonacoEditor
         loading={<Loader className="h-10 w-10 text-white" />}
         width={isSmallScreen ? '100vw' : 'calc(100vw / 2)'}
-        height={`calc(100vh - ${totalHeight}px)`}
+        height={`calc(var(--dynamic-height) - ${totalHeight}px)`}
         language={language}
         theme={'satoshi'}
         value={value}

@@ -13,6 +13,8 @@ import { register } from 'api/auth'
 import { Input } from 'shared'
 import Modal from './Modal'
 
+import Profile from 'components/utils/Profile'
+
 enum View {
   Generate = 'generate',
   Input = 'input',

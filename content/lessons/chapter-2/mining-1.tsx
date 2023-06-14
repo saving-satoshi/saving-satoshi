@@ -11,6 +11,7 @@ import {
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import clsx from 'clsx'
+import { sleep } from 'utils'
 
 export const metadata = {
   title: 'chapter_two.mining_one.title',
@@ -31,6 +32,8 @@ export default function Mining1({ lang }) {
   const [bitcoinMinedHighlight, setBitcoinMinedHighlight] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [ramdomNonce, setRandomNonce] = useState(false)
+  const [finalMining, setFinalMining] = useState(false)
+  const [showText, setShowText] = useState(true)
 
   const saveAndProceed = useSaveAndProceed()
 
@@ -38,18 +41,16 @@ export default function Mining1({ lang }) {
     setHydrated(true)
   }, [])
 
-  function displayRandomNumbers(
-    NonceStepSize: number,
-    maxBlock: number,
-    BlockStepSize: number,
-    time: number
-  ): void {
+  useEffect(() => {
+    setShowText(true)
+  }, [step])
+
+  function displayRandomNumbers(NonceStepSize: number, time: number): void {
     let currentNonce = nonce
-    let currentBlock = blocks
     const startTime = new Date().getTime()
     const endTime = startTime + time
 
-    const intervalId = setInterval(() => {
+    const intervalId = setInterval(async () => {
       const currentTime = new Date().getTime()
       if (currentTime >= endTime) {
         clearInterval(intervalId)
@@ -57,23 +58,6 @@ export default function Mining1({ lang }) {
       }
       currentNonce = currentNonce + Math.floor(Math.random() * NonceStepSize)
       setNonce(currentNonce)
-
-      if (maxBlock !== 0) {
-        currentBlock = Math.min(
-          currentBlock + Math.floor(Math.random() * BlockStepSize),
-          maxBlock
-        )
-        setBlocks(currentBlock)
-        setTransactionsConfirmed(currentBlock * 3500)
-        setBitcoinMined(currentBlock * 0.0061)
-        if (currentBlock === 1000) {
-          setStep(4)
-          setNonceHighlight(true)
-          setHashPowerHighlight(true)
-          clearInterval(intervalId)
-          return
-        }
-      }
     }, 40)
   }
 
@@ -89,30 +73,93 @@ export default function Mining1({ lang }) {
     return () => clearInterval(interval)
   }, [ramdomNonce])
 
-  const transactionStep = () => {
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+    let currentBlock = blocks
+    if (ramdomNonce) {
+      interval = setInterval(() => {
+        currentBlock = currentBlock + 1
+        setBlocks(currentBlock)
+        setTransactionsConfirmed(currentBlock * 3500)
+        setBitcoinMined(currentBlock * 0.0061)
+      }, 8 * 1000)
+    }
+    return () => clearInterval(interval)
+  }, [ramdomNonce])
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+    let currentNonce = nonce
+    if (finalMining) {
+      interval = setInterval(() => {
+        currentNonce = currentNonce + Math.floor(Math.random() * 17600)
+        setNonce(currentNonce)
+      }, 40)
+    }
+    return () => clearInterval(interval)
+  }, [finalMining])
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+    let currentBlock = blocks
+    if (finalMining) {
+      interval = setInterval(() => {
+        currentBlock = Math.min(
+          currentBlock + Math.floor(Math.random() * 3),
+          1000
+        )
+        setBlocks(currentBlock)
+        setTransactionsConfirmed(currentBlock * 3500)
+        setBitcoinMined(currentBlock * 0.0061)
+      }, 40)
+    }
+    return () => clearInterval(interval)
+  }, [finalMining])
+
+  useEffect(() => {
+    if (blocks === 1000) {
+      setStep(4)
+      setNonceHighlight(true)
+      setHashPowerHighlight(true)
+      setRandomNonce(false)
+      setFinalMining(false)
+    }
+  }, [blocks])
+
+  const transactionStep = async () => {
+    setShowText(false)
+    await sleep(300)
     setStep(5)
     setNonceHighlight(false)
     setHashPowerHighlight(false)
     setTransactionsConfirmedHighlight(true)
   }
 
-  const bitcoinStep = () => {
+  const bitcoinStep = async () => {
+    setShowText(false)
+    await sleep(300)
     setStep(6)
     setTransactionsConfirmedHighlight(false)
     setBitcoinMinedHighlight(true)
   }
 
-  const finalStep = () => {
+  const finalStep = async () => {
+    setShowText(false)
+    await sleep(300)
     setStep(7)
     setBitcoinMinedHighlight(false)
   }
 
-  const turnOnButton = () => {
+  const turnOnButton = async () => {
     if (step === 0) {
+      setShowText(false)
+      await sleep(300)
       setStep(1)
-      const time = 1 * 15 * 1000
-      displayRandomNumbers(1760, 0, 0, time)
-      setTimeout(() => {
+      const time = 15 * 1000
+      displayRandomNumbers(1760, time)
+      setTimeout(async () => {
+        setShowText(false)
+        await sleep(300)
         setStep(2)
         setBlocks(1)
         setTransactionsConfirmed(3500)
@@ -121,14 +168,15 @@ export default function Mining1({ lang }) {
     }
 
     if (step === 2) {
+      setShowText(false)
+      await sleep(300)
       setStep(3)
       setRandomNonce(true)
     }
 
     if (step === 3) {
       setRandomNonce(false)
-      const time = 1 * 60 * 1000
-      displayRandomNumbers(17600, 1000, 3, time)
+      setFinalMining(true)
     }
   }
 
@@ -139,17 +187,17 @@ export default function Mining1({ lang }) {
   return (
     hydrated && (
       <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
-        <div className="grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:my-0 md:mx-[30px] md:w-[405px] md:p-[25px]">
+        <div className="fade-in grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:my-0 md:mx-[30px] md:w-[405px] md:p-[25px]">
           <div
             className={clsx(
               'relative mb-2.5 font-nunito text-lg font-semibold',
               {
-                'text-white': blocks !== 0,
+                'fade-in text-white': blocks !== 0,
                 'text-black/50': blocks === 0,
               }
             )}
           >
-            <span className={clsx({ 'text-[#EDA081]': blocks !== 0 })}>
+            <span className={clsx({ 'fade-in text-[#EDA081]': blocks !== 0 })}>
               {t('chapter_two.mining_one.progress_bar_title')}
             </span>{' '}
             <span className="absolute right-0">
@@ -184,17 +232,13 @@ export default function Mining1({ lang }) {
             transactionTitle={t('chapter_two.mining_one.progress_bar_three')}
           />
         </div>
-        <div className="mb-5 flex w-full items-center px-[15px] md:mx-0 md:mt-0 md:mb-0 md:w-1/2 md:max-w-[405px] md:pr-0 md:pl-[15px]">
+        <div
+          className={`mb-5 flex w-full items-center px-[15px] transition-opacity md:mx-0 md:mt-0 md:mb-0 md:w-1/2 md:max-w-[405px] md:pr-0 md:pl-[15px] ${
+            showText ? 'fade-in' : 'fade-out'
+          }`}
+        >
           {step === 0 && (
-            <div
-              className={clsx(
-                'font-nunito text-white transition-all duration-200',
-                {
-                  'opacity-0': step !== 0,
-                  'opacity-100': step === 0,
-                }
-              )}
-            >
+            <div className={clsx('font-nunito text-white ')}>
               <Title>{t('chapter_two.mining_one.heading_one')}</Title>
               <div className="mt-2 text-lg">
                 {t('chapter_two.mining_one.paragraph_one')}
@@ -210,14 +254,7 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 1 && (
-            <div
-              className={clsx(
-                'font-nunito text-white opacity-0 transition-opacity duration-1000',
-                {
-                  'opacity-100': step === 1,
-                }
-              )}
-            >
+            <div className={clsx('font-nunito text-white ')}>
               <Title>{t('chapter_two.mining_one.heading_two')}</Title>
               <div className="mt-2 text-lg">
                 {t('chapter_two.mining_one.paragraph_three')}
@@ -233,7 +270,7 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 2 && (
-            <div className="font-nunito text-white transition-all duration-200">
+            <div className="font-nunito text-white">
               <Title>{t('chapter_two.mining_one.heading_three')}</Title>
               <div className="mt-2 text-lg">
                 {t('chapter_two.mining_one.paragraph_six')}
@@ -260,7 +297,7 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 3 && (
-            <div className="font-nunito text-white transition-all duration-200">
+            <div className="font-nunito text-white">
               <Title>{t('chapter_two.mining_one.heading_four')}</Title>
               <div className="mt-2 text-lg">
                 {t('chapter_two.mining_one.paragraph_nine')}
@@ -268,7 +305,7 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 4 && (
-            <div className="font-nunito text-white transition-all duration-200">
+            <div className="font-nunito text-white">
               <Title>{t('chapter_two.mining_one.heading_five')}</Title>
               <div className="mt-2 text-lg">
                 {t('chapter_two.mining_one.paragraph_ten')}
@@ -283,7 +320,7 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 5 && (
-            <div className="font-nunito text-white transition-all duration-200">
+            <div className="font-nunito text-white">
               <div className="mt-8 text-lg">
                 {t('chapter_two.mining_one.paragraph_eleven')}
               </div>
@@ -297,7 +334,7 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 6 && (
-            <div className="font-nunito text-white transition-all duration-200">
+            <div className="font-nunito text-white">
               <div className="mt-8 text-lg">
                 {t('chapter_two.mining_one.paragraph_twelve')}
               </div>
@@ -311,7 +348,7 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 7 && (
-            <div className="font-nunito text-white transition-all duration-200">
+            <div className="font-nunito text-white">
               <div className="mt-8 text-lg">
                 {t('chapter_two.mining_one.paragraph_thirteen')}
               </div>

@@ -7,7 +7,7 @@ import Editor from './Editor'
 import Runner from './Runner'
 import { EditorConfig, LessonDirection } from 'types'
 import { Lesson, LessonTabs } from 'ui'
-import { useMediaQuery } from 'hooks'
+import { useMediaQuery, useDynamicHeight } from 'hooks'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { useAuthContext } from 'providers/AuthProvider'
 
@@ -50,8 +50,8 @@ export default function ScriptingChallenge({
   const [challengeSuccess, setChallengeSuccess] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [errors, setErrors] = useState<string[]>([])
-  const [runnerReady, setRunnerReady] = useState<boolean>(false)
 
+  useDynamicHeight()
   const isSmallScreen = useMediaQuery({ width: 767 })
 
   const handleSetLanguage = (value) => {
@@ -75,7 +75,7 @@ export default function ScriptingChallenge({
   }
 
   const handleRunnerValidate = async (answer) => {
-    const success = await config.languages[language].validate(answer)
+    const [success, errors] = await config.languages[language].validate(answer)
 
     if (success) {
       setChallengeSuccess(true)
@@ -86,11 +86,7 @@ export default function ScriptingChallenge({
       }
     }
 
-    return success
-  }
-
-  const handleRunnerReady = () => {
-    setRunnerReady(true)
+    return [success, errors]
   }
 
   useEffect(() => {
@@ -111,7 +107,7 @@ export default function ScriptingChallenge({
         <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
         {children}
 
-        <div className="flex grow flex-col border-white/25 md:basis-1/3 md:border-l">
+        <div className="code-editor grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l">
           <LanguageTabs
             languages={config.languages}
             value={language}
@@ -132,7 +128,6 @@ export default function ScriptingChallenge({
             errors={errors}
             setErrors={setErrors}
             onValidate={handleRunnerValidate}
-            onReady={handleRunnerReady}
             successMessage={successMessage}
           />
         </div>
