@@ -85,10 +85,12 @@ export default function Runner({
       }
 
       ws.onmessage = async (e) => {
-        const { type, payload } = JSON.parse(e.data)
+        let { type, payload } = JSON.parse(e.data)
+        payload = payload.trim()
+
         switch (type) {
           case 'error': {
-            const lines = payload.trim().split('\n')
+            const lines = payload.split('\n')
             lines.forEach((line) => print(output, line))
             setErrors([...errors, ...lines])
             setHasherState(HasherState.Error)
