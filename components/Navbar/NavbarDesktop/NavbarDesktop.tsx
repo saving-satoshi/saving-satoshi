@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 import { useLocalizedRoutes, useTranslations, useLang } from 'hooks'
 import { chapters, lessons } from 'content'
-import Address from 'components/Navbar/Address'
+import Address from '../Address'
 import TabGroup from 'components/Navbar/NavbarDesktop/TabGroup'
 import UserButton from '../UserButton'
 import Link from 'next/link'
@@ -43,13 +43,12 @@ export default function NavbarDesktop({ params }) {
               className="h-[30px] w-[30px] opacity-75 transition duration-100 ease-in-out group-hover:opacity-100"
             />
           </Link>
-
           <Address />
         </div>
         <nav className="flex items-center">
           <TabGroup params={params} />
           <HelpLink params={params} />
-          <span className="flex h-full items-center">
+          <span className="h-full w-[70px] items-stretch hover:bg-black/25">
             <UserButton />
           </span>
         </nav>

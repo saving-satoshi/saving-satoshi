@@ -13,6 +13,9 @@ import { register } from 'api/auth'
 import { Input } from 'shared'
 import Modal from './Modal'
 
+import Profile from 'components/utils/Profile'
+
+
 enum View {
   Generate = 'generate',
   Input = 'input',
@@ -177,6 +180,7 @@ export default function LoginModal({ onClose, state }) {
           {!loading && t('modal_signup.confirm')}
         </button>
       </div>
-    </Modal>
+     
+      </Modal>
   )
 }
