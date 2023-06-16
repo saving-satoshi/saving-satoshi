@@ -9,7 +9,7 @@ export enum ProgressBarVariant {
   TotalBar = 3,
 }
 
-export default function ProgressBar({
+export default function BlockProgress({
   progress,
   title,
   variant,
