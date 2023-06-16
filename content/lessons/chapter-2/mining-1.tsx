@@ -210,9 +210,8 @@ export default function Mining1({ lang }) {
             className="bg-black/15"
           />
           <MiningStatisticHash
-            variant={HashVariant.Percentage}
+            variant={HashVariant.HashBar}
             fontSize="text-lg"
-            percentage={35}
             title={t('chapter_two.mining_one.progress_bar_two')}
             highlight={hashPowerHighlight}
             disabled={nonce === 0}

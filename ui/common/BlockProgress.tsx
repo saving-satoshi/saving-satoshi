@@ -59,7 +59,8 @@ export default function BlockProgress({
         )}
         <span>
           {progress}{' '}
-          {(BlockProgressVariant.Total || BlockProgressVariant.TotalBar) &&
+          {(variant === BlockProgressVariant.Total ||
+            variant === BlockProgressVariant.TotalBar) &&
             total &&
             `of ${total}`}
         </span>
