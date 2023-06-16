@@ -2,7 +2,7 @@
 
 import clsx from 'clsx'
 
-export enum ProgressBarVariant {
+export enum BlockProgressVariant {
   Blocks = 0,
   Percentage = 1,
   Total = 2,
@@ -20,7 +20,7 @@ export default function BlockProgress({
 }: {
   progress: number
   title: string
-  variant: ProgressBarVariant
+  variant: BlockProgressVariant
   fontSize: string
   total?: number
   percentage?: number
@@ -35,8 +35,8 @@ export default function BlockProgress({
             'fade-in text-white': progress !== 0,
             'text-black/50': progress === 0,
             'py-[10px] px-[15px]':
-              variant === ProgressBarVariant.Blocks ||
-              variant === ProgressBarVariant.Percentage,
+              variant === BlockProgressVariant.Blocks ||
+              variant === BlockProgressVariant.Percentage,
           }
         )}
       >
@@ -47,7 +47,7 @@ export default function BlockProgress({
         >
           {title}
         </span>{' '}
-        {variant === ProgressBarVariant.Percentage && percentage && (
+        {variant === BlockProgressVariant.Percentage && percentage && (
           <span
             className={clsx('fade-in items-start', {
               'rounded-[5px] bg-[#28B123] py-[5px] px-[7px] text-white': focus,
@@ -59,12 +59,12 @@ export default function BlockProgress({
         )}
         <span>
           {progress}{' '}
-          {(ProgressBarVariant.Total || ProgressBarVariant.TotalBar) &&
+          {(BlockProgressVariant.Total || BlockProgressVariant.TotalBar) &&
             total &&
             `of ${total}`}
         </span>
       </div>
-      {variant === ProgressBarVariant.TotalBar && total && (
+      {variant === BlockProgressVariant.TotalBar && total && (
         <div className="relative h-[30px] w-full rounded-[5px] bg-black/20">
           <div className="h-full w-full overflow-hidden rounded-[5px]">
             <div

@@ -9,7 +9,7 @@ import {
   BlockProgress,
 } from 'ui'
 import { HashVariant } from 'ui/common/MiningStatisticsHash'
-import { ProgressBarVariant } from 'ui/common/ProgressBar'
+import { BlockProgressVariant } from 'ui/common/BlockProgress'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import clsx from 'clsx'
@@ -191,7 +191,7 @@ export default function Mining1({ lang }) {
       <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
         <div className="fade-in grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:my-0 md:mx-[30px] md:w-[405px] md:p-[25px]">
           <BlockProgress
-            variant={ProgressBarVariant.TotalBar}
+            variant={BlockProgressVariant.TotalBar}
             fontSize="text-lg"
             total={1000}
             title={t('chapter_two.mining_one.progress_bar_title')}
