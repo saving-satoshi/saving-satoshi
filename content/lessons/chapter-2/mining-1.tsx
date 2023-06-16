@@ -188,23 +188,11 @@ export default function Mining1({ lang }) {
     hydrated && (
       <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
         <div className="fade-in grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:my-0 md:mx-[30px] md:w-[405px] md:p-[25px]">
-          <div
-            className={clsx(
-              'relative mb-2.5 font-nunito text-lg font-semibold',
-              {
-                'fade-in text-white': blocks !== 0,
-                'text-black/50': blocks === 0,
-              }
-            )}
-          >
-            <span className={clsx({ 'fade-in text-[#EDA081]': blocks !== 0 })}>
-              {t('chapter_two.mining_one.progress_bar_title')}
-            </span>{' '}
-            <span className="absolute right-0">
-              {Intl.NumberFormat().format(blocks)} of 1,000
-            </span>
-          </div>
-          <ProgressBar progress={blocks / 10} />
+          <ProgressBar
+            total={1000}
+            title={t('chapter_two.mining_one.progress_bar_title')}
+            progress={blocks}
+          />
           <MiningStatisticNonce
             title={t('chapter_two.mining_one.progress_bar_one')}
             content={nonce}
