@@ -8,6 +8,8 @@ import {
   MiningStatisticHash,
   ProgressBar,
 } from 'ui'
+import { HashVariant } from 'ui/common/MiningStatisticsHash'
+import { ProgressBarVariant } from 'ui/common/ProgressBar'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import clsx from 'clsx'
@@ -189,6 +191,8 @@ export default function Mining1({ lang }) {
       <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
         <div className="fade-in grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:my-0 md:mx-[30px] md:w-[405px] md:p-[25px]">
           <ProgressBar
+            variant={ProgressBarVariant.TotalBar}
+            fontSize="text-lg"
             total={1000}
             title={t('chapter_two.mining_one.progress_bar_title')}
             progress={blocks}
@@ -203,13 +207,18 @@ export default function Mining1({ lang }) {
               '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
             }
             blockFound={blocks}
+            className="bg-black/15"
           />
           <MiningStatisticHash
+            variant={HashVariant.Percentage}
+            fontSize="text-lg"
+            percentage={35}
             title={t('chapter_two.mining_one.progress_bar_two')}
             highlight={hashPowerHighlight}
             disabled={nonce === 0}
             onButtonClick={turnOnButton}
             step={step}
+            className="bg-black/15"
           />
           <MiningStatistic
             transaction={transactionsConfirmed}

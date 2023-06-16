@@ -14,6 +14,7 @@ export default function MiningStatisticNonce({
   step,
   finalHash,
   blockFound,
+  className,
 }: {
   title: string
   content: number
@@ -22,6 +23,7 @@ export default function MiningStatisticNonce({
   step: number
   finalHash: string
   blockFound: number
+  className: string
 }) {
   const [hash, setHash] = useState('')
 
@@ -36,7 +38,9 @@ export default function MiningStatisticNonce({
 
   return (
     <div className="relative">
-      <div className="mt-5 flex w-full items-center justify-between rounded-[5px] border-2 border-transparent bg-black/15 p-4 font-space-mono">
+      <div
+        className={`${className} mt-5 flex w-full items-center justify-between rounded-[5px] border-2 border-transparent p-4 font-space-mono`}
+      >
         <div className="flex-initial">
           <div
             className={clsx('font-nunito text-[15px] font-bold', {
