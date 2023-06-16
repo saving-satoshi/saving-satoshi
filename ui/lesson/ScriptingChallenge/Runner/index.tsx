@@ -2,16 +2,33 @@
 
 import clsx from 'clsx'
 import { useTranslations } from 'hooks'
-import Script from 'next/script'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import Convert from 'ansi-to-html'
+
 import { Loader } from 'shared'
 import Icon from 'shared/Icon'
-import compilers from '../compilers'
 import Hasher, { HasherState } from './Hasher'
 import { EditorConfig, LessonView } from 'types'
 import { useLessonContext, StatusBar } from 'ui'
+import Terminal from './Terminal'
+import TabMenu from '../TabMenu'
+import { useMediaQuery } from 'hooks'
+import { useDynamicHeight } from 'hooks'
 
-let worker
+const defaultConsoleMessage = 'Console v0.0.1'
+const defaultSystemMessage = 'System Monitor v0.0.1'
+const convert = new Convert()
+const wsEndpoint =
+  process.env.NEXT_PUBLIC_WS_ENDPOINT || 'wss://api.savingsatoshi.com'
+
+let ws: WebSocket | undefined = undefined
+
+const send = (action: string, payload: any) => {
+  if (!ws) {
+    throw new Error('WebSocket uninitialized')
+  }
+  ws.send(JSON.stringify({ action, payload }))
+}
 
 export default function Runner({
   language,
@@ -20,7 +37,6 @@ export default function Runner({
   program,
   errors,
   onValidate,
-  onReady,
   lang,
   successMessage,
   setErrors,
@@ -30,176 +46,99 @@ export default function Runner({
   config: EditorConfig
   program: string
   errors: string[]
-  onValidate: (output: string | number) => Promise<boolean>
-  onReady?: () => void
+  onValidate: (output: string | number) => Promise<any[]>
   lang: string
   successMessage: string
   setErrors: (errors: string[]) => void
 }) {
   const t = useTranslations(lang)
-  const { activeView, setActiveView } = useLessonContext()
+  const { activeView } = useLessonContext()
+  const systemRef = useRef()
+  const outputRef = useRef()
 
-  const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(false)
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const [result, setResult] = useState<any | undefined>(undefined)
   const [success, setSuccess] = useState<boolean | null>(null)
   const isActive = activeView !== LessonView.Info
+  const [validationError, setValidationError] = useState<string | undefined>(
+    undefined
+  )
   const [hasherState, setHasherState] = useState<HasherState>(
     HasherState.Waiting
   )
 
+  useDynamicHeight([activeView])
+  const isSmallScreen = useMediaQuery({ width: 767 })
+
   const handleRun = async () => {
-    setIsRunning(true)
-    setErrors([])
-    setHasherState(HasherState.Running)
-    setActiveView(LessonView.Execute)
-    setIsRunning(true)
+    try {
+      setErrors([])
+      setIsRunning(true)
+      setHasherState(HasherState.Running)
 
-    const iframe = document.createElement('iframe')
-    iframe.style.width = '0px'
-    iframe.style.height = '0px'
-    document.body.appendChild(iframe)
+      ws = new WebSocket(wsEndpoint)
 
-    function destroyIframe() {
-      window.removeEventListener('message', handleMessage)
-      document.body.removeChild(iframe)
-    }
+      ws.onopen = () => {
+        print(sysmon, '[system] Websocket connection established.')
+        send('repl', { code: `${code}\n${program}`, language })
+      }
 
-    function print(message, config = { color: '#FFFFFF' }) {
-      // outputEl.innerHTML += `<div class="text-sm font-mono" style="color: ${config.color};">${message}</div>`
-      // outputEl.scrollTop = outputEl.scrollHeight
-    }
-
-    async function handleMessage(e) {
-      try {
-        const { action, payload, requestId } = JSON.parse(e.data)
-        const isRequest = requestId !== undefined
-
-        switch (action) {
-          case 'log': {
-            typeof payload === 'string' && print(payload)
-            break
-          }
-          case 'result': {
-            typeof payload.value === 'string' && setResult(payload)
-
-            if (payload.error) {
-              const parsedError = compilers[language].parseError(payload.error)
-              setErrors([parsedError])
-              setHasherState(HasherState.Error)
-              setIsRunning(false)
-              destroyIframe()
-              return
-            }
-            break
-          }
+      ws.onmessage = async (e) => {
+        const { type, payload } = JSON.parse(e.data)
+        switch (type) {
           case 'error': {
-            setErrors([payload])
+            const lines = payload.trim().split('\n')
+            lines.forEach((line) => print(output, line))
+            setErrors([...errors, ...lines])
+            setHasherState(HasherState.Error)
             setIsRunning(false)
-            destroyIframe()
             break
           }
-          case 'validate': {
-            const result = await onValidate(payload)
-            if (result) {
-              print('You found a hash!', { color: '#00FF00' })
-            } else {
-              print('Your script does not work, please try again.', {
-                color: '#FFA500',
-              })
-            }
+          case 'debug': {
+            print(sysmon, payload)
+            break
+          }
+          case 'output': {
+            print(output, payload)
+            setResult(payload)
 
-            if (result) {
+            const [success, err] = await onValidate(payload)
+            if (success) {
               setHasherState(HasherState.Success)
               setSuccess(true)
-            }
-
-            if (isRequest) {
-              if (language === 'javascript') {
-                iframe.contentWindow?.postMessage(
-                  JSON.stringify({
-                    action: 'result',
-                    payload: result,
-                    requestId,
-                  })
-                )
-              } else {
-                worker.postMessage(
-                  JSON.stringify({
-                    action: 'result',
-                    payload: result,
-                    requestId,
-                  })
-                )
-              }
+              setIsRunning(false)
+            } else {
+              setValidationError(err)
             }
             break
           }
-          case 'close': {
-            setIsRunning(false)
-            destroyIframe()
-            break
-          }
-
-          default: {
-            console.log(action, payload, requestId)
-            break
-          }
         }
-      } catch (ex) {}
-    }
-
-    window.addEventListener('message', handleMessage)
-
-    const compiledCode = compilers[language].compile(code, program)
-
-    switch (language) {
-      case 'javascript': {
-        const doc = iframe.contentDocument
-        if (doc) {
-          doc.open()
-          doc.write(compiledCode)
-          doc.close()
-        }
-        break
       }
-      case 'python': {
-        if (worker) {
-          worker.onmessage = handleMessage
-          worker.postMessage(
-            JSON.stringify({ action: 'run', payload: compiledCode })
-          )
-        } else {
-          let pyodide = await loadPyodide()
-          pyodide.runPythonAsync(compiledCode)
-        }
-        break
+
+      ws.onerror = (err) => {
+        setIsRunning(false)
       }
+
+      const output = outputRef.current as any
+      const sysmon = systemRef.current as any
+
+      print(output, defaultConsoleMessage, 'w')
+      print(sysmon, defaultSystemMessage, 'w')
+    } catch (ex) {
+      console.error(ex)
+      setIsRunning(false)
     }
   }
 
   useEffect(() => {
-    worker = new Worker('/webworker.js')
-    worker.onmessage = (e) => {
-      const { action } = JSON.parse(e.data)
-      switch (action) {
-        case 'pyodide_ready': {
-          setLoading(false)
-
-          if (typeof onReady === 'function') {
-            onReady()
-          }
-          break
-        }
-      }
+    if (ws) {
+      ws.close()
     }
 
-    worker.postMessage(JSON.stringify({ action: 'init', payload: null }))
-
-    return () => {
-      worker?.terminate()
-    }
-  }, [])
+    print(outputRef.current, defaultConsoleMessage, 'w')
+    print(systemRef.current, defaultSystemMessage, 'w')
+  }, [language])
 
   useEffect(() => {
     setHasherState(HasherState.Waiting)
@@ -207,8 +146,6 @@ export default function Runner({
 
   return (
     <>
-      <Script src="https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js" />
-
       {loading && (
         <div
           className={clsx(
@@ -224,20 +161,45 @@ export default function Runner({
       )}
 
       {!loading && (
-        <Hasher
-          lang={lang}
-          language={language}
-          config={config}
-          state={hasherState}
-          successMessage={successMessage}
-          errors={errors}
-          value={result?.value}
-        />
+        <TabMenu
+          tabs={[
+            { label: 'Hasher', value: 'hasher' },
+            { label: 'Console', value: 'console' },
+            { label: 'System monitor', value: 'system' },
+          ]}
+          defaultValue="hasher"
+          className={clsx(
+            'terminal-wrapper border-t border-white border-opacity-30',
+            {
+              hidden: isSmallScreen && activeView !== LessonView.Execute,
+              flex: isSmallScreen && activeView === LessonView.Execute,
+            }
+          )}
+        >
+          <TabMenu.Tab value="hasher">
+            <Hasher
+              key={result}
+              lang={lang}
+              language={language}
+              config={config}
+              state={hasherState}
+              successMessage={successMessage}
+              validationError={validationError}
+              value={result}
+            />
+          </TabMenu.Tab>
+          <TabMenu.Tab value="console">
+            <Terminal defaultMessage={defaultConsoleMessage} ref={outputRef} />
+          </TabMenu.Tab>
+          <TabMenu.Tab value="system">
+            <Terminal defaultMessage={defaultSystemMessage} ref={systemRef} />
+          </TabMenu.Tab>
+        </TabMenu>
       )}
 
       <div
         className={clsx(
-          'flex h-16 w-full items-start border-t border-white border-opacity-30',
+          'min-h-14 flex h-14 w-full items-start border-t border-white border-opacity-30',
           {
             'hidden md:flex': !isActive && hasherState !== HasherState.Success,
             hidden: hasherState === HasherState.Success || loading,
@@ -287,10 +249,23 @@ export default function Runner({
         )}
       </div>
       {hasherState === HasherState.Success && (
-        <StatusBar className="max-h-40 grow" success={success} />
+        <StatusBar className="min-h-14 h-14 grow" success={success} />
       )}
     </>
   )
 }
 
-declare function loadPyodide(): any
+const print = (element, message, mode = 'a') => {
+  if (!element) {
+    return
+  }
+
+  const messageEl = convert.toHtml(message.replace(/ /gim, '&nbsp;'))
+  if (mode === 'a') {
+    element.innerHTML += `<div class="output">${messageEl}</div>`
+  } else {
+    element.innerHTML = `<div class="output">${messageEl}</div>`
+  }
+
+  element.scrollTop = element.scrollHeight
+}

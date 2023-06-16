@@ -95,7 +95,7 @@ export default function StatusBar({
         }
       )}
     >
-      <div className="flex h-full flex-col items-stretch justify-between max-md:gap-4 md:flex-row">
+      <div className="flex h-14 flex-col items-stretch justify-between max-md:gap-4 md:flex-row">
         <div className="flex w-full items-center align-middle transition duration-150 ease-in-out md:px-5">
           <p
             className={clsx(
