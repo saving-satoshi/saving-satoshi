@@ -100,8 +100,9 @@ export default function LoginModal({ onClose, state }) {
         <HorizontalScrollView>
           {[1, 2, 3, 4, 5].map((i) => (
             <button
-              aria-label="select one out of the five avatar"
-              aria-pressed="false"
+              key={i}
+              aria-label={`select avatar${i}`}
+              aria-pressed="true"
             >
               <Avatar
                 key={i}
