@@ -12,6 +12,7 @@ export default function MiningStatisticNonce({
   highlight,
   disabled,
   step,
+  fontSize,
   finalHash,
   blockFound,
   className,
@@ -19,8 +20,9 @@ export default function MiningStatisticNonce({
   title: string
   content: number
   highlight: boolean
-  disabled: boolean
+  disabled: string | boolean
   step: number
+  fontSize: string
   finalHash: string
   blockFound: number
   className: string
@@ -43,8 +45,9 @@ export default function MiningStatisticNonce({
       >
         <div className="flex-initial">
           <div
-            className={clsx('font-nunito text-[15px] font-bold', {
-              'text-black/25': disabled,
+            className={clsx(`${fontSize} font-nunito font-bold`, {
+              'text-black opacity-25': disabled === 'text-black',
+              'text-white opacity-25': disabled === 'text-white',
               'fade-in text-[#EDA081]': !disabled,
             })}
           >
@@ -52,7 +55,8 @@ export default function MiningStatisticNonce({
           </div>
           <div
             className={clsx('text-2xl font-normal', {
-              'text-black/25': disabled,
+              'text-black opacity-25': disabled === 'text-black',
+              'text-white opacity-25': disabled === 'text-white',
               'fade-in text-white': !disabled,
             })}
           >

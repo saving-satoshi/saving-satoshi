@@ -5,15 +5,19 @@ import clsx from 'clsx'
 export default function InfoBox({
   transaction,
   bitcoin,
+  disabled,
   transactionHighlight,
   bitcoinHighlight,
+  fontSize,
   transactionTitle,
   bitcoinTitle,
 }: {
   transaction: number
   bitcoin: number
+  disabled: string | boolean
   transactionHighlight: boolean
   bitcoinHighlight: boolean
+  fontSize: string
   transactionTitle: string
   bitcoinTitle: string
 }) {
@@ -23,15 +27,19 @@ export default function InfoBox({
         <div className="h-18 w-full rounded-[5px] border-2 border-transparent bg-black/15  py-2.5 font-space-mono font-semibold">
           <div
             className={clsx('text-2xl font-normal', {
-              'text-black/25': transaction === 0,
+              'text-black': disabled === 'text-black',
+              'text-white': disabled === 'text-white',
+              'opacity-25': transaction === 0,
               'fade-in text-white': transaction !== 0,
             })}
           >
             {Intl.NumberFormat().format(transaction)}
           </div>
           <div
-            className={clsx('font-nunito text-[13px] font-bold', {
-              'text-black/25': transaction === 0,
+            className={clsx(`${fontSize} font-nunito font-bold`, {
+              'opacity-25': transaction === 0,
+              'text-black': disabled === 'text-black',
+              'text-white': disabled === 'text-white',
               'fade-in text-[#EDA081]': transaction !== 0,
             })}
           >
@@ -46,7 +54,9 @@ export default function InfoBox({
         <div className="h-18 w-full rounded-[5px] border-2 border-transparent bg-black/15 p-4 px-[15px] py-2.5 font-space-mono ">
           <div
             className={clsx('text-2xl font-normal', {
-              'text-black/25': bitcoin === 0,
+              'text-black': disabled === 'text-black',
+              'text-white': disabled === 'text-white',
+              'opacity-25': bitcoin === 0,
               'fade-in text-white': bitcoin !== 0,
             })}
           >
@@ -54,7 +64,9 @@ export default function InfoBox({
           </div>
           <div
             className={clsx('font-nunito text-[13px] font-bold', {
-              'text-black/25': bitcoin === 0,
+              'text-black': disabled === 'text-black',
+              'text-white': disabled === 'text-white',
+              'opacity-25': bitcoin === 0,
               'fade-in text-[#EDA081]': bitcoin !== 0,
             })}
           >

@@ -24,7 +24,7 @@ export default function MiningStatisticHash({
 }: {
   title: String
   highlight: boolean
-  disabled: boolean
+  disabled: string | boolean
   onButtonClick
   step: number
   variant: HashVariant
@@ -138,7 +138,8 @@ export default function MiningStatisticHash({
           >
             <div
               className={clsx(`${fontSize} font-nunito font-bold`, {
-                'text-black/25': disabled,
+                'text-black opacity-25': disabled === 'text-black',
+                'text-white opacity-25': disabled === 'text-white',
                 'fade-in text-[#EDA081]': !disabled,
               })}
             >
@@ -157,7 +158,8 @@ export default function MiningStatisticHash({
             )}
             <div
               className={clsx('text-2xl font-normal', {
-                'text-black/25': disabled,
+                'text-black opacity-25': disabled === 'text-black',
+                'text-white opacity-25': disabled === 'text-white',
                 'fade-in text-white': !disabled,
               })}
             >
@@ -187,10 +189,11 @@ export default function MiningStatisticHash({
             <div className="order-last flex items-center justify-center text-[15px] font-bold">
               <div
                 className={clsx(
-                  'order-last mr-2.5 flex h-[29px] w-[44px] cursor-pointer items-center justify-center  rounded-[3px] border-2 ',
+                  'order-last mr-2.5 flex h-[29px] w-[44px] items-center justify-center rounded-[3px] border-2 ',
                   {
-                    'border-black/25 text-black/25': powerUp === false,
-                    ' animate-duration-500 animate-pulse border-[#FBEBC6] bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
+                    'pointer-events-none cursor-default border-black/25 text-black/25':
+                      powerUp === false,
+                    ' animate-duration-500 animate-pulse cursor-pointer border-[#FBEBC6] bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
                       powerUp === true,
                   }
                 )}

@@ -193,6 +193,7 @@ export default function Mining1({ lang }) {
           <BlockProgress
             variant={BlockProgressVariant.TotalBar}
             fontSize="text-lg"
+            disabled={blocks === 0 && 'text-black'}
             total={1000}
             title={t('chapter_two.mining_one.progress_bar_title')}
             progress={blocks}
@@ -201,7 +202,8 @@ export default function Mining1({ lang }) {
             title={t('chapter_two.mining_one.progress_bar_one')}
             content={nonce}
             highlight={nonceHighlight}
-            disabled={nonce === 0}
+            disabled={nonce === 0 && 'text-black'}
+            fontSize="text-[15px]"
             step={step}
             finalHash={
               '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
@@ -214,7 +216,7 @@ export default function Mining1({ lang }) {
             fontSize="text-lg"
             title={t('chapter_two.mining_one.progress_bar_two')}
             highlight={hashPowerHighlight}
-            disabled={nonce === 0}
+            disabled={nonce === 0 && 'text-black'}
             onButtonClick={turnOnButton}
             step={step}
             className="bg-black/15"
@@ -223,6 +225,8 @@ export default function Mining1({ lang }) {
             transaction={transactionsConfirmed}
             bitcoin={bitcoinMined}
             transactionHighlight={transactionsConfirmedHighlight}
+            fontSize="text-[13px]"
+            disabled={transactionsConfirmed === 0 && 'text-black'}
             bitcoinHighlight={bitcoinMinedHighlight}
             bitcoinTitle={t('chapter_two.mining_one.progress_bar_four')}
             transactionTitle={t('chapter_two.mining_one.progress_bar_three')}
