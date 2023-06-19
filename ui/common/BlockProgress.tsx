@@ -32,7 +32,7 @@ export default function BlockProgress({
     <>
       <div
         className={clsx(
-          `${fontSize} mb-2.5 flex flex-row items-center gap-[10px] self-stretch font-nunito text-lg font-semibold`,
+          `${fontSize} flex flex-row items-center gap-[10px] self-stretch font-nunito text-lg font-semibold`,
           {
             'text-black': disabled === 'text-black',
             'text-white': disabled === 'text-white',
@@ -41,6 +41,7 @@ export default function BlockProgress({
             'py-[10px] px-[15px]':
               variant === BlockProgressVariant.Blocks ||
               variant === BlockProgressVariant.Percentage,
+            'mb-2.5': variant === BlockProgressVariant.TotalBar,
           }
         )}
       >
