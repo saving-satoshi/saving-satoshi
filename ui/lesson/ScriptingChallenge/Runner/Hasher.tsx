@@ -3,6 +3,7 @@ import { useTranslations } from 'hooks'
 import { EditorConfig, LessonView } from 'types'
 import { useLessonContext } from 'ui'
 import formatHash from 'lib/formatHash'
+import { useMediaQuery } from 'hooks'
 
 export enum HasherState {
   Waiting = 0,
@@ -36,6 +37,8 @@ export default function Hasher({
   const formatArgs = () => {
     return languageConfig.defaultFunction.args.join(', ')
   }
+
+  const rows = useMediaQuery({ width: 767 })
 
   return (
     <div
@@ -72,10 +75,17 @@ export default function Hasher({
       {state === HasherState.Error && (
         <div className="flex flex-col">
           <span className="text-sm font-bold">{t('runner.result')}</span>
-          {value &&
-          value.length === 64 &&
-          formatHash(value, 4, 2).length > 0 ? (
-            <div className="flex flex-col gap-1">{formatHash(value, 4, 2)}</div>
+          {value && value.length === 64 ? (
+            <div className="flex flex-col gap-1">
+              {formatHash(
+                value,
+                4,
+                rows ? 4 : 2,
+                undefined,
+                HasherState.Success ? true : false,
+                'mr-3'
+              )}
+            </div>
           ) : (
             <span className="text-sm text-[#f3241d]">Error</span>
           )}
@@ -86,7 +96,9 @@ export default function Hasher({
         <div className="flex flex-col">
           <span className="text-sm font-bold">{t('runner.result')}</span>
           {value && (
-            <div className="flex flex-col gap-1">{formatHash(value, 4, 2)}</div>
+            <div className="flex flex-col gap-1">
+              {formatHash(value, 4, rows ? 4 : 2, undefined, false, 'mr-3')}
+            </div>
           )}
         </div>
       )}
