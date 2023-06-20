@@ -14,6 +14,7 @@ import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import clsx from 'clsx'
 import { sleep } from 'utils'
+import { StatisticVariant } from 'ui/common/MiningStatistic'
 
 export const metadata = {
   title: 'chapter_two.mining_one.title',
@@ -38,6 +39,8 @@ export default function Mining1({ lang }) {
   const [showText, setShowText] = useState(true)
 
   const saveAndProceed = useSaveAndProceed()
+
+  const maxBlocks = 100
 
   useEffect(() => {
     setHydrated(true)
@@ -84,7 +87,7 @@ export default function Mining1({ lang }) {
         setBlocks(currentBlock)
         setTransactionsConfirmed(currentBlock * 3500)
         setBitcoinMined(currentBlock * 0.0061)
-      }, 8 * 1000)
+      }, 8 * maxBlocks)
     }
     return () => clearInterval(interval)
   }, [ramdomNonce])
@@ -108,7 +111,7 @@ export default function Mining1({ lang }) {
       interval = setInterval(() => {
         currentBlock = Math.min(
           currentBlock + Math.floor(Math.random() * 3),
-          1000
+          maxBlocks
         )
         setBlocks(currentBlock)
         setTransactionsConfirmed(currentBlock * 3500)
@@ -119,7 +122,7 @@ export default function Mining1({ lang }) {
   }, [finalMining])
 
   useEffect(() => {
-    if (blocks === 1000) {
+    if (blocks === maxBlocks) {
       setStep(4)
       setNonceHighlight(true)
       setHashPowerHighlight(true)
@@ -193,40 +196,46 @@ export default function Mining1({ lang }) {
           <BlockProgress
             variant={BlockProgressVariant.TotalBar}
             fontSize="text-lg"
-            disabled={blocks === 0 && 'text-black'}
-            total={1000}
+            disabled={blocks === 0}
+            total={maxBlocks}
             title={t('chapter_two.mining_one.progress_bar_title')}
             progress={blocks}
+            className={clsx({ 'text-black': blocks === 0 })}
           />
           <MiningStatisticNonce
             title={t('chapter_two.mining_one.progress_bar_one')}
             content={nonce}
             highlight={nonceHighlight}
-            disabled={nonce === 0 && 'text-black'}
-            fontSize="text-[15px]"
+            disabled={nonce === 0}
+            className={clsx('bg-black/15 text-[15px]', {
+              'text-black': nonce === 0,
+            })}
             step={step}
             finalHash={
               '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
             }
             blockFound={blocks}
-            className="bg-black/15"
           />
           <MiningStatisticHash
             variant={HashVariant.HashBar}
-            fontSize="text-lg"
             title={t('chapter_two.mining_one.progress_bar_two')}
             highlight={hashPowerHighlight}
-            disabled={nonce === 0 && 'text-black'}
+            disabled={nonce === 0}
+            className={clsx('bg-black/15 text-lg', {
+              'text-black': nonce === 0,
+            })}
             onButtonClick={turnOnButton}
             step={step}
-            className="bg-black/15"
           />
           <MiningStatistic
+            variant={StatisticVariant.Horizontal}
+            transactionCard={true}
+            bitcoinCard={true}
             transaction={transactionsConfirmed}
             bitcoin={bitcoinMined}
             transactionHighlight={transactionsConfirmedHighlight}
-            fontSize="text-[13px]"
-            disabled={transactionsConfirmed === 0 && 'text-black'}
+            disabled={transactionsConfirmed === 0}
+            className={clsx({ 'text-black': transactionsConfirmed === 0 })}
             bitcoinHighlight={bitcoinMinedHighlight}
             bitcoinTitle={t('chapter_two.mining_one.progress_bar_four')}
             transactionTitle={t('chapter_two.mining_one.progress_bar_three')}

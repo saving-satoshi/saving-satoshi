@@ -13,31 +13,31 @@ export default function BlockProgress({
   progress,
   title,
   variant,
-  fontSize,
   disabled,
   total,
   percentage,
   focus,
+  className,
 }: {
   progress: number
   title: string
   variant: BlockProgressVariant
   fontSize: string
-  disabled: string | boolean
+  disabled: boolean
   total?: number
   percentage?: number
   focus?: boolean
+  className?: string
 }) {
   return (
     <>
       <div
         className={clsx(
-          `${fontSize} flex flex-row items-center gap-[10px] self-stretch font-nunito text-lg font-semibold`,
+          `${className} flex flex-row items-center gap-[10px] self-stretch font-nunito text-lg font-semibold`,
           {
-            'text-black': disabled === 'text-black',
-            'text-white': disabled === 'text-white',
+            'opacity-25': disabled,
+            'opacity-100': !disabled,
             'fade-in text-white': progress !== 0,
-            'opacity-25': progress === 0,
             'py-[10px] px-[15px]':
               variant === BlockProgressVariant.Blocks ||
               variant === BlockProgressVariant.Percentage,
@@ -52,16 +52,18 @@ export default function BlockProgress({
         >
           {title}
         </span>{' '}
-        {variant === BlockProgressVariant.Percentage && percentage && (
-          <span
-            className={clsx('fade-in items-start', {
-              'rounded-[5px] bg-[#28B123] py-[5px] px-[7px] text-white': focus,
-              'text-[#3DCFEF]': !focus,
-            })}
-          >
-            {percentage}%
-          </span>
-        )}
+        {variant === BlockProgressVariant.Percentage &&
+          typeof percentage === 'number' && (
+            <span
+              className={clsx('fade-in items-start', {
+                'rounded-[5px] bg-[#28B123] py-[5px] px-[7px] text-white':
+                  focus,
+                'text-[#3DCFEF]': !focus,
+              })}
+            >
+              {percentage}%
+            </span>
+          )}
         <span>
           {progress}{' '}
           {(variant === BlockProgressVariant.Total ||
@@ -81,11 +83,7 @@ export default function BlockProgress({
                 }
               )}
               style={{
-                transform: `translate3d(-${
-                  progress <= 5 && progress > 0
-                    ? (total - 5) / 10
-                    : (total - progress) / 10
-                }%,0,0)`,
+                transform: `translate3d(-${total - progress}%,0,0)`,
               }}
             />
           </div>

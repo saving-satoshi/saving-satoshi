@@ -2,81 +2,133 @@
 
 import clsx from 'clsx'
 
+export enum StatisticVariant {
+  Vertical = 0,
+  Horizontal = 1,
+}
+
 export default function InfoBox({
+  variant,
   transaction,
   bitcoin,
   disabled,
+  className,
+  transactionCard,
   transactionHighlight,
-  bitcoinHighlight,
-  fontSize,
   transactionTitle,
+  bitcoinCard,
+  bitcoinHighlight,
   bitcoinTitle,
 }: {
+  variant: StatisticVariant
   transaction: number
   bitcoin: number
-  disabled: string | boolean
+  disabled: boolean
+  className: string
+  transactionCard: boolean
   transactionHighlight: boolean
-  bitcoinHighlight: boolean
-  fontSize: string
   transactionTitle: string
+  bitcoinCard: boolean
+  bitcoinHighlight: boolean
   bitcoinTitle: string
 }) {
   return (
-    <div className="mt-5 flex items-center justify-between gap-x-2.5 text-center font-space-mono">
-      <div className="relative h-18 w-1/2">
-        <div className="h-18 w-full rounded-[5px] border-2 border-transparent bg-black/15  py-2.5 font-space-mono font-semibold">
+    <div
+      className={clsx(
+        'mt-5 flex items-center justify-between gap-x-2.5 text-center font-space-mono',
+        { 'flex-col gap-y-5': variant === StatisticVariant.Vertical }
+      )}
+    >
+      {transactionCard && (
+        <div
+          className={clsx('relative', {
+            'h-18 w-1/2': variant === StatisticVariant.Horizontal,
+            'w-full': variant === StatisticVariant.Vertical,
+          })}
+        >
           <div
-            className={clsx('text-2xl font-normal', {
-              'text-black': disabled === 'text-black',
-              'text-white': disabled === 'text-white',
-              'opacity-25': transaction === 0,
-              'fade-in text-white': transaction !== 0,
-            })}
+            className={clsx(
+              'w-full rounded-[5px] border-2 border-transparent bg-black/15 py-2.5 font-space-mono',
+              {
+                'flex flex-row items-center justify-between px-[15px]':
+                  variant === StatisticVariant.Vertical,
+              }
+            )}
           >
-            {Intl.NumberFormat().format(transaction)}
+            <div
+              className={clsx(`${className} font-normal`, {
+                'opacity-25': disabled,
+                'opacity-100': !disabled,
+                'fade-in text-white': transaction !== 0,
+                'order-1 flex text-[15px]':
+                  variant === StatisticVariant.Vertical,
+                'text-2xl': variant === StatisticVariant.Horizontal,
+              })}
+            >
+              {Intl.NumberFormat().format(transaction)}
+            </div>
+            <div
+              className={clsx(`${className} font-nunito font-bold`, {
+                'opacity-25': disabled,
+                'opacity-100': !disabled,
+                'fade-in text-[#EDA081]': transaction !== 0,
+                'text-[15px]': variant === StatisticVariant.Vertical,
+                'text-[13px]': variant === StatisticVariant.Horizontal,
+              })}
+            >
+              {transactionTitle}
+            </div>
           </div>
-          <div
-            className={clsx(`${fontSize} font-nunito font-bold`, {
-              'opacity-25': transaction === 0,
-              'text-black': disabled === 'text-black',
-              'text-white': disabled === 'text-white',
-              'fade-in text-[#EDA081]': transaction !== 0,
-            })}
-          >
-            {transactionTitle}
-          </div>
+          {transactionHighlight && (
+            <div className="absolute inset-0 h-18 w-full animate-pulse rounded-[5px] border-2 border-[#FBEBC6] shadow-3xl"></div>
+          )}
         </div>
-        {transactionHighlight && (
-          <div className="absolute inset-0 h-18 w-full animate-pulse rounded-[5px] border-2 border-[#FBEBC6] shadow-3xl"></div>
-        )}
-      </div>
-      <div className="relative h-18 w-1/2">
-        <div className="h-18 w-full rounded-[5px] border-2 border-transparent bg-black/15 p-4 px-[15px] py-2.5 font-space-mono ">
+      )}
+      {bitcoinCard && (
+        <div
+          className={clsx('relative', {
+            'h-18 w-1/2': variant === StatisticVariant.Horizontal,
+            'w-full': variant === StatisticVariant.Vertical,
+          })}
+        >
           <div
-            className={clsx('text-2xl font-normal', {
-              'text-black': disabled === 'text-black',
-              'text-white': disabled === 'text-white',
-              'opacity-25': bitcoin === 0,
-              'fade-in text-white': bitcoin !== 0,
-            })}
+            className={clsx(
+              'w-full rounded-[5px] border-2 border-transparent bg-black/15 py-2.5 font-space-mono',
+              {
+                'flex flex-row items-center justify-between px-[15px]':
+                  variant === StatisticVariant.Vertical,
+              }
+            )}
           >
-            {bitcoin.toFixed(4)}
+            <div
+              className={clsx(`${className} font-normal`, {
+                'opacity-25': disabled,
+                'opacity-100': !disabled,
+                'fade-in text-white': bitcoin !== 0,
+                'order-1 flex text-[15px]':
+                  variant === StatisticVariant.Vertical,
+                'text-2xl': variant === StatisticVariant.Horizontal,
+              })}
+            >
+              {bitcoin.toFixed(4)}
+            </div>
+            <div
+              className={clsx(`${className} font-nunito font-bold`, {
+                'opacity-25': disabled,
+                'opacity-100': !disabled,
+                'fade-in text-[#EDA081]': bitcoin !== 0,
+                'text-[15px]': variant === StatisticVariant.Vertical,
+                'text-[13px]': variant === StatisticVariant.Horizontal,
+              })}
+            >
+              {bitcoinTitle}
+            </div>
           </div>
-          <div
-            className={clsx('font-nunito text-[13px] font-bold', {
-              'text-black': disabled === 'text-black',
-              'text-white': disabled === 'text-white',
-              'opacity-25': bitcoin === 0,
-              'fade-in text-[#EDA081]': bitcoin !== 0,
-            })}
-          >
-            {bitcoinTitle}
-          </div>
+          {bitcoinHighlight && (
+            <div className="absolute inset-0 h-18 w-full animate-pulse rounded-[5px] border-2 border-[#FBEBC6] shadow-3xl"></div>
+          )}
         </div>
-        {bitcoinHighlight && (
-          <div className="absolute inset-0 h-18 w-full animate-pulse rounded-[5px] border-2 border-[#FBEBC6] shadow-3xl"></div>
-        )}
-      </div>
+      )}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
-import { useState, useEffect, use } from 'react'
+import { useState, useEffect } from 'react'
 
 export enum HashVariant {
   Hashes = 0,
@@ -18,22 +18,20 @@ export default function MiningStatisticHash({
   step,
   className,
   variant,
-  fontSize,
   percentage,
   focus,
 }: {
   title: String
   highlight: boolean
-  disabled: string | boolean
+  disabled: boolean
   onButtonClick
   step: number
   variant: HashVariant
-  fontSize: string
   className?: string
   percentage?: number
   focus?: boolean
 }) {
-  const [hasherState, setHasherState] = useState<boolean>(false)
+  const [hasherActive, setHasherActive] = useState<boolean>(false)
   const [hashPower, sethashPower] = useState(0)
   const [powerUp, setPowerUp] = useState<boolean>(false)
   const [randomHash, setRandomHash] = useState(false)
@@ -85,20 +83,20 @@ export default function MiningStatisticHash({
   }, [randomHash])
 
   function handleClick() {
-    if (!hasherState && step === 0) {
+    if (!hasherActive && step === 0) {
       const time = 15 * 1000
       displayRandomNumbers(4400, 200, time)
       onButtonClick(true)
-      setHasherState(true)
+      setHasherActive(true)
       setTimeout(() => {
-        setHasherState(false)
+        setHasherActive(false)
       }, time)
     }
 
-    if (!hasherState && step === 2) {
+    if (!hasherActive && step === 2) {
       const time = 10 * 1000
       onButtonClick(true)
-      setHasherState(true)
+      setHasherActive(true)
       setRandomHash(true)
       setTimeout(() => {
         setPowerUp(true)
@@ -137,9 +135,8 @@ export default function MiningStatisticHash({
             })}
           >
             <div
-              className={clsx(`${fontSize} font-nunito font-bold`, {
-                'text-black opacity-25': disabled === 'text-black',
-                'text-white opacity-25': disabled === 'text-white',
+              className={clsx('font-nunito font-bold', {
+                'opacity-25': disabled,
                 'fade-in text-[#EDA081]': !disabled,
               })}
             >
@@ -158,8 +155,7 @@ export default function MiningStatisticHash({
             )}
             <div
               className={clsx('text-2xl font-normal', {
-                'text-black opacity-25': disabled === 'text-black',
-                'text-white opacity-25': disabled === 'text-white',
+                'opacity-25': disabled,
                 'fade-in text-white': !disabled,
               })}
             >
@@ -206,15 +202,15 @@ export default function MiningStatisticHash({
                   'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
                   {
                     'border-transparent bg-[#FBEBC6]/25 text-[#571A1F]':
-                      hasherState && step < 4,
+                      hasherActive && step < 4,
                     'animate-duration-500 fade-in animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
-                      !hasherState,
+                      !hasherActive,
                     ' border-black/25 text-black/25': step >= 4,
                   }
                 )}
                 onClick={handleClick}
               >
-                {hasherState ? 'Running' : 'Turn on'}
+                {hasherActive ? 'Running' : 'Turn on'}
               </div>
             </div>
           )}
