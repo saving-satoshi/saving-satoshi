@@ -15,7 +15,6 @@ import Modal from './Modal'
 
 import Profile from 'components/utils/Profile'
 
-
 enum View {
   Generate = 'generate',
   Input = 'input',
@@ -104,8 +103,8 @@ export default function LoginModal({ onClose, state }) {
           {[1, 2, 3, 4, 5].map((i) => (
             <button
               key={i}
-              aria-label={`select avatar${i}`}
-              aria-pressed="true"
+              aria-label={`Select avatar ${i}`}
+              aria-pressed={avatar === i}
             >
               <Avatar
                 key={i}
@@ -181,7 +180,6 @@ export default function LoginModal({ onClose, state }) {
           {!loading && t('modal_signup.confirm')}
         </button>
       </div>
-     
-      </Modal>
+    </Modal>
   )
 }
