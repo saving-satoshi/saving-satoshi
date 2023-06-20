@@ -123,7 +123,7 @@ export default function Mining1({ lang }) {
     setShowText(false)
     setRandomNonce(false)
     setFinalMining(false)
-    await sleep(300)
+    await sleep(325)
     setStep(4)
     setNonceHighlight(true)
     setHashPowerHighlight(true)
@@ -131,7 +131,7 @@ export default function Mining1({ lang }) {
 
   const transactionStep = async () => {
     setShowText(false)
-    await sleep(300)
+    await sleep(325)
     setStep(5)
     setNonceHighlight(false)
     setHashPowerHighlight(false)
@@ -140,7 +140,7 @@ export default function Mining1({ lang }) {
 
   const bitcoinStep = async () => {
     setShowText(false)
-    await sleep(300)
+    await sleep(325)
     setStep(6)
     setTransactionsConfirmedHighlight(false)
     setBitcoinMinedHighlight(true)
@@ -148,7 +148,7 @@ export default function Mining1({ lang }) {
 
   const finalStep = async () => {
     setShowText(false)
-    await sleep(300)
+    await sleep(325)
     setStep(7)
     setBitcoinMinedHighlight(false)
   }
@@ -156,13 +156,13 @@ export default function Mining1({ lang }) {
   const turnOnButton = async () => {
     if (step === 0) {
       setShowText(false)
-      await sleep(300)
+      await sleep(325)
       setStep(1)
       const time = 15 * 1000
       displayRandomNumbers(1760, time)
       setTimeout(async () => {
         setShowText(false)
-        await sleep(300)
+        await sleep(325)
         setStep(2)
         setBlocks(1)
         setTransactionsConfirmed(3500)
@@ -172,7 +172,7 @@ export default function Mining1({ lang }) {
 
     if (step === 2) {
       setShowText(false)
-      await sleep(300)
+      await sleep(325)
       setStep(3)
       setRandomNonce(true)
     }
