@@ -221,7 +221,7 @@ export default function Mining1({ lang }) {
             title={t('chapter_two.mining_one.progress_bar_two')}
             highlight={hashPowerHighlight}
             disabled={nonce === 0}
-            className={clsx('bg-black/15 text-lg', {
+            className={clsx('bg-black/15 text-[15px]', {
               'text-black': nonce === 0,
             })}
             onButtonClick={turnOnButton}
