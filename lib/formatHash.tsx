@@ -6,7 +6,7 @@ export default function formatHash(
   rows: number,
   length?: number,
   success?: boolean,
-  margin?: boolean
+  margin?: string
 ) {
   const result: JSX.Element[] = []
   const chunkSize = !!chunkLength ? chunkLength : 4
@@ -59,35 +59,19 @@ export default function formatHash(
 
       !hash
         ? row.push(
-            <span
-              key={startIndex}
-              className={clsx('inline-block', {
-                'mr-1': margin,
-                'mr-3': !margin,
-              })}
-            >
+            <span key={startIndex} className={`${margin}`}>
               {placeholderChunk}
             </span>
           )
         : row.push(
-            <span
-              key={startIndex}
-              className={clsx('inline-block', {
-                'mr-[2px]': margin,
-                'mr-3': !margin,
-              })}
-            >
+            <span key={startIndex} className={`${margin}`}>
               {chunk}
             </span>
           )
     }
 
-    result.push(
-      <div key={i} className="inline-block">
-        {row}
-      </div>
-    )
+    result.push(<div key={i}>{row}</div>)
   }
 
-  return result
+  return <div className="flex flex-col">{result}</div>
 }
