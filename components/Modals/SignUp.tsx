@@ -84,6 +84,7 @@ export default function LoginModal({ onClose, state }) {
         <HorizontalScrollView>
           {[1, 2, 3, 4, 5].map((i) => (
             <button
+              key={i}
               className={clsx('', {
                 'mr-3.5 sm:mr-3': i !== 5,
               })}
@@ -93,7 +94,6 @@ export default function LoginModal({ onClose, state }) {
             >
               <Avatar
                 key={i}
-                id={i}
                 avatar={i.toString()}
                 size={80}
                 className={clsx('inline-block h-20 w-20 border-2', {

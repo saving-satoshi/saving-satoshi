@@ -9,7 +9,6 @@ export default function Avatar({
 }: {
   avatar?: string
   size?: number
-  id: number
   className?: string
   onClick?: () => void
 }) {
