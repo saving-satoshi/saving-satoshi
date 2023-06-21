@@ -1,7 +1,6 @@
 import Avatar from 'components/Avatar'
 import { useState, useEffect } from 'react'
 import Icon from 'shared/Icon'
-import Image from 'next/image'
 import { Button, Loader, RadioButton, RadioGroup } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
 import { useTranslations, useLang, useSaveAndReturn } from 'hooks'
@@ -85,16 +84,16 @@ export default function LoginModal({ onClose, state }) {
           {[1, 2, 3, 4, 5].map((i) => (
             <button
               key={i}
-              className={clsx('', {
+              className={clsx({
                 'mr-3.5 sm:mr-3': i !== 5,
               })}
               aria-label={`Select avatar ${i}`}
-              aria-pressed={i === avatar}
+              aria-pressed={avatar === i}
               onClick={() => setAvatar(i)}
             >
               <Avatar
                 key={i}
-                avatar={i.toString()}
+                avatar={`/assets/avatars/${i}.png`}
                 size={80}
                 className={clsx('inline-block h-20 w-20 border-2', {
                   'border-white': avatar === i,

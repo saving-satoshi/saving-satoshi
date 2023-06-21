@@ -18,7 +18,7 @@ export default function Avatar({
 
   return (
     <Image
-      src={`/assets/avatars/${avatar}.png`}
+      src={avatar}
       alt="Avatar"
       width={size || 30}
       height={size || 30}
