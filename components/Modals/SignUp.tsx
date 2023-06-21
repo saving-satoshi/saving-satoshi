@@ -92,7 +92,6 @@ export default function LoginModal({ onClose, state }) {
               onClick={() => setAvatar(i)}
             >
               <Avatar
-                key={i}
                 avatar={`/assets/avatars/${i}.png`}
                 size={80}
                 className={clsx('inline-block h-20 w-20 border-2', {
