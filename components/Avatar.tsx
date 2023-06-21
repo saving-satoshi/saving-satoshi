@@ -9,6 +9,7 @@ export default function Avatar({
 }: {
   avatar?: string
   size?: number
+  id: number
   className?: string
   onClick?: () => void
 }) {
@@ -18,7 +19,7 @@ export default function Avatar({
 
   return (
     <Image
-      src={avatar}
+      src={`/assets/avatars/${avatar}.png`}
       alt="Avatar"
       width={size || 30}
       height={size || 30}
