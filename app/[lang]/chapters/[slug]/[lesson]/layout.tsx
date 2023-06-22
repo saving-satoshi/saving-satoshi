@@ -2,6 +2,7 @@
 
 import Navbar from 'components/Navbar'
 import { lessons, chapters } from 'content'
+import Chip from 'components/Chip'
 
 export default function Layout({ children, params }) {
   const { slug, lesson: lessonId } = params
