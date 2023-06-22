@@ -15,6 +15,11 @@ export default function Layout({ children, params }) {
     <div className={`${theme} flex flex-col`}>
       <div className="fix-grow-issue flex min-h-screen flex-col overflow-hidden">
         <Navbar params={params} />
+        <Chip
+          position={1}
+          coins={1.49}
+          img={'/assets/images/chapter-1-holocat.jpg'}
+        />
         {children}
       </div>
     </div>
