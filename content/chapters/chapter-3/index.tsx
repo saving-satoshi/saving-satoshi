@@ -18,8 +18,9 @@ export const metadata = {
   slug: 'chapter-3',
   title: 'chapter_three.title',
   image: '/assets/images/chapter-3-cover.jpg',
-  intros: [],
-  lessons: [],
+  theme: 'bg-gradient-to-tl from-[#3C1843] to-[#45235A]',
+  intros: ['intro-1', 'intro-2'],
+  lessons: ['solo-1'],
   outros: [],
-  challenges: [],
+  challenges: ['solo-1'],
 }
