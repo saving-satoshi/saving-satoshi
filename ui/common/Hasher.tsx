@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import sjcl from 'sjcl'
 import formatHash from 'lib/formatHash'
+import { useMediaQuery } from 'hooks'
 
 export default function Hasher({
   answer,
@@ -18,6 +19,8 @@ export default function Hasher({
 }) {
   const [success, setSuccess] = useState(false)
   const [hash, setHash] = useState('')
+
+  const rows = useMediaQuery({ width: 767 })
 
   const handleHash = (input) => {
     if (input) {
@@ -62,7 +65,7 @@ export default function Hasher({
             }
           )}
         >
-          {formatHash(hash, 4, 1, undefined, success)}
+          {formatHash(hash, 4, rows ? 4 : 2, undefined, success, 'mr-3')}
         </span>
       </div>
     </>
