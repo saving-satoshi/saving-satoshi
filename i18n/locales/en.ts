@@ -418,6 +418,15 @@ const translations = {
       paragraph_one:
         'This is a temporary page to test correct working of Continue Button. To Be removed',
     },
+
+    outro_one: {
+      title: 'Outro',
+      heading: 'Take that, Vanderpoole! ',
+      paragraph_one:
+        'Great work! You and your collaborators were able to fend off Vanderpoole’s 51% attack by pooling your resources together. Empty blocks are no longer being submitted and it looks like he’s given up.',
+      paragraph_two:
+        'It’s time to reap your rewards! Go to the next chapter to withdraw your bitcoin.',
+    },
   },
 
   chapter_four: {
