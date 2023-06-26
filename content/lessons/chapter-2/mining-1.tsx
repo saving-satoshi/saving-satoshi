@@ -15,6 +15,7 @@ import { Button } from 'shared'
 import clsx from 'clsx'
 import { sleep } from 'utils'
 import { StatisticVariant } from 'ui/common/MiningStatistic'
+import MiningCard from 'ui/common/MiningCard'
 
 export const metadata = {
   title: 'chapter_two.mining_one.title',
@@ -196,26 +197,27 @@ export default function Mining1({ lang }) {
           <BlockProgress
             variant={BlockProgressVariant.TotalBar}
             fontSize="text-lg"
-            disabled={blocks === 0}
             total={maxBlocks}
             title={t('chapter_two.mining_one.progress_bar_title')}
             progress={blocks}
             className={clsx({ 'text-black': blocks === 0 })}
           />
-          <MiningStatisticNonce
-            title={t('chapter_two.mining_one.progress_bar_one')}
-            content={nonce}
-            highlight={nonceHighlight}
-            disabled={nonce === 0}
-            className={clsx('bg-black/15 text-[15px]', {
-              'text-black': nonce === 0,
-            })}
-            step={step}
-            finalHash={
-              '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
-            }
-            blockFound={blocks}
-          />
+          <MiningCard className="text-[15px]">
+            <MiningStatisticNonce
+              title={t('chapter_two.mining_one.progress_bar_one')}
+              content={nonce}
+              highlight={nonceHighlight}
+              step={step}
+              finalHash={
+                '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
+              }
+              blockFound={blocks}
+              className={clsx({
+                'text-black opacity-25': nonce === 0,
+                'fade-in text-white opacity-100': nonce !== 0,
+              })}
+            />
+          </MiningCard>
           <MiningStatisticHash
             variant={HashVariant.HashBar}
             title={t('chapter_two.mining_one.progress_bar_two')}

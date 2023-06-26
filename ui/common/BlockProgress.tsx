@@ -13,7 +13,6 @@ export default function BlockProgress({
   progress,
   title,
   variant,
-  disabled,
   total,
   percentage,
   focus,
@@ -23,7 +22,6 @@ export default function BlockProgress({
   title: string
   variant: BlockProgressVariant
   fontSize: string
-  disabled: boolean
   total?: number
   percentage?: number
   focus?: boolean
@@ -35,8 +33,6 @@ export default function BlockProgress({
         className={clsx(
           `${className} flex flex-row items-center gap-[10px] self-stretch font-nunito text-lg font-semibold`,
           {
-            'opacity-25': disabled,
-            'opacity-100': !disabled,
             'fade-in text-white': progress !== 0,
             'py-[10px] px-[15px]':
               variant === BlockProgressVariant.Blocks ||
