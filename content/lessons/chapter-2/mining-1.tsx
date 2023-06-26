@@ -7,15 +7,14 @@ import {
   MiningStatisticNonce,
   MiningStatisticHash,
   BlockProgress,
+  MiningCard,
 } from 'ui'
-import { HashVariant } from 'ui/common/MiningStatisticsHash'
-import { BlockProgressVariant } from 'ui/common/BlockProgress'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import clsx from 'clsx'
 import { sleep } from 'utils'
 import { StatisticVariant } from 'ui/common/MiningStatistic'
-import MiningCard from 'ui/common/MiningCard'
+import { BlockProgressVariant } from 'ui/common/BlockProgress'
 
 export const metadata = {
   title: 'chapter_two.mining_one.title',
@@ -200,35 +199,47 @@ export default function Mining1({ lang }) {
             total={maxBlocks}
             title={t('chapter_two.mining_one.progress_bar_title')}
             progress={blocks}
-            className={clsx({ 'text-black': blocks === 0 })}
+            className={clsx({ 'text-black/25': blocks === 0 })}
           />
-          <MiningCard className="text-[15px]">
+          <MiningCard className="p-4 text-[15px]" highlight={nonceHighlight}>
             <MiningStatisticNonce
               title={t('chapter_two.mining_one.progress_bar_one')}
               content={nonce}
-              highlight={nonceHighlight}
               step={step}
               finalHash={
                 '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
               }
               blockFound={blocks}
               className={clsx({
-                'text-black opacity-25': nonce === 0,
-                'fade-in text-white opacity-100': nonce !== 0,
+                'text-black/25': nonce === 0,
               })}
             />
           </MiningCard>
-          <MiningStatisticHash
-            variant={HashVariant.HashBar}
-            title={t('chapter_two.mining_one.progress_bar_two')}
+          <MiningCard
+            className="p-4 text-[15px]"
             highlight={hashPowerHighlight}
-            disabled={nonce === 0}
-            className={clsx('bg-black/15 text-[15px]', {
-              'text-black': nonce === 0,
-            })}
-            onButtonClick={turnOnButton}
-            step={step}
-          />
+          >
+            <MiningStatisticHash
+              title={t('chapter_two.mining_one.progress_bar_two')}
+              content={nonce}
+              onButtonClick={turnOnButton}
+              step={step}
+            />
+          </MiningCard>
+          <div className="flex flex-row justify-between gap-x-2.5">
+            <MiningCard
+              className="p-4 text-[15px]"
+              highlight={hashPowerHighlight}
+            >
+              <span>Dunce ooga boog</span>
+            </MiningCard>
+            <MiningCard
+              className="p-4 text-[15px]"
+              highlight={hashPowerHighlight}
+            >
+              <span>Dunce ooga boog</span>
+            </MiningCard>
+          </div>
           <MiningStatistic
             variant={StatisticVariant.Horizontal}
             transactionCard={true}

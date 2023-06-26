@@ -3,33 +3,18 @@
 import clsx from 'clsx'
 import { useState, useEffect } from 'react'
 
-export enum HashVariant {
-  Hashes = 0,
-  Percentage = 1,
-  PowerButton = 2,
-  HashBar = 3,
-}
-
 export default function MiningStatisticHash({
   title,
-  highlight,
-  disabled,
+  content,
   onButtonClick,
   step,
   className,
-  variant,
-  percentage,
-  focus,
 }: {
   title: String
-  highlight: boolean
-  disabled: boolean
+  content: number
   onButtonClick
   step: number
-  variant: HashVariant
   className?: string
-  percentage?: number
-  focus?: boolean
 }) {
   const [hasherActive, setHasherActive] = useState<boolean>(false)
   const [hashPower, sethashPower] = useState(0)
@@ -113,126 +98,87 @@ export default function MiningStatisticHash({
   }
 
   return (
-    <div className="relative">
-      <div
-        className={`${className} mt-5 w-full rounded-[5px] border-2 border-transparent p-4 font-space-mono`}
-      >
-        <div
-          className={clsx({
-            'flex items-center justify-between':
-              variant === HashVariant.PowerButton ||
-              variant === HashVariant.HashBar,
-          })}
-        >
+    <div className={className}>
+      <div className="flex items-center justify-between">
+        <div className="flex-initial flex-col">
           <div
-            className={clsx({
-              'flex-initial flex-col':
-                variant === HashVariant.PowerButton ||
-                variant === HashVariant.HashBar,
-              'flex flex-row items-center justify-between':
-                variant === HashVariant.Hashes ||
-                variant === HashVariant.Percentage,
+            className={clsx('font-nunito font-bold', {
+              'opacity-25': !content,
+              'fade-in text-[#EDA081]': content,
             })}
           >
-            <div
-              className={clsx('font-nunito font-bold', {
-                'opacity-25': disabled,
-                'fade-in text-[#EDA081]': !disabled,
-              })}
-            >
-              {title}
-            </div>
-            {variant === HashVariant.Percentage && percentage && (
-              <div
-                className={clsx({
-                  'rounded-[5px] bg-[#28B123] py-[5px] px-[7px] text-white':
-                    focus,
-                  'text-[#3DCFEF]': !focus,
-                })}
-              >
-                {percentage}%
-              </div>
-            )}
-            <div
-              className={clsx('text-2xl font-normal', {
-                'opacity-25': disabled,
-                'fade-in text-white': !disabled,
-              })}
-            >
-              {step < 4 && (
-                <span>
-                  {(hashPower / 100).toFixed(2)}
-                  {!disabled && (
-                    <span className="fade-in text-white/50">
-                      *10<sup>15</sup>
-                    </span>
-                  )}
-                </span>
-              )}
-              {step >= 4 && (
-                <span>
-                  {(45012 / 100).toFixed(2)}
-                  <span className="text-white/50">
+            {title}
+          </div>
+          <div
+            className={clsx('text-2xl font-normal', {
+              'opacity-25': !content,
+              'fade-in text-white': content,
+            })}
+          >
+            {step < 4 && (
+              <span>
+                {(hashPower / 100).toFixed(2)}
+                {content && (
+                  <span className="fade-in text-white/50">
                     *10<sup>15</sup>
                   </span>
+                )}
+              </span>
+            )}
+            {step >= 4 && (
+              <span>
+                {(45012 / 100).toFixed(2)}
+                <span className="text-white/50">
+                  *10<sup>15</sup>
                 </span>
-              )}
-            </div>
+              </span>
+            )}
           </div>
-
-          {(variant === HashVariant.PowerButton ||
-            variant === HashVariant.HashBar) && (
-            <div className="order-last flex items-center justify-center text-[15px] font-bold">
-              <div
-                className={clsx(
-                  'order-last mr-2.5 flex h-[29px] w-[44px] items-center justify-center rounded-[3px] border-2 ',
-                  {
-                    'pointer-events-none cursor-default border-black/25 text-black/25':
-                      powerUp === false,
-                    ' animate-duration-500 animate-pulse cursor-pointer border-[#FBEBC6] bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
-                      powerUp === true,
-                  }
-                )}
-                onClick={handleClick}
-              >
-                10x
-              </div>
-              <div
-                className={clsx(
-                  'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
-                  {
-                    'border-transparent bg-[#FBEBC6]/25 text-[#571A1F]':
-                      hasherActive && step < 4,
-                    'animate-duration-500 fade-in animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
-                      !hasherActive,
-                    ' border-black/25 text-black/25': step >= 4,
-                  }
-                )}
-                onClick={handleClick}
-              >
-                {hasherActive ? 'Running' : 'Turn on'}
-              </div>
-            </div>
-          )}
         </div>
-        {variant === HashVariant.HashBar && (
-          <div className="mt-5 flex items-center justify-between">
-            {hashRateBar.map((i, index) => {
-              return (
-                <div
-                  key={index}
-                  className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
-                    'fade-in !bg-[#FBEBC6]  shadow-3xl': hashPower > i * 1000,
-                  })}
-                ></div>
-              )
-            })}
+        <div className="order-last flex items-center justify-center text-[15px] font-bold">
+          <div
+            className={clsx(
+              'order-last mr-2.5 flex h-[29px] w-[44px] items-center justify-center rounded-[3px] border-2 ',
+              {
+                'pointer-events-none cursor-default border-black/25 text-black/25':
+                  powerUp === false,
+                ' animate-duration-500 animate-pulse cursor-pointer border-[#FBEBC6] bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
+                  powerUp === true,
+              }
+            )}
+            onClick={handleClick}
+          >
+            10x
           </div>
-        )}
+          <div
+            className={clsx(
+              'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
+              {
+                'border-transparent bg-[#FBEBC6]/25 text-[#571A1F]':
+                  hasherActive && step < 4,
+                'animate-duration-500 fade-in animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
+                  !hasherActive,
+                ' border-black/25 text-black/25': step >= 4,
+              }
+            )}
+            onClick={handleClick}
+          >
+            {hasherActive ? 'Running' : 'Turn on'}
+          </div>
+        </div>
       </div>
-      {highlight && (
-        <div className="absolute inset-0 mt-5 animate-pulse rounded-[5px] border-2 border-[#FBEBC6] shadow-3xl"></div>
-      )}
+      <div className="mt-5 flex items-center justify-between">
+        {hashRateBar.map((i, index) => {
+          return (
+            <div
+              key={index}
+              className={clsx('h-[15px] w-[5px] rounded-full bg-black/25', {
+                'fade-in !bg-[#FBEBC6]  shadow-3xl': hashPower > i * 1000,
+              })}
+            ></div>
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -5,18 +5,25 @@ import clsx from 'clsx'
 export default function MiningCard({
   children,
   className,
+  highlight,
 }: {
   children: any
-  className: string
+  className?: string
+  highlight?: boolean
 }) {
   return (
-    <div
-      className={clsx(
-        'mt-5 flex flex-col items-center justify-center rounded-[5px] border-2 border-transparent bg-black/15 p-4 font-nunito font-semibold',
-        className
+    <div className="relative">
+      <div
+        className={clsx(
+          'mt-5 w-full rounded-[5px] border-2 border-transparent bg-black/15 font-space-mono text-[15px]',
+          className
+        )}
+      >
+        {children}
+      </div>
+      {highlight && (
+        <div className="absolute inset-0 mt-5 animate-pulse rounded-[5px] border-2 border-[#FBEBC6] shadow-3xl"></div>
       )}
-    >
-      {children}
     </div>
   )
 }

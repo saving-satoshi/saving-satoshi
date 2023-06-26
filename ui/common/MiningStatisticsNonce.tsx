@@ -9,7 +9,6 @@ import Icon from 'shared/Icon'
 export default function MiningStatisticNonce({
   title,
   content,
-  highlight,
   step,
   finalHash,
   blockFound,
@@ -17,7 +16,6 @@ export default function MiningStatisticNonce({
 }: {
   title: string
   content: number
-  highlight: boolean
   step: number
   finalHash: string
   blockFound: number
@@ -37,11 +35,24 @@ export default function MiningStatisticNonce({
   return (
     <>
       <div
-        className={`${className} flex w-full items-center justify-between font-space-mono`}
+        className={clsx(
+          'flex w-full items-center justify-between font-space-mono',
+          className
+        )}
       >
         <div className="flex-initial">
-          <div className={clsx(`font-nunito font-bold`, {})}>{title}</div>
-          <div className="text-2xl font-normal">
+          <div
+            className={clsx(`font-nunito font-bold`, {
+              'fade-in text-[#EDA081]': content,
+            })}
+          >
+            {title}
+          </div>
+          <div
+            className={clsx('text-2xl font-normal', {
+              'fade-in text-white': content,
+            })}
+          >
             {(content / 10 ** (content.toString().length - 2)).toFixed(2)}
             {content !== 0 && (
               <span className="fade-in text-white/50">
@@ -76,9 +87,6 @@ export default function MiningStatisticNonce({
           </div>
         )}
       </div>
-      {highlight && (
-        <div className="absolute inset-0 mt-5 animate-pulse rounded-[5px] border-2 border-[#FBEBC6] shadow-3xl"></div>
-      )}
     </>
   )
 }
