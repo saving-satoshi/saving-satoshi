@@ -9,6 +9,8 @@ import {
   ProgressBar,
   Card,
   BlockCounter,
+  NonceCounter,
+  HashDisplayer,
 } from 'ui'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
@@ -223,7 +225,7 @@ export default function Mining1({ lang }) {
             </div>
             <ProgressBar progress={blocks / 10} />
           </Card>
-          <MiningStatisticNonce
+          {/* <MiningStatisticNonce
             title={t('chapter_two.mining_one.progress_bar_one')}
             content={nonce}
             highlight={nonceHighlight}
@@ -233,7 +235,32 @@ export default function Mining1({ lang }) {
               '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
             }
             blockFound={blocks}
-          />
+          /> */}
+          <Card className="flex">
+            <div className="flex-1">
+              <div
+                className={clsx('font-nunito text-[15px] font-bold', {
+                  'text-black/25': nonce === 0,
+                  'fade-in text-[#EDA081]': nonce !== 0,
+                })}
+              >
+                {t('chapter_two.mining_one.progress_bar_one')}
+              </div>
+              <NonceCounter
+                content={nonce}
+                disabled={nonce === 0}
+              ></NonceCounter>
+            </div>
+            <HashDisplayer
+              content={nonce}
+              disabled={nonce === 0}
+              step={step}
+              finalHash={
+                '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
+              }
+              blockFound={blocks}
+            ></HashDisplayer>
+          </Card>
           <MiningStatisticHash
             title={t('chapter_two.mining_one.progress_bar_two')}
             highlight={hashPowerHighlight}
@@ -241,14 +268,14 @@ export default function Mining1({ lang }) {
             onButtonClick={turnOnButton}
             step={step}
           />
-          <MiningStatistic
+          {/* <MiningStatistic
             transaction={transactionsConfirmed}
             bitcoin={bitcoinMined}
             transactionHighlight={transactionsConfirmedHighlight}
             bitcoinHighlight={bitcoinMinedHighlight}
             bitcoinTitle={t('chapter_two.mining_one.progress_bar_four')}
             transactionTitle={t('chapter_two.mining_one.progress_bar_three')}
-          />
+          /> */}
         </div>
         <div
           className={`mb-5 flex w-full items-center px-[15px] transition-opacity md:mx-0 md:mb-0 md:mt-0 md:w-1/2 md:max-w-[405px] md:pl-[15px] md:pr-0 ${
