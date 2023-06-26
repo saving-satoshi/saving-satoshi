@@ -41,10 +41,6 @@ export default function Mining1({ lang }) {
     setHydrated(true)
   }, [])
 
-  useEffect(() => {
-    setShowText(true)
-  }, [step])
-
   function displayRandomNumbers(NonceStepSize: number, time: number): void {
     let currentNonce = nonce
     const startTime = new Date().getTime()
@@ -123,16 +119,18 @@ export default function Mining1({ lang }) {
     setShowText(false)
     setRandomNonce(false)
     setFinalMining(false)
-    await sleep(325)
+    await sleep(300)
     setStep(4)
+    setShowText(true)
     setNonceHighlight(true)
     setHashPowerHighlight(true)
   }
 
   const transactionStep = async () => {
     setShowText(false)
-    await sleep(325)
+    await sleep(300)
     setStep(5)
+    setShowText(true)
     setNonceHighlight(false)
     setHashPowerHighlight(false)
     setTransactionsConfirmedHighlight(true)
@@ -140,30 +138,34 @@ export default function Mining1({ lang }) {
 
   const bitcoinStep = async () => {
     setShowText(false)
-    await sleep(325)
+    await sleep(300)
     setStep(6)
+    setShowText(true)
     setTransactionsConfirmedHighlight(false)
     setBitcoinMinedHighlight(true)
   }
 
   const finalStep = async () => {
     setShowText(false)
-    await sleep(325)
+    await sleep(300)
     setStep(7)
+    setShowText(true)
     setBitcoinMinedHighlight(false)
   }
 
   const turnOnButton = async () => {
     if (step === 0) {
       setShowText(false)
-      await sleep(325)
+      await sleep(300)
       setStep(1)
+      setShowText(true)
       const time = 15 * 1000
       displayRandomNumbers(1760, time)
       setTimeout(async () => {
         setShowText(false)
-        await sleep(325)
+        await sleep(300)
         setStep(2)
+        setShowText(true)
         setBlocks(1)
         setTransactionsConfirmed(3500)
         setBitcoinMined(0.061)
@@ -172,8 +174,9 @@ export default function Mining1({ lang }) {
 
     if (step === 2) {
       setShowText(false)
-      await sleep(325)
+      await sleep(300)
       setStep(3)
+      setShowText(true)
       setRandomNonce(true)
     }
 
