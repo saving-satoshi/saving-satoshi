@@ -2,11 +2,6 @@
 
 import clsx from 'clsx'
 
-export enum StatisticVariant {
-  Vertical = 0,
-  Horizontal = 1,
-}
-
 export default function InfoBox({
   content,
   className,

@@ -13,7 +13,6 @@ import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import clsx from 'clsx'
 import { sleep } from 'utils'
-import { StatisticVariant } from 'ui/common/MiningStatistic'
 import { ProgressBarVariant } from 'ui/common/ProgressBar'
 
 export const metadata = {
