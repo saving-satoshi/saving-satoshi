@@ -11,7 +11,6 @@ export default function InfoBox({
   variant,
   transaction,
   bitcoin,
-  disabled,
   className,
   transactionCard,
   transactionHighlight,
@@ -23,7 +22,6 @@ export default function InfoBox({
   variant: StatisticVariant
   transaction: number
   bitcoin: number
-  disabled: boolean
   className: string
   transactionCard: boolean
   transactionHighlight: boolean
@@ -57,9 +55,8 @@ export default function InfoBox({
           >
             <div
               className={clsx(`${className} font-normal`, {
-                'opacity-25': disabled,
-                'opacity-100': !disabled,
-                'fade-in text-white': transaction !== 0,
+                'opacity-25': transaction === 0,
+                'fade-in text-white opacity-100': transaction !== 0,
                 'order-1 flex text-[15px]':
                   variant === StatisticVariant.Vertical,
                 'text-2xl': variant === StatisticVariant.Horizontal,
@@ -69,9 +66,8 @@ export default function InfoBox({
             </div>
             <div
               className={clsx(`${className} font-nunito font-bold`, {
-                'opacity-25': disabled,
-                'opacity-100': !disabled,
-                'fade-in text-[#EDA081]': transaction !== 0,
+                'opacity-25': transaction === 0,
+                'fade-in text-[#EDA081] opacity-100': transaction !== 0,
                 'text-[15px]': variant === StatisticVariant.Vertical,
                 'text-[13px]': variant === StatisticVariant.Horizontal,
               })}
@@ -102,9 +98,8 @@ export default function InfoBox({
           >
             <div
               className={clsx(`${className} font-normal`, {
-                'opacity-25': disabled,
-                'opacity-100': !disabled,
-                'fade-in text-white': bitcoin !== 0,
+                'opacity-25': bitcoin === 0,
+                'fade-in text-white opacity-100': bitcoin !== 0,
                 'order-1 flex text-[15px]':
                   variant === StatisticVariant.Vertical,
                 'text-2xl': variant === StatisticVariant.Horizontal,
@@ -114,9 +109,8 @@ export default function InfoBox({
             </div>
             <div
               className={clsx(`${className} font-nunito font-bold`, {
-                'opacity-25': disabled,
-                'opacity-100': !disabled,
-                'fade-in text-[#EDA081]': bitcoin !== 0,
+                'opacity-25': bitcoin === 0,
+                'fade-in text-[#EDA081] opacity-100': bitcoin !== 0,
                 'text-[15px]': variant === StatisticVariant.Vertical,
                 'text-[13px]': variant === StatisticVariant.Horizontal,
               })}

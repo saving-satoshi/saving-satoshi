@@ -226,20 +226,6 @@ export default function Mining1({ lang }) {
               step={step}
             />
           </MiningCard>
-          <div className="flex flex-row justify-between gap-x-2.5">
-            <MiningCard
-              className="p-4 text-[15px]"
-              highlight={hashPowerHighlight}
-            >
-              <span>Dunce ooga boog</span>
-            </MiningCard>
-            <MiningCard
-              className="p-4 text-[15px]"
-              highlight={hashPowerHighlight}
-            >
-              <span>Dunce ooga boog</span>
-            </MiningCard>
-          </div>
           <MiningStatistic
             variant={StatisticVariant.Horizontal}
             transactionCard={true}
@@ -247,7 +233,6 @@ export default function Mining1({ lang }) {
             transaction={transactionsConfirmed}
             bitcoin={bitcoinMined}
             transactionHighlight={transactionsConfirmedHighlight}
-            disabled={transactionsConfirmed === 0}
             className={clsx({ 'text-black': transactionsConfirmed === 0 })}
             bitcoinHighlight={bitcoinMinedHighlight}
             bitcoinTitle={t('chapter_two.mining_one.progress_bar_four')}
