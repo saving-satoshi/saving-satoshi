@@ -387,13 +387,37 @@ const translations = {
     },
   },
   chapter_three: {
-    title: 'Claiming your rewards',
+    title: 'The 51% Attack',
     paragraph_one:
       'Phew, that was close. You are still shaking from your battle againstAmestris, yet relieved that a victory was possible.',
     paragraph_two:
       'As you settle at your desk, you take a deep breath and drift off toreplay the day’s events. Your hands keep themselves busy playing withthe mysterious envelope, as you wonder who sent it. Who still usesenvelopes anyways, it’s 2139 after all. Even more curious is that thereis a stamp on it, from 2008...could this be another hint?',
     paragraph_three:
       'Suddenly, you realize that you never claimed the block rewards from your competition with Amestris. Your bitcoin wallet is running low, so now is a good time to top it up again.',
+
+    intro_one: {
+      title: 'Hashing it out',
+      paragraph_one:
+        'You enter the address of a block explorer blocks are back to ten minutes intervals. Somehow, holocat sleeps through the noise of the machines.',
+      paragraph_two:
+        '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking holocat. It’s not a coincidence.',
+      paragraph_three:
+        '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is under a 51% attack! Vanderpoole used a virus to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the Bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply.” – Satoshi Nakamoto',
+    },
+
+    intro_two: {
+      title: 'Hashing it out',
+      paragraph_one:
+        '—The old computer coughs a little, then produces a wad of data in something called a “spreadsheet”: contact info for some of the largest bitcoin pool operators and a patch to the virus that is letting BitRey control them. Send the file to them so they can regain control of their machines and join your fight against BitRey.',
+      paragraph_two:
+        'HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”',
+    },
+
+    you_vs_bit_one: {
+      title: 'You vs. Bitrey',
+      paragraph_one:
+        'This is a temporary page to test correct working of Continue Button. To Be removed',
+    },
   },
 
   chapter_four: {

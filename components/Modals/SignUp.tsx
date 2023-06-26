@@ -10,15 +10,7 @@ import { useProgressContext } from 'providers/ProgressProvider'
 import { getNextLessonKey } from 'lib/progress'
 import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
-import { Input } from 'shared'
 import Modal from './Modal'
-
-import Profile from 'components/utils/Profile'
-
-enum View {
-  Generate = 'generate',
-  Input = 'input',
-}
 
 export default function LoginModal({ onClose, state }) {
   const lang = useLang()
@@ -31,20 +23,9 @@ export default function LoginModal({ onClose, state }) {
 
   const [loading, setLoading] = useState<boolean>(false)
   const [avatar, setAvatar] = useState(1)
-  const [view, setView] = useState<string>(View.Generate)
   const [copyAcknowledged, setCopyAcknowledged] = useState<boolean>(false)
   const [privateKey, setPrivateKey] = useState<string | undefined>(undefined)
   const [copied, setCopied] = useState(false)
-
-  const handleChangeView = (view: View) => {
-    setView(view)
-    setCopyAcknowledged(false)
-  }
-
-  const handleSetPrivateKey = (pk: string) => {
-    setPrivateKey(pk)
-    setCopyAcknowledged(true)
-  }
 
   const copy = (text) => {
     navigator.clipboard.writeText(text)
@@ -76,12 +57,12 @@ export default function LoginModal({ onClose, state }) {
   }
 
   useEffect(() => {
-    if (state.open && view === View.Generate) {
+    if (state.open) {
       const { sec } = generateKeypair()
 
       setPrivateKey(sec)
     }
-  }, [state.open, view])
+  }, [state.open])
 
   return (
     <Modal active={state.open} onRequestClose={onClose}>
@@ -103,21 +84,20 @@ export default function LoginModal({ onClose, state }) {
           {[1, 2, 3, 4, 5].map((i) => (
             <button
               key={i}
+              className={clsx({
+                'mr-3.5 sm:mr-3': i !== 5,
+              })}
               aria-label={`Select avatar ${i}`}
               aria-pressed={avatar === i}
+              onClick={() => setAvatar(i)}
             >
               <Avatar
-                key={i}
                 avatar={`/assets/avatars/${i}.png`}
                 size={80}
-                onClick={() => setAvatar(i)}
-                className={clsx(
-                  'inline-block h-20 w-20 rounded-full border-2',
-                  {
-                    'border-white': avatar === i,
-                    'border-transparent': avatar !== i,
-                  }
-                )}
+                className={clsx('inline-block h-20 w-20 border-2', {
+                  'border-white': avatar === i,
+                  'border-transparent': avatar !== i,
+                })}
               />
             </button>
           ))}
@@ -126,49 +106,25 @@ export default function LoginModal({ onClose, state }) {
         <h2 className="mb-4 text-xl font-bold">
           {t('modal_signup.subheading_two')}
         </h2>
-
-        <RadioGroup value={view} onChange={handleChangeView}>
-          <RadioButton name="generate" value={View.Generate}>
-            Generate
-          </RadioButton>
-
-          <RadioButton name="input" value={View.Input}>
-            Enter my own
-          </RadioButton>
-        </RadioGroup>
-
-        {view === View.Generate && (
-          <>
-            <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
-              {privateKey && (
-                <>
-                  <code className="mb-2 whitespace-pre-wrap break-all text-base">
-                    {privateKey.toUpperCase()}
-                  </code>
-                  <Button
-                    round
-                    size="tiny"
-                    style="w-full"
-                    onClick={() => copy(privateKey)}
-                  >
-                    {copied ? t('shared.copy_acknowledged') : t('shared.copy')}
-                  </Button>
-                </>
-              )}
-            </pre>
-          </>
-        )}
-
-        {view === View.Input && (
-          <>
-            <Input
-              type="text"
-              name="private_key"
-              placeholder="Enter your private key"
-              onInput={handleSetPrivateKey}
-            />
-          </>
-        )}
+        <>
+          <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
+            {privateKey && (
+              <>
+                <code className="mb-2 whitespace-pre-wrap break-all text-base">
+                  {privateKey.toUpperCase()}
+                </code>
+                <Button
+                  round
+                  size="tiny"
+                  style="w-full"
+                  onClick={() => copy(privateKey)}
+                >
+                  {copied ? t('shared.copy_acknowledged') : t('shared.copy')}
+                </Button>
+              </>
+            )}
+          </pre>
+        </>
         <p className="mt-5 text-base">{t('modal_signup.generate')}</p>
 
         <button
