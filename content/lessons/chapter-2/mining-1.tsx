@@ -226,18 +226,30 @@ export default function Mining1({ lang }) {
               step={step}
             />
           </MiningCard>
-          <MiningStatistic
-            variant={StatisticVariant.Horizontal}
-            transactionCard={true}
-            bitcoinCard={true}
-            transaction={transactionsConfirmed}
-            bitcoin={bitcoinMined}
-            transactionHighlight={transactionsConfirmedHighlight}
-            className={clsx({ 'text-black': transactionsConfirmed === 0 })}
-            bitcoinHighlight={bitcoinMinedHighlight}
-            bitcoinTitle={t('chapter_two.mining_one.progress_bar_four')}
-            transactionTitle={t('chapter_two.mining_one.progress_bar_three')}
-          />
+          <div className="relative flex flex-row items-center justify-between gap-x-2.5 text-center">
+            <MiningCard
+              dual
+              className="flex h-18 flex-col items-center justify-center rounded-[5px] border-2 border-transparent bg-black/15 py-2.5 font-space-mono"
+              highlight={transactionsConfirmedHighlight}
+            >
+              <MiningStatistic
+                content={transactionsConfirmed}
+                className={clsx({ 'text-black': transactionsConfirmed === 0 })}
+                title={t('chapter_two.mining_one.progress_bar_three')}
+              />
+            </MiningCard>
+            <MiningCard
+              dual
+              className="flex h-18 flex-col items-center justify-center rounded-[5px] border-2 border-transparent bg-black/15 py-2.5 px-[15px] font-space-mono"
+              highlight={bitcoinMinedHighlight}
+            >
+              <MiningStatistic
+                content={bitcoinMined}
+                className={clsx({ 'text-black': transactionsConfirmed === 0 })}
+                title={t('chapter_two.mining_one.progress_bar_four')}
+              />
+            </MiningCard>
+          </div>
         </div>
         <div
           className={`mb-5 flex w-full items-center px-[15px] transition-opacity md:mx-0 md:mt-0 md:mb-0 md:w-1/2 md:max-w-[405px] md:pr-0 md:pl-[15px] ${

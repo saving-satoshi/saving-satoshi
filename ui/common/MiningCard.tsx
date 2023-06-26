@@ -6,13 +6,15 @@ export default function MiningCard({
   children,
   className,
   highlight,
+  dual,
 }: {
   children: any
   className?: string
   highlight?: boolean
+  dual?: boolean
 }) {
   return (
-    <div className="relative">
+    <div className={clsx('relative', { 'w-1/2': dual })}>
       <div
         className={clsx(
           'mt-5 w-full rounded-[5px] border-2 border-transparent bg-black/15 font-space-mono text-[15px]',
