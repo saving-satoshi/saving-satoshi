@@ -236,7 +236,7 @@ export default function Mining1({ lang }) {
             }
             blockFound={blocks}
           /> */}
-          <Card className="flex">
+          <Card className="flex" highlight={nonceHighlight}>
             <div className="flex-1">
               <div
                 className={clsx('font-nunito text-[15px] font-bold', {
