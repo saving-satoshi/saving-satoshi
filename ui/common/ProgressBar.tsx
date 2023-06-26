@@ -2,14 +2,14 @@
 
 import clsx from 'clsx'
 
-export enum BlockProgressVariant {
+export enum ProgressBarVariant {
   Blocks = 0,
   Percentage = 1,
   Total = 2,
   TotalBar = 3,
 }
 
-export default function BlockProgress({
+export default function ProgressBar({
   progress,
   title,
   variant,
@@ -20,7 +20,7 @@ export default function BlockProgress({
 }: {
   progress: number
   title: string
-  variant: BlockProgressVariant
+  variant: ProgressBarVariant
   fontSize: string
   total?: number
   percentage?: number
@@ -35,9 +35,9 @@ export default function BlockProgress({
           {
             'fade-in text-white': progress !== 0,
             'py-[10px] px-[15px]':
-              variant === BlockProgressVariant.Blocks ||
-              variant === BlockProgressVariant.Percentage,
-            'mb-2.5': variant === BlockProgressVariant.TotalBar,
+              variant === ProgressBarVariant.Blocks ||
+              variant === ProgressBarVariant.Percentage,
+            'mb-2.5': variant === ProgressBarVariant.TotalBar,
           }
         )}
       >
@@ -48,7 +48,7 @@ export default function BlockProgress({
         >
           {title}
         </span>{' '}
-        {variant === BlockProgressVariant.Percentage &&
+        {variant === ProgressBarVariant.Percentage &&
           typeof percentage === 'number' && (
             <span
               className={clsx('fade-in items-start', {
@@ -62,13 +62,13 @@ export default function BlockProgress({
           )}
         <span>
           {progress}{' '}
-          {(variant === BlockProgressVariant.Total ||
-            variant === BlockProgressVariant.TotalBar) &&
+          {(variant === ProgressBarVariant.Total ||
+            variant === ProgressBarVariant.TotalBar) &&
             total &&
             `of ${total}`}
         </span>
       </div>
-      {variant === BlockProgressVariant.TotalBar && total && (
+      {variant === ProgressBarVariant.TotalBar && total && (
         <div className="relative h-[30px] w-full rounded-[5px] bg-black/20">
           <div className="h-full w-full overflow-hidden rounded-[5px]">
             <div

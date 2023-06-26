@@ -6,7 +6,7 @@ import {
   MiningStatistic,
   MiningStatisticNonce,
   MiningStatisticHash,
-  BlockProgress,
+  ProgressBar,
   MiningCard,
 } from 'ui'
 import { useState, useEffect } from 'react'
@@ -14,7 +14,7 @@ import { Button } from 'shared'
 import clsx from 'clsx'
 import { sleep } from 'utils'
 import { StatisticVariant } from 'ui/common/MiningStatistic'
-import { BlockProgressVariant } from 'ui/common/BlockProgress'
+import { ProgressBarVariant } from 'ui/common/ProgressBar'
 
 export const metadata = {
   title: 'chapter_two.mining_one.title',
@@ -193,8 +193,8 @@ export default function Mining1({ lang }) {
     hydrated && (
       <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
         <div className="fade-in grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:my-0 md:mx-[30px] md:w-[405px] md:p-[25px]">
-          <BlockProgress
-            variant={BlockProgressVariant.TotalBar}
+          <ProgressBar
+            variant={ProgressBarVariant.TotalBar}
             fontSize="text-lg"
             total={maxBlocks}
             title={t('chapter_two.mining_one.progress_bar_title')}
