@@ -14,7 +14,7 @@ export default function Card({
   return (
     <div
       className={clsx(
-        'mt-5 flex w-full items-center justify-between rounded-[5px] border-2 border-transparent font-nunito',
+        'mt-5 w-full items-center justify-between rounded-[5px] border-2 border-transparent font-nunito',
         className,
         {
           'bg-black/15 p-4': !transparent,
