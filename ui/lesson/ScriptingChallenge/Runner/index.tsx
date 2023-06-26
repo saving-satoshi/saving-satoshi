@@ -4,20 +4,23 @@ import clsx from 'clsx'
 import { useTranslations } from 'hooks'
 import { useEffect, useRef, useState } from 'react'
 import Convert from 'ansi-to-html'
-import throttle from 'lodash/throttle'
 
 import { Loader } from 'shared'
 import Icon from 'shared/Icon'
-import Hasher, { HasherState } from './Hasher'
+import { HasherState } from './Hasher'
 import { EditorConfig, LessonView } from 'types'
 import { useLessonContext, StatusBar } from 'ui'
-import Terminal from './Terminal'
-import TabMenu from '../TabMenu'
 import { useMediaQuery } from 'hooks'
 import { useDynamicHeight } from 'hooks'
 
-const defaultConsoleMessage = 'Console v0.0.1'
-const defaultSystemMessage = 'System Monitor v0.0.1'
+enum State {
+  Idle = 'idle',
+  Building = 'building',
+  Running = 'running',
+  Error = 'error',
+  Complete = 'complete',
+}
+
 const convert = new Convert()
 const wsEndpoint =
   process.env.NEXT_PUBLIC_WS_ENDPOINT || 'wss://api.savingsatoshi.com'
@@ -58,6 +61,8 @@ export default function Runner({
   const { activeView } = useLessonContext()
   const terminalRef = useRef()
 
+  const [state, setState] = useState<State>(State.Idle)
+
   const [loading, setLoading] = useState<boolean>(false)
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const [runtimeError, setRuntimeError] = useState<string | undefined>(
@@ -72,11 +77,14 @@ export default function Runner({
     HasherState.Waiting
   )
 
-  const delayedPrint = (action, payload) => {
+  const terminal = (action: string, payload?: any) => {
     if (!terminalRef.current) {
       return
     }
 
+    if (payload) {
+      payload = convert.toHtml(payload)
+    }
     // @ts-ignore
     const win = terminalRef.current.contentWindow
     win.postMessage(JSON.stringify({ action, payload }), '*')
@@ -88,46 +96,54 @@ export default function Runner({
   const handleRun = async () => {
     try {
       success = false
+      setState(State.Building)
       setErrors([])
       setIsRunning(true)
       setHasherState(HasherState.Running)
 
-      const terminal = terminalRef.current as any
+      terminal('clear')
 
-      ws = new WebSocket(wsEndpoint)
-
-      ws.onopen = () => {
-        // delayedPrint(terminal, '[system] Websocket connection established.')
-        send('repl', { code: `${code}\n${program}`, language })
+      if (ws) {
+        ws.close()
       }
 
+      ws = new WebSocket(wsEndpoint)
+      ws.onopen = () => send('repl', { code: `${code}\n${program}`, language })
       ws.onmessage = async (e) => {
         let { type, payload } = JSON.parse(e.data)
 
         switch (type) {
+          case 'status': {
+            if (payload === 'running') {
+              setState(State.Running)
+            }
+            break
+          }
           case 'error': {
-            payload = payload.trim()
-            const lines = payload.split('\n')
-            lines.forEach((line) => delayedPrint('print', line))
+            const error = payload.message.trim()
+            const lines = error.split('\n')
+            lines.forEach((line) => terminal('print', line))
             setRuntimeError(lines.join('\n'))
             setHasherState(HasherState.Error)
             setIsRunning(false)
+            setState(State.Error)
             break
           }
           case 'debug': {
-            payload = payload.trim()
-            // delayedPrint('print', payload)
+            // payload = payload.trim()
+            // terminal('print', payload)
             break
           }
           case 'output': {
             payload = payload.trim()
-            delayedPrint('print', payload)
+            terminal('print', payload)
 
             const [res, err] = await onValidate(payload)
             if (!res) {
               setRuntimeError(err)
               setHasherState(HasherState.Error)
               setIsRunning(false)
+              setState(State.Complete)
               return
             }
 
@@ -141,10 +157,11 @@ export default function Runner({
               ws?.close()
             }
 
-            // delayedPrint(
-            //   'print',
-            //   `[system] Process exited with code ${payload ? 1 : 0}`
-            // )
+            if (!success) {
+              setIsRunning(false)
+              setHasherState(HasherState.Waiting)
+              setState(State.Complete)
+            }
             break
           }
         }
@@ -153,8 +170,6 @@ export default function Runner({
       ws.onerror = (err) => {
         setIsRunning(false)
       }
-
-      delayedPrint('print', 'terminal')
     } catch (ex) {
       console.error(ex)
       setIsRunning(false)
@@ -166,7 +181,7 @@ export default function Runner({
       ws.close()
     }
 
-    delayedPrint('print', 'terminal')
+    terminal('clear')
   }, [language])
 
   useEffect(() => {
@@ -178,7 +193,7 @@ export default function Runner({
       const { action, payload } = JSON.parse(e.data)
       switch (action) {
         case 'ready': {
-          delayedPrint('print', 'hello world!')
+          terminal('clear')
           break
         }
       }
@@ -209,21 +224,57 @@ export default function Runner({
 
       {!loading && (
         <>
-          <iframe
-            ref={terminalRef}
-            src={
-              'data:text/html,' +
-              encodeURIComponent(
-                `<div class="output"></div>
+          {state === State.Idle && (
+            <div className="h-full w-full grow border-t border-white border-opacity-30 bg-black bg-opacity-20 p-4">
+              <div className="font-mono text-xs text-white">Script output</div>
+              <div className="font-mono text-xs text-white text-opacity-60">
+                Waiting for you to run the script...
+              </div>
+            </div>
+          )}
+          {state === State.Building && (
+            <div className="h-full w-full grow border-t border-white border-opacity-30 bg-black bg-opacity-20 p-4">
+              <div className="font-mono text-xs text-white">Starting up</div>
+              <div className="font-mono text-xs text-white text-opacity-60">
+                This will take just a few seconds...
+              </div>
+            </div>
+          )}
+          {(state === State.Running ||
+            state === State.Error ||
+            state === State.Complete) && (
+            <iframe
+              // @ts-ignore
+              ref={terminalRef}
+              className="h-full w-full border-t border-white border-opacity-30 bg-black bg-opacity-20"
+              src={
+                'data:text/html,' +
+                encodeURIComponent(
+                  `<style>
+                  body {
+                    padding: 16px;
+                    margin:0;
+                  }
+                  .output {
+                    font-family: monospace;
+                    color: white;
+                    font-size: 12px;
+                  }
+                </style>
+                <div class="output"></div>
                 <script>
                   const output = document.querySelector('.output')
 
                   window.addEventListener('message', e => {
                     const {action,payload} =JSON.parse(e.data)
-                    console.log(action, payload)
                     switch(action) {
                       case 'print': {
                         output.innerHTML += "<div>"+payload+"</div>"
+                        output.parentElement.scrollTop = output.scrollHeight
+                        break
+                      }
+                      case 'clear': {
+                        output.innerHTML = ''
                         break
                       }
                     }
@@ -232,49 +283,11 @@ export default function Runner({
                   const send = (action,payload) => window.parent.postMessage(JSON.stringify({action,payload}), '*')
                   send('ready')
                 </script>`
-              )
-            }
-          />
-          {/* <Terminal
-            error={runtimeError}
-            defaultMessage={defaultConsoleMessage}
-            ref={terminalRef}
-          /> */}
+                )
+              }
+            />
+          )}
         </>
-        // <TabMenu
-        //   tabs={[
-        //     { label: 'Hasher', value: 'hasher' },
-        //     { label: 'Console', value: 'console' },
-        //     { label: 'System monitor', value: 'system' },
-        //   ]}
-        //   defaultValue="hasher"
-        //   className={clsx(
-        //     'terminal-wrapper border-t border-white border-opacity-30',
-        //     {
-        //       hidden: isSmallScreen && activeView !== LessonView.Execute,
-        //       flex: isSmallScreen && activeView === LessonView.Execute,
-        //     }
-        //   )}
-        // >
-        //   <TabMenu.Tab value="hasher">
-        //     <Hasher
-        //       key={result}
-        //       lang={lang}
-        //       language={language}
-        //       config={config}
-        //       state={hasherState}
-        //       successMessage={successMessage}
-        //       validationError={validationError}
-        //       value={result}
-        //     />
-        //   </TabMenu.Tab>
-        //   <TabMenu.Tab value="console">
-        //     <Terminal defaultMessage={defaultConsoleMessage} ref={outputRef} />
-        //   </TabMenu.Tab>
-        //   <TabMenu.Tab value="system">
-        //     <Terminal defaultMessage={defaultSystemMessage} ref={systemRef} />
-        //   </TabMenu.Tab>
-        // </TabMenu>
       )}
 
       <div

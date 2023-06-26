@@ -209,7 +209,7 @@ div.react-terminal-active-input {
   .code-editor {
     display: grid;
     height: calc(100vh - 70px);
-    grid-template-rows: 40px auto auto 56px;
+    grid-template-rows: 40px auto 204px 56px;
   }
 }
 
