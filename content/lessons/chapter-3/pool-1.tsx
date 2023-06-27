@@ -15,7 +15,7 @@ export default function POL1({ lang }) {
   const profiles = Array.from({ length: 5 }, (_, index) => (
     <span
       key={index}
-      className="h-[230px] w-[250px] min-w-[234px] bg-black md:h-[323px] md:w-[234px]"
+      className="h-[230px] w-[250px] min-w-[234px] bg-black text-white md:h-[323px] md:w-[234px]"
     >
       Profile {index}
     </span>
