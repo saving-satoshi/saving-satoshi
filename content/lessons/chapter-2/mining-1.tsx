@@ -299,6 +299,38 @@ export default function Mining1({ lang }) {
             bitcoinTitle={t('chapter_two.mining_one.progress_bar_four')}
             transactionTitle={t('chapter_two.mining_one.progress_bar_three')}
           /> */}
+          <div className="flex items-center justify-between gap-x-2.5 text-center font-space-mono">
+            <Card className="w-max px-3.5 py-2.5">
+              <div
+                className={clsx('font-space-mono text-2xl', {
+                  'text-black/25': transactionsConfirmed === 0,
+                  'fade-in text-white': transactionsConfirmed !== 0,
+                })}
+              >
+                {Intl.NumberFormat().format(transactionsConfirmed)}
+              </div>
+              <TitleCard
+                title={t('chapter_two.mining_one.progress_bar_three')}
+                disabled={transactionsConfirmed === 0}
+                size={'small'}
+              />
+            </Card>
+            <Card className="w-max px-10 py-2.5">
+              <div
+                className={clsx('text-2xl font-normal', {
+                  'text-black/25': bitcoinMined === 0,
+                  'fade-in text-white': bitcoinMined !== 0,
+                })}
+              >
+                {bitcoinMined.toFixed(4)}
+              </div>
+              <TitleCard
+                title={t('chapter_two.mining_one.progress_bar_four')}
+                disabled={bitcoinMined === 0}
+                size={'small'}
+              />
+            </Card>
+          </div>
         </div>
         <div
           className={`mb-5 flex w-full items-center px-[15px] transition-opacity md:mx-0 md:mb-0 md:mt-0 md:w-1/2 md:max-w-[405px] md:pl-[15px] md:pr-0 ${

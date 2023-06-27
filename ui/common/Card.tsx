@@ -2,13 +2,11 @@ import clsx from 'clsx'
 
 export default function Card({
   transparent,
-  inline,
   className,
   children,
   highlight,
 }: {
   transparent?: boolean
-  inline?: boolean
   className?: string
   children?: any
   highlight?: boolean
@@ -17,11 +15,10 @@ export default function Card({
     <div className="relative">
       <div
         className={clsx(
-          'mt-5 w-full items-center justify-between rounded-[5px] border-2 border-transparent font-nunito',
           className,
+          'mt-5 w-full items-center justify-between rounded-[5px] border-2 border-transparent font-nunito',
           {
             'bg-black/15 p-4': !transparent,
-            'flex-inline': inline,
           }
         )}
       >
