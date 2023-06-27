@@ -21,6 +21,7 @@ const javascript = {
   defaultCode: `const crypto = require('crypto')
 
 // Create a program that finds a sha256 hash starting with 3 zeroes.
+// To submit your answer, log it to the terminal using console.log().
 `,
   validate: async (answer) => {
     if (!answer.startsWith('000')) {
@@ -43,7 +44,8 @@ const python = {
   },
   defaultCode: `from hashlib import sha256
 
-# Create a program that finds a sha256 hash starting with 3 zeroes.`,
+# Create a program that finds a sha256 hash starting with 3 zeroes.
+# To submit your answer, print it to the terminal using print().`,
   validate: async (answer) => {
     if (!answer.startsWith('000')) {
       return [false, 'Hash must start with 3 zeroes.']

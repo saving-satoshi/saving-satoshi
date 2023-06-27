@@ -7,16 +7,21 @@ import Convert from 'ansi-to-html'
 
 import { Loader } from 'shared'
 import Icon from 'shared/Icon'
-import Hasher, { HasherState } from './Hasher'
+import { HasherState } from './Hasher'
 import { EditorConfig, LessonView } from 'types'
 import { useLessonContext, StatusBar } from 'ui'
-import Terminal from './Terminal'
-import TabMenu from '../TabMenu'
 import { useMediaQuery } from 'hooks'
 import { useDynamicHeight } from 'hooks'
+import Terminal from './Terminal'
 
-const defaultConsoleMessage = 'Console v0.0.1'
-const defaultSystemMessage = 'System Monitor v0.0.1'
+enum State {
+  Idle = 'idle',
+  Building = 'building',
+  Running = 'running',
+  Error = 'error',
+  Complete = 'complete',
+}
+
 const convert = new Convert()
 const wsEndpoint =
   process.env.NEXT_PUBLIC_WS_ENDPOINT || 'wss://api.savingsatoshi.com'
@@ -55,12 +60,16 @@ export default function Runner({
 }) {
   const t = useTranslations(lang)
   const { activeView } = useLessonContext()
-  const systemRef = useRef()
-  const outputRef = useRef()
+  const terminalRef = useRef()
+
+  const [state, setState] = useState<State>(State.Idle)
 
   const [loading, setLoading] = useState<boolean>(false)
   const [isRunning, setIsRunning] = useState<boolean>(false)
-  const [result, setResult] = useState<any | undefined>(undefined)
+  const [runtimeError, setRuntimeError] = useState<string | undefined>(
+    undefined
+  )
+
   const isActive = activeView !== LessonView.Info
   const [validationError, setValidationError] = useState<string | undefined>(
     undefined
@@ -69,54 +78,84 @@ export default function Runner({
     HasherState.Waiting
   )
 
+  const terminal = (action: string, payload?: any) => {
+    if (!terminalRef.current) {
+      return
+    }
+
+    if (payload) {
+      payload = convert.toHtml(payload)
+    }
+    // @ts-ignore
+    const win = terminalRef.current.contentWindow
+    win.postMessage(JSON.stringify({ action, payload }), '*')
+  }
+
   useDynamicHeight([activeView])
   const isSmallScreen = useMediaQuery({ width: 767 })
 
   const handleRun = async () => {
     try {
       success = false
+      setState(State.Building)
       setErrors([])
       setIsRunning(true)
       setHasherState(HasherState.Running)
 
-      ws = new WebSocket(wsEndpoint)
+      terminal('clear')
+      terminal('print', 'Script output:')
 
-      ws.onopen = () => {
-        print(sysmon, '[system] Websocket connection established.')
-        send('repl', { code: `${code}\n${program}`, language })
+      if (ws) {
+        ws.close()
       }
 
+      ws = new WebSocket(wsEndpoint)
+      ws.onopen = () => send('repl', { code: `${code}\n${program}`, language })
       ws.onmessage = async (e) => {
         let { type, payload } = JSON.parse(e.data)
 
         switch (type) {
+          case 'status': {
+            if (payload === 'running') {
+              setState(State.Running)
+            }
+            break
+          }
           case 'error': {
-            payload = payload.trim()
-            const lines = payload.split('\n')
-            lines.forEach((line) => print(output, line))
-            setErrors([...errors, ...lines])
+            const error = payload.message.trim()
+            const lines = error.split('\n')
+            lines.forEach((line) => terminal('print', line))
+            setRuntimeError(lines.join('\n'))
             setHasherState(HasherState.Error)
             setIsRunning(false)
+            setState(State.Error)
             break
           }
           case 'debug': {
-            payload = payload.trim()
-            print(sysmon, payload)
+            // payload = payload.trim()
+            // terminal('print', payload)
             break
           }
           case 'output': {
             payload = payload.trim()
-            print(output, payload)
-            setResult(payload)
+            terminal('print', payload)
 
             const [res, err] = await onValidate(payload)
-            if (res) {
-              setHasherState(HasherState.Success)
-              success = true
+            if (!res) {
+              setRuntimeError(err)
+              setHasherState(HasherState.Error)
               setIsRunning(false)
-            } else {
-              setValidationError(err)
+              setState(State.Complete)
+              terminal('error', err)
+              ws?.close()
+              return
             }
+
+            success = true
+            setIsRunning(false)
+            setHasherState(HasherState.Success)
+            terminal('success', `Found hash: ${payload}`)
+            terminal('success', `Five zeroes! That's it!`)
             break
           }
           case 'end': {
@@ -124,10 +163,11 @@ export default function Runner({
               ws?.close()
             }
 
-            print(
-              sysmon,
-              `[system] Process exited with code ${payload ? 1 : 0}`
-            )
+            if (!success) {
+              setIsRunning(false)
+              setHasherState(HasherState.Waiting)
+              setState(State.Complete)
+            }
             break
           }
         }
@@ -136,12 +176,6 @@ export default function Runner({
       ws.onerror = (err) => {
         setIsRunning(false)
       }
-
-      const output = outputRef.current as any
-      const sysmon = systemRef.current as any
-
-      print(output, defaultConsoleMessage, 'w')
-      print(sysmon, defaultSystemMessage, 'w')
     } catch (ex) {
       console.error(ex)
       setIsRunning(false)
@@ -153,13 +187,32 @@ export default function Runner({
       ws.close()
     }
 
-    print(outputRef.current, defaultConsoleMessage, 'w')
-    print(systemRef.current, defaultSystemMessage, 'w')
+    terminal('clear')
   }, [language])
 
   useEffect(() => {
     setHasherState(HasherState.Waiting)
   }, [code])
+
+  useEffect(() => {
+    const handleMessage = (e) => {
+      try {
+        const { action, payload } = JSON.parse(e.data)
+        switch (action) {
+          case 'ready': {
+            terminal('clear')
+            break
+          }
+        }
+      } catch (ex) {}
+    }
+    if (terminalRef.current) {
+      window.addEventListener('message', handleMessage)
+    }
+    return () => {
+      window.removeEventListener('message', handleMessage)
+    }
+  }, [terminalRef])
 
   return (
     <>
@@ -178,40 +231,35 @@ export default function Runner({
       )}
 
       {!loading && (
-        <TabMenu
-          tabs={[
-            { label: 'Hasher', value: 'hasher' },
-            { label: 'Console', value: 'console' },
-            { label: 'System monitor', value: 'system' },
-          ]}
-          defaultValue="hasher"
-          className={clsx(
-            'terminal-wrapper border-t border-white border-opacity-30',
-            {
-              hidden: isSmallScreen && activeView !== LessonView.Execute,
-              flex: isSmallScreen && activeView === LessonView.Execute,
-            }
+        <>
+          {state === State.Idle && (
+            <div className="h-full w-full grow border-t border-white border-opacity-30 bg-black bg-opacity-20 p-4">
+              <div className="font-mono text-xs text-white">Script output</div>
+              <div className="font-mono text-xs text-white text-opacity-60">
+                Waiting for you to run the script...
+              </div>
+            </div>
           )}
-        >
-          <TabMenu.Tab value="hasher">
-            <Hasher
-              key={result}
-              lang={lang}
-              language={language}
-              config={config}
-              state={hasherState}
-              successMessage={successMessage}
-              validationError={validationError}
-              value={result}
-            />
-          </TabMenu.Tab>
-          <TabMenu.Tab value="console">
-            <Terminal defaultMessage={defaultConsoleMessage} ref={outputRef} />
-          </TabMenu.Tab>
-          <TabMenu.Tab value="system">
-            <Terminal defaultMessage={defaultSystemMessage} ref={systemRef} />
-          </TabMenu.Tab>
-        </TabMenu>
+          {state === State.Building && (
+            <div className="h-full w-full grow border-t border-white border-opacity-30 bg-black bg-opacity-20 p-4">
+              <div className="font-mono text-xs text-white">Starting up</div>
+              <div className="font-mono text-xs text-white text-opacity-60">
+                This will take just a few seconds...
+              </div>
+            </div>
+          )}
+          <Terminal
+            ref={terminalRef}
+            className={clsx({
+              block:
+                [State.Running, State.Error, State.Complete].indexOf(state) !==
+                -1,
+              hidden:
+                [State.Running, State.Error, State.Complete].indexOf(state) ===
+                -1,
+            })}
+          />
+        </>
       )}
 
       <div
