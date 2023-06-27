@@ -1,7 +1,6 @@
 import Topbar from 'components/Topbar'
 import Hero from 'components/Hero'
 import Footer from 'components/Footer'
-import Head from 'next/head'
 
 export const metadata = {
   title: 'Code your way through the mysteries of Bitcoin - Saving Satoshi',
