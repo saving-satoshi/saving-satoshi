@@ -200,14 +200,6 @@ export default function Mining1({ lang }) {
                 zindex: '50',
               },
               {
-                username: 'friend',
-                avatar: '2',
-                color: '5DBC59',
-                percentage: (blocks + 100) / 10,
-                side: 1,
-                zindex: '40',
-              },
-              {
                 username: 'enemy',
                 avatar: '3',
                 color: '5DBC59',
