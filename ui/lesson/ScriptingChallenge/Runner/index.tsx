@@ -10,7 +10,6 @@ import Icon from 'shared/Icon'
 import { HasherState } from './Hasher'
 import { EditorConfig, LessonView } from 'types'
 import { useLessonContext, StatusBar } from 'ui'
-import { useMediaQuery } from 'hooks'
 import { useDynamicHeight } from 'hooks'
 import Terminal from './Terminal'
 
@@ -66,19 +65,12 @@ export default function Runner({
 
   const [loading, setLoading] = useState<boolean>(false)
   const [isRunning, setIsRunning] = useState<boolean>(false)
-  const [runtimeError, setRuntimeError] = useState<string | undefined>(
-    undefined
-  )
-
   const isActive = activeView !== LessonView.Info
-  const [validationError, setValidationError] = useState<string | undefined>(
-    undefined
-  )
   const [hasherState, setHasherState] = useState<HasherState>(
     HasherState.Waiting
   )
 
-  const terminal = (action: string, payload?: any) => {
+  const sendTerminal = (action: string, payload?: any) => {
     if (!terminalRef.current) {
       return
     }
@@ -92,7 +84,6 @@ export default function Runner({
   }
 
   useDynamicHeight([activeView])
-  const isSmallScreen = useMediaQuery({ width: 767 })
 
   const handleRun = async () => {
     try {
@@ -102,8 +93,8 @@ export default function Runner({
       setIsRunning(true)
       setHasherState(HasherState.Running)
 
-      terminal('clear')
-      terminal('print', 'Script output:')
+      sendTerminal('clear')
+      sendTerminal('print', 'Script output:')
 
       if (ws) {
         ws.close()
@@ -124,8 +115,7 @@ export default function Runner({
           case 'error': {
             const error = payload.message.trim()
             const lines = error.split('\n')
-            lines.forEach((line) => terminal('print', line))
-            setRuntimeError(lines.join('\n'))
+            lines.forEach((line) => sendTerminal('print', line))
             setHasherState(HasherState.Error)
             setIsRunning(false)
             setState(State.Error)
@@ -138,15 +128,14 @@ export default function Runner({
           }
           case 'output': {
             payload = payload.trim()
-            terminal('print', payload)
+            sendTerminal('print', payload)
 
             const [res, err] = await onValidate(payload)
             if (!res) {
-              setRuntimeError(err)
               setHasherState(HasherState.Error)
               setIsRunning(false)
               setState(State.Complete)
-              terminal('error', err)
+              sendTerminal('error', err)
               ws?.close()
               return
             }
@@ -154,8 +143,8 @@ export default function Runner({
             success = true
             setIsRunning(false)
             setHasherState(HasherState.Success)
-            terminal('success', `Found hash: ${payload}`)
-            terminal('success', `Five zeroes! That's it!`)
+            sendTerminal('success', `Found hash: ${payload}`)
+            sendTerminal('success', `Five zeroes! That's it!`)
             break
           }
           case 'end': {
@@ -187,7 +176,7 @@ export default function Runner({
       ws.close()
     }
 
-    terminal('clear')
+    sendTerminal('clear')
   }, [language])
 
   useEffect(() => {
@@ -200,7 +189,7 @@ export default function Runner({
         const { action, payload } = JSON.parse(e.data)
         switch (action) {
           case 'ready': {
-            terminal('clear')
+            sendTerminal('clear')
             break
           }
         }
@@ -272,65 +261,41 @@ export default function Runner({
           }
         )}
       >
-        {!isRunning && (
-          <button
-            disabled={loading}
-            className={clsx(
-              'flex h-full items-center justify-start gap-3 px-4 font-mono text-white',
-              {}
-            )}
-            onClick={handleRun}
-          >
-            <div
-              className={clsx(
-                'flex h-6 w-6 items-center justify-center rounded-sm',
-                {
-                  'bg-white': !loading,
-                  'bg-white/50': loading,
-                }
-              )}
-            >
-              <Icon icon="play" className="text-[#334454]" />
-            </div>
-
-            <span>{t('runner.run')}</span>
-          </button>
-        )}
-        {isRunning && (
-          <button
-            disabled={loading}
-            className={clsx(
-              'flex h-full items-center justify-start gap-3 px-4 font-mono text-white',
-              {}
-            )}
-            onClick={handleRun}
-          >
-            <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-white">
-              <Icon icon="pause" className="h-3 w-3 text-[#334454]" />
-            </div>
-
-            <span>{t('runner.pause')}</span>
-          </button>
-        )}
+        <button
+          disabled={loading || isRunning}
+          className={clsx(
+            'flex h-full items-center justify-start gap-3 px-4 font-mono text-white',
+            {}
+          )}
+          onClick={handleRun}
+        >
+          {!isRunning && (
+            <>
+              <div
+                className={clsx(
+                  'flex h-6 w-6 items-center justify-center rounded-sm',
+                  {
+                    'bg-white': !loading,
+                    'bg-white/50': loading,
+                  }
+                )}
+              >
+                <Icon icon="play" className="text-[#334454]" />
+              </div>
+              <span>{t('runner.run')}</span>
+            </>
+          )}
+          {isRunning && (
+            <>
+              <Loader className="h-6 w-6 text-white" />
+              <span>Running...</span>
+            </>
+          )}
+        </button>
       </div>
       {hasherState === HasherState.Success && (
         <StatusBar className="min-h-14 h-14 grow" success={success} />
       )}
     </>
   )
-}
-
-const print = (element, message, mode = 'a') => {
-  if (!element) {
-    return
-  }
-
-  const messageEl = convert.toHtml(message.replace(/ /gim, '&nbsp;'))
-  if (mode === 'a') {
-    element.innerHTML += `<div class="output">${messageEl}</div>`
-  } else {
-    element.innerHTML = `<div class="output">${messageEl}</div>`
-  }
-
-  element.scrollTop = element.scrollHeight
 }
