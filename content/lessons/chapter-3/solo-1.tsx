@@ -4,7 +4,7 @@ import { useTranslations } from 'hooks'
 import { MiningProfiles, Text } from 'ui'
 
 export const metadata = {
-  title: 'chapter_two.solo_one.title',
+  title: 'chapter_three.solo_one.title',
   image: '/assets/images/chapter-2-intro-1.jpg',
   key: 'CH3SOL1',
 }

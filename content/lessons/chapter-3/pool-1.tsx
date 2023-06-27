@@ -4,7 +4,7 @@ import { useTranslations } from 'hooks'
 import { MiningProfiles, Text } from 'ui'
 
 export const metadata = {
-  title: 'chapter_two.pool_one.title',
+  title: 'chapter_three.pool_one.title',
   image: '/assets/images/chapter-2-intro-1.jpg',
   key: 'CH3POL1',
 }
@@ -41,7 +41,7 @@ export default function POL1({ lang }) {
           {t('chapter_three.pool_one.heading')}
         </Text>
         <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-          {t('chapter_three.pool_one.paragrpah_one')}
+          {t('chapter_three.pool_one.paragraph_one')}
         </Text>
       </span>
     </div>
