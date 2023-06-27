@@ -197,7 +197,7 @@ export default function Mining1({ lang }) {
                 color: 'EDA081',
                 percentage: (blocks + 200) / 10,
                 side: 1,
-                zindex: '50',
+                zindex: '40',
               },
               {
                 username: 'friend',
@@ -205,7 +205,7 @@ export default function Mining1({ lang }) {
                 color: '5DBC59',
                 percentage: (blocks + 100) / 10,
                 side: 1,
-                zindex: '40',
+                zindex: '30',
               },
               {
                 username: 'enemy',
@@ -213,7 +213,7 @@ export default function Mining1({ lang }) {
                 color: '5DBC59',
                 percentage: blocks / 10,
                 side: 0,
-                zindex: '10',
+                zindex: '20',
               },
             ]}
           />
