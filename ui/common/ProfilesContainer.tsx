@@ -40,8 +40,6 @@ export default function ProfilesContainer({
     }
   }, [])
 
-  console.log(hasOverflow)
-
   return (
     <>
       <div className="flex flex-col items-center gap-[30px] self-stretch">
