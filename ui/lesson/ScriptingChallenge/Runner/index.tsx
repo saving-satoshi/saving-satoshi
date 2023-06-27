@@ -12,6 +12,7 @@ import { EditorConfig, LessonView } from 'types'
 import { useLessonContext, StatusBar } from 'ui'
 import { useMediaQuery } from 'hooks'
 import { useDynamicHeight } from 'hooks'
+import Terminal from './Terminal'
 
 enum State {
   Idle = 'idle',
@@ -102,6 +103,7 @@ export default function Runner({
       setHasherState(HasherState.Running)
 
       terminal('clear')
+      terminal('print', 'Script output:')
 
       if (ws) {
         ws.close()
@@ -144,12 +146,16 @@ export default function Runner({
               setHasherState(HasherState.Error)
               setIsRunning(false)
               setState(State.Complete)
+              terminal('error', err)
+              ws?.close()
               return
             }
 
             success = true
             setIsRunning(false)
             setHasherState(HasherState.Success)
+            terminal('success', `Found hash: ${payload}`)
+            terminal('success', `Five zeroes! That's it!`)
             break
           }
           case 'end': {
@@ -190,13 +196,15 @@ export default function Runner({
 
   useEffect(() => {
     const handleMessage = (e) => {
-      const { action, payload } = JSON.parse(e.data)
-      switch (action) {
-        case 'ready': {
-          terminal('clear')
-          break
+      try {
+        const { action, payload } = JSON.parse(e.data)
+        switch (action) {
+          case 'ready': {
+            terminal('clear')
+            break
+          }
         }
-      }
+      } catch (ex) {}
     }
     if (terminalRef.current) {
       window.addEventListener('message', handleMessage)
@@ -240,53 +248,17 @@ export default function Runner({
               </div>
             </div>
           )}
-          {(state === State.Running ||
-            state === State.Error ||
-            state === State.Complete) && (
-            <iframe
-              // @ts-ignore
-              ref={terminalRef}
-              className="h-full w-full border-t border-white border-opacity-30 bg-black bg-opacity-20"
-              src={
-                'data:text/html,' +
-                encodeURIComponent(
-                  `<style>
-                  body {
-                    padding: 16px;
-                    margin:0;
-                  }
-                  .output {
-                    font-family: monospace;
-                    color: white;
-                    font-size: 12px;
-                  }
-                </style>
-                <div class="output"></div>
-                <script>
-                  const output = document.querySelector('.output')
-
-                  window.addEventListener('message', e => {
-                    const {action,payload} =JSON.parse(e.data)
-                    switch(action) {
-                      case 'print': {
-                        output.innerHTML += "<div>"+payload+"</div>"
-                        output.parentElement.scrollTop = output.scrollHeight
-                        break
-                      }
-                      case 'clear': {
-                        output.innerHTML = ''
-                        break
-                      }
-                    }
-                  })
-
-                  const send = (action,payload) => window.parent.postMessage(JSON.stringify({action,payload}), '*')
-                  send('ready')
-                </script>`
-                )
-              }
-            />
-          )}
+          <Terminal
+            ref={terminalRef}
+            className={clsx({
+              block:
+                [State.Running, State.Error, State.Complete].indexOf(state) !==
+                -1,
+              hidden:
+                [State.Running, State.Error, State.Complete].indexOf(state) ===
+                -1,
+            })}
+          />
         </>
       )}
 

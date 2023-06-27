@@ -1,26 +1,77 @@
 import React from 'react'
 import clsx from 'clsx'
+import Convert from 'ansi-to-html'
 
-function Terminal(
-  {
-    className,
-    error,
-    defaultMessage,
-  }: { className?: string; error?: string; defaultMessage: string },
-  ref
-) {
+function Terminal({ className }: { className?: string }, ref) {
   return (
-    <div
+    <iframe
+      // @ts-ignore
+      ref={ref}
       className={clsx(
-        'overflow-auto border-t border-white border-opacity-30 bg-black/15 p-4',
-        className
+        className,
+        'h-full w-full border-t border-white border-opacity-30 bg-black bg-opacity-20'
       )}
-    >
-      {/* {error && <div className="">{error}</div>} */}
-      <div className="terminal" ref={ref}>
-        <div className="output">{defaultMessage}</div>
-      </div>
-    </div>
+      src={
+        'data:text/html,' +
+        encodeURIComponent(
+          `<style>
+                  body {
+                    padding: 16px;
+                    margin:0;
+                  }
+                  .output {
+                    font-family: monospace;
+                    color: white;
+                    font-size: 12px;
+                  }
+
+                  .output .error {
+                    color: #C40008;
+                  }
+
+                  .output .success {
+                    color: #00B400;
+                  }
+
+                  .output .log {
+                    color:white;
+                  }
+                </style>
+                <div class="output"></div>
+                <script>
+                  const output = document.querySelector('.output')
+
+                  window.addEventListener('message', e => {
+                    const {action,payload} =JSON.parse(e.data)
+                    switch(action) {
+                      case 'print': {
+                        output.innerHTML += "<div class='log'>"+payload+"</div>"
+                        output.parentElement.scrollTop = output.scrollHeight
+                        break
+                      }
+                      case 'error': {
+                        output.innerHTML += "<div class='error'>Error: "+payload+"</div>"
+                        output.parentElement.scrollTop = output.scrollHeight
+                        break
+                      }
+                      case 'success': {
+                        output.innerHTML += "<div class='success'>"+payload+"</div>"
+                        output.parentElement.scrollTop = output.scrollHeight
+                        break
+                      }
+                      case 'clear': {
+                        output.innerHTML = ''
+                        break
+                      }
+                    }
+                  })
+
+                  const send = (action,payload) => window.parent.postMessage(JSON.stringify({action,payload}), '*')
+                  send('ready')
+                </script>`
+        )
+      }
+    />
   )
 }
 
