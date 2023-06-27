@@ -11,6 +11,9 @@ import {
   BlockCounter,
   NonceCounter,
   HashDisplayer,
+  TitleCard,
+  HashFrequency,
+  StartButton,
 } from 'ui'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
@@ -38,6 +41,7 @@ export default function Mining1({ lang }) {
   const [ramdomNonce, setRandomNonce] = useState(false)
   const [finalMining, setFinalMining] = useState(false)
   const [showText, setShowText] = useState(true)
+  const [hashPower, setHashPower] = useState(0)
 
   const saveAndProceed = useSaveAndProceed()
 
@@ -238,14 +242,10 @@ export default function Mining1({ lang }) {
           /> */}
           <Card className="flex" highlight={nonceHighlight}>
             <div className="flex-1">
-              <div
-                className={clsx('font-nunito text-[15px] font-bold', {
-                  'text-black/25': nonce === 0,
-                  'fade-in text-[#EDA081]': nonce !== 0,
-                })}
-              >
-                {t('chapter_two.mining_one.progress_bar_one')}
-              </div>
+              <TitleCard
+                title={t('chapter_two.mining_one.progress_bar_one')}
+                disabled={nonce === 0}
+              />
               <NonceCounter
                 content={nonce}
                 disabled={nonce === 0}
@@ -261,13 +261,36 @@ export default function Mining1({ lang }) {
               blockFound={blocks}
             ></HashDisplayer>
           </Card>
-          <MiningStatisticHash
+          {/* <MiningStatisticHash
             title={t('chapter_two.mining_one.progress_bar_two')}
             highlight={hashPowerHighlight}
             disabled={nonce === 0}
             onButtonClick={turnOnButton}
             step={step}
-          />
+          /> */}
+          <Card className="flex-row" highlight={hashPowerHighlight}>
+            <div className="flex">
+              <div className="flex-1">
+                <TitleCard
+                  title={t('chapter_two.mining_one.progress_bar_two')}
+                  disabled={nonce === 0}
+                />
+                <HashFrequency
+                  disabled={nonce === 0}
+                  step={step}
+                  hashPower={hashPower}
+                />
+              </div>
+              <StartButton
+                hashPower={hashPower}
+                setHashPower={setHashPower}
+                onButtonClick={turnOnButton}
+                step={step}
+              ></StartButton>
+            </div>
+            <ProgressBar progress={hashPower / 440} variant={'bars'} />{' '}
+            {/* progress = hashPower * 100/maxHashPower */}
+          </Card>
           {/* <MiningStatistic
             transaction={transactionsConfirmed}
             bitcoin={bitcoinMined}
