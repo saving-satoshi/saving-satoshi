@@ -33,7 +33,7 @@ export default function POL1({ lang }) {
           </span>
         </div>
         {/*Contribution Bar added below*/}
-        <div className="h-[30px] w-full bg-red">~</div>
+        <div className="h-[30px] w-full bg-red">Contribution Bar</div>
       </div>
       <MiningProfiles profiles={profiles} />
       <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">

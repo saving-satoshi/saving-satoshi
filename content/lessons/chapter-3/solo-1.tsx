@@ -34,7 +34,7 @@ export default function SOL1({ lang }) {
             </span>
           </div>
           {/*Contribution Bar added below*/}
-          <div className="h-[30px] w-full bg-red">~</div>
+          <div className="h-[30px] w-full bg-red">Contribution Bar</div>
         </div>
       </MiningProfiles>
       <span className="flex flex-col items-start gap-[10px] md:w-[400px] md:min-w-[400px]">
