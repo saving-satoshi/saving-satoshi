@@ -55,7 +55,7 @@ export default function Address() {
                 )}
               </p>
             )}
-            <p className="px-0.5 text-2xl leading-none text-white">
+            <p className="line-clamp-1 overflow-hidden text-ellipsis px-0.5 text-2xl leading-none text-white">
               {t(
                 isChapterCompletePage
                   ? 'navbar.chapter_complete'
