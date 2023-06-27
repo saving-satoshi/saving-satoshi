@@ -3,7 +3,7 @@
 import clsx from 'clsx'
 import { ReactNode, useRef, useEffect, useState } from 'react'
 
-export default function MiningProfiles({
+export default function ProfilesContainer({
   children,
   className,
   profiles,

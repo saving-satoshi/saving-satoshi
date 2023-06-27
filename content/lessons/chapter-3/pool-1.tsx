@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { MiningProfiles, Text } from 'ui'
+import { ProfilesContainer, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_three.pool_one.title',
@@ -35,7 +35,7 @@ export default function POL1({ lang }) {
         {/*Contribution Bar added below*/}
         <div className="h-[30px] w-full bg-red">Contribution Bar</div>
       </div>
-      <MiningProfiles profiles={profiles} />
+      <ProfilesContainer profiles={profiles} />
       <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
         <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
           {t('chapter_three.pool_one.heading')}
