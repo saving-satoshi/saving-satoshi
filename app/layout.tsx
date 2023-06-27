@@ -47,6 +47,21 @@ export default function RootLayout({
           dangerouslySetInnerHTML={schema()}
           key="product-jsonld"
         />
+        <title>Saving Satoshi</title>
+        <meta property="og:url" content="https://savingsatoshi.com/" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Code your way through the mysteries of Bitcoin - Saving Satoshi"
+        />
+        <meta
+          property="og:description"
+          content="A fun learning resource for developers to learn about how to build on bitcoin."
+        />
+        <meta
+          property="og:image"
+          content="https://imagedelivery.net/wyrwp3c-j0gDDUWgnE7lig/6818cd1b-ea0d-49a4-ea14-d34c1bbae100/public"
+        />
       </head>
       <body className="font-cbrush">
         <Fonts />
