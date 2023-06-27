@@ -8,6 +8,7 @@ interface ContributionInfo {
   color: string
   percentage: number
   side: number
+  zindex: string
 }
 
 interface ContributionInfoProps {
@@ -23,15 +24,18 @@ export default function ContributionBar({
       {contributionInfo.map((info, i) => {
         return (
           <>
-            <div className="absolute h-full w-full overflow-hidden rounded-[5px]">
+            <div
+              className={`absolute pl-${info.zindex} z-${info.zindex} h-full w-full overflow-hidden rounded-[5px]`}
+            >
               <div
-                className={`absolute inset-0 flex transform-gpu bg-[#${info.color}] transition-transform`}
+                className={`absolute z-${info.zindex} inset-0 flex transform-gpu transition-transform`}
                 style={{
                   transform: `translate3d(${
                     info.side === 0
                       ? 100 - info.percentage
                       : -(100 - info.percentage)
                   }%,0,0)`,
+                  backgroundColor: `#${info.color}`,
                 }}
               />
             </div>
