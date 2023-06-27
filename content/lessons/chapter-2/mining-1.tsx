@@ -3,9 +3,6 @@
 import { useTranslations, useSaveAndProceed } from 'hooks'
 import {
   Title,
-  MiningStatistic,
-  MiningStatisticNonce,
-  MiningStatisticHash,
   ProgressBar,
   Card,
   BlockCounter,
@@ -196,25 +193,6 @@ export default function Mining1({ lang }) {
     hydrated && (
       <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
         <div className="fade-in grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:mx-[30px] md:my-0 md:w-[405px] md:p-[25px]">
-          {/* <div
-            className={clsx(
-              'relative mb-2.5 font-nunito text-lg font-semibold',
-              {
-                'fade-in text-white': blocks !== 0,
-                'text-black/50': blocks === 0,
-              }
-            )}
-          >
-            <span className={clsx({ 'fade-in text-[#EDA081]': blocks !== 0 })}>
-              {t('chapter_two.mining_one.progress_bar_title')}
-            </span>{' '}
-            <BlockCounter
-              blocks={blocks}
-              total={1000}
-              className="ml-auto"
-            ></BlockCounter>
-          </div>
-          <ProgressBar progress={blocks / 10} /> */}
           <Card className="font-nunito text-lg font-semibold" transparent>
             <div className="mb-2.5 flex">
               <span
@@ -229,17 +207,6 @@ export default function Mining1({ lang }) {
             </div>
             <ProgressBar progress={blocks / 10} />
           </Card>
-          {/* <MiningStatisticNonce
-            title={t('chapter_two.mining_one.progress_bar_one')}
-            content={nonce}
-            highlight={nonceHighlight}
-            disabled={nonce === 0}
-            step={step}
-            finalHash={
-              '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
-            }
-            blockFound={blocks}
-          /> */}
           <Card className="flex" highlight={nonceHighlight}>
             <div className="flex-1">
               <TitleCard
@@ -261,13 +228,6 @@ export default function Mining1({ lang }) {
               blockFound={blocks}
             ></HashDisplayer>
           </Card>
-          {/* <MiningStatisticHash
-            title={t('chapter_two.mining_one.progress_bar_two')}
-            highlight={hashPowerHighlight}
-            disabled={nonce === 0}
-            onButtonClick={turnOnButton}
-            step={step}
-          /> */}
           <Card className="flex-row" highlight={hashPowerHighlight}>
             <div className="flex">
               <div className="flex-1">
@@ -291,14 +251,6 @@ export default function Mining1({ lang }) {
             <ProgressBar progress={hashPower / 440} variant={'bars'} />{' '}
             {/* progress = hashPower * 100/maxHashPower */}
           </Card>
-          {/* <MiningStatistic
-            transaction={transactionsConfirmed}
-            bitcoin={bitcoinMined}
-            transactionHighlight={transactionsConfirmedHighlight}
-            bitcoinHighlight={bitcoinMinedHighlight}
-            bitcoinTitle={t('chapter_two.mining_one.progress_bar_four')}
-            transactionTitle={t('chapter_two.mining_one.progress_bar_three')}
-          /> */}
           <div className="flex items-center justify-between gap-x-2.5 text-center font-space-mono">
             <Card className="w-max px-3.5 py-2.5">
               <div
