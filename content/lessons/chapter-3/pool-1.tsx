@@ -38,11 +38,10 @@ export default function POL1({ lang }) {
       <MiningProfiles profiles={profiles} />
       <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
         <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
-          Here we go
+          {t('chapter_three.pool_one.heading')}
         </Text>
         <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-          When you combine your hash rate with the other pool operator’s, can
-          you stand up against Bitrey?
+          {t('chapter_three.pool_one.paragrpah_one')}
         </Text>
       </span>
     </div>

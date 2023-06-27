@@ -4,7 +4,7 @@ import { useTranslations } from 'hooks'
 import { MiningProfiles, Text } from 'ui'
 
 export const metadata = {
-  title: 'chapter_two.intro_one.title',
+  title: 'chapter_two.solo_one.title',
   image: '/assets/images/chapter-2-intro-1.jpg',
   key: 'CH3SOL1',
 }
@@ -39,12 +39,10 @@ export default function SOL1({ lang }) {
       </MiningProfiles>
       <span className="flex flex-col items-start gap-[10px] md:w-[400px] md:min-w-[400px]">
         <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
-          Let's give it a try
+          {t('chapter_three.solo_one.heading')}
         </Text>
         <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
-          While you’re waiting for the pool operators, you decide to fend off
-          BitRey by yourself. Here’s how your hash rate stacks up. How do you
-          think this will go?
+          {t('chapter_three.solo_one.paragraph_one')}
         </Text>
       </span>
     </div>

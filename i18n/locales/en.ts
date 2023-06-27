@@ -413,10 +413,17 @@ const translations = {
         'HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”',
     },
 
-    you_vs_bit_one: {
+    solo_one: {
       title: 'You vs. Bitrey',
+      heading: 'Let’s give it a try',
       paragraph_one:
-        'This is a temporary page to test correct working of Continue Button. To Be removed',
+        'While you’re waiting for the pool operators, you decide to fend off BitRey by yourself. Here’s how your hash rate stacks up. How do you think this will go?',
+    },
+    pool_one: {
+      title: 'Coop vs. BitRey',
+      heading: 'Here we go',
+      paragraph_one:
+        'When you combine your hash rate with the other pool operator’s, can you stand up against Bitrey?',
     },
   },
 
