@@ -40,7 +40,7 @@ export default function ContributionBar({
               />
             </div>
             <div
-              className="absolute inset-0 flex transform-gpu items-center justify-center transition-transform"
+              className={`z-${info.zindex} absolute inset-0 flex transform-gpu items-center justify-center transition-transform`}
               style={{
                 transform: `translate3d(${
                   info.side === 0
