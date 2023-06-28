@@ -193,7 +193,11 @@ export default function Mining1({ lang }) {
     hydrated && (
       <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
         <div className="fade-in grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:mx-[30px] md:my-0 md:w-[405px] md:p-[25px]">
-          <Card className="font-nunito text-lg font-semibold" transparent>
+          <Card
+            className="font-nunito text-lg font-semibold"
+            transparent
+            firstItem
+          >
             <div className="mb-2.5 flex">
               <span
                 className={clsx({
@@ -252,7 +256,10 @@ export default function Mining1({ lang }) {
             {/* progress = hashPower * 100/maxHashPower */}
           </Card>
           <div className="flex items-center justify-between gap-x-2.5 text-center font-space-mono">
-            <Card className="w-max px-3.5 py-2.5">
+            <Card
+              className="w-max px-3.5 py-2.5"
+              highlight={transactionsConfirmedHighlight}
+            >
               <div
                 className={clsx('font-space-mono text-2xl', {
                   'text-black/25': transactionsConfirmed === 0,
@@ -267,9 +274,12 @@ export default function Mining1({ lang }) {
                 size={'small'}
               />
             </Card>
-            <Card className="w-max px-10 py-2.5">
+            <Card
+              className="w-max px-10 py-2.5"
+              highlight={bitcoinMinedHighlight}
+            >
               <div
-                className={clsx('text-2xl font-normal', {
+                className={clsx('font-space-mono text-2xl', {
                   'text-black/25': bitcoinMined === 0,
                   'fade-in text-white': bitcoinMined !== 0,
                 })}

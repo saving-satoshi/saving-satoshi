@@ -5,20 +5,24 @@ export default function Card({
   className,
   children,
   highlight,
+  firstItem = false,
 }: {
   transparent?: boolean
   className?: string
   children?: any
   highlight?: boolean
+  firstItem?: boolean
 }) {
   return (
     <div className="relative">
       <div
         className={clsx(
           className,
-          'mt-5 w-full items-center justify-between rounded-[5px] border-2 border-transparent font-nunito',
+          'w-full items-center justify-between rounded-[5px] border-2 border-transparent font-nunito',
           {
             'bg-black/15 p-4': !transparent,
+            'mt-0': firstItem,
+            'mt-5': !firstItem,
           }
         )}
       >
