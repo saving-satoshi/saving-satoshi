@@ -21,7 +21,7 @@ export default function ContributionBar({
   let value = 0
   return (
     <div className="relative h-[30px] w-full rounded-[5px] bg-black/20">
-      <div className="absolute z-50 flex h-full w-1/2 border-r-2 border-dashed border-white/50"></div>
+      <div className="absolute z-50 flex h-full w-1/2 border-r-2 border-dotted border-white/50"></div>
       {contributionInfo.map((info, i) => {
         value += info.percentage
         return (
