@@ -119,7 +119,7 @@ export default function Mining1({ lang }) {
     setShowText(false)
     setRandomNonce(false)
     setFinalMining(false)
-    await sleep(300)
+    await sleep(325)
     setStep(4)
     setShowText(true)
     setNonceHighlight(true)
@@ -128,7 +128,7 @@ export default function Mining1({ lang }) {
 
   const transactionStep = async () => {
     setShowText(false)
-    await sleep(300)
+    await sleep(325)
     setStep(5)
     setShowText(true)
     setNonceHighlight(false)
@@ -138,7 +138,7 @@ export default function Mining1({ lang }) {
 
   const bitcoinStep = async () => {
     setShowText(false)
-    await sleep(300)
+    await sleep(325)
     setStep(6)
     setShowText(true)
     setTransactionsConfirmedHighlight(false)
@@ -147,7 +147,7 @@ export default function Mining1({ lang }) {
 
   const finalStep = async () => {
     setShowText(false)
-    await sleep(300)
+    await sleep(325)
     setStep(7)
     setShowText(true)
     setBitcoinMinedHighlight(false)
@@ -156,14 +156,14 @@ export default function Mining1({ lang }) {
   const turnOnButton = async () => {
     if (step === 0) {
       setShowText(false)
-      await sleep(300)
+      await sleep(325)
       setStep(1)
       setShowText(true)
       const time = 15 * 1000
       displayRandomNumbers(1760, time)
       setTimeout(async () => {
         setShowText(false)
-        await sleep(300)
+        await sleep(325)
         setStep(2)
         setShowText(true)
         setBlocks(1)
@@ -174,7 +174,7 @@ export default function Mining1({ lang }) {
 
     if (step === 2) {
       setShowText(false)
-      await sleep(300)
+      await sleep(325)
       setStep(3)
       setShowText(true)
       setRandomNonce(true)
@@ -193,7 +193,7 @@ export default function Mining1({ lang }) {
   return (
     hydrated && (
       <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
-        <div className="fade-in grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:my-0 md:mx-[30px] md:w-[405px] md:p-[25px]">
+        <div className="fade-in grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:mx-[30px] md:my-0 md:w-[405px] md:p-[25px]">
           <div
             className={clsx(
               'relative mb-2.5 font-nunito text-lg font-semibold',
@@ -239,7 +239,7 @@ export default function Mining1({ lang }) {
           />
         </div>
         <div
-          className={`mb-5 flex w-full items-center px-[15px] transition-opacity md:mx-0 md:mt-0 md:mb-0 md:w-1/2 md:max-w-[405px] md:pr-0 md:pl-[15px] ${
+          className={`mb-5 flex w-full items-center px-[15px] transition-opacity md:mx-0 md:mb-0 md:mt-0 md:w-1/2 md:max-w-[405px] md:pl-[15px] md:pr-0 ${
             showText ? 'fade-in' : 'fade-out'
           }`}
         >
