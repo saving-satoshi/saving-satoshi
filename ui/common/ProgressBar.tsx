@@ -41,9 +41,7 @@ export default function ProgressBar({
             }
           )}
           style={{
-            transform: `translate3d(-${
-              progress <= 0.5 && progress > 0 ? 100 - 0.5 : 100 - progress
-            }%,0,0)`,
+            transform: `translate3d(-${100 - progress}%,0,0)`,
           }}
         />
       </div>
