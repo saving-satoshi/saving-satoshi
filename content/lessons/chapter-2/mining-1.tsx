@@ -257,8 +257,9 @@ export default function Mining1({ lang }) {
           </Card>
           <div className="flex items-center justify-between gap-x-2.5 text-center font-space-mono">
             <Card
-              className="w-max px-3.5 py-2.5"
+              className="w-full py-2.5"
               highlight={transactionsConfirmedHighlight}
+              dual
             >
               <div
                 className={clsx('font-space-mono text-2xl', {
@@ -275,8 +276,9 @@ export default function Mining1({ lang }) {
               />
             </Card>
             <Card
-              className="w-max px-10 py-2.5"
+              className="w-full py-2.5"
               highlight={bitcoinMinedHighlight}
+              dual
             >
               <div
                 className={clsx('font-space-mono text-2xl', {
