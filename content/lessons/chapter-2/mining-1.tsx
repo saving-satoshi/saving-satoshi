@@ -3,10 +3,14 @@
 import { useTranslations, useSaveAndProceed } from 'hooks'
 import {
   Title,
-  MiningStatistic,
-  MiningStatisticNonce,
-  MiningStatisticHash,
   ProgressBar,
+  Card,
+  BlockCounter,
+  NonceCounter,
+  HashDisplayer,
+  TitleCard,
+  HashFrequency,
+  StartButton,
 } from 'ui'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
@@ -34,6 +38,7 @@ export default function Mining1({ lang }) {
   const [ramdomNonce, setRandomNonce] = useState(false)
   const [finalMining, setFinalMining] = useState(false)
   const [showText, setShowText] = useState(true)
+  const [hashPower, setHashPower] = useState(0)
 
   const saveAndProceed = useSaveAndProceed()
 
@@ -194,49 +199,108 @@ export default function Mining1({ lang }) {
     hydrated && (
       <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
         <div className="fade-in grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:mx-[30px] md:my-0 md:w-[405px] md:p-[25px]">
-          <div
-            className={clsx(
-              'relative mb-2.5 font-nunito text-lg font-semibold',
-              {
-                'fade-in text-white': blocks !== 0,
-                'text-black/50': blocks === 0,
-              }
-            )}
+          <Card
+            className="font-nunito text-lg font-semibold"
+            transparent
+            firstItem
           >
-            <span className={clsx({ 'fade-in text-[#EDA081]': blocks !== 0 })}>
-              {t('chapter_two.mining_one.progress_bar_title')}
-            </span>{' '}
-            <span className="absolute right-0">
-              {Intl.NumberFormat().format(blocks)} of 100
-            </span>
+            <div className="mb-2.5 flex">
+              <span
+                className={clsx({
+                  'fade-in text-black/50': blocks === 0,
+                  'fade-in text-[#EDA081]': blocks !== 0,
+                })}
+              >
+                {t('chapter_two.mining_one.progress_bar_title')}
+              </span>
+              <BlockCounter blocks={blocks} total={100} className="ml-auto" />
+            </div>
+            <ProgressBar progress={blocks} />
+          </Card>
+          <Card className="flex" highlight={nonceHighlight}>
+            <div className="flex-1">
+              <TitleCard
+                title={t('chapter_two.mining_one.progress_bar_one')}
+                disabled={nonce === 0}
+              />
+              <NonceCounter
+                content={nonce}
+                disabled={nonce === 0}
+              ></NonceCounter>
+            </div>
+            <HashDisplayer
+              content={nonce}
+              disabled={nonce === 0}
+              step={step}
+              finalHash={
+                '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
+              }
+              blockFound={blocks}
+            ></HashDisplayer>
+          </Card>
+          <Card className="flex-row" highlight={hashPowerHighlight}>
+            <div className="flex">
+              <div className="flex-1">
+                <TitleCard
+                  title={t('chapter_two.mining_one.progress_bar_two')}
+                  disabled={nonce === 0}
+                />
+                <HashFrequency
+                  disabled={nonce === 0}
+                  step={step}
+                  hashPower={hashPower}
+                />
+              </div>
+              <StartButton
+                hashPower={hashPower}
+                setHashPower={setHashPower}
+                onButtonClick={turnOnButton}
+                step={step}
+              ></StartButton>
+            </div>
+            <ProgressBar progress={hashPower / 440} variant={'bars'} />{' '}
+            {/* progress = hashPower * 100/maxHashPower */}
+          </Card>
+          <div className="flex items-center justify-between gap-x-2.5 text-center font-space-mono">
+            <Card
+              className="w-full py-2.5"
+              highlight={transactionsConfirmedHighlight}
+              dual
+            >
+              <div
+                className={clsx('font-space-mono text-2xl', {
+                  'text-black/25': transactionsConfirmed === 0,
+                  'fade-in text-white': transactionsConfirmed !== 0,
+                })}
+              >
+                {Intl.NumberFormat().format(transactionsConfirmed)}
+              </div>
+              <TitleCard
+                title={t('chapter_two.mining_one.progress_bar_three')}
+                disabled={transactionsConfirmed === 0}
+                size={'small'}
+              />
+            </Card>
+            <Card
+              className="w-full py-2.5"
+              highlight={bitcoinMinedHighlight}
+              dual
+            >
+              <div
+                className={clsx('font-space-mono text-2xl', {
+                  'text-black/25': bitcoinMined === 0,
+                  'fade-in text-white': bitcoinMined !== 0,
+                })}
+              >
+                {bitcoinMined.toFixed(4)}
+              </div>
+              <TitleCard
+                title={t('chapter_two.mining_one.progress_bar_four')}
+                disabled={bitcoinMined === 0}
+                size={'small'}
+              />
+            </Card>
           </div>
-          <ProgressBar progress={blocks} />
-          <MiningStatisticNonce
-            title={t('chapter_two.mining_one.progress_bar_one')}
-            content={nonce}
-            highlight={nonceHighlight}
-            disabled={nonce === 0}
-            step={step}
-            finalHash={
-              '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
-            }
-            blockFound={blocks}
-          />
-          <MiningStatisticHash
-            title={t('chapter_two.mining_one.progress_bar_two')}
-            highlight={hashPowerHighlight}
-            disabled={nonce === 0}
-            onButtonClick={turnOnButton}
-            step={step}
-          />
-          <MiningStatistic
-            transaction={transactionsConfirmed}
-            bitcoin={bitcoinMined}
-            transactionHighlight={transactionsConfirmedHighlight}
-            bitcoinHighlight={bitcoinMinedHighlight}
-            bitcoinTitle={t('chapter_two.mining_one.progress_bar_four')}
-            transactionTitle={t('chapter_two.mining_one.progress_bar_three')}
-          />
         </div>
         <div
           className={`mb-5 flex w-full items-center px-[15px] transition-opacity md:mx-0 md:mb-0 md:mt-0 md:w-1/2 md:max-w-[405px] md:pl-[15px] md:pr-0 ${
