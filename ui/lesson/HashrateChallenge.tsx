@@ -221,6 +221,11 @@ export default function HashrateChallenge({
           </div>
         </ProfilesContainer>
         {children}
+        {step === 2 && (
+          <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+            {t('shared.next')}
+          </Button>
+        )}
       </>
     )
   )
