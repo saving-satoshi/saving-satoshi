@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
-import { ReactNode, useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 export default function ProfilesContainer({
   children,
@@ -9,9 +9,9 @@ export default function ProfilesContainer({
   profiles,
   verticalProfiles,
 }: {
-  children?: ReactNode
+  children?: any
   className?: string
-  profiles: ReactNode
+  profiles: any
   verticalProfiles?: boolean
 }) {
   const elementRef = useRef<HTMLDivElement>(null)

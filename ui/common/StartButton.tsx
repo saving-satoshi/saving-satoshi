@@ -5,11 +5,17 @@ import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 
 export default function Card({
   hashPower,
+  startText,
+  tenX,
+  className,
   setHashPower,
   onButtonClick,
   step,
 }: {
   hashPower: number
+  startText: string
+  className?: string
+  tenX?: boolean
   setHashPower: Dispatch<SetStateAction<number>>
   onButtonClick: any
   step: number
@@ -91,20 +97,27 @@ export default function Card({
   }
 
   return (
-    <div className="order-last flex items-center justify-center text-[15px] font-bold">
-      <div
-        className={clsx(
-          'order-last mr-2.5 flex h-[29px] w-[44px] cursor-pointer items-center justify-center  rounded-[3px] border-2 ',
-          {
-            'border-black/25 text-black/25': powerUp === false,
-            ' animate-duration-500 animate-pulse border-[#FBEBC6] bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
-              powerUp === true,
-          }
-        )}
-        onClick={handleClick}
-      >
-        10x
-      </div>
+    <div
+      className={clsx(
+        'order-last flex items-center justify-center text-[15px] font-bold',
+        className
+      )}
+    >
+      {tenX && (
+        <div
+          className={clsx(
+            'order-last mr-2.5 flex h-[29px] w-[44px] cursor-pointer items-center justify-center  rounded-[3px] border-2 ',
+            {
+              'border-black/25 text-black/25': powerUp === false,
+              ' animate-duration-500 animate-pulse border-[#FBEBC6] bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
+                powerUp === true,
+            }
+          )}
+          onClick={handleClick}
+        >
+          10x
+        </div>
+      )}
       <div
         className={clsx(
           'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
@@ -118,7 +131,7 @@ export default function Card({
         )}
         onClick={handleClick}
       >
-        {hasherState ? 'Running' : 'Turn on'}
+        {hasherState ? 'Running' : startText}
       </div>
     </div>
   )

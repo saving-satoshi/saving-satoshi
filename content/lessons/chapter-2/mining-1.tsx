@@ -246,6 +246,8 @@ export default function Mining1({ lang }) {
                 />
               </div>
               <StartButton
+                startText="turn on"
+                tenX
                 hashPower={hashPower}
                 setHashPower={setHashPower}
                 onButtonClick={turnOnButton}
