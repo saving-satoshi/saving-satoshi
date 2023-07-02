@@ -8,7 +8,6 @@ interface ContributionInfo {
   color: string
   percentage: number
   side: number
-  zindex: string
 }
 
 interface ContributionInfoProps {
@@ -34,7 +33,7 @@ export default function ContributionBar({
                     info.side === 0 ? 100 - info.percentage : -(100 - value)
                   }%,0,0)`,
                   backgroundColor: `#${info.color}`,
-                  zIndex: info.zindex,
+                  zIndex: (contributionInfo.length - i) * 10,
                 }}
               />
             </div>
