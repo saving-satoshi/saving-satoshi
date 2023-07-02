@@ -5,6 +5,7 @@
 :root {
   --back: 50, 71, 96; /* Theme background color (#324760) */
   --green: 40, 177, 35; /* Success color (#28B123) */
+  --orange: 239, 150, 11;
   --terminal-output: #3dcfef;
   --terminal-bg: rgba(61, 207, 239, 0.25);
   --incorrect-answer: #ef960b;
