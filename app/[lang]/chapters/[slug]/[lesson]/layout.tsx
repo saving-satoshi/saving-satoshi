@@ -2,7 +2,7 @@
 
 import Navbar from 'components/Navbar'
 import { lessons, chapters } from 'content'
-import Chip from 'components/Chip'
+import ProfileChip from 'components/ProfileChip'
 
 export default function Layout({ children, params }) {
   const { slug, lesson: lessonId } = params
@@ -15,10 +15,10 @@ export default function Layout({ children, params }) {
     <div className={`${theme} flex flex-col`}>
       <div className="fix-grow-issue flex min-h-screen flex-col overflow-hidden">
         <Navbar params={params} />
-        <Chip
-          position={1}
-          coins={1.49}
-          img={'/assets/images/chapter-1-holocat.jpg'}
+        <ProfileChip
+          ranking={1}
+          balance={1.49}
+          image={'/assets/images/chapter-1-holocat.jpg'}
         />
         {children}
       </div>
