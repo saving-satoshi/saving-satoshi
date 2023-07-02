@@ -26,9 +26,7 @@ export default function ContributionBar({
         value += info.percentage
         return (
           <>
-            <div
-              className={`absolute h-full w-full overflow-hidden rounded-[5px] `}
-            >
+            <div className="absolute h-full w-full overflow-hidden rounded-[5px]">
               <div
                 className={`absolute inset-0 flex transform-gpu border-r-2 border-black transition-transform`}
                 style={{
