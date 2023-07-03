@@ -33,6 +33,15 @@ module.exports = {
           }
           return `rgb(var(--green))`
         },
+        orange: ({ opacityVariable, opacityValue }) => {
+          if (opacityValue !== undefined) {
+            return `rgba(var(--orange), ${opacityValue})`
+          }
+          if (opacityVariable !== undefined) {
+            return `rgba(var(--orange), var(${opacityVariable}, 1))`
+          }
+          return `rgb(var(--orange))`
+        },
         red: '#BC0E13',
       },
       opacity: {

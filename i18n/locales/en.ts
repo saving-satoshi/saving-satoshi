@@ -425,6 +425,15 @@ const translations = {
       paragraph_one:
         'When you combine your hash rate with the other pool operator’s, can you stand up against Bitrey?',
     },
+
+    outro_one: {
+      title: 'Outro',
+      heading: 'Take that, Vanderpoole! ',
+      paragraph_one:
+        'Great work! You and your collaborators were able to fend off Vanderpoole’s 51% attack by pooling your resources together. Empty blocks are no longer being submitted and it looks like he’s given up.',
+      paragraph_two:
+        'It’s time to reap your rewards! Go to the next chapter to withdraw your bitcoin.',
+    },
   },
 
   chapter_four: {
