@@ -36,7 +36,7 @@ export default function ProfileChip({
   }, [isRanking])
 
   return (
-    <Chip image={image} className={chipClass} onClick={handleClick}>
+    <Chip className={chipClass} onClick={handleClick}>
       <div className="relative h-6 w-6">
         <Image
           src={image}
