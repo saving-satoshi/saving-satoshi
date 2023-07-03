@@ -421,9 +421,21 @@ const translations = {
     },
     pool_one: {
       title: 'Coop vs. BitRey',
-      heading: 'Here we go',
-      paragraph_one:
+      step_zero_heading: 'Here we go',
+      step_zero_paragraph_one:
         'When you combine your hash rate with the other pool operator’s, can you stand up against Bitrey?',
+      step_one_heading: 'Another defeat!',
+      step_one_paragraph_one:
+        'Something is wrong. Only one of your miners found blocks, Why do you think that might be?',
+    },
+
+    outro_one: {
+      title: 'Outro',
+      heading: 'Take that, Vanderpoole! ',
+      paragraph_one:
+        'Great work! You and your collaborators were able to fend off Vanderpoole’s 51% attack by pooling your resources together. Empty blocks are no longer being submitted and it looks like he’s given up.',
+      paragraph_two:
+        'It’s time to reap your rewards! Go to the next chapter to withdraw your bitcoin.',
     },
   },
 
