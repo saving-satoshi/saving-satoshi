@@ -42,7 +42,12 @@ export default function ProfilesContainer({
 
   return (
     <>
-      <div className="flex flex-col items-center gap-[30px] self-stretch">
+      <div
+        className={clsx(
+          'flex flex-col items-center gap-[30px] self-stretch',
+          className
+        )}
+      >
         {children}
         <div
           ref={elementRef}
