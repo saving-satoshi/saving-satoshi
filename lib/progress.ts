@@ -129,14 +129,30 @@ export const getLastUnlockedLessonPath = (userProgressKey: string): string => {
   return path
 }
 
+export const getCurrentLessonKey = (
+  userProgressKey: string,
+  account?: any
+): string => {
+  if (!account) {
+    return userProgressKey
+  }
+
+  const id = keys.indexOf(userProgressKey)
+  const nextChapterIntro = 'CH' + getNextChapterNumber(userProgressKey) + 'INT1'
+
+  if (keys[id + 1] && keys[id + 1] === nextChapterIntro) {
+    return nextChapterIntro
+  }
+
+  return userProgressKey
+}
+
 export const getNextLessonKey = (
   userProgressKey: string,
   account?: any
 ): string => {
   const id = keys.indexOf(userProgressKey)
   const nextChapterIntro = 'CH' + getNextChapterNumber(userProgressKey) + 'INT1'
-
-  let result
 
   if (account && keys[id + 2] && keys[id + 2] === nextChapterIntro) {
     return nextChapterIntro

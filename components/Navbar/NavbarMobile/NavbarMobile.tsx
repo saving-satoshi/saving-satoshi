@@ -17,7 +17,8 @@ import Link from 'next/link'
 import HelpLink from '../HelpLink'
 import Icon from 'shared/Icon'
 import { navbarThemeSelector } from 'lib/themeSelector'
-import { getChapterKey, keys } from 'lib/progress'
+import { getChapterKey, getCurrentLessonKey, keys } from 'lib/progress'
+import { useAuthContext } from 'providers/AuthProvider'
 
 export default function NavbarMobile({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
@@ -25,12 +26,13 @@ export default function NavbarMobile({ params }) {
   const t = useTranslations(lang)
   const { chapterId } = usePathData()
   const { slug, lesson: lessonId } = params
+  const { account } = useAuthContext()
 
   const [isOpen, setIsOpen] = useState(false)
 
   const chapterLessons = lessons?.[chapterId]
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null
-  const currentLessonKey = lesson?.key ?? keys[0]
+  const currentLessonKey = getCurrentLessonKey(lesson?.key ?? keys[0], account)
 
   const chapterKey = getChapterKey(currentLessonKey)
 
