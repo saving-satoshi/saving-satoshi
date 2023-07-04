@@ -46,10 +46,6 @@ export default function Mining1({ lang }) {
     setHydrated(true)
   }, [])
 
-  useEffect(() => {
-    setShowText(true)
-  }, [step])
-
   function displayRandomNumbers(NonceStepSize: number, time: number): void {
     let currentNonce = nonce
     const startTime = new Date().getTime()
@@ -86,7 +82,7 @@ export default function Mining1({ lang }) {
         currentBlock = currentBlock + 1
         setBlocks(currentBlock)
         setTransactionsConfirmed(currentBlock * 3500)
-        setBitcoinMined(currentBlock * 0.0061)
+        setBitcoinMined(currentBlock * 0.061)
       }, 8 * 1000)
     }
     return () => clearInterval(interval)
@@ -109,32 +105,37 @@ export default function Mining1({ lang }) {
     let currentBlock = blocks
     if (finalMining) {
       interval = setInterval(() => {
-        currentBlock = Math.min(
-          currentBlock + Math.floor(Math.random() * 3),
-          1000
-        )
+        currentBlock = currentBlock + 1
         setBlocks(currentBlock)
         setTransactionsConfirmed(currentBlock * 3500)
-        setBitcoinMined(currentBlock * 0.0061)
-      }, 40)
+        setBitcoinMined(currentBlock * 0.061)
+      }, Math.floor(Math.random() * 1000))
     }
     return () => clearInterval(interval)
   }, [finalMining])
 
   useEffect(() => {
-    if (blocks === 1000) {
-      setStep(4)
-      setNonceHighlight(true)
-      setHashPowerHighlight(true)
-      setRandomNonce(false)
-      setFinalMining(false)
+    if (blocks === 100) {
+      explanationStep()
     }
   }, [blocks])
 
+  const explanationStep = async () => {
+    setShowText(false)
+    setRandomNonce(false)
+    setFinalMining(false)
+    await sleep(325)
+    setStep(4)
+    setShowText(true)
+    setNonceHighlight(true)
+    setHashPowerHighlight(true)
+  }
+
   const transactionStep = async () => {
     setShowText(false)
-    await sleep(300)
+    await sleep(325)
     setStep(5)
+    setShowText(true)
     setNonceHighlight(false)
     setHashPowerHighlight(false)
     setTransactionsConfirmedHighlight(true)
@@ -142,40 +143,45 @@ export default function Mining1({ lang }) {
 
   const bitcoinStep = async () => {
     setShowText(false)
-    await sleep(300)
+    await sleep(325)
     setStep(6)
+    setShowText(true)
     setTransactionsConfirmedHighlight(false)
     setBitcoinMinedHighlight(true)
   }
 
   const finalStep = async () => {
     setShowText(false)
-    await sleep(300)
+    await sleep(325)
     setStep(7)
+    setShowText(true)
     setBitcoinMinedHighlight(false)
   }
 
   const turnOnButton = async () => {
     if (step === 0) {
       setShowText(false)
-      await sleep(300)
+      await sleep(325)
       setStep(1)
+      setShowText(true)
       const time = 15 * 1000
       displayRandomNumbers(1760, time)
       setTimeout(async () => {
         setShowText(false)
-        await sleep(300)
+        await sleep(325)
         setStep(2)
+        setShowText(true)
         setBlocks(1)
         setTransactionsConfirmed(3500)
-        setBitcoinMined(0.0061)
+        setBitcoinMined(0.061)
       }, time)
     }
 
     if (step === 2) {
       setShowText(false)
-      await sleep(300)
+      await sleep(325)
       setStep(3)
+      setShowText(true)
       setRandomNonce(true)
     }
 
@@ -207,9 +213,9 @@ export default function Mining1({ lang }) {
               >
                 {t('chapter_two.mining_one.progress_bar_title')}
               </span>
-              <BlockCounter blocks={blocks} total={1000} className="ml-auto" />
+              <BlockCounter blocks={blocks} total={100} className="ml-auto" />
             </div>
-            <ProgressBar progress={blocks / 10} />
+            <ProgressBar progress={blocks} />
           </Card>
           <Card className="flex" highlight={nonceHighlight}>
             <div className="flex-1">

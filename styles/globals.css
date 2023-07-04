@@ -233,9 +233,9 @@ div.react-terminal-active-input {
 }
 
 .fade-in {
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out forwards;
 }
 
 .fade-out {
-  animation: fadeOut 0.3s ease-in-out;
+  animation: fadeOut 0.3s ease-in-out forwards;
 }
