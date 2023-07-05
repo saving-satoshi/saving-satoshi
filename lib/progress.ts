@@ -167,8 +167,8 @@ export const getNextLessonKey = (
 }
 
 export const getNextChapterNumber = (userProgressKey: string): number => {
-  const curLessonNumber = parseInt(userProgressKey.slice(2, 3))
-  return curLessonNumber + 1
+  const currentLessonNumber = parseInt(userProgressKey.slice(2, 3))
+  return currentLessonNumber + 1
 }
 
 export const getNextLessonPath = (userProgressKey: string): string => {
