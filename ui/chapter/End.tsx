@@ -26,7 +26,9 @@ export default function End({
   const { account } = useAuthContext()
   const saveAndReturn = useSaveAndReturn()
   const { chapterId, lessonId } = usePathData()
-  const [isDesktop, setDesktop] = useState(window.innerWidth > 768)
+  const [isDesktop, setDesktop] = useState(
+    typeof window !== 'undefined' && window.innerWidth > 768
+  )
 
   const chapterLessons = lessons?.[chapterId]
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null
@@ -68,7 +70,6 @@ export default function End({
         <MobileEnd
           image={image}
           lang={lang}
-          direction={direction}
           className={className}
           account={account}
           onClick={handleClick}
