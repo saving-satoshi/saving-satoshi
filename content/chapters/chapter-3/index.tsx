@@ -20,7 +20,7 @@ export const metadata = {
   image: '/assets/images/chapter-3-cover.jpg',
   theme: 'bg-gradient-to-tl from-[#3C1843] to-[#45235A]',
   intros: ['intro-1', 'intro-2'],
-  lessons: ['solo-1'],
+  lessons: ['solo-1', 'pool-1'],
   outros: ['outro-1'],
-  challenges: ['solo-1'],
+  challenges: ['solo-1', 'pool-1'],
 }
