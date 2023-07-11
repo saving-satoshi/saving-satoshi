@@ -140,6 +140,10 @@ export const getCurrentLessonKey = (
   const id = keys.indexOf(userProgressKey)
   const nextChapterIntro = 'CH' + getNextChapterNumber(userProgressKey) + 'INT1'
 
+  // Explaination: If the following lesson exist, and is equal to
+  // the intro of next chapter, that means we are on the outro of
+  // the current lesson, and can skip it to appropriately mark the
+  // progress
   if (keys[id + 1] && keys[id + 1] === nextChapterIntro) {
     return nextChapterIntro
   }
@@ -154,10 +158,15 @@ export const getNextLessonKey = (
   const id = keys.indexOf(userProgressKey)
   const nextChapterIntro = 'CH' + getNextChapterNumber(userProgressKey) + 'INT1'
 
+  // Explaination: If account exist, and the next to next lesson
+  // is the Intro of next chapter, then that means, we are on the
+  // penultimate lesson of the current chapter and can skip the
+  // following lesson to get the next chapter's intro key.
   if (account && keys[id + 2] && keys[id + 2] === nextChapterIntro) {
     return nextChapterIntro
   }
 
+  // If the next lesson exist. Return next lesson's key.
   if (keys[id + 1]) {
     return keys[id + 1]
   } else {
