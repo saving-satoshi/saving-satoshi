@@ -305,7 +305,7 @@ const translations = {
       paragraph_five:
         'The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.',
       paragraph_six:
-        'For the next challenge, write a script that finds a hash that starts with five zeroes (“00000”).',
+        'For the next challenge, write a script that finds a hash that starts with five zeroes (00000).',
     },
 
     scripting_two: {

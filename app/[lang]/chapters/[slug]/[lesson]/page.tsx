@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 import { chapters, lessons } from 'content'
 import { usePathData, useTranslations, useLocalizedRoutes } from 'hooks'
@@ -19,7 +20,18 @@ import { useProgressContext } from 'providers/ProgressProvider'
 import { Loader } from 'shared'
 import { LoadingState } from 'types'
 import { notFound } from 'next/navigation'
-import Client from 'components/Client'
+
+const Portal = ({ children, id }) => {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+
+    return () => setMounted(false)
+  }, [])
+
+  return mounted ? createPortal(children, document.getElementById(id)) : null
+}
 
 export default function Page({ params }) {
   const searchParams = navigation.useSearchParams()
@@ -62,11 +74,9 @@ export default function Page({ params }) {
     const title = lesson ? t(lesson.metadata.title) : 'Page not found'
 
     return (
-      <Client>
-        <head>
-          <title>{`${title} - Saving Satoshi`}</title>
-        </head>
-      </Client>
+      <Portal id="head">
+        <title>{`${title} - Saving Satoshi`}</title>
+      </Portal>
     )
   }
 
