@@ -32,7 +32,7 @@ export default function Profile({
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="mb-[15px] flex flex-col gap-4">
         <span className="font-nunito text-2xl font-bold text-white">
           {name}
         </span>
@@ -42,7 +42,11 @@ export default function Profile({
           </span>
         )}
       </div>
-      {children && <div className="w-full text-white">{children}</div>}
+      {children && (
+        <div className="flex w-full flex-col gap-[15px] text-white">
+          {children}
+        </div>
+      )}
     </div>
   )
 }

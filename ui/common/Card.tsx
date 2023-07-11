@@ -5,38 +5,26 @@ export default function Card({
   className,
   children,
   highlight,
-  firstItem = false,
-  dual = false,
 }: {
   transparent?: boolean
   className?: string
   children?: any
   highlight?: boolean
-  firstItem?: boolean
-  dual?: boolean
 }) {
   return (
     <div
-      className={clsx('relative', {
-        'w-1/2': dual,
-      })}
+      className={clsx(
+        'relative w-full items-center justify-between rounded-[5px] border-2 border-transparent font-nunito',
+        className,
+        {
+          'bg-black/15': !transparent,
+          'p-4': !transparent,
+        }
+      )}
     >
-      <div
-        className={clsx(
-          className,
-          'w-full items-center justify-between rounded-[5px] border-2 border-transparent font-nunito',
-          {
-            'bg-black/15': !transparent,
-            'p-4': !(transparent || dual),
-            'mt-0': firstItem,
-            'mt-5': !firstItem,
-          }
-        )}
-      >
-        {children}
-      </div>
+      {children}
       {highlight && (
-        <div className="absolute inset-0 mt-5 animate-pulse rounded-[5px] border-2 border-[#FBEBC6] shadow-3xl"></div>
+        <div className="absolute inset-0 animate-pulse rounded-[5px] border-2 border-[#FBEBC6] shadow-3xl"></div>
       )}
     </div>
   )

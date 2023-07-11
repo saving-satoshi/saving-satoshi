@@ -47,3 +47,7 @@ export type Profile = {
   avatar?: string
   description?: string
 }
+
+export interface ProfileWithHashPower extends Profile {
+  hashpower: number
+}

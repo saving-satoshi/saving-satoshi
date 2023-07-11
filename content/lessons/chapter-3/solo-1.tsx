@@ -1,20 +1,14 @@
 'use client'
 
-import Chip from 'components/Chip'
-import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
 import { useTranslations } from 'hooks'
-import { Profile as ProfileType } from 'types'
-import { Card, HashFrequency, ProfilesContainer, Text, TitleCard } from 'ui'
+import { ProfileWithHashPower } from 'types'
+import { Card, HashFrequency, Text } from 'ui'
 import Profile from 'ui/common/Profile'
 
 export const metadata = {
   title: 'chapter_three.solo_one.title',
   image: '/assets/images/chapter-2-intro-1.jpg',
   key: 'CH3SOL1',
-}
-
-interface ProfileWithHashPower extends ProfileType {
-  hashpower: number
 }
 
 const PROFILES: ProfileWithHashPower[] = [
@@ -26,7 +20,7 @@ export default function SOL1({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <div className="my-auto flex flex-col items-center justify-center gap-[30px] self-stretch px-[20px] py-[20px] md:flex-row-reverse md:px-[200px] md:py-0">
+    <div className="my-auto flex flex-col items-center justify-center gap-[30px] self-stretch px-[20px] py-[20px] md:flex-row-reverse md:py-0 lg:px-[200px]">
       <div className="flex w-full flex-col">
         <div className="flex h-full max-h-[69px] w-full max-w-[800px] flex-col gap-[10px] text-white">
           <div className="flex items-center justify-between gap-[10px] self-stretch py-[2px]">
@@ -47,13 +41,6 @@ export default function SOL1({ lang }) {
               key={i}
               name={profile.name}
               avatar={profile.avatar}
-              chip={
-                <ProfileChip
-                  image="http://placekitten.com/g/100/100"
-                  variant={ProfileChipVariant.Ranking}
-                  value="1"
-                />
-              }
               description={profile.description}
             >
               <Card className="flex">
