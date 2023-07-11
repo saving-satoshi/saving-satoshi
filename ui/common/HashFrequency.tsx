@@ -1,17 +1,19 @@
 import clsx from 'clsx'
 
 export default function HashFrequency({
+  className = 'font-space-mono text-2xl',
   disabled,
   step,
   hashPower,
 }: {
+  className?: string
   disabled: boolean
   step: number
   hashPower: number
 }) {
   return (
     <div
-      className={clsx('font-space-mono text-2xl', {
+      className={clsx(className, {
         'text-black/25': disabled,
         'fade-in text-white': !disabled,
       })}
