@@ -313,7 +313,6 @@ export default function Mining1({ lang }) {
               <div className="mt-2 text-lg">
                 {t('chapter_two.mining_one.paragraph_one')}
               </div>
-
               <div className="mt-8 text-lg">
                 {t('chapter_two.mining_one.paragraph_two')}
               </div>
