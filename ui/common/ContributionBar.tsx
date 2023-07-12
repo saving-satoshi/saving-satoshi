@@ -1,69 +1,100 @@
 'use client'
 
+import { useRef } from 'react'
 import Image from 'next/image'
 
-interface ContributionInfo {
-  username: string
-  avatar: string
-  color: string
-  percentage: number
-  side: number
-}
+export default function ContributionBar({ total, protagonists, antagonists }) {
+  const elementRef = useRef<HTMLDivElement>(null)
 
-interface ContributionInfoProps {
-  contributionInfo: ContributionInfo[]
-}
-
-export default function ContributionBar({
-  contributionInfo,
-}: ContributionInfoProps) {
-  let value = 0
   return (
-    <div className="relative h-[30px] w-full rounded-[5px] bg-black/20">
-      <div className="absolute z-50 flex h-full w-1/2 border-r-2 border-dotted border-white/50"></div>
-      {contributionInfo.map((info, i) => {
-        value += info.percentage
-        return (
-          <>
-            <div className="absolute h-full w-full overflow-hidden rounded-[5px]">
-              <div
-                className={`absolute inset-0 flex transform-gpu border-r-2 border-black transition-transform`}
-                style={{
-                  transform: `translate3d(${
-                    info.side === 0 ? 100 - info.percentage : -(100 - value)
-                  }%,0,0)`,
-                  backgroundColor: `#${info.color}`,
-                  zIndex: (contributionInfo.length - i) * 10,
-                }}
-              />
-            </div>
+    <div
+      className="relative h-[30px] w-full overflow-hidden rounded-[5px] bg-black/20"
+      ref={elementRef}
+    >
+      <div className="pointer-events-none absolute z-50 flex h-full w-1/2 border-r-2 border-dotted border-white/50"></div>
+      <div className="relative flex h-full w-full">
+        {protagonists.map((player, i) => {
+          const predecessors = protagonists.slice(0, i)
+          const cumulativeValue = predecessors.reduce(
+            (acc, p) => acc + p.value,
+            0
+          )
+
+          const scale = player.value / total
+          const translation = cumulativeValue + '%'
+
+          return (
             <div
-              className="absolute inset-0 z-50 flex transform-gpu items-center justify-center transition-transform"
-              style={{
-                transform: `translate3d(${
-                  info.side === 0
-                    ? (100 - info.percentage) / 2
-                    : -(
-                        (100 -
-                          (value - info.percentage + info.percentage / 2) * 2) /
-                        2
-                      )
-                }%,0,0)`,
-              }}
+              key={i}
+              className="absolute h-full w-full"
+              style={{ transform: `translateX(${translation})` }}
             >
-              <div className="h-6 w-6 rounded-full">
-                <Image
-                  src={`/assets/avatars/${info.avatar}.png`}
-                  alt="Avatar"
-                  width={22}
-                  height={22}
-                  className="rounded-full border-2 border-white"
-                />
+              <div
+                key={i}
+                className="flex h-full w-full origin-left items-center justify-center"
+                style={{
+                  transform: `scaleX(${scale})`,
+                  background: player.color,
+                }}
+              >
+                <div
+                  style={{ transform: `scaleX(${1 / scale})` }}
+                  className="aspect-square h-[26px] overflow-hidden rounded-full border-2 border-white"
+                >
+                  <Image
+                    width={30}
+                    height={30}
+                    alt={player.username}
+                    src={player.avatar}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
             </div>
-          </>
-        )
-      })}
+          )
+        })}
+
+        {antagonists.map((player, i) => {
+          const predecessors = antagonists.slice(0, i)
+          const cumulativeValue = predecessors.reduce(
+            (acc, p) => acc + p.value,
+            0
+          )
+
+          const scale = player.value / total
+          const translation = cumulativeValue + '%'
+
+          return (
+            <div
+              key={i}
+              className="absolute h-full w-full"
+              style={{ transform: `translateX(${translation})` }}
+            >
+              <div
+                key={i}
+                className="flex h-full w-full origin-right items-center justify-center"
+                style={{
+                  transform: `scaleX(${scale})`,
+                  background: player.color,
+                }}
+              >
+                <div
+                  style={{ transform: `scaleX(${1 / scale})` }}
+                  className="aspect-square h-[26px] overflow-hidden rounded-full border-2 border-white"
+                >
+                  <Image
+                    width={30}
+                    height={30}
+                    alt={player.username}
+                    src={player.avatar}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

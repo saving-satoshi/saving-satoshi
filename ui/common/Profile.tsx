@@ -7,14 +7,14 @@ export default function Profile({
   className,
   avatar,
   chip,
-  name,
+  username,
   description,
 }: {
   children?: React.ReactNode
   className?: string
   avatar?: string
   chip?: React.ReactElement
-  name: string
+  username: string
   description?: string
 }) {
   return (
@@ -34,7 +34,7 @@ export default function Profile({
       </div>
       <div className="mb-[15px] flex flex-col gap-4">
         <span className="font-nunito text-2xl font-bold text-white">
-          {name}
+          {username}
         </span>
         {description && (
           <span className="font-nunito text-xl font-bold text-white">

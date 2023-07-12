@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'hooks'
 import { ProfileWithHashPower } from 'types'
-import { Card, HashFrequency, Text } from 'ui'
+import { Card, ContributionBar, HashFrequency, Text } from 'ui'
 import Profile from 'ui/common/Profile'
 
 export const metadata = {
@@ -11,10 +11,29 @@ export const metadata = {
   key: 'CH3SOL1',
 }
 
-const PROFILES: ProfileWithHashPower[] = [
-  { name: 'You', avatar: '/assets/avatars/1.png', hashpower: 4395 },
-  { name: 'BitRey', avatar: '/assets/avatars/5.png', hashpower: 34421 },
+const TOTAL_BLOCKS = 100
+
+const PROTAGONISTS = [
+  {
+    username: 'You',
+    avatar: '/assets/avatars/1.png',
+    hashpower: 4395,
+    color: '#F3AB29',
+    value: TOTAL_BLOCKS * 0.1,
+  },
 ]
+
+const ANTAGONISTS = [
+  {
+    username: 'BitRey',
+    avatar: '/assets/avatars/5.png',
+    hashpower: 34421,
+    color: '#7E002E',
+    value: TOTAL_BLOCKS * 0.3,
+  },
+]
+
+const PROFILES: ProfileWithHashPower[] = [...PROTAGONISTS, ...ANTAGONISTS]
 
 export default function SOL1({ lang }) {
   const t = useTranslations(lang)
@@ -22,24 +41,33 @@ export default function SOL1({ lang }) {
   return (
     <div className="my-auto flex flex-col items-center justify-center gap-[30px] self-stretch px-[20px] py-[20px] md:flex-row-reverse md:py-0 lg:px-[200px]">
       <div className="flex w-full flex-col">
-        <div className="flex h-full max-h-[69px] w-full max-w-[800px] flex-col gap-[10px] text-white">
+        <div className="flex h-full max-h-[69px] w-full flex-col gap-[10px] text-white">
           <div className="flex items-center justify-between gap-[10px] self-stretch py-[2px]">
             <span className="h-[25px] text-left font-nunito text-[18px] font-semibold text-white">
-              10 blocks
+              <span>
+                {PROTAGONISTS.reduce((acc, profile) => acc + profile.value, 0)}
+              </span>
+              <span> blocks</span>
             </span>
             <span className="h-[25px] text-right font-nunito text-[18px] font-semibold text-white">
-              10 blocks
+              <span>
+                {ANTAGONISTS.reduce((acc, profile) => acc + profile.value, 0)}
+              </span>
+              <span> blocks</span>
             </span>
           </div>
-          {/*Contribution Bar added below*/}
-          <div className="h-[30px] w-full bg-red">Contribution Bar</div>
+          <ContributionBar
+            total={TOTAL_BLOCKS}
+            protagonists={PROTAGONISTS}
+            antagonists={ANTAGONISTS}
+          />
         </div>
 
         <div className="mt-[30px] flex gap-[30px]">
           {PROFILES.map((profile, i) => (
             <Profile
               key={i}
-              name={profile.name}
+              username={profile.username}
               avatar={profile.avatar}
               description={profile.description}
             >

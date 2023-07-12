@@ -43,7 +43,7 @@ export type Chapter = {
 }
 
 export type Profile = {
-  name: string
+  username: string
   avatar?: string
   description?: string
 }
