@@ -13,12 +13,16 @@ export default function TitleCard({
 }) {
   return (
     <div
-      className={clsx(className, 'font-nunito text-[13px] font-bold', {
-        'text-black/25': disabled,
-        'fade-in text-[#EDA081]': !disabled,
-        'text-[15px]': size === 'standard',
-        'text-[13px]': size === 'small',
-      })}
+      className={clsx(
+        className,
+        'whitespace-nowrap font-nunito text-[13px] font-bold',
+        {
+          'text-black/25': disabled,
+          'fade-in text-[#EDA081]': !disabled,
+          'text-[15px]': size === 'standard',
+          'text-[13px]': size === 'small',
+        }
+      )}
     >
       {title}
     </div>

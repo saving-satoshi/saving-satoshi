@@ -199,11 +199,7 @@ export default function Mining1({ lang }) {
     hydrated && (
       <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
         <div className="fade-in grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:mx-[30px] md:my-0 md:w-[405px] md:p-[25px]">
-          <Card
-            className="font-nunito text-lg font-semibold"
-            transparent
-            firstItem
-          >
+          <Card className="mt-5 font-nunito text-lg font-semibold" transparent>
             <div className="mb-2.5 flex">
               <span
                 className={clsx({
@@ -217,16 +213,13 @@ export default function Mining1({ lang }) {
             </div>
             <ProgressBar progress={blocks} />
           </Card>
-          <Card className="flex" highlight={nonceHighlight}>
-            <div className="flex-1">
+          <Card className="mt-5 flex" highlight={nonceHighlight}>
+            <div className="flex flex-col">
               <TitleCard
                 title={t('chapter_two.mining_one.progress_bar_one')}
                 disabled={nonce === 0}
               />
-              <NonceCounter
-                content={nonce}
-                disabled={nonce === 0}
-              ></NonceCounter>
+              <NonceCounter content={nonce} disabled={nonce === 0} />
             </div>
             <HashDisplayer
               content={nonce}
@@ -236,9 +229,9 @@ export default function Mining1({ lang }) {
                 '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
               }
               blockFound={blocks}
-            ></HashDisplayer>
+            />
           </Card>
-          <Card className="flex-row" highlight={hashPowerHighlight}>
+          <Card className="mt-5 flex-row" highlight={hashPowerHighlight}>
             <div className="flex">
               <div className="flex-1">
                 <TitleCard
@@ -261,12 +254,8 @@ export default function Mining1({ lang }) {
             <ProgressBar progress={hashPower / 440} variant={'bars'} />{' '}
             {/* progress = hashPower * 100/maxHashPower */}
           </Card>
-          <div className="flex items-center justify-between gap-x-2.5 text-center font-space-mono">
-            <Card
-              className="w-full py-2.5"
-              highlight={transactionsConfirmedHighlight}
-              dual
-            >
+          <div className="mt-5 flex items-center justify-between gap-x-2.5 text-center font-space-mono">
+            <Card className="w-1/2" highlight={transactionsConfirmedHighlight}>
               <div
                 className={clsx('font-space-mono text-2xl', {
                   'text-black/25': transactionsConfirmed === 0,
@@ -281,11 +270,7 @@ export default function Mining1({ lang }) {
                 size={'small'}
               />
             </Card>
-            <Card
-              className="w-full py-2.5"
-              highlight={bitcoinMinedHighlight}
-              dual
-            >
+            <Card className="w-1/2" highlight={bitcoinMinedHighlight}>
               <div
                 className={clsx('font-space-mono text-2xl', {
                   'text-black/25': bitcoinMined === 0,

@@ -1,57 +1,54 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
 import Chip from './Chip'
 
+export enum ProfileChipVariant {
+  Ranking = 'ranking',
+  Balance = 'balance',
+}
+
 export default function ProfileChip({
-  ranking,
-  balance,
+  className,
   image,
+  variant,
+  value,
 }: {
-  ranking: number
-  balance: number
-  image: string
+  className?: string
+  image?: string
+  variant: ProfileChipVariant
+  value: string | number
 }) {
-  const [isRanking, setisRanking] = useState<boolean>(true)
-  const [chipClass, setChipClass] = useState('')
-  const [textColor, setTextColor] = useState('')
-  const [text, setText] = useState('')
-
-  function handleClick() {
-    setisRanking(!isRanking)
-  }
-
-  useEffect(() => {
-    if (isRanking) {
-      setChipClass('border-orange bg-[#532E5E]')
-      setTextColor('text-orange')
-      setText('#' + ranking)
-    } else {
-      setChipClass('border-green bg-green')
-      setTextColor('text-white')
-      setText(balance + ' bitcoin')
-    }
-  }, [isRanking])
+  const prefix = variant === ProfileChipVariant.Ranking ? '#' : ''
+  const suffix = variant === ProfileChipVariant.Ranking ? '' : ' bitcoin'
+  const label = `${prefix}${value}${suffix}`
 
   return (
-    <Chip className={chipClass} onClick={handleClick}>
-      <div className="relative h-6 w-6">
-        <Image
-          src={image}
-          fill
-          className="h-full w-full rounded-l object-cover"
-          alt="something"
-        />
-      </div>
+    <Chip
+      className={clsx(className, 'overflow-hidden', {
+        'border-orange bg-[#532E5E]': variant === ProfileChipVariant.Ranking,
+        'border-green bg-green': variant === ProfileChipVariant.Balance,
+      })}
+    >
+      {image && (
+        <div className="relative h-6 w-6">
+          <Image
+            src={image}
+            fill
+            className="h-full w-full object-cover"
+            alt="something"
+          />
+        </div>
+      )}
       <div
-        className={clsx(
-          'mx-1.5 whitespace-nowrap font-nunito text-sm',
-          textColor
-        )}
+        className={clsx('mx-1.5 whitespace-nowrap font-nunito text-sm', {
+          'text-orange': variant === ProfileChipVariant.Ranking,
+          'text-white': variant === ProfileChipVariant.Balance,
+        })}
       >
-        {text}
+        {label}
       </div>
     </Chip>
   )

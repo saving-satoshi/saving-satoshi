@@ -41,3 +41,13 @@ export type Chapter = {
   metadata: Object
   translations: Translations
 }
+
+export type Profile = {
+  name: string
+  avatar?: string
+  description?: string
+}
+
+export interface ProfileWithHashPower extends Profile {
+  hashpower: number
+}
