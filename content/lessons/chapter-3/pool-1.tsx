@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'hooks'
 import { ProfileWithHashPower } from 'types'
-import { Card, HashFrequency, Text } from 'ui'
+import { Card, ContributionBar, HashFrequency, Text } from 'ui'
 import Profile from 'ui/common/Profile'
 
 export const metadata = {
@@ -11,13 +11,50 @@ export const metadata = {
   key: 'CH3POL1',
 }
 
-const PROFILES: ProfileWithHashPower[] = [
-  { name: 'You', avatar: '/assets/avatars/1.png', hashpower: 4395 },
-  { name: 'Mining Maniacs', avatar: '/assets/avatars/2.png', hashpower: 5054 },
-  { name: 'Hash Hoppers', avatar: '/assets/avatars/3.png', hashpower: 7911 },
-  { name: 'Coin Crunchers', avatar: '/assets/avatars/4.png', hashpower: 2857 },
-  { name: 'BitRey', avatar: '/assets/avatars/5.png', hashpower: 18599 },
+const TOTAL_BLOCKS = 100
+
+const PROTAGONISTS = [
+  {
+    username: 'You',
+    avatar: '/assets/avatars/1.png',
+    hashpower: 4395,
+    color: '#F3AB29',
+    value: TOTAL_BLOCKS * 0.1,
+  },
+  {
+    username: 'Mining Maniacs',
+    avatar: '/assets/avatars/2.png',
+    hashpower: 5054,
+    color: '#FE5329',
+    value: TOTAL_BLOCKS * 0.1,
+  },
+  {
+    username: 'Hash Hoppers',
+    avatar: '/assets/avatars/3.png',
+    hashpower: 7911,
+    color: '#62BFB7',
+    value: TOTAL_BLOCKS * 0.1,
+  },
+  {
+    username: 'Coin Crunchers',
+    avatar: '/assets/avatars/4.png',
+    hashpower: 2857,
+    color: '#85BF09',
+    value: TOTAL_BLOCKS * 0.1,
+  },
 ]
+
+const ANTAGONISTS = [
+  {
+    username: 'BitRey',
+    avatar: '/assets/avatars/5.png',
+    hashpower: 18599,
+    color: '#7E002E',
+    value: TOTAL_BLOCKS * 0.3,
+  },
+]
+
+const PROFILES: ProfileWithHashPower[] = [...PROTAGONISTS, ...ANTAGONISTS]
 
 export default function POL1({ lang }) {
   const t = useTranslations(lang)
@@ -27,20 +64,29 @@ export default function POL1({ lang }) {
       <div className="flex h-full max-h-[69px] w-full max-w-[800px] flex-col items-start gap-[10px] text-white">
         <div className="flex items-center justify-between gap-[10px] self-stretch py-[2px]">
           <span className="h-[25px] text-left font-nunito text-[18px] font-semibold text-white">
-            10 blocks
+            <span>
+              {PROTAGONISTS.reduce((acc, profile) => acc + profile.value, 0)}
+            </span>
+            <span> blocks</span>
           </span>
           <span className="h-[25px] text-right font-nunito text-[18px] font-semibold text-white">
-            10 blocks
+            <span>
+              {ANTAGONISTS.reduce((acc, profile) => acc + profile.value, 0)}
+            </span>
+            <span> blocks</span>
           </span>
         </div>
-        {/*Contribution Bar added below*/}
-        <div className="h-[30px] w-full bg-red">Contribution Bar</div>
+        <ContributionBar
+          total={TOTAL_BLOCKS}
+          protagonists={PROTAGONISTS}
+          antagonists={ANTAGONISTS}
+        />
       </div>
       <div className="flex gap-[30px]">
         {PROFILES.map((profile, i) => (
           <Profile
             key={i}
-            name={profile.name}
+            username={profile.username}
             avatar={profile.avatar}
             description={profile.description}
           >
