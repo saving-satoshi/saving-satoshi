@@ -131,16 +131,55 @@ export const getLastUnlockedLessonPath = (userProgressKey: string): string => {
   return path
 }
 
-export const getNextLessonKey = (userProgressKey: string): string => {
-  const id = keys.indexOf(userProgressKey)
-  const result = keys[id + 1]
-
-  if (!result) {
-    console.error('There is no next lesson')
+export const getCurrentLessonKey = (
+  userProgressKey: string,
+  account?: any
+): string => {
+  if (!account) {
     return userProgressKey
   }
 
-  return result
+  const id = keys.indexOf(userProgressKey)
+  const nextChapterIntro = 'CH' + getNextChapterNumber(userProgressKey) + 'INT1'
+
+  // Explaination: If the following lesson exist, and is equal to
+  // the intro of next chapter, that means we are on the outro of
+  // the current lesson, and can skip it to appropriately mark the
+  // progress
+  if (keys[id + 1] && keys[id + 1] === nextChapterIntro) {
+    return nextChapterIntro
+  }
+
+  return userProgressKey
+}
+
+export const getNextLessonKey = (
+  userProgressKey: string,
+  account?: any
+): string => {
+  const id = keys.indexOf(userProgressKey)
+  const nextChapterIntro = 'CH' + getNextChapterNumber(userProgressKey) + 'INT1'
+
+  // Explaination: If account exist, and the next to next lesson
+  // is the Intro of next chapter, then that means, we are on the
+  // penultimate lesson of the current chapter and can skip the
+  // following lesson to get the next chapter's intro key.
+  if (account && keys[id + 2] && keys[id + 2] === nextChapterIntro) {
+    return nextChapterIntro
+  }
+
+  // If the next lesson exist. Return next lesson's key.
+  if (keys[id + 1]) {
+    return keys[id + 1]
+  } else {
+    console.error('There is no next lesson')
+    return userProgressKey
+  }
+}
+
+export const getNextChapterNumber = (userProgressKey: string): number => {
+  const currentLessonNumber = parseInt(userProgressKey.slice(2, 3))
+  return currentLessonNumber + 1
 }
 
 export const getNextLessonPath = (userProgressKey: string): string => {

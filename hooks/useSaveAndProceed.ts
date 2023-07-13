@@ -23,7 +23,7 @@ export default function useSaveAndProceed() {
   const currentLessonKey = lesson?.key ?? 'CH1INT1'
 
   const saveAndProceed = async () => {
-    const nextLessonKey = getNextLessonKey(currentLessonKey)
+    const nextLessonKey = getNextLessonKey(currentLessonKey, account)
     const nextLessonPath = getNextLessonPath(currentLessonKey)
     const route = routes.chaptersUrl + nextLessonPath
 
