@@ -41,12 +41,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      <head id="head">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={schema()}
           key="product-jsonld"
-        />
+        ></script>
       </head>
       <body className="font-cbrush">
         <Fonts />

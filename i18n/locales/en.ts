@@ -305,7 +305,7 @@ const translations = {
       paragraph_five:
         'The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.',
       paragraph_six:
-        'For the next challenge, write a script that finds a hash that starts with five zeroes (“00000”).',
+        'For the next challenge, write a script that finds a hash that starts with five zeroes (00000).',
     },
 
     scripting_two: {
@@ -338,12 +338,12 @@ const translations = {
       heading_one: 'Now that we know how mining works, let’s see it in action',
       heading_two: 'You’re mining now',
       heading_three: 'Nice work!',
-      heading_four: 'Let’s get to 1,000 blocks',
+      heading_four: 'Let’s get to 100 blocks',
       heading_five: 'You did it!',
       paragraph_one:
         'Right now, the Bitcoin network requires blocks to have a hash with ten leading zeros. Let’s get to it!',
       paragraph_two:
-        'For this simple simulation, we’ll just assume that every block contains 3,500 transactions.',
+        'For this simple simulation, we’ll just assume that every block contains 3,500 transactions and 0.061 BTC in rewards and fees.',
       paragraph_two_one: 'See if you can turn on the miners.',
       paragraph_three:
         'The code you wrote in the previous lesson to compute hashes over and over again is running.',
@@ -361,7 +361,7 @@ const translations = {
       paragraph_ten:
         'Wow! That took quite a bit of computing power to do all that hashing. Just look how many nonces were tried!  It really helped to have that boost in hash power i.e. the number of hashes your computer can try in a second.',
       paragraph_eleven:
-        'As expected, since each block contains 3,500 transactions, a total of 3,500,000 transactions have been confirmed by the 1,000 blocks that were mined.',
+        'As expected, since each block contains 3,500 transactions, a total of 350,000 transactions have been confirmed by the 100 blocks that were mined.',
       paragraph_twelve:
         'And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. ',
       paragraph_thirteen:
@@ -387,13 +387,53 @@ const translations = {
     },
   },
   chapter_three: {
-    title: 'Claiming your rewards',
+    title: 'The 51% Attack',
     paragraph_one:
       'Phew, that was close. You are still shaking from your battle againstAmestris, yet relieved that a victory was possible.',
     paragraph_two:
       'As you settle at your desk, you take a deep breath and drift off toreplay the day’s events. Your hands keep themselves busy playing withthe mysterious envelope, as you wonder who sent it. Who still usesenvelopes anyways, it’s 2139 after all. Even more curious is that thereis a stamp on it, from 2008...could this be another hint?',
     paragraph_three:
       'Suddenly, you realize that you never claimed the block rewards from your competition with Amestris. Your bitcoin wallet is running low, so now is a good time to top it up again.',
+
+    intro_one: {
+      title: 'Hashing it out',
+      paragraph_one:
+        'You enter the address of a block explorer blocks are back to ten minutes intervals. Somehow, holocat sleeps through the noise of the machines.',
+      paragraph_two:
+        '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking holocat. It’s not a coincidence.',
+      paragraph_three:
+        '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is under a 51% attack! Vanderpoole used a virus to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the Bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply.” – Satoshi Nakamoto',
+    },
+
+    intro_two: {
+      title: 'Hashing it out',
+      paragraph_one:
+        '—The old computer coughs a little, then produces a wad of data in something called a “spreadsheet”: contact info for some of the largest bitcoin pool operators and a patch to the virus that is letting BitRey control them. Send the file to them so they can regain control of their machines and join your fight against BitRey.',
+      paragraph_two:
+        'HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”',
+    },
+
+    solo_one: {
+      title: 'You vs. Bitrey',
+      heading: 'Let’s give it a try',
+      paragraph_one:
+        'While you’re waiting for the pool operators, you decide to fend off BitRey by yourself. Here’s how your hash rate stacks up. How do you think this will go?',
+    },
+    pool_one: {
+      title: 'Coop vs. BitRey',
+      heading: 'Here we go',
+      paragraph_one:
+        'When you combine your hash rate with the other pool operator’s, can you stand up against Bitrey?',
+    },
+
+    outro_one: {
+      title: 'Outro',
+      heading: 'Take that, Vanderpoole! ',
+      paragraph_one:
+        'Great work! You and your collaborators were able to fend off Vanderpoole’s 51% attack by pooling your resources together. Empty blocks are no longer being submitted and it looks like he’s given up.',
+      paragraph_two:
+        'It’s time to reap your rewards! Go to the next chapter to withdraw your bitcoin.',
+    },
   },
 
   chapter_four: {

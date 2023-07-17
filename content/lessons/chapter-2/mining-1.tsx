@@ -3,10 +3,14 @@
 import { useTranslations, useSaveAndProceed } from 'hooks'
 import {
   Title,
-  MiningStatistic,
-  MiningStatisticNonce,
-  MiningStatisticHash,
   ProgressBar,
+  Card,
+  BlockCounter,
+  NonceCounter,
+  HashDisplayer,
+  TitleCard,
+  HashFrequency,
+  StartButton,
 } from 'ui'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
@@ -34,16 +38,13 @@ export default function Mining1({ lang }) {
   const [ramdomNonce, setRandomNonce] = useState(false)
   const [finalMining, setFinalMining] = useState(false)
   const [showText, setShowText] = useState(true)
+  const [hashPower, setHashPower] = useState(0)
 
   const saveAndProceed = useSaveAndProceed()
 
   useEffect(() => {
     setHydrated(true)
   }, [])
-
-  useEffect(() => {
-    setShowText(true)
-  }, [step])
 
   function displayRandomNumbers(NonceStepSize: number, time: number): void {
     let currentNonce = nonce
@@ -81,7 +82,7 @@ export default function Mining1({ lang }) {
         currentBlock = currentBlock + 1
         setBlocks(currentBlock)
         setTransactionsConfirmed(currentBlock * 3500)
-        setBitcoinMined(currentBlock * 0.0061)
+        setBitcoinMined(currentBlock * 0.061)
       }, 8 * 1000)
     }
     return () => clearInterval(interval)
@@ -104,32 +105,37 @@ export default function Mining1({ lang }) {
     let currentBlock = blocks
     if (finalMining) {
       interval = setInterval(() => {
-        currentBlock = Math.min(
-          currentBlock + Math.floor(Math.random() * 3),
-          1000
-        )
+        currentBlock = currentBlock + 1
         setBlocks(currentBlock)
         setTransactionsConfirmed(currentBlock * 3500)
-        setBitcoinMined(currentBlock * 0.0061)
-      }, 40)
+        setBitcoinMined(currentBlock * 0.061)
+      }, Math.floor(Math.random() * 1000))
     }
     return () => clearInterval(interval)
   }, [finalMining])
 
   useEffect(() => {
-    if (blocks === 1000) {
-      setStep(4)
-      setNonceHighlight(true)
-      setHashPowerHighlight(true)
-      setRandomNonce(false)
-      setFinalMining(false)
+    if (blocks === 100) {
+      explanationStep()
     }
   }, [blocks])
 
+  const explanationStep = async () => {
+    setShowText(false)
+    setRandomNonce(false)
+    setFinalMining(false)
+    await sleep(325)
+    setStep(4)
+    setShowText(true)
+    setNonceHighlight(true)
+    setHashPowerHighlight(true)
+  }
+
   const transactionStep = async () => {
     setShowText(false)
-    await sleep(300)
+    await sleep(325)
     setStep(5)
+    setShowText(true)
     setNonceHighlight(false)
     setHashPowerHighlight(false)
     setTransactionsConfirmedHighlight(true)
@@ -137,40 +143,45 @@ export default function Mining1({ lang }) {
 
   const bitcoinStep = async () => {
     setShowText(false)
-    await sleep(300)
+    await sleep(325)
     setStep(6)
+    setShowText(true)
     setTransactionsConfirmedHighlight(false)
     setBitcoinMinedHighlight(true)
   }
 
   const finalStep = async () => {
     setShowText(false)
-    await sleep(300)
+    await sleep(325)
     setStep(7)
+    setShowText(true)
     setBitcoinMinedHighlight(false)
   }
 
   const turnOnButton = async () => {
     if (step === 0) {
       setShowText(false)
-      await sleep(300)
+      await sleep(325)
       setStep(1)
+      setShowText(true)
       const time = 15 * 1000
       displayRandomNumbers(1760, time)
       setTimeout(async () => {
         setShowText(false)
-        await sleep(300)
+        await sleep(325)
         setStep(2)
+        setShowText(true)
         setBlocks(1)
         setTransactionsConfirmed(3500)
-        setBitcoinMined(0.0061)
+        setBitcoinMined(0.061)
       }, time)
     }
 
     if (step === 2) {
       setShowText(false)
-      await sleep(300)
+      await sleep(325)
       setStep(3)
+      setShowText(true)
       setRandomNonce(true)
     }
 
@@ -187,53 +198,97 @@ export default function Mining1({ lang }) {
   return (
     hydrated && (
       <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
-        <div className="fade-in grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:my-0 md:mx-[30px] md:w-[405px] md:p-[25px]">
-          <div
-            className={clsx(
-              'relative mb-2.5 font-nunito text-lg font-semibold',
-              {
-                'fade-in text-white': blocks !== 0,
-                'text-black/50': blocks === 0,
+        <div className="fade-in grid w-full grid-cols-1 items-center px-[15px] py-[25px] md:order-last md:mx-[30px] md:my-0 md:w-[405px] md:p-[25px]">
+          <Card className="mt-5 font-nunito text-lg font-semibold" transparent>
+            <div className="mb-2.5 flex">
+              <span
+                className={clsx({
+                  'fade-in text-black/50': blocks === 0,
+                  'fade-in text-[#EDA081]': blocks !== 0,
+                })}
+              >
+                {t('chapter_two.mining_one.progress_bar_title')}
+              </span>
+              <BlockCounter blocks={blocks} total={100} className="ml-auto" />
+            </div>
+            <ProgressBar progress={blocks} />
+          </Card>
+          <Card className="mt-5 flex" highlight={nonceHighlight}>
+            <div className="flex flex-col">
+              <TitleCard
+                title={t('chapter_two.mining_one.progress_bar_one')}
+                disabled={nonce === 0}
+              />
+              <NonceCounter content={nonce} disabled={nonce === 0} />
+            </div>
+            <HashDisplayer
+              content={nonce}
+              disabled={nonce === 0}
+              step={step}
+              finalHash={
+                '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
               }
-            )}
-          >
-            <span className={clsx({ 'fade-in text-[#EDA081]': blocks !== 0 })}>
-              {t('chapter_two.mining_one.progress_bar_title')}
-            </span>{' '}
-            <span className="absolute right-0">
-              {Intl.NumberFormat().format(blocks)} of 1,000
-            </span>
+              blockFound={blocks}
+            />
+          </Card>
+          <Card className="mt-5 flex-row" highlight={hashPowerHighlight}>
+            <div className="flex">
+              <div className="flex-1">
+                <TitleCard
+                  title={t('chapter_two.mining_one.progress_bar_two')}
+                  disabled={nonce === 0}
+                />
+                <HashFrequency
+                  disabled={nonce === 0}
+                  step={step}
+                  hashPower={hashPower}
+                />
+              </div>
+              <StartButton
+                hashPower={hashPower}
+                setHashPower={setHashPower}
+                onButtonClick={turnOnButton}
+                step={step}
+              ></StartButton>
+            </div>
+            <ProgressBar progress={hashPower / 440} variant={'bars'} />{' '}
+            {/* progress = hashPower * 100/maxHashPower */}
+          </Card>
+          <div className="mt-5 flex items-center justify-between gap-x-2.5 text-center font-space-mono">
+            <Card className="w-1/2" highlight={transactionsConfirmedHighlight}>
+              <div
+                className={clsx('font-space-mono text-2xl', {
+                  'text-black/25': transactionsConfirmed === 0,
+                  'fade-in text-white': transactionsConfirmed !== 0,
+                })}
+              >
+                {Intl.NumberFormat().format(transactionsConfirmed)}
+              </div>
+              <TitleCard
+                title={t('chapter_two.mining_one.progress_bar_three')}
+                disabled={transactionsConfirmed === 0}
+                size={'small'}
+              />
+            </Card>
+            <Card className="w-1/2" highlight={bitcoinMinedHighlight}>
+              <div
+                className={clsx('font-space-mono text-2xl', {
+                  'text-black/25': bitcoinMined === 0,
+                  'fade-in text-white': bitcoinMined !== 0,
+                })}
+              >
+                {bitcoinMined.toFixed(4)}
+              </div>
+              <TitleCard
+                title={t('chapter_two.mining_one.progress_bar_four')}
+                disabled={bitcoinMined === 0}
+                size={'small'}
+              />
+            </Card>
           </div>
-          <ProgressBar progress={blocks / 10} />
-          <MiningStatisticNonce
-            title={t('chapter_two.mining_one.progress_bar_one')}
-            content={nonce}
-            highlight={nonceHighlight}
-            disabled={nonce === 0}
-            step={step}
-            finalHash={
-              '000000000072947e2f22250fac0ddd882fcbf37cf6e2340a41129b6r23a2823a'
-            }
-            blockFound={blocks}
-          />
-          <MiningStatisticHash
-            title={t('chapter_two.mining_one.progress_bar_two')}
-            highlight={hashPowerHighlight}
-            disabled={nonce === 0}
-            onButtonClick={turnOnButton}
-            step={step}
-          />
-          <MiningStatistic
-            transaction={transactionsConfirmed}
-            bitcoin={bitcoinMined}
-            transactionHighlight={transactionsConfirmedHighlight}
-            bitcoinHighlight={bitcoinMinedHighlight}
-            bitcoinTitle={t('chapter_two.mining_one.progress_bar_four')}
-            transactionTitle={t('chapter_two.mining_one.progress_bar_three')}
-          />
         </div>
         <div
-          className={`mb-5 flex w-full items-center px-[15px] transition-opacity md:mx-0 md:mt-0 md:mb-0 md:w-1/2 md:max-w-[405px] md:pr-0 md:pl-[15px] ${
+          className={`mb-5 flex w-full items-center px-[15px] transition-opacity md:mx-0 md:mb-0 md:mt-0 md:w-1/2 md:max-w-[405px] md:pl-[15px] md:pr-0 ${
             showText ? 'fade-in' : 'fade-out'
           }`}
         >
@@ -243,7 +298,6 @@ export default function Mining1({ lang }) {
               <div className="mt-2 text-lg">
                 {t('chapter_two.mining_one.paragraph_one')}
               </div>
-
               <div className="mt-8 text-lg">
                 {t('chapter_two.mining_one.paragraph_two')}
               </div>
@@ -283,9 +337,9 @@ export default function Mining1({ lang }) {
               </div>
               <div className="mt-2 break-all border border-dashed border-white p-2.5 font-space-mono text-[15px] font-normal">
                 0000 0000 00
-                <span className="text-white text-opacity-50">
-                  72 947e 2f22 250f ac0d dd88<br></br> 2fcb f37c f6e2 340a 4112
-                  9b6r 23a2 823a
+                <span className="break-keep text-white text-opacity-50">
+                  72 947e 2f22 250f ac0d dd88 2fcb f37c f6e2 340a 4112 9b6r 23a2
+                  823a
                 </span>
               </div>
               <div className="mt-8 text-lg">

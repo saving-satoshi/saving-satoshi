@@ -1,13 +1,12 @@
 'use client'
 
-import { Button } from 'shared'
 import { useSaveAndReturn, useTranslations, usePathData } from 'hooks'
 import { Modal, useModalContext } from 'providers/ModalProvider'
 import { useAuthContext } from 'providers/AuthProvider'
-import { keys } from 'lib/progress'
 import { lessons } from 'content'
-import clsx from 'clsx'
-import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import DesktopEnd from './DesktopEnd'
+import MobileEnd from './MobileEnd'
 
 export default function End({
   image,
@@ -27,10 +26,22 @@ export default function End({
   const { account } = useAuthContext()
   const saveAndReturn = useSaveAndReturn()
   const { chapterId, lessonId } = usePathData()
+  const [isDesktop, setDesktop] = useState(
+    typeof window !== 'undefined' && window.innerWidth > 768
+  )
 
   const chapterLessons = lessons?.[chapterId]
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null
   const currentLessonKey = lesson?.key ?? 'CH1INT1'
+
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 768)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', updateMedia)
+    return () => window.removeEventListener('resize', updateMedia)
+  })
 
   const handleClick = () => {
     if (!account) {
@@ -41,42 +52,32 @@ export default function End({
   }
 
   return (
-    <div className={className}>
-      <Image
-        src={image}
-        alt={t('chapter_two.title')}
-        fill
-        quality={100}
-        loading="eager"
-        priority
-        className="object-cover"
-      />
-      <div className="absolute bottom-0 ml-auto w-full bg-gradient-to-b from-transparent via-[#00000040] to-[#00000080] p-4 pb-12 text-left md:p-16">
-        <div
-          className={clsx('max-w-[500px]', {
-            'float-left': direction === 'left',
-            'float-right': direction === 'right',
-          })}
+    <>
+      {isDesktop && (
+        <DesktopEnd
+          image={image}
+          lang={lang}
+          direction={direction}
+          className={className}
+          account={account}
+          onClick={handleClick}
+          currentLessonKey={currentLessonKey}
         >
           {children}
-          <div className="mt-4 flex w-full flex-col gap-4 xl:w-2/3">
-            <Button onClick={handleClick} size="small">
-              {(!account && t('chapter_one.end.save')) ||
-                (account && t('shared.next'))}
-            </Button>
-            {keys[keys.length - 1] === currentLessonKey && (
-              <Button
-                href="https://forms.gle/WhdJwcKKetB9sFL79"
-                external
-                style="outline"
-                size="small"
-              >
-                {t('chapter_one.end.feedback')}
-              </Button>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+        </DesktopEnd>
+      )}
+      {!isDesktop && (
+        <MobileEnd
+          image={image}
+          lang={lang}
+          className={className}
+          account={account}
+          onClick={handleClick}
+          currentLessonKey={currentLessonKey}
+        >
+          {children}
+        </MobileEnd>
+      )}
+    </>
   )
 }
