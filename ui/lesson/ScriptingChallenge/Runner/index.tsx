@@ -116,7 +116,7 @@ export default function Runner({
             const error = payload.message.trim()
             const lines = error.split('\n')
             lines.forEach((line) =>
-              sendTerminal('print', line.replace(' ', '&nbsp'))
+              sendTerminal('print', line.replace(' ', '&nbsp;'))
             )
             setHasherState(HasherState.Error)
             setIsRunning(false)
