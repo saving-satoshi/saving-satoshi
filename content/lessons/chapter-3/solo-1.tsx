@@ -169,7 +169,7 @@ export default function Solo1({ lang }) {
                 </span>
               </Card>*/}
               <Card className="flex gap-4">
-                <span className="fade-in font-nunito text-[15px] font-bold text-[#EDA081]">
+                <span className="fade-in w-[159px] font-nunito text-[15px] font-bold text-[#EDA081]">
                   Hashrate
                 </span>
                 <HashFrequency
