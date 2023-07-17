@@ -9,7 +9,7 @@ export default function NonceCounter({
 }) {
   return (
     <div
-      className={clsx('font-space-mono text-2xl font-normal', {
+      className={clsx('font-space-mono font-normal', {
         'text-black/25': disabled,
         'fade-in text-white': !disabled,
       })}

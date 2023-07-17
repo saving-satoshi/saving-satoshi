@@ -415,17 +415,23 @@ const translations = {
 
     solo_one: {
       title: 'You vs. Bitrey',
-      heading: 'Let’s give it a try',
-      paragraph_one:
+      step_zero_heading: 'Let’s give it a try',
+      step_zero_paragraph_one:
         'While you’re waiting for the pool operators, you decide to fend off BitRey by yourself. Here’s how your hash rate stacks up. How do you think this will go?',
+      step_one_heading: 'We’re off to the races',
+      step_one_paragraph_one:
+        'We’re mining for another 100 blocks to see how many BitRey will mine, and how many you will.',
+      step_two_heading: 'That did not go too well!',
+      step_two_paragraph_one:
+        'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s go back to the drawing board. Bitcoin has been running for over a decade and it’s not going down without a fight.',
     },
     pool_one: {
       title: 'Coop vs. BitRey',
       step_zero_heading: 'Here we go',
       step_zero_paragraph_one:
         'When you combine your hash rate with the other pool operator’s, can you stand up against Bitrey?',
-      step_one_heading: 'Another defeat!',
-      step_one_paragraph_one:
+      step_two_heading: 'Another defeat!',
+      step_two_paragraph_one:
         'Something is wrong. Only one of your miners found blocks, Why do you think that might be?',
     },
 

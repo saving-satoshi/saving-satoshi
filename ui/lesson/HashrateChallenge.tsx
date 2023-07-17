@@ -42,13 +42,11 @@ export default function HashrateChallenge({
         profiles={profiles}
         verticalProfiles={verticalProfiles}
       >
-        {/*text and contribution bar*/}
         <div className="flex h-full max-h-[69px] w-full max-w-[800px] flex-col gap-[10px] text-white">
-          {/*Top Text*/}
           <div className="flex items-center justify-between gap-[10px] self-stretch">
             <span
               className={clsx(
-                'my-[2px] h-[25px] min-w-[250px] text-left font-nunito text-[18px] font-semibold text-white',
+                'my-[2px] h-[25px] min-w-[100px] text-left font-nunito text-[18px] font-semibold text-white',
                 {
                   'opacity-25': blocks1 === 0,
                 }
@@ -70,7 +68,7 @@ export default function HashrateChallenge({
             </div>
             <span
               className={clsx(
-                'my-[2px] h-[25px] min-w-[250px] text-right font-nunito text-[18px] font-semibold text-white',
+                'my-[2px] h-[25px] min-w-[100px] text-right font-nunito text-[18px] font-semibold text-white',
                 {
                   'opacity-25': blocks2 === 0,
                 }
@@ -79,7 +77,6 @@ export default function HashrateChallenge({
               {blocks2} blocks
             </span>
           </div>
-          {/*Contribution Bar added below*/}
           <ContributionBar
             total={totalBlocks}
             protagonists={protagonists}

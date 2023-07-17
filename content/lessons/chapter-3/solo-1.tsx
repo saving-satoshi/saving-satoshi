@@ -7,6 +7,7 @@ import { sleep } from 'utils'
 import { ProfileWithHashPower } from 'types'
 import { Card, HashFrequency, Text, HashrateChallenge } from 'ui'
 import Profile from 'ui/common/Profile'
+import clsx from 'clsx'
 
 export const metadata = {
   title: 'chapter_three.solo_one.title',
@@ -16,29 +17,7 @@ export const metadata = {
 
 export default function Solo1({ lang }) {
   const t = useTranslations(lang)
-  const TOTAL_BLOCKS = 100
 
-  const PROTAGONISTS = [
-    {
-      username: 'You',
-      avatar: '/assets/avatars/1.png',
-      hashpower: 4395,
-      color: '#F3AB29',
-      value: TOTAL_BLOCKS * 0.1,
-    },
-  ]
-
-  const ANTAGONISTS = [
-    {
-      username: 'BitRey',
-      avatar: '/assets/avatars/5.png',
-      hashpower: 34421,
-      color: '#7E002E',
-      value: TOTAL_BLOCKS * 0.3,
-    },
-  ]
-
-  const PROFILES: ProfileWithHashPower[] = [...PROTAGONISTS, ...ANTAGONISTS]
   const [transactionsConfirmed, setTransactionsConfirmed] = useState(0)
   const [bitcoinMined, setBitcoinMined] = useState(0)
   const [step, setStep] = useState(0)
@@ -123,6 +102,30 @@ export default function Solo1({ lang }) {
     }
   }
 
+  const TOTAL_BLOCKS = 100
+
+  const PROTAGONISTS = [
+    {
+      username: 'You',
+      avatar: '/assets/avatars/1.png',
+      hashpower: 4395,
+      color: '#F3AB29',
+      value: step === 0 ? 0 : TOTAL_BLOCKS * 0.11,
+    },
+  ]
+
+  const ANTAGONISTS = [
+    {
+      username: 'BitRey',
+      avatar: '/assets/avatars/5.png',
+      hashpower: 34421,
+      color: '#7E002E',
+      value: step === 0 ? 0 : TOTAL_BLOCKS * 0.89,
+    },
+  ]
+
+  const PROFILES: ProfileWithHashPower[] = [...PROTAGONISTS, ...ANTAGONISTS]
+
   if (!hydrated) {
     return null
   }
@@ -143,6 +146,29 @@ export default function Solo1({ lang }) {
               description={profile.description}
             >
               <Card className="flex">
+                <span
+                  className={clsx('fade-in font-nunito text-[15px] font-bold', {
+                    'text-white text-opacity-25': step === 0,
+                    'fade-in text-[#EDA081]': step !== 0,
+                  })}
+                >
+                  Blocks found
+                </span>
+                <span
+                  className={clsx(
+                    'fade-in font-nunito text-[15px] font-bold text-white',
+                    {
+                      'text-opacity-25': step === 0,
+                    }
+                  )}
+                >
+                  {i === 2 || i === 4
+                    ? (i === 2 && PROTAGONISTS[2].value) ||
+                      (i === 4 && ANTAGONISTS[0].value)
+                    : 0}
+                </span>
+              </Card>
+              <Card className="flex gap-4">
                 <span className="fade-in font-nunito text-[15px] font-bold text-[#EDA081]">
                   Hashrate
                 </span>
@@ -154,11 +180,33 @@ export default function Solo1({ lang }) {
                 />
               </Card>
               <Card className="flex">
-                <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
+                <span
+                  className={clsx('fade-in font-nunito text-[15px] font-bold', {
+                    'text-white text-opacity-25': step === 0,
+                    'fade-in text-[#EDA081]': step !== 0,
+                  })}
+                >
                   Hashes
                 </span>
                 <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
-                  0
+                  <div
+                    className={clsx('font-space-mono font-normal', {
+                      'text-white/25': step === 0,
+                      'fade-in text-white': step !== 0,
+                    })}
+                  >
+                    {step === 0
+                      ? 0
+                      : (
+                          profile.hashpower /
+                          5 ** (profile.hashpower.toString().length - 2)
+                        ).toFixed(2)}
+                    {step !== 0 && (
+                      <span className="fade-in text-white/50">
+                        *10<sup>{profile.hashpower.toString().length + 11}</sup>
+                      </span>
+                    )}
+                  </div>
                 </span>
               </Card>
             </Profile>
@@ -176,30 +224,30 @@ export default function Solo1({ lang }) {
           {step === 0 && (
             <span className="flex flex-col items-start gap-[10px] md:w-[400px] md:min-w-[400px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
-                {t('chapter_three.solo_one.heading')}
+                {t('chapter_three.solo_one.step_zero_heading')}
               </Text>
               <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
-                {t('chapter_three.solo_one.paragraph_one')}
+                {t('chapter_three.solo_one.step_zero_paragraph_one')}
               </Text>
             </span>
           )}
           {step === 1 && (
             <span className="flex flex-col items-start gap-[10px] md:w-[400px] md:min-w-[400px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
-                {t('chapter_three.solo_one.heading')}
+                {t('chapter_three.solo_one.step_one_heading')}
               </Text>
               <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
-                {t('chapter_three.solo_one.paragraph_one')}
+                {t('chapter_three.solo_one.step_one_paragraph_one')}
               </Text>
             </span>
           )}
           {step === 2 && (
             <span className="flex flex-col items-start gap-[10px] md:w-[400px] md:min-w-[400px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
-                {t('chapter_three.solo_one.heading')}
+                {t('chapter_three.solo_one.step_two_heading')}
               </Text>
               <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
-                {t('chapter_three.solo_one.paragraph_one')}
+                {t('chapter_three.solo_one.step_two_paragraph_one')}
               </Text>
               <Button
                 onClick={saveAndProceed}

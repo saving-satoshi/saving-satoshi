@@ -5,8 +5,9 @@ import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import { sleep } from 'utils'
 import { ProfileWithHashPower } from 'types'
-import { Card, HashFrequency, Text, HashrateChallenge } from 'ui'
+import { Card, HashFrequency, Text, HashrateChallenge, NonceCounter } from 'ui'
 import Profile from 'ui/common/Profile'
+import clsx from 'clsx'
 
 export const metadata = {
   title: 'chapter_three.pool_one.title',
@@ -100,28 +101,28 @@ export default function Pool1({ lang }) {
       avatar: '/assets/avatars/1.png',
       hashpower: 4395,
       color: '#F3AB29',
-      value: TOTAL_BLOCKS * 0.1,
+      value: 0,
     },
     {
       username: 'Mining Maniacs',
       avatar: '/assets/avatars/2.png',
       hashpower: 5054,
       color: '#FE5329',
-      value: TOTAL_BLOCKS * 0.1,
+      value: 0,
     },
     {
       username: 'Hash Hoppers',
       avatar: '/assets/avatars/3.png',
       hashpower: 7911,
       color: '#62BFB7',
-      value: TOTAL_BLOCKS * 0.1,
+      value: step === 0 ? 0 : TOTAL_BLOCKS * 0.3,
     },
     {
       username: 'Coin Crunchers',
       avatar: '/assets/avatars/4.png',
       hashpower: 2857,
       color: '#85BF09',
-      value: TOTAL_BLOCKS * 0.1,
+      value: 0,
     },
   ]
 
@@ -131,7 +132,7 @@ export default function Pool1({ lang }) {
       avatar: '/assets/avatars/5.png',
       hashpower: 18599,
       color: '#7E002E',
-      value: TOTAL_BLOCKS * 0.3,
+      value: step === 0 ? 0 : TOTAL_BLOCKS * 0.7,
     },
   ]
 
@@ -155,11 +156,26 @@ export default function Pool1({ lang }) {
             description={profile.description}
           >
             <Card className="flex">
-              <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
+              <span
+                className={clsx('fade-in font-nunito text-[15px] font-bold', {
+                  'text-white text-opacity-25': step === 0,
+                  'fade-in text-[#EDA081]': step !== 0,
+                })}
+              >
                 Blocks found
               </span>
-              <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
-                0
+              <span
+                className={clsx(
+                  'fade-in font-nunito text-[15px] font-bold text-white',
+                  {
+                    'text-opacity-25': step === 0,
+                  }
+                )}
+              >
+                {i === 2 || i === 4
+                  ? (i === 2 && PROTAGONISTS[2].value) ||
+                    (i === 4 && ANTAGONISTS[0].value)
+                  : 0}
               </span>
             </Card>
             <Card className="flex gap-4">
@@ -174,17 +190,47 @@ export default function Pool1({ lang }) {
               />
             </Card>
             <Card className="flex">
-              <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
+              <span
+                className={clsx('fade-in font-nunito text-[15px] font-bold', {
+                  'text-white text-opacity-25': step === 0,
+                  'fade-in text-[#EDA081]': step !== 0,
+                })}
+              >
                 Hashes
               </span>
               <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
-                0
+                <div
+                  className={clsx('font-space-mono font-normal', {
+                    'text-white/25': step === 0,
+                    'fade-in text-white': step !== 0,
+                  })}
+                >
+                  {step === 0
+                    ? 0
+                    : (
+                        profile.hashpower /
+                        5 ** (profile.hashpower.toString().length - 2)
+                      ).toFixed(2)}
+                  {step !== 0 && (
+                    <span className="fade-in text-white/50">
+                      *10<sup>{profile.hashpower.toString().length + 11}</sup>
+                    </span>
+                  )}
+                </div>
               </span>
             </Card>
           </Profile>
         ))}
-        blocks1={PROTAGONISTS.reduce((acc, profile) => acc + profile.value, 0)}
-        blocks2={ANTAGONISTS.reduce((acc, profile) => acc + profile.value, 0)}
+        blocks1={
+          step !== 0
+            ? PROTAGONISTS.reduce((acc, profile) => acc + profile.value, 0)
+            : 0
+        }
+        blocks2={
+          step !== 0
+            ? ANTAGONISTS.reduce((acc, profile) => acc + profile.value, 0)
+            : 0
+        }
       >
         {step === 0 && (
           <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
@@ -200,10 +246,10 @@ export default function Pool1({ lang }) {
           <>
             <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
-                {t('chapter_three.pool_one.step_one_heading')}
+                {t('chapter_three.pool_one.step_two_heading')}
               </Text>
               <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-                {t('chapter_three.pool_one.step_one_paragraph_one')}
+                {t('chapter_three.pool_one.step_two_paragraph_one')}
               </Text>
             </span>
             <Button onClick={saveAndProceed} classes="max-md:w-full">

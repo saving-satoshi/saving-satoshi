@@ -118,7 +118,7 @@ export default function Card({
           10x
         </div>
       )}
-      <div
+      <button
         className={clsx(
           'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
           {
@@ -132,7 +132,7 @@ export default function Card({
         onClick={handleClick}
       >
         {hasherState ? 'Running' : startText}
-      </div>
+      </button>
     </div>
   )
 }
