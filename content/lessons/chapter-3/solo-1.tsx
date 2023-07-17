@@ -33,6 +33,30 @@ export default function Solo1({ lang }) {
 
   const saveAndProceed = useSaveAndProceed()
 
+  const TOTAL_BLOCKS = 100
+
+  const PROTAGONISTS = [
+    {
+      username: 'You',
+      avatar: '/assets/avatars/1.png',
+      hashpower: 4395,
+      color: '#F3AB29',
+      value: step === 0 ? 0 : blocks1,
+    },
+  ]
+
+  const ANTAGONISTS = [
+    {
+      username: 'BitRey',
+      avatar: '/assets/avatars/5.png',
+      hashpower: 34421,
+      color: '#7E002E',
+      value: step === 0 ? 0 : blocks2,
+    },
+  ]
+
+  const PROFILES: ProfileWithHashPower[] = [...PROTAGONISTS, ...ANTAGONISTS]
+
   useEffect(() => {
     setHydrated(true)
   }, [])
@@ -101,30 +125,6 @@ export default function Solo1({ lang }) {
       setFinalMining(true)
     }
   }
-
-  const TOTAL_BLOCKS = 100
-
-  const PROTAGONISTS = [
-    {
-      username: 'You',
-      avatar: '/assets/avatars/1.png',
-      hashpower: 4395,
-      color: '#F3AB29',
-      value: step === 0 ? 0 : blocks1,
-    },
-  ]
-
-  const ANTAGONISTS = [
-    {
-      username: 'BitRey',
-      avatar: '/assets/avatars/5.png',
-      hashpower: 34421,
-      color: '#7E002E',
-      value: step === 0 ? 0 : blocks2,
-    },
-  ]
-
-  const PROFILES: ProfileWithHashPower[] = [...PROTAGONISTS, ...ANTAGONISTS]
 
   if (!hydrated) {
     return null

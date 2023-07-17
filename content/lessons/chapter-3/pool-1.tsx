@@ -32,6 +32,51 @@ export default function Pool1({ lang }) {
 
   const saveAndProceed = useSaveAndProceed()
 
+  const TOTAL_BLOCKS = 100
+
+  const PROTAGONISTS = [
+    {
+      username: 'You',
+      avatar: '/assets/avatars/1.png',
+      hashpower: 4395,
+      color: '#F3AB29',
+      value: 0,
+    },
+    {
+      username: 'Mining Maniacs',
+      avatar: '/assets/avatars/2.png',
+      hashpower: 5054,
+      color: '#FE5329',
+      value: 0,
+    },
+    {
+      username: 'Hash Hoppers',
+      avatar: '/assets/avatars/3.png',
+      hashpower: 7911,
+      color: '#62BFB7',
+      value: step === 0 ? 0 : blocks1,
+    },
+    {
+      username: 'Coin Crunchers',
+      avatar: '/assets/avatars/4.png',
+      hashpower: 2857,
+      color: '#85BF09',
+      value: 0,
+    },
+  ]
+
+  const ANTAGONISTS = [
+    {
+      username: 'BitRey',
+      avatar: '/assets/avatars/5.png',
+      hashpower: 18599,
+      color: '#7E002E',
+      value: step === 0 ? 0 : blocks2,
+    },
+  ]
+
+  const PROFILES: ProfileWithHashPower[] = [...PROTAGONISTS, ...ANTAGONISTS]
+
   useEffect(() => {
     setHydrated(true)
   }, [])
@@ -92,51 +137,6 @@ export default function Pool1({ lang }) {
       setFinalMining(true)
     }
   }
-
-  const TOTAL_BLOCKS = 100
-
-  const PROTAGONISTS = [
-    {
-      username: 'You',
-      avatar: '/assets/avatars/1.png',
-      hashpower: 4395,
-      color: '#F3AB29',
-      value: 0,
-    },
-    {
-      username: 'Mining Maniacs',
-      avatar: '/assets/avatars/2.png',
-      hashpower: 5054,
-      color: '#FE5329',
-      value: 0,
-    },
-    {
-      username: 'Hash Hoppers',
-      avatar: '/assets/avatars/3.png',
-      hashpower: 7911,
-      color: '#62BFB7',
-      value: step === 0 ? 0 : blocks1,
-    },
-    {
-      username: 'Coin Crunchers',
-      avatar: '/assets/avatars/4.png',
-      hashpower: 2857,
-      color: '#85BF09',
-      value: 0,
-    },
-  ]
-
-  const ANTAGONISTS = [
-    {
-      username: 'BitRey',
-      avatar: '/assets/avatars/5.png',
-      hashpower: 18599,
-      color: '#7E002E',
-      value: step === 0 ? 0 : blocks2,
-    },
-  ]
-
-  const PROFILES: ProfileWithHashPower[] = [...PROTAGONISTS, ...ANTAGONISTS]
 
   return (
     <div className="flex flex-col items-center gap-[30px] py-[30px] px-[15px] md:py-[75px] md:px-[75px]">
