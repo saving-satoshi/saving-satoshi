@@ -119,6 +119,8 @@ export default function Runner({
             setHasherState(HasherState.Error)
             setIsRunning(false)
             setState(State.Error)
+            ws?.close()
+
             break
           }
           case 'debug': {
