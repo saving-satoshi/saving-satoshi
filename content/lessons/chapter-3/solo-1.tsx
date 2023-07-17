@@ -55,13 +55,13 @@ export default function Solo1({ lang }) {
     if (finalMining) {
       interval = setInterval(() => {
         currentBlock1 = Math.min(
-          currentBlock1 + Math.floor(Math.random() * 3),
-          170
+          currentBlock1 + Math.floor(Math.random() * 2),
+          11
         )
         setBlocks1(currentBlock1)
         setTransactionsConfirmed(currentBlock1 * 3500)
         setBitcoinMined(currentBlock1 * 0.0061)
-      }, 40)
+      }, 250)
     }
     return () => clearInterval(interval)
   }, [finalMining])
@@ -72,8 +72,8 @@ export default function Solo1({ lang }) {
     if (finalMining) {
       interval = setInterval(() => {
         currentBlock2 = Math.min(
-          currentBlock2 + Math.floor(Math.random() * 3),
-          226
+          currentBlock2 + Math.floor(Math.random() * 2),
+          89
         )
         setBlocks2(currentBlock2)
         setTransactionsConfirmed(currentBlock2 * 3500)
@@ -84,7 +84,7 @@ export default function Solo1({ lang }) {
   }, [finalMining])
 
   useEffect(() => {
-    if (blocks1 + blocks2 === 396) {
+    if (blocks1 + blocks2 === 100) {
       setStep(2)
       setNonceHighlight(true)
       setHashPowerHighlight(true)
@@ -110,7 +110,7 @@ export default function Solo1({ lang }) {
       avatar: '/assets/avatars/1.png',
       hashpower: 4395,
       color: '#F3AB29',
-      value: step === 0 ? 0 : TOTAL_BLOCKS * 0.11,
+      value: step === 0 ? 0 : blocks1,
     },
   ]
 
@@ -120,7 +120,7 @@ export default function Solo1({ lang }) {
       avatar: '/assets/avatars/5.png',
       hashpower: 34421,
       color: '#7E002E',
-      value: step === 0 ? 0 : TOTAL_BLOCKS * 0.89,
+      value: step === 0 ? 0 : blocks2,
     },
   ]
 
@@ -145,29 +145,6 @@ export default function Solo1({ lang }) {
               avatar={profile.avatar}
               description={profile.description}
             >
-              {/*<Card className="flex">
-                <span
-                  className={clsx('fade-in font-nunito text-[15px] font-bold', {
-                    'text-white text-opacity-25': step === 0,
-                    'fade-in text-[#EDA081]': step !== 0,
-                  })}
-                >
-                  Blocks found
-                </span>
-                <span
-                  className={clsx(
-                    'fade-in font-nunito text-[15px] font-bold text-white',
-                    {
-                      'text-opacity-25': step === 0,
-                    }
-                  )}
-                >
-                  {i === 2 || i === 4
-                    ? (i === 2 && PROTAGONISTS[2].value) ||
-                      (i === 4 && ANTAGONISTS[0].value)
-                    : 0}
-                </span>
-              </Card>*/}
               <Card className="flex gap-4">
                 <span className="fade-in w-[159px] font-nunito text-[15px] font-bold text-[#EDA081]">
                   Hashrate

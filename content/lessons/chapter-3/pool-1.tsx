@@ -46,13 +46,13 @@ export default function Pool1({ lang }) {
     if (finalMining) {
       interval = setInterval(() => {
         currentBlock1 = Math.min(
-          currentBlock1 + Math.floor(Math.random() * 3),
-          170
+          currentBlock1 + Math.floor(Math.random() * 2),
+          30
         )
         setBlocks1(currentBlock1)
         setTransactionsConfirmed(currentBlock1 * 3500)
         setBitcoinMined(currentBlock1 * 0.0061)
-      }, 40)
+      }, 80)
     }
     return () => clearInterval(interval)
   }, [finalMining])
@@ -63,8 +63,8 @@ export default function Pool1({ lang }) {
     if (finalMining) {
       interval = setInterval(() => {
         currentBlock2 = Math.min(
-          currentBlock2 + Math.floor(Math.random() * 3),
-          226
+          currentBlock2 + Math.floor(Math.random() * 2),
+          70
         )
         setBlocks2(currentBlock2)
         setTransactionsConfirmed(currentBlock2 * 3500)
@@ -75,7 +75,7 @@ export default function Pool1({ lang }) {
   }, [finalMining])
 
   useEffect(() => {
-    if (blocks2 === 226) {
+    if (blocks1 + blocks2 === TOTAL_BLOCKS) {
       setStep(2)
       setNonceHighlight(true)
       setHashPowerHighlight(true)
@@ -115,7 +115,7 @@ export default function Pool1({ lang }) {
       avatar: '/assets/avatars/3.png',
       hashpower: 7911,
       color: '#62BFB7',
-      value: step === 0 ? 0 : TOTAL_BLOCKS * 0.3,
+      value: step === 0 ? 0 : blocks1,
     },
     {
       username: 'Coin Crunchers',
@@ -132,7 +132,7 @@ export default function Pool1({ lang }) {
       avatar: '/assets/avatars/5.png',
       hashpower: 18599,
       color: '#7E002E',
-      value: step === 0 ? 0 : TOTAL_BLOCKS * 0.7,
+      value: step === 0 ? 0 : blocks2,
     },
   ]
 
@@ -209,7 +209,7 @@ export default function Pool1({ lang }) {
                     ? 0
                     : (
                         profile.hashpower /
-                        5 ** (profile.hashpower.toString().length - 2)
+                        10 ** (profile.hashpower.toString().length - 2)
                       ).toFixed(2)}
                   {step !== 0 && (
                     <span className="fade-in text-white/50">
