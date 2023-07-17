@@ -6,7 +6,7 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    domains: ['saving-satoshi.s3.amazonaws.com'],
+    domains: ['saving-satoshi.s3.amazonaws.com', 'placekitten.com'],
   },
   webpack(config) {
     config.module.rules.push({

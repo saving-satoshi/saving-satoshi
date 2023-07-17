@@ -7,7 +7,7 @@ export const metadata = {
   title: 'chapter_three.outro_one.title',
   image: '/assets/images/chapter-3-finish.jpg',
   theme: 'bg-transparent/20',
-  secondaryTheme: 'bg-[#3c5c6e]',
+  secondaryTheme: 'bg-[#202233]',
   key: 'CH3OUT1',
 }
 
@@ -17,7 +17,7 @@ export default function Outro1({ lang }) {
   return (
     <ChapterEnd
       image={metadata.image}
-      className="relative -mt-[63px] flex h-[1150px] overflow-y-scroll md:-mt-[70px] md:h-screen"
+      className={`relative -mt-[70px] h-full md:-mt-[70px] md:h-screen ${metadata.secondaryTheme}`}
       direction="left"
       lang={lang}
     >

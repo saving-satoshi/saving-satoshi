@@ -8,7 +8,7 @@ export default function CheckGreen({ className }: { className: string }) {
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       stroke="currentColor"
-      stroke-width="2"
+      strokeWidth="2"
     >
       <path
         d="M1 7.88292L5.91329 12L13 1.5"

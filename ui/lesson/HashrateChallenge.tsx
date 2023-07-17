@@ -2,7 +2,7 @@
 
 import { SetStateAction, Dispatch } from 'react'
 import { clsx } from 'clsx'
-import { ProfilesContainer, StartButton } from 'ui'
+import { ProfilesContainer, StartButton, ContributionBar } from 'ui'
 
 export const metadata = {
   title: 'chapter_two.mining_one.title',
@@ -16,6 +16,9 @@ export default function HashrateChallenge({
   blocks1,
   blocks2,
   hashPower,
+  totalBlocks,
+  protagonists,
+  antagonists,
   setHashPower,
   step,
   turnOnButton,
@@ -27,6 +30,9 @@ export default function HashrateChallenge({
   blocks2: number
   hashPower: number
   step: number
+  totalBlocks: number
+  protagonists: any
+  antagonists: any
   setHashPower: Dispatch<SetStateAction<number>>
   turnOnButton: () => void
 }) {
@@ -74,7 +80,11 @@ export default function HashrateChallenge({
             </span>
           </div>
           {/*Contribution Bar added below*/}
-          <div className="h-[30px] w-full bg-red">Contribution Bar</div>
+          <ContributionBar
+            total={totalBlocks}
+            protagonists={protagonists}
+            antagonists={antagonists}
+          />
         </div>
       </ProfilesContainer>
       {children}
