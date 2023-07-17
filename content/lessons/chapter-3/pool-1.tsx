@@ -40,14 +40,14 @@ export default function Pool1({ lang }) {
       avatar: '/assets/avatars/1.png',
       hashpower: 4395,
       color: '#F3AB29',
-      value: 0,
+      value: step === 0 ? 0 : 1,
     },
     {
       username: 'Mining Maniacs',
       avatar: '/assets/avatars/2.png',
       hashpower: 5054,
       color: '#FE5329',
-      value: 0,
+      value: step === 0 ? 0 : 1,
     },
     {
       username: 'Hash Hoppers',
@@ -61,7 +61,7 @@ export default function Pool1({ lang }) {
       avatar: '/assets/avatars/4.png',
       hashpower: 2857,
       color: '#85BF09',
-      value: 0,
+      value: step === 0 ? 0 : 1,
     },
   ]
 
@@ -92,12 +92,12 @@ export default function Pool1({ lang }) {
       interval = setInterval(() => {
         currentBlock1 = Math.min(
           currentBlock1 + Math.floor(Math.random() * 2),
-          30
+          27
         )
         setBlocks1(currentBlock1)
         setTransactionsConfirmed(currentBlock1 * 3500)
         setBitcoinMined(currentBlock1 * 0.0061)
-      }, 80)
+      }, 75)
     }
     return () => clearInterval(interval)
   }, [finalMining])
@@ -120,7 +120,7 @@ export default function Pool1({ lang }) {
   }, [finalMining])
 
   useEffect(() => {
-    if (blocks1 + blocks2 === TOTAL_BLOCKS) {
+    if (blocks1 + 3 + blocks2 === TOTAL_BLOCKS) {
       setStep(2)
       setNonceHighlight(true)
       setHashPowerHighlight(true)
@@ -166,15 +166,16 @@ export default function Pool1({ lang }) {
               </span>
               <span
                 className={clsx(
-                  'fade-in font-nunito text-[15px] font-bold text-white',
+                  'fade-in font-space-mono text-[15px] font-normal text-white',
                   {
                     'text-opacity-25': step === 0,
                   }
                 )}
               >
                 {i === 2 || i === 4
-                  ? (i === 2 && PROTAGONISTS[2].value) ||
-                    (i === 4 && ANTAGONISTS[0].value)
+                  ? i === 2
+                    ? PROTAGONISTS[2].value
+                    : ANTAGONISTS[0].value
                   : 0}
               </span>
             </Card>
