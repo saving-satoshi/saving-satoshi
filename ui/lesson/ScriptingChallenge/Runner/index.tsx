@@ -145,6 +145,7 @@ export default function Runner({
             setHasherState(HasherState.Success)
             sendTerminal('success', `Found hash: ${payload}`)
             sendTerminal('success', `Five zeroes! That's it!`)
+            ws?.close()
             break
           }
           case 'end': {
