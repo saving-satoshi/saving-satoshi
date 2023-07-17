@@ -145,7 +145,7 @@ export default function Solo1({ lang }) {
               avatar={profile.avatar}
               description={profile.description}
             >
-              <Card className="flex">
+              {/*<Card className="flex">
                 <span
                   className={clsx('fade-in font-nunito text-[15px] font-bold', {
                     'text-white text-opacity-25': step === 0,
@@ -167,7 +167,7 @@ export default function Solo1({ lang }) {
                       (i === 4 && ANTAGONISTS[0].value)
                     : 0}
                 </span>
-              </Card>
+              </Card>*/}
               <Card className="flex gap-4">
                 <span className="fade-in font-nunito text-[15px] font-bold text-[#EDA081]">
                   Hashrate
