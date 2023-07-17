@@ -127,7 +127,7 @@ export default function Pool1({ lang }) {
       setRandomNonce(false)
       setFinalMining(false)
     }
-  }, [blocks2])
+  }, [blocks1, blocks2])
 
   const turnOnButton = async () => {
     if (step === 0) {
