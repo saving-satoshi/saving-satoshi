@@ -1,8 +1,11 @@
 'use client'
 
 import { SetStateAction, Dispatch } from 'react'
+import React from 'react'
 import { clsx } from 'clsx'
+import { sleep } from 'utils'
 import { ProfilesContainer, StartButton, ContributionBar } from 'ui'
+import { useEffect, useState } from 'react'
 
 export const metadata = {
   title: 'chapter_two.mining_one.title',
@@ -13,29 +16,97 @@ export default function HashrateChallenge({
   profiles,
   children,
   verticalProfiles,
-  blocks1,
-  blocks2,
-  hashPower,
   totalBlocks,
+  blockRatio,
   protagonists,
   antagonists,
-  setHashPower,
   step,
-  turnOnButton,
+  onStepUpdate,
+  onProtagonistUpdate,
+  onAntagonistUpdate,
 }: {
   children: any
   profiles: any
   verticalProfiles?: boolean
-  blocks1: number
-  blocks2: number
-  hashPower: number
   step: number
+  onStepUpdate: (newStep: number) => void
+  onProtagonistUpdate: (newBlock: number) => void
+  onAntagonistUpdate: (newBlock: number) => void
   totalBlocks: number
+  blockRatio: number
   protagonists: any
   antagonists: any
-  setHashPower: Dispatch<SetStateAction<number>>
-  turnOnButton: () => void
 }) {
+  const [finalMining, setFinalMining] = useState(false)
+  const [hashPower, setHashPower] = useState(0)
+
+  const handleStep = (num) => {
+    onStepUpdate((step = num))
+  }
+
+  const handleProtagonistBlocks = (num) => {
+    onProtagonistUpdate((protagonistsTotal = num))
+  }
+
+  const handleAntagonistBlocks = (num) => {
+    onAntagonistUpdate((antagonistsTotal = num))
+  }
+
+  let protagonistsTotal = 0
+  protagonists.forEach((item) => {
+    protagonistsTotal += item.value
+  })
+
+  let antagonistsTotal = 0
+  antagonists.forEach((item) => {
+    antagonistsTotal += item.value
+  })
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+    let protagonistBlock = 0
+    if (finalMining) {
+      interval = setInterval(() => {
+        protagonistBlock = Math.min(
+          protagonistBlock + Math.floor(Math.random() * 2),
+          blockRatio
+        )
+        handleProtagonistBlocks(protagonistBlock)
+      }, (totalBlocks - blockRatio) * 3)
+    }
+    return () => clearInterval(interval)
+  }, [finalMining])
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+    let antagonistBlock = 0
+    if (finalMining) {
+      interval = setInterval(() => {
+        antagonistBlock = Math.min(
+          antagonistBlock + Math.floor(Math.random() * 2),
+          totalBlocks - blockRatio
+        )
+        handleAntagonistBlocks(antagonistBlock)
+      }, blockRatio * 3)
+    }
+    return () => clearInterval(interval)
+  }, [finalMining])
+
+  useEffect(() => {
+    if (protagonistsTotal + antagonistsTotal === totalBlocks) {
+      handleStep(2)
+      setFinalMining(false)
+    }
+  }, [protagonistsTotal, antagonistsTotal, totalBlocks])
+
+  const turnOnButton = async () => {
+    if (step === 0) {
+      await sleep(100)
+      handleStep(1)
+      setFinalMining(true)
+    }
+  }
+
   return (
     <>
       <ProfilesContainer
@@ -48,11 +119,11 @@ export default function HashrateChallenge({
               className={clsx(
                 'my-[2px] h-[25px] min-w-[100px] text-left font-nunito text-[18px] font-semibold text-white',
                 {
-                  'opacity-25': blocks1 === 0,
+                  'opacity-25': protagonistsTotal === 0,
                 }
               )}
             >
-              {blocks1} blocks
+              {protagonistsTotal} blocks
             </span>
             <div>
               {step < 2 && (
@@ -70,11 +141,11 @@ export default function HashrateChallenge({
               className={clsx(
                 'my-[2px] h-[25px] min-w-[100px] text-right font-nunito text-[18px] font-semibold text-white',
                 {
-                  'opacity-25': blocks2 === 0,
+                  'opacity-25': antagonistsTotal === 0,
                 }
               )}
             >
-              {blocks2} blocks
+              {antagonistsTotal} blocks
             </span>
           </div>
           <ContributionBar
