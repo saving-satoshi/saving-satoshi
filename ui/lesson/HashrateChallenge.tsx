@@ -1,6 +1,5 @@
 'use client'
 
-import { SetStateAction, Dispatch } from 'react'
 import React from 'react'
 import { clsx } from 'clsx'
 import { sleep } from 'utils'
