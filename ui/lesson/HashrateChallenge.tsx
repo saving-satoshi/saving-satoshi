@@ -84,10 +84,10 @@ export default function HashrateChallenge({
       interval = setInterval(() => {
         antagonistBlock = Math.min(
           antagonistBlock + Math.floor(Math.random() * 2),
-          totalBlocks - blockRatio
+          totalBlocks - blockRatio + 5
         )
         handleAntagonistBlocks(antagonistBlock)
-      }, blockRatio * 3)
+      }, blockRatio * 2.5)
     }
     return () => clearInterval(interval)
   }, [finalMining])
