@@ -145,6 +145,8 @@ export default function Pool1({ lang }) {
                     'fade-in text-white': step !== 0,
                   })}
                 >
+                  {/*This code below is what turns numbers into scientific notation.
+                  Perhaps we could create a new component to clean this up as we use this quite often*/}
                   {step === 0
                     ? 0
                     : (
