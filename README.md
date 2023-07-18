@@ -63,3 +63,7 @@ Some ideas we have for the future
 - Localization to other languages if there is interest
 
 Thank you so much for your interest in the project. We'd love to hear your feedback.
+
+## License
+Saving Satoshi is released under the terms of the MIT license. See [LICENSE](https://github.com/ecurrencyhodler/saving-satoshi/blob/master/license) for more information or see https://opensource.org/licenses/MIT.
+
