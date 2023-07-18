@@ -87,7 +87,7 @@ export default function HashrateChallenge({
           totalBlocks - blockRatio + 5
         )
         handleAntagonistBlocks(antagonistBlock)
-      }, blockRatio * 2.5)
+      }, blockRatio * 3)
     }
     return () => clearInterval(interval)
   }, [finalMining])
