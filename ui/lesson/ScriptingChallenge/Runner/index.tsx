@@ -115,10 +115,14 @@ export default function Runner({
           case 'error': {
             const error = payload.message.trim()
             const lines = error.split('\n')
-            lines.forEach((line) => sendTerminal('print', line))
+            lines.forEach((line) =>
+              sendTerminal('print', line.replace(' ', '&nbsp;'))
+            )
             setHasherState(HasherState.Error)
             setIsRunning(false)
             setState(State.Error)
+            ws?.close()
+
             break
           }
           case 'debug': {
@@ -145,6 +149,7 @@ export default function Runner({
             setHasherState(HasherState.Success)
             sendTerminal('success', `Found hash: ${payload}`)
             sendTerminal('success', `Five zeroes! That's it!`)
+            ws?.close()
             break
           }
           case 'end': {
