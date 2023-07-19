@@ -127,7 +127,15 @@ export default function Chapter({ children, metadata, lang }) {
                           {t('chapter.chapter_locked_two')}
                         </div>
                       )) ||
-                      (chapter.metadata.lessons.length === 0 && null)}
+                      (chapter.metadata.lessons.length === 0 && (
+                        <div className="flex font-nunito text-lg text-white">
+                          <Icon
+                            icon="lock"
+                            className="my-auto mr-2 h-3 w-3 justify-center"
+                          />
+                          {t('challenge_list.coming_soon')}
+                        </div>
+                      ))}
                     <div className="flex pt-8 md:w-full">
                       <Button
                         href={
@@ -150,7 +158,7 @@ export default function Chapter({ children, metadata, lang }) {
                             `${t('chapter.chapter_locked_one')} ${
                               position - 1
                             } ${t('chapter.chapter_locked_two')}`) ||
-                          (chapter.metadata.lessons.length === 0 &&
+                          (!chapter.metadata.lessons &&
                             t('shared.coming_soon'))}
                       </Button>
                     </div>
