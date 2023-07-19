@@ -133,7 +133,7 @@ export default function Chapter({ children, metadata, lang }) {
                             icon="lock"
                             className="my-auto mr-2 h-3 w-3 justify-center"
                           />
-                          {t('challenge_list.coming_soon')}
+                          {t('chapter.coming_soon')}
                         </div>
                       ))}
                     <div className="flex pt-8 md:w-full">
