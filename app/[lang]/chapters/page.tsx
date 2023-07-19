@@ -25,7 +25,7 @@ export default async function ChaptersPage({ params }) {
         </section>
       </div>
 
-      <Footer className="bg-back" />
+      <Footer className="bg-black/25" />
     </div>
   )
 }
