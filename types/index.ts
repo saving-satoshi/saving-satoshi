@@ -46,6 +46,7 @@ export type Profile = {
   username: string
   avatar?: string
   description?: string
+  value: number
 }
 
 export interface ProfileWithHashPower extends Profile {

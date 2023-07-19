@@ -7,6 +7,7 @@ import TerminalChallenge from './TerminalChallenge'
 import InputChallenge from './InputChallenge'
 import ScriptingChallenge from './ScriptingChallenge'
 import HashChallenge from './HashChallenge'
+import HashrateChallenge from './HashrateChallenge'
 
 export {
   Lesson,
@@ -19,4 +20,5 @@ export {
   InputChallenge,
   ScriptingChallenge,
   HashChallenge,
+  HashrateChallenge,
 }
