@@ -157,9 +157,7 @@ export default function Chapter({ children, metadata, lang }) {
                             !display &&
                             `${t('chapter.chapter_locked_one')} ${
                               position - 1
-                            } ${t('chapter.chapter_locked_two')}`) ||
-                          (!chapter.metadata.lessons &&
-                            t('shared.coming_soon'))}
+                            } ${t('chapter.chapter_locked_two')}`)}
                       </Button>
                     </div>
                   </div>
