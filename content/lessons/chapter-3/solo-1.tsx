@@ -11,9 +11,9 @@ import clsx from 'clsx'
 export const metadata = {
   title: 'chapter_three.solo_one.title',
   image: '/assets/images/chapter-2-intro-1.jpg',
-  theme: 'solo-1-bg',
+  theme: 'solo-1-theme',
   //theme: 'bg-gradient-to-tl from-[#3C1843] to-[#45235A]',
-  secondaryTheme: 'bg-[#411e4f]',
+  secondaryTheme: 'solo-1-sceondary-theme',
   key: 'CH3SOL1',
 }
 
@@ -62,6 +62,8 @@ export default function Solo1({ lang }) {
       const rootStyles = document.documentElement.style
       // Update the CSS variable value
       rootStyles.setProperty('--CH3SOL1-bg', '#691947')
+      rootStyles.setProperty('--CH3SOL1-gradient-start', '#691947')
+      rootStyles.setProperty('--CH3SOL1-gradient-stop', '#691947')
     }
   }
 
@@ -102,7 +104,7 @@ export default function Solo1({ lang }) {
   }, [step])
 
   return (
-    <div className="my-auto flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch py-[20px] px-[20px] md:flex-row-reverse md:py-0 md:px-[200px]">
+    <div className="mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch py-[20px] px-[20px] md:mt-44 md:flex-row-reverse md:py-0 md:px-[200px] 2xl:my-auto">
       <HashrateChallenge
         step={step}
         onStepUpdate={handleStepUpdate}
