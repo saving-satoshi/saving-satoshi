@@ -6,7 +6,7 @@ import MonacoEditor from '@monaco-editor/react'
 
 import { monacoOptions } from './config'
 import { monaco } from 'react-monaco-editor'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Loader } from 'shared'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
@@ -17,15 +17,11 @@ export default function Editor({
   value,
   onChange,
   onValidate,
-  line,
-  column,
 }: {
   language: string
   value?: string
   onChange?: (value: string) => void
   onValidate?: (value: monaco.editor.IMarker[]) => void
-  line?: number
-  column?: number
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
@@ -47,11 +43,6 @@ export default function Editor({
     monaco.editor.setTheme('satoshi')
     setLoading(false)
   }
-
-  useEffect(() => {
-    monaco.editor.create(document.getElementById('container')!)
-    console.log(line, column)
-  }, [line])
 
   const isSmallScreen = useMediaQuery({ width: 767 })
   const headerHeight = isSmallScreen ? 63 : 70
@@ -75,7 +66,6 @@ export default function Editor({
         'hidden md:flex': !isActive,
         flex: isActive,
       })}
-      id="container"
     >
       <MonacoEditor
         loading={<Loader className="h-10 w-10 text-white" />}
@@ -89,7 +79,6 @@ export default function Editor({
         onChange={onChange}
         onValidate={onValidate}
         options={monacoOptions}
-        line={2}
       />
     </div>
   )
