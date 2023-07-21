@@ -147,15 +147,15 @@ export default function Solo1({ lang }) {
                   {step === 0
                     ? 0
                     : (
-                        profile.nonce /
-                        10 ** (profile.nonce.toString().length - 2)
+                        profile.nonce! /
+                        10 ** (profile.nonce!.toString().length - 2)
                       ).toFixed(2)}
                   {step !== 0 && (
                     <span className="fade-in text-white/50">
                       *10
                       <sup>
-                        {(profile.nonce * profile.hashpower).toString().length +
-                          6}
+                        {(profile.nonce! * profile.hashpower).toString()
+                          .length + 6}
                       </sup>
                     </span>
                   )}
