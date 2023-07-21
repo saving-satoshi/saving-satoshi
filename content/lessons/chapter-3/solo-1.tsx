@@ -7,12 +7,12 @@ import { ProfileWithHashPower } from 'types'
 import { Card, HashFrequency, Text, HashrateChallenge } from 'ui'
 import Profile from 'ui/common/Profile'
 import clsx from 'clsx'
+import { sleep } from 'utils'
 
 export const metadata = {
   title: 'chapter_three.solo_one.title',
   image: '/assets/images/chapter-2-intro-1.jpg',
   theme: 'solo-1-theme',
-  //theme: 'bg-gradient-to-tl from-[#3C1843] to-[#45235A]',
   secondaryTheme: 'solo-1-sceondary-theme',
   key: 'CH3SOL1',
 }
@@ -20,6 +20,7 @@ export const metadata = {
 export default function Solo1({ lang }) {
   const t = useTranslations(lang)
   const [step, setStep] = useState(0)
+  const [showText, setShowText] = useState(true)
   const [protagonistHash, setProtagonistHash] = useState(0)
   const [antagonistHash, setAntagonistHash] = useState(0)
   const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState(0)
@@ -54,8 +55,11 @@ export default function Solo1({ lang }) {
 
   const PROFILES: ProfileWithHashPower[] = [...PROTAGONISTS, ...ANTAGONISTS]
 
-  const handleStepUpdate = (newStep: number) => {
+  const handleStepUpdate = async (newStep: number) => {
+    setShowText(false)
+    await sleep(325)
     setStep(newStep)
+    setShowText(true)
 
     if (step >= 1) {
       // Get the CSS variable
@@ -104,7 +108,7 @@ export default function Solo1({ lang }) {
   }, [step])
 
   return (
-    <div className="mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch py-[20px] px-[20px] md:mt-44 md:flex-row-reverse md:py-0 md:px-[200px] 2xl:my-auto">
+    <div className="fade-in mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch py-[20px] px-[20px] md:mt-44 md:flex-row-reverse md:py-0 md:px-[200px] 2xl:my-auto">
       <HashrateChallenge
         step={step}
         onStepUpdate={handleStepUpdate}
@@ -172,39 +176,44 @@ export default function Solo1({ lang }) {
         totalBlocks={TOTAL_BLOCKS}
         blockRatio={BLOCK_RATIO}
       >
-        {step === 0 && (
-          <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] 2xl:max-w-[400px]">
-            <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
-              {t('chapter_three.solo_one.step_zero_heading')}
-            </Text>
-            <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
-              {t('chapter_three.solo_one.step_zero_paragraph_one')}
-            </Text>
-          </span>
-        )}
-        {step === 1 && (
-          <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] 2xl:max-w-[400px]">
-            <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
-              {t('chapter_three.solo_one.step_one_heading')}
-            </Text>
-            <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
-              {t('chapter_three.solo_one.step_one_paragraph_one')}
-            </Text>
-          </span>
-        )}
-        {step === 2 && (
-          <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] 2xl:max-w-[400px]">
-            <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
-              {t('chapter_three.solo_one.step_two_heading')}
-            </Text>
-            <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
-              {t('chapter_three.solo_one.step_two_paragraph_one')}
-            </Text>
-            <Button onClick={saveAndProceed} classes="max-md:w-full mt-[20px]">
-              {t('shared.next')}
-            </Button>
-          </span>
-        )}
+        <div className={`flex ${showText ? 'fade-in' : 'fade-out'}`}>
+          {step === 0 && (
+            <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] 2xl:max-w-[400px]">
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
+                {t('chapter_three.solo_one.step_zero_heading')}
+              </Text>
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
+                {t('chapter_three.solo_one.step_zero_paragraph_one')}
+              </Text>
+            </span>
+          )}
+          {step === 1 && (
+            <span className="fade in flex flex-col items-start gap-[10px] md:max-w-[600px] 2xl:max-w-[400px]">
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
+                {t('chapter_three.solo_one.step_one_heading')}
+              </Text>
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
+                {t('chapter_three.solo_one.step_one_paragraph_one')}
+              </Text>
+            </span>
+          )}
+          {step === 2 && (
+            <span className="fade in flex flex-col items-start gap-[10px] md:max-w-[600px] 2xl:max-w-[400px]">
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
+                {t('chapter_three.solo_one.step_two_heading')}
+              </Text>
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
+                {t('chapter_three.solo_one.step_two_paragraph_one')}
+              </Text>
+              <Button
+                onClick={saveAndProceed}
+                classes="max-md:w-full mt-[20px]"
+              >
+                {t('shared.next')}
+              </Button>
+            </span>
+          )}
+        </div>
       </HashrateChallenge>
     </div>
   )
