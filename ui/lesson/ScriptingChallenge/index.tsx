@@ -118,6 +118,8 @@ export default function ScriptingChallenge({
             value={code}
             onChange={handleChange}
             onValidate={handleEditorValidate}
+            line={0}
+            column={0}
           />
           <Runner
             lang={lang}

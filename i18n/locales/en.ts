@@ -435,6 +435,19 @@ const translations = {
         'Something is wrong. Only one of your miners found blocks, Why do you think that might be?',
     },
 
+    coop_vs_bitrey_loose: {
+      title: 'Coop vs. BitRey',
+      waiting_screen_heading: 'We need support',
+      waiting_screen_paragraph_one:
+        'Luckily you can travel back in time to take another stab at this attack. But how can you prevent another defeat?',
+      waiting_screen_paragraph_two:
+        'Your miners in the warehouse alone don’t stand a chance. If you combine your hashing power with other pools, you might be able to hold the line against the assault.',
+      waiting_screen_paragraph_three:
+        'Let’s wait until the others join your pool, which HoloCat insists gets named after her, so we can combine forces,',
+      waiting_button: 'Waiting...',
+      continue_button: "Let's go",
+    },
+
     outro_one: {
       title: 'Outro',
       heading: 'Take that, Vanderpoole! ',

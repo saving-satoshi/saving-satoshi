@@ -11,6 +11,7 @@
   --incorrect-answer: #ef960b;
   --input-text: #6e7d92;
   --dynamic-height: 100vh;
+  --CH3SOL1-bg: #411e4f;
 }
 
 .-theme-purple {
@@ -239,3 +240,11 @@ div.react-terminal-active-input {
 .fade-out {
   animation: fadeOut 0.3s ease-in-out forwards;
 }
+
+.height-minus-nav {
+   height: calc(100vh - 70px);
+ }
+
+ .solo-1-bg {
+   background: var(--CH3SOL1-bg)
+ }
