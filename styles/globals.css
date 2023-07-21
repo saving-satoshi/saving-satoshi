@@ -243,10 +243,6 @@ div.react-terminal-active-input {
   animation: fadeOut 0.3s ease-in-out forwards;
 }
 
-.height-minus-nav {
-  height: calc(100vh - 70px);
-}
-
 .solo-1-theme {
   background: linear-gradient(315deg, var(--CH3SOL1-gradient-start), var(--CH3SOL1-gradient-stop))
 }
