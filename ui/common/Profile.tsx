@@ -3,7 +3,6 @@ import Icon from 'shared/Icon'
 import Avatar from 'components/Avatar'
 import React from 'react'
 import { useMediaQuery } from 'hooks'
-import { useAuthContext } from 'providers/AuthProvider'
 
 export default function Profile({
   children,
@@ -20,7 +19,6 @@ export default function Profile({
   username: string
   description?: string
 }) {
-  const { account } = useAuthContext()
   const isSmallScreen = useMediaQuery({ width: 767 })
 
   return (
