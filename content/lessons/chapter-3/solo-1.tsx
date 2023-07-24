@@ -62,9 +62,7 @@ export default function Solo1({ lang }) {
     setShowText(true)
 
     if (step >= 1) {
-      // Get the CSS variable
       const rootStyles = document.documentElement.style
-      // Update the CSS variable value
       rootStyles.setProperty('--CH3SOL1-bg', '#691947')
       rootStyles.setProperty('--CH3SOL1-gradient-start', '#691947')
       rootStyles.setProperty('--CH3SOL1-gradient-stop', '#691947')
@@ -106,6 +104,13 @@ export default function Solo1({ lang }) {
     }
     return () => clearInterval(interval)
   }, [step])
+
+  useEffect(() => {
+    const rootStyles = document.documentElement.style
+    rootStyles.setProperty('--CH3SOL1-bg', '#411e4f')
+    rootStyles.setProperty('--CH3SOL1-gradient-start', '#3C1843')
+    rootStyles.setProperty('--CH3SOL1-gradient-stop', '#45235a')
+  }, [])
 
   return (
     <div className="fade-in mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch py-[20px] px-[20px] md:mt-44 md:flex-row-reverse md:py-0 md:px-[200px] 2xl:my-auto">
