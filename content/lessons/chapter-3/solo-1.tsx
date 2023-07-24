@@ -8,6 +8,7 @@ import { Card, HashFrequency, Text, HashrateChallenge } from 'ui'
 import Profile from 'ui/common/Profile'
 import clsx from 'clsx'
 import { sleep } from 'utils'
+import { useAuthContext } from 'providers/AuthProvider'
 
 export const metadata = {
   title: 'chapter_three.solo_one.title',
@@ -18,6 +19,7 @@ export const metadata = {
 }
 
 export default function Solo1({ lang }) {
+  const { account } = useAuthContext()
   const t = useTranslations(lang)
   const [step, setStep] = useState(0)
   const [showText, setShowText] = useState(true)
@@ -34,7 +36,7 @@ export default function Solo1({ lang }) {
   const PROTAGONISTS = [
     {
       username: 'You',
-      avatar: '/assets/avatars/1.png',
+      avatar: account?.avatar ?? '/assets/avatars/1.png',
       hashpower: 4395,
       nonce: protagonistHash,
       color: '#F3AB29',
@@ -79,30 +81,34 @@ export default function Solo1({ lang }) {
 
   useEffect(() => {
     let interval: NodeJS.Timeout
-    let currentProtagonistHash = protagonistHash
     if (step === 1) {
-      interval = setInterval(() => {
+    }
+  }, [step])
+
+  useEffect(() => {
+    let protagonistInterval: NodeJS.Timeout
+    let antagonistInterval: NodeJS.Timeout
+    let currentProtagonistHash = protagonistHash
+    let currentAntagonistHash = antagonistHash
+    if (step === 1) {
+      protagonistInterval = setInterval(() => {
         currentProtagonistHash =
           currentProtagonistHash +
           Math.floor(Math.random() * PROTAGONISTS[0].hashpower)
         setProtagonistHash(currentProtagonistHash)
       }, 40)
-    }
-    return () => clearInterval(interval)
-  }, [step])
 
-  useEffect(() => {
-    let interval: NodeJS.Timeout
-    let currentAntagonistHash = antagonistHash
-    if (step === 1) {
-      interval = setInterval(() => {
+      antagonistInterval = setInterval(() => {
         currentAntagonistHash =
           currentAntagonistHash +
           Math.floor(Math.random() * ANTAGONISTS[0].hashpower)
         setAntagonistHash(currentAntagonistHash)
       }, 40)
     }
-    return () => clearInterval(interval)
+    return () => {
+      clearInterval(protagonistInterval)
+      clearInterval(antagonistInterval)
+    }
   }, [step])
 
   useEffect(() => {
