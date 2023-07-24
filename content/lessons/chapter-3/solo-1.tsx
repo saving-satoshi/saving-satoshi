@@ -113,7 +113,7 @@ export default function Solo1({ lang }) {
   }, [])
 
   return (
-    <div className="fade-in mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch py-[20px] px-[20px] md:mt-44 md:flex-row-reverse md:py-0 md:px-[200px] 2xl:my-auto">
+    <div className="fade-in mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch py-[20px] px-[20px] md:mt-44 md:flex-row-reverse md:py-0 lg:my-auto">
       <HashrateChallenge
         step={step}
         onStepUpdate={handleStepUpdate}
@@ -183,7 +183,7 @@ export default function Solo1({ lang }) {
       >
         <div className={`flex ${showText ? 'fade-in' : 'fade-out'}`}>
           {step === 0 && (
-            <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] 2xl:max-w-[400px]">
+            <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] xl:max-w-[400px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
                 {t('chapter_three.solo_one.step_zero_heading')}
               </Text>
@@ -193,7 +193,7 @@ export default function Solo1({ lang }) {
             </span>
           )}
           {step === 1 && (
-            <span className="fade in flex flex-col items-start gap-[10px] md:max-w-[600px] 2xl:max-w-[400px]">
+            <span className="fade in flex flex-col items-start gap-[10px] md:max-w-[600px] xl:max-w-[400px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
                 {t('chapter_three.solo_one.step_one_heading')}
               </Text>
@@ -203,7 +203,7 @@ export default function Solo1({ lang }) {
             </span>
           )}
           {step === 2 && (
-            <span className="fade in flex flex-col items-start gap-[10px] md:max-w-[600px] 2xl:max-w-[400px]">
+            <span className="fade in flex flex-col items-start gap-[10px] md:max-w-[600px] xl:max-w-[400px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
                 {t('chapter_three.solo_one.step_two_heading')}
               </Text>
