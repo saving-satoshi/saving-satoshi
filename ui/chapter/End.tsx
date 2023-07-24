@@ -14,12 +14,14 @@ export default function End({
   children,
   direction,
   className,
+  gradientTheme,
 }: {
   children: any
   image: string
   lang: string
   direction: 'left' | 'right'
   className?: string
+  gradientTheme: string
 }) {
   const t = useTranslations(lang)
   const modals = useModalContext()
@@ -74,6 +76,7 @@ export default function End({
           account={account}
           onClick={handleClick}
           currentLessonKey={currentLessonKey}
+          gradientTheme={gradientTheme}
         >
           {children}
         </MobileEnd>

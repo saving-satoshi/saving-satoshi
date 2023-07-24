@@ -4,7 +4,6 @@ import { Button } from 'shared'
 import { useTranslations } from 'hooks'
 
 import { keys } from 'lib/progress'
-import clsx from 'clsx'
 import Image from 'next/image'
 
 export default function MobileEnd({
@@ -15,6 +14,7 @@ export default function MobileEnd({
   account,
   onClick,
   currentLessonKey,
+  gradientTheme,
 }: {
   children: any
   image: string
@@ -23,11 +23,12 @@ export default function MobileEnd({
   account: any
   onClick: any
   currentLessonKey: any
+  gradientTheme: string
 }) {
   const t = useTranslations(lang)
 
   return (
-    <div className={clsx('bg-[#362042]', className)}>
+    <div className={className}>
       <Image
         src={image}
         alt={t('chapter_two.title')}
@@ -37,10 +38,12 @@ export default function MobileEnd({
         quality={100}
         loading="eager"
         priority
-        className="h-screen w-auto object-cover"
+        className="h-[600px] w-auto object-cover"
       />
-
-      <div className={'-mt-32 max-w-[500px] p-4 pb-12 md:p-16'}>
+      <div
+        className={`relative bottom-48 bg-gradient-to-t ${gradientTheme} pb-48`}
+      />
+      <div className="relative bottom-64 z-10 max-w-[500px] p-4 pb-12 md:p-16">
         {children}
         <div className="mt-4 flex w-full flex-col gap-4 xl:w-2/3">
           <Button onClick={onClick} size="small">
