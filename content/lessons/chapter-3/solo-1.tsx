@@ -113,7 +113,7 @@ export default function Solo1({ lang }) {
   }, [])
 
   return (
-    <div className="fade-in mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch py-[20px] px-[20px] md:mt-44 md:flex-row-reverse md:py-0 lg:my-auto">
+    <div className="fade-in mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch py-[20px] px-[20px] md:mt-44 md:flex-row-reverse md:py-0 xl:my-auto">
       <HashrateChallenge
         step={step}
         onStepUpdate={handleStepUpdate}
