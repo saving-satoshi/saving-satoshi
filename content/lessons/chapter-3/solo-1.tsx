@@ -36,7 +36,7 @@ export default function Solo1({ lang }) {
   const PROTAGONISTS = [
     {
       username: 'You',
-      avatar: account?.avatar ?? '/assets/avatars/1.png',
+      avatar: account?.avatar,
       hashpower: 4395,
       nonce: protagonistHash,
       color: '#F3AB29',
@@ -78,12 +78,6 @@ export default function Solo1({ lang }) {
   const handleAntagonsitBlockUpdate = (newBlock: number) => {
     setAntagonistsBlockAmount(newBlock)
   }
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout
-    if (step === 1) {
-    }
-  }, [step])
 
   useEffect(() => {
     let protagonistInterval: NodeJS.Timeout
