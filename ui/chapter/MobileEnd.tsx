@@ -43,9 +43,11 @@ export default function MobileEnd({
       <div
         className={`relative bottom-48 bg-gradient-to-t ${gradientTheme} pb-48`}
       />
-      <div className="relative bottom-64 z-10 max-w-[500px] p-4 pb-12 md:p-16">
-        {children}
-        <div className="mt-4 flex w-full flex-col gap-4 xl:w-2/3">
+      <div
+        className={`absolute top-[500px] bg-gradient-to-t p-4 pb-12 md:p-16 ${gradientTheme} w-screen`}
+      >
+        <div className="max-w-[500px]">{children}</div>
+        <div className="mt-4 flex w-full max-w-[500px] flex-col gap-4 xl:w-2/3">
           <Button onClick={onClick} size="small">
             {(!account && t('chapter_one.end.save')) ||
               (account && t('shared.next'))}
@@ -62,7 +64,6 @@ export default function MobileEnd({
           )}
         </div>
       </div>
-      <div className="ml-auto w-full bg-gradient-to-b from-transparent via-[#00000040] to-[#00000080] p-4 pb-12 text-left md:p-16" />
     </div>
   )
 }
