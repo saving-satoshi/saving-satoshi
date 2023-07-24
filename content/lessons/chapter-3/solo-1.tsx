@@ -13,7 +13,7 @@ export const metadata = {
   title: 'chapter_three.solo_one.title',
   image: '/assets/images/chapter-2-intro-1.jpg',
   theme: 'solo-1-theme',
-  secondaryTheme: 'solo-1-sceondary-theme',
+  secondaryTheme: 'solo-1-secondary-theme',
   key: 'CH3SOL1',
 }
 
