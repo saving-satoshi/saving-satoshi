@@ -81,15 +81,16 @@ export default function ContributionBar({ total, protagonists, antagonists }) {
         {protagonists.map((_, i) => {
           const idx = protagonists.length - 1 - i
           const player = protagonists[idx]
-          const offsetBar = protagonistState[idx].offsetBar
-          const offsetAvatar = protagonistState[idx].offsetAvatar
+          let { offsetAvatar, offsetBar } = protagonistState[idx]
+          offsetBar = offsetBar ? `${offsetBar}px` : `-100%`
+          offsetAvatar = offsetAvatar ? `${offsetAvatar}px` : `-100%`
 
           return (
             <div key={i}>
               <div
                 className="absolute left-0 top-0 z-10 w-[26px] overflow-hidden rounded-full bg-white p-[2px]"
                 style={{
-                  transform: `translate3d(${offsetAvatar}px, 2px, 0)`,
+                  transform: `translate3d(${offsetAvatar}, 2px, 0)`,
                   transition: 'transform 300ms linear',
                 }}
               >
@@ -98,7 +99,7 @@ export default function ContributionBar({ total, protagonists, antagonists }) {
               <div
                 className="absolute left-0 top-0 h-full w-full rounded"
                 style={{
-                  transform: `translate3d(${offsetBar}px, 0, 0)`,
+                  transform: `translate3d(${offsetBar}, 0, 0)`,
                   transition: 'transform 300ms linear',
                   backgroundColor: player.color,
                 }}
@@ -109,15 +110,16 @@ export default function ContributionBar({ total, protagonists, antagonists }) {
         {antagonists.map((_, i) => {
           const idx = antagonists.length - 1 - i
           const player = antagonists[idx]
-          const offsetBar = antagonistState[idx].offsetBar
-          const offsetAvatar = antagonistState[idx].offsetAvatar
+          let { offsetAvatar, offsetBar } = antagonistState[idx]
+          offsetBar = offsetBar ? `${offsetBar}px` : '100%'
+          offsetAvatar = offsetAvatar ? `${offsetAvatar}px` : '100%'
 
           return (
             <div key={i}>
               <div
                 className="absolute right-0 top-0 z-10 w-[26px] overflow-hidden rounded-full bg-white p-[2px]"
                 style={{
-                  transform: `translate3d(${offsetAvatar}px, 2px, 0)`,
+                  transform: `translate3d(${offsetAvatar}, 2px, 0)`,
                   transition: 'transform 300ms linear',
                 }}
               >
@@ -126,7 +128,7 @@ export default function ContributionBar({ total, protagonists, antagonists }) {
               <div
                 className="absolute right-0 top-0 h-full w-full rounded"
                 style={{
-                  transform: `translate3d(${offsetBar}px, 0, 0)`,
+                  transform: `translate3d(${offsetBar}, 0, 0)`,
                   transition: 'transform 300ms linear',
                   backgroundColor: player.color,
                 }}
