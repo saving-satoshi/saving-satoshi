@@ -97,7 +97,7 @@ export default function ContributionBar({ total, protagonists, antagonists }) {
                 <Image src={player.avatar} alt="" width={26} height={26} />
               </div>
               <div
-                className="absolute left-0 top-0 h-full w-full rounded"
+                className="absolute left-0 top-0 h-full w-full"
                 style={{
                   transform: `translate3d(${offsetBar}, 0, 0)`,
                   transition: 'transform 300ms linear',
@@ -126,7 +126,7 @@ export default function ContributionBar({ total, protagonists, antagonists }) {
                 <Image src={player.avatar} alt="" width={26} height={26} />
               </div>
               <div
-                className="absolute right-0 top-0 h-full w-full rounded"
+                className="absolute right-0 top-0 h-full w-full"
                 style={{
                   transform: `translate3d(${offsetBar}, 0, 0)`,
                   transition: 'transform 300ms linear',
@@ -136,6 +136,7 @@ export default function ContributionBar({ total, protagonists, antagonists }) {
             </div>
           )
         })}
+        <div className="absolute left-[50%] z-20 h-full w-0 border border-r border-dashed border-white border-opacity-50" />
       </div>
     </div>
   )
