@@ -425,15 +425,6 @@ const translations = {
       step_two_paragraph_one:
         'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s go back to the drawing board. Bitcoin has been running for over a decade and it’s not going down without a fight.',
     },
-    pool_one: {
-      title: 'Coop vs. BitRey',
-      step_zero_heading: 'Here we go',
-      step_zero_paragraph_one:
-        'When you combine your hash rate with the other pool operator’s, can you stand up against Bitrey?',
-      step_two_heading: 'Another defeat!',
-      step_two_paragraph_one:
-        'Something is wrong. Only one of your miners found blocks, Why do you think that might be?',
-    },
 
     coop_vs_bitrey_loose: {
       title: 'Coop vs. BitRey',
@@ -446,6 +437,20 @@ const translations = {
         'Let’s wait until the others join your pool, which HoloCat insists gets named after her, so we can combine forces,',
       waiting_button: 'Waiting...',
       continue_button: "Let's go",
+    },
+
+    pool_one: {
+      title: 'Pool vs. BitRey',
+    },
+
+    pool_two: {
+      title: 'Pool vs. BitRey',
+      step_zero_heading: 'One more time...',
+      step_zero_paragraph_one:
+        'Let’s see if we stand a chance now with our improved strategy of dividing the nonce space.',
+      step_two_heading: 'You did it!',
+      step_two_paragraph_one:
+        'Together you and your friends were able to hold back BitRey’s attempt to overtake the network.',
     },
 
     outro_one: {

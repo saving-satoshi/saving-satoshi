@@ -11,18 +11,20 @@ import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 
 export const metadata = {
-  title: 'chapter_three.coop_vs_bitrey_loose.title',
+  title: 'chapter_three.pool_one.title',
   image: '/assets/images/chapter-2-intro-1.jpg',
   theme: 'solo-1-theme',
   secondaryTheme: 'solo-1-secondary-theme',
-  key: 'CH3COO2',
+  key: 'CH3POL2',
 }
 
-export default function Coop2({ lang }) {
+export default function Pool2({ lang }) {
   const { account } = useAuthContext()
   const t = useTranslations(lang)
   const [step, setStep] = useState(0)
-  const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState(0)
+  const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState([
+    0, 0, 0, 0,
+  ])
   const [antagonistsBlockAmount, setAntagonistsBlockAmount] = useState(0)
   const [protagonistHash, setProtagonistHash] = useState([0, 0, 0, 0])
   const [antagonistHash, setAntagonistHash] = useState(0)
@@ -31,7 +33,7 @@ export default function Coop2({ lang }) {
   const saveAndProceed = useSaveAndProceed()
 
   const TOTAL_BLOCKS = 100
-  const BLOCK_RATIO = 30
+  const BLOCK_RATIO = 40
 
   const PROTAGONISTS = [
     {
@@ -40,7 +42,7 @@ export default function Coop2({ lang }) {
       hashpower: 4395,
       nonce: protagonistHash[0],
       color: '#F3AB29',
-      value: step === 0 ? 0 : 1,
+      value: step === 0 ? 0 : protagonistsBlockAmount[0],
     },
     {
       username: 'Mining Maniacs',
@@ -48,7 +50,7 @@ export default function Coop2({ lang }) {
       hashpower: 4054,
       nonce: protagonistHash[1],
       color: '#FE5329',
-      value: step === 0 ? 0 : 1,
+      value: step === 0 ? 0 : protagonistsBlockAmount[1],
     },
     {
       username: 'Hash Hoppers',
@@ -56,7 +58,7 @@ export default function Coop2({ lang }) {
       hashpower: 7911,
       nonce: protagonistHash[2],
       color: '#62BFB7',
-      value: step === 0 ? 0 : protagonistsBlockAmount,
+      value: step === 0 ? 0 : protagonistsBlockAmount[2],
     },
     {
       username: 'Coin Crunchers',
@@ -64,7 +66,7 @@ export default function Coop2({ lang }) {
       hashpower: 3857,
       nonce: protagonistHash[3],
       color: '#85BF09',
-      value: step === 0 ? 0 : 1,
+      value: step === 0 ? 0 : protagonistsBlockAmount[3],
     },
   ]
 
@@ -89,14 +91,22 @@ export default function Coop2({ lang }) {
 
     if (step >= 1) {
       const rootStyles = document.documentElement.style
-      rootStyles.setProperty('--CH3SOL1-bg', '#691947')
-      rootStyles.setProperty('--CH3SOL1-gradient-start', '#691947')
-      rootStyles.setProperty('--CH3SOL1-gradient-stop', '#691947')
+      rootStyles.setProperty('--CH3SOL1-bg', '#3e7141')
+      rootStyles.setProperty('--CH3SOL1-gradient-start', '#3e7141')
+      rootStyles.setProperty('--CH3SOL1-gradient-stop', '#3e7141')
     }
   }
 
-  const handleProtagonsitBlockUpdate = (newBlock: number) => {
-    setProtagonistsBlockAmount(newBlock)
+  const handleProtagonsitBlockUpdate = () => {
+    for (let i = 0; i < PROTAGONISTS.length; i++) {
+      setProtagonistsBlockAmount((newBlock) => {
+        const updatedBlocks = [...newBlock]
+        updatedBlocks[i] += Math.floor(
+          Math.round(Math.random() * (PROTAGONISTS[i].hashpower * 0.00015))
+        )
+        return updatedBlocks
+      })
+    }
   }
 
   const handleAntagonsitBlockUpdate = (newBlock: number) => {
@@ -150,7 +160,7 @@ export default function Coop2({ lang }) {
   }, [])
 
   return (
-    <div className="fade-in flex flex-col items-center gap-[20px] px-[15px] py-[30px] md:px-[75px] md:pt-[40px]">
+    <div className="flex flex-col items-center gap-[30px] py-[30px] px-[15px] md:py-[75px] md:px-[75px]">
       <HashrateChallenge
         totalBlocks={TOTAL_BLOCKS}
         blockRatio={BLOCK_RATIO}
@@ -237,37 +247,31 @@ export default function Coop2({ lang }) {
           </Profile>
         ))}
       >
-        <div
-          className={`transition-opacity ${showText ? 'fade-in' : 'fade-out'}`}
-        >
-          {step === 0 && (
-            <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] md:pt-[20px] 2xl:max-w-[400px]">
+        {step === 0 && (
+          <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
+            <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+              {t('chapter_three.pool_two.step_zero_heading')}
+            </Text>
+            <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              {t('chapter_three.pool_two.step_zero_paragraph_one')}
+            </Text>
+          </span>
+        )}
+        {step === 2 && (
+          <>
+            <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
-                {t('chapter_three.pool_one.step_zero_heading')}
+                {t('chapter_three.pool_two.step_two_heading')}
               </Text>
               <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-                {t('chapter_three.pool_one.step_zero_paragraph_one')}
+                {t('chapter_three.pool_two.step_two_paragraph_one')}
               </Text>
             </span>
-          )}
-          {step === 2 && (
-            <>
-              <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] md:pt-[20px] 2xl:max-w-[400px]">
-                <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
-                  {t('chapter_three.pool_one.step_two_heading')}
-                </Text>
-                <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-                  {t('chapter_three.pool_one.step_two_paragraph_one')}
-                </Text>
-              </span>
-              <div className="mt-[20px] flex justify-center md:mt-[20px]">
-                <Button onClick={saveAndProceed} classes="max-md:w-full">
-                  {t('shared.next')}
-                </Button>
-              </div>
-            </>
-          )}
-        </div>
+            <Button onClick={saveAndProceed} classes="max-md:w-full">
+              {t('shared.next')}
+            </Button>
+          </>
+        )}
       </HashrateChallenge>
     </div>
   )

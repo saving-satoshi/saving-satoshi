@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import Image from 'next/image'
+import Icon from 'shared/Icon'
 
 export default function ContributionBar({ total, protagonists, antagonists }) {
   const elementRef = useRef<HTMLDivElement>(null)
@@ -23,6 +24,8 @@ export default function ContributionBar({ total, protagonists, antagonists }) {
           const scale = player.value / total
           const translation = cumulativeValue + '%'
 
+          console.log(typeof player.avatar, player.avatar)
+
           return (
             <div
               key={i}
@@ -39,15 +42,22 @@ export default function ContributionBar({ total, protagonists, antagonists }) {
               >
                 <div
                   style={{ transform: `scaleX(${1 / scale})` }}
-                  className="aspect-square h-[26px] overflow-hidden rounded-full border-2 border-white"
+                  className={`aspect-square h-[26px] overflow-hidden rounded-full ${
+                    player.avatar ? 'border-2 border-white' : ''
+                  }`}
                 >
-                  <Image
-                    width={30}
-                    height={30}
-                    alt={player.username}
-                    src={player.avatar}
-                    className="h-full w-full object-cover"
-                  />
+                  {player.avatar && (
+                    <Image
+                      width={30}
+                      height={30}
+                      alt={player.username}
+                      src={player.avatar}
+                      className="h-full w-full object-cover"
+                    />
+                  )}
+                  {!player.avatar && (
+                    <Icon icon="avatar" className="text-white" />
+                  )}
                 </div>
               </div>
             </div>
@@ -82,13 +92,21 @@ export default function ContributionBar({ total, protagonists, antagonists }) {
                   style={{ transform: `scaleX(${1 / scale})` }}
                   className="aspect-square h-[26px] overflow-hidden rounded-full border-2 border-white"
                 >
-                  <Image
-                    width={30}
-                    height={30}
-                    alt={player.username}
-                    src={player.avatar}
-                    className="h-full w-full object-cover"
-                  />
+                  {player.avatar && (
+                    <Image
+                      width={30}
+                      height={30}
+                      alt={player.username}
+                      src={player.avatar}
+                      className="h-full w-full object-cover"
+                    />
+                  )}
+                  {!player.avatar && (
+                    <Icon
+                      icon="avatar"
+                      className="h-[30px] w-[30px] text-white"
+                    />
+                  )}
                 </div>
               </div>
             </div>
