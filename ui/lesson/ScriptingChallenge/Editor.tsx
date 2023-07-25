@@ -15,7 +15,6 @@ import { useMediaQuery } from 'hooks'
 export default function Editor({
   language,
   value,
-
   onChange,
   onValidate,
 }: {
@@ -42,7 +41,6 @@ export default function Editor({
 
   const handleMount = (editor, monaco) => {
     monaco.editor.setTheme('satoshi')
-
     setLoading(false)
   }
 
