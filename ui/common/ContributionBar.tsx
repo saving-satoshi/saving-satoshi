@@ -73,7 +73,7 @@ export default function ContributionBar({ total, protagonists, antagonists }) {
 
   return (
     <div
-      className="relative h-[30px] w-full overflow-hidden rounded-[5px] bg-black/20 bg-blue-500"
+      className="relative h-[30px] w-full overflow-hidden rounded-[5px] bg-black/20"
       ref={elementRef}
     >
       <div className="pointer-events-none absolute z-50 flex h-full w-1/2 border-r-2 border-dotted border-white/50"></div>
