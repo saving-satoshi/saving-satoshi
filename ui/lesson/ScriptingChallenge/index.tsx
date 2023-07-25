@@ -46,6 +46,9 @@ export default function ScriptingChallenge({
   const [code, setCode] = useState(
     config.languages[config.defaultLanguage].defaultCode
   )
+  const [constraints] = useState(
+    config.languages[config.defaultLanguage].constraints
+  )
   const [language, setLanguage] = useState(config.defaultLanguage)
   const [challengeSuccess, setChallengeSuccess] = useState(false)
   const [hydrated, setHydrated] = useState(false)
@@ -118,6 +121,8 @@ export default function ScriptingChallenge({
             value={code}
             onChange={handleChange}
             onValidate={handleEditorValidate}
+            code={code}
+            constraints={constraints}
           />
           <Runner
             lang={lang}
