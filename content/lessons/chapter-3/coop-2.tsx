@@ -12,7 +12,6 @@ import { useAuthContext } from 'providers/AuthProvider'
 
 export const metadata = {
   title: 'chapter_three.coop_vs_bitrey_loose.title',
-  image: '/assets/images/chapter-2-intro-1.jpg',
   theme: 'solo-1-theme',
   secondaryTheme: 'solo-1-secondary-theme',
   key: 'CH3COO2',

@@ -9,7 +9,6 @@ import { useState, useEffect } from 'react'
 
 export const metadata = {
   title: 'chapter_three.coop_vs_bitrey_loose.title',
-  image: '/assets/images/chapter-2-intro-1.jpg',
   key: 'CH3POL1',
 }
 
