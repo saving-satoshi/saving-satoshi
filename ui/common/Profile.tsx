@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import Icon from 'shared/Icon'
 import Avatar from 'components/Avatar'
 import React from 'react'
 import { useMediaQuery } from 'hooks'
@@ -34,7 +35,13 @@ export default function Profile({
             'mb-2': !chip,
           })}
         >
-          <Avatar avatar={avatar} size={isSmallScreen ? 50 : 100} />
+          {avatar && <Avatar avatar={avatar} size={isSmallScreen ? 50 : 100} />}
+          {!avatar && (
+            <Icon
+              icon="avatar"
+              className="h-[50px] w-[50px] text-white md:h-[100px] md:w-[100px]"
+            />
+          )}
           {chip && (
             <div
               className="absolute flex w-full"

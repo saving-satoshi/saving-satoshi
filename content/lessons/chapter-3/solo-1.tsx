@@ -1,22 +1,30 @@
 'use client'
 
 import { useTranslations, useSaveAndProceed } from 'hooks'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import { ProfileWithHashPower } from 'types'
 import { Card, HashFrequency, Text, HashrateChallenge } from 'ui'
 import Profile from 'ui/common/Profile'
 import clsx from 'clsx'
+import { sleep } from 'utils'
+import { useAuthContext } from 'providers/AuthProvider'
 
 export const metadata = {
   title: 'chapter_three.solo_one.title',
   image: '/assets/images/chapter-2-intro-1.jpg',
+  theme: 'solo-1-theme',
+  secondaryTheme: 'solo-1-secondary-theme',
   key: 'CH3SOL1',
 }
 
 export default function Solo1({ lang }) {
+  const { account } = useAuthContext()
   const t = useTranslations(lang)
   const [step, setStep] = useState(0)
+  const [showText, setShowText] = useState(true)
+  const [protagonistHash, setProtagonistHash] = useState(0)
+  const [antagonistHash, setAntagonistHash] = useState(0)
   const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState(0)
   const [antagonistsBlockAmount, setAntagonistsBlockAmount] = useState(0)
 
@@ -28,8 +36,9 @@ export default function Solo1({ lang }) {
   const PROTAGONISTS = [
     {
       username: 'You',
-      avatar: '/assets/avatars/1.png',
+      avatar: account?.avatar,
       hashpower: 4395,
+      nonce: protagonistHash,
       color: '#F3AB29',
       value: step === 0 ? 0 : protagonistsBlockAmount,
     },
@@ -38,8 +47,9 @@ export default function Solo1({ lang }) {
   const ANTAGONISTS = [
     {
       username: 'BitRey',
-      avatar: '/assets/avatars/5.png',
-      hashpower: 34421,
+      avatar: '/assets/avatars/bitrey.png',
+      hashpower: 18599,
+      nonce: antagonistHash,
       color: '#7E002E',
       value: step === 0 ? 0 : antagonistsBlockAmount,
     },
@@ -47,8 +57,18 @@ export default function Solo1({ lang }) {
 
   const PROFILES: ProfileWithHashPower[] = [...PROTAGONISTS, ...ANTAGONISTS]
 
-  const handleStepUpdate = (newStep: number) => {
+  const handleStepUpdate = async (newStep: number) => {
+    setShowText(false)
+    await sleep(325)
     setStep(newStep)
+    setShowText(true)
+
+    if (step >= 1) {
+      const rootStyles = document.documentElement.style
+      rootStyles.setProperty('--CH3SOL1-bg', '#691947')
+      rootStyles.setProperty('--CH3SOL1-gradient-start', '#691947')
+      rootStyles.setProperty('--CH3SOL1-gradient-stop', '#691947')
+    }
   }
 
   const handleProtagonsitBlockUpdate = (newBlock: number) => {
@@ -59,8 +79,41 @@ export default function Solo1({ lang }) {
     setAntagonistsBlockAmount(newBlock)
   }
 
+  useEffect(() => {
+    let protagonistInterval: NodeJS.Timeout
+    let antagonistInterval: NodeJS.Timeout
+    let currentProtagonistHash = protagonistHash
+    let currentAntagonistHash = antagonistHash
+    if (step === 1) {
+      protagonistInterval = setInterval(() => {
+        currentProtagonistHash =
+          currentProtagonistHash +
+          Math.floor(Math.random() * PROTAGONISTS[0].hashpower)
+        setProtagonistHash(currentProtagonistHash)
+      }, 40)
+
+      antagonistInterval = setInterval(() => {
+        currentAntagonistHash =
+          currentAntagonistHash +
+          Math.floor(Math.random() * ANTAGONISTS[0].hashpower)
+        setAntagonistHash(currentAntagonistHash)
+      }, 40)
+    }
+    return () => {
+      clearInterval(protagonistInterval)
+      clearInterval(antagonistInterval)
+    }
+  }, [step])
+
+  useEffect(() => {
+    const rootStyles = document.documentElement.style
+    rootStyles.setProperty('--CH3SOL1-bg', '#411e4f')
+    rootStyles.setProperty('--CH3SOL1-gradient-start', '#3C1843')
+    rootStyles.setProperty('--CH3SOL1-gradient-stop', '#45235a')
+  }, [])
+
   return (
-    <div className="my-auto flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch py-[20px] px-[20px] md:flex-row-reverse md:py-0 md:px-[200px]">
+    <div className="fade-in mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch py-[20px] px-[20px] md:mt-44 md:flex-row-reverse md:py-0 xl:my-auto">
       <HashrateChallenge
         step={step}
         onStepUpdate={handleStepUpdate}
@@ -105,12 +158,16 @@ export default function Solo1({ lang }) {
                   {step === 0
                     ? 0
                     : (
-                        profile.hashpower /
-                        5 ** (profile.hashpower.toString().length - 2)
+                        profile.nonce! /
+                        10 ** (profile.nonce!.toString().length - 2)
                       ).toFixed(2)}
                   {step !== 0 && (
                     <span className="fade-in text-white/50">
-                      *10<sup>{profile.hashpower.toString().length + 11}</sup>
+                      *10
+                      <sup>
+                        {(profile.nonce! * profile.hashpower).toString()
+                          .length + 6}
+                      </sup>
                     </span>
                   )}
                 </div>
@@ -124,39 +181,44 @@ export default function Solo1({ lang }) {
         totalBlocks={TOTAL_BLOCKS}
         blockRatio={BLOCK_RATIO}
       >
-        {step === 0 && (
-          <span className="flex flex-col items-start gap-[10px] md:w-[400px] md:min-w-[400px]">
-            <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
-              {t('chapter_three.solo_one.step_zero_heading')}
-            </Text>
-            <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
-              {t('chapter_three.solo_one.step_zero_paragraph_one')}
-            </Text>
-          </span>
-        )}
-        {step === 1 && (
-          <span className="flex flex-col items-start gap-[10px] md:w-[400px] md:min-w-[400px]">
-            <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
-              {t('chapter_three.solo_one.step_one_heading')}
-            </Text>
-            <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
-              {t('chapter_three.solo_one.step_one_paragraph_one')}
-            </Text>
-          </span>
-        )}
-        {step === 2 && (
-          <span className="flex flex-col items-start gap-[10px] md:w-[400px] md:min-w-[400px]">
-            <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
-              {t('chapter_three.solo_one.step_two_heading')}
-            </Text>
-            <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
-              {t('chapter_three.solo_one.step_two_paragraph_one')}
-            </Text>
-            <Button onClick={saveAndProceed} classes="max-md:w-full mt-[20px]">
-              {t('shared.next')}
-            </Button>
-          </span>
-        )}
+        <div className={`flex ${showText ? 'fade-in' : 'fade-out'}`}>
+          {step === 0 && (
+            <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] xl:max-w-[400px]">
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
+                {t('chapter_three.solo_one.step_zero_heading')}
+              </Text>
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
+                {t('chapter_three.solo_one.step_zero_paragraph_one')}
+              </Text>
+            </span>
+          )}
+          {step === 1 && (
+            <span className="fade in flex flex-col items-start gap-[10px] md:max-w-[600px] xl:max-w-[400px]">
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
+                {t('chapter_three.solo_one.step_one_heading')}
+              </Text>
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
+                {t('chapter_three.solo_one.step_one_paragraph_one')}
+              </Text>
+            </span>
+          )}
+          {step === 2 && (
+            <span className="fade in flex flex-col items-start gap-[10px] md:max-w-[600px] xl:max-w-[400px]">
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold md:text-left">
+                {t('chapter_three.solo_one.step_two_heading')}
+              </Text>
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold md:text-left">
+                {t('chapter_three.solo_one.step_two_paragraph_one')}
+              </Text>
+              <Button
+                onClick={saveAndProceed}
+                classes="max-md:w-full mt-[20px]"
+              >
+                {t('shared.next')}
+              </Button>
+            </span>
+          )}
+        </div>
       </HashrateChallenge>
     </div>
   )
