@@ -1,6 +1,6 @@
 'use client'
 
-import { useSaveAndReturn, useTranslations, usePathData } from 'hooks'
+import { useSaveAndReturn, usePathData } from 'hooks'
 import { Modal, useModalContext } from 'providers/ModalProvider'
 import { useAuthContext } from 'providers/AuthProvider'
 import { lessons } from 'content'
@@ -14,16 +14,15 @@ export default function End({
   children,
   direction,
   className,
-  gradientTheme,
+  gradientColor,
 }: {
   children: any
   image: string
   lang: string
   direction: 'left' | 'right'
   className?: string
-  gradientTheme: string
+  gradientColor: string
 }) {
-  const t = useTranslations(lang)
   const modals = useModalContext()
   const { account } = useAuthContext()
   const saveAndReturn = useSaveAndReturn()
@@ -76,7 +75,7 @@ export default function End({
           account={account}
           onClick={handleClick}
           currentLessonKey={currentLessonKey}
-          gradientTheme={gradientTheme}
+          gradientColor={gradientColor}
         >
           {children}
         </MobileEnd>

@@ -14,7 +14,7 @@ export default function MobileEnd({
   account,
   onClick,
   currentLessonKey,
-  gradientTheme,
+  gradientColor,
 }: {
   children: any
   image: string
@@ -23,7 +23,7 @@ export default function MobileEnd({
   account: any
   onClick: any
   currentLessonKey: any
-  gradientTheme: string
+  gradientColor: string
 }) {
   const t = useTranslations(lang)
 
@@ -41,10 +41,10 @@ export default function MobileEnd({
         className="h-[600px] w-auto object-cover"
       />
       <div
-        className={`relative bottom-48 bg-gradient-to-t ${gradientTheme} pb-48`}
+        className={`relative bottom-48 bg-gradient-to-t from-[${gradientColor}] via-[${gradientColor}BF] to-transparent pb-48`}
       />
       <div
-        className={`absolute top-[500px] bg-gradient-to-t p-4 pb-12 md:p-16 ${gradientTheme} w-screen`}
+        className={`absolute top-[500px] bg-gradient-to-t p-4 pb-12 md:p-16 from-[${gradientColor}] via-[${gradientColor}] w-screen to-transparent`}
       >
         <div className="max-w-[500px]">{children}</div>
         <div className="mt-4 flex w-full max-w-[500px] flex-col gap-4 xl:w-2/3">
