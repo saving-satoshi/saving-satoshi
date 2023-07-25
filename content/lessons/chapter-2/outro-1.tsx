@@ -6,9 +6,9 @@ import { ChapterEnd } from 'ui'
 export const metadata = {
   title: 'chapter_two.outro_one.title',
   image: '/assets/images/chapter-2-finish.jpg',
-  theme: 'bg-[#362042]',
+  theme: 'bg-transparent/20',
   secondaryTheme: 'bg-[#362042]',
-  gradientTheme: 'from-[#362042] via-[#362042] to-transparent',
+  gradientTheme: 'from-[#362042] via-[#362042BF]',
   key: 'CH2OUT1',
 }
 
@@ -18,9 +18,9 @@ export default function Outro1({ lang }) {
   return (
     <ChapterEnd
       image={metadata.image}
-      className={`-mt-[70px] min-h-screen ${metadata.secondaryTheme}`}
       direction="right"
       lang={lang}
+      theme={metadata.secondaryTheme}
       gradientTheme={metadata.gradientTheme}
     >
       <h1 className="text-5xl font-bold text-white">

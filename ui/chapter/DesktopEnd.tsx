@@ -11,7 +11,7 @@ export default function DesktopEnd({
   lang,
   children,
   direction,
-  className,
+  theme,
   account,
   onClick,
   currentLessonKey,
@@ -20,7 +20,7 @@ export default function DesktopEnd({
   image: string
   lang: string
   direction: 'left' | 'right'
-  className?: string
+  theme: string
   account: any
   onClick: any
   currentLessonKey: any
@@ -28,7 +28,7 @@ export default function DesktopEnd({
   const t = useTranslations(lang)
 
   return (
-    <div className={className}>
+    <div className={`-mt-[70px] min-h-screen ${theme}`}>
       <Image
         src={image}
         alt={t('chapter_two.title')}
