@@ -19,6 +19,7 @@ export interface EditorLanguages {
     defaultCode?: string
     defaultFunction: EditorFunction
     validate: (answer: any) => Promise<any[]>
+    constraints: any
   }
 }
 
