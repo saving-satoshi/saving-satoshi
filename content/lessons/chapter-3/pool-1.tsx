@@ -59,7 +59,7 @@ export default function Pool1({ lang }) {
   const ANTAGONISTS = [
     {
       username: 'BitRey',
-      avatar: '/assets/avatars/5.png',
+      avatar: '/assets/avatars/bitrey.png',
       hashpower: 18599,
       color: '#7E002E',
       value: step === 0 ? 0 : antagonistsBlockAmount,
