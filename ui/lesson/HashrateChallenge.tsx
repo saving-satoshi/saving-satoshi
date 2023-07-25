@@ -72,7 +72,7 @@ export default function HashrateChallenge({
           protagonistBlock + Math.floor(Math.random() * 2),
           blockRatio
         )
-        if (protagonistBlock + antagonistBlock < totalBlocks) {
+        if (protagonistBlock + antagonistBlock <= totalBlocks) {
           handleProtagonistBlocks(protagonistBlock)
         }
       }, (totalBlocks - blockRatio) * 3)
@@ -82,7 +82,7 @@ export default function HashrateChallenge({
           antagonistBlock + Math.floor(Math.random() * 2),
           totalBlocks - blockRatio + 5
         )
-        if (protagonistBlock + antagonistBlock < totalBlocks) {
+        if (protagonistBlock + antagonistBlock <= totalBlocks) {
           handleAntagonistBlocks(antagonistBlock)
         }
       }, blockRatio * 3)

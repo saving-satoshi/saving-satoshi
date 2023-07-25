@@ -247,7 +247,7 @@ export default function Pool2({ lang }) {
           </Profile>
         ))}
       >
-        <div className={`flex ${showText ? 'fade-in' : 'fade-out'}`}>
+        <div className={`flex flex-col ${showText ? 'fade-in' : 'fade-out'}`}>
           {step === 0 && (
             <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
@@ -259,19 +259,20 @@ export default function Pool2({ lang }) {
             </span>
           )}
           {step === 2 && (
-            <>
-              <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
-                <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
-                  {t('chapter_three.pool_two.step_two_heading')}
-                </Text>
-                <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-                  {t('chapter_three.pool_two.step_two_paragraph_one')}
-                </Text>
-              </span>
-              <Button onClick={saveAndProceed} classes="max-md:w-full">
+            <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+                {t('chapter_three.pool_two.step_two_heading')}
+              </Text>
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+                {t('chapter_three.pool_two.step_two_paragraph_one')}
+              </Text>
+              <Button
+                onClick={saveAndProceed}
+                classes="w-full md:w-auto mt-[20px]"
+              >
                 {t('shared.next')}
               </Button>
-            </>
+            </span>
           )}
         </div>
       </HashrateChallenge>
