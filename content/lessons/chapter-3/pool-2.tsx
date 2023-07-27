@@ -24,7 +24,7 @@ export default function Pool2({ lang }) {
 
   return (
     <ChapterIntro
-      className="my-8"
+      className="fade-in my-8"
       heading={t('chapter_three.pool_two.heading')}
     >
       <p className="mt-2 text-lg md:text-xl">
