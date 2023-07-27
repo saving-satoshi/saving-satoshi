@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useTranslations } from 'hooks'
 import { ChapterIntro } from 'ui'
 import { Button } from 'shared'
@@ -13,6 +14,13 @@ export const metadata = {
 export default function Pool2({ lang }) {
   const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
+
+  useEffect(() => {
+    const rootStyles = document.documentElement.style
+    rootStyles.setProperty('--CH3SOL1-bg', '#411e4f')
+    rootStyles.setProperty('--CH3SOL1-gradient-start', '#3C1843')
+    rootStyles.setProperty('--CH3SOL1-gradient-stop', '#45235a')
+  }, [])
 
   return (
     <ChapterIntro

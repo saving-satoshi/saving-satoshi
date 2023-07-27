@@ -5,7 +5,9 @@ import { Title } from 'ui'
 import { Button } from 'shared'
 import Avatar from 'components/Avatar'
 import { useMediaQuery } from 'hooks'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
+import Image from 'next/image'
 
 export const metadata = {
   title: 'chapter_three.pool_one.title',
@@ -17,51 +19,24 @@ export default function Pool1({ lang }) {
 
   const saveAndProceed = useSaveAndProceed()
   const isSmallScreen = useMediaQuery({ width: 767 })
-  const [playersFound, setPlayersFound] = useState(false)
-  const [players, setPlayers] = useState([
+  const players = [
     {
       username: 'You',
       avatar: '/assets/avatars/1.png',
-      display: true,
     },
     {
       username: 'Mining Maniacs',
       avatar: '/assets/avatars/2.png',
-      display: false,
     },
     {
       username: 'Hash Hoppers',
       avatar: '/assets/avatars/3.png',
-      display: false,
     },
     {
       username: 'Coin Crunchers',
       avatar: '/assets/avatars/4.png',
-      display: false,
     },
-  ])
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout
-    let playerCount = 1
-    let updatedPlayers = players
-    if (!playersFound) {
-      interval = setInterval(() => {
-        updatedPlayers = updatedPlayers.map((player, index) => {
-          if (index === playerCount) {
-            return { ...player, display: true }
-          }
-          return player
-        })
-        setPlayers(updatedPlayers)
-        playerCount += 1
-        if (playerCount == 4) {
-          setPlayersFound(true)
-        }
-      }, 2000)
-    }
-    return () => clearInterval(interval)
-  }, [!playersFound])
+  ]
 
   useEffect(() => {
     const rootStyles = document.documentElement.style
@@ -71,26 +46,39 @@ export default function Pool1({ lang }) {
   }, [])
 
   return (
-    <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
-      <div className="fade-in my-[30px] grid grid-cols-2 gap-[15px] border-2 border-dotted  border-white/25 md:order-last md:mx-[30px] md:h-[400px] md:w-[410px] md:gap-[30px]">
-        <Title>HoloCat Pool</Title>
-        {players.map((profile, i) => (
-          <div className="h-[160px] w-[160px] p-[15px] md:h-[185px] md:w-[190px]">
-            <div className="flex justify-center md:mb-[15px]">
-              {profile.display ? (
+    <div className="flex flex-col justify-center justify-items-center gap-[30px] md:my-auto md:flex-row">
+      <div className="ml-[15px] mr-[15px] mt-[30px] flex flex-col items-center gap-y-2.5 border-2 border-dotted border-white/25 p-3.5 md:order-last md:ml-0 md:mt-0">
+        <div className="mx-[5px] mb-[10px] flex gap-x-2.5 p-[5px]">
+          <Image
+            className="rounded-full"
+            src="/assets/images/chapter-1-holocat-cropped.jpg"
+            alt=""
+            width={26}
+            height={26}
+          />
+          <Title>HoloCat Pool</Title>
+        </div>
+        <div className="fade-in grid grid-cols-2">
+          {players.map((profile, i) => (
+            <div className="flex h-[145px] w-[160px] flex-col pb-5 md:h-[160px] md:w-[190px]">
+              <div className="-mb-2 flex flex-col items-center">
                 <Avatar
                   avatar={profile.avatar}
                   size={isSmallScreen ? 75 : 100}
                 />
-              ) : (
-                <div className="h-[75px] w-[75px] rounded-full bg-black/20 md:h-[100px] md:w-[100px]"></div>
-              )}
+                <ProfileChip
+                  className="relative -top-4"
+                  image="/assets/images/chapter-1-holocat-cropped.jpg"
+                  variant={ProfileChipVariant.Ranking}
+                  value={i + 1}
+                />
+              </div>
+              <div className="text-center font-nunito text-base font-semibold text-white">
+                {profile.username}
+              </div>
             </div>
-            <div className="p-2.5 text-center font-nunito text-base font-semibold text-white">
-              {profile.display ? profile.username : 'Waiting...'}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       <div
         className={`mb-5 flex w-full items-center px-[15px] transition-opacity md:mx-0 md:mb-0 md:mt-0 md:w-1/2 md:max-w-[405px] md:pl-[15px] md:pr-0 ${
