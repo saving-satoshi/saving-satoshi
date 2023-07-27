@@ -102,6 +102,7 @@ export default function Coop2({ lang }) {
     setAntagonistsBlockAmount(newBlock)
   }
 
+  //This code below is for a potential fix to the miners having 1 blocks when they should have 0
   /*function findIndexOfHighestHashpower(players, key) {
     let highestScore = -Infinity;
     let indexOfHighestScore = 0;
