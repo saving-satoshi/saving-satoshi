@@ -33,6 +33,7 @@ export const keys = [
   'CH3COO2',
   'CH3POL1',
   'CH3POL2',
+  'CH3POL3',
   'CH3OUT1',
 ]
 
@@ -69,6 +70,7 @@ export const keysMeta = {
   CH3COO2: { path: '/chapter-3/coop-2' },
   CH3POL1: { path: '/chapter-3/pool-1' },
   CH3POL2: { path: '/chapter-3/pool-2' },
+  CH3POL3: { path: '/chapter-3/pool-3' },
   CH3OUT1: { path: '/chapter-3/outro-1' },
 }
 

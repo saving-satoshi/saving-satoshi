@@ -8,7 +8,7 @@ import { useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
 
 export const metadata = {
-  title: 'chapter_three.coop_vs_bitrey_loose.title',
+  title: 'chapter_three.pool_one.title',
   key: 'CH3POL1',
 }
 
@@ -72,9 +72,10 @@ export default function Pool1({ lang }) {
 
   return (
     <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
-      <div className="fade-in my-[30px] grid grid-cols-2 gap-[15px] md:order-last md:mx-[30px] md:h-[400px] md:w-[410px] md:gap-[30px]">
+      <div className="fade-in my-[30px] grid grid-cols-2 gap-[15px] border-2 border-dotted  border-white/25 md:order-last md:mx-[30px] md:h-[400px] md:w-[410px] md:gap-[30px]">
+        <Title>HoloCat Pool</Title>
         {players.map((profile, i) => (
-          <div className="h-[160px] w-[160px] border-2 border-dotted border-white/25 p-[15px] md:h-[185px] md:w-[190px]">
+          <div className="h-[160px] w-[160px] p-[15px] md:h-[185px] md:w-[190px]">
             <div className="flex justify-center md:mb-[15px]">
               {profile.display ? (
                 <Avatar
@@ -97,33 +98,19 @@ export default function Pool1({ lang }) {
         }`}
       >
         <div className="font-nunito text-white">
-          <Title>
-            {t('chapter_three.coop_vs_bitrey_loose.waiting_screen_heading')}
-          </Title>
+          <Title>{t('chapter_three.pool_one.heading')}</Title>
           <div className="mt-2 text-lg">
-            {t(
-              'chapter_three.coop_vs_bitrey_loose.waiting_screen_paragraph_one'
-            )}
+            {t('chapter_three.pool_one.paragraph_one')}
           </div>
           <div className="mt-8 text-lg">
-            {t(
-              'chapter_three.coop_vs_bitrey_loose.waiting_screen_paragraph_two'
-            )}
+            {t('chapter_three.pool_one.paragraph_two')}
           </div>
           <div className="mt-8 text-lg">
-            {t(
-              'chapter_three.coop_vs_bitrey_loose.waiting_screen_paragraph_three'
-            )}
+            {t('chapter_three.pool_one.paragraph_three')}
           </div>
-          {playersFound ? (
-            <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
-              {t('chapter_three.coop_vs_bitrey_loose.continue_button')}
-            </Button>
-          ) : (
-            <Button classes="mt-10 max-md:w-full" style="faded" disabled={true}>
-              {t('chapter_three.coop_vs_bitrey_loose.waiting_button')}
-            </Button>
-          )}
+          <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+            {t('shared.next')}
+          </Button>
         </div>
       </div>
     </div>

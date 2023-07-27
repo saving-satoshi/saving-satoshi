@@ -8,7 +8,7 @@ import { useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
 
 export const metadata = {
-  title: 'chapter_three.coop_vs_bitrey_loose.title',
+  title: 'chapter_three.coop_one.title',
   image: '/assets/images/chapter-2-intro-1.jpg',
   key: 'CH3COO1',
 }
@@ -91,31 +91,23 @@ export default function Coop1({ lang }) {
         }`}
       >
         <div className="font-nunito text-white">
-          <Title>
-            {t('chapter_three.coop_vs_bitrey_loose.waiting_screen_heading')}
-          </Title>
+          <Title>{t('chapter_three.coop_one.waiting_screen_heading')}</Title>
           <div className="mt-2 text-lg">
-            {t(
-              'chapter_three.coop_vs_bitrey_loose.waiting_screen_paragraph_one'
-            )}
+            {t('chapter_three.coop_one.waiting_screen_paragraph_one')}
           </div>
           <div className="mt-8 text-lg">
-            {t(
-              'chapter_three.coop_vs_bitrey_loose.waiting_screen_paragraph_two'
-            )}
+            {t('chapter_three.coop_one.waiting_screen_paragraph_two')}
           </div>
           <div className="mt-8 text-lg">
-            {t(
-              'chapter_three.coop_vs_bitrey_loose.waiting_screen_paragraph_three'
-            )}
+            {t('chapter_three.coop_one.waiting_screen_paragraph_three')}
           </div>
           {playersFound ? (
             <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
-              {t('chapter_three.coop_vs_bitrey_loose.continue_button')}
+              {t('chapter_three.coop_one.continue_button')}
             </Button>
           ) : (
             <Button classes="mt-10 max-md:w-full" style="faded" disabled={true}>
-              {t('chapter_three.coop_vs_bitrey_loose.waiting_button')}
+              {t('chapter_three.coop_one.waiting_button')}
             </Button>
           )}
         </div>

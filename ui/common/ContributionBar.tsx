@@ -3,8 +3,14 @@
 import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import Icon from 'shared/Icon'
+import clsx from 'clsx'
 
-export default function ContributionBar({ total, protagonists, antagonists }) {
+export default function ContributionBar({
+  total,
+  protagonists,
+  antagonists,
+  step,
+}) {
   const elementRef = useRef<any>()
   const [protagonistState, setProtagonistState] = useState(
     protagonists.map(() => ({
@@ -88,26 +94,31 @@ export default function ContributionBar({ total, protagonists, antagonists }) {
 
           return (
             <div key={i}>
-              <div
-                className="absolute left-0 top-0 z-10 w-[26px] overflow-hidden rounded-full bg-white p-[2px]"
-                style={{
-                  transform: `translate3d(${offsetAvatar}, 2px, 0)`,
-                  transition: 'transform 300ms linear',
-                }}
-              >
-                {player.avatar && (
-                  <Image
-                    width={30}
-                    height={30}
-                    alt={player.username}
-                    src={player.avatar}
-                    className="h-full w-full object-cover"
-                  />
-                )}
-                {!player.avatar && (
-                  <Icon icon="avatar" className="text-white" />
-                )}
-              </div>
+              {step !== 0 && (
+                <div
+                  className={clsx(
+                    'fade-in absolute left-0 top-0 z-10 w-[26px] overflow-hidden rounded-full p-[2px]',
+                    { 'bg-white': player.avatar }
+                  )}
+                  style={{
+                    transform: `translate3d(${offsetAvatar}, 2px, 0)`,
+                    transition: 'transform 300ms linear',
+                  }}
+                >
+                  {player.avatar && (
+                    <Image
+                      width={30}
+                      height={30}
+                      alt={player.username}
+                      src={player.avatar}
+                      className="h-full w-full object-cover"
+                    />
+                  )}
+                  {!player.avatar && (
+                    <Icon icon="avatar" className="text-white" />
+                  )}
+                </div>
+              )}
               <div
                 className="absolute left-0 top-0 h-full w-full"
                 style={{
@@ -128,15 +139,17 @@ export default function ContributionBar({ total, protagonists, antagonists }) {
 
           return (
             <div key={i}>
-              <div
-                className="absolute right-0 top-0 z-10 w-[26px] overflow-hidden rounded-full bg-white p-[2px]"
-                style={{
-                  transform: `translate3d(${offsetAvatar}, 2px, 0)`,
-                  transition: 'transform 300ms linear',
-                }}
-              >
-                <Image src={player.avatar} alt="" width={26} height={26} />
-              </div>
+              {step !== 0 && (
+                <div
+                  className="fadde-in absolute right-0 top-0 z-10 w-[26px] overflow-hidden rounded-full bg-white p-[2px]"
+                  style={{
+                    transform: `translate3d(${offsetAvatar}, 2px, 0)`,
+                    transition: 'transform 300ms linear',
+                  }}
+                >
+                  <Image src={player.avatar} alt="" width={26} height={26} />
+                </div>
+              )}
               <div
                 className="absolute right-0 top-0 h-full w-full"
                 style={{

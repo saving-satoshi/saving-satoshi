@@ -150,6 +150,7 @@ export default function HashrateChallenge({
             </span>
           </div>
           <ContributionBar
+            step={step}
             total={totalBlocks}
             protagonists={protagonists}
             antagonists={antagonists}

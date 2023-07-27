@@ -426,7 +426,7 @@ const translations = {
         'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s go back to the drawing board. Bitcoin has been running for over a decade and it’s not going down without a fight.',
     },
 
-    coop_vs_bitrey_loose: {
+    coop_one: {
       title: 'Coop vs. BitRey',
       waiting_screen_heading: 'We need support',
       waiting_screen_paragraph_one:
@@ -439,11 +439,45 @@ const translations = {
       continue_button: "Let's go",
     },
 
+    coop_two: {
+      title: 'Coop vs. BitRey',
+      step_zero_heading: 'Here we go',
+      step_zero_paragraph_one:
+        'When you combine your hashrate with the other pool operators, can you stand up against BitRey?',
+      step_two_heading: 'Another defeat!',
+      step_two_paragraph_one:
+        'Something is wrong. Only one of your miners found blocks. Why do you think that might be?',
+    },
+
     pool_one: {
       title: 'Pool vs. BitRey',
+      heading: 'Something is not quite right yet.',
+      paragraph_one:
+        'Hash Hoppers, the one with the most hash power, is finding all your blocks but others find nothing.',
+      paragraph_two:
+        'The problem is that everyone is checking the same nonces while they’re mining. How can you better coordinate?',
+      paragraph_three:
+        ' You decide to place a unique identifier in the “extraNonce” when preparing the block data for each of you to prevent duplicate efforts.',
     },
 
     pool_two: {
+      title: 'Pool vs. BitRey',
+      heading: 'What is the extraNonce?',
+      paragraph_one:
+        'For the Stratum mining pool protocol (not bitcoin protocol), the coinbase transaction also has something called the “extra nonce”. When providing miners with the block data, mining pools divide the extra nonce into two parts: “extranonce1” and “extranonce2”.',
+      paragraph_two:
+        'Splitting the extra nonce into two parts hass several advantages:',
+      list_one: 'It prevents pool participants from doing the same work.',
+      list_two:
+        'It allows the pool to send the same transaction list to all miners that are pooling together. That means miners simply have to update “extranonce2” and not change transactions included in the block.',
+      list_three:
+        'The “extranonce1” allows pools to identify and determine share contribution because each miner gets their own “extranonce1”.',
+      paragraph_three:
+        ' Miners who contribute to a pool update the “extranonce2” and cycle through the nonce in the block header. If they don’t find a solution, they repeat the process with a different “extranonce2” until they do.',
+      paragraph_four: 'Let’s try again splitting the work using this method.',
+    },
+
+    pool_three: {
       title: 'Pool vs. BitRey',
       step_zero_heading: 'One more time...',
       step_zero_paragraph_one:
