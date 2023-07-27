@@ -20,10 +20,6 @@ export default function Transacting3({ lang }) {
         'chapter_one.transacting_three.terminal_challenge_success'
       )}
       customLines={t('chapter_one.transacting_three.terminal_challenge_lines')}
-      commonError={{
-        error: '$scriptPubKeyBytes',
-        message: t('chapter_one.transacting_three.terminal_challenge_error'),
-      }}
     >
       <LessonInfo>
         <Title>{t('chapter_one.transacting_three.heading')}</Title>
