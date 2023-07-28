@@ -9,6 +9,7 @@ import Profile from 'ui/common/Profile'
 import clsx from 'clsx'
 import { sleep } from 'utils'
 import { useAuthContext } from 'providers/AuthProvider'
+import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
   title: 'chapter_three.solo_one.title',
@@ -105,14 +106,15 @@ export default function Solo1({ lang }) {
   }, [step])
 
   useEffect(() => {
-    const rootStyles = document.documentElement.style
-    rootStyles.setProperty('--CH3SOL1-bg', '#411e4f')
-    rootStyles.setProperty('--CH3SOL1-gradient-start', '#3C1843')
-    rootStyles.setProperty('--CH3SOL1-gradient-stop', '#45235a')
+    cssVarThemeChange({
+      '--CH3SOL1-bg': '#411e4f',
+      '--CH3SOL1-gradient-start': '#3C1843',
+      '--CH3SOL1-gradient-stop': '#45235a',
+    })
   }, [])
 
   return (
-    <div className="fade-in mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch py-[20px] px-[20px] md:mt-44 md:flex-row-reverse md:py-0 xl:my-auto">
+    <div className="fade-in mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch px-[20px] py-[20px] md:mt-44 md:flex-row-reverse md:py-0 xl:my-auto">
       <HashrateChallenge
         step={step}
         onStepUpdate={handleStepUpdate}

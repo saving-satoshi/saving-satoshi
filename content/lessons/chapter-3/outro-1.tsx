@@ -1,7 +1,9 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useTranslations } from 'hooks'
 import { ChapterEnd } from 'ui'
+import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
   title: 'chapter_three.outro_one.title',
@@ -14,6 +16,14 @@ export const metadata = {
 
 export default function Outro1({ lang }) {
   const t = useTranslations(lang)
+
+  useEffect(() => {
+    cssVarThemeChange({
+      '--CH3SOL1-bg': '#411e4f',
+      '--CH3SOL1-gradient-start': '#3C1843',
+      '--CH3SOL1-gradient-stop': '#45235a',
+    })
+  }, [])
 
   return (
     <ChapterEnd

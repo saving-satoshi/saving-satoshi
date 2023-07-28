@@ -8,6 +8,7 @@ import { useMediaQuery } from 'hooks'
 import { useEffect } from 'react'
 import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
 import Image from 'next/image'
+import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
   title: 'chapter_three.pool_one.title',
@@ -39,10 +40,11 @@ export default function Pool1({ lang }) {
   ]
 
   useEffect(() => {
-    const rootStyles = document.documentElement.style
-    rootStyles.setProperty('--CH3SOL1-bg', '#411e4f')
-    rootStyles.setProperty('--CH3SOL1-gradient-start', '#3C1843')
-    rootStyles.setProperty('--CH3SOL1-gradient-stop', '#45235a')
+    cssVarThemeChange({
+      '--CH3SOL1-bg': '#411e4f',
+      '--CH3SOL1-gradient-start': '#3C1843',
+      '--CH3SOL1-gradient-stop': '#45235a',
+    })
   }, [])
 
   return (

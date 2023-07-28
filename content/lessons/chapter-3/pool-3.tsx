@@ -9,6 +9,7 @@ import { sleep } from 'utils'
 import Profile from 'ui/common/Profile'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
+import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
   title: 'chapter_three.pool_two.title',
@@ -89,10 +90,11 @@ export default function Pool3({ lang }) {
     setShowText(true)
 
     if (step >= 1) {
-      const rootStyles = document.documentElement.style
-      rootStyles.setProperty('--CH3SOL1-bg', '#3e7141')
-      rootStyles.setProperty('--CH3SOL1-gradient-start', '#3e7141')
-      rootStyles.setProperty('--CH3SOL1-gradient-stop', '#3e7141')
+      cssVarThemeChange({
+        '--CH3SOL1-bg': '#3e7141',
+        '--CH3SOL1-gradient-start': '#3e7141',
+        '--CH3SOL1-gradient-stop': '#3e7141',
+      })
     }
   }
 
@@ -152,10 +154,11 @@ export default function Pool3({ lang }) {
   }, [step])
 
   useEffect(() => {
-    const rootStyles = document.documentElement.style
-    rootStyles.setProperty('--CH3SOL1-bg', '#411e4f')
-    rootStyles.setProperty('--CH3SOL1-gradient-start', '#3C1843')
-    rootStyles.setProperty('--CH3SOL1-gradient-stop', '#45235a')
+    cssVarThemeChange({
+      '--CH3SOL1-bg': '#411e4f',
+      '--CH3SOL1-gradient-start': '#3C1843',
+      '--CH3SOL1-gradient-stop': '#45235a',
+    })
   }, [])
 
   return (

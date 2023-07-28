@@ -9,6 +9,7 @@ import { sleep } from 'utils'
 import Profile from 'ui/common/Profile'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
+import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
   title: 'chapter_three.coop_two.title',
@@ -87,10 +88,11 @@ export default function Coop2({ lang }) {
     setShowText(true)
 
     if (step >= 1) {
-      const rootStyles = document.documentElement.style
-      rootStyles.setProperty('--CH3SOL1-bg', '#691947')
-      rootStyles.setProperty('--CH3SOL1-gradient-start', '#691947')
-      rootStyles.setProperty('--CH3SOL1-gradient-stop', '#691947')
+      cssVarThemeChange({
+        '--CH3SOL1-bg': '#691947',
+        '--CH3SOL1-gradient-start': '#691947',
+        '--CH3SOL1-gradient-stop': '#691947',
+      })
     }
   }
 
@@ -157,10 +159,11 @@ export default function Coop2({ lang }) {
   }, [step])
 
   useEffect(() => {
-    const rootStyles = document.documentElement.style
-    rootStyles.setProperty('--CH3SOL1-bg', '#411e4f')
-    rootStyles.setProperty('--CH3SOL1-gradient-start', '#3C1843')
-    rootStyles.setProperty('--CH3SOL1-gradient-stop', '#45235a')
+    cssVarThemeChange({
+      '--CH3SOL1-bg': '#411e4f',
+      '--CH3SOL1-gradient-start': '#3C1843',
+      '--CH3SOL1-gradient-stop': '#45235a',
+    })
   }, [])
 
   return (

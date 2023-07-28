@@ -5,6 +5,7 @@ import { useTranslations } from 'hooks'
 import { ChapterIntro } from 'ui'
 import { Button } from 'shared'
 import { useSaveAndProceed } from 'hooks'
+import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
   title: 'chapter_three.pool_two.title',
@@ -16,10 +17,11 @@ export default function Pool2({ lang }) {
   const t = useTranslations(lang)
 
   useEffect(() => {
-    const rootStyles = document.documentElement.style
-    rootStyles.setProperty('--CH3SOL1-bg', '#411e4f')
-    rootStyles.setProperty('--CH3SOL1-gradient-start', '#3C1843')
-    rootStyles.setProperty('--CH3SOL1-gradient-stop', '#45235a')
+    cssVarThemeChange({
+      '--CH3SOL1-bg': '#411e4f',
+      '--CH3SOL1-gradient-start': '#3C1843',
+      '--CH3SOL1-gradient-stop': '#45235a',
+    })
   }, [])
 
   return (

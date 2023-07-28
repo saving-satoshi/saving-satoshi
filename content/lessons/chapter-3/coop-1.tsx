@@ -6,6 +6,7 @@ import { Button } from 'shared'
 import Avatar from 'components/Avatar'
 import { useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
+import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
   title: 'chapter_three.coop_one.title',
@@ -63,6 +64,14 @@ export default function Coop1({ lang }) {
     }
     return () => clearInterval(interval)
   }, [!playersFound])
+
+  useEffect(() => {
+    cssVarThemeChange({
+      '--CH3SOL1-bg': '#411e4f',
+      '--CH3SOL1-gradient-start': '#3C1843',
+      '--CH3SOL1-gradient-stop': '#45235a',
+    })
+  }, [])
 
   return (
     <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">

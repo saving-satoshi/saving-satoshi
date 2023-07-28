@@ -466,7 +466,7 @@ const translations = {
       paragraph_one:
         'For the Stratum mining pool protocol (not bitcoin protocol), the coinbase transaction also has something called the “extra nonce”. When providing miners with the block data, mining pools divide the extra nonce into two parts: “extranonce1” and “extranonce2”.',
       paragraph_two:
-        'Splitting the extra nonce into two parts hass several advantages:',
+        'Splitting the extra nonce into two parts has several advantages:',
       list_one: 'It prevents pool participants from doing the same work.',
       list_two:
         'It allows the pool to send the same transaction list to all miners that are pooling together. That means miners simply have to update “extranonce2” and not change transactions included in the block.',
