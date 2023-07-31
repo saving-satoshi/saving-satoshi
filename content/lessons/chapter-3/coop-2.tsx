@@ -80,6 +80,11 @@ export default function Coop2({ lang }) {
 
   const PROFILES: ProfileWithHashPower[] = [...PROTAGONISTS, ...ANTAGONISTS]
 
+  const highestHashpowerProtagonist = findIndexOfHighestHashpower(
+    PROTAGONISTS,
+    'hashpower'
+  )
+
   const handleStepUpdate = async (newStep: number) => {
     setShowText(false)
     await sleep(325)
@@ -99,6 +104,18 @@ export default function Coop2({ lang }) {
 
   const handleAntagonsitBlockUpdate = (newBlock: number) => {
     setAntagonistsBlockAmount(newBlock)
+  }
+
+  function findIndexOfHighestHashpower(players, key) {
+    let highestScore = -Infinity
+    let indexOfHighestScore = 0
+    for (let i = 0; i < players.length; i++) {
+      if (players[i][key] > highestScore) {
+        highestScore = players[i][key]
+        indexOfHighestScore = i
+      }
+    }
+    return indexOfHighestScore
   }
 
   useEffect(() => {
@@ -175,7 +192,11 @@ export default function Coop2({ lang }) {
                   }
                 )}
               >
-                {PROFILES[i].value}
+                {i === PROFILES.length - 1
+                  ? profile.value
+                  : i === highestHashpowerProtagonist
+                  ? profile.value + 3
+                  : '0'}
               </span>
             </Card>
             <Card className="flex gap-4">
