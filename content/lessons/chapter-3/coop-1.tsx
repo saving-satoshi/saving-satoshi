@@ -6,9 +6,10 @@ import { Button } from 'shared'
 import Avatar from 'components/Avatar'
 import { useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
+import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
-  title: 'chapter_three.coop_vs_bitrey_loose.title',
+  title: 'chapter_three.coop_one.title',
   image: '/assets/images/chapter-2-intro-1.jpg',
   key: 'CH3COO1',
 }
@@ -64,6 +65,14 @@ export default function Coop1({ lang }) {
     return () => clearInterval(interval)
   }, [!playersFound])
 
+  useEffect(() => {
+    cssVarThemeChange({
+      '--CH3SOL1-bg': '#411e4f',
+      '--CH3SOL1-gradient-start': '#3C1843',
+      '--CH3SOL1-gradient-stop': '#45235a',
+    })
+  }, [])
+
   return (
     <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
       <div className="fade-in my-[30px] grid grid-cols-2 gap-[15px] md:order-last md:mx-[30px] md:h-[400px] md:w-[410px] md:gap-[30px]">
@@ -91,31 +100,23 @@ export default function Coop1({ lang }) {
         }`}
       >
         <div className="font-nunito text-white">
-          <Title>
-            {t('chapter_three.coop_vs_bitrey_loose.waiting_screen_heading')}
-          </Title>
+          <Title>{t('chapter_three.coop_one.waiting_screen_heading')}</Title>
           <div className="mt-2 text-lg">
-            {t(
-              'chapter_three.coop_vs_bitrey_loose.waiting_screen_paragraph_one'
-            )}
+            {t('chapter_three.coop_one.waiting_screen_paragraph_one')}
           </div>
           <div className="mt-8 text-lg">
-            {t(
-              'chapter_three.coop_vs_bitrey_loose.waiting_screen_paragraph_two'
-            )}
+            {t('chapter_three.coop_one.waiting_screen_paragraph_two')}
           </div>
           <div className="mt-8 text-lg">
-            {t(
-              'chapter_three.coop_vs_bitrey_loose.waiting_screen_paragraph_three'
-            )}
+            {t('chapter_three.coop_one.waiting_screen_paragraph_three')}
           </div>
           {playersFound ? (
             <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
-              {t('chapter_three.coop_vs_bitrey_loose.continue_button')}
+              {t('chapter_three.coop_one.continue_button')}
             </Button>
           ) : (
             <Button classes="mt-10 max-md:w-full" style="faded" disabled={true}>
-              {t('chapter_three.coop_vs_bitrey_loose.waiting_button')}
+              {t('chapter_three.coop_one.waiting_button')}
             </Button>
           )}
         </div>
