@@ -107,14 +107,11 @@ export default function Coop2({ lang }) {
   }
 
   function findIndexOfHighestHashpower(players, key) {
-    let highestScore = -Infinity
-    let indexOfHighestScore = 0
-    for (let i = 0; i < players.length; i++) {
-      if (players[i][key] > highestScore) {
-        highestScore = players[i][key]
-        indexOfHighestScore = i
-      }
-    }
+    const indexOfHighestScore = players.reduce(
+      (highestIndex, current, index) =>
+        current.value > players[highestIndex].value ? index : highestIndex,
+      0
+    )
     return indexOfHighestScore
   }
 
@@ -192,11 +189,11 @@ export default function Coop2({ lang }) {
                   }
                 )}
               >
-                {i === PROFILES.length - 1
-                  ? profile.value
-                  : i === highestHashpowerProtagonist
-                  ? profile.value + 3
-                  : '0'}
+                {i === PROFILES.length - 1 && profile.value}
+                {i === highestHashpowerProtagonist && profile.value + 3}
+                {i !== PROFILES.length - 1 &&
+                  i !== highestHashpowerProtagonist &&
+                  '0'}
               </span>
             </Card>
             <Card className="flex gap-4">
