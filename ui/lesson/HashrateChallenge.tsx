@@ -62,37 +62,39 @@ export default function HashrateChallenge({
   })
 
   useEffect(() => {
-    let interval: NodeJS.Timeout
+    let protagonistInterval: NodeJS.Timeout
+    let antagonistInterval: NodeJS.Timeout
     let protagonistBlock = 0
+    let antagonistBlock = 0
     if (finalMining) {
-      interval = setInterval(() => {
+      protagonistInterval = setInterval(() => {
         protagonistBlock = Math.min(
           protagonistBlock + Math.floor(Math.random() * 2),
           blockRatio
         )
-        handleProtagonistBlocks(protagonistBlock)
+        if (protagonistBlock + antagonistBlock <= totalBlocks) {
+          handleProtagonistBlocks(protagonistBlock)
+        }
       }, (totalBlocks - blockRatio) * 3)
-    }
-    return () => clearInterval(interval)
-  }, [finalMining])
 
-  useEffect(() => {
-    let interval: NodeJS.Timeout
-    let antagonistBlock = 0
-    if (finalMining) {
-      interval = setInterval(() => {
+      antagonistInterval = setInterval(() => {
         antagonistBlock = Math.min(
           antagonistBlock + Math.floor(Math.random() * 2),
           totalBlocks - blockRatio + 5
         )
-        handleAntagonistBlocks(antagonistBlock)
+        if (protagonistBlock + antagonistBlock <= totalBlocks) {
+          handleAntagonistBlocks(antagonistBlock)
+        }
       }, blockRatio * 3)
     }
-    return () => clearInterval(interval)
+    return () => {
+      clearInterval(protagonistInterval)
+      clearInterval(antagonistInterval)
+    }
   }, [finalMining])
 
   useEffect(() => {
-    if (protagonistsTotal + antagonistsTotal === totalBlocks) {
+    if (protagonistsTotal + antagonistsTotal >= totalBlocks) {
       handleStep(2)
       setFinalMining(false)
     }
@@ -148,6 +150,7 @@ export default function HashrateChallenge({
             </span>
           </div>
           <ContributionBar
+            step={step}
             total={totalBlocks}
             protagonists={protagonists}
             antagonists={antagonists}
