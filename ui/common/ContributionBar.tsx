@@ -10,6 +10,13 @@ export default function ContributionBar({
   protagonists,
   antagonists,
   step,
+  opacity,
+}: {
+  total: number
+  protagonists: any
+  antagonists: any
+  step: number
+  opacity?: string
 }) {
   const elementRef = useRef<any>()
   const [protagonistState, setProtagonistState] = useState(
@@ -81,7 +88,10 @@ export default function ContributionBar({
 
   return (
     <div
-      className="relative h-[30px] overflow-hidden rounded bg-black/20"
+      className={clsx(
+        'relative h-[30px] overflow-hidden rounded bg-black/20',
+        opacity
+      )}
       ref={elementRef}
     >
       <div className="h-full w-full overflow-hidden">

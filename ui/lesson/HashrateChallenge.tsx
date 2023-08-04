@@ -20,6 +20,8 @@ export default function HashrateChallenge({
   protagonists,
   antagonists,
   step,
+  contributionBarOpacity,
+  fixedData,
   onStepUpdate,
   onProtagonistUpdate,
   onAntagonistUpdate,
@@ -28,6 +30,8 @@ export default function HashrateChallenge({
   profiles: any
   verticalProfiles?: boolean
   step: number
+  contributionBarOpacity?: string
+  fixedData?: any
   onStepUpdate: (newStep: number) => void
   onProtagonistUpdate: (newBlock: number) => void
   onAntagonistUpdate: (newBlock: number) => void
@@ -66,13 +70,62 @@ export default function HashrateChallenge({
     let antagonistInterval: NodeJS.Timeout
     let protagonistBlock = 0
     let antagonistBlock = 0
-    if (finalMining) {
+
+    if (finalMining && fixedData) {
+      const allBlocks = fixedData.protagonists.blocks.concat(
+        fixedData.antagonists.blocks
+      )
+      const totalBlocks = allBlocks.reduce((sum, value) => sum + value, 0)
+      const targetValues = allBlocks.map((value) => (value / totalBlocks) * 100)
+
+      // Function to update values gradually with randomness
+      function updateValues(
+        currentValues,
+        targetValues,
+        incrementFactor,
+        randomnessFactor
+      ) {
+        for (let i = 0; i < currentValues.length; i++) {
+          const diff = targetValues[i] - currentValues[i]
+          const randomFactor = Math.random() * randomnessFactor
+          const increment = diff * incrementFactor + randomFactor
+          currentValues[i] += increment
+        }
+      }
+
+      // Set an interval or use a requestAnimationFrame loop to update values over time
+      const incrementFactor = 0.02 // Controls the speed of increment
+      const randomnessFactor = 0.2 // Controls the randomness in speed
+
+      let currentValues = Array(targetValues.length).fill(0)
+
+      function animate() {
+        updateValues(
+          currentValues,
+          targetValues,
+          incrementFactor,
+          randomnessFactor
+        )
+
+        // Check if current values are close enough to target values
+        const closeEnough = currentValues.every(
+          (value, i) => Math.abs(value - targetValues[i]) < 0.1
+        )
+
+        if (!closeEnough) {
+          // Continue animating
+          requestAnimationFrame(animate)
+        }
+      }
+    }
+
+    if (finalMining && !fixedData) {
       protagonistInterval = setInterval(() => {
         protagonistBlock = Math.min(
           protagonistBlock + Math.floor(Math.random() * 2),
           blockRatio
         )
-        if (protagonistBlock + antagonistBlock <= totalBlocks) {
+        if (protagonistBlock + antagonistBlock < totalBlocks) {
           handleProtagonistBlocks(protagonistBlock)
         }
       }, (totalBlocks - blockRatio) * 3)
@@ -82,7 +135,7 @@ export default function HashrateChallenge({
           antagonistBlock + Math.floor(Math.random() * 2),
           totalBlocks - blockRatio + 5
         )
-        if (protagonistBlock + antagonistBlock <= totalBlocks) {
+        if (protagonistBlock + antagonistBlock < totalBlocks) {
           handleAntagonistBlocks(antagonistBlock)
         }
       }, blockRatio * 3)
@@ -91,12 +144,14 @@ export default function HashrateChallenge({
       clearInterval(protagonistInterval)
       clearInterval(antagonistInterval)
     }
-  }, [finalMining])
+  }, [finalMining, totalBlocks, blockRatio, fixedData])
 
   useEffect(() => {
-    if (protagonistsTotal + antagonistsTotal >= totalBlocks) {
-      handleStep(2)
-      setFinalMining(false)
+    if (totalBlocks) {
+      if (protagonistsTotal + antagonistsTotal >= totalBlocks) {
+        handleStep(2)
+        setFinalMining(false)
+      }
     }
   }, [protagonistsTotal, antagonistsTotal, totalBlocks])
 
@@ -154,6 +209,7 @@ export default function HashrateChallenge({
             total={totalBlocks}
             protagonists={protagonists}
             antagonists={antagonists}
+            opacity={step !== 0 ? contributionBarOpacity : ''}
           />
         </div>
       </ProfilesContainer>
