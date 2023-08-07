@@ -38,7 +38,7 @@ export default function Solo1({ lang }) {
       username: 'You',
       avatar: account?.avatar,
       hashpower: 4395,
-      nonce: protagonistHash,
+      hashes: protagonistHash,
       color: '#F3AB29',
       value: step === 0 ? 0 : protagonistsBlockAmount,
     },
@@ -49,7 +49,7 @@ export default function Solo1({ lang }) {
       username: 'BitRey',
       avatar: '/assets/avatars/bitrey.png',
       hashpower: 18599,
-      nonce: antagonistHash,
+      hashes: antagonistHash,
       color: '#7E002E',
       value: step === 0 ? 0 : antagonistsBlockAmount,
     },
@@ -159,15 +159,14 @@ export default function Solo1({ lang }) {
                   {step === 0
                     ? 0
                     : (
-                        profile.nonce! /
-                        10 ** (profile.nonce!.toString().length - 2)
+                        profile.hashes! /
+                        10 ** (profile.hashes!.toString().length - 2)
                       ).toFixed(2)}
                   {step !== 0 && (
                     <span className="fade-in text-white/50">
                       *10
                       <sup>
-                        {(profile.nonce! * profile.hashpower).toString()
-                          .length + 6}
+                        {(profile.hashes! * 10000).toString().length + 6}
                       </sup>
                     </span>
                   )}
