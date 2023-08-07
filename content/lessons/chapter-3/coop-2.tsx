@@ -81,6 +81,11 @@ export default function Coop2({ lang }) {
 
   const PROFILES: ProfileWithHashPower[] = [...PROTAGONISTS, ...ANTAGONISTS]
 
+  const highestHashpowerProtagonist = findIndexOfHighestHashpower(
+    PROTAGONISTS,
+    'hashpower'
+  )
+
   const handleStepUpdate = async (newStep: number) => {
     setShowText(false)
     await sleep(325)
@@ -104,20 +109,14 @@ export default function Coop2({ lang }) {
     setAntagonistsBlockAmount(newBlock)
   }
 
-  //This code below is for a potential fix to the miners having 1 blocks when they should have 0
-  /*function findIndexOfHighestHashpower(players, key) {
-    let highestScore = -Infinity;
-    let indexOfHighestScore = 0;
-
-    for (let i = 0; i < players.length; i++) {
-      if (players[i][key] > highestScore) {
-        highestScore = players[i][key];
-        indexOfHighestScore = i;
-      }
-    }
-
-    return indexOfHighestScore;
-  }*/
+  function findIndexOfHighestHashpower(players, key) {
+    const indexOfHighestScore = players.reduce(
+      (highestIndex, current, index) =>
+        current.value > players[highestIndex].value ? index : highestIndex,
+      0
+    )
+    return indexOfHighestScore
+  }
 
   useEffect(() => {
     let intervals: NodeJS.Timeout[] = []
@@ -201,7 +200,11 @@ export default function Coop2({ lang }) {
                   }
                 )}
               >
-                {profile.value}
+                {i === PROFILES.length - 1 && profile.value}
+                {i === highestHashpowerProtagonist && profile.value + 3}
+                {i !== PROFILES.length - 1 &&
+                  i !== highestHashpowerProtagonist &&
+                  '0'}
               </span>
             </Card>
             <Card className="flex gap-4">
