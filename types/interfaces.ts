@@ -54,6 +54,12 @@ export interface ProgressContextType {
   saveProgressLocal: (key: string) => Promise<void>
 }
 
+export interface FeatureContextType {
+  isLoading: boolean
+  features: { [key: string]: number }
+  isFeatureEnabled: (key: string) => boolean
+}
+
 export interface ModalState {
   open: boolean
   meta: any
