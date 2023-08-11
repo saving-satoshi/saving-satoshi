@@ -1,6 +1,6 @@
 import 'styles/globals.css'
 import Fonts from 'components/Fonts'
-import { AuthProvider, ProgressProvider } from 'providers'
+import { AuthProvider, FeatureProvider, ProgressProvider } from 'providers'
 import ModalProvider from 'providers/ModalProvider'
 import Layout from 'components/Layout'
 
@@ -50,13 +50,15 @@ export default function RootLayout({
       </head>
       <body className="font-cbrush">
         <Fonts />
-        <AuthProvider>
-          <ProgressProvider>
-            <ModalProvider>
-              <Layout>{children}</Layout>
-            </ModalProvider>
-          </ProgressProvider>
-        </AuthProvider>
+        <FeatureProvider>
+          <AuthProvider>
+            <ProgressProvider>
+              <ModalProvider>
+                <Layout>{children}</Layout>
+              </ModalProvider>
+            </ProgressProvider>
+          </AuthProvider>
+        </FeatureProvider>
       </body>
     </html>
   )
