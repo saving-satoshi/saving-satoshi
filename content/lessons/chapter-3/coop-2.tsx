@@ -4,9 +4,15 @@ import { useTranslations, useSaveAndProceed } from 'hooks'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import { ProfileWithHashPower } from 'types'
-import { Card, HashFrequency, Text, HashrateChallenge } from 'ui'
+import {
+  Card,
+  HashFrequency,
+  Text,
+  HashrateChallenge,
+  Profile,
+  Exponent,
+} from 'ui'
 import { sleep } from 'utils'
-import Profile from 'ui/common/Profile'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { cssVarThemeChange } from 'lib/themeSelector'
@@ -228,29 +234,11 @@ export default function Coop2({ lang }) {
                 Hashes
               </span>
               <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
-                <div
-                  className={clsx('font-space-mono font-normal', {
-                    'text-white/25': step === 0,
-                    'fade-in text-white': step !== 0,
-                  })}
-                >
-                  {/*This code below is what turns numbers into scientific notation.
-                  Perhaps we could create a new component to clean this up as we use this quite often*/}
-                  {step === 0
-                    ? 0
-                    : (
-                        profile.hashes! /
-                        10 ** (profile.hashes!.toString().length - 2)
-                      ).toFixed(2)}
-                  {step !== 0 && (
-                    <span className="fade-in text-white/50">
-                      *10
-                      <sup>
-                        {(profile.hashes! * 10000).toString().length + 6}
-                      </sup>
-                    </span>
-                  )}
-                </div>
+                <Exponent
+                  className="font-space-mono font-normal"
+                  step={step}
+                  hashes={profile.hashes}
+                />
               </span>
             </Card>
           </Profile>
