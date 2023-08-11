@@ -17,7 +17,7 @@ export const FeatureContext = createContext<FeatureContextType>(
 
 export const useFeatureContext = () => useContext(FeatureContext)
 
-export default function ProgressProvider({
+export default function FeatureProvider({
   children,
 }: {
   children: React.ReactNode
