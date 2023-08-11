@@ -54,6 +54,18 @@ export interface ProgressContextType {
   saveProgressLocal: (key: string) => Promise<void>
 }
 
+export interface Data {
+  lesson_id: string
+  value: any
+}
+
+export interface DataContextType {
+  isLoading: boolean
+  data: Data[]
+  loadData: (lessonId: string) => void
+  saveData: (lessonId: string, value: any) => void
+}
+
 export interface ModalState {
   open: boolean
   meta: any

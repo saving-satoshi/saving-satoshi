@@ -10,6 +10,10 @@ import Profile from 'ui/common/Profile'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { cssVarThemeChange } from 'lib/themeSelector'
+import { useDataContext } from 'providers/DataProvider'
+import { useProgressContext } from 'providers/ProgressProvider'
+import { lessons } from 'content'
+import { usePathData } from 'hooks'
 
 export const metadata = {
   title: 'chapter_three.pool_two.title',
@@ -20,7 +24,10 @@ export const metadata = {
 
 export default function Pool3({ lang }) {
   const { account } = useAuthContext()
+  const { saveData } = useDataContext()
+  const { chapterId, lessonId } = usePathData()
   const t = useTranslations(lang)
+
   const [step, setStep] = useState(0)
   const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState([
     0, 0, 0, 0,
@@ -29,6 +36,10 @@ export default function Pool3({ lang }) {
   const [protagonistHash, setProtagonistHash] = useState([0, 0, 0, 0])
   const [antagonistHash, setAntagonistHash] = useState(0)
   const [showText, setShowText] = useState(true)
+
+  const chapterLessons = lessons?.[chapterId]
+  const lesson = chapterLessons?.[lessonId]?.metadata ?? null
+  const currentLessonKey = lesson?.key ?? 'CH1INT1'
 
   const saveAndProceed = useSaveAndProceed()
 
@@ -273,6 +284,9 @@ export default function Pool3({ lang }) {
                 classes="w-full md:w-auto mt-[20px]"
               >
                 {t('shared.next')}
+              </Button>
+              <Button onClick={saveData(currentLessonKey, PROTAGONISTS.values)}>
+                Test save
               </Button>
             </span>
           )}

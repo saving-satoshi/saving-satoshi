@@ -1,7 +1,11 @@
 import 'styles/globals.css'
 import Fonts from 'components/Fonts'
-import { AuthProvider, ProgressProvider } from 'providers'
-import ModalProvider from 'providers/ModalProvider'
+import {
+  AuthProvider,
+  ProgressProvider,
+  DataProvider,
+  ModalProvider,
+} from 'providers'
 import Layout from 'components/Layout'
 
 const schema = () => {
@@ -50,13 +54,15 @@ export default function RootLayout({
       </head>
       <body className="font-cbrush">
         <Fonts />
-        <AuthProvider>
-          <ProgressProvider>
-            <ModalProvider>
-              <Layout>{children}</Layout>
-            </ModalProvider>
-          </ProgressProvider>
-        </AuthProvider>
+        <DataProvider>
+          <AuthProvider>
+            <ProgressProvider>
+              <ModalProvider>
+                <Layout>{children}</Layout>
+              </ModalProvider>
+            </ProgressProvider>
+          </AuthProvider>
+        </DataProvider>
       </body>
     </html>
   )

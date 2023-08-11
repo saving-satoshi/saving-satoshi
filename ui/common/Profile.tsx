@@ -31,7 +31,7 @@ export default function Profile({
       >
         <div
           className={clsx('flex justify-center', {
-            'mb-5': chip,
+            'mb-2 flex-col items-center': chip,
             'mb-2': !chip,
           })}
         >
@@ -43,14 +43,11 @@ export default function Profile({
             />
           )}
           {chip && (
-            <div
-              className="absolute flex w-full"
-              style={{ top: 'calc(100% - 12px)' }}
-            >
+            <>
               {React.cloneElement(chip, {
                 className: clsx(chip.props.className, 'mx-auto'),
               })}
-            </div>
+            </>
           )}
         </div>
         <div className="mb-[15px] flex flex-col gap-4">
