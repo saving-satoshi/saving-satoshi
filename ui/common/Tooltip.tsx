@@ -169,7 +169,7 @@ function Tooltip({
           </a>
         )}
         {!href && (
-          <span className={clsx('border-b border-dotted', className)}>
+          <span className={clsx('underline decoration-dashed', className)}>
             {children}
           </span>
         )}
