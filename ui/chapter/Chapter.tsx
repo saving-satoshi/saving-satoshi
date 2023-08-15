@@ -65,6 +65,7 @@ export default function Chapter({ children, metadata, lang }) {
     progress !== chapterLessons[0] &&
     progress !== keys[keys.length - 1] &&
     position === parseInt(progress.substring(2, 3))
+  const queryParams = isDevelopment ? '?dev=true' : ''
   const context = {}
 
   useEffect(() => {
@@ -150,8 +151,10 @@ export default function Chapter({ children, metadata, lang }) {
                       <Button
                         href={
                           isBetweenChapter
-                            ? `${routes.chaptersUrl + keysMeta[progress].path}`
-                            : `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}`
+                            ? `${
+                                routes.chaptersUrl + keysMeta[progress].path
+                              }${queryParams}`
+                            : `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}${queryParams}`
                         }
                         disabled={
                           chapter.metadata.lessons.length === 0 || !display
