@@ -17,6 +17,7 @@ import { useProgressContext } from 'providers/ProgressProvider'
 import { getLessonKey } from 'lib/progress'
 import { keys, keysMeta } from 'lib/progress'
 import { useFeatureContext } from 'providers/FeatureProvider'
+import useEnvironment from 'hooks/useEnvironment'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -34,6 +35,7 @@ const tabData = [
 ]
 
 export default function Chapter({ children, metadata, lang }) {
+  const { isDevelopment } = useEnvironment()
   const { progress, isLoading } = useProgressContext()
   const { isFeatureEnabled } = useFeatureContext()
   const isEnabled = isFeatureEnabled(
@@ -45,7 +47,9 @@ export default function Chapter({ children, metadata, lang }) {
   )
 
   const display =
-    metadata.slug === 'chapter-1' || (isEnabled && isUnlocked && !isLoading)
+    metadata.slug === 'chapter-1' ||
+    isDevelopment ||
+    (isEnabled && isUnlocked && !isLoading)
 
   const [activeTab, setActiveTab] = useState('info')
 
