@@ -62,7 +62,10 @@ export default function Pool1({ lang }) {
         </div>
         <div className="fade-in grid grid-cols-2">
           {players.map((profile, i) => (
-            <div className="flex h-[145px] w-[160px] flex-col pb-5 md:h-[160px] md:w-[190px]">
+            <div
+              key={i}
+              className="flex h-[145px] w-[160px] flex-col pb-5 md:h-[160px] md:w-[190px]"
+            >
               <div className="-mb-2 flex flex-col items-center">
                 <Avatar
                   avatar={profile.avatar}
