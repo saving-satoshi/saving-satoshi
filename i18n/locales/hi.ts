@@ -99,9 +99,9 @@ const translations = {
       title: 'उत्पत्ति',
       heading: 'छिपे हुए संदेश को खोजें',
       paragraph_one:
-        'आइए बिटकॉइन ब्लॉकचेन में सबसे पहले ब्लॉक को खोजें। नीचे दिए गए बटन पर क्लिक करके एक <Tooltip id="genesis_two_paragraph_one" content="genesis_two.tooltip_block_explorer" className="underline">ब्लॉक एक्स्प्लोरर</Tooltip> को ठीक ब्लॉक 0 पर खोलिये जिससे उत्पत्ति ब्लॉक कहाँ जाता है ',
+        'आइए बिटकॉइन ब्लॉकचेन में सबसे पहले ब्लॉक को खोजें। नीचे दिए गए बटन पर क्लिक करके एक <Tooltip id="genesis_two_paragraph_one" content="genesis_two.tooltip_block_explorer" >ब्लॉक एक्स्प्लोरर</Tooltip> को ठीक ब्लॉक 0 पर खोलिये जिससे उत्पत्ति ब्लॉक कहाँ जाता है ',
       paragraph_two:
-        'नीचे स्क्रॉल करें और इस ब्लॉक में संग्रहीत एक लेन-देन पर विवरण का विस्तार करें। "कॉइनबेस" नामक इनपुट खोजें। अब “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="genesis_two.tooltip_hex" className="underline">HEX</Tooltip>)" लेबल देखें। इसके आगे का मान एक एन्कोडेड संदेश है।',
+        'नीचे स्क्रॉल करें और इस ब्लॉक में संग्रहीत एक लेन-देन पर विवरण का विस्तार करें। "कॉइनबेस" नामक इनपुट खोजें। अब “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="genesis_two.tooltip_hex">HEX</Tooltip>)" लेबल देखें। इसके आगे का मान एक एन्कोडेड संदेश है।',
       paragraph_three: 'उस मान को कॉपी करें और नीचे पेस्ट करें।',
       tooltip_block_explorer:
         '<a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">ब्लॉक एक्सप्लोरर</a> एक उपयोगी टूल है जिससे बिटकॉइन लेनदेन के बारे में जल्दी से जानकारी खोजी जा सकती है ।',

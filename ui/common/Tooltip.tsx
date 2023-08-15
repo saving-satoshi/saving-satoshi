@@ -131,7 +131,7 @@ function Tooltip({
     <>
       <span
         className={clsx(
-          'tooltip absolute top-0 left-0 z-10 max-w-md border border-white px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
+          'tooltip absolute left-0 top-0 z-10 max-w-md border border-white px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
           theme,
           {
             'pointer-events-all opacity-100': visible,
@@ -153,7 +153,7 @@ function Tooltip({
           )}
           ref={arrowRef}
         />
-        <span className="font-nunitoleading-none text-white">
+        <span className="font-nunito leading-none text-white">
           {typeof content === 'string' ? t(content) : content}
         </span>
       </span>
@@ -164,11 +164,15 @@ function Tooltip({
         aria-describedby={id}
       >
         {href && (
-          <a href={href} className={className}>
+          <a href={href} className={clsx('underline', className)}>
             {children}
           </a>
         )}
-        {!href && <span className={className}>{children}</span>}
+        {!href && (
+          <span className={clsx('border-b border-dotted', className)}>
+            {children}
+          </span>
+        )}
       </span>
     </>
   )
