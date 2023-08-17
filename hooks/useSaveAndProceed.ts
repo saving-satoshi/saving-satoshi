@@ -37,7 +37,6 @@ export default function useSaveAndProceed() {
         await saveProgressLocal(nextLessonKey)
       }
     }
-    console.log(route)
     router.push(route)
   }
 
