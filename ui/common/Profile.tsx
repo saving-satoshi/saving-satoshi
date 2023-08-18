@@ -22,7 +22,12 @@ export default function Profile({
   const isSmallScreen = useMediaQuery({ width: 767 })
 
   return (
-    <div className={clsx('flex w-full flex-col items-center', className)}>
+    <div
+      className={clsx(
+        'flex w-full max-w-[220px] flex-col items-center 2xl:max-w-[auto]',
+        className
+      )}
+    >
       <div
         className={clsx('flex justify-center gap-x-2.5 text-center', {
           'flex-col': !isSmallScreen,

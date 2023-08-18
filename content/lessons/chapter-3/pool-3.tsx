@@ -162,7 +162,7 @@ export default function Pool3({ lang }) {
   }, [])
 
   return (
-    <div className="flex flex-col items-center gap-[30px] px-[15px] py-[30px] md:px-[75px] md:py-[75px]">
+    <div className="flex flex-col items-center gap-[20px] px-[15px] py-[30px] md:py-[75px] 2xl:gap-[30px] 2xl:px-[75px]">
       <HashrateChallenge
         totalBlocks={TOTAL_BLOCKS}
         blockRatio={BLOCK_RATIO}
