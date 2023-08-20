@@ -4,9 +4,15 @@ import { useTranslations, useSaveAndProceed } from 'hooks'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import { ProfileWithHashPower } from 'types'
-import { Card, HashFrequency, Text, HashrateChallenge } from 'ui'
+import {
+  Card,
+  HashFrequency,
+  Text,
+  HashrateChallenge,
+  Profile,
+  Exponent,
+} from 'ui'
 import { sleep } from 'utils'
-import Profile from 'ui/common/Profile'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { cssVarThemeChange } from 'lib/themeSelector'
@@ -38,7 +44,7 @@ export default function Coop2({ lang }) {
       username: 'You',
       avatar: account?.avatar,
       hashpower: 4395,
-      nonce: protagonistHash[0],
+      hashes: protagonistHash[0],
       color: '#F3AB29',
       value: step == 0 ? 0 : 1,
     },
@@ -46,7 +52,7 @@ export default function Coop2({ lang }) {
       username: 'Mining Maniacs',
       avatar: '/assets/avatars/2.png',
       hashpower: 4054,
-      nonce: protagonistHash[1],
+      hashes: protagonistHash[1],
       color: '#FE5329',
       value: step == 0 ? 0 : 1,
     },
@@ -54,7 +60,7 @@ export default function Coop2({ lang }) {
       username: 'Hash Hoppers',
       avatar: '/assets/avatars/3.png',
       hashpower: 7911,
-      nonce: protagonistHash[2],
+      hashes: protagonistHash[2],
       color: '#62BFB7',
       value: step === 0 ? 0 : protagonistsBlockAmount,
     },
@@ -62,7 +68,7 @@ export default function Coop2({ lang }) {
       username: 'Coin Crunchers',
       avatar: '/assets/avatars/4.png',
       hashpower: 3857,
-      nonce: protagonistHash[3],
+      hashes: protagonistHash[3],
       color: '#85BF09',
       value: step == 0 ? 0 : 1,
     },
@@ -73,7 +79,7 @@ export default function Coop2({ lang }) {
       username: 'BitRey',
       avatar: '/assets/avatars/bitrey.png',
       hashpower: 18599,
-      nonce: antagonistHash,
+      hashes: antagonistHash,
       color: '#7E002E',
       value: step === 0 ? 0 : antagonistsBlockAmount,
     },
@@ -228,30 +234,11 @@ export default function Coop2({ lang }) {
                 Hashes
               </span>
               <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
-                <div
-                  className={clsx('font-space-mono font-normal', {
-                    'text-white/25': step === 0,
-                    'fade-in text-white': step !== 0,
-                  })}
-                >
-                  {/*This code below is what turns numbers into scientific notation.
-                  Perhaps we could create a new component to clean this up as we use this quite often*/}
-                  {step === 0
-                    ? 0
-                    : (
-                        profile.nonce! /
-                        10 ** (profile.nonce!.toString().length - 2)
-                      ).toFixed(2)}
-                  {step !== 0 && (
-                    <span className="fade-in text-white/50">
-                      *10
-                      <sup>
-                        {(profile.nonce! * profile.hashpower).toString()
-                          .length + 6}
-                      </sup>
-                    </span>
-                  )}
-                </div>
+                <Exponent
+                  className="font-space-mono font-normal"
+                  step={step}
+                  hashes={profile.hashes}
+                />
               </span>
             </Card>
           </Profile>
