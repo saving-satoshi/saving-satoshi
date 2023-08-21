@@ -251,7 +251,8 @@ export default function Mining1({ lang }) {
                 setHashPower={setHashPower}
                 onButtonClick={turnOnButton}
                 step={step}
-              ></StartButton>
+                mining
+              />
             </div>
             <ProgressBar progress={hashPower / 440} variant={'bars'} />{' '}
             {/* progress = hashPower * 100/maxHashPower */}

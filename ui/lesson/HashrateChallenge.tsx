@@ -80,7 +80,7 @@ export default function HashrateChallenge({
         if (protagonistBlock + antagonistBlock < totalBlocks) {
           handleProtagonistBlocks(protagonistBlock)
         }
-      }, (totalBlocks - blockRatio) * 3)
+      }, (totalBlocks - blockRatio) * 5)
 
       antagonistInterval = setInterval(() => {
         antagonistBlock = Math.min(
@@ -90,7 +90,7 @@ export default function HashrateChallenge({
         if (protagonistBlock + antagonistBlock < totalBlocks) {
           handleAntagonistBlocks(antagonistBlock)
         }
-      }, blockRatio * 3)
+      }, blockRatio * 5)
     }
     return () => {
       clearInterval(protagonistInterval)

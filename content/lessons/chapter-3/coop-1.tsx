@@ -77,7 +77,10 @@ export default function Coop1({ lang }) {
     <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
       <div className="fade-in my-[30px] grid grid-cols-2 gap-[15px] md:order-last md:mx-[30px] md:h-[400px] md:w-[410px] md:gap-[30px]">
         {players.map((profile, i) => (
-          <div className="h-[160px] w-[160px] border-2 border-dotted border-white/25 p-[15px] md:h-[185px] md:w-[190px]">
+          <div
+            key={i}
+            className="h-[160px] w-[160px] border-2 border-dotted border-white/25 p-[15px] md:h-[185px] md:w-[190px]"
+          >
             <div className="flex justify-center md:mb-[15px]">
               {profile.display ? (
                 <Avatar

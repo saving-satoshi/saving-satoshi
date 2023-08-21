@@ -66,6 +66,12 @@ export interface DataContextType {
   saveData: (lessonId: string, value: any) => void
 }
 
+export interface FeatureContextType {
+  isLoading: boolean
+  features: { [key: string]: number }
+  isFeatureEnabled: (key: string) => boolean
+}
+
 export interface ModalState {
   open: boolean
   meta: any

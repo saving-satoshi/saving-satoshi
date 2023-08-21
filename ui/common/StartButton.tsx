@@ -11,6 +11,7 @@ export default function Card({
   setHashPower,
   onButtonClick,
   step,
+  mining,
 }: {
   hashPower: number
   startText: string
@@ -19,6 +20,7 @@ export default function Card({
   setHashPower: Dispatch<SetStateAction<number>>
   onButtonClick: any
   step: number
+  mining?: boolean
 }) {
   const [hasherState, setHasherState] = useState<boolean>(false)
   const [powerUp, setPowerUp] = useState<boolean>(false)
@@ -72,9 +74,11 @@ export default function Card({
       displayRandomNumbers(4400, 200, time)
       onButtonClick(true)
       setHasherState(true)
-      setTimeout(() => {
-        setHasherState(false)
-      }, time)
+      if (mining) {
+        setTimeout(() => {
+          setHasherState(false)
+        }, time)
+      }
     }
 
     if (!hasherState && step === 2) {

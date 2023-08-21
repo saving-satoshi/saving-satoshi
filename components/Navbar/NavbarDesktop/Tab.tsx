@@ -75,6 +75,7 @@ export default function Tab({
       position="bottom"
       offset={0}
       theme={theme}
+      className="no-underline"
       content={
         <div className="flex flex-col">
           <span className="text-m whitespace-nowrap leading-none text-white/50">

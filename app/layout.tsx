@@ -5,6 +5,7 @@ import {
   ProgressProvider,
   DataProvider,
   ModalProvider,
+  FeatureProvider,
 } from 'providers'
 import Layout from 'components/Layout'
 
@@ -54,15 +55,17 @@ export default function RootLayout({
       </head>
       <body className="font-cbrush">
         <Fonts />
-        <DataProvider>
-          <AuthProvider>
-            <ProgressProvider>
-              <ModalProvider>
-                <Layout>{children}</Layout>
-              </ModalProvider>
-            </ProgressProvider>
-          </AuthProvider>
-        </DataProvider>
+        <FeatureProvider>
+          <DataProvider>
+            <AuthProvider>
+              <ProgressProvider>
+                <ModalProvider>
+                  <Layout>{children}</Layout>
+                </ModalProvider>
+              </ProgressProvider>
+            </AuthProvider>
+          </DataProvider>
+        </FeatureProvider>
       </body>
     </html>
   )

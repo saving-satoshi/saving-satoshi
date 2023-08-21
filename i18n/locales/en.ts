@@ -99,7 +99,7 @@ const translations = {
       title: 'Genesis',
       heading: 'Your first challenge',
       paragraph_one:
-        'Bitcoin is censorship resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
+        'Bitcoin is censorship-resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
       paragraph_two:
         'Satoshi Nakamoto, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left the world a secret message in the very first bitcoin transaction that was ever made. Your first challenge is to find and decode it.',
     },
@@ -108,12 +108,12 @@ const translations = {
       title: 'Genesis',
       heading: 'Find the hidden message',
       paragraph_one:
-        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
       paragraph_two:
-        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
+        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. The value next to it is an encoded message.',
       paragraph_three: 'Copy that value and paste it in the code block.',
       tooltip_block_explorer:
-        'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
+        'A <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
       tooltip_hex:
         'Short for hexadecimal, a numeral system that represents numbers using a base of 16.',
       view_block_0: 'View Block 0',
@@ -143,7 +143,7 @@ const translations = {
       title: 'Transacting',
       heading: 'What’s in a transaction?',
       paragraph_one:
-        'Transactions have two parts: inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
+        'Two main componenets of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
       paragraph_two:
         'For the following transaction, we’re going to identify the output of type OP_RETURN.',
     },
@@ -269,7 +269,7 @@ const translations = {
       heading:
         'Enter anything until you find a hash that starts with a zero (“0”)',
       hint_prompt:
-        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip" className="underline">hint</Tooltip>?',
+        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip">hint</Tooltip>?',
       hint_tooltip:
         '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">popcorn</span>',
     },
@@ -286,7 +286,7 @@ const translations = {
       heading:
         'Enter anything until you find a hash that starts with two zeroes (“00”)',
       hint_prompt:
-        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip" className="underline">hint</Tooltip>?',
+        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">hint</Tooltip>?',
       hint_tooltip:
         '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">trigonometry</span>',
     },

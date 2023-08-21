@@ -4,8 +4,14 @@ import { useTranslations, useSaveAndProceed } from 'hooks'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import { ProfileWithHashPower } from 'types'
-import { Card, HashFrequency, Text, HashrateChallenge } from 'ui'
-import Profile from 'ui/common/Profile'
+import {
+  Card,
+  HashFrequency,
+  Text,
+  HashrateChallenge,
+  Profile,
+  Exponent,
+} from 'ui'
 import clsx from 'clsx'
 import { sleep } from 'utils'
 import { useAuthContext } from 'providers/AuthProvider'
@@ -38,7 +44,7 @@ export default function Solo1({ lang }) {
       username: 'You',
       avatar: account?.avatar,
       hashpower: 4395,
-      nonce: protagonistHash,
+      hashes: protagonistHash,
       color: '#F3AB29',
       value: step === 0 ? 0 : protagonistsBlockAmount,
     },
@@ -49,7 +55,7 @@ export default function Solo1({ lang }) {
       username: 'BitRey',
       avatar: '/assets/avatars/bitrey.png',
       hashpower: 18599,
-      nonce: antagonistHash,
+      hashes: antagonistHash,
       color: '#7E002E',
       value: step === 0 ? 0 : antagonistsBlockAmount,
     },
@@ -148,30 +154,11 @@ export default function Solo1({ lang }) {
                 Hashes
               </span>
               <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
-                <div
-                  className={clsx('font-space-mono font-normal', {
-                    'text-white/25': step === 0,
-                    'fade-in text-white': step !== 0,
-                  })}
-                >
-                  {/*This code below is what turns numbers into scientific notation.
-                  Perhaps we could create a new component to clean this up as we use this quite often*/}
-                  {step === 0
-                    ? 0
-                    : (
-                        profile.nonce! /
-                        10 ** (profile.nonce!.toString().length - 2)
-                      ).toFixed(2)}
-                  {step !== 0 && (
-                    <span className="fade-in text-white/50">
-                      *10
-                      <sup>
-                        {(profile.nonce! * profile.hashpower).toString()
-                          .length + 6}
-                      </sup>
-                    </span>
-                  )}
-                </div>
+                <Exponent
+                  className="font-space-mono font-normal"
+                  step={step}
+                  hashes={profile.hashes}
+                />
               </span>
             </Card>
           </Profile>
