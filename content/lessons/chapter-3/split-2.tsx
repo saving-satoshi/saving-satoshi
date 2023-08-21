@@ -3,7 +3,14 @@
 import { useTranslations, useSaveAndProceed } from 'hooks'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
-import { Card, HashFrequency, Text, HashrateChallenge, Exponent } from 'ui'
+import {
+  Card,
+  HashFrequency,
+  Text,
+  HashrateChallenge,
+  Exponent,
+  BoxDisplayer,
+} from 'ui'
 import { sleep } from 'utils'
 import Profile from 'ui/common/Profile'
 import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
@@ -174,62 +181,6 @@ export default function Split2({ lang }) {
     return () => clearInterval(interval)
   }, [step])
 
-  /*const handleProtagonsitBlockUpdate = () => {
-    for (let i = 0; i < PROTAGONISTS.length; i++) {
-      setProtagonistsBlockAmount((newBlock) => {
-        const updatedBlocks = [...newBlock]
-        Math.min(updatedBlocks[i] += Math.floor(
-          Math.round(Math.random() * (PROTAGONISTS[i].hashpower * 0.00015))
-        ), PROTAGONISTS[i].previousLessonData)
-        //console.log(PROTAGONISTS[i].username, PROTAGONISTS[i].previousLessonData, PROTAGONISTS[i].value, newBlock, updatedBlocks)
-        return updatedBlocks
-      })
-    }
-  }
-
-  const handleAntagonsitBlockUpdate = (newBlock: number) => {
-    setAntagonistsBlockAmount(newBlock)
-  }
-
-  useEffect(() => {
-    let intervals: NodeJS.Timeout[] = []
-
-    if (step === 1) {
-      // Set up intervals for each protagonist
-      for (let i = 0; i < PROTAGONISTS.length; i++) {
-        const interval: NodeJS.Timeout = setInterval(() => {
-          setProtagonistHash((prevHashes) => {
-            const updatedHashes = [...prevHashes]
-            updatedHashes[i] += Math.floor(
-              Math.random() * PROTAGONISTS[i].hashpower
-            )
-            return updatedHashes
-          })
-        }, 40)
-        intervals.push(interval)
-      }
-    }
-
-    return () => {
-      // Clear all intervals when the component unmounts or step changes
-      intervals.forEach((interval) => clearInterval(interval))
-    }
-  }, [step])
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout
-    let currentAntagonistHash = antagonistHash
-    if (step === 1) {
-      interval = setInterval(() => {
-        currentAntagonistHash =
-          currentAntagonistHash +
-          Math.floor(Math.random() * ANTAGONISTS[0].hashpower)
-        setAntagonistHash(currentAntagonistHash)
-      }, 40)
-    }
-    return () => clearInterval(interval)
-  }, [step])*/
-
   useEffect(() => {
     cssVarThemeChange({
       '--CH3SOL1-bg': '#411e4f',
@@ -265,10 +216,26 @@ export default function Split2({ lang }) {
               />
             }
           >
-            <Card className="flex gap-4">
+            <Card className="flex self-stretch py-[10px]">
               <span className="fade-in w-[103px] font-nunito text-[15px] font-bold text-[#EDA081]">
                 Hashrate
               </span>
+              {step >= 3 && (
+                <BoxDisplayer
+                  className="fade-in text-[13px]"
+                  transparent={step !== 3}
+                >
+                  {(
+                    100 *
+                    (profile.hashpower /
+                      (PROTAGONISTS[0].hashpower +
+                        PROTAGONISTS[1].hashpower +
+                        PROTAGONISTS[2].hashpower +
+                        PROTAGONISTS[3].hashpower))
+                  ).toFixed(2)}
+                  %
+                </BoxDisplayer>
+              )}
               <HashFrequency
                 className="font-space-mono text-[15px]"
                 disabled={false}
@@ -276,7 +243,7 @@ export default function Split2({ lang }) {
                 hashPower={profile.hashpower}
               />
             </Card>
-            <Card className="flex">
+            <Card className="flex self-stretch py-[10px]">
               <span
                 className={clsx('fade-in font-nunito text-[15px] font-bold', {
                   'text-white text-opacity-25': step === 0,
@@ -285,6 +252,22 @@ export default function Split2({ lang }) {
               >
                 Blocks found
               </span>
+              {step >= 4 && (
+                <BoxDisplayer
+                  className="fade-in text-[13px]"
+                  transparent={step !== 4}
+                >
+                  {(
+                    100 *
+                    (profile.value /
+                      (PROTAGONISTS[0].value +
+                        PROTAGONISTS[1].value +
+                        PROTAGONISTS[2].value +
+                        PROTAGONISTS[3].value))
+                  ).toFixed(2)}
+                  %
+                </BoxDisplayer>
+              )}
               <span
                 className={clsx(
                   'fade-in font-space-mono text-[15px] font-normal text-white',
@@ -296,21 +279,40 @@ export default function Split2({ lang }) {
                 {profile.value}
               </span>
             </Card>
-            <Card className="flex">
+            <Card className="flex self-stretch py-[10px]">
               <span
                 className={clsx('fade-in font-nunito text-[15px] font-bold', {
                   'text-white text-opacity-25': step === 0,
                   'fade-in text-[#EDA081]': step !== 0,
                 })}
               >
-                Partial solutions
+                Shares
               </span>
+              {step >= 5 && (
+                <BoxDisplayer
+                  className="fade-in text-[13px]"
+                  transparent={step !== 5}
+                >
+                  {(
+                    100 *
+                    (profile.hashes /
+                      (PROTAGONISTS[0].hashes +
+                        PROTAGONISTS[1].hashes +
+                        PROTAGONISTS[2].hashes +
+                        PROTAGONISTS[3].hashes))
+                  ).toFixed(2)}
+                  %
+                </BoxDisplayer>
+              )}
               <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
-                <Exponent
-                  className="font-space-mono font-normal"
-                  step={step}
-                  hashes={profile.hashes}
-                />
+                <div
+                  className={clsx({
+                    'text-white/25': step === 0 || profile.hashes === 0,
+                    'fade-in text-white': step !== 0,
+                  })}
+                >
+                  {Math.floor(profile.hashes / 100).toLocaleString()}
+                </div>
               </span>
             </Card>
           </Profile>
