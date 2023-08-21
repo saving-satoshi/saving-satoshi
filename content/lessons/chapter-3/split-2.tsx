@@ -200,7 +200,7 @@ export default function Split2({ lang }) {
         onAntagonistUpdate={handleAntagonsitBlockUpdate}
         protagonists={PROTAGONISTS}
         antagonists={ANTAGONISTS}
-        speed={2}
+        speed={1}
         contributionBarOpacity="fade-in-out opacity-[.2]"
         profiles={PROTAGONISTS.map((profile, i) => (
           <Profile
