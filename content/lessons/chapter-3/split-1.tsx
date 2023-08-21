@@ -3,7 +3,7 @@
 import { useTranslations, useSaveAndProceed } from 'hooks'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
-import { Card, HashFrequency, Text, HashrateChallenge } from 'ui'
+import { Card, HashFrequency, Text, HashrateChallenge, Exponent } from 'ui'
 import { sleep } from 'utils'
 import Profile from 'ui/common/Profile'
 import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
@@ -22,15 +22,19 @@ export default function Split1({ lang }) {
   const { account } = useAuthContext()
   const t = useTranslations(lang)
   const [step, setStep] = useState(0)
+  const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState([
+    0, 0, 0, 0,
+  ])
+  const [antagonistsBlockAmount, setAntagonistsBlockAmount] = useState(0)
   const [protagonistHash, setProtagonistHash] = useState([0, 0, 0, 0])
   const [antagonistHash, setAntagonistHash] = useState(0)
   const [showText, setShowText] = useState(true)
 
   const saveAndProceed = useSaveAndProceed()
 
-  const poolThreeOutcome = {
-    blocks: [13, 6, 29, 10, 42],
-  }
+  const poolThreeOutcome = JSON.parse(
+    '{"protagonists": [16, 8, 34, 6], "antagonists": [36]}'
+  )
 
   const TOTAL_BLOCKS = 100
   const BLOCK_RATIO = 40
@@ -40,33 +44,57 @@ export default function Split1({ lang }) {
       username: 'You',
       avatar: account?.avatar,
       hashpower: 4395,
-      nonce: protagonistHash[0],
+      hashes: protagonistHash[0],
       color: '#F3AB29',
-      value: step === 0 ? 0 : poolThreeOutcome.blocks[0],
+      value:
+        step === 0
+          ? 0
+          : Math.min(
+              protagonistsBlockAmount[0],
+              poolThreeOutcome.protagonists[0]
+            ),
     },
     {
       username: 'Mining Maniacs',
       avatar: '/assets/avatars/2.png',
       hashpower: 4054,
-      nonce: protagonistHash[1],
+      hashes: protagonistHash[1],
       color: '#FE5329',
-      value: step === 0 ? 0 : poolThreeOutcome.blocks[1],
+      value:
+        step === 0
+          ? 0
+          : Math.min(
+              protagonistsBlockAmount[1],
+              poolThreeOutcome.protagonists[1]
+            ),
     },
     {
       username: 'Hash Hoppers',
       avatar: '/assets/avatars/3.png',
       hashpower: 7911,
-      nonce: protagonistHash[2],
+      hashes: protagonistHash[2],
       color: '#62BFB7',
-      value: step === 0 ? 0 : poolThreeOutcome.blocks[2],
+      value:
+        step === 0
+          ? 0
+          : Math.min(
+              protagonistsBlockAmount[2],
+              poolThreeOutcome.protagonists[2]
+            ),
     },
     {
       username: 'Coin Crunchers',
       avatar: '/assets/avatars/4.png',
       hashpower: 3857,
-      nonce: protagonistHash[3],
+      hashes: protagonistHash[3],
       color: '#85BF09',
-      value: step === 0 ? 0 : poolThreeOutcome.blocks[3],
+      value:
+        step === 0
+          ? 0
+          : Math.min(
+              protagonistsBlockAmount[3],
+              poolThreeOutcome.protagonists[3]
+            ),
     },
   ]
 
@@ -75,9 +103,12 @@ export default function Split1({ lang }) {
       username: 'BitRey',
       avatar: '/assets/avatars/bitrey.png',
       hashpower: 18599,
-      nonce: antagonistHash,
+      hashes: antagonistHash,
       color: '#7E002E',
-      value: step === 0 ? 0 : poolThreeOutcome.blocks[4],
+      value:
+        step === 0
+          ? 0
+          : Math.min(antagonistsBlockAmount, poolThreeOutcome.antagonists[0]),
     },
   ]
 
@@ -88,9 +119,21 @@ export default function Split1({ lang }) {
     setShowText(true)
   }
 
-  const handleProtagonsitBlockUpdate = () => {}
+  const handleProtagonsitBlockUpdate = () => {
+    for (let i = 0; i < PROTAGONISTS.length; i++) {
+      setProtagonistsBlockAmount((newBlock) => {
+        const updatedBlocks = [...newBlock]
+        updatedBlocks[i] += Math.floor(
+          Math.round(Math.random() * (PROTAGONISTS[i].hashpower * 0.00015))
+        )
+        return updatedBlocks
+      })
+    }
+  }
 
-  const handleAntagonsitBlockUpdate = () => {}
+  const handleAntagonsitBlockUpdate = (newBlock: number) => {
+    setAntagonistsBlockAmount(newBlock)
+  }
 
   useEffect(() => {
     let intervals: NodeJS.Timeout[] = []
@@ -131,6 +174,62 @@ export default function Split1({ lang }) {
     return () => clearInterval(interval)
   }, [step])
 
+  /*const handleProtagonsitBlockUpdate = () => {
+    for (let i = 0; i < PROTAGONISTS.length; i++) {
+      setProtagonistsBlockAmount((newBlock) => {
+        const updatedBlocks = [...newBlock]
+        Math.min(updatedBlocks[i] += Math.floor(
+          Math.round(Math.random() * (PROTAGONISTS[i].hashpower * 0.00015))
+        ), PROTAGONISTS[i].previousLessonData)
+        //console.log(PROTAGONISTS[i].username, PROTAGONISTS[i].previousLessonData, PROTAGONISTS[i].value, newBlock, updatedBlocks)
+        return updatedBlocks
+      })
+    }
+  }
+
+  const handleAntagonsitBlockUpdate = (newBlock: number) => {
+    setAntagonistsBlockAmount(newBlock)
+  }
+
+  useEffect(() => {
+    let intervals: NodeJS.Timeout[] = []
+
+    if (step === 1) {
+      // Set up intervals for each protagonist
+      for (let i = 0; i < PROTAGONISTS.length; i++) {
+        const interval: NodeJS.Timeout = setInterval(() => {
+          setProtagonistHash((prevHashes) => {
+            const updatedHashes = [...prevHashes]
+            updatedHashes[i] += Math.floor(
+              Math.random() * PROTAGONISTS[i].hashpower
+            )
+            return updatedHashes
+          })
+        }, 40)
+        intervals.push(interval)
+      }
+    }
+
+    return () => {
+      // Clear all intervals when the component unmounts or step changes
+      intervals.forEach((interval) => clearInterval(interval))
+    }
+  }, [step])
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+    let currentAntagonistHash = antagonistHash
+    if (step === 1) {
+      interval = setInterval(() => {
+        currentAntagonistHash =
+          currentAntagonistHash +
+          Math.floor(Math.random() * ANTAGONISTS[0].hashpower)
+        setAntagonistHash(currentAntagonistHash)
+      }, 40)
+    }
+    return () => clearInterval(interval)
+  }, [step])*/
+
   useEffect(() => {
     cssVarThemeChange({
       '--CH3SOL1-bg': '#411e4f',
@@ -150,8 +249,8 @@ export default function Split1({ lang }) {
         onAntagonistUpdate={handleAntagonsitBlockUpdate}
         protagonists={PROTAGONISTS}
         antagonists={ANTAGONISTS}
+        speed={2}
         contributionBarOpacity="fade-in-out opacity-[.2]"
-        fixedData={poolThreeOutcome}
         profiles={PROTAGONISTS.map((profile, i) => (
           <Profile
             key={i}
@@ -207,30 +306,11 @@ export default function Split1({ lang }) {
                 Partial solutions
               </span>
               <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
-                <div
-                  className={clsx('font-space-mono font-normal', {
-                    'text-white/25': step === 0,
-                    'fade-in text-white': step !== 0,
-                  })}
-                >
-                  {/*This code below is what turns numbers into scientific notation.
-                  Perhaps we could create a new component to clean this up as we use this quite often*/}
-                  {step === 0
-                    ? 0
-                    : (
-                        profile.nonce! /
-                        10 ** (profile.nonce!.toString().length - 2)
-                      ).toFixed(2)}
-                  {step !== 0 && (
-                    <span className="fade-in text-white/50">
-                      *10
-                      <sup>
-                        {(profile.nonce! * profile.hashpower).toString()
-                          .length + 6}
-                      </sup>
-                    </span>
-                  )}
-                </div>
+                <Exponent
+                  className="font-space-mono font-normal"
+                  step={step}
+                  hashes={profile.hashes}
+                />
               </span>
             </Card>
           </Profile>

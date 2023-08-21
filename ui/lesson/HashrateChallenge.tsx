@@ -21,17 +21,16 @@ export default function HashrateChallenge({
   antagonists,
   step,
   contributionBarOpacity,
-  fixedData,
   onStepUpdate,
   onProtagonistUpdate,
   onAntagonistUpdate,
+  speed,
 }: {
   children: any
   profiles: any
   verticalProfiles?: boolean
   step: number
   contributionBarOpacity?: string
-  fixedData?: any
   onStepUpdate: (newStep: number) => void
   onProtagonistUpdate: (newBlock: number) => void
   onAntagonistUpdate: (newBlock: number) => void
@@ -39,6 +38,7 @@ export default function HashrateChallenge({
   blockRatio: number
   protagonists: any
   antagonists: any
+  speed?: number
 }) {
   const [finalMining, setFinalMining] = useState(false)
   const [hashPower, setHashPower] = useState(0)
@@ -71,32 +71,28 @@ export default function HashrateChallenge({
     let protagonistBlock = 0
     let antagonistBlock = 0
 
-    if (finalMining && !fixedData) {
+    if (finalMining) {
       protagonistInterval = setInterval(() => {
-        protagonistBlock = Math.min(
-          protagonistBlock + Math.floor(Math.random() * 2),
-          blockRatio
-        )
-        if (protagonistBlock + antagonistBlock < totalBlocks) {
+        protagonistBlock = protagonistBlock + Math.floor(Math.random() * 2)
+
+        if (protagonistBlock + antagonistBlock < totalBlocks - 1) {
           handleProtagonistBlocks(protagonistBlock)
         }
-      }, (totalBlocks - blockRatio) * 5)
+      }, (totalBlocks - blockRatio) * (speed || 5))
 
       antagonistInterval = setInterval(() => {
-        antagonistBlock = Math.min(
-          antagonistBlock + Math.floor(Math.random() * 2),
-          totalBlocks - blockRatio + 5
-        )
+        antagonistBlock = antagonistBlock + Math.floor(Math.random() * 2)
+
         if (protagonistBlock + antagonistBlock < totalBlocks) {
           handleAntagonistBlocks(antagonistBlock)
         }
-      }, blockRatio * 5)
+      }, blockRatio * ((speed && speed + 1) || 5))
     }
     return () => {
       clearInterval(protagonistInterval)
       clearInterval(antagonistInterval)
     }
-  }, [finalMining, totalBlocks, blockRatio, fixedData])
+  }, [finalMining, totalBlocks, blockRatio])
 
   useEffect(() => {
     if (totalBlocks) {
