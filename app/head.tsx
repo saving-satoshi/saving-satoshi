@@ -1,6 +1,6 @@
-export default async function Head() {
+export default function Head({ id, children }: { id: string; children: any }) {
   return (
-    <>
+    <head id={id}>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
       <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
@@ -88,6 +88,7 @@ export default async function Head() {
         property="twitter:image"
         content="https://savingsatoshi.com/_next/image?url=%2Fassets%2Fpreviews%2Fmain-image-preview.jpg&w=3840&q=100"
       />
-    </>
+      {children}
+    </head>
   )
 }
