@@ -72,7 +72,7 @@ export default async function Head() {
       <meta property="og:site_name" content="Saving Satoshi" />
       <meta
         property="og:image"
-        content="https://savingsatoshi.com/_next/image?url=%2Fassets%2Fpreviews%2Fmain-image-preview.jpg&w=3840&q=100"
+        content="/assets/previews/main-image-preview.jpg"
       />
       <meta
         property="og:description"
