@@ -311,20 +311,18 @@ const translations = {
     scripting_two: {
       title: 'Automation',
       paragraph_one:
-        'Alright, time to write and run your own code. Write a function that returns a sha256 hash. The code should calculate and return a hash based on the nonce argument.',
-      paragraph_two:
-        'When you press "Run the script", the function you wrote will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce. We are trying to run this function until we find a hash that starts with five zeroes (“00000”).',
+        'Alright, time to write and run your own code. Write a script that generates a sha256 hash that begins with five zeroes ("00000..."). Your code should repeatedly call the sha256 function with different input until the output satisfies this requirement. You should try incrementing an integer inside a loop to get different inputs. In cryptography this number may referred to as a "nonce" or "number used once".',
       python: {
-        paragraph_three:
-          'We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
+        paragraph_two:
+          "When you find a nonce with a hash that begins with five zeroes, use Python's `print()` function to return the hash to the console. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:",
         list_one:
           '<Link href="https://docs.python.org/3/library/hashlib.html" className="underline">hashlib documentation</Link>',
         list_two:
           '<Link href="https://datagy.io/python-sha256/" className="underline">Tutorial python function</Link>',
       },
       javascript: {
-        paragraph_three:
-          'We are using the crypto library in javascript to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
+        paragraph_two:
+          "When you find a nonce with a hash that begins with five zeroes, use JavaScript's `console.log()` function to return the hash to the console. We are using the crypto library in javascript to help you along in creating this function, you can use the following external resources to help you write this function if needed:",
         list_one:
           '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" className="underline">crypto documentation</Link>',
         list_two:

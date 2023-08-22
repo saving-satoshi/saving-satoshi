@@ -106,10 +106,7 @@ export default function Scripting2({ lang }) {
           {t('chapter_two.scripting_two.paragraph_one')}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_two.scripting_two.paragraph_two')}
-        </Text>
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_two.scripting_two.${language}.paragraph_three`)}
+          {t(`chapter_two.scripting_two.${language}.paragraph_two`)}
         </Text>
         <ul className="list-disc pl-4">
           <li className="mt-4 font-nunito text-xl text-white">
