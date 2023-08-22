@@ -1,14 +1,6 @@
-export default function Head({
-  id,
-  children,
-  title,
-}: {
-  id: string
-  children: any
-  title: string
-}) {
+export default function Head({ children }: { children: any }) {
   return (
-    <head id={id}>
+    <head id="head">
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
       <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
@@ -69,7 +61,7 @@ export default function Head({
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
       <meta name="theme-color" content="#ffffff" />
 
-      <title>{title}</title>
+      <title>Saving Satoshi</title>
       <meta
         name="description"
         content="Explore the mysteries of Satoshi and learn about bitcoin along the way."

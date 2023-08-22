@@ -42,7 +42,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head id="head" title="Saving Satoshi">
+      <Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={schema()}
