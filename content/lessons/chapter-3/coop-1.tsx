@@ -82,16 +82,23 @@ export default function Coop1({ lang }) {
             className="h-[160px] w-[160px] border-2 border-dotted border-white/25 p-[15px] md:h-[185px] md:w-[190px]"
           >
             <div className="flex justify-center md:mb-[15px]">
-              {profile.display ? (
-                <Avatar
-                  avatar={profile.avatar}
-                  size={isSmallScreen ? 75 : 100}
-                />
-              ) : (
-                <div className="h-[75px] w-[75px] rounded-full bg-black/20 md:h-[100px] md:w-[100px]"></div>
-              )}
+              <Avatar
+                avatar={profile.avatar}
+                size={isSmallScreen ? 75 : 100}
+                className={`${profile?.display ? 'fade-in' : 'hidden'}`}
+              />
+
+              <div
+                className={`h-[75px] w-[75px] rounded-full bg-black/20 md:h-[100px] md:w-[100px]
+                ${profile?.display ? 'hidden' : ''}
+                `}
+              />
             </div>
-            <div className="p-2.5 text-center font-nunito text-base font-semibold text-white">
+            <div
+              className={`p-2.5 text-center font-nunito text-base font-semibold text-white
+            ${profile.display ? 'animate-none' : 'animate-pulse'}
+            `}
+            >
               {profile.display ? profile.username : 'Waiting...'}
             </div>
           </div>
@@ -115,7 +122,11 @@ export default function Coop1({ lang }) {
               {t('chapter_three.coop_one.continue_button')}
             </Button>
           ) : (
-            <Button classes="mt-10 max-md:w-full" style="faded" disabled={true}>
+            <Button
+              classes="mt-10 animate-pulse max-md:w-full"
+              style="faded"
+              disabled={true}
+            >
               {t('chapter_three.coop_one.waiting_button')}
             </Button>
           )}
