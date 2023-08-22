@@ -23,15 +23,11 @@ export function middleware(request: NextRequest) {
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname
   if (['/robots.txt'].some((p) => pathname.startsWith(p))) {
-    return NextResponse.next()
+    return
   }
 
   // Redirect to '/' for homepage
-  if (
-    (pathname !== '/' &&
-      ['/about', '/chapters'].some((p) => pathname.startsWith(p))) ||
-    getLocale(request) !== 'en'
-  ) {
+  if (pathname !== '/' || getLocale(request) !== 'en') {
     const pathnameIsMissingLocale = i18n.locales.every(
       (language) =>
         !pathname.startsWith(`/${language.locale}/`) &&
