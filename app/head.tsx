@@ -66,7 +66,7 @@ export default function Head({ id, children }: { id: string; children: any }) {
         name="description"
         content="Explore the mysteries of Satoshi and learn about bitcoin along the way."
       />
-
+      <meta property="og:type" content="website" />
       <meta
         property="og:url"
         content="https://saving-satoshi-git-fork-benalleng-opengraph-image-savingsatoshi.vercel.app/"
@@ -75,21 +75,22 @@ export default function Head({ id, children }: { id: string; children: any }) {
       <meta property="og:site_name" content="Saving Satoshi" />
       <meta
         property="og:image"
-        content="/https://saving-satoshi-git-fork-benalleng-opengraph-image-savingsatoshi.vercel.app/assets/previews/main-image-preview.jpg"
+        content="https://saving-satoshi-git-fork-benalleng-opengraph-image-savingsatoshi.vercel.app/assets/previews/main-image-preview.jpg"
       />
       <meta
         property="og:description"
         content="Explore the mysteries of Satoshi and learn about bitcoin along the way."
       />
 
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Saving Satoshi" />
       <meta
-        property="twitter:title"
+        name="twitter:description"
         content="Explore the mysteries of Satoshi and learn about bitcoin along the way."
       />
       <meta
-        property="twitter:image"
-        content="/https://saving-satoshi-git-fork-benalleng-opengraph-image-savingsatoshi.vercel.app/assets/previews/main-image-preview.jpg"
+        name="twitter:image"
+        content="https://saving-satoshi-git-fork-benalleng-opengraph-image-savingsatoshi.vercel.app/assets/previews/main-image-preview.jpg"
       />
       {children}
     </head>
