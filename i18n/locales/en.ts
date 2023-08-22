@@ -331,6 +331,7 @@ const translations = {
           '<Link href="https://www.educative.io/answers/what-is-node-cryptocreatehashalgorithm-options" className="underline">Tutorial javascript function</Link>',
       },
       success: 'Five zeroes! That’s it!',
+      test: "When you find a nonce with a hash that begins with five zeroes, use Python's 'print()' function to return the hash to the console. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:",
     },
 
     mining_one: {
