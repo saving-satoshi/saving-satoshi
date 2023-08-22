@@ -1,4 +1,12 @@
-export default function Head({ id, children }: { id: string; children: any }) {
+export default function Head({
+  id,
+  children,
+  title,
+}: {
+  id: string
+  children: any
+  title: string
+}) {
   return (
     <head id={id}>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -61,21 +69,18 @@ export default function Head({ id, children }: { id: string; children: any }) {
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
       <meta name="theme-color" content="#ffffff" />
 
-      <title>Saving Satoshi</title>
+      <title>{title}</title>
       <meta
         name="description"
         content="Explore the mysteries of Satoshi and learn about bitcoin along the way."
       />
       <meta property="og:type" content="website" />
-      <meta
-        property="og:url"
-        content="https://saving-satoshi-git-fork-benalleng-opengraph-image-savingsatoshi.vercel.app/"
-      />
+      <meta property="og:url" content="https://savingsatoshi.com/" />
       <meta property="og:title" content="Saving Satoshi" />
       <meta property="og:site_name" content="Saving Satoshi" />
       <meta
         property="og:image"
-        content="https://saving-satoshi-git-fork-benalleng-opengraph-image-savingsatoshi.vercel.app/assets/previews/main-image-preview.jpg"
+        content="https://savingsatoshi.com/assets/previews/main-image-preview.jpg"
       />
       <meta
         property="og:description"
@@ -90,7 +95,7 @@ export default function Head({ id, children }: { id: string; children: any }) {
       />
       <meta
         name="twitter:image"
-        content="https://saving-satoshi-git-fork-benalleng-opengraph-image-savingsatoshi.vercel.app/assets/previews/main-image-preview.jpg"
+        content="https://savingsatoshi.com/assets/previews/main-image-preview.jpg"
       />
       {children}
     </head>
