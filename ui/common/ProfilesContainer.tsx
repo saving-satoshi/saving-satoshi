@@ -47,7 +47,7 @@ export default function ProfilesContainer({
         <div
           ref={elementRef}
           className={clsx(
-            'flex items-start gap-[30px] overflow-x-auto scroll-smooth whitespace-nowrap',
+            'auto-scroll flex items-start gap-[30px] overflow-x-auto scroll-smooth whitespace-nowrap',
             {
               'w-full flex-col md:w-auto md:flex-row': verticalProfiles,
               'md:w-full md:justify-center': !hasOverflow,

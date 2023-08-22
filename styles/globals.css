@@ -258,3 +258,14 @@ div.react-terminal-active-input {
 .solo-1-secondary-theme {
   background: var(--CH3SOL1-bg)
 }
+
+
+.auto-scroll::-webkit-scrollbar {
+  -webkit-appearance: none;
+   width: 1px;
+}
+
+.auto-scroll::-webkit-scrollbar-thumb {
+   border-radius: 4px;
+   background-color: rgba(0,0,0,.5);
+}

@@ -24,7 +24,7 @@ export default function Profile({
   return (
     <div
       className={clsx(
-        'flex w-full max-w-[220px] flex-col items-center 2xl:max-w-[auto]',
+        'flex w-full  max-w-none flex-col items-center md:max-w-[220px] 2xl:max-w-none',
         className
       )}
     >
