@@ -46,7 +46,7 @@ export default function Coop2({ lang }) {
       hashpower: 4395,
       hashes: protagonistHash[0],
       color: '#F3AB29',
-      value: step == 0 ? 0 : 1,
+      value: protagonistsBlockAmount,
     },
     {
       username: 'Mining Maniacs',
@@ -54,7 +54,7 @@ export default function Coop2({ lang }) {
       hashpower: 4054,
       hashes: protagonistHash[1],
       color: '#FE5329',
-      value: step == 0 ? 0 : 1,
+      value: 0,
     },
     {
       username: 'Hash Hoppers',
@@ -62,7 +62,7 @@ export default function Coop2({ lang }) {
       hashpower: 7911,
       hashes: protagonistHash[2],
       color: '#62BFB7',
-      value: step === 0 ? 0 : protagonistsBlockAmount,
+      value: 0,
     },
     {
       username: 'Coin Crunchers',
@@ -70,7 +70,7 @@ export default function Coop2({ lang }) {
       hashpower: 3857,
       hashes: protagonistHash[3],
       color: '#85BF09',
-      value: step == 0 ? 0 : 1,
+      value: 0,
     },
   ]
 
