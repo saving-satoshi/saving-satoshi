@@ -75,7 +75,7 @@ export default function Head({ id, children }: { id: string; children: any }) {
       <meta property="og:site_name" content="Saving Satoshi" />
       <meta
         property="og:image"
-        content="/assets/previews/main-image-preview.jpg"
+        content="/https://saving-satoshi-git-fork-benalleng-opengraph-image-savingsatoshi.vercel.app/assets/previews/main-image-preview.jpg"
       />
       <meta
         property="og:description"
@@ -89,7 +89,7 @@ export default function Head({ id, children }: { id: string; children: any }) {
       />
       <meta
         property="twitter:image"
-        content="/assets/previews/main-image-preview.jpg"
+        content="/https://saving-satoshi-git-fork-benalleng-opengraph-image-savingsatoshi.vercel.app/assets/previews/main-image-preview.jpg"
       />
       {children}
     </head>
