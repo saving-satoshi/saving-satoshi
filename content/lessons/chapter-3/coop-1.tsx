@@ -79,7 +79,7 @@ export default function Coop1({ lang }) {
         {players.map((profile, i) => (
           <div
             key={i}
-            className="h-[160px] w-[160px] border-2 border-dotted border-white/25 p-[15px] md:h-[185px] md:w-[190px]"
+            className="h-[160px] w-full max-w-[160px] border-2 border-dotted border-white/25 p-[15px] md:h-[185px] md:w-[190px] md:max-w-none"
           >
             <div className="flex justify-center md:mb-[15px]">
               <Avatar
