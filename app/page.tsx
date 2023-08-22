@@ -1,19 +1,22 @@
 import Topbar from 'components/Topbar'
 import Hero from 'components/Hero'
 import Footer from 'components/Footer'
+import { Metadata } from 'next'
 
-export const metadata = {
-  title: 'Code your way through the mysteries of Bitcoin - Saving Satoshi',
-  description:
-    'A fun learning resource for developers to learn about how to build on bitcoin.',
+export const metadata: Metadata = {
   openGraph: {
+    siteName: 'Saving Satoshi',
     title: 'Code your way through the mysteries of Bitcoin - Saving Satoshi',
     description:
       'A fun learning resource for developers to learn about how to build on bitcoin.',
-    type: 'website',
-    image:
-      'https://imagedelivery.net/wyrwp3c-j0gDDUWgnE7lig/6818cd1b-ea0d-49a4-ea14-d34c1bbae100/public',
     url: 'https://savingsatoshi.com/',
+    images: {
+      url: '/assets/previews/main-image-preview.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Saving Satoshi',
+    },
+    type: 'website',
   },
 }
 
