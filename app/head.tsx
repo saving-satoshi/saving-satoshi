@@ -65,9 +65,9 @@ export default function Head({
       />
       <link rel="icon" sizes="16x16" href="/favicon.ico" type="image/x-icon" />
       <link rel="manifest" href="/manifest.json" />
-      <meta name="msapplication-TileColor" content="#2a3b61" />
+      <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-      <meta name="theme-color" content="#2a3b61" />
+      <meta name="theme-color" content="#ffffff" />
 
       <title>{title}</title>
       <meta
