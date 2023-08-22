@@ -1,18 +1,6 @@
 import Topbar from 'components/Topbar'
 import Hero from 'components/Hero'
 import Footer from 'components/Footer'
-import { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  openGraph: {
-    type: 'website',
-    title: 'Saving Satoshi',
-    description:
-      'Explore the mysteries of Satoshi and learn about bitcoin along the way.',
-    url: 'https://savingsatoshi.com/',
-    images: 'https://savingsatoshi.com/assets/previews/main-image-preview.jpg',
-  },
-}
 
 export default function Home() {
   return (
