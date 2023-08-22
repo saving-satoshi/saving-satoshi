@@ -23,7 +23,7 @@ export function middleware(request: NextRequest) {
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname
   if (['/robots.txt'].some((p) => pathname.startsWith(p))) {
-    return
+    return NextResponse
   }
 
   // Redirect to '/' for homepage
@@ -48,7 +48,7 @@ export function middleware(request: NextRequest) {
       )
     }
   }
-  return
+  return NextResponse
 }
 
 export const config = {
