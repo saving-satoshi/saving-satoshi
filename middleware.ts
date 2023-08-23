@@ -12,11 +12,25 @@ function getLocale(request: NextRequest): string | undefined {
   const negotiatorHeaders: Record<string, string> = {}
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
 
-  // Use negotiator and intl-localematcher to get best locale
-  let languages = new Negotiator({ headers: negotiatorHeaders }).languages()
   // @ts-ignore locales are readonly
-  const locales: string[] = i18n.locales.map((language) => language.locale)
-  return matchLocale(languages, locales, i18n.defaultLocale)
+  const locales: { locale: string; label: string }[] = i18n.locales
+
+  // Use negotiator and intl-localematcher to get best locale
+  let languages = new Negotiator({ headers: negotiatorHeaders }).languages(
+    locales
+  )
+
+  try {
+    const locale = matchLocale(
+      languages,
+      locales.map((l) => l.locale),
+      i18n.defaultLocale
+    )
+    return locale
+  } catch (ex) {
+    console.error(ex)
+    return 'en'
+  }
 }
 
 export function middleware(request: NextRequest) {
@@ -24,7 +38,7 @@ export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
 
   // Redirect to '/' for homepage
-  if ((pathname !== null && pathname !== '/') || getLocale(request) !== 'en') {
+  if (pathname !== '/' || getLocale(request) !== 'en') {
     const pathnameIsMissingLocale = i18n.locales.every(
       (language) =>
         !pathname.startsWith(`/${language.locale}/`) &&
