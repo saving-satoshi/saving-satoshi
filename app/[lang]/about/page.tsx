@@ -1,7 +1,7 @@
 import Topbar from 'components/Topbar'
 import Footer from 'components/Footer'
 import { Button } from 'shared'
-
+import openGraph from 'config/opengraph'
 import { useTranslations } from 'hooks'
 
 const CONTRIBUTORS = [
@@ -22,6 +22,7 @@ function Divider() {
 
 export const metadata = {
   title: 'About - Saving Satoshi',
+  ...openGraph,
 }
 
 export default function About({ params }) {

@@ -2,9 +2,11 @@ import Topbar from 'components/Topbar'
 import Footer from 'components/Footer'
 import Disclaimer from 'components/Disclaimer'
 import { chapters } from 'content'
+import openGraph from 'config/opengraph'
 
 export const metadata = {
   title: 'Chapters - Saving Satoshi',
+  ...openGraph,
 }
 
 export default async function ChaptersPage({ params }) {
