@@ -152,7 +152,7 @@ export default function ContributionBar({
                 style={{
                   transform: `translate3d(${offsetBar}, 0, 0)`,
                   transition: 'transform 300ms linear',
-                  backgroundColor: player.color,
+                  backgroundColor: active ? player.color : 'transparent',
                 }}
               />
             </div>
@@ -183,7 +183,7 @@ export default function ContributionBar({
                 style={{
                   transform: `translate3d(${offsetBar}, 0, 0)`,
                   transition: 'transform 300ms linear',
-                  backgroundColor: player.color,
+                  backgroundColor: active ? player.color : 'transparent',
                 }}
               />
             </div>
