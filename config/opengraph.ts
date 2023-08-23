@@ -1,11 +1,17 @@
 const openGraph = {
   openGraph: {
     title: 'Saving Satoshi',
-    site_name: 'Saving Satoshi',
+    siteName: 'Saving Satoshi',
     description:
       'Explore the mysteries of Satoshi and learn about bitcoin along the way.',
     type: 'website',
-    image: '/assets/previews/main-image-preview.jpg',
+    images: [
+      {
+        url: '/assets/previews/main-image-preview.jpg',
+        width: 1200,
+        height: 630,
+      },
+    ],
     url: 'https://savingsatoshi.com/',
   },
 }
