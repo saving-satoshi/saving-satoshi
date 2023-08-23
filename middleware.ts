@@ -36,6 +36,9 @@ function getLocale(request: NextRequest): string | undefined {
 export function middleware(request: NextRequest) {
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname
+  if (!pathname) {
+    return NextResponse.next()
+  }
 
   // Redirect to '/' for homepage
   if (pathname !== '/' || getLocale(request) !== 'en') {
