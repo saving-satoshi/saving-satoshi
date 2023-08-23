@@ -6,6 +6,7 @@ import defaultMetadata from 'config/metadata'
 
 export const metadata = {
   ...defaultMetadata,
+  title: 'About - Saving Satoshi',
 }
 
 const CONTRIBUTORS = [
