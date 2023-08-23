@@ -3,16 +3,15 @@ import Hero from 'components/Hero'
 import Footer from 'components/Footer'
 
 export const metadata = {
-  title: 'Code your way through the mysteries of Bitcoin - Saving Satoshi',
+  title: 'Saving Satoshi',
   description:
-    'A fun learning resource for developers to learn about how to build on bitcoin.',
+    'Explore the mysteries of Satoshi and learn about bitcoin along the way.',
   openGraph: {
-    title: 'Code your way through the mysteries of Bitcoin - Saving Satoshi',
+    title: 'Saving Satoshi',
     description:
-      'A fun learning resource for developers to learn about how to build on bitcoin.',
+      'Explore the mysteries of Satoshi and learn about bitcoin along the way.',
     type: 'website',
-    image:
-      'https://imagedelivery.net/wyrwp3c-j0gDDUWgnE7lig/6818cd1b-ea0d-49a4-ea14-d34c1bbae100/public',
+    image: '/assets/previews/main-image-preview.jpg',
     url: 'https://savingsatoshi.com/',
   },
 }
