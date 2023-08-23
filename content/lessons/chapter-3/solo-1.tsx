@@ -46,7 +46,7 @@ export default function Solo1({ lang }) {
       hashpower: 4395,
       hashes: protagonistHash,
       color: '#F3AB29',
-      value: step === 0 ? 0 : protagonistsBlockAmount,
+      value: protagonistsBlockAmount,
     },
   ]
 
@@ -57,7 +57,7 @@ export default function Solo1({ lang }) {
       hashpower: 18599,
       hashes: antagonistHash,
       color: '#7E002E',
-      value: step === 0 ? 0 : antagonistsBlockAmount,
+      value: antagonistsBlockAmount,
     },
   ]
 
