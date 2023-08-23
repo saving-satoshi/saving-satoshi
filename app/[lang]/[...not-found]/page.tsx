@@ -1,9 +1,8 @@
-import openGraph from 'config/opengraph'
 import { notFound } from 'next/navigation'
+import defaultMetadata from 'config/metadata'
 
 export const metadata = {
-  title: 'Page not found - Saving Satoshi',
-  ...openGraph,
+  ...defaultMetadata,
 }
 
 export default function NotFoundCatchAll() {

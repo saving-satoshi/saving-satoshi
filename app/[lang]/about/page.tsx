@@ -1,8 +1,12 @@
 import Topbar from 'components/Topbar'
 import Footer from 'components/Footer'
 import { Button } from 'shared'
-import openGraph from 'config/opengraph'
 import { useTranslations } from 'hooks'
+import defaultMetadata from 'config/metadata'
+
+export const metadata = {
+  ...defaultMetadata,
+}
 
 const CONTRIBUTORS = [
   { username: 'adamcjonas', url: 'https://twitter.com/adamcjonas' },
@@ -18,11 +22,6 @@ const CONTRIBUTORS = [
 
 function Divider() {
   return <div className="my-12 h-[1px] w-full bg-white bg-opacity-25" />
-}
-
-export const metadata = {
-  title: 'About - Saving Satoshi',
-  ...openGraph,
 }
 
 export default function About({ params }) {

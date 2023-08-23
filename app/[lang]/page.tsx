@@ -1,11 +1,8 @@
 import Home from '../page'
-import openGraph from 'config/opengraph'
+import defaultMetadata from 'config/metadata'
 
 export const metadata = {
-  title: 'Saving Satoshi',
-  description:
-    'Explore the mysteries of Satoshi and learn about bitcoin along the way.',
-  ...openGraph,
+  ...defaultMetadata,
 }
 
 export default Home

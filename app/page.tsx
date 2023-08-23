@@ -1,13 +1,10 @@
 import Topbar from 'components/Topbar'
 import Hero from 'components/Hero'
 import Footer from 'components/Footer'
-import openGraph from 'config/opengraph'
+import defaultMetadata from 'config/metadata'
 
 export const metadata = {
-  title: 'Saving Satoshi',
-  description:
-    'Explore the mysteries of Satoshi and learn about bitcoin along the way.',
-  ...openGraph,
+  ...defaultMetadata,
 }
 
 export default function Home() {
