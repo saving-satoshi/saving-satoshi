@@ -48,7 +48,7 @@ export default function Pool3({ lang }) {
       hashpower: 4395,
       hashes: protagonistHash[0],
       color: '#F3AB29',
-      value: step === 0 ? 0 : protagonistsBlockAmount[0],
+      value: protagonistsBlockAmount[0],
     },
     {
       username: 'Mining Maniacs',
@@ -56,7 +56,7 @@ export default function Pool3({ lang }) {
       hashpower: 4054,
       hashes: protagonistHash[1],
       color: '#FE5329',
-      value: step === 0 ? 0 : protagonistsBlockAmount[1],
+      value: protagonistsBlockAmount[1],
     },
     {
       username: 'Hash Hoppers',
@@ -64,7 +64,7 @@ export default function Pool3({ lang }) {
       hashpower: 7911,
       hashes: protagonistHash[2],
       color: '#62BFB7',
-      value: step === 0 ? 0 : protagonistsBlockAmount[2],
+      value: protagonistsBlockAmount[2],
     },
     {
       username: 'Coin Crunchers',
@@ -72,7 +72,7 @@ export default function Pool3({ lang }) {
       hashpower: 3857,
       hashes: protagonistHash[3],
       color: '#85BF09',
-      value: step === 0 ? 0 : protagonistsBlockAmount[3],
+      value: protagonistsBlockAmount[3],
     },
   ]
 
@@ -83,7 +83,7 @@ export default function Pool3({ lang }) {
       hashpower: 18599,
       hashes: antagonistHash,
       color: '#7E002E',
-      value: step === 0 ? 0 : antagonistsBlockAmount,
+      value: antagonistsBlockAmount,
     },
   ]
 
