@@ -34,7 +34,7 @@ export default function Pool3({ lang }) {
   const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState([
     0, 0, 0, 0,
   ])
-  const [antagonistsBlockAmount, setAntagonistsBlockAmount] = useState(0)
+  const [antagonistsBlockAmount, setAntagonistsBlockAmount] = useState([0])
   const [protagonistHash, setProtagonistHash] = useState([0, 0, 0, 0])
   const [antagonistHash, setAntagonistHash] = useState(0)
   const [showText, setShowText] = useState(true)
@@ -91,7 +91,7 @@ export default function Pool3({ lang }) {
       hashpower: 18599,
       hashes: antagonistHash,
       color: '#7E002E',
-      value: Math.min(antagonistsBlockAmount, BLOCK_RATIO + 5),
+      value: Math.min(antagonistsBlockAmount[0], BLOCK_RATIO + 5),
     },
   ]
 
@@ -125,7 +125,7 @@ export default function Pool3({ lang }) {
   }
 
   const handleAntagonsitBlockUpdate = (newBlock: number) => {
-    setAntagonistsBlockAmount(newBlock)
+    setAntagonistsBlockAmount([newBlock])
   }
 
   useEffect(() => {
@@ -172,12 +172,9 @@ export default function Pool3({ lang }) {
       setdata(
         account?.id || 1,
         currentLessonKey,
-        `{\"protagonists\": [${[
-          protagonistsBlockAmount[0],
-          protagonistsBlockAmount[1],
-          protagonistsBlockAmount[2],
-          protagonistsBlockAmount[3],
-        ]}], \"antagonists\": [${[antagonistsBlockAmount]}]}`
+        `{\"protagonists\": [${protagonistsBlockAmount}], \"antagonists\": [${[
+          antagonistsBlockAmount,
+        ]}]}`
       )
   }, [step])
 
