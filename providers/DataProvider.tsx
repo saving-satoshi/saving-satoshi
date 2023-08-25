@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { DataContextType, Data } from 'types'
 import { getData, setData } from 'api/data'
+import { useAuthContext } from './AuthProvider'
 
 export const defaultDataContext = {
   isLoading: true,
@@ -20,6 +21,7 @@ export default function ProgressProvider({
 }: {
   children: React.ReactNode
 }) {
+  const { account } = useAuthContext()
   const [isLoading, setIsLoading] = useState(true)
   const [data, setDataState] = useState<Data[]>([])
 
@@ -38,7 +40,7 @@ export default function ProgressProvider({
   const saveData = async (lessonId: string, value: any) => {
     try {
       setIsLoading(true)
-      await setData(lessonId, value)
+      await setData(account?.id || 1, lessonId, value)
     } catch (ex) {
       console.error(ex)
     } finally {
