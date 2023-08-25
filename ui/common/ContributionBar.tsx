@@ -13,7 +13,7 @@ export default function ContributionBar({
   step,
   opacity,
 }: {
-  active: number
+  active: boolean
   total: number
   protagonists: any
   antagonists: any

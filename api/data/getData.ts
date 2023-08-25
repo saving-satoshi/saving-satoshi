@@ -4,6 +4,7 @@ export default async function getData(lessonId) {
   try {
     const res = await get({
       url: `/v1/data/load/${lessonId}`,
+      includeToken: true,
     })
 
     return res

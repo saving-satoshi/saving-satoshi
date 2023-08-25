@@ -16,6 +16,9 @@ import { sleep } from 'utils'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { cssVarThemeChange } from 'lib/themeSelector'
+import setdata from 'api/data/setData'
+import { usePathData } from 'hooks'
+import { lessons } from 'content'
 
 export const metadata = {
   title: 'chapter_three.pool_two.title',
@@ -37,6 +40,11 @@ export default function Pool3({ lang }) {
   const [showText, setShowText] = useState(true)
 
   const saveAndProceed = useSaveAndProceed()
+  const { chapterId, lessonId } = usePathData()
+
+  const chapterLessons = lessons?.[chapterId]
+  const lesson = chapterLessons?.[lessonId]?.metadata ?? null
+  const currentLessonKey = lesson?.key ?? 'CH1INT1'
 
   const TOTAL_BLOCKS = 100
   const BLOCK_RATIO = 40
@@ -157,6 +165,20 @@ export default function Pool3({ lang }) {
       }, 40)
     }
     return () => clearInterval(interval)
+  }, [step])
+
+  useEffect(() => {
+    if (step === 2)
+      setdata(
+        account?.id || 1,
+        currentLessonKey,
+        `{\"protagonists\": [${[
+          protagonistsBlockAmount[0],
+          protagonistsBlockAmount[1],
+          protagonistsBlockAmount[2],
+          protagonistsBlockAmount[3],
+        ]}], \"antagonists\": [${[antagonistsBlockAmount]}]}`
+      )
   }, [step])
 
   useEffect(() => {

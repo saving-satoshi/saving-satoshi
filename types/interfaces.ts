@@ -36,6 +36,7 @@ export interface FetchOptions {
 }
 
 export interface Account {
+  id: number
   avatar?: string
   private_key: string
 }

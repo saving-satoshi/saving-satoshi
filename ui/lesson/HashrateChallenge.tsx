@@ -76,7 +76,7 @@ export default function HashrateChallenge({
       protagonistInterval = setInterval(() => {
         protagonistBlock = protagonistBlock + Math.floor(Math.random() * 2)
 
-        if (protagonistBlock + antagonistBlock < totalBlocks) {
+        if (protagonistBlock + antagonistBlock <= totalBlocks) {
           handleProtagonistBlocks(protagonistBlock)
         }
       }, (totalBlocks - blockRatio) * (speed || 5))
@@ -84,7 +84,7 @@ export default function HashrateChallenge({
       antagonistInterval = setInterval(() => {
         antagonistBlock = antagonistBlock + Math.floor(Math.random() * 2)
 
-        if (protagonistBlock + antagonistBlock < totalBlocks) {
+        if (protagonistBlock + antagonistBlock <= totalBlocks) {
           handleAntagonistBlocks(antagonistBlock)
         }
       }, blockRatio * ((speed && speed + 1) || 5))

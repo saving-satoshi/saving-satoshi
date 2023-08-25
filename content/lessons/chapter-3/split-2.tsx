@@ -3,20 +3,14 @@
 import { useTranslations, useSaveAndProceed } from 'hooks'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
-import {
-  Card,
-  HashFrequency,
-  Text,
-  HashrateChallenge,
-  Exponent,
-  BoxDisplayer,
-} from 'ui'
+import { Card, HashFrequency, Text, HashrateChallenge, BoxDisplayer } from 'ui'
 import { sleep } from 'utils'
 import Profile from 'ui/common/Profile'
 import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { cssVarThemeChange } from 'lib/themeSelector'
+import { getData } from 'api/data'
 
 export const metadata = {
   title: 'chapter_three.pool_two.title',
@@ -29,6 +23,7 @@ export default function Split2({ lang }) {
   const { account } = useAuthContext()
   const t = useTranslations(lang)
   const [step, setStep] = useState(0)
+  const [outcome, setOutcome] = useState({ protagonists: [], antagonists: [] })
   const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState([
     0, 0, 0, 0,
   ])
@@ -39,9 +34,11 @@ export default function Split2({ lang }) {
 
   const saveAndProceed = useSaveAndProceed()
 
-  const poolThreeOutcome = JSON.parse(
-    '{"protagonists": [16, 8, 34, 6], "antagonists": [36]}'
-  )
+  async function previousLessonOutcome(lessonKey) {
+    const PoolThreeOutcome = await getData(lessonKey)
+
+    setOutcome(PoolThreeOutcome.data)
+  }
 
   const TOTAL_BLOCKS = 100
   const BLOCK_RATIO = 40
@@ -56,10 +53,7 @@ export default function Split2({ lang }) {
       value:
         step === 0
           ? 0
-          : Math.min(
-              protagonistsBlockAmount[0],
-              poolThreeOutcome.protagonists[0]
-            ),
+          : Math.min(protagonistsBlockAmount[0], outcome.protagonists[0]),
     },
     {
       username: 'Mining Maniacs',
@@ -70,10 +64,7 @@ export default function Split2({ lang }) {
       value:
         step === 0
           ? 0
-          : Math.min(
-              protagonistsBlockAmount[1],
-              poolThreeOutcome.protagonists[1]
-            ),
+          : Math.min(protagonistsBlockAmount[1], outcome.protagonists[1]),
     },
     {
       username: 'Hash Hoppers',
@@ -84,10 +75,7 @@ export default function Split2({ lang }) {
       value:
         step === 0
           ? 0
-          : Math.min(
-              protagonistsBlockAmount[2],
-              poolThreeOutcome.protagonists[2]
-            ),
+          : Math.min(protagonistsBlockAmount[2], outcome.protagonists[2]),
     },
     {
       username: 'Coin Crunchers',
@@ -98,10 +86,7 @@ export default function Split2({ lang }) {
       value:
         step === 0
           ? 0
-          : Math.min(
-              protagonistsBlockAmount[3],
-              poolThreeOutcome.protagonists[3]
-            ),
+          : Math.min(protagonistsBlockAmount[3], outcome.protagonists[3]),
     },
   ]
 
@@ -115,7 +100,7 @@ export default function Split2({ lang }) {
       value:
         step === 0
           ? 0
-          : Math.min(antagonistsBlockAmount, poolThreeOutcome.antagonists[0]),
+          : Math.min(antagonistsBlockAmount, outcome.antagonists[0]),
     },
   ]
 
@@ -182,6 +167,7 @@ export default function Split2({ lang }) {
   }, [step])
 
   useEffect(() => {
+    previousLessonOutcome('CH3POL3')
     cssVarThemeChange({
       '--CH3SOL1-bg': '#411e4f',
       '--CH3SOL1-gradient-start': '#3C1843',

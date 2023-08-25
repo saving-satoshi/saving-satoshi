@@ -1,15 +1,22 @@
 import { put } from 'utils'
 
-export default async function setdata(lessonId: string, value: JSON) {
+export default async function setData(
+  account_id: number,
+  lesson_id: string,
+  data: string
+) {
   try {
     const res = await put({
       url: '/v1/data/save',
       includeToken: true,
       body: {
-        lessonId,
-        value,
+        account_id,
+        lesson_id,
+        data,
       },
     })
+
+    console.log(res)
 
     return res
   } catch (errors) {
