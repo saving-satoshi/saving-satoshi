@@ -6,12 +6,14 @@ import Icon from 'shared/Icon'
 import clsx from 'clsx'
 
 export default function ContributionBar({
+  active,
   total,
   protagonists,
   antagonists,
   step,
   opacity,
 }: {
+  active: number
   total: number
   protagonists: any
   antagonists: any
@@ -32,6 +34,30 @@ export default function ContributionBar({
     }))
   )
 
+  const sanitizeValue = (val) => {
+    if (!active) {
+      return 0
+    }
+
+    if (val === 0) {
+      return 1
+    }
+
+    return val
+  }
+
+  const getSanitizedTotal = () => {
+    let protagonistsTotal = protagonists.reduce((acc, p) => {
+      return sanitizeValue(p.value) <= 1 ? acc + 1 : acc
+    }, 0)
+
+    let antagonistsTotal = antagonists.reduce((acc, p) => {
+      return sanitizeValue(p.value) <= 1 ? acc + 1 : acc
+    }, 0)
+
+    return total + protagonistsTotal + antagonistsTotal
+  }
+
   const updateProtagonists = () => {
     const elRef = elementRef.current
     if (!elRef) {
@@ -39,14 +65,16 @@ export default function ContributionBar({
     }
 
     const rect = (elRef as HTMLElement).getBoundingClientRect()
+    const sanitizedTotal = getSanitizedTotal()
 
     setProtagonistState(
       protagonists.map((player, i) => {
         const cumulativeValue = protagonists.slice(0, i).reduce((acc, p) => {
-          const s = p.value / total
+          const s = sanitizeValue(p.value) / sanitizedTotal
           return acc + rect.width * s
         }, 0)
-        const scale = player.value / total
+
+        const scale = sanitizeValue(player.value) / sanitizedTotal
         const playerOffset = rect.width * scale
         const offsetBar = -rect.width + playerOffset + cumulativeValue
         const offsetAvatar = cumulativeValue + playerOffset / 2 - 13
@@ -62,14 +90,15 @@ export default function ContributionBar({
     }
 
     const rect = (elRef as HTMLElement).getBoundingClientRect()
+    const sanitizedTotal = getSanitizedTotal()
 
     setAntagonistState(
       antagonists.map((player, i) => {
         const cumulativeValue = antagonists.slice(0, i).reduce((acc, p) => {
-          const s = p.value / total
+          const s = sanitizeValue(p.value) / sanitizedTotal
           return acc + rect.width * s
         }, 0)
-        const scale = player.value / total
+        const scale = sanitizeValue(player.value) / sanitizedTotal
         const playerOffset = rect.width * scale
         const offsetBar = rect.width - playerOffset - cumulativeValue
         const offsetAvatar = -cumulativeValue - playerOffset / 2 + 13
@@ -80,11 +109,11 @@ export default function ContributionBar({
 
   useEffect(() => {
     updateProtagonists()
-  }, [elementRef, protagonists])
+  }, [elementRef, protagonists, active])
 
   useEffect(() => {
     updateAntagonists()
-  }, [elementRef, antagonists])
+  }, [elementRef, antagonists, active])
 
   return (
     <div
@@ -134,7 +163,7 @@ export default function ContributionBar({
                 style={{
                   transform: `translate3d(${offsetBar}, 0, 0)`,
                   transition: 'transform 300ms linear',
-                  backgroundColor: player.color,
+                  backgroundColor: active ? player.color : 'transparent',
                 }}
               />
             </div>
@@ -165,7 +194,7 @@ export default function ContributionBar({
                 style={{
                   transform: `translate3d(${offsetBar}, 0, 0)`,
                   transition: 'transform 300ms linear',
-                  backgroundColor: player.color,
+                  backgroundColor: active ? player.color : 'transparent',
                 }}
               />
             </div>

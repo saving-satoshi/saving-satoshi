@@ -42,6 +42,7 @@ export default function HashrateChallenge({
 }) {
   const [finalMining, setFinalMining] = useState(false)
   const [hashPower, setHashPower] = useState(0)
+  const [state, setState] = useState(0)
 
   const handleStep = (num) => {
     onStepUpdate((step = num))
@@ -95,19 +96,18 @@ export default function HashrateChallenge({
   }, [finalMining, totalBlocks, blockRatio])
 
   useEffect(() => {
-    if (totalBlocks) {
-      if (protagonistsTotal + antagonistsTotal >= totalBlocks) {
-        handleStep(2)
-        setFinalMining(false)
-      }
+    if (protagonistsTotal + antagonistsTotal >= totalBlocks) {
+      handleStep(2)
+      setFinalMining(false)
+      setState(2)
     }
   }, [protagonistsTotal, antagonistsTotal, totalBlocks])
 
   const turnOnButton = async () => {
     if (step === 0) {
-      await sleep(100)
       handleStep(1)
       setFinalMining(true)
+      setState(1)
     }
   }
 
@@ -153,6 +153,7 @@ export default function HashrateChallenge({
             </span>
           </div>
           <ContributionBar
+            active={state !== 0}
             step={step}
             total={totalBlocks}
             protagonists={protagonists}
