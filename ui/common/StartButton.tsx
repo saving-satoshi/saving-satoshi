@@ -152,7 +152,7 @@ export default function Card({
           }
         />
       )}
-      {step !== 0 && (
+      {!noData && (
         <button
           className={clsx(
             'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
