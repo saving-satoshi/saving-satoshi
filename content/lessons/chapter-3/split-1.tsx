@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useTranslations } from 'hooks'
 import { Introduction, Text } from 'ui'
 import { cssVarThemeChange } from 'lib/themeSelector'
+import Title from 'ui/introduction/Title'
 
 export const metadata = {
   title: 'chapter_three.split_one.title',
@@ -26,6 +27,7 @@ export default function Split1({ lang }) {
 
   return (
     <Introduction lang={lang} imagePosition="object-left-top">
+      <Title>{t('chapter_three.split_one.heading')}</Title>
       <Text className="text-lg md:text-xl">
         {t('chapter_three.split_one.paragraph_one')}
       </Text>

@@ -487,6 +487,7 @@ const translations = {
 
     split_one: {
       title: 'Splitting Rewards',
+      heading: 'Nicely done.',
       paragraph_one:
         'Not only did you defend the network against BitRey, you also earned bitcoin as a reward!',
       paragraph_two:

@@ -42,7 +42,7 @@ export default function Split2({ lang }) {
     } else {
       setData(true)
       setOutcome(
-        JSON.parse('{"protagonists": [12, 10, 34, 8], "antagonists": [36]}')
+        JSON.parse('{"protagonists": [15, 9, 29, 4], "antagonists": [43]}')
       )
     }
   }
