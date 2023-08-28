@@ -42,7 +42,7 @@ export default function Split2({ lang }) {
     } else {
       setData(true)
       setOutcome(
-        JSON.parse('{"protagonists": [13, 11, 34, 6], "antagonists": [36]}')
+        JSON.parse('{"protagonists": [12, 10, 34, 8], "antagonists": [36]}')
       )
     }
   }
@@ -143,9 +143,7 @@ export default function Split2({ lang }) {
         const interval: NodeJS.Timeout = setInterval(() => {
           setProtagonistHash((prevHashes) => {
             const updatedHashes = [...prevHashes]
-            updatedHashes[i] += Math.floor(
-              Math.random() * PROTAGONISTS[i].hashpower
-            )
+            updatedHashes[i] += Math.floor(0.51 * PROTAGONISTS[i].hashpower)
             return updatedHashes
           })
         }, 40)
@@ -210,7 +208,18 @@ export default function Split2({ lang }) {
                     ? ProfileChipVariant.Balance
                     : ProfileChipVariant.Ranking
                 }
-                value={step === 6 ? (profile.value * 0.125).toFixed(1) : i + 1}
+                value={
+                  step === 6
+                    ? (
+                        (profile.hashes /
+                          (PROTAGONISTS[0].hashes +
+                            PROTAGONISTS[1].hashes +
+                            PROTAGONISTS[2].hashes +
+                            PROTAGONISTS[3].hashes)) *
+                        6.125
+                      ).toFixed(2)
+                    : i + 1
+                }
               />
             }
           >
@@ -218,7 +227,7 @@ export default function Split2({ lang }) {
               <span className="fade-in w-[103px] font-nunito text-[15px] font-bold text-[#EDA081]">
                 {t('hashrate.hashrate')}
               </span>
-              <div className="flex flex-row gap-x-2.5 md:gap-x-10">
+              <div className="flex flex-row gap-x-2.5 md:gap-x-7">
                 {step >= 3 && (
                   <BoxDisplayer
                     className="fade-in max-h-fit text-[13px]"
