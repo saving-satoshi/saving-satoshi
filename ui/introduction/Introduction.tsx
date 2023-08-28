@@ -13,7 +13,7 @@ export default function Introduction({
 }: {
   children: any
   lang: any
-  imagePosition: string
+  imagePosition?: string
 }) {
   const routes = useLocalizedRoutes()
   const { chapterId, lessonId } = usePathData()
