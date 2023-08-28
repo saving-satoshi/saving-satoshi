@@ -3,7 +3,7 @@
 import React from 'react'
 import { clsx } from 'clsx'
 import { sleep } from 'utils'
-import { ProfilesContainer, StartButton, ContributionBar } from 'ui'
+import { ProfilesContainer, StartButton, ContributionBar, Tooltip } from 'ui'
 import { useEffect, useState } from 'react'
 
 export const metadata = {
@@ -25,6 +25,7 @@ export default function HashrateChallenge({
   onProtagonistUpdate,
   onAntagonistUpdate,
   speed,
+  noData,
 }: {
   children: any
   profiles: any
@@ -39,6 +40,7 @@ export default function HashrateChallenge({
   protagonists: any
   antagonists: any
   speed?: number
+  noData: boolean
 }) {
   const [finalMining, setFinalMining] = useState(false)
   const [hashPower, setHashPower] = useState(0)
@@ -75,18 +77,12 @@ export default function HashrateChallenge({
     if (finalMining) {
       protagonistInterval = setInterval(() => {
         protagonistBlock = protagonistBlock + Math.floor(Math.random() * 2)
-
-        if (protagonistBlock + antagonistBlock <= totalBlocks) {
-          handleProtagonistBlocks(protagonistBlock)
-        }
+        handleProtagonistBlocks(protagonistBlock)
       }, (totalBlocks - blockRatio) * (speed || 5))
 
       antagonistInterval = setInterval(() => {
         antagonistBlock = antagonistBlock + Math.floor(Math.random() * 2)
-
-        if (protagonistBlock + antagonistBlock <= totalBlocks) {
-          handleAntagonistBlocks(antagonistBlock)
-        }
+        handleAntagonistBlocks(antagonistBlock)
       }, blockRatio * ((speed && speed + 1) || 5))
     }
     return () => {
@@ -129,9 +125,10 @@ export default function HashrateChallenge({
             >
               {protagonistsTotal} blocks
             </span>
-            <div>
-              {step < 2 && (
+            {step < 2 && (
+              <div>
                 <StartButton
+                  noData
                   startText="Start"
                   className="font-space-mono"
                   hashPower={hashPower}
@@ -139,8 +136,9 @@ export default function HashrateChallenge({
                   step={step}
                   onButtonClick={turnOnButton}
                 />
-              )}
-            </div>
+              </div>
+            )}
+
             <span
               className={clsx(
                 'my-[2px] h-[25px] min-w-[100px] text-right font-nunito text-[18px] font-semibold text-white',

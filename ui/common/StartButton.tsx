@@ -2,6 +2,7 @@
 
 import clsx from 'clsx'
 import { useState, useEffect, Dispatch, SetStateAction } from 'react'
+import { Tooltip } from 'ui'
 
 export default function Card({
   hashPower,
@@ -12,6 +13,7 @@ export default function Card({
   onButtonClick,
   step,
   mining,
+  noData,
 }: {
   hashPower: number
   startText: string
@@ -21,6 +23,7 @@ export default function Card({
   onButtonClick: any
   step: number
   mining?: boolean
+  noData?: boolean
 }) {
   const [hasherState, setHasherState] = useState<boolean>(false)
   const [powerUp, setPowerUp] = useState<boolean>(false)
@@ -122,21 +125,50 @@ export default function Card({
           10x
         </div>
       )}
-      <button
-        className={clsx(
-          'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
-          {
-            'border-transparent bg-[#FBEBC6]/25 text-[#571A1F]':
-              hasherState && step < 4,
-            'animate-duration-500 fade-in animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
-              !hasherState,
-            ' border-black/25 text-black/25': step >= 4,
+      {noData && step === 0 && (
+        <Tooltip
+          id={'No data found'}
+          theme={'solo-1-secondary-theme'}
+          className="no-underline"
+          content={
+            "Oops it looks like we couldn't find your data, let's use some default values instead"
           }
-        )}
-        onClick={handleClick}
-      >
-        {hasherState ? 'Running' : startText}
-      </button>
+          children={
+            <button
+              className={clsx(
+                'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
+                {
+                  'border-transparent bg-[#FBEBC6]/25 text-[#571A1F]':
+                    hasherState && step < 4,
+                  'animate-duration-500 fade-in animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
+                    !hasherState,
+                  ' border-black/25 text-black/25': step >= 4,
+                }
+              )}
+              onClick={handleClick}
+            >
+              {hasherState ? 'Running' : startText}
+            </button>
+          }
+        />
+      )}
+      {step !== 0 && (
+        <button
+          className={clsx(
+            'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
+            {
+              'border-transparent bg-[#FBEBC6]/25 text-[#571A1F]':
+                hasherState && step < 4,
+              'animate-duration-500 fade-in animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
+                !hasherState,
+              ' border-black/25 text-black/25': step >= 4,
+            }
+          )}
+          onClick={handleClick}
+        >
+          {hasherState ? 'Running' : startText}
+        </button>
+      )}
     </div>
   )
 }

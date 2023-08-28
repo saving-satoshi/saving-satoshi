@@ -23,6 +23,7 @@ export default function Split2({ lang }) {
   const { account } = useAuthContext()
   const t = useTranslations(lang)
   const [step, setStep] = useState(0)
+  const [data, setData] = useState(false)
   const [outcome, setOutcome] = useState({ protagonists: [], antagonists: [] })
   const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState([
     0, 0, 0, 0,
@@ -36,8 +37,14 @@ export default function Split2({ lang }) {
 
   async function previousLessonOutcome(lessonKey) {
     const PoolThreeOutcome = await getData(lessonKey)
-
-    setOutcome(PoolThreeOutcome.data)
+    if (!!PoolThreeOutcome) {
+      setOutcome(PoolThreeOutcome.data)
+    } else {
+      setData(true)
+      setOutcome(
+        JSON.parse('{"protagonists": [16, 8, 34, 6], "antagonists": [36]}')
+      )
+    }
   }
 
   const TOTAL_BLOCKS = 100
@@ -187,6 +194,7 @@ export default function Split2({ lang }) {
         protagonists={PROTAGONISTS}
         antagonists={ANTAGONISTS}
         speed={1}
+        noData={data}
         contributionBarOpacity="fade-in-out opacity-[.2]"
         profiles={PROTAGONISTS.map((profile, i) => (
           <Profile
