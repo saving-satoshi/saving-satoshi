@@ -6,7 +6,15 @@ import { redirect } from 'next/navigation'
 import { TextImage } from 'ui'
 import { useLocalizedRoutes, usePathData } from 'hooks'
 
-export default function Introduction({ children, lang, imagePosition }) {
+export default function Introduction({
+  children,
+  lang,
+  imagePosition,
+}: {
+  children: any
+  lang: any
+  imagePosition: string
+}) {
   const routes = useLocalizedRoutes()
   const { chapterId, lessonId } = usePathData()
   const chapter = chapters[chapterId]
