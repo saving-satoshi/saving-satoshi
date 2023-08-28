@@ -128,7 +128,7 @@ export default function HashrateChallenge({
             {step < 2 && (
               <div>
                 <StartButton
-                  noData
+                  noData={noData}
                   startText="Start"
                   className="font-space-mono"
                   hashPower={hashPower}
