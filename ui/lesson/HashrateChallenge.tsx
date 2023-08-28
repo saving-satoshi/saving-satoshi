@@ -40,7 +40,7 @@ export default function HashrateChallenge({
   protagonists: any
   antagonists: any
   speed?: number
-  noData: boolean
+  noData?: boolean
 }) {
   const [finalMining, setFinalMining] = useState(false)
   const [hashPower, setHashPower] = useState(0)
