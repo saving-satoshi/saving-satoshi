@@ -131,23 +131,24 @@ export default function Card({
           theme={'solo-1-secondary-theme'}
           className="no-underline"
           content={
-            "Oops it looks like we couldn't find your data, let's use some default values instead"
+            <span>
+              Oops! It looks like we couldn't find your data, let's use some
+              default values instead
+            </span>
           }
           children={
             <button
               className={clsx(
                 'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
                 {
-                  'border-transparent bg-[#FBEBC6]/25 text-[#571A1F]':
-                    hasherState && step < 4,
+                  invisible: hasherState,
                   'animate-duration-500 fade-in animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
                     !hasherState,
-                  ' border-black/25 text-black/25': step >= 4,
                 }
               )}
               onClick={handleClick}
             >
-              {hasherState ? 'Running' : startText}
+              {startText}
             </button>
           }
         />

@@ -13,7 +13,7 @@ import { cssVarThemeChange } from 'lib/themeSelector'
 import { getData } from 'api/data'
 
 export const metadata = {
-  title: 'chapter_three.pool_two.title',
+  title: 'chapter_three.split_two.title',
   theme: 'solo-1-theme',
   secondaryTheme: 'solo-1-secondary-theme',
   key: 'CH3SPL2',
@@ -42,7 +42,7 @@ export default function Split2({ lang }) {
     } else {
       setData(true)
       setOutcome(
-        JSON.parse('{"protagonists": [16, 8, 34, 6], "antagonists": [36]}')
+        JSON.parse('{"protagonists": [13, 11, 34, 6], "antagonists": [36]}')
       )
     }
   }
@@ -205,73 +205,43 @@ export default function Split2({ lang }) {
               <ProfileChip
                 className="relative -top-4"
                 image="/assets/images/chapter-1-holocat-cropped.jpg"
-                variant={ProfileChipVariant.Ranking}
-                value={i + 1}
+                variant={
+                  step === 6
+                    ? ProfileChipVariant.Balance
+                    : ProfileChipVariant.Ranking
+                }
+                value={step === 6 ? (profile.value * 0.125).toFixed(1) : i + 1}
               />
             }
           >
             <Card className="flex self-stretch py-[10px]">
               <span className="fade-in w-[103px] font-nunito text-[15px] font-bold text-[#EDA081]">
-                Hashrate
+                {t('hashrate.hashrate')}
               </span>
-              {step >= 3 && (
-                <BoxDisplayer
-                  className="fade-in text-[13px]"
-                  transparent={step !== 3}
-                >
-                  {(
-                    100 *
-                    (profile.hashpower /
-                      (PROTAGONISTS[0].hashpower +
-                        PROTAGONISTS[1].hashpower +
-                        PROTAGONISTS[2].hashpower +
-                        PROTAGONISTS[3].hashpower))
-                  ).toFixed(2)}
-                  %
-                </BoxDisplayer>
-              )}
-              <HashFrequency
-                className="font-space-mono text-[15px]"
-                disabled={false}
-                step={0}
-                hashPower={profile.hashpower}
-              />
-            </Card>
-            <Card className="flex self-stretch py-[10px]">
-              <span
-                className={clsx('fade-in font-nunito text-[15px] font-bold', {
-                  'text-white text-opacity-25': step === 0,
-                  'fade-in text-[#EDA081]': step !== 0,
-                })}
-              >
-                Blocks found
-              </span>
-              {step >= 4 && (
-                <BoxDisplayer
-                  className="fade-in text-[13px]"
-                  transparent={step !== 4}
-                >
-                  {(
-                    100 *
-                    (profile.value /
-                      (PROTAGONISTS[0].value +
-                        PROTAGONISTS[1].value +
-                        PROTAGONISTS[2].value +
-                        PROTAGONISTS[3].value))
-                  ).toFixed(2)}
-                  %
-                </BoxDisplayer>
-              )}
-              <span
-                className={clsx(
-                  'fade-in font-space-mono text-[15px] font-normal text-white',
-                  {
-                    'text-opacity-25': step === 0,
-                  }
+              <div className="flex flex-row gap-x-2.5 md:gap-x-10">
+                {step >= 3 && (
+                  <BoxDisplayer
+                    className="fade-in max-h-fit text-[13px]"
+                    transparent={step !== 3}
+                  >
+                    {(
+                      100 *
+                      (profile.hashpower /
+                        (PROTAGONISTS[0].hashpower +
+                          PROTAGONISTS[1].hashpower +
+                          PROTAGONISTS[2].hashpower +
+                          PROTAGONISTS[3].hashpower))
+                    ).toFixed(2)}
+                    %
+                  </BoxDisplayer>
                 )}
-              >
-                {profile.value}
-              </span>
+                <HashFrequency
+                  className="font-space-mono text-[15px]"
+                  disabled={false}
+                  step={0}
+                  hashPower={profile.hashpower}
+                />
+              </div>
             </Card>
             <Card className="flex self-stretch py-[10px]">
               <span
@@ -280,34 +250,74 @@ export default function Split2({ lang }) {
                   'fade-in text-[#EDA081]': step !== 0,
                 })}
               >
-                Shares
+                {t('hashrate.blocks_found')}
               </span>
-              {step >= 5 && (
-                <BoxDisplayer
-                  className="fade-in text-[13px]"
-                  transparent={step !== 5}
+              <div className="flex flex-row gap-x-2.5 md:gap-x-7">
+                {step >= 4 && (
+                  <BoxDisplayer
+                    className="fade-in text-[13px]"
+                    transparent={step !== 4}
+                  >
+                    {(
+                      100 *
+                      (profile.value /
+                        (PROTAGONISTS[0].value +
+                          PROTAGONISTS[1].value +
+                          PROTAGONISTS[2].value +
+                          PROTAGONISTS[3].value))
+                    ).toFixed(2)}
+                    %
+                  </BoxDisplayer>
+                )}
+                <span
+                  className={clsx(
+                    'fade-in font-space-mono text-[15px] font-normal text-white',
+                    {
+                      'text-opacity-25': step === 0,
+                    }
+                  )}
                 >
-                  {(
-                    100 *
-                    (profile.hashes /
-                      (PROTAGONISTS[0].hashes +
-                        PROTAGONISTS[1].hashes +
-                        PROTAGONISTS[2].hashes +
-                        PROTAGONISTS[3].hashes))
-                  ).toFixed(2)}
-                  %
-                </BoxDisplayer>
-              )}
-              <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
-                <div
-                  className={clsx({
-                    'text-white/25': step === 0 || profile.hashes === 0,
-                    'fade-in text-white': step !== 0,
-                  })}
-                >
-                  {Math.floor(profile.hashes / 100).toLocaleString()}
-                </div>
+                  {profile.value}
+                </span>
+              </div>
+            </Card>
+            <Card className="flex self-stretch py-[10px]">
+              <span
+                className={clsx('fade-in font-nunito text-[15px] font-bold', {
+                  'text-white text-opacity-25': step === 0,
+                  'fade-in text-[#EDA081]': step !== 0,
+                })}
+              >
+                {t('hashrate.partial_solutions')}
               </span>
+              <div className="flex flex-row gap-x-2.5 md:gap-x-7">
+                {step >= 5 && (
+                  <BoxDisplayer
+                    className="fade-in text-[13px]"
+                    transparent={step !== 5}
+                  >
+                    {(
+                      100 *
+                      (profile.hashes /
+                        (PROTAGONISTS[0].hashes +
+                          PROTAGONISTS[1].hashes +
+                          PROTAGONISTS[2].hashes +
+                          PROTAGONISTS[3].hashes))
+                    ).toFixed(2)}
+                    %
+                  </BoxDisplayer>
+                )}
+                <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
+                  <div
+                    className={clsx({
+                      'text-white/25': step === 0 || profile.hashes === 0,
+                      'fade-in text-white': step !== 0,
+                    })}
+                  >
+                    {Math.floor(profile.hashes / 100).toLocaleString()}
+                  </div>
+                </span>
+              </div>
             </Card>
           </Profile>
         ))}
@@ -316,24 +326,20 @@ export default function Split2({ lang }) {
           {step === 0 && (
             <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
-                Let's review everyone's efforts
+                {t('chapter_three.split_two.step_zero_heading')}
               </Text>
               <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-                We will re-run the battle. This time we will only focus on our
-                pool, specfifcally on the number of partial solutions each miner
-                found.
+                {t('chapter_three.split_two.step_zero_paragraph')}
               </Text>
             </span>
           )}
           {step === 2 && (
             <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
-                Let's do the math
+                {t('chapter_three.split_two.step_two_heading')}
               </Text>
               <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-                Take a look at the numbers above and see if you can find a fair
-                way to split up the rewards. Figured it out? Let's go over it
-                step by step.
+                {t('chapter_three.split_two.step_two_paragraph')}
               </Text>
               <Button
                 onClick={() => handleStepUpdate(3)}
@@ -347,12 +353,10 @@ export default function Split2({ lang }) {
           {step === 3 && (
             <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
-                Hash rate percentage
+                {t('chapter_three.split_two.step_three_heading')}
               </Text>
               <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-                Take a look at the numbers above and see if you can find a fair
-                way to split up the rewards. Figured it out? Let's go over it
-                step by step.
+                {t('chapter_three.split_two.step_three_paragraph')}
               </Text>
               <Button
                 onClick={() => handleStepUpdate(4)}
@@ -366,12 +370,10 @@ export default function Split2({ lang }) {
           {step === 4 && (
             <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
-                Block found percentage
+                {t('chapter_three.split_two.step_four_heading')}
               </Text>
               <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-                Take a look at the numbers above and see if you can find a fair
-                way to split up the rewards. Figured it out? Let's go over it
-                step by step.
+                {t('chapter_three.split_two.step_four_paragraph')}
               </Text>
               <Button
                 onClick={() => handleStepUpdate(5)}
@@ -385,12 +387,10 @@ export default function Split2({ lang }) {
           {step === 5 && (
             <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
-                Partial solution percentage
+                {t('chapter_three.split_two.step_five_heading')}
               </Text>
               <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-                Take a look at the numbers above and see if you can find a fair
-                way to split up the rewards. Figured it out? Let's go over it
-                step by step.
+                {t('chapter_three.split_two.step_five_paragraph')}
               </Text>
               <Button
                 onClick={() => handleStepUpdate(6)}
@@ -404,12 +404,10 @@ export default function Split2({ lang }) {
           {step === 6 && (
             <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
-                Splitting the rewards
+                {t('chapter_three.split_two.step_six_heading')}
               </Text>
               <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-                Take a look at the numbers above and see if you can find a fair
-                way to split up the rewards. Figured it out? Let's go over it
-                step by step.
+                {t('chapter_three.split_two.step_six_paragraph')}
               </Text>
               <Button
                 onClick={saveAndProceed}

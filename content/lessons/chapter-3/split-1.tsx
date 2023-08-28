@@ -6,7 +6,7 @@ import { Introduction, Text } from 'ui'
 import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
-  title: 'chapter_three.pool_two.title',
+  title: 'chapter_three.split_one.title',
   image: '/assets/images/chapter-3-split-1.jpg',
   theme: 'bg-gradient-to-tr from-[#291E1C] to-[#64381F]',
   secondaryTheme: 'bg-[#64381F]',
@@ -25,15 +25,37 @@ export default function Split1({ lang }) {
   }, [])
 
   return (
-    <Introduction lang={lang}>
+    <Introduction lang={lang} imagePosition="object-left-top">
       <Text className="text-lg md:text-xl">
-        {t('chapter_one.intro_one.paragraph_one')}
+        {t('chapter_three.split_one.paragraph_one')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_one.intro_one.paragraph_two')}
+        {t('chapter_three.split_one.paragraph_two')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_one.intro_one.paragraph_three')}
+        {t('chapter_three.split_one.paragraph_three')}
+      </Text>
+
+      <ol className="pl-2.5">
+        <li className="flex flex-row text-lg md:text-xl">
+          1.
+          <p className="pl-2.5">{t('chapter_three.split_one.list_one')}</p>
+        </li>
+
+        <li className="flex flex-row text-lg md:text-xl">
+          2.
+          <p className="pl-2.5">{t('chapter_three.split_one.list_two')}</p>
+        </li>
+      </ol>
+
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('chapter_three.split_one.paragraph_four')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('chapter_three.split_one.paragraph_five')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('chapter_three.split_one.paragraph_six')}
       </Text>
     </Introduction>
   )

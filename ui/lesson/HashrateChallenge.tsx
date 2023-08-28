@@ -3,7 +3,7 @@
 import React from 'react'
 import { clsx } from 'clsx'
 import { sleep } from 'utils'
-import { ProfilesContainer, StartButton, ContributionBar, Tooltip } from 'ui'
+import { ProfilesContainer, StartButton, ContributionBar } from 'ui'
 import { useEffect, useState } from 'react'
 
 export const metadata = {
@@ -83,7 +83,7 @@ export default function HashrateChallenge({
       antagonistInterval = setInterval(() => {
         antagonistBlock = antagonistBlock + Math.floor(Math.random() * 2)
         handleAntagonistBlocks(antagonistBlock)
-      }, blockRatio * ((speed && speed + 1) || 5))
+      }, blockRatio * ((speed && speed + 0.25) || 5))
     }
     return () => {
       clearInterval(protagonistInterval)
