@@ -387,52 +387,39 @@ const translations = {
   chapter_three: {
     title: 'The 51% Attack',
     paragraph_one:
-      'Phew, that was close. You are still shaking from your battle againstAmestris, yet relieved that a victory was possible.',
-    paragraph_two:
-      'As you settle at your desk, you take a deep breath and drift off toreplay the day’s events. Your hands keep themselves busy playing withthe mysterious envelope, as you wonder who sent it. Who still usesenvelopes anyways, it’s 2139 after all. Even more curious is that thereis a stamp on it, from 2008...could this be another hint?',
-    paragraph_three:
-      'Suddenly, you realize that you never claimed the block rewards from your competition with Amestris. Your bitcoin wallet is running low, so now is a good time to top it up again.',
-
-    intro_one: {
-      title: 'Hashing it out',
-      paragraph_one:
         'You enter the address of a block explorer blocks are back to ten minutes intervals. Somehow, holocat sleeps through the noise of the machines.',
       paragraph_two:
         '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking holocat. It’s not a coincidence.',
-      paragraph_three:
-        '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is under a 51% attack! Vanderpoole used a virus to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the Bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply.” – Satoshi Nakamoto',
-    },
-
-    intro_two: {
+    intro_one: {
       title: 'Hashing it out',
       paragraph_one:
+        '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is under a 51% attack! Vanderpoole used a virus to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the Bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply.” – Satoshi Nakamoto',
+    paragraph_two:
         '—The old computer coughs a little, then produces a wad of data in something called a “spreadsheet”: contact info for some of the largest bitcoin pool operators and a patch to the virus that is letting BitRey control them. Send the file to them so they can regain control of their machines and join your fight against BitRey.',
-      paragraph_two:
+      paragraph_three:
         'HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”',
     },
-
+    
     solo_one: {
       title: 'You vs. Bitrey',
       step_zero_heading: 'Let’s give it a try',
       step_zero_paragraph_one:
-        'While you’re waiting for the pool operators, you decide to fend off BitRey by yourself. Here’s how your hash rate stacks up. How do you think this will go?',
+        'While you’re waiting for the pool operators you reached out to, you decide to fend off BitRey by yourself. Here’s how your hash rate stacks up. How do you think this will go?',
       step_one_heading: 'We’re off to the races',
       step_one_paragraph_one:
-        'We’re mining for another 100 blocks to see how many BitRey will mine, and how many you will.',
+        'We’re now mining 100 blocks to see how many you and BitRey will mine.',
       step_two_heading: 'That did not go too well!',
       step_two_paragraph_one:
-        'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s go back to the drawing board. Bitcoin has been running for over a decade and it’s not going down without a fight.',
+        'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s see if we can defeat BitRey for the next 100 blocks with the other pool operators. Bitcoin has been running for over a decade and it’s not going down without a fight.',
     },
 
     coop_one: {
       title: 'Coop vs. BitRey',
-      waiting_screen_heading: 'We need support',
+      waiting_screen_heading: 'We need support!',
       waiting_screen_paragraph_one:
-        'Luckily you can travel back in time to take another stab at this attack. But how can you prevent another defeat?',
-      waiting_screen_paragraph_two:
         'Your miners in the warehouse alone don’t stand a chance. If you combine your hashing power with other pools, you might be able to hold the line against the assault.',
-      waiting_screen_paragraph_three:
-        'Let’s wait until the others join your pool, which HoloCat insists gets named after her, so we can combine forces,',
+      waiting_screen_paragraph_two:
+        'Let’s wait until the others join your pool, which HoloCat insists gets named after her, so we can combine forces.',
       waiting_button: 'Waiting...',
       continue_button: "Let's go",
     },
@@ -444,7 +431,7 @@ const translations = {
         'When you combine your hashrate with the other pool operators, can you stand up against BitRey?',
       step_two_heading: 'Another defeat!',
       step_two_paragraph_one:
-        'Something is wrong. Only one of your miners found blocks. Why do you think that might be?',
+        'Something is wrong. Only Hash Hoppers found blocks. Why do you think that might be?',
     },
 
     pool_one: {
@@ -479,10 +466,10 @@ const translations = {
       title: 'Pool vs. BitRey',
       step_zero_heading: 'One more time...',
       step_zero_paragraph_one:
-        'Let’s see if we stand a chance now with our improved strategy of dividing the nonce space.',
+        'Let’s see if we stand a chance against BitRey now with our improved strategy of dividing the nonce space.',
       step_two_heading: 'You did it!',
       step_two_paragraph_one:
-        'Together you and your friends were able to hold back BitRey’s attempt to overtake the network.',
+        'Together you and the other pool operators were able to hold back BitRey’s attempt to overtake the network.',
     },
 
     outro_one: {
