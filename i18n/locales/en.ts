@@ -394,15 +394,12 @@ const translations = {
       title: 'Hashing it out',
       paragraph_one:
         '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is under a 51% attack! Vanderpoole used a virus to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the Bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply.” – Satoshi Nakamoto',
-    },
-    intro_two: {
-      title: 'Hashing it out',
-      paragraph_one:
+    paragraph_two:
         '—The old computer coughs a little, then produces a wad of data in something called a “spreadsheet”: contact info for some of the largest bitcoin pool operators and a patch to the virus that is letting BitRey control them. Send the file to them so they can regain control of their machines and join your fight against BitRey.',
-      paragraph_two:
+      paragraph_three:
         'HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”',
     },
-
+    
     solo_one: {
       title: 'You vs. Bitrey',
       step_zero_heading: 'Let’s give it a try',
