@@ -23,8 +23,6 @@ export default function Split2({ lang }) {
   const { account } = useAuthContext()
   const t = useTranslations(lang)
   const [step, setStep] = useState(0)
-  const [data, setData] = useState(false)
-  const [outcome, setOutcome] = useState({ protagonists: [], antagonists: [] })
   const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState([
     0, 0, 0, 0,
   ])
@@ -35,17 +33,9 @@ export default function Split2({ lang }) {
 
   const saveAndProceed = useSaveAndProceed()
 
-  async function previousLessonOutcome(lessonKey) {
-    const PoolThreeOutcome = await getData(lessonKey)
-    if (!!PoolThreeOutcome) {
-      setOutcome(PoolThreeOutcome.data)
-    } else {
-      setData(true)
-      setOutcome(
-        JSON.parse('{"protagonists": [15, 9, 29, 4], "antagonists": [43]}')
-      )
-    }
-  }
+  const outcome = JSON.parse(
+    '{"protagonists": [15, 9, 29, 4], "antagonists": [43]}'
+  )
 
   const TOTAL_BLOCKS = 100
   const BLOCK_RATIO = 40
@@ -57,10 +47,7 @@ export default function Split2({ lang }) {
       hashpower: 4395,
       hashes: protagonistHash[0],
       color: '#F3AB29',
-      value:
-        step === 0
-          ? 0
-          : Math.min(protagonistsBlockAmount[0], outcome.protagonists[0]),
+      value: Math.min(protagonistsBlockAmount[0], outcome.protagonists[0]),
     },
     {
       username: 'Mining Maniacs',
@@ -68,10 +55,7 @@ export default function Split2({ lang }) {
       hashpower: 4054,
       hashes: protagonistHash[1],
       color: '#FE5329',
-      value:
-        step === 0
-          ? 0
-          : Math.min(protagonistsBlockAmount[1], outcome.protagonists[1]),
+      value: Math.min(protagonistsBlockAmount[1], outcome.protagonists[1]),
     },
     {
       username: 'Hash Hoppers',
@@ -79,10 +63,7 @@ export default function Split2({ lang }) {
       hashpower: 7911,
       hashes: protagonistHash[2],
       color: '#62BFB7',
-      value:
-        step === 0
-          ? 0
-          : Math.min(protagonistsBlockAmount[2], outcome.protagonists[2]),
+      value: Math.min(protagonistsBlockAmount[2], outcome.protagonists[2]),
     },
     {
       username: 'Coin Crunchers',
@@ -90,10 +71,7 @@ export default function Split2({ lang }) {
       hashpower: 3857,
       hashes: protagonistHash[3],
       color: '#85BF09',
-      value:
-        step === 0
-          ? 0
-          : Math.min(protagonistsBlockAmount[3], outcome.protagonists[3]),
+      value: Math.min(protagonistsBlockAmount[3], outcome.protagonists[3]),
     },
   ]
 
@@ -104,10 +82,7 @@ export default function Split2({ lang }) {
       hashpower: 18599,
       hashes: antagonistHash,
       color: '#7E002E',
-      value:
-        step === 0
-          ? 0
-          : Math.min(antagonistsBlockAmount, outcome.antagonists[0]),
+      value: Math.min(antagonistsBlockAmount, outcome.antagonists[0]),
     },
   ]
 
@@ -172,7 +147,6 @@ export default function Split2({ lang }) {
   }, [step])
 
   useEffect(() => {
-    previousLessonOutcome('CH3POL3')
     cssVarThemeChange({
       '--CH3SOL1-bg': '#411e4f',
       '--CH3SOL1-gradient-start': '#3C1843',
@@ -192,7 +166,6 @@ export default function Split2({ lang }) {
         protagonists={PROTAGONISTS}
         antagonists={ANTAGONISTS}
         speed={1}
-        noData={data}
         contributionBarOpacity="fade-in-out opacity-[.2]"
         profiles={PROTAGONISTS.map((profile, i) => (
           <Profile
@@ -211,12 +184,12 @@ export default function Split2({ lang }) {
                 value={
                   step === 6
                     ? (
-                        (profile.hashes /
-                          (PROTAGONISTS[0].hashes +
-                            PROTAGONISTS[1].hashes +
-                            PROTAGONISTS[2].hashes +
-                            PROTAGONISTS[3].hashes)) *
-                        6.125
+                        (profile.value /
+                          (PROTAGONISTS[0].value +
+                            PROTAGONISTS[1].value +
+                            PROTAGONISTS[2].value +
+                            PROTAGONISTS[3].value)) *
+                        6.1
                       ).toFixed(2)
                     : i + 1
                 }
