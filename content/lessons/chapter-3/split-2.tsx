@@ -304,9 +304,13 @@ export default function Split2({ lang }) {
           </Profile>
         ))}
       >
-        <div className={`flex flex-col ${showText ? 'fade-in' : 'fade-out'}`}>
+        <div
+          className={`flex w-full justify-center ${
+            showText ? 'fade-in' : 'fade-out'
+          }`}
+        >
           {step === 0 && (
-            <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
+            <span className="flex flex-col items-start gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_zero_heading')}
               </Text>
@@ -316,7 +320,7 @@ export default function Split2({ lang }) {
             </span>
           )}
           {step === 2 && (
-            <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
+            <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_two_heading')}
               </Text>
@@ -333,7 +337,7 @@ export default function Split2({ lang }) {
             </span>
           )}
           {step === 3 && (
-            <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
+            <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_three_heading')}
               </Text>
@@ -350,7 +354,7 @@ export default function Split2({ lang }) {
             </span>
           )}
           {step === 4 && (
-            <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
+            <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_four_heading')}
               </Text>
@@ -367,7 +371,7 @@ export default function Split2({ lang }) {
             </span>
           )}
           {step === 5 && (
-            <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
+            <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_five_heading')}
               </Text>
@@ -384,7 +388,7 @@ export default function Split2({ lang }) {
             </span>
           )}
           {step === 6 && (
-            <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
+            <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
               <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_six_heading')}
               </Text>
