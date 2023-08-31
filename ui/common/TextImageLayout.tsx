@@ -16,7 +16,7 @@ export default function TextImageDisplay({
   objectPosition = 'object-bottom',
 }: {
   children: any
-  lang: any
+  lang: string
   imageSrc: string
   imageAlt: string
   btnText?: string

@@ -16,8 +16,6 @@ export default async function setData(
       },
     })
 
-    console.log(res)
-
     return res
   } catch (errors) {
     console.error(errors)

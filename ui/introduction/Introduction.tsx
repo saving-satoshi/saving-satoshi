@@ -1,5 +1,6 @@
 'use client'
 
+import { ReactNode } from 'react'
 import { chapters } from 'content'
 import { lessons } from 'content'
 import { redirect } from 'next/navigation'
@@ -11,8 +12,8 @@ export default function Introduction({
   lang,
   imagePosition,
 }: {
-  children: any
-  lang: any
+  children: ReactNode
+  lang: string
   imagePosition?: string
 }) {
   const routes = useLocalizedRoutes()

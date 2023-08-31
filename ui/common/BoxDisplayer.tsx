@@ -12,7 +12,7 @@ export default function Card({
   return (
     <div
       className={clsx(
-        'rounded-[5px] py-[4px] px-[7px] font-space-mono text-sm leading-none',
+        'rounded-[5px] px-1.5 py-1 font-space-mono text-sm leading-none',
         {
           'bg-green text-white': !transparent,
           'text-[#39C5E2]': transparent,
