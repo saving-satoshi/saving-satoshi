@@ -8,7 +8,6 @@ export default function Chapter3({ lang }) {
     <Chapter metadata={metadata} lang={lang}>
       <Text>{t('chapter_three.paragraph_one')}</Text>
       <Text>{t('chapter_three.paragraph_two')}</Text>
-      <Text>{t('chapter_three.paragraph_three')}</Text>
     </Chapter>
   )
 }
@@ -19,7 +18,7 @@ export const metadata = {
   title: 'chapter_three.title',
   image: '/assets/images/chapter-3-cover.jpg',
   theme: 'bg-gradient-to-tl from-[#3C1843] to-[#553360]',
-  intros: ['intro-1', 'intro-2'],
+  intros: ['intro-1'],
   lessons: [
     'solo-1',
     'coop-1',

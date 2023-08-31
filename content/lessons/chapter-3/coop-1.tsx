@@ -110,9 +110,6 @@ export default function Coop1({ lang }) {
           <div className="mt-8 text-lg">
             {t('chapter_three.coop_one.waiting_screen_paragraph_two')}
           </div>
-          <div className="mt-8 text-lg">
-            {t('chapter_three.coop_one.waiting_screen_paragraph_three')}
-          </div>
           {playersFound ? (
             <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
               {t('chapter_three.coop_one.continue_button')}
