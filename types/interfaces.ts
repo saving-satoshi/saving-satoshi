@@ -36,6 +36,7 @@ export interface FetchOptions {
 }
 
 export interface Account {
+  id: number
   avatar?: string
   private_key: string
 }
@@ -52,6 +53,18 @@ export interface ProgressContextType {
   isLoading: boolean
   saveProgress: (key: string) => Promise<void>
   saveProgressLocal: (key: string) => Promise<void>
+}
+
+export interface Data {
+  lesson_id: string
+  value: any
+}
+
+export interface DataContextType {
+  isLoading: boolean
+  data: Data[]
+  loadData: (lessonId: string) => void
+  saveData: (lessonId: string, value: any) => void
 }
 
 export interface FeatureContextType {

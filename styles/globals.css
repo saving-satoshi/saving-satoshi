@@ -12,7 +12,7 @@
   --input-text: #6e7d92;
   --dynamic-height: 100vh;
   --CH3SOL1-bg: #411e4f;
-  --CH3SOL1-gradient-start: #3C1843;
+  --CH3SOL1-gradient-start: #3c1843;
   --CH3SOL1-gradient-stop: #45235a;
 }
 
@@ -244,19 +244,23 @@ div.react-terminal-active-input {
 }
 
 .height-minus-nav {
-   height: calc(100vh - 70px);
- }
+  height: calc(100vh - 70px);
+}
 
 .solo-1-bg {
-  background: var(--CH3SOL1-bg)
+  background: var(--CH3SOL1-bg);
 }
 
 .solo-1-theme {
-  background: linear-gradient(315deg, var(--CH3SOL1-gradient-start), var(--CH3SOL1-gradient-stop))
+  background: linear-gradient(
+    315deg,
+    var(--CH3SOL1-gradient-start),
+    var(--CH3SOL1-gradient-stop)
+  );
 }
 
 .solo-1-secondary-theme {
-  background: var(--CH3SOL1-bg)
+  background: var(--CH3SOL1-bg);
 }
 
 
