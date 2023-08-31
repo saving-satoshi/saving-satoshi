@@ -16,6 +16,9 @@ import { sleep } from 'utils'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { cssVarThemeChange } from 'lib/themeSelector'
+import setdata from 'api/data/setData'
+import { usePathData } from 'hooks'
+import { lessons } from 'content'
 
 export const metadata = {
   title: 'chapter_three.pool_two.title',
@@ -31,15 +34,24 @@ export default function Pool3({ lang }) {
   const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState([
     0, 0, 0, 0,
   ])
-  const [antagonistsBlockAmount, setAntagonistsBlockAmount] = useState(0)
+  const [antagonistsBlockAmount, setAntagonistsBlockAmount] = useState([0])
   const [protagonistHash, setProtagonistHash] = useState([0, 0, 0, 0])
   const [antagonistHash, setAntagonistHash] = useState(0)
   const [showText, setShowText] = useState(true)
 
   const saveAndProceed = useSaveAndProceed()
+  const { chapterId, lessonId } = usePathData()
+
+  const chapterLessons = lessons?.[chapterId]
+  const lesson = chapterLessons?.[lessonId]?.metadata ?? null
+  const currentLessonKey = lesson?.key ?? 'CH1INT1'
 
   const TOTAL_BLOCKS = 100
   const BLOCK_RATIO = 40
+
+  const outcome = JSON.parse(
+    '{"protagonists": [15, 9, 29, 4], "antagonists": [43]}'
+  )
 
   const PROTAGONISTS = [
     {
@@ -48,7 +60,7 @@ export default function Pool3({ lang }) {
       hashpower: 4395,
       hashes: protagonistHash[0],
       color: '#F3AB29',
-      value: protagonistsBlockAmount[0],
+      value: Math.min(protagonistsBlockAmount[0], outcome.protagonists[0]),
     },
     {
       username: 'Mining Maniacs',
@@ -56,7 +68,7 @@ export default function Pool3({ lang }) {
       hashpower: 4054,
       hashes: protagonistHash[1],
       color: '#FE5329',
-      value: protagonistsBlockAmount[1],
+      value: Math.min(protagonistsBlockAmount[1], outcome.protagonists[1]),
     },
     {
       username: 'Hash Hoppers',
@@ -64,7 +76,7 @@ export default function Pool3({ lang }) {
       hashpower: 7911,
       hashes: protagonistHash[2],
       color: '#62BFB7',
-      value: protagonistsBlockAmount[2],
+      value: Math.min(protagonistsBlockAmount[2], outcome.protagonists[2]),
     },
     {
       username: 'Coin Crunchers',
@@ -72,7 +84,7 @@ export default function Pool3({ lang }) {
       hashpower: 3857,
       hashes: protagonistHash[3],
       color: '#85BF09',
-      value: protagonistsBlockAmount[3],
+      value: Math.min(protagonistsBlockAmount[3], outcome.protagonists[3]),
     },
   ]
 
@@ -83,7 +95,7 @@ export default function Pool3({ lang }) {
       hashpower: 18599,
       hashes: antagonistHash,
       color: '#7E002E',
-      value: antagonistsBlockAmount,
+      value: Math.min(antagonistsBlockAmount[0], outcome.antagonists[0]),
     },
   ]
 
@@ -117,7 +129,7 @@ export default function Pool3({ lang }) {
   }
 
   const handleAntagonsitBlockUpdate = (newBlock: number) => {
-    setAntagonistsBlockAmount(newBlock)
+    setAntagonistsBlockAmount([newBlock])
   }
 
   useEffect(() => {
@@ -160,6 +172,17 @@ export default function Pool3({ lang }) {
   }, [step])
 
   useEffect(() => {
+    if (step === 2)
+      setdata(
+        account?.id || 1,
+        currentLessonKey,
+        `{\"protagonists\": [${protagonistsBlockAmount}], \"antagonists\": [${[
+          antagonistsBlockAmount,
+        ]}]}`
+      )
+  }, [step])
+
+  useEffect(() => {
     cssVarThemeChange({
       '--CH3SOL1-bg': '#411e4f',
       '--CH3SOL1-gradient-start': '#3C1843',
@@ -178,6 +201,7 @@ export default function Pool3({ lang }) {
         onAntagonistUpdate={handleAntagonsitBlockUpdate}
         protagonists={PROTAGONISTS}
         antagonists={ANTAGONISTS}
+        speed={5}
         profiles={PROFILES.map((profile, i) => (
           <Profile
             key={i}

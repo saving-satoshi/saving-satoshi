@@ -472,6 +472,45 @@ const translations = {
         'Together you and the other pool operators were able to hold back BitRey’s attempt to overtake the network.',
     },
 
+    split_one: {
+      title: 'Splitting Rewards',
+      heading: 'Nicely done.',
+      paragraph_one:
+        'Not only did you defend the network against BitRey, you also earned bitcoin as a reward!',
+      paragraph_two:
+        'For every block that is mined, the miner gets a reward in bitcoin. If more than one person worked on the block, the group of miners (mining pool) gets a reward to share.',
+      paragraph_three: 'This reward is made up of two things:',
+      list_one: 'fees for all the transactions in the block',
+      list_two: 'the block subsidy',
+      paragraph_four:
+        'You and your miner friends have earned a total of 6.1 bitcoin and are looking for a good way to split it up. It should be divided based on how much work each of you put in.',
+      paragraph_five:
+        'Mining pools solve this by tracking how many partial solutions each miner has generated. A pool assigns each miner a minimum difficulty (lower than the block difficulty) based on their hash power. Every few seconds a miner finds one of those easier solutions and notifies the pool. The pool then tracks all the submitted shares and splits up the block rewards accordingly.',
+      paragraph_six: 'Let’s take a look at this in action.',
+    },
+
+    split_two: {
+      title: 'Splitting Rewards',
+      step_zero_heading: 'Let’s review everyone’s efforts',
+      step_zero_paragraph:
+        'We will re-run the battle. This time we will only focus on our pool, specifically on the number of partial solutions each miner found.',
+      step_two_heading: 'Let’s do the math',
+      step_two_paragraph:
+        'Take a look at the numbers above and see if you can find a fair way to split up the rewards. Figured it out? Let’s go over it step by step.',
+      step_three_heading: 'Hash rate percentage',
+      step_three_paragraph:
+        'As you know, this represents the amount of work every miner has chipped in to find blocks. But the mining pool has no way of knowing or measuring this number, since miners only forward successful solutions.',
+      step_four_heading: 'Block found percentage',
+      step_four_paragraph:
+        'The chance of finding a block is very low since it has a lot to do with luck. Especially in scenarios with some extremely powerful miners, the really small miners may contribute work but never find and blocks. ',
+      step_five_heading: 'Partial solution percentage',
+      step_five_paragraph:
+        'Now this number will work. Miners report these solutions to easier problems regularly to pools. That allows pools to fairly accurately measure how much work each pool has provided.',
+      step_six_heading: 'Splitting the rewards',
+      step_six_paragraph:
+        'Now we can take the rewards of 6.1 bitcoin and split them up according to the percentage of partial solutions of each pool. Congratulations!',
+    },
+
     outro_one: {
       title: 'Outro',
       heading: 'Take that, Vanderpoole! ',
@@ -581,6 +620,14 @@ const translations = {
   hasher: {
     placeholder: 'Type here...',
     return_hash: 'Below you will see your input converted to a hash',
+  },
+
+  hashrate: {
+    start: 'Start',
+    running: 'Running',
+    blocks_found: 'Blocks found',
+    hashrate: 'Hashrate',
+    partial_solutions: 'Partial solutions',
   },
 
   runner: {

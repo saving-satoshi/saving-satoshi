@@ -20,14 +20,18 @@ export default function HashrateChallenge({
   protagonists,
   antagonists,
   step,
+  contributionBarOpacity,
   onStepUpdate,
   onProtagonistUpdate,
   onAntagonistUpdate,
+  speed,
+  noData,
 }: {
   children: any
   profiles: any
   verticalProfiles?: boolean
   step: number
+  contributionBarOpacity?: string
   onStepUpdate: (newStep: number) => void
   onProtagonistUpdate: (newBlock: number) => void
   onAntagonistUpdate: (newBlock: number) => void
@@ -35,6 +39,8 @@ export default function HashrateChallenge({
   blockRatio: number
   protagonists: any
   antagonists: any
+  speed?: number
+  noData?: boolean
 }) {
   const [finalMining, setFinalMining] = useState(false)
   const [hashPower, setHashPower] = useState(0)
@@ -67,32 +73,23 @@ export default function HashrateChallenge({
     let antagonistInterval: NodeJS.Timeout
     let protagonistBlock = 0
     let antagonistBlock = 0
+
     if (finalMining) {
       protagonistInterval = setInterval(() => {
-        protagonistBlock = Math.min(
-          protagonistBlock + Math.floor(Math.random() * 2),
-          blockRatio
-        )
-        if (protagonistBlock + antagonistBlock <= totalBlocks) {
-          handleProtagonistBlocks(protagonistBlock)
-        }
-      }, (totalBlocks - blockRatio) * 5)
+        protagonistBlock = protagonistBlock + Math.floor(Math.random() * 2)
+        handleProtagonistBlocks(protagonistBlock)
+      }, (totalBlocks - blockRatio) * (speed || 5))
 
       antagonistInterval = setInterval(() => {
-        antagonistBlock = Math.min(
-          antagonistBlock + Math.floor(Math.random() * 2),
-          totalBlocks - blockRatio + 5
-        )
-        if (protagonistBlock + antagonistBlock <= totalBlocks) {
-          handleAntagonistBlocks(antagonistBlock)
-        }
-      }, blockRatio * 5)
+        antagonistBlock = antagonistBlock + Math.floor(Math.random() * 2)
+        handleAntagonistBlocks(antagonistBlock)
+      }, blockRatio * ((speed && speed + 0.25) || 5))
     }
     return () => {
       clearInterval(protagonistInterval)
       clearInterval(antagonistInterval)
     }
-  }, [finalMining])
+  }, [finalMining, totalBlocks, blockRatio])
 
   useEffect(() => {
     if (protagonistsTotal + antagonistsTotal >= totalBlocks) {
@@ -128,9 +125,10 @@ export default function HashrateChallenge({
             >
               {protagonistsTotal} blocks
             </span>
-            <div>
-              {step < 2 && (
+            {step < 2 && (
+              <div>
                 <StartButton
+                  noData={noData}
                   startText="Start"
                   className="font-space-mono"
                   hashPower={hashPower}
@@ -138,8 +136,9 @@ export default function HashrateChallenge({
                   step={step}
                   onButtonClick={turnOnButton}
                 />
-              )}
-            </div>
+              </div>
+            )}
+
             <span
               className={clsx(
                 'my-[2px] h-[25px] min-w-[100px] text-right font-nunito text-[18px] font-semibold text-white',
@@ -157,6 +156,7 @@ export default function HashrateChallenge({
             total={totalBlocks}
             protagonists={protagonists}
             antagonists={antagonists}
+            opacity={step !== 0 ? contributionBarOpacity : ''}
           />
         </div>
       </ProfilesContainer>

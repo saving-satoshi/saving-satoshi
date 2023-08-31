@@ -1,12 +1,21 @@
 'use client'
 
+import { ReactNode } from 'react'
 import { chapters } from 'content'
 import { lessons } from 'content'
 import { redirect } from 'next/navigation'
 import { TextImage } from 'ui'
 import { useLocalizedRoutes, usePathData } from 'hooks'
 
-export default function Introduction({ children, lang }) {
+export default function Introduction({
+  children,
+  lang,
+  imagePosition,
+}: {
+  children: ReactNode
+  lang: string
+  imagePosition?: string
+}) {
   const routes = useLocalizedRoutes()
   const { chapterId, lessonId } = usePathData()
   const chapter = chapters[chapterId]
@@ -24,6 +33,7 @@ export default function Introduction({ children, lang }) {
       imageSrc={intro.metadata.image}
       imageAlt={intro.metadata.title}
       btnEnabled={chapter.metadata.lessons.length > 0}
+      objectPosition={imagePosition}
     >
       {children}
     </TextImage>

@@ -57,7 +57,7 @@ export default function Solo1({ lang }) {
       hashpower: 18599,
       hashes: antagonistHash,
       color: '#7E002E',
-      value: antagonistsBlockAmount,
+      value: Math.min(antagonistsBlockAmount, TOTAL_BLOCKS - BLOCK_RATIO + 5),
     },
   ]
 
