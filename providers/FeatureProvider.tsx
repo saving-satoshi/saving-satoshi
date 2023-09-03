@@ -29,6 +29,9 @@ export default function FeatureProvider({
     try {
       setIsLoading(true)
       const features = await getFeatures()
+      if (!features) {
+        throw new Error('Could not fetch features')
+      }
       setFeatures(
         features.reduce((obj, feature) => {
           obj[feature.feature_name] = feature.feature_value

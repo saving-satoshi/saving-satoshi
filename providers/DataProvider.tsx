@@ -25,7 +25,11 @@ export default function ProgressProvider({
   const [isLoading, setIsLoading] = useState(true)
   const [data, setDataState] = useState<Data[]>([])
 
-  const loadData = async (lessonId: string) => {
+  const loadData = async (lessonId?: string) => {
+    if (!lessonId) {
+      return
+    }
+
     try {
       setIsLoading(true)
       let data = await getData(lessonId)
@@ -49,7 +53,7 @@ export default function ProgressProvider({
   }
 
   useEffect(() => {
-    loadData('')
+    loadData()
   }, [])
 
   return (
