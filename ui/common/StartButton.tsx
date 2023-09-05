@@ -2,17 +2,28 @@
 
 import clsx from 'clsx'
 import { useState, useEffect, Dispatch, SetStateAction } from 'react'
+import { Tooltip } from 'ui'
 
 export default function Card({
   hashPower,
+  startText,
+  tenX,
+  className,
   setHashPower,
   onButtonClick,
   step,
+  mining,
+  noData,
 }: {
   hashPower: number
+  startText: string
+  className?: string
+  tenX?: boolean
   setHashPower: Dispatch<SetStateAction<number>>
   onButtonClick: any
   step: number
+  mining?: boolean
+  noData?: boolean
 }) {
   const [hasherState, setHasherState] = useState<boolean>(false)
   const [powerUp, setPowerUp] = useState<boolean>(false)
@@ -66,9 +77,11 @@ export default function Card({
       displayRandomNumbers(4400, 200, time)
       onButtonClick(true)
       setHasherState(true)
-      setTimeout(() => {
-        setHasherState(false)
-      }, time)
+      if (mining) {
+        setTimeout(() => {
+          setHasherState(false)
+        }, time)
+      }
     }
 
     if (!hasherState && step === 2) {
@@ -91,35 +104,72 @@ export default function Card({
   }
 
   return (
-    <div className="order-last flex items-center justify-center text-[15px] font-bold">
-      <div
-        className={clsx(
-          'order-last mr-2.5 flex h-[29px] w-[44px] cursor-pointer items-center justify-center  rounded-[3px] border-2 ',
-          {
-            'border-black/25 text-black/25': powerUp === false,
-            ' animate-duration-500 animate-pulse border-[#FBEBC6] bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
-              powerUp === true,
+    <div
+      className={clsx(
+        'order-last flex items-center justify-center text-[15px] font-bold',
+        className
+      )}
+    >
+      {tenX && (
+        <div
+          className={clsx(
+            'order-last mr-2.5 flex h-[29px] w-[44px] cursor-pointer items-center justify-center  rounded-[3px] border-2 ',
+            {
+              'border-black/25 text-black/25': powerUp === false,
+              ' animate-duration-500 animate-pulse border-[#FBEBC6] bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
+                powerUp === true,
+            }
+          )}
+          onClick={handleClick}
+        >
+          10x
+        </div>
+      )}
+      {noData && step === 0 && (
+        <Tooltip
+          id={'No data found'}
+          theme={'solo-1-secondary-theme'}
+          className="no-underline"
+          content={
+            <span>
+              Oops! It looks like we couldn't find your data, let's use some
+              default values instead
+            </span>
           }
-        )}
-        onClick={handleClick}
-      >
-        10x
-      </div>
-      <div
-        className={clsx(
-          'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
-          {
-            'border-transparent bg-[#FBEBC6]/25 text-[#571A1F]':
-              hasherState && step < 4,
-            'animate-duration-500 fade-in animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
-              !hasherState,
-            ' border-black/25 text-black/25': step >= 4,
+          children={
+            <button
+              className={clsx(
+                'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
+                {
+                  invisible: hasherState,
+                  'animate-duration-500 fade-in animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
+                    !hasherState,
+                }
+              )}
+              onClick={handleClick}
+            >
+              {startText}
+            </button>
           }
-        )}
-        onClick={handleClick}
-      >
-        {hasherState ? 'Running' : 'Turn on'}
-      </div>
+        />
+      )}
+      {!noData && (
+        <button
+          className={clsx(
+            'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
+            {
+              'border-transparent bg-[#FBEBC6]/25 text-[#571A1F]':
+                hasherState && step < 4,
+              'animate-duration-500 fade-in animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
+                !hasherState,
+              ' border-black/25 text-black/25': step >= 4,
+            }
+          )}
+          onClick={handleClick}
+        >
+          {hasherState ? 'Running' : startText}
+        </button>
+      )}
     </div>
   )
 }

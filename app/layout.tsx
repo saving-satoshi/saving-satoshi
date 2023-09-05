@@ -1,7 +1,12 @@
 import 'styles/globals.css'
 import Fonts from 'components/Fonts'
-import { AuthProvider, ProgressProvider } from 'providers'
-import ModalProvider from 'providers/ModalProvider'
+import {
+  AuthProvider,
+  ProgressProvider,
+  DataProvider,
+  ModalProvider,
+  FeatureProvider,
+} from 'providers'
 import Layout from 'components/Layout'
 
 const schema = () => {
@@ -41,22 +46,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      <head id="head">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={schema()}
           key="product-jsonld"
-        />
+        ></script>
       </head>
       <body className="font-cbrush">
         <Fonts />
-        <AuthProvider>
-          <ProgressProvider>
-            <ModalProvider>
-              <Layout>{children}</Layout>
-            </ModalProvider>
-          </ProgressProvider>
-        </AuthProvider>
+        <FeatureProvider>
+          <DataProvider>
+            <AuthProvider>
+              <ProgressProvider>
+                <ModalProvider>
+                  <Layout>{children}</Layout>
+                </ModalProvider>
+              </ProgressProvider>
+            </AuthProvider>
+          </DataProvider>
+        </FeatureProvider>
       </body>
     </html>
   )

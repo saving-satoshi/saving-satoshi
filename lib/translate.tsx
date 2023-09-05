@@ -131,7 +131,7 @@ function injectComponent(result, type) {
               theme={theme}
               position={!!position ? position : defaultTooltipProps.position}
               offset={!!offset ? parseInt(offset) : defaultTooltipProps.offset}
-              className={clsx('cursor-pointer', className)}
+              className={clsx(className)}
               content={tkey}
             >
               {label}

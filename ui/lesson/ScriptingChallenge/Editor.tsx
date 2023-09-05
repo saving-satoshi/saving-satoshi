@@ -6,27 +6,33 @@ import MonacoEditor from '@monaco-editor/react'
 
 import { monacoOptions } from './config'
 import { monaco } from 'react-monaco-editor'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Loader } from 'shared'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
 import { useMediaQuery } from 'hooks'
+// @ts-ignore
+import { constrainedEditor } from 'constrained-editor-plugin'
 
 export default function Editor({
   language,
   value,
-
   onChange,
   onValidate,
+  code,
+  constraints,
 }: {
   language: string
   value?: string
   onChange?: (value: string) => void
   onValidate?: (value: monaco.editor.IMarker[]) => void
+  code?: string
+  constraints: any
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
   const [loading, setLoading] = useState<boolean>(true)
+  const monacoRef = useRef<any>()
 
   const handleBeforeMount = (monaco) => {
     monaco.editor.defineTheme('satoshi', {
@@ -42,8 +48,14 @@ export default function Editor({
 
   const handleMount = (editor, monaco) => {
     monaco.editor.setTheme('satoshi')
-
     setLoading(false)
+
+    monacoRef.current = { monaco, editor }
+
+    const model = editor.getModel()
+    const constrainedInstance = constrainedEditor(monaco)
+    constrainedInstance.initializeIn(editor)
+    constrainedInstance.addRestrictionsTo(model, constraints)
   }
 
   const isSmallScreen = useMediaQuery({ width: 767 })
@@ -61,6 +73,18 @@ export default function Editor({
       statusBarHeight +
       terminalHeight +
       terminalTabsHeight
+
+  useEffect(() => {
+    if (monacoRef.current) {
+      const { editor, monaco } = monacoRef.current
+      const model = monaco.editor.createModel(value, language)
+
+      editor.setModel(model)
+      const constrainedInstance = constrainedEditor(monaco)
+      constrainedInstance.initializeIn(editor)
+      constrainedInstance.addRestrictionsTo(model, constraints)
+    }
+  }, [language])
 
   return (
     <div

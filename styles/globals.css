@@ -11,6 +11,9 @@
   --incorrect-answer: #ef960b;
   --input-text: #6e7d92;
   --dynamic-height: 100vh;
+  --CH3SOL1-bg: #411e4f;
+  --CH3SOL1-gradient-start: #3c1843;
+  --CH3SOL1-gradient-stop: #45235a;
 }
 
 .-theme-purple {
@@ -210,7 +213,7 @@ div.react-terminal-active-input {
   .code-editor {
     display: grid;
     height: calc(100vh - 70px);
-    grid-template-rows: 40px auto auto 56px;
+    grid-template-rows: 40px auto 204px 56px;
   }
 }
 
@@ -233,9 +236,40 @@ div.react-terminal-active-input {
 }
 
 .fade-in {
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out forwards;
 }
 
 .fade-out {
-  animation: fadeOut 0.3s ease-in-out;
+  animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+.height-minus-nav {
+  height: calc(100vh - 70px);
+}
+
+.solo-1-bg {
+  background: var(--CH3SOL1-bg);
+}
+
+.solo-1-theme {
+  background: linear-gradient(
+    315deg,
+    var(--CH3SOL1-gradient-start),
+    var(--CH3SOL1-gradient-stop)
+  );
+}
+
+.solo-1-secondary-theme {
+  background: var(--CH3SOL1-bg);
+}
+
+
+.auto-scroll::-webkit-scrollbar {
+  -webkit-appearance: none;
+   width: 1px;
+}
+
+.auto-scroll::-webkit-scrollbar-thumb {
+   border-radius: 4px;
+   background-color: white;
 }

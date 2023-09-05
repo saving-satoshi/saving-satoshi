@@ -21,3 +21,10 @@ export const navbarThemeSelector = (lessons, lessonId, chapters, slug) => {
 
   return theme
 }
+
+export const cssVarThemeChange = (variables: Record<string, string>) => {
+  const rootStyles = document.documentElement.style
+  for (const [variableName, variableValue] of Object.entries(variables)) {
+    rootStyles.setProperty(variableName.toString(), variableValue.toString())
+  }
+}

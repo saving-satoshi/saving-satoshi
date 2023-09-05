@@ -55,7 +55,7 @@ Translation file:
 // i18n/locales/ko.ts
 const translations = {
   hello_world: {
-      heading: '안녕 세상!',
+    heading: '안녕 세상!',
   },
 }
 ```

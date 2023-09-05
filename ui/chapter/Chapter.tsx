@@ -16,6 +16,8 @@ import useLessonStatus from 'hooks/useLessonStatus'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { getLessonKey } from 'lib/progress'
 import { keys, keysMeta } from 'lib/progress'
+import { useFeatureContext } from 'providers/FeatureProvider'
+import useEnvironment from 'hooks/useEnvironment'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -33,13 +35,21 @@ const tabData = [
 ]
 
 export default function Chapter({ children, metadata, lang }) {
+  const { isDevelopment } = useEnvironment()
   const { progress, isLoading } = useProgressContext()
+  const { isFeatureEnabled } = useFeatureContext()
+  const isEnabled = isFeatureEnabled(
+    `${metadata.slug.replace('-', '_')}_enabled`
+  )
   const { isUnlocked } = useLessonStatus(
     progress,
     getLessonKey(metadata.slug, 'intro-1')
   )
 
-  const display = metadata.slug === 'chapter-1' || (isUnlocked && !isLoading)
+  const display =
+    metadata.slug === 'chapter-1' ||
+    isDevelopment ||
+    (isEnabled && isUnlocked && !isLoading)
 
   const [activeTab, setActiveTab] = useState('info')
 
@@ -55,6 +65,7 @@ export default function Chapter({ children, metadata, lang }) {
     progress !== chapterLessons[0] &&
     progress !== keys[keys.length - 1] &&
     position === parseInt(progress.substring(2, 3))
+  const queryParams = isDevelopment ? '?dev=true' : ''
   const context = {}
 
   useEffect(() => {
@@ -127,13 +138,23 @@ export default function Chapter({ children, metadata, lang }) {
                           {t('chapter.chapter_locked_two')}
                         </div>
                       )) ||
-                      (chapter.metadata.lessons.length === 0 && null)}
+                      (chapter.metadata.lessons.length === 0 && (
+                        <div className="flex font-nunito text-lg text-white">
+                          <Icon
+                            icon="lock"
+                            className="my-auto mr-2 h-3 w-3 justify-center"
+                          />
+                          {t('chapter.coming_soon')}
+                        </div>
+                      ))}
                     <div className="flex pt-8 md:w-full">
                       <Button
                         href={
                           isBetweenChapter
-                            ? `${routes.chaptersUrl + keysMeta[progress].path}`
-                            : `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}`
+                            ? `${
+                                routes.chaptersUrl + keysMeta[progress].path
+                              }${queryParams}`
+                            : `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}${queryParams}`
                         }
                         disabled={
                           chapter.metadata.lessons.length === 0 || !display
@@ -149,9 +170,7 @@ export default function Chapter({ children, metadata, lang }) {
                             !display &&
                             `${t('chapter.chapter_locked_one')} ${
                               position - 1
-                            } ${t('chapter.chapter_locked_two')}`) ||
-                          (chapter.metadata.lessons.length === 0 &&
-                            t('shared.coming_soon'))}
+                            } ${t('chapter.chapter_locked_two')}`)}
                       </Button>
                     </div>
                   </div>

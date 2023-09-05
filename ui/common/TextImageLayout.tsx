@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import Image from 'next/image'
 import { Button } from 'shared'
 import { useSaveAndProceed, useTranslations } from 'hooks'
@@ -12,13 +13,15 @@ export default function TextImageDisplay({
   imageAlt,
   btnText,
   btnEnabled,
+  objectPosition = 'object-bottom',
 }: {
   children: any
-  lang: any
+  lang: string
   imageSrc: string
   imageAlt: string
   btnText?: string
   btnEnabled: boolean
+  objectPosition?: string
 }) {
   const t = useTranslations(lang)
   const saveAndProceed = useSaveAndProceed()
@@ -35,7 +38,7 @@ export default function TextImageDisplay({
             src={imageSrc}
             alt={t(imageAlt)}
             fill
-            className="relative object-cover object-bottom"
+            className={clsx('relative object-cover', objectPosition)}
           />
         </div>
         <div className="flex shrink basis-1/2">

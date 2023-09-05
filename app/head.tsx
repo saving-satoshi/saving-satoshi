@@ -66,28 +66,6 @@ export default async function Head() {
         name="description"
         content="Explore the mysteries of Satoshi and learn about bitcoin along the way."
       />
-
-      <meta property="og:url" content="https://savingsatoshi.com/" />
-      <meta property="og:title" content="Saving Satoshi" />
-      <meta property="og:site_name" content="Saving Satoshi" />
-      <meta
-        property="og:image"
-        content="https://savingsatoshi.com/_next/image?url=%2Fassets%2Fpreviews%2Fmain-image-preview.jpg&w=3840&q=100"
-      />
-      <meta
-        property="og:description"
-        content="Explore the mysteries of Satoshi and learn about bitcoin along the way."
-      />
-
-      <meta name="twitter:card" content="summary" />
-      <meta
-        property="twitter:title"
-        content="Explore the mysteries of Satoshi and learn about bitcoin along the way."
-      />
-      <meta
-        property="twitter:image"
-        content="https://savingsatoshi.com/_next/image?url=%2Fassets%2Fpreviews%2Fmain-image-preview.jpg&w=3840&q=100"
-      />
     </>
   )
 }
