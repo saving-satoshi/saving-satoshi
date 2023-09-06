@@ -79,7 +79,7 @@ export default function Coop1({ lang }) {
         {players.map((profile, i) => (
           <div
             key={i}
-            className="h-[160px] w-full max-w-[160px] border-2 border-dotted border-white/25 p-[15px] md:h-[185px] md:w-[190px] md:max-w-none"
+            className="h-auto w-full max-w-[160px] border-2 border-dotted border-white/25 p-[15px] md:h-[185px] md:w-[190px] md:max-w-none"
           >
             <div className="flex justify-center md:mb-[15px]">
               <Avatar
@@ -89,7 +89,7 @@ export default function Coop1({ lang }) {
               />
 
               <div
-                className={`h-[75px] w-[75px] rounded-full bg-black/20 md:h-[100px] md:w-[100px]
+                className={`h-[100px] w-[100px] rounded-full bg-black/20 md:h-[100px] md:w-[100px]
                 ${profile?.display ? 'hidden' : ''}
                 `}
               />
@@ -109,7 +109,7 @@ export default function Coop1({ lang }) {
           true ? 'fade-in' : 'fade-out'
         }`}
       >
-        <div className="font-nunito text-white">
+        <div className="text-center font-nunito text-white md:text-left">
           <Title>{t('chapter_three.coop_one.waiting_screen_heading')}</Title>
           <div className="mt-2 text-lg">
             {t('chapter_three.coop_one.waiting_screen_paragraph_one')}
