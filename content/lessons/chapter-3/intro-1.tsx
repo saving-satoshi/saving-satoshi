@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'hooks'
 import { Introduction, Text } from 'ui'
+import { useMediaQuery } from 'hooks'
 
 export const metadata = {
   title: 'chapter_two.intro_one.title',
@@ -12,8 +13,13 @@ export const metadata = {
 export default function Intro1({ lang }) {
   const t = useTranslations(lang)
 
+  const isSmallScreen = useMediaQuery({ width: 1024 })
+
   return (
-    <Introduction lang={lang}>
+    <Introduction
+      lang={lang}
+      imagePosition={isSmallScreen ? 'object-left' : undefined}
+    >
       <Text className="text-lg md:text-xl">
         {t('chapter_three.intro_one.paragraph_one')}
       </Text>
