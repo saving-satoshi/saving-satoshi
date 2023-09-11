@@ -32,13 +32,13 @@ export default function Coop1({ lang }) {
       display: false,
     },
     {
-      username: 'Hash Hoppers',
-      avatar: '/assets/avatars/3.png',
+      username: 'Coin Crunchers',
+      avatar: '/assets/avatars/4.png',
       display: false,
     },
     {
-      username: 'Coin Crunchers',
-      avatar: '/assets/avatars/4.png',
+      username: 'Hash Hoppers',
+      avatar: '/assets/avatars/3.png',
       display: false,
     },
   ])
