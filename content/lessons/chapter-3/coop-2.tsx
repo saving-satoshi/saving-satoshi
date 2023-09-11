@@ -59,7 +59,7 @@ export default function Coop2({ lang }) {
     {
       username: 'Hash Hoppers',
       avatar: '/assets/avatars/3.png',
-      hashpower: 7911,
+      hashpower: 3857,
       hashes: protagonistHash[2],
       color: '#85BF09',
       value: 0,
@@ -67,7 +67,7 @@ export default function Coop2({ lang }) {
     {
       username: 'Coin Crunchers',
       avatar: '/assets/avatars/4.png',
-      hashpower: 3857,
+      hashpower: 7911,
       hashes: protagonistHash[3],
       color: '#62BFB7',
       value: protagonistsBlockAmount,
