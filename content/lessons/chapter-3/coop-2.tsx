@@ -158,7 +158,7 @@ export default function Coop2({ lang }) {
   }, [])
 
   return (
-    <div className="fade-in flex flex-col items-center  gap-5 px-[15px] py-8 md:pt-10 2xl:gap-8 2xl:px-[75px]">
+    <div className="fade-in flex flex-col items-center gap-5 px-[15px] py-8 md:pt-10 2xl:gap-8 2xl:px-[75px]">
       <HashrateChallenge
         totalBlocks={TOTAL_BLOCKS}
         blockRatio={BLOCK_RATIO}
