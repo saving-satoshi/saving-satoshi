@@ -1,8 +1,7 @@
 'use client'
 
-import { useTranslations } from 'hooks'
+import { useTranslations, useMediaQuery } from 'hooks'
 import { Introduction, Text } from 'ui'
-import { useMediaQuery } from 'hooks'
 
 export const metadata = {
   title: 'chapter_two.intro_one.title',
