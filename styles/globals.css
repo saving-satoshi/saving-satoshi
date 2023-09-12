@@ -263,13 +263,12 @@ div.react-terminal-active-input {
   background: var(--CH3SOL1-bg);
 }
 
-
 .auto-scroll::-webkit-scrollbar {
   -webkit-appearance: none;
-   width: 1px;
+  width: 1px;
 }
 
 .auto-scroll::-webkit-scrollbar-thumb {
-   border-radius: 4px;
-   background-color: white;
+  border-radius: 4px;
+  background-color: white;
 }

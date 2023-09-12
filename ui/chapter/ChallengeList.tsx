@@ -14,7 +14,7 @@ export default function ChallengeList({ challenges, chapterId }) {
   })
 
   return (
-    <div className="justify-stretch flex w-full grow items-start font-nunito text-white md:mt-6">
+    <div className="flex w-full grow items-start justify-stretch font-nunito text-white md:mt-6">
       {challengesData.length > 0 && (
         <ul className="grid w-full items-start">
           {challengesData.map((challenge, index) => (
