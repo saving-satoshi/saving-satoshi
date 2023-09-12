@@ -13,81 +13,17 @@ export const metadata = {
 }
 
 const javascript = {
-  program: `
-const timeLimit = 3000;
-const difficulty = 5;
-let hashFound = false;
-let nonce = 0;
-let previousHash = ''
-let previousHashMatchCount = 0
-
-async function _runScript() {
-  let hash = findHash(nonce)
-  if (typeof hash !== 'string') {
-    console.log('Error: findHash does not return a string')
-    return console.log('KILL')
-  }
-
-  if (hash.length !== 64) {
-    console.log('Error: findHash should return a string of 64 characters')
-    return console.log('KILL')
-  }
-
-  function forceSolution() {
-    hash = findHash(nonce + 1);
-    hash = new Array(difficulty + 1).join("0") + hash.slice(0, hash.length - difficulty);
-    console.log(hash);
-    hashFound = true
-  }
-
-  setTimeout(() => {
-    if (!hashFound) {
-      forceSolution()
-    }
-  }, timeLimit)
-
-  while (!hashFound) {
-    hash = findHash(nonce);
-
-    if (hash === previousHash) {
-      previousHashMatchCount += 1
-      if (previousHashMatchCount === 3) {
-        console.log('Error: Your script keeps generating the same hash, make sure you use the nonce')
-        break
-      }
-    }
-
-    console.log(hash);
-    previousHash = hash
-    nonce++;
-    await _sleep(50);
-  }
-
-  console.log('KILL')
-}
-
-function _sleep(t) {
-  return new Promise((resolve) => {
-    const timeout = setTimeout(() => {
-      resolve();
-      clearTimeout(timeout);
-    }, t);
-  });
-}
-
-_runScript();
-`,
+  program: `console.log("KILL")`,
   defaultFunction: {
     name: 'findHash',
     args: ['nonce'],
   },
   defaultCode: `const crypto = require('crypto')
 
-function findHash(nonce) {
-  /* Enter a function that returns a sha256 hash based on
-  the nonce argument provided */
-  return hash
-}
+// Create a program that finds a sha256 hash starting with 5 zeroes.
+// To submit your answer, log it to the terminal using console.log().
+
+// Type your code here
 `,
   validate: async (answer) => {
     if (!answer.startsWith('00000')) {
@@ -100,74 +36,27 @@ function findHash(nonce) {
 
     return [true, undefined]
   },
+  constraints: [
+    {
+      range: [5, 1, 7, 1],
+      allowMultiline: true,
+    },
+  ],
 }
 
 const python = {
-  program: `
-import time
-import threading
-
-def _run_script():
-  hash_found = False
-  nonce = 0
-  difficulty = 5
-  time_limit = 3
-  prev_result = ''
-  prev_hit_num = 0
-
-  hash = find_hash(nonce)
-
-  if not isinstance(hash, str):
-    print('Error: find_hash does not return a string')
-    return print('KILL')
-
-  if len(hash) != 64:
-    print('Error: find_hash should return a string of 64 characters')
-    return print('KILL')
-
-  def force_solution():
-    nonlocal hash_found
-    h = find_hash(nonce + 1)
-    h = '0' * difficulty + h[difficulty:]
-    print(h)
-    hash_found = True
-
-  def handle_time_limit():
-    time.sleep(time_limit)
-    if not hash_found:
-      force_solution()
-
-  thread = threading.Thread(target=handle_time_limit)
-  thread.start()
-
-  while not hash_found:
-    hash = find_hash(nonce)
-
-    if hash == prev_result:
-      prev_hit_num += 1
-      if prev_hit_num == 3:
-        print('Error: Your script keeps generating the same hash, make sure you use the nonce')
-        break
-
-    print(hash)
-    prev_result = hash
-    nonce += 1
-    time.sleep(0.05)
-
-  print('KILL')
-
-_run_script()
-`,
+  program: `print("KILL")`,
   defaultFunction: {
     name: 'find_hash',
     args: ['nonce'],
   },
   defaultCode: `from hashlib import sha256
 
-def find_hash(nonce):
-  # Enter a function that returns a sha256 hash based on
-  # the nonce argument provided
-  return hash`,
+# Create a program that finds a sha256 hash starting with 5 zeroes.
+# To submit your answer, print it to the terminal using print().
+
+# Type your code here
+`,
   validate: async (answer) => {
     if (!answer.startsWith('00000')) {
       return [false, 'Hash must start with 5 zeroes.']
@@ -179,6 +68,12 @@ def find_hash(nonce):
 
     return [true, undefined]
   },
+  constraints: [
+    {
+      range: [5, 1, 7, 1],
+      allowMultiline: true,
+    },
+  ],
 }
 
 const config: EditorConfig = {
@@ -211,10 +106,7 @@ export default function Scripting2({ lang }) {
           {t('chapter_two.scripting_two.paragraph_one')}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_two.scripting_two.paragraph_two')}
-        </Text>
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_two.scripting_two.${language}.paragraph_three`)}
+          {t(`chapter_two.scripting_two.${language}.paragraph_two`)}
         </Text>
         <ul className="list-disc pl-4">
           <li className="mt-4 font-nunito text-xl text-white">

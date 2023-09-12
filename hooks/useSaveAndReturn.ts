@@ -19,7 +19,7 @@ export default function useSaveAndReturn() {
   const currentLessonKey = lesson?.key ?? 'CH1INT1'
 
   const saveAndReturn = async () => {
-    const nextLessonKey = getNextLessonKey(currentLessonKey)
+    const nextLessonKey = getNextLessonKey(currentLessonKey, account)
     const chapterKey = getChapterKey(nextLessonKey)
 
     if (progress && !isLessonUnlocked(progress, nextLessonKey)) {

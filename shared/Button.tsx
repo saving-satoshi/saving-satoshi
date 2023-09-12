@@ -58,6 +58,15 @@ export default function Button({
     } else {
       className += ' text-green hover:bg-green/25'
     }
+  } else if (style == 'faded') {
+    // White Background with opacity,
+    className += ' bg-white/25'
+
+    if (disabled) {
+      className += ' text-[#543160]'
+    } else {
+      className += ' text-[#543160] hover:bg-white/75'
+    }
   } else {
     // Filled white background, dark text
     className += ''

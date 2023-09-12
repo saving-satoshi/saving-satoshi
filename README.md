@@ -41,10 +41,11 @@ To run this project locally:
 1. First, make sure you have NodeJS version 16.13.0 or higher installed. Check `node -v`. Node [installation instructions](https://nodejs.org/en/download/package-manager/)
 2. Install this repository `git clone https://github.com/saving-satoshi/saving-satoshi.git`
 3. Change into the directory `cd saving-satoshi`
-4. Run `npm install` to download the required code libraries 
+4. Run `npm install` to download the required code libraries
 5. Run `npm run build` to build
 6. Run `npm run start` to spin up the development environment
 7. Open `http://localhost:3000` in your browser to access the site.
+
 ## Roadmap
 
 This project was started during the [Bitcoin Designathon](http://event.bitcoin.design) in October 2022. It then continued with the [bolt.fun Legends of Lightning Tournament](https://makers.bolt.fun/project/saving-satoshi).
@@ -63,3 +64,7 @@ Some ideas we have for the future
 - Localization to other languages if there is interest
 
 Thank you so much for your interest in the project. We'd love to hear your feedback.
+
+## License
+
+Saving Satoshi is released under the terms of the MIT license. See [LICENSE](https://github.com/ecurrencyhodler/saving-satoshi/blob/master/license) for more information or see https://opensource.org/licenses/MIT.

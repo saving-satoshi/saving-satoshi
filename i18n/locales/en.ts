@@ -99,7 +99,7 @@ const translations = {
       title: 'Genesis',
       heading: 'Your first challenge',
       paragraph_one:
-        'Bitcoin is censorship resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
+        'Bitcoin is censorship-resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
       paragraph_two:
         'Satoshi Nakamoto, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left the world a secret message in the very first bitcoin transaction that was ever made. Your first challenge is to find and decode it.',
     },
@@ -108,12 +108,12 @@ const translations = {
       title: 'Genesis',
       heading: 'Find the hidden message',
       paragraph_one:
-        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
       paragraph_two:
-        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
+        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. The value next to it is an encoded message.',
       paragraph_three: 'Copy that value and paste it in the code block.',
       tooltip_block_explorer:
-        'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
+        'A <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
       tooltip_hex:
         'Short for hexadecimal, a numeral system that represents numbers using a base of 16.',
       view_block_0: 'View Block 0',
@@ -143,7 +143,7 @@ const translations = {
       title: 'Transacting',
       heading: 'What’s in a transaction?',
       paragraph_one:
-        'Transactions have two parts: inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
+        'Two main componenets of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
       paragraph_two:
         'For the following transaction, we’re going to identify the output of type OP_RETURN.',
     },
@@ -269,7 +269,7 @@ const translations = {
       heading:
         'Enter anything until you find a hash that starts with a zero (“0”)',
       hint_prompt:
-        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip" className="underline">hint</Tooltip>?',
+        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip">hint</Tooltip>?',
       hint_tooltip:
         '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">popcorn</span>',
     },
@@ -286,7 +286,7 @@ const translations = {
       heading:
         'Enter anything until you find a hash that starts with two zeroes (“00”)',
       hint_prompt:
-        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip" className="underline">hint</Tooltip>?',
+        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">hint</Tooltip>?',
       hint_tooltip:
         '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">trigonometry</span>',
     },
@@ -305,26 +305,24 @@ const translations = {
       paragraph_five:
         'The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.',
       paragraph_six:
-        'For the next challenge, write a script that finds a hash that starts with five zeroes (“00000”).',
+        'For the next challenge, write a script that finds a hash that starts with five zeroes (00000).',
     },
 
     scripting_two: {
       title: 'Automation',
       paragraph_one:
-        'Alright, time to write and run your own code. Write a function that returns a sha256 hash. The code should calculate and return a hash based on the nonce argument.',
-      paragraph_two:
-        'When you press "Run the script", the function you wrote will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce. We are trying to run this function until we find a hash that starts with five zeroes (“00000”).',
+        'Alright, time to write and run your own code. Write a script that generates a sha256 hash that begins with five zeroes ("00000..."). Your code should repeatedly call the sha256 function with different input until the output satisfies this requirement. You should try incrementing an integer inside a loop to get different inputs. In cryptography this number may referred to as a "nonce" or "number used once".',
       python: {
-        paragraph_three:
-          'We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
+        paragraph_two:
+          "When you find a nonce with a hash that begins with five zeroes, use Python's `print()` function to return the hash to the console. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:",
         list_one:
           '<Link href="https://docs.python.org/3/library/hashlib.html" className="underline">hashlib documentation</Link>',
         list_two:
           '<Link href="https://datagy.io/python-sha256/" className="underline">Tutorial python function</Link>',
       },
       javascript: {
-        paragraph_three:
-          'We are using the crypto library in javascript to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
+        paragraph_two:
+          "When you find a nonce with a hash that begins with five zeroes, use JavaScript's `console.log()` function to return the hash to the console. We are using the crypto library in javascript to help you along in creating this function, you can use the following external resources to help you write this function if needed:",
         list_one:
           '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" className="underline">crypto documentation</Link>',
         list_two:
@@ -338,12 +336,12 @@ const translations = {
       heading_one: 'Now that we know how mining works, let’s see it in action',
       heading_two: 'You’re mining now',
       heading_three: 'Nice work!',
-      heading_four: 'Let’s get to 1,000 blocks',
+      heading_four: 'Let’s get to 100 blocks',
       heading_five: 'You did it!',
       paragraph_one:
         'Right now, the Bitcoin network requires blocks to have a hash with ten leading zeros. Let’s get to it!',
       paragraph_two:
-        'For this simple simulation, we’ll just assume that every block contains 3,500 transactions.',
+        'For this simple simulation, we’ll just assume that every block contains 3,500 transactions and 0.061 BTC in rewards and fees.',
       paragraph_two_one: 'See if you can turn on the miners.',
       paragraph_three:
         'The code you wrote in the previous lesson to compute hashes over and over again is running.',
@@ -361,7 +359,7 @@ const translations = {
       paragraph_ten:
         'Wow! That took quite a bit of computing power to do all that hashing. Just look how many nonces were tried!  It really helped to have that boost in hash power i.e. the number of hashes your computer can try in a second.',
       paragraph_eleven:
-        'As expected, since each block contains 3,500 transactions, a total of 3,500,000 transactions have been confirmed by the 1,000 blocks that were mined.',
+        'As expected, since each block contains 3,500 transactions, a total of 350,000 transactions have been confirmed by the 100 blocks that were mined.',
       paragraph_twelve:
         'And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. ',
       paragraph_thirteen:
@@ -389,34 +387,128 @@ const translations = {
   chapter_three: {
     title: 'The 51% Attack',
     paragraph_one:
-      'Phew, that was close. You are still shaking from your battle againstAmestris, yet relieved that a victory was possible.',
-    paragraph_two:
-      'As you settle at your desk, you take a deep breath and drift off toreplay the day’s events. Your hands keep themselves busy playing withthe mysterious envelope, as you wonder who sent it. Who still usesenvelopes anyways, it’s 2139 after all. Even more curious is that thereis a stamp on it, from 2008...could this be another hint?',
-    paragraph_three:
-      'Suddenly, you realize that you never claimed the block rewards from your competition with Amestris. Your bitcoin wallet is running low, so now is a good time to top it up again.',
-
-    intro_one: {
-      title: 'Hashing it out',
-      paragraph_one:
         'You enter the address of a block explorer blocks are back to ten minutes intervals. Somehow, holocat sleeps through the noise of the machines.',
       paragraph_two:
         '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking holocat. It’s not a coincidence.',
-      paragraph_three:
-        '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is under a 51% attack! Vanderpoole used a virus to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the Bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply.” – Satoshi Nakamoto',
-    },
-
-    intro_two: {
+    intro_one: {
       title: 'Hashing it out',
       paragraph_one:
+        '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is under a 51% attack! Vanderpoole used a virus to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the Bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply.” – Satoshi Nakamoto',
+    paragraph_two:
         '—The old computer coughs a little, then produces a wad of data in something called a “spreadsheet”: contact info for some of the largest bitcoin pool operators and a patch to the virus that is letting BitRey control them. Send the file to them so they can regain control of their machines and join your fight against BitRey.',
-      paragraph_two:
+      paragraph_three:
         'HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”',
     },
-
-    you_vs_bit_one: {
+    
+    solo_one: {
       title: 'You vs. Bitrey',
+      step_zero_heading: 'Let’s give it a try',
+      step_zero_paragraph_one:
+        'While you’re waiting for the pool operators you reached out to, you decide to fend off BitRey by yourself. Here’s how your hash rate stacks up. How do you think this will go?',
+      step_one_heading: 'We’re off to the races',
+      step_one_paragraph_one:
+        'We’re now mining 100 blocks to see how many you and BitRey will mine.',
+      step_two_heading: 'That did not go too well!',
+      step_two_paragraph_one:
+        'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s see if we can defeat BitRey for the next 100 blocks with the other pool operators. Bitcoin has been running for over a decade and it’s not going down without a fight.',
+    },
+
+    coop_one: {
+      title: 'Coop vs. BitRey',
+      waiting_screen_heading: 'We need support!',
+      waiting_screen_paragraph_one:
+        'Your miners in the warehouse alone don’t stand a chance. If you combine your hashing power with other pools, you might be able to hold the line against the assault.',
+      waiting_screen_paragraph_two:
+        'Let’s wait until the others join your pool, which HoloCat insists gets named after her, so we can combine forces.',
+      waiting_button: 'Waiting...',
+      continue_button: "Let's go",
+    },
+
+    coop_two: {
+      title: 'Coop vs. BitRey',
+      step_zero_heading: 'Here we go',
+      step_zero_paragraph_one:
+        'When you combine your hashrate with the other pool operators, can you stand up against BitRey?',
+      step_two_heading: 'Another defeat!',
+      step_two_paragraph_one:
+        'Something is wrong. Only Hash Hoppers found blocks. Why do you think that might be?',
+    },
+
+    pool_one: {
+      title: 'Pool vs. BitRey',
+      heading: 'Something is not quite right yet.',
       paragraph_one:
-        'This is a temporary page to test correct working of Continue Button. To Be removed',
+        'Hash Hoppers, the one with the most hash power, is finding all your blocks but others find nothing.',
+      paragraph_two:
+        'The problem is that everyone is checking the same nonces while they’re mining. How can you better coordinate?',
+      paragraph_three:
+        ' You decide to place a unique identifier in the “extraNonce” when preparing the block data for each of you to prevent duplicate efforts.',
+    },
+
+    pool_two: {
+      title: 'Pool vs. BitRey',
+      heading: 'What is the extraNonce?',
+      paragraph_one:
+        'For the Stratum mining pool protocol (not bitcoin protocol), the coinbase transaction also has something called the “extra nonce”. When providing miners with the block data, mining pools divide the extra nonce into two parts: “extranonce1” and “extranonce2”.',
+      paragraph_two:
+        'Splitting the extra nonce into two parts has several advantages:',
+      list_one: 'It prevents pool participants from doing the same work.',
+      list_two:
+        'It allows the pool to send the same transaction list to all miners that are pooling together. That means miners simply have to update “extranonce2” and not change transactions included in the block.',
+      list_three:
+        'The “extranonce1” allows pools to identify and determine share contribution because each miner gets their own “extranonce1”.',
+      paragraph_three:
+        ' Miners who contribute to a pool update the “extranonce2” and cycle through the nonce in the block header. If they don’t find a solution, they repeat the process with a different “extranonce2” until they do.',
+      paragraph_four: 'Let’s try again splitting the work using this method.',
+    },
+
+    pool_three: {
+      title: 'Pool vs. BitRey',
+      step_zero_heading: 'One more time...',
+      step_zero_paragraph_one:
+        'Let’s see if we stand a chance against BitRey now with our improved strategy of dividing the nonce space.',
+      step_two_heading: 'You did it!',
+      step_two_paragraph_one:
+        'Together you and the other pool operators were able to hold back BitRey’s attempt to overtake the network.',
+    },
+
+    split_one: {
+      title: 'Splitting Rewards',
+      heading: 'Nicely done.',
+      paragraph_one:
+        'Not only did you defend the network against BitRey, you also earned bitcoin as a reward!',
+      paragraph_two:
+        'For every block that is mined, the miner gets a reward in bitcoin. If more than one person worked on the block, the group of miners (mining pool) gets a reward to share.',
+      paragraph_three: 'This reward is made up of two things:',
+      list_one: 'fees for all the transactions in the block',
+      list_two: 'the block subsidy',
+      paragraph_four:
+        'You and your miner friends have earned a total of 6.1 bitcoin and are looking for a good way to split it up. It should be divided based on how much work each of you put in.',
+      paragraph_five:
+        'Mining pools solve this by tracking how many partial solutions each miner has generated. A pool assigns each miner a minimum difficulty (lower than the block difficulty) based on their hash power. Every few seconds a miner finds one of those easier solutions and notifies the pool. The pool then tracks all the submitted shares and splits up the block rewards accordingly.',
+      paragraph_six: 'Let’s take a look at this in action.',
+    },
+
+    split_two: {
+      title: 'Splitting Rewards',
+      step_zero_heading: 'Let’s review everyone’s efforts',
+      step_zero_paragraph:
+        'We will re-run the battle. This time we will only focus on our pool, specifically on the number of partial solutions each miner found.',
+      step_two_heading: 'Let’s do the math',
+      step_two_paragraph:
+        'Take a look at the numbers above and see if you can find a fair way to split up the rewards. Figured it out? Let’s go over it step by step.',
+      step_three_heading: 'Hash rate percentage',
+      step_three_paragraph:
+        'As you know, this represents the amount of work every miner has chipped in to find blocks. But the mining pool has no way of knowing or measuring this number, since miners only forward successful solutions.',
+      step_four_heading: 'Block found percentage',
+      step_four_paragraph:
+        'The chance of finding a block is very low since it has a lot to do with luck. Especially in scenarios with some extremely powerful miners, the really small miners may contribute work but never find and blocks. ',
+      step_five_heading: 'Partial solution percentage',
+      step_five_paragraph:
+        'Now this number will work. Miners report these solutions to easier problems regularly to pools. That allows pools to fairly accurately measure how much work each pool has provided.',
+      step_six_heading: 'Splitting the rewards',
+      step_six_paragraph:
+        'Now we can take the rewards of 6.1 bitcoin and split them up according to the percentage of partial solutions of each pool. Congratulations!',
     },
 
     outro_one: {
@@ -469,6 +561,7 @@ const translations = {
   chapter: {
     chapter_locked_one: 'Complete Chapter',
     chapter_locked_two: 'to unlock.',
+    coming_soon: 'Coming soon. Hang tight.',
     description:
       'Explore the mysteries of Satoshi and learn about Bitcoin along the way.',
   },
@@ -527,6 +620,14 @@ const translations = {
   hasher: {
     placeholder: 'Type here...',
     return_hash: 'Below you will see your input converted to a hash',
+  },
+
+  hashrate: {
+    start: 'Start',
+    running: 'Running',
+    blocks_found: 'Blocks found',
+    hashrate: 'Hashrate',
+    partial_solutions: 'Partial solutions',
   },
 
   runner: {

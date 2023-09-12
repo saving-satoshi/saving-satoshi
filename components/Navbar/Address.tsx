@@ -41,7 +41,7 @@ export default function Address() {
         {pathName && (
           <>
             {chapter && (
-              <p className="px-0.5 text-lg leading-none text-white/50">
+              <p className="line-clamp-1 overflow-hidden text-ellipsis px-0.5 text-lg leading-none text-white/50">
                 <span>
                   {t('navbar.chapter')} {chapter.position + 1}
                 </span>

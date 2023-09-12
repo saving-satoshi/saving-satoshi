@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import clsx from 'clsx'
 
 export default function Chip({
@@ -15,8 +14,11 @@ export default function Chip({
   return (
     <div
       className={clsx(
-        'inline-flex h-min w-min cursor-pointer items-center justify-center rounded border transition ease-in-out',
-        className
+        'inline-flex h-6 w-min items-center justify-center rounded border transition ease-in-out',
+        className,
+        {
+          'cursor-pointer': typeof onClick === 'function',
+        }
       )}
       onClick={onClick}
     >

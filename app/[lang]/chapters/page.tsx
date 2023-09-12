@@ -2,8 +2,10 @@ import Topbar from 'components/Topbar'
 import Footer from 'components/Footer'
 import Disclaimer from 'components/Disclaimer'
 import { chapters } from 'content'
+import defaultMetadata from 'config/metadata'
 
 export const metadata = {
+  ...defaultMetadata,
   title: 'Chapters - Saving Satoshi',
 }
 
@@ -25,7 +27,7 @@ export default async function ChaptersPage({ params }) {
         </section>
       </div>
 
-      <Footer className="bg-back" />
+      <Footer className="bg-black/25" />
     </div>
   )
 }
