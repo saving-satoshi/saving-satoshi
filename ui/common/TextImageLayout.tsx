@@ -38,6 +38,7 @@ export default function TextImageDisplay({
             src={imageSrc}
             alt={t(imageAlt)}
             fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
             className={clsx('relative object-cover', objectPosition)}
           />
         </div>
