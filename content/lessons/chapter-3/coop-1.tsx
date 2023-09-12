@@ -75,11 +75,11 @@ export default function Coop1({ lang }) {
 
   return (
     <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
-      <div className="fade-in my-[30px] grid grid-cols-2 gap-[15px] md:order-last md:mx-[30px] md:h-[400px] md:w-[410px] md:gap-[30px]">
+      <div className="fade-in my-[30px] grid w-full max-w-[300px] grid-cols-2 justify-center justify-items-center gap-[15px] md:order-last md:mx-[30px] md:min-h-[400px] md:min-w-[410px] md:gap-[30px]">
         {players.map((profile, i) => (
           <div
             key={i}
-            className="h-auto w-full max-w-[160px] border-2 border-dotted border-white/25 p-[15px] md:h-[185px] md:w-[190px] md:max-w-none"
+            className="min-h-[180px] w-full  max-w-[155px]  justify-items-center  border-2 border-dotted border-white/25 p-[15px] md:min-h-[185px]  md:min-w-[190px] md:max-w-none"
           >
             <div className="flex justify-center md:mb-[15px]">
               <Avatar
@@ -89,13 +89,13 @@ export default function Coop1({ lang }) {
               />
 
               <div
-                className={`h-[100px] w-[100px] rounded-full bg-black/20 md:h-[100px] md:w-[100px]
+                className={`min-h-[75px] min-w-[75px] rounded-full bg-black/20 md:min-h-[100px] md:min-w-[100px]
                 ${profile?.display ? 'hidden' : ''}
                 `}
               />
             </div>
             <div
-              className={`p-2.5 text-center font-nunito text-base font-semibold text-white
+              className={`w-full p-2.5 text-center font-nunito text-base font-semibold text-white
             ${profile.display ? 'animate-none' : 'animate-pulse'}
             `}
             >
