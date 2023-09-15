@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  compress: false,
   experimental: {
     appDir: true,
   },
   reactStrictMode: false,
-  swcMinify: false,
+  swcMinify: true,
   images: {
     domains: ['saving-satoshi.s3.amazonaws.com', 'placekitten.com'],
   },
@@ -15,7 +14,6 @@ const nextConfig = {
       issuer: /\.[jt]sx?$/,
       use: ['@svgr/webpack'],
     })
-    config.optimization.minimize = false
     return config
   },
 }
