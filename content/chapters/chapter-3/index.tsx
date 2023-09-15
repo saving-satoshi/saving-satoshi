@@ -1,10 +1,11 @@
+'use client'
+
 import { useTranslations } from 'hooks'
 import { Chapter, Text } from 'ui'
 
 export default function Chapter3({ lang }) {
   const t = useTranslations(lang)
 
-  return null
   return (
     <Chapter metadata={metadata} lang={lang}>
       <Text>{t('chapter_three.paragraph_one')}</Text>
