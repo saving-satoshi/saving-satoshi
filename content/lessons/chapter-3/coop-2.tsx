@@ -174,6 +174,7 @@ export default function Coop2({ lang }) {
             username={profile.username}
             avatar={profile.avatar}
             description={profile.description}
+            className={'md:!max-w-[220px]'}
           >
             <Card className="flex">
               <span
