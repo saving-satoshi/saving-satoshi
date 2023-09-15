@@ -16,7 +16,6 @@ import { sleep } from 'utils'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { cssVarThemeChange } from 'lib/themeSelector'
-import setdata from 'api/data/setData'
 import { usePathData } from 'hooks'
 import { lessons } from 'content'
 
@@ -71,20 +70,20 @@ export default function Pool3({ lang }) {
       value: Math.min(protagonistsBlockAmount[1], outcome.protagonists[1]),
     },
     {
-      username: 'Hash Hoppers',
-      avatar: '/assets/avatars/3.png',
-      hashpower: 7911,
-      hashes: protagonistHash[2],
-      color: '#62BFB7',
-      value: Math.min(protagonistsBlockAmount[2], outcome.protagonists[2]),
-    },
-    {
       username: 'Coin Crunchers',
       avatar: '/assets/avatars/4.png',
       hashpower: 3857,
+      hashes: protagonistHash[2],
+      color: '#62BFB7',
+      value: Math.min(protagonistsBlockAmount[2], outcome.protagonists[3]),
+    },
+    {
+      username: 'Hash Hoppers',
+      avatar: '/assets/avatars/3.png',
+      hashpower: 7911,
       hashes: protagonistHash[3],
       color: '#85BF09',
-      value: Math.min(protagonistsBlockAmount[3], outcome.protagonists[3]),
+      value: Math.min(protagonistsBlockAmount[3], outcome.protagonists[2]),
     },
   ]
 
@@ -169,17 +168,6 @@ export default function Pool3({ lang }) {
       }, 40)
     }
     return () => clearInterval(interval)
-  }, [step])
-
-  useEffect(() => {
-    if (step === 2)
-      setdata(
-        account?.id || 1,
-        currentLessonKey,
-        `{\"protagonists\": [${protagonistsBlockAmount}], \"antagonists\": [${[
-          antagonistsBlockAmount,
-        ]}]}`
-      )
   }, [step])
 
   useEffect(() => {
