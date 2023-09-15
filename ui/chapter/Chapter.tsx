@@ -37,10 +37,11 @@ const tabData = [
 export default function Chapter({ children, metadata, lang }) {
   const { isDevelopment } = useEnvironment()
   const { progress, isLoading } = useProgressContext()
-  const { isFeatureEnabled } = useFeatureContext()
-  const isEnabled = isFeatureEnabled(
-    `${metadata.slug.replace('-', '_')}_enabled`
-  )
+  // const { isFeatureEnabled } = useFeatureContext()
+  // const isEnabled = isFeatureEnabled(
+  //   `${metadata.slug.replace('-', '_')}_enabled`
+  // )
+  const isEnabled = true
   const { isUnlocked } = useLessonStatus(
     progress,
     getLessonKey(metadata.slug, 'intro-1')

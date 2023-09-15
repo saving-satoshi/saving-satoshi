@@ -1,5 +1,3 @@
-'use client'
-
 import { useTranslations } from 'hooks'
 import { Chapter, Text } from 'ui'
 
