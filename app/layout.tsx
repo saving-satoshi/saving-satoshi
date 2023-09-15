@@ -3,7 +3,7 @@ import Fonts from 'components/Fonts'
 import {
   AuthProvider,
   ProgressProvider,
-  // DataProvider,
+  DataProvider,
   ModalProvider,
   FeatureProvider,
 } from 'providers'
@@ -56,15 +56,15 @@ export default function RootLayout({
       <body className="font-cbrush">
         <Fonts />
         <FeatureProvider>
-          {/* <DataProvider> */}
-          <AuthProvider>
-            <ProgressProvider>
-              <ModalProvider>
-                <Layout>{children}</Layout>
-              </ModalProvider>
-            </ProgressProvider>
-          </AuthProvider>
-          {/* </DataProvider> */}
+          <DataProvider>
+            <AuthProvider>
+              <ProgressProvider>
+                <ModalProvider>
+                  <Layout>{children}</Layout>
+                </ModalProvider>
+              </ProgressProvider>
+            </AuthProvider>
+          </DataProvider>
         </FeatureProvider>
       </body>
     </html>
