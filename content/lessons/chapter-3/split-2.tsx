@@ -388,10 +388,10 @@ export default function Split2({ lang }) {
           )}
           {step === 6 && (
             <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
+              <Text className="text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_six_heading')}
               </Text>
-              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.split_two.step_six_paragraph')}
               </Text>
               <Button
