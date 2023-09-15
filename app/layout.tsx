@@ -9,7 +9,7 @@ import {
 } from 'providers'
 import Layout from 'components/Layout'
 
-const schema = () => {
+/*const schema = () => {
   return {
     __html: `{
       "@context": "https://schema.org",
@@ -37,7 +37,7 @@ const schema = () => {
       "thumbnailUrl": "https://imagedelivery.net/wyrwp3c-j0gDDUWgnE7lig/6818cd1b-ea0d-49a4-ea14-d34c1bbae100/public"
     }`,
   }
-}
+}*/
 
 export default function RootLayout({
   children,
@@ -47,11 +47,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head id="head">
-        <script
+        {/*<script
           type="application/ld+json"
           dangerouslySetInnerHTML={schema()}
           key="product-jsonld"
-        ></script>
+        ></script>*/}
       </head>
       <body className="font-cbrush">
         <Fonts />
