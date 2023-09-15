@@ -17,7 +17,7 @@ export default function Intro1({ lang }) {
   return (
     <Introduction
       lang={lang}
-      imagePosition={isSmallScreen ? 'object-left' : undefined}
+      imagePosition={isSmallScreen ? 'object-left-top' : undefined}
     >
       <Text className="text-lg md:text-xl">
         {t('chapter_three.intro_one.paragraph_one')}
