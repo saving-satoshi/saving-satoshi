@@ -10,7 +10,6 @@ import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { cssVarThemeChange } from 'lib/themeSelector'
-import { getData } from 'api/data'
 
 export const metadata = {
   title: 'chapter_three.split_two.title',

@@ -16,7 +16,6 @@ import { sleep } from 'utils'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { cssVarThemeChange } from 'lib/themeSelector'
-import setdata from 'api/data/setData'
 import { usePathData } from 'hooks'
 import { lessons } from 'content'
 
@@ -169,17 +168,6 @@ export default function Pool3({ lang }) {
       }, 40)
     }
     return () => clearInterval(interval)
-  }, [step])
-
-  useEffect(() => {
-    if (step === 2)
-      setdata(
-        account?.id || 1,
-        currentLessonKey,
-        `{\"protagonists\": [${protagonistsBlockAmount}], \"antagonists\": [${[
-          antagonistsBlockAmount,
-        ]}]}`
-      )
   }, [step])
 
   useEffect(() => {
