@@ -310,20 +310,20 @@ export default function Split2({ lang }) {
         >
           {step === 0 && (
             <span className="flex flex-col items-start gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+              <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_zero_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.split_two.step_zero_paragraph')}
               </Text>
             </span>
           )}
           {step === 2 && (
             <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+              <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_two_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.split_two.step_two_paragraph')}
               </Text>
               <Button
@@ -337,10 +337,10 @@ export default function Split2({ lang }) {
           )}
           {step === 3 && (
             <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+              <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_three_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.split_two.step_three_paragraph')}
               </Text>
               <Button
@@ -354,10 +354,10 @@ export default function Split2({ lang }) {
           )}
           {step === 4 && (
             <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+              <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_four_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.split_two.step_four_paragraph')}
               </Text>
               <Button
@@ -371,10 +371,10 @@ export default function Split2({ lang }) {
           )}
           {step === 5 && (
             <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+              <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_five_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.split_two.step_five_paragraph')}
               </Text>
               <Button
@@ -388,10 +388,10 @@ export default function Split2({ lang }) {
           )}
           {step === 6 && (
             <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+              <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_six_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.split_two.step_six_paragraph')}
               </Text>
               <Button
