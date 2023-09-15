@@ -4,12 +4,13 @@ import { Chapter, Text } from 'ui'
 export default function Chapter3({ lang }) {
   const t = useTranslations(lang)
 
-  return (
-    <Chapter metadata={metadata} lang={lang}>
-      <Text>{t('chapter_three.paragraph_one')}</Text>
-      <Text>{t('chapter_three.paragraph_two')}</Text>
-    </Chapter>
-  )
+  return null
+  // return (
+  //   <Chapter metadata={metadata} lang={lang}>
+  //     <Text>{t('chapter_three.paragraph_one')}</Text>
+  //     <Text>{t('chapter_three.paragraph_two')}</Text>
+  //   </Chapter>
+  // )
 }
 
 export const metadata = {
