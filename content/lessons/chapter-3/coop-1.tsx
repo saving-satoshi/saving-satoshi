@@ -32,13 +32,13 @@ export default function Coop1({ lang }) {
       display: false,
     },
     {
-      username: 'Hash Hoppers',
-      avatar: '/assets/avatars/3.png',
+      username: 'Coin Crunchers',
+      avatar: '/assets/avatars/4.png',
       display: false,
     },
     {
-      username: 'Coin Crunchers',
-      avatar: '/assets/avatars/4.png',
+      username: 'Hash Hoppers',
+      avatar: '/assets/avatars/3.png',
       display: false,
     },
   ])
@@ -75,23 +75,30 @@ export default function Coop1({ lang }) {
 
   return (
     <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
-      <div className="fade-in my-[30px] grid grid-cols-2 gap-[15px] md:order-last md:mx-[30px] md:h-[400px] md:w-[410px] md:gap-[30px]">
+      <div className="fade-in my-[30px] grid w-full max-w-[300px] grid-cols-2 justify-center justify-items-center gap-[15px] md:order-last md:mx-[30px] md:min-h-[400px] md:min-w-[410px] md:gap-[30px]">
         {players.map((profile, i) => (
           <div
             key={i}
-            className="h-[160px] w-[160px] border-2 border-dotted border-white/25 p-[15px] md:h-[185px] md:w-[190px]"
+            className="min-h-[180px] w-full  max-w-[155px]  justify-items-center  border-2 border-dotted border-white/25 p-[15px] md:min-h-[185px]  md:min-w-[190px] md:max-w-none"
           >
             <div className="flex justify-center md:mb-[15px]">
-              {profile.display ? (
-                <Avatar
-                  avatar={profile.avatar}
-                  size={isSmallScreen ? 75 : 100}
-                />
-              ) : (
-                <div className="h-[75px] w-[75px] rounded-full bg-black/20 md:h-[100px] md:w-[100px]"></div>
-              )}
+              <Avatar
+                avatar={profile.avatar}
+                size={isSmallScreen ? 75 : 100}
+                className={`${profile?.display ? 'fade-in' : 'hidden'}`}
+              />
+
+              <div
+                className={`min-h-[75px] min-w-[75px] rounded-full bg-black/20 md:min-h-[100px] md:min-w-[100px]
+                ${profile?.display ? 'hidden' : ''}
+                `}
+              />
             </div>
-            <div className="p-2.5 text-center font-nunito text-base font-semibold text-white">
+            <div
+              className={`w-full p-2.5 text-center font-nunito text-base font-semibold text-white
+            ${profile.display ? 'animate-none' : 'animate-pulse'}
+            `}
+            >
               {profile.display ? profile.username : 'Waiting...'}
             </div>
           </div>
@@ -102,7 +109,7 @@ export default function Coop1({ lang }) {
           true ? 'fade-in' : 'fade-out'
         }`}
       >
-        <div className="font-nunito text-white">
+        <div className="text-center font-nunito text-white md:text-left">
           <Title>{t('chapter_three.coop_one.waiting_screen_heading')}</Title>
           <div className="mt-2 text-lg">
             {t('chapter_three.coop_one.waiting_screen_paragraph_one')}
@@ -115,7 +122,11 @@ export default function Coop1({ lang }) {
               {t('chapter_three.coop_one.continue_button')}
             </Button>
           ) : (
-            <Button classes="mt-10 max-md:w-full" style="faded" disabled={true}>
+            <Button
+              classes="mt-10 animate-pulse max-md:w-full"
+              style="faded"
+              disabled={true}
+            >
               {t('chapter_three.coop_one.waiting_button')}
             </Button>
           )}
