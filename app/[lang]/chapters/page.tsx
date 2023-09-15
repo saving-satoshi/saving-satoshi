@@ -21,9 +21,11 @@ export default async function ChaptersPage({ params }) {
       <div className="lg:px-0">
         <Disclaimer />
         <section>
-          {sortedChapters.map(({ default: Chapter }, i) => (
-            <Chapter key={i} lang={params.lang} />
-          ))}
+          {sortedChapters
+            .filter((_, i) => i > 2)
+            .map(({ default: Chapter }, i) => (
+              <Chapter key={i} lang={params.lang} />
+            ))}
         </section>
       </div>
 
