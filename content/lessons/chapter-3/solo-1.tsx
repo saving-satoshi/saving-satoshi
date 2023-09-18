@@ -134,7 +134,7 @@ export default function Solo1({ lang }) {
             description={profile.description}
           >
             <Card className="flex gap-4">
-              <span className="fade-in w-[159px] font-nunito text-[15px] font-bold text-[#EDA081]">
+              <span className="fade-in min-w-[159px] font-nunito text-[15px] font-bold text-[#EDA081]">
                 Hashrate
               </span>
               <HashFrequency
@@ -148,7 +148,7 @@ export default function Solo1({ lang }) {
               <span
                 className={clsx('fade-in font-nunito text-[15px] font-bold', {
                   'text-white text-opacity-25': step === 0,
-                  'fade-in text-[#EDA081]': step !== 0,
+                  'text-[#EDA081]': step !== 0,
                 })}
               >
                 Hashes
@@ -170,42 +170,27 @@ export default function Solo1({ lang }) {
         blockRatio={BLOCK_RATIO}
       >
         <div className={`flex ${showText ? 'fade-in' : 'fade-out'}`}>
-          {step === 0 && (
-            <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] xl:max-w-[400px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold xl:text-left">
-                {t('chapter_three.solo_one.step_zero_heading')}
-              </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold xl:text-left">
-                {t('chapter_three.solo_one.step_zero_paragraph_one')}
-              </Text>
-            </span>
-          )}
-          {step === 1 && (
-            <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] xl:max-w-[400px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold xl:text-left">
-                {t('chapter_three.solo_one.step_one_heading')}
-              </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold xl:text-left">
-                {t('chapter_three.solo_one.step_one_paragraph_one')}
-              </Text>
-            </span>
-          )}
-          {step === 2 && (
-            <span className="flex flex-col items-center gap-[10px] md:max-w-[600px] xl:max-w-[400px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold xl:text-left">
-                {t('chapter_three.solo_one.step_two_heading')}
-              </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold xl:text-left">
-                {t('chapter_three.solo_one.step_two_paragraph_one')}
-              </Text>
+          <span className="flex flex-col items-center gap-[10px] md:max-w-[600px] xl:max-w-[400px] xl:items-start">
+            <Text className="text-center font-nunito text-[24px] font-bold xl:text-left">
+              {step === 0 && t('chapter_three.solo_one.step_zero_heading')}
+              {step === 1 && t('chapter_three.solo_one.step_one_heading')}
+              {step === 2 && t('chapter_three.solo_one.step_two_heading')}
+            </Text>
+            <Text className="text-center font-nunito text-[18px] xl:text-left">
+              {step === 0 &&
+                t('chapter_three.solo_one.step_zero_paragraph_one')}
+              {step === 1 && t('chapter_three.solo_one.step_one_paragraph_one')}
+              {step === 2 && t('chapter_three.solo_one.step_two_paragraph_one')}
+            </Text>
+            {step === 2 && (
               <Button
                 onClick={saveAndProceed}
                 classes="w-full md:w-auto mt-[20px]"
               >
                 {t('shared.next')}
               </Button>
-            </span>
-          )}
+            )}
+          </span>
         </div>
       </HashrateChallenge>
     </div>
