@@ -169,6 +169,7 @@ export default function Split2({ lang }) {
         profiles={PROTAGONISTS.map((profile, i) => (
           <Profile
             key={i}
+            className="min-w-[300px]"
             username={profile.username}
             avatar={profile.avatar}
             chip={
