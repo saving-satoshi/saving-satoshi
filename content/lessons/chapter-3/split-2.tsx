@@ -10,7 +10,6 @@ import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
 import clsx from 'clsx'
 import { useAuthContext } from 'providers/AuthProvider'
 import { cssVarThemeChange } from 'lib/themeSelector'
-import { getData } from 'api/data'
 
 export const metadata = {
   title: 'chapter_three.split_two.title',
@@ -155,7 +154,7 @@ export default function Split2({ lang }) {
   }, [])
 
   return (
-    <div className="flex flex-col items-center gap-[30px] px-[15px] py-[30px] md:px-[75px] md:py-[75px]">
+    <div className="flex flex-col items-center gap-[30px] py-[30px] pl-[15px] md:px-[75px] md:py-[75px]">
       <HashrateChallenge
         step={step}
         totalBlocks={TOTAL_BLOCKS}
