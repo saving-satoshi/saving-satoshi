@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Run this file if you are unsure of your installed node version
 # Install NVM
 if ! command -v nvm &> /dev/null
 then
