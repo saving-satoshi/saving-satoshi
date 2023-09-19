@@ -33,7 +33,7 @@ export default function Split2({ lang }) {
   const saveAndProceed = useSaveAndProceed()
 
   const outcome = JSON.parse(
-    '{"protagonists": [15, 9, 29, 4], "antagonists": [43]}'
+    '{"protagonists": [15, 9, 4, 29], "antagonists": [43]}'
   )
 
   const TOTAL_BLOCKS = 100
@@ -57,17 +57,17 @@ export default function Split2({ lang }) {
       value: Math.min(protagonistsBlockAmount[1], outcome.protagonists[1]),
     },
     {
-      username: 'Hash Hoppers',
-      avatar: '/assets/avatars/3.png',
-      hashpower: 7911,
+      username: 'Coin Crunchers',
+      avatar: '/assets/avatars/4.png',
+      hashpower: 3857,
       hashes: protagonistHash[2],
       color: '#62BFB7',
       value: Math.min(protagonistsBlockAmount[2], outcome.protagonists[2]),
     },
     {
-      username: 'Coin Crunchers',
-      avatar: '/assets/avatars/4.png',
-      hashpower: 3857,
+      username: 'Hash Hoppers',
+      avatar: '/assets/avatars/3.png',
+      hashpower: 7911,
       hashes: protagonistHash[3],
       color: '#85BF09',
       value: Math.min(protagonistsBlockAmount[3], outcome.protagonists[3]),

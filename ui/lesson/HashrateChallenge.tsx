@@ -103,6 +103,7 @@ export default function HashrateChallenge({
     if (step === 0) {
       handleStep(1)
       setFinalMining(true)
+      await sleep(500)
       setState(1)
     }
   }
