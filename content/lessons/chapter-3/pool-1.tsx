@@ -30,12 +30,12 @@ export default function Pool1({ lang }) {
       avatar: '/assets/avatars/2.png',
     },
     {
-      username: 'Hash Hoppers',
-      avatar: '/assets/avatars/3.png',
-    },
-    {
       username: 'Coin Crunchers',
       avatar: '/assets/avatars/4.png',
+    },
+    {
+      username: 'Hash Hoppers',
+      avatar: '/assets/avatars/3.png',
     },
   ]
 
