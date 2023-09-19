@@ -17,7 +17,7 @@ const smono = Space_Mono({
 })
 
 const nunito = Nunito({
-  weight: ['400', '700', '900'],
+  weight: ['400', '600', '700', '900'],
   variable: '--nunito-font',
   preload: true,
   display: 'swap',

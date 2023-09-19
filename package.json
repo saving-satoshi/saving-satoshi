@@ -28,7 +28,7 @@
     "monaco-editor": "^0.36.1",
     "monaco-editor-webpack-plugin": "^7.0.1",
     "negotiator": "^0.6.3",
-    "next": "^13.3.1",
+    "next": "^13.4.19",
     "next-transpile-modules": "^10.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
