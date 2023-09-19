@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations, useSaveAndProceed } from 'hooks'
+import { useTranslations, useSaveAndProceed, useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import { ProfileWithHashPower } from 'types'
@@ -33,6 +33,8 @@ export default function Solo1({ lang }) {
   const [antagonistHash, setAntagonistHash] = useState(0)
   const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState(0)
   const [antagonistsBlockAmount, setAntagonistsBlockAmount] = useState(0)
+
+  const isSmallScreen = useMediaQuery({ width: 1024 })
 
   const saveAndProceed = useSaveAndProceed()
 
@@ -120,7 +122,7 @@ export default function Solo1({ lang }) {
   }, [])
 
   return (
-    <div className="fade-in mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch px-[20px] py-[20px] md:mt-44 md:flex-row-reverse md:py-0 xl:my-auto">
+    <div className="fade-in mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch px-[20px] py-[20px] md:mt-44 md:flex-row-reverse md:py-0 lg:my-auto">
       <HashrateChallenge
         step={step}
         onStepUpdate={handleStepUpdate}
@@ -171,36 +173,38 @@ export default function Solo1({ lang }) {
       >
         <div className={`flex ${showText ? 'fade-in' : 'fade-out'}`}>
           {step === 0 && (
-            <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] xl:max-w-[400px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold xl:text-left">
+            <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] lg:max-w-[400px]">
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold lg:text-left">
                 {t('chapter_three.solo_one.step_zero_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold xl:text-left">
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold lg:text-left">
                 {t('chapter_three.solo_one.step_zero_paragraph_one')}
               </Text>
             </span>
           )}
           {step === 1 && (
-            <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] xl:max-w-[400px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold xl:text-left">
+            <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] lg:max-w-[400px]">
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold lg:text-left">
                 {t('chapter_three.solo_one.step_one_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold xl:text-left">
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold lg:text-left">
                 {t('chapter_three.solo_one.step_one_paragraph_one')}
               </Text>
             </span>
           )}
           {step === 2 && (
-            <span className="flex flex-col items-center gap-[10px] md:max-w-[600px] xl:max-w-[400px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold xl:text-left">
+            <span className="flex flex-col items-center gap-[10px] md:max-w-[600px] lg:max-w-[400px]">
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold lg:text-left">
                 {t('chapter_three.solo_one.step_two_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold xl:text-left">
+              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold lg:text-left">
                 {t('chapter_three.solo_one.step_two_paragraph_one')}
               </Text>
               <Button
                 onClick={saveAndProceed}
-                classes="w-full md:w-auto mt-[20px]"
+                classes={`${
+                  isSmallScreen ? 'self-center' : 'self-start'
+                } w-full md:w-auto mt-[20px]`}
               >
                 {t('shared.next')}
               </Button>
