@@ -271,5 +271,11 @@ div.react-terminal-active-input {
 
 .auto-scroll::-webkit-scrollbar-thumb {
    border-radius: 4px;
-   background-color: white;
+   background-color: rgba(255, 255, 255, 0.25);
 }
+
+.auto-scroll::-webkit-scrollbar-thumb:hover {
+   border-radius: 4px;
+   background-color: rgba(255, 255, 255, 0.5);
+}
+
