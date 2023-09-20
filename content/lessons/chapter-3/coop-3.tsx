@@ -20,10 +20,10 @@ import { usePathData } from 'hooks'
 import { lessons } from 'content'
 
 export const metadata = {
-  title: 'chapter_three.pool_two.title',
+  title: 'chapter_three.coop_three.title',
   theme: 'solo-1-theme',
   secondaryTheme: 'solo-1-secondary-theme',
-  key: 'CH3POL3',
+  key: 'CH3COO3',
 }
 
 export default function Pool3({ lang }) {

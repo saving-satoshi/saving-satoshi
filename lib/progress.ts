@@ -28,11 +28,11 @@ export const keys = [
 
   'CH3INT1',
   'CH3SOL1',
-  'CH3COO1',
-  'CH3COO2',
   'CH3POL1',
   'CH3POL2',
-  'CH3POL3',
+  'CH3COO1',
+  'CH3COO2',
+  'CH3COO3',
   'CH3SPL1',
   'CH3SPL2',
   'CH3OUT1',
@@ -66,11 +66,11 @@ export const keysMeta = {
 
   CH3INT1: { path: '/chapter-3/intro-1' },
   CH3SOL1: { path: '/chapter-3/solo-1' },
-  CH3COO1: { path: '/chapter-3/coop-1' },
-  CH3COO2: { path: '/chapter-3/coop-2' },
   CH3POL1: { path: '/chapter-3/pool-1' },
   CH3POL2: { path: '/chapter-3/pool-2' },
-  CH3POL3: { path: '/chapter-3/pool-3' },
+  CH3COO1: { path: '/chapter-3/coop-1' },
+  CH3COO2: { path: '/chapter-3/coop-2' },
+  CH3C003: { path: '/chapter-3/coop-3' },
   CH3SPL1: { path: '/chapter-3/split-1' },
   CH3SPL2: { path: '/chapter-3/split-2' },
   CH3OUT1: { path: '/chapter-3/outro-1' },
@@ -218,7 +218,6 @@ export const getLessonKey = (chapterId, lessonId) => {
   if (!lesson) {
     return undefined
   }
-
   return lesson.metadata.key
 }
 
