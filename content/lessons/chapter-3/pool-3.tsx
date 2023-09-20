@@ -261,10 +261,10 @@ export default function Pool3({ lang }) {
           )}
           {step === 2 && (
             <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+              <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.pool_three.step_two_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.pool_three.step_two_paragraph_one')}
               </Text>
               <Button

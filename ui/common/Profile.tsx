@@ -24,7 +24,7 @@ export default function Profile({
   return (
     <div
       className={clsx(
-        'flex w-full  max-w-none flex-col items-center md:max-w-[220px] 2xl:max-w-none',
+        'flex w-full  max-w-none flex-col items-center md:max-w-[300px] 2xl:max-w-none',
         className
       )}
     >
@@ -44,7 +44,7 @@ export default function Profile({
           {!avatar && (
             <Icon
               icon="avatar"
-              className="h-[50px] w-[50px] text-white md:h-[100px] md:w-[100px]"
+              className="max-h-[50px] min-h-[50px] min-w-[50px] max-w-[50px] text-white md:h-[100px] md:max-h-[100px] md:min-h-[100px] md:min-w-[100px] md:max-w-[100px]"
             />
           )}
           {chip && (
