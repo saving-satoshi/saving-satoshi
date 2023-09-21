@@ -93,13 +93,13 @@ export default function Pool1({ lang }) {
         <div className="font-nunito text-white">
           <Title>{t('chapter_three.coop_one.heading')}</Title>
           <div className="mt-2 text-lg">
-            {t('chapter_three.pool_one.paragraph_one')}
+            {t('chapter_three.coop_one.paragraph_one')}
           </div>
           <div className="mt-8 text-lg">
-            {t('chapter_three.pool_one.paragraph_two')}
+            {t('chapter_three.coop_one.paragraph_two')}
           </div>
           <div className="mt-8 text-lg">
-            {t('chapter_three.pool_one.paragraph_three')}
+            {t('chapter_three.coop_one.paragraph_three')}
           </div>
           <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
             {t('shared.next')}

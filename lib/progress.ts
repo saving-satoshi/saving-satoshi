@@ -70,7 +70,7 @@ export const keysMeta = {
   CH3POL2: { path: '/chapter-3/pool-2' },
   CH3COO1: { path: '/chapter-3/coop-1' },
   CH3COO2: { path: '/chapter-3/coop-2' },
-  CH3C003: { path: '/chapter-3/coop-3' },
+  CH3COO3: { path: '/chapter-3/coop-3' },
   CH3SPL1: { path: '/chapter-3/split-1' },
   CH3SPL2: { path: '/chapter-3/split-2' },
   CH3OUT1: { path: '/chapter-3/outro-1' },

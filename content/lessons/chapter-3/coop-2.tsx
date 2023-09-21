@@ -27,39 +27,39 @@ export default function Pool2({ lang }) {
   return (
     <ChapterIntro
       className="fade-in my-8"
-      heading={t('chapter_three.pool_two.heading')}
+      heading={t('chapter_three.coop_two.heading')}
     >
       <p className="mt-2 text-lg md:text-xl">
-        {t('chapter_three.pool_two.paragraph_one')}
+        {t('chapter_three.coop_two.paragraph_one')}
       </p>
 
       <p className="mt-8 text-lg md:text-xl">
-        {t('chapter_three.pool_two.paragraph_two')}
+        {t('chapter_three.coop_two.paragraph_two')}
       </p>
 
       <ul className="pl-2.5">
         <li className="flex flex-row text-lg md:text-xl">
           &#x2022;
-          <p className="pl-2.5">{t('chapter_three.pool_two.list_one')}</p>
+          <p className="pl-2.5">{t('chapter_three.coop_two.list_one')}</p>
         </li>
 
         <li className="flex flex-row text-lg md:text-xl">
           &#x2022;
-          <p className="pl-2.5">{t('chapter_three.pool_two.list_two')}</p>
+          <p className="pl-2.5">{t('chapter_three.coop_two.list_two')}</p>
         </li>
 
         <li className="flex flex-row text-lg md:text-xl">
           &#x2022;
-          <p className="pl-2.5">{t('chapter_three.pool_two.list_three')}</p>
+          <p className="pl-2.5">{t('chapter_three.coop_two.list_three')}</p>
         </li>
       </ul>
 
       <p className="mt-8 text-lg md:text-xl">
-        {t('chapter_three.pool_two.paragraph_three')}
+        {t('chapter_three.coop_two.paragraph_three')}
       </p>
 
       <p className="mt-8 text-lg md:text-xl">
-        {t('chapter_three.pool_two.paragraph_four')}
+        {t('chapter_three.coop_two.paragraph_four')}
       </p>
 
       <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
