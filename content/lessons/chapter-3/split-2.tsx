@@ -154,8 +154,7 @@ export default function Split2({ lang }) {
   }, [])
 
   return (
-    //<div className="fade-in flex flex-col items-center gap-5 px-[15px] py-8 md:pt-10 2xl:gap-8 2xl:px-[75px]">
-    <div className="fade-in flex flex-col items-center gap-[30px] py-[30px] pl-[15px] md:px-[75px] md:py-[75px]">
+    <div className="fade-in flex flex-col items-center gap-[30px] py-[30px] pl-[15px] md:px-[75px] md:py-10">
       <HashrateChallenge
         step={step}
         totalBlocks={TOTAL_BLOCKS}
