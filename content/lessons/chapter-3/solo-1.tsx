@@ -173,38 +173,38 @@ export default function Solo1({ lang }) {
       >
         <div className={`flex ${showText ? 'fade-in' : 'fade-out'}`}>
           {step === 0 && (
-            <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] lg:max-w-[400px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold lg:text-left">
+            <span className="flex flex-col items-center gap-[10px] md:max-w-[600px] lg:max-w-[400px] lg:items-start">
+              <Text className="text-center font-nunito text-[24px] font-bold lg:text-left">
                 {t('chapter_three.solo_one.step_zero_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold lg:text-left">
+              <Text className="text-center font-nunito text-[18px] font-semibold lg:text-left">
                 {t('chapter_three.solo_one.step_zero_paragraph_one')}
               </Text>
             </span>
           )}
           {step === 1 && (
             <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] lg:max-w-[400px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold lg:text-left">
+              <Text className="self-stretch text-center font-nunito text-[24px] font-bold lg:text-left">
                 {t('chapter_three.solo_one.step_one_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold lg:text-left">
+              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold lg:text-left">
                 {t('chapter_three.solo_one.step_one_paragraph_one')}
               </Text>
             </span>
           )}
           {step === 2 && (
-            <span className="flex flex-col items-center gap-[10px] md:max-w-[600px] lg:max-w-[400px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold lg:text-left">
+            <span className="flex flex-col items-center gap-[10px] md:max-w-[600px] lg:max-w-[400px] lg:items-start">
+              <Text className="text-center font-nunito text-[24px] font-bold lg:text-left">
                 {t('chapter_three.solo_one.step_two_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold lg:text-left">
+              <Text className="text-center font-nunito text-[18px] font-semibold lg:text-left">
                 {t('chapter_three.solo_one.step_two_paragraph_one')}
               </Text>
               <Button
                 onClick={saveAndProceed}
                 classes={`${
                   isSmallScreen ? 'self-center' : 'self-start'
-                } w-full md:w-auto mt-[20px]`}
+                } w-full md:w-auto max-w-[192px] mt-[20px]`}
               >
                 {t('shared.next')}
               </Button>

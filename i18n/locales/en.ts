@@ -372,6 +372,7 @@ const translations = {
       progress_bar_three: 'Transactions confirmed',
       progress_bar_four: 'Bitcoin earned',
       button_hash: '10x hash power, please',
+      ten_x_hint: 'Tap the 10x button to speed up the hashing!',
     },
     outro_one: {
       title: 'Outro',
@@ -387,19 +388,19 @@ const translations = {
   chapter_three: {
     title: 'The 51% Attack',
     paragraph_one:
-        'You enter the address of a block explorer blocks are back to ten minutes intervals. Somehow, holocat sleeps through the noise of the machines.',
-      paragraph_two:
-        '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking holocat. It’s not a coincidence.',
+      'You enter the address of a block explorer blocks are back to ten minutes intervals. Somehow, holocat sleeps through the noise of the machines.',
+    paragraph_two:
+      '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking holocat. It’s not a coincidence.',
     intro_one: {
       title: 'Hashing it out',
       paragraph_one:
         '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is under a 51% attack! Vanderpoole used a virus to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the Bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply.” – Satoshi Nakamoto',
-    paragraph_two:
+      paragraph_two:
         '—The old computer coughs a little, then produces a wad of data in something called a “spreadsheet”: contact info for some of the largest bitcoin pool operators and a patch to the virus that is letting BitRey control them. Send the file to them so they can regain control of their machines and join your fight against BitRey.',
       paragraph_three:
         'HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”',
     },
-    
+
     solo_one: {
       title: 'You vs. Bitrey',
       step_zero_heading: 'Let’s give it a try',
@@ -413,8 +414,8 @@ const translations = {
         'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s see if we can defeat BitRey for the next 100 blocks with the other pool operators. Bitcoin has been running for over a decade and it’s not going down without a fight.',
     },
 
-    coop_one: {
-      title: 'Coop vs. BitRey',
+    pool_one: {
+      title: 'Pool vs. BitRey',
       waiting_screen_heading: 'We need support!',
       waiting_screen_paragraph_one:
         'Your miners in the warehouse alone don’t stand a chance. If you combine your hashing power with other pools, you might be able to hold the line against the assault.',
@@ -424,8 +425,8 @@ const translations = {
       continue_button: "Let's go",
     },
 
-    coop_two: {
-      title: 'Coop vs. BitRey',
+    pool_two: {
+      title: 'Pool vs. BitRey',
       step_zero_heading: 'Here we go',
       step_zero_paragraph_one:
         'When you combine your hashrate with the other pool operators, can you stand up against BitRey?',
@@ -434,8 +435,8 @@ const translations = {
         'Something is wrong. Only Hash Hoppers found blocks. Why do you think that might be?',
     },
 
-    pool_one: {
-      title: 'Pool vs. BitRey',
+    coop_one: {
+      title: 'Coop vs. BitRey',
       heading: 'Something is not quite right yet.',
       paragraph_one:
         'Hash Hoppers, the one with the most hash power, is finding all your blocks but others find nothing.',
@@ -445,8 +446,8 @@ const translations = {
         ' You decide to place a unique identifier in the “extraNonce” when preparing the block data for each of you to prevent duplicate efforts.',
     },
 
-    pool_two: {
-      title: 'Pool vs. BitRey',
+    coop_two: {
+      title: 'Coop vs. BitRey',
       heading: 'What is the extraNonce?',
       paragraph_one:
         'For the Stratum mining pool protocol (not bitcoin protocol), the coinbase transaction also has something called the “extra nonce”. When providing miners with the block data, mining pools divide the extra nonce into two parts: “extranonce1” and “extranonce2”.',
@@ -462,8 +463,8 @@ const translations = {
       paragraph_four: 'Let’s try again splitting the work using this method.',
     },
 
-    pool_three: {
-      title: 'Pool vs. BitRey',
+    coop_three: {
+      title: 'Coop vs. BitRey',
       step_zero_heading: 'One more time...',
       step_zero_paragraph_one:
         'Let’s see if we stand a chance against BitRey now with our improved strategy of dividing the nonce space.',

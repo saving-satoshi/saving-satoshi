@@ -154,7 +154,7 @@ export default function Split2({ lang }) {
   }, [])
 
   return (
-    <div className="flex flex-col items-center gap-[30px] px-[15px] py-[30px] md:px-[75px] md:py-[75px]">
+    <div className="flex flex-col items-center gap-[30px] py-[30px] pl-[15px] md:px-[75px] md:py-[75px]">
       <HashrateChallenge
         step={step}
         totalBlocks={TOTAL_BLOCKS}
@@ -169,6 +169,7 @@ export default function Split2({ lang }) {
         profiles={PROTAGONISTS.map((profile, i) => (
           <Profile
             key={i}
+            className="min-w-[300px]"
             username={profile.username}
             avatar={profile.avatar}
             chip={
@@ -309,21 +310,21 @@ export default function Split2({ lang }) {
           }`}
         >
           {step === 0 && (
-            <span className="flex flex-col items-start gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+            <span className="flex flex-col items-start gap-[10px] px-6 md:w-full md:max-w-[690px] md:px-0 md:pt-[20px]">
+              <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_zero_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.split_two.step_zero_paragraph')}
               </Text>
             </span>
           )}
           {step === 2 && (
-            <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+            <span className="flex flex-col items-center gap-[10px] px-6 md:w-full md:max-w-[690px] md:px-0 md:pt-[20px]">
+              <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_two_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.split_two.step_two_paragraph')}
               </Text>
               <Button
@@ -336,11 +337,11 @@ export default function Split2({ lang }) {
             </span>
           )}
           {step === 3 && (
-            <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+            <span className="flex flex-col items-center gap-[10px] px-6 md:w-full md:max-w-[690px] md:px-0 md:pt-[20px]">
+              <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_three_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.split_two.step_three_paragraph')}
               </Text>
               <Button
@@ -353,11 +354,11 @@ export default function Split2({ lang }) {
             </span>
           )}
           {step === 4 && (
-            <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+            <span className="flex flex-col items-center gap-[10px] px-6 md:w-full md:max-w-[690px] md:px-0 md:pt-[20px]">
+              <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_four_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.split_two.step_four_paragraph')}
               </Text>
               <Button
@@ -370,11 +371,11 @@ export default function Split2({ lang }) {
             </span>
           )}
           {step === 5 && (
-            <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+            <span className="flex flex-col items-center gap-[10px] px-6 md:w-full md:max-w-[690px] md:px-0 md:pt-[20px]">
+              <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_five_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.split_two.step_five_paragraph')}
               </Text>
               <Button
@@ -387,11 +388,11 @@ export default function Split2({ lang }) {
             </span>
           )}
           {step === 6 && (
-            <span className="flex flex-col items-center gap-[10px] md:w-[690px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+            <span className="flex flex-col items-center gap-[10px] px-6 md:w-full md:max-w-[690px] md:px-0 md:pt-[20px]">
+              <Text className="text-center font-nunito text-[24px] font-bold">
                 {t('chapter_three.split_two.step_six_heading')}
               </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+              <Text className="text-center font-nunito text-[18px] font-semibold">
                 {t('chapter_three.split_two.step_six_paragraph')}
               </Text>
               <Button

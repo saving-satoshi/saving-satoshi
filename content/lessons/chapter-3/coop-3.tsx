@@ -20,13 +20,13 @@ import { usePathData } from 'hooks'
 import { lessons } from 'content'
 
 export const metadata = {
-  title: 'chapter_three.pool_two.title',
+  title: 'chapter_three.coop_three.title',
   theme: 'solo-1-theme',
   secondaryTheme: 'solo-1-secondary-theme',
-  key: 'CH3POL3',
+  key: 'CH3COO3',
 }
 
-export default function Pool3({ lang }) {
+export default function Coop3({ lang }) {
   const { account } = useAuthContext()
   const t = useTranslations(lang)
   const [step, setStep] = useState(0)
@@ -179,104 +179,106 @@ export default function Pool3({ lang }) {
   }, [])
 
   return (
-    <div className="flex flex-col items-center gap-[20px] px-[15px] py-[30px] md:py-[75px] 2xl:gap-[30px] 2xl:px-[75px]">
-      <HashrateChallenge
-        totalBlocks={TOTAL_BLOCKS}
-        blockRatio={BLOCK_RATIO}
-        step={step}
-        onStepUpdate={handleStepUpdate}
-        onProtagonistUpdate={handleProtagonsitBlockUpdate}
-        onAntagonistUpdate={handleAntagonsitBlockUpdate}
-        protagonists={PROTAGONISTS}
-        antagonists={ANTAGONISTS}
-        speed={5}
-        profiles={PROFILES.map((profile, i) => (
-          <Profile
-            key={i}
-            username={profile.username}
-            avatar={profile.avatar}
-            description={profile.description}
-          >
-            <Card className="flex">
-              <span
-                className={clsx('fade-in font-nunito text-[15px] font-bold', {
-                  'text-white text-opacity-25': step === 0,
-                  'fade-in text-[#EDA081]': step !== 0,
-                })}
-              >
-                Blocks found
-              </span>
-              <span
-                className={clsx(
-                  'fade-in font-space-mono text-[15px] font-normal text-white',
-                  {
-                    'text-opacity-25': step === 0,
-                  }
-                )}
-              >
-                {profile.value}
-              </span>
-            </Card>
-            <Card className="flex gap-4">
-              <span className="fade-in w-[103px] font-nunito text-[15px] font-bold text-[#EDA081]">
-                Hashrate
-              </span>
-              <HashFrequency
-                className="font-space-mono text-[15px]"
-                disabled={false}
-                step={0}
-                hashPower={profile.hashpower}
-              />
-            </Card>
-            <Card className="flex">
-              <span
-                className={clsx('fade-in font-nunito text-[15px] font-bold', {
-                  'text-white text-opacity-25': step === 0,
-                  'fade-in text-[#EDA081]': step !== 0,
-                })}
-              >
-                Hashes
-              </span>
-              <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
-                <Exponent
-                  className="font-space-mono font-normal"
-                  step={step}
-                  hashes={profile.hashes}
+    <div className="px-[20px] py-[30px] md:py-[75px]">
+      <div className="mx-auto flex max-w-[1340px] flex-col items-center gap-5 2xl:gap-8">
+        <HashrateChallenge
+          totalBlocks={TOTAL_BLOCKS}
+          blockRatio={BLOCK_RATIO}
+          step={step}
+          onStepUpdate={handleStepUpdate}
+          onProtagonistUpdate={handleProtagonsitBlockUpdate}
+          onAntagonistUpdate={handleAntagonsitBlockUpdate}
+          protagonists={PROTAGONISTS}
+          antagonists={ANTAGONISTS}
+          speed={5}
+          profiles={PROFILES.map((profile, i) => (
+            <Profile
+              key={i}
+              username={profile.username}
+              avatar={profile.avatar}
+              description={profile.description}
+            >
+              <Card className="flex">
+                <span
+                  className={clsx('fade-in font-nunito text-[15px] font-bold', {
+                    'text-white text-opacity-25': step === 0,
+                    'fade-in text-[#EDA081]': step !== 0,
+                  })}
+                >
+                  Blocks found
+                </span>
+                <span
+                  className={clsx(
+                    'fade-in font-space-mono text-[15px] font-normal text-white',
+                    {
+                      'text-opacity-25': step === 0,
+                    }
+                  )}
+                >
+                  {profile.value}
+                </span>
+              </Card>
+              <Card className="flex gap-4">
+                <span className="fade-in w-[103px] font-nunito text-[15px] font-bold text-[#EDA081]">
+                  Hashrate
+                </span>
+                <HashFrequency
+                  className="font-space-mono text-[15px]"
+                  disabled={false}
+                  step={0}
+                  hashPower={profile.hashpower}
                 />
+              </Card>
+              <Card className="flex">
+                <span
+                  className={clsx('fade-in font-nunito text-[15px] font-bold', {
+                    'text-white text-opacity-25': step === 0,
+                    'fade-in text-[#EDA081]': step !== 0,
+                  })}
+                >
+                  Hashes
+                </span>
+                <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
+                  <Exponent
+                    className="font-space-mono font-normal"
+                    step={step}
+                    hashes={profile.hashes}
+                  />
+                </span>
+              </Card>
+            </Profile>
+          ))}
+        >
+          <div className={`flex flex-col ${showText ? 'fade-in' : 'fade-out'}`}>
+            {step === 0 && (
+              <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
+                <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+                  {t('chapter_three.coop_three.step_zero_heading')}
+                </Text>
+                <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+                  {t('chapter_three.coop_three.step_zero_paragraph_one')}
+                </Text>
               </span>
-            </Card>
-          </Profile>
-        ))}
-      >
-        <div className={`flex flex-col ${showText ? 'fade-in' : 'fade-out'}`}>
-          {step === 0 && (
-            <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
-                {t('chapter_three.pool_three.step_zero_heading')}
-              </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-                {t('chapter_three.pool_three.step_zero_paragraph_one')}
-              </Text>
-            </span>
-          )}
-          {step === 2 && (
-            <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
-                {t('chapter_three.pool_three.step_two_heading')}
-              </Text>
-              <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
-                {t('chapter_three.pool_three.step_two_paragraph_one')}
-              </Text>
-              <Button
-                onClick={saveAndProceed}
-                classes="w-full md:w-auto mt-[20px]"
-              >
-                {t('shared.next')}
-              </Button>
-            </span>
-          )}
-        </div>
-      </HashrateChallenge>
+            )}
+            {step === 2 && (
+              <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
+                <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
+                  {t('chapter_three.coop_three.step_two_heading')}
+                </Text>
+                <Text className="text-center font-nunito text-[18px] font-semibold">
+                  {t('chapter_three.coop_three.step_two_paragraph_one')}
+                </Text>
+                <Button
+                  onClick={saveAndProceed}
+                  classes="w-full md:w-auto mt-[20px]"
+                >
+                  {t('shared.next')}
+                </Button>
+              </span>
+            )}
+          </div>
+        </HashrateChallenge>
+      </div>
     </div>
   )
 }
