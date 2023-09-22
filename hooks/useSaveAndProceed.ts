@@ -21,6 +21,7 @@ export default function useSaveAndProceed() {
   const routes = useLocalizedRoutes()
 
   const chapterLessons = lessons?.[chapterId]
+
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null
   const currentLessonKey = lesson?.key ?? 'CH1INT1'
   const queryParams = isDevelopment ? '?dev=true' : ''

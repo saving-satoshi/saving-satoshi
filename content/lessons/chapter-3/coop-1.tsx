@@ -5,12 +5,13 @@ import { Title } from 'ui'
 import { Button } from 'shared'
 import Avatar from 'components/Avatar'
 import { useMediaQuery } from 'hooks'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
+import Image from 'next/image'
 import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
   title: 'chapter_three.coop_one.title',
-  image: '/assets/images/chapter-2-intro-1.jpg',
   key: 'CH3COO1',
 }
 
@@ -19,51 +20,24 @@ export default function Coop1({ lang }) {
 
   const saveAndProceed = useSaveAndProceed()
   const isSmallScreen = useMediaQuery({ width: 767 })
-  const [playersFound, setPlayersFound] = useState(false)
-  const [players, setPlayers] = useState([
+  const players = [
     {
       username: 'You',
       avatar: '/assets/avatars/1.png',
-      display: true,
     },
     {
       username: 'Mining Maniacs',
       avatar: '/assets/avatars/2.png',
-      display: false,
     },
     {
       username: 'Coin Crunchers',
       avatar: '/assets/avatars/4.png',
-      display: false,
     },
     {
       username: 'Hash Hoppers',
       avatar: '/assets/avatars/3.png',
-      display: false,
     },
-  ])
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout
-    let playerCount = 1
-    let updatedPlayers = players
-    if (!playersFound) {
-      interval = setInterval(() => {
-        updatedPlayers = updatedPlayers.map((player, index) => {
-          if (index === playerCount) {
-            return { ...player, display: true }
-          }
-          return player
-        })
-        setPlayers(updatedPlayers)
-        playerCount += 1
-        if (playerCount == 4) {
-          setPlayersFound(true)
-        }
-      }, 2000)
-    }
-    return () => clearInterval(interval)
-  }, [!playersFound])
+  ]
 
   useEffect(() => {
     cssVarThemeChange({
@@ -74,62 +48,62 @@ export default function Coop1({ lang }) {
   }, [])
 
   return (
-    <div className="grid grid-cols-1 justify-center justify-items-center md:my-auto md:flex md:flex-row">
-      <div className="fade-in my-[30px] grid w-full max-w-[300px] grid-cols-2 justify-center justify-items-center gap-[15px] md:order-last md:mx-[30px] md:min-h-[400px] md:min-w-[410px] md:gap-[30px]">
-        {players.map((profile, i) => (
-          <div
-            key={i}
-            className="min-h-[180px] w-full  max-w-[155px]  justify-items-center  border-2 border-dotted border-white/25 p-[15px] md:min-h-[185px]  md:min-w-[190px] md:max-w-none"
-          >
-            <div className="flex justify-center md:mb-[15px]">
-              <Avatar
-                avatar={profile.avatar}
-                size={isSmallScreen ? 75 : 100}
-                className={`${profile?.display ? 'fade-in' : 'hidden'}`}
-              />
-
-              <div
-                className={`min-h-[75px] min-w-[75px] rounded-full bg-black/20 md:min-h-[100px] md:min-w-[100px]
-                ${profile?.display ? 'hidden' : ''}
-                `}
-              />
-            </div>
+    <div className="flex flex-col justify-center justify-items-center gap-[30px] md:my-auto md:flex-row">
+      <div className="ml-[15px] mr-[15px] mt-[30px] flex h-fit flex-col items-center gap-y-2.5 border-2 border-dotted border-white/25 p-3.5 md:order-last md:ml-0 md:mt-0">
+        <div className="mx-[5px] mb-[10px] flex gap-x-2.5 p-[5px]">
+          <Image
+            className="rounded-full"
+            src="/assets/images/chapter-1-holocat-cropped.jpg"
+            alt=""
+            width={26}
+            height={26}
+          />
+          <Title>HoloCat Pool</Title>
+        </div>
+        <div className="fade-in grid grid-cols-2">
+          {players.map((profile, i) => (
             <div
-              className={`w-full p-2.5 text-center font-nunito text-base font-semibold text-white
-            ${profile.display ? 'animate-none' : 'animate-pulse'}
-            `}
+              key={i}
+              className="flex h-[145px] w-[160px] flex-col pb-5 md:h-[160px] md:w-[190px]"
             >
-              {profile.display ? profile.username : 'Waiting...'}
+              <div className="-mb-2 flex flex-col items-center">
+                <Avatar
+                  avatar={profile.avatar}
+                  size={isSmallScreen ? 75 : 100}
+                />
+                <ProfileChip
+                  className="relative -top-4"
+                  image="/assets/images/chapter-1-holocat-cropped.jpg"
+                  variant={ProfileChipVariant.Ranking}
+                  value={i + 1}
+                />
+              </div>
+              <div className="text-center font-nunito text-base font-semibold text-white">
+                {profile.username}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       <div
         className={`mb-5 flex w-full items-center px-[15px] transition-opacity md:mx-0 md:mb-0 md:mt-0 md:w-1/2 md:max-w-[405px] md:pl-[15px] md:pr-0 ${
           true ? 'fade-in' : 'fade-out'
         }`}
       >
-        <div className="text-center font-nunito text-white md:text-left">
-          <Title>{t('chapter_three.coop_one.waiting_screen_heading')}</Title>
+        <div className="font-nunito text-white">
+          <Title>{t('chapter_three.coop_one.heading')}</Title>
           <div className="mt-2 text-lg">
-            {t('chapter_three.coop_one.waiting_screen_paragraph_one')}
+            {t('chapter_three.coop_one.paragraph_one')}
           </div>
           <div className="mt-8 text-lg">
-            {t('chapter_three.coop_one.waiting_screen_paragraph_two')}
+            {t('chapter_three.coop_one.paragraph_two')}
           </div>
-          {playersFound ? (
-            <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
-              {t('chapter_three.coop_one.continue_button')}
-            </Button>
-          ) : (
-            <Button
-              classes="mt-10 animate-pulse max-md:w-full"
-              style="faded"
-              disabled={true}
-            >
-              {t('chapter_three.coop_one.waiting_button')}
-            </Button>
-          )}
+          <div className="mt-8 text-lg">
+            {t('chapter_three.coop_one.paragraph_three')}
+          </div>
+          <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+            {t('shared.next')}
+          </Button>
         </div>
       </div>
     </div>

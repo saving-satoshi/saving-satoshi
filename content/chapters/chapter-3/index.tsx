@@ -21,14 +21,14 @@ export const metadata = {
   intros: ['intro-1'],
   lessons: [
     'solo-1',
-    'coop-1',
-    'coop-2',
     'pool-1',
     'pool-2',
-    'pool-3',
+    'coop-1',
+    'coop-2',
+    'coop-3',
     'split-1',
     'split-2',
   ],
   outros: ['outro-1'],
-  challenges: ['solo-1', 'coop-1', 'pool-1', 'split-1'],
+  challenges: ['solo-1', 'pool-1', 'coop-1', 'split-1'],
 }
