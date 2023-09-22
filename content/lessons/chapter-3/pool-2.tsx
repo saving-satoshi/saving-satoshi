@@ -236,20 +236,20 @@ export default function Pool2({ lang }) {
             {step === 0 && (
               <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
                 <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
-                  {t('chapter_three.coop_two.step_zero_heading')}
+                  {t('chapter_three.pool_two.step_zero_heading')}
                 </Text>
                 <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
-                  {t('chapter_three.coop_two.step_zero_paragraph_one')}
+                  {t('chapter_three.pool_two.step_zero_paragraph_one')}
                 </Text>
               </span>
             )}
             {step === 2 && (
               <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
                 <Text className=" self-stretch text-center font-nunito text-[24px] font-bold">
-                  {t('chapter_three.coop_two.step_two_heading')}
+                  {t('chapter_three.pool_two.step_two_heading')}
                 </Text>
                 <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
-                  {t('chapter_three.coop_two.step_two_paragraph_one')}
+                  {t('chapter_three.pool_two.step_two_paragraph_one')}
                 </Text>
                 <Button
                   onClick={saveAndProceed}

@@ -76,7 +76,7 @@ export default function Pool1({ lang }) {
 
   return (
     <div className="grid grid-cols-1 justify-center justify-items-center gap-[30px] md:my-auto md:flex md:flex-row">
-      <div className="ml-[15px] mr-[15px] mt-[30px] flex h-fit flex-col items-center gap-y-2.5 border-2 border-dotted border-white/25 p-3.5 md:order-last md:ml-0 md:mt-0">
+      <div className="ml-[15px] mr-[15px] mt-[30px] flex h-fit w-full max-w-[342px] flex-col items-center gap-y-2.5 border-2 border-dotted border-white/25  p-3.5 md:order-last md:ml-0 md:mt-0">
         <div className="mx-[5px] mb-[10px] flex gap-x-2.5 p-[5px]">
           <Image
             className="rounded-full"
@@ -87,7 +87,7 @@ export default function Pool1({ lang }) {
           />
           <Title>HoloCat Pool</Title>
         </div>
-        <div className="fade-in grid grid-cols-2">
+        <div className="fade-in grid w-full grid-cols-2">
           {players.map((profile, i) => (
             <div
               key={i}
@@ -97,11 +97,15 @@ export default function Pool1({ lang }) {
                 <Avatar
                   avatar={profile.avatar}
                   size={isSmallScreen ? 75 : 100}
-                  className={`${profile?.display ? 'fade-in' : 'hidden'}`}
+                  className={`${
+                    profile?.display
+                      ? 'fade-in max-h-[75px] min-h-[75px] min-w-[75px] max-w-[75px] md:min-h-[100px] md:min-w-[100px]'
+                      : 'hidden'
+                  }`}
                 />
 
                 <div
-                  className={`min-h-[75px] min-w-[75px] rounded-full bg-black/20 md:min-h-[100px] md:min-w-[100px]
+                  className={`max-h-[75px] min-h-[75px] min-w-[75px] max-w-[75px] rounded-full bg-black/20 md:min-h-[100px] md:min-w-[100px]
                 ${profile?.display ? 'hidden' : ''}
                 `}
                 />
