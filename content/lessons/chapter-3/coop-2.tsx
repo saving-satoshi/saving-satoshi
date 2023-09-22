@@ -12,7 +12,7 @@ export const metadata = {
   key: 'CH3COO2',
 }
 
-export default function Pool2({ lang }) {
+export default function Coop2({ lang }) {
   const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
 
