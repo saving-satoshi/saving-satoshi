@@ -20,6 +20,7 @@ export default function HashrateChallenge({
   protagonists,
   antagonists,
   step,
+  profileContainerClassName,
   contributionBarOpacity,
   onStepUpdate,
   onProtagonistUpdate,
@@ -41,6 +42,7 @@ export default function HashrateChallenge({
   antagonists: any
   speed?: number
   noData?: boolean
+  profileContainerClassName?: string
 }) {
   const [finalMining, setFinalMining] = useState(false)
   const [hashPower, setHashPower] = useState(0)
@@ -113,6 +115,7 @@ export default function HashrateChallenge({
       <ProfilesContainer
         profiles={profiles}
         verticalProfiles={verticalProfiles}
+        className={profileContainerClassName || ''}
       >
         <div className="flex h-full max-h-[69px] w-full max-w-[800px] flex-col gap-[10px] text-white">
           <div className="flex items-center justify-between gap-[10px] self-stretch">

@@ -154,7 +154,7 @@ export default function Split2({ lang }) {
   }, [])
 
   return (
-    <div className="fade-in flex flex-col items-center gap-[30px] py-[30px] pl-[15px] md:px-[75px] md:py-10">
+    <div className="fade-in flex flex-col items-center gap-[30px] py-[30px] pl-[15px] md:px-[20px] md:py-10">
       <HashrateChallenge
         step={step}
         totalBlocks={TOTAL_BLOCKS}
@@ -165,6 +165,7 @@ export default function Split2({ lang }) {
         protagonists={PROTAGONISTS}
         antagonists={ANTAGONISTS}
         speed={1}
+        profileContainerClassName="max-w-[1290px] mx-auto"
         contributionBarOpacity="fade-in-out opacity-[.2]"
         profiles={PROTAGONISTS.map((profile, i) => (
           <Profile
