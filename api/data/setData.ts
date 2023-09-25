@@ -7,7 +7,7 @@ export default async function setData(
 ) {
   try {
     const res = await put({
-      url: '/v1/data/save',
+      url: '/v1/data',
       includeToken: true,
       body: {
         account_id,
