@@ -118,7 +118,7 @@ export default function HashrateChallenge({
           <div className="flex items-center justify-between gap-[10px] self-stretch">
             <span
               className={clsx(
-                'my-[2px] h-[25px] min-w-[100px] text-left font-nunito text-[18px] font-semibold text-white',
+                'my-[2px] h-[25px] min-w-[75px] text-left font-nunito text-[18px] font-semibold text-white',
                 {
                   'opacity-25': protagonistsTotal === 0,
                 }
@@ -142,7 +142,7 @@ export default function HashrateChallenge({
 
             <span
               className={clsx(
-                'my-[2px] h-[25px] min-w-[100px] text-right font-nunito text-[18px] font-semibold text-white',
+                'my-[2px] h-[25px] min-w-[75px] text-right font-nunito text-[18px] font-semibold text-white',
                 {
                   'opacity-25': antagonistsTotal === 0,
                 }

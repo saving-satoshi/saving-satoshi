@@ -49,7 +49,7 @@ export default function ProfilesContainer({
           className={clsx(
             'auto-scroll flex items-start gap-[30px] overflow-x-auto scroll-smooth whitespace-nowrap',
             {
-              'w-full flex-col md:w-auto md:flex-row': verticalProfiles,
+              'w-full flex-col md:flex-row': verticalProfiles,
               'md:w-full md:justify-center': !hasOverflow,
               'w-full justify-center': !hasOverflow && !verticalProfiles,
               'w-full': hasOverflow,

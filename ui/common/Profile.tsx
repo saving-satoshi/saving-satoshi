@@ -40,7 +40,13 @@ export default function Profile({
             'mb-2': !chip,
           })}
         >
-          {avatar && <Avatar avatar={avatar} size={isSmallScreen ? 50 : 100} />}
+          {avatar && (
+            <Avatar
+              className="max-h-[50px] min-h-[50px] min-w-[50px] max-w-[50px] text-white md:h-[100px] md:max-h-[100px] md:min-h-[100px] md:min-w-[100px] md:max-w-[100px]"
+              avatar={avatar}
+              size={isSmallScreen ? 50 : 100}
+            />
+          )}
           {!avatar && (
             <Icon
               icon="avatar"

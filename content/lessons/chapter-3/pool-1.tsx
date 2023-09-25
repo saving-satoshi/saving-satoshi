@@ -91,7 +91,7 @@ export default function Pool1({ lang }) {
           {players.map((profile, i) => (
             <div
               key={i}
-              className="min-h-[180px] w-full  max-w-[155px]  justify-items-center p-[15px] md:min-h-[185px]  md:min-w-[190px] md:max-w-none"
+              className="min-h-[180px] w-full max-w-[155px] justify-items-center p-[15px] md:min-h-[185px] md:min-w-[190px] md:max-w-none"
             >
               <div className="flex justify-center md:mb-[15px]">
                 <Avatar
