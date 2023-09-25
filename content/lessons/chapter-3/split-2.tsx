@@ -142,6 +142,9 @@ export default function Split2({ lang }) {
         setAntagonistHash(currentAntagonistHash)
       }, 40)
     }
+    if (step >= 2) {
+      window.scrollBy(0, 500)
+    }
     return () => clearInterval(interval)
   }, [step])
 

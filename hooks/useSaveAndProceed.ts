@@ -38,7 +38,7 @@ export default function useSaveAndProceed() {
         await saveProgressLocal(nextLessonKey)
       }
     }
-    router.push(route)
+    router.push(route, { scroll: true })
   }
 
   return saveAndProceed
