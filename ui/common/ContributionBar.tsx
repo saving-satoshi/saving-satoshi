@@ -180,7 +180,7 @@ export default function ContributionBar({
             <div key={i}>
               {step !== 0 && (
                 <div
-                  className="fadde-in absolute right-0 top-0 z-10 w-[26px] overflow-hidden rounded-full bg-white p-[2px]"
+                  className="fade-in absolute right-0 top-0 z-10 w-[26px] overflow-hidden rounded-full bg-white p-[2px]"
                   style={{
                     transform: `translate3d(${offsetAvatar}, 2px, 0)`,
                     transition: 'transform 300ms linear',

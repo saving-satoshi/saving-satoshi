@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations, useSaveAndProceed } from 'hooks'
+import { useTranslations, useSaveAndProceed, useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import { ProfileWithHashPower } from 'types'
@@ -33,6 +33,8 @@ export default function Solo1({ lang }) {
   const [antagonistHash, setAntagonistHash] = useState(0)
   const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState(0)
   const [antagonistsBlockAmount, setAntagonistsBlockAmount] = useState(0)
+
+  const isSmallScreen = useMediaQuery({ width: 1098 })
 
   const saveAndProceed = useSaveAndProceed()
 
@@ -120,94 +122,122 @@ export default function Solo1({ lang }) {
   }, [])
 
   return (
-    <div className="fade-in mt-2.5 flex flex-col flex-wrap items-center justify-center gap-[30px] self-stretch px-[20px] py-[20px] md:my-auto md:flex-row-reverse md:py-0">
-      <HashrateChallenge
-        step={step}
-        onStepUpdate={handleStepUpdate}
-        onProtagonistUpdate={handleProtagonsitBlockUpdate}
-        onAntagonistUpdate={handleAntagonsitBlockUpdate}
-        profiles={PROFILES.map((profile, i) => (
-          <Profile
-            key={i}
-            username={profile.username}
-            avatar={profile.avatar}
-            description={profile.description}
-          >
-            <Card className="flex gap-4">
-              <span className="fade-in w-[159px] font-nunito text-[15px] font-bold text-[#EDA081]">
-                Hashrate
-              </span>
-              <HashFrequency
-                className="font-space-mono text-[15px]"
-                disabled={false}
-                step={0}
-                hashPower={profile.hashpower}
-              />
-            </Card>
-            <Card className="flex">
-              <span
-                className={clsx('fade-in font-nunito text-[15px] font-bold', {
-                  'text-white text-opacity-25': step === 0,
-                  'fade-in text-[#EDA081]': step !== 0,
-                })}
-              >
-                Hashes
-              </span>
-              <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
-                <Exponent
-                  className="font-space-mono font-normal"
-                  step={step}
-                  hashes={profile.hashes}
+    <div className="fade-in px-[20px] py-[30px] md:my-auto md:py-[75px]">
+      <div className="mx-auto flex max-w-[1340px] flex-col items-center justify-center gap-5 md:flex-row-reverse md:flex-wrap 2xl:gap-8">
+        <HashrateChallenge
+          step={step}
+          onStepUpdate={handleStepUpdate}
+          onProtagonistUpdate={handleProtagonsitBlockUpdate}
+          onAntagonistUpdate={handleAntagonsitBlockUpdate}
+          profiles={PROFILES.map((profile, i) => (
+            <Profile
+              key={i}
+              username={profile.username}
+              avatar={profile.avatar}
+              description={profile.description}
+            >
+              <Card className="flex gap-4">
+                <span className="fade-in w-[159px] font-nunito text-[15px] font-bold text-[#EDA081]">
+                  Hashrate
+                </span>
+                <HashFrequency
+                  className="font-space-mono text-[15px]"
+                  disabled={false}
+                  step={0}
+                  hashPower={profile.hashpower}
                 />
+              </Card>
+              <Card className="flex">
+                <span
+                  className={clsx('fade-in font-nunito text-[15px] font-bold', {
+                    'text-white text-opacity-25': step === 0,
+                    'fade-in text-[#EDA081]': step !== 0,
+                  })}
+                >
+                  Hashes
+                </span>
+                <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
+                  <Exponent
+                    className="font-space-mono font-normal"
+                    step={step}
+                    hashes={profile.hashes}
+                  />
+                </span>
+              </Card>
+            </Profile>
+          ))}
+          verticalProfiles
+          protagonists={PROTAGONISTS}
+          antagonists={ANTAGONISTS}
+          totalBlocks={TOTAL_BLOCKS}
+          blockRatio={BLOCK_RATIO}
+        >
+          <div className={`flex ${showText ? 'fade-in' : 'fade-out'}`}>
+            {step === 0 && (
+              <span className="flex flex-col gap-[10px] md:max-w-[600px] lg:max-w-[400px] ">
+                <Text
+                  className={`font-nunito text-[24px] font-bold ${
+                    isSmallScreen ? 'text-center' : 'text-left'
+                  }`}
+                >
+                  {t('chapter_three.solo_one.step_zero_heading')}
+                </Text>
+                <Text
+                  className={`font-nunito text-[18px] font-semibold ${
+                    isSmallScreen ? 'text-center' : 'text-left'
+                  }`}
+                >
+                  {t('chapter_three.solo_one.step_zero_paragraph_one')}
+                </Text>
               </span>
-            </Card>
-          </Profile>
-        ))}
-        verticalProfiles
-        protagonists={PROTAGONISTS}
-        antagonists={ANTAGONISTS}
-        totalBlocks={TOTAL_BLOCKS}
-        blockRatio={BLOCK_RATIO}
-      >
-        <div className={`flex ${showText ? 'fade-in' : 'fade-out'}`}>
-          {step === 0 && (
-            <span className="flex flex-col items-center gap-[10px] md:max-w-[600px] xl:max-w-[400px] xl:items-start">
-              <Text className="text-center font-nunito text-[24px] font-bold xl:text-left">
-                {t('chapter_three.solo_one.step_zero_heading')}
-              </Text>
-              <Text className="text-center font-nunito text-[18px] font-semibold xl:text-left">
-                {t('chapter_three.solo_one.step_zero_paragraph_one')}
-              </Text>
-            </span>
-          )}
-          {step === 1 && (
-            <span className="flex flex-col items-start gap-[10px] md:max-w-[600px] xl:max-w-[400px]">
-              <Text className="self-stretch text-center font-nunito text-[24px] font-bold xl:text-left">
-                {t('chapter_three.solo_one.step_one_heading')}
-              </Text>
-              <Text className="self-stretch text-center font-nunito text-[18px] font-semibold xl:text-left">
-                {t('chapter_three.solo_one.step_one_paragraph_one')}
-              </Text>
-            </span>
-          )}
-          {step === 2 && (
-            <span className="flex flex-col items-center gap-[10px] md:max-w-[600px] xl:max-w-[400px] xl:items-start">
-              <Text className="text-center font-nunito text-[24px] font-bold xl:text-left">
-                {t('chapter_three.solo_one.step_two_heading')}
-              </Text>
-              <Text className="text-center font-nunito text-[18px] font-semibold xl:text-left">
-                {t('chapter_three.solo_one.step_two_paragraph_one')}
-              </Text>
-              <Button
-                onClick={saveAndProceed}
-                classes="w-full md:w-auto max-w-[192px] mt-[20px]"
-              >
-                {t('shared.next')}
-              </Button>
-            </span>
-          )}
-        </div>
-      </HashrateChallenge>
+            )}
+            {step === 1 && (
+              <span className="flex flex-col gap-[10px] md:max-w-[600px] lg:max-w-[400px]">
+                <Text
+                  className={`self-stretch font-nunito text-[24px] font-bold ${
+                    isSmallScreen ? 'text-center' : 'text-left'
+                  }`}
+                >
+                  {t('chapter_three.solo_one.step_one_heading')}
+                </Text>
+                <Text
+                  className={`self-stretch font-nunito text-[18px] font-semibold ${
+                    isSmallScreen ? 'text-center' : 'text-left'
+                  }`}
+                >
+                  {t('chapter_three.solo_one.step_one_paragraph_one')}
+                </Text>
+              </span>
+            )}
+            {step === 2 && (
+              <span className="flex flex-col gap-[10px] md:max-w-[600px] lg:max-w-[400px]">
+                <Text
+                  className={`font-nunito text-[24px] font-bold ${
+                    isSmallScreen ? 'text-center' : 'text-left'
+                  }`}
+                >
+                  {t('chapter_three.solo_one.step_two_heading')}
+                </Text>
+                <Text
+                  className={`font-nunito text-[18px] font-semibold ${
+                    isSmallScreen ? 'text-center' : 'text-left'
+                  }`}
+                >
+                  {t('chapter_three.solo_one.step_two_paragraph_one')}
+                </Text>
+                <Button
+                  onClick={saveAndProceed}
+                  classes={`${
+                    isSmallScreen ? 'self-center' : 'self-start'
+                  } w-full md:w-auto max-w-[192px] mt-[20px]`}
+                >
+                  {t('shared.next')}
+                </Button>
+              </span>
+            )}
+          </div>
+        </HashrateChallenge>
+      </div>
     </div>
   )
 }
