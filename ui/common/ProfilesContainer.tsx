@@ -39,10 +39,9 @@ export default function ProfilesContainer({
       }
     }
   }, [])
-  console.log(className, 'class Name test')
   return (
     <>
-      <div className=" flex  flex-col items-center gap-[30px] self-stretch">
+      <div className="flex flex-col items-center gap-[30px] self-stretch">
         {children}
         <div
           ref={elementRef}
