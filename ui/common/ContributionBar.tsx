@@ -77,10 +77,10 @@ export default function ContributionBar({
         const scale = sanitizeValue(player.value) / sanitizedTotal
         const playerOffset = rect.width * scale
         const offsetBar = -rect.width + playerOffset + cumulativeValue
-        const offsetAvatar =
-          cumulativeValue + playerOffset / 2 - 13 < 2
-            ? 2
-            : cumulativeValue + playerOffset / 2 - 13
+        const offsetAvatar = Math.max(
+          cumulativeValue + playerOffset / 2 - 13,
+          2
+        )
         return { offsetBar, offsetAvatar }
       })
     )
@@ -104,10 +104,10 @@ export default function ContributionBar({
         const scale = sanitizeValue(player.value) / sanitizedTotal
         const playerOffset = rect.width * scale
         const offsetBar = rect.width - playerOffset - cumulativeValue
-        const offsetAvatar =
-          -cumulativeValue - playerOffset / 2 + 13 > -2
-            ? -2
-            : -cumulativeValue - playerOffset / 2 + 13
+        const offsetAvatar = -Math.max(
+          cumulativeValue + playerOffset / 2 - 13,
+          2
+        )
         return { offsetBar, offsetAvatar }
       })
     )
