@@ -36,6 +36,15 @@ export const keys = [
   'CH3SPL1',
   'CH3SPL2',
   'CH3OUT1',
+
+  'CH4INT1',
+  'CH4PK1',
+  'CH4PK2',
+  'CH4PK3',
+  'CH4PK4',
+  'CH4PK5',
+  'CH4ADDR1',
+  'CH4ADDR2',
 ]
 
 export const keysMeta = {
@@ -74,6 +83,15 @@ export const keysMeta = {
   CH3SPL1: { path: '/chapter-3/split-1' },
   CH3SPL2: { path: '/chapter-3/split-2' },
   CH3OUT1: { path: '/chapter-3/outro-1' },
+
+  CH4INT1: { path: '/chapter-4/intro-1' },
+  CH4PK1: { path: '/chapter-4/public-key-1' },
+  CH4PK2: { path: '/chapter-4/public-key-2' },
+  CH4PK3: { path: '/chapter-4/public-key-3' },
+  CH4PK4: { path: '/chapter-4/public-key-4' },
+  CH4PK5: { path: '/chapter-4/public-key-5' },
+  CH4ADDR1: { path: '/chapter-4/address-1' },
+  CH4ADDR2: { path: '/chapter-4/address-2' },
 }
 
 export const isLessonUnlocked = (
