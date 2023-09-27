@@ -12,11 +12,13 @@ export default function End({
   image,
   lang,
   children,
+  className,
   direction,
   theme,
   gradientTheme,
 }: {
   children: any
+  className?: string
   image: string
   lang: string
   direction: 'left' | 'right'
@@ -63,6 +65,7 @@ export default function End({
           account={account}
           onClick={handleClick}
           currentLessonKey={currentLessonKey}
+          className={className}
         >
           {children}
         </DesktopEnd>

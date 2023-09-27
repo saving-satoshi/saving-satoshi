@@ -10,6 +10,7 @@ export default function DesktopEnd({
   image,
   lang,
   children,
+  className,
   direction,
   theme,
   account,
@@ -17,6 +18,7 @@ export default function DesktopEnd({
   currentLessonKey,
 }: {
   children: any
+  className?: string
   image: string
   lang: string
   direction: 'left' | 'right'
@@ -39,7 +41,12 @@ export default function DesktopEnd({
         className="object-cover"
       />
 
-      <div className="absolute bottom-0 ml-auto w-full bg-gradient-to-b from-transparent via-[#00000040] to-[#00000080] p-4 pb-12 text-left md:p-16">
+      <div
+        className={clsx(
+          className,
+          'absolute bottom-0 ml-auto w-full bg-gradient-to-b from-transparent via-[#00000040] to-[#00000080] p-4 pb-12 text-left md:p-16'
+        )}
+      >
         <div
           className={clsx('max-w-[500px]', {
             'float-left': direction === 'left',
