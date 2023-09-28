@@ -17,7 +17,7 @@ export default function TextImageDisplay({
 }: {
   children: any
   lang: string
-  imageSrc: string
+  imageSrc: string | React.ReactNode
   imageAlt: string
   btnText?: string
   btnEnabled: boolean
@@ -34,12 +34,16 @@ export default function TextImageDisplay({
     <div className="flex grow">
       <div className="lg:flex lg:grow">
         <div className="relative h-[375px] overflow-hidden lg:order-last lg:flex lg:h-full lg:shrink lg:basis-1/2 lg:border-l lg:border-white/25">
-          <Image
-            src={imageSrc}
-            alt={t(imageAlt)}
-            fill
-            className={clsx('relative object-cover', objectPosition)}
-          />
+          {typeof imageSrc === 'string' ? (
+            <Image
+              src={imageSrc}
+              alt={t(imageAlt)}
+              fill
+              className={clsx('relative object-cover', objectPosition)}
+            />
+          ) : (
+            imageSrc
+          )}
         </div>
         <div className="flex shrink basis-1/2">
           <div className="flex flex-col gap-10 px-[15px] py-11 lg:px-10">

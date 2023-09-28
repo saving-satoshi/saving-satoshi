@@ -36,6 +36,9 @@ export const keys = [
   'CH3SPL1',
   'CH3SPL2',
   'CH3OUT1',
+
+  'CH4INT1',
+  'CH4PKY1',
 ]
 
 export const keysMeta = {
@@ -74,6 +77,9 @@ export const keysMeta = {
   CH3SPL1: { path: '/chapter-3/split-1' },
   CH3SPL2: { path: '/chapter-3/split-2' },
   CH3OUT1: { path: '/chapter-3/outro-1' },
+
+  CH4INT1: { path: '/chapter-4/intro-1' },
+  CH4PKY1: { path: '/chapter-4/public-key-1' },
 }
 
 export const isLessonUnlocked = (
