@@ -135,7 +135,7 @@ export default function ContributionBar({
           const player = protagonists[idx]
           let { offsetAvatar, offsetBar } = protagonistState[idx]
           offsetBar = offsetBar ? `${offsetBar}px` : `-100%`
-          offsetAvatar = offsetAvatar ? `${offsetAvatar}px` : ``
+          offsetAvatar = offsetAvatar ? `${offsetAvatar}px` : `-100%`
 
           return (
             <div key={i}>
