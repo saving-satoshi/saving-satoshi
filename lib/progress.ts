@@ -38,13 +38,14 @@ export const keys = [
   'CH3OUT1',
 
   'CH4INT1',
-  'CH4PK1',
-  'CH4PK2',
-  'CH4PK3',
-  'CH4PK4',
-  'CH4PK5',
+  'CH4PKY1',
+  'CH4PKY2',
+  'CH4PKY3',
+  'CH4PKY4',
+  'CH4PKY5',
   'CH4ADDR1',
   'CH4ADDR2',
+  'CH4OUT1',
 ]
 
 export const keysMeta = {
@@ -85,13 +86,14 @@ export const keysMeta = {
   CH3OUT1: { path: '/chapter-3/outro-1' },
 
   CH4INT1: { path: '/chapter-4/intro-1' },
-  CH4PK1: { path: '/chapter-4/public-key-1' },
-  CH4PK2: { path: '/chapter-4/public-key-2' },
-  CH4PK3: { path: '/chapter-4/public-key-3' },
-  CH4PK4: { path: '/chapter-4/public-key-4' },
-  CH4PK5: { path: '/chapter-4/public-key-5' },
+  CH4PKY1: { path: '/chapter-4/public-key-1' },
+  CH4PKY2: { path: '/chapter-4/public-key-2' },
+  CH4PKY3: { path: '/chapter-4/public-key-3' },
+  CH4PKY4: { path: '/chapter-4/public-key-4' },
+  CH4PKY5: { path: '/chapter-4/public-key-5' },
   CH4ADDR1: { path: '/chapter-4/address-1' },
   CH4ADDR2: { path: '/chapter-4/address-2' },
+  CH4OUT1: { path: '/chapter-4/outro-1' },
 }
 
 export const isLessonUnlocked = (
