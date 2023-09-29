@@ -9,7 +9,7 @@ import { getLessonKey } from 'lib/progress'
 
 export const metadata = {
   title: 'chapter_four.public_key_three.title',
-  key: 'CH4PK3',
+  key: 'CH4PKY3',
 }
 const javascript = {
   program: `console.log("KILL")`,

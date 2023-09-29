@@ -6,7 +6,7 @@ import { TextImage } from 'ui'
 export const metadata = {
   title: 'chapter_four.public_key_two.title',
   image: '/assets/images/chapter-4-elliptic-curve.svg',
-  key: 'CH4PK2',
+  key: 'CH4PKY2',
 }
 
 export default function PublicKey2({ lang }) {
