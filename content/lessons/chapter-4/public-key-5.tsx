@@ -7,7 +7,7 @@ import { Button } from 'shared'
 
 export const metadata = {
   title: 'chapter_four.public_key_five.title',
-  key: 'CH4PK5',
+  key: 'CH4PKY5',
 }
 
 export default function PublicKey5({ lang }) {
