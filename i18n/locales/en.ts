@@ -523,11 +523,107 @@ const translations = {
   },
 
   chapter_four: {
-    title: 'Will the real Satoshi please stand up?',
+    title: 'Claiming your 6.1 bitcoin',
     paragraph_one:
-      'A mysterious billionaire is claiming to be Satoshi Nakamoto. Why would Satoshi come forward after all this time? What are the chances Satoshi is even alive?',
+      'Phew, that was close! You are still shaking from your battle against BitRey, yet relieved that you and your friends won.',
     paragraph_two:
-      'While the public debate is largely focused on the spectacle, you have an inkling that it might be possible to disarm the claim using your knowledge of cryptography.',
+      'As you settle at your desk, you take a deep breath and drift off to replay the day’s events. Your hands keep themselves busy playing with the mysterious envelope, as you wonder who sent it. ',
+
+    intro_one: {
+      title: 'Securing the bag',
+      paragraph_one:
+        'HOLOCAT: “One of us better sleep. You need to get home and start contacting the mining pools. They’ll want to know more about it than the world will.”',
+      paragraph_two:
+        'As you settle at your TMY92-P Hover Desk, you replay the day’s events. Vanderpoole. BitRey. The revelation that mining pools never agreed to shut down in protest. Could it all be true? Was this all staged? And how much longer are you supposed to look after this cat?',
+      paragraph_three:
+        'Whatever happens next, you will most likely need some funds. You realize that you never claimed the mining rewards from your competition with BitRey. You decide to withdraw them to help pay for your flight back home.',
+    },
+
+    public_key_one: {
+      title: 'Public key',
+      heading: 'About key pairs',
+      paragraph_one:
+        'According to the mining pool, it looks like you have 6.1 bitcoin to claim from all the work you did earlier. ',
+      list_one: ' Private key',
+      list_two: 'Public key',
+      paragraph_two:
+        "But wait, you don’t even have a wallet! You might be wondering where you can buy one. While you can purchase hardware to build certain kinds of wallets, you can actually just make one with your computer or mobile device. Let's do it!",
+      paragraph_three:
+        'If you signed up for an account at any point, you got something called a personal code. In cryptography, this is called a “private key” and it is often part of a pair:',
+      paragraph_four:
+        ' A single key pair is all that’s needed to create a wallet and control the funds within it. When you want to spend bitcoin, you use the private key. When you want to receive bitcoin, you use the public key.',
+    },
+
+    public_key_two: {
+      title: 'Public key',
+      paragraph_one:
+        'So, we have the private key, it’s the personal code you got when you signed up. How do we generate a public key from it?',
+      paragraph_two:
+        'To do that, we need to take a peek at a fascinating branch of cryptography called elliptic curves. This is called Elliptic Curve Cryptography, or ECC for short.',
+      paragraph_three:
+        'ECC involves taking certain points on an elliptic curve and performing addition and multiplication on the points.',
+      paragraph_four:
+        'Bitcoin uses a specific curve called secp256k1. On the right, you see a simplified version that is easier to visualize, but follows the same mathematical rules.',
+      paragraph_five:
+        'We start with a specific point on this curve, called the Generator Point. ',
+    },
+
+    public_key_three: {
+      title: 'Public key',
+      paragraph_one:
+        'To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point (find out why). The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:',
+      paragraph_two:
+        'The elliptic curve operation is similar to addition and therefore its repetition is similar to multiplication. We use the * symbol to describe the algorithm (learn more), where `k` is the private key and `P` is the corresponding public key:',
+      paragraph_three:
+        'Complete the function `privatekey_to_publickey()` so that it returns the public key derived from a given private key.',
+    },
+
+    public_key_four: {
+      title: 'Public key',
+      paragraph_one:
+        'The public key has an x and y coordinate for a total of 64 bytes. This can be compressed into 33 bytes by removing the y coordinate and prepending a single byte of metadata. That byte will indicate if the Y coordinate is even or odd. Because the elliptic curve equation only has two variables, the complete public key can be computed later by the verifier using only x and the metadata:',
+      paragraph_two:
+        'The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function `compress_publickey()` to accept a public key and return an array of 33 bytes representing the compressed public key.',
+    },
+
+    public_key_five: {
+      title: 'Public key',
+      heading: 'Nice work!',
+      paragraph_one:
+        'And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’lll learn about that in the next challenge.',
+      paragraph_two:
+        'Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the discrete log problem.',
+    },
+
+    address_one: {
+      title: 'Address',
+      paragraph_one:
+        'Do you remember the hashing challenge? It turns out you can generate the simplest type of bitcoin address by hashing your compressed public key. Bitcoin uses two different hashing algorithms for this: SHA-256 and RIPEMD-160.',
+      paragraph_two:
+        'The first step is to perform a SHA-256 hash on your compressed public key. Then perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be a 20-byte array.',
+      paragraph_three:
+        'Complete the function `hash_compressed()` that accepts a 33-byte compressed public key and returns a 20-byte public key hash.',
+    },
+
+    address_two: {
+      title: 'Address',
+      paragraph_one:
+        'There are multiple types of bitcoin addresses. We want to create a Signet Witness Public Key Hash (wpkh) address to encode the 20-byte compressed public key hash. First we need to append the hash with the witness version number `0`. These 21 bytes are known as the witness program. The witness program is encoded into a human-friendly format called bech32, which will append a human-readable prefix and a checksum.',
+      paragraph_two: 'The prefix is determined by the network:',
+      list_one: 'Mainnet: ‘bc’',
+      list_two: 'Signet: ‘tb’',
+      list_three: 'Regtest: ‘bcrt’',
+      paragraph_three:
+        'Call the provided `hash_to_address()` function with your data to generate your Bitcoin address!',
+    },
+
+    outro_one: {
+      title: 'Outro',
+      heading: 'Success!',
+      paragraph_one: 'You created your very own bitcoin wallet!',
+      paragraph_two:
+        'You withdraw the bitcoin from the mining pool into the wallet you just created. You are now fully funded and ready for whatever Vanderpoole and BitRey may throw at you next.',
+    },
   },
 
   chapter_five: {
