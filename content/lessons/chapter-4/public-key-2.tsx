@@ -23,6 +23,7 @@ export default function PublicKey1({ lang }) {
   const [hiddenPoint, setHiddenPoint] = useState('hidden')
   const [hiddenFocusOne, setHiddenFocusOne] = useState('hidden')
   const [hiddenFocusTwo, setHiddenFocusTwo] = useState('hidden')
+  const [hiddenFocusThree, setHiddenFocusThree] = useState('hidden')
   const [hiddenPointText, setHiddenPointText] = useState('hidden')
 
   const isSmallScreen = useMediaQuery({ width: 1279 })
@@ -50,6 +51,8 @@ export default function PublicKey1({ lang }) {
     setHiddenFocusOne('')
     await sleep(1000)
     setHiddenFocusTwo('')
+    await sleep(1000)
+    setHiddenFocusThree('')
     await sleep(1000)
     setHiddenPointText('')
   }
@@ -91,13 +94,6 @@ export default function PublicKey1({ lang }) {
                   alt={'X'}
                   height={30}
                   width={30}
-                  className="animate-focus-ping absolute object-center"
-                />
-                <Image
-                  src={focusellipse}
-                  alt={'X'}
-                  height={30}
-                  width={30}
                   className={`${hiddenFocusOne} animate-focus-ping absolute object-center`}
                 />
                 <Image
@@ -106,6 +102,13 @@ export default function PublicKey1({ lang }) {
                   height={30}
                   width={30}
                   className={`${hiddenFocusTwo} animate-focus-ping absolute object-center`}
+                />
+                <Image
+                  src={focusellipse}
+                  alt={'X'}
+                  height={30}
+                  width={30}
+                  className={`${hiddenFocusThree} animate-focus-ping absolute object-center`}
                 />
               </div>
             </div>
