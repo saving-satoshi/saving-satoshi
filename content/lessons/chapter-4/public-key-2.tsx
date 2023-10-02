@@ -38,7 +38,7 @@ export default function PublicKey1({ lang }) {
   }
 
   const playAnimation = async () => {
-    sleep(2000)
+    await sleep(2000)
     setPlayLottie(true)
     if (isSmallScreen) {
       setLottieScreen([300, 200])
