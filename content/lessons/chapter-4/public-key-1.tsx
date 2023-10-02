@@ -6,7 +6,6 @@ import { Button } from 'shared'
 
 export const metadata = {
   title: 'chapter_four.public_key_one.title',
-  image: '/assets/images/chapter-4-elliptic-curve.svg',
   key: 'CH4PKY1',
 }
 

@@ -22,10 +22,11 @@ export const metadata = {
   lessons: [
     'public-key-1',
     'public-key-2',
-    'publick-key-3',
+    'public-key-3',
     'public-key-4',
     'public-key-5',
     'address-1',
+    'address-2',
   ],
   outros: ['outro-1'],
   challenges: ['public-key-1', 'address-1'],
