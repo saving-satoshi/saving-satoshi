@@ -40,24 +40,24 @@ export default function PublicKey1({ lang }) {
   const playAnimation = async () => {
     await sleep(2000)
     setPlayLottie(true)
-    if (isSmallScreen) {
-      setLottieScreen([300, 200])
-    } else {
-      setLottieScreen([600, 400])
-    }
     await sleep(3000)
     setHiddenPoint('fade-in')
-    await sleep(750)
+    await sleep(666)
     setHiddenFocusOne('')
-    await sleep(750)
+    await sleep(666)
     setHiddenFocusTwo('')
-    await sleep(750)
+    await sleep(666)
     setHiddenFocusThree('')
     await sleep(1000)
     setHiddenPointText('')
   }
 
   useEffect(() => {
+    if (isSmallScreen) {
+      setLottieScreen([300, 200])
+    } else {
+      setLottieScreen([600, 400])
+    }
     playAnimation()
   }, [isSmallScreen])
 
