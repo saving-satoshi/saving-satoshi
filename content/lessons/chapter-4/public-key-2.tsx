@@ -39,12 +39,15 @@ export default function PublicKey2({ lang }) {
   }
 
   const playAnimation = async () => {
-    await sleep(2000)
+    await sleep(4000)
     setPlayLottie(true)
+
     await sleep(3000)
     setHiddenPoint('fade-in')
-    await sleep(1000)
+
+    await sleep(2000)
     setHiddenPointText('')
+
     await sleep(666)
     setHiddenFocusOne('fade-in')
     await sleep(666)
