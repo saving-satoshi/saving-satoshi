@@ -39,7 +39,6 @@ export default function PublicKey2({ lang }) {
   }
 
   const playAnimation = async () => {
-    await sleep(4000)
     setPlayLottie(true)
 
     await sleep(3000)
@@ -48,12 +47,10 @@ export default function PublicKey2({ lang }) {
     await sleep(2000)
     setHiddenPointText('')
 
-    await sleep(666)
+    await sleep(1000)
     setHiddenFocusOne('fade-in')
-    await sleep(666)
+    await sleep(1000)
     setHiddenFocusTwo('')
-    await sleep(666)
-    setHiddenFocusThree('')
   }
 
   useEffect(() => {
