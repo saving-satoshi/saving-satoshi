@@ -17,7 +17,7 @@ export const metadata = {
   key: 'CH4PKY2',
 }
 
-export default function PublicKey1({ lang }) {
+export default function PublicKey2({ lang }) {
   const t = useTranslations(lang)
   const [playLottie, setPlayLottie] = useState<boolean>(false)
   const [lottieScreen, setLottieScreen] = useState<number[]>([600, 400])

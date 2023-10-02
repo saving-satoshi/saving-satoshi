@@ -10,7 +10,7 @@ export const metadata = {
   key: 'CH4PKY1',
 }
 
-export default function PublicKey2({ lang }) {
+export default function PublicKey1({ lang }) {
   const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
 
