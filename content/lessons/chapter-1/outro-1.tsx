@@ -20,6 +20,7 @@ export default function Outro1({ lang }) {
       imageAlt={t('chapter_one.outro_one.title')}
       btnText={t('chapter_one.outro_one.button_text')}
       btnEnabled={true}
+      objectPosition="object-left-top"
     >
       <p>{t('chapter_one.outro_one.paragraph_one')}</p>
       <p className="pt-6">{t('chapter_one.outro_one.paragraph_two')}</p>
