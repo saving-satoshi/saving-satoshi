@@ -76,12 +76,12 @@ export default function PublicKey2({ lang }) {
             <hr className="relative mt-[50px] w-[300px] opacity-25 xl:mt-[100px] xl:w-[600px]" />
             <hr className="relative mt-[50px] w-[300px] opacity-25 xl:mt-[100px] xl:w-[600px]" />
             <hr className="relative mt-[50px] w-[300px] opacity-25 xl:mt-[100px] xl:w-[600px]" />
-            <hr className="relative left-[-100px] top-[-107px] w-[300px] rotate-90 opacity-25 xl:left-[-200px] xl:top-[-207px] xl:w-[600px]" />
-            <hr className="relative left-[-50px] top-[-108px] w-[300px] rotate-90 opacity-25 xl:left-[-100px] xl:top-[-208px] xl:w-[600px]" />
-            <hr className="relative left-0 top-[-110px] w-[300px] rotate-90 opacity-25 xl:top-[-209px] xl:w-[600px]" />
-            <hr className="relative left-[50px] top-[-111px] w-[300px] rotate-90 opacity-25 xl:left-[100px] xl:top-[-211px] xl:w-[600px]" />
-            <hr className="relative left-[100px] top-[-112px] w-[300px] rotate-90 opacity-25 xl:left-[200px] xl:top-[-212px] xl:w-[600px]" />
-            <div className="relative left-[25px] top-[-263px] xl:left-[50] xl:top-[-513px]">
+            <hr className="relative left-[-100px] top-[-107px] w-[300px] rotate-90 opacity-25 xl:left-[-200px] xl:top-[-208px] xl:w-[600px]" />
+            <hr className="relative left-[-50px] top-[-108px] w-[300px] rotate-90 opacity-25 xl:left-[-100px] xl:top-[-209px] xl:w-[600px]" />
+            <hr className="relative left-0 top-[-109px] w-[300px] rotate-90 opacity-25 xl:top-[-210px] xl:w-[600px]" />
+            <hr className="relative left-[50px] top-[-110px] w-[300px] rotate-90 opacity-25 xl:left-[100px] xl:top-[-210px] xl:w-[600px]" />
+            <hr className="relative left-[100px] top-[-111px] w-[300px] rotate-90 opacity-25 xl:left-[200px] xl:top-[-211px] xl:w-[600px]" />
+            <div className="relative left-[25px] top-[-261px] xl:left-[50] xl:top-[-513px]">
               <Lottie
                 options={options}
                 height={lottieScreen[0]}
