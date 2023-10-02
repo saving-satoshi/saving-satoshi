@@ -81,7 +81,7 @@ export default function PublicKey2({ lang }) {
             <hr className="relative left-0 top-[-109px] w-[300px] rotate-90 opacity-25 xl:top-[-210px] xl:w-[600px]" />
             <hr className="relative left-[50px] top-[-110px] w-[300px] rotate-90 opacity-25 xl:left-[100px] xl:top-[-210px] xl:w-[600px]" />
             <hr className="relative left-[100px] top-[-111px] w-[300px] rotate-90 opacity-25 xl:left-[200px] xl:top-[-211px] xl:w-[600px]" />
-            <div className="relative left-[25px] top-[-261px] xl:left-[50] xl:top-[-513px]">
+            <div className="relative left-[25px] top-[-261px] xl:left-[50] xl:top-[-512px]">
               <Lottie
                 options={options}
                 height={lottieScreen[0]}
