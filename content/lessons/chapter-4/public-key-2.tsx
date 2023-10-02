@@ -6,6 +6,7 @@ import Lottie from 'react-lottie'
 import Animation1 from 'public/assets/animations/Animation1.json'
 import focusellipse from 'public/assets/images/focus-ellipse.png'
 import Circle from 'public/assets/images/circle.svg'
+import Arrow from 'public/assets/images/arrow.svg'
 import { useEffect, useState } from 'react'
 import { sleep } from 'utils'
 import Image from 'next/image'
@@ -42,14 +43,14 @@ export default function PublicKey1({ lang }) {
     setPlayLottie(true)
     await sleep(3000)
     setHiddenPoint('fade-in')
+    await sleep(1000)
+    setHiddenPointText('')
     await sleep(666)
-    setHiddenFocusOne('')
+    setHiddenFocusOne('fade-in')
     await sleep(666)
     setHiddenFocusTwo('')
     await sleep(666)
     setHiddenFocusThree('')
-    await sleep(1000)
-    setHiddenPointText('')
   }
 
   useEffect(() => {
@@ -72,12 +73,12 @@ export default function PublicKey1({ lang }) {
             <hr className="relative mt-[50px] w-[300px] opacity-25 xl:mt-[100px] xl:w-[600px]" />
             <hr className="relative mt-[50px] w-[300px] opacity-25 xl:mt-[100px] xl:w-[600px]" />
             <hr className="relative mt-[50px] w-[300px] opacity-25 xl:mt-[100px] xl:w-[600px]" />
-            <hr className="relative left-[-100px] top-[-106px] w-[300px] rotate-90 opacity-25 xl:left-[-200px] xl:top-[-206px] xl:w-[600px]" />
-            <hr className="relative left-[-50px] top-[-107px] w-[300px] rotate-90 opacity-25 xl:left-[-100px] xl:top-[-207px] xl:w-[600px]" />
-            <hr className="relative left-0 top-[-108px] w-[300px] rotate-90 opacity-25 xl:top-[-208px] xl:w-[600px]" />
-            <hr className="relative left-[50px] top-[-109px] w-[300px] rotate-90 opacity-25 xl:left-[100px] xl:top-[-209px] xl:w-[600px]" />
-            <hr className="relative left-[100px] top-[-110px] w-[300px] rotate-90 opacity-25 xl:left-[200px] xl:top-[-210px] xl:w-[600px]" />
-            <div className="relative left-[25px] top-[-261px] xl:left-[50] xl:top-[-511px]">
+            <hr className="relative left-[-100px] top-[-107px] w-[300px] rotate-90 opacity-25 xl:left-[-200px] xl:top-[-207px] xl:w-[600px]" />
+            <hr className="relative left-[-50px] top-[-108px] w-[300px] rotate-90 opacity-25 xl:left-[-100px] xl:top-[-208px] xl:w-[600px]" />
+            <hr className="relative left-0 top-[-110px] w-[300px] rotate-90 opacity-25 xl:top-[-209px] xl:w-[600px]" />
+            <hr className="relative left-[50px] top-[-111px] w-[300px] rotate-90 opacity-25 xl:left-[100px] xl:top-[-211px] xl:w-[600px]" />
+            <hr className="relative left-[100px] top-[-112px] w-[300px] rotate-90 opacity-25 xl:left-[200px] xl:top-[-212px] xl:w-[600px]" />
+            <div className="relative left-[25px] top-[-263px] xl:left-[50] xl:top-[-513px]">
               <Lottie
                 options={options}
                 height={lottieScreen[0]}
@@ -112,8 +113,13 @@ export default function PublicKey1({ lang }) {
                 />
               </div>
             </div>
+            <div
+              className={`${hiddenPointText} fade-in relative left-[6px] top-[-385px] xl:left-[52px] xl:top-[-755px]`}
+            >
+              <Arrow />
+            </div>
             <span
-              className={`${hiddenPointText} fade-in relative left-[25px] top-[-300px] font-space-mono text-xl text-white xl:left-[50px] xl:top-[-585px] xl:text-3xl`}
+              className={`${hiddenPointText} fade-in relative left-[25px] top-[-390px] font-space-mono text-xl text-white xl:left-[50px] xl:top-[-735px] xl:text-3xl`}
             >
               Generator point G
             </span>
