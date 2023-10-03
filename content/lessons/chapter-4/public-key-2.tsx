@@ -13,7 +13,6 @@ import Image from 'next/image'
 
 export const metadata = {
   title: 'chapter_four.public_key_two.title',
-  //image: '/assets/images/chapter-4-elliptic-curve.svg',
   key: 'CH4PKY2',
 }
 
@@ -24,7 +23,6 @@ export default function PublicKey2({ lang }) {
   const [hiddenPoint, setHiddenPoint] = useState('hidden')
   const [hiddenFocusOne, setHiddenFocusOne] = useState('hidden')
   const [hiddenFocusTwo, setHiddenFocusTwo] = useState('hidden')
-  const [hiddenFocusThree, setHiddenFocusThree] = useState('hidden')
   const [hiddenPointText, setHiddenPointText] = useState('hidden')
 
   const isSmallScreen = useMediaQuery({ width: 1279 })
@@ -103,13 +101,6 @@ export default function PublicKey2({ lang }) {
                   height={30}
                   width={30}
                   className={`${hiddenFocusTwo} animate-focus-ping absolute object-center`}
-                />
-                <Image
-                  src={focusellipse}
-                  alt={'X'}
-                  height={30}
-                  width={30}
-                  className={`${hiddenFocusThree} animate-focus-ping absolute object-center`}
                 />
               </div>
             </div>
