@@ -131,7 +131,7 @@ export default function HashChallenge({
                 onBlur={handleFocus}
                 placeholder={inputPlaceholder}
                 className={clsx(
-                  'top-0 left-0 w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] text-white outline-none md:text-center md:text-[30px] md:tracking-[5%]',
+                  'left-0 top-0 w-full resize-none overflow-hidden break-all bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] text-white outline-none md:text-center md:text-[30px] md:tracking-[5%]',
                   {
                     'overlay-complete':
                       (typeof answer === 'string' &&

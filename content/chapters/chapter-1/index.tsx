@@ -30,4 +30,5 @@ export const metadata = {
   ],
   outros: ['outro-1, outro-2'],
   challenges: ['genesis-1', 'transacting-1'],
+  help: 'help',
 }

@@ -2,12 +2,12 @@
 
 import { useTranslations, useSaveAndProceed } from 'hooks'
 import { ChapterIntro } from 'ui'
-import {} from 'hooks'
 import { Button } from 'shared'
 
 export const metadata = {
   title: 'chapter_four.public_key_one.title',
   key: 'CH4PKY1',
+  help: 'test',
 }
 
 export default function PublicKey1({ lang }) {
