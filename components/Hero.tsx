@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <div className="flex h-full grow items-end justify-center">
       <Image
-        src="/assets/images/main-image.png"
+        src="/assets/images/main-image.jpg"
         alt="Saving Satoshi"
         fill
         quality={100}
@@ -31,7 +31,7 @@ export default function Hero() {
         <p className="px-8 pt-2 text-center text-2xl sm:text-3xl md:pt-5 lg:text-4xl">
           {t('hero.description')}
         </p>
-        <div className="grid grid-cols-1 justify-center pt-5 pb-2 sm:pb-8 md:grid-cols-2 md:space-x-5 md:pt-8">
+        <div className="grid grid-cols-1 justify-center pb-2 pt-5 sm:pb-8 md:grid-cols-2 md:space-x-5 md:pt-8">
           <div className="flex items-center justify-center md:justify-end">
             <Button
               classes="text-xl md:!w-64 w-full"
