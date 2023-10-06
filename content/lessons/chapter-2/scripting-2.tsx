@@ -22,6 +22,8 @@ const javascript = {
 
 // Create a program that finds a sha256 hash starting with 5 zeroes.
 // To submit your answer, log it to the terminal using console.log().
+
+// Type your code here
 `,
   validate: async (answer) => {
     if (!answer.startsWith('00000')) {
@@ -34,6 +36,12 @@ const javascript = {
 
     return [true, undefined]
   },
+  constraints: [
+    {
+      range: [5, 1, 7, 1],
+      allowMultiline: true,
+    },
+  ],
 }
 
 const python = {
@@ -45,7 +53,10 @@ const python = {
   defaultCode: `from hashlib import sha256
 
 # Create a program that finds a sha256 hash starting with 5 zeroes.
-# To submit your answer, print it to the terminal using print().`,
+# To submit your answer, print it to the terminal using print().
+
+# Type your code here
+`,
   validate: async (answer) => {
     if (!answer.startsWith('00000')) {
       return [false, 'Hash must start with 5 zeroes.']
@@ -57,6 +68,12 @@ const python = {
 
     return [true, undefined]
   },
+  constraints: [
+    {
+      range: [5, 1, 7, 1],
+      allowMultiline: true,
+    },
+  ],
 }
 
 const config: EditorConfig = {
@@ -89,10 +106,7 @@ export default function Scripting2({ lang }) {
           {t('chapter_two.scripting_two.paragraph_one')}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_two.scripting_two.paragraph_two')}
-        </Text>
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_two.scripting_two.${language}.paragraph_three`)}
+          {t(`chapter_two.scripting_two.${language}.paragraph_two`)}
         </Text>
         <ul className="list-disc pl-4">
           <li className="mt-4 font-nunito text-xl text-white">

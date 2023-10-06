@@ -39,6 +39,7 @@ export default function Mining1({ lang }) {
   const [finalMining, setFinalMining] = useState(false)
   const [showText, setShowText] = useState(true)
   const [hashPower, setHashPower] = useState(0)
+  const [tenXHint, setTenXHint] = useState(false)
 
   const saveAndProceed = useSaveAndProceed()
 
@@ -183,6 +184,9 @@ export default function Mining1({ lang }) {
       setStep(3)
       setShowText(true)
       setRandomNonce(true)
+      setTimeout(() => {
+        setTenXHint(true)
+      }, 10000)
     }
 
     if (step === 3) {
@@ -251,7 +255,8 @@ export default function Mining1({ lang }) {
                 setHashPower={setHashPower}
                 onButtonClick={turnOnButton}
                 step={step}
-              ></StartButton>
+                mining
+              />
             </div>
             <ProgressBar progress={hashPower / 440} variant={'bars'} />{' '}
             {/* progress = hashPower * 100/maxHashPower */}
@@ -353,10 +358,19 @@ export default function Mining1({ lang }) {
             </div>
           )}
           {step === 3 && (
-            <div className="font-nunito text-white">
+            <div className="gap-2 font-nunito text-white">
               <Title>{t('chapter_two.mining_one.heading_four')}</Title>
-              <div className="mt-2 text-lg">
+              <div className="mb-2 text-lg">
                 {t('chapter_two.mining_one.paragraph_nine')}
+              </div>
+              <div className="relative text-lg">
+                <div
+                  className={`fade-in absolute left-0 top-0 ${
+                    !tenXHint && 'hidden'
+                  }`}
+                >
+                  {t('chapter_two.mining_one.ten_x_hint')}
+                </div>
               </div>
             </div>
           )}

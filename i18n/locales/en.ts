@@ -99,7 +99,7 @@ const translations = {
       title: 'Genesis',
       heading: 'Your first challenge',
       paragraph_one:
-        'Bitcoin is censorship resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
+        'Bitcoin is censorship-resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
       paragraph_two:
         'Satoshi Nakamoto, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left the world a secret message in the very first bitcoin transaction that was ever made. Your first challenge is to find and decode it.',
     },
@@ -108,12 +108,12 @@ const translations = {
       title: 'Genesis',
       heading: 'Find the hidden message',
       paragraph_one:
-        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]" className="underline">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
       paragraph_two:
-        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]" className="underline">HEX</Tooltip>)”. The value next to it is an encoded message.',
+        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. The value next to it is an encoded message.',
       paragraph_three: 'Copy that value and paste it in the code block.',
       tooltip_block_explorer:
-        'A <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
+        'A <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
       tooltip_hex:
         'Short for hexadecimal, a numeral system that represents numbers using a base of 16.',
       view_block_0: 'View Block 0',
@@ -143,7 +143,7 @@ const translations = {
       title: 'Transacting',
       heading: 'What’s in a transaction?',
       paragraph_one:
-        'Transactions have two parts: inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
+        'Two main componenets of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
       paragraph_two:
         'For the following transaction, we’re going to identify the output of type OP_RETURN.',
     },
@@ -269,7 +269,7 @@ const translations = {
       heading:
         'Enter anything until you find a hash that starts with a zero (“0”)',
       hint_prompt:
-        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip" className="underline">hint</Tooltip>?',
+        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip">hint</Tooltip>?',
       hint_tooltip:
         '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">popcorn</span>',
     },
@@ -286,7 +286,7 @@ const translations = {
       heading:
         'Enter anything until you find a hash that starts with two zeroes (“00”)',
       hint_prompt:
-        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip" className="underline">hint</Tooltip>?',
+        'Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">hint</Tooltip>?',
       hint_tooltip:
         '<span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">trigonometry</span>',
     },
@@ -311,20 +311,18 @@ const translations = {
     scripting_two: {
       title: 'Automation',
       paragraph_one:
-        'Alright, time to write and run your own code. Write a function that returns a sha256 hash. The code should calculate and return a hash based on the nonce argument.',
-      paragraph_two:
-        'When you press "Run the script", the function you wrote will be called over and over with an ever-increasing nonce (which is just a regular number). Write code to calculate and return a hash based on the nonce. We are trying to run this function until we find a hash that starts with five zeroes (“00000”).',
+        'Alright, time to write and run your own code. Write a script that generates a sha256 hash that begins with five zeroes ("00000..."). Your code should repeatedly call the sha256 function with different input until the output satisfies this requirement. You should try incrementing an integer inside a loop to get different inputs. In cryptography this number may referred to as a "nonce" or "number used once".',
       python: {
-        paragraph_three:
-          'We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
+        paragraph_two:
+          "When you find a nonce with a hash that begins with five zeroes, use Python's `print()` function to return the hash to the console. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:",
         list_one:
           '<Link href="https://docs.python.org/3/library/hashlib.html" className="underline">hashlib documentation</Link>',
         list_two:
           '<Link href="https://datagy.io/python-sha256/" className="underline">Tutorial python function</Link>',
       },
       javascript: {
-        paragraph_three:
-          'We are using the crypto library in javascript to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
+        paragraph_two:
+          "When you find a nonce with a hash that begins with five zeroes, use JavaScript's `console.log()` function to return the hash to the console. We are using the crypto library in javascript to help you along in creating this function, you can use the following external resources to help you write this function if needed:",
         list_one:
           '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" className="underline">crypto documentation</Link>',
         list_two:
@@ -374,6 +372,7 @@ const translations = {
       progress_bar_three: 'Transactions confirmed',
       progress_bar_four: 'Bitcoin earned',
       button_hash: '10x hash power, please',
+      ten_x_hint: 'Tap the 10x button to speed up the hashing!',
     },
     outro_one: {
       title: 'Outro',
@@ -389,27 +388,16 @@ const translations = {
   chapter_three: {
     title: 'The 51% Attack',
     paragraph_one:
-      'Phew, that was close. You are still shaking from your battle againstAmestris, yet relieved that a victory was possible.',
+      'You enter the address of a block explorer blocks are back to ten minutes intervals. Somehow, holocat sleeps through the noise of the machines.',
     paragraph_two:
-      'As you settle at your desk, you take a deep breath and drift off toreplay the day’s events. Your hands keep themselves busy playing withthe mysterious envelope, as you wonder who sent it. Who still usesenvelopes anyways, it’s 2139 after all. Even more curious is that thereis a stamp on it, from 2008...could this be another hint?',
-    paragraph_three:
-      'Suddenly, you realize that you never claimed the block rewards from your competition with Amestris. Your bitcoin wallet is running low, so now is a good time to top it up again.',
-
+      '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking holocat. It’s not a coincidence.',
     intro_one: {
       title: 'Hashing it out',
       paragraph_one:
-        'You enter the address of a block explorer blocks are back to ten minutes intervals. Somehow, holocat sleeps through the noise of the machines.',
-      paragraph_two:
-        '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking holocat. It’s not a coincidence.',
-      paragraph_three:
         '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is under a 51% attack! Vanderpoole used a virus to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the Bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply.” – Satoshi Nakamoto',
-    },
-
-    intro_two: {
-      title: 'Hashing it out',
-      paragraph_one:
-        '—The old computer coughs a little, then produces a wad of data in something called a “spreadsheet”: contact info for some of the largest bitcoin pool operators and a patch to the virus that is letting BitRey control them. Send the file to them so they can regain control of their machines and join your fight against BitRey.',
       paragraph_two:
+        '—The old computer coughs a little, then produces a wad of data in something called a “spreadsheet”: contact info for some of the largest bitcoin pool operators and a patch to the virus that is letting BitRey control them. Send the file to them so they can regain control of their machines and join your fight against BitRey.',
+      paragraph_three:
         'HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”',
     },
 
@@ -417,22 +405,111 @@ const translations = {
       title: 'You vs. Bitrey',
       step_zero_heading: 'Let’s give it a try',
       step_zero_paragraph_one:
-        'While you’re waiting for the pool operators, you decide to fend off BitRey by yourself. Here’s how your hash rate stacks up. How do you think this will go?',
+        'While you’re waiting for the pool operators you reached out to, you decide to fend off BitRey by yourself. Here’s how your hash rate stacks up. How do you think this will go?',
       step_one_heading: 'We’re off to the races',
       step_one_paragraph_one:
-        'We’re mining for another 100 blocks to see how many BitRey will mine, and how many you will.',
+        'We’re now mining 100 blocks to see how many you and BitRey will mine.',
       step_two_heading: 'That did not go too well!',
       step_two_paragraph_one:
-        'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s go back to the drawing board. Bitcoin has been running for over a decade and it’s not going down without a fight.',
+        'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s see if we can defeat BitRey for the next 100 blocks with the other pool operators. Bitcoin has been running for over a decade and it’s not going down without a fight.',
     },
+
     pool_one: {
-      title: 'Coop vs. BitRey',
+      title: 'Pool vs. BitRey',
+      waiting_screen_heading: 'We need support!',
+      waiting_screen_paragraph_one:
+        'Your miners in the warehouse alone don’t stand a chance. If you combine your hashing power with other pools, you might be able to hold the line against the assault.',
+      waiting_screen_paragraph_two:
+        'Let’s wait until the others join your pool, which HoloCat insists gets named after her, so we can combine forces.',
+      waiting_button: 'Waiting...',
+      continue_button: "Let's go",
+    },
+
+    pool_two: {
+      title: 'Pool vs. BitRey',
       step_zero_heading: 'Here we go',
       step_zero_paragraph_one:
-        'When you combine your hash rate with the other pool operator’s, can you stand up against Bitrey?',
+        'When you combine your hashrate with the other pool operators, can you stand up against BitRey?',
       step_two_heading: 'Another defeat!',
       step_two_paragraph_one:
-        'Something is wrong. Only one of your miners found blocks, Why do you think that might be?',
+        'Something is wrong. Only Hash Hoppers found blocks. Why do you think that might be?',
+    },
+
+    coop_one: {
+      title: 'Coop vs. BitRey',
+      heading: 'Something is not quite right yet.',
+      paragraph_one:
+        'Hash Hoppers, the one with the most hash power, is finding all your blocks but others find nothing.',
+      paragraph_two:
+        'The problem is that everyone is checking the same nonces while they’re mining. How can you better coordinate?',
+      paragraph_three:
+        ' You decide to place a unique identifier in the “extraNonce” when preparing the block data for each of you to prevent duplicate efforts.',
+    },
+
+    coop_two: {
+      title: 'Coop vs. BitRey',
+      heading: 'What is the extraNonce?',
+      paragraph_one:
+        'For the Stratum mining pool protocol (not bitcoin protocol), the coinbase transaction also has something called the “extra nonce”. When providing miners with the block data, mining pools divide the extra nonce into two parts: “extranonce1” and “extranonce2”.',
+      paragraph_two:
+        'Splitting the extra nonce into two parts has several advantages:',
+      list_one: 'It prevents pool participants from doing the same work.',
+      list_two:
+        'It allows the pool to send the same transaction list to all miners that are pooling together. That means miners simply have to update “extranonce2” and not change transactions included in the block.',
+      list_three:
+        'The “extranonce1” allows pools to identify and determine share contribution because each miner gets their own “extranonce1”.',
+      paragraph_three:
+        ' Miners who contribute to a pool update the “extranonce2” and cycle through the nonce in the block header. If they don’t find a solution, they repeat the process with a different “extranonce2” until they do.',
+      paragraph_four: 'Let’s try again splitting the work using this method.',
+    },
+
+    coop_three: {
+      title: 'Coop vs. BitRey',
+      step_zero_heading: 'One more time...',
+      step_zero_paragraph_one:
+        'Let’s see if we stand a chance against BitRey now with our improved strategy of dividing the nonce space.',
+      step_two_heading: 'You did it!',
+      step_two_paragraph_one:
+        'Together you and the other pool operators were able to hold back BitRey’s attempt to overtake the network.',
+    },
+
+    split_one: {
+      title: 'Splitting Rewards',
+      heading: 'Nicely done.',
+      paragraph_one:
+        'Not only did you defend the network against BitRey, you also earned bitcoin as a reward!',
+      paragraph_two:
+        'For every block that is mined, the miner gets a reward in bitcoin. If more than one person worked on the block, the group of miners (mining pool) gets a reward to share.',
+      paragraph_three: 'This reward is made up of two things:',
+      list_one: 'fees for all the transactions in the block',
+      list_two: 'the block subsidy',
+      paragraph_four:
+        'You and your miner friends have earned a total of 6.1 bitcoin and are looking for a good way to split it up. It should be divided based on how much work each of you put in.',
+      paragraph_five:
+        'Mining pools solve this by tracking how many partial solutions each miner has generated. A pool assigns each miner a minimum difficulty (lower than the block difficulty) based on their hash power. Every few seconds a miner finds one of those easier solutions and notifies the pool. The pool then tracks all the submitted shares and splits up the block rewards accordingly.',
+      paragraph_six: 'Let’s take a look at this in action.',
+    },
+
+    split_two: {
+      title: 'Splitting Rewards',
+      step_zero_heading: 'Let’s review everyone’s efforts',
+      step_zero_paragraph:
+        'We will re-run the battle. This time we will only focus on our pool, specifically on the number of partial solutions each miner found.',
+      step_two_heading: 'Let’s do the math',
+      step_two_paragraph:
+        'Take a look at the numbers above and see if you can find a fair way to split up the rewards. Figured it out? Let’s go over it step by step.',
+      step_three_heading: 'Hash rate percentage',
+      step_three_paragraph:
+        'As you know, this represents the amount of work every miner has chipped in to find blocks. But the mining pool has no way of knowing or measuring this number, since miners only forward successful solutions.',
+      step_four_heading: 'Block found percentage',
+      step_four_paragraph:
+        'The chance of finding a block is very low since it has a lot to do with luck. Especially in scenarios with some extremely powerful miners, the really small miners may contribute work but never find and blocks. ',
+      step_five_heading: 'Partial solution percentage',
+      step_five_paragraph:
+        'Now this number will work. Miners report these solutions to easier problems regularly to pools. That allows pools to fairly accurately measure how much work each pool has provided.',
+      step_six_heading: 'Splitting the rewards',
+      step_six_paragraph:
+        'Now we can take the rewards of 6.1 bitcoin and split them up according to the percentage of partial solutions of each pool. Congratulations!',
     },
 
     outro_one: {
@@ -446,11 +523,107 @@ const translations = {
   },
 
   chapter_four: {
-    title: 'Will the real Satoshi please stand up?',
+    title: 'Claiming your 6.1 bitcoin',
     paragraph_one:
-      'A mysterious billionaire is claiming to be Satoshi Nakamoto. Why would Satoshi come forward after all this time? What are the chances Satoshi is even alive?',
+      'Phew, that was close! You are still shaking from your battle against BitRey, yet relieved that you and your friends won.',
     paragraph_two:
-      'While the public debate is largely focused on the spectacle, you have an inkling that it might be possible to disarm the claim using your knowledge of cryptography.',
+      'As you settle at your desk, you take a deep breath and drift off to replay the day’s events. Your hands keep themselves busy playing with the mysterious envelope, as you wonder who sent it. ',
+
+    intro_one: {
+      title: 'Securing the bag',
+      paragraph_one:
+        'HOLOCAT: “One of us better sleep. You need to get home and start contacting the mining pools. They’ll want to know more about it than the world will.”',
+      paragraph_two:
+        'As you settle at your TMY92-P Hover Desk, you replay the day’s events. Vanderpoole. BitRey. The revelation that mining pools never agreed to shut down in protest. Could it all be true? Was this all staged? And how much longer are you supposed to look after this cat?',
+      paragraph_three:
+        'Whatever happens next, you will most likely need some funds. You realize that you never claimed the mining rewards from your competition with BitRey. You decide to withdraw them to help pay for your flight back home.',
+    },
+
+    public_key_one: {
+      title: 'Public key',
+      heading: 'About key pairs',
+      paragraph_one:
+        'According to the mining pool, it looks like you have 6.1 bitcoin to claim from all the work you did earlier. ',
+      list_one: ' Private key',
+      list_two: 'Public key',
+      paragraph_two:
+        "But wait, you don’t even have a wallet! You might be wondering where you can buy one. While you can purchase hardware to build certain kinds of wallets, you can actually just make one with your computer or mobile device. Let's do it!",
+      paragraph_three:
+        'If you signed up for an account at any point, you got something called a personal code. In cryptography, this is called a “private key” and it is often part of a pair:',
+      paragraph_four:
+        ' A single key pair is all that’s needed to create a wallet and control the funds within it. When you want to spend bitcoin, you use the private key. When you want to receive bitcoin, you use the public key.',
+    },
+
+    public_key_two: {
+      title: 'Public key',
+      paragraph_one:
+        'So, we have the private key, it’s the personal code you got when you signed up. How do we generate a public key from it?',
+      paragraph_two:
+        'To do that, we need to take a peek at a fascinating branch of cryptography called elliptic curves. This is called Elliptic Curve Cryptography, or ECC for short.',
+      paragraph_three:
+        'ECC involves taking certain points on an elliptic curve and performing addition and multiplication on the points.',
+      paragraph_four:
+        'Bitcoin uses a specific curve called secp256k1. On the right, you see a simplified version that is easier to visualize, but follows the same mathematical rules.',
+      paragraph_five:
+        'We start with a specific point on this curve, called the Generator Point. ',
+    },
+
+    public_key_three: {
+      title: 'Public key',
+      paragraph_one:
+        'To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point (find out why). The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:',
+      paragraph_two:
+        'The elliptic curve operation is similar to addition and therefore its repetition is similar to multiplication. We use the * symbol to describe the algorithm (learn more), where `k` is the private key and `P` is the corresponding public key:',
+      paragraph_three:
+        'Complete the function `privatekey_to_publickey()` so that it returns the public key derived from a given private key.',
+    },
+
+    public_key_four: {
+      title: 'Public key',
+      paragraph_one:
+        'The public key has an x and y coordinate for a total of 64 bytes. This can be compressed into 33 bytes by removing the y coordinate and prepending a single byte of metadata. That byte will indicate if the Y coordinate is even or odd. Because the elliptic curve equation only has two variables, the complete public key can be computed later by the verifier using only x and the metadata:',
+      paragraph_two:
+        'The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function `compress_publickey()` to accept a public key and return an array of 33 bytes representing the compressed public key.',
+    },
+
+    public_key_five: {
+      title: 'Public key',
+      heading: 'Nice work!',
+      paragraph_one:
+        'And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’lll learn about that in the next challenge.',
+      paragraph_two:
+        'Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the discrete log problem.',
+    },
+
+    address_one: {
+      title: 'Address',
+      paragraph_one:
+        'Do you remember the hashing challenge? It turns out you can generate the simplest type of bitcoin address by hashing your compressed public key. Bitcoin uses two different hashing algorithms for this: SHA-256 and RIPEMD-160.',
+      paragraph_two:
+        'The first step is to perform a SHA-256 hash on your compressed public key. Then perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be a 20-byte array.',
+      paragraph_three:
+        'Complete the function `hash_compressed()` that accepts a 33-byte compressed public key and returns a 20-byte public key hash.',
+    },
+
+    address_two: {
+      title: 'Address',
+      paragraph_one:
+        'There are multiple types of bitcoin addresses. We want to create a Signet Witness Public Key Hash (wpkh) address to encode the 20-byte compressed public key hash. First we need to append the hash with the witness version number `0`. These 21 bytes are known as the witness program. The witness program is encoded into a human-friendly format called bech32, which will append a human-readable prefix and a checksum.',
+      paragraph_two: 'The prefix is determined by the network:',
+      list_one: 'Mainnet: ‘bc’',
+      list_two: 'Signet: ‘tb’',
+      list_three: 'Regtest: ‘bcrt’',
+      paragraph_three:
+        'Call the provided `hash_to_address()` function with your data to generate your Bitcoin address!',
+    },
+
+    outro_one: {
+      title: 'Outro',
+      heading: 'Success!',
+      paragraph_one: 'You created your very own bitcoin wallet!',
+      paragraph_two:
+        'You withdraw the bitcoin from the mining pool into the wallet you just created. You are now fully funded and ready for whatever Vanderpoole and BitRey may throw at you next.',
+    },
   },
 
   chapter_five: {
@@ -544,6 +717,14 @@ const translations = {
   hasher: {
     placeholder: 'Type here...',
     return_hash: 'Below you will see your input converted to a hash',
+  },
+
+  hashrate: {
+    start: 'Start',
+    running: 'Running',
+    blocks_found: 'Blocks found',
+    hashrate: 'Hashrate',
+    partial_solutions: 'Partial solutions',
   },
 
   runner: {

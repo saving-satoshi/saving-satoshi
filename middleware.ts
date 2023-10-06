@@ -12,18 +12,32 @@ function getLocale(request: NextRequest): string | undefined {
   const negotiatorHeaders: Record<string, string> = {}
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
 
-  // Use negotiator and intl-localematcher to get best locale
-  let languages = new Negotiator({ headers: negotiatorHeaders }).languages()
   // @ts-ignore locales are readonly
-  const locales: string[] = i18n.locales.map((language) => language.locale)
-  return matchLocale(languages, locales, i18n.defaultLocale)
+  const locales: { locale: string; label: string }[] = i18n.locales
+
+  // Use negotiator and intl-localematcher to get best locale
+  let languages = new Negotiator({ headers: negotiatorHeaders }).languages(
+    locales
+  )
+
+  try {
+    const locale = matchLocale(
+      languages,
+      locales.map((l) => l.locale),
+      i18n.defaultLocale
+    )
+    return locale
+  } catch (ex) {
+    console.error(ex)
+    return 'en'
+  }
 }
 
 export function middleware(request: NextRequest) {
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname
-  if (['/robots.txt'].some((p) => pathname.startsWith(p))) {
-    return
+  if (!pathname) {
+    return NextResponse.next()
   }
 
   // Redirect to '/' for homepage
@@ -49,6 +63,6 @@ export function middleware(request: NextRequest) {
 export const config = {
   // TODO: Find a way to handle these dynamically
   matcher: [
-    '/((?!_next/static|_next/image|assets|favicon.ico|android-icon|favicon|manifest.json).*)',
+    '/((?!_next/static|_next/image|assets|favicon|favicon.ico|android-icon|robots.txt|manifest.json|.well-known/nostr.json).*)',
   ],
 }

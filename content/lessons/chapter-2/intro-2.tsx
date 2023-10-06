@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations } from 'hooks'
+import { useTranslations, useMediaQuery } from 'hooks'
 import { Introduction, Text } from 'ui'
 
 export const metadata = {
@@ -12,8 +12,13 @@ export const metadata = {
 export default function Intro2({ lang }) {
   const t = useTranslations(lang)
 
+  const isSmallScreen = useMediaQuery({ width: 1024 })
+
   return (
-    <Introduction lang={lang}>
+    <Introduction
+      lang={lang}
+      imagePosition={isSmallScreen ? 'object-left' : undefined}
+    >
       <h1 className="mb-3 font-cbrush text-5xl">
         {t('chapter_two.intro_two.title')}
       </h1>

@@ -11,6 +11,9 @@
   --incorrect-answer: #ef960b;
   --input-text: #6e7d92;
   --dynamic-height: 100vh;
+  --CH3SOL1-bg: #411e4f;
+  --CH3SOL1-gradient-start: #3c1843;
+  --CH3SOL1-gradient-stop: #45235a;
 }
 
 .-theme-purple {
@@ -239,3 +242,45 @@ div.react-terminal-active-input {
 .fade-out {
   animation: fadeOut 0.3s ease-in-out forwards;
 }
+
+.height-minus-nav {
+  height: calc(100vh - 70px);
+}
+
+.solo-1-bg {
+  background: var(--CH3SOL1-bg);
+}
+
+.solo-1-theme {
+  background: linear-gradient(
+    315deg,
+    var(--CH3SOL1-gradient-start),
+    var(--CH3SOL1-gradient-stop)
+  );
+}
+
+.solo-1-secondary-theme {
+  background: var(--CH3SOL1-bg);
+}
+
+.auto-scroll {
+  padding-bottom: 15px;
+}
+
+.auto-scroll::-webkit-scrollbar {
+  -webkit-appearance: none;
+  background-color: rgba(0, 0, 0, 0.25);
+  height: 5px;
+  border-radius: 4px;
+}
+
+.auto-scroll::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.auto-scroll::-webkit-scrollbar-thumb:hover {
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+

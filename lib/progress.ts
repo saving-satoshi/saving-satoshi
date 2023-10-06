@@ -27,10 +27,25 @@ export const keys = [
   'CH2OUT1',
 
   'CH3INT1',
-  'CH3INT2',
   'CH3SOL1',
   'CH3POL1',
+  'CH3POL2',
+  'CH3COO1',
+  'CH3COO2',
+  'CH3COO3',
+  'CH3SPL1',
+  'CH3SPL2',
   'CH3OUT1',
+
+  'CH4INT1',
+  'CH4PKY1',
+  'CH4PKY2',
+  'CH4PKY3',
+  'CH4PKY4',
+  'CH4PKY5',
+  'CH4ADDR1',
+  'CH4ADDR2',
+  'CH4OUT1',
 ]
 
 export const keysMeta = {
@@ -60,10 +75,25 @@ export const keysMeta = {
   CH2OUT1: { path: '/chapter-2/outro-1' },
 
   CH3INT1: { path: '/chapter-3/intro-1' },
-  CH3INT2: { path: '/chapter-3/intro-2' },
   CH3SOL1: { path: '/chapter-3/solo-1' },
   CH3POL1: { path: '/chapter-3/pool-1' },
+  CH3POL2: { path: '/chapter-3/pool-2' },
+  CH3COO1: { path: '/chapter-3/coop-1' },
+  CH3COO2: { path: '/chapter-3/coop-2' },
+  CH3COO3: { path: '/chapter-3/coop-3' },
+  CH3SPL1: { path: '/chapter-3/split-1' },
+  CH3SPL2: { path: '/chapter-3/split-2' },
   CH3OUT1: { path: '/chapter-3/outro-1' },
+
+  CH4INT1: { path: '/chapter-4/intro-1' },
+  CH4PKY1: { path: '/chapter-4/public-key-1' },
+  CH4PKY2: { path: '/chapter-4/public-key-2' },
+  CH4PKY3: { path: '/chapter-4/public-key-3' },
+  CH4PKY4: { path: '/chapter-4/public-key-4' },
+  CH4PKY5: { path: '/chapter-4/public-key-5' },
+  CH4ADDR1: { path: '/chapter-4/address-1' },
+  CH4ADDR2: { path: '/chapter-4/address-2' },
+  CH4OUT1: { path: '/chapter-4/outro-1' },
 }
 
 export const isLessonUnlocked = (
@@ -208,7 +238,6 @@ export const getLessonKey = (chapterId, lessonId) => {
   if (!lesson) {
     return undefined
   }
-
   return lesson.metadata.key
 }
 

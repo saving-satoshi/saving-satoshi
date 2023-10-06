@@ -1,7 +1,7 @@
 import clsx from 'clsx'
+import Icon from 'shared/Icon'
 import Avatar from 'components/Avatar'
 import React from 'react'
-import { useMediaQuery } from 'hooks'
 
 export default function Profile({
   children,
@@ -18,32 +18,38 @@ export default function Profile({
   username: string
   description?: string
 }) {
-  const isSmallScreen = useMediaQuery({ width: 767 })
-
   return (
-    <div className={clsx('flex w-full flex-col items-center', className)}>
-      <div
-        className={clsx('flex justify-center gap-x-2.5 text-center', {
-          'flex-col': !isSmallScreen,
-          'flex-row items-center': isSmallScreen,
-        })}
-      >
+    <div
+      className={clsx(
+        'flex w-full max-w-none flex-col items-center md:max-w-[300px] 2xl:max-w-none',
+        className
+      )}
+    >
+      <div className="flex flex-row items-center justify-center gap-x-2.5 text-center sm:flex-col">
         <div
           className={clsx('flex justify-center', {
-            'mb-5': chip,
+            'mb-2 flex-col items-center': chip,
             'mb-2': !chip,
           })}
         >
-          <Avatar avatar={avatar} size={isSmallScreen ? 50 : 100} />
+          {avatar && (
+            <Avatar
+              className="max-h-[50px] min-h-[50px] min-w-[50px] max-w-[50px] text-white md:h-[100px] md:max-h-[100px] md:min-h-[100px] md:min-w-[100px] md:max-w-[100px]"
+              avatar={avatar}
+            />
+          )}
+          {!avatar && (
+            <Icon
+              icon="avatar"
+              className="max-h-[50px] min-h-[50px] min-w-[50px] max-w-[50px] text-white md:h-[100px] md:max-h-[100px] md:min-h-[100px] md:min-w-[100px] md:max-w-[100px]"
+            />
+          )}
           {chip && (
-            <div
-              className="absolute flex w-full"
-              style={{ top: 'calc(100% - 12px)' }}
-            >
+            <>
               {React.cloneElement(chip, {
                 className: clsx(chip.props.className, 'mx-auto'),
               })}
-            </div>
+            </>
           )}
         </div>
         <div className="mb-[15px] flex flex-col gap-4">

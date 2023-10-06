@@ -51,4 +51,5 @@ export type Profile = {
 
 export interface ProfileWithHashPower extends Profile {
   hashpower: number
+  hashes: number
 }

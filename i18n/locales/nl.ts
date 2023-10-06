@@ -122,8 +122,8 @@ const translations = {
   genesis_two: {
     title: 'Genesis',
     heading: 'Vind block 0',
-    paragraph_one: `Laten we het allereerste block in de Bitcoin blockchain vinden. Gebruik een <Tooltip id="genesis_two_paragraph_one" content="genesis_two.tooltip_block_explorer" className="underline">block explorer</Tooltip> en zoek naar ’0’. Dit zal je naar het block op hoogte 0 nemen. Zoals je kunt zien bevat dit blok maar één transactie.`,
-    paragraph_two: `Klap de transactie uit zodat u de details beter kunt bekijken. Aan de linkerzijde is er een input genaamd 'Coinbase'. Daarbinnen bevindt zich een veld met de naam 'ScriptSig'. Kopieer de <Tooltip id="genesis_two_paragraph_two" content="genesis_two.tooltip_hex" className="underline">HEX</Tooltip> versie van de ScriptSig en plak deze hieronder.`,
+    paragraph_one: `Laten we het allereerste block in de Bitcoin blockchain vinden. Gebruik een <Tooltip id="genesis_two_paragraph_one" content="genesis_two.tooltip_block_explorer">block explorer</Tooltip> en zoek naar ’0’. Dit zal je naar het block op hoogte 0 nemen. Zoals je kunt zien bevat dit blok maar één transactie.`,
+    paragraph_two: `Klap de transactie uit zodat u de details beter kunt bekijken. Aan de linkerzijde is er een input genaamd 'Coinbase'. Daarbinnen bevindt zich een veld met de naam 'ScriptSig'. Kopieer de <Tooltip id="genesis_two_paragraph_two" content="genesis_two.tooltip_hex">HEX</Tooltip> versie van de ScriptSig en plak deze hieronder.`,
     tooltip_block_explorer:
       'Een <a href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is een handige tool om snel informatie over bitcoin transacties op te zoeken.',
     tooltip_hex:
