@@ -252,7 +252,7 @@ div.react-terminal-active-input {
 }
 
 .animate-focus-ping {
-  animation: focusPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation: focusPing 6s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 .height-minus-nav {

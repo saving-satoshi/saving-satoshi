@@ -5,8 +5,8 @@ import { TextImage } from 'ui'
 import Lottie from 'react-lottie'
 import Animation1 from 'public/assets/animations/Animation1.json'
 import focusellipse from 'public/assets/images/focus-ellipse.png'
-import Circle from 'public/assets/images/circle.svg'
-import Arrow from 'public/assets/images/arrow.svg'
+import Circle from 'shared/icons/Circle'
+import Arrow from 'shared/icons/Arrow'
 import { useEffect, useState } from 'react'
 import { sleep } from 'utils'
 import Image from 'next/image'
@@ -18,8 +18,9 @@ export const metadata = {
 
 export default function PublicKey2({ lang }) {
   const t = useTranslations(lang)
-  const [playLottie, setPlayLottie] = useState<boolean>(false)
+  const [lottiePause, setLottiePause] = useState<boolean>(true)
   const [lottieScreen, setLottieScreen] = useState<number[]>([600, 400])
+  const [arrowSize, setArrowSize] = useState<string[]>(['64', '125'])
   const [hiddenPoint, setHiddenPoint] = useState('hidden')
   const [hiddenFocusOne, setHiddenFocusOne] = useState('hidden')
   const [hiddenFocusTwo, setHiddenFocusTwo] = useState('hidden')
@@ -29,7 +30,7 @@ export default function PublicKey2({ lang }) {
 
   const options = {
     loop: false,
-    autoplay: playLottie,
+    autoPlay: true,
     animationData: Animation1,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
@@ -37,25 +38,28 @@ export default function PublicKey2({ lang }) {
   }
 
   const playAnimation = async () => {
-    setPlayLottie(true)
+    await sleep(1000)
+    setLottiePause(false)
 
-    await sleep(3000)
+    await sleep(1500)
     setHiddenPoint('fade-in')
 
-    await sleep(2000)
+    await sleep(750)
     setHiddenPointText('')
 
     await sleep(1000)
     setHiddenFocusOne('fade-in')
-    await sleep(1000)
+    await sleep(3000)
     setHiddenFocusTwo('')
   }
 
   useEffect(() => {
     if (isSmallScreen) {
       setLottieScreen([300, 200])
+      setArrowSize(['32', '64'])
     } else {
       setLottieScreen([600, 400])
+      setArrowSize(['64', '125'])
     }
     playAnimation()
   }, [isSmallScreen])
@@ -81,6 +85,7 @@ export default function PublicKey2({ lang }) {
                 options={options}
                 height={lottieScreen[0]}
                 width={lottieScreen[1]}
+                isStopped={lottiePause}
               />
               <div
                 className={`${hiddenPoint} relative left-[-97px] top-[-121px] flex items-center justify-center xl:left-[-196px] xl:top-[-246px]`}
@@ -105,17 +110,17 @@ export default function PublicKey2({ lang }) {
               </div>
             </div>
             <div
-              className={`${hiddenPointText} fade-in relative left-[6px] top-[-385px] xl:left-[52px] xl:top-[-755px]`}
+              className={`${hiddenPointText} fade-in relative left-[36px] top-[-385px] xl:left-[52px] xl:top-[-755px]`}
             >
-              <Arrow />
+              <Arrow width={arrowSize[0]} height={arrowSize[1]} />
             </div>
             <span
-              className={`${hiddenPointText} fade-in relative left-[25px] top-[-390px] font-space-mono text-xl text-white xl:left-[50px] xl:top-[-735px] xl:text-3xl`}
+              className={`${hiddenPointText} fade-in relative left-[25px] top-[-370px] font-space-mono text-xl text-white xl:left-[50px] xl:top-[-735px] xl:text-3xl`}
             >
               Generator point G
             </span>
           </div>
-          <span className="font-space-mono text-xl text-white xl:text-3xl">
+          <span className="mb-4 font-space-mono text-xl text-white xl:text-3xl">
             y^2 = x^2 + 7
           </span>
         </div>
