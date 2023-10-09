@@ -66,7 +66,7 @@ export default function Help({ params }) {
   return (
     <>
       <Head />
-      <div className="my-8 grid w-full grid-cols-1 justify-center justify-items-center md:mx-auto">
+      <div className="my-12 grid w-full grid-cols-1 justify-center justify-items-center md:mx-auto">
         <div className="flex w-full max-w-screen-lg flex-col gap-8 px-6">
           <div
             className="flex cursor-pointer flex-row items-center gap-5 border border-dashed border-white p-5 text-white"
