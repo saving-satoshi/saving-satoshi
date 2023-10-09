@@ -1,5 +1,4 @@
 'use client'
-import { Button } from 'shared'
 import { useTranslations, useLang } from 'hooks'
 
 export default function NotFound() {
@@ -7,7 +6,7 @@ export default function NotFound() {
   const t = useTranslations(lang)
 
   return (
-    <div className="flex h-full grow items-end justify-center">
+    <div className="height-minus-nav flex h-full grow items-start justify-center">
       <div className="flex flex-col justify-center">
         <div className="flex flex-col justify-center">
           <h1 className=" text-center font-cbrush text-5xl text-white md:text-6xl">

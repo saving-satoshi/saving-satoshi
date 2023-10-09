@@ -1,5 +1,5 @@
 import { useTranslations } from 'hooks'
-import { Text, Divider } from 'ui'
+import { Text } from 'ui'
 
 export default function PublicKeyResources({ lang }) {
   const t = useTranslations(lang)
@@ -79,12 +79,12 @@ export default function PublicKeyResources({ lang }) {
           wanted to perform “2-x=11” and solve for x, you would have infinite
           possible answers (3, 15, 27, 39...). More on wikipedia.
         </Text>
-        <Divider />
+        <hr className="my-7 h-[1px] w-full opacity-25" />
         <Text className="text-3xl font-bold">Tips</Text>
         <Text>
           What specific tips can/do we want to give learners if they are stuck?
         </Text>
-        <Divider />
+        <hr className="my-7 h-[1px] w-full opacity-25" />
         <Text className="text-3xl font-bold">Spoiler</Text>
       </div>
     </>

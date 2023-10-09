@@ -1,5 +1,5 @@
 import { useTranslations } from 'hooks'
-import { Divider, Text } from 'ui'
+import { Text } from 'ui'
 
 export default function AddressResources({ lang }) {
   const t = useTranslations(lang)
@@ -46,12 +46,12 @@ export default function AddressResources({ lang }) {
           Mainnet on a global scale. Regtest is a developer mode designed to be
           run locally with no network connections needed at all.
         </Text>
-        <Divider />
+        <hr className="my-7 h-[1px] w-full opacity-25" />
         <Text className="text-3xl font-bold">Tips</Text>
         <Text>
           What specific tips can/do we want to give learners if they are stuck?
         </Text>
-        <Divider />
+        <hr className="my-7 h-[1px] w-full opacity-25" />
         <Text className="text-3xl font-bold">Spoiler</Text>
       </div>
     </>

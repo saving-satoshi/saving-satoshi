@@ -10,10 +10,8 @@ export default function Layout({ children, params }) {
     'bg-back'
 
   return (
-    <div className={`${theme} height-minus-nav flex flex-col`}>
-      <div className="fix-grow-issue flex flex-col overflow-hidden">
-        {children}
-      </div>
+    <div className={`${theme} flex flex-col`}>
+      <div className="fix-grow-issue flex flex-col">{children}</div>
     </div>
   )
 }
