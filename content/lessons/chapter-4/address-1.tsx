@@ -46,30 +46,47 @@ const javascript = {
 const python = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'find_hash',
-    args: ['nonce'],
+    name: 'hash_compressed',
+    args: ['compressed'],
   },
-  defaultCode: `from hashlib import sha256
-
-# Create a program that finds a sha256 hash starting with 5 zeroes.
-# To submit your answer, print it to the terminal using print().
+  defaultCode: `import hashlib
+# Get the sha256 digest of the compressed public key.
+# Then get the ripemd160 digest of that sha256 hash
+# REturn 20-byte array
 
 # Type your code here
 `,
   validate: async (answer) => {
-    if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
+    function wordArrayToUint8Array(answer) {
+      const len = answer.words.length;
+      const u8_array = new Uint8Array(len << 2);
+      let offset = 0, word, i;
+      for (i = 0; i < len; i++) {
+        word = answer.words[i];
+        u8_array[offset++] = word >> 24;
+        u8_array[offset++] = (word >> 16) & 0xff;
+        u8_array[offset++] = (word >> 8) & 0xff;
+        u8_array[offset++] = word & 0xff;
+      }
+      return u8_array;
+    }
+    
+    
+    const uint8ArrayResult = wordArrayToUint8Array(answer);
+    console.log(uint8ArrayResult.buffer);
+    if (uint8ArrayResult.byteLength!==20) {
+      return [false, 'Array must be 20 byte long']
     }
 
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
-    }
+   // if (answer.length !== 64) {
+    //  return [false, 'Hash must be 64 characters long']
+    //}
 
     return [true, undefined]
   },
   constraints: [
     {
-      range: [5, 1, 7, 1],
+      range: [5, 1, 7, 11],
       allowMultiline: true,
     },
   ],
