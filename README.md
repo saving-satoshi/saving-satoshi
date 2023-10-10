@@ -41,9 +41,9 @@ To run this project locally:
 1. First, make sure you have NodeJS version 16.13.0 or higher installed. Check `node -v`. Node [installation instructions](https://nodejs.org/en/download/package-manager/)
 2. Install this repository `git clone https://github.com/saving-satoshi/saving-satoshi.git`
 3. Change into the directory `cd saving-satoshi`
-4. Run `npm install` to download the required code libraries
-5. Run `npm run build` to build
-6. Run `npm run start` to spin up the development environment
+4. Run `yarn install` to download the required code libraries
+5. Run `yarn run build` to build
+6. Run `yarn start` or `yarn dev` to spin up the development environment
 7. Open `http://localhost:3000` in your browser to access the site.
 
 ## Roadmap
