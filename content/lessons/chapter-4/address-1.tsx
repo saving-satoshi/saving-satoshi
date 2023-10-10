@@ -14,30 +14,30 @@ export const metadata = {
 const javascript = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'findHash',
-    args: ['nonce'],
+    name: 'hash_compressed',
+    args: ['compressed'],
   },
   defaultCode: `const crypto = require('crypto')
 
-// Create a program that finds a sha256 hash starting with 5 zeroes.
-// To submit your answer, log it to the terminal using console.log().
-
+// Get the sha256 digest of the compressed public key.
+// Then get the ripemd160 digest of that sha256 hash
+// Return 20-byte array
 // Type your code here
 `,
   validate: async (answer) => {
-    if (!answer.startsWith('00000')) {
+   /** if (!answer.startsWith('00000')) {
       return [false, 'Hash must start with 5 zeroes.']
-    }
+    }**/
 
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
+    if (answer.length !== 20) {
+      return [false, 'Hash must be 20 bytes long']
     }
 
     return [true, undefined]
   },
   constraints: [
     {
-      range: [5, 1, 7, 1],
+      range: [5, 1, 11, 1],
       allowMultiline: true,
     },
   ],
@@ -69,7 +69,7 @@ const python = {
   },
   constraints: [
     {
-      range: [5, 1, 7, 1],
+      range: [5, 1, 12, 1],
       allowMultiline: true,
     },
   ],
