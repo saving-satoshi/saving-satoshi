@@ -4,8 +4,10 @@ import { ScriptingChallenge, LessonInfo, CodeExample } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
+import { editor } from 'monaco-editor'
+import { Secp256k1 } from 'ui/lesson/ScriptingChallenge/library/'
 
 export const metadata = {
   title: 'chapter_four.public_key_three.title',
@@ -14,30 +16,26 @@ export const metadata = {
 const javascript = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'findHash',
-    args: ['nonce'],
+    name: 'rawPublicKey',
+    args: ['private_key'],
   },
-  defaultCode: `const crypto = require('crypto')
+  defaultCode: `${Secp256k1.secp256k1}
+  // Import ECDSA library.
+  // Multiply the private key by the ECDSA generator point G to
+  // produce a new curve point which is the public key.
+  // Return that curve point (also known as a group element)
+  // which will be an instance of secp256k1.GE
+  // See the library source code for the exact definition
+  const G = secp256k1.G
+  // To submit your answer, log it to the terminal using console.log().
 
-// Create a program that finds a sha256 hash starting with 5 zeroes.
-// To submit your answer, log it to the terminal using console.log().
-
-// Type your code here
 `,
   validate: async (answer) => {
-    if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
-    }
-
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
-    }
-
-    return [true, undefined]
+    return [true, '']
   },
   constraints: [
     {
-      range: [5, 1, 7, 1],
+      range: [11, 1, 7, 1],
       allowMultiline: true,
     },
   ],
@@ -46,12 +44,12 @@ const javascript = {
 const python = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'find_hash',
-    args: ['nonce'],
+    name: 'rawPublicKey',
+    args: ['private_key'],
   },
   defaultCode: `# Import ECDSA library.
 from lib import secp256k1
-  
+
 def privatekey_to_publickey(private_key):
     # Multiply the private key by the ECDSA generator point G to
     # produce a new curve point which is the public key.
@@ -68,19 +66,11 @@ def privatekey_to_publickey(private_key):
   // # Type your code here
   // `,
   validate: async (answer) => {
-    if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
-    }
-
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
-    }
-
-    return [true, undefined]
+    return [true, '']
   },
   constraints: [
     {
-      range: [5, 1, 7, 1],
+      range: [5, 1, 11, 1],
       allowMultiline: true,
     },
   ],
@@ -107,6 +97,7 @@ export default function PublicKey3({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
+      hiddenRange={[1, 0, 1, 0]}
       lessonKey={getLessonKey('chapter-2', 'scripting-2')}
       successMessage={t('chapter_four.public_key_three.success')}
       onSelectLanguage={handleSelectLanguage}

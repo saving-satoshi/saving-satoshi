@@ -33,6 +33,7 @@ export default function ScriptingChallenge({
   config,
   successMessage,
   onSelectLanguage,
+  hiddenRange,
 }: {
   children?: React.ReactNode
   lang: string
@@ -40,6 +41,7 @@ export default function ScriptingChallenge({
   config: EditorConfig
   successMessage: string
   onSelectLanguage: (language: string) => void
+  hiddenRange: number[]
 }) {
   const { saveProgress, saveProgressLocal } = useProgressContext()
   const { account } = useAuthContext()
@@ -123,6 +125,7 @@ export default function ScriptingChallenge({
           <Editor
             language={language}
             value={code}
+            hiddenRange={hiddenRange}
             onChange={handleChange}
             onValidate={handleEditorValidate}
             hiddenRange={hiddenRange}
