@@ -143,7 +143,7 @@ const translations = {
       title: 'Transacting',
       heading: 'What’s in a transaction?',
       paragraph_one:
-        'Two main componenets of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
+        'Two main components of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
       paragraph_two:
         'For the following transaction, we’re going to identify the output of type OP_RETURN.',
     },
@@ -365,7 +365,7 @@ const translations = {
       paragraph_thirteen:
         'In the early days of bitcoin, it was possible to mine with your average computer, just like we did in this simulation.',
       paragraph_fourteen:
-        'Today, miners use a special type of chip called an Application-Specific Integrated Circut, or ASIC for short. Nowadays, people buy machines with ASICs that are dedicated to just mining! This explains all the machines in the Vanderpoole family collection.',
+        'Today, miners use a special type of chip called an Application-Specific Integrated Circuit, or ASIC for short. Nowadays, people buy machines with ASICs that are dedicated to just mining! This explains all the machines in the Vanderpoole family collection.',
       progress_bar_title: 'Blocks found',
       progress_bar_one: 'Nonce',
       progress_bar_two: 'Hashes per second',
@@ -388,7 +388,7 @@ const translations = {
   chapter_three: {
     title: 'The 51% Attack',
     paragraph_one:
-      'You enter the address of a block explorer blocks are back to ten minutes intervals. Somehow, holocat sleeps through the noise of the machines.',
+      'You enter the address of a block explorer and see blocks are back to ten minutes intervals. Somehow, holocat sleeps through the noise of the machines.',
     paragraph_two:
       '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking holocat. It’s not a coincidence.',
     intro_one: {
@@ -503,7 +503,7 @@ const translations = {
         'As you know, this represents the amount of work every miner has chipped in to find blocks. But the mining pool has no way of knowing or measuring this number, since miners only forward successful solutions.',
       step_four_heading: 'Block found percentage',
       step_four_paragraph:
-        'The chance of finding a block is very low since it has a lot to do with luck. Especially in scenarios with some extremely powerful miners, the really small miners may contribute work but never find and blocks. ',
+        'The chance of finding a block is very low since it has a lot to do with luck. Especially in scenarios with some extremely powerful miners, the really small miners may contribute work but never find any blocks. ',
       step_five_heading: 'Partial solution percentage',
       step_five_paragraph:
         'Now this number will work. Miners report these solutions to easier problems regularly to pools. That allows pools to fairly accurately measure how much work each pool has provided.',
