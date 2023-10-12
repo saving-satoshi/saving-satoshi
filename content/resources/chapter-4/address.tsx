@@ -1,3 +1,5 @@
+'use client'
+
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 
