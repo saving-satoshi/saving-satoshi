@@ -101,7 +101,7 @@ export default function Pool1({ lang }) {
                   size={isSmallScreen ? 75 : 100}
                   className={`${
                     profile?.display
-                      ? 'fade-in max-h-[75px] min-h-[75px] min-w-[75px] max-w-[75px] md:min-h-[100px] md:min-w-[100px]'
+                      ? 'fade-in max-h-[75px] min-h-[75px] min-w-[75px] max-w-[75px] text-white md:min-h-[100px] md:min-w-[100px]'
                       : 'hidden'
                   }`}
                 />

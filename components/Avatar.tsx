@@ -13,7 +13,7 @@ export default function Avatar({
   onClick?: () => void
 }) {
   if (!avatar) {
-    return <Icon icon="avatar" />
+    return <Icon className={className} icon="avatar" />
   }
 
   return (
