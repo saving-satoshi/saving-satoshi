@@ -4,6 +4,7 @@ import { useTranslations, useSaveAndProceed } from 'hooks'
 import { Title } from 'ui'
 import { Button } from 'shared'
 import Avatar from 'components/Avatar'
+import { useAuthContext } from 'providers/AuthProvider'
 import { useMediaQuery } from 'hooks'
 import { useEffect } from 'react'
 import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
@@ -16,6 +17,7 @@ export const metadata = {
 }
 
 export default function Coop1({ lang }) {
+  const { account } = useAuthContext()
   const t = useTranslations(lang)
 
   const saveAndProceed = useSaveAndProceed()
@@ -23,7 +25,7 @@ export default function Coop1({ lang }) {
   const players = [
     {
       username: 'You',
-      avatar: '/assets/avatars/1.png',
+      avatar: account?.avatar,
     },
     {
       username: 'Mining Maniacs',
