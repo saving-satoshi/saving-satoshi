@@ -30,7 +30,7 @@ const javascript = {
     }**/
 
     if (answer.length !== 20) {
-      return [false, 'Hash must be 20 bytes long']
+      return [false, 'Array must be 20 bytes long']
     }
 
     return [true, undefined]
@@ -57,7 +57,7 @@ const python = {
 `,
   validate: async (answer) => {
    
-    if (len(answer)!==20) {
+    if (answer.length!==20) {
       return [false, 'Array must be 20 bytes long']
     }
 
