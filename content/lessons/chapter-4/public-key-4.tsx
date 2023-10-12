@@ -17,13 +17,15 @@ const javascript = {
     name: 'findHash',
     args: ['nonce'],
   },
-  defaultCode: `const crypto = require('crypto')
+  defaultCode: [
+    `const crypto = require('crypto')
 
 // Create a program that finds a sha256 hash starting with 5 zeroes.
 // To submit your answer, log it to the terminal using console.log().
 
 // Type your code here
 `,
+  ],
   validate: async (answer) => {
     if (!answer.startsWith('00000')) {
       return [false, 'Hash must start with 5 zeroes.']
@@ -49,9 +51,10 @@ const python = {
     name: 'find_hash',
     args: ['nonce'],
   },
-  defaultCode: `# Import ECDSA library.
+  defaultCode: [
+    `# Import ECDSA library.
 from lib import secp256k1
-  
+
 def privatekey_to_publickey(private_key):
     # Multiply the private key by the ECDSA generator point G to
     # produce a new curve point which is the public key.
@@ -60,6 +63,7 @@ def privatekey_to_publickey(private_key):
     # See the library source code for the exact definition
     G = secp256k1.G
 `,
+  ],
   //   defaultCode: `from hashlib import sha256
 
   // # Create a program that finds a sha256 hash starting with 5 zeroes.

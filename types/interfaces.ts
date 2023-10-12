@@ -16,7 +16,7 @@ export interface EditorFunction {
 export interface EditorLanguages {
   [language: string]: {
     program: string
-    defaultCode?: string
+    defaultCode?: string[]
     defaultFunction: EditorFunction
     validate: (answer: any) => Promise<any[]>
     constraints: any

@@ -15,6 +15,14 @@ export const monacoOptions: editor.IStandaloneEditorConstructionOptions = {
   theme: 'vs-dark',
 }
 
+export const readOnlyOptions: editor.IStandaloneEditorConstructionOptions = {
+  readOnly: true,
+  minimap: { enabled: false },
+  scrollBeyondLastLine: false,
+  wordWrap: 'on',
+  theme: 'vs-dark',
+}
+
 export const languageMeta = {
   javascript: {
     value: 'javascript',

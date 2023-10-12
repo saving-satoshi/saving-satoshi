@@ -11,6 +11,8 @@ import { Tooltip } from 'ui'
 import { themeSelector } from 'lib/themeSelector'
 import { getCurrentLessonKey, getChapterKey, keys } from 'lib/progress'
 import { useAuthContext } from 'providers/AuthProvider'
+import { usePathname } from 'next/navigation'
+import clsx from 'clsx'
 
 export default function HelpLink({ params }: { params: any }) {
   const lang = useLang()
@@ -18,6 +20,10 @@ export default function HelpLink({ params }: { params: any }) {
   const { chaptersUrl } = useLocalizedRoutes()
   const { chapterId } = usePathData()
   const { account } = useAuthContext()
+  const pathName = usePathname() || ''
+
+  const pathData = pathName.split('/').filter((p) => p)
+  const isRouteHelp = pathData.length === 5
 
   const { slug, lesson: lessonId } = params
 
@@ -52,7 +58,10 @@ export default function HelpLink({ params }: { params: any }) {
         }
       >
         <Link
-          className="relative flex h-full w-[50px] cursor-pointer items-center justify-center border-r border-white/25 text-center font-nunito text-xl font-semibold text-white transition duration-100 ease-in-out hover:bg-black/25 md:w-[70px]"
+          className={clsx(
+            'relative flex h-full w-[50px] cursor-pointer items-center justify-center border-r border-white/25 text-center font-nunito text-xl font-semibold text-white transition duration-100 ease-in-out hover:bg-black/25 md:w-[70px]',
+            { 'bg-black/25 text-opacity-100': isRouteHelp }
+          )}
           //target="_blank"
           href={`${chaptersUrl}/${chapterKey}/${lessonId}/help`}
           //href="https://forms.gle/NVcg9ukPvUBYjw1u7"
