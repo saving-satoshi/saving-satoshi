@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations, useSaveAndProceed } from 'hooks'
+import { useTranslations, useSaveAndProceed, useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import { Card, HashFrequency, Text, HashrateChallenge, BoxDisplayer } from 'ui'
@@ -21,6 +21,7 @@ export const metadata = {
 export default function Split2({ lang }) {
   const { account } = useAuthContext()
   const t = useTranslations(lang)
+  const isSmallScreen = useMediaQuery({ width: 767 })
   const [step, setStep] = useState(0)
   const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState([
     0, 0, 0, 0,
@@ -176,6 +177,7 @@ export default function Split2({ lang }) {
             className="min-w-[300px]"
             username={profile.username}
             avatar={profile.avatar}
+            avatarSize={isSmallScreen ? 50 : 100}
             chip={
               <ProfileChip
                 className="relative -top-4"

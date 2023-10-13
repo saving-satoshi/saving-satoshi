@@ -71,6 +71,7 @@ export default function Coop1({ lang }) {
               <div className="-mb-2 flex flex-col items-center">
                 <Avatar
                   avatar={profile.avatar}
+                  className="fade-in max-h-[75px] min-h-[75px] min-w-[75px] max-w-[75px] text-white md:min-h-[100px] md:min-w-[100px]"
                   size={isSmallScreen ? 75 : 100}
                 />
                 <ProfileChip
