@@ -37,7 +37,7 @@ const javascript = {
   },
   constraints: [
     {
-      range: [5, 1, 11, 1],
+      range: [5, 1, 7, 1],
       allowMultiline: true,
     },
   ],
@@ -69,7 +69,7 @@ const python = {
   },
   constraints: [
     {
-      range: [5, 1, 12, 1],
+      range: [5, 1, 7, 1],
       allowMultiline: true,
     },
   ],
