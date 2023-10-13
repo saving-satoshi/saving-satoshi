@@ -10,6 +10,7 @@ export default function Profile({
   chip,
   username,
   description,
+  avatarSize,
 }: {
   children?: React.ReactNode
   className?: string
@@ -17,6 +18,7 @@ export default function Profile({
   chip?: React.ReactElement
   username: string
   description?: string
+  avatarSize?: number
 }) {
   return (
     <div
@@ -32,12 +34,7 @@ export default function Profile({
             'mb-2': !chip,
           })}
         >
-          {avatar && (
-            <Avatar
-              className="max-h-[50px] min-h-[50px] min-w-[50px] max-w-[50px] text-white md:h-[100px] md:max-h-[100px] md:min-h-[100px] md:min-w-[100px] md:max-w-[100px]"
-              avatar={avatar}
-            />
-          )}
+          {avatar && <Avatar size={avatarSize} avatar={avatar} />}
           {!avatar && (
             <Icon
               icon="avatar"
