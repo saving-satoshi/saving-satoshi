@@ -208,9 +208,107 @@ const translations = {
   },
 
   chapter_four: {
-    title: `¿Puede el verdadero Satoshi levantarse?`,
-    paragraph_one: `Un misterioso multimillonario afirma ser Satoshi Nakamoto. ¿Por qué iba a presentarse Satoshi después de todo este tiempo? ¿Qué posibilidades hay de que Satoshi esté vivo?`,
-    paragraph_two: `Mientras el debate público se centra en gran medida en el espectáculo, usted tiene el presentimiento de que podría ser posible desarmar la demanda utilizando sus conocimientos de criptografía.`,
+    title: 'Reclamando tus 6.1 bitcoins',
+    paragraph_one:
+      '¡Uf, eso estuvo cerca! Todavía tiemblas después de tu batalla contra BitRey, pero te sientes aliviado de que tú y tus amigos ganaron.',
+    paragraph_two:
+      'Mientras te acomodas en tu escritorio, tomas una profunda respiración y te dejas llevar reviviendo los eventos del día. Tus manos se mantienen ocupadas jugando con el misterioso sobre, mientras te preguntas quién lo envió.',
+
+    intro_one: {
+      title: 'Asegurando el bolso',
+      paragraph_one:
+        'HOLOCAT: Uno de nosotros debe dormir. Necesitas volver a casa y empezar a ponerte en contacto con las piscinas de minería. Ellos querrán saber más al respecto que el mundo."',
+      paragraph_two:
+        'Al instalarte en tu Escritorio Flotante TMY92-P, repasas los eventos del día. Vanderpoole. BitRey. La revelación de que las piscinas de minería nunca acordaron cerrar en protesta. ¿Podría ser todo cierto? ¿Fue todo esto un montaje? ¿Y cuánto tiempo se supone que debes cuidar de este gato?',
+      paragraph_three:
+        'Pase lo que pase a continuación, es probable que necesites fondos. Te das cuenta de que nunca reclamaste las recompensas mineras de tu competencia con BitRey. Decides retirarlas para ayudar a pagar tu vuelo de regreso a casa.',
+    },
+
+    public_key_one: {
+      title: 'Clave pública',
+      heading: 'Pares de claves',
+      paragraph_one:
+        'Según la piscina de minería, parece que tienes 6.1 bitcoins para reclamar por todo el trabajo que hiciste anteriormente.',
+      list_one: 'Clave privada',
+      list_two: 'Clave pública',
+      paragraph_two:
+        'Pero espera, ¡ni siquiera tienes una billetera! Puede que te estés preguntando dónde puedes comprar una. Aunque puedes adquirir hardware para construir ciertos tipos de billeteras, en realidad puedes hacer una con tu ordenador o dispositivo móvil. ¡Hagámoslo!',
+      paragraph_three:
+        'Si te registraste en una cuenta en algún momento, obtuviste algo llamado un código personal. En criptografía, esto se llama "clave privada" y a menudo es parte de un par.',
+      paragraph_four:
+        'Un solo par de claves es todo lo que se necesita para crear una billetera y controlar los fondos dentro de ella. Cuando deseas gastar bitcoins, utilizas la clave privada. Cuando deseas recibir bitcoins, utilizas la clave pública.',
+    },
+
+    public_key_two: {
+      title: 'Clave pública',
+      paragraph_one:
+        'Así que tenemos la clave privada, es el código personal que obtuviste al registrarte. ¿Cómo generamos una clave pública a partir de ella?',
+      paragraph_two:
+        'Para hacer eso, necesitamos echar un vistazo a una fascinante rama de la criptografía llamada curvas elípticas. Esto se llama Criptografía de Curva Elíptica, o ECC para abreviar.',
+      paragraph_three:
+        'La ECC implica tomar ciertos puntos en una curva elíptica y realizar sumas y multiplicaciones con los puntos.',
+      paragraph_four:
+        'Bitcoin utiliza una curva específica llamada secp256k1. A la derecha, puedes ver una versión simplificada que es más fácil de visualizar, pero sigue las mismas reglas matemáticas',
+      paragraph_five:
+        'Comenzamos con un punto específico en esta curva, llamado el Punto Generador.',
+    },
+
+    public_key_three: {
+      title: 'Clave pública',
+      paragraph_one:
+        'Para derivar una clave pública a partir de una clave privada, realizamos una operación de curva elíptica repetidamente con el punto generador (descubre por qué). El punto generador es un punto específico en la curva. Su valor es parte del estándar secp256k1 y siempre es el mismo:',
+      paragraph_two:
+        'La operación de curva elíptica es similar a la adición y, por lo tanto, su repetición es similar a la multiplicación. Utilizamos el símbolo * para describir el algoritmo (aprende más), donde k es la clave privada y P es la clave pública correspondiente:The elliptic curve operation is similar to addition and therefore its repetition is similar to multiplication. We use the * symbol to describe the algorithm (learn more), where `k` is the private key and `P` is the corresponding public key:',
+      paragraph_three:
+        'Completa la función privatekey_to_publickey() de modo que devuelva la clave pública derivada de una clave privada dada.',
+    },
+
+    public_key_four: {
+      title: 'Clave pública',
+      paragraph_one:
+        'La clave pública tiene coordenadas x e y, lo que suma un total de 64 bytes. Esto puede comprimirse a 33 bytes al eliminar la coordenada y y agregar un solo byte de metadatos al principio. Ese byte indicará si la coordenada Y es par o impar. Debido a que la ecuación de la curva elíptica solo tiene dos variables, la clave pública completa puede ser calculada más tarde por el verificador utilizando solo x y los metadatos:',
+      paragraph_two:
+        'El byte de metadatos debe ser 2 si y es par y 3 si y es impar. Completa la función compress_publickey() para que acepte una clave pública y devuelva una matriz de 33 bytes que representen la clave pública comprimida.',
+    },
+
+    public_key_five: {
+      title: 'Clave pública',
+      heading: '¡Buen trabajo!',
+      paragraph_one:
+        '¡Y ahí lo tienes! ¡Tu clave pública comprimida! Hay muchas cosas interesantes que podemos hacer con ella, incluyendo la generación de direcciones para nuestra billetera. Aprenderemos sobre eso en el próximo desafío.',
+      paragraph_two:
+        'Ten en cuenta que generar una clave pública es un proceso unidireccional. No puedes descifrar la clave privada utilizada para generar una clave pública a menos que resuelvas un problema matemático notoriamente difícil llamado el problema del logaritmo discreto.',
+    },
+
+    address_one: {
+      title: 'Dirección',
+      paragraph_one:
+        '¿Recuerdas el desafío de hash? Resulta que puedes generar el tipo más simple de dirección de Bitcoin al aplicar una función hash a tu clave pública comprimida. Bitcoin utiliza dos algoritmos de hash diferentes para esto: SHA-256 y RIPEMD-160.',
+      paragraph_two:
+        'El primer paso consiste en aplicar una función hash SHA-256 a tu clave pública comprimida. Luego, realiza una función hash RIPEMD-160 en ese resultado de salida SHA-256. El resultado final será un arreglo de 20 bytes.',
+      paragraph_three:
+        'Completa la función hash_compressed() que acepta una clave pública comprimida de 33 bytes y devuelve un hash de clave pública de 20 bytes.',
+    },
+
+    address_two: {
+      title: 'Dirección',
+      paragraph_one:
+        'Existen varios tipos de direcciones de Bitcoin. Queremos crear una dirección de Hash de Clave Pública Testigo de Signet (wpkh) para codificar el hash de clave pública comprimida de 20 bytes. Primero debemos agregar el hash con el número de versión testigo 0. Estos 21 bytes se conocen como el programa testigo. El programa testigo se codifica en un formato fácil de entender para los humanos llamado bech32, que añadirá un prefijo legible por humanos y un valor de comprobación.',
+      paragraph_two: 'El prefijo es determinado por la red:',
+      list_one: 'Mainnet: ‘bc’',
+      list_two: 'Signet: ‘tb’',
+      list_three: 'Regtest: ‘bcrt’',
+      paragraph_three:
+        '¡Llama a la función proporcionada hash_to_address() con tus datos para generar tu dirección de Bitcoin!',
+    },
+
+    outro_one: {
+      title: 'Outro',
+      heading: 'Éxito!',
+      paragraph_one: '¡Has creado tu propia billetera de Bitcoin!',
+      paragraph_two:
+        'Retiras los bitcoins de la piscina de minería a la billetera que acabas de crear. Ahora estás completamente financiado y listo para enfrentar lo que Vanderpoole y BitRey puedan lanzarte a continuación.',
+    },
   },
 
   chapter_five: {
