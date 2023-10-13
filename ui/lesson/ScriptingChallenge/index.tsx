@@ -48,7 +48,7 @@ export default function ScriptingChallenge({
   const [code, setCode] = useState(
     config.languages[config.defaultLanguage].defaultCode
   )
-  const [constraints] = useState(
+  const [constraints, setConstraints] = useState(
     config.languages[config.defaultLanguage].constraints
   )
 
@@ -68,6 +68,7 @@ export default function ScriptingChallenge({
       setLanguage(value)
       onSelectLanguage(value)
       setCode(config.languages[value].defaultCode)
+      setConstraints(config.languages[value].constraints)
     }
   }
 

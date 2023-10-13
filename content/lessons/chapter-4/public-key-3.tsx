@@ -7,7 +7,7 @@ import { Text } from 'ui'
 import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { editor } from 'monaco-editor'
-import { Secp256k1 } from 'ui/lesson/ScriptingChallenge/library/'
+import { secp256k1 } from 'ui/lesson/ScriptingChallenge/library/'
 
 export const metadata = {
   title: 'chapter_four.public_key_three.title',
@@ -19,7 +19,7 @@ const javascript = {
     name: 'rawPublicKey',
     args: ['private_key'],
   },
-  defaultCode: `${Secp256k1.secp256k1}
+  defaultCode: ` ${secp256k1.secp256k1js}
   // Import ECDSA library.
   // Multiply the private key by the ECDSA generator point G to
   // produce a new curve point which is the public key.
@@ -30,8 +30,17 @@ const javascript = {
   // To submit your answer, log it to the terminal using console.log().
 
 `,
-  validate: async (answer) => {
-    return [true, '']
+  validate: async (answer: string) => {
+    const correctPattern = /{x:[a-z\s0-9]{64},\s*y:[a-z\s0-9]{64}}/gi
+    if (answer) {
+      if (answer.match(correctPattern)) {
+        return [true, 'Nicely Done ']
+      } else {
+        return [false, 'Try multiplying with the G constant']
+      }
+    } else {
+      return [false, 'Try logging out your answer']
+    }
   },
   constraints: [
     {
@@ -47,30 +56,23 @@ const python = {
     name: 'rawPublicKey',
     args: ['private_key'],
   },
-  defaultCode: `# Import ECDSA library.
-from lib import secp256k1
+  defaultCode: `${secp256k1.secp256k1py}
+  # Import ECDSA library.
 
-def privatekey_to_publickey(private_key):
-    # Multiply the private key by the ECDSA generator point G to
-    # produce a new curve point which is the public key.
-    # Return that curve point (also known as a group element)
-    # which will be an instance of secp256k1.GE
-    # See the library source code for the exact definition
-    G = secp256k1.G
-`,
-  //   defaultCode: `from hashlib import sha256
+  # Multiply the private key by the ECDSA generator point G to
+  # produce a new curve point which is the public key.
+  # Return that curve point (also known as a group element)
+  # which will be an instance of secp256k1.GE
+  # See the library source code for the exact definition
+G = SECP256K1.FAST_G
 
-  // # Create a program that finds a sha256 hash starting with 5 zeroes.
-  // # To submit your answer, print it to the terminal using print().
-
-  // # Type your code here
-  // `,
+ `,
   validate: async (answer) => {
     return [true, '']
   },
   constraints: [
     {
-      range: [5, 1, 11, 1],
+      range: [131, 1, 133, 1],
       allowMultiline: true,
     },
   ],
@@ -88,16 +90,26 @@ export default function PublicKey3({ lang }) {
   const t = useTranslations(lang)
 
   const [language, setLanguage] = useState(config.defaultLanguage)
-
+  const [hiddenRange, setHiddenRange] = useState([1, 0, 1, 0])
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
 
+  useEffect(() => {
+    if (language === 'python') {
+      setHiddenRange([1, 0, 123, 0])
+    }
+    if (language === 'javascript') {
+      setHiddenRange([1, 1, 1, 1])
+    } else {
+      setHiddenRange([])
+    }
+  }, [language])
   return (
     <ScriptingChallenge
       lang={lang}
       config={config}
-      hiddenRange={[1, 0, 1, 0]}
+      hiddenRange={hiddenRange}
       lessonKey={getLessonKey('chapter-2', 'scripting-2')}
       successMessage={t('chapter_four.public_key_three.success')}
       onSelectLanguage={handleSelectLanguage}

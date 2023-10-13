@@ -1,3 +1,4 @@
-import * as Secp256k1 from './secp256k1'
+import { secp256k1js } from './secp256k1js'
+import { secp256k1py } from './secp256k1py'
 
-export { Secp256k1 }
+export const secp256k1 = { secp256k1js, secp256k1py }
