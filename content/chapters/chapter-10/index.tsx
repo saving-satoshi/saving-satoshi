@@ -32,4 +32,5 @@ export const metadata = {
   lessons: [],
   outros: [],
   challenges: [],
+  enabled: false,
 }
