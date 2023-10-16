@@ -69,7 +69,7 @@ const python = {
   },
   constraints: [
     {
-      range: [5, 1, 6, 1],
+      range: [5, 1, 7, 1],
       allowMultiline: true,
     },
   ],
