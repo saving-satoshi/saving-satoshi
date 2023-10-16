@@ -76,9 +76,99 @@ const translations = {
   },
 
   chapter_four: {
-    title: 'Wil de echte Satoshi opstaan?',
+    title: 'Het claimen van je 6,1 bitcoin',
+    paragraph_one:
+      'Poeh, dat was kantje boord! Je trilt nog steeds van je strijd tegen BitRey, maar je bent opgelucht dat jij en je vrienden hebben gewonnen.',
+    paragraph_two:
+      'Terwijl je aan je bureau zit, haal je diep adem en dwalen je gedachten af naar de gebeurtenissen van de dag. Je handen blijven bezig met de mysterieuze envelop, terwijl je je afvraagt wie deze heeft gestuurd.',
+    intro_one: {
+      title: 'De buit veiligstellen',
+      paragraph_one:
+        "HOLOCAT: 'Een van ons moet beter slapen. Jij moet naar huis gaan en contact opnemen met de mijnbouwzwembaden. Ze willen er meer over weten dan de wereld.'",
+      paragraph_two:
+        'Terwijl je aan je TMY92-P Hover Desk gaat zitten, speel je de gebeurtenissen van de dag af. Vanderpoole. BitRey. De onthulling dat mijnbouwzwembaden nooit hebben ingestemd met het stilleggen uit protest. Zou dit allemaal waar kunnen zijn? Was dit allemaal geënsceneerd? En hoelang moet je voor deze kat zorgen?',
+      paragraph_three:
+        'Wat er ook gebeurt, je hebt waarschijnlijk wat geld nodig. Je realiseert je dat je nooit de mijnbeloningen hebt opgeëist van je wedstrijd met BitRey. Je besluit ze op te nemen om je vlucht naar huis te betalen.',
+    },
+    public_key_one: {
+      title: 'Openbare sleutel',
+      heading: 'Over sleutelparen',
+      paragraph_one:
+        'Volgens het mijnbouwzwembad heb je 6,1 bitcoin om op te eisen voor al het werk dat je eerder hebt gedaan.',
+      list_one: 'Privésleutel',
+      list_two: 'Openbare sleutel',
+      paragraph_two:
+        'Maar wacht, je hebt niet eens een portemonnee! Je vraagt je misschien af waar je er een kunt kopen. Hoewel je hardware kunt kopen om bepaalde soorten portefeuilles te bouwen, kun je er eigenlijk gewoon een maken met je computer of mobiele apparaat. Laten we dat doen!',
+      paragraph_three:
+        "Als je op enig moment een account hebt aangemaakt, heb je iets gekregen dat een persoonlijke code wordt genoemd. In de cryptografie wordt dit een 'privésleutel' genoemd en het maakt vaak deel uit van een paar:",
+      paragraph_four:
+        'Een enkel sleutelpaar is alles wat nodig is om een portemonnee te maken en de fondsen erin te beheren. Wanneer je bitcoin wilt uitgeven, gebruik je de privésleutel. Wanneer je bitcoin wilt ontvangen, gebruik je de openbare sleutel.',
+    },
+    public_key_two: {
+      title: 'Openbare sleutel',
+      paragraph_one:
+        'Dus, we hebben de privésleutel, dat is de persoonlijke code die je hebt gekregen toen je je hebt aangemeld. Hoe genereren we een openbare sleutel?',
+      paragraph_two:
+        'Om dat te doen, moeten we een kijkje nemen bij een fascinerende tak van de cryptografie die elliptische krommen wordt genoemd. Dit wordt elliptische-krommencryptografie genoemd, of ECC voor kort.',
+      paragraph_three:
+        'ECC houdt in dat bepaalde punten op een elliptische kromme worden genomen en dat er optellingen en vermenigvuldigingen op de punten worden uitgevoerd.',
+      paragraph_four:
+        'Bitcoin maakt gebruik van een specifieke kromme die secp256k1 wordt genoemd. Aan de rechterkant zie je een vereenvoudigde versie die gemakkelijker te visualiseren is, maar dezelfde wiskundige regels volgt.',
+      paragraph_five:
+        'We beginnen met een specifiek punt op deze curve, dat het Generatorpunt wordt genoemd.',
+    },
+    public_key_three: {
+      title: 'Openbare sleutel',
+      paragraph_one:
+        'Om een openbare sleutel af te leiden uit een privésleutel, voeren we herhaaldelijk een elliptische kromme-operatie uit met het generatorpunt (ontdek waarom). Het generatorpunt is een specifiek punt op de kromme. De waarde ervan maakt deel uit van de secp256k1-standaard en is altijd hetzelfde:',
+      paragraph_two:
+        "De elliptische kromme-operatie lijkt op optelling en daarom lijkt de herhaling ervan op vermenigvuldiging. We gebruiken het *-symbool om het algoritme te beschrijven (leer meer), waarbij 'k' de privésleutel is en 'P' de overeenkomstige openbare sleutel is:",
+      paragraph_three:
+        "Voltooi de functie 'privatekey_to_publickey()' zodat deze de openbare sleutel retourneert die is afgeleid van een opgegeven privésleutel.",
+    },
+    public_key_four: {
+      title: 'Openbare sleutel',
+      paragraph_one:
+        'De openbare sleutel heeft een x- en y-coördinaat voor in totaal 64 bytes. Dit kan worden samengeperst tot 33 bytes door de y-coördinaat te verwijderen en een enkele byte met metagegevens vooraan toe te voegen. Die byte geeft aan of de Y-coördinaat even of oneven is. Omdat de elliptische-krommevergelijking slechts twee variabelen heeft, kan de volledige openbare sleutel later worden berekend door de verificateur met alleen x en de metagegevens:',
+      paragraph_two:
+        "De metagegevensbyte moet '2' zijn als y even is en '3' als y oneven is. Voltooi de functie 'compress_publickey()' om een openbare sleutel te accepteren en een reeks van 33 bytes terug te geven die de samengeperste openbare sleutel vertegenwoordigen.",
+    },
+    public_key_five: {
+      title: 'Openbare sleutel',
+      heading: 'Goed gedaan!',
+      paragraph_one:
+        'En daar heb je het! Je samengeperste openbare sleutel! Er zijn veel interessante dingen die we ermee kunnen doen, waaronder het genereren van adressen voor onze portemonnee. Daar zullen we meer over leren in de volgende uitdaging.',
+      paragraph_two:
+        'Merk op dat het genereren van een openbare sleutel een eenrichtingsweg is. Je kunt de privésleutel die wordt gebruikt om een openbare sleutel te genereren, niet achterhalen, tenzij je een berucht moeilijk wiskundig probleem, de discrete logaritme, oplost.',
+    },
+    address_one: {
+      title: 'Adres',
+      paragraph_one:
+        'Herinner je je de hash-uitdaging nog? Het blijkt dat je het eenvoudigste type bitcoinadres kunt genereren door je samengeperste openbare sleutel te hashen. Bitcoin gebruikt hiervoor twee verschillende hash-algoritmen: SHA-256 en RIPEMD-160.',
+      paragraph_two:
+        'De eerste stap is om een SHA-256-hash uit te voeren op je samengeperste openbare sleutel. Voer vervolgens een RIPEMD-160-hash uit op die SHA-256-uitvoer-digest. Het uiteindelijke resultaat zal een reeks van 20 bytes zijn.',
+      paragraph_three:
+        "Voltooi de functie 'hash_compressed()' die een 33-byte samengeperste openbare sleutel accepteert en een reeks van 20 bytes openbare sleutelhash retourneert.",
+    },
+    address_two: {
+      title: 'Adres',
+      paragraph_one:
+        "Er zijn meerdere soorten bitcoinadressen. We willen een Signet Witness Public Key Hash (wpkh)-adres maken om de 20-byte samengeperste openbare sleutelhash te coderen. Eerst moeten we de hash voorzien van het getuigenversienummer '0'. Deze 21 bytes worden het getuigenprogramma genoemd. Het getuigenprogramma wordt gecodeerd in een mensvriendelijk formaat dat bech32 wordt genoemd, dat een leesbare voorvoegsel en een checksum zal toevoegen.",
+      paragraph_two: 'Het voorvoegsel wordt bepaald door het netwerk:',
+      list_one: "Hoofdnetwerk: 'bc'",
+      list_two: "Signet: 'tb'",
+      list_three: "Regtest: 'bcrt'",
+      paragraph_three:
+        "Roep de meegeleverde functie 'hash_to_address()' aan met je gegevens om je Bitcoin-adres te genereren!",
+    },
+    outro_one: {
+      title: 'Uitro',
+      heading: 'Succes!',
+      paragraph_one: 'Je hebt je eigen bitcoinportemonnee gemaakt!',
+      paragraph_two:
+        'Je haalt de bitcoin op bij het mijnbouwzwembad in de portemonnee die je zojuist hebt gemaakt. Je bent nu volledig gefinancierd en klaar voor alles wat Vanderpoole en BitRey je misschien nog zullen voorschotelen.',
+    },
   },
-
   chapter_five: {
     title: 'De sleutelhouder',
   },
