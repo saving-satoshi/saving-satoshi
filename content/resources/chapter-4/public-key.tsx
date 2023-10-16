@@ -7,7 +7,7 @@ import { Loader } from 'shared'
 import MonacoEditor from '@monaco-editor/react'
 
 import { EditorConfig } from 'types'
-import { Text } from 'ui'
+import { Text, ResourcePage, ToggleSwitch } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
 
@@ -94,6 +94,16 @@ export default function PublicKeyResources({ lang }) {
   )
   const [languageOne, setLanguageOne] = useState(configOne.defaultLanguage)
   const [languageTwo, setLanguageTwo] = useState(configTwo.defaultLanguage)
+  const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
+  const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
+
+  const challengeOneToggleSwitch = () => {
+    setChallengeOneIsToggled(!challengeOneIsToggled)
+  }
+
+  const challengeTwoToggleSwitch = () => {
+    setChallengeTwoIsToggled(!challengeTwoIsToggled)
+  }
 
   const handleSetLanguageOne = (value) => {
     setLanguageOne(value)
@@ -122,128 +132,131 @@ export default function PublicKeyResources({ lang }) {
   }
 
   return (
-    <>
-      <div>
-        <Text className="text-3xl font-bold">Learning Resources</Text>
-        <Text>
-          What helpful info and resources can we provide for further learning?
-        </Text>
-        <Text className="mt-[25px] text-xl font-bold">
-          The reason for elliptic curve operations
-        </Text>
-        <Text>
-          We use a very specific set of steps to derive the public key because
-          there is mathematical proof that reversing this operation is
-          essentially impossibly hard. That feature also applies to other
-          algorithms ( like RSA), but those have much larger key sizes and are
-          less efficient computations. The steps we follow were chosen because:
-        </Text>
-        <ul className="list-inside list-disc font-nunito text-white">
-          <li>
-            we want a system where anyone can join using minimal resources
-          </li>
-          <li>
-            we want messages to be short (and therefore cheap to transmit)
-          </li>
-          <li>
-            we need to prove we know a secret without giving away that secret
-          </li>
-          <li>
-            we need it to be practically impossible for anyone else to compute
-            our secret
-          </li>
-        </ul>
-        <Text className="mt-[25px] text-xl font-bold">
-          Witness Public Key Hash (wpkh) address
-        </Text>
-        <Text>
-          A Bitcoin address is a string of characters that is designed for users
-          to handle. It is short, easy to copy and paste, and has some kind of
-          built-in checksum to ensure that it is always copied correctly. It
-          safely encodes a Bitcoin output script that the recipient can spend
-          from. There any several types of output script and several encoding
-          mechanisms. In this challenge we encode a compressed public key with
-          bech32 to create what is called a witness public key hash address.
-        </Text>
-        <Text className="mt-[25px] text-xl font-bold">secp256k1</Text>
-        <Text>
-          Secp256k1 is the name of the elliptic curve used by Bitcoin to
-          implement its public key cryptography. All points on this curve are
-          valid Bitcoin public keys.
-        </Text>
-        <Text className="mt-[25px] text-xl font-bold">Generator point</Text>
-        <Text>
-          A specific point on the secp256k1 curve. Its value is part of the
-          secp256k1 standard and it’s always the same. This point is not
-          different from other points on the curve, but it is agreed up on as
-          the standard starting point for calculations. No one really knows why
-          this particular point was chosen.
-        </Text>
-        <Text className="mt-[25px] text-xl font-bold">
-          Elliptic curve operations
-        </Text>
-        <Text>
-          Elliptic curves have their own mathematical rules, so simple
-          operations like addition and multiplication work differently. For
-          simplicity and brevity, established symbols are re-used, like using a
-          “*” for operations that are similar to multiplication.
-        </Text>
-        <Text className="mt-[25px] text-xl font-bold">Discrete logarithm</Text>
-        <Text>
-          A mathematical system where you can, for example, multiply but cannot
-          divide. A simple metaphor for this is looking at a clock. Three hours
-          past 11 o'clock is 2 o'clock. So we could say “11+3=2”. However if
-          wanted to perform “2-x=11” and solve for x, you would have infinite
-          possible answers (3, 15, 27, 39...). More on wikipedia.
-        </Text>
-        <hr className="my-7 h-[1px] w-full opacity-25" />
-        <Text className="text-3xl font-bold">Tips</Text>
-        <Text>
-          What specific tips can/do we want to give learners if they are stuck?
-        </Text>
-        <hr className="my-7 h-[1px] w-full opacity-25" />
-        <Text className="text-3xl font-bold">Spoiler</Text>
-        <div className="flex flex-col gap-[15px]">
-          <Text>Solution to part one of this challenge</Text>
-          <div className="border border-white/25">
-            <LanguageTabs
-              languages={configOne.languages}
-              value={languageOne}
-              onChange={handleSetLanguageOne}
-              noHide={true}
-            />
-            <MonacoEditor
-              loading={<Loader className="h-10 w-10 text-white" />}
-              height={`calc(var(--dynamic-height) - 767px)`}
-              value={codeOne}
-              beforeMount={handleBeforeMount}
-              onMount={handleMount}
-              language={languageOne}
-              theme={'satoshi'}
-              options={readOnlyOptions}
-            />
-          </div>
-          <Text>Solution to part two of this challenge</Text>
-          <div className="border border-white/25">
-            <LanguageTabs
-              languages={configTwo.languages}
-              value={languageTwo}
-              onChange={handleSetLanguageTwo}
-              noHide={true}
-            />
-            <MonacoEditor
-              loading={<Loader className="h-10 w-10 text-white" />}
-              height={`calc(var(--dynamic-height) - 767px)`}
-              value={codeTwo}
-              beforeMount={handleBeforeMount}
-              onMount={handleMount}
-              language={languageTwo}
-              theme={'satoshi'}
-              options={readOnlyOptions}
-            />
-          </div>
-        </div>
-      </div>
-    </>
+    <ResourcePage
+      lang={lang}
+      readingResources={
+        <>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t(
+              'chapter_four.resources.public_key.elliptic_curve_reason_heading'
+            )}
+          </Text>
+          <Text>
+            {t(
+              'chapter_four.resources.public_key.elliptic_curve_reason_paragraph'
+            )}
+          </Text>
+          <ul className="list-inside list-disc font-nunito text-white">
+            <li>
+              {t(
+                'chapter_four.resources.public_key.elliptic_curve_reason_list_one'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_four.resources.public_key.elliptic_curve_reason_list_two'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_four.resources.public_key.elliptic_curve_reason_list_three'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_four.resources.public_key.elliptic_curve_reason_list_four'
+              )}
+            </li>
+          </ul>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_four.resources.public_key.wpkh_heading')}
+          </Text>
+          <Text>{t('chapter_four.resources.public_key.wpkh_paragraph')}</Text>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_four.resources.public_key.secp_heading')}
+          </Text>
+          <Text>{t('chapter_four.resources.public_key.secp_paragraph')}</Text>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_four.resources.public_key.generator_point_heading')}
+          </Text>
+          <Text>
+            {t('chapter_four.resources.public_key.generator_point_paragraph')}
+          </Text>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t(
+              'chapter_four.resources.public_key.elliptic_curve_operations_heading'
+            )}
+          </Text>
+          <Text>
+            {t(
+              'chapter_four.resources.public_key.elliptic_curve_operations_paragraph'
+            )}
+          </Text>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_four.resources.public_key.discrete_log_heading')}
+          </Text>
+          <Text>
+            {t('chapter_four.resources.public_key.discrete_log_paragraph')}
+          </Text>
+        </>
+      }
+      tipsResources={'hello world'}
+      codeResources={
+        <>
+          <Text>{t('chapter_four.resources.public_key.solution_one')}</Text>
+          <ToggleSwitch
+            text={t('help_page.spoilers_confirm')}
+            checked={challengeOneIsToggled}
+            onChange={challengeOneToggleSwitch}
+          />
+          {challengeOneIsToggled && (
+            <div className="border border-white/25">
+              <LanguageTabs
+                languages={configOne.languages}
+                value={languageOne}
+                onChange={handleSetLanguageOne}
+                noHide={true}
+              />
+              <MonacoEditor
+                loading={<Loader className="h-10 w-10 text-white" />}
+                height={`calc(var(--dynamic-height) - 767px)`}
+                value={codeOne}
+                beforeMount={handleBeforeMount}
+                onMount={handleMount}
+                language={languageOne}
+                theme={'satoshi'}
+                options={readOnlyOptions}
+              />
+            </div>
+          )}
+          <Text>{t('chapter_four.resources.public_key.solution_two')}</Text>
+          <ToggleSwitch
+            text={t('help_page.spoilers_confirm')}
+            checked={challengeTwoIsToggled}
+            onChange={challengeTwoToggleSwitch}
+          />
+          {challengeTwoIsToggled && (
+            <div className="border border-white/25">
+              <LanguageTabs
+                languages={configTwo.languages}
+                value={languageTwo}
+                onChange={handleSetLanguageTwo}
+                noHide={true}
+              />
+              <MonacoEditor
+                loading={<Loader className="h-10 w-10 text-white" />}
+                height={`calc(var(--dynamic-height) - 767px)`}
+                value={codeTwo}
+                beforeMount={handleBeforeMount}
+                onMount={handleMount}
+                language={languageTwo}
+                theme={'satoshi'}
+                options={readOnlyOptions}
+              />
+            </div>
+          )}
+        </>
+      }
+    />
   )
 }

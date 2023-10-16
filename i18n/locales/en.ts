@@ -624,6 +624,40 @@ const translations = {
       paragraph_two:
         'You withdraw the bitcoin from the mining pool into the wallet you just created. You are now fully funded and ready for whatever Vanderpoole and BitRey may throw at you next.',
     },
+    resources: {
+      public_key: {
+        elliptic_curve_reason_heading:
+          'The reason for elliptic curve operations',
+        elliptic_curve_reason_paragraph:
+          'We use a very specific set of steps to derive the public key because there is mathematical proof that reversing this operation is essentially impossibly hard. That feature also applies to other algorithms ( like RSA), but those have much larger key sizes and are less efficient computations. The steps we follow were chosen because:',
+        elliptic_curve_reason_list_one:
+          'we want a system where anyone can join using minimal resources',
+        elliptic_curve_reason_list_two:
+          'we want messages to be short (and therefore cheap to transmit)',
+        elliptic_curve_reason_list_three:
+          'we need to prove we know a secret without giving away that secret',
+        elliptic_curve_reason_list_four:
+          'we need it to be practically impossible for anyone else to compute our secret',
+        wpkh_heading: 'Witness Public Key Hash (wpkh) address',
+        wpkh_paragraph:
+          'A Bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There any several types of output script and several encoding mechanisms. In this challenge we encode a compressed public key with bech32 to create what is called a witness public key hash address.',
+        secp_heading: 'secp256k1',
+        secp_paragraph:
+          'Secp256k1 is the name of the elliptic curve used by Bitcoin to implement its public key cryptography. All points on this curve are valid Bitcoin public keys',
+        generator_point_heading: 'Generator point',
+        generator_point_paragraph:
+          'A Bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There any several types of output script and several encoding mechanisms. In this challenge we encode a compressed public key with bech32 to create what is called a witness public key hash address.',
+        elliptic_curve_operations_heading: 'Elliptic curve operations',
+        elliptic_curve_operations_paragraph:
+          'Elliptic curves have their own mathematical rules, so simple operations like addition and multiplication work differently. For simplicity and brevity, established symbols are re-used, like using a “*” for operations that are similar to multiplication.',
+        discrete_log_heading: 'Discrete logarithm',
+        discrete_log_paragraph:
+          'A mathematical system where you can, for example, multiply but cannot divide. A simple metaphor for this is looking at a clock. Three hours past 11 o’clock is 2 o’clock. So we could say “11+3=2”. However if wanted to perform “2-x=11” and solve for x, you would have infinite possible answers (3, 15, 27, 39...). More on <Link href="https://en.wikipedia.org/wiki/Discrete_logarithm" className="underline">wikipedia</Link>.',
+        solution_one: 'Solution to part one of this challenge',
+        solution_two: 'Solution to part two of this challenge',
+      },
+      address: {},
+    },
   },
 
   chapter_five: {
@@ -746,6 +780,16 @@ const translations = {
     first: 'Something is wrong!',
     second: 'Holocat may have chewed on some cables again. Bad cat!',
     reload: 'Retry',
+  },
+  help_page: {
+    main_heading: 'Learning Resources',
+    main_subheading:
+      'What helpful info and resources can we provide for further learning?',
+    tips_heading: 'Tips',
+    tips_subheading:
+      'What specific tips can/do we want to give learners if they are stuck?',
+    spoilers_heading: 'Spoilers',
+    spoilers_confirm: 'Yes, I want to see the solution',
   },
 }
 export default translations
