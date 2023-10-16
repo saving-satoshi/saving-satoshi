@@ -33,7 +33,6 @@ export default function ScriptingChallenge({
   config,
   successMessage,
   onSelectLanguage,
-  hiddenRange,
 }: {
   children?: React.ReactNode
   lang: string
@@ -41,7 +40,6 @@ export default function ScriptingChallenge({
   config: EditorConfig
   successMessage: string
   onSelectLanguage: (language: string) => void
-  hiddenRange?: number[]
 }) {
   const { saveProgress, saveProgressLocal } = useProgressContext()
   const { account } = useAuthContext()
@@ -50,6 +48,10 @@ export default function ScriptingChallenge({
   )
   const [constraints] = useState(
     config.languages[config.defaultLanguage].constraints
+  )
+
+  const [hiddenRange] = useState(
+    config.languages[config.defaultLanguage].hiddenRange
   )
   const [language, setLanguage] = useState(config.defaultLanguage)
   const [challengeSuccess, setChallengeSuccess] = useState(false)
