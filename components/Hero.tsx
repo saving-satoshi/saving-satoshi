@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <div className="flex h-full grow items-end justify-center">
       <Image
-        src="/assets/images/main-image.png"
+        src="/assets/images/main-image.jpg"
         alt="Saving Satoshi"
         fill
         quality={100}

@@ -34,7 +34,8 @@ export default function Solo1({ lang }) {
   const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState(0)
   const [antagonistsBlockAmount, setAntagonistsBlockAmount] = useState(0)
 
-  const isSmallScreen = useMediaQuery({ width: 1098 })
+  const isSmallScreen = useMediaQuery({ width: 767 })
+  const isMediumScreen = useMediaQuery({ width: 1098 })
 
   const saveAndProceed = useSaveAndProceed()
 
@@ -134,6 +135,7 @@ export default function Solo1({ lang }) {
               key={i}
               username={profile.username}
               avatar={profile.avatar}
+              avatarSize={isSmallScreen ? 50 : 100}
               description={profile.description}
             >
               <Card className="flex gap-4">
@@ -177,14 +179,14 @@ export default function Solo1({ lang }) {
               <span className="flex flex-col gap-[10px] md:max-w-[600px] lg:max-w-[400px] ">
                 <Text
                   className={`font-nunito text-[24px] font-bold ${
-                    isSmallScreen ? 'text-center' : 'text-left'
+                    isMediumScreen ? 'text-center' : 'text-left'
                   }`}
                 >
                   {t('chapter_three.solo_one.step_zero_heading')}
                 </Text>
                 <Text
                   className={`font-nunito text-[18px] font-semibold ${
-                    isSmallScreen ? 'text-center' : 'text-left'
+                    isMediumScreen ? 'text-center' : 'text-left'
                   }`}
                 >
                   {t('chapter_three.solo_one.step_zero_paragraph_one')}
@@ -195,14 +197,14 @@ export default function Solo1({ lang }) {
               <span className="flex flex-col gap-[10px] md:max-w-[600px] lg:max-w-[400px]">
                 <Text
                   className={`self-stretch font-nunito text-[24px] font-bold ${
-                    isSmallScreen ? 'text-center' : 'text-left'
+                    isMediumScreen ? 'text-center' : 'text-left'
                   }`}
                 >
                   {t('chapter_three.solo_one.step_one_heading')}
                 </Text>
                 <Text
                   className={`self-stretch font-nunito text-[18px] font-semibold ${
-                    isSmallScreen ? 'text-center' : 'text-left'
+                    isMediumScreen ? 'text-center' : 'text-left'
                   }`}
                 >
                   {t('chapter_three.solo_one.step_one_paragraph_one')}
@@ -213,14 +215,14 @@ export default function Solo1({ lang }) {
               <span className="flex flex-col gap-[10px] md:max-w-[600px] lg:max-w-[400px]">
                 <Text
                   className={`font-nunito text-[24px] font-bold ${
-                    isSmallScreen ? 'text-center' : 'text-left'
+                    isMediumScreen ? 'text-center' : 'text-left'
                   }`}
                 >
                   {t('chapter_three.solo_one.step_two_heading')}
                 </Text>
                 <Text
                   className={`font-nunito text-[18px] font-semibold ${
-                    isSmallScreen ? 'text-center' : 'text-left'
+                    isMediumScreen ? 'text-center' : 'text-left'
                   }`}
                 >
                   {t('chapter_three.solo_one.step_two_paragraph_one')}
@@ -228,7 +230,7 @@ export default function Solo1({ lang }) {
                 <Button
                   onClick={saveAndProceed}
                   classes={`${
-                    isSmallScreen ? 'self-center' : 'self-start'
+                    isMediumScreen ? 'self-center' : 'self-start'
                   } w-full md:w-auto max-w-[192px] mt-[20px]`}
                 >
                   {t('shared.next')}
