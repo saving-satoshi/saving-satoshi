@@ -49,7 +49,7 @@ const translations = {
         paragraph_one:
           'सभी सुझावों का स्वागत है, सामग्री परिवर्तन, खेल यांत्रिकी सहित - वास्तव में कुछ भी। हम हमेशा समीक्षा और <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">क्यूए-इंग कोड परिवर्तन</a>। कोड सुधार के लिए, आप सीधे किसी समस्या को खोल सकते हैं या GitHub पर पुल अनुरोध सबमिट कर सकते हैं।',
         paragraph_two:
-          'यदि आप डिज़ाइन, कहानी, या किसी अन्य चीज़ में शामिल होना चाहते हैं, तो <a href="https://bitcoin.design/contribute/" target="_blank" rel="noreferrer">Bitcoin Design slack</a> में #Saving-satoshi चैनल में हमसे जुड़ें। उल्लेख करें कि आप कैसे योगदान देना चाहते हैं और हम आपको सही दिशा में इंगित करने में मदद करेंगे।',
+          'यदि आप डिज़ाइन, कहानी, या किसी अन्य चीज़ में शामिल होना चाहते हैं, तो <a href="https://discord.gg/DC8Dys4G3h" target="_blank" rel="noreferrer">Bitcoin Design Discord</a> में #Saving-satoshi चैनल में हमसे जुड़ें। उल्लेख करें कि आप कैसे योगदान देना चाहते हैं और हम आपको सही दिशा में इंगित करने में मदद करेंगे।',
       },
     },
     contributors: {

@@ -41,7 +41,7 @@ const translations = {
         paragraph_one:
           'Alle suggesties zijn welkom, inclusief inhoudswijzigingen, spelmechanica - echt alles. We zijn ook altijd op zoek naar hulp bij het <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">beoordelen en testen van code-wijzigingen</a>. Voor codeverbeteringen kun je rechtstreeks een issue openen of een pull-request indienen op GitHub.',
         paragraph_two:
-          'Als je betrokken wilt raken bij het ontwerp, het verhaal of iets anders, sluit je dan aan bij ons in het #saving-satoshi-kanaal in de <a href="https://bitcoin.design/contribute/" target="_blank" rel="noreferrer">Bitcoin Design slack</a>. Vermeld hoe je wilt bijdragen en we helpen je graag op weg.',
+          'Als je betrokken wilt raken bij het ontwerp, het verhaal of iets anders, sluit je dan aan bij ons in het #saving-satoshi-kanaal in de <a href="https://discord.gg/DC8Dys4G3h" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Vermeld hoe je wilt bijdragen en we helpen je graag op weg.',
       },
     },
 
