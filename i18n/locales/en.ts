@@ -653,10 +653,18 @@ const translations = {
         discrete_log_heading: 'Discrete logarithm',
         discrete_log_paragraph:
           'A mathematical system where you can, for example, multiply but cannot divide. A simple metaphor for this is looking at a clock. Three hours past 11 o’clock is 2 o’clock. So we could say “11+3=2”. However if wanted to perform “2-x=11” and solve for x, you would have infinite possible answers (3, 15, 27, 39...). More on <Link href="https://en.wikipedia.org/wiki/Discrete_logarithm" className="underline">wikipedia</Link>.',
-        solution_one: 'Solution to part one of this challenge',
-        solution_two: 'Solution to part two of this challenge',
       },
-      address: {},
+      address: {
+        hash_algo_heading: 'SHA-256, RIPEMD-160',
+        hash_algo_paragraph:
+          'Hash functions digest any amount of any kind of data and always return a result of the same size. For SHA256, it’s 32 bytes. For RIPEMD-160, it’s 20 bytes. The output is deterministic (always the same output for the same input) but otherwise, indistinguishable from random. Hash functions effectively reduce data to a small consistent fingerprint.',
+        wpkh_heading: 'Witness Public Key Hash (wpkh) address',
+        wpkh_paragraph:
+          'A Bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There any several types of output script and several encoding mechanisms. In this challenge we encode a compressed public key with bech32 to create what is called a witness public key hash address.',
+        network_heading: 'Mainnet, Testnet, Signet, and Regtest',
+        network_paragraph:
+          'When developing Bitcoin software, it is important to test your code before you trust real money with it! One of the simplest ways to test Bitcoin software is to use a different blockchain with a new genesis block where the coins don’t matter, mining is free and easy, and everything can be reset at any time. These chains are supported by a unique network of nodes that does not interfere with the real coins and nodes on Mainnet. Testnet and Signet are the names of two such alternate Bitcoin blockchains that are maintained in parallel with Mainnet on a global scale. Regtest is a developer mode designed to be run locally with no network connections needed at all.',
+      },
     },
   },
 
@@ -790,6 +798,16 @@ const translations = {
       'What specific tips can/do we want to give learners if they are stuck?',
     spoilers_heading: 'Spoilers',
     spoilers_confirm: 'Yes, I want to see the solution',
+    solution_one: 'Solution to part one of this challenge',
+    solution_two: 'Solution to part two of this challenge',
+    solution_three: 'Solution to part three of this challenge',
+    solution_four: 'Solution to part four of this challenge',
+    solution_five: 'Solution to part five of this challenge',
+    solution_six: 'Solution to part six of this challenge',
+    solution_seven: 'Solution to part seven of this challenge',
+    solution_eight: 'Solution to part eight of this challenge',
+    solution_nine: 'Solution to part nine of this challenge',
+    solution_ten: 'Solution to part ten of this challenge',
   },
 }
 export default translations

@@ -203,7 +203,7 @@ export default function PublicKeyResources({ lang }) {
       tipsResources={'hello world'}
       codeResources={
         <>
-          <Text>{t('chapter_four.resources.public_key.solution_one')}</Text>
+          <Text>{t('help_page.solution_one')}</Text>
           <ToggleSwitch
             text={t('help_page.spoilers_confirm')}
             checked={challengeOneIsToggled}
@@ -229,7 +229,7 @@ export default function PublicKeyResources({ lang }) {
               />
             </div>
           )}
-          <Text>{t('chapter_four.resources.public_key.solution_two')}</Text>
+          <Text>{t('help_page.solution_two')}</Text>
           <ToggleSwitch
             text={t('help_page.spoilers_confirm')}
             checked={challengeTwoIsToggled}
