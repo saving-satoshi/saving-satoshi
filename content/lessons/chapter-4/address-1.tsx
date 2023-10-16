@@ -50,6 +50,7 @@ const python = {
     args: ['compressed'],
   },
   defaultCode: `import hashlib
+
 # Get the sha256 digest of the compressed public key.
 # Then get the ripemd160 digest of that sha256 hash
 # Return 20-byte array
