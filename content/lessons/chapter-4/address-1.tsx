@@ -14,8 +14,8 @@ export const metadata = {
 const javascript = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'hash_compressed',
-    args: ['compressed'],
+    name: 'findHash',
+    args: ['nonce'],
   },
   defaultCode: `const crypto = require('crypto')
 
@@ -46,8 +46,8 @@ const javascript = {
 const python = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'hash_compressed',
-    args: ['compressed'],
+    name: 'findHash',
+    args: ['nonce'],
   },
   defaultCode: `import hashlib
 
