@@ -708,6 +708,8 @@ const translations = {
     generate:
       'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
     confirm: 'Done',
+    acknowledged:
+      'I acknowledge I have saved this private key and know that I will need it for challenges in the future.',
   },
 
   disclaimer: {

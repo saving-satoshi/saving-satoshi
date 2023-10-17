@@ -134,10 +134,7 @@ export default function LoginModal({ onClose, state }) {
             checked={copyAcknowledged}
             onChange={handleAcknowledgeCopy}
           />
-          <Text>
-            I acknowledge I have saved this private key and know that I will
-            need it for challenges in the future.
-          </Text>
+          <Text>{t('modal_signup.acknowledged')}</Text>
         </div>
         <p className="mt-5 text-base">{t('modal_signup.generate')}</p>
         <button
