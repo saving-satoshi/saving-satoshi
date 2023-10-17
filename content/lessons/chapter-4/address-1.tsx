@@ -29,7 +29,7 @@ const javascript = {
       return [false, 'Hash must start with 5 zeroes.']
     }**/
 
-    if (answer.length !== 20) {
+    if (answer.length !== 40) {
       return [false, 'Array must be 20 bytes long']
     }
 
@@ -58,7 +58,7 @@ const python = {
 `,
   validate: async (answer) => {
    
-    if (answer.length!==20) {
+    if (answer.length!==40) {
       return [false, 'Array must be 20 bytes long']
     }
 
