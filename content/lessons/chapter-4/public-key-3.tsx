@@ -43,6 +43,7 @@ const javascript = {
       return [false, 'Try logging out your answer']
     }
   },
+  hiddenRange: [1, 0, 1, 0],
   constraints: [
     {
       range: [11, 1, 7, 1],
@@ -69,9 +70,14 @@ G = SECP256K1.FAST_G
 
  `,
   validate: async (answer) => {
-    const correctPattern = /^\{"x":"[0-9a-fA-F]{64}","y":"[0-9a-fA-F]{64}"\}$/
-    if (answer) {
-      if (answer.match(correctPattern)) {
+    const parseAnswer = JSON.parse(answer)
+    const correctPattern = /^\[0-9a-fA-F]{64}/
+    if (parseAnswer) {
+      console.log(answer, parseAnswer)
+      if (
+        parseAnswer['x'].match(correctPattern) &&
+        parseAnswer['y'].match(correctPattern)
+      ) {
         return [true, 'Nicely Done ']
       } else {
         return [false, 'Try multiplying with the G constant']
@@ -80,9 +86,10 @@ G = SECP256K1.FAST_G
       return [false, 'Try printing out your answer']
     }
   },
+  hiddenRange: [1, 0, 223, 0],
   constraints: [
     {
-      range: [131, 1, 133, 1],
+      range: [231, 1, 233, 1],
       allowMultiline: true,
     },
   ],
@@ -100,9 +107,6 @@ export default function PublicKey3({ lang }) {
   const t = useTranslations(lang)
 
   const [language, setLanguage] = useState(config.defaultLanguage)
-  const [, setHiddenRange] = useState([1, 0, 1, 0])
-  let hiddenRange = [1, 0, 1, 0]
-  hiddenRange = language === 'javascript' ? [1, 0, 1, 0] : []
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
@@ -110,8 +114,7 @@ export default function PublicKey3({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
-      hiddenRange={hiddenRange}
-      lessonKey={getLessonKey('chapter-2', 'scripting-2')}
+      lessonKey={getLessonKey('chapter-4', 'public-key-3')}
       successMessage={t('chapter_four.public_key_three.success')}
       onSelectLanguage={handleSelectLanguage}
     >

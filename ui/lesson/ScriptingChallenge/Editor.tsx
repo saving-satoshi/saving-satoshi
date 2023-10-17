@@ -33,7 +33,6 @@ export default function Editor({
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
-  const defaultHiddenRange = hiddenRange ? hiddenRange : []
   const [loading, setLoading] = useState<boolean>(true)
   const [options, setOptions] = useState(monacoOptions)
   const monacoRef = useRef<any>()
@@ -71,7 +70,6 @@ export default function Editor({
     monaco.editor.setTheme('satoshi')
     setLoading(false)
     monacoRef.current = { monaco, editor }
-    editor.setHiddenAreas([new monaco.Range(...defaultHiddenRange)])
     const model = editor.getModel()
     const constrainedInstance = constrainedEditor(monaco)
     constrainedInstance.initializeIn(editor)
