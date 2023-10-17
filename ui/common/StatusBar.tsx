@@ -63,7 +63,10 @@ export default function StatusBar({
         return (
           successMessage || (
             <span className="flex">
-              <Icon icon="check" className="mr-2 h-8 w-8" />{' '}
+              <Icon
+                icon="check"
+                className="mr-2 h-7 w-7 rounded-full bg-green"
+              />{' '}
               {t('status_bar.success_message')}
             </span>
           )
@@ -83,7 +86,7 @@ export default function StatusBar({
     <div
       className={clsx(
         className,
-        'border-t border-white/25 max-md:bottom-0 max-md:px-4 max-md:py-8',
+        'border-t border-white/25 transition-all max-md:bottom-0 max-md:px-4 max-md:py-8',
         {
           'w-screen': full,
           'w-full': !full,
@@ -95,8 +98,8 @@ export default function StatusBar({
         }
       )}
     >
-      <div className="flex h-14 flex-col items-stretch justify-between max-md:gap-4 md:flex-row">
-        <div className="flex w-full items-center align-middle transition duration-150 ease-in-out md:px-5">
+      <div className="flex flex-col items-stretch justify-between max-md:gap-4 md:h-14 md:flex-row">
+        <div className="flex items-center align-middle transition duration-150 ease-in-out md:px-5">
           <p
             className={clsx(
               'font-nunito text-[21px] text-white transition duration-150 ease-in-out',
@@ -113,7 +116,7 @@ export default function StatusBar({
         <Button
           onClick={saveAndProceed}
           disabled={getStatus() !== Status.Success}
-          classes="md:text-2xl h-full"
+          classes="md:text-2xl"
         >
           {t('status_bar.next')}
         </Button>
