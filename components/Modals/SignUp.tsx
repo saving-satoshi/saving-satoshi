@@ -11,6 +11,7 @@ import { getNextLessonKey } from 'lib/progress'
 import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import Modal from './Modal'
+import { Text, ToggleSwitch } from 'ui'
 
 export default function LoginModal({ onClose, state }) {
   const lang = useLang()
@@ -31,8 +32,11 @@ export default function LoginModal({ onClose, state }) {
     navigator.clipboard.writeText(text)
 
     setCopied(true)
-    setCopyAcknowledged(true)
     setTimeout(() => setCopied(false), 2000)
+  }
+
+  const handleAcknowledgeCopy = () => {
+    setCopyAcknowledged(!copyAcknowledged)
   }
 
   async function handleConfirm() {
@@ -125,8 +129,17 @@ export default function LoginModal({ onClose, state }) {
             )}
           </pre>
         </>
+        <div className="flex flex-row items-center gap-2">
+          <ToggleSwitch
+            checked={copyAcknowledged}
+            onChange={handleAcknowledgeCopy}
+          />
+          <Text>
+            I acknowledge I have saved this private key and know that I will
+            need it for challenges in the future.
+          </Text>
+        </div>
         <p className="mt-5 text-base">{t('modal_signup.generate')}</p>
-
         <button
           onClick={handleConfirm}
           disabled={loading || !copyAcknowledged}
