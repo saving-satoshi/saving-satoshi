@@ -4,7 +4,7 @@ import { ScriptingChallenge, LessonInfo, CodeExample } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { editor } from 'monaco-editor'
 import { secp256k1 } from 'ui/lesson/ScriptingChallenge/library/'
@@ -26,12 +26,13 @@ const javascript = {
   // Return that curve point (also known as a group element)
   // which will be an instance of secp256k1.GE
   // See the library source code for the exact definition
+  // https://github.com/saving-satoshi/challenges/blob/master/chapter4/javascript/lib/secp256k1.js
   const G = secp256k1.G
   // To submit your answer, log it to the terminal using console.log().
 
 `,
   validate: async (answer: string) => {
-    const correctPattern = /{x:[a-z\s0-9]{64},\s*y:[a-z\s0-9]{64}}/gi
+    const correctPattern = /^\{"x":"[0-9a-fA-F]{64}","y":"[0-9a-fA-F]{64}"\}$/
     if (answer) {
       if (answer.match(correctPattern)) {
         return [true, 'Nicely Done ']
@@ -59,16 +60,25 @@ const python = {
   defaultCode: `${secp256k1.secp256k1py}
   # Import ECDSA library.
 
-  # Multiply the private key by the ECDSA generator point G to
-  # produce a new curve point which is the public key.
-  # Return that curve point (also known as a group element)
-  # which will be an instance of secp256k1.GE
-  # See the library source code for the exact definition
+# Multiply the private key by the ECDSA generator point G to
+# produce a new curve point which is the public key.
+# Return that curve point (also known as a group element)
+# which will be an instance of secp256k1.GE
+# See the library source code for the exact definition
 G = SECP256K1.FAST_G
 
  `,
   validate: async (answer) => {
-    return [true, '']
+    const correctPattern = /^\{"x":"[0-9a-fA-F]{64}","y":"[0-9a-fA-F]{64}"\}$/
+    if (answer) {
+      if (answer.match(correctPattern)) {
+        return [true, 'Nicely Done ']
+      } else {
+        return [false, 'Try multiplying with the G constant']
+      }
+    } else {
+      return [false, 'Try printing out your answer']
+    }
   },
   constraints: [
     {
@@ -90,21 +100,12 @@ export default function PublicKey3({ lang }) {
   const t = useTranslations(lang)
 
   const [language, setLanguage] = useState(config.defaultLanguage)
-  const [hiddenRange, setHiddenRange] = useState([1, 0, 1, 0])
+  const [, setHiddenRange] = useState([1, 0, 1, 0])
+  let hiddenRange = [1, 0, 1, 0]
+  hiddenRange = language === 'javascript' ? [1, 0, 1, 0] : []
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
-
-  useEffect(() => {
-    if (language === 'python') {
-      setHiddenRange([1, 0, 123, 0])
-    }
-    if (language === 'javascript') {
-      setHiddenRange([1, 1, 1, 1])
-    } else {
-      setHiddenRange([])
-    }
-  }, [language])
   return (
     <ScriptingChallenge
       lang={lang}

@@ -98,7 +98,6 @@ export default function Editor({
     hiddenRange && setOptions(createMonacoOptions(hiddenRange[2]))
     if (monacoRef.current) {
       const { editor, monaco } = monacoRef.current
-      console.log(new monaco.Range(...defaultHiddenRange))
       const model = monaco.editor.createModel(value, language)
 
       editor.setModel(model)
