@@ -32,9 +32,14 @@ const javascript = {
 
 `,
   validate: async (answer: string) => {
-    const correctPattern = /^\{"x":"[0-9a-fA-F]{64}","y":"[0-9a-fA-F]{64}"\}$/
-    if (answer) {
-      if (answer.match(correctPattern)) {
+    const parsedAnswer = JSON.parse(answer)
+    const correctPattern = /^0x[0-9a-fA-F]{64}$/
+    console.log(parsedAnswer, answer)
+    if (parsedAnswer) {
+      if (
+        parsedAnswer['x'].match(correctPattern) &&
+        parsedAnswer['y'].match(correctPattern)
+      ) {
         return [true, 'Nicely Done ']
       } else {
         return [false, 'Try multiplying with the G constant']
@@ -70,13 +75,12 @@ G = SECP256K1.FAST_G
 
  `,
   validate: async (answer) => {
-    const parseAnswer = JSON.parse(answer)
-    const correctPattern = /^\[0-9a-fA-F]{64}/
-    if (parseAnswer) {
-      console.log(answer, parseAnswer)
+    const parsedAnswer = JSON.parse(answer)
+    const correctPattern = /^0x[0-9a-fA-F]{64}$/
+    if (parsedAnswer) {
       if (
-        parseAnswer['x'].match(correctPattern) &&
-        parseAnswer['y'].match(correctPattern)
+        parsedAnswer['x'].match(correctPattern) &&
+        parsedAnswer['y'].match(correctPattern)
       ) {
         return [true, 'Nicely Done ']
       } else {
@@ -86,10 +90,10 @@ G = SECP256K1.FAST_G
       return [false, 'Try printing out your answer']
     }
   },
-  hiddenRange: [1, 0, 223, 0],
+  hiddenRange: [1, 0, 123, 0],
   constraints: [
     {
-      range: [231, 1, 233, 1],
+      range: [131, 1, 133, 1],
       allowMultiline: true,
     },
   ],
