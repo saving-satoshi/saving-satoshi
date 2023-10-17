@@ -204,11 +204,13 @@ export default function PublicKeyResources({ lang }) {
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>
-          <ToggleSwitch
-            text={t('help_page.spoilers_confirm')}
-            checked={challengeOneIsToggled}
-            onChange={challengeOneToggleSwitch}
-          />
+          <div className="flex flex-row items-center gap-2">
+            <ToggleSwitch
+              checked={challengeOneIsToggled}
+              onChange={challengeOneToggleSwitch}
+            />
+            <Text>{t('help_page.spoilers_confirm')}</Text>
+          </div>
           {challengeOneIsToggled && (
             <div className="border border-white/25">
               <LanguageTabs
@@ -230,11 +232,13 @@ export default function PublicKeyResources({ lang }) {
             </div>
           )}
           <Text>{t('help_page.solution_two')}</Text>
-          <ToggleSwitch
-            text={t('help_page.spoilers_confirm')}
-            checked={challengeTwoIsToggled}
-            onChange={challengeTwoToggleSwitch}
-          />
+          <div className="flex flex-row items-center gap-2">
+            <ToggleSwitch
+              checked={challengeTwoIsToggled}
+              onChange={challengeTwoToggleSwitch}
+            />
+            <Text>{t('help_page.spoilers_confirm')}</Text>
+          </div>
           {challengeTwoIsToggled && (
             <div className="border border-white/25">
               <LanguageTabs
