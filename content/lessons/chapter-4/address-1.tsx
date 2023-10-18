@@ -97,8 +97,8 @@ export default function Scripting2({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
-      lessonKey={getLessonKey('chapter-2', 'scripting-2')}
-      successMessage={t('chapter_two.scripting_two.success')}
+      lessonKey={getLessonKey('chapter-4', 'address-1')}
+      successMessage={t('chapter_four.address_one.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>
