@@ -34,7 +34,6 @@ const javascript = {
   validate: async (answer: string) => {
     const parsedAnswer = JSON.parse(answer)
     const correctPattern = /^0x[0-9a-fA-F]{64}$/
-    console.log(parsedAnswer, answer)
     if (parsedAnswer) {
       if (
         parsedAnswer['x'].match(correctPattern) &&
@@ -48,10 +47,10 @@ const javascript = {
       return [false, 'Try logging out your answer']
     }
   },
-  hiddenRange: [1, 0, 1, 0],
+  hiddenRange: [1, 0, 126, 0],
   constraints: [
     {
-      range: [11, 1, 7, 1],
+      range: [133, 1, 137, 1],
       allowMultiline: true,
     },
   ],
@@ -64,15 +63,15 @@ const python = {
     args: ['private_key'],
   },
   defaultCode: `${secp256k1.secp256k1py}
-  # Import ECDSA library.
-
+# Import ECDSA library.
 # Multiply the private key by the ECDSA generator point G to
 # produce a new curve point which is the public key.
 # Return that curve point (also known as a group element)
 # which will be an instance of secp256k1.GE
 # See the library source code for the exact definition
+# https://github.com/saving-satoshi/challenges/blob/master/chapter4/python/lib/secp256k1.py
 G = SECP256K1.FAST_G
-
+# To submit your answer, print to the terminal using print()
  `,
   validate: async (answer) => {
     const parsedAnswer = JSON.parse(answer)
@@ -93,7 +92,7 @@ G = SECP256K1.FAST_G
   hiddenRange: [1, 0, 123, 0],
   constraints: [
     {
-      range: [131, 1, 133, 1],
+      range: [123, 1, 132, 1],
       allowMultiline: true,
     },
   ],
