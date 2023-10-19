@@ -72,6 +72,8 @@ const python = {
 # https://github.com/saving-satoshi/challenges/blob/master/chapter4/python/lib/secp256k1.py
 G = SECP256K1.FAST_G
 # To submit your answer, print to the terminal using print()
+
+
  `,
   validate: async (answer) => {
     const parsedAnswer = JSON.parse(answer)
@@ -89,10 +91,10 @@ G = SECP256K1.FAST_G
       return [false, 'Try printing out your answer']
     }
   },
-  hiddenRange: [1, 0, 123, 0],
+  hiddenRange: [1, 0, 126, 0],
   constraints: [
     {
-      range: [123, 1, 132, 1],
+      range: [133, 1, 136, 1],
       allowMultiline: true,
     },
   ],

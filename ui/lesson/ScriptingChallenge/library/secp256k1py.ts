@@ -120,4 +120,7 @@ class FastGEMul:
 class SECP256K1:
 	class FAST_G:
 		def __init__(A):0
-SECP256K1.FAST_G=FastGEMul(G)`
+SECP256K1.FAST_G=FastGEMul(G)
+
+
+`
