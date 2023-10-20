@@ -577,7 +577,7 @@ const translations = {
       paragraph_three:
         'Complete the function `privatekey_to_publickey()` so that it returns the public key derived from a given private key.',
       success:
-        'Evaluation  Good job! That public key is pretty long. Let’s try to compress it!',
+        'Good job! That public key is pretty long. Let’s try to compress it!',
     },
 
     public_key_four: {
