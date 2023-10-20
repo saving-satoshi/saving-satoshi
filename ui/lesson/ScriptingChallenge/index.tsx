@@ -46,11 +46,11 @@ export default function ScriptingChallenge({
   const [code, setCode] = useState(
     config.languages[config.defaultLanguage].defaultCode
   )
-  const [constraints] = useState(
+  const [constraints, setConstraints] = useState(
     config.languages[config.defaultLanguage].constraints
   )
 
-  const [hiddenRange] = useState(
+  const [hiddenRange, setHiddenRange] = useState(
     config.languages[config.defaultLanguage].hiddenRange
   )
   const [language, setLanguage] = useState(config.defaultLanguage)
@@ -65,7 +65,9 @@ export default function ScriptingChallenge({
     if (!challengeSuccess) {
       setLanguage(value)
       onSelectLanguage(value)
+      setHiddenRange(config.languages[value].hiddenRange)
       setCode(config.languages[value].defaultCode)
+      setConstraints(config.languages[value].constraints)
     }
   }
 
@@ -123,9 +125,9 @@ export default function ScriptingChallenge({
           <Editor
             language={language}
             value={code}
+            hiddenRange={hiddenRange}
             onChange={handleChange}
             onValidate={handleEditorValidate}
-            hiddenRange={hiddenRange}
             code={code}
             constraints={constraints}
           />
