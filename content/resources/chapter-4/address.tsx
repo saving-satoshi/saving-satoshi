@@ -83,7 +83,7 @@ const configTwo: EditorConfig = {
   },
 }
 
-export default function PublicKeyResources({ lang }) {
+export default function AddressResources({ lang }) {
   const t = useTranslations(lang)
 
   const [codeOne, setCodeOne] = useState(
