@@ -10,6 +10,7 @@ import { Lesson, LessonTabs } from 'ui'
 import { useMediaQuery, useDynamicHeight } from 'hooks'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { useAuthContext } from 'providers/AuthProvider'
+import { setData } from 'api/data'
 
 const tabData = [
   {
@@ -85,11 +86,15 @@ export default function ScriptingChallenge({
 
   const handleRunnerValidate = async (answer) => {
     const [success, errors] = await config.languages[language].validate(answer)
+    console.log(lessonKey)
+    console.log(JSON.stringify(answer))
 
     if (success) {
       setChallengeSuccess(true)
+
       if (account) {
         saveProgress(lessonKey)
+        setData(account.id, lessonKey, JSON.stringify(answer))
       } else {
         saveProgressLocal(lessonKey)
       }
