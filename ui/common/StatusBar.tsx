@@ -100,7 +100,7 @@ export default function StatusBar({
     >
       <div className="flex flex-col items-stretch justify-between max-md:gap-4 md:h-14 md:flex-row">
         <div className="flex items-center align-middle transition duration-150 ease-in-out md:px-5">
-          <p
+          <div
             className={clsx(
               'font-nunito text-[21px] text-white transition duration-150 ease-in-out',
               {
@@ -110,7 +110,7 @@ export default function StatusBar({
             )}
           >
             {statusMessage()}
-          </p>
+          </div>
         </div>
 
         <Button

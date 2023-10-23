@@ -576,6 +576,8 @@ const translations = {
         'The elliptic curve operation is similar to addition and therefore its repetition is similar to multiplication. We use the * symbol to describe the algorithm (learn more), where `k` is the private key and `P` is the corresponding public key:',
       paragraph_three:
         'Complete the function `privatekey_to_publickey()` so that it returns the public key derived from a given private key.',
+      success:
+        'Good job! That public key is pretty long. Let’s try to compress it!',
     },
 
     public_key_four: {
@@ -750,6 +752,8 @@ const translations = {
     generate:
       'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
     confirm: 'Done',
+    acknowledged:
+      'I acknowledge I have saved this private key and know that I will need it for challenges in the future.',
   },
 
   disclaimer: {
