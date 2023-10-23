@@ -24,27 +24,39 @@ export default function TransactingResources({ lang }) {
       lang={lang}
       readingResources={
         <>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.address.hash_algo_heading')}
-          </Text>
+          <Text className="mt-[25px] text-xl font-bold">Transactions</Text>
           <Text>
-            The "scriptSig" is a script that you provide as part of the input in
-            your new transaction. It is essentially your unlocking script, which
-            proves that you have the authority to spend the bitcoins from the
-            referenced UTXO. The "scriptSig" is the data that goes into the
-            input's scriptSig field.
+            A transaction in the world of cryptocurrencies is akin to a single
+            atomic payment, where it involves the process of destroying existing
+            coins and creating new ones. When someone initiates a cryptocurrency
+            transaction, they're essentially instructing the blockchain to
+            transfer a specific amount of coins from one digital wallet to
+            another. To achieve this, the transaction consumes the sender's
+            existing coins and generates new ones for the recipient, effectively
+            updating the ownership ledger.
           </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.address.wpkh_heading')}
+          <Text className="mt-[25px] text-xl font-bold">Bitcoin Script</Text>
+          <Text>
+            Bitcoin Script is a simple, stack-based programming language used in
+            Bitcoin transactions to define the conditions under which bitcoins
+            can be spent. It consists of various opcodes (short for operation
+            codes) that specify what operations should be performed on the data
+            within the script.
           </Text>
-          <Text>{t('chapter_four.resources.address.wpkh_paragraph')}</Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.address.network_heading')}
-          </Text>
-          <Text>{t('chapter_four.resources.address.network_paragraph')}</Text>
         </>
       }
-      tipsResources={'hello world'}
+      tipsResources={
+        <ul className="list-inside list-disc font-nunito text-white">
+          <li>
+            Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33
+            bytes long (66 characters total) in the OP_Return of the transaction
+          </li>
+          <li>
+            Decoding the string with the "xxd" command remember that we are not
+            using a variable this time, we need to input the entire string
+          </li>
+        </ul>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>

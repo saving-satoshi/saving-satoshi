@@ -18,13 +18,11 @@ export default function ResourcesPage({
         <Text className="text-3xl font-bold">
           {t('help_page.main_heading')}
         </Text>
-        <Text>{t('help_page.main_subheading')}</Text>
         {readingResources}
         <hr className="my-7 h-[1px] w-full opacity-25" />
         <Text className="text-3xl font-bold">
           {t('help_page.tips_heading')}
         </Text>
-        <Text>{t('help_page.tips_subheading')}</Text>
         <Text>{tipsResources}</Text>
         <hr className="my-7 h-[1px] w-full opacity-25" />
         <Text className="text-3xl font-bold">

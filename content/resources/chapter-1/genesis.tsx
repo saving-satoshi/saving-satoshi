@@ -24,25 +24,55 @@ export default function GenesisResources({ lang }) {
       lang={lang}
       readingResources={
         <>
-          <Text className="mt-[25px] text-xl font-bold">ScriptSig</Text>
+          <Text className="text-xl font-bold">ScriptSig</Text>
           <Text>
             The "scriptSig" is a script that you provide as part of the input in
             your new transaction. It is essentially your unlocking script, which
-            proves that you have the authority to spend the bitcoins from the
+            proves that you have the authority to spend the bitcoin from the
             referenced UTXO. The "scriptSig" is the data that goes into the
             input's scriptSig field.
           </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            Bitcoin script and OP_Codes
+          <Text className="mt-[25px] text-xl font-bold">Bitcoin Blocks</Text>
+          <Text>
+            A "block" in blockchain technology is like a container for a group
+            of transactions. It forms a crucial part of the blockchain, with
+            each block referencing the one before it. This reference, along with
+            a block header that contains important details like a timestamp and
+            a unique identifier, ensures the data's integrity and chronological
+            order. Once a block is added to the blockchain, it's incredibly
+            difficult to change, ensuring the security and immutability of the
+            data. The size of a block can vary between different blockchains,
+            and each block must undergo validation by network nodes before
+            becoming a permanent part of the blockchain. This block-and-chain
+            structure is the foundation of blockchain's transparency and
+            security.
           </Text>
-          <Text>{t('chapter_four.resources.address.wpkh_paragraph')}</Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.address.network_heading')}
+          <Text className="mt-[25px] text-xl font-bold">Block explorer</Text>
+          <Text>
+            A block explorer is a crucial tool for navigating and understanding
+            blockchain networks. It acts as a user-friendly interface to inspect
+            and analyze the data stored on a blockchain. With a block explorer,
+            users can explore transaction histories, view account balances, and
+            track the progress of individual blocks and transactions. It
+            provides transparency and accountability in the world of
+            decentralized cryptocurrencies, making it easier to verify and trace
+            transactions while promoting trust in blockchain technology.
           </Text>
-          <Text>{t('chapter_four.resources.address.network_paragraph')}</Text>
         </>
       }
-      tipsResources={'hello world'}
+      tipsResources={
+        <ul className="list-inside list-disc font-nunito text-white">
+          <li>
+            Look for the scriptSig(Hex) category nested in coinbase input after
+            expanding the transaction within the block
+          </li>
+          <li>
+            The "xxd" command turns a file into hex and adding the "-r" tag
+            reverses it allowing hex to be translated into text. The "-p" tag
+            then prints it to the console allowing you to read the output.
+          </li>
+        </ul>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>

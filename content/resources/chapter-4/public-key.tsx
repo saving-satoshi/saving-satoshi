@@ -18,19 +18,12 @@ const javascript = {
     args: ['nonce'],
   },
   defaultCode: [
-    `const crypto = require('crypto')
-
-// Create a program that finds a sha256 hash starting with 5 zeroes.
-// To submit your answer, log it to the terminal using console.log().
-
-// Type your code here
+    `// From the library you need to use the .mul() method to multiply G by your private key
+const generatorPoint = G.mul($your_private_key)
+// Remember you need to log the answer for it to be validated
+console.log(G.mul(generatorPoint))
 `,
-    `const crypto = require('crypto')wwooooo
-
-// Create a program that finds a sha256 hash starting with 5 zeroes.
-// To submit your answer, log it to the terminal using console.log().
-
-// Type your code here
+    `console.log(G.mul($your_private_key))
 `,
   ],
   validate: async (answer) => {
@@ -46,12 +39,10 @@ const python = {
     args: ['nonce'],
   },
   defaultCode: [
-    `from hashlib import sha256
-
-# Create a program that finds a sha256 hash starting with 5 zeroes.
-# To submit your answer, print it to the terminal using print().
-
-# Type your code here
+    `# From the library you need to use the .mul() method to multiply G by your private key
+generatorPoint = G.mul($your_private_key)
+# Remember you need to log the answer for it to be validated
+print(generatorPoint)
 `,
     `from hashlib import sha256wooooo
 
