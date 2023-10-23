@@ -33,6 +33,7 @@ export default function ScriptingChallenge({
   lessonKey,
   config,
   successMessage,
+  saveData,
   onSelectLanguage,
 }: {
   children?: React.ReactNode
@@ -40,6 +41,7 @@ export default function ScriptingChallenge({
   lessonKey: string
   config: EditorConfig
   successMessage: string
+  saveData?: boolean
   onSelectLanguage: (language: string) => void
 }) {
   const { saveProgress, saveProgressLocal } = useProgressContext()
@@ -91,7 +93,7 @@ export default function ScriptingChallenge({
       setChallengeSuccess(true)
       if (account) {
         saveProgress(lessonKey)
-        setData(account.id, lessonKey, JSON.stringify(answer))
+        saveData && setData(account.id, lessonKey, JSON.stringify(answer))
       } else {
         saveProgressLocal(lessonKey)
       }
