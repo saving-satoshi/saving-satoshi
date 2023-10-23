@@ -10,6 +10,7 @@ import { Lesson, LessonTabs } from 'ui'
 import { useMediaQuery, useDynamicHeight } from 'hooks'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { useAuthContext } from 'providers/AuthProvider'
+import { setData } from 'api/data'
 
 const tabData = [
   {
@@ -32,6 +33,7 @@ export default function ScriptingChallenge({
   lessonKey,
   config,
   successMessage,
+  saveData,
   onSelectLanguage,
 }: {
   children?: React.ReactNode
@@ -39,6 +41,7 @@ export default function ScriptingChallenge({
   lessonKey: string
   config: EditorConfig
   successMessage: string
+  saveData?: boolean
   onSelectLanguage: (language: string) => void
 }) {
   const { saveProgress, saveProgressLocal } = useProgressContext()
@@ -90,6 +93,7 @@ export default function ScriptingChallenge({
       setChallengeSuccess(true)
       if (account) {
         saveProgress(lessonKey)
+        saveData && setData(account.id, lessonKey, JSON.stringify(answer))
       } else {
         saveProgressLocal(lessonKey)
       }
