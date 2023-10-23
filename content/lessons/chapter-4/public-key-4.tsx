@@ -14,30 +14,33 @@ export const metadata = {
 const javascript = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'findHash',
-    args: ['nonce'],
+    name: 'compressPublicKey',
+    args: ['publicKey'],
   },
-  defaultCode: `const crypto = require('crypto')
+  defaultCode: `
+  function compress_publickey(publickey) {
+    // Determine if the y coordinate is even or odd and prepend the
+    // corresponding header byte to the x coordinate.
+    // Return 33-byte Buffer
+    const header_byte = {
+      'y_is_even': Buffer.from([2]),
+      'y_is_odd':  Buffer.from([3])
+    };
+    const x_bytes = publickey.x.encode('UTF-8');
+    if ((publickey.y.val & 1n) === 0n)
+      return Buffer.concat([header_byte['y_is_even'], x_bytes]);
+    else
+      return Buffer.concat([header_byte['y_is_odd'], x_bytes]);
+  }
 
-// Create a program that finds a sha256 hash starting with 5 zeroes.
-// To submit your answer, log it to the terminal using console.log().
-
-// Type your code here
+  console.log(compress_publickey({"x":"0x2241aafa8bd7a36a669158f4c71378dd4e4f9aa3239f354c29528afc16965bb9","y":"0xf00415d8c4a478b2b84d3a4b9c3509c583b0e8fff6c03f9705d55612643280a5"}))
 `,
   validate: async (answer) => {
-    if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
-    }
-
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
-    }
-
-    return [true, undefined]
+    console.log(answer)
   },
   constraints: [
     {
-      range: [5, 1, 7, 1],
+      range: [1, 1, 18, 1],
       allowMultiline: true,
     },
   ],
@@ -46,41 +49,26 @@ const javascript = {
 const python = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'find_hash',
-    args: ['nonce'],
+    name: 'compress_publickey',
+    args: ['public'],
   },
   defaultCode: `# Import ECDSA library.
-from lib import secp256k1
   
-def privatekey_to_publickey(private_key):
-    # Multiply the private key by the ECDSA generator point G to
-    # produce a new curve point which is the public key.
-    # Return that curve point (also known as a group element)
-    # which will be an instance of secp256k1.GE
-    # See the library source code for the exact definition
-    G = secp256k1.G
+  def compress_publickey(publickey):
+      # Determine if the y coordinate is even or odd and prepend
+      # the corresponding header byte to the x coordinate.
+      # Return 33-byte array
+      header_byte = {
+          "y_is_even": bytes([2]),
+          "y_is_odd":  bytes([3])
+      }
 `,
-  //   defaultCode: `from hashlib import sha256
-
-  // # Create a program that finds a sha256 hash starting with 5 zeroes.
-  // # To submit your answer, print it to the terminal using print().
-
-  // # Type your code here
-  // `,
   validate: async (answer) => {
-    if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
-    }
-
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
-    }
-
-    return [true, undefined]
+    console.log(answer)
   },
   constraints: [
     {
-      range: [5, 1, 7, 1],
+      range: [1, 1, 11, 1],
       allowMultiline: true,
     },
   ],
