@@ -36,7 +36,7 @@ const javascript = {
   console.log(compress_publickey({"x":"0x2241aafa8bd7a36a669158f4c71378dd4e4f9aa3239f354c29528afc16965bb9","y":"0xf00415d8c4a478b2b84d3a4b9c3509c583b0e8fff6c03f9705d55612643280a5"}))
 `,
   validate: async (answer) => {
-    console.log(answer)
+    return [true, '']
   },
   constraints: [
     {
@@ -64,7 +64,7 @@ const python = {
       }
 `,
   validate: async (answer) => {
-    console.log(answer)
+    return [true, '']
   },
   constraints: [
     {
