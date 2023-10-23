@@ -86,8 +86,6 @@ export default function ScriptingChallenge({
 
   const handleRunnerValidate = async (answer) => {
     const [success, errors] = await config.languages[language].validate(answer)
-    console.log(lessonKey)
-    console.log(JSON.stringify(answer))
 
     if (success) {
       setChallengeSuccess(true)
