@@ -21,10 +21,31 @@ const javascript = {
     `// From the library you need to use the .mul() method to multiply G by your private key
 const generatorPoint = G.mul($your_private_key)
 // Remember you need to log the answer for it to be validated
-console.log(G.mul(generatorPoint))
-`,
-    `console.log(G.mul($your_private_key))
-`,
+console.log(G.mul(generatorPoint))`,
+    `function compress_publickey(publickey) {
+    // Determine if the y coordinate is even or odd and prepend the
+    // corresponding header byte to the x coordinate.
+    // Return 33-byte Buffer
+    const header_byte = {
+      'y_is_even': Buffer.from([2]),
+      'y_is_odd':  Buffer.from([3])
+    };
+    // The x value needs to encoded from an integer to a hex string
+    const x_hex = publickey.x.toString(16);
+    // The hext string then needs to be encoded into bytes
+    const x_bytes = Buffer.from(x_hex, 'hex');
+    // Finally we need to add the correct header byte whether it is even or odd and then decode into hex
+    if ((publickey.y & 1n) === 0n)
+      console.log(Buffer.concat([header_byte['y_is_even'], x_bytes]).toString('hex'));
+    else
+      console.log(Buffer.concat([header_byte['y_is_odd'], x_bytes]).toString('hex'));
+  }
+compress_publickey(
+    {
+        x:0x2241aafa8bd7a36a669158f4c71378dd4e4f9aa3239f354c29528afc16965bb9n,
+        y:0xf00415d8c4a478b2b84d3a4b9c3509c583b0e8fff6c03f9705d55612643280a5n
+    }
+)`,
   ],
   validate: async (answer) => {
     return [true, undefined]
@@ -42,15 +63,31 @@ const python = {
     `# From the library you need to use the .mul() method to multiply G by your private key
 generatorPoint = G.mul($your_private_key)
 # Remember you need to log the answer for it to be validated
-print(generatorPoint)
-`,
-    `from hashlib import sha256wooooo
+print(generatorPoint)`,
+    `def compress_publickey(publickey):
+    # Determine if the y coordinate is even or odd and prepend the
+    # corresponding header byte to the x coordinate.
+    # Return 33-byte bytes object
+    header_byte = {
+        'y_is_even': bytes([2]),
+        'y_is_odd': bytes([3])
+    }
+    # The x value needs to be encoded from an integer to a hex string
+    x_hex = format(publickey['x'], 'x')
+    # The hext string then needs to be encoded into bytes
+    x_bytes = bytes.fromhex(x_hex)
+    # Finally we need to add the correct header byte whether it is even or odd and then decode into hex
+    if publickey['y'] % 2 == 0:
+        print((header_byte['y_is_even'] + x_bytes).hex())
+    else:
+        print((header_byte['y_is_odd'] + x_bytes).hex())
 
-# Create a program that finds a sha256 hash starting with 5 zeroes.
-# To submit your answer, print it to the terminal using print().
-
-# Type your code here
-`,
+compress_publickey(
+    {
+        'x': 0x2241aafa8bd7a36a669158f4c71378dd4e4f9aa3239f354c29528afc16965bb9,
+        'y': 0xf00415d8c4a478b2b84d3a4b9c3509c583b0e8fff6c03f9705d55612643280a5
+    }
+)`,
   ],
   validate: async (answer) => {
     return [true, undefined]
@@ -212,7 +249,7 @@ export default function PublicKeyResources({ lang }) {
               />
               <MonacoEditor
                 loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 767px)`}
+                height={`calc(var(--dynamic-height) - 877px)`}
                 value={codeOne}
                 beforeMount={handleBeforeMount}
                 onMount={handleMount}
@@ -240,7 +277,7 @@ export default function PublicKeyResources({ lang }) {
               />
               <MonacoEditor
                 loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 767px)`}
+                height={`calc(var(--dynamic-height) - 502px)`}
                 value={codeTwo}
                 beforeMount={handleBeforeMount}
                 onMount={handleMount}

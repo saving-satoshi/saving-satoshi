@@ -18,13 +18,15 @@ const javascript = {
     args: ['nonce'],
   },
   defaultCode: [
-    `const crypto = require('crypto')
-
-// Create a program that finds a sha256 hash starting with 5 zeroes.
-// To submit your answer, log it to the terminal using console.log().
-
-// Type your code here
-`,
+    `// This is the compressed public key from the previous lesson
+const compressedPublicKey = "021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3"
+// First we need to hash it with SHA256
+const shaHash = crypto.Hash('sha256').update(compressedPublicKey).digest()
+// Then you will need to hash it with ripemd160 this needs to be decoded into hex
+const ripemdHash = crypto.Hash('ripemd160').update(shaHash)
+// Finally decode the answer into hex
+const publicKeyHash = ripemdHash.digest('hex')
+console.log(publicKeyHash)`,
     `const crypto = require('crypto')wwooooo
 
 // Create a program that finds a sha256 hash starting with 5 zeroes.
@@ -46,13 +48,15 @@ const python = {
     args: ['nonce'],
   },
   defaultCode: [
-    `from hashlib import sha256
-
-# Create a program that finds a sha256 hash starting with 5 zeroes.
-# To submit your answer, print it to the terminal using print().
-
-# Type your code here
-`,
+    `# This is the compressed public key from the previous lesson that needs to be encoded to proceed
+encodedPublicKey = "021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3".encode('utf-8')
+# First we need to hash it with SHA256
+shaHash = hashlib.new('sha256', compressedPublicKey).digest()
+# Then you will need to hash it with ripemd160
+ripemdHash = hashlib.new('ripemd160', shaHash)
+# Finally decode the answer into hex
+publicKeyHash = ripemdHash.hexdigest()
+print(publicKeyHash)`,
     `from hashlib import sha256wooooo
 
 # Create a program that finds a sha256 hash starting with 5 zeroes.
