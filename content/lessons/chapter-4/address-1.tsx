@@ -1,5 +1,5 @@
 'use client'
-
+import * as crypto from 'crypto';
 import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
@@ -14,8 +14,8 @@ export const metadata = {
 const javascript = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'findHash',
-    args: ['nonce'],
+    name: 'hash_compressed',
+    args: ['compressed'],
   },
   defaultCode: `const crypto = require('crypto')
 
@@ -25,15 +25,21 @@ const javascript = {
 // Type your code here
 `,
   validate: async (answer) => {
-   /** if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
-    }**/
-
-    if (answer.length !== 40) {
+   
+    if (answer.startsWith("<Buffer")) {
+      return [false, "Ensure you are properly decoding your answer"]
+    }
+if (answer.length !== 40) {
       return [false, 'Array must be 20 bytes long']
     }
-
-    return [true, undefined]
+if (answer !== crypto.createHash('ripemd160')
+      .update(crypto.createHash('sha256')
+        .update("021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3")
+        .digest())
+      .digest('hex')) {
+      return [false, 'Ensure you are using the correct compressed key and it is being decoded']
+    }
+    return[true,undefined]
   },
   constraints: [
     {
@@ -46,8 +52,8 @@ const javascript = {
 const python = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'findHash',
-    args: ['nonce'],
+    name: 'hash_compressed',
+    args: ['compressed'],
   },
   defaultCode: `import hashlib
 
@@ -57,16 +63,20 @@ const python = {
 # Type your code here
 `,
   validate: async (answer) => {
-   
-    if (answer.length!==40) {
+    if (answer.startsWith("b'")) {
+      return [false, "Ensure you are properly decoding your answer"]
+    }
+if (answer.length !== 40) {
       return [false, 'Array must be 20 bytes long']
     }
-
-   // if (answer.length !== 64) {
-    //  return [false, 'Hash must be 64 characters long']
-    //}
-
-    return [true, undefined]
+if (answer !== crypto.createHash('ripemd160')
+      .update(crypto.createHash('sha256')
+        .update("021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3")
+        .digest())
+      .digest('hex')) {
+      return [false, 'Ensure you are using the correct compressed key and it is being decoded']
+    }
+      return [true, undefined]
   },
   constraints: [
     {
@@ -100,6 +110,7 @@ export default function Scripting2({ lang }) {
       lessonKey={getLessonKey('chapter-4', 'address-1')}
       successMessage={t('chapter_four.address_one.success')}
       onSelectLanguage={handleSelectLanguage}
+      saveData={true}
     >
       <LessonInfo>
         <Text className="font-nunito text-xl text-white">
@@ -115,3 +126,4 @@ export default function Scripting2({ lang }) {
     </ScriptingChallenge>
   )
 }
+
