@@ -25,7 +25,7 @@ const javascript = {
 // Type your code here
 `,
   validate: async (answer) => {
-   
+
     if (answer.startsWith("<Buffer")) {
       return [false, "Ensure you are properly decoding your answer"]
     }
@@ -43,7 +43,7 @@ if (answer !== crypto.createHash('ripemd160')
   },
   constraints: [
     {
-      range: [5, 1, 7, 1],
+      range: [7, 1, 7, 1],
       allowMultiline: true,
     },
   ],
@@ -80,7 +80,7 @@ if (answer !== crypto.createHash('ripemd160')
   },
   constraints: [
     {
-      range: [5, 1, 7, 1],
+      range: [7, 1, 7, 1],
       allowMultiline: true,
     },
   ],
