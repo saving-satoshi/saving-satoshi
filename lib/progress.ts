@@ -43,8 +43,8 @@ export const keys = [
   'CH4PKY3',
   'CH4PKY4',
   'CH4PKY5',
-  'CH4ADDR1',
-  'CH4ADDR2',
+  'CH4ADR1',
+  'CH4ADR2',
   'CH4OUT1',
 ]
 
@@ -91,8 +91,8 @@ export const keysMeta = {
   CH4PKY3: { path: '/chapter-4/public-key-3' },
   CH4PKY4: { path: '/chapter-4/public-key-4' },
   CH4PKY5: { path: '/chapter-4/public-key-5' },
-  CH4ADDR1: { path: '/chapter-4/address-1' },
-  CH4ADDR2: { path: '/chapter-4/address-2' },
+  CH4ADR1: { path: '/chapter-4/address-1' },
+  CH4ADR2: { path: '/chapter-4/address-2' },
   CH4OUT1: { path: '/chapter-4/outro-1' },
 }
 
