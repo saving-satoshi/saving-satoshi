@@ -124,40 +124,24 @@ export default function AddressResources({ lang }) {
       lang={lang}
       readingResources={
         <>
-          <Text className="mt-[25px] text-xl font-bold">Hash libraries</Text>
-          <Text>
-            The crypto library in Node.js and the hashlib library in python are
-            the code libraries that implement the algorithms we will use into
-            useful tools for developers. These libraries are thoroughly vetted
-            to ensure their accuracy and security as many people rely on them to
-            secure valuable and important systems.
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_two.resources.scripting.hash_libraries_heading')}
           </Text>
-          <Text className="mt-[25px] text-xl font-bold">Nonce</Text>
           <Text>
-            A nonce, short for "number used once," is a random or semi-random
-            number that is employed in various cryptographic and computational
-            processes. Its primary purpose is to introduce unpredictability and
-            ensure that a particular operation or calculation can't be easily
-            repeated or predicted. The nonce is critical to the security of
-            Bitcoin mining but we will learn more about that later...
+            {t('chapter_two.resources.scripting.hash_libraries_paragraph')}
           </Text>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_two.resources.scripting.nonce_heading')}
+            Nonce
+          </Text>
+          <Text>{t('chapter_two.resources.scripting.nonce_paragraph')}</Text>
         </>
       }
       tipsResources={
         <ul className="list-inside list-disc font-nunito text-white">
-          <li>
-            Ensure you are properly decoding the inputs the hashing algorithms
-            often return objects decoded in bytes, we want to be able to read it
-            in hex format!
-          </li>
-          <li>
-            Think about how you would create a function to keep running until
-            that answer is equal to a specific value
-          </li>
-          <li>
-            Remember to log your answer with console.log() or print() its the
-            only way our IDE will try to validate your answer
-          </li>
+          <li>{t('chapter_two.resources.scripting.tip_one')}</li>
+          <li>{t('chapter_two.resources.scripting.tip_two')}</li>
+          <li>{t('chapter_two.resources.scripting.tip_three')}</li>
         </ul>
       }
       codeResources={

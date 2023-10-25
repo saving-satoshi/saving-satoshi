@@ -24,37 +24,24 @@ export default function TransactingResources({ lang }) {
       lang={lang}
       readingResources={
         <>
-          <Text className="mt-[25px] text-xl font-bold">Transactions</Text>
-          <Text>
-            A transaction in the world of cryptocurrencies is akin to a single
-            atomic payment, where it involves the process of destroying existing
-            coins and creating new ones. When someone initiates a cryptocurrency
-            transaction, they're essentially instructing the blockchain to
-            transfer a specific amount of coins from one digital wallet to
-            another. To achieve this, the transaction consumes the sender's
-            existing coins and generates new ones for the recipient, effectively
-            updating the ownership ledger.
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_one.resources.transacting.transactions_heading')}
           </Text>
-          <Text className="mt-[25px] text-xl font-bold">Bitcoin Script</Text>
           <Text>
-            Bitcoin Script is a simple, stack-based programming language used in
-            Bitcoin transactions to define the conditions under which bitcoins
-            can be spent. It consists of various opcodes (short for operation
-            codes) that specify what operations should be performed on the data
-            within the script.
+            {t('chapter_one.resources.transacting.transactions_paragraph')}
+          </Text>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_one.resources.transacting.bitcoin_script_heading')}
+          </Text>
+          <Text>
+            {t('chapter_one.resources.transacting.bitcoin_script_paragraph')}
           </Text>
         </>
       }
       tipsResources={
         <ul className="list-inside list-disc font-nunito text-white">
-          <li>
-            Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33
-            bytes long (66 characters total) in the OP_Return of the transaction
-          </li>
-          <li>
-            Decoding the string with the "xxd" command remember that we are not
-            using a variable this time, we need to input the entire string
-          </li>
+          <li>{t('chapter_one.resources.transacting.tip_one')}</li>
+          <li>{t('chapter_one.resources.transacting.tip_two')}</li>
         </ul>
       }
       codeResources={

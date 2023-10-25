@@ -34,7 +34,7 @@ export default function ResourcesPage({
             <Text className="text-3xl font-bold">
               {t('help_page.tips_heading')}
             </Text>
-            <Text>{tipsResources}</Text>
+            {tipsResources}
           </>
         )}
         {codeResources && (
