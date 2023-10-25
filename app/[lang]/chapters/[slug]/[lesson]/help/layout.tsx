@@ -10,7 +10,7 @@ export default function Layout({ children, params }) {
     'bg-back'
 
   return (
-    <div className={`${theme} flex flex-col`}>
+    <div className={`flex flex-col`}>
       <div className="fix-grow-issue flex flex-col">{children}</div>
     </div>
   )
