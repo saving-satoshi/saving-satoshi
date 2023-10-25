@@ -24,16 +24,10 @@ const javascriptMatch = (match: string) => {
 
 export default function PublicKey4({ lang }) {
   const [prevData, setPrevData] = useState({ lessonId: '', data: '' })
-  const newJavascriptData = prevData.data.replace(
-    /(\\"|[,\}])/g,
-    javascriptMatch
-  )
-
-  const newPythonData = prevData.data
-    .replace(/\\"[x]\\"/g, "'x'")
-    .replace(/\\"[y]\\"/g, "'y'")
-    .replace(/\\"/g, '')
-
+  const dataObject = prevData?.data
+    ? JSON.parse(prevData?.data)
+    : { x: '', y: '' }
+  console.log(dataObject)
   const javascript = {
     program: `console.log("KILL")`,
     defaultFunction: {
@@ -42,7 +36,11 @@ export default function PublicKey4({ lang }) {
     },
     defaultCode: `${
       prevData?.data &&
-      'const publicKey = ' + JSON.parse(newJavascriptData) + '}'
+      'const publicKey = {x:' +
+        `${dataObject.x}` +
+        ',y:' +
+        `${dataObject.y}` +
+        '}'
     }
 
 function compressPublicKey(publickey) {
@@ -83,7 +81,12 @@ function compressPublicKey(publickey) {
       args: ['public'],
     },
     defaultCode: `${
-      prevData?.data && 'publicKeyFromPart1 = ' + JSON.parse(newPythonData)
+      prevData?.data &&
+      "publicKey = {'x':" +
+        `${dataObject.x}` +
+        ",'y':" +
+        `${dataObject.y}` +
+        '}'
     }
   
 def compress_publickey(publickey):
@@ -142,7 +145,7 @@ def compress_publickey(publickey):
       <ScriptingChallenge
         lang={lang}
         config={config}
-        lessonKey={getLessonKey('chapter-2', 'scripting-2')}
+        lessonKey={getLessonKey('chapter-4', 'public-key-4')}
         saveData
         successMessage={t('chapter_four.public_key_four.success')}
         onSelectLanguage={handleSelectLanguage}
