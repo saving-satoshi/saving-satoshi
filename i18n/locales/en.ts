@@ -586,10 +586,12 @@ const translations = {
         'The public key has an x and y coordinate for a total of 64 bytes. This can be compressed into 33 bytes by removing the y coordinate and prepending a single byte of metadata. That byte will indicate if the Y coordinate is even or odd. Because the elliptic curve equation only has two variables, the complete public key can be computed later by the verifier using only x and the metadata:',
       paragraph_two:
         'The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function `compress_publickey()` to accept a public key and return an array of 33 bytes representing the compressed public key.',
+      success:
+        'Excellent. Now we have our compressed public key. Next we need to hash it and encode it in a human-friendly format.',
     },
 
-    public_key_five: {
-      title: 'Public key',
+    address_one: {
+      title: 'Address',
       heading: 'Nice work!',
       paragraph_one:
         'And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’lll learn about that in the next challenge.',
@@ -597,7 +599,7 @@ const translations = {
         'Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the discrete log problem.',
     },
 
-    address_one: {
+    address_two: {
       title: 'Address',
       paragraph_one:
         'Do you remember the hashing challenge? It turns out you can generate the simplest type of bitcoin address by hashing your compressed public key. Bitcoin uses two different hashing algorithms for this: SHA-256 and RIPEMD-160.',
@@ -605,20 +607,20 @@ const translations = {
         'The first step is to perform a SHA-256 hash on your compressed public key. Then perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be a 20-byte array.',
       paragraph_three:
         'Complete the function `hash_compressed()` that accepts a 33-byte compressed public key and returns a 20-byte public key hash.',
-      success:
-         'Great. One more step and you will have your wallet address.'
+      success: 'Great. One more step and you will have your wallet address.',
     },
 
-    address_two: {
+    address_three: {
       title: 'Address',
       paragraph_one:
         'There are multiple types of bitcoin addresses. We want to create a Signet Witness Public Key Hash (wpkh) address to encode the 20-byte compressed public key hash. First we need to append the hash with the witness version number `0`. These 21 bytes are known as the witness program. The witness program is encoded into a human-friendly format called bech32, which will append a human-readable prefix and a checksum.',
       paragraph_two: 'The prefix is determined by the network:',
       list_one: 'Mainnet: ‘bc’',
-      list_two: 'Signet: ‘tb’',
+      list_two: 'Testnet: ‘tb’',
       list_three: 'Regtest: ‘bcrt’',
       paragraph_three:
         'Call the provided `hash_to_address()` function with your data to generate your Bitcoin address!',
+      success: 'Now you have an address that mined bitcoin can be sent to.',
     },
 
     outro_one: {

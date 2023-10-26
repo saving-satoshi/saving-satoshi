@@ -1,7 +1,7 @@
 'use client'
 
 import { ScriptingChallenge, LessonInfo, CodeExample } from 'ui'
-import { EditorConfig } from 'types'
+import { EditorConfig, Data } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useEffect, useState } from 'react'
@@ -35,8 +35,23 @@ function compressPublicKey(publickey) {
 }
 
 export default function PublicKey4({ lang }) {
-  const [prevData, setPrevData] = useState({ lessonId: '', data: '' })
+  const t = useTranslations(lang)
+
+  const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
   const dataObject = prevData?.data ? prevData?.data : ''
+  const [isLoading, setIsLoading] = useState(true)
+
+  const getPrevLessonData = async () => {
+    setPrevData(await getData('CH4PKY3'))
+  }
+
+  useEffect(() => {
+    getPrevLessonData().finally(() => setIsLoading(false))
+  }, [])
+
+  const handleSelectLanguage = (language: string) => {
+    setLanguage(language)
+  }
 
   const javascript = {
     program: `console.log("KILL")`,
@@ -85,10 +100,10 @@ function compressPublicKey(publickey) {
     program: `print("KILL")`,
     defaultFunction: {
       name: 'compress_publickey',
-      args: ['public'],
+      args: ['publicKey'],
     },
     defaultCode: `${prevData?.data && 'uncompressed_key = ' + dataObject}
-  
+
 def compress_publickey(publickey):
     # Determine if the y coordinate is even or odd and prepend
     # the corresponding header byte to the x coordinate.
@@ -128,20 +143,8 @@ def compress_publickey(publickey):
       python,
     },
   }
-  const t = useTranslations(lang)
-  const [isLoading, setIsLoading] = useState(true)
+
   const [language, setLanguage] = useState(config.defaultLanguage)
-
-  const getPrevLessonData = async () => {
-    setPrevData(await getData('CH4PKY3'))
-  }
-
-  useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
-  }, [])
-  const handleSelectLanguage = (language: string) => {
-    setLanguage(language)
-  }
 
   return (
     !isLoading && (

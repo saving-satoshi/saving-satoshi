@@ -58,7 +58,7 @@ export interface ProgressContextType {
 
 export interface Data {
   lesson_id: string
-  value: string
+  data: string
 }
 
 export interface DataContextType {
