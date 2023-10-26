@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
-import { useTranslations } from 'hooks'
+import { useMediaQuery, useTranslations } from 'hooks'
 import { useEffect, useRef, useState } from 'react'
 import Convert from 'ansi-to-html'
 
@@ -69,6 +69,8 @@ export default function Runner({
   const [hasherState, setHasherState] = useState<HasherState>(
     HasherState.Waiting
   )
+
+  const isSmallScreen = useMediaQuery({ width: 767 })
 
   const sendTerminal = (action: string, payload?: any) => {
     if (!terminalRef.current) {
@@ -147,8 +149,8 @@ export default function Runner({
             success = true
             setIsRunning(false)
             setHasherState(HasherState.Success)
-            sendTerminal('success', `Found hash: ${payload}`)
-            sendTerminal('success', `Five zeroes! That's it!`)
+            sendTerminal('success', `${payload}`)
+            sendTerminal('success', successMessage)
             ws?.close()
             break
           }
@@ -224,43 +226,51 @@ export default function Runner({
         </div>
       )}
 
-      {!loading && (
-        <>
-          {state === State.Idle && (
-            <div className="h-full w-full grow border-t border-white border-opacity-30 bg-black bg-opacity-20 p-4">
-              <div className="font-mono text-xs text-white">Script output</div>
-              <div className="font-mono text-xs text-white text-opacity-60">
-                Waiting for you to run the script...
-              </div>
+      <div
+        className={clsx({
+          'hidden md:flex':
+            !isSmallScreen ||
+            (activeView !== LessonView.Execute &&
+              hasherState !== HasherState.Success),
+        })}
+      >
+        {state === State.Idle && (
+          <div className="w-full border-t border-white border-opacity-30 bg-black bg-opacity-20 p-4">
+            <div className="font-mono text-xs text-white">Script output</div>
+            <div className="font-mono text-xs text-white text-opacity-60">
+              Waiting for you to run the script...
             </div>
-          )}
-          {state === State.Building && (
-            <div className="h-full w-full grow border-t border-white border-opacity-30 bg-black bg-opacity-20 p-4">
-              <div className="font-mono text-xs text-white">Starting up</div>
-              <div className="font-mono text-xs text-white text-opacity-60">
-                This will take just a few seconds...
-              </div>
+          </div>
+        )}
+        {state === State.Building && (
+          <div className="h-full w-full grow border-t border-white border-opacity-30 bg-black bg-opacity-20 p-4">
+            <div className="font-mono text-xs text-white">Starting up</div>
+            <div className="font-mono text-xs text-white text-opacity-60">
+              This will take just a few seconds...
             </div>
-          )}
-          <Terminal
-            ref={terminalRef}
-            className={clsx({
-              block:
-                [State.Running, State.Error, State.Complete].indexOf(state) !==
-                -1,
-              hidden:
-                [State.Running, State.Error, State.Complete].indexOf(state) ===
-                -1,
-            })}
-          />
-        </>
-      )}
+          </div>
+        )}
+        <Terminal
+          ref={terminalRef}
+          className={clsx({
+            block:
+              [State.Running, State.Error, State.Complete].indexOf(state) !==
+              -1,
+            hidden:
+              [State.Running, State.Error, State.Complete].indexOf(state) ===
+              -1,
+          })}
+        />
+      </div>
 
       <div
         className={clsx(
           'min-h-14 flex h-14 w-full items-start border-t border-white border-opacity-30',
           {
-            'hidden md:flex': !isActive && hasherState !== HasherState.Success,
+            'hidden md:flex':
+              !isSmallScreen ||
+              (activeView !== LessonView.Execute &&
+                hasherState !== HasherState.Success),
             hidden: hasherState === HasherState.Success || loading,
             flex: isActive,
           }

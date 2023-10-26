@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations, useSaveAndProceed } from 'hooks'
+import { useTranslations, useSaveAndProceed, useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import { ProfileWithHashPower } from 'types'
@@ -35,6 +35,8 @@ export default function Pool2({ lang }) {
   const [showText, setShowText] = useState(true)
 
   const saveAndProceed = useSaveAndProceed()
+
+  const isSmallScreen = useMediaQuery({ width: 767 })
 
   const TOTAL_BLOCKS = 100
   const BLOCK_RATIO = 30
@@ -174,6 +176,7 @@ export default function Pool2({ lang }) {
               key={i}
               username={profile.username}
               avatar={profile.avatar}
+              avatarSize={isSmallScreen ? 50 : 100}
               description={profile.description}
               className={'md:!max-w-[220px]'}
             >

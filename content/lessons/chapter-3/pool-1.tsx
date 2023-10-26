@@ -4,6 +4,7 @@ import { useTranslations, useSaveAndProceed } from 'hooks'
 import { Title } from 'ui'
 import { Button } from 'shared'
 import Avatar from 'components/Avatar'
+import { useAuthContext } from 'providers/AuthProvider'
 import { useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
 import { cssVarThemeChange } from 'lib/themeSelector'
@@ -16,6 +17,7 @@ export const metadata = {
 }
 
 export default function Pool1({ lang }) {
+  const { account } = useAuthContext()
   const t = useTranslations(lang)
 
   const saveAndProceed = useSaveAndProceed()
@@ -24,7 +26,7 @@ export default function Pool1({ lang }) {
   const [players, setPlayers] = useState([
     {
       username: 'You',
-      avatar: '/assets/avatars/1.png',
+      avatar: account?.avatar,
       display: true,
     },
     {
@@ -99,7 +101,7 @@ export default function Pool1({ lang }) {
                   size={isSmallScreen ? 75 : 100}
                   className={`${
                     profile?.display
-                      ? 'fade-in max-h-[75px] min-h-[75px] min-w-[75px] max-w-[75px] md:min-h-[100px] md:min-w-[100px]'
+                      ? 'fade-in max-h-[75px] min-h-[75px] min-w-[75px] max-w-[75px] text-white md:min-h-[100px] md:min-w-[100px]'
                       : 'hidden'
                   }`}
                 />
