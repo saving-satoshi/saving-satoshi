@@ -33,6 +33,29 @@ function Terminal({ className }: { className?: string }, ref) {
                     color: #00B400;
                   }
 
+                  .output .success:before {
+                    content: 'x: "';
+                    display: block;
+                    visibility: hidden;
+                  }
+
+                  .output .success:after {
+                    content: '", y: "';
+                    display: block;
+                    visibility: hidden;
+                  }
+
+                  .output .success::before {
+                    content: "";
+                    position: absolute; 
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(transparent, transparent calc(50% - 0.6em), white calc(50% - 0.6em), white calc(50% + 0.6em), transparent calc(50% + 0.6em));
+                    pointer-events: none; 
+                    z-index: 1;
+                  }
+
+
                   .output .log {
                     color:white;
                   }
