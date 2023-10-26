@@ -93,7 +93,7 @@ export default function ScriptingChallenge({
       setChallengeSuccess(true)
       if (account) {
         saveProgress(lessonKey)
-        saveData && setData(account.id, lessonKey, JSON.stringify(answer))
+        saveData && setData(account.id, lessonKey, answer)
       } else {
         saveProgressLocal(lessonKey)
       }
