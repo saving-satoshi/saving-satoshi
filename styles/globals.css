@@ -297,11 +297,11 @@ div.react-terminal-active-input {
 }
 
 .toggle-switch {
-    position: relative;
-    display: inline-block;
-    width: 45px;
-    height: 25px;
-  }
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 25px;
+}
 
 .toggle-switch input {
   opacity: 0;
@@ -336,11 +336,11 @@ div.react-terminal-active-input {
 }
 
 input:checked + .slider {
-  background-color: #F8981D;
+  background-color: #f8981d;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
