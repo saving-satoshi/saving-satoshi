@@ -19,27 +19,24 @@ function compressPublicKey(publickey) {
     y_is_odd: new Buffer([3]),
   }
 
-  var x_hex = BigInt(publickey.x)
-  var x_hex_string = x_hex.toString(16)
-  var x_bytes = new Buffer(x_hex_string, 'hex')
+  let x_hex = BigInt(publickey.x)
+  let x_hex_string = x_hex.toString(16)
+  let x_bytes = new Buffer(x_hex_string, 'hex')
 
-  var y_hex = BigInt(publickey.y)
-  var y_hex_string = y_hex.toString(16)
-  //@ts-ignore
-  var y_is_even = y_hex_string[y_hex_string.length - 1] % 2 === 0
+  let y_hex = BigInt(publickey.y)
+  let y_hex_string = y_hex.toString(16)
 
-  var header = y_is_even ? header_byte['y_is_even'] : header_byte['y_is_odd']
-  var compressed_key = Buffer.concat([header, x_bytes])
+  let y_is_even = Number(y_hex_string[y_hex_string.length - 1]) % 2 === 0
 
-  console.log(compressed_key.toString('hex'))
-  return compressed_key
+  let header = y_is_even ? header_byte['y_is_even'] : header_byte['y_is_odd']
+  let compressed_key = Buffer.concat([header, x_bytes])
+
+  return compressed_key.toString('hex')
 }
 
 export default function PublicKey4({ lang }) {
   const [prevData, setPrevData] = useState({ lessonId: '', data: '' })
-  const dataObject = prevData?.data
-    ? JSON.parse(prevData?.data)
-    : { x: '', y: '' }
+  const dataObject = prevData?.data ? prevData?.data : ''
 
   const javascript = {
     program: `console.log("KILL")`,
@@ -47,9 +44,7 @@ export default function PublicKey4({ lang }) {
       name: 'compressPublicKey',
       args: ['publicKey'],
     },
-    defaultCode: `${
-      prevData?.data && 'const publicKeyFromPart1 = ' + dataObject
-    }
+    defaultCode: `${prevData?.data && 'const uncompressedKey = ' + dataObject}
 
 function compressPublicKey(publickey) {
   // Determine if the y coordinate is even or odd and prepend the
@@ -59,24 +54,28 @@ function compressPublicKey(publickey) {
     'y_is_even': Buffer.from([2]),
     'y_is_odd':  Buffer.from([3])
   };
+  // To submit your answer, log it to the terminal using console.log().
 
 }
-// To submit your answer, log it to the terminal using console.log().
+
 
 `,
     validate: async (answer) => {
-      const pattern = /^0x[0-9a-f]{64}$/i
+      const pattern = /^[0-9a-f]{66}$/i
       if (answer.length !== 66) {
-        if (answer.match(pattern)) {
-          if (answer != compressPublicKey(dataObject)) return [false, '']
-        }
         return [false, "Length isn't valid"]
+      }
+      if (!answer.match(pattern)) {
+        return [false, 'Answer is not a hexadecimal value']
+      }
+      if (answer !== compressPublicKey(JSON.parse(dataObject))) {
+        return [false, 'Ensure you are using your own key object']
       }
       return [true, undefined]
     },
     constraints: [
       {
-        range: [11, 1, 15, 1],
+        range: [12, 1, 15, 1],
         allowMultiline: true,
       },
     ],
@@ -88,7 +87,7 @@ function compressPublicKey(publickey) {
       name: 'compress_publickey',
       args: ['public'],
     },
-    defaultCode: `${prevData?.data && 'publicKeyFromPart1 = ' + dataObject}
+    defaultCode: `${prevData?.data && 'uncompressed_key = ' + dataObject}
   
 def compress_publickey(publickey):
     # Determine if the y coordinate is even or odd and prepend
@@ -102,12 +101,15 @@ def compress_publickey(publickey):
 
 `,
     validate: async (answer) => {
-      const pattern = /^0x[0-9a-f]{64}$/i
+      const pattern = /^[0-9a-f]{66}$/i
       if (answer.length !== 66) {
-        if (answer.match(pattern)) {
-          return [true, undefined]
-        }
         return [false, "Length isn't valid"]
+      }
+      if (!answer.match(pattern)) {
+        return [false, 'Answer is not a hexadecimal value']
+      }
+      if (answer !== compressPublicKey(JSON.parse(dataObject))) {
+        return [false, 'Ensure you are using your own key object']
       }
       return [true, undefined]
     },
