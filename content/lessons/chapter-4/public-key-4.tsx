@@ -13,13 +13,26 @@ export const metadata = {
   key: 'CH4PKY4',
 }
 
-const javascriptMatch = (match: string) => {
-  if (match === '\\"') {
-    return ''
-  } else if (match === ',' || match === '}') {
-    return 'n,'
+function compressPublicKey(publickey) {
+  var header_byte = {
+    y_is_even: new Buffer([2]),
+    y_is_odd: new Buffer([3]),
   }
-  return match // return the match unchanged if no replacements are made
+
+  var x_hex = BigInt(publickey.x)
+  var x_hex_string = x_hex.toString(16)
+  var x_bytes = new Buffer(x_hex_string, 'hex')
+
+  var y_hex = BigInt(publickey.y)
+  var y_hex_string = y_hex.toString(16)
+  //@ts-ignore
+  var y_is_even = y_hex_string[y_hex_string.length - 1] % 2 === 0
+
+  var header = y_is_even ? header_byte['y_is_even'] : header_byte['y_is_odd']
+  var compressed_key = Buffer.concat([header, x_bytes])
+
+  console.log(compressed_key.toString('hex'))
+  return compressed_key
 }
 
 export default function PublicKey4({ lang }) {
@@ -27,7 +40,7 @@ export default function PublicKey4({ lang }) {
   const dataObject = prevData?.data
     ? JSON.parse(prevData?.data)
     : { x: '', y: '' }
-  console.log(dataObject)
+
   const javascript = {
     program: `console.log("KILL")`,
     defaultFunction: {
@@ -35,12 +48,7 @@ export default function PublicKey4({ lang }) {
       args: ['publicKey'],
     },
     defaultCode: `${
-      prevData?.data &&
-      'const publicKey = {x:' +
-        `${dataObject.x}` +
-        ',y:' +
-        `${dataObject.y}` +
-        '}'
+      prevData?.data && 'const publicKeyFromPart1 = ' + dataObject
     }
 
 function compressPublicKey(publickey) {
@@ -60,7 +68,7 @@ function compressPublicKey(publickey) {
       const pattern = /^0x[0-9a-f]{64}$/i
       if (answer.length !== 66) {
         if (answer.match(pattern)) {
-          return [true, undefined]
+          if (answer != compressPublicKey(dataObject)) return [false, '']
         }
         return [false, "Length isn't valid"]
       }
@@ -80,14 +88,7 @@ function compressPublicKey(publickey) {
       name: 'compress_publickey',
       args: ['public'],
     },
-    defaultCode: `${
-      prevData?.data &&
-      "publicKey = {'x':" +
-        `${dataObject.x}` +
-        ",'y':" +
-        `${dataObject.y}` +
-        '}'
-    }
+    defaultCode: `${prevData?.data && 'publicKeyFromPart1 = ' + dataObject}
   
 def compress_publickey(publickey):
     # Determine if the y coordinate is even or odd and prepend
