@@ -16,7 +16,7 @@ export interface EditorFunction {
 export interface EditorLanguages {
   [language: string]: {
     program: string
-    defaultCode?: string[]
+    defaultCode?: string | string[]
     defaultFunction: EditorFunction
     validate: (answer: any) => Promise<any[]>
     constraints: any
@@ -58,7 +58,7 @@ export interface ProgressContextType {
 
 export interface Data {
   lesson_id: string
-  value: any
+  value: string
 }
 
 export interface DataContextType {

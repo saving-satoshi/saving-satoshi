@@ -154,7 +154,6 @@ export default function AddressResources({ lang }) {
           <Text>{t('chapter_four.resources.address.network_paragraph')}</Text>
         </>
       }
-      tipsResources={'hello world'}
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>
@@ -199,7 +198,7 @@ export default function AddressResources({ lang }) {
                 languages={configTwo.languages}
                 value={languageTwo}
                 onChange={handleSetLanguageTwo}
-                noHide={true}
+                noHide
               />
               <MonacoEditor
                 loading={<Loader className="h-10 w-10 text-white" />}

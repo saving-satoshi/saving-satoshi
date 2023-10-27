@@ -18,8 +18,7 @@ const javascript = {
     name: 'rawPublicKey',
     args: ['private_key'],
   },
-  defaultCode: [
-    `${secp256k1.secp256k1js}
+  defaultCode: `${secp256k1.secp256k1js}
   // Import ECDSA library.
   // Multiply the private key by the ECDSA generator point G to
   // produce a new curve point which is the public key.
@@ -31,7 +30,6 @@ const javascript = {
   // To submit your answer, log it to the terminal using console.log().
 
 `,
-  ],
   validate: async (answer: string) => {
     const parsedAnswer = JSON.parse(answer)
     const correctPattern = /^0x[0-9a-fA-F]{64}$/
@@ -63,8 +61,7 @@ const python = {
     name: 'rawPublicKey',
     args: ['private_key'],
   },
-  defaultCode: [
-    `${secp256k1.secp256k1py}
+  defaultCode: `${secp256k1.secp256k1py}
 # Import ECDSA library.
 # Multiply the private key by the ECDSA generator point G to
 # produce a new curve point which is the public key.
@@ -77,7 +74,6 @@ G = SECP256K1.FAST_G
 
 
  `,
-  ],
   validate: async (answer) => {
     const parsedAnswer = JSON.parse(answer)
     const correctPattern = /^0x[0-9a-fA-F]{64}$/
@@ -122,6 +118,7 @@ export default function PublicKey3({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
+      saveData
       lessonKey={getLessonKey('chapter-4', 'public-key-3')}
       successMessage={t('chapter_four.public_key_three.success')}
       onSelectLanguage={handleSelectLanguage}

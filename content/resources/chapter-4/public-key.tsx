@@ -118,7 +118,7 @@ export default function PublicKeyResources({ lang }) {
     configOne.languages[configOne.defaultLanguage].defaultCode?.[0]
   )
   const [codeTwo, setCodeTwo] = useState(
-    configTwo.languages[configTwo.defaultLanguage].defaultCode?.[1]
+    configTwo.languages[configTwo.defaultLanguage].defaultCode?.[0]
   )
   const [languageOne, setLanguageOne] = useState(configOne.defaultLanguage)
   const [languageTwo, setLanguageTwo] = useState(configTwo.defaultLanguage)
@@ -245,7 +245,7 @@ export default function PublicKeyResources({ lang }) {
                 languages={configOne.languages}
                 value={languageOne}
                 onChange={handleSetLanguageOne}
-                noHide={true}
+                noHide
               />
               <MonacoEditor
                 loading={<Loader className="h-10 w-10 text-white" />}
@@ -273,7 +273,7 @@ export default function PublicKeyResources({ lang }) {
                 languages={configTwo.languages}
                 value={languageTwo}
                 onChange={handleSetLanguageTwo}
-                noHide={true}
+                noHide
               />
               <MonacoEditor
                 loading={<Loader className="h-10 w-10 text-white" />}

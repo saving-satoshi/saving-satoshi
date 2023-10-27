@@ -132,7 +132,6 @@ export default function AddressResources({ lang }) {
           </Text>
           <Text className="mt-[25px] text-xl font-bold">
             {t('chapter_two.resources.scripting.nonce_heading')}
-            Nonce
           </Text>
           <Text>{t('chapter_two.resources.scripting.nonce_paragraph')}</Text>
         </>
