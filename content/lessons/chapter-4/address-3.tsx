@@ -36,7 +36,15 @@ export default function Address3({ lang }) {
     },
     defaultCode: `const crypto = require('crypto')
 
-${prevData?.data && 'const publicKeyHash = ' + "'" + dataObject + "'"}
+${
+  prevData?.data &&
+  'const publicKeyHash = ' +
+    'Buffer.from(' +
+    "'" +
+    dataObject +
+    "'" +
+    ", 'hex')"
+}
 
 // Create a program that finds a sha256 hash starting with 5 zeroes.
 // To submit your answer, log it to the terminal using console.log().
@@ -70,7 +78,10 @@ ${prevData?.data && 'const publicKeyHash = ' + "'" + dataObject + "'"}
     },
     defaultCode: `from hashlib import sha256
 
-${prevData?.data && 'public_key_hash = ' + "'" + dataObject + "'"}
+${
+  prevData?.data &&
+  'public_key_hash = ' + "'" + Buffer.from(dataObject, 'hex') + "'"
+}
 
 # Create a program that finds a sha256 hash starting with 5 zeroes.
 # To submit your answer, print it to the terminal using print().
