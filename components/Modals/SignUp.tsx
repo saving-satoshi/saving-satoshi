@@ -1,7 +1,7 @@
 import Avatar from 'components/Avatar'
 import { useState, useEffect } from 'react'
 import Icon from 'shared/Icon'
-import { Button, Loader, RadioButton, RadioGroup } from 'shared'
+import { Button, Loader } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
 import { useTranslations, useLang, useSaveAndReturn } from 'hooks'
 import clsx from 'clsx'
@@ -13,7 +13,7 @@ import { register } from 'api/auth'
 import Modal from './Modal'
 import { Text, ToggleSwitch } from 'ui'
 
-export default function LoginModal({ onClose, state }) {
+export default function SignupModal({ onClose, state }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { login } = useAuthContext()

@@ -199,6 +199,35 @@ const translations = {
       next: 'Continue without saving',
       feedback: 'Share your feedback',
     },
+    resources: {
+      genesis: {
+        scriptsig_heading: 'ScriptSig',
+        scriptsig_paragraph:
+          "The 'scriptSig' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The 'scriptSig' is the data that goes into the input's scriptSig field.",
+        blocks_heading: 'Bitcoin Blocks',
+        blocks_paragraph:
+          "A 'block' in blockchain technology is like a container for a group of transactions. It forms a crucial part of the blockchain, with each block referencing the one before it. This reference, along with a block header that contains important details like a timestamp and a unique identifier, ensures the data's integrity and chronological order. Once a block is added to the blockchain, it's incredibly difficult to change, ensuring the security and immutability of the data. The size of a block can vary between different blockchains, and each block must undergo validation by network nodes before becoming a permanent part of the blockchain. This block-and-chain structure is the foundation of blockchain's transparency and security.",
+        block_explorer_heading: 'Block Explorer',
+        block_explorer_paragraph:
+          'A block explorer is a crucial tool for navigating and understanding blockchain networks. It acts as a user-friendly interface to inspect and analyze the data stored on a blockchain. With a block explorer, users can explore transaction histories, view account balances, and track the progress of individual blocks and transactions. It provides transparency and accountability in the world of decentralized cryptocurrencies, making it easier to verify and trace transactions while promoting trust in blockchain technology.',
+        tip_one:
+          'Look for the scriptSig(Hex) category nested in coinbase input after expanding the transaction within the block.',
+        tip_two:
+          "The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.",
+      },
+      transacting: {
+        transactions_heading: 'Transactions',
+        transactions_paragraph:
+          "A transaction in the world of cryptocurrencies is akin to a single atomic payment, where it involves the process of destroying existing coins and creating new ones. When someone initiates a cryptocurrency transaction, they're essentially instructing the blockchain to transfer a specific amount of coins from one digital wallet to another. To achieve this, the transaction consumes the sender's existing coins and generates new ones for the recipient, effectively updating the ownership ledger.",
+        bitcoin_script_heading: 'Bitcoin Script',
+        bitcoin_script_paragraph:
+          'Bitcoin Script is a simple, stack-based programming language used in Bitcoin transactions to define the conditions under which bitcoins can be spent. It consists of various opcodes (short for operation codes) that specify what operations should be performed on the data within the script.',
+        tip_one:
+          'Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33 bytes long (66 characters total) in the OP_Return of the transaction',
+        tip_two:
+          "Decoding the string with the 'xxd' command remember that we are not using a variable this time, we need to input the entire string",
+      },
+    },
   },
 
   chapter_two: {
@@ -384,6 +413,42 @@ const translations = {
         '“Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto',
       paragraph_four: 'Him again?',
     },
+    resources: {
+      hashing: {
+        hash_functions_heading: 'Hash Functions',
+        hash_functions_paragraph:
+          'A hash function is any function that can be used to map data of arbitrary size to fixed-size values. The values returned by a hash function are called hash values, hash codes, digests, or simply hashes. The values are usually used to index a fixed-size table called a hash table. Use of a hash function to index a hash table is called hashing or scatter storage addressing.',
+        collision_resistance_heading: 'SHA256 and collision resistance',
+        collision_resistance_paragraph:
+          "SHA-256 returns a 256-bit (64-characters) hash value, which is a unique representation of the input data. It belongs to the family of hash functions based on the Merkle–Damgård construction, a method for building hash functions from simpler compression functions. In this construction, the input message is divided into fixed-size blocks, and a chaining mechanism iteratively processes these blocks, combining each block's output with the result of the previous block. This process continues until the entire message is processed, producing the final hash value. SHA-256's robust security properties and collision resistance make it a cornerstone of data integrity and authentication in modern cryptography. You can learn more on Wikipedia.",
+        tip_one:
+          'Just keep typing! Because of the  SHA256 algorithm any new input will result in a completely random input even if those inputs are very similar',
+        tip_two:
+          "Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with '00' is? And how about '000'?",
+      },
+      scripting: {
+        hash_libraries_heading: 'Hash Functions',
+        hash_libraries_paragraph:
+          'The crypto library in Node.js and the hashlib library in python are the code libraries that implement the algorithms we will use into useful tools for developers. These libraries are thoroughly vetted to ensure their accuracy and security as many people rely on them to secure valuable and important systems.',
+        nonce_heading: 'Nonce',
+        nonce_paragraph:
+          "A nonce, short for (number used once) is a random or semi-random number that is employed in various cryptographic and computational processes. Its primary purpose is to introduce unpredictability and ensure that a particular operation or calculation can't be easily repeated or predicted. The nonce is critical to the security of Bitcoin mining but we will learn more about that later...",
+        tip_one:
+          'Ensure you are properly decoding the inputs the hashing algorithms often return objects decoded in bytes, we want to be able to read it in hex format!',
+        tip_two:
+          'Think about how you would create a function to keep running until that answer is equal to a specific value',
+        tip_three:
+          'Remember to log your answer with <span className="px-1 border-[2px] border-dashed">console.log()</span> or <span className="px-1 border-[2px] border-dashed">print()</span> its the only way our IDE will try to validate your answer',
+      },
+      mining: {
+        mining_heading: 'Mining',
+        mining_paragraph:
+          "Mining is where these concepts all come together. Bitcoin mining is the process by which new bitcoins are created and transactions are added to the blockchain. Miners compete to solve complex mathematical puzzles by finding a unique, valid 'nonce' in each block of transactions. This proof-of-work process demands significant computational power and energy, making it a secure and decentralized way to validate transactions. Successful miners are rewarded with newly minted bitcoins and transaction fees, and they play a critical role in maintaining the integrity of the Bitcoin network.",
+        difficulty_heading: 'Difficulty',
+        difficulty_paragraph:
+          'The mining difficulty is what allows the block to remain at an average of 10 minutes between each new block.',
+      },
+    },
   },
   chapter_three: {
     title: 'The 51% Attack',
@@ -520,6 +585,43 @@ const translations = {
       paragraph_two:
         'It’s time to reap your rewards! Go to the next chapter to withdraw your bitcoin.',
     },
+    resources: {
+      solo: {
+        hashrate_heading: 'Mining Hashrate',
+        hashrate_paragraph:
+          "An individual miner's hashrate refers to the computational power they contribute to the Bitcoin network's mining process. It is the rate at which their mining hardware can perform the necessary mathematical calculations to attempt to mine new blocks. The hashrate of an individual miner is typically measured in hashes per second, or at scale in terahashes, one-trillion hashes per second (TH/s), depending on the scale of their mining operation and the capabilities of their mining hardware.",
+      },
+      pool: {
+        pool_heading: 'Mining Pool',
+        pool_paragraph:
+          'A mining pool plays a pivotal role in cryptocurrency mining, offering several key benefits to individual miners. By pooling together the computational power and resources of many participants, mining pools enhance the chances of successfully mining new blocks, resulting in more predictable and consistent earnings. They also provide a platform for miners to access advanced mining equipment and expert support, reducing barriers to entry and leveling the playing field. Furthermore, mining pools help distribute rewards efficiently, ensuring that miners receive their fair share for their contributions, making cryptocurrency mining accessible, stable, and financially rewarding for a broader community of participants.',
+      },
+      coop: {
+        distribution_heading: 'Job Distribution',
+        distribution_paragraph:
+          "Mining pools take precautions to ensure that their participants do not mine the same nonce for the same block. This is important because, in the Bitcoin mining process, miners compete to find a nonce that results in a valid block. If two miners in the same pool were to work on the same nonce simultaneously, it would be inefficient, and only one would receive the block reward. To prevent this, mining pools use a process called 'work assignment' or 'job distribution' to allocate work efficiently. Mining pools distribute work to individual miners or participants. When a new block needs to be mined, the pool's server (or pool operator) creates a unique 'job' for the miners. This job includes all the information needed to mine the block, such as the current list of unconfirmed transactions, the previous block's header, and the target difficulty.",
+        shares_heading: 'Submitting Shares',
+        shares_paragraph:
+          "Miners work on these assigned jobs and continuously attempt to find the correct nonce. When a miner believes they have a solution, they submit what's called a 'share' to the pool server. This share demonstrates that the miner is actively working on solving the problem. Shares are much easier to find than the actual solution, but they serve as proof of the miner's efforts.",
+      },
+      split: {
+        payout_heading: 'Payout Schemes',
+        payout_subheading:
+          'A mining pool can choose to distrubute the block rewards in several ways the differ in some subtle but key ways:',
+        pps_heading: 'Pay-Per-Share (PPS)',
+        pps_paragraph:
+          "In PPS, miners receive a fixed payout for each valid share they submit, regardless of whether the pool successfully mines a block or not. This system provides miners with a steady and predictable income, making it a preferred choice for those who value consistency in their earnings. PPS minimizes the variance in rewards, as miners are compensated for their work on a per-share basis, offering a reliable source of income in the world of volatile cryptocurrency mining. However, PPS may deduct a fee from the miner's earnings if the pool doesn't successfully mine a block. This fee is meant to cover operational costs and mitigate the risk for the pool operator in case no blocks are mined within a certain timeframe. In traditional PPS, miners receive a reduced payout when the pool faces difficulties.",
+        pplns_heading: 'Pay-Per-Last-N-Shares (PPLNS)',
+        pplns_paragraph:
+          "PPLNS takes into account a miner's contribution over a specific window of the last N shares. Miners are paid based on the number and difficulty of shares they've submitted within that window. PPLNS encourages miners to stay active in the pool, as it rewards consistent participation and helps to reduce the risk of pool-hopping strategies. Miners receive payouts when the pool successfully mines a block, and the rewards are distributed proportionally to their recent contributions, providing a fair and performance-driven approach to earning in the mining ecosystem.",
+        pps_plus_heading: 'Pay Per Share + (PPS+)',
+        pps_plus_paragraph:
+          "PPS+ offers miners a fixed payment for each share they contribute to the pool's mining efforts. However, PPS+ typically includes an additional bonus or premium as an incentive to miners who contribute to the pool's stability and reliability. This bonus is designed to encourage miners to stay active in the pool and foster long-term participation. PPS+ provides miners with a consistent and predictable income, while the added bonus makes it an attractive option for those seeking both reliability and extra rewards in the world of cryptocurrency mining.",
+        fpps_heading: 'Full Pay Per Share (FPPS)',
+        fpps_paragraph:
+          "In Full PPS, miners receive a fixed payout for every share they submit to the pool, irrespective of whether the pool successfully mines a block or not. This approach provides miners with a steady and predictable income, making it an attractive choice for those who value reliability in their earnings. Unlike traditional PPS, Full PPS ensures that miners receive their full payout for their contributed work, without any potential deductions, even if the pool faces occasional difficulties. It's a stable and straightforward method that appeals to miners seeking consistent income in the world of cryptocurrency mining.",
+      },
+    },
   },
 
   chapter_four: {
@@ -605,8 +707,7 @@ const translations = {
         'The first step is to perform a SHA-256 hash on your compressed public key. Then perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be a 20-byte array.',
       paragraph_three:
         'Complete the function `hash_compressed()` that accepts a 33-byte compressed public key and returns a 20-byte public key hash.',
-      success:
-         'Great. One more step and you will have your wallet address.'
+      success: 'Great. One more step and you will have your wallet address.',
     },
 
     address_two: {
@@ -627,6 +728,48 @@ const translations = {
       paragraph_one: 'You created your very own bitcoin wallet!',
       paragraph_two:
         'You withdraw the bitcoin from the mining pool into the wallet you just created. You are now fully funded and ready for whatever Vanderpoole and BitRey may throw at you next.',
+    },
+    resources: {
+      public_key: {
+        elliptic_curve_reason_heading:
+          'The reason for elliptic curve operations',
+        elliptic_curve_reason_paragraph:
+          'We use a very specific set of steps to derive the public key because there is mathematical proof that reversing this operation is essentially impossibly hard. That feature also applies to other algorithms ( like RSA), but those have much larger key sizes and are less efficient computations. The steps we follow were chosen because:',
+        elliptic_curve_reason_list_one:
+          'we want a system where anyone can join using minimal resources',
+        elliptic_curve_reason_list_two:
+          'we want messages to be short (and therefore cheap to transmit)',
+        elliptic_curve_reason_list_three:
+          'we need to prove we know a secret without giving away that secret',
+        elliptic_curve_reason_list_four:
+          'we need it to be practically impossible for anyone else to compute our secret',
+        wpkh_heading: 'Witness Public Key Hash (wpkh) address',
+        wpkh_paragraph:
+          'A Bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There any several types of output script and several encoding mechanisms. In this challenge we encode a compressed public key with bech32 to create what is called a witness public key hash address.',
+        secp_heading: 'secp256k1',
+        secp_paragraph:
+          'Secp256k1 is the name of the elliptic curve used by Bitcoin to implement its public key cryptography. All points on this curve are valid Bitcoin public keys.',
+        generator_point_heading: 'Generator point',
+        generator_point_paragraph:
+          'A Bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There any several types of output script and several encoding mechanisms. In this challenge we encode a compressed public key with bech32 to create what is called a witness public key hash address.',
+        elliptic_curve_operations_heading: 'Elliptic curve operations',
+        elliptic_curve_operations_paragraph:
+          'Elliptic curves have their own mathematical rules, so simple operations like addition and multiplication work differently. For simplicity and brevity, established symbols are re-used, like using a “*” for operations that are similar to multiplication.',
+        discrete_log_heading: 'Discrete logarithm',
+        discrete_log_paragraph:
+          'A mathematical system where you can, for example, multiply but cannot divide. A simple metaphor for this is looking at a clock. Three hours past 11 o’clock is 2 o’clock. So we could say “11+3=2”. However if wanted to perform “2-x=11” and solve for x, you would have infinite possible answers (3, 15, 27, 39...). More on <Link href="https://en.wikipedia.org/wiki/Discrete_logarithm" className="underline">wikipedia</Link>.',
+      },
+      address: {
+        hash_algo_heading: 'SHA-256, RIPEMD-160',
+        hash_algo_paragraph:
+          'Hash functions digest any amount of any kind of data and always return a result of the same size. For SHA256, it’s 32 bytes. For RIPEMD-160, it’s 20 bytes. The output is deterministic (always the same output for the same input) but otherwise, indistinguishable from random. Hash functions effectively reduce data to a small consistent fingerprint.',
+        wpkh_heading: 'Witness Public Key Hash (wpkh) address',
+        wpkh_paragraph:
+          'A Bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There any several types of output script and several encoding mechanisms. In this challenge we encode a compressed public key with bech32 to create what is called a witness public key hash address.',
+        network_heading: 'Mainnet, Testnet, Signet, and Regtest',
+        network_paragraph:
+          'When developing Bitcoin software, it is important to test your code before you trust real money with it! One of the simplest ways to test Bitcoin software is to use a different blockchain with a new genesis block where the coins don’t matter, mining is free and easy, and everything can be reset at any time. These chains are supported by a unique network of nodes that does not interfere with the real coins and nodes on Mainnet. Testnet and Signet are the names of two such alternate Bitcoin blockchains that are maintained in parallel with Mainnet on a global scale. Regtest is a developer mode designed to be run locally with no network connections needed at all.',
+      },
     },
   },
 
@@ -752,6 +895,26 @@ const translations = {
     first: 'Something is wrong!',
     second: 'Holocat may have chewed on some cables again. Bad cat!',
     reload: 'Retry',
+  },
+  help_page: {
+    main_heading: 'Learning Resources',
+    main_subheading:
+      'What helpful info and resources can we provide for further learning?',
+    tips_heading: 'Tips',
+    tips_subheading:
+      'What specific tips can/do we want to give learners if they are stuck?',
+    spoilers_heading: 'Spoilers',
+    spoilers_confirm: 'Yes, I want to see the solution',
+    solution_one: 'Solution to part one of this challenge',
+    solution_two: 'Solution to part two of this challenge',
+    solution_three: 'Solution to part three of this challenge',
+    solution_four: 'Solution to part four of this challenge',
+    solution_five: 'Solution to part five of this challenge',
+    solution_six: 'Solution to part six of this challenge',
+    solution_seven: 'Solution to part seven of this challenge',
+    solution_eight: 'Solution to part eight of this challenge',
+    solution_nine: 'Solution to part nine of this challenge',
+    solution_ten: 'Solution to part ten of this challenge',
   },
 }
 export default translations

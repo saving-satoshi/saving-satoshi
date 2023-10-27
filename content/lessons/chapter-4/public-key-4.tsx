@@ -88,7 +88,7 @@ function compressPublicKey(publickey) {
       args: ['public'],
     },
     defaultCode: `${prevData?.data && 'uncompressed_key = ' + dataObject}
-  
+
 def compress_publickey(publickey):
     # Determine if the y coordinate is even or odd and prepend
     # the corresponding header byte to the x coordinate.
