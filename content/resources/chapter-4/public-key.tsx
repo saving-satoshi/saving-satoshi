@@ -228,7 +228,6 @@ export default function PublicKeyResources({ lang }) {
           </Text>
         </>
       }
-      tipsResources={'hello world'}
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>
