@@ -118,7 +118,7 @@ export default function PublicKeyResources({ lang }) {
     configOne.languages[configOne.defaultLanguage].defaultCode?.[0]
   )
   const [codeTwo, setCodeTwo] = useState(
-    configTwo.languages[configTwo.defaultLanguage].defaultCode?.[0]
+    configTwo.languages[configTwo.defaultLanguage].defaultCode?.[1]
   )
   const [languageOne, setLanguageOne] = useState(configOne.defaultLanguage)
   const [languageTwo, setLanguageTwo] = useState(configTwo.defaultLanguage)
