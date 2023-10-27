@@ -119,6 +119,7 @@ export default function PublicKey3({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
+      saveData
       lessonKey={getLessonKey('chapter-4', 'public-key-3')}
       successMessage={t('chapter_four.public_key_three.success')}
       onSelectLanguage={handleSelectLanguage}

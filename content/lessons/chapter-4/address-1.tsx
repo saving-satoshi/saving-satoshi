@@ -1,5 +1,5 @@
 'use client'
-
+import * as crypto from 'crypto';
 import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
@@ -14,30 +14,36 @@ export const metadata = {
 const javascript = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'findHash',
-    args: ['nonce'],
+    name: 'hash_compressed',
+    args: ['compressed'],
   },
   defaultCode: `const crypto = require('crypto')
 
-// Create a program that finds a sha256 hash starting with 5 zeroes.
-// To submit your answer, log it to the terminal using console.log().
-
+// Get the sha256 digest of the compressed public key.
+// Then get the ripemd160 digest of that sha256 hash
+// Return 20-byte array
 // Type your code here
 `,
   validate: async (answer) => {
-    if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
-    }
 
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
+    if (answer.startsWith("<Buffer")) {
+      return [false, "Ensure you are properly decoding your answer"]
     }
-
-    return [true, undefined]
+if (answer.length !== 40) {
+      return [false, 'Array must be 20 bytes long']
+    }
+if (answer !== crypto.createHash('ripemd160')
+      .update(crypto.createHash('sha256')
+        .update("021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3")
+        .digest())
+      .digest('hex')) {
+      return [false, 'Ensure you are using the correct compressed key and it is being decoded']
+    }
+    return[true,undefined]
   },
   constraints: [
     {
-      range: [5, 1, 7, 1],
+      range: [7, 1, 7, 1],
       allowMultiline: true,
     },
   ],
@@ -46,30 +52,35 @@ const javascript = {
 const python = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'find_hash',
-    args: ['nonce'],
+    name: 'hash_compressed',
+    args: ['compressed'],
   },
-  defaultCode: `from hashlib import sha256
+  defaultCode: `import hashlib
 
-# Create a program that finds a sha256 hash starting with 5 zeroes.
-# To submit your answer, print it to the terminal using print().
-
+# Get the sha256 digest of the compressed public key.
+# Then get the ripemd160 digest of that sha256 hash
+# Return 20-byte array
 # Type your code here
 `,
   validate: async (answer) => {
-    if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
+    if (answer.startsWith("b'")) {
+      return [false, "Ensure you are properly decoding your answer"]
     }
-
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
+if (answer.length !== 40) {
+      return [false, 'Array must be 20 bytes long']
     }
-
-    return [true, undefined]
+if (answer !== crypto.createHash('ripemd160')
+      .update(crypto.createHash('sha256')
+        .update("021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3")
+        .digest())
+      .digest('hex')) {
+      return [false, 'Ensure you are using the correct compressed key and it is being decoded']
+    }
+      return [true, undefined]
   },
   constraints: [
     {
-      range: [5, 1, 7, 1],
+      range: [7, 1, 7, 1],
       allowMultiline: true,
     },
   ],
@@ -96,9 +107,10 @@ export default function Scripting2({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
-      lessonKey={getLessonKey('chapter-2', 'scripting-2')}
-      successMessage={t('chapter_two.scripting_two.success')}
+      lessonKey={getLessonKey('chapter-4', 'address-1')}
+      successMessage={t('chapter_four.address_one.success')}
       onSelectLanguage={handleSelectLanguage}
+      saveData={true}
     >
       <LessonInfo>
         <Text className="font-nunito text-xl text-white">
@@ -114,3 +126,4 @@ export default function Scripting2({ lang }) {
     </ScriptingChallenge>
   )
 }
+
