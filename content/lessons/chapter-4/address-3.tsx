@@ -7,6 +7,7 @@ import { Text } from 'ui'
 import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
+import { bech32 } from 'ui/lesson/ScriptingChallenge/library'
 
 export const metadata = {
   title: 'chapter_four.address_three.title',
@@ -34,7 +35,7 @@ export default function Address3({ lang }) {
       name: 'findHash',
       args: ['nonce'],
     },
-    defaultCode: `const crypto = require('crypto')
+    defaultCode: `${bech32.bech32js}
 
 ${
   prevData?.data &&
@@ -46,10 +47,9 @@ ${
     ", 'hex')"
 }
 
-// Create a program that finds a sha256 hash starting with 5 zeroes.
+// Insert checksum and metadata, encode using bech32 and return a string
+// See the library source code for the exact API.
 // To submit your answer, log it to the terminal using console.log().
-
-// Type your code here
 `,
     validate: async (answer) => {
       if (!answer.startsWith('00000')) {
@@ -62,9 +62,10 @@ ${
 
       return [true, undefined]
     },
+    hiddenRange: [1, 0, 160, 0],
     constraints: [
       {
-        range: [7, 1, 9, 1],
+        range: [166, 1, 166, 1],
         allowMultiline: true,
       },
     ],
@@ -76,17 +77,16 @@ ${
       name: 'find_hash',
       args: ['nonce'],
     },
-    defaultCode: `from hashlib import sha256
+    defaultCode: `${bech32.bech32py}
 
 ${
   prevData?.data &&
-  'public_key_hash = ' + "'" + Buffer.from(dataObject, 'hex') + "'"
+  'public_key_hash = ' + 'bytes.fromhex(' + "'" + dataObject + "'" + ')'
 }
 
-# Create a program that finds a sha256 hash starting with 5 zeroes.
-# To submit your answer, print it to the terminal using print().
-
-# Type your code here
+# Insert checksum and metadata, encode using bech32 and return a string
+# See the library source code for the exact API.
+# To submit your answer, log it to the terminal using print().
 `,
     validate: async (answer) => {
       if (!answer.startsWith('00000')) {
@@ -99,9 +99,10 @@ ${
 
       return [true, undefined]
     },
+    hiddenRange: [1, 0, 160, 0],
     constraints: [
       {
-        range: [7, 1, 9, 1],
+        range: [166, 1, 166, 1],
         allowMultiline: true,
       },
     ],

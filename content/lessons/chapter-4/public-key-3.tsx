@@ -4,9 +4,8 @@ import { ScriptingChallenge, LessonInfo, CodeExample } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { editor } from 'monaco-editor'
 import { secp256k1 } from 'ui/lesson/ScriptingChallenge/library/'
 
 export const metadata = {
