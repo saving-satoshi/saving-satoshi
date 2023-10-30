@@ -32,7 +32,7 @@ console.log(G.mul(generatorPoint))`,
     };
     // The x value needs to encoded from an integer to a hex string
     const x_hex = publickey.x.toString(16);
-    // The hext string then needs to be encoded into bytes
+    // The hex string then needs to be encoded into bytes
     const x_bytes = Buffer.from(x_hex, 'hex');
     // Finally we need to add the correct header byte whether it is even or odd and then decode into hex
     if ((publickey.y & 1n) === 0n)
@@ -74,7 +74,7 @@ print(generatorPoint)`,
     }
     # The x value needs to be encoded from an integer to a hex string
     x_hex = format(int(publickey['x'], 16), 'x')
-    # The hext string then needs to be encoded into bytes
+    # The hex string then needs to be encoded into bytes
     x_bytes = bytes.fromhex(x_hex)
     # Finally we need to add the correct header byte whether it is even or odd and then decode into hex
     if int(publickey['y'], 16) % 2 == 0:
