@@ -673,11 +673,11 @@ const translations = {
     public_key_three: {
       title: 'Public key',
       paragraph_one:
-        'To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point (find out why). The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:',
+        'To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point (<Link href="public-key-3/help" className="underline">find out why</Link>). The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:',
       paragraph_two:
-        'The elliptic curve operation is similar to addition and therefore its repetition is similar to multiplication. We use the * symbol to describe the algorithm (learn more), where `k` is the private key and `P` is the corresponding public key:',
+        'The elliptic curve operation is similar to addition and therefore its repetition is similar to multiplication. We use the * symbol to describe the algorithm (<Link href="public-key-3/help" className="underline">learn more</Link>), where `k` is the private key and `P` is the corresponding public key:',
       paragraph_three:
-        'Complete the function `privatekey_to_publickey()` so that it returns the public key derived from a given private key.',
+        'Create a script so that it logs out the public key derived from a given private key.',
       success:
         'Good job! That public key is pretty long. Let’s try to compress it!',
     },
