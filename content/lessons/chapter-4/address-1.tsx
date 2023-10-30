@@ -1,5 +1,5 @@
 'use client'
-import * as crypto from 'crypto';
+import * as crypto from 'crypto'
 import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
@@ -25,21 +25,32 @@ const javascript = {
 // Type your code here
 `,
   validate: async (answer) => {
-
-    if (answer.startsWith("<Buffer")) {
-      return [false, "Ensure you are properly decoding your answer"]
+    if (answer.startsWith('<Buffer')) {
+      return [false, 'Ensure you are properly decoding your answer']
     }
-if (answer.length !== 40) {
+    if (answer.length !== 40) {
       return [false, 'Array must be 20 bytes long']
     }
-if (answer !== crypto.createHash('ripemd160')
-      .update(crypto.createHash('sha256')
-        .update("021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3")
-        .digest())
-      .digest('hex')) {
-      return [false, 'Ensure you are using the correct compressed key and it is being decoded']
+    if (
+      answer !==
+      crypto
+        .createHash('ripemd160')
+        .update(
+          crypto
+            .createHash('sha256')
+            .update(
+              '021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3'
+            )
+            .digest()
+        )
+        .digest('hex')
+    ) {
+      return [
+        false,
+        'Ensure you are using the correct compressed key and it is being decoded',
+      ]
     }
-    return[true,undefined]
+    return [true, undefined]
   },
   constraints: [
     {
@@ -64,19 +75,31 @@ const python = {
 `,
   validate: async (answer) => {
     if (answer.startsWith("b'")) {
-      return [false, "Ensure you are properly decoding your answer"]
+      return [false, 'Ensure you are properly decoding your answer']
     }
-if (answer.length !== 40) {
+    if (answer.length !== 40) {
       return [false, 'Array must be 20 bytes long']
     }
-if (answer !== crypto.createHash('ripemd160')
-      .update(crypto.createHash('sha256')
-        .update("021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3")
-        .digest())
-      .digest('hex')) {
-      return [false, 'Ensure you are using the correct compressed key and it is being decoded']
+    if (
+      answer !==
+      crypto
+        .createHash('ripemd160')
+        .update(
+          crypto
+            .createHash('sha256')
+            .update(
+              '021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3'
+            )
+            .digest()
+        )
+        .digest('hex')
+    ) {
+      return [
+        false,
+        'Ensure you are using the correct compressed key and it is being decoded',
+      ]
     }
-      return [true, undefined]
+    return [true, undefined]
   },
   constraints: [
     {
@@ -126,4 +149,3 @@ export default function Scripting2({ lang }) {
     </ScriptingChallenge>
   )
 }
-
