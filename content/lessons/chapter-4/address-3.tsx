@@ -32,8 +32,8 @@ export default function Address3({ lang }) {
   const javascript = {
     program: `console.log("KILL")`,
     defaultFunction: {
-      name: 'findHash',
-      args: ['nonce'],
+      name: 'findAddress',
+      args: ['publicKeyHash'],
     },
     defaultCode: `${bech32.bech32js}
 
@@ -80,8 +80,8 @@ ${
   const python = {
     program: `print("KILL")`,
     defaultFunction: {
-      name: 'find_hash',
-      args: ['nonce'],
+      name: 'find_address',
+      args: ['public_key_hash'],
     },
     defaultCode: `${bech32.bech32py}
 
