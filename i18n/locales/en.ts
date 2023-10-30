@@ -665,7 +665,7 @@ const translations = {
       paragraph_three:
         'ECC involves taking certain points on an elliptic curve and performing addition and multiplication on the points.',
       paragraph_four:
-        'Bitcoin uses a specific curve called secp256k1. On the right, you see a simplified version that is easier to visualize, but follows the same mathematical rules.',
+        'Bitcoin uses a specific curve called secp256k1. In the image, you see a simplified version that is easier to visualize, but follows the same mathematical rules.',
       paragraph_five:
         'We start with a specific point on this curve, called the <Link href="/chapters/chapter-4/public-key-2/help" className="underline">Generator Point.</Link>',
     },
