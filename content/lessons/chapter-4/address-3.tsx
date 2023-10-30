@@ -39,7 +39,7 @@ export default function Address3({ lang }) {
 
 ${
   prevData?.data &&
-  'const publicKeyHash = ' +
+  'const compressedPublicKeyHash = ' +
     'Buffer.from(' +
     "'" +
     dataObject +
@@ -52,12 +52,18 @@ ${
 // To submit your answer, log it to the terminal using console.log().
 `,
     validate: async (answer) => {
-      if (!answer.startsWith('00000')) {
-        return [false, 'Hash must start with 5 zeroes.']
+      if (!answer.startsWith('tb')) {
+        return [
+          false,
+          'Address must start with the correct prefix for testnet.',
+        ]
       }
 
-      if (answer.length !== 64) {
-        return [false, 'Hash must be 64 characters long']
+      if (answer.length !== 42) {
+        return [
+          false,
+          'Ensure the encoding is being done on the 20-byte compressed public key hash',
+        ]
       }
 
       return [true, undefined]
@@ -81,7 +87,12 @@ ${
 
 ${
   prevData?.data &&
-  'public_key_hash = ' + 'bytes.fromhex(' + "'" + dataObject + "'" + ')'
+  'compressed_public_key_hash = ' +
+    'bytes.fromhex(' +
+    "'" +
+    dataObject +
+    "'" +
+    ')'
 }
 
 # Insert checksum and metadata, encode using bech32 and return a string
@@ -89,12 +100,18 @@ ${
 # To submit your answer, log it to the terminal using print().
 `,
     validate: async (answer) => {
-      if (!answer.startsWith('00000')) {
-        return [false, 'Hash must start with 5 zeroes.']
+      if (!answer.startsWith('tb')) {
+        return [
+          false,
+          'Address must start with the correct prefix for testnet.',
+        ]
       }
 
-      if (answer.length !== 64) {
-        return [false, 'Hash must be 64 characters long']
+      if (answer.length !== 42) {
+        return [
+          false,
+          'Ensure the encoding is being done on the 20-byte compressed public key hash',
+        ]
       }
 
       return [true, undefined]
@@ -129,7 +146,7 @@ ${
         config={config}
         saveData
         lessonKey={getLessonKey('chapter-4', 'address-3')}
-        successMessage={t('chapter_two.address_three.success')}
+        successMessage={t('chapter_four.address_three.success')}
         onSelectLanguage={handleSelectLanguage}
       >
         <LessonInfo>
