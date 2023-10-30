@@ -36,12 +36,12 @@ export default function Address2({ lang }) {
     },
     defaultCode: `const crypto = require('crypto')
 
-${prevData?.data && 'compressedKey = ' + "'" + dataObject + "'"}
+${prevData?.data && 'compressedPublicKey = ' + "'" + dataObject + "'"}
 
 // Get the sha256 digest of the compressed public key.
 // Then get the ripemd160 digest of that sha256 hash
 // Return 20-byte array
-// Type your code here
+// To submit your answer, log it to the terminal using console.log().
 `,
     validate: async (answer) => {
       if (answer.startsWith('<Buffer')) {
@@ -80,12 +80,12 @@ ${prevData?.data && 'compressedKey = ' + "'" + dataObject + "'"}
     },
     defaultCode: `import hashlib
 
-${prevData?.data && 'compressed_key = ' + "'" + dataObject + "'"}
+${prevData?.data && 'compressed_public_key = ' + "'" + dataObject + "'"}
 
 # Get the sha256 digest of the compressed public key.
 # Then get the ripemd160 digest of that sha256 hash
 # Return 20-byte array
-# Type your code here
+# To submit your answer, log it to the terminal using print().
 `,
     validate: async (answer) => {
       if (answer.startsWith("b'")) {

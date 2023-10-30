@@ -708,7 +708,7 @@ const translations = {
       paragraph_two:
         'The first step is to perform a SHA-256 hash on your compressed public key. Then perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be a 20-byte array.',
       paragraph_three:
-        'Complete the function `hash_compressed()` that accepts a 33-byte compressed public key and returns a 20-byte public key hash.',
+        'Complete a function that accepts a 33-byte compressed public key and returns a 20-byte public key hash.',
       success: 'Great. One more step and you will have your wallet address.',
     },
 
