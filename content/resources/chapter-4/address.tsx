@@ -18,22 +18,19 @@ const javascript = {
     args: ['nonce'],
   },
   defaultCode: [
-    `// This is the compressed public key from the previous lesson
-const compressedPublicKey = "021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3"
-// First we need to hash it with SHA256
-const shaHash = crypto.Hash('sha256').update(compressedPublicKey).digest()
+    `// First we need to hash the compressedPublicKey with SHA256
+const sha256Hash = crypto.Hash('sha256').update(compressedPublicKey).digest()
 // Then you will need to hash it with ripemd160 this needs to be decoded into hex
-const ripemdHash = crypto.Hash('ripemd160').update(shaHash)
+const ripemdHash = crypto.Hash('ripemd160').update(sha256Hash)
 // Finally decode the answer into hex
 const publicKeyHash = ripemdHash.digest('hex')
 console.log(publicKeyHash)`,
-    `const crypto = require('crypto')wwooooo
-
-// Create a program that finds a sha256 hash starting with 5 zeroes.
-// To submit your answer, log it to the terminal using console.log().
-
-// Type your code here
-`,
+    `// To encode our publicKeyHash we first need to compress it to bytes which we have done for you
+// then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
+// We also need to decide which version to use, in this case version 0 will suffice for segwit
+const bech32Address = encode('tb', 0, compressedPublicKeyHash)
+// Lastly, let's log it to the console
+console.log(bech32Address)`,
   ],
   validate: async (answer) => {
     return [true, undefined]
@@ -48,22 +45,19 @@ const python = {
     args: ['nonce'],
   },
   defaultCode: [
-    `# This is the compressed public key from the previous lesson that needs to be encoded to proceed
-encodedPublicKey = "021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3".encode('utf-8')
-# First we need to hash it with SHA256
-shaHash = hashlib.new('sha256', compressedPublicKey).digest()
+    `# First we need to hash the compressed_public_key with SHA256
+sha256_hash = hashlib.new('sha256', compressed_public_key).digest()
 # Then you will need to hash it with ripemd160
-ripemdHash = hashlib.new('ripemd160', shaHash)
+ripemd_hash = hashlib.new('ripemd160', sha256_hash)
 # Finally decode the answer into hex
-publicKeyHash = ripemdHash.hexdigest()
-print(publicKeyHash)`,
-    `from hashlib import sha256wooooo
-
-# Create a program that finds a sha256 hash starting with 5 zeroes.
-# To submit your answer, print it to the terminal using print().
-
-# Type your code here
-`,
+public_key_hash = ripemd_hash.hexdigest()
+print(public_key_hash)`,
+    `# To encode our public_key_hash we first need to compress it to bytes which we have done for you
+# then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
+# We also need to decide which version to use, in this case version 0 will suffice for segwit
+bech32_address = encode('tb', 0, compressed_public_key_hash)
+# Lastly, let's print it to the console
+print(bech32_address)`,
   ],
   validate: async (answer) => {
     return [true, undefined]
@@ -86,7 +80,6 @@ const configTwo: EditorConfig = {
     python,
   },
 }
-
 export default function AddressResources({ lang }) {
   const t = useTranslations(lang)
 
@@ -174,7 +167,7 @@ export default function AddressResources({ lang }) {
               />
               <MonacoEditor
                 loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 767px)`}
+                height={`calc(var(--dynamic-height) - 817px)`}
                 value={codeOne}
                 beforeMount={handleBeforeMount}
                 onMount={handleMount}
@@ -202,7 +195,7 @@ export default function AddressResources({ lang }) {
               />
               <MonacoEditor
                 loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 767px)`}
+                height={`calc(var(--dynamic-height) - 837px)`}
                 value={codeTwo}
                 beforeMount={handleBeforeMount}
                 onMount={handleMount}

@@ -61,19 +61,17 @@ export default function PublicKey4({ lang }) {
     },
     defaultCode: `${prevData?.data && 'const uncompressedKey = ' + dataObject}
 
-function compressPublicKey(publickey) {
-  // Determine if the y coordinate is even or odd and prepend the
-  // corresponding header byte to the x coordinate.
-  // Return 33-byte Buffer
+// Determine if the y coordinate is even or odd and prepend the
+// corresponding header byte to the x coordinate.
+// Return 33-byte Buffer
+// To submit your answer, log it to the terminal using console.log().
+function compressPublicKey(publicKey) {
   const header_byte = {
     'y_is_even': Buffer.from([2]),
     'y_is_odd':  Buffer.from([3])
   };
-  // To submit your answer, log it to the terminal using console.log().
 
 }
-
-
 `,
     validate: async (answer) => {
       const pattern = /^[0-9a-f]{66}$/i
@@ -90,7 +88,7 @@ function compressPublicKey(publickey) {
     },
     constraints: [
       {
-        range: [12, 1, 15, 1],
+        range: [7, 1, 14, 1],
         allowMultiline: true,
       },
     ],
@@ -104,16 +102,15 @@ function compressPublicKey(publickey) {
     },
     defaultCode: `${prevData?.data && 'uncompressed_key = ' + dataObject}
 
-def compress_publickey(publickey):
-    # Determine if the y coordinate is even or odd and prepend
-    # the corresponding header byte to the x coordinate.
-    # Return 33-byte array
+# Determine if the y coordinate is even or odd and prepend
+# the corresponding header byte to the x coordinate.
+# Return 33-byte array
+# To submit your answer, print it to the terminal using print().
+def compress_publickey(public_key):
     header_byte = {
           "y_is_even": bytes([2]),
           "y_is_odd":  bytes([3])
     }
-# To submit your answer, print it to the terminal using print().
-
 `,
     validate: async (answer) => {
       const pattern = /^[0-9a-f]{66}$/i
@@ -130,7 +127,7 @@ def compress_publickey(publickey):
     },
     constraints: [
       {
-        range: [12, 1, 13, 1],
+        range: [7, 1, 12, 1],
         allowMultiline: true,
       },
     ],
