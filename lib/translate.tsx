@@ -106,7 +106,6 @@ function injectComponent(result, type) {
               key={index}
               href={href as any}
               className={clsx('cursor-pointer', className)}
-              target="_blank"
             >
               {label}
             </Link>
