@@ -49,7 +49,7 @@ const javascript = {
   hiddenRange: [1, 0, 126, 0],
   constraints: [
     {
-      range: [136, 1, 136, 1],
+      range: [135, 1, 136, 1],
       allowMultiline: true,
     },
   ],
@@ -91,7 +91,7 @@ G = SECP256K1.FAST_G
   hiddenRange: [1, 0, 126, 0],
   constraints: [
     {
-      range: [136, 1, 136, 1],
+      range: [135, 1, 136, 1],
       allowMultiline: true,
     },
   ],
