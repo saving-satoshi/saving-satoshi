@@ -250,7 +250,7 @@ const translations = {
       paragraph_four:
         'Bitcoin utiliza una curva específica llamada secp256k1. A la derecha, puedes ver una versión simplificada que es más fácil de visualizar, pero sigue las mismas reglas matemáticas',
       paragraph_five:
-        'Comenzamos con un punto específico en esta curva, llamado el Punto Generador.',
+        'Comenzamos con un punto específico en esta curva, llamado el <Link href="public-key-2/help" className="underline">Punto Generador</Link>.',
     },
 
     public_key_three: {

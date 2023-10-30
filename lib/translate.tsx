@@ -80,12 +80,11 @@ function injectComponent(result, type) {
       const className = getFirstMatch(html, classNameRegex)
       const position = getFirstMatch(html, positionRegex)
       const offset = getFirstMatch(html, offsetRegex)
+      const target = getFirstMatch(html, targetRegex)
+      const rel = getFirstMatch(html, relRegex)
 
       switch (type) {
         case ComponentType.A: {
-          const target = getFirstMatch(html, targetRegex)
-          const rel = getFirstMatch(html, relRegex)
-
           parts.push(
             <a
               key={index}
@@ -105,6 +104,7 @@ function injectComponent(result, type) {
             <Link
               key={index}
               href={href as any}
+              target={target}
               className={clsx('cursor-pointer', className)}
             >
               {label}

@@ -667,7 +667,7 @@ const translations = {
       paragraph_four:
         'Bitcoin uses a specific curve called secp256k1. On the right, you see a simplified version that is easier to visualize, but follows the same mathematical rules.',
       paragraph_five:
-        'We start with a specific point on this curve, called the <Link href="/chapters/chapter-4/public-key-2/help" className="underline">Generator Point.</Link>',
+        'We start with a specific point on this curve, called the <Link href="public-key-2/help" className="underline">Generator Point</Link>.',
     },
 
     public_key_three: {
