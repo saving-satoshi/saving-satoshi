@@ -35,6 +35,7 @@ export default function ScriptingChallenge({
   successMessage,
   saveData,
   onSelectLanguage,
+  successStyle,
 }: {
   children?: React.ReactNode
   lang: string
@@ -43,6 +44,10 @@ export default function ScriptingChallenge({
   successMessage: string
   saveData?: boolean
   onSelectLanguage: (language: string) => void
+  successStyle: {
+    backgroundColor?: string
+    fontSize?: string
+  }
 }) {
   const { saveProgress, saveProgressLocal } = useProgressContext()
   const { account } = useAuthContext()
@@ -145,6 +150,7 @@ export default function ScriptingChallenge({
             setErrors={setErrors}
             onValidate={handleRunnerValidate}
             successMessage={successMessage}
+            successStyle={successStyle}
           />
         </div>
       </Lesson>
