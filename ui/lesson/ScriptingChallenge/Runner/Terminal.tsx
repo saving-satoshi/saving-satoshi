@@ -2,7 +2,19 @@ import React from 'react'
 import clsx from 'clsx'
 import Convert from 'ansi-to-html'
 
-function Terminal({ className }: { className?: string }, ref) {
+function Terminal(
+  {
+    className,
+    successStyle,
+  }: {
+    className?: string
+    successStyle?: {
+      backgroundColor?: string
+      fontSize?: string
+    }
+  },
+  ref
+) {
   return (
     <iframe
       // @ts-ignore
@@ -18,12 +30,15 @@ function Terminal({ className }: { className?: string }, ref) {
                   body {
                     padding: 16px;
                     margin:0;
-                  }
+                    background-color: ${
+                      successStyle?.backgroundColor || 'default'
+                    }; 
+                    }
                   .output {
                     font-family: monospace;
-                    color: white;
-                    font-size: 12px;
-                  }
+                    color: black;
+                   
+                          }
 
                   div.output > div > span {
                       font-family: monospace;
@@ -38,7 +53,7 @@ function Terminal({ className }: { className?: string }, ref) {
 
                   .output .success {
                     color: #00B400;
-                  }
+                     }
 
                   .output .log {
                     color:white;
@@ -47,9 +62,9 @@ function Terminal({ className }: { className?: string }, ref) {
                 <div class="output"></div>
                 <script>
                   const output = document.querySelector('.output')
-
                   window.addEventListener('message', e => {
                     const {action,payload} =JSON.parse(e.data)
+                    console.log("Received in iframe:", e.data);
                     switch(action) {
                       case 'print': {
                         output.innerHTML += "<div class='log'>"+payload+"</div>"
@@ -62,6 +77,7 @@ function Terminal({ className }: { className?: string }, ref) {
                         break
                       }
                       case 'success': {
+
                         output.innerHTML += "<div class='success'>"+payload+"</div>"
                         output.parentElement.scrollTop = output.scrollHeight
                         break
