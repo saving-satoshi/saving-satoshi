@@ -665,7 +665,7 @@ const translations = {
       paragraph_three:
         'ECC involves taking certain points on an elliptic curve and performing addition and multiplication on the points.',
       paragraph_four:
-        'Bitcoin uses a specific curve called secp256k1. On the right, you see a simplified version that is easier to visualize, but follows the same mathematical rules.',
+        'Bitcoin uses a specific curve called secp256k1. In the image, you see a simplified version that is easier to visualize, but follows the same mathematical rules.',
       paragraph_five:
         'We start with a specific point on this curve, called the <Link href="public-key-2/help" className="underline">Generator Point</Link>.',
     },
@@ -673,11 +673,11 @@ const translations = {
     public_key_three: {
       title: 'Public key',
       paragraph_one:
-        'To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point (find out why). The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:',
+        'To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point (<Link href="public-key-3/help" className="underline">find out why</Link>). The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:',
       paragraph_two:
-        'The elliptic curve operation is similar to addition and therefore its repetition is similar to multiplication. We use the * symbol to describe the algorithm (learn more), where `k` is the private key and `P` is the corresponding public key:',
+        'The elliptic curve operation is similar to addition and therefore its repetition is similar to multiplication. We use the * symbol to describe the algorithm (<Link href="public-key-3/help" className="underline">learn more</Link>), where `k` is the private key and `P` is the corresponding public key:',
       paragraph_three:
-        'Complete the function `privatekey_to_publickey()` so that it returns the public key derived from a given private key.',
+        'Create a script so that it logs out the public key derived from a given private key.',
       success:
         'Good job! That public key is pretty long. Let’s try to compress it!',
     },

@@ -73,11 +73,11 @@ print(generatorPoint)`,
         'y_is_odd': bytes([3])
     }
     # The x value needs to be encoded from an integer to a hex string
-    x_hex = format(publickey['x'], 'x')
+    x_hex = format(int(publickey['x'], 16), 'x')
     # The hext string then needs to be encoded into bytes
     x_bytes = bytes.fromhex(x_hex)
     # Finally we need to add the correct header byte whether it is even or odd and then decode into hex
-    if publickey['y'] % 2 == 0:
+    if int(publickey['y'], 16) % 2 == 0:
         print((header_byte['y_is_even'] + x_bytes).hex())
     else:
         print((header_byte['y_is_odd'] + x_bytes).hex())
