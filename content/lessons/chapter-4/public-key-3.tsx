@@ -18,7 +18,7 @@ const javascript = {
     name: 'rawPublicKey',
     args: ['private_key'],
   },
-  defaultCode: ` ${secp256k1.secp256k1js}
+  defaultCode: `${secp256k1.secp256k1js}
   // Import ECDSA library.
   // Multiply the private key by the ECDSA generator point G to
   // produce a new curve point which is the public key.

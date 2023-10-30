@@ -202,7 +202,7 @@ export const getNextLessonKey = (
   if (keys[id + 1]) {
     return keys[id + 1]
   } else {
-    console.error('There is no next lesson')
+    console.debug('There is no next lesson')
     return userProgressKey
   }
 }
