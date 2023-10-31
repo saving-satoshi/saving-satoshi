@@ -19,7 +19,7 @@ export default function HamburgerMenu(props) {
           'mb-[5px]',
           {
             'transform-none': !props.isOpen,
-            'translate-x-0 -translate-y-[1.8px] -rotate-45': props.isOpen,
+            '-translate-y-[1.8px] translate-x-0 -rotate-45': props.isOpen,
           }
         )}
         aria-hidden="true"

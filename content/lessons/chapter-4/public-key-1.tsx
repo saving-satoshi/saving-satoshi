@@ -2,7 +2,6 @@
 
 import { useTranslations, useSaveAndProceed } from 'hooks'
 import { ChapterIntro } from 'ui'
-import {} from 'hooks'
 import { Button } from 'shared'
 
 export const metadata = {

@@ -12,6 +12,13 @@ export const monacoOptions: editor.IStandaloneEditorConstructionOptions = {
   // },
   scrollBeyondLastLine: false,
   wordWrap: 'on',
+}
+
+export const readOnlyOptions: editor.IStandaloneEditorConstructionOptions = {
+  readOnly: true,
+  minimap: { enabled: false },
+  scrollBeyondLastLine: false,
+  wordWrap: 'on',
   theme: 'vs-dark',
 }
 
