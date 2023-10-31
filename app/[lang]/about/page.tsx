@@ -100,7 +100,7 @@ export default function About({ params }) {
           <h3 className="mt-4 text-2xl sm:text-3xl">
             {t('about.privacy.sub_heading_two')}
           </h3>
-          <p className="mt-2 font-nunito text-xl">
+          <div className="mt-2 font-nunito text-xl">
             {t('about.privacy.paragraph_three')}
             <ol>
               <li>
@@ -116,7 +116,7 @@ export default function About({ params }) {
                 {t('about.privacy.list_item_two_text')}
               </li>
             </ol>
-          </p>
+          </div>
           <h3 className="mt-4 text-2xl sm:text-3xl">
             {t('about.privacy.sub_heading_three')}
           </h3>
