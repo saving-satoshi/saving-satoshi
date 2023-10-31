@@ -4,7 +4,7 @@ import { useTranslations } from 'hooks'
 
 import { Text } from 'ui'
 
-export default function ResourcesPage({
+export default function ResourcePage({
   lang,
   readingResources,
   tipsResources,

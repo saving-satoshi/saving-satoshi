@@ -129,7 +129,7 @@ const translations = {
         'Copy and paste the command below into the Terminal in the code block and press “Enter”.',
       terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'`,
       waiting_for_input: 'Waiting for you to write and run the script...',
-      success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.`,
+      success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.`,
     },
 
     genesis_four: {
@@ -154,7 +154,7 @@ const translations = {
       paragraph_one:
         'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
       paragraph_two:
-        '1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" className="underline">here</Link> to look at a specific transaction.',
+        '1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">here</Link> to look at a specific transaction.',
       paragraph_three:
         '2. Open up the details and find the part that is of type “OP_RETURN”.',
       paragraph_four:
@@ -345,17 +345,17 @@ const translations = {
         paragraph_two:
           "When you find a nonce with a hash that begins with five zeroes, use Python's `print()` function to return the hash to the console. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:",
         list_one:
-          '<Link href="https://docs.python.org/3/library/hashlib.html" className="underline">hashlib documentation</Link>',
+          '<Link href="https://docs.python.org/3/library/hashlib.html" target="_blank" className="underline">hashlib documentation</Link>',
         list_two:
-          '<Link href="https://datagy.io/python-sha256/" className="underline">Tutorial python function</Link>',
+          '<Link href="https://datagy.io/python-sha256/" target="_blank" className="underline">Tutorial python function</Link>',
       },
       javascript: {
         paragraph_two:
           "When you find a nonce with a hash that begins with five zeroes, use JavaScript's `console.log()` function to return the hash to the console. We are using the crypto library in javascript to help you along in creating this function, you can use the following external resources to help you write this function if needed:",
         list_one:
-          '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" className="underline">crypto documentation</Link>',
+          '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" target="_blank" className="underline">crypto documentation</Link>',
         list_two:
-          '<Link href="https://www.educative.io/answers/what-is-node-cryptocreatehashalgorithm-options" className="underline">Tutorial javascript function</Link>',
+          '<Link href="https://www.educative.io/answers/what-is-node-cryptocreatehashalgorithm-options" target="_blank" className="underline">Tutorial javascript function</Link>',
       },
       success: 'Five zeroes! That’s it!',
     },
@@ -665,19 +665,19 @@ const translations = {
       paragraph_three:
         'ECC involves taking certain points on an elliptic curve and performing addition and multiplication on the points.',
       paragraph_four:
-        'Bitcoin uses a specific curve called secp256k1. On the right, you see a simplified version that is easier to visualize, but follows the same mathematical rules.',
+        'Bitcoin uses a specific curve called secp256k1. In the image, you see a simplified version that is easier to visualize, but follows the same mathematical rules.',
       paragraph_five:
-        'We start with a specific point on this curve, called the Generator Point. ',
+        'We start with a specific point on this curve, called the <Link href="public-key-2/help" className="underline">Generator Point</Link>.',
     },
 
     public_key_three: {
       title: 'Public key',
       paragraph_one:
-        'To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point (find out why). The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:',
+        'To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point (<Link href="public-key-3/help" className="underline">find out why</Link>). The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:',
       paragraph_two:
-        'The elliptic curve operation is similar to addition and therefore its repetition is similar to multiplication. We use the * symbol to describe the algorithm (learn more), where `k` is the private key and `P` is the corresponding public key:',
+        'The elliptic curve operation is similar to addition and therefore its repetition is similar to multiplication. We use the * symbol to describe the algorithm (<Link href="public-key-3/help" className="underline">learn more</Link>), where `k` is the private key and `P` is the corresponding public key:',
       paragraph_three:
-        'Complete the function `privatekey_to_publickey()` so that it returns the public key derived from a given private key.',
+        'Create a script so that it logs out the public key derived from a given private key.',
       success:
         'Good job! That public key is pretty long. Let’s try to compress it!',
     },
@@ -688,10 +688,12 @@ const translations = {
         'The public key has an x and y coordinate for a total of 64 bytes. This can be compressed into 33 bytes by removing the y coordinate and prepending a single byte of metadata. That byte will indicate if the Y coordinate is even or odd. Because the elliptic curve equation only has two variables, the complete public key can be computed later by the verifier using only x and the metadata:',
       paragraph_two:
         'The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function `compress_publickey()` to accept a public key and return an array of 33 bytes representing the compressed public key.',
+      success:
+        'Excellent. Now we have our compressed public key. Next we need to hash it and encode it in a human-friendly format.',
     },
 
-    public_key_five: {
-      title: 'Public key',
+    address_one: {
+      title: 'Address',
       heading: 'Nice work!',
       paragraph_one:
         'And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’lll learn about that in the next challenge.',
@@ -699,27 +701,28 @@ const translations = {
         'Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the discrete log problem.',
     },
 
-    address_one: {
+    address_two: {
       title: 'Address',
       paragraph_one:
         'Do you remember the hashing challenge? It turns out you can generate the simplest type of bitcoin address by hashing your compressed public key. Bitcoin uses two different hashing algorithms for this: SHA-256 and RIPEMD-160.',
       paragraph_two:
         'The first step is to perform a SHA-256 hash on your compressed public key. Then perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be a 20-byte array.',
       paragraph_three:
-        'Complete the function `hash_compressed()` that accepts a 33-byte compressed public key and returns a 20-byte public key hash.',
+        'Complete a function that accepts a 33-byte compressed public key and returns a 20-byte public key hash.',
       success: 'Great. One more step and you will have your wallet address.',
     },
 
-    address_two: {
+    address_three: {
       title: 'Address',
       paragraph_one:
         'There are multiple types of bitcoin addresses. We want to create a Signet Witness Public Key Hash (wpkh) address to encode the 20-byte compressed public key hash. First we need to append the hash with the witness version number `0`. These 21 bytes are known as the witness program. The witness program is encoded into a human-friendly format called bech32, which will append a human-readable prefix and a checksum.',
       paragraph_two: 'The prefix is determined by the network:',
       list_one: 'Mainnet: ‘bc’',
-      list_two: 'Signet: ‘tb’',
+      list_two: 'Testnet: ‘tb’',
       list_three: 'Regtest: ‘bcrt’',
       paragraph_three:
-        'Call the provided `hash_to_address()` function with your data to generate your Bitcoin address!',
+        'Be sure to log your function to the console with your data to generate your Bitcoin address!',
+      success: 'Now you have an address that mined bitcoin can be sent to.',
     },
 
     outro_one: {
@@ -743,15 +746,12 @@ const translations = {
           'we need to prove we know a secret without giving away that secret',
         elliptic_curve_reason_list_four:
           'we need it to be practically impossible for anyone else to compute our secret',
-        wpkh_heading: 'Witness Public Key Hash (wpkh) address',
-        wpkh_paragraph:
-          'A Bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There any several types of output script and several encoding mechanisms. In this challenge we encode a compressed public key with bech32 to create what is called a witness public key hash address.',
         secp_heading: 'secp256k1',
         secp_paragraph:
           'Secp256k1 is the name of the elliptic curve used by Bitcoin to implement its public key cryptography. All points on this curve are valid Bitcoin public keys.',
         generator_point_heading: 'Generator point',
         generator_point_paragraph:
-          'A Bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There any several types of output script and several encoding mechanisms. In this challenge we encode a compressed public key with bech32 to create what is called a witness public key hash address.',
+          'A specific point on the secp256k1 curve. Its value is part of the secp256k1 standard and it’s always the same. This point is not different from other points on the curve, but it is agreed up on as the standard starting point for calculations. No one really knows why this particular point was chosen.',
         elliptic_curve_operations_heading: 'Elliptic curve operations',
         elliptic_curve_operations_paragraph:
           'Elliptic curves have their own mathematical rules, so simple operations like addition and multiplication work differently. For simplicity and brevity, established symbols are re-used, like using a “*” for operations that are similar to multiplication.',

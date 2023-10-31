@@ -1,151 +1,51 @@
 'use client'
-import * as crypto from 'crypto'
-import { ScriptingChallenge, LessonInfo } from 'ui'
-import { EditorConfig } from 'types'
-import { useTranslations } from 'hooks'
-import { Text } from 'ui'
-import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
+
+import { useSaveAndProceed, useTranslations } from 'hooks'
+import { ChapterIntro, CodeExample } from 'ui'
+
+import { Button } from 'shared'
+import { useEffect, useState } from 'react'
+import { getData } from 'api/data'
+import { Data } from 'types'
 
 export const metadata = {
   title: 'chapter_four.address_one.title',
-  key: 'CH4ADDR1',
-}
-const javascript = {
-  program: `console.log("KILL")`,
-  defaultFunction: {
-    name: 'hash_compressed',
-    args: ['compressed'],
-  },
-  defaultCode: `const crypto = require('crypto')
-
-// Get the sha256 digest of the compressed public key.
-// Then get the ripemd160 digest of that sha256 hash
-// Return 20-byte array
-// Type your code here
-`,
-  validate: async (answer) => {
-    if (answer.startsWith('<Buffer')) {
-      return [false, 'Ensure you are properly decoding your answer']
-    }
-    if (answer.length !== 40) {
-      return [false, 'Array must be 20 bytes long']
-    }
-    if (
-      answer !==
-      crypto
-        .createHash('ripemd160')
-        .update(
-          crypto
-            .createHash('sha256')
-            .update(
-              '021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3'
-            )
-            .digest()
-        )
-        .digest('hex')
-    ) {
-      return [
-        false,
-        'Ensure you are using the correct compressed key and it is being decoded',
-      ]
-    }
-    return [true, undefined]
-  },
-  constraints: [
-    {
-      range: [7, 1, 7, 1],
-      allowMultiline: true,
-    },
-  ],
+  key: 'CH4ADR1',
 }
 
-const python = {
-  program: `print("KILL")`,
-  defaultFunction: {
-    name: 'hash_compressed',
-    args: ['compressed'],
-  },
-  defaultCode: `import hashlib
-
-# Get the sha256 digest of the compressed public key.
-# Then get the ripemd160 digest of that sha256 hash
-# Return 20-byte array
-# Type your code here
-`,
-  validate: async (answer) => {
-    if (answer.startsWith("b'")) {
-      return [false, 'Ensure you are properly decoding your answer']
-    }
-    if (answer.length !== 40) {
-      return [false, 'Array must be 20 bytes long']
-    }
-    if (
-      answer !==
-      crypto
-        .createHash('ripemd160')
-        .update(
-          crypto
-            .createHash('sha256')
-            .update(
-              '021f5b099ee48f1697658361bfd600c174021a871d8e5a4686f5c0753ba70abda3'
-            )
-            .digest()
-        )
-        .digest('hex')
-    ) {
-      return [
-        false,
-        'Ensure you are using the correct compressed key and it is being decoded',
-      ]
-    }
-    return [true, undefined]
-  },
-  constraints: [
-    {
-      range: [7, 1, 7, 1],
-      allowMultiline: true,
-    },
-  ],
-}
-
-const config: EditorConfig = {
-  defaultLanguage: 'javascript',
-  languages: {
-    javascript,
-    python,
-  },
-}
-
-export default function Scripting2({ lang }) {
+export default function Address1({ lang }) {
+  const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
 
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
+  const dataObject = prevData?.data ? prevData?.data : ''
+  const [isLoading, setIsLoading] = useState(true)
 
-  const handleSelectLanguage = (language: string) => {
-    setLanguage(language)
+  const getPrevLessonData = async () => {
+    setPrevData(await getData('CH4PKY4'))
   }
 
+  useEffect(() => {
+    getPrevLessonData().finally(() => setIsLoading(false))
+  }, [])
+
   return (
-    <ScriptingChallenge
-      lang={lang}
-      config={config}
-      lessonKey={getLessonKey('chapter-4', 'address-1')}
-      successMessage={t('chapter_four.address_one.success')}
-      onSelectLanguage={handleSelectLanguage}
-      saveData={true}
-    >
-      <LessonInfo>
-        <Text className="font-nunito text-xl text-white">
+    !isLoading && (
+      <ChapterIntro
+        className="my-8"
+        heading={t('chapter_four.address_one.heading')}
+      >
+        <p className="mt-2 text-lg md:text-xl">
           {t('chapter_four.address_one.paragraph_one')}
-        </Text>
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_four.address_one.paragraph_two`)}
-        </Text>
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_four.address_one.paragraph_three`)}
-        </Text>
-      </LessonInfo>
-    </ScriptingChallenge>
+        </p>
+        <CodeExample className="mt-4" code={dataObject} language="shell" />
+        <p className="mt-8 text-lg md:text-xl">
+          {t('chapter_four.address_one.paragraph_two')}
+        </p>
+        <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+          {t('shared.next')}
+        </Button>
+      </ChapterIntro>
+    )
   )
 }
