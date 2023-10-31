@@ -87,6 +87,46 @@ export default function About({ params }) {
           </p>
 
           <Divider />
+          <h3 className="text-4xl sm:text-5xl">{t('about.privacy.title')}</h3>
+          <p className="mt-4 font-nunito text-xl">
+            {t('about.privacy.paragraph_one')}
+          </p>
+          <h3 className="mt-4 text-2xl sm:text-3xl">
+            {t('about.privacy.sub_heading_one')}
+          </h3>
+          <p className="mt-2 font-nunito text-xl">
+            {t('about.privacy.paragraph_two')}
+          </p>
+          <h3 className="mt-4 text-2xl sm:text-3xl">
+            {t('about.privacy.sub_heading_two')}
+          </h3>
+          <div className="mt-2 font-nunito text-xl">
+            {t('about.privacy.paragraph_three')}
+            <ol>
+              <li>
+                <span className="font-bold">
+                  {t('about.privacy.list_item_one_title')}
+                </span>{' '}
+                {t('about.privacy.list_item_one_text')}
+              </li>
+              <li>
+                <span className="font-bold">
+                  {t('about.privacy.list_item_two_title')}
+                </span>{' '}
+                {t('about.privacy.list_item_two_text')}
+              </li>
+            </ol>
+          </div>
+          <h3 className="mt-4 text-2xl sm:text-3xl">
+            {t('about.privacy.sub_heading_three')}
+          </h3>
+          <p className="mt-2 font-nunito text-xl">
+            {t('about.privacy.paragraph_four')}
+          </p>
+          <p className="mt-2 font-nunito text-xl">
+            {t('about.privacy.paragraph_five')}
+          </p>
+          <Divider />
 
           <h3 className="text-4xl sm:text-5xl">
             {t('about.contributors.title')}
