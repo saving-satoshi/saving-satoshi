@@ -1,125 +1,172 @@
 'use client'
 
 import { ScriptingChallenge, LessonInfo, CodeExample } from 'ui'
-import { EditorConfig } from 'types'
+import { EditorConfig, Data } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
+import { getData } from 'api/data'
 
 export const metadata = {
   title: 'chapter_four.public_key_four.title',
   key: 'CH4PKY4',
 }
-const javascript = {
-  program: `console.log("KILL")`,
-  defaultFunction: {
-    name: 'findHash',
-    args: ['nonce'],
-  },
-  defaultCode: `const crypto = require('crypto')
 
-// Create a program that finds a sha256 hash starting with 5 zeroes.
-// To submit your answer, log it to the terminal using console.log().
+function compressPublicKey(publickey) {
+  var header_byte = {
+    y_is_even: new Buffer([2]),
+    y_is_odd: new Buffer([3]),
+  }
 
-// Type your code here
-`,
-  validate: async (answer) => {
-    if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
-    }
+  let x_hex = BigInt(publickey.x)
+  let x_hex_string = x_hex.toString(16)
+  let x_bytes = new Buffer(x_hex_string, 'hex')
 
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
-    }
+  let y_hex = BigInt(publickey.y)
+  let y_hex_string = y_hex.toString(16)
 
-    return [true, undefined]
-  },
-  constraints: [
-    {
-      range: [5, 1, 7, 1],
-      allowMultiline: true,
-    },
-  ],
-}
+  let y_is_even = Number(y_hex_string[y_hex_string.length - 1]) % 2 === 0
 
-const python = {
-  program: `print("KILL")`,
-  defaultFunction: {
-    name: 'find_hash',
-    args: ['nonce'],
-  },
-  defaultCode: `# Import ECDSA library.
-from lib import secp256k1
-  
-def privatekey_to_publickey(private_key):
-    # Multiply the private key by the ECDSA generator point G to
-    # produce a new curve point which is the public key.
-    # Return that curve point (also known as a group element)
-    # which will be an instance of secp256k1.GE
-    # See the library source code for the exact definition
-    G = secp256k1.G
-`,
-  //   defaultCode: `from hashlib import sha256
+  let header = y_is_even ? header_byte['y_is_even'] : header_byte['y_is_odd']
+  let compressed_key = Buffer.concat([header, x_bytes])
 
-  // # Create a program that finds a sha256 hash starting with 5 zeroes.
-  // # To submit your answer, print it to the terminal using print().
-
-  // # Type your code here
-  // `,
-  validate: async (answer) => {
-    if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
-    }
-
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
-    }
-
-    return [true, undefined]
-  },
-  constraints: [
-    {
-      range: [5, 1, 7, 1],
-      allowMultiline: true,
-    },
-  ],
-}
-
-const config: EditorConfig = {
-  defaultLanguage: 'javascript',
-  languages: {
-    javascript,
-    python,
-  },
+  return compressed_key.toString('hex')
 }
 
 export default function PublicKey4({ lang }) {
   const t = useTranslations(lang)
 
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
+  const dataObject = prevData?.data ? prevData?.data : ''
+  const [isLoading, setIsLoading] = useState(true)
+
+  const getPrevLessonData = async () => {
+    setPrevData(await getData('CH4PKY3'))
+  }
+
+  useEffect(() => {
+    getPrevLessonData().finally(() => setIsLoading(false))
+  }, [])
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
 
+  const javascript = {
+    program: `console.log("KILL")`,
+    defaultFunction: {
+      name: 'compressPublicKey',
+      args: ['publicKey'],
+    },
+    defaultCode: `${prevData?.data && 'const uncompressedKey = ' + dataObject}
+
+// Determine if the y coordinate is even or odd and prepend the
+// corresponding header byte to the x coordinate.
+// Return 33-byte Buffer
+// To submit your answer, log it to the terminal using console.log().
+function compressPublicKey(publicKey) {
+  const header_byte = {
+    'y_is_even': Buffer.from([2]),
+    'y_is_odd':  Buffer.from([3])
+  };
+
+}
+`,
+    validate: async (answer) => {
+      const pattern = /^[0-9a-f]{66}$/i
+      if (answer.length !== 66) {
+        return [false, "Length isn't valid"]
+      }
+      if (!answer.match(pattern)) {
+        return [false, 'Answer is not a hexadecimal value']
+      }
+      if (answer !== compressPublicKey(JSON.parse(dataObject))) {
+        return [false, 'Ensure you are using your own key object']
+      }
+      return [true, undefined]
+    },
+    constraints: [
+      {
+        range: [7, 1, 14, 1],
+        allowMultiline: true,
+      },
+    ],
+  }
+
+  const python = {
+    program: `print("KILL")`,
+    defaultFunction: {
+      name: 'compress_publickey',
+      args: ['publicKey'],
+    },
+    defaultCode: `${prevData?.data && 'uncompressed_key = ' + dataObject}
+
+# Determine if the y coordinate is even or odd and prepend
+# the corresponding header byte to the x coordinate.
+# Return 33-byte array
+# To submit your answer, print it to the terminal using print().
+def compress_publickey(public_key):
+    header_byte = {
+          "y_is_even": bytes([2]),
+          "y_is_odd":  bytes([3])
+    }
+`,
+    validate: async (answer) => {
+      const pattern = /^[0-9a-f]{66}$/i
+      if (answer.length !== 66) {
+        return [false, "Length isn't valid"]
+      }
+      if (!answer.match(pattern)) {
+        return [false, 'Answer is not a hexadecimal value']
+      }
+      if (answer !== compressPublicKey(JSON.parse(dataObject))) {
+        return [false, 'Ensure you are using your own key object']
+      }
+      return [true, undefined]
+    },
+    constraints: [
+      {
+        range: [7, 1, 12, 1],
+        allowMultiline: true,
+      },
+    ],
+  }
+
+  const config: EditorConfig = {
+    defaultLanguage: 'javascript',
+    languages: {
+      javascript,
+      python,
+    },
+  }
+
+  const [language, setLanguage] = useState(config.defaultLanguage)
+
   return (
-    <ScriptingChallenge
-      lang={lang}
-      config={config}
-      lessonKey={getLessonKey('chapter-2', 'scripting-2')}
-      successMessage={t('chapter_four.public_key_four.success')}
-      onSelectLanguage={handleSelectLanguage}
-    >
-      <LessonInfo>
-        <Text className="font-nunito text-xl text-white">
-          {t('chapter_four.public_key_four.paragraph_one')}
-        </Text>
-        <CodeExample className="mt-4" code={`y^2 = x^3 + 7`} language="shell" />
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_four.public_key_four.paragraph_two`)}
-        </Text>
-      </LessonInfo>
-    </ScriptingChallenge>
+    !isLoading && (
+      <ScriptingChallenge
+        lang={lang}
+        config={config}
+        lessonKey={getLessonKey('chapter-4', 'public-key-4')}
+        saveData
+        successMessage={t('chapter_four.public_key_four.success')}
+        onSelectLanguage={handleSelectLanguage}
+      >
+        <LessonInfo>
+          <Text className="font-nunito text-xl text-white">
+            {t('chapter_four.public_key_four.paragraph_one')}
+          </Text>
+          <CodeExample
+            className="mt-4"
+            code={`y^2 = x^3 + 7`}
+            language="shell"
+          />
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_four.public_key_four.paragraph_two`)}
+          </Text>
+        </LessonInfo>
+      </ScriptingChallenge>
+    )
   )
 }

@@ -47,7 +47,7 @@ export default function ScriptingChallenge({
   const { saveProgress, saveProgressLocal } = useProgressContext()
   const { account } = useAuthContext()
   const [code, setCode] = useState(
-    config.languages[config.defaultLanguage].defaultCode
+    config.languages[config.defaultLanguage].defaultCode?.toString()
   )
   const [constraints, setConstraints] = useState(
     config.languages[config.defaultLanguage].constraints
@@ -68,8 +68,8 @@ export default function ScriptingChallenge({
     if (!challengeSuccess) {
       setLanguage(value)
       onSelectLanguage(value)
+      setCode(config.languages[value].defaultCode?.toString())
       setHiddenRange(config.languages[value].hiddenRange)
-      setCode(config.languages[value].defaultCode)
       setConstraints(config.languages[value].constraints)
     }
   }
@@ -93,7 +93,7 @@ export default function ScriptingChallenge({
       setChallengeSuccess(true)
       if (account) {
         saveProgress(lessonKey)
-        saveData && setData(account.id, lessonKey, JSON.stringify(answer))
+        saveData && setData(account.id, lessonKey, answer)
       } else {
         saveProgressLocal(lessonKey)
       }

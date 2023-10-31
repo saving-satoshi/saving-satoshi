@@ -4,9 +4,8 @@ import { ScriptingChallenge, LessonInfo, CodeExample } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { editor } from 'monaco-editor'
 import { secp256k1 } from 'ui/lesson/ScriptingChallenge/library/'
 
 export const metadata = {
@@ -19,7 +18,7 @@ const javascript = {
     name: 'rawPublicKey',
     args: ['private_key'],
   },
-  defaultCode: ` ${secp256k1.secp256k1js}
+  defaultCode: `${secp256k1.secp256k1js}
   // Import ECDSA library.
   // Multiply the private key by the ECDSA generator point G to
   // produce a new curve point which is the public key.
@@ -27,9 +26,8 @@ const javascript = {
   // which will be an instance of secp256k1.GE
   // See the library source code for the exact definition
   // https://github.com/saving-satoshi/challenges/blob/master/chapter4/javascript/lib/secp256k1.js
-  const G = secp256k1.G
   // To submit your answer, log it to the terminal using console.log().
-
+  const G = secp256k1.G
 `,
   validate: async (answer: string) => {
     const parsedAnswer = JSON.parse(answer)
@@ -50,7 +48,7 @@ const javascript = {
   hiddenRange: [1, 0, 126, 0],
   constraints: [
     {
-      range: [133, 1, 137, 1],
+      range: [135, 1, 136, 1],
       allowMultiline: true,
     },
   ],
@@ -70,11 +68,9 @@ const python = {
 # which will be an instance of secp256k1.GE
 # See the library source code for the exact definition
 # https://github.com/saving-satoshi/challenges/blob/master/chapter4/python/lib/secp256k1.py
-G = SECP256K1.FAST_G
 # To submit your answer, print to the terminal using print()
-
-
- `,
+G = SECP256K1.FAST_G
+`,
   validate: async (answer) => {
     const parsedAnswer = JSON.parse(answer)
     const correctPattern = /^0x[0-9a-fA-F]{64}$/
@@ -94,7 +90,7 @@ G = SECP256K1.FAST_G
   hiddenRange: [1, 0, 126, 0],
   constraints: [
     {
-      range: [133, 1, 136, 1],
+      range: [135, 1, 136, 1],
       allowMultiline: true,
     },
   ],
@@ -119,6 +115,7 @@ export default function PublicKey3({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
+      saveData
       lessonKey={getLessonKey('chapter-4', 'public-key-3')}
       successMessage={t('chapter_four.public_key_three.success')}
       onSelectLanguage={handleSelectLanguage}

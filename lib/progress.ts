@@ -42,9 +42,9 @@ export const keys = [
   'CH4PKY2',
   'CH4PKY3',
   'CH4PKY4',
-  'CH4PKY5',
   'CH4ADR1',
   'CH4ADR2',
+  'CH4ADR3',
   'CH4OUT1',
 ]
 
@@ -90,9 +90,9 @@ export const keysMeta = {
   CH4PKY2: { path: '/chapter-4/public-key-2' },
   CH4PKY3: { path: '/chapter-4/public-key-3' },
   CH4PKY4: { path: '/chapter-4/public-key-4' },
-  CH4PKY5: { path: '/chapter-4/public-key-5' },
   CH4ADR1: { path: '/chapter-4/address-1' },
   CH4ADR2: { path: '/chapter-4/address-2' },
+  CH4ADR3: { path: '/chapter-4/address-3' },
   CH4OUT1: { path: '/chapter-4/outro-1' },
 }
 
@@ -202,7 +202,7 @@ export const getNextLessonKey = (
   if (keys[id + 1]) {
     return keys[id + 1]
   } else {
-    console.error('There is no next lesson')
+    console.debug('There is no next lesson')
     return userProgressKey
   }
 }

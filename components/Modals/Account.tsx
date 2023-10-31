@@ -8,7 +8,7 @@ import { useTranslations, useLang } from 'hooks'
 import { useAuthContext } from 'providers/AuthProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
 
-export default function LoginModal({ onClose, state }) {
+export default function AccountModal({ onClose, state }) {
   const lang = useLang()
   const { account, isLoading: isAccountLoading, logout } = useAuthContext()
   const { isLoading: isProgressLoading } = useProgressContext()
