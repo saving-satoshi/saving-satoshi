@@ -71,7 +71,7 @@ const translations = {
         'At Saving Satoshi, we are deeply committed to ensuring the privacy and security of our users. We believe in transparency and want you to understand how and why we track app usage. To achieve this, we use a powerful tool called <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.',
       sub_heading_one: 'What is Umami?',
       paragraph_two:
-        'Umami is an open-source analytics platform that helps us gather essential insights about how you use our app. It allows us to make data-driven decisions and continuously enhance our product to better meet your needs.  You can view the Umami dashboard <Link href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">here</Link>.',
+        'Umami is an open-source analytics platform that helps us gather essential insights about how you use our app. It allows us to make data-driven decisions and continuously enhance our product to better meet your needs.  You can view the Umami dashboard <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">here</Link>.',
       sub_heading_two: 'What Data Do We Collect?',
       paragraph_three:
         'Rest assured, we only collect non-personal and anonymized data, such as:',
