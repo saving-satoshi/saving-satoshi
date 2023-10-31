@@ -1,116 +1,51 @@
 'use client'
 
-import { ScriptingChallenge, LessonInfo } from 'ui'
-import { EditorConfig } from 'types'
-import { useTranslations } from 'hooks'
-import { Text } from 'ui'
-import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
+import { useSaveAndProceed, useTranslations } from 'hooks'
+import { ChapterIntro, CodeExample } from 'ui'
+
+import { Button } from 'shared'
+import { useEffect, useState } from 'react'
+import { getData } from 'api/data'
+import { Data } from 'types'
 
 export const metadata = {
   title: 'chapter_four.address_one.title',
-  key: 'CH4ADDR1',
-}
-const javascript = {
-  program: `console.log("KILL")`,
-  defaultFunction: {
-    name: 'findHash',
-    args: ['nonce'],
-  },
-  defaultCode: `const crypto = require('crypto')
-
-// Create a program that finds a sha256 hash starting with 5 zeroes.
-// To submit your answer, log it to the terminal using console.log().
-
-// Type your code here
-`,
-  validate: async (answer) => {
-    if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
-    }
-
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
-    }
-
-    return [true, undefined]
-  },
-  constraints: [
-    {
-      range: [5, 1, 7, 1],
-      allowMultiline: true,
-    },
-  ],
+  key: 'CH4ADR1',
 }
 
-const python = {
-  program: `print("KILL")`,
-  defaultFunction: {
-    name: 'find_hash',
-    args: ['nonce'],
-  },
-  defaultCode: `from hashlib import sha256
-
-# Create a program that finds a sha256 hash starting with 5 zeroes.
-# To submit your answer, print it to the terminal using print().
-
-# Type your code here
-`,
-  validate: async (answer) => {
-    if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
-    }
-
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
-    }
-
-    return [true, undefined]
-  },
-  constraints: [
-    {
-      range: [5, 1, 7, 1],
-      allowMultiline: true,
-    },
-  ],
-}
-
-const config: EditorConfig = {
-  defaultLanguage: 'javascript',
-  languages: {
-    javascript,
-    python,
-  },
-}
-
-export default function Scripting2({ lang }) {
+export default function Address1({ lang }) {
+  const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
 
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
+  const dataObject = prevData?.data ? prevData?.data : ''
+  const [isLoading, setIsLoading] = useState(true)
 
-  const handleSelectLanguage = (language: string) => {
-    setLanguage(language)
+  const getPrevLessonData = async () => {
+    setPrevData(await getData('CH4PKY4'))
   }
 
+  useEffect(() => {
+    getPrevLessonData().finally(() => setIsLoading(false))
+  }, [])
+
   return (
-    <ScriptingChallenge
-      lang={lang}
-      config={config}
-      lessonKey={getLessonKey('chapter-2', 'scripting-2')}
-      successMessage={t('chapter_two.scripting_two.success')}
-      onSelectLanguage={handleSelectLanguage}
-    >
-      <LessonInfo>
-        <Text className="font-nunito text-xl text-white">
+    !isLoading && (
+      <ChapterIntro
+        className="my-8"
+        heading={t('chapter_four.address_one.heading')}
+      >
+        <p className="mt-2 text-lg md:text-xl">
           {t('chapter_four.address_one.paragraph_one')}
-        </Text>
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_four.address_one.paragraph_two`)}
-        </Text>
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_four.address_one.paragraph_three`)}
-        </Text>
-      </LessonInfo>
-    </ScriptingChallenge>
+        </p>
+        <CodeExample className="mt-4" code={dataObject} language="shell" />
+        <p className="mt-8 text-lg md:text-xl">
+          {t('chapter_four.address_one.paragraph_two')}
+        </p>
+        <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+          {t('shared.next')}
+        </Button>
+      </ChapterIntro>
+    )
   )
 }

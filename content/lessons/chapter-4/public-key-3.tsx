@@ -4,9 +4,8 @@ import { ScriptingChallenge, LessonInfo, CodeExample } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { editor } from 'monaco-editor'
 import { secp256k1 } from 'ui/lesson/ScriptingChallenge/library/'
 
 export const metadata = {
@@ -19,7 +18,7 @@ const javascript = {
     name: 'rawPublicKey',
     args: ['private_key'],
   },
-  defaultCode: ` ${secp256k1.secp256k1js}
+  defaultCode: `${secp256k1.secp256k1js}
   // Import ECDSA library.
   // Multiply the private key by the ECDSA generator point G to
   // produce a new curve point which is the public key.
@@ -116,6 +115,7 @@ export default function PublicKey3({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
+      saveData
       lessonKey={getLessonKey('chapter-4', 'public-key-3')}
       successMessage={t('chapter_four.public_key_three.success')}
       onSelectLanguage={handleSelectLanguage}

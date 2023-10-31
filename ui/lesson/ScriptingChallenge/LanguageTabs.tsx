@@ -7,10 +7,12 @@ export default function LanguageTabs({
   languages,
   value,
   onChange,
+  noHide,
 }: {
   languages: EditorLanguages
   value: string
   onChange: (val: string) => void
+  noHide?: boolean
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
@@ -18,10 +20,10 @@ export default function LanguageTabs({
   return (
     <div
       className={clsx(
-        'flex h-10 items-center justify-start border-b border-t border-white border-opacity-30 md:border-t-0',
+        'h-10 items-center justify-start border-b border-t border-white border-opacity-30 md:border-t-0',
         {
-          'hidden md:flex': !isActive,
-          flex: isActive,
+          'hidden md:flex': !noHide && !isActive,
+          flex: noHide || isActive,
         }
       )}
     >
