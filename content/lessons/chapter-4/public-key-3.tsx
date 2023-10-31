@@ -26,9 +26,8 @@ const javascript = {
   // which will be an instance of secp256k1.GE
   // See the library source code for the exact definition
   // https://github.com/saving-satoshi/challenges/blob/master/chapter4/javascript/lib/secp256k1.js
-  const G = secp256k1.G
   // To submit your answer, log it to the terminal using console.log().
-
+  const G = secp256k1.G
 `,
   validate: async (answer: string) => {
     const parsedAnswer = JSON.parse(answer)
@@ -49,7 +48,7 @@ const javascript = {
   hiddenRange: [1, 0, 126, 0],
   constraints: [
     {
-      range: [133, 1, 137, 1],
+      range: [135, 1, 136, 1],
       allowMultiline: true,
     },
   ],
@@ -69,11 +68,9 @@ const python = {
 # which will be an instance of secp256k1.GE
 # See the library source code for the exact definition
 # https://github.com/saving-satoshi/challenges/blob/master/chapter4/python/lib/secp256k1.py
-G = SECP256K1.FAST_G
 # To submit your answer, print to the terminal using print()
-
-
- `,
+G = SECP256K1.FAST_G
+`,
   validate: async (answer) => {
     const parsedAnswer = JSON.parse(answer)
     const correctPattern = /^0x[0-9a-fA-F]{64}$/
@@ -93,7 +90,7 @@ G = SECP256K1.FAST_G
   hiddenRange: [1, 0, 126, 0],
   constraints: [
     {
-      range: [133, 1, 136, 1],
+      range: [135, 1, 136, 1],
       allowMultiline: true,
     },
   ],
