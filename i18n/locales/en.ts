@@ -65,6 +65,28 @@ const translations = {
     },
 
     satoshi_needs_you: 'Now be quick, Satoshi needs you.',
+    privacy: {
+      title: 'Our commitment to privacy',
+      paragraph_one:
+        'At Saving Satoshi, we are deeply committed to ensuring the privacy and security of our users. We believe in transparency and want you to understand how and why we track app usage. To achieve this, we use a powerful tool called <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.',
+      sub_heading_one: 'What is Umami?',
+      paragraph_two:
+        'Umami is an open-source analytics platform that helps us gather essential insights about how you use our app. It allows us to make data-driven decisions and continuously enhance our product to better meet your needs.  You can view the Umami dashboard <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">here</Link>.',
+      sub_heading_two: 'What Data Do We Collect?',
+      paragraph_three:
+        'Rest assured, we only collect non-personal and anonymized data, such as:',
+      list_item_one_title: 'Product Improvement:',
+      list_item_one_text:
+        'We use the data to identify areas where our app can be improved. By understanding how you use our app, we can make it more efficient, user-friendly, and secure.',
+      list_item_two_title: 'Compatibility:',
+      list_item_two_text:
+        'Understanding the devices and platforms you use allows us to optimize our app for various configurations, ensuring it works seamlessly for you.',
+      sub_heading_three: 'Your Privacy Matters',
+      paragraph_four:
+        'We want to emphasize that your privacy is of utmost importance to us. We do not collect any personally identifiable information, and the data we gather is used solely for the purpose of improving our app. Your data is never shared or sold to third parties.',
+      paragraph_five:
+        "If you have any concerns or questions about our data collection practices or privacy policies, please don't hesitate to contact us. We are committed to providing you with a transparent and secure experience while using our app.",
+    },
   },
 
   ///CHAPTERS TITLE PAGE
