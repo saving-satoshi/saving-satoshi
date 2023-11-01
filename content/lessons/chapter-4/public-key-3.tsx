@@ -19,15 +19,14 @@ const javascript = {
     args: ['private_key'],
   },
   defaultCode: `${secp256k1.secp256k1js}
-  // Import ECDSA library.
-  // Multiply the private key by the ECDSA generator point G to
-  // produce a new curve point which is the public key.
-  // Return that curve point (also known as a group element)
-  // which will be an instance of secp256k1.GE
-  // See the library source code for the exact definition
-  // https://github.com/saving-satoshi/challenges/blob/master/chapter4/javascript/lib/secp256k1.js
-  // To submit your answer, log it to the terminal using console.log().
-  const G = secp256k1.G
+// Multiply the private key by the ECDSA generator point G to
+// produce a new curve point which is the public key.
+// Return that curve point (also known as a group element)
+// which will be an instance of secp256k1.GE
+// See the library source code for the exact definition
+// https://github.com/saving-satoshi/challenges/blob/master/chapter4/javascript/lib/secp256k1.js
+// To submit your answer, log it to the terminal using console.log().
+const G = secp256k1.G
 `,
   validate: async (answer: string) => {
     const parsedAnswer = JSON.parse(answer)
@@ -48,7 +47,7 @@ const javascript = {
   hiddenRange: [1, 0, 126, 0],
   constraints: [
     {
-      range: [135, 1, 136, 1],
+      range: [134, 1, 135, 1],
       allowMultiline: true,
     },
   ],
@@ -61,7 +60,6 @@ const python = {
     args: ['private_key'],
   },
   defaultCode: `${secp256k1.secp256k1py}
-# Import ECDSA library.
 # Multiply the private key by the ECDSA generator point G to
 # produce a new curve point which is the public key.
 # Return that curve point (also known as a group element)
@@ -90,7 +88,7 @@ G = SECP256K1.FAST_G
   hiddenRange: [1, 0, 126, 0],
   constraints: [
     {
-      range: [135, 1, 136, 1],
+      range: [134, 1, 135, 1],
       allowMultiline: true,
     },
   ],
