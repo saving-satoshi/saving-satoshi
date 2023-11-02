@@ -30,5 +30,4 @@ export const metadata = {
   ],
   outros: ['outro-1'],
   challenges: ['public-key-1', 'address-1'],
-  enabled: false,
 }

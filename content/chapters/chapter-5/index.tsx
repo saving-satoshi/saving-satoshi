@@ -37,5 +37,4 @@ export const metadata = {
   ],
   outros: ['outro-1'],
   challenges: ['derive-message-1', 'verify-signature-1', 'verify-message-1'],
-  enabled: false,
 }

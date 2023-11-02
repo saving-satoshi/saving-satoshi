@@ -128,7 +128,7 @@ export default function Chapter({ children, metadata, lang }) {
                     {(chapter.metadata.lessons.length > 0 && display && (
                       <div className="text-lg text-white">{children}</div>
                     )) ||
-                      (chapter.metadata.enabled !== false && !display && (
+                      (!isLoading && !!isEnabled && !display && (
                         <div className="flex font-nunito text-lg text-white">
                           <Icon
                             icon="lock"
@@ -166,7 +166,7 @@ export default function Chapter({ children, metadata, lang }) {
                           ? `Continue`
                           : !!display
                           ? `${t('shared.start_chapter')} ${position}`
-                          : !display && chapter.metadata.enabled === false
+                          : !display && !!isEnabled === false
                           ? `${t('shared.coming_soon')}`
                           : `${t('chapter.chapter_locked_one')} ${
                               position - 1
