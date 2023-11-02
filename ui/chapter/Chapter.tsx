@@ -137,7 +137,17 @@ export default function Chapter({ children, metadata, lang }) {
                           {t('chapter.chapter_locked_one')} {position - 1}{' '}
                           {t('chapter.chapter_locked_two')}
                         </div>
-                      )) || (
+                      )) ||
+                      (isLoading && !display && (
+                        <div className="flex font-nunito text-lg text-white">
+                          <Icon
+                            icon="lock"
+                            className="my-auto mr-2 h-3 w-3 justify-center"
+                          />
+                          {t('shared.loading')}...
+                        </div>
+                      )) ||
+                      (!isEnabled && !isLoading && !display && (
                         <div className="flex font-nunito text-lg text-white">
                           <Icon
                             icon="lock"
@@ -145,7 +155,7 @@ export default function Chapter({ children, metadata, lang }) {
                           />
                           {t('chapter.coming_soon')}
                         </div>
-                      )}
+                      ))}
                     <div className="flex pt-8 md:w-full">
                       <Button
                         href={
@@ -166,7 +176,9 @@ export default function Chapter({ children, metadata, lang }) {
                           ? `Continue`
                           : !!display
                           ? `${t('shared.start_chapter')} ${position}`
-                          : !display && !!isEnabled === false
+                          : isLoading
+                          ? `${t('shared.loading')}`
+                          : !display && !isEnabled
                           ? `${t('shared.coming_soon')}`
                           : `${t('chapter.chapter_locked_one')} ${
                               position - 1
