@@ -14,9 +14,9 @@ Now be quick, Satoshi needs you!
 
 ## Contributing
 
-To contribute to the project, use issues and discussions in this GitHub repo (`saving-satoshi/saving-satoshi`), or join [our Slack channel](https://bitcoindesign.slack.com/archives/C0442BRGJ5U) in the [Bitcoin Design Community](https://bitcoin.design/).
+To contribute to the project, use issues and discussions in this GitHub repo (`saving-satoshi/saving-satoshi`), or join [our Discord channel](https://discord.gg/DC8Dys4G3h) in the [Bitcoin Design Community](https://bitcoin.design/).
 
-Generally, we have four tracks in this project:
+Generally, we have five tracks in this project:
 
 - Story
 - Lessons
@@ -28,7 +28,7 @@ The more these are in tune with each other, the better the final user experience
 
 The design for this project is handled in [this Figma file](https://www.figma.com/file/LqjK3Tpvd9KJ4buFArCJBQ/Saving-Satoshi?node-id=0%3A1&t=HMELTIqCz6Nh68LI-1).
 
-Images are generated via AI tools (mostly [DiffusionBee](https://diffusionbee.com)). The prompts consist of two parts, the scene description and the stylistic direction. The latter was `illustration concept art anime key visual trending, by victo ngai, by makoto shinkai, by takashi takeuchi, by studio ghibli`. You're welcome to contribute more images. We're still fleshing this process out a bit further.
+Images are generated via AI tools (initially [DiffusionBee](https://diffusionbee.com), now [Midjourney](http://midjourney.com)). Images and prompts are organized in [this Figma file](https://www.figma.com/file/0Fg2IiEbLI5o8juawKqkJM/Saving-Satoshi-images?type=design&node-id=407%3A1645&mode=design&t=F4DSAV8n0IOtJYOW-1). See [Guidelines for Image Generation](https://leaf-singer-0fc.notion.site/Guidelines-for-Image-Generation-3e965c7156ec4699b8c8f77ca61df102) for more info.
 
 ## Translation support
 
@@ -44,7 +44,7 @@ To run this project locally:
 4. Run `yarn install` to download the required code libraries
 5. Run `yarn build` to build
 6. Run `yarn start` or `yarn dev` to spin up the development environment
-7. Open `http://localhost:3000` in your browser to access the site.
+7. Open `http://localhost:3000` in your browser to access the site
 
 ## Roadmap
 

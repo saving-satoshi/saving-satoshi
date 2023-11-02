@@ -21,6 +21,7 @@ export default function Editor({
   onValidate,
   code,
   constraints,
+  hiddenRange,
 }: {
   language: string
   value?: string
@@ -28,15 +29,25 @@ export default function Editor({
   onValidate?: (value: monaco.editor.IMarker[]) => void
   code?: string
   constraints: any
+  hiddenRange?: number[]
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
   const [loading, setLoading] = useState<boolean>(true)
+  const [options, setOptions] = useState(monacoOptions)
   const monacoRef = useRef<any>()
 
+  const createMonacoOptions = (range) => {
+    return {
+      ...monacoOptions,
+      lineNumbers: (lineNumber: number) => (lineNumber - range).toString(),
+    }
+  }
+
   const handleBeforeMount = (monaco) => {
+    hiddenRange && setOptions(createMonacoOptions(hiddenRange[2]))
     monaco.editor.defineTheme('satoshi', {
-      base: monacoOptions.theme,
+      base: 'vs-dark',
       inherit: true,
       rules: [],
       colors: {
@@ -47,11 +58,18 @@ export default function Editor({
   }
 
   const handleMount = (editor, monaco) => {
+    hiddenRange &&
+      editor.setHiddenAreas([
+        new monaco.Range(
+          hiddenRange[0],
+          hiddenRange[1],
+          hiddenRange[2],
+          hiddenRange[3]
+        ),
+      ])
     monaco.editor.setTheme('satoshi')
     setLoading(false)
-
     monacoRef.current = { monaco, editor }
-
     const model = editor.getModel()
     const constrainedInstance = constrainedEditor(monaco)
     constrainedInstance.initializeIn(editor)
@@ -75,11 +93,21 @@ export default function Editor({
       terminalTabsHeight
 
   useEffect(() => {
+    hiddenRange && setOptions(createMonacoOptions(hiddenRange[2]))
     if (monacoRef.current) {
       const { editor, monaco } = monacoRef.current
       const model = monaco.editor.createModel(value, language)
 
       editor.setModel(model)
+      hiddenRange &&
+        editor.setHiddenAreas([
+          new monaco.Range(
+            hiddenRange[0],
+            hiddenRange[1],
+            hiddenRange[2],
+            hiddenRange[3]
+          ),
+        ])
       const constrainedInstance = constrainedEditor(monaco)
       constrainedInstance.initializeIn(editor)
       constrainedInstance.addRestrictionsTo(model, constraints)
@@ -104,7 +132,7 @@ export default function Editor({
         onMount={handleMount}
         onChange={onChange}
         onValidate={onValidate}
-        options={monacoOptions}
+        options={options}
       />
     </div>
   )

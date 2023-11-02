@@ -1,7 +1,7 @@
 import Avatar from 'components/Avatar'
 import { useState, useEffect } from 'react'
 import Icon from 'shared/Icon'
-import { Button, Loader, RadioButton, RadioGroup } from 'shared'
+import { Button, Loader } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
 import { useTranslations, useLang, useSaveAndReturn } from 'hooks'
 import clsx from 'clsx'
@@ -11,8 +11,9 @@ import { getNextLessonKey } from 'lib/progress'
 import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import Modal from './Modal'
+import { Text, ToggleSwitch } from 'ui'
 
-export default function LoginModal({ onClose, state }) {
+export default function SignupModal({ onClose, state }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { login } = useAuthContext()
@@ -31,8 +32,11 @@ export default function LoginModal({ onClose, state }) {
     navigator.clipboard.writeText(text)
 
     setCopied(true)
-    setCopyAcknowledged(true)
     setTimeout(() => setCopied(false), 2000)
+  }
+
+  const handleAcknowledgeCopy = () => {
+    setCopyAcknowledged(!copyAcknowledged)
   }
 
   async function handleConfirm() {
@@ -125,8 +129,14 @@ export default function LoginModal({ onClose, state }) {
             )}
           </pre>
         </>
+        <div className="flex flex-row items-center gap-2">
+          <ToggleSwitch
+            checked={copyAcknowledged}
+            onChange={handleAcknowledgeCopy}
+          />
+          <Text>{t('modal_signup.acknowledged')}</Text>
+        </div>
         <p className="mt-5 text-base">{t('modal_signup.generate')}</p>
-
         <button
           onClick={handleConfirm}
           disabled={loading || !copyAcknowledged}

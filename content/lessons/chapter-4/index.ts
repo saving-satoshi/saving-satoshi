@@ -4,9 +4,9 @@ import * as PublicKey1 from './public-key-1'
 import * as PublicKey2 from './public-key-2'
 import * as PublicKey3 from './public-key-3'
 import * as PublicKey4 from './public-key-4'
-import * as PublicKey5 from './public-key-5'
 import * as Address1 from './address-1'
 import * as Address2 from './address-2'
+import * as Address3 from './address-3'
 
 const Chapter4 = {
   'intro-1': Intro1,
@@ -14,9 +14,9 @@ const Chapter4 = {
   'public-key-2': PublicKey2,
   'public-key-3': PublicKey3,
   'public-key-4': PublicKey4,
-  'public-key-5': PublicKey5,
   'address-1': Address1,
   'address-2': Address2,
+  'address-3': Address3,
   'outro-1': Outro1,
 }
 

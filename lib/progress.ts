@@ -42,10 +42,30 @@ export const keys = [
   'CH4PKY2',
   'CH4PKY3',
   'CH4PKY4',
-  'CH4PKY5',
-  'CH4ADDR1',
-  'CH4ADDR2',
+  'CH4ADR1',
+  'CH4ADR2',
+  'CH4ADR3',
   'CH4OUT1',
+
+  'CH5INT1',
+  'CH5INT2',
+  'CH5INT2',
+  'CH5DRM1',
+  'CH5DRM2',
+  'CH5DRM3',
+  'CH5DRM4',
+  'CH5DRM5',
+  'CH5DRM6',
+  'CH5DRM7',
+  'CH5VFS1',
+  'CH5VFS2',
+  'CH5VFS3',
+  'CH5VFS4',
+  'CH5VFS5',
+  'CH5VFM1',
+  'CH5VFM2',
+  'CH5VFM3',
+  'CH5VFM4',
 ]
 
 export const keysMeta = {
@@ -90,10 +110,31 @@ export const keysMeta = {
   CH4PKY2: { path: '/chapter-4/public-key-2' },
   CH4PKY3: { path: '/chapter-4/public-key-3' },
   CH4PKY4: { path: '/chapter-4/public-key-4' },
-  CH4PKY5: { path: '/chapter-4/public-key-5' },
-  CH4ADDR1: { path: '/chapter-4/address-1' },
-  CH4ADDR2: { path: '/chapter-4/address-2' },
+  CH4ADR1: { path: '/chapter-4/address-1' },
+  CH4ADR2: { path: '/chapter-4/address-2' },
+  CH4ADR3: { path: '/chapter-4/address-3' },
   CH4OUT1: { path: '/chapter-4/outro-1' },
+
+  CH5INT1: { path: '/chapter-5/intro-1' },
+  CH5INT2: { path: '/chapter-5/intro-2' },
+  CH5INT3: { path: '/chapter-5/intro-3' },
+  CH5DRM1: { path: '/chapter-5/derive-message-1' },
+  CH5DRM2: { path: '/chapter-5/derive-message-2' },
+  CH5DRM3: { path: '/chapter-5/derive-message-3' },
+  CH5DRM4: { path: '/chapter-5/derive-message-4' },
+  CH5DRM5: { path: '/chapter-5/derive-message-5' },
+  CH5DRM6: { path: '/chapter-5/derive-message-6' },
+  CH5DRM7: { path: '/chapter-5/derive-message-7' },
+  CH5VFS1: { path: '/chapter-5/verify-signature-1' },
+  CH5VFS2: { path: '/chapter-5/verify-signature-2' },
+  CH5VFS3: { path: '/chapter-5/verify-signature-3' },
+  CH5VFS4: { path: '/chapter-5/verify-signature-4' },
+  CH5VFS5: { path: '/chapter-5/verify-signature-5' },
+  CH5VFM1: { path: '/chapter-5/verify-message-1' },
+  CH5VFM2: { path: '/chapter-5/verify-message-2' },
+  CH5VFM3: { path: '/chapter-5/verify-message-3' },
+  CH5VFM4: { path: '/chapter-5/verify-message-4' },
+  CH5VFM5: { path: '/chapter-5/verify-message-5' },
 }
 
 export const isLessonUnlocked = (
@@ -202,7 +243,7 @@ export const getNextLessonKey = (
   if (keys[id + 1]) {
     return keys[id + 1]
   } else {
-    console.error('There is no next lesson')
+    console.debug('There is no next lesson')
     return userProgressKey
   }
 }

@@ -6,18 +6,7 @@ export default function Chapter5({ lang }) {
 
   return (
     <Chapter metadata={metadata} lang={lang}>
-      <Text>
-        Wow, you proved Vanderpoole wrong. Everyone’s talking about it and
-        you’re famous. Meanwhile, Vanderpoole has disappeared and he’s silent on
-        social media. Amidst the fracas, a reporter reaches out to you. They’ve
-        received a tip about Vanderpoole and what he’s planning.
-      </Text>
-      <Text>
-        The only problem is they are running low on funds and need to pay for
-        travel. Luckily, they have an emergency fund in a geographically
-        distributed multisig, but they’ve never used it before. Can you help
-        them recover their funds?
-      </Text>
+      <Text>{t('chapter_five.paragraph_one')}</Text>
     </Chapter>
   )
 }
@@ -27,9 +16,26 @@ export const metadata = {
   slug: 'chapter-5',
   title: 'chapter_five.title',
   image: '/assets/images/chapter-5-cover.jpg',
-  intros: [],
-  lessons: [],
-  outros: [],
-  challenges: [],
+  intros: ['intro-1', 'intro-2', 'intro-3'],
+  lessons: [
+    'derive-message-1',
+    'derive-message-2',
+    'derive-message-3',
+    'derive-message-4',
+    'derive-message-5',
+    'derive-message-6',
+    'derive-message-7',
+    'verify-signature-1',
+    'verify-signature-2',
+    'verify-signature-3',
+    'verify-signature-4',
+    'verify-signature-5',
+    'verify-message-1',
+    'verify-message-2',
+    'verify-message-3',
+    'verify-message-4',
+  ],
+  outros: ['outro-1'],
+  challenges: ['derive-message-1', 'verify-signature-1', 'verify-message-1'],
   enabled: false,
 }

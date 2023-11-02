@@ -25,6 +25,13 @@ function Terminal({ className }: { className?: string }, ref) {
                     font-size: 12px;
                   }
 
+                  div.output > div > span {
+                      font-family: monospace;
+                      color: white !important;
+                      font-size: 12px;
+                      opacity: 0.75;
+                  }
+
                   .output .error {
                     color: #C40008;
                   }
