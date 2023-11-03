@@ -28,6 +28,7 @@ export default function InputChallenge({
   pattern,
   hints,
   precedingText,
+  successMessage,
 }: {
   children: any
   answer: string
@@ -35,6 +36,7 @@ export default function InputChallenge({
   pattern?: RegExp
   hints?: boolean
   precedingText?: string
+  successMessage?: string
 }) {
   const [userInput, setUserInput] = useState('')
   const [success, setSuccess] = useState<boolean | null>(null)
@@ -78,7 +80,12 @@ export default function InputChallenge({
         precedingText={precedingText}
       />
 
-      <StatusBar full success={success} hints={userHint} />
+      <StatusBar
+        full
+        success={success}
+        hints={userHint}
+        successMessage={successMessage}
+      />
     </Lesson>
   )
 }

@@ -827,9 +827,18 @@ const translations = {
     derive_message_one: {
       title: 'Derive Message',
     },
+    derive_message_three: {
+      heading: 'Let’s start with finding Satoshi’s signature',
+      paragraph_one:
+        'Hal Finney <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">claimed</Link> Satoshi sent him the first Bitcoin transaction ever, confirmed in block #170. That transaction can be found on a <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">block explorer here</Link>. In the scriptSig of input #0 there is a chunk of data following pushbytes... Find it and paste it below.',
+      placeholder: 'Paste the data here',
+      success:
+        'Nicely done! This is actually Satoshis signature, authorizing the transfer of his Bitcoin to Hal Finney.',
+    },
     verify_signature_one: {
       title: 'Verify Signature',
     },
+    verify_signature_three: {},
     verify_message_one: {
       title: 'Verify Message',
     },

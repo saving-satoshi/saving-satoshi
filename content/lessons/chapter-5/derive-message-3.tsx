@@ -1,8 +1,7 @@
 'use client'
 
-import { useMediaQuery, useTranslations } from 'hooks'
-import { useEffect, useState } from 'react'
-import { Introduction, Text } from 'ui'
+import { useTranslations } from 'hooks'
+import { InputChallenge, LessonInfo, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_four.intro_one.title',
@@ -12,29 +11,25 @@ export const metadata = {
 
 export default function DeriveMessage3({ lang }) {
   const t = useTranslations(lang)
-  const [objectPosition, setObjectPosition] = useState<string | undefined>()
-
-  const isMediumScreen = useMediaQuery({ width: 1024 })
-
-  useEffect(() => {
-    if (isMediumScreen) {
-      setObjectPosition('object-left')
-    } else {
-      setObjectPosition('object-bottom')
-    }
-  }, [isMediumScreen])
 
   return (
-    <Introduction lang={lang} imagePosition={objectPosition}>
-      <Text className="text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_one')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_two')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_three')}
-      </Text>
-    </Introduction>
+    <InputChallenge
+      answer="304402204e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd410220181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d0901"
+      label={t('chapter_five.derive_message_three.placeholder')}
+      pattern={/[a-z0-9]+/gi}
+      precedingText="OP_PUSHBYTES_71"
+      successMessage={t('chapter_five.derive_message_three.success')}
+      hints
+    >
+      <LessonInfo>
+        <Text className="mt-2 text-center text-xl font-bold md:text-2xl">
+          {t('chapter_five.derive_message_three.heading')}
+        </Text>
+
+        <Text className="mt-2 text-center text-lg md:text-xl">
+          {t('chapter_five.derive_message_three.paragraph_one')}
+        </Text>
+      </LessonInfo>
+    </InputChallenge>
   )
 }
