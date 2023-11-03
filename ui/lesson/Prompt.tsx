@@ -24,7 +24,7 @@ export default function LessonPrompt({
   const inputPattern = pattern ? pattern : /./g
 
   return (
-    <div className="flex w-full grow justify-center bg-[#00000026]">
+    <div className="flex w-full grow justify-center md:bg-[#00000026]">
       <div
         className={clsx(
           'grow justify-center font-space-mono text-white md:w-9/12 lg:w-9/12',
