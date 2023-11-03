@@ -1,40 +1,40 @@
 'use client'
 
-import { useMediaQuery, useTranslations } from 'hooks'
-import { useEffect, useState } from 'react'
-import { Introduction, Text } from 'ui'
+import { useTranslations } from 'hooks'
+import { InputChallenge, LessonInfo, Text } from 'ui'
 
 export const metadata = {
-  title: 'chapter_four.intro_one.title',
-  image: '/assets/images/chapter-4-intro-1.jpg',
+  title: 'chapter_five.derive_message_one.title',
   key: 'CH5DRM4',
 }
 
 export default function DeriveMessage4({ lang }) {
   const t = useTranslations(lang)
-  const [objectPosition, setObjectPosition] = useState<string | undefined>()
-
-  const isMediumScreen = useMediaQuery({ width: 1024 })
-
-  useEffect(() => {
-    if (isMediumScreen) {
-      setObjectPosition('object-left')
-    } else {
-      setObjectPosition('object-bottom')
-    }
-  }, [isMediumScreen])
 
   return (
-    <Introduction lang={lang} imagePosition={objectPosition}>
-      <Text className="text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_one')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_two')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_three')}
-      </Text>
-    </Introduction>
+    <InputChallenge
+      answer="0411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3"
+      label={t('chapter_five.derive_message_three.placeholder')}
+      pattern={/[a-z0-9]+/gi}
+      precedingText="OP_PUSHBYTES_65"
+      successMessage={t('chapter_five.derive_message_four.success')}
+      hints
+    >
+      <LessonInfo>
+        <Text className="mt-2 text-center text-xl font-bold md:text-2xl">
+          {t('chapter_five.derive_message_four.heading')}
+        </Text>
+
+        <Text className="mt-2 text-center text-lg md:text-xl">
+          {t('chapter_five.derive_message_four.paragraph_one')}
+        </Text>
+        <Text className="mt-2 text-center text-lg md:text-xl">
+          {t('chapter_five.derive_message_four.paragraph_two')}
+        </Text>
+        <Text className="mt-2 text-center text-lg md:text-xl">
+          {t('chapter_five.derive_message_four.paragraph_three')}
+        </Text>
+      </LessonInfo>
+    </InputChallenge>
   )
 }

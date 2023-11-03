@@ -4,8 +4,7 @@ import { useTranslations } from 'hooks'
 import { InputChallenge, LessonInfo, Text } from 'ui'
 
 export const metadata = {
-  title: 'chapter_four.intro_one.title',
-  image: '/assets/images/chapter-4-intro-1.jpg',
+  title: 'chapter_five.derive_message_one.title',
   key: 'CH5DRM3',
 }
 
