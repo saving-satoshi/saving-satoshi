@@ -800,22 +800,22 @@ const translations = {
     paragraph_one:
       'It’s late, and you’re getting sleepy, but as you shut your eyes for a moment, a double dose of bad news arrives. 1) Vanderpoole is back on TV. 2) He is claiming to be the great-grandson of Satoshi Nakamoto. He also looks sleep-deprived.',
     intro_one: {
-      title: 'Don’t Trust, Verify',
+      title: 'Don’t trust, verify',
     },
     intro_two: {
-      title: 'Don’t Trust, Verify',
+      title: 'Don’t trust, verify',
     },
     intro_three: {
-      title: 'Don’t Trust, Verify',
+      title: 'Don’t trust, verify',
     },
     derive_message_one: {
-      title: 'Derive the Message',
+      title: 'Derive the message',
     },
     verify_signature_one: {
-      title: 'Verify the Signature',
+      title: 'Verify the signature',
     },
     validate_signature_one: {
-      title: 'Validate the Signature',
+      title: 'Validate the signature',
     },
     outro_one: {},
     resources: {},
