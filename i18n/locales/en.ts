@@ -800,10 +800,30 @@ const translations = {
     paragraph_one:
       'It’s late, and you’re getting sleepy, but as you shut your eyes for a moment, a double dose of bad news arrives. 1) Vanderpoole is back on TV. 2) He is claiming to be the great-grandson of Satoshi Nakamoto. He also looks sleep-deprived.',
     intro_one: {
-      title: 'Trust but Verify',
+      title: 'Intro',
+      paragraph_one:
+        '—DEBORAH CHUNK: “Mr. Vanderpool. You recently made a staggering claim on anti-social media that you are the great-grandson of Satoshi Nakamoto. Is that correct? Is this true?”',
+      paragraph_two:
+        '—VANDERPOOLE: “It darn tootin’ is, Deborah. I have known this for a long time. You see, my family passed a CD-ROM down for generations. It contains the private keys to my great-grandfather’s enormous trove of bitcoin. So when I speak for miners, know that I also speak for Satoshi Nakamoto.”',
+      paragraph_three:
+        '—DEBORAH CHUNK: “Is there any way we can verify that you actually own the private keys to Satoshi Nakamoto’s bitcoin?”',
+      paragraph_four:
+        '—VANDERPOOLE: “Indeed there is. It is a simple matter of public key cryptography.”',
+      paragraph_five: '—DEBORAH CHUNK: But why wait so long to reveal this?',
     },
-    intro_two: {},
-    intro_three: {},
+    intro_two: {
+      paragraph_one:
+        '—VANDERPOOLE: “I didn’t have the courage. There have always been rumors about my family’s history, ones that I could easily put to rest. But I wasn’t ready for that much publicity. After all, I live a humble, secluded life on a private island/dude ranch/castle.”',
+      paragraph_two:
+        '—VANDERPOOLE: “But now that bitcoin’s future is on the line, I knew I had to tell the world. I can only say I’m sorry for not coming forth sooner. The CD-ROM also contains Satoshi’s Nakamoto’s revised plans for bitcoin. He always regretted the 21 million supply limit. Even though I plan to fulfill my grandfather’s dream of hard forking bitcoin in favor of perpetual bitcoin issuance.”',
+    },
+    intro_three: {
+      paragraph_one:
+        '—Your TXM4H-A Hover Screen chirps to life. You have a new message.',
+      paragraph_two: '—HOLOCAT: Don’t forget to boop my nose.',
+      paragraph_three:
+        'SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message with the private keys.” - Satoshi',
+    },
     derive_message_one: {
       title: 'Derive Message',
     },
