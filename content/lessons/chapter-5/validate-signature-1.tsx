@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { Introduction, Text } from 'ui'
 
 export const metadata = {
-  title: 'chapter_five.verify_message_one.title',
+  title: 'chapter_five.validate_signature_one.title',
   image: '/assets/images/chapter-4-intro-1.jpg',
   key: 'CH5VLS1',
 }
