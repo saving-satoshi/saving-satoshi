@@ -882,7 +882,10 @@ const translations = {
     validate_signature_one: {
       title: 'Validate the signature',
     },
-    outro_one: {},
+    outro_one: {
+      title: 'Outro',
+      heading: 'Success!',
+    },
     resources: {},
   },
 
