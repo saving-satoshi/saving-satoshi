@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, ReactElement } from 'react'
+import { ColorGroup } from 'types'
 import { Lesson, LessonTabs, LessonPrompt, StatusBar } from 'ui'
 
 const tabData = [
@@ -28,6 +29,8 @@ export default function InputChallenge({
   pattern,
   hints,
   precedingText,
+  successElement,
+  successColorGroups,
 }: {
   children: any
   answer: string
@@ -35,6 +38,8 @@ export default function InputChallenge({
   pattern?: RegExp
   hints?: boolean
   precedingText?: string
+  successElement?: ReactElement
+  successColorGroups?: ColorGroup[]
 }) {
   const [userInput, setUserInput] = useState('')
   const [success, setSuccess] = useState<boolean | null>(null)
@@ -76,6 +81,8 @@ export default function InputChallenge({
         pattern={pattern}
         hints={hints}
         precedingText={precedingText}
+        successElement={Boolean(success) ? successElement : null}
+        successColorGroups={successColorGroups}
       />
 
       <StatusBar full success={success} hints={userHint} />

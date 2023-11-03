@@ -1,7 +1,8 @@
 'use client'
 
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { ColorGroup } from 'types'
 
 interface UserInputProps {
   onChange: Function
@@ -9,6 +10,55 @@ interface UserInputProps {
   pattern: RegExp
   hints?: boolean
   precedingText?: string
+  successColorGroups?: ColorGroup[]
+}
+
+function colorizeText(colorizeTextMap: ColorGroup[]) {
+  const textElement = document.getElementById('answerText')
+  if (!textElement) return
+
+  // Get all span children of the textElement
+  const spanElements = textElement.getElementsByTagName('span')
+
+  // Use Array.from to iterate over HTMLCollection
+  let allSpanTexts = Array.from(spanElements, (span) => span.innerText)
+
+  let newHtml = ''
+  let charIndex = 0 // Keep track of the index across all spans
+
+  for (let colorGroup of colorizeTextMap) {
+    // Assume colorGroup.start and colorGroup.end refer to the absolute character positions across all spans
+    let spanText = ''
+    while (charIndex < colorGroup.end && allSpanTexts.length > 0) {
+      let currentSpanText = allSpanTexts[0]
+      if (charIndex + currentSpanText.length >= colorGroup.start) {
+        // Calculate the start and end indices within the current span
+        let localStart = Math.max(colorGroup.start - charIndex, 0)
+        let localEnd = Math.min(
+          colorGroup.end - charIndex,
+          currentSpanText.length
+        )
+        spanText += currentSpanText.substring(localStart, localEnd)
+
+        // If we've used up all of the current span, remove it from the array
+        if (charIndex + currentSpanText.length <= colorGroup.end) {
+          allSpanTexts.shift()
+        }
+      }
+      charIndex += currentSpanText.length
+    }
+
+    // Append the colored text for the current group
+    newHtml += `<span className="font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:text-[24px] md:tracking-[5px] lg:text-[30px]" style="color: ${colorGroup.colorCode}" style="color: ${colorGroup.colorCode}">${spanText}</span>`
+  }
+
+  // Append any remaining text without color
+  allSpanTexts.forEach((remainingSpanText) => {
+    newHtml += `<span className="font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:text-[24px] md:tracking-[5px] lg:text-[30px]">${remainingSpanText}</span>`
+  })
+
+  // Replace the innerHTML of textElement with the new HTML
+  textElement.innerHTML = newHtml
 }
 
 export default function Input({
@@ -17,9 +67,17 @@ export default function Input({
   pattern,
   hints,
   precedingText,
+  successColorGroups,
 }: UserInputProps) {
   const [textAreaValue, setTextAreaValue] = useState('')
   const [correctAnswer, setCorrectAnswer] = useState(false)
+  console.log(correctAnswer)
+
+  useEffect(() => {
+    if (correctAnswer && successColorGroups) {
+      colorizeText(successColorGroups)
+    }
+  }, [correctAnswer, successColorGroups])
 
   const precedingTextOverlay = (precedingText) => {
     const precedingTextColor =
@@ -44,12 +102,13 @@ export default function Input({
       <>
         {Array.from({ length: answer.length }, (_, i) => {
           {
-            if (i >= answer.length - underscores.length)
+            if (i >= answer.length - underscores.length && !correctAnswer) {
               return (
                 <span className="underscore" key={i}>
                   _
                 </span>
               )
+            }
           }
           {
             if (textAreaValue[i] === answer[i]) {
@@ -145,6 +204,7 @@ export default function Input({
               'overlay-incomplete': correctAnswer === false,
             }
           )}
+          id="answerText"
         >
           {displayOverlay()}
         </p>
