@@ -7,10 +7,10 @@ import { Introduction, Text } from 'ui'
 export const metadata = {
   title: 'chapter_four.intro_one.title',
   image: '/assets/images/chapter-4-intro-1.jpg',
-  key: 'CH5VFM3',
+  key: 'CH5VLS4',
 }
 
-export default function VerifyMessage3({ lang }) {
+export default function ValidateSignature4({ lang }) {
   const t = useTranslations(lang)
   const [objectPosition, setObjectPosition] = useState<string | undefined>()
 
