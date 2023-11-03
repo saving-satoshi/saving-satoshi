@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react'
 import { Introduction, Text } from 'ui'
 
 export const metadata = {
-  title: 'chapter_four.intro_one.title',
+  title: 'chapter_five.validate_signature_one.title',
   image: '/assets/images/chapter-4-intro-1.jpg',
-  key: 'CH5VFM2',
+  key: 'CH5VLS2',
 }
 
-export default function VerifyMessage2({ lang }) {
+export default function ValidateSignature2({ lang }) {
   const t = useTranslations(lang)
   const [objectPosition, setObjectPosition] = useState<string | undefined>()
 

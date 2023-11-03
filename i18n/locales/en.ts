@@ -800,7 +800,7 @@ const translations = {
     paragraph_one:
       'It’s late, and you’re getting sleepy, but as you shut your eyes for a moment, a double dose of bad news arrives. 1) Vanderpoole is back on TV. 2) He is claiming to be the great-grandson of Satoshi Nakamoto. He also looks sleep-deprived.',
     intro_one: {
-      title: 'Intro',
+      title: 'Don’t trust, verify',
       paragraph_one:
         '—DEBORAH CHUNK: “Mr. Vanderpool. You recently made a staggering claim on anti-social media that you are the great-grandson of Satoshi Nakamoto. Is that correct? Is this true?”',
       paragraph_two:
@@ -825,13 +825,13 @@ const translations = {
         'SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message with the private keys.” - Satoshi',
     },
     derive_message_one: {
-      title: 'Derive Message',
+      title: 'Derive the message',
     },
     verify_signature_one: {
-      title: 'Verify Signature',
+      title: 'Verify the signature',
     },
-    verify_message_one: {
-      title: 'Verify Message',
+    validate_signature_one: {
+      title: 'Validate the signature',
     },
     outro_one: {},
     resources: {},
