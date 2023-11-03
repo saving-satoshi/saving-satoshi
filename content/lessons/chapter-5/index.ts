@@ -13,11 +13,11 @@ import * as VerifySignature1 from './verify-signature-1'
 import * as VerifySignature2 from './verify-signature-2'
 import * as VerifySignature3 from './verify-signature-3'
 import * as VerifySignature4 from './verify-signature-4'
-import * as VerifySignature5 from './verify-signature-1'
-import * as VerifyMessage1 from './verify-message-1'
-import * as VerifyMessage2 from './verify-message-2'
-import * as VerifyMessage3 from './verify-message-3'
-import * as VerifyMessage4 from './verify-message-4'
+import * as VerifySignature5 from './verify-signature-5'
+import * as ValidateSignature1 from './validate-signature-1'
+import * as ValidateSignature2 from './validate-signature-2'
+import * as ValidateSignature3 from './validate-signature-3'
+import * as ValidateSignature4 from './validate-signature-4'
 
 const Chapter5 = {
   'intro-1': Intro1,
@@ -35,10 +35,10 @@ const Chapter5 = {
   'verify-signature-3': VerifySignature3,
   'verify-signature-4': VerifySignature4,
   'verify-signature-5': VerifySignature5,
-  'verify-message-1': VerifyMessage1,
-  'verify-message-2': VerifyMessage2,
-  'verify-message-3': VerifyMessage3,
-  'verify-message-4': VerifyMessage4,
+  'validate-signature-1': ValidateSignature1,
+  'validate-signature-2': ValidateSignature2,
+  'validate-signature-3': ValidateSignature3,
+  'validate-signature-4': ValidateSignature4,
   'outro-1': Outro1,
 }
 
