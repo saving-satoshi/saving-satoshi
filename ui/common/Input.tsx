@@ -134,7 +134,7 @@ export default function Input({
           spellCheck="false"
           className="absolute left-0 top-0 h-full w-full resize-none overflow-hidden break-all bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] text-transparent outline-none md:text-[24px] md:tracking-[5px] lg:text-[30px]"
           style={{
-            caretColor: '#6e7d92',
+            caretColor: '#ffffff59',
           }}
         />
         <p
