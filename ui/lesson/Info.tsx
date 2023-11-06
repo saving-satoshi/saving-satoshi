@@ -6,7 +6,7 @@ export default function LessonInfo({ children }) {
   const { activeView, direction } = useLessonContext()
   const isActive = activeView === LessonView.Info
 
-  if (direction === LessonDirection.Horizontal) {
+  if (direction === LessonDirection.Horizontal && isActive) {
     return (
       <div className="max-w-full grow justify-center text-white md:max-w-[50%] md:basis-1/3">
         <div className="flex h-full flex-col content-center justify-items-start gap-1 px-1 py-6 sm:px-12">

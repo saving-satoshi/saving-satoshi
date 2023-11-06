@@ -1,9 +1,8 @@
 'use client'
 
-import { useMediaQuery, useTranslations } from 'hooks'
-import { cssVarThemeChange } from 'lib/themeSelector'
-import { useEffect } from 'react'
-import { InputChallenge, Introduction, LessonInfo, Text, Title } from 'ui'
+import { useTranslations } from 'hooks'
+import { LessonDirection } from 'types'
+import { InputChallenge, LessonInfo, Text, Title, useLessonContext } from 'ui'
 
 export const metadata = {
   title: 'chapter_five.derive_message_one.title',
@@ -81,7 +80,7 @@ export default function DeriveMessage1({ lang }) {
 
   const successElement = (
     <div className="max-w-full grow justify-center text-white ">
-      <div className="flex h-full flex-col content-center justify-items-start gap-1 px-12 py-6">
+      <div className="flex h-full flex-col content-center justify-items-start gap-1 py-6">
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
           {t('chapter_five.derive_message_one.success_message_line_one')}
         </Text>
@@ -153,6 +152,8 @@ export default function DeriveMessage1({ lang }) {
       successColorGroups={successColorGroups}
       hints
       successElement={successElement}
+      direction={LessonDirection.Horizontal}
+      inputClassNames="sm:text-[15px]"
     >
       <LessonInfo>
         <Title>{t('chapter_five.derive_message_one.heading')}</Title>
