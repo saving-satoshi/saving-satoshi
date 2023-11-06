@@ -1,6 +1,7 @@
 import clsx from 'clsx'
-import { LessonView } from 'types'
+import { ColorGroup, LessonView } from 'types'
 import { Input, useLessonContext } from 'ui'
+import { ReactElement } from 'react'
 
 export default function LessonPrompt({
   className,
@@ -10,6 +11,9 @@ export default function LessonPrompt({
   pattern,
   hints,
   precedingText,
+  successElement,
+  successColorGroups,
+  inputClassNames = '',
 }: {
   className?: string
   label: string
@@ -18,6 +22,9 @@ export default function LessonPrompt({
   pattern?: RegExp
   hints?: boolean
   precedingText?: string
+  successElement?: ReactElement | null
+  successColorGroups?: ColorGroup[]
+  inputClassNames?: string
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
@@ -26,7 +33,7 @@ export default function LessonPrompt({
   return (
     <div
       className={clsx(
-        'grow justify-center font-space-mono text-white md:w-9/12 lg:w-9/12',
+        'grow justify-center font-space-mono text-white',
         className,
         {
           'hidden md:flex': !isActive,
@@ -44,8 +51,14 @@ export default function LessonPrompt({
             pattern={inputPattern}
             hints={hints}
             precedingText={precedingText}
+            successColorGroups={successColorGroups}
+            classNames={inputClassNames}
           />
         </div>
+        {Boolean(successElement) && (
+          <hr className="border-1 h-1 w-full border-white/25" />
+        )}
+        {successElement}
       </div>
     </div>
   )
