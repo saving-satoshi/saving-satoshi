@@ -882,7 +882,12 @@ const translations = {
     validate_signature_one: {
       title: 'Validate the signature',
     },
-    outro_one: {},
+    outro_one: {
+      title: 'Outro',
+      heading: 'Vanderpoole lied!',
+      paragraph_one:
+        'The whole story about his family was an invention, and you proved it to the whole world. This casts a big shadow on his credibility, and the credibility of his company. But, that’s what you get for playing tricks.',
+    },
     resources: {},
   },
 
