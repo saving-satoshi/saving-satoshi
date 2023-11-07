@@ -17,7 +17,7 @@ export default function DeriveMessage1({ lang }) {
   return (
     <ChapterIntro
       className="my-8 text-center"
-      heading="Vanderpoole says he signed a message with Satoshi's keys:"
+      heading={t('chapter_five.derive_message_one.heading')}
     >
       <div className="mt-[30px] border-2 border-dashed border-white">
         <p className="max-w-[900px] px-[15px] py-[10px] text-left font-space-mono text-xl md:text-[22px]">
@@ -41,7 +41,7 @@ export default function DeriveMessage1({ lang }) {
         </p>
       </div>
       <p className="mt-[30px] text-center font-nunito text-2xl font-bold text-white">
-        What does this even mean?
+        {t('chapter_five.derive_message_one.paragraph_one')}
       </p>
 
       <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">

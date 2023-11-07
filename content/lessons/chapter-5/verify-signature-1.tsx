@@ -16,12 +16,10 @@ export default function DeriveMessage1({ lang }) {
   return (
     <ChapterIntro
       className="my-8 text-center"
-      heading="Finally we have a message!"
+      heading={t('chapter_five.verify_signature_one.heading')}
     >
       <p className="max-w-[700px] px-[15px] py-[10px] font-nunito text-[22px]">
-        We also have a signature we know Satoshi created with his own private
-        keys, and we have his public key. Let's learn how to verify the
-        signature and then we can try to verify Vanderpoole's signature.
+        {t('chapter_five.verify_signature_one.paragraph_one')}
       </p>
 
       <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
