@@ -2,7 +2,13 @@ import clsx from 'clsx'
 import { LessonDirection, LessonView } from 'types'
 import { useLessonContext } from 'ui'
 
-export default function LessonInfo({ children }) {
+export default function LessonInfo({
+  children,
+  className,
+}: {
+  children: any
+  className?: string
+}) {
   const { activeView, direction } = useLessonContext()
   const isActive = activeView === LessonView.Info
 
@@ -23,7 +29,8 @@ export default function LessonInfo({ children }) {
         {
           'hidden md:flex': !isActive,
           flex: isActive,
-        }
+        },
+        className
       )}
     >
       {children}

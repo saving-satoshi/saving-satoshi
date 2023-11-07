@@ -2,11 +2,10 @@
 
 import { useTranslations } from 'hooks'
 import { LessonDirection } from 'types'
-import { InputChallenge, LessonInfo, Text, Title, useLessonContext } from 'ui'
+import { InputChallenge, LessonInfo, Text, Title } from 'ui'
 
 export const metadata = {
   title: 'chapter_five.derive_message_one.title',
-  image: '/assets/images/chapter-4-intro-1.jpg',
   key: 'CH5DRM6',
 }
 
@@ -82,62 +81,62 @@ export default function DeriveMessage6({ lang }) {
     <div className="max-w-full grow justify-center text-white ">
       <div className="flex h-full flex-col content-center justify-items-start gap-1 py-6">
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
-          {t('chapter_five.derive_message_one.success_message_line_one')}
+          {t('chapter_five.derive_message_six.success_message_line_one')}
         </Text>
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
-          {t('chapter_five.derive_message_one.success_message_second_line')}{' '}
+          {t('chapter_five.derive_message_six.success_message_line_two')}{' '}
           <span style={{ color: '#28B123' }}>01000000</span>
         </Text>
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
-          {t('chapter_five.derive_message_one.success_message_third_line')}{' '}
+          {t('chapter_five.derive_message_six.success_message_line_three')}{' '}
           <span style={{ color: '#F3241D' }}>01</span>
         </Text>
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
-          {t('chapter_five.derive_message_one.success_message_fourth_line')}{' '}
+          {t('chapter_five.derive_message_six.success_message_line_four')}{' '}
           <span className="break-all" style={{ color: '#3DCFEF' }}>
             c997a5e56e104102fa209c6a852dd90660a20b2d9c352423edce25857fcd3704
           </span>
         </Text>
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
-          {t('chapter_five.derive_message_one.success_message_fifth_line')}{' '}
+          {t('chapter_five.derive_message_six.success_message_line_five')}{' '}
           <span style={{ color: '#EF960B' }}>00000000</span>
         </Text>
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
-          {t('chapter_five.derive_message_one.success_message_sixth_line')}{' '}
+          {t('chapter_five.derive_message_six.success_message_line_six')}{' '}
           <span className="break-all" style={{ color: '#D06AF4' }}>
             4847304402204e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd410220181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d0901
           </span>
         </Text>
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
-          {t('chapter_five.derive_message_one.success_message_seventh_line')}{' '}
+          {t('chapter_five.derive_message_six.success_message_line_seven')}{' '}
           <span style={{ color: '#28B123' }}>ffffffff</span>
         </Text>
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
-          {t('chapter_five.derive_message_one.success_message_eighth_line')}{' '}
+          {t('chapter_five.derive_message_six.success_message_line_eight')}{' '}
           <span style={{ color: '#F3241D' }}>02</span>
         </Text>
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
-          {t('chapter_five.derive_message_one.success_message_ninth_line')}{' '}
+          {t('chapter_five.derive_message_six.success_message_line_nine')}{' '}
           <span style={{ color: '#3DCFEF' }}>00ca9a3b00000000</span>
         </Text>
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
-          {t('chapter_five.derive_message_one.success_message_tenth_line')}{' '}
+          {t('chapter_five.derive_message_six.success_message_line_ten')}{' '}
           <span className="break-all" style={{ color: '#EF960B' }}>
             434104ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302fa28414e7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e6cd84cac
           </span>
         </Text>
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
-          {t('chapter_five.derive_message_one.success_message_eleventh_line')}{' '}
+          {t('chapter_five.derive_message_six.success_message_line_eleven')}{' '}
           <span style={{ color: '#D06AF4' }}>00286bee00000000</span>
         </Text>
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
-          {t('chapter_five.derive_message_one.success_message_twelth_line')}{' '}
+          {t('chapter_five.derive_message_six.success_message_line_twelve')}{' '}
           <span className="break-all" style={{ color: '#28B123' }}>
             43410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3ac
           </span>
         </Text>
         <Text className="font-space-mono text-base font-normal not-italic leading-normal text-white">
-          {t('chapter_five.derive_message_one.success_message_thirteenth_line')}{' '}
+          {t('chapter_five.derive_message_six.success_message_line_thirteen')}{' '}
           <span style={{ color: '#F3241D' }}>00000000</span>
         </Text>
       </div>
@@ -147,27 +146,27 @@ export default function DeriveMessage6({ lang }) {
   return (
     <InputChallenge
       answer={transaction}
-      label={t('chapter_five.derive_message_one.input_challenge_label')}
+      label={t('chapter_five.derive_message_six.input_challenge_label')}
       pattern={/[a-z0-9]+/gi}
       successColorGroups={successColorGroups}
       hints
       successElement={successElement}
       direction={LessonDirection.Horizontal}
-      inputClassNames="sm:text-[15px]"
+      inputClassNames="text-[15px]"
     >
-      <LessonInfo>
-        <Title>{t('chapter_five.derive_message_one.heading')}</Title>
+      <LessonInfo className="md:self-start">
+        <Title>{t('chapter_five.derive_message_six.heading')}</Title>
 
         <Text className="mt-2 text-lg">
-          {t('chapter_five.derive_message_one.paragraph_one')}
+          {t('chapter_five.derive_message_six.paragraph_one')}
         </Text>
 
         <Text className="mt-2 text-lg">
-          {t('chapter_five.derive_message_one.paragraph_two')}
+          {t('chapter_five.derive_message_six.paragraph_two')}
         </Text>
 
         <Text className="mt-2 text-lg">
-          {t('chapter_five.derive_message_one.paragraph_three')}
+          {t('chapter_five.derive_message_six.paragraph_three')}
         </Text>
       </LessonInfo>
     </InputChallenge>

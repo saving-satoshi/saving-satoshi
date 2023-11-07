@@ -50,12 +50,12 @@ function colorizeText(colorizeTextMap: ColorGroup[], classNames?: string) {
     }
 
     // Append the colored text for the current group
-    newHtml += `<span className="font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:tracking-[5px]  ${classNames}" style="color: ${colorGroup.colorCode}" style="color: ${colorGroup.colorCode}">${spanText}</span>`
+    newHtml += `<span className="font-space-mono leading-[180%] tracking-[1px] text-transparent outline-none md:tracking-[5px] ${classNames}" style="color: ${colorGroup.colorCode}" style="color: ${colorGroup.colorCode}">${spanText}</span>`
   }
 
   // Append any remaining text without color
   allSpanTexts.forEach((remainingSpanText) => {
-    newHtml += `<span className="font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:tracking-[5px]  ${classNames}">${remainingSpanText}</span>`
+    newHtml += `<span className="font-space-mono leading-[180%] tracking-[1px] text-transparent outline-none md:tracking-[5px] ${classNames}">${remainingSpanText}</span>`
   })
 
   // Replace the innerHTML of textElement with the new HTML
@@ -69,7 +69,7 @@ export default function Input({
   hints,
   precedingText,
   successColorGroups,
-  classNames = 'md:text-[24px] lg:text-[30px]',
+  classNames,
 }: UserInputProps) {
   const [textAreaValue, setTextAreaValue] = useState('')
   const [correctAnswer, setCorrectAnswer] = useState(false)
@@ -173,7 +173,7 @@ export default function Input({
     <>
       <p
         className={clsx(
-          'pointer-events-none h-full w-full break-all text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] md:text-center md:tracking-[5px] ',
+          'pointer-events-none h-full w-full break-all text-left font-space-mono leading-[180%] tracking-[1px] md:text-center md:tracking-[5px]',
           {
             'overlay-complete': correctAnswer === true,
             'overlay-incomplete': correctAnswer === false,
@@ -194,14 +194,14 @@ export default function Input({
           onChange={handleChange}
           value={textAreaValue}
           spellCheck="false"
-          className={`absolute left-0 top-0 h-full w-full resize-none overflow-hidden break-all bg-transparent font-space-mono text-[18px] leading-[180%] tracking-[1px] text-transparent outline-none md:tracking-[5px]  ${classNames}`}
+          className={`absolute left-0 top-0 h-full w-full resize-none overflow-hidden break-all bg-transparent font-space-mono leading-[180%] tracking-[1px] text-transparent outline-none md:tracking-[5px] ${classNames}`}
           style={{
-            caretColor: '#6e7d92',
+            caretColor: '#ffffff59',
           }}
         />
         <p
           className={clsx(
-            'pointer-events-none h-full w-full break-all font-space-mono text-[18px] leading-[180%] tracking-[1px] text-inherit md:tracking-[5px] ',
+            'pointer-events-none h-full w-full break-all text-left font-space-mono leading-[180%] tracking-[1px] md:tracking-[5px]',
             {
               'overlay-complete': correctAnswer === true,
               'overlay-incomplete': correctAnswer === false,
