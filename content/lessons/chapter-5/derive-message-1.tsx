@@ -21,27 +21,13 @@ export default function DeriveMessage1({ lang }) {
     >
       <div className="mt-[30px] border-2 border-dashed border-white">
         <p className="max-w-[900px] px-[15px] py-[10px] text-left font-space-mono text-xl md:text-[22px]">
-          -----BEGIN BITCOIN SIGNED MESSAGE-----
-          <br />
-          <br />
-          I am Vanderpoole and I have control of the private key Satoshi used to
-          sign the first-ever Bitcoin transaction confirmed in block #170. This
-          message is signed with the same private key.
-          <br />
-          <br />
-          -----BEGIN BITCOIN SIGNATURE-----
-          <br />
-          <br />
-          <span className="break-all">
-            H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k=
-          </span>
-          <br />
-          <br />
-          -----END BITCOIN SIGNATURE-----
+          {t('chapter_five.derive_message_one.code_one')}
+          {t('chapter_five.derive_message_one.code_two')}
+          {t('chapter_five.derive_message_one.code_three')}
         </p>
       </div>
       <p className="mt-[30px] text-center font-nunito text-2xl font-bold text-white">
-        {t('chapter_five.derive_message_one.paragraph_one')}
+        {t('chapter_five.derive_message_one.paragraph_two')}
       </p>
 
       <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
