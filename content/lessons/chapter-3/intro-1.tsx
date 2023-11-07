@@ -1,7 +1,6 @@
 'use client'
 
-import { useTranslations, useMediaQuery } from 'hooks'
-import { useEffect, useState } from 'react'
+import { useTranslations } from 'hooks'
 import { Introduction, Text } from 'ui'
 
 export const metadata = {
@@ -12,23 +11,9 @@ export const metadata = {
 
 export default function Intro1({ lang }) {
   const t = useTranslations(lang)
-  const [objectPosition, setObjectPosition] = useState<string | undefined>()
-
-  const isMediumScreen = useMediaQuery({ width: 1024 })
-  const isSmallScreen = useMediaQuery({ width: 640 })
-
-  useEffect(() => {
-    if (isSmallScreen) {
-      setObjectPosition('object-left')
-    } else if (isMediumScreen) {
-      setObjectPosition('object-left-top')
-    } else {
-      setObjectPosition('object-bottom')
-    }
-  }, [isMediumScreen, isSmallScreen])
 
   return (
-    <Introduction lang={lang} imagePosition={objectPosition}>
+    <Introduction lang={lang} imagePosition="object-[50%_31%]">
       <Text className="text-lg md:text-xl">
         {t('chapter_three.intro_one.paragraph_one')}
       </Text>
