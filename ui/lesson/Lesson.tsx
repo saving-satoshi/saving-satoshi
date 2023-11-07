@@ -28,9 +28,7 @@ export default function Lesson(props) {
         <div className="flex grow flex-col md:flex-row">{props.children}</div>
       )}
       {direction === LessonDirection.Vertical && (
-        <div className="flex w-full grow flex-col md:items-center md:justify-center">
-          {props.children}
-        </div>
+        <div className="flex w-full grow flex-col">{props.children}</div>
       )}
     </LessonContext.Provider>
   )

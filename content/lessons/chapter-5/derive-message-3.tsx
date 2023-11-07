@@ -19,8 +19,9 @@ export default function DeriveMessage3({ lang }) {
       precedingText="OP_PUSHBYTES_71"
       successMessage={t('chapter_five.derive_message_three.success')}
       hints
+      inputClassNames="text-[18px] md:text-[24px] lg:text-[30px]"
     >
-      <LessonInfo>
+      <LessonInfo className="md:self-center">
         <Text className="mt-2 text-center text-xl font-bold md:text-2xl">
           {t('chapter_five.derive_message_three.heading')}
         </Text>

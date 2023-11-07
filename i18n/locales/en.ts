@@ -826,34 +826,6 @@ const translations = {
     },
     derive_message_one: {
       title: 'Derive the message',
-      heading: 'Derive the message from the transaction',
-      paragraph_one:
-        'It should be clear by just looking at the block explorer web page that a Bitcoin transaction has many different parts. Some parts are just small numbers and some parts are larger chunks of data. The Bitcoin protocol has a very specific algorithm for creating messages from transactions, so those messages can be signed by private keys.',
-      paragraph_two:
-        'We will summarize the process outlined here. It conveniently uses <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">this exact same transaction</Link> as an example.',
-      paragraph_three:
-        'To begin, we need the raw bytes that make up the complete transaction. <Link href="https://blockstream.info/api/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16/hex" target="_blank" className="underline">Our block explorer</Link> can help with this. Use the "hex" API endpoint and paste the entire blob of data.',
-      input_challenge_label: 'Paste the transaction blob',
-      success_message_line_one:
-        'This is the raw transaction with each component labeled:',
-      success_message_second_line: 'version:',
-      success_message_third_line: 'number of inputs:',
-      success_message_fourth_line: 'hash of tx being spent by input #0:',
-      success_message_fifth_line:
-        'index of output of tx being spent by input #0:',
-      success_message_sixth_line:
-        'scriptSig to authorize spending the indicated output:',
-      success_message_seventh_line: 'input #0 sequence:',
-      success_message_eighth_line: 'number of outputs:',
-      success_message_ninth_line:
-        'output #0 value (10 BTC or 1,000,000,000 satoshis):',
-      success_message_tenth_line:
-        "output #0 scriptPubKey (Hal Finney's public key plus OP_CHECKSIG):",
-      success_message_eleventh_line:
-        'outut #1 value (40 BTC or 4,000,000,000 satoshis):',
-      success_message_twelfth_line:
-        "output #1 scriptPubKey (Satoshi's own public key again, for change):",
-      success_message_thirteenth_line: 'locktime:',
     },
     derive_message_three: {
       heading: 'Let’s start with finding Satoshi’s signature',
@@ -873,6 +845,36 @@ const translations = {
         'The public key lives between the script commands OP_PUSHBYTES and OP_CHECKSIG. Paste it below:',
       placeholder: 'Paste the data here',
       success: 'That’s it!',
+    },
+    derive_message_six: {
+      heading: 'Derive the message from the transaction',
+      paragraph_one:
+        'It should be clear by just looking at the block explorer web page that a Bitcoin transaction has many different parts. Some parts are just small numbers and some parts are larger chunks of data. The Bitcoin protocol has a very specific algorithm for creating messages from transactions, so those messages can be signed by private keys.',
+      paragraph_two:
+        'We will summarize the process outlined here. It conveniently uses <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">this exact same transaction</Link> as an example.',
+      paragraph_three:
+        'To begin, we need the raw bytes that make up the complete transaction. <Link href="https://blockstream.info/api/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16/hex" target="_blank" className="underline">Our block explorer</Link> can help with this. Use the "hex" API endpoint and paste the entire blob of data.',
+      input_challenge_label: 'Paste the transaction blob',
+      success_message_line_one:
+        'This is the raw transaction with each component labeled:',
+      success_message_line_two: 'version:',
+      success_message_line_three: 'number of inputs:',
+      success_message_line_four: 'hash of tx being spent by input #0:',
+      success_message_line_five:
+        'index of output of tx being spent by input #0:',
+      success_message_line_six:
+        'scriptSig to authorize spending the indicated output:',
+      success_message_line_seven: 'input #0 sequence:',
+      success_message_line_eight: 'number of outputs:',
+      success_message_line_nine:
+        'output #0 value (10 BTC or 1,000,000,000 satoshis):',
+      success_message_line_ten:
+        "output #0 scriptPubKey (Hal Finney's public key plus OP_CHECKSIG):",
+      success_message_line_eleven:
+        'outut #1 value (40 BTC or 4,000,000,000 satoshis):',
+      success_message_line_twelve:
+        "output #1 scriptPubKey (Satoshi's own public key again, for change):",
+      success_message_line_thirteen: 'locktime:',
     },
     verify_signature_one: {
       title: 'Verify the signature',

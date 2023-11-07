@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import { useState, useEffect, ReactElement } from 'react'
 import { ColorGroup, LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonPrompt, StatusBar } from 'ui'
@@ -78,13 +79,19 @@ export default function InputChallenge({
       {children}
 
       {direction === LessonDirection.Vertical ? (
-        <hr className="border-1 h-1 w-full border-white/50 md:visible" />
+        <hr className="border-1 invisible h-1 w-full border-white/50 md:visible" />
       ) : (
-        <div className="block w-1 border-r-2 border-white/50"></div>
+        <div className="block w-1 border-r border-white/50"></div>
       )}
-      <div className="flex flex-col md:max-w-[50%]">
+      <div
+        className={clsx('flex grow flex-col', {
+          'md:max-w-[50%]': direction === LessonDirection.Horizontal,
+        })}
+      >
         <LessonPrompt
-          className="max-w-[1280px] items-start px-4 py-8 md:items-center"
+          className={clsx('max-w-[1280px] items-start px-4 py-8', {
+            'md:items-center': direction === LessonDirection.Vertical,
+          })}
           label={label}
           answer={answer}
           onChange={setUserInput}
@@ -97,7 +104,6 @@ export default function InputChallenge({
         />
 
         <StatusBar
-          full
           success={success}
           hints={userHint}
           successMessage={successMessage}
