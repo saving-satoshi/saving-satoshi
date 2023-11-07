@@ -1,8 +1,8 @@
 'use client'
 
-import { useMediaQuery, useTranslations } from 'hooks'
-import { useEffect, useState } from 'react'
-import { Introduction, Text } from 'ui'
+import { useSaveAndProceed, useTranslations } from 'hooks'
+import { Button } from 'shared'
+import { ChapterIntro } from 'ui'
 
 export const metadata = {
   title: 'chapter_five.derive_message_one.title',
@@ -11,30 +11,42 @@ export const metadata = {
 }
 
 export default function DeriveMessage1({ lang }) {
+  const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
-  const [objectPosition, setObjectPosition] = useState<string | undefined>()
-
-  const isMediumScreen = useMediaQuery({ width: 1024 })
-
-  useEffect(() => {
-    if (isMediumScreen) {
-      setObjectPosition('object-left')
-    } else {
-      setObjectPosition('object-bottom')
-    }
-  }, [isMediumScreen])
 
   return (
-    <Introduction lang={lang} imagePosition={objectPosition}>
-      <Text className="text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_one')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_two')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_three')}
-      </Text>
-    </Introduction>
+    <ChapterIntro
+      className="my-8 text-center"
+      heading="Vanderpoole says he signed a message with Satoshi's keys:"
+    >
+      <div className="mt-[30px] border-2 border-dashed border-white">
+        <p className="max-w-[900px] px-[15px] py-[10px] text-left font-space-mono text-xl md:text-[22px]">
+          -----BEGIN BITCOIN SIGNED MESSAGE-----
+          <br />
+          <br />
+          I am Vanderpoole and I have control of the private key Satoshi used to
+          sign the first-ever Bitcoin transaction confirmed in block #170. This
+          message is signed with the same private key.
+          <br />
+          <br />
+          -----BEGIN BITCOIN SIGNATURE-----
+          <br />
+          <br />
+          <span className="break-all">
+            H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k=
+          </span>
+          <br />
+          <br />
+          -----END BITCOIN SIGNATURE-----
+        </p>
+      </div>
+      <p className="mt-[30px] text-center font-nunito text-2xl font-bold text-white">
+        What does this even mean?
+      </p>
+
+      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+        {t('shared.start')}
+      </Button>
+    </ChapterIntro>
   )
 }
