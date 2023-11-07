@@ -17,7 +17,7 @@ export default function Outro1({ lang }) {
 
   return (
     <ChapterEnd
-      className="top-[70px]"
+      className="bottom-[70px]"
       image={metadata.image}
       direction="left"
       lang={lang}
@@ -27,6 +27,9 @@ export default function Outro1({ lang }) {
       <h1 className="text-5xl font-bold text-white">
         {t('chapter_five.outro_one.heading')}
       </h1>
+      <p className="mt-4 font-nunito text-2xl text-white">
+        {t('chapter_five.outro_one.paragraph_one')}
+      </p>
     </ChapterEnd>
   )
 }
