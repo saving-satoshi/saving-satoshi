@@ -31,12 +31,12 @@ export default function DeriveMessage6({ lang }) {
       <LessonInfo className="px-4 md:self-start md:px-10">
         <Title>Decode the Signature</Title>
 
-        <Text className="mt-2 text-lg">
+        <Text className="mt-2 text-lg md:text-[22px]">
           Satoshi's signature is encoded in a system called DER which is a
           subset of ASN.1.
         </Text>
 
-        <Text className="mt-2 text-lg">
+        <Text className="mt-2 text-lg md:text-[22px]">
           There are two 32-byte numbers we need to extract. They are referred to
           as R and S respectively and are each prefixed by the bytes 0220 in the
           DER sequence. Instead of fully decoding the DER blob, just look for

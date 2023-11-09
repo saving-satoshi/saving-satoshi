@@ -124,13 +124,8 @@ export default function DoubleInputChallenge({
           precedingText={precedingText}
           inputClassNames={inputClassNames}
         />
-        <hr
-          className={clsx('border-1 h-1 w-full border-white/50', {
-            'hidden md:flex': isActive,
-          })}
-        />
         <LessonPrompt
-          className="flex max-w-[1280px] items-center justify-center px-4 py-8 md:px-20"
+          className="flex max-w-[1280px] items-center justify-center border-t border-white/50 px-4 py-8 md:px-20"
           label={labelTwo}
           answer={answerTwo}
           onChange={setUserInputTwo}

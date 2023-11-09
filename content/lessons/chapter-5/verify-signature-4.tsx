@@ -31,7 +31,7 @@ export default function DeriveMessage6({ lang }) {
       <LessonInfo className="px-4 md:self-start md:px-10">
         <Title>Decode the Public Key</Title>
 
-        <Text className="mt-2 text-lg">
+        <Text className="mt-2 text-lg md:text-[22px]">
           We learned in chapter 4 that public keys are really points in the
           ECDSA curve, meaning they have an x and y value. The first byte 04
           means "uncompressed" (as opposed to 02 and 03 like we learned in
