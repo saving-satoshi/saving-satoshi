@@ -26,7 +26,7 @@ export default function DeriveMessage6({ lang }) {
       pattern={/[a-z0-9]+/gi}
       hints
       direction={LessonDirection.Horizontal}
-      inputClassNames="text-[15px] md:text-[22px]"
+      inputClassNames="text-[18px] md:text-[22px]"
     >
       <LessonInfo className="px-4 md:self-start md:px-10">
         <Title>Decode the Signature</Title>
