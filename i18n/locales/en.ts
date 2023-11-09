@@ -879,6 +879,30 @@ const translations = {
     verify_signature_one: {
       title: 'Verify the signature',
     },
+    verify_signature_five: {
+      title: 'Verify the signature',
+      heading: 'Verify the signature!',
+      paragraph_one:
+        'At this point we have everything we need to do some ECDSA math.',
+      paragraph_two:
+        'The ECDSA signature verification algorithm is explained <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">here</Link> and <Link className="underline" href="https://www.secg.org/sec1-v2.pdf" target="_blank">here</Link> (Go to page 46, section 4.1.4).',
+      paragraph_three:
+        'We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green">verify()</span> that should only return True if everything is valid!',
+      paragraph_four:
+        "We know Satoshi's signature is valid, it has been checked by every Bitcoin full node since 2010! If your program does not return True something is wrong.",
+      python: {
+        paragraph_five_part_one:
+          'Hint: the <span className="text-green">pow()</span>',
+        paragraph_five_part_two:
+          'method can accept negative exponents and a modulus as arguments. More on the <Link className="underline" href="https://docs.python.org/3/library/functions.html#pow" target="_blank">documentation</Link>.',
+      },
+      javascript: {
+        paragraph_five_part_one:
+          'Hint: the <span className="text-green">Math.pow()</span>',
+        paragraph_five_part_two:
+          'method can accept negative exponents and a modulus as arguments. More on the <Link className="underline" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow" target="_blank">documentation</Link>.',
+      },
+    },
     validate_signature_one: {
       title: 'Validate the signature',
     },
