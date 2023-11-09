@@ -73,25 +73,21 @@ export default function DoubleInputChallenge({
       answerOne.startsWith(userInputOne) &&
       userInputOne !== answerOne
     ) {
-      setSuccess(false)
       setUserHint(true)
     } else if (
       !answerOne.startsWith(userInputOne) &&
       userInputOne !== answerOne
     ) {
-      setSuccess(false)
       setUserHint(false)
     } else if (
       answerTwo.startsWith(userInputTwo) &&
       userInputTwo !== answerTwo
     ) {
-      setSuccess(false)
       setUserHint(true)
     } else if (
       !answerTwo.startsWith(userInputTwo) &&
       userInputTwo !== answerTwo
     ) {
-      setSuccess(false)
       setUserHint(false)
     } else if (userInputOne === answerOne && userInputTwo === answerTwo) {
       setSuccess(true)
