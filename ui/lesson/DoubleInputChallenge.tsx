@@ -2,14 +2,8 @@
 
 import clsx from 'clsx'
 import { useState, useEffect, ReactElement } from 'react'
-import { ColorGroup, LessonDirection, LessonView } from 'types'
-import {
-  Lesson,
-  LessonTabs,
-  LessonPrompt,
-  StatusBar,
-  useLessonContext,
-} from 'ui'
+import { ColorGroup, LessonDirection } from 'types'
+import { Lesson, LessonTabs, LessonPrompt, StatusBar } from 'ui'
 
 const tabData = [
   {
@@ -39,8 +33,6 @@ export default function DoubleInputChallenge({
   hints,
   precedingText,
   successMessage,
-  successElement,
-  successColorGroups,
   direction = LessonDirection.Vertical,
   inputClassNames = '',
 }: {
@@ -58,36 +50,41 @@ export default function DoubleInputChallenge({
   direction?: LessonDirection
   inputClassNames?: string
 }) {
-  const { activeView } = useLessonContext()
   const [userInputOne, setUserInputOne] = useState('')
   const [userInputTwo, setUserInputTwo] = useState('')
   const [success, setSuccess] = useState<boolean | null>(null)
   const [userHint, setUserHint] = useState<boolean | null>(null)
 
-  const isActive = activeView === LessonView.Info
-
   useEffect(() => {
     if (!userInputOne && !userInputTwo && !success) {
       setSuccess(null)
     } else if (
+      !success &&
       answerOne.startsWith(userInputOne) &&
       userInputOne !== answerOne
     ) {
+      setSuccess(false)
       setUserHint(true)
     } else if (
+      !success &&
       !answerOne.startsWith(userInputOne) &&
       userInputOne !== answerOne
     ) {
+      setSuccess(false)
       setUserHint(false)
     } else if (
+      !success &&
       answerTwo.startsWith(userInputTwo) &&
       userInputTwo !== answerTwo
     ) {
+      setSuccess(false)
       setUserHint(true)
     } else if (
+      !success &&
       !answerTwo.startsWith(userInputTwo) &&
       userInputTwo !== answerTwo
     ) {
+      setSuccess(false)
       setUserHint(false)
     } else if (userInputOne === answerOne && userInputTwo === answerTwo) {
       setSuccess(true)
