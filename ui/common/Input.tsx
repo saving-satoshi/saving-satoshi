@@ -73,7 +73,6 @@ export default function Input({
 }: UserInputProps) {
   const [textAreaValue, setTextAreaValue] = useState('')
   const [correctAnswer, setCorrectAnswer] = useState(false)
-  console.log(correctAnswer)
 
   useEffect(() => {
     if (correctAnswer && successColorGroups) {
