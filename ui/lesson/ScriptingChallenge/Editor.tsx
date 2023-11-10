@@ -117,7 +117,7 @@ export default function Editor({
   return (
     <div
       className={clsx(
-        'relative grow bg-[#00000026] font-mono text-sm text-white',
+        'relative grow bg-[#ffffff59] font-mono text-sm text-white',
         {
           'hidden md:flex': !isActive,
           flex: isActive,
