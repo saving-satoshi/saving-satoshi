@@ -10,7 +10,6 @@ import { EditorConfig } from 'types'
 import { Text, ResourcePage, ToggleSwitch } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
-import { secp256k1 } from 'ui/lesson/ScriptingChallenge/library'
 
 const javascriptChallengeOne = {
   program: `console.log("KILL")`,
@@ -55,8 +54,8 @@ const javascriptChallengeTwo = {
     args: [],
   },
   hiddenRange: [1, 0, 126, 0],
-  defaultCode: `${secp256k1.secp256k1js}
-	// Message digest from step 5:
+  defaultCode: `
+  // Message digest from step 5:
 	const msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19;
 	
 	// Signature values from step 6:
@@ -111,8 +110,7 @@ const pythonChallengeTwo = {
     args: [],
   },
   hiddenRange: [1, 0, 126, 0],
-  defaultCode: `${secp256k1.secp256k1py}
-
+  defaultCode: `
 # Message digest from step 5: 
 msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19
 
@@ -170,16 +168,16 @@ print(verify(sig_r, sig_s, pubkey_x, pubkey_y, msg));
 const configOne: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
-    javascriptChallengeOne,
-    pythonChallengeOne,
+    javascript: javascriptChallengeOne,
+    python: pythonChallengeOne,
   },
 }
 
 const configTwo: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
-    javascriptChallengeTwo,
-    pythonChallengeTwo,
+    javascript: javascriptChallengeTwo,
+    python: pythonChallengeTwo,
   },
 }
 
@@ -187,10 +185,10 @@ export default function VerifySignatureResources({ lang }) {
   const t = useTranslations(lang)
 
   const [codeOne, setCodeOne] = useState(
-    configOne.languages[configOne.defaultLanguage].defaultCode?.[0]
+    configOne.languages[configOne.defaultLanguage].defaultCode
   )
   const [codeTwo, setCodeTwo] = useState(
-    configTwo.languages[configTwo.defaultLanguage].defaultCode?.[1]
+    configTwo.languages[configTwo.defaultLanguage].defaultCode
   )
   const [languageOne, setLanguageOne] = useState(configOne.defaultLanguage)
   const [languageTwo, setLanguageTwo] = useState(configTwo.defaultLanguage)
@@ -207,12 +205,12 @@ export default function VerifySignatureResources({ lang }) {
 
   const handleSetLanguageOne = (value) => {
     setLanguageOne(value)
-    setCodeOne(configOne.languages[value].defaultCode?.[0])
+    setCodeOne(configOne.languages[value].defaultCode)
   }
 
   const handleSetLanguageTwo = (value) => {
     setLanguageTwo(value)
-    setCodeTwo(configOne.languages[value].defaultCode?.[1])
+    setCodeTwo(configTwo.languages[value].defaultCode)
   }
 
   const handleBeforeMount = (monaco) => {

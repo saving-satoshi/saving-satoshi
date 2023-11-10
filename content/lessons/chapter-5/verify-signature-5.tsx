@@ -21,15 +21,15 @@ const javascript = {
   hiddenRange: [1, 0, 126, 0],
   defaultCode: `${secp256k1.secp256k1js}
 	// Message digest from step 5:
-	const msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19;
+	const msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19n;
 	
 	// Signature values from step 6:
-	const sig_r = 0x4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41;
-	const sig_s = 0x181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09;
+	const sig_r = 0x4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41n;
+	const sig_s = 0x181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09n;
 	
 	// Public key values from step 7:
-	const pubkey_x = 0x11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5c;
-	const pubkey_y = 0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3;
+	const pubkey_x = 0x11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cn;
+	const pubkey_y = 0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3n;
 	
 	function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
 		// Verify an ECDSA signature given a public key and a message.
@@ -54,7 +54,7 @@ const javascript = {
 	}
 `,
   validate: async (answer) => {
-    if (answer !== 'True') {
+    if (answer !== 'true') {
       return [false, 'Signature is not valid']
     }
 
