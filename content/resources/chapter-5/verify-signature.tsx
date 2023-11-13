@@ -211,13 +211,12 @@ const configTwo: EditorConfig = {
 
 export default function VerifySignatureResources({ lang }) {
   const t = useTranslations(lang)
-
-  const [codeOne, setCodeOne] = useState(
+  const initialStateCodeOne =
     configOne.languages[configOne.defaultLanguage].defaultCode
-  )
-  const [codeTwo, setCodeTwo] = useState(
+  const [codeOne, setCodeOne] = useState<string>(initialStateCodeOne as string)
+  const initialStateCodeTwo =
     configTwo.languages[configTwo.defaultLanguage].defaultCode
-  )
+  const [codeTwo, setCodeTwo] = useState(initialStateCodeTwo as string)
   const [languageOne, setLanguageOne] = useState(configOne.defaultLanguage)
   const [languageTwo, setLanguageTwo] = useState(configTwo.defaultLanguage)
   const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
