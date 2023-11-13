@@ -879,6 +879,31 @@ const translations = {
     verify_signature_one: {
       title: 'Verify the signature',
     },
+    verify_signature_five: {
+      title: 'Verify the signature',
+      heading: 'Verify the signature!',
+      success: "You've done it! You've verified Satoshi's signature!",
+      paragraph_one:
+        'At this point we have everything we need to do some ECDSA math.',
+      paragraph_two:
+        'The ECDSA signature verification algorithm is explained <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">here</Link> and <Link className="underline" href="https://www.secg.org/sec1-v2.pdf#page=52" target="_blank">here</Link>.',
+      paragraph_three:
+        'We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green">verify()</span> that should only return True if everything is valid!',
+      paragraph_four:
+        "We know Satoshi's signature is valid, it has been checked by every Bitcoin full node since 2010! If your program does not return True something is wrong.",
+      python: {
+        paragraph_five_part_one:
+          'Hint: the <span className="text-green">pow()</span>',
+        paragraph_five_part_two:
+          'method can accept negative exponents and a modulus as arguments. More on the <Link className="underline" href="https://docs.python.org/3/library/functions.html#pow" target="_blank">documentation</Link>.',
+      },
+      javascript: {
+        paragraph_five_part_one:
+          'Hint: the <span className="text-green">Math.pow()</span>',
+        paragraph_five_part_two:
+          'method can accept negative exponents and a modulus as arguments. More on the <Link className="underline" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow" target="_blank">documentation</Link>.',
+      },
+    },
     validate_signature_one: {
       title: 'Validate the signature',
     },
@@ -888,7 +913,29 @@ const translations = {
       paragraph_one:
         'The whole story about his family was an invention, and you proved it to the whole world. This casts a big shadow on his credibility, and the credibility of his company. But, that’s what you get for playing tricks.',
     },
-    resources: {},
+    resources: {
+      verify_signature: {
+        eliptic_curve_heading:
+          'Elliptic Curve Digital Signature Algorithm (ECDSA)',
+        eliptic_curve_paragraph_one:
+          "ECDSA is a cryptographic algorithm used by Bitcoin to ensure that funds can only be spent by their rightful owners. A public key is derived from a private key through elliptic curve multiplication, which is computationally straightforward. However, reversing this process to derive the private key from the public key is computationally unfeasible. This one-way function is a cornerstone of Bitcoin's security.",
+        public_private_key_heading: 'Public and Private Keys',
+        public_private_key_paragraph_one:
+          'In Bitcoin, a pair of keys is used to ensure secure transactions. The private key, kept secret, is used to sign transactions and prove ownership of a Bitcoin address. The public key, derived from the private key, can be shared and is used to verify that a signature is made by the private key holder, without revealing the private key.',
+        signature_verification_heading: 'Signature Verification',
+        signature_verification_paragraph_one:
+          'Signature verification is crucial in Bitcoin to confirm that a transaction is authorized by the holder of the private key. In the context of ECDSA, it involves checking that a signature (comprising two numbers, r and s) is valid for a given public key and message. This verification ensures the integrity and authenticity of a transaction.',
+        finite_field_arithmetic_heading: 'Finite Field Arithmetic',
+        finite_field_arithmetic_paragraph_one:
+          "This type of arithmetic, used in ECDSA, involves numbers within a fixed range or field. Operations such as addition, subtraction, multiplication, and finding modular inverses are performed with respect to the size of this field. This is essential for the elliptic curve calculations in Bitcoin's cryptography.",
+        ge_and_fe_heading: 'Group Elements (GE) and Field Elements (FE)',
+        ge_and_fe_paragraph_one:
+          "In the context of elliptic curve cryptography, a group element typically represents a point on the elliptic curve. In the challenge, GE refers to such a point with specific x and y coordinates. FE represents an element of the finite field, used for calculations within the field's constraints.",
+        modular_inverse_heading: 'Modular Inverse',
+        modular_inverse_paragraph_one:
+          "The modular inverse of a number a modulo m is a number b such that (a * b) % m = 1. Finding the modular inverse is a critical step in ECDSA signature verification. It's used in the calculation of u1 and u2 during the verification process.",
+      },
+    },
   },
 
   chapter_six: {

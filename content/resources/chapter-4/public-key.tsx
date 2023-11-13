@@ -129,7 +129,7 @@ export default function PublicKeyResources({ lang }) {
 
   const handleSetLanguageTwo = (value) => {
     setLanguageTwo(value)
-    setCodeTwo(configOne.languages[value].defaultCode?.[1])
+    setCodeTwo(configTwo.languages[value].defaultCode?.[1])
   }
 
   const handleBeforeMount = (monaco) => {
