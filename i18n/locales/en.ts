@@ -886,7 +886,7 @@ const translations = {
       paragraph_one:
         'At this point we have everything we need to do some ECDSA math.',
       paragraph_two:
-        'The ECDSA signature verification algorithm is explained <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">here</Link> and <Link className="underline" href="https://www.secg.org/sec1-v2.pdf" target="_blank">here</Link> (Go to page 46, section 4.1.4).',
+        'The ECDSA signature verification algorithm is explained <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">here</Link> and <Link className="underline" href="https://www.secg.org/sec1-v2.pdf#page=52" target="_blank">here</Link>.',
       paragraph_three:
         'We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green">verify()</span> that should only return True if everything is valid!',
       paragraph_four:
