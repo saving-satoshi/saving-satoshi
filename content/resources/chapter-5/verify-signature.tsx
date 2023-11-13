@@ -232,12 +232,12 @@ export default function VerifySignatureResources({ lang }) {
 
   const handleSetLanguageOne = (value) => {
     setLanguageOne(value)
-    setCodeOne(configOne.languages[value].defaultCode)
+    setCodeOne(configOne.languages[value].defaultCode as string)
   }
 
   const handleSetLanguageTwo = (value) => {
     setLanguageTwo(value)
-    setCodeTwo(configTwo.languages[value].defaultCode)
+    setCodeTwo(configTwo.languages[value].defaultCode as string)
   }
 
   const handleBeforeMount = (monaco) => {
