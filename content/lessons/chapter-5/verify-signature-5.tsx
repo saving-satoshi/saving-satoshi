@@ -54,7 +54,10 @@ const javascript = {
 	}
 `,
   validate: async (answer) => {
-    if (answer !== 'true') {
+    // for some reason the answer is coming through with a lot of ansi characters included
+    // so we will need to strip them before doing the comparison.
+    const cleanedAnswer = answer.replace(/\u001b\[[0-9;]*m/g, '')
+    if (cleanedAnswer !== 'true') {
       return [false, 'Signature is not valid']
     }
 

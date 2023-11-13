@@ -67,26 +67,54 @@ const javascriptChallengeTwo = {
 	const pubkey_y = 0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3;
 	
 	function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
-		// Verify an ECDSA signature given a public key and a message.
-		// All input values will be 32-byte integers.
-		// Start by creating a curve point representation of the public key
-		// (In actual JavaScript code, you would use a library to create this point)
-		// let key = new secp256k1.GE(pubkey_x, pubkey_y);
-	
-		// Next, check the range limits of the signature values
-		// (You would need to replace GE.ORDER with the actual order of the curve used)
-		if (sig_r === 0 || sig_r >= GE.ORDER) {
-			console.log("invalid r value");
-			return false;
-		}
-		if (sig_s === 0 || sig_s >= GE.ORDER) {
-			console.log("invalid s value");
-			return false;
-		}
-		
-		// Implement ECDSA and return a boolean
-		// The actual verification logic would go here
-	}
+        // Verify an ECDSA signature given a public key and a message.
+      // All input values will be 32-byte BigInt()'s.
+      // Start by creating a curve point representation of the public key
+      const key = new GE(new FE(pubkey_x), new FE(pubkey_y));
+      // Next, check the range limits of the signature values
+      if (sig_r == 0n || sig_r >= ORDER) {
+        console.log('invalid r value');
+        return false;
+      }
+      if (sig_s == 0n || sig_s >= ORDER) {
+        console.log('invalid s value');
+        return false;
+      }
+      // Helper function:
+      // Find modular multiplicative inverse using Extended Euclidean Algorithm
+      function invert(value, modulus = ORDER) {
+        let x0 = 0n;
+        let x1 = 1n;
+        let a = value;
+        let m = modulus;
+    
+        while (a > 1n) {
+          const q = a / m;
+          let t = m;
+          m = a % m;
+          a = t;
+          t = x0;
+          x0 = x1 - q * x0;
+          x1 = t;
+        }
+    
+        if (x1 < 0n)
+          x1 += modulus;
+    
+        return x1;
+      }
+      // Implement ECDSA!
+      //   u1 = m / s mod n
+      //   u2 = r / s mod n
+      //   R = G * u1 + A * u2
+      //   r == x(R) mod n
+      const sig_s_inverted = invert(sig_s);
+      const u1 = (msg * sig_s_inverted) % ORDER;
+      const u2 = (sig_r * sig_s_inverted) % ORDER;
+      const R = (secp256k1.G.mul(u1)).add(key.mul(u2));
+      return R.x.equals(new FE(sig_r));
+    }
+    console.log(verify(sig_r, sig_s, pubkey_x, pubkey_y, msg));
 `,
   validate: async (answer) => {
     if (answer !== 'True') {
