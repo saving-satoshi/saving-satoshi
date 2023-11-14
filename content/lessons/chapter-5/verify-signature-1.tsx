@@ -1,29 +1,30 @@
 'use client'
 
-import { useTranslations } from 'hooks'
-import { useState } from 'react'
-import { Introduction, Text } from 'ui'
+import { useSaveAndProceed, useTranslations } from 'hooks'
+import { Button } from 'shared'
+import { ChapterIntro } from 'ui'
 
 export const metadata = {
-  title: 'chapter_five.verify_signature_one.title',
-  image: '/assets/images/chapter-4-intro-1.jpg',
+  title: 'chapter_five.derive_message_one.title',
   key: 'CH5VFS1',
 }
 
-export default function VerifySignature1({ lang }) {
+export default function DeriveMessage1({ lang }) {
+  const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
 
   return (
-    <Introduction lang={lang}>
-      <Text className="text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_one')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_two')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_three')}
-      </Text>
-    </Introduction>
+    <ChapterIntro
+      className="my-8 text-center"
+      heading={t('chapter_five.verify_signature_one.heading')}
+    >
+      <p className="max-w-[700px] px-[15px] py-[10px] font-nunito text-[22px]">
+        {t('chapter_five.verify_signature_one.paragraph_one')}
+      </p>
+
+      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+        {t('shared.next')}
+      </Button>
+    </ChapterIntro>
   )
 }

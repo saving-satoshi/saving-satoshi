@@ -21,32 +21,26 @@ export default function DeriveMessage6({ lang }) {
     <DoubleInputChallenge
       answerOne={rValue}
       answerTwo={sValue}
-      labelOne="Paste the x coordinate"
-      labelTwo="Paste the y coordinate"
+      labelOne={t('chapter_five.verify_signature_four.label_one')}
+      labelTwo={t('chapter_five.verify_signature_four.label_two')}
       pattern={/[a-z0-9]+/gi}
       hints
       direction={LessonDirection.Horizontal}
       inputClassNames="text-[18px] md:text-[22px]"
     >
       <LessonInfo className="px-4 md:self-start md:px-10">
-        <Title>Decode the Public Key</Title>
+        <Title>{t('chapter_five.verify_signature_four.heading')}</Title>
 
         <Text className="mt-2 text-lg md:text-[22px]">
-          We learned in chapter 4 that public keys are really points in the
-          ECDSA curve, meaning they have an x and y value. The first byte 04
-          means "uncompressed" (as opposed to 02 and 03 like we learned in
-          chapter 4). Remove that first byte and the remaining data are 32-byte
-          x and y coordinates. Copy and paste again.
+          {t('chapter_five.verify_signature_four.paragraph_one')}
         </Text>
 
         <div className="mt-[30px] border-2 border-dashed border-white">
           <p className="max-w-[900px] px-[15px] py-[10px] text-left font-space-mono text-base md:text-lg">
-            # Satoshi's public key, from the block 9 coinbase output
-            scriptPubKey 
+            {t('chapter_five.verify_signature_four.paragraph_two')}
           </p>
           <p className="max-w-[900px] break-all px-[15px] py-[10px] text-left font-space-mono text-base md:text-lg">
-            pubkey =
-            """0411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3"""
+            {t('chapter_five.verify_signature_four.paragraph_three')}
           </p>
         </div>
       </LessonInfo>

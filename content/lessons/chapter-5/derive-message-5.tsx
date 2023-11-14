@@ -1,40 +1,32 @@
 'use client'
 
-import { useMediaQuery, useTranslations } from 'hooks'
-import { useEffect, useState } from 'react'
-import { Introduction, Text } from 'ui'
+import { useSaveAndProceed, useTranslations } from 'hooks'
+import { Button } from 'shared'
+import { ChapterIntro } from 'ui'
 
 export const metadata = {
   title: 'chapter_five.derive_message_one.title',
-  image: '/assets/images/chapter-4-intro-1.jpg',
   key: 'CH5DRM5',
 }
 
-export default function DeriveMessage5({ lang }) {
+export default function DeriveMessage1({ lang }) {
+  const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
-  const [objectPosition, setObjectPosition] = useState<string | undefined>()
-
-  const isMediumScreen = useMediaQuery({ width: 1024 })
-
-  useEffect(() => {
-    if (isMediumScreen) {
-      setObjectPosition('object-left')
-    } else {
-      setObjectPosition('object-bottom')
-    }
-  }, [isMediumScreen])
 
   return (
-    <Introduction lang={lang} imagePosition={objectPosition}>
-      <Text className="text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_one')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_two')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_three')}
-      </Text>
-    </Introduction>
+    <ChapterIntro className="my-8 text-center">
+      <div className="max-w-[800px] px-[15px] py-[10px]">
+        <p className="text-xl md:text-[22px]">
+          {t('chapter_five.derive_message_five.paragraph_one')}
+        </p>
+        <p className="mt-8 text-xl md:text-[22px]">
+          {t('chapter_five.derive_message_five.paragraph_two')}
+        </p>
+      </div>
+
+      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+        {t('shared.next')}
+      </Button>
+    </ChapterIntro>
   )
 }

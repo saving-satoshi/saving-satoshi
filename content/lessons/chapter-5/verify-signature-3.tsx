@@ -21,36 +21,30 @@ export default function DeriveMessage6({ lang }) {
     <DoubleInputChallenge
       answerOne={rValue}
       answerTwo={sValue}
-      labelOne="Paste the R value"
-      labelTwo="Paste the S value"
+      labelOne={t('chapter_five.verify_signature_three.label_one')}
+      labelTwo={t('chapter_five.verify_signature_three.label_two')}
       pattern={/[a-z0-9]+/gi}
       hints
       direction={LessonDirection.Horizontal}
       inputClassNames="text-[18px] md:text-[22px]"
     >
       <LessonInfo className="px-4 md:self-start md:px-10">
-        <Title>Decode the Signature</Title>
+        <Title>{t('chapter_five.verify_signature_three.heading')}</Title>
 
         <Text className="mt-2 text-lg md:text-[22px]">
-          Satoshi's signature is encoded in a system called DER which is a
-          subset of ASN.1.
+          {t('chapter_five.verify_signature_three.paragraph_one')}
         </Text>
 
         <Text className="mt-2 text-lg md:text-[22px]">
-          There are two 32-byte numbers we need to extract. They are referred to
-          as R and S respectively and are each prefixed by the bytes 0220 in the
-          DER sequence. Instead of fully decoding the DER blob, just look for
-          the prefixes and paste the R and S values.
+          {t('chapter_five.verify_signature_three.paragraph_two')}
         </Text>
 
         <div className="mt-[30px] border-2 border-dashed border-white">
           <p className="max-w-[900px] px-[15px] py-[10px] text-left font-space-mono text-base md:text-lg">
-            # Satoshi's signature, from the input scriptSig of the tx to Hal
-            Finney
+            {t('chapter_five.verify_signature_three.paragraph_three')}
           </p>
           <p className="max-w-[900px] break-all px-[15px] py-[10px] text-left font-space-mono text-base md:text-lg">
-            sig_der =
-            """304402204e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd410220181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09"""
+            {t('chapter_five.verify_signature_three.paragraph_four')}
           </p>
         </div>
       </LessonInfo>
