@@ -897,6 +897,16 @@ const translations = {
         'output #1 scriptPubKey (Satoshi’s own public key again, for change):',
       success_message_line_thirteen: 'locktime:',
     },
+    derive_message_seven: {
+      paragraph_one:
+        'It’s impossible to sign a message containing it\'s own signature, so the <span className="italic">scriptSig</span> needs to be removed. In the Bitcoin protocol it is actually replaced by the <span className="italic">scriptPubKey</span> of the transaction output we are spending.',
+      paragraph_two:
+        'We\'ve already seen the output Satoshi spent when we looked for his public key. Let\'s <Link href="https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand" target="_blank" className="underline">go back</Link> and copy the entire hex string this time from the field labeled SCRIPTPUBKEY(HEX).',
+      paragraph_three:
+        'There is one important byte missing from this hex blob and that is the total length of the blob itself. Count the bytes and prefix the hex string with that value. For example if the <span className="italic">scriptPubKey</span> was two bytes long `af23` the data you would insert would be `02af23`.',
+      paragraph_four:
+        'The last thing we need for our transaction message is a "<span className="font-bold">sighash type flag</span>." We\'ll cover this more in the next chapter but for now we\'ll just add the value <span className="font-bold">01000000</span> to the end of the message.',
+    },
     verify_signature_one: {
       title: 'Verify the signature',
       heading: 'Finally we have a message!',
