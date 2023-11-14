@@ -826,6 +826,21 @@ const translations = {
     },
     derive_message_one: {
       title: 'Derive the message',
+      heading: 'Vanderpoole says he signed a message with Satoshi’s keys:',
+      code_one:
+        '-----BEGIN BITCOIN SIGNED MESSAGE----- <br /> <br /> I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever Bitcoin transaction confirmed in block #170. This message is signed with the same private key. <br /> <br /> -----BEGIN BITCOIN SIGNATURE----- <br /> <br />',
+      code_two:
+        '<span className="break-all"> H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k= </span>',
+      code_three: '<br/> <br/>-----END BITCOIN SIGNATURE-----',
+      paragraph_two: 'What does this even mean?',
+    },
+    derive_message_two: {
+      paragraph_one:
+        'We learned in chapter 4 that private keys are huge random numbers kept secret by whomever generated them. We can use Elliptic Curve math to derive a public key from that private key.',
+      paragraph_two:
+        'The public key can be shared as a unique identifier and the private key is used to prove a person has control of that identifier. That proof is called a SIGNATURE. To create a signature you need a message and a private key. Anyone can verify the signature with a copy of the message and the corresponding public key.',
+      paragraph_three:
+        'Vanderpoole has provided a signature and a message. Where is the public key?',
     },
     derive_message_three: {
       heading: 'Let’s start with finding Satoshi’s signature',
@@ -833,7 +848,7 @@ const translations = {
         'Hal Finney <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">claimed</Link> Satoshi sent him the first Bitcoin transaction ever, confirmed in block #170. That transaction can be found on a <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">block explorer here</Link>. In the scriptSig of input #0 there is a chunk of data following pushbytes... Find it and paste it below.',
       placeholder: 'Paste the data here',
       success:
-        'Nicely done! This is actually Satoshis signature, authorizing the transfer of his Bitcoin to Hal Finney.',
+        'Nicely done! This is actually Satoshi’s signature, authorizing the transfer of his Bitcoin to Hal Finney.',
     },
     derive_message_four: {
       heading: 'So where is his public key?',
@@ -845,6 +860,12 @@ const translations = {
         'The public key lives between the script commands OP_PUSHBYTES and OP_CHECKSIG. Paste it below:',
       placeholder: 'Paste the data here',
       success: 'That’s it!',
+    },
+    derive_message_five: {
+      paragraph_one:
+        'So Satoshi created a transaction that sent 50 BTC to his public key. Then he used his private key to create a signature that transferred 10 of those BTC to Hal Finney’s public key.',
+      paragraph_two:
+        'Next we need to learn how to verify a signature. But something is still missing... what is the message Satoshi signed to authorize the transaction for Hal?',
     },
     derive_message_six: {
       heading: 'Derive the message from the transaction',
@@ -869,15 +890,18 @@ const translations = {
       success_message_line_nine:
         'output #0 value (10 BTC or 1,000,000,000 satoshis):',
       success_message_line_ten:
-        "output #0 scriptPubKey (Hal Finney's public key plus OP_CHECKSIG):",
+        'output #0 scriptPubKey (Hal Finney’s public key plus OP_CHECKSIG):',
       success_message_line_eleven:
         'outut #1 value (40 BTC or 4,000,000,000 satoshis):',
       success_message_line_twelve:
-        "output #1 scriptPubKey (Satoshi's own public key again, for change):",
+        'output #1 scriptPubKey (Satoshi’s own public key again, for change):',
       success_message_line_thirteen: 'locktime:',
     },
     verify_signature_one: {
       title: 'Verify the signature',
+      heading: 'Finally we have a message!',
+      paragraph_one:
+        'We also have a signature we know Satoshi created with his own private keys, and we have his public key. Let’s learn how to verify the signature and then we can try to verify Vanderpoole’s signature.',
     },
     verify_signature_five: {
       title: 'Verify the signature',
