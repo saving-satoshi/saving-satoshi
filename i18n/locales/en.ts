@@ -498,7 +498,7 @@ const translations = {
         'We’re now mining 100 blocks to see how many you and BitRey will mine.',
       step_two_heading: 'That did not go too well!',
       step_two_paragraph_one:
-        'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s see if we can defeat BitRey for the next 100 blocks with the other pool operators. Bitcoin has been running for over a decade and it’s not going down without a fight.',
+        'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s see if we can defeat BitRey for the next 100 blocks with the other pool operators. Bitcoin has been running for over a century and it’s not going down without a fight.',
     },
 
     pool_one: {
