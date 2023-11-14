@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 
 export const metadata = {
-  title: 'chapter_two.scripting_one.title',
+  title: 'chapter_five.derive_message_one.title',
   key: 'CH5DRM7',
 }
 
