@@ -931,6 +931,19 @@ const translations = {
     validate_signature_one: {
       title: 'Validate the signature',
     },
+    validate_signature_two: {
+      heading: 'Prepare Vanderpoole’s signature for verification',
+      paragraph_one:
+        'The Bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.',
+      javascript: {
+        paragraph_two:
+          'Complete the function <span className="italic">decodeSig()</span>. It should return an array with the [r, s] values.',
+      },
+      python: {
+        paragraph_two:
+          'Complete the function <span className="italic">decode_sig()</span>. It should return a tuple with the (r, s) values.',
+      },
+    },
     outro_one: {
       title: 'Outro',
       heading: 'Vanderpoole lied!',
