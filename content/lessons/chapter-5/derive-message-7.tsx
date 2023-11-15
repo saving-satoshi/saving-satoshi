@@ -13,10 +13,13 @@ export const metadata = {
 }
 
 const javascript = {
-  program: `console.log("KILL")`,
+  program: `
+console.log(createTxMessage())
+console.log("KILL")
+`,
   defaultFunction: {
-    name: 'findHash',
-    args: ['nonce'],
+    name: 'createTxMessage',
+    args: [],
   },
   defaultCode: `function createTxMessage() {
   let msg = ""
@@ -86,10 +89,13 @@ const javascript = {
 }
 
 const python = {
-  program: `print("KILL")`,
+  program: `
+print(create_tx_message())
+print("KILL")
+`,
   defaultFunction: {
-    name: 'find_hash',
-    args: ['nonce'],
+    name: 'create_tx_message',
+    args: [],
   },
   defaultCode: `def create_tx_message():
     msg = ""
