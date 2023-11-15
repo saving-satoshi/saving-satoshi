@@ -12,11 +12,17 @@ export const metadata = {
   key: 'CH5VLS2',
 }
 
+const vpSig =
+  'H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k='
+
 const javascript = {
-  program: `console.log("KILL")`,
+  program: `
+console.log(decodeSig("${vpSig}").toString());
+console.log("KILL");
+`,
   defaultFunction: {
-    name: 'findHash',
-    args: ['nonce'],
+    name: 'decodeSig',
+    args: [],
   },
   defaultCode: `// Vanderpoole's signature
 const vpSig = "H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k="
@@ -24,9 +30,11 @@ const vpSig = "H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFo
 function decodeSig(vpSig) {
   // Decode a base64-encoded signature string into its ECDSA signature elements r and s, returned as an array of integers.
   // Remember to throw away the first byte of metadata from the signature string!
+
 }
 `,
   validate: async (answer) => {
+    console.log(answer)
     if (
       answer !==
       '63239744615459417534795088953002824328865520877888079618399827727977035042153,28508663025799969786676261677335521233963265910413171955666154169583931328457'
@@ -41,17 +49,20 @@ function decodeSig(vpSig) {
   },
   constraints: [
     {
-      range: [5, 1, 8, 1],
+      range: [5, 1, 9, 1],
       allowMultiline: true,
     },
   ],
 }
 
 const python = {
-  program: `print("KILL")`,
+  program: `
+print(decode_sig("${vpSig}"))
+print("KILL")
+`,
   defaultFunction: {
-    name: 'find_hash',
-    args: ['nonce'],
+    name: 'decode_sig',
+    args: [],
   },
   defaultCode: `import base64
 
