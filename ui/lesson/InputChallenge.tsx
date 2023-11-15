@@ -1,6 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import clsx from 'clsx'
+import { useState, useEffect, ReactElement } from 'react'
+import { ColorGroup, LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonPrompt, StatusBar } from 'ui'
 
 const tabData = [
@@ -28,6 +30,11 @@ export default function InputChallenge({
   pattern,
   hints,
   precedingText,
+  successMessage,
+  successElement,
+  successColorGroups,
+  direction = LessonDirection.Vertical,
+  inputClassNames = '',
 }: {
   children: any
   answer: string
@@ -35,6 +42,11 @@ export default function InputChallenge({
   pattern?: RegExp
   hints?: boolean
   precedingText?: string
+  successMessage?: string
+  successElement?: ReactElement
+  successColorGroups?: ColorGroup[]
+  direction?: LessonDirection
+  inputClassNames?: string
 }) {
   const [userInput, setUserInput] = useState('')
   const [success, setSuccess] = useState<boolean | null>(null)
@@ -61,24 +73,42 @@ export default function InputChallenge({
   }, [answer, userInput])
 
   return (
-    <Lesson>
+    <Lesson direction={direction}>
       <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
 
       {children}
 
-      <hr className="border-1 invisible h-1 w-full border-white/25 md:visible" />
+      {direction === LessonDirection.Vertical ? (
+        <hr className="border-1 invisible h-1 w-full border-white/50 md:visible" />
+      ) : (
+        <div className="block w-1 border-r border-white/50"></div>
+      )}
+      <div
+        className={clsx('flex grow flex-col', {
+          'md:max-w-[50%]': direction === LessonDirection.Horizontal,
+        })}
+      >
+        <LessonPrompt
+          className={clsx('max-w-[1280px] items-start px-4 py-8', {
+            'md:items-center': direction === LessonDirection.Vertical,
+          })}
+          label={label}
+          answer={answer}
+          onChange={setUserInput}
+          pattern={pattern}
+          hints={hints}
+          precedingText={precedingText}
+          successElement={Boolean(success) ? successElement : null}
+          successColorGroups={successColorGroups}
+          inputClassNames={inputClassNames}
+        />
 
-      <LessonPrompt
-        className="max-w-[1280px] items-start px-4 py-8 md:items-center"
-        label={label}
-        answer={answer}
-        onChange={setUserInput}
-        pattern={pattern}
-        hints={hints}
-        precedingText={precedingText}
-      />
-
-      <StatusBar full success={success} hints={userHint} />
+        <StatusBar
+          success={success}
+          hints={userHint}
+          successMessage={successMessage}
+        />
+      </div>
     </Lesson>
   )
 }

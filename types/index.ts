@@ -53,3 +53,9 @@ export interface ProfileWithHashPower extends Profile {
   hashpower: number
   hashes: number
 }
+
+export type ColorGroup = {
+  start: number
+  end: number
+  colorCode: string
+}

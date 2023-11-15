@@ -61,7 +61,15 @@ export default function StatusBar({
     switch (status) {
       case Status.Success:
         return (
-          successMessage || (
+          (!!successMessage && (
+            <span className="flex">
+              <Icon
+                icon="check"
+                className="mr-2 h-7 w-7 rounded-full bg-green"
+              />{' '}
+              {successMessage}
+            </span>
+          )) || (
             <span className="flex">
               <Icon
                 icon="check"

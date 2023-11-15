@@ -49,7 +49,7 @@ export const keys = [
 
   'CH5INT1',
   'CH5INT2',
-  'CH5INT2',
+  'CH5INT3',
   'CH5DRM1',
   'CH5DRM2',
   'CH5DRM3',
@@ -62,10 +62,11 @@ export const keys = [
   'CH5VFS3',
   'CH5VFS4',
   'CH5VFS5',
-  'CH5VFM1',
-  'CH5VFM2',
-  'CH5VFM3',
-  'CH5VFM4',
+  'CH5VLS1',
+  'CH5VLS2',
+  'CH5VLS3',
+  'CH5VLS4',
+  'CH5OUT1',
 ]
 
 export const keysMeta = {
@@ -130,11 +131,11 @@ export const keysMeta = {
   CH5VFS3: { path: '/chapter-5/verify-signature-3' },
   CH5VFS4: { path: '/chapter-5/verify-signature-4' },
   CH5VFS5: { path: '/chapter-5/verify-signature-5' },
-  CH5VFM1: { path: '/chapter-5/verify-message-1' },
-  CH5VFM2: { path: '/chapter-5/verify-message-2' },
-  CH5VFM3: { path: '/chapter-5/verify-message-3' },
-  CH5VFM4: { path: '/chapter-5/verify-message-4' },
-  CH5VFM5: { path: '/chapter-5/verify-message-5' },
+  CH5VLS1: { path: '/chapter-5/validate-signature-1' },
+  CH5VLS2: { path: '/chapter-5/validate-signature-2' },
+  CH5VLS3: { path: '/chapter-5/validate-signature-3' },
+  CH5VLS4: { path: '/chapter-5/validate-signature-4' },
+  CH5OUT1: { path: '/chapter-5/outro-1' },
 }
 
 export const isLessonUnlocked = (
