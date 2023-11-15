@@ -50,7 +50,7 @@ const prefix = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
   },
   constraints: [
     {
-      range: [12, 1, 14, 1],
+      range: [12, 1, 15, 1],
       allowMultiline: true,
     },
   ],
@@ -95,7 +95,7 @@ def encode_message(prefix, text):
   },
   constraints: [
     {
-      range: [14, 1, 15, 1],
+      range: [13, 1, 15, 1],
       allowMultiline: true,
     },
   ],
