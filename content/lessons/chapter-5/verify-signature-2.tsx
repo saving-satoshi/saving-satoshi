@@ -14,7 +14,7 @@ export const metadata = {
 const satoshiTransactionMessage =
   '0100000001c997a5e56e104102fa209c6a852dd90660a20b2d9c352423edce25857fcd37040000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3acffffffff0200ca9a3b00000000434104ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302fa28414e7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e6cd84cac00286bee0000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3ac0000000001000000'
 const correctAnswer =
-  '55192368857469264807759274836848938481238746809645363588732068292162212317977n'
+  '55192368857469264807759274836848938481238746809645363588732068292162212317977'
 
 const javascript = {
   program: `
@@ -68,7 +68,10 @@ def msg_to_integer(msg):
     # double-SHA256 the bytes and then return an integer from the 32-byte digest.
 `,
   validate: async (answer) => {
-    if (answer !== correctAnswer) {
+    // for some reason the answer is coming through with a lot of ansi characters included
+    // so we will need to strip them before doing the comparison.
+    const cleanedAnswer = answer.replace(/\u001b\[[0-9;]*m/g, '')
+    if (cleanedAnswer !== correctAnswer) {
       return [false, 'Hash is not valid']
     }
 
