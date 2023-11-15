@@ -13,7 +13,9 @@ export const metadata = {
 }
 
 const javascript = {
-  program: `console.log("KILL")`,
+  program: `console.log(verify(sig_r, sig_s, pubkey_x, pubkey_y, msg));
+console.log("KILL")
+`,
   defaultFunction: {
     name: 'verify',
     args: [],
@@ -72,7 +74,10 @@ const javascript = {
 }
 
 const python = {
-  program: `print("KILL")`,
+  program: `
+print(verify(sig_r, sig_s, pubkey_x, pubkey_y, msg));
+print("KILL")
+`,
   defaultFunction: {
     name: 'verify',
     args: [],

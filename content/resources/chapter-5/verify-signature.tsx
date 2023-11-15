@@ -67,7 +67,7 @@ const javascriptChallengeTwo = {
 	const pubkey_y = 0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3;
 	
 	function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
-        // Verify an ECDSA signature given a public key and a message.
+      // Verify an ECDSA signature given a public key and a message.
       // All input values will be 32-byte BigInt()'s.
       // Start by creating a curve point representation of the public key
       const key = new GE(new FE(pubkey_x), new FE(pubkey_y));
@@ -114,7 +114,6 @@ const javascriptChallengeTwo = {
       const R = (secp256k1.G.mul(u1)).add(key.mul(u2));
       return R.x.equals(new FE(sig_r));
     }
-    console.log(verify(sig_r, sig_s, pubkey_x, pubkey_y, msg));
 `,
   validate: async (answer) => {
     if (answer !== 'True') {
@@ -179,8 +178,6 @@ def verify(sig_r, sig_s, pubkey_x, pubkey_y, msg):
 
     # Verify if the x-coordinate of R modulo ORDER is equal to sig_r
     return sig_r == int(R.x) % GE.ORDER
-    
-print(verify(sig_r, sig_s, pubkey_x, pubkey_y, msg));
 `,
   validate: async (answer) => {
     return [true, undefined]
