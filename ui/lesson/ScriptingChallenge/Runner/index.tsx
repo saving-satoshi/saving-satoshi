@@ -129,7 +129,7 @@ export default function Runner({
           }
           case 'debug': {
             // payload = payload.trim()
-            // terminal('print', payload)
+            // sendTerminal('print', payload)
             break
           }
           case 'output': {
@@ -138,14 +138,13 @@ export default function Runner({
 
             const [res, err] = await onValidate(payload)
             if (!res) {
-              setHasherState(HasherState.Error)
               setIsRunning(false)
-              setState(State.Complete)
-              sendTerminal('error', err)
-              ws?.close()
-              return
+              setHasherState(HasherState.Error)
+              if (err) {
+                sendTerminal('error', err)
+              }
+              break
             }
-
             success = true
             setIsRunning(false)
             setHasherState(HasherState.Success)

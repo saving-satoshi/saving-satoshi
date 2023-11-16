@@ -903,7 +903,19 @@ const translations = {
       paragraph_one:
         'We also have a signature we know Satoshi created with his own private keys, and we have his public key. Let’s learn how to verify the signature and then we can try to verify Vanderpoole’s signature.',
     },
-    verify_signature_two: {},
+    verify_signature_two: {
+      title: 'Verify the signature',
+      heading: 'Hash the transaction digest',
+      paragraph_one:
+        'The serialized transaction data we compiled in the last step is actually too long to sign or verify with ECDSA.',
+      paragraph_two:
+        'Do we know any way to compress large chunks of data into more consistent, manageable pieces? We sure do: hashing.',
+      paragraph_three:
+        'The Bitcoin protocol uses a double SHA256 digest to compress a transaction into a signable message.',
+      paragraph_four:
+        'Once we have a 32-byte hash, that data is re-interpreted as an integer. Yes, a 32-byte integer (that is a truly enormous number)!',
+      success: 'Nicely done!',
+    },
     verify_signature_three: {
       heading: 'Decode the Signature',
       label_one: 'Paste the R value',
