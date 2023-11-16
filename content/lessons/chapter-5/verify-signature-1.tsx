@@ -5,7 +5,7 @@ import { Button } from 'shared'
 import { ChapterIntro } from 'ui'
 
 export const metadata = {
-  title: 'chapter_five.derive_message_one.title',
+  title: 'chapter_five.verify_signature_one.title',
   key: 'CH5VFS1',
 }
 
