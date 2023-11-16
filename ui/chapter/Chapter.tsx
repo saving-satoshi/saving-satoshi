@@ -128,7 +128,7 @@ export default function Chapter({ children, metadata, lang }) {
                     {(chapter.metadata.lessons.length > 0 && display && (
                       <div className="text-lg text-white">{children}</div>
                     )) ||
-                      (chapter.metadata.lessons.length > 0 && !display && (
+                      (!isLoading && !!isEnabled && !display && (
                         <div className="flex font-nunito text-lg text-white">
                           <Icon
                             icon="lock"
@@ -138,7 +138,16 @@ export default function Chapter({ children, metadata, lang }) {
                           {t('chapter.chapter_locked_two')}
                         </div>
                       )) ||
-                      (chapter.metadata.lessons.length === 0 && (
+                      (isLoading && !display && (
+                        <div className="flex font-nunito text-lg text-white">
+                          <Icon
+                            icon="lock"
+                            className="my-auto mr-2 h-3 w-3 justify-center"
+                          />
+                          {t('shared.loading')}...
+                        </div>
+                      )) ||
+                      (!isEnabled && !isLoading && !display && (
                         <div className="flex font-nunito text-lg text-white">
                           <Icon
                             icon="lock"
@@ -161,16 +170,19 @@ export default function Chapter({ children, metadata, lang }) {
                         }
                         classes="w-full"
                       >
-                        {(chapter.metadata.lessons.length > 0 &&
+                        {chapter.metadata.lessons.length > 0 &&
                         display &&
                         isBetweenChapter
                           ? `Continue`
-                          : `${t('shared.start_chapter')} ${position}`) ||
-                          (chapter.metadata.lessons.length > 0 &&
-                            !display &&
-                            `${t('chapter.chapter_locked_one')} ${
+                          : !!display
+                          ? `${t('shared.start_chapter')} ${position}`
+                          : isLoading
+                          ? `${t('shared.loading')}`
+                          : !display && !isEnabled
+                          ? `${t('shared.coming_soon')}`
+                          : `${t('chapter.chapter_locked_one')} ${
                               position - 1
-                            } ${t('chapter.chapter_locked_two')}`)}
+                            } ${t('chapter.chapter_locked_two')}`}
                       </Button>
                     </div>
                   </div>

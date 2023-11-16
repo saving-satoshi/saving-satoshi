@@ -12,6 +12,7 @@ const translations = {
     start_chapter: 'Start chapter',
     back: 'Back',
     poweroff: 'Back to chapter selection',
+    loading: 'Loading',
   },
   status_bar: {
     begin_message: 'Complete the challenge above to continue...',
