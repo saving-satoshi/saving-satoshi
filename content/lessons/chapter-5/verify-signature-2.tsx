@@ -44,7 +44,7 @@ console.log("KILL")
   },
   constraints: [
     {
-      range: [4, 1, 6, 1],
+      range: [4, 1, 7, 1],
       allowMultiline: true,
     },
   ],
