@@ -19,8 +19,9 @@ export default function Transacting2({ lang }) {
       pattern={/[a-z0-9]+/gi}
       precedingText="OP_RETURN OP_PUSHBYTES_33"
       hints
+      inputClassNames="text-[18px] md:text-[24px] lg:text-[30px]"
     >
-      <LessonInfo>
+      <LessonInfo className="md:self-center">
         <Title>{t('chapter_one.transacting_two.heading')}</Title>
 
         <Text className="mt-2 text-lg">

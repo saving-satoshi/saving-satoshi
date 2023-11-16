@@ -8,6 +8,7 @@ import InputChallenge from './InputChallenge'
 import ScriptingChallenge from './ScriptingChallenge'
 import HashChallenge from './HashChallenge'
 import HashrateChallenge from './HashrateChallenge'
+import DoubleInputChallenge from './DoubleInputChallenge'
 
 export {
   Lesson,
@@ -17,6 +18,7 @@ export {
   LessonTabs,
   useLessonContext,
   TerminalChallenge,
+  DoubleInputChallenge,
   InputChallenge,
   ScriptingChallenge,
   HashChallenge,

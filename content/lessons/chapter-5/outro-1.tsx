@@ -4,11 +4,11 @@ import { useTranslations } from 'hooks'
 import { ChapterEnd } from 'ui'
 
 export const metadata = {
-  title: 'chapter_four.outro_one.title',
-  image: '/assets/images/chapter-4-finish.jpg',
+  title: 'chapter_five.outro_one.title',
+  image: '/assets/images/chapter-5-outro.jpg',
   theme: 'bg-transparent/20',
-  secondaryTheme: 'bg-[#472B26]',
-  gradientTheme: 'from-[#472B26] via-[rgba(71, 43, 38, 0)]',
+  secondaryTheme: 'bg-[#2C3E59]',
+  gradientTheme: 'from-[#2C3E59] via-[rgba(71, 43, 38, 0)]',
   key: 'CH5OUT1',
 }
 
@@ -17,7 +17,6 @@ export default function Outro1({ lang }) {
 
   return (
     <ChapterEnd
-      className="top-[70px]"
       image={metadata.image}
       direction="left"
       lang={lang}
@@ -25,13 +24,10 @@ export default function Outro1({ lang }) {
       gradientTheme={metadata.gradientTheme}
     >
       <h1 className="text-5xl font-bold text-white">
-        {t('chapter_four.outro_one.heading')}
+        {t('chapter_five.outro_one.heading')}
       </h1>
       <p className="mt-4 font-nunito text-2xl text-white">
-        {t('chapter_four.outro_one.paragraph_one')}
-      </p>
-      <p className="mt-4 font-nunito text-2xl text-white">
-        {t('chapter_four.outro_one.paragraph_two')}
+        {t('chapter_five.outro_one.paragraph_one')}
       </p>
     </ChapterEnd>
   )

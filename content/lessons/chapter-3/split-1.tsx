@@ -26,7 +26,7 @@ export default function Split1({ lang }) {
   }, [])
 
   return (
-    <Introduction lang={lang} imagePosition="object-left-top">
+    <Introduction lang={lang} imagePosition="object-[55%_19%]">
       <Title>{t('chapter_three.split_one.heading')}</Title>
       <Text className="text-lg md:text-xl">
         {t('chapter_three.split_one.paragraph_one')}

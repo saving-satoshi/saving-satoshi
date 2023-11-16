@@ -23,22 +23,24 @@ const tabData = [
  * @pattern {RegEx} pattern for input field
  * @hints {boolean} determine whether the input field displays hints for the user
  */
-export default function InputChallenge({
+export default function DoubleInputChallenge({
   children,
-  answer,
-  label,
+  answerOne,
+  answerTwo,
+  labelOne,
+  labelTwo,
   pattern,
   hints,
   precedingText,
   successMessage,
-  successElement,
-  successColorGroups,
   direction = LessonDirection.Vertical,
   inputClassNames = '',
 }: {
   children: any
-  answer: string
-  label: string
+  answerOne: string
+  answerTwo: string
+  labelOne: string
+  labelTwo: string
   pattern?: RegExp
   hints?: boolean
   precedingText?: string
@@ -48,29 +50,46 @@ export default function InputChallenge({
   direction?: LessonDirection
   inputClassNames?: string
 }) {
-  const [userInput, setUserInput] = useState('')
+  const [userInputOne, setUserInputOne] = useState('')
+  const [userInputTwo, setUserInputTwo] = useState('')
   const [success, setSuccess] = useState<boolean | null>(null)
   const [userHint, setUserHint] = useState<boolean | null>(null)
 
   useEffect(() => {
-    if (!userInput && !success) {
+    if (!userInputOne && !userInputTwo && !success) {
       setSuccess(null)
     } else if (
-      userInput &&
       !success &&
-      hints &&
-      answer.startsWith(userInput) &&
-      userInput !== answer
+      answerOne.startsWith(userInputOne) &&
+      userInputOne !== answerOne
     ) {
       setSuccess(false)
       setUserHint(true)
-    } else if (userInput && !success && !answer.startsWith(userInput)) {
+    } else if (
+      !success &&
+      !answerOne.startsWith(userInputOne) &&
+      userInputOne !== answerOne
+    ) {
       setSuccess(false)
       setUserHint(false)
-    } else if (userInput === answer) {
+    } else if (
+      !success &&
+      answerTwo.startsWith(userInputTwo) &&
+      userInputTwo !== answerTwo
+    ) {
+      setSuccess(false)
+      setUserHint(true)
+    } else if (
+      !success &&
+      !answerTwo.startsWith(userInputTwo) &&
+      userInputTwo !== answerTwo
+    ) {
+      setSuccess(false)
+      setUserHint(false)
+    } else if (userInputOne === answerOne && userInputTwo === answerTwo) {
       setSuccess(true)
     }
-  }, [answer, userInput])
+  }, [answerOne, answerTwo, userInputOne, userInputTwo])
 
   return (
     <Lesson direction={direction}>
@@ -89,17 +108,23 @@ export default function InputChallenge({
         })}
       >
         <LessonPrompt
-          className={clsx('max-w-[1280px] items-start px-4 py-8', {
-            'md:items-center': direction === LessonDirection.Vertical,
-          })}
-          label={label}
-          answer={answer}
-          onChange={setUserInput}
+          className="flex max-w-[1280px] items-center justify-center px-4 py-8 md:px-20"
+          label={labelOne}
+          answer={answerOne}
+          onChange={setUserInputOne}
           pattern={pattern}
           hints={hints}
           precedingText={precedingText}
-          successElement={Boolean(success) ? successElement : null}
-          successColorGroups={successColorGroups}
+          inputClassNames={inputClassNames}
+        />
+        <LessonPrompt
+          className="flex max-w-[1280px] items-center justify-center border-t border-white/50 px-4 py-8 md:px-20"
+          label={labelTwo}
+          answer={answerTwo}
+          onChange={setUserInputTwo}
+          pattern={pattern}
+          hints={hints}
+          precedingText={precedingText}
           inputClassNames={inputClassNames}
         />
 

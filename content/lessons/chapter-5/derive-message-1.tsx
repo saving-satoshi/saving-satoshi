@@ -1,8 +1,8 @@
 'use client'
 
-import { useMediaQuery, useTranslations } from 'hooks'
-import { useEffect, useState } from 'react'
-import { Introduction, Text } from 'ui'
+import { useSaveAndProceed, useTranslations } from 'hooks'
+import { Button } from 'shared'
+import { ChapterIntro } from 'ui'
 
 export const metadata = {
   title: 'chapter_five.derive_message_one.title',
@@ -11,30 +11,28 @@ export const metadata = {
 }
 
 export default function DeriveMessage1({ lang }) {
+  const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
-  const [objectPosition, setObjectPosition] = useState<string | undefined>()
-
-  const isMediumScreen = useMediaQuery({ width: 1024 })
-
-  useEffect(() => {
-    if (isMediumScreen) {
-      setObjectPosition('object-left')
-    } else {
-      setObjectPosition('object-bottom')
-    }
-  }, [isMediumScreen])
 
   return (
-    <Introduction lang={lang} imagePosition={objectPosition}>
-      <Text className="text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_one')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_two')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_four.intro_one.paragraph_three')}
-      </Text>
-    </Introduction>
+    <ChapterIntro
+      className="my-8 text-center"
+      heading={t('chapter_five.derive_message_one.heading')}
+    >
+      <div className="mt-[30px] border-2 border-dashed border-white">
+        <p className="max-w-[900px] px-[15px] py-[10px] text-left font-space-mono text-xl md:text-[22px]">
+          {t('chapter_five.derive_message_one.code_one')}
+          {t('chapter_five.derive_message_one.code_two')}
+          {t('chapter_five.derive_message_one.code_three')}
+        </p>
+      </div>
+      <p className="mt-[30px] text-center font-nunito text-2xl font-bold text-white">
+        {t('chapter_five.derive_message_one.paragraph_two')}
+      </p>
+
+      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+        {t('shared.start')}
+      </Button>
+    </ChapterIntro>
   )
 }

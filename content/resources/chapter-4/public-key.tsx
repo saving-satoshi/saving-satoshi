@@ -129,7 +129,7 @@ export default function PublicKeyResources({ lang }) {
 
   const handleSetLanguageTwo = (value) => {
     setLanguageTwo(value)
-    setCodeTwo(configOne.languages[value].defaultCode?.[1])
+    setCodeTwo(configTwo.languages[value].defaultCode?.[1])
   }
 
   const handleBeforeMount = (monaco) => {
@@ -261,7 +261,7 @@ export default function PublicKeyResources({ lang }) {
               />
               <MonacoEditor
                 loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 502px)`}
+                height={`calc(var(--dynamic-height) - 642px)`}
                 value={codeTwo}
                 beforeMount={handleBeforeMount}
                 onMount={handleMount}
