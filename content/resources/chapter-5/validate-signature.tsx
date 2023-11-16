@@ -7,52 +7,25 @@ import { Loader } from 'shared'
 import MonacoEditor from '@monaco-editor/react'
 
 import { EditorConfig } from 'types'
-import { Text, ResourcePage, ToggleSwitch, CodeExample } from 'ui'
+import { Text, ResourcePage, ToggleSwitch } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
 
-const javascript = {
+const javascriptChallengeOne = {
   program: `console.log("KILL")`,
   defaultFunction: {
     name: 'verify',
     args: [],
   },
-  defaultCode: `function create_tx_message() {
-  let msg = '';
-  // version:
-  msg += '01000000';
-  // number of inputs:
-  msg += '01';
-  // hash of tx being spent by input #0:
-  msg += 'c997a5e56e104102fa209c6a852dd90660a20b2d9c352423edce25857fcd3704';
-  // index of output of tx being spent by input #0:
-  msg += '00000000';
-  // scriptPubKey of output being spent by input #0:
-  // https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand
-  msg += '43410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6';
-  msg += '909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656';
-  msg += 'b412a3ac';
-  // input #0 sequence:
-  msg += 'ffffffff';
-  // number of outputs:
-  msg += '02';
-  // output #0 value (10 BTC or 1,000,000,000 satoshis):
-  msg += '00ca9a3b00000000';
-  // output #0 scriptPubKey (Hal Finney's public key plus OP_CHECKSIG):
-  msg += '434104ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302f';
-  msg += 'a28414e7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e';
-  msg += '6cd84cac';
-  // outut #1 value (40 BTC or 4,000,000,000 satoshis):
-  msg += '00286bee00000000';
-  // output #1 scriptPubKey (Satoshi's oen public key again, for change):
-  msg += '43410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6';
-  msg += '909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656';
-  msg += 'b412a3ac';
-  // locktime:
-  msg += '00000000';
-  // SIGHASH type
-  msg += '01000000';
-  return msg
+  defaultCode: `function encodeMessage(prefix, text) {
+  const textBytes = Buffer.from(text, 'ascii');
+  const vector = Buffer.concat([
+    Buffer.from([prefix.length]),
+    prefix,
+    Buffer.from([textBytes.length]),
+    textBytes
+  ])
+  return vector.toString('hex');
 }`,
   validate: async () => {
     return [true, undefined]
@@ -60,48 +33,33 @@ const javascript = {
   constraints: [],
 }
 
-const python = {
+const pythonChallengeOne = {
   program: `print("KILL")`,
   defaultFunction: {
     name: 'verify',
     args: [],
   },
-  defaultCode: `def createTxMessage():
-    msg = ""
-    # version:
-    msg += "01000000"
-    # number of inputs:
-    msg += "01"
-    # hash of tx being spent by input #0:
-    msg += "c997a5e56e104102fa209c6a852dd90660a20b2d9c352423edce25857fcd3704"
-    # index of output of tx being spent by input #0:
-    msg += "00000000"
-    # scriptPubKey of output being spent by input #0:
-    # https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand
-    msg += "43410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6"
-    msg += "909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656"
-    msg += "b412a3ac"
-    # input #0 sequence:
-    msg += "ffffffff"
-    # number of outputs:
-    msg += "02"
-    # output #0 value (10 BTC or 1,000,000,000 satoshis):
-    msg += "00ca9a3b00000000"
-    # output #0 scriptPubKey (Hal Finney's public key plus OP_CHECKSIG):
-    msg += "434104ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302f"
-    msg += "a28414e7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e"
-    msg += "6cd84cac"
-    # outut #1 value (40 BTC or 4,000,000,000 satoshis):
-    msg += "00286bee00000000"
-    # output #1 scriptPubKey (Satoshi's oen public key again, for change):
-    msg += "43410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6"
-    msg += "909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656"
-    msg += "b412a3ac"
-    # locktime:
-    msg += "00000000"
-    # SIGHASH type
-    msg += "01000000"
-    return msg
+  defaultCode: `def encode_message(prefix, text):
+    vector = bytes([len(prefix)]) + bytes(prefix, 'ascii') + bytes([len(text)]) + bytes(text, 'ascii')
+    return vector.hex()`,
+  validate: async () => {
+    return [true, undefined]
+  },
+  constraints: [],
+}
+
+const javascriptChallengeTwo = {
+  program: `console.log("KILL")`,
+  defaultFunction: {
+    name: 'verify',
+    args: [],
+  },
+  defaultCode: `function decodeSig(vpSig) {
+  const vpSigBytes = Buffer.from(vpSig, 'base64');
+  const vpSigR = BigInt('0x' + vpSigBytes.slice(1, 33).toString('hex'));
+  const vpSigS = BigInt('0x' + vpSigBytes.slice(33).toString('hex'));
+  return [vpSigR, vpSigS]
+}
 `,
   validate: async () => {
     return [true, undefined]
@@ -109,23 +67,56 @@ const python = {
   constraints: [],
 }
 
-const config: EditorConfig = {
+const pythonChallengeTwo = {
+  program: `print("KILL")`,
+  defaultFunction: {
+    name: 'verify',
+    args: [],
+  },
+  defaultCode: `def decode_sig(vp_sig):
+    vp_sig_bytes = base64.b64decode(vp_sig)
+    vp_sig_r = int.from_bytes(vp_sig_bytes[1:33])
+    vp_sig_s = int.from_bytes(vp_sig_bytes[33:])
+    return (vp_sig_r, vp_sig_s)
+`,
+  validate: async () => {
+    return [true, undefined]
+  },
+  constraints: [],
+}
+
+const configOne: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
-    javascript: javascript,
-    python: python,
+    javascript: javascriptChallengeOne,
+    python: pythonChallengeOne,
   },
 }
 
-export default function ValidateSignatureResources({ lang }) {
+const configTwo: EditorConfig = {
+  defaultLanguage: 'javascript',
+  languages: {
+    javascript: javascriptChallengeTwo,
+    python: pythonChallengeTwo,
+  },
+}
+
+export default function VerifySignatureResources({ lang }) {
   const t = useTranslations(lang)
-  const initialStateCode = config.languages[config.defaultLanguage].defaultCode
-  const [code, setCode] = useState<string>(initialStateCode as string)
-  const [language, setLanguage] = useState(config.defaultLanguage)
+
+  const initialStateCodeOne =
+    configOne.languages[configOne.defaultLanguage].defaultCode
+  const [codeOne, setCodeOne] = useState<string>(initialStateCodeOne as string)
+
+  const initialStateCodeTwo =
+    configTwo.languages[configTwo.defaultLanguage].defaultCode
+  const [codeTwo, setCodeTwo] = useState(initialStateCodeTwo as string)
+
+  const [languageOne, setLanguageOne] = useState(configOne.defaultLanguage)
+  const [languageTwo, setLanguageTwo] = useState(configTwo.defaultLanguage)
+
   const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
   const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
-  const [challengeThreeIsToggled, setChallengeThreeIsToggled] = useState(false)
-  const [challengeFourIsToggled, setChallengeFourIsToggled] = useState(false)
 
   const challengeOneToggleSwitch = () => {
     setChallengeOneIsToggled(!challengeOneIsToggled)
@@ -135,17 +126,14 @@ export default function ValidateSignatureResources({ lang }) {
     setChallengeTwoIsToggled(!challengeTwoIsToggled)
   }
 
-  const challengeThreeToggleSwitch = () => {
-    setChallengeThreeIsToggled(!challengeThreeIsToggled)
+  const handleSetLanguageOne = (value) => {
+    setLanguageOne(value)
+    setCodeOne(configOne.languages[value].defaultCode as string)
   }
 
-  const challengeFourToggleSwitch = () => {
-    setChallengeFourIsToggled(!challengeFourIsToggled)
-  }
-
-  const handleSetLanguage = (value) => {
-    setLanguage(value)
-    setCode(config.languages[value].defaultCode as string)
+  const handleSetLanguageTwo = (value) => {
+    setLanguageTwo(value)
+    setCodeTwo(configTwo.languages[value].defaultCode as string)
   }
 
   const handleBeforeMount = (monaco) => {
@@ -177,54 +165,6 @@ export default function ValidateSignatureResources({ lang }) {
               'chapter_five.resources.verify_signature.eliptic_curve_paragraph_one'
             )}
           </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.public_private_key_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.public_private_key_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.signature_verification_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.signature_verification_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.finite_field_arithmetic_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.finite_field_arithmetic_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_five.resources.verify_signature.ge_and_fe_heading')}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.ge_and_fe_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.modular_inverse_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.modular_inverse_paragraph_one'
-            )}
-          </Text>
         </>
       }
       codeResources={
@@ -240,18 +180,18 @@ export default function ValidateSignatureResources({ lang }) {
           {challengeOneIsToggled && (
             <div className="border border-white/25">
               <LanguageTabs
-                languages={config.languages}
-                value={language}
-                onChange={handleSetLanguage}
+                languages={configOne.languages}
+                value={languageOne}
+                onChange={handleSetLanguageOne}
                 noHide
               />
               <MonacoEditor
                 loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 235px)`}
-                value={code}
+                height={`calc(var(--dynamic-height) - 762px)`}
+                value={codeOne}
                 beforeMount={handleBeforeMount}
                 onMount={handleMount}
-                language={language}
+                language={languageOne}
                 theme={'satoshi'}
                 options={readOnlyOptions}
               />
@@ -268,74 +208,18 @@ export default function ValidateSignatureResources({ lang }) {
           {challengeTwoIsToggled && (
             <div className="border border-white/25">
               <LanguageTabs
-                languages={config.languages}
-                value={language}
-                onChange={handleSetLanguage}
+                languages={configTwo.languages}
+                value={languageTwo}
+                onChange={handleSetLanguageTwo}
                 noHide
               />
               <MonacoEditor
                 loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 235px)`}
-                value={code}
+                height={`calc(var(--dynamic-height) - 822px)`}
+                value={codeTwo}
                 beforeMount={handleBeforeMount}
                 onMount={handleMount}
-                language={language}
-                theme={'satoshi'}
-                options={readOnlyOptions}
-              />
-            </div>
-          )}
-          <Text>{t('help_page.solution_three')}</Text>
-          <div className="flex flex-row items-center gap-2">
-            <ToggleSwitch
-              checked={challengeThreeIsToggled}
-              onChange={challengeThreeToggleSwitch}
-            />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
-          </div>
-          {challengeThreeIsToggled && (
-            <div className="border border-white/25">
-              <LanguageTabs
-                languages={config.languages}
-                value={language}
-                onChange={handleSetLanguage}
-                noHide
-              />
-              <MonacoEditor
-                loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 235px)`}
-                value={code}
-                beforeMount={handleBeforeMount}
-                onMount={handleMount}
-                language={language}
-                theme={'satoshi'}
-                options={readOnlyOptions}
-              />
-            </div>
-          )}
-          <Text>{t('help_page.solution_four')}</Text>
-          <div className="flex flex-row items-center gap-2">
-            <ToggleSwitch
-              checked={challengeFourIsToggled}
-              onChange={challengeFourToggleSwitch}
-            />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
-          </div>
-          {challengeFourIsToggled && (
-            <div className="border border-white/25">
-              <LanguageTabs
-                languages={config.languages}
-                value={language}
-                onChange={handleSetLanguage}
-                noHide
-              />
-              <MonacoEditor
-                loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 235px)`}
-                value={code}
-                beforeMount={handleBeforeMount}
-                onMount={handleMount}
-                language={language}
+                language={languageTwo}
                 theme={'satoshi'}
                 options={readOnlyOptions}
               />

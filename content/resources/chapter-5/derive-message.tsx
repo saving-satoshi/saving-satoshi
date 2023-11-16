@@ -177,54 +177,6 @@ export default function DeriveMessageResources({ lang }) {
               'chapter_five.resources.verify_signature.eliptic_curve_paragraph_one'
             )}
           </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.public_private_key_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.public_private_key_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.signature_verification_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.signature_verification_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.finite_field_arithmetic_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.finite_field_arithmetic_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_five.resources.verify_signature.ge_and_fe_heading')}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.ge_and_fe_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.modular_inverse_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.modular_inverse_paragraph_one'
-            )}
-          </Text>
         </>
       }
       codeResources={
