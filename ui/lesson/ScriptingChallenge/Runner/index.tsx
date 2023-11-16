@@ -137,7 +137,13 @@ export default function Runner({
             sendTerminal('print', payload)
 
             const [res, err] = await onValidate(payload)
-            if (!res) break
+            if (!res) {
+              setHasherState(HasherState.Error)
+              if (err) {
+                sendTerminal('error', err)
+              }
+              break
+            }
             success = true
             setIsRunning(false)
             setHasherState(HasherState.Success)
