@@ -138,6 +138,7 @@ export default function Runner({
 
             const [res, err] = await onValidate(payload)
             if (!res) {
+              setIsRunning(false)
               setHasherState(HasherState.Error)
               if (err) {
                 sendTerminal('error', err)
