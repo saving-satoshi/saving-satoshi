@@ -57,15 +57,15 @@ const javascriptChallengeTwo = {
   defaultCode: `
   // Message digest from step 5:
 	const msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19;
-	
+
 	// Signature values from step 6:
 	const sig_r = 0x4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41;
 	const sig_s = 0x181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09;
-	
+
 	// Public key values from step 7:
 	const pubkey_x = 0x11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5c;
 	const pubkey_y = 0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3;
-	
+
 	function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
       // Verify an ECDSA signature given a public key and a message.
       // All input values will be 32-byte BigInt()'s.
@@ -87,7 +87,7 @@ const javascriptChallengeTwo = {
         let x1 = 1n;
         let a = value;
         let m = modulus;
-    
+
         while (a > 1n) {
           const q = a / m;
           let t = m;
@@ -97,10 +97,10 @@ const javascriptChallengeTwo = {
           x0 = x1 - q * x0;
           x1 = t;
         }
-    
+
         if (x1 < 0n)
           x1 += modulus;
-    
+
         return x1;
       }
       // Implement ECDSA!
@@ -138,14 +138,14 @@ const pythonChallengeTwo = {
   },
   hiddenRange: [1, 0, 126, 0],
   defaultCode: `
-# Message digest from step 5: 
+# Message digest from step 5:
 msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19
 
-# Signature values from step 6: 
-sig_r = 0x4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41 
-sig_s = 0x181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09 
+# Signature values from step 6:
+sig_r = 0x4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41
+sig_s = 0x181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09
 
-# Public key values from step 7: 
+# Public key values from step 7:
 pubkey_x = 0x11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5c
 pubkey_y = 0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3
 
@@ -334,16 +334,18 @@ export default function VerifySignatureResources({ lang }) {
                 onChange={handleSetLanguageOne}
                 noHide
               />
-              <MonacoEditor
-                loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 827px)`}
-                value={codeOne}
-                beforeMount={handleBeforeMount}
-                onMount={handleMount}
-                language={languageOne}
-                theme={'satoshi'}
-                options={readOnlyOptions}
-              />
+              <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
+                <MonacoEditor
+                  loading={<Loader className="h-10 w-10 text-white" />}
+                  height={`calc(var(--dynamic-height) - 827px)`}
+                  value={codeOne}
+                  beforeMount={handleBeforeMount}
+                  onMount={handleMount}
+                  language={languageOne}
+                  theme={'satoshi'}
+                  options={readOnlyOptions}
+                />
+              </div>
             </div>
           )}
           <Text>{t('help_page.solution_two')}</Text>
@@ -362,16 +364,18 @@ export default function VerifySignatureResources({ lang }) {
                 onChange={handleSetLanguageTwo}
                 noHide
               />
-              <MonacoEditor
-                loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 642px)`}
-                value={codeTwo}
-                beforeMount={handleBeforeMount}
-                onMount={handleMount}
-                language={languageTwo}
-                theme={'satoshi'}
-                options={readOnlyOptions}
-              />
+              <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
+                <MonacoEditor
+                  loading={<Loader className="h-10 w-10 text-white" />}
+                  height={`calc(var(--dynamic-height) - 642px)`}
+                  value={codeTwo}
+                  beforeMount={handleBeforeMount}
+                  onMount={handleMount}
+                  language={languageTwo}
+                  theme={'satoshi'}
+                  options={readOnlyOptions}
+                />
+              </div>
             </div>
           )}
         </>

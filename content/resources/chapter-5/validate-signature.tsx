@@ -142,7 +142,7 @@ export default function VerifySignatureResources({ lang }) {
       inherit: true,
       rules: [],
       colors: {
-        'editor.background': '#00000026',
+        'editor.background': '#00000000',
         'editor.lineHighlightBorder': '#00000000', // 4th channel is for transparency
       },
     })
@@ -185,16 +185,18 @@ export default function VerifySignatureResources({ lang }) {
                 onChange={handleSetLanguageOne}
                 noHide
               />
-              <MonacoEditor
-                loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 762px)`}
-                value={codeOne}
-                beforeMount={handleBeforeMount}
-                onMount={handleMount}
-                language={languageOne}
-                theme={'satoshi'}
-                options={readOnlyOptions}
-              />
+              <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
+                <MonacoEditor
+                  loading={<Loader className="h-10 w-10 text-white" />}
+                  height={`calc(var(--dynamic-height) - 762px)`}
+                  value={codeOne}
+                  beforeMount={handleBeforeMount}
+                  onMount={handleMount}
+                  language={languageOne}
+                  theme={'satoshi'}
+                  options={readOnlyOptions}
+                />
+              </div>
             </div>
           )}
           <Text>{t('help_page.solution_two')}</Text>
@@ -213,16 +215,18 @@ export default function VerifySignatureResources({ lang }) {
                 onChange={handleSetLanguageTwo}
                 noHide
               />
-              <MonacoEditor
-                loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 822px)`}
-                value={codeTwo}
-                beforeMount={handleBeforeMount}
-                onMount={handleMount}
-                language={languageTwo}
-                theme={'satoshi'}
-                options={readOnlyOptions}
-              />
+              <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
+                <MonacoEditor
+                  loading={<Loader className="h-10 w-10 text-white" />}
+                  height={`calc(var(--dynamic-height) - 822px)`}
+                  value={codeTwo}
+                  beforeMount={handleBeforeMount}
+                  onMount={handleMount}
+                  language={languageTwo}
+                  theme={'satoshi'}
+                  options={readOnlyOptions}
+                />
+              </div>
             </div>
           )}
         </>

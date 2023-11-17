@@ -154,7 +154,7 @@ export default function DeriveMessageResources({ lang }) {
       inherit: true,
       rules: [],
       colors: {
-        'editor.background': '#00000026',
+        'editor.background': '#00000000',
         'editor.lineHighlightBorder': '#00000000', // 4th channel is for transparency
       },
     })
@@ -248,16 +248,18 @@ export default function DeriveMessageResources({ lang }) {
                 onChange={handleSetLanguage}
                 noHide
               />
-              <MonacoEditor
-                loading={<Loader className="h-10 w-10 text-white" />}
-                height={`calc(var(--dynamic-height) - 235px)`}
-                value={code}
-                beforeMount={handleBeforeMount}
-                onMount={handleMount}
-                language={language}
-                theme={'satoshi'}
-                options={readOnlyOptions}
-              />
+              <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
+                <MonacoEditor
+                  loading={<Loader className="h-10 w-10 text-white" />}
+                  height={`calc(var(--dynamic-height) - 235px)`}
+                  value={code}
+                  beforeMount={handleBeforeMount}
+                  onMount={handleMount}
+                  language={language}
+                  theme={'satoshi'}
+                  options={readOnlyOptions}
+                />
+              </div>
             </div>
           )}
         </>
