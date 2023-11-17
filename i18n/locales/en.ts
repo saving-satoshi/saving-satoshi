@@ -1018,7 +1018,7 @@ const translations = {
       validate_signature: {
         message_verification_heading: 'Importance of Message Verification',
         message_verification_paragraph_one:
-          'Message verification enhances the security of communications within the Bitcoin ecosystem. It allows parties to verify the authenticity and integrity of messages, which is valuable in situations where trust and verification are essential, such as in peer-to-peer transactions or communication between parties in a smart contract. Furthermore, message verification serves as a foundation for various applications, including identity verification and the attestation of ownership in decentralized systems. It adds a layer of cryptographic assurance, reinforcing the trustless and decentralized nature of the Bitcoin network. Overall, message verification is a key element in promoting security, trust, and functionality within the Bitcoin ecosystem.',
+          'Message verification enhances the security of communications within the Bitcoin ecosystem. It allows parties to verify the authenticity and integrity of messages, which is valuable in situations where trust and verification are essential, such as in peer-to-peer transactions or communication between parties in a smart contract. Furthermore, message verification serves as a foundation for various applications, including identity verification and the attestation of ownership of a particular Bitcoin address. It adds a layer of cryptographic assurance, reinforcing the trustless and decentralized nature of the Bitcoin network.',
       },
     },
   },
