@@ -992,7 +992,7 @@ const translations = {
       derive_message: {
         op_pushdata_heading: 'OP_PUSHDATA',
         op_pushdata_paragraph_one:
-          "OP_PUSHDATA in Bitcoin script plays a crucial role in facilitating the insertion of arbitrary pieces of data into the blockchain. It is an opcode that allows for the inclusion of data elements of varying sizes, making Bitcoin's scripting language more versatile. This opcode is particularly significant in enabling the implementation of various smart contract functionalities and custom transaction types.",
+          'OP_PUSHDATA in Bitcoin script plays a crucial role in facilitating the insertion of arbitrary pieces of data into the blockchain. It is an opcode that allows for the inclusion of data elements of varying sizes, making Bitcoin’s scripting language more versatile. This opcode is particularly significant in enabling the implementation of various smart contract functionalities and custom transaction types. You can read more about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.',
       },
       verify_signature: {
         eliptic_curve_heading:
