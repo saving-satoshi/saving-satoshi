@@ -12,6 +12,7 @@ const translations = {
     start_chapter: 'Start chapter',
     back: 'Back',
     poweroff: 'Back to chapter selection',
+    loading: 'Loading',
   },
   status_bar: {
     begin_message: 'Complete the challenge above to continue...',
@@ -903,6 +904,43 @@ const translations = {
       paragraph_one:
         'We also have a signature we know Satoshi created with his own private keys, and we have his public key. Let’s learn how to verify the signature and then we can try to verify Vanderpoole’s signature.',
     },
+    verify_signature_two: {
+      title: 'Verify the signature',
+      heading: 'Hash the transaction digest',
+      paragraph_one:
+        'The serialized transaction data we compiled in the last step is actually too long to sign or verify with ECDSA.',
+      paragraph_two:
+        'Do we know any way to compress large chunks of data into more consistent, manageable pieces? We sure do: hashing.',
+      paragraph_three:
+        'The Bitcoin protocol uses a double SHA256 digest to compress a transaction into a signable message.',
+      paragraph_four:
+        'Once we have a 32-byte hash, that data is re-interpreted as an integer. Yes, a 32-byte integer (that is a truly enormous number)!',
+      success: 'Nicely done!',
+    },
+    verify_signature_three: {
+      heading: 'Decode the Signature',
+      label_one: 'Paste the R value',
+      label_two: 'Paste the S value',
+      paragraph_one:
+        "Satoshi's signature is encoded in a system called DER which is a subset of ASN.1.",
+      paragraph_two:
+        'There are two 32-byte numbers we need to extract. They are referred to as R and S respectively and are each prefixed by the bytes 0220 in the DER sequence. Instead of fully decoding the DER blob, just look for the prefixes and paste the R and S values.',
+      paragraph_three:
+        "# Satoshi's signature, from the input scriptSig of the tx to Hal Finney",
+      paragraph_four:
+        'sig_der = """304402204e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd410220181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09"""',
+    },
+    verify_signature_four: {
+      heading: 'Decode the Public Key',
+      label_one: 'Paste the x coordinate',
+      label_two: 'Paste the y coordinate',
+      paragraph_one:
+        'We learned in chapter 4 that public keys are really points in the ECDSA curve, meaning they have an x and y value. The first byte 04 means "uncompressed" (as opposed to 02 and 03 like we learned in chapter 4). Remove that first byte and the remaining data are 32-byte x and y coordinates. Copy and paste again.',
+      paragraph_two:
+        "# Satoshi's public key, from the block 9 coinbase output scriptPubKey",
+      paragraph_three:
+        'pubkey = """0411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3"""',
+    },
     verify_signature_five: {
       title: 'Verify the signature',
       heading: 'Verify the signature!',
@@ -930,6 +968,19 @@ const translations = {
     },
     validate_signature_one: {
       title: 'Validate the signature',
+    },
+    validate_signature_two: {
+      heading: 'Prepare Vanderpoole’s signature for verification',
+      paragraph_one:
+        'The Bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.',
+      javascript: {
+        paragraph_two:
+          'Complete the function <span className="italic">decodeSig()</span>. It should return an array with the [r, s] values.',
+      },
+      python: {
+        paragraph_two:
+          'Complete the function <span className="italic">decode_sig()</span>. It should return a tuple with the (r, s) values.',
+      },
     },
     outro_one: {
       title: 'Outro',
