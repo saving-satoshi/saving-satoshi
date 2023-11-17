@@ -12,7 +12,9 @@ export const metadata = {
   key: 'CH5VLS1',
 }
 const javascript = {
-  program: `console.log("KILL")`,
+  program: `
+  console.log(encode_message(text))
+  console.log("KILL")`,
   defaultFunction: {
     name: 'encode_message',
     args: ['text'],
@@ -27,26 +29,19 @@ function encode_message(text){
 // Given an ascii-encoded text message, serialize a byte array 
 // with the Bitcoin protocol prefix string followed by the text 
 // and both components preceded by a length byte. 
-// Return a hex string. 
+// Returns a 32-byte integer.
 const prefix = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
 
 }
 `,
   validate: async (answer: string) => {
-    const parsedAnswer = JSON.parse(answer)
-    const correctPattern = /^0x[0-9a-fA-F]{64}$/
-    if (parsedAnswer) {
-      if (
-        parsedAnswer['x'].match(correctPattern) &&
-        parsedAnswer['y'].match(correctPattern)
-      ) {
+    if (answer) {
+      if (answer.length === 88) {
         return [true, 'Nicely Done ']
-      } else {
-        return [false, 'Try multiplying with the G constant']
       }
-    } else {
-      return [false, 'Try logging out your answer']
+      return [false, 'Not a valid 32 byte integer']
     }
+    return [false, '']
   },
   constraints: [
     {
@@ -57,45 +52,39 @@ const prefix = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
 }
 
 const python = {
-  program: `print("KILL")`,
+  program: `
+print(encode_message(text))
+print("KILL")`,
   defaultFunction: {
     name: 'encode_message',
     args: ['prefix', 'text'],
   },
   defaultCode: `import hashlib 
 # Defined by Bitcoin message signing protocol 
-prefix = "Bitcoin Signed Message:\\n" 
 # Provided by Vanderpoole 
 text = "I am Vanderpoole and I have control of the private key Satoshi\\n" 
 text += "used to sign the first-ever Bitcoin transaction confirmed in block #170.\\n" 
 text += "This message is signed with the same private key." 
 
-def encode_message(prefix, text): 
+def encode_message(text): 
   # Given an ascii-encoded text message, serialize a byte array 
   # with the Bitcoin protocol prefix string followed by the text 
   # and both components preceded by a length byte. 
-  # Return a hex string. 
+  # Returns a 32-byte integer.
 
 `,
-  validate: async (answer) => {
-    const parsedAnswer = JSON.parse(answer)
-    const correctPattern = /^0x[0-9a-fA-F]{64}$/
-    if (parsedAnswer) {
-      if (
-        parsedAnswer['x'].match(correctPattern) &&
-        parsedAnswer['y'].match(correctPattern)
-      ) {
+  validate: async (answer: string) => {
+    if (answer) {
+      if (answer.length === 77) {
         return [true, 'Nicely Done ']
-      } else {
-        return [false, 'Try multiplying with the G constant']
       }
-    } else {
-      return [false, 'Try printing out your answer']
+      return [false, 'Not a valid 32 byte integer']
     }
+    return [false, '']
   },
   constraints: [
     {
-      range: [13, 1, 15, 1],
+      range: [13, 1, 14, 1],
       allowMultiline: true,
     },
   ],
@@ -122,7 +111,7 @@ export default function PublicKey3({ lang }) {
       config={config}
       saveData
       lessonKey={getLessonKey('chapter-5', 'validate-signature-1')}
-      successMessage={t('chapter_five.validate_signature_one.success')}
+      successMessage={''}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>

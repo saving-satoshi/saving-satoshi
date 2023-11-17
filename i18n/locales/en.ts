@@ -937,6 +937,7 @@ const translations = {
         "First, we need to encode his message into an array of bytes corresponding to the following template:',",
       paragraph_three:
         'Then we will double-SHA256 hash that blob of data, and convert that hash into an integer. Complete the function encode_message(). It should return a 32-byte integer.',
+      success: 'Nicely Done',
     },
     outro_one: {
       title: 'Outro',
