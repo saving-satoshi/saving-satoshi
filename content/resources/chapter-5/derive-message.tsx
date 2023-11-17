@@ -170,11 +170,11 @@ export default function DeriveMessageResources({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_five.resources.verify_signature.eliptic_curve_heading')}
+            {t('chapter_five.resources.derive_message.op_pushdata_heading')}
           </Text>
           <Text>
             {t(
-              'chapter_five.resources.verify_signature.eliptic_curve_paragraph_one'
+              'chapter_five.resources.derive_message.op_pushdata_paragraph_one'
             )}
           </Text>
         </>

@@ -989,6 +989,11 @@ const translations = {
         'The whole story about his family was an invention, and you proved it to the whole world. This casts a big shadow on his credibility, and the credibility of his company. But, that’s what you get for playing tricks.',
     },
     resources: {
+      derive_message: {
+        op_pushdata_heading: 'OP_PUSHDATA',
+        op_pushdata_paragraph_one:
+          "OP_PUSHDATA in Bitcoin script plays a crucial role in facilitating the insertion of arbitrary pieces of data into the blockchain. It is an opcode that allows for the inclusion of data elements of varying sizes, making Bitcoin's scripting language more versatile. This opcode is particularly significant in enabling the implementation of various smart contract functionalities and custom transaction types.",
+      },
       verify_signature: {
         eliptic_curve_heading:
           'Elliptic Curve Digital Signature Algorithm (ECDSA)',
@@ -1009,6 +1014,11 @@ const translations = {
         modular_inverse_heading: 'Modular Inverse',
         modular_inverse_paragraph_one:
           "The modular inverse of a number a modulo m is a number b such that (a * b) % m = 1. Finding the modular inverse is a critical step in ECDSA signature verification. It's used in the calculation of u1 and u2 during the verification process.",
+      },
+      validate_signature: {
+        message_verification_heading: 'Importance of Message Verification',
+        message_verification_paragraph_one:
+          'Message verification enhances the security of communications within the Bitcoin ecosystem. It allows parties to verify the authenticity and integrity of messages, which is valuable in situations where trust and verification are essential, such as in peer-to-peer transactions or communication between parties in a smart contract. Furthermore, message verification serves as a foundation for various applications, including identity verification and the attestation of ownership in decentralized systems. It adds a layer of cryptographic assurance, reinforcing the trustless and decentralized nature of the Bitcoin network. Overall, message verification is a key element in promoting security, trust, and functionality within the Bitcoin ecosystem.',
       },
     },
   },
