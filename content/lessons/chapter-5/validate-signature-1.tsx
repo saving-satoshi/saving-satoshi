@@ -29,19 +29,23 @@ function encode_message(text){
 // Given an ascii-encoded text message, serialize a byte array 
 // with the Bitcoin protocol prefix string followed by the text 
 // and both components preceded by a length byte. 
-// Returns a 32-byte integer.
+// Returns a 32-byte hex value.
 const prefix = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
 
 }
 `,
   validate: async (answer: string) => {
+    const correctAnswer =
+      '73a16290e005b119b9ce0ceea52949f0bd4f925e808b5a54c631702d3fea1242'
+    console.log(typeof answer, typeof correctAnswer)
+    console.log(answer, correctAnswer, answer === correctAnswer)
     if (answer) {
-      if (answer.length === 88) {
+      if (answer == correctAnswer) {
         return [true, 'Nicely Done ']
       }
-      return [false, 'Not a valid 32 byte integer']
+      return [false, 'Not a valid hex value']
     }
-    return [false, '']
+    return [false, 'Return a value']
   },
   constraints: [
     {
@@ -57,7 +61,7 @@ print(encode_message(text))
 print("KILL")`,
   defaultFunction: {
     name: 'encode_message',
-    args: ['prefix', 'text'],
+    args: ['text'],
   },
   defaultCode: `import hashlib 
 # Defined by Bitcoin message signing protocol 
@@ -70,17 +74,20 @@ def encode_message(text):
   # Given an ascii-encoded text message, serialize a byte array 
   # with the Bitcoin protocol prefix string followed by the text 
   # and both components preceded by a length byte. 
-  # Returns a 32-byte integer.
+  # Returns a 32-byte hex value.
+  prefix = "Bitcoin Signed Message:\\n"
 
 `,
   validate: async (answer: string) => {
+    const correctAnswer =
+      '73a16290e005b119b9ce0ceea52949f0bd4f925e808b5a54c631702d3fea1242'
     if (answer) {
-      if (answer.length === 77) {
+      if (answer === correctAnswer) {
         return [true, 'Nicely Done ']
       }
-      return [false, 'Not a valid 32 byte integer']
+      return [false, 'Not a valid hex value']
     }
-    return [false, '']
+    return [false, 'Return a value']
   },
   constraints: [
     {
