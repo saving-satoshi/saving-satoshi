@@ -101,8 +101,7 @@ const python = {
     msg += "00000000"
     # SIGHASH type
     msg += "01000000"
-    return msg
-`,
+    return msg`,
   validate: async () => {
     return [true, undefined]
   },
@@ -251,7 +250,7 @@ export default function DeriveMessageResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`calc(var(--dynamic-height) - 235px)`}
+                  height={`735px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

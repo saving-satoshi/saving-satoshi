@@ -25,7 +25,9 @@ const javascriptChallengeOne = {
     Buffer.from([textBytes.length]),
     textBytes
   ])
-  return vector.toString('hex');
+  const singleHash = Hash('sha256').update(vector).digest();
+  const doubleHash = Hash('sha256').update(singleHash).digest();
+  return doubleHash.toString('hex');
 }`,
   validate: async () => {
     return [true, undefined]
@@ -40,7 +42,12 @@ const pythonChallengeOne = {
     args: [],
   },
   defaultCode: `def encode_message(prefix, text):
-    vector = bytes([len(prefix)]) + bytes(prefix, 'ascii') + bytes([len(text)]) + bytes(text, 'ascii')
+    vector = bytes([len(prefix)]) +
+        bytes(prefix, 'ascii') +
+        bytes([len(text)]) +
+        bytes(text, 'ascii')
+    single_hash = hashlib.new('sha256', vector).digest()
+    double_hash = hashlib.new('sha256', single_hash).digest()
     return vector.hex()`,
   validate: async () => {
     return [true, undefined]
@@ -59,8 +66,7 @@ const javascriptChallengeTwo = {
   const vpSigR = BigInt('0x' + vpSigBytes.slice(1, 33).toString('hex'));
   const vpSigS = BigInt('0x' + vpSigBytes.slice(33).toString('hex'));
   return [vpSigR, vpSigS]
-}
-`,
+}`,
   validate: async () => {
     return [true, undefined]
   },
@@ -77,8 +83,7 @@ const pythonChallengeTwo = {
     vp_sig_bytes = base64.b64decode(vp_sig)
     vp_sig_r = int.from_bytes(vp_sig_bytes[1:33])
     vp_sig_s = int.from_bytes(vp_sig_bytes[33:])
-    return (vp_sig_r, vp_sig_s)
-`,
+    return (vp_sig_r, vp_sig_s)`,
   validate: async () => {
     return [true, undefined]
   },
@@ -190,7 +195,7 @@ export default function VerifySignatureResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`calc(var(--dynamic-height) - 762px)`}
+                  height={'240px'}
                   value={codeOne}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
@@ -220,7 +225,7 @@ export default function VerifySignatureResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`calc(var(--dynamic-height) - 822px)`}
+                  height={`120px`}
                   value={codeTwo}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

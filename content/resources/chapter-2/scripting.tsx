@@ -164,7 +164,7 @@ export default function AddressResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`calc(var(--dynamic-height) - 537px)`}
+                  height={`430px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
