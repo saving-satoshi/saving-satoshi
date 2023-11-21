@@ -13,17 +13,23 @@ export const metadata = {
 }
 
 const javascript = {
-  program: `console.log("KILL")`,
+  program: `
+console.log(findHash(nonce))
+console.log("KILL")`,
   defaultFunction: {
     name: 'findHash',
     args: ['nonce'],
   },
   defaultCode: `const crypto = require('crypto')
+let nonce = 0;
 
 // Create a program that finds a sha256 hash starting with 5 zeroes.
-// To submit your answer, log it to the terminal using console.log().
+// To submit your answer, return it from the function.
 
+function findHash(nonce) {
 // Type your code here
+
+}
 `,
   validate: async (answer) => {
     if (!answer.startsWith('00000')) {
@@ -38,23 +44,27 @@ const javascript = {
   },
   constraints: [
     {
-      range: [5, 1, 7, 1],
+      range: [8, 1, 11, 1],
       allowMultiline: true,
     },
   ],
 }
 
 const python = {
-  program: `print("KILL")`,
+  program: `
+print(find_hash(nonce))
+print("KILL")`,
   defaultFunction: {
     name: 'find_hash',
     args: ['nonce'],
   },
   defaultCode: `from hashlib import sha256
+nonce = 0
 
 # Create a program that finds a sha256 hash starting with 5 zeroes.
-# To submit your answer, print it to the terminal using print().
+// To submit your answer, return it from the function.
 
+def find_hash(nonce):
 # Type your code here
 `,
   validate: async (answer) => {
@@ -70,7 +80,7 @@ const python = {
   },
   constraints: [
     {
-      range: [5, 1, 7, 1],
+      range: [8, 1, 9, 1],
       allowMultiline: true,
     },
   ],
