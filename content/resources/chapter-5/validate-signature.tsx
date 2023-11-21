@@ -11,55 +11,80 @@ import { Text, ResourcePage, ToggleSwitch } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
 
-const javascript = {
+const javascriptChallengeOne = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'findHash',
-    args: ['nonce'],
+    name: 'verify',
+    args: [],
   },
-  defaultCode: [
-    `// First we need to hash the compressedPublicKey with SHA256
-const sha256Hash = crypto.Hash('sha256').update(compressedPublicKey).digest()
-// Then you will need to hash it with ripemd160 this needs to be decoded into hex
-const ripemdHash = crypto.Hash('ripemd160').update(sha256Hash)
-// Finally decode the answer into hex
-const publicKeyHash = ripemdHash.digest('hex')
-console.log(publicKeyHash)`,
-    `// To encode our publicKeyHash we first need to compress it to bytes which we have done for you
-// then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
-// We also need to decide which version to use, in this case version 0 will suffice for segwit
-const bech32Address = encode('tb', 0, compressedPublicKeyHash)
-// Lastly, let's log it to the console
-console.log(bech32Address)`,
-  ],
-  validate: async (answer) => {
+  defaultCode: `function encodeMessage(prefix, text) {
+  const textBytes = Buffer.from(text, 'ascii');
+  const vector = Buffer.concat([
+    Buffer.from([prefix.length]),
+    prefix,
+    Buffer.from([textBytes.length]),
+    textBytes
+  ])
+  const singleHash = Hash('sha256').update(vector).digest();
+  const doubleHash = Hash('sha256').update(singleHash).digest();
+  return doubleHash.toString('hex');
+}`,
+  validate: async () => {
     return [true, undefined]
   },
   constraints: [],
 }
 
-const python = {
+const pythonChallengeOne = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'find_hash',
-    args: ['nonce'],
+    name: 'verify',
+    args: [],
   },
-  defaultCode: [
-    `# First we need to hash the compressed_public_key with SHA256
-sha256_hash = hashlib.new('sha256', compressed_public_key).digest()
-# Then you will need to hash it with ripemd160
-ripemd_hash = hashlib.new('ripemd160', sha256_hash)
-# Finally decode the answer into hex
-public_key_hash = ripemd_hash.hexdigest()
-print(public_key_hash)`,
-    `# To encode our public_key_hash we first need to compress it to bytes which we have done for you
-# then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
-# We also need to decide which version to use, in this case version 0 will suffice for segwit
-bech32_address = encode('tb', 0, compressed_public_key_hash)
-# Lastly, let's print it to the console
-print(bech32_address)`,
-  ],
-  validate: async (answer) => {
+  defaultCode: `def encode_message(prefix, text):
+    vector = bytes([len(prefix)]) +
+        bytes(prefix, 'ascii') +
+        bytes([len(text)]) +
+        bytes(text, 'ascii')
+    single_hash = hashlib.new('sha256', vector).digest()
+    double_hash = hashlib.new('sha256', single_hash).digest()
+    return vector.hex()`,
+  validate: async () => {
+    return [true, undefined]
+  },
+  constraints: [],
+}
+
+const javascriptChallengeTwo = {
+  program: `console.log("KILL")`,
+  defaultFunction: {
+    name: 'verify',
+    args: [],
+  },
+  defaultCode: `function decodeSig(vpSig) {
+  const vpSigBytes = Buffer.from(vpSig, 'base64');
+  const vpSigR = BigInt('0x' + vpSigBytes.slice(1, 33).toString('hex'));
+  const vpSigS = BigInt('0x' + vpSigBytes.slice(33).toString('hex'));
+  return [vpSigR, vpSigS]
+}`,
+  validate: async () => {
+    return [true, undefined]
+  },
+  constraints: [],
+}
+
+const pythonChallengeTwo = {
+  program: `print("KILL")`,
+  defaultFunction: {
+    name: 'verify',
+    args: [],
+  },
+  defaultCode: `def decode_sig(vp_sig):
+    vp_sig_bytes = base64.b64decode(vp_sig)
+    vp_sig_r = int.from_bytes(vp_sig_bytes[1:33])
+    vp_sig_s = int.from_bytes(vp_sig_bytes[33:])
+    return (vp_sig_r, vp_sig_s)`,
+  validate: async () => {
     return [true, undefined]
   },
   constraints: [],
@@ -68,29 +93,33 @@ print(bech32_address)`,
 const configOne: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
-    javascript,
-    python,
+    javascript: javascriptChallengeOne,
+    python: pythonChallengeOne,
   },
 }
 
 const configTwo: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
-    javascript,
-    python,
+    javascript: javascriptChallengeTwo,
+    python: pythonChallengeTwo,
   },
 }
-export default function AddressResources({ lang }) {
+
+export default function VerifySignatureResources({ lang }) {
   const t = useTranslations(lang)
 
-  const [codeOne, setCodeOne] = useState(
-    configOne.languages[configOne.defaultLanguage].defaultCode?.[0]
-  )
-  const [codeTwo, setCodeTwo] = useState(
-    configTwo.languages[configTwo.defaultLanguage].defaultCode?.[1]
-  )
+  const initialStateCodeOne =
+    configOne.languages[configOne.defaultLanguage].defaultCode
+  const [codeOne, setCodeOne] = useState<string>(initialStateCodeOne as string)
+
+  const initialStateCodeTwo =
+    configTwo.languages[configTwo.defaultLanguage].defaultCode
+  const [codeTwo, setCodeTwo] = useState(initialStateCodeTwo as string)
+
   const [languageOne, setLanguageOne] = useState(configOne.defaultLanguage)
   const [languageTwo, setLanguageTwo] = useState(configTwo.defaultLanguage)
+
   const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
   const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
 
@@ -104,12 +133,12 @@ export default function AddressResources({ lang }) {
 
   const handleSetLanguageOne = (value) => {
     setLanguageOne(value)
-    setCodeOne(configOne.languages[value].defaultCode?.[0])
+    setCodeOne(configOne.languages[value].defaultCode as string)
   }
 
   const handleSetLanguageTwo = (value) => {
     setLanguageTwo(value)
-    setCodeTwo(configOne.languages[value].defaultCode?.[1])
+    setCodeTwo(configTwo.languages[value].defaultCode as string)
   }
 
   const handleBeforeMount = (monaco) => {
@@ -134,17 +163,15 @@ export default function AddressResources({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.address.hash_algo_heading')}
+            {t(
+              'chapter_five.resources.validate_signature.message_verification_heading'
+            )}
           </Text>
-          <Text>{t('chapter_four.resources.address.hash_algo_paragraph')}</Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.address.wpkh_heading')}
+          <Text>
+            {t(
+              'chapter_five.resources.validate_signature.message_verification_paragraph_one'
+            )}
           </Text>
-          <Text>{t('chapter_four.resources.address.wpkh_paragraph')}</Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.address.network_heading')}
-          </Text>
-          <Text>{t('chapter_four.resources.address.network_paragraph')}</Text>
         </>
       }
       codeResources={
@@ -163,12 +190,12 @@ export default function AddressResources({ lang }) {
                 languages={configOne.languages}
                 value={languageOne}
                 onChange={handleSetLanguageOne}
-                noHide={true}
+                noHide
               />
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`140px`}
+                  height={'240px'}
                   value={codeOne}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
