@@ -65,7 +65,7 @@ class GE:
 				if E>>D&1:A+=F
 		return A
 	def __rmul__(A,a):
-		if A==G:return FAST_G.mul(a)
+		if A==G:return SECP256K1.FAST_G.mul(a)
 		return GE.mul((a,A))
 	def __neg__(A):
 		if A.infinity:return A
