@@ -112,17 +112,27 @@ key_ge = GE(0x11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5c,0
 # The verify function from step 8: 
 def verify(r, s, key, msg): 
   if r == 0 or r >= GE.ORDER: 
-    print("FALSE - invalid r value") 
+    print("FALSE - invalid r value")
+    return false
   
   if s == 0 or s >= GE.ORDER: 
-    print("FALSE - invalid s value") 
+    print("FALSE - invalid s value")
+    return false
+  # Calculate the inverse of sig_s modulo ORDER
+  sig_s_inverted = pow(sig_s, -1, GE.ORDER)
 
-  sig_s_inverted = pow(s, -1, GE.ORDER) 
-  u1 = (msg * sig_s_inverted) % GE.ORDER 
-  u2 = (r * sig_s_inverted) % GE.ORDER 
-  R = (u1 * G) + (u2 * key) 
+  # Calculate u1 and u2
+  u1 = (msg * sig_s_inverted) % GE.ORDER
+  u2 = (sig_r * sig_s_inverted) % GE.ORDER
 
-  return r == int(R.x) 
+  # Calculate R = u1 * G + u2 * public key
+  # We need to use the appropriate methods for point multiplication and addition
+  R1 = GE.mul((u1, G))
+  R2 = GE.mul((u2, key))
+  R = R1 + R2
+
+  # Verify if the x-coordinate of R modulo ORDER is equal to sig_r
+  return sig_r == int(R.x) % GE.ORDER
 `,
   validate: async (answer) => {
     // NO VALIDATION REQUIRED - THIS ISN'T EDITABLE BY THE USER
