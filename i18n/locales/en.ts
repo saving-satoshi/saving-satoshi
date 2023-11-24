@@ -990,6 +990,16 @@ const translations = {
           'Complete the function <span className="italic">decode_sig()</span>. It should return a tuple with the (r, s) values.',
       },
     },
+    validate_signature_four: {
+      title: 'Validate the signature',
+      heading: 'How did Vanderpoole even create that signature?',
+      paragraph_one:
+        'Holocat chimes in and says a defector in BitRey has sent us the actual address he used, which is definitely not the satoshi address!',
+      paragraph_two: 'with corresponding public key:',
+      paragraph_three:
+        "Can you verify Vanderpoole's message and signature using THIS key?",
+      success: 'The signature is valid!',
+    },
     outro_one: {
       title: 'Outro',
       heading: 'Vanderpoole lied!',
