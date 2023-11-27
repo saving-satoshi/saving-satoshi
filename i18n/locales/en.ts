@@ -990,6 +990,13 @@ const translations = {
           'Complete the function <span className="italic">decode_sig()</span>. It should return a tuple with the (r, s) values.',
       },
     },
+    validate_signature_three: {
+      title: 'Validate the signature',
+      heading: 'So, is Vanderpoole a liar?!',
+      paragraph_one:
+        "There isn't much left to do except plug everything in and run the program! Drumroll please...",
+      success: 'Signature is not valid',
+    },
     outro_one: {
       title: 'Outro',
       heading: 'Vanderpoole lied!',
