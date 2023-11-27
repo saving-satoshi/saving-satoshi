@@ -252,7 +252,7 @@ export default function VerifySignatureResources({ lang }) {
 
   const handleSetLanguageFour = (value) => {
     setLanguageFour(value)
-    setCodeTwo(configFour.languages[value].defaultCode as string)
+    setCodeFour(configFour.languages[value].defaultCode as string)
   }
 
   const handleBeforeMount = (monaco) => {
