@@ -10,7 +10,6 @@ import { EditorConfig } from 'types'
 import { Text, ResourcePage, ToggleSwitch } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
-import { useAuthContext } from 'providers/AuthProvider'
 
 const javascript = {
   program: `console.log("KILL")`,
@@ -98,7 +97,6 @@ const configTwo: EditorConfig = {
 
 export default function PublicKeyResources({ lang }) {
   const t = useTranslations(lang)
-  const { account } = useAuthContext()
 
   const [codeOne, setCodeOne] = useState(
     configOne.languages[configOne.defaultLanguage].defaultCode?.[0]

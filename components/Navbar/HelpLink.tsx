@@ -62,6 +62,7 @@ export default function HelpLink({ params }: { params: any }) {
             'relative flex h-full w-[50px] cursor-pointer items-center justify-center border-r border-white/25 text-center font-nunito text-xl font-semibold text-white transition duration-100 ease-in-out hover:bg-black/25 md:w-[70px]',
             { 'bg-black/25 text-opacity-100': isRouteHelp }
           )}
+          target="_blank"
           href={`${chaptersUrl}/${chapterKey}/${lessonId}/help`}
         >
           <span className="sr-only">Need help</span>?

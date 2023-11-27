@@ -7,7 +7,7 @@ import { Loader } from 'shared'
 import MonacoEditor from '@monaco-editor/react'
 
 import { EditorConfig } from 'types'
-import { Text, ResourcePage, ToggleSwitch } from 'ui'
+import { Text, ResourcePage, ToggleSwitch, CodeExample } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
 
@@ -17,7 +17,14 @@ const javascriptChallengeOne = {
     name: 'verify',
     args: [],
   },
-  defaultCode: ``,
+  defaultCode: `function msg_to_integer(msg) {
+  // Given a hex string to sign, convert that string to bytes,
+  // double-SHA256 the bytes and then return a BigInt() from the 32-byte digest.
+  const bytes = Buffer.from(msg, 'hex');
+  const single_hash = Hash('sha256').update(bytes).digest();
+  const double_hash = Hash('sha256').update(single_hash).digest();
+  return BigInt('0x' + double_hash.toString('hex'));
+}`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -35,7 +42,12 @@ const pythonChallengeOne = {
     name: 'verify',
     args: [],
   },
-  defaultCode: ``,
+  defaultCode: `def msg_to_integer(msg):
+    # Given a hex string to sign, convert that string to bytes,
+    # double-SHA256 the bytes and then return an integer from the 32-byte digest.
+    single_hash = hashlib.new('sha256', bytes.fromhex(msg)).digest()
+    double_hash = hashlib.new('sha256', single_hash).digest()
+    return int.from_bytes(double_hash, "big")`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -47,7 +59,7 @@ const pythonChallengeOne = {
   ],
 }
 
-const javascriptChallengeTwo = {
+const javascriptChallengeFour = {
   program: `console.log("KILL")`,
   defaultFunction: {
     name: 'verify',
@@ -128,7 +140,7 @@ function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
   ],
 }
 
-const pythonChallengeTwo = {
+const pythonChallengeFour = {
   program: `print("KILL")`,
   defaultFunction: {
     name: 'verify',
@@ -194,11 +206,11 @@ const configOne: EditorConfig = {
   },
 }
 
-const configTwo: EditorConfig = {
+const configFour: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
-    javascript: javascriptChallengeTwo,
-    python: pythonChallengeTwo,
+    javascript: javascriptChallengeFour,
+    python: pythonChallengeFour,
   },
 }
 
@@ -207,13 +219,15 @@ export default function VerifySignatureResources({ lang }) {
   const initialStateCodeOne =
     configOne.languages[configOne.defaultLanguage].defaultCode
   const [codeOne, setCodeOne] = useState<string>(initialStateCodeOne as string)
-  const initialStateCodeTwo =
-    configTwo.languages[configTwo.defaultLanguage].defaultCode
-  const [codeTwo, setCodeTwo] = useState(initialStateCodeTwo as string)
+  const initialStateCodeFour =
+    configFour.languages[configFour.defaultLanguage].defaultCode
+  const [codeFour, setCodeFour] = useState(initialStateCodeFour as string)
   const [languageOne, setLanguageOne] = useState(configOne.defaultLanguage)
-  const [languageTwo, setLanguageTwo] = useState(configTwo.defaultLanguage)
+  const [languageFour, setLanguageFour] = useState(configFour.defaultLanguage)
   const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
   const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
+  const [challengeThreeIsToggled, setChallengeThreeIsToggled] = useState(false)
+  const [challengeFourIsToggled, setChallengeFourIsToggled] = useState(false)
 
   const challengeOneToggleSwitch = () => {
     setChallengeOneIsToggled(!challengeOneIsToggled)
@@ -223,14 +237,22 @@ export default function VerifySignatureResources({ lang }) {
     setChallengeTwoIsToggled(!challengeTwoIsToggled)
   }
 
+  const challengeThreeToggleSwitch = () => {
+    setChallengeThreeIsToggled(!challengeThreeIsToggled)
+  }
+
+  const challengeFourToggleSwitch = () => {
+    setChallengeFourIsToggled(!challengeFourIsToggled)
+  }
+
   const handleSetLanguageOne = (value) => {
     setLanguageOne(value)
     setCodeOne(configOne.languages[value].defaultCode as string)
   }
 
-  const handleSetLanguageTwo = (value) => {
-    setLanguageTwo(value)
-    setCodeTwo(configTwo.languages[value].defaultCode as string)
+  const handleSetLanguageFour = (value) => {
+    setLanguageFour(value)
+    setCodeTwo(configFour.languages[value].defaultCode as string)
   }
 
   const handleBeforeMount = (monaco) => {
@@ -353,21 +375,69 @@ export default function VerifySignatureResources({ lang }) {
             <Text>{t('help_page.spoilers_confirm')}</Text>
           </div>
           {challengeTwoIsToggled && (
+            <div className="text-white">
+              <Text>R coordinate</Text>
+              <CodeExample
+                copy
+                language="bash"
+                code="0x4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41"
+              />
+              <Text className="mt-2">S Coordinate</Text>
+              <CodeExample
+                copy
+                language="bash"
+                code="0x181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09"
+              />
+            </div>
+          )}
+          <Text>{t('help_page.solution_three')}</Text>
+          <div className="flex flex-row items-center gap-2">
+            <ToggleSwitch
+              checked={challengeThreeIsToggled}
+              onChange={challengeThreeToggleSwitch}
+            />
+            <Text>{t('help_page.spoilers_confirm')}</Text>
+          </div>
+          {challengeThreeIsToggled && (
+            <div className="text-white">
+              <Text>x Coordinate</Text>
+              <CodeExample
+                copy
+                language="bash"
+                code="0x11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5c"
+              />
+              <Text className="mt-2">y Coordinate</Text>
+              <CodeExample
+                copy
+                language="bash"
+                code="0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3"
+              />
+            </div>
+          )}
+          <Text>{t('help_page.solution_four')}</Text>
+          <div className="flex flex-row items-center gap-2">
+            <ToggleSwitch
+              checked={challengeFourIsToggled}
+              onChange={challengeFourToggleSwitch}
+            />
+            <Text>{t('help_page.spoilers_confirm')}</Text>
+          </div>
+          {challengeFourIsToggled && (
             <div className="border border-white/25">
               <LanguageTabs
-                languages={configTwo.languages}
-                value={languageTwo}
-                onChange={handleSetLanguageTwo}
+                languages={configFour.languages}
+                value={languageFour}
+                onChange={handleSetLanguageFour}
                 noHide
               />
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
                   height={`1130px`}
-                  value={codeTwo}
+                  value={codeFour}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
-                  language={languageTwo}
+                  language={languageFour}
                   theme={'satoshi'}
                   options={readOnlyOptions}
                 />
