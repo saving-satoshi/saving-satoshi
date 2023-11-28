@@ -898,6 +898,14 @@ const translations = {
         'output #1 scriptPubKey (Satoshi’s own public key again, for change):',
       success_message_line_thirteen: 'locktime:',
     },
+    derive_message_seven: {
+      paragraph_one:
+        "It's impossible to sign a message containing it's own signature, so the scriptSig needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.",
+      paragraph_two:
+        'We already found the scriptPubKey in the previous step, you can paste that in the first blank.',
+      paragraph_three:
+        'The last thing we need for our transaction message is a "<span className="font-bold">sighash type flag</span>." We\'ll cover this more in the next chapter but for now we\'ll just add the value <span className="font-bold">01000000</span> to the end of the message.',
+    },
     verify_signature_one: {
       title: 'Verify the signature',
       heading: 'Finally we have a message!',
@@ -989,6 +997,23 @@ const translations = {
         paragraph_two:
           'Complete the function <span className="italic">decode_sig()</span>. It should return a tuple with the (r, s) values.',
       },
+    },
+    validate_signature_three: {
+      title: 'Validate the signature',
+      heading: 'So, is Vanderpoole a liar?!',
+      paragraph_one:
+        "There isn't much left to do except plug everything in and run the program! Drumroll please...",
+      success: 'Signature is not valid',
+    },
+    validate_signature_four: {
+      title: 'Validate the signature',
+      heading: 'How did Vanderpoole even create that signature?',
+      paragraph_one:
+        'Holocat chimes in and says a defector in BitRey has sent us the actual address he used, which is definitely not the satoshi address!',
+      paragraph_two: 'with corresponding public key:',
+      paragraph_three:
+        "Can you verify Vanderpoole's message and signature using THIS key?",
+      success: 'The signature is valid!',
     },
     outro_one: {
       title: 'Outro',
