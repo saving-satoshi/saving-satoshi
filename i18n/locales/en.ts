@@ -898,6 +898,14 @@ const translations = {
         'output #1 scriptPubKey (Satoshi’s own public key again, for change):',
       success_message_line_thirteen: 'locktime:',
     },
+    derive_message_seven: {
+      paragraph_one:
+        "It's impossible to sign a message containing it's own signature, so the scriptSig needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.",
+      paragraph_two:
+        'We already found the scriptPubKey in the previous step, you can paste that in the first blank.',
+      paragraph_three:
+        'The last thing we need for our transaction message is a "<span className="font-bold">sighash type flag</span>." We\'ll cover this more in the next chapter but for now we\'ll just add the value <span className="font-bold">01000000</span> to the end of the message.',
+    },
     verify_signature_one: {
       title: 'Verify the signature',
       heading: 'Finally we have a message!',
