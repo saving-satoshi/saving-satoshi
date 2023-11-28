@@ -9,7 +9,7 @@ import { secp256k1 } from 'ui/lesson/ScriptingChallenge/library'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_four.title',
-  key: 'CH5VLS3',
+  key: 'CH5VLS4',
 }
 
 const javascript = {
