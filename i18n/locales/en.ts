@@ -1004,6 +1004,7 @@ const translations = {
       paragraph_one:
         "There isn't much left to do except plug everything in and run the program! Drumroll please...",
       success: 'Signature is not valid',
+    },
     validate_signature_four: {
       title: 'Validate the signature',
       heading: 'How did Vanderpoole even create that signature?',
