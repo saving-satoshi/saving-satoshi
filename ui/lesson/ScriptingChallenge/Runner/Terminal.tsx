@@ -5,13 +5,9 @@ import Convert from 'ansi-to-html'
 function Terminal(
   {
     className,
-    successStyle,
+    
   }: {
     className?: string
-    successStyle?: {
-      backgroundColor?: string
-      fontSize?: string
-    }
   },
   ref
 ) {
@@ -30,9 +26,7 @@ function Terminal(
                   body {
                     padding: 16px;
                     margin:0;
-                    background-color: ${
-                      successStyle?.backgroundColor || 'default'
-                    }; 
+                   
                     }
                   .output {
                     font-family: monospace;
@@ -48,15 +42,32 @@ function Terminal(
                   }
 
                   .output .error {
-                    color: #C40008;
+                    color: white;
                   }
-
-                  .output .success {
-                    color: #00B400;
-                     }
-
-                  .output .log {
+                  .success {
+                    color: white;
+                  }  
+                  .output .success:nth-child(3) {
+                    color: white;
+                    font-size: 18px;
+                    font-weight: 700;
+                    margin-top: 15px;
+                      }
+                     
+                  .log {
+                    color: white;
+                  }
+                  .output .log:first-child {
                     color:white;
+                    font-size: 18px;
+                    font-weight: 700;
+                  }
+                  
+                  .success-background {
+                    background-color: #28B12340;
+                  }
+                  .error-background {
+                    background-color: #D01C1640;
                   }
                 </style>
                 <div class="output"></div>
@@ -64,7 +75,7 @@ function Terminal(
                   const output = document.querySelector('.output')
                   window.addEventListener('message', e => {
                     const {action,payload} =JSON.parse(e.data)
-                    console.log("Received in iframe:", e.data);
+                    
                     switch(action) {
                       case 'print': {
                         output.innerHTML += "<div class='log'>"+payload+"</div>"
@@ -72,12 +83,13 @@ function Terminal(
                         break
                       }
                       case 'error': {
-                        output.innerHTML += "<div class='error'>Error: "+payload+"</div>"
+                        document.body.classList.add("error-background")
+                        output.innerHTML += "<div class='error'>"+payload+"</div>"
                         output.parentElement.scrollTop = output.scrollHeight
                         break
                       }
                       case 'success': {
-
+                        document.body.classList.add("success-background")  
                         output.innerHTML += "<div class='success'>"+payload+"</div>"
                         output.parentElement.scrollTop = output.scrollHeight
                         break

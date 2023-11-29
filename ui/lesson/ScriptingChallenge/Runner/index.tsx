@@ -101,7 +101,7 @@ export default function Runner({
       setHasherState(HasherState.Running)
 
       sendTerminal('clear')
-      sendTerminal('print', 'Script output:')
+      sendTerminal('print', t('runner.result'))
 
       if (ws) {
         ws.close()
@@ -123,7 +123,7 @@ export default function Runner({
             const error = payload.message.trim()
             const lines = error.split('\n')
             lines.forEach((line) =>
-              sendTerminal('print', line.replace(' ', '&nbsp;'))
+              sendTerminal('error', line.replace(' ', '&nbsp;'))
             )
             setHasherState(HasherState.Error)
             setIsRunning(false)
@@ -153,7 +153,7 @@ export default function Runner({
             success = true
             setIsRunning(false)
             setHasherState(HasherState.Success)
-            sendTerminal('success', `${payload}`)
+            sendTerminal('success', t('runner.evaluation'))
             sendTerminal('success', successMessage)
             ws?.close()
             break
