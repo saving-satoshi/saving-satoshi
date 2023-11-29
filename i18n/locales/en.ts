@@ -1005,6 +1005,16 @@ const translations = {
         "There isn't much left to do except plug everything in and run the program! Drumroll please...",
       success: 'Signature is not valid',
     },
+    validate_signature_four: {
+      title: 'Validate the signature',
+      heading: 'How did Vanderpoole even create that signature?',
+      paragraph_one:
+        'Holocat chimes in and says a defector in BitRey has sent us the actual address he used, which is definitely not the satoshi address!',
+      paragraph_two: 'with corresponding public key:',
+      paragraph_three:
+        "Can you verify Vanderpoole's message and signature using THIS key?",
+      success: 'The signature is valid!',
+    },
     outro_one: {
       title: 'Outro',
       heading: 'Vanderpoole lied!',
