@@ -62,7 +62,7 @@ print("KILL")`,
 nonce = 0
 
 # Create a program that finds a sha256 hash starting with 5 zeroes.
-// To submit your answer, return it from the function.
+# To submit your answer, return it from the function.
 
 def find_hash(nonce):
 # Type your code here

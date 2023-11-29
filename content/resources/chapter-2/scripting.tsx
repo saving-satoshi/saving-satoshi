@@ -18,28 +18,18 @@ const javascript = {
     args: ['nonce'],
   },
   defaultCode: [
-    `function sha256_digest(nonce) {
-    // Create a 4-byte UInt32 buffer
-    const buf = Buffer.alloc(4);
-    // Write the nonce as an integer into the buffer
-    buf.writeUInt32LE(nonce);
-    // Digest the 4-byte buffer with SHA256
-    const hash = crypto.createHash('sha256').update(buf).digest();
-    // Return hash as a hex string
-    return hash.toString('hex')
-}
-
-// Lets initialize the hash here as an empty string
+    `function findHash(nonce) {
 let hash = '';
-// Lets initialize the nonce here as a number 0
-let nonce = 0;
+
 // while the hash does not start with 5 zeroes we want the prgram to repeat
-while (hash.substring(0, 5) !== '00000') {
+  while (hash.substring(0, 5) !== '00000') {
     // Hash the nonce using the crypto library and then increment the nonce
-    hash = sha256_digest(nonce);
+    hash = crypto.createHash('sha256').update(nonce.toString()).digest('hex');
+
     nonce++;
-}
-console.log(hash)`,
+  }
+  return hash
+}`,
   ],
   validate: async (answer) => {
     return [true, undefined]
@@ -54,22 +44,19 @@ const python = {
     args: ['nonce'],
   },
   defaultCode: [
-    `def sha256_digest(nonce):
+    `def find_hash(nonce):
+    # Lets initialize the hash here as an empty string
+    hash = ''
+
     # Write the nonce as a string
     encoded_nonce = str(nonce).encode()
-    # Digest the encoded string with SHA256
-    return sha256(encoded_nonce).digest().hex()
 
-# Lets initialize the hash here as an empty string
-hash = ''
-# Lets initialize the nonce here as a number 0
-nonce = 0
-# while the hash does not start with 5 zeroes we want the prgram to repeat
-while hash[0:5] != '00000':
-    # Hash the nonce using the crypto library and then increment the nonce
-    hash = sha256_digest(nonce)
-    nonce = nonce + 1
-print(hash)`,
+    # while the hash does not start with 5 zeroes we want the prgram to repeat
+    while hash[0:5] != '00000':
+        # Hash the nonce using the crypto library and then increment the nonce
+        hash = sha256(encoded_nonce).digest().hex()
+        nonce = nonce + 1
+    return hash`,
   ],
   validate: async (answer) => {
     return [true, undefined]
@@ -164,7 +151,7 @@ export default function AddressResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`430px`}
+                  height={`250px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
