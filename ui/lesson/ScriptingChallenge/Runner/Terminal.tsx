@@ -22,7 +22,6 @@ function Terminal({ className }: { className?: string }, ref) {
                   .output {
                     font-family: monospace;
                     color: white;
-                    font-size: 12px;
                   }
 
                   div.output > div > span {
@@ -33,15 +32,36 @@ function Terminal({ className }: { className?: string }, ref) {
                   }
 
                   .output .error {
-                    color: #C40008;
+                    color: white;
                   }
 
-                  .output .success {
-                    color: #00B400;
+                  .success {
+                    color: white;
+                  }  
+
+                  .output .success:nth-child(3) {
+                    color: white;
+                    font-size: 18px;
+                    font-weight: 700;
+                    margin-top: 15px;
+                      }
+                     
+                  .log {
+                    color: white;
                   }
 
-                  .output .log {
+                  .output .log:first-child {
                     color:white;
+                    font-size: 18px;
+                    font-weight: 700;
+                  }
+                  
+                  .success-background {
+                    background-color: #28B12340;
+                  }
+
+                  .error-background {
+                    background-color: #D01C1640;
                   }
                 </style>
                 <div class="output"></div>
@@ -57,11 +77,14 @@ function Terminal({ className }: { className?: string }, ref) {
                         break
                       }
                       case 'error': {
-                        output.innerHTML += "<div class='error'>Error: "+payload+"</div>"
+                        document.body.classList.add("error-background")
+                        output.innerHTML += "<div class='error'>"+payload+"</div>"
                         output.parentElement.scrollTop = output.scrollHeight
                         break
                       }
                       case 'success': {
+                        document.body.classList.remove("error-background")
+                        document.body.classList.add("success-background")
                         output.innerHTML += "<div class='success'>"+payload+"</div>"
                         output.parentElement.scrollTop = output.scrollHeight
                         break
