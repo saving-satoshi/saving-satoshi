@@ -43,10 +43,6 @@ export default function ScriptingChallenge({
   successMessage: string
   saveData?: boolean
   onSelectLanguage: (language: string) => void
-  successStyle: {
-    backgroundColor?: string
-    fontSize?: string
-  }
 }) {
   const { saveProgress, saveProgressLocal } = useProgressContext()
   const { account } = useAuthContext()

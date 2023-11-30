@@ -18,7 +18,7 @@ function Terminal({ className }: { className?: string }, ref) {
                   body {
                     padding: 16px;
                     margin:0;
-                    }
+                  }
                   .output {
                     font-family: monospace;
                     color: white;
@@ -34,9 +34,11 @@ function Terminal({ className }: { className?: string }, ref) {
                   .output .error {
                     color: white;
                   }
+
                   .success {
                     color: white;
                   }  
+
                   .output .success:nth-child(3) {
                     color: white;
                     font-size: 18px;
