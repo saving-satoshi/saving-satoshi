@@ -79,7 +79,7 @@ function hashCompressed(compressed) {
 
   const python = {
     program: `
-print(hash_compressed(${prevData?.data && dataObject}))
+print(hash_compressed('${prevData?.data && dataObject}'))
 print("KILL")`,
     defaultFunction: {
       name: 'hash_compressed',
