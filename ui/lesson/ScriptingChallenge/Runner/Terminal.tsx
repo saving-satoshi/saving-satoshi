@@ -67,6 +67,7 @@ function Terminal({ className }: { className?: string }, ref) {
                 <div class="output"></div>
                 <script>
                   const output = document.querySelector('.output')
+
                   window.addEventListener('message', e => {
                     const {action,payload} =JSON.parse(e.data)
                     switch(action) {
@@ -82,7 +83,8 @@ function Terminal({ className }: { className?: string }, ref) {
                         break
                       }
                       case 'success': {
-                        document.body.classList.add("success-background")  
+                        document.body.classList.remove("error-background")
+                        document.body.classList.add("success-background")
                         output.innerHTML += "<div class='success'>"+payload+"</div>"
                         output.parentElement.scrollTop = output.scrollHeight
                         break
