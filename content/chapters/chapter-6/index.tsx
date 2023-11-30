@@ -6,22 +6,7 @@ export default function Chapter6({ lang }) {
 
   return (
     <Chapter metadata={metadata} lang={lang}>
-      <Text>
-        You get a phone call. It’s the reporter. He tracked down Vanderpoole who
-        is hiding on one of his private islands and plotting his revenge.
-      </Text>
-
-      <Text>
-        Ever since you discredited Vanderpoole, investors have been selling
-        Amestris shares en masse and decreasing his net worth. He’s really not
-        that rich, after all, and now he is trying to claim your UTXOs belong to
-        him.
-      </Text>
-
-      <Text>
-        The reporter tells you to stay safe, but you’re not too worried. You
-        hang up the phone, but there’s a problem: it’s been hacked.
-      </Text>
+      <Text>{t('chapter_six.paragraph_one')}</Text>
     </Chapter>
   )
 }
@@ -31,8 +16,20 @@ export const metadata = {
   slug: 'chapter-6',
   title: 'chapter_six.title',
   image: '/assets/images/chapter-6-cover.jpg',
-  intros: [],
-  lessons: [],
-  outros: [],
-  challenges: [],
+  intros: ['intro-1', 'intro-2'],
+  lessons: [
+    'in-out-1',
+    'in-out-2',
+    'in-out-3',
+    'in-out-4',
+    'in-out-5',
+    'put-it-together-1',
+    'put-it-together-2',
+    'put-it-together-3',
+    'put-it-together-4',
+    'put-it-together-5',
+    'put-it-together-6',
+  ],
+  outros: ['outro-1'],
+  challenges: ['in-out-1', 'put-it-together-1'],
 }

@@ -67,6 +67,21 @@ export const keys = [
   'CH5VLS3',
   'CH5VLS4',
   'CH5OUT1',
+
+  'CH6INT1',
+  'CH6INT2',
+  'CH6INO1',
+  'CH6INO2',
+  'CH6INO3',
+  'CH6INO4',
+  'CH6INO5',
+  'CH6PUT1',
+  'CH6PUT2',
+  'CH6PUT3',
+  'CH6PUT4',
+  'CH6PUT5',
+  'CH6PUT6',
+  'CH6OUT1',
 ]
 
 export const keysMeta = {
@@ -136,6 +151,21 @@ export const keysMeta = {
   CH5VLS3: { path: '/chapter-5/validate-signature-3' },
   CH5VLS4: { path: '/chapter-5/validate-signature-4' },
   CH5OUT1: { path: '/chapter-5/outro-1' },
+
+  CH6INT1: { path: '/chapter-6/intro-1' },
+  CH6INT2: { path: '/chapter-6/intro-2' },
+  CH6INO1: { path: '/chapter-6/in-out-1' },
+  CH6INO2: { path: '/chapter-6/in-out-2' },
+  CH6INO3: { path: '/chapter-6/in-out-3' },
+  CH6INO4: { path: '/chapter-6/in-out-4' },
+  CH6INO5: { path: '/chapter-6/in-out-5' },
+  CH6PUT1: { path: '/chapter-6/put-it-together-1' },
+  CH6PUT2: { path: '/chapter-6/put-it-together-2' },
+  CH6PUT3: { path: '/chapter-6/put-it-together-3' },
+  CH6PUT4: { path: '/chapter-6/put-it-together-4' },
+  CH6PUT5: { path: '/chapter-6/put-it-together-5' },
+  CH6PUT6: { path: '/chapter-6/put-it-together-6' },
+  CH6OUT1: { path: '/chapter-6/outro-1' },
 }
 
 export const isLessonUnlocked = (
