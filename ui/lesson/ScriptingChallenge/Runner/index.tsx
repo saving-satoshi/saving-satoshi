@@ -46,7 +46,6 @@ export default function Runner({
   lang,
   successMessage,
   setErrors,
-  successStyle,
 }: {
   language: string
   code?: string
@@ -57,10 +56,6 @@ export default function Runner({
   lang: string
   successMessage: string
   setErrors: (errors: string[]) => void
-  successStyle?: {
-    backgroundColor?: string
-    fontSize?: string
-  }
 }) {
   const t = useTranslations(lang)
   const { activeView } = useLessonContext()
@@ -111,7 +106,6 @@ export default function Runner({
       ws.onopen = () => send('repl', { code: `${code}\n${program}`, language })
       ws.onmessage = async (e) => {
         let { type, payload } = JSON.parse(e.data)
-        console.log(type)
         switch (type) {
           case 'status': {
             if (payload === 'running') {
@@ -264,7 +258,6 @@ export default function Runner({
               [State.Running, State.Error, State.Complete].indexOf(state) ===
               -1,
           })}
-          successStyle={success ? successStyle : undefined}
         />
       </div>
 

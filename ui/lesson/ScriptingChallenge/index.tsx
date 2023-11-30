@@ -35,7 +35,6 @@ export default function ScriptingChallenge({
   successMessage,
   saveData,
   onSelectLanguage,
-  successStyle,
 }: {
   children?: React.ReactNode
   lang: string
@@ -150,7 +149,6 @@ export default function ScriptingChallenge({
             setErrors={setErrors}
             onValidate={handleRunnerValidate}
             successMessage={successMessage}
-            successStyle={successStyle}
           />
         </div>
       </Lesson>

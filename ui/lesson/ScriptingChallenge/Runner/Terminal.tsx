@@ -2,15 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 import Convert from 'ansi-to-html'
 
-function Terminal(
-  {
-    className,
-    
-  }: {
-    className?: string
-  },
-  ref
-) {
+function Terminal({ className }: { className?: string }, ref) {
   return (
     <iframe
       // @ts-ignore
@@ -26,13 +18,11 @@ function Terminal(
                   body {
                     padding: 16px;
                     margin:0;
-                   
                     }
                   .output {
                     font-family: monospace;
-                    color: black;
-                   
-                          }
+                    color: white;
+                  }
 
                   div.output > div > span {
                       font-family: monospace;
@@ -57,6 +47,7 @@ function Terminal(
                   .log {
                     color: white;
                   }
+
                   .output .log:first-child {
                     color:white;
                     font-size: 18px;
@@ -66,6 +57,7 @@ function Terminal(
                   .success-background {
                     background-color: #28B12340;
                   }
+
                   .error-background {
                     background-color: #D01C1640;
                   }
@@ -75,7 +67,6 @@ function Terminal(
                   const output = document.querySelector('.output')
                   window.addEventListener('message', e => {
                     const {action,payload} =JSON.parse(e.data)
-                    
                     switch(action) {
                       case 'print': {
                         output.innerHTML += "<div class='log'>"+payload+"</div>"
