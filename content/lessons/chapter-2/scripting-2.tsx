@@ -1,5 +1,6 @@
 'use client'
 
+import * as crypto from 'crypto'
 import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
@@ -14,19 +15,18 @@ export const metadata = {
 
 const javascript = {
   program: `
-console.log(findHash(nonce))
+console.log(findHash())
 console.log("KILL")`,
   defaultFunction: {
     name: 'findHash',
     args: ['nonce'],
   },
   defaultCode: `const crypto = require('crypto')
-let nonce = 0;
 
 // Create a program that finds a sha256 hash starting with 5 zeroes.
 // To submit your answer, return it from the function.
 
-function findHash(nonce) {
+function findHash() {
 // Type your code here
 
 }
@@ -44,7 +44,7 @@ function findHash(nonce) {
   },
   constraints: [
     {
-      range: [8, 1, 11, 1],
+      range: [7, 1, 10, 1],
       allowMultiline: true,
     },
   ],
@@ -52,19 +52,18 @@ function findHash(nonce) {
 
 const python = {
   program: `
-print(find_hash(nonce))
+print(find_hash())
 print("KILL")`,
   defaultFunction: {
     name: 'find_hash',
     args: ['nonce'],
   },
   defaultCode: `from hashlib import sha256
-nonce = 0
 
 # Create a program that finds a sha256 hash starting with 5 zeroes.
 # To submit your answer, return it from the function.
 
-def find_hash(nonce):
+def find_hash():
 # Type your code here
 `,
   validate: async (answer) => {
@@ -80,7 +79,7 @@ def find_hash(nonce):
   },
   constraints: [
     {
-      range: [8, 1, 9, 1],
+      range: [7, 1, 8, 1],
       allowMultiline: true,
     },
   ],
