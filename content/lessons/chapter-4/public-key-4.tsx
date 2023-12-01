@@ -54,7 +54,9 @@ export default function PublicKey4({ lang }) {
   }
 
   const javascript = {
-    program: `console.log("KILL")`,
+    program: `
+console.log(compressPublicKey(${prevData?.data && dataObject}))
+console.log("KILL")`,
     defaultFunction: {
       name: 'compressPublicKey',
       args: ['publicKey'],
@@ -64,7 +66,6 @@ export default function PublicKey4({ lang }) {
 // Determine if the y coordinate is even or odd and prepend the
 // corresponding header byte to the x coordinate.
 // Return 33-byte Buffer
-// To submit your answer, log it to the terminal using console.log().
 function compressPublicKey(publicKey) {
   const header_byte = {
     'y_is_even': Buffer.from([2]),
@@ -88,14 +89,16 @@ function compressPublicKey(publicKey) {
     },
     constraints: [
       {
-        range: [7, 1, 14, 1],
+        range: [6, 1, 13, 1],
         allowMultiline: true,
       },
     ],
   }
 
   const python = {
-    program: `print("KILL")`,
+    program: `
+print(compress_publickey(${prevData?.data && dataObject}))
+print("KILL")`,
     defaultFunction: {
       name: 'compress_publickey',
       args: ['publicKey'],
@@ -105,7 +108,6 @@ function compressPublicKey(publicKey) {
 # Determine if the y coordinate is even or odd and prepend
 # the corresponding header byte to the x coordinate.
 # Return 33-byte array
-# To submit your answer, print it to the terminal using print().
 def compress_publickey(public_key):
     header_byte = {
           "y_is_even": bytes([2]),
@@ -127,7 +129,7 @@ def compress_publickey(public_key):
     },
     constraints: [
       {
-        range: [7, 1, 12, 1],
+        range: [6, 1, 11, 1],
         allowMultiline: true,
       },
     ],

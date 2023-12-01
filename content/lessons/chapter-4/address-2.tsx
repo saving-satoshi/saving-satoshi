@@ -29,7 +29,9 @@ export default function Address2({ lang }) {
   }, [])
 
   const javascript = {
-    program: `console.log("KILL")`,
+    program: `
+console.log(hashCompressed('${prevData?.data && dataObject}'))
+console.log("KILL")`,
     defaultFunction: {
       name: 'hash_compressed',
       args: ['compressed'],
@@ -41,9 +43,12 @@ ${prevData?.data && 'compressedPublicKey = ' + "'" + dataObject + "'"}
 // Get the sha256 digest of the compressed public key.
 // Then get the ripemd160 digest of that sha256 hash
 // Return 20-byte array
-// To submit your answer, log it to the terminal using console.log().
+function hashCompressed(compressed) {
+
+}
 `,
     validate: async (answer) => {
+      console.log(dataObject, answer)
       if (answer.startsWith('<Buffer')) {
         return [false, 'Ensure you are properly decoding your answer']
       }
@@ -66,14 +71,16 @@ ${prevData?.data && 'compressedPublicKey = ' + "'" + dataObject + "'"}
     },
     constraints: [
       {
-        range: [9, 1, 9, 1],
+        range: [9, 1, 11, 1],
         allowMultiline: true,
       },
     ],
   }
 
   const python = {
-    program: `print("KILL")`,
+    program: `
+print(hash_compressed('${prevData?.data && dataObject}'))
+print("KILL")`,
     defaultFunction: {
       name: 'hash_compressed',
       args: ['compressed'],
@@ -85,7 +92,7 @@ ${prevData?.data && 'compressed_public_key = ' + "'" + dataObject + "'"}
 # Get the sha256 digest of the compressed public key.
 # Then get the ripemd160 digest of that sha256 hash
 # Return 20-byte array
-# To submit your answer, log it to the terminal using print().
+def hash_compressed(compressed_public_key):
 `,
     validate: async (answer) => {
       if (answer.startsWith("b'")) {

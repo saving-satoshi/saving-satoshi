@@ -10,7 +10,6 @@ import { EditorConfig } from 'types'
 import { Text, ResourcePage, ToggleSwitch } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
-import { useAuthContext } from 'providers/AuthProvider'
 
 const javascript = {
   program: `console.log("KILL")`,
@@ -19,27 +18,29 @@ const javascript = {
     args: ['nonce'],
   },
   defaultCode: [
-    `// First your private key will need to be encoded into an integer from a hex string.
-const encodedPrivateKey = BigInt(0x\${privateKey})
-// From the library you need to use the .mul() method to multiply G by your private key
-const generatorPoint = G.mul(encodedPrivateKey)
-// Remember you need to log the answer for it to be validated
-console.log(generatorPoint)`,
-    `function compress_publickey(publickey) {
-    const header_byte = {
-      'y_is_even': Buffer.from([2]),
-      'y_is_odd':  Buffer.from([3])
-    };
-    // The x value needs to encoded from an integer to a hex string
-    const x_hex = publickey.x.toString(16);
-    // The hex string then needs to be encoded into bytes
-    const x_bytes = Buffer.from(x_hex, 'hex');
-    // Finally we need to add the correct header byte whether it is even or odd and then decode into hex
-    if ((publickey.y & 1n) === 0n)
-      console.log(Buffer.concat([header_byte['y_is_even'], x_bytes]).toString('hex'));
-    else
-      console.log(Buffer.concat([header_byte['y_is_odd'], x_bytes]).toString('hex'));
-  }`,
+    `function privateKeyToPublicKey(privateKey) {
+  // First your private key will need to be encoded into an integer from a hex string.
+  const encodedPrivateKey = BigInt(\`0x\${privateKey}n\`)
+  // From the library you need to use the .mul() method to multiply G by your private key
+  const generatorPoint = G.mul(encodedPrivateKey)
+  return generatorPoint
+}`,
+    `function compress_publickey(publicKey) {
+  // Determine if the y coordinate is even or odd and prepend the
+  // corresponding header byte to the x coordinate.
+  // Return 33-byte Buffer
+  const header_byte = {
+    'y_is_even': Buffer.from([2]),
+    'y_is_odd': Buffer.from([3])
+  };
+  const x_hex = BigInt(publicKey.x);
+  const x_bytes = Buffer.from(x_hex.toString(16), 'hex'); // Convert BigInt to a hex string and then to bytes
+  const y_is_even = (BigInt(publicKey.y) & 1n) === 0n;
+  const header = y_is_even ? header_byte['y_is_even'] : header_byte['y_is_odd'];
+  const compressed_key = Buffer.concat([header, x_bytes]).toString('hex');
+
+  return compressed_key;
+}`,
   ],
   validate: async (answer) => {
     return [true, undefined]
@@ -54,26 +55,24 @@ const python = {
     args: ['nonce'],
   },
   defaultCode: [
-    `# First your private key will need to be encoded into an integer from a hex string.
-encoded_private_key = int(0x\${private_key})
-# From the library you need to use the .mul() method to multiply G by your private key
-const generatorPoint = G.mul(encoded_private_key)
-# Remember you need to log the answer for it to be validated
-print(generator_point)`,
-    `def compress_publickey(publickey):
+    `def privatekey_to_publickey(private_key):
+    # First your private key will need to be encoded into an integer from a hex string.
+    encoded_private_key = int(0x\${private_key})
+    # From the library you need to use the .mul() method to multiply G by your private key
+    generator_point = G.mul(encoded_private_key)
+    return generator_point`,
+    `def compress_publickey(public_key):
     header_byte = {
-        'y_is_even': bytes([2]),
-        'y_is_odd': bytes([3])
+          "y_is_even": bytes([2]),
+          "y_is_odd":  bytes([3])
     }
-    # The x value needs to be encoded from an integer to a hex string
-    x_hex = format(int(publickey['x'], 16), 'x')
-    # The hex string then needs to be encoded into bytes
-    x_bytes = bytes.fromhex(x_hex)
-    # Finally we need to add the correct header byte whether it is even or odd and then decode into hex
-    if int(publickey['y'], 16) % 2 == 0:
-        print((header_byte['y_is_even'] + x_bytes).hex())
-    else:
-        print((header_byte['y_is_odd'] + x_bytes).hex())`,
+    x_hex = int(public_key['x'], 16)
+    x_bytes = x_hex.to_bytes((x_hex.bit_length() + 7) // 8, byteorder='big')
+    y_is_even = int(public_key['y'], 16) % 2 == 0
+    header = header_byte['y_is_even'] if y_is_even else header_byte['y_is_odd']
+    compressed_key = (header + x_bytes).hex()
+
+    return compressed_key`,
   ],
   validate: async (answer) => {
     return [true, undefined]
@@ -99,7 +98,6 @@ const configTwo: EditorConfig = {
 
 export default function PublicKeyResources({ lang }) {
   const t = useTranslations(lang)
-  const { account } = useAuthContext()
 
   const [codeOne, setCodeOne] = useState(
     configOne.languages[configOne.defaultLanguage].defaultCode?.[0]
@@ -232,7 +230,7 @@ export default function PublicKeyResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`120px`}
+                  height={`140px`}
                   value={codeOne}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
@@ -262,7 +260,7 @@ export default function PublicKeyResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`290px`}
+                  height={`330px`}
                   value={codeTwo}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

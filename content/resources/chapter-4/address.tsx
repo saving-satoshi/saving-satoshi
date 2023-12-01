@@ -18,19 +18,23 @@ const javascript = {
     args: ['nonce'],
   },
   defaultCode: [
-    `// First we need to hash the compressedPublicKey with SHA256
-const sha256Hash = crypto.Hash('sha256').update(compressedPublicKey).digest()
-// Then you will need to hash it with ripemd160 this needs to be decoded into hex
-const ripemdHash = crypto.Hash('ripemd160').update(sha256Hash)
-// Finally decode the answer into hex
-const publicKeyHash = ripemdHash.digest('hex')
-console.log(publicKeyHash)`,
-    `// To encode our publicKeyHash we first need to compress it to bytes which we have done for you
-// then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
-// We also need to decide which version to use, in this case version 0 will suffice for segwit
-const bech32Address = encode('tb', 0, compressedPublicKeyHash)
-// Lastly, let's log it to the console
-console.log(bech32Address)`,
+    `function hashCompressed(compressed) {
+  // First we need to hash the compressedPublicKey with SHA256
+  const sha256Hash = crypto.Hash('sha256').update(compressedPublicKey).digest()
+  // Then you will need to hash it with ripemd160 this needs to be decoded into hex
+  const ripemdHash = crypto.Hash('ripemd160').update(sha256Hash)
+  // Finally decode the answer into hex
+  const publicKeyHash = ripemdHash.digest('hex')
+  return publicKeyHash
+}`,
+    `function hashToAddress() {
+  // To encode our publicKeyHash we first need to compress it to bytes which we have done for you
+  // then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
+  // We also need to decide which version to use, in this case version 0 will suffice for segwit
+  const bech32Address = encode('tb', 0, compressedPublicKeyHash)
+  // Lastly, let's return the address
+  return bech32Address
+}`,
   ],
   validate: async (answer) => {
     return [true, undefined]
@@ -45,19 +49,21 @@ const python = {
     args: ['nonce'],
   },
   defaultCode: [
-    `# First we need to hash the compressed_public_key with SHA256
-sha256_hash = hashlib.new('sha256', compressed_public_key).digest()
-# Then you will need to hash it with ripemd160
-ripemd_hash = hashlib.new('ripemd160', sha256_hash)
-# Finally decode the answer into hex
-public_key_hash = ripemd_hash.hexdigest()
-print(public_key_hash)`,
-    `# To encode our public_key_hash we first need to compress it to bytes which we have done for you
-# then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
-# We also need to decide which version to use, in this case version 0 will suffice for segwit
-bech32_address = encode('tb', 0, compressed_public_key_hash)
-# Lastly, let's print it to the console
-print(bech32_address)`,
+    `def hash_compressed(compressed_public_key):
+    # First we need to hash the compressed_public_key with SHA256
+    sha256_hash = hashlib.new('sha256', compressed_public_key.encode('utf-8')).digest()
+    # Then you will need to hash it with ripemd160
+    ripemd_hash = hashlib.new('ripemd160', sha256_hash)
+    # Finally decode the answer into hex
+    public_key_hash = ripemd_hash.hexdigest()
+    return public_key_hash`,
+    `def hash_to_address():
+    # To encode our public_key_hash we first need to compress it to bytes which we have done for you
+    # then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
+    # We also need to decide which version to use, in this case version 0 will suffice for segwit
+    bech32_address = encode('tb', 0, compressed_public_key_hash)
+    # Lastly, let's return the address
+    return bech32_address`,
   ],
   validate: async (answer) => {
     return [true, undefined]
@@ -168,7 +174,7 @@ export default function AddressResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`140px`}
+                  height={`180px`}
                   value={codeOne}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
@@ -198,7 +204,7 @@ export default function AddressResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`120px`}
+                  height={`160px`}
                   value={codeTwo}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

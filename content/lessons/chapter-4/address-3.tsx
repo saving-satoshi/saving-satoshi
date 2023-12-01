@@ -30,7 +30,9 @@ export default function Address3({ lang }) {
   }, [])
 
   const javascript = {
-    program: `console.log("KILL")`,
+    program: `
+console.log(hashToAddress())
+console.log("KILL")`,
     defaultFunction: {
       name: 'findAddress',
       args: ['publicKeyHash'],
@@ -49,9 +51,12 @@ ${
 
 // Insert checksum and metadata, encode using bech32 and return a string
 // See the library source code for the exact API.
-// To submit your answer, log it to the terminal using console.log().
+function hashToAddress() {
+
+}
 `,
     validate: async (answer) => {
+      console.log(Buffer.from(dataObject, 'hex'), answer)
       if (!answer.startsWith('tb')) {
         return [
           false,
@@ -71,14 +76,16 @@ ${
     hiddenRange: [1, 0, 160, 0],
     constraints: [
       {
-        range: [166, 1, 166, 1],
+        range: [166, 1, 168, 1],
         allowMultiline: true,
       },
     ],
   }
 
   const python = {
-    program: `print("KILL")`,
+    program: `
+print(hash_to_address())
+print("KILL")`,
     defaultFunction: {
       name: 'find_address',
       args: ['public_key_hash'],
@@ -97,7 +104,7 @@ ${
 
 # Insert checksum and metadata, encode using bech32 and return a string
 # See the library source code for the exact API.
-# To submit your answer, log it to the terminal using print().
+def hash_to_address():
 `,
     validate: async (answer) => {
       if (!answer.startsWith('tb')) {
