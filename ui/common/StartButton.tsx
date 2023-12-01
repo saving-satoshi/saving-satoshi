@@ -106,14 +106,14 @@ export default function Card({
   return (
     <div
       className={clsx(
-        'order-last flex items-center justify-center text-[15px] font-bold',
+        'order-last flex flex-wrap-reverse items-center justify-center gap-3 text-[15px] font-bold',
         className
       )}
     >
       {tenX && (
         <div
           className={clsx(
-            'order-last mr-2.5 flex h-[29px] w-[44px] cursor-pointer items-center justify-center  rounded-[3px] border-2 ',
+            'order-last mr-2.5 flex h-[29px] w-[44px] cursor-pointer items-center justify-center  rounded-[3px] border-2',
             {
               'border-black/25 text-black/25': powerUp === false,
               ' animate-duration-500 animate-pulse border-[#FBEBC6] bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
