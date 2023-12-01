@@ -1058,6 +1058,20 @@ const translations = {
 
   chapter_six: {
     title: `Offense is the best defense`,
+    intro_one: {
+      title: 'Offense is the best defense',
+    },
+    paragraph_one:
+      'Vanderpoole is out to get you now that you’ve exposed him as a fraud. But despite that, plenty of scared people continue to cling to the myth he created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.',
+    in_out_one: {
+      title: 'The ins and outs',
+    },
+    put_it_together_one: {
+      title: 'Putting it all together',
+    },
+    outro_one: {
+      title: 'Outro',
+    },
   },
 
   chapter_seven: {
