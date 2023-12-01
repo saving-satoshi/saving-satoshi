@@ -116,10 +116,13 @@ export default function Editor({
 
   return (
     <div
-      className={clsx('relative grow font-mono text-sm text-white', {
-        'hidden md:flex': !isActive,
-        flex: isActive,
-      })}
+      className={clsx(
+        'relative grow bg-[#00000026] font-mono text-sm text-white',
+        {
+          'hidden md:flex': !isActive,
+          flex: isActive,
+        }
+      )}
     >
       <MonacoEditor
         loading={<Loader className="h-10 w-10 text-white" />}

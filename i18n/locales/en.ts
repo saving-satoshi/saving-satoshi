@@ -12,6 +12,7 @@ const translations = {
     start_chapter: 'Start chapter',
     back: 'Back',
     poweroff: 'Back to chapter selection',
+    loading: 'Loading',
   },
   status_bar: {
     begin_message: 'Complete the challenge above to continue...',
@@ -365,7 +366,7 @@ const translations = {
         'Alright, time to write and run your own code. Write a script that generates a sha256 hash that begins with five zeroes ("00000..."). Your code should repeatedly call the sha256 function with different input until the output satisfies this requirement. You should try incrementing an integer inside a loop to get different inputs. In cryptography this number may referred to as a "nonce" or "number used once".',
       python: {
         paragraph_two:
-          "When you find a nonce with a hash that begins with five zeroes, use Python's `print()` function to return the hash to the console. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:",
+          'When you find a nonce with a hash that begins with five zeroes, return the hash to the console. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
         list_one:
           '<Link href="https://docs.python.org/3/library/hashlib.html" target="_blank" className="underline">hashlib documentation</Link>',
         list_two:
@@ -373,7 +374,7 @@ const translations = {
       },
       javascript: {
         paragraph_two:
-          "When you find a nonce with a hash that begins with five zeroes, use JavaScript's `console.log()` function to return the hash to the console. We are using the crypto library in javascript to help you along in creating this function, you can use the following external resources to help you write this function if needed:",
+          'When you find a nonce with a hash that begins with five zeroes, return the hash to the console. We are using the crypto library in javascript to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
         list_one:
           '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" target="_blank" className="underline">crypto documentation</Link>',
         list_two:
@@ -498,7 +499,7 @@ const translations = {
         'We’re now mining 100 blocks to see how many you and BitRey will mine.',
       step_two_heading: 'That did not go too well!',
       step_two_paragraph_one:
-        'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s see if we can defeat BitRey for the next 100 blocks with the other pool operators. Bitcoin has been running for over a decade and it’s not going down without a fight.',
+        'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s see if we can defeat BitRey for the next 100 blocks with the other pool operators. Bitcoin has been running for over a century and it’s not going down without a fight.',
     },
 
     pool_one: {
@@ -718,7 +719,7 @@ const translations = {
       title: 'Address',
       heading: 'Nice work!',
       paragraph_one:
-        'And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’lll learn about that in the next challenge.',
+        'And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’ll learn about that in the next challenge.',
       paragraph_two:
         'Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the discrete log problem.',
     },
@@ -797,6 +798,262 @@ const translations = {
 
   chapter_five: {
     title: 'The keyholder',
+    paragraph_one:
+      'It’s late, and you’re getting sleepy, but as you shut your eyes for a moment, a double dose of bad news arrives. 1) Vanderpoole is back on TV. 2) He is claiming to be the great-grandson of Satoshi Nakamoto. He also looks sleep-deprived.',
+    intro_one: {
+      title: 'Don’t trust, verify',
+      paragraph_one:
+        '—DEBORAH CHUNK: “Mr. Vanderpool. You recently made a staggering claim on anti-social media that you are the great-grandson of Satoshi Nakamoto. Is that correct? Is this true?”',
+      paragraph_two:
+        '—VANDERPOOLE: “It darn tootin’ is, Deborah. I have known this for a long time. You see, my family passed a CD-ROM down for generations. It contains the private keys to my great-grandfather’s enormous trove of bitcoin. So when I speak for miners, know that I also speak for Satoshi Nakamoto.”',
+      paragraph_three:
+        '—DEBORAH CHUNK: “Is there any way we can verify that you actually own the private keys to Satoshi Nakamoto’s bitcoin?”',
+      paragraph_four:
+        '—VANDERPOOLE: “Indeed there is. It is a simple matter of public key cryptography.”',
+      paragraph_five: '—DEBORAH CHUNK: But why wait so long to reveal this?',
+    },
+    intro_two: {
+      paragraph_one:
+        '—VANDERPOOLE: “I didn’t have the courage. There have always been rumors about my family’s history, ones that I could easily put to rest. But I wasn’t ready for that much publicity. After all, I live a humble, secluded life on a private island/dude ranch/castle.”',
+      paragraph_two:
+        '—VANDERPOOLE: “But now that bitcoin’s future is on the line, I knew I had to tell the world. I can only say I’m sorry for not coming forth sooner. The CD-ROM also contains Satoshi’s Nakamoto’s revised plans for bitcoin. He always regretted the 21 million supply limit. Even though I plan to fulfill my grandfather’s dream of hard forking bitcoin in favor of perpetual bitcoin issuance.”',
+    },
+    intro_three: {
+      paragraph_one:
+        '—Your TXM4H-A Hover Screen chirps to life. You have a new message.',
+      paragraph_two: '—HOLOCAT: Don’t forget to boop my nose.',
+      paragraph_three:
+        'SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message with the private keys.” - Satoshi',
+    },
+    derive_message_one: {
+      title: 'Derive the message',
+      heading: 'Vanderpoole says he signed a message with Satoshi’s keys:',
+      code_one:
+        '-----BEGIN BITCOIN SIGNED MESSAGE----- <br /> <br /> I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever Bitcoin transaction confirmed in block #170. This message is signed with the same private key. <br /> <br /> -----BEGIN BITCOIN SIGNATURE----- <br /> <br />',
+      code_two:
+        '<span className="break-all"> H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k= </span>',
+      code_three: '<br/> <br/>-----END BITCOIN SIGNATURE-----',
+      paragraph_two: 'What does this even mean?',
+    },
+    derive_message_two: {
+      paragraph_one:
+        'We learned in chapter 4 that private keys are huge random numbers kept secret by whomever generated them. We can use Elliptic Curve math to derive a public key from that private key.',
+      paragraph_two:
+        'The public key can be shared as a unique identifier and the private key is used to prove a person has control of that identifier. That proof is called a SIGNATURE. To create a signature you need a message and a private key. Anyone can verify the signature with a copy of the message and the corresponding public key.',
+      paragraph_three:
+        'Vanderpoole has provided a signature and a message. Where is the public key?',
+    },
+    derive_message_three: {
+      heading: 'Let’s start with finding Satoshi’s signature',
+      paragraph_one:
+        'Hal Finney <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">claimed</Link> Satoshi sent him the first Bitcoin transaction ever, confirmed in block #170. That transaction can be found on a <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">block explorer here</Link>. In the scriptSig of input #0 there is a chunk of data following pushbytes... Find it and paste it below.',
+      placeholder: 'Paste the data here',
+      success:
+        'Nicely done! This is actually Satoshi’s signature, authorizing the transfer of his Bitcoin to Hal Finney.',
+    },
+    derive_message_four: {
+      heading: 'So where is his public key?',
+      paragraph_one:
+        'It’s actually stored along with the bitcoin Satoshi generated by mining block #9.',
+      paragraph_two:
+        '<Link href="https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand" target="_blank" className="underline">Follow the link</Link> to the source transaction at the top of the input #0 section. This is the transaction Satoshi created by mining block #9. The transaction creates 50 BTC and locks them under control of... a public key! Find the data beginning with 04... in the scriptPubKey.',
+      paragraph_three:
+        'The public key lives between the script commands OP_PUSHBYTES and OP_CHECKSIG. Paste it below:',
+      placeholder: 'Paste the data here',
+      success: 'That’s it!',
+    },
+    derive_message_five: {
+      paragraph_one:
+        'So Satoshi created a transaction that sent 50 BTC to his public key. Then he used his private key to create a signature that transferred 10 of those BTC to Hal Finney’s public key.',
+      paragraph_two:
+        'Next we need to learn how to verify a signature. But something is still missing... what is the message Satoshi signed to authorize the transaction for Hal?',
+    },
+    derive_message_six: {
+      heading: 'Derive the message from the transaction',
+      paragraph_one:
+        'It should be clear by just looking at the block explorer web page that a Bitcoin transaction has many different parts. Some parts are just small numbers and some parts are larger chunks of data. The Bitcoin protocol has a very specific algorithm for creating messages from transactions, so those messages can be signed by private keys.',
+      paragraph_two:
+        'We will summarize the process outlined here. It conveniently uses <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">this exact same transaction</Link> as an example.',
+      paragraph_three:
+        'To begin, we need the raw bytes that make up the complete transaction. <Link href="https://blockstream.info/api/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16/hex" target="_blank" className="underline">Our block explorer</Link> can help with this. Use the "hex" API endpoint and paste the entire blob of data.',
+      input_challenge_label: 'Paste the transaction blob',
+      success_message_line_one:
+        'This is the raw transaction with each component labeled:',
+      success_message_line_two: 'version:',
+      success_message_line_three: 'number of inputs:',
+      success_message_line_four: 'hash of tx being spent by input #0:',
+      success_message_line_five:
+        'index of output of tx being spent by input #0:',
+      success_message_line_six:
+        'scriptSig to authorize spending the indicated output:',
+      success_message_line_seven: 'input #0 sequence:',
+      success_message_line_eight: 'number of outputs:',
+      success_message_line_nine:
+        'output #0 value (10 BTC or 1,000,000,000 satoshis):',
+      success_message_line_ten:
+        'output #0 scriptPubKey (Hal Finney’s public key plus OP_CHECKSIG):',
+      success_message_line_eleven:
+        'outut #1 value (40 BTC or 4,000,000,000 satoshis):',
+      success_message_line_twelve:
+        'output #1 scriptPubKey (Satoshi’s own public key again, for change):',
+      success_message_line_thirteen: 'locktime:',
+    },
+    derive_message_seven: {
+      paragraph_one:
+        "It's impossible to sign a message containing it's own signature, so the scriptSig needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.",
+      paragraph_two:
+        'We already found the scriptPubKey in the previous step, you can paste that in the first blank.',
+      paragraph_three:
+        'The last thing we need for our transaction message is a "<span className="font-bold">sighash type flag</span>." We\'ll cover this more in the next chapter but for now we\'ll just add the value <span className="font-bold">01000000</span> to the end of the message.',
+    },
+    verify_signature_one: {
+      title: 'Verify the signature',
+      heading: 'Finally we have a message!',
+      paragraph_one:
+        'We also have a signature we know Satoshi created with his own private keys, and we have his public key. Let’s learn how to verify the signature and then we can try to verify Vanderpoole’s signature.',
+    },
+    verify_signature_two: {
+      title: 'Verify the signature',
+      heading: 'Hash the transaction digest',
+      paragraph_one:
+        'The serialized transaction data we compiled in the last step is actually too long to sign or verify with ECDSA.',
+      paragraph_two:
+        'Do we know any way to compress large chunks of data into more consistent, manageable pieces? We sure do: hashing.',
+      paragraph_three:
+        'The Bitcoin protocol uses a double SHA256 digest to compress a transaction into a signable message.',
+      paragraph_four:
+        'Once we have a 32-byte hash, that data is re-interpreted as an integer. Yes, a 32-byte integer (that is a truly enormous number)!',
+      success: 'Nicely done!',
+    },
+    verify_signature_three: {
+      heading: 'Decode the Signature',
+      label_one: 'Paste the R value',
+      label_two: 'Paste the S value',
+      paragraph_one:
+        "Satoshi's signature is encoded in a system called DER which is a subset of ASN.1.",
+      paragraph_two:
+        'There are two 32-byte numbers we need to extract. They are referred to as R and S respectively and are each prefixed by the bytes 0220 in the DER sequence. Instead of fully decoding the DER blob, just look for the prefixes and paste the R and S values.',
+      paragraph_three:
+        "# Satoshi's signature, from the input scriptSig of the tx to Hal Finney",
+      paragraph_four:
+        'sig_der = """304402204e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd410220181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09"""',
+    },
+    verify_signature_four: {
+      heading: 'Decode the Public Key',
+      label_one: 'Paste the x coordinate',
+      label_two: 'Paste the y coordinate',
+      paragraph_one:
+        'We learned in chapter 4 that public keys are really points in the ECDSA curve, meaning they have an x and y value. The first byte 04 means "uncompressed" (as opposed to 02 and 03 like we learned in chapter 4). Remove that first byte and the remaining data are 32-byte x and y coordinates. Copy and paste again.',
+      paragraph_two:
+        "# Satoshi's public key, from the block 9 coinbase output scriptPubKey",
+      paragraph_three:
+        'pubkey = """0411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3"""',
+    },
+    verify_signature_five: {
+      title: 'Verify the signature',
+      heading: 'Verify the signature!',
+      success: "You've done it! You've verified Satoshi's signature!",
+      paragraph_one:
+        'At this point we have everything we need to do some ECDSA math.',
+      paragraph_two:
+        'The ECDSA signature verification algorithm is explained <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">here</Link> and <Link className="underline" href="https://www.secg.org/sec1-v2.pdf#page=52" target="_blank">here</Link>.',
+      paragraph_three:
+        'We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green">verify()</span> that should only return True if everything is valid!',
+      paragraph_four:
+        "We know Satoshi's signature is valid, it has been checked by every Bitcoin full node since 2010! If your program does not return True something is wrong.",
+      python: {
+        paragraph_five_part_one:
+          'Hint: the <span className="text-green">pow()</span>',
+        paragraph_five_part_two:
+          'method can accept negative exponents and a modulus as arguments. More on the <Link className="underline" href="https://docs.python.org/3/library/functions.html#pow" target="_blank">documentation</Link>.',
+      },
+      javascript: {
+        paragraph_five_part_one:
+          'Hint: the <span className="text-green">Math.pow()</span>',
+        paragraph_five_part_two:
+          'method can accept negative exponents and a modulus as arguments. More on the <Link className="underline" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow" target="_blank">documentation</Link>.',
+      },
+    },
+    validate_signature_one: {
+      title: 'Validate the signature',
+      heading: "Prepare Vanderpoole's message for verification",
+      paragraph_one:
+        'Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">Bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we\'ve already defined, but the preparation of the data is a bit different.',
+      paragraph_two:
+        "First, we need to encode his message into an array of bytes corresponding to the following template:',",
+      paragraph_three:
+        'Then we will double-SHA256 hash that blob of data, and convert that hash into an integer. Complete the function encode_message(). It should return a 32-byte hex value.',
+      success: 'Nicely Done',
+    },
+    validate_signature_two: {
+      heading: 'Prepare Vanderpoole’s signature for verification',
+      paragraph_one:
+        'The Bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.',
+      javascript: {
+        paragraph_two:
+          'Complete the function <span className="italic">decodeSig()</span>. It should return an array with the [r, s] values.',
+      },
+      python: {
+        paragraph_two:
+          'Complete the function <span className="italic">decode_sig()</span>. It should return a tuple with the (r, s) values.',
+      },
+    },
+    validate_signature_three: {
+      title: 'Validate the signature',
+      heading: 'So, is Vanderpoole a liar?!',
+      paragraph_one:
+        "There isn't much left to do except plug everything in and run the program! Drumroll please...",
+      success: 'Signature is not valid',
+    },
+    validate_signature_four: {
+      title: 'Validate the signature',
+      heading: 'How did Vanderpoole even create that signature?',
+      paragraph_one:
+        'Holocat chimes in and says a defector in BitRey has sent us the actual address he used, which is definitely not the satoshi address!',
+      paragraph_two: 'with corresponding public key:',
+      paragraph_three:
+        "Can you verify Vanderpoole's message and signature using THIS key?",
+      success: 'The signature is valid!',
+    },
+    outro_one: {
+      title: 'Outro',
+      heading: 'Vanderpoole lied!',
+      paragraph_one:
+        'The whole story about his family was an invention, and you proved it to the whole world. This casts a big shadow on his credibility, and the credibility of his company. But, that’s what you get for playing tricks.',
+    },
+    resources: {
+      derive_message: {
+        op_pushdata_heading: 'OP_PUSHDATA',
+        op_pushdata_paragraph_one:
+          'OP_PUSHDATA in Bitcoin script plays a crucial role in facilitating the insertion of arbitrary pieces of data into the blockchain. It is an opcode that allows for the inclusion of data elements of varying sizes, making Bitcoin’s scripting language more versatile. This opcode is particularly significant in enabling the implementation of various smart contract functionalities and custom transaction types. You can read more about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.',
+      },
+      verify_signature: {
+        eliptic_curve_heading:
+          'Elliptic Curve Digital Signature Algorithm (ECDSA)',
+        eliptic_curve_paragraph_one:
+          "ECDSA is a cryptographic algorithm used by Bitcoin to ensure that funds can only be spent by their rightful owners. A public key is derived from a private key through elliptic curve multiplication, which is computationally straightforward. However, reversing this process to derive the private key from the public key is computationally unfeasible. This one-way function is a cornerstone of Bitcoin's security.",
+        public_private_key_heading: 'Public and Private Keys',
+        public_private_key_paragraph_one:
+          'In Bitcoin, a pair of keys is used to ensure secure transactions. The private key, kept secret, is used to sign transactions and prove ownership of a Bitcoin address. The public key, derived from the private key, can be shared and is used to verify that a signature is made by the private key holder, without revealing the private key.',
+        signature_verification_heading: 'Signature Verification',
+        signature_verification_paragraph_one:
+          'Signature verification is crucial in Bitcoin to confirm that a transaction is authorized by the holder of the private key. In the context of ECDSA, it involves checking that a signature (comprising two numbers, r and s) is valid for a given public key and message. This verification ensures the integrity and authenticity of a transaction.',
+        finite_field_arithmetic_heading: 'Finite Field Arithmetic',
+        finite_field_arithmetic_paragraph_one:
+          "This type of arithmetic, used in ECDSA, involves numbers within a fixed range or field. Operations such as addition, subtraction, multiplication, and finding modular inverses are performed with respect to the size of this field. This is essential for the elliptic curve calculations in Bitcoin's cryptography.",
+        ge_and_fe_heading: 'Group Elements (GE) and Field Elements (FE)',
+        ge_and_fe_paragraph_one:
+          "In the context of elliptic curve cryptography, a group element typically represents a point on the elliptic curve. In the challenge, GE refers to such a point with specific x and y coordinates. FE represents an element of the finite field, used for calculations within the field's constraints.",
+        modular_inverse_heading: 'Modular Inverse',
+        modular_inverse_paragraph_one:
+          "The modular inverse of a number a modulo m is a number b such that (a * b) % m = 1. Finding the modular inverse is a critical step in ECDSA signature verification. It's used in the calculation of u1 and u2 during the verification process.",
+      },
+      validate_signature: {
+        message_verification_heading: 'Importance of Message Verification',
+        message_verification_paragraph_one:
+          'Message verification enhances the security of communications within the Bitcoin ecosystem. It allows parties to verify the authenticity and integrity of messages, which is valuable in situations where trust and verification are essential, such as in peer-to-peer transactions or communication between parties in a smart contract. Furthermore, message verification serves as a foundation for various applications, including identity verification and the attestation of ownership of a particular Bitcoin address. It adds a layer of cryptographic assurance, reinforcing the trustless and decentralized nature of the Bitcoin network.',
+      },
+    },
   },
 
   chapter_six: {

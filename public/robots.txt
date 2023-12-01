@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+sitemap: https://savingsatoshi.com/sitemap.xml

@@ -22,46 +22,61 @@ function Terminal({ className }: { className?: string }, ref) {
                   .output {
                     font-family: monospace;
                     color: white;
-                    font-size: 12px;
                   }
-
                   div.output > div > span {
                       font-family: monospace;
                       color: white !important;
                       font-size: 12px;
                       opacity: 0.75;
                   }
-
                   .output .error {
-                    color: #C40008;
+                    color: white;
                   }
-
-                  .output .success {
-                    color: #00B400;
+                  .success {
+                    color: white;
                   }
-
-                  .output .log {
+                  .output .success:nth-child(3) {
+                    color: white;
+                    font-size: 18px;
+                    font-weight: 700;
+                    margin-top: 15px;
+                  }
+                  .log {
+                    color: white;
+                  }
+                  .output .log:first-child {
                     color:white;
+                    font-size: 18px;
+                    font-weight: 700;
+                  }
+                  .success-background {
+                    background-color: #28B12340;
+                  }
+                  .error-background {
+                    background-color: #D01C1640;
                   }
                 </style>
                 <div class="output"></div>
                 <script>
                   const output = document.querySelector('.output')
-
                   window.addEventListener('message', e => {
                     const {action,payload} =JSON.parse(e.data)
                     switch(action) {
                       case 'print': {
+                        document.body.classList.remove("error-background")
+                        document.body.classList.remove("success-background")
                         output.innerHTML += "<div class='log'>"+payload+"</div>"
                         output.parentElement.scrollTop = output.scrollHeight
                         break
                       }
                       case 'error': {
-                        output.innerHTML += "<div class='error'>Error: "+payload+"</div>"
+                        document.body.classList.add("error-background")
+                        output.innerHTML += "<div class='error'>"+payload+"</div>"
                         output.parentElement.scrollTop = output.scrollHeight
                         break
                       }
                       case 'success': {
+                        document.body.classList.add("success-background")
                         output.innerHTML += "<div class='success'>"+payload+"</div>"
                         output.parentElement.scrollTop = output.scrollHeight
                         break

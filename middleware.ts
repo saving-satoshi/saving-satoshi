@@ -63,6 +63,6 @@ export function middleware(request: NextRequest) {
 export const config = {
   // TODO: Find a way to handle these dynamically
   matcher: [
-    '/((?!_next/static|_next/image|assets|favicon|favicon.ico|android-icon|robots.txt|manifest.json|.well-known/nostr.json).*)',
+    '/((?!_next/static|_next/image|assets|favicon|favicon.ico|android-icon|robots.txt|sitemap.xml|manifest.json|.well-known/nostr.json).*)',
   ],
 }
