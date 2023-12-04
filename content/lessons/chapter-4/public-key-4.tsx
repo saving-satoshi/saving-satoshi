@@ -19,8 +19,8 @@ function compressPublicKey(publickey) {
     y_is_odd: Buffer.from([3]),
   }
   const x_hex = BigInt(publickey.x)
-  const x_bytes = Buffer.from(x_hex.toString(16), 'hex') // Convert BigInt to a hex string and then to bytes
-  const y_is_even = (BigInt(publickey.y) & 1n) === 0n
+  const x_bytes = Buffer.from(x_hex.toString(16), 'hex')
+  const y_is_even = (BigInt(publickey.y) & BigInt(1)) === BigInt(0)
   const header = y_is_even ? header_byte['y_is_even'] : header_byte['y_is_odd']
   const compressed_key = Buffer.concat([header, x_bytes]).toString('hex')
 
