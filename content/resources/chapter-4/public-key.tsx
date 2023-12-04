@@ -20,7 +20,7 @@ const javascript = {
   defaultCode: [
     `function privateKeyToPublicKey(privateKey) {
   // First your private key will need to be encoded into an integer from a hex string.
-  const encodedPrivateKey = BigInt(\`0x\${privateKey}n\`)
+  const encodedPrivateKey = BigInt(\`0x\${privateKey}\`)
   // From the library you need to use the .mul() method to multiply G by your private key
   const generatorPoint = G.mul(encodedPrivateKey)
   return generatorPoint
@@ -28,13 +28,13 @@ const javascript = {
     `function compress_publickey(publicKey) {
   // Determine if the y coordinate is even or odd and prepend the
   // corresponding header byte to the x coordinate.
-  // Return 33-byte Buffer
+  // Return a hex string
   const header_byte = {
     'y_is_even': Buffer.from([2]),
     'y_is_odd': Buffer.from([3])
   };
   const x_hex = BigInt(publicKey.x);
-  const x_bytes = Buffer.from(x_hex.toString(16), 'hex'); // Convert BigInt to a hex string and then to bytes
+  const x_bytes = Buffer.from(x_hex.toString(16), 'hex');
   const y_is_even = (BigInt(publicKey.y) & 1n) === 0n;
   const header = y_is_even ? header_byte['y_is_even'] : header_byte['y_is_odd'];
   const compressed_key = Buffer.concat([header, x_bytes]).toString('hex');
@@ -57,7 +57,7 @@ const python = {
   defaultCode: [
     `def privatekey_to_publickey(private_key):
     # First your private key will need to be encoded into an integer from a hex string.
-    encoded_private_key = int(0x\${private_key})
+    encoded_private_key = int(private_key, 16)
     # From the library you need to use the .mul() method to multiply G by your private key
     generator_point = G.mul(encoded_private_key)
     return generator_point`,

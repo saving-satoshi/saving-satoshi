@@ -48,7 +48,6 @@ function hashCompressed(compressed) {
 }
 `,
     validate: async (answer) => {
-      console.log(dataObject, answer)
       if (answer.startsWith('<Buffer')) {
         return [false, 'Ensure you are properly decoding your answer']
       }
