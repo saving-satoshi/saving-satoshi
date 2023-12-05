@@ -1,3 +1,5 @@
+import clsx from 'clsx'
+
 export default function Table({
   headings,
   rows,
@@ -11,30 +13,31 @@ export default function Table({
         {headings.map((heading, index) => (
           <th
             key={index}
-            className={
-              index === 0
-                ? 'w-full'
-                : index === headings.length - 1
-                ? 'w-1/6'
-                : 'w-1/3'
-            }
+            className={clsx({
+              'w-full': index === 0,
+              'w-1/3': index > 0 < headings.length - 1,
+              'w-1/6': index === headings.length - 1,
+            })}
           >
             {heading}
           </th>
         ))}
       </tr>
       {rows.map((row, index) => (
-        <tr className="flex w-full items-start gap-[15px] bg-[#00000010] px-5 py-2.5">
+        <tr
+          className={clsx(
+            'flex w-full items-start gap-[15px] bg-[#00000010] px-5 py-2.5',
+            { 'rounded-b-[5px]': index === rows.length - 1 }
+          )}
+        >
           {row.map((item, index) => (
             <td
               key={index}
-              className={
-                index === 0
-                  ? 'w-full'
-                  : index === headings.length - 1
-                  ? 'w-1/6'
-                  : 'w-1/3'
-              }
+              className={clsx({
+                'w-full': index === 0,
+                'w-1/3': index > 0 && index < headings.length - 1,
+                'w-1/6': index === headings.length - 1,
+              })}
             >
               {item}
             </td>
