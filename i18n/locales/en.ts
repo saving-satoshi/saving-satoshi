@@ -1065,6 +1065,20 @@ const translations = {
       'Vanderpoole is out to get you now that you’ve exposed him as a fraud. But despite that, plenty of scared people continue to cling to the myth he created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.',
     in_out_one: {
       title: 'The ins and outs',
+      paragraph_one:
+        'Mike Ramen gives you an address to send your 1 BTC contribution to:',
+      paragraph_two:
+        'Hm, that address looks a lot longer than yours! I wonder why...',
+      paragraph_three: `Anyway, we need to create and sign a transaction that sends one of your 6.5 BTC to this address. We looked at Satoshi's transaction structure in chapter 5 but your transaction will be a bit different. Technology has improved a lot since block 170, and Bitcoin transactions are now version 2, and follow a new protocol called Segregated Witness.`,
+    },
+    in_out_two: {
+      title: 'The ins and outs',
+      paragraph_one:
+        'Segregated Witness transactions work just like their legacy predecessors. There are a few global values like version and locktime. There is an array of inputs (UTXOs we want to spend) and an array of outputs (new UTXOs we want to create, for other people to spend in the future). There will also be an array of witnesses, one for each input. That is where signatures and scripts will go instead of the scriptSig.',
+      paragraph_two:
+        'The message serializations for all these components is documented <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">here</Link>  and <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch06.asciidoc" target="_black" className="underline" >here</Link>.',
+      paragraph_three:
+        'And remember: integers in Bitcoin are serialized little-endian!',
     },
     put_it_together_one: {
       title: 'Putting it all together',
