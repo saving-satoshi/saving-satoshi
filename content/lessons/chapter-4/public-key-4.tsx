@@ -14,24 +14,17 @@ export const metadata = {
 }
 
 function compressPublicKey(publickey) {
-  var header_byte = {
-    y_is_even: new Buffer([2]),
-    y_is_odd: new Buffer([3]),
+  const header_byte = {
+    y_is_even: Buffer.from([2]),
+    y_is_odd: Buffer.from([3]),
   }
+  const x_hex = BigInt(publickey.x)
+  const x_bytes = Buffer.from(x_hex.toString(16), 'hex')
+  const y_is_even = (BigInt(publickey.y) & BigInt(1)) === BigInt(0)
+  const header = y_is_even ? header_byte['y_is_even'] : header_byte['y_is_odd']
+  const compressed_key = Buffer.concat([header, x_bytes]).toString('hex')
 
-  let x_hex = BigInt(publickey.x)
-  let x_hex_string = x_hex.toString(16)
-  let x_bytes = new Buffer(x_hex_string, 'hex')
-
-  let y_hex = BigInt(publickey.y)
-  let y_hex_string = y_hex.toString(16)
-
-  let y_is_even = Number(y_hex_string[y_hex_string.length - 1]) % 2 === 0
-
-  let header = y_is_even ? header_byte['y_is_even'] : header_byte['y_is_odd']
-  let compressed_key = Buffer.concat([header, x_bytes])
-
-  return compressed_key.toString('hex')
+  return compressed_key
 }
 
 export default function PublicKey4({ lang }) {
@@ -65,7 +58,7 @@ console.log("KILL")`,
 
 // Determine if the y coordinate is even or odd and prepend the
 // corresponding header byte to the x coordinate.
-// Return 33-byte Buffer
+// Return a hex string
 function compressPublicKey(publicKey) {
   const header_byte = {
     'y_is_even': Buffer.from([2]),
@@ -107,7 +100,7 @@ print("KILL")`,
 
 # Determine if the y coordinate is even or odd and prepend
 # the corresponding header byte to the x coordinate.
-# Return 33-byte array
+# Return a hex string
 def compress_publickey(public_key):
     header_byte = {
           "y_is_even": bytes([2]),
