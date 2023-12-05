@@ -15,7 +15,7 @@ export default function Table({
             key={index}
             className={clsx({
               'w-full': index === 0,
-              'w-1/3': index > 0 < headings.length - 1,
+              'w-1/3': index > 0 && index < headings.length - 1,
               'w-1/6': index === headings.length - 1,
             })}
           >
