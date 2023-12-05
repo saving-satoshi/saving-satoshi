@@ -1068,6 +1068,13 @@ const translations = {
     },
     put_it_together_one: {
       title: 'Putting it all together',
+      heading: 'Finish the implementation of Class Witness',
+      paragraph_one:
+        'It should have the following method, which accepts a byte array and adds that item to the witness stack.',
+      paragraph_two:
+        'It will also need a serialize() method that returns the serialized witness stack.',
+      subheading_one: 'Witness stack',
+      subheading_two: 'Witness stack item',
     },
     outro_one: {
       title: 'Outro',
