@@ -1,28 +1,38 @@
 'use client'
 
-import { useTranslations } from 'hooks'
-import { Introduction, Text } from 'ui'
+import { useTranslations, useSaveAndProceed } from 'hooks'
+import { ChapterIntro, CodeExample } from 'ui'
+import { Button } from 'shared'
 
 export const metadata = {
-  title: 'chapter_six.in_out_two.title',
-  image: '/assets/images/chapter-6-in-out-2.jpg',
+  title: 'chapter_six.in_out_one.title',
   key: 'CH6INO2',
 }
 
-export default function InOut2({ lang }) {
+export default function IntOut1({ lang }) {
+  const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
 
   return (
-    <Introduction lang={lang} imagePosition="object-[50%_27%]">
-      <Text className="text-lg md:text-xl">
+    <ChapterIntro className="m-auto my-8 max-w-[840px]">
+      <p className="mt-2 text-lg md:text-xl">
         {t('chapter_six.in_out_two.paragraph_one')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
+      </p>
+      <CodeExample
+        className="mt-4 "
+        code={`bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj`}
+        language="shell"
+      />
+      <p className="mt-8 text-lg md:text-xl">
         {t('chapter_six.in_out_two.paragraph_two')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
+      </p>
+
+      <p className="mt-8 text-lg md:text-xl">
         {t('chapter_six.in_out_two.paragraph_three')}
-      </Text>
-    </Introduction>
+      </p>
+      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+        {t('shared.next')}
+      </Button>
+    </ChapterIntro>
   )
 }
