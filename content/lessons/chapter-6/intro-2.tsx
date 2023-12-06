@@ -15,19 +15,19 @@ export default function Intro2({ lang }) {
   return (
     <Introduction lang={lang} imagePosition="object-[50%_27%]">
       <Text className="text-lg md:text-xl">
-        {t('chapter_five.intro_two.paragraph_one')}
+        {t('chapter_six.intro_two.paragraph_one')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_five.intro_two.paragraph_two')}
+        {t('chapter_six.intro_two.paragraph_two')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_five.intro_two.paragraph_three')}
+        {t('chapter_six.intro_two.paragraph_three')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_five.intro_one.paragraph_four')}
+        {t('chapter_six.intro_one.paragraph_four')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_five.intro_two.paragraph_five')}
+        {t('chapter_six.intro_two.paragraph_five')}
       </Text>
     </Introduction>
   )
