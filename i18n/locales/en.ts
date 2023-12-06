@@ -710,7 +710,7 @@ const translations = {
       paragraph_one:
         'The public key has an x and y coordinate for a total of 64 bytes. This can be compressed into 33 bytes by removing the y coordinate and prepending a single byte of metadata. That byte will indicate if the Y coordinate is even or odd. Because the elliptic curve equation only has two variables, the complete public key can be computed later by the verifier using only x and the metadata:',
       paragraph_two:
-        'The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function `compress_publickey()` to accept a public key and return an array of 33 bytes representing the compressed public key.',
+        'The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function `compress_publickey()` to accept a public key and return a 33 byte hex string representing the compressed public key.',
       success:
         'Excellent. Now we have our compressed public key. Next we need to hash it and encode it in a human-friendly format.',
     },
@@ -1058,6 +1058,20 @@ const translations = {
 
   chapter_six: {
     title: `Offense is the best defense`,
+    intro_one: {
+      title: 'Offense is the best defense',
+    },
+    paragraph_one:
+      'Vanderpoole is out to get you now that you’ve exposed him as a fraud. But despite that, plenty of scared people continue to cling to the myth he created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.',
+    in_out_one: {
+      title: 'The ins and outs',
+    },
+    put_it_together_one: {
+      title: 'Putting it all together',
+    },
+    outro_one: {
+      title: 'Outro',
+    },
   },
 
   chapter_seven: {

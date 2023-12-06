@@ -20,12 +20,12 @@ export default function PublicKey3({ lang }) {
   const [privateKey, setPrivateKey] = useState('')
 
   if (account && !privateKey) {
-    setPrivateKey('0x' + account?.private_key.toString())
+    setPrivateKey(account?.private_key.toString())
   }
 
   const javascript = {
     program: `
-console.log(privateKeyToPublicKey(${privateKey + 'n'}))
+console.log(privateKeyToPublicKey(\`${privateKey}\`))
 console.log("KILL")`,
     defaultFunction: {
       name: 'privateKeyToPublicKey',
@@ -45,7 +45,6 @@ function privateKeyToPublicKey(privateKey) {
 }
 `,
     validate: async (answer: string) => {
-      console.log(answer, privateKey)
       const parsedAnswer = JSON.parse(answer)
       const correctPattern = /^0x[0-9a-fA-F]{64}$/
       if (parsedAnswer) {
@@ -72,7 +71,7 @@ function privateKeyToPublicKey(privateKey) {
 
   const python = {
     program: `
-print(privatekey_to_publickey(${privateKey}))
+print(privatekey_to_publickey("${privateKey}"))
 print("KILL")`,
     defaultFunction: {
       name: 'privatekey_to_publickey',
