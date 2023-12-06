@@ -15,25 +15,24 @@ export const metadata = {
 
 const javascript = {
   program: `
-  console.log(encode_message(text))
+  console.log('hello')
   console.log("KILL")`,
   defaultFunction: {
     name: 'encode_message',
     args: ['text'],
   },
-  defaultCode: `const { Hash } = require('crypto');
-// Provided by Vanderpoole
-let text = "I am Vanderpoole and I have control of the private key Satoshi\\n"
-text += "used to sign the first-ever Bitcoin transaction confirmed in block #170.\\n"
-text += "This message is signed with the same private key."
+  defaultCode: `class Witness {
+    constructor() {
+        this.items = [];
+    }
 
-function encode_message(text){
-// Given an ascii-encoded text message, serialize a byte array
-// with the Bitcoin protocol prefix string followed by the text
-// and both components preceded by a length byte.
-// Returns a 32-byte hex value.
-const prefix = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
+    push_item(data) {
+        // YOUR CODE HERE
+    }
 
+    serialize() {
+        // YOUR CODE HERE
+    }
 }
 `,
   validate: async (answer: string) => {
@@ -51,7 +50,11 @@ const prefix = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
   },
   constraints: [
     {
-      range: [12, 1, 15, 1],
+      range: [7, 1, 9, 1],
+      allowMultiline: true,
+    },
+    {
+      range: [11, 1, 14, 1],
       allowMultiline: true,
     },
   ],
@@ -59,26 +62,21 @@ const prefix = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
 
 const python = {
   program: `
-print(encode_message(text))
+print("hello")
 print("KILL")`,
   defaultFunction: {
     name: 'encode_message',
     args: ['text'],
   },
-  defaultCode: `import hashlib
-# Defined by Bitcoin message signing protocol
-# Provided by Vanderpoole
-text = "I am Vanderpoole and I have control of the private key Satoshi\\n"
-text += "used to sign the first-ever Bitcoin transaction confirmed in block #170.\\n"
-text += "This message is signed with the same private key."
+  defaultCode: `class Witness:
+    def __init_(self):
+        self.items = []
 
-def encode_message(text):
-  # Given an ascii-encoded text message, serialize a byte array
-  # with the Bitcoin protocol prefix string followed by the text
-  # and both components preceded by a length byte.
-  # Returns a 32-byte hex value.
-  prefix = "Bitcoin Signed Message:\\n"
+    def push_item(self, data: bytes):
+        # YOUR CODE HERE
 
+    def serialize(self):
+        # YOUR CODE HERE
 `,
   validate: async (answer: string) => {
     const correctAnswer =
@@ -93,7 +91,11 @@ def encode_message(text):
   },
   constraints: [
     {
-      range: [13, 1, 14, 1],
+      range: [6, 1, 8, 1],
+      allowMultiline: true,
+    },
+    {
+      range: [9, 1, 10, 1],
       allowMultiline: true,
     },
   ],
@@ -138,24 +140,54 @@ export default function PutItTogether1({ lang }) {
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_six.put_it_together_one.paragraph_two')}
         </Text>
-        <Text className="mt-2 font-nunito text-2xl font-bold text-white">
+        <Text className="mt-4 font-nunito text-2xl font-bold text-white">
           {t('chapter_six.put_it_together_one.subheading_one')}
         </Text>
         <Table
-          headings={['Description', 'Name', 'Type', 'Size']}
+          headings={[
+            t('chapter_six.put_it_together_one.headings.item_one'),
+            t('chapter_six.put_it_together_one.headings.item_two'),
+            t('chapter_six.put_it_together_one.headings.item_three'),
+            t('chapter_six.put_it_together_one.headings.item_four'),
+          ]}
           rows={[
-            ['The number of items in the witness stack.', 'count', 'int', '1'],
-            ['Serialized stack items.', 'items', '(items)', '(var)'],
+            [
+              t('chapter_six.put_it_together_one.table_one.row_one.item_one'),
+              t('chapter_six.put_it_together_one.table_one.row_one.item_two'),
+              t('chapter_six.put_it_together_one.table_one.row_one.item_three'),
+              t('chapter_six.put_it_together_one.table_one.row_one.item_four'),
+            ],
+            [
+              t('chapter_six.put_it_together_one.table_one.row_two.item_one'),
+              t('chapter_six.put_it_together_one.table_one.row_two.item_two'),
+              t('chapter_six.put_it_together_one.table_one.row_two.item_three'),
+              t('chapter_six.put_it_together_one.table_one.row_two.item_four'),
+            ],
           ]}
         />
-        <Text className="mt-2 font-nunito text-2xl font-bold text-white">
+        <Text className="mt-4 font-nunito text-2xl font-bold text-white">
           {t('chapter_six.put_it_together_one.subheading_two')}
         </Text>
         <Table
-          headings={['Description', 'Name', 'Type', 'Size']}
+          headings={[
+            t('chapter_six.put_it_together_one.headings.item_one'),
+            t('chapter_six.put_it_together_one.headings.item_two'),
+            t('chapter_six.put_it_together_one.headings.item_three'),
+            t('chapter_six.put_it_together_one.headings.item_four'),
+          ]}
           rows={[
-            ['Total length of the following stack item.', 'length', 'int', '1'],
-            ['The raw bytes of the stack item', 'data', 'bytes', '(var)'],
+            [
+              t('chapter_six.put_it_together_one.table_two.row_one.item_one'),
+              t('chapter_six.put_it_together_one.table_two.row_one.item_two'),
+              t('chapter_six.put_it_together_one.table_two.row_one.item_three'),
+              t('chapter_six.put_it_together_one.table_two.row_one.item_four'),
+            ],
+            [
+              t('chapter_six.put_it_together_one.table_two.row_two.item_one'),
+              t('chapter_six.put_it_together_one.table_two.row_two.item_two'),
+              t('chapter_six.put_it_together_one.table_two.row_two.item_three'),
+              t('chapter_six.put_it_together_one.table_two.row_two.item_four'),
+            ],
           ]}
         />
       </LessonInfo>
