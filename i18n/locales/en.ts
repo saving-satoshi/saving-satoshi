@@ -1060,6 +1060,10 @@ const translations = {
     title: `Offense is the best defense`,
     intro_one: {
       title: 'Offense is the best defense',
+      paragraph_one:'—SATOSHI NAKAMOTO: ”Great work. Now the world can see for itself that Vanderpoole is a fraud. Even if some don’t believe it yet, they will before our work is done.” – Satoshi Nakamoto',
+      paragraph_two:'—You pause for a moment and realize that every message up to this point has been signed “Satoshi Nakamoto.” You had just assumed that this was just a pseudonymous moniker used by someone who adheres to bitcoin’s core principles. Surely, they couldn’t be the real Satoshi Nakamoto. But, you finally decide, it’s worth asking.',
+      paragraph_three:'—”This might make me sound stupid, but are you the real Satoshi?”',
+      paragraph_four:'—HOLOCAT: “Hardly the only thing that’s made you sound stupid until now.”',
     },
     paragraph_one:
       'Vanderpoole is out to get you now that you’ve exposed him as a fraud. But despite that, plenty of scared people continue to cling to the myth he created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.',
