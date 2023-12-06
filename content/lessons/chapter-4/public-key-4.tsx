@@ -34,7 +34,13 @@ export default function PublicKey4({ lang }) {
   const [isLoading, setIsLoading] = useState(true)
 
   const getPrevLessonData = async () => {
-    setPrevData(await getData('CH4PKY3'))
+    const data = await getData('CH4PKY3')
+    if (data?.answer) {
+      setPrevData({
+        lesson_id: 'CH4PKY3',
+        data: data.answer,
+      })
+    }
   }
 
   useEffect(() => {
