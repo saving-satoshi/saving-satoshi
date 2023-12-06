@@ -15,7 +15,16 @@ export const metadata = {
 
 const javascript = {
   program: `
-  console.log('hello')
+  const testWitness = new Witness();
+
+  const data1 = Buffer.from('Hello');
+  testWitness.pushItem(data1);
+
+  const data2 = Buffer.from('World');
+  testWitness.pushItem(data2);
+
+  const serializedData = testWitness.serialize() || '';
+  console.log(serializedData.toString('hex') === '020548656c6c6f05576f726c64' && 'true')
   console.log("KILL")`,
   defaultFunction: {
     name: 'encode_message',
@@ -26,7 +35,7 @@ const javascript = {
         this.items = [];
     }
 
-    push_item(data) {
+    pushItem(data) {
         // YOUR CODE HERE
     }
 
@@ -36,15 +45,14 @@ const javascript = {
 }
 `,
   validate: async (answer: string) => {
-    const correctAnswer =
-      '73a16290e005b119b9ce0ceea52949f0bd4f925e808b5a54c631702d3fea1242'
-    console.log(typeof answer, typeof correctAnswer)
-    console.log(answer, correctAnswer, answer === correctAnswer)
     if (answer) {
-      if (answer == correctAnswer) {
-        return [true, 'Nicely Done ']
+      if (answer === 'true') {
+        return [true, 'Nicely Done']
       }
-      return [false, 'Not a valid hex value']
+      return [
+        false,
+        'Ensure you are correctly pushing and serializing the data',
+      ]
     }
     return [false, 'Return a value']
   },
