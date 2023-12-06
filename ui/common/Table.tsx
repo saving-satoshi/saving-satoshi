@@ -25,7 +25,7 @@ export default function Table({
           ))}
         </tr>
       </thead>
-      <tbody className="w-full">
+      <tbody className="flex w-full flex-col gap-[2px]">
         {rows.map((row, index) => (
           <tr
             key={index}
