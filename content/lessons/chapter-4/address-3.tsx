@@ -77,7 +77,7 @@ function hashToAddress(hash) {
     hiddenRange: [1, 0, 160, 0],
     constraints: [
       {
-        range: [166, 1, 168, 1],
+        range: [167, 1, 169, 1],
         allowMultiline: true,
       },
     ],
@@ -128,7 +128,7 @@ def hash_to_address(hash):
     hiddenRange: [1, 0, 160, 0],
     constraints: [
       {
-        range: [166, 1, 166, 1],
+        range: [167, 1, 167, 1],
         allowMultiline: true,
       },
     ],
