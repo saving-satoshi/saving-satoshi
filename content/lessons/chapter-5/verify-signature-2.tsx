@@ -26,16 +26,17 @@ console.log("KILL")
     args: [],
   },
   defaultCode: `const {Hash} = require('crypto');
-  
-  function msg_to_integer(msg) {
-    // Given a hex string to sign, convert that string to bytes,
-    // double-SHA256 the bytes and then return a BigInt() from the 32-byte digest.
-  }
+
+function msg_to_integer(msg) {
+  // Given a hex string to sign, convert that string to bytes,
+  // double-SHA256 the bytes and then return a BigInt() from the 32-byte digest.
+
+}
 `,
   validate: async (answer) => {
     // for some reason the answer is coming through with a lot of ansi characters included
     // so we will need to strip them before doing the comparison.
-    const cleanedAnswer = answer.replace(/\u001b\[[0-9;]*m/g, '')
+    const cleanedAnswer = answer.replace(/\u001b\[[0-9;]*m/g, '').slice(0, -1)
     if (cleanedAnswer !== correctAnswer) {
       return [false, 'Hash is not valid']
     }
@@ -44,7 +45,7 @@ console.log("KILL")
   },
   constraints: [
     {
-      range: [4, 1, 7, 1],
+      range: [4, 1, 8, 1],
       allowMultiline: true,
     },
   ],

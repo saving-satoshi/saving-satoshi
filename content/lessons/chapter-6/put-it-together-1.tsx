@@ -70,14 +70,25 @@ const javascript = {
 
 const python = {
   program: `
-print("hello")
+test_witness = Witness()
+
+data1 = bytes('Hello', 'utf-8')
+test_witness.push_item(data1)
+
+data2 = bytes('World', 'utf-8')
+test_witness.push_item(data2)
+
+serialized_data = test_witness.serialize() or ''
+print(serialized_data.hex() == '020548656c6c6f05576f726c64' and 'true')
 print("KILL")`,
   defaultFunction: {
     name: 'encode_message',
     args: ['text'],
   },
-  defaultCode: `class Witness:
-    def __init_(self):
+  defaultCode: `from struct import pack
+
+class Witness:
+    def __init__(self):
         self.items = []
 
     def push_item(self, data: bytes):
@@ -87,10 +98,8 @@ print("KILL")`,
         # YOUR CODE HERE
 `,
   validate: async (answer: string) => {
-    const correctAnswer =
-      '73a16290e005b119b9ce0ceea52949f0bd4f925e808b5a54c631702d3fea1242'
     if (answer) {
-      if (answer === correctAnswer) {
+      if (answer === 'true') {
         return [true, 'Nicely Done ']
       }
       return [false, 'Not a valid hex value']
@@ -99,11 +108,11 @@ print("KILL")`,
   },
   constraints: [
     {
-      range: [6, 1, 8, 1],
+      range: [8, 1, 10, 1],
       allowMultiline: true,
     },
     {
-      range: [9, 1, 10, 1],
+      range: [11, 1, 12, 1],
       allowMultiline: true,
     },
   ],
