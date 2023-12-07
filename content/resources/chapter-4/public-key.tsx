@@ -61,7 +61,7 @@ const python = {
           "y_is_even": "02",
           "y_is_odd":  "03"
     }
-    which = "y_is_even" if int(public_key["y"], 16) % 2 == 0 else "y_is_odd"
+    which = "y_is_even" if (int(public_key["y"], 16) % 2 == 0 ) else "y_is_odd"
     return header_byte[which] + public_key["x"][2:]`,
   ],
   validate: async (answer) => {
@@ -250,7 +250,7 @@ export default function PublicKeyResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`330px`}
+                  height={`220px`}
                   value={codeTwo}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
