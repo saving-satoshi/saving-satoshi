@@ -971,7 +971,7 @@ const translations = {
         paragraph_five_part_one:
           'Hint: the <span className="text-green">Math.pow()</span>',
         paragraph_five_part_two:
-          'method can accept negative exponents and a modulus as arguments. More on the <Link className="underline" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow" target="_blank">documentation</Link>.',
+          'method can accept negative exponents as an argument. More on the <Link className="underline" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow" target="_blank">documentation</Link>.',
       },
     },
     validate_signature_one: {
