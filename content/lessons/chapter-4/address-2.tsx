@@ -65,16 +65,7 @@ function hashCompressed(compressedPublicKey) {
                 .digest()
             )
             .digest('hex') ||
-        answer ===
-          crypto
-            .createHash('ripemd160')
-            .update(
-              crypto
-                .createHash('sha256')
-                .update(Buffer.from('', 'hex'))
-                .digest()
-            )
-            .digest('hex')
+        answer === 'b472a266d0bd89c13706a4132ccfb16f7c3b9fcb'
       ) {
         return [
           false,
@@ -126,16 +117,7 @@ def hash_compressed(compressed_public_key):
                 .digest()
             )
             .digest('hex') ||
-        answer ===
-          crypto
-            .createHash('ripemd160')
-            .update(
-              crypto
-                .createHash('sha256')
-                .update(Buffer.from('', 'hex'))
-                .digest()
-            )
-            .digest('hex')
+        answer === 'b472a266d0bd89c13706a4132ccfb16f7c3b9fcb'
       ) {
         return [
           false,
