@@ -48,19 +48,6 @@ function hashCompressed(compressedPublicKey) {
 }
 `,
     validate: async (answer) => {
-      console.log(
-        answer,
-        answer ===
-          crypto
-            .createHash('ripemd160')
-            .update(
-              crypto
-                .createHash('sha256')
-                .update(Buffer.from('', 'hex'))
-                .digest()
-            )
-            .digest('hex')
-      )
       if (answer.startsWith('<Buffer')) {
         return [false, 'Ensure you are properly decoding your answer']
       }
