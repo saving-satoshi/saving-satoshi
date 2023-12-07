@@ -38,9 +38,7 @@ console.log("KILL")`,
     },
     defaultCode: `const crypto = require('crypto')
 
-${
-  prevData?.data && 'compressedPublicKey = ' + "'" + dataObject.toString() + "'"
-}
+${prevData?.data && 'compressedPublicKey = ' + "'" + dataObject + "'"}
 
 // Get the sha256 digest of the compressed public key.
 // Then get the ripemd160 digest of that sha256 hash
@@ -93,10 +91,7 @@ print("KILL")`,
     },
     defaultCode: `import hashlib
 
-${
-  prevData?.data &&
-  'compressed_public_key = ' + "'" + dataObject.toString() + "'"
-}
+${prevData?.data && 'compressed_public_key = ' + "'" + dataObject + "'"}
 
 # Get the sha256 digest of the compressed public key.
 # Then get the ripemd160 digest of that sha256 hash
