@@ -48,6 +48,19 @@ function hashCompressed(compressedPublicKey) {
 }
 `,
     validate: async (answer) => {
+      console.log(
+        answer,
+        answer ===
+          crypto
+            .createHash('ripemd160')
+            .update(
+              crypto
+                .createHash('sha256')
+                .update(Buffer.from('', 'hex'))
+                .digest()
+            )
+            .digest('hex')
+      )
       if (answer.startsWith('<Buffer')) {
         return [false, 'Ensure you are properly decoding your answer']
       }
@@ -56,15 +69,25 @@ function hashCompressed(compressedPublicKey) {
       }
       if (
         answer !==
-        crypto
-          .createHash('ripemd160')
-          .update(
-            crypto
-              .createHash('sha256')
-              .update(Buffer.from(dataObject && dataObject, 'hex'))
-              .digest()
-          )
-          .digest('hex')
+          crypto
+            .createHash('ripemd160')
+            .update(
+              crypto
+                .createHash('sha256')
+                .update(Buffer.from(dataObject, 'hex'))
+                .digest()
+            )
+            .digest('hex') ||
+        answer ===
+          crypto
+            .createHash('ripemd160')
+            .update(
+              crypto
+                .createHash('sha256')
+                .update(Buffer.from('', 'hex'))
+                .digest()
+            )
+            .digest('hex')
       ) {
         return [
           false,
@@ -107,15 +130,25 @@ def hash_compressed(compressed_public_key):
       }
       if (
         answer !==
-        crypto
-          .createHash('ripemd160')
-          .update(
-            crypto
-              .createHash('sha256')
-              .update(Buffer.from(dataObject && dataObject, 'hex'))
-              .digest()
-          )
-          .digest('hex')
+          crypto
+            .createHash('ripemd160')
+            .update(
+              crypto
+                .createHash('sha256')
+                .update(Buffer.from(dataObject, 'hex'))
+                .digest()
+            )
+            .digest('hex') ||
+        answer ===
+          crypto
+            .createHash('ripemd160')
+            .update(
+              crypto
+                .createHash('sha256')
+                .update(Buffer.from('', 'hex'))
+                .digest()
+            )
+            .digest('hex')
       ) {
         return [
           false,
