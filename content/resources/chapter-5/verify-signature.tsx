@@ -376,13 +376,13 @@ export default function VerifySignatureResources({ lang }) {
           </div>
           {challengeTwoIsToggled && (
             <div className="text-white">
-              <Text>R coordinate</Text>
+              <Text>r Value</Text>
               <CodeExample
                 copy
                 language="bash"
                 code="4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41"
               />
-              <Text className="mt-2">S Coordinate</Text>
+              <Text className="mt-2">s Value</Text>
               <CodeExample
                 copy
                 language="bash"
