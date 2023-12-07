@@ -38,12 +38,14 @@ console.log("KILL")`,
     },
     defaultCode: `const crypto = require('crypto')
 
-${prevData?.data && 'compressedPublicKey = ' + "'" + dataObject + "'"}
+${
+  prevData?.data && 'compressedPublicKey = ' + "'" + dataObject.toString() + "'"
+}
 
 // Get the sha256 digest of the compressed public key.
 // Then get the ripemd160 digest of that sha256 hash
 // Return 20-byte array
-function hashCompressed(compressed) {
+function hashCompressed(compressedPublicKey) {
 
 }
 `,
@@ -58,7 +60,12 @@ function hashCompressed(compressed) {
         answer !==
         crypto
           .createHash('ripemd160')
-          .update(crypto.createHash('sha256').update(dataObject).digest())
+          .update(
+            crypto
+              .createHash('sha256')
+              .update(Buffer.from(dataObject, 'hex'))
+              .digest()
+          )
           .digest('hex')
       ) {
         return [
@@ -86,7 +93,10 @@ print("KILL")`,
     },
     defaultCode: `import hashlib
 
-${prevData?.data && 'compressed_public_key = ' + "'" + dataObject + "'"}
+${
+  prevData?.data &&
+  'compressed_public_key = ' + "'" + dataObject.toString() + "'"
+}
 
 # Get the sha256 digest of the compressed public key.
 # Then get the ripemd160 digest of that sha256 hash
@@ -104,7 +114,12 @@ def hash_compressed(compressed_public_key):
         answer !==
         crypto
           .createHash('ripemd160')
-          .update(crypto.createHash('sha256').update(dataObject).digest())
+          .update(
+            crypto
+              .createHash('sha256')
+              .update(Buffer.from(dataObject, 'hex'))
+              .digest()
+          )
           .digest('hex')
       ) {
         return [
