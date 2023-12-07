@@ -27,7 +27,7 @@ const javascript = {
   const publicKeyHash = ripemdHash.toString('hex')
   return publicKeyHash
 }`,
-    `function hashToAddress() {
+    `function hashToAddress(compressedPublicKeyHash) {
   // To encode our publicKeyHash we first need to compress it to bytes which we have done for you
   // then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
   // We also need to decide which version to use, in this case version 0 will suffice for segwit
@@ -57,7 +57,7 @@ const python = {
     # Finally decode the answer into hex
     public_key_hash = ripemd_hash.hex()
     return public_key_hash`,
-    `def hash_to_address():
+    `def hash_to_address(compressed_public_key_hash):
     # To encode our public_key_hash we first need to compress it to bytes which we have done for you
     # then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
     # We also need to decide which version to use, in this case version 0 will suffice for segwit

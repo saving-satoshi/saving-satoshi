@@ -31,7 +31,7 @@ export default function Address3({ lang }) {
 
   const javascript = {
     program: `
-console.log(hashToAddress())
+console.log(hashToAddress(compressedPublicKeyHash))
 console.log("KILL")`,
     defaultFunction: {
       name: 'findAddress',
@@ -51,7 +51,7 @@ ${
 
 // Insert checksum and metadata, encode using bech32 and return a string
 // See the library source code for the exact API.
-function hashToAddress() {
+function hashToAddress(hash) {
 
 }
 `,
@@ -84,7 +84,7 @@ function hashToAddress() {
 
   const python = {
     program: `
-print(hash_to_address())
+print(hash_to_address(compressed_public_key_hash))
 print("KILL")`,
     defaultFunction: {
       name: 'find_address',
@@ -104,7 +104,7 @@ ${
 
 # Insert checksum and metadata, encode using bech32 and return a string
 # See the library source code for the exact API.
-def hash_to_address():
+def hash_to_address(hash):
 `,
     validate: async (answer) => {
       if (!answer.startsWith('tb')) {

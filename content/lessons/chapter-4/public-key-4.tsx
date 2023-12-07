@@ -61,8 +61,8 @@ console.log("KILL")`,
 // Return a hex string
 function compressPublicKey(publicKey) {
   const header_byte = {
-    'y_is_even': Buffer.from([2]),
-    'y_is_odd':  Buffer.from([3])
+    'y_is_even': '02',
+    'y_is_odd':  '03'
   };
 
 }
@@ -103,8 +103,8 @@ print("KILL")`,
 # Return a hex string
 def compress_publickey(public_key):
     header_byte = {
-          "y_is_even": bytes([2]),
-          "y_is_odd":  bytes([3])
+          "y_is_even": "02",
+          "y_is_odd":  "03"
     }
 `,
     validate: async (answer) => {
