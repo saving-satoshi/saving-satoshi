@@ -744,7 +744,7 @@ const translations = {
       list_two: 'Testnet: ‘tb’',
       list_three: 'Regtest: ‘bcrt’',
       paragraph_three:
-        'Be sure to log your function to the console with your data to generate your Bitcoin address!',
+        'The data returned by this function will be your Bitcoin address!',
       success: 'Now you have an address that mined bitcoin can be sent to.',
     },
 
