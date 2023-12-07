@@ -91,7 +91,7 @@ class Witness:
     def __init__(self):
         self.items = []
 
-    def push_item(self, data: bytes):
+    def push_item(self, data):
         # YOUR CODE HERE
 
     def serialize(self):
