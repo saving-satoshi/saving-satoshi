@@ -380,13 +380,13 @@ export default function VerifySignatureResources({ lang }) {
               <CodeExample
                 copy
                 language="bash"
-                code="0x4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41"
+                code="4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41"
               />
               <Text className="mt-2">S Coordinate</Text>
               <CodeExample
                 copy
                 language="bash"
-                code="0x181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09"
+                code="181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09"
               />
             </div>
           )}
@@ -404,13 +404,13 @@ export default function VerifySignatureResources({ lang }) {
               <CodeExample
                 copy
                 language="bash"
-                code="0x11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5c"
+                code="11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5c"
               />
               <Text className="mt-2">y Coordinate</Text>
               <CodeExample
                 copy
                 language="bash"
-                code="0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3"
+                code="b2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3"
               />
             </div>
           )}
