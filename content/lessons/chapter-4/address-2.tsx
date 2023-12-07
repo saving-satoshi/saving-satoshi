@@ -61,7 +61,7 @@ function hashCompressed(compressedPublicKey) {
           .update(
             crypto
               .createHash('sha256')
-              .update(Buffer.from(dataObject, 'hex'))
+              .update(Buffer.from(dataObject && dataObject, 'hex'))
               .digest()
           )
           .digest('hex')
@@ -112,7 +112,7 @@ def hash_compressed(compressed_public_key):
           .update(
             crypto
               .createHash('sha256')
-              .update(Buffer.from(dataObject, 'hex'))
+              .update(Buffer.from(dataObject && dataObject, 'hex'))
               .digest()
           )
           .digest('hex')
