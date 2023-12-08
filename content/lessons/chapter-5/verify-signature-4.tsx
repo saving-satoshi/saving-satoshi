@@ -10,9 +10,9 @@ export const metadata = {
 }
 
 const xValue =
-  '0x11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5c'
+  '11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5c'
 const yValue =
-  '0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3'
+  'b2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3'
 
 export default function DeriveMessage6({ lang }) {
   const t = useTranslations(lang)

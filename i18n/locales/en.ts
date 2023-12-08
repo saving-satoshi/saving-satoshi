@@ -969,9 +969,9 @@ const translations = {
       },
       javascript: {
         paragraph_five_part_one:
-          'Hint: the <span className="text-green">Math.pow()</span>',
+          'We have provided a helper function <span className="text-green">invert()</span>',
         paragraph_five_part_two:
-          'method can accept negative exponents and a modulus as arguments. More on the <Link className="underline" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow" target="_blank">documentation</Link>.',
+          'which you will need in lieu of a JavaScript native modular exponentiation function.',
       },
     },
     validate_signature_one: {
@@ -991,7 +991,7 @@ const translations = {
         'The Bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.',
       javascript: {
         paragraph_two:
-          'Complete the function <span className="italic">decodeSig()</span>. It should return an array with the [r, s] values.',
+          'Complete the function <span className="italic">decodeSig()</span>. It should return an array with the [r, s] values as BigInts.',
       },
       python: {
         paragraph_two:
