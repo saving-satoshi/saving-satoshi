@@ -13,7 +13,7 @@ export default function Intro2({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <Introduction lang={lang} imagePosition="object-[50%-0%]">
+    <Introduction lang={lang} imagePosition="object-[50%_0%]">
       <Text className="text-lg md:text-xl">
         {t('chapter_six.intro_two.paragraph_one')}
       </Text>
