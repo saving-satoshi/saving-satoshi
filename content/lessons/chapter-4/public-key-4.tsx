@@ -15,16 +15,12 @@ export const metadata = {
 
 function compressPublicKey(publickey) {
   const header_byte = {
-    y_is_even: Buffer.from([2]),
-    y_is_odd: Buffer.from([3]),
+    y_is_even: '02',
+    y_is_odd: '03',
   }
-  const x_hex = BigInt(publickey.x)
-  const x_bytes = Buffer.from(x_hex.toString(16), 'hex')
-  const y_is_even = (BigInt(publickey.y) & BigInt(1)) === BigInt(0)
-  const header = y_is_even ? header_byte['y_is_even'] : header_byte['y_is_odd']
-  const compressed_key = Buffer.concat([header, x_bytes]).toString('hex')
-
-  return compressed_key
+  const which =
+    BigInt(publickey.y) % BigInt(2) === BigInt(0) ? 'y_is_even' : 'y_is_odd'
+  return header_byte[which] + publickey.x.slice(2)
 }
 
 export default function PublicKey4({ lang }) {
@@ -61,8 +57,8 @@ console.log("KILL")`,
 // Return a hex string
 function compressPublicKey(publicKey) {
   const header_byte = {
-    'y_is_even': Buffer.from([2]),
-    'y_is_odd':  Buffer.from([3])
+    'y_is_even': '02',
+    'y_is_odd':  '03'
   };
 
 }
@@ -103,8 +99,8 @@ print("KILL")`,
 # Return a hex string
 def compress_publickey(public_key):
     header_byte = {
-          "y_is_even": bytes([2]),
-          "y_is_odd":  bytes([3])
+          "y_is_even": "02",
+          "y_is_odd":  "03"
     }
 `,
     validate: async (answer) => {

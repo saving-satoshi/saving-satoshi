@@ -36,23 +36,51 @@ console.log("KILL")
 	function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
 		// Verify an ECDSA signature given a public key and a message.
 		// All input values will be 32-byte integers.
+
 		// Start by creating a curve point representation of the public key
-		// (In actual JavaScript code, you would use a library to create this point)
-		// let key = new secp256k1.GE(pubkey_x, pubkey_y);
+		const key = new GE(new FE(pubkey_x), new FE(pubkey_y));
 	
 		// Next, check the range limits of the signature values
-		// (You would need to replace GE.ORDER with the actual order of the curve used)
-		if (sig_r === 0 || sig_r >= GE.ORDER) {
+		if (sig_r === 0n || sig_r >= ORDER) {
 			console.log("invalid r value");
 			return false;
 		}
-		if (sig_s === 0 || sig_s >= GE.ORDER) {
+		if (sig_s === 0n || sig_s >= ORDER) {
 			console.log("invalid s value");
 			return false;
 		}
-		
+
+		// Helper function:
+		// Find modular multiplicative inverse using Extended Euclidean Algorithm
+		function invert(value, modulus = ORDER) {
+		  let x0 = 0n;
+		  let x1 = 1n;
+		  let a = value;
+		  let m = modulus;
+
+		  while (a > 1n) {
+		    const q = a / m;
+		    let t = m;
+		    m = a % m;
+		    a = t;
+		    t = x0;
+		    x0 = x1 - q * x0;
+		    x1 = t;
+		  }
+
+		  if (x1 < 0n)
+		    x1 += modulus;
+
+	    return x1;
+	  }
+
 		// Implement ECDSA and return a boolean
-		// The actual verification logic would go here
+		// u1 = m / s mod n
+		// u2 = r / s mod n
+		// R = G * u1 + A * u2
+		// r == x(R) mod n
+		// YOUR CODE HERE!
+
 	}
 `,
   validate: async (answer) => {
@@ -67,7 +95,7 @@ console.log("KILL")
   },
   constraints: [
     {
-      range: [136, 1, 159, 1],
+      range: [179, 1, 187, 1],
       allowMultiline: true,
     },
   ],
@@ -99,6 +127,7 @@ pubkey_y = 0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3
 def verify(sig_r, sig_s, pubkey_x, pubkey_y, msg):
 	# Verify an ECDSA signature given a public key and a message.
 	# All input values will be 32-byte integers.
+
 	# Start by creating a curve point representation of the public key
 	key = GE(pubkey_x, pubkey_y)
 
@@ -115,6 +144,7 @@ def verify(sig_r, sig_s, pubkey_x, pubkey_y, msg):
 	#   u2 = r / s mod n
 	#   R = G * u1 + A * u2
 	#   r == x(R) mod n
+  # YOUR CODE HERE!
 `,
   validate: async (answer) => {
     if (answer !== 'True') {

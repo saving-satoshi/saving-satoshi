@@ -700,7 +700,7 @@ const translations = {
       paragraph_two:
         'The elliptic curve operation is similar to addition and therefore its repetition is similar to multiplication. We use the * symbol to describe the algorithm (<Link href="public-key-3/help" className="underline">learn more</Link>), where `k` is the private key and `P` is the corresponding public key:',
       paragraph_three:
-        'Create a script so that it logs out the public key derived from a given private key.',
+        'Complete the function which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.',
       success:
         'Good job! That public key is pretty long. Let’s try to compress it!',
     },
@@ -729,22 +729,22 @@ const translations = {
       paragraph_one:
         'Do you remember the hashing challenge? It turns out you can generate the simplest type of bitcoin address by hashing your compressed public key. Bitcoin uses two different hashing algorithms for this: SHA-256 and RIPEMD-160.',
       paragraph_two:
-        'The first step is to perform a SHA-256 hash on your compressed public key. Then perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be a 20-byte array.',
+        'The first step is to perform a SHA-256 hash on your compressed public key. Then perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be 20 bytes encoded as a hex string.',
       paragraph_three:
-        'Complete a function that accepts a 33-byte compressed public key and returns a 20-byte public key hash.',
+        'Complete a function that accepts a 33-byte compressed public key as a hex string and returns a 20-byte public key hash as a hex string.',
       success: 'Great. One more step and you will have your wallet address.',
     },
 
     address_three: {
       title: 'Address',
       paragraph_one:
-        'There are multiple types of bitcoin addresses. We want to create a Signet Witness Public Key Hash (wpkh) address to encode the 20-byte compressed public key hash. First we need to append the hash with the witness version number `0`. These 21 bytes are known as the witness program. The witness program is encoded into a human-friendly format called bech32, which will append a human-readable prefix and a checksum.',
+        'There are multiple types of bitcoin addresses. We want to create a Testnet Witness Public Key Hash (wpkh) address to encode the 20-byte compressed public key hash. First we need to append the hash with the witness version number `0`. These 21 bytes are known as the witness program. The witness program is encoded into a human-friendly format called bech32, which will append a human-readable prefix and a checksum.',
       paragraph_two: 'The prefix is determined by the network:',
       list_one: 'Mainnet: ‘bc’',
       list_two: 'Testnet: ‘tb’',
       list_three: 'Regtest: ‘bcrt’',
       paragraph_three:
-        'Be sure to log your function to the console with your data to generate your Bitcoin address!',
+        'The data returned by this function will be your Bitcoin address!',
       success: 'Now you have an address that mined bitcoin can be sent to.',
     },
 
@@ -969,9 +969,9 @@ const translations = {
       },
       javascript: {
         paragraph_five_part_one:
-          'Hint: the <span className="text-green">Math.pow()</span>',
+          'We have provided a helper function <span className="text-green">invert()</span>',
         paragraph_five_part_two:
-          'method can accept negative exponents and a modulus as arguments. More on the <Link className="underline" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow" target="_blank">documentation</Link>.',
+          'which you will need in lieu of a JavaScript native modular exponentiation function.',
       },
     },
     validate_signature_one: {
@@ -991,7 +991,7 @@ const translations = {
         'The Bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.',
       javascript: {
         paragraph_two:
-          'Complete the function <span className="italic">decodeSig()</span>. It should return an array with the [r, s] values.',
+          'Complete the function <span className="italic">decodeSig()</span>. It should return an array with the [r, s] values as BigInts.',
       },
       python: {
         paragraph_two:
@@ -1059,7 +1059,18 @@ const translations = {
   chapter_six: {
     title: `Offense is the best defense`,
     intro_one: {
-      title: 'Offense is the best defense',
+      title: 'Intro',
+      paragraph_one:'—SATOSHI NAKAMOTO: ”Great work. Now the world can see for itself that Vanderpoole is a fraud. Even if some don’t believe it yet, they will before our work is done.” – Satoshi Nakamoto',
+      paragraph_two:'—You pause for a moment and realize that every message up to this point has been signed “Satoshi Nakamoto.” You had just assumed that this was just a pseudonymous moniker used by someone who adheres to bitcoin’s core principles. Surely, they couldn’t be the real Satoshi Nakamoto. But, you finally decide, it’s worth asking.',
+      paragraph_three:'—”This might make me sound stupid, but are you the real Satoshi?”',
+      paragraph_four:'—HOLOCAT: “Hardly the only thing that’s made you sound stupid until now.”',
+    },
+    intro_two:{
+      paragraph_one:'—HOLOCAT: “Hardly the only thing that’s made you sound stupid until now.”',
+      paragraph_two:'—SATOSHI NAKAMOTO: “Bitcoin moved far beyond its creator’s control many, many years ago. It would not matter if Vanderpoole or I were Satoshi’s grandson. Bitcoin is defined by the community and cannot be co-opted by a single individual or entity—including Satoshi. Proving this is the real battle. I hope you don’t mind, but I asked your eccentric freelance reporter friend to reach out.”',
+      paragraph_three:'—He what? Ding.',
+      paragraph_four:'—HOLOCAT: Don’t forget to boop me.',
+      paragraph_five:'—MIKE RAMEN: “You’ve got guts. But you’ll need more. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to get it. It’s going to cost, so I could use your help pulling my funds off the multi-signature that you helped me set up. You’ve still got one of my keys, right?”',
     },
     paragraph_one:
       'Vanderpoole is out to get you now that you’ve exposed him as a fraud. But despite that, plenty of scared people continue to cling to the myth he created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.',
