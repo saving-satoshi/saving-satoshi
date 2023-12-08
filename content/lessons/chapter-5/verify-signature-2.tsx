@@ -16,9 +16,11 @@ const satoshiTransactionMessage =
 const correctAnswer =
   '55192368857469264807759274836848938481238746809645363588732068292162212317977'
 
+// for some reason the answer is coming through with a lot of ansi characters included
+// so we will need to strip them from the console.log before doing the comparison.
 const javascript = {
   program: `
-console.log(msg_to_integer("${satoshiTransactionMessage}"));
+console.log(msg_to_integer("${satoshiTransactionMessage}").toString());
 console.log("KILL")
 `,
   defaultFunction: {
@@ -34,10 +36,7 @@ function msg_to_integer(msg) {
 }
 `,
   validate: async (answer) => {
-    // for some reason the answer is coming through with a lot of ansi characters included
-    // so we will need to strip them before doing the comparison.
-    const cleanedAnswer = answer.replace(/\u001b\[[0-9;]*m/g, '').slice(0, -1)
-    if (cleanedAnswer !== correctAnswer) {
+    if (answer !== correctAnswer) {
       return [false, 'Hash is not valid']
     }
 
