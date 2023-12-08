@@ -31,7 +31,7 @@ export default function Address3({ lang }) {
 
   const javascript = {
     program: `
-console.log(hashToAddress())
+console.log(hashToAddress(compressedPublicKeyHash))
 console.log("KILL")`,
     defaultFunction: {
       name: 'findAddress',
@@ -51,7 +51,8 @@ ${
 
 // Insert checksum and metadata, encode using bech32 and return a string
 // See the library source code for the exact API.
-function hashToAddress() {
+// https://github.com/saving-satoshi/challenges/blob/master/chapter4/javascript/lib/bech32.js
+function hashToAddress(hash) {
 
 }
 `,
@@ -76,7 +77,7 @@ function hashToAddress() {
     hiddenRange: [1, 0, 160, 0],
     constraints: [
       {
-        range: [166, 1, 168, 1],
+        range: [167, 1, 169, 1],
         allowMultiline: true,
       },
     ],
@@ -84,7 +85,7 @@ function hashToAddress() {
 
   const python = {
     program: `
-print(hash_to_address())
+print(hash_to_address(compressed_public_key_hash))
 print("KILL")`,
     defaultFunction: {
       name: 'find_address',
@@ -104,7 +105,8 @@ ${
 
 # Insert checksum and metadata, encode using bech32 and return a string
 # See the library source code for the exact API.
-def hash_to_address():
+# https://github.com/saving-satoshi/challenges/blob/master/chapter4/python/lib/bech32.py
+def hash_to_address(hash):
 `,
     validate: async (answer) => {
       if (!answer.startsWith('tb')) {
@@ -126,7 +128,7 @@ def hash_to_address():
     hiddenRange: [1, 0, 160, 0],
     constraints: [
       {
-        range: [166, 1, 166, 1],
+        range: [167, 1, 167, 1],
         allowMultiline: true,
       },
     ],
