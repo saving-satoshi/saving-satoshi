@@ -5,11 +5,11 @@ import { ChapterIntro, CodeExample } from 'ui'
 import { Button } from 'shared'
 
 export const metadata = {
-  title: 'chapter_six.in_out_one.title',
+  title: 'chapter_six.in_out_two.title',
   key: 'CH6INO2',
 }
 
-export default function IntOut1({ lang }) {
+export default function IntOut2({ lang }) {
   const saveAndProceed = useSaveAndProceed()
   const t = useTranslations(lang)
 

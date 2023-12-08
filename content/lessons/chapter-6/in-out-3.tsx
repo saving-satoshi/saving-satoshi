@@ -4,12 +4,12 @@ import { useTranslations } from 'hooks'
 import { Introduction, Text } from 'ui'
 
 export const metadata = {
-  title: 'chapter_six.in_out_two.title',
+  title: 'chapter_six.in_out_three.title',
   image: '/assets/images/chapter-6-in-out-2.jpg',
   key: 'CH6INO3',
 }
 
-export default function InOut2({ lang }) {
+export default function InOut3({ lang }) {
   const t = useTranslations(lang)
 
   return (
