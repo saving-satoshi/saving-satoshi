@@ -33,7 +33,7 @@ const javascript = {
     'y_is_even': '02',
     'y_is_odd':  '03'
   };
-  const which = BigInt(publicKey.y) % 2n === 0 ? 'y_is_even' : 'y_is_odd';
+  const which = BigInt(publicKey.y) % 2n == 0 ? 'y_is_even' : 'y_is_odd';
   return header_byte[which] + publicKey.x.slice(2);
 }`,
   ],
