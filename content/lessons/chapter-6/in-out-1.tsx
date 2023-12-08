@@ -9,7 +9,7 @@ export const metadata = {
   key: 'CH6INO1',
 }
 
-export default function InOut3({ lang }) {
+export default function InOut1({ lang }) {
   const t = useTranslations(lang)
 
   return (

@@ -5,7 +5,7 @@ import { Introduction, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_six.in_out_three.title',
-  image: '/assets/images/chapter-6-in-out-2.jpg',
+  image: '/assets/images/chapter-6-in-out-3.jpg',
   key: 'CH6INO3',
 }
 
