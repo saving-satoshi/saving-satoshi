@@ -969,9 +969,9 @@ const translations = {
       },
       javascript: {
         paragraph_five_part_one:
-          'Hint: the <span className="text-green">Math.pow()</span>',
+          'We have provided a helper function <span className="text-green">invert()</span>',
         paragraph_five_part_two:
-          'method can accept negative exponents as an argument. More on the <Link className="underline" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow" target="_blank">documentation</Link>.',
+          'which you will need in lieu of a JavaScript native modular exponentiation function.',
       },
     },
     validate_signature_one: {

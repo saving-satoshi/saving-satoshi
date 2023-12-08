@@ -112,8 +112,8 @@ function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
     if (x1 < 0n)
       x1 += modulus;
 
-      return x1;
-    }
+    return x1;
+  }
   // Implement ECDSA!
   //   u1 = m / s mod n
   //   u2 = r / s mod n
