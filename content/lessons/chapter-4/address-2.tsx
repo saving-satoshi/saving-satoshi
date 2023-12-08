@@ -43,7 +43,7 @@ ${prevData?.data && 'compressedPublicKey = ' + "'" + dataObject + "'"}
 // Get the sha256 digest of the compressed public key.
 // Then get the ripemd160 digest of that sha256 hash
 // Return 20-byte array
-function hashCompressed(compressed) {
+function hashCompressed(compressedPublicKey) {
 
 }
 `,
@@ -56,10 +56,16 @@ function hashCompressed(compressed) {
       }
       if (
         answer !==
-        crypto
-          .createHash('ripemd160')
-          .update(crypto.createHash('sha256').update(dataObject).digest())
-          .digest('hex')
+          crypto
+            .createHash('ripemd160')
+            .update(
+              crypto
+                .createHash('sha256')
+                .update(Buffer.from(dataObject, 'hex'))
+                .digest()
+            )
+            .digest('hex') ||
+        answer === 'b472a266d0bd89c13706a4132ccfb16f7c3b9fcb'
       ) {
         return [
           false,
@@ -102,10 +108,16 @@ def hash_compressed(compressed_public_key):
       }
       if (
         answer !==
-        crypto
-          .createHash('ripemd160')
-          .update(crypto.createHash('sha256').update(dataObject).digest())
-          .digest('hex')
+          crypto
+            .createHash('ripemd160')
+            .update(
+              crypto
+                .createHash('sha256')
+                .update(Buffer.from(dataObject, 'hex'))
+                .digest()
+            )
+            .digest('hex') ||
+        answer === 'b472a266d0bd89c13706a4132ccfb16f7c3b9fcb'
       ) {
         return [
           false,
