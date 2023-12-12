@@ -30,16 +30,11 @@ const javascript = {
   // corresponding header byte to the x coordinate.
   // Return a hex string
   const header_byte = {
-    'y_is_even': Buffer.from([2]),
-    'y_is_odd': Buffer.from([3])
+    'y_is_even': '02',
+    'y_is_odd':  '03'
   };
-  const x_hex = BigInt(publicKey.x);
-  const x_bytes = Buffer.from(x_hex.toString(16), 'hex');
-  const y_is_even = (BigInt(publicKey.y) & 1n) === 0n;
-  const header = y_is_even ? header_byte['y_is_even'] : header_byte['y_is_odd'];
-  const compressed_key = Buffer.concat([header, x_bytes]).toString('hex');
-
-  return compressed_key;
+  const which = BigInt(publicKey.y) % 2n == 0 ? 'y_is_even' : 'y_is_odd';
+  return header_byte[which] + publicKey.x.slice(2);
 }`,
   ],
   validate: async (answer) => {
@@ -63,16 +58,11 @@ const python = {
     return generator_point`,
     `def compress_publickey(public_key):
     header_byte = {
-          "y_is_even": bytes([2]),
-          "y_is_odd":  bytes([3])
+          "y_is_even": "02",
+          "y_is_odd":  "03"
     }
-    x_hex = int(public_key['x'], 16)
-    x_bytes = x_hex.to_bytes((x_hex.bit_length() + 7) // 8, byteorder='big')
-    y_is_even = int(public_key['y'], 16) % 2 == 0
-    header = header_byte['y_is_even'] if y_is_even else header_byte['y_is_odd']
-    compressed_key = (header + x_bytes).hex()
-
-    return compressed_key`,
+    which = "y_is_even" if (int(public_key["y"], 16) % 2 == 0 ) else "y_is_odd"
+    return header_byte[which] + public_key["x"][2:]`,
   ],
   validate: async (answer) => {
     return [true, undefined]
@@ -260,7 +250,7 @@ export default function PublicKeyResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`330px`}
+                  height={`220px`}
                   value={codeTwo}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
