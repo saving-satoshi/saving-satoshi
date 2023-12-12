@@ -1091,8 +1091,31 @@ const translations = {
       paragraph_three:
         'And remember: integers in Bitcoin are serialized little-endian!',
     },
-    put_it_together_one: {
+    put_it_together_two: {
       title: 'Putting it all together',
+      heading:'Finish the implementation of Class Transaction',
+      paragraph_one:'It should have global properties locktime and version as well as an array of inputs, outputs, and witness stacks.',
+      paragraph_two:'It will need a serialize() method that outputs the entire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
+      paragraph_three:'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.',
+      headings: {
+        item_one: 'Description',
+        item_two: 'Name',
+        item_three: 'Type',
+        item_four: 'Size',
+      },
+     table:{ row_one:{
+        item_one: 'Currently 2',
+        item_two: 'version',
+        item_three: 'int',
+        item_four: '4',
+      },
+      row_two:{
+        item_one: 'Must be exactly 0x0001 for segregated witness',
+        item_two: 'flags',
+        item_three: 'bytes',
+        item_four: '2',
+      }
+    },
     },
     outro_one: {
       title: 'Outro',
