@@ -11,7 +11,10 @@ export const metadata = {
   key: 'CH6PUT2',
 }
 
-const javascript={program:``,
+const javascript={program:` const transaction=new Transaction()
+const serial=transaction.serialize();
+console.log(serial.toString('hex'))
+`,
 defaultFunction:{
   name:"put-it-together-2",
   args:["args"]
@@ -31,13 +34,14 @@ defaultCode:`class Transaction{
 
 }`,
 validate:async (answer: string) =>{
+  const finalanswer='02000000000100000000000000'
   if (answer) {
-    if (answer === 'true') {
+    if (answer === finalanswer) {
       return [true, 'Nicely Done ']
     }
     return [false, 'Not a valid hex value']
   }
-  return [false, 'Return a value']
+  return [false, 'Check your code again']
 },constraints: [
   {
     range: [8, 1, 10, 1],
@@ -145,9 +149,9 @@ export default function PutItTogether2({ lang }) {
               t('chapter_six.put_it_together_two.table.row_two.item_three'),
               t('chapter_six.put_it_together_two.table.row_two.item_four'),
             ],
-          ]}>
+          ]}/>
 
-      </Table>
+      
       <Text className="mt-2 font-nunito text-xl text-white">  
          {t('chapter_six.put_it_together_two.paragraph_three')}
       </Text> 
