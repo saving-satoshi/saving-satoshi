@@ -11,9 +11,11 @@ export const metadata = {
   key: 'CH6PUT2',
 }
 
-const javascript={program:` const transaction=new Transaction()
-const serial=transaction.serialize();
-console.log(serial.toString('hex'))
+const javascript={program:` 
+   const tx = new Transaction();
+  
+ console.log(tx.serialize().toString('hex'));
+
 `,
 defaultFunction:{
   name:"put-it-together-2",
@@ -34,7 +36,7 @@ defaultCode:`class Transaction{
 
 }`,
 validate:async (answer: string) =>{
-  const finalanswer='02000000000100000000000000'
+  const finalanswer='020000000001000000000000'
   if (answer) {
     if (answer === finalanswer) {
       return [true, 'Nicely Done ']
