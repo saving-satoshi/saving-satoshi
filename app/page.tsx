@@ -12,14 +12,16 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="flex h-screen w-screen flex-col">
-      <Umami />{' '}
-      <div className="bg-gradient-to-b from-[#00000060] via-[#00000020] to-transparent pb-28">
-        <Topbar />
+    <div className="flex flex-col">
+      <div className="relative flex h-screen w-screen flex-col">
+        <FossBanner />
+        <Umami />{' '}
+        <div className="relative bg-gradient-to-b from-[#00000060] via-[#00000020] to-transparent pb-28">
+          <Topbar />
+        </div>
+        <Hero />
+        <Footer className="bg-back" />
       </div>
-      <FossBanner />
-      <Hero />
-      <Footer className="bg-back" />
     </div>
   )
 }
