@@ -33,8 +33,11 @@ const javascript = {
     'y_is_even': '02',
     'y_is_odd':  '03'
   };
-  const which = BigInt(publicKey.y) % 2n == 0 ? 'y_is_even' : 'y_is_odd';
-  return header_byte[which] + publicKey.x.slice(2);
+  const regex = /([a-f0-9]+),([a-f0-9]+)/;
+  const cleanedPublicKey = publicKey.replace(/\\s/g, '');
+  const match = cleanedPublicKey.match(regex);
+  const which = BigInt("0x" + match[2]) % 2n == 0 ? 'y_is_even' : 'y_is_odd';
+  return header_byte[which] + match[1];
 }`,
   ],
   validate: async (answer) => {
@@ -61,8 +64,11 @@ const python = {
           "y_is_even": "02",
           "y_is_odd":  "03"
     }
-    which = "y_is_even" if (int(public_key["y"], 16) % 2 == 0 ) else "y_is_odd"
-    return header_byte[which] + public_key["x"][2:]`,
+    regex = r"([a-f0-9]+),([a-f0-9]+)"
+    cleaned_public_key = re.sub(r"\\s", "", public_key)
+    match = re.search(regex, cleaned_public_key)
+    which = 'y_is_even' if int(match.group(2), 16) % 2 == 0 else 'y_is_odd'
+    return header_byte[which] + match.group(1)`,
   ],
   validate: async (answer) => {
     return [true, undefined]

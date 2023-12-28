@@ -18,9 +18,12 @@ function compressPublicKey(publickey) {
     y_is_even: '02',
     y_is_odd: '03',
   }
+  const regex = /([a-f0-9]+),([a-f0-9]+)/
+  const cleanedPublicKey = publickey.replace(/\s/g, '')
+  const match = cleanedPublicKey.match(regex)
   const which =
-    BigInt(publickey.y) % BigInt(2) === BigInt(0) ? 'y_is_even' : 'y_is_odd'
-  return header_byte[which] + publickey.x.slice(2)
+    BigInt('0x' + match[2]) % BigInt(2) == BigInt(0) ? 'y_is_even' : 'y_is_odd'
+  return header_byte[which] + match[1]
 }
 
 export default function PublicKey4({ lang }) {
@@ -44,13 +47,13 @@ export default function PublicKey4({ lang }) {
 
   const javascript = {
     program: `
-console.log(compressPublicKey(${prevData?.data && dataObject}))
+console.log(compressPublicKey(${prevData?.data && `"${dataObject}"`}))
 console.log("KILL")`,
     defaultFunction: {
       name: 'compressPublicKey',
       args: ['publicKey'],
     },
-    defaultCode: `${prevData?.data && 'const uncompressedKey = ' + dataObject}
+    defaultCode: `${prevData?.data && `const uncompressedKey = "${dataObject}"`}
 
 // Determine if the y coordinate is even or odd and prepend the
 // corresponding header byte to the x coordinate.
@@ -71,7 +74,7 @@ function compressPublicKey(publicKey) {
       if (!answer.match(pattern)) {
         return [false, 'Answer is not a hexadecimal value']
       }
-      if (answer !== compressPublicKey(JSON.parse(dataObject))) {
+      if (answer !== compressPublicKey(dataObject)) {
         return [false, 'Ensure you are using your own key object']
       }
       return [true, undefined]
@@ -86,13 +89,15 @@ function compressPublicKey(publicKey) {
 
   const python = {
     program: `
-print(compress_publickey(${prevData?.data && dataObject}))
+print(compress_publickey(${prevData?.data && `"${dataObject}"`}))
 print("KILL")`,
     defaultFunction: {
       name: 'compress_publickey',
       args: ['publicKey'],
     },
-    defaultCode: `${prevData?.data && 'uncompressed_key = ' + dataObject}
+    defaultCode: `import re
+    
+${prevData?.data && `uncompressed_key = "${dataObject}"`}
 
 # Determine if the y coordinate is even or odd and prepend
 # the corresponding header byte to the x coordinate.
@@ -111,14 +116,14 @@ def compress_publickey(public_key):
       if (!answer.match(pattern)) {
         return [false, 'Answer is not a hexadecimal value']
       }
-      if (answer !== compressPublicKey(JSON.parse(dataObject))) {
+      if (answer !== compressPublicKey(dataObject)) {
         return [false, 'Ensure you are using your own key object']
       }
       return [true, undefined]
     },
     constraints: [
       {
-        range: [6, 1, 11, 1],
+        range: [8, 1, 13, 1],
         allowMultiline: true,
       },
     ],
