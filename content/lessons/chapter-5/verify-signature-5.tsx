@@ -20,8 +20,13 @@ console.log("KILL")
     name: 'verify',
     args: [],
   },
-  hiddenRange: [1, 0, 126, 0],
-  defaultCode: `${secp256k1.secp256k1js}
+  hiddenRange: [1, 1, 1, 1],
+  defaultCode: `
+  const secp256k1 = require('@savingsatoshi/secp256k1js')
+
+  const GE = secp256k1.GE
+  const FE = secp256k1.FE
+  const ORDER = secp256k1.ORDER
 	// Message digest from step 5:
 	const msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19n;
 	
@@ -95,7 +100,7 @@ console.log("KILL")
   },
   constraints: [
     {
-      range: [179, 1, 187, 1],
+      range: [59, 1, 67, 1],
       allowMultiline: true,
     },
   ],
@@ -110,8 +115,12 @@ print("KILL")
     name: 'verify',
     args: [],
   },
-  hiddenRange: [1, 0, 126, 0],
-  defaultCode: `${secp256k1.secp256k1py}
+  hiddenRange: [1, 1, 1, 1],
+  defaultCode: `
+import secp256k1py.secp256k1 as SECP256K1
+
+GE = SECP256K1.GE
+G = SECP256K1.G
 
 # Message digest from step 5: 
 msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19
@@ -155,7 +164,7 @@ def verify(sig_r, sig_s, pubkey_x, pubkey_y, msg):
   },
   constraints: [
     {
-      range: [154, 1, 158, 1],
+      range: [32, 1, 39, 1],
       allowMultiline: true,
     },
   ],
