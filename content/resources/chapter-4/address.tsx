@@ -31,7 +31,7 @@ const javascript = {
   // To encode our publicKeyHash we first need to compress it to bytes which we have done for you
   // then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
   // We also need to decide which version to use, in this case version 0 will suffice for segwit
-  const bech32Address = encode('tb', 0, compressedPublicKeyHash)
+  const bech32Address = bech32.encode('tb', 0, compressedPublicKeyHash)
   // Lastly, let's return the address
   return bech32Address
 }`,
