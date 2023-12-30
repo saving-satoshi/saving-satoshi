@@ -5,7 +5,6 @@ import { getLessonKey } from 'lib/progress'
 import { useEffect, useState } from 'react'
 import { EditorConfig } from 'types'
 import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
-import { secp256k1 } from 'ui/lesson/ScriptingChallenge/library'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_three.title',
