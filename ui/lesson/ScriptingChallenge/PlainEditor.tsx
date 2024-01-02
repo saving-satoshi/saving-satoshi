@@ -7,6 +7,7 @@ import { Lesson, LessonTabs, useLessonContext } from 'ui'
 import { useMediaQuery, useDynamicHeight } from 'hooks'
 import MonacoEditor from '@monaco-editor/react'
 import { Loader } from 'shared'
+import { editor } from 'monaco-editor'
 
 const tabData = [
   {
@@ -67,6 +68,12 @@ export default function PlainEditor({
   if (!hydrated) {
     return null
   }
+  const editorOptions: editor.IStandaloneEditorConstructionOptions = {
+    readOnly: true,
+    minimap: { enabled: false },
+    scrollbar: { horizontal: 'hidden' },
+    wordWrap: 'on',
+  }
   const handleBeforeMount = (monaco) => {
     monaco.editor.defineTheme('satoshi', {
       base: 'vs-dark',
@@ -102,11 +109,11 @@ export default function PlainEditor({
             <MonacoEditor
               loading={<Loader className="h-10 w-10 text-white" />}
               width={isSmallScreen ? '100vw' : 'calc(100vw / 2)'}
-              height={'100%'}
+              height={'80%'}
               language={'plaintext'}
               theme={'satoshi'}
               value={code}
-              options={{ readOnly: true, minimap: { enabled: false } }}
+              options={editorOptions}
               beforeMount={handleBeforeMount}
             />
           </div>
