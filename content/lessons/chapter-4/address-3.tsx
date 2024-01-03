@@ -73,7 +73,6 @@ function hashToAddress(hash) {
 
       return [true, undefined]
     },
-    hiddenRange: [1, 0, 1, 0],
     constraints: [
       {
         range: [9, 1, 10, 1],
@@ -124,7 +123,6 @@ def hash_to_address(hash):
 
       return [true, undefined]
     },
-    hiddenRange: [1, 0, 1, 0],
     constraints: [
       {
         range: [8, 1, 9, 1],

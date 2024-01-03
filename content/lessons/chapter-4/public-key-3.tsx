@@ -67,7 +67,6 @@ function privateKeyToPublicKey(privateKey) {
         return [false, 'Try logging out your answer']
       }
     },
-    hiddenRange: [1, 1, 1, 1],
     constraints: [
       {
         range: [12, 1, 12, 1],
@@ -118,7 +117,6 @@ def privatekey_to_publickey(private_key):
         return [false, 'Try logging out your answer']
       }
     },
-    hiddenRange: [1, 1, 1, 1],
     constraints: [
       {
         range: [11, 1, 11, 1],

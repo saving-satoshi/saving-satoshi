@@ -19,7 +19,6 @@ console.log("KILL")
     name: 'verify',
     args: [],
   },
-  hiddenRange: [1, 1, 1, 1],
   defaultCode: `
   const secp256k1 = require('@savingsatoshi/secp256k1js')
 
@@ -114,7 +113,6 @@ print("KILL")
     name: 'verify',
     args: [],
   },
-  hiddenRange: [1, 1, 1, 1],
   defaultCode: `
 import secp256k1py.secp256k1 as SECP256K1
 

@@ -65,7 +65,6 @@ const javascriptChallengeFour = {
     name: 'verify',
     args: [],
   },
-  hiddenRange: [1, 0, 126, 0],
   defaultCode: `// Message digest from step 5:
 const msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19;
 
@@ -146,7 +145,6 @@ const pythonChallengeFour = {
     name: 'verify',
     args: [],
   },
-  hiddenRange: [1, 0, 126, 0],
   defaultCode: `# Message digest from step 5:
 msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19
 
