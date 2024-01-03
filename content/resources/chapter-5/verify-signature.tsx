@@ -65,7 +65,6 @@ const javascriptChallengeFour = {
     name: 'verify',
     args: [],
   },
-  hiddenRange: [1, 0, 126, 0],
   defaultCode: `// Message digest from step 5:
 const msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19;
 
@@ -146,7 +145,6 @@ const pythonChallengeFour = {
     name: 'verify',
     args: [],
   },
-  hiddenRange: [1, 0, 126, 0],
   defaultCode: `# Message digest from step 5:
 msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19
 
@@ -172,21 +170,21 @@ def verify(sig_r, sig_s, pubkey_x, pubkey_y, msg):
 		print("invalid s value")
 		return False
 
-    # Calculate the inverse of sig_s modulo ORDER
-    sig_s_inverted = pow(sig_s, -1, GE.ORDER)
+	# Calculate the inverse of sig_s modulo ORDER
+	sig_s_inverted = pow(sig_s, -1, GE.ORDER)
 
-    # Calculate u1 and u2
-    u1 = (msg * sig_s_inverted) % GE.ORDER
-    u2 = (sig_r * sig_s_inverted) % GE.ORDER
+	# Calculate u1 and u2
+	u1 = (msg * sig_s_inverted) % GE.ORDER
+	u2 = (sig_r * sig_s_inverted) % GE.ORDER
 
-    # Calculate R = u1 * G + u2 * public key
-    # We need to use the appropriate methods for point multiplication and addition
-    R1 = GE.mul((u1, G))
-    R2 = GE.mul((u2, key))
-    R = R1 + R2
+	# Calculate R = u1 * G + u2 * public key
+	# We need to use the appropriate methods for point multiplication and addition
+	R1 = GE.mul((u1, G))
+	R2 = GE.mul((u2, key))
+	R = R1 + R2
 
-    # Verify if the x-coordinate of R modulo ORDER is equal to sig_r
-    return sig_r == int(R.x) % GE.ORDER`,
+	# Verify if the x-coordinate of R modulo ORDER is equal to sig_r
+	return sig_r == int(R.x) % GE.ORDER`,
   validate: async (answer) => {
     return [true, undefined]
   },

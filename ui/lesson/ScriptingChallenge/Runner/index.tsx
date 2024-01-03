@@ -8,10 +8,11 @@ import Convert from 'ansi-to-html'
 import { Loader } from 'shared'
 import Icon from 'shared/Icon'
 import { HasherState } from './Hasher'
-import { EditorConfig, LessonView } from 'types'
+import { EditorConfig, LessonView, StoredLessonData } from 'types'
 import { useLessonContext, StatusBar } from 'ui'
 import { useDynamicHeight } from 'hooks'
 import Terminal from './Terminal'
+import { Base64String } from 'types/classes'
 
 enum State {
   Idle = 'idle',
@@ -19,6 +20,15 @@ enum State {
   Running = 'running',
   Error = 'error',
   Complete = 'complete',
+}
+
+function escapeHtml(text) {
+  return text
+    .replace(/&/g, '&amp;') // Replace & with &amp;
+    .replace(/</g, '&lt;') // Replace < with &lt;
+    .replace(/>/g, '&gt;') // Replace > with &gt;
+    .replace(/"/g, '&quot;') // Replace " with &quot;
+    .replace(/'/g, '&#039;') // Replace ' with &#039;
 }
 
 const convert = new Convert()
@@ -52,7 +62,7 @@ export default function Runner({
   config: EditorConfig
   program: string
   errors: string[]
-  onValidate: (output: string | number) => Promise<any[]>
+  onValidate: (data: StoredLessonData) => Promise<any[]>
   lang: string
   successMessage: string
   setErrors: (errors: string[]) => void
@@ -75,6 +85,10 @@ export default function Runner({
   const sendTerminal = (action: string, payload?: any) => {
     if (!terminalRef.current) {
       return
+    }
+
+    if (payload && payload.includes('<GE')) {
+      payload = escapeHtml(payload)
     }
 
     if (payload) {
@@ -135,7 +149,10 @@ export default function Runner({
             payload = payload.trim()
             sendTerminal('print', payload)
 
-            const [res, err] = await onValidate(payload)
+            const [res, err] = await onValidate({
+              code: new Base64String(`${code}\n${program}`),
+              answer: payload,
+            })
             if (!res) {
               setIsRunning(false)
               setHasherState(HasherState.Error)
