@@ -21,6 +21,15 @@ enum State {
   Complete = 'complete',
 }
 
+function escapeHtml(text) {
+  return text
+    .replace(/&/g, '&amp;') // Replace & with &amp;
+    .replace(/</g, '&lt;') // Replace < with &lt;
+    .replace(/>/g, '&gt;') // Replace > with &gt;
+    .replace(/"/g, '&quot;') // Replace " with &quot;
+    .replace(/'/g, '&#039;') // Replace ' with &#039;
+}
+
 const convert = new Convert()
 const wsEndpoint =
   process.env.NEXT_PUBLIC_WS_ENDPOINT || 'wss://api.savingsatoshi.com'
@@ -75,6 +84,10 @@ export default function Runner({
   const sendTerminal = (action: string, payload?: any) => {
     if (!terminalRef.current) {
       return
+    }
+
+    if (payload && payload.includes('<GE')) {
+      payload = escapeHtml(payload)
     }
 
     if (payload) {
