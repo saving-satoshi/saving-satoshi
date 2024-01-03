@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'hooks'
 import { Introduction, Lesson, LessonInfo, Text } from 'ui'
-import PlainEditor from 'ui/lesson/ScriptingChallenge/PlainEditor'
+import PlainEditorWrapper from 'ui/lesson/ScriptingChallenge/PlainEditorWrapper'
 
 export const metadata = {
   title: 'chapter_six.in_out_one.title',
@@ -14,7 +14,7 @@ export default function InOut1({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <PlainEditor
+    <PlainEditorWrapper
       code={`$ bitcoin-cli listunspent 
 
 [  
@@ -47,6 +47,6 @@ export default function InOut1({ lang }) {
           {t('chapter_six.in_out_one.paragraph_three')}
         </Text>
       </LessonInfo>
-    </PlainEditor>
+    </PlainEditorWrapper>
   )
 }
