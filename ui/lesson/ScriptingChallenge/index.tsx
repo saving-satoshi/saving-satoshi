@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import LanguageTabs from './LanguageTabs'
 import Editor from './Editor'
 import Runner from './Runner'
-import { EditorConfig, LessonDirection } from 'types'
+import { EditorConfig, LessonDirection, StoredLessonData } from 'types'
 import { Lesson, LessonTabs } from 'ui'
 import { useMediaQuery, useDynamicHeight } from 'hooks'
 import { useProgressContext } from 'providers/ProgressProvider'
@@ -86,14 +86,16 @@ export default function ScriptingChallenge({
     )
   }
 
-  const handleRunnerValidate = async (answer) => {
-    const [success, errors] = await config.languages[language].validate(answer)
+  const handleRunnerValidate = async (data: StoredLessonData) => {
+    const [success, errors] = await config.languages[language].validate(
+      data.answer
+    )
 
     if (success) {
       setChallengeSuccess(true)
       if (account) {
         saveProgress(lessonKey)
-        saveData && setData(account.id, lessonKey, answer)
+        saveData && setData(account.id, lessonKey, data)
       } else {
         saveProgressLocal(lessonKey)
       }

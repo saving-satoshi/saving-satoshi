@@ -1,3 +1,5 @@
+import { Base64String } from './classes'
+
 export * from './enums'
 export * from './interfaces'
 
@@ -58,4 +60,9 @@ export type ColorGroup = {
   start: number
   end: number
   colorCode: string
+}
+
+export type StoredLessonData = {
+  answer: string
+  code?: Base64String
 }

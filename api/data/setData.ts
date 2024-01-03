@@ -1,9 +1,10 @@
+import { StoredLessonData } from 'types'
 import { put } from 'utils'
 
 export default async function setData(
   account_id: number,
   lesson_id: string,
-  data: string
+  data: StoredLessonData
 ) {
   try {
     const res = await put({
@@ -12,7 +13,10 @@ export default async function setData(
       body: {
         account_id,
         lesson_id,
-        data,
+        data: {
+          answer: data.answer,
+          code: data?.code?.getEncoded(),
+        },
       },
     })
 
