@@ -14,11 +14,11 @@ import Modal from './Modal'
 import { Text, ToggleSwitch } from 'ui'
 
 const avatars = [
-  'white space-suit',
-  'red space-suit',
-  'orange space-suit',
-  'bunny engineer',
-  'badger astronaut',
+  'white-spacesuit',
+  'red-spacesuit',
+  'orange-spacesuit',
+  'bunny-engineer',
+  'badger-astronaut',
 ]
 
 export default function SignupModal({ onClose, state }) {
@@ -76,6 +76,8 @@ export default function SignupModal({ onClose, state }) {
     }
   }, [state.open])
 
+  console.log('new one', avatars[0].replace('-', ' '))
+
   return (
     <Modal active={state.open} onRequestClose={onClose}>
       <div className="float-right flex justify-end">
@@ -99,7 +101,7 @@ export default function SignupModal({ onClose, state }) {
               className={clsx({
                 'mr-3.5 sm:mr-3': index !== avatars.length - 1,
               })}
-              aria-label={`Select avatar with ${name}`}
+              aria-label={`Select avatar with ${name.replace('-', ' ')}`}
               aria-pressed={avatar === name}
               onClick={() => setAvatar(name)}
             >
