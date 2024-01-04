@@ -5,7 +5,6 @@ import { getLessonKey } from 'lib/progress'
 import { useEffect, useState } from 'react'
 import { EditorConfig } from 'types'
 import { CodeExample, LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
-import { secp256k1 } from 'ui/lesson/ScriptingChallenge/library'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_four.title',
@@ -20,8 +19,12 @@ console.log("KILL")
     name: 'verify',
     args: [],
   },
-  hiddenRange: [1, 0, 126, 0],
-  defaultCode: `${secp256k1.secp256k1js}
+  defaultCode: `
+const secp256k1 = require('@savingsatoshi/secp256k1js')
+
+const GE = secp256k1.GE
+const FE = secp256k1.FE
+const ORDER = secp256k1.ORDER
 // Message digest from step 9: 
 const msg_fe = 0x73a16290e005b119b9ce0ceea52949f0bd4f925e808b5a54c631702d3fea1242n
 
@@ -97,8 +100,11 @@ print("KILL")
     name: 'verify',
     args: [],
   },
-  hiddenRange: [1, 0, 126, 0],
-  defaultCode: `${secp256k1.secp256k1py}
+  defaultCode: `
+import secp256k1py.secp256k1 as SECP256K1
+
+GE = SECP256K1.GE
+G = SECP256K1.G
 # Message digest from step 9: 
 msg = 0x73a16290e005b119b9ce0ceea52949f0bd4f925e808b5a54c631702d3fea1242 
 

@@ -7,7 +7,6 @@ import { Text } from 'ui'
 import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
-import { bech32 } from 'ui/lesson/ScriptingChallenge/library'
 
 export const metadata = {
   title: 'chapter_four.address_three.title',
@@ -22,7 +21,13 @@ export default function Address3({ lang }) {
   const [isLoading, setIsLoading] = useState(true)
 
   const getPrevLessonData = async () => {
-    setPrevData(await getData('CH4ADR2'))
+    const data = await getData('CH4ADR2')
+    if (data?.answer) {
+      setPrevData({
+        lesson_id: 'CH4ADR2',
+        data: data.answer,
+      })
+    }
   }
 
   useEffect(() => {
@@ -37,8 +42,8 @@ console.log("KILL")`,
       name: 'findAddress',
       args: ['publicKeyHash'],
     },
-    defaultCode: `${bech32.bech32js}
-
+    defaultCode: `
+const bech32 = require('@savingsatoshi/bech32js')
 ${
   prevData?.data &&
   'const compressedPublicKeyHash = ' +
@@ -74,10 +79,9 @@ function hashToAddress(hash) {
 
       return [true, undefined]
     },
-    hiddenRange: [1, 0, 160, 0],
     constraints: [
       {
-        range: [167, 1, 169, 1],
+        range: [9, 1, 10, 1],
         allowMultiline: true,
       },
     ],
@@ -91,8 +95,8 @@ print("KILL")`,
       name: 'find_address',
       args: ['public_key_hash'],
     },
-    defaultCode: `${bech32.bech32py}
-
+    defaultCode: `
+from bech32py.bech32 import encode
 ${
   prevData?.data &&
   'compressed_public_key_hash = ' +
@@ -125,10 +129,9 @@ def hash_to_address(hash):
 
       return [true, undefined]
     },
-    hiddenRange: [1, 0, 160, 0],
     constraints: [
       {
-        range: [167, 1, 167, 1],
+        range: [8, 1, 9, 1],
         allowMultiline: true,
       },
     ],

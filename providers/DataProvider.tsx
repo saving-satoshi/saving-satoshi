@@ -32,8 +32,16 @@ export default function ProgressProvider({
 
     try {
       setIsLoading(true)
-      let data = await getData(lessonId)
-      setDataState(data)
+      let loadedData = await getData(lessonId)
+      if (loadedData && loadedData?.answer) {
+        setDataState([
+          ...data,
+          {
+            lesson_id: lessonId,
+            data: loadedData.answer,
+          },
+        ])
+      }
     } catch (ex) {
       console.error(ex)
     } finally {

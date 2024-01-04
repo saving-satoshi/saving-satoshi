@@ -6,7 +6,6 @@ import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { secp256k1 } from 'ui/lesson/ScriptingChallenge/library/'
 import { useAuthContext } from 'providers/AuthProvider'
 
 export const metadata = {
@@ -31,7 +30,8 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: `${secp256k1.secp256k1js}
+    defaultCode: `
+const secp256k1 = require('@savingsatoshi/secp256k1js')
 // Multiply the private key by the ECDSA generator point G to
 // produce a new curve point which is the public key.
 // Return that curve point (also known as a group element)
@@ -45,13 +45,20 @@ function privateKeyToPublicKey(privateKey) {
 }
 `,
     validate: async (answer: string) => {
-      const parsedAnswer = JSON.parse(answer)
+      // Parsing the GE object string
+      const regex = /([a-f0-9]+),([a-f0-9]+)/
+      const cleanedAnswer = answer.replace(/\s/g, '')
+      const match = cleanedAnswer.match(regex)
+
       const correctPattern = /^0x[0-9a-fA-F]{64}$/
-      if (parsedAnswer) {
-        if (
-          parsedAnswer['x'].match(correctPattern) &&
-          parsedAnswer['y'].match(correctPattern)
-        ) {
+
+      // Validate if the GE object string matches the required format
+      if (match) {
+        const hash1 = '0x' + match[1] // Prepending 0x for pattern matching
+        const hash2 = '0x' + match[2] // Prepending 0x for pattern matching
+
+        // Check if both hashes match the correct pattern
+        if (hash1.match(correctPattern) && hash2.match(correctPattern)) {
           return [true, 'Nicely Done ']
         } else {
           return [false, 'Try multiplying with the G constant']
@@ -60,10 +67,9 @@ function privateKeyToPublicKey(privateKey) {
         return [false, 'Try logging out your answer']
       }
     },
-    hiddenRange: [1, 0, 126, 0],
     constraints: [
       {
-        range: [136, 1, 138, 1],
+        range: [12, 1, 12, 1],
         allowMultiline: true,
       },
     ],
@@ -77,7 +83,7 @@ print("KILL")`,
       name: 'privatekey_to_publickey',
       args: ['private_key'],
     },
-    defaultCode: `${secp256k1.secp256k1py}
+    defaultCode: `import secp256k1py.secp256k1 as SECP256K1
 # Multiply the private key by the ECDSA generator point G to
 # produce a new curve point which is the public key.
 # Return that curve point (also known as a group element)
@@ -88,26 +94,32 @@ G = SECP256K1.FAST_G
 
 def privatekey_to_publickey(private_key):
 `,
-    validate: async (answer) => {
-      const parsedAnswer = JSON.parse(answer)
+    validate: async (answer: string) => {
+      // Parsing the new object string format
+      const regex = /([a-f0-9]+),([a-f0-9]+)/
+      const cleanedAnswer = answer.replace(/\s/g, '')
+      const match = cleanedAnswer.match(regex)
+
       const correctPattern = /^0x[0-9a-fA-F]{64}$/
-      if (parsedAnswer) {
-        if (
-          parsedAnswer['x'].match(correctPattern) &&
-          parsedAnswer['y'].match(correctPattern)
-        ) {
-          return [true, 'Nicely Done ']
+
+      // Validate if the object string matches the required format
+      if (match) {
+        const hash1 = '0x' + match[1] // Prepending 0x for pattern matching
+        const hash2 = '0x' + match[2] // Prepending 0x for pattern matching
+
+        // Check if both hashes match the correct pattern
+        if (hash1.match(correctPattern) && hash2.match(correctPattern)) {
+          return [true, 'Nicely Done']
         } else {
           return [false, 'Try multiplying with the G constant']
         }
       } else {
-        return [false, 'Try printing out your answer']
+        return [false, 'Try logging out your answer']
       }
     },
-    hiddenRange: [1, 0, 126, 0],
     constraints: [
       {
-        range: [136, 1, 136, 1],
+        range: [11, 1, 11, 1],
         allowMultiline: true,
       },
     ],
