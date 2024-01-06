@@ -9,10 +9,10 @@ import { useMediaQuery } from 'hooks'
 const PlainEditor = ({ code }: { code: string }) => {
   const isSmallScreen = useMediaQuery({ width: 767 })
   const headerHeight = isSmallScreen ? 63 : 70
-  const languageTabsHeight = 40
-  const statusBarHeight = 56
-  const terminalHeight = 218
-  const terminalTabsHeight = 40
+  const languageTabsHeight = 0
+  const statusBarHeight = 0
+  const terminalHeight = 0
+  const terminalTabsHeight = 0
   const mobileMenuHeight = 48
 
   const totalHeight = isSmallScreen
@@ -28,8 +28,11 @@ const PlainEditor = ({ code }: { code: string }) => {
   const editorOptions: editor.IStandaloneEditorConstructionOptions = {
     readOnly: true,
     minimap: { enabled: false },
-    scrollbar: { horizontal: 'hidden' },
+    overviewRulerLanes: 0,
+    scrollbar: { horizontal: 'hidden', vertical: 'hidden' },
+    overviewRulerBorder: false,
     wordWrap: 'on',
+    scrollBeyondLastLine: false,
   }
   const handleBeforeMount = (monaco) => {
     monaco.editor.defineTheme('satoshi', {
@@ -43,10 +46,10 @@ const PlainEditor = ({ code }: { code: string }) => {
     })
   }
   return (
-    <div className=" grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l">
+    <div className="read-only-editor grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l">
       <div
         className={clsx(
-          'relative h-full bg-[#00000026] font-mono text-sm text-white',
+          'relative grow bg-[#00000026] font-mono text-sm text-white',
           {
             'hidden md:flex': !isActive,
             'flex ': isActive,
