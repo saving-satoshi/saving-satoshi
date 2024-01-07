@@ -1197,6 +1197,7 @@ const translations = {
           },
         },
       },
+      success: 'The Output class looks good, Great Work!',
     },
     put_it_together_one: {
       title: 'Putting it all together',
