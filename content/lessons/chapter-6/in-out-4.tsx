@@ -6,7 +6,6 @@ import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { bech32, secp256k1 } from 'ui/lesson/ScriptingChallenge/library/'
 import { useAuthContext } from 'providers/AuthProvider'
 
 export const metadata = {
@@ -68,7 +67,7 @@ console.log("KILL")`,
       args: ['privateKey'],
     },
     defaultCode: `const assert = require("assert")
-${bech32.bech32js}
+const bech32 = require('@savingsatoshi/bech32js')
 class Output {
   constructor() {
     this.value = 0;
@@ -108,10 +107,9 @@ class Output {
         return [false, "can't find a return in both of the methods"]
       }
     },
-    hiddenRange: [1, 1, 178, 1],
     constraints: [
       {
-        range: [187, 1, 206, 1],
+        range: [10, 1, 30, 1],
         allowMultiline: true,
       },
     ],
@@ -130,7 +128,7 @@ print("KILL")`,
       args: ['private_key'],
     },
     defaultCode: `from struct import pack
-${bech32.bech32py}
+from bech32py.bech32 import encode
 class Output:
     def __init__(self):
         self.value = 0
@@ -168,10 +166,9 @@ class Output:
         return [false, "can't find a return in both of the methods"]
       }
     },
-    hiddenRange: [1, 1, 178, 1],
     constraints: [
       {
-        range: [158, 1, 118, 1],
+        range: [11, 1, 28, 1],
         allowMultiline: true,
       },
     ],
