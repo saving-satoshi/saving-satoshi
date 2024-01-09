@@ -1468,6 +1468,20 @@ const translations = {
         'The witness stack object can then be appended to the witnesses array of the transaction object.',
       success: 'The sign_input() method looks good, Great Work!',
     },
+    put_it_together_six: {
+      paragraph_one:
+        'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 6.5 BTC input and a 1 BTC output... what happens to the other 5.5 BTC? Most of that will be "change" and we need to send it back to our own address!',
+      paragraph_two:
+        'Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in step 1) and two outputs:',
+      paragraph_three:
+        'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 550,000,000 to 549,999,000 satoshis.',
+      paragraph_four:
+        'Finally our work is done. Your script should end by returning the result of the transaction serialize() method. This is a valid signed Bitcoin transaction and we can broadcast it to the network to send Mike Ramen the money he needs!',
+      bullet_one:
+        'Mike Ramen gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
+      bullet_two:
+        'You get 550,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
+    },
     outro_one: {
       title: 'Outro',
       heading: 'You did it!!!',
