@@ -46,10 +46,10 @@ const PlainEditor = ({ code }: { code: string }) => {
     })
   }
   return (
-    <div className="read-only-editor grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l">
+    <div className=" read-only-editor grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l">
       <div
         className={clsx(
-          'relative grow bg-[#00000026] font-mono text-sm text-white',
+          'relative grow bg-[#00000026] pt-4 font-mono text-sm text-white',
           {
             'hidden md:flex': !isActive,
             'flex ': isActive,
