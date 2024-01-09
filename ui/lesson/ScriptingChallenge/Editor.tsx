@@ -3,7 +3,6 @@
 import clsx from 'clsx'
 
 import MonacoEditor from '@monaco-editor/react'
-
 import { monacoOptions } from './config'
 import { monaco } from 'react-monaco-editor'
 import { useEffect, useRef, useState } from 'react'
