@@ -76,8 +76,6 @@ export default function SignupModal({ onClose, state }) {
     }
   }, [state.open])
 
-  console.log('new one', avatars[0].replace('-', ' '))
-
   return (
     <Modal active={state.open} onRequestClose={onClose}>
       <div className="float-right flex justify-end">
