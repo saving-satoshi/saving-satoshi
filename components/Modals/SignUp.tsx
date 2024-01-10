@@ -14,11 +14,11 @@ import Modal from './Modal'
 import { Text, ToggleSwitch } from 'ui'
 
 const avatars = [
-  'white-spacesuit',
-  'red-spacesuit',
-  'orange-spacesuit',
-  'bunny-engineer',
-  'badger-astronaut',
+  'white spacesuit',
+  'red spacesuit',
+  'orange spacesuit',
+  'bunny engineer',
+  'badger astronaut',
 ]
 
 export default function SignupModal({ onClose, state }) {
@@ -31,7 +31,7 @@ export default function SignupModal({ onClose, state }) {
   const nextLessonKey = getNextLessonKey(progress)
 
   const [loading, setLoading] = useState<boolean>(false)
-  const [avatar, setAvatar] = useState(avatars[0])
+  const [avatar, setAvatar] = useState(1)
   const [copyAcknowledged, setCopyAcknowledged] = useState<boolean>(false)
   const [privateKey, setPrivateKey] = useState<string | undefined>(undefined)
   const [copied, setCopied] = useState(false)
@@ -101,16 +101,16 @@ export default function SignupModal({ onClose, state }) {
               className={clsx({
                 'mr-3.5 sm:mr-3': index !== avatars.length - 1,
               })}
-              aria-label={`Select avatar with ${name.replace('-', ' ')}`}
-              aria-pressed={avatar === name}
-              onClick={() => setAvatar(name)}
+              aria-label={`Select avatar with ${name}`}
+              aria-pressed={avatar === avatars.indexOf(name) + 1}
+              onClick={() => setAvatar(avatars.indexOf(name) + 1)}
             >
               <Avatar
-                avatar={`/assets/avatars/${name}.png`}
+                avatar={`/assets/avatars/${index + 1}.png`}
                 size={80}
                 className={clsx('inline-block h-20 w-20 border-2', {
-                  'border-white': avatar === name,
-                  'border-transparent': avatar !== name,
+                  'border-white': avatar === avatars.indexOf(name) + 1,
+                  'border-transparent': avatar !== avatars.indexOf(name) + 1,
                 })}
               />
             </button>
