@@ -119,7 +119,7 @@ witness.push_item(Buffer.from('038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32a
 const tx = new Transaction();
 tx.inputs.push(input);
 tx.outputs.push(output);
-console.log(tx.serialize().toString('hex'));
+console.log(tx.serialize().toString('hex')==='020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0100e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd100000000'&&'true');
 
 
 `,
@@ -144,10 +144,10 @@ class Transaction{
 }`,
 validate:async (answer: string) =>{
   
-   
+   const parsedanswer=JSON.parse(answer);
   const correctpattern=/^([a-fA-F0-9]{8})01([a-fA-F0-9]{64})([a-fA-F0-9]{8})00ffffffff01([a-fA-F0-9]{16})([a-fA-F0-9]{44})[a-fA-F0-9]{8}$/
-  console.log(answer)
-  if (correctpattern.test(answer)) {
+  
+  if (correctpattern.test(parsedanswer)) {
     
       return [true, 'Nicely Done ']
     
@@ -258,6 +258,42 @@ export default function PutItTogether2({ lang }) {
               t('chapter_six.put_it_together_two.table.row_two.item_two'),
               t('chapter_six.put_it_together_two.table.row_two.item_three'),
               t('chapter_six.put_it_together_two.table.row_two.item_four'),
+            ],
+            [
+              t('chapter_six.put_it_together_two.table.row_three.item_one'),
+              t('chapter_six.put_it_together_two.table.row_three.item_two'),
+              t('chapter_six.put_it_together_two.table.row_three.item_three'),
+              t('chapter_six.put_it_together_two.table.row_three.item_four'), 
+            ],
+            [
+              t('chapter_six.put_it_together_two.table.row_four.item_one'),
+              t('chapter_six.put_it_together_two.table.row_four.item_two'),
+              t('chapter_six.put_it_together_two.table.row_four.item_three'),
+              t('chapter_six.put_it_together_two.table.row_four.item_four'),
+            ],
+            [
+              t('chapter_six.put_it_together_two.table.row_five.item_one'),
+              t('chapter_six.put_it_together_two.table.row_five.item_two'),
+              t('chapter_six.put_it_together_two.table.row_five.item_three'),
+              t('chapter_six.put_it_together_two.table.row_five.item_four'),
+            ],
+            [
+              t('chapter_six.put_it_together_two.table.row_six.item_one'),
+              t('chapter_six.put_it_together_two.table.row_six.item_two'),
+              t('chapter_six.put_it_together_two.table.row_six.item_three'),
+              t('chapter_six.put_it_together_two.table.row_six.item_four'),
+            ],
+            [
+              t('chapter_six.put_it_together_two.table.row_seven.item_one'),
+              t('chapter_six.put_it_together_two.table.row_seven.item_two'),
+              t('chapter_six.put_it_together_two.table.row_seven.item_three'),
+              t('chapter_six.put_it_together_two.table.row_seven.item_four'),
+            ],
+            [
+              t('chapter_six.put_it_together_two.table.row_eight.item_one'),
+              t('chapter_six.put_it_together_two.table.row_eight.item_two'),
+              t('chapter_six.put_it_together_two.table.row_eight.item_three'),
+              t('chapter_six.put_it_together_two.table.row_eight.item_four'),
             ],
           ]}/>
 

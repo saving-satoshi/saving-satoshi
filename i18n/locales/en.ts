@@ -1130,7 +1130,48 @@ const translations = {
         item_two: 'flags',
         item_three: 'bytes',
         item_four: '2',
-      }
+      },
+      row_three:{
+        item_one: 'The number of inputs',
+        item_two: 'in count',
+        item_three: 'int',
+        item_four: '1',
+      },
+      row_four:{
+        item_one: 'All transactions input, serialized',
+        item_two: 'inputs',
+        item_three: 'Input[]',
+        item_four: '(var)',
+
+      },
+      row_five:{
+        item_one: 'The number of outputs',
+        item_two: 'out count',
+        item_three: 'int',
+        item_four: '1',
+
+      },
+      row_six:{
+        item_one: 'All transaction outputs, serialized',
+        item_two: 'outputs',
+        item_three: 'Output[]',
+        item_four: '(var)',
+
+      },
+      row_seven:{
+        item_one: 'All witness stacks, serialized',
+        item_two: 'witness',
+        item_three: 'Witness[]',
+        item_four: '(var)',
+
+      },
+      row_eight:{
+        item_one: 'Settings to 0 indicates finality',
+        item_two: 'locktime',
+        item_three: 'int',
+        item_four: '4',
+
+      },
     },
     },
     outro_one: {
