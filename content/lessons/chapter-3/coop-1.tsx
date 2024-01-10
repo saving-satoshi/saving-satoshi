@@ -29,15 +29,15 @@ export default function Coop1({ lang }) {
     },
     {
       username: 'Mining Maniacs',
-      avatar: '/assets/avatars/2.png',
+      avatar: '/assets/avatars/mining-maniacs.png',
     },
     {
       username: 'Coin Crunchers',
-      avatar: '/assets/avatars/4.png',
+      avatar: '/assets/avatars/coin-crunchers.png',
     },
     {
       username: 'Hash Hoppers',
-      avatar: '/assets/avatars/3.png',
+      avatar: '/assets/avatars/hash-hoppers.png',
     },
   ]
 

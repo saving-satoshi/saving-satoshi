@@ -31,17 +31,17 @@ export default function Pool1({ lang }) {
     },
     {
       username: 'Mining Maniacs',
-      avatar: '/assets/avatars/2.png',
+      avatar: '/assets/avatars/mining-maniacs.png',
       display: false,
     },
     {
       username: 'Coin Crunchers',
-      avatar: '/assets/avatars/4.png',
+      avatar: '/assets/avatars/coin-crunchers.png',
       display: false,
     },
     {
       username: 'Hash Hoppers',
-      avatar: '/assets/avatars/3.png',
+      avatar: '/assets/avatars/hash-hoppers.png',
       display: false,
     },
   ])

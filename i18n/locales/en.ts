@@ -1060,20 +1060,36 @@ const translations = {
     title: `Offense is the best defense`,
     intro_one: {
       title: 'Intro',
-      paragraph_one:'—SATOSHI NAKAMOTO: ”Great work. Now the world can see for itself that Vanderpoole is a fraud. Even if some don’t believe it yet, they will before our work is done.” – Satoshi Nakamoto',
-      paragraph_two:'—You pause for a moment and realize that every message up to this point has been signed “Satoshi Nakamoto.” You had just assumed that this was just a pseudonymous moniker used by someone who adheres to bitcoin’s core principles. Surely, they couldn’t be the real Satoshi Nakamoto. But, you finally decide, it’s worth asking.',
-      paragraph_three:'—”This might make me sound stupid, but are you the real Satoshi?”',
-      paragraph_four:'—HOLOCAT: “Hardly the only thing that’s made you sound stupid until now.”',
+      paragraph_one:
+        '—SATOSHI NAKAMOTO: ”Great work. Now the world can see for itself that Vanderpoole is a fraud. Even if some don’t believe it yet, they will before our work is done.” – Satoshi Nakamoto',
+      paragraph_two:
+        '—You pause for a moment and realize that every message up to this point has been signed “Satoshi Nakamoto.” You had just assumed that this was just a pseudonymous moniker used by someone who adheres to bitcoin’s core principles. Surely, they couldn’t be the real Satoshi Nakamoto. But, you finally decide, it’s worth asking.',
+      paragraph_three:
+        '—”This might make me sound stupid, but are you the real Satoshi?”',
+      paragraph_four:
+        '—HOLOCAT: “Hardly the only thing that’s made you sound stupid until now.”',
     },
-    intro_two:{
-      paragraph_one:'—HOLOCAT: “Hardly the only thing that’s made you sound stupid until now.”',
-      paragraph_two:'—SATOSHI NAKAMOTO: “Bitcoin moved far beyond its creator’s control many, many years ago. It would not matter if Vanderpoole or I were Satoshi’s grandson. Bitcoin is defined by the community and cannot be co-opted by a single individual or entity—including Satoshi. Proving this is the real battle. I hope you don’t mind, but I asked your eccentric freelance reporter friend to reach out.”',
-      paragraph_three:'—He what? Ding.',
-      paragraph_four:'—HOLOCAT: Don’t forget to boop me.',
-      paragraph_five:'—MIKE RAMEN: “You’ve got guts. But you’ll need more. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to get it. It’s going to cost, so I could use your help pulling my funds off the multi-signature that you helped me set up. You’ve still got one of my keys, right?”',
+    intro_two: {
+      paragraph_one:
+        '—HOLOCAT: “Hardly the only thing that’s made you sound stupid until now.”',
+      paragraph_two:
+        '—SATOSHI NAKAMOTO: “Bitcoin moved far beyond its creator’s control many, many years ago. It would not matter if Vanderpoole or I were Satoshi’s grandson. Bitcoin is defined by the community and cannot be co-opted by a single individual or entity—including Satoshi. Proving this is the real battle. I hope you don’t mind, but I asked your eccentric freelance reporter friend to reach out.”',
+      paragraph_three: '—He what? Ding.',
+      paragraph_four: '—HOLOCAT: Don’t forget to boop me.',
+      paragraph_five:
+        '—MIKE RAMEN: “You’ve got guts. But you’ll need more. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to get it. It’s going to cost, so I could use your help pulling my funds off the multi-signature that you helped me set up. You’ve still got one of my keys, right?”',
     },
     paragraph_one:
       'Vanderpoole is out to get you now that you’ve exposed him as a fraud. But despite that, plenty of scared people continue to cling to the myth he created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.',
+    in_out_one: {
+      title: 'The ins and outs',
+      paragraph_one:
+        "Mike Ramen needs 1 BTC to book his flight to Vanderpoole's private island. You decide to send him 1 BTC from your chapter 3 mining rewards, which have been sent by the mining pool to the address you created in chapter 4.",
+      paragraph_two:
+        'You open you Bitcoin full node and execute a command to see where your money is in the blockchain.',
+      paragraph_three:
+        'This is an unspent transaction output (aka "UTXO"). You might recognize your compressed public key hash and address from chapter 4. The amount looks right, too: 6.5 BTC.',
+    },
     in_out_two: {
       title: 'The ins and outs',
       paragraph_one:
@@ -1201,7 +1217,8 @@ const translations = {
   },
 
   disclaimer: {
-    description: `We’re excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>.`,
+    description:
+      'We’re excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>',
   },
 
   hasher: {
