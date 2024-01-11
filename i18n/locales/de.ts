@@ -4,7 +4,7 @@ const translations = {
     start: 'Start',
     copy: 'Kopieren',
     copy_acknowledged: 'Kopiert!',
-    about: 'Über das Projekt',
+    about: 'Info',
     chapter: 'Kapitel',
     chapters: 'Kapitel',
     challenge: 'Herausforderung',
