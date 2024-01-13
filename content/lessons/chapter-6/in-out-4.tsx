@@ -58,9 +58,12 @@ export default function InOut4({ lang }) {
 
   const javascript = {
     program: `
-const testAddress = 'bc1p5d7rjq7g6rdk2yhzks9smlaqtedr4dekq08ge8ztwac72sfr9rusxg3297'
-const outputInstance = Output.from_options(testAddress, 1000000);
-console.log(outputInstance.serialize().toString('hex')==='40420f0000000000220120a37c3903c8d0db6512e2b40b0dffa05e5a3ab73603ce8c9c4b7771e5412328f9' && 'true')
+const addr = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
+const value = 100000000;
+const output = Output.from_options(addr, value);
+const isCorrect = output.serialize().toString('hex') === '00e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd1'
+console.log(isCorrect && 'true')
+;
 console.log("KILL")`,
     defaultFunction: {
       name: 'privateKeyToPublicKey',
@@ -68,6 +71,7 @@ console.log("KILL")`,
     },
     defaultCode: `const assert = require("assert")
 const bech32 = require('@savingsatoshi/bech32js')
+
 class Output {
   constructor() {
     this.value = 0;
@@ -78,20 +82,12 @@ class Output {
   static from_options(addr, value) {
     assert(Number.isInteger(value));
     const self = new this();
-    const {version, program} = bech32.decode('bc', addr);
-    self.witness_version = version;
-    self.witness_data = Buffer.from(program);
-    self.value = value;
+    // YOUR CODE HERE
     return self;
   }
 
   serialize() {
-    const buf = Buffer.alloc(11);
-    buf.writeBigInt64LE(BigInt(this.value), 0);
-    buf.writeUInt8(this.witness_data.length + 2, 8);
-    buf.writeUInt8(this.witness_version, 9);
-    buf.writeUInt8(this.witness_data.length, 10);
-    return Buffer.concat([buf, this.witness_data]);
+    // YOUR CODE HERE
   }
 }
         
@@ -109,7 +105,7 @@ class Output {
     },
     constraints: [
       {
-        range: [10, 1, 30, 1],
+        range: [14, 1, 23, 1],
         allowMultiline: true,
       },
     ],
@@ -117,43 +113,36 @@ class Output {
 
   const python = {
     program: `
-test_address = 'bc1p5d7rjq7g6rdk2yhzks9smlaqtedr4dekq08ge8ztwac72sfr9rusxg3297'
-output_instance = Output.from_options(test_address, 1000000)
-print(output_instance.witness_data.hex())
-serialized_output = output_instance.serialize()
-print(serialized_output.hex() == '40420f0000000000220120a37c3903c8d0db6512e2b40b0dffa05e5a3ab73603ce8c9c4b7771e5412328f9' and 'true')
+addr = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
+value = 100000000
+output = Output.from_options(addr, value)
+is_correct = output.serialize().hex() == "00e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd1" 
+print(is_correct and 'true')
 print("KILL")`,
     defaultFunction: {
       name: 'privatekey_to_publickey',
       args: ['private_key'],
     },
     defaultCode: `from struct import pack
-from bech32py.bech32 import encode
+from bech32py import bech32
+
 class Output:
-    def __init__(self):
-        self.value = 0
-        self.witness_version = 0
-        self.witness_data = b""
+  def __init__(self):
+    self.value = 0
+    self.witness_version = 0
+    self.witness_data = b""
 
-    @classmethod
-    def from_options(cls, addr, value):
-        assert isinstance(value, int)
-        self = cls()
-        (ver, data, spec) = bech32_decode(addr)
-        self.witness_version = ver
-        self.witness_data = bytes(data)
-        self.value = value
-        return self
+  @classmethod
+  def from_options(cls, addr: str, value: int):
+    assert isinstance(value, int)
+    self = cls()
+    # YOUR CODE HERE
+    return self
 
-    def serialize(self):
-        r = b""
-        r += pack("<q", self.value)
-        r += pack("<B", len(self.witness_data) + 2)
-        r += pack("<B", self.witness_version)
-        r += pack("<B", len(self.witness_data))
-        r += self.witness_data
-        return r
-   
+  def serialize(self):
+    # YOUR CODE HERE
+
+    
 `,
     validate: async (answer) => {
       if (answer) {
@@ -168,7 +157,7 @@ class Output:
     },
     constraints: [
       {
-        range: [11, 1, 28, 1],
+        range: [14, 1, 21, 1],
         allowMultiline: true,
       },
     ],
