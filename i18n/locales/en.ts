@@ -1109,16 +1109,26 @@ const translations = {
     },
     put_it_together_two: {
       title: 'Putting it all together',
+<<<<<<< HEAD
       heading:'Finish the implementation of Class Transaction',
       paragraph_one:'It should have global properties locktime and version as well as an array of inputs, outputs, and witness stacks.',
       paragraph_two:'It will need a serialize() method that outputs the entire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
       paragraph_three:'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.',
+=======
+      heading: 'Finish the implementation of Class Witness',
+      paragraph_one:
+        'It should have the following method, which accepts a byte array and adds that item to the witness stack.',
+      paragraph_two:
+        'It will also need a serialize() method that returns the serialized witness stack.',
+      subheading_one: 'Witness stack',
+>>>>>>> da1dbc580799ce06651fd8fad8d7e6038d807de2
       headings: {
         item_one: 'Description',
         item_two: 'Name',
         item_three: 'Type',
         item_four: 'Size',
       },
+<<<<<<< HEAD
      table:{ row_one:{
         item_one: 'Currently 2',
         item_two: 'version',
@@ -1173,9 +1183,43 @@ const translations = {
 
       },
     },
+=======
+      table_one: {
+        row_one: {
+          item_one: 'The number of items in the witness stack',
+          item_two: 'count',
+          item_three: 'int',
+          item_four: '1',
+        },
+        row_two: {
+          item_one: 'Serialized stack items',
+          item_two: 'items',
+          item_three: '(items)',
+          item_four: '(var)',
+        },
+      },
+      subheading_two: 'Witness stack item',
+      table_two: {
+        row_one: {
+          item_one: 'Total length of the following stack item',
+          item_two: 'length',
+          item_three: 'int',
+          item_four: '1',
+        },
+        row_two: {
+          item_one: 'The raw bytes of the stack item',
+          item_two: 'data',
+          item_three: 'bytes',
+          item_four: '(var)',
+        },
+      },
+>>>>>>> da1dbc580799ce06651fd8fad8d7e6038d807de2
     },
     outro_one: {
       title: 'Outro',
+      heading: 'You did it!!!',
+      paragraph_one:
+        "You successfully built a transaction from scratch to pay Mike Ramen for his help. Now that we are done here let's get off this island...",
     },
   },
 
