@@ -1153,6 +1153,9 @@ const translations = {
     },
     outro_one: {
       title: 'Outro',
+      heading: 'You did it!!!',
+      paragraph_one:
+        "You successfully built a transaction from scratch to pay Mike Ramen for his help. Now that we are done here let's get off this island...",
     },
   },
 
