@@ -1107,6 +1107,97 @@ const translations = {
       paragraph_three:
         'And remember: integers in Bitcoin are serialized little-endian!',
     },
+    in_out_four: {
+      title: 'The ins and outs',
+      heading: 'Finish the implementation of Class Output',
+      paragraph_one: 'It should have the following method:',
+      paragraph_two: `It accepts a Bitcoin address as a string (like the address from Mike Ramen) and a value as an integer. The value is expressed as a number of satoshis! Remember, 1 BTC = 100000000 satoshis. You will need to use our bech32 library again to decode the address into version and data components.
+        The class also needs a serialize() method method that returns a byte array according to the specification:`,
+      heading_two: 'Output',
+      table: {
+        heading: {
+          one: 'Description',
+          two: 'Name',
+          three: 'Type',
+          four: 'Size',
+        },
+        row_one: {
+          column: {
+            one: 'Number of satoshis being sent.',
+            two: 'value',
+            three: 'bytes',
+            four: '8',
+          },
+        },
+        row_two: {
+          column: {
+            one: 'Total length of the following script (the "witness program")."',
+            two: 'length',
+            three: 'int',
+            four: '1',
+          },
+        },
+        row_three: {
+          column: {
+            one: 'The segregated witness version. Derived from the bech32 address.',
+            two: 'version',
+            three: 'int',
+            four: '1',
+          },
+        },
+        row_four: {
+          column: {
+            one: 'Length of the following witness program data.',
+            two: 'length',
+            three: 'int',
+            four: '1',
+          },
+        },
+        row_five: {
+          column: {
+            one: 'The data component derived from the bech32 address.',
+            two: 'length',
+            three: 'int',
+            four: '1',
+          },
+        },
+      },
+      heading_three: 'Input',
+      table_two: {
+        row_one: {
+          column: {
+            one: 'txid and output index being spent from',
+            two: 'outpoint',
+            three: 'bytes',
+            four: '36',
+          },
+        },
+        row_two: {
+          column: {
+            one: 'ScriptSig length (always 0 for Segregated Witness)',
+            two: 'length',
+            three: 'int',
+            four: '1',
+          },
+        },
+        row_three: {
+          column: {
+            one: 'Always empty for Segregated Witness',
+            two: 'script',
+            three: 'bytes',
+            four: '0',
+          },
+        },
+        row_four: {
+          column: {
+            one: 'Default value is 0xffffffff but can be used for relative timelocks',
+            two: 'sequence',
+            three: 'int',
+            four: '4',
+          },
+        },
+      },
+    },
     put_it_together_one: {
       title: 'Putting it all together',
       heading: 'Finish the implementation of Class Witness',
