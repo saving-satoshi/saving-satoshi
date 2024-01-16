@@ -13,6 +13,14 @@ import { register } from 'api/auth'
 import Modal from './Modal'
 import { Text, ToggleSwitch } from 'ui'
 
+const avatars = [
+  'white spacesuit',
+  'red spacesuit',
+  'orange spacesuit',
+  'bunny engineer',
+  'badger astronaut',
+]
+
 export default function SignupModal({ onClose, state }) {
   const lang = useLang()
   const t = useTranslations(lang)
@@ -85,22 +93,22 @@ export default function SignupModal({ onClose, state }) {
         </h2>
 
         <HorizontalScrollView>
-          {[1, 2, 3, 4, 5].map((i) => (
+          {avatars.map((name, index) => (
             <button
-              key={i}
+              key={name}
               className={clsx({
-                'mr-3.5 sm:mr-3': i !== 5,
+                'mr-3.5 sm:mr-3': index !== avatars.length - 1,
               })}
-              aria-label={`Select avatar ${i}`}
-              aria-pressed={avatar === i}
-              onClick={() => setAvatar(i)}
+              aria-label={`Select avatar with ${name}`}
+              aria-pressed={avatar === avatars.indexOf(name) + 1}
+              onClick={() => setAvatar(avatars.indexOf(name) + 1)}
             >
               <Avatar
-                avatar={`/assets/avatars/${i}.png`}
+                avatar={`/assets/avatars/${index + 1}.png`}
                 size={80}
                 className={clsx('inline-block h-20 w-20 border-2', {
-                  'border-white': avatar === i,
-                  'border-transparent': avatar !== i,
+                  'border-white': avatar === avatars.indexOf(name) + 1,
+                  'border-transparent': avatar !== avatars.indexOf(name) + 1,
                 })}
               />
             </button>
