@@ -4,8 +4,8 @@ import { getData } from 'api/data'
 import { useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
 import { useEffect, useState } from 'react'
-import { Data, EditorConfig } from 'types'
-import { CodeExample, LessonInfo, ScriptingChallenge, Text } from 'ui'
+import { EditorConfig } from 'types'
+import { LessonInfo, ScriptingChallenge, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
@@ -13,19 +13,23 @@ export const metadata = {
   key: 'CH6PUT6',
 }
 
+const lessonsToLoad = ['CH6INO4', 'CH6INO5', 'CH6PUT2', 'CH6PUT5']
+
 export default function PutItTogether6({ lang }) {
   const t = useTranslations(lang)
-  const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
-  const dataObject = prevData?.data ? prevData?.data : ''
+  const [prevData, setPrevData] = useState<any>({})
   const [isLoading, setIsLoading] = useState(true)
 
   const getPrevLessonData = async () => {
-    const data = await getData('CH4ADR2')
-    if (data?.answer) {
-      setPrevData({
-        lesson_id: 'CH4ADR2',
-        data: data.answer,
+    const dataMap = {}
+    const data = await Promise.all(
+      lessonsToLoad.map(async (lesson) => {
+        const dataFromServer = await getData(lesson)
+        dataMap[lesson] = dataFromServer?.answer
       })
+    )
+    if (data) {
+      setPrevData(dataMap)
     }
   }
 
