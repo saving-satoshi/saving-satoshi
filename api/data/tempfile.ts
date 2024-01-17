@@ -1,4 +1,4 @@
-export const INPUT_CLASS = `
+export const INPUT_CLASS_JS = `
 class Input {
     constructor() {
       this.outpoint = null;
@@ -29,7 +29,7 @@ class Input {
   }
 `
 
-export const CH6INO4_PY = `
+export const INPUT_CLASS_PY = `
 class Input:
     def __init__(self):
         self.outpoint = None
@@ -56,7 +56,9 @@ class Input:
         return r
 `
 
-export const CH6INO5_JS = `
+export const OUTPUT_CLASS_JS = `const bech32 = require('@savingsatoshi/bech32js')
+const assert = require('assert');
+
 class Output {
     constructor() {
       this.value = 0;
@@ -85,7 +87,9 @@ class Output {
   }
 `
 
-export const CH6INO5_PY = `
+export const OUTPUT_CLASS_PY = `import bech32py.bech32 as bech32
+from struct import pack
+
 class Output:
     def __init__(self):
         self.value = 0
@@ -112,7 +116,10 @@ class Output:
         return r
 `
 
-export const CH6PUT2_JS = `
+export const TRANSACTION_CLASS_JS = `const {randomBytes, Hash} = require('crypto');
+const secp256k1 = require('@savingsatoshi/secp256k1js')
+
+
 class Transaction {
     constructor() {
       this.version = 2;
@@ -260,9 +267,30 @@ class Transaction {
       this.witnesses.push(wit);
     }
   }
+
+  class Outpoint {
+    constructor(txid, index) {
+      assert(Buffer.isBuffer(txid));
+      assert(txid.length === 32);
+      assert(Number.isInteger(index));
+      this.txid = txid;
+      this.index = index;
+    }
+  
+    serialize() {
+      const buf = Buffer.alloc(36);
+      this.txid.copy(buf, 0);
+      buf.writeUInt32LE(this.index, 32);
+      return buf;
+    }
+  }
 `
 
-export const CH6PUT2_PY = `
+export const TRANSACTION_CLASS_PY = `from struct import pack
+import hashlib
+from random import randrange
+import secp256k1py.secp256k1 as secp256k1
+
 class Transaction:
     def __init__(self):
         self.version = 2
@@ -355,4 +383,55 @@ class Transaction:
         wit.push_item(der_sig + bytes([sighash]))
         wit.push_item(pub)
         self.witnesses.append(wit)
+
+class Outpoint:
+    def __init__(self, txid, index):
+        assert isinstance(txid, bytes)
+        assert len(txid) == 32
+        assert isinstance(index, int)
+        self.txid = txid
+        self.index = index
+
+    def serialize(self):
+        # https:#docs.python.org/3/library/struct.html#byte-order-size-and-alignment
+        # Encode the index as little-endian unsigned integer
+        r = b""
+        r += self.txid
+        r += pack("<I", self.index)
+        return r
         `
+export const WITNESS_JS = `
+class Witness {
+    constructor() {
+      this.items = [];
+    }
+  
+    push_item(data) {
+      this.items.push(data);
+    }
+  
+    serialize() {
+      let buf = Buffer.from([this.items.length]);
+      for (const item of this.items)
+        buf = Buffer.concat([buf, Buffer.from([item.length]), item]);
+      return buf;
+    }
+  }
+`
+
+export const WITNESS_PY = `
+class Witness:
+    def __init__(self):
+        self.items = []
+
+    def push_item(self, data):
+        self.items.append(data)
+
+    def serialize(self):
+        r = b""
+        r += pack("<B", len(self.items))
+        for item in self.items:
+            r += pack("<B", len(item))
+            r += item
+        return r
+`

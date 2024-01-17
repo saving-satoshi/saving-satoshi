@@ -36,6 +36,7 @@ export default function ScriptingChallenge({
   successMessage,
   saveData,
   onSelectLanguage,
+  loadingSavedCode,
 }: {
   children?: React.ReactNode
   lang: string
@@ -44,6 +45,7 @@ export default function ScriptingChallenge({
   successMessage: string
   saveData?: boolean
   onSelectLanguage: (language: string) => void
+  loadingSavedCode?: boolean
 }) {
   const { saveProgress, saveProgressLocal } = useProgressContext()
   const { account } = useAuthContext()
@@ -165,6 +167,7 @@ export default function ScriptingChallenge({
             onValidate={handleEditorValidate}
             code={code}
             constraints={constraints}
+            loadingSavedCode={loadingSavedCode}
           />
           <Runner
             lang={lang}

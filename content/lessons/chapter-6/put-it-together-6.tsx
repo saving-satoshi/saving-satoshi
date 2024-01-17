@@ -3,6 +3,7 @@
 import { getData } from 'api/data'
 import { useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
+import { organizeImports, organizeJavaScriptRequires } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { EditorConfig } from 'types'
 import { LessonInfo, ScriptingChallenge, Text } from 'ui'
@@ -13,19 +14,29 @@ export const metadata = {
   key: 'CH6PUT6',
 }
 
-const lessonsToLoad = ['CH6INO4', 'CH6INO5', 'CH6PUT2', 'CH6PUT5']
+const lessonsToLoad = ['CH6PUT1', 'CH6PUT2', 'CH6PUT5', 'CH6INO5']
+
+const allLessonsAreLoaded = (data) => {
+  return lessonsToLoad.every((lesson) => data[lesson])
+}
+
+function countLines(text: string): number {
+  return text.split(/\r\n|\r|\n/).length
+}
 
 export default function PutItTogether6({ lang }) {
   const t = useTranslations(lang)
   const [prevData, setPrevData] = useState<any>({})
   const [isLoading, setIsLoading] = useState(true)
+  const [combinedCode, setCombinedCode] = useState('')
+  console.log(combinedCode)
 
   const getPrevLessonData = async () => {
     const dataMap = {}
     const data = await Promise.all(
       lessonsToLoad.map(async (lesson) => {
         const dataFromServer = await getData(lesson)
-        dataMap[lesson] = dataFromServer?.answer
+        dataMap[lesson] = dataFromServer?.code?.getEncoded()
       })
     )
     if (data) {
@@ -37,6 +48,19 @@ export default function PutItTogether6({ lang }) {
     getPrevLessonData().finally(() => setIsLoading(false))
   }, [])
 
+  useEffect(() => {
+    if (prevData && allLessonsAreLoaded(prevData)) {
+      setCombinedCode(
+        organizeImports(
+          prevData['CH6PUT1'] +
+            prevData['CH6PUT2'] +
+            prevData['CH6PUT5'] +
+            prevData['CH6INO5']
+        )
+      )
+    }
+  }, [prevData])
+
   const javascript = {
     program: `
 console.log(tx.serialize().toString('hex'));
@@ -45,7 +69,8 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: `// UTXO from chapter 6 step 1 (mining pool payout)
+    defaultCode: `${combinedCode}
+// UTXO from chapter 6 step 1 (mining pool payout)
 const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
 const vout = 1;
 const value = 650000000;
@@ -83,10 +108,16 @@ const tx = new Transaction();
     },
     constraints: [
       {
-        range: [12, 1, 12, 1],
+        range: [
+          countLines(combinedCode) + 16,
+          1,
+          countLines(combinedCode) + 17,
+          1,
+        ],
         allowMultiline: true,
       },
     ],
+    hiddenRange: [1, 1, countLines(combinedCode), 1],
   }
 
   const python = {
@@ -96,7 +127,8 @@ print("KILL")`,
       name: 'privatekey_to_publickey',
       args: ['private_key'],
     },
-    defaultCode: `# UTXO from chapter 6 step 1 (mining pool payout)
+    defaultCode: `${combinedCode}
+# UTXO from chapter 6 step 1 (mining pool payout)
 txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
 vout = 1
 value = 650000000
@@ -134,10 +166,16 @@ tx = Transaction()
     },
     constraints: [
       {
-        range: [11, 1, 11, 1],
+        range: [
+          countLines(combinedCode) + 16,
+          1,
+          countLines(combinedCode) + 17,
+          1,
+        ],
         allowMultiline: true,
       },
     ],
+    hiddenRange: [1, 1, countLines(combinedCode), 1],
   }
 
   const config: EditorConfig = {
@@ -153,36 +191,40 @@ tx = Transaction()
     setLanguage(language)
   }
   return (
-    <ScriptingChallenge
-      lang={lang}
-      config={config}
-      saveData
-      lessonKey={getLessonKey('chapter-4', 'public-key-3')}
-      successMessage={t('chapter_four.public_key_three.success')}
-      onSelectLanguage={handleSelectLanguage}
-    >
-      <LessonInfo>
-        <Text className="font-nunito text-xl text-white">
-          {t('chapter_six.put_it_together_six.paragraph_one')}
-        </Text>
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_six.put_it_together_six.paragraph_two`)}
-        </Text>
-        <ul className="list-inside list-disc font-nunito text-white">
-          <li className="text-lg md:text-xl" style={{ overflow: 'scroll' }}>
-            {t('chapter_six.put_it_together_six.bullet_one')}
-          </li>
-          <li className="text-lg md:text-xl" style={{ overflow: 'scroll' }}>
-            {t('chapter_six.put_it_together_six.bullet_two')}
-          </li>
-        </ul>
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_six.put_it_together_six.paragraph_three`)}
-        </Text>
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_six.put_it_together_six.paragraph_four`)}
-        </Text>
-      </LessonInfo>
-    </ScriptingChallenge>
+    !isLoading &&
+    combinedCode && (
+      <ScriptingChallenge
+        lang={lang}
+        config={config}
+        saveData
+        lessonKey={getLessonKey('chapter-4', 'public-key-3')}
+        successMessage={t('chapter_four.public_key_three.success')}
+        onSelectLanguage={handleSelectLanguage}
+        loadingSavedCode={isLoading}
+      >
+        <LessonInfo>
+          <Text className="font-nunito text-xl text-white">
+            {t('chapter_six.put_it_together_six.paragraph_one')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_six.put_it_together_six.paragraph_two`)}
+          </Text>
+          <ul className="list-inside list-disc font-nunito text-white">
+            <li className="text-lg md:text-xl" style={{ overflow: 'scroll' }}>
+              {t('chapter_six.put_it_together_six.bullet_one')}
+            </li>
+            <li className="text-lg md:text-xl" style={{ overflow: 'scroll' }}>
+              {t('chapter_six.put_it_together_six.bullet_two')}
+            </li>
+          </ul>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_six.put_it_together_six.paragraph_three`)}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_six.put_it_together_six.paragraph_four`)}
+          </Text>
+        </LessonInfo>
+      </ScriptingChallenge>
+    )
   )
 }

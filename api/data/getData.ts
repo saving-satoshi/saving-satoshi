@@ -2,40 +2,42 @@ import { StoredLessonData } from 'types'
 import { Base64String } from 'types/classes'
 import { get } from 'utils'
 import {
-  CH6INO4_JS,
-  CH6INO4_PY,
-  CH6INO5_JS,
-  CH6INO5_PY,
-  CH6PUT2_JS,
-  CH6PUT2_PY,
+  INPUT_CLASS_JS,
+  INPUT_CLASS_PY,
+  OUTPUT_CLASS_JS,
+  OUTPUT_CLASS_PY,
+  TRANSACTION_CLASS_JS,
+  TRANSACTION_CLASS_PY,
+  WITNESS_JS,
+  WITNESS_PY,
 } from './tempfile'
 
-const lessonCodesToStub = ['CH6INO4', 'CH6INO5', 'CH6PUT2', 'CH6PUT5']
+const lessonCodesToStub = ['CH6PUT1', 'CH6INO5', 'CH6PUT2', 'CH6PUT5']
 
 export default async function getData(
   lessonId
 ): Promise<StoredLessonData | undefined> {
   if (lessonCodesToStub.includes(lessonId)) {
     switch (lessonId) {
-      case 'CH6INO4':
+      case 'CH6PUT1':
         return {
           answer: "console.log('Hello, world!')",
-          code: new Base64String(CH6INO4_JS, true) as Base64String,
+          code: new Base64String(WITNESS_PY, true) as Base64String,
         }
       case 'CH6INO5':
         return {
           answer: "print('Hello, world!')",
-          code: new Base64String(CH6INO5_JS, true) as Base64String,
+          code: new Base64String(INPUT_CLASS_PY, true) as Base64String,
         }
       case 'CH6PUT2':
         return {
           answer: "console.log('Hello, world!')",
-          code: new Base64String(CH6PUT2_JS, true) as Base64String,
+          code: new Base64String(OUTPUT_CLASS_PY, true) as Base64String,
         }
       case 'CH6PUT5':
         return {
           answer: "print('Hello, world!')",
-          code: new Base64String(CH6PUT2_JS, true) as Base64String,
+          code: new Base64String(TRANSACTION_CLASS_PY, true) as Base64String,
         }
     }
   }
