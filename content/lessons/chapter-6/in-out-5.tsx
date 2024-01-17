@@ -180,6 +180,7 @@ class Output:
     <ScriptingChallenge
       lang={lang}
       config={config}
+      saveData
       lessonKey={getLessonKey('chapter-6', 'in-out-4')}
       successMessage={t('chapter_six.in_out_four.success')}
       onSelectLanguage={handleSelectLanguage}
