@@ -2,8 +2,10 @@ const translations = {
   shared: {
     next: 'Doorgaan',
     copy: 'Kopiëren',
+    info: 'Info',
     chapter: 'Hoofdstuk',
     challenge: 'Uitdaging',
+    challenges: 'Uitdagingen',
     coming_soon: 'Binnenkort beschikbaar',
     start_chapter: 'Hoofstuk starten',
   },

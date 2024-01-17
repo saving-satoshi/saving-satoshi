@@ -3,11 +3,13 @@ const translations = {
     next: 'Weiter',
     start: 'Start',
     copy: 'Kopieren',
+    info: 'Info',
     copy_acknowledged: 'Kopiert!',
     about: 'Info',
     chapter: 'Kapitel',
     chapters: 'Kapitel',
     challenge: 'Herausforderung',
+    challenges: 'Herausforderungen',
     coming_soon: 'Bald verfügbar',
     start_chapter: 'Beginne Kapitel',
     back: 'Zurück',
@@ -86,7 +88,7 @@ const translations = {
       paragraph_four:
         'Wir möchten betonen, dass Deine Privatsphäre für uns von größter Bedeutung ist. Wir sammeln keine persönlich identifizierbaren Informationen, und die Daten, die wir sammeln, werden ausschließlich zur Verbesserung unserer App verwendet. Deine Daten werden niemals an Dritte weitergegeben oder verkauft.',
       paragraph_five:
-        "Wenn Du Bedenken oder Fragen zu unseren Datenerfassungspraktiken oder Datenschutzrichtlinien hast, zögere bitte nicht, uns zu kontaktieren. Wir sind bestrebt, Dir eine transparente und sichere Erfahrung bei der Nutzung unserer App zu bieten.",
+        'Wenn Du Bedenken oder Fragen zu unseren Datenerfassungspraktiken oder Datenschutzrichtlinien hast, zögere bitte nicht, uns zu kontaktieren. Wir sind bestrebt, Dir eine transparente und sichere Erfahrung bei der Nutzung unserer App zu bieten.',
     },
   },
 
@@ -134,7 +136,8 @@ const translations = {
         'Lass uns den allerersten Block in der Bitcoin-Blockchain finden. Klick auf den unten stehenden Button, um einen <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">Blockexplorer</Tooltip> genau an Block 0 zu öffnen - dem sogenannte Genesisblock.',
       paragraph_two:
         'Scrolle nach unten und erweitere die Details zu der einen Transaktion, die in diesem Block gespeichert ist. Suche die Eingabe mit dem Namen "Coinbase". Jetzt schau nach der Bezeichnung “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. Die Zeichenketten daneben ist eine verschlüsselte Nachricht.',
-      paragraph_three: 'Kopiere die Zeichenkette und füge sie in das untere Feld ein.',
+      paragraph_three:
+        'Kopiere die Zeichenkette und füge sie in das untere Feld ein.',
       tooltip_block_explorer:
         'Ein <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">Blockexplorer</a> ist ein nützliches Werkzeug um schnell Informationen über Bitcoin-Transaktionen nachzuschlagen.',
       tooltip_hex:
@@ -151,7 +154,8 @@ const translations = {
       paragraph_two:
         'Kopiere den folgenden Befehl und füge Ihn im Terminal in das Codefeld ein und drücke “Enter”.',
       terminal_challenge_lines: `Gib Deine Befehle hier ein und drücke Enter...\n Die Variable $scriptSigHex ist schon für dich definiert worden.\n\n var $scriptSigHex = '04fff...e6b73'`,
-      waiting_for_input: 'Abwartend, dass Sie das Skript schreiben und ausführen...',
+      waiting_for_input:
+        'Abwartend, dass Sie das Skript schreiben und ausführen...',
       success: `Überragende Arbeit! Die entschlüsselte Nachricht verweist auf die Titelseite von <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> vom 3. Januar 2009, dem gleichen Tag an dem Satoshi den Genesisblock geschürft hat. Wie cool ist das denn?! Diese Nachricht gibt uns auch einen Einblick in seine Motivation für die Entwicklung von Bitcoin.\n\n Lass uns weiter machen.`,
     },
 
@@ -241,7 +245,7 @@ const translations = {
       transacting: {
         transactions_heading: 'Transaktionen',
         transactions_paragraph:
-          "Eine Transaktion in der Welt der Kryptowährungen ist vergleichbar mit einer einzelnen atomaren Zahlung, bei der bestehende Münzen vernichtet und neue geschaffen werden. Wenn jemand eine Kryptowährungstransaktion initiiert, weist er die Blockchain im Wesentlichen an, eine bestimmte Menge an Münzen von einer digitalen Geldbörse auf eine andere zu übertragen. Um dies zu erreichen, verbraucht die Transaktion die vorhandenen Münzen des Absenders und erzeugt neue für den Empfänger, wodurch das Eigentumsbuch effektiv aktualisiert wird.",
+          'Eine Transaktion in der Welt der Kryptowährungen ist vergleichbar mit einer einzelnen atomaren Zahlung, bei der bestehende Münzen vernichtet und neue geschaffen werden. Wenn jemand eine Kryptowährungstransaktion initiiert, weist er die Blockchain im Wesentlichen an, eine bestimmte Menge an Münzen von einer digitalen Geldbörse auf eine andere zu übertragen. Um dies zu erreichen, verbraucht die Transaktion die vorhandenen Münzen des Absenders und erzeugt neue für den Empfänger, wodurch das Eigentumsbuch effektiv aktualisiert wird.',
         bitcoin_script_heading: 'Bitcoin Skript',
         bitcoin_script_paragraph:
           'Bitcoin Skript ist eine einfache, stapelbasierte Programmiersprache, die bei Bitcoin-Transaktionen verwendet wird, um die Bedingungen festzulegen, unter denen Bitcoins ausgegeben werden können. Sie besteht aus verschiedenen Opcodes (kurz für Operationscodes), die angeben, welche Operationen mit den Daten innerhalb des Skripts durchgeführt werden sollen.',
@@ -295,9 +299,11 @@ const translations = {
     hashing_two: {
       title: 'Nullen',
       heading: 'Gib ein was Du willst',
-      return_hash: 'Nachfolgend siehst Du Deine Eingaben in einen Hash umgewandelt',
+      return_hash:
+        'Nachfolgend siehst Du Deine Eingaben in einen Hash umgewandelt',
       progress_message: 'Versuch es weiter...',
-      success_message: 'In Ordnung, gute Arbeit beim Herumspielen. Machen wir weiter.',
+      success_message:
+        'In Ordnung, gute Arbeit beim Herumspielen. Machen wir weiter.',
     },
 
     hashing_three: {
@@ -311,7 +317,8 @@ const translations = {
         'Hashe sind insofern extrem zuverlässig, als das sie deterministisch sind. Das bedeutet, dass Du die selben Daten immer und immer wieder hashen kannst und immer das selbe Ergebnis erhalten wirst.',
       paragraph_one:
         'Die Funktion, die hier genutzt wird, nennt sich SHA-256, eine sehr beliebte Wahl.',
-      paragraph_two: 'Okay, jetzt lass uns schauen, ob Du einen spezifischen Hash finden kannst.',
+      paragraph_two:
+        'Okay, jetzt lass uns schauen, ob Du einen spezifischen Hash finden kannst.',
       paragraph_three:
         'Finde einen Hash der mit einer Null beginnt (“0”). Gib unten so lange verschiedene Zeichen ein, bis Du den gewünschten Hash gefunden hast.',
     },
@@ -385,7 +392,8 @@ const translations = {
 
     mining_one: {
       title: 'Innerhalb der Miene',
-      heading_one: 'Jetzt, da wir wissen wie Mining funktioniert, wollen wir uns das mal in Aktion anschauen',
+      heading_one:
+        'Jetzt, da wir wissen wie Mining funktioniert, wollen wir uns das mal in Aktion anschauen',
       heading_two: 'Du schürfst jetzt',
       heading_three: 'Gute Arbeit!',
       heading_four: 'Lass uns 100 Blöcke schaffen',
@@ -443,7 +451,7 @@ const translations = {
           'Eine Hash-Funktion ist eine Funktion, die verwendet werden kann, um Daten beliebiger Größe auf Werte fester Größe abzubilden. Die von einer Hash-Funktion zurückgegebenen Werte werden Hash-Werte, Hash-Codes, Digests oder einfach Hashe genannt. Die Werte werden in der Regel zur Indizierung einer Tabelle fester Größe verwendet, die als Hash-Tabelle bezeichnet wird. Die Verwendung einer Hash-Funktion zur Indizierung einer Hash-Tabelle wird als Hashing oder Scatter Storage Addressing bezeichnet.',
         collision_resistance_heading: 'SHA256 und Kollisionsresistenz',
         collision_resistance_paragraph:
-          "SHA-256 liefert einen 256-Bit-Hash-Wert (64 Zeichen), der eine eindeutige Darstellung der Eingabedaten ist. Es gehört zur Familie der Hash-Funktionen, die auf der Merkle-Damgård-Konstruktion basieren, einer Methode zum Aufbau von Hash-Funktionen aus einfacheren Kompressionsfunktionen. Bei dieser Konstruktion wird die Eingabenachricht in Blöcke fester Größe unterteilt, und ein Verkettungsmechanismus verarbeitet diese Blöcke iterativ, wobei die Ausgabe jedes Blocks mit dem Ergebnis des vorherigen Blocks kombiniert wird. Dieser Prozess wird so lange fortgesetzt, bis die gesamte Nachricht verarbeitet ist und der endgültige Hash-Wert vorliegt. Die robusten Sicherheitseigenschaften und die Kollisionssicherheit von SHA-256 machen es zu einem Eckpfeiler der Datenintegrität und Authentifizierung in der modernen Kryptografie. Weitere Informationen findest Du auf Wikipedia.",
+          'SHA-256 liefert einen 256-Bit-Hash-Wert (64 Zeichen), der eine eindeutige Darstellung der Eingabedaten ist. Es gehört zur Familie der Hash-Funktionen, die auf der Merkle-Damgård-Konstruktion basieren, einer Methode zum Aufbau von Hash-Funktionen aus einfacheren Kompressionsfunktionen. Bei dieser Konstruktion wird die Eingabenachricht in Blöcke fester Größe unterteilt, und ein Verkettungsmechanismus verarbeitet diese Blöcke iterativ, wobei die Ausgabe jedes Blocks mit dem Ergebnis des vorherigen Blocks kombiniert wird. Dieser Prozess wird so lange fortgesetzt, bis die gesamte Nachricht verarbeitet ist und der endgültige Hash-Wert vorliegt. Die robusten Sicherheitseigenschaften und die Kollisionssicherheit von SHA-256 machen es zu einem Eckpfeiler der Datenintegrität und Authentifizierung in der modernen Kryptografie. Weitere Informationen findest Du auf Wikipedia.',
         tip_one:
           'Tippe einfach weiter! Aufgrund des SHA256-Algorithmus führt jede neue Eingabe zu einer völlig zufälligen Eingabe, selbst wenn diese Eingaben sehr ähnlich sind',
         tip_two:
@@ -541,14 +549,16 @@ const translations = {
         'Für das Stratum-Mining-Pool-Protokoll (nicht das Bitcoin-Protokoll) enthält die Coinbase-Transaktion auch eine so genannte "extra nonce". Bei der Bereitstellung der Blockdaten für die Miner teilen die Mining-Pools die Extra-Nonce in zwei Teile auf: "extranonce1" und "extranonce2".',
       paragraph_two:
         'Die Aufteilung der zusätzlichen Nonce in zwei Teile hat mehrere Vorteile:',
-      list_one: 'Es verhindert, dass Poolteilnehmer die gleiche Arbeit verrichten.',
+      list_one:
+        'Es verhindert, dass Poolteilnehmer die gleiche Arbeit verrichten.',
       list_two:
         'Es ermöglicht dem Pool, dieselbe Transaktionsliste an alle Miner zu senden, die sich zusammenschließen. Das bedeutet, dass die Miner lediglich "extranonce2" aktualisieren müssen und die im Block enthaltenen Transaktionen nicht ändern müssen.',
       list_three:
         'Die "extranonce1" ermöglicht es den Pools, den anteilig, geleisteten Beitrag pro Miner zu identifizieren und zu bestimmen, da jeder Miner seine eigene "extranonce1" erhält.',
       paragraph_three:
         ' Miner die Hashpower zu einem Pool beitragen, aktualisieren die "extranonce2" und probieren die eigentliche Nonce im Block-Header durch. Wenn sie keine Lösung finden, wiederholen sie diesen Vorgang mit einer anderen "extranonce2", bis sie eine Lösung finden.',
-      paragraph_four: 'Versuchen wir noch einmal die Arbeit aufzuteilen, jedoch dieses Mal nach der neuen Methode.',
+      paragraph_four:
+        'Versuchen wir noch einmal die Arbeit aufzuteilen, jedoch dieses Mal nach der neuen Methode.',
     },
 
     coop_three: {
@@ -612,7 +622,7 @@ const translations = {
       solo: {
         hashrate_heading: 'Mining Hashrate',
         hashrate_paragraph:
-          "Die Hashrate eines einzelnen Miners bezieht sich auf die Rechenleistung, die er zum Mining-Prozess des Bitcoin-Netzwerks beiträgt. Es ist die Rate, mit der ihre Mining-Hardware die notwendigen mathematischen Berechnungen durchführen kann, um neue Blöcke zu schürfen. Die Hash-Rate eines einzelnen Miners wird in der Regel in Hashe pro Sekunde oder in Terahashe, also einer Billion Hashe pro Sekunde (TH/s), gemessen, je nach Umfang des Mining-Betriebs und den Fähigkeiten der Mining-Hardware.",
+          'Die Hashrate eines einzelnen Miners bezieht sich auf die Rechenleistung, die er zum Mining-Prozess des Bitcoin-Netzwerks beiträgt. Es ist die Rate, mit der ihre Mining-Hardware die notwendigen mathematischen Berechnungen durchführen kann, um neue Blöcke zu schürfen. Die Hash-Rate eines einzelnen Miners wird in der Regel in Hashe pro Sekunde oder in Terahashe, also einer Billion Hashe pro Sekunde (TH/s), gemessen, je nach Umfang des Mining-Betriebs und den Fähigkeiten der Mining-Hardware.',
       },
       pool: {
         pool_heading: 'Mining Pool',
@@ -633,16 +643,16 @@ const translations = {
           'Ein Mining-Pool kann die Block-Belohnungen auf verschiedene Arten verteilen, die sich in einigen subtilen, aber wichtigen Punkten unterscheiden:',
         pps_heading: 'Pay-Per-Share (PPS)',
         pps_paragraph:
-          "Bei PPS erhalten die Miner eine feste Auszahlung für jeden gültigen Anteil, den sie einreichen, unabhängig davon, ob der Pool erfolgreich einen Block schürft oder nicht. Dieses System bietet Minern ein gleichmäßiges und vorhersehbares Einkommen, was es zu einer bevorzugten Wahl für diejenigen macht, die Wert auf ein beständiges Einkommen legen. PPS minimiert die Schwankungen bei den Belohnungen, da die Miner für ihre Arbeit auf einer Pro-Share-Basis entschädigt werden, was eine zuverlässige Einkommensquelle in der Welt des volatilen Kryptowährungs-Minings darstellt. PPS kann jedoch eine Gebühr von den Einnahmen der Miner abziehen, wenn der Pool einen Block nicht erfolgreich schürft. Diese Gebühr soll die Betriebskosten decken und das Risiko für den Poolbetreiber mindern, falls innerhalb eines bestimmten Zeitrahmens keine Blöcke geschürft werden. Bei traditionellen PPS erhalten die Miner eine geringere Auszahlung, wenn der Pool in Schwierigkeiten gerät.",
+          'Bei PPS erhalten die Miner eine feste Auszahlung für jeden gültigen Anteil, den sie einreichen, unabhängig davon, ob der Pool erfolgreich einen Block schürft oder nicht. Dieses System bietet Minern ein gleichmäßiges und vorhersehbares Einkommen, was es zu einer bevorzugten Wahl für diejenigen macht, die Wert auf ein beständiges Einkommen legen. PPS minimiert die Schwankungen bei den Belohnungen, da die Miner für ihre Arbeit auf einer Pro-Share-Basis entschädigt werden, was eine zuverlässige Einkommensquelle in der Welt des volatilen Kryptowährungs-Minings darstellt. PPS kann jedoch eine Gebühr von den Einnahmen der Miner abziehen, wenn der Pool einen Block nicht erfolgreich schürft. Diese Gebühr soll die Betriebskosten decken und das Risiko für den Poolbetreiber mindern, falls innerhalb eines bestimmten Zeitrahmens keine Blöcke geschürft werden. Bei traditionellen PPS erhalten die Miner eine geringere Auszahlung, wenn der Pool in Schwierigkeiten gerät.',
         pplns_heading: 'Pay-Per-Last-N-Shares (PPLNS)',
         pplns_paragraph:
-          "PPLNS berücksichtigt den Beitrag eines Miners über ein bestimmtes Zeitfenster der letzten N Anteile. Die Miner werden auf der Grundlage der Anzahl und des Schwierigkeitsgrads der Anteile, die sie innerhalb dieses Zeitfensters eingereicht haben, bezahlt. PPLNS ermutigt Miner, im Pool aktiv zu bleiben, da es eine beständige Beteiligung belohnt und das Risiko von Pool-Hopping-Strategien verringert. Miner erhalten Auszahlungen, wenn der Pool erfolgreich einen Block schürft, und die Belohnungen werden proportional zu ihren jüngsten Beiträgen verteilt, wodurch ein fairer und leistungsorientierter Ansatz für das Einkommen im Mining-Ökosystem geschaffen wird.",
+          'PPLNS berücksichtigt den Beitrag eines Miners über ein bestimmtes Zeitfenster der letzten N Anteile. Die Miner werden auf der Grundlage der Anzahl und des Schwierigkeitsgrads der Anteile, die sie innerhalb dieses Zeitfensters eingereicht haben, bezahlt. PPLNS ermutigt Miner, im Pool aktiv zu bleiben, da es eine beständige Beteiligung belohnt und das Risiko von Pool-Hopping-Strategien verringert. Miner erhalten Auszahlungen, wenn der Pool erfolgreich einen Block schürft, und die Belohnungen werden proportional zu ihren jüngsten Beiträgen verteilt, wodurch ein fairer und leistungsorientierter Ansatz für das Einkommen im Mining-Ökosystem geschaffen wird.',
         pps_plus_heading: 'Pay Per Share + (PPS+)',
         pps_plus_paragraph:
-          "PPS+ bietet Minern eine feste Zahlung für jeden Anteil, den sie zu den Mining-Bemühungen des Pools beitragen. Allerdings enthält PPS+ in der Regel einen zusätzlichen Bonus oder eine Prämie als Anreiz für Miner, die zur Stabilität und Zuverlässigkeit des Pools beitragen. Dieser Bonus soll Schürfer dazu ermutigen, im Pool aktiv zu bleiben und eine langfristige Beteiligung zu fördern. PPS+ bietet Minern ein beständiges und vorhersehbares Einkommen, während der zusätzliche Bonus es zu einer attraktiven Option für diejenigen macht, die sowohl Zuverlässigkeit als auch zusätzliche Belohnungen in der Welt des Kryptowährungs-Minings suchen.",
+          'PPS+ bietet Minern eine feste Zahlung für jeden Anteil, den sie zu den Mining-Bemühungen des Pools beitragen. Allerdings enthält PPS+ in der Regel einen zusätzlichen Bonus oder eine Prämie als Anreiz für Miner, die zur Stabilität und Zuverlässigkeit des Pools beitragen. Dieser Bonus soll Schürfer dazu ermutigen, im Pool aktiv zu bleiben und eine langfristige Beteiligung zu fördern. PPS+ bietet Minern ein beständiges und vorhersehbares Einkommen, während der zusätzliche Bonus es zu einer attraktiven Option für diejenigen macht, die sowohl Zuverlässigkeit als auch zusätzliche Belohnungen in der Welt des Kryptowährungs-Minings suchen.',
         fpps_heading: 'Full Pay Per Share (FPPS)',
         fpps_paragraph:
-          "Bei Full PPS erhalten die Miner eine feste Auszahlung für jeden Anteil, den sie an den Pool abgeben, unabhängig davon, ob der Pool einen Block erfolgreich schürft oder nicht. Dieser Ansatz bietet Minern ein stetiges und vorhersehbares Einkommen und ist damit eine attraktive Wahl für alle, die Wert auf ein verlässliches Einkommen legen. Im Gegensatz zum traditionellen PPS stellt das Full PPS sicher, dass die Miner die volle Auszahlung für ihre Arbeit erhalten, ohne mögliche Abzüge, auch wenn der Pool gelegentlich Schwierigkeiten hat. Es ist eine stabile und unkomplizierte Methode, die für Miner interessant ist, die ein beständiges Einkommen in der Welt des Kryptowährungs-Minings suchen.",
+          'Bei Full PPS erhalten die Miner eine feste Auszahlung für jeden Anteil, den sie an den Pool abgeben, unabhängig davon, ob der Pool einen Block erfolgreich schürft oder nicht. Dieser Ansatz bietet Minern ein stetiges und vorhersehbares Einkommen und ist damit eine attraktive Wahl für alle, die Wert auf ein verlässliches Einkommen legen. Im Gegensatz zum traditionellen PPS stellt das Full PPS sicher, dass die Miner die volle Auszahlung für ihre Arbeit erhalten, ohne mögliche Abzüge, auch wenn der Pool gelegentlich Schwierigkeiten hat. Es ist eine stabile und unkomplizierte Methode, die für Miner interessant ist, die ein beständiges Einkommen in der Welt des Kryptowährungs-Minings suchen.',
       },
     },
   },
@@ -732,7 +742,8 @@ const translations = {
         'Der erste Schritt besteht darin, einen SHA-256-Hash für deinen komprimierten öffentlichen Schlüssel zu erzeugen. Dann führst Du einen RIPEMD-160-Hash an diesem SHA-256-Ausgangshash durch. Das Endergebnis sind 20 Bytes, die als Hexadezimalzeichenfolge kodiert sind.',
       paragraph_three:
         'Vervollständige eine Funktion, die einen 33 Byte großen komprimierten öffentlichen Schlüssel als Hex-String akzeptiert und einen 20 Byte großen Hash des öffentlichen Schlüssels als Hex-String zurückgibt.',
-      success: 'Großartig. Noch ein weiterer Schritt und Du hast Deine Wallet-Adresse.',
+      success:
+        'Großartig. Noch ein weiterer Schritt und Du hast Deine Wallet-Adresse.',
     },
 
     address_three: {
@@ -745,7 +756,8 @@ const translations = {
       list_three: 'Regtest: ‘bcrt’',
       paragraph_three:
         'Die Zeichen, die von dieser Funktion zurückgegeben werden, sind Deine Bitcoin-Adresse!',
-      success: 'Jetzt hast Du eine Adresse, an die geschürfte Bitcoin geschickt werden können.',
+      success:
+        'Jetzt hast Du eine Adresse, an die geschürfte Bitcoin geschickt werden können.',
     },
 
     outro_one: {
@@ -810,7 +822,8 @@ const translations = {
         '-DEBORAH CHUNK: "Können wir irgendwie überprüfen, ob Sie tatsächlich die privaten Schlüssel zu Satoshi Nakamotos Bitcoin besitzen?"',
       paragraph_four:
         '-VANDERPOOLE: "In der Tat, das können wir. Es ist eine einfache Angelegenheit der Kryptographie mit öffentlichen Schlüsseln."',
-      paragraph_five: '-DEBORAH CHUNK: Aber warum dann so lange warten, um das zu enthüllen?',
+      paragraph_five:
+        '-DEBORAH CHUNK: Aber warum dann so lange warten, um das zu enthüllen?',
     },
     intro_two: {
       paragraph_one:
@@ -827,7 +840,8 @@ const translations = {
     },
     derive_message_one: {
       title: 'Eine Nachricht herleiten',
-      heading: 'Vanderpoole sagt, er habe eine Nachricht mit Satoshis Schlüsseln signiert:',
+      heading:
+        'Vanderpoole sagt, er habe eine Nachricht mit Satoshis Schlüsseln signiert:',
       code_one:
         '-----BEGIN BITCOIN SIGNED MESSAGE----- <br /> <br /> Ich bin Vanderpoole und ich habe die Kontrolle über den privaten Schlüssel, den Satoshi benutzt hat, um die allererste Bitcoin-Transaktion zu signieren, die in Block #170 bestätigt wurde. Diese Nachricht ist mit dem selben privaten Schlüssel signiert. <br /> <br /> -----BEGIN BITCOIN SIGNATURE----- <br /> <br />',
       code_two:
@@ -881,7 +895,8 @@ const translations = {
         'Dies ist die Rohtransaktion mit der Kennzeichnung der einzelnen Komponenten:',
       success_message_line_two: 'Version:',
       success_message_line_three: 'Anzahl an Inputs',
-      success_message_line_four: 'Hash der Tx (little-endian /"rückwärts"), aus der Input #0 stammt ,:',
+      success_message_line_four:
+        'Hash der Tx (little-endian /"rückwärts"), aus der Input #0 stammt ,:',
       success_message_line_five:
         'Index des Outputs der Tx, die vom Input #0 aus ausgeben wird:',
       success_message_line_six:
@@ -900,7 +915,7 @@ const translations = {
     },
     derive_message_seven: {
       paragraph_one:
-        "Es ist unmöglich, eine Nachricht zu signieren, die ihre eigene Signatur enthält, also muss scriptSig entfernt werden. Im Bitcoin-Protokoll wird sie tatsächlich durch den scriptPubKey des Transaktions-Outputs ersetzt, den wir ausgeben.",
+        'Es ist unmöglich, eine Nachricht zu signieren, die ihre eigene Signatur enthält, also muss scriptSig entfernt werden. Im Bitcoin-Protokoll wird sie tatsächlich durch den scriptPubKey des Transaktions-Outputs ersetzt, den wir ausgeben.',
       paragraph_two:
         'Den scriptPubKey haben wir bereits im vorherigen Schritt gefunden, Du kannst ihn in das erste Leerzeichen einfügen.',
       paragraph_three:
@@ -930,11 +945,11 @@ const translations = {
       label_one: 'Füge den R-Wert ein',
       label_two: 'Füge den S-Wert ein',
       paragraph_one:
-        "Satoshis Signatur ist in einem System namens DER kodiert, das eine Untermenge von ASN.1 ist.",
+        'Satoshis Signatur ist in einem System namens DER kodiert, das eine Untermenge von ASN.1 ist.',
       paragraph_two:
         'Es gibt zwei 32-Byte-Zahlen, die wir extrahieren müssen. Sie werden als R bzw. S bezeichnet und sind jeweils durch die Bytes 0220 in der DER-Sequenz vorangestellt. Anstatt den DER-Blob (Binary Large Object) vollständig zu dekodieren, suchen wir einfach nach den Präfixen und fügen die Werte R und S ein.',
       paragraph_three:
-        "# Satoshis Unterschrift, aus dem Input-scriptSig der Transaktion an Hal Finney",
+        '# Satoshis Unterschrift, aus dem Input-scriptSig der Transaktion an Hal Finney',
       paragraph_four:
         'sig_der = """304402204e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd410220181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09"""',
     },
@@ -952,7 +967,8 @@ const translations = {
     verify_signature_five: {
       title: 'Verifiziere die Signatur',
       heading: 'Prüfe die Signatur!',
-      success: "Du hast es geschafft! Du hast Satoshis Unterschrift verifiziert!",
+      success:
+        'Du hast es geschafft! Du hast Satoshis Unterschrift verifiziert!',
       paragraph_one:
         'Jetzt haben wir alles, was wir brauchen, um einige ECDSA-Rechnungen durchzuführen.',
       paragraph_two:
@@ -960,7 +976,7 @@ const translations = {
       paragraph_three:
         'Wir haben ein Group Element Objekt aus dem öffentlichen Schlüssel X und Y Elementen für Dich erstellt. Du musst die Implementierung der ECDSA-Signaturprüfungsfunktion  <span className="text-green">verify()</span> abschließen, die nur True zurückgeben sollte, wenn alles gültig ist!',
       paragraph_four:
-        "Wir wissen, dass Satoshis Signatur gültig ist, da sie seit 2010 von jedem Bitcoin-Fullnode überprüft wurde! Wenn Dein Programm nicht True zurückgibt, ist etwas schief gelaufen.",
+        'Wir wissen, dass Satoshis Signatur gültig ist, da sie seit 2010 von jedem Bitcoin-Fullnode überprüft wurde! Wenn Dein Programm nicht True zurückgibt, ist etwas schief gelaufen.',
       python: {
         paragraph_five_part_one:
           'Tipp: die <span className="text-green">pow()</span>',
@@ -976,7 +992,7 @@ const translations = {
     },
     validate_signature_one: {
       title: 'Validiere die Signatur',
-      heading: "Bereite Vanderpooles Nachricht zur Überprüfung vor",
+      heading: 'Bereite Vanderpooles Nachricht zur Überprüfung vor',
       paragraph_one:
         'Vanderpoole nutze ein <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">Bitcoin-Nachrichten-signier-Protokoll</Link> für seine Show. Für die Berechnung wird derselbe Algorithmus verwendet, den wir bereits definiert haben, aber die Aufbereitung der Daten ist ein wenig anders.',
       paragraph_two:
@@ -1002,7 +1018,7 @@ const translations = {
       title: 'Validiere die Signatur',
       heading: 'Also, ist Vanderpoole ein Lügner?!',
       paragraph_one:
-        "Es gibt nicht mehr viel zu tun, außer alles zusammenzufügen und das Programm zu starten! Trommelwirbel bitte...",
+        'Es gibt nicht mehr viel zu tun, außer alles zusammenzufügen und das Programm zu starten! Trommelwirbel bitte...',
       success: 'Signatur ist nicht valide',
     },
     validate_signature_four: {
@@ -1012,7 +1028,7 @@ const translations = {
         'Holokatze meldet sich zu Wort und sagt, dass ein Überläufer von BitRey uns die tatsächliche Adresse geschickt hat, die Vanderpoole genutzt hat und die ist definitiv nicht die Adresse von Satoshi!',
       paragraph_two: 'mit dem entsprechenden öffentlichen Schlüssel:',
       paragraph_three:
-        "Kannst Du die Nachricht und die Signatur von Vanderpoole mit DIESEM Schlüssel überprüfen?",
+        'Kannst Du die Nachricht und die Signatur von Vanderpoole mit DIESEM Schlüssel überprüfen?',
       success: 'Die Signatur ist valide!',
     },
     outro_one: {
@@ -1031,7 +1047,7 @@ const translations = {
         eliptic_curve_heading:
           'Elliptic Curve Digital Signature Algorithmus (ECDSA)',
         eliptic_curve_paragraph_one:
-          "ECDSA ist ein kryptographischer Algorithmus, der von Bitcoin verwendet wird, um sicherzustellen, dass Gelder nur von ihren rechtmäßigen Eigentümern ausgegeben werden können. Ein öffentlicher Schlüssel wird von einem privaten Schlüssel durch elliptische Kurvenmultiplikation abgeleitet, was rechnerisch einfach ist. Die Umkehrung dieses Prozesses zur Ableitung des privaten Schlüssels aus dem öffentlichen Schlüssel ist jedoch rechnerisch nicht machbar. Diese Einwegfunktion ist ein Eckpfeiler der Sicherheit von Bitcoin.",
+          'ECDSA ist ein kryptographischer Algorithmus, der von Bitcoin verwendet wird, um sicherzustellen, dass Gelder nur von ihren rechtmäßigen Eigentümern ausgegeben werden können. Ein öffentlicher Schlüssel wird von einem privaten Schlüssel durch elliptische Kurvenmultiplikation abgeleitet, was rechnerisch einfach ist. Die Umkehrung dieses Prozesses zur Ableitung des privaten Schlüssels aus dem öffentlichen Schlüssel ist jedoch rechnerisch nicht machbar. Diese Einwegfunktion ist ein Eckpfeiler der Sicherheit von Bitcoin.',
         public_private_key_heading: 'Public and Private Keys',
         public_private_key_paragraph_one:
           'In Bitcoin wird ein Schlüsselpaar verwendet, um sichere Transaktionen zu gewährleisten. Der private Schlüssel, der geheim gehalten wird, wird verwendet, um Transaktionen zu signieren und den Besitz einer Bitcoin-Adresse zu beweisen. Der öffentliche Schlüssel, der vom privaten Schlüssel abgeleitet ist, kann weitergegeben werden und wird verwendet, um zu überprüfen, ob eine Unterschrift vom Inhaber des privaten Schlüssels geleistet wurde, ohne den privaten Schlüssel preiszugeben.',
@@ -1040,16 +1056,17 @@ const translations = {
           'Die Verifizierung von Signaturen ist in Bitcoin entscheidend, um zu bestätigen, dass eine Transaktion vom Inhaber des privaten Schlüssels autorisiert wurde. Im Kontext von ECDSA beinhaltet sie die Überprüfung, ob eine Signatur (bestehend aus zwei Zahlen, r und s) für einen bestimmten öffentlichen Schlüssel und eine Nachricht gültig ist. Diese Überprüfung gewährleistet die Integrität und Authentizität einer Transaktion.',
         finite_field_arithmetic_heading: 'Arithmetik der endlichen Felder',
         finite_field_arithmetic_paragraph_one:
-          "Diese Art der Arithmetik, die in ECDSA verwendet wird, umfasst Zahlen innerhalb eines festen Bereichs oder Felder. Operationen wie Addition, Subtraktion, Multiplikation und die Suche nach modularen Inversen werden in Bezug auf die Größe dieses Feldes durchgeführt. Dies ist wesentlich für die elliptischen Kurvenberechnungen in der Bitcoin-Kryptographie.",
+          'Diese Art der Arithmetik, die in ECDSA verwendet wird, umfasst Zahlen innerhalb eines festen Bereichs oder Felder. Operationen wie Addition, Subtraktion, Multiplikation und die Suche nach modularen Inversen werden in Bezug auf die Größe dieses Feldes durchgeführt. Dies ist wesentlich für die elliptischen Kurvenberechnungen in der Bitcoin-Kryptographie.',
         ge_and_fe_heading: 'Gruppen Elemente (GE) und Felder Elemente (FE)',
         ge_and_fe_paragraph_one:
-          "Im Zusammenhang mit der Kryptographie elliptischer Kurven stellt ein Gruppenelement normalerweise einen Punkt auf der elliptischen Kurve dar. In der Aufgabe bezieht sich GE auf einen solchen Punkt mit bestimmten x- und y-Koordinaten. FE steht für ein Element des endlichen Feldes, das für Berechnungen innerhalb der Feldbeschränkungen verwendet wird.",
+          'Im Zusammenhang mit der Kryptographie elliptischer Kurven stellt ein Gruppenelement normalerweise einen Punkt auf der elliptischen Kurve dar. In der Aufgabe bezieht sich GE auf einen solchen Punkt mit bestimmten x- und y-Koordinaten. FE steht für ein Element des endlichen Feldes, das für Berechnungen innerhalb der Feldbeschränkungen verwendet wird.',
         modular_inverse_heading: 'Modularer Kehrwert',
         modular_inverse_paragraph_one:
-          "Der modulare Kehrwert einer Zahl a modulo m ist eine Zahl b, für die (a * b) % m = 1 gilt. Die Ermittlung des modularen Kehrwerts ist ein wichtiger Schritt bei der ECDSA-Signaturprüfung. Er wird bei der Berechnung von u1 und u2 während des Verifikationsprozesses verwendet.",
+          'Der modulare Kehrwert einer Zahl a modulo m ist eine Zahl b, für die (a * b) % m = 1 gilt. Die Ermittlung des modularen Kehrwerts ist ein wichtiger Schritt bei der ECDSA-Signaturprüfung. Er wird bei der Berechnung von u1 und u2 während des Verifikationsprozesses verwendet.',
       },
       validate_signature: {
-        message_verification_heading: 'Die Wichtigkeit der Nachrichtenverifizierung',
+        message_verification_heading:
+          'Die Wichtigkeit der Nachrichtenverifizierung',
         message_verification_paragraph_one:
           'Die Nachrichtenverifizierung erhöht die Sicherheit der Kommunikation innerhalb des Bitcoin-Ökosystems. Sie ermöglicht es den Parteien, die Authentizität und Integrität von Nachrichten zu verifizieren, was in Situationen wertvoll ist, in denen Vertrauen und Verifikation essentiell sind, wie z.B. bei Peer-to-Peer-Transaktionen oder der Kommunikation zwischen Parteien in einem Smart Contract. Darüber hinaus dient die Nachrichtenüberprüfung als Grundlage für verschiedene Anwendungen, einschließlich der Identitätsüberprüfung und der Bescheinigung des Eigentums an einer bestimmten Bitcoin-Adresse. Sie fügt eine Ebene der kryptographischen Sicherheit hinzu und verstärkt die vertrauenslose und dezentrale Natur des Bitcoin-Netzwerks.',
       },
@@ -1060,17 +1077,24 @@ const translations = {
     title: `Angriff ist die beste Verteidigung`,
     intro_one: {
       title: 'Intro',
-      paragraph_one:'—SATOSHI NAKAMOTO: ”Großartige Arbeit. Jetzt kann die Welt mit eigenen Augen sehen, dass Vanderpoole ein Betrüger ist. Auch wenn einige es noch nicht glauben, werden sie es tun, bevor unsere Arbeit getan ist.” – Satoshi Nakamoto',
-      paragraph_two:'—Du hälst einen Moment inne und stellst fest, dass jede Nachricht bis zu diesem Zeitpunkt mit "Satoshi Nakamoto" unterzeichnet war. Du hattest einfach angenommen, dass es sich um einen pseudonymen Namen handelt, der von jemandem verwendet wird, der sich an die Grundprinzipien von Bitcoin hält. Sicherlich konnte er nicht der echte Satoshi Nakamoto sein. Aber schließlich beschließst Du, dass es sich lohnt zu fragen.',
-      paragraph_three:'—”Das klingt jetzt vielleicht blöd, aber sind Sie der echte Satoshi?”',
-      paragraph_four:'—HOLOKATZE: “Das ist wohl kaum das Einzige, was Dich bisher dumm erscheinen ließ.”',
+      paragraph_one:
+        '—SATOSHI NAKAMOTO: ”Großartige Arbeit. Jetzt kann die Welt mit eigenen Augen sehen, dass Vanderpoole ein Betrüger ist. Auch wenn einige es noch nicht glauben, werden sie es tun, bevor unsere Arbeit getan ist.” – Satoshi Nakamoto',
+      paragraph_two:
+        '—Du hälst einen Moment inne und stellst fest, dass jede Nachricht bis zu diesem Zeitpunkt mit "Satoshi Nakamoto" unterzeichnet war. Du hattest einfach angenommen, dass es sich um einen pseudonymen Namen handelt, der von jemandem verwendet wird, der sich an die Grundprinzipien von Bitcoin hält. Sicherlich konnte er nicht der echte Satoshi Nakamoto sein. Aber schließlich beschließst Du, dass es sich lohnt zu fragen.',
+      paragraph_three:
+        '—”Das klingt jetzt vielleicht blöd, aber sind Sie der echte Satoshi?”',
+      paragraph_four:
+        '—HOLOKATZE: “Das ist wohl kaum das Einzige, was Dich bisher dumm erscheinen ließ.”',
     },
-    intro_two:{
-      paragraph_one:'—HOLOKATZE: “Das ist wohl kaum das Einzige, was Dich bisher dumm erscheinen ließ.”',
-      paragraph_two:'—SATOSHI NAKAMOTO: “Bitcoin hat sich vor vielen, vielen Jahren weit außerhalb der Kontrolle seines Schöpfers bewegt. Es würde keine Rolle spielen, ob Vanderpoole oder ich Satoshis Enkel wären. Bitcoin wird von der Gemeinschaft definiert und kann nicht von einem einzelnen Individuum oder einer Entität vereinnahmt werden - Satoshi eingeschlossen. Dies zu beweisen, ist der wahre Kampf. Ich hoffe, es macht Dir nichts aus, aber ich habe Deinen exzentrischen, freiberuflichen Reporterfreund gebeten, sich zu melden.”',
-      paragraph_three:'—Er hat was? Ding.',
-      paragraph_four:'—HOLOCAT: Vergiss nicht auf meine Nase zu drücken.',
-      paragraph_five:'—MIKE RAMEN: “Du hast Mumm. Aber Du brauchst mehr. Was du entdeckt hast, ist nur der Anfang. Es gibt noch mehr zu dieser Geschichte, aber wir müssen Vanderpooles Privatinsel besuchen, um es zu bekommen. Das wird teuer, also könnte ich deine Hilfe dabei gebrauchen, meine Gelder von der Multi-signature-Wallet abzuziehen, bei der du mir geholfen hast, sie einzurichten. Du hast immer noch einen meiner Schlüssel, richtig?”',
+    intro_two: {
+      paragraph_one:
+        '—HOLOKATZE: “Das ist wohl kaum das Einzige, was Dich bisher dumm erscheinen ließ.”',
+      paragraph_two:
+        '—SATOSHI NAKAMOTO: “Bitcoin hat sich vor vielen, vielen Jahren weit außerhalb der Kontrolle seines Schöpfers bewegt. Es würde keine Rolle spielen, ob Vanderpoole oder ich Satoshis Enkel wären. Bitcoin wird von der Gemeinschaft definiert und kann nicht von einem einzelnen Individuum oder einer Entität vereinnahmt werden - Satoshi eingeschlossen. Dies zu beweisen, ist der wahre Kampf. Ich hoffe, es macht Dir nichts aus, aber ich habe Deinen exzentrischen, freiberuflichen Reporterfreund gebeten, sich zu melden.”',
+      paragraph_three: '—Er hat was? Ding.',
+      paragraph_four: '—HOLOCAT: Vergiss nicht auf meine Nase zu drücken.',
+      paragraph_five:
+        '—MIKE RAMEN: “Du hast Mumm. Aber Du brauchst mehr. Was du entdeckt hast, ist nur der Anfang. Es gibt noch mehr zu dieser Geschichte, aber wir müssen Vanderpooles Privatinsel besuchen, um es zu bekommen. Das wird teuer, also könnte ich deine Hilfe dabei gebrauchen, meine Gelder von der Multi-signature-Wallet abzuziehen, bei der du mir geholfen hast, sie einzurichten. Du hast immer noch einen meiner Schlüssel, richtig?”',
     },
     paragraph_one:
       'Vanderpoole hat es auf Dich abgesehen, jetzt, da Du ihn als Betrüger entlarvt hast. Aber trotzdem klammern sich viele verängstigte Menschen weiterhin an den Mythos, den er um sich selbst, seine Familie und ihre angebliche Abstammung geschaffen hat. Die Zeiten sind beängstigend, und die Menschen brauchen einen Helden. Leider ist er für viele der beste, den sie haben.',
@@ -1130,7 +1154,8 @@ const translations = {
 
   hero: {
     title: 'Rette Satoshi',
-    description: 'Code dir den Weg durch die Geheimnisse des Bitcoin-Netzwerks.',
+    description:
+      'Code dir den Weg durch die Geheimnisse des Bitcoin-Netzwerks.',
     start_journey: 'Start',
     tell_more: 'Zeig mir mehr',
   },
@@ -1183,7 +1208,8 @@ const translations = {
 
   hasher: {
     placeholder: 'Tippe hier...',
-    return_hash: 'Nachfolgend siehst du Deine Eingabe umgewandelt in einen Hash',
+    return_hash:
+      'Nachfolgend siehst du Deine Eingabe umgewandelt in einen Hash',
   },
 
   hashrate: {
@@ -1211,7 +1237,8 @@ const translations = {
   },
   error: {
     first: 'Etwas ist falsch!',
-    second: 'Holokatze hat wohl wieder ein paar Kabel angeknabbert. Böse Katze!',
+    second:
+      'Holokatze hat wohl wieder ein paar Kabel angeknabbert. Böse Katze!',
     reload: 'Erneut versuchen',
   },
   help_page: {
