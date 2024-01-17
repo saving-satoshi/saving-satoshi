@@ -2,11 +2,13 @@ const translations = {
   shared: {
     next: 'जारी रखे',
     start: 'करे',
+    info: 'जानकारी',
     copy: 'प्रतिलिपि',
     about: 'अबाउट',
     chapter: 'अध्याय',
     chapters: 'अध्याय',
     challenge: 'चुनौती',
+    challenges: 'चुनौतियाँ',
     coming_soon: 'जल्द आ रहा है',
     start_chapter: 'अध्याय प्रारंभ करें',
     back: 'जाए',
