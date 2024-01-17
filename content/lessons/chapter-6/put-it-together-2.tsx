@@ -120,14 +120,14 @@ const tx = new Transaction();
 tx.inputs.push(input);
 tx.outputs.push(output);
 console.log(tx.serialize().toString('hex')==='020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0100e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd100000000'&&'true');
-
-
 `,
 defaultFunction:{
   name:"put-it-together-2",
   args:["args"]
 },
 defaultCode:`
+const assert = require('assert');
+const bech32=require('@savingsatoshi/bech32js');
 class Transaction{
   constructor(){
     this.version=2;
@@ -140,22 +140,15 @@ class Transaction{
   serialize() {
     // YOUR CODE HERE
   }
-
 }`,
 validate:async (answer: string) =>{
-  
-  const correctpattern=/^([a-fA-F0-9]{8})01([a-fA-F0-9]{64})([a-fA-F0-9]{8})00ffffffff01([a-fA-F0-9]{16})([a-fA-F0-9]{44})[a-fA-F0-9]{8}$/
-  console.log(correctpattern.test(answer));
-  console.log(answer)
-    if (answer) {
-      if(correctpattern.test(answer)){
-    
-      return [true, 'Nicely Done ']
-    
-    
+  if (answer) {
+    if (answer == 'true') {
+      return [true, 'Perfect! You got it.']
+    }
+    return [false, 'Not a valid hex value']
   }
-}
-  return [false, 'Check your code again']
+  return [false, 'Please return a value']
 },constraints: [
   {
     range: [11, 1, 15, 1],
@@ -168,30 +161,109 @@ validate:async (answer: string) =>{
 
 
 const python={
-  program:`
-    txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
-    vout = 1
-    value = 650000000
-    scriptcode = "1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac"
-    input = Input.from_output(txid, vout, value, scriptcode)
-    addr = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
-    value = 100000000
-    output = Output.from_options(addr, value)
-    witness = Witness()
-    witness.push_item(bytes.fromhex("304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01"))
-    witness.push_item(bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af"))
-    tx = Transaction()
-    tx.inputs.append(input)
-    tx.outputs.append(output)
-    print(tx.serialize().hex()==='020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0100e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd100000000'and 'true')
-    print("KILL") `,
+  program:`from struct import pack
+from bech32py import bech32
+class Outpoint:
+    def __init__(self, txid, index):
+        assert isinstance(txid, bytes)
+        assert len(txid) == 32
+        assert isinstance(index, int)
+        self.txid = txid
+        self.index = index
+
+    def serialize(self):
+        r = b""
+        r += self.txid
+        r += pack("<I", self.index)
+        return r
+
+class Input:
+    def __init__(self):
+        self.outpoint = None
+        self.script = b""
+        self.sequence = 0xffffffff
+        self.value = 0
+        self.scriptcode = b""
+
+    @classmethod
+    def from_output(cls, txid, vout, value, scriptcode):
+        self = cls()
+        self.outpoint = Outpoint(bytes.fromhex(txid)[::-1], vout)
+        self.value = value
+        self.scriptcode = bytes.fromhex(scriptcode)
+        return self
+
+    def serialize(self):
+        r = b""
+        r += self.outpoint.serialize()
+        r += pack("<B", len(self.script))
+        # Optional, since we know in SegWit it's always zero bytes
+        # r += self.script
+        r += pack("<I", self.sequence)
+        return r
+
+class Output:
+    def __init__(self):
+        self.value = 0
+        self.witness_version = 0
+        self.witness_data = b""
+
+    @classmethod
+    def from_options(cls, addr, value):
+        assert isinstance(value, int)
+        self = cls()
+        (ver, data) = bech32.decode("bc", addr)
+        self.witness_version = ver
+        self.witness_data = bytes(data)
+        self.value = value
+        return self
+
+    def serialize(self):
+        r = b""
+        r += pack("<q", self.value)
+        r += pack("<B", len(self.witness_data) + 2)
+        r += pack("<B", self.witness_version)
+        r += pack("<B", len(self.witness_data))
+        r += self.witness_data
+        return r
+
+class Witness:
+    def __init__(self):
+        self.items = []
+
+    def push_item(self, data):
+        self.items.append(data)
+
+    def serialize(self):
+        r = b""
+        r += pack("<B", len(self.items))
+        for item in self.items:
+            r += pack("<B", len(item))
+            r += item
+        return r
+
+txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
+vout = 1
+value = 650000000
+scriptcode = "1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac"
+input = Input.from_output(txid, vout, value, scriptcode)
+addr = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
+value = 100000000
+output = Output.from_options(addr, value)
+witness = Witness()
+witness.push_item(bytes.fromhex("304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01"))
+witness.push_item(bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af"))
+tx = Transaction()
+tx.inputs.append(input)
+tx.outputs.append(output)
+print(tx.serialize().hex()==='020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0100e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd100000000'and 'true')
+print("KILL")`,
   defaultFunction:{
     name:"put-it-together-2",
     args:["args"]
   },
   defaultCode:`
 from struct import pack
-
 
 class Transaction:
     def __init__(self):
@@ -215,7 +287,7 @@ validate:async (answer: string) =>{
   return [false, 'Return a value']
 },constraints: [
     {
-      range: [11, 1, 16, 1],
+      range: [11, 1, 15, 1],
       allowMultiline: true,
     },  ]
 }
