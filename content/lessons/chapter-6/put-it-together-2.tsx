@@ -143,7 +143,7 @@ class Transaction{
 }`,
 validate:async (answer: string) =>{
   if (answer) {
-    if (answer == 'true') {
+    if (answer === 'true') {
       return [true, 'Perfect! You got it.']
     }
     return [false, 'Not a valid hex value']
@@ -279,7 +279,7 @@ class Transaction:
 `,
 validate:async (answer: string) =>{
   if (answer) {
-    if (answer == 'true') {
+    if (answer === 'true') {
       return [true, 'Nicely Done ']
     }
     return [false, 'Not a valid hex value']

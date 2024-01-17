@@ -1306,7 +1306,10 @@ const translations = {
             item_three: 'int',
             item_four: '4',
           },
-        },  
+        }, 
+        paragraph_three:'Notice that there is no "count" value for witnesses. That is because the number of witness stack must always be exactly equal to the number of inputs',
+
+         
     },
     outro_one: {
       title: 'Outro',
