@@ -16,71 +16,94 @@ export const metadata = {
 export default function InOut4({ lang }) {
   const t = useTranslations(lang)
   const tableHeading = [
-    t('chapter_six.in_out_four.table.heading.one'),
-    t('chapter_six.in_out_four.table.heading.two'),
-    t('chapter_six.in_out_four.table.heading.three'),
-    t('chapter_six.in_out_four.table.heading.four'),
+    t('chapter_six.in_out_four.table_one.heading.one'),
+    t('chapter_six.in_out_four.table_one.heading.two'),
+    t('chapter_six.in_out_four.table_one.heading.three'),
+    t('chapter_six.in_out_four.table_one.heading.four'),
   ]
   const outputRows = [
     [
-      t('chapter_six.in_out_four.table.row_one.column.one'),
-      t('chapter_six.in_out_four.table.row_one.column.two'),
-      t('chapter_six.in_out_four.table.row_one.column.three'),
-      t('chapter_six.in_out_four.table.row_one.column.four'),
+      t('chapter_six.in_out_four.table_one.row_one.column.one'),
+      t('chapter_six.in_out_four.table_one.row_one.column.two'),
+      t('chapter_six.in_out_four.table_one.row_one.column.three'),
+      t('chapter_six.in_out_four.table_one.row_one.column.four'),
     ],
     [
-      t('chapter_six.in_out_four.table.row_two.column.one'),
-      t('chapter_six.in_out_four.table.row_two.column.two'),
-      t('chapter_six.in_out_four.table.row_two.column.three'),
-      t('chapter_six.in_out_four.table.row_two.column.four'),
+      t('chapter_six.in_out_four.table_one.row_two.column.one'),
+      t('chapter_six.in_out_four.table_one.row_two.column.two'),
+      t('chapter_six.in_out_four.table_one.row_two.column.three'),
+      t('chapter_six.in_out_four.table_one.row_two.column.four'),
+    ],
+  ]
+  const inputRows = [
+    [
+      t('chapter_six.in_out_four.table_two.row_one.column.one'),
+      t('chapter_six.in_out_four.table_two.row_one.column.two'),
+      t('chapter_six.in_out_four.table_two.row_one.column.three'),
+      t('chapter_six.in_out_four.table_two.row_one.column.four'),
     ],
     [
-      t('chapter_six.in_out_four.table.row_three.column.one'),
-      t('chapter_six.in_out_four.table.row_three.column.two'),
-      t('chapter_six.in_out_four.table.row_three.column.three'),
-      t('chapter_six.in_out_four.table.row_three.column.four'),
+      t('chapter_six.in_out_four.table_two.row_two.column.one'),
+      t('chapter_six.in_out_four.table_two.row_two.column.two'),
+      t('chapter_six.in_out_four.table_two.row_two.column.three'),
+      t('chapter_six.in_out_four.table_two.row_two.column.four'),
     ],
     [
-      t('chapter_six.in_out_four.table.row_four.column.one'),
-      t('chapter_six.in_out_four.table.row_four.column.two'),
-      t('chapter_six.in_out_four.table.row_four.column.three'),
-      t('chapter_six.in_out_four.table.row_four.column.four'),
+      t('chapter_six.in_out_four.table_two.row_three.column.one'),
+      t('chapter_six.in_out_four.table_two.row_three.column.two'),
+      t('chapter_six.in_out_four.table_two.row_three.column.three'),
+      t('chapter_six.in_out_four.table_two.row_three.column.four'),
     ],
     [
-      t('chapter_six.in_out_four.table.row_five.column.one'),
-      t('chapter_six.in_out_four.table.row_five.column.two'),
-      t('chapter_six.in_out_four.table.row_five.column.three'),
-      t('chapter_six.in_out_four.table.row_five.column.four'),
+      t('chapter_six.in_out_four.table_two.row_four.column.one'),
+      t('chapter_six.in_out_four.table_two.row_four.column.two'),
+      t('chapter_six.in_out_four.table_two.row_four.column.three'),
+      t('chapter_six.in_out_four.table_two.row_four.column.four'),
     ],
   ]
 
   const { account } = useAuthContext()
 
   const javascript = {
-    program: `
-const addr = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
-const value = 100000000;
-const output = Output.from_options(addr, value);
-const isCorrect = output.serialize().toString('hex') === '00e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd1'
-console.log(isCorrect && 'true')
-;
-console.log("KILL")`,
-    defaultFunction: {
-      name: 'privateKeyToPublicKey',
-      args: ['privateKey'],
-    },
-    defaultCode: `const assert = require("assert")
-const bech32 = require('@savingsatoshi/bech32js')
-
-class Output {
-  constructor() {
-    this.value = 0;
-    this.witness_version = 0;
-    this.witness_data = Buffer.alloc(0);
+    program: `const assert = require('assert');
+class Outpoint {
+  constructor(txid, index) {
+    assert(Buffer.isBuffer(txid));
+    assert(txid.length === 32);
+    assert(Number.isInteger(index));
+    this.txid = txid;
+    this.index = index;
   }
 
-  static from_options(addr, value) {
-    assert(Number.isInteger(value));
+  serialize() {
+    const buf = Buffer.alloc(36);
+    this.txid.copy(buf, 0);
+    buf.writeUInt32LE(this.index, 32);
+    return buf;
+  }
+}
+
+const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
+const vout = 1;
+const value = 650000000;
+const scriptcode = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
+const input = Input.from_output(txid, vout, value, scriptcode);
+console.log(input.serialize().toString('hex') === '8e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff' && 'true')
+console.log("KILL")`,
+    defaultFunction: {
+      name: 'inputClass',
+      args: ['privateKey'],
+    },
+    defaultCode: `class Input {
+  constructor() {
+    this.outpoint = null;
+    this.script = Buffer.alloc(0);
+    this.sequence = 0xffffffff;
+    this.value = 0;
+    this.scriptcode = Buffer.alloc(0);
+  }
+
+  static from_output(txid, vout, value, scriptcode) {
     const self = new this();
     // YOUR CODE HERE
     return self;
@@ -90,7 +113,6 @@ class Output {
     // YOUR CODE HERE
   }
 }
-        
 `,
     validate: async (answer: string) => {
       if (answer) {
@@ -105,44 +127,61 @@ class Output {
     },
     constraints: [
       {
-        range: [14, 1, 23, 1],
+        range: [12, 1, 13, 1],
+        allowMultiline: true,
+      },
+      {
+        range: [17, 1, 20, 1],
         allowMultiline: true,
       },
     ],
   }
 
   const python = {
-    program: `
-addr = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
-value = 100000000
-output = Output.from_options(addr, value)
-is_correct = output.serialize().hex() == "00e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd1" 
-print(is_correct and 'true')
+    program: `from struct import pack
+class Outpoint:
+    def __init__(self, txid: bytes, index: int):
+        assert isinstance(txid, bytes)
+        assert len(txid) == 32
+        assert isinstance(index, int)
+        self.txid = txid
+        self.index = index
+
+    def serialize(self):
+        # https:#docs.python.org/3/library/struct.html#byte-order-size-and-alignment
+        # Encode the index as little-endian unsigned integer
+        r = b""
+        r += self.txid
+        r += pack("<I", self.index)
+        return r
+
+txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
+vout = 1
+value = 650000000
+scriptcode = "1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac"
+input = Input.from_output(txid, vout, value, scriptcode)
+print(input.serialize().hex() == '8e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff' and 'true')
 print("KILL")`,
     defaultFunction: {
-      name: 'privatekey_to_publickey',
+      name: 'input_class',
       args: ['private_key'],
     },
-    defaultCode: `from struct import pack
-from bech32py import bech32
+    defaultCode: `class Input:
+    def __init__(self):
+        self.outpoint = None
+        self.scriptsig = b""
+        self.sequence = 0xffffffff
+        self.value = 0
+        self.scriptcode = b""
 
-class Output:
-  def __init__(self):
-    self.value = 0
-    self.witness_version = 0
-    self.witness_data = b""
+    @classmethod
+    def from_output(cls, txid: str, vout: int, value: int, scriptcode: bytes):
+        self = cls()
+        # YOUR CODE HERE
+        return self
 
-  @classmethod
-  def from_options(cls, addr: str, value: int):
-    assert isinstance(value, int)
-    self = cls()
-    # YOUR CODE HERE
-    return self
-
-  def serialize(self):
-    # YOUR CODE HERE
-
-    
+    def serialize(self):
+        # YOUR CODE HERE
 `,
     validate: async (answer) => {
       if (answer) {
@@ -157,7 +196,11 @@ class Output:
     },
     constraints: [
       {
-        range: [14, 1, 21, 1],
+        range: [12, 1, 13, 1],
+        allowMultiline: true,
+      },
+      {
+        range: [16, 1, 17, 1],
         allowMultiline: true,
       },
     ],
@@ -191,11 +234,23 @@ class Output:
         </Text>
         <CodeExample
           className="mt-4"
-          code={`from_options(addr: str, value: int)`}
+          code={`from_output(txid: str, vout: int, value: int, scriptcode: bytes)`}
           language="shell"
         />
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_six.in_out_four.paragraph_two')}
+        </Text>
+
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_six.in_out_four.paragraph_three')}
+        </Text>
+
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_six.in_out_four.paragraph_four')}
+        </Text>
+
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_six.in_out_four.paragraph_five')}
         </Text>
 
         <div className="mt-4">
@@ -203,6 +258,13 @@ class Output:
         </div>
         <div className="mt-4 flex-col gap-4">
           <Table headings={tableHeading} rows={outputRows} />
+        </div>
+
+        <div className="mt-4">
+          <Title>{t('chapter_six.in_out_four.heading_three')}</Title>
+        </div>
+        <div className="mt-4 flex-col gap-4">
+          <Table headings={tableHeading} rows={inputRows} />
         </div>
       </LessonInfo>
     </ScriptingChallenge>

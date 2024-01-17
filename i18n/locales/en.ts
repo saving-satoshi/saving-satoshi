@@ -1111,6 +1111,80 @@ const translations = {
     },
     in_out_four: {
       title: 'The ins and outs',
+      heading: 'Finish the implementation of Class Input',
+      paragraph_one: 'It should have the following method:',
+      paragraph_two:
+        'The First two arguments are the transaction ID and the index of the output of that transaction you want to spend from.',
+      paragraph_three:
+        'Eventually we will pass in the txid and vout values you got above from listunspent. Note that hashes in Bitcoin are little-endian, which means that you will need to reverse the byte order of the txid string!',
+      paragraph_four:
+        "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6.",
+      paragraph_five:
+        'We also need a serialize() method that returns a byte array according to the specification:',
+      heading_two: 'Output',
+      table_one: {
+        heading: {
+          one: 'Description',
+          two: 'Name',
+          three: 'Type',
+          four: 'Size',
+        },
+        row_one: {
+          column: {
+            one: 'Hash of transaction being spent from',
+            two: 'txid',
+            three: 'bytes',
+            four: '32',
+          },
+        },
+        row_two: {
+          column: {
+            one: "Position of output being spent in the transaction's output array",
+            two: 'index',
+            three: 'int',
+            four: '4',
+          },
+        },
+      },
+      heading_three: 'Input',
+      table_two: {
+        row_one: {
+          column: {
+            one: 'txid and output index being spent from',
+            two: 'outpoint',
+            three: 'bytes',
+            four: '36',
+          },
+        },
+        row_two: {
+          column: {
+            one: 'ScriptSig length (always 0 for Segregated Witness)',
+            two: 'length',
+            three: 'int',
+            four: '1',
+          },
+        },
+        row_three: {
+          column: {
+            one: 'Always empty for Segregated Witness',
+            two: 'script',
+            three: 'bytes',
+            four: '0',
+          },
+        },
+        row_four: {
+          column: {
+            one: 'Default value is 0xffffffff but can be used for relative timelocks',
+            two: 'sequence',
+            three: 'int',
+            four: '4',
+          },
+        },
+      },
+      success: 'The Input class looks good, Great Work!',
+    },
+    in_out_five: {
+      title: 'The ins and outs',
       heading: 'Finish the implementation of Class Output',
       paragraph_one: 'It should have the following method:',
       paragraph_two: `It accepts a Bitcoin address as a string (like the address from Mike Ramen) and a value as an integer. The value is expressed as a number of satoshis! Remember, 1 BTC = 100000000 satoshis. You will need to use our bech32 library again to decode the address into version and data components.
@@ -1161,41 +1235,6 @@ const translations = {
             two: 'length',
             three: 'int',
             four: '1',
-          },
-        },
-      },
-      heading_three: 'Input',
-      table_two: {
-        row_one: {
-          column: {
-            one: 'txid and output index being spent from',
-            two: 'outpoint',
-            three: 'bytes',
-            four: '36',
-          },
-        },
-        row_two: {
-          column: {
-            one: 'ScriptSig length (always 0 for Segregated Witness)',
-            two: 'length',
-            three: 'int',
-            four: '1',
-          },
-        },
-        row_three: {
-          column: {
-            one: 'Always empty for Segregated Witness',
-            two: 'script',
-            three: 'bytes',
-            four: '0',
-          },
-        },
-        row_four: {
-          column: {
-            one: 'Default value is 0xffffffff but can be used for relative timelocks',
-            two: 'sequence',
-            three: 'int',
-            four: '4',
           },
         },
       },
