@@ -6,10 +6,9 @@ import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { useAuthContext } from 'providers/AuthProvider'
 
 export const metadata = {
-  title: 'chapter_six.put_it_together_one.title',
+  title: 'chapter_six.put_it_together_four.title',
   key: 'CH6PUT4',
 }
 
@@ -138,7 +137,7 @@ print("KILL")`,
     <ScriptingChallenge
       lang={lang}
       config={config}
-      lessonKey={getLessonKey('chapter-6', 'in-out-4')}
+      lessonKey={getLessonKey('chapter-6', 'put-it-together-4')}
       successMessage={t('chapter_six.in_out_four.success')}
       onSelectLanguage={handleSelectLanguage}
     >
