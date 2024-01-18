@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useTranslations } from 'hooks'
 import { EditorConfig } from 'types'
 import { getLessonKey } from 'lib/progress'
-
+import { useAuthContext } from 'providers/AuthProvider'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
@@ -13,8 +13,6 @@ export const metadata = {
 }
 
 const javascript={program:`
-const assert = require('assert');
-const bech32=require('@savingsatoshi/bech32js');
 class Outpoint {
   constructor(txid, index) {
     assert(Buffer.isBuffer(txid));
@@ -144,14 +142,14 @@ class Transaction{
 validate:async (answer: string) =>{
   if (answer) {
     if (answer === 'true') {
-      return [true, 'Perfect! You got it.']
+      return [true, 'Nicely done']
     }
     return [false, 'Not a valid hex value']
   }
   return [false, 'Please return a value']
 },constraints: [
   {
-    range: [11, 1, 15, 1],
+    range: [14, 1, 15, 1],
     allowMultiline: true,
   },
   
@@ -256,7 +254,7 @@ witness.push_item(bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb3
 tx = Transaction()
 tx.inputs.append(input)
 tx.outputs.append(output)
-print(tx.serialize().hex()==='020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0100e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd100000000'and 'true')
+print(tx.serialize().hex()=='020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0100e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd100000000'and 'true')
 print("KILL")`,
   defaultFunction:{
     name:"put-it-together-2",
@@ -287,7 +285,7 @@ validate:async (answer: string) =>{
   return [false, 'Return a value']
 },constraints: [
     {
-      range: [11, 1, 15, 1],
+      range: [14, 1, 15, 1],
       allowMultiline: true,
     },  ]
 }
@@ -315,7 +313,7 @@ export default function PutItTogether2({ lang }) {
     config={config}
     saveData
     lessonKey={getLessonKey('chapter-6', 'put-it-together-2')}
-    successMessage={''}
+    successMessage={t('chapter_six.put_it_together_two.success')}
     onSelectLanguage={handleSelectLanguage}
   >
     <LessonInfo>

@@ -1310,7 +1310,7 @@ const translations = {
           },
         }, 
         paragraph_three:'Notice that there is no "count" value for witnesses. That is because the number of witness stack must always be exactly equal to the number of inputs',
-
+        success:'The Trasaction class looks good, Great Work!'
          
     },
     outro_one: {
