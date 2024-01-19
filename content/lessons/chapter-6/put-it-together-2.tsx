@@ -1,18 +1,17 @@
 'use client'
-import {ScriptingChallenge,Table,Introduction,Text,LessonInfo} from 'ui'
+import { ScriptingChallenge, Table, Text, LessonInfo } from 'ui'
 import { useState } from 'react'
 import { useTranslations } from 'hooks'
 import { EditorConfig } from 'types'
 import { getLessonKey } from 'lib/progress'
-import { useAuthContext } from 'providers/AuthProvider'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
-  image: '/assets/images/chapter-4-intro-1.jpg',
   key: 'CH6PUT2',
 }
 
-const javascript={program:`
+const javascript = {
+  program: `//BEGIN VALIDATION BLOCK
 class Outpoint {
   constructor(txid, index) {
     assert(Buffer.isBuffer(txid));
@@ -102,7 +101,7 @@ class Witness {
     return buf;
   }
 }
- 
+
 const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
 const vout = 1;
 const value1 = 650000000;
@@ -119,15 +118,15 @@ tx.inputs.push(input);
 tx.outputs.push(output);
 console.log(tx.serialize().toString('hex')==='020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0100e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd100000000'&&'true');
 `,
-defaultFunction:{
-  name:"put-it-together-2",
-  args:["args"]
-},
-defaultCode:`
-const assert = require('assert');
-const bech32=require('@savingsatoshi/bech32js');
-class Transaction{
-  constructor(){
+  defaultFunction: {
+    name: 'put-it-together-2',
+    args: ['args'],
+  },
+  defaultCode: `const assert = require('assert');
+const bech32 = require('@savingsatoshi/bech32js');
+
+class Transaction {
+  constructor() {
     this.version=2;
     this.flags = Buffer.from('0001', 'hex');
     this.inputs = [];
@@ -139,27 +138,26 @@ class Transaction{
     // YOUR CODE HERE
   }
 }`,
-validate:async (answer: string) =>{
-  if (answer) {
-    if (answer === 'true') {
-      return [true, 'Nicely done']
+  validate: async (answer: string) => {
+    if (answer) {
+      if (answer === 'true') {
+        return [true, 'Nicely done']
+      }
+      return [false, 'Not a valid hex value']
     }
-    return [false, 'Not a valid hex value']
-  }
-  return [false, 'Please return a value']
-},constraints: [
-  {
-    range: [14, 1, 15, 1],
-    allowMultiline: true,
+    return [false, 'Please return a value']
   },
-  
-],
+  constraints: [
+    {
+      range: [14, 1, 15, 1],
+      allowMultiline: true,
+    },
+  ],
 }
 
-
-
-const python={
-  program:`from struct import pack
+const python = {
+  program: `# BEGIN VALIDATION BLOCK
+from struct import pack
 from bech32py import bech32
 class Outpoint:
     def __init__(self, txid, index):
@@ -256,11 +254,11 @@ tx.inputs.append(input)
 tx.outputs.append(output)
 print(tx.serialize().hex()=='020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0100e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd100000000'and 'true')
 print("KILL")`,
-  defaultFunction:{
-    name:"put-it-together-2",
-    args:["args"]
+  defaultFunction: {
+    name: 'put-it-together-2',
+    args: ['args'],
   },
-  defaultCode:`
+  defaultCode: `
 from struct import pack
 
 class Transaction:
@@ -275,23 +273,22 @@ class Transaction:
     def serialize(self):
         # YOUR CODE HERE
 `,
-validate:async (answer: string) =>{
-  if (answer) {
-    if (answer === 'true') {
-      return [true, 'Nicely Done ']
+  validate: async (answer: string) => {
+    if (answer) {
+      if (answer === 'true') {
+        return [true, 'Nicely Done ']
+      }
+      return [false, 'Not a valid hex value']
     }
-    return [false, 'Not a valid hex value']
-  }
-  return [false, 'Return a value']
-},constraints: [
+    return [false, 'Return a value']
+  },
+  constraints: [
     {
       range: [14, 1, 15, 1],
       allowMultiline: true,
-    },  ]
+    },
+  ],
 }
-
-
-
 
 const config: EditorConfig = {
   defaultLanguage: 'javascript',
@@ -309,24 +306,25 @@ export default function PutItTogether2({ lang }) {
 
   return (
     <ScriptingChallenge
-    lang={lang}
-    config={config}
-    saveData
-    lessonKey={getLessonKey('chapter-6', 'put-it-together-2')}
-    successMessage={t('chapter_six.put_it_together_two.success')}
-    onSelectLanguage={handleSelectLanguage}
-  >
-    <LessonInfo>
-      <Text className="font-nunito text-2xl font-bold text-white">
-        {t('chapter_six.put_it_together_two.heading')}
-      </Text>
-      <Text className="mt-2 font-nunito text-xl text-white">
-        {t('chapter_six.put_it_together_two.paragraph_one')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_six.put_it_together_two.paragraph_two')}
-      </Text>
-      <Table headings={[
+      lang={lang}
+      config={config}
+      saveData
+      lessonKey={getLessonKey('chapter-6', 'put-it-together-2')}
+      successMessage={t('chapter_six.put_it_together_two.success')}
+      onSelectLanguage={handleSelectLanguage}
+    >
+      <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+        <Text className="font-nunito text-2xl font-bold text-white">
+          {t('chapter_six.put_it_together_two.heading')}
+        </Text>
+        <Text className="mt-2 font-nunito text-xl text-white">
+          {t('chapter_six.put_it_together_two.paragraph_one')}
+        </Text>
+        <Text className="mt-4 text-lg md:text-xl">
+          {t('chapter_six.put_it_together_two.paragraph_two')}
+        </Text>
+        <Table
+          headings={[
             t('chapter_six.put_it_together_two.headings.item_one'),
             t('chapter_six.put_it_together_two.headings.item_two'),
             t('chapter_six.put_it_together_two.headings.item_three'),
@@ -349,7 +347,7 @@ export default function PutItTogether2({ lang }) {
               t('chapter_six.put_it_together_two.table.row_three.item_one'),
               t('chapter_six.put_it_together_two.table.row_three.item_two'),
               t('chapter_six.put_it_together_two.table.row_three.item_three'),
-              t('chapter_six.put_it_together_two.table.row_three.item_four'), 
+              t('chapter_six.put_it_together_two.table.row_three.item_four'),
             ],
             [
               t('chapter_six.put_it_together_two.table.row_four.item_one'),
@@ -381,14 +379,13 @@ export default function PutItTogether2({ lang }) {
               t('chapter_six.put_it_together_two.table.row_eight.item_three'),
               t('chapter_six.put_it_together_two.table.row_eight.item_four'),
             ],
-          ]}/>
+          ]}
+        />
 
-      
-      <Text className="mt-2 font-nunito text-xl text-white">  
-         {t('chapter_six.put_it_together_two.paragraph_three')}
-      </Text> 
-    </LessonInfo>
-
+        <Text className="mt-2 font-nunito text-xl text-white">
+          {t('chapter_six.put_it_together_two.paragraph_three')}
+        </Text>
+      </LessonInfo>
     </ScriptingChallenge>
   )
 }
