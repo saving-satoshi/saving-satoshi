@@ -2,10 +2,9 @@
 import { ScriptingChallenge, Table, Text, LessonInfo, CodeExample } from 'ui'
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'hooks'
-import { Data, EditorConfig } from 'types'
+import { EditorConfig } from 'types'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
-import { Base64String } from 'types/classes'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
@@ -34,6 +33,10 @@ export default function PutItTogether2({ lang }) {
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
+  }
+
+  function countLines(text: string): number {
+    return text.split(/\r\n|\r|\n/).length
   }
 
   const javascript = {
@@ -168,7 +171,12 @@ ${prevData.data.slice(0, -2)}
     },
     constraints: [
       {
-        range: [35, 1, 36, 1],
+        range: [
+          countLines(prevData.data.slice(0, -2)) + 4,
+          1,
+          countLines(prevData.data.slice(0, -2)) + 5,
+          1,
+        ],
         allowMultiline: true,
       },
     ],
@@ -296,7 +304,12 @@ ${prevData.data.slice(0, -2)}
     },
     constraints: [
       {
-        range: [35, 1, 36, 1],
+        range: [
+          countLines(prevData.data.slice(0, -2)) + 6,
+          1,
+          countLines(prevData.data.slice(0, -2)) + 7,
+          1,
+        ],
         allowMultiline: true,
       },
     ],
