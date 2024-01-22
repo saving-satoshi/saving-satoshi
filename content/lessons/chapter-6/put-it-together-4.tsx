@@ -13,7 +13,7 @@ export const metadata = {
   key: 'CH6PUT4',
 }
 
-export default function InOut4({ lang }) {
+export default function PutItTogether4({ lang }) {
   const t = useTranslations(lang)
   const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
   const [isLoading, setIsLoading] = useState(true)
@@ -376,6 +376,7 @@ ${prevData.data.slice(0, -2)}
       <ScriptingChallenge
         lang={lang}
         config={config}
+        saveData
         lessonKey={getLessonKey('chapter-6', 'put-it-together-4')}
         successMessage={t('chapter_six.in_out_four.success')}
         onSelectLanguage={handleSelectLanguage}
