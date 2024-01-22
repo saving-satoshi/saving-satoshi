@@ -3,11 +3,13 @@ const translations = {
     next: 'Continue',
     start: 'Start',
     copy: 'Copy',
+    info: 'Info',
     copy_acknowledged: 'Copied!',
     about: 'About',
     chapter: 'Chapter',
     chapters: 'Chapters',
     challenge: 'Challenge',
+    challenges: 'Challenges',
     coming_soon: 'Coming soon',
     start_chapter: 'Start chapter',
     back: 'Back',
@@ -1107,6 +1109,98 @@ const translations = {
       paragraph_three:
         'And remember: integers in Bitcoin are serialized little-endian!',
     },
+    in_out_four: {
+      title: 'The ins and outs',
+      heading: 'Finish the implementation of Class Output',
+      paragraph_one: 'It should have the following method:',
+      paragraph_two: `It accepts a Bitcoin address as a string (like the address from Mike Ramen) and a value as an integer. The value is expressed as a number of satoshis! Remember, 1 BTC = 100000000 satoshis. You will need to use our bech32 library again to decode the address into version and data components.
+        The class also needs a serialize() method method that returns a byte array according to the specification:`,
+      heading_two: 'Output',
+      table: {
+        heading: {
+          one: 'Description',
+          two: 'Name',
+          three: 'Type',
+          four: 'Size',
+        },
+        row_one: {
+          column: {
+            one: 'Number of satoshis being sent.',
+            two: 'value',
+            three: 'bytes',
+            four: '8',
+          },
+        },
+        row_two: {
+          column: {
+            one: 'Total length of the following script (the "witness program")."',
+            two: 'length',
+            three: 'int',
+            four: '1',
+          },
+        },
+        row_three: {
+          column: {
+            one: 'The segregated witness version. Derived from the bech32 address.',
+            two: 'version',
+            three: 'int',
+            four: '1',
+          },
+        },
+        row_four: {
+          column: {
+            one: 'Length of the following witness program data.',
+            two: 'length',
+            three: 'int',
+            four: '1',
+          },
+        },
+        row_five: {
+          column: {
+            one: 'The data component derived from the bech32 address.',
+            two: 'length',
+            three: 'int',
+            four: '1',
+          },
+        },
+      },
+      heading_three: 'Input',
+      table_two: {
+        row_one: {
+          column: {
+            one: 'txid and output index being spent from',
+            two: 'outpoint',
+            three: 'bytes',
+            four: '36',
+          },
+        },
+        row_two: {
+          column: {
+            one: 'ScriptSig length (always 0 for Segregated Witness)',
+            two: 'length',
+            three: 'int',
+            four: '1',
+          },
+        },
+        row_three: {
+          column: {
+            one: 'Always empty for Segregated Witness',
+            two: 'script',
+            three: 'bytes',
+            four: '0',
+          },
+        },
+        row_four: {
+          column: {
+            one: 'Default value is 0xffffffff but can be used for relative timelocks',
+            two: 'sequence',
+            three: 'int',
+            four: '4',
+          },
+        },
+      },
+      success: 'The Output class looks good, Great Work!',
+    },
     put_it_together_one: {
       title: 'Putting it all together',
       heading: 'Finish the implementation of Class Witness',
@@ -1150,6 +1244,74 @@ const translations = {
           item_four: '(var)',
         },
       },
+    },
+    put_it_together_two:{
+      title: 'Putting it all together',
+      heading:'Finish the implementation of Class Transaction',
+      paragraph_one:
+        'It should have global properties locktime and version as well as an array of inputs, outputs and witness stacks.',
+      paragraph_two:
+        'It will need a serialize() method that outputs the enitire transaction as bytes formatted for broadcast on the Bitcoin p2p network',
+      
+      headings: {
+          item_one: 'Description',
+          item_two: 'Name',
+          item_three: 'Type',
+          item_four: 'Size',
+          },  
+      table: {
+          row_one: {
+            item_one: 'Currently 2',
+            item_two: 'version',
+            item_three: 'int',
+            item_four: '4',
+          },
+          row_two: {
+            item_one: 'Must be exactly 0x0001 for segregated witness',
+            item_two: 'flags',
+            item_three: 'bytes',
+            item_four: '2',
+          },
+          row_three: {
+            item_one: 'The number of inputs',
+            item_two: 'in count',
+            item_three: 'int',
+            item_four: '1',
+          },
+          row_four: {
+            item_one: 'All transaction inputs,serialized',
+            item_two: 'inputs',
+            item_three: 'Inputs[]',
+            item_four: '(var)',
+          },
+          row_five: {
+            item_one: 'The number of outputs',
+            item_two: 'out count',
+            item_three: 'int',
+            item_four: '1',
+          },
+          row_six: {
+            item_one: 'All transaction outputs,serialized',
+            item_two: 'outputs',
+            item_three: 'Outputs[]',
+            item_four: '(var)',
+          },
+          row_seven: {
+            item_one: 'All witness stacks, serialized',
+            item_two: 'witness',
+            item_three: 'Witnesses[]',
+            item_four: '(var)',
+          },
+          row_eight: {
+            item_one: 'Setting to 0 indicates finality',
+            item_two: 'locktime',
+            item_three: 'int',
+            item_four: '4',
+          },
+        }, 
+        paragraph_three:'Notice that there is no "count" value for witnesses. That is because the number of witness stack must always be exactly equal to the number of inputs',
+        success:'The Trasaction class looks good, Great Work!'
+         
     },
     outro_one: {
       title: 'Outro',
