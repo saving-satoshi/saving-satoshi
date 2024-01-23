@@ -256,16 +256,12 @@ print("KILL")`,
         <div className="mt-4">
           <Title>{t('chapter_six.in_out_four.heading_two')}</Title>
         </div>
-        <div className="mt-4 flex-col gap-4">
-          <Table headings={tableHeading} rows={outputRows} />
-        </div>
+        <Table headings={tableHeading} rows={outputRows} />
 
         <div className="mt-4">
           <Title>{t('chapter_six.in_out_four.heading_three')}</Title>
         </div>
-        <div className="mt-4 flex-col gap-4">
-          <Table headings={tableHeading} rows={inputRows} />
-        </div>
+        <Table headings={tableHeading} rows={inputRows} />
       </LessonInfo>
     </ScriptingChallenge>
   )
