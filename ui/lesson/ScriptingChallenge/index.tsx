@@ -11,6 +11,7 @@ import { useMediaQuery, useDynamicHeight } from 'hooks'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { useAuthContext } from 'providers/AuthProvider'
 import { setData } from 'api/data'
+import { Base64String } from 'types/classes'
 
 const tabData = [
   {
@@ -90,12 +91,26 @@ export default function ScriptingChallenge({
     const [success, errors] = await config.languages[language].validate(
       data.answer
     )
+    // This code trims all code after the comment BEGIN VALIDATION BLOCK and all code comments so that loaded code is cleaned
+    const trimmedCode = data
+      .code!.getDecoded()
+      .substring(
+        0,
+        data.code!.getDecoded().indexOf('BEGIN VALIDATION BLOCK') - 3
+      )
+      .replaceAll(/\/\/.*\n|#.*\n\s*/g, '')
+
+    const base64TrimmedCode = new Base64String(trimmedCode)
 
     if (success) {
       setChallengeSuccess(true)
       if (account) {
         saveProgress(lessonKey)
-        saveData && setData(account.id, lessonKey, data)
+        saveData &&
+          setData(account.id, lessonKey, {
+            code: base64TrimmedCode,
+            answer: data.answer,
+          })
       } else {
         saveProgressLocal(lessonKey)
       }
