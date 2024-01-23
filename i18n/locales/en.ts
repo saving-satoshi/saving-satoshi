@@ -1407,6 +1407,16 @@ const translations = {
         'Finally, the message we sign is the double SHA-256 of all this serialized data.',
       success: 'The digest() method looks good, Great Work!',
     },
+
+    put_it_together_four: {
+      title: 'Putting it all together',
+      heading: 'Signing!',
+      paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called compute_input_signature(index: int, key: int) to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the digest() method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
+      paragraph_two:
+        'See this page for the ECDSA signing algorithm. Also this PDF (Page 44, Section 4.1.3).',
+      paragraph_three:
+        'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in BIP 146.',
+    },
     outro_one: {
       title: 'Outro',
       heading: 'You did it!!!',
@@ -1414,7 +1424,6 @@ const translations = {
         "You successfully built a transaction from scratch to pay Mike Ramen for his help. Now that we are done here let's get off this island...",
     },
   },
-
   chapter_seven: {
     title: `Twentyone`,
   },
