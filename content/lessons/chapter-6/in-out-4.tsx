@@ -131,7 +131,7 @@ console.log("KILL")`,
         allowMultiline: true,
       },
       {
-        range: [17, 1, 20, 1],
+        range: [17, 1, 18, 1],
         allowMultiline: true,
       },
     ],
