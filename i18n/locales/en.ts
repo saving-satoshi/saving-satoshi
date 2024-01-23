@@ -1407,6 +1407,7 @@ const translations = {
         'Finally, the message we sign is the double SHA-256 of all this serialized data.',
       success: 'The digest() method looks good, Great Work!',
     },
+
     put_it_together_four: {
       title: 'Putting it all together',
       heading: 'Signing!',
@@ -1422,143 +1423,142 @@ const translations = {
       paragraph_one:
         "You successfully built a transaction from scratch to pay Mike Ramen for his help. Now that we are done here let's get off this island...",
     },
+  },
+  chapter_seven: {
+    title: `Twentyone`,
+  },
 
-    chapter_seven: {
-      title: `Twentyone`,
-    },
+  chapter_eight: {
+    title: 'A matter of sustainability',
+  },
 
-    chapter_eight: {
-      title: 'A matter of sustainability',
-    },
+  chapter_nine: {
+    title: `Don't compute, verify.`,
+  },
 
-    chapter_nine: {
-      title: `Don't compute, verify.`,
-    },
+  chapter_ten: {
+    title: '10 billion connections',
+  },
 
-    chapter_ten: {
-      title: '10 billion connections',
-    },
+  ///CHALLENGE PAGE
+  challenge_list: {
+    coming_soon: 'Coming soon. Hang tight.',
+  },
 
-    ///CHALLENGE PAGE
-    challenge_list: {
-      coming_soon: 'Coming soon. Hang tight.',
-    },
+  chapter: {
+    chapter_locked_one: 'Complete Chapter',
+    chapter_locked_two: 'to unlock.',
+    coming_soon: 'Coming soon. Hang tight.',
+    description:
+      'Explore the mysteries of Satoshi and learn about Bitcoin along the way.',
+  },
 
-    chapter: {
-      chapter_locked_one: 'Complete Chapter',
-      chapter_locked_two: 'to unlock.',
-      coming_soon: 'Coming soon. Hang tight.',
-      description:
-        'Explore the mysteries of Satoshi and learn about Bitcoin along the way.',
-    },
+  hero: {
+    title: 'Saving Satoshi',
+    description: 'Code your way through the mysteries of bitcoin.',
+    start_journey: 'Start',
+    tell_more: 'Tell me more',
+  },
 
-    hero: {
-      title: 'Saving Satoshi',
-      description: 'Code your way through the mysteries of bitcoin.',
-      start_journey: 'Start',
-      tell_more: 'Tell me more',
-    },
+  footer: {
+    paragraph_one: 'An open-source production by the bitcoin community.',
+    link: 'Check the code',
+  },
 
-    footer: {
-      paragraph_one: 'An open-source production by the bitcoin community.',
-      link: 'Check the code',
-    },
+  navbar: {
+    intro: 'Intro',
+    chapter: 'Chapter',
+    chapter_complete: 'Chapter complete',
+    challenge: 'Challenge',
+    help_tooltip: 'Need help?',
+  },
 
-    navbar: {
-      intro: 'Intro',
-      chapter: 'Chapter',
-      chapter_complete: 'Chapter complete',
-      challenge: 'Challenge',
-      help_tooltip: 'Need help?',
-    },
+  modal_signin: {
+    heading: 'Sign in',
+    paragraph_one:
+      'Enter your private key below to restore your account and progress.',
+    prompt: 'Enter your private key',
+    confirm: 'Sign in',
+    create_account: 'Don’t have an account?',
+  },
 
-    modal_signin: {
-      heading: 'Sign in',
-      paragraph_one:
-        'Enter your private key below to restore your account and progress.',
-      prompt: 'Enter your private key',
-      confirm: 'Sign in',
-      create_account: 'Don’t have an account?',
-    },
+  modal_logout: {
+    heading: 'You are logged in',
+    paragraph_one:
+      'Your session will remain active until you sign out using the button below.',
+    signout: 'Sign out',
+  },
 
-    modal_logout: {
-      heading: 'You are logged in',
-      paragraph_one:
-        'Your session will remain active until you sign out using the button below.',
-      signout: 'Sign out',
-    },
+  modal_signup: {
+    heading: 'Want to save your progress',
+    paragraph_one:
+      'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.',
+    subheading_one: 'Choose an avatar',
+    subheading_two: 'Back up your personal code',
+    generate:
+      'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
+    confirm: 'Done',
+    acknowledged:
+      'I acknowledge I have saved this private key and know that I will need it for challenges in the future.',
+  },
 
-    modal_signup: {
-      heading: 'Want to save your progress',
-      paragraph_one:
-        'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.',
-      subheading_one: 'Choose an avatar',
-      subheading_two: 'Back up your personal code',
-      generate:
-        'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
-      confirm: 'Done',
-      acknowledged:
-        'I acknowledge I have saved this private key and know that I will need it for challenges in the future.',
-    },
+  disclaimer: {
+    description:
+      'We’re excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>',
+  },
 
-    disclaimer: {
-      description:
-        'We’re excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>',
-    },
+  hasher: {
+    placeholder: 'Type here...',
+    return_hash: 'Below you will see your input converted to a hash',
+  },
 
-    hasher: {
-      placeholder: 'Type here...',
-      return_hash: 'Below you will see your input converted to a hash',
-    },
+  hashrate: {
+    start: 'Start',
+    running: 'Running',
+    blocks_found: 'Blocks found',
+    hashrate: 'Hashrate',
+    partial_solutions: 'Partial solutions',
+  },
 
-    hashrate: {
-      start: 'Start',
-      running: 'Running',
-      blocks_found: 'Blocks found',
-      hashrate: 'Hashrate',
-      partial_solutions: 'Partial solutions',
-    },
-
-    runner: {
-      run: 'Run the script',
-      running: 'Running',
-      pause: 'Pause',
-      result: 'Result',
-      evaluation: 'Evaluation',
-      script_output: 'Script output',
-      waiting: 'Waiting for your input above...',
-    },
-    notfound: {
-      first: 'Hmm...where are we?',
-      second: 'It’s not quite clear where or what this place is.',
-      third: 'We might have gotten lost in space (or time).',
-      back_safety: 'Back to safety',
-    },
-    error: {
-      first: 'Something is wrong!',
-      second: 'Holocat may have chewed on some cables again. Bad cat!',
-      reload: 'Retry',
-    },
-    help_page: {
-      main_heading: 'Learning Resources',
-      main_subheading:
-        'What helpful info and resources can we provide for further learning?',
-      tips_heading: 'Tips',
-      tips_subheading:
-        'What specific tips can/do we want to give learners if they are stuck?',
-      spoilers_heading: 'Spoilers',
-      spoilers_confirm: 'Yes, I want to see the solution',
-      solution_one: 'Solution to part one of this challenge',
-      solution_two: 'Solution to part two of this challenge',
-      solution_three: 'Solution to part three of this challenge',
-      solution_four: 'Solution to part four of this challenge',
-      solution_five: 'Solution to part five of this challenge',
-      solution_six: 'Solution to part six of this challenge',
-      solution_seven: 'Solution to part seven of this challenge',
-      solution_eight: 'Solution to part eight of this challenge',
-      solution_nine: 'Solution to part nine of this challenge',
-      solution_ten: 'Solution to part ten of this challenge',
-    },
+  runner: {
+    run: 'Run the script',
+    running: 'Running',
+    pause: 'Pause',
+    result: 'Result',
+    evaluation: 'Evaluation',
+    script_output: 'Script output',
+    waiting: 'Waiting for your input above...',
+  },
+  notfound: {
+    first: 'Hmm...where are we?',
+    second: 'It’s not quite clear where or what this place is.',
+    third: 'We might have gotten lost in space (or time).',
+    back_safety: 'Back to safety',
+  },
+  error: {
+    first: 'Something is wrong!',
+    second: 'Holocat may have chewed on some cables again. Bad cat!',
+    reload: 'Retry',
+  },
+  help_page: {
+    main_heading: 'Learning Resources',
+    main_subheading:
+      'What helpful info and resources can we provide for further learning?',
+    tips_heading: 'Tips',
+    tips_subheading:
+      'What specific tips can/do we want to give learners if they are stuck?',
+    spoilers_heading: 'Spoilers',
+    spoilers_confirm: 'Yes, I want to see the solution',
+    solution_one: 'Solution to part one of this challenge',
+    solution_two: 'Solution to part two of this challenge',
+    solution_three: 'Solution to part three of this challenge',
+    solution_four: 'Solution to part four of this challenge',
+    solution_five: 'Solution to part five of this challenge',
+    solution_six: 'Solution to part six of this challenge',
+    solution_seven: 'Solution to part seven of this challenge',
+    solution_eight: 'Solution to part eight of this challenge',
+    solution_nine: 'Solution to part nine of this challenge',
+    solution_ten: 'Solution to part ten of this challenge',
   },
 }
 export default translations
