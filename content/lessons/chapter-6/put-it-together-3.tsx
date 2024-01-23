@@ -11,7 +11,7 @@ export const metadata = {
   key: 'CH6PUT3',
 }
 
-export default function PutItTogether2({ lang }) {
+export default function PutItTogether3({ lang }) {
   const t = useTranslations(lang)
 
   const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
