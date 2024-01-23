@@ -92,13 +92,27 @@ export default function ScriptingChallenge({
       data.answer
     )
     // This code trims all code after the comment BEGIN VALIDATION BLOCK and all code comments so that loaded code is cleaned
-    const trimmedCode = data
-      .code!.getDecoded()
-      .substring(
-        0,
-        data.code!.getDecoded().indexOf('BEGIN VALIDATION BLOCK') - 3
-      )
-      .replaceAll(/\/\/.*\n|#.*\n\s*/g, '')
+    let trimmedCode: string = ''
+
+    if (language === 'python') {
+      trimmedCode = data
+        .code!.getDecoded()
+        .substring(
+          0,
+          data.code!.getDecoded().indexOf('# BEGIN VALIDATION BLOCK') - 1
+        )
+        .replaceAll(/#.*\n\s*/g, '')
+    }
+
+    if (language === 'javascript') {
+      trimmedCode = data
+        .code!.getDecoded()
+        .substring(
+          0,
+          data.code!.getDecoded().indexOf('//BEGIN VALIDATION BLOCK') - 1
+        )
+        .replaceAll(/\s*\/\/.*(?:\n|$)/g, '\n')
+    }
 
     const base64TrimmedCode = new Base64String(trimmedCode)
 

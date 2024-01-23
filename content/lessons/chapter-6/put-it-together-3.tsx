@@ -41,6 +41,8 @@ export default function PutItTogether3({ lang }) {
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
+const assert = require('assert');
+const bech32 = require('@savingsatoshi/bech32js');
 class Outpoint {
   constructor(txid, index) {
     assert(Buffer.isBuffer(txid));
@@ -153,13 +155,13 @@ console.log('KILL')
       args: ['args'],
     },
     defaultCode: `const {Hash} = require('crypto');
+
 ${prevData.data.slice(0, -2)}
   digest(input_index) {
     const sighash = 1;
     // YOUR CODE HERE
   }
-}
-`,
+}`,
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
@@ -172,9 +174,9 @@ ${prevData.data.slice(0, -2)}
     constraints: [
       {
         range: [
-          countLines(prevData.data.slice(0, -2)) + 4,
-          1,
           countLines(prevData.data.slice(0, -2)) + 5,
+          1,
+          countLines(prevData.data.slice(0, -2)) + 6,
           1,
         ],
         allowMultiline: true,
@@ -286,9 +288,7 @@ print("KILL")`,
       args: ['args'],
     },
     defaultCode: `import hashlib
-from struct import pack
-${prevData.data.slice(0, -2)}
-
+${prevData.data}
     def digest(self, input_index: int):
         sighash = 1
         # YOUR CODE HERE
@@ -305,9 +305,9 @@ ${prevData.data.slice(0, -2)}
     constraints: [
       {
         range: [
-          countLines(prevData.data.slice(0, -2)) + 6,
+          countLines(prevData.data.slice(0, -2)) + 5,
           1,
-          countLines(prevData.data.slice(0, -2)) + 7,
+          countLines(prevData.data.slice(0, -2)) + 6,
           1,
         ],
         allowMultiline: true,
@@ -332,7 +332,7 @@ ${prevData.data.slice(0, -2)}
         config={config}
         saveData
         lessonKey={getLessonKey('chapter-6', 'put-it-together-3')}
-        successMessage={t('chapter_six.put_it_together_two.success')}
+        successMessage={t('chapter_six.put_it_together_three.success')}
         onSelectLanguage={handleSelectLanguage}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">

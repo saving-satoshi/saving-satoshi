@@ -37,7 +37,10 @@ export default function DeriveMessage7({ lang }) {
   }, [])
 
   const javascript = {
-    program: `class Outpoint {
+    program: `//BEGIN VALIDATION BLOCK
+const assert = require('assert');
+const bech32 = require('@savingsatoshi/bech32js');
+class Outpoint {
     constructor(txid, index) {
       //assert(Buffer.isBuffer(txid));
       //assert(txid.length === 32);
@@ -302,38 +305,38 @@ import ecdsa
 from ecdsa import VerifyingKey, SECP256k1
 wit_sig = tx.witnesses[0].items[0]
 wit_key = tx.witnesses[0].items[1]
+hashed_message_bytes = tx.digest(0)
 verifying_key = VerifyingKey.from_string(wit_key, curve=SECP256k1)
-print(verifying_key.verify_digest(wit_sig[:-1], hashed_message_bytes, sigdecode=ecdsa.util.sigdecode_der) and 'true')
+print(verifying_key.verify_digest(wit_sig[:-1], hashed_message_bytes, ecdsa.util.sigdecode_der) and 'true')
 print("KILL")
 `,
     defaultFunction: {
       name: 'create_tx_message',
       args: [],
     },
-    defaultCode: `${prevData.data.slice(0, -2)}
+    defaultCode: `${prevData.data}
+
     def sign_input(self, index, priv, pub, sighash=1):
         def encode_der(r, s):
-              # Represent in DER format. Thebyte representations of r and s have length rounded up
-              # (255 bits becomes 32 bytes and 256 bits becomes 33 bytes).
-              # See BIP66
-              # https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
-              rb = r.to_bytes((r.bit_length() + 8) // 8, 'big')
-              sb = s.to_bytes((s.bit_length() + 8) // 8, 'big')
-              return b'\\x30' + bytes([4 + len(rb) + len(sb), 2, len(rb)]) + rb + bytes([2, len(sb)]) + sb
+            # Represent in DER format. Thebyte representations of r and s have length rounded up
+            # (255 bits becomes 32 bytes and 256 bits becomes 33 bytes).
+            # See BIP66
+            # https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
+            rb = r.to_bytes((r.bit_length() + 8) // 8, 'big')
+            sb = s.to_bytes((s.bit_length() + 8) // 8, 'big')
+            return b'\\x30' + bytes([4 + len(rb) + len(sb), 2, len(rb)]) + rb + bytes([2, len(sb)]) + sb
         # YOUR CODE HERE
-  `,
-    validate: async (answer) => {
-      if (
-        answer !==
-        '0100000001c997a5e56e104102fa209c6a852dd90660a20b2d9c352423edce25857fcd37040000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3acffffffff0200ca9a3b00000000434104ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302fa28414e7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e6cd84cac00286bee0000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3ac0000000001000000'
-      ) {
-        return [
-          false,
-          'Be sure you filled in both the output andsig hash flag.',
-        ]
+`,
+    validate: async (answer: string) => {
+      if (answer) {
+        if (answer === 'true') {
+          return [true, '']
+        } else {
+          return [false, 'recheck your methods']
+        }
+      } else {
+        return [false, "can't find a return in both of the methods"]
       }
-
-      return [true, undefined]
     },
     constraints: [
       {
@@ -367,34 +370,26 @@ print("KILL")
       <ScriptingChallenge
         lang={lang}
         config={config}
-        lessonKey={getLessonKey('chapter-5', 'derive-message-7')}
-        successMessage=""
+        lessonKey={getLessonKey('chapter-6', 'put-it-together-5')}
+        successMessage={t('chapter_six.put_it_together_five.success')}
         onSelectLanguage={handleSelectLanguage}
       >
         <LessonInfo>
-          <Title>Populate the Witness</Title>
+          <Title>{t('chapter_six.put_it_together_four.heading')}</Title>
 
           <Text className="mt-2 text-lg md:text-[22px]">
-            Finish the method sign_input(index: int, key: int) that calls our
-            step 7 method compute_input_signature(index, key)and handles its
-            return value. The r and s numbers need to be encoded with an
-            algorithm called DER which we have implemented for you.
+            {t('chapter_six.put_it_together_five.paragraph_one')}
           </Text>
           <Text className="mt-2 text-lg md:text-[22px]">
-            Bitcoin requires one extra byte appended to the DER-signature which
-            represents the "sighash type". For now we'll always use the byte
-            0x01 for this indicating "SIGHASH ALL".
+            {t('chapter_six.put_it_together_five.paragraph_two')}
           </Text>
 
           <Text className="mt-2 text-lg md:text-[22px]">
-            Once we have that signature blob we need to create a Witness object
-            with two stack items: the signature blob, and your compressed public
-            key. Push the signature first, followed by the public key.
+            {t('chapter_six.put_it_together_five.paragraph_three')}
           </Text>
 
           <Text className="mt-2 text-lg md:text-[22px]">
-            The witness stack object can then be appended to the witnesses array
-            of the transaction object.
+            {t('chapter_six.put_it_together_five.paragraph_four')}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>
