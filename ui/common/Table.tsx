@@ -25,7 +25,7 @@ export default function Table({
           ))}
         </tr>
       </thead>
-      <tbody>
+      <tbody className="w-full">
         {rows.map((row, index) => (
           <tr
             key={index}
