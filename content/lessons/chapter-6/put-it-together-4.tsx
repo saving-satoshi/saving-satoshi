@@ -39,6 +39,8 @@ export default function PutItTogether4({ lang }) {
   }
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
+const assert = require('assert');
+const bech32 = require('@savingsatoshi/bech32js');
 class Outpoint {
   constructor(txid, index) {
     assert(Buffer.isBuffer(txid));
@@ -143,49 +145,46 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: ` 
+    defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js');
 const {randomBytes} = require('crypto');
-const secp256k1 = require('@savingsatoshi/secp256k1js');
 ${prevData.data.slice(0, -2)}
-    compute_input_signature(index, key) {
-  assert(typeof key === 'bigint');
-  assert(Number.isInteger(index));
-  // Helper function:
-  // Find modular multiplicative inverse using Extended Euclidean Algorithm
-  function invert(value, modulus = secp256k1.ORDER) {
-  let x0 = 0n;
-  let x1 = 1n;
-  let a = value;
-  let m = modulus;
-  
-  while (a > 1n) {
-  const q = a / m;
-  let t = m;
-  m = a % m;
-  a = t;
-  t = x0;
-  x0 = x1 - q * x0;
-  x1 = t;
+  compute_input_signature(index, key) {
+    assert(typeof key === 'bigint');
+    assert(Number.isInteger(index));
+    // Helper function:
+    // Find modular multiplicative inverse using Extended Euclidean Algorithm
+    function invert(value, modulus = secp256k1.ORDER) {
+      let x0 = 0n;
+      let x1 = 1n;
+      let a = value;
+      let m = modulus;
+
+      while (a > 1n) {
+        const q = a / m;
+        let t = m;
+        m = a % m;
+        a = t;
+        t = x0;
+        x0 = x1 - q * x0;
+        x1 = t;
+      }
+
+      if (x1 < 0n)
+        x1 += modulus;
+        return x1;
+    }
+    // k = random integer in [1, n-1]
+    // R = G * k
+    // r = x(R) mod n
+    // s = (r * a + m) / k mod n
+    // Extra Bitcoin rule from BIP 146
+    // https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#user-content-LOW_S
+    //   s = -s mod n, if s > n / 2
+    // return (r, s)
+    // YOUR CODE HERE
+    return [r, s];
   }
-  
-  if (x1 < 0n)
-    x1 += modulus;
-  
-    return x1;
-  }
-  // k = random integer in [1, n-1]
-  // R = G * k
-  // r = x(R) mod n
-  // s = (r * a + m) / k mod n
-  // Extra Bitcoin rule from BIP 146
-  // https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#user-content-LOW_S
-  //   s = -s mod n, if s > n / 2
-  // return (r, s)
-  // YOUR CODE HERE
-  return [r, s];
-  }   
-}
-`,
+}`,
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
@@ -200,9 +199,9 @@ ${prevData.data.slice(0, -2)}
     constraints: [
       {
         range: [
-          countLines(prevData.data.slice(0, -2)) + 38,
+          countLines(prevData.data.slice(0, -2)) + 36,
           1,
-          countLines(prevData.data.slice(0, -2)) + 39,
+          countLines(prevData.data.slice(0, -2)) + 37,
           1,
         ],
         allowMultiline: true,
@@ -293,7 +292,7 @@ class Witness:
             r += pack("<B", len(item))
             r += item
         return r
-        
+
 priv = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503e
 compressed_pub = bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af")
 txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
@@ -322,7 +321,7 @@ print("KILL")`,
     },
     defaultCode: `from random import randrange
 from secp256k1py import secp256k1
-${prevData.data.slice(0, -2)}
+${prevData.data}
     def compute_input_signature(self, index: int, key: int):
         # k = random integer in [1, n-1]
         # R = G * k
@@ -334,8 +333,7 @@ ${prevData.data.slice(0, -2)}
         # return (r, s)
         assert isinstance(key, int)
         # YOUR CODE HERE
-        return (r, s) 
-
+        return (r, s)
 `,
     validate: async (answer) => {
       if (answer) {
@@ -351,9 +349,9 @@ ${prevData.data.slice(0, -2)}
     constraints: [
       {
         range: [
-          countLines(prevData.data.slice(0, -2)) + 13,
-          1,
           countLines(prevData.data.slice(0, -2)) + 14,
+          1,
+          countLines(prevData.data.slice(0, -2)) + 15,
           1,
         ],
         allowMultiline: true,
@@ -378,7 +376,7 @@ ${prevData.data.slice(0, -2)}
         config={config}
         saveData
         lessonKey={getLessonKey('chapter-6', 'put-it-together-4')}
-        successMessage={t('chapter_six.in_out_four.success')}
+        successMessage={t('chapter_six.put_it_together_four.success')}
         onSelectLanguage={handleSelectLanguage}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">

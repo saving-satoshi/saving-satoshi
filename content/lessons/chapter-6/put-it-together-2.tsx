@@ -12,6 +12,8 @@ export const metadata = {
 
 const javascript = {
   program: `//BEGIN VALIDATION BLOCK
+const assert = require('assert');
+const bech32 = require('@savingsatoshi/bech32js');
 class Outpoint {
   constructor(txid, index) {
     assert(Buffer.isBuffer(txid));
@@ -122,10 +124,7 @@ console.log(tx.serialize().toString('hex')==='020000000001018e74531c4516169a7cc8
     name: 'put-it-together-2',
     args: ['args'],
   },
-  defaultCode: `const assert = require('assert');
-const bech32 = require('@savingsatoshi/bech32js');
-
-class Transaction {
+  defaultCode: `class Transaction {
   constructor() {
     this.version=2;
     this.flags = Buffer.from('0001', 'hex');
@@ -149,7 +148,7 @@ class Transaction {
   },
   constraints: [
     {
-      range: [14, 1, 15, 1],
+      range: [11, 1, 12, 1],
       allowMultiline: true,
     },
   ],
@@ -258,8 +257,7 @@ print("KILL")`,
     name: 'put-it-together-2',
     args: ['args'],
   },
-  defaultCode: `
-from struct import pack
+  defaultCode: `from struct import pack
 
 class Transaction:
     def __init__(self):
@@ -284,7 +282,7 @@ class Transaction:
   },
   constraints: [
     {
-      range: [14, 1, 15, 1],
+      range: [13, 1, 14, 1],
       allowMultiline: true,
     },
   ],

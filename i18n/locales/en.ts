@@ -1446,7 +1446,6 @@ const translations = {
         'Finally, the message we sign is the double SHA-256 of all this serialized data.',
       success: 'The digest() method looks good, Great Work!',
     },
-
     put_it_together_four: {
       title: 'Putting it all together',
       heading: 'Signing!',
@@ -1455,6 +1454,19 @@ const translations = {
         'See this page for the ECDSA signing algorithm. Also this PDF (Page 44, Section 4.1.3).',
       paragraph_three:
         'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in BIP 146.',
+      success: 'The compute_input_signature() method looks good, Great Work!',
+    },
+    put_it_together_five: {
+      heading: 'Populate the Witness',
+      paragraph_one:
+        'Finish the method sign_input(index: int, key: int) that calls our step 7 method compute_input_signature(index, key)and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.',
+      paragraph_two:
+        'Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this indicating "SIGHASH ALL".',
+      paragraph_three:
+        'Once we have that signature blob we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.',
+      paragraph_four:
+        'The witness stack object can then be appended to the witnesses array of the transaction object.',
+      success: 'The sign_input() method looks good, Great Work!',
     },
     outro_one: {
       title: 'Outro',
