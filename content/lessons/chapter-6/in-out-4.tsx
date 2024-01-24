@@ -65,8 +65,7 @@ export default function InOut4({ lang }) {
   const { account } = useAuthContext()
 
   const javascript = {
-    program: `//BEGIN VALIDATION BLOCK
-const assert = require('assert');
+    program: `const assert = require('assert');
 class Outpoint {
   constructor(txid, index) {
     assert(Buffer.isBuffer(txid));
@@ -84,6 +83,7 @@ class Outpoint {
   }
 }
 
+//BEGIN VALIDATION BLOCK
 const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
 const vout = 1;
 const value = 650000000;
@@ -139,8 +139,7 @@ console.log("KILL")`,
   }
 
   const python = {
-    program: `# BEGIN VALIDATION BLOCK
-from struct import pack
+    program: `from struct import pack
 class Outpoint:
     def __init__(self, txid: bytes, index: int):
         assert isinstance(txid, bytes)
@@ -157,6 +156,7 @@ class Outpoint:
         r += pack("<I", self.index)
         return r
 
+# BEGIN VALIDATION BLOCK
 txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
 vout = 1
 value = 650000000
@@ -171,7 +171,7 @@ print("KILL")`,
     defaultCode: `class Input:
     def __init__(self):
         self.outpoint = None
-        self.scriptsig = b""
+        self.script = b""
         self.sequence = 0xffffffff
         self.value = 0
         self.scriptcode = b""
