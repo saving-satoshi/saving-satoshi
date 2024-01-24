@@ -65,7 +65,8 @@ export default function InOut4({ lang }) {
   const { account } = useAuthContext()
 
   const javascript = {
-    program: `const assert = require('assert');
+    program: `//BEGIN VALIDATION BLOCK
+const assert = require('assert');
 class Outpoint {
   constructor(txid, index) {
     assert(Buffer.isBuffer(txid));
@@ -138,7 +139,8 @@ console.log("KILL")`,
   }
 
   const python = {
-    program: `from struct import pack
+    program: `# BEGIN VALIDATION BLOCK
+from struct import pack
 class Outpoint:
     def __init__(self, txid: bytes, index: int):
         assert isinstance(txid, bytes)
