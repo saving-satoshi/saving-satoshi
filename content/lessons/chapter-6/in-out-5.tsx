@@ -188,7 +188,7 @@ class Output:
       <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
         <Title>{t('chapter_six.in_out_four.heading')}</Title>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_one')}
+          {t('chapter_six.in_out_five.paragraph_one')}
         </Text>
         <CodeExample
           className="mt-4"
