@@ -373,6 +373,7 @@ print("KILL")
         lessonKey={getLessonKey('chapter-6', 'put-it-together-5')}
         successMessage={t('chapter_six.put_it_together_five.success')}
         onSelectLanguage={handleSelectLanguage}
+        saveData
       >
         <LessonInfo>
           <Title>{t('chapter_six.put_it_together_four.heading')}</Title>

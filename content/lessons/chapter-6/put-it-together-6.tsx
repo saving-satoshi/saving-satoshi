@@ -14,7 +14,7 @@ export const metadata = {
   key: 'CH6PUT6',
 }
 
-const lessonsToLoad = ['CH6PUT1', 'CH6PUT2', 'CH6PUT5', 'CH6INO5']
+const lessonsToLoad = ['CH6PUT1', 'CH6PUT5', 'CH6INO4', 'CH6INO5']
 
 const allLessonsAreLoaded = (data) => {
   return lessonsToLoad.every((lesson) => data[lesson])
@@ -36,7 +36,8 @@ export default function PutItTogether6({ lang }) {
     const data = await Promise.all(
       lessonsToLoad.map(async (lesson) => {
         const dataFromServer = await getData(lesson)
-        dataMap[lesson] = dataFromServer?.code?.getEncoded()
+        console.log(lesson + ':' + dataFromServer?.code?.getDecoded())
+        dataMap[lesson] = dataFromServer?.code?.getDecoded()
       })
     )
     if (data) {
@@ -53,8 +54,11 @@ export default function PutItTogether6({ lang }) {
       setCombinedCode(
         organizeImports(
           prevData['CH6PUT1'] +
-            prevData['CH6PUT2'] +
+            '\n' +
             prevData['CH6PUT5'] +
+            '\n' +
+            prevData['CH6INO4'] +
+            '\n' +
             prevData['CH6INO5']
         )
       )
@@ -197,8 +201,8 @@ tx = Transaction()
         lang={lang}
         config={config}
         saveData
-        lessonKey={getLessonKey('chapter-4', 'public-key-3')}
-        successMessage={t('chapter_four.public_key_three.success')}
+        lessonKey={getLessonKey('chapter-6', 'put-it-together-6')}
+        successMessage={t('chapter_six.put_it_together_six.success')}
         onSelectLanguage={handleSelectLanguage}
         loadingSavedCode={isLoading}
       >

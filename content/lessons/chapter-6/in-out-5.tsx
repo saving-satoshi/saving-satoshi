@@ -69,8 +69,8 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: `const assert = require("assert")
-const bech32 = require('@savingsatoshi/bech32js')
+    defaultCode: `const assert = require('assert');
+const bech32 = require('@savingsatoshi/bech32js');
 
 class Output {
   constructor() {
@@ -181,7 +181,7 @@ class Output:
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-6', 'in-out-4')}
+      lessonKey={getLessonKey('chapter-6', 'in-out-5')}
       successMessage={t('chapter_six.in_out_four.success')}
       onSelectLanguage={handleSelectLanguage}
     >

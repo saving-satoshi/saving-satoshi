@@ -28,6 +28,14 @@ const tabData = [
   },
 ]
 
+function trimLastTwoLines(code: string): string {
+  let lines = code.split('\n')
+  if (lines.length >= 2) {
+    lines = lines.slice(0, -2)
+  }
+  return lines.join('\n')
+}
+
 export default function ScriptingChallenge({
   children,
   lang,
@@ -97,26 +105,36 @@ export default function ScriptingChallenge({
     let trimmedCode: string = ''
 
     if (language === 'python') {
-      trimmedCode = data
-        .code!.getDecoded()
-        .substring(
-          0,
-          data.code!.getDecoded().indexOf('# BEGIN VALIDATION BLOCK') - 1
-        )
-        .replaceAll(/#.*\n\s*/g, '')
+      if (data.code!.getDecoded().includes('# BEGIN VALIDATION BLOCK')) {
+        trimmedCode = data
+          .code!.getDecoded()
+          .substring(
+            0,
+            data.code!.getDecoded().indexOf('# BEGIN VALIDATION BLOCK') - 1
+          )
+          .replaceAll(/#.*\n\s*/g, '')
+      } else {
+        trimmedCode = trimLastTwoLines(data.code!.getDecoded())
+      }
     }
 
     if (language === 'javascript') {
-      trimmedCode = data
-        .code!.getDecoded()
-        .substring(
-          0,
-          data.code!.getDecoded().indexOf('//BEGIN VALIDATION BLOCK') - 1
-        )
-        .replaceAll(/\s*\/\/.*(?:\n|$)/g, '\n')
+      console.log(data.code!.getDecoded())
+      if (data.code!.getDecoded().includes('//BEGIN VALIDATION BLOCK')) {
+        trimmedCode = data
+          .code!.getDecoded()
+          .substring(
+            0,
+            data.code!.getDecoded().indexOf('//BEGIN VALIDATION BLOCK') - 1
+          )
+          .replaceAll(/\s*\/\/.*(?:\n|$)/g, '\n')
+      } else {
+        trimmedCode = trimLastTwoLines(data.code!.getDecoded())
+      }
     }
 
     const base64TrimmedCode = new Base64String(trimmedCode)
+    console.log(base64TrimmedCode)
 
     if (success) {
       setChallengeSuccess(true)

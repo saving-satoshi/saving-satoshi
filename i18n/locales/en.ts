@@ -1481,6 +1481,7 @@ const translations = {
         'Mike Ramen gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
       bullet_two:
         'You get 550,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
+      success: "You've done it! You've built a transaction!",
     },
     outro_one: {
       title: 'Outro',

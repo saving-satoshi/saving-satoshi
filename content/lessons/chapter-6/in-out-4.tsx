@@ -226,6 +226,7 @@ print("KILL")`,
       lessonKey={getLessonKey('chapter-6', 'in-out-4')}
       successMessage={t('chapter_six.in_out_four.success')}
       onSelectLanguage={handleSelectLanguage}
+      saveData
     >
       <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
         <Title>{t('chapter_six.in_out_four.heading')}</Title>
