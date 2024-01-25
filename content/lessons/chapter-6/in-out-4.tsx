@@ -83,6 +83,7 @@ class Outpoint {
   }
 }
 
+//BEGIN VALIDATION BLOCK
 const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
 const vout = 1;
 const value = 650000000;
@@ -155,6 +156,7 @@ class Outpoint:
         r += pack("<I", self.index)
         return r
 
+# BEGIN VALIDATION BLOCK
 txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
 vout = 1
 value = 650000000
@@ -169,7 +171,7 @@ print("KILL")`,
     defaultCode: `class Input:
     def __init__(self):
         self.outpoint = None
-        self.scriptsig = b""
+        self.script = b""
         self.sequence = 0xffffffff
         self.value = 0
         self.scriptcode = b""
@@ -226,6 +228,7 @@ print("KILL")`,
       lessonKey={getLessonKey('chapter-6', 'in-out-4')}
       successMessage={t('chapter_six.in_out_four.success')}
       onSelectLanguage={handleSelectLanguage}
+      saveData
     >
       <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
         <Title>{t('chapter_six.in_out_four.heading')}</Title>

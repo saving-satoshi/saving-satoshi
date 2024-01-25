@@ -14,7 +14,7 @@ export const metadata = {
 }
 
 const javascript = {
-  program: `
+  program: `//BEGIN VALIDATION BLOCK
 const witness = new Witness()
 witness.push_item(Buffer.from('304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01', 'hex'));
 witness.push_item(Buffer.from('038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af', 'hex'));
@@ -63,7 +63,7 @@ console.log("KILL")`,
 }
 
 const python = {
-  program: `
+  program: `# BEGIN VALIDATION BLOCK
 witness = Witness()
 witness.push_item(bytes.fromhex("304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01"))
 witness.push_item(bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af"))

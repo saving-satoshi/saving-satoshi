@@ -315,7 +315,6 @@ print("KILL")
       args: [],
     },
     defaultCode: `${prevData.data}
-
     def sign_input(self, index, priv, pub, sighash=1):
         def encode_der(r, s):
             # Represent in DER format. Thebyte representations of r and s have length rounded up
@@ -341,9 +340,9 @@ print("KILL")
     constraints: [
       {
         range: [
-          countLines(prevData.data.slice(0, -2)) + 10,
-          1,
           countLines(prevData.data.slice(0, -2)) + 11,
+          1,
+          countLines(prevData.data.slice(0, -2)) + 12,
           1,
         ],
         allowMultiline: true,
@@ -373,6 +372,7 @@ print("KILL")
         lessonKey={getLessonKey('chapter-6', 'put-it-together-5')}
         successMessage={t('chapter_six.put_it_together_five.success')}
         onSelectLanguage={handleSelectLanguage}
+        saveData
       >
         <LessonInfo>
           <Title>{t('chapter_six.put_it_together_four.heading')}</Title>
