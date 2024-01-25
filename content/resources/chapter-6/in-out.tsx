@@ -7,52 +7,43 @@ import { Loader } from 'shared'
 import MonacoEditor from '@monaco-editor/react'
 
 import { EditorConfig } from 'types'
-import { Text, ResourcePage, ToggleSwitch, CodeExample } from 'ui'
+import { Text, ResourcePage, ToggleSwitch } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
 
-const javascript = {
+const javascriptChallengeOne = {
   program: `console.log("KILL")`,
   defaultFunction: {
     name: 'verify',
     args: [],
   },
-  defaultCode: `function create_tx_message() {
-  let msg = '';
-  // version:
-  msg += '01000000';
-  // number of inputs:
-  msg += '01';
-  // hash of tx being spent by input #0:
-  msg += 'c997a5e56e104102fa209c6a852dd90660a20b2d9c352423edce25857fcd3704';
-  // index of output of tx being spent by input #0:
-  msg += '00000000';
-  // scriptPubKey of output being spent by input #0:
-  // https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand
-  msg += '43410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6';
-  msg += '909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656';
-  msg += 'b412a3ac';
-  // input #0 sequence:
-  msg += 'ffffffff';
-  // number of outputs:
-  msg += '02';
-  // output #0 value (10 BTC or 1,000,000,000 satoshis):
-  msg += '00ca9a3b00000000';
-  // output #0 scriptPubKey (Hal Finney's public key plus OP_CHECKSIG):
-  msg += '434104ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302f';
-  msg += 'a28414e7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e';
-  msg += '6cd84cac';
-  // outut #1 value (40 BTC or 4,000,000,000 satoshis):
-  msg += '00286bee00000000';
-  // output #1 scriptPubKey (Satoshi's oen public key again, for change):
-  msg += '43410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6';
-  msg += '909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656';
-  msg += 'b412a3ac';
-  // locktime:
-  msg += '00000000';
-  // SIGHASH type
-  msg += '01000000';
-  return msg
+  defaultCode: `class Input {
+  constructor() {
+    this.outpoint = null;
+    this.script = Buffer.alloc(0);
+    this.sequence = 0xffffffff;
+    this.value = 0;
+    this.scriptcode = Buffer.alloc(0);
+  }
+
+  static from_output(txid, vout, value, scriptcode) {
+    const self = new this();
+    self.outpoint = new Outpoint(Buffer.from(txid.replace('0x', ''),  'hex').reverse(), vout);
+    self.value = value;
+    self.scriptcode = Buffer.from(scriptcode.replace('0x', ''), 'hex');
+    return self;
+  }
+
+  serialize() {
+    const buf = Buffer.alloc(32 + 4 + 1 + 4);
+    this.outpoint.serialize().copy(buf, 0);
+    buf.writeUInt8(this.script.length, 36);
+    // Optional, since we know in SegWit it's always zero bytes.
+    // Adding this back will offset all following byte length positions.
+    // this.script.copy(buf, 37);
+    buf.writeUInt32LE(this.sequence, 37);
+    return buf;
+  }
 }`,
   validate: async () => {
     return [true, undefined]
@@ -60,71 +51,148 @@ const javascript = {
   constraints: [],
 }
 
-const python = {
+const pythonChallengeOne = {
   program: `print("KILL")`,
   defaultFunction: {
     name: 'verify',
     args: [],
   },
-  defaultCode: `def createTxMessage():
-    msg = ""
-    # version:
-    msg += "01000000"
-    # number of inputs:
-    msg += "01"
-    # hash of tx being spent by input #0:
-    msg += "c997a5e56e104102fa209c6a852dd90660a20b2d9c352423edce25857fcd3704"
-    # index of output of tx being spent by input #0:
-    msg += "00000000"
-    # scriptPubKey of output being spent by input #0:
-    # https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand
-    msg += "43410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6"
-    msg += "909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656"
-    msg += "b412a3ac"
-    # input #0 sequence:
-    msg += "ffffffff"
-    # number of outputs:
-    msg += "02"
-    # output #0 value (10 BTC or 1,000,000,000 satoshis):
-    msg += "00ca9a3b00000000"
-    # output #0 scriptPubKey (Hal Finney's public key plus OP_CHECKSIG):
-    msg += "434104ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302f"
-    msg += "a28414e7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e"
-    msg += "6cd84cac"
-    # outut #1 value (40 BTC or 4,000,000,000 satoshis):
-    msg += "00286bee00000000"
-    # output #1 scriptPubKey (Satoshi's oen public key again, for change):
-    msg += "43410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6"
-    msg += "909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656"
-    msg += "b412a3ac"
-    # locktime:
-    msg += "00000000"
-    # SIGHASH type
-    msg += "01000000"
-    return msg`,
+  defaultCode: `class Input:
+    def __init__(self):
+        self.outpoint = None
+        self.script = b""
+        self.sequence = 0xffffffff
+        self.value = 0
+        self.scriptcode = b""
+
+    @classmethod
+    def from_output(cls, txid, vout, value, scriptcode):
+        self = cls()
+        self.outpoint = Outpoint(bytes.fromhex(txid)[::-1], vout)
+        self.value = value
+        self.scriptcode = bytes.fromhex(scriptcode)
+        return self
+
+    def serialize(self):
+        r = b""
+        r += self.outpoint.serialize()
+        r += pack("<B", len(self.script))
+        # Optional, since we know in SegWit it's always zero bytes
+        # r += self.script
+        r += pack("<I", self.sequence)
+        return r`,
   validate: async () => {
     return [true, undefined]
   },
   constraints: [],
 }
 
-const config: EditorConfig = {
+const javascriptChallengeTwo = {
+  program: `console.log("KILL")`,
+  defaultFunction: {
+    name: 'verify',
+    args: [],
+  },
+  defaultCode: `class Output {
+  constructor() {
+    this.value = 0;
+    this.witness_version = 0;
+    this.witness_data = Buffer.alloc(0);
+  }
+
+  static from_options(addr, value) {
+    assert(Number.isInteger(value));
+    const self = new this();
+    const {version, program} = bech32.decode('bc', addr);
+    self.witness_version = version;
+    self.witness_data = Buffer.from(program);
+    self.value = value;
+    return self;
+  }
+
+  serialize() {
+    const buf = Buffer.alloc(11);
+    buf.writeBigInt64LE(BigInt(this.value), 0);
+    buf.writeUInt8(this.witness_data.length + 2, 8);
+    buf.writeUInt8(this.witness_version, 9);
+    buf.writeUInt8(this.witness_data.length, 10);
+    return Buffer.concat([buf, this.witness_data]);
+  }
+}`,
+  validate: async () => {
+    return [true, undefined]
+  },
+  constraints: [],
+}
+
+const pythonChallengeTwo = {
+  program: `print("KILL")`,
+  defaultFunction: {
+    name: 'verify',
+    args: [],
+  },
+  defaultCode: `class Output:
+    def __init__(self):
+        self.value = 0
+        self.witness_version = 0
+        self.witness_data = b""
+
+    @classmethod
+    def from_options(cls, addr, value):
+        assert isinstance(value, int)
+        self = cls()
+        (ver, data) = bech32.decode("bc", addr)
+        self.witness_version = ver
+        self.witness_data = bytes(data)
+        self.value = value
+        return self
+
+    def serialize(self):
+        r = b""
+        r += pack("<q", self.value)
+        r += pack("<B", len(self.witness_data) + 2)
+        r += pack("<B", self.witness_version)
+        r += pack("<B", len(self.witness_data))
+        r += self.witness_data
+        return r`,
+  validate: async () => {
+    return [true, undefined]
+  },
+  constraints: [],
+}
+
+const configOne: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
-    javascript: javascript,
-    python: python,
+    javascript: javascriptChallengeOne,
+    python: pythonChallengeOne,
+  },
+}
+
+const configTwo: EditorConfig = {
+  defaultLanguage: 'javascript',
+  languages: {
+    javascript: javascriptChallengeTwo,
+    python: pythonChallengeTwo,
   },
 }
 
 export default function InOutResources({ lang }) {
   const t = useTranslations(lang)
-  const initialStateCode = config.languages[config.defaultLanguage].defaultCode
-  const [code, setCode] = useState<string>(initialStateCode as string)
-  const [language, setLanguage] = useState(config.defaultLanguage)
+
+  const initialStateCodeOne =
+    configOne.languages[configOne.defaultLanguage].defaultCode
+  const [codeOne, setCodeOne] = useState<string>(initialStateCodeOne as string)
+
+  const initialStateCodeTwo =
+    configTwo.languages[configTwo.defaultLanguage].defaultCode
+  const [codeTwo, setCodeTwo] = useState(initialStateCodeTwo as string)
+
+  const [languageOne, setLanguageOne] = useState(configOne.defaultLanguage)
+  const [languageTwo, setLanguageTwo] = useState(configTwo.defaultLanguage)
+
   const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
   const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
-  const [challengeThreeIsToggled, setChallengeThreeIsToggled] = useState(false)
-  const [challengeFourIsToggled, setChallengeFourIsToggled] = useState(false)
 
   const challengeOneToggleSwitch = () => {
     setChallengeOneIsToggled(!challengeOneIsToggled)
@@ -134,17 +202,14 @@ export default function InOutResources({ lang }) {
     setChallengeTwoIsToggled(!challengeTwoIsToggled)
   }
 
-  const challengeThreeToggleSwitch = () => {
-    setChallengeThreeIsToggled(!challengeThreeIsToggled)
+  const handleSetLanguageOne = (value) => {
+    setLanguageOne(value)
+    setCodeOne(configOne.languages[value].defaultCode as string)
   }
 
-  const challengeFourToggleSwitch = () => {
-    setChallengeFourIsToggled(!challengeFourIsToggled)
-  }
-
-  const handleSetLanguage = (value) => {
-    setLanguage(value)
-    setCode(config.languages[value].defaultCode as string)
+  const handleSetLanguageTwo = (value) => {
+    setLanguageTwo(value)
+    setCodeTwo(configTwo.languages[value].defaultCode as string)
   }
 
   const handleBeforeMount = (monaco) => {
@@ -169,12 +234,16 @@ export default function InOutResources({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_five.resources.derive_message.op_pushdata_heading')}
+            {t('chapter_six.resources.in_out.input_class_heading')}
           </Text>
           <Text>
-            {t(
-              'chapter_five.resources.derive_message.op_pushdata_paragraph_one'
-            )}
+            {t('chapter_six.resources.in_out.input_class_paragraph_one')}
+          </Text>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_six.resources.in_out.output_class_heading')}
+          </Text>
+          <Text>
+            {t('chapter_six.resources.in_out.output_class_paragraph_one')}
           </Text>
         </>
       }
@@ -189,12 +258,25 @@ export default function InOutResources({ lang }) {
             <Text>{t('help_page.spoilers_confirm')}</Text>
           </div>
           {challengeOneIsToggled && (
-            <div className="text-white">
-              <CodeExample
-                copy
-                language="bash"
-                code="304402204e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd410220181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d0901"
+            <div className="border border-white/25">
+              <LanguageTabs
+                languages={configOne.languages}
+                value={languageOne}
+                onChange={handleSetLanguageOne}
+                noHide
               />
+              <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
+                <MonacoEditor
+                  loading={<Loader className="h-10 w-10 text-white" />}
+                  height={'540px'}
+                  value={codeOne}
+                  beforeMount={handleBeforeMount}
+                  onMount={handleMount}
+                  language={languageOne}
+                  theme={'satoshi'}
+                  options={readOnlyOptions}
+                />
+              </div>
             </div>
           )}
           <Text>{t('help_page.solution_two')}</Text>
@@ -206,55 +288,21 @@ export default function InOutResources({ lang }) {
             <Text>{t('help_page.spoilers_confirm')}</Text>
           </div>
           {challengeTwoIsToggled && (
-            <div className="text-white">
-              <CodeExample
-                copy
-                language="bash"
-                code="0411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3"
-              />
-            </div>
-          )}
-          <Text>{t('help_page.solution_three')}</Text>
-          <div className="flex flex-row items-center gap-2">
-            <ToggleSwitch
-              checked={challengeThreeIsToggled}
-              onChange={challengeThreeToggleSwitch}
-            />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
-          </div>
-          {challengeThreeIsToggled && (
-            <div className="text-white">
-              <CodeExample
-                copy
-                language="bash"
-                code="0100000001c997a5e56e104102fa209c6a852dd90660a20b2d9c352423edce25857fcd3704000000004847304402204e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd410220181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d0901ffffffff0200ca9a3b00000000434104ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302fa28414e7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e6cd84cac00286bee0000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3ac00000000"
-              />
-            </div>
-          )}
-          <Text>{t('help_page.solution_four')}</Text>
-          <div className="flex flex-row items-center gap-2">
-            <ToggleSwitch
-              checked={challengeFourIsToggled}
-              onChange={challengeFourToggleSwitch}
-            />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
-          </div>
-          {challengeFourIsToggled && (
             <div className="border border-white/25">
               <LanguageTabs
-                languages={config.languages}
-                value={language}
-                onChange={handleSetLanguage}
+                languages={configTwo.languages}
+                value={languageTwo}
+                onChange={handleSetLanguageTwo}
                 noHide
               />
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`735px`}
-                  value={code}
+                  height={`505px`}
+                  value={codeTwo}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
-                  language={language}
+                  language={languageTwo}
                   theme={'satoshi'}
                   options={readOnlyOptions}
                 />
