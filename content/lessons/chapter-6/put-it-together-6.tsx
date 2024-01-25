@@ -213,11 +213,11 @@ tx = Transaction()
           <Text className="mt-4 font-nunito text-xl text-white">
             {t(`chapter_six.put_it_together_six.paragraph_two`)}
           </Text>
-          <ul className="list-inside list-disc font-nunito text-white">
-            <li className="text-lg md:text-xl" style={{ overflow: 'scroll' }}>
+          <ul className="list-disc pl-5 font-nunito">
+            <li className="break-words text-lg md:text-xl">
               {t('chapter_six.put_it_together_six.bullet_one')}
             </li>
-            <li className="text-lg md:text-xl" style={{ overflow: 'scroll' }}>
+            <li className="break-words text-lg md:text-xl">
               {t('chapter_six.put_it_together_six.bullet_two')}
             </li>
           </ul>
