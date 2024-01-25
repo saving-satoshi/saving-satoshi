@@ -57,7 +57,7 @@ export default function InOut5({ lang }) {
   const { account } = useAuthContext()
 
   const javascript = {
-    program: `
+    program: `//BEGIN VALIDATION BLOCK
 const addr = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
 const value = 100000000;
 const output = Output.from_options(addr, value);
@@ -69,8 +69,8 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: `const assert = require("assert")
-const bech32 = require('@savingsatoshi/bech32js')
+    defaultCode: `const assert = require('assert');
+const bech32 = require('@savingsatoshi/bech32js');
 
 class Output {
   constructor() {
@@ -112,7 +112,7 @@ class Output {
   }
 
   const python = {
-    program: `
+    program: `# BEGIN VALIDATION BLOCK
 addr = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
 value = 100000000
 output = Output.from_options(addr, value)
@@ -181,7 +181,7 @@ class Output:
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-6', 'in-out-4')}
+      lessonKey={getLessonKey('chapter-6', 'in-out-5')}
       successMessage={t('chapter_six.in_out_four.success')}
       onSelectLanguage={handleSelectLanguage}
     >

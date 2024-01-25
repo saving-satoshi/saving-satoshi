@@ -210,8 +210,7 @@ ${prevData.data.slice(0, -2)}
   }
 
   const python = {
-    program: `
-# BEGIN VALIDATION BLOCK
+    program: `# BEGIN VALIDATION BLOCK
 from struct import pack
 from bech32py import bech32
 class Outpoint:
