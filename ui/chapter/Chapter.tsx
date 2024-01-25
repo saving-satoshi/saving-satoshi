@@ -23,17 +23,6 @@ const ChapterContext = createContext<ChapterContextType | null>(null)
 
 export const useChapterContext = () => useContext(ChapterContext)
 
-const tabData = [
-  {
-    id: 'info',
-    text: 'Info',
-  },
-  {
-    id: 'challenges',
-    text: 'Challenges',
-  },
-]
-
 export default function Chapter({ children, metadata, lang }) {
   const { isDevelopment } = useEnvironment()
   const { progress, isLoading } = useProgressContext()
@@ -67,7 +56,16 @@ export default function Chapter({ children, metadata, lang }) {
     position === parseInt(progress.substring(2, 3))
   const queryParams = isDevelopment ? '?dev=true' : ''
   const context = {}
-
+  const tabData = [
+    {
+      id: 'info',
+      text: t('shared.info'),
+    },
+    {
+      id: 'challenges',
+      text: t('shared.challenges'),
+    },
+  ]
   useEffect(() => {
     if (window.location.href.split('#')[1]) {
       const element = document.getElementById(

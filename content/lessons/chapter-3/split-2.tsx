@@ -51,7 +51,7 @@ export default function Split2({ lang }) {
     },
     {
       username: 'Mining Maniacs',
-      avatar: '/assets/avatars/2.png',
+      avatar: '/assets/avatars/mining-maniacs.png',
       hashpower: 4054,
       hashes: protagonistHash[1],
       color: '#FE5329',
@@ -59,7 +59,7 @@ export default function Split2({ lang }) {
     },
     {
       username: 'Coin Crunchers',
-      avatar: '/assets/avatars/4.png',
+      avatar: '/assets/avatars/coin-crunchers.png',
       hashpower: 3857,
       hashes: protagonistHash[2],
       color: '#62BFB7',
@@ -67,7 +67,7 @@ export default function Split2({ lang }) {
     },
     {
       username: 'Hash Hoppers',
-      avatar: '/assets/avatars/3.png',
+      avatar: '/assets/avatars/hash-hoppers.png',
       hashpower: 7911,
       hashes: protagonistHash[3],
       color: '#85BF09',
