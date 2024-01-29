@@ -19,9 +19,9 @@ const javascript = {
   },
   defaultCode: [
     `function findHash(nonce) {
-let hash = '';
+  let hash = '';
 
-// while the hash does not start with 5 zeroes we want the prgram to repeat
+  // while the hash does not start with 5 zeroes we want the prgram to repeat
   while (hash.substring(0, 5) !== '00000') {
     // Hash the nonce using the crypto library and then increment the nonce
     hash = crypto.createHash('sha256').update(nonce.toString()).digest('hex');
@@ -48,14 +48,11 @@ const python = {
     # Lets initialize the hash here as an empty string
     hash = ''
 
-    # Write the nonce as a string
-    encoded_nonce = str(nonce).encode()
-
     # while the hash does not start with 5 zeroes we want the prgram to repeat
     while hash[0:5] != '00000':
         # Hash the nonce using the crypto library and then increment the nonce
-        hash = sha256(encoded_nonce).digest().hex()
-        nonce = nonce + 1
+        hash = sha256(str(nonce).encode()).digest().hex()
+        nonce += 1
     return hash`,
   ],
   validate: async (answer) => {
@@ -151,7 +148,7 @@ export default function AddressResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`250px`}
+                  height={`235px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

@@ -14,8 +14,14 @@ export const metadata = {
 }
 
 const javascript = {
-  program: `
-console.log(findHash())
+  program: `//BEGIN VALIDATION BLOCK
+const min = 1;
+const max = 100000000;
+const randomNumberOne = Math.floor(Math.random() * (max - min + 1)) + min;
+const randomNumberTwo = Math.floor(Math.random() * (max - min + 1)) + min;
+const testOne = findHash(randomNumberOne)
+const testTwo = findHash(randomNumberTwo)
+console.log(testOne !== testTwo ? testTwo : 'test-failed')
 console.log("KILL")`,
   defaultFunction: {
     name: 'findHash',
@@ -26,12 +32,18 @@ console.log("KILL")`,
 // Create a program that finds a sha256 hash starting with 5 zeroes.
 // To submit your answer, return it from the function.
 
-function findHash() {
-// Type your code here
-
+function findHash(nonce) {
+  // Type your code here
 }
 `,
   validate: async (answer) => {
+    if (answer === 'test-failed') {
+      return [
+        false,
+        'Be sure you are using the nonce param in your function as a random starting nonce will be used to test',
+      ]
+    }
+
     if (!answer.startsWith('00000')) {
       return [false, 'Hash must start with 5 zeroes.']
     }
@@ -44,15 +56,29 @@ function findHash() {
   },
   constraints: [
     {
-      range: [7, 1, 10, 1],
+      range: [7, 1, 8, 1],
       allowMultiline: true,
     },
   ],
 }
 
 const python = {
-  program: `
-print(find_hash())
+  program: `# BEGIN VALIDATION BLOCK
+import random
+
+min_value = 1
+max_value = 100000000
+random_number_one = random.randint(min_value, max_value)
+random_number_two = random.randint(min_value, max_value)
+test_one = find_hash(random_number_one)
+test_two = find_hash(random_number_two)
+print(test_one, test_two)
+if test_one == test_two:
+    print('test-failed')
+elif test_one != test_two:
+    print(test_two)
+else:
+    print('error')
 print("KILL")`,
   defaultFunction: {
     name: 'find_hash',
@@ -63,10 +89,16 @@ print("KILL")`,
 # Create a program that finds a sha256 hash starting with 5 zeroes.
 # To submit your answer, return it from the function.
 
-def find_hash():
-# Type your code here
+def find_hash(nonce):
+    # Type your code here
 `,
   validate: async (answer) => {
+    if (answer === 'test-failed' || answer === 'error') {
+      return [
+        false,
+        'Be sure you are using the nonce param in your function as a random starting nonce will be used to test',
+      ]
+    }
     if (!answer.startsWith('00000')) {
       return [false, 'Hash must start with 5 zeroes.']
     }
