@@ -34,14 +34,12 @@ export default function PutItTogether6({ lang }) {
   const [prevData, setPrevData] = useState<any>({})
   const [isLoading, setIsLoading] = useState(true)
   const [combinedCode, setCombinedCode] = useState('')
-  console.log(combinedCode)
 
   const getPrevLessonData = async () => {
     const dataMap = {}
     const data = await Promise.all(
       lessonsToLoad.map(async (lesson) => {
         const dataFromServer = await getData(lesson)
-        console.log(lesson + ':' + dataFromServer?.code?.getDecoded())
         dataMap[lesson] = dataFromServer?.code?.getDecoded()
       })
     )
@@ -189,7 +187,7 @@ tx = Transaction()
 
   const config: EditorConfig = {
     defaultLanguage:
-      detectLanguage(prevData.data) === Language.JavaScript
+      detectLanguage(combinedCode) === Language.JavaScript
         ? 'javascript'
         : 'python',
     languages: {

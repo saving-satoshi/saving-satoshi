@@ -121,7 +121,11 @@ class Output {
     },
     constraints: [
       {
-        range: [14, 1, 23, 1],
+        range: [14, 1, 15, 1],
+        allowMultiline: true,
+      },
+      {
+        range: [19, 1, 20, 1],
         allowMultiline: true,
       },
     ],
@@ -143,22 +147,20 @@ print("KILL")`,
 from bech32py import bech32
 
 class Output:
-  def __init__(self):
-    self.value = 0
-    self.witness_version = 0
-    self.witness_data = b""
+    def __init__(self):
+      self.value = 0
+      self.witness_version = 0
+      self.witness_data = b""
 
-  @classmethod
-  def from_options(cls, addr: str, value: int):
-    assert isinstance(value, int)
-    self = cls()
-    # YOUR CODE HERE
-    return self
+    @classmethod
+    def from_options(cls, addr: str, value: int):
+        assert isinstance(value, int)
+        self = cls()
+        # YOUR CODE HERE
+        return self
 
-  def serialize(self):
-    # YOUR CODE HERE
-
-
+    def serialize(self):
+        # YOUR CODE HERE
 `,
     validate: async (answer) => {
       if (answer) {
@@ -173,7 +175,11 @@ class Output:
     },
     constraints: [
       {
-        range: [14, 1, 21, 1],
+        range: [14, 1, 15, 1],
+        allowMultiline: true,
+      },
+      {
+        range: [18, 1, 19, 1],
         allowMultiline: true,
       },
     ],
@@ -197,7 +203,7 @@ class Output:
         config={config}
         saveData
         lessonKey={getLessonKey('chapter-6', 'in-out-5')}
-        successMessage={t('chapter_six.in_out_four.success')}
+        successMessage={t('chapter_six.in_out_five.success')}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
           <Title>{t('chapter_six.in_out_four.heading')}</Title>
