@@ -48,11 +48,11 @@ export default function PutItTogether1({ lang }) {
     constructor() {
       this.items = [];
     }
-  
+
     push_item(data) {
       // YOUR CODE HERE
     }
-  
+
     serialize() {
       // YOUR CODE HERE
     }
@@ -84,27 +84,27 @@ export default function PutItTogether1({ lang }) {
 
   const python = {
     program: `# BEGIN VALIDATION BLOCK
-  witness = Witness()
-  witness.push_item(bytes.fromhex("304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01"))
-  witness.push_item(bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af"))
-  print(witness.serialize().hex() == '0247304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba0121038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af' and 'true')
-  print("KILL")`,
+witness = Witness()
+witness.push_item(bytes.fromhex("304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01"))
+witness.push_item(bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af"))
+print(witness.serialize().hex() == '0247304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba0121038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af' and 'true')
+print("KILL")`,
     defaultFunction: {
       name: 'encode_message',
       args: ['text'],
     },
     defaultCode: `from struct import pack
-  
-  class Witness:
-      def __init__(self):
-          self.items = []
-  
-      def push_item(self, data):
-          # YOUR CODE HERE
-  
-      def serialize(self):
-          # YOUR CODE HERE
-  `,
+
+class Witness:
+    def __init__(self):
+        self.items = []
+
+    def push_item(self, data):
+        # YOUR CODE HERE
+
+    def serialize(self):
+        # YOUR CODE HERE
+`,
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {

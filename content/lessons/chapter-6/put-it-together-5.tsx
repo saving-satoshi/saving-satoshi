@@ -58,78 +58,78 @@ class Outpoint {
     }
   }
 
-  class Input {
-    constructor() {
-      this.outpoint = null;
-      this.script = Buffer.alloc(0);
-      this.sequence = 0xffffffff;
-      this.value = 0;
-      this.scriptcode = Buffer.alloc(0);
-    }
-
-    static from_output(txid, vout, value, scriptcode) {
-      const self = new this();
-      self.outpoint = new Outpoint(Buffer.from(txid.replace('0x', ''),  'hex').reverse(), vout);
-      self.value = value;
-      self.scriptcode = Buffer.from(scriptcode.replace('0x', ''), 'hex');
-      return self;
-    }
-
-    serialize() {
-      const buf = Buffer.alloc(32 + 4 + 1 + 4);
-      this.outpoint.serialize().copy(buf, 0);
-      buf.writeUInt8(this.script.length, 36);
-      // Optional, since we know in SegWit it's always zero bytes.
-      // Adding this back will offset all following byte length positions.
-      // this.script.copy(buf, 37);
-      buf.writeUInt32LE(this.sequence, 37);
-      return buf;
-    }
+class Input {
+  constructor() {
+    this.outpoint = null;
+    this.script = Buffer.alloc(0);
+    this.sequence = 0xffffffff;
+    this.value = 0;
+    this.scriptcode = Buffer.alloc(0);
   }
 
-  class Output {
-    constructor() {
-      this.value = 0;
-      this.witness_version = 0;
-      this.witness_data = Buffer.alloc(0);
-    }
-
-    static from_options(addr, value) {
-      //assert(Number.isInteger(value));
-      const self = new this();
-      const {version, program} = bech32.decode('bc', addr);
-      self.witness_version = version;
-      self.witness_data = Buffer.from(program);
-      self.value = value;
-      return self;
-    }
-
-    serialize() {
-      const buf = Buffer.alloc(11);
-      buf.writeBigInt64LE(BigInt(this.value), 0);
-      buf.writeUInt8(this.witness_data.length + 2, 8);
-      buf.writeUInt8(this.witness_version, 9);
-      buf.writeUInt8(this.witness_data.length, 10);
-      return Buffer.concat([buf, this.witness_data]);
-    }
+  static from_output(txid, vout, value, scriptcode) {
+    const self = new this();
+    self.outpoint = new Outpoint(Buffer.from(txid.replace('0x', ''),  'hex').reverse(), vout);
+    self.value = value;
+    self.scriptcode = Buffer.from(scriptcode.replace('0x', ''), 'hex');
+    return self;
   }
 
-  class Witness {
-    constructor() {
-      this.items = [];
-    }
-
-    push_item(data) {
-      this.items.push(data);
-    }
-
-    serialize() {
-      let buf = Buffer.from([this.items.length]);
-      for (const item of this.items)
-        buf = Buffer.concat([buf, Buffer.from([item.length]), item]);
-      return buf;
-    }
+  serialize() {
+    const buf = Buffer.alloc(32 + 4 + 1 + 4);
+    this.outpoint.serialize().copy(buf, 0);
+    buf.writeUInt8(this.script.length, 36);
+    // Optional, since we know in SegWit it's always zero bytes.
+    // Adding this back will offset all following byte length positions.
+    // this.script.copy(buf, 37);
+    buf.writeUInt32LE(this.sequence, 37);
+    return buf;
   }
+}
+
+class Output {
+  constructor() {
+    this.value = 0;
+    this.witness_version = 0;
+    this.witness_data = Buffer.alloc(0);
+  }
+
+  static from_options(addr, value) {
+    //assert(Number.isInteger(value));
+    const self = new this();
+    const {version, program} = bech32.decode('bc', addr);
+    self.witness_version = version;
+    self.witness_data = Buffer.from(program);
+    self.value = value;
+    return self;
+  }
+
+  serialize() {
+    const buf = Buffer.alloc(11);
+    buf.writeBigInt64LE(BigInt(this.value), 0);
+    buf.writeUInt8(this.witness_data.length + 2, 8);
+    buf.writeUInt8(this.witness_version, 9);
+    buf.writeUInt8(this.witness_data.length, 10);
+    return Buffer.concat([buf, this.witness_data]);
+  }
+}
+
+class Witness {
+  constructor() {
+    this.items = [];
+  }
+
+  push_item(data) {
+    this.items.push(data);
+  }
+
+  serialize() {
+    let buf = Buffer.from([this.items.length]);
+    for (const item of this.items)
+      buf = Buffer.concat([buf, Buffer.from([item.length]), item]);
+    return buf;
+  }
+}
 
 const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
