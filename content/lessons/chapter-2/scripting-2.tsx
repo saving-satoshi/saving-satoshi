@@ -19,7 +19,7 @@ const min = 1;
 const max = 100000000;
 const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
 const testHash = findHash(randomNumber)
-console.log(findHash(1000000) === '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3' ? testHash : 'test-failed')
+console.log((findHash(1000000) === '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3' && findHash(0) !== '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3') ? testHash : 'test-failed')
 console.log("KILL")`,
   defaultFunction: {
     name: 'findHash',
@@ -70,7 +70,7 @@ random_number = random.randint(min_value, max_value)
 test_hash = find_hash(random_number)
 if find_hash(1000000) != '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3':
     print('test-failed')
-elif find_hash(1000000) == '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3':
+elif find_hash(1000000) == '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3' and find_hash(0) != '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3':
     print(test_hash)
 else:
     print('error')
