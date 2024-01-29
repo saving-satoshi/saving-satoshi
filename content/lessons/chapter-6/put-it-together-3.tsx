@@ -5,6 +5,7 @@ import { useTranslations } from 'hooks'
 import { EditorConfig } from 'types'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
+import { detectLanguage, Language } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
@@ -30,10 +31,6 @@ export default function PutItTogether3({ lang }) {
   useEffect(() => {
     getPrevLessonData().finally(() => setIsLoading(false))
   }, [])
-
-  const handleSelectLanguage = (language: string) => {
-    setLanguage(language)
-  }
 
   function countLines(text: string): number {
     return text.split(/\r\n|\r|\n/).length
@@ -316,14 +313,15 @@ ${prevData.data}
   }
 
   const config: EditorConfig = {
-    defaultLanguage: 'javascript',
+    defaultLanguage:
+      detectLanguage(prevData.data) === Language.JavaScript
+        ? 'javascript'
+        : 'python',
     languages: {
       javascript,
       python,
     },
   }
-
-  const [language, setLanguage] = useState(config.defaultLanguage)
 
   return (
     !isLoading && (
@@ -333,7 +331,6 @@ ${prevData.data}
         saveData
         lessonKey={getLessonKey('chapter-6', 'put-it-together-3')}
         successMessage={t('chapter_six.put_it_together_three.success')}
-        onSelectLanguage={handleSelectLanguage}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
           <Text className="font-nunito text-2xl font-bold text-white">

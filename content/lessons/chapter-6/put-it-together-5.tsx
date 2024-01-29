@@ -6,6 +6,7 @@ import { useTranslations } from 'hooks'
 import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
+import { detectLanguage, Language } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
@@ -351,17 +352,14 @@ print("KILL")
   }
 
   const config: EditorConfig = {
-    defaultLanguage: 'javascript',
+    defaultLanguage:
+      detectLanguage(prevData.data) === Language.JavaScript
+        ? 'javascript'
+        : 'python',
     languages: {
       javascript,
       python,
     },
-  }
-
-  const [language, setLanguage] = useState(config.defaultLanguage)
-
-  const handleSelectLanguage = (language: string) => {
-    setLanguage(language)
   }
 
   return (
@@ -371,7 +369,6 @@ print("KILL")
         config={config}
         lessonKey={getLessonKey('chapter-6', 'put-it-together-5')}
         successMessage={t('chapter_six.put_it_together_five.success')}
-        onSelectLanguage={handleSelectLanguage}
         saveData
       >
         <LessonInfo>

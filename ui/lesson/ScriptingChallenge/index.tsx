@@ -52,7 +52,7 @@ export default function ScriptingChallenge({
   config: EditorConfig
   successMessage: string
   saveData?: boolean
-  onSelectLanguage: (language: string) => void
+  onSelectLanguage?: (language: string) => void
   loadingSavedCode?: boolean
 }) {
   const { saveProgress, saveProgressLocal } = useProgressContext()
@@ -76,7 +76,7 @@ export default function ScriptingChallenge({
   const isSmallScreen = useMediaQuery({ width: 767 })
 
   const handleSetLanguage = (value) => {
-    if (!challengeSuccess) {
+    if (!challengeSuccess && onSelectLanguage) {
       setLanguage(value)
       onSelectLanguage(value)
       setCode(config.languages[value].defaultCode?.toString())
@@ -173,6 +173,7 @@ export default function ScriptingChallenge({
 
         <div className="code-editor grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l">
           <LanguageTabs
+            languageLocked={!onSelectLanguage}
             languages={config.languages}
             value={language}
             onChange={handleSetLanguage}

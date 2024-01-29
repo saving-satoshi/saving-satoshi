@@ -7,6 +7,7 @@ import { Text } from 'ui'
 import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
+import { detectLanguage, Language } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_four.title',
@@ -34,9 +35,6 @@ export default function PutItTogether4({ lang }) {
     getPrevLessonData().finally(() => setIsLoading(false))
   }, [])
 
-  const handleSelectLanguage = (language: string) => {
-    setLanguage(language)
-  }
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
 const assert = require('assert');
@@ -359,14 +357,15 @@ ${prevData.data}
   }
 
   const config: EditorConfig = {
-    defaultLanguage: 'javascript',
+    defaultLanguage:
+      detectLanguage(prevData.data) === Language.JavaScript
+        ? 'javascript'
+        : 'python',
     languages: {
       javascript,
       python,
     },
   }
-
-  const [language, setLanguage] = useState(config.defaultLanguage)
 
   return (
     !isLoading && (
@@ -376,7 +375,6 @@ ${prevData.data}
         saveData
         lessonKey={getLessonKey('chapter-6', 'put-it-together-4')}
         successMessage={t('chapter_six.put_it_together_four.success')}
-        onSelectLanguage={handleSelectLanguage}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
           <Title>{t('chapter_six.put_it_together_four.heading')}</Title>

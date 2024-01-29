@@ -3,7 +3,12 @@
 import { getData } from 'api/data'
 import { useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
-import { organizeImports, organizeJavaScriptRequires } from 'lib/SavedCode'
+import {
+  detectLanguage,
+  Language,
+  organizeImports,
+  organizeJavaScriptRequires,
+} from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { EditorConfig } from 'types'
 import { LessonInfo, ScriptingChallenge, Text } from 'ui'
@@ -183,17 +188,16 @@ tx = Transaction()
   }
 
   const config: EditorConfig = {
-    defaultLanguage: 'javascript',
+    defaultLanguage:
+      detectLanguage(prevData.data) === Language.JavaScript
+        ? 'javascript'
+        : 'python',
     languages: {
       javascript,
       python,
     },
   }
 
-  const [language, setLanguage] = useState(config.defaultLanguage)
-  const handleSelectLanguage = (language: string) => {
-    setLanguage(language)
-  }
   return (
     !isLoading &&
     combinedCode && (
@@ -203,7 +207,6 @@ tx = Transaction()
         saveData
         lessonKey={getLessonKey('chapter-6', 'put-it-together-6')}
         successMessage={t('chapter_six.put_it_together_six.success')}
-        onSelectLanguage={handleSelectLanguage}
         loadingSavedCode={isLoading}
       >
         <LessonInfo>
