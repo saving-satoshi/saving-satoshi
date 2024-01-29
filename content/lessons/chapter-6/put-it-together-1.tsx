@@ -127,7 +127,7 @@ export default function PutItTogether1({ lang }) {
       config={config}
       saveData
       lessonKey={getLessonKey('chapter-6', 'put-it-together-1')}
-      successMessage={''}
+      successMessage={t('chapter_six.put_it_together_one.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>

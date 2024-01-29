@@ -1283,6 +1283,7 @@ const translations = {
           item_four: '(var)',
         },
       },
+      success: 'The Witness class looks good, Great Work!',
     },
     put_it_together_two: {
       title: 'Putting it all together',
