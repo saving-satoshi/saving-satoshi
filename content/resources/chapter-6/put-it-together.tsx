@@ -205,37 +205,37 @@ const pythonChallengeThree = {
     args: [],
   },
   defaultCode: `def digest(self, input_index):
-   sighash = 1
+    sighash = 1
 
-   def dsha256(data):
-       return hashlib.new('sha256', hashlib.new('sha256', data).digest()).digest()
+    def dsha256(data):
+        return hashlib.new('sha256', hashlib.new('sha256', data).digest()).digest()
 
-   s = b""
-   s += pack("<I", self.version)
+    s = b""
+    s += pack("<I", self.version)
 
-   outpoints = b""
-   for inp in self.inputs:
-       outpoints += inp.outpoint.serialize()
-   s += dsha256(outpoints)
+    outpoints = b""
+    for inp in self.inputs:
+        outpoints += inp.outpoint.serialize()
+    s += dsha256(outpoints)
 
-   sequences = b""
-   for inp in self.inputs:
-       sequences += pack("<I", inp.sequence)
-   s += dsha256(sequences)
+    sequences = b""
+    for inp in self.inputs:
+        sequences += pack("<I", inp.sequence)
+    s += dsha256(sequences)
 
-   s += self.inputs[input_index].outpoint.serialize()
-   s += self.inputs[input_index].scriptcode
-   s += pack("<q", self.inputs[input_index].value)
-   s += pack("<I", self.inputs[input_index].sequence)
+    s += self.inputs[input_index].outpoint.serialize()
+    s += self.inputs[input_index].scriptcode
+    s += pack("<q", self.inputs[input_index].value)
+    s += pack("<I", self.inputs[input_index].sequence)
 
-   outputs = b""
-   for out in self.outputs:
-       outputs += out.serialize()
-   s += dsha256(outputs)
+    outputs = b""
+    for out in self.outputs:
+        outputs += out.serialize()
+    s += dsha256(outputs)
 
-   s += pack("<I", self.locktime)
-   s += pack("<I", sighash)
-   return dsha256(s)`,
+    s += pack("<I", self.locktime)
+    s += pack("<I", sighash)
+    return dsha256(s)`,
   validate: async (answer) => {
     return [true, undefined]
   },
