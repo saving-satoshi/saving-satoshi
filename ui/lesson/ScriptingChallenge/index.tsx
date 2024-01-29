@@ -119,7 +119,6 @@ export default function ScriptingChallenge({
     }
 
     if (language === 'javascript') {
-      console.log(data.code!.getDecoded())
       if (data.code!.getDecoded().includes('//BEGIN VALIDATION BLOCK')) {
         trimmedCode = data
           .code!.getDecoded()
@@ -134,7 +133,6 @@ export default function ScriptingChallenge({
     }
 
     const base64TrimmedCode = new Base64String(trimmedCode)
-    console.log(base64TrimmedCode)
 
     if (success) {
       setChallengeSuccess(true)
