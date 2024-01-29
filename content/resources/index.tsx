@@ -1,8 +1,8 @@
-import * as Chapter5 from './chapter-5'
 import * as Chapter1 from './chapter-1'
 import * as Chapter2 from './chapter-2'
 import * as Chapter3 from './chapter-3'
 import * as Chapter4 from './chapter-4'
+import * as Chapter5 from './chapter-5'
 import * as Chapter6 from './chapter-6'
 
 export const resources = {

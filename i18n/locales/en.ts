@@ -1490,6 +1490,18 @@ const translations = {
       paragraph_one:
         "You successfully built a transaction from scratch to pay Mike Ramen for his help. Now that we are done here let's get off this island...",
     },
+    resources: {
+      in_out: {
+        input_class_heading: 'Input Class',
+        input_class_paragraph_one: 'Placeholder Resources',
+        output_class_heading: 'Output Class',
+        output_class_paragraph_one: 'Placeholder Resources',
+      },
+      put_it_together: {
+        building_a_transaction_heading: 'Building a Transaction',
+        building_a_transaction_paragraph_one: 'Placeholder Resources',
+      },
+    },
   },
   chapter_seven: {
     title: `Twentyone`,

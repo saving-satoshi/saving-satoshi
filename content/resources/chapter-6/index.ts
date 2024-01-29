@@ -1,5 +1,9 @@
-import * as PutItAllTogether from './put-it-together'
+import * as InOutResources from './in-out'
+import * as PutItTogetherResources from './put-it-together'
 
-export const Chapter6 = {
-  'put-it-all-together': PutItAllTogether,
+const Chapter6 = {
+  'in-out': InOutResources,
+  'put-it-together': PutItTogetherResources,
 }
+
+export default Chapter6
