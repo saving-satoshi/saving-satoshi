@@ -231,22 +231,7 @@ export default function InOutResources({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={
-        <>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_six.resources.in_out.input_class_heading')}
-          </Text>
-          <Text>
-            {t('chapter_six.resources.in_out.input_class_paragraph_one')}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_six.resources.in_out.output_class_heading')}
-          </Text>
-          <Text>
-            {t('chapter_six.resources.in_out.output_class_paragraph_one')}
-          </Text>
-        </>
-      }
+      readingResources={<></>}
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>

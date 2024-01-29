@@ -670,20 +670,7 @@ export default function PutItTogetherResources({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={
-        <>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_six.resources.put_it_together.building_a_transaction_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_six.resources.put_it_together.building_a_transaction_paragraph_one'
-            )}
-          </Text>
-        </>
-      }
+      readingResources={<></>}
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>
