@@ -143,7 +143,7 @@ class Witness:
         config={config}
         saveData
         lessonKey={getLessonKey('chapter-6', 'put-it-together-1')}
-        successMessage={''}
+        successMessage={t('chapter_six.put_it_together_one.success')}
       >
         <LessonInfo>
           <Text className="font-nunito text-2xl font-bold text-white">

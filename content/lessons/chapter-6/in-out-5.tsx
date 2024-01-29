@@ -197,7 +197,7 @@ class Output:
         config={config}
         saveData
         lessonKey={getLessonKey('chapter-6', 'in-out-5')}
-        successMessage={t('chapter_six.in_out_four.success')}
+        successMessage={t('chapter_six.in_out_five.success')}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
           <Title>{t('chapter_six.in_out_four.heading')}</Title>

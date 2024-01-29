@@ -33,131 +33,131 @@ export default function PutItTogether2({ lang }) {
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
-  const assert = require('assert');
-  const bech32 = require('@savingsatoshi/bech32js');
-  class Outpoint {
-    constructor(txid, index) {
-      assert(Buffer.isBuffer(txid));
-      assert(txid.length === 32);
-      assert(Number.isInteger(index));
-      this.txid = txid;
-      this.index = index;
-    }
-
-    serialize() {
-      const buf = Buffer.alloc(36);
-      this.txid.copy(buf, 0);
-      buf.writeUInt32LE(this.index, 32);
-      return buf;
-    }
+const assert = require('assert');
+const bech32 = require('@savingsatoshi/bech32js');
+class Outpoint {
+  constructor(txid, index) {
+    assert(Buffer.isBuffer(txid));
+    assert(txid.length === 32);
+    assert(Number.isInteger(index));
+    this.txid = txid;
+    this.index = index;
   }
 
-  class Input {
-    constructor() {
-      this.outpoint = null;
-      this.script = Buffer.alloc(0);
-      this.sequence = 0xffffffff;
-      this.value = 0;
-      this.scriptcode = Buffer.alloc(0);
-    }
+  serialize() {
+    const buf = Buffer.alloc(36);
+    this.txid.copy(buf, 0);
+    buf.writeUInt32LE(this.index, 32);
+    return buf;
+  }
+}
 
-    static from_output(txid, vout, value, scriptcode) {
-      const self = new this();
-      self.outpoint = new Outpoint(Buffer.from(txid.replace('0x', ''),  'hex').reverse(), vout);
-      self.value = value;
-      self.scriptcode = Buffer.from(scriptcode.replace('0x', ''), 'hex');
-      return self;
-    }
-
-    serialize() {
-      const buf = Buffer.alloc(32 + 4 + 1 + 4);
-      this.outpoint.serialize().copy(buf, 0);
-      buf.writeUInt8(this.script.length, 36);
-      // Optional, since we know in SegWit it's always zero bytes.
-      // Adding this back will offset all following byte length positions.
-      // this.script.copy(buf, 37);
-      buf.writeUInt32LE(this.sequence, 37);
-      return buf;
-    }
+class Input {
+  constructor() {
+    this.outpoint = null;
+    this.script = Buffer.alloc(0);
+    this.sequence = 0xffffffff;
+    this.value = 0;
+    this.scriptcode = Buffer.alloc(0);
   }
 
-  class Output {
-    constructor() {
-      this.value = 0;
-      this.witness_version = 0;
-      this.witness_data = Buffer.alloc(0);
-    }
-
-    static from_options(addr, value) {
-      assert(Number.isInteger(value));
-      const self = new this();
-      const {version, program} = bech32.decode('bc', addr);
-      self.witness_version = version;
-      self.witness_data = Buffer.from(program);
-      self.value = value;
-      return self;
-    }
-
-    serialize() {
-      const buf = Buffer.alloc(11);
-      buf.writeBigInt64LE(BigInt(this.value), 0);
-      buf.writeUInt8(this.witness_data.length + 2, 8);
-      buf.writeUInt8(this.witness_version, 9);
-      buf.writeUInt8(this.witness_data.length, 10);
-      return Buffer.concat([buf, this.witness_data]);
-    }
+  static from_output(txid, vout, value, scriptcode) {
+    const self = new this();
+    self.outpoint = new Outpoint(Buffer.from(txid.replace('0x', ''),  'hex').reverse(), vout);
+    self.value = value;
+    self.scriptcode = Buffer.from(scriptcode.replace('0x', ''), 'hex');
+    return self;
   }
 
-  class Witness {
-    constructor() {
-      this.items = [];
-    }
+  serialize() {
+    const buf = Buffer.alloc(32 + 4 + 1 + 4);
+    this.outpoint.serialize().copy(buf, 0);
+    buf.writeUInt8(this.script.length, 36);
+    // Optional, since we know in SegWit it's always zero bytes.
+    // Adding this back will offset all following byte length positions.
+    // this.script.copy(buf, 37);
+    buf.writeUInt32LE(this.sequence, 37);
+    return buf;
+  }
+}
 
-    push_item(data) {
-      this.items.push(data);
-    }
-
-    serialize() {
-      let buf = Buffer.from([this.items.length]);
-      for (const item of this.items)
-        buf = Buffer.concat([buf, Buffer.from([item.length]), item]);
-      return buf;
-    }
+class Output {
+  constructor() {
+    this.value = 0;
+    this.witness_version = 0;
+    this.witness_data = Buffer.alloc(0);
   }
 
-  const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
-  const vout = 1;
-  const value1 = 650000000;
-  const scriptcode = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
-  const input = Input.from_output(txid, vout, value1, scriptcode);
-  const addr = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
-  const value2 = 100000000;
-  const output = Output.from_options(addr, value2);
-  const witness = new Witness();
-  witness.push_item(Buffer.from('304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01', 'hex'));
-  witness.push_item(Buffer.from('038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af', 'hex'));
-  const tx = new Transaction();
-  tx.inputs.push(input);
-  tx.outputs.push(output);
-  console.log(tx.serialize().toString('hex')==='020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0100e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd100000000'&&'true');
-  `,
+  static from_options(addr, value) {
+    assert(Number.isInteger(value));
+    const self = new this();
+    const {version, program} = bech32.decode('bc', addr);
+    self.witness_version = version;
+    self.witness_data = Buffer.from(program);
+    self.value = value;
+    return self;
+  }
+
+  serialize() {
+    const buf = Buffer.alloc(11);
+    buf.writeBigInt64LE(BigInt(this.value), 0);
+    buf.writeUInt8(this.witness_data.length + 2, 8);
+    buf.writeUInt8(this.witness_version, 9);
+    buf.writeUInt8(this.witness_data.length, 10);
+    return Buffer.concat([buf, this.witness_data]);
+  }
+}
+
+class Witness {
+  constructor() {
+    this.items = [];
+  }
+
+  push_item(data) {
+    this.items.push(data);
+  }
+
+  serialize() {
+    let buf = Buffer.from([this.items.length]);
+    for (const item of this.items)
+      buf = Buffer.concat([buf, Buffer.from([item.length]), item]);
+    return buf;
+  }
+}
+
+const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
+const vout = 1;
+const value1 = 650000000;
+const scriptcode = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
+const input = Input.from_output(txid, vout, value1, scriptcode);
+const addr = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
+const value2 = 100000000;
+const output = Output.from_options(addr, value2);
+const witness = new Witness();
+witness.push_item(Buffer.from('304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01', 'hex'));
+witness.push_item(Buffer.from('038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af', 'hex'));
+const tx = new Transaction();
+tx.inputs.push(input);
+tx.outputs.push(output);
+console.log(tx.serialize().toString('hex')==='020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0100e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd100000000'&&'true');
+`,
     defaultFunction: {
       name: 'put-it-together-2',
       args: ['args'],
     },
     defaultCode: `class Transaction {
-    constructor() {
-      this.version=2;
-      this.flags = Buffer.from('0001', 'hex');
-      this.inputs = [];
-      this.outputs = [];
-      this.witnesses = [];
-      this.locktime = 0;
-    }
-    serialize() {
-      // YOUR CODE HERE
-    }
-  }`,
+  constructor() {
+    this.version=2;
+    this.flags = Buffer.from('0001', 'hex');
+    this.inputs = [];
+    this.outputs = [];
+    this.witnesses = [];
+    this.locktime = 0;
+  }
+  serialize() {
+    // YOUR CODE HERE
+  }
+}`,
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
