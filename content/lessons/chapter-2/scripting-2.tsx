@@ -17,11 +17,9 @@ const javascript = {
   program: `//BEGIN VALIDATION BLOCK
 const min = 1;
 const max = 100000000;
-const randomNumberOne = Math.floor(Math.random() * (max - min + 1)) + min;
-const randomNumberTwo = Math.floor(Math.random() * (max - min + 1)) + min;
-const testOne = findHash(randomNumberOne)
-const testTwo = findHash(randomNumberTwo)
-console.log(testOne !== testTwo ? testTwo : 'test-failed')
+const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+const testHash = findHash(randomNumber)
+console.log(findHash(1000000) === '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3' ? testHash : 'test-failed')
 console.log("KILL")`,
   defaultFunction: {
     name: 'findHash',
@@ -68,15 +66,12 @@ import random
 
 min_value = 1
 max_value = 100000000
-random_number_one = random.randint(min_value, max_value)
-random_number_two = random.randint(min_value, max_value)
-test_one = find_hash(random_number_one)
-test_two = find_hash(random_number_two)
-print(test_one, test_two)
-if test_one == test_two:
+random_number = random.randint(min_value, max_value)
+test_hash = find_hash(random_number)
+if find_hash(1000000) != '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3':
     print('test-failed')
-elif test_one != test_two:
-    print(test_two)
+elif find_hash(1000000) == '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3':
+    print(test_hash)
 else:
     print('error')
 print("KILL")`,
