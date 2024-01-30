@@ -1470,6 +1470,7 @@ const translations = {
       success: 'The sign_input() method looks good, Great Work!',
     },
     put_it_together_six: {
+      heading: 'Put it All Together',
       paragraph_one:
         'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 6.5 BTC input and a 1 BTC output... what happens to the other 5.5 BTC? Most of that will be "change" and we need to send it back to our own address!',
       paragraph_two:
