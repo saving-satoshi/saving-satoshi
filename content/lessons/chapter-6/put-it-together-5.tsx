@@ -372,7 +372,7 @@ print("KILL")
         saveData
       >
         <LessonInfo>
-          <Title>{t('chapter_six.put_it_together_four.heading')}</Title>
+          <Title>{t('chapter_six.put_it_together_five.heading')}</Title>
 
           <Text className="mt-2 text-lg md:text-[22px]">
             {t('chapter_six.put_it_together_five.paragraph_one')}

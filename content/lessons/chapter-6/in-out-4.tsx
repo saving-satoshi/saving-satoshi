@@ -65,7 +65,20 @@ export default function InOut4({ lang }) {
   const { account } = useAuthContext()
 
   const javascript = {
-    program: `const assert = require('assert');
+    program: `//BEGIN VALIDATION BLOCK
+const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
+const vout = 1;
+const value = 650000000;
+const scriptcode = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
+const input = Input.from_output(txid, vout, value, scriptcode);
+console.log(input.serialize().toString('hex') === '8e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff' && 'true')
+console.log("KILL")`,
+    defaultFunction: {
+      name: 'inputClass',
+      args: ['privateKey'],
+    },
+    defaultCode: `const assert = require('assert');
+
 class Outpoint {
   constructor(txid, index) {
     assert(Buffer.isBuffer(txid));
@@ -83,19 +96,7 @@ class Outpoint {
   }
 }
 
-//BEGIN VALIDATION BLOCK
-const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
-const vout = 1;
-const value = 650000000;
-const scriptcode = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
-const input = Input.from_output(txid, vout, value, scriptcode);
-console.log(input.serialize().toString('hex') === '8e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff' && 'true')
-console.log("KILL")`,
-    defaultFunction: {
-      name: 'inputClass',
-      args: ['privateKey'],
-    },
-    defaultCode: `class Input {
+class Input {
   constructor() {
     this.outpoint = null;
     this.script = Buffer.alloc(0);
@@ -128,35 +129,18 @@ console.log("KILL")`,
     },
     constraints: [
       {
-        range: [12, 1, 13, 1],
+        range: [31, 1, 32, 1],
         allowMultiline: true,
       },
       {
-        range: [17, 1, 18, 1],
+        range: [36, 1, 37, 1],
         allowMultiline: true,
       },
     ],
   }
 
   const python = {
-    program: `from struct import pack
-class Outpoint:
-    def __init__(self, txid: bytes, index: int):
-        assert isinstance(txid, bytes)
-        assert len(txid) == 32
-        assert isinstance(index, int)
-        self.txid = txid
-        self.index = index
-
-    def serialize(self):
-        # https:#docs.python.org/3/library/struct.html#byte-order-size-and-alignment
-        # Encode the index as little-endian unsigned integer
-        r = b""
-        r += self.txid
-        r += pack("<I", self.index)
-        return r
-
-# BEGIN VALIDATION BLOCK
+    program: `# BEGIN VALIDATION BLOCK
 txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
 vout = 1
 value = 650000000
@@ -168,7 +152,23 @@ print("KILL")`,
       name: 'input_class',
       args: ['private_key'],
     },
-    defaultCode: `class Input:
+    defaultCode: `from struct import pack
+
+class Outpoint:
+    def __init__(self, txid: bytes, index: int):
+        assert isinstance(txid, bytes)
+        assert len(txid) == 32
+        assert isinstance(index, int)
+        self.txid = txid
+        self.index = index
+
+    def serialize(self):
+        r = b""
+        r += self.txid
+        r += pack("<I", self.index)
+        return r
+
+class Input:
     def __init__(self):
         self.outpoint = None
         self.script = b""
@@ -198,11 +198,11 @@ print("KILL")`,
     },
     constraints: [
       {
-        range: [12, 1, 13, 1],
+        range: [28, 1, 29, 1],
         allowMultiline: true,
       },
       {
-        range: [16, 1, 17, 1],
+        range: [32, 1, 33, 1],
         allowMultiline: true,
       },
     ],
@@ -236,7 +236,7 @@ print("KILL")`,
           {t('chapter_six.in_out_four.paragraph_one')}
         </Text>
         <CodeExample
-          className="mt-4"
+          className="mt-4 font-space-mono"
           code={`from_output(txid: str, vout: int, value: int, scriptcode: bytes)`}
           language="shell"
         />

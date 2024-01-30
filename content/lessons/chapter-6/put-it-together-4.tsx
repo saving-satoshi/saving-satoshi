@@ -319,6 +319,7 @@ print("KILL")`,
     defaultCode: `from random import randrange
 from secp256k1py import secp256k1
 ${prevData.data}
+
     def compute_input_signature(self, index: int, key: int):
         # k = random integer in [1, n-1]
         # R = G * k
@@ -346,9 +347,9 @@ ${prevData.data}
     constraints: [
       {
         range: [
-          countLines(prevData.data.slice(0, -2)) + 14,
+          countLines(prevData.data) + 14,
           1,
-          countLines(prevData.data.slice(0, -2)) + 15,
+          countLines(prevData.data) + 15,
           1,
         ],
         allowMultiline: true,

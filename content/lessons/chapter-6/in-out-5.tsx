@@ -87,6 +87,9 @@ console.log("KILL")`,
     },
     defaultCode: `const assert = require('assert');
 const bech32 = require('@savingsatoshi/bech32js');
+// Use the bech32 library to find the version and data components from the address
+// See the library source code for the exact definition
+// https://github.com/saving-satoshi/bech32js/blob/main/bech32.js
 
 class Output {
   constructor() {
@@ -106,7 +109,6 @@ class Output {
     // YOUR CODE HERE
   }
 }
-
 `,
     validate: async (answer: string) => {
       if (answer) {
@@ -121,11 +123,11 @@ class Output {
     },
     constraints: [
       {
-        range: [14, 1, 15, 1],
+        range: [17, 1, 18, 1],
         allowMultiline: true,
       },
       {
-        range: [19, 1, 20, 1],
+        range: [22, 1, 23, 1],
         allowMultiline: true,
       },
     ],
@@ -145,6 +147,9 @@ print("KILL")`,
     },
     defaultCode: `from struct import pack
 from bech32py import bech32
+# Use the bech32 library to find the version and data components from the address
+# See the library source code for the exact definition
+# https://github.com/saving-satoshi/bech32py/blob/main/bech32py/bech32.py
 
 class Output:
     def __init__(self):
@@ -175,11 +180,11 @@ class Output:
     },
     constraints: [
       {
-        range: [14, 1, 15, 1],
+        range: [17, 1, 18, 1],
         allowMultiline: true,
       },
       {
-        range: [18, 1, 19, 1],
+        range: [21, 1, 22, 1],
         allowMultiline: true,
       },
     ],
@@ -206,21 +211,21 @@ class Output:
         successMessage={t('chapter_six.in_out_five.success')}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
-          <Title>{t('chapter_six.in_out_four.heading')}</Title>
+          <Title>{t('chapter_six.in_out_five.heading')}</Title>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.in_out_four.paragraph_one')}
+            {t('chapter_six.in_out_five.paragraph_one')}
           </Text>
           <CodeExample
-            className="mt-4"
+            className="mt-4 font-space-mono"
             code={`from_options(addr: str, value: int)`}
             language="shell"
           />
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.in_out_four.paragraph_two')}
+            {t('chapter_six.in_out_five.paragraph_two')}
           </Text>
 
           <div className="mt-4">
-            <Title>{t('chapter_six.in_out_four.heading_two')}</Title>
+            <Title>{t('chapter_six.in_out_five.heading_two')}</Title>
           </div>
           <div className="mt-4 flex-col gap-4">
             <Table headings={tableHeading} rows={outputRows} />

@@ -1121,7 +1121,7 @@ const translations = {
         "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6.",
       paragraph_five:
         'We also need a serialize() method that returns a byte array according to the specification:',
-      heading_two: 'Output',
+      heading_two: 'Outpoint',
       table_one: {
         heading: {
           one: 'Description',
@@ -1232,9 +1232,9 @@ const translations = {
         row_five: {
           column: {
             one: 'The data component derived from the bech32 address.',
-            two: 'length',
-            three: 'int',
-            four: '1',
+            two: 'index',
+            three: 'bytes',
+            four: '(var)',
           },
         },
       },
@@ -1350,14 +1350,14 @@ const translations = {
         },
       },
       paragraph_three:
-        'Notice that there is no "count" value for witnesses. That is because the number of witness stack must always be exactly equal to the number of inputs',
+        'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs',
       success: 'The Transaction class looks good, Great Work!',
     },
     put_it_together_three: {
       title: 'Putting it all together',
       heading: 'Transaction digest',
       paragraph_one:
-        'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in BIP 143.',
+        'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
       paragraph_two:
         'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method digest(input_index) that computes the 32-byte message for signing an input.',
       list_heading: 'Some notes:',
@@ -1452,9 +1452,9 @@ const translations = {
       heading: 'Signing!',
       paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called compute_input_signature(index: int, key: int) to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the digest() method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
       paragraph_two:
-        'See this page for the ECDSA signing algorithm. Also this PDF (Page 44, Section 4.1.3).',
+        'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
       paragraph_three:
-        'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in BIP 146.',
+        'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
       success: 'The compute_input_signature() method looks good, Great Work!',
     },
     put_it_together_five: {

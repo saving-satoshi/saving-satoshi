@@ -286,6 +286,7 @@ print("KILL")`,
     },
     defaultCode: `import hashlib
 ${prevData.data}
+
     def digest(self, input_index: int):
         sighash = 1
         # YOUR CODE HERE
@@ -302,9 +303,9 @@ ${prevData.data}
     constraints: [
       {
         range: [
-          countLines(prevData.data.slice(0, -2)) + 5,
+          countLines(prevData.data) + 5,
           1,
-          countLines(prevData.data.slice(0, -2)) + 6,
+          countLines(prevData.data) + 6,
           1,
         ],
         allowMultiline: true,
