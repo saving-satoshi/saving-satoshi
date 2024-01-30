@@ -133,25 +133,25 @@ class Witness {
 
 const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
-const priv = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503en
-const compressed_pub = Buffer.from('038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af', 'hex');
-const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
-const vout = 1;
-const value = 650000000;
-const scriptcode = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
-const input = Input.from_output(txid, vout, value, scriptcode);
-const addr = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
-const valueTwo = 100000000;
-const output = Output.from_options(addr, valueTwo);
-const tx = new Transaction();
-tx.inputs.push(input);
-tx.outputs.push(output);
-tx.sign_input(0, priv, compressed_pub);
-const hashed_message_bytes = tx.digest(0);
-const wit_sig = tx.witnesses[0].items[0].slice(0, -1);
-const wit_key = tx.witnesses[0].items[1];
-const public_key = ec.keyFromPublic(wit_key);
-console.log(public_key.verify(hashed_message_bytes, wit_sig) && 'true');
+const priv_aoppdjas = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503en
+const compressed_pub_vuiewmas = Buffer.from('038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af', 'hex');
+const txid_vviaosld = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
+const vout_pkabcals = 1;
+const valueOne_japsodjc = 650000000;
+const scriptcode_hlajijas = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
+const input_jlajdgcd = Input.from_output(txid_vviaosld, vout_pkabcals, valueOne_japsodjc, scriptcode_hlajijas);
+const addr_cjashdad = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
+const valueTwo_iopihfss = 100000000;
+const output = Output.from_options(addr_cjashdad, valueTwo_iopihfss);
+const tx_kjfgaijs = new Transaction();
+tx_kjfgaijs.inputs.push(input_jlajdgcd);
+tx_kjfgaijs.outputs.push(output);
+tx_kjfgaijs.sign_input(0, priv_aoppdjas, compressed_pub_vuiewmas);
+const hashed_message_bytes_aieoprds = tx_kjfgaijs.digest(0);
+const wit_sig_okdakljl = tx_kjfgaijs.witnesses[0].items[0].slice(0, -1);
+const wit_key_ttefkgdk = tx_kjfgaijs.witnesses[0].items[1];
+const public_key_yirutads = ec.keyFromPublic(wit_key_ttefkgdk);
+console.log(public_key_yirutads.verify(hashed_message_bytes_aieoprds, wit_sig_okdakljl) && 'true');
 console.log("KILL")
   `,
     defaultFunction: {
@@ -288,27 +288,27 @@ class Witness:
             r += pack("<B", len(item))
             r += item
         return r
-priv = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503e
-compressed_pub = bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af")
-txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
-vout = 1
-valueOne = 650000000
-scriptcode = "1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac"
-input = Input.from_output(txid, vout, valueOne, scriptcode)
-addr = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
-valueTwo = 100000000
-output = Output.from_options(addr, valueTwo)
-tx = Transaction()
-tx.inputs.append(input)
-tx.outputs.append(output)
-tx.sign_input(0, priv, compressed_pub)
+priv_aoppdjas = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503e
+compressed_pub_vuiewmas = bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af")
+txid_vviaosld = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
+vout_pkabcals = 1
+value_one_japsodjc = 650000000
+scriptcode_hlajijas = "1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac"
+input_jlajdgcd = Input.from_output(txid_vviaosld, vout_pkabcals, value_one_japsodjc, scriptcode_hlajijas)
+addr_cjashdad = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
+value_two_iopihfss = 100000000
+output = Output.from_options(addr_cjashdad, value_two_iopihfss)
+tx_kjfgaijs = Transaction()
+tx_kjfgaijs.inputs.append(input_jlajdgcd)
+tx_kjfgaijs.outputs.append(output)
+tx_kjfgaijs.sign_input(0, priv_aoppdjas, compressed_pub_vuiewmas)
 import ecdsa
 from ecdsa import VerifyingKey, SECP256k1
-wit_sig = tx.witnesses[0].items[0]
-wit_key = tx.witnesses[0].items[1]
-hashed_message_bytes = tx.digest(0)
-verifying_key = VerifyingKey.from_string(wit_key, curve=SECP256k1)
-print(verifying_key.verify_digest(wit_sig[:-1], hashed_message_bytes, ecdsa.util.sigdecode_der) and 'true')
+wit_sig_okdakljl = tx_kjfgaijs.witnesses[0].items[0]
+wit_key_ttefkgdk = tx_kjfgaijs.witnesses[0].items[1]
+hashed_message_bytes_aieoprds = tx_kjfgaijs.digest(0)
+verifying_key_zjkdhfxd = VerifyingKey.from_string(wit_key_ttefkgdk, curve=SECP256k1)
+print(verifying_key_zjkdhfxd.verify_digest(wit_sig_okdakljl[:-1], hashed_message_bytes_aieoprds, ecdsa.util.sigdecode_der) and 'true')
 print("KILL")
 `,
     defaultFunction: {
@@ -372,7 +372,7 @@ print("KILL")
         saveData
       >
         <LessonInfo>
-          <Title>{t('chapter_six.put_it_together_four.heading')}</Title>
+          <Title>{t('chapter_six.put_it_together_five.heading')}</Title>
 
           <Text className="mt-2 text-lg md:text-[22px]">
             {t('chapter_six.put_it_together_five.paragraph_one')}

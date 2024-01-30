@@ -118,26 +118,26 @@ class Witness {
     return buf;
   }
 }
-const priv = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503en
-const compressed_pub = Buffer.from('038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af', 'hex');
-const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
-const vout = 1;
-const valueOne = 650000000;
-const scriptcode = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
-const input = Input.from_output(txid, vout, valueOne, scriptcode);
-const addr = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
-const valueTwo = 100000000;
-const output = Output.from_options(addr, valueTwo);
-const tx = new Transaction();
-tx.inputs.push(input);
-tx.outputs.push(output);
-const [r, s] = tx.compute_input_signature(0, priv);
+const priv_dsljfohd = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503en
+const compressed_pub_agfwuebb = Buffer.from('038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af', 'hex');
+const txid_noiewnoa = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
+const vout_bucbsncc = 1;
+const valueOne_aelfhasc = 650000000;
+const scriptcode_iabsvalb = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
+const input_bauoevbs = Input.from_output(txid_noiewnoa, vout_bucbsncc, valueOne_aelfhasc, scriptcode_iabsvalb);
+const addr_pqvejvea = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
+const valueTwo_jhcermcr = 100000000;
+const output_uhmhvgcw = Output.from_options(addr_pqvejvea, valueTwo_jhcermcr);
+const tx_eagmcued = new Transaction();
+tx_eagmcued.inputs.push(input_bauoevbs);
+tx_eagmcued.outputs.push(output_uhmhvgcw);
+const [r, s] = tx_eagmcued.compute_input_signature(0, priv_dsljfohd);
 const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
-const private_key = ec.keyFromPrivate(priv.toString(16), 'hex');
-const hashed_message_bytes = tx.digest(0);
-const signature = {r: r.toString(16), s: s.toString(16)};
-console.log(private_key.verify(hashed_message_bytes, signature) && 'true')
+const private_key_faxwmufa = ec.keyFromPrivate(priv_dsljfohd.toString(16), 'hex');
+const hashed_message_bytes_ahuhfxmw = tx_eagmcued.digest(0);
+const signature_weiucmwa = {r: r.toString(16), s: s.toString(16)};
+console.log(private_key_faxwmufa.verify(hashed_message_bytes_ahuhfxmw, signature_weiucmwa) && 'true')
 console.log("KILL")`,
     defaultFunction: {
       name: 'privateKeyToPublicKey',
@@ -290,27 +290,27 @@ class Witness:
             r += item
         return r
 
-priv = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503e
-compressed_pub = bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af")
-txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
-valueOne = 650000000
-scriptcode = "1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac"
-vout = 1
-input = Input.from_output(txid, vout, valueOne, scriptcode)
-addr = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
-valueTwo = 100000000
-output = Output.from_options(addr, valueTwo)
-tx = Transaction()
-tx.inputs.append(input)
-tx.outputs.append(output)
-(r, s) = tx.compute_input_signature(0, priv)
+priv_dsljfohd = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503e
+compressed_pub_agfwuebb = bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af")
+txid_noiewnoa = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
+valueOne_aelfhasc = 650000000
+scriptcode_iabsvalb = "1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac"
+vout_bucbsncc = 1
+input_bauoevbs = Input.from_output(txid_noiewnoa, vout_bucbsncc, valueOne_aelfhasc, scriptcode_iabsvalb)
+addr_pqvejvea = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
+valueTwo_jhcermcr = 100000000
+output_uhmhvgcw = Output.from_options(addr_pqvejvea, valueTwo_jhcermcr)
+tx_eagmcued = Transaction()
+tx_eagmcued.inputs.append(input_bauoevbs)
+tx_eagmcued.outputs.append(output_uhmhvgcw)
+(r, s) = tx_eagmcued.compute_input_signature(0, priv_dsljfohd)
 import ecdsa
 from ecdsa import VerifyingKey, SECP256k1
-sig_string = f'{r:064x}{s:064x}'
-sig_bytes = bytes.fromhex(sig_string)
-hashed_message_bytes = tx.digest(0)
-verifying_key = VerifyingKey.from_string(compressed_pub, curve=SECP256k1)
-print(verifying_key.verify_digest(sig_bytes, hashed_message_bytes) and 'true')
+sig_string_oiadhald = f'{r:064x}{s:064x}'
+sig_bytes_ayeqncas = bytes.fromhex(sig_string_oiadhald)
+hashed_message_bytes_ywienvsd = tx_eagmcued.digest(0)
+verifying_key_dojssdfo = VerifyingKey.from_string(compressed_pub_agfwuebb, curve=SECP256k1)
+print(verifying_key_dojssdfo.verify_digest(sig_bytes_ayeqncas, hashed_message_bytes_ywienvsd) and 'true')
 print("KILL")`,
     defaultFunction: {
       name: 'privatekey_to_publickey',
@@ -319,6 +319,7 @@ print("KILL")`,
     defaultCode: `from random import randrange
 from secp256k1py import secp256k1
 ${prevData.data}
+
     def compute_input_signature(self, index: int, key: int):
         # k = random integer in [1, n-1]
         # R = G * k
@@ -346,9 +347,9 @@ ${prevData.data}
     constraints: [
       {
         range: [
-          countLines(prevData.data.slice(0, -2)) + 14,
+          countLines(prevData.data) + 14,
           1,
-          countLines(prevData.data.slice(0, -2)) + 15,
+          countLines(prevData.data) + 15,
           1,
         ],
         allowMultiline: true,

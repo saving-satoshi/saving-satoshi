@@ -130,21 +130,21 @@ class Witness {
   }
 }
 
-const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
-const vout = 1;
-const valueOne = 650000000;
-const scriptcode = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
-const input = Input.from_output(txid, vout, valueOne, scriptcode);
-const addr = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
-const valueTwo = 100000000;
-const output = Output.from_options(addr, valueTwo);
-const witness = new Witness();
-witness.push_item(Buffer.from('304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01', 'hex'));
-witness.push_item(Buffer.from('038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af', 'hex'));
-const tx = new Transaction();
-tx.inputs.push(input);
-tx.outputs.push(output);
-console.log(tx.digest(0).toString('hex') === 'a25cca939c60a6437de9872e51145be8afdaa7255d5395f11c33394a69d8d13a' && 'true')
+const txid_fjpolkwe = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
+const vout_eprwqlas = 1;
+const valueOne_vflkuyed = 650000000;
+const scriptcode_zlkwebnf = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
+const input_opjkfqsd = Input.from_output(txid_fjpolkwe, vout_eprwqlas, valueOne_vflkuyed, scriptcode_zlkwebnf);
+const addr_vjaudkfa = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
+const valueTwo_benadijl = 100000000;
+const output_tkuaojfp = Output.from_options(addr_vjaudkfa, valueTwo_benadijl);
+const witness_qkadjyrf = new Witness();
+witness_qkadjyrf.push_item(Buffer.from('304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01', 'hex'));
+witness_qkadjyrf.push_item(Buffer.from('038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af', 'hex'));
+const tx_dluitpjd = new Transaction();
+tx_dluitpjd.inputs.push(input_opjkfqsd);
+tx_dluitpjd.outputs.push(output_tkuaojfp);
+console.log(tx_dluitpjd.digest(0).toString('hex') === 'a25cca939c60a6437de9872e51145be8afdaa7255d5395f11c33394a69d8d13a' && 'true')
 console.log('KILL')
 `,
     defaultFunction: {
@@ -264,21 +264,21 @@ class Witness:
             r += item
         return r
 
-txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
-vout = 1
-value = 650000000
-scriptcode = "1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac"
-input = Input.from_output(txid, vout, value, scriptcode)
-addr = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
-value = 100000000
-output = Output.from_options(addr, value)
-witness = Witness()
-witness.push_item(bytes.fromhex("304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01"))
-witness.push_item(bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af"))
-tx = Transaction()
-tx.inputs.append(input)
-tx.outputs.append(output)
-print(tx.digest(0).hex() == 'a25cca939c60a6437de9872e51145be8afdaa7255d5395f11c33394a69d8d13a' and 'true')
+txid_fjpolkwe = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
+vout_eprwqlas = 1
+value_one_vflkuyed = 650000000
+scriptcode_zlkwebnf = "1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac"
+input_opjkfqsd = Input.from_output(txid_fjpolkwe, vout_eprwqlas, value_one_vflkuyed, scriptcode_zlkwebnf)
+addr_vjaudkfa = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
+value_two_benadijl = 100000000
+output_tkuaojfp = Output.from_options(addr_vjaudkfa, value_two_benadijl)
+witness_qkadjyrf = Witness()
+witness_qkadjyrf.push_item(bytes.fromhex("304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01"))
+witness_qkadjyrf.push_item(bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af"))
+tx_dluitpjd = Transaction()
+tx_dluitpjd.inputs.append(input_opjkfqsd)
+tx_dluitpjd.outputs.append(output_tkuaojfp)
+print(tx_dluitpjd.digest(0).hex() == 'a25cca939c60a6437de9872e51145be8afdaa7255d5395f11c33394a69d8d13a' and 'true')
 print("KILL")`,
     defaultFunction: {
       name: 'put-it-together-2',
@@ -286,6 +286,7 @@ print("KILL")`,
     },
     defaultCode: `import hashlib
 ${prevData.data}
+
     def digest(self, input_index: int):
         sighash = 1
         # YOUR CODE HERE
@@ -302,9 +303,9 @@ ${prevData.data}
     constraints: [
       {
         range: [
-          countLines(prevData.data.slice(0, -2)) + 5,
+          countLines(prevData.data) + 5,
           1,
-          countLines(prevData.data.slice(0, -2)) + 6,
+          countLines(prevData.data) + 6,
           1,
         ],
         allowMultiline: true,

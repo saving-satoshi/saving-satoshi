@@ -11,7 +11,7 @@ import {
 } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { EditorConfig } from 'types'
-import { LessonInfo, ScriptingChallenge, Text } from 'ui'
+import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
@@ -70,7 +70,6 @@ export default function PutItTogether6({ lang }) {
 
   const javascript = {
     program: `
-console.log(tx.serialize().toString('hex'));
 console.log("KILL")`,
     defaultFunction: {
       name: 'privateKeyToPublicKey',
@@ -93,7 +92,8 @@ const scriptcode = '1976a914' + pubkey_hash + '88ac';
 
 const tx = new Transaction();
 // YOUR CODE HERE
-`,
+
+console.log(tx.serialize().toString('hex'));`,
     validate: async (answer: string) => {
       if (
         answer.slice(0, 248) !==
@@ -128,7 +128,7 @@ const tx = new Transaction();
   }
 
   const python = {
-    program: `print(tx.serialize().hex())
+    program: `
 print("KILL")`,
     defaultFunction: {
       name: 'privatekey_to_publickey',
@@ -151,7 +151,8 @@ scriptcode = "1976a914" + pubkey_hash + "88ac"
 
 tx = Transaction()
 # YOUR CODE HERE
-`,
+
+print(tx.serialize().hex())`,
     validate: async (answer: string) => {
       if (
         answer.slice(0, 248) !==
@@ -208,6 +209,7 @@ tx = Transaction()
         loadingSavedCode={isLoading}
       >
         <LessonInfo>
+          <Title>{t('chapter_six.put_it_together_six.heading')}</Title>
           <Text className="font-nunito text-xl text-white">
             {t('chapter_six.put_it_together_six.paragraph_one')}
           </Text>
