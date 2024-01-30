@@ -66,12 +66,12 @@ export default function InOut4({ lang }) {
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
-const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
-const vout = 1;
-const value = 650000000;
-const scriptcode = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
-const input = Input.from_output(txid, vout, value, scriptcode);
-console.log(input.serialize().toString('hex') === '8e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff' && 'true')
+const txid_foahapoj = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
+const vout_ncapheme = 1;
+const value_payrqpvs = 650000000;
+const scriptcode_haieihsd = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
+const input_mqwaslhd = Input.from_output(txid_foahapoj, vout_ncapheme, value_payrqpvs, scriptcode_haieihsd);
+console.log(input_mqwaslhd.serialize().toString('hex') === '8e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff' && 'true')
 console.log("KILL")`,
     defaultFunction: {
       name: 'inputClass',
@@ -141,12 +141,12 @@ class Input {
 
   const python = {
     program: `# BEGIN VALIDATION BLOCK
-txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
-vout = 1
-value = 650000000
-scriptcode = "1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac"
-input = Input.from_output(txid, vout, value, scriptcode)
-print(input.serialize().hex() == '8e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff' and 'true')
+txid_foahapoj = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
+vout_ncapheme = 1
+value_payrqpvs = 650000000
+scriptcode_haieihsd = "1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac"
+input_mqwaslhd = Input.from_output(txid_foahapoj, vout_ncapheme, value_payrqpvs, scriptcode_haieihsd)
+print(input_mqwaslhd.serialize().hex() == '8e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff' and 'true')
 print("KILL")`,
     defaultFunction: {
       name: 'input_class',

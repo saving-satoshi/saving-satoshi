@@ -74,11 +74,11 @@ export default function InOut5({ lang }) {
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
-const addr = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
-const value = 100000000;
-const output = Output.from_options(addr, value);
-const isCorrect = output.serialize().toString('hex') === '00e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd1'
-console.log(isCorrect && 'true')
+const addr_pfajurn = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
+const value_uzglwbxj = 100000000;
+const output_otcqjgpd = Output.from_options(addr_pfajurn, value_uzglwbxj);
+const isCorrect_uflkrpot = output_otcqjgpd.serialize().toString('hex') === '00e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd1'
+console.log(isCorrect_uflkrpot && 'true')
 ;
 console.log("KILL")`,
     defaultFunction: {
@@ -135,11 +135,11 @@ class Output {
 
   const python = {
     program: `# BEGIN VALIDATION BLOCK
-addr = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
-value = 100000000
-output = Output.from_options(addr, value)
-is_correct = output.serialize().hex() == "00e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd1"
-print(is_correct and 'true')
+addr_pfajurn = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
+value_uzglwbxj = 100000000
+output_otcqjgpd = Output.from_options(addr_pfajurn, value_uzglwbxj)
+is_correct_uflkrpot = output_otcqjgpd.serialize().hex() == "00e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd1"
+print(is_correct_uflkrpot and 'true')
 print("KILL")`,
     defaultFunction: {
       name: 'privatekey_to_publickey',
