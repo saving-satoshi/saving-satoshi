@@ -3,7 +3,6 @@
 import clsx from 'clsx'
 
 import MonacoEditor from '@monaco-editor/react'
-
 import { monacoOptions } from './config'
 import { monaco } from 'react-monaco-editor'
 import { useEffect, useRef, useState } from 'react'
@@ -22,6 +21,7 @@ export default function Editor({
   code,
   constraints,
   hiddenRange,
+  loadingSavedCode,
 }: {
   language: string
   value?: string
@@ -30,10 +30,11 @@ export default function Editor({
   code?: string
   constraints: any
   hiddenRange?: number[]
+  loadingSavedCode?: boolean
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
-  const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(loadingSavedCode || true)
   const [options, setOptions] = useState(monacoOptions)
   const monacoRef = useRef<any>()
 
@@ -68,7 +69,9 @@ export default function Editor({
         ),
       ])
     monaco.editor.setTheme('satoshi')
-    setLoading(false)
+    if (!loadingSavedCode) {
+      setLoading(false)
+    }
     monacoRef.current = { monaco, editor }
     const model = editor.getModel()
     const constrainedInstance = constrainedEditor(monaco)

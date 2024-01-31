@@ -15,7 +15,7 @@ i18n/locales/en.ts
 
 ### Example
 
-To begin you will need to add your choice of locale in the `/i18n/config.ts` file, as below.
+To begin you will need to add your choice of locale in the `i18n/config.ts` file, as below.
 
 Config File:
 
@@ -64,11 +64,11 @@ const translations = {
 
 To add a new language:
 
-1. Look in the `/i18n/locales/` folder to determine if there are any existing translations in your preferred language
+1. Look in the `i18n/locales/` folder to determine if there are any existing translations in your preferred language
 1. If no translations in your language exist create an [issue](https://github.com/saving-satoshi/saving-satoshi/issues/new/choose) detailing the language and scope you wish to add to on Github.
-1. Add the new locale to /i18n/config.ts. and create a new folder in `/i18n/locales/{your-locale}.ts`
-1. Be sure to populate your new language in the `/i18n/locales/index.ts` file for easy imports.
-1. Open up `/i18n/locales/{your-locale}.ts` and start translating.
+1. Add the new locale to i18n/config.ts. and create a new folder in `i18n/locales/{your-locale}.ts`
+1. Be sure to populate your new language in the `i18n/locales/index.ts` file for easy imports.
+1. Open up `i18n/locales/{your-locale}.ts` and start translating.
 1. [Submit a pull request](https://github.com/saving-satoshi/saving-satoshi/compare) on Github.
 1. Invite reviews and get it merged!
 

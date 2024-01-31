@@ -20,15 +20,15 @@ const javascript = {
     args: ['text'],
   },
   defaultCode: `const { Hash } = require('crypto');
-// Provided by Vanderpoole 
-let text = "I am Vanderpoole and I have control of the private key Satoshi\\n" 
-text += "used to sign the first-ever Bitcoin transaction confirmed in block #170.\\n" 
-text += "This message is signed with the same private key." 
+// Provided by Vanderpoole
+let text = "I am Vanderpoole and I have control of the private key Satoshi\\n"
+text += "used to sign the first-ever Bitcoin transaction confirmed in block #170.\\n"
+text += "This message is signed with the same private key."
 
 function encode_message(text){
-// Given an ascii-encoded text message, serialize a byte array 
-// with the Bitcoin protocol prefix string followed by the text 
-// and both components preceded by a length byte. 
+// Given an ascii-encoded text message, serialize a byte array
+// with the Bitcoin protocol prefix string followed by the text
+// and both components preceded by a length byte.
 // Returns a 32-byte hex value.
 const prefix = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
 
@@ -63,17 +63,17 @@ print("KILL")`,
     name: 'encode_message',
     args: ['text'],
   },
-  defaultCode: `import hashlib 
-# Defined by Bitcoin message signing protocol 
-# Provided by Vanderpoole 
-text = "I am Vanderpoole and I have control of the private key Satoshi\\n" 
-text += "used to sign the first-ever Bitcoin transaction confirmed in block #170.\\n" 
-text += "This message is signed with the same private key." 
+  defaultCode: `import hashlib
+# Defined by Bitcoin message signing protocol
+# Provided by Vanderpoole
+text = "I am Vanderpoole and I have control of the private key Satoshi\\n"
+text += "used to sign the first-ever Bitcoin transaction confirmed in block #170.\\n"
+text += "This message is signed with the same private key."
 
-def encode_message(text): 
-  # Given an ascii-encoded text message, serialize a byte array 
-  # with the Bitcoin protocol prefix string followed by the text 
-  # and both components preceded by a length byte. 
+def encode_message(text):
+  # Given an ascii-encoded text message, serialize a byte array
+  # with the Bitcoin protocol prefix string followed by the text
+  # and both components preceded by a length byte.
   # Returns a 32-byte hex value.
   prefix = "Bitcoin Signed Message:\\n"
 
@@ -132,7 +132,7 @@ export default function PublicKey3({ lang }) {
           {t('chapter_five.validate_signature_one.paragraph_two')}
         </Text>
         <CodeExample
-          className="mt-4"
+          className="mt-4 font-space-mono"
           code={`[size of prefix][prefix][size of message][message]`}
           language="shell"
         />
