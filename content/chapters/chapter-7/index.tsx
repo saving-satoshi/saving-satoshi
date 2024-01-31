@@ -22,8 +22,8 @@ export const metadata = {
   slug: 'chapter-7',
   title: 'chapter_seven.title',
   image: '/assets/images/chapter-7-cover.jpg',
-  intros: [],
-  lessons: [],
-  outros: [],
-  challenges: [],
+  intros: ['intro-1', 'intro-2', 'intro-3'],
+  lessons: ['mempool-transaction-1'],
+  outros: ['outro-1'],
+  challenges: ['mempool-transaction-1'],
 }

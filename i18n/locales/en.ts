@@ -1505,7 +1505,25 @@ const translations = {
     },
   },
   chapter_seven: {
-    title: `Twentyone`,
+    title: `Offense is the best defense`,
+    paragraph_one:
+      'It’s late, and you’re getting sleepy, but as you shut your eyes for a moment, a double dose of bad news arrives. 1) Vanderpoole is back on TV. 2) He is claiming to be the great-grandson of Satoshi Nakamoto. He also looks sleep-deprived.',
+    intro_one: {
+      title: 'Building blocks',
+    },
+    intro_two: {},
+    intro_three: {},
+    derive_message_one: {
+      title: 'Derive Message',
+    },
+    verify_signature_one: {
+      title: 'Verify Signature',
+    },
+    verify_message_one: {
+      title: 'Verify Message',
+    },
+    outro_one: {},
+    resources: {},
   },
 
   chapter_eight: {

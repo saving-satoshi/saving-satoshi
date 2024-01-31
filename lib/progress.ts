@@ -82,6 +82,12 @@ export const keys = [
   'CH6PUT5',
   'CH6PUT6',
   'CH6OUT1',
+
+  'CH7INT1',
+  'CH7INT2',
+  'CH7INT3',
+  'CH7MPT1',
+  'CH7OUT1',
 ]
 
 export const keysMeta = {
@@ -166,6 +172,12 @@ export const keysMeta = {
   CH6PUT5: { path: '/chapter-6/put-it-together-5' },
   CH6PUT6: { path: '/chapter-6/put-it-together-6' },
   CH6OUT1: { path: '/chapter-6/outro-1' },
+
+  CH7INT1: { path: '/chapter-7/intro-1' },
+  CH7INT2: { path: '/chapter-7/intro-2' },
+  CH7INT3: { path: '/chapter-7/intro-3' },
+  CH7MPT1: { path: '/chapter-7/mempool-transaction-1' },
+  CH7OUT1: { path: '/chapter-7/outro-1' },
 }
 
 export const isLessonUnlocked = (
