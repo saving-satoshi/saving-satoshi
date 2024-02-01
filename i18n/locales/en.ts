@@ -1507,13 +1507,37 @@ const translations = {
   chapter_seven: {
     title: `Offense is the best defense`,
     paragraph_one:
-      'It’s late, and you’re getting sleepy, but as you shut your eyes for a moment, a double dose of bad news arrives. 1) Vanderpoole is back on TV. 2) He is claiming to be the great-grandson of Satoshi Nakamoto. He also looks sleep-deprived.',
+      'You and Mike Ramen arrive first via plane, then via dune buggy, and then via rowboat at Vanderpoole’s private island.',
     intro_one: {
+      title: 'Intro',
+      paragraph_one:
+        'You ask your compatriots whether they are worried about being spotted by Vanderpoole’s army of security drones.',
+      paragraph_two:
+        '—HOLOCAT: “Give me 15 minutes, and I’ll take care of them. They’re birds, and I’m a cat. They don’t stand a chance.”',
+      paragraph_three:
+        'Holocat extends his claws and deals with Vanderpoole’s drone army. Mike Ramen hands you a black turtleneck sweater, gloves, and a pair of night vision goggles.',
+      paragraph_four:
+        '—MIKE RAMEN: “You can’t do espionage in a Hawaiian shirt. What were you thinking? This isn’t another abandoned warehouse; this is a fortress. Here, I almost forgot. Take this grappling hook.”',
+      paragraph_five:
+        'You and Mike Ramen scale the castle walls of Vanderpoole’s primary residence. To your surprise, his home overflows with pro-bitcoin art, books, and paper magazines. He is or rather was, a true bitcoiner. A collection of miners dating back 125 years sit anointed in display cases. That’s when you see it: Vanderpoole’s workshop.',
+    },
+    intro_two: {
+      paragraph_one:
+        'The gigantic room is a mess, though its layout is methodical. Inside open notebooks, Vanderpoole’s designs for the backdoor that clogged up the bitcoin network are sketched out in detail. You were right: It was all a lie, but one told not by a conniving villain but by a desperate believer in bitcoin whose company could no longer keep up with modern miners and so infected the pools with a virus.',
+      paragraph_two:
+        'The virus replaces a section of the code used by all the mining pools. It is the block building logic, the algorithm that assembles transactions into a block template that then gets combined with zillions of different nonces, looking for a valid hash. The template is still passed on to legitimate hashing code for proof-of-work, but by then the damage has been done.',
+      paragraph_three:
+        '—HOLOCAT: “What a loss. His family was once great. It’s so sad to see the Vanderpoole’s come to this.”',
+      paragraph_four:
+        'Investors will sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.',
+    },
+    intro_three: {
+      paragraph_one:
+        "But you can't just leave the crippled mining code on Vanderpoole's server to keep infecting all the mining pools. You have to fix it! As you read through the code, Holocat shows you a mempool display and it is filling up with unconfirmed transactions. The sooner this code gets fixed, the better.",
+    },
+    mempool_transaction_one: {
       title: 'Building blocks',
     },
-    intro_two: {},
-    intro_three: {},
-    mempool_transaction_one: {},
     outro_one: {
       title: 'Outro',
       heading: 'You did it!!!',
