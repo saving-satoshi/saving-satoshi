@@ -17,7 +17,6 @@ export default function Outro1({ lang }) {
 
   return (
     <ChapterEnd
-      className="top-[70px]"
       image={metadata.image}
       direction="left"
       lang={lang}
