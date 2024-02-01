@@ -1538,7 +1538,12 @@ const translations = {
     mempool_transaction_one: {
       title: 'Building blocks',
     },
-    outro_one: {},
+    outro_one: {
+      title: 'Outro',
+      heading: 'You did it!!!',
+      paragraph_one:
+        'You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.',
+    },
     resources: {},
   },
 
