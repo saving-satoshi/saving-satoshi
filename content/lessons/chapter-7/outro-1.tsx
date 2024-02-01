@@ -7,8 +7,8 @@ export const metadata = {
   title: 'chapter_seven.outro_one.title',
   image: '/assets/images/chapter-7-outro.jpg',
   theme: 'bg-transparent/20',
-  secondaryTheme: 'bg-[#472B26]',
-  gradientTheme: 'from-[#472B26] via-[rgba(71, 43, 38, 0)]',
+  secondaryTheme: 'bg-[#19202D]',
+  gradientTheme: 'from-[#19202D] via-[#19202DBF]',
   key: 'CH7OUT1',
 }
 
@@ -17,7 +17,6 @@ export default function Outro1({ lang }) {
 
   return (
     <ChapterEnd
-      className="bottom-[0px]"
       image={metadata.image}
       direction="left"
       lang={lang}
