@@ -1537,6 +1537,32 @@ const translations = {
     },
     mempool_transaction_one: {
       title: 'Building blocks',
+      heading: 'Code Challenge',
+      paragraph_one:
+        "This is the code you find on Vanderpoole's server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is assemble_block() (in Python, assembleBlock() in JavaScript). If you run the code as Vanderpoole left it, you will see the problem right away.",
+      paragraph_two:
+        'You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules.',
+      paragraph_three:
+        'You can make the following assumptions to complete your mission:',
+      bullet_one:
+        'All transactions in the mempool have already been verified as valid.',
+      bullet_two:
+        'The coinbase transaction, and the weight it contributes to the block, can be ignored.',
+      paragraph_four:
+        'You can view the entire raw mempool JSON file <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link>.',
+      paragraph_five:
+        'Or browse an excerpt of the file in this table for some basic patterns:',
+      headings: {
+        item_one: 'Transaction ID',
+        item_two: 'Fee',
+        item_two_b: 'Satoshis',
+        item_three: 'Weight',
+        item_three_b: 'Virtual bytes',
+        item_four: 'Ancestors',
+      },
+      table_one: {
+        footer: 'View the json file for the rest of the transaction data',
+      },
     },
     outro_one: {
       title: 'Outro',
