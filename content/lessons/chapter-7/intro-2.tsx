@@ -17,7 +17,7 @@ export default function Intro2({ lang }) {
       <Text className="text-lg md:text-xl">
         {t('chapter_seven.intro_two.paragraph_one')}
       </Text>
-      <Text className="text-lg md:text-xl">
+      <Text className="mt-4 text-lg md:text-xl">
         {t('chapter_seven.intro_two.paragraph_two')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
