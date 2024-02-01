@@ -1513,16 +1513,13 @@ const translations = {
     },
     intro_two: {},
     intro_three: {},
-    derive_message_one: {
-      title: 'Derive Message',
+    mempool_transaction_one: {},
+    outro_one: {
+      title: 'Outro',
+      heading: 'You did it!!!',
+      paragraph_one:
+        'You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.',
     },
-    verify_signature_one: {
-      title: 'Verify Signature',
-    },
-    verify_message_one: {
-      title: 'Verify Message',
-    },
-    outro_one: {},
     resources: {},
   },
 
