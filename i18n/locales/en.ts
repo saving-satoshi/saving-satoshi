@@ -1105,7 +1105,7 @@ const translations = {
       paragraph_one:
         'Segregated Witness transactions work just like their legacy predecessors. There are a few global values like version and locktime. There is an array of inputs (UTXOs we want to spend) and an array of outputs (new UTXOs we want to create, for other people to spend in the future). There will also be an array of witnesses, one for each input. That is where signatures and scripts will go instead of the scriptSig.',
       paragraph_two:
-        'The message serializations for all these components is documented <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">here</Link>  and <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch06.asciidoc" target="_black" className="underline" >here</Link>.',
+        'The message serializations for all these components is documented <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">here</Link>  and <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline" >here</Link>.',
       paragraph_three:
         'And remember: integers in Bitcoin are serialized little-endian!',
     },
@@ -1121,7 +1121,7 @@ const translations = {
         "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6.",
       paragraph_five:
         'We also need a serialize() method that returns a byte array according to the specification:',
-      heading_two: 'Output',
+      heading_two: 'Outpoint',
       table_one: {
         heading: {
           one: 'Description',
@@ -1232,9 +1232,9 @@ const translations = {
         row_five: {
           column: {
             one: 'The data component derived from the bech32 address.',
-            two: 'length',
-            three: 'int',
-            four: '1',
+            two: 'index',
+            three: 'bytes',
+            four: '(var)',
           },
         },
       },
@@ -1283,6 +1283,7 @@ const translations = {
           item_four: '(var)',
         },
       },
+      success: 'The Witness class looks good, Great Work!',
     },
     put_it_together_two: {
       title: 'Putting it all together',
@@ -1349,14 +1350,14 @@ const translations = {
         },
       },
       paragraph_three:
-        'Notice that there is no "count" value for witnesses. That is because the number of witness stack must always be exactly equal to the number of inputs',
+        'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs',
       success: 'The Transaction class looks good, Great Work!',
     },
     put_it_together_three: {
       title: 'Putting it all together',
       heading: 'Transaction digest',
       paragraph_one:
-        'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in BIP 143.',
+        'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
       paragraph_two:
         'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method digest(input_index) that computes the 32-byte message for signing an input.',
       list_heading: 'Some notes:',
@@ -1451,9 +1452,9 @@ const translations = {
       heading: 'Signing!',
       paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called compute_input_signature(index: int, key: int) to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the digest() method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
       paragraph_two:
-        'See this page for the ECDSA signing algorithm. Also this PDF (Page 44, Section 4.1.3).',
+        'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
       paragraph_three:
-        'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in BIP 146.',
+        'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
       success: 'The compute_input_signature() method looks good, Great Work!',
     },
     put_it_together_five: {
@@ -1468,15 +1469,82 @@ const translations = {
         'The witness stack object can then be appended to the witnesses array of the transaction object.',
       success: 'The sign_input() method looks good, Great Work!',
     },
+    put_it_together_six: {
+      heading: 'Put it All Together',
+      paragraph_one:
+        'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 6.5 BTC input and a 1 BTC output... what happens to the other 5.5 BTC? Most of that will be "change" and we need to send it back to our own address!',
+      paragraph_two:
+        'Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in step 1) and two outputs:',
+      paragraph_three:
+        'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 550,000,000 to 549,999,000 satoshis.',
+      paragraph_four:
+        'Finally our work is done. Your script should end by returning the result of the transaction serialize() method. This is a valid signed Bitcoin transaction and we can broadcast it to the network to send Mike Ramen the money he needs!',
+      bullet_one:
+        'Mike Ramen gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
+      bullet_two:
+        'You get 550,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
+      success: "You've done it! You've built a transaction!",
+    },
     outro_one: {
       title: 'Outro',
       heading: 'You did it!!!',
       paragraph_one:
         "You successfully built a transaction from scratch to pay Mike Ramen for his help. Now that we are done here let's get off this island...",
     },
+    resources: {
+      in_out: {
+        input_class_heading: 'Input Class',
+        input_class_paragraph_one: 'Placeholder Resources',
+        output_class_heading: 'Output Class',
+        output_class_paragraph_one: 'Placeholder Resources',
+      },
+      put_it_together: {
+        building_a_transaction_heading: 'Building a Transaction',
+        building_a_transaction_paragraph_one: 'Placeholder Resources',
+      },
+    },
   },
   chapter_seven: {
-    title: `Twentyone`,
+    title: `Offense is the best defense`,
+    paragraph_one:
+      'You and Mike Ramen arrive first via plane, then via dune buggy, and then via rowboat at Vanderpoole’s private island.',
+    intro_one: {
+      title: 'Intro',
+      paragraph_one:
+        'You ask your compatriots whether they are worried about being spotted by Vanderpoole’s army of security drones.',
+      paragraph_two:
+        '—HOLOCAT: “Give me 15 minutes, and I’ll take care of them. They’re birds, and I’m a cat. They don’t stand a chance.”',
+      paragraph_three:
+        'Holocat extends his claws and deals with Vanderpoole’s drone army. Mike Ramen hands you a black turtleneck sweater, gloves, and a pair of night vision goggles.',
+      paragraph_four:
+        '—MIKE RAMEN: “You can’t do espionage in a Hawaiian shirt. What were you thinking? This isn’t another abandoned warehouse; this is a fortress. Here, I almost forgot. Take this grappling hook.”',
+      paragraph_five:
+        'You and Mike Ramen scale the castle walls of Vanderpoole’s primary residence. To your surprise, his home overflows with pro-bitcoin art, books, and paper magazines. He is or rather was, a true bitcoiner. A collection of miners dating back 125 years sit anointed in display cases. That’s when you see it: Vanderpoole’s workshop.',
+    },
+    intro_two: {
+      paragraph_one:
+        'The gigantic room is a mess, though its layout is methodical. Inside open notebooks, Vanderpoole’s designs for the backdoor that clogged up the bitcoin network are sketched out in detail. You were right: It was all a lie, but one told not by a conniving villain but by a desperate believer in bitcoin whose company could no longer keep up with modern miners and so infected the pools with a virus.',
+      paragraph_two:
+        'The virus replaces a section of the code used by all the mining pools. It is the block building logic, the algorithm that assembles transactions into a block template that then gets combined with zillions of different nonces, looking for a valid hash. The template is still passed on to legitimate hashing code for proof-of-work, but by then the damage has been done.',
+      paragraph_three:
+        '—HOLOCAT: “What a loss. His family was once great. It’s so sad to see the Vanderpoole’s come to this.”',
+      paragraph_four:
+        'Investors will sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.',
+    },
+    intro_three: {
+      paragraph_one:
+        "But you can't just leave the crippled mining code on Vanderpoole's server to keep infecting all the mining pools. You have to fix it! As you read through the code, Holocat shows you a mempool display and it is filling up with unconfirmed transactions. The sooner this code gets fixed, the better.",
+    },
+    mempool_transaction_one: {
+      title: 'Building blocks',
+    },
+    outro_one: {
+      title: 'Outro',
+      heading: 'You did it!!!',
+      paragraph_one:
+        'You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.',
+    },
+    resources: {},
   },
 
   chapter_eight: {

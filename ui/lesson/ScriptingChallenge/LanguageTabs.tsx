@@ -8,11 +8,13 @@ export default function LanguageTabs({
   value,
   onChange,
   noHide,
+  languageLocked,
 }: {
   languages: EditorLanguages
   value: string
   onChange: (val: string) => void
   noHide?: boolean
+  languageLocked?: boolean
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
@@ -36,7 +38,10 @@ export default function LanguageTabs({
             onClick={() => onChange(meta.value)}
             className={clsx(
               'h-full border-r border-white border-opacity-30 px-4',
-              { 'bg-black bg-opacity-20': meta.value === value }
+              {
+                'bg-black bg-opacity-20': meta.value === value,
+                hidden: languageLocked && meta.value !== value,
+              }
             )}
           >
             <span

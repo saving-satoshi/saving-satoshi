@@ -4,9 +4,10 @@ import { ScriptingChallenge, LessonInfo, CodeExample, Title, Table } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { useAuthContext } from 'providers/AuthProvider'
+import { getData } from 'api/data'
+import { detectLanguage, Language } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_six.in_out_five.title',
@@ -15,6 +16,23 @@ export const metadata = {
 
 export default function InOut5({ lang }) {
   const t = useTranslations(lang)
+  const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
+  const [isLoading, setIsLoading] = useState(true)
+
+  const getPrevLessonData = async () => {
+    const data = await getData('CH6INO4')
+    if (data) {
+      setPrevData({
+        lesson_id: 'CH6INO4',
+        data: data?.code?.getDecoded(),
+      })
+    }
+  }
+
+  useEffect(() => {
+    getPrevLessonData().finally(() => setIsLoading(false))
+  }, [])
+
   const tableHeading = [
     t('chapter_six.in_out_five.table.heading.one'),
     t('chapter_six.in_out_five.table.heading.two'),
@@ -54,23 +72,24 @@ export default function InOut5({ lang }) {
     ],
   ]
 
-  const { account } = useAuthContext()
-
   const javascript = {
-    program: `
-const addr = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
-const value = 100000000;
-const output = Output.from_options(addr, value);
-const isCorrect = output.serialize().toString('hex') === '00e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd1'
-console.log(isCorrect && 'true')
+    program: `//BEGIN VALIDATION BLOCK
+const addr_pfajurn = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
+const value_uzglwbxj = 100000000;
+const output_otcqjgpd = Output.from_options(addr_pfajurn, value_uzglwbxj);
+const isCorrect_uflkrpot = output_otcqjgpd.serialize().toString('hex') === '00e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd1'
+console.log(isCorrect_uflkrpot && 'true')
 ;
 console.log("KILL")`,
     defaultFunction: {
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: `const assert = require("assert")
-const bech32 = require('@savingsatoshi/bech32js')
+    defaultCode: `const assert = require('assert');
+const bech32 = require('@savingsatoshi/bech32js');
+// Use the bech32 library to find the version and data components from the address
+// See the library source code for the exact definition
+// https://github.com/saving-satoshi/bech32js/blob/main/bech32.js
 
 class Output {
   constructor() {
@@ -90,7 +109,6 @@ class Output {
     // YOUR CODE HERE
   }
 }
-
 `,
     validate: async (answer: string) => {
       if (answer) {
@@ -105,19 +123,23 @@ class Output {
     },
     constraints: [
       {
-        range: [14, 1, 23, 1],
+        range: [17, 1, 18, 1],
+        allowMultiline: true,
+      },
+      {
+        range: [22, 1, 23, 1],
         allowMultiline: true,
       },
     ],
   }
 
   const python = {
-    program: `
-addr = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
-value = 100000000
-output = Output.from_options(addr, value)
-is_correct = output.serialize().hex() == "00e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd1"
-print(is_correct and 'true')
+    program: `# BEGIN VALIDATION BLOCK
+addr_pfajurn = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
+value_uzglwbxj = 100000000
+output_otcqjgpd = Output.from_options(addr_pfajurn, value_uzglwbxj)
+is_correct_uflkrpot = output_otcqjgpd.serialize().hex() == "00e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd1"
+print(is_correct_uflkrpot and 'true')
 print("KILL")`,
     defaultFunction: {
       name: 'privatekey_to_publickey',
@@ -125,24 +147,25 @@ print("KILL")`,
     },
     defaultCode: `from struct import pack
 from bech32py import bech32
+# Use the bech32 library to find the version and data components from the address
+# See the library source code for the exact definition
+# https://github.com/saving-satoshi/bech32py/blob/main/bech32py/bech32.py
 
 class Output:
-  def __init__(self):
-    self.value = 0
-    self.witness_version = 0
-    self.witness_data = b""
+    def __init__(self):
+      self.value = 0
+      self.witness_version = 0
+      self.witness_data = b""
 
-  @classmethod
-  def from_options(cls, addr: str, value: int):
-    assert isinstance(value, int)
-    self = cls()
-    # YOUR CODE HERE
-    return self
+    @classmethod
+    def from_options(cls, addr: str, value: int):
+        assert isinstance(value, int)
+        self = cls()
+        # YOUR CODE HERE
+        return self
 
-  def serialize(self):
-    # YOUR CODE HERE
-
-
+    def serialize(self):
+        # YOUR CODE HERE
 `,
     validate: async (answer) => {
       if (answer) {
@@ -157,55 +180,58 @@ class Output:
     },
     constraints: [
       {
-        range: [14, 1, 21, 1],
+        range: [17, 1, 18, 1],
+        allowMultiline: true,
+      },
+      {
+        range: [21, 1, 22, 1],
         allowMultiline: true,
       },
     ],
   }
 
   const config: EditorConfig = {
-    defaultLanguage: 'javascript',
+    defaultLanguage:
+      detectLanguage(prevData.data) === Language.JavaScript
+        ? 'javascript'
+        : 'python',
     languages: {
       javascript,
       python,
     },
   }
 
-  const [language, setLanguage] = useState(config.defaultLanguage)
-  const handleSelectLanguage = (language: string) => {
-    setLanguage(language)
-  }
-
   return (
-    <ScriptingChallenge
-      lang={lang}
-      config={config}
-      saveData
-      lessonKey={getLessonKey('chapter-6', 'in-out-4')}
-      successMessage={t('chapter_six.in_out_four.success')}
-      onSelectLanguage={handleSelectLanguage}
-    >
-      <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
-        <Title>{t('chapter_six.in_out_four.heading')}</Title>
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_one')}
-        </Text>
-        <CodeExample
-          className="mt-4"
-          code={`from_options(addr: str, value: int)`}
-          language="shell"
-        />
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_two')}
-        </Text>
+    !isLoading && (
+      <ScriptingChallenge
+        lang={lang}
+        config={config}
+        saveData
+        lessonKey={getLessonKey('chapter-6', 'in-out-5')}
+        successMessage={t('chapter_six.in_out_five.success')}
+      >
+        <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+          <Title>{t('chapter_six.in_out_five.heading')}</Title>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_six.in_out_five.paragraph_one')}
+          </Text>
+          <CodeExample
+            className="mt-4 font-space-mono"
+            code={`from_options(addr: str, value: int)`}
+            language="shell"
+          />
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_six.in_out_five.paragraph_two')}
+          </Text>
 
-        <div className="mt-4">
-          <Title>{t('chapter_six.in_out_four.heading_two')}</Title>
-        </div>
-        <div className="mt-4 flex-col gap-4">
-          <Table headings={tableHeading} rows={outputRows} />
-        </div>
-      </LessonInfo>
-    </ScriptingChallenge>
+          <div className="mt-4">
+            <Title>{t('chapter_six.in_out_five.heading_two')}</Title>
+          </div>
+          <div className="mt-4 flex-col gap-4">
+            <Table headings={tableHeading} rows={outputRows} />
+          </div>
+        </LessonInfo>
+      </ScriptingChallenge>
+    )
   )
 }

@@ -28,6 +28,14 @@ const tabData = [
   },
 ]
 
+function trimLastTwoLines(code: string): string {
+  let lines = code.split('\n')
+  if (lines.length >= 2) {
+    lines = lines.slice(0, -2)
+  }
+  return lines.join('\n')
+}
+
 export default function ScriptingChallenge({
   children,
   lang,
@@ -36,6 +44,7 @@ export default function ScriptingChallenge({
   successMessage,
   saveData,
   onSelectLanguage,
+  loadingSavedCode,
 }: {
   children?: React.ReactNode
   lang: string
@@ -43,7 +52,8 @@ export default function ScriptingChallenge({
   config: EditorConfig
   successMessage: string
   saveData?: boolean
-  onSelectLanguage: (language: string) => void
+  onSelectLanguage?: (language: string) => void
+  loadingSavedCode?: boolean
 }) {
   const { saveProgress, saveProgressLocal } = useProgressContext()
   const { account } = useAuthContext()
@@ -66,7 +76,7 @@ export default function ScriptingChallenge({
   const isSmallScreen = useMediaQuery({ width: 767 })
 
   const handleSetLanguage = (value) => {
-    if (!challengeSuccess) {
+    if (!challengeSuccess && onSelectLanguage) {
       setLanguage(value)
       onSelectLanguage(value)
       setCode(config.languages[value].defaultCode?.toString())
@@ -95,23 +105,31 @@ export default function ScriptingChallenge({
     let trimmedCode: string = ''
 
     if (language === 'python') {
-      trimmedCode = data
-        .code!.getDecoded()
-        .substring(
-          0,
-          data.code!.getDecoded().indexOf('# BEGIN VALIDATION BLOCK') - 1
-        )
-        .replaceAll(/#.*\n\s*/g, '')
+      if (data.code!.getDecoded().includes('# BEGIN VALIDATION BLOCK')) {
+        trimmedCode = data
+          .code!.getDecoded()
+          .substring(
+            0,
+            data.code!.getDecoded().indexOf('# BEGIN VALIDATION BLOCK') - 1
+          )
+          .replaceAll(/#.*\n\s*/g, '')
+      } else {
+        trimmedCode = trimLastTwoLines(data.code!.getDecoded())
+      }
     }
 
     if (language === 'javascript') {
-      trimmedCode = data
-        .code!.getDecoded()
-        .substring(
-          0,
-          data.code!.getDecoded().indexOf('//BEGIN VALIDATION BLOCK') - 1
-        )
-        .replaceAll(/\s*\/\/.*(?:\n|$)/g, '\n')
+      if (data.code!.getDecoded().includes('//BEGIN VALIDATION BLOCK')) {
+        trimmedCode = data
+          .code!.getDecoded()
+          .substring(
+            0,
+            data.code!.getDecoded().indexOf('//BEGIN VALIDATION BLOCK') - 1
+          )
+          .replaceAll(/\s*\/\/.*(?:\n|$)/g, '\n')
+      } else {
+        trimmedCode = trimLastTwoLines(data.code!.getDecoded())
+      }
     }
 
     const base64TrimmedCode = new Base64String(trimmedCode)
@@ -153,6 +171,7 @@ export default function ScriptingChallenge({
 
         <div className="code-editor grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l">
           <LanguageTabs
+            languageLocked={!onSelectLanguage}
             languages={config.languages}
             value={language}
             onChange={handleSetLanguage}
@@ -165,6 +184,7 @@ export default function ScriptingChallenge({
             onValidate={handleEditorValidate}
             code={code}
             constraints={constraints}
+            loadingSavedCode={loadingSavedCode}
           />
           <Runner
             lang={lang}
