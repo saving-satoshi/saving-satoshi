@@ -96,6 +96,10 @@ export default function ScriptingChallenge({
       )
     )
   }
+  const handleTryAgain = () => {
+    setChallengeSuccess(false)
+    console.log(challengeSuccess)
+  }
 
   const handleRunnerValidate = async (data: StoredLessonData) => {
     const [success, errors] = await config.languages[language].validate(
@@ -135,7 +139,14 @@ export default function ScriptingChallenge({
     const base64TrimmedCode = new Base64String(trimmedCode)
 
     if (success) {
-      setChallengeSuccess(true)
+      if (
+        typeof success === 'boolean' ||
+        success === 3 ||
+        success === 4 ||
+        success === 5
+      ) {
+        setChallengeSuccess(true)
+      }
       if (account) {
         saveProgress(lessonKey)
         saveData &&
@@ -195,6 +206,7 @@ export default function ScriptingChallenge({
             errors={errors}
             setErrors={setErrors}
             onValidate={handleRunnerValidate}
+            handleTryAgain={handleTryAgain}
             successMessage={successMessage}
           />
         </div>
