@@ -154,6 +154,12 @@ const public_key_yirutads = ec.keyFromPublic(wit_key_ttefkgdk);
 console.log(public_key_yirutads.verify(hashed_message_bytes_aieoprds, wit_sig_okdakljl) && 'true');
 console.log("KILL")
   `,
+    rangesToCollapse: [
+      {
+        start: countLines(prevData.data) + 1,
+        end: countLines(prevData.data) + 22,
+      },
+    ],
     defaultFunction: {
       name: 'signInput',
       args: [],
@@ -311,6 +317,12 @@ verifying_key_zjkdhfxd = VerifyingKey.from_string(wit_key_ttefkgdk, curve=SECP25
 print(verifying_key_zjkdhfxd.verify_digest(wit_sig_okdakljl[:-1], hashed_message_bytes_aieoprds, ecdsa.util.sigdecode_der) and 'true')
 print("KILL")
 `,
+    rangesToCollapse: [
+      {
+        start: countLines(prevData.data) + 1,
+        end: countLines(prevData.data) + 10,
+      },
+    ],
     defaultFunction: {
       name: 'create_tx_message',
       args: [],
@@ -361,6 +373,7 @@ print("KILL")
       python,
     },
   }
+  console.log(config)
 
   return (
     !isLoading && (

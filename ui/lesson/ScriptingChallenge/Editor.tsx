@@ -7,7 +7,7 @@ import { monacoOptions } from './config'
 import { monaco } from 'react-monaco-editor'
 import { useEffect, useRef, useState } from 'react'
 import { Loader } from 'shared'
-import { LessonView } from 'types'
+import { EditorRange, LessonView } from 'types'
 import { useLessonContext } from 'ui'
 import { useMediaQuery } from 'hooks'
 // @ts-ignore
@@ -18,10 +18,11 @@ export default function Editor({
   value,
   onChange,
   onValidate,
-  code,
+  code = '',
   constraints,
   hiddenRange,
   loadingSavedCode,
+  rangesToCollapse = [],
 }: {
   language: string
   value?: string
@@ -31,6 +32,7 @@ export default function Editor({
   constraints: any
   hiddenRange?: number[]
   loadingSavedCode?: boolean
+  rangesToCollapse?: EditorRange[]
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
@@ -77,6 +79,19 @@ export default function Editor({
     const constrainedInstance = constrainedEditor(monaco)
     constrainedInstance.initializeIn(editor)
     constrainedInstance.addRestrictionsTo(model, constraints)
+    const actions = editor.getSupportedActions()
+    if (rangesToCollapse.length > 0) {
+      const foldAction = actions.find((a) => a.id === 'editor.foldAllExcept')
+      rangesToCollapse.forEach((range) => {
+        editor.setSelection({
+          startLineNumber: range.start,
+          endLineNumber: range.end,
+          startColumn: 1,
+          endColumn: 1,
+        })
+        foldAction.run()
+      })
+    }
   }
 
   const isSmallScreen = useMediaQuery({ width: 767 })
