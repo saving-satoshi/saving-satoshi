@@ -156,7 +156,7 @@ console.log("KILL")
   `,
     rangesToCollapse: [
       {
-        start: countLines(prevData.data) + 1,
+        start: countLines(prevData.data),
         end: countLines(prevData.data) + 22,
       },
     ],
@@ -320,7 +320,7 @@ print("KILL")
     rangesToCollapse: [
       {
         start: countLines(prevData.data) + 1,
-        end: countLines(prevData.data) + 10,
+        end: countLines(prevData.data) + 11,
       },
     ],
     defaultFunction: {
@@ -373,7 +373,6 @@ print("KILL")
       python,
     },
   }
-  console.log(config)
 
   return (
     !isLoading && (

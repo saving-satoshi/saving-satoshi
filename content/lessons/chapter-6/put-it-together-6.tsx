@@ -56,13 +56,15 @@ export default function PutItTogether6({ lang }) {
     if (prevData && allLessonsAreLoaded(prevData)) {
       setCombinedCode(
         organizeImports(
-          prevData['CH6PUT1'] +
+          '\n' +
+            prevData['CH6PUT1'] +
             '\n' +
             prevData['CH6PUT5'] +
             '\n' +
             prevData['CH6INO4'] +
             '\n' +
-            prevData['CH6INO5']
+            prevData['CH6INO5'] +
+            '\n'
         )
       )
     }
@@ -75,6 +77,12 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
+    rangesToCollapse: [
+      {
+        start: countLines(combinedCode) + 1,
+        end: countLines(combinedCode) + 18,
+      },
+    ],
     defaultCode: `${combinedCode}
 // UTXO from chapter 6 step 1 (mining pool payout)
 const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
@@ -124,12 +132,18 @@ console.log(tx.serialize().toString('hex'));`,
         allowMultiline: true,
       },
     ],
-    hiddenRange: [1, 1, countLines(combinedCode), 1],
+    //hiddenRange: [1, 1, countLines(combinedCode), 1],
   }
 
   const python = {
     program: `
 print("KILL")`,
+    rangesToCollapse: [
+      {
+        start: countLines(combinedCode) + 1,
+        end: countLines(combinedCode) + 18,
+      },
+    ],
     defaultFunction: {
       name: 'privatekey_to_publickey',
       args: ['private_key'],
@@ -183,7 +197,6 @@ print(tx.serialize().hex())`,
         allowMultiline: true,
       },
     ],
-    hiddenRange: [1, 1, countLines(combinedCode), 1],
   }
 
   const config: EditorConfig = {
