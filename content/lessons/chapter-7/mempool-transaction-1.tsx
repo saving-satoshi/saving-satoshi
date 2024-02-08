@@ -91,15 +91,91 @@ export default function MempoolTransaction1({ lang }) {
   const { account } = useAuthContext()
 
   const javascript = {
-    program: `console.log(input_mqwaslhd.serialize().toString('hex') === '8e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff' && 'true')
+    program: `//BEGIN VALIDATION BLOCK
+const MAX_BLOCK_WEIGHT = 4000000;
+
+function testBlock(mempool, block) {
+  let blockWeight = 0;
+  let blockFees = 0;
+
+  // Construct map for fast lookup
+  const mempoolTXs = {};
+  for (const tx of mempool) {
+    mempoolTXs[tx.txid] = tx;
+  }
+
+  const included = new Set();
+  for (const txid of block) {
+    // Check for duplicate txs
+    if (included.has(txid)) {
+      throw new Error(\`Duplicate TX found: \${txid}\`);
+    }
+
+    // Check for non-existent txs
+    if (!mempoolTXs[txid]) {
+      throw new Error(\`Invalid tx found: \${txid} (not in mempool)\`);
+    }
+
+    // Check for missing parents
+    for (const parentTXID of mempoolTXs[txid].parents) {
+      if (!included.has(parentTXID)) {
+        throw new Error(\`Invalid tx found: \${txid} \` +
+                        \`(required parent tx \${parentTXID} not in block)\`);
+      }
+    }
+
+    included.add(txid);
+    blockWeight += mempoolTXs[txid].weight;
+    blockFees += mempoolTXs[txid].fee;
+  }
+
+  if (blockWeight > MAX_BLOCK_WEIGHT) {
+    throw new Error(\`Too large block! Weight: \${blockWeight}\`);
+  }
+
+  return \`Total fees: \${blockFees} Total weight: \${blockWeight}\`;
+}
+
+console.log(testBlock(json, run()))
+
 console.log("KILL")`,
     defaultFunction: {
       name: 'inputClass',
       args: ['privateKey'],
     },
-    defaultCode: `serialize() {
-    // YOUR CODE HERE
+    defaultCode: `const json = require('./mempool.json')
+
+class MempoolTransaction {
+  constructor(json) {
+    this.txid = json.txid;
+    this.weight = json.weight;
+    this.fee = json.fee;
+    this.parents = json.parents;
   }
+}
+
+// Fix this!
+function assembleBlock(mempool) {
+  const block = [];
+  for (const tx of mempool) {
+    block.push(tx.txid);
+  }
+  return block;
+}
+
+function importMempoolFromJson(json) {
+  const mempool = [];
+  for (const tx of json) {
+    mempool.push(new MempoolTransaction(tx));
+  }
+  return mempool;
+}
+
+function run() {
+  const mempool = importMempoolFromJson(json);
+  const block = assembleBlock(mempool);
+  return block;
+}
 `,
     validate: async (answer: string) => {
       if (answer) {
@@ -114,21 +190,87 @@ console.log("KILL")`,
     },
     constraints: [
       {
-        range: [2, 1, 3, 1],
+        range: [1, 1, 34, 1],
         allowMultiline: true,
       },
     ],
   }
 
   const python = {
-    program: `print(input_mqwaslhd.serialize().hex() == '8e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff' and 'true')
+    program: `# BEGIN VALIDATION BLOCK
+from collections import Counter
+MAX_BLOCK_WEIGHT = 4000000
+
+mempool_test = import_mempool_from_json_file("mempool.json")
+
+def test_block(mempool, block):
+    """Read a list of transactions from stdin and check that they form a valid block."""
+    block_weight = 0
+    block_fees = 0
+    txs_in_block = []
+    # Construct dictionary for fast lookup
+    mempool_txs = {tx.txid: tx for tx in mempool}
+    lines_to_test = block
+
+    duplicate_txs = [k for k, count in Counter(lines_to_test).items() if count > 1]
+
+    if duplicate_txs:
+        print("Invalid block!")
+        count = len(duplicate_txs)
+        txs = duplicate_txs[:2] + ["..."] if count > 2 else []
+        raise Exception(f"{count} duplicate txs found: {txs}")
+
+    for tx in lines_to_test:
+        if tx not in mempool_txs.keys():
+            raise Exception(f"Invalid tx {tx} in block!")
+
+        for parent in mempool_txs[tx].parents:
+            if parent not in txs_in_block:
+                raise Exception(f"Block contains transaction {tx} with unconfirmed parent {parent}!")
+
+        txs_in_block.append(tx)
+        block_weight += mempool_txs[tx].weight
+        block_fees += mempool_txs[tx].fee
+
+    if block_weight > MAX_BLOCK_WEIGHT:
+        raise Exception(f"Too large block! Weight: {block_weight}")
+
+    return f"Total fees: {block_fees} Total weight: {block_weight}"
+
+print(test_block(mempool_test, run()))
 print("KILL")`,
     defaultFunction: {
       name: 'input_class',
       args: ['private_key'],
     },
-    defaultCode: `def serialize(self):
-        # YOUR CODE HERE
+    defaultCode: `import json
+
+class MempoolTransaction:
+    def __init__(self, json):
+        self.txid = json["txid"]
+        self.weight = json["weight"]
+        self.fee = json["fee"]
+        self.parents = json["parents"]
+
+# Fix this!
+def assemble_block(mempool):
+    block = []
+    for tx in mempool:
+        block.append(tx.txid)
+    return block
+
+def import_mempool_from_json_file(file_path):
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+    mempool = []
+    for tx in data:
+        mempool.append(MempoolTransaction(tx))
+    return mempool
+
+def run():
+    mempool = import_mempool_from_json_file("mempool.json")
+    block = assemble_block(mempool)
+    return block
 `,
     validate: async (answer) => {
       if (answer) {
@@ -143,7 +285,7 @@ print("KILL")`,
     },
     constraints: [
       {
-        range: [2, 1, 3, 1],
+        range: [1, 1, 29, 1],
         allowMultiline: true,
       },
     ],
