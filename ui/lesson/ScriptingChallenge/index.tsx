@@ -202,6 +202,7 @@ export default function ScriptingChallenge({
               code={code}
               constraints={constraints}
               loadingSavedCode={loadingSavedCode}
+              rangesToCollapse={config.languages[language].rangesToCollapse}
             />
           </div>
           <Runner
@@ -214,8 +215,8 @@ export default function ScriptingChallenge({
             setErrors={setErrors}
             onValidate={handleRunnerValidate}
             handleTryAgain={handleTryAgain}
-            poorMessage={poorMessage ? poorMessage : t('')}
-            goodMessage={goodMessage ? goodMessage : t('')}
+            poorMessage={poorMessage ?? ''}
+            goodMessage={goodMessage ?? ''}
             successMessage={successMessage}
           />
         </div>

@@ -1,4 +1,4 @@
-import { LessonDirection, LessonView } from 'types'
+import { EditorRange, LessonDirection, LessonView } from 'types'
 
 export interface ChapterContextType {}
 
@@ -21,6 +21,7 @@ export interface EditorLanguages {
     validate: (answer: any) => Promise<any[]>
     constraints: any
     hiddenRange?: number[]
+    rangesToCollapse?: EditorRange[]
   }
 }
 
