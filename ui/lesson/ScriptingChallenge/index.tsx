@@ -7,11 +7,12 @@ import Editor from './Editor'
 import Runner from './Runner'
 import { EditorConfig, LessonDirection, StoredLessonData } from 'types'
 import { Lesson, LessonTabs } from 'ui'
-import { useMediaQuery, useDynamicHeight } from 'hooks'
+import { useMediaQuery, useDynamicHeight, useTranslations } from 'hooks'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { useAuthContext } from 'providers/AuthProvider'
 import { setData } from 'api/data'
 import { Base64String } from 'types/classes'
+import clsx from 'clsx'
 
 const tabData = [
   {
@@ -41,6 +42,8 @@ export default function ScriptingChallenge({
   lang,
   lessonKey,
   config,
+  poorMessage,
+  goodMessage,
   successMessage,
   saveData,
   onSelectLanguage,
@@ -50,11 +53,14 @@ export default function ScriptingChallenge({
   lang: string
   lessonKey: string
   config: EditorConfig
+  poorMessage?: string
+  goodMessage?: string
   successMessage: string
   saveData?: boolean
   onSelectLanguage?: (language: string) => void
   loadingSavedCode?: boolean
 }) {
+  const t = useTranslations(lang)
   const { saveProgress, saveProgressLocal } = useProgressContext()
   const { account } = useAuthContext()
   const [code, setCode] = useState(
@@ -96,6 +102,9 @@ export default function ScriptingChallenge({
       )
     )
   }
+  const handleTryAgain = () => {
+    setChallengeSuccess(false)
+  }
 
   const handleRunnerValidate = async (data: StoredLessonData) => {
     const [success, errors] = await config.languages[language].validate(
@@ -135,7 +144,14 @@ export default function ScriptingChallenge({
     const base64TrimmedCode = new Base64String(trimmedCode)
 
     if (success) {
-      setChallengeSuccess(true)
+      if (
+        typeof success === 'boolean' ||
+        success === 3 ||
+        success === 4 ||
+        success === 5
+      ) {
+        setChallengeSuccess(true)
+      }
       if (account) {
         saveProgress(lessonKey)
         saveData &&
@@ -176,16 +192,18 @@ export default function ScriptingChallenge({
             value={language}
             onChange={handleSetLanguage}
           />
-          <Editor
-            language={language}
-            value={code}
-            hiddenRange={hiddenRange}
-            onChange={handleChange}
-            onValidate={handleEditorValidate}
-            code={code}
-            constraints={constraints}
-            loadingSavedCode={loadingSavedCode}
-          />
+          <div className={clsx({ 'pointer-events-none': challengeSuccess })}>
+            <Editor
+              language={language}
+              value={code}
+              hiddenRange={hiddenRange}
+              onChange={handleChange}
+              onValidate={handleEditorValidate}
+              code={code}
+              constraints={constraints}
+              loadingSavedCode={loadingSavedCode}
+            />
+          </div>
           <Runner
             lang={lang}
             config={config}
@@ -195,6 +213,9 @@ export default function ScriptingChallenge({
             errors={errors}
             setErrors={setErrors}
             onValidate={handleRunnerValidate}
+            handleTryAgain={handleTryAgain}
+            poorMessage={poorMessage ? poorMessage : t('')}
+            goodMessage={goodMessage ? goodMessage : t('')}
             successMessage={successMessage}
           />
         </div>

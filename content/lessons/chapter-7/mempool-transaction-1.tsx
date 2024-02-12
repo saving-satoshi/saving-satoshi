@@ -108,19 +108,18 @@ function testBlock(mempool, block) {
   for (const txid of block) {
     // Check for duplicate txs
     if (included.has(txid)) {
-      throw new Error(\`Duplicate TX found: \${txid}\`);
+      return \`Duplicate TX found: \${txid}\`
     }
 
     // Check for non-existent txs
     if (!mempoolTXs[txid]) {
-      throw new Error(\`Invalid tx found: \${txid} (not in mempool)\`);
+      return \`Invalid tx found: \${txid} (not in mempool)\`
     }
 
     // Check for missing parents
     for (const parentTXID of mempoolTXs[txid].parents) {
       if (!included.has(parentTXID)) {
-        throw new Error(\`Invalid tx found: \${txid} \` +
-                        \`(required parent tx \${parentTXID} not in block)\`);
+        return \`Invalid tx found: \${txid} \` + \`(required parent tx \${parentTXID} not in block)\`
       }
     }
 
@@ -130,7 +129,7 @@ function testBlock(mempool, block) {
   }
 
   if (blockWeight > MAX_BLOCK_WEIGHT) {
-    throw new Error(\`Too large block! Weight: \${blockWeight}\`);
+    return \`Too large block! Weight: \${blockWeight}\`
   }
 
   return \`Total fees: \${blockFees} Total weight: \${blockWeight}\`;
@@ -179,10 +178,32 @@ function run() {
 `,
     validate: async (answer: string) => {
       if (answer) {
-        if (answer === 'true') {
-          return [true, '']
+        if (answer.startsWith('Too large block!')) {
+          return [false, 'Invalid block, keep working!']
+        }
+
+        if (
+          answer.startsWith('Total fees:') &&
+          Number(answer.split(' ')[2]) <= 50000000
+        ) {
+          return [3, '']
+        }
+
+        if (
+          answer.startsWith('Total fees:') &&
+          Number(answer.split(' ')[2]) >= 50000001 &&
+          Number(answer.split(' ')[2]) <= 65000000
+        ) {
+          return [4, '']
+        }
+
+        if (
+          answer.startsWith('Total fees:') &&
+          Number(answer.split(' ')[2]) >= 65000001
+        ) {
+          return [5, '']
         } else {
-          return [false, 'recheck your methods']
+          return [false, 'Invalid block, keep working!']
         }
       } else {
         return [false, "can't find a return in both of the methods"]
@@ -244,6 +265,7 @@ print("KILL")`,
       args: ['private_key'],
     },
     defaultCode: `import json
+import collections
 
 class MempoolTransaction:
     def __init__(self, json):
@@ -272,12 +294,34 @@ def run():
     block = assemble_block(mempool)
     return block
 `,
-    validate: async (answer) => {
+    validate: async (answer: string) => {
       if (answer) {
-        if (answer === 'true') {
-          return [true, '']
+        if (answer.startsWith('Too large block!')) {
+          return [false, 'Invalid block, keep working!']
+        }
+
+        if (
+          answer.startsWith('Total fees:') &&
+          Number(answer.split(' ')[2]) <= 50000000
+        ) {
+          return [3, '']
+        }
+
+        if (
+          answer.startsWith('Total fees:') &&
+          Number(answer.split(' ')[2]) >= 50000001 &&
+          Number(answer.split(' ')[2]) <= 65000000
+        ) {
+          return [4, '']
+        }
+
+        if (
+          answer.startsWith('Total fees:') &&
+          Number(answer.split(' ')[2]) >= 65000001
+        ) {
+          return [5, '']
         } else {
-          return [false, 'recheck your methods']
+          return [false, 'Invalid block, keep working!']
         }
       } else {
         return [false, "can't find a return in both of the methods"]
@@ -309,6 +353,8 @@ def run():
       lang={lang}
       config={config}
       lessonKey={getLessonKey('chapter-7', 'mempool-transaction-1')}
+      poorMessage={t('chapter_seven.mempool_transaction_one.poor')}
+      goodMessage={t('chapter_seven.mempool_transaction_one.good')}
       successMessage={t('chapter_seven.mempool_transaction_one.success')}
       onSelectLanguage={handleSelectLanguage}
       saveData

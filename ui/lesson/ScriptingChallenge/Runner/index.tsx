@@ -44,7 +44,8 @@ const send = (action: string, payload: any) => {
   ws.send(JSON.stringify({ action, payload }))
 }
 
-let success = false
+let success: boolean | 0 | 1 | 2 | 3 | 4 | 5
+success = false
 
 export default function Runner({
   language,
@@ -53,7 +54,10 @@ export default function Runner({
   program,
   errors,
   onValidate,
+  handleTryAgain,
   lang,
+  poorMessage,
+  goodMessage,
   successMessage,
   setErrors,
 }: {
@@ -63,7 +67,10 @@ export default function Runner({
   program: string
   errors: string[]
   onValidate: (data: StoredLessonData) => Promise<any[]>
+  handleTryAgain: (pressed: boolean) => void
   lang: string
+  poorMessage: string
+  goodMessage: string
   successMessage: string
   setErrors: (errors: string[]) => void
 }) {
@@ -76,6 +83,7 @@ export default function Runner({
   const [loading, setLoading] = useState<boolean>(false)
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const isActive = activeView !== LessonView.Info
+  const [isTryAgain, setIsTryAgain] = useState<boolean | null>(null)
   const [hasherState, setHasherState] = useState<HasherState>(
     HasherState.Waiting
   )
@@ -153,7 +161,7 @@ export default function Runner({
               code: new Base64String(`${code}\n${program}`),
               answer: payload,
             })
-            if (!res) {
+            if (!res || res === 2) {
               setIsRunning(false)
               setHasherState(HasherState.Error)
               if (err) {
@@ -161,6 +169,23 @@ export default function Runner({
               }
               break
             }
+            if (res === 3) {
+              setIsRunning(false)
+              setHasherState(HasherState.Success)
+              success = 3
+              sendTerminal('success', t('runner.evaluation'))
+              sendTerminal('success', poorMessage)
+              break
+            }
+            if (res === 4) {
+              setIsRunning(false)
+              setHasherState(HasherState.Success)
+              success = 4
+              sendTerminal('success', t('runner.evaluation'))
+              sendTerminal('success', goodMessage)
+              break
+            }
+
             success = true
             setIsRunning(false)
             setHasherState(HasherState.Success)
@@ -201,9 +226,15 @@ export default function Runner({
     sendTerminal('clear')
   }, [language])
 
+  const onTryAgain = () => {
+    setIsTryAgain(true)
+    handleTryAgain(true)
+  }
+
   useEffect(() => {
-    setHasherState(HasherState.Waiting)
-  }, [code])
+    isTryAgain && setHasherState(HasherState.Waiting)
+    setIsTryAgain(false)
+  }, [isTryAgain, code])
 
   useEffect(() => {
     const handleMessage = (e) => {
@@ -283,9 +314,9 @@ export default function Runner({
           'min-h-14 flex h-14 w-full items-start border-t border-white border-opacity-30',
           {
             'hidden md:flex':
-              !isSmallScreen ||
-              (activeView !== LessonView.Execute &&
-                hasherState !== HasherState.Success),
+              !isSmallScreen &&
+              activeView !== LessonView.Execute &&
+              hasherState !== HasherState.Success,
             hidden: hasherState === HasherState.Success || loading,
             flex: isActive,
           }
@@ -324,7 +355,11 @@ export default function Runner({
         </button>
       </div>
       {hasherState === HasherState.Success && (
-        <StatusBar className="min-h-14 h-14 grow" success={success} />
+        <StatusBar
+          handleTryAgain={onTryAgain}
+          className="min-h-14 h-14 grow"
+          success={success}
+        />
       )}
     </>
   )

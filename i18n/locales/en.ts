@@ -1561,8 +1561,12 @@ const translations = {
         item_four: 'Ancestors',
       },
       table_one: {
-        footer: 'View the json file for the rest of the transaction data',
+        footer:
+          'View the json file <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link> for the rest of the transaction data',
       },
+      poor: "It's a valid block, but can you do better? Try to collect more fees.",
+      good: "It's a valid block, but you are not quite getting the most fees yet. Keep working, or continue, your choice.",
+      success: "It's a valid block, and you optimized fees. Nice!",
     },
     outro_one: {
       title: 'Outro',
@@ -1673,6 +1677,9 @@ const translations = {
     evaluation: 'Evaluation',
     script_output: 'Script output',
     waiting: 'Waiting for your input above...',
+    poor: "This is valid code but it's not quite what we are looking for. Try again.",
+    good: 'Good job, its not quite perfect but still considered correct. Keep working or continue, your choice.',
+    success: 'Great work your code looks great!',
   },
   notfound: {
     first: 'Hmm...where are we?',

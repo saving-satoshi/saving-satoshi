@@ -9,8 +9,12 @@ export enum Status {
   Begin,
   InProgress,
   Error,
+  Poor,
+  Good,
   Success,
 }
+
+export type SuccessNumbers = 0 | 1 | 2 | 3 | 4 | 5
 
 export default function StatusBar({
   success,
@@ -21,9 +25,10 @@ export default function StatusBar({
   full,
   hints,
   alwaysShow,
+  handleTryAgain,
   className,
 }: {
-  success: boolean | null
+  success: boolean | SuccessNumbers | null
   beginMessage?: string
   successMessage?: string
   inProgressMessage?: string
@@ -31,6 +36,7 @@ export default function StatusBar({
   full?: boolean
   hints?: boolean | null
   alwaysShow?: boolean
+  handleTryAgain?: (pressed: boolean) => void
   className?: string
 }) {
   const lang = useLang()
@@ -40,8 +46,28 @@ export default function StatusBar({
   const saveAndProceed = useSaveAndProceed()
 
   const getStatus = () => {
-    if (success === null) {
+    if (success === null || success === 0) {
       return Status.Begin
+    }
+
+    if (hints && success === 1) {
+      return Status.InProgress
+    }
+
+    if (success === 2) {
+      return Status.Error
+    }
+
+    if (success === 3) {
+      return Status.Poor
+    }
+
+    if (success === 4) {
+      return Status.Good
+    }
+
+    if (success === 5) {
+      return Status.Success
     }
 
     if (success === true) {
@@ -53,6 +79,10 @@ export default function StatusBar({
     }
 
     return Status.Error
+  }
+
+  const handleSubmit = () => {
+    handleTryAgain && handleTryAgain(true)
   }
 
   const statusMessage = () => {
@@ -79,6 +109,15 @@ export default function StatusBar({
             </span>
           )
         )
+      case Status.Poor:
+        return <span className="flex">Not quite there yet.</span>
+      case Status.Good:
+        return (
+          <span className="flex">
+            <Icon icon="check" className="mr-2 h-7 w-7 rounded-full bg-green" />{' '}
+            Well done
+          </span>
+        )
       case Status.Begin:
         return beginMessage || t('status_bar.begin_message')
       case Status.Error:
@@ -98,11 +137,14 @@ export default function StatusBar({
         {
           'w-screen': full,
           'w-full': !full,
-          'bg-green/15': getStatus() === Status.Success,
-          'bg-black/20': getStatus() !== Status.Success,
-          block: getStatus() === Status.Success && isActive,
+          'bg-green/15':
+            getStatus() === Status.Success || getStatus() === Status.Good,
+          'bg-black/20':
+            getStatus() !== Status.Success || getStatus() !== Status.Good,
+          block: getStatus() === Status.Success || (Status.Good && isActive),
           'hidden md:block':
-            getStatus() !== Status.Success && !isActive && !alwaysShow,
+            getStatus() !== Status.Success ||
+            (Status.Good && !isActive && !alwaysShow),
         }
       )}
     >
@@ -120,14 +162,32 @@ export default function StatusBar({
             {statusMessage()}
           </div>
         </div>
+        <div className="flex gap-[5px]">
+          <Button
+            onClick={handleSubmit}
+            classes={clsx('md:text-2xl', {
+              hidden: !(
+                getStatus() === Status.Poor || getStatus() === Status.Good
+              ),
+            })}
+          >
+            Try again
+          </Button>
 
-        <Button
-          onClick={saveAndProceed}
-          disabled={getStatus() !== Status.Success}
-          classes="md:text-2xl"
-        >
-          {t('status_bar.next')}
-        </Button>
+          <Button
+            onClick={saveAndProceed}
+            disabled={
+              !(getStatus() === Status.Success || getStatus() === Status.Good)
+            }
+            classes={clsx('md:text-2xl', {
+              hidden: !(
+                getStatus() === Status.Success || getStatus() === Status.Good
+              ),
+            })}
+          >
+            {t('status_bar.next')}
+          </Button>
+        </div>
       </div>
     </div>
   )
