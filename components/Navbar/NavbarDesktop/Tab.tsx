@@ -117,7 +117,7 @@ export default function Tab({
               icon="check"
               className="absolute right-[5px] top-[5px] h-[20px] w-[20px]"
             />
-          )) ||
+          ) ||
           (pnLessonId.split('-')[0] === 'outro' && (
             <Icon
               icon="check"
