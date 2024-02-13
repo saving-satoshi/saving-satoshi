@@ -60,7 +60,10 @@ export default function Page({ params }) {
       if (progress && params.lesson) {
         const lesson = chapterLessons[params.lesson]?.metadata ?? false
         const lessonUnlocked = isLessonUnlocked(progress, lesson.key)
-        if (keys.indexOf(currentLessonKey) > keys.indexOf(progress) + 1) {
+        if (
+          !isDevelopment &&
+          keys.indexOf(currentLessonKey) > keys.indexOf(progress) + 1
+        ) {
           console.warn('Lesson locked')
           return navigation.redirect(route)
         }
