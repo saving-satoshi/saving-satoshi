@@ -58,10 +58,18 @@ export default function Tab({
 
   const challengeId = isRouteLesson
     ? pnLessonId
-        .split('-')[0]
-        .replace('intro', chapters[slug].metadata.challenges[0].split('-')[0])
+        .substring(0, pnLessonId.length - 2)
+        .replace(
+          'intro',
+          chapters[slug].metadata.challenges[0].substring(
+            0,
+            chapters[slug].metadata.challenges[0].length - 2
+          )
+        )
     : undefined
-  const isActive = challenge.lessonId.split('-')[0] === challengeId
+  const isActive =
+    challenge.lessonId.substring(0, challenge.lessonId.length - 2) ===
+    challengeId
   const isLast = index === count - 1
   const lessonHref =
     challenge.lessonId === chapters[slug].metadata.challenges[0]
@@ -71,8 +79,11 @@ export default function Tab({
   const currentIndex = chapters[slug].metadata.challenges.indexOf(
     challengeId + '-1'
   )
-  const challengeLock = (currentIndex < index) && !isCompleted && (pnLessonId.split('-')[0] !== 'outro')
-  const challengeCheck = (isCompleted || (currentIndex > index)) || (pnLessonId.split('-')[0] === 'outro')
+  const challengeLock =
+    currentIndex < index && !isCompleted && pnLessonId.split('-')[0] !== 'outro'
+  const challengeCheck =
+    isCompleted || currentIndex > index || pnLessonId.split('-')[0] === 'outro'
+
   return (
     <Tooltip
       id={`navbar-tab-tooltip-${index + 1}`}
