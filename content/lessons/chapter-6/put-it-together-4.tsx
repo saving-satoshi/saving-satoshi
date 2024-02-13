@@ -139,6 +139,12 @@ const hashed_message_bytes_ahuhfxmw = tx_eagmcued.digest(0);
 const signature_weiucmwa = {r: r.toString(16), s: s.toString(16)};
 console.log(private_key_faxwmufa.verify(hashed_message_bytes_ahuhfxmw, signature_weiucmwa) && 'true')
 console.log("KILL")`,
+    rangesToCollapse: [
+      {
+        start: countLines(prevData.data) + 2,
+        end: countLines(prevData.data) + 39,
+      },
+    ],
     defaultFunction: {
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
@@ -312,6 +318,12 @@ hashed_message_bytes_ywienvsd = tx_eagmcued.digest(0)
 verifying_key_dojssdfo = VerifyingKey.from_string(compressed_pub_agfwuebb, curve=SECP256k1)
 print(verifying_key_dojssdfo.verify_digest(sig_bytes_ayeqncas, hashed_message_bytes_ywienvsd) and 'true')
 print("KILL")`,
+    rangesToCollapse: [
+      {
+        start: countLines(prevData.data) + 4,
+        end: countLines(prevData.data) + 16,
+      },
+    ],
     defaultFunction: {
       name: 'privatekey_to_publickey',
       args: ['private_key'],

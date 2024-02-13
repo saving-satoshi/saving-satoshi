@@ -114,8 +114,7 @@ class Input {
   serialize() {
     // YOUR CODE HERE
   }
-}
-`,
+}`,
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {

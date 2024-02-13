@@ -196,6 +196,7 @@ export default function ScriptingChallenge({
             code={code}
             constraints={constraints}
             loadingSavedCode={loadingSavedCode}
+            rangesToCollapse={config.languages[language].rangesToCollapse}
           />
           <Runner
             lang={lang}

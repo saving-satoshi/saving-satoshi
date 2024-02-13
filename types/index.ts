@@ -66,3 +66,8 @@ export type StoredLessonData = {
   answer: string
   code?: Base64String
 }
+
+export type EditorRange = {
+  start: number
+  end: number
+}
