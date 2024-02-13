@@ -1678,6 +1678,7 @@ const translations = {
     solution_eight: 'Solution to part eight of this challenge',
     solution_nine: 'Solution to part nine of this challenge',
     solution_ten: 'Solution to part ten of this challenge',
+    feedback:'Your feedback is valuable and help us in enhancing our work more, please give us a feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
   },
 }
 export default translations
