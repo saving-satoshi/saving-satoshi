@@ -62,16 +62,17 @@ export default function Tab({
         .replace('intro', chapters[slug].metadata.challenges[0].split('-')[0])
     : undefined
   const isActive = challenge.lessonId.split('-')[0] === challengeId
-  // const currentIndex =
   const isLast = index === count - 1
   const lessonHref =
     challenge.lessonId === chapters[slug].metadata.challenges[0]
       ? chapters[slug].metadata.intros[0]
       : challenge.lessonId
   const href = `${routes.chaptersUrl}/${slug}/${lessonHref}`
-  const currentIndex = chapters[slug].metadata.challenges.indexOf(
+  const currentIndex = chapters[slug].metadata.challenges/indexOf(
     challengeId + '-1'
   )
+  const challengeLock = (currentIndex < index) && !isCompleted && (pnLessonId.split('-')[0] !== 'outro')
+  const challengeCheck = (isCompleted || (currentIndex > index)) || (pnLessonId.split('-')[0] === 'outro')
   return (
     <Tooltip
       id={`navbar-tab-tooltip-${index + 1}`}
@@ -104,26 +105,18 @@ export default function Tab({
         )}
       >
         {index + 1}
-        {!(currentIndex >= index) &&
-          !isCompleted &&
-          pnLessonId.split('-')[0] !== 'outro' && (
-            <Icon
-              icon="lock"
-              className="absolute right-[10px] top-[10px] h-3 w-3 opacity-50"
-            />
-          )}
-        {(currentIndex > index) || isCompleted && (
-            <Icon
-              icon="check"
-              className="absolute right-[5px] top-[5px] h-[20px] w-[20px]"
-            />
-          ) ||
-          (pnLessonId.split('-')[0] === 'outro' && (
-            <Icon
-              icon="check"
-              className="absolute right-[5px] top-[5px] h-[20px] w-[20px]"
-            />
-          ))}
+        {challengeLock && (
+          <Icon
+            icon="lock"
+            className="absolute right-[10px] top-[10px] h-3 w-3 opacity-50"
+          />
+        )}
+        {challengeCheck && (
+          <Icon
+            icon="check"
+            className="absolute right-[5px] top-[5px] h-[20px] w-[20px]"
+          />
+        )}
       </Link>
     </Tooltip>
   )
