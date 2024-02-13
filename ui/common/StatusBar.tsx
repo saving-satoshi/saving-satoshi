@@ -14,7 +14,7 @@ export enum Status {
   Success,
 }
 
-export type SuccessNumbers = 0 | 1 | 2 | 3 | 4 | 5;
+export type SuccessNumbers = 0 | 1 | 2 | 3 | 4 | 5
 
 export default function StatusBar({
   success,
@@ -110,20 +110,13 @@ export default function StatusBar({
           )
         )
       case Status.Poor:
-        return (
-            <span className="flex">
-              Not quite there yet.
-            </span>
-        )
+        return <span className="flex">Not quite there yet.</span>
       case Status.Good:
         return (
-            <span className="flex">
-              <Icon
-                icon="check"
-                className="mr-2 h-7 w-7 rounded-full bg-green"
-              />{' '}
-              Well done
-            </span>
+          <span className="flex">
+            <Icon icon="check" className="mr-2 h-7 w-7 rounded-full bg-green" />{' '}
+            Well done
+          </span>
         )
       case Status.Begin:
         return beginMessage || t('status_bar.begin_message')
@@ -144,11 +137,14 @@ export default function StatusBar({
         {
           'w-screen': full,
           'w-full': !full,
-          'bg-green/15': getStatus() === Status.Success || getStatus() === Status.Good,
-          'bg-black/20': getStatus() !== Status.Success || getStatus() !== Status.Good,
-          block: getStatus() === Status.Success || Status.Good && isActive,
+          'bg-green/15':
+            getStatus() === Status.Success || getStatus() === Status.Good,
+          'bg-black/20':
+            getStatus() !== Status.Success || getStatus() !== Status.Good,
+          block: getStatus() === Status.Success || (Status.Good && isActive),
           'hidden md:block':
-            getStatus() !== Status.Success || Status.Good && !isActive && !alwaysShow,
+            getStatus() !== Status.Success ||
+            (Status.Good && !isActive && !alwaysShow),
         }
       )}
     >
@@ -166,31 +162,31 @@ export default function StatusBar({
             {statusMessage()}
           </div>
         </div>
-        <div className='flex gap-[5px]'>
-        <Button
-          onClick={handleSubmit}
-          classes={clsx(
-            "md:text-2xl",
-            {
-              hidden: !(getStatus() === Status.Poor || getStatus() === Status.Good)
-            }
-          )}
-        >
-          Try again
-        </Button>
+        <div className="flex gap-[5px]">
+          <Button
+            onClick={handleSubmit}
+            classes={clsx('md:text-2xl', {
+              hidden: !(
+                getStatus() === Status.Poor || getStatus() === Status.Good
+              ),
+            })}
+          >
+            Try again
+          </Button>
 
-        <Button
-          onClick={saveAndProceed}
-          disabled={!(getStatus() === Status.Success || getStatus() === Status.Good)}
-          classes={clsx(
-            "md:text-2xl",
-            {
-              hidden: !(getStatus() === Status.Success || getStatus() === Status.Good)
+          <Button
+            onClick={saveAndProceed}
+            disabled={
+              !(getStatus() === Status.Success || getStatus() === Status.Good)
             }
-          )}
-        >
-          {t('status_bar.next')}
-        </Button>
+            classes={clsx('md:text-2xl', {
+              hidden: !(
+                getStatus() === Status.Success || getStatus() === Status.Good
+              ),
+            })}
+          >
+            {t('status_bar.next')}
+          </Button>
         </div>
       </div>
     </div>

@@ -44,8 +44,8 @@ const send = (action: string, payload: any) => {
   ws.send(JSON.stringify({ action, payload }))
 }
 
-let success: boolean | 0 | 1 | 2 | 3 | 4 | 5;
-success = false;
+let success: boolean | 0 | 1 | 2 | 3 | 4 | 5
+success = false
 
 export default function Runner({
   language,
@@ -309,8 +309,8 @@ export default function Runner({
           {
             'hidden md:flex':
               !isSmallScreen &&
-              (activeView !== LessonView.Execute &&
-                hasherState !== HasherState.Success),
+              activeView !== LessonView.Execute &&
+              hasherState !== HasherState.Success,
             hidden: hasherState === HasherState.Success || loading,
             flex: isActive,
           }
@@ -349,7 +349,11 @@ export default function Runner({
         </button>
       </div>
       {hasherState === HasherState.Success && (
-        <StatusBar handleTryAgain={onTryAgain} className="min-h-14 h-14 grow" success={success} />
+        <StatusBar
+          handleTryAgain={onTryAgain}
+          className="min-h-14 h-14 grow"
+          success={success}
+        />
       )}
     </>
   )
