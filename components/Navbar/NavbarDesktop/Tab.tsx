@@ -112,8 +112,7 @@ export default function Tab({
               className="absolute right-[10px] top-[10px] h-3 w-3 opacity-50"
             />
           )}
-        {currentIndex > index ||
-          (isCompleted && (
+        {(currentIndex > index) || isCompleted && (
             <Icon
               icon="check"
               className="absolute right-[5px] top-[5px] h-[20px] w-[20px]"
