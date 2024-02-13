@@ -8,8 +8,6 @@ import { usePathData, useTranslations, useLocalizedRoutes } from 'hooks'
 import {
   getLastUnlockedLessonPath,
   getLessonKey,
-  getNextLessonKey,
-  isLessonCompleted,
   isLessonUnlocked,
   keys,
 } from 'lib/progress'
@@ -17,7 +15,6 @@ import {
 import * as navigation from 'next/navigation'
 import { useAuthContext } from 'providers/AuthProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
-import { Loader } from 'shared'
 import { LoadingState } from 'types'
 import { notFound } from 'next/navigation'
 import useEnvironment from 'hooks/useEnvironment'
