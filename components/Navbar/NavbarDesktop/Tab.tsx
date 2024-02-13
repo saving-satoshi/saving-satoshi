@@ -68,7 +68,7 @@ export default function Tab({
       ? chapters[slug].metadata.intros[0]
       : challenge.lessonId
   const href = `${routes.chaptersUrl}/${slug}/${lessonHref}`
-  const currentIndex = chapters[slug].metadata.challenges/indexOf(
+  const currentIndex = chapters[slug].metadata.challenges.indexOf(
     challengeId + '-1'
   )
   const challengeLock = (currentIndex < index) && !isCompleted && (pnLessonId.split('-')[0] !== 'outro')
