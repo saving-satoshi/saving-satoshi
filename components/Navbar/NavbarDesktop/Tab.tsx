@@ -68,7 +68,11 @@ export default function Tab({
       ? chapters[slug].metadata.intros[0]
       : challenge.lessonId
   const href = `${routes.chaptersUrl}/${slug}/${lessonHref}`
-
+  const currentIndex = chapters[slug].metadata.challenges.indexOf(
+    challengeId + '-1'
+  )
+  const challengeLock = (currentIndex < index) && !isCompleted && (pnLessonId.split('-')[0] !== 'outro')
+  const challengeCheck = (isCompleted || (currentIndex > index)) || (pnLessonId.split('-')[0] === 'outro')
   return (
     <Tooltip
       id={`navbar-tab-tooltip-${index + 1}`}
@@ -101,13 +105,13 @@ export default function Tab({
         )}
       >
         {index + 1}
-        {!isUnlocked && (
+        {challengeLock && (
           <Icon
             icon="lock"
             className="absolute right-[10px] top-[10px] h-3 w-3 opacity-50"
           />
         )}
-        {isCompleted && (
+        {challengeCheck && (
           <Icon
             icon="check"
             className="absolute right-[5px] top-[5px] h-[20px] w-[20px]"
