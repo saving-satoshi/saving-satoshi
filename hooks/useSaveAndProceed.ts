@@ -29,15 +29,16 @@ export default function useSaveAndProceed() {
   const saveAndProceed = async () => {
     const nextLessonKey = getNextLessonKey(currentLessonKey, account)
     const nextLessonPath = getNextLessonPath(currentLessonKey)
+    console.log(nextLessonPath)
     const route = routes.chaptersUrl + nextLessonPath + queryParams
 
-    if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
+    /*if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
       if (account) {
         await saveProgress(nextLessonKey)
       } else {
         await saveProgressLocal(nextLessonKey)
       }
-    }
+    }*/
     router.push(route, { scroll: true })
   }
 

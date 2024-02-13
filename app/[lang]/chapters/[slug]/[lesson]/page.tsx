@@ -89,15 +89,13 @@ export default function Page({ params }) {
 
   const Lesson = chapterLessons[params.lesson].default
 
-  if (isDevelopment) {
-    return (
-      <>
-        <Head />
-        <Lesson lang={params.lang} />
-      </>
-    )
-  }
-
+  return (
+    <>
+      <Head />
+      <Lesson lang={params.lang} />
+    </>
+  )
+  /*
   // If account or progress data is being loaded, we show a loader.
   if (unlocked === LoadingState.Idle || isAccountLoading || isProgressLoading) {
     return (
@@ -128,6 +126,7 @@ export default function Page({ params }) {
     const route = routes.chaptersUrl + lastUnlockedLessonPath
     return navigation.redirect(route)
   }
+  console.log(progress, params.lesson)
 
   return (
     unlocked && (
@@ -137,4 +136,5 @@ export default function Page({ params }) {
       </>
     )
   )
+  */
 }

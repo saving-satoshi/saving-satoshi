@@ -22,6 +22,8 @@ export default function useSaveAndReturn() {
     const nextLessonKey = getNextLessonKey(currentLessonKey, account)
     const chapterKey = getChapterKey(nextLessonKey)
 
+    router.push(`${chaptersUrl}#${chapterKey}`)
+
     if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
       if (account) {
         await saveProgress(nextLessonKey)
@@ -29,8 +31,6 @@ export default function useSaveAndReturn() {
         await saveProgressLocal(nextLessonKey)
       }
     }
-
-    router.push(`${chaptersUrl}#${chapterKey}`)
   }
 
   return saveAndReturn
