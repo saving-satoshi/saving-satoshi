@@ -72,7 +72,11 @@ export default function Page({ params }) {
         }
         setUnlocked(lessonUnlocked ? LoadingState.Success : LoadingState.Failed)
 
-        saveProgress(currentLessonKey)
+        router.prefetch(routes.chaptersUrl + nextLessonPath)
+
+        if (account) {
+          saveProgress(currentLessonKey)
+        }
         saveProgressLocal(currentLessonKey)
       } else {
         setUnlocked(LoadingState.Failed)
@@ -107,8 +111,6 @@ export default function Page({ params }) {
   }
 
   const Lesson = chapterLessons[params.lesson].default
-
-  router.prefetch(routes.chaptersUrl + nextLessonPath)
 
   return (
     <>
