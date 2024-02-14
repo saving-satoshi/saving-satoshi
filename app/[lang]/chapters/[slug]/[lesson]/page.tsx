@@ -8,6 +8,7 @@ import { usePathData, useTranslations, useLocalizedRoutes } from 'hooks'
 import {
   getLastUnlockedLessonPath,
   getLessonKey,
+  getNextLessonPath,
   isLessonUnlocked,
   keys,
 } from 'lib/progress'
@@ -16,7 +17,7 @@ import * as navigation from 'next/navigation'
 import { useAuthContext } from 'providers/AuthProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
 import { LoadingState } from 'types'
-import { notFound } from 'next/navigation'
+import { notFound, useRouter } from 'next/navigation'
 import useEnvironment from 'hooks/useEnvironment'
 
 const Portal = ({ children, id }) => {
@@ -35,6 +36,7 @@ export default function Page({ params }) {
   const { isDevelopment } = useEnvironment()
   const t = useTranslations(params.lang)
 
+  const router = useRouter()
   const routes = useLocalizedRoutes()
 
   const chapterId = params.slug
@@ -51,12 +53,13 @@ export default function Page({ params }) {
 
   const currentLessonKey = getLessonKey(pathData.chapterId, pathData.lessonId)
   const lastUnlockedLessonPath = getLastUnlockedLessonPath(progress)
+  const nextLessonPath = getNextLessonPath(currentLessonKey)
   const route = routes.chaptersUrl + lastUnlockedLessonPath
 
   const [unlocked, setUnlocked] = useState<number>(LoadingState.Idle)
 
   useEffect(() => {
-    if (!isAccountLoading && !isProgressLoading) {
+    if (!isDevelopment && !isAccountLoading && !isProgressLoading) {
       if (progress && params.lesson) {
         const lesson = chapterLessons[params.lesson]?.metadata ?? false
         const lessonUnlocked = isLessonUnlocked(progress, lesson.key)
@@ -65,15 +68,12 @@ export default function Page({ params }) {
           keys.indexOf(currentLessonKey) > keys.indexOf(progress) + 1
         ) {
           console.warn('Lesson locked')
-          return navigation.redirect(route)
+          router.replace(route)
         }
         setUnlocked(lessonUnlocked ? LoadingState.Success : LoadingState.Failed)
 
-        if (account) {
-          saveProgress(currentLessonKey)
-        } else {
-          saveProgressLocal(currentLessonKey)
-        }
+        saveProgress(currentLessonKey)
+        saveProgressLocal(currentLessonKey)
       } else {
         setUnlocked(LoadingState.Failed)
       }
@@ -107,6 +107,8 @@ export default function Page({ params }) {
   }
 
   const Lesson = chapterLessons[params.lesson].default
+
+  router.prefetch(routes.chaptersUrl + nextLessonPath)
 
   return (
     <>
