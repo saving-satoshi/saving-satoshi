@@ -69,6 +69,7 @@ export default function Page({ params }) {
         ) {
           console.warn('Lesson locked')
           router.replace(route)
+          return
         }
         setUnlocked(lessonUnlocked ? LoadingState.Success : LoadingState.Failed)
 
