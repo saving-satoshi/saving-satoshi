@@ -3,7 +3,7 @@
 import clsx from 'clsx'
 import Image from 'next/image'
 import { Button } from 'shared'
-import { useSaveAndProceed, useTranslations } from 'hooks'
+import { useProceed, useTranslations } from 'hooks'
 import { useEffect } from 'react'
 
 export default function TextImageDisplay({
@@ -24,7 +24,7 @@ export default function TextImageDisplay({
   objectPosition?: string
 }) {
   const t = useTranslations(lang)
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -52,7 +52,7 @@ export default function TextImageDisplay({
             </div>
             <div>
               {btnEnabled ? (
-                <Button onClick={saveAndProceed} classes="w-full md:w-auto">
+                <Button onClick={proceed} classes="w-full md:w-auto">
                   {btnText ? btnText : t('shared.next')}
                 </Button>
               ) : (

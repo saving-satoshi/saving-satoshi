@@ -6,7 +6,7 @@ import { usePathData, useLocalizedRoutes } from 'hooks'
 import { lessons } from 'content'
 import useEnvironment from './useEnvironment'
 
-export default function useSaveAndProceed() {
+export default function useProceed() {
   const router = useRouter()
   const { chapterId, lessonId } = usePathData()
   const { isDevelopment } = useEnvironment()
@@ -18,12 +18,12 @@ export default function useSaveAndProceed() {
   const currentLessonKey = lesson?.key ?? 'CH1INT1'
   const queryParams = isDevelopment ? '?dev=true' : ''
 
-  const saveAndProceed = async () => {
+  const Proceed = async () => {
     const nextLessonPath = getNextLessonPath(currentLessonKey)
     const route = routes.chaptersUrl + nextLessonPath + queryParams
 
     router.push(route, { scroll: true })
   }
 
-  return saveAndProceed
+  return Proceed
 }

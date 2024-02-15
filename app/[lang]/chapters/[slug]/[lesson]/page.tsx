@@ -84,12 +84,20 @@ export default function Page({ params }) {
       }
     }
   }, [
+    isDevelopment,
+    isAccountLoading,
+    isProgressLoading,
     progress,
     params.lesson,
     chapterLessons,
-    chapterId,
-    isAccountLoading,
-    isProgressLoading,
+    currentLessonKey,
+    router,
+    routes.chaptersUrl,
+    nextLessonPath,
+    account,
+    saveProgressLocal,
+    route,
+    saveProgress,
   ])
 
   const Head = () => {

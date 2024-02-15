@@ -10,14 +10,17 @@ export default function useSaveAndReturn() {
   const { chaptersUrl } = useLocalizedRoutes()
   const router = useRouter()
   const { account } = useAuthContext()
-  const { progress, saveProgress } = useProgressContext()
+  const { progress, saveProgress, saveProgressLocal } = useProgressContext()
 
   const saveAndReturn = async () => {
     const nextLessonKey = getNextLessonKey(progress, account)
     const chapterKey = getChapterKey(nextLessonKey)
 
     if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
-      await saveProgress(nextLessonKey)
+      if (account) {
+        await saveProgress(nextLessonKey)
+      }
+      await saveProgressLocal(nextLessonKey)
     }
     router.push(`${chaptersUrl}#${chapterKey}`)
   }
