@@ -7,7 +7,7 @@ export default function useLessonStatus(
   progress: string | undefined,
   lesson: string
 ) {
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(false)
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(true)
   const [isCompleted, setIsCompleted] = useState<boolean>(false)
 
   useEffect(() => {

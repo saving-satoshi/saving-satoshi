@@ -58,16 +58,31 @@ export default function Tab({
 
   const challengeId = isRouteLesson
     ? pnLessonId
-        .split('-')[0]
-        .replace('intro', chapters[slug].metadata.challenges[0].split('-')[0])
+        .substring(0, pnLessonId.length - 2)
+        .replace(
+          'intro',
+          chapters[slug].metadata.challenges[0].substring(
+            0,
+            chapters[slug].metadata.challenges[0].length - 2
+          )
+        )
     : undefined
-  const isActive = challenge.lessonId.split('-')[0] === challengeId
+  const isActive =
+    challenge.lessonId.substring(0, challenge.lessonId.length - 2) ===
+    challengeId
   const isLast = index === count - 1
   const lessonHref =
     challenge.lessonId === chapters[slug].metadata.challenges[0]
       ? chapters[slug].metadata.intros[0]
       : challenge.lessonId
   const href = `${routes.chaptersUrl}/${slug}/${lessonHref}`
+  const currentIndex = chapters[slug].metadata.challenges.indexOf(
+    challengeId + '-1'
+  )
+  const challengeLock =
+    currentIndex < index && !isCompleted && pnLessonId.split('-')[0] !== 'outro'
+  const challengeCheck =
+    isCompleted || currentIndex > index || pnLessonId.split('-')[0] === 'outro'
 
   return (
     <Tooltip
@@ -101,13 +116,13 @@ export default function Tab({
         )}
       >
         {index + 1}
-        {!isUnlocked && (
+        {challengeLock && (
           <Icon
             icon="lock"
             className="absolute right-[10px] top-[10px] h-3 w-3 opacity-50"
           />
         )}
-        {isCompleted && (
+        {challengeCheck && (
           <Icon
             icon="check"
             className="absolute right-[5px] top-[5px] h-[20px] w-[20px]"
