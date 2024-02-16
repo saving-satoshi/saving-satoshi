@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations, useSaveAndProceed } from 'hooks'
+import { useTranslations, useProceed } from 'hooks'
 import { Title } from 'ui'
 import { Button } from 'shared'
 import Avatar from 'components/Avatar'
@@ -20,7 +20,7 @@ export default function Coop1({ lang }) {
   const { account } = useAuthContext()
   const t = useTranslations(lang)
 
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
   const isSmallScreen = useMediaQuery({ width: 767 })
   const players = [
     {
@@ -104,7 +104,7 @@ export default function Coop1({ lang }) {
           <div className="mt-8 text-lg">
             {t('chapter_three.coop_one.paragraph_three')}
           </div>
-          <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+          <Button onClick={proceed} classes="mt-10 max-md:w-full">
             {t('shared.next')}
           </Button>
         </div>

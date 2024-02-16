@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations, useSaveAndProceed } from 'hooks'
+import { useTranslations, useProceed } from 'hooks'
 import { ChapterIntro, CodeExample } from 'ui'
 import { Button } from 'shared'
 
@@ -10,7 +10,7 @@ export const metadata = {
 }
 
 export default function IntOut2({ lang }) {
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
   const t = useTranslations(lang)
 
   return (
@@ -30,7 +30,7 @@ export default function IntOut2({ lang }) {
       <p className="mt-8 text-lg md:text-xl">
         {t('chapter_six.in_out_two.paragraph_three')}
       </p>
-      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+      <Button onClick={proceed} classes="mt-10 max-md:w-full">
         {t('shared.next')}
       </Button>
     </ChapterIntro>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations, useSaveAndProceed, useMediaQuery } from 'hooks'
+import { useTranslations, useProceed, useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import { ProfileWithHashPower } from 'types'
@@ -34,7 +34,7 @@ export default function Pool2({ lang }) {
   const [antagonistHash, setAntagonistHash] = useState(0)
   const [showText, setShowText] = useState(true)
 
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
 
   const isSmallScreen = useMediaQuery({ width: 767 })
 
@@ -254,10 +254,7 @@ export default function Pool2({ lang }) {
                 <Text className="self-stretch text-center font-nunito text-[18px] font-semibold">
                   {t('chapter_three.pool_two.step_two_paragraph_one')}
                 </Text>
-                <Button
-                  onClick={saveAndProceed}
-                  classes="w-full md:w-auto mt-[20px]"
-                >
+                <Button onClick={proceed} classes="w-full md:w-auto mt-[20px]">
                   {t('shared.next')}
                 </Button>
               </span>
