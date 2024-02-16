@@ -1,6 +1,6 @@
 'use client'
 
-import { useSaveAndProceed, useTranslations } from 'hooks'
+import { useProceed, useTranslations } from 'hooks'
 import { Button } from 'shared'
 import { ChapterIntro } from 'ui'
 
@@ -10,7 +10,7 @@ export const metadata = {
 }
 
 export default function DeriveMessage1({ lang }) {
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
   const t = useTranslations(lang)
 
   return (
@@ -22,7 +22,7 @@ export default function DeriveMessage1({ lang }) {
         {t('chapter_five.verify_signature_one.paragraph_one')}
       </p>
 
-      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+      <Button onClick={proceed} classes="mt-10 max-md:w-full">
         {t('shared.next')}
       </Button>
     </ChapterIntro>

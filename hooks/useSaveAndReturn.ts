@@ -12,8 +12,8 @@ export default function useSaveAndReturn() {
   const router = useRouter()
   const { account } = useAuthContext()
   const { progress, saveProgress, saveProgressLocal } = useProgressContext()
-  const { chapterId, lessonId } = usePathData()
 
+  const { chapterId, lessonId } = usePathData()
   const chapterLessons = lessons?.[chapterId]
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null
   const currentLessonKey = lesson?.key ?? 'CH1INT1'
@@ -25,11 +25,9 @@ export default function useSaveAndReturn() {
     if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
       if (account) {
         await saveProgress(nextLessonKey)
-      } else {
-        await saveProgressLocal(nextLessonKey)
       }
+      await saveProgressLocal(nextLessonKey)
     }
-
     router.push(`${chaptersUrl}#${chapterKey}`)
   }
 

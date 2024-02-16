@@ -3,7 +3,7 @@
 import { useTranslations } from 'hooks'
 import { ChapterIntro } from 'ui'
 import { Button } from 'shared'
-import { useSaveAndProceed } from 'hooks'
+import { useProceed } from 'hooks'
 
 export const metadata = {
   title: 'chapter_one.genesis_one.title',
@@ -11,7 +11,7 @@ export const metadata = {
 }
 
 export default function Genesis1({ lang }) {
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
   const t = useTranslations(lang)
 
   return (
@@ -27,7 +27,7 @@ export default function Genesis1({ lang }) {
         {t('chapter_one.genesis_one.paragraph_two')}
       </p>
 
-      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+      <Button onClick={proceed} classes="mt-10 max-md:w-full">
         {t('shared.start')}
       </Button>
     </ChapterIntro>

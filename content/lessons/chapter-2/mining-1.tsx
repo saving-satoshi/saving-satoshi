@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations, useSaveAndProceed } from 'hooks'
+import { useTranslations, useProceed } from 'hooks'
 import {
   Title,
   ProgressBar,
@@ -41,7 +41,7 @@ export default function Mining1({ lang }) {
   const [hashPower, setHashPower] = useState(0)
   const [tenXHint, setTenXHint] = useState(false)
 
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
 
   useEffect(() => {
     setHydrated(true)
@@ -425,7 +425,7 @@ export default function Mining1({ lang }) {
               <div className="mt-8 text-lg">
                 {t('chapter_two.mining_one.paragraph_fourteen')}
               </div>
-              <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+              <Button onClick={proceed} classes="mt-10 max-md:w-full">
                 {t('shared.next')}
               </Button>
             </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations, useSaveAndProceed, useMediaQuery } from 'hooks'
+import { useTranslations, useProceed, useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import { ProfileWithHashPower } from 'types'
@@ -39,7 +39,7 @@ export default function Coop3({ lang }) {
   const [antagonistHash, setAntagonistHash] = useState(0)
   const [showText, setShowText] = useState(true)
 
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
   const { chapterId, lessonId } = usePathData()
 
   const chapterLessons = lessons?.[chapterId]
@@ -270,10 +270,7 @@ export default function Coop3({ lang }) {
                 <Text className="text-center font-nunito text-[18px] font-semibold">
                   {t('chapter_three.coop_three.step_two_paragraph_one')}
                 </Text>
-                <Button
-                  onClick={saveAndProceed}
-                  classes="w-full md:w-auto mt-[20px]"
-                >
+                <Button onClick={proceed} classes="w-full md:w-auto mt-[20px]">
                   {t('shared.next')}
                 </Button>
               </span>

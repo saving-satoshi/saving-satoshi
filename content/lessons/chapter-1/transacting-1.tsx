@@ -1,6 +1,6 @@
 'use client'
 
-import { useSaveAndProceed, useTranslations } from 'hooks'
+import { useProceed, useTranslations } from 'hooks'
 import { ChapterIntro } from 'ui'
 import { Button } from 'shared'
 
@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function Transacting1({ lang }) {
   const t = useTranslations(lang)
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
 
   return (
     <ChapterIntro
@@ -26,7 +26,7 @@ export default function Transacting1({ lang }) {
         {t('chapter_one.transacting_one.paragraph_two')}
       </p>
 
-      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+      <Button onClick={proceed} classes="mt-10 max-md:w-full">
         {t('shared.next')}
       </Button>
     </ChapterIntro>

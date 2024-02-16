@@ -1,6 +1,6 @@
 'use client'
 
-import { useSaveAndProceed, useTranslations } from 'hooks'
+import { useProceed, useTranslations } from 'hooks'
 import { Button } from 'shared'
 import { LessonInfo, Text } from 'ui'
 import PlainEditorWrapper from 'ui/lesson/ScriptingChallenge/PlainEditorWrapper'
@@ -12,7 +12,7 @@ export const metadata = {
 }
 
 export default function InOut1({ lang }) {
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
   const t = useTranslations(lang)
 
   return (
@@ -49,7 +49,7 @@ export default function InOut1({ lang }) {
           {t('chapter_six.in_out_one.paragraph_three')}
         </Text>
         <div className="flex justify-start">
-          <Button onClick={saveAndProceed} classes="mt-10 md:w-fit w-full">
+          <Button onClick={proceed} classes="mt-10 md:w-fit w-full">
             {t('shared.next')}
           </Button>
         </div>

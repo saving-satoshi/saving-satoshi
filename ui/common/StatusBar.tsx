@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { Button } from 'shared'
 import { LessonView } from 'types'
 import { useLessonContext } from 'ui'
-import { useLang, useSaveAndProceed, useTranslations } from 'hooks'
+import { useLang, useProceed, useTranslations } from 'hooks'
 import Icon from 'shared/Icon'
 
 export enum Status {
@@ -43,7 +43,7 @@ export default function StatusBar({
   const t = useTranslations(lang)
   const { activeView } = useLessonContext()
   const isActive = activeView !== LessonView.Info
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
 
   const getStatus = () => {
     if (success === null || success === 0) {
@@ -175,7 +175,7 @@ export default function StatusBar({
           </Button>
 
           <Button
-            onClick={saveAndProceed}
+            onClick={proceed}
             disabled={
               !(getStatus() === Status.Success || getStatus() === Status.Good)
             }
