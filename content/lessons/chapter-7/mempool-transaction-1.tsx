@@ -239,22 +239,22 @@ def test_block(mempool, block):
         print("Invalid block!")
         count = len(duplicate_txs)
         txs = duplicate_txs[:2] + ["..."] if count > 2 else []
-        raise Exception(f"{count} duplicate txs found: {txs}")
+        return f"{count} duplicate txs found: {txs}"
 
     for tx in lines_to_test:
         if tx not in mempool_txs.keys():
-            raise Exception(f"Invalid tx {tx} in block!")
+            return f"Invalid tx {tx} in block!"
 
         for parent in mempool_txs[tx].parents:
             if parent not in txs_in_block:
-                raise Exception(f"Block contains transaction {tx} with unconfirmed parent {parent}!")
+                return f"Block contains transaction {tx} with unconfirmed parent {parent}!"
 
         txs_in_block.append(tx)
         block_weight += mempool_txs[tx].weight
         block_fees += mempool_txs[tx].fee
 
     if block_weight > MAX_BLOCK_WEIGHT:
-        raise Exception(f"Too large block! Weight: {block_weight}")
+        return f"Too large block! Weight: {block_weight}"
 
     return f"Total fees: {block_fees} Total weight: {block_weight}"
 
@@ -265,7 +265,7 @@ print("KILL")`,
       args: ['private_key'],
     },
     defaultCode: `import json
-import collections
+from collections import OrderedDict
 
 class MempoolTransaction:
     def __init__(self, json):
@@ -296,7 +296,7 @@ def run():
 `,
     validate: async (answer: string) => {
       if (answer) {
-        if (answer.startsWith('Too large block!')) {
+        if (!answer.startsWith('Total fees:')) {
           return [false, 'Invalid block, keep working!']
         }
 
