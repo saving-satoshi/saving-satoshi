@@ -132,31 +132,30 @@ export default function Card({
           className="no-underline"
           content={
             <span>
-              Oops! It looks like we couldn't find your data, let's use some
-              default values instead
+              Oops! It looks like we couldn&apos;t find your data, let&apos;s
+              use some default values instead
             </span>
           }
-          children={
-            <button
-              className={clsx(
-                'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
-                {
-                  invisible: hasherState,
-                  'animate-duration-500 fade-in animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
-                    !hasherState,
-                }
-              )}
-              onClick={handleClick}
-            >
-              {startText}
-            </button>
-          }
-        />
+        >
+          <button
+            className={clsx(
+              'order-last  h-[29px] w-[85px] cursor-pointer  rounded-[3px] border-2 ',
+              {
+                invisible: hasherState,
+                'animate-duration-500 fade-in animate-pulse border-transparent bg-[#FBEBC6] text-[#571A1F] shadow-[0_0px_15px_rgba(251,235,198,0.75)] hover:shadow-[0_0px_15px_rgba(251,235,198,0.75)]':
+                  !hasherState,
+              }
+            )}
+            onClick={handleClick}
+          >
+            {startText}
+          </button>
+        </Tooltip>
       )}
       {!noData && (
         <button
           className={clsx(
-            'order-last flex h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
+            'order-last  h-[29px] w-[85px] cursor-pointer items-center justify-center rounded-[3px] border-2 ',
             {
               'border-transparent bg-[#FBEBC6]/25 text-[#571A1F]':
                 hasherState && step < 4,
