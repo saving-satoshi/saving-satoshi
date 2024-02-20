@@ -658,7 +658,7 @@ const translations = {
   },
 
   chapter_four: {
-    title: 'Hol dir Deine 6.1 Bitcoin',
+    title: 'Hol dir Deine 1.61 Bitcoin',
     paragraph_one:
       'Puh, das war knapp! Du zitterst immer noch nach Deinem Kampf mit BitRey, bist jedoch beruhigt, dass Du und Deine Freunde den Kampf für euch entscheiden konntet.',
     paragraph_two:

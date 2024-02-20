@@ -650,7 +650,7 @@ const translations = {
   },
 
   chapter_four: {
-    title: 'Claiming your 6.1 bitcoin',
+    title: 'Claiming your 1.61 bitcoin',
     paragraph_one:
       'Phew, that was close! You are still shaking from your battle against BitRey, yet relieved that you and your friends won.',
     paragraph_two:
@@ -670,7 +670,7 @@ const translations = {
       title: 'Public key',
       heading: 'About key pairs',
       paragraph_one:
-        'According to the mining pool, it looks like you have 6.1 bitcoin to claim from all the work you did earlier. ',
+        'According to the mining pool, it looks like you have 1.61 bitcoin to claim from all the work you did earlier. ',
       list_one: ' Private key',
       list_two: 'Public key',
       paragraph_two:
@@ -1678,7 +1678,8 @@ const translations = {
     solution_eight: 'Solution to part eight of this challenge',
     solution_nine: 'Solution to part nine of this challenge',
     solution_ten: 'Solution to part ten of this challenge',
-    feedback:'Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
+    feedback:
+      'Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
   },
 }
 export default translations
