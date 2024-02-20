@@ -53,7 +53,7 @@ export default function Table({
       </tbody>
       <tfoot className="w-full">
         <tr className="mt-[2px] flex w-full items-start gap-[15px] rounded-b-[5px] bg-[#00000033] px-5 py-2.5">
-          <td className="flex w-full justify-center">{footer}</td>
+          <td className="w-full text-center">{footer}</td>
         </tr>
       </tfoot>
     </table>
