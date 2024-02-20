@@ -328,7 +328,7 @@ export default function Runner({
             <>
               <div
                 className={clsx(
-                  'flex items-center justify-center rounded-sm px-2 py-1.5',
+                  'flex h-6 w-6 items-center justify-center rounded-sm px-2 py-1.5',
                   {
                     'bg-white': !loading,
                     'bg-white/50': loading,
