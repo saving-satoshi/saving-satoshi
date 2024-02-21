@@ -56,6 +56,8 @@ export default function Runner({
   onValidate,
   handleTryAgain,
   lang,
+  poorMessage,
+  goodMessage,
   successMessage,
   setErrors,
 }: {
@@ -67,6 +69,8 @@ export default function Runner({
   onValidate: (data: StoredLessonData) => Promise<any[]>
   handleTryAgain: (pressed: boolean) => void
   lang: string
+  poorMessage: string
+  goodMessage: string
   successMessage: string
   setErrors: (errors: string[]) => void
 }) {
@@ -169,14 +173,16 @@ export default function Runner({
               setIsRunning(false)
               setHasherState(HasherState.Success)
               success = 3
-              sendTerminal('success', successMessage)
+              sendTerminal('success', t('runner.evaluation'))
+              sendTerminal('success', poorMessage)
               break
             }
             if (res === 4) {
               setIsRunning(false)
               setHasherState(HasherState.Success)
               success = 4
-              sendTerminal('success', successMessage)
+              sendTerminal('success', t('runner.evaluation'))
+              sendTerminal('success', goodMessage)
               break
             }
 

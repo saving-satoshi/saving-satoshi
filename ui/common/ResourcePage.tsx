@@ -24,10 +24,9 @@ export default function ResourcePage({
           <>
             <Text className="text-3xl font-bold">
               {t('help_page.main_heading')}
-              
             </Text>
             {readingResources}
-            </>
+          </>
         )}
         {tipsResources && (
           <>
@@ -48,8 +47,10 @@ export default function ResourcePage({
           </>
         )}
         <>
-        <hr className="my-7 h-[1px] w-full opacity-25" />
-        <footer className="text-2xl text-white" >{t('help_page.feedback')} </footer>
+          <hr className="my-7 h-[1px] w-full opacity-25" />
+          <footer className="text-2xl text-white">
+            {t('help_page.feedback')}{' '}
+          </footer>
         </>
       </div>
     </>

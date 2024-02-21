@@ -1537,6 +1537,36 @@ const translations = {
     },
     mempool_transaction_one: {
       title: 'Building blocks',
+      heading: 'Code Challenge',
+      paragraph_one:
+        "This is the code you find on Vanderpoole's server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is assemble_block() (in Python, assembleBlock() in JavaScript). If you run the code as Vanderpoole left it, you will see the problem right away.",
+      paragraph_two:
+        'You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules.',
+      paragraph_three:
+        'You can make the following assumptions to complete your mission:',
+      bullet_one:
+        'All transactions in the mempool have already been verified as valid.',
+      bullet_two:
+        'The coinbase transaction, and the weight it contributes to the block, can be ignored.',
+      paragraph_four:
+        'You can view the entire raw mempool JSON file <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link>.',
+      paragraph_five:
+        'Or browse an excerpt of the file in this table for some basic patterns:',
+      headings: {
+        item_one: 'Transaction ID',
+        item_two: 'Fee',
+        item_two_b: 'Satoshis',
+        item_three: 'Weight',
+        item_three_b: 'Virtual bytes',
+        item_four: 'Ancestors',
+      },
+      table_one: {
+        footer:
+          'View the json file <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link> for the rest of the transaction data',
+      },
+      poor: "It's a valid block, but can you do better? Try to collect more fees.",
+      good: "It's a valid block, but you are not quite getting the most fees yet. Keep working, or continue, your choice.",
+      success: "It's a valid block, and you optimized fees. Nice!",
     },
     outro_one: {
       title: 'Outro',
@@ -1647,6 +1677,9 @@ const translations = {
     evaluation: 'Evaluation',
     script_output: 'Script output',
     waiting: 'Waiting for your input above...',
+    poor: "This is valid code but it's not quite what we are looking for. Try again.",
+    good: 'Good job, its not quite perfect but still considered correct. Keep working or continue, your choice.',
+    success: 'Great work your code looks great!',
   },
   notfound: {
     first: 'Hmm...where are we?',
@@ -1678,7 +1711,8 @@ const translations = {
     solution_eight: 'Solution to part eight of this challenge',
     solution_nine: 'Solution to part nine of this challenge',
     solution_ten: 'Solution to part ten of this challenge',
-    feedback:'Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
+    feedback:
+      'Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
   },
 }
 export default translations
