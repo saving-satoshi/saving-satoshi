@@ -253,21 +253,21 @@ export default function Coop3({ lang }) {
         >
           <div className={`flex flex-col ${showText ? 'fade-in' : 'fade-out'}`}>
             {step === 0 && (
-              <span className="flex flex-col items-start gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
-                <Text className="flex flex-col self-stretch text-center font-nunito text-[24px] font-bold">
+              <span className="flex flex-col items-start gap-[10px] font-nunito md:min-w-[490px] md:pt-[20px]">
+                <Text className=" self-stretch text-center text-[24px] font-bold">
                   {t('chapter_three.coop_three.step_zero_heading')}
                 </Text>
-                <Text className="flex flex-col self-stretch text-center font-nunito text-[18px] font-semibold">
+                <Text className="self-stretch text-center  text-[18px] font-semibold">
                   {t('chapter_three.coop_three.step_zero_paragraph_one')}
                 </Text>
               </span>
             )}
             {step === 2 && (
-              <span className="flex flex-col items-center gap-[10px] md:w-[490px] md:min-w-[490px] md:pt-[20px]">
-                <Text className="self-stretch text-center font-nunito text-[24px] font-bold">
+              <span className="flex flex-col items-center gap-[10px] font-nunito md:w-[490px] md:min-w-[490px] md:pt-[20px]">
+                <Text className="self-stretch text-center  text-[24px] font-bold">
                   {t('chapter_three.coop_three.step_two_heading')}
                 </Text>
-                <Text className="text-center font-nunito text-[18px] font-semibold">
+                <Text className="text-center text-[18px] font-semibold">
                   {t('chapter_three.coop_three.step_two_paragraph_one')}
                 </Text>
                 <Button onClick={proceed} classes="w-full md:w-auto mt-[20px]">
