@@ -334,14 +334,17 @@ export default function Runner({
             <>
               <div
                 className={clsx(
-                  'flex h-6 w-6 items-center justify-center rounded-sm',
+                  'flex h-6 w-6 items-center justify-center rounded-sm px-2 py-1.5',
                   {
                     'bg-white': !loading,
                     'bg-white/50': loading,
                   }
                 )}
               >
-                <Icon icon="play" className="text-[#334454]" />
+                <Icon
+                  icon="play"
+                  className="h-full w-full object-contain text-[#334454]"
+                />
               </div>
               <span>{t('runner.run')}</span>
             </>
