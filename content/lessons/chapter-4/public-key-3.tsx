@@ -30,8 +30,7 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: `
-const secp256k1 = require('@savingsatoshi/secp256k1js')
+    defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js')
 // Multiply the private key by the ECDSA generator point G to
 // produce a new curve point which is the public key.
 // Return that curve point (also known as a group element)
@@ -69,7 +68,7 @@ function privateKeyToPublicKey(privateKey) {
     },
     constraints: [
       {
-        range: [12, 1, 12, 1],
+        range: [1, 1, 13, 1],
         allowMultiline: true,
       },
     ],
@@ -119,7 +118,7 @@ def privatekey_to_publickey(private_key):
     },
     constraints: [
       {
-        range: [11, 1, 11, 1],
+        range: [1, 1, 11, 1],
         allowMultiline: true,
       },
     ],

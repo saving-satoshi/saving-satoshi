@@ -108,7 +108,8 @@ class Output {
   serialize() {
     // YOUR CODE HERE
   }
-}`,
+}
+`,
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
@@ -122,11 +123,7 @@ class Output {
     },
     constraints: [
       {
-        range: [17, 1, 18, 1],
-        allowMultiline: true,
-      },
-      {
-        range: [22, 1, 23, 1],
+        range: [1, 1, 25, 1],
         allowMultiline: true,
       },
     ],
@@ -179,11 +176,7 @@ class Output:
     },
     constraints: [
       {
-        range: [17, 1, 18, 1],
-        allowMultiline: true,
-      },
-      {
-        range: [21, 1, 22, 1],
+        range: [1, 1, 22, 1],
         allowMultiline: true,
       },
     ],

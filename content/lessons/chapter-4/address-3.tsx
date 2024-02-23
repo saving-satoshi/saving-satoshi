@@ -42,8 +42,8 @@ console.log("KILL")`,
       name: 'findAddress',
       args: ['publicKeyHash'],
     },
-    defaultCode: `
-const bech32 = require('@savingsatoshi/bech32js')
+    defaultCode: `const bech32 = require('@savingsatoshi/bech32js')
+
 ${
   prevData?.data &&
   'const compressedPublicKeyHash = ' +
@@ -81,7 +81,7 @@ function hashToAddress(hash) {
     },
     constraints: [
       {
-        range: [9, 1, 10, 1],
+        range: [1, 1, 11, 1],
         allowMultiline: true,
       },
     ],
@@ -95,8 +95,8 @@ print("KILL")`,
       name: 'find_address',
       args: ['public_key_hash'],
     },
-    defaultCode: `
-from bech32py.bech32 import encode
+    defaultCode: `from bech32py.bech32 import encode
+
 ${
   prevData?.data &&
   'compressed_public_key_hash = ' +
@@ -131,7 +131,7 @@ def hash_to_address(hash):
     },
     constraints: [
       {
-        range: [8, 1, 9, 1],
+        range: [1, 1, 9, 1],
         allowMultiline: true,
       },
     ],

@@ -82,7 +82,7 @@ function hashCompressed(compressedPublicKey) {
     },
     constraints: [
       {
-        range: [9, 1, 11, 1],
+        range: [1, 1, 11, 1],
         allowMultiline: true,
       },
     ],
@@ -134,7 +134,7 @@ def hash_compressed(compressed_public_key):
     },
     constraints: [
       {
-        range: [9, 1, 9, 1],
+        range: [1, 1, 9, 1],
         allowMultiline: true,
       },
     ],

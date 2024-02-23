@@ -54,7 +54,7 @@ function findHash(nonce) {
   },
   constraints: [
     {
-      range: [7, 1, 8, 1],
+      range: [1, 1, 9, 1],
       allowMultiline: true,
     },
   ],
@@ -106,7 +106,7 @@ def find_hash(nonce):
   },
   constraints: [
     {
-      range: [7, 1, 8, 1],
+      range: [1, 1, 8, 1],
       allowMultiline: true,
     },
   ],

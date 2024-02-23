@@ -56,7 +56,8 @@ export default function PutItTogether1({ lang }) {
   serialize() {
     // YOUR CODE HERE
   }
-}`,
+}
+`,
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
@@ -71,11 +72,7 @@ export default function PutItTogether1({ lang }) {
     },
     constraints: [
       {
-        range: [7, 1, 8, 1],
-        allowMultiline: true,
-      },
-      {
-        range: [11, 1, 12, 1],
+        range: [1, 1, 14, 1],
         allowMultiline: true,
       },
     ],
@@ -115,11 +112,7 @@ class Witness:
     },
     constraints: [
       {
-        range: [8, 1, 10, 1],
-        allowMultiline: true,
-      },
-      {
-        range: [11, 1, 12, 1],
+        range: [1, 1, 12, 1],
         allowMultiline: true,
       },
     ],
