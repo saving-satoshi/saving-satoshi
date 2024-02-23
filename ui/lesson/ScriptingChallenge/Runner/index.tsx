@@ -317,7 +317,10 @@ export default function Runner({
               !isSmallScreen &&
               activeView !== LessonView.Execute &&
               hasherState !== HasherState.Success,
-            hidden: hasherState === HasherState.Success || loading,
+            hidden:
+              hasherState === HasherState.Success ||
+              loading ||
+              activeView === 'info',
             flex: isActive,
           }
         )}
