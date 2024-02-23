@@ -650,7 +650,7 @@ const translations = {
   },
 
   chapter_four: {
-    title: 'Claiming your 6.1 bitcoin',
+    title: 'Claiming your 1.61 bitcoin',
     paragraph_one:
       'Phew, that was close! You are still shaking from your battle against BitRey, yet relieved that you and your friends won.',
     paragraph_two:
@@ -670,7 +670,7 @@ const translations = {
       title: 'Public key',
       heading: 'About key pairs',
       paragraph_one:
-        'According to the mining pool, it looks like you have 6.1 bitcoin to claim from all the work you did earlier. ',
+        'According to the mining pool, it looks like you have 1.61 bitcoin to claim from all the work you did earlier. ',
       list_one: ' Private key',
       list_two: 'Public key',
       paragraph_two:
@@ -1090,7 +1090,7 @@ const translations = {
       paragraph_two:
         'You open you Bitcoin full node and execute a command to see where your money is in the blockchain.',
       paragraph_three:
-        'This is an unspent transaction output (aka "UTXO"). You might recognize your compressed public key hash and address from chapter 4. The amount looks right, too: 6.5 BTC.',
+        'This is an unspent transaction output (aka "UTXO"). You might recognize your compressed public key hash and address from chapter 4. The amount looks right, too: 1.61 BTC.',
     },
     in_out_two: {
       title: 'The ins and outs',
@@ -1098,7 +1098,7 @@ const translations = {
         'Mike Ramen gives you an address to send your 1 BTC contribution to:',
       paragraph_two:
         'Hm, that address looks a lot longer than yours! I wonder why...',
-      paragraph_three: `Anyway, we need to create and sign a transaction that sends one of your 6.5 BTC to this address. We looked at Satoshi's transaction structure in chapter 5 but your transaction will be a bit different. Technology has improved a lot since block 170, and Bitcoin transactions are now version 2, and follow a new protocol called Segregated Witness.`,
+      paragraph_three: `Anyway, we need to create and sign a transaction that sends one of your 1.61 BTC to this address. We looked at Satoshi's transaction structure in chapter 5 but your transaction will be a bit different. Technology has improved a lot since block 170, and Bitcoin transactions are now version 2, and follow a new protocol called Segregated Witness.`,
     },
     in_out_three: {
       title: 'The ins and outs',
@@ -1472,17 +1472,17 @@ const translations = {
     put_it_together_six: {
       heading: 'Put it All Together',
       paragraph_one:
-        'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 6.5 BTC input and a 1 BTC output... what happens to the other 5.5 BTC? Most of that will be "change" and we need to send it back to our own address!',
+        'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
       paragraph_two:
         'Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in step 1) and two outputs:',
       paragraph_three:
-        'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 550,000,000 to 549,999,000 satoshis.',
+        'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 61,000,000 to 60,999,000 satoshis.',
       paragraph_four:
         'Finally our work is done. Your script should end by returning the result of the transaction serialize() method. This is a valid signed Bitcoin transaction and we can broadcast it to the network to send Mike Ramen the money he needs!',
       bullet_one:
         'Mike Ramen gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
       bullet_two:
-        'You get 550,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
+        'You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
       success: "You've done it! You've built a transaction!",
     },
     outro_one: {

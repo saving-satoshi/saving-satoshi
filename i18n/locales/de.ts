@@ -658,7 +658,7 @@ const translations = {
   },
 
   chapter_four: {
-    title: 'Hol dir Deine 6.1 Bitcoin',
+    title: 'Hol dir Deine 1.61 Bitcoin',
     paragraph_one:
       'Puh, das war knapp! Du zitterst immer noch nach Deinem Kampf mit BitRey, bist jedoch beruhigt, dass Du und Deine Freunde den Kampf für euch entscheiden konntet.',
     paragraph_two:
@@ -678,7 +678,7 @@ const translations = {
       title: 'Öffentliche Schlüssel',
       heading: 'Über Schlüsselpaare',
       paragraph_one:
-        'Laut dem Mining-Pool sieht es so aus, als ob Du 6,1 Bitcoin von all der Arbeit, die Du zuvor geleistet hast, beanspruchen könntest. ',
+        'Laut dem Mining-Pool sieht es so aus, als ob Du 1,61 Bitcoin von all der Arbeit, die Du zuvor geleistet hast, beanspruchen könntest. ',
       list_one: ' Privater Schlüssel',
       list_two: 'Öffentlicher Schlüssel',
       paragraph_two:
@@ -1104,7 +1104,7 @@ const translations = {
         'Mike Ramen gibt Dir eine Adresse, an die Du Deinen Beitrag von 1 BTC schicken kannst:',
       paragraph_two:
         'Hm, diese Adresse sieht viel länger aus als Deine! Ich frage mich, warum...',
-      paragraph_three: `Wie auch immer, wir müssen eine Transaktion erstellen und unterschreiben, die einen Deiner 6,5 BTC an diese Adresse sendet. Wir haben uns Satoshis Transaktionsstruktur in Kapitel 5 angeschaut, aber Deine Transaktion wird ein bisschen anders sein. Die Technologie hat sich seit Block 170 stark verbessert, und Bitcoin-Transaktionen sind jetzt Version 2 und folgen einem neuen Protokoll namens Segregated Witness.`,
+      paragraph_three: `Wie auch immer, wir müssen eine Transaktion erstellen und unterschreiben, die einen Deiner 1,61 BTC an diese Adresse sendet. Wir haben uns Satoshis Transaktionsstruktur in Kapitel 5 angeschaut, aber Deine Transaktion wird ein bisschen anders sein. Die Technologie hat sich seit Block 170 stark verbessert, und Bitcoin-Transaktionen sind jetzt Version 2 und folgen einem neuen Protokoll namens Segregated Witness.`,
     },
     in_out_three: {
       title: 'Die Details kennen',

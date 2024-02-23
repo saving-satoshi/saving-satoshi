@@ -26,7 +26,7 @@ export default function InOut1({ lang }) {
     "address": "bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs",
     "label": "",
     "scriptPubKey": "0014da9a3a9443424aec7ab7a628777f7130e7c92789",
-    "amount": 6.50000000,
+    "amount": 1.61000000,
     "confirmations": 341,
     "spendable": true,
     "solvable": true,
