@@ -28,7 +28,6 @@ export default function DeriveMessage1({ lang }) {
       <p className="mt-[30px] text-center font-nunito text-2xl font-bold text-white">
         {t('chapter_five.derive_message_one.paragraph_two')}
       </p>
-
       <Button onClick={proceed} classes="mt-10 max-md:w-full">
         {t('shared.start')}
       </Button>

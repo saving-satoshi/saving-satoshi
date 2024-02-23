@@ -19,6 +19,7 @@ export default function Editor({
   onChange,
   onValidate,
   code = '',
+  options = monacoOptions,
   constraints,
   hiddenRange,
   loadingSavedCode,
@@ -29,6 +30,7 @@ export default function Editor({
   onChange?: (value: string) => void
   onValidate?: (value: monaco.editor.IMarker[]) => void
   code?: string
+  options?: any
   constraints: any
   hiddenRange?: number[]
   loadingSavedCode?: boolean
@@ -37,18 +39,18 @@ export default function Editor({
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
   const [loading, setLoading] = useState<boolean>(loadingSavedCode || true)
-  const [options, setOptions] = useState(monacoOptions)
+  const [editorOptions, setEditorOptions] = useState(options)
   const monacoRef = useRef<any>()
 
   const createMonacoOptions = (range) => {
     return {
-      ...monacoOptions,
+      ...options,
       lineNumbers: (lineNumber: number) => (lineNumber - range).toString(),
     }
   }
 
   const handleBeforeMount = (monaco) => {
-    hiddenRange && setOptions(createMonacoOptions(hiddenRange[2]))
+    hiddenRange && setEditorOptions(createMonacoOptions(hiddenRange[2]))
     monaco.editor.defineTheme('satoshi', {
       base: 'vs-dark',
       inherit: true,
@@ -106,7 +108,7 @@ export default function Editor({
     : headerHeight + languageTabsHeight + terminalHeight + terminalTabsHeight
 
   useEffect(() => {
-    hiddenRange && setOptions(createMonacoOptions(hiddenRange[2]))
+    hiddenRange && setEditorOptions(createMonacoOptions(hiddenRange[2]))
     if (monacoRef.current) {
       const { editor, monaco } = monacoRef.current
       const model = monaco.editor.createModel(value, language)
@@ -148,7 +150,7 @@ export default function Editor({
         onMount={handleMount}
         onChange={onChange}
         onValidate={onValidate}
-        options={options}
+        options={editorOptions}
       />
     </div>
   )

@@ -123,12 +123,7 @@ console.log(tx.serialize().toString('hex'));`,
     },
     constraints: [
       {
-        range: [
-          countLines(combinedCode) + 16,
-          1,
-          countLines(combinedCode) + 17,
-          1,
-        ],
+        range: [1, 1, countLines(combinedCode) + 17, 1],
         allowMultiline: true,
       },
     ],
@@ -188,12 +183,7 @@ print(tx.serialize().hex())`,
     },
     constraints: [
       {
-        range: [
-          countLines(combinedCode) + 16,
-          1,
-          countLines(combinedCode) + 17,
-          1,
-        ],
+        range: [1, 1, countLines(combinedCode) + 17, 1],
         allowMultiline: true,
       },
     ],

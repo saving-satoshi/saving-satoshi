@@ -30,7 +30,7 @@ function encode_message(text){
 // with the Bitcoin protocol prefix string followed by the text
 // and both components preceded by a length byte.
 // Returns a 32-byte hex value.
-const prefix = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
+  const prefix = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
 
 }
 `,
@@ -49,7 +49,7 @@ const prefix = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
   },
   constraints: [
     {
-      range: [12, 1, 15, 1],
+      range: [1, 1, 15, 1],
       allowMultiline: true,
     },
   ],
@@ -71,12 +71,11 @@ text += "used to sign the first-ever Bitcoin transaction confirmed in block #170
 text += "This message is signed with the same private key."
 
 def encode_message(text):
-  # Given an ascii-encoded text message, serialize a byte array
-  # with the Bitcoin protocol prefix string followed by the text
-  # and both components preceded by a length byte.
-  # Returns a 32-byte hex value.
-  prefix = "Bitcoin Signed Message:\\n"
-
+    # Given an ascii-encoded text message, serialize a byte array
+    # with the Bitcoin protocol prefix string followed by the text
+    # and both components preceded by a length byte.
+    # Returns a 32-byte hex value.
+    prefix = "Bitcoin Signed Message:\\n"
 `,
   validate: async (answer: string) => {
     const correctAnswer =
@@ -91,7 +90,7 @@ def encode_message(text):
   },
   constraints: [
     {
-      range: [13, 1, 14, 1],
+      range: [1, 1, 14, 1],
       allowMultiline: true,
     },
   ],

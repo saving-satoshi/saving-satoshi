@@ -49,7 +49,7 @@ function decodeSig(vpSig) {
   },
   constraints: [
     {
-      range: [5, 1, 9, 1],
+      range: [1, 1, 9, 1],
       allowMultiline: true,
     },
   ],
@@ -88,7 +88,7 @@ def decode_sig(vp_sig):
   },
   constraints: [
     {
-      range: [7, 1, 9, 1],
+      range: [1, 1, 9, 1],
       allowMultiline: true,
     },
   ],

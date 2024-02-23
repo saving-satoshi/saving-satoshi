@@ -42,6 +42,7 @@ export default function ScriptingChallenge({
   lang,
   lessonKey,
   config,
+  editorOptions,
   poorMessage,
   goodMessage,
   successMessage,
@@ -52,6 +53,7 @@ export default function ScriptingChallenge({
   children?: React.ReactNode
   lang: string
   lessonKey: string
+  editorOptions?: any
   config: EditorConfig
   poorMessage?: string
   goodMessage?: string
@@ -203,6 +205,7 @@ export default function ScriptingChallenge({
               constraints={constraints}
               loadingSavedCode={loadingSavedCode}
               rangesToCollapse={config.languages[language].rangesToCollapse}
+              options={editorOptions}
             />
           </div>
           <Runner

@@ -176,12 +176,7 @@ ${prevData.data.slice(0, -2)}
     },
     constraints: [
       {
-        range: [
-          countLines(prevData.data.slice(0, -2)) + 5,
-          1,
-          countLines(prevData.data.slice(0, -2)) + 6,
-          1,
-        ],
+        range: [1, 1, countLines(prevData.data.slice(0, -2)) + 6, 1],
         allowMultiline: true,
       },
     ],
@@ -314,12 +309,7 @@ ${prevData.data}
     },
     constraints: [
       {
-        range: [
-          countLines(prevData.data) + 5,
-          1,
-          countLines(prevData.data) + 6,
-          1,
-        ],
+        range: [1, 1, countLines(prevData.data) + 6, 1],
         allowMultiline: true,
       },
     ],

@@ -4,6 +4,7 @@ import { useMediaQuery, useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
 import { useEffect, useState } from 'react'
 import { EditorConfig } from 'types'
+import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
 import { CodeExample, LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
 
 export const metadata = {
@@ -19,21 +20,20 @@ console.log("KILL")
     name: 'verify',
     args: [],
   },
-  defaultCode: `
-const secp256k1 = require('@savingsatoshi/secp256k1js')
+  defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js')
 
 const GE = secp256k1.GE
 const FE = secp256k1.FE
 const ORDER = secp256k1.ORDER
-// Message digest from step 9: 
+// Message digest from step 9:
 const msg_fe = 0x73a16290e005b119b9ce0ceea52949f0bd4f925e808b5a54c631702d3fea1242n
 
-// Signature values from step 10: 
+// Signature values from step 10:
 const sig_r_fe = 0x8bd06d50f4a4b2bba64ccfb68f011e8babcec06b1cc07741fe686159abef8d69n
 const sig_s_fe = 0x3f0754da6e85699666c61e12707c45a037a5142f6a1b43e7014979a8c16d87c9n
 
-// Public key values from step 7: 
-const key_ge = new GE(new FE("0x9d57ded01d3a7652a957cf86fd4c3d2a76e76e83d3c965e1dca45f1ee0663063"),new FE("0x6b8bcbc3df3fbc9669efa2ccd5d7fa5a89fe1c0045684189f01ea915b8a746a6")) 
+// Public key values from step 7:
+const key_ge = new GE(new FE("0x9d57ded01d3a7652a957cf86fd4c3d2a76e76e83d3c965e1dca45f1ee0663063"),new FE("0x6b8bcbc3df3fbc9669efa2ccd5d7fa5a89fe1c0045684189f01ea915b8a746a6"))
 
 function verify(sig_r, sig_s, key, msg) {
   // Verify an ECDSA signature given a public key and a message.
@@ -71,7 +71,7 @@ function verify(sig_r, sig_s, key, msg) {
 
     return x1;
   }
-  
+
   const sig_s_inverted = invert(sig_s);
   const u1 = (msg * sig_s_inverted) % ORDER;
   const u2 = (sig_r * sig_s_inverted) % ORDER;
@@ -100,28 +100,27 @@ print("KILL")
     name: 'verify',
     args: [],
   },
-  defaultCode: `
-import secp256k1py.secp256k1 as SECP256K1
+  defaultCode: `import secp256k1py.secp256k1 as SECP256K1
 
 GE = SECP256K1.GE
 G = SECP256K1.G
-# Message digest from step 9: 
-msg = 0x73a16290e005b119b9ce0ceea52949f0bd4f925e808b5a54c631702d3fea1242 
+# Message digest from step 9:
+msg = 0x73a16290e005b119b9ce0ceea52949f0bd4f925e808b5a54c631702d3fea1242
 
-# Signature values from step 10: 
-sig_r = 0x8bd06d50f4a4b2bba64ccfb68f011e8babcec06b1cc07741fe686159abef8d69 
-sig_s = 0x3f0754da6e85699666c61e12707c45a037a5142f6a1b43e7014979a8c16d87c9 
+# Signature values from step 10:
+sig_r = 0x8bd06d50f4a4b2bba64ccfb68f011e8babcec06b1cc07741fe686159abef8d69
+sig_s = 0x3f0754da6e85699666c61e12707c45a037a5142f6a1b43e7014979a8c16d87c9
 
-# Public key values from step 7: 
-key_ge = GE(0x9d57ded01d3a7652a957cf86fd4c3d2a76e76e83d3c965e1dca45f1ee0663063, 0x6b8bcbc3df3fbc9669efa2ccd5d7fa5a89fe1c0045684189f01ea915b8a746a6) 
+# Public key values from step 7:
+key_ge = GE(0x9d57ded01d3a7652a957cf86fd4c3d2a76e76e83d3c965e1dca45f1ee0663063, 0x6b8bcbc3df3fbc9669efa2ccd5d7fa5a89fe1c0045684189f01ea915b8a746a6)
 
-# The verify function from step 8: 
-def verify(r, s, key, msg): 
-  if r == 0 or r >= GE.ORDER: 
+# The verify function from step 8:
+def verify(r, s, key, msg):
+  if r == 0 or r >= GE.ORDER:
     print("FALSE - invalid r value")
     return false
-  
-  if s == 0 or s >= GE.ORDER: 
+
+  if s == 0 or s >= GE.ORDER:
     print("FALSE - invalid s value")
     return false
   # Calculate the inverse of sig_s modulo ORDER
@@ -186,6 +185,7 @@ export default function ValidateSignature4({ lang }) {
       lessonKey={getLessonKey('chapter-5', 'validate-signature-4')}
       successMessage={t('chapter_five.validate_signature_four.success')}
       onSelectLanguage={handleSelectLanguage}
+      editorOptions={readOnlyOptions}
     >
       <LessonInfo>
         <Title>{t('chapter_five.validate_signature_four.heading')}</Title>

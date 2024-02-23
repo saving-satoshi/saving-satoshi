@@ -29,11 +29,11 @@ console.log("KILL")
   },
   defaultCode: `const {Hash} = require('crypto');
 
-  function msg_to_integer(msg) {
-    // Given a hex string to sign, convert that string to bytes,
-    // double-SHA256 the bytes and then return a BigInt() from the 32-byte digest.
+function msg_to_integer(msg) {
+  // Given a hex string to sign, convert that string to bytes,
+  // double-SHA256 the bytes and then return a BigInt() from the 32-byte digest.
 
-  }
+}
 `,
   validate: async (answer) => {
     if (answer !== correctAnswer) {
@@ -44,7 +44,7 @@ console.log("KILL")
   },
   constraints: [
     {
-      range: [4, 1, 8, 1],
+      range: [1, 1, 8, 1],
       allowMultiline: true,
     },
   ],
@@ -79,11 +79,7 @@ def msg_to_integer(msg):
   },
   constraints: [
     {
-      range: [1, 1, 4, 1],
-      allowMultiline: true,
-    },
-    {
-      range: [6, 1, 8, 1],
+      range: [1, 1, 8, 1],
       allowMultiline: true,
     },
   ],

@@ -201,12 +201,7 @@ console.log("KILL")
     },
     constraints: [
       {
-        range: [
-          countLines(prevData.data.slice(0, -2)) + 21,
-          1,
-          countLines(prevData.data.slice(0, -2)) + 22,
-          1,
-        ],
+        range: [1, 1, countLines(prevData.data.slice(0, -2)) + 22, 1],
         allowMultiline: true,
       },
     ],
@@ -352,12 +347,7 @@ print("KILL")
     },
     constraints: [
       {
-        range: [
-          countLines(prevData.data.slice(0, -2)) + 11,
-          1,
-          countLines(prevData.data.slice(0, -2)) + 12,
-          1,
-        ],
+        range: [1, 1, countLines(prevData.data.slice(0, -2)) + 12, 1],
         allowMultiline: true,
       },
     ],
