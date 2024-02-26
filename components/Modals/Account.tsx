@@ -5,8 +5,8 @@ import Icon from 'shared/Icon'
 import Avatar from 'components/Avatar'
 import { Loader } from 'shared'
 import { useTranslations, useLang } from 'hooks'
-import { useAuthContext } from 'providers/AuthProvider'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useAuthContext } from 'contexts/AuthContext'
+import { useProgressContext } from 'contexts/ProgressContext'
 
 export default function AccountModal({ onClose, state }) {
   const lang = useLang()

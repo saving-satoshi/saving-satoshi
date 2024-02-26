@@ -8,7 +8,7 @@ import { sleep } from 'utils'
 import Profile from 'ui/common/Profile'
 import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
 import clsx from 'clsx'
-import { useAuthContext } from 'providers/AuthProvider'
+import { useAuthContext } from 'contexts/AuthContext'
 import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {

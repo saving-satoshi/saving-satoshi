@@ -4,7 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import { ProgressContextType } from 'types'
 import { getProgress, setProgress } from 'api/progress'
 import { getProgressLocal, setProgressLocal } from 'api/local'
-import { useAuthContext } from './AuthProvider'
+import { useAuthContext } from './AuthContext'
 import { keys } from 'lib/progress'
 
 export const defaultProgressContext = {

@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
 import useLessonStatus from 'hooks/useLessonStatus'
 import Icon from 'shared/Icon'
 

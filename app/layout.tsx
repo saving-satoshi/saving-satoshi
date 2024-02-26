@@ -6,7 +6,7 @@ import {
   DataProvider,
   ModalProvider,
   FeatureProvider,
-} from 'providers'
+} from 'contexts'
 import Layout from 'components/Layout'
 
 export default function RootLayout({

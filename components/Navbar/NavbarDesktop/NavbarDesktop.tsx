@@ -13,7 +13,7 @@ import Icon from 'shared/Icon'
 import { usePathData } from 'hooks'
 import { navbarThemeSelector } from 'lib/themeSelector'
 import { getChapterKey, getCurrentLessonKey, keys } from 'lib/progress'
-import { useAuthContext } from 'providers/AuthProvider'
+import { useAuthContext } from 'contexts/AuthContext'
 
 export default function NavbarDesktop({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()

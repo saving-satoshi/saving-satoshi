@@ -14,7 +14,7 @@ import {
 } from 'ui'
 import clsx from 'clsx'
 import { sleep } from 'utils'
-import { useAuthContext } from 'providers/AuthProvider'
+import { useAuthContext } from 'contexts/AuthContext'
 import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {

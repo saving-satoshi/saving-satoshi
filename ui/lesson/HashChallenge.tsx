@@ -5,8 +5,8 @@ import { Lesson, StatusBar, Hasher } from 'ui'
 import clsx from 'clsx'
 import { useLang, useTranslations } from 'hooks'
 import { usePathname } from 'next/navigation'
-import { useProgressContext } from 'providers/ProgressProvider'
-import { useAuthContext } from 'providers/AuthProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
+import { useAuthContext } from 'contexts/AuthContext'
 
 /**
  * @answer {string} correct answer to the challenge problem

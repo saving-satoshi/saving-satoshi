@@ -13,10 +13,10 @@ import Icon from 'shared/Icon'
 import { ChapterContextType } from 'types'
 import { useTranslations } from 'hooks'
 import useLessonStatus from 'hooks/useLessonStatus'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
 import { getLessonKey } from 'lib/progress'
 import { keys, keysMeta } from 'lib/progress'
-import { useFeatureContext } from 'providers/FeatureProvider'
+import { useFeatureContext } from 'contexts/FeatureProvider'
 import useEnvironment from 'hooks/useEnvironment'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)

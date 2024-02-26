@@ -18,7 +18,7 @@ import HelpLink from '../HelpLink'
 import Icon from 'shared/Icon'
 import { navbarThemeSelector } from 'lib/themeSelector'
 import { getChapterKey, getCurrentLessonKey, keys } from 'lib/progress'
-import { useAuthContext } from 'providers/AuthProvider'
+import { useAuthContext } from 'contexts/AuthContext'
 
 export default function NavbarMobile({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
