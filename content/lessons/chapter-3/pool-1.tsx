@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations, useSaveAndProceed } from 'hooks'
+import { useTranslations, useProceed } from 'hooks'
 import { Title } from 'ui'
 import { Button } from 'shared'
 import Avatar from 'components/Avatar'
@@ -20,7 +20,7 @@ export default function Pool1({ lang }) {
   const { account } = useAuthContext()
   const t = useTranslations(lang)
 
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
   const isSmallScreen = useMediaQuery({ width: 767 })
   const [playersFound, setPlayersFound] = useState(false)
   const [players, setPlayers] = useState([
@@ -137,7 +137,7 @@ export default function Pool1({ lang }) {
             {t('chapter_three.pool_one.waiting_screen_paragraph_two')}
           </div>
           {playersFound ? (
-            <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+            <Button onClick={proceed} classes="mt-10 max-md:w-full">
               {t('chapter_three.pool_one.continue_button')}
             </Button>
           ) : (

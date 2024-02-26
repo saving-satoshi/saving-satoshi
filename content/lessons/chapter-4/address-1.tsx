@@ -1,6 +1,6 @@
 'use client'
 
-import { useSaveAndProceed, useTranslations } from 'hooks'
+import { useProceed, useTranslations } from 'hooks'
 import { ChapterIntro, CodeExample } from 'ui'
 
 import { Button } from 'shared'
@@ -14,7 +14,7 @@ export const metadata = {
 }
 
 export default function Address1({ lang }) {
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
   const t = useTranslations(lang)
 
   const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
@@ -48,7 +48,7 @@ export default function Address1({ lang }) {
         <p className="mt-8 text-lg md:text-xl">
           {t('chapter_four.address_one.paragraph_two')}
         </p>
-        <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+        <Button onClick={proceed} classes="mt-10 max-md:w-full">
           {t('shared.next')}
         </Button>
       </ChapterIntro>

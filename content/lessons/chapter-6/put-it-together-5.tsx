@@ -154,6 +154,12 @@ const public_key_yirutads = ec.keyFromPublic(wit_key_ttefkgdk);
 console.log(public_key_yirutads.verify(hashed_message_bytes_aieoprds, wit_sig_okdakljl) && 'true');
 console.log("KILL")
   `,
+    rangesToCollapse: [
+      {
+        start: countLines(prevData.data),
+        end: countLines(prevData.data) + 22,
+      },
+    ],
     defaultFunction: {
       name: 'signInput',
       args: [],
@@ -195,12 +201,7 @@ console.log("KILL")
     },
     constraints: [
       {
-        range: [
-          countLines(prevData.data.slice(0, -2)) + 21,
-          1,
-          countLines(prevData.data.slice(0, -2)) + 22,
-          1,
-        ],
+        range: [1, 1, countLines(prevData.data.slice(0, -2)) + 22, 1],
         allowMultiline: true,
       },
     ],
@@ -311,6 +312,12 @@ verifying_key_zjkdhfxd = VerifyingKey.from_string(wit_key_ttefkgdk, curve=SECP25
 print(verifying_key_zjkdhfxd.verify_digest(wit_sig_okdakljl[:-1], hashed_message_bytes_aieoprds, ecdsa.util.sigdecode_der) and 'true')
 print("KILL")
 `,
+    rangesToCollapse: [
+      {
+        start: countLines(prevData.data) + 1,
+        end: countLines(prevData.data) + 11,
+      },
+    ],
     defaultFunction: {
       name: 'create_tx_message',
       args: [],
@@ -340,12 +347,7 @@ print("KILL")
     },
     constraints: [
       {
-        range: [
-          countLines(prevData.data.slice(0, -2)) + 11,
-          1,
-          countLines(prevData.data.slice(0, -2)) + 12,
-          1,
-        ],
+        range: [1, 1, countLines(prevData.data.slice(0, -2)) + 12, 1],
         allowMultiline: true,
       },
     ],

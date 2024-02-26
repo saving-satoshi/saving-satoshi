@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useTranslations } from 'hooks'
 import { ChapterIntro } from 'ui'
 import { Button } from 'shared'
-import { useSaveAndProceed } from 'hooks'
+import { useProceed } from 'hooks'
 import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
@@ -13,7 +13,7 @@ export const metadata = {
 }
 
 export default function Coop2({ lang }) {
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
   const t = useTranslations(lang)
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export default function Coop2({ lang }) {
         {t('chapter_three.coop_two.paragraph_four')}
       </p>
 
-      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+      <Button onClick={proceed} classes="mt-10 max-md:w-full">
         {t('shared.next')}
       </Button>
     </ChapterIntro>

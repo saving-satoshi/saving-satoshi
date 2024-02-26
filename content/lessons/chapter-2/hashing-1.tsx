@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations, useSaveAndProceed } from 'hooks'
+import { useTranslations, useProceed } from 'hooks'
 import { ChapterIntro } from 'ui'
 import {} from 'hooks'
 import { Button } from 'shared'
@@ -11,7 +11,7 @@ export const metadata = {
 }
 
 export default function Hashing1({ lang }) {
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
   const t = useTranslations(lang)
 
   return (
@@ -40,7 +40,7 @@ export default function Hashing1({ lang }) {
         {t('chapter_two.hashing_one.paragraph_four')}
       </p>
 
-      <Button onClick={saveAndProceed} classes="mt-10 max-md:w-full">
+      <Button onClick={proceed} classes="mt-10 max-md:w-full">
         {t('shared.next')}
       </Button>
     </ChapterIntro>

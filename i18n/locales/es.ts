@@ -210,7 +210,7 @@ const translations = {
   },
 
   chapter_four: {
-    title: 'Reclamando tus 6.1 bitcoins',
+    title: 'Reclamando tus 1.61 bitcoins',
     paragraph_one:
       '¡Uf, eso estuvo cerca! Todavía tiemblas después de tu batalla contra BitRey, pero te sientes aliviado de que tú y tus amigos ganaron.',
     paragraph_two:
@@ -230,7 +230,7 @@ const translations = {
       title: 'Clave pública',
       heading: 'Pares de claves',
       paragraph_one:
-        'Según la piscina de minería, parece que tienes 6.1 bitcoins para reclamar por todo el trabajo que hiciste anteriormente.',
+        'Según la piscina de minería, parece que tienes 1.61 bitcoins para reclamar por todo el trabajo que hiciste anteriormente.',
       list_one: 'Clave privada',
       list_two: 'Clave pública',
       paragraph_two:

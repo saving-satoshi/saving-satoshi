@@ -87,7 +87,7 @@ function compressPublicKey(publicKey) {
     },
     constraints: [
       {
-        range: [6, 1, 13, 1],
+        range: [1, 1, 13, 1],
         allowMultiline: true,
       },
     ],
@@ -102,7 +102,7 @@ print("KILL")`,
       args: ['publicKey'],
     },
     defaultCode: `import re
-    
+
 ${prevData?.data && `uncompressed_key = "${dataObject}"`}
 
 # Determine if the y coordinate is even or odd and prepend
@@ -129,7 +129,7 @@ def compress_publickey(public_key):
     },
     constraints: [
       {
-        range: [8, 1, 13, 1],
+        range: [1, 1, 13, 1],
         allowMultiline: true,
       },
     ],

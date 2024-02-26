@@ -440,7 +440,7 @@ const javascriptChallengeSix = {
   defaultCode: `// UTXO from chapter 6 step 1 (mining pool payout)
 const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
 const vout = 1;
-const value = 650000000;
+const value = 161000000;
 
 // From chapter 4 (we will reuse address for change)
 const priv = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503en;
@@ -454,7 +454,7 @@ const scriptcode = '1976a914' + pubkey_hash + '88ac';
 const tx = new Transaction();
 const in0 = Input.from_output(txid, vout, value, scriptcode);
 const out0 = Output.from_options('bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj', 100000000);
-const out1 = Output.from_options(addr, 549999000);
+const out1 = Output.from_options(addr, 60999000);
 tx.inputs.push(in0);
 tx.outputs.push(out0);
 tx.outputs.push(out1);
@@ -483,7 +483,7 @@ const pythonChallengeSix = {
   defaultCode: `# UTXO from chapter 6 step 1 (mining pool payout)
 txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
 vout = 1
-value = 650000000
+value = 161000000
 
 # From chapter 4 (we will reuse address for change)
 priv = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503e
@@ -497,7 +497,7 @@ scriptcode = "1976a914" + pubkey_hash + "88ac"
 tx = Transaction()
 in0 = Input.from_output(txid, vout, value, scriptcode)
 out0 = Output.from_options("bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj", 100000000)
-out1 = Output.from_options(addr, 549999000)
+out1 = Output.from_options(addr, 60999000)
 tx.inputs.append(in0)
 tx.outputs.append(out0)
 tx.outputs.append(out1)

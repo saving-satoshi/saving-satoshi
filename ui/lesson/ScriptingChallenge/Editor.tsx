@@ -7,7 +7,7 @@ import { monacoOptions } from './config'
 import { monaco } from 'react-monaco-editor'
 import { useEffect, useRef, useState } from 'react'
 import { Loader } from 'shared'
-import { LessonView } from 'types'
+import { EditorRange, LessonView } from 'types'
 import { useLessonContext } from 'ui'
 import { useMediaQuery } from 'hooks'
 // @ts-ignore
@@ -18,35 +18,39 @@ export default function Editor({
   value,
   onChange,
   onValidate,
-  code,
+  code = '',
+  options = monacoOptions,
   constraints,
   hiddenRange,
   loadingSavedCode,
+  rangesToCollapse = [],
 }: {
   language: string
   value?: string
   onChange?: (value: string) => void
   onValidate?: (value: monaco.editor.IMarker[]) => void
   code?: string
+  options?: any
   constraints: any
   hiddenRange?: number[]
   loadingSavedCode?: boolean
+  rangesToCollapse?: EditorRange[]
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
   const [loading, setLoading] = useState<boolean>(loadingSavedCode || true)
-  const [options, setOptions] = useState(monacoOptions)
+  const [editorOptions, setEditorOptions] = useState(options)
   const monacoRef = useRef<any>()
 
   const createMonacoOptions = (range) => {
     return {
-      ...monacoOptions,
+      ...options,
       lineNumbers: (lineNumber: number) => (lineNumber - range).toString(),
     }
   }
 
   const handleBeforeMount = (monaco) => {
-    hiddenRange && setOptions(createMonacoOptions(hiddenRange[2]))
+    hiddenRange && setEditorOptions(createMonacoOptions(hiddenRange[2]))
     monaco.editor.defineTheme('satoshi', {
       base: 'vs-dark',
       inherit: true,
@@ -77,26 +81,34 @@ export default function Editor({
     const constrainedInstance = constrainedEditor(monaco)
     constrainedInstance.initializeIn(editor)
     constrainedInstance.addRestrictionsTo(model, constraints)
+    const actions = editor.getSupportedActions()
+    if (rangesToCollapse.length > 0) {
+      const foldAction = actions.find((a) => a.id === 'editor.foldAllExcept')
+      rangesToCollapse.forEach((range) => {
+        editor.setSelection({
+          startLineNumber: range.start,
+          endLineNumber: range.end,
+          startColumn: 1,
+          endColumn: 1,
+        })
+        foldAction.run()
+      })
+    }
   }
 
   const isSmallScreen = useMediaQuery({ width: 767 })
-  const headerHeight = isSmallScreen ? 63 : 70
-  const languageTabsHeight = 40
-  const statusBarHeight = 56
-  const terminalHeight = 218
-  const terminalTabsHeight = 40
+  const headerHeight = 70
   const mobileMenuHeight = 48
+  const terminalTabsHeight = 48
+  const languageTabsHeight = 40
+  const terminalHeight = 204
 
   const totalHeight = isSmallScreen
-    ? headerHeight + mobileMenuHeight + languageTabsHeight + statusBarHeight
-    : headerHeight +
-      languageTabsHeight +
-      statusBarHeight +
-      terminalHeight +
-      terminalTabsHeight
+    ? headerHeight + mobileMenuHeight + languageTabsHeight
+    : headerHeight + languageTabsHeight + terminalHeight + terminalTabsHeight
 
   useEffect(() => {
-    hiddenRange && setOptions(createMonacoOptions(hiddenRange[2]))
+    hiddenRange && setEditorOptions(createMonacoOptions(hiddenRange[2]))
     if (monacoRef.current) {
       const { editor, monaco } = monacoRef.current
       const model = monaco.editor.createModel(value, language)
@@ -138,7 +150,7 @@ export default function Editor({
         onMount={handleMount}
         onChange={onChange}
         onValidate={onValidate}
-        options={options}
+        options={editorOptions}
       />
     </div>
   )

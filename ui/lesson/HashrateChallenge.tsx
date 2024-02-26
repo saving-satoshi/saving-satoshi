@@ -117,7 +117,7 @@ export default function HashrateChallenge({
         verticalProfiles={verticalProfiles}
         className={profileContainerClassName || ''}
       >
-        <div className="flex h-full max-h-[69px] w-full max-w-[800px] flex-col gap-[10px] text-white">
+        <div className="flex  max-h-[69px] w-full max-w-[800px] flex-col gap-[10px] text-white">
           <div className="flex items-center justify-between gap-[10px] self-stretch">
             <span
               className={clsx(

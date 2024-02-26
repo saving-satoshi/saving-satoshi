@@ -157,7 +157,8 @@ console.log(tx_dluitpjd.serialize().toString('hex')==='020000000001018e74531c451
   serialize() {
     // YOUR CODE HERE
   }
-}`,
+}
+`,
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
@@ -169,7 +170,7 @@ console.log(tx_dluitpjd.serialize().toString('hex')==='020000000001018e74531c451
     },
     constraints: [
       {
-        range: [11, 1, 12, 1],
+        range: [1, 1, 14, 1],
         allowMultiline: true,
       },
     ],
@@ -303,7 +304,7 @@ class Transaction:
     },
     constraints: [
       {
-        range: [13, 1, 14, 1],
+        range: [1, 1, 14, 1],
         allowMultiline: true,
       },
     ],

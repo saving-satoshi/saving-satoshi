@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations, useSaveAndProceed, useMediaQuery } from 'hooks'
+import { useTranslations, useProceed, useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import { ProfileWithHashPower } from 'types'
@@ -37,7 +37,7 @@ export default function Solo1({ lang }) {
   const isSmallScreen = useMediaQuery({ width: 767 })
   const isMediumScreen = useMediaQuery({ width: 1098 })
 
-  const saveAndProceed = useSaveAndProceed()
+  const proceed = useProceed()
 
   const TOTAL_BLOCKS = 100
   const BLOCK_RATIO = 11
@@ -228,7 +228,7 @@ export default function Solo1({ lang }) {
                   {t('chapter_three.solo_one.step_two_paragraph_one')}
                 </Text>
                 <Button
-                  onClick={saveAndProceed}
+                  onClick={proceed}
                   classes={`${
                     isMediumScreen ? 'self-center' : 'self-start'
                   } w-full md:w-auto max-w-[192px] mt-[20px]`}

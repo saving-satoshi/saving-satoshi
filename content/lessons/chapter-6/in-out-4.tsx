@@ -129,11 +129,7 @@ class Input {
     },
     constraints: [
       {
-        range: [31, 1, 32, 1],
-        allowMultiline: true,
-      },
-      {
-        range: [36, 1, 37, 1],
+        range: [1, 1, 39, 1],
         allowMultiline: true,
       },
     ],
@@ -198,11 +194,7 @@ class Input:
     },
     constraints: [
       {
-        range: [28, 1, 29, 1],
-        allowMultiline: true,
-      },
-      {
-        range: [32, 1, 33, 1],
+        range: [1, 1, 33, 1],
         allowMultiline: true,
       },
     ],

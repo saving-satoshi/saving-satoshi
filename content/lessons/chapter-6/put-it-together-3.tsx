@@ -147,6 +147,12 @@ tx_dluitpjd.outputs.push(output_tkuaojfp);
 console.log(tx_dluitpjd.digest(0).toString('hex') === 'a25cca939c60a6437de9872e51145be8afdaa7255d5395f11c33394a69d8d13a' && 'true')
 console.log('KILL')
 `,
+    rangesToCollapse: [
+      {
+        start: countLines(prevData.data) + 3,
+        end: countLines(prevData.data) + 6,
+      },
+    ],
     defaultFunction: {
       name: 'put-it-together-2',
       args: ['args'],
@@ -170,12 +176,7 @@ ${prevData.data.slice(0, -2)}
     },
     constraints: [
       {
-        range: [
-          countLines(prevData.data.slice(0, -2)) + 5,
-          1,
-          countLines(prevData.data.slice(0, -2)) + 6,
-          1,
-        ],
+        range: [1, 1, countLines(prevData.data.slice(0, -2)) + 6, 1],
         allowMultiline: true,
       },
     ],
@@ -280,6 +281,12 @@ tx_dluitpjd.inputs.append(input_opjkfqsd)
 tx_dluitpjd.outputs.append(output_tkuaojfp)
 print(tx_dluitpjd.digest(0).hex() == 'a25cca939c60a6437de9872e51145be8afdaa7255d5395f11c33394a69d8d13a' and 'true')
 print("KILL")`,
+    rangesToCollapse: [
+      {
+        start: countLines(prevData.data) + 3,
+        end: countLines(prevData.data) + 6,
+      },
+    ],
     defaultFunction: {
       name: 'put-it-together-2',
       args: ['args'],
@@ -302,12 +309,7 @@ ${prevData.data}
     },
     constraints: [
       {
-        range: [
-          countLines(prevData.data) + 5,
-          1,
-          countLines(prevData.data) + 6,
-          1,
-        ],
+        range: [1, 1, countLines(prevData.data) + 6, 1],
         allowMultiline: true,
       },
     ],

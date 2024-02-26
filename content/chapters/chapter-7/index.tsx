@@ -6,13 +6,7 @@ export default function Chapter7({ lang }) {
 
   return (
     <Chapter metadata={metadata} lang={lang}>
-      <Text>
-        Things are finally settling down. But people are confused and uncertain
-        about whether the bitcoin supply has been tampered with. Your friend, a
-        professor at a local university, asks you to help with research for an
-        article on this topic. You happily agree, pop open your laptop, and get
-        to work.
-      </Text>
+      <Text>{t('chapter_seven.paragraph_one')}</Text>
     </Chapter>
   )
 }
@@ -22,8 +16,9 @@ export const metadata = {
   slug: 'chapter-7',
   title: 'chapter_seven.title',
   image: '/assets/images/chapter-7-cover.jpg',
-  intros: [],
-  lessons: [],
-  outros: [],
-  challenges: [],
+  theme: 'bg-gradient-to-br from-[#0A1952] to-[#1B3D98]',
+  intros: ['intro-1', 'intro-2', 'intro-3'],
+  lessons: ['mempool-transaction-1'],
+  outros: ['outro-1'],
+  challenges: ['mempool-transaction-1'],
 }

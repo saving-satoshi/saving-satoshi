@@ -650,7 +650,7 @@ const translations = {
   },
 
   chapter_four: {
-    title: 'Claiming your 6.1 bitcoin',
+    title: 'Claiming your 1.61 bitcoin',
     paragraph_one:
       'Phew, that was close! You are still shaking from your battle against BitRey, yet relieved that you and your friends won.',
     paragraph_two:
@@ -670,7 +670,7 @@ const translations = {
       title: 'Public key',
       heading: 'About key pairs',
       paragraph_one:
-        'According to the mining pool, it looks like you have 6.1 bitcoin to claim from all the work you did earlier. ',
+        'According to the mining pool, it looks like you have 1.61 bitcoin to claim from all the work you did earlier. ',
       list_one: ' Private key',
       list_two: 'Public key',
       paragraph_two:
@@ -1090,7 +1090,7 @@ const translations = {
       paragraph_two:
         'You open you Bitcoin full node and execute a command to see where your money is in the blockchain.',
       paragraph_three:
-        'This is an unspent transaction output (aka "UTXO"). You might recognize your compressed public key hash and address from chapter 4. The amount looks right, too: 6.5 BTC.',
+        'This is an unspent transaction output (aka "UTXO"). You might recognize your compressed public key hash and address from chapter 4. The amount looks right, too: 1.61 BTC.',
     },
     in_out_two: {
       title: 'The ins and outs',
@@ -1098,7 +1098,7 @@ const translations = {
         'Mike Ramen gives you an address to send your 1 BTC contribution to:',
       paragraph_two:
         'Hm, that address looks a lot longer than yours! I wonder why...',
-      paragraph_three: `Anyway, we need to create and sign a transaction that sends one of your 6.5 BTC to this address. We looked at Satoshi's transaction structure in chapter 5 but your transaction will be a bit different. Technology has improved a lot since block 170, and Bitcoin transactions are now version 2, and follow a new protocol called Segregated Witness.`,
+      paragraph_three: `Anyway, we need to create and sign a transaction that sends one of your 1.61 BTC to this address. We looked at Satoshi's transaction structure in chapter 5 but your transaction will be a bit different. Technology has improved a lot since block 170, and Bitcoin transactions are now version 2, and follow a new protocol called Segregated Witness.`,
     },
     in_out_three: {
       title: 'The ins and outs',
@@ -1472,17 +1472,17 @@ const translations = {
     put_it_together_six: {
       heading: 'Put it All Together',
       paragraph_one:
-        'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 6.5 BTC input and a 1 BTC output... what happens to the other 5.5 BTC? Most of that will be "change" and we need to send it back to our own address!',
+        'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
       paragraph_two:
         'Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in step 1) and two outputs:',
       paragraph_three:
-        'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 550,000,000 to 549,999,000 satoshis.',
+        'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 61,000,000 to 60,999,000 satoshis.',
       paragraph_four:
         'Finally our work is done. Your script should end by returning the result of the transaction serialize() method. This is a valid signed Bitcoin transaction and we can broadcast it to the network to send Mike Ramen the money he needs!',
       bullet_one:
         'Mike Ramen gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
       bullet_two:
-        'You get 550,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
+        'You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
       success: "You've done it! You've built a transaction!",
     },
     outro_one: {
@@ -1505,7 +1505,76 @@ const translations = {
     },
   },
   chapter_seven: {
-    title: `Twentyone`,
+    title: `Offense is the best defense`,
+    paragraph_one:
+      'You and Mike Ramen arrive first via plane, then via dune buggy, and then via rowboat at Vanderpoole’s private island.',
+    intro_one: {
+      title: 'Intro',
+      paragraph_one:
+        'You ask your compatriots whether they are worried about being spotted by Vanderpoole’s army of security drones.',
+      paragraph_two:
+        '—HOLOCAT: “Give me 15 minutes, and I’ll take care of them. They’re birds, and I’m a cat. They don’t stand a chance.”',
+      paragraph_three:
+        'Holocat extends his claws and deals with Vanderpoole’s drone army. Mike Ramen hands you a black turtleneck sweater, gloves, and a pair of night vision goggles.',
+      paragraph_four:
+        '—MIKE RAMEN: “You can’t do espionage in a Hawaiian shirt. What were you thinking? This isn’t another abandoned warehouse; this is a fortress. Here, I almost forgot. Take this grappling hook.”',
+      paragraph_five:
+        'You and Mike Ramen scale the castle walls of Vanderpoole’s primary residence. To your surprise, his home overflows with pro-bitcoin art, books, and paper magazines. He is or rather was, a true bitcoiner. A collection of miners dating back 125 years sit anointed in display cases. That’s when you see it: Vanderpoole’s workshop.',
+    },
+    intro_two: {
+      paragraph_one:
+        'The gigantic room is a mess, though its layout is methodical. Inside open notebooks, Vanderpoole’s designs for the backdoor that clogged up the bitcoin network are sketched out in detail. You were right: It was all a lie, but one told not by a conniving villain but by a desperate believer in bitcoin whose company could no longer keep up with modern miners and so infected the pools with a virus.',
+      paragraph_two:
+        'The virus replaces a section of the code used by all the mining pools. It is the block building logic, the algorithm that assembles transactions into a block template that then gets combined with zillions of different nonces, looking for a valid hash. The template is still passed on to legitimate hashing code for proof-of-work, but by then the damage has been done.',
+      paragraph_three:
+        '—HOLOCAT: “What a loss. His family was once great. It’s so sad to see the Vanderpoole’s come to this.”',
+      paragraph_four:
+        'Investors will sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.',
+    },
+    intro_three: {
+      paragraph_one:
+        "But you can't just leave the crippled mining code on Vanderpoole's server to keep infecting all the mining pools. You have to fix it! As you read through the code, Holocat shows you a mempool display and it is filling up with unconfirmed transactions. The sooner this code gets fixed, the better.",
+    },
+    mempool_transaction_one: {
+      title: 'Building blocks',
+      heading: 'Code Challenge',
+      paragraph_one:
+        "This is the code you find on Vanderpoole's server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is assemble_block() (in Python, assembleBlock() in JavaScript). If you run the code as Vanderpoole left it, you will see the problem right away.",
+      paragraph_two:
+        'You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules.',
+      paragraph_three:
+        'You can make the following assumptions to complete your mission:',
+      bullet_one:
+        'All transactions in the mempool have already been verified as valid.',
+      bullet_two:
+        'The coinbase transaction, and the weight it contributes to the block, can be ignored.',
+      paragraph_four:
+        'You can view the entire raw mempool JSON file <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link>.',
+      paragraph_five:
+        'Or browse an excerpt of the file in this table for some basic patterns:',
+      headings: {
+        item_one: 'Transaction ID',
+        item_two: 'Fee',
+        item_two_b: 'Satoshis',
+        item_three: 'Weight',
+        item_three_b: 'Virtual bytes',
+        item_four: 'Ancestors',
+      },
+      table_one: {
+        footer:
+          'View the json file <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link> for the rest of the transaction data',
+      },
+      poor: "It's a valid block, but can you do better? Try to collect more fees.",
+      good: "It's a valid block, but you are not quite getting the most fees yet. Keep working, or continue, your choice.",
+      success: "It's a valid block, and you optimized fees. Nice!",
+    },
+    outro_one: {
+      title: 'Outro',
+      heading: 'You did it!!!',
+      paragraph_one:
+        'You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.',
+    },
+    resources: {},
   },
 
   chapter_eight: {
@@ -1608,6 +1677,9 @@ const translations = {
     evaluation: 'Evaluation',
     script_output: 'Script output',
     waiting: 'Waiting for your input above...',
+    poor: "This is valid code but it's not quite what we are looking for. Try again.",
+    good: 'Good job, its not quite perfect but still considered correct. Keep working or continue, your choice.',
+    success: 'Great work your code looks great!',
   },
   notfound: {
     first: 'Hmm...where are we?',
@@ -1639,6 +1711,8 @@ const translations = {
     solution_eight: 'Solution to part eight of this challenge',
     solution_nine: 'Solution to part nine of this challenge',
     solution_ten: 'Solution to part ten of this challenge',
+    feedback:
+      'Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
   },
 }
 export default translations

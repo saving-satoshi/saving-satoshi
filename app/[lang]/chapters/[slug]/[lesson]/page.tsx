@@ -8,8 +8,7 @@ import { usePathData, useTranslations, useLocalizedRoutes } from 'hooks'
 import {
   getLastUnlockedLessonPath,
   getLessonKey,
-  getNextLessonKey,
-  isLessonCompleted,
+  getNextLessonPath,
   isLessonUnlocked,
   keys,
 } from 'lib/progress'
@@ -17,9 +16,8 @@ import {
 import * as navigation from 'next/navigation'
 import { useAuthContext } from 'providers/AuthProvider'
 import { useProgressContext } from 'providers/ProgressProvider'
-import { Loader } from 'shared'
 import { LoadingState } from 'types'
-import { notFound } from 'next/navigation'
+import { notFound, useRouter } from 'next/navigation'
 import useEnvironment from 'hooks/useEnvironment'
 
 const Portal = ({ children, id }) => {
@@ -38,34 +36,68 @@ export default function Page({ params }) {
   const { isDevelopment } = useEnvironment()
   const t = useTranslations(params.lang)
 
+  const router = useRouter()
   const routes = useLocalizedRoutes()
 
   const chapterId = params.slug
   const chapterLessons = lessons[chapterId]
   const pathData = usePathData()
 
-  const { isLoading: isAccountLoading } = useAuthContext()
-  const { progress, isLoading: isProgressLoading } = useProgressContext()
+  const { account, isLoading: isAccountLoading } = useAuthContext()
+  const {
+    progress,
+    isLoading: isProgressLoading,
+    saveProgress,
+    saveProgressLocal,
+  } = useProgressContext()
+
+  const currentLessonKey = getLessonKey(pathData.chapterId, pathData.lessonId)
+  const lastUnlockedLessonPath = getLastUnlockedLessonPath(progress)
+  const nextLessonPath = getNextLessonPath(currentLessonKey)
+  const route = routes.chaptersUrl + lastUnlockedLessonPath
 
   const [unlocked, setUnlocked] = useState<number>(LoadingState.Idle)
 
   useEffect(() => {
-    if (!isAccountLoading && !isProgressLoading) {
+    if (!isDevelopment && !isAccountLoading && !isProgressLoading) {
       if (progress && params.lesson) {
         const lesson = chapterLessons[params.lesson]?.metadata ?? false
         const lessonUnlocked = isLessonUnlocked(progress, lesson.key)
+        if (
+          !isDevelopment &&
+          keys.indexOf(currentLessonKey) > keys.indexOf(progress) + 1
+        ) {
+          console.warn('Lesson locked')
+          router.replace(route)
+          return
+        }
         setUnlocked(lessonUnlocked ? LoadingState.Success : LoadingState.Failed)
+
+        router.prefetch(routes.chaptersUrl + nextLessonPath)
+
+        if (account) {
+          saveProgress(currentLessonKey)
+        }
+        saveProgressLocal(currentLessonKey)
       } else {
         setUnlocked(LoadingState.Failed)
       }
     }
   }, [
+    isDevelopment,
+    isAccountLoading,
+    isProgressLoading,
     progress,
     params.lesson,
     chapterLessons,
-    chapterId,
-    isAccountLoading,
-    isProgressLoading,
+    currentLessonKey,
+    router,
+    routes.chaptersUrl,
+    nextLessonPath,
+    account,
+    saveProgressLocal,
+    route,
+    saveProgress,
   ])
 
   const Head = () => {
@@ -89,52 +121,10 @@ export default function Page({ params }) {
 
   const Lesson = chapterLessons[params.lesson].default
 
-  if (isDevelopment) {
-    return (
-      <>
-        <Head />
-        <Lesson lang={params.lang} />
-      </>
-    )
-  }
-
-  // If account or progress data is being loaded, we show a loader.
-  if (unlocked === LoadingState.Idle || isAccountLoading || isProgressLoading) {
-    return (
-      <>
-        <Head />
-        <div className="flex grow items-center justify-center">
-          <Loader className="h-10 w-10 text-white" />
-        </div>
-      </>
-    )
-  }
-
-  const lastUnlockedLessonPath = getLastUnlockedLessonPath(progress)
-  const nextLessonKey = getNextLessonKey(
-    getLessonKey(pathData.chapterId, pathData.lessonId)
-  )
-  const isRestrictedFromLesson = !isLessonCompleted(
-    progress,
-    getLessonKey(pathData.chapterId, pathData.lessonId)
-  )
-
-  if (
-    unlocked === LoadingState.Failed &&
-    keys.indexOf(progress) <= keys.indexOf(nextLessonKey) - 1 &&
-    isRestrictedFromLesson
-  ) {
-    console.warn(`lesson ${pathData.lessonId} is locked.`)
-    const route = routes.chaptersUrl + lastUnlockedLessonPath
-    return navigation.redirect(route)
-  }
-
   return (
-    unlocked && (
-      <>
-        <Head />
-        <Lesson lang={params.lang} />
-      </>
-    )
+    <>
+      <Head />
+      <Lesson lang={params.lang} />
+    </>
   )
 }

@@ -56,13 +56,15 @@ export default function PutItTogether6({ lang }) {
     if (prevData && allLessonsAreLoaded(prevData)) {
       setCombinedCode(
         organizeImports(
-          prevData['CH6PUT1'] +
+          '\n' +
+            prevData['CH6PUT1'] +
             '\n' +
             prevData['CH6PUT5'] +
             '\n' +
             prevData['CH6INO4'] +
             '\n' +
-            prevData['CH6INO5']
+            prevData['CH6INO5'] +
+            '\n'
         )
       )
     }
@@ -75,11 +77,17 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
+    rangesToCollapse: [
+      {
+        start: countLines(combinedCode) + 1,
+        end: countLines(combinedCode) + 18,
+      },
+    ],
     defaultCode: `${combinedCode}
 // UTXO from chapter 6 step 1 (mining pool payout)
 const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
 const vout = 1;
-const value = 650000000;
+const value = 161000000;
 
 // From chapter 4 (we will reuse address for change)
 const priv = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503en;
@@ -97,7 +105,7 @@ console.log(tx.serialize().toString('hex'));`,
     validate: async (answer: string) => {
       if (
         answer.slice(0, 248) !==
-        '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd19851c82000000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
+        '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd158c5a20300000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
       ) {
         return [false, 'Nope! Try again.']
       }
@@ -115,21 +123,22 @@ console.log(tx.serialize().toString('hex'));`,
     },
     constraints: [
       {
-        range: [
-          countLines(combinedCode) + 16,
-          1,
-          countLines(combinedCode) + 17,
-          1,
-        ],
+        range: [1, 1, countLines(combinedCode) + 17, 1],
         allowMultiline: true,
       },
     ],
-    hiddenRange: [1, 1, countLines(combinedCode), 1],
+    //hiddenRange: [1, 1, countLines(combinedCode), 1],
   }
 
   const python = {
     program: `
 print("KILL")`,
+    rangesToCollapse: [
+      {
+        start: countLines(combinedCode) + 1,
+        end: countLines(combinedCode) + 18,
+      },
+    ],
     defaultFunction: {
       name: 'privatekey_to_publickey',
       args: ['private_key'],
@@ -138,7 +147,7 @@ print("KILL")`,
 # UTXO from chapter 6 step 1 (mining pool payout)
 txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
 vout = 1
-value = 650000000
+value = 161000000
 
 # From chapter 4 (we will reuse address for change)
 priv = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503e
@@ -156,7 +165,7 @@ print(tx.serialize().hex())`,
     validate: async (answer: string) => {
       if (
         answer.slice(0, 248) !==
-        '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd19851c82000000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
+        '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd158c5a20300000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
       ) {
         return [false, 'Nope! Try again.']
       }
@@ -174,16 +183,10 @@ print(tx.serialize().hex())`,
     },
     constraints: [
       {
-        range: [
-          countLines(combinedCode) + 16,
-          1,
-          countLines(combinedCode) + 17,
-          1,
-        ],
+        range: [1, 1, countLines(combinedCode) + 17, 1],
         allowMultiline: true,
       },
     ],
-    hiddenRange: [1, 1, countLines(combinedCode), 1],
   }
 
   const config: EditorConfig = {
