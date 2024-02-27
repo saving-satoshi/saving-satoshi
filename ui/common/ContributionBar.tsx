@@ -197,7 +197,7 @@ export default function ContributionBar({
                     alt=""
                     width={26}
                     height={26}
-                    class="rounded-full"
+                    className="rounded-full"
                   />
                 </div>
               )}
