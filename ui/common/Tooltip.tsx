@@ -24,7 +24,7 @@ function Tooltip({
   offset?: number
   theme?: string
 }) {
-  const targetRef = useRef<HTMLDivElement>(null)
+  const targetRef = useRef<HTMLSpanElement>(null)
   const tooltipRef = useRef<HTMLSpanElement>(null)
   const arrowRef = useRef<HTMLSpanElement>(null)
   const [visible, setVisible] = useState(false)
