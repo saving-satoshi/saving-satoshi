@@ -18,7 +18,8 @@ const javascript = {
     args: ['nonce'],
   },
   defaultCode: [
-    `  // This block constructor opportunistically includes transactions with unconfirmed parents.
+    `function assembleBlock(mempool) {
+  // This block constructor opportunistically includes transactions with unconfirmed parents.
   // If a transaction has unconfirmed parents, but those parents are all already included in the block, then it is valid for inclusion.
   const block = [];
   let block_weight = 0;
@@ -49,7 +50,8 @@ const javascript = {
       break;
     }
   }
-  return block;`,
+  return block;
+}`,
   ],
   validate: async (answer) => {
     return [true, undefined]
@@ -64,7 +66,8 @@ const python = {
     args: ['nonce'],
   },
   defaultCode: [
-    `    """This block constructor opportunistically includes transactions with
+    `def assemble_block(mempool):
+"""This block constructor opportunistically includes transactions with
     unconfirmed parents.
 
     If a transaction has unconfirmed parents, but those parents are all already
@@ -164,7 +167,7 @@ export default function MempoolTransactionResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`635px`}
+                  height={`670px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
