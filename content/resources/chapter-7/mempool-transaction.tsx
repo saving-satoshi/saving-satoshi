@@ -71,10 +71,10 @@ const python = {
     included in the block, then it is valid for inclusion."""
     block = []
     block_weight = 0
-    for tx in transactions:
+    for tx in mempool:
         tx.feerate = float(tx.fee) / float(tx.weight)
     # Construct dictionary for fast lookup
-    txs = OrderedDict(sorted([(tx.txid, tx) for tx in transactions], key=lambda x: x[1].feerate, reverse=True))
+    txs = OrderedDict(sorted([(tx.txid, tx) for tx in mempool], key=lambda x: x[1].feerate, reverse=True))
     while True:
         for tx in txs.values():
             # Opportunistically include txs with unconfirmed parents if their parents
