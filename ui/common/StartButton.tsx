@@ -62,7 +62,7 @@ export default function Card({
       interval = setInterval(() => {
         currentHash = Math.min(
           currentHash + Math.floor(Math.random() * 200),
-          4400
+          4300
         )
         currentHash -= Math.floor(Math.random() * (10 - 5 + 1) + 5)
         setHashPower(currentHash)
