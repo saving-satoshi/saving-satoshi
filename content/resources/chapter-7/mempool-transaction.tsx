@@ -67,7 +67,7 @@ const python = {
   },
   defaultCode: [
     `def assemble_block(mempool):
-"""This block constructor opportunistically includes transactions with
+    """This block constructor opportunistically includes transactions with
     unconfirmed parents.
 
     If a transaction has unconfirmed parents, but those parents are all already
