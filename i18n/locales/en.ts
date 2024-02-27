@@ -937,8 +937,12 @@ const translations = {
         'There are two 32-byte numbers we need to extract. They are referred to as R and S respectively and are each prefixed by the bytes 0220 in the DER sequence. Instead of fully decoding the DER blob, just look for the prefixes and paste the R and S values.',
       paragraph_three:
         "# Satoshi's signature, from the input scriptSig of the tx to Hal Finney",
-      paragraph_four:
-        'sig_der = """304402204e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd410220181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09"""',
+      pushbytes_data_one: '30440220',
+      data_one:
+        '4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41',
+      pushbytes_data_two: '0220',
+      data_two:
+        '181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09',
     },
     verify_signature_four: {
       heading: 'Decode the Public Key',
@@ -948,8 +952,6 @@ const translations = {
         'We learned in chapter 4 that public keys are really points in the ECDSA curve, meaning they have an x and y value. The first byte 04 means "uncompressed" (as opposed to 02 and 03 like we learned in chapter 4). Remove that first byte and the remaining data are 32-byte x and y coordinates. Copy and paste again.',
       paragraph_two:
         "# Satoshi's public key, from the block 9 coinbase output scriptPubKey",
-      paragraph_three:
-        'pubkey = """0411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3"""',
     },
     verify_signature_five: {
       title: 'Verify the signature',

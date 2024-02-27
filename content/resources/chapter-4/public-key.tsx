@@ -61,8 +61,8 @@ const python = {
     return generator_point`,
     `def compress_publickey(public_key):
     header_byte = {
-          "y_is_even": "02",
-          "y_is_odd":  "03"
+        "y_is_even": "02",
+        "y_is_odd":  "03"
     }
     regex = r"([a-f0-9]+),([a-f0-9]+)"
     cleaned_public_key = re.sub(r"\\s", "", public_key)
