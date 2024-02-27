@@ -110,7 +110,7 @@ export default function Mining1({ lang }) {
         setBlocks(currentBlock)
         setTransactionsConfirmed(currentBlock * 3500)
         setBitcoinMined(currentBlock * 0.061)
-      }, Math.floor(Math.random() * 1000))
+      }, Math.floor(Math.random() * 75))
     }
     return () => clearInterval(interval)
   }, [finalMining])
@@ -186,7 +186,7 @@ export default function Mining1({ lang }) {
       setRandomNonce(true)
       setTimeout(() => {
         setTenXHint(true)
-      }, 10000)
+      }, 7000)
     }
 
     if (step === 3) {
