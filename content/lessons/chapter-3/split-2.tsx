@@ -51,7 +51,7 @@ export default function Split2({ lang }) {
     },
     {
       username: 'Mining Maniacs',
-      avatar: '/assets/avatars/mining-maniacs.png',
+      avatar: '/assets/avatars/mining-maniacs.jpg',
       hashpower: 4054,
       hashes: protagonistHash[1],
       color: '#FE5329',
@@ -59,7 +59,7 @@ export default function Split2({ lang }) {
     },
     {
       username: 'Coin Crunchers',
-      avatar: '/assets/avatars/coin-crunchers.png',
+      avatar: '/assets/avatars/coin-crunchers.jpg',
       hashpower: 3857,
       hashes: protagonistHash[2],
       color: '#62BFB7',
@@ -67,7 +67,7 @@ export default function Split2({ lang }) {
     },
     {
       username: 'Hash Hoppers',
-      avatar: '/assets/avatars/hash-hoppers.png',
+      avatar: '/assets/avatars/hash-hoppers.jpg',
       hashpower: 7911,
       hashes: protagonistHash[3],
       color: '#85BF09',
@@ -78,7 +78,7 @@ export default function Split2({ lang }) {
   const ANTAGONISTS = [
     {
       username: 'BitRey',
-      avatar: '/assets/avatars/bitrey.png',
+      avatar: '/assets/avatars/bitrey.jpg',
       hashpower: 18599,
       hashes: antagonistHash,
       color: '#7E002E',
@@ -181,7 +181,7 @@ export default function Split2({ lang }) {
             chip={
               <ProfileChip
                 className="relative -top-4"
-                image="/assets/images/chapter-1-holocat-cropped.jpg"
+                image="/assets/avatars/holocat.jpg"
                 variant={
                   step === 6
                     ? ProfileChipVariant.Balance
