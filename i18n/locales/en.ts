@@ -937,12 +937,6 @@ const translations = {
         'There are two 32-byte numbers we need to extract. They are referred to as R and S respectively and are each prefixed by the bytes 0220 in the DER sequence. Instead of fully decoding the DER blob, just look for the prefixes and paste the R and S values.',
       paragraph_three:
         "# Satoshi's signature, from the input scriptSig of the tx to Hal Finney",
-      pushbytes_data_one: '30440220',
-      data_one:
-        '4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41',
-      pushbytes_data_two: '0220',
-      data_two:
-        '181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09',
     },
     verify_signature_four: {
       heading: 'Decode the Public Key',
