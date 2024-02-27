@@ -62,7 +62,7 @@ export default function Card({
       interval = setInterval(() => {
         currentHash = Math.min(
           currentHash + Math.floor(Math.random() * 200),
-          4300
+          4400
         )
         currentHash -= Math.floor(Math.random() * (10 - 5 + 1) + 5)
         setHashPower(currentHash)
@@ -97,7 +97,7 @@ export default function Card({
     if (powerUp && step === 3) {
       setRandomHash(false)
       const time = 60 * 1000
-      displayRandomNumbers(45000, 3000, time)
+      displayRandomNumbers(44000, 3000, time)
       onButtonClick(true)
       setPowerUp(false)
     }
