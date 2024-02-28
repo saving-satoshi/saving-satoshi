@@ -17,7 +17,7 @@ const vpSig =
 
 const javascript = {
   program: `
-console.log(decodeSig("${vpSig}").toString());
+console.log(decode_sig("${vpSig}").toString());
 console.log("KILL");
 `,
   defaultFunction: {
@@ -27,7 +27,7 @@ console.log("KILL");
   defaultCode: `// Vanderpoole's signature
 const vpSig = "H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k="
 
-function decodeSig(vpSig) {
+function decode_sig(vpSig) {
   // Decode a base64-encoded signature string into its ECDSA signature elements r and s, returned as an array of integers.
   // Remember to throw away the first byte of metadata from the signature string!
 
