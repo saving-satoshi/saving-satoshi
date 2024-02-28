@@ -99,13 +99,13 @@ export default function Editor({
   const isSmallScreen = useMediaQuery({ width: 767 })
   const headerHeight = 70
   const mobileMenuHeight = 48
-  const terminalTabsHeight = 48
+  const runnerHeight = 56
   const languageTabsHeight = 40
   const terminalHeight = 204
 
   const totalHeight = isSmallScreen
     ? headerHeight + mobileMenuHeight + languageTabsHeight
-    : headerHeight + languageTabsHeight + terminalHeight + terminalTabsHeight
+    : headerHeight + languageTabsHeight + terminalHeight + runnerHeight
 
   useEffect(() => {
     hiddenRange && setEditorOptions(createMonacoOptions(hiddenRange[2]))

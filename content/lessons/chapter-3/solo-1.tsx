@@ -56,7 +56,7 @@ export default function Solo1({ lang }) {
   const ANTAGONISTS = [
     {
       username: 'BitRey',
-      avatar: '/assets/avatars/bitrey.png',
+      avatar: '/assets/avatars/bitrey.jpg',
       hashpower: 18599,
       hashes: antagonistHash,
       color: '#7E002E',
