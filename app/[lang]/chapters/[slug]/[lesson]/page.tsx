@@ -14,8 +14,8 @@ import {
 } from 'lib/progress'
 
 import * as navigation from 'next/navigation'
-import { useAuthContext } from 'providers/AuthProvider'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useAuthContext } from 'contexts/AuthContext'
+import { useProgressContext } from 'contexts/ProgressContext'
 import { LoadingState } from 'types'
 import { notFound, useRouter } from 'next/navigation'
 import useEnvironment from 'hooks/useEnvironment'

@@ -5,7 +5,7 @@ import { lessons, chapters } from 'content'
 import Icon from 'shared/Icon'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import useLessonStatus from 'hooks/useLessonStatus'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
 
 export default function ChallengeItem({
   position,

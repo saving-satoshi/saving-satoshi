@@ -1,6 +1,6 @@
 'use client'
 
-import { Modal, useModalContext } from 'providers/ModalProvider'
+import { Modal, useModalContext } from 'contexts/ModalContext'
 
 import AccountModal from 'components/Modals/Account'
 import SignInModal from 'components/Modals/SignIn'
