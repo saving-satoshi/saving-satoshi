@@ -73,7 +73,7 @@ export default function Card({
 
   function handleClick() {
     if (!hasherState && step === 0) {
-      const time = 15 * 1000
+      const time = 5750
       displayRandomNumbers(4400, 200, time)
       onButtonClick(true)
       setHasherState(true)

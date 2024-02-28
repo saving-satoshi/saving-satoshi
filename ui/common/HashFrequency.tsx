@@ -30,7 +30,7 @@ export default function HashFrequency({
       )}
       {step >= 4 && (
         <span>
-          {(44993 / 100).toFixed(2)}
+          {(43993 / 100).toFixed(2)}
           <span className="text-white/50">
             *10<sup>1{hashPower.toString().length === 4 ? '5' : '6'}</sup>
           </span>
