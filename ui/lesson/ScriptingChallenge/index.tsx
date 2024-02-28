@@ -13,6 +13,7 @@ import { useAuthContext } from 'contexts/AuthContext'
 import { setData } from 'api/data'
 import { Base64String } from 'types/classes'
 import clsx from 'clsx'
+import useDebounce from 'hooks/useDebounce'
 
 const tabData = [
   {
@@ -79,6 +80,18 @@ export default function ScriptingChallenge({
   const [challengeSuccess, setChallengeSuccess] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [errors, setErrors] = useState<string[]>([])
+  const debouncedCode = useDebounce(code, 500)
+
+  useEffect(() => {
+    const savedCode = localStorage.getItem(lessonKey)
+    if (savedCode) {
+      setCode(savedCode)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(lessonKey, debouncedCode)
+  }, [debouncedCode, lessonKey])
 
   useDynamicHeight()
   const isSmallScreen = useMediaQuery({ width: 767 })
@@ -201,7 +214,6 @@ export default function ScriptingChallenge({
               hiddenRange={hiddenRange}
               onChange={handleChange}
               onValidate={handleEditorValidate}
-              code={code}
               constraints={constraints}
               loadingSavedCode={loadingSavedCode}
               rangesToCollapse={config.languages[language].rangesToCollapse}
