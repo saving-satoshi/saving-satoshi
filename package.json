@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.2.32",
-    "@monaco-editor/react": "^4.4.6",
+    "@monaco-editor/react": "^4.6.0",
     "@noble/secp256k1": "^2.0.0",
     "accept-language": "^3.0.18",
     "acorn": "^8.8.2",

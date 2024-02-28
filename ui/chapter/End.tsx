@@ -1,8 +1,8 @@
 'use client'
 
 import { useSaveAndReturn, usePathData } from 'hooks'
-import { Modal, useModalContext } from 'providers/ModalProvider'
-import { useAuthContext } from 'providers/AuthProvider'
+import { Modal, useModalContext } from 'contexts/ModalContext'
+import { useAuthContext } from 'contexts/AuthContext'
 import { lessons } from 'content'
 import { useEffect, useState } from 'react'
 import DesktopEnd from './DesktopEnd'

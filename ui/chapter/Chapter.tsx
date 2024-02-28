@@ -13,11 +13,13 @@ import Icon from 'shared/Icon'
 import { ChapterContextType } from 'types'
 import { useTranslations } from 'hooks'
 import useLessonStatus from 'hooks/useLessonStatus'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
 import { getLessonKey } from 'lib/progress'
 import { keys, keysMeta } from 'lib/progress'
-import { useFeatureContext } from 'providers/FeatureProvider'
+import { useFeatureContext } from 'contexts/FeatureProvider'
 import useEnvironment from 'hooks/useEnvironment'
+import { useAuthContext } from 'contexts/AuthContext'
+import { Modal, useModalContext } from 'contexts/ModalContext'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -26,7 +28,9 @@ export const useChapterContext = () => useContext(ChapterContext)
 export default function Chapter({ children, metadata, lang }) {
   const { isDevelopment } = useEnvironment()
   const { progress, isLoading } = useProgressContext()
+  const { account, isLoading: isAccountLoading } = useAuthContext()
   const { isFeatureEnabled } = useFeatureContext()
+  const modals = useModalContext()
   const isEnabled = isFeatureEnabled(
     `${metadata.slug.replace('-', '_')}_enabled`
   )
@@ -66,6 +70,11 @@ export default function Chapter({ children, metadata, lang }) {
       text: t('shared.challenges'),
     },
   ]
+
+  const handleClick = (name: Modal) => {
+    modals.open(name)
+  }
+
   useEffect(() => {
     if (window.location.href.split('#')[1]) {
       const element = document.getElementById(
@@ -106,7 +115,10 @@ export default function Chapter({ children, metadata, lang }) {
             </h3>
 
             <div>
-              {chapter.metadata.lessons.length > 0 && display ? (
+              {(chapter.metadata.lessons.length > 0 &&
+                display &&
+                position === 1) ||
+              account ? (
                 <ChapterTabs
                   items={tabData}
                   activeId={activeTab}
@@ -156,31 +168,57 @@ export default function Chapter({ children, metadata, lang }) {
                       ))}
                     <div className="flex pt-8 md:w-full">
                       <Button
+                        onClick={() =>
+                          position !== 1 &&
+                          !!display &&
+                          !isLoading &&
+                          !account &&
+                          !isAccountLoading &&
+                          handleClick(Modal.SignIn)
+                        }
                         href={
-                          isBetweenChapter
-                            ? `${
-                                routes.chaptersUrl + keysMeta[progress].path
-                              }${queryParams}`
-                            : `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}${queryParams}`
+                          (((!!display &&
+                            !isLoading &&
+                            isBetweenChapter &&
+                            position === 1) ||
+                            (account && !isAccountLoading)) &&
+                            `${
+                              routes.chaptersUrl + keysMeta[progress].path
+                            }${queryParams}`) ||
+                          (((!!display &&
+                            !isLoading &&
+                            !isBetweenChapter &&
+                            position === 1) ||
+                            (account && !isAccountLoading)) &&
+                            `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}${queryParams}`) ||
+                          undefined
                         }
                         disabled={
-                          chapter.metadata.lessons.length === 0 || !display
+                          chapter.metadata.lessons.length === 0 ||
+                          isLoading ||
+                          !display
                         }
                         classes="w-full"
                       >
-                        {chapter.metadata.lessons.length > 0 &&
-                        display &&
-                        isBetweenChapter
-                          ? `Continue`
-                          : !!display
-                          ? `${t('shared.start_chapter')} ${position}`
-                          : isLoading
-                          ? `${t('shared.loading')}`
-                          : !display && !isEnabled
-                          ? `${t('shared.coming_soon')}`
-                          : `${t('chapter.chapter_locked_one')} ${
-                              position - 1
-                            } ${t('chapter.chapter_locked_two')}`}
+                        {(isLoading && `${t('shared.loading')}`) ||
+                          (!!display &&
+                            !isLoading &&
+                            !account &&
+                            !isAccountLoading &&
+                            position !== 1 &&
+                            'Login to continue') ||
+                          (chapter.metadata.lessons.length > 0 &&
+                            display &&
+                            isBetweenChapter &&
+                            'Continue') ||
+                          (!!display &&
+                            `${t('shared.start_chapter')} ${position}`) ||
+                          (!display &&
+                            !isEnabled &&
+                            `${t('shared.coming_soon')}`) ||
+                          `${t('chapter.chapter_locked_one')} ${
+                            position - 1
+                          } ${t('chapter.chapter_locked_two')}`}
                       </Button>
                     </div>
                   </div>

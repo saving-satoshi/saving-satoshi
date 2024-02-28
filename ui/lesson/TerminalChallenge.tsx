@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react'
 import { LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonTerminal } from 'ui'
 import { useMediaQuery } from 'hooks'
-import { useAuthContext } from 'providers/AuthProvider'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useAuthContext } from 'contexts/AuthContext'
+import { useProgressContext } from 'contexts/ProgressContext'
 
 const tabData = [
   {

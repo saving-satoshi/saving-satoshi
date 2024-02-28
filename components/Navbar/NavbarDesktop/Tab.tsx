@@ -10,7 +10,7 @@ import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { lessons, chapters } from 'content'
 import { getLessonKey } from 'lib/progress'
 import { themeSelector } from 'lib/themeSelector'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
 import useLessonStatus from 'hooks/useLessonStatus'
 
 export default function Tab({

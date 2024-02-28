@@ -5,14 +5,18 @@ import Icon from 'shared/Icon'
 import Avatar from 'components/Avatar'
 import { Loader } from 'shared'
 import { useTranslations, useLang } from 'hooks'
-import { useAuthContext } from 'providers/AuthProvider'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { ToggleSwitch } from 'ui'
+import { useState } from 'react'
+import clsx from 'clsx'
+import { useAuthContext } from 'contexts/AuthContext'
+import { useProgressContext } from 'contexts/ProgressContext'
 
 export default function AccountModal({ onClose, state }) {
   const lang = useLang()
   const { account, isLoading: isAccountLoading, logout } = useAuthContext()
   const { isLoading: isProgressLoading } = useProgressContext()
   const t = useTranslations(lang)
+  const [showPrivKey, setShowPrivKey] = useState(false)
 
   const isLoaded = !isAccountLoading && !isProgressLoading
 
@@ -20,6 +24,10 @@ export default function AccountModal({ onClose, state }) {
     const logoutSuccess = await logout()
 
     onClose()
+  }
+
+  const handleShowPrivKey = () => {
+    setShowPrivKey(!showPrivKey)
   }
 
   if (!isLoaded || !account) {
@@ -42,13 +50,30 @@ export default function AccountModal({ onClose, state }) {
       {isLoaded && (
         <div className="sm:p-[30px]">
           <Avatar avatar={account.avatar} size={75} />
-          <div className="my-[30px]">
+          <div className="mb-[15px] mt-[30px]">
             <h2 className="mb-1.5 text-2xl font-bold">
               {t('modal_logout.heading')}
             </h2>
             <p className="text-lg">{t('modal_logout.paragraph_one')}</p>
           </div>
-
+          <div className="mb-[15px] flex flex-col items-start gap-2">
+            <p className="text-lg">Show Private Key</p>
+            <div className="flex flex-row items-center gap-2">
+              <ToggleSwitch
+                checked={showPrivKey}
+                onChange={handleShowPrivKey}
+              />
+              <pre className="whitespace-normal break-all border-2 border-dashed border-white p-2">
+                <span
+                  className={clsx({
+                    'select-none blur-sm': !showPrivKey,
+                  })}
+                >
+                  {account.private_key}
+                </span>
+              </pre>
+            </div>
+          </div>
           <div className="mt-auto flex items-center">
             <button
               onClick={handleSignOut}

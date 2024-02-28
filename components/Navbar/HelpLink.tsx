@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { Tooltip } from 'ui'
 import { themeSelector } from 'lib/themeSelector'
 import { getCurrentLessonKey, getChapterKey, keys } from 'lib/progress'
-import { useAuthContext } from 'providers/AuthProvider'
+import { useAuthContext } from 'contexts/AuthContext'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 

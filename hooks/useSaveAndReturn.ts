@@ -2,10 +2,10 @@
 
 import { getNextLessonKey, isLessonUnlocked, getChapterKey } from 'lib/progress'
 import { useRouter } from 'next/navigation'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
 import { usePathData, useLocalizedRoutes } from 'hooks'
 import { lessons } from 'content'
-import { useAuthContext } from 'providers/AuthProvider'
+import { useAuthContext } from 'contexts/AuthContext'
 
 export default function useSaveAndReturn() {
   const { chaptersUrl } = useLocalizedRoutes()

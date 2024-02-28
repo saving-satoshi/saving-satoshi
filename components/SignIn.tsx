@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Button, Input, Loader } from 'shared'
 import { useTranslations } from 'hooks'
-import { useAuthContext } from 'providers/AuthProvider'
-import { Modal, useModalContext } from 'providers/ModalProvider'
+import { useAuthContext } from 'contexts/AuthContext'
+import { Modal, useModalContext } from 'contexts/ModalContext'
 import clsx from 'clsx'
 
 export default function SignIn({

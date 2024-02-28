@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { DataContextType, Data } from 'types'
 import { getData, setData } from 'api/data'
-import { useAuthContext } from './AuthProvider'
+import { useAuthContext } from './AuthContext'
 
 export const defaultDataContext = {
   isLoading: true,

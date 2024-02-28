@@ -3,7 +3,7 @@
 import { Button } from 'shared'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import Image from 'next/image'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
 import { getChapterKey, keys } from 'lib/progress'
 export default function Hero() {
   const { chaptersUrl, aboutUrl } = useLocalizedRoutes()

@@ -311,7 +311,7 @@ export default function Runner({
 
       <div
         className={clsx(
-          'min-h-14 flex h-14 w-full items-start border-t border-white border-opacity-30',
+          'flex h-14 min-h-14 w-full items-start border-t border-white border-opacity-30',
           {
             'hidden md:flex':
               !isSmallScreen &&
@@ -363,7 +363,7 @@ export default function Runner({
       {hasherState === HasherState.Success && (
         <StatusBar
           handleTryAgain={onTryAgain}
-          className="min-h-14 h-14 grow"
+          className="h-14 min-h-14 grow"
           success={success}
         />
       )}

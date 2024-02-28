@@ -2,9 +2,8 @@
 
 import Icon from 'shared/Icon'
 import Avatar from 'components/Avatar'
-import { useHasMounted } from 'hooks'
-import { useAuthContext } from 'providers/AuthProvider'
-import { Modal, useModalContext } from 'providers/ModalProvider'
+import { useAuthContext } from 'contexts/AuthContext'
+import { Modal, useModalContext } from 'contexts/ModalContext'
 
 export default function UserButton() {
   const modals = useModalContext()
