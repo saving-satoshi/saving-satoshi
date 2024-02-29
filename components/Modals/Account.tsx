@@ -3,7 +3,7 @@
 import Modal from 'components/Modals/Modal'
 import Icon from 'shared/Icon'
 import Avatar from 'components/Avatar'
-import { Loader } from 'shared'
+import { Button, Loader } from 'shared'
 import { useTranslations, useLang } from 'hooks'
 import { ToggleSwitch } from 'ui'
 import { useState } from 'react'
@@ -17,11 +17,20 @@ export default function AccountModal({ onClose, state }) {
   const { isLoading: isProgressLoading } = useProgressContext()
   const t = useTranslations(lang)
   const [showPrivKey, setShowPrivKey] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  const copy = (text) => {
+    navigator.clipboard.writeText(text)
+
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   const isLoaded = !isAccountLoading && !isProgressLoading
 
   const handleSignOut = async () => {
     const logoutSuccess = await logout()
+    localStorage.clear()
 
     onClose()
   }
@@ -56,6 +65,20 @@ export default function AccountModal({ onClose, state }) {
             </h2>
             <p className="text-lg">{t('modal_logout.paragraph_one')}</p>
           </div>
+
+          <h2 className="mb-4 text-xl font-bold">Your Private Key</h2>
+          <>
+            <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
+              {account.private_key && (
+                <>
+                  <code className="whitespace-pre-wrap break-all text-base">
+                    {account.private_key.toUpperCase()}
+                  </code>
+                </>
+              )}
+            </pre>
+          </>
+
           <div className="mb-[15px] flex flex-col items-start gap-2">
             <p className="text-lg">Show Private Key</p>
             <div className="flex flex-row items-center gap-2">
@@ -63,7 +86,7 @@ export default function AccountModal({ onClose, state }) {
                 checked={showPrivKey}
                 onChange={handleShowPrivKey}
               />
-              <pre className="whitespace-normal break-all border-2 border-dashed border-white p-2">
+              <pre className="whitespace-normal break-all border-2 border-dotted border-white/25 p-2">
                 <span
                   className={clsx({
                     'select-none blur-sm': !showPrivKey,
