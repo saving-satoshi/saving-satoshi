@@ -18,7 +18,6 @@ export default function Editor({
   value,
   onChange,
   onValidate,
-  code = '',
   options = monacoOptions,
   constraints,
   hiddenRange,
@@ -29,7 +28,6 @@ export default function Editor({
   value?: string
   onChange?: (value: string) => void
   onValidate?: (value: monaco.editor.IMarker[]) => void
-  code?: string
   options?: any
   constraints: any
   hiddenRange?: number[]
