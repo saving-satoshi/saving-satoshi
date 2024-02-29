@@ -17,20 +17,11 @@ export default function AccountModal({ onClose, state }) {
   const { isLoading: isProgressLoading } = useProgressContext()
   const t = useTranslations(lang)
   const [showPrivKey, setShowPrivKey] = useState(false)
-  const [copied, setCopied] = useState(false)
-
-  const copy = (text) => {
-    navigator.clipboard.writeText(text)
-
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
 
   const isLoaded = !isAccountLoading && !isProgressLoading
 
   const handleSignOut = async () => {
     const logoutSuccess = await logout()
-    localStorage.clear()
 
     onClose()
   }
