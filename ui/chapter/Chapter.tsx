@@ -203,7 +203,7 @@ export default function Chapter({ children, metadata, lang }) {
                           (chapter.metadata.lessons.length > 0 &&
                             display &&
                             isBetweenChapter &&
-                            'Continue') ||
+                            `${t('shared.continue')}`) ||
                           (!!display &&
                             `${t('shared.start_chapter')} ${position}`) ||
                           (!display &&

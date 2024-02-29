@@ -56,8 +56,9 @@ export default function AccountModal({ onClose, state }) {
             </h2>
             <p className="text-lg">{t('modal_logout.paragraph_one')}</p>
           </div>
-
-          <h2 className="mb-4 text-xl font-bold">Your Private Key</h2>
+          <h2 className="mb-4 text-xl font-bold">
+            {t('modal_logout.private_key')}
+          </h2>
           <>
             <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
               {account.private_key && (
@@ -69,25 +70,6 @@ export default function AccountModal({ onClose, state }) {
               )}
             </pre>
           </>
-
-          <div className="mb-[15px] flex flex-col items-start gap-2">
-            <p className="text-lg">Show Private Key</p>
-            <div className="flex flex-row items-center gap-2">
-              <ToggleSwitch
-                checked={showPrivKey}
-                onChange={handleShowPrivKey}
-              />
-              <pre className="whitespace-normal break-all border-2 border-dotted border-white/25 p-2">
-                <span
-                  className={clsx({
-                    'select-none blur-sm': !showPrivKey,
-                  })}
-                >
-                  {account.private_key}
-                </span>
-              </pre>
-            </div>
-          </div>
           <div className="mt-auto flex items-center">
             <button
               onClick={handleSignOut}
