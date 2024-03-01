@@ -1629,6 +1629,7 @@ const translations = {
     prompt: 'Enter your private key',
     confirm: 'Sign in',
     create_account: 'Don’t have an account?',
+    login: 'Log in',
   },
 
   modal_logout: {

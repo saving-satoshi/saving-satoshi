@@ -19,6 +19,7 @@ import { keys, keysMeta } from 'lib/progress'
 import { useFeatureContext } from 'contexts/FeatureProvider'
 import useEnvironment from 'hooks/useEnvironment'
 import { useAuthContext } from 'contexts/AuthContext'
+import { Modal, useModalContext } from 'contexts/ModalContext'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -30,6 +31,7 @@ export default function Chapter({ children, metadata, lang }) {
   const router = useRouter()
   const { progress, isLoading } = useProgressContext()
   const { account, isLoading: isAccountLoading } = useAuthContext()
+  const modals = useModalContext()
   const { isFeatureEnabled } = useFeatureContext()
   const isEnabled = isFeatureEnabled(
     `${metadata.slug.replace('-', '_')}_enabled`
@@ -70,6 +72,10 @@ export default function Chapter({ children, metadata, lang }) {
       text: t('shared.challenges'),
     },
   ]
+
+  const handleClick = (name: Modal) => {
+    modals.open(name)
+  }
 
   useEffect(() => {
     if (window.location.href.split('#')[1]) {
@@ -168,7 +174,15 @@ export default function Chapter({ children, metadata, lang }) {
                             className="my-auto mr-2 h-3 w-3 justify-center"
                           />
                           {t('chapter.chapter_locked_one')} {position - 1}{' '}
-                          {t('chapter.chapter_locked_two')}
+                          {t('chapter.chapter_locked_two')}&nbsp;
+                          {!account && (
+                            <button
+                              onClick={() => handleClick(Modal.SignIn)}
+                              className="underline"
+                            >
+                              {t('modal_signin.login')}
+                            </button>
+                          )}
                         </div>
                       )}
                     <div className="flex pt-8 md:w-full">
@@ -189,7 +203,16 @@ export default function Chapter({ children, metadata, lang }) {
                             !account &&
                             !isAccountLoading)
                         }
-                        classes="w-full"
+                        classes={clsx('w-full', {
+                          hidden:
+                            (isLoading && position !== 1) ||
+                            (!isLoading && !display && !account) ||
+                            (!!display && !account && position !== 1) ||
+                            (account &&
+                              !isLoading &&
+                              !display &&
+                              position !== 1),
+                        })}
                       >
                         {(isLoading && `${t('shared.loading')}`) ||
                           (!!display &&
@@ -203,7 +226,7 @@ export default function Chapter({ children, metadata, lang }) {
                           (chapter.metadata.lessons.length > 0 &&
                             display &&
                             isBetweenChapter &&
-                            `${t('shared.continue')}`) ||
+                            `${t('shared.next')}`) ||
                           (!!display &&
                             `${t('shared.start_chapter')} ${position}`) ||
                           (!display &&
