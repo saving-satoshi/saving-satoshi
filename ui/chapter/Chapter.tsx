@@ -193,6 +193,9 @@ export default function Chapter({ children, metadata, lang }) {
                   })}
                 >
                   <ChallengeList
+                    intros={chapter.metadata.intros}
+                    lessonStrings={chapter.metadata.lessons}
+                    outros={chapter.metadata.outros}
                     challenges={chapter.metadata.challenges}
                     chapterId={chapter.metadata.slug}
                   />
