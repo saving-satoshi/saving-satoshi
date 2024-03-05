@@ -16,7 +16,14 @@ export default function AccountModal({ onClose, state }) {
   const { account, isLoading: isAccountLoading, logout } = useAuthContext()
   const { isLoading: isProgressLoading } = useProgressContext()
   const t = useTranslations(lang)
-  const [showPrivKey, setShowPrivKey] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  const copy = (text) => {
+    navigator.clipboard.writeText(text)
+
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   const isLoaded = !isAccountLoading && !isProgressLoading
 
@@ -24,10 +31,6 @@ export default function AccountModal({ onClose, state }) {
     const logoutSuccess = await logout()
 
     onClose()
-  }
-
-  const handleShowPrivKey = () => {
-    setShowPrivKey(!showPrivKey)
   }
 
   if (!isLoaded || !account) {
@@ -61,13 +64,19 @@ export default function AccountModal({ onClose, state }) {
           </h2>
           <>
             <pre className="mb-5 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
-              {account.private_key && (
-                <>
-                  <code className="whitespace-pre-wrap break-all text-base">
-                    {account.private_key.toUpperCase()}
-                  </code>
-                </>
-              )}
+              <>
+                <code className="mb-2 whitespace-pre-wrap break-all text-base">
+                  {account.private_key.toUpperCase()}
+                </code>
+                <Button
+                  round
+                  size="tiny"
+                  style="w-full"
+                  onClick={() => copy(account.private_key)}
+                >
+                  {copied ? t('shared.copy_acknowledged') : t('shared.copy')}
+                </Button>
+              </>
             </pre>
           </>
           <div className="mt-auto flex items-center">
