@@ -51,6 +51,8 @@ export default function ChallengeList({
     return { lessonId, title }
   })
 
+  console.log(groupedLessonData)
+
   return (
     <div className="flex w-full grow items-start justify-stretch font-nunito text-white md:mt-6">
       {challengesData.length > 0 && (
@@ -68,14 +70,17 @@ export default function ChallengeList({
           {Object.keys(groupedLessonData).map((title) => (
             <div key={title}>
               <h2 className="font-cbrush text-2xl">
-                {title.charAt(0).toUpperCase() + title.slice(1)}
+                {t(groupedLessonData[title][0].title)}
               </h2>
               <ul>
                 {groupedLessonData[title].map((lesson, index) => (
                   <ChallengeListItem
                     key={index + 1}
                     position={index + 1}
-                    title={lesson.title}
+                    title={
+                      lesson.lessonId.charAt(0).toUpperCase() +
+                      lesson.lessonId.slice(1)
+                    }
                     chapterId={chapterId}
                     lessonId={lesson.lessonId}
                   />
