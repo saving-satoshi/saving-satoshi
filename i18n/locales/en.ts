@@ -830,11 +830,10 @@ const translations = {
     derive_message_one: {
       title: 'Derive the message',
       heading: 'Vanderpoole says he signed a message with Satoshi’s keys:',
-      code_one:
-        '-----BEGIN BITCOIN SIGNED MESSAGE----- <br /> <br /> I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever Bitcoin transaction confirmed in block #170. This message is signed with the same private key. <br /> <br /> -----BEGIN BITCOIN SIGNATURE----- <br /> <br />',
+      code_one: `-----BEGIN BITCOIN SIGNED MESSAGE----- \n \n I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever Bitcoin transaction confirmed in block #170. This message is signed with the same private key. \n \n -----BEGIN BITCOIN SIGNATURE----- \n \n`,
       code_two:
         '<span className="break-all"> H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k= </span>',
-      code_three: '<br/> <br/>-----END BITCOIN SIGNATURE-----',
+      code_three: '\n \n-----END BITCOIN SIGNATURE-----',
       paragraph_two: 'What does this even mean?',
     },
     derive_message_two: {
