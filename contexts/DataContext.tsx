@@ -24,7 +24,7 @@ export const DataContext = createContext<DataContextType>(defaultDataContext)
 
 export const useDataContext = () => useContext(DataContext)
 
-export default function ProgressProvider({
+export default function DataProvider({
   children,
 }: {
   children: React.ReactNode
