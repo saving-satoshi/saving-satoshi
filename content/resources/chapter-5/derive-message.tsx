@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { use, useState } from 'react'
+import { useState } from 'react'
 import { Loader } from 'shared'
 
 import MonacoEditor from '@monaco-editor/react'

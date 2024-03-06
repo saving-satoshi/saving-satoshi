@@ -97,7 +97,6 @@ const configTwo: EditorConfig = {
 export default function PublicKeyResources({ lang }) {
   const t = useTranslations(lang)
   const { currentLanguage } = useDataContext()
-  console.log(getLanguageString(currentLanguage))
 
   const [codeOne, setCodeOne] = useState(
     configOne.languages[getLanguageString(currentLanguage)].defaultCode?.[0]
