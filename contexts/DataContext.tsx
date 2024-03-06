@@ -4,12 +4,20 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import { DataContextType, Data } from 'types'
 import { getData, setData } from 'api/data'
 import { useAuthContext } from './AuthContext'
+import {
+  getLanguageFromString,
+  getLanguageString,
+  Language,
+} from 'lib/SavedCode'
+import { local } from 'api'
 
 export const defaultDataContext = {
   isLoading: true,
   data: [],
   loadData: (lessonId: string) => Promise.resolve(),
   saveData: (lesssonId: string, value: any) => Promise.resolve(),
+  currentLanguage: Language.JavaScript,
+  setCurrentLanguage: (language: Language) => {},
 }
 
 export const DataContext = createContext<DataContextType>(defaultDataContext)
@@ -24,6 +32,14 @@ export default function ProgressProvider({
   const { account } = useAuthContext()
   const [isLoading, setIsLoading] = useState(true)
   const [data, setDataState] = useState<Data[]>([])
+  const languageFromLocalStorage = localStorage.getItem('language')
+    ? localStorage.getItem('language')
+    : ''
+  const [currentLanguage, setCurrentLanguage] = useState<Language>(
+    languageFromLocalStorage
+      ? getLanguageFromString(languageFromLocalStorage)
+      : Language.JavaScript
+  )
 
   const loadData = async (lessonId?: string) => {
     if (!lessonId) {
@@ -64,6 +80,27 @@ export default function ProgressProvider({
     loadData()
   }, [])
 
+  useEffect(() => {
+    const language = localStorage.getItem('language')
+    if (language) {
+      if (language === 'python') {
+        setCurrentLanguage(Language.Python)
+      } else {
+        setCurrentLanguage(Language.JavaScript)
+      }
+    } else {
+      localStorage.setItem('language', 'javascript')
+    }
+  }, [])
+
+  useEffect(() => {
+    if (
+      getLanguageString(currentLanguage) !== localStorage.getItem('language')
+    ) {
+      localStorage.setItem('language', getLanguageString(currentLanguage))
+    }
+  }, [currentLanguage])
+
   return (
     <DataContext.Provider
       value={{
@@ -71,6 +108,8 @@ export default function ProgressProvider({
         data,
         loadData,
         saveData,
+        currentLanguage,
+        setCurrentLanguage,
       }}
     >
       {children}

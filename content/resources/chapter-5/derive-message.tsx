@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { useState } from 'react'
+import { use, useState } from 'react'
 import { Loader } from 'shared'
 
 import MonacoEditor from '@monaco-editor/react'
@@ -10,6 +10,8 @@ import { EditorConfig } from 'types'
 import { Text, ResourcePage, ToggleSwitch, CodeExample } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageString } from 'lib/SavedCode'
 
 const javascript = {
   program: `console.log("KILL")`,
@@ -118,9 +120,11 @@ const config: EditorConfig = {
 
 export default function DeriveMessageResources({ lang }) {
   const t = useTranslations(lang)
-  const initialStateCode = config.languages[config.defaultLanguage].defaultCode
+  const { currentLanguage } = useDataContext()
+  const initialStateCode =
+    config.languages[getLanguageString(currentLanguage)].defaultCode
   const [code, setCode] = useState<string>(initialStateCode as string)
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
   const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
   const [challengeThreeIsToggled, setChallengeThreeIsToggled] = useState(false)

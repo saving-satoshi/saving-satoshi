@@ -7,6 +7,8 @@ import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { useAuthContext } from 'contexts/AuthContext'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_seven.mempool_transaction_one.title',
@@ -15,6 +17,7 @@ export const metadata = {
 
 export default function MempoolTransaction1({ lang }) {
   const t = useTranslations(lang)
+  const { currentLanguage } = useDataContext()
   const tableHeading = [
     t('chapter_seven.mempool_transaction_one.headings.item_one'),
     <>
@@ -343,7 +346,7 @@ def run():
     },
   }
 
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }

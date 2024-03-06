@@ -10,6 +10,8 @@ import { EditorConfig } from 'types'
 import { Text, ResourcePage, ToggleSwitch, CodeExample } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageString } from 'lib/SavedCode'
 
 const javascriptChallengeOne = {
   program: `console.log("KILL")`,
@@ -563,38 +565,49 @@ const configSix: EditorConfig = {
 
 export default function PutItTogetherResources({ lang }) {
   const t = useTranslations(lang)
+  const { currentLanguage } = useDataContext()
   const initialStateCodeOne =
-    configOne.languages[configOne.defaultLanguage].defaultCode
+    configOne.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeOne, setCodeOne] = useState<string>(initialStateCodeOne as string)
   const initialStateCodeTwo =
-    configTwo.languages[configTwo.defaultLanguage].defaultCode
+    configTwo.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeTwo, setCodeTwo] = useState<string>(initialStateCodeTwo as string)
   const initialStateCodeThree =
-    configThree.languages[configThree.defaultLanguage].defaultCode
+    configThree.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeThree, setCodeThree] = useState<string>(
     initialStateCodeThree as string
   )
   const initialStateCodeFour =
-    configFour.languages[configFour.defaultLanguage].defaultCode
+    configFour.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeFour, setCodeFour] = useState<string>(
     initialStateCodeFour as string
   )
   const initialStateCodeFive =
-    configFive.languages[configFive.defaultLanguage].defaultCode
+    configFive.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeFive, setCodeFive] = useState<string>(
     initialStateCodeFive as string
   )
   const initialStateCodeSix =
-    configSix.languages[configSix.defaultLanguage].defaultCode
+    configSix.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeSix, setCodeSix] = useState<string>(initialStateCodeSix as string)
-  const [languageOne, setLanguageOne] = useState(configOne.defaultLanguage)
-  const [languageTwo, setLanguageTwo] = useState(configTwo.defaultLanguage)
-  const [languageThree, setLanguageThree] = useState(
-    configThree.defaultLanguage
+  const [languageOne, setLanguageOne] = useState(
+    getLanguageString(currentLanguage)
   )
-  const [languageFive, setLanguageFive] = useState(configFive.defaultLanguage)
-  const [languageSix, setLanguageSix] = useState(configSix.defaultLanguage)
-  const [languageFour, setLanguageFour] = useState(configFour.defaultLanguage)
+  const [languageTwo, setLanguageTwo] = useState(
+    getLanguageString(currentLanguage)
+  )
+  const [languageThree, setLanguageThree] = useState(
+    getLanguageString(currentLanguage)
+  )
+  const [languageFive, setLanguageFive] = useState(
+    getLanguageString(currentLanguage)
+  )
+  const [languageSix, setLanguageSix] = useState(
+    getLanguageString(currentLanguage)
+  )
+  const [languageFour, setLanguageFour] = useState(
+    getLanguageString(currentLanguage)
+  )
   const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
   const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
   const [challengeThreeIsToggled, setChallengeThreeIsToggled] = useState(false)

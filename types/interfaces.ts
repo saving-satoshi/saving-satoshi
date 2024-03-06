@@ -1,3 +1,4 @@
+import { Language } from 'lib/SavedCode'
 import { EditorRange, LessonDirection, LessonView } from 'types'
 
 export interface ChapterContextType {}
@@ -67,6 +68,8 @@ export interface DataContextType {
   data: Data[]
   loadData: (lessonId: string) => void
   saveData: (lessonId: string, value: any) => void
+  currentLanguage: Language
+  setCurrentLanguage: (language: Language) => void
 }
 
 export interface FeatureContextType {

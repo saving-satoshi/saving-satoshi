@@ -4,9 +4,11 @@ import { ScriptingChallenge, LessonInfo, CodeExample } from 'ui'
 import { EditorConfig, Data } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_four.public_key_four.title',
@@ -28,7 +30,7 @@ function compressPublicKey(publickey) {
 
 export default function PublicKey4({ lang }) {
   const t = useTranslations(lang)
-
+  const { currentLanguage } = useDataContext()
   const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
   const dataObject = prevData?.data ? prevData?.data : ''
   const [isLoading, setIsLoading] = useState(true)
@@ -143,7 +145,7 @@ def compress_publickey(public_key):
     },
   }
 
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 
   return (
     !isLoading && (

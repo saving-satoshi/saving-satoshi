@@ -6,6 +6,8 @@ import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_one.title',
@@ -106,8 +108,8 @@ const config: EditorConfig = {
 
 export default function PublicKey3({ lang }) {
   const t = useTranslations(lang)
-
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const { currentLanguage } = useDataContext()
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
