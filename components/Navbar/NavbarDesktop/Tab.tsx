@@ -8,7 +8,12 @@ import { Tooltip } from 'ui'
 import Icon from 'shared/Icon'
 import { useLang, useTranslations } from 'hooks'
 import { lessons, chapters } from 'content'
-import { getLessonKey, isLessonCompleted, isLessonUnlocked } from 'lib/progress'
+import {
+  getLessonKey,
+  isLessonCompleted,
+  isLessonUnlocked,
+  keys,
+} from 'lib/progress'
 import { themeSelector } from 'lib/themeSelector'
 import { useProgressContext } from 'contexts/ProgressContext'
 import useLessonStatus from 'hooks/useLessonStatus'
@@ -37,9 +42,9 @@ export default function Tab({
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
 
-  const { progress } = useProgressContext()
+  const { progress, isLoading } = useProgressContext()
 
-  const { isUnlocked: isChallengeUnlocked } = useLessonStatus(
+  const { isUnlocked } = useLessonStatus(
     progress,
     getLessonKey(
       slug,
@@ -80,9 +85,8 @@ export default function Tab({
   )
   const challengeLock =
     currentIndex < index && !isCompleted && pnLessonId.split('-')[0] !== 'outro'
-
   const challengeCheck =
-    currentIndex > index || pnLessonId.split('-')[0] === 'outro'
+    currentIndex > index || pnLessonId.split('-')[0] === 'outro' || isCompleted
 
   return (
     <Tooltip
@@ -91,45 +95,64 @@ export default function Tab({
       offset={0}
       theme={theme}
       className="no-underline"
-      disabled={!isChallengeUnlocked}
+      disabled={!isUnlocked}
       content={
         <>
           <span className="text-m whitespace-nowrap leading-none text-white/50">
             {t(challenge.title)}
           </span>
-          {challengeLessons.map((challenge, index) => {
-            const isLessonUnlock = isLessonUnlocked(
-              progress,
-              getLessonKey(slug, challenge.lessonId)
-            )
-            const isPageComplete = isLessonCompleted(
-              progress,
-              getLessonKey(slug, challenge.lessonId)
-            )
-            console.log(
-              isLessonUnlock,
-              isPageComplete,
-              challenge.lessonId,
-              progress
-            )
-            return (
-              <div key={index} className="flex flex-row">
-                <Link
-                  href={challenge.lessonId}
-                  className="flex flex-col items-start whitespace-nowrap py-1 hover:bg-black/25"
+          <div className="flex flex-col flex-nowrap">
+            {challengeLessons.map((challenge, index) => {
+              const isLessonUnlock =
+                !isLoading &&
+                isLessonUnlocked(
+                  progress,
+                  getLessonKey(slug, challenge.lessonId)
+                )
+              const isPageComplete =
+                !isLoading &&
+                isLessonCompleted(
+                  progress,
+                  getLessonKey(slug, challenge.lessonId)
+                )
+              return (
+                <div
+                  key={index}
+                  className={clsx(
+                    'flex w-full flex-row flex-nowrap hover:bg-black/25',
+                    {
+                      'pointer-events-none bg-black/25 text-white text-opacity-100':
+                        challenge.lessonId === pnLessonId,
+                      'text-white hover:text-opacity-100':
+                        challenge.lessonId !== pnLessonId,
+                      'pointer-events-none': !isLessonUnlock,
+                    }
+                  )}
                 >
-                  {challenge.lessonId.charAt(0).toUpperCase() +
-                    challenge.lessonId.slice(1)}
-                  {!isLessonUnlock && (
-                    <Icon icon="lock" className="h-3 w-3 opacity-50" />
-                  )}
-                  {isPageComplete && (
-                    <Icon icon="check" className="h-[20px] w-[20px]" />
-                  )}
-                </Link>
-              </div>
-            )
-          })}
+                  <Link
+                    href={challenge.lessonId}
+                    className="flex flex-nowrap py-1"
+                  >
+                    <span className="pr-1 opacity-50">{index + 1 + '. '}</span>
+                    {challenge.lessonId.charAt(0).toUpperCase() +
+                      challenge.lessonId.slice(1)}
+                    <Icon
+                      icon="lock"
+                      className={clsx('mx-1 mt-[2px] h-3 w-3 opacity-50', {
+                        hidden: isLessonUnlock,
+                      })}
+                    />
+                    <Icon
+                      icon="check"
+                      className={clsx('h-5 w-5 opacity-50', {
+                        hidden: !isPageComplete,
+                      })}
+                    />
+                  </Link>
+                </div>
+              )
+            })}
+          </div>
         </>
       }
     >
@@ -139,21 +162,28 @@ export default function Tab({
           {
             'text-white text-opacity-50': !isActive,
             'hover:bg-black/25 hover:text-white hover:text-opacity-100':
-              isChallengeUnlocked && !isActive,
+              isUnlocked && !isActive,
             'bg-black/25 text-opacity-100': isActive,
             'border-r': isLast,
-            'pointer-events-none': !isChallengeUnlocked,
+            'pointer-events-none': !isUnlocked,
           }
         )}
       >
         {index + 1}
-        {isChallengeUnlocked ||
-          (challengeLock && (
-            <Icon
-              icon="lock"
-              className="absolute right-[10px] top-[10px] h-3 w-3 opacity-50"
-            />
-          ))}
+        {challengeLock && (
+          <Icon
+            icon="lock"
+            className={clsx(
+              'absolute right-[10px] top-[10px] h-3 w-3 opacity-50',
+              {
+                hidden:
+                  !isLoading &&
+                  keys.indexOf(progress) >
+                    keys.indexOf(getLessonKey(slug, challenge.lessonId)),
+              }
+            )}
+          />
+        )}
         {challengeCheck && (
           <Icon
             icon="check"
