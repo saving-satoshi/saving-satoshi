@@ -39,13 +39,6 @@ export default function Tab({
 
   const { progress } = useProgressContext()
 
-  const pnLessonId = isRouteLesson
-    ? pathData.pop()
-    : pathData[pathData.length - 2]
-  if (!pnLessonId) {
-    return null
-  }
-
   const { isUnlocked: isChallengeUnlocked } = useLessonStatus(
     progress,
     getLessonKey(
@@ -60,6 +53,13 @@ export default function Tab({
     getLessonKey(slug, challenge.lessonId)
   )
 
+  const pnLessonId = isRouteLesson
+    ? pathData.pop()
+    : pathData[pathData.length - 2]
+  if (!pnLessonId) {
+    return null
+  }
+
   const challengeId = pnLessonId
     .substring(0, pnLessonId.length - 2)
     .replace(
@@ -69,6 +69,7 @@ export default function Tab({
         chapters[slug].metadata.challenges[0].length - 2
       )
     )
+
   const isActive =
     challenge.lessonId.substring(0, challenge.lessonId.length - 2) ===
     challengeId
