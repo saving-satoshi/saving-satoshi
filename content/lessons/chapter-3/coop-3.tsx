@@ -18,6 +18,7 @@ import { useAuthContext } from 'contexts/AuthContext'
 import { cssVarThemeChange } from 'lib/themeSelector'
 import { usePathData } from 'hooks'
 import { lessons } from 'content'
+import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
 
 export const metadata = {
   title: 'chapter_three.coop_three.title',
@@ -199,6 +200,17 @@ export default function Coop3({ lang }) {
               avatar={profile.avatar}
               avatarSize={isSmallScreen ? 50 : 100}
               description={profile.description}
+              chip={
+                (i !== 4 && (
+                  <ProfileChip
+                    className="relative -top-4"
+                    image="/assets/avatars/holocat.jpg"
+                    variant={ProfileChipVariant.Ranking}
+                    value={i + 1}
+                  />
+                )) ||
+                undefined
+              }
             >
               <Card className="flex">
                 <span
