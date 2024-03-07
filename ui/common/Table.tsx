@@ -51,11 +51,13 @@ export default function Table({
           </tr>
         ))}
       </tbody>
-      <tfoot className="w-full">
-        <tr className="mt-[2px] flex w-full items-start gap-[15px] rounded-b-[5px] bg-[#00000033] px-5 py-2.5">
-          <td className="w-full text-center">{footer}</td>
-        </tr>
-      </tfoot>
+      {footer && (
+        <tfoot className="w-full">
+          <tr className="mt-[2px] flex w-full items-start gap-[15px] rounded-b-[5px] bg-[#00000033] px-5 py-2.5">
+            <td className="w-full text-center">{footer}</td>
+          </tr>
+        </tfoot>
+      )}
     </table>
   )
 }

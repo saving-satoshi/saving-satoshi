@@ -112,8 +112,8 @@ ${prevData?.data && `uncompressed_key = "${dataObject}"`}
 # Return a hex string
 def compress_publickey(public_key):
     header_byte = {
-          "y_is_even": "02",
-          "y_is_odd":  "03"
+        "y_is_even": "02",
+        "y_is_odd":  "03"
     }
 `,
     validate: async (answer) => {

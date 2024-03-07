@@ -19,7 +19,8 @@ const javascriptChallengeOne = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `function encodeMessage(prefix, text) {
+  defaultCode: `function encode_message(text) {
+  const prefix = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
   const textBytes = Buffer.from(text, 'ascii');
   const vector = Buffer.concat([
     Buffer.from([prefix.length]),
@@ -43,7 +44,8 @@ const pythonChallengeOne = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `def encode_message(prefix, text):
+  defaultCode: `def encode_message(text):
+    prefix = "Bitcoin Signed Message:\\n"
     vector = bytes([len(prefix)]) +
         bytes(prefix, 'ascii') +
         bytes([len(text)]) +
@@ -63,7 +65,7 @@ const javascriptChallengeTwo = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `function decodeSig(vpSig) {
+  defaultCode: `function decode_sig(vpSig) {
   const vpSigBytes = Buffer.from(vpSig, 'base64');
   const vpSigR = BigInt('0x' + vpSigBytes.slice(1, 33).toString('hex'));
   const vpSigS = BigInt('0x' + vpSigBytes.slice(33).toString('hex'));
@@ -202,7 +204,7 @@ export default function VerifySignatureResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={'240px'}
+                  height={'255px'}
                   value={codeOne}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
