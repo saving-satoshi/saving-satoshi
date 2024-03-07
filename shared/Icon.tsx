@@ -17,7 +17,7 @@ export default function Icon({
   const IconComponent = icons[icon]
 
   return (
-    <div className={clsx(className, 'min-w-2 min-h-2')}>
+    <div className={clsx(className, 'min-h-2 min-w-2')}>
       <IconComponent className="h-full w-full" title={title} />
     </div>
   )

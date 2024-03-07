@@ -14,6 +14,12 @@ import { setData } from 'api/data'
 import { Base64String } from 'types/classes'
 import clsx from 'clsx'
 import useDebounce from 'hooks/useDebounce'
+import { useDataContext } from 'contexts/DataContext'
+import {
+  getLanguageFromString,
+  getLanguageString,
+  Language,
+} from 'lib/SavedCode'
 
 const tabData = [
   {
@@ -66,32 +72,34 @@ export default function ScriptingChallenge({
   const t = useTranslations(lang)
   const { saveProgress, saveProgressLocal } = useProgressContext()
   const { account } = useAuthContext()
+  const { currentLanguage, setCurrentLanguage } = useDataContext()
   const [code, setCode] = useState(
-    config.languages[config.defaultLanguage].defaultCode?.toString()
+    config.languages[getLanguageString(currentLanguage)].defaultCode?.toString()
   )
   const [constraints, setConstraints] = useState(
-    config.languages[config.defaultLanguage].constraints
+    config.languages[getLanguageString(currentLanguage)].constraints
   )
 
   const [hiddenRange, setHiddenRange] = useState(
-    config.languages[config.defaultLanguage].hiddenRange
+    config.languages[getLanguageString(currentLanguage)].hiddenRange
   )
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  console.log(language)
   const [challengeSuccess, setChallengeSuccess] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [errors, setErrors] = useState<string[]>([])
   const debouncedCode = useDebounce(code, 500)
 
   useEffect(() => {
-    const savedCode = localStorage.getItem(lessonKey)
+    const savedCode = localStorage.getItem(`${lessonKey}-${language}`)
     if (savedCode) {
       setCode(savedCode)
     }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem(lessonKey, debouncedCode)
-  }, [debouncedCode, lessonKey])
+    localStorage.setItem(`${lessonKey}-${language}`, debouncedCode)
+  }, [debouncedCode, lessonKey, language])
 
   useDynamicHeight()
   const isSmallScreen = useMediaQuery({ width: 767 })
@@ -100,6 +108,7 @@ export default function ScriptingChallenge({
     if (!challengeSuccess && onSelectLanguage) {
       setLanguage(value)
       onSelectLanguage(value)
+      setCurrentLanguage(getLanguageFromString(value))
       setCode(config.languages[value].defaultCode?.toString())
       setHiddenRange(config.languages[value].hiddenRange)
       setConstraints(config.languages[value].constraints)

@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react'
 import { EditorConfig } from 'types'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
 import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_three.title',
@@ -162,9 +164,10 @@ const config: EditorConfig = {
 
 export default function ValidateSignature3({ lang }) {
   const t = useTranslations(lang)
+  const { currentLanguage } = useDataContext()
   const [objectPosition, setObjectPosition] = useState<string | undefined>()
   const isMediumScreen = useMediaQuery({ width: 1024 })
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const [isLoading, setIsLoading] = useState(true)
 
   const handleSelectLanguage = (language: string) => {

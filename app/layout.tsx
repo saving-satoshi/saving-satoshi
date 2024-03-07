@@ -3,11 +3,15 @@ import Fonts from 'components/Fonts'
 import {
   AuthProvider,
   ProgressProvider,
-  DataProvider,
   ModalProvider,
   FeatureProvider,
 } from 'contexts'
 import Layout from 'components/Layout'
+import dynamic from 'next/dynamic'
+
+const DataProvider = dynamic(() => import('contexts/DataContext'), {
+  ssr: false, // This is necessary since the data context utilises local storage
+})
 
 export default function RootLayout({
   children,

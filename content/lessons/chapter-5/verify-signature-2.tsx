@@ -1,7 +1,9 @@
 'use client'
 
+import { useDataContext } from 'contexts/DataContext'
 import { useMediaQuery, useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
+import { getLanguageString } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { EditorConfig } from 'types'
 import { LessonInfo, ScriptingChallenge, Text } from 'ui'
@@ -95,8 +97,9 @@ const config: EditorConfig = {
 
 export default function VerifySignature2({ lang }) {
   const t = useTranslations(lang)
+  const { currentLanguage } = useDataContext()
   const [objectPosition, setObjectPosition] = useState<string | undefined>()
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)

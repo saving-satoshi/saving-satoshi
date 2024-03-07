@@ -7,6 +7,8 @@ import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { useAuthContext } from 'contexts/AuthContext'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_four.public_key_three.title',
@@ -16,6 +18,7 @@ export const metadata = {
 export default function PublicKey3({ lang }) {
   const t = useTranslations(lang)
   const { account } = useAuthContext()
+  const { currentLanguage } = useDataContext()
   const [privateKey, setPrivateKey] = useState('')
 
   if (account && !privateKey) {
@@ -132,7 +135,7 @@ def privatekey_to_publickey(private_key):
     },
   }
 
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
