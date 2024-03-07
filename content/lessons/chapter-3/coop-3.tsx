@@ -209,7 +209,7 @@ export default function Coop3({ lang }) {
                     value={i + 1}
                   />
                 )) ||
-                undefined
+                null
               }
             >
               <Card className="flex">
