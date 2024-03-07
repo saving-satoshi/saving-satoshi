@@ -6,9 +6,9 @@ import { usePathname } from 'next/navigation'
 
 import { Tooltip } from 'ui'
 import Icon from 'shared/Icon'
-import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
+import { useLang, useTranslations } from 'hooks'
 import { lessons, chapters } from 'content'
-import { getLessonKey } from 'lib/progress'
+import { getLessonKey, isLessonCompleted, isLessonUnlocked } from 'lib/progress'
 import { themeSelector } from 'lib/themeSelector'
 import { useProgressContext } from 'contexts/ProgressContext'
 import useLessonStatus from 'hooks/useLessonStatus'
@@ -18,17 +18,18 @@ export default function Tab({
   count,
   params,
   challenge,
+  challengeLessons,
 }: {
   index: number
   count: number
   params: any
   challenge: { lessonId: string; title: string }
+  challengeLessons: any
 }) {
   const { slug, lesson: lessonId } = params
 
   const theme = themeSelector(lessons, lessonId, chapters, slug)
 
-  const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
   const pathName = usePathname() || ''
@@ -37,7 +38,15 @@ export default function Tab({
   const isRouteLesson = pathData.length === 4
 
   const { progress } = useProgressContext()
-  const { isUnlocked } = useLessonStatus(
+
+  const pnLessonId = isRouteLesson
+    ? pathData.pop()
+    : pathData[pathData.length - 2]
+  if (!pnLessonId) {
+    return null
+  }
+
+  const { isUnlocked: isChallengeUnlocked } = useLessonStatus(
     progress,
     getLessonKey(
       slug,
@@ -51,38 +60,28 @@ export default function Tab({
     getLessonKey(slug, challenge.lessonId)
   )
 
-  const pnLessonId = pathData.pop()
-  if (!pnLessonId) {
-    return null
-  }
-
-  const challengeId = isRouteLesson
-    ? pnLessonId
-        .substring(0, pnLessonId.length - 2)
-        .replace(
-          'intro',
-          chapters[slug].metadata.challenges[0].substring(
-            0,
-            chapters[slug].metadata.challenges[0].length - 2
-          )
-        )
-    : undefined
+  const challengeId = pnLessonId
+    .substring(0, pnLessonId.length - 2)
+    .replace(
+      'intro',
+      chapters[slug].metadata.challenges[0].substring(
+        0,
+        chapters[slug].metadata.challenges[0].length - 2
+      )
+    )
   const isActive =
     challenge.lessonId.substring(0, challenge.lessonId.length - 2) ===
     challengeId
   const isLast = index === count - 1
-  const lessonHref =
-    challenge.lessonId === chapters[slug].metadata.challenges[0]
-      ? chapters[slug].metadata.intros[0]
-      : challenge.lessonId
-  const href = `${routes.chaptersUrl}/${slug}/${lessonHref}`
+
   const currentIndex = chapters[slug].metadata.challenges.indexOf(
     challengeId + '-1'
   )
   const challengeLock =
     currentIndex < index && !isCompleted && pnLessonId.split('-')[0] !== 'outro'
+
   const challengeCheck =
-    isCompleted || currentIndex > index || pnLessonId.split('-')[0] === 'outro'
+    currentIndex > index || pnLessonId.split('-')[0] === 'outro'
 
   return (
     <Tooltip
@@ -91,44 +90,76 @@ export default function Tab({
       offset={0}
       theme={theme}
       className="no-underline"
+      disabled={!isChallengeUnlocked}
       content={
-        <div className="flex flex-col">
+        <>
           <span className="text-m whitespace-nowrap leading-none text-white/50">
-            {t('shared.challenge')} {index + 1}
+            {t(challenge.title)}
           </span>
-          <span className="whitespace-nowrap">{t(challenge.title)}</span>
-        </div>
+          {challengeLessons.map((challenge, index) => {
+            const isLessonUnlock = isLessonUnlocked(
+              progress,
+              getLessonKey(slug, challenge.lessonId)
+            )
+            const isPageComplete = isLessonCompleted(
+              progress,
+              getLessonKey(slug, challenge.lessonId)
+            )
+            console.log(
+              isLessonUnlock,
+              isPageComplete,
+              challenge.lessonId,
+              progress
+            )
+            return (
+              <div key={index} className="flex flex-row">
+                <Link
+                  href={challenge.lessonId}
+                  className="flex flex-col items-start whitespace-nowrap py-1 hover:bg-black/25"
+                >
+                  {challenge.lessonId.charAt(0).toUpperCase() +
+                    challenge.lessonId.slice(1)}
+                  {!isLessonUnlock && (
+                    <Icon icon="lock" className="h-3 w-3 opacity-50" />
+                  )}
+                  {isPageComplete && (
+                    <Icon icon="check" className="h-[20px] w-[20px]" />
+                  )}
+                </Link>
+              </div>
+            )
+          })}
+        </>
       }
     >
-      <Link
-        href={href}
-        title={t(challenge.title)}
+      <span
         className={clsx(
           'relative flex h-full w-[70px] items-center justify-center border-l border-white/25 text-center font-nunito text-lg font-bold transition duration-100 ease-in-out',
           {
             'text-white text-opacity-50': !isActive,
             'hover:bg-black/25 hover:text-white hover:text-opacity-100':
-              isUnlocked && !isActive,
+              isChallengeUnlocked && !isActive,
             'bg-black/25 text-opacity-100': isActive,
             'border-r': isLast,
-            'pointer-events-none': !isUnlocked,
+            'pointer-events-none': !isChallengeUnlocked,
           }
         )}
       >
         {index + 1}
-        {challengeLock && (
-          <Icon
-            icon="lock"
-            className="absolute right-[10px] top-[10px] h-3 w-3 opacity-50"
-          />
-        )}
+        {isChallengeUnlocked ||
+          (challengeLock && (
+            <Icon
+              icon="lock"
+              className="absolute right-[10px] top-[10px] h-3 w-3 opacity-50"
+            />
+          ))}
         {challengeCheck && (
           <Icon
             icon="check"
             className="absolute right-[5px] top-[5px] h-[20px] w-[20px]"
           />
         )}
-      </Link>
+      </span>
     </Tooltip>
   )
 }

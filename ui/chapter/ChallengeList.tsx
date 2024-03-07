@@ -51,8 +51,6 @@ export default function ChallengeList({
     return { lessonId, title }
   })
 
-  console.log(groupedLessonData)
-
   return (
     <div className="flex w-full grow items-start justify-stretch font-nunito text-white md:mt-6">
       {challengesData.length > 0 && (

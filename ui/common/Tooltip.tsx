@@ -14,6 +14,7 @@ function Tooltip({
   href,
   theme,
   offset = 12,
+  disabled,
 }: {
   children: React.ReactNode
   className?: string
@@ -23,6 +24,7 @@ function Tooltip({
   href?: string
   offset?: number
   theme?: string
+  disabled?: boolean
 }) {
   const targetRef = useRef<HTMLSpanElement>(null)
   const tooltipRef = useRef<HTMLSpanElement>(null)
@@ -35,7 +37,7 @@ function Tooltip({
   const handleMouseEnter = (e) => {
     updatePosition()
     updateZIndex()
-    setVisible(true)
+    !disabled && setVisible(true)
   }
 
   const handleMouseMove = (e) => {

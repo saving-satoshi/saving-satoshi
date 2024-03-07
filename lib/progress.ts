@@ -323,3 +323,7 @@ export const getChapterKey = (userProgressKey: string): string => {
       : userProgressKey.substring(2, 3)
   return `chapter-${chapterKey}`
 }
+
+export const getLessonPath = (userProgressKey: string): string => {
+  return keysMeta[userProgressKey].path
+}
