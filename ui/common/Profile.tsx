@@ -15,7 +15,7 @@ export default function Profile({
   children?: React.ReactNode
   className?: string
   avatar?: string
-  chip?: React.ReactElement
+  chip?: React.ReactElement | null | undefined
   username: string
   description?: string
   avatarSize?: number
@@ -31,7 +31,8 @@ export default function Profile({
         <div
           className={clsx('flex justify-center', {
             'mb-2 flex-col items-center': chip,
-            'mb-2': !chip,
+            'mb-8': chip === null,
+            'mb-2': !chip && chip !== null,
           })}
         >
           {avatar && <Avatar size={avatarSize} avatar={avatar} />}
