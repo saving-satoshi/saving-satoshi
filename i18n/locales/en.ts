@@ -355,7 +355,7 @@ const translations = {
       paragraph_two:
         'Miners gather all the information they want to put in a block such as the previous block header hash, a hash of transactions to be included in block (including the coinbase transaction), time, and combine it with a random number called a nonce (which stands for “number only used once”). They send all of this into the hash function to create something called the block hash.',
       paragraph_three:
-        'When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data by 1 in the 32-bit field. But since miners are so powerful now and difficulty is so high, they cycle through this pretty quickly and normally don’t find a solution below the ',
+        'When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data by 1 in the 32-bit field. But since miners are so powerful now and difficulty is so high, they cycle through this pretty quickly and normally don’t find a solution below the',
       paragraph_four:
         'So what miners need to do is change other parts of the block header, such as the time or transactions included in the block.',
       paragraph_five:
@@ -995,13 +995,19 @@ const translations = {
       heading: 'Prepare Vanderpoole’s signature for verification',
       paragraph_one:
         'The Bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.',
+      paragraph_two: {
+        pre_link: 'Then we will',
+        highlighted: 'double SHA-256',
+        post_link:
+          'hash that block of data, and convert that hash into an integer.Complete the function <span className="italic">decode_sig()</span>.',
+        question: 'Why do we double hash in Bitcoin?',
+      },
       javascript: {
         paragraph_two:
-          'Complete the function <span className="italic">decode_sig()</span>. It should return an array with the [r, s] values as BigInts.',
+          'It should return an array with the [r, s] values as BigInts.',
       },
       python: {
-        paragraph_two:
-          'Complete the function <span className="italic">decode_sig()</span>. It should return a tuple with the (r, s) values.',
+        paragraph_two: 'It should return a tuple with the (r, s) values.',
       },
     },
     validate_signature_three: {

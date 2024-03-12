@@ -8,33 +8,37 @@ import { clamp, isWithinRect, modifyRect } from 'utils'
 function Tooltip({
   children,
   className,
+  parentClassName,
   id,
-  notCentered,
   content,
   position = 'top',
+  arrowPosition,
   href,
   theme,
   offset = 12,
+  visibleOverride,
 }: {
   children: React.ReactNode
   className?: string
+  parentClassName?: string
   id: string
   content: any
   position?: string
+  arrowPosition?: string
   href?: string
   offset?: number
   theme?: string
-  notCentered?: boolean
+  visibleOverride?: boolean
 }) {
   const targetRef = useRef<HTMLSpanElement>(null)
   const tooltipRef = useRef<HTMLSpanElement>(null)
   const arrowRef = useRef<HTMLSpanElement>(null)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState<boolean>(visibleOverride || false)
 
   const lang = useLang()
   const t = useTranslations(lang)
 
-  const handleMouseEnter = (e) => {
+  const handleMouseEnter = () => {
     updatePosition()
     updateZIndex()
     setVisible(true)
@@ -123,20 +127,20 @@ function Tooltip({
   }
 
   useEffect(() => {
+    visibleOverride && handleMouseEnter()
     window.addEventListener('mousemove', handleMouseMove)
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
     }
-  }, [visible])
+  }, [visible, visibleOverride])
 
   return (
     <>
       <span
         className={clsx(
-          'tooltip absolute top-0 z-10 max-w-md border border-white px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
+          'tooltip absolute left-0 top-0 z-10 max-w-md border border-white px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
           theme,
           {
-            'left-0': !notCentered,
             'pointer-events-all opacity-100': visible,
             'pointer-events-none opacity-0': !visible,
           }
@@ -147,11 +151,13 @@ function Tooltip({
       >
         <span
           className={clsx(
-            'absolute left-1/2 h-3 w-3 border-l border-t border-white',
+            'absolute h-3 w-3 border-l border-t border-white',
             theme,
+            arrowPosition,
             {
               'top-[-1px]': position !== 'top',
               'bottom-[-1px]': position === 'top',
+              'left-1/2': !arrowPosition,
             }
           )}
           ref={arrowRef}
@@ -165,6 +171,7 @@ function Tooltip({
         onMouseEnter={handleMouseEnter}
         ref={targetRef}
         aria-describedby={id}
+        className={parentClassName}
       >
         {href && (
           <a href={href} className={clsx('underline', className)}>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useProceed, useTranslations } from 'hooks'
-import { ChapterIntro } from 'ui'
+import { ChapterIntro, Text } from 'ui'
 import { Button } from 'shared'
 import HolocatQuestion from 'ui/lesson/HolocatQuestion'
 import { useEffect, useState } from 'react'
@@ -15,45 +15,54 @@ export const metadata = {
 export default function Scripting1({ lang }) {
   const t = useTranslations(lang)
   const proceed = useProceed()
-  const [hydrated, setHydrated] = useState(false)
-  useEffect(() => {
-    setHydrated(true)
-  }, [])
+  const [tooltipVisible, setTooltipVisible] = useState(false)
+
+  const handleMouseEnter = () => {
+    setTooltipVisible(true)
+  }
+
+  const handleMouseLeave = () => {
+    setTooltipVisible(false)
+  }
 
   return (
-    hydrated && (
-      <ChapterIntro
-        className="fade-in my-8"
-        heading={t('chapter_two.scripting_one.heading')}
+    <ChapterIntro
+      className="fade-in my-8"
+      heading={t('chapter_two.scripting_one.heading')}
+    >
+      <Text className="mt-2 text-lg md:text-xl">
+        {t('chapter_two.scripting_one.paragraph_one')}
+      </Text>
+      <Text className="my-8 text-lg md:text-xl">
+        {t('chapter_two.scripting_one.paragraph_two')}
+      </Text>
+      <Text className="inline text-lg md:text-xl">
+        {t('chapter_two.scripting_one.paragraph_three')}{' '}
+      </Text>
+      <a
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        href={t('chapter_two.scripting_one.tooltip_one.link')}
+        target="_blank"
+        className="inline text-lg hover:underline md:text-xl"
       >
-        <p className="mt-2 text-lg md:text-xl">
-          {t('chapter_two.scripting_one.paragraph_one')}
-        </p>
-
-        <p className="mt-8 text-lg md:text-xl">
-          {t('chapter_two.scripting_one.paragraph_two')}
-        </p>
-        <span className="mt-8 inline-block text-lg md:text-xl  ">
-          <span className="  ">
-            {t('chapter_two.scripting_one.paragraph_three')}
-          </span>
-          <HolocatQuestion
-            theme={chapters['chapter-2'].metadata.theme}
-            inline
-            id="target-difficulty"
-            question={t('chapter_two.scripting_one.tooltip_one.question')}
-            link={t('chapter_two.scripting_one.tooltip_one.link')}
-          >
-            {t('chapter_two.scripting_one.tooltip_one.highlighted')}
-          </HolocatQuestion>
-        </span>
-        <p className="mt-8 text-lg md:text-xl">
-          {t('chapter_two.scripting_one.paragraph_four')}
-        </p>
-        <Button onClick={proceed} classes="mt-10 max-md:w-full">
-          {t('shared.next')}
-        </Button>
-      </ChapterIntro>
-    )
+        {t('chapter_two.scripting_one.tooltip_one.highlighted')}
+        <HolocatQuestion
+          theme={chapters['chapter-2'].metadata.theme}
+          inline
+          id="target-difficulty"
+          question={t('chapter_two.scripting_one.tooltip_one.question')}
+          href={t('chapter_two.scripting_one.tooltip_one.link')}
+          visible={tooltipVisible}
+        />
+      </a>
+      .
+      <Text className="mt-8 text-lg md:text-xl">
+        {t('chapter_two.scripting_one.paragraph_four')}
+      </Text>
+      <Button onClick={proceed} classes="mt-10 max-md:w-full">
+        {t('shared.next')}
+      </Button>
+    </ChapterIntro>
   )
 }
