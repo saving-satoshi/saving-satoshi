@@ -17,7 +17,7 @@ export default function Intro1({ lang }) {
       <h1 className="mb-3 font-cbrush text-5xl">
         {t('chapter_two.intro_one.title')}
       </h1>
-      <Text className="text-lg font-bold md:text-xl">
+      <Text className="text-lg md:text-xl">
         {t('chapter_two.intro_one.paragraph_one')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">

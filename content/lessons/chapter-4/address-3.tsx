@@ -184,6 +184,9 @@ def hash_to_address(hash):
           <Text className="mt-4 font-nunito text-xl text-white">
             {t(`chapter_four.address_three.paragraph_three`)}
           </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_four.address_three.paragraph_four`)}
+          </Text>
         </LessonInfo>
       </ScriptingChallenge>
     )

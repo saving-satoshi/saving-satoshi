@@ -746,6 +746,8 @@ const translations = {
       list_two: 'Testnet: ‘tb’',
       list_three: 'Regtest: ‘bcrt’',
       paragraph_three:
+        "You will want to use the testnet prefix 'tb' in this function.",
+      paragraph_four:
         'The data returned by this function will be your Bitcoin address!',
       success: 'Now you have an address that mined bitcoin can be sent to.',
     },
@@ -1176,7 +1178,7 @@ const translations = {
           },
         },
       },
-      success: 'The Input class looks good, Great Work!',
+      success: 'The Input class looks good. Great Work!',
     },
     in_out_five: {
       title: 'The ins and outs',
@@ -1233,7 +1235,7 @@ const translations = {
           },
         },
       },
-      success: 'The Output class looks good, Great Work!',
+      success: 'The Output class looks good. Great Work!',
     },
     put_it_together_one: {
       title: 'Putting it all together',
@@ -1278,7 +1280,7 @@ const translations = {
           item_four: '(var)',
         },
       },
-      success: 'The Witness class looks good, Great Work!',
+      success: 'The Witness class looks good. Great Work!',
     },
     put_it_together_two: {
       title: 'Putting it all together',
@@ -1286,8 +1288,7 @@ const translations = {
       paragraph_one:
         'It should have global properties locktime and version as well as an array of inputs, outputs and witness stacks.',
       paragraph_two:
-        'It will need a serialize() method that outputs the enitire transaction as bytes formatted for broadcast on the Bitcoin p2p network',
-
+        'It will need a serialize() method that outputs the enitire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
       headings: {
         item_one: 'Description',
         item_two: 'Name',
@@ -1345,8 +1346,8 @@ const translations = {
         },
       },
       paragraph_three:
-        'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs',
-      success: 'The Transaction class looks good, Great Work!',
+        'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.',
+      success: 'The Transaction class looks good. Great Work!',
     },
     put_it_together_three: {
       title: 'Putting it all together',
@@ -1440,7 +1441,7 @@ const translations = {
       },
       paragraph_seven:
         'Finally, the message we sign is the double SHA-256 of all this serialized data.',
-      success: 'The digest() method looks good, Great Work!',
+      success: 'The digest() method looks good. Great Work!',
     },
     put_it_together_four: {
       title: 'Putting it all together',
@@ -1450,7 +1451,7 @@ const translations = {
         'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
       paragraph_three:
         'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
-      success: 'The compute_input_signature() method looks good, Great Work!',
+      success: 'The compute_input_signature() method looks good. Great Work!',
     },
     put_it_together_five: {
       heading: 'Populate the Witness',
@@ -1462,7 +1463,7 @@ const translations = {
         'Once we have that signature blob we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.',
       paragraph_four:
         'The witness stack object can then be appended to the witnesses array of the transaction object.',
-      success: 'The sign_input() method looks good, Great Work!',
+      success: 'The sign_input() method looks good. Great Work!',
     },
     put_it_together_six: {
       heading: 'Put it All Together',
