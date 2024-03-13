@@ -269,7 +269,9 @@ const translations = {
       paragraph_two:
         'You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.',
       paragraph_three:
-        'HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family ASIC miners. Application-specific integrated circuit miners were all the rage back in bitcoin’s early days. Can you believe that people mined other coins at one point?”',
+        'HOLOCAT: "This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family ASIC miners. In bitcoin’s early days, miners would use general purpose computers to mine bitcoin. But early on miners realized they could use machines with a special type of chip called an Application-Specific Integrated Circuit, or ASIC for short. These chips do only one thing, mine bitcoin, their narrow focus increases their efficiency and allows miners to spend less energy to mine, giving them an edge. Can you believe that people mined with their laptops at one point?"',
+      paragraph_four:
+        'This explains all the machines in the Vanderpoole family collection.',
     },
 
     intro_two: {
@@ -417,9 +419,9 @@ const translations = {
       paragraph_twelve:
         'And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. ',
       paragraph_thirteen:
-        'In the early days of bitcoin, it was possible to mine with your average computer, just like we did in this simulation.',
+        'Remember, this was just a simulation, each block is supposed to take 10 minutes on average.',
       paragraph_fourteen:
-        'Today, miners use a special type of chip called an Application-Specific Integrated Circuit, or ASIC for short. Nowadays, people buy machines with ASICs that are dedicated to just mining! This explains all the machines in the Vanderpoole family collection.',
+        'Also, if we were really mining on the current mainnet it would take many orders of maginitude more computing power to mine these blocks.',
       progress_bar_title: 'Blocks found',
       progress_bar_one: 'Nonce',
       progress_bar_two: 'Hashes per second',
@@ -1018,7 +1020,7 @@ const translations = {
       title: 'Outro',
       heading: 'Vanderpoole lied!',
       paragraph_one:
-        'The whole story about his family was an invention, and you proved it to the whole world. This casts a big shadow on his credibility, and the credibility of his company. But, that’s what you get for playing tricks.',
+        "You didn't trust, you verified.<br>In doing so you discovered the whole story about his family was a fabrication, and you proved it to the whole world. This casts a big shadow on his credibility, and the credibility of his company.",
     },
     resources: {
       derive_message: {
