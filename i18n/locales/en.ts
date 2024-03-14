@@ -382,6 +382,14 @@ const translations = {
         list_two:
           '<Link href="https://www.educative.io/answers/what-is-node-cryptocreatehashalgorithm-options" target="_blank" className="underline">Tutorial javascript function</Link>',
       },
+      cpp: {
+        paragraph_two:
+          'When you find a nonce with a hash that begins with five zeroes, return the hash to the console. We are using the crypto library in C++ to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
+        list_one:
+          '<Link href="https://cryptopp.com/wiki/SHA2" target="_blank" className="underline">cryptopp documentation</Link>',
+        list_two:
+          '<Link href="https://www.cryptopp.com/wiki/Hash_Functions#The_SHA_algorithm" target="_blank" className="underline">Tutorial C++ function</Link>',
+      },
       success: 'Five zeroes! That’s it!',
     },
 

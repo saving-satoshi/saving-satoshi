@@ -31,4 +31,8 @@ export const languageMeta = {
     value: 'python',
     label: 'Python',
   },
+  cpp: {
+    value: 'cpp',
+    label: 'C++',
+  },
 }

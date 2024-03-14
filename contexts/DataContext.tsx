@@ -83,11 +83,7 @@ export default function DataProvider({
   useEffect(() => {
     const language = localStorage.getItem('language')
     if (language) {
-      if (language === 'python') {
-        setCurrentLanguage(Language.Python)
-      } else {
-        setCurrentLanguage(Language.JavaScript)
-      }
+      setCurrentLanguage(getLanguageFromString(language))
     } else {
       localStorage.setItem('language', 'javascript')
     }
