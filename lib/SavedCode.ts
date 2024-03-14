@@ -1,6 +1,7 @@
 export enum Language {
   Python,
   JavaScript,
+  Cpp,
   Unknown,
 }
 
@@ -18,6 +19,12 @@ export function detectLanguage(code: string): Language {
     code.match(/console\.log\(.+\)/)
   ) {
     return Language.JavaScript
+  } else if (
+    code.includes('#include') ||
+    code.includes('using namespace ') ||
+    code.includes('int ')
+  ) {
+    return Language.Cpp
   }
   return Language.Unknown
 }
@@ -79,6 +86,8 @@ export function getLanguageString(language: Language): string {
       return 'python'
     case Language.JavaScript:
       return 'javascript'
+    case Language.Cpp:
+      return 'cpp'
     case Language.Unknown:
     default:
       return 'unknown'
@@ -91,6 +100,8 @@ export function getLanguageFromString(languageString: string): Language {
       return Language.Python
     case 'javascript':
       return Language.JavaScript
+    case 'cpp':
+      return Language.Cpp
     default:
       return Language.Unknown
   }

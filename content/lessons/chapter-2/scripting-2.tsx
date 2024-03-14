@@ -114,11 +114,76 @@ def find_hash(nonce):
   ],
 }
 
+const cpp = {
+  program: `#include <iostream>
+#include <future>
+#include <chrono>
+#include <string>
+#include <thread>
+
+void kill() {
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+
+    std::cout << "\\nKILL" << std::endl;
+}
+
+int main() {
+    std::future<std::string> result = std::async(std::launch::async, find_hash, 21000000);
+
+    // Get the result of function_test and print it
+    std::cout << result.get() << std::endl;
+
+    // Print the message after a delay
+    std::async(std::launch::async, kill);
+
+    return 0;
+}
+`,
+  defaultFunction: {
+    name: 'find_hash',
+    args: ['nonce'],
+  },
+  defaultCode: `#include <iostream>
+using namespace std;
+
+// Create a program that finds a sha256 hash starting with 5 zeroes.
+// To submit your answer, return it from the function.
+
+string find_hash(int nonce) {
+    // Type your code here
+}
+`,
+  validate: async (answer) => {
+    if (answer === 'test-failed' || answer === 'error') {
+      return [
+        false,
+        'Be sure you are using the nonce param in your function as a random starting nonce will be used to test',
+      ]
+    }
+    if (!answer.startsWith('00000')) {
+      return [false, 'Hash must start with 5 zeroes.']
+    }
+
+    if (answer.length !== 64) {
+      return [false, 'Hash must be 64 characters long']
+    }
+
+    return [true, undefined]
+  },
+  constraints: [
+    {
+      range: [1, 1, 10, 1],
+      allowMultiline: true,
+    },
+  ],
+}
+
 const config: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
     javascript,
     python,
+    cpp,
   },
 }
 
