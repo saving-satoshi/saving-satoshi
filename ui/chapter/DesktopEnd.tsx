@@ -13,6 +13,7 @@ export default function DesktopEnd({
   className,
   direction,
   theme,
+  gradientTheme,
   account,
   onClick,
   currentLessonKey,
@@ -23,6 +24,7 @@ export default function DesktopEnd({
   lang: string
   direction: 'left' | 'right'
   theme: string
+  gradientTheme?: string
   account: any
   onClick: any
   currentLessonKey: any
@@ -44,7 +46,7 @@ export default function DesktopEnd({
       <div
         className={clsx(
           className,
-          'absolute bottom-0 ml-auto w-full bg-gradient-to-b from-transparent via-[#00000040] to-[#00000080] p-4 pb-12 text-left md:p-16'
+          'absolute bottom-0 ml-auto w-full bg-gradient-to-t from-[#000000ff] from-0% via-[#00000060] via-85% to-transparent to-100% p-4 pb-12 text-left md:px-16 md:pb-16 md:pt-52'
         )}
       >
         <div
