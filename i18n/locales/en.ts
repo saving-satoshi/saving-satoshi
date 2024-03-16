@@ -313,11 +313,18 @@ const translations = {
         'Hash functions are one way streets. You can’t reverse engineer a hash and figure out the data used to make it.',
       list_three:
         'Hashes are extremely reliable in the sense that they are deterministic. This means you can hash the same piece of data over and over again and you’ll always get the same result.',
-      paragraph_one:
-        'The function used here is called SHA-256, a very popular choice.',
+      paragraph_one: {
+        a: 'The function used here is called ',
+        b: 'a very popular choice.',
+      },
       paragraph_two: 'Now, let’s see if you can find a specific hash.',
       paragraph_three:
         'Find a hash that starts with a zero (“0”). Keep typing different things below until you find a hash that we want.',
+      tooltip_one: {
+        question: 'How is SHA-256 used in bitcoin? ',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520SHA-256%2520used%2520in%2520bitcoin%253F',
+        highlighted: 'SHA-256,',
+      },
     },
 
     hashing_four: {
@@ -730,7 +737,12 @@ const translations = {
       paragraph_one:
         'And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’ll learn about that in the next challenge.',
       paragraph_two:
-        'Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the discrete log problem.',
+        'Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the ',
+      tooltip_one: {
+        question: 'How is the discrete log problem relevant to bitcoin?',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520the%2520discrete%2520log%2520problem%2520relevant%2520to%2520bitcoin%253F',
+        highlighted: 'discrete log problem ',
+      },
     },
 
     address_two: {
@@ -909,12 +921,20 @@ const translations = {
       success_message_line_thirteen: 'locktime:',
     },
     derive_message_seven: {
-      paragraph_one:
-        "It's impossible to sign a message containing it's own signature, so the scriptSig needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.",
+      paragraph_one: {
+        a: "It's impossible to sign a message containing it's own signature, so the",
+        b: 'needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.',
+      },
       paragraph_two:
         'We already found the scriptPubKey in the previous step, you can paste that in the first blank.',
       paragraph_three:
         'The last thing we need for our transaction message is a "<span className="font-bold">sighash type flag</span>." We\'ll cover this more in the next chapter but for now we\'ll just add the value <span className="font-bold">01000000</span> to the end of the message.',
+      tooltip_one: {
+        question:
+          "Dont worry too much about that right now, we'll go into more detail into this soon",
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F',
+        highlighted: 'scriptSig',
+      },
     },
     verify_signature_one: {
       title: 'Verify the signature',
