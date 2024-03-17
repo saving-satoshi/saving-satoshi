@@ -1649,6 +1649,14 @@ const translations = {
       'I acknowledge I have saved this private key and know that I will need it for challenges in the future.',
   },
 
+  social: {
+    twitter_share: 'Share via X',
+    nostr_share: 'Share via nostr',
+    sharing: 'Sharing...',
+    shared: 'Shared!',
+    share_error: 'Failed to share',
+  },
+
   disclaimer: {
     description:
       'We’re excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>',
