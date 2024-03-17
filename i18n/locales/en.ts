@@ -1560,7 +1560,7 @@ const translations = {
       },
       table_one: {
         footer:
-          'View the json file <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link> for the rest of the transaction data',
+          'View the json file  <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link> for the rest of the transaction data',
       },
       poor: "It's a valid block, but can you do better? Try to collect more fees.",
       good: "It's a valid block, but you are not quite getting the most fees yet. Keep working, or continue, your choice.",

@@ -1,6 +1,6 @@
 'use client'
 
-import { ScriptingChallenge, LessonInfo, Title } from 'ui'
+import { ScriptingChallenge, LessonInfo, Title, Tooltip } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
@@ -8,6 +8,8 @@ import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
+import { chapters } from 'content/chapters'
+import HolocatQuestion from 'ui/lesson/HolocatQuestion'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_one.title',
@@ -108,6 +110,15 @@ export default function Scripting2({ lang }) {
   const t = useTranslations(lang)
   const { currentLanguage } = useDataContext()
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  const [tooltipVisible, setTooltipVisible] = useState(false)
+
+  const handleMouseEnter = () => {
+    setTooltipVisible(true)
+  }
+
+  const handleMouseLeave = () => {
+    setTooltipVisible(false)
+  }
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
@@ -124,13 +135,39 @@ export default function Scripting2({ lang }) {
       <LessonInfo>
         <Title>{t('chapter_five.validate_signature_two.heading')}</Title>
 
-        <Text className="mt-2 text-lg">
+        <Text className="my-2 text-lg">
           {t('chapter_five.validate_signature_two.paragraph_one')}
         </Text>
 
-        <Text className="mt-2 text-lg">
-          {t(`chapter_five.validate_signature_two.${language}.paragraph_two`)}
-        </Text>
+        <div className="content-center justify-items-center font-nunito">
+          <Text className="inline text-lg">
+            {t('chapter_five.validate_signature_two.paragraph_two.pre_link')}{' '}
+          </Text>
+          <a
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            href="https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520do%2520we%2520double%2520hash%2520in%2520bitcoin%253F/"
+            target="_blank"
+            className="inline text-lg hover:underline md:text-xl"
+          >
+            {t('chapter_five.validate_signature_two.paragraph_two.highlighted')}{' '}
+            <HolocatQuestion
+              id="holocat"
+              inline
+              theme={chapters['chapter-5'].metadata.theme}
+              href="https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520do%2520we%2520double%2520hash%2520in%2520bitcoin%253F/"
+              question={t(
+                'chapter_five.validate_signature_two.paragraph_two.question'
+              )}
+              visible={tooltipVisible}
+            />
+          </a>
+          <Text className="inline text-lg">
+            {' '}
+            {t('chapter_five.validate_signature_two.paragraph_two.post_link')}
+            {t(`chapter_five.validate_signature_two.${language}.paragraph_two`)}
+          </Text>
+        </div>
       </LessonInfo>
     </ScriptingChallenge>
   )
