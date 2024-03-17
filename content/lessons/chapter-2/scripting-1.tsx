@@ -1,10 +1,9 @@
 'use client'
 
 import { useProceed, useTranslations } from 'hooks'
-import { ChapterIntro, Text } from 'ui'
+import { ChapterIntro, Text, HolocatQuestion } from 'ui'
 import { Button } from 'shared'
-import HolocatQuestion from 'ui/lesson/HolocatQuestion'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { chapters } from 'content/chapters'
 
 export const metadata = {

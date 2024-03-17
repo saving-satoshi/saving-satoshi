@@ -9,10 +9,7 @@ import { getLessonKey } from 'lib/progress'
 import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
 import { chapters } from 'content/chapters'
-import HolocatQuestion from 'ui/lesson/HolocatQuestion'
-import { chapters } from 'content/chapters'
-import Image from 'next/image'
-import Avatar from 'components/Avatar'
+import HolocatQuestion from 'ui/common/HolocatQuestion'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_one.title',
