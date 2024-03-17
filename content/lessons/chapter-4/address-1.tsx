@@ -66,7 +66,7 @@ export default function Address1({ lang }) {
           >
             {t('chapter_four.address_one.tooltip_one.highlighted')}
             <HolocatQuestion
-              theme={chapters['chapter-2'].metadata.theme}
+              theme={chapters['chapter-4'].metadata.theme}
               inline
               id="target-difficulty"
               question={t('chapter_four.address_one.tooltip_one.question')}

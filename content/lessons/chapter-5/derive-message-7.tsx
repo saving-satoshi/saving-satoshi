@@ -212,7 +212,7 @@ export default function DeriveMessage7({ lang }) {
           >
             {t('chapter_five.derive_message_seven.tooltip_one.highlighted')}
             <HolocatQuestion
-              theme={chapters['chapter-2'].metadata.theme}
+              theme={chapters['chapter-5'].metadata.theme}
               inline
               id="target-difficulty"
               question={t(
