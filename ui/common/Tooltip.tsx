@@ -9,6 +9,7 @@ function Tooltip({
   children,
   className,
   id,
+  notCentered,
   content,
   position = 'top',
   href,
@@ -23,6 +24,7 @@ function Tooltip({
   href?: string
   offset?: number
   theme?: string
+  notCentered?: boolean
 }) {
   const targetRef = useRef<HTMLSpanElement>(null)
   const tooltipRef = useRef<HTMLSpanElement>(null)
@@ -131,9 +133,10 @@ function Tooltip({
     <>
       <span
         className={clsx(
-          'tooltip absolute left-0 top-0 z-10 max-w-md border border-white px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
+          'tooltip absolute top-0 z-10 max-w-md border border-white px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
           theme,
           {
+            'left-0': !notCentered,
             'pointer-events-all opacity-100': visible,
             'pointer-events-none opacity-0': !visible,
           }
