@@ -1,6 +1,6 @@
 'use client'
 
-import { ScriptingChallenge, LessonInfo } from 'ui'
+import { ScriptingChallenge, LessonInfo, HolocatQuestion } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { CodeExample, Text } from 'ui'
@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
+import { chapters } from 'content/chapters'
 
 export const metadata = {
   title: 'chapter_five.derive_message_one.title',
@@ -177,6 +178,15 @@ export default function DeriveMessage7({ lang }) {
   const t = useTranslations(lang)
   const { currentLanguage } = useDataContext()
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  const [tooltipVisible, setTooltipVisible] = useState(false)
+
+  const handleMouseEnter = () => {
+    setTooltipVisible(true)
+  }
+
+  const handleMouseLeave = () => {
+    setTooltipVisible(false)
+  }
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
@@ -192,7 +202,27 @@ export default function DeriveMessage7({ lang }) {
     >
       <LessonInfo>
         <Text className="font-nunito text-xl text-white">
-          {t('chapter_five.derive_message_seven.paragraph_one')}
+          {t('chapter_five.derive_message_seven.paragraph_one.a')}{' '}
+          <a
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            href={t('chapter_five.derive_message_seven.tooltip_one.link')}
+            target="_blank"
+            className="inline text-lg italic hover:underline md:text-xl"
+          >
+            {t('chapter_five.derive_message_seven.tooltip_one.highlighted')}
+            <HolocatQuestion
+              theme={chapters['chapter-5'].metadata.theme}
+              inline
+              id="target-difficulty"
+              question={t(
+                'chapter_five.derive_message_seven.tooltip_one.question'
+              )}
+              href={t('chapter_five.derive_message_seven.tooltip_one.link')}
+              visible={tooltipVisible}
+            />
+          </a>{' '}
+          {t('chapter_five.derive_message_seven.paragraph_one.b')}
         </Text>
         <Text className="my-4 font-nunito text-xl text-white">
           {t(`chapter_five.derive_message_seven.paragraph_two`)}

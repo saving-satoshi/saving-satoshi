@@ -268,10 +268,15 @@ const translations = {
         'HOLOCAT: “Boy, what a dump. This place had better store some sardines or dried fish. I’d even settle for some e-nip."',
       paragraph_two:
         'You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.',
-      paragraph_three:
-        'HOLOCAT: "This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family ASIC miners. In bitcoin’s early days, miners would use general purpose computers to mine bitcoin. But early on miners realized they could use machines with a special type of chip called an Application-Specific Integrated Circuit, or ASIC for short. These chips do only one thing, mine bitcoin, their narrow focus increases their efficiency and allows miners to spend less energy to mine, giving them an edge. Can you believe that people mined with their laptops at one point?"',
-      paragraph_four:
-        'This explains all the machines in the Vanderpoole family collection.',
+      paragraph_three: {
+        a: 'HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family',
+        b: 'Application-specific integrated circuit miners were all the rage back in bitcoin’s early days. Can you believe that people mined other coins at one point?”',
+      },
+      tooltip_one: {
+        question: 'What is an ASIC miner?',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520an%2520ASIC%2520miner%253F',
+        highlighted: 'ASIC miners.',
+      },
     },
 
     intro_two: {
@@ -313,11 +318,18 @@ const translations = {
         'Hash functions are one way streets. You can’t reverse engineer a hash and figure out the data used to make it.',
       list_three:
         'Hashes are extremely reliable in the sense that they are deterministic. This means you can hash the same piece of data over and over again and you’ll always get the same result.',
-      paragraph_one:
-        'The function used here is called SHA-256, a very popular choice.',
+      paragraph_one: {
+        a: 'The function used here is called ',
+        b: 'a very popular choice.',
+      },
       paragraph_two: 'Now, let’s see if you can find a specific hash.',
       paragraph_three:
         'Find a hash that starts with a zero (“0”). Keep typing different things below until you find a hash that we want.',
+      tooltip_one: {
+        question: 'How is SHA-256 used in bitcoin? ',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520SHA-256%2520used%2520in%2520bitcoin%253F',
+        highlighted: 'SHA-256,',
+      },
     },
 
     hashing_four: {
@@ -355,13 +367,18 @@ const translations = {
       paragraph_two:
         'Miners gather all the information they want to put in a block such as the previous block header hash, a hash of transactions to be included in block (including the coinbase transaction), time, and combine it with a random number called a nonce (which stands for “number only used once”). They send all of this into the hash function to create something called the block hash.',
       paragraph_three:
-        'When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data by 1 in the 32-bit field. But since miners are so powerful now and difficulty is so high, they cycle through this pretty quickly and normally don’t find a solution below the target difficulty.',
+        'When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data by 1 in the 32-bit field. But since miners are so powerful now and difficulty is so high, they cycle through this pretty quickly and normally don’t find a solution below the',
       paragraph_four:
         'So what miners need to do is change other parts of the block header, such as the time or transactions included in the block.',
       paragraph_five:
         'The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.',
       paragraph_six:
         'For the next challenge, write a script that finds a hash that starts with five zeroes (00000).',
+      tooltip_one: {
+        question: 'What is target difficulty? ',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520is%2520target%2520difficulty%253F',
+        highlighted: 'target difficulty',
+      },
     },
 
     scripting_two: {
@@ -725,7 +742,12 @@ const translations = {
       paragraph_one:
         'And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’ll learn about that in the next challenge.',
       paragraph_two:
-        'Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the discrete log problem.',
+        'Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the ',
+      tooltip_one: {
+        question: 'How is the discrete log problem relevant to bitcoin?',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520the%2520discrete%2520log%2520problem%2520relevant%2520to%2520bitcoin%253F',
+        highlighted: 'discrete log problem ',
+      },
     },
 
     address_two: {
@@ -904,12 +926,20 @@ const translations = {
       success_message_line_thirteen: 'locktime:',
     },
     derive_message_seven: {
-      paragraph_one:
-        "It's impossible to sign a message containing it's own signature, so the scriptSig needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.",
+      paragraph_one: {
+        a: "It's impossible to sign a message containing it's own signature, so the",
+        b: 'needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.',
+      },
       paragraph_two:
         'We already found the scriptPubKey in the previous step, you can paste that in the first blank.',
       paragraph_three:
         'The last thing we need for our transaction message is a "<span className="font-bold">sighash type flag</span>." We\'ll cover this more in the next chapter but for now we\'ll just add the value <span className="font-bold">01000000</span> to the end of the message.',
+      tooltip_one: {
+        question:
+          "Dont worry too much about that right now, we'll go into more detail into this soon",
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F',
+        highlighted: 'scriptSig',
+      },
     },
     verify_signature_one: {
       title: 'Verify the signature',
@@ -990,13 +1020,19 @@ const translations = {
       heading: 'Prepare Vanderpoole’s signature for verification',
       paragraph_one:
         'The Bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.',
+      paragraph_two: {
+        pre_link: 'Then we will',
+        highlighted: 'double SHA-256',
+        post_link:
+          'hash that block of data, and convert that hash into an integer.Complete the function <span className="italic">decode_sig()</span>.',
+        question: 'Why do we double hash in Bitcoin?',
+      },
       javascript: {
         paragraph_two:
-          'Complete the function <span className="italic">decode_sig()</span>. It should return an array with the [r, s] values as BigInts.',
+          'It should return an array with the [r, s] values as BigInts.',
       },
       python: {
-        paragraph_two:
-          'Complete the function <span className="italic">decode_sig()</span>. It should return a tuple with the (r, s) values.',
+        paragraph_two: 'It should return a tuple with the (r, s) values.',
       },
     },
     validate_signature_three: {
@@ -1560,7 +1596,7 @@ const translations = {
       },
       table_one: {
         footer:
-          'View the json file <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link> for the rest of the transaction data',
+          'View the json file  <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link> for the rest of the transaction data',
       },
       poor: "It's a valid block, but can you do better? Try to collect more fees.",
       good: "It's a valid block, but you are not quite getting the most fees yet. Keep working, or continue, your choice.",
