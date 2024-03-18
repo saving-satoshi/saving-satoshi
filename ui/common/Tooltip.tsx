@@ -174,7 +174,11 @@ function Tooltip({
         className={parentClassName}
       >
         {href && (
-          <a href={href} className={clsx('underline', className)}>
+          <a
+            href={href}
+            target="_blank"
+            className={clsx('underline', className)}
+          >
             {children}
           </a>
         )}
