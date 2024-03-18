@@ -7,6 +7,8 @@ import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
+import { getLanguageString } from 'lib/SavedCode'
+import { useDataContext } from 'contexts/DataContext'
 
 export const metadata = {
   title: 'chapter_two.scripting_one.title',
@@ -122,8 +124,8 @@ const config: EditorConfig = {
 
 export default function Scripting2({ lang }) {
   const t = useTranslations(lang)
-
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const { currentLanguage } = useDataContext()
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)

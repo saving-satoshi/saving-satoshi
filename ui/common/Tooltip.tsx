@@ -8,33 +8,39 @@ import { clamp, isWithinRect, modifyRect } from 'utils'
 function Tooltip({
   children,
   className,
+  parentClassName,
   id,
   content,
   position = 'top',
+  arrowPosition,
   href,
   theme,
   offset = 12,
   disabled,
+  visibleOverride,
 }: {
   children: React.ReactNode
   className?: string
+  parentClassName?: string
   id: string
   content: any
   position?: string
+  arrowPosition?: string
   href?: string
   offset?: number
   theme?: string
   disabled?: boolean
+  visibleOverride?: boolean
 }) {
   const targetRef = useRef<HTMLSpanElement>(null)
   const tooltipRef = useRef<HTMLSpanElement>(null)
   const arrowRef = useRef<HTMLSpanElement>(null)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState<boolean>(visibleOverride || false)
 
   const lang = useLang()
   const t = useTranslations(lang)
 
-  const handleMouseEnter = (e) => {
+  const handleMouseEnter = () => {
     updatePosition()
     updateZIndex()
     !disabled && setVisible(true)
@@ -123,11 +129,12 @@ function Tooltip({
   }
 
   useEffect(() => {
+    visibleOverride && handleMouseEnter()
     window.addEventListener('mousemove', handleMouseMove)
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
     }
-  }, [visible])
+  }, [visible, visibleOverride])
 
   return (
     <>
@@ -146,11 +153,13 @@ function Tooltip({
       >
         <span
           className={clsx(
-            'absolute left-1/2 h-3 w-3 border-l border-t border-white',
+            'absolute h-3 w-3 border-l border-t border-white',
             theme,
+            arrowPosition,
             {
               'top-[-1px]': position !== 'top',
               'bottom-[-1px]': position === 'top',
+              'left-1/2': !arrowPosition,
             }
           )}
           ref={arrowRef}
@@ -164,9 +173,14 @@ function Tooltip({
         onMouseEnter={handleMouseEnter}
         ref={targetRef}
         aria-describedby={id}
+        className={parentClassName}
       >
         {href && (
-          <a href={href} className={clsx('underline', className)}>
+          <a
+            href={href}
+            target="_blank"
+            className={clsx('underline', className)}
+          >
             {children}
           </a>
         )}

@@ -2,7 +2,6 @@
 
 import Icon from 'shared/Icon'
 import Avatar from 'components/Avatar'
-import { useHasMounted } from 'hooks'
 import { useAuthContext } from 'contexts/AuthContext'
 import { Modal, useModalContext } from 'contexts/ModalContext'
 

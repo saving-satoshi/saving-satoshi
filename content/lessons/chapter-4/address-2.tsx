@@ -7,6 +7,8 @@ import { Text } from 'ui'
 import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
+import { getLanguageString } from 'lib/SavedCode'
+import { useDataContext } from 'contexts/DataContext'
 
 export const metadata = {
   title: 'chapter_four.address_two.title',
@@ -15,7 +17,7 @@ export const metadata = {
 
 export default function Address2({ lang }) {
   const t = useTranslations(lang)
-
+  const { currentLanguage } = useDataContext()
   const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
   const dataObject = prevData?.data ? prevData?.data : ''
   const [isLoading, setIsLoading] = useState(true)
@@ -148,7 +150,7 @@ def hash_compressed(compressed_public_key):
     },
   }
 
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)

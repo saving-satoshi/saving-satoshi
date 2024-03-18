@@ -84,7 +84,7 @@ export default function Mining1({ lang }) {
         setBlocks(currentBlock)
         setTransactionsConfirmed(currentBlock * 3500)
         setBitcoinMined(currentBlock * 0.061)
-      }, 8 * 1000)
+      }, 5 * 1000)
     }
     return () => clearInterval(interval)
   }, [ramdomNonce])
@@ -94,7 +94,7 @@ export default function Mining1({ lang }) {
     let currentNonce = nonce
     if (finalMining) {
       interval = setInterval(() => {
-        currentNonce = currentNonce + Math.floor(Math.random() * 17600)
+        currentNonce = currentNonce + Math.floor(Math.random() * 176000)
         setNonce(currentNonce)
       }, 40)
     }
@@ -110,7 +110,7 @@ export default function Mining1({ lang }) {
         setBlocks(currentBlock)
         setTransactionsConfirmed(currentBlock * 3500)
         setBitcoinMined(currentBlock * 0.061)
-      }, Math.floor(Math.random() * 1000))
+      }, Math.floor(Math.random() * 26) + 75)
     }
     return () => clearInterval(interval)
   }, [finalMining])
@@ -165,7 +165,7 @@ export default function Mining1({ lang }) {
       await sleep(325)
       setStep(1)
       setShowText(true)
-      const time = 15 * 1000
+      const time = 5 * 1000
       displayRandomNumbers(1760, time)
       setTimeout(async () => {
         setShowText(false)
@@ -186,7 +186,7 @@ export default function Mining1({ lang }) {
       setRandomNonce(true)
       setTimeout(() => {
         setTenXHint(true)
-      }, 10000)
+      }, 7000)
     }
 
     if (step === 3) {
@@ -258,7 +258,7 @@ export default function Mining1({ lang }) {
                 mining
               />
             </div>
-            <ProgressBar progress={hashPower / 440} variant={'bars'} />{' '}
+            <ProgressBar progress={hashPower / 430} variant={'bars'} />{' '}
             {/* progress = hashPower * 100/maxHashPower */}
           </Card>
           <div className="mt-5 flex items-center justify-between gap-x-2.5 text-center font-space-mono">

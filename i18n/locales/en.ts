@@ -268,8 +268,15 @@ const translations = {
         'HOLOCAT: “Boy, what a dump. This place had better store some sardines or dried fish. I’d even settle for some e-nip."',
       paragraph_two:
         'You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.',
-      paragraph_three:
-        'HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family ASIC miners. Application-specific integrated circuit miners were all the rage back in bitcoin’s early days. Can you believe that people mined other coins at one point?”',
+      paragraph_three: {
+        a: 'HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family',
+        b: 'Application-specific integrated circuit miners were all the rage back in bitcoin’s early days. Can you believe that people mined other coins at one point?”',
+      },
+      tooltip_one: {
+        question: 'What is an ASIC miner?',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520an%2520ASIC%2520miner%253F',
+        highlighted: 'ASIC miners.',
+      },
     },
 
     intro_two: {
@@ -311,11 +318,18 @@ const translations = {
         'Hash functions are one way streets. You can’t reverse engineer a hash and figure out the data used to make it.',
       list_three:
         'Hashes are extremely reliable in the sense that they are deterministic. This means you can hash the same piece of data over and over again and you’ll always get the same result.',
-      paragraph_one:
-        'The function used here is called SHA-256, a very popular choice.',
+      paragraph_one: {
+        a: 'The function used here is called ',
+        b: 'a very popular choice.',
+      },
       paragraph_two: 'Now, let’s see if you can find a specific hash.',
       paragraph_three:
         'Find a hash that starts with a zero (“0”). Keep typing different things below until you find a hash that we want.',
+      tooltip_one: {
+        question: 'How is SHA-256 used in bitcoin? ',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520SHA-256%2520used%2520in%2520bitcoin%253F',
+        highlighted: 'SHA-256,',
+      },
     },
 
     hashing_four: {
@@ -353,13 +367,18 @@ const translations = {
       paragraph_two:
         'Miners gather all the information they want to put in a block such as the previous block header hash, a hash of transactions to be included in block (including the coinbase transaction), time, and combine it with a random number called a nonce (which stands for “number only used once”). They send all of this into the hash function to create something called the block hash.',
       paragraph_three:
-        'When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data by 1 in the 32-bit field. But since miners are so powerful now and difficulty is so high, they cycle through this pretty quickly and normally don’t find a solution below the target difficulty.',
+        'When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data by 1 in the 32-bit field. But since miners are so powerful now and difficulty is so high, they cycle through this pretty quickly and normally don’t find a solution below the',
       paragraph_four:
         'So what miners need to do is change other parts of the block header, such as the time or transactions included in the block.',
       paragraph_five:
         'The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.',
       paragraph_six:
         'For the next challenge, write a script that finds a hash that starts with five zeroes (00000).',
+      tooltip_one: {
+        question: 'What is target difficulty? ',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520is%2520target%2520difficulty%253F',
+        highlighted: 'target difficulty',
+      },
     },
 
     scripting_two: {
@@ -417,16 +436,16 @@ const translations = {
       paragraph_twelve:
         'And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. ',
       paragraph_thirteen:
-        'In the early days of bitcoin, it was possible to mine with your average computer, just like we did in this simulation.',
+        'Remember, this was just a simulation, each block is supposed to take 10 minutes on average.',
       paragraph_fourteen:
-        'Today, miners use a special type of chip called an Application-Specific Integrated Circuit, or ASIC for short. Nowadays, people buy machines with ASICs that are dedicated to just mining! This explains all the machines in the Vanderpoole family collection.',
+        'Also, if we were really mining on the current mainnet it would take many orders of maginitude more computing power to mine these blocks.',
       progress_bar_title: 'Blocks found',
       progress_bar_one: 'Nonce',
       progress_bar_two: 'Hashes per second',
       progress_bar_three: 'Transactions confirmed',
       progress_bar_four: 'Bitcoin earned',
       button_hash: '10x hash power, please',
-      ten_x_hint: 'Tap the 10x button to speed up the hashing!',
+      ten_x_hint: 'Tap the 100x button to speed up the hashing!',
     },
     outro_one: {
       title: 'Outro',
@@ -723,7 +742,12 @@ const translations = {
       paragraph_one:
         'And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’ll learn about that in the next challenge.',
       paragraph_two:
-        'Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the discrete log problem.',
+        'Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the ',
+      tooltip_one: {
+        question: 'How is the discrete log problem relevant to bitcoin?',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520the%2520discrete%2520log%2520problem%2520relevant%2520to%2520bitcoin%253F',
+        highlighted: 'discrete log problem ',
+      },
     },
 
     address_two: {
@@ -746,6 +770,8 @@ const translations = {
       list_two: 'Testnet: ‘tb’',
       list_three: 'Regtest: ‘bcrt’',
       paragraph_three:
+        "You will want to use the testnet prefix 'tb' in this function.",
+      paragraph_four:
         'The data returned by this function will be your Bitcoin address!',
       success: 'Now you have an address that mined bitcoin can be sent to.',
     },
@@ -830,11 +856,10 @@ const translations = {
     derive_message_one: {
       title: 'Derive the message',
       heading: 'Vanderpoole says he signed a message with Satoshi’s keys:',
-      code_one:
-        '-----BEGIN BITCOIN SIGNED MESSAGE----- <br /> <br /> I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever Bitcoin transaction confirmed in block #170. This message is signed with the same private key. <br /> <br /> -----BEGIN BITCOIN SIGNATURE----- <br /> <br />',
+      code_one: `-----BEGIN BITCOIN SIGNED MESSAGE----- \n \n I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever Bitcoin transaction confirmed in block #170. This message is signed with the same private key. \n \n -----BEGIN BITCOIN SIGNATURE----- \n \n`,
       code_two:
         '<span className="break-all"> H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k= </span>',
-      code_three: '<br/> <br/>-----END BITCOIN SIGNATURE-----',
+      code_three: '\n \n-----END BITCOIN SIGNATURE-----',
       paragraph_two: 'What does this even mean?',
     },
     derive_message_two: {
@@ -901,12 +926,20 @@ const translations = {
       success_message_line_thirteen: 'locktime:',
     },
     derive_message_seven: {
-      paragraph_one:
-        "It's impossible to sign a message containing it's own signature, so the scriptSig needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.",
+      paragraph_one: {
+        a: "It's impossible to sign a message containing it's own signature, so the",
+        b: 'needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.',
+      },
       paragraph_two:
         'We already found the scriptPubKey in the previous step, you can paste that in the first blank.',
       paragraph_three:
         'The last thing we need for our transaction message is a "<span className="font-bold">sighash type flag</span>." We\'ll cover this more in the next chapter but for now we\'ll just add the value <span className="font-bold">01000000</span> to the end of the message.',
+      tooltip_one: {
+        question:
+          "Dont worry too much about that right now, we'll go into more detail into this soon",
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F',
+        highlighted: 'scriptSig',
+      },
     },
     verify_signature_one: {
       title: 'Verify the signature',
@@ -937,8 +970,6 @@ const translations = {
         'There are two 32-byte numbers we need to extract. They are referred to as R and S respectively and are each prefixed by the bytes 0220 in the DER sequence. Instead of fully decoding the DER blob, just look for the prefixes and paste the R and S values.',
       paragraph_three:
         "# Satoshi's signature, from the input scriptSig of the tx to Hal Finney",
-      paragraph_four:
-        'sig_der = """304402204e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd410220181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09"""',
     },
     verify_signature_four: {
       heading: 'Decode the Public Key',
@@ -948,8 +979,6 @@ const translations = {
         'We learned in chapter 4 that public keys are really points in the ECDSA curve, meaning they have an x and y value. The first byte 04 means "uncompressed" (as opposed to 02 and 03 like we learned in chapter 4). Remove that first byte and the remaining data are 32-byte x and y coordinates. Copy and paste again.',
       paragraph_two:
         "# Satoshi's public key, from the block 9 coinbase output scriptPubKey",
-      paragraph_three:
-        'pubkey = """0411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3"""',
     },
     verify_signature_five: {
       title: 'Verify the signature',
@@ -991,13 +1020,19 @@ const translations = {
       heading: 'Prepare Vanderpoole’s signature for verification',
       paragraph_one:
         'The Bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.',
+      paragraph_two: {
+        pre_link: 'Then we will',
+        highlighted: 'double SHA-256',
+        post_link:
+          'hash that block of data, and convert that hash into an integer.Complete the function <span className="italic">decode_sig()</span>.',
+        question: 'Why do we double hash in Bitcoin?',
+      },
       javascript: {
         paragraph_two:
-          'Complete the function <span className="italic">decodeSig()</span>. It should return an array with the [r, s] values as BigInts.',
+          'It should return an array with the [r, s] values as BigInts.',
       },
       python: {
-        paragraph_two:
-          'Complete the function <span className="italic">decode_sig()</span>. It should return a tuple with the (r, s) values.',
+        paragraph_two: 'It should return a tuple with the (r, s) values.',
       },
     },
     validate_signature_three: {
@@ -1021,7 +1056,7 @@ const translations = {
       title: 'Outro',
       heading: 'Vanderpoole lied!',
       paragraph_one:
-        'The whole story about his family was an invention, and you proved it to the whole world. This casts a big shadow on his credibility, and the credibility of his company. But, that’s what you get for playing tricks.',
+        "You didn't trust, you verified.<br>In doing so you discovered the whole story about his family was a fabrication, and you proved it to the whole world. This casts a big shadow on his credibility, and the credibility of his company.",
     },
     resources: {
       derive_message: {
@@ -1181,7 +1216,7 @@ const translations = {
           },
         },
       },
-      success: 'The Input class looks good, Great Work!',
+      success: 'The Input class looks good. Great Work!',
     },
     in_out_five: {
       title: 'The ins and outs',
@@ -1238,7 +1273,7 @@ const translations = {
           },
         },
       },
-      success: 'The Output class looks good, Great Work!',
+      success: 'The Output class looks good. Great Work!',
     },
     put_it_together_one: {
       title: 'Putting it all together',
@@ -1283,7 +1318,7 @@ const translations = {
           item_four: '(var)',
         },
       },
-      success: 'The Witness class looks good, Great Work!',
+      success: 'The Witness class looks good. Great Work!',
     },
     put_it_together_two: {
       title: 'Putting it all together',
@@ -1291,8 +1326,7 @@ const translations = {
       paragraph_one:
         'It should have global properties locktime and version as well as an array of inputs, outputs and witness stacks.',
       paragraph_two:
-        'It will need a serialize() method that outputs the enitire transaction as bytes formatted for broadcast on the Bitcoin p2p network',
-
+        'It will need a serialize() method that outputs the enitire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
       headings: {
         item_one: 'Description',
         item_two: 'Name',
@@ -1350,8 +1384,8 @@ const translations = {
         },
       },
       paragraph_three:
-        'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs',
-      success: 'The Transaction class looks good, Great Work!',
+        'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.',
+      success: 'The Transaction class looks good. Great Work!',
     },
     put_it_together_three: {
       title: 'Putting it all together',
@@ -1445,7 +1479,7 @@ const translations = {
       },
       paragraph_seven:
         'Finally, the message we sign is the double SHA-256 of all this serialized data.',
-      success: 'The digest() method looks good, Great Work!',
+      success: 'The digest() method looks good. Great Work!',
     },
     put_it_together_four: {
       title: 'Putting it all together',
@@ -1455,7 +1489,7 @@ const translations = {
         'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
       paragraph_three:
         'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
-      success: 'The compute_input_signature() method looks good, Great Work!',
+      success: 'The compute_input_signature() method looks good. Great Work!',
     },
     put_it_together_five: {
       heading: 'Populate the Witness',
@@ -1467,7 +1501,7 @@ const translations = {
         'Once we have that signature blob we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.',
       paragraph_four:
         'The witness stack object can then be appended to the witnesses array of the transaction object.',
-      success: 'The sign_input() method looks good, Great Work!',
+      success: 'The sign_input() method looks good. Great Work!',
     },
     put_it_together_six: {
       heading: 'Put it All Together',
@@ -1562,7 +1596,7 @@ const translations = {
       },
       table_one: {
         footer:
-          'View the json file <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link> for the rest of the transaction data',
+          'View the json file  <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link> for the rest of the transaction data',
       },
       poor: "It's a valid block, but can you do better? Try to collect more fees.",
       good: "It's a valid block, but you are not quite getting the most fees yet. Keep working, or continue, your choice.",
@@ -1629,12 +1663,14 @@ const translations = {
     prompt: 'Enter your private key',
     confirm: 'Sign in',
     create_account: 'Don’t have an account?',
+    login: 'Log in',
   },
 
   modal_logout: {
     heading: 'You are logged in',
     paragraph_one:
       'Your session will remain active until you sign out using the button below.',
+    private_key: 'Your private key',
     signout: 'Sign out',
   },
 
@@ -1643,12 +1679,20 @@ const translations = {
     paragraph_one:
       'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.',
     subheading_one: 'Choose an avatar',
-    subheading_two: 'Back up your personal code',
+    subheading_two: 'Back up your private key',
     generate:
       'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
     confirm: 'Done',
     acknowledged:
       'I acknowledge I have saved this private key and know that I will need it for challenges in the future.',
+  },
+
+  social: {
+    twitter_share: 'Share via X',
+    nostr_share: 'Share via nostr',
+    sharing: 'Sharing...',
+    shared: 'Shared!',
+    share_error: 'Failed to share',
   },
 
   disclaimer: {

@@ -10,6 +10,8 @@ import { EditorConfig } from 'types'
 import { Text, ResourcePage, ToggleSwitch } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageString } from 'lib/SavedCode'
 
 const javascriptChallengeOne = {
   program: `console.log("KILL")`,
@@ -179,17 +181,21 @@ const configTwo: EditorConfig = {
 
 export default function InOutResources({ lang }) {
   const t = useTranslations(lang)
-
+  const { currentLanguage } = useDataContext()
   const initialStateCodeOne =
-    configOne.languages[configOne.defaultLanguage].defaultCode
+    configOne.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeOne, setCodeOne] = useState<string>(initialStateCodeOne as string)
 
   const initialStateCodeTwo =
-    configTwo.languages[configTwo.defaultLanguage].defaultCode
+    configTwo.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeTwo, setCodeTwo] = useState(initialStateCodeTwo as string)
 
-  const [languageOne, setLanguageOne] = useState(configOne.defaultLanguage)
-  const [languageTwo, setLanguageTwo] = useState(configTwo.defaultLanguage)
+  const [languageOne, setLanguageOne] = useState(
+    getLanguageString(currentLanguage)
+  )
+  const [languageTwo, setLanguageTwo] = useState(
+    getLanguageString(currentLanguage)
+  )
 
   const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
   const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)

@@ -1,7 +1,9 @@
 'use client'
 
+import { useDataContext } from 'contexts/DataContext'
 import { useMediaQuery, useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
+import { getLanguageString } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { EditorConfig } from 'types'
 import { LessonInfo, ScriptingChallenge, Text } from 'ui'
@@ -20,6 +22,8 @@ console.log("KILL")
     args: [],
   },
   defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js')
+// View the library source code
+// https://github.com/saving-satoshi/challenges/blob/master/chapter4/javascript/lib/secp256k1.js
 
 const GE = secp256k1.GE
 const FE = secp256k1.FE
@@ -97,7 +101,7 @@ function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
   },
   constraints: [
     {
-      range: [1, 1, 66, 1],
+      range: [1, 1, 68, 1],
       allowMultiline: true,
     },
   ],
@@ -113,6 +117,8 @@ print("KILL")
     args: [],
   },
   defaultCode: `import secp256k1py.secp256k1 as SECP256K1
+# View the library source code
+# https://github.com/saving-satoshi/challenges/blob/master/chapter4/python/lib/secp256k1.py
 
 GE = SECP256K1.GE
 G = SECP256K1.G
@@ -159,7 +165,7 @@ def verify(sig_r, sig_s, pubkey_x, pubkey_y, msg):
   },
   constraints: [
     {
-      range: [1, 1, 38, 1],
+      range: [1, 1, 40, 1],
       allowMultiline: true,
     },
   ],
@@ -175,8 +181,9 @@ const config: EditorConfig = {
 
 export default function VerifySignature5({ lang }) {
   const t = useTranslations(lang)
+  const { currentLanguage } = useDataContext()
   const [objectPosition, setObjectPosition] = useState<string | undefined>()
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)

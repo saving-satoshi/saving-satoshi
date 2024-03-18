@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react'
 import { EditorConfig } from 'types'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
 import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_three.title',
@@ -21,6 +23,8 @@ console.log("KILL")
     args: [],
   },
   defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js')
+// View the library source code
+// https://github.com/saving-satoshi/challenges/blob/master/chapter4/javascript/lib/secp256k1.js
 
 const GE = secp256k1.GE
 const FE = secp256k1.FE
@@ -101,6 +105,8 @@ print("KILL")
     args: [],
   },
   defaultCode: `import secp256k1py.secp256k1 as SECP256K1
+# View the library source code
+# https://github.com/saving-satoshi/challenges/blob/master/chapter4/python/lib/secp256k1.py
 
 GE = SECP256K1.GE
 G = SECP256K1.G
@@ -162,9 +168,10 @@ const config: EditorConfig = {
 
 export default function ValidateSignature3({ lang }) {
   const t = useTranslations(lang)
+  const { currentLanguage } = useDataContext()
   const [objectPosition, setObjectPosition] = useState<string | undefined>()
   const isMediumScreen = useMediaQuery({ width: 1024 })
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const [isLoading, setIsLoading] = useState(true)
 
   const handleSelectLanguage = (language: string) => {

@@ -10,6 +10,8 @@ import { EditorConfig } from 'types'
 import { Text, ResourcePage, ToggleSwitch } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
 
 const javascript = {
   program: `console.log("KILL")`,
@@ -72,10 +74,12 @@ const config: EditorConfig = {
 export default function ScriptingResources({ lang }) {
   const t = useTranslations(lang)
 
+  const { currentLanguage, setCurrentLanguage } = useDataContext()
+
   const [code, setCode] = useState(
-    config.languages[config.defaultLanguage].defaultCode?.[0]
+    config.languages[getLanguageString(currentLanguage)].defaultCode?.[0]
   )
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const [challengeIsToggled, setChallengeIsToggled] = useState(false)
 
   const challengeToggleSwitch = () => {
@@ -84,6 +88,7 @@ export default function ScriptingResources({ lang }) {
 
   const handleSetLanguage = (value) => {
     setLanguage(value)
+    setCurrentLanguage(getLanguageFromString(value))
     setCode(config.languages[value].defaultCode?.[0])
   }
 
