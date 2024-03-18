@@ -73,7 +73,7 @@ export default function Card({
 
   function handleClick() {
     if (!hasherState && step === 0) {
-      const time = 15 * 1000
+      const time = 5750
       displayRandomNumbers(4400, 200, time)
       onButtonClick(true)
       setHasherState(true)
@@ -85,7 +85,7 @@ export default function Card({
     }
 
     if (!hasherState && step === 2) {
-      const time = 10 * 1000
+      const time = 7 * 1000
       onButtonClick(true)
       setHasherState(true)
       setRandomHash(true)
@@ -97,7 +97,7 @@ export default function Card({
     if (powerUp && step === 3) {
       setRandomHash(false)
       const time = 60 * 1000
-      displayRandomNumbers(45000, 3000, time)
+      displayRandomNumbers(44000, 3000, time)
       onButtonClick(true)
       setPowerUp(false)
     }
@@ -122,7 +122,7 @@ export default function Card({
           )}
           onClick={handleClick}
         >
-          10x
+          100x
         </div>
       )}
       {noData && step === 0 && (

@@ -445,7 +445,7 @@ const translations = {
       progress_bar_three: 'Transactions confirmed',
       progress_bar_four: 'Bitcoin earned',
       button_hash: '10x hash power, please',
-      ten_x_hint: 'Tap the 10x button to speed up the hashing!',
+      ten_x_hint: 'Tap the 100x button to speed up the hashing!',
     },
     outro_one: {
       title: 'Outro',
