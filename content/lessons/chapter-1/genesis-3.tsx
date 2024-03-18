@@ -6,6 +6,7 @@ import { CodeExample, LessonInfo, Title, Text, TerminalChallenge } from 'ui'
 
 export const metadata = {
   title: 'chapter_one.genesis_three.title',
+  navigation_title: 'Decode the message',
   key: 'CH1GEN3',
 }
 

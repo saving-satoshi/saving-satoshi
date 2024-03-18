@@ -88,6 +88,8 @@ export default function Tab({
   const challengeCheck =
     currentIndex > index || pnLessonId.split('-')[0] === 'outro' || isCompleted
 
+  console.log(lessons[slug][pnLessonId].metadata.navigation_title)
+
   return (
     <Tooltip
       id={`navbar-tab-tooltip-${index + 1}`}
@@ -115,11 +117,15 @@ export default function Tab({
                   progress,
                   getLessonKey(slug, challenge.lessonId)
                 )
+              const navLessonId =
+                challenge.lessonId.charAt(0) + challenge.lessonId.slice(1)
+              const navTitle =
+                lessons[slug][navLessonId].metadata.navigation_title
               return (
                 <div
                   key={index}
                   className={clsx(
-                    'flex w-full flex-row flex-nowrap hover:bg-black/25',
+                    'flex h-7 flex-row flex-nowrap hover:bg-black/25',
                     {
                       'pointer-events-none bg-black/25 text-white text-opacity-100':
                         challenge.lessonId === pnLessonId,
@@ -134,8 +140,7 @@ export default function Tab({
                     className="flex flex-nowrap py-1"
                   >
                     <span className="pr-1 opacity-50">{index + 1 + '. '}</span>
-                    {challenge.lessonId.charAt(0).toUpperCase() +
-                      challenge.lessonId.slice(1)}
+                    {navTitle}
                     <Icon
                       icon="lock"
                       className={clsx('mx-1 mt-[2px] h-3 w-3 opacity-50', {

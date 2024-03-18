@@ -125,10 +125,6 @@ export default function TabGroup({ isOpen, clicked, params }) {
                     challenge={lesson}
                     params={params}
                     clicked={clicked}
-                    overrideTitle={
-                      lesson.lessonId.charAt(0).toUpperCase() +
-                      lesson.lessonId.slice(1)
-                    }
                   />
                 </div>
               ))}

@@ -10,20 +10,18 @@ import { useProgressContext } from 'contexts/ProgressContext'
 import useLessonStatus from 'hooks/useLessonStatus'
 import Icon from 'shared/Icon'
 
-import { chapters } from 'content'
+import { chapters, lessons } from 'content'
 
 export default function Tab({
   index,
   params,
   challenge,
   clicked,
-  overrideTitle,
 }: {
   index: number
   params: any
   challenge: { lessonId: string; title: string }
   clicked: any
-  overrideTitle?: string
 }) {
   const { slug } = params
 
@@ -59,6 +57,9 @@ export default function Tab({
       ? chapters[slug].metadata.intros[0]
       : challenge.lessonId
   const href = `${routes.chaptersUrl}/${slug}/${lessonHref}`
+  const navTitle = t(
+    lessons[slug][challenge.lessonId].metadata.navigation_title
+  )
 
   return (
     <Link
@@ -74,10 +75,7 @@ export default function Tab({
         }
       )}
     >
-      {index + 1}.{' '}
-      <span className="ml-1 text-white">
-        {overrideTitle ? overrideTitle : t(challenge.title)}
-      </span>
+      {index + 1}. <span className="ml-1 text-white">{navTitle}</span>
       {!isUnlocked && (
         <Icon
           icon="lock"

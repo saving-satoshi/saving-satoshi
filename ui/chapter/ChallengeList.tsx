@@ -15,15 +15,15 @@ export default function ChallengeList({
   const t = useTranslations(lang)
 
   const introsData = intros.map((introId: string) => {
-    const { title } = lessons[chapterId][introId].metadata
+    const { title, navigation_title } = lessons[chapterId][introId].metadata
 
-    return { introId, title }
+    return { introId, title, navigation_title }
   })
 
   const lessonsData = lessonStrings.map((lessonId: string) => {
-    const { title } = lessons[chapterId][lessonId].metadata
+    const { title, navigation_title } = lessons[chapterId][lessonId].metadata
 
-    return { lessonId, title }
+    return { lessonId, title, navigation_title }
   })
 
   let groupedLessonData = {}
@@ -40,9 +40,9 @@ export default function ChallengeList({
   })
 
   const outrosData = outros.map((outroId: string) => {
-    const { title } = lessons[chapterId][outroId].metadata
+    const { title, navigation_title } = lessons[chapterId][outroId].metadata
 
-    return { outroId, title }
+    return { outroId, title, navigation_title }
   })
 
   const challengesData = challenges.map((lessonId: string) => {
@@ -60,7 +60,7 @@ export default function ChallengeList({
             <ChallengeListItem
               key={index + 1}
               position={index + 1}
-              title={intro.title}
+              title={intro.navigation_title}
               chapterId={chapterId}
               lessonId={intro.introId}
             />
@@ -75,10 +75,7 @@ export default function ChallengeList({
                   <ChallengeListItem
                     key={index + 1}
                     position={index + 1}
-                    title={
-                      lesson.lessonId.charAt(0).toUpperCase() +
-                      lesson.lessonId.slice(1)
-                    }
+                    title={lesson.navigation_title}
                     chapterId={chapterId}
                     lessonId={lesson.lessonId}
                   />
@@ -91,7 +88,7 @@ export default function ChallengeList({
             <ChallengeListItem
               key={index + 1}
               position={index + 1}
-              title={outro.title}
+              title={outro.navigation_title}
               chapterId={chapterId}
               lessonId={outro.outroId}
             />
