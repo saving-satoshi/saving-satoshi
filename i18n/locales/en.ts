@@ -1663,12 +1663,14 @@ const translations = {
     prompt: 'Enter your private key',
     confirm: 'Sign in',
     create_account: 'Don’t have an account?',
+    login: 'Log in',
   },
 
   modal_logout: {
     heading: 'You are logged in',
     paragraph_one:
       'Your session will remain active until you sign out using the button below.',
+    private_key: 'Your private key',
     signout: 'Sign out',
   },
 
@@ -1677,7 +1679,7 @@ const translations = {
     paragraph_one:
       'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.',
     subheading_one: 'Choose an avatar',
-    subheading_two: 'Back up your personal code',
+    subheading_two: 'Back up your private key',
     generate:
       'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
     confirm: 'Done',

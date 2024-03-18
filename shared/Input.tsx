@@ -34,7 +34,7 @@ export default function Input({
       disabled={disabled}
       className={clsx(
         className,
-        'h-12 w-full rounded-md border-2 border-dotted border-white bg-transparent px-3 font-space-mono text-base text-white outline-none',
+        'h-12 w-full rounded-md border-2 border-dotted border-white/25 bg-transparent px-3 font-space-mono text-base text-white outline-none',
         'disabled:border-opacity-50 disabled:text-opacity-50'
       )}
     />
