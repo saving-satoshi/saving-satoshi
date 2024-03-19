@@ -88,8 +88,6 @@ export default function Tab({
   const challengeCheck =
     currentIndex > index || pnLessonId.split('-')[0] === 'outro' || isCompleted
 
-  console.log(lessons[slug][pnLessonId].metadata.navigation_title)
-
   return (
     <Tooltip
       id={`navbar-tab-tooltip-${index + 1}`}
