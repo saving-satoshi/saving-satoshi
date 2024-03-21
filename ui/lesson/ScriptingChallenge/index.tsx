@@ -84,7 +84,6 @@ export default function ScriptingChallenge({
     config.languages[getLanguageString(currentLanguage)].hiddenRange
   )
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
-  console.log(language)
   const [challengeSuccess, setChallengeSuccess] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [errors, setErrors] = useState<string[]>([])
@@ -145,7 +144,8 @@ export default function ScriptingChallenge({
             0,
             data.code!.getDecoded().indexOf('# BEGIN VALIDATION BLOCK') - 1
           )
-          .replaceAll(/#.*\n\s*/g, '')
+          .replace(/\n\s*#.*\n?/g, '\n')
+          .replace(/(.+?)\s*#.*/g, '$1')
       } else {
         trimmedCode = trimLastTwoLines(data.code!.getDecoded())
       }
@@ -159,7 +159,8 @@ export default function ScriptingChallenge({
             0,
             data.code!.getDecoded().indexOf('//BEGIN VALIDATION BLOCK') - 1
           )
-          .replaceAll(/\s*\/\/.*(?:\n|$)/g, '\n')
+          .replace(/\s*\/\/.*(?:\n|$)/g, '\n')
+          .replace(/\/\*[\s\S]*?\*\//g, '\n')
       } else {
         trimmedCode = trimLastTwoLines(data.code!.getDecoded())
       }
