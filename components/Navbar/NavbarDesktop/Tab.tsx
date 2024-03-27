@@ -20,13 +20,13 @@ import useLessonStatus from 'hooks/useLessonStatus'
 
 export default function Tab({
   index,
-  count,
+  part = 'challenge',
   params,
   challenge,
   challengeLessons,
 }: {
   index: number
-  count: number
+  part?: 'intro' | 'challenge' | 'outro'
   params: any
   challenge: { lessonId: string; title: string }
   challengeLessons: any
@@ -65,28 +65,21 @@ export default function Tab({
     return null
   }
 
-  const challengeId = pnLessonId
-    .substring(0, pnLessonId.length - 2)
-    .replace(
-      'intro',
-      chapters[slug].metadata.challenges[0].substring(
-        0,
-        chapters[slug].metadata.challenges[0].length - 2
-      )
-    )
+  const challengeId = pnLessonId.substring(0, pnLessonId.length - 2)
 
   const isActive =
     challenge.lessonId.substring(0, challenge.lessonId.length - 2) ===
     challengeId
-  const isLast = index === count - 1
 
   const currentIndex = chapters[slug].metadata.challenges.indexOf(
     challengeId + '-1'
   )
   const challengeLock =
     currentIndex < index && !isCompleted && pnLessonId.split('-')[0] !== 'outro'
-  const challengeCheck =
-    currentIndex > index || pnLessonId.split('-')[0] === 'outro' || isCompleted
+
+  const groupCompleted = challengeLessons.every((challenge) =>
+    isLessonCompleted(progress, getLessonKey(slug, challenge.lessonId))
+  )
 
   return (
     <Tooltip
@@ -161,18 +154,20 @@ export default function Tab({
     >
       <span
         className={clsx(
-          'relative flex h-full w-[70px] items-center justify-center border-l border-white/25 text-center font-nunito text-lg font-bold transition duration-100 ease-in-out',
+          'relative flex h-full items-center justify-center border-l border-white/25 text-center font-nunito text-lg font-bold transition duration-100 ease-in-out',
           {
             'text-white text-opacity-50': !isActive,
             'hover:bg-black/25 hover:text-white hover:text-opacity-100':
               isUnlocked && !isActive,
             'bg-black/25 text-opacity-100': isActive,
-            'border-r': isLast,
+            'border-r': part === 'outro',
             'pointer-events-none': !isUnlocked,
+            'w-[70px]': part === 'challenge',
+            'w-[45px]': part !== 'challenge',
           }
         )}
       >
-        {index + 1}
+        {(part === 'challenge' && index + 1) || (part !== 'challenge' && '>')}
         {challengeLock && (
           <Icon
             icon="lock"
@@ -181,16 +176,24 @@ export default function Tab({
               {
                 hidden:
                   !isLoading &&
-                  keys.indexOf(progress) >
+                  keys.indexOf(progress) >=
                     keys.indexOf(getLessonKey(slug, challenge.lessonId)),
               }
             )}
           />
         )}
-        {challengeCheck && (
+        {groupCompleted && (
           <Icon
             icon="check"
-            className="absolute right-[5px] top-[5px] h-[20px] w-[20px]"
+            className={clsx(
+              'absolute right-[5px] top-[5px] h-[20px] w-[20px]',
+              {
+                hidden:
+                  !isLoading &&
+                  keys.indexOf(progress) <
+                    keys.indexOf(getLessonKey(slug, challenge.lessonId)),
+              }
+            )}
           />
         )}
       </span>

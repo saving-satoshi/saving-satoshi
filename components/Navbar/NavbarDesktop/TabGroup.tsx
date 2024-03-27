@@ -1,10 +1,7 @@
 import Tab from './Tab'
 import { chapters, lessons } from 'content'
-import { useLang, useTranslations } from 'hooks'
 
 export default function TabGroup({ params }) {
-  const lang = useLang()
-  const t = useTranslations(lang)
   const { slug } = params
 
   const chapter = chapters[slug]
@@ -13,7 +10,19 @@ export default function TabGroup({ params }) {
     return null
   }
 
+  const introsData = chapter.metadata.intros.map((lessonId: string) => {
+    const { title } = lessons[slug][lessonId].metadata
+
+    return { lessonId, title }
+  })
+
   const lessonsData = chapter.metadata.lessons.map((lessonId: string) => {
+    const { title } = lessons[slug][lessonId].metadata
+
+    return { lessonId, title }
+  })
+
+  const outrosData = chapter.metadata.outros.map((lessonId: string) => {
     const { title } = lessons[slug][lessonId].metadata
 
     return { lessonId, title }
@@ -32,7 +41,7 @@ export default function TabGroup({ params }) {
     groupedLessonData[key].push(value)
   })
 
-  const challenges = chapter.metadata.challenges.map((lessonId) => {
+  const challenges = chapter.metadata.challenges.map((lessonId: string) => {
     const { title } = lessons[slug][lessonId].metadata
 
     return { lessonId, title }
@@ -40,16 +49,31 @@ export default function TabGroup({ params }) {
 
   return (
     <div className="flex-l flex h-full items-stretch">
-      {challenges.map((challenge, index) => (
+      <Tab
+        key={0}
+        part="intro"
+        index={-1}
+        challenge={introsData[0]}
+        params={params}
+        challengeLessons={introsData}
+      />
+      {challenges.map((challenge, index: number) => (
         <Tab
           key={index}
-          count={challenges.length}
           index={index}
           challenge={challenge}
           params={params}
           challengeLessons={groupedLessonData[challenge.lessonId.split('-')[0]]}
         />
       ))}
+      <Tab
+        key={4}
+        part="outro"
+        index={2}
+        challenge={outrosData[0]}
+        params={params}
+        challengeLessons={outrosData}
+      />
     </div>
   )
 }
