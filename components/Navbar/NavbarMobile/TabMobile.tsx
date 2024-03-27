@@ -10,17 +10,15 @@ import { useProgressContext } from 'contexts/ProgressContext'
 import useLessonStatus from 'hooks/useLessonStatus'
 import Icon from 'shared/Icon'
 
-import { chapters } from 'content'
+import { chapters, lessons } from 'content'
 
 export default function Tab({
   index,
-  count,
   params,
   challenge,
   clicked,
 }: {
   index: number
-  count: number
   params: any
   challenge: { lessonId: string; title: string }
   clicked: any
@@ -37,7 +35,7 @@ export default function Tab({
         : challenge.lessonId
     )
   )
-  const { isCompleted } = useLessonStatus(
+  const { isPageCompleted } = useLessonStatus(
     progress,
     getLessonKey(slug, challenge.lessonId)
   )
@@ -48,25 +46,20 @@ export default function Tab({
   const pathName = usePathname() || ''
 
   const pathData = pathName.split('/').filter((p) => p)
-  const isRouteLesson = pathData.length === 4
 
   const pnLessonId = pathData.pop()
   if (!pnLessonId) {
     return null
   }
 
-  const challengeId = isRouteLesson
-    ? pnLessonId
-        .split('-')[0]
-        .replace('intro', chapters[slug].metadata.challenges[0].split('-')[0])
-    : undefined
-  const isActive = challenge.lessonId.split('-')[0] === challengeId
-  const isLast = index === count - 1
   const lessonHref =
     challenge.lessonId === chapters[slug].metadata.challenges[0]
       ? chapters[slug].metadata.intros[0]
       : challenge.lessonId
   const href = `${routes.chaptersUrl}/${slug}/${lessonHref}`
+  const navTitle = t(
+    lessons[slug][challenge.lessonId].metadata.navigation_title
+  )
 
   return (
     <Link
@@ -74,25 +67,22 @@ export default function Tab({
       title={t(challenge.title)}
       onClick={() => clicked()}
       className={clsx(
-        'justify-left flex items-center border-t border-white/25 py-2.5 text-center text-[21px] text-white/50 transition duration-100 ease-in-out',
+        'justify-left flex items-center border-t border-white/25 px-[15px] py-[11px] text-center text-[21px] text-white/50 transition duration-100 ease-in-out',
         {
-          'text-white text-opacity-50': !isActive,
-          'hover:bg-black/25 hover:text-white hover:text-opacity-100':
-            isUnlocked && !isActive,
-          'bg-black/25 text-opacity-100': isActive,
-          'border-b': isLast,
-          'pointer-events-none': !isUnlocked,
+          'border-t border-white/25': true,
+          'bg-black/15': isUnlocked && !isPageCompleted,
+          'hover:bg-black/20': isUnlocked,
         }
       )}
     >
-      {index + 1}. <span className="ml-1 text-white">{t(challenge.title)}</span>
+      {index + 1}. <span className="ml-1 text-white">{navTitle}</span>
       {!isUnlocked && (
         <Icon
           icon="lock"
           className="absolute right-[15px] -mr-2 h-3 w-3 opacity-50"
         />
       )}
-      {isCompleted && (
+      {isPageCompleted && (
         <Icon icon="check" className="absolute right-[5px] h-5 w-5" />
       )}
     </Link>

@@ -16,6 +16,7 @@ function Tooltip({
   href,
   theme,
   offset = 12,
+  disabled,
   visibleOverride,
 }: {
   children: React.ReactNode
@@ -28,6 +29,7 @@ function Tooltip({
   href?: string
   offset?: number
   theme?: string
+  disabled?: boolean
   visibleOverride?: boolean
 }) {
   const targetRef = useRef<HTMLSpanElement>(null)
@@ -41,7 +43,7 @@ function Tooltip({
   const handleMouseEnter = () => {
     updatePosition()
     updateZIndex()
-    setVisible(true)
+    !disabled && setVisible(true)
   }
 
   const handleMouseMove = (e) => {

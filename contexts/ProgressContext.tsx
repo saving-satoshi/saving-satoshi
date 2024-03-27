@@ -27,7 +27,10 @@ export default function ProgressProvider({
 }) {
   const { account } = useAuthContext()
   const [accountProgress, setAccountProgress] = useState<string>(
-    defaultProgressContext.progress
+    (typeof localStorage !== 'undefined' &&
+      localStorage !== null &&
+      localStorage?.getItem('SavingSatoshiProgress')) ||
+      defaultProgressContext.progress
   )
   const [isLoading, setIsLoading] = useState(true)
 
@@ -35,10 +38,12 @@ export default function ProgressProvider({
     try {
       setIsLoading(true)
       let progress = await getProgress()
-      if (progress === keys[0]) {
+      if (progress !== keys[0]) {
         progress = await getProgressLocal()
       }
-      setAccountProgress(progress)
+      if (progress !== keys[0]) {
+        setAccountProgress(progress)
+      }
     } catch (ex) {
       console.error(ex)
     } finally {
@@ -50,7 +55,9 @@ export default function ProgressProvider({
     try {
       setIsLoading(true)
       const progress = await getProgressLocal()
-      setAccountProgress(progress)
+      if (progress !== keys[0]) {
+        setAccountProgress(progress)
+      }
     } catch (ex) {
       console.error(ex)
     } finally {

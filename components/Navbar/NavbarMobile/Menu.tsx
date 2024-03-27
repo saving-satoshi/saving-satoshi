@@ -12,7 +12,7 @@ export default function Menu(props) {
   return (
     <div
       id="lesson-navigation-menu"
-      className={clsx('absolute z-20 w-full duration-[400ms]', theme, {
+      className={clsx('absolute z-10 w-full duration-[400ms]', theme, {
         'h-full': props.isOpen,
         'h-0 delay-200': !props.isOpen,
       })}

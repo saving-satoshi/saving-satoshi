@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import Link from 'next/link'
-import { lessons, chapters } from 'content'
+import { lessons } from 'content'
 
 import Icon from 'shared/Icon'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
@@ -18,20 +18,13 @@ export default function ChallengeItem({
   const t = useTranslations(lang)
   const { progress } = useProgressContext()
 
-  const lessonMetaUnlocked =
-    lessonId === chapters[chapterId].metadata['challenges'][0]
-      ? lessons[chapterId]['intro-1'].metadata
-      : lessons[chapterId][lessonId].metadata
+  const lessonMetaUnlocked = lessons[chapterId][lessonId].metadata
 
   const lessonMetaCompleted = lessons[chapterId][lessonId].metadata
   const { isUnlocked } = useLessonStatus(progress, lessonMetaUnlocked.key)
-  const { isCompleted } = useLessonStatus(progress, lessonMetaCompleted.key)
+  const { isPageCompleted } = useLessonStatus(progress, lessonMetaCompleted.key)
 
-  const lessonHref =
-    lessonId === chapters[chapterId].metadata['challenges'][0]
-      ? 'intro-1'
-      : lessonId
-  const href = `${routes.chaptersUrl}/${chapterId}/${lessonHref}`
+  const href = `${routes.chaptersUrl}/${chapterId}/${lessonId}`
   const ComponentType = isUnlocked ? Link : 'div'
 
   return (
@@ -40,8 +33,8 @@ export default function ChallengeItem({
       className={clsx(
         'justify-left relative flex w-full px-[15px] py-[11px] font-cbrush text-xl transition duration-150 ease-in-out',
         {
-          'border-t border-white/25': position !== 1,
-          'bg-black/15': isUnlocked && !isCompleted,
+          'border-t border-white/25': true,
+          'bg-black/15': isUnlocked && !isPageCompleted,
           'hover:bg-black/20': isUnlocked,
         }
       )}
@@ -54,7 +47,7 @@ export default function ChallengeItem({
           className="absolute right-[15px] top-1/2 h-3 w-3 -translate-y-1/2 opacity-25"
         />
       )}
-      {isCompleted && (
+      {isPageCompleted && (
         <Icon
           icon="check"
           className="absolute right-[15px] top-1/2 h-[20px] w-[20px] -translate-y-1/2"

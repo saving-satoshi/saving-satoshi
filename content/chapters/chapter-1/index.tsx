@@ -28,6 +28,6 @@ export const metadata = {
     'transacting-2',
     'transacting-3',
   ],
-  outros: ['outro-1, outro-2'],
+  outros: ['outro-1', 'outro-2'],
   challenges: ['genesis-1', 'transacting-1'],
 }
