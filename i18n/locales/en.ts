@@ -1612,7 +1612,8 @@ const translations = {
   },
 
   chapter_eight: {
-    title: 'A matter of sustainability',
+    title: 'Twenty-one Million',
+    paragraph_one: '',
   },
 
   chapter_nine: {
