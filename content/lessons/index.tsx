@@ -5,6 +5,7 @@ import Chapter4 from './chapter-4'
 import Chapter5 from './chapter-5'
 import Chapter6 from './chapter-6'
 import Chapter7 from './chapter-7'
+import Chapter8 from './chapter-8'
 
 export const lessons = {
   'chapter-1': Chapter1,
@@ -14,4 +15,5 @@ export const lessons = {
   'chapter-5': Chapter5,
   'chapter-6': Chapter6,
   'chapter-7': Chapter7,
+  'chapter-8': Chapter8,
 }
