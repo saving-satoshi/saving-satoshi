@@ -1042,7 +1042,8 @@ const translations = {
         "Lets put everything together necessary to the program and see if Vanderpoole's signature really came from the private key associated with satoshi's public key! Populate the parameters to required to run the verify() function with the code provided.",
       paragraph_two:
         'Then we can run the program to see if Vanderpoole was lying. Drumroll please...',
-      success: 'Signature is not valid',
+      success:
+        "The false here indicates that the signature is not valid and this message was not signed with satohi's public key.",
     },
     validate_signature_four: {
       title: 'Validate the signature',
@@ -1054,7 +1055,7 @@ const translations = {
       paragraph_three:
         "Let's see if you can verify Vanderpoole's message and signature using one of THESE keys?",
       success:
-        'The signature is valid for this public key Vanderpoole used this public key, this was not satoshi!',
+        "The signature is valid for this public key of Vanderpoole's, this was not satoshi!",
     },
     outro_one: {
       title: 'Outro',
