@@ -23,8 +23,8 @@ console.log("KILL")
   },
   rangesToCollapse: [
     {
-      start: 23,
-      end: 88,
+      start: 90,
+      end: 95,
     },
   ],
   defaultCode: `const { Hash } = require('crypto')
@@ -146,8 +146,8 @@ print("KILL")
   },
   rangesToCollapse: [
     {
-      start: 19,
-      end: 69,
+      start: 68,
+      end: 73,
     },
   ],
   defaultCode: `import base64
