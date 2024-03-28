@@ -1043,7 +1043,7 @@ const translations = {
       paragraph_two:
         'Then we can run the program to see if Vanderpoole was lying. Drumroll please...',
       success:
-        "The false here indicates that the signature is not valid and this message was not signed with satohi's public key.",
+        "The false here proves that this message was not signed with satohi's public key.",
     },
     validate_signature_four: {
       title: 'Validate the signature',
