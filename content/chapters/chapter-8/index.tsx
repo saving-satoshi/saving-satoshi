@@ -29,5 +29,5 @@ export const metadata = {
     'building-blocks-8',
   ],
   outros: ['outro-1'],
-  challenges: ['building-blocks-3'],
+  challenges: ['building-blocks-1'],
 }
