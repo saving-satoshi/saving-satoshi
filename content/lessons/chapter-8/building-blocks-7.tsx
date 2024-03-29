@@ -14,7 +14,7 @@ export const metadata = {
   key: 'CH8BBK7',
 }
 
-export default function BuildingBlocks1({ lang }) {
+export default function BuildingBlocks7({ lang }) {
   const proceed = useProceed()
   const t = useTranslations(lang)
 
