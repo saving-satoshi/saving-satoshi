@@ -42,7 +42,7 @@ const sig_r_fe = 0x8bd06d50f4a4b2bba64ccfb68f011e8babcec06b1cc07741fe686159abef8
 const sig_s_fe = 0x3f0754da6e85699666c61e12707c45a037a5142f6a1b43e7014979a8c16d87c9n
 
 // Public key values
-// Remeber they need to be of the format new GE(new FE(x.hex()), new FE(y.hex())) to be read by verify()
+// Remember they need to be of the format new GE(new FE(x.hex()), new FE(y.hex())) to be read by verify()
 const keys = [
   "04bbb554daf8811b95c8af5272fa8b4e2d6335bf19fff24d3187b8781497299aa4d27c900c367e4e506d671a4ea3aa50843f182a090d701f3bc8e6578d2455d81e",
   "04cc679cd88b28444049aa9db8f88864ace38f79ba6310d0d3f027c9462a9f420befaaf888ce372cbf6f0ece99e5ada86436c960c1c0840a588ea7dbd78187445d",
@@ -155,7 +155,7 @@ sig_r = 0x8bd06d50f4a4b2bba64ccfb68f011e8babcec06b1cc07741fe686159abef8d69
 sig_s = 0x3f0754da6e85699666c61e12707c45a037a5142f6a1b43e7014979a8c16d87c9
 
 # Public key values
-# Remeber they need to be of the format new GE(new FE(x.hex()), new FE(y.hex())) to be read by verify()
+# Remember they need to be of the format new GE(new FE(x.hex()), new FE(y.hex())) to be read by verify()
 keys = [
     "04bbb554daf8811b95c8af5272fa8b4e2d6335bf19fff24d3187b8781497299aa4d27c900c367e4e506d671a4ea3aa50843f182a090d701f3bc8e6578d2455d81e",
     "04cc679cd88b28444049aa9db8f88864ace38f79ba6310d0d3f027c9462a9f420befaaf888ce372cbf6f0ece99e5ada86436c960c1c0840a588ea7dbd78187445d",
