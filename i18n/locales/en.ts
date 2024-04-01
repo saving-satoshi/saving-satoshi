@@ -1758,6 +1758,8 @@ const translations = {
     solution_ten: 'Solution to part ten of this challenge',
     feedback:
       'Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
+    help_suggestion:
+      'If you\'re ever stuck, press the "?" button in the top-right corner. It provides helpful resources and tips.',
   },
 }
 export default translations
