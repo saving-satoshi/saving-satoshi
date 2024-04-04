@@ -7,6 +7,7 @@ import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { useAuthContext } from 'contexts/AuthContext'
+import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
 import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
 
@@ -110,12 +111,18 @@ class Input {
 
   static from_output(txid, vout, value, scriptcode) {
     const self = new this();
-    // YOUR CODE HERE
+    self.outpoint = new Outpoint(Buffer.from(txid.replace('0x', ''),  'hex').reverse(), vout);
+    self.value = value;
+    self.scriptcode = Buffer.from(scriptcode.replace('0x', ''), 'hex');
     return self;
   }
 
   serialize() {
-    // YOUR CODE HERE
+    const buf = Buffer.alloc(32 + 4 + 1 + 4);
+    this.outpoint.serialize().copy(buf, 0);
+    buf.writeUInt8(this.script.length, 36);
+    buf.writeUInt32LE(this.sequence, 37);
+    return buf;
   }
 }
 `,
@@ -178,11 +185,17 @@ class Input:
     @classmethod
     def from_output(cls, txid: str, vout: int, value: int, scriptcode: bytes):
         self = cls()
-        # YOUR CODE HERE
+        self.outpoint = Outpoint(bytes.fromhex(txid)[::-1], vout)
+        self.value = value
+        self.scriptcode = bytes.fromhex(scriptcode)
         return self
 
     def serialize(self):
-        # YOUR CODE HERE
+        r = b""
+        r += self.outpoint.serialize()
+        r += pack("<B", len(self.script))
+        r += pack("<I", self.sequence)
+        return r
 `,
     validate: async (answer) => {
       if (answer) {
@@ -223,7 +236,7 @@ class Input:
       lessonKey={getLessonKey('chapter-6', 'in-out-4')}
       successMessage={t('chapter_six.in_out_four.success')}
       onSelectLanguage={handleSelectLanguage}
-      saveData
+      editorOptions={readOnlyOptions}
     >
       <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
         <Title>{t('chapter_six.in_out_four.heading')}</Title>

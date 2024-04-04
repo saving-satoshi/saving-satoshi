@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import HelpSuggestion from 'components/HelpSuggestion'
 import { LessonDirection, LessonView } from 'types'
 import { useLessonContext } from 'ui'
 
@@ -23,7 +22,6 @@ export default function LessonInfo({
           )}
         >
           {children}
-          <HelpSuggestion />
         </div>
       </div>
     )
@@ -41,7 +39,6 @@ export default function LessonInfo({
       )}
     >
       {children}
-      <HelpSuggestion />
     </div>
   )
 }

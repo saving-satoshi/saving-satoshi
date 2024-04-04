@@ -1,6 +1,6 @@
 'use client'
 
-import * as crypto from 'crypto'
+import HelpSuggestion from 'components/HelpSuggestion'
 import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
@@ -154,6 +154,7 @@ export default function Scripting2({ lang }) {
             {t(`chapter_two.scripting_two.${language}.list_two`)}
           </li>
         </ul>
+        <HelpSuggestion />
       </LessonInfo>
     </ScriptingChallenge>
   )
