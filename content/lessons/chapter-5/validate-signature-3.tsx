@@ -87,12 +87,6 @@ function verify(sig_r, sig_s, key, msg) {
     // NO VALIDATION REQUIRED - THIS ISN'T EDITABLE BY THE USER
     return [true, 'The signature is invalid']
   },
-  constraints: [
-    {
-      range: [1, 1, 1, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const python = {
@@ -150,12 +144,6 @@ def verify(r, s, key, msg):
     // NO VALIDATION REQUIRED - THIS ISN'T EDITABLE BY THE USER
     return [true, 'The signature is invalid']
   },
-  constraints: [
-    {
-      range: [1, 1, 1, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const config: EditorConfig = {

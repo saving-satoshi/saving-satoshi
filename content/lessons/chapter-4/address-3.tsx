@@ -81,12 +81,6 @@ function hashToAddress(hash) {
 
       return [true, undefined]
     },
-    constraints: [
-      {
-        range: [1, 1, 11, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -131,12 +125,6 @@ def hash_to_address(hash):
 
       return [true, undefined]
     },
-    constraints: [
-      {
-        range: [1, 1, 9, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {

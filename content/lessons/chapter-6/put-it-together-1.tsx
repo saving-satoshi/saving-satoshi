@@ -173,12 +173,6 @@ class Transaction {
       }
       return [false, 'Please return a value']
     },
-    constraints: [
-      {
-        range: [1, 1, 18, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -309,12 +303,6 @@ class Transaction:
       }
       return [false, 'Return a value']
     },
-    constraints: [
-      {
-        range: [1, 1, 16, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {

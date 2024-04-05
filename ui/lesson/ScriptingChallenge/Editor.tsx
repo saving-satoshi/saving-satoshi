@@ -29,7 +29,7 @@ export default function Editor({
   onChange?: (value: string) => void
   onValidate?: (value: monaco.editor.IMarker[]) => void
   options?: any
-  constraints: any
+  constraints?: any
   hiddenRange?: number[]
   loadingSavedCode?: boolean
   rangesToCollapse?: EditorRange[]
@@ -77,8 +77,10 @@ export default function Editor({
     monacoRef.current = { monaco, editor }
     const model = editor.getModel()
     const constrainedInstance = constrainedEditor(monaco)
-    constrainedInstance.initializeIn(editor)
-    constrainedInstance.addRestrictionsTo(model, constraints)
+    if (typeof constraints !== 'undefined') {
+      constrainedInstance.initializeIn(editor)
+      constrainedInstance.addRestrictionsTo(model, constraints)
+    }
     const actions = editor.getSupportedActions()
     if (rangesToCollapse.length > 0) {
       const foldAction = actions.find((a) => a.id === 'editor.foldAllExcept')
@@ -122,8 +124,10 @@ export default function Editor({
           ),
         ])
       const constrainedInstance = constrainedEditor(monaco)
-      constrainedInstance.initializeIn(editor)
-      constrainedInstance.addRestrictionsTo(model, constraints)
+      if (typeof constraints !== 'undefined') {
+        constrainedInstance.initializeIn(editor)
+        constrainedInstance.addRestrictionsTo(model, constraints)
+      }
     }
   }, [language])
 

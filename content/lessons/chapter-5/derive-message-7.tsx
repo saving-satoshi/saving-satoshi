@@ -83,12 +83,6 @@ console.log("KILL")
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 49, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const python = {
@@ -158,12 +152,6 @@ print("KILL")
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 48, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const config: EditorConfig = {

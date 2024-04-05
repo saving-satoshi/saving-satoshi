@@ -160,7 +160,7 @@ console.log(tx.serialize().toString('hex'));`,
         ) {
           return [
             false,
-            "Close! Don't forget to reduce our change from 61,000,000 to 60,999,000",
+            "Close! Don't forget to reduce our change from 61,000,000 to 60,999,000 in order to pay the miners.",
           ]
         }
         return [false, 'Nope! Try again.']
@@ -177,12 +177,6 @@ console.log(tx.serialize().toString('hex'));`,
       }
       return [true, 'Nicely Done']
     },
-    constraints: [
-      {
-        range: [1, 1, countLines(combinedCode) + 72, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -276,7 +270,7 @@ print(tx.serialize().hex())`,
         ) {
           return [
             false,
-            "Close! Don't forget to reduce our change from 61,000,000 to 60,999,000",
+            "Close! Don't forget to reduce our change from 61,000,000 to 60,999,000 in order to pay the miners.",
           ]
         }
         return [false, 'Nope! Try again.']
@@ -293,12 +287,6 @@ print(tx.serialize().hex())`,
       }
       return [true, 'Nicely Done']
     },
-    constraints: [
-      {
-        range: [1, 1, countLines(combinedCode) + 17, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {

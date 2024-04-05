@@ -227,12 +227,6 @@ ${prevData.data.slice(0, -2)}
         return [false, "can't find a return in both of the methods"]
       }
     },
-    constraints: [
-      {
-        range: [1, 1, countLines(prevData.data.slice(0, -2)) + 76, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -389,12 +383,6 @@ ${prevData.data}
         return [false, "can't find a return in both of the methods"]
       }
     },
-    constraints: [
-      {
-        range: [1, 1, countLines(prevData.data) + 15, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {

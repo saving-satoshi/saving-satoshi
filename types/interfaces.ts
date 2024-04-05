@@ -20,7 +20,7 @@ export interface EditorLanguages {
     defaultCode?: string | string[]
     defaultFunction: EditorFunction
     validate: (answer: any) => Promise<any[]>
-    constraints: any
+    constraints?: any
     hiddenRange?: number[]
     rangesToCollapse?: EditorRange[]
   }

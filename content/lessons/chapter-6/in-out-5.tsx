@@ -121,12 +121,6 @@ class Output {
         return [false, "can't find a return in both of the methods"]
       }
     },
-    constraints: [
-      {
-        range: [1, 1, 25, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -174,12 +168,6 @@ class Output:
         return [false, "can't find a return in both of the methods"]
       }
     },
-    constraints: [
-      {
-        range: [1, 1, 22, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {

@@ -69,12 +69,6 @@ function privateKeyToPublicKey(privateKey) {
         return [false, 'Try logging out your answer']
       }
     },
-    constraints: [
-      {
-        range: [1, 1, 13, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -119,12 +113,6 @@ def privatekey_to_publickey(private_key):
         return [false, 'Try logging out your answer']
       }
     },
-    constraints: [
-      {
-        range: [1, 1, 11, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {

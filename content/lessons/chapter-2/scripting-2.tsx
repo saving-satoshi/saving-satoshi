@@ -54,12 +54,6 @@ function findHash(nonce) {
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 9, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const python = {
@@ -106,12 +100,6 @@ def find_hash(nonce):
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 8, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const config: EditorConfig = {
