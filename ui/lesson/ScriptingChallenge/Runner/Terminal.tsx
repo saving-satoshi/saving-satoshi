@@ -44,6 +44,7 @@ function Terminal({ className }: { className?: string }, ref) {
                   .log {
                     word-break: break-all;
                     color: white;
+                    margin-bottom: 15px;
                   }
                   .output .log:first-child {
                     color:white;

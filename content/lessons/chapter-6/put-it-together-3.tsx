@@ -246,7 +246,7 @@ class Input:
         return r
 ${combinedCode}
 
-    def serialize():
+    def serialize(self):
         # YOUR CODE HERE
 
 tx = Transaction()
