@@ -42,6 +42,7 @@ function Terminal({ className }: { className?: string }, ref) {
                     margin-top: 15px;
                   }
                   .log {
+                    word-break: break-all;
                     color: white;
                   }
                   .output .log:first-child {
