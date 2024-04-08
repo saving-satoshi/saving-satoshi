@@ -1039,18 +1039,23 @@ const translations = {
       title: 'Validate the signature',
       heading: 'So, is Vanderpoole a liar?!',
       paragraph_one:
-        "There isn't much left to do except plug everything in and run the program! Drumroll please...",
-      success: 'Signature is not valid',
+        "Let's gather all the necessary components for the program and verify if Vanderpoole's signature actually originated from the private key linked to Satoshi's public key! Please fill in the missing parameters needed to execute the verify() function using the provided code.",
+      paragraph_two:
+        'Then we can run the program to see if Vanderpoole was lying. Drumroll please...',
+      success:
+        "This message indicates that the signature did not originate from Satoshi's public key, as the verification failed.",
     },
     validate_signature_four: {
       title: 'Validate the signature',
       heading: 'How did Vanderpoole even create that signature?',
       paragraph_one:
-        'Holocat chimes in and says a defector in BitRey has sent us the actual address he used, which is definitely not the satoshi address!',
-      paragraph_two: 'with corresponding public key:',
+        'Holocat chimes in and says a defector in BitRey has sent us a list of public keys Vanderpoole commonly uses, maybe he used one of these keys to sign the message.',
+      paragraph_two:
+        'Please provide the key that successfully completes the verification process, allowing us to identify the public key Vanderpoole used to sign this message.',
       paragraph_three:
-        "Can you verify Vanderpoole's message and signature using THIS key?",
-      success: 'The signature is valid!',
+        "Let's see if you can verify Vanderpoole's message and signature using one of THESE keys?",
+      success:
+        "The signature is valid for this public key of Vanderpoole's, this was not satoshi!",
     },
     outro_one: {
       title: 'Outro',
