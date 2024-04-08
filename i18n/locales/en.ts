@@ -1613,7 +1613,20 @@ const translations = {
 
   chapter_eight: {
     title: 'Twenty-one Million',
-    paragraph_one: '',
+    intro_one: {
+      title: 'Intro',
+      paragraph_one: `—DEBORAH CHUNK: “These documents expose the alleged lies of Thomas Vanderpoole in a way that is certainly historic. It’s all very scandalous. The first thing people will want to know is whether you acted alone. The second is where you got your information.”`,
+      paragraph_two: ` —You tell her about holocat and holocat only. You lie and say that the information was delivered directly to you and Mike Ramen by someone claiming to be Satoshi Nakamoto, who you suspect is actually a hacker collective. This last point causes Thomas Vanderpoole to call directly into the show while you’re still on it.`,
+    },
+    intro_two: {
+      title: `Intro`,
+      paragraph_one: `—THOMAS VANDERPOOLE: “My family is Satoshi Nakamoto! Do you see what this hootenanny just said? They just admitted to being hackers, working for a collective that only uses the name Satoshi Nakamoto to claim a legacy that is rightfully mine. This scoundrel forged those photos to undermine the protests of bitcoiners who are rightfully upset about the elimination of block rewards!”`,
+      paragraph_two: `—Thomas Vanderpoole continues to throw two century-old insults at you. He calls you a varmint, a rapscallion, a yellow belly, a greenhorn, and more. You almost feel bad for him. His family was undeniably important to Bitcoin’s history, even if their claims about Satoshi Nakamoto are transparently fake.`,
+    },
+    intro_three: {
+      intro: `Intro`,
+      paragraph_one: `—DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Mr. Vanderpoole, can you prove that you did no such thing? Mysterious hacker and his holocat, can you prove Vanderpoole had attempted this crime against Bitcoin?”`,
+    },
   },
 
   chapter_nine: {
