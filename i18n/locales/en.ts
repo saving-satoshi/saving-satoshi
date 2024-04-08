@@ -1151,7 +1151,7 @@ const translations = {
     },
     in_out_four: {
       title: 'The ins and outs',
-      heading: 'Finish the implementation of Class Input',
+      heading: 'Looking at the Class Input implementation',
       paragraph_one: 'It should have the following method:',
       paragraph_two:
         'The First two arguments are the transaction ID and the index of the output of that transaction you want to spend from.',

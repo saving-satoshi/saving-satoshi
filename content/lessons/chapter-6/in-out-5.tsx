@@ -16,22 +16,6 @@ export const metadata = {
 
 export default function InOut5({ lang }) {
   const t = useTranslations(lang)
-  const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
-  const [isLoading, setIsLoading] = useState(true)
-
-  const getPrevLessonData = async () => {
-    const data = await getData('CH6INO4')
-    if (data) {
-      setPrevData({
-        lesson_id: 'CH6INO4',
-        data: data?.code?.getDecoded(),
-      })
-    }
-  }
-
-  useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
-  }, [])
 
   const tableHeading = [
     t('chapter_six.in_out_five.table.heading.one'),
@@ -171,47 +155,48 @@ class Output:
   }
 
   const config: EditorConfig = {
-    defaultLanguage:
-      detectLanguage(prevData.data) === Language.JavaScript
-        ? 'javascript'
-        : 'python',
+    defaultLanguage: 'javascript',
     languages: {
       javascript,
       python,
     },
   }
 
-  return (
-    !isLoading && (
-      <ScriptingChallenge
-        lang={lang}
-        config={config}
-        saveData
-        lessonKey={getLessonKey('chapter-6', 'in-out-5')}
-        successMessage={t('chapter_six.in_out_five.success')}
-      >
-        <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
-          <Title>{t('chapter_six.in_out_five.heading')}</Title>
-          <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.in_out_five.paragraph_one')}
-          </Text>
-          <CodeExample
-            className="mt-4 font-space-mono"
-            code={`from_options(addr: str, value: int)`}
-            language="shell"
-          />
-          <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.in_out_five.paragraph_two')}
-          </Text>
+  const [language, setLanguage] = useState('javascript')
+  const handleSelectLanguage = (language: string) => {
+    setLanguage(language)
+  }
 
-          <div className="mt-4">
-            <Title>{t('chapter_six.in_out_five.heading_two')}</Title>
-          </div>
-          <div className="mt-4 flex-col gap-4">
-            <Table headings={tableHeading} rows={outputRows} />
-          </div>
-        </LessonInfo>
-      </ScriptingChallenge>
-    )
+  return (
+    <ScriptingChallenge
+      lang={lang}
+      config={config}
+      saveData
+      lessonKey={getLessonKey('chapter-6', 'in-out-5')}
+      successMessage={t('chapter_six.in_out_five.success')}
+      onSelectLanguage={handleSelectLanguage}
+    >
+      <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+        <Title>{t('chapter_six.in_out_five.heading')}</Title>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_six.in_out_five.paragraph_one')}
+        </Text>
+        <CodeExample
+          className="mt-4 font-space-mono"
+          code={`from_options(addr: str, value: int)`}
+          language="shell"
+        />
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_six.in_out_five.paragraph_two')}
+        </Text>
+
+        <div className="mt-4">
+          <Title>{t('chapter_six.in_out_five.heading_two')}</Title>
+        </div>
+        <div className="mt-4 flex-col gap-4">
+          <Table headings={tableHeading} rows={outputRows} />
+        </div>
+      </LessonInfo>
+    </ScriptingChallenge>
   )
 }

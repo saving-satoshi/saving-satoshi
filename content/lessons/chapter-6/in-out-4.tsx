@@ -1,15 +1,10 @@
 'use client'
 
-import { ScriptingChallenge, LessonInfo, CodeExample, Title, Table } from 'ui'
-import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
-import { Text } from 'ui'
 import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
-import { useAuthContext } from 'contexts/AuthContext'
-import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
-import { useDataContext } from 'contexts/DataContext'
-import { getLanguageString } from 'lib/SavedCode'
+import { PlainEditorConfig } from 'types'
+import { LessonInfo, CodeExample, Title, Table, Text } from 'ui'
+import PlainEditorWrapper from 'ui/lesson/ScriptingChallenge/PlainEditorWrapper'
 
 export const metadata = {
   title: 'chapter_six.in_out_four.title',
@@ -18,7 +13,6 @@ export const metadata = {
 
 export default function InOut4({ lang }) {
   const t = useTranslations(lang)
-  const { currentLanguage } = useDataContext()
   const tableHeading = [
     t('chapter_six.in_out_four.table_one.heading.one'),
     t('chapter_six.in_out_four.table_one.heading.two'),
@@ -66,21 +60,7 @@ export default function InOut4({ lang }) {
     ],
   ]
 
-  const { account } = useAuthContext()
-
   const javascript = {
-    program: `//BEGIN VALIDATION BLOCK
-const txid_foahapoj = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
-const vout_ncapheme = 1;
-const value_payrqpvs = 650000000;
-const scriptcode_haieihsd = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
-const input_mqwaslhd = Input.from_output(txid_foahapoj, vout_ncapheme, value_payrqpvs, scriptcode_haieihsd);
-console.log(input_mqwaslhd.serialize().toString('hex') === '8e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff' && 'true')
-console.log("KILL")`,
-    defaultFunction: {
-      name: 'inputClass',
-      args: ['privateKey'],
-    },
     defaultCode: `const assert = require('assert');
 
 class Outpoint {
@@ -91,7 +71,6 @@ class Outpoint {
     this.txid = txid;
     this.index = index;
   }
-
   serialize() {
     const buf = Buffer.alloc(36);
     this.txid.copy(buf, 0);
@@ -108,7 +87,6 @@ class Input {
     this.value = 0;
     this.scriptcode = Buffer.alloc(0);
   }
-
   static from_output(txid, vout, value, scriptcode) {
     const self = new this();
     self.outpoint = new Outpoint(Buffer.from(txid.replace('0x', ''),  'hex').reverse(), vout);
@@ -116,7 +94,6 @@ class Input {
     self.scriptcode = Buffer.from(scriptcode.replace('0x', ''), 'hex');
     return self;
   }
-
   serialize() {
     const buf = Buffer.alloc(32 + 4 + 1 + 4);
     this.outpoint.serialize().copy(buf, 0);
@@ -126,32 +103,9 @@ class Input {
   }
 }
 `,
-    validate: async (answer: string) => {
-      if (answer) {
-        if (answer === 'true') {
-          return [true, '']
-        } else {
-          return [false, 'recheck your methods']
-        }
-      } else {
-        return [false, "can't find a return in both of the methods"]
-      }
-    },
   }
 
   const python = {
-    program: `# BEGIN VALIDATION BLOCK
-txid_foahapoj = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
-vout_ncapheme = 1
-value_payrqpvs = 650000000
-scriptcode_haieihsd = "1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac"
-input_mqwaslhd = Input.from_output(txid_foahapoj, vout_ncapheme, value_payrqpvs, scriptcode_haieihsd)
-print(input_mqwaslhd.serialize().hex() == '8e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff' and 'true')
-print("KILL")`,
-    defaultFunction: {
-      name: 'input_class',
-      args: ['private_key'],
-    },
     defaultCode: `from struct import pack
 
 class Outpoint:
@@ -161,7 +115,6 @@ class Outpoint:
         assert isinstance(index, int)
         self.txid = txid
         self.index = index
-
     def serialize(self):
         r = b""
         r += self.txid
@@ -175,7 +128,6 @@ class Input:
         self.sequence = 0xffffffff
         self.value = 0
         self.scriptcode = b""
-
     @classmethod
     def from_output(cls, txid: str, vout: int, value: int, scriptcode: bytes):
         self = cls()
@@ -183,7 +135,6 @@ class Input:
         self.value = value
         self.scriptcode = bytes.fromhex(scriptcode)
         return self
-
     def serialize(self):
         r = b""
         r += self.outpoint.serialize()
@@ -191,20 +142,9 @@ class Input:
         r += pack("<I", self.sequence)
         return r
 `,
-    validate: async (answer) => {
-      if (answer) {
-        if (answer === 'true') {
-          return [true, '']
-        } else {
-          return [false, 'recheck your methods']
-        }
-      } else {
-        return [false, "can't find a return in both of the methods"]
-      }
-    },
   }
 
-  const config: EditorConfig = {
+  const config: PlainEditorConfig = {
     defaultLanguage: 'javascript',
     languages: {
       javascript,
@@ -212,19 +152,17 @@ class Input:
     },
   }
 
-  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  const [language, setLanguage] = useState('javascript')
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
 
   return (
-    <ScriptingChallenge
-      lang={lang}
-      config={config}
-      lessonKey={getLessonKey('chapter-6', 'in-out-4')}
-      successMessage={t('chapter_six.in_out_four.success')}
+    <PlainEditorWrapper
+      fixedCode={''}
       onSelectLanguage={handleSelectLanguage}
-      editorOptions={readOnlyOptions}
+      config={config}
+      button
     >
       <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
         <Title>{t('chapter_six.in_out_four.heading')}</Title>
@@ -262,6 +200,6 @@ class Input:
         </div>
         <Table headings={tableHeading} rows={inputRows} />
       </LessonInfo>
-    </ScriptingChallenge>
+    </PlainEditorWrapper>
   )
 }

@@ -7,7 +7,8 @@ import { Text } from 'ui'
 import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
-import { detectLanguage, Language } from 'lib/SavedCode'
+import { detectLanguage, Language, organizeImports } from 'lib/SavedCode'
+import { allLessonsAreLoaded, countLines } from './put-it-together-3'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_four.title',
@@ -18,9 +19,8 @@ export default function PutItTogether2({ lang }) {
   const t = useTranslations(lang)
   const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
   const [isLoading, setIsLoading] = useState(true)
-  function countLines(text: string): number {
-    return text.split(/\r\n|\r|\n/).length
-  }
+  const [combinedCode, setCombinedCode] = useState('')
+
   const getPrevLessonData = async () => {
     const data = await getData('CH6PUT1')
     if (data) {
@@ -34,6 +34,47 @@ export default function PutItTogether2({ lang }) {
   useEffect(() => {
     getPrevLessonData().finally(() => setIsLoading(false))
   }, [])
+
+  const languageWitness =
+    detectLanguage(prevData.data) === Language.JavaScript
+      ? `class Witness {
+  constructor() {
+    this.items = [];
+  }
+
+  push_item(data) {
+    this.items.push(data);
+  }
+
+  serialize() {
+    let buf = Buffer.from([this.items.length]);
+    for (const item of this.items)
+      buf = Buffer.concat([buf, Buffer.from([item.length]), item]);
+    return buf;
+  }
+}`
+      : `class Witness:
+    def __init__(self):
+        self.items = []
+
+    def push_item(self, data):
+        self.items.append(data)
+
+    def serialize(self):
+        r = b""
+        r += pack("<B", len(self.items))
+        for item in self.items:
+            r += pack("<B", len(item))
+            r += item
+        return r`
+
+  useEffect(() => {
+    if (prevData.data) {
+      setCombinedCode(
+        organizeImports('\n' + languageWitness + '\n' + prevData.data)
+      )
+    }
+  }, [prevData.data])
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
@@ -127,8 +168,8 @@ console.log(private_key_faxwmufa.verify(hashed_message_bytes_ahuhfxmw, signature
 console.log("KILL")`,
     rangesToCollapse: [
       {
-        start: countLines(prevData.data) + 55,
-        end: countLines(prevData.data) + 76,
+        start: countLines(combinedCode) + 55,
+        end: countLines(combinedCode) + 76,
       },
     ],
     defaultFunction: {
@@ -137,25 +178,7 @@ console.log("KILL")`,
     },
     defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js');
 const {randomBytes} = require('crypto');
-
-class Witness {
-  constructor() {
-    this.items = [];
-  }
-
-  push_item(data) {
-    this.items.push(data);
-  }
-
-  serialize() {
-    let buf = Buffer.from([this.items.length]);
-    for (const item of this.items)
-      buf = Buffer.concat([buf, Buffer.from([item.length]), item]);
-    return buf;
-  }
-}
-
-${prevData.data.slice(0, -2)}
+${combinedCode}
   compute_input_signature(index, key) {
     assert(typeof key === 'bigint');
     assert(Number.isInteger(index));
@@ -321,8 +344,8 @@ print(verifying_key_dojssdfo.verify_digest(sig_bytes_ayeqncas, hashed_message_by
 print("KILL")`,
     rangesToCollapse: [
       {
-        start: countLines(prevData.data) + 4,
-        end: countLines(prevData.data) + 16,
+        start: countLines(combinedCode) + 4,
+        end: countLines(combinedCode) + 29,
       },
     ],
     defaultFunction: {
@@ -331,22 +354,7 @@ print("KILL")`,
     },
     defaultCode: `from random import randrange
 from secp256k1py import secp256k1
-
-class Witness:
-    def __init__(self):
-        self.items = []
-
-    def push_item(self, data):
-        self.items.append(data)
-
-    def serialize(self):
-        r = b""
-        r += pack("<B", len(self.items))
-        for item in self.items:
-            r += pack("<B", len(item))
-            r += item
-        return r
-${prevData.data}
+${combinedCode}
 
     def compute_input_signature(self, index: int, key: int):
         # k = random integer in [1, n-1]
@@ -387,7 +395,7 @@ ${prevData.data}
 
   const config: EditorConfig = {
     defaultLanguage:
-      detectLanguage(prevData.data) === Language.JavaScript
+      detectLanguage(combinedCode) === Language.JavaScript
         ? 'javascript'
         : 'python',
     languages: {
@@ -397,13 +405,15 @@ ${prevData.data}
   }
 
   return (
-    !isLoading && (
+    !isLoading &&
+    combinedCode && (
       <ScriptingChallenge
         lang={lang}
         config={config}
         saveData
         lessonKey={getLessonKey('chapter-6', 'put-it-together-2')}
         successMessage={t('chapter_six.put_it_together_four.success')}
+        loadingSavedCode={isLoading}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
           <Title>{t('chapter_six.put_it_together_four.heading')}</Title>

@@ -15,11 +15,7 @@ import { Base64String } from 'types/classes'
 import clsx from 'clsx'
 import useDebounce from 'hooks/useDebounce'
 import { useDataContext } from 'contexts/DataContext'
-import {
-  getLanguageFromString,
-  getLanguageString,
-  Language,
-} from 'lib/SavedCode'
+import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
 
 const tabData = [
   {

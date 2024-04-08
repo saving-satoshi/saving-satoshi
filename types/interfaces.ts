@@ -26,9 +26,20 @@ export interface EditorLanguages {
   }
 }
 
+export interface PlainEditorLanguages {
+  [language: string]: {
+    defaultCode?: string | string[]
+  }
+}
+
 export interface EditorConfig {
   defaultLanguage: string
   languages: EditorLanguages
+}
+
+export interface PlainEditorConfig {
+  defaultLanguage: string
+  languages: PlainEditorLanguages
 }
 
 export interface FetchOptions {

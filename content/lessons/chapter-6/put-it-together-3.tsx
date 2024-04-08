@@ -3,12 +3,7 @@
 import { getData } from 'api/data'
 import { useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
-import {
-  detectLanguage,
-  Language,
-  organizeImports,
-  organizeJavaScriptRequires,
-} from 'lib/SavedCode'
+import { detectLanguage, Language, organizeImports } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { EditorConfig } from 'types'
 import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
@@ -21,11 +16,11 @@ export const metadata = {
 
 const lessonsToLoad = ['CH6PUT1', 'CH6PUT2', 'CH6INO5']
 
-const allLessonsAreLoaded = (data) => {
+export const allLessonsAreLoaded = (data) => {
   return lessonsToLoad.every((lesson) => data[lesson])
 }
 
-function countLines(text: string): number {
+export function countLines(text: string): number {
   return text.split(/\r\n|\r|\n/).length
 }
 
@@ -56,28 +51,8 @@ export default function PutItTogether3({ lang }) {
     if (prevData && allLessonsAreLoaded(prevData)) {
       setCombinedCode(
         organizeImports(
-          '\n' + prevData['CH6INO5'] + '\n' + prevData['CH6PUT2'] + '\n'
-        )
-      )
-    }
-  }, [prevData])
-
-  const javascript = {
-    program: `
-console.log("KILL")`,
-    defaultFunction: {
-      name: 'privateKeyToPublicKey',
-      args: ['privateKey'],
-    },
-    rangesToCollapse: [
-      {
-        start: countLines(combinedCode) + 58,
-        end: countLines(combinedCode) + 61,
-      },
-    ],
-    defaultCode: `const assert = require('assert');
-
-// UTXO from chapter 6 step 1 (mining pool payout)
+          (detectLanguage(prevData['CH6PUT2']) === Language.JavaScript
+            ? `// UTXO from chapter 6 step 1 (mining pool payout)
 const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
 const vout = 1;
 const value = 161000000;
@@ -133,7 +108,81 @@ class Input {
     return buf;
   }
 }
-${combinedCode.slice(0, -2)}
+`
+            : `# UTXO from chapter 6 step 1 (mining pool payout)
+txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
+vout = 1
+value = 161000000
+
+# From chapter 4 (we will reuse address for change)
+priv = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503e
+compressed_pub = bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af")
+pubkey_hash = "b234aee5ee74d7615c075b4fe81fd8ace54137f2"
+addr = "bc1qkg62ae0wwntkzhq8td87s87c4nj5zdlj2ga8j7"
+
+# Explained in step 6
+scriptcode = "1976a914" + pubkey_hash + "88ac"
+
+class Outpoint:
+    def __init__(self, txid: bytes, index: int):
+        assert isinstance(txid, bytes)
+        assert len(txid) == 32
+        assert isinstance(index, int)
+        self.txid = txid
+        self.index = index
+
+    def serialize(self):
+        r = b""
+        r += self.txid
+        r += pack("<I", self.index)
+        return r
+
+class Input:
+    def __init__(self):
+        self.outpoint = None
+        self.script = b""
+        self.sequence = 0xffffffff
+        self.value = 0
+        self.scriptcode = b""
+
+    @classmethod
+    def from_output(cls, txid: str, vout: int, value: int, scriptcode: bytes):
+        self = cls()
+        self.outpoint = Outpoint(bytes.fromhex(txid)[::-1], vout)
+        self.value = value
+        self.scriptcode = bytes.fromhex(scriptcode)
+        return self
+
+    def serialize(self):
+        r = b""
+        r += self.outpoint.serialize()
+        r += pack("<B", len(self.script))
+        r += pack("<I", self.sequence)
+        return r
+`) +
+            prevData['CH6INO5'] +
+            '\n' +
+            prevData['CH6PUT2'] +
+            '\n'
+        )
+      )
+    }
+  }, [prevData])
+
+  const javascript = {
+    program: `
+console.log("KILL")`,
+    defaultFunction: {
+      name: 'privateKeyToPublicKey',
+      args: ['privateKey'],
+    },
+    rangesToCollapse: [
+      {
+        start: countLines(combinedCode),
+        end: countLines(combinedCode) + 3,
+      },
+    ],
+    defaultCode: `${combinedCode.slice(0, -2)}
   serialize() {
     // YOUR CODE HERE
   }
@@ -184,8 +233,8 @@ console.log(tx.serialize().toString('hex'));`,
 print("KILL")`,
     rangesToCollapse: [
       {
-        start: countLines(combinedCode) + 1,
-        end: countLines(combinedCode) + 18,
+        start: countLines(combinedCode) + 2,
+        end: countLines(combinedCode) + 4,
       },
     ],
     defaultFunction: {
@@ -193,59 +242,7 @@ print("KILL")`,
       args: ['private_key'],
     },
     defaultCode: `from struct import pack
-
-# UTXO from chapter 6 step 1 (mining pool payout)
-txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
-vout = 1
-value = 161000000
-
-# From chapter 4 (we will reuse address for change)
-priv = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503e
-compressed_pub = bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af")
-pubkey_hash = "b234aee5ee74d7615c075b4fe81fd8ace54137f2"
-addr = "bc1qkg62ae0wwntkzhq8td87s87c4nj5zdlj2ga8j7"
-
-# Explained in step 6
-scriptcode = "1976a914" + pubkey_hash + "88ac"
-
-class Outpoint:
-    def __init__(self, txid: bytes, index: int):
-        assert isinstance(txid, bytes)
-        assert len(txid) == 32
-        assert isinstance(index, int)
-        self.txid = txid
-        self.index = index
-
-    def serialize(self):
-        r = b""
-        r += self.txid
-        r += pack("<I", self.index)
-        return r
-
-class Input:
-    def __init__(self):
-        self.outpoint = None
-        self.script = b""
-        self.sequence = 0xffffffff
-        self.value = 0
-        self.scriptcode = b""
-
-    @classmethod
-    def from_output(cls, txid: str, vout: int, value: int, scriptcode: bytes):
-        self = cls()
-        self.outpoint = Outpoint(bytes.fromhex(txid)[::-1], vout)
-        self.value = value
-        self.scriptcode = bytes.fromhex(scriptcode)
-        return self
-
-    def serialize(self):
-        r = b""
-        r += self.outpoint.serialize()
-        r += pack("<B", len(self.script))
-        r += pack("<I", self.sequence)
-        return r
 ${combinedCode}
-
     def serialize(self):
         # YOUR CODE HERE
 

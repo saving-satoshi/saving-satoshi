@@ -18,10 +18,10 @@ export default function PutItTogether1({ lang }) {
   const [isLoading, setIsLoading] = useState(true)
 
   const getPrevLessonData = async () => {
-    const data = await getData('CH6INO4')
+    const data = await getData('CH6INO5')
     if (data) {
       setPrevData({
-        lesson_id: 'CH6INO4',
+        lesson_id: 'CH6INO5',
         data: data?.code?.getDecoded(),
       })
     }
@@ -176,7 +176,8 @@ class Transaction {
   }
 
   const python = {
-    program: `# BEGIN VALIDATION BLOCK
+    program: `
+# BEGIN VALIDATION BLOCK
 from struct import pack
 from bech32py import bech32
 class Outpoint:
