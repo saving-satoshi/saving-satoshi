@@ -8,9 +8,6 @@ import * as InOut5 from './in-out-5'
 import * as PutItTogether1 from './put-it-together-1'
 import * as PutItTogether2 from './put-it-together-2'
 import * as PutItTogether3 from './put-it-together-3'
-//import * as PutItTogether4 from './put-it-together-4'
-//import * as PutItTogether5 from './put-it-together-5'
-//import * as PutItTogether6 from './put-it-together-6'
 import * as Outro1 from './outro-1'
 
 const Chapter5 = {
@@ -24,9 +21,6 @@ const Chapter5 = {
   'put-it-together-1': PutItTogether1,
   'put-it-together-2': PutItTogether2,
   'put-it-together-3': PutItTogether3,
-  //'put-it-together-4': PutItTogether4,
-  //'put-it-together-5': PutItTogether5,
-  //'put-it-together-6': PutItTogether6,
   'outro-1': Outro1,
 }
 

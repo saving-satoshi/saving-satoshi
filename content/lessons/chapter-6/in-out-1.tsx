@@ -85,9 +85,6 @@ def privatekey_to_publickey(private_key):
   }
 ]
     `}
-      /*fixedCode={''}
-      onSelectLanguage={handleSelectLanguage}
-      config={config}*/
     >
       <LessonInfo>
         <Text className="text-lg md:text-xl">
