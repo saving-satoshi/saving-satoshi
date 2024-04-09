@@ -1631,7 +1631,7 @@ const translations = {
       title: 'Outro',
       heading: 'You did it!!!',
       paragraph_one:
-        'You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.',
+        'You found the longest chain and proved it to everyone! You are one step closer to discrediting Vanderpoole, needless to say he didn't answer anymore of Ms. Chunk's questions.',
     },
   },
 
