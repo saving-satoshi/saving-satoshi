@@ -178,7 +178,7 @@ console.log("KILL")`,
     },
     defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js');
 const {randomBytes} = require('crypto');
-${combinedCode}
+${combinedCode.slice(0, -2)}
   compute_input_signature(index, key) {
     assert(typeof key === 'bigint');
     assert(Number.isInteger(index));
