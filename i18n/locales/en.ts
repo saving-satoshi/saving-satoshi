@@ -1627,6 +1627,12 @@ const translations = {
       intro: `Intro`,
       paragraph_one: `—DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Mr. Vanderpoole, can you prove that you did no such thing? Mysterious hacker and his holocat, can you prove Vanderpoole had attempted this crime against Bitcoin?”`,
     },
+    outro_one: {
+      title: 'Outro',
+      heading: 'You did it!!!',
+      paragraph_one:
+        'You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.',
+    },
   },
 
   chapter_nine: {
