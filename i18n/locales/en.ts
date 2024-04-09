@@ -1631,7 +1631,7 @@ const translations = {
       title: 'Outro',
       heading: 'You did it!!!',
       paragraph_one:
-        'You found the longest chain and proved it to everyone! You are one step closer to discrediting Vanderpoole, needless to say he didn't answer anymore of Ms. Chunk's questions.',
+        'You found the longest chain and proved it to everyone! You are one step closer to discrediting Vanderpoole, needless to say he didn\'t answer anymore of Ms. Chunk\'s questions.',
     },
   },
 
