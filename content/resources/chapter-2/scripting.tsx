@@ -63,11 +63,67 @@ const python = {
   constraints: [],
 }
 
+const cpp = {
+  program: 'void KILL',
+  defaultFunction: {
+    name: 'find_hash',
+    args: ['nonce'],
+  },
+  defaultCode: [
+    `#include <cryptopp/sha.h>
+#include <cryptopp/hex.h>
+#include <cryptopp/filters.h>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Function to generate SHA-256 hash of a given string
+string generateSHA256Hash(const string& input) {
+  CryptoPP::SHA256 hash;
+  string digest;
+
+  CryptoPP::StringSource ss(input, true,
+    new CryptoPP::HashFilter(hash,
+      new CryptoPP::HexEncoder(
+        new CryptoPP::StringSink(digest)
+      )
+    )
+  );
+  return digest;
+  }
+
+// Function to find a SHA-256 hash starting with 5 zeroes
+string find_hash(int nonce) {
+  string hash;
+  string nonceStr;
+
+  while (true) {
+    // Convert nonce to string
+    nonceStr = to_string(nonce);
+    // Generate SHA-256 hash of the nonce
+    hash = generateSHA256Hash(nonceStr);
+    // Check if the hash starts with five zeroes
+    if (hash.substr(0, 5) == "00000") {
+      return hash;
+    }
+    // Increment nonce
+    nonce++;
+  }
+}`,
+  ],
+  validate: async (answer) => {
+    return [true, undefined]
+  },
+  constraints: [],
+}
+
 const config: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
     javascript,
     python,
+    cpp,
   },
 }
 
@@ -153,7 +209,7 @@ export default function ScriptingResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`235px`}
+                  height={`785px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

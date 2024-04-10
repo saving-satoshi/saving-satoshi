@@ -7,7 +7,7 @@ import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { getLanguageString } from 'lib/SavedCode'
+import { getLanguageString, Language } from 'lib/SavedCode'
 import { useDataContext } from 'contexts/DataContext'
 
 export const metadata = {
@@ -219,6 +219,11 @@ export default function Scripting2({ lang }) {
             {t(`chapter_two.scripting_two.${language}.list_two`)}
           </li>
         </ul>
+        {language === 'cpp' && (
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_two.scripting_two.cpp.paragraph_three`)}
+          </Text>
+        )}
       </LessonInfo>
     </ScriptingChallenge>
   )

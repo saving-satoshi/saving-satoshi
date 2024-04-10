@@ -385,6 +385,8 @@ const translations = {
       cpp: {
         paragraph_two:
           'When you find a nonce with a hash that begins with five zeroes, return the hash to the console. We are using the crypto library in C++ to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
+        paragraph_three:
+          'This is the only challenge with C++ at the moment but you can help change that! <a href="https://github.com/saving-satoshi/saving-satoshi" target="_blank">https://github.com/saving-satoshi</a>',
         list_one:
           '<Link href="https://cryptopp.com/wiki/SHA2" target="_blank" className="underline">cryptopp documentation</Link>',
         list_two:
