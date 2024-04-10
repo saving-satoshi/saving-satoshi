@@ -3,13 +3,13 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { DataContextType, Data } from 'types'
 import { getData, setData } from 'api/data'
-import { useAuthContext } from './AuthContext'
 import {
   getLanguageFromString,
   getLanguageString,
   Language,
 } from 'lib/SavedCode'
-import { local } from 'api'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export const defaultDataContext = {
   isLoading: true,
@@ -29,7 +29,7 @@ export default function DataProvider({
 }: {
   children: React.ReactNode
 }) {
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const [isLoading, setIsLoading] = useState(true)
   const [data, setDataState] = useState<Data[]>([])
   const languageFromLocalStorage = localStorage.getItem('language')

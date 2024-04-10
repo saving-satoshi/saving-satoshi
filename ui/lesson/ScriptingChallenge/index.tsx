@@ -9,13 +9,14 @@ import { EditorConfig, LessonDirection, StoredLessonData } from 'types'
 import { Lesson, LessonTabs } from 'ui'
 import { useMediaQuery, useDynamicHeight, useTranslations } from 'hooks'
 import { useProgressContext } from 'contexts/ProgressContext'
-import { useAuthContext } from 'contexts/AuthContext'
 import { setData } from 'api/data'
 import { Base64String } from 'types/classes'
 import clsx from 'clsx'
 import useDebounce from 'hooks/useDebounce'
 import { useDataContext } from 'contexts/DataContext'
 import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 const tabData = [
   {
@@ -67,7 +68,7 @@ export default function ScriptingChallenge({
 }) {
   const t = useTranslations(lang)
   const { saveProgress, saveProgressLocal } = useProgressContext()
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const { currentLanguage, setCurrentLanguage } = useDataContext()
   const [code, setCode] = useState(
     config.languages[getLanguageString(currentLanguage)].defaultCode?.toString()

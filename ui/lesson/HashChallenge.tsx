@@ -6,7 +6,8 @@ import clsx from 'clsx'
 import { useLang, useTranslations } from 'hooks'
 import { usePathname } from 'next/navigation'
 import { useProgressContext } from 'contexts/ProgressContext'
-import { useAuthContext } from 'contexts/AuthContext'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 /**
  * @answer {string} correct answer to the challenge problem
@@ -37,7 +38,7 @@ export default function HashChallenge({
   successMessage?: string
 }) {
   const { saveProgress, saveProgressLocal } = useProgressContext()
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const lang = useLang()
   const t = useTranslations(lang)
   const pathName = usePathname() || ''

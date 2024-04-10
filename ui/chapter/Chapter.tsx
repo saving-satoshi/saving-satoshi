@@ -18,8 +18,9 @@ import { getLessonKey } from 'lib/progress'
 import { keys, keysMeta } from 'lib/progress'
 import { useFeatureContext } from 'contexts/FeatureProvider'
 import useEnvironment from 'hooks/useEnvironment'
-import { useAuthContext } from 'contexts/AuthContext'
 import { Modal, useModalContext } from 'contexts/ModalContext'
+import { useAtom } from 'jotai'
+import { accountAtom, isAuthLoadingAtom } from 'state/state'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -30,7 +31,8 @@ export default function Chapter({ children, metadata, lang }) {
   const pathName = usePathname() || ''
   const router = useRouter()
   const { progress, isLoading } = useProgressContext()
-  const { account, isLoading: isAccountLoading } = useAuthContext()
+  const [account] = useAtom(accountAtom)
+  const [isAccountLoading] = useAtom(isAuthLoadingAtom)
   const modals = useModalContext()
   const { isFeatureEnabled } = useFeatureContext()
   const isEnabled = isFeatureEnabled(

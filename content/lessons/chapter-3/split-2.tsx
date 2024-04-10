@@ -8,8 +8,9 @@ import { sleep } from 'utils'
 import Profile from 'ui/common/Profile'
 import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
 import clsx from 'clsx'
-import { useAuthContext } from 'contexts/AuthContext'
 import { cssVarThemeChange } from 'lib/themeSelector'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_three.split_two.title',
@@ -19,7 +20,7 @@ export const metadata = {
 }
 
 export default function Split2({ lang }) {
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const t = useTranslations(lang)
   const isSmallScreen = useMediaQuery({ width: 767 })
   const [step, setStep] = useState(0)

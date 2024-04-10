@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react'
 import { LessonDirection } from 'types'
 import { Lesson, LessonTabs, LessonTerminal } from 'ui'
 import { useMediaQuery } from 'hooks'
-import { useAuthContext } from 'contexts/AuthContext'
 import { useProgressContext } from 'contexts/ProgressContext'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 const tabData = [
   {
@@ -42,7 +43,7 @@ export default function TerminalChallenge({
   commonError?: any
 }) {
   const { saveProgress, saveProgressLocal } = useProgressContext()
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const [hydrated, setHydrated] = useState(false)
   const [success, setSuccess] = useState<boolean | null>(null)
   const [challengeState, setChallengeState] = useState<string>('incomplete')

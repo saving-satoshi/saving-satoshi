@@ -1,11 +1,6 @@
 import 'styles/globals.css'
 import Fonts from 'components/Fonts'
-import {
-  AuthProvider,
-  ProgressProvider,
-  ModalProvider,
-  FeatureProvider,
-} from 'contexts'
+import { ProgressProvider, ModalProvider, FeatureProvider } from 'contexts'
 import Layout from 'components/Layout'
 import dynamic from 'next/dynamic'
 
@@ -25,13 +20,11 @@ export default function RootLayout({
         <Fonts />
         <FeatureProvider>
           <DataProvider>
-            <AuthProvider>
-              <ProgressProvider>
-                <ModalProvider>
-                  <Layout>{children}</Layout>
-                </ModalProvider>
-              </ProgressProvider>
-            </AuthProvider>
+            <ProgressProvider>
+              <ModalProvider>
+                <Layout>{children}</Layout>
+              </ModalProvider>
+            </ProgressProvider>
           </DataProvider>
         </FeatureProvider>
       </body>

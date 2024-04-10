@@ -1,4 +1,3 @@
-export { default as AuthProvider } from './AuthContext'
 export { default as ProgressProvider } from './ProgressContext'
 export { default as ModalProvider } from './ModalContext'
 export { default as DataProvider } from './DataContext'
