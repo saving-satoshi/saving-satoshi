@@ -176,10 +176,10 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    rangesToCollapse: [
+    rangeToNotCollapse: [
       {
-        start: countLines(combinedCode),
-        end: countLines(combinedCode) + 3,
+        start: countLines(combinedCode) + 4,
+        end: countLines(combinedCode) + 20,
       },
     ],
     defaultCode: `${combinedCode.slice(0, -2)}
@@ -231,7 +231,7 @@ console.log(tx.serialize().toString('hex'));`,
   const python = {
     program: `
 print("KILL")`,
-    rangesToCollapse: [
+    rangeToNotCollapse: [
       {
         start: countLines(combinedCode) + 2,
         end: countLines(combinedCode) + 4,

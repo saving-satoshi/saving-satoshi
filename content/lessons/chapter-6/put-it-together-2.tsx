@@ -166,10 +166,10 @@ const hashed_message_bytes_ahuhfxmw = tx_eagmcued.digest(0);
 const signature_weiucmwa = {r: r.toString(16), s: s.toString(16)};
 console.log(private_key_faxwmufa.verify(hashed_message_bytes_ahuhfxmw, signature_weiucmwa) && 'true')
 console.log("KILL")`,
-    rangesToCollapse: [
+    rangeToNotCollapse: [
       {
-        start: countLines(combinedCode) + 55,
-        end: countLines(combinedCode) + 76,
+        start: countLines(combinedCode) + 2,
+        end: countLines(combinedCode) + 62,
       },
     ],
     defaultFunction: {
@@ -179,6 +179,7 @@ console.log("KILL")`,
     defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js');
 const {randomBytes} = require('crypto');
 ${combinedCode.slice(0, -2)}
+// Complete the two methods below
   compute_input_signature(index, key) {
     assert(typeof key === 'bigint');
     assert(Number.isInteger(index));
@@ -342,10 +343,10 @@ hashed_message_bytes_ywienvsd = tx_eagmcued.digest(0)
 verifying_key_dojssdfo = VerifyingKey.from_string(compressed_pub_agfwuebb, curve=SECP256k1)
 print(verifying_key_dojssdfo.verify_digest(sig_bytes_ayeqncas, hashed_message_bytes_ywienvsd) and 'true')
 print("KILL")`,
-    rangesToCollapse: [
+    rangeToNotCollapse: [
       {
-        start: countLines(combinedCode) + 4,
-        end: countLines(combinedCode) + 29,
+        start: countLines(combinedCode) + 3,
+        end: countLines(combinedCode) + 28,
       },
     ],
     defaultFunction: {
@@ -355,7 +356,7 @@ print("KILL")`,
     defaultCode: `from random import randrange
 from secp256k1py import secp256k1
 ${combinedCode}
-
+# Complete the 2 methods below
     def compute_input_signature(self, index: int, key: int):
         # k = random integer in [1, n-1]
         # R = G * k

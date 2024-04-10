@@ -22,7 +22,7 @@ export default function Editor({
   constraints,
   hiddenRange,
   loadingSavedCode,
-  rangesToCollapse = [],
+  rangeToNotCollapse = [],
 }: {
   language: string
   value?: string
@@ -32,7 +32,7 @@ export default function Editor({
   constraints?: any
   hiddenRange?: number[]
   loadingSavedCode?: boolean
-  rangesToCollapse?: EditorRange[]
+  rangeToNotCollapse?: EditorRange[]
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
@@ -82,9 +82,9 @@ export default function Editor({
       constrainedInstance.addRestrictionsTo(model, constraints)
     }
     const actions = editor.getSupportedActions()
-    if (rangesToCollapse.length > 0) {
+    if (rangeToNotCollapse.length > 0) {
       const foldAction = actions.find((a) => a.id === 'editor.foldAllExcept')
-      rangesToCollapse.forEach((range) => {
+      rangeToNotCollapse.forEach((range) => {
         editor.setSelection({
           startLineNumber: range.start,
           endLineNumber: range.end,

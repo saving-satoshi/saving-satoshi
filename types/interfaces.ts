@@ -22,7 +22,7 @@ export interface EditorLanguages {
     validate: (answer: any) => Promise<any[]>
     constraints?: any
     hiddenRange?: number[]
-    rangesToCollapse?: EditorRange[]
+    rangeToNotCollapse?: EditorRange[]
   }
 }
 

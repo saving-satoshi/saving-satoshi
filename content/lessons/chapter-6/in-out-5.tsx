@@ -4,10 +4,8 @@ import { ScriptingChallenge, LessonInfo, CodeExample, Title, Table } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { getData } from 'api/data'
-import { detectLanguage, Language } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_six.in_out_five.title',

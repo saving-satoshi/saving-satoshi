@@ -222,7 +222,7 @@ export default function ScriptingChallenge({
               onValidate={handleEditorValidate}
               constraints={constraints}
               loadingSavedCode={loadingSavedCode}
-              rangesToCollapse={config.languages[language].rangesToCollapse}
+              rangeToNotCollapse={config.languages[language].rangeToNotCollapse}
               options={editorOptions}
             />
           </div>
