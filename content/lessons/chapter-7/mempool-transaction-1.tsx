@@ -212,12 +212,6 @@ function run() {
         return [false, "can't find a return in both of the methods"]
       }
     },
-    constraints: [
-      {
-        range: [1, 1, 34, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -330,12 +324,6 @@ def run():
         return [false, "can't find a return in both of the methods"]
       }
     },
-    constraints: [
-      {
-        range: [1, 1, 29, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {

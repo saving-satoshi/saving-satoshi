@@ -44,12 +44,6 @@ function msg_to_integer(msg) {
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 8, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const python = {
@@ -79,12 +73,6 @@ def msg_to_integer(msg):
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 8, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const config: EditorConfig = {

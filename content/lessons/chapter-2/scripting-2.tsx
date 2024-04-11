@@ -1,13 +1,13 @@
 'use client'
 
-import * as crypto from 'crypto'
+import HelpSuggestion from 'components/HelpSuggestion'
 import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { getLanguageString, Language } from 'lib/SavedCode'
+import { getLanguageString } from 'lib/SavedCode'
 import { useDataContext } from 'contexts/DataContext'
 
 export const metadata = {
@@ -54,12 +54,6 @@ function findHash(nonce) {
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 9, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const python = {
@@ -106,12 +100,6 @@ def find_hash(nonce):
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 8, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const cpp = {
@@ -175,12 +163,6 @@ string find_hash(int nonce) {
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 10, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const config: EditorConfig = {
@@ -229,6 +211,7 @@ export default function Scripting2({ lang }) {
             {t(`chapter_two.scripting_two.cpp.paragraph_three`)}
           </Text>
         )}
+        <HelpSuggestion />
       </LessonInfo>
     </ScriptingChallenge>
   )

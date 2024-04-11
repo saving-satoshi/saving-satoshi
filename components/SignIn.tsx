@@ -25,7 +25,7 @@ export default function SignIn({
     try {
       setLoading(true)
 
-      const loginSuccess = await login(privateKey)
+      const loginSuccess = await login(privateKey.toLowerCase())
       if (loginSuccess) {
         setPrivateKey('')
       }

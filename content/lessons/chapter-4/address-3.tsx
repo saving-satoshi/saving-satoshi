@@ -81,12 +81,6 @@ function hashToAddress(hash) {
 
       return [true, undefined]
     },
-    constraints: [
-      {
-        range: [1, 1, 11, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -131,12 +125,6 @@ def hash_to_address(hash):
 
       return [true, undefined]
     },
-    constraints: [
-      {
-        range: [1, 1, 9, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {
@@ -183,6 +171,9 @@ def hash_to_address(hash):
           </ul>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t(`chapter_four.address_three.paragraph_three`)}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_four.address_three.paragraph_four`)}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>

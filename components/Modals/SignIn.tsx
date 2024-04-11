@@ -2,10 +2,10 @@
 
 import Modal from './Modal'
 import SignIn from 'components/SignIn'
-import { useLang } from 'hooks'
+import { useLang, usePathData } from 'hooks'
 import Icon from 'shared/Icon'
 
-export default function LoginModal({ onClose, state }) {
+export default function SigninModal({ onClose, state }) {
   const lang = useLang()
 
   return (

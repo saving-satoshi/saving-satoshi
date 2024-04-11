@@ -41,7 +41,10 @@ export function middleware(request: NextRequest) {
   }
 
   // Redirect to '/' for homepage
-  if (pathname !== '/' || getLocale(request) !== 'en') {
+  if (
+    (pathname !== '/' && !pathname.startsWith('/.well-known/')) ||
+    getLocale(request) !== 'en'
+  ) {
     const pathnameIsMissingLocale = i18n.locales.every(
       (language) =>
         !pathname.startsWith(`/${language.locale}/`) &&

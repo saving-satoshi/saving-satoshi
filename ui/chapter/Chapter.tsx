@@ -3,21 +3,23 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
+import { useRouter, usePathname } from 'next/navigation'
 
 import { Button } from 'shared'
 import ChapterTabs from './Tabs'
 import ChallengeList from './ChallengeList'
-import { useLocalizedRoutes } from 'hooks'
 import { chapters } from 'content'
 import Icon from 'shared/Icon'
 import { ChapterContextType } from 'types'
-import { useTranslations } from 'hooks'
+import { useTranslations, useLocalizedRoutes } from 'hooks'
 import useLessonStatus from 'hooks/useLessonStatus'
 import { useProgressContext } from 'contexts/ProgressContext'
 import { getLessonKey } from 'lib/progress'
 import { keys, keysMeta } from 'lib/progress'
 import { useFeatureContext } from 'contexts/FeatureProvider'
 import useEnvironment from 'hooks/useEnvironment'
+import { useAuthContext } from 'contexts/AuthContext'
+import { Modal, useModalContext } from 'contexts/ModalContext'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -25,7 +27,11 @@ export const useChapterContext = () => useContext(ChapterContext)
 
 export default function Chapter({ children, metadata, lang }) {
   const { isDevelopment } = useEnvironment()
+  const pathName = usePathname() || ''
+  const router = useRouter()
   const { progress, isLoading } = useProgressContext()
+  const { account, isLoading: isAccountLoading } = useAuthContext()
+  const modals = useModalContext()
   const { isFeatureEnabled } = useFeatureContext()
   const isEnabled = isFeatureEnabled(
     `${metadata.slug.replace('-', '_')}_enabled`
@@ -66,6 +72,11 @@ export default function Chapter({ children, metadata, lang }) {
       text: t('shared.challenges'),
     },
   ]
+
+  const handleClick = (name: Modal) => {
+    modals.open(name)
+  }
+
   useEffect(() => {
     if (window.location.href.split('#')[1]) {
       const element = document.getElementById(
@@ -80,6 +91,14 @@ export default function Chapter({ children, metadata, lang }) {
       }
     }
   }, [])
+
+  useEffect(() => {
+    !isAccountLoading &&
+      !isLoading &&
+      account &&
+      progress.at(2) !== '1' &&
+      router.push(`${pathName}#chapter-${progress.at(2)}`)
+  }, [account, isAccountLoading, isLoading, progress])
 
   return (
     <ChapterContext.Provider value={context}>
@@ -106,7 +125,10 @@ export default function Chapter({ children, metadata, lang }) {
             </h3>
 
             <div>
-              {chapter.metadata.lessons.length > 0 && display ? (
+              {(chapter.metadata.lessons.length > 0 &&
+                display &&
+                position === 1) ||
+              (account && display) ? (
                 <ChapterTabs
                   items={tabData}
                   activeId={activeTab}
@@ -123,18 +145,10 @@ export default function Chapter({ children, metadata, lang }) {
                   })}
                 >
                   <div className="font-nunito md:mt-6">
-                    {(chapter.metadata.lessons.length > 0 && display && (
-                      <div className="text-lg text-white">{children}</div>
-                    )) ||
-                      (!isLoading && !!isEnabled && !display && (
-                        <div className="flex font-nunito text-lg text-white">
-                          <Icon
-                            icon="lock"
-                            className="my-auto mr-2 h-3 w-3 justify-center"
-                          />
-                          {t('chapter.chapter_locked_one')} {position - 1}{' '}
-                          {t('chapter.chapter_locked_two')}
-                        </div>
+                    {(chapter.metadata.lessons.length > 0 &&
+                      display &&
+                      (position === 1 || (account && display)) && (
+                        <div className="text-lg text-white">{children}</div>
                       )) ||
                       (isLoading && !display && (
                         <div className="flex font-nunito text-lg text-white">
@@ -153,34 +167,74 @@ export default function Chapter({ children, metadata, lang }) {
                           />
                           {t('chapter.coming_soon')}
                         </div>
-                      ))}
+                      )) || (
+                        <div className="flex font-nunito text-lg text-white">
+                          <Icon
+                            icon="lock"
+                            className="my-auto mr-2 h-3 w-3 justify-center"
+                          />
+                          {t('chapter.chapter_locked_one')} {position - 1}{' '}
+                          {t('chapter.chapter_locked_two')}&nbsp;
+                          {!account && (
+                            <button
+                              onClick={() => handleClick(Modal.SignIn)}
+                              className="underline"
+                            >
+                              {t('modal_signin.login')}
+                            </button>
+                          )}
+                        </div>
+                      )}
                     <div className="flex pt-8 md:w-full">
                       <Button
                         href={
-                          isBetweenChapter
-                            ? `${
-                                routes.chaptersUrl + keysMeta[progress].path
-                              }${queryParams}`
-                            : `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}${queryParams}`
+                          (isBetweenChapter &&
+                            `${
+                              routes.chaptersUrl + keysMeta[progress].path
+                            }${queryParams}`) ||
+                          `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}${queryParams}`
                         }
                         disabled={
-                          chapter.metadata.lessons.length === 0 || !display
+                          chapter.metadata.lessons.length === 0 ||
+                          isLoading ||
+                          !display ||
+                          (!isLoading &&
+                            position !== 1 &&
+                            !account &&
+                            !isAccountLoading)
                         }
-                        classes="w-full"
+                        classes={clsx('w-full', {
+                          hidden:
+                            (isLoading && position !== 1) ||
+                            (!isLoading && !display && !account) ||
+                            (!!display && !account && position !== 1) ||
+                            (account &&
+                              !isLoading &&
+                              !display &&
+                              position !== 1),
+                        })}
                       >
-                        {chapter.metadata.lessons.length > 0 &&
-                        display &&
-                        isBetweenChapter
-                          ? `Continue`
-                          : !!display
-                          ? `${t('shared.start_chapter')} ${position}`
-                          : isLoading
-                          ? `${t('shared.loading')}`
-                          : !display && !isEnabled
-                          ? `${t('shared.coming_soon')}`
-                          : `${t('chapter.chapter_locked_one')} ${
+                        {(isLoading && `${t('shared.loading')}`) ||
+                          (!!display &&
+                            !isLoading &&
+                            !account &&
+                            !isAccountLoading &&
+                            position !== 1 &&
+                            `${t('chapter.chapter_locked_one')} ${
                               position - 1
-                            } ${t('chapter.chapter_locked_two')}`}
+                            } ${t('chapter.chapter_locked_two')}`) ||
+                          (chapter.metadata.lessons.length > 0 &&
+                            display &&
+                            isBetweenChapter &&
+                            `${t('shared.next')}`) ||
+                          (!!display &&
+                            `${t('shared.start_chapter')} ${position}`) ||
+                          (!display &&
+                            !isEnabled &&
+                            `${t('shared.coming_soon')}`) ||
+                          `${t('chapter.chapter_locked_one')} ${
+                            position - 1
+                          } ${t('chapter.chapter_locked_two')}`}
                       </Button>
                     </div>
                   </div>

@@ -8,6 +8,14 @@ import { useEffect, useState } from 'react'
 import DesktopEnd from './DesktopEnd'
 import MobileEnd from './MobileEnd'
 
+declare global {
+  interface Window {
+    nostr: Object
+  }
+}
+
+export const RELAY = 'wss://nostr.mutinywallet.com'
+
 export default function End({
   image,
   lang,
@@ -29,6 +37,7 @@ export default function End({
   const { account } = useAuthContext()
   const saveAndReturn = useSaveAndReturn()
   const { chapterId, lessonId } = usePathData()
+
   const [isDesktop, setDesktop] = useState(
     typeof window !== 'undefined' && window.innerWidth > 768
   )

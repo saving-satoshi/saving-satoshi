@@ -20,15 +20,26 @@ export interface EditorLanguages {
     defaultCode?: string | string[]
     defaultFunction: EditorFunction
     validate: (answer: any) => Promise<any[]>
-    constraints: any
+    constraints?: any
     hiddenRange?: number[]
-    rangesToCollapse?: EditorRange[]
+    rangeToNotCollapse?: EditorRange[]
+  }
+}
+
+export interface PlainEditorLanguages {
+  [language: string]: {
+    defaultCode?: string | string[]
   }
 }
 
 export interface EditorConfig {
   defaultLanguage: string
   languages: EditorLanguages
+}
+
+export interface PlainEditorConfig {
+  defaultLanguage: string
+  languages: PlainEditorLanguages
 }
 
 export interface FetchOptions {

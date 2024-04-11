@@ -15,11 +15,7 @@ import { Base64String } from 'types/classes'
 import clsx from 'clsx'
 import useDebounce from 'hooks/useDebounce'
 import { useDataContext } from 'contexts/DataContext'
-import {
-  getLanguageFromString,
-  getLanguageString,
-  Language,
-} from 'lib/SavedCode'
+import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
 
 const tabData = [
   {
@@ -159,7 +155,8 @@ export default function ScriptingChallenge({
             0,
             data.code!.getDecoded().indexOf('//BEGIN VALIDATION BLOCK') - 1
           )
-          .replaceAll(/\s*\/\/.*(?:\n|$)/g, '\n')
+          .replace(/\s*\/\/.*(?:\n|$)/g, '\n')
+          .replace(/\/\*[\s\S]*?\*\//g, '\n')
       } else {
         trimmedCode = trimLastTwoLines(data.code!.getDecoded())
       }
@@ -225,7 +222,7 @@ export default function ScriptingChallenge({
               onValidate={handleEditorValidate}
               constraints={constraints}
               loadingSavedCode={loadingSavedCode}
-              rangesToCollapse={config.languages[language].rangesToCollapse}
+              rangeToNotCollapse={config.languages[language].rangeToNotCollapse}
               options={editorOptions}
             />
           </div>
