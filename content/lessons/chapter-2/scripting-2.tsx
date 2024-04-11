@@ -143,14 +143,19 @@ int main() {
     name: 'find_hash',
     args: ['nonce'],
   },
-  defaultCode: `#include <iostream>
+  defaultCode: `#include <cryptopp/sha.h>
+#include <cryptopp/hex.h>
+#include <cryptopp/filters.h>
+#include <iostream>
+#include <string>
+
 using namespace std;
 
 // Create a program that finds a sha256 hash starting with 5 zeroes.
 // To submit your answer, return it from the function.
 
 string find_hash(int nonce) {
-    // Type your code here
+  // Type your code here
 }
 `,
   validate: async (answer) => {
