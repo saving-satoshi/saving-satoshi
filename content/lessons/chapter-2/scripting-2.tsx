@@ -43,7 +43,12 @@ function findHash(nonce) {
         'Be sure you are using the nonce param in your function as a random starting nonce will be used to test',
       ]
     }
-
+    if (
+      answer ===
+      '0000000000000000000000000000000000000000000000000000000000000000'
+    ) {
+      return [false, 'Make sure you are returning the hash based on each nonce']
+    }
     if (!answer.startsWith('00000')) {
       return [false, 'Hash must start with 5 zeroes.']
     }
@@ -89,6 +94,12 @@ def find_hash(nonce):
         false,
         'Be sure you are using the nonce param in your function as a random starting nonce will be used to test',
       ]
+    }
+    if (
+      answer ===
+      '0000000000000000000000000000000000000000000000000000000000000000'
+    ) {
+      return [false, 'Make sure you are returning the hash based on each nonce']
     }
     if (!answer.startsWith('00000')) {
       return [false, 'Hash must start with 5 zeroes.']
@@ -152,6 +163,12 @@ string find_hash(int nonce) {
         false,
         'Be sure you are using the nonce param in your function as a random starting nonce will be used to test',
       ]
+    }
+    if (
+      answer ===
+      '0000000000000000000000000000000000000000000000000000000000000000'
+    ) {
+      return [false, 'Make sure you are returning the hash based on each nonce']
     }
     if (!answer.startsWith('00000')) {
       return [false, 'Hash must start with 5 zeroes.']
