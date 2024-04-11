@@ -124,7 +124,7 @@ export default function ContributionBar({
   return (
     <div
       className={clsx(
-        'relative h-[30px] overflow-hidden rounded bg-black/20',
+        'relative h-[30px] overflow-hidden rounded  bg-black/20',
         opacity
       )}
       ref={elementRef}
