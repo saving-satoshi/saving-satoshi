@@ -5,8 +5,9 @@ import { useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
 import { detectLanguage, Language, organizeImports } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
+import { Loader } from 'shared'
 import { EditorConfig } from 'types'
-import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
+import { LessonInfo, ScriptingChallenge, Table, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
@@ -178,8 +179,8 @@ console.log("KILL")`,
     },
     rangeToNotCollapse: [
       {
-        start: countLines(combinedCode) + 4,
-        end: countLines(combinedCode) + 20,
+        start: countLines(combinedCode),
+        end: countLines(combinedCode) + 3,
       },
     ],
     defaultCode: `${combinedCode.slice(0, -2)}
@@ -298,40 +299,125 @@ print(tx.serialize().hex())`,
   }
 
   return (
-    !isLoading &&
-    combinedCode && (
+    (!isLoading && combinedCode && (
       <ScriptingChallenge
         lang={lang}
         config={config}
         saveData
         lessonKey={getLessonKey('chapter-6', 'put-it-together-3')}
-        successMessage={t('chapter_six.put_it_together_six.success')}
+        successMessage={t('chapter_six.put_it_together_three.success')}
         loadingSavedCode={isLoading}
       >
-        <LessonInfo>
-          <Title>{t('chapter_six.put_it_together_six.heading')}</Title>
-          <Text className="font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_six.paragraph_one')}
+        <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+          <Text className="font-nunito text-2xl font-bold text-white">
+            {t('chapter_six.put_it_together_three.heading')}
           </Text>
-          <Text className="mt-4 font-nunito text-xl text-white">
-            {t(`chapter_six.put_it_together_six.paragraph_two`)}
+          <Text className="mt-2 font-nunito text-xl text-white">
+            {t('chapter_six.put_it_together_three.paragraph_one')}
+          </Text>
+          <Text className="mt-2 font-nunito text-xl text-white">
+            {t('chapter_six.put_it_together_three.paragraph_two')}
           </Text>
           <ul className="list-disc pl-5 font-nunito">
             <li className="break-words text-lg md:text-xl">
-              {t('chapter_six.put_it_together_six.bullet_one')}
+              {t('chapter_six.put_it_together_three.bullet_one')}
             </li>
             <li className="break-words text-lg md:text-xl">
-              {t('chapter_six.put_it_together_six.bullet_two')}
+              {t('chapter_six.put_it_together_three.bullet_two')}
             </li>
           </ul>
-          <Text className="mt-4 font-nunito text-xl text-white">
-            {t(`chapter_six.put_it_together_six.paragraph_three`)}
+          <Text className="mt-4 text-lg md:text-xl">
+            {t('chapter_six.put_it_together_three.paragraph_three')}
+          </Text>
+          <Table
+            headings={[
+              t('chapter_six.put_it_together_three.headings.item_one'),
+              t('chapter_six.put_it_together_three.headings.item_two'),
+              t('chapter_six.put_it_together_three.headings.item_three'),
+              t('chapter_six.put_it_together_three.headings.item_four'),
+            ]}
+            rows={[
+              [
+                t('chapter_six.put_it_together_three.table.row_one.item_one'),
+                t('chapter_six.put_it_together_three.table.row_one.item_two'),
+                t('chapter_six.put_it_together_three.table.row_one.item_three'),
+                t('chapter_six.put_it_together_three.table.row_one.item_four'),
+              ],
+              [
+                t('chapter_six.put_it_together_three.table.row_two.item_one'),
+                t('chapter_six.put_it_together_three.table.row_two.item_two'),
+                t('chapter_six.put_it_together_three.table.row_two.item_three'),
+                t('chapter_six.put_it_together_three.table.row_two.item_four'),
+              ],
+              [
+                t('chapter_six.put_it_together_three.table.row_three.item_one'),
+                t('chapter_six.put_it_together_three.table.row_three.item_two'),
+                t(
+                  'chapter_six.put_it_together_three.table.row_three.item_three'
+                ),
+                t(
+                  'chapter_six.put_it_together_three.table.row_three.item_four'
+                ),
+              ],
+              [
+                t('chapter_six.put_it_together_three.table.row_four.item_one'),
+                t('chapter_six.put_it_together_three.table.row_four.item_two'),
+                t(
+                  'chapter_six.put_it_together_three.table.row_four.item_three'
+                ),
+                t('chapter_six.put_it_together_three.table.row_four.item_four'),
+              ],
+              [
+                t('chapter_six.put_it_together_three.table.row_five.item_one'),
+                t('chapter_six.put_it_together_three.table.row_five.item_two'),
+                t(
+                  'chapter_six.put_it_together_three.table.row_five.item_three'
+                ),
+                t('chapter_six.put_it_together_three.table.row_five.item_four'),
+              ],
+              [
+                t('chapter_six.put_it_together_three.table.row_six.item_one'),
+                t('chapter_six.put_it_together_three.table.row_six.item_two'),
+                t('chapter_six.put_it_together_three.table.row_six.item_three'),
+                t('chapter_six.put_it_together_three.table.row_six.item_four'),
+              ],
+              [
+                t('chapter_six.put_it_together_three.table.row_seven.item_one'),
+                t('chapter_six.put_it_together_three.table.row_seven.item_two'),
+                t(
+                  'chapter_six.put_it_together_three.table.row_seven.item_three'
+                ),
+                t(
+                  'chapter_six.put_it_together_three.table.row_seven.item_four'
+                ),
+              ],
+              [
+                t('chapter_six.put_it_together_three.table.row_eight.item_one'),
+                t('chapter_six.put_it_together_three.table.row_eight.item_two'),
+                t(
+                  'chapter_six.put_it_together_three.table.row_eight.item_three'
+                ),
+                t(
+                  'chapter_six.put_it_together_three.table.row_eight.item_four'
+                ),
+              ],
+            ]}
+          />
+          <Text className="mt-2 font-nunito text-xl text-white">
+            {t('chapter_six.put_it_together_three.paragraph_four')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t(`chapter_six.put_it_together_six.paragraph_four`)}
+            {t(`chapter_six.put_it_together_three.paragraph_five`)}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_six.put_it_together_three.paragraph_six`)}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>
+    )) || (
+      <div className="flex flex-auto items-center">
+        <Loader className="h-12 w-12 text-white" />
+      </div>
     )
   )
 }

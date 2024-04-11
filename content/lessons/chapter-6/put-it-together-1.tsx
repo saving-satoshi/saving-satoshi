@@ -1,5 +1,5 @@
 'use client'
-import { ScriptingChallenge, Table, Text, LessonInfo } from 'ui'
+import { ScriptingChallenge, Table, Text, LessonInfo, CodeExample } from 'ui'
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'hooks'
 import { EditorConfig } from 'types'
@@ -327,75 +327,129 @@ class Transaction:
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
           <Text className="font-nunito text-2xl font-bold text-white">
-            {t('chapter_six.put_it_together_two.heading')}
+            {t('chapter_six.put_it_together_one.heading')}
           </Text>
           <Text className="mt-2 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_one')}
+            {t('chapter_six.put_it_together_one.paragraph_one')}
           </Text>
           <Text className="mt-4 text-lg md:text-xl">
-            {t('chapter_six.put_it_together_two.paragraph_two')}
+            {t('chapter_six.put_it_together_one.paragraph_two')}
+          </Text>
+          <Text className="mt-4 text-lg md:text-xl">
+            {t('chapter_six.put_it_together_one.list_heading')}
+          </Text>
+          <ul className="list-disc pl-5 font-nunito">
+            <li className="text-lg md:text-xl">
+              {t('chapter_six.put_it_together_one.list_one')}
+            </li>
+            <li className="text-lg md:text-xl">
+              {t('chapter_six.put_it_together_one.list_two')}
+            </li>
+            <li className="text-lg md:text-xl">
+              {t('chapter_six.put_it_together_one.list_three')}
+            </li>
+          </ul>
+          <Text className="mt-4 text-lg md:text-xl">
+            {t('chapter_six.put_it_together_one.paragraph_three')}
+          </Text>
+          <CodeExample
+            className="mt-4 font-space-mono"
+            code={`0x1976a914{20-byte-pubkey-hash}88ac`}
+            language="shell"
+          />
+          <Text className="mt-4 text-lg md:text-xl">
+            {t('chapter_six.put_it_together_one.paragraph_four')}
+          </Text>
+          <CodeExample
+            className="mt-4 font-space-mono"
+            code={`OP_PUSHBYTES_25
+OP_DUP
+OP_HASH160
+OP_PUSHBYTES_20
+<20-byte-public-key-hash>
+OP_EQUALVERIFY
+OP_CHECKSIG`}
+            language="shell"
+          />
+          <Text className="mt-4 text-lg md:text-xl">
+            {t('chapter_six.put_it_together_one.paragraph_five')}
+          </Text>
+          <Text className="mt-4 text-lg md:text-xl">
+            {t('chapter_six.put_it_together_one.paragraph_six')}
           </Text>
           <Table
             headings={[
-              t('chapter_six.put_it_together_two.headings.item_one'),
-              t('chapter_six.put_it_together_two.headings.item_two'),
-              t('chapter_six.put_it_together_two.headings.item_three'),
-              t('chapter_six.put_it_together_two.headings.item_four'),
+              t('chapter_six.put_it_together_one.headings.item_one'),
+              t('chapter_six.put_it_together_one.headings.item_two'),
+              t('chapter_six.put_it_together_one.headings.item_three'),
+              t('chapter_six.put_it_together_one.headings.item_four'),
             ]}
             rows={[
               [
-                t('chapter_six.put_it_together_two.table.row_one.item_one'),
-                t('chapter_six.put_it_together_two.table.row_one.item_two'),
-                t('chapter_six.put_it_together_two.table.row_one.item_three'),
-                t('chapter_six.put_it_together_two.table.row_one.item_four'),
+                t('chapter_six.put_it_together_one.table.row_one.item_one'),
+                t('chapter_six.put_it_together_one.table.row_one.item_two'),
+                t('chapter_six.put_it_together_one.table.row_one.item_three'),
+                t('chapter_six.put_it_together_one.table.row_one.item_four'),
               ],
               [
-                t('chapter_six.put_it_together_two.table.row_two.item_one'),
-                t('chapter_six.put_it_together_two.table.row_two.item_two'),
-                t('chapter_six.put_it_together_two.table.row_two.item_three'),
-                t('chapter_six.put_it_together_two.table.row_two.item_four'),
+                t('chapter_six.put_it_together_one.table.row_two.item_one'),
+                t('chapter_six.put_it_together_one.table.row_two.item_two'),
+                t('chapter_six.put_it_together_one.table.row_two.item_three'),
+                t('chapter_six.put_it_together_one.table.row_two.item_four'),
               ],
               [
-                t('chapter_six.put_it_together_two.table.row_three.item_one'),
-                t('chapter_six.put_it_together_two.table.row_three.item_two'),
-                t('chapter_six.put_it_together_two.table.row_three.item_three'),
-                t('chapter_six.put_it_together_two.table.row_three.item_four'),
+                t('chapter_six.put_it_together_one.table.row_three.item_one'),
+                t('chapter_six.put_it_together_one.table.row_three.item_two'),
+                t('chapter_six.put_it_together_one.table.row_three.item_three'),
+                t('chapter_six.put_it_together_one.table.row_three.item_four'),
               ],
               [
-                t('chapter_six.put_it_together_two.table.row_four.item_one'),
-                t('chapter_six.put_it_together_two.table.row_four.item_two'),
-                t('chapter_six.put_it_together_two.table.row_four.item_three'),
-                t('chapter_six.put_it_together_two.table.row_four.item_four'),
+                t('chapter_six.put_it_together_one.table.row_four.item_one'),
+                t('chapter_six.put_it_together_one.table.row_four.item_two'),
+                t('chapter_six.put_it_together_one.table.row_four.item_three'),
+                t('chapter_six.put_it_together_one.table.row_four.item_four'),
               ],
               [
-                t('chapter_six.put_it_together_two.table.row_five.item_one'),
-                t('chapter_six.put_it_together_two.table.row_five.item_two'),
-                t('chapter_six.put_it_together_two.table.row_five.item_three'),
-                t('chapter_six.put_it_together_two.table.row_five.item_four'),
+                t('chapter_six.put_it_together_one.table.row_five.item_one'),
+                t('chapter_six.put_it_together_one.table.row_five.item_two'),
+                t('chapter_six.put_it_together_one.table.row_five.item_three'),
+                t('chapter_six.put_it_together_one.table.row_five.item_four'),
               ],
               [
-                t('chapter_six.put_it_together_two.table.row_six.item_one'),
-                t('chapter_six.put_it_together_two.table.row_six.item_two'),
-                t('chapter_six.put_it_together_two.table.row_six.item_three'),
-                t('chapter_six.put_it_together_two.table.row_six.item_four'),
+                t('chapter_six.put_it_together_one.table.row_six.item_one'),
+                t('chapter_six.put_it_together_one.table.row_six.item_two'),
+                t('chapter_six.put_it_together_one.table.row_six.item_three'),
+                t('chapter_six.put_it_together_one.table.row_six.item_four'),
               ],
               [
-                t('chapter_six.put_it_together_two.table.row_seven.item_one'),
-                t('chapter_six.put_it_together_two.table.row_seven.item_two'),
-                t('chapter_six.put_it_together_two.table.row_seven.item_three'),
-                t('chapter_six.put_it_together_two.table.row_seven.item_four'),
+                t('chapter_six.put_it_together_one.table.row_seven.item_one'),
+                t('chapter_six.put_it_together_one.table.row_seven.item_two'),
+                t('chapter_six.put_it_together_one.table.row_seven.item_three'),
+                t('chapter_six.put_it_together_one.table.row_seven.item_four'),
               ],
               [
-                t('chapter_six.put_it_together_two.table.row_eight.item_one'),
-                t('chapter_six.put_it_together_two.table.row_eight.item_two'),
-                t('chapter_six.put_it_together_two.table.row_eight.item_three'),
-                t('chapter_six.put_it_together_two.table.row_eight.item_four'),
+                t('chapter_six.put_it_together_one.table.row_eight.item_one'),
+                t('chapter_six.put_it_together_one.table.row_eight.item_two'),
+                t('chapter_six.put_it_together_one.table.row_eight.item_three'),
+                t('chapter_six.put_it_together_one.table.row_eight.item_four'),
+              ],
+              [
+                t('chapter_six.put_it_together_one.table.row_nine.item_one'),
+                t('chapter_six.put_it_together_one.table.row_nine.item_two'),
+                t('chapter_six.put_it_together_one.table.row_nine.item_three'),
+                t('chapter_six.put_it_together_one.table.row_nine.item_four'),
+              ],
+              [
+                t('chapter_six.put_it_together_one.table.row_ten.item_one'),
+                t('chapter_six.put_it_together_one.table.row_ten.item_two'),
+                t('chapter_six.put_it_together_one.table.row_ten.item_three'),
+                t('chapter_six.put_it_together_one.table.row_ten.item_four'),
               ],
             ]}
           />
 
           <Text className="mt-2 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_three')}
+            {t('chapter_six.put_it_together_one.paragraph_seven')}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>

@@ -8,10 +8,11 @@ import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
 import { detectLanguage, Language, organizeImports } from 'lib/SavedCode'
-import { allLessonsAreLoaded, countLines } from './put-it-together-3'
+import { countLines } from './put-it-together-3'
+import { Loader } from 'shared'
 
 export const metadata = {
-  title: 'chapter_six.put_it_together_four.title',
+  title: 'chapter_six.put_it_together_two.title',
   key: 'CH6PUT2',
 }
 
@@ -406,29 +407,44 @@ ${combinedCode}
   }
 
   return (
-    !isLoading &&
-    combinedCode && (
+    (!isLoading && combinedCode && (
       <ScriptingChallenge
         lang={lang}
         config={config}
         saveData
         lessonKey={getLessonKey('chapter-6', 'put-it-together-2')}
-        successMessage={t('chapter_six.put_it_together_four.success')}
+        successMessage={t('chapter_six.put_it_together_two.success')}
         loadingSavedCode={isLoading}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
-          <Title>{t('chapter_six.put_it_together_four.heading')}</Title>
+          <Title>{t('chapter_six.put_it_together_two.heading')}</Title>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_four.paragraph_one')}
+            {t('chapter_six.put_it_together_two.paragraph_one')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_four.paragraph_two')}
+            {t('chapter_six.put_it_together_two.paragraph_two')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_four.paragraph_three')}
+            {t('chapter_six.put_it_together_two.paragraph_three')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_six.put_it_together_two.paragraph_four')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_six.put_it_together_two.paragraph_five')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_six.put_it_together_two.paragraph_six')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_six.put_it_together_two.paragraph_seven')}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>
+    )) || (
+      <div className="flex flex-auto items-center">
+        <Loader className="h-12 w-12 text-white" />
+      </div>
     )
   )
 }
