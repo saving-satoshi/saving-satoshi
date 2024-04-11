@@ -82,12 +82,6 @@ function hashCompressed(compressedPublicKey) {
       }
       return [true, undefined]
     },
-    constraints: [
-      {
-        range: [1, 1, 11, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -134,12 +128,6 @@ def hash_compressed(compressed_public_key):
       }
       return [true, undefined]
     },
-    constraints: [
-      {
-        range: [1, 1, 9, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {

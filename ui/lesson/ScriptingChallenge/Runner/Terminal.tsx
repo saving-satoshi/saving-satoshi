@@ -42,12 +42,15 @@ function Terminal({ className }: { className?: string }, ref) {
                     margin-top: 15px;
                   }
                   .log {
+                    word-break: break-all;
                     color: white;
+                    margin-bottom: 15px;
                   }
                   .output .log:first-child {
                     color:white;
                     font-size: 18px;
                     font-weight: 700;
+                    margin-bottom: 0px;
                   }
                   .success-background {
                     background-color: #28B12340;

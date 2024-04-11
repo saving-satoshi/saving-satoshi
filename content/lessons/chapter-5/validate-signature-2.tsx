@@ -51,12 +51,6 @@ function decode_sig(vpSig) {
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 9, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const python = {
@@ -90,12 +84,6 @@ def decode_sig(vp_sig):
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 9, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const config: EditorConfig = {

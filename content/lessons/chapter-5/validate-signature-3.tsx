@@ -128,12 +128,6 @@ const keyGE =
     }
     return [false, 'Check your methods']
   },
-  constraints: [
-    {
-      range: [1, 1, 95, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const python = {
@@ -229,12 +223,6 @@ key_ge =
     }
     return [false, 'Check your methods']
   },
-  constraints: [
-    {
-      range: [1, 1, 73, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const config: EditorConfig = {

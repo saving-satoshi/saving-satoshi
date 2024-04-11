@@ -118,12 +118,6 @@ function verify_keys(keys) {
     }
     return [false, 'That is not quite right, try again.']
   },
-  constraints: [
-    {
-      range: [1, 1, 73, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const python = {
@@ -210,12 +204,6 @@ def verify_keys(keys):
     }
     return [false, 'That is not quite right, try again.']
   },
-  constraints: [
-    {
-      range: [1, 1, 51, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const config: EditorConfig = {

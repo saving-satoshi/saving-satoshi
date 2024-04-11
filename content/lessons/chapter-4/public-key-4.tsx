@@ -87,12 +87,6 @@ function compressPublicKey(publicKey) {
       }
       return [true, undefined]
     },
-    constraints: [
-      {
-        range: [1, 1, 13, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -129,12 +123,6 @@ def compress_publickey(public_key):
       }
       return [true, undefined]
     },
-    constraints: [
-      {
-        range: [1, 1, 13, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {

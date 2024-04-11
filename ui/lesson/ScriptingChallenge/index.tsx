@@ -15,11 +15,7 @@ import { Base64String } from 'types/classes'
 import clsx from 'clsx'
 import useDebounce from 'hooks/useDebounce'
 import { useDataContext } from 'contexts/DataContext'
-import {
-  getLanguageFromString,
-  getLanguageString,
-  Language,
-} from 'lib/SavedCode'
+import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
 
 const tabData = [
   {
@@ -226,7 +222,7 @@ export default function ScriptingChallenge({
               onValidate={handleEditorValidate}
               constraints={constraints}
               loadingSavedCode={loadingSavedCode}
-              rangesToCollapse={config.languages[language].rangesToCollapse}
+              rangeToNotCollapse={config.languages[language].rangeToNotCollapse}
               options={editorOptions}
             />
           </div>

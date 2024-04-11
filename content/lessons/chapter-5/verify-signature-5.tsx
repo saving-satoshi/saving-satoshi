@@ -99,12 +99,6 @@ function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 68, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const python = {
@@ -163,12 +157,6 @@ def verify(sig_r, sig_s, pubkey_x, pubkey_y, msg):
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 40, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const config: EditorConfig = {
