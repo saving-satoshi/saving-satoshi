@@ -131,7 +131,7 @@ export default function Tab({
                     className="flex flex-nowrap py-1"
                   >
                     <span className="pr-1 opacity-50">{index + 1 + '. '}</span>
-                    {navTitle}
+                    {t(navTitle)}
                     <Icon
                       icon="lock"
                       className={clsx('mx-1 mt-[2px] h-3 w-3 opacity-50', {

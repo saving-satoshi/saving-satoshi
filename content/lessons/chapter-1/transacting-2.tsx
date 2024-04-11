@@ -6,7 +6,7 @@ import { InputChallenge } from 'ui'
 
 export const metadata = {
   title: 'chapter_one.transacting_two.title',
-  navigation_title: 'Find the OP_RETURN',
+  navigation_title: 'chapter_one.transaction_two.nav_title',
   key: 'CH1TRA2',
 }
 

@@ -5,7 +5,7 @@ import { TextImage } from 'ui'
 
 export const metadata = {
   title: 'chapter_one.outro_one.title',
-  navigation_title: 'Off to the address',
+  navigation_title: 'chapter_one.outro_one.nav_title',
   image: '/assets/images/chapter-1-outro.jpg',
   theme: 'bg-[#2C3A3F]',
   key: 'CH1OUT1',

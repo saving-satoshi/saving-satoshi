@@ -101,6 +101,7 @@ const translations = {
     ///CHAPTER 1
     intro_one: {
       title: 'Intro',
+      nav_title: 'Miner protest',
       paragraph_one: `Moments later, your Hover Screen activates.`,
       paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
       paragraph_three: `—Vanderpoole: “Yes I do, Deborah. Like my daddy and his daddy before him. The Vanderpooles have been mining since Block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. We cannot survive on fees alone.”`,
@@ -109,6 +110,7 @@ const translations = {
 
     intro_two: {
       title: 'Genesis',
+      nav_title: "Satoshi's holocat",
       paragraph_one:
         'You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
       paragraph_two:
@@ -122,6 +124,7 @@ const translations = {
 
     genesis_one: {
       title: 'Genesis',
+      nav_title: 'Genesis Secret',
       heading: 'Your first challenge',
       paragraph_one:
         'Bitcoin is censorship-resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
@@ -131,6 +134,7 @@ const translations = {
 
     genesis_two: {
       title: 'Genesis',
+      nav_title: 'Find the message',
       heading: 'Find the hidden message',
       paragraph_one:
         'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
@@ -147,7 +151,8 @@ const translations = {
 
     genesis_three: {
       title: 'Genesis',
-      heading: 'Let’s decode the message',
+      nav_title: 'Decode the message',
+      heading: "Let's decode the message",
       paragraph_one:
         'The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.',
       paragraph_two:
@@ -159,6 +164,7 @@ const translations = {
 
     genesis_four: {
       title: 'Genesis',
+      nav_title: 'Your first success',
       subtitle: 'Congrats! You completed the first challenge!',
       paragraph_one:
         'You found the secret message Satoshi Nakamoto embedded in the genesis block. It’s time to expand on what you just learned. Decode an important clue about the story in the next challenge.',
@@ -166,6 +172,7 @@ const translations = {
 
     transacting_one: {
       title: 'Transacting',
+      nav_title: "What's in a transaction",
       heading: 'What’s in a transaction?',
       paragraph_one:
         'Two main components of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
@@ -175,6 +182,7 @@ const translations = {
 
     transacting_two: {
       title: 'Transacting',
+      nav_title: 'Find the OP_RETURN',
       heading: 'OP_RETURN',
       paragraph_one:
         'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
@@ -191,6 +199,7 @@ const translations = {
 
     transacting_three: {
       title: 'Transacting',
+      nav_title: 'Decode the OP_RETURN',
       heading: 'Another secret message',
       paragraph_one:
         'We’ve identified the part of the transaction output that holds the message.',
@@ -206,6 +215,7 @@ const translations = {
 
     outro_one: {
       title: 'Outro',
+      nav_title: 'Off to the address',
       paragraph_one:
         'You run down to your garage, step into your dad’s old solocopter, punch in the coordinates, and make your way to the address.',
       paragraph_two:
@@ -215,6 +225,7 @@ const translations = {
 
     outro_two: {
       title: 'You did it!!!',
+      nav_title: 'Chapter complete',
       description:
         'Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go?',
     },
@@ -264,23 +275,27 @@ const translations = {
 
     intro_one: {
       title: 'Hashing out a plan',
+      nav_title: 'The warehouse',
       paragraph_one:
         'HOLOCAT: “Boy, what a dump. This place had better store some sardines or dried fish. I’d even settle for some e-nip."',
       paragraph_two:
         'You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.',
       paragraph_three: {
-        a: 'HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family',
-        b: 'Application-specific integrated circuit miners were all the rage back in bitcoin’s early days. Can you believe that people mined other coins at one point?”',
+        a: 'HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family ASIC miners. In bitcoin’s early days, miners would use general purpose computers to mine bitcoin. But early on miners realized they could use machines with a special type of chip called an Application-Specific Integrated Circuit, or ',
+        b: ' for short. These chips do only one thing, mine bitcoin, their narrow focus increases their efficiency and allows miners to spend less energy to mine, giving them an edge. Can you believe that people mined with their laptops at one point?"',
       },
+      paragraph_four:
+        'This explains all the machines in the Vanderpoole family collection.',
       tooltip_one: {
         question: 'What is an ASIC miner?',
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520an%2520ASIC%2520miner%253F',
-        highlighted: 'ASIC miners.',
+        highlighted: 'ASIC',
       },
     },
 
     intro_two: {
       title: 'Hashing out a plan',
+      nav_title: 'Turning on the computer',
       paragraph_one:
         'In the corner, a dim, barely working computer monitor with a note stuck to it sits blinking. The note says “Turn them on, stupid."',
       paragraph_two: 'HOLOCAT: “How rude.”',
@@ -290,6 +305,7 @@ const translations = {
 
     hashing_one: {
       title: 'Zeroes',
+      nav_title: 'The computer hums to life',
       paragraph_one:
         'Either by chance, or because Holocat actually knew what he was doing, the computer turns the random letters and numbers he stepped on turn into... more random letters and numbers?',
       list_one: '> QX23Y6VGECTUKSNIEUTUB[P[pihof',
@@ -303,6 +319,7 @@ const translations = {
 
     hashing_two: {
       title: 'Zeroes',
+      nav_title: 'Try to hash something',
       heading: 'Enter Anything',
       return_hash: 'Below you will see your input converted to a hash',
       progress_message: 'Keep going...',
@@ -311,6 +328,7 @@ const translations = {
 
     hashing_three: {
       title: 'Zeroes',
+      nav_title: 'The power of SHA256',
       heading: 'Did you notice anything special about the hashes?',
       list_one:
         'Just like fingerprints, hashes are unique. Barring some exceptional circumstances, the hashes for two different things should never be the same.',
@@ -334,6 +352,7 @@ const translations = {
 
     hashing_four: {
       title: 'Zeroes',
+      nav_title: 'Try to hash something',
       heading:
         'Enter anything until you find a hash that starts with a zero (“0”)',
       hint_prompt:
@@ -344,6 +363,7 @@ const translations = {
 
     hashing_five: {
       title: 'Zeroes',
+      nav_title: 'Try to hash something',
       heading: 'That wasn’t too hard!',
       paragraph_one:
         'Let’s make it a bit more tricky. Try to find a hash that starts with two zeroes ("00").',
@@ -351,6 +371,7 @@ const translations = {
 
     hashing_six: {
       title: 'Zeroes',
+      nav_title: 'Try to hash something',
       heading:
         'Enter anything until you find a hash that starts with two zeroes (“00”)',
       hint_prompt:
