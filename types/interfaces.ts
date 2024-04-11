@@ -94,12 +94,6 @@ export interface ModalState {
   meta: any
 }
 
-export interface ModalContextType {
-  modals: { [name: string]: ModalState }
-  open: (name: string, meta?: any) => void
-  close: (name: string) => void
-}
-
 export interface User {
   publicKey: { x: string; y: string }
   privateKey: any // TODO: figure out the proper type for this
