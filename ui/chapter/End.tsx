@@ -2,11 +2,12 @@
 
 import { useSaveAndReturn, usePathData } from 'hooks'
 import { Modal, useModalContext } from 'contexts/ModalContext'
-import { useAuthContext } from 'contexts/AuthContext'
 import { lessons } from 'content'
 import { useEffect, useState } from 'react'
 import DesktopEnd from './DesktopEnd'
 import MobileEnd from './MobileEnd'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 declare global {
   interface Window {
@@ -34,7 +35,7 @@ export default function End({
   gradientTheme: string
 }) {
   const modals = useModalContext()
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const saveAndReturn = useSaveAndReturn()
   const { chapterId, lessonId } = usePathData()
 

@@ -5,13 +5,15 @@ import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import Image from 'next/image'
 import { useProgressContext } from 'contexts/ProgressContext'
 import { getChapterKey, keys } from 'lib/progress'
-import { useAuthContext } from 'contexts/AuthContext'
+import { accountAtom } from 'state/state'
+import { useAtom } from 'jotai'
+
 export default function Hero() {
   const { chaptersUrl, aboutUrl } = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
   const { progress } = useProgressContext()
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
 
   const chapterKey = progress !== keys[0] ? getChapterKey(progress) : ''
 

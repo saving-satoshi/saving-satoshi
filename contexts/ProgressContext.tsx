@@ -4,8 +4,9 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import { ProgressContextType } from 'types'
 import { getProgress, setProgress } from 'api/progress'
 import { getProgressLocal, setProgressLocal } from 'api/local'
-import { useAuthContext } from './AuthContext'
 import { keys } from 'lib/progress'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export const defaultProgressContext = {
   progress: keys[0],
@@ -25,7 +26,7 @@ export default function ProgressProvider({
 }: {
   children: React.ReactNode
 }) {
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const [accountProgress, setAccountProgress] = useState<string>(
     defaultProgressContext.progress
   )

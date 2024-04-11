@@ -14,8 +14,9 @@ import {
 } from 'ui'
 import clsx from 'clsx'
 import { sleep } from 'utils'
-import { useAuthContext } from 'contexts/AuthContext'
 import { cssVarThemeChange } from 'lib/themeSelector'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_three.solo_one.title',
@@ -25,7 +26,7 @@ export const metadata = {
 }
 
 export default function Solo1({ lang }) {
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const t = useTranslations(lang)
   const [step, setStep] = useState(0)
   const [showText, setShowText] = useState(true)

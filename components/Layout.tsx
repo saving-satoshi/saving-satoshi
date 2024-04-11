@@ -5,9 +5,17 @@ import { Modal, useModalContext } from 'contexts/ModalContext'
 import AccountModal from 'components/Modals/Account'
 import SignInModal from 'components/Modals/SignIn'
 import SignUpModal from 'components/Modals/SignUp'
+import { useEffect } from 'react'
+import { useAuthFunctions } from 'state/AuthFunctions'
 
 export default function Layout({ children }: { children?: React.ReactNode }) {
   const { modals, close } = useModalContext()
+  const { check } = useAuthFunctions()
+
+  // Check if the user is authenticated
+  useEffect(() => {
+    check()
+  }, [check])
 
   return (
     <>
