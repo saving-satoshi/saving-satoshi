@@ -3,6 +3,7 @@
 import ChallengeListItem from './ChallengeListItem'
 import { lessons } from 'content'
 import { useLang, useTranslations } from 'hooks'
+import clsx from 'clsx'
 
 export default function ChallengeList({
   intros,
@@ -10,6 +11,14 @@ export default function ChallengeList({
   outros,
   challenges,
   chapterId,
+  lessonPage,
+}: {
+  intros: string[]
+  lessonStrings: string[]
+  outros: string[]
+  challenges: string[]
+  chapterId: string
+  lessonPage?: boolean
 }) {
   const lang = useLang()
   const t = useTranslations(lang)
@@ -55,7 +64,14 @@ export default function ChallengeList({
     <div className="flex w-full grow items-start justify-stretch font-nunito text-white md:mt-6">
       {challengesData.length > 0 && (
         <ul className="grid w-full items-start">
-          <h2 className="font-cbrush text-2xl">Introductions</h2>
+          <h2
+            className={clsx('text-lg', {
+              'flex text-base': lessonPage,
+            })}
+          >
+            <span className="text-white/50">1. </span>
+            Intro
+          </h2>
           {introsData.map((intro, index) => (
             <ChallengeListItem
               key={index + 1}
@@ -63,11 +79,17 @@ export default function ChallengeList({
               title={intro.navigation_title}
               chapterId={chapterId}
               lessonId={intro.introId}
+              lessonPage={lessonPage}
             />
           ))}
-          {Object.keys(groupedLessonData).map((title) => (
+          {Object.keys(groupedLessonData).map((title, index) => (
             <div key={title}>
-              <h2 className="font-cbrush text-2xl">
+              <h2
+                className={clsx('text-lg', {
+                  'flex text-base ': lessonPage,
+                })}
+              >
+                <span className="text-white/50">{index + 2}. </span>
                 {t(groupedLessonData[title][0].title)}
               </h2>
               <ul>
@@ -78,12 +100,22 @@ export default function ChallengeList({
                     title={lesson.navigation_title}
                     chapterId={chapterId}
                     lessonId={lesson.lessonId}
+                    lessonPage={lessonPage}
                   />
                 ))}
               </ul>
             </div>
           ))}{' '}
-          <h2 className="font-cbrush text-2xl">Outros</h2>
+          <h2
+            className={clsx('text-lg', {
+              'flex text-base': lessonPage,
+            })}
+          >
+            <span className="text-white/50">
+              {Object.keys(groupedLessonData).length + 2}.{' '}
+            </span>
+            Outro
+          </h2>
           {outrosData.map((outro, index) => (
             <ChallengeListItem
               key={index + 1}
@@ -91,6 +123,7 @@ export default function ChallengeList({
               title={outro.navigation_title}
               chapterId={chapterId}
               lessonId={outro.outroId}
+              lessonPage={lessonPage}
             />
           ))}
         </ul>

@@ -1,4 +1,4 @@
-'use client'
+/*'use client'
 
 import clsx from 'clsx'
 import Link from 'next/link'
@@ -82,15 +82,6 @@ export default function Tab({
   )
 
   return (
-    <Tooltip
-      id={`navbar-tab-tooltip-${index + 1}`}
-      position="bottom"
-      offset={0}
-      theme={theme}
-      className="no-underline"
-      disabled={!isUnlocked}
-      content={
-        <>
           <span className="text-m whitespace-nowrap leading-none text-white/50">
             {t(challenge.title)}
           </span>
@@ -199,4 +190,4 @@ export default function Tab({
       </span>
     </Tooltip>
   )
-}
+}*/

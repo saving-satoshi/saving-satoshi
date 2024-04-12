@@ -6,17 +6,20 @@ import Icon from 'shared/Icon'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import useLessonStatus from 'hooks/useLessonStatus'
 import { useProgressContext } from 'contexts/ProgressContext'
+import { usePathname } from 'next/navigation'
 
 export default function ChallengeItem({
   position,
   title,
   chapterId,
   lessonId,
+  lessonPage,
 }) {
   const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
   const { progress } = useProgressContext()
+  const pathName = usePathname() || ''
 
   const lessonMetaUnlocked = lessons[chapterId][lessonId].metadata
 
@@ -27,32 +30,33 @@ export default function ChallengeItem({
   const href = `${routes.chaptersUrl}/${chapterId}/${lessonId}`
   const ComponentType = isUnlocked ? Link : 'div'
 
+  const currentLesson = pathName.split('/').pop()
+
   return (
     <ComponentType
       href={href}
       className={clsx(
-        'justify-left relative flex w-full px-[15px] py-[11px] font-cbrush text-xl transition duration-150 ease-in-out',
+        'justify-left flex items-center px-[15px] py-[11px] pl-5 text-center transition duration-100 ease-in-out',
         {
-          'border-t border-white/25': true,
-          'bg-black/15': isUnlocked && !isPageCompleted,
-          'hover:bg-black/20': isUnlocked,
+          'bg-black/20 text-white/100':
+            (!lessonPage && isUnlocked && !isPageCompleted) ||
+            (lessonPage && currentLesson === lessonId),
+          'text-white/75':
+            (!lessonPage && isPageCompleted) ||
+            isUnlocked ||
+            (lessonPage && isUnlocked && currentLesson !== lessonId),
+          'hover:bg-black/20 hover:text-white': isUnlocked,
+          'pointer-events-none cursor-default text-white/50': !isUnlocked,
+          'text-base': lessonPage,
         }
       )}
     >
-      <span className="pr-1 opacity-50">{position + '. '}</span>
-      {t(title)}
-      {!isUnlocked && (
-        <Icon
-          icon="lock"
-          className="absolute right-[15px] top-1/2 h-3 w-3 -translate-y-1/2 opacity-25"
-        />
+      {isUnlocked && !isPageCompleted && (
+        <Icon icon="arrow" className="h-5 w-5" />
       )}
-      {isPageCompleted && (
-        <Icon
-          icon="check"
-          className="absolute right-[15px] top-1/2 h-[20px] w-[20px] -translate-y-1/2"
-        />
-      )}
+      {!isUnlocked && <Icon icon="lock" className="h-4 w-4 opacity-50" />}
+      {isPageCompleted && <Icon icon="check" className="h-6 w-6 opacity-75" />}
+      <span className="ml-1 text-lg">{t(title)}</span>
     </ComponentType>
   )
 }

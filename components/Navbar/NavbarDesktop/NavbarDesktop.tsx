@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import { useLocalizedRoutes, useTranslations, useLang } from 'hooks'
 import { chapters, lessons } from 'content'
 import Address from '../Address'
-import TabGroup from 'components/Navbar/NavbarDesktop/TabGroup'
+import DesktopTabGroup from 'components/Navbar/NavbarDesktop/DesktopTabGroup'
 import UserButton from '../UserButton'
 import Link from 'next/link'
 import HelpLink from '../HelpLink'
@@ -14,6 +14,9 @@ import { usePathData } from 'hooks'
 import { navbarThemeSelector } from 'lib/themeSelector'
 import { getChapterKey, getCurrentLessonKey, keys } from 'lib/progress'
 import { useAuthContext } from 'contexts/AuthContext'
+import { useState } from 'react'
+import HamburgerMenu from '../NavbarMobile/HamburgerMenu'
+import Menu from '../NavbarMobile/Menu'
 
 export default function NavbarDesktop({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
@@ -22,6 +25,8 @@ export default function NavbarDesktop({ params }) {
   const { slug, lesson: lessonId } = params
   const { chapterId } = usePathData()
   const { account } = useAuthContext()
+
+  const [isOpen, setIsOpen] = useState(false)
 
   const chapterLessons = lessons?.[chapterId]
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null
@@ -48,7 +53,7 @@ export default function NavbarDesktop({ params }) {
           <Address />
         </div>
         <nav className="flex items-center">
-          <TabGroup params={params} />
+          <DesktopTabGroup isOpen={isOpen} params={params} />
           <HelpLink params={params} />
           <span className="h-full w-[70px] items-stretch hover:bg-black/25">
             <UserButton />

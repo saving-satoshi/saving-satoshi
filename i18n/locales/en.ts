@@ -116,7 +116,7 @@ const translations = {
       paragraph_two:
         '—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto',
       paragraph_three:
-        '—Satoshi? The Satoshi? No, it couldn’t be. They’ve been presumed dead for over a century. Haven’t they?',
+        '—Satoshi? The Satoshi? No, it couldn’t be. They’ve been presumed dead for over a century.',
       paragraph_four: 'Haven’t they?',
       paragraph_five:
         'Holocat: “You better get to work. I can help, but you have to start meow.”',

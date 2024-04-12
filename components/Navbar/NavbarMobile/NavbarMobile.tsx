@@ -54,6 +54,7 @@ export default function NavbarMobile({ params }) {
   }
 
   function handleTabClick() {
+    document.body.classList.remove('overflow-y-hidden')
     setIsOpen(false)
   }
 

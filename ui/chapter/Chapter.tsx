@@ -136,7 +136,7 @@ export default function Chapter({ children, metadata, lang }) {
                   classes="mt-8"
                 />
               ) : null}
-              <div className="flex grow lg:grow-0">
+              <div className="flex grow py-2 lg:grow-0">
                 <div
                   aria-hidden={activeTab !== 'info' ? 'true' : 'false'}
                   className={clsx('-mr-[100%] block w-full', {

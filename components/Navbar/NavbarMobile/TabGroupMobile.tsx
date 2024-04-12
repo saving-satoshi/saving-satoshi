@@ -51,23 +51,10 @@ export default function TabGroup({ isOpen, clicked, params }) {
   })
 
   return (
-    <div className="mx-4 flex h-full flex-col items-stretch">
-      <div
-        className={clsx(
-          'py-2 text-[27px] text-white/50',
-          'duration-800 transform transition ease-in-out',
-          {
-            '-translate-x-[110%]': !isOpen,
-            'translate-x-0': isOpen,
-          }
-        )}
-      >
-        Chapter {chapterMeta.position + 1}.{' '}
-        <span className="ml-1 text-white">{t(chapterMeta.title)}</span>
-      </div>
+    <div className="mx-4 flex h-full flex-col items-stretch font-nunito">
       <ul
         className={clsx(
-          'grid w-full items-start',
+          'grid w-full items-start py-2',
           'duration-800 transform transition ease-in-out',
           {
             '-translate-x-[110%]': !isOpen,
@@ -75,7 +62,10 @@ export default function TabGroup({ isOpen, clicked, params }) {
           }
         )}
       >
-        <h2 className="font-cbrush text-2xl text-white">Introductions</h2>
+        <h2 className="text-lg text-white">
+          <span className="text-white/50">1. </span>
+          Intro
+        </h2>
         {introsData.map((intro, index) => (
           <div
             key={index}
@@ -103,7 +93,8 @@ export default function TabGroup({ isOpen, clicked, params }) {
             })}
             style={{ transitionDelay: `${60 * (index + 1)}ms` }}
           >
-            <h2 className="font-cbrush text-2xl text-white">
+            <h2 className="text-lg text-white">
+              <span className="text-white/50">{index + 2}. </span>
               {t(groupedLessonData[title][0].title)}
             </h2>
             <ul>
@@ -131,7 +122,12 @@ export default function TabGroup({ isOpen, clicked, params }) {
             </ul>
           </div>
         ))}
-        <h2 className="font-cbrush text-2xl text-white">Outros</h2>
+        <h2 className="text-lg text-white">
+          <span className="text-white/50">
+            {Object.keys(groupedLessonData).length + 2}.{' '}
+          </span>
+          Outro
+        </h2>
         {outrosData.map((outro, index) => (
           <div
             key={index}

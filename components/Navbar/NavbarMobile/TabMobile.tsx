@@ -46,17 +46,19 @@ export default function Tab({
   const pathName = usePathname() || ''
 
   const pathData = pathName.split('/').filter((p) => p)
+  const isRouteLesson = pathData.length === 4
 
-  const pnLessonId = pathData.pop()
+  const pnLessonId = isRouteLesson
+    ? pathData.pop()
+    : pathData[pathData.length - 2]
   if (!pnLessonId) {
     return null
   }
 
-  const lessonHref =
-    challenge.lessonId === chapters[slug].metadata.challenges[0]
-      ? chapters[slug].metadata.intros[0]
-      : challenge.lessonId
-  const href = `${routes.chaptersUrl}/${slug}/${lessonHref}`
+  const lessonId = pathName.split('/').pop()
+
+  const href = `${routes.chaptersUrl}/${slug}/${challenge.lessonId}`
+
   const navTitle = t(
     lessons[slug][challenge.lessonId].metadata.navigation_title
   )
@@ -67,24 +69,21 @@ export default function Tab({
       title={t(challenge.title)}
       onClick={() => clicked()}
       className={clsx(
-        'justify-left flex items-center border-t border-white/25 px-[15px] py-[11px] text-center text-[21px] text-white/50 transition duration-100 ease-in-out',
+        'justify-left flex items-center px-[15px] py-[11px] pl-5 text-center transition duration-100 ease-in-out',
         {
-          'border-t border-white/25': true,
-          'bg-black/15': isUnlocked && !isPageCompleted,
-          'hover:bg-black/20': isUnlocked,
+          'text-white/75 hover:bg-black/20 hover:text-white':
+            isUnlocked && challenge.lessonId !== lessonId,
+          'pointer-events-none cursor-default text-white/50': !isUnlocked,
+          'bg-black/20 text-white': challenge.lessonId === lessonId,
         }
       )}
     >
-      {index + 1}. <span className="ml-1 text-white">{navTitle}</span>
-      {!isUnlocked && (
-        <Icon
-          icon="lock"
-          className="absolute right-[15px] -mr-2 h-3 w-3 opacity-50"
-        />
+      {isUnlocked && !isPageCompleted && (
+        <Icon icon="arrow" className="h-5 w-5" />
       )}
-      {isPageCompleted && (
-        <Icon icon="check" className="absolute right-[5px] h-5 w-5" />
-      )}
+      {!isUnlocked && <Icon icon="lock" className="h-4 w-4 opacity-50" />}
+      {isPageCompleted && <Icon icon="check" className="h-6 w-6 opacity-75" />}
+      <span className="ml-1 text-lg">{navTitle}</span>
     </Link>
   )
 }
