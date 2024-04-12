@@ -1,4 +1,3 @@
-import Tab from './Tab'
 import { chapters, lessons } from 'content'
 import clsx from 'clsx'
 import { Tooltip } from 'ui'
@@ -15,12 +14,6 @@ export default function DesktopTabGroup({ isOpen, params }) {
   if (!chapter) {
     return null
   }
-
-  const challenges = chapter.metadata.challenges.map((lessonId: string) => {
-    const { title } = lessons[slug][lessonId].metadata
-
-    return { lessonId, title }
-  })
 
   return (
     <div className="flex-l flex h-full items-stretch justify-center border-x border-white/25 text-center font-nunito text-xl font-semibold text-white transition duration-100 ease-in-out hover:bg-black/25 md:w-[70px]">
