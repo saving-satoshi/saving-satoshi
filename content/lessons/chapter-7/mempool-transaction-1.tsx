@@ -6,9 +6,10 @@ import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { useAuthContext } from 'contexts/AuthContext'
 import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_seven.mempool_transaction_one.title',
@@ -91,7 +92,7 @@ export default function MempoolTransaction1({ lang }) {
     ],
   ]
 
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
@@ -212,12 +213,6 @@ function run() {
         return [false, "can't find a return in both of the methods"]
       }
     },
-    constraints: [
-      {
-        range: [1, 1, 34, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -330,12 +325,6 @@ def run():
         return [false, "can't find a return in both of the methods"]
       }
     },
-    constraints: [
-      {
-        range: [1, 1, 29, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {

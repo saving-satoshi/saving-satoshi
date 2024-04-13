@@ -6,9 +6,10 @@ import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { useAuthContext } from 'contexts/AuthContext'
 import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_four.public_key_three.title',
@@ -18,7 +19,7 @@ export const metadata = {
 
 export default function PublicKey3({ lang }) {
   const t = useTranslations(lang)
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const { currentLanguage } = useDataContext()
   const [privateKey, setPrivateKey] = useState('')
 
@@ -70,12 +71,6 @@ function privateKeyToPublicKey(privateKey) {
         return [false, 'Try logging out your answer']
       }
     },
-    constraints: [
-      {
-        range: [1, 1, 13, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -120,12 +115,6 @@ def privatekey_to_publickey(private_key):
         return [false, 'Try logging out your answer']
       }
     },
-    constraints: [
-      {
-        range: [1, 1, 11, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {

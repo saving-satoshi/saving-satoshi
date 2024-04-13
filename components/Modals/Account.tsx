@@ -5,15 +5,17 @@ import Icon from 'shared/Icon'
 import Avatar from 'components/Avatar'
 import { Button, Loader } from 'shared'
 import { useTranslations, useLang } from 'hooks'
-import { ToggleSwitch } from 'ui'
 import { useState } from 'react'
-import clsx from 'clsx'
-import { useAuthContext } from 'contexts/AuthContext'
 import { useProgressContext } from 'contexts/ProgressContext'
+import { useAtom } from 'jotai'
+import { accountAtom, isAuthLoadingAtom } from 'state/state'
+import { useAuthFunctions } from 'state/AuthFunctions'
 
 export default function AccountModal({ onClose, state }) {
   const lang = useLang()
-  const { account, isLoading: isAccountLoading, logout } = useAuthContext()
+  const [account] = useAtom(accountAtom)
+  const [isAccountLoading] = useAtom(isAuthLoadingAtom)
+  const { attemptLogout } = useAuthFunctions()
   const { isLoading: isProgressLoading } = useProgressContext()
   const t = useTranslations(lang)
   const [copied, setCopied] = useState(false)
@@ -28,7 +30,7 @@ export default function AccountModal({ onClose, state }) {
   const isLoaded = !isAccountLoading && !isProgressLoading
 
   const handleSignOut = async () => {
-    const logoutSuccess = await logout()
+    const logoutSuccess = await attemptLogout()
 
     onClose()
   }

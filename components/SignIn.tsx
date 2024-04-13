@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Button, Input, Loader } from 'shared'
 import { useTranslations } from 'hooks'
-import { useAuthContext } from 'contexts/AuthContext'
 import { Modal, useModalContext } from 'contexts/ModalContext'
 import clsx from 'clsx'
+import { useAuthFunctions } from 'state/AuthFunctions'
 
 export default function SignIn({
   lang,
@@ -16,7 +16,7 @@ export default function SignIn({
 }) {
   const t = useTranslations(lang)
   const modals = useModalContext()
-  const { login } = useAuthContext()
+  const { attemptLogin } = useAuthFunctions()
 
   const [loading, setLoading] = useState<boolean>(false)
   const [privateKey, setPrivateKey] = useState<string>('')
@@ -25,7 +25,7 @@ export default function SignIn({
     try {
       setLoading(true)
 
-      const loginSuccess = await login(privateKey.toLowerCase())
+      const loginSuccess = await attemptLogin(privateKey.toLowerCase())
       if (loginSuccess) {
         setPrivateKey('')
       }

@@ -14,11 +14,12 @@ import {
 } from 'ui'
 import { sleep } from 'utils'
 import clsx from 'clsx'
-import { useAuthContext } from 'contexts/AuthContext'
 import { cssVarThemeChange } from 'lib/themeSelector'
 import { usePathData } from 'hooks'
 import { lessons } from 'content'
 import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_three.coop_three.title',
@@ -29,7 +30,7 @@ export const metadata = {
 }
 
 export default function Coop3({ lang }) {
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const t = useTranslations(lang)
   const isSmallScreen = useMediaQuery({ width: 767 })
   const [step, setStep] = useState(0)

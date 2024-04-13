@@ -78,9 +78,6 @@ export const keys = [
   'CH6PUT1',
   'CH6PUT2',
   'CH6PUT3',
-  'CH6PUT4',
-  'CH6PUT5',
-  'CH6PUT6',
   'CH6OUT1',
 
   'CH7INT1',
@@ -88,6 +85,19 @@ export const keys = [
   'CH7INT3',
   'CH7MPT1',
   'CH7OUT1',
+
+  'CH8INT1',
+  'CH8INT2',
+  'CH8INT3',
+  'CH8BBK1',
+  'CH8BBK2',
+  'CH8BBK3',
+  'CH8BBK4',
+  'CH8BBK5',
+  'CH8BBK6',
+  'CH8BBK7',
+  'CH8BBK8',
+  'CH8OUT1',
 ]
 
 export const keysMeta = {
@@ -168,9 +178,6 @@ export const keysMeta = {
   CH6PUT1: { path: '/chapter-6/put-it-together-1' },
   CH6PUT2: { path: '/chapter-6/put-it-together-2' },
   CH6PUT3: { path: '/chapter-6/put-it-together-3' },
-  CH6PUT4: { path: '/chapter-6/put-it-together-4' },
-  CH6PUT5: { path: '/chapter-6/put-it-together-5' },
-  CH6PUT6: { path: '/chapter-6/put-it-together-6' },
   CH6OUT1: { path: '/chapter-6/outro-1' },
 
   CH7INT1: { path: '/chapter-7/intro-1' },
@@ -178,6 +185,19 @@ export const keysMeta = {
   CH7INT3: { path: '/chapter-7/intro-3' },
   CH7MPT1: { path: '/chapter-7/mempool-transaction-1' },
   CH7OUT1: { path: '/chapter-7/outro-1' },
+
+  CH8INT1: { path: '/chapter-8/intro-1' },
+  CH8INT2: { path: '/chapter-8/intro-2' },
+  CH8INT3: { path: '/chapter-8/intro-3' },
+  CH8BBK1: { path: '/chapter-8/building-blocks-1' },
+  CH8BBK2: { path: '/chapter-8/building-blocks-2' },
+  CH8BBK3: { path: '/chapter-8/building-blocks-3' },
+  CH8BBK4: { path: '/chapter-8/building-blocks-4' },
+  CH8BBK5: { path: '/chapter-8/building-blocks-5' },
+  CH8BBK6: { path: '/chapter-8/building-blocks-6' },
+  CH8BBK7: { path: '/chapter-8/building-blocks-7' },
+  CH8BBK8: { path: '/chapter-8/building-blocks-8' },
+  CH8OUT1: { path: '/chapter-8/outro-1' },
 }
 
 export const isLessonUnlocked = (

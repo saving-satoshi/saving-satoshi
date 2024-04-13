@@ -2,13 +2,14 @@
 
 import Icon from 'shared/Icon'
 import Avatar from 'components/Avatar'
-import { useAuthContext } from 'contexts/AuthContext'
 import { Modal, useModalContext } from 'contexts/ModalContext'
+import { useAtom } from 'jotai'
+import { accountAtom, isAuthLoadingAtom } from 'state/state'
 
 export default function UserButton() {
   const modals = useModalContext()
-
-  const { account, isLoading } = useAuthContext()
+  const [account] = useAtom(accountAtom)
+  const [isLoading] = useAtom(isAuthLoadingAtom)
 
   const handleClick = (name: Modal) => {
     modals.open(name)

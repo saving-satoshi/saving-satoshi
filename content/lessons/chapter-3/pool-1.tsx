@@ -4,11 +4,12 @@ import { useTranslations, useProceed } from 'hooks'
 import { Title } from 'ui'
 import { Button } from 'shared'
 import Avatar from 'components/Avatar'
-import { useAuthContext } from 'contexts/AuthContext'
 import { useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
 import { cssVarThemeChange } from 'lib/themeSelector'
 import Image from 'next/image'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_three.pool_one.title',
@@ -18,7 +19,7 @@ export const metadata = {
 }
 
 export default function Pool1({ lang }) {
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const t = useTranslations(lang)
 
   const proceed = useProceed()

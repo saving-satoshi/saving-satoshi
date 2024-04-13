@@ -14,8 +14,9 @@ import {
 } from 'ui'
 import { sleep } from 'utils'
 import clsx from 'clsx'
-import { useAuthContext } from 'contexts/AuthContext'
 import { cssVarThemeChange } from 'lib/themeSelector'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_three.pool_two.title',
@@ -26,7 +27,7 @@ export const metadata = {
 }
 
 export default function Pool2({ lang }) {
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const t = useTranslations(lang)
   const [step, setStep] = useState(0)
   const [protagonistsBlockAmount, setProtagonistsBlockAmount] = useState(0)

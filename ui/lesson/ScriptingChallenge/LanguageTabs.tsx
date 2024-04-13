@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { chapters } from 'content'
-import { EditorLanguages, LessonView } from 'types'
+import { EditorLanguages, LessonView, PlainEditorLanguages } from 'types'
 import { useLessonContext, Tooltip } from 'ui'
 import { languageMeta } from './config'
 
@@ -11,7 +11,7 @@ export default function LanguageTabs({
   noHide,
   languageLocked,
 }: {
-  languages: EditorLanguages
+  languages: EditorLanguages | PlainEditorLanguages
   value: string
   onChange: (val: string) => void
   noHide?: boolean

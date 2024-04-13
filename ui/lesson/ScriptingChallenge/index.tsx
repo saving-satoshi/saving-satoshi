@@ -9,17 +9,14 @@ import { EditorConfig, LessonDirection, StoredLessonData } from 'types'
 import { Lesson, LessonTabs } from 'ui'
 import { useMediaQuery, useDynamicHeight, useTranslations } from 'hooks'
 import { useProgressContext } from 'contexts/ProgressContext'
-import { useAuthContext } from 'contexts/AuthContext'
 import { setData } from 'api/data'
 import { Base64String } from 'types/classes'
 import clsx from 'clsx'
 import useDebounce from 'hooks/useDebounce'
 import { useDataContext } from 'contexts/DataContext'
-import {
-  getLanguageFromString,
-  getLanguageString,
-  Language,
-} from 'lib/SavedCode'
+import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 const tabData = [
   {
@@ -71,7 +68,7 @@ export default function ScriptingChallenge({
 }) {
   const t = useTranslations(lang)
   const { saveProgress, saveProgressLocal } = useProgressContext()
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const { currentLanguage, setCurrentLanguage } = useDataContext()
   const [code, setCode] = useState(
     config.languages[getLanguageString(currentLanguage)].defaultCode?.toString()
@@ -84,7 +81,6 @@ export default function ScriptingChallenge({
     config.languages[getLanguageString(currentLanguage)].hiddenRange
   )
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
-  console.log(language)
   const [challengeSuccess, setChallengeSuccess] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [errors, setErrors] = useState<string[]>([])
@@ -145,7 +141,8 @@ export default function ScriptingChallenge({
             0,
             data.code!.getDecoded().indexOf('# BEGIN VALIDATION BLOCK') - 1
           )
-          .replaceAll(/#.*\n\s*/g, '')
+          .replace(/\n\s*#.*\n?/g, '\n')
+          .replace(/(.+?)\s*#.*/g, '$1')
       } else {
         trimmedCode = trimLastTwoLines(data.code!.getDecoded())
       }
@@ -159,7 +156,8 @@ export default function ScriptingChallenge({
             0,
             data.code!.getDecoded().indexOf('//BEGIN VALIDATION BLOCK') - 1
           )
-          .replaceAll(/\s*\/\/.*(?:\n|$)/g, '\n')
+          .replace(/\s*\/\/.*(?:\n|$)/g, '\n')
+          .replace(/\/\*[\s\S]*?\*\//g, '\n')
       } else {
         trimmedCode = trimLastTwoLines(data.code!.getDecoded())
       }
@@ -225,7 +223,7 @@ export default function ScriptingChallenge({
               onValidate={handleEditorValidate}
               constraints={constraints}
               loadingSavedCode={loadingSavedCode}
-              rangesToCollapse={config.languages[language].rangesToCollapse}
+              rangeToNotCollapse={config.languages[language].rangeToNotCollapse}
               options={editorOptions}
             />
           </div>

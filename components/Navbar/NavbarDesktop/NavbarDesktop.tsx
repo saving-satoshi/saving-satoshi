@@ -13,7 +13,8 @@ import Icon from 'shared/Icon'
 import { usePathData } from 'hooks'
 import { navbarThemeSelector } from 'lib/themeSelector'
 import { getChapterKey, getCurrentLessonKey, keys } from 'lib/progress'
-import { useAuthContext } from 'contexts/AuthContext'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export default function NavbarDesktop({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
@@ -21,7 +22,7 @@ export default function NavbarDesktop({ params }) {
   const t = useTranslations(lang)
   const { slug, lesson: lessonId } = params
   const { chapterId } = usePathData()
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
 
   const chapterLessons = lessons?.[chapterId]
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null

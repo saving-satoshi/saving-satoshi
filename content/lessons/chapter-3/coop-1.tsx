@@ -4,12 +4,13 @@ import { useTranslations, useProceed } from 'hooks'
 import { Title } from 'ui'
 import { Button } from 'shared'
 import Avatar from 'components/Avatar'
-import { useAuthContext } from 'contexts/AuthContext'
 import { useMediaQuery } from 'hooks'
 import { useEffect } from 'react'
 import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
 import Image from 'next/image'
 import { cssVarThemeChange } from 'lib/themeSelector'
+import { accountAtom } from 'state/state'
+import { useAtom } from 'jotai'
 
 export const metadata = {
   title: 'chapter_three.coop_one.title',
@@ -18,7 +19,7 @@ export const metadata = {
 }
 
 export default function Coop1({ lang }) {
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const t = useTranslations(lang)
 
   const proceed = useProceed()

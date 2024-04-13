@@ -50,12 +50,6 @@ function encode_message(text){
     }
     return [false, 'Return a value']
   },
-  constraints: [
-    {
-      range: [1, 1, 15, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const python = {
@@ -91,12 +85,6 @@ def encode_message(text):
     }
     return [false, 'Return a value']
   },
-  constraints: [
-    {
-      range: [1, 1, 14, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const config: EditorConfig = {
