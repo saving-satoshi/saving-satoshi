@@ -13,10 +13,6 @@ export default function DesktopTabGroup({ params }) {
 
   const theme = themeSelector(lessons, lessonId, chapters, slug)
 
-  if (!chapter) {
-    return null
-  }
-
   useEffect(() => {
     function handleHover() {
       setIsOpen(true)
@@ -40,6 +36,10 @@ export default function DesktopTabGroup({ params }) {
       hamburgerIcon?.removeEventListener('mouseleave', handleHoverOut)
     }
   }, [])
+
+  if (!chapter) {
+    return null
+  }
 
   return (
     <div className="flex-l flex h-full items-stretch justify-center border-x border-white/25 text-center font-nunito text-xl font-semibold text-white transition duration-100 ease-in-out hover:bg-black/25 md:w-[70px]">
