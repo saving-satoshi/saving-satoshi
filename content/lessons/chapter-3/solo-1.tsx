@@ -19,6 +19,7 @@ import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
   title: 'chapter_three.solo_one.title',
+  navigation_title: 'chapter_three.pool_three.nav_title',
   theme: 'solo-1-theme',
   secondaryTheme: 'solo-1-secondary-theme',
   key: 'CH3SOL1',

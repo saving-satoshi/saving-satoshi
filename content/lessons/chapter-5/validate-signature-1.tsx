@@ -11,6 +11,7 @@ import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_one.title',
+  navigation_title: 'chapter_five.validate_signature_one.nav_title',
   key: 'CH5VLS1',
 }
 const javascript = {

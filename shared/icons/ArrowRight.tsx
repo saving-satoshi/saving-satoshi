@@ -10,14 +10,14 @@ export default function ArrowLeftIcon({ className }: { className: string }) {
       <path
         d="M4 10L15.8527 10"
         stroke="white"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M11.125 15L16 10L11.125 5"
         stroke="white"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )

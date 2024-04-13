@@ -61,15 +61,23 @@ export default function ChallengeList({
   })
 
   return (
-    <div className="flex w-full grow items-start justify-stretch font-nunito text-white md:mt-6">
+    <div
+      className={clsx(
+        'flex w-full grow items-start justify-stretch font-nunito text-white',
+        {
+          'md:mt-6': !lessonPage,
+        }
+      )}
+    >
       {challengesData.length > 0 && (
         <ul className="grid w-full items-start">
           <h2
-            className={clsx('text-lg', {
-              'flex text-base': lessonPage,
+            className={clsx('text-white', {
+              'text-lg font-bold': !lessonPage,
+              'flex pt-[11px] text-base font-semibold': lessonPage,
             })}
           >
-            <span className="text-white/50">1. </span>
+            <span className="pr-1 text-white/50">1.</span>
             Intro
           </h2>
           {introsData.map((intro, index) => (
@@ -85,11 +93,12 @@ export default function ChallengeList({
           {Object.keys(groupedLessonData).map((title, index) => (
             <div key={title}>
               <h2
-                className={clsx('text-lg', {
-                  'flex text-base ': lessonPage,
+                className={clsx('text-white', {
+                  'text-lg font-bold': !lessonPage,
+                  'flex text-base font-semibold': lessonPage,
                 })}
               >
-                <span className="text-white/50">{index + 2}. </span>
+                <span className="pr-1 text-white/50">{index + 2}.</span>
                 {t(groupedLessonData[title][0].title)}
               </h2>
               <ul>
@@ -107,12 +116,13 @@ export default function ChallengeList({
             </div>
           ))}{' '}
           <h2
-            className={clsx('text-lg', {
-              'flex text-base': lessonPage,
+            className={clsx('text-white', {
+              'text-lg font-bold': !lessonPage,
+              'flex text-base font-semibold': lessonPage,
             })}
           >
-            <span className="text-white/50">
-              {Object.keys(groupedLessonData).length + 2}.{' '}
+            <span className="pr-1 text-white/50">
+              {Object.keys(groupedLessonData).length + 2}.
             </span>
             Outro
           </h2>

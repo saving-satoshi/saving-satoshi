@@ -22,6 +22,7 @@ import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
 
 export const metadata = {
   title: 'chapter_three.coop_three.title',
+  navigation_title: 'chapter_three.coop_three.nav_title',
   theme: 'solo-1-theme',
   secondaryTheme: 'solo-1-secondary-theme',
   key: 'CH3COO3',

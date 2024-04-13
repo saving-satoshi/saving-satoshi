@@ -12,6 +12,7 @@ import Image from 'next/image'
 
 export const metadata = {
   title: 'chapter_three.pool_one.title',
+  navigation_title: 'chapter_three.pool_one.nav_title',
   image: '/assets/images/chapter-2-intro-1.jpg',
   key: 'CH3POL1',
 }

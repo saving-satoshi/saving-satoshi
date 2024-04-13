@@ -38,15 +38,14 @@ export default function ChallengeItem({
       className={clsx(
         'justify-left flex items-center px-[15px] py-[11px] pl-5 text-center transition duration-100 ease-in-out',
         {
-          'bg-black/20 text-white/100':
+          'bg-black/20':
             (!lessonPage && isUnlocked && !isPageCompleted) ||
             (lessonPage && currentLesson === lessonId),
-          'text-white/75':
+          'opacity-75':
             (!lessonPage && isPageCompleted) ||
-            isUnlocked ||
             (lessonPage && isUnlocked && currentLesson !== lessonId),
-          'hover:bg-black/20 hover:text-white': isUnlocked,
-          'pointer-events-none cursor-default text-white/50': !isUnlocked,
+          'hover:bg-black/20 hover:opacity-100': isUnlocked,
+          'pointer-events-none cursor-default opacity-50': !isUnlocked,
           'text-base': lessonPage,
         }
       )}
@@ -54,9 +53,16 @@ export default function ChallengeItem({
       {isUnlocked && !isPageCompleted && (
         <Icon icon="arrow" className="h-5 w-5" />
       )}
-      {!isUnlocked && <Icon icon="lock" className="h-4 w-4 opacity-50" />}
-      {isPageCompleted && <Icon icon="check" className="h-6 w-6 opacity-75" />}
-      <span className="ml-1 text-lg">{t(title)}</span>
+      {!isUnlocked && <Icon icon="lock" className="h-4 w-4" />}
+      {isPageCompleted && <Icon icon="check" className="h-6 w-6" />}
+      <span
+        className={clsx('ml-1', {
+          'text-base': lessonPage,
+          'text-lg': !lessonPage,
+        })}
+      >
+        {t(title)}
+      </span>
     </ComponentType>
   )
 }

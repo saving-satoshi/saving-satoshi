@@ -9,6 +9,7 @@ import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
   title: 'chapter_three.coop_two.title',
+  navigation_title: 'chapter_three.coop_two.nav_title',
   key: 'CH3COO2',
 }
 

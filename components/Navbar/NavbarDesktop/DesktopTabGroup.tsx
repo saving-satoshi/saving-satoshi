@@ -3,9 +3,11 @@ import clsx from 'clsx'
 import { Tooltip } from 'ui'
 import ChallengeList from 'ui/chapter/ChallengeList'
 import { themeSelector } from 'lib/themeSelector'
+import { useEffect, useState } from 'react'
 
-export default function DesktopTabGroup({ isOpen, params }) {
+export default function DesktopTabGroup({ params }) {
   const { slug, lesson: lessonId } = params
+  const [isOpen, setIsOpen] = useState(false)
 
   const chapter = chapters[slug]
 
@@ -14,6 +16,30 @@ export default function DesktopTabGroup({ isOpen, params }) {
   if (!chapter) {
     return null
   }
+
+  useEffect(() => {
+    function handleHover() {
+      setIsOpen(true)
+    }
+
+    function handleHoverOut() {
+      setIsOpen(false)
+    }
+
+    const tooltip = document.getElementById('hamburger-tooltip')
+    const hamburgerIcon = document.getElementById('hamburger-tooltip-icon')
+    tooltip?.addEventListener('mouseenter', handleHover)
+    tooltip?.addEventListener('mouseleave', handleHoverOut)
+    hamburgerIcon?.addEventListener('mouseenter', handleHover)
+    hamburgerIcon?.addEventListener('mouseleave', handleHoverOut)
+
+    return () => {
+      tooltip?.removeEventListener('mouseenter', handleHover)
+      tooltip?.removeEventListener('mouseleave', handleHoverOut)
+      hamburgerIcon?.removeEventListener('mouseenter', handleHover)
+      hamburgerIcon?.removeEventListener('mouseleave', handleHoverOut)
+    }
+  }, [])
 
   return (
     <div className="flex-l flex h-full items-stretch justify-center border-x border-white/25 text-center font-nunito text-xl font-semibold text-white transition duration-100 ease-in-out hover:bg-black/25 md:w-[70px]">
@@ -34,15 +60,19 @@ export default function DesktopTabGroup({ isOpen, params }) {
           />
         }
       >
-        <div className="relative flex h-full w-[50px] cursor-pointer flex-col flex-wrap items-center justify-center text-center font-nunito text-xl font-semibold text-white md:w-[70px]">
-          <div className="felx-wrap flex flex-col justify-start">
+        <div
+          id="hamburger-tooltip-icon"
+          className="relative flex h-full w-[50px] cursor-pointer flex-col flex-wrap items-center justify-center text-center font-nunito text-xl font-semibold text-white md:w-[70px]"
+        >
+          <div className="flex flex-col flex-wrap items-start justify-start">
             <div
               className={clsx(
                 'h-0.5 w-5 origin-top-right bg-white transition-all ease-in-out',
                 'mb-[5px]',
                 {
                   'transform-none': !isOpen,
-                  '-translate-y-[1.8px] translate-x-0 -rotate-45': isOpen,
+                  '-translate-x-[3.2px] -translate-y-[1.8px] -rotate-45':
+                    isOpen,
                 }
               )}
               aria-hidden="true"
@@ -53,7 +83,8 @@ export default function DesktopTabGroup({ isOpen, params }) {
                 'mt-0.5',
                 {
                   'w-[15px] transform-none': !isOpen,
-                  'w-5 translate-x-[1.2px] translate-y-[3px] rotate-45': isOpen,
+                  'w-5 -translate-x-[2.2px] translate-y-[3px] rotate-45':
+                    isOpen,
                 }
               )}
               aria-hidden="true"

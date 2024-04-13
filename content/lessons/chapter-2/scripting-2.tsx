@@ -1,6 +1,5 @@
 'use client'
 
-import * as crypto from 'crypto'
 import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
@@ -12,6 +11,7 @@ import { useDataContext } from 'contexts/DataContext'
 
 export const metadata = {
   title: 'chapter_two.scripting_one.title',
+  navigation_title: 'chapter_two.scripting_two.nav_title',
   key: 'CH2SCR2',
 }
 

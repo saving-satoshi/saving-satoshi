@@ -3,18 +3,14 @@
 import { getData } from 'api/data'
 import { useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
-import {
-  detectLanguage,
-  Language,
-  organizeImports,
-  organizeJavaScriptRequires,
-} from 'lib/SavedCode'
+import { detectLanguage, Language, organizeImports } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { EditorConfig } from 'types'
 import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
+  navigation_title: 'chapter_four.address_three.nav_title',
   image: '/assets/images/chapter-4-intro-1.jpg',
   key: 'CH6PUT6',
 }

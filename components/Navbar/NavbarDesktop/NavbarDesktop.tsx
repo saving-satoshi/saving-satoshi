@@ -48,7 +48,7 @@ export default function NavbarDesktop({ params }) {
           <Address />
         </div>
         <nav className="flex items-center">
-          <DesktopTabGroup isOpen={false} params={params} />
+          <DesktopTabGroup params={params} />
           <HelpLink params={params} />
           <span className="h-full w-[70px] items-stretch hover:bg-black/25">
             <UserButton />

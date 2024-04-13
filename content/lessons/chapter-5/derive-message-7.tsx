@@ -12,6 +12,7 @@ import { chapters } from 'content/chapters'
 
 export const metadata = {
   title: 'chapter_five.derive_message_one.title',
+  navigation_title: 'chapter_five.derive_message_seven.nav_title',
   key: 'CH5DRM7',
 }
 

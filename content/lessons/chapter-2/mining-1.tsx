@@ -19,6 +19,7 @@ import { sleep } from 'utils'
 
 export const metadata = {
   title: 'chapter_two.mining_one.title',
+  navigation_title: 'chapter_two.mining_one.nav_title',
   key: 'CH2MIN1',
 }
 

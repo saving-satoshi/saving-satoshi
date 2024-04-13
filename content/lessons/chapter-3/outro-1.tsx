@@ -7,6 +7,7 @@ import { cssVarThemeChange } from 'lib/themeSelector'
 
 export const metadata = {
   title: 'chapter_three.outro_one.title',
+  navigation_title: 'chapter_three.outro_one.nav_title',
   image: '/assets/images/chapter-3-finish.jpg',
   theme: 'bg-transparent/20',
   secondaryTheme: 'bg-[#202233]',
