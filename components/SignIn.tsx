@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { Button, Input, Loader } from 'shared'
 import { useTranslations } from 'hooks'
-import { Modal, useModalContext } from 'contexts/ModalContext'
 import clsx from 'clsx'
 import { useAuthFunctions } from 'state/AuthFunctions'
+import { Modal } from 'state/state'
+import { useModalFunctions } from 'state/ModalFunctions'
 
 export default function SignIn({
   lang,
@@ -15,7 +16,7 @@ export default function SignIn({
   onSignIn?: () => void
 }) {
   const t = useTranslations(lang)
-  const modals = useModalContext()
+  const { open } = useModalFunctions()
   const { attemptLogin } = useAuthFunctions()
 
   const [loading, setLoading] = useState<boolean>(false)
@@ -41,7 +42,7 @@ export default function SignIn({
   }
 
   function handleCreateClick() {
-    modals.open(Modal.SignUp, { onSignUpComplete: false })
+    open(Modal.SignUp, { onSignUpComplete: false })
   }
 
   return (

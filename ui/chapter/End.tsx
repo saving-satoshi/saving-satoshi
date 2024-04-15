@@ -1,13 +1,13 @@
 'use client'
 
 import { useSaveAndReturn, usePathData } from 'hooks'
-import { Modal, useModalContext } from 'contexts/ModalContext'
 import { lessons } from 'content'
 import { useEffect, useState } from 'react'
 import DesktopEnd from './DesktopEnd'
 import MobileEnd from './MobileEnd'
 import { useAtom } from 'jotai'
-import { accountAtom } from 'state/state'
+import { accountAtom, Modal } from 'state/state'
+import { useModalFunctions } from 'state/ModalFunctions'
 
 declare global {
   interface Window {
@@ -34,7 +34,7 @@ export default function End({
   theme: string
   gradientTheme: string
 }) {
-  const modals = useModalContext()
+  const { open } = useModalFunctions()
   const [account] = useAtom(accountAtom)
   const saveAndReturn = useSaveAndReturn()
   const { chapterId, lessonId } = usePathData()
@@ -58,7 +58,7 @@ export default function End({
 
   const handleClick = () => {
     if (!account) {
-      modals.open(Modal.SignUp, { onSignUpComplete: true })
+      open(Modal.SignUp, { onSignUpComplete: true })
     } else {
       saveAndReturn()
     }

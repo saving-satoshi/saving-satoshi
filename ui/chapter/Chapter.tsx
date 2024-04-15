@@ -18,9 +18,9 @@ import { getLessonKey } from 'lib/progress'
 import { keys, keysMeta } from 'lib/progress'
 import { useFeatureContext } from 'contexts/FeatureProvider'
 import useEnvironment from 'hooks/useEnvironment'
-import { Modal, useModalContext } from 'contexts/ModalContext'
 import { useAtom } from 'jotai'
-import { accountAtom, isAuthLoadingAtom } from 'state/state'
+import { accountAtom, isAuthLoadingAtom, Modal } from 'state/state'
+import { useModalFunctions } from 'state/ModalFunctions'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -33,7 +33,7 @@ export default function Chapter({ children, metadata, lang }) {
   const { progress, isLoading } = useProgressContext()
   const [account] = useAtom(accountAtom)
   const [isAccountLoading] = useAtom(isAuthLoadingAtom)
-  const modals = useModalContext()
+  const { open } = useModalFunctions()
   const { isFeatureEnabled } = useFeatureContext()
   const isEnabled = isFeatureEnabled(
     `${metadata.slug.replace('-', '_')}_enabled`
@@ -76,7 +76,7 @@ export default function Chapter({ children, metadata, lang }) {
   ]
 
   const handleClick = (name: Modal) => {
-    modals.open(name)
+    open(name)
   }
 
   useEffect(() => {
