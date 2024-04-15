@@ -43,7 +43,7 @@ function Tooltip({
   const handleMouseEnter = () => {
     updatePosition()
     updateZIndex()
-    !disabled && setVisible(true)
+    ;(visibleOverride || !disabled) && setVisible(true)
   }
 
   const handleMouseMove = (e) => {
@@ -110,14 +110,14 @@ function Tooltip({
     const tooltip = tooltipRef.current
 
     if (tooltip) {
-      tooltip.style.zIndex = '20'
+      tooltip.style.zIndex = '10'
 
       findTooltips().forEach((otherTooltip: HTMLElement) => {
         if (otherTooltip === tooltipRef.current) {
           return
         }
 
-        otherTooltip.style.zIndex = '10'
+        otherTooltip.style.zIndex = '20'
       })
     }
   }
@@ -140,11 +140,11 @@ function Tooltip({
     <>
       <span
         className={clsx(
-          'tooltip absolute left-0 top-0 z-10 max-w-md border border-white px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
+          'tooltip absolute left-[-1px] top-0 z-10 max-w-fit border border-white text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
           theme,
           {
-            'pointer-events-all opacity-100': visible,
-            'pointer-events-none opacity-0': !visible,
+            'pointer-events-all opacity-100': visible && !disabled,
+            'pointer-events-none opacity-0': !visible || disabled,
           }
         )}
         ref={tooltipRef}
@@ -164,7 +164,7 @@ function Tooltip({
           )}
           ref={arrowRef}
         />
-        <span className="font-nunito leading-none text-white">
+        <span className="tooltip-height block overflow-y-scroll px-[10px] py-2 font-nunito leading-none text-white">
           {typeof content === 'string' ? t(content) : content}
         </span>
       </span>

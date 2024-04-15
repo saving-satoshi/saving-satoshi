@@ -36,7 +36,7 @@ export default function ChallengeItem({
     <ComponentType
       href={href}
       className={clsx(
-        'justify-left flex items-center px-[15px] py-[11px] pl-5 text-center transition duration-100 ease-in-out',
+        'justify-left flex items-center text-center transition duration-100 ease-in-out',
         {
           'bg-black/20':
             (!lessonPage && isUnlocked && !isPageCompleted) ||
@@ -46,15 +46,16 @@ export default function ChallengeItem({
             (lessonPage && isUnlocked && currentLesson !== lessonId),
           'hover:bg-black/20 hover:opacity-100': isUnlocked,
           'pointer-events-none cursor-default opacity-50': !isUnlocked,
-          'text-base': lessonPage,
+          'px-[10px] py-[8px] text-base': lessonPage,
+          'px-[15px] py-[11px] ': !lessonPage,
         }
       )}
     >
       {isUnlocked && !isPageCompleted && (
         <Icon icon="arrow" className="h-5 w-5" />
       )}
-      {!isUnlocked && <Icon icon="lock" className="h-4 w-4" />}
-      {isPageCompleted && <Icon icon="check" className="h-6 w-6" />}
+      {!isUnlocked && <Icon icon="lock" className="h-3 w-3" />}
+      {isPageCompleted && <Icon icon="check" className="h-5 w-5" />}
       <span
         className={clsx('ml-1', {
           'text-base': lessonPage,

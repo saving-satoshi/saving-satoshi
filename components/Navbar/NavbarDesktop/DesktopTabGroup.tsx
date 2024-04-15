@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { Tooltip } from 'ui'
 import ChallengeList from 'ui/chapter/ChallengeList'
 import { themeSelector } from 'lib/themeSelector'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export default function DesktopTabGroup({ params }) {
   const { slug, lesson: lessonId } = params
@@ -13,42 +13,32 @@ export default function DesktopTabGroup({ params }) {
 
   const theme = themeSelector(lessons, lessonId, chapters, slug)
 
-  useEffect(() => {
-    function handleHover() {
-      setIsOpen(true)
-    }
-
-    function handleHoverOut() {
-      setIsOpen(false)
-    }
-
-    const tooltip = document.getElementById('hamburger-tooltip')
-    const hamburgerIcon = document.getElementById('hamburger-tooltip-icon')
-    tooltip?.addEventListener('mouseenter', handleHover)
-    tooltip?.addEventListener('mouseleave', handleHoverOut)
-    hamburgerIcon?.addEventListener('mouseenter', handleHover)
-    hamburgerIcon?.addEventListener('mouseleave', handleHoverOut)
-
-    return () => {
-      tooltip?.removeEventListener('mouseenter', handleHover)
-      tooltip?.removeEventListener('mouseleave', handleHoverOut)
-      hamburgerIcon?.removeEventListener('mouseenter', handleHover)
-      hamburgerIcon?.removeEventListener('mouseleave', handleHoverOut)
-    }
-  }, [])
+  function handleClick() {
+    setIsOpen(!isOpen)
+  }
 
   if (!chapter) {
     return null
   }
 
   return (
-    <div className="flex-l flex h-full items-stretch justify-center border-x border-white/25 text-center font-nunito text-xl font-semibold text-white transition duration-100 ease-in-out hover:bg-black/25 md:w-[70px]">
+    <div
+      onClick={handleClick}
+      className={clsx(
+        'flex-l flex h-full items-stretch justify-center border-x border-white/25 text-center font-nunito text-xl font-semibold text-white transition duration-100 ease-in-out hover:bg-black/25 md:w-[70px]',
+        {
+          'bg-black/25': isOpen,
+        }
+      )}
+    >
       <Tooltip
         id="hamburger-tooltip"
         position="bottom"
         offset={0}
         theme={theme}
         className="no-underline"
+        visibleOverride={isOpen}
+        disabled={!isOpen}
         content={
           <ChallengeList
             lessonPage

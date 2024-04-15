@@ -66,15 +66,16 @@ export default function ChallengeList({
         'flex w-full grow items-start justify-stretch font-nunito text-white',
         {
           'md:mt-6': !lessonPage,
+          'overflow-y-scroll ': lessonPage,
         }
       )}
     >
       {challengesData.length > 0 && (
-        <ul className="grid w-full items-start">
+        <ul className="grid w-full items-start overflow-x-hidden">
           <h2
             className={clsx('text-white', {
               'text-lg font-bold': !lessonPage,
-              'flex pt-[11px] text-base font-semibold': lessonPage,
+              'flex px-[10px] pt-2 text-[15px] font-semibold': lessonPage,
             })}
           >
             <span className="pr-1 text-white/50">1.</span>
@@ -95,7 +96,7 @@ export default function ChallengeList({
               <h2
                 className={clsx('text-white', {
                   'text-lg font-bold': !lessonPage,
-                  'flex text-base font-semibold': lessonPage,
+                  'flex px-[10px] pt-2 text-[15px] font-semibold': lessonPage,
                 })}
               >
                 <span className="pr-1 text-white/50">{index + 2}.</span>
@@ -118,7 +119,7 @@ export default function ChallengeList({
           <h2
             className={clsx('text-white', {
               'text-lg font-bold': !lessonPage,
-              'flex text-base font-semibold': lessonPage,
+              'flex px-[10px] pt-2 text-[15px] font-semibold': lessonPage,
             })}
           >
             <span className="pr-1 text-white/50">

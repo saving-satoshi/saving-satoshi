@@ -94,13 +94,13 @@ export default function Chapter({ children, metadata, lang }) {
     }
   }, [])
 
-  useEffect(() => {
+  /*useEffect(() => {
     !isAccountLoading &&
       !isLoading &&
       account &&
       progress.at(2) !== '1' &&
       router.push(`${pathName}#chapter-${progress.at(2)}`)
-  }, [account, isAccountLoading, isLoading, progress])
+  }, [account, isAccountLoading, isLoading, progress])*/
 
   return (
     <ChapterContext.Provider value={context}>
