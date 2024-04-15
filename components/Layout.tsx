@@ -17,7 +17,7 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
   // Check if the user is authenticated
   useEffect(() => {
     check()
-  }, [check])
+  }, [])
 
   return (
     <>
