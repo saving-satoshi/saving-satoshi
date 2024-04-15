@@ -50,6 +50,7 @@ export default function HelpLink({ params }: { params: any }) {
         theme={theme}
         offset={0}
         className="no-underline"
+        zIndex={20}
         content={
           <div className="flex">
             <span className="whitespace-nowrap">

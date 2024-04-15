@@ -18,6 +18,7 @@ function Tooltip({
   offset = 12,
   disabled,
   visibleOverride,
+  zIndex = 10,
 }: {
   children: React.ReactNode
   className?: string
@@ -31,6 +32,7 @@ function Tooltip({
   theme?: string
   disabled?: boolean
   visibleOverride?: boolean
+  zIndex?: number
 }) {
   const targetRef = useRef<HTMLSpanElement>(null)
   const tooltipRef = useRef<HTMLSpanElement>(null)
@@ -42,7 +44,6 @@ function Tooltip({
 
   const handleMouseEnter = () => {
     updatePosition()
-    updateZIndex()
     ;(visibleOverride || !disabled) && setVisible(true)
   }
 
@@ -106,28 +107,6 @@ function Tooltip({
     }
   }
 
-  const updateZIndex = () => {
-    const tooltip = tooltipRef.current
-
-    if (tooltip) {
-      tooltip.style.zIndex = '10'
-
-      findTooltips().forEach((otherTooltip: HTMLElement) => {
-        if (otherTooltip === tooltipRef.current) {
-          return
-        }
-
-        otherTooltip.style.zIndex = '20'
-      })
-    }
-  }
-
-  const findTooltips = () => {
-    const tooltips = Array.from(document.querySelectorAll('.tooltip'))
-
-    return tooltips.filter((tooltip) => tooltip !== tooltipRef.current)
-  }
-
   useEffect(() => {
     visibleOverride && handleMouseEnter()
     window.addEventListener('mousemove', handleMouseMove)
@@ -140,8 +119,9 @@ function Tooltip({
     <>
       <span
         className={clsx(
-          'tooltip absolute left-[-1px] top-0 z-10 max-w-fit border border-white text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
+          'tooltip absolute left-[-1px] top-0 max-w-fit border border-white text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
           theme,
+          `z-${zIndex.toString()}`,
           {
             'pointer-events-all opacity-100': visible && !disabled,
             'pointer-events-none opacity-0': !visible || disabled,
