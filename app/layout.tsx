@@ -1,6 +1,6 @@
 import 'styles/globals.css'
 import Fonts from 'components/Fonts'
-import { ProgressProvider, FeatureProvider } from 'contexts'
+import { ProgressProvider } from 'contexts'
 import Layout from 'components/Layout'
 import dynamic from 'next/dynamic'
 
@@ -18,13 +18,11 @@ export default function RootLayout({
       <head id="head"></head>
       <body className="font-cbrush">
         <Fonts />
-        <FeatureProvider>
-          <DataProvider>
-            <ProgressProvider>
-              <Layout>{children}</Layout>
-            </ProgressProvider>
-          </DataProvider>
-        </FeatureProvider>
+        <DataProvider>
+          <ProgressProvider>
+            <Layout>{children}</Layout>
+          </ProgressProvider>
+        </DataProvider>
       </body>
     </html>
   )

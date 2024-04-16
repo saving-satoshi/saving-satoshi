@@ -16,11 +16,11 @@ import useLessonStatus from 'hooks/useLessonStatus'
 import { useProgressContext } from 'contexts/ProgressContext'
 import { getLessonKey } from 'lib/progress'
 import { keys, keysMeta } from 'lib/progress'
-import { useFeatureContext } from 'contexts/FeatureProvider'
 import useEnvironment from 'hooks/useEnvironment'
 import { useAtom } from 'jotai'
 import { accountAtom, isAuthLoadingAtom, Modal } from 'state/state'
 import { useModalFunctions } from 'state/ModalFunctions'
+import { useFeatureFunctions } from 'state/FeatureFunctions'
 
 const ChapterContext = createContext<ChapterContextType | null>(null)
 
@@ -34,7 +34,7 @@ export default function Chapter({ children, metadata, lang }) {
   const [account] = useAtom(accountAtom)
   const [isAccountLoading] = useAtom(isAuthLoadingAtom)
   const { open } = useModalFunctions()
-  const { isFeatureEnabled } = useFeatureContext()
+  const { isFeatureEnabled } = useFeatureFunctions()
   const isEnabled = isFeatureEnabled(
     `${metadata.slug.replace('-', '_')}_enabled`
   )

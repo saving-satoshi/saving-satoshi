@@ -15,3 +15,6 @@ export const modalsAtom = atom({
 export const accountAtom = atom<any | undefined>(undefined)
 
 export const isAuthLoadingAtom = atom<boolean>(false)
+
+export const isLoadingFeaturesAtom = atom<boolean>(true)
+export const featuresAtom = atom<{ [key: string]: number }>({})
