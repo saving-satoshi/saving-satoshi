@@ -1,86 +1,135 @@
 'use client'
 
-import { useProceed, useTranslations } from 'hooks'
-import { ChapterIntro, CodeExample, HolocatQuestion } from 'ui'
-
-import { Button } from 'shared'
-import { useEffect, useState } from 'react'
-import { getData } from 'api/data'
-import { Data } from 'types'
-import { chapters } from 'content/chapters'
+import { ScriptingChallenge, LessonInfo, CodeExample, Title, Table } from 'ui'
+import { EditorConfig } from 'types'
+import { useTranslations } from 'hooks'
+import { Text } from 'ui'
+import { useState } from 'react'
+import { getLessonKey } from 'lib/progress'
 
 export const metadata = {
-  title: 'chapter_four.address_one.title',
+  title: 'chapter_eight.building_blocks_three.title',
   key: 'CH8BBK3',
 }
 
 export default function BuildingBlocks3({ lang }) {
-  const proceed = useProceed()
   const t = useTranslations(lang)
 
-  const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
-  const dataObject = prevData?.data ? prevData?.data : ''
-  const [isLoading, setIsLoading] = useState(true)
-  const [tooltipVisible, setTooltipVisible] = useState(false)
+  const javascript = {
+    program: `//BEGIN VALIDATION BLOCK
+const addr_pfajurn = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
+const value_uzglwbxj = 100000000;
+const output_otcqjgpd = Output.from_options(addr_pfajurn, value_uzglwbxj);
+const isCorrect_uflkrpot = output_otcqjgpd.serialize().toString('hex') === '00e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd1'
+console.log(isCorrect_uflkrpot && 'true')
+;
+console.log("KILL")`,
+    defaultFunction: {
+      name: 'privateKeyToPublicKey',
+      args: ['privateKey'],
+    },
+    defaultCode: `const assert = require('assert');
+const bech32 = require('@savingsatoshi/bech32js');
+// Use the bech32 library to find the version and data components from the address
+// See the library source code for the exact definition
+// https://github.com/saving-satoshi/bech32js/blob/main/bech32.js
 
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
+class Output {
+  constructor() {
+    this.value = 0;
+    this.witness_version = 0;
+    this.witness_data = Buffer.alloc(0);
   }
 
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
+  static from_options(addr, value) {
+    assert(Number.isInteger(value));
+    const self = new this();
+    // YOUR CODE HERE
+    return self;
   }
 
-  const getPrevLessonData = async () => {
-    const data = await getData('CH4PKY4')
-    if (data?.answer) {
-      setPrevData({
-        lesson_id: 'CH4PKY4',
-        data: data.answer,
-      })
-    }
+  serialize() {
+    // YOUR CODE HERE
+  }
+}
+`,
+    validate: async (answer: string) => {
+      if (answer) {
+        if (answer === 'true') {
+          return [true, '']
+        } else {
+          return [false, 'recheck your methods']
+        }
+      } else {
+        return [false, "can't find a return in both of the methods"]
+      }
+    },
   }
 
-  useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
-  }, [])
+  const python = {
+    program: `
+print("KILL")`,
+    defaultFunction: {
+      name: 'privatekey_to_publickey',
+      args: ['private_key'],
+    },
+    defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
+# https://github.com/saving-satoshi/bitcoin_rpcpy/blob/main/bitcoin_rpcpy/bitcoin_rpc.py
+
+print(Bitcoin.rpc())
+`,
+    validate: async (answer) => {
+      if (answer) {
+        if (answer === '3007592928481984.23') {
+          return [true, '']
+        } else {
+          return [null, '']
+        }
+      } else {
+        return [null, '']
+      }
+    },
+  }
+
+  const config: EditorConfig = {
+    defaultLanguage: 'javascript',
+    languages: {
+      javascript,
+      python,
+    },
+  }
+
+  const [language, setLanguage] = useState('javascript')
+  const handleSelectLanguage = (language: string) => {
+    setLanguage(language)
+  }
 
   return (
-    !isLoading && (
-      <ChapterIntro
-        className="my-8"
-        heading={t('chapter_four.address_one.heading')}
-      >
-        <p className="mt-2 text-lg md:text-xl">
-          {t('chapter_four.address_one.paragraph_one')}
-        </p>
-        <CodeExample className="mt-4" code={dataObject} language="shell" />
-        <p className="mt-8 inline-block text-lg md:text-xl">
-          {t('chapter_four.address_one.paragraph_two')}
-          <a
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            href={t('chapter_four.address_one.tooltip_one.link')}
-            target="_blank"
-            className="inline text-lg italic hover:underline md:text-xl"
-          >
-            {t('chapter_four.address_one.tooltip_one.highlighted')}
-            <HolocatQuestion
-              theme={chapters['chapter-4'].metadata.theme}
-              inline
-              id="target-difficulty"
-              question={t('chapter_four.address_one.tooltip_one.question')}
-              href={t('chapter_four.address_one.tooltip_one.link')}
-              visible={tooltipVisible}
-            />
-          </a>
-          .
-        </p>
-
-        <Button onClick={proceed} classes="mt-10 max-md:w-full">
-          {t('shared.next')}
-        </Button>
-      </ChapterIntro>
-    )
+    <ScriptingChallenge
+      lang={lang}
+      config={config}
+      saveData
+      lessonKey={getLessonKey('chapter-8', 'building_blocks-3')}
+      successMessage={t('chapter_eight.building_blocks_three.success')}
+      onSelectLanguage={handleSelectLanguage}
+    >
+      <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+        <Title>{t('chapter_eight.building_blocks_three.heading')}</Title>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_three.paragraph_one')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_three.paragraph_two')}
+        </Text>
+        <CodeExample
+          className="mt-4 font-space-mono"
+          code={`Bitcoin.rpc(method, params)`}
+          language="shell"
+        />
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_three.paragraph_three')}
+        </Text>
+      </LessonInfo>
+    </ScriptingChallenge>
   )
 }
