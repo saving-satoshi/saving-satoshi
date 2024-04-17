@@ -1578,11 +1578,31 @@ const translations = {
       intro: `Intro`,
       paragraph_one: `—DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Mr. Vanderpoole, can you prove that you did no such thing? Mysterious hacker and his holocat, can you prove Vanderpoole had attempted this crime against Bitcoin?”`,
     },
+    building_blocks_six: {
+      title: 'Building Blocks',
+      nav_title: 'Determine the subsidy',
+      heading: 'The Coinbase Transaction',
+      paragraph_one:
+        'The first transaction in every block is called the coinbase. It may also be referred to as the "0th" transaction (referring to txs[0]) and it has a few very special properties. First of all, it has no inputs! This is because it does not spend any existing coins. Second, it\'s output value is strictly defined by the protocol (despite what Vanderpoole might say!). This is the mechanism by which miners both collect fees from transactions, and generate new coins.',
+      paragraph_two:
+        "It's fairly easy to understand how total transaction fees in a block are summed up, but where does that block subsidy value come from? How does every participant in the Bitcoin network determine exactly how much new bitcoin miners are allowed to generate at any given time?",
+      paragraph_three:
+        'This is the algorithm written by Satoshi Nakamoto that has remained an immutable core property of the Bitcoin system for over 120 years:',
+      list_one:
+        'Starting with the block #1 mined in 2009, the block subsidy is 50 BTC (or 5000000000 satoshis)',
+      list_two: 'Every 210,000 blocks that value is cut in half.',
+      paragraph_four:
+        'At block height 209,999 the subsisdy was 50 BTC. In the very next block at height 210,000 the subsidy was 25 BTC, and so on. After 63 "halvings" the subsidy will be one single satoshi. The last halving will drop the subsidy to zero.',
+      paragraph_five: 'AND THAT LAST HALVING WAS YESTERDAY!',
+      paragraph_six:
+        'Finish the implementation of the following function that accepts a block height as an argument and returns the value of the subsidy in satoshis.',
+      success: 'The get_subsidy function looks great. Nice work!',
+    },
     outro_one: {
       title: 'Outro',
-      heading: 'We\'re doing it live!',
+      heading: "We're doing it live!",
       paragraph_one:
-        'You found the longest chain and proved it to everyone! You are one step closer to discrediting Vanderpoole, needless to say he didn\'t answer anymore of Ms. Chunk\'s questions.',
+        "You found the longest chain and proved it to everyone! You are one step closer to discrediting Vanderpoole, needless to say he didn't answer anymore of Ms. Chunk's questions.",
     },
   },
 
