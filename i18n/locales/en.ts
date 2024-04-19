@@ -352,7 +352,7 @@ const translations = {
 
     hashing_four: {
       title: 'Zeroes',
-      nav_title: 'Try to hash something',
+      nav_title: 'Find a hash with a zero',
       heading:
         'Enter anything until you find a hash that starts with a zero (“0”)',
       hint_prompt:
@@ -363,7 +363,7 @@ const translations = {
 
     hashing_five: {
       title: 'Zeroes',
-      nav_title: 'Try to hash something',
+      nav_title: 'Lets turn up the heat',
       heading: 'That wasn’t too hard!',
       paragraph_one:
         'Let’s make it a bit more tricky. Try to find a hash that starts with two zeroes ("00").',
@@ -371,7 +371,7 @@ const translations = {
 
     hashing_six: {
       title: 'Zeroes',
-      nav_title: 'Try to hash something',
+      nav_title: 'Find a hash with two zeroes',
       heading:
         'Enter anything until you find a hash that starts with two zeroes (“00”)',
       hint_prompt:
@@ -382,6 +382,7 @@ const translations = {
 
     scripting_one: {
       title: 'Automation',
+      nav_title: 'Automated hashing',
       heading: 'Let’s make the computer do this for us.',
       paragraph_one:
         'OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.',
@@ -404,6 +405,7 @@ const translations = {
 
     scripting_two: {
       title: 'Automation',
+      nav_title: 'Build a hash function',
       paragraph_one:
         'Alright, time to write and run your own code. Write a script that generates a sha256 hash that begins with five zeroes ("00000..."). Your code should repeatedly call the sha256 function with different input until the output satisfies this requirement. You should try incrementing an integer inside a loop to get different inputs. In cryptography this number may referred to as a "nonce" or "number used once".',
       python: {
@@ -427,6 +429,7 @@ const translations = {
 
     mining_one: {
       title: 'Into the mine',
+      nav_title: 'Mining Blocks',
       heading_one: 'Now that we know how mining works, let’s see it in action',
       heading_two: 'You’re mining now',
       heading_three: 'Nice work!',
@@ -470,6 +473,7 @@ const translations = {
     },
     outro_one: {
       title: 'Outro',
+      nav_title: 'Chapter complete',
       heading: 'Great Job!',
       paragraph_one:
         'The machines roar to life. Everything seems to be working. A map appears on the computer that shows the locations of other warehouses filled with ASICs that have come online across the world. Looks like they were activated when you completed the mining challenge!',
