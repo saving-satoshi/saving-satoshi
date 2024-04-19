@@ -1221,7 +1221,7 @@ const translations = {
     },
     in_out_four: {
       title: 'The ins and outs',
-      nav_title: 'Build the input class',
+      nav_title: 'The input class',
       heading: 'Looking at the Class Input implementation',
       paragraph_one: 'It should have the following method:',
       paragraph_two:
