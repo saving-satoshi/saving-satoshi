@@ -901,8 +901,8 @@ const translations = {
         'SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message with the private keys.” - Satoshi',
     },
     derive_message_one: {
-      title: 'The message in question',
-      nav_title: 'Chapter complete',
+      title: 'Derive the message',
+      nav_title: 'The message in question',
       heading: 'Vanderpoole says he signed a message with Satoshi’s keys:',
       code_one: `-----BEGIN BITCOIN SIGNED MESSAGE----- \n \n I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever Bitcoin transaction confirmed in block #170. This message is signed with the same private key. \n \n -----BEGIN BITCOIN SIGNATURE----- \n \n`,
       code_two:
@@ -1165,8 +1165,11 @@ const translations = {
 
   chapter_six: {
     title: `Offense is the best defense`,
+    paragraph_one:
+      'Vanderpoole is out to get you now that you’ve exposed him as a fraud. But despite that, plenty of scared people continue to cling to the myth he created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.',
     intro_one: {
       title: 'Intro',
+      nav_title: 'Was that really Satoshi',
       paragraph_one:
         '—SATOSHI NAKAMOTO: ”Great work. Now the world can see for itself that Vanderpoole is a fraud. Even if some don’t believe it yet, they will before our work is done.” – Satoshi Nakamoto',
       paragraph_two:
@@ -1177,6 +1180,7 @@ const translations = {
         '—HOLOCAT: “Hardly the only thing that’s made you sound stupid until now.”',
     },
     intro_two: {
+      nav_title: 'Paying Mike Ramen',
       paragraph_one:
         '—HOLOCAT: “Hardly the only thing that’s made you sound stupid until now.”',
       paragraph_two:
@@ -1186,10 +1190,9 @@ const translations = {
       paragraph_five:
         '—MIKE RAMEN: “You’ve got guts. But you’ll need more. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to get it. It’s going to cost, so I could use your help pulling my funds off the multi-signature that you helped me set up. You’ve still got one of my keys, right?”',
     },
-    paragraph_one:
-      'Vanderpoole is out to get you now that you’ve exposed him as a fraud. But despite that, plenty of scared people continue to cling to the myth he created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.',
     in_out_one: {
       title: 'The ins and outs',
+      nav_title: 'Find the unspent UTXO',
       paragraph_one:
         "Mike Ramen needs 1 BTC to book his flight to Vanderpoole's private island. You decide to send him 1 BTC from your chapter 3 mining rewards, which have been sent by the mining pool to the address you created in chapter 4.",
       paragraph_two:
@@ -1199,6 +1202,7 @@ const translations = {
     },
     in_out_two: {
       title: 'The ins and outs',
+      nav_title: 'The receiving address',
       paragraph_one:
         'Mike Ramen gives you an address to send your 1 BTC contribution to:',
       paragraph_two:
@@ -1207,6 +1211,7 @@ const translations = {
     },
     in_out_three: {
       title: 'The ins and outs',
+      nav_title: 'Transaction steps',
       paragraph_one:
         'Segregated Witness transactions work just like their legacy predecessors. There are a few global values like version and locktime. There is an array of inputs (UTXOs we want to spend) and an array of outputs (new UTXOs we want to create, for other people to spend in the future). There will also be an array of witnesses, one for each input. That is where signatures and scripts will go instead of the scriptSig.',
       paragraph_two:
@@ -1216,6 +1221,7 @@ const translations = {
     },
     in_out_four: {
       title: 'The ins and outs',
+      nav_title: 'Build the input class',
       heading: 'Looking at the Class Input implementation',
       paragraph_one: 'It should have the following method:',
       paragraph_two:
@@ -1290,6 +1296,7 @@ const translations = {
     },
     in_out_five: {
       title: 'The ins and outs',
+      nav_title: 'Build the output class',
       heading: 'Finish the implementation of Class Output',
       paragraph_one: 'It should have the following method:',
       paragraph_two: `It accepts a Bitcoin address as a string (like the address from Mike Ramen) and a value as an integer. The value is expressed as a number of satoshis! Remember, 1 BTC = 100000000 satoshis. You will need to use our bech32 library again to decode the address into version and data components.
@@ -1347,6 +1354,7 @@ const translations = {
     },
     put_it_together_one: {
       title: 'Putting it all together',
+      nav_title: 'Build the transaction digest',
       heading: 'Transaction digest',
       paragraph_one:
         'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
@@ -1441,6 +1449,7 @@ const translations = {
     },
     put_it_together_two: {
       title: 'Putting it all together',
+      nav_title: 'Build the witness class',
       heading: 'Sign and Populate the Witness!',
       paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called compute_input_signature(index: int, key: int) to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the digest() method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
       paragraph_two:
@@ -1460,6 +1469,7 @@ const translations = {
     },
     put_it_together_three: {
       title: 'Put it All Together',
+      nav_title: 'Sign the transaction',
       heading: 'Finish the implementation of Class Transaction',
       paragraph_one:
         'To complete our transaction we will need a serialize() method that outputs the entire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
@@ -1537,6 +1547,7 @@ const translations = {
     },
     outro_one: {
       title: 'Outro',
+      nav_title: 'Chapter complete',
       heading: 'You did it!!!',
       paragraph_one:
         "You successfully built a transaction from scratch to pay Mike Ramen for his help. Now that we are done here let's get off this island...",
