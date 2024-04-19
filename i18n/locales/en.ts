@@ -363,7 +363,7 @@ const translations = {
 
     hashing_five: {
       title: 'Zeroes',
-      nav_title: 'Lets turn up the heat',
+      nav_title: 'Turning up the heat',
       heading: 'That wasn’t too hard!',
       paragraph_one:
         'Let’s make it a bit more tricky. Try to find a hash that starts with two zeroes ("00").',
