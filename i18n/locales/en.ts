@@ -382,7 +382,7 @@ const translations = {
 
     scripting_one: {
       title: 'Automation',
-      nav_title: 'Automated hashing',
+      nav_title: 'Hashing the nonce',
       heading: 'Let’s make the computer do this for us.',
       paragraph_one:
         'OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.',
@@ -429,7 +429,7 @@ const translations = {
 
     mining_one: {
       title: 'Into the mine',
-      nav_title: 'Mining Blocks',
+      nav_title: 'Mining blocks',
       heading_one: 'Now that we know how mining works, let’s see it in action',
       heading_two: 'You’re mining now',
       heading_three: 'Nice work!',
@@ -527,6 +527,7 @@ const translations = {
       '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking holocat. It’s not a coincidence.',
     intro_one: {
       title: 'Hashing it out',
+      nav_title: 'A 51% attack!',
       paragraph_one:
         '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is under a 51% attack! Vanderpoole used a virus to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the Bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply.” – Satoshi Nakamoto',
       paragraph_two:
@@ -537,6 +538,7 @@ const translations = {
 
     solo_one: {
       title: 'You vs. Bitrey',
+      nav_title: 'Mineing alone',
       step_zero_heading: 'Let’s give it a try',
       step_zero_paragraph_one:
         'While you’re waiting for the pool operators you reached out to, you decide to fend off BitRey by yourself. Here’s how your hash rate stacks up. How do you think this will go?',
@@ -550,6 +552,7 @@ const translations = {
 
     pool_one: {
       title: 'Pool vs. BitRey',
+      nav_title: 'Finding friends',
       waiting_screen_heading: 'We need support!',
       waiting_screen_paragraph_one:
         'Your miners in the warehouse alone don’t stand a chance. If you combine your hashing power with other pools, you might be able to hold the line against the assault.',
@@ -561,6 +564,7 @@ const translations = {
 
     pool_two: {
       title: 'Pool vs. BitRey',
+      nav_title: 'Mining together',
       step_zero_heading: 'Here we go',
       step_zero_paragraph_one:
         'When you combine your hashrate with the other pool operators, can you stand up against BitRey?',
@@ -571,6 +575,7 @@ const translations = {
 
     coop_one: {
       title: 'Coop vs. BitRey',
+      nav_title: 'Something went wrong',
       heading: 'Something is not quite right yet.',
       paragraph_one:
         'Hash Hoppers, the one with the most hash power, is finding all your blocks but others find nothing.',
@@ -582,6 +587,7 @@ const translations = {
 
     coop_two: {
       title: 'Coop vs. BitRey',
+      nav_title: 'The extraNonce',
       heading: 'What is the extraNonce?',
       paragraph_one:
         'For the Stratum mining pool protocol (not bitcoin protocol), the coinbase transaction also has something called the “extra nonce”. When providing miners with the block data, mining pools divide the extra nonce into two parts: “extranonce1” and “extranonce2”.',
@@ -599,6 +605,7 @@ const translations = {
 
     coop_three: {
       title: 'Coop vs. BitRey',
+      nav_title: 'Mining with teamwork',
       step_zero_heading: 'One more time...',
       step_zero_paragraph_one:
         'Let’s see if we stand a chance against BitRey now with our improved strategy of dividing the nonce space.',
@@ -609,6 +616,7 @@ const translations = {
 
     split_one: {
       title: 'Splitting Rewards',
+      nav_title: 'Split the fair share',
       heading: 'Nicely done.',
       paragraph_one:
         'Not only did you defend the network against BitRey, you also earned bitcoin as a reward!',
@@ -626,6 +634,7 @@ const translations = {
 
     split_two: {
       title: 'Splitting Rewards',
+      nav_title: 'Calculating rewards',
       step_zero_heading: 'Let’s review everyone’s efforts',
       step_zero_paragraph:
         'We will re-run the battle. This time we will only focus on our pool, specifically on the number of partial solutions each miner found.',
@@ -648,6 +657,7 @@ const translations = {
 
     outro_one: {
       title: 'Outro',
+      nav_title: 'Chapter complete',
       heading: 'Take that, Vanderpoole! ',
       paragraph_one:
         'Great work! You and your collaborators were able to fend off Vanderpoole’s 51% attack by pooling your resources together. Empty blocks are no longer being submitted and it looks like he’s given up.',
