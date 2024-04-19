@@ -1192,7 +1192,7 @@ const translations = {
     },
     in_out_one: {
       title: 'The ins and outs',
-      nav_title: 'Find the unspent UTXO',
+      nav_title: 'The unspent UTXO',
       paragraph_one:
         "Mike Ramen needs 1 BTC to book his flight to Vanderpoole's private island. You decide to send him 1 BTC from your chapter 3 mining rewards, which have been sent by the mining pool to the address you created in chapter 4.",
       paragraph_two:
@@ -1571,6 +1571,7 @@ const translations = {
       'You and Mike Ramen arrive first via plane, then via dune buggy, and then via rowboat at Vanderpoole’s private island.',
     intro_one: {
       title: 'Intro',
+      nav_title: 'Infiltrating the compound',
       paragraph_one:
         'You ask your compatriots whether they are worried about being spotted by Vanderpoole’s army of security drones.',
       paragraph_two:
@@ -1583,6 +1584,7 @@ const translations = {
         'You and Mike Ramen scale the castle walls of Vanderpoole’s primary residence. To your surprise, his home overflows with pro-bitcoin art, books, and paper magazines. He is or rather was, a true bitcoiner. A collection of miners dating back 125 years sit anointed in display cases. That’s when you see it: Vanderpoole’s workshop.',
     },
     intro_two: {
+      nav_title: 'The control room',
       paragraph_one:
         'The gigantic room is a mess, though its layout is methodical. Inside open notebooks, Vanderpoole’s designs for the backdoor that clogged up the bitcoin network are sketched out in detail. You were right: It was all a lie, but one told not by a conniving villain but by a desperate believer in bitcoin whose company could no longer keep up with modern miners and so infected the pools with a virus.',
       paragraph_two:
@@ -1593,11 +1595,13 @@ const translations = {
         'Investors will sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.',
     },
     intro_three: {
+      nav_title: 'Correcting the software',
       paragraph_one:
         "But you can't just leave the crippled mining code on Vanderpoole's server to keep infecting all the mining pools. You have to fix it! As you read through the code, Holocat shows you a mempool display and it is filling up with unconfirmed transactions. The sooner this code gets fixed, the better.",
     },
     mempool_transaction_one: {
       title: 'Building blocks',
+      nav_title: 'Assemble a block',
       heading: 'Code Challenge',
       paragraph_one:
         "This is the code you find on Vanderpoole's server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is assemble_block() (in Python, assembleBlock() in JavaScript). If you run the code as Vanderpoole left it, you will see the problem right away.",
@@ -1631,6 +1635,7 @@ const translations = {
     },
     outro_one: {
       title: 'Outro',
+      nav_title: 'Chapter complete',
       heading: 'You did it!!!',
       paragraph_one:
         'You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.',
