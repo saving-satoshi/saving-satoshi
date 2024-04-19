@@ -274,7 +274,7 @@ const translations = {
       'You circle the warehouse in your Budgetcopter no less than three times. Your Budgetcopter’s heat detector picks up nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.',
 
     intro_one: {
-      title: 'Hashing out a plan',
+      title: 'Intro',
       nav_title: 'The warehouse',
       paragraph_one:
         'HOLOCAT: “Boy, what a dump. This place had better store some sardines or dried fish. I’d even settle for some e-nip."',
@@ -526,8 +526,8 @@ const translations = {
     paragraph_two:
       '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking holocat. It’s not a coincidence.',
     intro_one: {
-      title: 'Hashing it out',
-      nav_title: 'A 51% attack!',
+      title: 'Intro',
+      nav_title: 'Hashing it out',
       paragraph_one:
         '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is under a 51% attack! Vanderpoole used a virus to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the Bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply.” – Satoshi Nakamoto',
       paragraph_two:
@@ -711,8 +711,8 @@ const translations = {
       'As you settle at your desk, you take a deep breath and drift off to replay the day’s events. Your hands keep themselves busy playing with the mysterious envelope, as you wonder who sent it. ',
 
     intro_one: {
-      title: 'Securing the bag',
-      nav_title: 'Secutring the funds',
+      title: 'Intro',
+      nav_title: 'Secutring the bag',
       paragraph_one:
         'HOLOCAT: “One of us better sleep. You need to get home and start contacting the mining pools. They’ll want to know more about it than the world will.”',
       paragraph_two:
@@ -778,7 +778,7 @@ const translations = {
 
     address_one: {
       title: 'Address',
-      nav_title: 'A one way stree',
+      nav_title: 'A one way street',
       heading: 'Nice work!',
       paragraph_one:
         'And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’ll learn about that in the next challenge.',
@@ -873,7 +873,8 @@ const translations = {
     paragraph_one:
       'It’s late, and you’re getting sleepy, but as you shut your eyes for a moment, a double dose of bad news arrives. 1) Vanderpoole is back on TV. 2) He is claiming to be the great-grandson of Satoshi Nakamoto. He also looks sleep-deprived.',
     intro_one: {
-      title: 'Don’t trust, verify',
+      title: 'Intro',
+      nav_title: 'Don’t trust, verify',
       paragraph_one:
         '—DEBORAH CHUNK: “Mr. Vanderpool. You recently made a staggering claim on anti-social media that you are the great-grandson of Satoshi Nakamoto. Is that correct? Is this true?”',
       paragraph_two:
@@ -885,12 +886,14 @@ const translations = {
       paragraph_five: '—DEBORAH CHUNK: But why wait so long to reveal this?',
     },
     intro_two: {
+      nav_title: "Vanderpoole's bold claim",
       paragraph_one:
         '—VANDERPOOLE: “I didn’t have the courage. There have always been rumors about my family’s history, ones that I could easily put to rest. But I wasn’t ready for that much publicity. After all, I live a humble, secluded life on a private island/dude ranch/castle.”',
       paragraph_two:
         '—VANDERPOOLE: “But now that bitcoin’s future is on the line, I knew I had to tell the world. I can only say I’m sorry for not coming forth sooner. The CD-ROM also contains Satoshi’s Nakamoto’s revised plans for bitcoin. He always regretted the 21 million supply limit. Even though I plan to fulfill my grandfather’s dream of hard forking bitcoin in favor of perpetual bitcoin issuance.”',
     },
     intro_three: {
+      nav_title: 'A message from Satoshi',
       paragraph_one:
         '—Your TXM4H-A Hover Screen chirps to life. You have a new message.',
       paragraph_two: '—HOLOCAT: Don’t forget to boop my nose.',
@@ -898,7 +901,8 @@ const translations = {
         'SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message with the private keys.” - Satoshi',
     },
     derive_message_one: {
-      title: 'Derive the message',
+      title: 'The message in question',
+      nav_title: 'Chapter complete',
       heading: 'Vanderpoole says he signed a message with Satoshi’s keys:',
       code_one: `-----BEGIN BITCOIN SIGNED MESSAGE----- \n \n I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever Bitcoin transaction confirmed in block #170. This message is signed with the same private key. \n \n -----BEGIN BITCOIN SIGNATURE----- \n \n`,
       code_two:
@@ -907,6 +911,7 @@ const translations = {
       paragraph_two: 'What does this even mean?',
     },
     derive_message_two: {
+      nav_title: 'Finding the public key',
       paragraph_one:
         'We learned in chapter 4 that private keys are huge random numbers kept secret by whomever generated them. We can use Elliptic Curve math to derive a public key from that private key.',
       paragraph_two:
@@ -915,6 +920,7 @@ const translations = {
         'Vanderpoole has provided a signature and a message. Where is the public key?',
     },
     derive_message_three: {
+      nav_title: "Find Satoshi's signature",
       heading: 'Let’s start with finding Satoshi’s signature',
       paragraph_one:
         'Hal Finney <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">claimed</Link> Satoshi sent him the first Bitcoin transaction ever, confirmed in block #170. That transaction can be found on a <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">block explorer here</Link>. In the scriptSig of input #0 there is a chunk of data following pushbytes... Find it and paste it below.',
@@ -923,6 +929,7 @@ const translations = {
         'Nicely done! This is actually Satoshi’s signature, authorizing the transfer of his Bitcoin to Hal Finney.',
     },
     derive_message_four: {
+      nav_title: "Find Satoshi's public key",
       heading: 'So where is his public key?',
       paragraph_one:
         'It’s actually stored along with the bitcoin Satoshi generated by mining block #9.',
@@ -934,12 +941,14 @@ const translations = {
       success: 'That’s it!',
     },
     derive_message_five: {
+      nav_title: 'Verifiying the signature next',
       paragraph_one:
         'So Satoshi created a transaction that sent 50 BTC to his public key. Then he used his private key to create a signature that transferred 10 of those BTC to Hal Finney’s public key.',
       paragraph_two:
         'Next we need to learn how to verify a signature. But something is still missing... what is the message Satoshi signed to authorize the transaction for Hal?',
     },
     derive_message_six: {
+      nav_title: 'Derive the message',
       heading: 'Derive the message from the transaction',
       paragraph_one:
         'It should be clear by just looking at the block explorer web page that a Bitcoin transaction has many different parts. Some parts are just small numbers and some parts are larger chunks of data. The Bitcoin protocol has a very specific algorithm for creating messages from transactions, so those messages can be signed by private keys.',
@@ -970,6 +979,7 @@ const translations = {
       success_message_line_thirteen: 'locktime:',
     },
     derive_message_seven: {
+      nav_title: 'Build the signed message',
       paragraph_one: {
         a: "It's impossible to sign a message containing it's own signature, so the",
         b: 'needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.',
@@ -984,15 +994,18 @@ const translations = {
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F',
         highlighted: 'scriptSig',
       },
+      success: "Nice! You've constructed a signed message.",
     },
     verify_signature_one: {
       title: 'Verify the signature',
+      nav_title: 'Verifying the signature',
       heading: 'Finally we have a message!',
       paragraph_one:
         'We also have a signature we know Satoshi created with his own private keys, and we have his public key. Let’s learn how to verify the signature and then we can try to verify Vanderpoole’s signature.',
     },
     verify_signature_two: {
       title: 'Verify the signature',
+      nav_title: 'Hash the message',
       heading: 'Hash the transaction digest',
       paragraph_one:
         'The serialized transaction data we compiled in the last step is actually too long to sign or verify with ECDSA.',
@@ -1005,6 +1018,7 @@ const translations = {
       success: 'Nicely done!',
     },
     verify_signature_three: {
+      nav_title: 'Deocde the signature',
       heading: 'Decode the Signature',
       label_one: 'Paste the R value',
       label_two: 'Paste the S value',
@@ -1016,6 +1030,7 @@ const translations = {
         "# Satoshi's signature, from the input scriptSig of the tx to Hal Finney",
     },
     verify_signature_four: {
+      nav_title: 'Decode the public key',
       heading: 'Decode the Public Key',
       label_one: 'Paste the x coordinate',
       label_two: 'Paste the y coordinate',
@@ -1026,6 +1041,7 @@ const translations = {
     },
     verify_signature_five: {
       title: 'Verify the signature',
+      nav_title: 'Test the signature',
       heading: 'Verify the signature!',
       success: "You've done it! You've verified Satoshi's signature!",
       paragraph_one:
@@ -1051,6 +1067,7 @@ const translations = {
     },
     validate_signature_one: {
       title: 'Validate the signature',
+      nav_title: 'Prepare the message',
       heading: "Prepare Vanderpoole's message for verification",
       paragraph_one:
         'Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">Bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we\'ve already defined, but the preparation of the data is a bit different.',
@@ -1061,6 +1078,7 @@ const translations = {
       success: 'Nicely Done',
     },
     validate_signature_two: {
+      nav_title: 'Prepare the signature',
       heading: 'Prepare Vanderpoole’s signature for verification',
       paragraph_one:
         'The Bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.',
@@ -1081,6 +1099,7 @@ const translations = {
     },
     validate_signature_three: {
       title: 'Validate the signature',
+      nav_title: 'See if Vanderpoole was lying',
       heading: 'So, is Vanderpoole a liar?!',
       paragraph_one:
         "Let's gather all the necessary components for the program and verify if Vanderpoole's signature actually originated from the private key linked to Satoshi's public key! Please fill in the missing parameters needed to execute the verify() function using the provided code.",
@@ -1091,6 +1110,7 @@ const translations = {
     },
     validate_signature_four: {
       title: 'Validate the signature',
+      nav_title: 'Find the correct key',
       heading: 'How did Vanderpoole even create that signature?',
       paragraph_one:
         'Holocat chimes in and says a defector in BitRey has sent us a list of public keys Vanderpoole commonly uses, maybe he used one of these keys to sign the message.',
@@ -1103,6 +1123,7 @@ const translations = {
     },
     outro_one: {
       title: 'Outro',
+      nav_title: 'Chapter complete',
       heading: 'Vanderpoole lied!',
       paragraph_one:
         "You didn't trust, you verified.<br>In doing so you discovered the whole story about his family was a fabrication, and you proved it to the whole world. This casts a big shadow on his credibility, and the credibility of his company.",

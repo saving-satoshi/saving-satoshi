@@ -186,7 +186,7 @@ export default function DeriveMessage7({ lang }) {
       lang={lang}
       config={config}
       lessonKey={getLessonKey('chapter-5', 'derive-message-7')}
-      successMessage=""
+      successMessage={t('chapter_five.derive_message_seven.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>
