@@ -125,22 +125,34 @@ export default function Tab({
                 >
                   <Link
                     href={challenge.lessonId}
-                    className="flex flex-nowrap py-1"
+                    className={clsx(
+                      'flex flex-nowrap items-center py-1 hover:opacity-100',
+                      {
+                        'opacity-50':
+                          challenge.lessonId !== pnLessonId && isLessonUnlock,
+                        'opacity-25': !isLessonUnlock,
+                      }
+                    )}
                   >
-                    <span className="pr-1 opacity-50">{index + 1 + '. '}</span>
-                    {t(navTitle)}
                     <Icon
                       icon="lock"
-                      className={clsx('mx-1 mt-[2px] h-3 w-3 opacity-50', {
+                      className={clsx('mx-1 h-4 w-5', {
                         hidden: isLessonUnlock,
                       })}
                     />
                     <Icon
                       icon="check"
-                      className={clsx('h-5 w-5 opacity-50', {
+                      className={clsx('mx-1 h-5 w-5', {
                         hidden: !isPageComplete,
                       })}
                     />
+                    <Icon
+                      icon="arrow"
+                      className={clsx('mx-1 h-5 w-5 opacity-100', {
+                        hidden: !isLessonUnlock || isPageComplete,
+                      })}
+                    />
+                    {t(navTitle)}
                   </Link>
                 </div>
               )
