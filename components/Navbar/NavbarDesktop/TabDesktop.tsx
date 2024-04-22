@@ -87,8 +87,8 @@ export default function Tab({
       className="no-underline"
       disabled={!isUnlocked}
       content={
-        <>
-          <span className="text-m whitespace-nowrap leading-none text-white/50">
+        <div className="flex min-w-64 flex-col items-stretch">
+          <span className="whitespace-nowrap px-2.5 py-2 text-left font-semibold leading-none text-white">
             {t(challenge.title)}
           </span>
           <div className="flex flex-col flex-nowrap">
@@ -113,7 +113,7 @@ export default function Tab({
                 <div
                   key={index}
                   className={clsx(
-                    'flex h-7 flex-row flex-nowrap px-2 hover:bg-black/25',
+                    'flex flex-row flex-nowrap hover:bg-black/25',
                     {
                       'pointer-events-none bg-black/25 text-white text-opacity-100':
                         challenge.lessonId === pnLessonId,
@@ -126,7 +126,7 @@ export default function Tab({
                   <Link
                     href={challenge.lessonId}
                     className={clsx(
-                      'flex flex-nowrap items-center py-1 hover:opacity-100',
+                      'flex h-full w-full flex-nowrap items-center gap-[5px] px-2.5 py-2 text-base hover:opacity-100',
                       {
                         'opacity-50':
                           challenge.lessonId !== pnLessonId && isLessonUnlock,
@@ -136,19 +136,19 @@ export default function Tab({
                   >
                     <Icon
                       icon="lock"
-                      className={clsx('mx-1 h-4 w-5', {
+                      className={clsx('h-4 w-5', {
                         hidden: isLessonUnlock,
                       })}
                     />
                     <Icon
                       icon="check"
-                      className={clsx('mx-1 h-5 w-5', {
+                      className={clsx('h-5 w-5', {
                         hidden: !isPageComplete,
                       })}
                     />
                     <Icon
                       icon="arrow"
-                      className={clsx('mx-1 h-5 w-5 opacity-100', {
+                      className={clsx('h-5 w-5 opacity-100', {
                         hidden: !isLessonUnlock || isPageComplete,
                       })}
                     />
@@ -158,7 +158,7 @@ export default function Tab({
               )
             })}
           </div>
-        </>
+        </div>
       }
     >
       <span
