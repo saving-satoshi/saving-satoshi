@@ -128,9 +128,9 @@ export default function Tab({
                     className={clsx(
                       'flex h-full w-full flex-nowrap items-center gap-[5px] px-2.5 py-2 text-base hover:opacity-100',
                       {
-                        'opacity-50':
+                        'opacity-75':
                           challenge.lessonId !== pnLessonId && isLessonUnlock,
-                        'opacity-25': !isLessonUnlock,
+                        'opacity-50': !isLessonUnlock,
                       }
                     )}
                   >
