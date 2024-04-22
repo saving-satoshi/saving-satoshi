@@ -9,7 +9,6 @@ import { useProgressContext } from 'contexts/ProgressContext'
 import { usePathname } from 'next/navigation'
 
 export default function ChallengeItem({
-  position,
   title,
   chapterId,
   lessonId,
@@ -45,7 +44,7 @@ export default function ChallengeItem({
             (!lessonPage && isPageCompleted) ||
             (lessonPage && isUnlocked && currentLesson !== lessonId),
           'hover:bg-black/20 hover:opacity-100': isUnlocked,
-          'pointer-events-none cursor-default opacity-50': !isUnlocked,
+          'cursor-not-allowed opacity-50': !isUnlocked,
           'px-[10px] py-[8px] text-base': lessonPage,
           'px-[15px] py-[11px] ': !lessonPage,
         }

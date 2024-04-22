@@ -84,7 +84,6 @@ export default function ChallengeList({
           {introsData.map((intro, index) => (
             <ChallengeListItem
               key={index + 1}
-              position={index + 1}
               title={intro.navigation_title}
               chapterId={chapterId}
               lessonId={intro.introId}
@@ -106,7 +105,6 @@ export default function ChallengeList({
                 {groupedLessonData[title].map((lesson, index) => (
                   <ChallengeListItem
                     key={index + 1}
-                    position={index + 1}
                     title={lesson.navigation_title}
                     chapterId={chapterId}
                     lessonId={lesson.lessonId}
@@ -130,7 +128,6 @@ export default function ChallengeList({
           {outrosData.map((outro, index) => (
             <ChallengeListItem
               key={index + 1}
-              position={index + 1}
               title={outro.navigation_title}
               chapterId={chapterId}
               lessonId={outro.outroId}

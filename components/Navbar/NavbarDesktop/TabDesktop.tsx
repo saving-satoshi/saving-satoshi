@@ -84,7 +84,9 @@ export default function Tab({
       position="bottom"
       offset={0}
       theme={theme}
-      className="no-underline"
+      className={clsx('cursor-default no-underline', {
+        'cursor-not-allowed': !isUnlocked,
+      })}
       disabled={!isUnlocked}
       content={
         <div className="flex min-w-64 flex-col items-stretch">
@@ -109,26 +111,24 @@ export default function Tab({
                 challenge.lessonId.charAt(0) + challenge.lessonId.slice(1)
               const navTitle =
                 lessons[slug][navLessonId].metadata.navigation_title
+              const ComponentType = isLessonUnlock ? Link : 'div'
               return (
                 <div
                   key={index}
-                  className={clsx(
-                    'flex flex-row flex-nowrap hover:bg-black/25',
-                    {
-                      'pointer-events-none bg-black/25 text-white text-opacity-100':
-                        challenge.lessonId === pnLessonId,
-                      'text-white hover:text-opacity-100':
-                        challenge.lessonId !== pnLessonId,
-                      'pointer-events-none': !isLessonUnlock,
-                    }
-                  )}
+                  className={clsx('flex flex-row flex-nowrap', {
+                    'pointer-events-none bg-black/25 text-white text-opacity-100 hover:bg-black/25':
+                      challenge.lessonId === pnLessonId,
+                    'text-white hover:bg-black/25 hover:text-opacity-100':
+                      challenge.lessonId !== pnLessonId && isLessonUnlock,
+                    'cursor-not-allowed': !isLessonUnlock,
+                  })}
                 >
-                  <Link
+                  <ComponentType
                     href={challenge.lessonId}
                     className={clsx(
-                      'flex h-full w-full flex-nowrap items-center gap-[5px] px-2.5 py-2 text-base hover:opacity-100',
+                      'flex h-full w-full flex-nowrap items-center gap-[5px] px-2.5 py-2 text-base',
                       {
-                        'opacity-75':
+                        'opacity-75 hover:opacity-100':
                           challenge.lessonId !== pnLessonId && isLessonUnlock,
                         'opacity-50': !isLessonUnlock,
                       }
@@ -153,7 +153,7 @@ export default function Tab({
                       })}
                     />
                     {t(navTitle)}
-                  </Link>
+                  </ComponentType>
                 </div>
               )
             })}
