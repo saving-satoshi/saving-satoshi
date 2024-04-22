@@ -10,6 +10,7 @@ import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_four.title',
+  navigation_title: 'chapter_five.validate_signature_four.nav_title',
   key: 'CH5VLS4',
 }
 

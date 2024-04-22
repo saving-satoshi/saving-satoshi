@@ -223,16 +223,7 @@ export const isLessonCompleted = (
   }
 
   const ida = keys.indexOf(userProgressKey)
-  const challengeCode = lessonKey.slice(-4, -1)
-
-  let idb
-
-  keys.slice().forEach((element, index) => {
-    if (element.includes(challengeCode)) {
-      idb = index
-      return
-    }
-  })
+  const idb = keys.indexOf(lessonKey)
 
   return ida > idb
 }
@@ -351,4 +342,8 @@ export const getChapterKey = (userProgressKey: string): string => {
       ? (parseInt(userProgressKey.substring(2, 3)) + 1).toString()
       : userProgressKey.substring(2, 3)
   return `chapter-${chapterKey}`
+}
+
+export const getLessonPath = (userProgressKey: string): string => {
+  return keysMeta[userProgressKey].path
 }

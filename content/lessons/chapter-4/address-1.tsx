@@ -11,6 +11,7 @@ import { chapters } from 'content/chapters'
 
 export const metadata = {
   title: 'chapter_four.address_one.title',
+  navigation_title: 'chapter_four.address_one.nav_title',
   key: 'CH4ADR1',
 }
 

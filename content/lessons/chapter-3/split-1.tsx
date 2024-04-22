@@ -8,6 +8,7 @@ import { Title } from 'ui'
 
 export const metadata = {
   title: 'chapter_three.split_one.title',
+  navigation_title: 'chapter_three.split_one.nav_title',
   image: '/assets/images/chapter-3-split-1.jpg',
   theme: 'bg-gradient-to-tr from-[#291E1C] to-[#64381F]',
   secondaryTheme: 'bg-[#64381F]',

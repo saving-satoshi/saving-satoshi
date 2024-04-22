@@ -60,7 +60,7 @@ export default function Address() {
                 isChapterCompletePage
                   ? 'navbar.chapter_complete'
                   : lesson
-                  ? lesson.title
+                  ? lesson.navigation_title
                   : 'navbar.intro'
               )}
             </p>

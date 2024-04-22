@@ -16,7 +16,9 @@ function Tooltip({
   href,
   theme,
   offset = 12,
+  disabled,
   visibleOverride,
+  zIndex = 10,
 }: {
   children: React.ReactNode
   className?: string
@@ -28,7 +30,9 @@ function Tooltip({
   href?: string
   offset?: number
   theme?: string
+  disabled?: boolean
   visibleOverride?: boolean
+  zIndex?: number
 }) {
   const targetRef = useRef<HTMLSpanElement>(null)
   const tooltipRef = useRef<HTMLSpanElement>(null)
@@ -40,8 +44,7 @@ function Tooltip({
 
   const handleMouseEnter = () => {
     updatePosition()
-    updateZIndex()
-    setVisible(true)
+    ;(visibleOverride || !disabled) && setVisible(true)
   }
 
   const handleMouseMove = (e) => {
@@ -104,28 +107,6 @@ function Tooltip({
     }
   }
 
-  const updateZIndex = () => {
-    const tooltip = tooltipRef.current
-
-    if (tooltip) {
-      tooltip.style.zIndex = '20'
-
-      findTooltips().forEach((otherTooltip: HTMLElement) => {
-        if (otherTooltip === tooltipRef.current) {
-          return
-        }
-
-        otherTooltip.style.zIndex = '10'
-      })
-    }
-  }
-
-  const findTooltips = () => {
-    const tooltips = Array.from(document.querySelectorAll('.tooltip'))
-
-    return tooltips.filter((tooltip) => tooltip !== tooltipRef.current)
-  }
-
   useEffect(() => {
     visibleOverride && handleMouseEnter()
     window.addEventListener('mousemove', handleMouseMove)
@@ -138,11 +119,12 @@ function Tooltip({
     <>
       <span
         className={clsx(
-          'tooltip absolute left-0 top-0 z-10 max-w-md border border-white px-5 py-2 text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
+          'tooltip absolute left-[-1px] top-0 max-w-fit border border-white text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
           theme,
+          `z-${zIndex.toString()}`,
           {
-            'pointer-events-all opacity-100': visible,
-            'pointer-events-none opacity-0': !visible,
+            'pointer-events-all opacity-100': visible && !disabled,
+            'pointer-events-none opacity-0': !visible || disabled,
           }
         )}
         ref={tooltipRef}
@@ -162,7 +144,7 @@ function Tooltip({
           )}
           ref={arrowRef}
         />
-        <span className="font-nunito leading-none text-white">
+        <span className="tooltip-height block overflow-y-scroll px-2.5 py-3.5 font-nunito leading-none text-white">
           {typeof content === 'string' ? t(content) : content}
         </span>
       </span>

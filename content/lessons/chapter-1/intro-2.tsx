@@ -5,6 +5,7 @@ import { Introduction, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_one.intro_two.title',
+  navigation_title: 'chapter_one.intro_two.nav_title',
   image: '/assets/images/chapter-1-holocat.jpg',
   theme: 'bg-[#32303D]',
   key: 'CH1INT2',

@@ -6,6 +6,7 @@ import { HashChallenge } from 'ui'
 
 export const metadata = {
   title: 'chapter_two.hashing_six.title',
+  navigation_title: 'chapter_two.hashing_six.nav_title',
   key: 'CH2HSH6',
 }
 

@@ -13,6 +13,7 @@ import { accountAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_four.public_key_three.title',
+  navigation_title: 'chapter_four.public_key_three.nav_title',
   key: 'CH4PKY3',
 }
 

@@ -13,6 +13,7 @@ import { accountAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_seven.mempool_transaction_one.title',
+  navigation_title: 'chapter_seven.mempool_transaction_one.nav_title',
   key: 'CH7MPT1',
 }
 
