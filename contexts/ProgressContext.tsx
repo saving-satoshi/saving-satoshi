@@ -28,23 +28,17 @@ export default function ProgressProvider({
 }) {
   const [account] = useAtom(accountAtom)
   const [accountProgress, setAccountProgress] = useState<string>(
-    (typeof localStorage !== 'undefined' &&
-      localStorage !== null &&
-      localStorage?.getItem('SavingSatoshiProgress')) ||
-      defaultProgressContext.progress
+    defaultProgressContext.progress
   )
   const [isLoading, setIsLoading] = useState(true)
-
   const init = async () => {
     try {
       setIsLoading(true)
       let progress = await getProgress()
-      if (progress !== keys[0]) {
+      if (progress === keys[0]) {
         progress = await getProgressLocal()
       }
-      if (progress !== keys[0]) {
-        setAccountProgress(progress)
-      }
+      setAccountProgress(progress)
     } catch (ex) {
       console.error(ex)
     } finally {
