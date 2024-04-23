@@ -13,6 +13,7 @@ import Image from 'next/image'
 
 export const metadata = {
   title: 'chapter_four.public_key_two.title',
+  navigation_title: 'chapter_four.public_key_two.nav_title',
   key: 'CH4PKY2',
 }
 

@@ -2,15 +2,16 @@
 
 import { getNextLessonKey, isLessonUnlocked, getChapterKey } from 'lib/progress'
 import { useRouter } from 'next/navigation'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
 import { usePathData, useLocalizedRoutes } from 'hooks'
 import { lessons } from 'content'
-import { useAuthContext } from 'providers/AuthProvider'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export default function useSaveAndReturn() {
   const { chaptersUrl } = useLocalizedRoutes()
   const router = useRouter()
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const { progress, saveProgress, saveProgressLocal } = useProgressContext()
 
   const { chapterId, lessonId } = usePathData()

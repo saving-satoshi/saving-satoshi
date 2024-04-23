@@ -10,6 +10,8 @@ import { EditorConfig } from 'types'
 import { Text, ResourcePage, ToggleSwitch, CodeExample } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageString } from 'lib/SavedCode'
 
 const javascriptChallengeOne = {
   program: `console.log("KILL")`,
@@ -214,14 +216,19 @@ const configFour: EditorConfig = {
 
 export default function VerifySignatureResources({ lang }) {
   const t = useTranslations(lang)
+  const { currentLanguage } = useDataContext()
   const initialStateCodeOne =
-    configOne.languages[configOne.defaultLanguage].defaultCode
+    configOne.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeOne, setCodeOne] = useState<string>(initialStateCodeOne as string)
   const initialStateCodeFour =
-    configFour.languages[configFour.defaultLanguage].defaultCode
+    configFour.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeFour, setCodeFour] = useState(initialStateCodeFour as string)
-  const [languageOne, setLanguageOne] = useState(configOne.defaultLanguage)
-  const [languageFour, setLanguageFour] = useState(configFour.defaultLanguage)
+  const [languageOne, setLanguageOne] = useState(
+    getLanguageString(currentLanguage)
+  )
+  const [languageFour, setLanguageFour] = useState(
+    getLanguageString(currentLanguage)
+  )
   const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
   const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
   const [challengeThreeIsToggled, setChallengeThreeIsToggled] = useState(false)

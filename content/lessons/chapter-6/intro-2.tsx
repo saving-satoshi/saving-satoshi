@@ -5,6 +5,7 @@ import { Introduction, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_six.intro_one.title',
+  navigation_title: 'chapter_six.intro_two.nav_title',
   image: '/assets/images/chapter-6-intro-2.jpg',
   key: 'CH6INT2',
 }
@@ -24,7 +25,7 @@ export default function Intro2({ lang }) {
         {t('chapter_six.intro_two.paragraph_three')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_six.intro_one.paragraph_four')}
+        {t('chapter_six.intro_two.paragraph_four')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
         {t('chapter_six.intro_two.paragraph_five')}

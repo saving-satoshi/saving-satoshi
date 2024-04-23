@@ -1,15 +1,18 @@
 'use client'
 
-import * as crypto from 'crypto'
+import HelpSuggestion from 'components/HelpSuggestion'
 import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
+import { getLanguageString } from 'lib/SavedCode'
+import { useDataContext } from 'contexts/DataContext'
 
 export const metadata = {
   title: 'chapter_two.scripting_one.title',
+  navigation_title: 'chapter_two.scripting_two.nav_title',
   key: 'CH2SCR2',
 }
 
@@ -52,12 +55,6 @@ function findHash(nonce) {
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 9, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const python = {
@@ -104,12 +101,6 @@ def find_hash(nonce):
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 8, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const config: EditorConfig = {
@@ -122,8 +113,8 @@ const config: EditorConfig = {
 
 export default function Scripting2({ lang }) {
   const t = useTranslations(lang)
-
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const { currentLanguage } = useDataContext()
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
@@ -152,6 +143,7 @@ export default function Scripting2({ lang }) {
             {t(`chapter_two.scripting_two.${language}.list_two`)}
           </li>
         </ul>
+        <HelpSuggestion />
       </LessonInfo>
     </ScriptingChallenge>
   )

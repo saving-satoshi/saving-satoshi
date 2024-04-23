@@ -1,4 +1,4 @@
-import { defaultProgressContext } from 'providers/ProgressProvider'
+import { defaultProgressContext } from 'contexts/ProgressContext'
 
 export default async function getProgressLocal(): Promise<string> {
   try {

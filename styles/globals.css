@@ -208,6 +208,9 @@ div.react-terminal-active-input {
 .code-editor {
   height: calc(100vh - 70px - 48px);
 }
+.read-only-editor-button {
+  height: calc(100vh - 70px - 40px - 48px);
+}
 .read-only-editor {
   height: calc(100vh - 70px);
 }
@@ -216,6 +219,9 @@ div.react-terminal-active-input {
     display: grid;
     height: calc(100vh - 70px);
     grid-template-rows: 40px auto 204px 56px;
+  }
+  .read-only-editor-button {
+    height: calc(100vh - 70px - 40px - 56px);
   }
 }
 
@@ -296,6 +302,10 @@ div.react-terminal-active-input {
 .auto-scroll::-webkit-scrollbar-thumb:hover {
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.tooltip-height {
+  max-height: calc(100vh - 127px);
 }
 
 .toggle-switch {

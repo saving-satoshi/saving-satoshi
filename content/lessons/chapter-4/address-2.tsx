@@ -7,15 +7,18 @@ import { Text } from 'ui'
 import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
+import { getLanguageString } from 'lib/SavedCode'
+import { useDataContext } from 'contexts/DataContext'
 
 export const metadata = {
   title: 'chapter_four.address_two.title',
+  navigation_title: 'chapter_four.address_two.nav_title',
   key: 'CH4ADR2',
 }
 
 export default function Address2({ lang }) {
   const t = useTranslations(lang)
-
+  const { currentLanguage } = useDataContext()
   const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
   const dataObject = prevData?.data ? prevData?.data : ''
   const [isLoading, setIsLoading] = useState(true)
@@ -80,12 +83,6 @@ function hashCompressed(compressedPublicKey) {
       }
       return [true, undefined]
     },
-    constraints: [
-      {
-        range: [1, 1, 11, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -132,12 +129,6 @@ def hash_compressed(compressed_public_key):
       }
       return [true, undefined]
     },
-    constraints: [
-      {
-        range: [1, 1, 9, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {
@@ -148,7 +139,7 @@ def hash_compressed(compressed_public_key):
     },
   }
 
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)

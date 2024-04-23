@@ -72,3 +72,26 @@ export function organizeImports(code: string): string {
       throw new Error('Unsupported language detected.')
   }
 }
+
+export function getLanguageString(language: Language): string {
+  switch (language) {
+    case Language.Python:
+      return 'python'
+    case Language.JavaScript:
+      return 'javascript'
+    case Language.Unknown:
+    default:
+      return 'unknown'
+  }
+}
+
+export function getLanguageFromString(languageString: string): Language {
+  switch (languageString.toLowerCase()) {
+    case 'python':
+      return Language.Python
+    case 'javascript':
+      return Language.JavaScript
+    default:
+      return Language.Unknown
+  }
+}

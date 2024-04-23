@@ -2,10 +2,11 @@
 
 import { useProceed, useTranslations } from 'hooks'
 import { Button } from 'shared'
-import { ChapterIntro } from 'ui'
+import { ChapterIntro, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_five.derive_message_one.title',
+  navigation_title: 'chapter_five.derive_message_one.nav_title',
   key: 'CH5DRM1',
 }
 
@@ -19,11 +20,11 @@ export default function DeriveMessage1({ lang }) {
       heading={t('chapter_five.derive_message_one.heading')}
     >
       <div className="mt-[30px] border-2 border-dashed border-white">
-        <p className="max-w-[900px] px-[15px] py-[10px] text-left font-space-mono text-xl md:text-[22px]">
+        <Text className="max-w-[900px] whitespace-pre-line px-[15px] py-[10px] text-left font-space-mono text-xl md:text-[22px]">
           {t('chapter_five.derive_message_one.code_one')}
           {t('chapter_five.derive_message_one.code_two')}
           {t('chapter_five.derive_message_one.code_three')}
-        </p>
+        </Text>
       </div>
       <p className="mt-[30px] text-center font-nunito text-2xl font-bold text-white">
         {t('chapter_five.derive_message_one.paragraph_two')}

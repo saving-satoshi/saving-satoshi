@@ -4,20 +4,22 @@ import { useTranslations, useProceed } from 'hooks'
 import { Title } from 'ui'
 import { Button } from 'shared'
 import Avatar from 'components/Avatar'
-import { useAuthContext } from 'providers/AuthProvider'
 import { useMediaQuery } from 'hooks'
 import { useEffect } from 'react'
 import ProfileChip, { ProfileChipVariant } from 'components/ProfileChip'
 import Image from 'next/image'
 import { cssVarThemeChange } from 'lib/themeSelector'
+import { accountAtom } from 'state/state'
+import { useAtom } from 'jotai'
 
 export const metadata = {
   title: 'chapter_three.coop_one.title',
+  navigation_title: 'chapter_three.coop_one.nav_title',
   key: 'CH3COO1',
 }
 
 export default function Coop1({ lang }) {
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const t = useTranslations(lang)
 
   const proceed = useProceed()
@@ -29,15 +31,15 @@ export default function Coop1({ lang }) {
     },
     {
       username: 'Mining Maniacs',
-      avatar: '/assets/avatars/mining-maniacs.png',
+      avatar: '/assets/avatars/mining-maniacs.jpg',
     },
     {
       username: 'Coin Crunchers',
-      avatar: '/assets/avatars/coin-crunchers.png',
+      avatar: '/assets/avatars/coin-crunchers.jpg',
     },
     {
       username: 'Hash Hoppers',
-      avatar: '/assets/avatars/hash-hoppers.png',
+      avatar: '/assets/avatars/hash-hoppers.jpg',
     },
   ]
 
@@ -54,11 +56,11 @@ export default function Coop1({ lang }) {
       <div className="ml-[15px] mr-[15px] mt-[30px] flex h-fit flex-col items-center gap-y-2.5 border-2 border-dotted border-white/25 p-3.5 md:order-last md:ml-0 md:mt-0">
         <div className="mx-[5px] mb-[10px] flex gap-x-2.5 p-[5px]">
           <Image
-            className="rounded-full"
-            src="/assets/images/chapter-1-holocat-cropped.jpg"
+            className="h-[35px] w-[35px] rounded-full"
+            src="/assets/avatars/holocat.jpg"
             alt=""
-            width={26}
-            height={26}
+            width={35}
+            height={35}
           />
           <Title>HoloCat Pool</Title>
         </div>
@@ -76,7 +78,7 @@ export default function Coop1({ lang }) {
                 />
                 <ProfileChip
                   className="relative -top-4"
-                  image="/assets/images/chapter-1-holocat-cropped.jpg"
+                  image="/assets/avatars/holocat.jpg"
                   variant={ProfileChipVariant.Ranking}
                   value={i + 1}
                 />

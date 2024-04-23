@@ -14,18 +14,20 @@ import {
 } from 'ui'
 import clsx from 'clsx'
 import { sleep } from 'utils'
-import { useAuthContext } from 'providers/AuthProvider'
 import { cssVarThemeChange } from 'lib/themeSelector'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_three.solo_one.title',
+  navigation_title: 'chapter_three.solo_one.nav_title',
   theme: 'solo-1-theme',
   secondaryTheme: 'solo-1-secondary-theme',
   key: 'CH3SOL1',
 }
 
 export default function Solo1({ lang }) {
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const t = useTranslations(lang)
   const [step, setStep] = useState(0)
   const [showText, setShowText] = useState(true)
@@ -56,7 +58,7 @@ export default function Solo1({ lang }) {
   const ANTAGONISTS = [
     {
       username: 'BitRey',
-      avatar: '/assets/avatars/bitrey.png',
+      avatar: '/assets/avatars/bitrey.jpg',
       hashpower: 18599,
       hashes: antagonistHash,
       color: '#7E002E',

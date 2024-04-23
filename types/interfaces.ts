@@ -1,3 +1,4 @@
+import { Language } from 'lib/SavedCode'
 import { EditorRange, LessonDirection, LessonView } from 'types'
 
 export interface ChapterContextType {}
@@ -19,15 +20,26 @@ export interface EditorLanguages {
     defaultCode?: string | string[]
     defaultFunction: EditorFunction
     validate: (answer: any) => Promise<any[]>
-    constraints: any
+    constraints?: any
     hiddenRange?: number[]
-    rangesToCollapse?: EditorRange[]
+    rangeToNotCollapse?: EditorRange[]
+  }
+}
+
+export interface PlainEditorLanguages {
+  [language: string]: {
+    defaultCode?: string | string[]
   }
 }
 
 export interface EditorConfig {
   defaultLanguage: string
   languages: EditorLanguages
+}
+
+export interface PlainEditorConfig {
+  defaultLanguage: string
+  languages: PlainEditorLanguages
 }
 
 export interface FetchOptions {
@@ -67,23 +79,13 @@ export interface DataContextType {
   data: Data[]
   loadData: (lessonId: string) => void
   saveData: (lessonId: string, value: any) => void
-}
-
-export interface FeatureContextType {
-  isLoading: boolean
-  features: { [key: string]: number }
-  isFeatureEnabled: (key: string) => boolean
+  currentLanguage: Language
+  setCurrentLanguage: (language: Language) => void
 }
 
 export interface ModalState {
   open: boolean
   meta: any
-}
-
-export interface ModalContextType {
-  modals: { [name: string]: ModalState }
-  open: (name: string, meta?: any) => void
-  close: (name: string) => void
 }
 
 export interface User {

@@ -1,6 +1,7 @@
 import clsx from 'clsx'
-import { EditorLanguages, LessonView } from 'types'
-import { useLessonContext } from 'ui'
+import { chapters } from 'content'
+import { EditorLanguages, LessonView, PlainEditorLanguages } from 'types'
+import { useLessonContext, Tooltip } from 'ui'
 import { languageMeta } from './config'
 
 export default function LanguageTabs({
@@ -10,7 +11,7 @@ export default function LanguageTabs({
   noHide,
   languageLocked,
 }: {
-  languages: EditorLanguages
+  languages: EditorLanguages | PlainEditorLanguages
   value: string
   onChange: (val: string) => void
   noHide?: boolean
@@ -33,25 +34,59 @@ export default function LanguageTabs({
         const meta = languageMeta[l]
 
         return (
-          <button
-            key={i}
-            onClick={() => onChange(meta.value)}
-            className={clsx(
-              'h-full border-r border-white border-opacity-30 px-4',
-              {
-                'bg-black bg-opacity-20': meta.value === value,
-                hidden: languageLocked && meta.value !== value,
-              }
-            )}
-          >
-            <span
-              className={clsx('font-nunito text-xs text-white', {
-                'text-opacity-40': meta.value !== value,
-              })}
+          (languageLocked && meta.value !== value && (
+            <button
+              key={i}
+              onClick={() => onChange(meta.value)}
+              className={clsx(
+                'flex h-full items-center justify-center border-r border-white border-opacity-30',
+                {
+                  'bg-black bg-opacity-20': meta.value === value,
+                  'cursor-default': languageLocked && meta.value !== value,
+                }
+              )}
             >
-              {meta.label}
-            </span>
-          </button>
+              <Tooltip
+                id={'Language Locked'}
+                theme={chapters['chapter-6'].metadata.theme}
+                className="flex h-full w-full justify-center no-underline"
+                content={
+                  <span>
+                    Language disabled since you've started this chapter in{' '}
+                    {value}
+                  </span>
+                }
+              >
+                <span
+                  className={clsx('px-4 font-nunito text-xs text-white', {
+                    'text-opacity-40': meta.value !== value,
+                  })}
+                >
+                  {meta.label}
+                </span>
+              </Tooltip>
+            </button>
+          )) || (
+            <button
+              key={i}
+              onClick={() => onChange(meta.value)}
+              className={clsx(
+                'flex h-full items-center justify-center border-r border-white border-opacity-30',
+                {
+                  'bg-black bg-opacity-20': meta.value === value,
+                  'cursor-auto': languageLocked && meta.value !== value,
+                }
+              )}
+            >
+              <span
+                className={clsx('px-4 font-nunito text-xs text-white', {
+                  'text-opacity-40': meta.value !== value,
+                })}
+              >
+                {meta.label}
+              </span>
+            </button>
+          )
         )
       })}
     </div>

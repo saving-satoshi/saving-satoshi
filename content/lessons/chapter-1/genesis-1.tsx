@@ -7,6 +7,7 @@ import { useProceed } from 'hooks'
 
 export const metadata = {
   title: 'chapter_one.genesis_one.title',
+  navigation_title: 'chapter_one.genesis_one.nav_title',
   key: 'CH1GEN1',
 }
 

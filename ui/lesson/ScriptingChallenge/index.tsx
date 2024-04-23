@@ -8,11 +8,15 @@ import Runner from './Runner'
 import { EditorConfig, LessonDirection, StoredLessonData } from 'types'
 import { Lesson, LessonTabs } from 'ui'
 import { useMediaQuery, useDynamicHeight, useTranslations } from 'hooks'
-import { useProgressContext } from 'providers/ProgressProvider'
-import { useAuthContext } from 'providers/AuthProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
 import { setData } from 'api/data'
 import { Base64String } from 'types/classes'
 import clsx from 'clsx'
+import useDebounce from 'hooks/useDebounce'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 const tabData = [
   {
@@ -64,21 +68,34 @@ export default function ScriptingChallenge({
 }) {
   const t = useTranslations(lang)
   const { saveProgress, saveProgressLocal } = useProgressContext()
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
+  const { currentLanguage, setCurrentLanguage } = useDataContext()
   const [code, setCode] = useState(
-    config.languages[config.defaultLanguage].defaultCode?.toString()
+    config.languages[getLanguageString(currentLanguage)].defaultCode?.toString()
   )
   const [constraints, setConstraints] = useState(
-    config.languages[config.defaultLanguage].constraints
+    config.languages[getLanguageString(currentLanguage)].constraints
   )
 
   const [hiddenRange, setHiddenRange] = useState(
-    config.languages[config.defaultLanguage].hiddenRange
+    config.languages[getLanguageString(currentLanguage)].hiddenRange
   )
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const [challengeSuccess, setChallengeSuccess] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [errors, setErrors] = useState<string[]>([])
+  const debouncedCode = useDebounce(code, 500)
+
+  useEffect(() => {
+    const savedCode = localStorage.getItem(`${lessonKey}-${language}`)
+    if (savedCode) {
+      setCode(savedCode)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(`${lessonKey}-${language}`, debouncedCode)
+  }, [debouncedCode, lessonKey, language])
 
   useDynamicHeight()
   const isSmallScreen = useMediaQuery({ width: 767 })
@@ -87,6 +104,7 @@ export default function ScriptingChallenge({
     if (!challengeSuccess && onSelectLanguage) {
       setLanguage(value)
       onSelectLanguage(value)
+      setCurrentLanguage(getLanguageFromString(value))
       setCode(config.languages[value].defaultCode?.toString())
       setHiddenRange(config.languages[value].hiddenRange)
       setConstraints(config.languages[value].constraints)
@@ -123,7 +141,8 @@ export default function ScriptingChallenge({
             0,
             data.code!.getDecoded().indexOf('# BEGIN VALIDATION BLOCK') - 1
           )
-          .replaceAll(/#.*\n\s*/g, '')
+          .replace(/\n\s*#.*\n?/g, '\n')
+          .replace(/(.+?)\s*#.*/g, '$1')
       } else {
         trimmedCode = trimLastTwoLines(data.code!.getDecoded())
       }
@@ -137,7 +156,8 @@ export default function ScriptingChallenge({
             0,
             data.code!.getDecoded().indexOf('//BEGIN VALIDATION BLOCK') - 1
           )
-          .replaceAll(/\s*\/\/.*(?:\n|$)/g, '\n')
+          .replace(/\s*\/\/.*(?:\n|$)/g, '\n')
+          .replace(/\/\*[\s\S]*?\*\//g, '\n')
       } else {
         trimmedCode = trimLastTwoLines(data.code!.getDecoded())
       }
@@ -201,10 +221,9 @@ export default function ScriptingChallenge({
               hiddenRange={hiddenRange}
               onChange={handleChange}
               onValidate={handleEditorValidate}
-              code={code}
               constraints={constraints}
               loadingSavedCode={loadingSavedCode}
-              rangesToCollapse={config.languages[language].rangesToCollapse}
+              rangeToNotCollapse={config.languages[language].rangeToNotCollapse}
               options={editorOptions}
             />
           </div>

@@ -6,9 +6,12 @@ import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_one.title',
+  navigation_title: 'chapter_five.validate_signature_one.nav_title',
   key: 'CH5VLS1',
 }
 const javascript = {
@@ -47,12 +50,6 @@ function encode_message(text){
     }
     return [false, 'Return a value']
   },
-  constraints: [
-    {
-      range: [1, 1, 15, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const python = {
@@ -88,12 +85,6 @@ def encode_message(text):
     }
     return [false, 'Return a value']
   },
-  constraints: [
-    {
-      range: [1, 1, 14, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const config: EditorConfig = {
@@ -106,8 +97,8 @@ const config: EditorConfig = {
 
 export default function PublicKey3({ lang }) {
   const t = useTranslations(lang)
-
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const { currentLanguage } = useDataContext()
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }

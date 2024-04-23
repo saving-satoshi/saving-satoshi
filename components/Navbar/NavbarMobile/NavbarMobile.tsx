@@ -18,7 +18,8 @@ import HelpLink from '../HelpLink'
 import Icon from 'shared/Icon'
 import { navbarThemeSelector } from 'lib/themeSelector'
 import { getChapterKey, getCurrentLessonKey, keys } from 'lib/progress'
-import { useAuthContext } from 'providers/AuthProvider'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export default function NavbarMobile({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
@@ -26,7 +27,7 @@ export default function NavbarMobile({ params }) {
   const t = useTranslations(lang)
   const { chapterId } = usePathData()
   const { slug, lesson: lessonId } = params
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -54,6 +55,7 @@ export default function NavbarMobile({ params }) {
   }
 
   function handleTabClick() {
+    document.body.classList.remove('overflow-y-hidden')
     setIsOpen(false)
   }
 

@@ -124,7 +124,7 @@ export default function ContributionBar({
   return (
     <div
       className={clsx(
-        'relative h-[30px] overflow-hidden rounded bg-black/20',
+        'relative h-[30px] overflow-hidden rounded  bg-black/20',
         opacity
       )}
       ref={elementRef}
@@ -156,7 +156,7 @@ export default function ContributionBar({
                       height={30}
                       alt={player.username}
                       src={player.avatar}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full rounded-full object-cover"
                     />
                   )}
                   {!player.avatar && (
@@ -192,7 +192,13 @@ export default function ContributionBar({
                     transition: 'transform 300ms linear',
                   }}
                 >
-                  <Image src={player.avatar} alt="" width={26} height={26} />
+                  <Image
+                    src={player.avatar}
+                    alt=""
+                    width={26}
+                    height={26}
+                    className="rounded-full"
+                  />
                 </div>
               )}
               <div

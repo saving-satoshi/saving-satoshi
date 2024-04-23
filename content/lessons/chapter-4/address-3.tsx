@@ -7,15 +7,18 @@ import { Text } from 'ui'
 import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_four.address_three.title',
+  navigation_title: 'chapter_four.address_three.nav_title',
   key: 'CH4ADR3',
 }
 
 export default function Address3({ lang }) {
   const t = useTranslations(lang)
-
+  const { currentLanguage } = useDataContext()
   const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
   const dataObject = prevData?.data ? prevData?.data : ''
   const [isLoading, setIsLoading] = useState(true)
@@ -79,12 +82,6 @@ function hashToAddress(hash) {
 
       return [true, undefined]
     },
-    constraints: [
-      {
-        range: [1, 1, 11, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -129,12 +126,6 @@ def hash_to_address(hash):
 
       return [true, undefined]
     },
-    constraints: [
-      {
-        range: [1, 1, 9, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {
@@ -145,7 +136,7 @@ def hash_to_address(hash):
     },
   }
 
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
@@ -181,6 +172,9 @@ def hash_to_address(hash):
           </ul>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t(`chapter_four.address_three.paragraph_three`)}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_four.address_three.paragraph_four`)}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>

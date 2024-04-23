@@ -35,6 +35,7 @@ export default function DoubleInputChallenge({
   successMessage,
   direction = LessonDirection.Vertical,
   inputClassNames = '',
+  onStepUpdate,
 }: {
   children: any
   answerOne: string
@@ -49,6 +50,7 @@ export default function DoubleInputChallenge({
   successColorGroups?: ColorGroup[]
   direction?: LessonDirection
   inputClassNames?: string
+  onStepUpdate: (newStep: number) => void
 }) {
   const [userInputOne, setUserInputOne] = useState('')
   const [userInputTwo, setUserInputTwo] = useState('')
@@ -56,6 +58,9 @@ export default function DoubleInputChallenge({
   const [userHint, setUserHint] = useState<boolean | null>(null)
 
   useEffect(() => {
+    if (userInputOne === answerOne && userInputTwo !== answerTwo) {
+      onStepUpdate(1)
+    }
     if (!userInputOne && !userInputTwo && !success) {
       setSuccess(null)
     } else if (
@@ -87,6 +92,7 @@ export default function DoubleInputChallenge({
       setSuccess(false)
       setUserHint(false)
     } else if (userInputOne === answerOne && userInputTwo === answerTwo) {
+      onStepUpdate(2)
       setSuccess(true)
     }
   }, [answerOne, answerTwo, userInputOne, userInputTwo])

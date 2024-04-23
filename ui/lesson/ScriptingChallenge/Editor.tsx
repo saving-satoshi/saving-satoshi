@@ -18,23 +18,21 @@ export default function Editor({
   value,
   onChange,
   onValidate,
-  code = '',
   options = monacoOptions,
   constraints,
   hiddenRange,
   loadingSavedCode,
-  rangesToCollapse = [],
+  rangeToNotCollapse = [],
 }: {
   language: string
   value?: string
   onChange?: (value: string) => void
   onValidate?: (value: monaco.editor.IMarker[]) => void
-  code?: string
   options?: any
-  constraints: any
+  constraints?: any
   hiddenRange?: number[]
   loadingSavedCode?: boolean
-  rangesToCollapse?: EditorRange[]
+  rangeToNotCollapse?: EditorRange[]
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
@@ -79,12 +77,14 @@ export default function Editor({
     monacoRef.current = { monaco, editor }
     const model = editor.getModel()
     const constrainedInstance = constrainedEditor(monaco)
-    constrainedInstance.initializeIn(editor)
-    constrainedInstance.addRestrictionsTo(model, constraints)
+    if (typeof constraints !== 'undefined') {
+      constrainedInstance.initializeIn(editor)
+      constrainedInstance.addRestrictionsTo(model, constraints)
+    }
     const actions = editor.getSupportedActions()
-    if (rangesToCollapse.length > 0) {
+    if (rangeToNotCollapse.length > 0) {
       const foldAction = actions.find((a) => a.id === 'editor.foldAllExcept')
-      rangesToCollapse.forEach((range) => {
+      rangeToNotCollapse.forEach((range) => {
         editor.setSelection({
           startLineNumber: range.start,
           endLineNumber: range.end,
@@ -99,13 +99,13 @@ export default function Editor({
   const isSmallScreen = useMediaQuery({ width: 767 })
   const headerHeight = 70
   const mobileMenuHeight = 48
-  const terminalTabsHeight = 48
+  const runnerHeight = 56
   const languageTabsHeight = 40
   const terminalHeight = 204
 
   const totalHeight = isSmallScreen
     ? headerHeight + mobileMenuHeight + languageTabsHeight
-    : headerHeight + languageTabsHeight + terminalHeight + terminalTabsHeight
+    : headerHeight + languageTabsHeight + terminalHeight + runnerHeight
 
   useEffect(() => {
     hiddenRange && setEditorOptions(createMonacoOptions(hiddenRange[2]))
@@ -124,8 +124,10 @@ export default function Editor({
           ),
         ])
       const constrainedInstance = constrainedEditor(monaco)
-      constrainedInstance.initializeIn(editor)
-      constrainedInstance.addRestrictionsTo(model, constraints)
+      if (typeof constraints !== 'undefined') {
+        constrainedInstance.initializeIn(editor)
+        constrainedInstance.addRestrictionsTo(model, constraints)
+      }
     }
   }, [language])
 

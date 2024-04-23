@@ -13,12 +13,12 @@ import {
   keys,
 } from 'lib/progress'
 
-import * as navigation from 'next/navigation'
-import { useAuthContext } from 'providers/AuthProvider'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
 import { LoadingState } from 'types'
 import { notFound, useRouter } from 'next/navigation'
 import useEnvironment from 'hooks/useEnvironment'
+import { useAtom } from 'jotai'
+import { accountAtom, isAuthLoadingAtom } from 'state/state'
 
 const Portal = ({ children, id }) => {
   const [mounted, setMounted] = useState(false)
@@ -42,8 +42,9 @@ export default function Page({ params }) {
   const chapterId = params.slug
   const chapterLessons = lessons[chapterId]
   const pathData = usePathData()
+  const [account] = useAtom(accountAtom)
+  const [isAccountLoading] = useAtom(isAuthLoadingAtom)
 
-  const { account, isLoading: isAccountLoading } = useAuthContext()
   const {
     progress,
     isLoading: isProgressLoading,

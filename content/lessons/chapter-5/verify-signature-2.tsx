@@ -1,13 +1,16 @@
 'use client'
 
+import { useDataContext } from 'contexts/DataContext'
 import { useMediaQuery, useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
+import { getLanguageString } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { EditorConfig } from 'types'
 import { LessonInfo, ScriptingChallenge, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_five.verify_signature_two.title',
+  navigation_title: 'chapter_five.verify_signature_two.nav_title',
   key: 'CH5VFS2',
 }
 
@@ -42,12 +45,6 @@ function msg_to_integer(msg) {
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 8, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const python = {
@@ -77,12 +74,6 @@ def msg_to_integer(msg):
 
     return [true, undefined]
   },
-  constraints: [
-    {
-      range: [1, 1, 8, 1],
-      allowMultiline: true,
-    },
-  ],
 }
 
 const config: EditorConfig = {
@@ -95,8 +86,9 @@ const config: EditorConfig = {
 
 export default function VerifySignature2({ lang }) {
   const t = useTranslations(lang)
+  const { currentLanguage } = useDataContext()
   const [objectPosition, setObjectPosition] = useState<string | undefined>()
-  const [language, setLanguage] = useState(config.defaultLanguage)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)

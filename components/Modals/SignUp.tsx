@@ -5,13 +5,13 @@ import { Button, Loader } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
 import { useTranslations, useLang, useSaveAndReturn } from 'hooks'
 import clsx from 'clsx'
-import { useAuthContext } from 'providers/AuthProvider'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
 import { getNextLessonKey } from 'lib/progress'
 import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import Modal from './Modal'
 import { Text, ToggleSwitch } from 'ui'
+import { useAuthFunctions } from 'state/AuthFunctions'
 
 const avatars = [
   'white spacesuit',
@@ -24,7 +24,7 @@ const avatars = [
 export default function SignupModal({ onClose, state }) {
   const lang = useLang()
   const t = useTranslations(lang)
-  const { login } = useAuthContext()
+  const { attemptLogin } = useAuthFunctions()
   const { progress, saveProgress } = useProgressContext()
   const { onSignUpComplete } = state.meta ?? false
   const saveAndReturn = useSaveAndReturn()
@@ -53,7 +53,7 @@ export default function SignupModal({ onClose, state }) {
 
       if (privateKey) {
         await register(privateKey, `/assets/avatars/${avatar}.png`)
-        await login(privateKey)
+        await attemptLogin(privateKey)
         //The following line saves the latest localStorage progress to the backend.
         saveProgress(onSignUpComplete ? nextLessonKey : progress)
         onClose()

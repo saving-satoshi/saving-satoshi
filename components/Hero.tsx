@@ -3,13 +3,17 @@
 import { Button } from 'shared'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import Image from 'next/image'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
 import { getChapterKey, keys } from 'lib/progress'
+import { accountAtom } from 'state/state'
+import { useAtom } from 'jotai'
+
 export default function Hero() {
   const { chaptersUrl, aboutUrl } = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
   const { progress } = useProgressContext()
+  const [account] = useAtom(accountAtom)
 
   const chapterKey = progress !== keys[0] ? getChapterKey(progress) : ''
 
@@ -35,7 +39,7 @@ export default function Hero() {
           <div className="flex items-center justify-center md:justify-end">
             <Button
               classes="text-xl md:!w-64 w-full"
-              href={`${chaptersUrl}#${chapterKey}`}
+              href={account ? `${chaptersUrl}#${chapterKey}` : chaptersUrl}
             >
               {t('hero.start_journey')}
             </Button>

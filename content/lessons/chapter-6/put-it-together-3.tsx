@@ -1,30 +1,46 @@
 'use client'
-import { ScriptingChallenge, Table, Text, LessonInfo, CodeExample } from 'ui'
-import { useEffect, useState } from 'react'
-import { useTranslations } from 'hooks'
-import { EditorConfig } from 'types'
-import { getLessonKey } from 'lib/progress'
+
 import { getData } from 'api/data'
-import { detectLanguage, Language } from 'lib/SavedCode'
+import { useTranslations } from 'hooks'
+import { getLessonKey } from 'lib/progress'
+import { detectLanguage, Language, organizeImports } from 'lib/SavedCode'
+import { useEffect, useState } from 'react'
+import { Loader } from 'shared'
+import { EditorConfig } from 'types'
+import { LessonInfo, ScriptingChallenge, Table, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
+  navigation_title: 'chapter_six.put_it_together_three.nav_title',
   key: 'CH6PUT3',
+}
+
+const lessonsToLoad = ['CH6PUT1', 'CH6PUT2', 'CH6INO5']
+
+export const allLessonsAreLoaded = (data) => {
+  return lessonsToLoad.every((lesson) => data[lesson])
+}
+
+export function countLines(text: string): number {
+  return text.split(/\r\n|\r|\n/).length
 }
 
 export default function PutItTogether3({ lang }) {
   const t = useTranslations(lang)
-
-  const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
+  const [prevData, setPrevData] = useState<any>({})
   const [isLoading, setIsLoading] = useState(true)
+  const [combinedCode, setCombinedCode] = useState('')
 
   const getPrevLessonData = async () => {
-    const data = await getData('CH6PUT2')
-    if (data) {
-      setPrevData({
-        lesson_id: 'CH6PUT2',
-        data: data?.code?.getDecoded(),
+    const dataMap = {}
+    const data = await Promise.all(
+      lessonsToLoad.map(async (lesson) => {
+        const dataFromServer = await getData(lesson)
+        dataMap[lesson] = dataFromServer?.code?.getDecoded()
       })
+    )
+    if (data) {
+      setPrevData(dataMap)
     }
   }
 
@@ -32,14 +48,25 @@ export default function PutItTogether3({ lang }) {
     getPrevLessonData().finally(() => setIsLoading(false))
   }, [])
 
-  function countLines(text: string): number {
-    return text.split(/\r\n|\r|\n/).length
-  }
+  useEffect(() => {
+    if (prevData && allLessonsAreLoaded(prevData)) {
+      setCombinedCode(
+        organizeImports(
+          (detectLanguage(prevData['CH6PUT2']) === Language.JavaScript
+            ? `// UTXO from chapter 6 step 1 (mining pool payout)
+const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
+const vout = 1;
+const value = 161000000;
 
-  const javascript = {
-    program: `//BEGIN VALIDATION BLOCK
-const assert = require('assert');
-const bech32 = require('@savingsatoshi/bech32js');
+// From chapter 4 (we will reuse address for change)
+const priv = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503en;
+const compressed_pub = Buffer.from('038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af', 'hex');
+const pubkey_hash = 'b234aee5ee74d7615c075b4fe81fd8ace54137f2';
+const addr = 'bc1qkg62ae0wwntkzhq8td87s87c4nj5zdlj2ga8j7';
+
+// Explained in step 6
+const scriptcode = '1976a914' + pubkey_hash + '88ac';
+
 class Outpoint {
   constructor(txid, index) {
     assert(Buffer.isBuffer(txid));
@@ -78,116 +105,27 @@ class Input {
     const buf = Buffer.alloc(32 + 4 + 1 + 4);
     this.outpoint.serialize().copy(buf, 0);
     buf.writeUInt8(this.script.length, 36);
-    // Optional, since we know in SegWit it's always zero bytes.
-    // Adding this back will offset all following byte length positions.
-    // this.script.copy(buf, 37);
     buf.writeUInt32LE(this.sequence, 37);
     return buf;
   }
 }
+`
+            : `# UTXO from chapter 6 step 1 (mining pool payout)
+txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
+vout = 1
+value = 161000000
 
-class Output {
-  constructor() {
-    this.value = 0;
-    this.witness_version = 0;
-    this.witness_data = Buffer.alloc(0);
-  }
+# From chapter 4 (we will reuse address for change)
+priv = 0x93485bbe0f0b2810937fc90e8145b2352b233fbd3dd7167525401dd30738503e
+compressed_pub = bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af")
+pubkey_hash = "b234aee5ee74d7615c075b4fe81fd8ace54137f2"
+addr = "bc1qkg62ae0wwntkzhq8td87s87c4nj5zdlj2ga8j7"
 
-  static from_options(addr, value) {
-    assert(Number.isInteger(value));
-    const self = new this();
-    const {version, program} = bech32.decode('bc', addr);
-    self.witness_version = version;
-    self.witness_data = Buffer.from(program);
-    self.value = value;
-    return self;
-  }
+# Explained in step 6
+scriptcode = "1976a914" + pubkey_hash + "88ac"
 
-  serialize() {
-    const buf = Buffer.alloc(11);
-    buf.writeBigInt64LE(BigInt(this.value), 0);
-    buf.writeUInt8(this.witness_data.length + 2, 8);
-    buf.writeUInt8(this.witness_version, 9);
-    buf.writeUInt8(this.witness_data.length, 10);
-    return Buffer.concat([buf, this.witness_data]);
-  }
-}
-
-class Witness {
-  constructor() {
-    this.items = [];
-  }
-
-  push_item(data) {
-    this.items.push(data);
-  }
-
-  serialize() {
-    let buf = Buffer.from([this.items.length]);
-    for (const item of this.items)
-      buf = Buffer.concat([buf, Buffer.from([item.length]), item]);
-    return buf;
-  }
-}
-
-const txid_fjpolkwe = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
-const vout_eprwqlas = 1;
-const valueOne_vflkuyed = 650000000;
-const scriptcode_zlkwebnf = '1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac';
-const input_opjkfqsd = Input.from_output(txid_fjpolkwe, vout_eprwqlas, valueOne_vflkuyed, scriptcode_zlkwebnf);
-const addr_vjaudkfa = 'bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj';
-const valueTwo_benadijl = 100000000;
-const output_tkuaojfp = Output.from_options(addr_vjaudkfa, valueTwo_benadijl);
-const witness_qkadjyrf = new Witness();
-witness_qkadjyrf.push_item(Buffer.from('304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01', 'hex'));
-witness_qkadjyrf.push_item(Buffer.from('038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af', 'hex'));
-const tx_dluitpjd = new Transaction();
-tx_dluitpjd.inputs.push(input_opjkfqsd);
-tx_dluitpjd.outputs.push(output_tkuaojfp);
-console.log(tx_dluitpjd.digest(0).toString('hex') === 'a25cca939c60a6437de9872e51145be8afdaa7255d5395f11c33394a69d8d13a' && 'true')
-console.log('KILL')
-`,
-    rangesToCollapse: [
-      {
-        start: countLines(prevData.data) + 3,
-        end: countLines(prevData.data) + 6,
-      },
-    ],
-    defaultFunction: {
-      name: 'put-it-together-2',
-      args: ['args'],
-    },
-    defaultCode: `const {Hash} = require('crypto');
-
-${prevData.data.slice(0, -2)}
-  digest(input_index) {
-    const sighash = 1;
-    // YOUR CODE HERE
-  }
-}`,
-    validate: async (answer: string) => {
-      if (answer) {
-        if (answer === 'true') {
-          return [true, 'Nicely done']
-        }
-        return [false, 'Not a valid hex value']
-      }
-      return [false, 'Please return a value']
-    },
-    constraints: [
-      {
-        range: [1, 1, countLines(prevData.data.slice(0, -2)) + 6, 1],
-        allowMultiline: true,
-      },
-    ],
-  }
-
-  const python = {
-    program: `# BEGIN VALIDATION BLOCK
-from struct import pack
-from bech32py import bech32
 class Outpoint:
-    def __init__(self, txid, index):
+    def __init__(self, txid: bytes, index: int):
         assert isinstance(txid, bytes)
         assert len(txid) == 32
         assert isinstance(index, int)
@@ -209,7 +147,7 @@ class Input:
         self.scriptcode = b""
 
     @classmethod
-    def from_output(cls, txid, vout, value, scriptcode):
+    def from_output(cls, txid: str, vout: int, value: int, scriptcode: bytes):
         self = cls()
         self.outpoint = Outpoint(bytes.fromhex(txid)[::-1], vout)
         self.value = value
@@ -220,104 +158,138 @@ class Input:
         r = b""
         r += self.outpoint.serialize()
         r += pack("<B", len(self.script))
-        # Optional, since we know in SegWit it's always zero bytes
-        # r += self.script
         r += pack("<I", self.sequence)
         return r
+`) +
+            prevData['CH6INO5'] +
+            '\n' +
+            prevData['CH6PUT2'] +
+            '\n'
+        )
+      )
+    }
+  }, [prevData])
 
-class Output:
-    def __init__(self):
-        self.value = 0
-        self.witness_version = 0
-        self.witness_data = b""
-
-    @classmethod
-    def from_options(cls, addr, value):
-        assert isinstance(value, int)
-        self = cls()
-        (ver, data) = bech32.decode("bc", addr)
-        self.witness_version = ver
-        self.witness_data = bytes(data)
-        self.value = value
-        return self
-
-    def serialize(self):
-        r = b""
-        r += pack("<q", self.value)
-        r += pack("<B", len(self.witness_data) + 2)
-        r += pack("<B", self.witness_version)
-        r += pack("<B", len(self.witness_data))
-        r += self.witness_data
-        return r
-
-class Witness:
-    def __init__(self):
-        self.items = []
-
-    def push_item(self, data):
-        self.items.append(data)
-
-    def serialize(self):
-        r = b""
-        r += pack("<B", len(self.items))
-        for item in self.items:
-            r += pack("<B", len(item))
-            r += item
-        return r
-
-txid_fjpolkwe = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
-vout_eprwqlas = 1
-value_one_vflkuyed = 650000000
-scriptcode_zlkwebnf = "1976a914b234aee5ee74d7615c075b4fe81fd8ace54137f288ac"
-input_opjkfqsd = Input.from_output(txid_fjpolkwe, vout_eprwqlas, value_one_vflkuyed, scriptcode_zlkwebnf)
-addr_vjaudkfa = "bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj"
-value_two_benadijl = 100000000
-output_tkuaojfp = Output.from_options(addr_vjaudkfa, value_two_benadijl)
-witness_qkadjyrf = Witness()
-witness_qkadjyrf.push_item(bytes.fromhex("304402202e343143d5fcb0e3ece2ef11983d69dcaeb7407efe2ec7e3c830ab66927823c0022000ac4c1b3bcc857684e6bc2a36c07757695ef72b7bac70d2c877895798c4d1ba01"))
-witness_qkadjyrf.push_item(bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32ae6e8c8bbf18aaf5af"))
-tx_dluitpjd = Transaction()
-tx_dluitpjd.inputs.append(input_opjkfqsd)
-tx_dluitpjd.outputs.append(output_tkuaojfp)
-print(tx_dluitpjd.digest(0).hex() == 'a25cca939c60a6437de9872e51145be8afdaa7255d5395f11c33394a69d8d13a' and 'true')
-print("KILL")`,
-    rangesToCollapse: [
+  const javascript = {
+    program: `
+console.log("KILL")`,
+    defaultFunction: {
+      name: 'privateKeyToPublicKey',
+      args: ['privateKey'],
+    },
+    rangeToNotCollapse: [
       {
-        start: countLines(prevData.data) + 3,
-        end: countLines(prevData.data) + 6,
+        start: countLines(combinedCode),
+        end: countLines(combinedCode) + 3,
+      },
+    ],
+    defaultCode: `${combinedCode.slice(0, -2)}
+  serialize() {
+    // YOUR CODE HERE
+  }
+}
+
+const tx = new Transaction();
+const in0 = Input.from_output(txid, vout, value, scriptcode);
+const out0 = Output.from_options('bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj', 100000000);
+const out1 = Output.from_options(addr, 61000000);
+tx.inputs.push(in0);
+tx.outputs.push(out0);
+tx.outputs.push(out1);
+tx.sign_input(0, priv, compressed_pub);
+
+console.log(tx.serialize().toString('hex'));`,
+    validate: async (answer: string) => {
+      if (
+        answer.slice(0, 248) !==
+        '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd158c5a20300000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
+      ) {
+        if (
+          answer.slice(0, 248) ===
+          '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd140c9a20300000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
+        ) {
+          return [
+            false,
+            "Close! Don't forget to reduce our change from 61,000,000 to 60,999,000 in order to pay the miners.",
+          ]
+        }
+        return [false, 'Nope! Try again.']
+      }
+      if (answer.slice(250, 252) !== '30') {
+        return [false, 'Nope! Try again..']
+      }
+      const size = (parseInt(answer.slice(248, 250), 16) - 1) * 2
+      if (answer.slice(250 + size, 250 + size + 4) !== '0121') {
+        return [false, 'Nope! Try again...']
+      }
+      if (answer.slice(-8) !== '00000000') {
+        return [false, 'Nope! Try again....']
+      }
+      return [true, 'Nicely Done']
+    },
+  }
+
+  const python = {
+    program: `
+print("KILL")`,
+    rangeToNotCollapse: [
+      {
+        start: countLines(combinedCode) + 2,
+        end: countLines(combinedCode) + 4,
       },
     ],
     defaultFunction: {
-      name: 'put-it-together-2',
-      args: ['args'],
+      name: 'privatekey_to_publickey',
+      args: ['private_key'],
     },
-    defaultCode: `import hashlib
-${prevData.data}
-
-    def digest(self, input_index: int):
-        sighash = 1
+    defaultCode: `from struct import pack
+${combinedCode}
+    def serialize(self):
         # YOUR CODE HERE
-`,
+
+tx = Transaction()
+in0 = Input.from_output(txid, vout, value, scriptcode)
+out0 = Output.from_options("bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj", 100000000)
+out1 = Output.from_options(addr, 61000000)
+tx.inputs.append(in0)
+tx.outputs.append(out0)
+tx.outputs.append(out1)
+tx.sign_input(0, priv, compressed_pub)
+
+print(tx.serialize().hex())`,
     validate: async (answer: string) => {
-      if (answer) {
-        if (answer === 'true') {
-          return [true, 'Nicely Done ']
+      if (
+        answer.slice(0, 248) !==
+        '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd158c5a20300000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
+      ) {
+        if (
+          answer.slice(0, 248) ===
+          '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd140c9a20300000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
+        ) {
+          return [
+            false,
+            "Close! Don't forget to reduce our change from 61,000,000 to 60,999,000 in order to pay the miners.",
+          ]
         }
-        return [false, 'Not a valid hex value']
+        return [false, 'Nope! Try again.']
       }
-      return [false, 'Return a value']
+      if (answer.slice(250, 252) !== '30') {
+        return [false, 'Nope! Try again.']
+      }
+      const size = (parseInt(answer.slice(248, 250), 16) - 1) * 2
+      if (answer.slice(250 + size, 250 + size + 4) !== '0121') {
+        return [false, 'Nope! Try again.']
+      }
+      if (answer.slice(-8) !== '00000000') {
+        return [false, 'Nope! Try again.']
+      }
+      return [true, 'Nicely Done']
     },
-    constraints: [
-      {
-        range: [1, 1, countLines(prevData.data) + 6, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {
     defaultLanguage:
-      detectLanguage(prevData.data) === Language.JavaScript
+      detectLanguage(combinedCode) === Language.JavaScript
         ? 'javascript'
         : 'python',
     languages: {
@@ -327,13 +299,14 @@ ${prevData.data}
   }
 
   return (
-    !isLoading && (
+    (!isLoading && combinedCode && (
       <ScriptingChallenge
         lang={lang}
         config={config}
         saveData
         lessonKey={getLessonKey('chapter-6', 'put-it-together-3')}
         successMessage={t('chapter_six.put_it_together_three.success')}
+        loadingSavedCode={isLoading}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
           <Text className="font-nunito text-2xl font-bold text-white">
@@ -342,50 +315,19 @@ ${prevData.data}
           <Text className="mt-2 font-nunito text-xl text-white">
             {t('chapter_six.put_it_together_three.paragraph_one')}
           </Text>
-          <Text className="mt-4 text-lg md:text-xl">
+          <Text className="mt-2 font-nunito text-xl text-white">
             {t('chapter_six.put_it_together_three.paragraph_two')}
           </Text>
-          <Text className="mt-4 text-lg md:text-xl">
-            {t('chapter_six.put_it_together_three.list_heading')}
-          </Text>
           <ul className="list-disc pl-5 font-nunito">
-            <li className="text-lg md:text-xl">
-              {t('chapter_six.put_it_together_three.list_one')}
+            <li className="break-words text-lg md:text-xl">
+              {t('chapter_six.put_it_together_three.bullet_one')}
             </li>
-            <li className="text-lg md:text-xl">
-              {t('chapter_six.put_it_together_three.list_two')}
-            </li>
-            <li className="text-lg md:text-xl">
-              {t('chapter_six.put_it_together_three.list_three')}
+            <li className="break-words text-lg md:text-xl">
+              {t('chapter_six.put_it_together_three.bullet_two')}
             </li>
           </ul>
           <Text className="mt-4 text-lg md:text-xl">
             {t('chapter_six.put_it_together_three.paragraph_three')}
-          </Text>
-          <CodeExample
-            className="mt-4 font-space-mono"
-            code={`0x1976a914{20-byte-pubkey-hash}88ac`}
-            language="shell"
-          />
-          <Text className="mt-4 text-lg md:text-xl">
-            {t('chapter_six.put_it_together_three.paragraph_four')}
-          </Text>
-          <CodeExample
-            className="mt-4 font-space-mono"
-            code={`OP_PUSHBYTES_25
-OP_DUP
-OP_HASH160
-OP_PUSHBYTES_20
-<20-byte-public-key-hash>
-OP_EQUALVERIFY
-OP_CHECKSIG`}
-            language="shell"
-          />
-          <Text className="mt-4 text-lg md:text-xl">
-            {t('chapter_six.put_it_together_three.paragraph_five')}
-          </Text>
-          <Text className="mt-4 text-lg md:text-xl">
-            {t('chapter_six.put_it_together_three.paragraph_six')}
           </Text>
           <Table
             headings={[
@@ -459,28 +401,23 @@ OP_CHECKSIG`}
                   'chapter_six.put_it_together_three.table.row_eight.item_four'
                 ),
               ],
-              [
-                t('chapter_six.put_it_together_three.table.row_nine.item_one'),
-                t('chapter_six.put_it_together_three.table.row_nine.item_two'),
-                t(
-                  'chapter_six.put_it_together_three.table.row_nine.item_three'
-                ),
-                t('chapter_six.put_it_together_three.table.row_nine.item_four'),
-              ],
-              [
-                t('chapter_six.put_it_together_three.table.row_ten.item_one'),
-                t('chapter_six.put_it_together_three.table.row_ten.item_two'),
-                t('chapter_six.put_it_together_three.table.row_ten.item_three'),
-                t('chapter_six.put_it_together_three.table.row_ten.item_four'),
-              ],
             ]}
           />
-
           <Text className="mt-2 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_three.paragraph_seven')}
+            {t('chapter_six.put_it_together_three.paragraph_four')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_six.put_it_together_three.paragraph_five`)}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_six.put_it_together_three.paragraph_six`)}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>
+    )) || (
+      <div className="flex flex-auto items-center">
+        <Loader className="h-12 w-12 text-white" />
+      </div>
     )
   )
 }

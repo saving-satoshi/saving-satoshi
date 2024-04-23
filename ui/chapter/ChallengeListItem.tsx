@@ -1,65 +1,68 @@
 import clsx from 'clsx'
 import Link from 'next/link'
-import { lessons, chapters } from 'content'
+import { lessons } from 'content'
 
 import Icon from 'shared/Icon'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import useLessonStatus from 'hooks/useLessonStatus'
-import { useProgressContext } from 'providers/ProgressProvider'
+import { useProgressContext } from 'contexts/ProgressContext'
+import { usePathname } from 'next/navigation'
 
 export default function ChallengeItem({
-  position,
   title,
   chapterId,
   lessonId,
+  lessonPage,
 }) {
   const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
   const { progress } = useProgressContext()
+  const pathName = usePathname() || ''
 
-  const lessonMetaUnlocked =
-    lessonId === chapters[chapterId].metadata['challenges'][0]
-      ? lessons[chapterId]['intro-1'].metadata
-      : lessons[chapterId][lessonId].metadata
+  const lessonMetaUnlocked = lessons[chapterId][lessonId].metadata
 
   const lessonMetaCompleted = lessons[chapterId][lessonId].metadata
   const { isUnlocked } = useLessonStatus(progress, lessonMetaUnlocked.key)
-  const { isCompleted } = useLessonStatus(progress, lessonMetaCompleted.key)
+  const { isPageCompleted } = useLessonStatus(progress, lessonMetaCompleted.key)
 
-  const lessonHref =
-    lessonId === chapters[chapterId].metadata['challenges'][0]
-      ? 'intro-1'
-      : lessonId
-  const href = `${routes.chaptersUrl}/${chapterId}/${lessonHref}`
+  const href = `${routes.chaptersUrl}/${chapterId}/${lessonId}`
   const ComponentType = isUnlocked ? Link : 'div'
+
+  const currentLesson = pathName.split('/').pop()
 
   return (
     <ComponentType
       href={href}
       className={clsx(
-        'justify-left relative flex w-full px-[15px] py-[11px] font-cbrush text-xl transition duration-150 ease-in-out',
+        'justify-left flex items-center text-center transition duration-100 ease-in-out',
         {
-          'border-t border-white/25': position !== 1,
-          'bg-black/15': isUnlocked && !isCompleted,
-          'hover:bg-black/20': isUnlocked,
+          'bg-black/20':
+            (!lessonPage && isUnlocked && !isPageCompleted) ||
+            (lessonPage && currentLesson === lessonId),
+          'opacity-75':
+            (!lessonPage && isPageCompleted) ||
+            (lessonPage && isUnlocked && currentLesson !== lessonId),
+          'hover:bg-black/20 hover:opacity-100': isUnlocked,
+          'cursor-not-allowed opacity-50': !isUnlocked,
+          'px-[10px] py-[8px] text-base': lessonPage,
+          'px-[15px] py-[11px] ': !lessonPage,
         }
       )}
     >
-      <span className="pr-1 opacity-50">{position + '. '}</span>
-      {t(title)}
-      {!isUnlocked && (
-        <Icon
-          icon="lock"
-          className="absolute right-[15px] top-1/2 h-3 w-3 -translate-y-1/2 opacity-25"
-        />
+      {isUnlocked && !isPageCompleted && (
+        <Icon icon="arrow" className="h-5 w-5" />
       )}
-      {isCompleted && (
-        <Icon
-          icon="check"
-          className="absolute right-[15px] top-1/2 h-[20px] w-[20px] -translate-y-1/2"
-        />
-      )}
+      {!isUnlocked && <Icon icon="lock" className="h-3 w-3" />}
+      {isPageCompleted && <Icon icon="check" className="h-5 w-5" />}
+      <span
+        className={clsx('ml-1', {
+          'text-base': lessonPage,
+          'text-lg': !lessonPage,
+        })}
+      >
+        {t(title)}
+      </span>
     </ComponentType>
   )
 }

@@ -4,20 +4,22 @@ import { useTranslations, useProceed } from 'hooks'
 import { Title } from 'ui'
 import { Button } from 'shared'
 import Avatar from 'components/Avatar'
-import { useAuthContext } from 'providers/AuthProvider'
 import { useMediaQuery } from 'hooks'
 import { useState, useEffect } from 'react'
 import { cssVarThemeChange } from 'lib/themeSelector'
 import Image from 'next/image'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_three.pool_one.title',
+  navigation_title: 'chapter_three.pool_one.nav_title',
   image: '/assets/images/chapter-2-intro-1.jpg',
   key: 'CH3POL1',
 }
 
 export default function Pool1({ lang }) {
-  const { account } = useAuthContext()
+  const [account] = useAtom(accountAtom)
   const t = useTranslations(lang)
 
   const proceed = useProceed()
@@ -31,17 +33,17 @@ export default function Pool1({ lang }) {
     },
     {
       username: 'Mining Maniacs',
-      avatar: '/assets/avatars/mining-maniacs.png',
+      avatar: '/assets/avatars/mining-maniacs.jpg',
       display: false,
     },
     {
       username: 'Coin Crunchers',
-      avatar: '/assets/avatars/coin-crunchers.png',
+      avatar: '/assets/avatars/coin-crunchers.jpg',
       display: false,
     },
     {
       username: 'Hash Hoppers',
-      avatar: '/assets/avatars/hash-hoppers.png',
+      avatar: '/assets/avatars/hash-hoppers.jpg',
       display: false,
     },
   ])
@@ -81,11 +83,11 @@ export default function Pool1({ lang }) {
       <div className="ml-[15px] mr-[15px] mt-[30px] flex h-fit w-full max-w-[342px] flex-col items-center gap-y-2.5 border-2 border-dotted border-white/25 p-3.5 md:order-last  md:ml-0 md:mt-0 md:w-auto md:max-w-none">
         <div className="mx-[5px] mb-[10px] flex gap-x-2.5 p-[5px]">
           <Image
-            className="rounded-full"
-            src="/assets/images/chapter-1-holocat-cropped.jpg"
+            className="h-[35px] w-[35px] rounded-full"
+            src="/assets/avatars/holocat.jpg"
             alt=""
-            width={26}
-            height={26}
+            width={35}
+            height={35}
           />
           <Title>HoloCat Pool</Title>
         </div>

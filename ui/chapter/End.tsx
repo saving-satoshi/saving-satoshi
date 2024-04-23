@@ -1,12 +1,21 @@
 'use client'
 
 import { useSaveAndReturn, usePathData } from 'hooks'
-import { Modal, useModalContext } from 'providers/ModalProvider'
-import { useAuthContext } from 'providers/AuthProvider'
 import { lessons } from 'content'
 import { useEffect, useState } from 'react'
 import DesktopEnd from './DesktopEnd'
 import MobileEnd from './MobileEnd'
+import { useAtom } from 'jotai'
+import { accountAtom, Modal } from 'state/state'
+import { useModalFunctions } from 'state/ModalFunctions'
+
+declare global {
+  interface Window {
+    nostr: Object
+  }
+}
+
+export const RELAY = 'wss://nostr.mutinywallet.com'
 
 export default function End({
   image,
@@ -25,10 +34,11 @@ export default function End({
   theme: string
   gradientTheme: string
 }) {
-  const modals = useModalContext()
-  const { account } = useAuthContext()
+  const { open } = useModalFunctions()
+  const [account] = useAtom(accountAtom)
   const saveAndReturn = useSaveAndReturn()
   const { chapterId, lessonId } = usePathData()
+
   const [isDesktop, setDesktop] = useState(
     typeof window !== 'undefined' && window.innerWidth > 768
   )
@@ -48,7 +58,7 @@ export default function End({
 
   const handleClick = () => {
     if (!account) {
-      modals.open(Modal.SignUp, { onSignUpComplete: true })
+      open(Modal.SignUp, { onSignUpComplete: true })
     } else {
       saveAndReturn()
     }
