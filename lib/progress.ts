@@ -78,6 +78,11 @@ export const keys = [
   'CH6PUT1',
   'CH6PUT2',
   'CH6PUT3',
+  //To be deleted after some testing
+  'CH6PUT4',
+  'CH6PUT5',
+  'CH6PUT6',
+  //To be deleted after some testing
   'CH6OUT1',
 
   'CH7INT1',
@@ -178,6 +183,11 @@ export const keysMeta = {
   CH6PUT1: { path: '/chapter-6/put-it-together-1' },
   CH6PUT2: { path: '/chapter-6/put-it-together-2' },
   CH6PUT3: { path: '/chapter-6/put-it-together-3' },
+  //To be deleted after some testing
+  CH6PUT4: { path: '/chapter-6/intro-1' },
+  CH6PUT5: { path: '/chapter-6/intro-1' },
+  CH6PUT6: { path: '/chapter-6/intro-1' },
+  //To be deleted after some testing
   CH6OUT1: { path: '/chapter-6/outro-1' },
 
   CH7INT1: { path: '/chapter-7/intro-1' },
