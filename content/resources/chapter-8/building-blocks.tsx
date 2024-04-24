@@ -451,7 +451,7 @@ export default function BuildingBlocksResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`200px`}
+                  height={`235px`}
                   value={codeFour}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
