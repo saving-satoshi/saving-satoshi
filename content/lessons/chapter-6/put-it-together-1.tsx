@@ -326,7 +326,7 @@ class Transaction:
         lessonKey={getLessonKey('chapter-6', 'put-it-together-1')}
         successMessage={t('chapter_six.put_it_together_two.success')}
       >
-        <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+        <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100dvh-70px)]">
           <Text className="font-nunito text-2xl font-bold text-white">
             {t('chapter_six.put_it_together_one.heading')}
           </Text>
