@@ -1,86 +1,109 @@
 'use client'
 
-import { useProceed, useTranslations } from 'hooks'
-import { ChapterIntro, CodeExample, HolocatQuestion } from 'ui'
-
-import { Button } from 'shared'
-import { useEffect, useState } from 'react'
-import { getData } from 'api/data'
-import { Data } from 'types'
-import { chapters } from 'content/chapters'
+import { ScriptingChallenge, LessonInfo, CodeExample } from 'ui'
+import { EditorConfig } from 'types'
+import { useTranslations } from 'hooks'
+import { Text } from 'ui'
+import { useState } from 'react'
+import { getLessonKey } from 'lib/progress'
+import { useDataContext } from 'contexts/DataContext'
+import { getLanguageString } from 'lib/SavedCode'
+import { useAtom } from 'jotai'
+import { accountAtom } from 'state/state'
 
 export const metadata = {
-  title: 'chapter_four.address_one.title',
+  title: 'chapter_eight.building_blocks_four.nav_title',
+  navigation_title: 'chapter_eight.building_blocks_four.nav_title',
   key: 'CH8BBK4',
 }
 
 export default function BuildingBlocks4({ lang }) {
-  const proceed = useProceed()
   const t = useTranslations(lang)
+  const [account] = useAtom(accountAtom)
+  const { currentLanguage } = useDataContext()
+  const [privateKey, setPrivateKey] = useState('')
 
-  const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
-  const dataObject = prevData?.data ? prevData?.data : ''
-  const [isLoading, setIsLoading] = useState(true)
-  const [tooltipVisible, setTooltipVisible] = useState(false)
-
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
+  if (account && !privateKey) {
+    setPrivateKey(account?.private_key.toString())
   }
 
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
+  const javascript = {
+    program: `
+console.log(privateKeyToPublicKey(\`${privateKey}\`))
+console.log("KILL")`,
+    defaultFunction: {
+      name: 'privateKeyToPublicKey',
+      args: ['privateKey'],
+    },
+    defaultCode: `const CODE_CHALLENGE_2_HEIGHT = 6929996;
+`,
+    validate: async (answer: string) => {
+      return [true, 'Nicely Done ']
+    },
   }
 
-  const getPrevLessonData = async () => {
-    const data = await getData('CH4PKY4')
-    if (data?.answer) {
-      setPrevData({
-        lesson_id: 'CH4PKY4',
-        data: data.answer,
-      })
-    }
+  const python = {
+    program: `
+print(privatekey_to_publickey("${privateKey}"))
+print("KILL")`,
+    defaultFunction: {
+      name: 'privatekey_to_publickey',
+      args: [''],
+    },
+    defaultCode: `CODE_CHALLENGE_2_HEIGHT = 6929996
+hashes = Bitcoin.rpc("getblocksbyheight", CODE_CHALLENGE_2_HEIGHT)
+answer = None
+tx_count = float("inf")
+for bhash in hashes:
+    block = Bitcoin.rpc("getblock", bhash)
+    num = len(block["txs"])
+    if num < tx_count:
+        tx_count = num
+        answer = bhash
+print(answer)
+`,
+    validate: async (answer: string) => {
+      // Parsing the new object string format
+      return [true, 'Nicely Done']
+    },
   }
 
-  useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
-  }, [])
+  const config: EditorConfig = {
+    defaultLanguage: 'javascript',
+    languages: {
+      javascript,
+      python,
+    },
+  }
+
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  const handleSelectLanguage = (language: string) => {
+    setLanguage(language)
+  }
 
   return (
-    !isLoading && (
-      <ChapterIntro
-        className="my-8"
-        heading={t('chapter_four.address_one.heading')}
-      >
-        <p className="mt-2 text-lg md:text-xl">
-          {t('chapter_four.address_one.paragraph_one')}
-        </p>
-        <CodeExample className="mt-4" code={dataObject} language="shell" />
-        <p className="mt-8 inline-block text-lg md:text-xl">
-          {t('chapter_four.address_one.paragraph_two')}
-          <a
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            href={t('chapter_four.address_one.tooltip_one.link')}
-            target="_blank"
-            className="inline text-lg italic hover:underline md:text-xl"
-          >
-            {t('chapter_four.address_one.tooltip_one.highlighted')}
-            <HolocatQuestion
-              theme={chapters['chapter-4'].metadata.theme}
-              inline
-              id="target-difficulty"
-              question={t('chapter_four.address_one.tooltip_one.question')}
-              href={t('chapter_four.address_one.tooltip_one.link')}
-              visible={tooltipVisible}
-            />
-          </a>
-          .
-        </p>
-
-        <Button onClick={proceed} classes="mt-10 max-md:w-full">
-          {t('shared.next')}
-        </Button>
-      </ChapterIntro>
-    )
+    <ScriptingChallenge
+      lang={lang}
+      config={config}
+      saveData
+      lessonKey={getLessonKey('chapter-8', 'building-block-4')}
+      successMessage={t('chapter_eight.building_block_four.success')}
+      onSelectLanguage={handleSelectLanguage}
+    >
+      <LessonInfo>
+        <Text className="font-nunito text-2xl font-bold text-white">
+          {t('chapter_eight.building_blocks_four.heading')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_four.paragraph_one')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_four.paragraph_two')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_four.paragraph_three')}
+        </Text>
+      </LessonInfo>
+    </ScriptingChallenge>
   )
 }
