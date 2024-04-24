@@ -31,16 +31,7 @@ console.log("KILL")`,
       args: ['privateKey'],
     },
     defaultCode: `function get_subsidy(height) {
-  let subsidy = 5000000000
-  const halvings = Math.floor(height / 210000)
-  if (halvings >= 33) {
-      return 0
-  }
-  if (halvings === 0) {
-    return subsidy
-  }
-  let postHalvingSubsidy = Math.floor(subsidy / 2) >>> (halvings - 1)
-  return postHalvingSubsidy
+  // YOUR CODE HERE
 }
 `,
     validate: async (answer: string) => {
@@ -65,12 +56,7 @@ print("KILL")`,
       args: ['private_key'],
     },
     defaultCode: `def get_subsidy(height):
-    halvings = height // 210000
-    if halvings >= 64:
-        return 0
-    subsidy = 5000000000
-    subsidy >>= halvings
-    return subsidy
+    # YOUR CODE HERE
 `,
     validate: async (answer) => {
       if (answer) {
