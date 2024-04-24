@@ -20,7 +20,7 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
   useEffect(() => {
     check()
     initFeatures()
-  }, [])
+  })
 
   return (
     <>
