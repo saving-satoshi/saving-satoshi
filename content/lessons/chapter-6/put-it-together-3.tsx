@@ -11,7 +11,7 @@ import { LessonInfo, ScriptingChallenge, Table, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
-  image: '/assets/images/chapter-4-intro-1.jpg',
+  navigation_title: 'chapter_six.put_it_together_three.nav_title',
   key: 'CH6PUT3',
 }
 

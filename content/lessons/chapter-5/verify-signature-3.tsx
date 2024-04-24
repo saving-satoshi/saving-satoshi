@@ -8,6 +8,7 @@ import { DoubleInputChallenge, LessonInfo, Text, Title } from 'ui'
 
 export const metadata = {
   title: 'chapter_five.verify_signature_one.title',
+  navigation_title: 'chapter_five.verify_signature_three.nav_title',
   key: 'CH5VFS3',
 }
 

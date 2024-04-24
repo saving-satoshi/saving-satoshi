@@ -31,7 +31,6 @@ export default function ProgressProvider({
     defaultProgressContext.progress
   )
   const [isLoading, setIsLoading] = useState(true)
-
   const init = async () => {
     try {
       setIsLoading(true)
@@ -51,7 +50,9 @@ export default function ProgressProvider({
     try {
       setIsLoading(true)
       const progress = await getProgressLocal()
-      setAccountProgress(progress)
+      if (progress !== keys[0]) {
+        setAccountProgress(progress)
+      }
     } catch (ex) {
       console.error(ex)
     } finally {

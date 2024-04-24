@@ -6,6 +6,7 @@ import { LessonInfo, Text, Title, TerminalChallenge } from 'ui'
 
 export const metadata = {
   title: 'chapter_one.transacting_three.title',
+  navigation_title: 'chapter_one.transacting_three.nav_title',
   key: 'CH1TRA3',
 }
 

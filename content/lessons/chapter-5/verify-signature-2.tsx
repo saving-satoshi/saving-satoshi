@@ -10,6 +10,7 @@ import { LessonInfo, ScriptingChallenge, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_five.verify_signature_two.title',
+  navigation_title: 'chapter_five.verify_signature_two.nav_title',
   key: 'CH5VFS2',
 }
 

@@ -7,6 +7,7 @@ import { HolocatQuestion, Introduction, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_two.intro_one.title',
+  navigation_title: 'chapter_two.intro_one.nav_title',
   image: '/assets/images/chapter-2-intro-1.jpg',
   key: 'CH2INT1',
 }

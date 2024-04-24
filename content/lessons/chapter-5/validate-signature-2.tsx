@@ -13,6 +13,7 @@ import HolocatQuestion from 'ui/common/HolocatQuestion'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_one.title',
+  navigation_title: 'chapter_five.validate_signature_two.nav_title',
   key: 'CH5VLS2',
 }
 

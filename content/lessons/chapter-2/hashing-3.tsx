@@ -8,6 +8,7 @@ import { chapters } from 'content/chapters'
 
 export const metadata = {
   title: 'chapter_two.hashing_three.title',
+  navigation_title: 'chapter_two.hashing_three.nav_title',
   key: 'CH2HSH3',
 }
 

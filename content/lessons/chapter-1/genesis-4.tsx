@@ -5,6 +5,7 @@ import { TextImage, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_one.genesis_four.title',
+  navigation_title: 'chapter_one.genesis_four.nav_title',
   image: '/assets/images/chapter-1-challenge-1-success.jpg',
   theme: 'bg-[#4F5252]',
   key: 'CH1GEN4',
