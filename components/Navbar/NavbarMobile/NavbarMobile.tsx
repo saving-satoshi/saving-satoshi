@@ -10,7 +10,7 @@ import { chapters, lessons } from 'content'
 import Address from 'components/Navbar/Address'
 import UserButton from '../UserButton'
 import HamburgerMenu from './HamburgerMenu'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Menu from './Menu'
 import clsx from 'clsx'
 import Link from 'next/link'
@@ -58,6 +58,13 @@ export default function NavbarMobile({ params }) {
     document.body.classList.remove('overflow-y-hidden')
     setIsOpen(false)
   }
+
+  useEffect(() => {
+    return () => {
+      document.body.classList.remove('overflow-y-hidden')
+      setIsOpen(false)
+    }
+  }, [])
 
   return (
     <div
