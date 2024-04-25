@@ -62,7 +62,6 @@ export default function NavbarMobile({ params }) {
   useEffect(() => {
     return () => {
       document.body.classList.remove('overflow-y-hidden')
-      setIsOpen(false)
     }
   }, [])
 
