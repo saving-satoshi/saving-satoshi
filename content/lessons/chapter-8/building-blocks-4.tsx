@@ -29,7 +29,7 @@ export default function BuildingBlocks4({ lang }) {
 
   const javascript = {
     program: `
-console.log(getBlockHeight())
+console.log(getBlockHeight(CODE_CHALLENGE_2_HEIGHT))
 console.log("KILL")`,
     defaultFunction: {
       name: 'privateKeyToPublicKey',
@@ -37,10 +37,9 @@ console.log("KILL")`,
     },
     defaultCode: `const Bitcoin = require('@0tuedon/bitcoin_rpcjs')
 const CODE_CHALLENGE_2_HEIGHT = 6929996;
-const hashes = Bitcoin.rpc('getblocksbyheight', CODE_CHALLENGE_2_HEIGHT);
 let txCount = Infinity;
 
-const getBlockHeight = () => {
+const getBlockHeight = (height) => {
   
 
 }
@@ -59,7 +58,7 @@ const getBlockHeight = () => {
 
   const python = {
     program: `
-print(get_block_height())
+print(get_block_height(CODE_CHALLENGE_2_HEIGHT))
 print("KILL")`,
     defaultFunction: {
       name: 'privatekey_to_publickey',
@@ -67,10 +66,9 @@ print("KILL")`,
     },
     defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
 CODE_CHALLENGE_2_HEIGHT = 6929996
-hashes = Bitcoin.rpc("getblocksbyheight", CODE_CHALLENGE_2_HEIGHT)
 answer = None
 
-def get_block_height():
+def get_block_height(height):
   tx_count = float("inf")
     
 `,
