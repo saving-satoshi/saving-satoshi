@@ -20,7 +20,6 @@ const HolocatQuestion = ({
   arrowPosition?: string
   visible?: boolean
 }) => {
-  console.log('holocatQuestion', visible)
   return (
     (inline && (
       <Tooltip

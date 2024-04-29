@@ -6,6 +6,7 @@ import { Button } from 'shared'
 
 export const metadata = {
   title: 'chapter_six.in_out_two.title',
+  navigation_title: 'chapter_six.in_out_two.nav_title',
   key: 'CH6INO2',
 }
 

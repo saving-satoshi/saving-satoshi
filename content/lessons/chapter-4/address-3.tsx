@@ -12,6 +12,7 @@ import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_four.address_three.title',
+  navigation_title: 'chapter_four.address_three.nav_title',
   key: 'CH4ADR3',
 }
 

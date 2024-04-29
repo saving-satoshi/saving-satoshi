@@ -11,6 +11,7 @@ import PlainEditorWrapper from 'ui/lesson/ScriptingChallenge/PlainEditorWrapper'
 
 export const metadata = {
   title: 'chapter_six.in_out_one.title',
+  navigation_title: 'chapter_six.in_out_one.nav_title',
   image: '/assets/images/chapter-4-intro-1.jpg',
   key: 'CH6INO1',
 }

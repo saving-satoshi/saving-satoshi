@@ -17,6 +17,7 @@ export const metadata = {
   title: 'chapter_seven.title',
   image: '/assets/images/chapter-7-cover.jpg',
   theme: 'bg-gradient-to-br from-[#0A1952] to-[#1B3D98]',
+  secondaryTheme: 'bg-[#0f2366]',
   intros: ['intro-1', 'intro-2', 'intro-3'],
   lessons: ['mempool-transaction-1'],
   outros: ['outro-1'],

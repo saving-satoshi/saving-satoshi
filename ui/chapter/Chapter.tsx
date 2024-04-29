@@ -94,14 +94,6 @@ export default function Chapter({ children, metadata, lang }) {
     }
   }, [])
 
-  useEffect(() => {
-    !isAccountLoading &&
-      !isLoading &&
-      account &&
-      progress.at(2) !== '1' &&
-      router.push(`${pathName}#chapter-${progress.at(2)}`)
-  }, [account, isAccountLoading, isLoading, progress])
-
   return (
     <ChapterContext.Provider value={context}>
       <div
@@ -138,7 +130,7 @@ export default function Chapter({ children, metadata, lang }) {
                   classes="mt-8"
                 />
               ) : null}
-              <div className="flex grow lg:grow-0">
+              <div className="flex grow py-2 lg:grow-0">
                 <div
                   aria-hidden={activeTab !== 'info' ? 'true' : 'false'}
                   className={clsx('-mr-[100%] block w-full', {
@@ -249,6 +241,9 @@ export default function Chapter({ children, metadata, lang }) {
                   })}
                 >
                   <ChallengeList
+                    intros={chapter.metadata.intros}
+                    lessonStrings={chapter.metadata.lessons}
+                    outros={chapter.metadata.outros}
                     challenges={chapter.metadata.challenges}
                     chapterId={chapter.metadata.slug}
                   />

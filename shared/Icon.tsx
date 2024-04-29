@@ -1,3 +1,5 @@
+'use-client'
+
 import clsx from 'clsx'
 import * as icons from './icons'
 

@@ -12,6 +12,7 @@ import { useDataContext } from 'contexts/DataContext'
 
 export const metadata = {
   title: 'chapter_four.address_two.title',
+  navigation_title: 'chapter_four.address_two.nav_title',
   key: 'CH4ADR2',
 }
 

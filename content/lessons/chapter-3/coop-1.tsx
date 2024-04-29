@@ -14,6 +14,7 @@ import { useAtom } from 'jotai'
 
 export const metadata = {
   title: 'chapter_three.coop_one.title',
+  navigation_title: 'chapter_three.coop_one.nav_title',
   key: 'CH3COO1',
 }
 

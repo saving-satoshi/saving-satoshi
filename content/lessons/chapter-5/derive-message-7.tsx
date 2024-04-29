@@ -12,6 +12,7 @@ import { chapters } from 'content/chapters'
 
 export const metadata = {
   title: 'chapter_five.derive_message_one.title',
+  navigation_title: 'chapter_five.derive_message_seven.nav_title',
   key: 'CH5DRM7',
 }
 
@@ -185,7 +186,7 @@ export default function DeriveMessage7({ lang }) {
       lang={lang}
       config={config}
       lessonKey={getLessonKey('chapter-5', 'derive-message-7')}
-      successMessage=""
+      successMessage={t('chapter_five.derive_message_seven.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>
