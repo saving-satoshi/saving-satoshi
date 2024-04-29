@@ -29,42 +29,60 @@ export default function BuildingBlocks4({ lang }) {
 
   const javascript = {
     program: `
-console.log(privateKeyToPublicKey(\`${privateKey}\`))
+console.log(getBlockHeight())
 console.log("KILL")`,
     defaultFunction: {
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: `const CODE_CHALLENGE_2_HEIGHT = 6929996;
+    defaultCode: `const Bitcoin = require('@0tuedon/bitcoin_rpcjs')
+const CODE_CHALLENGE_2_HEIGHT = 6929996;
+const hashes = Bitcoin.rpc('getblocksbyheight', CODE_CHALLENGE_2_HEIGHT);
+let txCount = Infinity;
+
+const getBlockHeight = () => {
+  
+
+}
 `,
     validate: async (answer: string) => {
-      return [true, 'Nicely Done ']
+      if (
+        answer ===
+        'b09090d61e5eea3e23e9b428de2d9660c8b5e345ec3bb39eea8df9bc80813171'
+      ) {
+        return [true, 'Nicely Done ']
+      } else {
+        return [false, 'Incorrect']
+      }
     },
   }
 
   const python = {
     program: `
-print(privatekey_to_publickey("${privateKey}"))
+print(get_block_height())
 print("KILL")`,
     defaultFunction: {
       name: 'privatekey_to_publickey',
       args: [''],
     },
-    defaultCode: `CODE_CHALLENGE_2_HEIGHT = 6929996
+    defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
+CODE_CHALLENGE_2_HEIGHT = 6929996
 hashes = Bitcoin.rpc("getblocksbyheight", CODE_CHALLENGE_2_HEIGHT)
 answer = None
-tx_count = float("inf")
-for bhash in hashes:
-    block = Bitcoin.rpc("getblock", bhash)
-    num = len(block["txs"])
-    if num < tx_count:
-        tx_count = num
-        answer = bhash
-print(answer)
+
+def get_block_height():
+  tx_count = float("inf")
+    
 `,
     validate: async (answer: string) => {
-      // Parsing the new object string format
-      return [true, 'Nicely Done']
+      if (
+        answer ===
+        'b09090d61e5eea3e23e9b428de2d9660c8b5e345ec3bb39eea8df9bc80813171'
+      ) {
+        return [true, 'Nicely Done ']
+      } else {
+        return [false, 'Incorrect']
+      }
     },
   }
 
@@ -87,7 +105,7 @@ print(answer)
       config={config}
       saveData
       lessonKey={getLessonKey('chapter-8', 'building-block-4')}
-      successMessage={t('chapter_eight.building_block_four.success')}
+      successMessage={t('chapter_eight.building_blocks_four.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>

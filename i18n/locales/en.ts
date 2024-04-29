@@ -1669,6 +1669,7 @@ const translations = {
       paragraph_one: `Blocks are stored in the full node database, indexed by their hash. The full node keeps track of which blocks are candidates at each height in the chain with a second index that maps height -> [block hashes].`,
       paragraph_two: `The JSON-RPC API returns block data as JSON objects that include a property "txs" which is an array of transaction objects.`,
       paragraph_three: `Retrieve all the block candidates at height 6929996 and print the hash of the block with the fewest transactions in it.`,
+      success: `Nicely Done`,
     },
     outro_one: {
       title: 'Outro',
