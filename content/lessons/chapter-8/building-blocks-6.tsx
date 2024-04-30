@@ -117,9 +117,6 @@ print("KILL")`,
           <li className="text-lg md:text-xl">
             {t('chapter_eight.building_blocks_six.list_two')}
           </li>
-          <li className="text-lg md:text-xl">
-            {t('chapter_eight.building_blocks_six.list_three')}
-          </li>
         </ul>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_eight.building_blocks_six.paragraph_four')}
