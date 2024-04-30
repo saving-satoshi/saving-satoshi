@@ -15,8 +15,9 @@ import {
   keys,
 } from 'lib/progress'
 import { themeSelector } from 'lib/themeSelector'
-import { useProgressContext } from 'contexts/ProgressContext'
 import useLessonStatus from 'hooks/useLessonStatus'
+import { useAtom } from 'jotai'
+import { isLoadingProgressAtom, progressAtom } from 'state/state'
 
 export default function Tab({
   index,
@@ -42,8 +43,8 @@ export default function Tab({
 
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
-
-  const { progress, isLoading } = useProgressContext()
+  const [progress] = useAtom(progressAtom)
+  const [isLoading] = useAtom(isLoadingProgressAtom)
 
   const { isUnlocked } = useLessonStatus(
     progress,

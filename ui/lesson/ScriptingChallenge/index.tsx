@@ -8,7 +8,6 @@ import Runner from './Runner'
 import { EditorConfig, LessonDirection, StoredLessonData } from 'types'
 import { Lesson, LessonTabs } from 'ui'
 import { useMediaQuery, useDynamicHeight, useTranslations } from 'hooks'
-import { useProgressContext } from 'contexts/ProgressContext'
 import { setData } from 'api/data'
 import { Base64String } from 'types/classes'
 import clsx from 'clsx'
@@ -17,6 +16,7 @@ import { useDataContext } from 'contexts/DataContext'
 import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { accountAtom } from 'state/state'
+import { useProgressFunctions } from 'state/ProgressFunctions'
 
 const tabData = [
   {
@@ -67,7 +67,7 @@ export default function ScriptingChallenge({
   loadingSavedCode?: boolean
 }) {
   const t = useTranslations(lang)
-  const { saveProgress, saveProgressLocal } = useProgressContext()
+  const { saveProgress, saveProgressLocal } = useProgressFunctions()
   const [account] = useAtom(accountAtom)
   const { currentLanguage, setCurrentLanguage } = useDataContext()
   const [code, setCode] = useState(

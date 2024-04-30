@@ -3,16 +3,15 @@
 import { Button } from 'shared'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import Image from 'next/image'
-import { useProgressContext } from 'contexts/ProgressContext'
 import { getChapterKey, keys } from 'lib/progress'
-import { accountAtom } from 'state/state'
+import { accountAtom, progressAtom } from 'state/state'
 import { useAtom } from 'jotai'
 
 export default function Hero() {
   const { chaptersUrl, aboutUrl } = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
-  const { progress } = useProgressContext()
+  const [progress] = useAtom(progressAtom)
   const [account] = useAtom(accountAtom)
 
   const chapterKey = progress !== keys[0] ? getChapterKey(progress) : ''

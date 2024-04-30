@@ -13,12 +13,17 @@ import Icon from 'shared/Icon'
 import { ChapterContextType } from 'types'
 import { useTranslations, useLocalizedRoutes } from 'hooks'
 import useLessonStatus from 'hooks/useLessonStatus'
-import { useProgressContext } from 'contexts/ProgressContext'
 import { getLessonKey } from 'lib/progress'
 import { keys, keysMeta } from 'lib/progress'
 import useEnvironment from 'hooks/useEnvironment'
 import { useAtom } from 'jotai'
-import { accountAtom, isAuthLoadingAtom, Modal } from 'state/state'
+import {
+  accountAtom,
+  isAuthLoadingAtom,
+  isLoadingProgressAtom,
+  Modal,
+  progressAtom,
+} from 'state/state'
 import { useModalFunctions } from 'state/ModalFunctions'
 import { useFeatureFunctions } from 'state/FeatureFunctions'
 
@@ -30,7 +35,8 @@ export default function Chapter({ children, metadata, lang }) {
   const { isDevelopment } = useEnvironment()
   const pathName = usePathname() || ''
   const router = useRouter()
-  const { progress, isLoading } = useProgressContext()
+  const [progress] = useAtom(progressAtom)
+  const [isLoading] = useAtom(isLoadingProgressAtom)
   const [account] = useAtom(accountAtom)
   const [isAccountLoading] = useAtom(isAuthLoadingAtom)
   const { open } = useModalFunctions()
@@ -38,6 +44,7 @@ export default function Chapter({ children, metadata, lang }) {
   const isEnabled = isFeatureEnabled(
     `${metadata.slug.replace('-', '_')}_enabled`
   )
+  console.log(progress)
   const { isUnlocked } = useLessonStatus(
     progress,
     getLessonKey(metadata.slug, 'intro-1')

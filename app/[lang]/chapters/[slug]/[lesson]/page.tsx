@@ -13,12 +13,17 @@ import {
   keys,
 } from 'lib/progress'
 
-import { useProgressContext } from 'contexts/ProgressContext'
 import { LoadingState } from 'types'
 import { notFound, useRouter } from 'next/navigation'
 import useEnvironment from 'hooks/useEnvironment'
 import { useAtom } from 'jotai'
-import { accountAtom, isAuthLoadingAtom } from 'state/state'
+import {
+  accountAtom,
+  isAuthLoadingAtom,
+  isLoadingProgressAtom,
+  progressAtom,
+} from 'state/state'
+import { useProgressFunctions } from 'state/ProgressFunctions'
 
 const Portal = ({ children, id }) => {
   const [mounted, setMounted] = useState(false)
@@ -44,13 +49,9 @@ export default function Page({ params }) {
   const pathData = usePathData()
   const [account] = useAtom(accountAtom)
   const [isAccountLoading] = useAtom(isAuthLoadingAtom)
-
-  const {
-    progress,
-    isLoading: isProgressLoading,
-    saveProgress,
-    saveProgressLocal,
-  } = useProgressContext()
+  const [progress] = useAtom(progressAtom)
+  const [isProgressLoading] = useAtom(isLoadingProgressAtom)
+  const { saveProgress, saveProgressLocal } = useProgressFunctions()
 
   const currentLessonKey = getLessonKey(pathData.chapterId, pathData.lessonId)
   const lastUnlockedLessonPath = getLastUnlockedLessonPath(progress)
