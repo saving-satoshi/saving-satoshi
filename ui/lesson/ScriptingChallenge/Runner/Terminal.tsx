@@ -42,6 +42,7 @@ function Terminal({ className }: { className?: string }, ref) {
                     margin-top: 15px;
                   }
                   .log {
+                    white-space: preserve;
                     word-break: break-all;
                     color: white;
                     margin-bottom: 15px;
