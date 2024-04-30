@@ -9,6 +9,7 @@ import { getLessonKey } from 'lib/progress'
 
 export const metadata = {
   title: 'chapter_eight.building_blocks_three.title',
+  navigation_title: 'chapter_eight.building_blocks_three.nav_title',
   key: 'CH8BBK3',
 }
 

@@ -1667,7 +1667,7 @@ const translations = {
       title: 'building blocks',
       heading: 'The Bitcoin API',
       paragraph_one:
-        "To answer these questions, you'll need to interact with a Bitcoin full node, via it's JSON-RPC API. We've imported a library for you called bitcoin_rpc.py which handles the secure HTTP connection from your script to the full node, executes your commands, and returns the responses. Your full node is \"pruning\" so it only has access to the last 300 blocks, but that should be enough to include the entire timespan of Vanderpoole's recent muckery.",
+        "To answer these questions, you'll need to interact with a Bitcoin full node, via it's JSON-RPC API. We've imported a library for you called bitcoin_rpc which handles the secure HTTP connection from your script to the full node, executes your commands, and returns the responses. Your full node is \"pruning\" so it only has access to the last 300 blocks, but that should be enough to include the entire timespan of Vanderpoole's recent muckery.",
       paragraph_two:
         "Let's start by getting familiar with the API. The library has one function that accepts one required argument (a string) and one optional argument (either a string or a number):",
       paragraph_three:
