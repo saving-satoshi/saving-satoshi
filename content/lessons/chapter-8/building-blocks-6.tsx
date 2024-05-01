@@ -1,86 +1,133 @@
 'use client'
 
-import { useProceed, useTranslations } from 'hooks'
-import { ChapterIntro, CodeExample, HolocatQuestion } from 'ui'
-
-import { Button } from 'shared'
-import { useEffect, useState } from 'react'
-import { getData } from 'api/data'
-import { Data } from 'types'
-import { chapters } from 'content/chapters'
+import { ScriptingChallenge, LessonInfo, CodeExample, Title, Table } from 'ui'
+import { EditorConfig } from 'types'
+import { useTranslations } from 'hooks'
+import { Text } from 'ui'
+import { useState } from 'react'
+import { getLessonKey } from 'lib/progress'
 
 export const metadata = {
-  title: 'chapter_four.address_one.title',
+  title: 'chapter_eight.building_blocks_six.title',
+  navigation_title: 'chapter_eight.building_blocks_six.nav_title',
   key: 'CH8BBK6',
 }
 
 export default function BuildingBlocks6({ lang }) {
-  const proceed = useProceed()
   const t = useTranslations(lang)
 
-  const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
-  const dataObject = prevData?.data ? prevData?.data : ''
-  const [isLoading, setIsLoading] = useState(true)
-  const [tooltipVisible, setTooltipVisible] = useState(false)
-
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
+  const javascript = {
+    program: `//BEGIN VALIDATION BLOCK
+if (get_subsidy(100000) === 5000000000 &&
+get_subsidy(10000000) === 0 &&
+get_subsidy(839999) === 625000000 &&
+get_subsidy(840000) === 312500000) {
+  console.log('true')
+} else {
+  console.log('false')
+}
+console.log("KILL")`,
+    defaultFunction: {
+      name: 'privateKeyToPublicKey',
+      args: ['privateKey'],
+    },
+    defaultCode: `function get_subsidy(height) {
+  // YOUR CODE HERE
+}
+`,
+    validate: async (answer: string) => {
+      if (answer) {
+        if (answer === 'true') {
+          return [true, '']
+        } else {
+          return [false, 'recheck your methods']
+        }
+      } else {
+        return [false, "can't find a return in both of the methods"]
+      }
+    },
   }
 
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
+  const python = {
+    program: `# BEGIN VALIDATION BLOCK
+print(get_subsidy(100000) == 5000000000 and get_subsidy(10000000) == 0 and get_subsidy(839999) == 625000000 and get_subsidy(840000) == 312500000 and 'true')
+print("KILL")`,
+    defaultFunction: {
+      name: 'privatekey_to_publickey',
+      args: ['private_key'],
+    },
+    defaultCode: `def get_subsidy(height):
+    # YOUR CODE HERE
+`,
+    validate: async (answer) => {
+      if (answer) {
+        if (answer === 'true') {
+          return [true, '']
+        } else {
+          return [false, 'recheck your methods']
+        }
+      } else {
+        return [false, "can't find a return in the function"]
+      }
+    },
   }
 
-  const getPrevLessonData = async () => {
-    const data = await getData('CH4PKY4')
-    if (data?.answer) {
-      setPrevData({
-        lesson_id: 'CH4PKY4',
-        data: data.answer,
-      })
-    }
+  const config: EditorConfig = {
+    defaultLanguage: 'javascript',
+    languages: {
+      javascript,
+      python,
+    },
   }
 
-  useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
-  }, [])
+  const [language, setLanguage] = useState('javascript')
+  const handleSelectLanguage = (language: string) => {
+    setLanguage(language)
+  }
 
   return (
-    !isLoading && (
-      <ChapterIntro
-        className="my-8"
-        heading={t('chapter_four.address_one.heading')}
-      >
-        <p className="mt-2 text-lg md:text-xl">
-          {t('chapter_four.address_one.paragraph_one')}
-        </p>
-        <CodeExample className="mt-4" code={dataObject} language="shell" />
-        <p className="mt-8 inline-block text-lg md:text-xl">
-          {t('chapter_four.address_one.paragraph_two')}
-          <a
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            href={t('chapter_four.address_one.tooltip_one.link')}
-            target="_blank"
-            className="inline text-lg italic hover:underline md:text-xl"
-          >
-            {t('chapter_four.address_one.tooltip_one.highlighted')}
-            <HolocatQuestion
-              theme={chapters['chapter-4'].metadata.theme}
-              inline
-              id="target-difficulty"
-              question={t('chapter_four.address_one.tooltip_one.question')}
-              href={t('chapter_four.address_one.tooltip_one.link')}
-              visible={tooltipVisible}
-            />
-          </a>
-          .
-        </p>
-
-        <Button onClick={proceed} classes="mt-10 max-md:w-full">
-          {t('shared.next')}
-        </Button>
-      </ChapterIntro>
-    )
+    <ScriptingChallenge
+      lang={lang}
+      config={config}
+      saveData
+      lessonKey={getLessonKey('chapter-8', 'building-blocks-6')}
+      successMessage={t('chapter_eight.building_blocks_six.success')}
+      onSelectLanguage={handleSelectLanguage}
+    >
+      <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+        <Title>4. {t('chapter_eight.building_blocks_six.heading')}</Title>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_six.paragraph_one')}
+        </Text>
+        <CodeExample
+          className="mt-4 font-space-mono"
+          code={`BLOCK_SUBSIDY + TOTAL_TRASNACTION_FEES_IN_BLOCK = COINBASE_OUTPUT_VALUE`}
+          language="shell"
+        />
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_six.paragraph_two')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_six.paragraph_three')}
+        </Text>
+        <ul className="list-disc pl-5 font-nunito">
+          <li className="text-lg md:text-xl">
+            {t('chapter_eight.building_blocks_six.list_one')}
+          </li>
+          <li className="text-lg md:text-xl">
+            {t('chapter_eight.building_blocks_six.list_two')}
+          </li>
+        </ul>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_six.paragraph_four')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_six.paragraph_five')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_six.paragraph_six')}
+        </Text>
+      </LessonInfo>
+    </ScriptingChallenge>
   )
 }
