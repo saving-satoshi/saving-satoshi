@@ -1,86 +1,110 @@
 'use client'
 
-import { useProceed, useTranslations } from 'hooks'
-import { ChapterIntro, CodeExample, HolocatQuestion } from 'ui'
-
-import { Button } from 'shared'
-import { useEffect, useState } from 'react'
-import { getData } from 'api/data'
-import { Data } from 'types'
-import { chapters } from 'content/chapters'
+import { ScriptingChallenge, LessonInfo, CodeExample, Title, Table } from 'ui'
+import { EditorConfig } from 'types'
+import { useTranslations } from 'hooks'
+import { Text } from 'ui'
+import { useState } from 'react'
+import { getLessonKey } from 'lib/progress'
 
 export const metadata = {
-  title: 'chapter_four.address_one.title',
+  title: 'chapter_eight.building_blocks_three.title',
+  navigation_title: 'chapter_eight.building_blocks_three.nav_title',
   key: 'CH8BBK3',
 }
 
 export default function BuildingBlocks3({ lang }) {
-  const proceed = useProceed()
   const t = useTranslations(lang)
 
-  const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
-  const dataObject = prevData?.data ? prevData?.data : ''
-  const [isLoading, setIsLoading] = useState(true)
-  const [tooltipVisible, setTooltipVisible] = useState(false)
+  const javascript = {
+    program: `//BEGIN VALIDATION BLOCK
+console.log("KILL")`,
+    defaultFunction: {
+      name: 'privateKeyToPublicKey',
+      args: ['privateKey'],
+    },
+    defaultCode: `const Bitcoin = require('@0tuedon/bitcoin_rpcjs')
+// https://github.com/saving-satoshi/bitcoin_rpcjs/blob/master/bitcoin_rpc.js
 
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
+console.log(Bitcoin.rpc())
+`,
+    validate: async (answer: string) => {
+      if (answer) {
+        if (answer === '3007592928481984.23') {
+          return [true, '']
+        } else {
+          return [null, '']
+        }
+      } else {
+        return [null, '']
+      }
+    },
   }
 
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
+  const python = {
+    program: `# BEGIN VALIDATION BLOCK
+print("KILL")`,
+    defaultFunction: {
+      name: 'privatekey_to_publickey',
+      args: ['private_key'],
+    },
+    defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
+# https://github.com/saving-satoshi/bitcoin_rpcpy/blob/main/bitcoin_rpcpy/bitcoin_rpc.py
+
+print(Bitcoin.rpc())
+`,
+    validate: async (answer) => {
+      if (answer) {
+        if (answer === '3007592928481984.23') {
+          return [true, '']
+        } else {
+          return [null, '']
+        }
+      } else {
+        return [null, '']
+      }
+    },
   }
 
-  const getPrevLessonData = async () => {
-    const data = await getData('CH4PKY4')
-    if (data?.answer) {
-      setPrevData({
-        lesson_id: 'CH4PKY4',
-        data: data.answer,
-      })
-    }
+  const config: EditorConfig = {
+    defaultLanguage: 'javascript',
+    languages: {
+      javascript,
+      python,
+    },
   }
 
-  useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
-  }, [])
+  const [language, setLanguage] = useState('javascript')
+  const handleSelectLanguage = (language: string) => {
+    setLanguage(language)
+  }
 
   return (
-    !isLoading && (
-      <ChapterIntro
-        className="my-8"
-        heading={t('chapter_four.address_one.heading')}
-      >
-        <p className="mt-2 text-lg md:text-xl">
-          {t('chapter_four.address_one.paragraph_one')}
-        </p>
-        <CodeExample className="mt-4" code={dataObject} language="shell" />
-        <p className="mt-8 inline-block text-lg md:text-xl">
-          {t('chapter_four.address_one.paragraph_two')}
-          <a
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            href={t('chapter_four.address_one.tooltip_one.link')}
-            target="_blank"
-            className="inline text-lg italic hover:underline md:text-xl"
-          >
-            {t('chapter_four.address_one.tooltip_one.highlighted')}
-            <HolocatQuestion
-              theme={chapters['chapter-4'].metadata.theme}
-              inline
-              id="target-difficulty"
-              question={t('chapter_four.address_one.tooltip_one.question')}
-              href={t('chapter_four.address_one.tooltip_one.link')}
-              visible={tooltipVisible}
-            />
-          </a>
-          .
-        </p>
-
-        <Button onClick={proceed} classes="mt-10 max-md:w-full">
-          {t('shared.next')}
-        </Button>
-      </ChapterIntro>
-    )
+    <ScriptingChallenge
+      lang={lang}
+      config={config}
+      saveData
+      lessonKey={getLessonKey('chapter-8', 'building_blocks-3')}
+      successMessage={t('chapter_eight.building_blocks_three.success')}
+      onSelectLanguage={handleSelectLanguage}
+    >
+      <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+        <Title>{t('chapter_eight.building_blocks_three.heading')}</Title>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_three.paragraph_one')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_three.paragraph_two')}
+        </Text>
+        <CodeExample
+          className="mt-4 font-space-mono"
+          code={`Bitcoin.rpc(method, params)`}
+          language="shell"
+        />
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_three.paragraph_three')}
+        </Text>
+      </LessonInfo>
+    </ScriptingChallenge>
   )
 }

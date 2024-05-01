@@ -1663,6 +1663,18 @@ const translations = {
       nav_title: `Intro`,
       paragraph_one: `—DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Mr. Vanderpoole, can you prove that you did no such thing? Mysterious hacker and his holocat, can you prove Vanderpoole had attempted this crime against Bitcoin?”`,
     },
+    building_blocks_three: {
+      title: 'Building blocks',
+      nav_title: `Explore the Bitcoin API`,
+      heading: 'The Bitcoin API',
+      paragraph_one:
+        "To answer these questions, you'll need to interact with a Bitcoin full node, via it's JSON-RPC API. We've imported a library for you called bitcoin_rpc which handles the secure HTTP connection from your script to the full node, executes your commands, and returns the responses. Your full node is \"pruning\" so it only has access to the last 300 blocks, but that should be enough to include the entire timespan of Vanderpoole's recent muckery.",
+      paragraph_two:
+        "Let's start by getting familiar with the API. The library has one function that accepts one required argument (a string) and one optional argument (either a string or a number):",
+      paragraph_three:
+        'The API also has a convenient "help" method! Ask it for help to learn more about the available commands, then pass the challenge by printing the current network difficulty.',
+      success: "Nice work exploring the API! Let's move on.",
+    },
     building_blocks_four: {
       nav_title: `Building blocks`,
       heading: `2. Block Data`,
