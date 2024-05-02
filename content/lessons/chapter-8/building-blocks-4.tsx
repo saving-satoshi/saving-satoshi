@@ -32,8 +32,8 @@ export default function BuildingBlocks4({ lang }) {
 console.log(getBlockHeight(CODE_CHALLENGE_2_HEIGHT))
 console.log("KILL")`,
     defaultFunction: {
-      name: 'privateKeyToPublicKey',
-      args: ['privateKey'],
+      name: 'getBlockHeight',
+      args: ['height'],
     },
     defaultCode: `const Bitcoin = require('@0tuedon/bitcoin_rpcjs')
 const CODE_CHALLENGE_2_HEIGHT = 6929996;
@@ -61,8 +61,8 @@ const getBlockHeight = (height) => {
 print(get_block_height(CODE_CHALLENGE_2_HEIGHT))
 print("KILL")`,
     defaultFunction: {
-      name: 'privatekey_to_publickey',
-      args: [''],
+      name: 'get_block_height',
+      args: ['height'],
     },
     defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
 CODE_CHALLENGE_2_HEIGHT = 6929996
