@@ -19,42 +19,38 @@ export const metadata = {
 
 export default function BuildingBlocks4({ lang }) {
   const t = useTranslations(lang)
-  const [account] = useAtom(accountAtom)
   const { currentLanguage } = useDataContext()
-  const [privateKey, setPrivateKey] = useState('')
-
-  if (account && !privateKey) {
-    setPrivateKey(account?.private_key.toString())
-  }
 
   const javascript = {
-    program: `
-
+    program: `console.log(getBlockTxFee());
 console.log("KILL")`,
     defaultFunction: {
-      name: 'privateKeyToPublicKey',
-      args: ['privateKey'],
+      name: 'getBlockTxFee',
+      args: [''],
     },
     defaultCode: `const Bitcoin = require('@0tuedon/bitcoin_rpcjs')
-const CODE_CHALLENGE_3_BLOCK_HASH = "003b9be2d96d14f02717c262bb4b9a0b23191e2f1d9a38413204f3be4f21613c"
-const CODE_CHALLENGE_3_TX_HASH = "aaf2fd920b7e628b1480b88343ab3b49e49969cf61b059d8c1532b805b7a6d2f"
+    const BLOCK_HASH = "003b9be2d96d14f02717c262bb4b9a0b23191e2f1d9a38413204f3be4f21613c"
+    const TX_HASH = "aaf2fd920b7e628b1480b88343ab3b49e49969cf61b059d8c1532b805b7a6d2f"
+    
+    // First we need to find the block associated with the corresponding tx hash
+    // build a function that will call getTxFee when it finds a transaction with the correct TX_HASH
+    // this is the function that we will call for validation
+    const getBlockTxFee = () => {
+      let block = Bitcoin.rpc("getblock", BLOCK_HASH)
 
-const getTxFee = (tx)=>{
-  let fee = 0
-
-}
-
-const getBlockTx = ()=>{
-  let block = Bitcoin.rpc("getblock", CODE_CHALLENGE_3_BLOCK_HASH)
-
-}
-
-}
-getBlockTx()
+    }
+    
+    // Now let's find the miner's fee for this transaction.
+    // with the transaction from above determine the fee paid to miners
+    const getTxFee = (tx) =>{
+      let fee = 0
+      return fee
+    }  
 `,
-    validate: async (answer: string) => {
-      if (answer == '1027') {
-        return [true, 'Nicely Done ']
+    validate: async (answer) => {
+      // We need \u001b[33m1027\u001b[39m because javascript is weird  meant to be 1027
+      if (answer === '\u001b[33m1027\u001b[39m') {
+        return [true, 'Nicely Done']
       } else {
         return [false, 'Incorrect']
       }
@@ -63,20 +59,26 @@ getBlockTx()
 
   const python = {
     program: `
+print(get_block_tx_fee())
 print("KILL")`,
     defaultFunction: {
-      name: 'privatekey_to_publickey',
+      name: 'get_block_tx_fee',
       args: [''],
     },
     defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
-CODE_CHALLENGE_3_BLOCK_HASH = "003b9be2d96d14f02717c262bb4b9a0b23191e2f1d9a38413204f3be4f21613c"
-CODE_CHALLENGE_3_TX_HASH = "aaf2fd920b7e628b1480b88343ab3b49e49969cf61b059d8c1532b805b7a6d2f"
+BLOCK_HASH = "003b9be2d96d14f02717c262bb4b9a0b23191e2f1d9a38413204f3be4f21613c"
+TX_HASH = "aaf2fd920b7e628b1480b88343ab3b49e49969cf61b059d8c1532b805b7a6d2f"
 
+# First we need to find the transaction with the corresponding tx hash
+# build a function that will call get_tx_Fee when it finds a transaction with the correct TX_HASH
+# this is the function that we will call for validation
+def get_block_tx_fee():
+  block = Bitcoin.rpc("getblock", BLOCK_HASH)
+
+# Now let's find the miner's fee for this transaction.
+# with the transaction from above determine the fee paid to miners
 def get_tx_fee(tx):
-    fee = 0
-
-def get_block_tx():
-  block = Bitcoin.rpc("getblock", CODE_CHALLENGE_3_BLOCK_HASH)
+  fee = 0
 
 `,
     validate: async (answer: string) => {
