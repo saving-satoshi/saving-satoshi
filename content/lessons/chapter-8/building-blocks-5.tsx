@@ -37,13 +37,14 @@ console.log("KILL")`,
     // this is the function that we will call for validation
     const getBlockTxFee = () => {
       let block = Bitcoin.rpc("getblock", BLOCK_HASH)
-
+// YOUR CODE HERE
     }
     
     // Now let's find the miner's fee for this transaction.
     // with the transaction from above determine the fee paid to miners
     const getTxFee = (tx) =>{
       let fee = 0
+      // YOUR CODE HERE
       return fee
     }  
 `,
@@ -74,12 +75,14 @@ TX_HASH = "aaf2fd920b7e628b1480b88343ab3b49e49969cf61b059d8c1532b805b7a6d2f"
 # this is the function that we will call for validation
 def get_block_tx_fee():
   block = Bitcoin.rpc("getblock", BLOCK_HASH)
+    # YOUR CODE HERE
 
 # Now let's find the miner's fee for this transaction.
 # with the transaction from above determine the fee paid to miners
 def get_tx_fee(tx):
   fee = 0
-
+    # YOUR CODE HERE
+    return fee
 `,
     validate: async (answer: string) => {
       if (answer === '1027') {
