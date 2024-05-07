@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 
 import { Tooltip } from 'ui'
 import Icon from 'shared/Icon'
-import { useLang, useTranslations } from 'hooks'
+import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { lessons, chapters } from 'content'
 import {
   getLessonKey,
@@ -35,6 +35,7 @@ export default function Tab({
 
   const theme = themeSelector(lessons, lessonId, chapters, slug)
 
+  const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
   const pathName = usePathname() || ''
@@ -112,7 +113,7 @@ export default function Tab({
               const navTitle =
                 lessons[slug][navLessonId].metadata.navigation_title
               const ComponentType = isLessonUnlock ? Link : 'div'
-              console.log(challenge.lessonId)
+              const href = `${routes.chaptersUrl}/${slug}/${challenge.lessonId}`
               return (
                 <div
                   key={index}
@@ -125,7 +126,7 @@ export default function Tab({
                   })}
                 >
                   <ComponentType
-                    href={`/${lang}/chapters/${slug}/${challenge.lessonId}`}
+                    href={href}
                     className={clsx(
                       'flex h-full w-full flex-nowrap items-center gap-[5px] px-2.5 py-2 text-base',
                       {
