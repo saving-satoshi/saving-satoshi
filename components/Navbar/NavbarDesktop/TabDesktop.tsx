@@ -112,6 +112,7 @@ export default function Tab({
               const navTitle =
                 lessons[slug][navLessonId].metadata.navigation_title
               const ComponentType = isLessonUnlock ? Link : 'div'
+              console.log(challenge.lessonId)
               return (
                 <div
                   key={index}
@@ -124,7 +125,7 @@ export default function Tab({
                   })}
                 >
                   <ComponentType
-                    href={challenge.lessonId}
+                    href={`/${lang}/chapters/${slug}/${challenge.lessonId}`}
                     className={clsx(
                       'flex h-full w-full flex-nowrap items-center gap-[5px] px-2.5 py-2 text-base',
                       {
