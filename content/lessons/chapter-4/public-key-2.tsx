@@ -1,7 +1,7 @@
 'use client'
 
 import { useMediaQuery, useTranslations } from 'hooks'
-import { TextImage } from 'ui'
+import { HolocatQuestion, TextImage } from 'ui'
 import Lottie from 'react-lottie'
 import Animation1 from 'public/assets/animations/Animation1.json'
 import focusellipse from 'public/assets/images/focus-ellipse.png'
@@ -10,6 +10,7 @@ import Arrow from 'shared/icons/Arrow'
 import { useEffect, useState } from 'react'
 import { sleep } from 'utils'
 import Image from 'next/image'
+import { chapters } from 'content/chapters'
 
 export const metadata = {
   title: 'chapter_four.public_key_two.title',
@@ -26,6 +27,7 @@ export default function PublicKey2({ lang }) {
   const [hiddenFocusOne, setHiddenFocusOne] = useState('hidden')
   const [hiddenFocusTwo, setHiddenFocusTwo] = useState('hidden')
   const [hiddenPointText, setHiddenPointText] = useState('hidden')
+  const [tooltipVisible, setTooltipVisible] = useState(false)
 
   const isSmallScreen = useMediaQuery({ width: 1279 })
 
@@ -52,6 +54,14 @@ export default function PublicKey2({ lang }) {
     setHiddenFocusOne('fade-in')
     await sleep(3000)
     setHiddenFocusTwo('')
+  }
+
+  const handleMouseEnter = () => {
+    setTooltipVisible(true)
+  }
+
+  const handleMouseLeave = () => {
+    setTooltipVisible(false)
   }
 
   useEffect(() => {
@@ -143,7 +153,25 @@ export default function PublicKey2({ lang }) {
         {t('chapter_four.public_key_two.paragraph_four')}
       </p>
       <p className="mt-8 text-lg md:text-xl">
-        {t('chapter_four.public_key_two.paragraph_five')}
+        {t('chapter_four.public_key_two.paragraph_five')}{' '}
+        <a
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          href={t('chapter_four.public_key_two.tooltip_one.link')}
+          target="_blank"
+          className="inline text-lg italic underline md:text-xl"
+        >
+          {t('chapter_four.public_key_two.tooltip_one.highlighted')}{' '}
+          <HolocatQuestion
+            theme={chapters['chapter-4'].metadata.theme}
+            inline
+            id="generator-point"
+            question={t('chapter_four.public_key_two.tooltip_one.question')}
+            href={t('chapter_four.public_key_two.tooltip_one.link')}
+            visible={tooltipVisible}
+          />
+        </a>
+        .
       </p>
     </TextImage>
   )

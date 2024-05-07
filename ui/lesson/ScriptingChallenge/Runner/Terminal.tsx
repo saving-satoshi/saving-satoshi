@@ -47,8 +47,14 @@ function Terminal({ className }: { className?: string }, ref) {
                     color: white;
                     margin-bottom: 15px;
                   }
+                  .running {
+                    white-space: preserve;
+                    word-break: break-all;
+                    color: #FFFFFF99;
+                    margin-bottom: 15px;
+                  }
                   .output .log:first-child {
-                    color:white;
+                    color: white;
                     font-size: 18px;
                     font-weight: 700;
                     margin-bottom: 0px;
@@ -70,6 +76,11 @@ function Terminal({ className }: { className?: string }, ref) {
                         document.body.classList.remove("error-background")
                         document.body.classList.remove("success-background")
                         output.innerHTML += "<div class='log'>"+payload+"</div>"
+                        output.parentElement.scrollTop = output.scrollHeight
+                        break
+                      }
+                      case 'running': {
+                        output.innerHTML += "<div class='running'>"+payload+"</div>"
                         output.parentElement.scrollTop = output.scrollHeight
                         break
                       }

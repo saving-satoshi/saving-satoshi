@@ -137,7 +137,7 @@ export default function Scripting2({ lang }) {
             onMouseLeave={handleMouseLeave}
             href="https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520do%2520we%2520double%2520hash%2520in%2520bitcoin%253F/"
             target="_blank"
-            className="inline text-lg hover:underline md:text-xl"
+            className="inline text-lg underline md:text-xl"
           >
             {t('chapter_five.validate_signature_two.paragraph_two.highlighted')}{' '}
             <HolocatQuestion
@@ -150,10 +150,9 @@ export default function Scripting2({ lang }) {
               )}
               visible={tooltipVisible}
             />
-          </a>
+          </a>{' '}
           <Text className="inline text-lg">
-            {' '}
-            {t('chapter_five.validate_signature_two.paragraph_two.post_link')}
+            {t('chapter_five.validate_signature_two.paragraph_two.post_link')}{' '}
             {t(`chapter_five.validate_signature_two.${language}.paragraph_two`)}
           </Text>
         </div>

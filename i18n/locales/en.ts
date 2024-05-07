@@ -300,7 +300,7 @@ const translations = {
         'In the corner, a dim, barely working computer monitor with a note stuck to it sits blinking. The note says “Turn them on, stupid."',
       paragraph_two: 'HOLOCAT: “How rude.”',
       paragraph_three:
-        'Wow, a mechanical keyboard. Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.',
+        "Wow a mechanical keyboard, I've heard about these legendary devices or I've heard they were banned because they were so loud everyone lost their hearing. Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.",
     },
 
     hashing_one: {
@@ -346,7 +346,7 @@ const translations = {
       tooltip_one: {
         question: 'How is SHA-256 used in bitcoin? ',
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520SHA-256%2520used%2520in%2520bitcoin%253F',
-        highlighted: 'SHA-256,',
+        highlighted: 'SHA-256',
       },
     },
 
@@ -749,7 +749,12 @@ const translations = {
       paragraph_four:
         'Bitcoin uses a specific curve called secp256k1. In the image, you see a simplified version that is easier to visualize, but follows the same mathematical rules.',
       paragraph_five:
-        'We start with a specific point on this curve, called the <Link href="public-key-2/help" className="underline">Generator Point</Link>.',
+        'We start with a specific point on this curve, called the',
+      tooltip_one: {
+        highlighted: 'Generator Point',
+        question: 'What is the Generator Point?',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520the%2520Generator%2520point%253F',
+      },
     },
 
     public_key_three: {
@@ -980,19 +985,18 @@ const translations = {
     },
     derive_message_seven: {
       nav_title: 'Build the signed message',
-      paragraph_one: {
-        a: "It's impossible to sign a message containing it's own signature, so the",
-        b: 'needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.',
-      },
+      paragraph_one:
+        "It's impossible to sign a message containing it's own signature, so the scriptSig needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.",
       paragraph_two:
         'We already found the scriptPubKey in the previous step, you can paste that in the first blank.',
-      paragraph_three:
-        'The last thing we need for our transaction message is a "<span className="font-bold">sighash type flag</span>." We\'ll cover this more in the next chapter but for now we\'ll just add the value <span className="font-bold">01000000</span> to the end of the message.',
+      paragraph_three: {
+        a: 'The last thing we need for our transaction message is a',
+        b: '. We\'ll cover this more in the next chapter but for now we\'ll just add the value <span className="font-bold">01000000</span> to the end of the message.',
+      },
       tooltip_one: {
-        question:
-          "Dont worry too much about that right now, we'll go into more detail into this soon",
+        question: 'What are sighash flags?',
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F',
-        highlighted: 'scriptSig',
+        highlighted: 'sighash type flag',
       },
       success: "Nice! You've constructed a signed message.",
     },
@@ -1825,6 +1829,7 @@ const translations = {
     running: 'Running',
     pause: 'Pause',
     result: 'Result',
+    computing: 'Computing...',
     evaluation: 'Evaluation',
     script_output: 'Script output',
     waiting: 'Waiting for your input above...',

@@ -30,6 +30,14 @@ export default function Address() {
     .map((l) => l.split('-')[0])
     .filter((value, index, arr) => arr.indexOf(value) === index)
 
+  const challengeTitles = chapters[chapterId].metadata.challenges.map(
+    (lessonId: string) => {
+      const { title } = lessons[chapterId][lessonId].metadata
+
+      return { lessonId, title }
+    }
+  )
+
   const challengeName = lessonId?.split('-')[0]
   const challengeIndex = challenges.indexOf(challengeName)
   const lastLessonId = chapter.outros[chapter.outros.length - 1]
@@ -45,14 +53,16 @@ export default function Address() {
                 <span>
                   {t('navbar.chapter')} {chapter.position + 1}
                 </span>
-                {lesson && !isChapterCompletePage && challengeIndex >= 0 && (
-                  <>
-                    <span>, </span>
-                    <span>
-                      {t('navbar.challenge')} {challengeIndex + 1}
-                    </span>
-                  </>
-                )}
+                <>
+                  <span>, </span>
+                  <span>
+                    {challengeIndex >= 0
+                      ? t(challengeTitles[challengeIndex].title)
+                      : isChapterCompletePage
+                      ? 'Outro'
+                      : 'Intro'}
+                  </span>
+                </>
               </p>
             )}
             <p className="line-clamp-1 overflow-hidden text-ellipsis px-0.5 text-2xl leading-none text-white">
