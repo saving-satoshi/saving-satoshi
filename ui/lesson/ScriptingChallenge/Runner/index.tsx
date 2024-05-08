@@ -109,6 +109,12 @@ export default function Runner({
 
   useDynamicHeight([activeView])
 
+  const handleRunKeyPress = (event) => {
+    if ((event.altKey || event.metaKey) && event.key === 'Enter') {
+      handleRun()
+    }
+  }
+
   const handleRun = async () => {
     try {
       success = false
@@ -260,6 +266,14 @@ export default function Runner({
       window.removeEventListener('message', handleMessage)
     }
   }, [terminalRef])
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleRunKeyPress)
+
+    return () => {
+      document.removeEventListener('keydown', handleRunKeyPress)
+    }
+  }, [])
 
   return (
     <>
