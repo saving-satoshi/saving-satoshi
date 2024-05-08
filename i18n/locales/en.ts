@@ -300,7 +300,7 @@ const translations = {
         'In the corner, a dim, barely working computer monitor with a note stuck to it sits blinking. The note says “Turn them on, stupid."',
       paragraph_two: 'HOLOCAT: “How rude.”',
       paragraph_three:
-        "Wow a mechanical keyboard, I've heard about these legendary devices or I've heard they were banned because they were so loud everyone lost their hearing. Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.",
+        "Wow a mechanical keyboard, I've heard about these legendary devices. Supposedly they were so loud that everyone lost their hearing and they were banned. Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.",
     },
 
     hashing_one: {
