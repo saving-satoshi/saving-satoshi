@@ -44,7 +44,6 @@ export default function Chapter({ children, metadata, lang }) {
   const isEnabled = isFeatureEnabled(
     `${metadata.slug.replace('-', '_')}_enabled`
   )
-  console.log(progress)
   const { isUnlocked } = useLessonStatus(
     progress,
     getLessonKey(metadata.slug, 'intro-1')
