@@ -13,6 +13,7 @@ const translations = {
     coming_soon: 'Coming soon',
     start_chapter: 'Start chapter',
     back: 'Back',
+    close: 'Close',
     poweroff: 'Back to chapter selection',
     loading: 'Loading',
   },
@@ -1769,12 +1770,16 @@ const translations = {
 
   modal_signin: {
     heading: 'Sign in',
-    paragraph_one:
+    pre_signin_paragraph_one:
       'Enter your private key below to restore your account and progress.',
+    post_signin_paragraph_one:
+      'Nice to see you return to save Satoshi! You can go directly to your last lesson from here.',
     prompt: 'Enter your private key',
     confirm: 'Sign in',
     create_account: 'Don’t have an account?',
     login: 'Log in',
+    welcome_back: 'Welcome back!',
+    progress_redirect: 'Take me to where I left off',
   },
 
   modal_logout: {
