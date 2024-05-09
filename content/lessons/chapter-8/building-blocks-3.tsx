@@ -84,7 +84,7 @@ print(Bitcoin.rpc())
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-8', 'building_blocks-3')}
+      lessonKey={getLessonKey('chapter-8', 'building-blocks-3')}
       successMessage={t('chapter_eight.building_blocks_three.success')}
       onSelectLanguage={handleSelectLanguage}
     >
