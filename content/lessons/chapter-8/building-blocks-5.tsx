@@ -8,8 +8,6 @@ import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
-import { useAtom } from 'jotai'
-import { accountAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_eight.building_blocks_five.nav_title',
@@ -22,7 +20,8 @@ export default function BuildingBlocks5({ lang }) {
   const { currentLanguage } = useDataContext()
 
   const javascript = {
-    program: `console.log(getBlockTxFee());
+    program: `//BEGIN VALIDATION BLOCK
+console.log(getBlockTxFee().toString());
 console.log("KILL")`,
     defaultFunction: {
       name: 'getBlockTxFee',
@@ -31,7 +30,7 @@ console.log("KILL")`,
     defaultCode: `const Bitcoin = require('@0tuedon/bitcoin_rpcjs')
 const BLOCK_HASH = "003b9be2d96d14f02717c262bb4b9a0b23191e2f1d9a38413204f3be4f21613c"
 const TX_HASH = "aaf2fd920b7e628b1480b88343ab3b49e49969cf61b059d8c1532b805b7a6d2f"
-    
+
 // First we need to find the block associated with the corresponding tx hash
 // build a function that will call getTxFee when it finds a transaction with the correct TX_HASH
 // this is the function that we will call for validation
@@ -39,18 +38,17 @@ const getBlockTxFee = () => {
   let block = Bitcoin.rpc("getblock", BLOCK_HASH)
   // YOUR CODE HERE
 }
-    
+
 // Now let's find the miner's fee for this transaction.
 // with the transaction from above determine the fee paid to miners
 const getTxFee = (tx) =>{
   let fee = 0
   // YOUR CODE HERE
   return fee
-}  
+}
 `,
     validate: async (answer) => {
-      // We need \u001b[33m1027\u001b[39m because javascript is weird  meant to be 1027
-      if (answer === '\u001b[33m1027\u001b[39m') {
+      if (answer === '1027') {
         return [true, 'Nicely Done']
       } else {
         return [false, 'Incorrect']
@@ -59,7 +57,7 @@ const getTxFee = (tx) =>{
   }
 
   const python = {
-    program: `
+    program: `# BEGIN VALIDATION BLOCK
 print(get_block_tx_fee())
 print("KILL")`,
     defaultFunction: {
@@ -111,11 +109,11 @@ def get_tx_fee(tx):
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-8', 'building-block-5')}
+      lessonKey={getLessonKey('chapter-8', 'building-blocks-5')}
       successMessage={t('chapter_eight.building_blocks_five.success')}
       onSelectLanguage={handleSelectLanguage}
     >
-      <LessonInfo>
+      <LessonInfo className="overflow-y-scroll sm:max-h-[calc(100vh-70px)]">
         <Text className="font-nunito text-2xl font-bold text-white">
           {t('chapter_eight.building_blocks_five.heading')}
         </Text>
