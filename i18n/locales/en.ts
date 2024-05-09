@@ -1712,7 +1712,16 @@ const translations = {
       paragraph_five: 'AND THAT LAST HALVING WAS YESTERDAY!',
       paragraph_six:
         'Finish the implementation of the following function that accepts a block height as an argument and returns the value of the subsidy in satoshis.',
-      success: 'The get_subsidy function looks great. Nice work!',
+      success: 'The (get subsidy) function looks great. Nice work!',
+    },
+    building_blocks_seven: {
+      title: 'Building Blocks',
+      nav_title: 'Validate Block',
+      heading: '5. That Pernicious Scallywag!',
+      paragraph_one: `There are four block candidates at height 6929851. Only one of them is a valid block, the other three were mined by Vanderpoole's cartel in reckless attempts to inflate the Bitcoin money supply.`,
+      paragraph_two: `Use your block subsidy function and the JSON-RPC API to check the coinbase outputs in all four block candidates and print the hash of the one and only valid block at that height!`,
+      paragraph_three: `Your code will be tested using `,
+      success: 'The validate block function looks great. Nice work!',
     },
     outro_one: {
       title: 'Outro',

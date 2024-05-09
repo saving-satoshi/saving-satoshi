@@ -18,18 +18,18 @@ export default function BuildingBlocks6({ lang }) {
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
-if (get_subsidy(100000) === 5000000000 &&
-get_subsidy(10000000) === 0 &&
-get_subsidy(839999) === 625000000 &&
-get_subsidy(840000) === 312500000) {
+if (getSubsidy(100000) === 5000000000 &&
+getSubsidy(10000000) === 0 &&
+getSubsidy(839999) === 625000000 &&
+getSubsidy(840000) === 312500000) {
   console.log('true')
 } else {
   console.log('false')
 }
 console.log("KILL")`,
     defaultFunction: {
-      name: 'privateKeyToPublicKey',
-      args: ['privateKey'],
+      name: 'getSubsidy',
+      args: ['height'],
     },
     defaultCode: `function get_subsidy(height) {
   // YOUR CODE HERE
@@ -39,6 +39,8 @@ console.log("KILL")`,
       if (answer) {
         if (answer === 'true') {
           return [true, '']
+        } else if (answer.match(/.*n/)) {
+          return [false, 'be sure the subsidy is of type number']
         } else {
           return [false, 'recheck your methods']
         }
@@ -53,8 +55,8 @@ console.log("KILL")`,
 print(get_subsidy(100000) == 5000000000 and get_subsidy(10000000) == 0 and get_subsidy(839999) == 625000000 and get_subsidy(840000) == 312500000 and 'true')
 print("KILL")`,
     defaultFunction: {
-      name: 'privatekey_to_publickey',
-      args: ['private_key'],
+      name: 'get_subsidy',
+      args: ['height'],
     },
     defaultCode: `def get_subsidy(height):
     # YOUR CODE HERE
