@@ -8,8 +8,6 @@ import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
-import { useAtom } from 'jotai'
-import { accountAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_eight.building_blocks_five.nav_title',
@@ -22,8 +20,8 @@ export default function BuildingBlocks5({ lang }) {
   const { currentLanguage } = useDataContext()
 
   const javascript = {
-    program: `// BEGIN VALIDATION BLOCK
-console.log(getBlockTxFee());
+    program: `//BEGIN VALIDATION BLOCK
+console.log(getBlockTxFee().toString());
 console.log("KILL")`,
     defaultFunction: {
       name: 'getBlockTxFee',
@@ -50,8 +48,7 @@ const getTxFee = (tx) =>{
 }
 `,
     validate: async (answer) => {
-      // We need \u001b[33m1027\u001b[39m because javascript is weird  meant to be 1027
-      if (answer === '\u001b[33m1027\u001b[39m') {
+      if (answer === '1027') {
         return [true, 'Nicely Done']
       } else {
         return [false, 'Incorrect']

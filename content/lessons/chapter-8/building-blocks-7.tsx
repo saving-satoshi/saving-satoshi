@@ -48,7 +48,6 @@ export default function BuildingBlocks7({ lang }) {
     getPrevLessonData().finally(() => setIsLoading(false))
   }, [])
 
-  console.log(countLines(cleanedCombinedCode))
   useEffect(() => {
     if (prevData && allLessonsAreLoaded(prevData)) {
       setCombinedCode(
@@ -83,10 +82,10 @@ console.log("KILL")`,
     },
     defaultCode: `const Bitcoin = require('@0tuedon/bitcoin_rpcjs')
 
-${cleanedCombinedCode}
+${cleanedCombinedCode.slice(0, -2)}
 
 function validateBlock(block) {
-  
+  // YOUR CODE HERE
 }
 `,
     validate: async (answer: string) => {
@@ -121,17 +120,16 @@ print("KILL")`,
     },
     defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
 
-${cleanedCombinedCode}
+${cleanedCombinedCode.slice(0, -2)}
 
 def validate_block(block):
-  # Code here
-
+    # YOUR CODE HERE
 `,
 
     rangeToNotCollapse: [
       {
-        start: countLines(cleanedCombinedCode) + 4,
-        end: countLines(cleanedCombinedCode) + 4,
+        start: countLines(cleanedCombinedCode) + 2,
+        end: countLines(cleanedCombinedCode) + 2,
       },
     ],
     validate: async (answer) => {
@@ -166,12 +164,12 @@ def validate_block(block):
     setLanguage(language)
   }
   const pyValidation = `HEIGHT = 6929851
-  candidates = Bitcoin.rpc("getblocksbyheight", HEIGHT)
-  for bhash in candidates:
-      block = Bitcoin.rpc("getblock", bhash)
-      if validate_block(block):
-          print(bhash)
-          break`
+candidates = Bitcoin.rpc("getblocksbyheight", HEIGHT)
+for bhash in candidates:
+    block = Bitcoin.rpc("getblock", bhash)
+    if validate_block(block):
+        print(bhash)
+        break`
   const jsValidation = `const HEIGHT = 6929851
 const candidates = Bitcoin.rpc("getblocksbyheight", HEIGHT)
 for (const bhash of candidates) {
@@ -179,9 +177,11 @@ let block = Bitcoin.rpc("getblock", bhash)
 if(validateBlock(block)){
   return bhash;
     }
-  }
-  `
-  const codeValidation = language === 'javascript' ? jsValidation : pyValidation
+  }`
+  const codeValidation =
+    detectLanguage(combinedCode) === Language.JavaScript
+      ? jsValidation
+      : pyValidation
   return (
     !isLoading &&
     combinedCode && (
@@ -205,7 +205,7 @@ if(validateBlock(block)){
             {t('chapter_eight.building_blocks_seven.paragraph_three')}
           </Text>
           <CodeExample
-            className="whitespace-pre-wrap"
+            className="whitespace-break-spaces"
             language={language}
             code={codeValidation}
           />

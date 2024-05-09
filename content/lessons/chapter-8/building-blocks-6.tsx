@@ -23,6 +23,8 @@ getSubsidy(10000000) === 0 &&
 getSubsidy(839999) === 625000000 &&
 getSubsidy(840000) === 312500000) {
   console.log('true')
+} else if (typeof getSubsidy(839999) === 'bigint') {
+  console.log('be sure the subsidy is of type number')
 } else {
   console.log('false')
 }
@@ -31,7 +33,7 @@ console.log("KILL")`,
       name: 'getSubsidy',
       args: ['height'],
     },
-    defaultCode: `function get_subsidy(height) {
+    defaultCode: `function getSubsidy(height) {
   // YOUR CODE HERE
 }
 `,
@@ -39,8 +41,6 @@ console.log("KILL")`,
       if (answer) {
         if (answer === 'true') {
           return [true, '']
-        } else if (answer.match(/.*n/)) {
-          return [false, 'be sure the subsidy is of type number']
         } else {
           return [false, 'recheck your methods']
         }
@@ -96,13 +96,13 @@ print("KILL")`,
       successMessage={t('chapter_eight.building_blocks_six.success')}
       onSelectLanguage={handleSelectLanguage}
     >
-      <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+      <LessonInfo className="overflow-y-scroll sm:max-h-[calc(100vh-70px)]">
         <Title>4. {t('chapter_eight.building_blocks_six.heading')}</Title>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_eight.building_blocks_six.paragraph_one')}
         </Text>
         <CodeExample
-          className="mt-4 font-space-mono"
+          className="mt-4 whitespace-break-spaces font-space-mono"
           code={`BLOCK_SUBSIDY + TOTAL_TRASNACTION_FEES_IN_BLOCK = COINBASE_OUTPUT_VALUE`}
           language="shell"
         />
