@@ -73,7 +73,7 @@ export default function AccountModal({ onClose, state }) {
                 <Button
                   round
                   size="tiny"
-                  classes="w-full"
+                  style="w-full"
                   onClick={() => copy(account.private_key)}
                 >
                   {copied ? t('shared.copy_acknowledged') : t('shared.copy')}
