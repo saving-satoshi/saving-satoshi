@@ -16,7 +16,7 @@ export default function Button({
   href?: string
   children: any
   title?: string
-  style?: string
+  style?: 'outline' | 'dark' | 'green' | 'faded'
   size?: string
   disabled?: boolean
   external?: boolean
