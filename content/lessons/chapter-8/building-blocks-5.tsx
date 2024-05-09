@@ -22,7 +22,8 @@ export default function BuildingBlocks5({ lang }) {
   const { currentLanguage } = useDataContext()
 
   const javascript = {
-    program: `console.log(getBlockTxFee());
+    program: `// BEGIN VALIDATION BLOCK
+console.log(getBlockTxFee());
 console.log("KILL")`,
     defaultFunction: {
       name: 'getBlockTxFee',
@@ -31,7 +32,7 @@ console.log("KILL")`,
     defaultCode: `const Bitcoin = require('@0tuedon/bitcoin_rpcjs')
 const BLOCK_HASH = "003b9be2d96d14f02717c262bb4b9a0b23191e2f1d9a38413204f3be4f21613c"
 const TX_HASH = "aaf2fd920b7e628b1480b88343ab3b49e49969cf61b059d8c1532b805b7a6d2f"
-    
+
 // First we need to find the block associated with the corresponding tx hash
 // build a function that will call getTxFee when it finds a transaction with the correct TX_HASH
 // this is the function that we will call for validation
@@ -39,14 +40,14 @@ const getBlockTxFee = () => {
   let block = Bitcoin.rpc("getblock", BLOCK_HASH)
   // YOUR CODE HERE
 }
-    
+
 // Now let's find the miner's fee for this transaction.
 // with the transaction from above determine the fee paid to miners
 const getTxFee = (tx) =>{
   let fee = 0
   // YOUR CODE HERE
   return fee
-}  
+}
 `,
     validate: async (answer) => {
       // We need \u001b[33m1027\u001b[39m because javascript is weird  meant to be 1027
@@ -59,7 +60,7 @@ const getTxFee = (tx) =>{
   }
 
   const python = {
-    program: `
+    program: `# BEGIN VALIDATION BLOCK
 print(get_block_tx_fee())
 print("KILL")`,
     defaultFunction: {
