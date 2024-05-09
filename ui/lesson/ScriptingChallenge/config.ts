@@ -18,6 +18,10 @@ export const readOnlyOptions: editor.IStandaloneEditorConstructionOptions = {
   readOnly: true,
   minimap: { enabled: false },
   scrollBeyondLastLine: false,
+  scrollbar: {
+    alwaysConsumeMouseWheel: false,
+    vertical: 'auto',
+  },
   wordWrap: 'on',
   theme: 'vs-dark',
 }

@@ -30,32 +30,42 @@ export default function Address() {
     .map((l) => l.split('-')[0])
     .filter((value, index, arr) => arr.indexOf(value) === index)
 
+  const challengeTitles = chapters[chapterId].metadata.challenges.map(
+    (lessonId: string) => {
+      const { title } = lessons[chapterId][lessonId].metadata
+
+      return { lessonId, title }
+    }
+  )
+
   const challengeName = lessonId?.split('-')[0]
   const challengeIndex = challenges.indexOf(challengeName)
   const lastLessonId = chapter.outros[chapter.outros.length - 1]
   const isChapterCompletePage = lessonId === lastLessonId
 
   return (
-    <div className="items-center px-5 py-3">
-      <div className="flex flex-col text-sm font-medium">
-        {pathName && (
-          <>
-            {chapter && (
-              <p className="line-clamp-1 overflow-hidden text-ellipsis px-0.5 text-lg leading-none text-white/50">
+    <div className="flex flex-col justify-center px-5 text-sm font-medium">
+      {pathName && (
+        <>
+          {chapter && (
+            <span className="overflow-x-hidden text-ellipsis px-0.5 align-sub text-lg leading-tight text-white/50">
+              <span>
+                {t('navbar.chapter')} {chapter.position + 1}
+              </span>
+              <>
+                <span>, </span>
                 <span>
-                  {t('navbar.chapter')} {chapter.position + 1}
+                  {challengeIndex >= 0
+                    ? t(challengeTitles[challengeIndex].title)
+                    : isChapterCompletePage
+                    ? 'Outro'
+                    : 'Intro'}
                 </span>
-                {lesson && !isChapterCompletePage && challengeIndex >= 0 && (
-                  <>
-                    <span>, </span>
-                    <span>
-                      {t('navbar.challenge')} {challengeIndex + 1}
-                    </span>
-                  </>
-                )}
-              </p>
-            )}
-            <p className="line-clamp-1 overflow-hidden text-ellipsis px-0.5 text-2xl leading-none text-white">
+              </>
+            </span>
+          )}
+          <div className="inline">
+            <span className="overflow-x-hidden text-ellipsis px-0.5 align-super text-2xl leading-tight text-white">
               {t(
                 isChapterCompletePage
                   ? 'navbar.chapter_complete'
@@ -63,10 +73,10 @@ export default function Address() {
                   ? lesson.navigation_title
                   : 'navbar.intro'
               )}
-            </p>
-          </>
-        )}
-      </div>
+            </span>
+          </div>
+        </>
+      )}
     </div>
   )
 }
