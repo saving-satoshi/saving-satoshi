@@ -16,7 +16,7 @@ export default function LanguageTabs({
   languages: EditorLanguages | PlainEditorLanguages
   value: string
   onChange: (val: string) => void
-  onRefresh: () => void
+  onRefresh?: () => void
   noHide?: boolean
   languageLocked?: boolean
 }) {
@@ -94,15 +94,17 @@ export default function LanguageTabs({
           )
         })}
       </div>
-      <button
-        onClick={() => onRefresh()}
-        className="flex h-full w-10 items-center justify-center border-l border-white border-opacity-30 px-0 py-2.5"
-      >
-        <Icon
-          icon="refresh"
-          className="h-full w-full object-contain text-white text-opacity-40"
-        />
-      </button>
+      {onRefresh && (
+        <button
+          onClick={() => onRefresh()}
+          className="flex h-full w-10 items-center justify-center border-l border-white border-opacity-30 px-0 py-2.5"
+        >
+          <Icon
+            icon="refresh"
+            className="h-full w-full object-contain text-white text-opacity-40"
+          />
+        </button>
+      )}
     </div>
   )
 }
