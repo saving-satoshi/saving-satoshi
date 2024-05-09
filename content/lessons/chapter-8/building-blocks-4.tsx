@@ -40,7 +40,7 @@ const CODE_CHALLENGE_2_HEIGHT = 6929996;
 let txCount = Infinity;
 
 const getBlockHeight = (height) => {
-  
+
 
 }
 `,
@@ -70,7 +70,7 @@ answer = None
 
 def get_block_height(height):
   tx_count = float("inf")
-    
+
 `,
     validate: async (answer: string) => {
       if (
@@ -102,7 +102,7 @@ def get_block_height(height):
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-8', 'building-block-4')}
+      lessonKey={getLessonKey('chapter-8', 'building-blocks-4')}
       successMessage={t('chapter_eight.building_blocks_four.success')}
       onSelectLanguage={handleSelectLanguage}
     >
