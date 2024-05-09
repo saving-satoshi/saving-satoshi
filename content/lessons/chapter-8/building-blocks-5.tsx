@@ -111,11 +111,11 @@ def get_tx_fee(tx):
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-8', 'building-block-5')}
+      lessonKey={getLessonKey('chapter-8', 'building-blocks-5')}
       successMessage={t('chapter_eight.building_blocks_five.success')}
       onSelectLanguage={handleSelectLanguage}
     >
-      <LessonInfo>
+      <LessonInfo className="overflow-y-scroll sm:max-h-[calc(100vh-70px)]">
         <Text className="font-nunito text-2xl font-bold text-white">
           {t('chapter_eight.building_blocks_five.heading')}
         </Text>
