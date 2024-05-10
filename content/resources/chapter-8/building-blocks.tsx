@@ -59,22 +59,21 @@ const javascriptChallengeTwo = {
     name: 'getBlockHeight',
     args: ['height'],
   },
-  defaultCode: `
-  function getBlockHeight(height) {
-    const hashes = Bitcoin.rpc('getblocksbyheight', CODE_CHALLENGE_2_HEIGHT);
-    let answer = null;
-    let txCount = Infinity;
-  
-    for (const bhash of hashes) {
-      const block = Bitcoin.rpc('getblock', bhash);
-      const num = block.txs.length;
-  
-      if (num < txCount) {
-        txCount = num;
-        answer = bhash;
-      }
+  defaultCode: `function getBlockHeight(height) {
+  const hashes = Bitcoin.rpc('getblocksbyheight', CODE_CHALLENGE_2_HEIGHT);
+  let answer = null;
+  let txCount = Infinity;
+
+  for (const bhash of hashes) {
+    const block = Bitcoin.rpc('getblock', bhash);
+    const num = block.txs.length;
+
+    if (num < txCount) {
+      txCount = num;
+      answer = bhash;
     }
-    return answer
+  }
+  return answer
   }`,
   validate: async (answer) => {
     if (answer !== 'True') {
@@ -126,7 +125,30 @@ const javascriptChallengeThree = {
     name: 'verify',
     args: [],
   },
-  defaultCode: ``,
+  defaultCode: `// First we need to find the block associated with the corresponding tx hash
+// build a function that will call getTxFee when it finds a transaction with the correct TX_HASH
+// this is the function that we will call for validation
+const getBlockTxFee = () => {
+    let block = Bitcoin.rpc("getblock", BLOCK_HASH)
+    for (const tx of block["txs"]) {
+      if(tx["txid"] === TX_HASH){
+        return getTxFee(tx)
+    }
+  }
+}
+  
+// Now let's find the miner's fee for this transaction.
+// with the transaction from above determine the fee paid to miners
+const getTxFee = (tx) =>{
+  let fee = 0
+  for (const input of tx["inputs"]) {
+        fee+=input["value"]
+  }
+  for (const ouput of tx["outputs"]) {
+      fee-=ouput["value"]
+  }
+  return fee
+}`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -144,7 +166,26 @@ const pythonChallengeThree = {
     name: 'verify',
     args: [],
   },
-  defaultCode: ``,
+  defaultCode: `# First we need to find the transaction with the corresponding tx hash
+# build a function that will call get_tx_Fee when it finds a transaction with the correct TX_HASH
+# this is the function that we will call for validation
+def get_block_tx_fee():
+  block = Bitcoin.rpc("getblock", BLOCK_HASH)
+  for tx in block["txs"]:
+    if tx["txid"] == TX_HASH:
+      return get_tx_fee(tx)
+        
+
+# Now let's find the miner's fee for this transaction.
+# with the transaction from above determine the fee paid to miners
+def get_tx_fee(tx):
+  fee = 0
+  for inp in tx["inputs"]:
+    fee += inp["value"]
+    for oup in tx["outputs"]:
+      fee -= oup["value"]
+  return fee
+  `,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -162,7 +203,7 @@ const javascriptChallengeFour = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `function get_subsidy(height) {
+  defaultCode: `const getSubsidy = (height)=> {
   let subsidy = 5000000000
   const halvings = Math.floor(height / 210000)
   if (halvings >= 33) {
@@ -210,6 +251,58 @@ const pythonChallengeFour = {
   ],
 }
 
+const javascriptChallengeFive = {
+  program: `console.log("KILL")`,
+  defaultFunction: {
+    name: 'verify',
+    args: [],
+  },
+  defaultCode: `const validateBlock = ()=> {
+  let fee = 0
+  let subsidy = getSubsidy(block["height"])
+
+  for (const tx of block["height"]) {
+    fee+= getTxFee(tx)
+  }
+  return subsidy + fee == block["txs"][0]["outputs"][0]["value"]
+  }
+}
+`,
+  validate: async (answer) => {
+    return [true, undefined]
+  },
+  constraints: [
+    {
+      range: [1, 1, 1, 1],
+      allowMultiline: true,
+    },
+  ],
+}
+
+const pythonChallengeFive = {
+  program: `print("KILL")`,
+  defaultFunction: {
+    name: 'verify',
+    args: [],
+  },
+  defaultCode: `def validate_block:
+  subsidy = get_subsidy(block["height"])
+    # Don't include the coinbase in this sum!
+  for tx in block["txs"][1:]:
+    fees += get_tx_fee(tx)
+  return subsidy + fees == block["txs"][0]["outputs"][0]["value"]
+`,
+  validate: async (answer) => {
+    return [true, undefined]
+  },
+  constraints: [
+    {
+      range: [1, 1, 1, 1],
+      allowMultiline: true,
+    },
+  ],
+}
+
 const configOne: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
@@ -242,6 +335,14 @@ const configFour: EditorConfig = {
   },
 }
 
+const configFive: EditorConfig = {
+  defaultLanguage: 'javascript',
+  languages: {
+    javascript: javascriptChallengeFive,
+    python: pythonChallengeFive,
+  },
+}
+
 export default function BuildingBlocksResources({ lang }) {
   const t = useTranslations(lang)
   const { currentLanguage } = useDataContext()
@@ -266,6 +367,12 @@ export default function BuildingBlocksResources({ lang }) {
     initialStateCodeFour as string
   )
 
+  const initialStateCodeFive =
+    configFour.languages[getLanguageString(currentLanguage)].defaultCode
+  const [codeFive, setCodeFive] = useState<string>(
+    initialStateCodeFour as string
+  )
+
   const [languageOne, setLanguageOne] = useState(
     getLanguageString(currentLanguage)
   )
@@ -278,11 +385,15 @@ export default function BuildingBlocksResources({ lang }) {
   const [languageFour, setLanguageFour] = useState(
     getLanguageString(currentLanguage)
   )
+  const [languageFive, setLanguageFive] = useState(
+    getLanguageString(currentLanguage)
+  )
 
   const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
   const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
   const [challengeThreeIsToggled, setChallengeThreeIsToggled] = useState(false)
   const [challengeFourIsToggled, setChallengeFourIsToggled] = useState(false)
+  const [challengeFiveIsToggled, setChallengeFiveIsToggled] = useState(false)
 
   const challengeOneToggleSwitch = () => {
     setChallengeOneIsToggled(!challengeOneIsToggled)
@@ -300,6 +411,10 @@ export default function BuildingBlocksResources({ lang }) {
     setChallengeFourIsToggled(!challengeFourIsToggled)
   }
 
+  const challengeFiveToggleSwitch = () => {
+    setChallengeFiveIsToggled(!challengeFiveIsToggled)
+  }
+
   const handleSetLanguageOne = (value) => {
     setLanguageOne(value)
     setCodeOne(configOne.languages[value].defaultCode as string)
@@ -313,6 +428,10 @@ export default function BuildingBlocksResources({ lang }) {
     setCodeThree(configThree.languages[value].defaultCode as string)
   }
   const handleSetLanguageFour = (value) => {
+    setLanguageFour(value)
+    setCodeFour(configFour.languages[value].defaultCode as string)
+  }
+  const handleSetLanguageFive = (value) => {
     setLanguageFour(value)
     setCodeFour(configFour.languages[value].defaultCode as string)
   }
@@ -453,6 +572,37 @@ export default function BuildingBlocksResources({ lang }) {
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
                   language={languageFour}
+                  theme={'satoshi'}
+                  options={readOnlyOptions}
+                />
+              </div>
+            </div>
+          )}
+
+          <Text>{t('help_page.solution_five')}</Text>
+          <div className="flex flex-row items-center gap-2">
+            <ToggleSwitch
+              checked={challengeFiveIsToggled}
+              onChange={challengeFiveToggleSwitch}
+            />
+            <Text>{t('help_page.spoilers_confirm')}</Text>
+          </div>
+          {challengeFiveIsToggled && (
+            <div className="border border-white/25">
+              <LanguageTabs
+                languages={configFive.languages}
+                value={languageFive}
+                onChange={handleSetLanguageFive}
+                noHide
+              />
+              <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
+                <MonacoEditor
+                  loading={<Loader className="h-10 w-10 text-white" />}
+                  height={`235px`}
+                  value={codeFive}
+                  beforeMount={handleBeforeMount}
+                  onMount={handleMount}
+                  language={languageFive}
                   theme={'satoshi'}
                   options={readOnlyOptions}
                 />
