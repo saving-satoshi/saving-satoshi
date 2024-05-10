@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { chapters } from 'content'
+import { usePathData } from 'hooks'
 import Icon from 'shared/Icon'
 import { EditorLanguages, LessonView, PlainEditorLanguages } from 'types'
 import { useLessonContext, Tooltip } from 'ui'
@@ -22,6 +23,7 @@ export default function LanguageTabs({
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
+  const pathData = usePathData()
 
   return (
     <div
@@ -52,7 +54,11 @@ export default function LanguageTabs({
               >
                 <Tooltip
                   id={'Language Locked'}
-                  theme={chapters['chapter-6'].metadata.theme}
+                  theme={
+                    !!chapters[pathData.chapterId]?.metadata?.secondaryTheme
+                      ? chapters[pathData.chapterId]?.metadata?.secondaryTheme
+                      : chapters[pathData.chapterId]?.metadata?.theme
+                  }
                   className="flex h-full w-full justify-center no-underline"
                   content={
                     <span>

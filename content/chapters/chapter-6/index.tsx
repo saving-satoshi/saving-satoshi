@@ -17,6 +17,7 @@ export const metadata = {
   title: 'chapter_six.title',
   image: '/assets/images/chapter-6-cover.jpg',
   theme: 'bg-gradient-to-br from-[#644953] to-[#975442]',
+  secondaryTheme: 'bg-[#7a4e4c]',
   intros: ['intro-1', 'intro-2'],
   lessons: [
     'in-out-1',
