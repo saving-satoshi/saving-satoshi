@@ -1668,6 +1668,26 @@ const translations = {
       nav_title: `Intro`,
       paragraph_one: `—DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Mr. Vanderpoole, can you prove that you did no such thing? Mysterious hacker and his holocat, can you prove Vanderpoole had attempted this crime against Bitcoin?”`,
     },
+    building_blocks_one: {
+      title: 'Building blocks',
+      nav_title: 'Finding the chain tip',
+      paragraph_one:
+        'You know Vanderpoole has been trying to confuse people by mining blocks that generate more Bitcoin than they are allowed to, in order to inflate the money supply. These blocks are invalid because they break hard-coded protocol rules, but they might still fool some people running buggy or malicious software, or light clients that do not fully verify data they receive from the network.',
+      paragraph_two:
+        'You also know that somewhere out there on the network is a chain of VALID blocks from the genesis block to today\'s "chain tip", where every transaction and every block follows all the rules exactly correctly. This chain is the only "real" chain, the only chain that matters, and the only chain where the 21 Million Bitcoin supply is intact.',
+      paragraph_three:
+        "Now, on live TV in front of the entire world, you need to find the longest valid blockchain and verify the integrity of the coin supply. While you're at it, you'll also be able to prove that Vanderpoole has turned the Bitcoin network into a minefield of invalid blocks.",
+    },
+    building_blocks_two: {
+      title: 'Building blocks',
+      nav_title: 'A bitcoin block tree',
+      paragraph_one:
+        "Every block has exactly one previous block, but could have more than one next block. Because of this, Bitcoin blocks really form more of a tree than a chain. Some of the branches are dead-ends and, as you must prove, some of the branches are totally invalid because of Vanderpoole's malfeasance.",
+      paragraph_two:
+        "Somewhere in this maze is a path from the genesis block to today's newest block. FIND IT! And tell Deborah Chunk which block is on the tip of most valid Bitcoin chain in the tree! AND ALL BEFORE THE NEXT COMMERCIAL BREAK!",
+      paragraph_three:
+        'Here\'s CHRISTOPH ONO\'s ARTISTIC INTERPRETATION of the Bitcoin blockchain "tree" showing a few relevant historical events. Blocks are labeled by their height in the chain and appended with a letter (OR WHATEVER) to indicate multiple candidate blocks at each height. Some of these blocks are invalid! But there must be a path from genesis to tip in here somewhere.',
+    },
     building_blocks_three: {
       title: 'Building blocks',
       nav_title: `Explore the Bitcoin API`,
