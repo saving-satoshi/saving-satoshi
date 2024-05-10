@@ -16,10 +16,12 @@ import { getLanguageString } from 'lib/SavedCode'
 const javascriptChallengeOne = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'verify',
+    name: '',
     args: [],
   },
-  defaultCode: ``,
+  defaultCode: `let info = Bitcoin.rpc("getinfo")
+console.log(info.difficulty)
+  `,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -34,10 +36,12 @@ const javascriptChallengeOne = {
 const pythonChallengeOne = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'verify',
+    name: '',
     args: [],
   },
-  defaultCode: ``,
+  defaultCode: `info = Bitcoin.rpc("getinfo")
+print(info["difficulty"])
+  `,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -52,10 +56,26 @@ const pythonChallengeOne = {
 const javascriptChallengeTwo = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'verify',
-    args: [],
+    name: 'getBlockHeight',
+    args: ['height'],
   },
-  defaultCode: ``,
+  defaultCode: `
+  function getBlockHeight(height) {
+    const hashes = Bitcoin.rpc('getblocksbyheight', CODE_CHALLENGE_2_HEIGHT);
+    let answer = null;
+    let txCount = Infinity;
+  
+    for (const bhash of hashes) {
+      const block = Bitcoin.rpc('getblock', bhash);
+      const num = block.txs.length;
+  
+      if (num < txCount) {
+        txCount = num;
+        answer = bhash;
+      }
+    }
+    return answer
+  }`,
   validate: async (answer) => {
     if (answer !== 'True') {
       return [false, 'Signature is not valid']
@@ -74,44 +94,21 @@ const javascriptChallengeTwo = {
 const pythonChallengeTwo = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'verify',
-    args: [],
+    name: 'get_block_height',
+    args: ['height'],
   },
-  defaultCode: `    def compute_input_signature(self, index, key):
-        # k = random integer in [1, n-1]
-        # R = G * k
-        # r = x(R) mod n
-        # s = (r * a + m) / k mod n
-        # Extra Bitcoin rule from BIP 146
-        # https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#user-content-LOW_S
-        #   s = -s mod n, if s > n / 2
-        # return (r, s)
-        assert isinstance(key, int)
-        msg = self.digest(index)
-        k = randrange(1, secp256k1.GE.ORDER)
-        k_inverted = pow(k, -1, secp256k1.GE.ORDER)
-        R = k * secp256k1.G
-        r = int(R.x) % secp256k1.GE.ORDER
-        s = ((r * key) + int.from_bytes(msg)) * k_inverted % secp256k1.GE.ORDER
-        if s > secp256k1.GE.ORDER // 2:
-            s = secp256k1.GE.ORDER - s
-        return (r, s)
-
-    def sign_input(self, index, priv, pub, sighash=1):
-        def encode_der(r, s):
-            # Represent in DER format. The byte representations of r and s have
-            # length rounded up (255 bits becomes 32 bytes and 256 bits becomes 33 bytes).
-            # See BIP 66
-            # https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
-            rb = r.to_bytes((r.bit_length() + 8) // 8, 'big')
-            sb = s.to_bytes((s.bit_length() + 8) // 8, 'big')
-            return b'\x30' + bytes([4 + len(rb) + len(sb), 2, len(rb)]) + rb + bytes([2, len(sb)]) + sb
-        (r, s) = self.compute_input_signature(index, priv)
-        der_sig = encode_der(r, s)
-        wit = Witness()
-        wit.push_item(der_sig + bytes([sighash]))
-        wit.push_item(pub)
-        self.witnesses.append(wit)`,
+  defaultCode: `def get_block_height(height):
+  hashes = Bitcoin.rpc("getblocksbyheight", height)
+  answer = None
+  tx_count = float("inf")
+  for bhash in hashes:
+      block = Bitcoin.rpc("getblock", bhash)
+      num = len(block["txs"])
+      if num < tx_count:
+          tx_count = num
+          answer = bhash
+  return answer
+  `,
   validate: async (answer) => {
     return [true, undefined]
   },
