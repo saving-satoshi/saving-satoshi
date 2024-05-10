@@ -1669,6 +1669,7 @@ const translations = {
       paragraph_one: `—DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Mr. Vanderpoole, can you prove that you did no such thing? Mysterious hacker and his holocat, can you prove Vanderpoole had attempted this crime against Bitcoin?”`,
     },
     building_blocks_one: {
+      title: 'Building blocks',
       nav_title: 'Finding the chain tip',
       paragraph_one:
         'You know Vanderpoole has been trying to confuse people by mining blocks that generate more Bitcoin than they are allowed to, in order to inflate the money supply. These blocks are invalid because they break hard-coded protocol rules, but they might still fool some people running buggy or malicious software, or light clients that do not fully verify data they receive from the network.',
@@ -1678,6 +1679,7 @@ const translations = {
         "Now, on live TV in front of the entire world, you need to find the longest valid blockchain and verify the integrity of the coin supply. While you're at it, you'll also be able to prove that Vanderpoole has turned the Bitcoin network into a minefield of invalid blocks.",
     },
     building_blocks_two: {
+      title: 'Building blocks',
       nav_title: 'A bitcoin block tree',
       paragraph_one:
         "Every block has exactly one previous block, but could have more than one next block. Because of this, Bitcoin blocks really form more of a tree than a chain. Some of the branches are dead-ends and, as you must prove, some of the branches are totally invalid because of Vanderpoole's malfeasance.",
