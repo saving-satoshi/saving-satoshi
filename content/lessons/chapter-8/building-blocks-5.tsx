@@ -10,7 +10,7 @@ import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
-  title: 'chapter_eight.building_blocks_five.nav_title',
+  title: 'chapter_eight.building_blocks_five.title',
   navigation_title: 'chapter_eight.building_blocks_five.nav_title',
   key: 'CH8BBK5',
 }

@@ -12,7 +12,7 @@ import { useAtom } from 'jotai'
 import { accountAtom } from 'state/state'
 
 export const metadata = {
-  title: 'chapter_eight.building_blocks_four.nav_title',
+  title: 'chapter_eight.building_blocks_four.title',
   navigation_title: 'chapter_eight.building_blocks_four.nav_title',
   key: 'CH8BBK4',
 }
