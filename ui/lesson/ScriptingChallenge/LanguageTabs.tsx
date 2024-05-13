@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { chapters } from 'content'
-import { usePathData } from 'hooks'
+import { useLang, usePathData, useTranslations } from 'hooks'
 import Icon from 'shared/Icon'
 import { EditorLanguages, LessonView, PlainEditorLanguages } from 'types'
 import { useLessonContext, Tooltip } from 'ui'
@@ -22,6 +22,8 @@ export default function LanguageTabs({
   languageLocked?: boolean
 }) {
   const { activeView } = useLessonContext()
+  const lang = useLang()
+  const t = useTranslations(lang)
   const isActive = activeView === LessonView.Code
   const pathData = usePathData()
 
@@ -62,8 +64,7 @@ export default function LanguageTabs({
                   className="flex h-full w-full justify-center no-underline"
                   content={
                     <span>
-                      Language disabled since you've started this chapter in{' '}
-                      {value}
+                      {t('runner.language_tabs.locked')} {value}
                     </span>
                   }
                 >
@@ -103,12 +104,23 @@ export default function LanguageTabs({
       {onRefresh && (
         <button
           onClick={() => onRefresh()}
-          className="flex h-full w-10 items-center justify-center border-l border-white border-opacity-30 px-0 py-2.5"
+          className="flex h-full w-10 items-center justify-center border-l border-white border-opacity-30"
         >
-          <Icon
-            icon="refresh"
-            className="h-full w-full object-contain text-white text-opacity-40"
-          />
+          <Tooltip
+            id={'Terminal Reset'}
+            theme={
+              !!chapters[pathData.chapterId]?.metadata?.secondaryTheme
+                ? chapters[pathData.chapterId]?.metadata?.secondaryTheme
+                : chapters[pathData.chapterId]?.metadata?.theme
+            }
+            className="flex h-full w-full justify-center no-underline"
+            content={<span>{t('runner.language_tabs.reset')}</span>}
+          >
+            <Icon
+              icon="refresh"
+              className="h-full w-full object-contain p-2.5 text-white text-opacity-40"
+            />
+          </Tooltip>
         </button>
       )}
     </div>
