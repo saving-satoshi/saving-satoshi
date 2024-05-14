@@ -5,8 +5,9 @@ import { lessons } from 'content'
 import Icon from 'shared/Icon'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import useLessonStatus from 'hooks/useLessonStatus'
-import { useProgressContext } from 'contexts/ProgressContext'
 import { usePathname } from 'next/navigation'
+import { useAtom } from 'jotai'
+import { progressAtom } from 'state/state'
 
 export default function ChallengeItem({
   title,
@@ -17,8 +18,8 @@ export default function ChallengeItem({
   const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
-  const { progress } = useProgressContext()
   const pathName = usePathname() || ''
+  const [progress] = useAtom(progressAtom)
 
   const lessonMetaUnlocked = lessons[chapterId][lessonId].metadata
 

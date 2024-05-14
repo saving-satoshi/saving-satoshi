@@ -5,13 +5,15 @@ import { Button, Loader } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
 import { useTranslations, useLang, useSaveAndReturn } from 'hooks'
 import clsx from 'clsx'
-import { useProgressContext } from 'contexts/ProgressContext'
 import { getNextLessonKey } from 'lib/progress'
 import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import Modal from './Modal'
 import { Text, ToggleSwitch } from 'ui'
 import { useAuthFunctions } from 'state/AuthFunctions'
+import { progressAtom } from 'state/state'
+import { useAtom } from 'jotai'
+import { useProgressFunctions } from 'state/ProgressFunctions'
 
 const avatars = [
   'white spacesuit',
@@ -25,7 +27,8 @@ export default function SignupModal({ onClose, state }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { attemptLogin } = useAuthFunctions()
-  const { progress, saveProgress } = useProgressContext()
+  const [progress] = useAtom(progressAtom)
+  const { saveProgress } = useProgressFunctions()
   const { onSignUpComplete } = state.meta ?? false
   const saveAndReturn = useSaveAndReturn()
   const nextLessonKey = getNextLessonKey(progress)

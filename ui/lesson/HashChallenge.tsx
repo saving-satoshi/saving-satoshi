@@ -5,9 +5,9 @@ import { Lesson, StatusBar, Hasher } from 'ui'
 import clsx from 'clsx'
 import { useLang, useTranslations } from 'hooks'
 import { usePathname } from 'next/navigation'
-import { useProgressContext } from 'contexts/ProgressContext'
 import { useAtom } from 'jotai'
 import { accountAtom } from 'state/state'
+import { useProgressFunctions } from 'state/ProgressFunctions'
 
 /**
  * @answer {string} correct answer to the challenge problem
@@ -37,7 +37,7 @@ export default function HashChallenge({
   inProgressMessage?: string
   successMessage?: string
 }) {
-  const { saveProgress, saveProgressLocal } = useProgressContext()
+  const { saveProgress, saveProgressLocal } = useProgressFunctions()
   const [account] = useAtom(accountAtom)
   const lang = useLang()
   const t = useTranslations(lang)
