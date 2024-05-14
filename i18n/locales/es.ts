@@ -260,7 +260,7 @@ const translations = {
       paragraph_one:
         'Para derivar una clave pública a partir de una clave privada, realizamos una operación de curva elíptica repetidamente con el punto generador (descubre por qué). El punto generador es un punto específico en la curva. Su valor es parte del estándar secp256k1 y siempre es el mismo:',
       paragraph_two:
-        'La operación de curva elíptica es similar a la adición y, por lo tanto, su repetición es similar a la multiplicación. Utilizamos el símbolo * para describir el algoritmo (aprende más), donde k es la clave privada y P es la clave pública correspondiente:The elliptic curve operation is similar to addition and therefore its repetition is similar to multiplication. We use the * symbol to describe the algorithm (learn more), where `k` is the private key and `P` is the corresponding public key:',
+        'La operación de curva elíptica es similar a la adición y, por lo tanto, su repetición es similar a la multiplicación. Utilizamos el símbolo * para describir el algoritmo (aprende más), donde k es la clave privada y P es la clave pública correspondiente:Mathematical operations on an elliptic curve are similar to addition. Therefore, repetition of those opertaions is similar to multiplication. We use the * symbol to describe the algorithm (learn more), where `k` is the private key and `P` is the corresponding public key:',
       paragraph_three:
         'Completa la función privatekey_to_publickey() de modo que devuelva la clave pública derivada de una clave privada dada.',
     },

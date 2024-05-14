@@ -151,7 +151,7 @@ console.log('KILL')
 
 class Transaction {
   constructor() {
-    this.version=2;
+    this.version = 2;
     this.flags = Buffer.from('0001', 'hex');
     this.inputs = [];
     this.outputs = [];

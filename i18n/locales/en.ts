@@ -218,7 +218,7 @@ const translations = {
       title: 'Outro',
       nav_title: 'Off to the address',
       paragraph_one:
-        'You run down to your garage, step into your dad’s old solocopter, punch in the coordinates, and make your way to the address.',
+        'You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to the address.',
       paragraph_two:
         'Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.',
       button_text: 'Complete chapter 1',
@@ -262,7 +262,7 @@ const translations = {
         tip_one:
           'Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33 bytes long (66 characters total) in the OP_Return of the transaction',
         tip_two:
-          "Decoding the string with the 'xxd' command remember that we are not using a variable this time, we need to input the entire string",
+          "When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string",
       },
     },
   },
@@ -270,7 +270,7 @@ const translations = {
   chapter_two: {
     title: 'Hashing out a plan',
     paragraph_one:
-      'The coordinates Satoshi gave takes you to an abandoned warehouse.',
+      'The coordinates Satoshi gave take you to an abandoned warehouse.',
     paragraph_two:
       'You circle the warehouse in your Budgetcopter no less than three times. Your Budgetcopter’s heat detector picks up nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.',
 
@@ -419,11 +419,11 @@ const translations = {
       },
       javascript: {
         paragraph_two:
-          'When you find a nonce with a hash that begins with five zeroes, return the hash to the console. We are using the crypto library in javascript to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
+          'When you find a nonce with a hash that begins with five zeroes, return the hash to the console. We are using the crypto library in JavaScript to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
         list_one:
           '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" target="_blank" className="underline">crypto documentation</Link>',
         list_two:
-          '<Link href="https://www.educative.io/answers/what-is-node-cryptocreatehashalgorithm-options" target="_blank" className="underline">Tutorial javascript function</Link>',
+          '<Link href="https://www.educative.io/answers/what-is-node-cryptocreatehashalgorithm-options" target="_blank" className="underline">Tutorial JavaScript function</Link>',
       },
       success: 'Five zeroes! That’s it!',
     },
@@ -504,11 +504,11 @@ const translations = {
         nonce_paragraph:
           "A nonce, short for (number used once) is a random or semi-random number that is employed in various cryptographic and computational processes. Its primary purpose is to introduce unpredictability and ensure that a particular operation or calculation can't be easily repeated or predicted. The nonce is critical to the security of Bitcoin mining but we will learn more about that later...",
         tip_one:
-          'Ensure you are properly decoding the inputs the hashing algorithms often return objects decoded in bytes, we want to be able to read it in hex format!',
+          'Ensure you are properly decoding the inputs. The hashing algorithms often return objects decoded in bytes, but we want to be able to read it in hex format!',
         tip_two:
           'Think about how you would create a function to keep running until that answer is equal to a specific value',
         tip_three:
-          'Remember to log your answer with <span className="px-1 border-[2px] border-dashed">console.log()</span> or <span className="px-1 border-[2px] border-dashed">print()</span> its the only way our IDE will try to validate your answer',
+          'Remember to log your answer with <span className="px-1 border-[2px] border-dashed">console.log()</span> or <span className="px-1 border-[2px] border-dashed">print()</span>. It is the only way our IDE will try to validate your answer.',
       },
       mining: {
         mining_heading: 'Mining',
@@ -523,9 +523,9 @@ const translations = {
   chapter_three: {
     title: 'The 51% Attack',
     paragraph_one:
-      'You enter the address of a block explorer and see blocks are back to ten minutes intervals. Somehow, holocat sleeps through the noise of the machines.',
+      'You enter the address of a block explorer and see blocks are back to ten minute intervals. Somehow, Holocat sleeps through the noise of the machines.',
     paragraph_two:
-      '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking holocat. It’s not a coincidence.',
+      '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking Holocat. It’s not a coincidence.',
     intro_one: {
       title: 'Intro',
       nav_title: 'Hashing it out',
@@ -558,7 +558,7 @@ const translations = {
       waiting_screen_paragraph_one:
         'Your miners in the warehouse alone don’t stand a chance. If you combine your hashing power with other pools, you might be able to hold the line against the assault.',
       waiting_screen_paragraph_two:
-        'Let’s wait until the others join your pool, which HoloCat insists gets named after her, so we can combine forces.',
+        'Let’s wait until the others join your pool, which Holocat insists gets named after her, so we can combine forces.',
       waiting_button: 'Waiting...',
       continue_button: "Let's go",
     },
@@ -650,7 +650,7 @@ const translations = {
         'The chance of finding a block is very low since it has a lot to do with luck. Especially in scenarios with some extremely powerful miners, the really small miners may contribute work but never find any blocks. ',
       step_five_heading: 'Partial solution percentage',
       step_five_paragraph:
-        'Now this number will work. Miners report these solutions to easier problems regularly to pools. That allows pools to fairly accurately measure how much work each pool has provided.',
+        'Now this number will work. Miners report these solutions to easier problems regularly to pools. That allows pools to measure fairly accurately how much work each miner has provided.',
       step_six_heading: 'Splitting the rewards',
       step_six_paragraph:
         'Now we can take the rewards of 6.1 bitcoin and split them up according to the percentage of partial solutions of each pool. Congratulations!',
@@ -713,7 +713,7 @@ const translations = {
 
     intro_one: {
       title: 'Intro',
-      nav_title: 'Secutring the bag',
+      nav_title: 'Securing the bag',
       paragraph_one:
         'HOLOCAT: “One of us better sleep. You need to get home and start contacting the mining pools. They’ll want to know more about it than the world will.”',
       paragraph_two:
@@ -764,7 +764,7 @@ const translations = {
       paragraph_one:
         'To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point (<Link href="public-key-3/help" className="underline">find out why</Link>). The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:',
       paragraph_two:
-        'The elliptic curve operation is similar to addition and therefore its repetition is similar to multiplication. We use the * symbol to describe the algorithm (<Link href="public-key-3/help" className="underline">learn more</Link>), where `k` is the private key and `P` is the corresponding public key:',
+        'Mathematical operations on an elliptic curve are similar to addition. Therefore, repetition of those operations is similar to multiplication. We use the * symbol to describe the algorithm (<Link href="public-key-3/help" className="underline">learn more</Link>), where `k` is the private key and `P` is the corresponding public key:',
       paragraph_three:
         'Complete the function which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.',
       success:
@@ -866,7 +866,7 @@ const translations = {
           'Hash functions digest any amount of any kind of data and always return a result of the same size. For SHA256, it’s 32 bytes. For RIPEMD-160, it’s 20 bytes. The output is deterministic (always the same output for the same input) but otherwise, indistinguishable from random. Hash functions effectively reduce data to a small consistent fingerprint.',
         wpkh_heading: 'Witness Public Key Hash (wpkh) address',
         wpkh_paragraph:
-          'A Bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There any several types of output script and several encoding mechanisms. In this challenge we encode a compressed public key with bech32 to create what is called a witness public key hash address.',
+          'A Bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There are several types of output scripts and several encoding mechanisms. In this challenge we encode a compressed public key with bech32 to create what is called a witness public key hash address.',
         network_heading: 'Mainnet, Testnet, Signet, and Regtest',
         network_paragraph:
           'When developing Bitcoin software, it is important to test your code before you trust real money with it! One of the simplest ways to test Bitcoin software is to use a different blockchain with a new genesis block where the coins don’t matter, mining is free and easy, and everything can be reset at any time. These chains are supported by a unique network of nodes that does not interfere with the real coins and nodes on Mainnet. Testnet and Signet are the names of two such alternate Bitcoin blockchains that are maintained in parallel with Mainnet on a global scale. Regtest is a developer mode designed to be run locally with no network connections needed at all.',
@@ -882,7 +882,7 @@ const translations = {
       title: 'Intro',
       nav_title: 'Don’t trust, verify',
       paragraph_one:
-        '—DEBORAH CHUNK: “Mr. Vanderpool. You recently made a staggering claim on anti-social media that you are the great-grandson of Satoshi Nakamoto. Is that correct? Is this true?”',
+        '—DEBORAH CHUNK: “Mr. Vanderpoole. You recently made a staggering claim on anti-social media that you are the great-grandson of Satoshi Nakamoto. Is that correct? Is this true?”',
       paragraph_two:
         '—VANDERPOOLE: “It darn tootin’ is, Deborah. I have known this for a long time. You see, my family passed a CD-ROM down for generations. It contains the private keys to my great-grandfather’s enormous trove of bitcoin. So when I speak for miners, know that I also speak for Satoshi Nakamoto.”',
       paragraph_three:
@@ -932,7 +932,7 @@ const translations = {
         'Hal Finney <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">claimed</Link> Satoshi sent him the first Bitcoin transaction ever, confirmed in block #170. That transaction can be found on a <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">block explorer here</Link>. In the scriptSig of input #0 there is a chunk of data following pushbytes... Find it and paste it below.',
       placeholder: 'Paste the data here',
       success:
-        'Nicely done! This is actually Satoshi’s signature, authorizing the transfer of his Bitcoin to Hal Finney.',
+        'Nicely done! This is actually Satoshi’s signature, authorizing the transfer of his bitcoin to Hal Finney.',
     },
     derive_message_four: {
       nav_title: "Find Satoshi's public key",
@@ -967,11 +967,11 @@ const translations = {
         'This is the raw transaction with each component labeled:',
       success_message_line_two: 'version:',
       success_message_line_three: 'number of inputs:',
-      success_message_line_four: 'hash of tx being spent by input #0:',
+      success_message_line_four: 'hash of the tx that input #0 came from:',
       success_message_line_five:
-        'index of output of tx being spent by input #0:',
+        'index of input #0 in the funding transaction:',
       success_message_line_six:
-        'scriptSig to authorize spending the indicated output:',
+        'scriptSig to authorize spending input #0:',
       success_message_line_seven: 'input #0 sequence:',
       success_message_line_eight: 'number of outputs:',
       success_message_line_nine:
@@ -1023,7 +1023,7 @@ const translations = {
       success: 'Nicely done!',
     },
     verify_signature_three: {
-      nav_title: 'Deocde the signature',
+      nav_title: 'Decode the signature',
       heading: 'Decode the Signature',
       label_one: 'Paste the R value',
       label_two: 'Paste the S value',
@@ -1032,7 +1032,7 @@ const translations = {
       paragraph_two:
         'There are two 32-byte numbers we need to extract. They are referred to as R and S respectively and are each prefixed by the bytes 0220 in the DER sequence. Instead of fully decoding the DER blob, just look for the prefixes and paste the R and S values.',
       paragraph_three:
-        "# Satoshi's signature, from the input scriptSig of the tx to Hal Finney",
+        "# Satoshi's signature, from the input scriptSig of the tx to Hal Finney (block 170)",
     },
     verify_signature_four: {
       nav_title: 'Decode the public key',
@@ -1077,7 +1077,7 @@ const translations = {
       paragraph_one:
         'Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">Bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we\'ve already defined, but the preparation of the data is a bit different.',
       paragraph_two:
-        "First, we need to encode his message into an array of bytes corresponding to the following template:',",
+        "First, we need to encode his message into an array of bytes corresponding to the following template:",
       paragraph_three:
         'Then we will double-SHA256 hash that blob of data, and convert that hash into an integer. Complete the function encode_message(). It should return a 32-byte hex value.',
       success: 'Nicely Done',
@@ -1187,13 +1187,11 @@ const translations = {
     intro_two: {
       nav_title: 'Paying Mike Ramen',
       paragraph_one:
-        '—HOLOCAT: “Hardly the only thing that’s made you sound stupid until now.”',
-      paragraph_two:
         '—SATOSHI NAKAMOTO: “Bitcoin moved far beyond its creator’s control many, many years ago. It would not matter if Vanderpoole or I were Satoshi’s grandson. Bitcoin is defined by the community and cannot be co-opted by a single individual or entity—including Satoshi. Proving this is the real battle. I hope you don’t mind, but I asked your eccentric freelance reporter friend to reach out.”',
-      paragraph_three: '—He what? Ding.',
-      paragraph_four: '—HOLOCAT: Don’t forget to boop me.',
-      paragraph_five:
-        '—MIKE RAMEN: “You’ve got guts. But you’ll need more. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to get it. It’s going to cost, so I could use your help pulling my funds off the multi-signature that you helped me set up. You’ve still got one of my keys, right?”',
+      paragraph_two: '—He what? Ding.',
+      paragraph_three: '—HOLOCAT: Don’t forget to boop me.',
+      paragraph_four:
+        '—MIKE RAMEN: “You’ve got guts. But you’ll need more. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to get it. It’s going to cost a lot, so I could use your help pulling my funds off the multi-signature that you helped me set up. You’ve still got one of my keys, right?”',
     },
     in_out_one: {
       title: 'The ins and outs',
@@ -1372,12 +1370,12 @@ const translations = {
       list_three:
         'scriptcode is the raw Bitcoin script being evaluated. We also added this to our Input class back in step 2.',
       paragraph_three:
-        "We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash address, your scriptcode would be:",
+        "We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:",
       paragraph_four: '...which decodes to the following Bitcoin script.',
       paragraph_five:
         'For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
       paragraph_six:
-        'The raw transaction has preimage is the serialization of:',
+        'The raw transaction has a preimage that is the serialization of:',
       headings: {
         item_one: 'Description',
         item_two: 'Name',
@@ -1442,7 +1440,7 @@ const translations = {
           item_four: '4',
         },
         row_ten: {
-          item_one: 'Signature hassh type, we will use 1 to indicate "ALL',
+          item_one: 'Signature hash type, we will use 1 to indicate "ALL"',
           item_two: 'sighash',
           item_three: 'int',
           item_four: '4',
@@ -1655,7 +1653,7 @@ const translations = {
       title: 'Intro',
       nav_title: `Intro`,
       paragraph_one: `—DEBORAH CHUNK: “These documents expose the alleged lies of Thomas Vanderpoole in a way that is certainly historic. It’s all very scandalous. The first thing people will want to know is whether you acted alone. The second is where you got your information.”`,
-      paragraph_two: ` —You tell her about holocat and holocat only. You lie and say that the information was delivered directly to you and Mike Ramen by someone claiming to be Satoshi Nakamoto, who you suspect is actually a hacker collective. This last point causes Thomas Vanderpoole to call directly into the show while you’re still on it.`,
+      paragraph_two: ` —You tell her about Holocat and Holocat only. You lie and say that the information was delivered directly to you and Mike Ramen by someone claiming to be Satoshi Nakamoto, who you suspect is actually a hacker collective. This last point causes Thomas Vanderpoole to call directly into the show while you’re still on it.`,
     },
     intro_two: {
       title: `Intro`,
@@ -1820,7 +1818,7 @@ const translations = {
   },
 
   modal_signup: {
-    heading: 'Want to save your progress',
+    heading: 'Save your progress',
     paragraph_one:
       'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.',
     subheading_one: 'Choose an avatar',

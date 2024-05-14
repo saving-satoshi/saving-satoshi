@@ -381,11 +381,11 @@ const translations = {
       },
       javascript: {
         paragraph_two:
-          'Wenn Du eine Nonce mit einem Hash findest, der mit fünf Nullen beginnt, gib den Hash an die Konsole zurück. Wir verwenden die crypto-Bibliothek in Javascript, um Dir bei der Erstellung dieser Funktion zu helfen. Du kannst bei Bedarf die folgenden externen Ressourcen verwenden, um Dir beim Schreiben dieser Funktion zu helfen:',
+          'Wenn Du eine Nonce mit einem Hash findest, der mit fünf Nullen beginnt, gib den Hash an die Konsole zurück. Wir verwenden die crypto-Bibliothek in JavaScript, um Dir bei der Erstellung dieser Funktion zu helfen. Du kannst bei Bedarf die folgenden externen Ressourcen verwenden, um Dir beim Schreiben dieser Funktion zu helfen:',
         list_one:
           '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" target="_blank" className="underline">crypto documentation</Link>',
         list_two:
-          '<Link href="https://www.educative.io/answers/what-is-node-cryptocreatehashalgorithm-options" target="_blank" className="underline">Tutorial javascript function</Link>',
+          '<Link href="https://www.educative.io/answers/what-is-node-cryptocreatehashalgorithm-options" target="_blank" className="underline">Tutorial JavaScript function</Link>',
       },
       success: 'Fünf Nullen! Geschafft!',
     },
