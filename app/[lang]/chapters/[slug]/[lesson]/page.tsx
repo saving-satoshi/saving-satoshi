@@ -79,8 +79,9 @@ export default function Page({ params }) {
 
         if (account) {
           saveProgress(currentLessonKey)
+        } else {
+          saveProgressLocal(currentLessonKey)
         }
-        saveProgressLocal(currentLessonKey)
       } else {
         setUnlocked(LoadingState.Failed)
       }

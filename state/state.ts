@@ -26,5 +26,5 @@ export const defaultProgressContext = {
   saveProgress: (key: string) => Promise.resolve(),
   saveProgressLocal: (key: string) => Promise.resolve(),
 }
-export const isLoadingProgressAtom = atom<boolean>(false)
+export const isLoadingProgressAtom = atom<boolean>(true)
 export const progressAtom = atom<string>(keys[0])

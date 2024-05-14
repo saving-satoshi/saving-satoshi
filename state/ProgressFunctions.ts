@@ -39,11 +39,25 @@ export const useProgressFunctions = () => {
 
   const saveProgress = async (key: string) => {
     const progress = await getProgress()
-    if (keys.indexOf(progress) < keys.indexOf(key)) {
+    const localProgress = await getProgressLocal()
+
+    // Determine the furthest progress
+    const currentProgressIndex = keys.indexOf(progress)
+    const localProgressIndex = keys.indexOf(localProgress)
+    const providedKeyIndex = keys.indexOf(key)
+
+    const furthestProgressIndex = Math.max(
+      currentProgressIndex,
+      localProgressIndex,
+      providedKeyIndex
+    )
+    const furthestProgressKey = keys[furthestProgressIndex]
+
+    if (currentProgressIndex < furthestProgressIndex) {
       try {
         setIsLoading(true)
-        await setProgress(key)
-        setAccountProgress(key)
+        await setProgress(furthestProgressKey)
+        setAccountProgress(furthestProgressKey)
       } catch (ex) {
         console.error(ex)
       } finally {
