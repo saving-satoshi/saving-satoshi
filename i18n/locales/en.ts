@@ -963,7 +963,7 @@ const translations = {
       success_message_line_three: 'number of inputs:',
       success_message_line_four: 'hash of the tx that input #0 came from:',
       success_message_line_five:
-        'index of input #0 in the tx that created it:',
+        'index of input #0 in the funding transaction:',
       success_message_line_six:
         'scriptSig to authorize spending input #0:',
       success_message_line_seven: 'input #0 sequence:',
@@ -1365,12 +1365,12 @@ const translations = {
       list_three:
         'scriptcode is the raw Bitcoin script being evaluated. We also added this to our Input class back in step 2.',
       paragraph_three:
-        "We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash address, your scriptcode would be:",
+        "We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:",
       paragraph_four: '...which decodes to the following Bitcoin script.',
       paragraph_five:
         'For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
       paragraph_six:
-        'The raw transaction has preimage is the serialization of:',
+        'The raw transaction has a preimage that is the serialization of:',
       headings: {
         item_one: 'Description',
         item_two: 'Name',
@@ -1435,7 +1435,7 @@ const translations = {
           item_four: '4',
         },
         row_ten: {
-          item_one: 'Signature hassh type, we will use 1 to indicate "ALL',
+          item_one: 'Signature hash type, we will use 1 to indicate "ALL"',
           item_two: 'sighash',
           item_three: 'int',
           item_four: '4',
