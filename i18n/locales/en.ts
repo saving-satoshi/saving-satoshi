@@ -1868,6 +1868,10 @@ const translations = {
     poor: "This is valid code but it's not quite what we are looking for. Try again.",
     good: 'Good job, its not quite perfect but still considered correct. Keep working or continue, your choice.',
     success: 'Great work your code looks great!',
+    language_tabs: {
+      locked: "Language disabled since you've started this chapter in",
+      reset: 'Reset the terminal',
+    },
   },
   notfound: {
     first: 'Hmm...where are we?',

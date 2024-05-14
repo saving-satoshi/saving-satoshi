@@ -111,6 +111,12 @@ export default function ScriptingChallenge({
     }
   }
 
+  const handleRefresh = () => {
+    setCode(config.languages[language].defaultCode?.toString())
+    setHiddenRange(config.languages[language].hiddenRange)
+    setConstraints(config.languages[language].constraints)
+  }
+
   const handleChange = (val) => {
     !challengeSuccess && setCode(val)
   }
@@ -213,6 +219,7 @@ export default function ScriptingChallenge({
             languages={config.languages}
             value={language}
             onChange={handleSetLanguage}
+            onRefresh={handleRefresh}
           />
           <div className={clsx({ 'pointer-events-none': challengeSuccess })}>
             <Editor
