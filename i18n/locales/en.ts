@@ -1425,7 +1425,7 @@ const translations = {
           item_one: 'The sequence value of the single input being signed',
           item_two: 'sequence',
           item_three: 'int',
-          item_four: '8',
+          item_four: '4',
         },
         row_eight: {
           item_one: 'The dSHA256 of all outputs, serialized',
