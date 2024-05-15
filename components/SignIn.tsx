@@ -5,9 +5,9 @@ import clsx from 'clsx'
 import { useAuthFunctions } from 'state/AuthFunctions'
 import { accountAtom, Modal } from 'state/state'
 import { useModalFunctions } from 'state/ModalFunctions'
-import { useAtom } from 'jotai'
 import Avatar from './Avatar'
-import { useProgressContext } from 'contexts/ProgressContext'
+import { progressAtom } from 'state/state'
+import { useAtom } from 'jotai'
 import { getLessonPath } from 'lib/progress'
 import { useRouter } from 'next/navigation'
 
@@ -24,7 +24,7 @@ export default function SignIn({
   const { open } = useModalFunctions()
   const { attemptLogin } = useAuthFunctions()
   const [account] = useAtom(accountAtom)
-  const { progress } = useProgressContext()
+  const [progress] = useAtom(progressAtom)
   const routes = useLocalizedRoutes()
   const router = useRouter()
 
