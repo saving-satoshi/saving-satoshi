@@ -88,7 +88,8 @@ from json import load
 with open(f"{'chainstate.json'}", "r") as file:
     state = load(file)
 answer = showtime()
-print(state["valid"] == answer["valid"] and all(ihash in state["invalid"] for ihash in answer["invalid"]))
+print(answer)
+# print(state["valid"] == answer["valid"] and all(ihash in state["invalid"] for ihash in answer["invalid"]))
 print("KILL")`,
     defaultFunction: {
       name: 'showtime',
@@ -112,7 +113,6 @@ def showtime():
     ],
     validate: async (answer) => {
       if (answer) {
-        console.log(answer)
         if (
           answer ===
           '88fd124d747cde1d8494d589ec6b82ce11356dd869823dfec8e84b111a72bc87'
