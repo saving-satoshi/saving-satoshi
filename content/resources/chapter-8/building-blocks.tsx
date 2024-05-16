@@ -125,10 +125,7 @@ const javascriptChallengeThree = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `// First we need to find the block associated with the corresponding tx hash
-// build a function that will call getTxFee when it finds a transaction with the correct TX_HASH
-// this is the function that we will call for validation
-const getBlockTxFee = () => {
+  defaultCode: `const getBlockTxFee = () => {
     let block = Bitcoin.rpc("getblock", BLOCK_HASH)
     for (const tx of block["txs"]) {
       if(tx["txid"] === TX_HASH){
@@ -166,10 +163,7 @@ const pythonChallengeThree = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `# First we need to find the transaction with the corresponding tx hash
-# build a function that will call get_tx_Fee when it finds a transaction with the correct TX_HASH
-# this is the function that we will call for validation
-def get_block_tx_fee():
+  defaultCode: `def get_block_tx_fee():
   block = Bitcoin.rpc("getblock", BLOCK_HASH)
   for tx in block["txs"]:
     if tx["txid"] == TX_HASH:
@@ -204,17 +198,15 @@ const javascriptChallengeFour = {
     args: [],
   },
   defaultCode: `const getSubsidy = (height)=> {
-  let subsidy = 5000000000
-  const halvings = Math.floor(height / 210000)
-  if (halvings >= 33) {
-      return 0
-  }
-  if (halvings === 0) {
-    return subsidy
-  }
-  let postHalvingSubsidy = Math.floor(subsidy / 2) >>> (halvings - 1)
-  return postHalvingSubsidy
-}`,
+    let halvings = BigInt(Math.floor(height / 210000));
+    if (halvings >= 64) {
+        return 0;
+    }
+    let subsidy = BigInt(5000000000);
+    subsidy >>= halvings;
+  
+    return Number(subsidy)
+  }`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -257,16 +249,15 @@ const javascriptChallengeFive = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `const validateBlock = ()=> {
-  let fee = 0
-  let subsidy = getSubsidy(block["height"])
-
-  for (const tx of block["height"]) {
-    fee+= getTxFee(tx)
+  defaultCode: `const validateBlock = (block) => {
+  let subsidy = getSubsidy(block["height"]);
+  let fee = 0;
+  for (let i = 1; i < block["txs"].length; i++) {
+    fee += getTxFee(block["txs"][i]);
   }
-  return subsidy + fee == block["txs"][0]["outputs"][0]["value"]
+  
+  return subsidy + fee === block["txs"][0]["outputs"][0]["value"]
   }
-}
 `,
   validate: async (answer) => {
     return [true, undefined]
@@ -285,7 +276,8 @@ const pythonChallengeFive = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `def validate_block:
+  defaultCode: `def validate_block(block):
+  fees = 0
   subsidy = get_subsidy(block["height"])
     # Don't include the coinbase in this sum!
   for tx in block["txs"][1:]:
@@ -370,7 +362,7 @@ export default function BuildingBlocksResources({ lang }) {
   const initialStateCodeFive =
     configFour.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeFive, setCodeFive] = useState<string>(
-    initialStateCodeFour as string
+    initialStateCodeFive as string
   )
 
   const [languageOne, setLanguageOne] = useState(
@@ -432,8 +424,8 @@ export default function BuildingBlocksResources({ lang }) {
     setCodeFour(configFour.languages[value].defaultCode as string)
   }
   const handleSetLanguageFive = (value) => {
-    setLanguageFour(value)
-    setCodeFour(configFour.languages[value].defaultCode as string)
+    setLanguageFive(value)
+    setCodeFive(configFive.languages[value].defaultCode as string)
   }
 
   const handleBeforeMount = (monaco) => {
