@@ -35,7 +35,9 @@ console.log("KILL")`,
       name: 'getBlockHeight',
       args: ['height'],
     },
-    defaultCode: `const Bitcoin = require('@0tuedon/bitcoin_rpcjs')
+    defaultCode: `const Bitcoinrpc = require('@0tuedon/bitcoin_rpcjs')
+const Bitcoin = new Bitcoinrpc()
+
 const CODE_CHALLENGE_2_HEIGHT = 6929996;
 let txCount = Infinity;
 
@@ -65,6 +67,8 @@ print("KILL")`,
       args: ['height'],
     },
     defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
+Bitcoin = Bitcoin()
+
 CODE_CHALLENGE_2_HEIGHT = 6929996
 answer = None
 

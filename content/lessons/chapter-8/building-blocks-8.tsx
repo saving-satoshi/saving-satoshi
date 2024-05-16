@@ -16,15 +16,9 @@ export const metadata = {
   key: 'CH8BBK8',
 }
 
-const lessonsToLoad = ['CH8BBK6', 'CH8BBK5']
-
-export const allLessonsAreLoaded = (data) => {
-  return lessonsToLoad.every((lesson) => data[lesson])
-}
-
 export default function BuildingBlocks8({ lang }) {
   const t = useTranslations(lang)
-  const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
+  const [prevData, setPrevData] = useState<any>({ lesson_id: '', data: '' })
   const [isLoading, setIsLoading] = useState(true)
   const [combinedCode, setCombinedCode] = useState('')
   const cleanedCombinedCode =
@@ -32,15 +26,13 @@ export default function BuildingBlocks8({ lang }) {
       ? combinedCode.substring(combinedCode.indexOf('const getTxFee'))
       : combinedCode.substring(combinedCode.indexOf('def get_tx_fee(tx):'))
   const getPrevLessonData = async () => {
-    const dataMap = {}
-    const data = await Promise.all(
-      lessonsToLoad.map(async (lesson) => {
-        const dataFromServer = await getData(lesson)
-        dataMap[lesson] = dataFromServer?.code?.getDecoded()
-      })
-    )
+    const data = await getData('CH8BBK7')
+
     if (data) {
-      setPrevData(dataMap)
+      setPrevData({
+        lesson_id: 'CH6PUT1',
+        data: data?.code?.getDecoded(),
+      })
     }
   }
 
@@ -49,12 +41,12 @@ export default function BuildingBlocks8({ lang }) {
   }, [])
 
   useEffect(() => {
-    if (prevData && allLessonsAreLoaded(prevData)) {
-      setCombinedCode(
-        organizeImports(prevData['CH8BBK5'] + '\n' + prevData['CH8BBK6'] + '\n')
-      )
+    if (prevData.data) {
+      setCombinedCode(organizeImports('\n' + prevData.data))
     }
-  }, [prevData])
+  }, [prevData.data])
+
+  console.log(cleanedCombinedCode, combinedCode)
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
@@ -70,9 +62,10 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: `const Bitcoin = require('@0tuedon/bitcoin_rpcjs')
+    defaultCode: `const Bitcoinrpc = require('@0tuedon/bitcoin_rpcjs')
+const Bitcoin = new Bitcoinrpc()
 
-function validateBlock(block) {
+function showtime(block) {
   // YOUR CODE HERE
 }
 `,
@@ -91,15 +84,24 @@ function validateBlock(block) {
 
   const python = {
     program: `# BEGIN VALIDATION BLOCK
+from json import load
+with open(f"{'chainstate.json'}", "r") as file:
+    state = load(file)
+answer = showtime()
+print(state["valid"] == answer["valid"] and all(ihash in state["invalid"] for ihash in answer["invalid"]))
 print("KILL")`,
     defaultFunction: {
       name: 'showtime',
       args: [],
     },
-    defaultCode: `
+    defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
+Bitcoin = Bitcoin()
 
-def validate_block(block):
+${cleanedCombinedCode}
+
+def showtime():
     # YOUR CODE HERE
+    
 `,
 
     rangeToNotCollapse: [
@@ -110,6 +112,7 @@ def validate_block(block):
     ],
     validate: async (answer) => {
       if (answer) {
+        console.log(answer)
         if (
           answer ===
           '88fd124d747cde1d8494d589ec6b82ce11356dd869823dfec8e84b111a72bc87'

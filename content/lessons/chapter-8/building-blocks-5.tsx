@@ -27,7 +27,9 @@ console.log("KILL")`,
       name: 'getBlockTxFee',
       args: [''],
     },
-    defaultCode: `const Bitcoin = require('@0tuedon/bitcoin_rpcjs')
+    defaultCode: `const Bitcoinrpc = require('@0tuedon/bitcoin_rpcjs')
+const Bitcoin = new Bitcoinrpc()
+
 const BLOCK_HASH = "003b9be2d96d14f02717c262bb4b9a0b23191e2f1d9a38413204f3be4f21613c"
 const TX_HASH = "aaf2fd920b7e628b1480b88343ab3b49e49969cf61b059d8c1532b805b7a6d2f"
 
@@ -65,6 +67,8 @@ print("KILL")`,
       args: [''],
     },
     defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
+Bitcoin = Bitcoin()
+
 BLOCK_HASH = "003b9be2d96d14f02717c262bb4b9a0b23191e2f1d9a38413204f3be4f21613c"
 TX_HASH = "aaf2fd920b7e628b1480b88343ab3b49e49969cf61b059d8c1532b805b7a6d2f"
 

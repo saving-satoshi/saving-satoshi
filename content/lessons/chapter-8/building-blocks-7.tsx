@@ -81,7 +81,8 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: `const Bitcoin = require('@0tuedon/bitcoin_rpcjs')
+    defaultCode: `const Bitcoinrpc = require('@0tuedon/bitcoin_rpcjs')
+const Bitcoin = new Bitcoinrpc()
 
 ${cleanedCombinedCode.slice(0, -2)}
 
@@ -120,6 +121,7 @@ print("KILL")`,
       args: ['block'],
     },
     defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
+Bitcoin = Bitcoin()
 
 ${cleanedCombinedCode.slice(0, -2)}
 
