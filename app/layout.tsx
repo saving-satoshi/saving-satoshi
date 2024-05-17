@@ -3,10 +3,6 @@ import Fonts from 'components/Fonts'
 import Layout from 'components/Layout'
 import dynamic from 'next/dynamic'
 
-const DataProvider = dynamic(() => import('contexts/DataContext'), {
-  ssr: false, // This is necessary since the data context utilises local storage
-})
-
 export default function RootLayout({
   children,
 }: {
@@ -101,9 +97,7 @@ export default function RootLayout({
       </head>
       <body className="font-cbrush">
         <Fonts />
-        <DataProvider>
-          <Layout>{children}</Layout>
-        </DataProvider>
+        <Layout>{children}</Layout>
       </body>
     </html>
   )

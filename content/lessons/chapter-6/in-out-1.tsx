@@ -1,10 +1,11 @@
 'use client'
 
-import { useDataContext } from 'contexts/DataContext'
 import { useProceed, useTranslations } from 'hooks'
+import { useAtom } from 'jotai'
 import { getLanguageString } from 'lib/SavedCode'
 import { useState } from 'react'
 import { Button } from 'shared'
+import { currentLanguageAtom } from 'state/state'
 import { PlainEditorConfig } from 'types'
 import { LessonInfo, Text } from 'ui'
 import PlainEditorWrapper from 'ui/lesson/ScriptingChallenge/PlainEditorWrapper'
@@ -19,7 +20,7 @@ export const metadata = {
 export default function InOut1({ lang }) {
   const proceed = useProceed()
   const t = useTranslations(lang)
-  const { currentLanguage } = useDataContext()
+  const [currentLanguage] = useAtom(currentLanguageAtom)
 
   const javascript = {
     defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js')

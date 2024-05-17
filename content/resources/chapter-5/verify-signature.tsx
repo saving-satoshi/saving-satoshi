@@ -10,8 +10,9 @@ import { EditorConfig } from 'types'
 import { Text, ResourcePage, ToggleSwitch, CodeExample } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
-import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
+import { useAtom } from 'jotai'
+import { currentLanguageAtom } from 'state/state'
 
 const javascriptChallengeOne = {
   program: `console.log("KILL")`,
@@ -216,7 +217,7 @@ const configFour: EditorConfig = {
 
 export default function VerifySignatureResources({ lang }) {
   const t = useTranslations(lang)
-  const { currentLanguage } = useDataContext()
+  const [currentLanguage] = useAtom(currentLanguageAtom)
   const initialStateCodeOne =
     configOne.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeOne, setCodeOne] = useState<string>(initialStateCodeOne as string)

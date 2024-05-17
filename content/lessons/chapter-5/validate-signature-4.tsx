@@ -5,8 +5,9 @@ import { getLessonKey } from 'lib/progress'
 import { useState } from 'react'
 import { EditorConfig } from 'types'
 import { CodeExample, LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
-import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
+import { useAtom } from 'jotai'
+import { currentLanguageAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_four.title',
@@ -217,7 +218,7 @@ const config: EditorConfig = {
 
 export default function ValidateSignature4({ lang }) {
   const t = useTranslations(lang)
-  const { currentLanguage } = useDataContext()
+  const [currentLanguage] = useAtom(currentLanguageAtom)
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 
   const handleSelectLanguage = (language: string) => {

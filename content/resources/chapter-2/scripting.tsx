@@ -10,8 +10,9 @@ import { EditorConfig } from 'types'
 import { Text, ResourcePage, ToggleSwitch } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
-import { useDataContext } from 'contexts/DataContext'
 import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
+import { useAtom } from 'jotai'
+import { currentLanguageAtom } from 'state/state'
 
 const javascript = {
   program: `console.log("KILL")`,
@@ -74,7 +75,7 @@ const config: EditorConfig = {
 export default function ScriptingResources({ lang }) {
   const t = useTranslations(lang)
 
-  const { currentLanguage, setCurrentLanguage } = useDataContext()
+  const [currentLanguage, setCurrentLanguage] = useAtom(currentLanguageAtom)
 
   const [code, setCode] = useState(
     config.languages[getLanguageString(currentLanguage)].defaultCode?.[0]

@@ -6,9 +6,10 @@ import { useTranslations } from 'hooks'
 import { CodeExample, Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
 import { chapters } from 'content/chapters'
+import { useAtom } from 'jotai'
+import { currentLanguageAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_five.derive_message_one.title',
@@ -165,7 +166,7 @@ const config: EditorConfig = {
 
 export default function DeriveMessage7({ lang }) {
   const t = useTranslations(lang)
-  const { currentLanguage } = useDataContext()
+  const [currentLanguage] = useAtom(currentLanguageAtom)
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const [tooltipVisible, setTooltipVisible] = useState(false)
 

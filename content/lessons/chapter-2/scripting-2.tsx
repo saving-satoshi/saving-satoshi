@@ -8,7 +8,8 @@ import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getLanguageString } from 'lib/SavedCode'
-import { useDataContext } from 'contexts/DataContext'
+import { currentLanguageAtom } from 'state/state'
+import { useAtom } from 'jotai'
 
 export const metadata = {
   title: 'chapter_two.scripting_one.title',
@@ -113,7 +114,7 @@ const config: EditorConfig = {
 
 export default function Scripting2({ lang }) {
   const t = useTranslations(lang)
-  const { currentLanguage } = useDataContext()
+  const [currentLanguage] = useAtom(currentLanguageAtom)
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 
   const handleSelectLanguage = (language: string) => {

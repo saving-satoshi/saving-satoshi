@@ -6,10 +6,9 @@ import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
-import { accountAtom } from 'state/state'
+import { accountAtom, currentLanguageAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_eight.building_blocks_four.nav_title',
@@ -20,7 +19,7 @@ export const metadata = {
 export default function BuildingBlocks4({ lang }) {
   const t = useTranslations(lang)
   const [account] = useAtom(accountAtom)
-  const { currentLanguage } = useDataContext()
+  const [currentLanguage] = useAtom(currentLanguageAtom)
   const [privateKey, setPrivateKey] = useState('')
 
   if (account && !privateKey) {
