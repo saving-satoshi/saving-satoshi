@@ -83,13 +83,7 @@ function showtime(block) {
   }
 
   const python = {
-    program: `# BEGIN VALIDATION BLOCK
-from json import load
-with open(f"{'chainstate.json'}", "r") as file:
-    state = load(file)
-answer = showtime()
-print(answer)
-# print(state["valid"] == answer["valid"] and all(ihash in state["invalid"] for ihash in answer["invalid"]))
+    program: `
 print("KILL")`,
     defaultFunction: {
       name: 'showtime',
