@@ -24,7 +24,7 @@ export const useDataFunctions = () => {
       if (loadedData && loadedData?.answer) {
         setDataState((oldData) => [
           ...oldData,
-          { lesson_id: lessonId, data: loadedData.answer },
+          { lesson_id: lessonId, data: loadedData!.answer },
         ])
       }
     } catch (ex) {
