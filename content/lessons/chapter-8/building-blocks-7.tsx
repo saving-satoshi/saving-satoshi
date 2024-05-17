@@ -27,6 +27,7 @@ export default function BuildingBlocks7({ lang }) {
   const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
   const [isLoading, setIsLoading] = useState(true)
   const [combinedCode, setCombinedCode] = useState('')
+
   const cleanedCombinedCode =
     detectLanguage(combinedCode) === Language.JavaScript
       ? combinedCode.substring(combinedCode.indexOf('const getTxFee'))

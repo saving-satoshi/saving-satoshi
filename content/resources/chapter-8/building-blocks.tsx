@@ -16,10 +16,12 @@ import { getLanguageString } from 'lib/SavedCode'
 const javascriptChallengeOne = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'verify',
+    name: '',
     args: [],
   },
-  defaultCode: ``,
+  defaultCode: `let info = Bitcoin.rpc("getinfo")
+console.log(info.difficulty)
+  `,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -34,10 +36,12 @@ const javascriptChallengeOne = {
 const pythonChallengeOne = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'verify',
+    name: '',
     args: [],
   },
-  defaultCode: ``,
+  defaultCode: `info = Bitcoin.rpc("getinfo")
+print(info["difficulty"])
+  `,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -52,10 +56,25 @@ const pythonChallengeOne = {
 const javascriptChallengeTwo = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'verify',
-    args: [],
+    name: 'getBlockHeight',
+    args: ['height'],
   },
-  defaultCode: ``,
+  defaultCode: `function getBlockHeight(height) {
+  const hashes = Bitcoin.rpc('getblocksbyheight', CODE_CHALLENGE_2_HEIGHT);
+  let answer = null;
+  let txCount = Infinity;
+
+  for (const bhash of hashes) {
+    const block = Bitcoin.rpc('getblock', bhash);
+    const num = block.txs.length;
+
+    if (num < txCount) {
+      txCount = num;
+      answer = bhash;
+    }
+  }
+  return answer
+  }`,
   validate: async (answer) => {
     if (answer !== 'True') {
       return [false, 'Signature is not valid']
@@ -74,44 +93,21 @@ const javascriptChallengeTwo = {
 const pythonChallengeTwo = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'verify',
-    args: [],
+    name: 'get_block_height',
+    args: ['height'],
   },
-  defaultCode: `    def compute_input_signature(self, index, key):
-        # k = random integer in [1, n-1]
-        # R = G * k
-        # r = x(R) mod n
-        # s = (r * a + m) / k mod n
-        # Extra Bitcoin rule from BIP 146
-        # https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#user-content-LOW_S
-        #   s = -s mod n, if s > n / 2
-        # return (r, s)
-        assert isinstance(key, int)
-        msg = self.digest(index)
-        k = randrange(1, secp256k1.GE.ORDER)
-        k_inverted = pow(k, -1, secp256k1.GE.ORDER)
-        R = k * secp256k1.G
-        r = int(R.x) % secp256k1.GE.ORDER
-        s = ((r * key) + int.from_bytes(msg)) * k_inverted % secp256k1.GE.ORDER
-        if s > secp256k1.GE.ORDER // 2:
-            s = secp256k1.GE.ORDER - s
-        return (r, s)
-
-    def sign_input(self, index, priv, pub, sighash=1):
-        def encode_der(r, s):
-            # Represent in DER format. The byte representations of r and s have
-            # length rounded up (255 bits becomes 32 bytes and 256 bits becomes 33 bytes).
-            # See BIP 66
-            # https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
-            rb = r.to_bytes((r.bit_length() + 8) // 8, 'big')
-            sb = s.to_bytes((s.bit_length() + 8) // 8, 'big')
-            return b'\x30' + bytes([4 + len(rb) + len(sb), 2, len(rb)]) + rb + bytes([2, len(sb)]) + sb
-        (r, s) = self.compute_input_signature(index, priv)
-        der_sig = encode_der(r, s)
-        wit = Witness()
-        wit.push_item(der_sig + bytes([sighash]))
-        wit.push_item(pub)
-        self.witnesses.append(wit)`,
+  defaultCode: `def get_block_height(height):
+  hashes = Bitcoin.rpc("getblocksbyheight", height)
+  answer = None
+  tx_count = float("inf")
+  for bhash in hashes:
+      block = Bitcoin.rpc("getblock", bhash)
+      num = len(block["txs"])
+      if num < tx_count:
+          tx_count = num
+          answer = bhash
+  return answer
+  `,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -129,7 +125,27 @@ const javascriptChallengeThree = {
     name: 'verify',
     args: [],
   },
-  defaultCode: ``,
+  defaultCode: `const getBlockTxFee = () => {
+    let block = Bitcoin.rpc("getblock", BLOCK_HASH)
+    for (const tx of block["txs"]) {
+      if(tx["txid"] === TX_HASH){
+        return getTxFee(tx)
+    }
+  }
+}
+  
+// Now let's find the miner's fee for this transaction.
+// with the transaction from above determine the fee paid to miners
+const getTxFee = (tx) =>{
+  let fee = 0
+  for (const input of tx["inputs"]) {
+        fee+=input["value"]
+  }
+  for (const ouput of tx["outputs"]) {
+      fee-=ouput["value"]
+  }
+  return fee
+}`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -147,7 +163,23 @@ const pythonChallengeThree = {
     name: 'verify',
     args: [],
   },
-  defaultCode: ``,
+  defaultCode: `def get_block_tx_fee():
+  block = Bitcoin.rpc("getblock", BLOCK_HASH)
+  for tx in block["txs"]:
+    if tx["txid"] == TX_HASH:
+      return get_tx_fee(tx)
+        
+
+# Now let's find the miner's fee for this transaction.
+# with the transaction from above determine the fee paid to miners
+def get_tx_fee(tx):
+  fee = 0
+  for inp in tx["inputs"]:
+    fee += inp["value"]
+    for oup in tx["outputs"]:
+      fee -= oup["value"]
+  return fee
+  `,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -165,18 +197,16 @@ const javascriptChallengeFour = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `function get_subsidy(height) {
-  let subsidy = 5000000000
-  const halvings = Math.floor(height / 210000)
-  if (halvings >= 33) {
-      return 0
-  }
-  if (halvings === 0) {
-    return subsidy
-  }
-  let postHalvingSubsidy = Math.floor(subsidy / 2) >>> (halvings - 1)
-  return postHalvingSubsidy
-}`,
+  defaultCode: `const getSubsidy = (height)=> {
+    let halvings = BigInt(Math.floor(height / 210000));
+    if (halvings >= 64) {
+        return 0;
+    }
+    let subsidy = BigInt(5000000000);
+    subsidy >>= halvings;
+  
+    return Number(subsidy)
+  }`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -201,6 +231,58 @@ const pythonChallengeFour = {
     subsidy = 5000000000
     subsidy >>= halvings
     return subsidy
+`,
+  validate: async (answer) => {
+    return [true, undefined]
+  },
+  constraints: [
+    {
+      range: [1, 1, 1, 1],
+      allowMultiline: true,
+    },
+  ],
+}
+
+const javascriptChallengeFive = {
+  program: `console.log("KILL")`,
+  defaultFunction: {
+    name: 'verify',
+    args: [],
+  },
+  defaultCode: `const validateBlock = (block) => {
+  let subsidy = getSubsidy(block["height"]);
+  let fee = 0;
+  for (let i = 1; i < block["txs"].length; i++) {
+    fee += getTxFee(block["txs"][i]);
+  }
+  
+  return subsidy + fee === block["txs"][0]["outputs"][0]["value"]
+  }
+`,
+  validate: async (answer) => {
+    return [true, undefined]
+  },
+  constraints: [
+    {
+      range: [1, 1, 1, 1],
+      allowMultiline: true,
+    },
+  ],
+}
+
+const pythonChallengeFive = {
+  program: `print("KILL")`,
+  defaultFunction: {
+    name: 'verify',
+    args: [],
+  },
+  defaultCode: `def validate_block(block):
+  fees = 0
+  subsidy = get_subsidy(block["height"])
+    # Don't include the coinbase in this sum!
+  for tx in block["txs"][1:]:
+    fees += get_tx_fee(tx)
+  return subsidy + fees == block["txs"][0]["outputs"][0]["value"]
 `,
   validate: async (answer) => {
     return [true, undefined]
@@ -245,6 +327,14 @@ const configFour: EditorConfig = {
   },
 }
 
+const configFive: EditorConfig = {
+  defaultLanguage: 'javascript',
+  languages: {
+    javascript: javascriptChallengeFive,
+    python: pythonChallengeFive,
+  },
+}
+
 export default function BuildingBlocksResources({ lang }) {
   const t = useTranslations(lang)
   const { currentLanguage } = useDataContext()
@@ -269,6 +359,12 @@ export default function BuildingBlocksResources({ lang }) {
     initialStateCodeFour as string
   )
 
+  const initialStateCodeFive =
+    configFour.languages[getLanguageString(currentLanguage)].defaultCode
+  const [codeFive, setCodeFive] = useState<string>(
+    initialStateCodeFive as string
+  )
+
   const [languageOne, setLanguageOne] = useState(
     getLanguageString(currentLanguage)
   )
@@ -281,11 +377,15 @@ export default function BuildingBlocksResources({ lang }) {
   const [languageFour, setLanguageFour] = useState(
     getLanguageString(currentLanguage)
   )
+  const [languageFive, setLanguageFive] = useState(
+    getLanguageString(currentLanguage)
+  )
 
   const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
   const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
   const [challengeThreeIsToggled, setChallengeThreeIsToggled] = useState(false)
   const [challengeFourIsToggled, setChallengeFourIsToggled] = useState(false)
+  const [challengeFiveIsToggled, setChallengeFiveIsToggled] = useState(false)
 
   const challengeOneToggleSwitch = () => {
     setChallengeOneIsToggled(!challengeOneIsToggled)
@@ -303,6 +403,10 @@ export default function BuildingBlocksResources({ lang }) {
     setChallengeFourIsToggled(!challengeFourIsToggled)
   }
 
+  const challengeFiveToggleSwitch = () => {
+    setChallengeFiveIsToggled(!challengeFiveIsToggled)
+  }
+
   const handleSetLanguageOne = (value) => {
     setLanguageOne(value)
     setCodeOne(configOne.languages[value].defaultCode as string)
@@ -318,6 +422,10 @@ export default function BuildingBlocksResources({ lang }) {
   const handleSetLanguageFour = (value) => {
     setLanguageFour(value)
     setCodeFour(configFour.languages[value].defaultCode as string)
+  }
+  const handleSetLanguageFive = (value) => {
+    setLanguageFive(value)
+    setCodeFive(configFive.languages[value].defaultCode as string)
   }
 
   const handleBeforeMount = (monaco) => {
@@ -456,6 +564,37 @@ export default function BuildingBlocksResources({ lang }) {
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
                   language={languageFour}
+                  theme={'satoshi'}
+                  options={readOnlyOptions}
+                />
+              </div>
+            </div>
+          )}
+
+          <Text>{t('help_page.solution_five')}</Text>
+          <div className="flex flex-row items-center gap-2">
+            <ToggleSwitch
+              checked={challengeFiveIsToggled}
+              onChange={challengeFiveToggleSwitch}
+            />
+            <Text>{t('help_page.spoilers_confirm')}</Text>
+          </div>
+          {challengeFiveIsToggled && (
+            <div className="border border-white/25">
+              <LanguageTabs
+                languages={configFive.languages}
+                value={languageFive}
+                onChange={handleSetLanguageFive}
+                noHide
+              />
+              <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
+                <MonacoEditor
+                  loading={<Loader className="h-10 w-10 text-white" />}
+                  height={`235px`}
+                  value={codeFive}
+                  beforeMount={handleBeforeMount}
+                  onMount={handleMount}
+                  language={languageFive}
                   theme={'satoshi'}
                   options={readOnlyOptions}
                 />

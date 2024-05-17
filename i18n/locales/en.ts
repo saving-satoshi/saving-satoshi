@@ -1651,19 +1651,19 @@ const translations = {
     paragraph_one: `Now that the news is out, people are more interested in you than Vanderpoole. Deborah Chunk invites you to appear in person, potentially exposing yourself to Vanderpoole’s wrath. You once again hop into your Budgetcopter and fly downtown to the offices of LARGE BIG NEWS Studios.`,
     intro_one: {
       title: 'Intro',
-      nav_title: `Intro`,
+      nav_title: `Vanderpoole's Deception`,
       paragraph_one: `—DEBORAH CHUNK: “These documents expose the alleged lies of Thomas Vanderpoole in a way that is certainly historic. It’s all very scandalous. The first thing people will want to know is whether you acted alone. The second is where you got your information.”`,
       paragraph_two: ` —You tell her about Holocat and Holocat only. You lie and say that the information was delivered directly to you and Mike Ramen by someone claiming to be Satoshi Nakamoto, who you suspect is actually a hacker collective. This last point causes Thomas Vanderpoole to call directly into the show while you’re still on it.`,
     },
     intro_two: {
       title: `Intro`,
-      nav_title: `Intro`,
+      nav_title: ` Vanderpoole's Anger`,
       paragraph_one: `—THOMAS VANDERPOOLE: “My family is Satoshi Nakamoto! Do you see what this hootenanny just said? They just admitted to being hackers, working for a collective that only uses the name Satoshi Nakamoto to claim a legacy that is rightfully mine. This scoundrel forged those photos to undermine the protests of bitcoiners who are rightfully upset about the elimination of block rewards!”`,
       paragraph_two: `—Thomas Vanderpoole continues to throw two century-old insults at you. He calls you a varmint, a rapscallion, a yellow belly, a greenhorn, and more. You almost feel bad for him. His family was undeniably important to Bitcoin’s history, even if their claims about Satoshi Nakamoto are transparently fake.`,
     },
     intro_three: {
       intro: `Intro`,
-      nav_title: `Intro`,
+      nav_title: `Allegations Against Vanderpoole`,
       paragraph_one: `—DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Mr. Vanderpoole, can you prove that you did no such thing? Mysterious hacker and his holocat, can you prove Vanderpoole had attempted this crime against Bitcoin?”`,
     },
     building_blocks_one: {
@@ -1687,7 +1687,7 @@ const translations = {
         'Here\'s CHRISTOPH ONO\'s ARTISTIC INTERPRETATION of the Bitcoin blockchain "tree" showing a few relevant historical events. Blocks are labeled by their height in the chain and appended with a letter (OR WHATEVER) to indicate multiple candidate blocks at each height. Some of these blocks are invalid! But there must be a path from genesis to tip in here somewhere.',
     },
     building_blocks_three: {
-      title: 'Building blocks',
+      title: 'Building Blocks',
       nav_title: `Explore the Bitcoin API`,
       heading: 'The Bitcoin API',
       paragraph_one:
@@ -1699,7 +1699,8 @@ const translations = {
       success: "Nice work exploring the API! Let's move on.",
     },
     building_blocks_four: {
-      nav_title: `Building blocks`,
+      title: 'Building Blocks',
+      nav_title: `Find the Smallest Transaction Block`,
       heading: `2. Block Data`,
       paragraph_one: `Blocks are stored in the full node database, indexed by their hash. The full node keeps track of which blocks are candidates at each height in the chain with a second index that maps height -> [block hashes].`,
       paragraph_two: `The JSON-RPC API returns block data as JSON objects that include a property "txs" which is an array of transaction objects.`,
@@ -1707,7 +1708,8 @@ const translations = {
       success: `Nicely Done`,
     },
     building_blocks_five: {
-      nav_title: `Building blocks`,
+      title: 'Building Blocks',
+      nav_title: `Get the Transaction Fee`,
       heading: `3. Transaction Data`,
       paragraph_one: `The transaction objects confirmed in a block are JSON objects that include arrays of "inputs" and "outputs". Both of these arrays are lists of UTXOs, also known as "coins". Coin objects have a "value" property represented in satoshis.`,
       paragraph_two: `The "inputs" array is the coins spent (destroyed) by the transaction and the "outputs" array is the coins created by the transaction. You may recall from Chapter 6 that transactions always pay a fee to incentivize miners to include them in a block. That fee is exactly the difference in value between the total input and total output values of a transaction.`,
@@ -1739,7 +1741,7 @@ const translations = {
     },
     building_blocks_seven: {
       title: 'Building Blocks',
-      nav_title: 'Validate Block',
+      nav_title: 'Get the Valid Block',
       heading: '5. That Pernicious Scallywag!',
       paragraph_one: `There are four block candidates at height 6929851. Only one of them is a valid block, the other three were mined by Vanderpoole's cartel in reckless attempts to inflate the Bitcoin money supply.`,
       paragraph_two: `Use your block subsidy function and the JSON-RPC API to check the coinbase outputs in all four block candidates and print the hash of the one and only valid block at that height!`,
