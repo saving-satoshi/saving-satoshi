@@ -168,7 +168,7 @@ const javascriptChallengeTwo = {
     const r = R.x.val % secp256k1.ORDER;
     let s = ((r * key) + BigInt(\`0x\${msg.toString('hex')}\`)) * k_inverted % secp256k1.ORDER;
 
-    if (s > (secp256k1.ORDER / 2n))
+    if (s > (secp256k1.ORDER / BigInt(2)))
       s = secp256k1.ORDER - s;
     return [r, s];
   }
