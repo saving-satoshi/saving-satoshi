@@ -1512,7 +1512,7 @@ const translations = {
           item_four: '1',
         },
         row_four: {
-          item_one: 'All transaction inputs,serialized',
+          item_one: 'All transaction inputs, serialized',
           item_two: 'inputs',
           item_three: 'Inputs[]',
           item_four: '(var)',
@@ -1524,7 +1524,7 @@ const translations = {
           item_four: '1',
         },
         row_six: {
-          item_one: 'All transaction outputs,serialized',
+          item_one: 'All transaction outputs, serialized',
           item_two: 'outputs',
           item_three: 'Outputs[]',
           item_four: '(var)',

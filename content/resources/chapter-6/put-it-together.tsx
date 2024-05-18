@@ -291,7 +291,10 @@ const javascriptChallengeThree = {
     locktime.writeUInt32LE(this.locktime);
 
     return Buffer.concat([buf, locktime]);
-  }`,
+  }
+  
+  // Update the change amount to account for miner fees
+  const out1 = Output.from_options(addr, 60999000);`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -322,7 +325,10 @@ const pythonChallengeThree = {
         for wit in self.witnesses:
             r += wit.serialize()
         r += pack("<I", self.locktime)
-        return r`,
+        return r
+
+    # Update the change amount to account for miner fees
+    out1 = Output.from_options(addr, 60999000)`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -511,7 +517,7 @@ export default function PutItTogetherResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`365px`}
+                  height={`425px`}
                   value={codeThree}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
