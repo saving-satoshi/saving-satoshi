@@ -970,8 +970,7 @@ const translations = {
       success_message_line_four: 'hash of the tx that input #0 came from:',
       success_message_line_five:
         'index of input #0 in the funding transaction:',
-      success_message_line_six:
-        'scriptSig to authorize spending input #0:',
+      success_message_line_six: 'scriptSig to authorize spending input #0:',
       success_message_line_seven: 'input #0 sequence:',
       success_message_line_eight: 'number of outputs:',
       success_message_line_nine:
@@ -1077,7 +1076,7 @@ const translations = {
       paragraph_one:
         'Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">Bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we\'ve already defined, but the preparation of the data is a bit different.',
       paragraph_two:
-        "First, we need to encode his message into an array of bytes corresponding to the following template:",
+        'First, we need to encode his message into an array of bytes corresponding to the following template:',
       paragraph_three:
         'Then we will double-SHA256 hash that blob of data, and convert that hash into an integer. Complete the function encode_message(). It should return a 32-byte hex value.',
       success: 'Nicely Done',
@@ -1747,6 +1746,22 @@ const translations = {
       paragraph_two: `Use your block subsidy function and the JSON-RPC API to check the coinbase outputs in all four block candidates and print the hash of the one and only valid block at that height!`,
       paragraph_three: `Your code will be tested using `,
       success: 'The validate block function looks great. Nice work!',
+    },
+
+    building_blocks_eight: {
+      title: 'Building Blocks',
+      nav_title: 'SHOWTIME!!',
+      heading_one: '6. SHOWTIME!!',
+      paragraph_one: `The cameras are rolling, there's two billion humans world-wide tuned in to the live stream, and there's only a few minutes left before the next commercial break. Deborah Chunk is sweating, holocat is sweating. Somewhere on the other end of the call-in phone line, Vanderpoole must be sweating. This is it!`,
+      paragraph_two: `Starting with the valid block you just found at height 6929851, find the longest chain of valid blocks you can. Store the chain as an array of block hashes. While you're at it, maintain an array of every invalid block you find as well, just to show the world how hard Vanderpoole tried to break Bitcoin. It doesn't matter what order these invalid block hashes are in, but your valid chain MUST start with the hash of block 6929851 followed by one block hash at each height all the way up to the chain tip.`,
+      paragraph_three: `Vanderpoole is sneaky! He mined valid blocks on top of invalid blocks, and invalid blocks on top of short valid blocks! It's a maze, a minefield, out there. You may need to keep track of several valid branches as you traverse the tree. There will be valid blocks with valid parents that are not in the longest chain! In the end, there will be only one valid leaf with a greater height than all the others.`,
+      paragraph_four: `Remember: Block objects returned by the JSON API have a property "prev" which identifies that block's parent by its hash:`,
+      heading_two: `A block is ONLY valid if:`,
+      paragraph_five: `Its coinbase output value is equal to the expected block subsidy plus the total transaction fees in the block.`,
+      heading_three: `AND`,
+      paragraph_six: `The block is a child of another VALID block. This is ensures a VALID CHAIN.`,
+      paragraph_seven: `Return a JSON object with two arrays labeled "valid" and "invalid":`,
+      success: 'The showtime function looks great. Nice work!',
     },
     outro_one: {
       title: 'Outro',

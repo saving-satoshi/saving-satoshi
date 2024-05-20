@@ -27,9 +27,11 @@ console.log("KILL")`,
       name: 'getBlockTxFee',
       args: [''],
     },
-    defaultCode: `const Bitcoin = require('@0tuedon/bitcoin_rpcjs')
-const BLOCK_HASH = "003b9be2d96d14f02717c262bb4b9a0b23191e2f1d9a38413204f3be4f21613c"
-const TX_HASH = "aaf2fd920b7e628b1480b88343ab3b49e49969cf61b059d8c1532b805b7a6d2f"
+    defaultCode: `const Bitcoinrpc = require('@0tuedon/bitcoin_rpcjs')
+const Bitcoin = new Bitcoinrpc()
+const BLOCK_HASH = "dab5708b1b3db05407e35b2004156d74f7bb5bed7f677743945cac1465b5838f"
+const TX_HASH = "7bd09aa3b4795be2839d9159edff0811d6d4ec5a64abd81c0da1e73ab00bf520"
+
 
 // First we need to find the block associated with the corresponding tx hash
 // build a function that will call getTxFee when it finds a transaction with the correct TX_HASH
@@ -48,7 +50,7 @@ const getTxFee = (tx) =>{
 }
 `,
     validate: async (answer) => {
-      if (answer === '1027') {
+      if (answer === '700') {
         return [true, 'Nicely Done']
       } else {
         return [false, 'Incorrect']
@@ -65,8 +67,10 @@ print("KILL")`,
       args: [''],
     },
     defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
-BLOCK_HASH = "003b9be2d96d14f02717c262bb4b9a0b23191e2f1d9a38413204f3be4f21613c"
-TX_HASH = "aaf2fd920b7e628b1480b88343ab3b49e49969cf61b059d8c1532b805b7a6d2f"
+Bitcoin = Bitcoin()
+
+BLOCK_HASH = "dab5708b1b3db05407e35b2004156d74f7bb5bed7f677743945cac1465b5838f"
+TX_HASH = "7bd09aa3b4795be2839d9159edff0811d6d4ec5a64abd81c0da1e73ab00bf520"
 
 # First we need to find the transaction with the corresponding tx hash
 # build a function that will call get_tx_Fee when it finds a transaction with the correct TX_HASH
@@ -83,7 +87,7 @@ def get_tx_fee(tx):
     return fee
 `,
     validate: async (answer: string) => {
-      if (answer === '1027') {
+      if (answer === '700') {
         return [true, 'Nicely Done ']
       } else {
         return [false, 'Incorrect']
