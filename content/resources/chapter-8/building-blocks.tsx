@@ -176,8 +176,8 @@ def get_tx_fee(tx):
   fee = 0
   for inp in tx["inputs"]:
     fee += inp["value"]
-    for oup in tx["outputs"]:
-      fee -= oup["value"]
+  for oup in tx["outputs"]:
+    fee -= oup["value"]
   return fee
   `,
   validate: async (answer) => {
@@ -295,6 +295,125 @@ const pythonChallengeFive = {
   ],
 }
 
+const javascriptChallengeSix = {
+  program: `console.log("KILL")`,
+  defaultFunction: {
+    name: 'verify',
+    args: [],
+  },
+  defaultCode: `const showtime = ()=> {
+    let height = 6929851;
+    let tips = {};
+    let prevs = {};
+    let invalid = [];
+    let valid = [];
+    let last = Bitcoin.rpc("getinfo")["blocks"];
+    while (height <= last) {
+        let candidates = Bitcoin.rpc("getblocksbyheight", height);
+        for (let bhash of candidates) {
+            let block = Bitcoin.rpc("getblock", bhash);
+            // Don't even bother checking blocks with invalid parents
+            if (invalid.includes(block["prev"]) || !validateBlock(block)) {
+                invalid.push(bhash);
+                continue;
+            }
+            // Valid blocks replace their parents in the tips list, extending the branch
+            if (tips[block["prev"]]) {
+                delete tips[block["prev"]];
+            }
+            tips[block["hash"]] = block;
+            // save prev mapping for final output
+            prevs[bhash] = block["prev"];
+        }
+        height += 1;
+    }
+
+    // this is the tip of the longest valid chain
+    let best = Object.values(tips).reduce(function(a, b) {
+        return a["height"] > b["height"] ? a : b;
+    });
+    // now reconstruct the chain of parent blocks
+    let best_hash = best["hash"];
+    valid.push(best_hash);
+    while (prevs[best_hash]) {
+        let prev = prevs[best_hash];
+        valid.push(prev);
+        best_hash = prev;
+    }
+    // reverse it because the instructions said to start low and go to tip
+    valid.reverse();
+    return {
+        valid: valid,
+        invalid: invalid
+    };
+}
+`,
+  validate: async (answer) => {
+    return [true, undefined]
+  },
+  constraints: [
+    {
+      range: [1, 1, 1, 1],
+      allowMultiline: true,
+    },
+  ],
+}
+
+const pythonChallengeSix = {
+  program: `print("KILL")`,
+  defaultFunction: {
+    name: 'verify',
+    args: [],
+  },
+  defaultCode: `def showtime():
+  height = 6929851
+  tips = {}
+  prevs = {}
+  invalid = []
+  valid = []
+  last = Bitcoin.rpc("getinfo")["blocks"]
+  while height <= last:
+      candidates = Bitcoin.rpc("getblocksbyheight", height)
+      for bhash in candidates:
+          block = Bitcoin.rpc("getblock", bhash)
+          # Don't even bother checking blocks with invalid parents
+          if block["prev"] in invalid or not validate_block(block):
+              invalid.append(bhash)
+              continue
+          # Valid blocks replace their parents in the tips list, extending the branch
+          if block["prev"] in tips:
+              del tips[block["prev"]]
+          tips[block["hash"]] = block
+          # save prev mapping for final output
+          prevs[bhash] = block["prev"]
+      height += 1
+  # this is the tip of the longest valid chain
+  best = max(tips.values(), key=lambda block: block["height"])
+  # now reconstruct the chain of parent blocks
+  best_hash = best["hash"]
+  valid.append(best_hash)
+  while best_hash in prevs:
+      prev = prevs[best_hash]
+      valid.append(prev)
+      best_hash = prev
+  # reverse it because the instructions said to start low and go to tip
+  valid.reverse()
+  return {
+      "valid": len(valid),
+      "invalid": len(invalid)
+  }
+`,
+  validate: async (answer) => {
+    return [true, undefined]
+  },
+  constraints: [
+    {
+      range: [1, 1, 1, 1],
+      allowMultiline: true,
+    },
+  ],
+}
+
 const configOne: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
@@ -335,6 +454,14 @@ const configFive: EditorConfig = {
   },
 }
 
+const configSix: EditorConfig = {
+  defaultLanguage: 'javascript',
+  languages: {
+    javascript: javascriptChallengeSix,
+    python: pythonChallengeSix,
+  },
+}
+
 export default function BuildingBlocksResources({ lang }) {
   const t = useTranslations(lang)
   const { currentLanguage } = useDataContext()
@@ -360,10 +487,14 @@ export default function BuildingBlocksResources({ lang }) {
   )
 
   const initialStateCodeFive =
-    configFour.languages[getLanguageString(currentLanguage)].defaultCode
+    configFive.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeFive, setCodeFive] = useState<string>(
     initialStateCodeFive as string
   )
+
+  const initialStateCodeSix =
+    configSix.languages[getLanguageString(currentLanguage)].defaultCode
+  const [codeSix, setCodeSix] = useState<string>(initialStateCodeSix as string)
 
   const [languageOne, setLanguageOne] = useState(
     getLanguageString(currentLanguage)
@@ -380,12 +511,16 @@ export default function BuildingBlocksResources({ lang }) {
   const [languageFive, setLanguageFive] = useState(
     getLanguageString(currentLanguage)
   )
+  const [languageSix, setLanguageSix] = useState(
+    getLanguageString(currentLanguage)
+  )
 
   const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
   const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
   const [challengeThreeIsToggled, setChallengeThreeIsToggled] = useState(false)
   const [challengeFourIsToggled, setChallengeFourIsToggled] = useState(false)
   const [challengeFiveIsToggled, setChallengeFiveIsToggled] = useState(false)
+  const [challengeSixIsToggled, setChallengeSixIsToggled] = useState(false)
 
   const challengeOneToggleSwitch = () => {
     setChallengeOneIsToggled(!challengeOneIsToggled)
@@ -407,6 +542,10 @@ export default function BuildingBlocksResources({ lang }) {
     setChallengeFiveIsToggled(!challengeFiveIsToggled)
   }
 
+  const challengeSixToggleSwitch = () => {
+    setChallengeSixIsToggled(!challengeSixIsToggled)
+  }
+
   const handleSetLanguageOne = (value) => {
     setLanguageOne(value)
     setCodeOne(configOne.languages[value].defaultCode as string)
@@ -426,6 +565,10 @@ export default function BuildingBlocksResources({ lang }) {
   const handleSetLanguageFive = (value) => {
     setLanguageFive(value)
     setCodeFive(configFive.languages[value].defaultCode as string)
+  }
+  const handleSetLanguageSix = (value) => {
+    setLanguageSix(value)
+    setCodeSix(configSix.languages[value].defaultCode as string)
   }
 
   const handleBeforeMount = (monaco) => {
@@ -579,6 +722,7 @@ export default function BuildingBlocksResources({ lang }) {
             />
             <Text>{t('help_page.spoilers_confirm')}</Text>
           </div>
+
           {challengeFiveIsToggled && (
             <div className="border border-white/25">
               <LanguageTabs
@@ -595,6 +739,38 @@ export default function BuildingBlocksResources({ lang }) {
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
                   language={languageFive}
+                  theme={'satoshi'}
+                  options={readOnlyOptions}
+                />
+              </div>
+            </div>
+          )}
+
+          <Text>{t('help_page.solution_six')}</Text>
+          <div className="flex flex-row items-center gap-2">
+            <ToggleSwitch
+              checked={challengeSixIsToggled}
+              onChange={challengeSixToggleSwitch}
+            />
+            <Text>{t('help_page.spoilers_confirm')}</Text>
+          </div>
+
+          {challengeSixIsToggled && (
+            <div className="border border-white/25">
+              <LanguageTabs
+                languages={configSix.languages}
+                value={languageSix}
+                onChange={handleSetLanguageSix}
+                noHide
+              />
+              <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
+                <MonacoEditor
+                  loading={<Loader className="h-10 w-10 text-white" />}
+                  height={`235px`}
+                  value={codeSix}
+                  beforeMount={handleBeforeMount}
+                  onMount={handleMount}
+                  language={languageSix}
                   theme={'satoshi'}
                   options={readOnlyOptions}
                 />

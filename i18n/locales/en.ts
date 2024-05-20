@@ -970,8 +970,7 @@ const translations = {
       success_message_line_four: 'hash of the tx that input #0 came from:',
       success_message_line_five:
         'index of input #0 in the funding transaction:',
-      success_message_line_six:
-        'scriptSig to authorize spending input #0:',
+      success_message_line_six: 'scriptSig to authorize spending input #0:',
       success_message_line_seven: 'input #0 sequence:',
       success_message_line_eight: 'number of outputs:',
       success_message_line_nine:
@@ -1077,7 +1076,7 @@ const translations = {
       paragraph_one:
         'Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">Bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we\'ve already defined, but the preparation of the data is a bit different.',
       paragraph_two:
-        "First, we need to encode his message into an array of bytes corresponding to the following template:",
+        'First, we need to encode his message into an array of bytes corresponding to the following template:',
       paragraph_three:
         'Then we will double-SHA256 hash that blob of data, and convert that hash into an integer. Complete the function encode_message(). It should return a 32-byte hex value.',
       success: 'Nicely Done',
@@ -1762,7 +1761,7 @@ const translations = {
       heading_three: `AND`,
       paragraph_six: `The block is a child of another VALID block. This is ensures a VALID CHAIN.`,
       paragraph_seven: `Return a JSON object with two arrays labeled "valid" and "invalid":`,
-      success: 'The validate block function looks great. Nice work!',
+      success: 'The showtime function looks great. Nice work!',
     },
     outro_one: {
       title: 'Outro',

@@ -50,7 +50,14 @@ export default function BuildingBlocks8({ lang }) {
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
+const fs = require('fs');
 
+const state = JSON.parse(fs.readFileSync('chainstate.json', 'utf8'));
+const answer = showtime();
+
+const isValid = JSON.stringify(state.valid) === JSON.stringify(answer.valid)
+const isInvalid = state.valid.length === answer.valid.length && state.valid.slice().sort().every((value, index) => value === answer.valid.slice().sort()[index]);
+console.log((isValid && isInvalid) && 'true')
 console.log("KILL")`,
     rangeToNotCollapse: [
       {
@@ -59,19 +66,22 @@ console.log("KILL")`,
       },
     ],
     defaultFunction: {
-      name: 'privateKeyToPublicKey',
-      args: ['privateKey'],
+      name: 'showtime',
+      args: [''],
     },
     defaultCode: `const Bitcoinrpc = require('@0tuedon/bitcoin_rpcjs')
 const Bitcoin = new Bitcoinrpc()
 
-function showtime(block) {
+${cleanedCombinedCode}
+
+const showtime = () => {
   // YOUR CODE HERE
 }
 `,
     validate: async (answer: string) => {
+      console.log(true)
       if (answer) {
-        if (answer === '88fd124d747cde1d8494c87') {
+        if (answer === 'true') {
           return [true, '']
         } else {
           return [false, 'recheck your methods']
@@ -83,7 +93,12 @@ function showtime(block) {
   }
 
   const python = {
-    program: `
+    program: `# BEGIN VALIDATION BLOCK
+from json import load
+with open(f"{'chainstate.json'}", "r") as file:
+  state = load(file)
+answer = showtime()
+print(state["valid"] == answer["valid"] and all(ihash in state["invalid"] for ihash in answer["invalid"]))
 print("KILL")`,
     defaultFunction: {
       name: 'showtime',
@@ -107,13 +122,10 @@ def showtime():
     ],
     validate: async (answer) => {
       if (answer) {
-        if (
-          answer ===
-          '88fd124d747cde1d8494d589ec6b82ce11356dd869823dfec8e84b111a72bc87'
-        ) {
+        if (answer === 'True') {
           return [true, '']
         } else {
-          return [false, 'recheck your methods']
+          return [false, 'Recheck your methods']
         }
       } else {
         return [false, 'No output']
