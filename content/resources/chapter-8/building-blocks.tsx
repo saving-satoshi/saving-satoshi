@@ -399,8 +399,8 @@ const pythonChallengeSix = {
   # reverse it because the instructions said to start low and go to tip
   valid.reverse()
   return {
-      "valid": len(valid),
-      "invalid": len(invalid)
+      "valid": valid,
+      "invalid": invalid
   }
 `,
   validate: async (answer) => {
