@@ -12,10 +12,9 @@ import { setData } from 'api/data'
 import { Base64String } from 'types/classes'
 import clsx from 'clsx'
 import useDebounce from 'hooks/useDebounce'
-import { useDataContext } from 'contexts/DataContext'
 import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
-import { accountAtom } from 'state/state'
+import { accountAtom, currentLanguageAtom } from 'state/state'
 import { useProgressFunctions } from 'state/ProgressFunctions'
 
 const tabData = [
@@ -69,7 +68,7 @@ export default function ScriptingChallenge({
   const t = useTranslations(lang)
   const { saveProgress, saveProgressLocal } = useProgressFunctions()
   const [account] = useAtom(accountAtom)
-  const { currentLanguage, setCurrentLanguage } = useDataContext()
+  const [currentLanguage, setCurrentLanguage] = useAtom(currentLanguageAtom)
   const [code, setCode] = useState(
     config.languages[getLanguageString(currentLanguage)].defaultCode?.toString()
   )

@@ -1,5 +1,11 @@
 import { atom } from 'jotai'
 import { keys } from 'lib/progress'
+import { Language } from 'lib/SavedCode'
+import { Data } from 'types'
+
+export const isLoadingDataAtom = atom<boolean>(true)
+export const dataAtom = atom<Data[]>([])
+export const currentLanguageAtom = atom<Language>(Language.JavaScript)
 
 export enum Modal {
   Account = 'account',

@@ -12,8 +12,6 @@ import {
 } from 'hooks'
 import LanguageTabs from './LanguageTabs'
 import PlainEditor from './PlainEditor'
-import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
-import { useDataContext } from 'contexts/DataContext'
 import clsx from 'clsx'
 import { Button } from 'shared'
 

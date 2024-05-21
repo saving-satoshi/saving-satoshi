@@ -74,15 +74,6 @@ export interface Data {
   data: string
 }
 
-export interface DataContextType {
-  isLoading: boolean
-  data: Data[]
-  loadData: (lessonId: string) => void
-  saveData: (lessonId: string, value: any) => void
-  currentLanguage: Language
-  setCurrentLanguage: (language: Language) => void
-}
-
 export interface ModalState {
   open: boolean
   meta: any

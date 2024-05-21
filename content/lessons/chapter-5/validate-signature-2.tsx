@@ -6,10 +6,11 @@ import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
 import { chapters } from 'content/chapters'
 import HolocatQuestion from 'ui/common/HolocatQuestion'
+import { useAtom } from 'jotai'
+import { currentLanguageAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_one.title',
@@ -97,7 +98,7 @@ const config: EditorConfig = {
 
 export default function Scripting2({ lang }) {
   const t = useTranslations(lang)
-  const { currentLanguage } = useDataContext()
+  const [currentLanguage] = useAtom(currentLanguageAtom)
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const [tooltipVisible, setTooltipVisible] = useState(false)
 
