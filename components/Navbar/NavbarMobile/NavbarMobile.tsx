@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react'
 import Menu from './Menu'
 import clsx from 'clsx'
 import Link from 'next/link'
-import HelpLink from '../HelpLink'
+import HelpButton from '../HelpButton'
 import Icon from 'shared/Icon'
 import { navbarThemeSelector } from 'lib/themeSelector'
 import { getChapterKey, getCurrentLessonKey, keys } from 'lib/progress'
@@ -105,7 +105,7 @@ export default function NavbarMobile({ params }) {
           <HamburgerMenu isOpen={isOpen} clicked={handleButtonClick} />
         </div>
         <div className="flex items-center">
-          <HelpLink params={params} />
+          <HelpButton />
           <span className="h-full w-[50px]">
             <UserButton />
           </span>

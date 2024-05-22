@@ -8,7 +8,7 @@ import Address from '../Address'
 import TabGroupDesktop from './TabGroupDesktop'
 import UserButton from '../UserButton'
 import Link from 'next/link'
-import HelpLink from '../HelpLink'
+import HelpButton from '../HelpButton'
 import Icon from 'shared/Icon'
 import { usePathData } from 'hooks'
 import { navbarThemeSelector } from 'lib/themeSelector'
@@ -50,7 +50,9 @@ export default function NavbarDesktop({ params }) {
         </div>
         <nav className="flex items-center">
           <TabGroupDesktop params={params} />
-          <HelpLink params={params} />
+          <span className="h-full w-[70px] items-stretch hover:bg-black/25">
+            <HelpButton />
+          </span>
           <span className="h-full w-[70px] items-stretch hover:bg-black/25">
             <UserButton />
           </span>
