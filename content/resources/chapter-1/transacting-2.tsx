@@ -5,18 +5,13 @@ import { useState } from 'react'
 
 import { Text, ResourcePage, ToggleSwitch, CodeExample } from 'ui'
 
-export default function TransactingResources({ lang }) {
+export default function TransactingTwoResources({ lang }) {
   const t = useTranslations(lang)
 
   const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
-  const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
 
   const challengeOneToggleSwitch = () => {
     setChallengeOneIsToggled(!challengeOneIsToggled)
-  }
-
-  const challengeTwoToggleSwitch = () => {
-    setChallengeTwoIsToggled(!challengeTwoIsToggled)
   }
 
   return (
@@ -57,26 +52,10 @@ export default function TransactingResources({ lang }) {
           {challengeOneIsToggled && (
             <div className="text-white">
               <CodeExample
+                className="whitespace-break-spaces"
                 copy
                 language="bash"
                 code="44697374726963742032312c20426974636f696e2046726565646f6d205a6f6e65"
-              />
-            </div>
-          )}
-          <Text>{t('help_page.solution_two')}</Text>
-          <div className="flex flex-row items-center gap-2">
-            <ToggleSwitch
-              checked={challengeTwoIsToggled}
-              onChange={challengeTwoToggleSwitch}
-            />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
-          </div>
-          {challengeTwoIsToggled && (
-            <div className="text-white">
-              <CodeExample
-                copy
-                language="bash"
-                code="echo 44697374726963742032312c20426974636f696e2046726565646f6d205a6f6e65 | xxd -r -p"
               />
             </div>
           )}

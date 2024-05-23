@@ -30,9 +30,7 @@ export default function HelpModal({ onClose, state }) {
       lessonId.split(/\d+/)[0] === challenge.lessonId.split(/\d+/)[0]
   )
 
-  const Resources =
-    chapterResources?.default[challengeId.lessonId.split(/\d+/)[0].slice(0, -1)]
-      .default
+  const Resources = chapterResources?.default[lessonId]?.default
 
   const isLoaded = !isAccountLoading && !isProgressLoading
 

@@ -36,7 +36,7 @@ export default function Genesis3({ lang }) {
         </Text>
 
         <CodeExample
-          className="mt-4"
+          className="mt-4 whitespace-break-spaces"
           code={`echo $scriptSigHex | xxd -r -p`}
           language="shell"
           copy

@@ -6,13 +6,13 @@ import clsx from 'clsx'
 import { Modal } from 'state/state'
 import { useModalFunctions } from 'state/ModalFunctions'
 
-export default function HelpButton() {
+export default function HelpButton(lessonId) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { open } = useModalFunctions()
 
   const handleClick = (name: Modal) => {
-    open(name)
+    open(name, lessonId)
   }
 
   return (
