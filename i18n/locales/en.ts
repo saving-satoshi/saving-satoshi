@@ -999,7 +999,7 @@ const translations = {
       success_message_line_thirteen: 'locktime:',
     },
     derive_message_seven: {
-      nav_title: 'Build the signed message',
+      nav_title: 'Build the message to sign',
       paragraph_one:
         "It's impossible to sign a message containing it's own signature, so the scriptSig needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.",
       paragraph_two:
@@ -1013,7 +1013,7 @@ const translations = {
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F',
         highlighted: 'sighash type flag',
       },
-      success: "Nice! You've constructed a signed message.",
+      success: "Nice! You've constructed a message to sign.",
     },
     verify_signature_one: {
       title: 'Verify the signature',
