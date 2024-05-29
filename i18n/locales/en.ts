@@ -1394,6 +1394,7 @@ const translations = {
         'value is the amount of the satoshis in the output being spent from. We added it to our Input class back in step 2, and just saved it there inside the class until now.',
       list_three:
         'scriptcode is the raw Bitcoin script being evaluated. We also added this to our Input class back in step 2.',
+      list_four: 'all integers are encoded as little-endian!',
       paragraph_three:
         "We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:",
       paragraph_four: '...which decodes to the following Bitcoin script.',
