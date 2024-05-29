@@ -813,6 +813,10 @@ const translations = {
         'The first step is to perform a SHA-256 hash on your compressed public key. Then perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be 20 bytes encoded as a hex string.',
       paragraph_three:
         'Complete a function that accepts a 33-byte compressed public key as a hex string and returns a 20-byte public key hash as a hex string.',
+      paragraph_four:
+        'Here is the documentation for the hashing libraries we imported for you:\n' +
+        '<Link href="https://nodejs.org/api/crypto.html#class-hash" target="_blank" className="underline">JavaScript: crypto</Link>\n' +
+        '<Link href="https://docs.python.org/3/library/hashlib.html#usage" target="_blank" className="underline">Python: hashlib</Link>',
       success: 'Great. One more step and you will have your wallet address.',
     },
 

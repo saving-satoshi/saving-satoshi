@@ -166,6 +166,9 @@ def hash_compressed(compressed_public_key):
           <Text className="mt-4 font-nunito text-xl text-white">
             {t(`chapter_four.address_two.paragraph_three`)}
           </Text>
+          <Text className="preline mt-4 font-nunito text-xl italic text-white">
+            {t(`chapter_four.address_two.paragraph_four`)}
+          </Text>
         </LessonInfo>
       </ScriptingChallenge>
     )
