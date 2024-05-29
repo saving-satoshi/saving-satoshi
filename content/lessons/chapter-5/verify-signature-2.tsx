@@ -120,7 +120,7 @@ export default function VerifySignature2({ lang }) {
           {t(`chapter_five.verify_signature_two.paragraph_one`)}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_five.verify_signature_two.paragraph_two`)}
+          {t(`chapter_five.verify_signature_two.${language}.paragraph_two`)}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t(`chapter_five.verify_signature_two.paragraph_three`)}

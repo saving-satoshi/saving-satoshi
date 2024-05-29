@@ -79,7 +79,6 @@ const showtime = () => {
 }
 `,
     validate: async (answer: string) => {
-      console.log(true)
       if (answer) {
         if (answer === 'true') {
           return [true, '']

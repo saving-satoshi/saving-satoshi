@@ -40,7 +40,6 @@ function decode_sig(vpSig) {
 }
 `,
   validate: async (answer) => {
-    console.log(answer)
     if (
       answer !==
       '63239744615459417534795088953002824328865520877888079618399827727977035042153,28508663025799969786676261677335521233963265910413171955666154169583931328457'
@@ -153,8 +152,12 @@ export default function Scripting2({ lang }) {
             />
           </a>{' '}
           <Text className="inline text-lg">
-            {t('chapter_five.validate_signature_two.paragraph_two.post_link')}{' '}
-            {t(`chapter_five.validate_signature_two.${language}.paragraph_two`)}
+            {t(
+              `chapter_five.validate_signature_two.${language}.paragraph_two.post_link`
+            )}{' '}
+            {t(
+              `chapter_five.validate_signature_two.${language}.paragraph_two.return`
+            )}
           </Text>
         </div>
       </LessonInfo>

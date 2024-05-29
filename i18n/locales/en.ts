@@ -765,8 +765,15 @@ const translations = {
         'To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point (<Link href="public-key-3/help" className="underline">find out why</Link>). The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:',
       paragraph_two:
         'Mathematical operations on an elliptic curve are similar to addition. Therefore, repetition of those operations is similar to multiplication. We use the * symbol to describe the algorithm (<Link href="public-key-3/help" className="underline">learn more</Link>), where `k` is the private key and `P` is the corresponding public key:',
-      paragraph_three:
-        'Complete the function which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.',
+      python: {
+        paragraph_three:
+          'Complete the function <span className="text-green">privatekey_to_publickey()</span>  which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.',
+      },
+      javascript: {
+        paragraph_three:
+          'Complete the function <span className="text-green">privateKeyToPublicKey()</span>  which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.',
+      },
+
       success:
         'Good job! That public key is pretty long. Let’s try to compress it!',
     },
@@ -799,7 +806,7 @@ const translations = {
 
     address_two: {
       title: 'Address',
-      nav_title: 'Find the compressed public key',
+      nav_title: 'Hash the compressed public key',
       paragraph_one:
         'Do you remember the hashing challenge? It turns out you can generate the simplest type of bitcoin address by hashing your compressed public key. Bitcoin uses two different hashing algorithms for this: SHA-256 and RIPEMD-160.',
       paragraph_two:
@@ -1089,24 +1096,29 @@ const translations = {
       paragraph_two: {
         pre_link: 'Then we will',
         highlighted: 'double SHA-256',
-        post_link:
-          'hash that block of data, and convert that hash into an integer.Complete the function <span className="italic">decode_sig()</span>.',
         question: 'Why do we double hash in Bitcoin?',
       },
       javascript: {
-        paragraph_two:
-          'It should return an array with the [r, s] values as BigInts.',
+        paragraph_two: {
+          post_link:
+            'hash that block of data, and convert that hash into an integer. Complete the function <span className="text-green">decode_sig()</span>.',
+          return:
+            'It should return an array with the [r, s] values as BigInts.',
+        },
       },
       python: {
-        paragraph_two: 'It should return a tuple with the (r, s) values.',
+        paragraph_two: {
+          post_link:
+            'hash that block of data, and convert that hash into an integer. Complete the function <span className=" text-green">decode_sig()</span>.',
+          return: 'It should return a tuple with the (r, s) values.',
+        },
       },
     },
     validate_signature_three: {
       title: 'Validate the signature',
       nav_title: 'See if Vanderpoole was lying',
       heading: 'So, is Vanderpoole a liar?!',
-      paragraph_one:
-        "Let's gather all the necessary components for the program and verify if Vanderpoole's signature actually originated from the private key linked to Satoshi's public key! Please fill in the missing parameters needed to execute the verify() function using the provided code.",
+      paragraph_one: `Let's gather all the necessary components for the program and verify if Vanderpoole's signature actually originated from the private key linked to Satoshi's public key! Please fill in the missing parameters needed to execute the <span className="text-green"> verify()</span> function using the provided code.`,
       paragraph_two:
         'Then we can run the program to see if Vanderpoole was lying. Drumroll please...',
       success:
@@ -1184,12 +1196,15 @@ const translations = {
         '—HOLOCAT: “Hardly the only thing that’s made you sound stupid until now.”',
     },
     intro_two: {
+      title: 'Intro',
       nav_title: 'Paying Mike Ramen',
       paragraph_one:
+        '—HOLOCAT: “Hardly the only thing that’s made you sound stupid until now.”',
+      paragraph_two:
         '—SATOSHI NAKAMOTO: “Bitcoin moved far beyond its creator’s control many, many years ago. It would not matter if Vanderpoole or I were Satoshi’s grandson. Bitcoin is defined by the community and cannot be co-opted by a single individual or entity—including Satoshi. Proving this is the real battle. I hope you don’t mind, but I asked your eccentric freelance reporter friend to reach out.”',
-      paragraph_two: '—He what? Ding.',
-      paragraph_three: '—HOLOCAT: Don’t forget to boop me.',
-      paragraph_four:
+      paragraph_three: '—He what? Ding.',
+      paragraph_four: '—HOLOCAT: Don’t forget to boop me.',
+      paragraph_five:
         '—MIKE RAMEN: “You’ve got guts. But you’ll need more. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to get it. It’s going to cost a lot, so I could use your help pulling my funds off the multi-signature that you helped me set up. You’ve still got one of my keys, right?”',
     },
     in_out_one: {
@@ -1232,8 +1247,7 @@ const translations = {
         'Eventually we will pass in the txid and vout values you got above from listunspent. Note that hashes in Bitcoin are little-endian, which means that you will need to reverse the byte order of the txid string!',
       paragraph_four:
         "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6.",
-      paragraph_five:
-        'We also need a serialize() method that returns a byte array according to the specification:',
+      paragraph_five: `We also need a <span className="text-green"> serialize() </span> method that returns a byte array according to the specification:`,
       heading_two: 'Outpoint',
       table_one: {
         heading: {
@@ -1302,7 +1316,7 @@ const translations = {
       heading: 'Finish the implementation of Class Output',
       paragraph_one: 'It should have the following method:',
       paragraph_two: `It accepts a Bitcoin address as a string (like the address from Mike Ramen) and a value as an integer. The value is expressed as a number of satoshis! Remember, 1 BTC = 100000000 satoshis. You will need to use our bech32 library again to decode the address into version and data components.
-        The class also needs a serialize() method method that returns a byte array according to the specification:`,
+        The class also needs a <span className="text-green"> serialize() </span>  method that returns a byte array according to the specification:`,
       heading_two: 'Output',
       table: {
         heading: {
@@ -1361,7 +1375,7 @@ const translations = {
       paragraph_one:
         'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
       paragraph_two:
-        'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method digest(input_index) that computes the 32-byte message for signing an input.',
+        'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green">digest(input_index)</span> that computes the 32-byte message for signing an input.',
       list_heading: 'Some notes:',
       list_one: '"Double SHA-256" or dSHA256 = sha256(sha256(data))',
       list_two:
