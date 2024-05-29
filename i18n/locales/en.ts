@@ -773,7 +773,7 @@ const translations = {
         paragraph_three:
           'Complete the function <span className="text-green">privateKeyToPublicKey()</span>  which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.',
       },
-
+      paragraph_four: 'Here are some type-conversion hints to get you started:',
       success:
         'Good job! That public key is pretty long. Let’s try to compress it!',
     },
