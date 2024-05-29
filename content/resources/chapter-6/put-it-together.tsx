@@ -180,14 +180,20 @@ const javascriptChallengeTwo = {
 
       return x1;
     }
-    // k = random integer in [1, n-1]
-    // R = G * k
-    // r = x(R) mod n
-    // s = (r * a + m) / k mod n
-    // Extra Bitcoin rule from BIP 146
-    // https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#user-content-LOW_S
-    //   s = -s mod n, if s > n / 2
-    // return (r, s)
+    // The math:
+    //   k = random integer in [1, n-1]
+    //   R = G * k
+    //   r = x(R) mod n
+    //   s = (r * a + m) / k mod n
+    //   Extra Bitcoin rule from BIP 146:
+    //     if s > n / 2 then s = n - s mod n
+    //   return (r, s)
+    // Hints:
+    //   n = the order of the curve secp256k1.ORDER
+    //   a = the private key    
+    //   m = the message value returned by digest()
+    //   x(R) = the x-coordinate of the point R
+    //   Use the invert() function above to turn division into multiplication!
     const msg = this.digest(index);
     const k = BigInt(\`0x\${randomBytes(32).toString('hex')}\`);
     // Extremeley unlikely to fail, this is lazy but ok
@@ -251,15 +257,23 @@ const pythonChallengeTwo = {
     args: [],
   },
   defaultCode: `    def compute_input_signature(self, index, key):
-        # k = random integer in [1, n-1]
-        # R = G * k
-        # r = x(R) mod n
-        # s = (r * a + m) / k mod n
-        # Extra Bitcoin rule from BIP 146
-        # https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#user-content-LOW_S
-        #   s = -s mod n, if s > n / 2
+        # The math:
+        #   k = random integer in [1, n-1]
+        #   R = G * k
+        #   r = x(R) mod n
+        #   s = (r * a + m) / k mod n
+        #   Extra Bitcoin rule from BIP 146:
+        #     if s > n / 2 then s = n - s mod n
         # return (r, s)
+        # Hints:
+        #   n = the order of the curve secp256k1.GE.ORDER
+        #   a = the private key
+        #   m = the message value returned by digest()
+        #   x(R) = the x-coordinate of the point R
+        #   Use the built-in pow() function to turn division into multiplication!
+
         assert isinstance(key, int)
+
         msg = self.digest(index)
         k = randrange(1, secp256k1.GE.ORDER)
         k_inverted = pow(k, -1, secp256k1.GE.ORDER)
@@ -268,6 +282,7 @@ const pythonChallengeTwo = {
         s = ((r * key) + int.from_bytes(msg)) * k_inverted % secp256k1.GE.ORDER
         if s > secp256k1.GE.ORDER // 2:
             s = secp256k1.GE.ORDER - s
+
         return (r, s)
 
     def sign_input(self, index, priv, pub, sighash=1):
