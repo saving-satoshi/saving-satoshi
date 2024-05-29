@@ -824,7 +824,7 @@ const translations = {
       title: 'Address',
       nav_title: 'Get a P2WPKH address',
       paragraph_one:
-        'There are multiple types of bitcoin addresses. We want to create a Testnet Witness Public Key Hash (wpkh) address to encode the 20-byte compressed public key hash. First we need to append the hash with the witness version number `0`. These 21 bytes are known as the witness program. The witness program is encoded into a human-friendly format called bech32, which will append a human-readable prefix and a checksum.',
+        'There are multiple types of bitcoin addresses. We want to create a Testnet Pay-to-Witness-Public-Key-Hash (p2wpkh) address to encode the 20-byte compressed public key hash. First we need to append the hash with the witness version number `0`. These 21 bytes are known as the witness program. The witness program is encoded into a human-friendly format called <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>, which will append a human-readable prefix and a checksum.',
       paragraph_two: 'The prefix is determined by the network:',
       list_one: 'Mainnet: ‘bc’',
       list_two: 'Testnet: ‘tb’',
@@ -833,6 +833,10 @@ const translations = {
         "You will want to use the testnet prefix 'tb' in this function.",
       paragraph_four:
         'The data returned by this function will be your Bitcoin address!',
+      paragraph_five:
+        'You may need to read the code in the bech32 libraries we imported for you to find the right functions to use and their API:\n' +
+        '<Link href="https://github.com/saving-satoshi/bech32js/blob/main/bech32.js" target="_blank" className="underline">JavaScript: @savingsatoshi/bech32js</Link>\n' +
+        '<Link href="https://github.com/saving-satoshi/bech32py/blob/main/bech32py/bech32.py" target="_blank" className="underline">Python: savingsatoshi_bech32py</Link>',
       success: 'Now you have an address that mined bitcoin can be sent to.',
     },
 
