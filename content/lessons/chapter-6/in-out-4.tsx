@@ -171,7 +171,7 @@ class Input:
           {t('chapter_six.in_out_four.paragraph_one')}
         </Text>
         <CodeExample
-          className="mt-4 font-space-mono"
+          className="mt-4 text-wrap font-space-mono"
           code={`from_output(txid: str, vout: int, value: int, scriptcode: bytes)`}
           language="shell"
         />
