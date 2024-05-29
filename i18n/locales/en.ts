@@ -1241,21 +1241,20 @@ const translations = {
         'Segregated Witness transactions work just like their legacy predecessors. There are a few global values like version and locktime. There is an array of inputs (UTXOs we want to spend) and an array of outputs (new UTXOs we want to create, for other people to spend in the future). There will also be an array of witnesses, one for each input. That is where signatures and scripts will go instead of the scriptSig.',
       paragraph_two:
         'The message serializations for all these components is documented <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">here</Link>  and <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline" >here</Link>.',
-      paragraph_three:
-        'And remember: integers in Bitcoin are serialized little-endian!',
     },
     in_out_four: {
       title: 'The ins and outs',
       nav_title: 'The input class',
-      heading: 'Looking at the Class Input implementation',
-      paragraph_one: 'It should have the following method:',
+      heading: 'Looking at the Input class implementation',
+      paragraph_one:
+        'Bitcoin transaction inputs always point to existing, unspent transaction outputs. Therefore, our Input class has a method <span className="text-green"> from_output() </span> which is used to construct an Input by passing in the output description:',
       paragraph_two:
-        'The First two arguments are the transaction ID and the index of the output of that transaction you want to spend from.',
+        'The first two arguments are the transaction ID and the index of the output of that transaction you want to spend from. Eventually we will pass in the txid and vout values you got above from listunspent. ',
       paragraph_three:
-        'Eventually we will pass in the txid and vout values you got above from listunspent. Note that hashes in Bitcoin are little-endian, which means that you will need to reverse the byte order of the txid string!',
+        'Note that raw-byte hashes in Bitcoin are reversed, which is why we need to reverse the byte order of the hex-string txid argument that is passed in.',
       paragraph_four:
-        "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6.",
-      paragraph_five: `We also need a <span className="text-green"> serialize() </span> method that returns a byte array according to the specification:`,
+        "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, we will just store that data as an empty byte array, we won't need it until later.",
+      paragraph_five: `We also need a <span className="text-green"> serialize() </span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:`,
       heading_two: 'Outpoint',
       table_one: {
         heading: {
@@ -1316,13 +1315,16 @@ const translations = {
           },
         },
       },
+      paragraph_six:
+        'And remember: integers in Bitcoin are serialized little-endian!',
       success: 'The Input class looks good. Great Work!',
     },
     in_out_five: {
       title: 'The ins and outs',
       nav_title: 'Build the output class',
-      heading: 'Finish the implementation of Class Output',
-      paragraph_one: 'It should have the following method:',
+      heading: 'Finish the implementation of the Output class',
+      paragraph_one:
+        'Like the Input class, it needs a method <span className="text-green"> from_options() </span> that will construct an Output object from user-provided data:',
       paragraph_two: `It accepts a Bitcoin address as a string (like the address from Mike Ramen) and a value as an integer. The value is expressed as a number of satoshis! Remember, 1 BTC = 100000000 satoshis. You will need to use our bech32 library again to decode the address into version and data components.
         The class also needs a <span className="text-green"> serialize() </span>  method that returns a byte array according to the specification:`,
       heading_two: 'Output',
@@ -1374,6 +1376,8 @@ const translations = {
           },
         },
       },
+      paragraph_three:
+        "Don't forget: integers in Bitcoin are serialized little-endian!",
       success: 'The Output class looks good. Great Work!',
     },
     put_it_together_one: {

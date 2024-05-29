@@ -195,6 +195,9 @@ class Output:
         <div className="mt-4 flex-col gap-4">
           <Table headings={tableHeading} rows={outputRows} />
         </div>
+        <Text className="mt-4 font-nunito text-4xl text-white">
+          {t('chapter_six.in_out_five.paragraph_three')}
+        </Text>
       </LessonInfo>
     </ScriptingChallenge>
   )
