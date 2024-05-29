@@ -4,7 +4,7 @@ import { useTranslations } from 'hooks'
 
 import { Text, ResourcePage } from 'ui'
 
-export default function MiningResources({ lang }) {
+export default function MiningResourcesOne({ lang }) {
   const t = useTranslations(lang)
 
   return (

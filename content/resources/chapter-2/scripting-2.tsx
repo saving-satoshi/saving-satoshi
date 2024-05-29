@@ -72,7 +72,7 @@ const config: EditorConfig = {
   },
 }
 
-export default function ScriptingResources({ lang }) {
+export default function ScriptingResourcesTwo({ lang }) {
   const t = useTranslations(lang)
 
   const [currentLanguage, setCurrentLanguage] = useAtom(currentLanguageAtom)

@@ -6,11 +6,13 @@ export default function Modal({
   active,
   onRequestClose,
   wide,
+  theme,
 }: {
   children?: React.ReactNode
   active: boolean
   onRequestClose: () => void
   wide?: boolean
+  theme?: string
 }) {
   const handleClick = (e) => {
     if (e.target.classList.contains('modal-backdrop')) {
@@ -30,10 +32,12 @@ export default function Modal({
     >
       <div
         className={clsx(
-          'h-full w-screen transform overflow-y-auto overflow-x-hidden bg-back p-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:max-h-[90%] sm:rounded-lg sm:pt-5',
+          'h-full w-screen transform overflow-y-auto overflow-x-hidden p-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:max-h-[90%] sm:rounded-lg sm:pt-5',
+          theme,
           {
             'sm:w-[550px]': !wide,
             'sm:w-[90%]': wide,
+            'bg-back': !theme,
           }
         )}
       >

@@ -30,12 +30,19 @@ export default function HelpModal({ onClose, state }) {
       lessonId.split(/\d+/)[0] === challenge.lessonId.split(/\d+/)[0]
   )
 
+  const theme =
+    lessons[chapterId]?.[lessonId]?.metadata.secondaryTheme ??
+    lessons[chapterId]?.[lessonId]?.metadata.theme ??
+    chapters[chapterId]?.metadata.secondaryTheme ??
+    chapters[chapterId]?.metadata.theme ??
+    'bg-back'
+
   const Resources = chapterResources?.default[lessonId]?.default
 
   const isLoaded = !isAccountLoading && !isProgressLoading
 
   return (
-    <Modal wide active={state.open} onRequestClose={onClose}>
+    <Modal wide theme={theme} active={state.open} onRequestClose={onClose}>
       <div className="float-right flex justify-end">
         <button onClick={onClose} aria-label="Close">
           <Icon icon="close" className="h-6 w-6" />
