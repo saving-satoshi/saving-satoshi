@@ -157,7 +157,7 @@ def privatekey_to_publickey(private_key):
         </Text>
         <CodeExample className="mt-4" code={`P = k * G`} language="shell" />
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_four.public_key_three.paragraph_three`)}
+          {t(`chapter_four.public_key_three.${language}.paragraph_three`)}
         </Text>
       </LessonInfo>
     </ScriptingChallenge>
