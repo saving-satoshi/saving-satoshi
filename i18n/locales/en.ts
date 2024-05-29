@@ -1092,8 +1092,13 @@ const translations = {
         'Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">Bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we\'ve already defined, but the preparation of the data is a bit different.',
       paragraph_two:
         'First, we need to encode his message into an array of bytes corresponding to the following template:',
-      paragraph_three:
-        'Then we will double-SHA256 hash that blob of data, and convert that hash into an integer. Complete the function encode_message(). It should return a 32-byte hex value.',
+      paragraph_three: {
+        pre_link: 'Then we will',
+        highlighted: 'double SHA-256 hash',
+        question: 'Why do we double hash in Bitcoin?',
+        post_link:
+          'that blob of data, and convert that hash into an integer. Complete the function encode_message(). It should return a 32-byte hex value.',
+      },
       success: 'Nicely Done',
     },
     validate_signature_two: {
@@ -1101,15 +1106,10 @@ const translations = {
       heading: 'Prepare Vanderpoole’s signature for verification',
       paragraph_one:
         'The Bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.',
-      paragraph_two: {
-        pre_link: 'Then we will',
-        highlighted: 'double SHA-256',
-        question: 'Why do we double hash in Bitcoin?',
-      },
       javascript: {
         paragraph_two: {
           post_link:
-            'hash that block of data, and convert that hash into an integer. Complete the function <span className="text-green">decode_sig()</span>.',
+            'Complete the function <span className="text-green">decode_sig()</span>.',
           return:
             'It should return an array with the [r, s] values as BigInts.',
         },
@@ -1117,7 +1117,7 @@ const translations = {
       python: {
         paragraph_two: {
           post_link:
-            'hash that block of data, and convert that hash into an integer. Complete the function <span className=" text-green">decode_sig()</span>.',
+            'Complete the function <span className=" text-green">decode_sig()</span>.',
           return: 'It should return a tuple with the (r, s) values.',
         },
       },
