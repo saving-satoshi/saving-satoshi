@@ -19,17 +19,6 @@ export default function HelpModal({ onClose, state }) {
   const chapter = chapters[chapterId]
   const chapterResources = resources[chapterId]
 
-  const challenges = chapter?.metadata.challenges.map((lessonId) => {
-    const { title } = lessons[chapterId][lessonId].metadata
-
-    return { lessonId, title }
-  })
-
-  const challengeId = challenges?.find(
-    (challenge) =>
-      lessonId.split(/\d+/)[0] === challenge.lessonId.split(/\d+/)[0]
-  )
-
   const theme =
     lessons[chapterId]?.[lessonId]?.metadata.secondaryTheme ??
     lessons[chapterId]?.[lessonId]?.metadata.theme ??
@@ -57,31 +46,6 @@ export default function HelpModal({ onClose, state }) {
       {isLoaded && (
         <div className="my-12 grid w-full grid-cols-1 justify-center justify-items-center md:mx-auto">
           <div className="flex w-full max-w-screen-lg flex-col gap-8 px-6">
-            <div
-              className="flex cursor-pointer flex-row items-center gap-5 border border-dashed border-white p-5 text-white"
-              onClick={onClose}
-            >
-              <BackArrow />
-              <div className="flex flex-col">
-                <Text className="text-2xl font-bold opacity-50">
-                  {chapterId?.substring(0, 1).toUpperCase() +
-                    chapterId?.substring(1).replace('-', ' ')}
-                  , Challenge {challenges?.indexOf(challengeId) + 1}
-                </Text>
-                <Text className="text-xl font-bold">
-                  {challengeId?.lessonId
-                    .split(/\d+/)[0]
-                    .slice(0, -1)
-                    .substring(0, 1)
-                    .toUpperCase() +
-                    challengeId?.lessonId
-                      .split(/\d+/)[0]
-                      .slice(0, -1)
-                      .substring(1)
-                      .replace('-', ' ')}
-                </Text>
-              </div>
-            </div>
             {chapterResources && <Resources lang={lang} />}
           </div>
         </div>

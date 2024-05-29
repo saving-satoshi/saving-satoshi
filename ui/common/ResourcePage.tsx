@@ -48,7 +48,7 @@ export default function ResourcePage({
         )}
         <>
           <hr className="my-7 h-[1px] w-full opacity-25" />
-          <footer className="text-2xl text-white">
+          <footer className="text-base text-white">
             {t('help_page.feedback')}{' '}
           </footer>
         </>
