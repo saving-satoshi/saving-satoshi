@@ -345,14 +345,23 @@ def run():
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
-  const [tooltipVisible, setTooltipVisible] = useState(false)
+  const [tooltipVisibleOne, setTooltipVisibleOne] = useState(false)
+  const [tooltipVisibleTwo, setTooltipVisibleTwo] = useState(false)
 
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
+  const handleMouseEnterOne = () => {
+    setTooltipVisibleOne(true)
   }
 
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
+  const handleMouseLeaveOne = () => {
+    setTooltipVisibleOne(false)
+  }
+
+  const handleMouseEnterTwo = () => {
+    setTooltipVisibleTwo(true)
+  }
+
+  const handleMouseLeaveTwo = () => {
+    setTooltipVisibleTwo(false)
   }
 
   return (
@@ -374,8 +383,8 @@ def run():
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_seven.mempool_transaction_one.paragraph_two.a')}
           <a
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={handleMouseEnterOne}
+            onMouseLeave={handleMouseLeaveOne}
             href={t(
               'chapter_seven.mempool_transaction_one.paragraph_two.b.href'
             )}
@@ -393,13 +402,13 @@ def run():
               href={t(
                 'chapter_seven.mempool_transaction_one.paragraph_two.b.href'
               )}
-              visible={tooltipVisible}
+              visible={tooltipVisibleOne}
             />
           </a>
           {t('chapter_seven.mempool_transaction_one.paragraph_two.c')}
           <a
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={handleMouseEnterTwo}
+            onMouseLeave={handleMouseLeaveTwo}
             href={t(
               'chapter_seven.mempool_transaction_one.paragraph_two.d.href'
             )}
@@ -417,7 +426,7 @@ def run():
               href={t(
                 'chapter_seven.mempool_transaction_one.paragraph_two.d.href'
               )}
-              visible={tooltipVisible}
+              visible={tooltipVisibleTwo}
             />
           </a>
           {t('chapter_seven.mempool_transaction_one.paragraph_two.e')}
