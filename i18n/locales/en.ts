@@ -1621,8 +1621,21 @@ const translations = {
       heading: 'Code Challenge',
       paragraph_one:
         "This is the code you find on Vanderpoole's server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is assemble_block() (in Python, assembleBlock() in JavaScript). If you run the code as Vanderpoole left it, you will see the problem right away.",
-      paragraph_two:
-        'You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules.',
+      paragraph_two: {
+        a: 'You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules. The most critical consensus rules you will need to pay attention to restrict the total ',
+        b: {
+          text: 'transaction weight ',
+          href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520weight%2520units',
+          question: 'What are weight units?',
+        },
+        c: ' and the ',
+        d: {
+          text: 'order of transactions ',
+          href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520order%2520do%2520transactions%2520need%2520to%2520be%2520in%2520a%2520block',
+          question: 'What order do transactions need to be in a block?',
+        },
+        e: 'in the block.',
+      },
       paragraph_three:
         'You can make the following assumptions to complete your mission:',
       bullet_one:
@@ -1638,7 +1651,7 @@ const translations = {
         item_two: 'Fee',
         item_two_b: 'Satoshis',
         item_three: 'Weight',
-        item_three_b: 'Virtual bytes',
+        item_three_b: 'Weight units (WU)',
         item_four: 'Ancestors',
       },
       table_one: {

@@ -1,6 +1,13 @@
 'use client'
 
-import { ScriptingChallenge, LessonInfo, Title, Table } from 'ui'
+import { chapters } from 'content/chapters'
+import {
+  ScriptingChallenge,
+  LessonInfo,
+  Title,
+  Table,
+  HolocatQuestion,
+} from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
@@ -37,11 +44,15 @@ export default function MempoolTransaction1({ lang }) {
     </>,
     t('chapter_seven.mempool_transaction_one.headings.item_four'),
   ]
+  // txid
+  // fee
+  // weight
+  // [ancestors]
   const inputRows = [
     [
       'b27f86d3',
       '43430',
-      '220',
+      '2020',
       <span className="inline-block w-[72px]">&nbsp;</span>,
     ],
     [
@@ -84,12 +95,7 @@ export default function MempoolTransaction1({ lang }) {
       <span className="inline-block w-[72px]">&nbsp;</span>,
     ],
     ['88016f17', '15200', '1600', '5e518bbe'],
-    [
-      '8fa820d5',
-      '20221',
-      '1108',
-      <span className="inline-block w-[72px]">&nbsp;</span>,
-    ],
+    ['8fa820d5', '20221', '1108', <>38a62dcc</>],
   ]
 
   const [account] = useAtom(accountAtom)
@@ -339,6 +345,15 @@ def run():
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
+  const [tooltipVisible, setTooltipVisible] = useState(false)
+
+  const handleMouseEnter = () => {
+    setTooltipVisible(true)
+  }
+
+  const handleMouseLeave = () => {
+    setTooltipVisible(false)
+  }
 
   return (
     <ScriptingChallenge
@@ -357,7 +372,55 @@ def run():
           {t('chapter_seven.mempool_transaction_one.paragraph_one')}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_seven.mempool_transaction_one.paragraph_two')}
+          {t('chapter_seven.mempool_transaction_one.paragraph_two.a')}
+          <a
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            href={t(
+              'chapter_seven.mempool_transaction_one.paragraph_two.b.href'
+            )}
+            target="_blank"
+            className="inline text-lg italic hover:underline md:text-xl"
+          >
+            {t('chapter_seven.mempool_transaction_one.paragraph_two.b.text')}
+            <HolocatQuestion
+              theme={chapters['chapter-7'].metadata.theme}
+              inline
+              id="weight-units"
+              question={t(
+                'chapter_seven.mempool_transaction_one.paragraph_two.b.question'
+              )}
+              href={t(
+                'chapter_seven.mempool_transaction_one.paragraph_two.b.href'
+              )}
+              visible={tooltipVisible}
+            />
+          </a>
+          {t('chapter_seven.mempool_transaction_one.paragraph_two.c')}
+          <a
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            href={t(
+              'chapter_seven.mempool_transaction_one.paragraph_two.d.href'
+            )}
+            target="_blank"
+            className="inline text-lg italic hover:underline md:text-xl"
+          >
+            {t('chapter_seven.mempool_transaction_one.paragraph_two.d.text')}
+            <HolocatQuestion
+              theme={chapters['chapter-7'].metadata.theme}
+              inline
+              id="tx-order"
+              question={t(
+                'chapter_seven.mempool_transaction_one.paragraph_two.d.question'
+              )}
+              href={t(
+                'chapter_seven.mempool_transaction_one.paragraph_two.d.href'
+              )}
+              visible={tooltipVisible}
+            />
+          </a>
+          {t('chapter_seven.mempool_transaction_one.paragraph_two.e')}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_seven.mempool_transaction_one.paragraph_three')}
