@@ -1250,8 +1250,15 @@ const translations = {
         'Bitcoin transaction inputs always point to existing, unspent transaction outputs. Therefore, our Input class has a method <span className="text-green"> from_output() </span> which is used to construct an Input by passing in the output description:',
       paragraph_two:
         'The first two arguments are the transaction ID and the index of the output of that transaction you want to spend from. Eventually we will pass in the txid and vout values you got above from listunspent. ',
-      paragraph_three:
-        'Note that raw-byte hashes in Bitcoin are reversed, which is why we need to reverse the byte order of the hex-string txid argument that is passed in.',
+      paragraph_three: {
+        a: 'Hashes in Bitcoin are ',
+        b: {
+          text: ' reversed ',
+          question: 'Why do we reverse hashes in bitcoin?',
+          href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin',
+        },
+        c: ' when we see them as hexadecimal strings. When we accept hashes as strings from a user we must reverse the byte order before storing or transmitting them as raw bytes. This is why we reverse the byte order of the txid argument that is passed in here.',
+      },
       paragraph_four:
         "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, we will just store that data as an empty byte array, we won't need it until later.",
       paragraph_five: `We also need a <span className="text-green"> serialize() </span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:`,
