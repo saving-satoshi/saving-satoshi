@@ -1634,7 +1634,7 @@ const translations = {
           href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520order%2520do%2520transactions%2520need%2520to%2520be%2520in%2520a%2520block',
           question: 'What order do transactions need to be in a block?',
         },
-        e: 'in the block.',
+        e: ' in the block.',
       },
       paragraph_three:
         'You can make the following assumptions to complete your mission:',
