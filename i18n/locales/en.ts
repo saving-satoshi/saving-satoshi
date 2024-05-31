@@ -1566,7 +1566,7 @@ const translations = {
       nav_title: 'Chapter complete',
       heading: 'You did it!!!',
       paragraph_one:
-        "You successfully built a transaction from scratch to pay Mike Ramen for his help. Now that we are done here let's get off this island...",
+        "You successfully built a transaction from scratch to pay Mike Ramen for his help. Now that we are done here let's see what we can find on Vanderpoole's island...",
     },
     resources: {
       in_out: {
@@ -1602,7 +1602,7 @@ const translations = {
     intro_two: {
       nav_title: 'The control room',
       paragraph_one:
-        'The gigantic room is a mess, though its layout is methodical. Inside open notebooks, Vanderpoole’s designs for the backdoor that clogged up the bitcoin network are sketched out in detail. You were right: It was all a lie, but one told not by a conniving villain but by a desperate believer in bitcoin whose company could no longer keep up with modern miners and so infected the pools with a virus.',
+        'The gigantic room is a mess, though its layout is methodical. Remember when all the pools were mining empty blocks and clogging up the bitcoin network? Inside open notebooks, you find Vanderpoole’s designs for the backdoor sketched out in detail. You were right: It was all a lie, but one told not by a conniving villain but by a desperate believer in bitcoin whose company could no longer keep up with modern miners. In a last ditch effort, Vanderpool infected the pools with a virus.',
       paragraph_two:
         'The virus replaces a section of the code used by all the mining pools. It is the block building logic, the algorithm that assembles transactions into a block template that then gets combined with zillions of different nonces, looking for a valid hash. The template is still passed on to legitimate hashing code for proof-of-work, but by then the damage has been done.',
       paragraph_three:
@@ -1666,7 +1666,7 @@ const translations = {
       title: 'Intro',
       nav_title: `Vanderpoole's Deception`,
       paragraph_one: `—DEBORAH CHUNK: “These documents expose the alleged lies of Thomas Vanderpoole in a way that is certainly historic. It’s all very scandalous. The first thing people will want to know is whether you acted alone. The second is where you got your information.”`,
-      paragraph_two: ` —You tell her about Holocat and Holocat only. You lie and say that the information was delivered directly to you and Mike Ramen by someone claiming to be Satoshi Nakamoto, who you suspect is actually a hacker collective. This last point causes Thomas Vanderpoole to call directly into the show while you’re still on it.`,
+      paragraph_two: ` —You tell her about Holocat and Holocat only. You lie and say the information was delivered directly to you and Mike Ramen by someone claiming to be Satoshi Nakamoto, who you suspect is actually a hacker collective. This last point causes Thomas Vanderpoole to call directly into the show while you’re still on it.`,
     },
     intro_two: {
       title: `Intro`,
@@ -1677,7 +1677,7 @@ const translations = {
     intro_three: {
       intro: `Intro`,
       nav_title: `Allegations Against Vanderpoole`,
-      paragraph_one: `—DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Mr. Vanderpoole, can you prove that you did no such thing? Mysterious hacker and his holocat, can you prove Vanderpoole had attempted this crime against Bitcoin?”`,
+      paragraph_one: `—DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Mr. Vanderpoole, can you prove that you did no such thing? Mysterious hacker and his Holocat, can you prove Vanderpoole had attempted this crime against Bitcoin?”`,
     },
     building_blocks_one: {
       title: 'Building blocks',
@@ -1715,7 +1715,7 @@ const translations = {
       title: 'Building Blocks',
       nav_title: `Find the Smallest Transaction Block`,
       heading: `2. Block Data`,
-      paragraph_one: `Blocks are stored in the full node database, indexed by their hash. The full node keeps track of which blocks are candidates at each height in the chain with a second index that maps height -> [block hashes].`,
+      paragraph_one: `Each Bitcoin full node has a database. That's where blocks are stored and indexed by their hash. The full node keeps track of which blocks are candidates at each height in the chain with a second index that maps height -> [block hashes].`,
       paragraph_two: `The JSON-RPC API returns block data as JSON objects that include a property "txs" which is an array of transaction objects.`,
       paragraph_three: `Retrieve all the block candidates at height 6929996 and print the hash of the block with the fewest transactions in it.`,
       success: `Nicely Done`,
@@ -1746,7 +1746,7 @@ const translations = {
         'Starting with the block #1 mined in 2009, the block subsidy is 50 BTC (or 5000000000 satoshis)',
       list_two: 'Every 210,000 blocks that value is cut in half.',
       paragraph_four:
-        'At block height 209,999 the subsisdy was 50 BTC. In the very next block at height 210,000 the subsidy was 25 BTC, and so on. After 63 "halvings" the subsidy will be one single satoshi. The last halving will drop the subsidy to zero.',
+        'At block height 209,999 the subsidy was 50 BTC. In the very next block at height 210,000 the subsidy was 25 BTC, and so on. After 63 "halvings" the subsidy will be one single satoshi. The last halving will drop the subsidy to zero.',
       paragraph_five: 'AND THAT LAST HALVING WAS YESTERDAY!',
       paragraph_six:
         'Finish the implementation of the following function that accepts a block height as an argument and returns the value of the subsidy in satoshis.',
