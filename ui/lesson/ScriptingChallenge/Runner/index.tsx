@@ -82,6 +82,7 @@ export default function Runner({
 
   const [loading, setLoading] = useState<boolean>(false)
   const [isRunning, setIsRunning] = useState<boolean>(false)
+  const hasResult = useRef(false)
   const isActive = activeView !== LessonView.Info
   const [isTryAgain, setIsTryAgain] = useState<boolean | null>(null)
   const [hasherState, setHasherState] = useState<HasherState>(
@@ -116,6 +117,7 @@ export default function Runner({
   }
 
   const handleRun = async () => {
+    hasResult.current = false
     try {
       success = false
       setState(State.Building)
@@ -164,8 +166,11 @@ export default function Runner({
           }
           case 'output': {
             payload = payload.trim()
-            sendTerminal('clear')
-            sendTerminal('print', t('runner.result'))
+            if (hasResult.current === false) {
+              sendTerminal('clear')
+              sendTerminal('print', t('runner.result'))
+              hasResult.current = true
+            }
             sendTerminal('print', payload)
 
             const [res, err] = await onValidate({
