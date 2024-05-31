@@ -235,7 +235,7 @@ class Input:
           <Title>{t('chapter_six.in_out_four.heading_three')}</Title>
         </div>
         <Table headings={tableHeading} rows={inputRows} />
-        <Text className="mt-4 text-lg md:text-3xl">
+        <Text className="font-nunito text-2xl font-bold text-white">
           {t('chapter_six.in_out_four.paragraph_six')}
         </Text>
       </LessonInfo>
