@@ -4,7 +4,7 @@ import { useTranslations } from 'hooks'
 
 import { Text, ResourcePage } from 'ui'
 
-export default function MiningResources({ lang }) {
+export default function SoloResourcesOne({ lang }) {
   const t = useTranslations(lang)
 
   return (
@@ -13,9 +13,9 @@ export default function MiningResources({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_three.resources.pool.pool_heading')}
+            {t('chapter_three.resources.solo.hashrate_heading')}
           </Text>
-          <Text>{t('chapter_three.resources.pool.pool_paragraph')}</Text>
+          <Text>{t('chapter_three.resources.solo.hashrate_paragraph')}</Text>
         </>
       }
     />

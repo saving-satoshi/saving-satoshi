@@ -46,7 +46,9 @@ export default function HelpModal({ onClose, state }) {
       {isLoaded && (
         <div className="my-12 grid w-full grid-cols-1 justify-center justify-items-center md:mx-auto">
           <div className="flex w-full max-w-screen-lg flex-col gap-8 px-6">
-            {chapterResources && <Resources lang={lang} />}
+            {!!chapterResources?.default[lessonId]?.default && (
+              <Resources lang={lang} />
+            )}
           </div>
         </div>
       )}

@@ -143,13 +143,13 @@ def privatekey_to_publickey(private_key):
           {t('chapter_four.public_key_three.paragraph_one')}
         </Text>
         <CodeExample
-          className="mt-4"
+          className="mt-4 text-wrap"
           code={`G = {
-            x: 0x79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28
-               D959F2815B16F81798
-            y: 0x483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554
-               199C47D08FFB10D4B8
-          }`}
+  x: 0x79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28
+  D959F2815B16F81798
+  y: 0x483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554
+  199C47D08FFB10D4B8
+}`}
           language="shell"
         />
         <Text className="mt-4 font-nunito text-xl text-white">

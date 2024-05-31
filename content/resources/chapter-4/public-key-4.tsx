@@ -95,7 +95,7 @@ const configTwo: EditorConfig = {
   },
 }
 
-export default function PublicKeyResources({ lang }) {
+export default function PublicKeyResourcesFour({ lang }) {
   const t = useTranslations(lang)
   const [currentLanguage] = useAtom(currentLanguageAtom)
 
