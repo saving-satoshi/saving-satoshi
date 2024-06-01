@@ -13,7 +13,7 @@ export default function CodeExample({
   className?: string
 }) {
   return (
-    <pre className={clsx('border-2 border-dashed border-white p-2', className)}>
+    <pre className={clsx('bg-[#00000033] p-2', className)}>
       <span
         className={`language-${language} flex items-center justify-between break-all pl-2 pr-0`}
       >
