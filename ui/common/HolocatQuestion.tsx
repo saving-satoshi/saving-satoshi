@@ -26,11 +26,11 @@ const HolocatQuestion = ({
         id={id}
         theme={theme || ''}
         content={question}
-        parentClassName="inline-flex align-bottom min-h-fit min-w-fit"
+        parentClassName="inline-flex align-middle min-h-fit min-w-fit mx-1"
         arrowPosition={arrowPosition}
         visibleOverride={visible}
       >
-        <Avatar avatar="/assets/avatars/holocat.jpg" size={32} />
+        <Avatar avatar="/assets/avatars/holocat.jpg" size={24} />
       </Tooltip>
     )) || (
       <a
@@ -40,7 +40,7 @@ const HolocatQuestion = ({
       gap-2 rounded-[100px] bg-black/20 p-2 transition ease-in-out
        hover:bg-black/40"
       >
-        <Avatar avatar="/assets/avatars/holocat.jpg" size={32} />
+        <Avatar avatar="/assets/avatars/holocat.jpg" size={24} />
         <Text className="text-lg font-semibold">{question}</Text>
       </a>
     )
