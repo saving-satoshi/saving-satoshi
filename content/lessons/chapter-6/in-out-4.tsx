@@ -1,9 +1,17 @@
 'use client'
 
+import { chapters } from 'content/chapters'
 import { useTranslations } from 'hooks'
 import { useState } from 'react'
 import { PlainEditorConfig } from 'types'
-import { LessonInfo, CodeExample, Title, Table, Text } from 'ui'
+import {
+  LessonInfo,
+  CodeExample,
+  Title,
+  Table,
+  Text,
+  HolocatQuestion,
+} from 'ui'
 import PlainEditorWrapper from 'ui/lesson/ScriptingChallenge/PlainEditorWrapper'
 
 export const metadata = {
@@ -158,6 +166,16 @@ class Input:
     setLanguage(language)
   }
 
+  const [tooltipVisible, setTooltipVisible] = useState(false)
+
+  const handleMouseEnter = () => {
+    setTooltipVisible(true)
+  }
+
+  const handleMouseLeave = () => {
+    setTooltipVisible(false)
+  }
+
   return (
     <PlainEditorWrapper
       fixedCode={''}
@@ -180,9 +198,26 @@ class Input:
         </Text>
 
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_three')}
+          {t('chapter_six.in_out_four.paragraph_three.a')}
+          <a
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            href={t('chapter_six.in_out_four.paragraph_three.b.href')}
+            target="_blank"
+            className="inline text-lg italic hover:underline md:text-xl"
+          >
+            {t('chapter_six.in_out_four.paragraph_three.b.text')}
+            <HolocatQuestion
+              theme={chapters['chapter-7'].metadata.theme}
+              inline
+              id="tx-order"
+              question={t('chapter_six.in_out_four.paragraph_three.b.question')}
+              href={t('chapter_six.in_out_four.paragraph_three.b.href')}
+              visible={tooltipVisible}
+            />
+          </a>
+          {t('chapter_six.in_out_four.paragraph_three.c')}
         </Text>
-
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_six.in_out_four.paragraph_four')}
         </Text>
@@ -200,6 +235,9 @@ class Input:
           <Title>{t('chapter_six.in_out_four.heading_three')}</Title>
         </div>
         <Table headings={tableHeading} rows={inputRows} />
+        <Text className="font-nunito text-2xl font-bold text-white">
+          {t('chapter_six.in_out_four.paragraph_six')}
+        </Text>
       </LessonInfo>
     </PlainEditorWrapper>
   )

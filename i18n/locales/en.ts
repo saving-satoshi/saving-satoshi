@@ -773,7 +773,7 @@ const translations = {
         paragraph_three:
           'Complete the function <span className="text-green">privateKeyToPublicKey()</span>  which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.',
       },
-
+      paragraph_four: 'Here are some type-conversion hints to get you started:',
       success:
         'Good job! That public key is pretty long. Let’s try to compress it!',
     },
@@ -813,6 +813,10 @@ const translations = {
         'The first step is to perform a SHA-256 hash on your compressed public key. Then perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be 20 bytes encoded as a hex string.',
       paragraph_three:
         'Complete a function that accepts a 33-byte compressed public key as a hex string and returns a 20-byte public key hash as a hex string.',
+      paragraph_four:
+        'Here is the documentation for the hashing libraries we imported for you:\n' +
+        '<Link href="https://nodejs.org/api/crypto.html#class-hash" target="_blank" className="underline">JavaScript: crypto</Link>\n' +
+        '<Link href="https://docs.python.org/3/library/hashlib.html#usage" target="_blank" className="underline">Python: hashlib</Link>',
       success: 'Great. One more step and you will have your wallet address.',
     },
 
@@ -820,7 +824,7 @@ const translations = {
       title: 'Address',
       nav_title: 'Get a P2WPKH address',
       paragraph_one:
-        'There are multiple types of bitcoin addresses. We want to create a Testnet Witness Public Key Hash (wpkh) address to encode the 20-byte compressed public key hash. First we need to append the hash with the witness version number `0`. These 21 bytes are known as the witness program. The witness program is encoded into a human-friendly format called bech32, which will append a human-readable prefix and a checksum.',
+        'There are multiple types of bitcoin addresses. We want to create a Testnet Pay-to-Witness-Public-Key-Hash (p2wpkh) address to encode the 20-byte compressed public key hash. First we need to append the hash with the witness version number `0`. These 21 bytes are known as the witness program. The witness program is encoded into a human-friendly format called <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>, which will append a human-readable prefix and a checksum.',
       paragraph_two: 'The prefix is determined by the network:',
       list_one: 'Mainnet: ‘bc’',
       list_two: 'Testnet: ‘tb’',
@@ -829,6 +833,10 @@ const translations = {
         "You will want to use the testnet prefix 'tb' in this function.",
       paragraph_four:
         'The data returned by this function will be your Bitcoin address!',
+      paragraph_five:
+        'You may need to read the code in the bech32 libraries we imported for you to find the right functions to use and their API:\n' +
+        '<Link href="https://github.com/saving-satoshi/bech32js/blob/main/bech32.js" target="_blank" className="underline">JavaScript: @savingsatoshi/bech32js</Link>\n' +
+        '<Link href="https://github.com/saving-satoshi/bech32py/blob/main/bech32py/bech32.py" target="_blank" className="underline">Python: savingsatoshi_bech32py</Link>',
       success: 'Now you have an address that mined bitcoin can be sent to.',
     },
 
@@ -991,7 +999,7 @@ const translations = {
       success_message_line_thirteen: 'locktime:',
     },
     derive_message_seven: {
-      nav_title: 'Build the signed message',
+      nav_title: 'Build the message to sign',
       paragraph_one:
         "It's impossible to sign a message containing it's own signature, so the scriptSig needs to be removed. In the Bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.",
       paragraph_two:
@@ -1005,7 +1013,7 @@ const translations = {
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F',
         highlighted: 'sighash type flag',
       },
-      success: "Nice! You've constructed a signed message.",
+      success: "Nice! You've constructed a message to sign.",
     },
     verify_signature_one: {
       title: 'Verify the signature',
@@ -1084,8 +1092,13 @@ const translations = {
         'Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">Bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we\'ve already defined, but the preparation of the data is a bit different.',
       paragraph_two:
         'First, we need to encode his message into an array of bytes corresponding to the following template:',
-      paragraph_three:
-        'Then we will double-SHA256 hash that blob of data, and convert that hash into an integer. Complete the function encode_message(). It should return a 32-byte hex value.',
+      paragraph_three: {
+        pre_link: 'Then we will',
+        highlighted: 'double SHA-256 hash',
+        question: 'Why do we double hash in Bitcoin?',
+        post_link:
+          'that blob of data, and convert that hash into an integer. Complete the function encode_message(). It should return a 32-byte hex value.',
+      },
       success: 'Nicely Done',
     },
     validate_signature_two: {
@@ -1093,15 +1106,10 @@ const translations = {
       heading: 'Prepare Vanderpoole’s signature for verification',
       paragraph_one:
         'The Bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.',
-      paragraph_two: {
-        pre_link: 'Then we will',
-        highlighted: 'double SHA-256',
-        question: 'Why do we double hash in Bitcoin?',
-      },
       javascript: {
         paragraph_two: {
           post_link:
-            'hash that block of data, and convert that hash into an integer. Complete the function <span className="text-green">decode_sig()</span>.',
+            'Complete the function <span className="text-green">decode_sig()</span>.',
           return:
             'It should return an array with the [r, s] values as BigInts.',
         },
@@ -1109,7 +1117,7 @@ const translations = {
       python: {
         paragraph_two: {
           post_link:
-            'hash that block of data, and convert that hash into an integer. Complete the function <span className=" text-green">decode_sig()</span>.',
+            'Complete the function <span className=" text-green">decode_sig()</span>.',
           return: 'It should return a tuple with the (r, s) values.',
         },
       },
@@ -1233,21 +1241,27 @@ const translations = {
         'Segregated Witness transactions work just like their legacy predecessors. There are a few global values like version and locktime. There is an array of inputs (UTXOs we want to spend) and an array of outputs (new UTXOs we want to create, for other people to spend in the future). There will also be an array of witnesses, one for each input. That is where signatures and scripts will go instead of the scriptSig.',
       paragraph_two:
         'The message serializations for all these components is documented <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">here</Link>  and <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline" >here</Link>.',
-      paragraph_three:
-        'And remember: integers in Bitcoin are serialized little-endian!',
     },
     in_out_four: {
       title: 'The ins and outs',
       nav_title: 'The input class',
-      heading: 'Looking at the Class Input implementation',
-      paragraph_one: 'It should have the following method:',
+      heading: 'Looking at the Input class implementation',
+      paragraph_one:
+        'Bitcoin transaction inputs always point to existing, unspent transaction outputs. Therefore, our Input class has a method <span className="text-green"> from_output() </span> which is used to construct an Input by passing in the output description:',
       paragraph_two:
-        'The First two arguments are the transaction ID and the index of the output of that transaction you want to spend from.',
-      paragraph_three:
-        'Eventually we will pass in the txid and vout values you got above from listunspent. Note that hashes in Bitcoin are little-endian, which means that you will need to reverse the byte order of the txid string!',
+        'The first two arguments are the transaction ID and the index of the output of that transaction you want to spend from. Eventually we will pass in the txid and vout values you got above from listunspent. ',
+      paragraph_three: {
+        a: 'Hashes in Bitcoin are ',
+        b: {
+          text: ' reversed ',
+          question: 'Why do we reverse hashes in bitcoin?',
+          href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin',
+        },
+        c: ' when we see them as hexadecimal strings. When we accept hashes as strings from a user we must reverse the byte order before storing or transmitting them as raw bytes. This is why we reverse the byte order of the txid argument that is passed in here.',
+      },
       paragraph_four:
-        "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6.",
-      paragraph_five: `We also need a <span className="text-green"> serialize() </span> method that returns a byte array according to the specification:`,
+        "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, we will just store that data as an empty byte array, we won't need it until later.",
+      paragraph_five: `We also need a <span className="text-green"> serialize() </span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:`,
       heading_two: 'Outpoint',
       table_one: {
         heading: {
@@ -1308,13 +1322,16 @@ const translations = {
           },
         },
       },
+      paragraph_six:
+        'And remember: integers in Bitcoin are serialized little-endian!',
       success: 'The Input class looks good. Great Work!',
     },
     in_out_five: {
       title: 'The ins and outs',
       nav_title: 'Build the output class',
-      heading: 'Finish the implementation of Class Output',
-      paragraph_one: 'It should have the following method:',
+      heading: 'Finish the implementation of the Output class',
+      paragraph_one:
+        'Like the Input class, it needs a method <span className="text-green"> from_options() </span> that will construct an Output object from user-provided data:',
       paragraph_two: `It accepts a Bitcoin address as a string (like the address from Mike Ramen) and a value as an integer. The value is expressed as a number of satoshis! Remember, 1 BTC = 100000000 satoshis. You will need to use our bech32 library again to decode the address into version and data components.
         The class also needs a <span className="text-green"> serialize() </span>  method that returns a byte array according to the specification:`,
       heading_two: 'Output',
@@ -1366,6 +1383,8 @@ const translations = {
           },
         },
       },
+      paragraph_three:
+        "Don't forget: integers in Bitcoin are serialized little-endian!",
       success: 'The Output class looks good. Great Work!',
     },
     put_it_together_one: {
@@ -1382,6 +1401,7 @@ const translations = {
         'value is the amount of the satoshis in the output being spent from. We added it to our Input class back in step 2, and just saved it there inside the class until now.',
       list_three:
         'scriptcode is the raw Bitcoin script being evaluated. We also added this to our Input class back in step 2.',
+      list_four: 'all integers are encoded as little-endian!',
       paragraph_three:
         "We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:",
       paragraph_four: '...which decodes to the following Bitcoin script.',
@@ -1467,15 +1487,16 @@ const translations = {
       title: 'Putting it all together',
       nav_title: 'Build the witness class',
       heading: 'Sign and Populate the Witness!',
-      paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called compute_input_signature(index: int, key: int) to your Transaction class that accepts an input index number and a private key (a 32-byte integer). It should compute the message digest for the chosen input using the digest() method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
+      paragraph_one:
+        'We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the math behind the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
       paragraph_two:
-        'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
+        'Complete the method <span className="text-green"> compute_input_signature(index, key) </span> in our Transaction class that accepts an input index number and a private key (a 32-byte integer, or BigInt in JavaScript). It should compute the message digest for the chosen input using the digest() method from our last step, and then return an ECDSA signature in the form of two 32-byte integers r and s.',
       paragraph_three:
-        'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
+        'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value of the signature is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
       paragraph_four:
-        'Next, finish the method sign_input(index: int, key: int) that calls our compute_input_signature(index, key) method and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.',
+        'Next, complete the method <span className="text-green"> sign_input(index, key) </span> that calls <span className="text-green"> compute_input_signature(index, key) </span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.',
       paragraph_five:
-        'Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this indicating "SIGHASH ALL".',
+        'Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this, indicating "SIGHASH ALL".',
       paragraph_six:
         'Once we have that signature blob we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.',
       paragraph_seven:

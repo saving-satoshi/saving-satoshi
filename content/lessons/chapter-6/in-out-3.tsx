@@ -21,9 +21,6 @@ export default function InOut3({ lang }) {
       <Text className="mt-4 text-lg md:text-xl">
         {t('chapter_six.in_out_three.paragraph_two')}
       </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_six.in_out_three.paragraph_three')}
-      </Text>
     </Introduction>
   )
 }

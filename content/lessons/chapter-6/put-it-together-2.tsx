@@ -181,7 +181,7 @@ console.log("KILL")`,
     defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js');
 const {randomBytes} = require('crypto');
 ${combinedCode.slice(0, -2)}
-// Complete the two methods below
+  // Complete the two methods below
   compute_input_signature(index, key) {
     assert(typeof key === 'bigint');
     assert(Number.isInteger(index));
@@ -207,15 +207,22 @@ ${combinedCode.slice(0, -2)}
         x1 += modulus;
         return x1;
     }
-    // k = random integer in [1, n-1]
-    // R = G * k
-    // r = x(R) mod n
-    // s = (r * a + m) / k mod n
-    // Extra Bitcoin rule from BIP 146
-    // https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#user-content-LOW_S
-    //   s = -s mod n, if s > n / 2
-    // return (r, s)
+    // The math:
+    //   k = random integer in [1, n-1]
+    //   R = G * k
+    //   r = x(R) mod n
+    //   s = (r * a + m) / k mod n
+    //   Extra Bitcoin rule from BIP 146:
+    //     if s > n / 2 then s = n - s mod n
+    //   return (r, s)
+    // Hints:
+    //   n = the order of the curve secp256k1.ORDER
+    //   a = the private key
+    //   m = the message value returned by digest()
+    //   x(R) = the x-coordinate of the point R
+    //   Use the invert() function above to turn division into multiplication!
     // YOUR CODE HERE
+
     return [r, s];
   }
   // Now sign the input you just returned!
@@ -358,18 +365,27 @@ print("KILL")`,
     defaultCode: `from random import randrange
 from secp256k1py import secp256k1
 ${combinedCode}
-# Complete the 2 methods below
+    # Complete the 2 methods below
     def compute_input_signature(self, index: int, key: int):
-        # k = random integer in [1, n-1]
-        # R = G * k
-        # r = x(R) mod n
-        # s = (r * a + m) / k mod n
-        # Extra Bitcoin rule from BIP 146
-        # https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#user-content-LOW_S
-        #   s = -s mod n, if s > n / 2
+        # The math:
+        #   k = random integer in [1, n-1]
+        #   R = G * k
+        #   r = x(R) mod n
+        #   s = (r * a + m) / k mod n
+        #   Extra Bitcoin rule from BIP 146:
+        #     if s > n / 2 then s = n - s mod n
         # return (r, s)
+        # Hints:
+        #   n = the order of the curve secp256k1.GE.ORDER
+        #   a = the private key
+        #   m = the message value returned by digest()
+        #   x(R) = the x-coordinate of the point R
+        #   Use the built-in pow() function to turn division into multiplication!
+
         assert isinstance(key, int)
+
         # YOUR CODE HERE
+
         return (r, s)
 
     def sign_input(self, index, priv, pub, sighash=1):

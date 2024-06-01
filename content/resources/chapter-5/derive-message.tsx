@@ -20,7 +20,7 @@ const javascript = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `function create_tx_message() {
+  defaultCode: `function createTxMessage() {
   let msg = '';
   // version:
   msg += '01000000';
@@ -69,7 +69,7 @@ const python = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `def createTxMessage():
+  defaultCode: `def create_tx_message():
     msg = ""
     # version:
     msg += "01000000"
