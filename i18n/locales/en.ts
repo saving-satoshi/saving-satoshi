@@ -508,7 +508,7 @@ const translations = {
         tip_two:
           'Think about how you would create a function to keep running until that answer is equal to a specific value',
         tip_three:
-          'Remember to log your answer with <span className="px-1 border-[2px] border-dashed">console.log()</span> or <span className="px-1 border-[2px] border-dashed">print()</span>. It is the only way our IDE will try to validate your answer.',
+          'Remember to log your answer with <span className="p-1 font-mono bg-[#00000033] m-1">console.log()</span> or <span className="p-1 font-mono bg-[#00000033] m-1">print()</span>. It is the only way our IDE will try to validate your answer.',
       },
       mining: {
         mining_heading: 'Mining',
