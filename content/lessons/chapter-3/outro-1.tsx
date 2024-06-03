@@ -9,7 +9,7 @@ export const metadata = {
   title: 'chapter_three.outro_one.title',
   navigation_title: 'chapter_three.outro_one.nav_title',
   image: '/assets/images/chapter-3-finish.jpg',
-  theme: 'bg-transparent/20',
+  theme: 'bg-transparent/40',
   secondaryTheme: 'bg-[#202233]',
   gradientTheme: 'from-[#202233] via-[#202233BF]',
   key: 'CH3OUT1',

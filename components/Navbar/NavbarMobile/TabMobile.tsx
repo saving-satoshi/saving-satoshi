@@ -6,11 +6,12 @@ import { usePathname } from 'next/navigation'
 
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
-import { useProgressContext } from 'contexts/ProgressContext'
 import useLessonStatus from 'hooks/useLessonStatus'
 import Icon from 'shared/Icon'
 
 import { chapters, lessons } from 'content'
+import { useAtom } from 'jotai'
+import { progressAtom } from 'state/state'
 
 export default function Tab({
   index,
@@ -24,8 +25,7 @@ export default function Tab({
   clicked: any
 }) {
   const { slug } = params
-
-  const { progress } = useProgressContext()
+  const [progress] = useAtom(progressAtom)
   const { isUnlocked } = useLessonStatus(
     progress,
     getLessonKey(

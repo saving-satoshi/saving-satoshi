@@ -1,15 +1,14 @@
 'use client'
 
-import { ScriptingChallenge, LessonInfo, Title, Tooltip } from 'ui'
+import { ScriptingChallenge, LessonInfo, Title } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
-import { chapters } from 'content/chapters'
-import HolocatQuestion from 'ui/common/HolocatQuestion'
+import { useAtom } from 'jotai'
+import { currentLanguageAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_one.title',
@@ -39,7 +38,6 @@ function decode_sig(vpSig) {
 }
 `,
   validate: async (answer) => {
-    console.log(answer)
     if (
       answer !==
       '63239744615459417534795088953002824328865520877888079618399827727977035042153,28508663025799969786676261677335521233963265910413171955666154169583931328457'
@@ -97,17 +95,8 @@ const config: EditorConfig = {
 
 export default function Scripting2({ lang }) {
   const t = useTranslations(lang)
-  const { currentLanguage } = useDataContext()
+  const [currentLanguage] = useAtom(currentLanguageAtom)
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
-  const [tooltipVisible, setTooltipVisible] = useState(false)
-
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
-  }
-
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
-  }
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
@@ -127,36 +116,14 @@ export default function Scripting2({ lang }) {
         <Text className="my-2 text-lg">
           {t('chapter_five.validate_signature_two.paragraph_one')}
         </Text>
-
-        <div className="content-center justify-items-center font-nunito">
-          <Text className="inline text-lg">
-            {t('chapter_five.validate_signature_two.paragraph_two.pre_link')}{' '}
-          </Text>
-          <a
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            href="https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520do%2520we%2520double%2520hash%2520in%2520bitcoin%253F/"
-            target="_blank"
-            className="inline text-lg hover:underline md:text-xl"
-          >
-            {t('chapter_five.validate_signature_two.paragraph_two.highlighted')}{' '}
-            <HolocatQuestion
-              id="holocat"
-              inline
-              theme={chapters['chapter-5'].metadata.theme}
-              href="https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520do%2520we%2520double%2520hash%2520in%2520bitcoin%253F/"
-              question={t(
-                'chapter_five.validate_signature_two.paragraph_two.question'
-              )}
-              visible={tooltipVisible}
-            />
-          </a>
-          <Text className="inline text-lg">
-            {' '}
-            {t('chapter_five.validate_signature_two.paragraph_two.post_link')}
-            {t(`chapter_five.validate_signature_two.${language}.paragraph_two`)}
-          </Text>
-        </div>
+        <Text className="inline text-lg">
+          {t(
+            `chapter_five.validate_signature_two.${language}.paragraph_two.post_link`
+          )}{' '}
+          {t(
+            `chapter_five.validate_signature_two.${language}.paragraph_two.return`
+          )}
+        </Text>
       </LessonInfo>
     </ScriptingChallenge>
   )

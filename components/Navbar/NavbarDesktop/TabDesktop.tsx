@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 
 import { Tooltip } from 'ui'
 import Icon from 'shared/Icon'
-import { useLang, useTranslations } from 'hooks'
+import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { lessons, chapters } from 'content'
 import {
   getLessonKey,
@@ -15,8 +15,9 @@ import {
   keys,
 } from 'lib/progress'
 import { themeSelector } from 'lib/themeSelector'
-import { useProgressContext } from 'contexts/ProgressContext'
 import useLessonStatus from 'hooks/useLessonStatus'
+import { useAtom } from 'jotai'
+import { isLoadingProgressAtom, progressAtom } from 'state/state'
 
 export default function Tab({
   index,
@@ -35,14 +36,15 @@ export default function Tab({
 
   const theme = themeSelector(lessons, lessonId, chapters, slug)
 
+  const routes = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
   const pathName = usePathname() || ''
 
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
-
-  const { progress, isLoading } = useProgressContext()
+  const [progress] = useAtom(progressAtom)
+  const [isLoading] = useAtom(isLoadingProgressAtom)
 
   const { isUnlocked } = useLessonStatus(
     progress,
@@ -112,6 +114,7 @@ export default function Tab({
               const navTitle =
                 lessons[slug][navLessonId].metadata.navigation_title
               const ComponentType = isLessonUnlock ? Link : 'div'
+              const href = `${routes.chaptersUrl}/${slug}/${challenge.lessonId}`
               return (
                 <div
                   key={index}
@@ -124,7 +127,7 @@ export default function Tab({
                   })}
                 >
                   <ComponentType
-                    href={challenge.lessonId}
+                    href={href}
                     className={clsx(
                       'flex h-full w-full flex-nowrap items-center gap-[5px] px-2.5 py-2 text-base',
                       {

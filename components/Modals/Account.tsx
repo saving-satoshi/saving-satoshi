@@ -6,9 +6,12 @@ import Avatar from 'components/Avatar'
 import { Button, Loader } from 'shared'
 import { useTranslations, useLang } from 'hooks'
 import { useState } from 'react'
-import { useProgressContext } from 'contexts/ProgressContext'
 import { useAtom } from 'jotai'
-import { accountAtom, isAuthLoadingAtom } from 'state/state'
+import {
+  accountAtom,
+  isAuthLoadingAtom,
+  isLoadingProgressAtom,
+} from 'state/state'
 import { useAuthFunctions } from 'state/AuthFunctions'
 
 export default function AccountModal({ onClose, state }) {
@@ -16,7 +19,7 @@ export default function AccountModal({ onClose, state }) {
   const [account] = useAtom(accountAtom)
   const [isAccountLoading] = useAtom(isAuthLoadingAtom)
   const { attemptLogout } = useAuthFunctions()
-  const { isLoading: isProgressLoading } = useProgressContext()
+  const [isProgressLoading] = useAtom(isLoadingProgressAtom)
   const t = useTranslations(lang)
   const [copied, setCopied] = useState(false)
 

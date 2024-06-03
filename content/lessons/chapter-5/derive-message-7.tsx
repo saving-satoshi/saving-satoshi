@@ -6,9 +6,10 @@ import { useTranslations } from 'hooks'
 import { CodeExample, Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
 import { chapters } from 'content/chapters'
+import { useAtom } from 'jotai'
+import { currentLanguageAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_five.derive_message_one.title',
@@ -165,7 +166,7 @@ const config: EditorConfig = {
 
 export default function DeriveMessage7({ lang }) {
   const t = useTranslations(lang)
-  const { currentLanguage } = useDataContext()
+  const [currentLanguage] = useAtom(currentLanguageAtom)
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const [tooltipVisible, setTooltipVisible] = useState(false)
 
@@ -191,27 +192,7 @@ export default function DeriveMessage7({ lang }) {
     >
       <LessonInfo>
         <Text className="font-nunito text-xl text-white">
-          {t('chapter_five.derive_message_seven.paragraph_one.a')}{' '}
-          <a
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            href={t('chapter_five.derive_message_seven.tooltip_one.link')}
-            target="_blank"
-            className="inline text-lg italic hover:underline md:text-xl"
-          >
-            {t('chapter_five.derive_message_seven.tooltip_one.highlighted')}
-            <HolocatQuestion
-              theme={chapters['chapter-5'].metadata.theme}
-              inline
-              id="target-difficulty"
-              question={t(
-                'chapter_five.derive_message_seven.tooltip_one.question'
-              )}
-              href={t('chapter_five.derive_message_seven.tooltip_one.link')}
-              visible={tooltipVisible}
-            />
-          </a>{' '}
-          {t('chapter_five.derive_message_seven.paragraph_one.b')}
+          {t('chapter_five.derive_message_seven.paragraph_one')}
         </Text>
         <Text className="my-4 font-nunito text-xl text-white">
           {t(`chapter_five.derive_message_seven.paragraph_two`)}
@@ -219,10 +200,31 @@ export default function DeriveMessage7({ lang }) {
         <CodeExample
           copy
           language="bash"
+          className="text-wrap"
           code="43410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3ac"
         />
         <Text className="my-4 font-nunito text-xl text-white">
-          {t(`chapter_five.derive_message_seven.paragraph_three`)}
+          {t(`chapter_five.derive_message_seven.paragraph_three.a`)}{' '}
+          <a
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            href={t('chapter_five.derive_message_seven.tooltip_one.link')}
+            target="_blank"
+            className="inline text-lg italic underline md:text-xl"
+          >
+            {t('chapter_five.derive_message_seven.tooltip_one.highlighted')}{' '}
+            <HolocatQuestion
+              theme={chapters['chapter-5'].metadata.theme}
+              inline
+              id="sighash-type-flag"
+              question={t(
+                'chapter_five.derive_message_seven.tooltip_one.question'
+              )}
+              href={t('chapter_five.derive_message_seven.tooltip_one.link')}
+              visible={tooltipVisible}
+            />
+          </a>
+          {t(`chapter_five.derive_message_seven.paragraph_three.b`)}
         </Text>
         <CodeExample copy language="bash" code="01000000" />
       </LessonInfo>

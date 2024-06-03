@@ -25,9 +25,8 @@ const HolocatQuestion = ({
       <Tooltip
         id={id}
         theme={theme || ''}
-        href={href}
         content={question}
-        parentClassName="inline-flex  align-bottom min-h-fit min-w-fit"
+        parentClassName="inline-flex align-bottom min-h-fit min-w-fit"
         arrowPosition={arrowPosition}
         visibleOverride={visible}
       >
@@ -37,7 +36,7 @@ const HolocatQuestion = ({
       <a
         target="_blank"
         href={href}
-        className="flex max-w-[max-content]  cursor-pointer items-center
+        className="flex max-w-[max-content] cursor-pointer items-center
       gap-2 rounded-[100px] bg-black/20 p-2 transition ease-in-out
        hover:bg-black/40"
       >

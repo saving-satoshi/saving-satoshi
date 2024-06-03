@@ -51,9 +51,9 @@ export default function Hashing3({ lang }) {
           onMouseLeave={handleMouseLeave}
           href={t('chapter_two.hashing_three.tooltip_one.link')}
           target="_blank"
-          className="inline text-lg italic hover:underline md:text-xl"
+          className="inline text-lg italic underline md:text-xl"
         >
-          {t('chapter_two.hashing_three.tooltip_one.highlighted')}
+          {t('chapter_two.hashing_three.tooltip_one.highlighted')}{' '}
           <HolocatQuestion
             theme={chapters['chapter-2'].metadata.theme}
             inline

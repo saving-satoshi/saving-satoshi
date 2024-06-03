@@ -8,15 +8,14 @@ import Runner from './Runner'
 import { EditorConfig, LessonDirection, StoredLessonData } from 'types'
 import { Lesson, LessonTabs } from 'ui'
 import { useMediaQuery, useDynamicHeight, useTranslations } from 'hooks'
-import { useProgressContext } from 'contexts/ProgressContext'
 import { setData } from 'api/data'
 import { Base64String } from 'types/classes'
 import clsx from 'clsx'
 import useDebounce from 'hooks/useDebounce'
-import { useDataContext } from 'contexts/DataContext'
 import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
-import { accountAtom } from 'state/state'
+import { accountAtom, currentLanguageAtom } from 'state/state'
+import { useProgressFunctions } from 'state/ProgressFunctions'
 
 const tabData = [
   {
@@ -67,9 +66,9 @@ export default function ScriptingChallenge({
   loadingSavedCode?: boolean
 }) {
   const t = useTranslations(lang)
-  const { saveProgress, saveProgressLocal } = useProgressContext()
+  const { saveProgress, saveProgressLocal } = useProgressFunctions()
   const [account] = useAtom(accountAtom)
-  const { currentLanguage, setCurrentLanguage } = useDataContext()
+  const [currentLanguage, setCurrentLanguage] = useAtom(currentLanguageAtom)
   const [code, setCode] = useState(
     config.languages[getLanguageString(currentLanguage)].defaultCode?.toString()
   )
@@ -109,6 +108,12 @@ export default function ScriptingChallenge({
       setHiddenRange(config.languages[value].hiddenRange)
       setConstraints(config.languages[value].constraints)
     }
+  }
+
+  const handleRefresh = () => {
+    setCode(config.languages[language].defaultCode?.toString())
+    setHiddenRange(config.languages[language].hiddenRange)
+    setConstraints(config.languages[language].constraints)
   }
 
   const handleChange = (val) => {
@@ -213,6 +218,7 @@ export default function ScriptingChallenge({
             languages={config.languages}
             value={language}
             onChange={handleSetLanguage}
+            onRefresh={handleRefresh}
           />
           <div className={clsx({ 'pointer-events-none': challengeSuccess })}>
             <Editor

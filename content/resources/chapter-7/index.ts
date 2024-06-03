@@ -1,7 +1,7 @@
 import * as MempoolTransactionResources from './mempool-transaction'
 
-const Chapter6 = {
+const Chapter7 = {
   'mempool-transaction': MempoolTransactionResources,
 }
 
-export default Chapter6
+export default Chapter7

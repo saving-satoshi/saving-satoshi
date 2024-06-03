@@ -1,36 +1,13 @@
-'use client'
-
-import React, { createContext, useContext, useEffect, useState } from 'react'
-import { ProgressContextType } from 'types'
+import { useAtom, useSetAtom } from 'jotai'
+import { progressAtom, isLoadingProgressAtom } from './state'
 import { getProgress, setProgress } from 'api/progress'
 import { getProgressLocal, setProgressLocal } from 'api/local'
 import { keys } from 'lib/progress'
-import { useAtom } from 'jotai'
-import { accountAtom } from 'state/state'
 
-export const defaultProgressContext = {
-  progress: keys[0],
-  isLoading: true,
-  saveProgress: (key: string) => Promise.resolve(),
-  saveProgressLocal: (key: string) => Promise.resolve(),
-}
+export const useProgressFunctions = () => {
+  const [accountProgress, setAccountProgress] = useAtom(progressAtom)
+  const setIsLoading = useSetAtom(isLoadingProgressAtom)
 
-export const ProgressContext = createContext<ProgressContextType>(
-  defaultProgressContext
-)
-
-export const useProgressContext = () => useContext(ProgressContext)
-
-export default function ProgressProvider({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const [account] = useAtom(accountAtom)
-  const [accountProgress, setAccountProgress] = useState<string>(
-    defaultProgressContext.progress
-  )
-  const [isLoading, setIsLoading] = useState(true)
   const init = async () => {
     try {
       setIsLoading(true)
@@ -62,11 +39,25 @@ export default function ProgressProvider({
 
   const saveProgress = async (key: string) => {
     const progress = await getProgress()
-    if (keys.indexOf(progress) < keys.indexOf(key)) {
+    const localProgress = await getProgressLocal()
+
+    // Determine the furthest progress
+    const currentProgressIndex = keys.indexOf(progress)
+    const localProgressIndex = keys.indexOf(localProgress)
+    const providedKeyIndex = keys.indexOf(key)
+
+    const furthestProgressIndex = Math.max(
+      currentProgressIndex,
+      localProgressIndex,
+      providedKeyIndex
+    )
+    const furthestProgressKey = keys[furthestProgressIndex]
+
+    if (currentProgressIndex < furthestProgressIndex) {
       try {
         setIsLoading(true)
-        setAccountProgress(key)
-        await setProgress(key)
+        await setProgress(furthestProgressKey)
+        setAccountProgress(furthestProgressKey)
       } catch (ex) {
         console.error(ex)
       } finally {
@@ -80,8 +71,8 @@ export default function ProgressProvider({
     if (keys.indexOf(progress) < keys.indexOf(key)) {
       try {
         setIsLoading(true)
-        setAccountProgress(key)
         await setProgressLocal(key)
+        setAccountProgress(key)
       } catch (ex) {
         console.error(ex)
       } finally {
@@ -90,24 +81,12 @@ export default function ProgressProvider({
     }
   }
 
-  useEffect(() => {
-    if (account) {
-      init()
-    } else {
-      initLocal()
-    }
-  }, [account])
-
-  return (
-    <ProgressContext.Provider
-      value={{
-        progress: accountProgress ?? keys[0],
-        saveProgress,
-        saveProgressLocal,
-        isLoading,
-      }}
-    >
-      {children}
-    </ProgressContext.Provider>
-  )
+  return {
+    init,
+    initLocal,
+    saveProgress,
+    saveProgressLocal,
+    accountProgress,
+    isLoading: isLoadingProgressAtom,
+  }
 }

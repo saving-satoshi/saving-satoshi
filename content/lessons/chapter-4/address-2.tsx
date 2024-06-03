@@ -8,7 +8,8 @@ import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
 import { getLanguageString } from 'lib/SavedCode'
-import { useDataContext } from 'contexts/DataContext'
+import { useAtom } from 'jotai'
+import { currentLanguageAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_four.address_two.title',
@@ -18,7 +19,7 @@ export const metadata = {
 
 export default function Address2({ lang }) {
   const t = useTranslations(lang)
-  const { currentLanguage } = useDataContext()
+  const [currentLanguage] = useAtom(currentLanguageAtom)
   const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
   const dataObject = prevData?.data ? prevData?.data : ''
   const [isLoading, setIsLoading] = useState(true)
@@ -164,6 +165,9 @@ def hash_compressed(compressed_public_key):
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t(`chapter_four.address_two.paragraph_three`)}
+          </Text>
+          <Text className="preline mt-4 font-nunito text-xl italic text-white">
+            {t(`chapter_four.address_two.paragraph_four`)}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>

@@ -1,86 +1,128 @@
 'use client'
 
-import { useProceed, useTranslations } from 'hooks'
-import { ChapterIntro, CodeExample, HolocatQuestion } from 'ui'
-
-import { Button } from 'shared'
-import { useEffect, useState } from 'react'
-import { getData } from 'api/data'
-import { Data } from 'types'
-import { chapters } from 'content/chapters'
+import { ScriptingChallenge, LessonInfo, CodeExample } from 'ui'
+import { EditorConfig } from 'types'
+import { useTranslations } from 'hooks'
+import { Text } from 'ui'
+import { useState } from 'react'
+import { getLessonKey } from 'lib/progress'
+import { getLanguageString } from 'lib/SavedCode'
+import { useAtom } from 'jotai'
+import { accountAtom, currentLanguageAtom } from 'state/state'
 
 export const metadata = {
-  title: 'chapter_four.address_one.title',
+  title: 'chapter_eight.building_blocks_four.title',
+  navigation_title: 'chapter_eight.building_blocks_four.nav_title',
   key: 'CH8BBK4',
 }
 
 export default function BuildingBlocks4({ lang }) {
-  const proceed = useProceed()
   const t = useTranslations(lang)
+  const [account] = useAtom(accountAtom)
+  const [currentLanguage] = useAtom(currentLanguageAtom)
+  const [privateKey, setPrivateKey] = useState('')
 
-  const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
-  const dataObject = prevData?.data ? prevData?.data : ''
-  const [isLoading, setIsLoading] = useState(true)
-  const [tooltipVisible, setTooltipVisible] = useState(false)
-
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
+  if (account && !privateKey) {
+    setPrivateKey(account?.private_key.toString())
   }
 
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
+  const javascript = {
+    program: `
+console.log(getBlockHeight(CODE_CHALLENGE_2_HEIGHT))
+console.log("KILL")`,
+    defaultFunction: {
+      name: 'getBlockHeight',
+      args: ['height'],
+    },
+    defaultCode: `const Bitcoinrpc = require('@0tuedon/bitcoin_rpcjs')
+const Bitcoin = new Bitcoinrpc()
+
+const CODE_CHALLENGE_2_HEIGHT = 6929996;
+let txCount = Infinity;
+
+const getBlockHeight = (height) => {
+
+
+}
+`,
+    validate: async (answer: string) => {
+      if (
+        answer ===
+        'b09090d61e5eea3e23e9b428de2d9660c8b5e345ec3bb39eea8df9bc80813171'
+      ) {
+        return [true, 'Nicely Done ']
+      } else {
+        return [false, 'Incorrect']
+      }
+    },
   }
 
-  const getPrevLessonData = async () => {
-    const data = await getData('CH4PKY4')
-    if (data?.answer) {
-      setPrevData({
-        lesson_id: 'CH4PKY4',
-        data: data.answer,
-      })
-    }
+  const python = {
+    program: `
+print(get_block_height(CODE_CHALLENGE_2_HEIGHT))
+print("KILL")`,
+    defaultFunction: {
+      name: 'get_block_height',
+      args: ['height'],
+    },
+    defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
+Bitcoin = Bitcoin()
+
+CODE_CHALLENGE_2_HEIGHT = 6929996
+answer = None
+
+def get_block_height(height):
+  tx_count = float("inf")
+
+`,
+    validate: async (answer: string) => {
+      if (
+        answer ===
+        'b09090d61e5eea3e23e9b428de2d9660c8b5e345ec3bb39eea8df9bc80813171'
+      ) {
+        return [true, 'Nicely Done ']
+      } else {
+        return [false, 'Incorrect']
+      }
+    },
   }
 
-  useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
-  }, [])
+  const config: EditorConfig = {
+    defaultLanguage: 'javascript',
+    languages: {
+      javascript,
+      python,
+    },
+  }
+
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  const handleSelectLanguage = (language: string) => {
+    setLanguage(language)
+  }
 
   return (
-    !isLoading && (
-      <ChapterIntro
-        className="my-8"
-        heading={t('chapter_four.address_one.heading')}
-      >
-        <p className="mt-2 text-lg md:text-xl">
-          {t('chapter_four.address_one.paragraph_one')}
-        </p>
-        <CodeExample className="mt-4" code={dataObject} language="shell" />
-        <p className="mt-8 inline-block text-lg md:text-xl">
-          {t('chapter_four.address_one.paragraph_two')}
-          <a
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            href={t('chapter_four.address_one.tooltip_one.link')}
-            target="_blank"
-            className="inline text-lg italic hover:underline md:text-xl"
-          >
-            {t('chapter_four.address_one.tooltip_one.highlighted')}
-            <HolocatQuestion
-              theme={chapters['chapter-4'].metadata.theme}
-              inline
-              id="target-difficulty"
-              question={t('chapter_four.address_one.tooltip_one.question')}
-              href={t('chapter_four.address_one.tooltip_one.link')}
-              visible={tooltipVisible}
-            />
-          </a>
-          .
-        </p>
-
-        <Button onClick={proceed} classes="mt-10 max-md:w-full">
-          {t('shared.next')}
-        </Button>
-      </ChapterIntro>
-    )
+    <ScriptingChallenge
+      lang={lang}
+      config={config}
+      saveData
+      lessonKey={getLessonKey('chapter-8', 'building-blocks-4')}
+      successMessage={t('chapter_eight.building_blocks_four.success')}
+      onSelectLanguage={handleSelectLanguage}
+    >
+      <LessonInfo>
+        <Text className="font-nunito text-2xl font-bold text-white">
+          {t('chapter_eight.building_blocks_four.heading')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_four.paragraph_one')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_four.paragraph_two')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_eight.building_blocks_four.paragraph_three')}
+        </Text>
+      </LessonInfo>
+    </ScriptingChallenge>
   )
 }

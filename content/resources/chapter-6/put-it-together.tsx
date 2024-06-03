@@ -10,8 +10,9 @@ import { EditorConfig } from 'types'
 import { Text, ResourcePage, ToggleSwitch } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
-import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
+import { useAtom } from 'jotai'
+import { currentLanguageAtom } from 'state/state'
 
 const javascriptChallengeOne = {
   program: `console.log("KILL")`,
@@ -20,43 +21,56 @@ const javascriptChallengeOne = {
     args: [],
   },
   defaultCode: `  digest(input_index) {
-    const sighash = 1;
-
     const dsha256 = (data) => {
       return Hash('sha256').update(Hash('sha256').update(data).digest()).digest();
     };
 
+    // Start with an empty 4-byte Buffer
     let buf = Buffer.alloc(4);
+    // Write the transaction version in little endian
     buf.writeUInt32LE(this.version, 0);
 
+    // Create a temporary Buffer and write the serialized outpoints of every input
     let outpoints = Buffer.alloc(this.inputs.length * 36);
     for (let i = 0; i < this.inputs.length; i++)
       this.inputs[i].outpoint.serialize().copy(outpoints, i * 36);
+    // double-SHA256 the serialized outpoints and append that to the main Buffer
     buf = Buffer.concat([buf, dsha256(outpoints)]);
 
+    // Create a temporary Buffer and write the sequences of every input in little endian
     const sequences = Buffer.alloc(4 * this.inputs.length);
     for (let i = 0; i < this.inputs.length; i++)
       sequences.writeUInt32LE(this.inputs[i].sequence, i * 4);
+    // double-SHA256 the serialized sequences and append that to the main Buffer
     buf = Buffer.concat([buf, dsha256(sequences)]);
 
+    // Serialize the outpoint of the one input we are going to sign and append it to the main Buffer
     buf = Buffer.concat([buf, this.inputs[input_index].outpoint.serialize()]);
+    // Serialize the scriptcode of the one input we are going to sign and append it to the main Buffer
     buf = Buffer.concat([buf, this.inputs[input_index].scriptcode]);
 
+    // Append the value of the input we are going to spend in little endian to the main Buffer
     const val_and_seq = Buffer.alloc(12);
     val_and_seq.writeBigInt64LE(BigInt(this.inputs[input_index].value), 0);
+    // Append the sequence of the input we are going to spend in little endian to the main Buffer
     val_and_seq.writeUInt32LE(this.inputs[input_index].sequence, 8);
     buf = Buffer.concat([buf, val_and_seq]);
 
+    // Create a temporary Buffer and write all the serialized outputs of this transaction
     let outputs = Buffer.alloc(0);
     for (const output of this.outputs)
       outputs = Buffer.concat([outputs, output.serialize()]);
+    // double-SHA256 the serialized outputs and append that to the main Buffer
     buf = Buffer.concat([buf, dsha256(outputs)]);
 
+    // Append the transaction locktime in little endian to the main Buffer
     const locktime_and_sighash = Buffer.alloc(8);
     locktime_and_sighash.writeUInt32LE(this.locktime, 0);
-    locktime_and_sighash.writeUInt32LE(sighash, 4);
+    // Append the sighash flags in little endian to the main Buffer
+    locktime_and_sighash.writeUInt32LE(1, 4);
     buf = Buffer.concat([buf, locktime_and_sighash]);
 
+    // Finally, return the double-SHA256 of the entire main Buffer
     return dsha256(buf);
   }`,
   validate: async (answer) => {
@@ -77,36 +91,51 @@ const pythonChallengeOne = {
     args: [],
   },
   defaultCode: `    def digest(self, input_index):
-        sighash = 1
-
         def dsha256(data):
             return hashlib.new('sha256', hashlib.new('sha256', data).digest()).digest()
 
+        # Start with an empty bytes object
         s = b""
+        # Append the transaction version in little endian
         s += pack("<I", self.version)
 
+        # Create a temporary bytes object and write the serialized outpoints of every input
         outpoints = b""
         for inp in self.inputs:
             outpoints += inp.outpoint.serialize()
+        # double-SHA256 the serialized outpoints and append that to the main buffer
         s += dsha256(outpoints)
 
+        # Create a temporary bytes object and write the sequences of every input in little endian
         sequences = b""
         for inp in self.inputs:
             sequences += pack("<I", inp.sequence)
+        # double-SHA256 the serialized sequences and append that to the main buffer
         s += dsha256(sequences)
 
+        # Serialize the outpoint of the one input we are going to sign and add it to the main buffer
         s += self.inputs[input_index].outpoint.serialize()
+        # Serialize the scriptcode of the one input we are going to sign and add it to the main buffer 
         s += self.inputs[input_index].scriptcode
+
+        # Append the value of the input we are going to spend in little endian to the main buffer 
         s += pack("<q", self.inputs[input_index].value)
+        # Append the sequence of the input we are going to spend in little endian to the main buffer
         s += pack("<I", self.inputs[input_index].sequence)
 
+        # Create a temporary bytes object and write all the serialized outputs of this transaction
         outputs = b""
         for out in self.outputs:
             outputs += out.serialize()
+        # double-SHA256 the serialized outputs and append that to the main buffer
         s += dsha256(outputs)
 
+        # Append the transaction locktime in little endian to the main buffer
         s += pack("<I", self.locktime)
-        s += pack("<I", sighash)
+        # Append the sighash flags in little endian to the main buffer
+        s += pack("<I", 1)
+
+        # Finally, return the double-SHA256 of the entire main buffer
         return dsha256(s)`,
   validate: async (answer) => {
     return [true, undefined]
@@ -151,14 +180,20 @@ const javascriptChallengeTwo = {
 
       return x1;
     }
-    // k = random integer in [1, n-1]
-    // R = G * k
-    // r = x(R) mod n
-    // s = (r * a + m) / k mod n
-    // Extra Bitcoin rule from BIP 146
-    // https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#user-content-LOW_S
-    //   s = -s mod n, if s > n / 2
-    // return (r, s)
+    // The math:
+    //   k = random integer in [1, n-1]
+    //   R = G * k
+    //   r = x(R) mod n
+    //   s = (r * a + m) / k mod n
+    //   Extra Bitcoin rule from BIP 146:
+    //     if s > n / 2 then s = n - s mod n
+    //   return (r, s)
+    // Hints:
+    //   n = the order of the curve secp256k1.ORDER
+    //   a = the private key    
+    //   m = the message value returned by digest()
+    //   x(R) = the x-coordinate of the point R
+    //   Use the invert() function above to turn division into multiplication!
     const msg = this.digest(index);
     const k = BigInt(\`0x\${randomBytes(32).toString('hex')}\`);
     // Extremeley unlikely to fail, this is lazy but ok
@@ -168,7 +203,7 @@ const javascriptChallengeTwo = {
     const r = R.x.val % secp256k1.ORDER;
     let s = ((r * key) + BigInt(\`0x\${msg.toString('hex')}\`)) * k_inverted % secp256k1.ORDER;
 
-    if (s > (secp256k1.ORDER / 2n))
+    if (s > (secp256k1.ORDER / BigInt(2)))
       s = secp256k1.ORDER - s;
     return [r, s];
   }
@@ -222,15 +257,23 @@ const pythonChallengeTwo = {
     args: [],
   },
   defaultCode: `    def compute_input_signature(self, index, key):
-        # k = random integer in [1, n-1]
-        # R = G * k
-        # r = x(R) mod n
-        # s = (r * a + m) / k mod n
-        # Extra Bitcoin rule from BIP 146
-        # https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#user-content-LOW_S
-        #   s = -s mod n, if s > n / 2
+        # The math:
+        #   k = random integer in [1, n-1]
+        #   R = G * k
+        #   r = x(R) mod n
+        #   s = (r * a + m) / k mod n
+        #   Extra Bitcoin rule from BIP 146:
+        #     if s > n / 2 then s = n - s mod n
         # return (r, s)
+        # Hints:
+        #   n = the order of the curve secp256k1.GE.ORDER
+        #   a = the private key
+        #   m = the message value returned by digest()
+        #   x(R) = the x-coordinate of the point R
+        #   Use the built-in pow() function to turn division into multiplication!
+
         assert isinstance(key, int)
+
         msg = self.digest(index)
         k = randrange(1, secp256k1.GE.ORDER)
         k_inverted = pow(k, -1, secp256k1.GE.ORDER)
@@ -239,6 +282,7 @@ const pythonChallengeTwo = {
         s = ((r * key) + int.from_bytes(msg)) * k_inverted % secp256k1.GE.ORDER
         if s > secp256k1.GE.ORDER // 2:
             s = secp256k1.GE.ORDER - s
+
         return (r, s)
 
     def sign_input(self, index, priv, pub, sighash=1):
@@ -291,7 +335,10 @@ const javascriptChallengeThree = {
     locktime.writeUInt32LE(this.locktime);
 
     return Buffer.concat([buf, locktime]);
-  }`,
+  }
+  
+  // Update the change amount to account for miner fees
+  const out1 = Output.from_options(addr, 60999000);`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -322,7 +369,10 @@ const pythonChallengeThree = {
         for wit in self.witnesses:
             r += wit.serialize()
         r += pack("<I", self.locktime)
-        return r`,
+        return r
+
+    # Update the change amount to account for miner fees
+    out1 = Output.from_options(addr, 60999000)`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -360,7 +410,7 @@ const configThree: EditorConfig = {
 
 export default function PutItTogetherResources({ lang }) {
   const t = useTranslations(lang)
-  const { currentLanguage } = useDataContext()
+  const [currentLanguage] = useAtom(currentLanguageAtom)
   const initialStateCodeOne =
     configOne.languages[getLanguageString(currentLanguage)].defaultCode
   const [codeOne, setCodeOne] = useState<string>(initialStateCodeOne as string)
@@ -511,7 +561,7 @@ export default function PutItTogetherResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`365px`}
+                  height={`425px`}
                   value={codeThree}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

@@ -151,7 +151,7 @@ console.log('KILL')
 
 class Transaction {
   constructor() {
-    this.version=2;
+    this.version = 2;
     this.flags = Buffer.from('0001', 'hex');
     this.inputs = [];
     this.outputs = [];
@@ -159,9 +159,38 @@ class Transaction {
     this.locktime = 0;
   }
 
+  // COMPLETE THIS FUNCTION
   digest(input_index) {
-    const sighash = 1;
-    // YOUR CODE HERE
+    // Start with an empty 4-byte Buffer
+
+    // Write the transaction version in little endian
+
+    // Create a temporary Buffer and write the serialized outpoints of every input
+
+    // double-SHA256 the serialized outpoints and append that to the main Buffer
+
+    // Create a temporary Buffer and write the sequences of every input in little endian
+
+    // double-SHA256 the serialized sequences and append that to the main Buffer
+
+    // Serialize the outpoint of the one input we are going to sign and append it to the main Buffer
+
+    // Serialize the scriptcode of the one input we are going to sign and append it to the main Buffer
+
+    // Append the value of the input we are going to spend in little endian to the main Buffer
+
+    // Append the sequence of the input we are going to spend in little endian to the main Buffer
+
+    // Create a temporary Buffer and write all the serialized outputs of this transaction
+
+    // double-SHA256 the serialized outputs and append that to the main Buffer
+
+    // Append the transaction locktime in little endian to the main Buffer
+
+    // Append the sighash flags in little endian to the main Buffer
+
+    // Finally, return the double-SHA256 of the entire main Buffer
+
   }
 }
 `,
@@ -292,9 +321,38 @@ class Transaction:
         self.witnesses = []
         self.locktime = 0
 
+    # COMPLETE THIS FUNCTION
     def digest(self, input_index: int):
-        sighash = 1
-        # YOUR CODE HERE
+        # Start with an empty bytes object
+
+        # Append the transaction version in little endian
+
+        # Create a temporary bytes object and write the serialized outpoints of every input
+
+        # double-SHA256 the serialized outpoints and append that to the main buffer
+
+        # Create a temporary bytes object and write the sequences of every input in little endian
+
+        # double-SHA256 the serialized sequences and append that to the main buffer
+
+        # Serialize the outpoint of the one input we are going to sign and add it to the main buffer
+
+        # Serialize the scriptcode of the one input we are going to sign and add it to the main buffer 
+
+        # Append the value of the input we are going to spend in little endian to the main buffer 
+
+        # Append the sequence of the input we are going to spend in little endian to the main buffer
+
+        # Create a temporary bytes object and write all the serialized outputs of this transaction
+
+        # double-SHA256 the serialized outputs and append that to the main buffer
+
+        # Append the transaction locktime in little endian to the main buffer
+
+        # Append the sighash flags in little endian to the main buffer
+
+        # Finally, return the double-SHA256 of the entire main buffer
+
 `,
     validate: async (answer: string) => {
       if (answer) {
@@ -348,6 +406,9 @@ class Transaction:
             </li>
             <li className="text-lg md:text-xl">
               {t('chapter_six.put_it_together_one.list_three')}
+            </li>
+            <li className="text-lg md:text-xl">
+              {t('chapter_six.put_it_together_one.list_four')}
             </li>
           </ul>
           <Text className="mt-4 text-lg md:text-xl">

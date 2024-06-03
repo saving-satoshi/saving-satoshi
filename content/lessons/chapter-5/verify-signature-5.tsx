@@ -1,10 +1,11 @@
 'use client'
 
-import { useDataContext } from 'contexts/DataContext'
 import { useMediaQuery, useTranslations } from 'hooks'
+import { useAtom } from 'jotai'
 import { getLessonKey } from 'lib/progress'
 import { getLanguageString } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
+import { currentLanguageAtom } from 'state/state'
 import { EditorConfig } from 'types'
 import { LessonInfo, ScriptingChallenge, Text } from 'ui'
 
@@ -82,10 +83,17 @@ function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
   }
 
   // Implement ECDSA and return a boolean
-  // u1 = m / s mod n
-  // u2 = r / s mod n
-  // R = G * u1 + A * u2
-  // r == x(R) mod n
+  // The Math:
+  //   u1 = m / s mod n
+  //   u2 = r / s mod n
+  //   R = G * u1 + A * u2
+  //   r == x(R) mod n
+  // Hints:
+  //   n = the order of the curve secp256k1.ORDER
+  //   s, r = sig_s and sig_r, the two components of an ECDSA signature
+  //   m = msg, the message to sign
+  //   A = key, a key point constructed from pubkey_x and pubkey_y
+  //   Use the invert() function above turn division into multiplication!
   // YOUR CODE HERE!
 
 }
@@ -145,10 +153,17 @@ def verify(sig_r, sig_s, pubkey_x, pubkey_y, msg):
     	return False
 
     # Implement ECDSA and return a boolean
+    # The Math:
     #   u1 = m / s mod n
     #   u2 = r / s mod n
     #   R = G * u1 + A * u2
     #   r == x(R) mod n
+    # Hints:
+    #   n = the order of the curve GE.ORDER
+    #   s, r = sig_s and sig_r, the two components of an ECDSA signature
+    #   m = msg, the message to sign
+    #   A = key, a key point constructed from pubkey_x and pubkey_y
+    #   Use the python's built-in pow() function to invert s and turn division into multiplication!
     # YOUR CODE HERE!
 `,
   validate: async (answer) => {
@@ -170,7 +185,7 @@ const config: EditorConfig = {
 
 export default function VerifySignature5({ lang }) {
   const t = useTranslations(lang)
-  const { currentLanguage } = useDataContext()
+  const [currentLanguage] = useAtom(currentLanguageAtom)
   const [objectPosition, setObjectPosition] = useState<string | undefined>()
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 

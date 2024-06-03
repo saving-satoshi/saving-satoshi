@@ -7,7 +7,7 @@ export const metadata = {
   title: 'chapter_two.outro_one.title',
   navigation_title: 'chapter_two.outro_one.nav_title',
   image: '/assets/images/chapter-2-finish.jpg',
-  theme: 'bg-transparent/20',
+  theme: 'bg-transparent/40',
   secondaryTheme: 'bg-[#362042]',
   gradientTheme: 'from-[#362042] via-[#362042BF]',
   key: 'CH2OUT1',

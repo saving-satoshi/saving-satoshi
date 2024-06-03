@@ -1,12 +1,7 @@
 import 'styles/globals.css'
 import Fonts from 'components/Fonts'
-import { ProgressProvider } from 'contexts'
 import Layout from 'components/Layout'
 import dynamic from 'next/dynamic'
-
-const DataProvider = dynamic(() => import('contexts/DataContext'), {
-  ssr: false, // This is necessary since the data context utilises local storage
-})
 
 export default function RootLayout({
   children,
@@ -102,11 +97,7 @@ export default function RootLayout({
       </head>
       <body className="font-cbrush">
         <Fonts />
-        <DataProvider>
-          <ProgressProvider>
-            <Layout>{children}</Layout>
-          </ProgressProvider>
-        </DataProvider>
+        <Layout>{children}</Layout>
       </body>
     </html>
   )

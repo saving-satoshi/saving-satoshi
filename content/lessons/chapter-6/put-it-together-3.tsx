@@ -192,6 +192,7 @@ console.log("KILL")`,
 const tx = new Transaction();
 const in0 = Input.from_output(txid, vout, value, scriptcode);
 const out0 = Output.from_options('bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj', 100000000);
+// The output below is all the remaining change from this transaction, are you sure you want to send yourself all the change?
 const out1 = Output.from_options(addr, 61000000);
 tx.inputs.push(in0);
 tx.outputs.push(out0);
@@ -250,6 +251,7 @@ ${combinedCode}
 tx = Transaction()
 in0 = Input.from_output(txid, vout, value, scriptcode)
 out0 = Output.from_options("bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj", 100000000)
+# The output below is all the remaining change from this transaction, are you sure you want to send yourself all the change?
 out1 = Output.from_options(addr, 61000000)
 tx.inputs.append(in0)
 tx.outputs.append(out0)

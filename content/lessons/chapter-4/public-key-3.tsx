@@ -6,10 +6,9 @@ import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
 import { getLessonKey } from 'lib/progress'
-import { useDataContext } from 'contexts/DataContext'
 import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
-import { accountAtom } from 'state/state'
+import { accountAtom, currentLanguageAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_four.public_key_three.title',
@@ -20,7 +19,7 @@ export const metadata = {
 export default function PublicKey3({ lang }) {
   const t = useTranslations(lang)
   const [account] = useAtom(accountAtom)
-  const { currentLanguage } = useDataContext()
+  const [currentLanguage] = useAtom(currentLanguageAtom)
   const [privateKey, setPrivateKey] = useState('')
 
   if (account && !privateKey) {
@@ -158,8 +157,26 @@ def privatekey_to_publickey(private_key):
         </Text>
         <CodeExample className="mt-4" code={`P = k * G`} language="shell" />
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_four.public_key_three.paragraph_three`)}
+          {t(`chapter_four.public_key_three.${language}.paragraph_three`)}
         </Text>
+        <Text className="font-nunito text-xl italic text-white">
+          {t('chapter_four.public_key_three.paragraph_four')}
+        </Text>
+        <CodeExample
+          className="mt-4"
+          code={`# Python
+# Hex string to integer
+integer = int(hex_string, 16)`}
+          language="python"
+        />
+        <CodeExample
+          className="mt-4"
+          code={`// JavaScript
+// Hex string to integer
+const integer = BigInt(\`0x\${hexString}\`)
+`}
+          language="javascript"
+        />
       </LessonInfo>
     </ScriptingChallenge>
   )

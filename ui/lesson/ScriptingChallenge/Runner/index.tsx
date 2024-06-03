@@ -82,6 +82,7 @@ export default function Runner({
 
   const [loading, setLoading] = useState<boolean>(false)
   const [isRunning, setIsRunning] = useState<boolean>(false)
+  const hasResult = useRef(false)
   const isActive = activeView !== LessonView.Info
   const [isTryAgain, setIsTryAgain] = useState<boolean | null>(null)
   const [hasherState, setHasherState] = useState<HasherState>(
@@ -109,7 +110,14 @@ export default function Runner({
 
   useDynamicHeight([activeView])
 
+  const handleRunKeyPress = (event) => {
+    if ((event.altKey || event.metaKey) && event.key === 'Enter') {
+      handleRun()
+    }
+  }
+
   const handleRun = async () => {
+    hasResult.current = false
     try {
       success = false
       setState(State.Building)
@@ -119,6 +127,7 @@ export default function Runner({
 
       sendTerminal('clear')
       sendTerminal('print', t('runner.result'))
+      sendTerminal('running', t('runner.computing'))
 
       if (ws) {
         ws.close()
@@ -138,6 +147,8 @@ export default function Runner({
           case 'error': {
             const error = payload.message.trim()
             const lines = error.split('\n')
+            sendTerminal('clear')
+            sendTerminal('print', t('runner.result'))
             lines.forEach((line) =>
               sendTerminal('error', line.replace(' ', '&nbsp;'))
             )
@@ -155,6 +166,11 @@ export default function Runner({
           }
           case 'output': {
             payload = payload.trim()
+            if (hasResult.current === false) {
+              sendTerminal('clear')
+              sendTerminal('print', t('runner.result'))
+              hasResult.current = true
+            }
             sendTerminal('print', payload)
 
             const [res, err] = await onValidate({
@@ -255,6 +271,14 @@ export default function Runner({
       window.removeEventListener('message', handleMessage)
     }
   }, [terminalRef])
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleRunKeyPress)
+
+    return () => {
+      document.removeEventListener('keydown', handleRunKeyPress)
+    }
+  }, [])
 
   return (
     <>
