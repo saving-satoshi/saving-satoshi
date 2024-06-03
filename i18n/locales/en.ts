@@ -874,6 +874,10 @@ const translations = {
         discrete_log_heading: 'Discrete logarithm',
         discrete_log_paragraph:
           'A mathematical system where you can, for example, multiply but cannot divide. A simple metaphor for this is looking at a clock. Three hours past 11 o’clock is 2 o’clock. So we could say “11+3=2”. However if wanted to perform “2-x=11” and solve for x, you would have infinite possible answers (3, 15, 27, 39...). More on <Link href="https://en.wikipedia.org/wiki/Discrete_logarithm" className="underline">wikipedia</Link>.',
+        tip_one:
+          '<span className="font-bold">Calculate the public key:</span> Multiplication with elliptic curve points is not the same as the kind of multiplication you are used to, the one with regular numbers. So how do you perform multiplication? Notice that the generator point, <span className="p-1 font-mono bg-[#00000033] m-1">G</span> is of the type <span className="p-1 font-mono bg-[#00000033] m-1">secp256k1.GE</span>. Have a look at that class to see what methods you can invoke on it.',
+        tip_two:
+          '<span className="font-bold">Calculate the public key:</span> While the private key is accepted in hex format, it needs to be converted to a number (BigInt if you’re using JS) before multiplying with the generator point.',
       },
       address: {
         hash_algo_heading: 'SHA-256, RIPEMD-160',
