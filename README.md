@@ -46,11 +46,17 @@ To run this project locally:
 6. Run `yarn start` or `yarn dev` to spin up the development environment
 7. Open `http://localhost:3000` in your browser to access the site
 
+### Linting
+
+Before you write any git commit messages, there is a [Husky](https://typicode.github.io/husky/) hook that auto formats all staged files. If you would like to run the auto formatter yourself, before any files are staged, you can use the `yarn prettier:check` and/or the `yarn prettier` command(s).
+
+The Husky hook will execute when you add a commit message and the changes will be included in the commit.
+
 ## Roadmap
 
 This project was started during the [Bitcoin Designathon](http://event.bitcoin.design) in October 2022. It then continued with the [bolt.fun Legends of Lightning Tournament](https://makers.bolt.fun/project/saving-satoshi).
 
-Our first goal is to launch a V1 that provides a great basic experience around 2 chapters with lessons. Then we'd like to get feedback from the community to ensure that we are building something that resonates. Ideally, we'd then like to make necessary adjustments and open up contributions to everyone.
+Our first goal is to launch a V1 that provides a great basic experience. Then we'd like to get feedback from the community to ensure that we are building something that resonates. Ideally, we'd then like to make necessary adjustments and open up contributions to everyone.
 
 Some ideas we have for the future
 
@@ -67,4 +73,4 @@ Thank you so much for your interest in the project. We'd love to hear your feedb
 
 ## License
 
-Saving Satoshi is released under the terms of the MIT license. See [LICENSE](https://github.com/ecurrencyhodler/saving-satoshi/blob/master/license) for more information or see https://opensource.org/licenses/MIT.
+Saving Satoshi is released under the terms of the MIT license. See [LICENSE](https://github.com/saving-satoshi/saving-satoshi/blob/master/license) for more information or see https://opensource.org/licenses/MIT.
