@@ -809,11 +809,14 @@ const translations = {
       nav_title: 'Hash the compressed public key',
       paragraph_one:
         'Do you remember the hashing challenge? It turns out you can generate the simplest type of bitcoin address by hashing your compressed public key. Bitcoin uses two different hashing algorithms for this: SHA-256 and RIPEMD-160.',
-      paragraph_two:
-        'The first step is to perform a SHA-256 hash on your compressed public key. Then perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be 20 bytes encoded as a hex string.',
+      paragraph_two: 'Steps:',
       paragraph_three:
-        'Complete a function that accepts a 33-byte compressed public key as a hex string and returns a 20-byte public key hash as a hex string.',
+        '<span className="indent-48">1. Perform a SHA-256 hash on your compressed public key.</span>',
       paragraph_four:
+        '<span className="indent-48">2. Perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be 20 bytes encoded as a hex string.</span>',
+      paragraph_five:
+        'Complete a function that accepts a 33-byte compressed public key as a hex string and returns a 20-byte public key hash as a hex string.',
+      paragraph_six:
         'Here is the documentation for the hashing libraries we imported for you:\n' +
         '<Link href="https://nodejs.org/api/crypto.html#class-hash" target="_blank" className="underline">JavaScript: crypto</Link>\n' +
         '<Link href="https://docs.python.org/3/library/hashlib.html#usage" target="_blank" className="underline">Python: hashlib</Link>',
