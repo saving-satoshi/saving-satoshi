@@ -5,6 +5,7 @@ import { ChapterEnd } from 'ui'
 
 export const metadata = {
   title: 'chapter_eight.outro_one.title',
+  navigation_title: 'chapter_eight.outro_one.nav_title',
   image: '/assets/images/chapter-8-outro.jpg',
   theme: 'bg-transparent/40',
   secondaryTheme: 'bg-[#19202D]',

@@ -1813,6 +1813,7 @@ const translations = {
     },
     outro_one: {
       title: 'Outro',
+      nav_title: 'Chapter complete',
       heading: "We're doing it live!",
       paragraph_one:
         "You found the longest chain and proved it to everyone! You are one step closer to discrediting Vanderpoole, needless to say he didn't answer anymore of Ms. Chunk's questions.",
