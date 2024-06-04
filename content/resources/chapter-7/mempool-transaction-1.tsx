@@ -14,75 +14,90 @@ import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { currentLanguageAtom } from 'state/state'
 
-const javascriptChallenge = {
+const javascript = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'verify',
-    args: [],
+    name: 'findHash',
+    args: ['nonce'],
   },
-  defaultCode: `class Output {
-  constructor() {
-    this.value = 0;
-    this.witness_version = 0;
-    this.witness_data = Buffer.alloc(0);
+  defaultCode: [
+    `function assembleBlock(mempool) {
+  // This block constructor opportunistically includes transactions with unconfirmed parents.
+  // If a transaction has unconfirmed parents, but those parents are all already included in the block, then it is valid for inclusion.
+  const block = [];
+  let block_weight = 0;
+  for (const tx of mempool) {
+      tx.feerate = parseFloat(tx.fee) / parseFloat(tx.weight);
   }
-
-  static from_options(addr, value) {
-    assert(Number.isInteger(value));
-    const self = new this();
-    const {version, program} = bech32.decode('bc', addr);
-    self.witness_version = version;
-    self.witness_data = Buffer.from(program);
-    self.value = value;
-    return self;
+  // Construct dictionary for fast lookup
+  const txs = new Map([...mempool.map(tx => [tx.txid, tx])].sort((a, b) => b[1].feerate - a[1].feerate));
+  while (true) {
+    let added = false;
+    for (const tx of txs.values()) {
+      // Opportunistically include txs with unconfirmed parents if their parents
+      if (tx.parents.some(parent_tx => txs.has(parent_tx))) {
+        continue;
+      }
+      if (block_weight + tx.weight > MAX_BLOCK_WEIGHT) {
+        // Transaction won't fit in block
+        continue;
+      }
+      block.push(txs.get(tx.txid).txid);
+      block_weight += tx.weight;
+      txs.delete(tx.txid);
+      added = true;
+      break;
+    }
+    if (!added) {
+      // Couldn't add any more transactions.
+      break;
+    }
   }
-
-  serialize() {
-    const buf = Buffer.alloc(11);
-    buf.writeBigInt64LE(BigInt(this.value), 0);
-    buf.writeUInt8(this.witness_data.length + 2, 8);
-    buf.writeUInt8(this.witness_version, 9);
-    buf.writeUInt8(this.witness_data.length, 10);
-    return Buffer.concat([buf, this.witness_data]);
-  }
+  return block;
 }`,
-  validate: async () => {
+  ],
+  validate: async (answer) => {
     return [true, undefined]
   },
   constraints: [],
 }
 
-const pythonChallenge = {
+const python = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'verify',
-    args: [],
+    name: 'find_hash',
+    args: ['nonce'],
   },
-  defaultCode: `class Output:
-    def __init__(self):
-        self.value = 0
-        self.witness_version = 0
-        self.witness_data = b""
+  defaultCode: [
+    `def assemble_block(mempool):
+    """This block constructor opportunistically includes transactions with
+    unconfirmed parents.
 
-    @classmethod
-    def from_options(cls, addr, value):
-        assert isinstance(value, int)
-        self = cls()
-        (ver, data) = bech32.decode("bc", addr)
-        self.witness_version = ver
-        self.witness_data = bytes(data)
-        self.value = value
-        return self
-
-    def serialize(self):
-        r = b""
-        r += pack("<q", self.value)
-        r += pack("<B", len(self.witness_data) + 2)
-        r += pack("<B", self.witness_version)
-        r += pack("<B", len(self.witness_data))
-        r += self.witness_data
-        return r`,
-  validate: async () => {
+    If a transaction has unconfirmed parents, but those parents are all already
+    included in the block, then it is valid for inclusion."""
+    block = []
+    block_weight = 0
+    for tx in mempool:
+        tx.feerate = float(tx.fee) / float(tx.weight)
+    # Construct dictionary for fast lookup
+    txs = OrderedDict(sorted([(tx.txid, tx) for tx in mempool], key=lambda x: x[1].feerate, reverse=True))
+    while True:
+        for tx in txs.values():
+            # Opportunistically include txs with unconfirmed parents if their parents
+            if any([parent_tx in txs for parent_tx in tx.parents]):
+                continue
+            if block_weight + tx.weight > MAX_BLOCK_WEIGHT:
+                # Transaction won't fit in block
+                continue
+            block.append(txs.pop(tx.txid).txid)
+            block_weight += tx.weight
+            break
+        else:
+            # Couldn't add any more transactions.
+            break
+    return block`,
+  ],
+  validate: async (answer) => {
     return [true, undefined]
   },
   constraints: [],
@@ -91,20 +106,18 @@ const pythonChallenge = {
 const config: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
-    javascript: javascriptChallenge,
-    python: pythonChallenge,
+    javascript,
+    python,
   },
 }
 
-export default function InOutResources({ lang }) {
+export default function MempoolTransactionResourcesOne({ lang }) {
   const t = useTranslations(lang)
   const [currentLanguage] = useAtom(currentLanguageAtom)
-  const initialStateCode =
-    config.languages[getLanguageString(currentLanguage)].defaultCode
-  const [code, setCode] = useState(initialStateCode as string)
-
+  const [code, setCode] = useState(
+    config.languages[getLanguageString(currentLanguage)].defaultCode?.[0]
+  )
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
-
   const [challengeIsToggled, setChallengeIsToggled] = useState(false)
 
   const challengeToggleSwitch = () => {
@@ -113,7 +126,7 @@ export default function InOutResources({ lang }) {
 
   const handleSetLanguage = (value) => {
     setLanguage(value)
-    setCode(config.languages[value].defaultCode as string)
+    setCode(config.languages[value].defaultCode?.[0])
   }
 
   const handleBeforeMount = (monaco) => {
@@ -152,12 +165,12 @@ export default function InOutResources({ lang }) {
                 languages={config.languages}
                 value={language}
                 onChange={handleSetLanguage}
-                noHide
+                noHide={true}
               />
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`505px`}
+                  height={`710px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

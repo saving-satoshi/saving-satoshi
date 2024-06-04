@@ -7,7 +7,7 @@ import { Loader } from 'shared'
 import MonacoEditor from '@monaco-editor/react'
 
 import { EditorConfig } from 'types'
-import { Text, ResourcePage, ToggleSwitch, CodeExample } from 'ui'
+import { Text, ResourcePage, ToggleSwitch } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
 import { getLanguageString } from 'lib/SavedCode'
@@ -126,25 +126,10 @@ export default function DeriveMessageResources({ lang }) {
     config.languages[getLanguageString(currentLanguage)].defaultCode
   const [code, setCode] = useState<string>(initialStateCode as string)
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
-  const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
-  const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
-  const [challengeThreeIsToggled, setChallengeThreeIsToggled] = useState(false)
-  const [challengeFourIsToggled, setChallengeFourIsToggled] = useState(false)
+  const [challengeIsToggled, setChallengeIsToggled] = useState(false)
 
-  const challengeOneToggleSwitch = () => {
-    setChallengeOneIsToggled(!challengeOneIsToggled)
-  }
-
-  const challengeTwoToggleSwitch = () => {
-    setChallengeTwoIsToggled(!challengeTwoIsToggled)
-  }
-
-  const challengeThreeToggleSwitch = () => {
-    setChallengeThreeIsToggled(!challengeThreeIsToggled)
-  }
-
-  const challengeFourToggleSwitch = () => {
-    setChallengeFourIsToggled(!challengeFourIsToggled)
+  const challengeToggleSwitch = () => {
+    setChallengeIsToggled(!challengeIsToggled)
   }
 
   const handleSetLanguage = (value) => {
@@ -188,63 +173,12 @@ export default function DeriveMessageResources({ lang }) {
           <Text>{t('help_page.solution_one')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
-              checked={challengeOneIsToggled}
-              onChange={challengeOneToggleSwitch}
+              checked={challengeIsToggled}
+              onChange={challengeToggleSwitch}
             />
             <Text>{t('help_page.spoilers_confirm')}</Text>
           </div>
-          {challengeOneIsToggled && (
-            <div className="text-white">
-              <CodeExample
-                copy
-                language="bash"
-                code="304402204e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd410220181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d0901"
-              />
-            </div>
-          )}
-          <Text>{t('help_page.solution_two')}</Text>
-          <div className="flex flex-row items-center gap-2">
-            <ToggleSwitch
-              checked={challengeTwoIsToggled}
-              onChange={challengeTwoToggleSwitch}
-            />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
-          </div>
-          {challengeTwoIsToggled && (
-            <div className="text-white">
-              <CodeExample
-                copy
-                language="bash"
-                code="0411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3"
-              />
-            </div>
-          )}
-          <Text>{t('help_page.solution_three')}</Text>
-          <div className="flex flex-row items-center gap-2">
-            <ToggleSwitch
-              checked={challengeThreeIsToggled}
-              onChange={challengeThreeToggleSwitch}
-            />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
-          </div>
-          {challengeThreeIsToggled && (
-            <div className="text-white">
-              <CodeExample
-                copy
-                language="bash"
-                code="0100000001c997a5e56e104102fa209c6a852dd90660a20b2d9c352423edce25857fcd3704000000004847304402204e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd410220181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d0901ffffffff0200ca9a3b00000000434104ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302fa28414e7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e6cd84cac00286bee0000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3ac00000000"
-              />
-            </div>
-          )}
-          <Text>{t('help_page.solution_four')}</Text>
-          <div className="flex flex-row items-center gap-2">
-            <ToggleSwitch
-              checked={challengeFourIsToggled}
-              onChange={challengeFourToggleSwitch}
-            />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
-          </div>
-          {challengeFourIsToggled && (
+          {challengeIsToggled && (
             <div className="border border-white/25">
               <LanguageTabs
                 languages={config.languages}

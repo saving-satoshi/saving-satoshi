@@ -1,7 +1,7 @@
-import * as MempoolTransactionResources from './mempool-transaction'
+import * as MempoolTransactionResourcesOne from './mempool-transaction-1'
 
 const Chapter7 = {
-  'mempool-transaction': MempoolTransactionResources,
+  'mempool-transaction-1': MempoolTransactionResourcesOne,
 }
 
 export default Chapter7

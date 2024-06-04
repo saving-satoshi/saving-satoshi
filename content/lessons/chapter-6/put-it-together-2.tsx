@@ -170,7 +170,7 @@ console.log(private_key_faxwmufa.verify(hashed_message_bytes_ahuhfxmw, signature
 console.log("KILL")`,
     rangeToNotCollapse: [
       {
-        start: countLines(combinedCode) + 2,
+        start: countLines(combinedCode) + 3,
         end: countLines(combinedCode) + 62,
       },
     ],

@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Loader } from 'shared'
 
 import MonacoEditor from '@monaco-editor/react'
@@ -14,72 +14,69 @@ import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { currentLanguageAtom } from 'state/state'
 
-const javascript = {
+const javascriptChallenge = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'findHash',
-    args: ['nonce'],
+    name: 'verify',
+    args: [],
   },
-  defaultCode: `function compressPublicKey(publicKey) {
-  // Determine if the y coordinate is even or odd and prepend the
-  // corresponding header byte to the x coordinate.
-  // Return a hex string
-  const header_byte = {
-    'y_is_even': '02',
-    'y_is_odd':  '03'
-  };
-  const regex = /([a-f0-9]+),([a-f0-9]+)/;
-  const cleanedPublicKey = publicKey.replace(/\\s/g, '');
-  const match = cleanedPublicKey.match(regex);
-  const which = BigInt("0x" + match[2]) % 2n == 0 ? 'y_is_even' : 'y_is_odd';
-  return header_byte[which] + match[1];
+  defaultCode: `function msg_to_integer(msg) {
+  // Given a hex string to sign, convert that string to bytes,
+  // double-SHA256 the bytes and then return a BigInt() from the 32-byte digest.
+  const bytes = Buffer.from(msg, 'hex');
+  const single_hash = Hash('sha256').update(bytes).digest();
+  const double_hash = Hash('sha256').update(single_hash).digest();
+  return BigInt('0x' + double_hash.toString('hex'));
 }`,
   validate: async (answer) => {
     return [true, undefined]
   },
-  constraints: [],
+  constraints: [
+    {
+      range: [1, 1, 1, 1],
+      allowMultiline: true,
+    },
+  ],
 }
 
-const python = {
+const pythonChallenge = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'find_hash',
-    args: ['nonce'],
+    name: 'verify',
+    args: [],
   },
-  defaultCode: `def compress_publickey(public_key):
-    header_byte = {
-        "y_is_even": "02",
-        "y_is_odd":  "03"
-    }
-    regex = r"([a-f0-9]+),([a-f0-9]+)"
-    cleaned_public_key = re.sub(r"\\s", "", public_key)
-    match = re.search(regex, cleaned_public_key)
-    which = 'y_is_even' if int(match.group(2), 16) % 2 == 0 else 'y_is_odd'
-    return header_byte[which] + match.group(1)`,
+  defaultCode: `def msg_to_integer(msg):
+    # Given a hex string to sign, convert that string to bytes,
+    # double-SHA256 the bytes and then return an integer from the 32-byte digest.
+    single_hash = hashlib.new('sha256', bytes.fromhex(msg)).digest()
+    double_hash = hashlib.new('sha256', single_hash).digest()
+    return int.from_bytes(double_hash, "big")`,
   validate: async (answer) => {
     return [true, undefined]
   },
-  constraints: [],
+  constraints: [
+    {
+      range: [1, 1, 1, 1],
+      allowMultiline: true,
+    },
+  ],
 }
 
 const config: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
-    javascript,
-    python,
+    javascript: javascriptChallenge,
+    python: pythonChallenge,
   },
 }
 
-export default function PublicKeyResourcesFour({ lang }) {
+export default function VerifySignatureResourcesTwo({ lang }) {
   const t = useTranslations(lang)
   const [currentLanguage] = useAtom(currentLanguageAtom)
-
-  const [code, setCode] = useState(
-    config.languages[getLanguageString(currentLanguage)].defaultCode as string
-  )
-
+  const initialStateCode =
+    config.languages[getLanguageString(currentLanguage)].defaultCode
+  const [code, setCode] = useState<string>(initialStateCode as string)
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
-
   const [challengeIsToggled, setChallengeIsToggled] = useState(false)
 
   const challengeToggleSwitch = () => {
@@ -113,62 +110,60 @@ export default function PublicKeyResourcesFour({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_five.resources.verify_signature.eliptic_curve_heading')}
+          </Text>
+          <Text>
             {t(
-              'chapter_four.resources.public_key.elliptic_curve_reason_heading'
+              'chapter_five.resources.verify_signature.eliptic_curve_paragraph_one'
+            )}
+          </Text>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t(
+              'chapter_five.resources.verify_signature.public_private_key_heading'
             )}
           </Text>
           <Text>
             {t(
-              'chapter_four.resources.public_key.elliptic_curve_reason_paragraph'
+              'chapter_five.resources.verify_signature.public_private_key_paragraph_one'
             )}
-          </Text>
-          <ul className="list-inside list-disc font-nunito text-white">
-            <li>
-              {t(
-                'chapter_four.resources.public_key.elliptic_curve_reason_list_one'
-              )}
-            </li>
-            <li>
-              {t(
-                'chapter_four.resources.public_key.elliptic_curve_reason_list_two'
-              )}
-            </li>
-            <li>
-              {t(
-                'chapter_four.resources.public_key.elliptic_curve_reason_list_three'
-              )}
-            </li>
-            <li>
-              {t(
-                'chapter_four.resources.public_key.elliptic_curve_reason_list_four'
-              )}
-            </li>
-          </ul>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.public_key.secp_heading')}
-          </Text>
-          <Text>{t('chapter_four.resources.public_key.secp_paragraph')}</Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.public_key.generator_point_heading')}
-          </Text>
-          <Text>
-            {t('chapter_four.resources.public_key.generator_point_paragraph')}
           </Text>
           <Text className="mt-[25px] text-xl font-bold">
             {t(
-              'chapter_four.resources.public_key.elliptic_curve_operations_heading'
+              'chapter_five.resources.verify_signature.signature_verification_heading'
             )}
           </Text>
           <Text>
             {t(
-              'chapter_four.resources.public_key.elliptic_curve_operations_paragraph'
+              'chapter_five.resources.verify_signature.signature_verification_paragraph_one'
             )}
           </Text>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.public_key.discrete_log_heading')}
+            {t(
+              'chapter_five.resources.verify_signature.finite_field_arithmetic_heading'
+            )}
           </Text>
           <Text>
-            {t('chapter_four.resources.public_key.discrete_log_paragraph')}
+            {t(
+              'chapter_five.resources.verify_signature.finite_field_arithmetic_paragraph_one'
+            )}
+          </Text>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_five.resources.verify_signature.ge_and_fe_heading')}
+          </Text>
+          <Text>
+            {t(
+              'chapter_five.resources.verify_signature.ge_and_fe_paragraph_one'
+            )}
+          </Text>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t(
+              'chapter_five.resources.verify_signature.modular_inverse_heading'
+            )}
+          </Text>
+          <Text>
+            {t(
+              'chapter_five.resources.verify_signature.modular_inverse_paragraph_one'
+            )}
           </Text>
         </>
       }
@@ -193,7 +188,7 @@ export default function PublicKeyResourcesFour({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`280px`}
+                  height={`160px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
