@@ -26,7 +26,7 @@ const HolocatQuestion = ({
         id={id}
         theme={theme || ''}
         content={question}
-        parentClassName="inline-flex align-middle min-h-fit min-w-fit mx-1"
+        parentClassName="inline-flex align-sub min-h-fit min-w-fit mx-1"
         arrowPosition={arrowPosition}
         visibleOverride={visible}
       >
