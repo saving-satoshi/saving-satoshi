@@ -75,7 +75,7 @@ export default function PublicKeyResourcesFour({ lang }) {
   const [currentLanguage] = useAtom(currentLanguageAtom)
 
   const [code, setCode] = useState(
-    config.languages[getLanguageString(currentLanguage)].defaultCode
+    config.languages[getLanguageString(currentLanguage)].defaultCode as string
   )
 
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
@@ -88,7 +88,7 @@ export default function PublicKeyResourcesFour({ lang }) {
 
   const handleSetLanguage = (value) => {
     setLanguage(value)
-    setCode(config.languages[value].defaultCode)
+    setCode(config.languages[value].defaultCode as string)
   }
 
   const handleBeforeMount = (monaco) => {

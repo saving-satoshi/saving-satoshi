@@ -64,7 +64,7 @@ export default function PublicKeyResourcesThree({ lang }) {
   const [currentLanguage] = useAtom(currentLanguageAtom)
 
   const [code, setCode] = useState(
-    config.languages[getLanguageString(currentLanguage)].defaultCode
+    config.languages[getLanguageString(currentLanguage)].defaultCode as string
   )
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const [challengeIsToggled, setChallengeIsToggled] = useState(false)
