@@ -125,6 +125,10 @@ div.react-terminal-active-input {
   color: white;
 }
 
+.preline {
+  white-space: pre-line;
+}
+
 .underscore {
   color: #ffffff59;
 }
