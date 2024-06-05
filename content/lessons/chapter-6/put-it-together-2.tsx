@@ -170,7 +170,7 @@ console.log(private_key_faxwmufa.verify(hashed_message_bytes_ahuhfxmw, signature
 console.log("KILL")`,
     rangeToNotCollapse: [
       {
-        start: countLines(combinedCode) + 3,
+        start: countLines(combinedCode) + 2,
         end: countLines(combinedCode) + 62,
       },
     ],
@@ -181,7 +181,7 @@ console.log("KILL")`,
     defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js');
 const {randomBytes} = require('crypto');
 ${combinedCode.slice(0, -2)}
-  // Complete the two methods below
+// Complete the two methods below
   compute_input_signature(index, key) {
     assert(typeof key === 'bigint');
     assert(Number.isInteger(index));

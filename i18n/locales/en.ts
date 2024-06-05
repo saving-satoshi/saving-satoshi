@@ -237,32 +237,35 @@ const translations = {
       feedback: 'Share your feedback',
     },
     resources: {
-      genesis: {
+      genesis_two: {
         scriptsig_heading: 'ScriptSig',
         scriptsig_paragraph:
           "The 'scriptSig' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The 'scriptSig' is the data that goes into the input's scriptSig field.",
-        blocks_heading: 'Bitcoin Blocks',
-        blocks_paragraph:
-          "A 'block' in blockchain technology is like a container for a group of transactions. It forms a crucial part of the blockchain, with each block referencing the one before it. This reference, along with a block header that contains important details like a timestamp and a unique identifier, ensures the data's integrity and chronological order. Once a block is added to the blockchain, it's incredibly difficult to change, ensuring the security and immutability of the data. The size of a block can vary between different blockchains, and each block must undergo validation by network nodes before becoming a permanent part of the blockchain. This block-and-chain structure is the foundation of blockchain's transparency and security.",
         block_explorer_heading: 'Block Explorer',
         block_explorer_paragraph:
-          'A block explorer is a crucial tool for navigating and understanding blockchain networks. It acts as a user-friendly interface to inspect and analyze the data stored on a blockchain. With a block explorer, users can explore transaction histories, view account balances, and track the progress of individual blocks and transactions. It provides transparency and accountability in the world of decentralized cryptocurrencies, making it easier to verify and trace transactions while promoting trust in blockchain technology.',
-        tip_one:
-          'Look for the scriptSig(Hex) category nested in coinbase input after expanding the transaction within the block.',
-        tip_two:
-          "The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.",
+          'A block explorer is a crucial tool for navigating and understanding blockchain networks. It acts as a user-friendly interface to inspect and analyze the data stored on a blockchain. With a block explorer, users can explore transaction histories, view account balances, and track the progress of individual blocks and transactions.',
+        tip: 'Look for the scriptSig(Hex) category nested in coinbase input after expanding the transaction within the block.',
       },
-      transacting: {
+      genesis_three: {
+        bash_heading: 'Bash Commands',
+        bash_paragraph:
+          'We are using some basic bash command and options to reverse the compression satoshi did on the text put into the genesis block.',
+        tip: "The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.",
+      },
+      transacting_two: {
         transactions_heading: 'Transactions',
         transactions_paragraph:
           "A transaction in the world of cryptocurrencies is akin to a single atomic payment, where it involves the process of destroying existing coins and creating new ones. When someone initiates a cryptocurrency transaction, they're essentially instructing the blockchain to transfer a specific amount of coins from one digital wallet to another. To achieve this, the transaction consumes the sender's existing coins and generates new ones for the recipient, effectively updating the ownership ledger.",
         bitcoin_script_heading: 'Bitcoin Script',
         bitcoin_script_paragraph:
           'Bitcoin Script is a simple, stack-based programming language used in Bitcoin transactions to define the conditions under which bitcoins can be spent. It consists of various opcodes (short for operation codes) that specify what operations should be performed on the data within the script.',
-        tip_one:
-          'Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33 bytes long (66 characters total) in the OP_Return of the transaction',
-        tip_two:
-          "When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string",
+        tip: 'Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33 bytes long (66 characters total) in the OP_Return of the transaction',
+      },
+      transacting_three: {
+        secrets_heading: 'Secrets In Bitcoin',
+        secrets_paragraph:
+          'As we saw from the previous challenge, secrets embedded into bitcoin scripts has been a part of its history since the genesis block. Whether used to simply store some information in the blockchain, to pass information through bitcoin script to give some value external to bitcoin, or to pass messages to others, people have been stroing things in the blockchain other than inputs and outputs since the beginning.',
+        tip: "When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string",
       },
     },
   },
@@ -1966,6 +1969,7 @@ const translations = {
       'What specific tips can/do we want to give learners if they are stuck?',
     spoilers_heading: 'Spoilers',
     spoilers_confirm: 'Yes, I want to see the solution',
+    solution: 'Solution to this challenge',
     solution_one: 'Solution to part one of this challenge',
     solution_two: 'Solution to part two of this challenge',
     solution_three: 'Solution to part three of this challenge',

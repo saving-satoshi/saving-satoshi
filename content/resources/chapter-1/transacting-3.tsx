@@ -20,28 +20,21 @@ export default function TransactingThreeResources({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_one.resources.transacting.transactions_heading')}
+            {t('chapter_one.resources.transacting_three.secrets_heading')}
           </Text>
           <Text>
-            {t('chapter_one.resources.transacting.transactions_paragraph')}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_one.resources.transacting.bitcoin_script_heading')}
-          </Text>
-          <Text>
-            {t('chapter_one.resources.transacting.bitcoin_script_paragraph')}
+            {t('chapter_one.resources.transacting_three.secrets_paragraph')}
           </Text>
         </>
       }
       tipsResources={
         <ul className="list-inside list-disc font-nunito text-white">
-          <li>{t('chapter_one.resources.transacting.tip_one')}</li>
-          <li>{t('chapter_one.resources.transacting.tip_two')}</li>
+          <li>{t('chapter_one.resources.transacting_three.tip')}</li>
         </ul>
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeOneIsToggled}

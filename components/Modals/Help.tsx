@@ -38,7 +38,7 @@ export default function HelpModal({ onClose, state }) {
         </button>
       </div>
       {!isLoaded && (
-        <div className="px-5 sm:p-[30px]">
+        <div className="justify-content contents px-5 sm:p-[30px]">
           <Loader className="h-10 w-10 text-white" />
         </div>
       )}

@@ -19,31 +19,20 @@ export default function GenesisThreeResources({ lang }) {
       lang={lang}
       readingResources={
         <>
-          <Text className="text-xl font-bold">
-            {t('chapter_one.resources.genesis.scriptsig_heading')}
-          </Text>
-          <Text>{t('chapter_one.resources.genesis.scriptsig_paragraph')}</Text>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_one.resources.genesis.blocks_heading')}
+            {t('chapter_one.resources.genesis_three.bash_heading')}
           </Text>
-          <Text>{t('chapter_one.resources.genesis.blocks_paragraph')}</Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_one.resources.genesis.block_explorer_heading')}
-          </Text>
-          <Text>
-            {t('chapter_one.resources.genesis.block_explorer_paragraph')}
-          </Text>
+          <Text>{t('chapter_one.resources.genesis_three.bash_paragraph')}</Text>
         </>
       }
       tipsResources={
         <ul className="list-inside list-disc font-nunito text-white">
-          <li>{t('chapter_one.resources.genesis.tip_one')}</li>
-          <li>{t('chapter_one.resources.genesis.tip_two')}</li>
+          <li>{t('chapter_one.resources.genesis_three.tip')}</li>
         </ul>
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeOneIsToggled}
