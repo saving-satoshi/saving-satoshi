@@ -160,14 +160,21 @@ def hash_compressed(compressed_public_key):
           <Text className="font-nunito text-xl text-white">
             {t('chapter_four.address_two.paragraph_one')}
           </Text>
-          <Text className="mt-4 font-nunito text-xl text-white">
+          <Text className="mt-4 font-nunito text-xl font-bold text-white">
             {t(`chapter_four.address_two.paragraph_two`)}
           </Text>
-          <Text className="mt-4 font-nunito text-xl text-white">
+          <Text className="ml-5 mt-4 inline-block font-nunito text-xl text-white">
             {t(`chapter_four.address_two.paragraph_three`)}
           </Text>
-          <Text className="preline mt-4 font-nunito text-xl italic text-white">
+          <Text className="preline ml-5 mt-4 inline-block font-nunito text-xl text-white">
             {t(`chapter_four.address_two.paragraph_four`)}
+          </Text>
+          <hr className="my-7 h-[1px] w-full opacity-25" />
+          <Text className="preline mt-4 font-nunito text-xl text-white">
+            {t(`chapter_four.address_two.paragraph_five`)}
+          </Text>
+          <Text className="preline mt-4 font-nunito text-xl italic text-white">
+            {t(`chapter_four.address_two.paragraph_six`)}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>
