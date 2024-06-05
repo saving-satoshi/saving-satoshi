@@ -213,6 +213,12 @@ export default function PublicKeyResources({ lang }) {
           </Text>
         </>
       }
+      tipsResources={
+        <ul className="list-inside list-disc font-nunito text-white">
+          <li>{t('chapter_four.resources.public_key.tip_one')}</li>
+          <li>{t('chapter_four.resources.public_key.tip_two')}</li>
+        </ul>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>
