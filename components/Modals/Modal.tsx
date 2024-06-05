@@ -27,15 +27,15 @@ export default function Modal({
 
   return (
     <div
-      className="modal-backdrop fixed inset-0 z-10 flex items-center justify-center overflow-y-auto bg-overlayColor"
+      className="modal-backdrop fixed inset-0 z-10 flex items-center justify-center bg-overlayColor"
       onClick={handleClick}
     >
       <div
         className={clsx(
-          'h-full w-screen transform overflow-y-auto overflow-x-hidden p-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:max-h-[90%] sm:rounded-lg sm:pt-5',
+          'h-full w-screen transform overflow-hidden py-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:max-h-[90%] sm:rounded-lg sm:pt-5',
           theme,
           {
-            'sm:w-[550px]': !wide,
+            'px-5 sm:h-fit sm:w-[550px]': !wide,
             'sm:w-[90%]': wide,
             'bg-back': !theme,
           }

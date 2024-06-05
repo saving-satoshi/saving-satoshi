@@ -32,20 +32,19 @@ export default function HelpModal({ onClose, state }) {
 
   return (
     <Modal wide theme={theme} active={state.open} onRequestClose={onClose}>
-      <div className="float-right flex justify-end">
+      <div className="float-right flex justify-end px-5">
         <button onClick={onClose} aria-label="Close">
           <Icon icon="close" className="h-6 w-6" />
         </button>
       </div>
-
       {!isLoaded && (
-        <div className="sm:p-[30px]">
+        <div className="px-5 sm:p-[30px]">
           <Loader className="h-10 w-10 text-white" />
         </div>
       )}
       {isLoaded && (
-        <div className="my-12 grid w-full grid-cols-1 justify-center justify-items-center md:mx-auto">
-          <div className="flex w-full max-w-screen-lg flex-col gap-8 px-6">
+        <div className="mt-12 grid h-[calc(100%-3rem)] w-full justify-center justify-items-center overflow-y-scroll md:mx-auto">
+          <div className="mb-12 flex w-full max-w-screen-lg flex-col gap-8 px-6">
             {!!chapterResources?.default[lessonId]?.default && (
               <Resources lang={lang} />
             )}
