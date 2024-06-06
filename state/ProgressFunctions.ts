@@ -12,7 +12,7 @@ export const useProgressFunctions = () => {
     try {
       setIsLoading(true)
       let progress = await getProgress()
-      if (progress === keys[0]) {
+      if (progress.progress === keys[0]) {
         progress = await getProgressLocal()
       }
       setAccountProgress(progress)
@@ -26,9 +26,12 @@ export const useProgressFunctions = () => {
   const initLocal = async () => {
     try {
       setIsLoading(true)
-      const progress = await getProgressLocal()
+      const { progress, progressList } = await getProgressLocal()
       if (progress !== keys[0]) {
-        setAccountProgress(progress)
+        setAccountProgress({
+          progress,
+          progressList: [...progressList, progress],
+        })
       }
     } catch (ex) {
       console.error(ex)
@@ -38,8 +41,8 @@ export const useProgressFunctions = () => {
   }
 
   const saveProgress = async (key: string) => {
-    const progress = await getProgress()
-    const localProgress = await getProgressLocal()
+    const { progress, progressList } = await getProgress()
+    const { progress: localProgress } = await getProgressLocal()
 
     // Determine the furthest progress
     const currentProgressIndex = keys.indexOf(progress)
@@ -56,8 +59,14 @@ export const useProgressFunctions = () => {
     if (currentProgressIndex < furthestProgressIndex) {
       try {
         setIsLoading(true)
-        await setProgress(furthestProgressKey)
-        setAccountProgress(furthestProgressKey)
+        await setProgress({
+          progress: furthestProgressKey,
+          progressList: [...progressList, furthestProgressKey],
+        })
+        setAccountProgress({
+          progress: furthestProgressKey,
+          progressList: [...progressList, furthestProgressKey],
+        })
       } catch (ex) {
         console.error(ex)
       } finally {
@@ -67,12 +76,18 @@ export const useProgressFunctions = () => {
   }
 
   const saveProgressLocal = async (key: string) => {
-    const progress = await getProgressLocal()
+    const { progress, progressList } = await getProgressLocal()
     if (keys.indexOf(progress) < keys.indexOf(key)) {
       try {
         setIsLoading(true)
-        await setProgressLocal(key)
-        setAccountProgress(key)
+        await setProgressLocal({
+          progress: key,
+          progressList: [...progressList, key],
+        })
+        setAccountProgress({
+          progress: key,
+          progressList: [...progressList, key],
+        })
       } catch (ex) {
         console.error(ex)
       } finally {

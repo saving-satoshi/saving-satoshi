@@ -14,7 +14,8 @@ export default function Hero() {
   const [progress] = useAtom(progressAtom)
   const [account] = useAtom(accountAtom)
 
-  const chapterKey = progress !== keys[0] ? getChapterKey(progress) : ''
+  const chapterKey =
+    progress.progress !== keys[0] ? getChapterKey(progress.progress) : ''
 
   return (
     <div className="flex h-full grow items-end justify-center">

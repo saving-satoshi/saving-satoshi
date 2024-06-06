@@ -55,6 +55,9 @@ export default function ChallengeList({
   })
 
   const challengesData = challenges.map((lessonId: string) => {
+    console.log(chapterId)
+    console.log(lessonId)
+    console.log(lessons[chapterId][lessonId])
     const { title } = lessons[chapterId][lessonId].metadata
 
     return { lessonId, title }

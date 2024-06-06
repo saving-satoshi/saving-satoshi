@@ -47,11 +47,11 @@ export default function Tab({
   const [isLoading] = useAtom(isLoadingProgressAtom)
 
   const { isUnlocked } = useLessonStatus(
-    progress,
+    progress.progress,
     getLessonKey(slug, challenge.lessonId)
   )
   const { isCompleted } = useLessonStatus(
-    progress,
+    progress.progress,
     getLessonKey(slug, challenge.lessonId)
   )
 
@@ -77,7 +77,7 @@ export default function Tab({
     pnLessonId.split('-')[0] !== 'outro'
 
   const groupCompleted = challengeLessons.every((challenge) =>
-    isLessonCompleted(progress, getLessonKey(slug, challenge.lessonId))
+    isLessonCompleted(progress.progress, getLessonKey(slug, challenge.lessonId))
   )
 
   return (
@@ -100,13 +100,13 @@ export default function Tab({
               const isLessonUnlock =
                 !isLoading &&
                 isLessonUnlocked(
-                  progress,
+                  progress.progress,
                   getLessonKey(slug, challenge.lessonId)
                 )
               const isPageComplete =
                 !isLoading &&
                 isLessonCompleted(
-                  progress,
+                  progress.progress,
                   getLessonKey(slug, challenge.lessonId)
                 )
               const navLessonId =
@@ -185,7 +185,7 @@ export default function Tab({
               'absolute right-[10px] top-[10px] h-3 w-3 opacity-50',
               {
                 hidden:
-                  keys.indexOf(progress) >=
+                  keys.indexOf(progress.progress) >=
                     keys.indexOf(getLessonKey(slug, challenge.lessonId)) &&
                   currentIndex !== index - 1,
               }
@@ -200,7 +200,7 @@ export default function Tab({
               {
                 hidden:
                   !isLoading &&
-                  keys.indexOf(progress) <
+                  keys.indexOf(progress.progress) <
                     keys.indexOf(getLessonKey(slug, challenge.lessonId)),
               }
             )}
