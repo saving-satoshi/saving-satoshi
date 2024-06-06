@@ -146,8 +146,7 @@ export default function ScriptingChallenge({
             0,
             data.code!.getDecoded().indexOf('# BEGIN VALIDATION BLOCK') - 1
           )
-          .replace(/\n\s*#.*\n?/g, '\n')
-          .replace(/(.+?)\s*#.*/g, '$1')
+          .replace(/.*?# YOUR CODE HERE/g, '\n')
       } else {
         trimmedCode = trimLastTwoLines(data.code!.getDecoded())
       }
@@ -161,8 +160,7 @@ export default function ScriptingChallenge({
             0,
             data.code!.getDecoded().indexOf('//BEGIN VALIDATION BLOCK') - 1
           )
-          .replace(/\s*\/\/.*(?:\n|$)/g, '\n')
-          .replace(/\/\*[\s\S]*?\*\//g, '\n')
+          .replace(/.*?\/\/ YOUR CODE HERE/g, '\n')
       } else {
         trimmedCode = trimLastTwoLines(data.code!.getDecoded())
       }
