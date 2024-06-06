@@ -36,7 +36,7 @@ export default function Modal({
           theme,
           {
             'px-5 sm:h-fit sm:w-[550px]': !wide,
-            'sm:w-[90%]': wide,
+            'sm:w-fit': wide,
             'bg-back': !theme,
           }
         )}
