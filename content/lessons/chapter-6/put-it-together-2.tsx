@@ -83,7 +83,7 @@ export default function PutItTogether2({ lang }) {
 const assert = require('assert');
 const bech32 = require('@savingsatoshi/bech32js');
 class Outpoint {
-  constructor(txid, index) {
+  constructor(txid, index) {  
     assert(Buffer.isBuffer(txid));
     assert(txid.length === 32);
     assert(Number.isInteger(index));
@@ -181,7 +181,7 @@ console.log("KILL")`,
     defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js');
 const {randomBytes} = require('crypto');
 ${combinedCode.slice(0, -2)}
-  // Complete the two methods below
+// YOUR CODE HERE
   compute_input_signature(index, key) {
     assert(typeof key === 'bigint');
     assert(Number.isInteger(index));
@@ -365,7 +365,7 @@ print("KILL")`,
     defaultCode: `from random import randrange
 from secp256k1py import secp256k1
 ${combinedCode}
-    # Complete the 2 methods below
+# YOUR CODE HERE
     def compute_input_signature(self, index: int, key: int):
         # The math:
         #   k = random integer in [1, n-1]
