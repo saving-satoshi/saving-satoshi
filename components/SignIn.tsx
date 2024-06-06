@@ -67,7 +67,7 @@ export default function SignIn({
   }, [isPending])
 
   useEffect(() => {
-    setProgressRoute(getLessonPath(progress))
+    setProgressRoute(getLessonPath(progress.progress))
   }, [progress])
 
   function handleCreateClick() {

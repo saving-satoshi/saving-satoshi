@@ -11,6 +11,7 @@ import { useFeatureFunctions } from 'state/FeatureFunctions'
 import { useModalFunctions } from 'state/ModalFunctions'
 import { useProgressFunctions } from 'state/ProgressFunctions'
 import { Modal, modalsAtom } from 'state/state'
+import DifficultyModal from './Modals/Difficulty'
 
 export default function Layout({ children }: { children?: React.ReactNode }) {
   const [modals] = useAtom(modalsAtom)
@@ -42,6 +43,10 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
         onClose={() => close(Modal.Account)}
       />
       <HelpModal state={modals[Modal.Help]} onClose={() => close(Modal.Help)} />
+      <DifficultyModal
+        state={modals[Modal.Difficulty]}
+        onClose={() => close(Modal.Difficulty)}
+      />
     </>
   )
 }

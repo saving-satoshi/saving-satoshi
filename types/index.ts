@@ -71,3 +71,8 @@ export type EditorRange = {
   start: number
   end: number
 }
+
+export type Progress = {
+  progress: string
+  progressList: string[]
+}

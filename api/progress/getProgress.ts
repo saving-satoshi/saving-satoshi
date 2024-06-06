@@ -1,16 +1,17 @@
-import { defaultProgressContext } from 'state/state'
+import { defaultProgressResponse } from 'api/defaults'
+import { Progress } from 'types'
 import { get } from 'utils'
 
-export default async function getProgress(): Promise<string> {
+export default async function getProgress(): Promise<Progress> {
   try {
     const res = await get({
       url: '/v1/progress',
       includeToken: true,
     })
 
-    return res.progress
+    return res
   } catch (errors) {
     console.error(errors)
-    return defaultProgressContext.progress
+    return defaultProgressResponse
   }
 }

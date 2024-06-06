@@ -1,7 +1,8 @@
-import { atom } from 'jotai'
+import { defaultProgressResponse } from 'api/defaults'
+import { atom, createStore } from 'jotai'
 import { keys } from 'lib/progress'
 import { Language } from 'lib/SavedCode'
-import { Data } from 'types'
+import { Progress, Data } from 'types'
 
 export const isLoadingDataAtom = atom<boolean>(true)
 export const dataAtom = atom<Data[]>([])
@@ -12,6 +13,13 @@ export enum Modal {
   SignIn = 'signin',
   SignUp = 'signup',
   Help = 'help',
+  Difficulty = 'difficulty',
+}
+
+export enum DifficultyLevel {
+  NORMAL = 'NORMAL',
+  HARD = 'HARD',
+  NOT_SELECTED = 'NOT_SELECTED',
 }
 
 export const modalsAtom = atom({
@@ -19,6 +27,7 @@ export const modalsAtom = atom({
   [Modal.SignIn]: { open: false, meta: undefined },
   [Modal.SignUp]: { open: false, meta: undefined },
   [Modal.Help]: { open: false, meta: undefined },
+  [Modal.Difficulty]: { open: false, meta: undefined },
 })
 
 export const accountAtom = atom<any | undefined>(undefined)
@@ -28,11 +37,10 @@ export const isAuthLoadingAtom = atom<boolean>(false)
 export const isLoadingFeaturesAtom = atom<boolean>(false)
 export const featuresAtom = atom<{ [key: string]: number }>({})
 
-export const defaultProgressContext = {
-  progress: keys[0],
-  isLoading: true,
-  saveProgress: (key: string) => Promise.resolve(),
-  saveProgressLocal: (key: string) => Promise.resolve(),
-}
 export const isLoadingProgressAtom = atom<boolean>(true)
-export const progressAtom = atom<string>(keys[0])
+export const progressAtom = atom<Progress>(defaultProgressResponse)
+export const difficultyLevelAtom = atom<DifficultyLevel>(
+  DifficultyLevel.NOT_SELECTED
+)
+
+export const store = createStore()

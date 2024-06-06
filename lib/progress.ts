@@ -1,5 +1,10 @@
 import { lessons } from 'content'
-
+import {
+  DifficultyLevel,
+  difficultyLevelAtom,
+  progressAtom,
+  store,
+} from 'state/state'
 export const keys = [
   'CH1INT1',
   'CH1INT2',
@@ -73,11 +78,18 @@ export const keys = [
   'CH6INO1',
   'CH6INO2',
   'CH6INO3',
-  'CH6INO4',
+  'CH6INO4_NORMAL',
+  'CH6INO4_HARD',
   'CH6INO5',
-  'CH6PUT1',
-  'CH6PUT2',
-  'CH6PUT3',
+  'CH6PUT1_NORMAL',
+  'CH6PUT1_HARD',
+  'CH6PUT2_NORMAL',
+  'CH6PUT2_HARD',
+  'CH6PUT3_NORMAL',
+  'CH6PUT3_HARD',
+  'CH6PUT4_HARD',
+  'CH6PUT5_HARD',
+  'CH6PUT6_HARD',
   'CH6OUT1',
 
   'CH7INT1',
@@ -180,11 +192,18 @@ export const keysMeta = {
   CH6INO1: { path: '/chapter-6/in-out-1' },
   CH6INO2: { path: '/chapter-6/in-out-2' },
   CH6INO3: { path: '/chapter-6/in-out-3' },
-  CH6INO4: { path: '/chapter-6/in-out-4' },
+  CH6INO4_NORMAL: { path: '/chapter-6/in-out-4/normal' },
+  CH6INO4_HARD: { path: '/chapter-6/in-out-4/hard' },
   CH6INO5: { path: '/chapter-6/in-out-5' },
-  CH6PUT1: { path: '/chapter-6/put-it-together-1' },
-  CH6PUT2: { path: '/chapter-6/put-it-together-2' },
-  CH6PUT3: { path: '/chapter-6/put-it-together-3' },
+  CH6PUT1_NORMAL: { path: '/chapter-6/put-it-together-1/normal' },
+  CH6PUT1_HARD: { path: '/chapter-6/put-it-together-1/hard' },
+  CH6PUT2_NORMAL: { path: '/chapter-6/put-it-together-2/normal' },
+  CH6PUT2_HARD: { path: '/chapter-6/put-it-together-2/hard' },
+  CH6PUT3_NORMAL: { path: '/chapter-6/put-it-together-3/normal' },
+  CH6PUT3_HARD: { path: '/chapter-6/put-it-together-3/hard' },
+  CH6PUT4_HARD: { path: '/chapter-6/put-it-together-4/hard' },
+  CH6PUT5_HARD: { path: '/chapter-6/put-it-together-5/hard' },
+  CH6PUT6_HARD: { path: '/chapter-6/put-it-together-6/hard' },
   CH6OUT1: { path: '/chapter-6/outro-1' },
 
   CH7INT1: { path: '/chapter-7/intro-1' },
@@ -225,7 +244,20 @@ export const isLessonUnlocked = (
   const ida = keys.indexOf(userProgressKey)
   const idb = keys.indexOf(lessonKey)
 
-  return ida >= idb
+  if (idb !== -1) {
+    // The lesson key exists without a difficulty suffix, so it's shared
+    return ida >= idb
+  }
+
+  const idaEasy = keys.indexOf(userProgressKey + '_NORMAL')
+  const idaHard = keys.indexOf(userProgressKey + '_HARD')
+  const idbEasy = keys.indexOf(lessonKey + '_NORMAL')
+  const idbHard = keys.indexOf(lessonKey + '_HARD')
+
+  return (
+    (idaEasy !== -1 && idaEasy >= idbEasy && idaEasy >= idbHard) ||
+    (idaHard !== -1 && idaHard >= idbEasy && idaHard >= idbHard)
+  )
 }
 
 export const isLessonCompleted = (
@@ -239,7 +271,20 @@ export const isLessonCompleted = (
   const ida = keys.indexOf(userProgressKey)
   const idb = keys.indexOf(lessonKey)
 
-  return ida > idb
+  if (idb !== -1) {
+    // The lesson key exists without a difficulty suffix, so it's shared
+    return ida >= idb
+  }
+
+  const idaEasy = keys.indexOf(userProgressKey + '_NORMAL')
+  const idaHard = keys.indexOf(userProgressKey + '_HARD')
+  const idbEasy = keys.indexOf(lessonKey + '_NORMAL')
+  const idbHard = keys.indexOf(lessonKey + '_HARD')
+
+  return (
+    (idaEasy !== -1 && idaEasy >= idbEasy && idaEasy >= idbHard) ||
+    (idaHard !== -1 && idaHard >= idbEasy && idaHard >= idbHard)
+  )
 }
 
 export const isChallengeCompleted = (
@@ -261,13 +306,28 @@ export const isChallengeCompleted = (
     }
   })
 
-  return ida > idb
+  if (idb !== -1) {
+    // The lesson key exists without a difficulty suffix, so it's shared
+    return ida >= idb
+  }
+
+  const idaEasy = keys.indexOf(userProgressKey + '_NORMAL')
+  const idaHard = keys.indexOf(userProgressKey + '_HARD')
+  const idbEasy = keys.indexOf(lessonKey + '_NORMAL')
+  const idbHard = keys.indexOf(lessonKey + '_HARD')
+
+  return (
+    (idaEasy !== -1 && idaEasy >= idbEasy && idaEasy >= idbHard) ||
+    (idaHard !== -1 && idaHard >= idbEasy && idaHard >= idbHard)
+  )
 }
 
 export const getLastUnlockedLessonPath = (userProgressKey: string): string => {
-  const { path } = keysMeta[userProgressKey]
+  const normalPath = keysMeta[userProgressKey + '_NORMAL']?.path
+  const hardPath = keysMeta[userProgressKey + '_HARD']?.path
+  const regularPath = keysMeta[userProgressKey]?.path
 
-  return path
+  return hardPath || normalPath || regularPath
 }
 
 export const getCurrentLessonKey = (
@@ -277,39 +337,88 @@ export const getCurrentLessonKey = (
   if (!account) {
     return userProgressKey
   }
+  let userDifficultyLevel = ''
+  if (chaptersWithDifficulty.includes(getChapterKey(userProgressKey))) {
+    userDifficultyLevel = store.get(difficultyLevelAtom)
+  }
 
   const id = keys.indexOf(userProgressKey)
   const nextChapterIntro = 'CH' + getNextChapterNumber(userProgressKey) + 'INT1'
 
-  // Explaination: If the following lesson exist, and is equal to
-  // the intro of next chapter, that means we are on the outro of
-  // the current lesson, and can skip it to appropriately mark the
-  // progress
-  if (keys[id + 1] && keys[id + 1] === nextChapterIntro) {
+  if (
+    keys[id + 1] &&
+    (keys[id + 1] === nextChapterIntro ||
+      keys[id + 1] === nextChapterIntro + '_NORMAL' ||
+      keys[id + 1] === nextChapterIntro + '_HARD')
+  ) {
     return nextChapterIntro
   }
 
-  return userProgressKey
+  const currentLessonKey = keys[id]
+
+  if (
+    userDifficultyLevel === 'HARD' &&
+    keys.includes(currentLessonKey + '_HARD')
+  ) {
+    return currentLessonKey + '_HARD'
+  } else if (
+    userDifficultyLevel === 'NORMAL' &&
+    keys.includes(currentLessonKey + '_NORMAL')
+  ) {
+    return currentLessonKey + '_NORMAL'
+  } else {
+    return currentLessonKey
+  }
 }
 
 export const getNextLessonKey = (
   userProgressKey: string,
   account?: any
 ): string => {
+  let difficultyLevel = ''
+  if (chaptersWithDifficulty.includes(getChapterKey(userProgressKey))) {
+    difficultyLevel = store.get(difficultyLevelAtom)
+    if (difficultyLevel === DifficultyLevel.NOT_SELECTED) {
+      // if we don't have a difficulty level set it means the user
+      // has logged in in a fresh browser and immediately tried to load
+      // a lesson from chapter 6.  In this case we should return the
+      // user to the introduction screen so they can select the difficulty
+      return 'CH6INT1'
+    }
+  }
   const id = keys.indexOf(userProgressKey)
   const nextChapterIntro = 'CH' + getNextChapterNumber(userProgressKey) + 'INT1'
 
-  // Explaination: If account exist, and the next to next lesson
+  // Explanation: If account exist, and the next to next lesson
   // is the Intro of next chapter, then that means, we are on the
   // penultimate lesson of the current chapter and can skip the
   // following lesson to get the next chapter's intro key.
-  if (account && keys[id + 2] && keys[id + 2] === nextChapterIntro) {
+  if (
+    account &&
+    keys[id + 2] &&
+    (keys[id + 2] === nextChapterIntro ||
+      keys[id + 2] === nextChapterIntro + '_NORMAL' ||
+      keys[id + 2] === nextChapterIntro + '_HARD')
+  ) {
     return nextChapterIntro
   }
 
-  // If the next lesson exist. Return next lesson's key.
-  if (keys[id + 1]) {
-    return keys[id + 1]
+  const nextLessonKey = keys[id + 1]
+
+  if (nextLessonKey) {
+    if (
+      difficultyLevel === DifficultyLevel.HARD &&
+      keys.includes(nextLessonKey + '_HARD')
+    ) {
+      return nextLessonKey + '_HARD'
+    } else if (
+      difficultyLevel === DifficultyLevel.NORMAL &&
+      keys.includes(nextLessonKey + '_NORMAL')
+    ) {
+      return nextLessonKey + '_NORMAL'
+    } else {
+      return nextLessonKey
+    }
   } else {
     console.debug('There is no next lesson')
     return userProgressKey
@@ -323,14 +432,35 @@ export const getNextChapterNumber = (userProgressKey: string): number => {
 
 export const getNextLessonPath = (userProgressKey: string): string => {
   const id = keys.indexOf(userProgressKey)
-  const result = keys[id + 1]
+  const nextLessonKey = keys[id + 1]
 
-  if (!result) {
+  if (!nextLessonKey) {
     console.error('There is no next lesson')
-    return keysMeta[userProgressKey].path
+    return (
+      keysMeta[userProgressKey]?.path ||
+      keysMeta[userProgressKey + '_NORMAL']?.path ||
+      keysMeta[userProgressKey + '_HARD']?.path
+    )
   }
 
-  return keysMeta[result].path
+  let userDifficultyLevel = ''
+  if (chaptersWithDifficulty.includes(getChapterKey(userProgressKey))) {
+    userDifficultyLevel = store.get(difficultyLevelAtom)
+  }
+
+  if (
+    userDifficultyLevel === 'HARD' &&
+    keysMeta[nextLessonKey + '_HARD']?.path
+  ) {
+    return keysMeta[nextLessonKey + '_HARD'].path
+  } else if (
+    userDifficultyLevel === 'NORMAL' &&
+    keysMeta[nextLessonKey + '_NORMAL']?.path
+  ) {
+    return keysMeta[nextLessonKey + '_NORMAL'].path
+  } else {
+    return keysMeta[nextLessonKey]?.path
+  }
 }
 
 export const getLessonKey = (chapterId, lessonId) => {
@@ -351,13 +481,16 @@ export const getLessonKey = (chapterId, lessonId) => {
 }
 
 export const getChapterKey = (userProgressKey: string): string => {
-  const chapterKey =
-    userProgressKey === keys[keys.length - 1]
-      ? (parseInt(userProgressKey.substring(2, 3)) + 1).toString()
-      : userProgressKey.substring(2, 3)
+  const chapterKey = userProgressKey.split('_')[0].substring(2, 3)
   return `chapter-${chapterKey}`
 }
 
 export const getLessonPath = (userProgressKey: string): string => {
-  return keysMeta[userProgressKey].path
+  return (
+    keysMeta[userProgressKey]?.path ||
+    keysMeta[userProgressKey + '_NORMAL']?.path ||
+    keysMeta[userProgressKey + '_HARD']?.path
+  )
 }
+
+export const chaptersWithDifficulty = ['chapter-6']

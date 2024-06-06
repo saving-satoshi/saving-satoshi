@@ -7,8 +7,12 @@ import { Text } from 'ui'
 import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
-import { countLines } from '../chapter-6/put-it-together-3'
-import { detectLanguage, Language, organizeImports } from 'lib/SavedCode'
+import {
+  countLines,
+  detectLanguage,
+  Language,
+  organizeImports,
+} from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_eight.building_blocks_seven.title',

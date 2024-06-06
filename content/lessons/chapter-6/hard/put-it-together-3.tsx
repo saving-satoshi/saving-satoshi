@@ -3,7 +3,12 @@
 import { getData } from 'api/data'
 import { useTranslations } from 'hooks'
 import { getLessonKey } from 'lib/progress'
-import { detectLanguage, Language, organizeImports } from 'lib/SavedCode'
+import {
+  countLines,
+  detectLanguage,
+  Language,
+  organizeImports,
+} from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { Loader } from 'shared'
 import { EditorConfig } from 'types'
@@ -17,12 +22,8 @@ export const metadata = {
 
 const lessonsToLoad = ['CH6PUT1', 'CH6PUT2', 'CH6INO5']
 
-export const allLessonsAreLoaded = (data) => {
+export const allLessonsAreLoaded = (data): boolean => {
   return lessonsToLoad.every((lesson) => data[lesson])
-}
-
-export function countLines(text: string): number {
-  return text.split(/\r\n|\r|\n/).length
 }
 
 export default function PutItTogether3({ lang }) {
@@ -310,7 +311,7 @@ print(tx.serialize().hex())`,
         successMessage={t('chapter_six.put_it_together_three.success')}
         loadingSavedCode={isLoading}
       >
-        <LessonInfo>
+        <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
           <Text className="font-nunito text-2xl font-bold text-white">
             {t('chapter_six.put_it_together_three.heading')}
           </Text>

@@ -95,3 +95,7 @@ export function getLanguageFromString(languageString: string): Language {
       return Language.Unknown
   }
 }
+
+export function countLines(text: string): number {
+  return text.split(/\r\n|\r|\n/).length
+}

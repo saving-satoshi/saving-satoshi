@@ -31,7 +31,7 @@ export default function SignupModal({ onClose, state }) {
   const { saveProgress } = useProgressFunctions()
   const { onSignUpComplete } = state.meta ?? false
   const saveAndReturn = useSaveAndReturn()
-  const nextLessonKey = getNextLessonKey(progress)
+  const nextLessonKey = getNextLessonKey(progress.progress)
 
   const [loading, setLoading] = useState<boolean>(false)
   const [avatar, setAvatar] = useState(1)
@@ -58,7 +58,7 @@ export default function SignupModal({ onClose, state }) {
         await register(privateKey, `/assets/avatars/${avatar}.png`)
         await attemptLogin(privateKey)
         //The following line saves the latest localStorage progress to the backend.
-        saveProgress(onSignUpComplete ? nextLessonKey : progress)
+        saveProgress(onSignUpComplete ? nextLessonKey : progress.progress)
         onClose()
         onSignUpComplete && saveAndReturn()
       }
