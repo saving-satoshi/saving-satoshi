@@ -249,7 +249,7 @@ const translations = {
       genesis_three: {
         bash_heading: 'Bash Commands',
         bash_paragraph:
-          'We are using some basic bash command and options to reverse the compression satoshi did on the text put into the genesis block.',
+          'We are using some basic bash command and options to reverse the compression Satoshi did on the text put into the genesis block.',
         tip: "The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.",
       },
       transacting_two: {
@@ -264,7 +264,7 @@ const translations = {
       transacting_three: {
         secrets_heading: 'Secrets In Bitcoin',
         secrets_paragraph:
-          'As we saw from the previous challenge, secrets embedded into bitcoin scripts has been a part of its history since the genesis block. Whether used to simply store some information in the blockchain, to pass information through bitcoin script to give some value external to bitcoin, or to pass messages to others, people have been stroing things in the blockchain other than inputs and outputs since the beginning.',
+          'As we saw from the previous challenge, secrets embedded into bitcoin scripts has been a part of its history since the genesis block. Whether used to simply store some information in the blockchain, to pass information through bitcoin script to give some value external to bitcoin, or to pass messages to others, people have been storing things in the blockchain other than inputs and outputs since the beginning.',
         tip: "When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string",
       },
     },
