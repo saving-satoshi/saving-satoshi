@@ -83,7 +83,7 @@ export default function PutItTogether2({ lang }) {
 const assert = require('assert');
 const bech32 = require('@savingsatoshi/bech32js');
 class Outpoint {
-  constructor(txid, index) {  
+  constructor(txid, index) {
     assert(Buffer.isBuffer(txid));
     assert(txid.length === 32);
     assert(Number.isInteger(index));

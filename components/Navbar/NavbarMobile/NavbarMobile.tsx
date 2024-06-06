@@ -6,7 +6,7 @@ import {
   useLang,
   usePathData,
 } from 'hooks'
-import { chapters, lessons } from 'content'
+import { chapters, lessons, resources } from 'content'
 import Address from 'components/Navbar/Address'
 import UserButton from '../UserButton'
 import HamburgerMenu from './HamburgerMenu'
@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react'
 import Menu from './Menu'
 import clsx from 'clsx'
 import Link from 'next/link'
-import HelpLink from '../HelpLink'
+import HelpButton from '../HelpButton'
 import Icon from 'shared/Icon'
 import { navbarThemeSelector } from 'lib/themeSelector'
 import { getChapterKey, getCurrentLessonKey, keys } from 'lib/progress'
@@ -44,6 +44,10 @@ export default function NavbarMobile({ params }) {
       chapters[slug]?.metadata.secondaryTheme ??
       chapters[slug]?.metadata.theme ??
       'bg-back'
+
+  const chapterResources = resources[chapterId]
+
+  const Resources = chapterResources?.default[lessonId]?.default
 
   function handleButtonClick() {
     if (!isOpen) {
@@ -105,7 +109,11 @@ export default function NavbarMobile({ params }) {
           <HamburgerMenu isOpen={isOpen} clicked={handleButtonClick} />
         </div>
         <div className="flex items-center">
-          <HelpLink params={params} />
+          {Resources && (
+            <span className="h-full w-[50px]">
+              <HelpButton lessonId={lessonId} />
+            </span>
+          )}
           <span className="h-full w-[50px]">
             <UserButton />
           </span>

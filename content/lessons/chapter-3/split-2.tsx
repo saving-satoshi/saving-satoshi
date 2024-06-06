@@ -171,7 +171,7 @@ export default function Split2({ lang }) {
         protagonists={PROTAGONISTS}
         antagonists={ANTAGONISTS}
         speed={1}
-        profileContainerClassName="max-w-[1290px] mx-auto"
+        profileContainerClassName="max-w-[1425px] mx-auto"
         contributionBarOpacity="fade-in-out opacity-[.2]"
         profiles={PROTAGONISTS.map((profile, i) => (
           <Profile

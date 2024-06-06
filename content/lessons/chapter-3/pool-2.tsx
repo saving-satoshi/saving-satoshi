@@ -163,7 +163,7 @@ export default function Pool2({ lang }) {
 
   return (
     <div className="fade-in px-[20px] py-[30px] md:py-10">
-      <div className="fade-in mx-auto flex max-w-[1340px] flex-col items-center gap-5 2xl:gap-8">
+      <div className="fade-in mx-auto flex max-w-[1475px] flex-col items-center gap-5 2xl:gap-8">
         <HashrateChallenge
           totalBlocks={TOTAL_BLOCKS}
           blockRatio={BLOCK_RATIO}
@@ -180,7 +180,6 @@ export default function Pool2({ lang }) {
               avatar={profile.avatar}
               avatarSize={isSmallScreen ? 50 : 100}
               description={profile.description}
-              className={'md:!max-w-[220px]'}
             >
               <Card className="flex">
                 <span

@@ -1,13 +1,18 @@
+import clsx from 'clsx'
 import React from 'react'
 
 export default function Modal({
   children,
   active,
   onRequestClose,
+  wide,
+  theme,
 }: {
   children?: React.ReactNode
   active: boolean
   onRequestClose: () => void
+  wide?: boolean
+  theme?: string
 }) {
   const handleClick = (e) => {
     if (e.target.classList.contains('modal-backdrop')) {
@@ -22,10 +27,20 @@ export default function Modal({
 
   return (
     <div
-      className="modal-backdrop fixed inset-0 z-10 flex items-center justify-center overflow-y-auto bg-overlayColor"
+      className="modal-backdrop fixed inset-0 z-10 flex items-center justify-center bg-overlayColor"
       onClick={handleClick}
     >
-      <div className="h-full w-screen transform overflow-y-auto overflow-x-hidden bg-back p-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:h-fit sm:w-[550px] sm:rounded-lg sm:pt-5">
+      <div
+        className={clsx(
+          'h-full w-screen transform overflow-hidden py-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:max-h-[90%] sm:rounded-lg sm:pt-5',
+          theme,
+          {
+            'px-5 sm:h-fit sm:w-[550px]': !wide,
+            'sm:w-fit': wide,
+            'bg-back': !theme,
+          }
+        )}
+      >
         {children}
       </div>
     </div>

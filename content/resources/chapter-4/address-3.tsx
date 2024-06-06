@@ -20,17 +20,7 @@ const javascript = {
     name: 'findHash',
     args: ['nonce'],
   },
-  defaultCode: [
-    `function hashCompressed(compressedPublicKey) {
-  // First we need to hash the compressedPublicKey with SHA256
-  const sha256Hash = crypto.createHash('sha256').update(Buffer.from(compressedPublicKey, 'hex')).digest()
-  // Then you will need to hash it with ripemd160
-  const ripemdHash = crypto.createHash('ripemd160').update(sha256Hash).digest()
-  // Finally decode the answer into hex
-  const publicKeyHash = ripemdHash.toString('hex')
-  return publicKeyHash
-}`,
-    `function hashToAddress(compressedPublicKeyHash) {
+  defaultCode: `function hashToAddress(compressedPublicKeyHash) {
   // To encode our publicKeyHash we first need to compress it to bytes which we have done for you
   // then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
   // We also need to decide which version to use, in this case version 0 will suffice for segwit
@@ -38,7 +28,6 @@ const javascript = {
   // Lastly, let's return the address
   return bech32Address
 }`,
-  ],
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -51,30 +40,20 @@ const python = {
     name: 'find_hash',
     args: ['nonce'],
   },
-  defaultCode: [
-    `def hash_compressed(compressed_public_key):
-    # First we need to hash the compressed_public_key with SHA256
-    sha256_hash = hashlib.new('sha256', bytes.fromhex(compressed_public_key)).digest()
-    # Then you will need to hash it with ripemd160
-    ripemd_hash = hashlib.new('ripemd160', sha256_hash).digest()
-    # Finally decode the answer into hex
-    public_key_hash = ripemd_hash.hex()
-    return public_key_hash`,
-    `def hash_to_address(compressed_public_key_hash):
+  defaultCode: `def hash_to_address(compressed_public_key_hash):
     # To encode our public_key_hash we first need to compress it to bytes which we have done for you
     # then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
     # We also need to decide which version to use, in this case version 0 will suffice for segwit
     bech32_address = encode('tb', 0, compressed_public_key_hash)
     # Lastly, let's return the address
     return bech32_address`,
-  ],
   validate: async (answer) => {
     return [true, undefined]
   },
   constraints: [],
 }
 
-const configOne: EditorConfig = {
+const config: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
     javascript,
@@ -82,48 +61,25 @@ const configOne: EditorConfig = {
   },
 }
 
-const configTwo: EditorConfig = {
-  defaultLanguage: 'javascript',
-  languages: {
-    javascript,
-    python,
-  },
-}
-export default function AddressResources({ lang }) {
+export default function AddressResourcesThree({ lang }) {
   const t = useTranslations(lang)
   const [currentLanguage] = useAtom(currentLanguageAtom)
-  console.log(getLanguageString(currentLanguage))
-  const [codeOne, setCodeOne] = useState(
-    configOne.languages[getLanguageString(currentLanguage)].defaultCode?.[0]
-  )
-  const [codeTwo, setCodeTwo] = useState(
-    configTwo.languages[getLanguageString(currentLanguage)].defaultCode?.[1]
-  )
-  const [languageOne, setLanguageOne] = useState(
-    getLanguageString(currentLanguage)
-  )
-  const [languageTwo, setLanguageTwo] = useState(
-    getLanguageString(currentLanguage)
-  )
-  const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
-  const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
 
-  const challengeOneToggleSwitch = () => {
-    setChallengeOneIsToggled(!challengeOneIsToggled)
+  const [code, setCode] = useState(
+    config.languages[getLanguageString(currentLanguage)].defaultCode as string
+  )
+
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+
+  const [challengeIsToggled, setChallengeIsToggled] = useState(false)
+
+  const challengeToggleSwitch = () => {
+    setChallengeIsToggled(!challengeIsToggled)
   }
 
-  const challengeTwoToggleSwitch = () => {
-    setChallengeTwoIsToggled(!challengeTwoIsToggled)
-  }
-
-  const handleSetLanguageOne = (value) => {
-    setLanguageOne(value)
-    setCodeOne(configOne.languages[value].defaultCode?.[0])
-  }
-
-  const handleSetLanguageTwo = (value) => {
-    setLanguageTwo(value)
-    setCodeTwo(configOne.languages[value].defaultCode?.[1])
+  const handleSetLanguage = (value) => {
+    setLanguage(value)
+    setCode(config.languages[value].defaultCode as string)
   }
 
   const handleBeforeMount = (monaco) => {
@@ -166,57 +122,27 @@ export default function AddressResources({ lang }) {
           <Text>{t('help_page.solution_one')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
-              checked={challengeOneIsToggled}
-              onChange={challengeOneToggleSwitch}
+              checked={challengeIsToggled}
+              onChange={challengeToggleSwitch}
             />
             <Text>{t('help_page.spoilers_confirm')}</Text>
           </div>
-          {challengeOneIsToggled && (
+          {challengeIsToggled && (
             <div className="border border-white/25">
               <LanguageTabs
-                languages={configOne.languages}
-                value={languageOne}
-                onChange={handleSetLanguageOne}
+                languages={config.languages}
+                value={language}
+                onChange={handleSetLanguage}
                 noHide={true}
               />
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`180px`}
-                  value={codeOne}
+                  height={`215px`}
+                  value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
-                  language={languageOne}
-                  theme={'satoshi'}
-                  options={readOnlyOptions}
-                />
-              </div>
-            </div>
-          )}
-          <Text>{t('help_page.solution_two')}</Text>
-          <div className="flex flex-row items-center gap-2">
-            <ToggleSwitch
-              checked={challengeTwoIsToggled}
-              onChange={challengeTwoToggleSwitch}
-            />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
-          </div>
-          {challengeTwoIsToggled && (
-            <div className="border border-white/25">
-              <LanguageTabs
-                languages={configTwo.languages}
-                value={languageTwo}
-                onChange={handleSetLanguageTwo}
-                noHide
-              />
-              <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
-                <MonacoEditor
-                  loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`160px`}
-                  value={codeTwo}
-                  beforeMount={handleBeforeMount}
-                  onMount={handleMount}
-                  language={languageTwo}
+                  language={language}
                   theme={'satoshi'}
                   options={readOnlyOptions}
                 />

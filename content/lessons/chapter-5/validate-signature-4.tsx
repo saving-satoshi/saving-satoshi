@@ -23,7 +23,7 @@ console.log("KILL")
     name: 'verify',
     args: [],
   },
-  rangesToCollapse: [
+  rangeToNotCollapse: [
     {
       start: 70,
       end: 72,
@@ -131,7 +131,7 @@ print("KILL")
     name: 'verify',
     args: [],
   },
-  rangesToCollapse: [
+  rangeToNotCollapse: [
     {
       start: 49,
       end: 51,

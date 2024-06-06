@@ -208,7 +208,7 @@ class Input:
           >
             {t('chapter_six.in_out_four.paragraph_three.b.text')}
             <HolocatQuestion
-              theme={chapters['chapter-7'].metadata.theme}
+              theme={chapters['chapter-6'].metadata.theme}
               inline
               id="tx-order"
               question={t('chapter_six.in_out_four.paragraph_three.b.question')}

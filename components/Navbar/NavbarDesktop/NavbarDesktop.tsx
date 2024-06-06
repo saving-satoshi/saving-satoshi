@@ -3,12 +3,12 @@
 import clsx from 'clsx'
 
 import { useLocalizedRoutes, useTranslations, useLang } from 'hooks'
-import { chapters, lessons } from 'content'
+import { chapters, lessons, resources } from 'content'
 import Address from '../Address'
 import TabGroupDesktop from './TabGroupDesktop'
 import UserButton from '../UserButton'
 import Link from 'next/link'
-import HelpLink from '../HelpLink'
+import HelpButton from '../HelpButton'
 import Icon from 'shared/Icon'
 import { usePathData } from 'hooks'
 import { navbarThemeSelector } from 'lib/themeSelector'
@@ -32,6 +32,10 @@ export default function NavbarDesktop({ params }) {
 
   const theme = navbarThemeSelector(lessons, lessonId, chapters, slug)
 
+  const chapterResources = resources[chapterId]
+
+  const Resources = chapterResources?.default[lessonId]?.default
+
   return (
     <div className={clsx('z-10 hidden w-full md:block', theme)}>
       <div className="flex h-[70px] items-stretch justify-between border-b border-white/80 text-white">
@@ -50,7 +54,11 @@ export default function NavbarDesktop({ params }) {
         </div>
         <nav className="flex items-center">
           <TabGroupDesktop params={params} />
-          <HelpLink params={params} />
+          {Resources && (
+            <span className="h-full w-[70px] items-stretch hover:bg-black/25">
+              <HelpButton lessonId={lessonId} />
+            </span>
+          )}
           <span className="h-full w-[70px] items-stretch hover:bg-black/25">
             <UserButton />
           </span>

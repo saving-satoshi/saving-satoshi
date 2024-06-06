@@ -20,29 +20,13 @@ const javascript = {
     name: 'findHash',
     args: ['nonce'],
   },
-  defaultCode: [
-    `function privateKeyToPublicKey(privateKey) {
+  defaultCode: `function privateKeyToPublicKey(privateKey) {
   // First your private key will need to be encoded into an integer from a hex string.
   const encodedPrivateKey = BigInt(\`0x\${privateKey}\`)
   // From the library you need to use the .mul() method to multiply G by your private key
   const generatorPoint = G.mul(encodedPrivateKey)
   return generatorPoint
 }`,
-    `function compress_publickey(publicKey) {
-  // Determine if the y coordinate is even or odd and prepend the
-  // corresponding header byte to the x coordinate.
-  // Return a hex string
-  const header_byte = {
-    'y_is_even': '02',
-    'y_is_odd':  '03'
-  };
-  const regex = /([a-f0-9]+),([a-f0-9]+)/;
-  const cleanedPublicKey = publicKey.replace(/\\s/g, '');
-  const match = cleanedPublicKey.match(regex);
-  const which = BigInt("0x" + match[2]) % 2n == 0 ? 'y_is_even' : 'y_is_odd';
-  return header_byte[which] + match[1];
-}`,
-  ],
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -55,81 +39,43 @@ const python = {
     name: 'find_hash',
     args: ['nonce'],
   },
-  defaultCode: [
-    `def privatekey_to_publickey(private_key):
+  defaultCode: `def privatekey_to_publickey(private_key):
     # First your private key will need to be encoded into an integer from a hex string.
     encoded_private_key = int(private_key, 16)
     # From the library you need to use the .mul() method to multiply G by your private key
     generator_point = G.mul(encoded_private_key)
     return generator_point`,
-    `def compress_publickey(public_key):
-    header_byte = {
-        "y_is_even": "02",
-        "y_is_odd":  "03"
-    }
-    regex = r"([a-f0-9]+),([a-f0-9]+)"
-    cleaned_public_key = re.sub(r"\\s", "", public_key)
-    match = re.search(regex, cleaned_public_key)
-    which = 'y_is_even' if int(match.group(2), 16) % 2 == 0 else 'y_is_odd'
-    return header_byte[which] + match.group(1)`,
-  ],
   validate: async (answer) => {
     return [true, undefined]
   },
   constraints: [],
 }
 
-const configOne: EditorConfig = {
+const config: EditorConfig = {
   defaultLanguage: 'javascript',
   languages: {
-    javascript,
+    javascript: javascript,
     python,
   },
 }
 
-const configTwo: EditorConfig = {
-  defaultLanguage: 'javascript',
-  languages: {
-    javascript,
-    python,
-  },
-}
-
-export default function PublicKeyResources({ lang }) {
+export default function PublicKeyResourcesThree({ lang }) {
   const t = useTranslations(lang)
   const [currentLanguage] = useAtom(currentLanguageAtom)
 
-  const [codeOne, setCodeOne] = useState(
-    configOne.languages[getLanguageString(currentLanguage)].defaultCode?.[0]
+  const [code, setCode] = useState(
+    config.languages[getLanguageString(currentLanguage)].defaultCode as string
   )
-  const [codeTwo, setCodeTwo] = useState(
-    configTwo.languages[getLanguageString(currentLanguage)].defaultCode?.[1]
-  )
-  const [languageOne, setLanguageOne] = useState(
-    getLanguageString(currentLanguage)
-  )
-  const [languageTwo, setLanguageTwo] = useState(
-    getLanguageString(currentLanguage)
-  )
-  const [challengeOneIsToggled, setChallengeOneIsToggled] = useState(false)
-  const [challengeTwoIsToggled, setChallengeTwoIsToggled] = useState(false)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  const [challengeIsToggled, setChallengeIsToggled] = useState(false)
 
-  const challengeOneToggleSwitch = () => {
-    setChallengeOneIsToggled(!challengeOneIsToggled)
+  const challengeToggleSwitch = () => {
+    setChallengeIsToggled(!challengeIsToggled)
   }
 
-  const challengeTwoToggleSwitch = () => {
-    setChallengeTwoIsToggled(!challengeTwoIsToggled)
-  }
-
-  const handleSetLanguageOne = (value) => {
-    setLanguageOne(value)
-    setCodeOne(configOne.languages[value].defaultCode?.[0])
-  }
-
-  const handleSetLanguageTwo = (value) => {
-    setLanguageTwo(value)
-    setCodeTwo(configTwo.languages[value].defaultCode?.[1])
+  const handleSetLanguage = (value) => {
+    setLanguage(value)
+    setCode(config.languages[value].defaultCode as string)
   }
 
   const handleBeforeMount = (monaco) => {
@@ -224,57 +170,27 @@ export default function PublicKeyResources({ lang }) {
           <Text>{t('help_page.solution_one')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
-              checked={challengeOneIsToggled}
-              onChange={challengeOneToggleSwitch}
+              checked={challengeIsToggled}
+              onChange={challengeToggleSwitch}
             />
             <Text>{t('help_page.spoilers_confirm')}</Text>
           </div>
-          {challengeOneIsToggled && (
+          {challengeIsToggled && (
             <div className="border border-white/25">
               <LanguageTabs
-                languages={configOne.languages}
-                value={languageOne}
-                onChange={handleSetLanguageOne}
+                languages={config.languages}
+                value={language}
+                onChange={handleSetLanguage}
                 noHide
               />
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`140px`}
-                  value={codeOne}
+                  height={`160px`}
+                  value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
-                  language={languageOne}
-                  theme={'satoshi'}
-                  options={readOnlyOptions}
-                />
-              </div>
-            </div>
-          )}
-          <Text>{t('help_page.solution_two')}</Text>
-          <div className="flex flex-row items-center gap-2">
-            <ToggleSwitch
-              checked={challengeTwoIsToggled}
-              onChange={challengeTwoToggleSwitch}
-            />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
-          </div>
-          {challengeTwoIsToggled && (
-            <div className="border border-white/25">
-              <LanguageTabs
-                languages={configTwo.languages}
-                value={languageTwo}
-                onChange={handleSetLanguageTwo}
-                noHide
-              />
-              <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
-                <MonacoEditor
-                  loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`220px`}
-                  value={codeTwo}
-                  beforeMount={handleBeforeMount}
-                  onMount={handleMount}
-                  language={languageTwo}
+                  language={language}
                   theme={'satoshi'}
                   options={readOnlyOptions}
                 />

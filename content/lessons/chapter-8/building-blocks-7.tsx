@@ -73,8 +73,8 @@ for (const bhash of candidates){
 console.log("KILL")`,
     rangeToNotCollapse: [
       {
-        start: countLines(cleanedCombinedCode) + 3,
-        end: countLines(cleanedCombinedCode) + 3,
+        start: countLines(cleanedCombinedCode) + 5,
+        end: countLines(cleanedCombinedCode) + 8,
       },
     ],
     defaultFunction: {
@@ -84,7 +84,7 @@ console.log("KILL")`,
     defaultCode: `const Bitcoinrpc = require('@0tuedon/bitcoin_rpcjs')
 const Bitcoin = new Bitcoinrpc()
 
-${cleanedCombinedCode.slice(0, -2)}
+${cleanedCombinedCode}
 
 function validateBlock(block) {
   // YOUR CODE HERE
@@ -123,7 +123,7 @@ print("KILL")`,
     defaultCode: `from bitcoin_rpcpy.bitcoin_rpc import Bitcoin
 Bitcoin = Bitcoin()
 
-${cleanedCombinedCode.slice(0, -2)}
+${cleanedCombinedCode}
 
 def validate_block(block):
     # YOUR CODE HERE
@@ -131,7 +131,7 @@ def validate_block(block):
 
     rangeToNotCollapse: [
       {
-        start: countLines(cleanedCombinedCode) + 2,
+        start: countLines(cleanedCombinedCode) + 1,
         end: countLines(cleanedCombinedCode) + 2,
       },
     ],
