@@ -24,8 +24,14 @@ export default function ChallengeItem({
   const lessonMetaUnlocked = lessons[chapterId][lessonId].metadata
 
   const lessonMetaCompleted = lessons[chapterId][lessonId].metadata
-  const { isUnlocked } = useLessonStatus(progress, lessonMetaUnlocked.key)
-  const { isPageCompleted } = useLessonStatus(progress, lessonMetaCompleted.key)
+  const { isUnlocked } = useLessonStatus(
+    progress.progress,
+    lessonMetaUnlocked.key
+  )
+  const { isPageCompleted } = useLessonStatus(
+    progress.progress,
+    lessonMetaCompleted.key
+  )
 
   const href = `${routes.chaptersUrl}/${chapterId}/${lessonId}`
   const ComponentType = isUnlocked ? Link : 'div'

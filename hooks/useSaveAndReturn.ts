@@ -24,7 +24,7 @@ export default function useSaveAndReturn() {
     const nextLessonKey = getNextLessonKey(currentLessonKey, account)
     const chapterKey = getChapterKey(nextLessonKey)
 
-    if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
+    if (progress && !isLessonUnlocked(progress.progress, nextLessonKey)) {
       if (account) {
         await saveProgress(nextLessonKey)
       }

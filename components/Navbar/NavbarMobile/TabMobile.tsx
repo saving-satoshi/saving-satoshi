@@ -27,7 +27,7 @@ export default function Tab({
   const { slug } = params
   const [progress] = useAtom(progressAtom)
   const { isUnlocked } = useLessonStatus(
-    progress,
+    progress.progress,
     getLessonKey(
       slug,
       challenge.lessonId === chapters[slug].metadata.lessons[0]
@@ -36,7 +36,7 @@ export default function Tab({
     )
   )
   const { isPageCompleted } = useLessonStatus(
-    progress,
+    progress.progress,
     getLessonKey(slug, challenge.lessonId)
   )
 

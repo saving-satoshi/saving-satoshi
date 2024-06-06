@@ -6,6 +6,7 @@ import { createPortal } from 'react-dom'
 import { chapters, lessons } from 'content'
 import { usePathData, useTranslations, useLocalizedRoutes } from 'hooks'
 import {
+  chaptersWithDifficulty,
   getLastUnlockedLessonPath,
   getLessonKey,
   getNextLessonPath,
@@ -19,11 +20,15 @@ import useEnvironment from 'hooks/useEnvironment'
 import { useAtom } from 'jotai'
 import {
   accountAtom,
+  DifficultyLevel,
+  difficultyLevelAtom,
   isAuthLoadingAtom,
   isLoadingProgressAtom,
+  Modal,
   progressAtom,
 } from 'state/state'
 import { useProgressFunctions } from 'state/ProgressFunctions'
+import { useModalFunctions } from 'state/ModalFunctions'
 
 const Portal = ({ children, id }) => {
   const [mounted, setMounted] = useState(false)
@@ -54,20 +59,34 @@ export default function Page({ params }) {
   const { saveProgress, saveProgressLocal } = useProgressFunctions()
 
   const currentLessonKey = getLessonKey(pathData.chapterId, pathData.lessonId)
-  const lastUnlockedLessonPath = getLastUnlockedLessonPath(progress)
+  const lastUnlockedLessonPath = getLastUnlockedLessonPath(progress.progress)
   const nextLessonPath = getNextLessonPath(currentLessonKey)
   const route = routes.chaptersUrl + lastUnlockedLessonPath
 
   const [unlocked, setUnlocked] = useState<number>(LoadingState.Idle)
+  const [difficulty] = useAtom(difficultyLevelAtom)
+  const { open, close } = useModalFunctions()
+  console.log('chapterId', chapterId)
+  console.log('difficulty level', difficulty)
+  if (
+    chaptersWithDifficulty.includes(chapterId) &&
+    difficulty === DifficultyLevel.NOT_SELECTED
+  ) {
+    console.log('got here')
+    // Show a modal asking to select difficulty level
+    open(Modal.Difficulty)
+  } else {
+    close(Modal.Difficulty)
+  }
 
   useEffect(() => {
     if (!isDevelopment && !isAccountLoading && !isProgressLoading) {
-      if (progress && params.lesson) {
+      if (progress.progress && params.lesson) {
         const lesson = chapterLessons[params.lesson]?.metadata ?? false
-        const lessonUnlocked = isLessonUnlocked(progress, lesson.key)
+        const lessonUnlocked = isLessonUnlocked(progress.progress, lesson.key)
         if (
           !isDevelopment &&
-          keys.indexOf(currentLessonKey) > keys.indexOf(progress) + 1
+          keys.indexOf(currentLessonKey) > keys.indexOf(progress.progress) + 1
         ) {
           console.warn('Lesson locked')
           router.replace(route)

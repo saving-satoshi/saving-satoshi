@@ -39,7 +39,7 @@ export default function Chapter({ children, metadata, lang }) {
     `${metadata.slug.replace('-', '_')}_enabled`
   )
   const { isUnlocked } = useLessonStatus(
-    progress,
+    progress.progress,
     getLessonKey(metadata.slug, 'intro-1')
   )
 
@@ -56,12 +56,12 @@ export default function Chapter({ children, metadata, lang }) {
   const position = metadata.position + 1
   const isEven = position % 2 == 0
   const chapterLessons = keys.filter((ele) =>
-    ele.includes(progress.substring(0, 3))
+    ele.includes(progress.progress.substring(0, 3))
   )
   const isBetweenChapter =
-    progress !== chapterLessons[0] &&
-    progress !== keys[keys.length - 1] &&
-    position === parseInt(progress.substring(2, 3))
+    progress.progress !== chapterLessons[0] &&
+    progress.progress !== keys[keys.length - 1] &&
+    position === parseInt(progress.progress.substring(2, 3))
   const queryParams = isDevelopment ? '?dev=true' : ''
   const tabData = [
     {
@@ -182,7 +182,8 @@ export default function Chapter({ children, metadata, lang }) {
                       href={
                         (isBetweenChapter &&
                           `${
-                            routes.chaptersUrl + keysMeta[progress].path
+                            routes.chaptersUrl +
+                            keysMeta[progress.progress].path
                           }${queryParams}`) ||
                         `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}${queryParams}`
                       }

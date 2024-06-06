@@ -7,8 +7,12 @@ import { Text } from 'ui'
 import { useEffect, useState } from 'react'
 import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
-import { detectLanguage, Language, organizeImports } from 'lib/SavedCode'
-import { countLines } from './put-it-together-3'
+import {
+  countLines,
+  detectLanguage,
+  Language,
+  organizeImports,
+} from 'lib/SavedCode'
 import { Loader } from 'shared'
 
 export const metadata = {
