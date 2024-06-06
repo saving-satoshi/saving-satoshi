@@ -159,8 +159,9 @@ class Transaction {
     this.locktime = 0;
   }
 
-  // COMPLETE THIS FUNCTION
   digest(input_index) {
+    // YOUR CODE HERE
+
     // Start with an empty 4-byte Buffer
 
     // Write the transaction version in little endian
@@ -321,8 +322,9 @@ class Transaction:
         self.witnesses = []
         self.locktime = 0
 
-    # COMPLETE THIS FUNCTION
     def digest(self, input_index: int):
+        # YOUR CODE HERE
+
         # Start with an empty bytes object
 
         # Append the transaction version in little endian
