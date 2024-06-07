@@ -67,7 +67,7 @@ console.log("KILL")`,
       name: 'showtime',
       args: [''],
     },
-    defaultCode: `const Bitcoinrpc = require('@0tuedon/bitcoin_rpcjs')
+    defaultCode: `const Bitcoinrpc = require('@savingsatoshi/bitcoin_rpcjs')
 const Bitcoin = new Bitcoinrpc()
 
 ${cleanedCombinedCode}

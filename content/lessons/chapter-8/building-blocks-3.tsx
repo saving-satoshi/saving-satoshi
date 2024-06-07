@@ -23,7 +23,7 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: `const Bitcoinrpc = require('@0tuedon/bitcoin_rpcjs')
+    defaultCode: `const Bitcoinrpc = require('@savingsatoshi/bitcoin_rpcjs')
 const Bitcoin = new Bitcoinrpc()
 // https://github.com/saving-satoshi/bitcoin_rpcjs/blob/master/bitcoin_rpc.js
 
