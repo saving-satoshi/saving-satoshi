@@ -40,6 +40,8 @@ const TX_HASH = "7bd09aa3b4795be2839d9159edff0811d6d4ec5a64abd81c0da1e73ab00bf52
 const getBlockTxFee = () => {
   let block = Bitcoin.rpc("getblock", BLOCK_HASH)
   // YOUR CODE HERE
+
+  return 0;
 }
 
 // Now let's find the miner's fee for this transaction.
@@ -79,6 +81,7 @@ TX_HASH = "7bd09aa3b4795be2839d9159edff0811d6d4ec5a64abd81c0da1e73ab00bf520"
 def get_block_tx_fee():
     block = Bitcoin.rpc("getblock", BLOCK_HASH)
     # YOUR CODE HERE
+    return 0
 
 # Now let's find the miner's fee for this transaction.
 # with the transaction from above determine the fee paid to miners
