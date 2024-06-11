@@ -3,6 +3,7 @@
 import AccountModal from 'components/Modals/Account'
 import SignInModal from 'components/Modals/SignIn'
 import SignUpModal from 'components/Modals/SignUp'
+import HelpModal from 'components/Modals/Help'
 import { useAtom } from 'jotai'
 import { useEffect } from 'react'
 import { useAuthFunctions } from 'state/AuthFunctions'
@@ -40,6 +41,7 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
         state={modals[Modal.Account]}
         onClose={() => close(Modal.Account)}
       />
+      <HelpModal state={modals[Modal.Help]} onClose={() => close(Modal.Help)} />
     </>
   )
 }

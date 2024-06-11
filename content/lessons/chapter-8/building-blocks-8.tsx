@@ -46,8 +46,6 @@ export default function BuildingBlocks8({ lang }) {
     }
   }, [prevData.data])
 
-  console.log(cleanedCombinedCode, combinedCode)
-
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
 const fs = require('fs');
@@ -61,15 +59,15 @@ console.log((isValid && isInvalid) && 'true')
 console.log("KILL")`,
     rangeToNotCollapse: [
       {
-        start: countLines(cleanedCombinedCode) + 3,
-        end: countLines(cleanedCombinedCode) + 3,
+        start: countLines(cleanedCombinedCode) + 5,
+        end: countLines(cleanedCombinedCode) + 8,
       },
     ],
     defaultFunction: {
       name: 'showtime',
       args: [''],
     },
-    defaultCode: `const Bitcoinrpc = require('@0tuedon/bitcoin_rpcjs')
+    defaultCode: `const Bitcoinrpc = require('@savingsatoshi/bitcoin_rpcjs')
 const Bitcoin = new Bitcoinrpc()
 
 ${cleanedCombinedCode}
@@ -110,7 +108,7 @@ ${cleanedCombinedCode}
 
 def showtime():
     # YOUR CODE HERE
-    
+
 `,
 
     rangeToNotCollapse: [
@@ -147,8 +145,8 @@ def showtime():
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
-  const jsonObj = `{  
-  "valid": [...],  
+  const jsonObj = `{
+  "valid": [...],
   "invalid": [...]
 }
 `

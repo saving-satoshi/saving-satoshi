@@ -34,7 +34,7 @@ console.log("KILL")`,
       name: 'getBlockHeight',
       args: ['height'],
     },
-    defaultCode: `const Bitcoinrpc = require('@0tuedon/bitcoin_rpcjs')
+    defaultCode: `const Bitcoinrpc = require('@savingsatoshi/bitcoin_rpcjs')
 const Bitcoin = new Bitcoinrpc()
 
 const CODE_CHALLENGE_2_HEIGHT = 6929996;

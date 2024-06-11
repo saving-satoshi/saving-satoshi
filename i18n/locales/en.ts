@@ -237,32 +237,35 @@ const translations = {
       feedback: 'Share your feedback',
     },
     resources: {
-      genesis: {
+      genesis_two: {
         scriptsig_heading: 'ScriptSig',
         scriptsig_paragraph:
           "The 'scriptSig' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The 'scriptSig' is the data that goes into the input's scriptSig field.",
-        blocks_heading: 'Bitcoin Blocks',
-        blocks_paragraph:
-          "A 'block' in blockchain technology is like a container for a group of transactions. It forms a crucial part of the blockchain, with each block referencing the one before it. This reference, along with a block header that contains important details like a timestamp and a unique identifier, ensures the data's integrity and chronological order. Once a block is added to the blockchain, it's incredibly difficult to change, ensuring the security and immutability of the data. The size of a block can vary between different blockchains, and each block must undergo validation by network nodes before becoming a permanent part of the blockchain. This block-and-chain structure is the foundation of blockchain's transparency and security.",
         block_explorer_heading: 'Block Explorer',
         block_explorer_paragraph:
-          'A block explorer is a crucial tool for navigating and understanding blockchain networks. It acts as a user-friendly interface to inspect and analyze the data stored on a blockchain. With a block explorer, users can explore transaction histories, view account balances, and track the progress of individual blocks and transactions. It provides transparency and accountability in the world of decentralized cryptocurrencies, making it easier to verify and trace transactions while promoting trust in blockchain technology.',
-        tip_one:
-          'Look for the scriptSig(Hex) category nested in coinbase input after expanding the transaction within the block.',
-        tip_two:
-          "The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.",
+          'A block explorer is a crucial tool for navigating and understanding blockchain networks. It acts as a user-friendly interface to inspect and analyze the data stored on a blockchain. With a block explorer, users can explore transaction histories, view account balances, and track the progress of individual blocks and transactions.',
+        tip: 'Look for the scriptSig(Hex) category nested in coinbase input after expanding the transaction within the block.',
       },
-      transacting: {
+      genesis_three: {
+        bash_heading: 'Bash Commands',
+        bash_paragraph:
+          'We are using some basic bash command and options to reverse the compression Satoshi did on the text put into the genesis block.',
+        tip: "The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.",
+      },
+      transacting_two: {
         transactions_heading: 'Transactions',
         transactions_paragraph:
           "A transaction in the world of cryptocurrencies is akin to a single atomic payment, where it involves the process of destroying existing coins and creating new ones. When someone initiates a cryptocurrency transaction, they're essentially instructing the blockchain to transfer a specific amount of coins from one digital wallet to another. To achieve this, the transaction consumes the sender's existing coins and generates new ones for the recipient, effectively updating the ownership ledger.",
         bitcoin_script_heading: 'Bitcoin Script',
         bitcoin_script_paragraph:
           'Bitcoin Script is a simple, stack-based programming language used in Bitcoin transactions to define the conditions under which bitcoins can be spent. It consists of various opcodes (short for operation codes) that specify what operations should be performed on the data within the script.',
-        tip_one:
-          'Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33 bytes long (66 characters total) in the OP_Return of the transaction',
-        tip_two:
-          "When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string",
+        tip: 'Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33 bytes long (66 characters total) in the OP_Return of the transaction',
+      },
+      transacting_three: {
+        secrets_heading: 'Secrets In Bitcoin',
+        secrets_paragraph:
+          'As we saw from the previous challenge, secrets embedded into bitcoin scripts has been a part of its history since the genesis block. Whether used to simply store some information in the blockchain, to pass information through bitcoin script to give some value external to bitcoin, or to pass messages to others, people have been storing things in the blockchain other than inputs and outputs since the beginning.',
+        tip: "When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string",
       },
     },
   },
@@ -508,7 +511,7 @@ const translations = {
         tip_two:
           'Think about how you would create a function to keep running until that answer is equal to a specific value',
         tip_three:
-          'Remember to log your answer with <span className="px-1 border-[2px] border-dashed">console.log()</span> or <span className="px-1 border-[2px] border-dashed">print()</span>. It is the only way our IDE will try to validate your answer.',
+          'Remember to log your answer with <span className="p-1 font-mono bg-[#00000033] m-1">console.log()</span> or <span className="p-1 font-mono bg-[#00000033] m-1">print()</span>. It is the only way our IDE will try to validate your answer.',
       },
       mining: {
         mining_heading: 'Mining',
@@ -762,9 +765,9 @@ const translations = {
       title: 'Public key',
       nav_title: 'Calculate the public key',
       paragraph_one:
-        'To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point (<Link href="public-key-3/help" className="underline">find out why</Link>). The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:',
+        'To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point. The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:',
       paragraph_two:
-        'Mathematical operations on an elliptic curve are similar to addition. Therefore, repetition of those operations is similar to multiplication. We use the * symbol to describe the algorithm (<Link href="public-key-3/help" className="underline">learn more</Link>), where `k` is the private key and `P` is the corresponding public key:',
+        'Mathematical operations on an elliptic curve are similar to addition. Therefore, repetition of those operations is similar to multiplication. We use the * symbol to describe the algorithm, where `k` is the private key and `P` is the corresponding public key:',
       python: {
         paragraph_three:
           'Complete the function <span className="text-green">privatekey_to_publickey()</span>  which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.',
@@ -809,11 +812,14 @@ const translations = {
       nav_title: 'Hash the compressed public key',
       paragraph_one:
         'Do you remember the hashing challenge? It turns out you can generate the simplest type of bitcoin address by hashing your compressed public key. Bitcoin uses two different hashing algorithms for this: SHA-256 and RIPEMD-160.',
-      paragraph_two:
-        'The first step is to perform a SHA-256 hash on your compressed public key. Then perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be 20 bytes encoded as a hex string.',
+      paragraph_two: 'Steps:',
       paragraph_three:
-        'Complete a function that accepts a 33-byte compressed public key as a hex string and returns a 20-byte public key hash as a hex string.',
+        '<span className="indent-48">1. Perform a SHA-256 hash on your compressed public key.</span>',
       paragraph_four:
+        '<span className="indent-48">2. Perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be 20 bytes encoded as a hex string.</span>',
+      paragraph_five:
+        'Complete a function that accepts a 33-byte compressed public key as a hex string and returns a 20-byte public key hash as a hex string.',
+      paragraph_six:
         'Here is the documentation for the hashing libraries we imported for you:\n' +
         '<Link href="https://nodejs.org/api/crypto.html#class-hash" target="_blank" className="underline">JavaScript: crypto</Link>\n' +
         '<Link href="https://docs.python.org/3/library/hashlib.html#usage" target="_blank" className="underline">Python: hashlib</Link>',
@@ -874,6 +880,10 @@ const translations = {
         discrete_log_heading: 'Discrete logarithm',
         discrete_log_paragraph:
           'A mathematical system where you can, for example, multiply but cannot divide. A simple metaphor for this is looking at a clock. Three hours past 11 o’clock is 2 o’clock. So we could say “11+3=2”. However if wanted to perform “2-x=11” and solve for x, you would have infinite possible answers (3, 15, 27, 39...). More on <Link href="https://en.wikipedia.org/wiki/Discrete_logarithm" className="underline">wikipedia</Link>.',
+        tip_one:
+          '<span className="font-bold">Calculate the public key:</span> Multiplication with elliptic curve points is not the same as the kind of multiplication you are used to, the one with regular numbers. So how do you perform multiplication? Notice that the generator point, <span className="p-1 font-mono bg-[#00000033] m-1">G</span> is of the type <span className="p-1 font-mono bg-[#00000033] m-1">secp256k1.GE</span>. Have a look at that class to see what methods you can invoke on it.',
+        tip_two:
+          '<span className="font-bold">Calculate the public key:</span> While the private key is accepted in hex format, it needs to be converted to a number (BigInt if you’re using JS) before multiplying with the generator point.',
       },
       address: {
         hash_algo_heading: 'SHA-256, RIPEMD-160',
@@ -1813,6 +1823,7 @@ const translations = {
     },
     outro_one: {
       title: 'Outro',
+      nav_title: 'Chapter complete',
       heading: "We're doing it live!",
       paragraph_one:
         "You found the longest chain and proved it to everyone! You are one step closer to discrediting Vanderpoole, needless to say he didn't answer anymore of Ms. Chunk's questions.",
@@ -1958,6 +1969,7 @@ const translations = {
       'What specific tips can/do we want to give learners if they are stuck?',
     spoilers_heading: 'Spoilers',
     spoilers_confirm: 'Yes, I want to see the solution',
+    solution: 'Solution to this challenge',
     solution_one: 'Solution to part one of this challenge',
     solution_two: 'Solution to part two of this challenge',
     solution_three: 'Solution to part three of this challenge',

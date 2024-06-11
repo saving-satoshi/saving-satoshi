@@ -233,7 +233,7 @@ export default function Solo1({ lang }) {
                   onClick={proceed}
                   classes={`${
                     isMediumScreen ? 'self-center' : 'self-start'
-                  } w-full md:w-auto max-w-[192px] mt-[20px]`}
+                  } w-full md:w-auto mt-[20px]`}
                 >
                   {t('shared.next')}
                 </Button>

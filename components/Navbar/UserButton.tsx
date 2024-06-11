@@ -3,7 +3,7 @@
 import Icon from 'shared/Icon'
 import Avatar from 'components/Avatar'
 import { useAtom } from 'jotai'
-import { accountAtom, isAuthLoadingAtom, Modal, modalsAtom } from 'state/state'
+import { accountAtom, isAuthLoadingAtom, Modal } from 'state/state'
 import { useModalFunctions } from 'state/ModalFunctions'
 
 export default function UserButton() {

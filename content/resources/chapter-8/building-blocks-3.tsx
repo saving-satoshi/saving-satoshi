@@ -17,75 +17,41 @@ import { currentLanguageAtom } from 'state/state'
 const javascriptChallenge = {
   program: `console.log("KILL")`,
   defaultFunction: {
-    name: 'verify',
+    name: '',
     args: [],
   },
-  defaultCode: `class Output {
-  constructor() {
-    this.value = 0;
-    this.witness_version = 0;
-    this.witness_data = Buffer.alloc(0);
-  }
-
-  static from_options(addr, value) {
-    assert(Number.isInteger(value));
-    const self = new this();
-    const {version, program} = bech32.decode('bc', addr);
-    self.witness_version = version;
-    self.witness_data = Buffer.from(program);
-    self.value = value;
-    return self;
-  }
-
-  serialize() {
-    const buf = Buffer.alloc(11);
-    buf.writeBigInt64LE(BigInt(this.value), 0);
-    buf.writeUInt8(this.witness_data.length + 2, 8);
-    buf.writeUInt8(this.witness_version, 9);
-    buf.writeUInt8(this.witness_data.length, 10);
-    return Buffer.concat([buf, this.witness_data]);
-  }
-}`,
-  validate: async () => {
+  defaultCode: `let info = Bitcoin.rpc("getinfo")
+console.log(info.difficulty)
+  `,
+  validate: async (answer) => {
     return [true, undefined]
   },
-  constraints: [],
+  constraints: [
+    {
+      range: [1, 1, 1, 1],
+      allowMultiline: true,
+    },
+  ],
 }
 
 const pythonChallenge = {
   program: `print("KILL")`,
   defaultFunction: {
-    name: 'verify',
+    name: '',
     args: [],
   },
-  defaultCode: `class Output:
-    def __init__(self):
-        self.value = 0
-        self.witness_version = 0
-        self.witness_data = b""
-
-    @classmethod
-    def from_options(cls, addr, value):
-        assert isinstance(value, int)
-        self = cls()
-        (ver, data) = bech32.decode("bc", addr)
-        self.witness_version = ver
-        self.witness_data = bytes(data)
-        self.value = value
-        return self
-
-    def serialize(self):
-        r = b""
-        r += pack("<q", self.value)
-        r += pack("<B", len(self.witness_data) + 2)
-        r += pack("<B", self.witness_version)
-        r += pack("<B", len(self.witness_data))
-        r += self.witness_data
-        return r`,
-  validate: async () => {
+  defaultCode: `info = Bitcoin.rpc("getinfo")
+print(info["difficulty"])
+  `,
+  validate: async (answer) => {
     return [true, undefined]
   },
-  constraints: [],
+  constraints: [
+    {
+      range: [1, 1, 1, 1],
+      allowMultiline: true,
+    },
+  ],
 }
 
 const config: EditorConfig = {
@@ -96,12 +62,13 @@ const config: EditorConfig = {
   },
 }
 
-export default function InOutResources({ lang }) {
+export default function BuildingBlocksResourcesThree({ lang }) {
   const t = useTranslations(lang)
   const [currentLanguage] = useAtom(currentLanguageAtom)
+
   const initialStateCode =
     config.languages[getLanguageString(currentLanguage)].defaultCode
-  const [code, setCode] = useState(initialStateCode as string)
+  const [code, setCode] = useState<string>(initialStateCode as string)
 
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 
@@ -157,7 +124,7 @@ export default function InOutResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`505px`}
+                  height={`65px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

@@ -20,42 +20,15 @@ const javascript = {
     name: 'findHash',
     args: ['nonce'],
   },
-  defaultCode: [
-    `function assembleBlock(mempool) {
-  // This block constructor opportunistically includes transactions with unconfirmed parents.
-  // If a transaction has unconfirmed parents, but those parents are all already included in the block, then it is valid for inclusion.
-  const block = [];
-  let block_weight = 0;
-  for (const tx of mempool) {
-      tx.feerate = parseFloat(tx.fee) / parseFloat(tx.weight);
-  }
-  // Construct dictionary for fast lookup
-  const txs = new Map([...mempool.map(tx => [tx.txid, tx])].sort((a, b) => b[1].feerate - a[1].feerate));
-  while (true) {
-    let added = false;
-    for (const tx of txs.values()) {
-      // Opportunistically include txs with unconfirmed parents if their parents
-      if (tx.parents.some(parent_tx => txs.has(parent_tx))) {
-        continue;
-      }
-      if (block_weight + tx.weight > MAX_BLOCK_WEIGHT) {
-        // Transaction won't fit in block
-        continue;
-      }
-      block.push(txs.get(tx.txid).txid);
-      block_weight += tx.weight;
-      txs.delete(tx.txid);
-      added = true;
-      break;
-    }
-    if (!added) {
-      // Couldn't add any more transactions.
-      break;
-    }
-  }
-  return block;
+  defaultCode: `function hashCompressed(compressedPublicKey) {
+  // First we need to hash the compressedPublicKey with SHA256
+  const sha256Hash = crypto.createHash('sha256').update(Buffer.from(compressedPublicKey, 'hex')).digest()
+  // Then you will need to hash it with ripemd160
+  const ripemdHash = crypto.createHash('ripemd160').update(sha256Hash).digest()
+  // Finally decode the answer into hex
+  const publicKeyHash = ripemdHash.toString('hex')
+  return publicKeyHash
 }`,
-  ],
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -68,35 +41,14 @@ const python = {
     name: 'find_hash',
     args: ['nonce'],
   },
-  defaultCode: [
-    `def assemble_block(mempool):
-    """This block constructor opportunistically includes transactions with
-    unconfirmed parents.
-
-    If a transaction has unconfirmed parents, but those parents are all already
-    included in the block, then it is valid for inclusion."""
-    block = []
-    block_weight = 0
-    for tx in mempool:
-        tx.feerate = float(tx.fee) / float(tx.weight)
-    # Construct dictionary for fast lookup
-    txs = OrderedDict(sorted([(tx.txid, tx) for tx in mempool], key=lambda x: x[1].feerate, reverse=True))
-    while True:
-        for tx in txs.values():
-            # Opportunistically include txs with unconfirmed parents if their parents
-            if any([parent_tx in txs for parent_tx in tx.parents]):
-                continue
-            if block_weight + tx.weight > MAX_BLOCK_WEIGHT:
-                # Transaction won't fit in block
-                continue
-            block.append(txs.pop(tx.txid).txid)
-            block_weight += tx.weight
-            break
-        else:
-            # Couldn't add any more transactions.
-            break
-    return block`,
-  ],
+  defaultCode: `def hash_compressed(compressed_public_key):
+    # First we need to hash the compressed_public_key with SHA256
+    sha256_hash = hashlib.new('sha256', bytes.fromhex(compressed_public_key)).digest()
+    # Then you will need to hash it with ripemd160
+    ripemd_hash = hashlib.new('ripemd160', sha256_hash).digest()
+    # Finally decode the answer into hex
+    public_key_hash = ripemd_hash.hex()
+    return public_key_hash`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -111,11 +63,19 @@ const config: EditorConfig = {
   },
 }
 
-export default function MempoolTransactionResources({ lang }) {
+const configTwo: EditorConfig = {
+  defaultLanguage: 'javascript',
+  languages: {
+    javascript,
+    python,
+  },
+}
+export default function AddressResourcesTwo({ lang }) {
   const t = useTranslations(lang)
   const [currentLanguage] = useAtom(currentLanguageAtom)
+
   const [code, setCode] = useState(
-    config.languages[getLanguageString(currentLanguage)].defaultCode?.[0]
+    config.languages[getLanguageString(currentLanguage)].defaultCode as string
   )
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
   const [challengeIsToggled, setChallengeIsToggled] = useState(false)
@@ -126,7 +86,7 @@ export default function MempoolTransactionResources({ lang }) {
 
   const handleSetLanguage = (value) => {
     setLanguage(value)
-    setCode(config.languages[value].defaultCode?.[0])
+    setCode(config.languages[value].defaultCode as string)
   }
 
   const handleBeforeMount = (monaco) => {
@@ -148,7 +108,22 @@ export default function MempoolTransactionResources({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={<></>}
+      readingResources={
+        <>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_four.resources.address.hash_algo_heading')}
+          </Text>
+          <Text>{t('chapter_four.resources.address.hash_algo_paragraph')}</Text>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_four.resources.address.wpkh_heading')}
+          </Text>
+          <Text>{t('chapter_four.resources.address.wpkh_paragraph')}</Text>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_four.resources.address.network_heading')}
+          </Text>
+          <Text>{t('chapter_four.resources.address.network_paragraph')}</Text>
+        </>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>
@@ -170,7 +145,7 @@ export default function MempoolTransactionResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`670px`}
+                  height={`200px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

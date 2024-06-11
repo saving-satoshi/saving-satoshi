@@ -10,7 +10,7 @@ import { EditorConfig } from 'types'
 import { Text, ResourcePage, ToggleSwitch } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
-import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
+import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { currentLanguageAtom } from 'state/state'
 
@@ -21,17 +21,39 @@ const javascript = {
     args: ['nonce'],
   },
   defaultCode: [
-    `function findHash(nonce) {
-  let hash = '';
-
-  // while the hash does not start with 5 zeroes we want the prgram to repeat
-  while (hash.substring(0, 5) !== '00000') {
-    // Hash the nonce using the crypto library and then increment the nonce
-    hash = crypto.createHash('sha256').update(nonce.toString()).digest('hex');
-
-    nonce++;
+    `function assembleBlock(mempool) {
+  // This block constructor opportunistically includes transactions with unconfirmed parents.
+  // If a transaction has unconfirmed parents, but those parents are all already included in the block, then it is valid for inclusion.
+  const block = [];
+  let block_weight = 0;
+  for (const tx of mempool) {
+      tx.feerate = parseFloat(tx.fee) / parseFloat(tx.weight);
   }
-  return hash
+  // Construct dictionary for fast lookup
+  const txs = new Map([...mempool.map(tx => [tx.txid, tx])].sort((a, b) => b[1].feerate - a[1].feerate));
+  while (true) {
+    let added = false;
+    for (const tx of txs.values()) {
+      // Opportunistically include txs with unconfirmed parents if their parents
+      if (tx.parents.some(parent_tx => txs.has(parent_tx))) {
+        continue;
+      }
+      if (block_weight + tx.weight > MAX_BLOCK_WEIGHT) {
+        // Transaction won't fit in block
+        continue;
+      }
+      block.push(txs.get(tx.txid).txid);
+      block_weight += tx.weight;
+      txs.delete(tx.txid);
+      added = true;
+      break;
+    }
+    if (!added) {
+      // Couldn't add any more transactions.
+      break;
+    }
+  }
+  return block;
 }`,
   ],
   validate: async (answer) => {
@@ -47,16 +69,33 @@ const python = {
     args: ['nonce'],
   },
   defaultCode: [
-    `def find_hash(nonce):
-    # Lets initialize the hash here as an empty string
-    hash = ''
+    `def assemble_block(mempool):
+    """This block constructor opportunistically includes transactions with
+    unconfirmed parents.
 
-    # while the hash does not start with 5 zeroes we want the prgram to repeat
-    while hash[0:5] != '00000':
-        # Hash the nonce using the crypto library and then increment the nonce
-        hash = sha256(str(nonce).encode()).digest().hex()
-        nonce += 1
-    return hash`,
+    If a transaction has unconfirmed parents, but those parents are all already
+    included in the block, then it is valid for inclusion."""
+    block = []
+    block_weight = 0
+    for tx in mempool:
+        tx.feerate = float(tx.fee) / float(tx.weight)
+    # Construct dictionary for fast lookup
+    txs = OrderedDict(sorted([(tx.txid, tx) for tx in mempool], key=lambda x: x[1].feerate, reverse=True))
+    while True:
+        for tx in txs.values():
+            # Opportunistically include txs with unconfirmed parents if their parents
+            if any([parent_tx in txs for parent_tx in tx.parents]):
+                continue
+            if block_weight + tx.weight > MAX_BLOCK_WEIGHT:
+                # Transaction won't fit in block
+                continue
+            block.append(txs.pop(tx.txid).txid)
+            block_weight += tx.weight
+            break
+        else:
+            # Couldn't add any more transactions.
+            break
+    return block`,
   ],
   validate: async (answer) => {
     return [true, undefined]
@@ -72,11 +111,9 @@ const config: EditorConfig = {
   },
 }
 
-export default function ScriptingResources({ lang }) {
+export default function MempoolTransactionResourcesOne({ lang }) {
   const t = useTranslations(lang)
-
-  const [currentLanguage, setCurrentLanguage] = useAtom(currentLanguageAtom)
-
+  const [currentLanguage] = useAtom(currentLanguageAtom)
   const [code, setCode] = useState(
     config.languages[getLanguageString(currentLanguage)].defaultCode?.[0]
   )
@@ -89,7 +126,6 @@ export default function ScriptingResources({ lang }) {
 
   const handleSetLanguage = (value) => {
     setLanguage(value)
-    setCurrentLanguage(getLanguageFromString(value))
     setCode(config.languages[value].defaultCode?.[0])
   }
 
@@ -112,27 +148,7 @@ export default function ScriptingResources({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={
-        <>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_two.resources.scripting.hash_libraries_heading')}
-          </Text>
-          <Text>
-            {t('chapter_two.resources.scripting.hash_libraries_paragraph')}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_two.resources.scripting.nonce_heading')}
-          </Text>
-          <Text>{t('chapter_two.resources.scripting.nonce_paragraph')}</Text>
-        </>
-      }
-      tipsResources={
-        <ul className="list-inside list-disc font-nunito text-white">
-          <li>{t('chapter_two.resources.scripting.tip_one')}</li>
-          <li>{t('chapter_two.resources.scripting.tip_two')}</li>
-          <li>{t('chapter_two.resources.scripting.tip_three')}</li>
-        </ul>
-      }
+      readingResources={<></>}
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>
@@ -154,7 +170,7 @@ export default function ScriptingResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`235px`}
+                  height={`710px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
