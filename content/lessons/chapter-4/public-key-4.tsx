@@ -57,13 +57,18 @@ export default function PublicKey4({ lang }) {
 
   const javascript = {
     program: `
-console.log(compressPublicKey(${prevData?.data && `"${dataObject}"`}))
+console.log(compressPublicKey(uncompressedKey))
 console.log("KILL")`,
     defaultFunction: {
       name: 'compressPublicKey',
       args: ['publicKey'],
     },
-    defaultCode: `${prevData?.data && `const uncompressedKey = "${dataObject}"`}
+    defaultCode: `${
+      prevData?.data &&
+      `const uncompressedKey = ["${dataObject
+        .slice(1, -1)
+        .replace(', ', '", "')}"]`
+    }
 
 // Determine if the y coordinate is even or odd and prepend the
 // corresponding header byte to the x coordinate.
@@ -73,6 +78,7 @@ function compressPublicKey(publicKey) {
     'y_is_even': '02',
     'y_is_odd':  '03'
   };
+  // YOUR CODE HERE
 
 }
 `,
@@ -93,15 +99,16 @@ function compressPublicKey(publicKey) {
 
   const python = {
     program: `
-print(compress_publickey(${prevData?.data && `"${dataObject}"`}))
+print(compress_publickey(uncompressed_key))
 print("KILL")`,
     defaultFunction: {
       name: 'compress_publickey',
       args: ['publicKey'],
     },
-    defaultCode: `import re
-
-${prevData?.data && `uncompressed_key = "${dataObject}"`}
+    defaultCode: `${
+      prevData?.data &&
+      `uncompressed_key = ("${dataObject.slice(1, -1).replace(', ', '", "')}")`
+    }
 
 # Determine if the y coordinate is even or odd and prepend
 # the corresponding header byte to the x coordinate.
@@ -111,6 +118,8 @@ def compress_publickey(public_key):
         "y_is_even": "02",
         "y_is_odd":  "03"
     }
+    # YOUR CODE HERE
+
 `,
     validate: async (answer) => {
       const pattern = /^[0-9a-f]{66}$/i
@@ -157,7 +166,7 @@ def compress_publickey(public_key):
             language="shell"
           />
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t(`chapter_four.public_key_four.paragraph_two`)}
+            {t(`chapter_four.public_key_four.paragraph_two_${language}`)}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>

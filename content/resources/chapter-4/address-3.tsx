@@ -24,7 +24,7 @@ const javascript = {
   // To encode our publicKeyHash we first need to compress it to bytes which we have done for you
   // then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
   // We also need to decide which version to use, in this case version 0 will suffice for segwit
-  const bech32Address = bech32.encode('tb', 0, compressedPublicKeyHash)
+  const bech32Address = bech32Encode(testnetPrefix, versionZero, compressedPublicKeyHash)
   // Lastly, let's return the address
   return bech32Address
 }`,
@@ -44,7 +44,7 @@ const python = {
     # To encode our public_key_hash we first need to compress it to bytes which we have done for you
     # then we need to decide which prefix to use for our network, we'll use 'tb' for testnet
     # We also need to decide which version to use, in this case version 0 will suffice for segwit
-    bech32_address = encode('tb', 0, compressed_public_key_hash)
+    bech32_address = bech32Encode(testnetPrefix, versionZero, compressed_public_key_hash)
     # Lastly, let's return the address
     return bech32_address`,
   validate: async (answer) => {
@@ -104,22 +104,27 @@ export default function AddressResourcesThree({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.address.hash_algo_heading')}
+            {t('chapter_four.resources.address_three.wpkh_heading')}
           </Text>
-          <Text>{t('chapter_four.resources.address.hash_algo_paragraph')}</Text>
+          <Text>
+            {t('chapter_four.resources.address_three.wpkh_paragraph')}
+          </Text>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.address.wpkh_heading')}
+            {t('chapter_four.resources.address_three.network_heading')}
           </Text>
-          <Text>{t('chapter_four.resources.address.wpkh_paragraph')}</Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.address.network_heading')}
+          <Text>
+            {t('chapter_four.resources.address_three.network_paragraph')}
           </Text>
-          <Text>{t('chapter_four.resources.address.network_paragraph')}</Text>
         </>
+      }
+      tipsResources={
+        <ul className="list-inside list-disc font-nunito text-white">
+          <li>{t('chapter_four.resources.address_three.tip')}</li>
+        </ul>
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
@@ -138,7 +143,7 @@ export default function AddressResourcesThree({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`215px`}
+                  height={`235px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

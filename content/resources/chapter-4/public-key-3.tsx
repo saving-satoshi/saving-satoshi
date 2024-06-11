@@ -22,9 +22,9 @@ const javascript = {
   },
   defaultCode: `function privateKeyToPublicKey(privateKey) {
   // First your private key will need to be encoded into an integer from a hex string.
-  const encodedPrivateKey = BigInt(\`0x\${privateKey}\`)
+  const encodedPrivateKey = convertedToBigInt(privateKey)
   // From the library you need to use the .mul() method to multiply G by your private key
-  const generatorPoint = G.mul(encodedPrivateKey)
+  const generatorPoint = generatorPointG * encodedPrivateKey
   return generatorPoint
 }`,
   validate: async (answer) => {
@@ -41,9 +41,9 @@ const python = {
   },
   defaultCode: `def privatekey_to_publickey(private_key):
     # First your private key will need to be encoded into an integer from a hex string.
-    encoded_private_key = int(private_key, 16)
+    encoded_private_key = converted_to_int(private_key)
     # From the library you need to use the .mul() method to multiply G by your private key
-    generator_point = G.mul(encoded_private_key)
+    generator_point = generator_point_G * encoded_private_key
     return generator_point`,
   validate: async (answer) => {
     return [true, undefined]
@@ -101,73 +101,43 @@ export default function PublicKeyResourcesThree({ lang }) {
         <>
           <Text className="mt-[25px] text-xl font-bold">
             {t(
-              'chapter_four.resources.public_key.elliptic_curve_reason_heading'
+              'chapter_four.resources.public_key_three.generator_point_heading'
             )}
           </Text>
           <Text>
             {t(
-              'chapter_four.resources.public_key.elliptic_curve_reason_paragraph'
+              'chapter_four.resources.public_key_three.generator_point_paragraph'
             )}
-          </Text>
-          <ul className="list-inside list-disc font-nunito text-white">
-            <li>
-              {t(
-                'chapter_four.resources.public_key.elliptic_curve_reason_list_one'
-              )}
-            </li>
-            <li>
-              {t(
-                'chapter_four.resources.public_key.elliptic_curve_reason_list_two'
-              )}
-            </li>
-            <li>
-              {t(
-                'chapter_four.resources.public_key.elliptic_curve_reason_list_three'
-              )}
-            </li>
-            <li>
-              {t(
-                'chapter_four.resources.public_key.elliptic_curve_reason_list_four'
-              )}
-            </li>
-          </ul>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.public_key.secp_heading')}
-          </Text>
-          <Text>{t('chapter_four.resources.public_key.secp_paragraph')}</Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.public_key.generator_point_heading')}
-          </Text>
-          <Text>
-            {t('chapter_four.resources.public_key.generator_point_paragraph')}
           </Text>
           <Text className="mt-[25px] text-xl font-bold">
             {t(
-              'chapter_four.resources.public_key.elliptic_curve_operations_heading'
+              'chapter_four.resources.public_key_three.elliptic_curve_operations_heading'
             )}
           </Text>
           <Text>
             {t(
-              'chapter_four.resources.public_key.elliptic_curve_operations_paragraph'
+              'chapter_four.resources.public_key_three.elliptic_curve_operations_paragraph'
             )}
           </Text>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.public_key.discrete_log_heading')}
+            {t('chapter_four.resources.public_key_three.discrete_log_heading')}
           </Text>
           <Text>
-            {t('chapter_four.resources.public_key.discrete_log_paragraph')}
+            {t(
+              'chapter_four.resources.public_key_three.discrete_log_paragraph'
+            )}
           </Text>
         </>
       }
       tipsResources={
         <ul className="list-inside list-disc font-nunito text-white">
-          <li>{t('chapter_four.resources.public_key.tip_one')}</li>
-          <li>{t('chapter_four.resources.public_key.tip_two')}</li>
+          <li>{t('chapter_four.resources.public_key_three.tip_one')}</li>
+          <li>{t('chapter_four.resources.public_key_three.tip_two')}</li>
         </ul>
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
