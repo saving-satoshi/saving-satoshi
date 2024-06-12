@@ -59,18 +59,24 @@ export default function BuildingBlocks7({ lang }) {
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
-let HEIGHT = 6929851
-let candidates = Bitcoin.rpc("getblocksbyheight", HEIGHT)
-for (const bhash of candidates){
+    const fs = require('fs');
+    const state = JSON.parse(fs.readFileSync('chainstate.json', 'utf8'));
 
- let block = Bitcoin.rpc("getblock", bhash)
+    const HEIGHT = 6929851;
+    let candidates = Bitcoin.rpc("getblocksbyheight", HEIGHT);
 
-  if(validateBlock(block)){
-    console.log(bhash)
-  }
+    for (const bhash of candidates){
+      let block = Bitcoin.rpc("getblock", bhash);
 
-}
-console.log("KILL")`,
+      if (state.blocks_by_hash[bhash].valid === false && validateBlock(block) == true) {
+        console.log('Looks like some invalid blocks are getting through. Try again!');
+        console.log('KILL');
+      }
+      if (state.blocks_by_hash[bhash].valid === true && validateBlock(block) === true) {
+        console.log(bhash);
+      }
+    }
+    console.log("KILL");`,
     rangeToNotCollapse: [
       {
         start: countLines(cleanedCombinedCode) + 5,
@@ -108,12 +114,19 @@ function validateBlock(block) {
 
   const python = {
     program: `# BEGIN VALIDATION BLOCK
+from json import load
+with open(f"{'chainstate.json'}", "r") as file:
+  state = load(file)
+
 HEIGHT = 6929851
 candidates = Bitcoin.rpc("getblocksbyheight", HEIGHT)
 
 for bhash in candidates:
   block = Bitcoin.rpc("getblock", bhash)
-  if validate_block(block):
+  if no state["blocks_by_hash"][bhash]["valid"] and validate_block(block):
+    print("Looks like some invalid blocks are getting through. Try again!")
+    print("KILL")
+  if state["blocks_by_hash"][bhash]["valid"] and validate_block(block):
       print(bhash)
 print("KILL")`,
     defaultFunction: {
@@ -173,14 +186,14 @@ for bhash in candidates:
     if validate_block(block):
         print(bhash)
         break`
-  const jsValidation = `const HEIGHT = 6929851
-const candidates = Bitcoin.rpc("getblocksbyheight", HEIGHT)
+  const jsValidation = `const HEIGHT = 6929851;
+const candidates = Bitcoin.rpc("getblocksbyheight", HEIGHT);
 for (const bhash of candidates) {
-let block = Bitcoin.rpc("getblock", bhash)
-if(validateBlock(block)){
-  return bhash;
-    }
-  }`
+  let block = Bitcoin.rpc("getblock", bhash);
+  if (validateBlock(block) == true) {
+    return bhash;
+  }
+}`
   const codeValidation =
     detectLanguage(combinedCode) === Language.JavaScript
       ? jsValidation
@@ -197,7 +210,7 @@ if(validateBlock(block)){
         onSelectLanguage={handleSelectLanguage}
       >
         <LessonInfo>
-          <Title>4. {t('chapter_eight.building_blocks_six.heading')}</Title>
+          <Title>{t('chapter_eight.building_blocks_six.heading')}</Title>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_eight.building_blocks_seven.paragraph_one')}
           </Text>

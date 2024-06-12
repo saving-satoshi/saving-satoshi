@@ -1799,8 +1799,8 @@ const translations = {
       nav_title: 'Get the Valid Block',
       heading: 'That Pernicious Scallywag!',
       paragraph_one: `There are four block candidates at height 6929851. Only one of them is a valid block, the other three were mined by Vanderpoole's cartel in reckless attempts to inflate the Bitcoin money supply.`,
-      paragraph_two: `Use your block subsidy function and the JSON-RPC API to check the coinbase outputs in all four block candidates and print the hash of the one and only valid block at that height!`,
-      paragraph_three: `Your code will be tested using `,
+      paragraph_two: `Using the block subsidy function you wrote in the previous challenge and the JSON-RPC API, write a function to check the validity of a block candidate. Do this by checking if the coinbase output is correct. Your function should return true if the block is valid.`,
+      paragraph_three: `Here's how your code will be used to find the one valid block at height 6929851:`,
       success: 'The validate block function looks great. Nice work!',
     },
 
