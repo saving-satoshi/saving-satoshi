@@ -102,10 +102,7 @@ export default function LanguageTabs({
         })}
       </div>
       {onRefresh && (
-        <button
-          onClick={() => onRefresh()}
-          className="flex h-full w-10 items-center justify-center border-l border-white border-opacity-30"
-        >
+        <div className="flex h-full w-10 items-center justify-center border-l border-white border-opacity-30">
           <Tooltip
             id={'Terminal Reset'}
             theme={
@@ -116,12 +113,14 @@ export default function LanguageTabs({
             className="flex h-full w-full justify-center no-underline"
             content={<span>{t('runner.language_tabs.reset')}</span>}
           >
-            <Icon
-              icon="refresh"
-              className="h-full w-full object-contain p-2.5 text-white text-opacity-40"
-            />
+            <div className="hover:cursor-pointer" onClick={() => onRefresh()}>
+              <Icon
+                icon="refresh"
+                className="h-full w-full object-contain p-2.5 text-white text-opacity-40"
+              />
+            </div>
           </Tooltip>
-        </button>
+        </div>
       )}
     </div>
   )
