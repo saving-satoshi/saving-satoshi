@@ -161,7 +161,7 @@ def showtime():
         successMessage={t('chapter_eight.building_blocks_eight.success')}
         onSelectLanguage={handleSelectLanguage}
       >
-        <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+        <LessonInfo>
           <Title>{t('chapter_eight.building_blocks_eight.heading_one')}</Title>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_eight.building_blocks_eight.paragraph_one')}

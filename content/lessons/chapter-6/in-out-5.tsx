@@ -175,7 +175,7 @@ class Output:
       successMessage={t('chapter_six.in_out_five.success')}
       onSelectLanguage={handleSelectLanguage}
     >
-      <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+      <LessonInfo>
         <Title>{t('chapter_six.in_out_five.heading')}</Title>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_six.in_out_five.paragraph_one')}

@@ -196,7 +196,7 @@ if(validateBlock(block)){
         successMessage={t('chapter_eight.building_blocks_seven.success')}
         onSelectLanguage={handleSelectLanguage}
       >
-        <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+        <LessonInfo>
           <Title>4. {t('chapter_eight.building_blocks_six.heading')}</Title>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_eight.building_blocks_seven.paragraph_one')}
