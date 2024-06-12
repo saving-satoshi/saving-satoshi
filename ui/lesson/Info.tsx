@@ -17,7 +17,7 @@ export default function LessonInfo({
       <div className="max-w-full grow justify-center text-white md:max-w-[50%] md:basis-1/3">
         <div
           className={clsx(
-            'flex h-full flex-col content-center justify-items-start gap-1 overflow-y-scroll px-1 py-6 sm:max-h-[calc(100vh-70px)] sm:px-12',
+            'flex h-full flex-col content-center justify-items-start gap-1 px-1 py-6 sm:px-12',
             className
           )}
         >
