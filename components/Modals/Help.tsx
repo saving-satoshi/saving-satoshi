@@ -43,7 +43,7 @@ export default function HelpModal({ onClose, state }) {
         </div>
       )}
       {isLoaded && (
-        <div className="mt-12 grid h-[calc(100%-3rem)] w-full justify-center justify-items-center overflow-y-scroll md:mx-auto">
+        <div className="mt-12 grid h-[calc(100%-3rem)] w-full justify-center justify-items-center overflow-y-auto md:mx-auto">
           <div className="mb-12 flex w-full max-w-screen-lg flex-col gap-8 px-6">
             {!!chapterResources?.default[lessonId]?.default && (
               <Resources lang={lang} />

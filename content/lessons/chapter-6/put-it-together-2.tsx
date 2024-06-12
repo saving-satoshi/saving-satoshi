@@ -433,7 +433,7 @@ ${combinedCode}
         successMessage={t('chapter_six.put_it_together_two.success')}
         loadingSavedCode={isLoading}
       >
-        <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+        <LessonInfo>
           <Title>{t('chapter_six.put_it_together_two.heading')}</Title>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_six.put_it_together_two.paragraph_one')}

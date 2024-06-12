@@ -144,7 +144,7 @@ function Tooltip({
           )}
           ref={arrowRef}
         />
-        <span className="tooltip-height block overflow-y-scroll px-2.5 py-3.5 font-nunito leading-none text-white">
+        <span className="tooltip-height block overflow-y-auto px-2.5 py-3.5 font-nunito leading-none text-white">
           {typeof content === 'string' ? t(content) : content}
         </span>
       </span>

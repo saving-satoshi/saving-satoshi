@@ -310,7 +310,7 @@ print(tx.serialize().hex())`,
         successMessage={t('chapter_six.put_it_together_three.success')}
         loadingSavedCode={isLoading}
       >
-        <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+        <LessonInfo>
           <Text className="font-nunito text-2xl font-bold text-white">
             {t('chapter_six.put_it_together_three.heading')}
           </Text>

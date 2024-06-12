@@ -339,9 +339,9 @@ class Transaction:
 
         # Serialize the outpoint of the one input we are going to sign and add it to the main buffer
 
-        # Serialize the scriptcode of the one input we are going to sign and add it to the main buffer 
+        # Serialize the scriptcode of the one input we are going to sign and add it to the main buffer
 
-        # Append the value of the input we are going to spend in little endian to the main buffer 
+        # Append the value of the input we are going to spend in little endian to the main buffer
 
         # Append the sequence of the input we are going to spend in little endian to the main buffer
 
@@ -386,7 +386,7 @@ class Transaction:
         lessonKey={getLessonKey('chapter-6', 'put-it-together-1')}
         successMessage={t('chapter_six.put_it_together_two.success')}
       >
-        <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
+        <LessonInfo>
           <Text className="font-nunito text-2xl font-bold text-white">
             {t('chapter_six.put_it_together_one.heading')}
           </Text>
