@@ -1,6 +1,7 @@
 'use client'
 
 import { ScriptingChallenge, LessonInfo, CodeExample, Title, Table } from 'ui'
+import Image from 'next/image'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
@@ -175,6 +176,18 @@ def showtime():
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_eight.building_blocks_eight.paragraph_four')}
           </Text>
+          <div className="inline-flex">
+            <Image
+              src="/assets/images/block-structure-diagram.png"
+              alt="Block Structure"
+              width={900}
+              height={100}
+              quality={100}
+              loading="eager"
+              priority
+              className="mt-4"
+            />
+          </div>
           <Text className="mt-4 font-nunito text-xl font-bold text-white">
             {t('chapter_eight.building_blocks_eight.heading_two')}
           </Text>

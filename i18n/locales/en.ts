@@ -1210,7 +1210,7 @@ const translations = {
   },
 
   chapter_six: {
-    title: `Offense is the best defense`,
+    title: `The Keyholder`,
     paragraph_one:
       'Vanderpoole is out to get you now that you’ve exposed him as a fraud. But despite that, plenty of scared people continue to cling to the myth he created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.',
     intro_one: {
