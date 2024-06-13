@@ -883,7 +883,7 @@ const translations = {
         hash_algo_paragraph:
           'Hash functions digest any amount of any kind of data and always return a result of the same size. For SHA256, it’s 32 bytes. For RIPEMD-160, it’s 20 bytes. The output is deterministic (always the same output for the same input) but otherwise, indistinguishable from random. Hash functions effectively reduce data to a small consistent fingerprint.',
         tip_one:
-          'When calculating the sha256 hash you will need to make sure to hash your compressed key as bytes not hex.',
+          'When calculating the SHA-256 hash you will need to make sure to hash your compressed key as bytes not hex.',
         tip_two:
           'Make sure you are doing the hashing algorithms in the correct order!',
       },
@@ -1969,9 +1969,9 @@ const translations = {
       'What specific tips can/do we want to give learners if they are stuck?',
     spoilers_heading: 'Spoilers',
     spoilers_confirm: 'Yes, I want to see the solution',
-    psuedo_confirm: 'Yes, I want to see the pseudocode',
+    pseudo_confirm: 'Yes, I want to see the pseudocode',
     solution: 'Solution to this challenge',
-    psuedo_solution: 'Pseudocode solution to this challenge',
+    pseudo_solution: 'Pseudocode solution to this challenge',
     solution_one: 'Solution to part one of this challenge',
     feedback:
       'Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
