@@ -210,10 +210,10 @@ div.react-terminal-active-input {
 }
 
 .code-editor {
-  height: calc(100vh - 70px - 48px);
+  height: calc(100vh - 70px - 56px);
 }
 .read-only-editor-button {
-  height: calc(100vh - 70px - 40px - 48px);
+  height: calc(100vh - 70px - 56px);
 }
 .read-only-editor {
   height: calc(100vh - 70px);
@@ -222,10 +222,10 @@ div.react-terminal-active-input {
   .code-editor {
     display: grid;
     height: calc(100vh - 70px);
-    grid-template-rows: 40px auto 204px 56px;
+    grid-template-rows: 48px auto 204px 67px;
   }
   .read-only-editor-button {
-    height: calc(100vh - 70px - 40px - 56px);
+    height: calc(100vh - 70px - 48px - 67px);
   }
 }
 
