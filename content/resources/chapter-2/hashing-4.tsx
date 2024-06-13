@@ -20,28 +20,21 @@ export default function HashingResourcesFour({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_two.resources.hashing.hash_functions_heading')}
+            {t('chapter_two.resources.hashing_four.power_of_random_heading')}
           </Text>
           <Text>
-            {t('chapter_two.resources.hashing.hash_functions_paragraph')}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_two.resources.hashing.collision_resistance_heading')}
-          </Text>
-          <Text>
-            {t('chapter_two.resources.hashing.collision_resistance_paragraph')}
+            {t('chapter_two.resources.hashing_four.power_of_random_paragraph')}
           </Text>
         </>
       }
       tipsResources={
         <ul className="list-inside list-disc font-nunito text-white">
-          <li>{t('chapter_two.resources.hashing.tip_one')}</li>
-          <li>{t('chapter_two.resources.hashing.tip_two')}</li>
+          <li>{t('chapter_two.resources.hashing_four.tip')}</li>
         </ul>
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
@@ -51,7 +44,12 @@ export default function HashingResourcesFour({ lang }) {
           </div>
           {challengeIsToggled && (
             <div className="text-white">
-              <CodeExample copy language="bash" code="popcorn" />
+              <CodeExample
+                className="text-wrap"
+                text
+                language="bash"
+                code={t('chapter_two.resources.hashing_four.spoiler')}
+              />
             </div>
           )}
         </>

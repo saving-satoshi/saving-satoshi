@@ -487,19 +487,29 @@ const translations = {
       paragraph_four: 'Him again?',
     },
     resources: {
-      hashing: {
+      hashing_two: {
         hash_functions_heading: 'Hash Functions',
         hash_functions_paragraph:
           'A hash function is any function that can be used to map data of arbitrary size to fixed-size values. The values returned by a hash function are called hash values, hash codes, digests, or simply hashes. The values are usually used to index a fixed-size table called a hash table. Use of a hash function to index a hash table is called hashing or scatter storage addressing.',
+        tip: 'Just keep typing! Because of the SHA-256 algorithm any new input will result in a completely random hash even if the inputs are very similar',
+        spoiler: 'Try something with 8 characters.',
+      },
+      hashing_four: {
+        power_of_random_heading: 'The Power of Random',
+        power_of_random_paragraph:
+          "Like a perfectly random scenario, probability-wise the SHA-256 hash function is completely random for each addition of new data. If you hashed the novel 'War and Peace', then added just one extra letter to the original text, it would result in a completely different hash. Each new character changes the hash in a completely random manner. Considering that there are 16 possible characters in a hexadecimal system (0-9 and a-f), how likely is it to find a hash starting with '0'?",
+        tip: "Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with '00' is? How about '000'?",
+        spoiler: "Try something starting with the letter 's'.",
+      },
+      hashing_six: {
         collision_resistance_heading: 'SHA256 and collision resistance',
         collision_resistance_paragraph:
-          "SHA-256 returns a 256-bit (64-characters) hash value, which is a unique representation of the input data. It belongs to the family of hash functions based on the Merkle–Damgård construction, a method for building hash functions from simpler compression functions. In this construction, the input message is divided into fixed-size blocks, and a chaining mechanism iteratively processes these blocks, combining each block's output with the result of the previous block. This process continues until the entire message is processed, producing the final hash value. SHA-256's robust security properties and collision resistance make it a cornerstone of data integrity and authentication in modern cryptography. You can learn more on Wikipedia.",
-        tip_one:
-          'Just keep typing! Because of the  SHA256 algorithm any new input will result in a completely random input even if those inputs are very similar',
-        tip_two:
-          "Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with '00' is? And how about '000'?",
+          "SHA-256 returns a 256-bit (64-characters) hash value, which is a unique representation of the input data. It belongs to the family of hash functions based on the Merkle–Damgård construction, a method for building hash functions from simpler compression functions. In this construction, the input message is divided into fixed-size blocks, and a chaining mechanism iteratively processes these blocks, combining each block's output with the result of the previous block. This process continues until the entire message is processed, producing the final hash value. SHA-256's robust security properties and collision resistance make it a cornerstone of data integrity and authentication in modern cryptography.",
+        tip: 'No real tips in this lesson, as you continue in Saving Satoshi you will find that we hold your hand less and less and let you find the solution on your own.',
+        spoiler:
+          "Knowing that each new character recalculates a completely random hash you could keep adding new characters until you start with '00' or more... or try the word trigonometry.",
       },
-      scripting: {
+      scripting_one: {
         hash_libraries_heading: 'Hash Functions',
         hash_libraries_paragraph:
           'The crypto library in Node.js and the hashlib library in python are the code libraries that implement the algorithms we will use into useful tools for developers. These libraries are thoroughly vetted to ensure their accuracy and security as many people rely on them to secure valuable and important systems.',
@@ -513,13 +523,15 @@ const translations = {
         tip_three:
           'Remember to log your answer with <span className="p-1 font-mono bg-[#00000033] m-1">console.log()</span> or <span className="p-1 font-mono bg-[#00000033] m-1">print()</span>. It is the only way our IDE will try to validate your answer.',
       },
-      mining: {
+      mining_one: {
         mining_heading: 'Mining',
         mining_paragraph:
           "Mining is where these concepts all come together. Bitcoin mining is the process by which new bitcoins are created and transactions are added to the blockchain. Miners compete to solve complex mathematical puzzles by finding a unique, valid 'nonce' in each block of transactions. This proof-of-work process demands significant computational power and energy, making it a secure and decentralized way to validate transactions. Successful miners are rewarded with newly minted bitcoins and transaction fees, and they play a critical role in maintaining the integrity of the Bitcoin network.",
         difficulty_heading: 'Difficulty',
         difficulty_paragraph:
           'The mining difficulty is what allows the block to remain at an average of 10 minutes between each new block.',
+        spoiler:
+          'Nothing to spoil! Just go ahead and read through this lesson. There will be more opportunities to show off your   mining knowledge in future lessons!',
       },
     },
   },
