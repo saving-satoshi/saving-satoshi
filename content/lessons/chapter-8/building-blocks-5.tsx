@@ -40,6 +40,8 @@ const TX_HASH = "7bd09aa3b4795be2839d9159edff0811d6d4ec5a64abd81c0da1e73ab00bf52
 const getBlockTxFee = () => {
   let block = Bitcoin.rpc("getblock", BLOCK_HASH)
   // YOUR CODE HERE
+
+  return 0;
 }
 
 // Now let's find the miner's fee for this transaction.
@@ -79,6 +81,7 @@ TX_HASH = "7bd09aa3b4795be2839d9159edff0811d6d4ec5a64abd81c0da1e73ab00bf520"
 def get_block_tx_fee():
     block = Bitcoin.rpc("getblock", BLOCK_HASH)
     # YOUR CODE HERE
+    return 0
 
 # Now let's find the miner's fee for this transaction.
 # with the transaction from above determine the fee paid to miners
@@ -137,7 +140,7 @@ def get_tx_fee(tx):
         <CodeExample
           className="mt-4"
           language="txt"
-          code="aaf2fd920b7e628b1480b88343ab3b49e49969cf61b059d8c1532b805b7a6d2f"
+          code="7bd09aa3b4795be2839d9159edff0811d6d4ec5a64abd81c0da1e73ab00bf520"
         />
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_eight.building_blocks_five.paragraph_five')}
@@ -145,7 +148,7 @@ def get_tx_fee(tx):
         <CodeExample
           className="mt-4"
           language="txt"
-          code="003b9be2d96d14f02717c262bb4b9a0b23191e2f1d9a38413204f3be4f21613c"
+          code="dab5708b1b3db05407e35b2004156d74f7bb5bed7f677743945cac1465b5838f"
         />
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_eight.building_blocks_five.paragraph_six')}

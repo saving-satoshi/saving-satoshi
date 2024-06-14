@@ -115,27 +115,29 @@ export default function ScriptingResourcesTwo({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_two.resources.scripting.hash_libraries_heading')}
+            {t('chapter_two.resources.scripting_one.hash_libraries_heading')}
           </Text>
           <Text>
-            {t('chapter_two.resources.scripting.hash_libraries_paragraph')}
+            {t('chapter_two.resources.scripting_one.hash_libraries_paragraph')}
           </Text>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_two.resources.scripting.nonce_heading')}
+            {t('chapter_two.resources.scripting_one.nonce_heading')}
           </Text>
-          <Text>{t('chapter_two.resources.scripting.nonce_paragraph')}</Text>
+          <Text>
+            {t('chapter_two.resources.scripting_one.nonce_paragraph')}
+          </Text>
         </>
       }
       tipsResources={
         <ul className="list-inside list-disc font-nunito text-white">
-          <li>{t('chapter_two.resources.scripting.tip_one')}</li>
-          <li>{t('chapter_two.resources.scripting.tip_two')}</li>
-          <li>{t('chapter_two.resources.scripting.tip_three')}</li>
+          <li>{t('chapter_two.resources.scripting_one.tip_one')}</li>
+          <li>{t('chapter_two.resources.scripting_one.tip_two')}</li>
+          <li>{t('chapter_two.resources.scripting_one.tip_three')}</li>
         </ul>
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}

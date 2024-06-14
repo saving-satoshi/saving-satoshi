@@ -25,6 +25,8 @@ getSubsidy(840000) === 312500000) {
   console.log('true')
 } else if (typeof getSubsidy(839999) === 'bigint') {
   console.log('be sure the subsidy is of type number')
+} else if (getSubsidy(10000000) < 1) {
+  console.log('Remember there is a maximum of 63 halvings, and the subsidy will never be a fraction of a satoshi');
 } else {
   console.log('false')
 }
@@ -96,14 +98,14 @@ print("KILL")`,
       successMessage={t('chapter_eight.building_blocks_six.success')}
       onSelectLanguage={handleSelectLanguage}
     >
-      <LessonInfo className="overflow-y-scroll sm:max-h-[calc(100vh-70px)]">
-        <Title>4. {t('chapter_eight.building_blocks_six.heading')}</Title>
+      <LessonInfo>
+        <Title>{t('chapter_eight.building_blocks_six.heading')}</Title>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_eight.building_blocks_six.paragraph_one')}
         </Text>
         <CodeExample
           className="mt-4 whitespace-break-spaces font-space-mono"
-          code={`BLOCK_SUBSIDY + TOTAL_TRASNACTION_FEES_IN_BLOCK = COINBASE_OUTPUT_VALUE`}
+          code={`BLOCK_SUBSIDY + TOTAL_TRANSACTION_FEES_IN_BLOCK = COINBASE_OUTPUT_VALUE`}
           language="shell"
         />
         <Text className="mt-4 font-nunito text-xl text-white">

@@ -487,19 +487,29 @@ const translations = {
       paragraph_four: 'Him again?',
     },
     resources: {
-      hashing: {
+      hashing_two: {
         hash_functions_heading: 'Hash Functions',
         hash_functions_paragraph:
           'A hash function is any function that can be used to map data of arbitrary size to fixed-size values. The values returned by a hash function are called hash values, hash codes, digests, or simply hashes. The values are usually used to index a fixed-size table called a hash table. Use of a hash function to index a hash table is called hashing or scatter storage addressing.',
+        tip: 'Just keep typing! Because of the SHA-256 algorithm any new input will result in a completely random hash even if the inputs are very similar',
+        spoiler: 'Try something with 8 characters.',
+      },
+      hashing_four: {
+        power_of_random_heading: 'The Power of Random',
+        power_of_random_paragraph:
+          "Like a perfectly random scenario, probability-wise the SHA-256 hash function is completely random for each addition of new data. If you hashed the novel 'War and Peace', then added just one extra letter to the original text, it would result in a completely different hash. Each new character changes the hash in a completely random manner. Considering that there are 16 possible characters in a hexadecimal system (0-9 and a-f), how likely is it to find a hash starting with '0'?",
+        tip: "Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with '00' is? How about '000'?",
+        spoiler: "Try something starting with the letter 's'.",
+      },
+      hashing_six: {
         collision_resistance_heading: 'SHA256 and collision resistance',
         collision_resistance_paragraph:
-          "SHA-256 returns a 256-bit (64-characters) hash value, which is a unique representation of the input data. It belongs to the family of hash functions based on the Merkle–Damgård construction, a method for building hash functions from simpler compression functions. In this construction, the input message is divided into fixed-size blocks, and a chaining mechanism iteratively processes these blocks, combining each block's output with the result of the previous block. This process continues until the entire message is processed, producing the final hash value. SHA-256's robust security properties and collision resistance make it a cornerstone of data integrity and authentication in modern cryptography. You can learn more on Wikipedia.",
-        tip_one:
-          'Just keep typing! Because of the  SHA256 algorithm any new input will result in a completely random input even if those inputs are very similar',
-        tip_two:
-          "Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with '00' is? And how about '000'?",
+          "SHA-256 returns a 256-bit (64-characters) hash value, which is a unique representation of the input data. It belongs to the family of hash functions based on the Merkle–Damgård construction, a method for building hash functions from simpler compression functions. In this construction, the input message is divided into fixed-size blocks, and a chaining mechanism iteratively processes these blocks, combining each block's output with the result of the previous block. This process continues until the entire message is processed, producing the final hash value. SHA-256's robust security properties and collision resistance make it a cornerstone of data integrity and authentication in modern cryptography.",
+        tip: 'No real tips in this lesson, as you continue in Saving Satoshi you will find that we hold your hand less and less and let you find the solution on your own.',
+        spoiler:
+          "Knowing that each new character recalculates a completely random hash you could keep adding new characters until you start with '00' or more... or try the word trigonometry.",
       },
-      scripting: {
+      scripting_one: {
         hash_libraries_heading: 'Hash Functions',
         hash_libraries_paragraph:
           'The crypto library in Node.js and the hashlib library in python are the code libraries that implement the algorithms we will use into useful tools for developers. These libraries are thoroughly vetted to ensure their accuracy and security as many people rely on them to secure valuable and important systems.',
@@ -513,13 +523,15 @@ const translations = {
         tip_three:
           'Remember to log your answer with <span className="p-1 font-mono bg-[#00000033] m-1">console.log()</span> or <span className="p-1 font-mono bg-[#00000033] m-1">print()</span>. It is the only way our IDE will try to validate your answer.',
       },
-      mining: {
+      mining_one: {
         mining_heading: 'Mining',
         mining_paragraph:
           "Mining is where these concepts all come together. Bitcoin mining is the process by which new bitcoins are created and transactions are added to the blockchain. Miners compete to solve complex mathematical puzzles by finding a unique, valid 'nonce' in each block of transactions. This proof-of-work process demands significant computational power and energy, making it a secure and decentralized way to validate transactions. Successful miners are rewarded with newly minted bitcoins and transaction fees, and they play a critical role in maintaining the integrity of the Bitcoin network.",
         difficulty_heading: 'Difficulty',
         difficulty_paragraph:
           'The mining difficulty is what allows the block to remain at an average of 10 minutes between each new block.',
+        spoiler:
+          'Nothing to spoil! Just go ahead and read through this lesson. There will be more opportunities to show off your   mining knowledge in future lessons!',
       },
     },
   },
@@ -1198,7 +1210,7 @@ const translations = {
   },
 
   chapter_six: {
-    title: `Offense is the best defense`,
+    title: `The Keyholder`,
     paragraph_one:
       'Vanderpoole is out to get you now that you’ve exposed him as a fraud. But despite that, plenty of scared people continue to cling to the myth he created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.',
     intro_one: {
@@ -1727,9 +1739,9 @@ const translations = {
       title: 'Building blocks',
       nav_title: 'Finding the chain tip',
       paragraph_one:
-        'You know Vanderpoole has been trying to confuse people by mining blocks that generate more Bitcoin than they are allowed to, in order to inflate the money supply. These blocks are invalid because they break hard-coded protocol rules, but they might still fool some people running buggy or malicious software, or light clients that do not fully verify data they receive from the network.',
+        'You know Vanderpoole has been trying to confuse people by mining blocks that generate more Bitcoin than they are allowed to, in order to inflate the money supply. These blocks are invalid because they break hard-coded protocol rules, but they might still fool some people running buggy or malicious software, or light clients that do not fully verify data received from the network.',
       paragraph_two:
-        'You also know that somewhere out there on the network is a chain of VALID blocks from the genesis block to today\'s "chain tip", where every transaction and every block follows all the rules exactly correctly. This chain is the only "real" chain, the only chain that matters, and the only chain where the 21 Million Bitcoin supply is intact.',
+        'You also know that somewhere out there on the network is a chain of VALID blocks from the genesis block to today\'s "chain tip", where every transaction and every block follows all the rules exactly correctly. This chain is the only "real" chain, the only chain that matters, and the only chain where the 21 million bitcoin supply is intact.',
       paragraph_three:
         "Now, on live TV in front of the entire world, you need to find the longest valid blockchain and verify the integrity of the coin supply. While you're at it, you'll also be able to prove that Vanderpoole has turned the Bitcoin network into a minefield of invalid blocks.",
     },
@@ -1747,10 +1759,8 @@ const translations = {
       title: 'Building Blocks',
       nav_title: `Explore the Bitcoin API`,
       heading: 'The Bitcoin API',
-      paragraph_one:
-        "To answer these questions, you'll need to interact with a Bitcoin full node, via it's JSON-RPC API. We've imported a library for you called bitcoin_rpc which handles the secure HTTP connection from your script to the full node, executes your commands, and returns the responses. Your full node is \"pruning\" so it only has access to the last 300 blocks, but that should be enough to include the entire timespan of Vanderpoole's recent muckery.",
-      paragraph_two:
-        "Let's start by getting familiar with the API. The library has one function that accepts one required argument (a string) and one optional argument (either a string or a number):",
+      paragraph_one: `To answer these questions, you'll need to interact with a Bitcoin full node, via its JSON-RPC API. We've imported a library for you called <span className="p-1 font-mono bg-[#00000033] m-1">bitcoin_rpc</span> which handles the secure HTTP connection from your script to the full node, executes your commands, and returns the responses. Your full node is \"pruning\" so it only has access to the last 300 blocks, but that should be enough to include the entire timespan of Vanderpoole's recent muckery.`,
+      paragraph_two: `Let's start by getting familiar with the API. The library has one function that accepts one required argument, <span className="p-1 font-mono bg-[#00000033] m-1">method</span> (a string) and one optional argument, <span className="p-1 font-mono bg-[#00000033] m-1">params</span> (either a string or a number):`,
       paragraph_three:
         'The API also has a convenient "help" method! Ask it for help to learn more about the available commands, then pass the challenge by printing the current network difficulty.',
       success: "Nice work exploring the API! Let's move on.",
@@ -1758,16 +1768,16 @@ const translations = {
     building_blocks_four: {
       title: 'Building Blocks',
       nav_title: `Find the Smallest Transaction Block`,
-      heading: `2. Block Data`,
+      heading: `Block Data`,
       paragraph_one: `Each Bitcoin full node has a database. That's where blocks are stored and indexed by their hash. The full node keeps track of which blocks are candidates at each height in the chain with a second index that maps height -> [block hashes].`,
-      paragraph_two: `The JSON-RPC API returns block data as JSON objects that include a property "txs" which is an array of transaction objects.`,
+      paragraph_two: `The JSON-RPC API returns block data as JSON objects that include a property<span className="p-1 font-mono bg-[#00000033] m-1">txs</span>which is an array of transaction objects.`,
       paragraph_three: `Retrieve all the block candidates at height 6929996 and print the hash of the block with the fewest transactions in it.`,
       success: `Nicely Done`,
     },
     building_blocks_five: {
       title: 'Building Blocks',
       nav_title: `Get the Transaction Fee`,
-      heading: `3. Transaction Data`,
+      heading: `Transaction Data`,
       paragraph_one: `The transaction objects confirmed in a block are JSON objects that include arrays of "inputs" and "outputs". Both of these arrays are lists of UTXOs, also known as "coins". Coin objects have a "value" property represented in satoshis.`,
       paragraph_two: `The "inputs" array is the coins spent (destroyed) by the transaction and the "outputs" array is the coins created by the transaction. You may recall from Chapter 6 that transactions always pay a fee to incentivize miners to include them in a block. That fee is exactly the difference in value between the total input and total output values of a transaction.`,
       paragraph_three: `In other words, the miner gets to keep whatever bitcoin that was sent in to the transaction but not sent back out to the transaction recipients.`,
@@ -1781,13 +1791,13 @@ const translations = {
       nav_title: 'Determine the subsidy',
       heading: 'The Coinbase Transaction',
       paragraph_one:
-        'The first transaction in every block is called the coinbase. It may also be referred to as the "0th" transaction (referring to txs[0]) and it has a few very special properties. First of all, it has no inputs! This is because it does not spend any existing coins. Second, it\'s output value is strictly defined by the protocol (despite what Vanderpoole might say!). This is the mechanism by which miners both collect fees from transactions, and generate new coins.',
+        'The first transaction in every block is called the coinbase. It may also be referred to as the "0th" transaction (referring to txs[0]) and it has a few very special properties. First of all, it has no inputs! This is because it does not spend any existing coins. Second, its output value is strictly defined by the protocol (despite what Vanderpoole might say!). This is the mechanism by which miners both collect fees from transactions, and generate new coins.',
       paragraph_two:
         "It's fairly easy to understand how total transaction fees in a block are summed up, but where does that block subsidy value come from? How does every participant in the Bitcoin network determine exactly how much new bitcoin miners are allowed to generate at any given time?",
       paragraph_three:
-        'This is the algorithm written by Satoshi Nakamoto that has remained an immutable core property of the Bitcoin system for over 120 years:',
+        'This is the algorithm written by Satoshi Nakamoto that has remained an immutable core property of the Bitcoin system since the beginning:',
       list_one:
-        'Starting with the block #1 mined in 2009, the block subsidy is 50 BTC (or 5000000000 satoshis)',
+        'Starting with the block #1 mined in 2009, the block subsidy is 50 BTC (or 5,000,000,000 satoshis)',
       list_two: 'Every 210,000 blocks that value is cut in half.',
       paragraph_four:
         'At block height 209,999 the subsidy was 50 BTC. In the very next block at height 210,000 the subsidy was 25 BTC, and so on. After 63 "halvings" the subsidy will be one single satoshi. The last halving will drop the subsidy to zero.',
@@ -1799,19 +1809,19 @@ const translations = {
     building_blocks_seven: {
       title: 'Building Blocks',
       nav_title: 'Get the Valid Block',
-      heading: '5. That Pernicious Scallywag!',
+      heading: 'That Pernicious Scallywag!',
       paragraph_one: `There are four block candidates at height 6929851. Only one of them is a valid block, the other three were mined by Vanderpoole's cartel in reckless attempts to inflate the Bitcoin money supply.`,
-      paragraph_two: `Use your block subsidy function and the JSON-RPC API to check the coinbase outputs in all four block candidates and print the hash of the one and only valid block at that height!`,
-      paragraph_three: `Your code will be tested using `,
+      paragraph_two: `Using the block subsidy function you wrote in the previous challenge and the JSON-RPC API, write a function to check the validity of a block candidate. Do this by checking if the coinbase output is correct. Your function should return true if the block is valid.`,
+      paragraph_three: `Here's how your code will be used to find the one valid block at height 6929851:`,
       success: 'The validate block function looks great. Nice work!',
     },
 
     building_blocks_eight: {
       title: 'Building Blocks',
       nav_title: 'SHOWTIME!!',
-      heading_one: '6. SHOWTIME!!',
-      paragraph_one: `The cameras are rolling, there's two billion humans world-wide tuned in to the live stream, and there's only a few minutes left before the next commercial break. Deborah Chunk is sweating, holocat is sweating. Somewhere on the other end of the call-in phone line, Vanderpoole must be sweating. This is it!`,
-      paragraph_two: `Starting with the valid block you just found at height 6929851, find the longest chain of valid blocks you can. Store the chain as an array of block hashes. While you're at it, maintain an array of every invalid block you find as well, just to show the world how hard Vanderpoole tried to break Bitcoin. It doesn't matter what order these invalid block hashes are in, but your valid chain MUST start with the hash of block 6929851 followed by one block hash at each height all the way up to the chain tip.`,
+      heading_one: 'SHOWTIME!!',
+      paragraph_one: `The cameras are rolling, there's two billion humans world-wide tuned in to the live stream, and there's only a few minutes left before the next commercial break. Deborah Chunk is sweating, Holocat is sweating. Somewhere on the other end of the call-in phone line, Vanderpoole must be sweating. This is it!`,
+      paragraph_two: `Starting with the valid block just before the one you found at height 6929851, find the longest chain of valid blocks you can. Store the chain as an array of block hashes. While you're at it, maintain an array of every invalid block you find as well, just to show the world how hard Vanderpoole tried to break Bitcoin. It doesn't matter what order these invalid block hashes are in, but your valid chain MUST start with the hash of block 6929850 followed by one block hash at each height all the way up to the chain tip.`,
       paragraph_three: `Vanderpoole is sneaky! He mined valid blocks on top of invalid blocks, and invalid blocks on top of short valid blocks! It's a maze, a minefield, out there. You may need to keep track of several valid branches as you traverse the tree. There will be valid blocks with valid parents that are not in the longest chain! In the end, there will be only one valid leaf with a greater height than all the others.`,
       paragraph_four: `Remember: Block objects returned by the JSON API have a property "prev" which identifies that block's parent by its hash:`,
       heading_two: `A block is ONLY valid if:`,
@@ -1826,7 +1836,7 @@ const translations = {
       nav_title: 'Chapter complete',
       heading: "We're doing it live!",
       paragraph_one:
-        "You found the longest chain and proved it to everyone! You are one step closer to discrediting Vanderpoole, needless to say he didn't answer anymore of Ms. Chunk's questions.",
+        "You found the longest chain and proved it to everyone! You are one step closer to discrediting Vanderpoole. Needless to say he didn't answer anymore of Ms. Chunk's questions.",
     },
   },
 

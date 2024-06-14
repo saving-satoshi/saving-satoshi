@@ -13,7 +13,7 @@ export default function Menu(props) {
     <div
       id="lesson-navigation-menu"
       className={clsx(
-        'absolute z-10 w-full overflow-y-scroll duration-[400ms]',
+        'absolute z-10 w-full overflow-y-auto duration-[400ms]',
         theme,
         {
           'read-only-editor': props.isOpen,

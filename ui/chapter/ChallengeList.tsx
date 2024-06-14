@@ -66,7 +66,7 @@ export default function ChallengeList({
         'flex w-full grow items-start justify-stretch font-nunito text-white',
         {
           'md:mt-6': !lessonPage,
-          'overflow-y-scroll ': lessonPage,
+          'overflow-y-auto': lessonPage,
         }
       )}
     >
