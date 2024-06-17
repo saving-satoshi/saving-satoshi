@@ -1,0 +1,303 @@
+import { atom } from 'jotai'
+import { Difficulty } from 'types'
+
+const courseProgressAtom = atom({
+  chapters: [
+    {
+      id: 1,
+      title: 'Chapter 1',
+      lessons: [
+        { id: 'CH1INT1', path: '/chapter-1/intro-1', completed: false },
+        { id: 'CH1INT2', path: '/chapter-1/intro-2', completed: false },
+        { id: 'CH1GEN1', path: '/chapter-1/genesis-1', completed: false },
+        { id: 'CH1GEN2', path: '/chapter-1/genesis-2', completed: false },
+        { id: 'CH1GEN3', path: '/chapter-1/genesis-3', completed: false },
+        { id: 'CH1GEN4', path: '/chapter-1/genesis-4', completed: false },
+        { id: 'CH1TRA1', path: '/chapter-1/transacting-1', completed: false },
+        { id: 'CH1TRA2', path: '/chapter-1/transacting-2', completed: false },
+        { id: 'CH1TRA3', path: '/chapter-1/transacting-3', completed: false },
+        { id: 'CH1OUT1', path: '/chapter-1/outro-1', completed: false },
+        { id: 'CH1OUT2', path: '/chapter-1/outro-2', completed: false },
+      ],
+      completed: false,
+    },
+    {
+      id: 2,
+      lessons: [
+        { id: 'CH2INT1', path: '/chapter-2/intro-1', completed: false },
+        { id: 'CH2INT2', path: '/chapter-2/intro-2', completed: false },
+        { id: 'CH2HSH1', path: '/chapter-2/hashing-1', completed: false },
+        { id: 'CH2HSH2', path: '/chapter-2/hashing-2', completed: false },
+        { id: 'CH2HSH3', path: '/chapter-2/hashing-3', completed: false },
+        { id: 'CH2HSH4', path: '/chapter-2/hashing-4', completed: false },
+        { id: 'CH2HSH5', path: '/chapter-2/hashing-5', completed: false },
+        { id: 'CH2HSH6', path: '/chapter-2/hashing-6', completed: false },
+        { id: 'CH2SCR1', path: '/chapter-2/scripting-1', completed: false },
+        { id: 'CH2SCR2', path: '/chapter-2/scripting-2', completed: false },
+        { id: 'CH2MIN1', path: '/chapter-2/mining-1', completed: false },
+        { id: 'CH2OUT1', path: '/chapter-2/outro-1', completed: false },
+      ],
+      completed: false,
+    },
+    {
+      id: 3,
+      lessons: [
+        { id: 'CH3INT1', path: '/chapter-3/intro-1', completed: false },
+        { id: 'CH3SOL1', path: '/chapter-3/solo-1', completed: false },
+        { id: 'CH3POL1', path: '/chapter-3/pool-1', completed: false },
+        { id: 'CH3POL2', path: '/chapter-3/pool-2', completed: false },
+        { id: 'CH3COO1', path: '/chapter-3/coop-1', completed: false },
+        { id: 'CH3COO2', path: '/chapter-3/coop-2', completed: false },
+        { id: 'CH3COO3', path: '/chapter-3/coop-3', completed: false },
+        { id: 'CH3SPL1', path: '/chapter-3/split-1', completed: false },
+        { id: 'CH3SPL2', path: '/chapter-3/split-2', completed: false },
+        { id: 'CH3OUT1', path: '/chapter-3/outro-1', completed: false },
+      ],
+      completed: false,
+    },
+    {
+      id: 4,
+      lessons: [
+        { id: 'CH4INT1', path: '/chapter-4/intro-1', completed: false },
+        { id: 'CH4PKY1', path: '/chapter-4/public-key-1', completed: false },
+        { id: 'CH4PKY2', path: '/chapter-4/public-key-2', completed: false },
+        { id: 'CH4PKY3', path: '/chapter-4/public-key-3', completed: false },
+        { id: 'CH4PKY4', path: '/chapter-4/public-key-4', completed: false },
+        { id: 'CH4ADR1', path: '/chapter-4/address-1', completed: false },
+        { id: 'CH4ADR2', path: '/chapter-4/address-2', completed: false },
+        { id: 'CH4ADR3', path: '/chapter-4/address-3', completed: false },
+        { id: 'CH4OUT1', path: '/chapter-4/outro-1', completed: false },
+      ],
+      completed: false,
+    },
+    {
+      id: 5,
+      lessons: [
+        { id: 'CH5INT1', path: '/chapter-5/intro-1', completed: false },
+        { id: 'CH5INT2', path: '/chapter-5/intro-2', completed: false },
+        { id: 'CH5INT3', path: '/chapter-5/intro-3', completed: false },
+        {
+          id: 'CH5DRM1',
+          path: '/chapter-5/derive-message-1',
+          completed: false,
+        },
+        {
+          id: 'CH5DRM2',
+          path: '/chapter-5/derive-message-2',
+          completed: false,
+        },
+        {
+          id: 'CH5DRM3',
+          path: '/chapter-5/derive-message-3',
+          completed: false,
+        },
+        {
+          id: 'CH5DRM4',
+          path: '/chapter-5/derive-message-4',
+          completed: false,
+        },
+        {
+          id: 'CH5DRM5',
+          path: '/chapter-5/derive-message-5',
+          completed: false,
+        },
+        {
+          id: 'CH5DRM6',
+          path: '/chapter-5/derive-message-6',
+          completed: false,
+        },
+        {
+          id: 'CH5DRM7',
+          path: '/chapter-5/derive-message-7',
+          completed: false,
+        },
+        {
+          id: 'CH5VFS1',
+          path: '/chapter-5/verify-signature-1',
+          completed: false,
+        },
+        {
+          id: 'CH5VFS2',
+          path: '/chapter-5/verify-signature-2',
+          completed: false,
+        },
+        {
+          id: 'CH5VFS3',
+          path: '/chapter-5/verify-signature-3',
+          completed: false,
+        },
+        {
+          id: 'CH5VFS4',
+          path: '/chapter-5/verify-signature-4',
+          completed: false,
+        },
+        {
+          id: 'CH5VFS5',
+          path: '/chapter-5/verify-signature-5',
+          completed: false,
+        },
+        {
+          id: 'CH5VLS1',
+          path: '/chapter-5/validate-signature-1',
+          completed: false,
+        },
+        {
+          id: 'CH5VLS2',
+          path: '/chapter-5/validate-signature-2',
+          completed: false,
+        },
+        {
+          id: 'CH5VLS3',
+          path: '/chapter-5/validate-signature-3',
+          completed: false,
+        },
+        {
+          id: 'CH5VLS4',
+          path: '/chapter-5/validate-signature-4',
+          completed: false,
+        },
+        { id: 'CH5OUT1', path: '/chapter-5/outro-1', completed: false },
+      ],
+      completed: false,
+    },
+    {
+      id: 6,
+      difficulties: {
+        normal: {
+          lessons: [
+            { id: 'CH6INT1', path: '/chapter-6/intro-1', completed: false },
+            { id: 'CH6INT2', path: '/chapter-6/intro-2', completed: false },
+            { id: 'CH6INO1', path: '/chapter-6/in-out-1', completed: false },
+            { id: 'CH6INO2', path: '/chapter-6/in-out-2', completed: false },
+            { id: 'CH6INO3', path: '/chapter-6/in-out-3', completed: false },
+            {
+              id: 'CH6INO4',
+              path: '/chapter-6/in-out-4/normal',
+              completed: false,
+            },
+            { id: 'CH6INO5', path: '/chapter-6/in-out-5', completed: false },
+            {
+              id: 'CH6PUT1',
+              path: '/chapter-6/put-it-together-1',
+              completed: false,
+            },
+            {
+              id: 'CH6PUT2',
+              path: '/chapter-6/put-it-together-2',
+              completed: false,
+            },
+            {
+              id: 'CH6PUT3',
+              path: '/chapter-6/put-it-together-3',
+              completed: false,
+            },
+            { id: 'CH6OUT1', path: '/chapter-6/outro-1', completed: false },
+          ],
+          completed: false,
+        },
+        hard: {
+          lessons: [
+            { id: 'CH6INT1', path: '/chapter-6/intro-1', completed: false },
+            { id: 'CH6INT2', path: '/chapter-6/intro-2', completed: false },
+            { id: 'CH6INO1', path: '/chapter-6/in-out-1', completed: false },
+            { id: 'CH6INO2', path: '/chapter-6/in-out-2', completed: false },
+            { id: 'CH6INO3', path: '/chapter-6/in-out-3', completed: false },
+            {
+              id: 'CH6INO4',
+              path: '/chapter-6/in-out-4/normal',
+              completed: false,
+            },
+            { id: 'CH6INO5', path: '/chapter-6/in-out-5', completed: false },
+            {
+              id: 'CH6PUT1',
+              path: '/chapter-6/put-it-together-1',
+              completed: false,
+            },
+            {
+              id: 'CH6PUT2',
+              path: '/chapter-6/put-it-together-2',
+              completed: false,
+            },
+            {
+              id: 'CH6PUT3',
+              path: '/chapter-6/put-it-together-3',
+              completed: false,
+            },
+            { id: 'CH6OUT1', path: '/chapter-6/outro-1', completed: false },
+          ],
+          completed: false,
+        },
+      },
+      completed: false,
+      selectedDifficulty: Difficulty.NORMAL,
+      hasDifficulty: true,
+    },
+    {
+      id: 7,
+      lessons: [
+        { id: 'CH7INT1', path: '/chapter-7/intro-1', completed: false },
+        { id: 'CH7INT2', path: '/chapter-7/intro-2', completed: false },
+        { id: 'CH7INT3', path: '/chapter-7/intro-3', completed: false },
+        {
+          id: 'CH7MPT1',
+          path: '/chapter-7/mempool-transaction-1',
+          completed: false,
+        },
+        { id: 'CH7OUT1', path: '/chapter-7/outro-1', completed: false },
+      ],
+      completed: false,
+    },
+    {
+      id: 8,
+      lessons: [
+        { id: 'CH8INT1', path: '/chapter-8/intro-1', completed: false },
+        { id: 'CH8INT2', path: '/chapter-8/intro-2', completed: false },
+        { id: 'CH8INT3', path: '/chapter-8/intro-3', completed: false },
+        {
+          id: 'CH8BBK1',
+          path: '/chapter-8/building-blocks-1',
+          completed: false,
+        },
+        {
+          id: 'CH8BBK2',
+          path: '/chapter-8/building-blocks-2',
+          completed: false,
+        },
+        {
+          id: 'CH8BBK3',
+          path: '/chapter-8/building-blocks-3',
+          completed: false,
+        },
+        {
+          id: 'CH8BBK4',
+          path: '/chapter-8/building-blocks-4',
+          completed: false,
+        },
+        {
+          id: 'CH8BBK5',
+          path: '/chapter-8/building-blocks-5',
+          completed: false,
+        },
+        {
+          id: 'CH8BBK6',
+          path: '/chapter-8/building-blocks-6',
+          completed: false,
+        },
+        {
+          id: 'CH8BBK7',
+          path: '/chapter-8/building-blocks-7',
+          completed: false,
+        },
+        {
+          id: 'CH8BBK8',
+          path: '/chapter-8/building-blocks-8',
+          completed: false,
+        },
+        { id: 'CH8OUT1', path: '/chapter-8/outro-1', completed: false },
+      ],
+      completed: false,
+    },
+  ],
+  currentChapter: 1,
+  currentLesson: null,
+})
