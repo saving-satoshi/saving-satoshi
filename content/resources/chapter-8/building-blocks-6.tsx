@@ -28,7 +28,7 @@ const javascriptChallenge = {
   let subsidy = BigInt(5000000000);
   subsidy >>= halvings;
 
-  return Number(subsidy)
+  return Number(subsidy);
 }`,
   validate: async (answer) => {
     return [true, undefined]
