@@ -28,11 +28,8 @@ const javascript = {
     'y_is_even': '02',
     'y_is_odd':  '03'
   };
-  const regex = /([a-f0-9]+),([a-f0-9]+)/;
-  const cleanedPublicKey = publicKey.replace(/\\s/g, '');
-  const match = cleanedPublicKey.match(regex);
-  const which = BigInt("0x" + match[2]) % 2n == 0 ? 'y_is_even' : 'y_is_odd';
-  return header_byte[which] + match[1];
+  const evenOrOdd = publicKeyToBigInt % 2n == 0 ? 'is_even' : 'is_odd';
+  return header_byte[evenOrOdd] + publicKeyX;
 }`,
   validate: async (answer) => {
     return [true, undefined]
@@ -51,11 +48,8 @@ const python = {
         "y_is_even": "02",
         "y_is_odd":  "03"
     }
-    regex = r"([a-f0-9]+),([a-f0-9]+)"
-    cleaned_public_key = re.sub(r"\\s", "", public_key)
-    match = re.search(regex, cleaned_public_key)
-    which = 'y_is_even' if int(match.group(2), 16) % 2 == 0 else 'y_is_odd'
-    return header_byte[which] + match.group(1)`,
+    evenOrOdd = 'is_even' if publicKeyToBigInt % 2 == 0 else 'is_odd';
+    return header_byte[evenOrOdd] + public_keyX`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -114,79 +108,30 @@ export default function PublicKeyResourcesFour({ lang }) {
         <>
           <Text className="mt-[25px] text-xl font-bold">
             {t(
-              'chapter_four.resources.public_key.elliptic_curve_reason_heading'
+              'chapter_four.resources.public_key_four.y_coordinate_compression_heading'
             )}
           </Text>
           <Text>
             {t(
-              'chapter_four.resources.public_key.elliptic_curve_reason_paragraph'
+              'chapter_four.resources.public_key_four.y_coordinate_compression_paragraph'
             )}
-          </Text>
-          <ul className="list-inside list-disc font-nunito text-white">
-            <li>
-              {t(
-                'chapter_four.resources.public_key.elliptic_curve_reason_list_one'
-              )}
-            </li>
-            <li>
-              {t(
-                'chapter_four.resources.public_key.elliptic_curve_reason_list_two'
-              )}
-            </li>
-            <li>
-              {t(
-                'chapter_four.resources.public_key.elliptic_curve_reason_list_three'
-              )}
-            </li>
-            <li>
-              {t(
-                'chapter_four.resources.public_key.elliptic_curve_reason_list_four'
-              )}
-            </li>
-          </ul>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.public_key.secp_heading')}
-          </Text>
-          <Text>{t('chapter_four.resources.public_key.secp_paragraph')}</Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.public_key.generator_point_heading')}
-          </Text>
-          <Text>
-            {t('chapter_four.resources.public_key.generator_point_paragraph')}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_four.resources.public_key.elliptic_curve_operations_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_four.resources.public_key.elliptic_curve_operations_paragraph'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.public_key.discrete_log_heading')}
-          </Text>
-          <Text>
-            {t('chapter_four.resources.public_key.discrete_log_paragraph')}
           </Text>
         </>
       }
       tipsResources={
         <ul className="list-inside list-disc font-nunito text-white">
-          <li>{t('chapter_four.resources.public_key.tip_one')}</li>
-          <li>{t('chapter_four.resources.public_key.tip_two')}</li>
+          <li>{t('chapter_four.resources.public_key_four.tip')}</li>
         </ul>
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.pseudo_solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
               onChange={challengeToggleSwitch}
             />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
+            <Text>{t('help_page.pseudo_confirm')}</Text>
           </div>
           {challengeIsToggled && (
             <div className="border border-white/25">

@@ -798,8 +798,10 @@ const translations = {
       nav_title: 'Compress the public key',
       paragraph_one:
         'The public key has an x and y coordinate for a total of 64 bytes. This can be compressed into 33 bytes by removing the y coordinate and prepending a single byte of metadata. That byte will indicate if the Y coordinate is even or odd. Because the elliptic curve equation only has two variables, the complete public key can be computed later by the verifier using only x and the metadata:',
-      paragraph_two:
-        'The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function `compress_publickey()` to accept a public key and return a 33 byte hex string representing the compressed public key.',
+      paragraph_two_javascript:
+        'The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function <span className="text-green">compressPublicKey()</span> to accept a public key and return a 33 byte hex string representing the compressed public key.',
+      paragraph_two_python:
+        'The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function <span className="text-green">compress_publickey()</span> to accept a public key and return a 33 byte hex string representing the compressed public key.',
       success:
         'Excellent. Now we have our compressed public key. Next we need to hash it and encode it in a human-friendly format.',
     },
@@ -867,22 +869,7 @@ const translations = {
         'You withdraw the bitcoin from the mining pool into the wallet you just created. You are now fully funded and ready for whatever Vanderpoole and BitRey may throw at you next.',
     },
     resources: {
-      public_key: {
-        elliptic_curve_reason_heading:
-          'The reason for elliptic curve operations',
-        elliptic_curve_reason_paragraph:
-          'We use a very specific set of steps to derive the public key because there is mathematical proof that reversing this operation is essentially impossibly hard. That feature also applies to other algorithms ( like RSA), but those have much larger key sizes and are less efficient computations. The steps we follow were chosen because:',
-        elliptic_curve_reason_list_one:
-          'we want a system where anyone can join using minimal resources',
-        elliptic_curve_reason_list_two:
-          'we want messages to be short (and therefore cheap to transmit)',
-        elliptic_curve_reason_list_three:
-          'we need to prove we know a secret without giving away that secret',
-        elliptic_curve_reason_list_four:
-          'we need it to be practically impossible for anyone else to compute our secret',
-        secp_heading: 'secp256k1',
-        secp_paragraph:
-          'Secp256k1 is the name of the elliptic curve used by Bitcoin to implement its public key cryptography. All points on this curve are valid Bitcoin public keys.',
+      public_key_three: {
         generator_point_heading: 'Generator point',
         generator_point_paragraph:
           'A specific point on the secp256k1 curve. Its value is part of the secp256k1 standard and it’s always the same. This point is not different from other points on the curve, but it is agreed up on as the standard starting point for calculations. No one really knows why this particular point was chosen.',
@@ -897,16 +884,29 @@ const translations = {
         tip_two:
           '<span className="font-bold">Calculate the public key:</span> While the private key is accepted in hex format, it needs to be converted to a number (BigInt if you’re using JS) before multiplying with the generator point.',
       },
-      address: {
+      public_key_four: {
+        y_coordinate_compression_heading: 'Public Key Compression',
+        y_coordinate_compression_paragraph:
+          'When you calculate a point addition on an elliptic curve, you use the coordinates of two points to find the coordinates of a third point that lies on the curve. However, there are usually two possible y-coordinates for any given x-coordinate (except for certain special cases). When compressing a public key, you choose one of these y-coordinates and include only the x-coordinate along with an indicator of which y-coordinate to use, in this case we use the appended metadata to indicate the y-coordinate.',
+        tip: 'This challenge is actually quite simple, we are only really trying to determine whether the y-coordinate is even or odd so that we can prepend that metadata to the front of our public key.',
+      },
+      address_two: {
         hash_algo_heading: 'SHA-256, RIPEMD-160',
         hash_algo_paragraph:
           'Hash functions digest any amount of any kind of data and always return a result of the same size. For SHA256, it’s 32 bytes. For RIPEMD-160, it’s 20 bytes. The output is deterministic (always the same output for the same input) but otherwise, indistinguishable from random. Hash functions effectively reduce data to a small consistent fingerprint.',
+        tip_one:
+          'When calculating the SHA-256 hash you will need to make sure to hash your compressed key as bytes not hex.',
+        tip_two:
+          'Make sure you are doing the hashing algorithms in the correct order!',
+      },
+      address_three: {
         wpkh_heading: 'Witness Public Key Hash (wpkh) address',
         wpkh_paragraph:
           'A Bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There are several types of output scripts and several encoding mechanisms. In this challenge we encode a compressed public key with bech32 to create what is called a witness public key hash address.',
         network_heading: 'Mainnet, Testnet, Signet, and Regtest',
         network_paragraph:
           'When developing Bitcoin software, it is important to test your code before you trust real money with it! One of the simplest ways to test Bitcoin software is to use a different blockchain with a new genesis block where the coins don’t matter, mining is free and easy, and everything can be reset at any time. These chains are supported by a unique network of nodes that does not interfere with the real coins and nodes on Mainnet. Testnet and Signet are the names of two such alternate Bitcoin blockchains that are maintained in parallel with Mainnet on a global scale. Regtest is a developer mode designed to be run locally with no network connections needed at all.',
+        tip: 'Make sure you take a close look at the bech32 library to find the exact methods you can use.',
       },
     },
   },
@@ -1979,17 +1979,10 @@ const translations = {
       'What specific tips can/do we want to give learners if they are stuck?',
     spoilers_heading: 'Spoilers',
     spoilers_confirm: 'Yes, I want to see the solution',
+    pseudo_confirm: 'Yes, I want to see the pseudocode',
     solution: 'Solution to this challenge',
+    pseudo_solution: 'Pseudocode solution to this challenge',
     solution_one: 'Solution to part one of this challenge',
-    solution_two: 'Solution to part two of this challenge',
-    solution_three: 'Solution to part three of this challenge',
-    solution_four: 'Solution to part four of this challenge',
-    solution_five: 'Solution to part five of this challenge',
-    solution_six: 'Solution to part six of this challenge',
-    solution_seven: 'Solution to part seven of this challenge',
-    solution_eight: 'Solution to part eight of this challenge',
-    solution_nine: 'Solution to part nine of this challenge',
-    solution_ten: 'Solution to part ten of this challenge',
     feedback:
       'Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
     help_suggestion:

@@ -22,11 +22,11 @@ const javascript = {
   },
   defaultCode: `function hashCompressed(compressedPublicKey) {
   // First we need to hash the compressedPublicKey with SHA256
-  const sha256Hash = crypto.createHash('sha256').update(Buffer.from(compressedPublicKey, 'hex')).digest()
+  const sha256Hash = sha256(compressedPublicKeyToBytes).digest()
   // Then you will need to hash it with ripemd160
-  const ripemdHash = crypto.createHash('ripemd160').update(sha256Hash).digest()
+  const ripemdHash = ripemd160(sha256Hash).digest()
   // Finally decode the answer into hex
-  const publicKeyHash = ripemdHash.toString('hex')
+  const publicKeyHash = ripemdHash.toHex()
   return publicKeyHash
 }`,
   validate: async (answer) => {
@@ -43,9 +43,9 @@ const python = {
   },
   defaultCode: `def hash_compressed(compressed_public_key):
     # First we need to hash the compressed_public_key with SHA256
-    sha256_hash = hashlib.new('sha256', bytes.fromhex(compressed_public_key)).digest()
+    sha256_hash = sha256(compressed_public_key_to_bytes).digest()
     # Then you will need to hash it with ripemd160
-    ripemd_hash = hashlib.new('ripemd160', sha256_hash).digest()
+    ripemd_hash = ripemd160(sha256_hash).digest()
     # Finally decode the answer into hex
     public_key_hash = ripemd_hash.hex()
     return public_key_hash`,
@@ -111,28 +111,28 @@ export default function AddressResourcesTwo({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.address.hash_algo_heading')}
+            {t('chapter_four.resources.address_two.hash_algo_heading')}
           </Text>
-          <Text>{t('chapter_four.resources.address.hash_algo_paragraph')}</Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.address.wpkh_heading')}
+          <Text>
+            {t('chapter_four.resources.address_two.hash_algo_paragraph')}
           </Text>
-          <Text>{t('chapter_four.resources.address.wpkh_paragraph')}</Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_four.resources.address.network_heading')}
-          </Text>
-          <Text>{t('chapter_four.resources.address.network_paragraph')}</Text>
         </>
+      }
+      tipsResources={
+        <ul className="list-inside list-disc font-nunito text-white">
+          <li>{t('chapter_four.resources.address_two.tip_one')}</li>
+          <li>{t('chapter_four.resources.address_two.tip_two')}</li>
+        </ul>
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.pseudo_solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
               onChange={challengeToggleSwitch}
             />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
+            <Text>{t('help_page.pseudo_confirm')}</Text>
           </div>
           {challengeIsToggled && (
             <div className="border border-white/25">
