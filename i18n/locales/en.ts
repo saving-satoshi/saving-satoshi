@@ -912,7 +912,7 @@ const translations = {
   },
 
   chapter_five: {
-    title: 'Will the real satoshi please stand up',
+    title: 'Will the real Satoshi please stand up',
     paragraph_one:
       'It’s late, and you’re getting sleepy, but as you shut your eyes for a moment, a double dose of bad news arrives. 1) Vanderpoole is back on TV. 2) He is claiming to be the great-grandson of Satoshi Nakamoto. He also looks sleep-deprived.',
     intro_one: {
