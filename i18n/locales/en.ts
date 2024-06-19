@@ -1165,7 +1165,7 @@ const translations = {
       paragraph_three:
         "Let's see if you can verify Vanderpoole's message and signature using one of THESE keys?",
       success:
-        "The signature is valid for this public key of Vanderpoole's, this was not satoshi!",
+        "The signature is valid for this public key of Vanderpoole's, this was not Satoshi!",
     },
     outro_one: {
       title: 'Outro',
@@ -1804,7 +1804,7 @@ const translations = {
       paragraph_five: 'AND THAT LAST HALVING WAS YESTERDAY!',
       paragraph_six:
         'Finish the implementation of the following function that accepts a block height as an argument and returns the value of the subsidy in satoshis.',
-      success: 'The (get subsidy) function looks great. Nice work!',
+      success: 'The get_subsidy function looks great. Nice work!',
     },
     building_blocks_seven: {
       title: 'Building Blocks',

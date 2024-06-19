@@ -87,8 +87,8 @@ export default function BuildingBlocks7({ lang }) {
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: `const Bitcoinrpc = require('@savingsatoshi/bitcoin_rpcjs')
-const Bitcoin = new Bitcoinrpc()
+    defaultCode: `const Bitcoinrpc = require('@savingsatoshi/bitcoin_rpcjs');
+const Bitcoin = new Bitcoinrpc();
 
 ${cleanedCombinedCode}
 

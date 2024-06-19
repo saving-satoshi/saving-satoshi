@@ -20,8 +20,8 @@ const javascriptChallenge = {
     name: '',
     args: [],
   },
-  defaultCode: `let info = Bitcoin.rpc("getinfo")
-console.log(info.difficulty)
+  defaultCode: `let info = Bitcoin.rpc("getinfo");
+console.log(info.difficulty);
   `,
   validate: async (answer) => {
     return [true, undefined]
