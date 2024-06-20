@@ -912,7 +912,7 @@ const translations = {
   },
 
   chapter_five: {
-    title: 'The keyholder',
+    title: 'Will the real Satoshi please stand up',
     paragraph_one:
       'It’s late, and you’re getting sleepy, but as you shut your eyes for a moment, a double dose of bad news arrives. 1) Vanderpoole is back on TV. 2) He is claiming to be the great-grandson of Satoshi Nakamoto. He also looks sleep-deprived.',
     intro_one: {
@@ -1210,7 +1210,7 @@ const translations = {
   },
 
   chapter_six: {
-    title: `The Keyholder`,
+    title: `The keyholder`,
     paragraph_one:
       'Vanderpoole is out to get you now that you’ve exposed him as a fraud. But despite that, plenty of scared people continue to cling to the myth he created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.',
     intro_one: {
@@ -1716,7 +1716,7 @@ const translations = {
   },
 
   chapter_eight: {
-    title: 'Twenty-one Million',
+    title: 'Twenty-one million',
     paragraph_one: `Now that the news is out, people are more interested in you than Vanderpoole. Deborah Chunk invites you to appear in person, potentially exposing yourself to Vanderpoole’s wrath. You once again hop into your Budgetcopter and fly downtown to the offices of LARGE BIG NEWS Studios.`,
     intro_one: {
       title: 'Intro',
@@ -1841,7 +1841,7 @@ const translations = {
   },
 
   chapter_nine: {
-    title: `Don't compute, verify.`,
+    title: `Don't trust, verify.`,
   },
 
   chapter_ten: {
