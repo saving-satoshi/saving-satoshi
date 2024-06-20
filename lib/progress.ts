@@ -100,6 +100,7 @@ export const keys = [
   'CH8OUT1',
 
   'CH9INT1',
+  'CH9INT2',
   'CH9SPL1',
   'CH9SPL2',
   'CH9SPL3',
