@@ -98,6 +98,12 @@ export const keys = [
   'CH8BBK7',
   'CH8BBK8',
   'CH8OUT1',
+
+  'CH9INT1',
+  'CH9SPL1',
+  'CH9SPL2',
+  'CH9SPL3',
+  'CH9OUT1',
 ]
 
 export const keysMeta = {

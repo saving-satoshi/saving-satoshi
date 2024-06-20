@@ -6,22 +6,8 @@ export default function Chapter9({ lang }) {
 
   return (
     <Chapter metadata={metadata} lang={lang}>
-      <Text>
-        At last, the moment has arrived. The final block has been mined to much
-        celebration.
-      </Text>
-
-      <Text>
-        During the festivities, you get a strange text. It’s from a number you
-        don’t recognize. The message tells you to run and hide. Vanderpoole and
-        his henchmen have figured where you are, and they’re coming to steal
-        your bitcoin.
-      </Text>
-
-      <Text>
-        Don’t panic, you tell yourself. Think. What kind of trap can you set for
-        them?
-      </Text>
+      <Text>{t('chapter_nine.paragraph_one')}</Text>
+      <Text className="mt-4">{t('chapter_nine.paragraph_one')}</Text>
     </Chapter>
   )
 }
@@ -31,8 +17,8 @@ export const metadata = {
   slug: 'chapter-9',
   title: `chapter_nine.title`,
   image: '/assets/images/chapter-9-cover.jpg',
-  intros: [],
-  lessons: [],
-  outros: [],
-  challenges: [],
+  intros: ['intro-1'],
+  lessons: ['splits-1', 'splits-2', 'splits-3'],
+  outros: ['outro-1'],
+  challenges: ['splits-1'],
 }
