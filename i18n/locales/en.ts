@@ -1842,6 +1842,8 @@ const translations = {
 
   chapter_nine: {
     title: `Don't trust, verify.`,
+    paragraph_one: `You demonstrated Vanderpoole’s invalid blocks and proved the most work chain, just in time. Its commercial break.`,
+    paragraph_two: `Just then, Vanderpoole himself walks into the studio! He starts complaining that you have ruined his business and slandered his good family name.`,
   },
 
   chapter_ten: {

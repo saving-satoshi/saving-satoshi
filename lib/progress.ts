@@ -98,6 +98,13 @@ export const keys = [
   'CH8BBK7',
   'CH8BBK8',
   'CH8OUT1',
+
+  'CH9INT1',
+  'CH9INT2',
+  'CH9SPL1',
+  'CH9SPL2',
+  'CH9SPL3',
+  'CH9OUT1',
 ]
 
 export const keysMeta = {
@@ -198,6 +205,13 @@ export const keysMeta = {
   CH8BBK7: { path: '/chapter-8/building-blocks-7' },
   CH8BBK8: { path: '/chapter-8/building-blocks-8' },
   CH8OUT1: { path: '/chapter-8/outro-1' },
+
+  CH9INT1: { path: '/chapter-9/intro-1' },
+  CH9INT2: { path: '/chapter-9/intro-2' },
+  CH9SPL1: { path: '/chapter-9/splits-1' },
+  CH9SPL2: { path: '/chapter-9/splits-2' },
+  CH9SPL3: { path: '/chapter-9/splits-3' },
+  CH9OUT1: { path: '/chapter-9/outro-1' },
 }
 
 export const isLessonUnlocked = (
