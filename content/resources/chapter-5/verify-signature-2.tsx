@@ -21,11 +21,14 @@ const javascriptChallenge = {
     args: [],
   },
   defaultCode: `function msg_to_integer(msg) {
-  // Given a hex string to sign, convert that string to bytes,
-  // double-SHA256 the bytes and then return a BigInt() from the 32-byte digest.
+  // Given a hex string to sign, convert that string to a buffer of bytes
   const bytes = Buffer.from(msg, 'hex');
+
+  // double-SHA256 the bytes
   const single_hash = Hash('sha256').update(bytes).digest();
   const double_hash = Hash('sha256').update(single_hash).digest();
+
+  // return a BigInt() from the 32-byte digest
   return BigInt('0x' + double_hash.toString('hex'));
 }`,
   validate: async (answer) => {
@@ -110,24 +113,6 @@ export default function VerifySignatureResourcesTwo({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_five.resources.verify_signature.eliptic_curve_heading')}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.eliptic_curve_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.public_private_key_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.public_private_key_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
             {t(
               'chapter_five.resources.verify_signature.signature_verification_heading'
             )}
@@ -137,35 +122,12 @@ export default function VerifySignatureResourcesTwo({ lang }) {
               'chapter_five.resources.verify_signature.signature_verification_paragraph_one'
             )}
           </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.finite_field_arithmetic_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.finite_field_arithmetic_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_five.resources.verify_signature.ge_and_fe_heading')}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.ge_and_fe_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.modular_inverse_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.modular_inverse_paragraph_one'
-            )}
-          </Text>
         </>
+      }
+      tipsResources={
+        <ul className="list-inside list-disc font-nunito text-white">
+          <li>{t('chapter_five.resources.verify_signature_two.tip_one')}</li>
+        </ul>
       }
       codeResources={
         <>
