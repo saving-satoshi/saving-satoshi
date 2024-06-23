@@ -844,18 +844,35 @@ const translations = {
       title: 'Address',
       nav_title: 'Get a P2WPKH address',
       paragraph_one:
-        'There are multiple types of bitcoin addresses. We want to create a Testnet Pay-to-Witness-Public-Key-Hash (p2wpkh) address to encode the 20-byte compressed public key hash. First we need to append the hash with the witness version number `0`. These 21 bytes are known as the witness program. The witness program is encoded into a human-friendly format called <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>, which will append a human-readable prefix and a checksum.',
-      paragraph_two: 'The prefix is determined by the network:',
-      list_one: 'Mainnet: ‘bc’',
-      list_two: 'Testnet: ‘tb’',
-      list_three: 'Regtest: ‘bcrt’',
+        'There are multiple types of bitcoin addresses. In the previous exercise, we created a 20-byte compressed public key hash. Now, we would like to encode that hash into a Pay-to-Witness-Public-Key-Hash (p2wpkh) address on the Testnet network.',
+      paragraph_two:
+        'First we need to append a witness version number of `0` to the hash. These resulting 21 bytes are known as the <span className="font-bold">witness program</span>.',
       paragraph_three:
-        "You will want to use the testnet prefix 'tb' in this function.",
-      paragraph_four:
-        'The data returned by this function will be your Bitcoin address!',
+        'Then, the witness program is encoded into a human-friendly format called <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>. Doing this appends a human-readable prefix and a checksum to the data.',
+      paragraph_four: 'The prefix is determined by the network:',
+      table_heading: {
+        item_one: 'Network',
+        item_two: 'Human-Readable Prefix',
+      },
+      table_rows: {
+        key_one: 'Mainnet',
+        value_one: 'bc',
+        key_two: 'Testnet',
+        value_two: 'tb',
+        key_three: 'Regtest',
+        value_three: 'bcrt',
+      },
       paragraph_five:
-        'You may need to read the code in the bech32 libraries we imported for you to find the right functions to use and their API:\n' +
-        '<Link href="https://github.com/saving-satoshi/bech32js/blob/main/bech32.js" target="_blank" className="underline">JavaScript: @savingsatoshi/bech32js</Link>\n' +
+        "Since we're making a Testnet address, we will be using the 'tb' prefix.",
+      paragraph_six:
+        'After the data has been encoded to bech32, we are left with a Bitcoin address!',
+      paragraph_seven:
+        'Complete the function to create a bech32 address from a compressed public key hash. Start by making the witness program, then convert the program to an address by using the bech32 library that has already been imported for you.',
+      paragraph_eight:
+        'You may need to dig into the bech32 library and read the code to find the right functions to use:\n',
+      paragraph_eight_javascript:
+        '<Link href="https://github.com/saving-satoshi/bech32js/blob/main/bech32.js" target="_blank" className="underline">JavaScript: @savingsatoshi/bech32js</Link>\n',
+      paragraph_eight_python:
         '<Link href="https://github.com/saving-satoshi/bech32py/blob/main/bech32py/bech32.py" target="_blank" className="underline">Python: savingsatoshi_bech32py</Link>',
       success: 'Now you have an address that mined bitcoin can be sent to.',
     },
