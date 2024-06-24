@@ -18,8 +18,12 @@ export default function Table({
               key={index}
               className={clsx({
                 'w-full': index === 0,
-                'w-1/3': index > 0 && index < headings.length - 1,
-                'w-1/6': index === headings.length - 1,
+                'w-1/2': headings.length === 2, // only two columns in the table
+                'w-1/3':
+                  index > 0 &&
+                  index < headings.length - 1 &&
+                  headings.length > 2,
+                'w-1/6': index === headings.length - 1 && headings.length > 2,
               })}
             >
               {heading}
@@ -41,8 +45,12 @@ export default function Table({
                 key={index}
                 className={clsx({
                   'w-full': index === 0,
-                  'w-1/3': index > 0 && index < headings.length - 1,
-                  'w-1/6': index === headings.length - 1,
+                  'w-1/2': headings.length === 2, // only two columns in the table
+                  'w-1/3':
+                    index > 0 &&
+                    index < headings.length - 1 &&
+                    headings.length > 2,
+                  'w-1/6': index === headings.length - 1 && headings.length > 2,
                 })}
               >
                 {item}

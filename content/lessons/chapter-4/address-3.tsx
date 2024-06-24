@@ -1,6 +1,6 @@
 'use client'
 
-import { ScriptingChallenge, LessonInfo } from 'ui'
+import { ScriptingChallenge, LessonInfo, Table } from 'ui'
 import { Data, EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
@@ -23,6 +23,24 @@ export default function Address3({ lang }) {
   const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
   const dataObject = prevData?.data ? prevData?.data : ''
   const [isLoading, setIsLoading] = useState(true)
+  const tableHeading = [
+    t('chapter_four.address_three.table_heading.item_one'),
+    t('chapter_four.address_three.table_heading.item_two'),
+  ]
+  const tableRows = [
+    [
+      t('chapter_four.address_three.table_rows.key_one'),
+      t('chapter_four.address_three.table_rows.value_one'),
+    ],
+    [
+      t('chapter_four.address_three.table_rows.key_two'),
+      t('chapter_four.address_three.table_rows.value_two'),
+    ],
+    [
+      t('chapter_four.address_three.table_rows.key_three'),
+      t('chapter_four.address_three.table_rows.value_three'),
+    ],
+  ]
 
   const getPrevLessonData = async () => {
     const data = await getData('CH4ADR2')
@@ -160,26 +178,34 @@ def hash_to_address(hash):
           <Text className="mt-4 font-nunito text-xl text-white">
             {t(`chapter_four.address_three.paragraph_two`)}
           </Text>
-          <ul className="font-nunito">
-            <li className="text-lg md:text-xl">
-              {t('chapter_four.address_three.list_one')}
-            </li>
-            <li className="text-lg md:text-xl">
-              {t('chapter_four.address_three.list_two')}
-            </li>
-            <li className="text-lg md:text-xl">
-              {t('chapter_four.address_three.list_three')}
-            </li>
-          </ul>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t(`chapter_four.address_three.paragraph_three`)}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t(`chapter_four.address_three.paragraph_four`)}
           </Text>
+          <Table headings={tableHeading} rows={tableRows} />
           <Text className="preline mt-4 font-nunito text-xl italic text-white">
             {t(`chapter_four.address_three.paragraph_five`)}
           </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_four.address_three.paragraph_six`)}
+          </Text>
+          <hr className="my-7 h-[1px] w-full opacity-25" />
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_four.address_three.paragraph_seven`)}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t(`chapter_four.address_three.paragraph_eight`)}
+          </Text>
+          <ul className="list-inside list-disc">
+            <li className="mt-4 font-nunito text-xl text-white">
+              {t(`chapter_four.address_three.paragraph_eight_javascript`)}
+            </li>
+            <li className="mt-4 font-nunito text-xl text-white">
+              {t(`chapter_four.address_three.paragraph_eight_python`)}
+            </li>
+          </ul>
         </LessonInfo>
       </ScriptingChallenge>
     )
