@@ -1679,14 +1679,20 @@ const translations = {
       title: 'Building blocks',
       nav_title: 'Assemble a block',
       heading: 'Code Challenge',
-      paragraph_one:
-        "This is the code you find on Vanderpoole's server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is assemble_block() (in Python, assembleBlock() in JavaScript). If you run the code as Vanderpoole left it, you will see the problem right away.",
+      python: {
+        paragraph_one:
+          'This is the code you find on Vanderpoole\'s server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assemble_block()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.',
+      },
+      javascript: {
+        paragraph_one:
+          'This is the code you find on Vanderpoole\'s server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assembleBlock()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.',
+      },
       paragraph_two: {
         a: 'You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules. The most critical consensus rules you will need to pay attention to restrict the total ',
         b: {
           text: 'transaction weight ',
-          href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520weight%2520units',
-          question: 'What are weight units?',
+          href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520weighted%2520units',
+          question: 'What are weighted units?',
         },
         c: ' and the ',
         d: {
@@ -1711,7 +1717,7 @@ const translations = {
         item_two: 'Fee',
         item_two_b: 'Satoshis',
         item_three: 'Weight',
-        item_three_b: 'Weight units (WU)',
+        item_three_b: 'Weighted units (WU)',
         item_four: 'Ancestors',
       },
       table_one: {
@@ -1729,7 +1735,21 @@ const translations = {
       paragraph_one:
         'You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.',
     },
-    resources: {},
+    resources: {
+      mempool_transaction_one: {
+        bytes_v_weight_heading: 'Bytes vs Weighted Units',
+        bytes_v_weight_paragraph_one:
+          'In Bitcoin block construction, "weighted units" (WU) and "bytes" are two different metrics used to measure the size of transactions and blocks.',
+        bytes_v_weight_subheading_bytes: 'Bytes',
+        bytes_v_weight_paragraph_two:
+          'Bytes refer to the raw size of a transaction or block in terms of actual data. It is the literal size of the transaction data when it is serialized (converted into a format that can be stored or transmitted). Before the implementation of Segregated Witness (SegWit), the block size was limited to 1 megabyte (1 MB), measured in bytes.',
+        bytes_v_weight_subheading_wu: 'Weighted Units',
+        bytes_v_weight_paragraph_three:
+          'Weighted units are a more complex metric introduced with SegWit in Bitcoin Improvement Proposal 141 (BIP 141). This system aims to more fairly allocate block space by considering the impact of witness data separately.',
+        bytes_v_weight_paragraph_four:
+          'In our lesson here its just important to note we are using weighted units to calculate the maximum block size and the same for each tx so make sure your block does not exceed the maximum size in weighted units.',
+      },
+    },
   },
 
   chapter_eight: {
