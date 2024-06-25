@@ -1107,7 +1107,7 @@ const translations = {
       paragraph_two:
         'The ECDSA signature verification algorithm is explained <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">here</Link> and <Link className="underline" href="https://www.secg.org/sec1-v2.pdf#page=52" target="_blank">here</Link>.',
       paragraph_three:
-        'We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green">verify()</span> that should only return True if everything is valid!',
+        'We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green p-1 font-mono bg-[#00000033] m-1">verify()</span> that should only return True if everything is valid!',
       paragraph_four:
         "We know Satoshi's signature is valid, it has been checked by every Bitcoin full node since 2010! If your program does not return True something is wrong.",
       python: {
@@ -1118,7 +1118,7 @@ const translations = {
       },
       javascript: {
         paragraph_five_part_one:
-          'We have provided a helper function <span className="text-green">invert()</span>',
+          'We have provided a helper function <span className="text-green p-1 font-mono bg-[#00000033] m-1">invert()</span>',
         paragraph_five_part_two:
           'which you will need in lieu of a JavaScript native modular exponentiation function.',
       },
@@ -1198,6 +1198,15 @@ const translations = {
           'OP_PUSHDATA in Bitcoin script plays a crucial role in facilitating the insertion of arbitrary pieces of data into the blockchain. It is an opcode that allows for the inclusion of data elements of varying sizes, making Bitcoin’s scripting language more versatile. This opcode is particularly significant in enabling the implementation of various smart contract functionalities and custom transaction types. You can read more about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.',
       },
       verify_signature: {
+        signature_verification_heading: 'Signature Verification',
+        signature_verification_paragraph_one:
+          'Signature verification is crucial in Bitcoin to confirm that a transaction is authorized by the holder of the private key. In the context of ECDSA, it involves checking that a signature (comprising two numbers, r and s) is valid for a given public key and message. This verification ensures the integrity and authenticity of a transaction.',
+      },
+      verify_signature_two: {
+        tip_one:
+          'JavaScript hint: You can convert a hex string to a buffer of bytes using <span className="p-1 font-mono bg-[#00000033] m-1">Buffer.from(someString, \'hex\');</span>',
+      },
+      verify_signature_four: {
         eliptic_curve_heading:
           'Elliptic Curve Digital Signature Algorithm (ECDSA)',
         eliptic_curve_paragraph_one:
@@ -1205,9 +1214,8 @@ const translations = {
         public_private_key_heading: 'Public and Private Keys',
         public_private_key_paragraph_one:
           'In Bitcoin, a pair of keys is used to ensure secure transactions. The private key, kept secret, is used to sign transactions and prove ownership of a Bitcoin address. The public key, derived from the private key, can be shared and is used to verify that a signature is made by the private key holder, without revealing the private key.',
-        signature_verification_heading: 'Signature Verification',
-        signature_verification_paragraph_one:
-          'Signature verification is crucial in Bitcoin to confirm that a transaction is authorized by the holder of the private key. In the context of ECDSA, it involves checking that a signature (comprising two numbers, r and s) is valid for a given public key and message. This verification ensures the integrity and authenticity of a transaction.',
+      },
+      verify_signature_five: {
         finite_field_arithmetic_heading: 'Finite Field Arithmetic',
         finite_field_arithmetic_paragraph_one:
           "This type of arithmetic, used in ECDSA, involves numbers within a fixed range or field. Operations such as addition, subtraction, multiplication, and finding modular inverses are performed with respect to the size of this field. This is essential for the elliptic curve calculations in Bitcoin's cryptography.",
