@@ -1869,6 +1869,13 @@ const translations = {
     title: `Don't trust, verify.`,
     paragraph_one: `You demonstrated Vanderpoole’s invalid blocks and proved the most work chain, just in time. Its commercial break.`,
     paragraph_two: `Just then, Vanderpoole himself walks into the studio! He starts complaining that you have ruined his business and slandered his good family name.`,
+    outro_one: {
+      title: 'Outro',
+      nav_title: 'Chapter Complete',
+      heading: 'Coming to terms',
+      paragraph_one:
+        "Nice, you were able to come to an agreement that seems to make everyone happy. Let's go ahead and broadcast this transaction to set it in stone.",
+    },
   },
 
   chapter_ten: {
