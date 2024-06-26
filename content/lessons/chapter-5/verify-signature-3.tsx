@@ -48,7 +48,7 @@ export default function DeriveMessage6({ lang }) {
           {t('chapter_five.verify_signature_three.paragraph_two')}
         </Text>
 
-        <div className="mt-[30px] border-2 border-dashed border-white">
+        <div className="mt-[30px] border border-white/50 bg-[#00000033] p-2">
           <p className="max-w-[900px] px-[15px] py-[10px] text-left font-space-mono text-base md:text-lg">
             {t('chapter_five.verify_signature_three.paragraph_three')}
           </p>

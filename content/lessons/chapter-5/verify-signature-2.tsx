@@ -34,7 +34,7 @@ console.log("KILL")
   defaultCode: `const {Hash} = require('crypto');
 
 function msg_to_integer(msg) {
-  // Given a hex string to sign, convert that string to bytes,
+  // Given a hex string to sign, convert that string to a Buffer of bytes,
   // double-SHA256 the bytes and then return a BigInt() from the 32-byte digest.
 
 }
