@@ -1869,6 +1869,26 @@ const translations = {
     title: `Don't trust, verify.`,
     paragraph_one: `You demonstrated Vanderpoole’s invalid blocks and proved the most work chain, just in time. Its commercial break.`,
     paragraph_two: `Just then, Vanderpoole himself walks into the studio! He starts complaining that you have ruined his business and slandered his good family name.`,
+    intro_one: {
+      title: 'Intro',
+      nav_title: 'The ride home',
+      paragraph_one:
+        '—HOLOCAT: “Well, you did it. And here I thought that you were just another dumb human on a mission to get yourself killed. Do you mind if I crash at your place for a while? I don’t exactly love it on the servers: too many 1s and 0s and strange programs talking about a mystery in the woods.”',
+      paragraph_two:
+        '—On your Budgetcopter ride home, you unwind and marvel at everything that has happened and with miners free to continue doing their jobs, how they will continue happening. By locking in one ten-minute block at a time, tonight was 131 years in the making.',
+      paragraph_three:
+        '—Except for… who was that mysterious hacker or hackers going by Satoshi Nakamoto? And how do they know so much about Vanderpoole and especially BitRey?',
+    },
+    intro_two: {
+      title: 'Intro',
+      nav_title: 'Setting the trap',
+      paragraph_one:
+        '—You receive a strange text as you arrive home and plop onto your AI foam mattress. It’s from a number you don’t recognize, But it is once again signed by Satoshi Nakamoto.',
+      paragraph_two:
+        '—SATOSHI NAKAMOTO: “You need to get out of there. Vanderpoole has put together a goon squad and is on his way back to your house. Our infrared sensors are going crazy. They might want to steal your bitcoin! Or worse!”',
+      paragraph_three:
+        '—Don’t panic, you tell yourself. Think. What kind of trap can you set?”',
+    },
     outro_one: {
       title: 'Outro',
       nav_title: 'Chapter Complete',
