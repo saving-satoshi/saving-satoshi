@@ -51,6 +51,10 @@ const OPRunner = () => {
     )
     runInterpreter.onReset()
   }
+
+  const step = () => {
+    runInterpreter.onStepClick()
+  }
   return (
     <div className="flex flex-col px-8 text-white">
       <div className="mt-4 flex flex-col gap-1 border-b border-b-white">
@@ -107,7 +111,7 @@ const OPRunner = () => {
           Run
         </button>
         <button onClick={reset}> Reset </button>
-        <button>Step</button>
+        <button onClick={step}>Step</button>
       </div>
     </div>
   )

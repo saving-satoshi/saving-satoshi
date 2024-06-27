@@ -6,23 +6,44 @@ export const opCodeTypes = (opcode: string) => {
   if (opcode.match(/OP_[0-9]*/)) {
     return { opcode, operation: 'constants' }
   }
+
   switch (opcode) {
-    case 'OP_DUP':
-      return { opcode, operation: 'stack' }
     case 'OP_ADD':
       return { opcode, operation: 'arithmetic' }
+
+    case 'OP_IF':
+      return { opcode, operation: 'flow-control' }
+    case 'OP_ELSE':
+      return { opcode, operation: 'flow-control' }
+    case 'OP_ENDIF':
+      return { opcode, operation: 'flow-control' }
+
+    case 'OP_DUP':
+      return { opcode, operation: 'stack' }
+    case 'OP_PUSH':
+      return { opcode, operation: 'stack' }
+    case 'OP_DROP':
+      return { opcode, operation: 'stack' }
+
     case 'OP_EQUAL':
       return { opcode, operation: 'bitwise' }
-    case 'OP_DUP':
-      return { opcode, operation: 'stack' }
-    case 'OP_DUP':
-      return { opcode, operation: 'stack' }
-    case 'OP_DUP':
-      return { opcode, operation: 'stack' }
+    case 'OP_EQUALVERIFY':
+      return { opcode, operation: 'bitwise' }
+
+    case 'OP_HASH256':
+      return { opcode, operation: 'crypto' }
+    case 'OP_CHECKSIG':
+      return { opcode, operation: 'crypto' }
+    case 'OP_CHECKMULTISIG':
+      return { opcode, operation: 'crypto' }
+
+    case 'OP_CHECKLOCKTIMEVERIFY':
+      return { opcode, operation: 'locktime' }
     default:
-      break
+      return { opcode, operation: 'constants' }
   }
 }
+
 export const opFunctions: { [key: string]: Function } = {
   OP_0: (stack: any[]) => stack.push(0),
   OP_1: (stack: any[]) => stack.push(1),
@@ -131,7 +152,7 @@ export const opFunctions: { [key: string]: Function } = {
     stack.pop()
     stack.push(sigs.length === 0)
   },
-  OP_IF: (stack: any[], state: boolean[], negate: number) => {
+  OP_IF: (state: boolean[], negate: number, stack: any[]) => {
     let value = false
     if (!negate) {
       if (stack.length < 1) {
@@ -146,6 +167,7 @@ export const opFunctions: { [key: string]: Function } = {
     }
     return { state, negate }
   },
+
   OP_ELSE: (state: boolean[], negate: number) => {
     if (state.length === 0) {
       throw new Error('OP_ELSE: Unbalanced conditional')
@@ -162,11 +184,14 @@ export const opFunctions: { [key: string]: Function } = {
     if (state.length === 0) {
       throw new Error('OP_ENDIF: Unbalanced conditional')
     }
+
     if (!state.pop()) {
       negate--
     }
+
     return { state, negate }
   },
+
   OP_DROP: (stack: any[]) => {
     if (stack.length < 1) {
       throw new Error('OP_DROP requires 1 item on the stack')

@@ -126,12 +126,10 @@ const reset = (
       .map((item) => item.trim()),
   }
 
-  console.log(state.stack)
-
   if (executionStackRef.current) {
     updateStack(executionStackRef, state.stack)
   }
-  currentOp(currentOpCodeRef, 'none')
+  currentOp(currentOpCodeRef, '')
   highlight(scriptFieldRef, state.script, -1)
 
   return state
@@ -182,7 +180,7 @@ const step = (state: InterpreterState, refs: Refs): InterpreterState => {
     if (opcode === 'OP_PUSH') {
       opFunctions[opcode](state.stack, state.script, state.exec_ptr)
     } else if (['OP_IF', 'OP_ELSE', 'OP_ENDIF'].includes(opcode)) {
-      const result = opFunctions[opcode](state.stack, state.state, state.negate)
+      const result = opFunctions[opcode](state.state, state.negate, state.stack)
       state.state = result.state
       state.negate = result.negate
     } else if (opcode === 'OP_CHECKLOCKTIMEVERIFY') {
@@ -195,6 +193,7 @@ const step = (state: InterpreterState, refs: Refs): InterpreterState => {
     return { ...state, finished: true }
   }
 
+  console.log(state.stack, state.exec_ptr, state.script[state.exec_ptr])
   updateStack(executionStackRef, state.stack)
   state.exec_ptr++
   return state
