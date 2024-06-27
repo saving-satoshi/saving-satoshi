@@ -3,7 +3,7 @@
 import { useTranslations, useProceed } from 'hooks'
 import { ChapterIntro } from 'ui'
 import { Button } from 'shared'
-import OpClass from 'ui/lesson/OpCodeParser/OpClass'
+import OpClass from 'ui/lesson/OpCodeParser/OPRunner'
 import { useEffect, useState } from 'react'
 
 export const metadata = {
