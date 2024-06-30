@@ -6,7 +6,6 @@ import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useEffect, useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
 import {
   countLines,
@@ -162,7 +161,7 @@ def showtime():
         lang={lang}
         config={config}
         saveData
-        lessonKey={getLessonKey('chapter-8', 'building-blocks-8')}
+        lessonKey={metadata.key}
         successMessage={t('chapter_eight.building_blocks_eight.success')}
         onSelectLanguage={handleSelectLanguage}
       >

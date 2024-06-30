@@ -1,10 +1,9 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { getLessonKey } from 'lib/progress'
 import { useState } from 'react'
 import { EditorConfig } from 'types'
-import { CodeExample, LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
+import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
 import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { currentLanguageAtom } from 'state/state'
@@ -229,7 +228,7 @@ export default function ValidateSignature4({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
-      lessonKey={getLessonKey('chapter-5', 'validate-signature-4')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_five.validate_signature_four.success')}
       onSelectLanguage={handleSelectLanguage}
     >

@@ -1,34 +1,23 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 import { chapters, lessons } from 'content'
-import { usePathData, useTranslations, useLocalizedRoutes } from 'hooks'
-import {
-  chaptersWithDifficulty,
-  getLastUnlockedLessonPath,
-  getLessonKey,
-  getNextLessonPath,
-  isLessonUnlocked,
-  keys,
-} from 'lib/progress'
+import { useTranslations, useLocalizedRoutes } from 'hooks'
 
-import { LoadingState } from 'types'
 import { notFound, useRouter } from 'next/navigation'
 import useEnvironment from 'hooks/useEnvironment'
-import { useAtom } from 'jotai'
+import { useAtom, useAtomValue } from 'jotai'
+import { accountAtom, isAuthLoadingAtom } from 'state/state'
 import {
-  accountAtom,
-  DifficultyLevel,
-  difficultyLevelAtom,
-  isAuthLoadingAtom,
+  syncedCourseProgressAtom,
+  currentLessonAtom,
+  currentLessonComputedAtom,
+  isLessonUnlockedUsingLessonName,
   isLoadingProgressAtom,
-  Modal,
-  progressAtom,
-} from 'state/state'
-import { useProgressFunctions } from 'state/ProgressFunctions'
-import { useModalFunctions } from 'state/ModalFunctions'
+  nextLessonAtom,
+} from 'state/progressState'
 
 const Portal = ({ children, id }) => {
   const [mounted, setMounted] = useState(false)
@@ -51,75 +40,50 @@ export default function Page({ params }) {
 
   const chapterId = params.slug
   const chapterLessons = lessons[chapterId]
-  const pathData = usePathData()
   const [account] = useAtom(accountAtom)
   const [isAccountLoading] = useAtom(isAuthLoadingAtom)
-  const [progress] = useAtom(progressAtom)
-  const [isProgressLoading] = useAtom(isLoadingProgressAtom)
-  const { saveProgress, saveProgressLocal } = useProgressFunctions()
+  const isProgressLoading = useAtomValue(isLoadingProgressAtom)
+  const currentLesson = useAtomValue(currentLessonComputedAtom)
+  const currentLessonKey = useAtomValue(currentLessonAtom)
+  const nextLesson = useAtomValue(nextLessonAtom)
+  const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const isLessonUnlocked = isLessonUnlockedUsingLessonName(
+    params.lesson,
+    courseProgress
+  )
 
-  const currentLessonKey = getLessonKey(pathData.chapterId, pathData.lessonId)
-  const lastUnlockedLessonPath = getLastUnlockedLessonPath(progress.progress)
-  const nextLessonPath = getNextLessonPath(currentLessonKey)
-  const route = routes.chaptersUrl + lastUnlockedLessonPath
-
-  const [unlocked, setUnlocked] = useState<number>(LoadingState.Idle)
-  const [difficulty] = useAtom(difficultyLevelAtom)
-  const { open, close } = useModalFunctions()
-  console.log('chapterId', chapterId)
-  console.log('difficulty level', difficulty)
-  if (
-    chaptersWithDifficulty.includes(chapterId) &&
-    difficulty === DifficultyLevel.NOT_SELECTED
-  ) {
-    console.log('got here')
-    // Show a modal asking to select difficulty level
-    open(Modal.Difficulty)
-  } else {
-    close(Modal.Difficulty)
-  }
+  const route = routes.chaptersUrl + currentLesson?.path
 
   useEffect(() => {
     if (!isDevelopment && !isAccountLoading && !isProgressLoading) {
-      if (progress.progress && params.lesson) {
-        const lesson = chapterLessons[params.lesson]?.metadata ?? false
-        const lessonUnlocked = isLessonUnlocked(progress.progress, lesson.key)
+      if (!isLessonUnlocked) {
         if (
-          !isDevelopment &&
-          keys.indexOf(currentLessonKey) > keys.indexOf(progress.progress) + 1
+          !currentLesson?.completed &&
+          currentLessonKey !== currentLesson?.id
         ) {
           console.warn('Lesson locked')
           router.replace(route)
           return
         }
-        setUnlocked(lessonUnlocked ? LoadingState.Success : LoadingState.Failed)
 
-        router.prefetch(routes.chaptersUrl + nextLessonPath)
-
-        if (account) {
-          saveProgress(currentLessonKey)
-        } else {
-          saveProgressLocal(currentLessonKey)
-        }
-      } else {
-        setUnlocked(LoadingState.Failed)
+        router.prefetch(routes.chaptersUrl + nextLesson?.path)
       }
     }
   }, [
     isDevelopment,
     isAccountLoading,
     isProgressLoading,
-    progress,
+    isLessonUnlocked,
     params.lesson,
     chapterLessons,
     currentLessonKey,
     router,
     routes.chaptersUrl,
-    nextLessonPath,
+    nextLesson,
     account,
-    saveProgressLocal,
     route,
-    saveProgress,
+    currentLesson?.completed,
+    currentLesson?.id,
   ])
 
   const Head = () => {

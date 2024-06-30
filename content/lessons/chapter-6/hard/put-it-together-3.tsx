@@ -2,7 +2,6 @@
 
 import { getData } from 'api/data'
 import { useTranslations } from 'hooks'
-import { getLessonKey } from 'lib/progress'
 import {
   countLines,
   detectLanguage,
@@ -307,7 +306,7 @@ print(tx.serialize().hex())`,
         lang={lang}
         config={config}
         saveData
-        lessonKey={getLessonKey('chapter-6', 'put-it-together-3')}
+        lessonKey={metadata.key}
         successMessage={t('chapter_six.put_it_together_three.success')}
         loadingSavedCode={isLoading}
       >

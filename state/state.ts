@@ -1,6 +1,5 @@
 import { defaultProgressResponse } from 'api/defaults'
 import { atom, createStore } from 'jotai'
-import { keys } from 'lib/progress'
 import { Language } from 'lib/SavedCode'
 import { Progress, Data } from 'types'
 
@@ -17,9 +16,9 @@ export enum Modal {
 }
 
 export enum DifficultyLevel {
-  NORMAL = 'NORMAL',
-  HARD = 'HARD',
-  NOT_SELECTED = 'NOT_SELECTED',
+  NORMAL = 'normal',
+  HARD = 'hard',
+  NOT_SELECTED = 'not_selected',
 }
 
 export const modalsAtom = atom({
@@ -37,8 +36,6 @@ export const isAuthLoadingAtom = atom<boolean>(false)
 export const isLoadingFeaturesAtom = atom<boolean>(false)
 export const featuresAtom = atom<{ [key: string]: number }>({})
 
-export const isLoadingProgressAtom = atom<boolean>(true)
-export const progressAtom = atom<Progress>(defaultProgressResponse)
 export const difficultyLevelAtom = atom<DifficultyLevel>(
   DifficultyLevel.NOT_SELECTED
 )

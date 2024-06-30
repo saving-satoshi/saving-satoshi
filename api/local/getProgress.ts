@@ -1,7 +1,7 @@
-import { defaultProgressResponse } from 'api/defaults'
-import { Progress } from 'types'
+import { defaultProgressState } from 'state/progressState'
+import { CourseProgress } from 'types'
 
-export default async function getProgressLocal(): Promise<Progress> {
+export default async function getProgressLocal(): Promise<CourseProgress> {
   try {
     const localStorageProgress = localStorage.getItem('SavingSatoshiProgress')
 
@@ -13,6 +13,6 @@ export default async function getProgressLocal(): Promise<Progress> {
     }
   } catch (errors) {
     console.error(errors)
-    return defaultProgressResponse
+    return defaultProgressState
   }
 }

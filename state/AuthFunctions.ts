@@ -1,12 +1,10 @@
 import { useSetAtom } from 'jotai'
 import { accountAtom, isAuthLoadingAtom } from './state'
 import { login, getSession, logout } from 'api/auth'
-import { useProgressFunctions } from './ProgressFunctions'
 
 export const useAuthFunctions = () => {
   const setAccount = useSetAtom(accountAtom)
   const setAuthIsLoading = useSetAtom(isAuthLoadingAtom)
-  const { init } = useProgressFunctions()
 
   const attemptLogin = async (privateKey: string) => {
     try {
@@ -18,8 +16,6 @@ export const useAuthFunctions = () => {
       }
 
       const account = await getSession()
-      // load progress
-      init()
       setAccount(account)
 
       return true
@@ -43,7 +39,6 @@ export const useAuthFunctions = () => {
 
       const account = await getSession()
       setAccount(account)
-      init()
     } catch (ex) {
       console.error(ex)
     } finally {

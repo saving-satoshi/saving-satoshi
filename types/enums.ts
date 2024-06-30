@@ -26,4 +26,5 @@ export enum LoadingState {
 export enum Difficulty {
   NORMAL = 'normal',
   HARD = 'hard',
+  NOT_SELECTED = 'not_selected',
 }

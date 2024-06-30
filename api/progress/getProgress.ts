@@ -1,8 +1,8 @@
-import { defaultProgressResponse } from 'api/defaults'
-import { Progress } from 'types'
+import { defaultProgressState } from 'state/progressState'
+import { CourseProgress } from 'types'
 import { get } from 'utils'
 
-export default async function getProgress(): Promise<Progress> {
+export default async function getProgress(): Promise<CourseProgress> {
   try {
     const res = await get({
       url: '/v1/progress',
@@ -12,6 +12,6 @@ export default async function getProgress(): Promise<Progress> {
     return res
   } catch (errors) {
     console.error(errors)
-    return defaultProgressResponse
+    return defaultProgressState
   }
 }

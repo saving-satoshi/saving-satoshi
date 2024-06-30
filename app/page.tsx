@@ -2,7 +2,6 @@ import Topbar from 'components/Topbar'
 import Hero from 'components/Hero'
 import Footer from 'components/Footer'
 import defaultMetadata from 'config/metadata'
-import Script from 'next/script'
 import Umami from 'components/Util/Tracking'
 
 export const metadata = {

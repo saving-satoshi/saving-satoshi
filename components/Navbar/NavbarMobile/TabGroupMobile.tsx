@@ -81,6 +81,7 @@ export default function TabGroup({ isOpen, clicked, params }) {
               challenge={intro}
               params={params}
               clicked={clicked}
+              chapterId={chapter.position + 1}
             />
           </div>
         ))}
@@ -116,6 +117,7 @@ export default function TabGroup({ isOpen, clicked, params }) {
                     challenge={lesson}
                     params={params}
                     clicked={clicked}
+                    chapterId={chapter.position + 1}
                   />
                 </div>
               ))}
@@ -143,6 +145,7 @@ export default function TabGroup({ isOpen, clicked, params }) {
               challenge={outro}
               params={params}
               clicked={clicked}
+              chapterId={chapter.position + 1}
             />
           </div>
         ))}

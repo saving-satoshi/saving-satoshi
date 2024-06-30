@@ -8,16 +8,14 @@ import { Tooltip } from 'ui'
 import Icon from 'shared/Icon'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { lessons, chapters } from 'content'
-import {
-  getLessonKey,
-  isLessonCompleted,
-  isLessonUnlocked,
-  keys,
-} from 'lib/progress'
 import { themeSelector } from 'lib/themeSelector'
-import useLessonStatus from 'hooks/useLessonStatus'
-import { useAtom } from 'jotai'
-import { isLoadingProgressAtom, progressAtom } from 'state/state'
+import { useAtom, useAtomValue } from 'jotai'
+import {
+  syncedCourseProgressAtom,
+  isLessonCompletedUsingLessonName,
+  isLessonUnlockedUsingLessonName,
+  isLoadingProgressAtom,
+} from 'state/progressState'
 
 export default function Tab({
   index,
@@ -43,18 +41,16 @@ export default function Tab({
 
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
-  const [progress] = useAtom(progressAtom)
   const [isLoading] = useAtom(isLoadingProgressAtom)
-
-  const { isUnlocked } = useLessonStatus(
-    progress.progress,
-    getLessonKey(slug, challenge.lessonId)
+  const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const isLessonUnlocked = isLessonUnlockedUsingLessonName(
+    challenge.lessonId,
+    courseProgress
   )
-  const { isCompleted } = useLessonStatus(
-    progress.progress,
-    getLessonKey(slug, challenge.lessonId)
+  const isLessonCompleted = isLessonCompletedUsingLessonName(
+    challenge.lessonId,
+    courseProgress
   )
-
   const pnLessonId = isRouteLesson
     ? pathData.pop()
     : pathData[pathData.length - 2]
@@ -73,11 +69,11 @@ export default function Tab({
   )
   const challengeLock =
     currentIndex < index - 1 &&
-    !isCompleted &&
+    !isLessonCompleted &&
     pnLessonId.split('-')[0] !== 'outro'
 
   const groupCompleted = challengeLessons.every((challenge) =>
-    isLessonCompleted(progress.progress, getLessonKey(slug, challenge.lessonId))
+    isLessonCompletedUsingLessonName(challenge.lessonId, courseProgress)
   )
 
   return (
@@ -87,9 +83,9 @@ export default function Tab({
       offset={0}
       theme={theme}
       className={clsx('cursor-default no-underline', {
-        'cursor-not-allowed': !isUnlocked,
+        'cursor-not-allowed': !isLessonUnlocked,
       })}
-      disabled={!isUnlocked}
+      disabled={!isLessonUnlocked}
       content={
         <div className="flex min-w-64 flex-col items-stretch">
           <span className="whitespace-nowrap px-2.5 py-2 text-left font-semibold leading-none text-white">
@@ -99,15 +95,15 @@ export default function Tab({
             {challengeLessons.map((challenge, index) => {
               const isLessonUnlock =
                 !isLoading &&
-                isLessonUnlocked(
-                  progress.progress,
-                  getLessonKey(slug, challenge.lessonId)
+                isLessonUnlockedUsingLessonName(
+                  challenge.lessonId,
+                  courseProgress
                 )
               const isPageComplete =
                 !isLoading &&
-                isLessonCompleted(
-                  progress.progress,
-                  getLessonKey(slug, challenge.lessonId)
+                isLessonCompletedUsingLessonName(
+                  challenge.lessonId,
+                  courseProgress
                 )
               const navLessonId =
                 challenge.lessonId.charAt(0) + challenge.lessonId.slice(1)
@@ -170,10 +166,10 @@ export default function Tab({
           {
             'text-white text-opacity-50': !isActive,
             'hover:bg-black/25 hover:text-white hover:text-opacity-100':
-              isUnlocked && !isActive,
+              isLessonUnlocked && !isActive,
             'bg-black/25 text-opacity-100': isActive,
             'border-r': part === 'outro',
-            'pointer-events-none': !isUnlocked,
+            'pointer-events-none': !isLessonUnlocked,
           }
         )}
       >
@@ -185,9 +181,10 @@ export default function Tab({
               'absolute right-[10px] top-[10px] h-3 w-3 opacity-50',
               {
                 hidden:
-                  keys.indexOf(progress.progress) >=
-                    keys.indexOf(getLessonKey(slug, challenge.lessonId)) &&
-                  currentIndex !== index - 1,
+                  isLessonCompletedUsingLessonName(
+                    challenge.lessonId,
+                    courseProgress
+                  ) && currentIndex !== index - 1,
               }
             )}
           />
@@ -200,8 +197,10 @@ export default function Tab({
               {
                 hidden:
                   !isLoading &&
-                  keys.indexOf(progress.progress) <
-                    keys.indexOf(getLessonKey(slug, challenge.lessonId)),
+                  !isLessonUnlockedUsingLessonName(
+                    challenge.lessonId,
+                    courseProgress
+                  ),
               }
             )}
           />

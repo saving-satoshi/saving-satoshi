@@ -1,6 +1,6 @@
-import { Progress } from 'types'
+import { CourseProgress } from 'types'
 
-export default async function setProgress(progress: Progress) {
+export default async function setProgress(progress: CourseProgress) {
   try {
     localStorage.setItem('SavingSatoshiProgress', JSON.stringify(progress))
   } catch (errors) {

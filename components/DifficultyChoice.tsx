@@ -1,20 +1,8 @@
-import { useEffect, useState, useTransition } from 'react'
-import { Button, Input, Loader } from 'shared'
-import { useLocalizedRoutes, useTranslations } from 'hooks'
+import { Button } from 'shared'
+import { useTranslations } from 'hooks'
 import clsx from 'clsx'
-import { useAuthFunctions } from 'state/AuthFunctions'
-import {
-  accountAtom,
-  DifficultyLevel,
-  difficultyLevelAtom,
-  Modal,
-} from 'state/state'
-import { useModalFunctions } from 'state/ModalFunctions'
-import Avatar from './Avatar'
-import { progressAtom } from 'state/state'
+import { DifficultyLevel, difficultyLevelAtom } from 'state/state'
 import { useAtom } from 'jotai'
-import { getLessonPath } from 'lib/progress'
-import { useRouter } from 'next/navigation'
 
 export default function DifficultyChoice({
   lang,
