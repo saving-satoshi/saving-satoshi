@@ -32,6 +32,8 @@ export default function Chapter({ children, metadata, lang }) {
   const isEnabled = isFeatureEnabled(
     `${metadata.slug.replace('-', '_')}_enabled`
   )
+  console.log('isEnabled', isEnabled)
+  console.log(`${metadata.slug.replace('-', '_')}_enabled`)
   const courseProgress = useAtomValue(syncedCourseProgressAtom)
   const isChapterInProgressValue = isChapterInProgress(
     metadata.position + 1,
