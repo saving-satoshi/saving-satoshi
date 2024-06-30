@@ -1,3 +1,4 @@
+import { DifficultyLevel } from 'state/state'
 import { Base64String } from './classes'
 
 export * from './enums'
@@ -75,4 +76,41 @@ export type EditorRange = {
 export type Progress = {
   progress: string
   progressList: string[]
+}
+
+export type LessonInState = {
+  id: string
+  path: string
+  completed: boolean
+}
+
+export type Difficulty = {
+  level: DifficultyLevel
+  lessons: LessonInState[]
+  completed: boolean
+}
+
+export type ChapterWithDifficulties = {
+  id: number
+  difficulties: Difficulty[]
+  completed: boolean
+  selectedDifficulty: DifficultyLevel
+  hasDifficulty: true
+}
+
+export type ChapterWithoutDifficulties = {
+  id: number
+  lessons: LessonInState[]
+  completed: boolean
+  hasDifficulty: false
+}
+
+export type ChapterInState =
+  | ChapterWithDifficulties
+  | ChapterWithoutDifficulties
+
+export type CourseProgress = {
+  chapters: ChapterInState[]
+  currentChapter: number
+  currentLesson: string
 }

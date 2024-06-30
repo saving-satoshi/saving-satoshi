@@ -7,7 +7,6 @@ import { useLang, useTranslations } from 'hooks'
 import { usePathname } from 'next/navigation'
 import { useAtom } from 'jotai'
 import { accountAtom } from 'state/state'
-import { useProgressFunctions } from 'state/ProgressFunctions'
 
 /**
  * @answer {string} correct answer to the challenge problem
@@ -37,7 +36,6 @@ export default function HashChallenge({
   inProgressMessage?: string
   successMessage?: string
 }) {
-  const { saveProgress, saveProgressLocal } = useProgressFunctions()
   const [account] = useAtom(accountAtom)
   const lang = useLang()
   const t = useTranslations(lang)
@@ -97,11 +95,6 @@ export default function HashChallenge({
     ) {
       inputRef.current?.blur()
       setSuccess(true)
-      if (account) {
-        saveProgress(lessonKey)
-      } else {
-        saveProgressLocal(lessonKey)
-      }
     } else if (
       typeof answer === 'number' &&
       input.length < answer &&

@@ -1,27 +1,25 @@
 'use client'
 
-import { getNextLessonPath } from 'lib/progress'
 import { useRouter } from 'next/navigation'
-import { usePathData, useLocalizedRoutes } from 'hooks'
-import { lessons } from 'content'
+import { useLocalizedRoutes } from 'hooks'
 import useEnvironment from './useEnvironment'
+import { useAtomValue, useSetAtom } from 'jotai'
+import {
+  nextLessonPathAtom,
+  progressToNextLessonAtom,
+} from 'state/progressState'
 
 export default function useProceed() {
   const router = useRouter()
-  const { chapterId, lessonId } = usePathData()
   const { isDevelopment } = useEnvironment()
   const routes = useLocalizedRoutes()
-
-  const chapterLessons = lessons?.[chapterId]
-
-  const lesson = chapterLessons?.[lessonId]?.metadata ?? null
-  const currentLessonKey = lesson?.key ?? 'CH1INT1'
+  const nextLessonPath = useAtomValue(nextLessonPathAtom)
+  const progressToNextLesson = useSetAtom(progressToNextLessonAtom)
   const queryParams = isDevelopment ? '?dev=true' : ''
 
   const Proceed = async () => {
-    const nextLessonPath = getNextLessonPath(currentLessonKey)
     const route = routes.chaptersUrl + nextLessonPath + queryParams
-
+    progressToNextLesson()
     router.push(route, { scroll: true })
   }
 

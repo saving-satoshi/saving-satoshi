@@ -2,7 +2,6 @@
 
 import { useMediaQuery, useTranslations } from 'hooks'
 import { useAtom } from 'jotai'
-import { getLessonKey } from 'lib/progress'
 import { getLanguageString } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { currentLanguageAtom } from 'state/state'
@@ -207,7 +206,7 @@ export default function VerifySignature5({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
-      lessonKey={getLessonKey('chapter-5', 'verify-signature-5')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_five.verify_signature_five.success')}
       onSelectLanguage={handleSelectLanguage}
     >

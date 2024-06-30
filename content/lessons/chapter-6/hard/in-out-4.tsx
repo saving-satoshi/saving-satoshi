@@ -5,7 +5,6 @@ import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { currentLanguageAtom } from 'state/state'
@@ -219,7 +218,7 @@ class Input:
     <ScriptingChallenge
       lang={lang}
       config={config}
-      lessonKey={getLessonKey('chapter-6', 'in-out-4')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_six.in_out_four.success')}
       onSelectLanguage={handleSelectLanguage}
       saveData

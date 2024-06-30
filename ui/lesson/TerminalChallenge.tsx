@@ -6,7 +6,6 @@ import { Lesson, LessonTabs, LessonTerminal } from 'ui'
 import { useMediaQuery } from 'hooks'
 import { useAtom } from 'jotai'
 import { accountAtom } from 'state/state'
-import { useProgressFunctions } from 'state/ProgressFunctions'
 
 const tabData = [
   {
@@ -42,7 +41,6 @@ export default function TerminalChallenge({
   customLines?: string
   commonError?: any
 }) {
-  const { saveProgress, saveProgressLocal } = useProgressFunctions()
   const [account] = useAtom(accountAtom)
   const [hydrated, setHydrated] = useState(false)
   const [success, setSuccess] = useState<boolean | null>(null)
@@ -110,11 +108,6 @@ export default function TerminalChallenge({
 
       if (varInput === (expectedInput.value || expectedInput)) {
         setTimeout(() => {
-          if (account) {
-            saveProgress(lessonKey)
-          } else {
-            saveProgressLocal(lessonKey)
-          }
           setSuccess(true)
           setChallengeState('complete')
           setLines((lines) => [

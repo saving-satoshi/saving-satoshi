@@ -5,39 +5,35 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
-import { getLessonKey } from 'lib/progress'
-import useLessonStatus from 'hooks/useLessonStatus'
 import Icon from 'shared/Icon'
 
-import { chapters, lessons } from 'content'
-import { useAtom } from 'jotai'
-import { progressAtom } from 'state/state'
+import { lessons } from 'content'
+import { useAtomValue } from 'jotai'
+import {
+  syncedCourseProgressAtom,
+  getLessonById,
+  getLessonKey,
+  isLessonUnlockedUsingLessonName,
+} from 'state/progressState'
 
 export default function Tab({
   index,
   params,
   challenge,
   clicked,
+  chapterId,
 }: {
   index: number
   params: any
   challenge: { lessonId: string; title: string }
   clicked: any
+  chapterId: number
 }) {
   const { slug } = params
-  const [progress] = useAtom(progressAtom)
-  const { isUnlocked } = useLessonStatus(
-    progress.progress,
-    getLessonKey(
-      slug,
-      challenge.lessonId === chapters[slug].metadata.lessons[0]
-        ? 'intro-1'
-        : challenge.lessonId
-    )
-  )
-  const { isPageCompleted } = useLessonStatus(
-    progress.progress,
-    getLessonKey(slug, challenge.lessonId)
+  const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const lesson = getLessonById(
+    getLessonKey(chapterId, challenge.lessonId),
+    courseProgress
   )
 
   const routes = useLocalizedRoutes()
@@ -47,7 +43,11 @@ export default function Tab({
 
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
-
+  const isPageCompleted = lesson?.completed
+  const isLessonUnlocked = isLessonUnlockedUsingLessonName(
+    challenge.lessonId,
+    courseProgress
+  )
   const pnLessonId = isRouteLesson
     ? pathData.pop()
     : pathData[pathData.length - 2]
@@ -72,16 +72,16 @@ export default function Tab({
         'justify-left flex items-center px-[15px] py-[11px] pl-5 text-center transition duration-100 ease-in-out',
         {
           'text-white/75 hover:bg-black/20 hover:text-white':
-            isUnlocked && challenge.lessonId !== lessonId,
-          'pointer-events-none cursor-default text-white/50': !isUnlocked,
+            isLessonUnlocked && challenge.lessonId !== lessonId,
+          'pointer-events-none cursor-default text-white/50': !isLessonUnlocked,
           'bg-black/20 text-white': challenge.lessonId === lessonId,
         }
       )}
     >
-      {isUnlocked && !isPageCompleted && (
+      {isLessonUnlocked && !isPageCompleted && (
         <Icon icon="arrow" className="h-5 w-5" />
       )}
-      {!isUnlocked && <Icon icon="lock" className="h-4 w-4 opacity-50" />}
+      {!isLessonUnlocked && <Icon icon="lock" className="h-4 w-4 opacity-50" />}
       {isPageCompleted && <Icon icon="check" className="h-6 w-6 opacity-75" />}
       <span className="ml-1 text-lg">{navTitle}</span>
     </Link>

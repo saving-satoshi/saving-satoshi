@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { getLessonKey } from 'lib/progress'
 import { useState } from 'react'
 import { EditorConfig } from 'types'
 import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
@@ -248,7 +247,7 @@ export default function ValidateSignature3({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
-      lessonKey={getLessonKey('chapter-5', 'validate-signature-3')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_five.validate_signature_three.success')}
       onSelectLanguage={handleSelectLanguage}
     >

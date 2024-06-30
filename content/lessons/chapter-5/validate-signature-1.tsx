@@ -5,7 +5,6 @@ import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getLanguageString } from 'lib/SavedCode'
 import { chapters } from 'content/chapters'
 import HolocatQuestion from 'ui/common/HolocatQuestion'
@@ -119,7 +118,7 @@ export default function PublicKey3({ lang }) {
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-5', 'validate-signature-1')}
+      lessonKey={metadata.key}
       successMessage={''}
       onSelectLanguage={handleSelectLanguage}
     >

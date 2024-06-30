@@ -1,35 +1,29 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
-import { useRouter, usePathname } from 'next/navigation'
-
 import { Button } from 'shared'
 import ChapterTabs from './Tabs'
 import ChallengeList from './ChallengeList'
 import { chapters } from 'content'
 import Icon from 'shared/Icon'
-import { ChapterContextType } from 'types'
 import { useTranslations, useLocalizedRoutes } from 'hooks'
-import useLessonStatus from 'hooks/useLessonStatus'
-import { getLessonKey } from 'lib/progress'
-import { keys, keysMeta } from 'lib/progress'
 import useEnvironment from 'hooks/useEnvironment'
-import { useAtom } from 'jotai'
-import {
-  accountAtom,
-  isAuthLoadingAtom,
-  isLoadingProgressAtom,
-  Modal,
-  progressAtom,
-} from 'state/state'
+import { useAtom, useAtomValue } from 'jotai'
+import { accountAtom, isAuthLoadingAtom, Modal } from 'state/state'
 import { useModalFunctions } from 'state/ModalFunctions'
 import { useFeatureFunctions } from 'state/FeatureFunctions'
+import {
+  syncedCourseProgressAtom,
+  currentChapterAtom,
+  currentLessonComputedAtom,
+  isLoadingProgressAtom,
+  isChapterInProgress,
+} from 'state/progressState'
 
 export default function Chapter({ children, metadata, lang }) {
   const { isDevelopment } = useEnvironment()
-  const [progress] = useAtom(progressAtom)
   const [isLoading] = useAtom(isLoadingProgressAtom)
   const [account] = useAtom(accountAtom)
   const [isAccountLoading] = useAtom(isAuthLoadingAtom)
@@ -38,15 +32,26 @@ export default function Chapter({ children, metadata, lang }) {
   const isEnabled = isFeatureEnabled(
     `${metadata.slug.replace('-', '_')}_enabled`
   )
-  const { isUnlocked } = useLessonStatus(
-    progress.progress,
-    getLessonKey(metadata.slug, 'intro-1')
+  const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const isChapterInProgressValue = isChapterInProgress(
+    metadata.position + 1,
+    courseProgress
   )
 
-  const display =
-    metadata.slug === 'chapter-1' ||
-    isDevelopment ||
-    (isEnabled && isUnlocked && !isLoading)
+  const currentLesson = useAtomValue(currentLessonComputedAtom)
+  const currentChapter = useAtomValue(currentChapterAtom)
+  const isUnlocked = useMemo(
+    () => metadata.position + 1 <= currentChapter,
+    [metadata.position, currentChapter]
+  )
+
+  const display = useMemo(
+    () =>
+      metadata.slug === 'chapter-1' ||
+      isDevelopment ||
+      (isEnabled && isUnlocked && !isLoading),
+    [metadata.slug, isDevelopment, isEnabled, isUnlocked, isLoading]
+  )
 
   const [activeTab, setActiveTab] = useState('info')
 
@@ -54,35 +59,27 @@ export default function Chapter({ children, metadata, lang }) {
   const t = useTranslations(lang)
   const chapter = chapters[metadata.slug]
   const position = metadata.position + 1
-  const isEven = position % 2 == 0
-  const chapterLessons = keys.filter((ele) =>
-    ele.includes(progress.progress.substring(0, 3))
-  )
-  const isBetweenChapter =
-    progress.progress !== chapterLessons[0] &&
-    progress.progress !== keys[keys.length - 1] &&
-    position === parseInt(progress.progress.substring(2, 3))
+  const isEven = useMemo(() => position % 2 === 0, [position])
   const queryParams = isDevelopment ? '?dev=true' : ''
-  const tabData = [
-    {
-      id: 'info',
-      text: t('shared.info'),
-    },
-    {
-      id: 'challenges',
-      text: t('shared.challenges'),
-    },
-  ]
+  const tabData = useMemo(
+    () => [
+      { id: 'info', text: t('shared.info') },
+      { id: 'challenges', text: t('shared.challenges') },
+    ],
+    [t]
+  )
 
-  const handleClick = (name: Modal) => {
-    open(name)
-  }
+  const handleClick = useCallback(
+    (name: Modal) => {
+      open(name)
+    },
+    [open]
+  )
 
   useEffect(() => {
-    if (window.location.href.split('#')[1]) {
-      const element = document.getElementById(
-        window.location.href.split('#')[1]
-      )
+    const hash = window.location.href.split('#')[1]
+    if (hash) {
+      const element = document.getElementById(hash)
       if (element) {
         element.scrollIntoView({
           behavior: 'smooth',
@@ -101,10 +98,7 @@ export default function Chapter({ children, metadata, lang }) {
       <div
         className={clsx(
           'order-2 mb-6 flex justify-start lg:mb-0 lg:px-[50px] lg:py-[112px]',
-          {
-            'lg:order-1': isEven,
-            'lg:order-2': !isEven,
-          }
+          { 'lg:order-1': isEven, 'lg:order-2': !isEven }
         )}
       >
         <div className="ml-3.5 mr-3.5 w-full content-center justify-items-start px-1">
@@ -130,7 +124,7 @@ export default function Chapter({ children, metadata, lang }) {
             ) : null}
             <div className="flex grow py-2 lg:grow-0">
               <div
-                aria-hidden={activeTab !== 'info' ? 'true' : 'false'}
+                aria-hidden={activeTab !== 'info'}
                 className={clsx('-mr-[100%] block w-full', {
                   visible: activeTab === 'info',
                   invisible: activeTab !== 'info',
@@ -180,10 +174,9 @@ export default function Chapter({ children, metadata, lang }) {
                   <div className="flex pt-8 md:w-full">
                     <Button
                       href={
-                        (isBetweenChapter &&
+                        (isChapterInProgressValue &&
                           `${
-                            routes.chaptersUrl +
-                            keysMeta[progress.progress].path
+                            routes.chaptersUrl + currentLesson?.path
                           }${queryParams}`) ||
                         `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}${queryParams}`
                       }
@@ -215,7 +208,7 @@ export default function Chapter({ children, metadata, lang }) {
                           } ${t('chapter.chapter_locked_two')}`) ||
                         (chapter.metadata.lessons.length > 0 &&
                           display &&
-                          isBetweenChapter &&
+                          isChapterInProgressValue &&
                           `${t('shared.next')}`) ||
                         (!!display &&
                           `${t('shared.start_chapter')} ${position}`) ||
@@ -230,7 +223,7 @@ export default function Chapter({ children, metadata, lang }) {
                 </div>
               </div>
               <div
-                aria-hidden={activeTab !== 'challenges' ? 'true' : 'false'}
+                aria-hidden={activeTab !== 'challenges'}
                 className={clsx('-mr-[100%] block w-full', {
                   visible: activeTab === 'challenges',
                   invisible: activeTab !== 'challenges',

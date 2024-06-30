@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { Button } from 'shared'
 import { usePathData, useTranslations } from 'hooks'
-import { keys } from 'lib/progress'
 import Image from 'next/image'
 import { RELAY } from './End'
 import { sleep } from 'utils'
@@ -14,6 +13,8 @@ import { relayInit } from 'nostr-tools' // eslint-disable-line
 import NostrIcon from 'shared/icons/Nostr'
 import TwitterIcon from 'shared/icons/Twitter'
 import { usePublish } from 'nostr-hooks'
+import { useAtomValue } from 'jotai'
+import { syncedCourseProgressAtom, isLastLesson } from 'state/progressState'
 
 export default function MobileEnd({
   image,
@@ -39,6 +40,8 @@ export default function MobileEnd({
   const [content, setContent] = useState('')
   const [shared, setShared] = useState(false)
   const [shareText, setShareText] = useState(t('social.nostr_share'))
+  const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const isThisLastLesson = isLastLesson(currentLessonKey, courseProgress)
 
   const nostrContent = `https://savingsatoshi.com/_next/image?url=%2Fassets%2Fimages%2Fnostr%2Fnostr-share-${chapterId}.jpg&w=1200&q=75 Code your way through the mysteries of bitcoin with nostr:npub1vy6wcgw6jhhtcmpawvlnsfx7g8qt8r40z7qlks9zwa4ed57vm5eqx527hr`
   const twitterContent = `I%20just%20finished%20chapter%20${
@@ -155,7 +158,7 @@ export default function MobileEnd({
             {(!account && t('chapter_one.end.save')) ||
               (account && t('shared.next'))}
           </Button>
-          {keys[keys.length - 1] === currentLessonKey && (
+          {isThisLastLesson && (
             <Button
               href="https://forms.gle/WhdJwcKKetB9sFL79"
               external

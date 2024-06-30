@@ -5,7 +5,6 @@ import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { accountAtom, currentLanguageAtom } from 'state/state'
@@ -134,7 +133,7 @@ def privatekey_to_publickey(private_key):
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-4', 'public-key-3')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_four.public_key_three.success')}
       onSelectLanguage={handleSelectLanguage}
     >

@@ -4,7 +4,6 @@ import { ScriptingChallenge, LessonInfo, Title, Text } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { useEffect, useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
 import { countLines, detectLanguage, Language } from 'lib/SavedCode'
 
@@ -365,7 +364,7 @@ print("KILL")
       <ScriptingChallenge
         lang={lang}
         config={config}
-        lessonKey={getLessonKey('chapter-6', 'put-it-together-5')}
+        lessonKey={metadata.key}
         successMessage={t('chapter_six.put_it_together_five.success')}
         saveData
       >

@@ -1,38 +1,25 @@
 'use client'
 import { chapters, lessons } from 'content'
-import {
-  useLang,
-  useTranslations,
-  useLocalizedRoutes,
-  usePathData,
-} from 'hooks'
+import { useLang, useTranslations, useLocalizedRoutes } from 'hooks'
 import Link from 'next/link'
 import { Tooltip } from 'ui'
 import { themeSelector } from 'lib/themeSelector'
-import { getCurrentLessonKey, getChapterKey, keys } from 'lib/progress'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
-import { useAtom } from 'jotai'
-import { accountAtom } from 'state/state'
+import { currentChapterAtom } from 'state/progressState'
+import { useAtomValue } from 'jotai'
 
 export default function HelpLink({ params }: { params: any }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { chaptersUrl } = useLocalizedRoutes()
-  const { chapterId } = usePathData()
-  const [account] = useAtom(accountAtom)
+  const currentChapter = useAtomValue(currentChapterAtom)
   const pathName = usePathname() || ''
 
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteHelp = pathData.length === 5
 
   const { slug, lesson: lessonId } = params
-
-  const chapterLessons = lessons?.[chapterId]
-  const lesson = chapterLessons?.[lessonId]?.metadata ?? null
-  const currentLessonKey = getCurrentLessonKey(lesson?.key ?? keys[0], account)
-
-  const chapterKey = getChapterKey(currentLessonKey)
 
   const theme = themeSelector(lessons, lessonId, chapters, slug)
 
@@ -65,7 +52,7 @@ export default function HelpLink({ params }: { params: any }) {
             { 'bg-black/25 text-opacity-100': isRouteHelp }
           )}
           target="_blank"
-          href={`${chaptersUrl}/${chapterKey}/${lessonId}/help`}
+          href={`${chaptersUrl}/chapter-${currentChapter}/${lessonId}/help`}
         >
           <span className="sr-only">Need help</span>?
         </Link>

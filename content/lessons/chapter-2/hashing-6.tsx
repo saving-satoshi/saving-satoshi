@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { getLessonKey } from 'lib/progress'
 import { HashChallenge } from 'ui'
 
 export const metadata = {
@@ -18,7 +17,7 @@ export default function Hashing6({ lang }) {
       answer="00"
       inputLabel={t('chapter_two.hashing_six.heading')}
       returnLabel={t('hasher.return_hash')}
-      lessonKey={getLessonKey('chapter-2', 'hashing-6')}
+      lessonKey={metadata.key}
       answerHint
     />
   )

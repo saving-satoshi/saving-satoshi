@@ -5,7 +5,6 @@ import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useEffect, useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
 import {
   countLines,
@@ -417,7 +416,7 @@ ${combinedCode}
         lang={lang}
         config={config}
         saveData
-        lessonKey={getLessonKey('chapter-6', 'put-it-together-2')}
+        lessonKey={metadata.key}
         successMessage={t('chapter_six.put_it_together_two.success')}
         loadingSavedCode={isLoading}
       >
