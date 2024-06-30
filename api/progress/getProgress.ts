@@ -9,7 +9,7 @@ export default async function getProgress(): Promise<CourseProgress> {
       includeToken: true,
     })
 
-    return res
+    return res.progress_state
   } catch (errors) {
     console.error(errors)
     return defaultProgressState

@@ -2,6 +2,7 @@ import { getProgressLocal, setProgressLocal } from 'api/local'
 import { getProgress, setProgress } from 'api/progress'
 import { lessons } from 'content'
 import { atom } from 'jotai'
+import { atomEffect } from 'jotai-effect'
 import { CourseProgress, LessonInState } from 'types'
 import { accountAtom, DifficultyLevel } from './state'
 
@@ -336,8 +337,8 @@ const combinedProgressAndAccountAtom = atom((get) => {
   return { account, courseProgress }
 })
 
-// Effect atom to sync course progress
-export const syncCourseProgressEffect = atom(null, (get, set) => {
+// Effect atom to sync course progress using atomEffect
+const syncCourseProgressEffectAtom = atomEffect((get, set) => {
   const { account, courseProgress } = get(combinedProgressAndAccountAtom)
   console.log('syncCourseProgressEffect', account, courseProgress)
   if (account) {
@@ -350,7 +351,7 @@ export const syncCourseProgressEffect = atom(null, (get, set) => {
 // Atom to trigger the effect whenever course progress or authentication changes
 export const syncedCourseProgressAtom = atom(
   (get) => {
-    get(syncCourseProgressEffect) // This will trigger the effect
+    get(syncCourseProgressEffectAtom) // This will trigger the effect
     return get(courseProgressAtom)
   },
   (get, set, update: Partial<CourseProgress>) => {

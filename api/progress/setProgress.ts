@@ -9,7 +9,7 @@ export default async function setProgress(
       url: '/v1/progress',
       includeToken: true,
       body: {
-        progress,
+        progress_state: progress,
       },
     })
 
