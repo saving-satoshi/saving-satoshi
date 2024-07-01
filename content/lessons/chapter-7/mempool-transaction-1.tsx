@@ -378,7 +378,7 @@ def run():
       <LessonInfo>
         <Title>{t('chapter_seven.mempool_transaction_one.heading')}</Title>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_seven.mempool_transaction_one.paragraph_one')}
+          {t(`chapter_seven.mempool_transaction_one.${language}.paragraph_one`)}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_seven.mempool_transaction_one.paragraph_two.a')}
