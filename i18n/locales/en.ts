@@ -1717,7 +1717,7 @@ const translations = {
         item_two: 'Fee',
         item_two_b: 'Satoshis',
         item_three: 'Weight',
-        item_three_b: 'Weighted units (WU)',
+        item_three_b: 'Weight units (WU)',
         item_four: 'Ancestors',
       },
       table_one: {
@@ -1737,17 +1737,17 @@ const translations = {
     },
     resources: {
       mempool_transaction_one: {
-        bytes_v_weight_heading: 'Bytes vs Weighted Units',
+        bytes_v_weight_heading: 'Bytes vs Weight Units',
         bytes_v_weight_paragraph_one:
-          'In Bitcoin block construction, "weighted units" (WU) and "bytes" are two different metrics used to measure the size of transactions and blocks.',
+          'In Bitcoin block construction, "weight units" (WU) and "bytes" are two different metrics used to measure the size of transactions and blocks.',
         bytes_v_weight_subheading_bytes: 'Bytes',
         bytes_v_weight_paragraph_two:
           'Bytes refer to the raw size of a transaction or block in terms of actual data. It is the literal size of the transaction data when it is serialized (converted into a format that can be stored or transmitted). Before the implementation of Segregated Witness (SegWit), the block size was limited to 1 megabyte (1 MB), measured in bytes.',
         bytes_v_weight_subheading_wu: 'Weighted Units',
         bytes_v_weight_paragraph_three:
-          'Weighted units are a more complex metric introduced with SegWit in Bitcoin Improvement Proposal 141 (BIP 141). This system aims to more fairly allocate block space by considering the impact of witness data separately.',
+          'Weighted units are a more complex metric introduced with SegWit in Bitcoin Improvement Proposal 141 <Link href="https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#user-content-Other_consensus_critical_limits" target="_blank" className="undeline">BIP 141</Link>. This system aims to more fairly allocate block space by considering the impact of witness data separately.',
         bytes_v_weight_paragraph_four:
-          'In our lesson here its just important to note we are using weighted units to calculate the maximum block size and the same for each tx so make sure your block does not exceed the maximum size in weighted units.',
+          'In our lesson here its just important to note we are using weight units to calculate the maximum block size and the same for each tx so make sure your block does not exceed the maximum size of 4000000 weight units.',
       },
     },
   },
