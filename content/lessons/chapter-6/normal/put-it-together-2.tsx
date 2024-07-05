@@ -17,7 +17,7 @@ import { Loader } from 'shared'
 export const metadata = {
   title: 'chapter_six.put_it_together_two.title',
   navigation_title: 'chapter_six.put_it_together_two.nav_title',
-  key: 'CH6PUT2',
+  key: 'CH6PUT2_NORMAL',
 }
 
 export default function PutItTogether2({ lang }) {

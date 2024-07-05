@@ -4,7 +4,11 @@ import { lessons } from 'content'
 import { atom } from 'jotai'
 import { atomEffect } from 'jotai-effect'
 import { CourseProgress, LessonInState } from 'types'
-import { accountAtom, DifficultyLevel } from './state'
+import { accountAtom, DifficultyLevel, isAuthLoadingAtom } from './state'
+
+export const isLoadingProgressAtom = atom<boolean>(true)
+
+export const isProgressLoadedAtom = atom<boolean>(false)
 
 export const defaultProgressState: CourseProgress = {
   chapters: [
@@ -181,24 +185,24 @@ export const defaultProgressState: CourseProgress = {
             { id: 'CH6INO2', path: '/chapter-6/in-out-2', completed: false },
             { id: 'CH6INO3', path: '/chapter-6/in-out-3', completed: false },
             {
-              id: 'CH6INO4',
-              path: '/chapter-6/in-out-4/normal',
+              id: 'CH6INO4_NORMAL',
+              path: '/chapter-6/in-out-4-normal',
               completed: false,
             },
             { id: 'CH6INO5', path: '/chapter-6/in-out-5', completed: false },
             {
-              id: 'CH6PUT1',
-              path: '/chapter-6/put-it-together-1',
+              id: 'CH6PUT1_NORMAL',
+              path: '/chapter-6/put-it-together-1-normal',
               completed: false,
             },
             {
-              id: 'CH6PUT2',
-              path: '/chapter-6/put-it-together-2',
+              id: 'CH6PUT2_NORMAL',
+              path: '/chapter-6/put-it-together-2-normal',
               completed: false,
             },
             {
-              id: 'CH6PUT3',
-              path: '/chapter-6/put-it-together-3',
+              id: 'CH6PUT3_NORMAL',
+              path: '/chapter-6/put-it-together-3-normal',
               completed: false,
             },
             { id: 'CH6OUT1', path: '/chapter-6/outro-1', completed: false },
@@ -214,24 +218,39 @@ export const defaultProgressState: CourseProgress = {
             { id: 'CH6INO2', path: '/chapter-6/in-out-2', completed: false },
             { id: 'CH6INO3', path: '/chapter-6/in-out-3', completed: false },
             {
-              id: 'CH6INO4',
-              path: '/chapter-6/in-out-4/normal',
+              id: 'CH6INO4_HARD',
+              path: '/chapter-6/in-out-4-hard',
               completed: false,
             },
             { id: 'CH6INO5', path: '/chapter-6/in-out-5', completed: false },
             {
-              id: 'CH6PUT1',
-              path: '/chapter-6/put-it-together-1',
+              id: 'CH6PUT1_HARD',
+              path: '/chapter-6/put-it-together-1-hard',
               completed: false,
             },
             {
-              id: 'CH6PUT2',
-              path: '/chapter-6/put-it-together-2',
+              id: 'CH6PUT2_HARD',
+              path: '/chapter-6/put-it-together-2-hard',
               completed: false,
             },
             {
-              id: 'CH6PUT3',
-              path: '/chapter-6/put-it-together-3',
+              id: 'CH6PUT3_HARD',
+              path: '/chapter-6/put-it-together-3-hard',
+              completed: false,
+            },
+            {
+              id: 'CH6PUT4',
+              path: '/chapter-6/put-it-together-4-hard',
+              completed: false,
+            },
+            {
+              id: 'CH6PUT5',
+              path: '/chapter-6/put-it-together-5-hard',
+              completed: false,
+            },
+            {
+              id: 'CH6PUT6',
+              path: '/chapter-6/put-it-together-6-hard',
               completed: false,
             },
             { id: 'CH6OUT1', path: '/chapter-6/outro-1', completed: false },
@@ -334,13 +353,17 @@ export const courseProgressAtom = atom<CourseProgress>(defaultProgressState)
 const combinedProgressAndAccountAtom = atom((get) => {
   const account = get(accountAtom)
   const courseProgress = get(courseProgressAtom)
-  return { account, courseProgress }
+  const isAuthLoading = get(isAuthLoadingAtom)
+  const isProgressLoaded = get(isProgressLoadedAtom)
+  return { account, courseProgress, isAuthLoading, isProgressLoaded }
 })
 
 // Effect atom to sync course progress using atomEffect
 const syncCourseProgressEffectAtom = atomEffect((get, set) => {
-  const { account, courseProgress } = get(combinedProgressAndAccountAtom)
-  console.log('syncCourseProgressEffect', account, courseProgress)
+  const { account, courseProgress, isAuthLoading, isProgressLoaded } = get(
+    combinedProgressAndAccountAtom
+  )
+  if (!isAuthLoading || !isProgressLoaded) return
   if (account) {
     setProgress(courseProgress)
   } else {
@@ -690,11 +713,12 @@ export const nextLessonPathAtom = atom((get) => {
   return nextLesson ? nextLesson.path : null
 })
 
-export const isLoadingProgressAtom = atom<boolean>(true)
-
 // Atom to manually load progress considering account state
 export const loadProgressAtom = atom(null, async (get, set) => {
   const account = get(accountAtom)
+  const isLoadingAccount = get(isAuthLoadingAtom)
+  const isProgressLoaded = get(isProgressLoadedAtom)
+  if (isLoadingAccount || isProgressLoaded) return
   if (account) {
     set(isLoadingProgressAtom, true)
     const progressFromServer = await getProgress()
@@ -703,6 +727,7 @@ export const loadProgressAtom = atom(null, async (get, set) => {
     const progressFromLocalStorage = await getProgressLocal()
     set(syncedCourseProgressAtom, progressFromLocalStorage)
   }
+  set(isProgressLoadedAtom, true)
   set(isLoadingProgressAtom, false)
 })
 
@@ -816,4 +841,81 @@ export const isLessonUnlockedUsingLessonName = (
     getLessonKey(`chapter-${courseProgress.currentChapter}`, lessonName),
     courseProgress
   )
+}
+
+export const getNextLessonPathUsingChapterIdAndLessonName = (
+  chapterId: string,
+  lessonName: string,
+  courseProgress: CourseProgress
+): string | null => {
+  // Find the current chapter based on chapterId
+  const currentChapter = courseProgress.chapters.find(
+    (chapter) => `chapter-${chapter.id}` === chapterId
+  )
+
+  if (!currentChapter) {
+    console.error('Chapter not found')
+    return null
+  }
+
+  // Determine the lessons in the current chapter
+  let lessons: LessonInState[] = []
+
+  if (currentChapter.hasDifficulty) {
+    const difficulty = currentChapter.difficulties?.find(
+      (d) => d.level === currentChapter.selectedDifficulty
+    )
+    if (difficulty) {
+      lessons = difficulty.lessons
+    }
+  } else {
+    lessons = currentChapter.lessons || []
+  }
+
+  // Find the index of the current lesson
+  const currentLessonIndex = lessons.findIndex(
+    (lesson) => lesson.path.split('/').pop() === lessonName
+  )
+
+  if (currentLessonIndex === -1) {
+    console.error('Lesson not found')
+    return null
+  }
+
+  // Find the next lesson in the same chapter
+  if (currentLessonIndex < lessons.length - 1) {
+    return lessons[currentLessonIndex + 1].path
+  }
+
+  // If no more lessons in the current chapter, find the first lesson of the next chapter
+  const currentChapterIndex = courseProgress.chapters.findIndex(
+    (chapter) => `chapter-${chapter.id}` === chapterId
+  )
+
+  for (
+    let i = currentChapterIndex + 1;
+    i < courseProgress.chapters.length;
+    i++
+  ) {
+    const nextChapter = courseProgress.chapters[i]
+    let nextLessons: LessonInState[] = []
+
+    if (nextChapter.hasDifficulty) {
+      const nextDifficulty = nextChapter.difficulties?.find(
+        (d) => d.level === nextChapter.selectedDifficulty
+      )
+      if (nextDifficulty) {
+        nextLessons = nextDifficulty.lessons
+      }
+    } else {
+      nextLessons = nextChapter.lessons || []
+    }
+
+    if (nextLessons.length > 0) {
+      return nextLessons[0].path
+    }
+  }
+
+  // If there are no more lessons, return null
+  return null
 }

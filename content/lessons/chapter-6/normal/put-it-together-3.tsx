@@ -16,7 +16,7 @@ import { LessonInfo, ScriptingChallenge, Table, Text } from 'ui'
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
   navigation_title: 'chapter_six.put_it_together_three.nav_title',
-  key: 'CH6PUT3',
+  key: 'CH6PUT3_NORMAL',
 }
 
 const lessonsToLoad = ['CH6PUT1', 'CH6PUT2', 'CH6INO5']

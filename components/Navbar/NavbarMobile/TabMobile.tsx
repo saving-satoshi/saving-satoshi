@@ -15,6 +15,7 @@ import {
   getLessonKey,
   isLessonUnlockedUsingLessonName,
 } from 'state/progressState'
+import useEnvironment from 'hooks/useEnvironment'
 
 export default function Tab({
   index,
@@ -30,6 +31,8 @@ export default function Tab({
   chapterId: number
 }) {
   const { slug } = params
+  const { isDevelopment } = useEnvironment()
+
   const courseProgress = useAtomValue(syncedCourseProgressAtom)
   const lesson = getLessonById(
     getLessonKey(chapterId, challenge.lessonId),
@@ -48,6 +51,8 @@ export default function Tab({
     challenge.lessonId,
     courseProgress
   )
+  const isTabUnlocked = isLessonUnlocked || isDevelopment
+
   const pnLessonId = isRouteLesson
     ? pathData.pop()
     : pathData[pathData.length - 2]
@@ -72,16 +77,16 @@ export default function Tab({
         'justify-left flex items-center px-[15px] py-[11px] pl-5 text-center transition duration-100 ease-in-out',
         {
           'text-white/75 hover:bg-black/20 hover:text-white':
-            isLessonUnlocked && challenge.lessonId !== lessonId,
-          'pointer-events-none cursor-default text-white/50': !isLessonUnlocked,
+            isTabUnlocked && challenge.lessonId !== lessonId,
+          'pointer-events-none cursor-default text-white/50': !isTabUnlocked,
           'bg-black/20 text-white': challenge.lessonId === lessonId,
         }
       )}
     >
-      {isLessonUnlocked && !isPageCompleted && (
+      {isTabUnlocked && !isPageCompleted && (
         <Icon icon="arrow" className="h-5 w-5" />
       )}
-      {!isLessonUnlocked && <Icon icon="lock" className="h-4 w-4 opacity-50" />}
+      {!isTabUnlocked && <Icon icon="lock" className="h-4 w-4 opacity-50" />}
       {isPageCompleted && <Icon icon="check" className="h-6 w-6 opacity-75" />}
       <span className="ml-1 text-lg">{navTitle}</span>
     </Link>

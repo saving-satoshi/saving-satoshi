@@ -16,6 +16,7 @@ import {
   isLessonUnlockedUsingLessonName,
   isLoadingProgressAtom,
 } from 'state/progressState'
+import useEnvironment from 'hooks/useEnvironment'
 
 export default function Tab({
   index,
@@ -38,6 +39,7 @@ export default function Tab({
   const lang = useLang()
   const t = useTranslations(lang)
   const pathName = usePathname() || ''
+  const { isDevelopment } = useEnvironment()
 
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
@@ -57,6 +59,7 @@ export default function Tab({
   if (!pnLessonId) {
     return null
   }
+  const isTabUnlocked = isLessonUnlocked || isDevelopment
 
   const challengeId = pnLessonId.substring(0, pnLessonId.length - 2)
 
@@ -83,9 +86,9 @@ export default function Tab({
       offset={0}
       theme={theme}
       className={clsx('cursor-default no-underline', {
-        'cursor-not-allowed': !isLessonUnlocked,
+        'cursor-not-allowed': !isTabUnlocked,
       })}
-      disabled={!isLessonUnlocked}
+      disabled={!isTabUnlocked}
       content={
         <div className="flex min-w-64 flex-col items-stretch">
           <span className="whitespace-nowrap px-2.5 py-2 text-left font-semibold leading-none text-white">
@@ -94,11 +97,12 @@ export default function Tab({
           <div className="flex flex-col flex-nowrap">
             {challengeLessons.map((challenge, index) => {
               const isLessonUnlock =
-                !isLoading &&
-                isLessonUnlockedUsingLessonName(
-                  challenge.lessonId,
-                  courseProgress
-                )
+                isDevelopment ||
+                (!isLoading &&
+                  isLessonUnlockedUsingLessonName(
+                    challenge.lessonId,
+                    courseProgress
+                  ))
               const isPageComplete =
                 !isLoading &&
                 isLessonCompletedUsingLessonName(
@@ -166,10 +170,10 @@ export default function Tab({
           {
             'text-white text-opacity-50': !isActive,
             'hover:bg-black/25 hover:text-white hover:text-opacity-100':
-              isLessonUnlocked && !isActive,
+              isTabUnlocked && !isActive,
             'bg-black/25 text-opacity-100': isActive,
             'border-r': part === 'outro',
-            'pointer-events-none': !isLessonUnlocked,
+            'pointer-events-none': !isTabUnlocked,
           }
         )}
       >
@@ -197,6 +201,7 @@ export default function Tab({
               {
                 hidden:
                   !isLoading &&
+                  !isTabUnlocked &&
                   !isLessonUnlockedUsingLessonName(
                     challenge.lessonId,
                     courseProgress

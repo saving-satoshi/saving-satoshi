@@ -9,7 +9,7 @@ import { detectLanguage, Language } from 'lib/SavedCode'
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
   navigation_title: 'chapter_six.put_it_together_one.nav_title',
-  key: 'CH6PUT1',
+  key: 'CH6PUT1_NORMAL',
 }
 
 export default function PutItTogether1({ lang }) {
