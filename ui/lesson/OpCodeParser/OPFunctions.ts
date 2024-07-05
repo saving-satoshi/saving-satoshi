@@ -2,45 +2,45 @@ import { getKey, getSig, InterpreterRef } from '.'
 
 // Opcode types
 
-export const opCodeTypes = (opcode: string) => {
-  if (opcode.match(/OP_[0-9]*/)) {
-    return { opcode, operation: 'constants' }
+export const opcodeTypes = (opcode: string) => {
+  if (opcode.match(/^OP_\d+$/)) {
+    return { opcode, operation: 'constants', color: '#FFFFFF' }
   }
 
   switch (opcode) {
     case 'OP_ADD':
-      return { opcode, operation: 'arithmetic' }
+      return { opcode, operation: 'arithmetic', color: '#3DCFEF' }
 
     case 'OP_IF':
-      return { opcode, operation: 'flow-control' }
+      return { opcode, operation: 'flow-control', color: '#EF960B' }
     case 'OP_ELSE':
-      return { opcode, operation: 'flow-control' }
+      return { opcode, operation: 'flow-control', color: '#EF960B' }
     case 'OP_ENDIF':
-      return { opcode, operation: 'flow-control' }
+      return { opcode, operation: 'flow-control', color: '#EF960B' }
 
     case 'OP_DUP':
-      return { opcode, operation: 'stack' }
+      return { opcode, operation: 'stack', color: '#3DCFEF' }
     case 'OP_PUSH':
-      return { opcode, operation: 'stack' }
+      return { opcode, operation: 'stack', color: '#3DCFEF' }
     case 'OP_DROP':
-      return { opcode, operation: 'stack' }
+      return { opcode, operation: 'stack', color: '#3DCFEF' }
 
     case 'OP_EQUAL':
-      return { opcode, operation: 'bitwise' }
+      return { opcode, operation: 'bitwise', color: '#3DCFEF' }
     case 'OP_EQUALVERIFY':
-      return { opcode, operation: 'bitwise' }
+      return { opcode, operation: 'bitwise', color: '#3DCFEF' }
 
     case 'OP_HASH256':
-      return { opcode, operation: 'crypto' }
+      return { opcode, operation: 'crypto', color: '#3DCFEF' }
     case 'OP_CHECKSIG':
-      return { opcode, operation: 'crypto' }
+      return { opcode, operation: 'crypto', color: '#3DCFEF' }
     case 'OP_CHECKMULTISIG':
-      return { opcode, operation: 'crypto' }
+      return { opcode, operation: 'crypto', color: '#3DCFEF' }
 
     case 'OP_CHECKLOCKTIMEVERIFY':
-      return { opcode, operation: 'locktime' }
+      return { opcode, operation: 'locktime', color: '#3DCFEF' }
     default:
-      return { opcode, operation: 'constants' }
+      return { opcode, operation: 'constants', color: '#3DCFEF' }
   }
 }
 

@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import clsx from 'clsx'
 import initializeInterpreter, {
   InterpreterAreaRef,
   InterpreterDivRef,
@@ -12,49 +13,66 @@ const OPRunner = () => {
   const currentOpcode = useRef<HTMLDivElement>(null)
   const height = useRef<HTMLInputElement>(null)
 
-  let runInterpreter = initializeInterpreter(
-    scriptField as InterpreterAreaRef,
-    initialStack as InterpreterRef,
-    executionStack as InterpreterAreaRef,
-    currentOpcode as InterpreterDivRef,
-    height as InterpreterRef
-  )
+  const [stackHistory, setStackHistory] = useState<any[][]>([]) // State to hold history of stacks
+  const [runInterpreter, setRunInterpreter] = useState<any>(null) // State to hold the interpreter instance
+
+  useEffect(() => {
+    const stackUpdateCallback = (newStack: any[]) => {
+      setStackHistory((prevHistory) => [...prevHistory, [...newStack]]) // Append new array instance of stack to history
+    }
+
+    const interpreter = initializeInterpreter(
+      scriptField as InterpreterAreaRef,
+      initialStack as InterpreterRef,
+      executionStack as InterpreterAreaRef,
+      currentOpcode as InterpreterDivRef,
+      height as InterpreterRef,
+      stackUpdateCallback // Pass the stackUpdateCallback function here
+    )
+
+    setStackHistory([
+      initialStack?.current?.value ? [initialStack?.current?.value] : [],
+    ]) // Reset stack history
+
+    setRunInterpreter(interpreter)
+
+    return () => {
+      // Clean up if needed
+    }
+  }, []) // Empty dependency array to run once on mount
 
   const scriptOnchange = () => {
-    runInterpreter = initializeInterpreter(
-      scriptField as InterpreterAreaRef,
-      initialStack as InterpreterRef,
-      executionStack as InterpreterAreaRef,
-      currentOpcode as InterpreterDivRef,
-      height as InterpreterRef
-    )
     runInterpreter.onScriptInput()
+    setStackHistory([[initialStack.current.value]]) // Reset stack history
+    console.log(currentOpcode, initialStack?.current?.value)
   }
-  const runOnClick = () => {
-    runInterpreter = initializeInterpreter(
-      scriptField as InterpreterAreaRef,
-      initialStack as InterpreterRef,
-      executionStack as InterpreterAreaRef,
-      currentOpcode as InterpreterDivRef,
-      height as InterpreterRef
-    )
-    runInterpreter.onRunButtonClick()
+
+  const run = async () => {
+    for (let i = 0; i < scriptField.current.value.split(' ').length + 1; i++) {
+      await runInterpreter.onStepClick()
+    }
   }
 
   const reset = () => {
-    runInterpreter = initializeInterpreter(
-      scriptField as InterpreterAreaRef,
-      initialStack as InterpreterRef,
-      executionStack as InterpreterAreaRef,
-      currentOpcode as InterpreterDivRef,
-      height as InterpreterRef
-    )
     runInterpreter.onReset()
+    setStackHistory([[initialStack.current.value]]) // Reset stack history
+    console.log(
+      currentOpcode,
+      executionStack.current,
+      initialStack?.current?.value
+    )
   }
 
   const step = () => {
     runInterpreter.onStepClick()
   }
+
+  if (!runInterpreter) {
+    return null
+  }
+
+  console.log(currentOpcode)
+
   return (
     <div className="flex flex-col px-8 text-white">
       <div className="mt-4 flex flex-col gap-1 border-b border-b-white">
@@ -98,7 +116,6 @@ const OPRunner = () => {
         />
       </div>
 
-      <div ref={currentOpcode}></div>
       <div className="mt-4 flex flex-col border-b border-b-white py-5 text-black">
         <textarea
           className="resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
@@ -107,11 +124,65 @@ const OPRunner = () => {
       </div>
 
       <div className="flex gap-3">
-        <button type="button" className="cursor-pointer" onClick={runOnClick}>
+        <button type="button" className="cursor-pointer" onClick={run}>
           Run
         </button>
         <button onClick={reset}> Reset </button>
         <button onClick={step}>Step</button>
+      </div>
+
+      {/* Display the stack history */}
+      <div className="mt-4 flex flex-row gap-2.5 overflow-scroll">
+        {stackHistory.map((stack, index) => (
+          <div
+            key={`Container${index}`}
+            className="flex flex-col rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+          >
+            <div key={`Container${index}-bg`} className="mt-auto">
+              <div key={`OPcode${index}`} ref={currentOpcode} />
+              <div
+                key={index}
+                className="resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
+                style={{ whiteSpace: 'pre-wrap' }}
+              >
+                {stack
+                  .slice()
+                  .reverse()
+                  .map((item, i) => (
+                    <div
+                      key={`item${i}`}
+                      id={`${i} + ${index === stackHistory.length - 1} + ${
+                        !!item === true
+                      }`}
+                      className={clsx(
+                        'my-[5px] w-[140px] rounded-[3px] px-3 py-1',
+                        {
+                          'bg-green':
+                            i === 0 &&
+                            stack.length < 2 &&
+                            index === stackHistory.length - 1 &&
+                            index !== 0 &&
+                            !!item === true,
+                          'bg-white/15':
+                            i !== 0 ||
+                            stack.length > 1 ||
+                            index !== stackHistory.length - 1 ||
+                            index === 0 ||
+                            !!item !== true,
+                        }
+                      )}
+                    >
+                      {JSON.stringify(
+                        !isNaN(parseFloat(item)) && isFinite(item)
+                          ? parseInt(item)
+                          : item
+                      )}
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )

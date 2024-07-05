@@ -1,7 +1,7 @@
 /* eslint-env browser */
 'use strict'
 
-import { opFunctions } from './OPFunctions'
+import { opFunctions, opcodeTypes } from './OPFunctions'
 
 // Types
 export type InterpreterRef = React.MutableRefObject<HTMLInputElement>
@@ -32,26 +32,65 @@ const initialState: InterpreterState = {
   script: [],
 }
 
+const globalState: InterpreterState[] = [
+  {
+    exec_ptr: -1,
+    stack: [],
+    negate: 0,
+    state: [],
+    script: [],
+  },
+]
+
 // UI Update Functions
-const updateStack = (executionStack: InterpreterAreaRef, stack: any[]) => {
+const updateStack = (
+  executionStack: InterpreterAreaRef,
+  stack: any[],
+  stackUpdateCallback: (stack: any[]) => void
+) => {
   if (executionStack.current) {
     executionStack.current.value = stack
       .map((a) => a)
       .reverse()
       .join('\n')
+    stackUpdateCallback(stack)
   } else {
     console.error('executionStack.current is null')
   }
 }
 
 const currentOp = (currentOpcode: InterpreterDivRef, opcode: string) => {
+  console.log(opcodeTypes(opcode).operation === 'constants')
   if (currentOpcode.current) {
-    currentOpcode.current.innerHTML = `<span style="color:blue">${opcode}</span>`
+    currentOpcode.current.innerHTML = `<div style="
+  font-family: 'Space Mono', monospace;
+  width: 140px;
+  color: ${opcodeTypes(opcode).operation === 'constants' ? 'black' : 'white'};
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: ${opcodeTypes(opcode).color};
+  border-radius: 3px;
+">${opcode.replace(
+      /^OP_\d+$/,
+      opcode.substring(opcode.indexOf('_') + 1)
+    )}</div>`
   }
 }
 
 const error = (currentOpcode: InterpreterDivRef, message: string) => {
-  currentOpcode.current.innerHTML = `<span style="color:red">ERROR: ${message}</span>`
+  currentOpcode.current.innerHTML = `<div style="
+  font-family: 'Space Mono', monospace;
+  width: 140px;
+  color: white;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: red;
+  border-radius: 3px;
+">ERROR: ${message}</div>`
 }
 
 const highlight = (
@@ -115,11 +154,12 @@ const reset = (
   initialStackRef: InterpreterRef,
   executionStackRef: InterpreterAreaRef,
   currentOpCodeRef: InterpreterDivRef,
-  heightRef: InterpreterRef
+  heightRef: InterpreterRef,
+  stackUpdateCallback: (stack: any[]) => void
 ): InterpreterState => {
   const state: InterpreterState = {
     ...initialState,
-    script: scriptFieldRef.current?.value.split(' '),
+    script: scriptFieldRef.current?.value.replace(/->\[|\]<-/g, '').split(' '),
     stack: initialStackRef.current?.value
       .split(',')
       .filter((item) => item.length)
@@ -127,7 +167,7 @@ const reset = (
   }
 
   if (executionStackRef.current) {
-    updateStack(executionStackRef, state.stack)
+    updateStack(executionStackRef, state.stack, stackUpdateCallback)
   }
   currentOp(currentOpCodeRef, '')
   highlight(scriptFieldRef, state.script, -1)
@@ -135,7 +175,11 @@ const reset = (
   return state
 }
 
-const step = (state: InterpreterState, refs: Refs): InterpreterState => {
+const step = (
+  state: InterpreterState,
+  refs: Refs,
+  stackUpdateCallback: (stack: any[]) => void
+): InterpreterState[] => {
   const { scriptFieldRef, executionStackRef, currentOpCodeRef, heightRef } =
     refs
   if (state.exec_ptr === -1) {
@@ -153,7 +197,7 @@ const step = (state: InterpreterState, refs: Refs): InterpreterState => {
 
     if (verify(state.stack, (msg: string) => error(currentOpCodeRef, msg))) {
       highlight(scriptFieldRef, state.script, -1)
-      currentOp(currentOpCodeRef, 'VALID: Script completed successfully')
+      //currentOp(currentOpCodeRef, 'VALID: Script completed successfully')
     } else {
       highlight(scriptFieldRef, state.script, -1)
       error(currentOpCodeRef, 'INVALID: Script did not complete successfully')
@@ -194,15 +238,19 @@ const step = (state: InterpreterState, refs: Refs): InterpreterState => {
   }
 
   console.log(state.stack, state.exec_ptr, state.script[state.exec_ptr])
-  updateStack(executionStackRef, state.stack)
+  updateStack(executionStackRef, state.stack, stackUpdateCallback)
   state.exec_ptr++
   return state
 }
 
-const run = (state: InterpreterState, refs: Refs): InterpreterState => {
+const run = (
+  state: InterpreterState,
+  refs: Refs,
+  stackUpdateCallback: (stack: any[]) => void
+) => {
   state.exec_ptr = -1
   while (!state.finished) {
-    state = step(state, refs)
+    state = step(state, refs, stackUpdateCallback)
   }
 
   return state
@@ -214,14 +262,16 @@ const initializeInterpreter = (
   initialStackRef: InterpreterRef,
   executionStackRef: InterpreterAreaRef,
   currentOpCodeRef: InterpreterDivRef,
-  heightRef: InterpreterRef
+  heightRef: InterpreterRef,
+  stackUpdateCallback: (stack: any[]) => void
 ) => {
   let state = reset(
     scriptFieldRef,
     initialStackRef,
     executionStackRef,
     currentOpCodeRef,
-    heightRef
+    heightRef,
+    stackUpdateCallback
   )
 
   const onScriptInput = () => {
@@ -230,7 +280,8 @@ const initializeInterpreter = (
       initialStackRef,
       executionStackRef,
       currentOpCodeRef,
-      heightRef
+      heightRef,
+      stackUpdateCallback
     )
   }
 
@@ -240,7 +291,8 @@ const initializeInterpreter = (
       initialStackRef,
       executionStackRef,
       currentOpCodeRef,
-      heightRef
+      heightRef,
+      stackUpdateCallback
     )
   }
   const onRunButtonClick = () => {
@@ -249,26 +301,35 @@ const initializeInterpreter = (
       initialStackRef,
       executionStackRef,
       currentOpCodeRef,
-      heightRef
+      heightRef,
+      stackUpdateCallback
     )
 
-    state = run(state, {
-      scriptFieldRef,
-      initialStackRef,
-      executionStackRef,
-      currentOpCodeRef,
-      heightRef,
-    })
+    state = run(
+      state,
+      {
+        scriptFieldRef,
+        initialStackRef,
+        executionStackRef,
+        currentOpCodeRef,
+        heightRef,
+      },
+      stackUpdateCallback
+    )
   }
 
   const onStepClick = () => {
-    state = step(state, {
-      scriptFieldRef,
-      initialStackRef,
-      executionStackRef,
-      currentOpCodeRef,
-      heightRef,
-    })
+    state = step(
+      state,
+      {
+        scriptFieldRef,
+        initialStackRef,
+        executionStackRef,
+        currentOpCodeRef,
+        heightRef,
+      },
+      stackUpdateCallback
+    )
   }
 
   return { onScriptInput, onStepClick, onRunButtonClick, onReset }
