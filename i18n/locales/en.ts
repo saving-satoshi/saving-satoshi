@@ -1535,19 +1535,32 @@ const translations = {
       nav_title: 'Build the witness class',
       heading: 'Sign and Populate the Witness!',
       paragraph_one:
-        'We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the math behind the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
+        'In the last chapter, we wrote some important ECDSA signature verification code. Now, in order to create a valid signature, we are going to take that code and rearrange it a bit.',
       paragraph_two:
-        'Complete the method <span className="text-green"> compute_input_signature(index, key) </span> in our Transaction class that accepts an input index number and a private key (a 32-byte integer, or BigInt in JavaScript). It should compute the message digest for the chosen input using the digest() method from our last step, and then return an ECDSA signature in the form of two 32-byte integers r and s.',
+        "In this exercise we'll be implementing some of the math behind the ECDSA signing algorithm. For more information on how that works, check out these resources:",
       paragraph_three:
-        'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value of the signature is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
+        '• The Wikipedia page for <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">Elliptic Curve Digital Signature Algorithm</Link>',
       paragraph_four:
-        'Next, complete the method <span className="text-green"> sign_input(index, key) </span> that calls <span className="text-green"> compute_input_signature(index, key) </span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.',
+        '• <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">Standards for Efficient Cryptography 1 (SEC 1)</Link>: Page 44, Section 4.1.3',
+      heading_one: 'Step 1',
       paragraph_five:
-        'Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this, indicating "SIGHASH ALL".',
+        'In the Transaction class, there is a method, <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">compute_input_signature(index, key)</span> that accepts the index number of an input and a private key (a 32-byte integer, or BigInt in JavaScript). Finish this method so it computes the message digest for the chosen input. Use the <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">digest()</span> method from our last step, then return an ECDSA signature in the form of two 32-byte integers: <span className="italic">r</span> and <span className="italic">s</span>.',
+      heading_two: 'Step 2',
       paragraph_six:
-        'Once we have that signature blob we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.',
+        'For the signing algorithm, the Bitcoin protocol requires one more thing. The <span className="italic">s</span> value needs to be "low", meaning less than the order of the curve divided by 2. Add this check to <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">compute_input_signature()</span>.',
       paragraph_seven:
-        'The witness stack object can then be appended to the witnesses array of the transaction object.',
+        'See <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link> to learn more.',
+      heading_three: 'Step 3',
+      paragraph_eight:
+        'Complete the method <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">sign_input(index, key)</span> so that it calls <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1"> compute_input_signature(index, key)</span>. When handling the return value, <span className="italic">r</span> and <span className="italic">s</span> need to be encoded with an algorithm called DER which we have implemented for you.',
+      heading_four: 'Step 4',
+      paragraph_nine:
+        'Bitcoin requires an extra byte appended to the end of the DER-signature. This byte represents the "sighash type". For now we’ll always use the byte <span className="p-1 text-base font-mono bg-[#00000033] m-1">0x01</span> for this, indicating "SIGHASH ALL".',
+      heading_five: 'Step 5',
+      paragraph_ten:
+        'The last step is to create a Witness object with two stack items: the DER encoded signature blob we just made, and your compressed public key. Push the signature first, followed by the public key.',
+      paragraph_eleven:
+        "Append the witness stack object to the transaction object's array of witnesses.",
       success:
         'The compute_input_signature() and sign_input() methods look good. Great Work!',
     },

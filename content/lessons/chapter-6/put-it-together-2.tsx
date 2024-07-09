@@ -447,14 +447,56 @@ ${combinedCode}
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_six.put_it_together_two.paragraph_four')}
           </Text>
+
+          {/* Step 1 */}
+          <hr className="my-7 h-[1px] w-full opacity-25" />
+          <Text className="mt-4 font-nunito text-xl font-bold text-white">
+            {t('chapter_six.put_it_together_two.heading_one')}
+          </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_six.put_it_together_two.paragraph_five')}
+          </Text>
+
+          {/* Step 2 */}
+          <hr className="my-7 h-[1px] w-full opacity-25" />
+          <Text className="mt-4 font-nunito text-xl font-bold text-white">
+            {t('chapter_six.put_it_together_two.heading_two')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_six.put_it_together_two.paragraph_six')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_six.put_it_together_two.paragraph_seven')}
+          </Text>
+
+          {/* Step 3 */}
+          <hr className="my-7 h-[1px] w-full opacity-25" />
+          <Text className="mt-4 font-nunito text-xl font-bold text-white">
+            {t('chapter_six.put_it_together_two.heading_three')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_six.put_it_together_two.paragraph_eight')}
+          </Text>
+
+          {/* Step 4 */}
+          <hr className="my-7 h-[1px] w-full opacity-25" />
+          <Text className="mt-4 font-nunito text-xl font-bold text-white">
+            {t('chapter_six.put_it_together_two.heading_four')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_six.put_it_together_two.paragraph_nine')}
+          </Text>
+
+          {/* Step 5 */}
+          <hr className="my-7 h-[1px] w-full opacity-25" />
+          <Text className="mt-4 font-nunito text-xl font-bold text-white">
+            {t('chapter_six.put_it_together_two.heading_five')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_six.put_it_together_two.paragraph_ten')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_six.put_it_together_two.paragraph_eleven')}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>
