@@ -155,8 +155,8 @@ export const opFunctions: { [key: string]: Function } = {
       throw new Error('OP_CHECKMULTISIG requires at least 1 item on the stack')
     }
 
-    const maybeN = stack.pop()
-    const n = parseInt(maybeN)
+    const maybeN = stack.pop() ?? ''
+    const n = typeof maybeN === 'string' && parseInt(maybeN)
     if (!n) {
       throw new Error(`OP_CHECKMULTISIG invalid n: ${maybeN}`)
     }
@@ -169,8 +169,8 @@ export const opFunctions: { [key: string]: Function } = {
       keys.unshift(stack.pop() as never)
     }
 
-    const maybeM = stack.pop()
-    const m = parseInt(maybeM)
+    const maybeM = stack.pop() ?? ''
+    const m = typeof maybeM === 'string' && parseInt(maybeM)
     if (!m) {
       throw new Error(`OP_CHECKMULTISIG invalid m: ${maybeM}`)
     }

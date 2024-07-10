@@ -223,11 +223,12 @@ class LanguageExecutor {
           addToState = {
             stack: [...currentStack],
             operation: {
-              tokenType: TokenTypes.Crypto,
+              tokenType: TokenTypes.CRYPTO,
               resolves: element.resolves,
               value: element.value,
               type: element.type,
             },
+            negate: value,
             step: index,
           }
           this.state.push(addToState)
