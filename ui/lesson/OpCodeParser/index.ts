@@ -1,338 +1,214 @@
-/* eslint-env browser */
-'use strict'
+import { OpCodeTypes, opFunctions } from './OPFunctions'
 
-import { opFunctions, opcodeTypes } from './OPFunctions'
+export enum TokenTypes {
+  CONSTANT = 'constant',
+  ARITHMETIC = 'arithmetic',
+  DATA_PUSH = 'data-push',
+  LOCK_TIME = 'lock-time',
+  CONDITIONAL = 'conditional',
+}
+interface Token {
+  type: TokenTypes
+  resolves: string | number | boolean | null
+  value: string
+}
 
-// Types
-export type InterpreterRef = React.MutableRefObject<HTMLInputElement>
-export type InterpreterDivRef = React.MutableRefObject<HTMLDivElement>
-export type InterpreterAreaRef = React.MutableRefObject<HTMLTextAreaElement>
-export type InterpreterState = {
-  exec_ptr: number
+export type T = Array<Token>
+type ScriptType = Array<string | boolean | number | null>
+export type MainState = State[]
+
+export type StackType = Array<string | boolean | number | null>
+export interface State {
   stack: any[]
+  operation: Operation
+  step: number
   negate: number
-  state: boolean[]
-  script: string[]
-  finished?: boolean
+  height?: number | null
+  errors?: Error[]
 }
 
-interface Refs {
-  scriptFieldRef: InterpreterAreaRef
-  initialStackRef: InterpreterRef
-  executionStackRef: InterpreterAreaRef
-  currentOpCodeRef: InterpreterDivRef
-  heightRef: InterpreterRef
+export interface Operation {
+  tokenType?: TokenTypes | null
+  resolves?: string | number | boolean | null
+  value?: string | null
+  type: any
 }
 
-const initialState: InterpreterState = {
-  exec_ptr: -1,
-  stack: [],
-  negate: 0,
-  state: [],
-  script: [],
+export interface Error {
+  type: string
+  message: any
 }
 
-const globalState: InterpreterState[] = [
-  {
-    exec_ptr: -1,
-    stack: [],
-    negate: 0,
-    state: [],
-    script: [],
-  },
-]
-
-// UI Update Functions
-const updateStack = (
-  executionStack: InterpreterAreaRef,
-  stack: any[],
-  stackUpdateCallback: (stack: any[]) => void
-) => {
-  if (executionStack.current) {
-    executionStack.current.value = stack
-      .map((a) => a)
-      .reverse()
-      .join('\n')
-    stackUpdateCallback(stack)
-  } else {
-    console.error('executionStack.current is null')
-  }
-}
-
-const currentOp = (currentOpcode: InterpreterDivRef, opcode: string) => {
-  console.log(opcodeTypes(opcode).operation === 'constants')
-  if (currentOpcode.current) {
-    currentOpcode.current.innerHTML = `<div style="
-  font-family: 'Space Mono', monospace;
-  width: 140px;
-  color: ${opcodeTypes(opcode).operation === 'constants' ? 'black' : 'white'};
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  background-color: ${opcodeTypes(opcode).color};
-  border-radius: 3px;
-">${opcode.replace(
-      /^OP_\d+$/,
-      opcode.substring(opcode.indexOf('_') + 1)
-    )}</div>`
-  }
-}
-
-const error = (currentOpcode: InterpreterDivRef, message: string) => {
-  currentOpcode.current.innerHTML = `<div style="
-  font-family: 'Space Mono', monospace;
-  width: 140px;
-  color: white;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  background-color: red;
-  border-radius: 3px;
-">ERROR: ${message}</div>`
-}
-
-const highlight = (
-  scriptField: InterpreterAreaRef,
-  script: string[],
-  exec_ptr: number
-) => {
-  if (exec_ptr < 0) {
-    if (scriptField.current) {
-      scriptField.current.value = script.join(' ')
-    }
-    return
-  }
-
-  const opcode = script[exec_ptr]
-  const highlight = '->[' + opcode + ']<-'
-  const copy = Array.from(script)
-  copy[exec_ptr] = highlight
-  scriptField.current.value = copy.join(' ')
-}
-
-// Interpreter Functions
-export const getKey = (keyData: string): string => {
-  if (!keyData) {
-    throw new Error('Missing key')
-  }
-  const keyMatch = /PUBKEY\((.*?)\)/.exec(keyData)
-  if (!keyMatch || keyMatch.length !== 2) {
-    throw new Error(`Invalid public key: ${keyData}`)
-  }
-  return keyMatch[1]
-}
-
-export const getSig = (sigData: string): string => {
-  if (!sigData) {
-    throw new Error('Missing sig')
-  }
-  const sigMatch = /SIG\((.*?)\)/.exec(sigData)
-  if (!sigMatch || sigMatch.length !== 2) {
-    throw new Error(`Invalid signature: ${sigData}`)
-  }
-  return sigMatch[1]
-}
-
-const verify = (stack: any[], error: (msg: string) => void): boolean => {
-  if (stack.length !== 1) {
-    error('Script evaluates false: stack length is not exactly 1')
-    return false
-  }
-  if (stack[0] === false || parseInt(stack[0]) === 0) {
-    error('Script evaluates false: top stack item is false')
-    return false
-  }
-
-  return true
-}
-
-// Main Interpreter Functions
-const reset = (
-  scriptFieldRef: InterpreterAreaRef,
-  initialStackRef: InterpreterRef,
-  executionStackRef: InterpreterAreaRef,
-  currentOpCodeRef: InterpreterDivRef,
-  heightRef: InterpreterRef,
-  stackUpdateCallback: (stack: any[]) => void
-): InterpreterState => {
-  const state: InterpreterState = {
-    ...initialState,
-    script: scriptFieldRef.current?.value.replace(/->\[|\]<-/g, '').split(' '),
-    stack: initialStackRef.current?.value
-      .split(',')
-      .filter((item) => item.length)
-      .map((item) => item.trim()),
-  }
-
-  if (executionStackRef.current) {
-    updateStack(executionStackRef, state.stack, stackUpdateCallback)
-  }
-  currentOp(currentOpCodeRef, '')
-  highlight(scriptFieldRef, state.script, -1)
-
-  return state
-}
-
-const step = (
-  state: InterpreterState,
-  refs: Refs,
-  stackUpdateCallback: (stack: any[]) => void
-): InterpreterState[] => {
-  const { scriptFieldRef, executionStackRef, currentOpCodeRef, heightRef } =
-    refs
-  if (state.exec_ptr === -1) {
-    state.exec_ptr++
-  }
-  if (state.finished) {
-    return state
-  }
-
-  if (state.exec_ptr === state.script.length) {
-    if (state.state?.length !== 0) {
-      error(currentOpCodeRef, 'End of script: Unbalanced conditional')
-      return { ...state, finished: true }
-    }
-
-    if (verify(state.stack, (msg: string) => error(currentOpCodeRef, msg))) {
-      highlight(scriptFieldRef, state.script, -1)
-      //currentOp(currentOpCodeRef, 'VALID: Script completed successfully')
-    } else {
-      highlight(scriptFieldRef, state.script, -1)
-      error(currentOpCodeRef, 'INVALID: Script did not complete successfully')
-    }
-    return { ...state, finished: true }
-  }
-
-  const opcode = state.script[state.exec_ptr]
-
-  if (state.negate && !['OP_IF', 'OP_ELSE', 'OP_ENDIF'].includes(opcode)) {
-    state.exec_ptr++
-    return step(state, refs)
-  }
-
-  highlight(scriptFieldRef, state.script, state.exec_ptr)
-  currentOp(currentOpCodeRef, opcode)
-
-  if (!opFunctions[opcode]) {
-    error(currentOpCodeRef, `Unknown opcode ${opcode}`)
-    return { ...state, finished: true }
-  }
-
-  try {
-    if (opcode === 'OP_PUSH') {
-      opFunctions[opcode](state.stack, state.script, state.exec_ptr)
-    } else if (['OP_IF', 'OP_ELSE', 'OP_ENDIF'].includes(opcode)) {
-      const result = opFunctions[opcode](state.state, state.negate, state.stack)
-      state.state = result.state
-      state.negate = result.negate
-    } else if (opcode === 'OP_CHECKLOCKTIMEVERIFY') {
-      opFunctions[opcode](state.stack, heightRef)
-    } else {
-      opFunctions[opcode](state.stack)
-    }
-  } catch (e: any) {
-    error(currentOpCodeRef, e.message)
-    return { ...state, finished: true }
-  }
-
-  console.log(state.stack, state.exec_ptr, state.script[state.exec_ptr])
-  updateStack(executionStackRef, state.stack, stackUpdateCallback)
-  state.exec_ptr++
-  return state
-}
-
-const run = (
-  state: InterpreterState,
-  refs: Refs,
-  stackUpdateCallback: (stack: any[]) => void
-) => {
-  state.exec_ptr = -1
-  while (!state.finished) {
-    state = step(state, refs, stackUpdateCallback)
-  }
-
-  return state
-}
-
-// Initialization
-const initializeInterpreter = (
-  scriptFieldRef: InterpreterAreaRef,
-  initialStackRef: InterpreterRef,
-  executionStackRef: InterpreterAreaRef,
-  currentOpCodeRef: InterpreterDivRef,
-  heightRef: InterpreterRef,
-  stackUpdateCallback: (stack: any[]) => void
-) => {
-  let state = reset(
-    scriptFieldRef,
-    initialStackRef,
-    executionStackRef,
-    currentOpCodeRef,
-    heightRef,
-    stackUpdateCallback
-  )
-
-  const onScriptInput = () => {
-    state = reset(
-      scriptFieldRef,
-      initialStackRef,
-      executionStackRef,
-      currentOpCodeRef,
-      heightRef,
-      stackUpdateCallback
-    )
-  }
-
-  const onReset = () => {
-    state = reset(
-      scriptFieldRef,
-      initialStackRef,
-      executionStackRef,
-      currentOpCodeRef,
-      heightRef,
-      stackUpdateCallback
-    )
-  }
-  const onRunButtonClick = () => {
-    state = reset(
-      scriptFieldRef,
-      initialStackRef,
-      executionStackRef,
-      currentOpCodeRef,
-      heightRef,
-      stackUpdateCallback
-    )
-
-    state = run(
-      state,
-      {
-        scriptFieldRef,
-        initialStackRef,
-        executionStackRef,
-        currentOpCodeRef,
-        heightRef,
+class LanguageExecutor {
+  tokens: T
+  stack: StackType
+  height?: number | null
+  conditionalState: Array<boolean>
+  // initial state
+  public state: MainState = [
+    {
+      stack: [],
+      operation: {
+        tokenType: null,
+        resolves: null,
+        value: null,
+        type: null,
       },
-      stackUpdateCallback
-    )
+      step: 0,
+      negate: 0,
+      height: null,
+      errors: [
+        {
+          type: '',
+          message: null,
+        },
+      ],
+    },
+  ]
+
+  public static rawInputToParsableInput(input: string): Array<string | number> {
+    return input.split(' ')
   }
 
-  const onStepClick = () => {
-    state = step(
-      state,
-      {
-        scriptFieldRef,
-        initialStackRef,
-        executionStackRef,
-        currentOpCodeRef,
-        heightRef,
-      },
-      stackUpdateCallback
-    )
+  public static parsableInputToTokens(input: Array<string | number>): T {
+    const tokens: T = input.map((operation: string) => {
+      const resolveValue = opFunctions?.[operation]
+        ? opFunctions[operation]()
+        : null
+      return {
+        type: OpCodeTypes[operation] || '',
+        resolves: resolveValue,
+        value: operation,
+      }
+    })
+
+    return tokens
   }
 
-  return { onScriptInput, onStepClick, onRunButtonClick, onReset }
+  public static RunCode(
+    script: string,
+    initialStack?: string,
+    height?: number
+  ): LanguageExecutor {
+    const parsableInput = this.rawInputToParsableInput(script)
+    const tokens = this.parsableInputToTokens(parsableInput)
+    const langExecutor = new LanguageExecutor(tokens, height)
+    langExecutor.execute()
+
+    return langExecutor
+  }
+  constructor(tokens: T, height?: number) {
+    this.tokens = tokens
+    this.state = []
+    this.stack = []
+    this.height = height ?? 0
+    this.conditionalState = []
+  }
+
+  execute() {
+    if (!this.tokens) return this.state
+    for (let index = 0; index < this.tokens.length; index++) {
+      const element = this.tokens[index]
+      const currentStack = this.stack
+      const currentState = this.state[index - 1]
+
+      let addToState: State
+      let value: any
+      switch (element.type) {
+        case TokenTypes.CONSTANT:
+          this.stack.push(element.resolves)
+          addToState = {
+            stack: [...currentStack],
+            operation: {
+              tokenType: TokenTypes.CONSTANT,
+              resolves: element.resolves,
+              value: element.value,
+              type: element.type,
+            },
+            negate: currentState?.negate,
+            step: index,
+          }
+          this.state.push(addToState)
+          break
+
+        case TokenTypes.ARITHMETIC:
+          value = opFunctions[element.value](this.stack)
+          this.stack.push(value)
+          addToState = {
+            stack: [...currentStack],
+            operation: {
+              tokenType: TokenTypes.CONSTANT,
+              resolves: element.resolves,
+              value: element.value,
+              type: element.type,
+            },
+            step: index,
+            negate: currentState?.negate,
+          }
+          this.state.push(addToState)
+          break
+        case TokenTypes.DATA_PUSH:
+          value = opFunctions[element.value](this.stack, this.tokens, index)
+          this.stack.push(value)
+          addToState = {
+            stack: [...currentStack],
+            operation: {
+              tokenType: TokenTypes.DATA_PUSH,
+              resolves: element.resolves,
+              value: element.value,
+              type: element.type,
+            },
+            step: index,
+            negate: currentState?.negate,
+          }
+          this.state.push(addToState)
+          index++
+          break
+        case TokenTypes.LOCK_TIME:
+          value = opFunctions[element.value](this.stack, this.height)
+          //this.stack.push(value);
+          addToState = {
+            stack: [...currentStack],
+            operation: {
+              tokenType: TokenTypes.LOCK_TIME,
+              resolves: element.resolves,
+              value: element.value,
+              type: element.type,
+            },
+            negate: currentState?.negate,
+            step: index,
+          }
+          this.state.push(addToState)
+          break
+        case TokenTypes.CONDITIONAL:
+          value = opFunctions[element.value](
+            this.stack,
+            this.conditionalState,
+            currentState?.negate ?? 0
+          )
+          addToState = {
+            stack: [...currentStack],
+            operation: {
+              tokenType: TokenTypes.CONDITIONAL,
+              resolves: element.resolves,
+              value: element.value,
+              type: element.type,
+            },
+            negate: value,
+            step: index,
+          }
+          this.state.push(addToState)
+          if (index === this.tokens.length - 1) {
+            if (this.conditionalState.length !== 0) {
+              throw new Error('OP_ENDIF: Unbalanced conditional')
+            }
+          }
+          break
+        default:
+          break
+      }
+    }
+  }
 }
 
-export default initializeInterpreter
+export default LanguageExecutor
