@@ -216,6 +216,7 @@ export const opFunctions: { [key: string]: Function } = {
     }
     const a = stack.pop()
     const b = stack.pop()
+    console.log(a == b)
     return a == b
   },
   OP_EQUALVERIFY: (stack: StackType) => {

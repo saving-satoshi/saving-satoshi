@@ -36,6 +36,8 @@ const OpRunner = () => {
     setStackHistory([])
   }
 
+  console.log(stackHistory)
+
   return (
     <div className="flex flex-col px-8 text-white">
       <div className="mt-4 flex flex-col gap-1 border-b border-b-white">
@@ -101,40 +103,53 @@ const OpRunner = () => {
             </div>
           </div>
         )}
-        {stackHistory.map((stack, index) => (
-          <div key={`Overall-container${index}`} className="flex flex-col">
-            <div className="mx-auto my-[5px] w-[140px] rounded-[3px] border border-[#3DCFEF] bg-transparent px-3 py-1 font-space-mono text-[#3DCFEF]">
-              {stack.operation.value}
-            </div>
-            <hr className="my-2 -ml-2.5 border-dashed" />
-            <div
-              key={`Container${index}`}
-              className="flex h-[204px] min-w-[164px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
-            >
-              <div
-                key={index}
-                className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
-                style={{ whiteSpace: 'pre-wrap' }}
-              >
-                {stack?.stack
-                  ?.slice()
-                  .reverse()
-                  .map((item, i) => (
-                    <div
-                      key={`item${i}`}
-                      className="my-[5px] w-[140px] rounded-[3px] bg-white/15 px-3 py-1"
-                    >
-                      {JSON.stringify(
-                        !isNaN(parseFloat(item)) && isFinite(item)
-                          ? parseInt(item)
-                          : item
-                      )}
-                    </div>
-                  ))}
+        {stackHistory.map(
+          (stack, index) =>
+            stack.negate === 0 && (
+              <div key={`Overall-container${index}`} className="flex flex-col">
+                <div
+                  className={clsx(
+                    'mx-auto my-[5px] w-[140px] rounded-[3px] border bg-transparent px-3 py-1 font-space-mono',
+                    {
+                      'border-[#EF960B] text-[#EF960B]':
+                        stack.operation.tokenType === 'conditional',
+                      'border-[#3DCFEF] text-[#3DCFEF]':
+                        stack.operation.tokenType !== 'conditional',
+                    }
+                  )}
+                >
+                  {stack.operation.value}
+                </div>
+                <hr className="my-2 -ml-2.5 border-dashed" />
+                <div
+                  key={`Container${index}`}
+                  className="flex h-[204px] min-w-[164px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                >
+                  <div
+                    key={index}
+                    className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
+                    style={{ whiteSpace: 'pre-wrap' }}
+                  >
+                    {stack?.stack
+                      ?.slice()
+                      .reverse()
+                      .map((item, i) => (
+                        <div
+                          key={`item${i}`}
+                          className="my-[5px] w-[140px] rounded-[3px] bg-white/15 px-3 py-1"
+                        >
+                          {JSON.stringify(
+                            !isNaN(parseFloat(item)) && isFinite(item)
+                              ? parseInt(item)
+                              : item
+                          )}
+                        </div>
+                      ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
+            )
+        )}
       </div>
     </div>
   )

@@ -230,7 +230,7 @@ class LanguageExecutor {
               value: element.value,
               type: element.type,
             },
-            negate: value,
+            negate: currentNegate,
             step: index,
           }
           this.state.push(addToState)
@@ -239,7 +239,7 @@ class LanguageExecutor {
         case TokenTypes.BITWISE:
           if (this.negate === 0) {
             value = opFunctions[element.value](this.stack)
-            if (value) {
+            if ((value !== null) | undefined) {
               this.stack.push(value)
             }
           }
@@ -251,7 +251,7 @@ class LanguageExecutor {
               value: element.value,
               type: element.type,
             },
-            negate: value,
+            negate: currentNegate,
             step: index,
           }
           this.state.push(addToState)
@@ -272,7 +272,7 @@ class LanguageExecutor {
               value: element.value,
               type: element.type,
             },
-            negate: value,
+            negate: currentNegate,
             step: index,
           }
           this.state.push(addToState)
