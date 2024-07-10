@@ -44,6 +44,7 @@ class LanguageExecutor {
   stack: StackType
   height?: number | null
   conditionalState: Array<boolean>
+  negate: number
   // initial state
   public state: MainState = [
     {
@@ -103,6 +104,7 @@ class LanguageExecutor {
     this.stack = []
     this.height = height ?? 0
     this.conditionalState = []
+    this.negate = 0
   }
 
   execute() {
@@ -111,12 +113,15 @@ class LanguageExecutor {
       const element = this.tokens[index]
       const currentStack = this.stack
       const currentState = this.state[index - 1]
-
+      const currentNegate = this.negate
       let addToState: State
       let value: any
+
       switch (element.type) {
         case TokenTypes.CONSTANT:
-          this.stack.push(element.resolves)
+          if (this.negate === 0) {
+            this.stack.push(element.resolves)
+          }
           addToState = {
             stack: [...currentStack],
             operation: {
@@ -125,15 +130,18 @@ class LanguageExecutor {
               value: element.value,
               type: element.type,
             },
-            negate: currentState?.negate,
+            negate: currentNegate,
             step: index,
           }
           this.state.push(addToState)
           break
 
         case TokenTypes.ARITHMETIC:
-          value = opFunctions[element.value](this.stack)
-          this.stack.push(value)
+          if (this.negate === 0) {
+            value = opFunctions[element.value](this.stack)
+            this.stack.push(value)
+          }
+
           addToState = {
             stack: [...currentStack],
             operation: {
@@ -143,13 +151,16 @@ class LanguageExecutor {
               type: element.type,
             },
             step: index,
-            negate: currentState?.negate,
+            negate: currentNegate,
           }
           this.state.push(addToState)
           break
         case TokenTypes.DATA_PUSH:
-          value = opFunctions[element.value](this.stack, this.tokens, index)
-          this.stack.push(value)
+          if (this.negate === 0) {
+            value = opFunctions[element.value](this.stack, this.tokens, index)
+            this.stack.push(value)
+          }
+
           addToState = {
             stack: [...currentStack],
             operation: {
@@ -159,13 +170,16 @@ class LanguageExecutor {
               type: element.type,
             },
             step: index,
-            negate: currentState?.negate,
+            negate: currentNegate,
           }
           this.state.push(addToState)
           index++
           break
         case TokenTypes.LOCK_TIME:
-          value = opFunctions[element.value](this.stack, this.height)
+          if (this.negate === 0) {
+            value = opFunctions[element.value](this.stack, this.height)
+          }
+
           //this.stack.push(value);
           addToState = {
             stack: [...currentStack],
@@ -175,7 +189,7 @@ class LanguageExecutor {
               value: element.value,
               type: element.type,
             },
-            negate: currentState?.negate,
+            negate: currentNegate,
             step: index,
           }
           this.state.push(addToState)
@@ -184,7 +198,7 @@ class LanguageExecutor {
           value = opFunctions[element.value](
             this.stack,
             this.conditionalState,
-            currentState?.negate ?? 0
+            this.negate
           )
           addToState = {
             stack: [...currentStack],
@@ -197,15 +211,18 @@ class LanguageExecutor {
             negate: value,
             step: index,
           }
+          this.negate = value
           this.state.push(addToState)
-          if (index === this.tokens.length - 1) {
-            if (this.conditionalState.length !== 0) {
-              throw new Error('OP_ENDIF: Unbalanced conditional')
-            }
-          }
+
           break
         default:
           break
+      }
+      console.log(this.state, this.stack, 'after')
+      if (index === this.tokens.length - 1) {
+        if (this.conditionalState.length !== 0) {
+          throw new Error('SCRIPT_ERR: Unbalanced conditional')
+        }
       }
     }
   }
