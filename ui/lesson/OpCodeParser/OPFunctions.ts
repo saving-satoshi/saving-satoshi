@@ -1,12 +1,48 @@
 import { StackType, T, TokenTypes } from '.'
 
+const getKey = (keyData) => {
+  if (!keyData) {
+    throw new Error('Missing key')
+  }
+  const keyMatch = /PUBKEY\((.*?)\)/.exec(keyData)
+  if (!keyMatch || keyMatch.length !== 2) {
+    throw new Error(`Invalid public key: ${keyData}`)
+  }
+  return keyMatch[1]
+}
+
+const getSig = (sigData) => {
+  if (!sigData) {
+    throw new Error('Missing sig')
+  }
+  const sigMatch = /SIG\((.*?)\)/.exec(sigData)
+  if (!sigMatch || sigMatch.length !== 2) {
+    throw new Error(`Invalid signature: ${sigData}`)
+  }
+  return sigMatch[1]
+}
+
 export const opFunctions: { [key: string]: Function } = {
-  OP_0: () => {
-    return 0
-  },
+  OP_0: () => 0,
+  OP_FALSE: () => 0,
+  OP_1NEGATE: () => -1,
   OP_1: () => 1,
+  OP_TRUE: () => 1,
   OP_2: () => 2,
   OP_3: () => 3,
+  OP_4: () => 4,
+  OP_5: () => 5,
+  OP_6: () => 6,
+  OP_7: () => 7,
+  OP_8: () => 8,
+  OP_9: () => 9,
+  OP_10: () => 10,
+  OP_11: () => 11,
+  OP_12: () => 12,
+  OP_13: () => 13,
+  OP_14: () => 14,
+  OP_15: () => 15,
+  OP_16: () => 16,
   OP_ADD: (stack: StackType) => {
     if (!stack) return null
     if (stack?.length < 2) {
@@ -66,7 +102,6 @@ export const opFunctions: { [key: string]: Function } = {
     if (conditionalState?.length === 0) {
       throw new Error('OP_ELSE: Unbalanced conditional')
     }
-    console.log(conditionalState, 'inside OP_ELSE')
     // Flip the current state element
     conditionalState[conditionalState.length - 1] =
       !conditionalState[conditionalState.length - 1]
@@ -97,6 +132,82 @@ export const opFunctions: { [key: string]: Function } = {
     }
     return negate
   },
+  OP_HASH256: (stack: StackType) => {
+    if (!stack) return null
+    if (stack?.length < 1) {
+      throw new Error('OP_HASH256 requires 1 item on the stack')
+    }
+    const a = stack?.pop()
+    return `HASH256(${a})`
+  },
+  OP_CHECKSIG: (stack: StackType) => {
+    if (!stack) return null
+    if (stack?.length < 2) {
+      throw new Error('OP_CHECKSIG requires 2 items on the stack')
+    }
+    const key = getKey(stack.pop())
+    const sig = getSig(stack.pop())
+    return key === sig
+  },
+  OP_CHECKMULTISIG: (stack: StackType) => {
+    if (!stack) return null
+    if (stack?.length < 1) {
+      throw new Error('OP_CHECKMULTISIG requires at least 1 item on the stack')
+    }
+
+    const maybeN = stack.pop()
+    const n = parseInt(maybeN)
+    if (!n) {
+      throw new Error(`OP_CHECKMULTISIG invalid n: ${maybeN}`)
+    }
+    if (stack.length < n + 1) {
+      throw new Error(`OP_CHECKMULTISIG n=${n} not enough items on the stack`)
+    }
+
+    const keys = []
+    for (let i = 0; i < n; i++) {
+      keys.unshift(stack.pop() as never)
+    }
+
+    const maybeM = stack.pop()
+    const m = parseInt(maybeM)
+    if (!m) {
+      throw new Error(`OP_CHECKMULTISIG invalid m: ${maybeM}`)
+    }
+    if (stack?.length < m) {
+      throw new Error(`OP_CHECKMULTISIG m=${m} not enough items on the stack`)
+    }
+    if (m < 0) {
+      throw new Error(`OP_CHECKMULTISIG invalid m: ${m} < 0`)
+    }
+    if (m > n) {
+      throw new Error(`OP_CHECKMULTISIG invalid m > n: ${m} > ${n}`)
+    }
+
+    const sigs = []
+    for (let i = 0; i < m; i++) {
+      sigs.unshift(stack.pop() as never)
+    }
+
+    while (keys.length) {
+      const key = keys.pop() || ''
+      const sig = sigs[sigs.length - 1]
+      if (getKey(key) === getSig(sig)) {
+        sigs.pop()
+      }
+      if (sigs.length === 0) {
+        break
+      }
+    }
+
+    if (stack.length < 1) {
+      throw new Error(
+        'OP_CHECKMULTISIG requires one additional unused item on the stack'
+      )
+    }
+    stack.pop()
+    return sigs.length === 0
+  },
 }
 
 interface OpToken {
@@ -107,18 +218,37 @@ interface OpToken {
 
 export const OpCodeTypes = {
   OP_0: 'constant',
+  OP_FALSE: 'constant',
+  OP_1NEGATE: 'constant',
   OP_1: 'constant',
+  OP_TRUE: 'constant',
   OP_2: 'constant',
   OP_3: 'constant',
   OP_4: 'constant',
+  OP_5: 'constant',
+  OP_6: 'constant',
+  OP_7: 'constant',
+  OP_8: 'constant',
+  OP_9: 'constant',
+  OP_10: 'constant',
+  OP_11: 'constant',
+  OP_12: 'constant',
+  OP_13: 'constant',
+  OP_14: 'constant',
+  OP_15: 'constant',
+  OP_16: 'constant',
 
   OP_ADD: 'arithmetic',
+
+  OP_PUSH: 'data-push',
+
+  OP_CHECKLOCKTIMEVERIFY: 'lock-time',
 
   OP_IF: 'conditional',
   OP_ELSE: 'conditional',
   OP_ENDIF: 'conditional',
 
-  OP_PUSH: 'data-push',
-
-  OP_CHECKLOCKTIMEVERIFY: 'lock-time',
+  OP_HASH256: 'crypto',
+  OP_CHECKSIG: 'crypto',
+  OP_CHECKMULTISIG: 'crypto',
 }

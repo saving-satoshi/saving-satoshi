@@ -6,6 +6,7 @@ export enum TokenTypes {
   DATA_PUSH = 'data-push',
   LOCK_TIME = 'lock-time',
   CONDITIONAL = 'conditional',
+  CRYPTO = 'crypto',
 }
 interface Token {
   type: TokenTypes
@@ -141,7 +142,6 @@ class LanguageExecutor {
             value = opFunctions[element.value](this.stack)
             this.stack.push(value)
           }
-
           addToState = {
             stack: [...currentStack],
             operation: {
@@ -155,12 +155,12 @@ class LanguageExecutor {
           }
           this.state.push(addToState)
           break
+
         case TokenTypes.DATA_PUSH:
           if (this.negate === 0) {
             value = opFunctions[element.value](this.stack, this.tokens, index)
             this.stack.push(value)
           }
-
           addToState = {
             stack: [...currentStack],
             operation: {
@@ -175,12 +175,11 @@ class LanguageExecutor {
           this.state.push(addToState)
           index++
           break
+
         case TokenTypes.LOCK_TIME:
           if (this.negate === 0) {
             value = opFunctions[element.value](this.stack, this.height)
           }
-
-          //this.stack.push(value);
           addToState = {
             stack: [...currentStack],
             operation: {
@@ -194,6 +193,7 @@ class LanguageExecutor {
           }
           this.state.push(addToState)
           break
+
         case TokenTypes.CONDITIONAL:
           value = opFunctions[element.value](
             this.stack,
@@ -213,8 +213,26 @@ class LanguageExecutor {
           }
           this.negate = value
           this.state.push(addToState)
-
           break
+
+        case TokenTypes.CRYPTO:
+          if (this.negate === 0) {
+            value = opFunctions[element.value](this.stack)
+            this.stack.push(value)
+          }
+          addToState = {
+            stack: [...currentStack],
+            operation: {
+              tokenType: TokenTypes.Crypto,
+              resolves: element.resolves,
+              value: element.value,
+              type: element.type,
+            },
+            step: index,
+          }
+          this.state.push(addToState)
+          break
+
         default:
           break
       }
