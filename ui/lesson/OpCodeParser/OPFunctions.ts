@@ -43,6 +43,7 @@ export const opFunctions: { [key: string]: Function } = {
   OP_14: () => 14,
   OP_15: () => 15,
   OP_16: () => 16,
+  OP_NOP: () => null,
   OP_ADD: (stack: StackType) => {
     if (!stack) return null
     if (stack?.length < 2) {
@@ -208,6 +209,47 @@ export const opFunctions: { [key: string]: Function } = {
     stack.pop()
     return sigs.length === 0
   },
+  OP_EQUAL: (stack: StackType) => {
+    if (!stack) return null
+    if (stack?.length < 2) {
+      throw new Error('OP_EQUAL requires 2 items on the stack')
+    }
+    const a = stack.pop()
+    const b = stack.pop()
+    return a == b
+  },
+  OP_EQUALVERIFY: (stack: StackType) => {
+    if (!stack) return null
+    if (stack?.length < 2) {
+      throw new Error('OP_EQUALVERIFY requires 2 items on the stack')
+    }
+    const a = stack.pop()
+    const b = stack.pop()
+    if (a != b) {
+      throw new Error('OP_EQUALVERIFY: top two stack elements are not equal')
+    }
+  },
+  OP_DUP: (stack: StackType) => {
+    if (!stack) return null
+    return stack[stack?.length - 1]
+  },
+  OP_DROP: (stack: StackType) => {
+    if (!stack) return null
+    if (stack?.length < 1) {
+      throw new Error('OP_DROP requires 1 item on the stack')
+    }
+    stack?.pop()
+  },
+  OP_VERIFY: (stack: StackType) => {
+    if (!stack) return null
+    if (stack?.length < 1) {
+      throw new Error('OP_VERIFY requires 1 items on the stack')
+    }
+    const a = stack?.pop()
+    if (a != true) {
+      throw new Error('OP_VERIFY: top stack element is not true')
+    }
+  },
 }
 
 interface OpToken {
@@ -251,4 +293,12 @@ export const OpCodeTypes = {
   OP_HASH256: 'crypto',
   OP_CHECKSIG: 'crypto',
   OP_CHECKMULTISIG: 'crypto',
+
+  OP_EQUAL: 'bitwise',
+  OP_EQUALVERIFY: 'bitwise',
+
+  OP_DUP: 'stack',
+  OP_DROP: 'stack',
+  OP_VERIFY: 'stack',
+  OP_NOP: 'stack',
 }

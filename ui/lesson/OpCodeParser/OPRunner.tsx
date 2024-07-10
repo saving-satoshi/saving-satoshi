@@ -9,9 +9,7 @@ const OpRunner = () => {
   const [height, setHeight] = useState<number>(0)
   const [stackHistory, setStackHistory] = useState<MainState | []>([])
 
-  useEffect(() => {
-    console.log(stackHistory, initialStack, height)
-  }, [stackHistory, script, initialStack, height])
+  useEffect(() => {}, [stackHistory, script, initialStack, height])
 
   const handleScriptChange = (event) => {
     if (stackHistory[0] !== undefined) {
@@ -76,8 +74,7 @@ const OpRunner = () => {
           className="border-none bg-transparent text-lg focus:outline-none"
           placeholder="630001"
           type="number"
-          min="0"
-          max="851434"
+          min="1"
         />
       </div>
 
@@ -90,44 +87,50 @@ const OpRunner = () => {
       </div>
 
       <div className="mt-4 flex flex-row gap-2.5 overflow-scroll">
+        {stackHistory.length === 0 && (
+          <div className="flex flex-col">
+            <div className="flex min-h-[204px] min-w-[164px] flex-col rounded-b-[10px] bg-black bg-opacity-20 p-2.5">
+              <div
+                className="my-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
+                style={{ whiteSpace: 'pre-wrap' }}
+              >
+                <div className="break-word text-center">
+                  {'Your script \n code will be \n visualized \n here...'}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
         {stackHistory.map((stack, index) => (
           <div key={`Overall-container${index}`} className="flex flex-col">
-            <div key={`OPcode${index}`} />
+            <div className="mx-auto my-[5px] w-[140px] rounded-[3px] border border-[#3DCFEF] bg-transparent px-3 py-1 font-space-mono text-[#3DCFEF]">
+              {stack.operation.value}
+            </div>
+            <hr className="my-2 -ml-2.5 border-dashed" />
             <div
               key={`Container${index}`}
-              className="flex min-h-[204px] min-w-[164px] flex-col rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+              className="flex h-[204px] min-w-[164px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
             >
               <div
                 key={index}
-                className={clsx(
-                  'resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none',
-                  {
-                    'mt-auto': stack?.stack !== undefined,
-                    'my-auto': stack?.stack === undefined,
-                  }
-                )}
+                className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
                 style={{ whiteSpace: 'pre-wrap' }}
               >
-                {(!stack?.stack && (
-                  <div className="break-word text-center">
-                    {'Your script \n code will be \n visualized \n here...'}
-                  </div>
-                )) ||
-                  stack?.stack
-                    ?.slice()
-                    .reverse()
-                    .map((item, i) => (
-                      <div
-                        key={`item${i}`}
-                        className="my-[5px] w-[140px] rounded-[3px] bg-white/15 px-3 py-1"
-                      >
-                        {JSON.stringify(
-                          !isNaN(parseFloat(item)) && isFinite(item)
-                            ? parseInt(item)
-                            : item
-                        )}
-                      </div>
-                    ))}
+                {stack?.stack
+                  ?.slice()
+                  .reverse()
+                  .map((item, i) => (
+                    <div
+                      key={`item${i}`}
+                      className="my-[5px] w-[140px] rounded-[3px] bg-white/15 px-3 py-1"
+                    >
+                      {JSON.stringify(
+                        !isNaN(parseFloat(item)) && isFinite(item)
+                          ? parseInt(item)
+                          : item
+                      )}
+                    </div>
+                  ))}
               </div>
             </div>
           </div>

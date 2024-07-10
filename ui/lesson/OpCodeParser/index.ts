@@ -7,6 +7,8 @@ export enum TokenTypes {
   LOCK_TIME = 'lock-time',
   CONDITIONAL = 'conditional',
   CRYPTO = 'crypto',
+  BITWISE = 'bitwise',
+  STACK = 'stack',
 }
 interface Token {
   type: TokenTypes
@@ -234,10 +236,52 @@ class LanguageExecutor {
           this.state.push(addToState)
           break
 
+        case TokenTypes.BITWISE:
+          if (this.negate === 0) {
+            value = opFunctions[element.value](this.stack)
+            if (value) {
+              this.stack.push(value)
+            }
+          }
+          addToState = {
+            stack: [...currentStack],
+            operation: {
+              tokenType: TokenTypes.BITWISE,
+              resolves: element.resolves,
+              value: element.value,
+              type: element.type,
+            },
+            negate: value,
+            step: index,
+          }
+          this.state.push(addToState)
+          break
+
+        case TokenTypes.STACK:
+          if (this.negate === 0) {
+            value = opFunctions[element.value](this.stack)
+            if (value) {
+              this.stack.push(value)
+            }
+          }
+          addToState = {
+            stack: [...currentStack],
+            operation: {
+              tokenType: TokenTypes.STACK,
+              resolves: element.resolves,
+              value: element.value,
+              type: element.type,
+            },
+            negate: value,
+            step: index,
+          }
+          this.state.push(addToState)
+          break
+
         default:
           break
       }
-      console.log(this.state, this.stack, 'after')
+
       if (index === this.tokens.length - 1) {
         if (this.conditionalState.length !== 0) {
           throw new Error('SCRIPT_ERR: Unbalanced conditional')
