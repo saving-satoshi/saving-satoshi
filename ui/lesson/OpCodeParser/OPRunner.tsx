@@ -6,8 +6,8 @@ import { OpCodeTypes } from './OPFunctions'
 const OpRunner = () => {
   const [script, setScript] = useState('')
   const [initialStack, setInitialStack] = useState('')
-  const [height, setHeight] = useState('')
-  const [stackHistory, setStackHistory] = useState([MainState])
+  const [height, setHeight] = useState<number>(0)
+  const [stackHistory, setStackHistory] = useState<MainState | []>([])
 
   useEffect(() => {
     console.log(stackHistory, initialStack, height)
@@ -15,7 +15,7 @@ const OpRunner = () => {
 
   const handleScriptChange = (event) => {
     if (stackHistory[0] !== undefined) {
-      setStackHistory([MainState])
+      setStackHistory([])
     }
     setScript(event.target.value)
   }
@@ -35,7 +35,7 @@ const OpRunner = () => {
   }
 
   const handleReset = () => {
-    setStackHistory([MainState])
+    setStackHistory([])
   }
 
   return (
