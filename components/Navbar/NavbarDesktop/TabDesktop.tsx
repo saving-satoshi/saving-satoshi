@@ -48,7 +48,6 @@ export default function Tab({
   const isRouteLesson = pathData.length === 4
   const [isLoading] = useAtom(isLoadingProgressAtom)
   const courseProgress = useAtomValue(syncedCourseProgressAtom)
-  console.log(challengeLessons)
   const isLessonUnlocked = useMemo(() => {
     const currentChapter =
       courseProgress.chapters[Number(slug.split('-')[1]) - 1]
