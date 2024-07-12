@@ -897,9 +897,9 @@ const translations = {
         discrete_log_paragraph:
           'A mathematical system where you can, for example, multiply but cannot divide. A simple metaphor for this is looking at a clock. Three hours past 11 o’clock is 2 o’clock. So we could say “11+3=2”. However if wanted to perform “2-x=11” and solve for x, you would have infinite possible answers (3, 15, 27, 39...). More on <Link href="https://en.wikipedia.org/wiki/Discrete_logarithm" className="underline">wikipedia</Link>.',
         tip_one:
-          '<span className="font-bold">Calculate the public key:</span> Multiplication with elliptic curve points is not the same as the kind of multiplication you are used to, the one with regular numbers. So how do you perform multiplication? Notice that the generator point, <span className="p-1 font-mono bg-[#00000033] m-1">G</span> is of the type <span className="p-1 font-mono bg-[#00000033] m-1">secp256k1.GE</span>. Have a look at that class to see what methods you can invoke on it.',
+          'Multiplication with elliptic curve points is not the same as the kind of multiplication you are used to, the one with regular numbers. So how do you perform multiplication? Notice that the generator point, <span className="p-1 font-mono bg-[#00000033] m-1">G</span> is of the type <span className="p-1 font-mono bg-[#00000033] m-1">secp256k1.GE</span>. Have a look at that class to see what methods you can invoke on it.',
         tip_two:
-          '<span className="font-bold">Calculate the public key:</span> While the private key is accepted in hex format, it needs to be converted to a number (BigInt if you’re using JS) before multiplying with the generator point.',
+          'While the private key is accepted in hex format, it needs to be converted to a number (BigInt if you’re using JS) before multiplying with the generator point.',
       },
       public_key_four: {
         y_coordinate_compression_heading: 'Public Key Compression',
@@ -912,7 +912,7 @@ const translations = {
         hash_algo_paragraph:
           'Hash functions digest any amount of any kind of data and always return a result of the same size. For SHA256, it’s 32 bytes. For RIPEMD-160, it’s 20 bytes. The output is deterministic (always the same output for the same input) but otherwise, indistinguishable from random. Hash functions effectively reduce data to a small consistent fingerprint.',
         tip_one:
-          'When calculating the SHA-256 hash you will need to make sure to hash your compressed key as bytes not hex.',
+          'When calculating the SHA-256 hash you will need to make sure to hash your compressed key as bytes not hex. If you are using JavaScript, this will require converting the hex string to a buffer.',
         tip_two:
           'Make sure you are doing the hashing algorithms in the correct order!',
       },
@@ -1003,7 +1003,7 @@ const translations = {
     derive_message_five: {
       nav_title: 'Verifiying the signature next',
       paragraph_one:
-        'So Satoshi created a transaction that sent 50 BTC to his public key. Then he used his private key to create a signature that transferred 10 of those BTC to Hal Finney’s public key.',
+        'So Satoshi created a transaction (in block #9) that sent 50 BTC to his public key. Then he used his private key to create a signature (in block #170) that transferred 10 of those BTC to Hal Finney’s public key.',
       paragraph_two:
         'Next we need to learn how to verify a signature. But something is still missing... what is the message Satoshi signed to authorize the transaction for Hal?',
     },
@@ -1013,7 +1013,7 @@ const translations = {
       paragraph_one:
         'It should be clear by just looking at the block explorer web page that a Bitcoin transaction has many different parts. Some parts are just small numbers and some parts are larger chunks of data. The Bitcoin protocol has a very specific algorithm for creating messages from transactions, so those messages can be signed by private keys.',
       paragraph_two:
-        'We will summarize the process outlined here. It conveniently uses <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">this exact same transaction</Link> as an example.',
+        'We will summarize the process outlined <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG" target="_blank" className="underline">here</Link>. It conveniently uses <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">this exact same transaction from block #170</Link> as an example.',
       paragraph_three:
         'To begin, we need the raw bytes that make up the complete transaction. <Link href="https://blockstream.info/api/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16/hex" target="_blank" className="underline">Our block explorer</Link> can help with this. Use the "hex" API endpoint and paste the entire blob of data.',
       input_challenge_label: 'Paste the transaction blob',
@@ -1107,7 +1107,7 @@ const translations = {
       paragraph_two:
         'The ECDSA signature verification algorithm is explained <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">here</Link> and <Link className="underline" href="https://www.secg.org/sec1-v2.pdf#page=52" target="_blank">here</Link>.',
       paragraph_three:
-        'We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green p-1 font-mono bg-[#00000033] m-1">verify()</span> that should only return True if everything is valid!',
+        'We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">verify()</span> that should only return True if everything is valid!',
       paragraph_four:
         "We know Satoshi's signature is valid, it has been checked by every Bitcoin full node since 2010! If your program does not return True something is wrong.",
       python: {
@@ -1118,7 +1118,7 @@ const translations = {
       },
       javascript: {
         paragraph_five_part_one:
-          'We have provided a helper function <span className="text-green p-1 font-mono bg-[#00000033] m-1">invert()</span>',
+          'We have provided a helper function <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">invert()</span>',
         paragraph_five_part_two:
           'which you will need in lieu of a JavaScript native modular exponentiation function.',
       },
@@ -1136,7 +1136,7 @@ const translations = {
         highlighted: 'double SHA-256 hash',
         question: 'Why do we double hash in Bitcoin?',
         post_link:
-          'that blob of data, and convert that hash into an integer. Complete the function encode_message(). It should return a 32-byte hex value.',
+          'that blob of data, and convert that hash into an integer. Complete the function <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">encode_message()</span>. It should return a 32-byte hex value.',
       },
       success: 'Nicely Done',
     },
@@ -1148,7 +1148,7 @@ const translations = {
       javascript: {
         paragraph_two: {
           post_link:
-            'Complete the function <span className="text-green">decode_sig()</span>.',
+            'Complete the function <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">decode_sig()</span>.',
           return:
             'It should return an array with the [r, s] values as BigInts.',
         },
@@ -1165,7 +1165,7 @@ const translations = {
       title: 'Validate the signature',
       nav_title: 'See if Vanderpoole was lying',
       heading: 'So, is Vanderpoole a liar?!',
-      paragraph_one: `Let's gather all the necessary components for the program and verify if Vanderpoole's signature actually originated from the private key linked to Satoshi's public key! Please fill in the missing parameters needed to execute the <span className="text-green"> verify()</span> function using the provided code.`,
+      paragraph_one: `Let's gather all the necessary components for the program and verify if Vanderpoole's signature actually originated from the private key linked to Satoshi's public key! Please fill in the missing parameters needed to execute the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base"> verify()</span> function using the provided code.`,
       paragraph_two:
         'Then we can run the program to see if Vanderpoole was lying. Drumroll please...',
       success:

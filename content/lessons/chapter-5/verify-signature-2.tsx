@@ -7,7 +7,7 @@ import { getLanguageString } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { currentLanguageAtom } from 'state/state'
 import { EditorConfig } from 'types'
-import { LessonInfo, ScriptingChallenge, Text } from 'ui'
+import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
 
 export const metadata = {
   title: 'chapter_five.verify_signature_two.title',
@@ -113,9 +113,7 @@ export default function VerifySignature2({ lang }) {
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>
-        <Text className="font-nunito text-xl text-white">
-          {t('chapter_five.verify_signature_two.heading')}
-        </Text>
+        <Title>{t('chapter_five.verify_signature_two.heading')}</Title>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t(`chapter_five.verify_signature_two.paragraph_one`)}
         </Text>
