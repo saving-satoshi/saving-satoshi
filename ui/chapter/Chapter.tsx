@@ -40,6 +40,36 @@ export default function Chapter({ children, metadata, lang }) {
 
   const currentLesson = useAtomValue(currentLessonComputedAtom)
   const currentChapter = useAtomValue(currentChapterAtom)
+  const currentLessonInChapter = useMemo(() => {
+    const chapter = courseProgress.chapters.find(
+      (ch) => ch.id === metadata.position + 1
+    )
+
+    if (!chapter) {
+      return null // Chapter not found
+    }
+
+    if (chapter.hasDifficulty) {
+      const difficultyLessons = chapter.difficulties.find(
+        (d) => d.level === chapter.selectedDifficulty
+      )
+      if (difficultyLessons) {
+        const lesson = difficultyLessons.lessons.find(
+          (lesson) => !lesson.completed
+        )
+        if (lesson) {
+          return lesson
+        }
+      }
+    } else {
+      const lesson = chapter.lessons.find((lesson) => !lesson.completed)
+      if (lesson) {
+        return lesson
+      }
+    }
+
+    return null // All lessons are completed or no lessons found
+  }, [metadata.position, courseProgress])
   const isUnlocked = useMemo(
     () => metadata.position + 1 <= currentChapter,
     [metadata.position, currentChapter]
@@ -176,7 +206,7 @@ export default function Chapter({ children, metadata, lang }) {
                       href={
                         (isChapterInProgressValue &&
                           `${
-                            routes.chaptersUrl + currentLesson?.path
+                            routes.chaptersUrl + currentLessonInChapter?.path
                           }${queryParams}`) ||
                         `${routes.chaptersUrl}/${chapter.metadata.slug}/${chapter.metadata.intros[0]}${queryParams}`
                       }

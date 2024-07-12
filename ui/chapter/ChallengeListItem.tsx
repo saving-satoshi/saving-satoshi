@@ -23,10 +23,12 @@ export default function ChallengeItem({
   const pathName = usePathname() || ''
   const courseProgress = useAtomValue(syncedCourseProgressAtom)
   const isLessonUnlocked = isLessonUnlockedUsingLessonName(
+    chapterId,
     lessonId,
     courseProgress
   )
   const isLessonCompleted = isLessonCompletedUsingLessonName(
+    chapterId,
     lessonId,
     courseProgress
   )

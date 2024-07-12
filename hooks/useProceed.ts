@@ -3,9 +3,11 @@
 import { useRouter, usePathname } from 'next/navigation'
 import { useLocalizedRoutes, usePathData } from 'hooks'
 import useEnvironment from './useEnvironment'
-import { useAtomValue, useSetAtom } from 'jotai'
+import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import {
-  getNextLessonPathUsingChapterIdAndLessonName,
+  getLessonKey,
+  getNextLessonUsingChapterIdAndLessonName,
+  markLessonAsCompleteAtom,
   nextLessonPathAtom,
   progressToNextLessonAtom,
   syncedCourseProgressAtom,
@@ -17,23 +19,30 @@ export default function useProceed() {
   const { isDevelopment } = useEnvironment()
   const routes = useLocalizedRoutes()
   const nextLessonPath = useAtomValue(nextLessonPathAtom)
-  const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const [courseProgress, setCourseProgress] = useAtom(syncedCourseProgressAtom)
   const progressToNextLesson = useSetAtom(progressToNextLessonAtom)
   const queryParams = isDevelopment ? '?dev=true' : ''
-  const nextLessonPathUsingCurrentRoute =
-    getNextLessonPathUsingChapterIdAndLessonName(
-      chapterId,
-      lessonName,
-      courseProgress
-    )
+  const nextLessonUsingCurrentRoute = getNextLessonUsingChapterIdAndLessonName(
+    chapterId,
+    lessonName,
+    courseProgress
+  )
+  const currentLessonId = getLessonKey(chapterId, lessonName)
+  const markLessonAsComplete = useSetAtom(markLessonAsCompleteAtom)
+
   const Proceed = () => {
+    console.log('Proceeding to next lesson')
     let route
-    if (isDevelopment) {
-      route = routes.chaptersUrl + nextLessonPathUsingCurrentRoute + queryParams
+    console.log('nextLessonUsingCurrentRoute', nextLessonUsingCurrentRoute)
+    console.log('development', isDevelopment)
+    if (isDevelopment && nextLessonUsingCurrentRoute) {
+      route =
+        routes.chaptersUrl + nextLessonUsingCurrentRoute?.path + queryParams
+      markLessonAsComplete(currentLessonId)
     } else {
       route = routes.chaptersUrl + nextLessonPath + queryParams
+      progressToNextLesson()
     }
-    progressToNextLesson()
     router.push(route, { scroll: true })
   }
 

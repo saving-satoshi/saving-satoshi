@@ -15,8 +15,11 @@ import {
   isLessonCompletedUsingLessonName,
   isLessonUnlockedUsingLessonName,
   isLoadingProgressAtom,
+  getLessonKey,
+  isLessonUnlockedUsingId,
 } from 'state/progressState'
 import useEnvironment from 'hooks/useEnvironment'
+import { useMemo } from 'react'
 
 export default function Tab({
   index,
@@ -29,9 +32,9 @@ export default function Tab({
   part?: 'intro' | 'challenge' | 'outro'
   params: any
   challenge: { lessonId: string; title: string }
-  challengeLessons: any
+  challengeLessons: [any]
 }) {
-  const { slug, lesson: lessonId } = params
+  const { slug, lesson: lessonId }: { slug: string; lesson: string } = params
 
   const theme = themeSelector(lessons, lessonId, chapters, slug)
 
@@ -45,14 +48,44 @@ export default function Tab({
   const isRouteLesson = pathData.length === 4
   const [isLoading] = useAtom(isLoadingProgressAtom)
   const courseProgress = useAtomValue(syncedCourseProgressAtom)
-  const isLessonUnlocked = isLessonUnlockedUsingLessonName(
-    challenge.lessonId,
-    courseProgress
-  )
-  const isLessonCompleted = isLessonCompletedUsingLessonName(
-    challenge.lessonId,
-    courseProgress
-  )
+  console.log(challengeLessons)
+  const isLessonUnlocked = useMemo(() => {
+    const currentChapter =
+      courseProgress.chapters[Number(slug.split('-')[1]) - 1]
+    if (currentChapter.hasDifficulty) {
+      const difficulty = currentChapter.difficulties.find(
+        (d) => d.level === currentChapter.selectedDifficulty
+      )
+      if (!difficulty) return false
+      const lessonsWithDifficulty = difficulty?.lessons
+      return lessonsWithDifficulty[index].completed
+    } else {
+      return currentChapter.lessons[index].completed
+    }
+  }, [courseProgress, slug, index])
+
+  isLessonUnlockedUsingId(getLessonKey(slug, lessonId), courseProgress)
+
+  const challengeLock = useMemo(() => {
+    if (isDevelopment) {
+      // always unlock in development
+      return false
+    }
+    if (
+      challengeLessons.every((challenge) =>
+        challenge.lessonId.includes('intro')
+      )
+    ) {
+      // intros should always be unlocked
+      return false
+    }
+    // check if the first lesson in the challenge is unlocked
+    return !isLessonUnlockedUsingId(
+      getLessonKey(slug, challengeLessons[0].lessonId),
+      courseProgress
+    )
+  }, [challengeLessons, courseProgress, slug, isDevelopment])
+
   const pnLessonId = isRouteLesson
     ? pathData.pop()
     : pathData[pathData.length - 2]
@@ -70,13 +103,9 @@ export default function Tab({
   const currentIndex = chapters[slug].metadata.challenges.indexOf(
     challengeId + '-1'
   )
-  const challengeLock =
-    currentIndex < index - 1 &&
-    !isLessonCompleted &&
-    pnLessonId.split('-')[0] !== 'outro'
 
   const groupCompleted = challengeLessons.every((challenge) =>
-    isLessonCompletedUsingLessonName(challenge.lessonId, courseProgress)
+    isLessonCompletedUsingLessonName(slug, challenge.lessonId, courseProgress)
   )
 
   return (
@@ -99,13 +128,14 @@ export default function Tab({
               const isLessonUnlock =
                 isDevelopment ||
                 (!isLoading &&
-                  isLessonUnlockedUsingLessonName(
-                    challenge.lessonId,
+                  isLessonUnlockedUsingId(
+                    getLessonKey(slug, challenge.lessonId),
                     courseProgress
                   ))
               const isPageComplete =
                 !isLoading &&
                 isLessonCompletedUsingLessonName(
+                  slug,
                   challenge.lessonId,
                   courseProgress
                 )
@@ -186,6 +216,7 @@ export default function Tab({
               {
                 hidden:
                   isLessonCompletedUsingLessonName(
+                    slug,
                     challenge.lessonId,
                     courseProgress
                   ) && currentIndex !== index - 1,
@@ -203,6 +234,7 @@ export default function Tab({
                   !isLoading &&
                   !isTabUnlocked &&
                   !isLessonUnlockedUsingLessonName(
+                    slug,
                     challenge.lessonId,
                     courseProgress
                   ),

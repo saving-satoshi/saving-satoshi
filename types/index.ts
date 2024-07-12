@@ -114,3 +114,5 @@ export type CourseProgress = {
   currentChapter: number
   currentLesson: string
 }
+
+export type SetAtom<Args extends unknown[], Result> = (...args: Args) => Result

@@ -3,7 +3,7 @@ import { getProgress, setProgress } from 'api/progress'
 import { lessons } from 'content'
 import { atom } from 'jotai'
 import { atomEffect } from 'jotai-effect'
-import { CourseProgress, LessonInState } from 'types'
+import { CourseProgress, LessonInState, SetAtom } from 'types'
 import { accountAtom, DifficultyLevel, isAuthLoadingAtom } from './state'
 
 export const isLoadingProgressAtom = atom<boolean>(true)
@@ -363,7 +363,7 @@ const syncCourseProgressEffectAtom = atomEffect((get, set) => {
   const { account, courseProgress, isAuthLoading, isProgressLoaded } = get(
     combinedProgressAndAccountAtom
   )
-  if (!isAuthLoading || !isProgressLoaded) return
+  if (isAuthLoading || !isProgressLoaded) return
   if (account) {
     setProgress(courseProgress)
   } else {
@@ -776,11 +776,12 @@ export const isLessonCompletedUsingId = (
 }
 
 export const isLessonCompletedUsingLessonName = (
+  chapterId: string,
   lessonName: string,
   courseProgress: CourseProgress
 ): boolean => {
   return isLessonCompletedUsingId(
-    getLessonKey(`chapter-${courseProgress.currentChapter}`, lessonName),
+    getLessonKey(chapterId, lessonName),
     courseProgress
   )
 }
@@ -823,6 +824,7 @@ export const isLessonUnlockedUsingId = (
             return previousChapter.completed
           }
         } else if (lessons[i - 1].completed) {
+          console.log('checking previous lesson: ', lessons[i - 1])
           return true
         }
         return false
@@ -834,20 +836,21 @@ export const isLessonUnlockedUsingId = (
 }
 
 export const isLessonUnlockedUsingLessonName = (
+  chapterId: string,
   lessonName: string,
   courseProgress: CourseProgress
 ): boolean => {
   return isLessonUnlockedUsingId(
-    getLessonKey(`chapter-${courseProgress.currentChapter}`, lessonName),
+    getLessonKey(chapterId, lessonName),
     courseProgress
   )
 }
 
-export const getNextLessonPathUsingChapterIdAndLessonName = (
+export const getNextLessonUsingChapterIdAndLessonName = (
   chapterId: string,
   lessonName: string,
   courseProgress: CourseProgress
-): string | null => {
+): LessonInState | null => {
   // Find the current chapter based on chapterId
   const currentChapter = courseProgress.chapters.find(
     (chapter) => `chapter-${chapter.id}` === chapterId
@@ -884,7 +887,7 @@ export const getNextLessonPathUsingChapterIdAndLessonName = (
 
   // Find the next lesson in the same chapter
   if (currentLessonIndex < lessons.length - 1) {
-    return lessons[currentLessonIndex + 1].path
+    return lessons[currentLessonIndex + 1]
   }
 
   // If no more lessons in the current chapter, find the first lesson of the next chapter
@@ -912,10 +915,93 @@ export const getNextLessonPathUsingChapterIdAndLessonName = (
     }
 
     if (nextLessons.length > 0) {
-      return nextLessons[0].path
+      return nextLessons[0]
     }
   }
 
   // If there are no more lessons, return null
   return null
 }
+
+export const markLessonAsCompleteAtom = atom(
+  null,
+  (get, set, lessonId: string) => {
+    console.log('Marking lesson as complete', lessonId)
+    const courseProgress = get(syncedCourseProgressAtom)
+    let updatedChapters = [...courseProgress.chapters]
+    let nextLesson: LessonInState | null | undefined = null
+    let nextChapter = courseProgress.currentChapter
+
+    for (let i = 0; i < updatedChapters.length; i++) {
+      const chapter = updatedChapters[i]
+      let lessons: LessonInState[] = []
+      let updatedLessons: LessonInState[] = []
+
+      if (chapter.hasDifficulty) {
+        const difficulty = chapter.difficulties?.find(
+          (d) => d.level === chapter.selectedDifficulty
+        )
+        if (difficulty) {
+          lessons = difficulty.lessons
+          updatedLessons = lessons.map((lesson) =>
+            lesson.id === lessonId ? { ...lesson, completed: true } : lesson
+          )
+          updatedChapters[i] = {
+            ...chapter,
+            difficulties: chapter.difficulties.map((d) =>
+              d.level === chapter.selectedDifficulty
+                ? { ...d, lessons: updatedLessons }
+                : d
+            ),
+          }
+        }
+      } else {
+        lessons = chapter.lessons || []
+        updatedLessons = lessons.map((lesson) =>
+          lesson.id === lessonId ? { ...lesson, completed: true } : lesson
+        )
+        updatedChapters[i] = { ...chapter, lessons: updatedLessons }
+      }
+
+      // Find the next incomplete lesson
+      if (!nextLesson) {
+        nextLesson = updatedLessons.find((lesson) => !lesson.completed)
+        if (nextLesson) {
+          nextChapter = chapter.id
+        }
+      }
+    }
+
+    // If no next lesson is found in the current chapter, look for the next chapter
+    if (!nextLesson) {
+      for (let i = nextChapter; i < updatedChapters.length; i++) {
+        const chapter = updatedChapters[i]
+        let lessons: LessonInState[] = []
+
+        if (chapter.hasDifficulty) {
+          const difficulty = chapter.difficulties?.find(
+            (d) => d.level === chapter.selectedDifficulty
+          )
+          if (difficulty) {
+            lessons = difficulty.lessons
+          }
+        } else {
+          lessons = chapter.lessons || []
+        }
+
+        nextLesson = lessons.find((lesson) => !lesson.completed)
+        if (nextLesson) {
+          nextChapter = chapter.id
+          break
+        }
+      }
+    }
+
+    set(syncedCourseProgressAtom, {
+      ...courseProgress,
+      chapters: updatedChapters,
+      currentChapter: nextChapter,
+      currentLesson: nextLesson ? nextLesson.id : courseProgress.currentLesson,
+    })
+  }
+)

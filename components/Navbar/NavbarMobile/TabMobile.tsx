@@ -48,6 +48,7 @@ export default function Tab({
   const isRouteLesson = pathData.length === 4
   const isPageCompleted = lesson?.completed
   const isLessonUnlocked = isLessonUnlockedUsingLessonName(
+    slug,
     challenge.lessonId,
     courseProgress
   )

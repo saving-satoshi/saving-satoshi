@@ -48,6 +48,7 @@ export default function Page({ params }) {
   const nextLesson = useAtomValue(nextLessonAtom)
   const courseProgress = useAtomValue(syncedCourseProgressAtom)
   const isLessonUnlocked = isLessonUnlockedUsingLessonName(
+    chapterId,
     params.lesson,
     courseProgress
   )

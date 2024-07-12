@@ -1,6 +1,7 @@
 import { useSetAtom } from 'jotai'
 import { accountAtom, isAuthLoadingAtom } from './state'
 import { login, getSession, logout } from 'api/auth'
+import { SAVING_SATOSHI_TOKEN } from 'config/keys'
 
 export const useAuthFunctions = () => {
   const setAccount = useSetAtom(accountAtom)
@@ -35,10 +36,12 @@ export const useAuthFunctions = () => {
 
   const check = async () => {
     try {
-      setAuthIsLoading(true)
+      if (window.localStorage.getItem(SAVING_SATOSHI_TOKEN)) {
+        setAuthIsLoading(true)
 
-      const account = await getSession()
-      setAccount(account)
+        const account = await getSession()
+        setAccount(account)
+      }
     } catch (ex) {
       console.error(ex)
     } finally {
