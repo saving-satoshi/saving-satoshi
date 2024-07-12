@@ -931,11 +931,20 @@ export const getNextLessonUsingChapterIdAndLessonName = (
 export const markLessonAsCompleteAtom = atom(
   null,
   (get, set, lessonId: string) => {
-    console.log('Marking lesson as complete', lessonId)
     const courseProgress = get(syncedCourseProgressAtom)
     let updatedChapters = [...courseProgress.chapters]
     let nextLesson: LessonInState | null | undefined = null
     let nextChapter = courseProgress.currentChapter
+    let currentChapter = updatedChapters.find((chapter) => {
+      if (chapter.hasDifficulty) {
+        const difficulty = chapter.difficulties?.find(
+          (d) => d.level === chapter.selectedDifficulty
+        )
+        return difficulty?.lessons.find((lesson) => lesson.id === lessonId)
+      } else {
+        return chapter.lessons?.find((lesson) => lesson.id === lessonId)
+      }
+    })
 
     for (let i = 0; i < updatedChapters.length; i++) {
       const chapter = updatedChapters[i]
@@ -979,6 +988,14 @@ export const markLessonAsCompleteAtom = atom(
 
     // If no next lesson is found in the current chapter, look for the next chapter
     if (!nextLesson) {
+      // mark current chapter as complete
+      if (currentChapter) {
+        updatedChapters = updatedChapters.map((chapter) =>
+          chapter.id === currentChapter?.id
+            ? { ...chapter, completed: true }
+            : chapter
+        )
+      }
       for (let i = nextChapter; i < updatedChapters.length; i++) {
         const chapter = updatedChapters[i]
         let lessons: LessonInState[] = []

@@ -31,10 +31,7 @@ export default function useProceed() {
   const markLessonAsComplete = useSetAtom(markLessonAsCompleteAtom)
 
   const Proceed = () => {
-    console.log('Proceeding to next lesson')
     let route
-    console.log('nextLessonUsingCurrentRoute', nextLessonUsingCurrentRoute)
-    console.log('development', isDevelopment)
     if (isDevelopment && nextLessonUsingCurrentRoute) {
       route =
         routes.chaptersUrl + nextLessonUsingCurrentRoute?.path + queryParams

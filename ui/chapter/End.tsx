@@ -5,9 +5,10 @@ import { lessons } from 'content'
 import { useEffect, useState } from 'react'
 import DesktopEnd from './DesktopEnd'
 import MobileEnd from './MobileEnd'
-import { useAtom } from 'jotai'
+import { useAtom, useSetAtom } from 'jotai'
 import { accountAtom, Modal } from 'state/state'
 import { useModalFunctions } from 'state/ModalFunctions'
+import { getLessonKey, markLessonAsCompleteAtom } from 'state/progressState'
 
 declare global {
   interface Window {
@@ -38,6 +39,7 @@ export default function End({
   const [account] = useAtom(accountAtom)
   const saveAndReturn = useSaveAndReturn()
   const { chapterId, lessonId } = usePathData()
+  const markLessonAsComplete = useSetAtom(markLessonAsCompleteAtom)
 
   const [isDesktop, setDesktop] = useState(
     typeof window !== 'undefined' && window.innerWidth > 768
@@ -62,6 +64,7 @@ export default function End({
     } else {
       saveAndReturn()
     }
+    markLessonAsComplete(getLessonKey(chapterId, lessonId))
   }
 
   return (

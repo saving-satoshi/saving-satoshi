@@ -17,6 +17,7 @@ import {
   isLessonUnlockedUsingLessonName,
   isLoadingProgressAtom,
   nextLessonAtom,
+  getLessonKey,
 } from 'state/progressState'
 
 const Portal = ({ children, id }) => {
@@ -44,7 +45,7 @@ export default function Page({ params }) {
   const [isAccountLoading] = useAtom(isAuthLoadingAtom)
   const isProgressLoading = useAtomValue(isLoadingProgressAtom)
   const currentLesson = useAtomValue(currentLessonComputedAtom)
-  const currentLessonKey = useAtomValue(currentLessonAtom)
+  const currentLessonKey = getLessonKey(params.slug, params.lesson)
   const nextLesson = useAtomValue(nextLessonAtom)
   const courseProgress = useAtomValue(syncedCourseProgressAtom)
   const isLessonUnlocked = isLessonUnlockedUsingLessonName(
