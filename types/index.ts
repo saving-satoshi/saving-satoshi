@@ -1,4 +1,4 @@
-import { DifficultyLevel } from 'state/state'
+import { DifficultyLevel } from 'state/progressState'
 import { Base64String } from './classes'
 
 export * from './enums'

@@ -4,7 +4,13 @@ import { lessons } from 'content'
 import { atom } from 'jotai'
 import { atomEffect } from 'jotai-effect'
 import { CourseProgress, LessonInState, SetAtom } from 'types'
-import { accountAtom, DifficultyLevel, isAuthLoadingAtom } from './state'
+import { accountAtom, isAuthLoadingAtom } from './state'
+
+export enum DifficultyLevel {
+  NORMAL = 'normal',
+  HARD = 'hard',
+  NOT_SELECTED = 'not_selected',
+}
 
 export const isLoadingProgressAtom = atom<boolean>(true)
 
