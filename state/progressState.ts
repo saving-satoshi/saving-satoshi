@@ -830,7 +830,6 @@ export const isLessonUnlockedUsingId = (
             return previousChapter.completed
           }
         } else if (lessons[i - 1].completed) {
-          console.log('checking previous lesson: ', lessons[i - 1])
           return true
         }
         return false
