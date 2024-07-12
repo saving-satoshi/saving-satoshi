@@ -25,7 +25,7 @@ export default function NavbarDesktop({ params }) {
 
   const theme = navbarThemeSelector(lessons, lessonId, chapters, slug)
 
-  const chapterResources = resources[chapterId]
+  const chapterResources = resources[slug]
 
   const Resources = chapterResources?.default[lessonId]?.default
 
