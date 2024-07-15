@@ -27,10 +27,6 @@ export default function ChallengeItem({
     lessonId,
     courseProgress
   )
-  console.log(
-    `chapterId: ${chapterId}, lessonId: ${lessonId}, isLessonUnlocked: ${isLessonUnlocked}`
-  )
-  console.log(`courseProgress: ${courseProgress.chapters[0].completed}`)
   const isLessonCompleted = isLessonCompletedUsingLessonName(
     chapterId,
     lessonId,

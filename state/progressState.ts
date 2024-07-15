@@ -723,13 +723,8 @@ export const nextLessonPathAtom = atom((get) => {
 export const loadProgressAtom = atom(null, async (get, set) => {
   const account = get(accountAtom)
   const isLoadingAccount = get(isAuthLoadingAtom)
-  const isProgressLoaded = get(isProgressLoadedAtom)
-  console.log(
-    `Account: ${account}, isLoadingAccount: ${isLoadingAccount}, isProgressLoaded: ${isProgressLoaded}`
-  )
   if (isLoadingAccount) return
   if (account) {
-    console.log('Loading progress from server')
     set(isLoadingProgressAtom, true)
     const progressFromServer = await getProgress()
     set(syncedCourseProgressAtom, progressFromServer)
