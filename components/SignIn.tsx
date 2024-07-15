@@ -6,9 +6,9 @@ import { useAuthFunctions } from 'state/AuthFunctions'
 import { accountAtom, Modal } from 'state/state'
 import { useModalFunctions } from 'state/ModalFunctions'
 import Avatar from './Avatar'
-import { useAtom, useAtomValue } from 'jotai'
+import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { useRouter } from 'next/navigation'
-import { currentLessonPathAtom } from 'state/progressState'
+import { currentLessonPathAtom, loadProgressAtom } from 'state/progressState'
 
 export default function SignIn({
   lang,
@@ -31,6 +31,7 @@ export default function SignIn({
   const [hasAccount, setHasAccount] = useState<boolean>()
   const [isPending, startTransition] = useTransition()
   const currentLessonPath = useAtomValue(currentLessonPathAtom)
+  const loadProgress = useSetAtom(loadProgressAtom)
 
   const handleConfirm = async () => {
     try {
@@ -39,12 +40,17 @@ export default function SignIn({
       const loginSuccess = await attemptLogin(privateKey.toLowerCase())
       if (loginSuccess) {
         setPrivateKey('')
+        console.log('loading progress')
+        await loadProgress()
+        setHasAccount(true)
+      } else {
+        // TODO: I just realised this component is not handling the user entering the wrong private key
+        setHasAccount(false)
       }
     } catch (ex) {
       console.error(ex)
     } finally {
       setLoading(false)
-      setHasAccount(true)
     }
   }
 

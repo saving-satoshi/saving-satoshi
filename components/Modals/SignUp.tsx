@@ -10,6 +10,8 @@ import { register } from 'api/auth'
 import Modal from './Modal'
 import { Text, ToggleSwitch } from 'ui'
 import { useAuthFunctions } from 'state/AuthFunctions'
+import { useSetAtom } from 'jotai'
+import { loadProgressAtom } from 'state/progressState'
 
 const avatars = [
   'white spacesuit',
@@ -31,6 +33,7 @@ export default function SignupModal({ onClose, state }) {
   const [copyAcknowledged, setCopyAcknowledged] = useState<boolean>(false)
   const [privateKey, setPrivateKey] = useState<string | undefined>(undefined)
   const [copied, setCopied] = useState(false)
+  const loadProgress = useSetAtom(loadProgressAtom)
 
   const copy = (text) => {
     navigator.clipboard.writeText(text)
@@ -50,6 +53,7 @@ export default function SignupModal({ onClose, state }) {
       if (privateKey) {
         await register(privateKey, `/assets/avatars/${avatar}.png`)
         await attemptLogin(privateKey)
+        await loadProgress()
         onClose()
         onSignUpComplete && saveAndReturn()
       }

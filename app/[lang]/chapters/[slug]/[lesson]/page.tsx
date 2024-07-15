@@ -12,7 +12,6 @@ import { useAtom, useAtomValue } from 'jotai'
 import { accountAtom, isAuthLoadingAtom } from 'state/state'
 import {
   syncedCourseProgressAtom,
-  currentLessonAtom,
   currentLessonComputedAtom,
   isLessonUnlockedUsingLessonName,
   isLoadingProgressAtom,

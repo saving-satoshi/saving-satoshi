@@ -2,11 +2,12 @@ import { useSetAtom } from 'jotai'
 import { accountAtom, isAuthLoadingAtom } from './state'
 import { login, getSession, logout } from 'api/auth'
 import { SAVING_SATOSHI_TOKEN } from 'config/keys'
+import { defaultProgressState, syncedCourseProgressAtom } from './progressState'
 
 export const useAuthFunctions = () => {
   const setAccount = useSetAtom(accountAtom)
   const setAuthIsLoading = useSetAtom(isAuthLoadingAtom)
-
+  const setCourseProgress = useSetAtom(syncedCourseProgressAtom)
   const attemptLogin = async (privateKey: string) => {
     try {
       setAuthIsLoading(true)
@@ -31,6 +32,8 @@ export const useAuthFunctions = () => {
   const attemptLogout = async () => {
     await logout()
     localStorage.clear()
+    localStorage.removeItem('SavingSatoshiProgress')
+    setCourseProgress(defaultProgressState)
     setAccount(undefined)
   }
 

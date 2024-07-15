@@ -1,9 +1,6 @@
-'use client'
-
 import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
 import { Tooltip } from 'ui'
 import Icon from 'shared/Icon'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
@@ -27,14 +24,8 @@ export default function Tab({
   params,
   challenge,
   challengeLessons,
-}: {
-  index: number
-  part?: 'intro' | 'challenge' | 'outro'
-  params: any
-  challenge: { lessonId: string; title: string }
-  challengeLessons: [any]
 }) {
-  const { slug, lesson: lessonId }: { slug: string; lesson: string } = params
+  const { slug, lesson: lessonId } = params
 
   const theme = themeSelector(lessons, lessonId, chapters, slug)
 
@@ -114,9 +105,9 @@ export default function Tab({
       offset={0}
       theme={theme}
       className={clsx('cursor-default no-underline', {
-        'cursor-not-allowed': !isTabUnlocked,
+        'cursor-not-allowed': challengeLock,
       })}
-      disabled={!isTabUnlocked}
+      disabled={challengeLock}
       content={
         <div className="flex min-w-64 flex-col items-stretch">
           <span className="whitespace-nowrap px-2.5 py-2 text-left font-semibold leading-none text-white">
