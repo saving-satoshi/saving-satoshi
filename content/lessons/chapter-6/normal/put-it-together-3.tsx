@@ -19,7 +19,7 @@ export const metadata = {
   key: 'CH6PUT3_NORMAL',
 }
 
-const lessonsToLoad = ['CH6PUT1', 'CH6PUT2', 'CH6INO5']
+const lessonsToLoad = ['CH6PUT1_NORMAL', 'CH6PUT2_NORMAL', 'CH6INO5']
 
 export const allLessonsAreLoaded = (data) => {
   return lessonsToLoad.every((lesson) => data[lesson])

@@ -27,10 +27,10 @@ export default function PutItTogether2({ lang }) {
   const [combinedCode, setCombinedCode] = useState('')
 
   const getPrevLessonData = async () => {
-    const data = await getData('CH6PUT1')
+    const data = await getData('CH6PUT1_NORMAL')
     if (data) {
       setPrevData({
-        lesson_id: 'CH6PUT1',
+        lesson_id: 'CH6PUT1_NORMAL',
         data: data?.code?.getDecoded(),
       })
     }
