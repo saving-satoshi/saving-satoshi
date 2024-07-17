@@ -52,7 +52,7 @@ export default function PutItTogether3({ lang }) {
     if (prevData && allLessonsAreLoaded(prevData)) {
       setCombinedCode(
         organizeImports(
-          (detectLanguage(prevData['CH6PUT2']) === Language.JavaScript
+          (detectLanguage(prevData['CH6PUT2_NORMAL']) === Language.JavaScript
             ? `// UTXO from chapter 6 step 1 (mining pool payout)
 const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
 const vout = 1;
@@ -163,7 +163,7 @@ class Input:
 `) +
             prevData['CH6INO5'] +
             '\n' +
-            prevData['CH6PUT2'] +
+            prevData['CH6PUT2_NORMAL'] +
             '\n'
         )
       )

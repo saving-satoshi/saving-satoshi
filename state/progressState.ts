@@ -7,9 +7,8 @@ import { CourseProgress, LessonInState, SetAtom } from 'types'
 import { accountAtom, isAuthLoadingAtom } from './state'
 
 export enum DifficultyLevel {
-  NORMAL = 'normal',
-  HARD = 'hard',
-  NOT_SELECTED = 'not_selected',
+  NORMAL = 'NORMAL',
+  HARD = 'HARD',
 }
 
 export const isLoadingProgressAtom = atom<boolean>(true)

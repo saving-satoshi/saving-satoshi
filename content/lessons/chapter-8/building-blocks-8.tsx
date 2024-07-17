@@ -2,7 +2,7 @@
 
 import { ScriptingChallenge, LessonInfo, CodeExample, Title, Table } from 'ui'
 import Image from 'next/image'
-import { EditorConfig } from 'types'
+import { ChapterWithDifficulties, EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useEffect, useState } from 'react'
@@ -13,6 +13,8 @@ import {
   Language,
   organizeImports,
 } from 'lib/SavedCode'
+import { useAtomValue } from 'jotai'
+import { syncedCourseProgressAtom } from 'state/progressState'
 
 export const metadata = {
   title: 'chapter_eight.building_blocks_eight.title',
@@ -29,12 +31,17 @@ export default function BuildingBlocks8({ lang }) {
     detectLanguage(combinedCode) === Language.JavaScript
       ? combinedCode.substring(combinedCode.indexOf('const getTxFee'))
       : combinedCode.substring(combinedCode.indexOf('def get_tx_fee(tx):'))
+  const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const chapter6 = courseProgress.chapters[5] as ChapterWithDifficulties
+  const completedChapter6 = chapter6.difficulties.find(
+    (difficulty) => difficulty.completed
+  )
   const getPrevLessonData = async () => {
     const data = await getData('CH8BBK7')
 
     if (data) {
       setPrevData({
-        lesson_id: 'CH6PUT1',
+        lesson_id: `CH6PUT1_${completedChapter6?.level.toString()}`,
         data: data?.code?.getDecoded(),
       })
     }

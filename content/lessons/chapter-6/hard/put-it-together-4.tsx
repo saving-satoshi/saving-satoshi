@@ -7,6 +7,8 @@ import { Text } from 'ui'
 import { useEffect, useState } from 'react'
 import { getData } from 'api/data'
 import { countLines, detectLanguage, Language } from 'lib/SavedCode'
+import { useAtomValue } from 'jotai'
+import { DifficultyLevel, syncedCourseProgressAtom } from 'state/progressState'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_four.title',
@@ -17,12 +19,16 @@ export default function PutItTogether4({ lang }) {
   const t = useTranslations(lang)
   const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
   const [isLoading, setIsLoading] = useState(true)
-
+  const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  let chapterDifficulty: DifficultyLevel
+  if (courseProgress.chapters[5].hasDifficulty) {
+    chapterDifficulty = courseProgress.chapters[5].selectedDifficulty
+  }
   const getPrevLessonData = async () => {
-    const data = await getData('CH6PUT3')
+    const data = await getData(`CH6PUT3_${chapterDifficulty.toString()}`)
     if (data) {
       setPrevData({
-        lesson_id: 'CH6PUT3',
+        lesson_id: `CH6PUT3_${chapterDifficulty.toString()}`,
         data: data?.code?.getDecoded(),
       })
     }
