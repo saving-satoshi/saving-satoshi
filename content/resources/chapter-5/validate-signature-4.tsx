@@ -21,13 +21,9 @@ const javascriptChallenge = {
     args: [],
   },
   defaultCode: `function verify_keys(keys) {
-  for (let i = 0; i < keys.length; i++) {
-    let value = keys[i];
-    let valueSub = value.substring(2)
-    let valueX = '0x' + valueSub.substring(0, 64)
-    let valueY = '0x' + valueSub.substring(64)
-    let keyGE = new GE(new FE(valueX), new FE(valueY))
-    // If the public key can verify that means this was the one used to sign
+  // For each key in the listed keys lets use our verify function to check which key signed this message
+  for (key in keys) {
+    // What infor do we need to verify the message?
     if (verify(sig_r_fe, sig_s_fe, keyGE, msg_fe)) {
       return value
     }
@@ -46,12 +42,9 @@ const pythonChallenge = {
     args: [],
   },
   defaultCode: `def verify_keys(keys):
+    # For each key in the listed keys lets use our verify function to check which key signed this message
     for key in keys:
-        key_trim = key[2:len(key)]
-        key_x = int(key_trim[0:64], 16)
-        key_y = int(key_trim[64:len(key_trim)], 16)
-        key_ge = GE(key_x, key_y)
-
+        # What infor do we need to verify the message?
         if verify(sig_r, sig_s, key_ge, msg):
             return key`,
   validate: async () => {
@@ -124,13 +117,13 @@ export default function VerifySignatureResources({ lang }) {
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.pseudo_solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
               onChange={challengeToggleSwitch}
             />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
+            <Text>{t('help_page.pseudo_confirm')}</Text>
           </div>
           {challengeIsToggled && (
             <div className="border border-white/25">
@@ -143,7 +136,7 @@ export default function VerifySignatureResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`255px`}
+                  height={`200px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

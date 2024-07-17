@@ -22,8 +22,8 @@ const javascriptChallenge = {
   },
   defaultCode: `function decode_sig(vpSig) {
   const vpSigBytes = Buffer.from(vpSig, 'base64');
-  const vpSigR = BigInt('0x' + vpSigBytes.slice(1, 33).toString('hex'));
-  const vpSigS = BigInt('0x' + vpSigBytes.slice(33).toString('hex'));
+  const vpSigR = BigInt(vpSigBytesPartOne.toHex());
+  const vpSigS = BigInt(vpSigBytesPartTwo.toHex());
   return [vpSigR, vpSigS]
 }`,
   validate: async () => {
@@ -40,8 +40,8 @@ const pythonChallenge = {
   },
   defaultCode: `def decode_sig(vp_sig):
     vp_sig_bytes = base64.b64decode(vp_sig)
-    vp_sig_r = int.from_bytes(vp_sig_bytes[1:33])
-    vp_sig_s = int.from_bytes(vp_sig_bytes[33:])
+    vp_sig_r = int.from_bytes(vp_sig_bytes_part_one)
+    vp_sig_s = int.from_bytes(vp_sig_bytes_part_two)
     return (vp_sig_r, vp_sig_s)`,
   validate: async () => {
     return [true, undefined]
@@ -113,13 +113,13 @@ export default function VerifySignatureResourcesTwo({ lang }) {
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.pseudo_solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
               onChange={challengeToggleSwitch}
             />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
+            <Text>{t('help_page.pseudo_confirm')}</Text>
           </div>
           {challengeIsToggled && (
             <div className="border border-white/25">

@@ -21,17 +21,17 @@ const javascriptChallenge = {
     args: [],
   },
   defaultCode: `function encode_message(text) {
-  const prefix = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
-  const textBytes = Buffer.from(text, 'ascii');
+  const prefixBytes = Buffer.from('Bitcoin Signed Message:\\n', 'ascii');
+  // It's important to remember this is all supposed to be a buffer of these values.
   const vector = Buffer.concat([
-    Buffer.from([prefix.length]),
-    prefix,
-    Buffer.from([textBytes.length]),
+    sizeOfPrefix,
+    prefixBytes,
+    sizeOfTExtBytes,
     textBytes
   ])
-  const singleHash = Hash('sha256').update(vector).digest();
-  const doubleHash = Hash('sha256').update(singleHash).digest();
-  return doubleHash.toString('hex');
+  const singleHash = sha256Hash(vector);
+  const doubleHash = sha256Hash(singleHash);
+  return doubleHash.toHex();
 }`,
   validate: async () => {
     return [true, undefined]
@@ -46,13 +46,14 @@ const pythonChallenge = {
     args: [],
   },
   defaultCode: `def encode_message(text):
-    prefix = "Bitcoin Signed Message:\\n"
-    vector = bytes([len(prefix)]) +
-        bytes(prefix, 'ascii') +
-        bytes([len(text)]) +
-        bytes(text, 'ascii')
-    single_hash = hashlib.new('sha256', vector).digest()
-    double_hash = hashlib.new('sha256', single_hash).digest()
+    prefix_bytes = bytes("Bitcoin Signed Message:\\n", "ascii")
+    # It's important to remember this is all supposed to be a buffer of these values.
+    vector = size_of_prefix +
+        prefix_bytes +
+        size_of_text +
+        text_bytes
+    single_hash = sha256_hash(vector)
+    double_hash = sha256_hash(single_hash)
     return vector.hex()`,
   validate: async () => {
     return [true, undefined]
@@ -124,13 +125,13 @@ export default function VerifySignatureResourcesOne({ lang }) {
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.pseudo_solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
               onChange={challengeToggleSwitch}
             />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
+            <Text>{t('help_page.pseudo_confirm')}</Text>
           </div>
           {challengeIsToggled && (
             <div className="border border-white/25">

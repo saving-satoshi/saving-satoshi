@@ -20,8 +20,11 @@ const javascriptChallenge = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `const [r, s] = decode_sig(vpSig)
+  defaultCode: `// We need to take the encoded signature for this value to split into its r and s values.
+const [r, s] = decode_sig(vpSig)
+// This will be the message by Vanderpoole encoded into a BigInt.
 const msg = encode_message(text)
+// lastly this will be the value we use in the verify function to help check the signature against the message.
 const keyGE = new GE(new FE(publicKeyX), new FE(publicKeyY))`,
   validate: async () => {
     return [true, undefined]
@@ -35,8 +38,11 @@ const pythonChallenge = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `[r, s] = decode_sig(vp_sig)
+  defaultCode: `# We need to take the encoded signature for this value to split into its r and s values.
+[r, s] = decode_sig(vp_sig)
+# This will be the message by Vanderpoole encoded into a BigInt.
 msg = encode_message(text)
+# lastly this will be the value we use in the verify function to help check the signature against the message.
 key_ge = GE(public_key_x, public_key_y)`,
   validate: async () => {
     return [true, undefined]
@@ -108,7 +114,7 @@ export default function VerifySignatureResourcesThree({ lang }) {
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
@@ -127,7 +133,7 @@ export default function VerifySignatureResourcesThree({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`65px`}
+                  height={`160px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}
