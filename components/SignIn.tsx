@@ -6,10 +6,9 @@ import { useAuthFunctions } from 'state/AuthFunctions'
 import { accountAtom, Modal } from 'state/state'
 import { useModalFunctions } from 'state/ModalFunctions'
 import Avatar from './Avatar'
-import { progressAtom } from 'state/state'
-import { useAtom } from 'jotai'
-import { getLessonPath } from 'lib/progress'
+import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { useRouter } from 'next/navigation'
+import { currentLessonPathAtom, loadProgressAtom } from 'state/progressState'
 
 export default function SignIn({
   lang,
@@ -24,15 +23,15 @@ export default function SignIn({
   const { open } = useModalFunctions()
   const { attemptLogin } = useAuthFunctions()
   const [account] = useAtom(accountAtom)
-  const [progress] = useAtom(progressAtom)
   const routes = useLocalizedRoutes()
   const router = useRouter()
 
   const [loading, setLoading] = useState<boolean>(false)
   const [privateKey, setPrivateKey] = useState<string>('')
   const [hasAccount, setHasAccount] = useState<boolean>()
-  const [progressRoute, setProgressRoute] = useState('')
   const [isPending, startTransition] = useTransition()
+  const currentLessonPath = useAtomValue(currentLessonPathAtom)
+  const loadProgress = useSetAtom(loadProgressAtom)
 
   const handleConfirm = async () => {
     try {
@@ -41,18 +40,23 @@ export default function SignIn({
       const loginSuccess = await attemptLogin(privateKey.toLowerCase())
       if (loginSuccess) {
         setPrivateKey('')
+        console.log('loading progress')
+        await loadProgress()
+        setHasAccount(true)
+      } else {
+        // TODO: I just realised this component is not handling the user entering the wrong private key
+        setHasAccount(false)
       }
     } catch (ex) {
       console.error(ex)
     } finally {
       setLoading(false)
-      setHasAccount(true)
     }
   }
 
   const handleRedirect = async () => {
     startTransition(() => {
-      router.push(`${routes.chaptersUrl + progressRoute}`)
+      router.push(`${routes.chaptersUrl + currentLessonPath}`)
     })
   }
 
@@ -65,10 +69,6 @@ export default function SignIn({
       typeof onSignIn === 'function' && onSignIn()
     }
   }, [isPending])
-
-  useEffect(() => {
-    setProgressRoute(getLessonPath(progress))
-  }, [progress])
 
   function handleCreateClick() {
     open(Modal.SignUp, { onSignUpComplete: false })

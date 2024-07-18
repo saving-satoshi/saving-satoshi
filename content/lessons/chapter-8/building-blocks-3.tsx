@@ -5,7 +5,6 @@ import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 
 export const metadata = {
   title: 'chapter_eight.building_blocks_three.title',
@@ -86,7 +85,7 @@ print(Bitcoin.rpc())
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-8', 'building-blocks-3')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_eight.building_blocks_three.success')}
       onSelectLanguage={handleSelectLanguage}
     >

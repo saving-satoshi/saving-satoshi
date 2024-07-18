@@ -7,12 +7,9 @@ import { Button, Loader } from 'shared'
 import { useTranslations, useLang } from 'hooks'
 import { useState } from 'react'
 import { useAtom } from 'jotai'
-import {
-  accountAtom,
-  isAuthLoadingAtom,
-  isLoadingProgressAtom,
-} from 'state/state'
+import { accountAtom, isAuthLoadingAtom } from 'state/state'
 import { useAuthFunctions } from 'state/AuthFunctions'
+import { isLoadingProgressAtom } from 'state/progressState'
 
 export default function AccountModal({ onClose, state }) {
   const lang = useLang()

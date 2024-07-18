@@ -11,7 +11,7 @@ export const useModalFunctions = () => {
         newModals[modal].open = false // Close all other modals
       })
       newModals[name] = { open: true, meta }
-      document.body.classList.add('overflow-y-hidden')
+      window.document.body.classList.add('overflow-y-hidden')
       return newModals
     })
   }
@@ -23,7 +23,7 @@ export const useModalFunctions = () => {
         return prevModals
       }
       newModals[name].open = false
-      document.body.classList.remove('overflow-y-hidden')
+      window.document.body.classList.remove('overflow-y-hidden')
       return newModals
     })
   }

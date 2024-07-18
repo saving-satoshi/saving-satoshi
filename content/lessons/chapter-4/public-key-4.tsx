@@ -5,7 +5,6 @@ import { EditorConfig, Data } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useEffect, useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
 import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
@@ -151,7 +150,7 @@ def compress_publickey(public_key):
       <ScriptingChallenge
         lang={lang}
         config={config}
-        lessonKey={getLessonKey('chapter-4', 'public-key-4')}
+        lessonKey={metadata.key}
         saveData
         successMessage={t('chapter_four.public_key_four.success')}
         onSelectLanguage={handleSelectLanguage}

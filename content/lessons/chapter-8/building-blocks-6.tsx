@@ -5,7 +5,6 @@ import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 
 export const metadata = {
   title: 'chapter_eight.building_blocks_six.title',
@@ -94,7 +93,7 @@ print("KILL")`,
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-8', 'building-blocks-6')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_eight.building_blocks_six.success')}
       onSelectLanguage={handleSelectLanguage}
     >

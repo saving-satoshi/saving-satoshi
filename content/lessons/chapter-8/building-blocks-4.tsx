@@ -5,7 +5,6 @@ import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { accountAtom, currentLanguageAtom } from 'state/state'
@@ -105,7 +104,7 @@ def get_block_height(height):
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-8', 'building-blocks-4')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_eight.building_blocks_four.success')}
       onSelectLanguage={handleSelectLanguage}
     >

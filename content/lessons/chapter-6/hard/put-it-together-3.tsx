@@ -2,8 +2,12 @@
 
 import { getData } from 'api/data'
 import { useTranslations } from 'hooks'
-import { getLessonKey } from 'lib/progress'
-import { detectLanguage, Language, organizeImports } from 'lib/SavedCode'
+import {
+  countLines,
+  detectLanguage,
+  Language,
+  organizeImports,
+} from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { Loader } from 'shared'
 import { EditorConfig } from 'types'
@@ -12,17 +16,13 @@ import { LessonInfo, ScriptingChallenge, Table, Text } from 'ui'
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
   navigation_title: 'chapter_six.put_it_together_three.nav_title',
-  key: 'CH6PUT3',
+  key: 'CH6PUT3_HARD',
 }
 
 const lessonsToLoad = ['CH6PUT1', 'CH6PUT2', 'CH6INO5']
 
-export const allLessonsAreLoaded = (data) => {
+export const allLessonsAreLoaded = (data): boolean => {
   return lessonsToLoad.every((lesson) => data[lesson])
-}
-
-export function countLines(text: string): number {
-  return text.split(/\r\n|\r|\n/).length
 }
 
 export default function PutItTogether3({ lang }) {
@@ -306,11 +306,11 @@ print(tx.serialize().hex())`,
         lang={lang}
         config={config}
         saveData
-        lessonKey={getLessonKey('chapter-6', 'put-it-together-3')}
+        lessonKey={metadata.key}
         successMessage={t('chapter_six.put_it_together_three.success')}
         loadingSavedCode={isLoading}
       >
-        <LessonInfo>
+        <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
           <Text className="font-nunito text-2xl font-bold text-white">
             {t('chapter_six.put_it_together_three.heading')}
           </Text>
