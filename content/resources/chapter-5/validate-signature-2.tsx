@@ -101,12 +101,12 @@ export default function VerifySignatureResourcesTwo({ lang }) {
         <>
           <Text className="mt-[25px] text-xl font-bold">
             {t(
-              'chapter_five.resources.validate_signature.message_verification_heading'
+              'chapter_five.resources.validate_signature_two.base64_encoding_heading'
             )}
           </Text>
           <Text>
             {t(
-              'chapter_five.resources.validate_signature.message_verification_paragraph_one'
+              'chapter_five.resources.validate_signature_two.base64_encoding_paragraph_one'
             )}
           </Text>
         </>

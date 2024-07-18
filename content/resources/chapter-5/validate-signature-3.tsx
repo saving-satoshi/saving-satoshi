@@ -102,12 +102,12 @@ export default function VerifySignatureResourcesThree({ lang }) {
         <>
           <Text className="mt-[25px] text-xl font-bold">
             {t(
-              'chapter_five.resources.validate_signature.message_verification_heading'
+              'chapter_five.resources.validate_signature_three.signing_and_ownership_heading'
             )}
           </Text>
           <Text>
             {t(
-              'chapter_five.resources.validate_signature.message_verification_paragraph_one'
+              'chapter_five.resources.validate_signature_three.signing_and_ownership_paragraph_one'
             )}
           </Text>
         </>

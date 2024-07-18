@@ -21,13 +21,72 @@ export default function DeriveMessageResourcesSix({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_five.resources.derive_message.op_pushdata_heading')}
-          </Text>
-          <Text>
             {t(
-              'chapter_five.resources.derive_message.op_pushdata_paragraph_one'
+              'chapter_five.resources.derive_message_six.transaction_parts_heading'
             )}
           </Text>
+          <ul className="ml-4 list-disc">
+            <li>
+              {t(
+                'chapter_five.resources.derive_message_six.transaction_parts_one'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_five.resources.derive_message_six.transaction_parts_two'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_five.resources.derive_message_six.transaction_parts_three'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_five.resources.derive_message_six.transaction_parts_four'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_five.resources.derive_message_six.transaction_parts_five'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_five.resources.derive_message_six.transaction_parts_six'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_five.resources.derive_message_six.transaction_parts_seven'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_five.resources.derive_message_six.transaction_parts_eight'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_five.resources.derive_message_six.transaction_parts_nine'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_five.resources.derive_message_six.transaction_parts_ten'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_five.resources.derive_message_six.transaction_parts_eleven'
+              )}
+            </li>
+            <li>
+              {t(
+                'chapter_five.resources.derive_message_six.transaction_parts_twelve'
+              )}
+            </li>
+          </ul>
         </>
       }
       codeResources={
