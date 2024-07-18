@@ -5,7 +5,6 @@ import { Data, EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useEffect, useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
 import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
@@ -167,7 +166,7 @@ def hash_to_address(hash):
         lang={lang}
         config={config}
         saveData
-        lessonKey={getLessonKey('chapter-4', 'address-3')}
+        lessonKey={metadata.key}
         successMessage={t('chapter_four.address_three.success')}
         onSelectLanguage={handleSelectLanguage}
       >

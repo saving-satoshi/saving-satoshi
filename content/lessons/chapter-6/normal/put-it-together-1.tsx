@@ -3,14 +3,13 @@ import { ScriptingChallenge, Table, Text, LessonInfo, CodeExample } from 'ui'
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'hooks'
 import { EditorConfig } from 'types'
-import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
 import { detectLanguage, Language } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
   navigation_title: 'chapter_six.put_it_together_one.nav_title',
-  key: 'CH6PUT1',
+  key: 'CH6PUT1_NORMAL',
 }
 
 export default function PutItTogether1({ lang }) {
@@ -383,7 +382,7 @@ class Transaction:
         lang={lang}
         config={config}
         saveData
-        lessonKey={getLessonKey('chapter-6', 'put-it-together-1')}
+        lessonKey={metadata.key}
         successMessage={t('chapter_six.put_it_together_two.success')}
       >
         <LessonInfo>

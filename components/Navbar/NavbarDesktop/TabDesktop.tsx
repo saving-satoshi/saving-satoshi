@@ -1,23 +1,22 @@
-'use client'
-
 import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
 import { Tooltip } from 'ui'
 import Icon from 'shared/Icon'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { lessons, chapters } from 'content'
-import {
-  getLessonKey,
-  isLessonCompleted,
-  isLessonUnlocked,
-  keys,
-} from 'lib/progress'
 import { themeSelector } from 'lib/themeSelector'
-import useLessonStatus from 'hooks/useLessonStatus'
-import { useAtom } from 'jotai'
-import { isLoadingProgressAtom, progressAtom } from 'state/state'
+import { useAtom, useAtomValue } from 'jotai'
+import {
+  syncedCourseProgressAtom,
+  isLessonCompletedUsingLessonName,
+  isLessonUnlockedUsingLessonName,
+  isLoadingProgressAtom,
+  getLessonKey,
+  isLessonUnlockedUsingId,
+} from 'state/progressState'
+import useEnvironment from 'hooks/useEnvironment'
+import { useMemo } from 'react'
 
 export default function Tab({
   index,
@@ -25,12 +24,6 @@ export default function Tab({
   params,
   challenge,
   challengeLessons,
-}: {
-  index: number
-  part?: 'intro' | 'challenge' | 'outro'
-  params: any
-  challenge: { lessonId: string; title: string }
-  challengeLessons: any
 }) {
   const { slug, lesson: lessonId } = params
 
@@ -40,20 +33,48 @@ export default function Tab({
   const lang = useLang()
   const t = useTranslations(lang)
   const pathName = usePathname() || ''
+  const { isDevelopment } = useEnvironment()
 
   const pathData = pathName.split('/').filter((p) => p)
   const isRouteLesson = pathData.length === 4
-  const [progress] = useAtom(progressAtom)
   const [isLoading] = useAtom(isLoadingProgressAtom)
+  const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const isLessonUnlocked = useMemo(() => {
+    const currentChapter =
+      courseProgress.chapters[Number(slug.split('-')[1]) - 1]
+    if (currentChapter.hasDifficulty) {
+      const difficulty = currentChapter.difficulties.find(
+        (d) => d.level === currentChapter.selectedDifficulty
+      )
+      if (!difficulty) return false
+      const lessonsWithDifficulty = difficulty?.lessons
+      return lessonsWithDifficulty[index].completed
+    } else {
+      return currentChapter.lessons[index].completed
+    }
+  }, [courseProgress, slug, index])
 
-  const { isUnlocked } = useLessonStatus(
-    progress,
-    getLessonKey(slug, challenge.lessonId)
-  )
-  const { isCompleted } = useLessonStatus(
-    progress,
-    getLessonKey(slug, challenge.lessonId)
-  )
+  isLessonUnlockedUsingId(getLessonKey(slug, lessonId), courseProgress)
+
+  const challengeLock = useMemo(() => {
+    if (isDevelopment) {
+      // always unlock in development
+      return false
+    }
+    if (
+      challengeLessons.every((challenge) =>
+        challenge.lessonId.includes('intro')
+      )
+    ) {
+      // intros should always be unlocked
+      return false
+    }
+    // check if the first lesson in the challenge is unlocked
+    return !isLessonUnlockedUsingId(
+      getLessonKey(slug, challengeLessons[0].lessonId),
+      courseProgress
+    )
+  }, [challengeLessons, courseProgress, slug, isDevelopment])
 
   const pnLessonId = isRouteLesson
     ? pathData.pop()
@@ -61,6 +82,7 @@ export default function Tab({
   if (!pnLessonId) {
     return null
   }
+  const isTabUnlocked = isLessonUnlocked || isDevelopment
 
   const challengeId = pnLessonId.substring(0, pnLessonId.length - 2)
 
@@ -71,13 +93,9 @@ export default function Tab({
   const currentIndex = chapters[slug].metadata.challenges.indexOf(
     challengeId + '-1'
   )
-  const challengeLock =
-    currentIndex < index - 1 &&
-    !isCompleted &&
-    pnLessonId.split('-')[0] !== 'outro'
 
   const groupCompleted = challengeLessons.every((challenge) =>
-    isLessonCompleted(progress, getLessonKey(slug, challenge.lessonId))
+    isLessonCompletedUsingLessonName(slug, challenge.lessonId, courseProgress)
   )
 
   return (
@@ -87,9 +105,9 @@ export default function Tab({
       offset={0}
       theme={theme}
       className={clsx('cursor-default no-underline', {
-        'cursor-not-allowed': !isUnlocked,
+        'cursor-not-allowed': challengeLock,
       })}
-      disabled={!isUnlocked}
+      disabled={challengeLock}
       content={
         <div className="flex min-w-64 flex-col items-stretch">
           <span className="whitespace-nowrap px-2.5 py-2 text-left font-semibold leading-none text-white">
@@ -98,16 +116,18 @@ export default function Tab({
           <div className="flex flex-col flex-nowrap">
             {challengeLessons.map((challenge, index) => {
               const isLessonUnlock =
-                !isLoading &&
-                isLessonUnlocked(
-                  progress,
-                  getLessonKey(slug, challenge.lessonId)
-                )
+                isDevelopment ||
+                (!isLoading &&
+                  isLessonUnlockedUsingId(
+                    getLessonKey(slug, challenge.lessonId),
+                    courseProgress
+                  ))
               const isPageComplete =
                 !isLoading &&
-                isLessonCompleted(
-                  progress,
-                  getLessonKey(slug, challenge.lessonId)
+                isLessonCompletedUsingLessonName(
+                  slug,
+                  challenge.lessonId,
+                  courseProgress
                 )
               const navLessonId =
                 challenge.lessonId.charAt(0) + challenge.lessonId.slice(1)
@@ -170,10 +190,10 @@ export default function Tab({
           {
             'text-white text-opacity-50': !isActive,
             'hover:bg-black/25 hover:text-white hover:text-opacity-100':
-              isUnlocked && !isActive,
+              isTabUnlocked && !isActive,
             'bg-black/25 text-opacity-100': isActive,
             'border-r': part === 'outro',
-            'pointer-events-none': !isUnlocked,
+            'pointer-events-none': !isTabUnlocked,
           }
         )}
       >
@@ -185,9 +205,11 @@ export default function Tab({
               'absolute right-[10px] top-[10px] h-3 w-3 opacity-50',
               {
                 hidden:
-                  keys.indexOf(progress) >=
-                    keys.indexOf(getLessonKey(slug, challenge.lessonId)) &&
-                  currentIndex !== index - 1,
+                  isLessonCompletedUsingLessonName(
+                    slug,
+                    challenge.lessonId,
+                    courseProgress
+                  ) && currentIndex !== index - 1,
               }
             )}
           />
@@ -200,8 +222,12 @@ export default function Tab({
               {
                 hidden:
                   !isLoading &&
-                  keys.indexOf(progress) <
-                    keys.indexOf(getLessonKey(slug, challenge.lessonId)),
+                  !isTabUnlocked &&
+                  !isLessonUnlockedUsingLessonName(
+                    slug,
+                    challenge.lessonId,
+                    courseProgress
+                  ),
               }
             )}
           />

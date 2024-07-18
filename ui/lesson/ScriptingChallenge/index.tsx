@@ -15,7 +15,6 @@ import useDebounce from 'hooks/useDebounce'
 import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { accountAtom, currentLanguageAtom } from 'state/state'
-import { useProgressFunctions } from 'state/ProgressFunctions'
 
 const tabData = [
   {
@@ -66,7 +65,6 @@ export default function ScriptingChallenge({
   loadingSavedCode?: boolean
 }) {
   const t = useTranslations(lang)
-  const { saveProgress, saveProgressLocal } = useProgressFunctions()
   const [account] = useAtom(accountAtom)
   const [currentLanguage, setCurrentLanguage] = useAtom(currentLanguageAtom)
   const [code, setCode] = useState(
@@ -178,14 +176,11 @@ export default function ScriptingChallenge({
         setChallengeSuccess(true)
       }
       if (account) {
-        saveProgress(lessonKey)
         saveData &&
           setData(account.id, lessonKey, {
             code: base64TrimmedCode,
             answer: data.answer,
           })
-      } else {
-        saveProgressLocal(lessonKey)
       }
     }
 

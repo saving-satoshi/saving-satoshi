@@ -6,9 +6,8 @@ import { Loader } from 'shared'
 import { useLang, usePathData } from 'hooks'
 import { useAtom } from 'jotai'
 import { chapters, lessons, resources } from 'content'
-import { isAuthLoadingAtom, isLoadingProgressAtom } from 'state/state'
-import { Text } from 'ui'
-import { BackArrow } from 'shared/icons'
+import { isAuthLoadingAtom } from 'state/state'
+import { isLoadingProgressAtom } from 'state/progressState'
 
 export default function HelpModal({ onClose, state }) {
   const lang = useLang()

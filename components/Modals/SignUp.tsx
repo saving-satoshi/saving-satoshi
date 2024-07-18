@@ -5,15 +5,13 @@ import { Button, Loader } from 'shared'
 import HorizontalScrollView from 'components/HorizontalScrollView'
 import { useTranslations, useLang, useSaveAndReturn } from 'hooks'
 import clsx from 'clsx'
-import { getNextLessonKey } from 'lib/progress'
 import { generateKeypair } from 'lib/crypto'
 import { register } from 'api/auth'
 import Modal from './Modal'
 import { Text, ToggleSwitch } from 'ui'
 import { useAuthFunctions } from 'state/AuthFunctions'
-import { progressAtom } from 'state/state'
-import { useAtom } from 'jotai'
-import { useProgressFunctions } from 'state/ProgressFunctions'
+import { useSetAtom } from 'jotai'
+import { loadProgressAtom } from 'state/progressState'
 
 const avatars = [
   'white spacesuit',
@@ -27,17 +25,15 @@ export default function SignupModal({ onClose, state }) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { attemptLogin } = useAuthFunctions()
-  const [progress] = useAtom(progressAtom)
-  const { saveProgress } = useProgressFunctions()
   const { onSignUpComplete } = state.meta ?? false
   const saveAndReturn = useSaveAndReturn()
-  const nextLessonKey = getNextLessonKey(progress)
 
   const [loading, setLoading] = useState<boolean>(false)
   const [avatar, setAvatar] = useState(1)
   const [copyAcknowledged, setCopyAcknowledged] = useState<boolean>(false)
   const [privateKey, setPrivateKey] = useState<string | undefined>(undefined)
   const [copied, setCopied] = useState(false)
+  const loadProgress = useSetAtom(loadProgressAtom)
 
   const copy = (text) => {
     navigator.clipboard.writeText(text)
@@ -57,8 +53,7 @@ export default function SignupModal({ onClose, state }) {
       if (privateKey) {
         await register(privateKey, `/assets/avatars/${avatar}.png`)
         await attemptLogin(privateKey)
-        //The following line saves the latest localStorage progress to the backend.
-        saveProgress(onSignUpComplete ? nextLessonKey : progress)
+        await loadProgress()
         onClose()
         onSignUpComplete && saveAndReturn()
       }

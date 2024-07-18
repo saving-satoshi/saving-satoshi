@@ -3,9 +3,15 @@ import { chapters, lessons } from 'content'
 import { useLang, useTranslations } from 'hooks'
 
 import clsx from 'clsx'
+import { getLessonKey, syncedCourseProgressAtom } from 'state/progressState'
+import { useAtomValue } from 'jotai'
+import { ChapterInState } from 'types'
 
 export default function TabGroup({ isOpen, clicked, params }) {
   const { slug } = params
+  const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const chapterFromState: ChapterInState =
+    courseProgress.chapters[params.slug.split('-')[1] - 1]
 
   const lang = useLang()
   const t = useTranslations(lang)
@@ -19,17 +25,41 @@ export default function TabGroup({ isOpen, clicked, params }) {
   const chapterMeta = chapter?.metadata
   const chapterId = chapter.metadata.slug
 
-  const introsData = chapterMeta.intros.map((lessonId: string) => {
-    const { title } = lessons[chapterId][lessonId].metadata
+  const introsData = chapterMeta.intros
+    .filter((lessonId: string) => {
+      if (chapterFromState.hasDifficulty) {
+        const difficulty = chapterFromState.difficulties.find(
+          (d) => d.level === chapterFromState.selectedDifficulty
+        )
+        const lessonsWithDifficulty = difficulty?.lessons
+        return lessonsWithDifficulty?.some(
+          (lesson) => lesson.id === getLessonKey(slug, lessonId)
+        )
+      }
+      return true
+    })
+    .map((lessonId: string) => {
+      const { title } = lessons[slug][lessonId].metadata
+      return { lessonId, title }
+    })
 
-    return { lessonId, title }
-  })
-
-  const lessonsData = chapterMeta.lessons.map((lessonId: string) => {
-    const { title } = lessons[chapterId][lessonId].metadata
-
-    return { lessonId, title }
-  })
+  const lessonsData = chapterMeta.lessons
+    .filter((lessonId: string) => {
+      if (chapterFromState.hasDifficulty) {
+        const difficulty = chapterFromState.difficulties.find(
+          (d) => d.level === chapterFromState.selectedDifficulty
+        )
+        const lessonsWithDifficulty = difficulty?.lessons
+        return lessonsWithDifficulty?.some(
+          (lesson) => lesson.id === getLessonKey(slug, lessonId)
+        )
+      }
+      return true
+    })
+    .map((lessonId: string) => {
+      const { title } = lessons[slug][lessonId].metadata
+      return { lessonId, title }
+    })
 
   let groupedLessonData = {}
 
@@ -44,11 +74,23 @@ export default function TabGroup({ isOpen, clicked, params }) {
     groupedLessonData[key].push(value)
   })
 
-  const outrosData = chapterMeta.outros.map((lessonId: string) => {
-    const { title } = lessons[chapterId][lessonId].metadata
-
-    return { lessonId, title }
-  })
+  const outrosData = chapterMeta.outros
+    .filter((lessonId: string) => {
+      if (chapterFromState.hasDifficulty) {
+        const difficulty = chapterFromState.difficulties.find(
+          (d) => d.level === chapterFromState.selectedDifficulty
+        )
+        const lessonsWithDifficulty = difficulty?.lessons
+        return lessonsWithDifficulty?.some(
+          (lesson) => lesson.id === getLessonKey(slug, lessonId)
+        )
+      }
+      return true
+    })
+    .map((lessonId: string) => {
+      const { title } = lessons[slug][lessonId].metadata
+      return { lessonId, title }
+    })
 
   return (
     <div className="mx-4 flex h-full flex-col items-stretch font-nunito">
@@ -81,6 +123,7 @@ export default function TabGroup({ isOpen, clicked, params }) {
               challenge={intro}
               params={params}
               clicked={clicked}
+              chapterId={chapter.position + 1}
             />
           </div>
         ))}
@@ -116,6 +159,7 @@ export default function TabGroup({ isOpen, clicked, params }) {
                     challenge={lesson}
                     params={params}
                     clicked={clicked}
+                    chapterId={chapter.position + 1}
                   />
                 </div>
               ))}
@@ -143,6 +187,7 @@ export default function TabGroup({ isOpen, clicked, params }) {
               challenge={outro}
               params={params}
               clicked={clicked}
+              chapterId={chapter.position + 1}
             />
           </div>
         ))}

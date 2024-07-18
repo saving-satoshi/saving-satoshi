@@ -2058,6 +2058,14 @@ const translations = {
       'I acknowledge I have saved this private key and know that I will need it for challenges in the future.',
   },
 
+  modal_difficulty: {
+    heading: 'Select a difficulty',
+    paragraph_one:
+      'Choose a difficulty level to start your journey. You can change this at any time.',
+    normal: 'Normal',
+    hard: 'Hard',
+  },
+
   social: {
     twitter_share: 'Share via X',
     nostr_share: 'Share via nostr',

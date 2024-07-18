@@ -5,7 +5,6 @@ import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { CodeExample, Text } from 'ui'
 import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getLanguageString } from 'lib/SavedCode'
 import { chapters } from 'content/chapters'
 import { useAtom } from 'jotai'
@@ -186,7 +185,7 @@ export default function DeriveMessage7({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
-      lessonKey={getLessonKey('chapter-5', 'derive-message-7')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_five.derive_message_seven.success')}
       onSelectLanguage={handleSelectLanguage}
     >
