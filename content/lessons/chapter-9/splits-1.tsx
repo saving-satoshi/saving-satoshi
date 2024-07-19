@@ -25,6 +25,7 @@ export default function Splits1({ lang }) {
         userScript={['OP_1', 'OP_2', 'OP_ADD']}
         success={success}
         setSuccess={setSuccess}
+        finalStack={[3]}
       >
         <LessonInfo>
           <Title>{t('chapter_eight.building_blocks_six.heading')}</Title>

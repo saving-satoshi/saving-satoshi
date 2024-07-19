@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
 import { OpCodeTypes } from './OPFunctions'
 import { StatusBar } from 'ui/common'
-import { MainState, OpRunnerTypes, T } from './types'
+import { MainState, OpRunnerTypes, StackType, T } from './types'
 
 const OpRunner = ({
   success,
@@ -33,15 +33,31 @@ const OpRunner = ({
     setHeight(parseInt(event.target.value))
   }
 
-  const checkSuccessState = (tokens: T) => {
+  const checkSuccessState = (tokens: T, stack: StackType) => {
     const filterToStringArray = tokens.map((token) => token.value)
     const isSuccess = userScript.every((token) =>
       filterToStringArray.includes(token)
     )
-    if (isSuccess) {
-      setSuccess(true)
+    const isStackEqual = () => {
+      if (finalStack?.length === stack.length) {
+        const isElmSame = finalStack.every((elm) => stack.includes(elm))
+        return isElmSame
+      } else {
+        return false
+      }
+    }
+    if (!finalStack) {
+      if (isSuccess) {
+        setSuccess(true)
+      } else {
+        setSuccess(2)
+      }
     } else {
-      setSuccess(2)
+      if (isSuccess && isStackEqual()) {
+        setSuccess(true)
+      } else {
+        setSuccess(false)
+      }
     }
   }
   const handleRun = () => {
@@ -52,7 +68,7 @@ const OpRunner = ({
       height
     )
     setStackHistory(runnerState.state)
-    checkSuccessState(runnerState.tokens)
+    checkSuccessState(runnerState.tokens, runnerState.stack)
   }
 
   const handleTryAgain = () => {
@@ -60,6 +76,7 @@ const OpRunner = ({
   }
   const handleReset = () => {
     setStackHistory([])
+    setSuccess(0)
   }
 
   return (
