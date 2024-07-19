@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
-import LanguageExecutor, { MainState } from './index'
+import LanguageExecutor from './LanguageExecutor'
 import { OpCodeTypes } from './OPFunctions'
+import { StatusBar } from 'ui/common'
+import { MainState, OpRunnerTypes, T } from './types'
 
-const OpRunner = () => {
+const OpRunner = ({
+  success,
+  setSuccess,
+  userScript,
+  finalStack,
+}: Omit<OpRunnerTypes, 'children'>) => {
   const [script, setScript] = useState('')
   const [initialStack, setInitialStack] = useState('')
   const [height, setHeight] = useState<number>(0)
@@ -15,7 +22,7 @@ const OpRunner = () => {
     if (stackHistory[0] !== undefined) {
       setStackHistory([])
     }
-    setScript(event.target.value)
+    setScript(event.target.value.toUpperCase())
   }
 
   const handleInitialStackChange = (event) => {
@@ -26,21 +33,38 @@ const OpRunner = () => {
     setHeight(parseInt(event.target.value))
   }
 
-  const handleRun = () => {
-    setStackHistory(
-      LanguageExecutor.RunCode(script, initialStack, height).state
+  const checkSuccessState = (tokens: T) => {
+    const filterToStringArray = tokens.map((token) => token.value)
+    const isSuccess = userScript.every((token) =>
+      filterToStringArray.includes(token)
     )
+    if (isSuccess) {
+      setSuccess(true)
+    } else {
+      setSuccess(2)
+    }
+  }
+  const handleRun = () => {
+    const initialStackArray = initialStack.split(',')
+    const runnerState = LanguageExecutor.RunCode(
+      script,
+      initialStackArray,
+      height
+    )
+    setStackHistory(runnerState.state)
+    checkSuccessState(runnerState.tokens)
   }
 
+  const handleTryAgain = () => {
+    setSuccess(0)
+  }
   const handleReset = () => {
     setStackHistory([])
   }
 
-  console.log(stackHistory)
-
   return (
-    <div className="flex flex-col px-8 text-white">
-      <div className="mt-4 flex flex-col gap-1 border-b border-b-white">
+    <div className="flex flex-col  text-white">
+      <div className="mt-4 flex  flex-col gap-1 border-b border-b-white pl-5">
         <p className="font-space-mono text-lg font-bold capitalize ">
           Your Script
         </p>
@@ -48,14 +72,15 @@ const OpRunner = () => {
           className="overflow-wrap-normal w-full resize-none break-all border-none bg-transparent font-space-mono text-lg text-white focus:outline-none"
           onChange={handleScriptChange}
           autoComplete="off"
-          placeholder="..."
+          value={script}
+          placeholder="Enter your script here..."
           autoCapitalize="none"
           spellCheck="false"
           rows={5} // Increase rows based on text length
         />
       </div>
 
-      <div className="mt-4 flex flex-col gap-1 border-b border-b-white py-5">
+      <div className="mt-4 flex  flex-col gap-1 border-b border-b-white py-5 pl-5">
         <p className="font-space-mono text-lg font-bold capitalize">
           Initial stack
         </p>
@@ -67,7 +92,7 @@ const OpRunner = () => {
         />
       </div>
 
-      <div className="mt-4 flex flex-col gap-2 border-b border-b-white py-5">
+      <div className="mt-4 flex  flex-col gap-2 border-b border-b-white py-5 pl-5">
         <p className="font-space-mono text-lg font-bold capitalize">
           Next Block Height
         </p>
@@ -80,7 +105,7 @@ const OpRunner = () => {
         />
       </div>
 
-      <div className="flex gap-3">
+      <div className="flex h-10  gap-3 pl-5">
         <button type="button" className="cursor-pointer" onClick={handleRun}>
           Run
         </button>
@@ -88,7 +113,7 @@ const OpRunner = () => {
         <button>Step</button>
       </div>
 
-      <div className="mt-4 flex flex-row gap-2.5 overflow-scroll">
+      <div className="flex w-full flex-row gap-2.5 overflow-scroll pl-5">
         {stackHistory.length === 0 && (
           <div className="flex flex-col">
             <div className="flex min-h-[204px] min-w-[164px] flex-col rounded-b-[10px] bg-black bg-opacity-20 p-2.5">
@@ -103,6 +128,7 @@ const OpRunner = () => {
             </div>
           </div>
         )}
+
         {stackHistory.map(
           (stack, index) =>
             stack.negate === 0 && (
@@ -151,6 +177,12 @@ const OpRunner = () => {
             )
         )}
       </div>
+
+      <StatusBar
+        handleTryAgain={handleTryAgain}
+        className="h-14 min-h-14 grow"
+        success={success}
+      />
     </div>
   )
 }

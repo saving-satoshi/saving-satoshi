@@ -1,4 +1,4 @@
-import { StackType, T, TokenTypes } from '.'
+import { StackType, T, TokenTypes } from './LanguageExecutor'
 
 const getKey = (keyData) => {
   if (!keyData) {
