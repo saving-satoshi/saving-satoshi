@@ -1,46 +1,5 @@
 import { OpCodeTypes, opFunctions } from './OPFunctions'
-
-export enum TokenTypes {
-  CONSTANT = 'constant',
-  ARITHMETIC = 'arithmetic',
-  DATA_PUSH = 'data-push',
-  LOCK_TIME = 'lock-time',
-  CONDITIONAL = 'conditional',
-  CRYPTO = 'crypto',
-  BITWISE = 'bitwise',
-  STACK = 'stack',
-}
-interface Token {
-  type: TokenTypes
-  resolves: string | number | boolean | null
-  value: string
-}
-
-export type T = Array<Token>
-type ScriptType = Array<string | boolean | number | null>
-export type MainState = State[]
-
-export type StackType = Array<string | boolean | number | null>
-export interface State {
-  stack: any[]
-  operation: Operation
-  step: number
-  negate: number
-  height?: number | null
-  errors?: Error[]
-}
-
-export interface Operation {
-  tokenType?: TokenTypes | null
-  resolves?: string | number | boolean | null
-  value?: string | null
-  type: any
-}
-
-export interface Error {
-  type: string
-  message: any
-}
+import { MainState, StackType, State, T, TokenTypes } from './types'
 
 class LanguageExecutor {
   tokens: T
@@ -91,20 +50,26 @@ class LanguageExecutor {
 
   public static RunCode(
     script: string,
-    initialStack?: string,
+    initialStack?: string[],
     height?: number
   ): LanguageExecutor {
     const parsableInput = this.rawInputToParsableInput(script)
     const tokens = this.parsableInputToTokens(parsableInput)
-    const langExecutor = new LanguageExecutor(tokens, height)
+    const filteredStack = initialStack?.filter((arg) => arg.length !== 0)
+
+    const langExecutor = new LanguageExecutor(
+      tokens,
+      filteredStack ?? [],
+      height
+    )
     langExecutor.execute()
 
     return langExecutor
   }
-  constructor(tokens: T, height?: number) {
+  constructor(tokens: T, initialStack: string[], height?: number) {
     this.tokens = tokens
     this.state = []
-    this.stack = []
+    this.stack = initialStack.length ? initialStack : []
     this.height = height ?? 0
     this.conditionalState = []
     this.negate = 0
