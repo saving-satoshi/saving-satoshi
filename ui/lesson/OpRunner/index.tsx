@@ -41,7 +41,7 @@ const OpRunnerLesson = ({ children, ...rest }: OpRunnerTypes) => {
         }
       >
         {children}
-        <div className="grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l">
+        <div className="height-minus-nav flex border-white/25 md:max-w-[50vw] md:border-l">
           <OpRunner {...rest} />
         </div>
       </Lesson>

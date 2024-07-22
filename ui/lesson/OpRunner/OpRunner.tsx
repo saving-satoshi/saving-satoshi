@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
 import { OpCodeTypes } from './OPFunctions'
@@ -12,6 +12,8 @@ const OpRunner = ({
   readOnly,
   prePopulate,
 }: Omit<OpRunnerTypes, 'children'>) => {
+  const scrollRef = useRef(null)
+
   const [script, setScript] = useState(
     prePopulate ? answerScript.join(' ') : ''
   )
@@ -19,23 +21,33 @@ const OpRunner = ({
   const [height, setHeight] = useState<number>(0)
   const [stackHistory, setStackHistory] = useState<MainState | []>([])
 
-  useEffect(() => {}, [stackHistory, script, initialStack, height])
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollRef.current.scrollWidth
+    }
+  }, [stackHistory])
+
+  const handleReset = () => {
+    setStackHistory([])
+    if (success !== true) {
+      setSuccess(0)
+    }
+  }
 
   const handleScriptChange = (event) => {
-    if (stackHistory[0] !== undefined) {
-      setStackHistory([])
-    }
+    handleReset()
     setScript(event.target.value.toUpperCase())
   }
 
   const handleInitialStackChange = (event) => {
+    handleReset()
     setInitialStack(event.target.value)
   }
 
   const handleHeightChange = (event) => {
+    handleReset()
     setHeight(parseInt(event.target.value))
   }
-  console.log(stackHistory)
 
   const checkSuccessState = (tokens: T, stack: StackType) => {
     const filterToStringArray = tokens.map((token) => token.value)
@@ -51,8 +63,10 @@ const OpRunner = ({
     }
     if (containsEveryScript && doesStackValidate()) {
       setSuccess(true)
-    } else {
+    } else if (success !== true) {
       setSuccess(2)
+    } else {
+      setSuccess(success)
     }
   }
   const handleRun = () => {
@@ -69,15 +83,12 @@ const OpRunner = ({
   const handleTryAgain = () => {
     setSuccess(0)
   }
-  const handleReset = () => {
-    setStackHistory([])
-    setSuccess(0)
-  }
+
   let error = null
 
   return (
-    <div className="flex flex-col  text-white">
-      <div className="mt-4 flex  flex-col gap-1 border-b border-b-white pl-5">
+    <div className="flex grow flex-col text-white md:w-[50vw]">
+      <div className="flex flex-col gap-1 border-b border-b-white px-5 py-4">
         <p className="font-space-mono text-lg font-bold capitalize ">
           Your Script
         </p>
@@ -94,42 +105,43 @@ const OpRunner = ({
         />
       </div>
 
-      <div className="mt-4 flex  flex-col gap-1 border-b border-b-white py-5 pl-5">
-        <p className="font-space-mono text-lg font-bold capitalize">
-          Initial stack
-        </p>
-        <input
-          onChange={handleInitialStackChange}
-          className="border-none bg-transparent font-space-mono text-lg focus:outline-none"
-          type="text"
-          placeholder="..."
-        />
+      <div className="flex flex-col flex-wrap border-b border-b-white">
+        <div className="flex flex-col border-b border-b-white px-5 py-4">
+          <p className="font-space-mono text-lg font-bold capitalize">
+            Initial stack
+          </p>
+          <input
+            onChange={handleInitialStackChange}
+            className="flex-grow border-none bg-transparent font-space-mono text-lg focus:outline-none"
+            type="text"
+            placeholder="..."
+          />
+        </div>
+
+        <div className="flex flex-col px-5 py-4">
+          <p className="font-space-mono text-lg font-bold capitalize">
+            Next Block Height
+          </p>
+          <input
+            onChange={handleHeightChange}
+            className="flex-grow border-none bg-transparent text-lg focus:outline-none"
+            placeholder="630001"
+            type="number"
+            min="1"
+          />
+        </div>
       </div>
 
-      <div className="mt-4 flex  flex-col gap-2 border-b border-b-white py-5 pl-5">
-        <p className="font-space-mono text-lg font-bold capitalize">
-          Next Block Height
-        </p>
-        <input
-          onChange={handleHeightChange}
-          className="border-none bg-transparent text-lg focus:outline-none"
-          placeholder="630001"
-          type="number"
-          min="1"
-        />
-      </div>
-
-      <div className="flex h-10  gap-3 pl-5">
-        <button type="button" className="cursor-pointer" onClick={handleRun}>
-          Run
-        </button>
-        <button onClick={handleReset}>Reset</button>
-        <button>Step</button>
-      </div>
-
-      <div className="flex w-full flex-row gap-2.5 overflow-scroll pl-5">
+      <div
+        ref={scrollRef}
+        className="flex w-full grow flex-row gap-2.5 overflow-scroll border-b border-b-white px-5 py-4"
+      >
         {stackHistory.length === 0 && (
           <div className="flex flex-col">
+            <div className="mx-auto my-[5px] w-[140px] rounded-[3px] border border-white bg-transparent px-3 py-1 font-space-mono text-white">
+              OP_CODES
+            </div>
+            <hr className="my-2 -ml-2.5 border-dashed" />
             <div className="flex min-h-[204px] min-w-[164px] flex-col rounded-b-[10px] bg-black bg-opacity-20 p-2.5">
               <div
                 className="my-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
@@ -148,7 +160,6 @@ const OpRunner = ({
             return null
           }
           if (stack?.error) {
-            console.log(stack, '')
             error = stack.error?.message
           }
           return (
@@ -201,6 +212,14 @@ const OpRunner = ({
             )
           )
         })}
+      </div>
+
+      <div className="flex h-10  gap-3 pl-5">
+        <button type="button" className="cursor-pointer" onClick={handleRun}>
+          Run
+        </button>
+        <button onClick={handleReset}>Reset</button>
+        <button>Step</button>
       </div>
 
       <StatusBar

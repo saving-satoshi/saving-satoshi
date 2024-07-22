@@ -85,15 +85,14 @@ class LanguageExecutor {
     this.height = height ?? 0
     this.conditionalState = []
     this.negate = 0
-    if (initialStack) {
-      console.log(initialStack, 'initial stack')
+    if (initialStack.length !== 0) {
       this.state.push({
         stack: initialStack,
         operation: {
           tokenType: null,
           resolves: null,
-          value: 'Initial Stack',
-          type: 'Initial Stack',
+          value: 'INITIAL_STACK',
+          type: '',
         },
         step: 0,
         negate: 0,
