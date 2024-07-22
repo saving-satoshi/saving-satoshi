@@ -22,10 +22,11 @@ export default function Splits1({ lang }) {
   return (
     hydrated && (
       <OpRunnerLesson
-        userScript={['OP_1', 'OP_2', 'OP_ADD']}
+        answerScript={['OP_ADD', 'OP_3', 'OP_EQUAL']}
+        prePopulate
+        readOnly
         success={success}
         setSuccess={setSuccess}
-        finalStack={[3]}
       >
         <LessonInfo>
           <Title>{t('chapter_eight.building_blocks_six.heading')}</Title>
