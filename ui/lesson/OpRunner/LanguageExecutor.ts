@@ -1,5 +1,12 @@
 import { OpCodeTypes, opFunctions } from './OPFunctions'
-import { MainState, StackType, State, T, TokenTypes } from './types'
+import {
+  MainState,
+  StackType,
+  State,
+  T,
+  TokenTypes,
+  RunnerError,
+} from './runnerTypes'
 
 class LanguageExecutor {
   tokens: T
@@ -20,12 +27,10 @@ class LanguageExecutor {
       step: 0,
       negate: 0,
       height: null,
-      errors: [
-        {
-          type: '',
-          message: null,
-        },
-      ],
+      error: {
+        type: '',
+        message: null,
+      },
     },
   ]
 
@@ -37,11 +42,11 @@ class LanguageExecutor {
     const tokens: T = input.map((operation: string) => {
       const resolveValue = opFunctions?.[operation]
         ? opFunctions[operation]()
-        : null
+        : 'error'
       return {
         type: OpCodeTypes[operation] || '',
         resolves: resolveValue,
-        value: operation,
+        value: operation.trim(),
       }
     })
 
@@ -52,27 +57,49 @@ class LanguageExecutor {
     script: string,
     initialStack?: string[],
     height?: number
-  ): LanguageExecutor {
+  ): LanguageExecutor | null {
     const parsableInput = this.rawInputToParsableInput(script)
-    const tokens = this.parsableInputToTokens(parsableInput)
     const filteredStack = initialStack?.filter((arg) => arg.length !== 0)
+    try {
+      const tokens = this.parsableInputToTokens(parsableInput)
 
-    const langExecutor = new LanguageExecutor(
-      tokens,
-      filteredStack ?? [],
-      height
-    )
-    langExecutor.execute()
+      const langExecutor = new LanguageExecutor(
+        tokens,
+        filteredStack ?? [],
+        height
+      )
+      langExecutor.execute()
 
-    return langExecutor
+      return langExecutor
+    } catch (err) {
+      const langExecutor = new LanguageExecutor([], filteredStack ?? [], height)
+      langExecutor.execute()
+
+      return langExecutor
+    }
   }
   constructor(tokens: T, initialStack: string[], height?: number) {
     this.tokens = tokens
     this.state = []
-    this.stack = initialStack.length ? initialStack : []
+    this.stack = []
     this.height = height ?? 0
     this.conditionalState = []
     this.negate = 0
+    if (initialStack) {
+      console.log(initialStack, 'initial stack')
+      this.state.push({
+        stack: initialStack,
+        operation: {
+          tokenType: null,
+          resolves: null,
+          value: 'Initial Stack',
+          type: 'Initial Stack',
+        },
+        step: 0,
+        negate: 0,
+      })
+      this.stack.push(...initialStack)
+    }
   }
 
   execute() {
@@ -82,8 +109,9 @@ class LanguageExecutor {
       const currentStack = this.stack
       const currentState = this.state[index - 1]
       const currentNegate = this.negate
+      let error: RunnerError | null
       let addToState: State
-      let value: any
+      let opResolves: any
 
       switch (element.type) {
         case TokenTypes.CONSTANT:
@@ -106,8 +134,10 @@ class LanguageExecutor {
 
         case TokenTypes.ARITHMETIC:
           if (this.negate === 0) {
-            value = opFunctions[element.value](this.stack)
-            this.stack.push(value)
+            opResolves = opFunctions[element.value](this.stack)
+            if (opResolves.value) {
+              this.stack.push(opResolves.value)
+            }
           }
           addToState = {
             stack: [...currentStack],
@@ -119,14 +149,24 @@ class LanguageExecutor {
             },
             step: index,
             negate: currentNegate,
+            error: {
+              type: element.value,
+              message: opResolves.error,
+            },
           }
           this.state.push(addToState)
           break
 
         case TokenTypes.DATA_PUSH:
           if (this.negate === 0) {
-            value = opFunctions[element.value](this.stack, this.tokens, index)
-            this.stack.push(value)
+            opResolves = opFunctions[element.value](
+              this.stack,
+              this.tokens,
+              index
+            )
+            if (opResolves.value) {
+              this.stack.push(opResolves.value)
+            }
           }
           addToState = {
             stack: [...currentStack],
@@ -138,6 +178,10 @@ class LanguageExecutor {
             },
             step: index,
             negate: currentNegate,
+            error: {
+              type: element.value,
+              message: opResolves.error,
+            },
           }
           this.state.push(addToState)
           index++
@@ -145,7 +189,7 @@ class LanguageExecutor {
 
         case TokenTypes.LOCK_TIME:
           if (this.negate === 0) {
-            value = opFunctions[element.value](this.stack, this.height)
+            opResolves = opFunctions[element.value](this.stack, this.height)
           }
           addToState = {
             stack: [...currentStack],
@@ -157,12 +201,16 @@ class LanguageExecutor {
             },
             negate: currentNegate,
             step: index,
+            error: {
+              type: element.value,
+              message: opResolves.error,
+            },
           }
           this.state.push(addToState)
           break
 
         case TokenTypes.CONDITIONAL:
-          value = opFunctions[element.value](
+          opResolves = opFunctions[element.value](
             this.stack,
             this.conditionalState,
             this.negate
@@ -175,17 +223,21 @@ class LanguageExecutor {
               value: element.value,
               type: element.type,
             },
-            negate: value,
+            negate: opResolves?.value,
             step: index,
+            error: {
+              type: element.value,
+              message: opResolves.error,
+            },
           }
-          this.negate = value
+          this.negate = opResolves?.value
           this.state.push(addToState)
           break
 
         case TokenTypes.CRYPTO:
           if (this.negate === 0) {
-            value = opFunctions[element.value](this.stack)
-            this.stack.push(value)
+            opResolves = opFunctions[element.value](this.stack)
+            if (opResolves?.value) this.stack.push(opResolves.value)
           }
           addToState = {
             stack: [...currentStack],
@@ -197,15 +249,19 @@ class LanguageExecutor {
             },
             negate: currentNegate,
             step: index,
+            error: {
+              type: element.value,
+              message: opResolves.error,
+            },
           }
           this.state.push(addToState)
           break
 
         case TokenTypes.BITWISE:
           if (this.negate === 0) {
-            value = opFunctions[element.value](this.stack)
-            if (value !== null || value !== undefined) {
-              this.stack.push(value)
+            opResolves = opFunctions[element.value](this.stack)
+            if (opResolves?.value !== null || opResolves?.value !== undefined) {
+              this.stack.push(opResolves.value)
             }
           }
           addToState = {
@@ -218,15 +274,19 @@ class LanguageExecutor {
             },
             negate: currentNegate,
             step: index,
+            error: {
+              type: element.value,
+              message: opResolves.error,
+            },
           }
           this.state.push(addToState)
           break
 
         case TokenTypes.STACK:
           if (this.negate === 0) {
-            value = opFunctions[element.value](this.stack)
-            if (value) {
-              this.stack.push(value)
+            opResolves = opFunctions[element.value](this.stack)
+            if (opResolves?.value) {
+              this.stack.push(opResolves.value)
             }
           }
           addToState = {
@@ -239,11 +299,29 @@ class LanguageExecutor {
             },
             negate: currentNegate,
             step: index,
+            error: opResolves?.value,
           }
           this.state.push(addToState)
           break
 
         default:
+          error = {
+            type: 'unknown',
+            message: `Error: Unknown opcode ${element.type}`,
+          }
+          addToState = {
+            stack: [...currentStack],
+            operation: {
+              tokenType: TokenTypes.CONSTANT,
+              resolves: element.value,
+              value: element.value,
+              type: element.type,
+            },
+            negate: currentNegate,
+            step: index,
+            error: error,
+          }
+          this.state.push(addToState)
           break
       }
 

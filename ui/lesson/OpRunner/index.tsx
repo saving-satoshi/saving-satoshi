@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { LessonDirection } from 'types'
 import Lesson from '../Lesson'
 import OpRunner from './OpRunner'
-import { OpRunnerTypes } from './types'
+import { OpRunnerTypes } from './runnerTypes'
 
 const tabData = [
   {

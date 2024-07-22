@@ -3,15 +3,18 @@ import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
 import { OpCodeTypes } from './OPFunctions'
 import { StatusBar } from 'ui/common'
-import { MainState, OpRunnerTypes, StackType, T } from './types'
+import { MainState, OpRunnerTypes, StackType, T } from './runnerTypes'
 
 const OpRunner = ({
   success,
   setSuccess,
-  userScript,
-  finalStack,
+  answerScript,
+  readOnly,
+  prePopulate,
 }: Omit<OpRunnerTypes, 'children'>) => {
-  const [script, setScript] = useState('')
+  const [script, setScript] = useState(
+    prePopulate ? answerScript.join(' ') : ''
+  )
   const [initialStack, setInitialStack] = useState('')
   const [height, setHeight] = useState<number>(0)
   const [stackHistory, setStackHistory] = useState<MainState | []>([])
@@ -32,32 +35,24 @@ const OpRunner = ({
   const handleHeightChange = (event) => {
     setHeight(parseInt(event.target.value))
   }
+  console.log(stackHistory)
 
   const checkSuccessState = (tokens: T, stack: StackType) => {
     const filterToStringArray = tokens.map((token) => token.value)
-    const isSuccess = userScript.every((token) =>
+    const containsEveryScript = answerScript.every((token) =>
       filterToStringArray.includes(token)
     )
-    const isStackEqual = () => {
-      if (finalStack?.length === stack.length) {
-        const isElmSame = finalStack.every((elm) => stack.includes(elm))
-        return isElmSame
-      } else {
-        return false
+
+    const doesStackValidate = () => {
+      if (stack?.length === 1 && (stack[0] === 1 || stack[0] === true)) {
+        return true
       }
+      return false
     }
-    if (!finalStack) {
-      if (isSuccess) {
-        setSuccess(true)
-      } else {
-        setSuccess(2)
-      }
+    if (containsEveryScript && doesStackValidate()) {
+      setSuccess(true)
     } else {
-      if (isSuccess && isStackEqual()) {
-        setSuccess(true)
-      } else {
-        setSuccess(false)
-      }
+      setSuccess(2)
     }
   }
   const handleRun = () => {
@@ -67,8 +62,8 @@ const OpRunner = ({
       initialStackArray,
       height
     )
-    setStackHistory(runnerState.state)
-    checkSuccessState(runnerState.tokens, runnerState.stack)
+    setStackHistory(runnerState?.state || [])
+    checkSuccessState(runnerState?.tokens || [], runnerState?.stack ?? [])
   }
 
   const handleTryAgain = () => {
@@ -78,6 +73,7 @@ const OpRunner = ({
     setStackHistory([])
     setSuccess(0)
   }
+  let error = null
 
   return (
     <div className="flex flex-col  text-white">
@@ -90,6 +86,7 @@ const OpRunner = ({
           onChange={handleScriptChange}
           autoComplete="off"
           value={script}
+          readOnly={readOnly}
           placeholder="Enter your script here..."
           autoCapitalize="none"
           spellCheck="false"
@@ -146,8 +143,15 @@ const OpRunner = ({
           </div>
         )}
 
-        {stackHistory.map(
-          (stack, index) =>
+        {stackHistory.map((stack, index) => {
+          if (error) {
+            return null
+          }
+          if (stack?.error) {
+            console.log(stack, '')
+            error = stack.error?.message
+          }
+          return (
             stack.negate === 0 && (
               <div key={`Overall-container${index}`} className="flex flex-col">
                 <div
@@ -158,46 +162,51 @@ const OpRunner = ({
                         stack.operation.tokenType === 'conditional',
                       'border-[#3DCFEF] text-[#3DCFEF]':
                         stack.operation.tokenType !== 'conditional',
+                      'border-[#F3241D] text-[#F3241D]': stack?.error?.message,
                     }
                   )}
                 >
                   {stack.operation.value}
                 </div>
                 <hr className="my-2 -ml-2.5 border-dashed" />
-                <div
-                  key={`Container${index}`}
-                  className="flex h-[204px] min-w-[164px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
-                >
+                {stack && (
                   <div
-                    key={index}
-                    className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
-                    style={{ whiteSpace: 'pre-wrap' }}
+                    key={`Container${index}`}
+                    className="flex h-[204px] min-w-[164px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
                   >
-                    {stack?.stack
-                      ?.slice()
-                      .reverse()
-                      .map((item, i) => (
-                        <div
-                          key={`item${i}`}
-                          className="my-[5px] w-[140px] rounded-[3px] bg-white/15 px-3 py-1"
-                        >
-                          {JSON.stringify(
-                            !isNaN(parseFloat(item)) && isFinite(item)
-                              ? parseInt(item)
-                              : item
-                          )}
-                        </div>
-                      ))}
+                    <div
+                      key={index}
+                      className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
+                      style={{ whiteSpace: 'pre-wrap' }}
+                    >
+                      {stack?.stack
+                        ?.slice()
+                        .reverse()
+                        .map((item, i) => (
+                          <div
+                            key={`item${i}`}
+                            className="my-[5px] w-[140px] rounded-[3px] bg-white/15 px-3 py-1"
+                          >
+                            {JSON.stringify(
+                              !isNaN(parseFloat(item)) && isFinite(item)
+                                ? parseInt(item)
+                                : item
+                            )}
+                          </div>
+                        ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             )
-        )}
+          )
+        })}
       </div>
 
       <StatusBar
         handleTryAgain={handleTryAgain}
         className="h-14 min-h-14 grow"
+        errorMessage={error || ''}
         success={success}
       />
     </div>

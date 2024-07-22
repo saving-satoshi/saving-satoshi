@@ -2,11 +2,12 @@ import { Dispatch, SetStateAction } from 'react'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 
 export interface OpRunnerTypes {
-  userScript: string[]
+  answerScript: string[]
   success: boolean | SuccessNumbers
   setSuccess: Dispatch<SetStateAction<number | boolean>>
   children?: React.ReactNode
-  finalStack?: any[]
+  readOnly?: boolean
+  prePopulate?: boolean
 }
 
 export enum TokenTypes {
@@ -18,6 +19,7 @@ export enum TokenTypes {
   CRYPTO = 'crypto',
   BITWISE = 'bitwise',
   STACK = 'stack',
+  DEFAULT = 'default',
 }
 interface Token {
   type: TokenTypes
@@ -36,7 +38,7 @@ export interface State {
   step: number
   negate: number
   height?: number | null
-  errors?: Error[]
+  error?: RunnerError
 }
 
 export interface Operation {
@@ -46,7 +48,7 @@ export interface Operation {
   type: any
 }
 
-export interface Error {
+export interface RunnerError {
   type: string
-  message: any
+  message: string | null
 }
