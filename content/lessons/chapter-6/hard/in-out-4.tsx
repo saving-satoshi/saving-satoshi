@@ -10,7 +10,8 @@ import { useAtom } from 'jotai'
 import { currentLanguageAtom } from 'state/state'
 
 export const metadata = {
-  title: 'chapter_six.in_out_four.title',
+  title: 'chapter_six.in_out_four.hard.title',
+  navigation_title: 'chapter_six.in_out_four.hard.nav_title',
   key: 'CH6INO4_HARD',
 }
 
@@ -19,49 +20,49 @@ export default function InOut4({ lang }) {
   const [currentLanguage] = useAtom(currentLanguageAtom)
 
   const tableHeading = [
-    t('chapter_six.in_out_four.table_one.heading.one'),
-    t('chapter_six.in_out_four.table_one.heading.two'),
-    t('chapter_six.in_out_four.table_one.heading.three'),
-    t('chapter_six.in_out_four.table_one.heading.four'),
+    t('chapter_six.in_out_four.hard.table_one.heading.one'),
+    t('chapter_six.in_out_four.hard.table_one.heading.two'),
+    t('chapter_six.in_out_four.hard.table_one.heading.three'),
+    t('chapter_six.in_out_four.hard.table_one.heading.four'),
   ]
   const outputRows = [
     [
-      t('chapter_six.in_out_four.table_one.row_one.column.one'),
-      t('chapter_six.in_out_four.table_one.row_one.column.two'),
-      t('chapter_six.in_out_four.table_one.row_one.column.three'),
-      t('chapter_six.in_out_four.table_one.row_one.column.four'),
+      t('chapter_six.in_out_four.hard.table_one.row_one.column.one'),
+      t('chapter_six.in_out_four.hard.table_one.row_one.column.two'),
+      t('chapter_six.in_out_four.hard.table_one.row_one.column.three'),
+      t('chapter_six.in_out_four.hard.table_one.row_one.column.four'),
     ],
     [
-      t('chapter_six.in_out_four.table_one.row_two.column.one'),
-      t('chapter_six.in_out_four.table_one.row_two.column.two'),
-      t('chapter_six.in_out_four.table_one.row_two.column.three'),
-      t('chapter_six.in_out_four.table_one.row_two.column.four'),
+      t('chapter_six.in_out_four.hard.table_one.row_two.column.one'),
+      t('chapter_six.in_out_four.hard.table_one.row_two.column.two'),
+      t('chapter_six.in_out_four.hard.table_one.row_two.column.three'),
+      t('chapter_six.in_out_four.hard.table_one.row_two.column.four'),
     ],
   ]
   const inputRows = [
     [
-      t('chapter_six.in_out_four.table_two.row_one.column.one'),
-      t('chapter_six.in_out_four.table_two.row_one.column.two'),
-      t('chapter_six.in_out_four.table_two.row_one.column.three'),
-      t('chapter_six.in_out_four.table_two.row_one.column.four'),
+      t('chapter_six.in_out_four.hard.table_two.row_one.column.one'),
+      t('chapter_six.in_out_four.hard.table_two.row_one.column.two'),
+      t('chapter_six.in_out_four.hard.table_two.row_one.column.three'),
+      t('chapter_six.in_out_four.hard.table_two.row_one.column.four'),
     ],
     [
-      t('chapter_six.in_out_four.table_two.row_two.column.one'),
-      t('chapter_six.in_out_four.table_two.row_two.column.two'),
-      t('chapter_six.in_out_four.table_two.row_two.column.three'),
-      t('chapter_six.in_out_four.table_two.row_two.column.four'),
+      t('chapter_six.in_out_four.hard.table_two.row_two.column.one'),
+      t('chapter_six.in_out_four.hard.table_two.row_two.column.two'),
+      t('chapter_six.in_out_four.hard.table_two.row_two.column.three'),
+      t('chapter_six.in_out_four.hard.table_two.row_two.column.four'),
     ],
     [
-      t('chapter_six.in_out_four.table_two.row_three.column.one'),
-      t('chapter_six.in_out_four.table_two.row_three.column.two'),
-      t('chapter_six.in_out_four.table_two.row_three.column.three'),
-      t('chapter_six.in_out_four.table_two.row_three.column.four'),
+      t('chapter_six.in_out_four.hard.table_two.row_three.column.one'),
+      t('chapter_six.in_out_four.hard.table_two.row_three.column.two'),
+      t('chapter_six.in_out_four.hard.table_two.row_three.column.three'),
+      t('chapter_six.in_out_four.hard.table_two.row_three.column.four'),
     ],
     [
-      t('chapter_six.in_out_four.table_two.row_four.column.one'),
-      t('chapter_six.in_out_four.table_two.row_four.column.two'),
-      t('chapter_six.in_out_four.table_two.row_four.column.three'),
-      t('chapter_six.in_out_four.table_two.row_four.column.four'),
+      t('chapter_six.in_out_four.hard.table_two.row_four.column.one'),
+      t('chapter_six.in_out_four.hard.table_two.row_four.column.two'),
+      t('chapter_six.in_out_four.hard.table_two.row_four.column.three'),
+      t('chapter_six.in_out_four.hard.table_two.row_four.column.four'),
     ],
   ]
 
@@ -219,14 +220,14 @@ class Input:
       lang={lang}
       config={config}
       lessonKey={metadata.key}
-      successMessage={t('chapter_six.in_out_four.success')}
+      successMessage={t('chapter_six.in_out_four.hard.success')}
       onSelectLanguage={handleSelectLanguage}
       saveData
     >
       <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
-        <Title>{t('chapter_six.in_out_four.heading')}</Title>
+        <Title>{t('chapter_six.in_out_four.hard.heading')}</Title>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_one')}
+          {t('chapter_six.in_out_four.hard.paragraph_one')}
         </Text>
         <CodeExample
           className="mt-4 font-space-mono"
@@ -234,28 +235,28 @@ class Input:
           language="shell"
         />
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_two')}
+          {t('chapter_six.in_out_four.hard.paragraph_two')}
         </Text>
 
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_three')}
+          {t('chapter_six.in_out_four.hard.paragraph_three')}
         </Text>
 
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_four')}
+          {t('chapter_six.in_out_four.hard.paragraph_four')}
         </Text>
 
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_five')}
+          {t('chapter_six.in_out_four.hard.paragraph_five')}
         </Text>
 
         <div className="mt-4">
-          <Title>{t('chapter_six.in_out_four.heading_two')}</Title>
+          <Title>{t('chapter_six.in_out_four.hard.heading_two')}</Title>
         </div>
         <Table headings={tableHeading} rows={outputRows} />
 
         <div className="mt-4">
-          <Title>{t('chapter_six.in_out_four.heading_three')}</Title>
+          <Title>{t('chapter_six.in_out_four.hard.heading_three')}</Title>
         </div>
         <Table headings={tableHeading} rows={inputRows} />
       </LessonInfo>

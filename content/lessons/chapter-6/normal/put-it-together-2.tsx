@@ -15,8 +15,8 @@ import {
 import { Loader } from 'shared'
 
 export const metadata = {
-  title: 'chapter_six.put_it_together_two.title',
-  navigation_title: 'chapter_six.put_it_together_two.nav_title',
+  title: 'chapter_six.put_it_together_two.normal.title',
+  navigation_title: 'chapter_six.put_it_together_two.normal.nav_title',
   key: 'CH6PUT2_NORMAL',
 }
 
@@ -433,73 +433,73 @@ ${combinedCode}
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_six.put_it_together_two.success')}
+        successMessage={t('chapter_six.put_it_together_two.normal.success')}
         loadingSavedCode={isLoading}
       >
         <LessonInfo>
-          <Title>{t('chapter_six.put_it_together_two.heading')}</Title>
+          <Title>{t('chapter_six.put_it_together_two.normal.heading')}</Title>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_one')}
+            {t('chapter_six.put_it_together_two.normal.paragraph_one')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_two')}
+            {t('chapter_six.put_it_together_two.normal.paragraph_two')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_three')}
+            {t('chapter_six.put_it_together_two.normal.paragraph_three')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_four')}
+            {t('chapter_six.put_it_together_two.normal.paragraph_four')}
           </Text>
 
           {/* Step 1 */}
           <hr className="my-7 h-[1px] w-full opacity-25" />
           <Text className="mt-4 font-nunito text-xl font-bold text-white">
-            {t('chapter_six.put_it_together_two.heading_one')}
+            {t('chapter_six.put_it_together_two.normal.heading_one')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_five')}
+            {t('chapter_six.put_it_together_two.normal.paragraph_five')}
           </Text>
 
           {/* Step 2 */}
           <hr className="my-7 h-[1px] w-full opacity-25" />
           <Text className="mt-4 font-nunito text-xl font-bold text-white">
-            {t('chapter_six.put_it_together_two.heading_two')}
+            {t('chapter_six.put_it_together_two.normal.heading_two')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_six')}
+            {t('chapter_six.put_it_together_two.normal.paragraph_six')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_seven')}
+            {t('chapter_six.put_it_together_two.normal.paragraph_seven')}
           </Text>
 
           {/* Step 3 */}
           <hr className="my-7 h-[1px] w-full opacity-25" />
           <Text className="mt-4 font-nunito text-xl font-bold text-white">
-            {t('chapter_six.put_it_together_two.heading_three')}
+            {t('chapter_six.put_it_together_two.normal.heading_three')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_eight')}
+            {t('chapter_six.put_it_together_two.normal.paragraph_eight')}
           </Text>
 
           {/* Step 4 */}
           <hr className="my-7 h-[1px] w-full opacity-25" />
           <Text className="mt-4 font-nunito text-xl font-bold text-white">
-            {t('chapter_six.put_it_together_two.heading_four')}
+            {t('chapter_six.put_it_together_two.normal.heading_four')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_nine')}
+            {t('chapter_six.put_it_together_two.normal.paragraph_nine')}
           </Text>
 
           {/* Step 5 */}
           <hr className="my-7 h-[1px] w-full opacity-25" />
           <Text className="mt-4 font-nunito text-xl font-bold text-white">
-            {t('chapter_six.put_it_together_two.heading_five')}
+            {t('chapter_six.put_it_together_two.normal.heading_five')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_ten')}
+            {t('chapter_six.put_it_together_two.normal.paragraph_ten')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_eleven')}
+            {t('chapter_six.put_it_together_two.normal.paragraph_eleven')}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>

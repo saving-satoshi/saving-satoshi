@@ -9,6 +9,7 @@ import { countLines, detectLanguage, Language } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
+  navigation_title: 'chapter_six.put_it_together_five.nav_title',
   key: 'CH6PUT5_HARD',
 }
 
@@ -19,10 +20,10 @@ export default function DeriveMessage7({ lang }) {
   const [isLoading, setIsLoading] = useState(true)
 
   const getPrevLessonData = async () => {
-    const data = await getData('CH6PUT4')
+    const data = await getData('CH6PUT4_HARD')
     if (data) {
       setPrevData({
-        lesson_id: 'CH6PUT4',
+        lesson_id: 'CH6PUT4_HARD',
         data: data?.code?.getDecoded(),
       })
     }

@@ -1025,3 +1025,23 @@ export const markLessonAsCompleteAtom = atom(
     })
   }
 )
+
+export const setChapterDifficultyAtom = atom(
+  null,
+  (get, set, { chapterId, difficultyLevel }) => {
+    const courseProgress = get(syncedCourseProgressAtom)
+    const updatedChapters = courseProgress.chapters.map((chapter) => {
+      if (chapter.id === chapterId) {
+        return {
+          ...chapter,
+          selectedDifficulty: difficultyLevel,
+        }
+      }
+      return chapter
+    })
+    set(syncedCourseProgressAtom, {
+      ...courseProgress,
+      chapters: updatedChapters,
+    })
+  }
+)
