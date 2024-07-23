@@ -1221,7 +1221,7 @@ const translations = {
         transaction_parts_eight:
           'Output#0 value: This is the amount that should is spent by the first output, expressed as a little-endian integer.',
         transaction_parts_nine:
-          'Output#0 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.'
+          'Output#0 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.',
         transaction_parts_ten:
           'Output#1 value: This is the amount that should be spent to the second output in little-endian bytes.',
         transaction_parts_eleven:
@@ -1239,7 +1239,7 @@ const translations = {
           'JavaScript hint: You can convert a hex string to a buffer of bytes using <span className="p-1 font-mono bg-[#00000033] m-1">Buffer.from(someString, \'hex\');</span>',
         signature_verification_heading: 'Signature Verification',
         signature_verification_paragraph_one:
-          'Signature verification is a mathematical algorithm in which one party provides a piece of data (the signature) that could only be generated if that party knows a secret number (the private key). Verification involves comparing the signature, the public key, and a given message. If the algorithm outputs a TRUE boolean, then the signature is considered authentic.'
+          'Signature verification is a mathematical algorithm in which one party provides a piece of data (the signature) that could only be generated if that party knows a secret number (the private key). Verification involves comparing the signature, the public key, and a given message. If the algorithm outputs a TRUE boolean, then the signature is considered authentic.',
       },
       verify_signature_three: {
         signature_encoding_heading: 'Signature Encoding',
@@ -1274,7 +1274,7 @@ const translations = {
       validate_signature_two: {
         base64_encoding_heading: 'Base64 Encoding',
         base64_encoding_paragraph_one:
-          'Base64 is a basic byte to text encoding scheme that just allows for the data to be convereted to bytes which can then be used in buffers or from bytes to text in such a way that it avoids any problems with url paths and query params. This differs from the base58 encoding scheme in that it still includes the similar characters (zero, uppercase 'O', uppercase 'I', and lowercase 'l') that may otherwise be confusing to a user when trying to copy or dictate the encoded message.',
+          "Base64 is a basic byte to text encoding scheme that just allows for the data to be convereted to bytes which can then be used in buffers or from bytes to text in such a way that it avoids any problems with url paths and query params. This differs from the base58 encoding scheme in that it still includes the similar characters (zero, uppercase 'O', uppercase 'I', and lowercase 'l') that may otherwise be confusing to a user when trying to copy or dictate the encoded message.",
       },
       validate_signature_three: {
         signing_and_ownership_heading: 'Message Signing and Ownership',
