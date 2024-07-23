@@ -21,18 +21,20 @@ export default function DeriveMessageResourcesFour({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_five.resources.derive_message.op_pushdata_heading')}
+            {t(
+              'chapter_five.resources.derive_message_four.op_checksig_heading'
+            )}
           </Text>
           <Text>
             {t(
-              'chapter_five.resources.derive_message.op_pushdata_paragraph_one'
+              'chapter_five.resources.derive_message_four.op_checksig_paragraph_one'
             )}
           </Text>
         </>
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}

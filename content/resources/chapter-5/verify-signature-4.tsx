@@ -45,7 +45,7 @@ export default function VerifySignatureResourcesFour({ lang }) {
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}

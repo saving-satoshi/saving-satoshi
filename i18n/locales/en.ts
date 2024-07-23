@@ -1192,19 +1192,59 @@ const translations = {
         "You didn't trust, you verified.<br>In doing so you discovered the whole story about his family was a fabrication, and you proved it to the whole world. This casts a big shadow on his credibility, and the credibility of his company.",
     },
     resources: {
-      derive_message: {
+      derive_message_three: {
         op_pushdata_heading: 'OP_PUSHDATA',
         op_pushdata_paragraph_one:
-          'OP_PUSHDATA in Bitcoin script plays a crucial role in facilitating the insertion of arbitrary pieces of data into the blockchain. It is an opcode that allows for the inclusion of data elements of varying sizes, making Bitcoin’s scripting language more versatile. This opcode is particularly significant in enabling the implementation of various smart contract functionalities and custom transaction types. You can read more about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.',
+          'OP_PUSHDATA in Bitcoin script plays a crucial role in facilitating the insertion of arbitrary pieces of data into the blockchain. It is actually a whole category of opcodes that allow for the inclusion of data elements of varying sizes, making Bitcoin’s scripting language more versatile. This opcode is particularly significant in enabling the implementation of various smart contract functionalities and custom transaction types. Given that we know this is supposed to push 71 bytes of data onto the stack, can you work out how this opcode might be represented in hex? You can read more about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.',
       },
-      verify_signature: {
-        signature_verification_heading: 'Signature Verification',
-        signature_verification_paragraph_one:
-          'Signature verification is crucial in Bitcoin to confirm that a transaction is authorized by the holder of the private key. In the context of ECDSA, it involves checking that a signature (comprising two numbers, r and s) is valid for a given public key and message. This verification ensures the integrity and authenticity of a transaction.',
+      derive_message_four: {
+        op_checksig_heading: 'OP_CHECKSIG',
+        op_checksig_paragraph_one:
+          'OP_CHECKSIG in Bitcoin script is critically important to ensuring that the correct private key is able to spend a given transaction. In almost every Bitcoin script there will be an OP_CHECKSIG to ensure that the person attempting to spend the bitcoin is able to do so with the given key. You can read about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.',
+      },
+      derive_message_six: {
+        transaction_parts_heading: 'Transaction Parts',
+        transaction_parts_one:
+          'Version: This version indicates how the the transaction will be organized.',
+        transaction_parts_two:
+          'Number of inputs: The number of inputs in this transaction.',
+        transaction_parts_three:
+          'Input #0 TXID: This is the hash of the transaction that input #0 spends from.',
+        transaction_parts_four:
+          'Input #0 index: This is the output index of the transaction identified by the above TXID that provides a source of funds.',
+        transaction_parts_five:
+          'Scriptsig: This is the data that authorizes the spending of the output specified above. Typically consists of signatures.',
+        transaction_parts_six:
+          'Input #0 sequence: This is the sequence number for the spending input.',
+        transaction_parts_seven:
+          'Number of outputs: This indicates how many outputs the tx has.',
+        transaction_parts_eight:
+          'Output #0 value: This is the amount that is spent by the first output, expressed as a little-endian integer.',
+        transaction_parts_nine:
+          'Output #0 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.',
+        transaction_parts_ten:
+          'Output #1 value: This is the amount that is spent by the second output, expressed as a little-endian integer.',
+        transaction_parts_eleven:
+          'Output #1 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.',
+        transaction_parts_twelve:
+          'Locktime: A block height before which this transaction is not valid for confirmation.',
+      },
+      derive_message_seven: {
+        sighash_type_flag_heading: 'SigHash Type Flag',
+        sighash_type_flag_paragraph_one:
+          'SigHash flags are a mechanism in Bitcoin that define which parts of a transaction are included in the hash that is signed by a private key. Essentially, they determine the scope of commitment by the signer to specific parts of the transaction data. The SigHash flag is a single byte appended to each signature and can vary between inputs within the same transaction. There are several types of SigHash flags you can learn about <Link href="https://river.com/learn/terms/s/sighash-flag" target="_blank" className="underline">here</Link>.',
       },
       verify_signature_two: {
         tip_one:
           'JavaScript hint: You can convert a hex string to a buffer of bytes using <span className="p-1 font-mono bg-[#00000033] m-1">Buffer.from(someString, \'hex\');</span>',
+        signature_verification_heading: 'Signature Verification',
+        signature_verification_paragraph_one:
+          'Signature verification is a mathematical algorithm in which one party provides a piece of data (the signature) that could only be generated if that party knows a secret number (the private key). Verification involves comparing the signature, the public key, and a given message. If the algorithm outputs a TRUE boolean, then the signature is considered authentic.',
+      },
+      verify_signature_three: {
+        signature_encoding_heading: 'Signature Encoding',
+        signature_encoding_paragraph_one:
+          'A (DER) signature or Distinguished Encoding Rules is simply a format used to encode an ECDSA signature in Bitcoin. An ECDSA signature is generated using a private key and a hash of the signed message. It consists of two 32-byte numbers (r,s). It has multiple components you can learn more about <Link href="https://technicaldifficulties.io/2020/07/22/bip-66-unpacking-der-signatures/" target="_blank" className="underline">here</Link>.',
       },
       verify_signature_four: {
         eliptic_curve_heading:
@@ -1226,10 +1266,25 @@ const translations = {
         modular_inverse_paragraph_one:
           "The modular inverse of a number a modulo m is a number b such that (a * b) % m = 1. Finding the modular inverse is a critical step in ECDSA signature verification. It's used in the calculation of u1 and u2 during the verification process.",
       },
-      validate_signature: {
+      validate_signature_one: {
         message_verification_heading: 'Importance of Message Verification',
         message_verification_paragraph_one:
           'Message verification enhances the security of communications within the Bitcoin ecosystem. It allows parties to verify the authenticity and integrity of messages, which is valuable in situations where trust and verification are essential, such as in peer-to-peer transactions or communication between parties in a smart contract. Furthermore, message verification serves as a foundation for various applications, including identity verification and the attestation of ownership of a particular Bitcoin address. It adds a layer of cryptographic assurance, reinforcing the trustless and decentralized nature of the Bitcoin network.',
+      },
+      validate_signature_two: {
+        base64_encoding_heading: 'Base64 Encoding',
+        base64_encoding_paragraph_one:
+          "Base64 is a basic byte to text encoding scheme that just allows for the data to be convereted to bytes which can then be used in buffers or from bytes to text in such a way that it avoids any problems with url paths and query params. This differs from the base58 encoding scheme in that it still includes the similar characters (zero, uppercase 'O', uppercase 'I', and lowercase 'l') that may otherwise be confusing to a user when trying to copy or dictate the encoded message.",
+      },
+      validate_signature_three: {
+        signing_and_ownership_heading: 'Message Signing and Ownership',
+        signing_and_ownership_paragraph_one:
+          "Based on Bitcoin's psuedo-anonymity we are limited in what we are able to definitively prove because the owner of a key can refuse to sign a message or sign a message with an incorrect key on purpose. The only thing we can prove is that the key that creates an invalid signature is not one that matches a key that can sign a message.",
+      },
+      validate_signature_four: {
+        one_for_one_heading: 'One for One',
+        one_for_one_paragraph_one:
+          'To ensure the reliability and security of ECDSA, a signature created by a private key can only be verified by the corresponding public key. If different private keys could produce the same public key or signature, it would undermine the security and reliability of ECDSA. Through this we can know that the public key that was able to sign this message has ownership of this bitcoin.',
       },
     },
   },
