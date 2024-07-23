@@ -23,7 +23,7 @@ const javascriptChallenge = {
   defaultCode: `function verify_keys(keys) {
   // For each key in the listed keys lets use our verify function to check which key signed this message
   for (key in keys) {
-    // What infor do we need to verify the message?
+    // What info do we need to verify the message?
     if (verify(sig_r_fe, sig_s_fe, keyGE, msg_fe)) {
       return value
     }
@@ -44,7 +44,7 @@ const pythonChallenge = {
   defaultCode: `def verify_keys(keys):
     # For each key in the listed keys lets use our verify function to check which key signed this message
     for key in keys:
-        # What infor do we need to verify the message?
+        # What info do we need to verify the message?
         if verify(sig_r, sig_s, key_ge, msg):
             return key`,
   validate: async () => {

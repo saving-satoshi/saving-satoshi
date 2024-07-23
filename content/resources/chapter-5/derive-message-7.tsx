@@ -34,7 +34,7 @@ const javascript = {
   // msg += output #0 value (10 BTC or 1,000,000,000 satoshis);
   // msg += output #0 scriptPubKey (Hal Finney's public key plus OP_CHECKSIG);
   // msg += outut #1 value (40 BTC or 4,000,000,000 satoshis);
-  // msg += output #1 scriptPubKey (Satoshi's oen public key again, for change);
+  // msg += output #1 scriptPubKey (Satoshi's own public key again, for change);
   // msg += locktime;
   // SIGHASH type
   msg += '01000000';
@@ -66,7 +66,7 @@ const python = {
     # msg += output #0 value (10 BTC or 1,000,000,000 satoshis)
     # msg += output #0 scriptPubKey (Hal Finney's public key plus OP_CHECKSIG)
     # msg += outut #1 value (40 BTC or 4,000,000,000 satoshis)
-    # msg += output #1 scriptPubKey (Satoshi's oen public key again, for change)
+    # msg += output #1 scriptPubKey (Satoshi's own public key again, for change)
     # msg += locktime
     # SIGHASH type
     msg += '01000000'
