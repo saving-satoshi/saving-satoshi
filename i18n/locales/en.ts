@@ -1219,13 +1219,13 @@ const translations = {
         transaction_parts_seven:
           'Number of outputs: This indicates how many outputs the tx has.',
         transaction_parts_eight:
-          'Output#0 value: This is the amount that should is spent by the first output, expressed as a little-endian integer.',
+          'Output#0 value: This is the amount that is spent by the first output, expressed as a little-endian integer.',
         transaction_parts_nine:
           'Output#0 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.',
         transaction_parts_ten:
-          'Output#1 value: This is the amount that should be spent to the second output in little-endian bytes.',
+          'Output#1 value: This is the amount that is spent by the second output, expressed as a little-endian integer.',
         transaction_parts_eleven:
-          'Output#1 scriptPubKey: This is the public key of the sender so that the change output will go back into their possesion.',
+          'Output#1 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.',
         transaction_parts_twelve:
           'Locktime: A block height before which this transaction is not valid for confirmation.',
       },
@@ -1244,7 +1244,7 @@ const translations = {
       verify_signature_three: {
         signature_encoding_heading: 'Signature Encoding',
         signature_encoding_paragraph_one:
-          'A (DER) signature or Distinguished Encoding Rules is simply a formate used to encode an ECDSA signature in Bitcoin. An ECDSA signature is generated using a private key and a hash of the signed message. It consists of two 32-byte numbers (r,s). It has multiple components you can learn more about <Link href="https://bitcoin.stackexchange.com/questions/12554/why-the-signature-is-always-65-13232-bytes-long/12556#12556" target="_blank" className="underline">here</Link>.',
+          'A (DER) signature or Distinguished Encoding Rules is simply a format used to encode an ECDSA signature in Bitcoin. An ECDSA signature is generated using a private key and a hash of the signed message. It consists of two 32-byte numbers (r,s). It has multiple components you can learn more about <Link href="https://technicaldifficulties.io/2020/07/22/bip-66-unpacking-der-signatures/" target="_blank" className="underline">here</Link>.',
       },
       verify_signature_four: {
         eliptic_curve_heading:
