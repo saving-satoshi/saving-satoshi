@@ -5,6 +5,7 @@ import { atom } from 'jotai'
 import { atomEffect } from 'jotai-effect'
 import { CourseProgress, LessonInState, SetAtom } from 'types'
 import { accountAtom, isAuthLoadingAtom } from './state'
+import deepmerge, { Options } from 'deepmerge'
 
 export enum DifficultyLevel {
   NORMAL = 'NORMAL',
@@ -718,7 +719,26 @@ export const nextLessonPathAtom = atom((get) => {
   return nextLesson ? nextLesson.path : null
 })
 
-// Atom to manually load progress considering account state
+// Custom array merge function to merge lessons and difficulties based on their unique identifiers
+function mergeArrays(target: any[], source: any[]): any[] {
+  const merged = [...target]
+  source.forEach((sourceItem) => {
+    const targetIndex = target.findIndex(
+      (item) => item.id === sourceItem.id || item.level === sourceItem.level
+    )
+    if (targetIndex === -1) {
+      merged.push(sourceItem)
+    } else {
+      merged[targetIndex] = deepmerge(target[targetIndex], sourceItem, {
+        arrayMerge: mergeArrays,
+      })
+    }
+  })
+  return merged
+}
+
+const mergeOptions: Options = { arrayMerge: mergeArrays }
+
 export const loadProgressAtom = atom(null, async (get, set) => {
   const account = get(accountAtom)
   const isLoadingAccount = get(isAuthLoadingAtom)
@@ -726,10 +746,16 @@ export const loadProgressAtom = atom(null, async (get, set) => {
   if (account) {
     set(isLoadingProgressAtom, true)
     const progressFromServer = await getProgress()
-    set(syncedCourseProgressAtom, progressFromServer)
+    set(
+      syncedCourseProgressAtom,
+      deepmerge(defaultProgressState, progressFromServer, mergeOptions)
+    )
   } else {
     const progressFromLocalStorage = await getProgressLocal()
-    set(syncedCourseProgressAtom, progressFromLocalStorage)
+    set(
+      syncedCourseProgressAtom,
+      deepmerge(defaultProgressState, progressFromLocalStorage, mergeOptions)
+    )
   }
   set(isProgressLoadedAtom, true)
   set(isLoadingProgressAtom, false)
