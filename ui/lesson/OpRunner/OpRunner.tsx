@@ -12,7 +12,7 @@ const OpRunner = ({
   readOnly,
   prePopulate,
 }: Omit<OpRunnerTypes, 'children'>) => {
-  const scrollRef = useRef(null)
+  const scrollRef = useRef<HTMLDivElement>(null)
 
   const [script, setScript] = useState(
     prePopulate ? answerScript.join(' ') : ''
