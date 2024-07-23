@@ -59,9 +59,9 @@ const javascriptChallenge = {
   }
   const sig_s_inverted = invert(sig_s);
   // Implement ECDSA!
-  //   u1 = msg * s mod n
+  //   u1 = m / s mod n
   const u1 = (msg * sig_s_inverted) % ORDER;
-  //   u2 = r * s mod n
+  //   u2 = r / s mod n
   const u2 = (sig_r * sig_s_inverted) % ORDER;
 	// Calculate R = u1 * G + u2 * public key
   // We need to use the appropriate methods for point multiplication and addition

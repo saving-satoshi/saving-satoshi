@@ -24,7 +24,7 @@ const javascriptChallenge = {
 const [r, s] = decode_sig(vpSig)
 // This will encode Vanderpoole's message to a BigInt.
 const msg = encode_message(text)
-// lastly this will be the value we use in the verify function to help check the signature against the message.
+// Lastly we need the x and y coordinates of Satoshi's public key. These are the same ones we retrieved in an previous challenge. They will be used in the verify function to help check the signature against the message.
 const keyGE = new GE(new FE(publicKeyX), new FE(publicKeyY))`,
   validate: async () => {
     return [true, undefined]
@@ -42,7 +42,7 @@ const pythonChallenge = {
 [r, s] = decode_sig(vp_sig)
 # This will encode Vanderpoole's message to a BigInt.
 msg = encode_message(text)
-# lastly this will be the value we use in the verify function to help check the signature against the message.
+# Lastly we need the x and y coordinates of Satoshi's public key. These are the same ones we retrieved in an previous challenge. They will be used in the verify function to help check the signature against the message.
 key_ge = GE(public_key_x, public_key_y)`,
   validate: async () => {
     return [true, undefined]

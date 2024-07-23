@@ -1215,17 +1215,17 @@ const translations = {
         transaction_parts_five:
           'Scriptsig: This is the data that authorizes the spending of the output specified above. Typically consists of signatures.',
         transaction_parts_six:
-          'Input#0 sequence: This is the sequence for the spending input.',
+          'Input #0 sequence: This is the sequence number for the spending input.',
         transaction_parts_seven:
           'Number of outputs: This indicates how many outputs the tx has.',
         transaction_parts_eight:
-          'Output#0 value: This is the amount that is spent by the first output, expressed as a little-endian integer.',
+          'Output #0 value: This is the amount that is spent by the first output, expressed as a little-endian integer.',
         transaction_parts_nine:
-          'Output#0 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.',
+          'Output #0 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.',
         transaction_parts_ten:
-          'Output#1 value: This is the amount that is spent by the second output, expressed as a little-endian integer.',
+          'Output #1 value: This is the amount that is spent by the second output, expressed as a little-endian integer.',
         transaction_parts_eleven:
-          'Output#1 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.',
+          'Output #1 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.',
         transaction_parts_twelve:
           'Locktime: A block height before which this transaction is not valid for confirmation.',
       },
@@ -1279,7 +1279,7 @@ const translations = {
       validate_signature_three: {
         signing_and_ownership_heading: 'Message Signing and Ownership',
         signing_and_ownership_paragraph_one:
-          "Based on how Bitcoin's psuedo-anonymity we are limited in what we are able to prove because someone can refuse to sign a message even if they do infact have onwership of the correct key to sign a message. However, given this particular key we are able to prove that this key and the owner of said key is not the same person as Satoshi in this case because of the fact that this key does not properly sign the message.",
+          "Based on how Bitcoin's psuedo-anonymity we are limited in what we are able to definitively prove because someone can refuse to sign a message even if they do infact have onwership of the correct key to sign a message. Given this particular key we are only able to prove that this key and the owner of said key are not .",
       },
       validate_signature_four: {
         one_for_one_heading: 'One for One',

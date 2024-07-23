@@ -25,10 +25,9 @@ const javascriptChallenge = {
   const bytes = Buffer.from(msg, 'hex');
   // Then double-SHA256 the bytes.
   const single_hash = sha256Hash(bytes);
-  const double_hash = sha256Hash(single_hash);
+  const double_hash = sha256Hash(single_hash).digest();
   // Return a BigInt() from the 32-byte digest.
-  // Remember this is not standard hex at this point so it will need to be convereted before it can become a BigInt!
-  return BigInt(double_hash.toHex());
+  return BigInt(double_hash);
 }`,
   validate: async (answer) => {
     return [true, undefined]
