@@ -1279,7 +1279,7 @@ const translations = {
       validate_signature_three: {
         signing_and_ownership_heading: 'Message Signing and Ownership',
         signing_and_ownership_paragraph_one:
-          "Based on how Bitcoin's psuedo-anonymity we are limited in what we are able to definitively prove because someone can refuse to sign a message even if they do infact have onwership of the correct key to sign a message. Given this particular key we are only able to prove that this key and the owner of said key are not .",
+          "Based on how Bitcoin's psuedo-anonymity we are limited in what we are able to definitively prove because the owner of a key can refuse to sign a message or sign a message with an incorrect key on purpose. The only thing we can prove is that the key that creates an invalid signature is not one that matches a key that can sign a message.",
       },
       validate_signature_four: {
         one_for_one_heading: 'One for One',
