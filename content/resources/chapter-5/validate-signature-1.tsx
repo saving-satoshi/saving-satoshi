@@ -26,7 +26,7 @@ const javascriptChallenge = {
   const vector = Buffer.concat([
     sizeOfPrefix,
     prefixBytes,
-    sizeOfTExtBytes,
+    sizeOfTextBytes,
     textBytes
   ])
   const singleHash = sha256Hash(vector);

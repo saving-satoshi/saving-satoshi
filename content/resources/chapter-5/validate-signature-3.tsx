@@ -20,9 +20,9 @@ const javascriptChallenge = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `// We need to take the encoded signature for this value to split into its r and s values.
+  defaultCode: `// We need to split the value of this encoded signature into its r and s values.
 const [r, s] = decode_sig(vpSig)
-// This will be the message by Vanderpoole encoded into a BigInt.
+// This will encode Vanderpoole's message to a BigInt.
 const msg = encode_message(text)
 // lastly this will be the value we use in the verify function to help check the signature against the message.
 const keyGE = new GE(new FE(publicKeyX), new FE(publicKeyY))`,
@@ -38,9 +38,9 @@ const pythonChallenge = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `# We need to take the encoded signature for this value to split into its r and s values.
+  defaultCode: `# We need to split the value of this encoded signature into its r and s values.
 [r, s] = decode_sig(vp_sig)
-# This will be the message by Vanderpoole encoded into a BigInt.
+# This will encode Vanderpoole's message to a BigInt.
 msg = encode_message(text)
 # lastly this will be the value we use in the verify function to help check the signature against the message.
 key_ge = GE(public_key_x, public_key_y)`,
