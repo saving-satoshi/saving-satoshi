@@ -142,7 +142,7 @@ export default function Chapter({ children, metadata, lang }) {
             {t(chapter.metadata.title)}
           </h3>
 
-          {chapterWeAreRendering?.hasDifficulty && (
+          {chapterWeAreRendering?.hasDifficulty && display && (
             <DifficultySelection chapterId={chapterWeAreRendering.id} />
           )}
 
