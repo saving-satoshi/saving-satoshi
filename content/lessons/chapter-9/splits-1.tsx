@@ -7,8 +7,8 @@ import OpRunnerLesson from 'ui/lesson/OpRunner'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 
 export const metadata = {
-  title: 'chapter_eight.building_blocks_one.title',
-  navigation_title: 'chapter_eight.building_blocks_one.nav_title',
+  title: 'chapter_nine.split_one.title',
+  navigation_title: 'chapter_nine.split_one.nav_title',
   key: 'CH9SPL1',
 }
 
@@ -29,15 +29,31 @@ export default function Splits1({ lang }) {
         setSuccess={setSuccess}
       >
         <LessonInfo>
-          <Title>{t('chapter_eight.building_blocks_six.heading')}</Title>
+          <Title>{t('chapter_nine.split_one.heading')}</Title>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_eight.building_blocks_seven.paragraph_one')}
+            {t('chapter_nine.split_one.paragraph_one')}
           </Text>
-          <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_eight.building_blocks_seven.paragraph_two')}
+          <Text className="mt-4 font-nunito text-xl font-bold text-white">
+            {t('chapter_nine.split_one.subheading_one')}
           </Text>
+          <ul className="ml-4 list-disc">
+            <li>{t('chapter_nine.split_one.opconstants_list_one')}</li>
+            <li>{t('chapter_nine.split_one.opconstants_list_two')}</li>
+            <li>{t('chapter_nine.split_one.opconstants_list_three')}</li>
+            <li>{t('chapter_nine.split_one.opconstants_list_four')}</li>
+            <li>{t('chapter_nine.split_one.opconstants_list_five')}</li>
+            <li>{t('chapter_nine.split_one.opconstants_list_six')}</li>
+          </ul>
+          <Text className="mt-4 font-nunito text-xl font-bold text-white">
+            {t('chapter_nine.split_one.subheading_two')}
+          </Text>
+          <ul className="ml-4 list-disc">
+            <li>{t('chapter_nine.split_one.oparithmetic_list_one')}</li>
+            <li>{t('chapter_nine.split_one.oparithmetic_list_two')}</li>
+            <li>{t('chapter_nine.split_one.oparithmetic_list_three')}</li>
+          </ul>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_eight.building_blocks_seven.paragraph_three')}
+            {t('chapter_nine.split_one.paragraph_two')}
           </Text>
         </LessonInfo>
       </OpRunnerLesson>

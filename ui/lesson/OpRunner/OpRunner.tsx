@@ -70,7 +70,7 @@ const OpRunner = ({
     }
   }
   const handleRun = () => {
-    const initialStackArray = initialStack.split(',')
+    const initialStackArray = initialStack.split(' ')
     const runnerState = LanguageExecutor.RunCode(
       script,
       initialStackArray,
@@ -93,15 +93,16 @@ const OpRunner = ({
           Your Script
         </p>
         <textarea
+          title="Add OP_CODES seperated by spaces."
           className="overflow-wrap-normal w-full resize-none break-all border-none bg-transparent font-space-mono text-lg text-white focus:outline-none"
           onChange={handleScriptChange}
           autoComplete="off"
           value={script}
           readOnly={readOnly}
-          placeholder="Enter your script here..."
+          placeholder="OP_CODES..."
           autoCapitalize="none"
           spellCheck="false"
-          rows={5} // Increase rows based on text length
+          rows={5}
         />
       </div>
 
@@ -111,10 +112,11 @@ const OpRunner = ({
             Initial stack
           </p>
           <input
+            title="Add text or numbers seperated by spaces."
             onChange={handleInitialStackChange}
             className="flex-grow border-none bg-transparent font-space-mono text-lg focus:outline-none"
             type="text"
-            placeholder="..."
+            placeholder="0xA 10..."
           />
         </div>
 
@@ -123,6 +125,7 @@ const OpRunner = ({
             Next Block Height
           </p>
           <input
+            title="Enter any number above 1."
             onChange={handleHeightChange}
             className="flex-grow border-none bg-transparent text-lg focus:outline-none"
             placeholder="630001"
@@ -148,7 +151,7 @@ const OpRunner = ({
                 style={{ whiteSpace: 'pre-wrap' }}
               >
                 <div className="break-word text-center">
-                  {'Your script \n code will be \n visualized \n here...'}
+                  {'The resulting \n stack will be \n visualized \n here...'}
                 </div>
               </div>
             </div>
