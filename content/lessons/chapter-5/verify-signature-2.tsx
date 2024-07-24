@@ -58,7 +58,6 @@ print("KILL")
   },
   defaultCode: `# Import from python standard libraries
 import hashlib
-import base64
 
 def msg_to_integer(msg):
     # Given a hex string to sign, convert that string to bytes,

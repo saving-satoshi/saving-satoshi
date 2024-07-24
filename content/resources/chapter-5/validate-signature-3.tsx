@@ -20,8 +20,11 @@ const javascriptChallenge = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `const [r, s] = decode_sig(vpSig)
+  defaultCode: `// We need to split the value of this encoded signature into its r and s values.
+const [r, s] = decode_sig(vpSig)
+// This will encode Vanderpoole's message to a BigInt.
 const msg = encode_message(text)
+// Lastly we need the x and y coordinates of Satoshi's public key. These are the same ones we retrieved in an previous challenge. They will be used in the verify function to help check the signature against the message.
 const keyGE = new GE(new FE(publicKeyX), new FE(publicKeyY))`,
   validate: async () => {
     return [true, undefined]
@@ -35,8 +38,11 @@ const pythonChallenge = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `[r, s] = decode_sig(vp_sig)
+  defaultCode: `# We need to split the value of this encoded signature into its r and s values.
+[r, s] = decode_sig(vp_sig)
+# This will encode Vanderpoole's message to a BigInt.
 msg = encode_message(text)
+# Lastly we need the x and y coordinates of Satoshi's public key. These are the same ones we retrieved in an previous challenge. They will be used in the verify function to help check the signature against the message.
 key_ge = GE(public_key_x, public_key_y)`,
   validate: async () => {
     return [true, undefined]
@@ -96,19 +102,19 @@ export default function VerifySignatureResourcesThree({ lang }) {
         <>
           <Text className="mt-[25px] text-xl font-bold">
             {t(
-              'chapter_five.resources.validate_signature.message_verification_heading'
+              'chapter_five.resources.validate_signature_three.signing_and_ownership_heading'
             )}
           </Text>
           <Text>
             {t(
-              'chapter_five.resources.validate_signature.message_verification_paragraph_one'
+              'chapter_five.resources.validate_signature_three.signing_and_ownership_paragraph_one'
             )}
           </Text>
         </>
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
@@ -127,7 +133,7 @@ export default function VerifySignatureResourcesThree({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`65px`}
+                  height={`160px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

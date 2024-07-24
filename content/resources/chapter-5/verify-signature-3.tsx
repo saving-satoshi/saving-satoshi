@@ -24,19 +24,19 @@ export default function VerifySignatureResourcesThree({ lang }) {
         <>
           <Text className="mt-[25px] text-xl font-bold">
             {t(
-              'chapter_five.resources.verify_signature.signature_verification_heading'
+              'chapter_five.resources.verify_signature_three.signature_encoding_heading'
             )}
           </Text>
           <Text>
             {t(
-              'chapter_five.resources.verify_signature.signature_verification_paragraph_one'
+              'chapter_five.resources.verify_signature_three.signature_encoding_paragraph_one'
             )}
           </Text>
         </>
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
