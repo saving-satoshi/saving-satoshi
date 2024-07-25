@@ -259,7 +259,8 @@ class LanguageExecutor {
         case TokenTypes.BITWISE:
           if (this.negate === 0) {
             opResolves = opFunctions[element.value](this.stack)
-            if (opResolves?.value !== null || opResolves?.value !== undefined) {
+            if (opResolves?.value !== null) {
+              console.log(opResolves.value)
               this.stack.push(opResolves.value)
             }
           }
