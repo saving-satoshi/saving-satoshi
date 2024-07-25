@@ -208,10 +208,6 @@ const OpRunner = ({
                               className={clsx(
                                 'my-[5px] w-[140px] rounded-[3px] px-3 py-1',
                                 {
-                                  'bg-white/15':
-                                    index + 1 !== stackHistory.length ||
-                                    (index + 1 === stackHistory.length &&
-                                      stack.stack[0] !== 1),
                                   'bg-red/35':
                                     index + 1 === stackHistory.length &&
                                     stack.stack[0] === false,
@@ -219,6 +215,11 @@ const OpRunner = ({
                                     index + 1 === stackHistory.length &&
                                     (stack.stack[0] === true ||
                                       stack.stack[0] === 1),
+                                  'bg-white/15':
+                                    index + 1 !== stackHistory.length ||
+                                    (index + 1 === stackHistory.length &&
+                                      stack.stack[0] !== true &&
+                                      stack.stack[0] !== false),
                                 }
                               )}
                             >
