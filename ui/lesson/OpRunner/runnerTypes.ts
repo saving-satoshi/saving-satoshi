@@ -8,6 +8,7 @@ export interface OpRunnerTypes {
   children?: React.ReactNode
   readOnly?: boolean
   prePopulate?: boolean
+  showRunButtons?: boolean
 }
 
 export enum TokenTypes {

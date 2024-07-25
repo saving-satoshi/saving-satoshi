@@ -24,6 +24,7 @@ export default function Splits1({ lang }) {
       <OpRunnerLesson
         answerScript={['OP_ADD', 'OP_3', 'OP_EQUAL']}
         prePopulate
+        showRunButtons
         readOnly
         success={success}
         setSuccess={setSuccess}
