@@ -54,6 +54,12 @@ export const opFunctions: { [key: string]: Function } = {
     }
     const a = parseInt(stack.pop() as never)
     const b = parseInt(stack.pop() as never)
+    if (isNaN(a + b)) {
+      return {
+        value: null,
+        error: 'OP_ADD requires 2 numbers to add together',
+      }
+    }
     return {
       value: a + b,
       error: null,
