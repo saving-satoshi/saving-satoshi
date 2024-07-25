@@ -984,8 +984,8 @@ export const markLessonAsCompleteAtom = atom(
       }
     }
 
-    // If no next lesson is found in the current chapter, look for the next chapter
-    if (!nextLesson) {
+    // If the next lesson is not in the same chapter as the current chapter, look for the next chapter
+    if (currentChapter.id !== nextLesson.id.substring(2, 3)) {
       // mark current chapter as complete
       if (currentChapter) {
         updatedChapters = updatedChapters.map((chapter) =>
@@ -995,7 +995,7 @@ export const markLessonAsCompleteAtom = atom(
         )
       }
       for (let i = nextChapter; i < updatedChapters.length; i++) {
-        const chapter = updatedChapters[i]
+        const chapter = updatedChapters[i - 1]
         let lessons: LessonInState[] = []
 
         if (chapter.hasDifficulty) {
