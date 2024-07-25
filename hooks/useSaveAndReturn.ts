@@ -11,7 +11,7 @@ export default function useSaveAndReturn() {
   const chapterId = useAtomValue(currentChapterAtom)
 
   const saveAndReturn = async () => {
-    router.push(`${chaptersUrl}#chapter-${chapterId}`)
+    router.push(`${chaptersUrl}#chapter-${chapterId + 1}`)
   }
 
   return saveAndReturn
