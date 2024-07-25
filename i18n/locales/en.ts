@@ -1345,88 +1345,165 @@ const translations = {
         'The message serializations for all these components is documented <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">here</Link>  and <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline" >here</Link>.',
     },
     in_out_four: {
-      title: 'The ins and outs',
-      nav_title: 'The input class',
-      heading: 'Looking at the Input class implementation',
-      paragraph_one:
-        'Bitcoin transaction inputs always point to existing, unspent transaction outputs. Therefore, our Input class has a method <span className="text-green"> from_output() </span> which is used to construct an Input by passing in the output description:',
-      paragraph_two:
-        'The first two arguments are the transaction ID and the index of the output of that transaction you want to spend from. Eventually we will pass in the txid and vout values you got above from listunspent. ',
-      paragraph_three: {
-        a: 'Hashes in Bitcoin are ',
-        b: {
-          text: ' reversed ',
-          question: 'Why do we reverse hashes in bitcoin?',
-          href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin',
+      normal: {
+        title: 'The ins and outs',
+        nav_title: 'The input class',
+        heading: 'Looking at the Input class implementation',
+        paragraph_one:
+          'Bitcoin transaction inputs always point to existing, unspent transaction outputs. Therefore, our Input class has a method <span className="text-green"> from_output() </span> which is used to construct an Input by passing in the output description:',
+        paragraph_two:
+          'The first two arguments are the transaction ID and the index of the output of that transaction you want to spend from. Eventually we will pass in the txid and vout values you got above from listunspent. ',
+        paragraph_three: {
+          a: 'Hashes in Bitcoin are ',
+          b: {
+            text: ' reversed ',
+            question: 'Why do we reverse hashes in bitcoin?',
+            href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin',
+          },
+          c: ' when we see them as hexadecimal strings. When we accept hashes as strings from a user we must reverse the byte order before storing or transmitting them as raw bytes. This is why we reverse the byte order of the txid argument that is passed in here.',
         },
-        c: ' when we see them as hexadecimal strings. When we accept hashes as strings from a user we must reverse the byte order before storing or transmitting them as raw bytes. This is why we reverse the byte order of the txid argument that is passed in here.',
+        paragraph_four:
+          "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, we will just store that data as an empty byte array, we won't need it until later.",
+        paragraph_five: `We also need a <span className="text-green"> serialize() </span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:`,
+        heading_two: 'Outpoint',
+        table_one: {
+          heading: {
+            one: 'Description',
+            two: 'Name',
+            three: 'Type',
+            four: 'Size',
+          },
+          row_one: {
+            column: {
+              one: 'Hash of transaction being spent from',
+              two: 'txid',
+              three: 'bytes',
+              four: '32',
+            },
+          },
+          row_two: {
+            column: {
+              one: "Position of output being spent in the transaction's output array",
+              two: 'index',
+              three: 'int',
+              four: '4',
+            },
+          },
+        },
+        heading_three: 'Input',
+        table_two: {
+          row_one: {
+            column: {
+              one: 'txid and output index being spent from',
+              two: 'outpoint',
+              three: 'bytes',
+              four: '36',
+            },
+          },
+          row_two: {
+            column: {
+              one: 'ScriptSig length (always 0 for Segregated Witness)',
+              two: 'length',
+              three: 'int',
+              four: '1',
+            },
+          },
+          row_three: {
+            column: {
+              one: 'Always empty for Segregated Witness',
+              two: 'script',
+              three: 'bytes',
+              four: '0',
+            },
+          },
+          row_four: {
+            column: {
+              one: 'Default value is 0xffffffff but can be used for relative timelocks',
+              two: 'sequence',
+              three: 'int',
+              four: '4',
+            },
+          },
+        },
+        paragraph_six:
+          'And remember: integers in Bitcoin are serialized little-endian!',
+        success: 'The Input class looks good. Great Work!',
       },
-      paragraph_four:
-        "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, we will just store that data as an empty byte array, we won't need it until later.",
-      paragraph_five: `We also need a <span className="text-green"> serialize() </span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:`,
-      heading_two: 'Outpoint',
-      table_one: {
-        heading: {
-          one: 'Description',
-          two: 'Name',
-          three: 'Type',
-          four: 'Size',
-        },
-        row_one: {
-          column: {
-            one: 'Hash of transaction being spent from',
-            two: 'txid',
-            three: 'bytes',
-            four: '32',
+      hard: {
+        title: 'The ins and outs',
+        nav_title: 'The input class',
+        heading: 'Finish the implementation of Class Input',
+        paragraph_one: 'It should have the following method:',
+        paragraph_two:
+          'The First two arguments are the transaction ID and the index of the output of that transaction you want to spend from.',
+        paragraph_three:
+          'Eventually we will pass in the txid and vout values you got above from listunspent. Note that hashes in Bitcoin are little-endian, which means that you will need to reverse the byte order of the txid string!',
+        paragraph_four:
+          "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6.",
+        paragraph_five:
+          'We also need a serialize() method that returns a byte array according to the specification:',
+        heading_two: 'Outpoint',
+        table_one: {
+          heading: {
+            one: 'Description',
+            two: 'Name',
+            three: 'Type',
+            four: 'Size',
+          },
+          row_one: {
+            column: {
+              one: 'Hash of transaction being spent from',
+              two: 'txid',
+              three: 'bytes',
+              four: '32',
+            },
+          },
+          row_two: {
+            column: {
+              one: "Position of output being spent in the transaction's output array",
+              two: 'index',
+              three: 'int',
+              four: '4',
+            },
           },
         },
-        row_two: {
-          column: {
-            one: "Position of output being spent in the transaction's output array",
-            two: 'index',
-            three: 'int',
-            four: '4',
+        heading_three: 'Input',
+        table_two: {
+          row_one: {
+            column: {
+              one: 'txid and output index being spent from',
+              two: 'outpoint',
+              three: 'bytes',
+              four: '36',
+            },
+          },
+          row_two: {
+            column: {
+              one: 'ScriptSig length (always 0 for Segregated Witness)',
+              two: 'length',
+              three: 'int',
+              four: '1',
+            },
+          },
+          row_three: {
+            column: {
+              one: 'Always empty for Segregated Witness',
+              two: 'script',
+              three: 'bytes',
+              four: '0',
+            },
+          },
+          row_four: {
+            column: {
+              one: 'Default value is 0xffffffff but can be used for relative timelocks',
+              two: 'sequence',
+              three: 'int',
+              four: '4',
+            },
           },
         },
+        success: 'The Input class looks good. Great Work!',
       },
-      heading_three: 'Input',
-      table_two: {
-        row_one: {
-          column: {
-            one: 'txid and output index being spent from',
-            two: 'outpoint',
-            three: 'bytes',
-            four: '36',
-          },
-        },
-        row_two: {
-          column: {
-            one: 'ScriptSig length (always 0 for Segregated Witness)',
-            two: 'length',
-            three: 'int',
-            four: '1',
-          },
-        },
-        row_three: {
-          column: {
-            one: 'Always empty for Segregated Witness',
-            two: 'script',
-            three: 'bytes',
-            four: '0',
-          },
-        },
-        row_four: {
-          column: {
-            one: 'Default value is 0xffffffff but can be used for relative timelocks',
-            two: 'sequence',
-            three: 'int',
-            four: '4',
-          },
-        },
-      },
-      paragraph_six:
-        'And remember: integers in Bitcoin are serialized little-endian!',
-      success: 'The Input class looks good. Great Work!',
     },
     in_out_five: {
       title: 'The ins and outs',
@@ -1490,207 +1567,467 @@ const translations = {
       success: 'The Output class looks good. Great Work!',
     },
     put_it_together_one: {
-      title: 'Putting it all together',
-      nav_title: 'Build the transaction digest',
-      heading: 'Transaction digest',
-      paragraph_one:
-        'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
-      paragraph_two:
-        'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green">digest(input_index)</span> that computes the 32-byte message for signing an input.',
-      list_heading: 'Some notes:',
-      list_one: '"Double SHA-256" or dSHA256 = sha256(sha256(data))',
-      list_two:
-        'value is the amount of the satoshis in the output being spent from. We added it to our Input class back in step 2, and just saved it there inside the class until now.',
-      list_three:
-        'scriptcode is the raw Bitcoin script being evaluated. We also added this to our Input class back in step 2.',
-      list_four: 'all integers are encoded as little-endian!',
-      paragraph_three:
-        "We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:",
-      paragraph_four: '...which decodes to the following Bitcoin script.',
-      paragraph_five:
-        'For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
-      paragraph_six:
-        'The raw transaction has a preimage that is the serialization of:',
-      headings: {
-        item_one: 'Description',
-        item_two: 'Name',
-        item_three: 'Type',
-        item_four: 'Size',
+      normal: {
+        title: 'Putting it all together',
+        nav_title: 'Build the transaction digest',
+        heading: 'Transaction digest',
+        paragraph_one:
+          'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
+        paragraph_two:
+          'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green">digest(input_index)</span> that computes the 32-byte message for signing an input.',
+        list_heading: 'Some notes:',
+        list_one: '"Double SHA-256" or dSHA256 = sha256(sha256(data))',
+        list_two:
+          'value is the amount of the satoshis in the output being spent from. We added it to our Input class back in step 2, and just saved it there inside the class until now.',
+        list_three:
+          'scriptcode is the raw Bitcoin script being evaluated. We also added this to our Input class back in step 2.',
+        list_four: 'all integers are encoded as little-endian!',
+        paragraph_three:
+          "We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:",
+        paragraph_four: '...which decodes to the following Bitcoin script.',
+        paragraph_five:
+          'For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
+        paragraph_six:
+          'The raw transaction has a preimage that is the serialization of:',
+        headings: {
+          item_one: 'Description',
+          item_two: 'Name',
+          item_three: 'Type',
+          item_four: 'Size',
+        },
+        table: {
+          row_one: {
+            item_one: 'Transaction version, default 2',
+            item_two: 'version',
+            item_three: 'int',
+            item_four: '4',
+          },
+          row_two: {
+            item_one:
+              'The dSHA256 of all outpoints from all inputs, serialized',
+            item_two: 'bytes',
+            item_three: 'bytes',
+            item_four: '32',
+          },
+          row_three: {
+            item_one:
+              'The dSHA256 of all sequence values from all inputs, serialized',
+            item_two: 'sequences',
+            item_three: 'bytes',
+            item_four: '32',
+          },
+          row_four: {
+            item_one:
+              'The serialized outpoint of the single input being signed ',
+            item_two: 'outpoint',
+            item_three: 'bytes',
+            item_four: '36',
+          },
+          row_five: {
+            item_one: 'The output script being spent from',
+            item_two: 'scriptcode',
+            item_three: 'bytes',
+            item_four: '(var)',
+          },
+          row_six: {
+            item_one:
+              'The value in satoshis being spent by the single input being signed',
+            item_two: 'value',
+            item_three: 'int',
+            item_four: '8',
+          },
+          row_seven: {
+            item_one: 'The sequence value of the single input being signed',
+            item_two: 'sequence',
+            item_three: 'int',
+            item_four: '4',
+          },
+          row_eight: {
+            item_one: 'The dSHA256 of all outputs, serialized',
+            item_two: 'outputs',
+            item_three: 'bytes',
+            item_four: '32',
+          },
+          row_nine: {
+            item_one: 'Transaction locktime, default 0',
+            item_two: 'locktime',
+            item_three: 'int',
+            item_four: '4',
+          },
+          row_ten: {
+            item_one: 'Signature hash type, we will use 1 to indicate "ALL"',
+            item_two: 'sighash',
+            item_three: 'int',
+            item_four: '4',
+          },
+        },
+        paragraph_seven:
+          'Finally, the message we sign is the double SHA-256 of all this serialized data.',
+        success: 'The digest() method looks good. Great Work!',
       },
-      table: {
-        row_one: {
-          item_one: 'Transaction version, default 2',
-          item_two: 'version',
-          item_three: 'int',
-          item_four: '4',
+      hard: {
+        title: 'Putting it all together',
+        nav_title: 'Build the transaction digest',
+        heading: 'Finish the implementation of Class Witness',
+        paragraph_one:
+          'It should have the following method, which accepts a byte array and adds that item to the witness stack.',
+        paragraph_two:
+          'It will also need a serialize() method that returns the serialized witness stack.',
+        subheading_one: 'Witness stack',
+        headings: {
+          item_one: 'Description',
+          item_two: 'Name',
+          item_three: 'Type',
+          item_four: 'Size',
         },
-        row_two: {
-          item_one: 'The dSHA256 of all outpoints from all inputs, serialized',
-          item_two: 'bytes',
-          item_three: 'bytes',
-          item_four: '32',
+        table_one: {
+          row_one: {
+            item_one: 'The number of items in the witness stack',
+            item_two: 'count',
+            item_three: 'int',
+            item_four: '1',
+          },
+          row_two: {
+            item_one: 'Serialized stack items',
+            item_two: 'items',
+            item_three: '(items)',
+            item_four: '(var)',
+          },
         },
-        row_three: {
-          item_one:
-            'The dSHA256 of all sequence values from all inputs, serialized',
-          item_two: 'sequences',
-          item_three: 'bytes',
-          item_four: '32',
+        subheading_two: 'Witness stack item',
+        table_two: {
+          row_one: {
+            item_one: 'Total length of the following stack item',
+            item_two: 'length',
+            item_three: 'int',
+            item_four: '1',
+          },
+          row_two: {
+            item_one: 'The raw bytes of the stack item',
+            item_two: 'data',
+            item_three: 'bytes',
+            item_four: '(var)',
+          },
         },
-        row_four: {
-          item_one: 'The serialized outpoint of the single input being signed ',
-          item_two: 'outpoint',
-          item_three: 'bytes',
-          item_four: '36',
-        },
-        row_five: {
-          item_one: 'The output script being spent from',
-          item_two: 'scriptcode',
-          item_three: 'bytes',
-          item_four: '(var)',
-        },
-        row_six: {
-          item_one:
-            'The value in satoshis being spent by the single input being signed',
-          item_two: 'value',
-          item_three: 'int',
-          item_four: '8',
-        },
-        row_seven: {
-          item_one: 'The sequence value of the single input being signed',
-          item_two: 'sequence',
-          item_three: 'int',
-          item_four: '4',
-        },
-        row_eight: {
-          item_one: 'The dSHA256 of all outputs, serialized',
-          item_two: 'outputs',
-          item_three: 'bytes',
-          item_four: '32',
-        },
-        row_nine: {
-          item_one: 'Transaction locktime, default 0',
-          item_two: 'locktime',
-          item_three: 'int',
-          item_four: '4',
-        },
-        row_ten: {
-          item_one: 'Signature hash type, we will use 1 to indicate "ALL"',
-          item_two: 'sighash',
-          item_three: 'int',
-          item_four: '4',
-        },
+        success: 'The Witness class looks good. Great Work!',
       },
-      paragraph_seven:
-        'Finally, the message we sign is the double SHA-256 of all this serialized data.',
-      success: 'The digest() method looks good. Great Work!',
     },
     put_it_together_two: {
-      title: 'Putting it all together',
-      nav_title: 'Build the witness class',
-      heading: 'Sign and Populate the Witness!',
-      paragraph_one:
-        'In the last chapter, we wrote some important ECDSA signature verification code. Now, in order to create a valid signature, we are going to take that code and rearrange it a bit.',
-      paragraph_two:
-        "In this exercise we'll be implementing some of the math behind the ECDSA signing algorithm. For more information on how that works, check out these resources:",
-      paragraph_three:
-        '• The Wikipedia page for <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">Elliptic Curve Digital Signature Algorithm</Link>',
-      paragraph_four:
-        '• <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">Standards for Efficient Cryptography 1 (SEC 1)</Link>: Page 44, Section 4.1.3',
-      heading_one: 'Step 1',
-      paragraph_five:
-        'In the Transaction class, there is a method, <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">compute_input_signature(index, key)</span> that accepts the index number of an input and a private key (a 32-byte integer, or BigInt in JavaScript). Finish this method so it computes the message digest for the chosen input. Use the <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">digest()</span> method from our last step, then return an ECDSA signature in the form of two 32-byte integers: <span className="italic">r</span> and <span className="italic">s</span>.',
-      heading_two: 'Step 2',
-      paragraph_six:
-        'For the signing algorithm, the Bitcoin protocol requires one more thing. The <span className="italic">s</span> value needs to be "low", meaning less than the order of the curve divided by 2. Add this check to <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">compute_input_signature()</span>.',
-      paragraph_seven:
-        'See <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link> to learn more.',
-      heading_three: 'Step 3',
-      paragraph_eight:
-        'Complete the method <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">sign_input(index, key)</span> so that it calls <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1"> compute_input_signature(index, key)</span>. When handling the return value, <span className="italic">r</span> and <span className="italic">s</span> need to be encoded with an algorithm called DER which we have implemented for you.',
-      heading_four: 'Step 4',
-      paragraph_nine:
-        'Bitcoin requires an extra byte appended to the end of the DER-signature. This byte represents the "sighash type". For now we’ll always use the byte <span className="p-1 text-base font-mono bg-[#00000033] m-1">0x01</span> for this, indicating "SIGHASH ALL".',
-      heading_five: 'Step 5',
-      paragraph_ten:
-        'The last step is to create a Witness object with two stack items: the DER encoded signature blob we just made, and your compressed public key. Push the signature first, followed by the public key.',
-      paragraph_eleven:
-        "Append the witness stack object to the transaction object's array of witnesses.",
-      success:
-        'The compute_input_signature() and sign_input() methods look good. Great Work!',
+      normal: {
+        title: 'Putting it all together',
+        nav_title: 'Build the witness class',
+        heading: 'Sign and Populate the Witness!',
+        paragraph_one:
+          'In the last chapter, we wrote some important ECDSA signature verification code. Now, in order to create a valid signature, we are going to take that code and rearrange it a bit.',
+        paragraph_two:
+          "In this exercise we'll be implementing some of the math behind the ECDSA signing algorithm. For more information on how that works, check out these resources:",
+        paragraph_three:
+          '• The Wikipedia page for <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">Elliptic Curve Digital Signature Algorithm</Link>',
+        paragraph_four:
+          '• <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">Standards for Efficient Cryptography 1 (SEC 1)</Link>: Page 44, Section 4.1.3',
+        heading_one: 'Step 1',
+        paragraph_five:
+          'In the Transaction class, there is a method, <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">compute_input_signature(index, key)</span> that accepts the index number of an input and a private key (a 32-byte integer, or BigInt in JavaScript). Finish this method so it computes the message digest for the chosen input. Use the <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">digest()</span> method from our last step, then return an ECDSA signature in the form of two 32-byte integers: <span className="italic">r</span> and <span className="italic">s</span>.',
+        heading_two: 'Step 2',
+        paragraph_six:
+          'For the signing algorithm, the Bitcoin protocol requires one more thing. The <span className="italic">s</span> value needs to be "low", meaning less than the order of the curve divided by 2. Add this check to <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">compute_input_signature()</span>.',
+        paragraph_seven:
+          'See <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link> to learn more.',
+        heading_three: 'Step 3',
+        paragraph_eight:
+          'Complete the method <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">sign_input(index, key)</span> so that it calls <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1"> compute_input_signature(index, key)</span>. When handling the return value, <span className="italic">r</span> and <span className="italic">s</span> need to be encoded with an algorithm called DER which we have implemented for you.',
+        heading_four: 'Step 4',
+        paragraph_nine:
+          'Bitcoin requires an extra byte appended to the end of the DER-signature. This byte represents the "sighash type". For now we’ll always use the byte <span className="p-1 text-base font-mono bg-[#00000033] m-1">0x01</span> for this, indicating "SIGHASH ALL".',
+        heading_five: 'Step 5',
+        paragraph_ten:
+          'The last step is to create a Witness object with two stack items: the DER encoded signature blob we just made, and your compressed public key. Push the signature first, followed by the public key.',
+        paragraph_eleven:
+          "Append the witness stack object to the transaction object's array of witnesses.",
+        success:
+          'The compute_input_signature() and sign_input() methods look good. Great Work!',
+      },
+      hard: {
+        title: 'Putting it all together',
+        nav_title: 'Build the witness class',
+        heading: 'Finish the implementation of Class Transaction',
+        paragraph_one:
+          'It should have global properties locktime and version as well as an array of inputs, outputs and witness stacks.',
+        paragraph_two:
+          'It will need a serialize() method that outputs the enitire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
+        headings: {
+          item_one: 'Description',
+          item_two: 'Name',
+          item_three: 'Type',
+          item_four: 'Size',
+        },
+        table: {
+          row_one: {
+            item_one: 'Currently 2',
+            item_two: 'version',
+            item_three: 'int',
+            item_four: '4',
+          },
+          row_two: {
+            item_one: 'Must be exactly 0x0001 for segregated witness',
+            item_two: 'flags',
+            item_three: 'bytes',
+            item_four: '2',
+          },
+          row_three: {
+            item_one: 'The number of inputs',
+            item_two: 'in count',
+            item_three: 'int',
+            item_four: '1',
+          },
+          row_four: {
+            item_one: 'All transaction inputs,serialized',
+            item_two: 'inputs',
+            item_three: 'Inputs[]',
+            item_four: '(var)',
+          },
+          row_five: {
+            item_one: 'The number of outputs',
+            item_two: 'out count',
+            item_three: 'int',
+            item_four: '1',
+          },
+          row_six: {
+            item_one: 'All transaction outputs,serialized',
+            item_two: 'outputs',
+            item_three: 'Outputs[]',
+            item_four: '(var)',
+          },
+          row_seven: {
+            item_one: 'All witness stacks, serialized',
+            item_two: 'witness',
+            item_three: 'Witnesses[]',
+            item_four: '(var)',
+          },
+          row_eight: {
+            item_one: 'Setting to 0 indicates finality',
+            item_two: 'locktime',
+            item_three: 'int',
+            item_four: '4',
+          },
+        },
+        paragraph_three:
+          'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.',
+        success: 'The Transaction class looks good. Great Work!',
+      },
     },
     put_it_together_three: {
-      title: 'Put it All Together',
+      normal: {
+        title: 'Put it All Together',
+        nav_title: 'Sign the transaction',
+        heading: 'Finish the implementation of Class Transaction',
+        paragraph_one:
+          'To complete our transaction we will need a serialize() method that outputs the entire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
+        paragraph_two:
+          'Our script should create and sign a Transaction object. It will have one input (the UTXO we identified in <span className="underline">Populate the Input</span>) and two outputs:',
+        paragraph_three:
+          'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
+        paragraph_four:
+          'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.',
+        paragraph_five:
+          'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 61,000,000 to 60,999,000 satoshis.',
+        paragraph_six:
+          'Finally our work is done. Your script should end by returning the result of the transaction serialize() method. This is a valid signed Bitcoin transaction and we can broadcast it to the network to send Mike Ramen the money he needs!',
+        headings: {
+          item_one: 'Description',
+          item_two: 'Name',
+          item_three: 'Type',
+          item_four: 'Size',
+        },
+        table: {
+          row_one: {
+            item_one: 'Currently 2',
+            item_two: 'version',
+            item_three: 'int',
+            item_four: '4',
+          },
+          row_two: {
+            item_one: 'Must be exactly 0x0001 for segregated witness',
+            item_two: 'flags',
+            item_three: 'bytes',
+            item_four: '2',
+          },
+          row_three: {
+            item_one: 'The number of inputs',
+            item_two: 'in count',
+            item_three: 'int',
+            item_four: '1',
+          },
+          row_four: {
+            item_one: 'All transaction inputs, serialized',
+            item_two: 'inputs',
+            item_three: 'Inputs[]',
+            item_four: '(var)',
+          },
+          row_five: {
+            item_one: 'The number of outputs',
+            item_two: 'out count',
+            item_three: 'int',
+            item_four: '1',
+          },
+          row_six: {
+            item_one: 'All transaction outputs, serialized',
+            item_two: 'outputs',
+            item_three: 'Outputs[]',
+            item_four: '(var)',
+          },
+          row_seven: {
+            item_one: 'All witness stacks, serialized',
+            item_two: 'witness',
+            item_three: 'Witnesses[]',
+            item_four: '(var)',
+          },
+          row_eight: {
+            item_one: 'Setting to 0 indicates finality',
+            item_two: 'locktime',
+            item_three: 'int',
+            item_four: '4',
+          },
+        },
+        bullet_one:
+          'Mike Ramen gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
+        bullet_two:
+          'You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
+        success: "You've done it! You've built a transaction!",
+      },
+      hard: {
+        title: 'Putting it all together',
+        nav_title: 'Sign the transaction',
+        heading: 'Transaction digest',
+        paragraph_one:
+          'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
+        paragraph_two:
+          'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method digest(input_index) that computes the 32-byte message for signing an input.',
+        list_heading: 'Some notes:',
+        list_one: '"Double SHA-256" or dSHA256 = sha256(sha256(data))',
+        list_two:
+          'value is the amount of the satoshis in the output being spent from. We added it to our Input class back in step 2, and just saved it there inside the class until now.',
+        list_three:
+          'scriptcode is the raw Bitcoin script being evaluated. We also added this to our Input class back in step 2.',
+        paragraph_three:
+          "We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash address, your scriptcode would be:",
+        paragraph_four: '...which decodes to the following Bitcoin script.',
+        paragraph_five:
+          'For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
+        paragraph_six:
+          'The raw transaction has preimage is the serialization of:',
+        headings: {
+          item_one: 'Description',
+          item_two: 'Name',
+          item_three: 'Type',
+          item_four: 'Size',
+        },
+        table: {
+          row_one: {
+            item_one: 'Transaction version, default 2',
+            item_two: 'version',
+            item_three: 'int',
+            item_four: '4',
+          },
+          row_two: {
+            item_one:
+              'The dSHA256 of all outpoints from all inputs, serialized',
+            item_two: 'bytes',
+            item_three: 'bytes',
+            item_four: '32',
+          },
+          row_three: {
+            item_one:
+              'The dSHA256 of all sequence values from all inputs, serialized',
+            item_two: 'sequences',
+            item_three: 'bytes',
+            item_four: '32',
+          },
+          row_four: {
+            item_one:
+              'The serialized outpoint of the single input being signed ',
+            item_two: 'outpoint',
+            item_three: 'bytes',
+            item_four: '36',
+          },
+          row_five: {
+            item_one: 'The output script being spent from',
+            item_two: 'scriptcode',
+            item_three: 'bytes',
+            item_four: '(var)',
+          },
+          row_six: {
+            item_one:
+              'The value in satoshis being spent by the single input being signed',
+            item_two: 'value',
+            item_three: 'int',
+            item_four: '8',
+          },
+          row_seven: {
+            item_one: 'The sequence value of the single input being signed',
+            item_two: 'sequence',
+            item_three: 'int',
+            item_four: '8',
+          },
+          row_eight: {
+            item_one: 'The dSHA256 of all outputs, serialized',
+            item_two: 'outputs',
+            item_three: 'bytes',
+            item_four: '32',
+          },
+          row_nine: {
+            item_one: 'Transaction locktime, default 0',
+            item_two: 'locktime',
+            item_three: 'int',
+            item_four: '4',
+          },
+          row_ten: {
+            item_one: 'Signature hassh type, we will use 1 to indicate "ALL',
+            item_two: 'sighash',
+            item_three: 'int',
+            item_four: '4',
+          },
+        },
+        paragraph_seven:
+          'Finally, the message we sign is the double SHA-256 of all this serialized data.',
+        success: 'The digest() method looks good. Great Work!',
+      },
+    },
+    put_it_together_four: {
+      title: 'Putting it all together',
+      heading: 'Signing!',
       nav_title: 'Sign the transaction',
-      heading: 'Finish the implementation of Class Transaction',
-      paragraph_one:
-        'To complete our transaction we will need a serialize() method that outputs the entire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
+      paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called compute_input_signature(index: int, key: int) to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the digest() method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
       paragraph_two:
-        'Our script should create and sign a Transaction object. It will have one input (the UTXO we identified in <span className="underline">Populate the Input</span>) and two outputs:',
+        'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
       paragraph_three:
-        'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
+        'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
+      success: 'The compute_input_signature() method looks good. Great Work!',
+    },
+    put_it_together_five: {
+      heading: 'Populate the Witness',
+      nav_title: 'Populate the Witness',
+      paragraph_one:
+        'Finish the method sign_input(index: int, key: int) that calls our step 7 method compute_input_signature(index, key)and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.',
+      paragraph_two:
+        'Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this indicating "SIGHASH ALL".',
+      paragraph_three:
+        'Once we have that signature blob we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.',
       paragraph_four:
-        'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.',
-      paragraph_five:
+        'The witness stack object can then be appended to the witnesses array of the transaction object.',
+      success: 'The sign_input() method looks good. Great Work!',
+    },
+    put_it_together_six: {
+      heading: 'Put it All Together',
+      nav_title: 'Put it All Together!',
+      paragraph_one:
+        'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
+      paragraph_two:
+        'Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in step 1) and two outputs:',
+      paragraph_three:
         'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 61,000,000 to 60,999,000 satoshis.',
-      paragraph_six:
+      paragraph_four:
         'Finally our work is done. Your script should end by returning the result of the transaction serialize() method. This is a valid signed Bitcoin transaction and we can broadcast it to the network to send Mike Ramen the money he needs!',
-      headings: {
-        item_one: 'Description',
-        item_two: 'Name',
-        item_three: 'Type',
-        item_four: 'Size',
-      },
-      table: {
-        row_one: {
-          item_one: 'Currently 2',
-          item_two: 'version',
-          item_three: 'int',
-          item_four: '4',
-        },
-        row_two: {
-          item_one: 'Must be exactly 0x0001 for segregated witness',
-          item_two: 'flags',
-          item_three: 'bytes',
-          item_four: '2',
-        },
-        row_three: {
-          item_one: 'The number of inputs',
-          item_two: 'in count',
-          item_three: 'int',
-          item_four: '1',
-        },
-        row_four: {
-          item_one: 'All transaction inputs, serialized',
-          item_two: 'inputs',
-          item_three: 'Inputs[]',
-          item_four: '(var)',
-        },
-        row_five: {
-          item_one: 'The number of outputs',
-          item_two: 'out count',
-          item_three: 'int',
-          item_four: '1',
-        },
-        row_six: {
-          item_one: 'All transaction outputs, serialized',
-          item_two: 'outputs',
-          item_three: 'Outputs[]',
-          item_four: '(var)',
-        },
-        row_seven: {
-          item_one: 'All witness stacks, serialized',
-          item_two: 'witness',
-          item_three: 'Witnesses[]',
-          item_four: '(var)',
-        },
-        row_eight: {
-          item_one: 'Setting to 0 indicates finality',
-          item_two: 'locktime',
-          item_three: 'int',
-          item_four: '4',
-        },
-      },
       bullet_one:
         'Mike Ramen gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
       bullet_two:
@@ -2058,12 +2395,9 @@ const translations = {
       'I acknowledge I have saved this private key and know that I will need it for challenges in the future.',
   },
 
-  modal_difficulty: {
-    heading: 'Select a difficulty',
-    paragraph_one:
-      'Choose a difficulty level to start your journey. You can change this at any time.',
-    normal: 'Normal',
-    hard: 'Hard',
+  difficulty_selection: {
+    NORMAL: 'Enable hard mode to increase the difficulty of the challenges.',
+    HARD: 'Disable hard mode to decrease the difficulty of the challenges.',
   },
 
   social: {

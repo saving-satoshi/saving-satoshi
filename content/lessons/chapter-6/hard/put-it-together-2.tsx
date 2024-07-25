@@ -15,8 +15,8 @@ import {
 import { Loader } from 'shared'
 
 export const metadata = {
-  title: 'chapter_six.put_it_together_two.title',
-  navigation_title: 'chapter_six.put_it_together_two.nav_title',
+  title: 'chapter_six.put_it_together_two.hard.title',
+  navigation_title: 'chapter_six.put_it_together_two.hard.nav_title',
   key: 'CH6PUT2_HARD',
 }
 
@@ -27,10 +27,10 @@ export default function PutItTogether2({ lang }) {
   const [combinedCode, setCombinedCode] = useState('')
 
   const getPrevLessonData = async () => {
-    const data = await getData('CH6PUT1')
+    const data = await getData('CH6PUT1_HARD')
     if (data) {
       setPrevData({
-        lesson_id: 'CH6PUT1',
+        lesson_id: 'CH6PUT1_HARD',
         data: data?.code?.getDecoded(),
       })
     }
@@ -417,31 +417,31 @@ ${combinedCode}
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_six.put_it_together_two.success')}
+        successMessage={t('chapter_six.put_it_together_two.hard.success')}
         loadingSavedCode={isLoading}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
-          <Title>{t('chapter_six.put_it_together_two.heading')}</Title>
+          <Title>{t('chapter_six.put_it_together_two.hard.heading')}</Title>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_one')}
+            {t('chapter_six.put_it_together_two.hard.paragraph_one')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_two')}
+            {t('chapter_six.put_it_together_two.hard.paragraph_two')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_three')}
+            {t('chapter_six.put_it_together_two.hard.paragraph_three')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_four')}
+            {t('chapter_six.put_it_together_two.hard.paragraph_four')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_five')}
+            {t('chapter_six.put_it_together_two.hard.paragraph_five')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_six')}
+            {t('chapter_six.put_it_together_two.hard.paragraph_six')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_two.paragraph_seven')}
+            {t('chapter_six.put_it_together_two.hard.paragraph_seven')}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>

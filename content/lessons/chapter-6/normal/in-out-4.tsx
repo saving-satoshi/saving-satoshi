@@ -15,57 +15,57 @@ import {
 import PlainEditorWrapper from 'ui/lesson/ScriptingChallenge/PlainEditorWrapper'
 
 export const metadata = {
-  title: 'chapter_six.in_out_four.title',
-  navigation_title: 'chapter_six.in_out_four.nav_title',
+  title: 'chapter_six.in_out_four.normal.title',
+  navigation_title: 'chapter_six.in_out_four.normal.nav_title',
   key: 'CH6INO4',
 }
 
 export default function InOut4({ lang }) {
   const t = useTranslations(lang)
   const tableHeading = [
-    t('chapter_six.in_out_four.table_one.heading.one'),
-    t('chapter_six.in_out_four.table_one.heading.two'),
-    t('chapter_six.in_out_four.table_one.heading.three'),
-    t('chapter_six.in_out_four.table_one.heading.four'),
+    t('chapter_six.in_out_four.normal.table_one.heading.one'),
+    t('chapter_six.in_out_four.normal.table_one.heading.two'),
+    t('chapter_six.in_out_four.normal.table_one.heading.three'),
+    t('chapter_six.in_out_four.normal.table_one.heading.four'),
   ]
   const outputRows = [
     [
-      t('chapter_six.in_out_four.table_one.row_one.column.one'),
-      t('chapter_six.in_out_four.table_one.row_one.column.two'),
-      t('chapter_six.in_out_four.table_one.row_one.column.three'),
-      t('chapter_six.in_out_four.table_one.row_one.column.four'),
+      t('chapter_six.in_out_four.normal.table_one.row_one.column.one'),
+      t('chapter_six.in_out_four.normal.table_one.row_one.column.two'),
+      t('chapter_six.in_out_four.normal.table_one.row_one.column.three'),
+      t('chapter_six.in_out_four.normal.table_one.row_one.column.four'),
     ],
     [
-      t('chapter_six.in_out_four.table_one.row_two.column.one'),
-      t('chapter_six.in_out_four.table_one.row_two.column.two'),
-      t('chapter_six.in_out_four.table_one.row_two.column.three'),
-      t('chapter_six.in_out_four.table_one.row_two.column.four'),
+      t('chapter_six.in_out_four.normal.table_one.row_two.column.one'),
+      t('chapter_six.in_out_four.normal.table_one.row_two.column.two'),
+      t('chapter_six.in_out_four.normal.table_one.row_two.column.three'),
+      t('chapter_six.in_out_four.normal.table_one.row_two.column.four'),
     ],
   ]
   const inputRows = [
     [
-      t('chapter_six.in_out_four.table_two.row_one.column.one'),
-      t('chapter_six.in_out_four.table_two.row_one.column.two'),
-      t('chapter_six.in_out_four.table_two.row_one.column.three'),
-      t('chapter_six.in_out_four.table_two.row_one.column.four'),
+      t('chapter_six.in_out_four.normal.table_two.row_one.column.one'),
+      t('chapter_six.in_out_four.normal.table_two.row_one.column.two'),
+      t('chapter_six.in_out_four.normal.table_two.row_one.column.three'),
+      t('chapter_six.in_out_four.normal.table_two.row_one.column.four'),
     ],
     [
-      t('chapter_six.in_out_four.table_two.row_two.column.one'),
-      t('chapter_six.in_out_four.table_two.row_two.column.two'),
-      t('chapter_six.in_out_four.table_two.row_two.column.three'),
-      t('chapter_six.in_out_four.table_two.row_two.column.four'),
+      t('chapter_six.in_out_four.normal.table_two.row_two.column.one'),
+      t('chapter_six.in_out_four.normal.table_two.row_two.column.two'),
+      t('chapter_six.in_out_four.normal.table_two.row_two.column.three'),
+      t('chapter_six.in_out_four.normal.table_two.row_two.column.four'),
     ],
     [
-      t('chapter_six.in_out_four.table_two.row_three.column.one'),
-      t('chapter_six.in_out_four.table_two.row_three.column.two'),
-      t('chapter_six.in_out_four.table_two.row_three.column.three'),
-      t('chapter_six.in_out_four.table_two.row_three.column.four'),
+      t('chapter_six.in_out_four.normal.table_two.row_three.column.one'),
+      t('chapter_six.in_out_four.normal.table_two.row_three.column.two'),
+      t('chapter_six.in_out_four.normal.table_two.row_three.column.three'),
+      t('chapter_six.in_out_four.normal.table_two.row_three.column.four'),
     ],
     [
-      t('chapter_six.in_out_four.table_two.row_four.column.one'),
-      t('chapter_six.in_out_four.table_two.row_four.column.two'),
-      t('chapter_six.in_out_four.table_two.row_four.column.three'),
-      t('chapter_six.in_out_four.table_two.row_four.column.four'),
+      t('chapter_six.in_out_four.normal.table_two.row_four.column.one'),
+      t('chapter_six.in_out_four.normal.table_two.row_four.column.two'),
+      t('chapter_six.in_out_four.normal.table_two.row_four.column.three'),
+      t('chapter_six.in_out_four.normal.table_two.row_four.column.four'),
     ],
   ]
 
@@ -184,9 +184,9 @@ class Input:
       button
     >
       <LessonInfo>
-        <Title>{t('chapter_six.in_out_four.heading')}</Title>
+        <Title>{t('chapter_six.in_out_four.normal.heading')}</Title>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_one')}
+          {t('chapter_six.in_out_four.normal.paragraph_one')}
         </Text>
         <CodeExample
           className="mt-4 text-wrap font-space-mono"
@@ -194,49 +194,51 @@ class Input:
           language="shell"
         />
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_two')}
+          {t('chapter_six.in_out_four.normal.paragraph_two')}
         </Text>
 
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_three.a')}
+          {t('chapter_six.in_out_four.normal.paragraph_three.a')}
           <a
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            href={t('chapter_six.in_out_four.paragraph_three.b.href')}
+            href={t('chapter_six.in_out_four.normal.paragraph_three.b.href')}
             target="_blank"
             className="inline text-lg italic hover:underline md:text-xl"
           >
-            {t('chapter_six.in_out_four.paragraph_three.b.text')}
+            {t('chapter_six.in_out_four.normal.paragraph_three.b.text')}
             <HolocatQuestion
               theme={chapters['chapter-6'].metadata.theme}
               inline
               id="tx-order"
-              question={t('chapter_six.in_out_four.paragraph_three.b.question')}
-              href={t('chapter_six.in_out_four.paragraph_three.b.href')}
+              question={t(
+                'chapter_six.in_out_four.normal.paragraph_three.b.question'
+              )}
+              href={t('chapter_six.in_out_four.normal.paragraph_three.b.href')}
               visible={tooltipVisible}
             />
           </a>
-          {t('chapter_six.in_out_four.paragraph_three.c')}
+          {t('chapter_six.in_out_four.normal.paragraph_three.c')}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_four')}
+          {t('chapter_six.in_out_four.normal.paragraph_four')}
         </Text>
 
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.paragraph_five')}
+          {t('chapter_six.in_out_four.normal.paragraph_five')}
         </Text>
 
         <div className="mt-4">
-          <Title>{t('chapter_six.in_out_four.heading_two')}</Title>
+          <Title>{t('chapter_six.in_out_four.normal.heading_two')}</Title>
         </div>
         <Table headings={tableHeading} rows={outputRows} />
 
         <div className="mt-4">
-          <Title>{t('chapter_six.in_out_four.heading_three')}</Title>
+          <Title>{t('chapter_six.in_out_four.normal.heading_three')}</Title>
         </div>
         <Table headings={tableHeading} rows={inputRows} />
         <Text className="font-nunito text-2xl font-bold text-white">
-          {t('chapter_six.in_out_four.paragraph_six')}
+          {t('chapter_six.in_out_four.normal.paragraph_six')}
         </Text>
       </LessonInfo>
     </PlainEditorWrapper>

@@ -35,7 +35,6 @@ const Chapter6 = {
   'put-it-together-4-hard': PutItTogetheer4Hard,
   'put-it-together-5-hard': PutItTogether5Hard,
   'put-it-together-6-hard': PutItTogether6Hard,
-
   'outro-1': Outro1,
 }
 
