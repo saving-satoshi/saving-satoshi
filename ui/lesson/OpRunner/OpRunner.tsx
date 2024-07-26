@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
-import { OpCodeTypes } from './OPFunctions'
+import _ from 'lodash'
 import { StatusBar } from 'ui/common'
 import { MainState, OpRunnerTypes, StackType, T } from './runnerTypes'
 
@@ -21,6 +21,29 @@ const OpRunner = ({
   const [initialStack, setInitialStack] = useState('')
   const [height, setHeight] = useState<number>(0)
   const [stackHistory, setStackHistory] = useState<MainState | []>([])
+  const [startedTyping, setStartedTyping] = useState(false)
+
+  React.useEffect(() => {
+    if (startedTyping) {
+      const timeoutId = setTimeout(() => {
+        handleRun()
+      }, 1000)
+
+      return () => clearTimeout(timeoutId)
+    }
+  }, [script, initialStack])
+
+  const handleRun = () => {
+    const initialStackArray = initialStack.split(' ')
+
+    const runnerState = LanguageExecutor.RunCode(
+      script,
+      initialStackArray,
+      height
+    )
+    setStackHistory(runnerState?.state || [])
+    checkSuccessState(runnerState?.tokens || [], runnerState?.stack ?? [])
+  }
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -36,13 +59,15 @@ const OpRunner = ({
   }
 
   const handleScriptChange = (event) => {
-    handleReset()
     setScript(event.target.value.toUpperCase())
+    handleReset()
+    setStartedTyping(true)
   }
 
   const handleInitialStackChange = (event) => {
     handleReset()
     setInitialStack(event.target.value)
+    setStartedTyping(true)
   }
 
   const handleHeightChange = (event) => {
@@ -69,16 +94,6 @@ const OpRunner = ({
     } else {
       setSuccess(success)
     }
-  }
-  const handleRun = () => {
-    const initialStackArray = initialStack.split(' ')
-    const runnerState = LanguageExecutor.RunCode(
-      script,
-      initialStackArray,
-      height
-    )
-    setStackHistory(runnerState?.state || [])
-    checkSuccessState(runnerState?.tokens || [], runnerState?.stack ?? [])
   }
 
   const handleTryAgain = () => {

@@ -35,7 +35,9 @@ class LanguageExecutor {
   ]
 
   public static rawInputToParsableInput(input: string): Array<string | number> {
-    return input.split(' ')
+    const tokens = input.split(' ')
+    const filteredTokens = tokens.filter((arg) => arg.trim())
+    return filteredTokens
   }
 
   public static parsableInputToTokens(input: Array<string | number>): T {
@@ -43,6 +45,7 @@ class LanguageExecutor {
       const resolveValue = opFunctions?.[operation]
         ? opFunctions[operation]()
         : 'error'
+
       return {
         type: OpCodeTypes[operation] || '',
         resolves: resolveValue,
@@ -59,7 +62,10 @@ class LanguageExecutor {
     height?: number
   ): LanguageExecutor | null {
     const parsableInput = this.rawInputToParsableInput(script)
-    const filteredStack = initialStack?.filter((arg) => arg.length !== 0)
+    const filteredStack = initialStack?.filter((arg) => {
+      arg.trim()
+      return arg.length !== 0
+    })
     try {
       const tokens = this.parsableInputToTokens(parsableInput)
 
