@@ -985,7 +985,7 @@ export const markLessonAsCompleteAtom = atom(
     }
 
     // If the next lesson is not in the same chapter as the current chapter, look for the next chapter
-    if (currentChapter?.id && currentChapter.id !== nextChapter) {
+    if (currentChapter?.id !== Number(nextLesson?.id?.substring(2, 3))) {
       // mark current chapter as complete
       if (currentChapter) {
         updatedChapters = updatedChapters.map((chapter) =>
