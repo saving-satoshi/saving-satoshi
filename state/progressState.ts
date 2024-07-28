@@ -789,21 +789,24 @@ function mergeProgressState(
 export const loadProgressAtom = atom(null, async (get, set) => {
   const account = get(accountAtom)
   const isLoadingAccount = get(isAuthLoadingAtom)
+
   if (isLoadingAccount) return
+
+  set(isLoadingProgressAtom, true)
+
+  let progress = defaultProgressState
   if (account) {
-    set(isLoadingProgressAtom, true)
-    const progressFromServer = await getProgress()
-    set(
-      syncedCourseProgressAtom,
-      mergeProgressState(defaultProgressState, progressFromServer)
-    )
-  } else {
-    const progressFromLocalStorage = await getProgressLocal()
-    set(
-      syncedCourseProgressAtom,
-      mergeProgressState(defaultProgressState, progressFromLocalStorage)
-    )
+    progress = await getProgress()
   }
+
+  if (!progress || !account) {
+    progress = await getProgressLocal()
+  }
+
+  set(
+    syncedCourseProgressAtom,
+    mergeProgressState(defaultProgressState, progress)
+  )
   set(isProgressLoadedAtom, true)
   set(isLoadingProgressAtom, false)
 })

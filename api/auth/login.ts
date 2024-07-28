@@ -1,5 +1,5 @@
 import { SAVING_SATOSHI_TOKEN } from 'config/keys'
-import { post } from 'utils'
+import { post, setAndVerifyLocalStorage } from 'utils'
 
 export default async function login(privateKey) {
   try {
@@ -9,8 +9,7 @@ export default async function login(privateKey) {
         private_key: privateKey,
       },
     })
-
-    window.localStorage.setItem(SAVING_SATOSHI_TOKEN, token)
+    setAndVerifyLocalStorage(SAVING_SATOSHI_TOKEN, token)
 
     return true
   } catch (errors) {
