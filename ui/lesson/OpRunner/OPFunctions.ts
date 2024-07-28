@@ -313,11 +313,17 @@ export const opFunctions: { [key: string]: Function } = {
     }
     const a = stack.pop()
     const b = stack.pop()
+
     if (a != b) {
       return {
         value: null,
         error: 'OP_EQUALVERIFY: top two stack elements are not equal',
       }
+    }
+
+    return {
+      value: null,
+      error: null,
     }
   },
   OP_DUP: (stack: StackType) => {

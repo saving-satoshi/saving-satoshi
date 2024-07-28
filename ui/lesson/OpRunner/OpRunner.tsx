@@ -27,7 +27,6 @@ const OpRunner = ({
   React.useEffect(() => {
     if (startedTyping) {
       const timeoutId = setTimeout(() => {
-        handleReset()
         handleRun()
       }, 1000)
 
@@ -62,15 +61,18 @@ const OpRunner = ({
 
   const handleScriptChange = (event) => {
     setScript(event.target.value.toUpperCase())
+    handleReset()
     setStartedTyping(true)
   }
 
   const handleInitialStackChange = (event) => {
+    handleReset()
     setInitialStack(event.target.value.toUpperCase())
     setStartedTyping(true)
   }
 
   const handleHeightChange = (event) => {
+    handleReset()
     setHeight(parseInt(event.target.value))
     setStartedTyping(true)
   }
