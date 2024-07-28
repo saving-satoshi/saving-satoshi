@@ -34,3 +34,34 @@ export const sleep = (time: number): Promise<void> => {
     setTimeout(resolve, time)
   })
 }
+
+export function setAndVerifyLocalStorage(
+  key,
+  value,
+  maxAttempts = 10,
+  interval = 50
+) {
+  return new Promise((resolve, reject) => {
+    localStorage.setItem(key, value)
+
+    let attempts = 0
+    const checkValue = () => {
+      attempts++
+      const storedValue = localStorage.getItem(key)
+
+      if (storedValue === value) {
+        resolve(storedValue)
+      } else if (attempts >= maxAttempts) {
+        reject(
+          new Error(
+            `Failed to verify localStorage value after ${maxAttempts} attempts`
+          )
+        )
+      } else {
+        setTimeout(checkValue, interval)
+      }
+    }
+
+    checkValue()
+  })
+}

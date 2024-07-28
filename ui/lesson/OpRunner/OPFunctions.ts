@@ -1,4 +1,4 @@
-import { StackType, T, TokenTypes } from '.'
+import { StackType, T, TokenTypes } from './runnerTypes'
 
 const getKey = (keyData) => {
   if (!keyData) {
@@ -47,27 +47,52 @@ export const opFunctions: { [key: string]: Function } = {
   OP_ADD: (stack: StackType) => {
     if (!stack) return null
     if (stack?.length < 2) {
-      throw new Error('OP_ADD requires 2 items on the stack')
+      return {
+        value: null,
+        error: 'OP_ADD requires 2 items on the stack',
+      }
     }
     const a = parseInt(stack.pop() as never)
     const b = parseInt(stack.pop() as never)
-    return a + b
+    if (isNaN(a + b)) {
+      return {
+        value: null,
+        error: 'OP_ADD requires 2 numbers to add together',
+      }
+    }
+    return {
+      value: a + b,
+      error: null,
+    }
   },
   OP_PUSH: (stack: StackType, tokens: T, index: number) => {
+    console.log(stack, 'op_push')
     if (!stack) return null
-    return tokens[index + 1].value
+    if (!tokens[index + 1]?.value) {
+      return {
+        value: null,
+        error: 'OP_PUSH needs a value to push to the stack',
+      }
+    }
+    return { value: tokens[index + 1].value, error: null }
   },
   OP_CHECKLOCKTIMEVERIFY: (stack: StackType, height: number) => {
     if (!stack) return null
     if (stack?.length < 1) {
-      throw new Error('OP_CHECKLOCKTIMEVERIFY requires 1 item on the stack')
+      return {
+        value: null,
+        error: 'OP_CHECKLOCKTIMEVERIFY requires 1 item on the stack',
+      }
     }
     const a = parseInt(stack[stack?.length - 1] as string)
     const nLocktime = height
     if (a > nLocktime) {
-      throw new Error('OP_CHECKLOCKTIMEVERIFY: transaction is not valid yet')
+      return {
+        value: null,
+        error: 'OP_CHECKLOCKTIMEVERIFY: transaction is not valid yet',
+      }
     }
-    return null
+    return { value: null, error: null }
   },
 
   OP_IF(stack: StackType, conditionalState: Array<boolean>, negate: number) {
@@ -78,7 +103,10 @@ export const opFunctions: { [key: string]: Function } = {
     if (!negate) {
       if (!stack) return null
       if (stack.length < 1) {
-        throw new Error('OP_IF requires 1 item on the stack')
+        return {
+          value: null,
+          error: 'OP_IF requires 1 item on the stack',
+        }
       }
       const item = stack.pop()
 
@@ -95,13 +123,16 @@ export const opFunctions: { [key: string]: Function } = {
     if (!value) {
       negate++
     }
-    return negate
+    return { value: negate, error: null }
   },
 
   OP_ELSE(stack: StackType, conditionalState: Array<boolean>, negate: number) {
     if (!conditionalState) return null
     if (conditionalState?.length === 0) {
-      throw new Error('OP_ELSE: Unbalanced conditional')
+      return {
+        value: null,
+        error: 'OP_ELSE: Unbalanced conditional',
+      }
     }
     // Flip the current state element
     conditionalState[conditionalState.length - 1] =
@@ -115,14 +146,20 @@ export const opFunctions: { [key: string]: Function } = {
       negate--
     }
 
-    return negate
+    return {
+      value: negate,
+      error: null,
+    }
   },
 
   OP_ENDIF(stack: StackType, conditionalState: Array<boolean>, negate: number) {
     if (!conditionalState) return null
 
     if (conditionalState.length === 0) {
-      throw new Error('OP_ENDIF: Unbalanced conditional')
+      return {
+        value: null,
+        error: 'OP_ENDIF: Unbalanced conditional',
+      }
     }
 
     // Close a branch by removing the current state element
@@ -131,38 +168,62 @@ export const opFunctions: { [key: string]: Function } = {
       // that means we are getting closer to executing again.
       negate--
     }
-    return negate
+    return {
+      value: negate,
+      error: null,
+    }
   },
   OP_HASH256: (stack: StackType) => {
     if (!stack) return null
     if (stack?.length < 1) {
-      throw new Error('OP_HASH256 requires 1 item on the stack')
+      return {
+        value: null,
+        error: 'OP_HASH256 requires 1 item on the stack',
+      }
     }
     const a = stack?.pop()
-    return `HASH256(${a})`
+    return {
+      value: `HASH256(${a})`,
+      error: null,
+    }
   },
   OP_CHECKSIG: (stack: StackType) => {
     if (!stack) return null
     if (stack?.length < 2) {
-      throw new Error('OP_CHECKSIG requires 2 items on the stack')
+      return {
+        value: null,
+        error: 'OP_CHECKSIG requires 2 items on the stack',
+      }
     }
     const key = getKey(stack.pop())
     const sig = getSig(stack.pop())
-    return key === sig
+    return {
+      value: key === sig,
+      error: null,
+    }
   },
   OP_CHECKMULTISIG: (stack: StackType) => {
     if (!stack) return null
     if (stack?.length < 1) {
-      throw new Error('OP_CHECKMULTISIG requires at least 1 item on the stack')
+      return {
+        value: null,
+        error: 'OP_CHECKMULTISIG requires at least 1 item on the stack',
+      }
     }
 
     const maybeN = stack.pop() ?? ''
     const n = typeof maybeN === 'string' && parseInt(maybeN)
     if (!n) {
-      throw new Error(`OP_CHECKMULTISIG invalid n: ${maybeN}`)
+      return {
+        value: null,
+        error: `OP_CHECKMULTISIG invalid n: ${maybeN}`,
+      }
     }
     if (stack.length < n + 1) {
-      throw new Error(`OP_CHECKMULTISIG n=${n} not enough items on the stack`)
+      return {
+        value: null,
+        error: `OP_CHECKMULTISIG n=${n} not enough items on the stack`,
+      }
     }
 
     const keys = []
@@ -173,16 +234,28 @@ export const opFunctions: { [key: string]: Function } = {
     const maybeM = stack.pop() ?? ''
     const m = typeof maybeM === 'string' && parseInt(maybeM)
     if (!m) {
-      throw new Error(`OP_CHECKMULTISIG invalid m: ${maybeM}`)
+      return {
+        value: null,
+        error: `OP_CHECKMULTISIG invalid m: ${maybeM}`,
+      }
     }
     if (stack?.length < m) {
-      throw new Error(`OP_CHECKMULTISIG m=${m} not enough items on the stack`)
+      return {
+        value: null,
+        error: `OP_CHECKMULTISIG m=${m} not enough items on the stack`,
+      }
     }
     if (m < 0) {
-      throw new Error(`OP_CHECKMULTISIG invalid m: ${m} < 0`)
+      return {
+        value: null,
+        error: `OP_CHECKMULTISIG invalid m: ${m} < 0`,
+      }
     }
     if (m > n) {
-      throw new Error(`OP_CHECKMULTISIG invalid m > n: ${m} > ${n}`)
+      return {
+        value: null,
+        error: `OP_CHECKMULTISIG invalid m > n: ${m} > ${n}`,
+      }
     }
 
     const sigs = []
@@ -202,53 +275,88 @@ export const opFunctions: { [key: string]: Function } = {
     }
 
     if (stack.length < 1) {
-      throw new Error(
-        'OP_CHECKMULTISIG requires one additional unused item on the stack'
-      )
+      return {
+        value: null,
+        error:
+          'OP_CHECKMULTISIG requires one additional unused item on the stack',
+      }
     }
     stack.pop()
-    return sigs.length === 0
+    return {
+      value: sigs.length === 0,
+      error: null,
+    }
   },
   OP_EQUAL: (stack: StackType) => {
     if (!stack) return null
     if (stack?.length < 2) {
-      throw new Error('OP_EQUAL requires 2 items on the stack')
+      return {
+        value: null,
+        error: 'OP_EQUAL requires 2 items on the stack',
+      }
     }
     const a = stack.pop()
     const b = stack.pop()
-    console.log(a == b)
-    return a == b
+
+    return {
+      value: a == b,
+      error: null,
+    }
   },
   OP_EQUALVERIFY: (stack: StackType) => {
     if (!stack) return null
     if (stack?.length < 2) {
-      throw new Error('OP_EQUALVERIFY requires 2 items on the stack')
+      return {
+        value: null,
+        error: 'OP_EQUALVERIFY requires 2 items on the stack',
+      }
     }
     const a = stack.pop()
     const b = stack.pop()
     if (a != b) {
-      throw new Error('OP_EQUALVERIFY: top two stack elements are not equal')
+      return {
+        value: null,
+        error: 'OP_EQUALVERIFY: top two stack elements are not equal',
+      }
     }
   },
   OP_DUP: (stack: StackType) => {
     if (!stack) return null
-    return stack[stack?.length - 1]
+    if (!stack[stack.length - 1]) {
+      return {
+        value: null,
+        error: 'OP_DUP needs at least one item on the stack',
+      }
+    }
+    return {
+      value: stack[stack?.length - 1],
+      error: null,
+    }
   },
   OP_DROP: (stack: StackType) => {
     if (!stack) return null
     if (stack?.length < 1) {
-      throw new Error('OP_DROP requires 1 item on the stack')
+      return {
+        value: null,
+        error: 'OP_DROP requires 1 item on the stack',
+      }
     }
     stack?.pop()
   },
   OP_VERIFY: (stack: StackType) => {
     if (!stack) return null
     if (stack?.length < 1) {
-      throw new Error('OP_VERIFY requires 1 items on the stack')
+      return {
+        value: null,
+        error: 'OP_VERIFY requires 1 items on the stack',
+      }
     }
     const a = stack?.pop()
     if (a != true) {
-      throw new Error('OP_VERIFY: top stack element is not true')
+      return {
+        value: null,
+        error: 'OP_VERIFY: top stack element is not true',
+      }
     }
   },
 }

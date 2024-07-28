@@ -2314,6 +2314,36 @@ const translations = {
       paragraph_three:
         '—Don’t panic, you tell yourself. Think. What kind of trap can you set?”',
     },
+    split_one: {
+      title: 'Scripts',
+      nav_title: 'Arithmetic',
+      heading: 'Basic Arithmetic',
+      paragraph_one:
+        'Bitcoin script can do simple math operations. You could lock coins using simple math but then anyone who can do math could spend the coins! In other words, do not try this on mainnet.',
+      subheading_one:
+        'Opcodes that push integers or arbitrary data to the stack',
+      opconstants_list_one:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_0</span>: Pushes the number 0 on to the stack.',
+      opconstants_list_two:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_1</span>: Pushes the number 1 on to the stack.',
+      opconstants_list_three:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_2</span>: Pushes the number 2 on to the stack.',
+      opconstants_list_four:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_3</span>: Pushes the number 3 on to the stack.',
+      opconstants_list_five:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_DUP</span>: Pushes a duplicate of the top stack item on to the stack.',
+      opconstants_list_six:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_PUSH</span>: Pushes the following script value on to the stack. Example values include SIG(alice), PUBKEY(alice), HASH256(secret), secret. Lowercase strings represent real-world data and the other opcodes in this interpreter will process them as if they are actual keys, signatures, hash digests and preimages.',
+      subheading_two: 'Opcodes that do arithmetic',
+      oparithmetic_list_one:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ADD</span>: Pops two items off the stack, adds them together, pushes their sum back to the stack.',
+      oparithmetic_list_two:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_EQUAL</span>: Pops two items off the stack, compares their equality, pushes a boolean back to the stack.',
+      oparithmetic_list_three:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_EQUALVERIFY</span>: Like OP_EQUAL but throws an error and halts script execution immediately if the two items are not equal.',
+      paragraph_two:
+        'Provide the initial stack to spend from this script: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1">OP_ADD OP_3 OP_EQUAL</span>',
+    },
     outro_one: {
       title: 'Outro',
       nav_title: 'Chapter Complete',

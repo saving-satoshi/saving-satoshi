@@ -799,7 +799,7 @@ export const loadProgressAtom = atom(null, async (get, set) => {
     progress = await getProgress()
   }
 
-  if (!account || !progress) {
+  if (!progress || !account) {
     progress = await getProgressLocal()
   }
 
