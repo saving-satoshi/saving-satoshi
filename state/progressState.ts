@@ -3,9 +3,13 @@ import { getProgress, setProgress } from 'api/progress'
 import { lessons } from 'content'
 import { atom } from 'jotai'
 import { atomEffect } from 'jotai-effect'
-import { CourseProgress, LessonInState, SetAtom } from 'types'
+import {
+  ChapterWithDifficulties,
+  ChapterWithoutDifficulties,
+  CourseProgress,
+  LessonInState,
+} from 'types'
 import { accountAtom, isAuthLoadingAtom } from './state'
-import deepmerge, { Options } from 'deepmerge'
 
 export enum DifficultyLevel {
   NORMAL = 'NORMAL',
@@ -719,25 +723,68 @@ export const nextLessonPathAtom = atom((get) => {
   return nextLesson ? nextLesson.path : null
 })
 
-// Custom array merge function to merge lessons and difficulties based on their unique identifiers
-function mergeArrays(target: any[], source: any[]): any[] {
-  const merged = [...target]
-  source.forEach((sourceItem) => {
-    const targetIndex = target.findIndex(
-      (item) => item.id === sourceItem.id || item.level === sourceItem.level
+function mergeProgressState(
+  defaultState: CourseProgress,
+  backendState: CourseProgress
+): CourseProgress {
+  const mergedChapters = defaultState.chapters.map((defaultChapter) => {
+    const backendChapter = backendState.chapters.find(
+      (c) => c.id === defaultChapter.id
     )
-    if (targetIndex === -1) {
-      merged.push(sourceItem)
-    } else {
-      merged[targetIndex] = deepmerge(target[targetIndex], sourceItem, {
-        arrayMerge: mergeArrays,
-      })
-    }
-  })
-  return merged
-}
 
-const mergeOptions: Options = { arrayMerge: mergeArrays }
+    if (!backendChapter) {
+      return defaultChapter
+    }
+
+    if (defaultChapter.hasDifficulty && 'difficulties' in backendChapter) {
+      return {
+        ...defaultChapter,
+        difficulties: defaultChapter.difficulties.map((defaultDiff) => {
+          const backendDiff = backendChapter.difficulties.find(
+            (d) => d.level === defaultDiff.level
+          )
+          if (!backendDiff) return defaultDiff
+
+          return {
+            ...defaultDiff,
+            completed: backendDiff.completed,
+            lessons: defaultDiff.lessons.map((defaultLesson) => {
+              const backendLesson = backendDiff.lessons.find(
+                (l) => l.id === defaultLesson.id
+              )
+              return backendLesson
+                ? { ...defaultLesson, completed: backendLesson.completed }
+                : defaultLesson
+            }),
+          }
+        }),
+        completed: backendChapter.completed,
+        selectedDifficulty: backendChapter.selectedDifficulty,
+      } as ChapterWithDifficulties
+    } else if (!defaultChapter.hasDifficulty && 'lessons' in backendChapter) {
+      return {
+        ...defaultChapter,
+        completed: backendChapter.completed,
+        lessons: defaultChapter.lessons.map((defaultLesson) => {
+          const backendLesson = backendChapter.lessons.find(
+            (l) => l.id === defaultLesson.id
+          )
+          return backendLesson
+            ? { ...defaultLesson, completed: backendLesson.completed }
+            : defaultLesson
+        }),
+      } as ChapterWithoutDifficulties
+    }
+
+    return defaultChapter
+  })
+
+  return {
+    chapters: mergedChapters,
+    currentChapter: backendState.currentChapter,
+    currentLesson: backendState.currentLesson,
+  }
+}
 
 export const loadProgressAtom = atom(null, async (get, set) => {
   const account = get(accountAtom)
@@ -748,13 +795,13 @@ export const loadProgressAtom = atom(null, async (get, set) => {
     const progressFromServer = await getProgress()
     set(
       syncedCourseProgressAtom,
-      deepmerge(defaultProgressState, progressFromServer, mergeOptions)
+      mergeProgressState(defaultProgressState, progressFromServer)
     )
   } else {
     const progressFromLocalStorage = await getProgressLocal()
     set(
       syncedCourseProgressAtom,
-      deepmerge(defaultProgressState, progressFromLocalStorage, mergeOptions)
+      mergeProgressState(defaultProgressState, progressFromLocalStorage)
     )
   }
   set(isProgressLoadedAtom, true)
