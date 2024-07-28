@@ -14,7 +14,8 @@ const OpRunner = ({
   showRunButtons,
 }: Omit<OpRunnerTypes, 'children'>) => {
   const scrollRef = useRef<HTMLDivElement>(null)
-
+  const btnClassName =
+    'bg-black/10 py-[3px] px-2.5 rounded-[3px] text-white font-space-mono disabled:opacity-25'
   const [script, setScript] = useState(
     prePopulate ? answerScript.join(' ') : ''
   )
@@ -31,7 +32,7 @@ const OpRunner = ({
 
       return () => clearTimeout(timeoutId)
     }
-  }, [script, initialStack])
+  }, [script, initialStack, height])
 
   const handleRun = () => {
     const initialStackArray = initialStack.split(' ')
@@ -119,7 +120,7 @@ const OpRunner = ({
             placeholder="OP_CODES..."
             autoCapitalize="none"
             spellCheck="false"
-            rows={5}
+            rows={4}
           />
         </div>
 
@@ -135,6 +136,9 @@ const OpRunner = ({
               type="text"
               placeholder="0xA 10..."
             />
+            <p className="mt-2 font-space-mono text-base text-orange">
+              Add text or numbers separated by spaces.
+            </p>
           </div>
 
           <div className="flex flex-col px-5 py-4">
@@ -151,122 +155,133 @@ const OpRunner = ({
             />
           </div>
         </div>
+        <div className="flex grow flex-col  px-5 ">
+          <div className="flex w-full flex-row justify-between py-3">
+            <p className="font-mono text-lg font-bold">Execution stack</p>
 
-        <div
-          ref={scrollRef}
-          className="mb-auto flex w-full flex-row gap-2.5 overflow-scroll px-5 py-4"
-        >
-          {stackHistory.length === 0 && (
-            <div className="flex flex-col">
-              <div className="mx-auto my-[5px] w-[140px] rounded-[3px] border border-white bg-transparent px-3 py-1 font-space-mono text-white">
-                OP_CODES
-              </div>
-              <hr className="my-2 -ml-2.5 border-dashed" />
-              <div className="flex min-h-[204px] min-w-[164px] flex-col rounded-b-[10px] bg-black bg-opacity-20 p-2.5">
-                <div
-                  className="my-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
-                  style={{ whiteSpace: 'pre-wrap' }}
-                >
-                  <div className="break-word text-center">
-                    {'The resulting \n stack will be \n visualized \n here...'}
-                  </div>
-                </div>
-              </div>
+            <div className="flex flex-row gap-[10px]">
+              <button className={btnClassName} onClick={handleRun}>
+                Run
+              </button>
+              <button
+                type="button"
+                className={btnClassName}
+                onClick={handleRun}
+              >
+                Step
+              </button>
+              <button
+                type="button"
+                className={btnClassName}
+                onClick={handleReset}
+              >
+                Reset
+              </button>
             </div>
-          )}
-
-          {stackHistory.map((stack, index) => {
-            if (error) {
-              return null
-            }
-            if (stack?.error) {
-              error = stack.error?.message
-            }
-            return (
-              stack.negate === 0 && (
-                <div
-                  key={`Overall-container${index}`}
-                  className="flex flex-col"
-                >
-                  <div
-                    className={clsx(
-                      'mx-auto my-[5px] w-[140px] rounded-[3px] border bg-transparent px-3 py-1 font-space-mono',
-                      {
-                        'border-[#EF960B] text-[#EF960B]':
-                          stack.operation.tokenType === 'conditional',
-                        'border-[#3DCFEF] text-[#3DCFEF]':
-                          stack.operation.tokenType !== 'conditional',
-                        'border-[#F3241D] text-[#F3241D]':
-                          stack?.error?.message,
-                      }
-                    )}
-                  >
-                    {stack.operation.value}
-                  </div>
-                  <hr className="my-2 -ml-2.5 border-dashed" />
-                  {stack && (
-                    <div
-                      key={`Container${index}`}
-                      className="flex h-[204px] min-w-[164px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
-                    >
-                      <div
-                        key={index}
-                        className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
-                        style={{ whiteSpace: 'pre-wrap' }}
-                      >
-                        {stack?.stack
-                          ?.slice()
-                          .reverse()
-                          .map((item, i) => (
-                            <div
-                              key={`item${i}`}
-                              className={clsx(
-                                'my-[5px] w-[140px] rounded-[3px] px-3 py-1',
-                                {
-                                  'bg-red/35':
-                                    index + 1 === stackHistory.length &&
-                                    stack.stack[0] === false,
-                                  'bg-green/35':
-                                    index + 1 === stackHistory.length &&
-                                    (stack.stack[0] === true ||
-                                      stack.stack[0] === 1),
-                                  'bg-white/15':
-                                    index + 1 !== stackHistory.length ||
-                                    (index + 1 === stackHistory.length &&
-                                      stack.stack[0] !== true &&
-                                      stack.stack[0] !== false),
-                                }
-                              )}
-                            >
-                              {JSON.stringify(
-                                !isNaN(parseFloat(item)) && isFinite(item)
-                                  ? parseInt(item)
-                                  : item
-                              )}
-                            </div>
-                          ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )
-            )
-          })}
-        </div>
-
-        {showRunButtons && (
-          <div className="flex h-10  gap-3 border-t border-t-white pl-5 ">
-            <button
-              type="button"
-              className="cursor-pointer"
-              onClick={handleRun}
-            >
-              Run
-            </button>
-            <button onClick={handleReset}>Reset</button>
-            <button>Step</button>
           </div>
-        )}
+          <div
+            ref={scrollRef}
+            className="mb-auto flex h-full w-full flex-row gap-2.5 overflow-scroll py-2"
+          >
+            {stackHistory.length === 0 && (
+              <div className="flex w-full max-w-[164px] flex-col">
+                <div className="my-[5px] w-full rounded-[3px] bg-black/20 px-3 py-1 text-center font-space-mono text-white/50">
+                  OP_CODES
+                </div>
+
+                <div className="flex h-full max-h-[204px] min-w-[164px] flex-col rounded-b-[10px] bg-black/20  p-2.5">
+                  <div
+                    className="my-auto resize-none break-all border-none bg-transparent font-space-mono text-white/50 focus:outline-none"
+                    style={{ whiteSpace: 'pre-wrap' }}
+                  >
+                    <div className="break-word text-center">
+                      {
+                        'The resulting \n stack will be \n visualized \n here...'
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {stackHistory.map((stack, index) => {
+              if (error) {
+                return null
+              }
+              if (stack?.error) {
+                error = stack.error?.message
+              }
+              return (
+                stack.negate === 0 && (
+                  <div
+                    key={`Overall-container${index}`}
+                    className="flex w-full max-w-[164px] flex-col"
+                  >
+                    <div
+                      className={clsx(
+                        'mx-auto my-[5px] w-full max-w-[164px] rounded-[3px] border border-none bg-black/20 py-1  text-center font-space-mono',
+                        {
+                          ' text-[#EF960B]':
+                            stack.operation.tokenType === 'conditional',
+                          ' text-[#3DCFEF]':
+                            stack.operation.tokenType !== 'conditional',
+                          ' text-[#F3241D]': stack?.error?.message,
+                        }
+                      )}
+                    >
+                      {stack.operation.value}
+                    </div>
+
+                    {stack && (
+                      <div
+                        key={`Container${index}`}
+                        className="flex h-full max-h-[204px] min-w-[164px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                      >
+                        <div
+                          key={index}
+                          className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
+                          style={{ whiteSpace: 'pre-wrap' }}
+                        >
+                          {stack?.stack
+                            ?.slice()
+                            .reverse()
+                            .map((item, i) => (
+                              <div
+                                key={`item${i}`}
+                                className={clsx(
+                                  'my-[5px] w-[140px] rounded-[3px] px-3 py-1',
+                                  {
+                                    'bg-red/35':
+                                      index + 1 === stackHistory.length &&
+                                      stack.stack[0] === false,
+                                    'bg-green/35':
+                                      index + 1 === stackHistory.length &&
+                                      (stack.stack[0] === true ||
+                                        stack.stack[0] === 1),
+                                    'bg-white/15':
+                                      index + 1 !== stackHistory.length ||
+                                      (index + 1 === stackHistory.length &&
+                                        stack.stack[0] !== true &&
+                                        stack.stack[0] !== false),
+                                  }
+                                )}
+                              >
+                                {JSON.stringify(
+                                  !isNaN(parseFloat(item)) && isFinite(item)
+                                    ? parseInt(item)
+                                    : item
+                                )}
+                              </div>
+                            ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )
+              )
+            })}
+          </div>
+        </div>
       </div>
 
       <StatusBar
