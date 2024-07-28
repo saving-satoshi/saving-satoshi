@@ -728,7 +728,7 @@ function mergeProgressState(
   backendState: CourseProgress
 ): CourseProgress {
   const mergedChapters = defaultState.chapters.map((defaultChapter) => {
-    const backendChapter = backendState?.chapters.find(
+    const backendChapter = backendState.chapters.find(
       (c) => c.id === defaultChapter.id
     )
 
@@ -799,7 +799,7 @@ export const loadProgressAtom = atom(null, async (get, set) => {
     progress = await getProgress()
   }
 
-  if (!progress || !account) {
+  if (!account || !progress) {
     progress = await getProgressLocal()
   }
 

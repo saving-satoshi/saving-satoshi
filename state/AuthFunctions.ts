@@ -33,7 +33,6 @@ export const useAuthFunctions = () => {
     await logout()
     localStorage.clear()
     localStorage.removeItem('SavingSatoshiProgress')
-    setCourseProgress(defaultProgressState)
     setAccount(undefined)
   }
 
