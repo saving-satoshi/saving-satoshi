@@ -728,7 +728,7 @@ function mergeProgressState(
   backendState: CourseProgress
 ): CourseProgress {
   const mergedChapters = defaultState.chapters.map((defaultChapter) => {
-    const backendChapter = backendState.chapters.find(
+    const backendChapter = backendState?.chapters.find(
       (c) => c.id === defaultChapter.id
     )
 
@@ -781,8 +781,8 @@ function mergeProgressState(
 
   return {
     chapters: mergedChapters,
-    currentChapter: backendState.currentChapter,
-    currentLesson: backendState.currentLesson,
+    currentChapter: backendState?.currentChapter ?? defaultState.currentChapter,
+    currentLesson: backendState?.currentLesson ?? defaultState.currentLesson,
   }
 }
 
