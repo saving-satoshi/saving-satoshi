@@ -21,6 +21,7 @@ import {
   isLoadingProgressAtom,
   isChapterInProgress,
 } from 'state/progressState'
+import DifficultySelection from './DifficultySelection'
 
 export default function Chapter({ children, metadata, lang }) {
   const { isDevelopment } = useEnvironment()
@@ -38,8 +39,9 @@ export default function Chapter({ children, metadata, lang }) {
     courseProgress
   )
 
-  const currentLesson = useAtomValue(currentLessonComputedAtom)
   const currentChapter = useAtomValue(currentChapterAtom)
+  const chapterWeAreRendering = courseProgress.chapters[metadata.position]
+
   const currentLessonInChapter = useMemo(() => {
     const chapter = courseProgress.chapters.find(
       (ch) => ch.id === metadata.position + 1
@@ -139,6 +141,10 @@ export default function Chapter({ children, metadata, lang }) {
           <h3 className="mb-6 text-left text-3xl text-white md:text-5xl">
             {t(chapter.metadata.title)}
           </h3>
+
+          {chapterWeAreRendering?.hasDifficulty && display && (
+            <DifficultySelection chapterId={chapterWeAreRendering.id} />
+          )}
 
           <div>
             {(chapter.metadata.lessons.length > 0 &&

@@ -12,6 +12,7 @@ import { DifficultyLevel, syncedCourseProgressAtom } from 'state/progressState'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_four.title',
+  navigation_title: 'chapter_six.put_it_together_four.nav_title',
   key: 'CH6PUT4_HARD',
 }
 

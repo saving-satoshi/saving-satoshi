@@ -14,11 +14,17 @@ import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.title',
+  navigation_title: 'chapter_six.put_it_together_six.nav_title',
   image: '/assets/images/chapter-4-intro-1.jpg',
   key: 'CH6PUT6',
 }
 
-const lessonsToLoad = ['CH6PUT1', 'CH6PUT5', 'CH6INO4', 'CH6INO5']
+const lessonsToLoad = [
+  'CH6PUT1_HARD',
+  'CH6PUT5_HARD',
+  'CH6INO4_HARD',
+  'CH6INO5',
+]
 
 const allLessonsAreLoaded = (data) => {
   return lessonsToLoad.every((lesson) => data[lesson])
@@ -52,11 +58,11 @@ export default function PutItTogether6({ lang }) {
       setCombinedCode(
         organizeImports(
           '\n' +
-            prevData['CH6PUT1'] +
+            prevData['CH6PUT1_HARD'] +
             '\n' +
-            prevData['CH6PUT5'] +
+            prevData['CH6PUT5_HARD'] +
             '\n' +
-            prevData['CH6INO4'] +
+            prevData['CH6INO4_HARD'] +
             '\n' +
             prevData['CH6INO5'] +
             '\n'
