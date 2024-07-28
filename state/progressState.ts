@@ -794,7 +794,7 @@ export const loadProgressAtom = atom(null, async (get, set) => {
 
   set(isLoadingProgressAtom, true)
 
-  let progress = null
+  let progress = defaultProgressState
   if (account) {
     progress = await getProgress()
   }
