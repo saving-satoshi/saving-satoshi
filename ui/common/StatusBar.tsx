@@ -152,7 +152,7 @@ export default function StatusBar({
         <div className="flex items-center align-middle transition duration-150 ease-in-out md:px-5">
           <div
             className={clsx(
-              'font-nunito text-[21px] transition duration-150 ease-in-out',
+              'font-nunito text-[21px] text-white transition duration-150 ease-in-out',
               {
                 'opacity-50': getStatus() === Status.Begin,
                 'text-[#EF960B]': getStatus() === Status.Error,
