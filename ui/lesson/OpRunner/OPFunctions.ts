@@ -66,7 +66,6 @@ export const opFunctions: { [key: string]: Function } = {
     }
   },
   OP_PUSH: (stack: StackType, tokens: T, index: number) => {
-    console.log(stack, 'op_push')
     if (!stack) return null
     if (!tokens[index + 1]?.value) {
       return {
