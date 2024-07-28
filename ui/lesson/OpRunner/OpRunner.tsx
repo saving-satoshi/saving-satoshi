@@ -67,7 +67,7 @@ const OpRunner = ({
 
   const handleInitialStackChange = (event) => {
     handleReset()
-    setInitialStack(event.target.value)
+    setInitialStack(event.target.value.toUpperCase())
     setStartedTyping(true)
   }
 
@@ -112,7 +112,7 @@ const OpRunner = ({
           </p>
           <textarea
             title="Add OP_CODES seperated by spaces."
-            className="overflow-wrap-normal w-full resize-none break-all border-none bg-transparent font-space-mono text-lg text-white focus:outline-none"
+            className="overflow-wrap-normal w-full resize-none break-all border-none bg-transparent font-space-mono text-lg uppercase text-white focus:outline-none"
             onChange={handleScriptChange}
             autoComplete="off"
             value={script}
@@ -132,7 +132,7 @@ const OpRunner = ({
             <input
               title="Add text or numbers seperated by spaces."
               onChange={handleInitialStackChange}
-              className="flex-grow border-none bg-transparent font-space-mono text-lg focus:outline-none"
+              className="flex-grow border-none bg-transparent font-space-mono text-lg uppercase focus:outline-none"
               type="text"
               placeholder="0xA 10..."
             />
