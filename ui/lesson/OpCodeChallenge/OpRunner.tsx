@@ -206,6 +206,7 @@ const OpRunner = ({
             )}
 
             {stackHistory.map((stack, index) => {
+              console.log(index, stack)
               if (error) {
                 return null
               }

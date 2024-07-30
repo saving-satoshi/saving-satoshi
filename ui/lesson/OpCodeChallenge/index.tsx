@@ -20,7 +20,12 @@ const tabData = [
   },
 ]
 
-const OpRunnerLesson = ({ children, ...rest }: OpRunnerTypes) => {
+export default function OpCodeChallenge({
+  children,
+  ...rest
+}: {
+  children?: React.ReactNode
+}) {
   const [hydrated, setHydrated] = useState(false)
 
   useDynamicHeight()
@@ -48,5 +53,3 @@ const OpRunnerLesson = ({ children, ...rest }: OpRunnerTypes) => {
     )
   )
 }
-
-export default OpRunnerLesson

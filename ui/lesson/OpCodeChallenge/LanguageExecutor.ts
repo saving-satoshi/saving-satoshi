@@ -84,6 +84,7 @@ class LanguageExecutor {
       return langExecutor
     }
   }
+
   constructor(tokens: T, initialStack: string[], height?: number) {
     this.tokens = tokens
     this.state = []
@@ -107,7 +108,7 @@ class LanguageExecutor {
     }
   }
 
-  execute() {
+  async execute() {
     if (!this.tokens) return this.state
     for (let index = 0; index < this.tokens.length; index++) {
       const element = this.tokens[index]
@@ -140,7 +141,7 @@ class LanguageExecutor {
         case TokenTypes.ARITHMETIC:
           if (this.negate === 0) {
             opResolves = opFunctions[element.value](this.stack)
-            if (opResolves.value) {
+            if (opResolves.value !== null) {
               this.stack.push(opResolves.value)
             }
           }
@@ -281,7 +282,7 @@ class LanguageExecutor {
             step: index,
             error: {
               type: element.value,
-              message: opResolves.error,
+              message: opResolves?.error,
             },
           }
           this.state.push(addToState)
@@ -332,7 +333,10 @@ class LanguageExecutor {
 
       if (index === this.tokens.length - 1) {
         if (this.conditionalState.length !== 0) {
-          throw new Error('SCRIPT_ERR: Unbalanced conditional')
+          error = {
+            type: 'unknown',
+            message: 'SCRIPT_ERR: Unbalanced conditional',
+          }
         }
       }
     }

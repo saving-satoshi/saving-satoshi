@@ -54,14 +54,14 @@ export const opFunctions: { [key: string]: Function } = {
     }
     const a = parseInt(stack.pop() as never)
     const b = parseInt(stack.pop() as never)
-    if (isNaN(a + b)) {
+    if (typeof (a + b) !== 'number') {
       return {
         value: null,
         error: 'OP_ADD requires 2 numbers to add together',
       }
     }
     return {
-      value: a + b,
+      value: Number(a + b),
       error: null,
     }
   },
@@ -109,9 +109,7 @@ export const opFunctions: { [key: string]: Function } = {
       }
       const item = stack.pop()
 
-      if (item) {
-        value = ![0, '0', false, 'false'].includes(item)
-      }
+      value = ![0, '0', false, 'false'].includes(item)
     }
     // Start a new branch in the state.
     // Even if we are not executing there should still be an ELSE/ENDIF
@@ -126,6 +124,7 @@ export const opFunctions: { [key: string]: Function } = {
   },
 
   OP_ELSE(stack: StackType, conditionalState: Array<boolean>, negate: number) {
+    console.log('op_else', conditionalState)
     if (!conditionalState) return null
     if (conditionalState?.length === 0) {
       return {
