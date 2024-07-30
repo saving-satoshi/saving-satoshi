@@ -60,6 +60,12 @@ export const opFunctions: { [key: string]: Function } = {
         error: 'OP_ADD requires 2 numbers to add together',
       }
     }
+    if (a == 0 && b == 0) {
+      return {
+        value: 0,
+        error: null,
+      }
+    }
     return {
       value: Number(a + b),
       error: null,
@@ -124,7 +130,6 @@ export const opFunctions: { [key: string]: Function } = {
   },
 
   OP_ELSE(stack: StackType, conditionalState: Array<boolean>, negate: number) {
-    console.log('op_else', conditionalState)
     if (!conditionalState) return null
     if (conditionalState?.length === 0) {
       return {
@@ -193,8 +198,8 @@ export const opFunctions: { [key: string]: Function } = {
         error: 'OP_CHECKSIG requires 2 items on the stack',
       }
     }
-    const key = getKey(stack.pop())
-    const sig = getSig(stack.pop())
+    const key = getKey(stack.pop()).toUpperCase()
+    const sig = getSig(stack.pop()).toUpperCase()
     return {
       value: key === sig,
       error: null,
@@ -210,7 +215,7 @@ export const opFunctions: { [key: string]: Function } = {
     }
 
     const maybeN = stack.pop() ?? ''
-    const n = typeof maybeN === 'string' && parseInt(maybeN)
+    const n = typeof maybeN === 'number' && parseInt(maybeN)
     if (!n) {
       return {
         value: null,
@@ -230,7 +235,7 @@ export const opFunctions: { [key: string]: Function } = {
     }
 
     const maybeM = stack.pop() ?? ''
-    const m = typeof maybeM === 'string' && parseInt(maybeM)
+    const m = typeof maybeM === 'number' && parseInt(maybeM)
     if (!m) {
       return {
         value: null,

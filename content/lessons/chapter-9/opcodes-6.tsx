@@ -21,7 +21,18 @@ export default function OpCodes6({ lang }) {
   return (
     hydrated && (
       <OpCodeChallenge
-        answerScript={['OP_ADD', 'OP_3', 'OP_EQUAL']}
+        answerScript={[
+          'OP_ADD',
+          'OP_IF',
+          'OP_3',
+          'OP_2',
+          'OP_EQUAL',
+          'OP_ELSE',
+          'OP_1',
+          'OP_1',
+          'OP_EQUAL',
+          'OP_ENDIF',
+        ]}
         prePopulate
         showRunButtons
         readOnly
@@ -33,24 +44,8 @@ export default function OpCodes6({ lang }) {
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_nine.opcodes_six.paragraph_one')}
           </Text>
-          <Text className="mt-4 font-nunito text-xl font-bold text-white">
-            {t('chapter_nine.opcodes_six.subheading_one')}
-          </Text>
           <ul className="ml-4 list-disc">
-            <li>{t('chapter_nine.opcodes_six.opconstants_list_one')}</li>
-            <li>{t('chapter_nine.opcodes_six.opconstants_list_two')}</li>
-            <li>{t('chapter_nine.opcodes_six.opconstants_list_three')}</li>
-            <li>{t('chapter_nine.opcodes_six.opconstants_list_four')}</li>
-            <li>{t('chapter_nine.opcodes_six.opconstants_list_five')}</li>
-            <li>{t('chapter_nine.opcodes_six.opconstants_list_six')}</li>
-          </ul>
-          <Text className="mt-4 font-nunito text-xl font-bold text-white">
-            {t('chapter_nine.opcodes_six.subheading_two')}
-          </Text>
-          <ul className="ml-4 list-disc">
-            <li>{t('chapter_nine.opcodes_six.oparithmetic_list_one')}</li>
-            <li>{t('chapter_nine.opcodes_six.oparithmetic_list_two')}</li>
-            <li>{t('chapter_nine.opcodes_six.oparithmetic_list_three')}</li>
+            <li>{t('chapter_nine.opcodes_six.opconditional_list_one')}</li>
           </ul>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_nine.opcodes_six.paragraph_two')}

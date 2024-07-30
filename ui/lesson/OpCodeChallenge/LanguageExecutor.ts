@@ -330,7 +330,9 @@ class LanguageExecutor {
           this.state.push(addToState)
           break
       }
-
+      if (addToState?.error?.message) {
+        index = this.tokens.length - 1
+      }
       if (index === this.tokens.length - 1) {
         if (this.conditionalState.length !== 0) {
           error = {

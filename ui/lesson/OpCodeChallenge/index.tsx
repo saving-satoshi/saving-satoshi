@@ -1,3 +1,5 @@
+'use client'
+
 import { useDynamicHeight, useMediaQuery } from 'hooks'
 import React, { useEffect, useState } from 'react'
 import { LessonDirection } from 'types'

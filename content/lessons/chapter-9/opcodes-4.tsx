@@ -22,19 +22,17 @@ export default function OpCodes4({ lang }) {
     hydrated && (
       <OpCodeChallenge
         answerScript={[
-          'OP_ADD',
-          'OP_IF',
-          'OP_3',
           'OP_2',
-          'OP_EQUAL',
-          'OP_ELSE',
-          'OP_1',
-          'OP_1',
-          'OP_EQUAL',
-          'OP_ENDIF',
+          'OP_PUSH',
+          'PUBKEY(MIKERAMEN)',
+          'OP_PUSH',
+          'PUBKEY(DEBORAHCHUNK)',
+          'OP_2',
+          'OP_CHECKMULTISIG',
         ]}
         prePopulate
         showRunButtons
+        readOnly
         success={success}
         setSuccess={setSuccess}
       >
@@ -46,24 +44,25 @@ export default function OpCodes4({ lang }) {
           <Text className="mt-4 font-nunito text-xl font-bold text-white">
             {t('chapter_nine.opcodes_four.subheading_one')}
           </Text>
-          <ul className="ml-4 list-disc">
-            <li>{t('chapter_nine.opcodes_four.opconstants_list_one')}</li>
-            <li>{t('chapter_nine.opcodes_four.opconstants_list_two')}</li>
-            <li>{t('chapter_nine.opcodes_four.opconstants_list_three')}</li>
-            <li>{t('chapter_nine.opcodes_four.opconstants_list_four')}</li>
-            <li>{t('chapter_nine.opcodes_four.opconstants_list_five')}</li>
-            <li>{t('chapter_nine.opcodes_four.opconstants_list_six')}</li>
-          </ul>
-          <Text className="mt-4 font-nunito text-xl font-bold text-white">
-            {t('chapter_nine.opcodes_four.subheading_two')}
-          </Text>
-          <ul className="ml-4 list-disc">
-            <li>{t('chapter_nine.opcodes_four.oparithmetic_list_one')}</li>
-            <li>{t('chapter_nine.opcodes_four.oparithmetic_list_two')}</li>
-            <li>{t('chapter_nine.opcodes_four.oparithmetic_list_three')}</li>
-          </ul>
-          <Text className="mt-4 font-nunito text-xl text-white">
+          <Text className="mt-4 font-space-mono text-lg text-white">
             {t('chapter_nine.opcodes_four.paragraph_two')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl font-bold text-white">
+            {t('chapter_nine.opcodes_four.subheading_two')}{' '}
+            {t('chapter_nine.opcodes_four.subheading_two_link')}
+          </Text>
+          <ol className="ml-4 list-decimal">
+            <li>{t('chapter_nine.opcodes_four.multisig_list_one')}</li>
+            <li>{t('chapter_nine.opcodes_four.multisig_list_two')}</li>
+            <li>{t('chapter_nine.opcodes_four.multisig_list_three')}</li>
+            <li>{t('chapter_nine.opcodes_four.multisig_list_four')}</li>
+            <li>{t('chapter_nine.opcodes_four.multisig_list_five')}</li>
+            <li>{t('chapter_nine.opcodes_four.multisig_list_six')}</li>
+            <li>{t('chapter_nine.opcodes_four.multisig_list_seven')}</li>
+            <li>{t('chapter_nine.opcodes_four.multisig_list_eight')}</li>
+          </ol>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_nine.opcodes_four.paragraph_three')}
           </Text>
         </LessonInfo>
       </OpCodeChallenge>

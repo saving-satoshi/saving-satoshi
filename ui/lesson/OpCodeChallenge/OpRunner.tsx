@@ -77,7 +77,7 @@ const OpRunner = ({
     setStartedTyping(true)
   }
 
-  const checkSuccessState = (tokens: T, stack: StackType) => {
+  const checkSuccessState = (tokens: T, stack: StackType, error: boolean) => {
     const filterToStringArray = tokens.map((token) => token.value)
     const containsEveryScript = answerScript.every((token) =>
       filterToStringArray.includes(token)
@@ -206,7 +206,6 @@ const OpRunner = ({
             )}
 
             {stackHistory.map((stack, index) => {
-              console.log(index, stack)
               if (error) {
                 return null
               }
