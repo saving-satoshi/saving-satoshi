@@ -24,10 +24,13 @@ const tabData = [
 
 export default function OpCodeChallenge({
   children,
-  ...rest
-}: {
-  children?: React.ReactNode
-}) {
+  answerScript,
+  prePopulate,
+  showRunButtons,
+  readOnly,
+  success,
+  setSuccess,
+}: OpRunnerTypes) {
   const [hydrated, setHydrated] = useState(false)
 
   useDynamicHeight()
@@ -49,7 +52,14 @@ export default function OpCodeChallenge({
       >
         {children}
         <div className="height-minus-nav flex border-white/25 md:max-w-[50vw] md:border-l">
-          <OpRunner {...rest} />
+          <OpRunner
+            answerScript={answerScript}
+            prePopulate={prePopulate}
+            showRunButtons={showRunButtons}
+            readOnly={readOnly}
+            success={success}
+            setSuccess={setSuccess}
+          />
         </div>
       </Lesson>
     )

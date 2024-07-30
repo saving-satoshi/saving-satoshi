@@ -115,7 +115,9 @@ export const opFunctions: { [key: string]: Function } = {
       }
       const item = stack.pop()
 
-      value = ![0, '0', false, 'false'].includes(item)
+      if (item) {
+        value = ![0, '0', false, 'false'].includes(item)
+      }
     }
     // Start a new branch in the state.
     // Even if we are not executing there should still be an ELSE/ENDIF
@@ -215,7 +217,7 @@ export const opFunctions: { [key: string]: Function } = {
     }
 
     const maybeN = stack.pop() ?? ''
-    const n = typeof maybeN === 'number' && parseInt(maybeN)
+    const n = typeof maybeN === 'number' && maybeN
     if (!n) {
       return {
         value: null,
@@ -235,7 +237,7 @@ export const opFunctions: { [key: string]: Function } = {
     }
 
     const maybeM = stack.pop() ?? ''
-    const m = typeof maybeM === 'number' && parseInt(maybeM)
+    const m = typeof maybeM === 'number' && maybeM
     if (!m) {
       return {
         value: null,
