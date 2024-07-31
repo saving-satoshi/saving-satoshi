@@ -20,28 +20,22 @@ const javascriptChallenge = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `  serialize() {
-    let buf = Buffer.alloc(4);
-    buf.writeUInt32LE(this.version, 0);
-
-    buf = Buffer.concat([buf, this.flags]);
-    buf = Buffer.concat([buf, Buffer.from([this.inputs.length])]);
-    for (const input of this.inputs)
-      buf = Buffer.concat([buf, input.serialize()]);
-    buf = Buffer.concat([buf, Buffer.from([this.outputs.length])]);
-    for (const output of this.outputs)
-      buf = Buffer.concat([buf, output.serialize()]);
-    for (const witness of this.witnesses)
-      buf = Buffer.concat([buf, witness.serialize()]);
-
-    const locktime = Buffer.alloc(4);
-    locktime.writeUInt32LE(this.locktime);
-
-    return Buffer.concat([buf, locktime]);
+  defaultCode: `class Witness {
+  constructor() {
+    this.items = [];
   }
 
-  // Update the change amount to account for miner fees
-  const out1 = Output.from_options(addr, 60999000);`,
+  push_item(data) {
+    this.items.push(data);
+  }
+
+  serialize() {
+    let buf = Buffer.from([this.items.length]);
+    for (const item of this.items)
+      buf = Buffer.concat([buf, Buffer.from([item.length]), item]);
+    return buf;
+  }
+}`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -59,23 +53,20 @@ const pythonChallenge = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `    def serialize(self):
-        r = b""
-        r += pack("<I", self.version)
-        r += self.flags
-        r += pack("<B", len(self.inputs))
-        for inp in self.inputs:
-            r += inp.serialize()
-        r += pack("<B", len(self.outputs))
-        for out in self.outputs:
-            r += out.serialize()
-        for wit in self.witnesses:
-            r += wit.serialize()
-        r += pack("<I", self.locktime)
-        return r
+  defaultCode: `class Witness:
+    def __init__(self):
+        self.items = []
 
-    # Update the change amount to account for miner fees
-    out1 = Output.from_options(addr, 60999000)`,
+    def push_item(self, data):
+        self.items.append(data)
+
+    def serialize(self):
+        r = b""
+        r += pack("<B", len(self.items))
+        for item in self.items:
+            r += pack("<B", len(item))
+            r += item
+        return r`,
   validate: async (answer) => {
     return [true, undefined]
   },
@@ -95,15 +86,13 @@ const config: EditorConfig = {
   },
 }
 
-export default function PutItTogetherResources({ lang }) {
+export default function PutItTogetherResourcesOneHard({ lang }) {
   const t = useTranslations(lang)
   const [currentLanguage] = useAtom(currentLanguageAtom)
   const initialStateCode =
     config.languages[getLanguageString(currentLanguage)].defaultCode
   const [code, setCode] = useState<string>(initialStateCode as string)
-
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
-
   const [challengeIsToggled, setChallengeIsToggled] = useState(false)
 
   const challengeToggleSwitch = () => {
@@ -156,7 +145,7 @@ export default function PutItTogetherResources({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`425px`}
+                  height={`315px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

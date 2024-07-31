@@ -1574,7 +1574,7 @@ const translations = {
         paragraph_one:
           'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
         paragraph_two:
-          'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green">digest(input_index)</span> that computes the 32-byte message for signing an input.',
+          'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">digest(input_index)</span> that computes the 32-byte message for signing an input.',
         list_heading: 'Some notes:',
         list_one: '"Double SHA-256" or dSHA256 = sha256(sha256(data))',
         list_two:
@@ -1667,7 +1667,7 @@ const translations = {
       },
       hard: {
         title: 'Putting it all together',
-        nav_title: 'Build the transaction digest',
+        nav_title: 'Build the witness class',
         heading: 'Finish the implementation of Class Witness',
         paragraph_one:
           'It should have the following method, which accepts a byte array and adds that item to the witness stack.',
@@ -1754,7 +1754,7 @@ const translations = {
         paragraph_one:
           'It should have global properties locktime and version as well as an array of inputs, outputs and witness stacks.',
         paragraph_two:
-          'It will need a serialize() method that outputs the enitire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
+          'It will need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that outputs the enitire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
         headings: {
           item_one: 'Description',
           item_two: 'Name',
@@ -1813,7 +1813,7 @@ const translations = {
         },
         paragraph_three:
           'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.',
-        success: 'The Transaction class looks good. Great Work!',
+        success: 'The serialize() method looks good. Great Work!',
       },
     },
     put_it_together_three: {
@@ -1822,7 +1822,7 @@ const translations = {
         nav_title: 'Sign the transaction',
         heading: 'Finish the implementation of Class Transaction',
         paragraph_one:
-          'To complete our transaction we will need a serialize() method that outputs the entire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
+          'To complete our transaction we will need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that outputs the entire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
         paragraph_two:
           'Our script should create and sign a Transaction object. It will have one input (the UTXO we identified in <span className="underline">Populate the Input</span>) and two outputs:',
         paragraph_three:
@@ -1902,7 +1902,7 @@ const translations = {
         paragraph_one:
           'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
         paragraph_two:
-          'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method digest(input_index) that computes the 32-byte message for signing an input.',
+          'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">digest(input_index)</span> that computes the 32-byte message for signing an input.',
         list_heading: 'Some notes:',
         list_one: '"Double SHA-256" or dSHA256 = sha256(sha256(data))',
         list_two:
@@ -1994,45 +1994,53 @@ const translations = {
       },
     },
     put_it_together_four: {
-      title: 'Putting it all together',
-      heading: 'Signing!',
-      nav_title: 'Sign the transaction',
-      paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called compute_input_signature(index: int, key: int) to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the digest() method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
-      paragraph_two:
-        'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
-      paragraph_three:
-        'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
-      success: 'The compute_input_signature() method looks good. Great Work!',
+      hard: {
+        title: 'Putting it all together',
+        heading: 'Signing!',
+        nav_title: 'Sign the transaction',
+        paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">compute_input_signature(index: int, key: int)</span> to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">digest()</span> method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
+        paragraph_two:
+          'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
+        paragraph_three:
+          'The Bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
+        success: 'The compute_input_signature() method looks good. Great Work!',
+      },
     },
     put_it_together_five: {
-      heading: 'Populate the Witness',
-      nav_title: 'Populate the Witness',
-      paragraph_one:
-        'Finish the method sign_input(index: int, key: int) that calls our step 7 method compute_input_signature(index, key)and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.',
-      paragraph_two:
-        'Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this indicating "SIGHASH ALL".',
-      paragraph_three:
-        'Once we have that signature blob we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.',
-      paragraph_four:
-        'The witness stack object can then be appended to the witnesses array of the transaction object.',
-      success: 'The sign_input() method looks good. Great Work!',
+      hard: {
+        title: 'Putting it all together',
+        heading: 'Populate the Witness',
+        nav_title: 'Populate the Witness',
+        paragraph_one:
+          'Finish the method <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">sign_input(index: int, key: int)</span> that calls our step 7 method <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.',
+        paragraph_two:
+          'Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this indicating "SIGHASH ALL".',
+        paragraph_three:
+          'Once we have that signature blob we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.',
+        paragraph_four:
+          'The witness stack object can then be appended to the witnesses array of the transaction object.',
+        success: 'The sign_input() method looks good. Great Work!',
+      },
     },
     put_it_together_six: {
-      heading: 'Put it All Together',
-      nav_title: 'Put it All Together!',
-      paragraph_one:
-        'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
-      paragraph_two:
-        'Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in step 1) and two outputs:',
-      paragraph_three:
-        'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 61,000,000 to 60,999,000 satoshis.',
-      paragraph_four:
-        'Finally our work is done. Your script should end by returning the result of the transaction serialize() method. This is a valid signed Bitcoin transaction and we can broadcast it to the network to send Mike Ramen the money he needs!',
-      bullet_one:
-        'Mike Ramen gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
-      bullet_two:
-        'You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
-      success: "You've done it! You've built a transaction!",
+      hard: {
+        title: 'Putting it all together',
+        heading: 'Put it All Together',
+        nav_title: 'Put it All Together!',
+        paragraph_one:
+          'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
+        paragraph_two:
+          'Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in step 1) and two outputs:',
+        paragraph_three:
+          'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 61,000,000 to 60,999,000 satoshis.',
+        paragraph_four:
+          'Finally our work is done. Your script should end by returning the result of the transaction serialize() method. This is a valid signed Bitcoin transaction and we can broadcast it to the network to send Mike Ramen the money he needs!',
+        bullet_one:
+          'Mike Ramen gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
+        bullet_two:
+          'You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
+        success: "You've done it! You've built a transaction!",
+      },
     },
     outro_one: {
       title: 'Outro',

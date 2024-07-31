@@ -13,10 +13,9 @@ import { EditorConfig } from 'types'
 import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
 
 export const metadata = {
-  title: 'chapter_six.put_it_together_one.title',
-  navigation_title: 'chapter_six.put_it_together_six.nav_title',
-  image: '/assets/images/chapter-4-intro-1.jpg',
-  key: 'CH6PUT6',
+  title: 'chapter_six.put_it_together_six.hard.title',
+  navigation_title: 'chapter_six.put_it_together_six.hard.nav_title',
+  key: 'CH6PUT6_HARD',
 }
 
 const lessonsToLoad = [
@@ -30,7 +29,7 @@ const allLessonsAreLoaded = (data) => {
   return lessonsToLoad.every((lesson) => data[lesson])
 }
 
-export default function PutItTogether6({ lang }) {
+export default function PutItTogether6Hard({ lang }) {
   const t = useTranslations(lang)
   const [prevData, setPrevData] = useState<any>({})
   const [isLoading, setIsLoading] = useState(true)
@@ -78,7 +77,7 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    rangesToCollapse: [
+    rangeToNotCollapse: [
       {
         start: countLines(combinedCode) + 1,
         end: countLines(combinedCode) + 18,
@@ -122,19 +121,12 @@ console.log(tx.serialize().toString('hex'));`,
       }
       return [true, 'Nicely Done']
     },
-    constraints: [
-      {
-        range: [1, 1, countLines(combinedCode) + 17, 1],
-        allowMultiline: true,
-      },
-    ],
-    //hiddenRange: [1, 1, countLines(combinedCode), 1],
   }
 
   const python = {
     program: `
 print("KILL")`,
-    rangesToCollapse: [
+    rangeToNotCollapse: [
       {
         start: countLines(combinedCode) + 1,
         end: countLines(combinedCode) + 18,
@@ -182,12 +174,6 @@ print(tx.serialize().hex())`,
       }
       return [true, 'Nicely Done']
     },
-    constraints: [
-      {
-        range: [1, 1, countLines(combinedCode) + 17, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {
@@ -209,30 +195,30 @@ print(tx.serialize().hex())`,
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_six.put_it_together_six.success')}
+        successMessage={t('chapter_six.put_it_together_six.hard.success')}
         loadingSavedCode={isLoading}
       >
         <LessonInfo>
-          <Title>{t('chapter_six.put_it_together_six.heading')}</Title>
+          <Title>{t('chapter_six.put_it_together_six.hard.heading')}</Title>
           <Text className="font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_six.paragraph_one')}
+            {t('chapter_six.put_it_together_six.hard.paragraph_one')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t(`chapter_six.put_it_together_six.paragraph_two`)}
+            {t(`chapter_six.put_it_together_six.hard.paragraph_two`)}
           </Text>
           <ul className="list-disc pl-5 font-nunito">
             <li className="break-words text-lg md:text-xl">
-              {t('chapter_six.put_it_together_six.bullet_one')}
+              {t('chapter_six.put_it_together_six.hard.bullet_one')}
             </li>
             <li className="break-words text-lg md:text-xl">
-              {t('chapter_six.put_it_together_six.bullet_two')}
+              {t('chapter_six.put_it_together_six.hard.bullet_two')}
             </li>
           </ul>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t(`chapter_six.put_it_together_six.paragraph_three`)}
+            {t(`chapter_six.put_it_together_six.hard.paragraph_three`)}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t(`chapter_six.put_it_together_six.paragraph_four`)}
+            {t(`chapter_six.put_it_together_six.hard.paragraph_four`)}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>
