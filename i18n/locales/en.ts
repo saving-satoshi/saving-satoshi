@@ -2314,11 +2314,94 @@ const translations = {
       paragraph_three:
         '—Don’t panic, you tell yourself. Think. What kind of trap can you set?”',
     },
+    intro_three: {
+      title: 'Intro',
+      nav_title: 'Setting the trap',
+      paragraph_one:
+        '—You receive a strange text as you arrive home and plop onto your AI foam mattress. It’s from a number you don’t recognize, But it is once again signed by Satoshi Nakamoto.',
+      paragraph_two:
+        '—SATOSHI NAKAMOTO: “You need to get out of there. Vanderpoole has put together a goon squad and is on his way back to your house. Our infrared sensors are going crazy. They might want to steal your bitcoin! Or worse!”',
+      paragraph_three:
+        '—Don’t panic, you tell yourself. Think. What kind of trap can you set?”',
+    },
     opcodes_one: {
       title: 'OpCodes',
-      nav_title: '',
+      nav_title: 'Bitcoin Script',
+      heading: 'Bitcoin Script',
+      paragraph_one:
+        "We mentioned Bitcoin script back in chapter 6 but we didn't dwell on it because the coins you were spending were locked by a simple mechanism: a single signature and an implied script that evaluated that signature with a public key. Now things are going to get more interesting.",
+      paragraph_two:
+        'There are two important parts to spending a Bitcoin output: A script and a stack.',
+      paragraph_three: "We'll explore the two concepts at a high level first.",
     },
     opcodes_two: {
+      title: 'OpCodes',
+      nav_title: 'Bitcoin Script',
+      heading: 'The stack',
+      paragraph_one:
+        "Think of a stack of books [IMAGE!]. If you want to add a book, you have to place it on top of the stack, there's nowhere else for it to go. If you want to read a book, the only one you can access is the one on top of the stack. Even if you want more than one you have start at the top of the stack and work your way down. In computing terms, a stack is like an array of data items with two operations:",
+      paragraph_two:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_PUSH</span> Add an item to the "top" of the stack.',
+      paragraph_three:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_POP</span> Remove the "top" item from the stack for processing.',
+      subheading_one: 'Example:',
+      stack_list_one:
+        'Here is a stack: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">[]</span>',
+      stack_list_two:
+        'Push the number 1: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">[1]</span>',
+      stack_list_three:
+        'Push the number 2: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">[1, 2]</span>',
+      stack_list_four:
+        'Pop the top item off the stack: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">[1]</span>',
+      paragraph_four:
+        'Notice that the first item pushed on to the stack will be the last item popped off the stack, so it will be the last item processed by the script. For this reason the stack has an "upside down" or "backwards" feel to it, and the first thing you see on the stack will likely be the solution required at the end of script processing.',
+      paragraph_five:
+        'When spending a bitcoin transaction output, the elements required by the spender are provided in the witness of the spending transaction input (see chapter 6!) and those elements get pushed on to the stack before any script processing begins. We will refer to those items as the INITIAL STACK. They are important because they are literally the data that unlocks the script and allows the spender to spend coins!',
+    },
+    opcodes_three: {
+      title: 'OpCodes',
+      nav_title: 'Bitcoin Script',
+      heading: 'The stack',
+      paragraph_one:
+        'Script is a linear series of commands that are executed one by one, manipulating items on the stack. When the end of the script has been reached, there must be EXACTLY ONE NON-ZERO (NON-FALSE) ITEM remaining on the stack, or the entire operation is invalid and so is your Bitcoin transaction. There are over 100 commands in the Bitcoin script language, called "opcodes". We are only going to use a handful of them for this challenge.  ',
+      paragraph_two:
+        "Let's demonstrate an example where we lock up a Bitcoin with the math problem 1 + 2 = ?. Whoever knows the answer to this math problem can spend the coins.",
+      paragraph_three: 'The script would look like this:',
+      paragraph_four:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_1 OP_2 OP_ADD OP_EQUAL</span>',
+      paragraph_five:
+        'This is script will be hashed and bech32-encoded into an address where someone can send coins.',
+    },
+    opcodes_four: {
+      title: 'OpCodes',
+      nav_title: 'Bitcoin Script',
+      heading: 'The stack',
+      paragraph_one:
+        "The stack solution would look like this: [3]. This is what the spending transaction would need in the witness of its input spending these coins. Let's step through it:",
+      table_one: {
+        headings: {
+          item_one: 'Step',
+          item_two: 'Stack',
+          item_three: 'Script Execution',
+        },
+      },
+      subheading_one: 'Explanation',
+      stack_list_one:
+        'init: the funding transaction output and spending transaction input are brought together.',
+      stack_list_two:
+        'step 1: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_1</span>pushes "1" onto the stack.',
+      stack_list_three:
+        'step 2: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_2</span>pushes "2" onto the stack.',
+      stack_list_four:
+        'step 3: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ADD</span>pops two items off the stack, adds them together, and pushes the sum back to the stack.',
+      stack_list_five:
+        'step 4: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_EQUAL</span>pops two items off the stack, compares them, and pushes a boolean result back to the stack.',
+      paragraph_two:
+        'Now we have reached the end of the script and there is only a single TRUE item left on the stack - the coins are spent!',
+      paragraph_three:
+        "Hopefully it's obvious that if we started this example with a 4 on the stack, we would not be able to spend the coins. For these challenges we are going to use a very limited set of opcodes, which we will introduce by category",
+    },
+    opcodes_five: {
       title: 'OpCodes',
       nav_title: 'Arithmetic',
       heading: 'Basic Arithmetic',
@@ -2348,7 +2431,7 @@ const translations = {
       paragraph_two:
         'Provide the initial stack to spend from this script: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1">OP_ADD OP_3 OP_EQUAL</span>',
     },
-    opcodes_three: {
+    opcodes_six: {
       title: 'OpCodes',
       nav_title: 'Simple Cryptography',
       heading: 'Simple Cryptography',
@@ -2362,7 +2445,18 @@ const translations = {
       paragraph_two:
         'Provide the initial stack to spend from this script: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_DUP OP_HASH256 OP_PUSH HASH256(PUBKEY(holocat)) OP_EQUALVERIFY OP_CHECKSIG</span>',
     },
-    opcodes_four: {
+    opcodes_seven: {
+      title: 'OpCodes',
+      nav_title: 'Multisig',
+      heading: 'Multisig',
+      paragraph_one:
+        'Multi-signature policies provide a list of public keys and a number of signatures required for a valid spend. It can be described as "m-of-n" meaning "m number of signatures are required from this list of n public keys". The public keys and the m and n values are typically included in the locking script and the spender only needs to provide the right number of signatures.',
+      paragraph_two:
+        'Holocat appears with a pre-recorded message from Satoshi Nakamoto!',
+      paragraph_three:
+        'Hi. I accidentally wrote a bug when I implemented <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn\'t used at all. UMMMMmmmmmm... WHOOPSIE! Sorry. That code is consensus-critical so every <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_CHECKMULTISIG</span> operation in Bitcoin\'s past, present, and future will be forced to include a "dummy" element. Don\'t forget it! Or you won\'t be able to spend your multisig coins.',
+    },
+    opcodes_eight: {
       title: 'OpCodes',
       nav_title: 'Multisig',
       heading: 'Multisig',
@@ -2395,7 +2489,7 @@ const translations = {
       paragraph_three:
         'Provide the initial stack to spend from this script: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_2 OP_PUSH PUBKEY(mikeramen) OP_PUSH PUBKEY(deborahchunk) OP_2 OP_CHECKMULTISIG</span>',
     },
-    opcodes_five: {
+    opcodes_nine: {
       title: 'OpCodes',
       nav_title: 'Time Lock',
       heading: 'Time Lock',
@@ -2409,7 +2503,7 @@ const translations = {
       paragraph_two:
         'Provide the initial stack to spend from this script: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_PUSH 6930010 OP_CHECKLOCKTIMEVERIFY OP_DROP OP_PUSH PUBKEY(holocat) OP_CHECKSIG</span>',
     },
-    opcodes_six: {
+    opcodes_ten: {
       title: 'OpCodes',
       nav_title: 'Flow Control',
       heading: 'Conditionals',

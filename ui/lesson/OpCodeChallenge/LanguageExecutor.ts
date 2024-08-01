@@ -157,7 +157,7 @@ class LanguageExecutor {
             negate: currentNegate,
             error: {
               type: element.value,
-              message: opResolves.error,
+              message: opResolves?.error,
             },
           }
           this.state.push(addToState)
@@ -186,7 +186,7 @@ class LanguageExecutor {
             negate: currentNegate,
             error: {
               type: element.value,
-              message: opResolves.error,
+              message: opResolves?.error,
             },
           }
           this.state.push(addToState)
@@ -209,7 +209,7 @@ class LanguageExecutor {
             step: index,
             error: {
               type: element.value,
-              message: opResolves.error,
+              message: opResolves?.error,
             },
           }
           this.state.push(addToState)
@@ -233,7 +233,7 @@ class LanguageExecutor {
             step: index,
             error: {
               type: element.value,
-              message: opResolves.error,
+              message: opResolves?.error,
             },
           }
           this.negate = opResolves?.value

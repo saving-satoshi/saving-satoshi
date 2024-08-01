@@ -1,9 +1,9 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { LessonInfo, Text, Title, OpCodeChallenge } from 'ui'
-import { useEffect, useState } from 'react'
-import { SuccessNumbers } from 'ui/common/StatusBar'
+import { ChapterIntro } from 'ui'
+import { Button } from 'shared'
+import { useProceed } from 'hooks'
 
 export const metadata = {
   title: 'chapter_nine.opcodes_three.title',
@@ -12,46 +12,37 @@ export const metadata = {
 }
 
 export default function OpCodes3({ lang }) {
+  const proceed = useProceed()
   const t = useTranslations(lang)
-  const [hydrated, setHydrated] = useState(false)
-  const [success, setSuccess] = useState<boolean | SuccessNumbers>(0)
-  useEffect(() => {
-    setHydrated(true)
-  }, [])
+
   return (
-    hydrated && (
-      <OpCodeChallenge
-        answerScript={[
-          'OP_DUP',
-          'OP_HASH256',
-          'OP_PUSH',
-          'HASH256(PUBKEY(HOLOCAT))',
-          'OP_EQUALVERIFY',
-          'OP_CHECKSIG',
-        ]}
-        prePopulate
-        showRunButtons
-        readOnly
-        success={success}
-        setSuccess={setSuccess}
-      >
-        <LessonInfo>
-          <Title>{t('chapter_nine.opcodes_three.heading')}</Title>
-          <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_nine.opcodes_three.paragraph_one')}
-          </Text>
-          <Text className="mt-4 font-nunito text-xl font-bold text-white">
-            {t('chapter_nine.opcodes_three.subheading_one')}
-          </Text>
-          <ul className="ml-4 list-disc">
-            <li>{t('chapter_nine.opcodes_three.opcryptography_list_one')}</li>
-            <li>{t('chapter_nine.opcodes_three.opcryptography_list_two')}</li>
-          </ul>
-          <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_nine.opcodes_three.paragraph_two')}
-          </Text>
-        </LessonInfo>
-      </OpCodeChallenge>
-    )
+    <ChapterIntro
+      className="my-8"
+      heading={t('chapter_nine.opcodes_three.heading')}
+    >
+      <p className="mt-2 text-lg md:text-xl">
+        {t('chapter_nine.opcodes_three.paragraph_one')}
+      </p>
+
+      <p className="mt-4 text-lg md:text-xl">
+        {t('chapter_nine.opcodes_three.paragraph_two')}
+      </p>
+
+      <p className="mt-4 text-lg md:text-xl">
+        {t('chapter_nine.opcodes_three.paragraph_three')}
+      </p>
+
+      <p className="text-lg md:text-xl">
+        {t('chapter_nine.opcodes_three.paragraph_four')}
+      </p>
+
+      <p className="mt-4 text-lg md:text-xl">
+        {t('chapter_nine.opcodes_three.paragraph_five')}
+      </p>
+
+      <Button onClick={proceed} classes="mt-10 max-md:w-full">
+        {t('shared.next')}
+      </Button>
+    </ChapterIntro>
   )
 }

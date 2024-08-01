@@ -134,7 +134,9 @@ export default function Tab({
               const navTitle =
                 lessons[slug][navLessonId].metadata.navigation_title
               const ComponentType = isLessonUnlock ? Link : 'div'
-              const href = `${routes.chaptersUrl}/${slug}/${challenge.lessonId}`
+              const href = `${routes.chaptersUrl}/${slug}/${
+                challenge.lessonId
+              }${isDevelopment ? '?dev=true' : ''}`
               return (
                 <div
                   key={index}

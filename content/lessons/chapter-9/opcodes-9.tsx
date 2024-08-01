@@ -1,17 +1,17 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { LessonInfo, Text, Title, OpCodeChallenge } from 'ui'
+import { OpCodeChallenge, LessonInfo, Text, Title } from 'ui'
 import { useEffect, useState } from 'react'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 
 export const metadata = {
-  title: 'chapter_nine.opcodes_six.title',
-  navigation_title: 'chapter_nine.opcodes_six.nav_title',
-  key: 'CH9OPC6',
+  title: 'chapter_nine.opcodes_nine.title',
+  navigation_title: 'chapter_nine.opcodes_nine.nav_title',
+  key: 'CH9OPC9',
 }
 
-export default function OpCodes6({ lang }) {
+export default function OpCodes9({ lang }) {
   const t = useTranslations(lang)
   const [hydrated, setHydrated] = useState(false)
   const [success, setSuccess] = useState<boolean | SuccessNumbers>(0)
@@ -22,11 +22,12 @@ export default function OpCodes6({ lang }) {
     hydrated && (
       <OpCodeChallenge
         answerScript={[
-          'OP_DUP',
-          'OP_HASH256',
           'OP_PUSH',
-          'HASH256(PUBKEY(HOLOCAT))',
-          'OP_EQUALVERIFY',
+          '6930010',
+          'OP_CHECKLOCKTIMEVERIFY',
+          'OP_DROP',
+          'OP_PUSH',
+          'PUBKEY(HOLOCAT)',
           'OP_CHECKSIG',
         ]}
         prePopulate
@@ -36,19 +37,19 @@ export default function OpCodes6({ lang }) {
         setSuccess={setSuccess}
       >
         <LessonInfo>
-          <Title>{t('chapter_nine.opcodes_six.heading')}</Title>
+          <Title>{t('chapter_nine.opcodes_nine.heading')}</Title>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_nine.opcodes_six.paragraph_one')}
+            {t('chapter_nine.opcodes_nine.paragraph_one')}
           </Text>
           <Text className="mt-4 font-nunito text-xl font-bold text-white">
-            {t('chapter_nine.opcodes_six.subheading_one')}
+            {t('chapter_nine.opcodes_nine.subheading_one')}
           </Text>
-          <ul className="ml-4 list-disc">
-            <li>{t('chapter_nine.opcodes_six.opcryptography_list_one')}</li>
-            <li>{t('chapter_nine.opcodes_six.opcryptography_list_two')}</li>
-          </ul>
+          <ol className="ml-4 list-disc">
+            <li>{t('chapter_nine.opcodes_nine.optimelock_list_one')}</li>
+            <li>{t('chapter_nine.opcodes_nine.optimelock_list_two')}</li>
+          </ol>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_nine.opcodes_six.paragraph_two')}
+            {t('chapter_nine.opcodes_nine.paragraph_two')}
           </Text>
         </LessonInfo>
       </OpCodeChallenge>
