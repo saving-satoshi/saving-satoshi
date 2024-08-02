@@ -2034,7 +2034,7 @@ const translations = {
         paragraph_three:
           'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 61,000,000 to 60,999,000 satoshis.',
         paragraph_four:
-          'Finally our work is done. Your script should end by returning the result of the transaction serialize() method. This is a valid signed Bitcoin transaction and we can broadcast it to the network to send Mike Ramen the money he needs!',
+          'Finally our work is done. Your script should end by returning the result of the transaction <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method. This is a valid signed Bitcoin transaction and we can broadcast it to the network to send Mike Ramen the money he needs!',
         bullet_one:
           'Mike Ramen gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
         bullet_two:
