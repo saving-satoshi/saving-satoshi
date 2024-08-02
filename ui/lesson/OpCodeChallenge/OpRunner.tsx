@@ -150,7 +150,7 @@ const OpRunner = ({
               title="Enter any number above 1."
               onChange={handleHeightChange}
               className="flex-grow border-none bg-transparent text-lg focus:outline-none"
-              placeholder="630001"
+              placeholder="6930001"
               type="number"
               min="1"
             />
