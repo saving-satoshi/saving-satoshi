@@ -132,7 +132,7 @@ export default function PublicKey2({ lang }) {
             </span>
           </div>
           <span className="mb-4 font-space-mono text-xl text-white xl:text-3xl">
-            y^2 = x^2 + 7
+            y^2 = x^3 + 7
           </span>
         </div>
       }
