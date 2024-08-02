@@ -1441,7 +1441,7 @@ const translations = {
         paragraph_four:
           "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6.",
         paragraph_five:
-          'We also need a serialize() method that returns a byte array according to the specification:',
+          'We also need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that returns a byte array according to the specification:',
         heading_two: 'Outpoint',
         table_one: {
           heading: {
@@ -1510,9 +1510,9 @@ const translations = {
       nav_title: 'Build the output class',
       heading: 'Finish the implementation of the Output class',
       paragraph_one:
-        'Like the Input class, it needs a method <span className="text-green"> from_options() </span> that will construct an Output object from user-provided data:',
+        'Like the Input class, it needs a method <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_options()</span> that will construct an Output object from user-provided data:',
       paragraph_two: `It accepts a Bitcoin address as a string (like the address from Mike Ramen) and a value as an integer. The value is expressed as a number of satoshis! Remember, 1 BTC = 100000000 satoshis. You will need to use our bech32 library again to decode the address into version and data components.
-        The class also needs a <span className="text-green"> serialize() </span>  method that returns a byte array according to the specification:`,
+        The class also needs a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span>  method that returns a byte array according to the specification:`,
       heading_two: 'Output',
       table: {
         heading: {
@@ -1672,7 +1672,7 @@ const translations = {
         paragraph_one:
           'It should have the following method, which accepts a byte array and adds that item to the witness stack.',
         paragraph_two:
-          'It will also need a serialize() method that returns the serialized witness stack.',
+          'It will also need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that returns the serialized witness stack.',
         subheading_one: 'Witness stack',
         headings: {
           item_one: 'Description',
