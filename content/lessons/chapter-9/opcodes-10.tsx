@@ -44,11 +44,14 @@ export default function OpCodes10({ lang }) {
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_nine.opcodes_ten.paragraph_one')}
           </Text>
-          <ul className="ml-4 list-disc">
-            <li>{t('chapter_nine.opcodes_ten.opconditional_list_one')}</li>
-          </ul>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_nine.opcodes_ten.paragraph_two')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_nine.opcodes_ten.paragraph_three')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_nine.opcodes_ten.paragraph_four')}
           </Text>
         </LessonInfo>
       </OpCodeChallenge>

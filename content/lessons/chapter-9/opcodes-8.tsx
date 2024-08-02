@@ -37,21 +37,13 @@ export default function OpCodes8({ lang }) {
         setSuccess={setSuccess}
       >
         <LessonInfo>
-          <Title>{t('chapter_nine.opcodes_eight.heading')}</Title>
-          <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_nine.opcodes_eight.paragraph_one')}
-          </Text>
-          <Text className="mt-4 font-nunito text-xl font-bold text-white">
+          <Text className="font-nunito text-xl font-bold text-white">
             {t('chapter_nine.opcodes_eight.subheading_one')}
           </Text>
-          <Text className="mt-4 font-space-mono text-lg text-white">
-            {t('chapter_nine.opcodes_eight.paragraph_two')}
+          <Text className="mt-4 font-nunito text-lg font-bold text-white">
+            {t('chapter_nine.opcodes_eight.subheading_two')}
           </Text>
-          <Text className="mt-4 font-nunito text-xl font-bold text-white">
-            {t('chapter_nine.opcodes_eight.subheading_two')}{' '}
-            {t('chapter_nine.opcodes_eight.subheading_two_link')}
-          </Text>
-          <ol className="ml-4 list-decimal">
+          <ol className="ml-4 list-disc font-nunito">
             <li>{t('chapter_nine.opcodes_eight.multisig_list_one')}</li>
             <li>{t('chapter_nine.opcodes_eight.multisig_list_two')}</li>
             <li>{t('chapter_nine.opcodes_eight.multisig_list_three')}</li>
@@ -62,7 +54,10 @@ export default function OpCodes8({ lang }) {
             <li>{t('chapter_nine.opcodes_eight.multisig_list_eight')}</li>
           </ol>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_nine.opcodes_eight.paragraph_three')}
+            {t('chapter_nine.opcodes_eight.paragraph_one')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_nine.opcodes_eight.paragraph_two')}
           </Text>
         </LessonInfo>
       </OpCodeChallenge>

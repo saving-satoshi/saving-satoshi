@@ -44,10 +44,24 @@ export default function OpCodes9({ lang }) {
           <Text className="mt-4 font-nunito text-xl font-bold text-white">
             {t('chapter_nine.opcodes_nine.subheading_one')}
           </Text>
-          <ol className="ml-4 list-disc">
-            <li>{t('chapter_nine.opcodes_nine.optimelock_list_one')}</li>
-            <li>{t('chapter_nine.opcodes_nine.optimelock_list_two')}</li>
-          </ol>
+          <ul className="list-none font-nunito">
+            <li>
+              <div className="flex flex-row gap-[15px]">
+                {t('chapter_nine.opcodes_nine.optimelock_list_one_heading')}
+                <p>
+                  {t('chapter_nine.opcodes_nine.optimelock_list_one_paragraph')}
+                </p>
+              </div>
+            </li>
+            <li>
+              <div className="flex flex-row gap-[15px]">
+                {t('chapter_nine.opcodes_nine.optimelock_list_two_heading')}
+                <p>
+                  {t('chapter_nine.opcodes_nine.optimelock_list_two_paragraph')}
+                </p>
+              </div>
+            </li>
+          </ul>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_nine.opcodes_nine.paragraph_two')}
           </Text>

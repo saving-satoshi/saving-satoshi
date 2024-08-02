@@ -36,21 +36,102 @@ export default function OpCodes5({ lang }) {
           <Text className="mt-4 font-nunito text-xl font-bold text-white">
             {t('chapter_nine.opcodes_five.subheading_one')}
           </Text>
-          <ul className="ml-4 list-disc">
-            <li>{t('chapter_nine.opcodes_five.opconstants_list_one')}</li>
-            <li>{t('chapter_nine.opcodes_five.opconstants_list_two')}</li>
-            <li>{t('chapter_nine.opcodes_five.opconstants_list_three')}</li>
-            <li>{t('chapter_nine.opcodes_five.opconstants_list_four')}</li>
-            <li>{t('chapter_nine.opcodes_five.opconstants_list_five')}</li>
-            <li>{t('chapter_nine.opcodes_five.opconstants_list_six')}</li>
+          <ul className="list-none font-nunito">
+            <li>
+              <div className="flex flex-row gap-[15px]">
+                {t('chapter_nine.opcodes_five.opconstants_list_one_heading')}
+                <p>
+                  {t(
+                    'chapter_nine.opcodes_five.opconstants_list_one_paragraph'
+                  )}
+                </p>
+              </div>
+            </li>
+            <li>
+              <div className="flex flex-row gap-[15px]">
+                {t('chapter_nine.opcodes_five.opconstants_list_two_heading')}
+                <p>
+                  {t(
+                    'chapter_nine.opcodes_five.opconstants_list_two_paragraph'
+                  )}
+                </p>
+              </div>
+            </li>
+            <li>
+              <div className="flex flex-row gap-[15px]">
+                {t('chapter_nine.opcodes_five.opconstants_list_three_heading')}
+                <p>
+                  {t(
+                    'chapter_nine.opcodes_five.opconstants_list_three_paragraph'
+                  )}
+                </p>
+              </div>
+            </li>
+            <li>
+              <div className="flex flex-row gap-[15px]">
+                {t('chapter_nine.opcodes_five.opconstants_list_four_heading')}
+                <p>
+                  {t(
+                    'chapter_nine.opcodes_five.opconstants_list_four_paragraph'
+                  )}
+                </p>
+              </div>
+            </li>
+            <li>
+              <div className="flex flex-row gap-[15px]">
+                {t('chapter_nine.opcodes_five.opconstants_list_five_heading')}
+                <p>
+                  {t(
+                    'chapter_nine.opcodes_five.opconstants_list_five_paragraph'
+                  )}
+                </p>
+              </div>
+            </li>
+            <li>
+              <div className="flex flex-row gap-[15px]">
+                {t('chapter_nine.opcodes_five.opconstants_list_six_heading')}
+                <p>
+                  {t(
+                    'chapter_nine.opcodes_five.opconstants_list_six_paragraph'
+                  )}
+                </p>
+              </div>
+            </li>
           </ul>
           <Text className="mt-4 font-nunito text-xl font-bold text-white">
             {t('chapter_nine.opcodes_five.subheading_two')}
           </Text>
-          <ul className="ml-4 list-disc">
-            <li>{t('chapter_nine.opcodes_five.oparithmetic_list_one')}</li>
-            <li>{t('chapter_nine.opcodes_five.oparithmetic_list_two')}</li>
-            <li>{t('chapter_nine.opcodes_five.oparithmetic_list_three')}</li>
+          <ul className="list-none font-nunito">
+            <li>
+              <div className="flex flex-row gap-[15px]">
+                {t('chapter_nine.opcodes_five.oparithmetic_list_one_heading')}
+                <p>
+                  {t(
+                    'chapter_nine.opcodes_five.oparithmetic_list_one_paragraph'
+                  )}
+                </p>
+              </div>
+            </li>
+            <li>
+              <div className="flex flex-row gap-[15px]">
+                {t('chapter_nine.opcodes_five.oparithmetic_list_two_heading')}
+                <p>
+                  {t(
+                    'chapter_nine.opcodes_five.oparithmetic_list_two_paragraph'
+                  )}
+                </p>
+              </div>
+            </li>
+            <li>
+              <div className="flex flex-row gap-[15px]">
+                {t('chapter_nine.opcodes_five.oparithmetic_list_three_heading')}
+                <p>
+                  {t(
+                    'chapter_nine.opcodes_five.oparithmetic_list_three_paragraph'
+                  )}
+                </p>
+              </div>
+            </li>
           </ul>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_nine.opcodes_five.paragraph_two')}

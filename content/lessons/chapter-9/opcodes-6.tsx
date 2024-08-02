@@ -43,9 +43,27 @@ export default function OpCodes6({ lang }) {
           <Text className="mt-4 font-nunito text-xl font-bold text-white">
             {t('chapter_nine.opcodes_six.subheading_one')}
           </Text>
-          <ul className="ml-4 list-disc">
-            <li>{t('chapter_nine.opcodes_six.opcryptography_list_one')}</li>
-            <li>{t('chapter_nine.opcodes_six.opcryptography_list_two')}</li>
+          <ul className="list-none font-nunito">
+            <li>
+              <div className="flex flex-row gap-[15px]">
+                {t('chapter_nine.opcodes_six.opcryptography_list_one_heading')}
+                <p>
+                  {t(
+                    'chapter_nine.opcodes_six.opcryptography_list_one_paragraph'
+                  )}
+                </p>
+              </div>
+            </li>
+            <li>
+              <div className="flex flex-row gap-[15px]">
+                {t('chapter_nine.opcodes_six.opcryptography_list_two_heading')}
+                <p>
+                  {t(
+                    'chapter_nine.opcodes_six.opcryptography_list_two_paragraph'
+                  )}
+                </p>
+              </div>
+            </li>
           </ul>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_nine.opcodes_six.paragraph_two')}
