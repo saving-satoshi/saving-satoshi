@@ -1,5 +1,6 @@
 import { useDynamicHeight, useMediaQuery } from 'hooks'
 import React, { useEffect, useState } from 'react'
+import { ArrowsProvider } from 'state/ArrowsContext'
 import { LessonDirection } from 'types'
 import Lesson from '../Lesson'
 import OpRunner from './OpRunner'
@@ -42,7 +43,9 @@ const OpRunnerLesson = ({ children, ...rest }: OpRunnerTypes) => {
       >
         {children}
         <div className="height-minus-nav flex border-white/25 md:max-w-[50vw] md:border-l">
-          <OpRunner {...rest} />
+          <ArrowsProvider>
+            <OpRunner {...rest} />
+          </ArrowsProvider>
         </div>
       </Lesson>
     )

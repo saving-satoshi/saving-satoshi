@@ -1,9 +1,48 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
 import _ from 'lodash'
 import { StatusBar } from 'ui/common'
 import { MainState, OpRunnerTypes, StackType, T } from './runnerTypes'
+import { ArcherElement } from 'react-archer'
+import { RelationType } from 'react-archer/lib/types'
+import { useArrows } from 'state/ArrowsContext'
+import useHorizontalScroll from 'hooks/useHorizontalScroll'
+
+const arrowLineStyles = {
+  startMarker: true,
+  endMarker: false,
+  strokeColor: '#3DCFEF',
+}
+
+const getRelationsForOperation = (
+  operation: string,
+  currentIndex: number
+): RelationType[] => {
+  switch (operation) {
+    case 'OP_ADD':
+    case 'OP_SUB':
+    case 'OP_MUL':
+    case 'OP_DIV':
+    case 'OP_DUP':
+      return [
+        {
+          targetId: `item${currentIndex}-0`,
+          sourceAnchor: 'left',
+          targetAnchor: 'right',
+          style: arrowLineStyles,
+        },
+        {
+          targetId: `item${currentIndex}-1`,
+          sourceAnchor: 'left',
+          targetAnchor: 'right',
+          style: arrowLineStyles,
+        },
+      ]
+    default:
+      return []
+  }
+}
 
 const OpRunner = ({
   success,
@@ -23,8 +62,17 @@ const OpRunner = ({
   const [height, setHeight] = useState<number>(0)
   const [stackHistory, setStackHistory] = useState<MainState | []>([])
   const [startedTyping, setStartedTyping] = useState(false)
+  const { ref: arrowContainerRef } = useArrows()
+  const scrollPosition = useHorizontalScroll(scrollRef)
 
-  React.useEffect(() => {
+  useEffect(() => {
+    // if user scrolls horizontally, refresh the arrows position
+    if (arrowContainerRef?.current) {
+      arrowContainerRef.current.refreshScreen()
+    }
+  }, [arrowContainerRef, scrollPosition])
+
+  useEffect(() => {
     if (startedTyping) {
       const timeoutId = setTimeout(() => {
         handleRun()
@@ -33,6 +81,19 @@ const OpRunner = ({
       return () => clearTimeout(timeoutId)
     }
   }, [script, initialStack, height])
+
+  const [relations, setRelations] = useState<RelationType[]>([])
+
+  useEffect(() => {
+    if (stackHistory.length > 1) {
+      const newRelations = stackHistory
+        .slice(1)
+        .flatMap((stack, index) =>
+          getRelationsForOperation(stack?.operation?.value ?? '', index)
+        )
+      setRelations(newRelations)
+    }
+  }, [stackHistory])
 
   const handleRun = () => {
     const initialStackArray = initialStack.split(' ')
@@ -204,63 +265,71 @@ const OpRunner = ({
               </div>
             )}
 
-            {stackHistory.map((stack, index) => {
-              if (error) {
-                return null
-              }
-              if (stack?.error) {
-                error = stack.error?.message
-              }
-              return (
-                stack.negate === 0 && (
+          {stackHistory.map((stack, OPIndex) => {
+            if (error) {
+              return null
+            }
+            if (stack?.error) {
+              error = stack.error?.message
+            }
+            return (
+              stack.negate === 0 && (
+                <div
+                  key={`Overall-container${OPIndex}`}
+                  className="flex w-full max-w-[164px] flex-col"
+                >
                   <div
-                    key={`Overall-container${index}`}
-                    className="flex w-full max-w-[164px] flex-col"
+                    id={`OP${OPIndex}`}
+                    className={clsx(
+                      'mx-auto my-[5px] w-full max-w-[164px] rounded-[3px] border border-none bg-black/20 py-1 text-center font-space-mono',
+                      {
+                        'text-[#EF960B]':
+                          stack.operation.tokenType === 'conditional',
+                        'text-[#3DCFEF]':
+                          stack.operation.tokenType !== 'conditional',
+                        'text-[#F3241D]':
+                          stack?.error?.message,
+                      }
+                    )}
                   >
+                    {stack.operation.value}
+                  </div>
+                  <hr className="my-2 -ml-2.5 border-dashed" />
+                  {stack && (
                     <div
-                      className={clsx(
-                        'mx-auto my-[5px] w-full max-w-[164px] rounded-[3px] border border-none bg-black/20 py-1  text-center font-space-mono',
-                        {
-                          ' text-[#EF960B]':
-                            stack.operation.tokenType === 'conditional',
-                          ' text-[#3DCFEF]':
-                            stack.operation.tokenType !== 'conditional',
-                          ' text-[#F3241D]': stack?.error?.message,
-                        }
-                      )}
+                      key={`Container${OPIndex}`}
+                      className="flex h-full max-h-[204px] min-w-[164px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
                     >
-                      {stack.operation.value}
-                    </div>
-
-                    {stack && (
                       <div
-                        key={`Container${index}`}
-                        className="flex h-full max-h-[204px] min-w-[164px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                        key={OPIndex}
+                        className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
+                        style={{ whiteSpace: 'pre-wrap' }}
                       >
-                        <div
-                          key={index}
-                          className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
-                          style={{ whiteSpace: 'pre-wrap' }}
-                        >
-                          {stack?.stack
-                            ?.slice()
-                            .reverse()
-                            .map((item, i) => (
+                        {stack?.stack
+                          ?.slice()
+                          .reverse()
+                          .map((item, stackIndex) => (
+                            <ArcherElement
+                              id={`item${OPIndex}-${stackIndex}`}
+                              key={`item${OPIndex}-${stackIndex}`}
+                              relations={relations.filter((r) =>
+                                r.targetId.includes(`item${OPIndex - 1}-`)
+                              )}
+                            >
                               <div
-                                key={`item${i}`}
                                 className={clsx(
                                   'my-[5px] w-[140px] rounded-[3px] px-3 py-1',
                                   {
                                     'bg-red/35':
-                                      index + 1 === stackHistory.length &&
+                                      OPIndex + 1 === stackHistory.length &&
                                       stack.stack[0] === false,
                                     'bg-green/35':
-                                      index + 1 === stackHistory.length &&
+                                      OPIndex + 1 === stackHistory.length &&
                                       (stack.stack[0] === true ||
                                         stack.stack[0] === 1),
                                     'bg-white/15':
-                                      index + 1 !== stackHistory.length ||
-                                      (index + 1 === stackHistory.length &&
+                                      OPIndex + 1 !== stackHistory.length ||
+                                      (OPIndex + 1 === stackHistory.length &&
                                         stack.stack[0] !== true &&
                                         stack.stack[0] !== false),
                                   }
@@ -272,15 +341,30 @@ const OpRunner = ({
                                     : item
                                 )}
                               </div>
-                            ))}
-                        </div>
+                            </ArcherElement>
+                          ))}
                       </div>
-                    )}
-                  </div>
-                )
+                    </div>
+                  )}
+                </div>
               )
-            })}
+            )
+          })}
+        </div>
+
+        {showRunButtons && (
+          <div className="flex h-10  gap-3 border-t border-t-white pl-5 ">
+            <button
+              type="button"
+              className="cursor-pointer"
+              onClick={handleRun}
+            >
+              Run
+            </button>
+            <button onClick={handleReset}>Reset</button>
+            <button>Step</button>
           </div>
+        )}
         </div>
       </div>
 

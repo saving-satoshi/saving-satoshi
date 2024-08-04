@@ -35,6 +35,7 @@
     "nostr-hooks": "^1.8.0",
     "nostr-tools": "^1.14.2",
     "react": "18.2.0",
+    "react-archer": "^4.4.0",
     "react-dom": "18.2.0",
     "react-lottie": "^1.2.3",
     "react-monaco-editor": "^0.52.0",
