@@ -65,6 +65,85 @@ const OpRunner = ({
   const { ref: arrowContainerRef } = useArrows()
   const scrollPosition = useHorizontalScroll(scrollRef)
 
+  const [executor, setExecutor] = useState<LanguageExecutor | null>(null)
+
+  const initializeExecutor = () => {
+    const initialStackArray = initialStack
+      .split(' ')
+      .filter((item) => item.trim())
+    const tokens = LanguageExecutor.parsableInputToTokens(
+      LanguageExecutor.rawInputToParsableInput(script)
+    )
+    const newExecutor = new LanguageExecutor(tokens, initialStackArray, height)
+    setExecutor(newExecutor)
+
+    // Create an initial state to represent the initial stack
+    const initialState = {
+      stack: initialStackArray,
+      operation: {
+        tokenType: null,
+        resolves: null,
+        value: 'INITIAL_STACK',
+        type: '',
+      },
+      step: -1, // Use -1 to indicate this is the initial state
+      negate: 0,
+      error: null,
+    }
+
+    setStackHistory([initialState])
+  }
+
+  const handleStep = () => {
+    if (executor) {
+      const state = executor.executeStep()
+      if (state) {
+        setStackHistory((prev) => [...prev, state])
+        checkSuccessState(executor.tokens, state.stack)
+      }
+    } else {
+      initializeExecutor()
+    }
+  }
+
+  const handleRun = () => {
+    if (executor) {
+      executor.execute()
+      // Preserve the initial state and add the execution states
+      setStackHistory((prev) => [prev[0], ...executor.state])
+      checkSuccessState(executor.tokens, executor.stack)
+    } else {
+      initializeExecutor()
+    }
+  }
+
+  const handleReset = () => {
+    setExecutor(null)
+
+    // Preserve the initial stack state
+    const initialStackArray = initialStack
+      .split(' ')
+      .filter((item) => item.trim())
+    const initialState = {
+      stack: initialStackArray,
+      operation: {
+        tokenType: null,
+        resolves: null,
+        value: 'INITIAL_STACK',
+        type: '',
+      },
+      step: -1,
+      negate: 0,
+      error: null,
+    }
+
+    setStackHistory(initialStackArray.length > 0 ? [initialState] : [])
+
+    if (success !== true) {
+      setSuccess(0)
+    }
+  }
+
   useEffect(() => {
     // if user scrolls horizontally, refresh the arrows position
     if (arrowContainerRef?.current) {
@@ -75,7 +154,7 @@ const OpRunner = ({
   useEffect(() => {
     if (startedTyping) {
       const timeoutId = setTimeout(() => {
-        handleRun()
+        initializeExecutor()
       }, 1000)
 
       return () => clearTimeout(timeoutId)
@@ -95,30 +174,11 @@ const OpRunner = ({
     }
   }, [stackHistory])
 
-  const handleRun = () => {
-    const initialStackArray = initialStack.split(' ')
-
-    const runnerState = LanguageExecutor.RunCode(
-      script,
-      initialStackArray,
-      height
-    )
-    setStackHistory(runnerState?.state || [])
-    checkSuccessState(runnerState?.tokens || [], runnerState?.stack ?? [])
-  }
-
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollLeft = scrollRef.current.scrollWidth
     }
   }, [stackHistory])
-
-  const handleReset = () => {
-    setStackHistory([])
-    if (success !== true) {
-      setSuccess(0)
-    }
-  }
 
   const handleScriptChange = (event) => {
     setScript(event.target.value.toUpperCase())
@@ -149,6 +209,7 @@ const OpRunner = ({
       }
       return false
     }
+
     if (containsEveryScript && doesStackValidate()) {
       setSuccess(true)
     } else if (success !== true) {
@@ -221,13 +282,18 @@ const OpRunner = ({
             <p className="font-mono text-lg font-bold">Execution stack</p>
 
             <div className="flex flex-row gap-[10px]">
-              <button className={btnClassName} onClick={handleRun}>
+              <button
+                className={btnClassName}
+                onClick={handleRun}
+                disabled={!executor}
+              >
                 Run
               </button>
               <button
                 type="button"
                 className={btnClassName}
-                onClick={handleRun}
+                onClick={handleStep}
+                disabled={!executor}
               >
                 Step
               </button>
@@ -265,106 +331,91 @@ const OpRunner = ({
               </div>
             )}
 
-          {stackHistory.map((stack, OPIndex) => {
-            if (error) {
-              return null
-            }
-            if (stack?.error) {
-              error = stack.error?.message
-            }
-            return (
-              stack.negate === 0 && (
-                <div
-                  key={`Overall-container${OPIndex}`}
-                  className="flex w-full max-w-[164px] flex-col"
-                >
+            {stackHistory.map((stack, OPIndex) => {
+              if (error) {
+                return null
+              }
+              if (stack?.error) {
+                error = stack.error?.message
+              }
+              return (
+                stack.negate === 0 && (
                   <div
-                    id={`OP${OPIndex}`}
-                    className={clsx(
-                      'mx-auto my-[5px] w-full max-w-[164px] rounded-[3px] border border-none bg-black/20 py-1 text-center font-space-mono',
-                      {
-                        'text-[#EF960B]':
-                          stack.operation.tokenType === 'conditional',
-                        'text-[#3DCFEF]':
-                          stack.operation.tokenType !== 'conditional',
-                        'text-[#F3241D]':
-                          stack?.error?.message,
-                      }
-                    )}
+                    key={`Overall-container${OPIndex}`}
+                    className="flex w-full max-w-[164px] flex-col"
                   >
-                    {stack.operation.value}
-                  </div>
-                  <hr className="my-2 -ml-2.5 border-dashed" />
-                  {stack && (
                     <div
-                      key={`Container${OPIndex}`}
-                      className="flex h-full max-h-[204px] min-w-[164px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                      id={`OP${OPIndex}`}
+                      className={clsx(
+                        'mx-auto my-[5px] w-full max-w-[164px] rounded-[3px] border border-none bg-black/20 py-1 text-center font-space-mono',
+                        {
+                          'text-[#EF960B]':
+                            stack.operation.tokenType === 'conditional',
+                          'text-[#3DCFEF]':
+                            stack.operation.tokenType !== 'conditional',
+                          'text-[#F3241D]': stack?.error?.message,
+                        }
+                      )}
                     >
+                      {stack.operation.value}
+                    </div>
+                    <hr className="my-2 -ml-2.5 border-dashed" />
+                    {stack && (
                       <div
-                        key={OPIndex}
-                        className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
-                        style={{ whiteSpace: 'pre-wrap' }}
+                        key={`Container${OPIndex}`}
+                        className="flex h-full max-h-[204px] min-w-[164px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
                       >
-                        {stack?.stack
-                          ?.slice()
-                          .reverse()
-                          .map((item, stackIndex) => (
-                            <ArcherElement
-                              id={`item${OPIndex}-${stackIndex}`}
-                              key={`item${OPIndex}-${stackIndex}`}
-                              relations={relations.filter((r) =>
-                                r.targetId.includes(`item${OPIndex - 1}-`)
-                              )}
-                            >
-                              <div
-                                className={clsx(
-                                  'my-[5px] w-[140px] rounded-[3px] px-3 py-1',
-                                  {
-                                    'bg-red/35':
-                                      OPIndex + 1 === stackHistory.length &&
-                                      stack.stack[0] === false,
-                                    'bg-green/35':
-                                      OPIndex + 1 === stackHistory.length &&
-                                      (stack.stack[0] === true ||
-                                        stack.stack[0] === 1),
-                                    'bg-white/15':
-                                      OPIndex + 1 !== stackHistory.length ||
-                                      (OPIndex + 1 === stackHistory.length &&
-                                        stack.stack[0] !== true &&
-                                        stack.stack[0] !== false),
-                                  }
+                        <div
+                          key={OPIndex}
+                          className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
+                          style={{ whiteSpace: 'pre-wrap' }}
+                        >
+                          {stack?.stack
+                            ?.slice()
+                            .reverse()
+                            .map((item, stackIndex) => (
+                              <ArcherElement
+                                id={`item${OPIndex}-${stackIndex}`}
+                                key={`item${OPIndex}-${stackIndex}`}
+                                relations={relations.filter((r) =>
+                                  r.targetId.includes(`item${OPIndex - 1}-`)
                                 )}
                               >
-                                {JSON.stringify(
-                                  !isNaN(parseFloat(item)) && isFinite(item)
-                                    ? parseInt(item)
-                                    : item
-                                )}
-                              </div>
-                            </ArcherElement>
-                          ))}
+                                <div
+                                  className={clsx(
+                                    'my-[5px] w-[140px] rounded-[3px] px-3 py-1',
+                                    {
+                                      'bg-red/35':
+                                        OPIndex + 1 === stackHistory.length &&
+                                        stack.stack[0] === false,
+                                      'bg-green/35':
+                                        OPIndex + 1 === stackHistory.length &&
+                                        (stack.stack[0] === true ||
+                                          stack.stack[0] === 1),
+                                      'bg-white/15':
+                                        OPIndex + 1 !== stackHistory.length ||
+                                        (OPIndex + 1 === stackHistory.length &&
+                                          stack.stack[0] !== true &&
+                                          stack.stack[0] !== false),
+                                    }
+                                  )}
+                                >
+                                  {JSON.stringify(
+                                    !isNaN(parseFloat(item)) && isFinite(item)
+                                      ? parseInt(item)
+                                      : item
+                                  )}
+                                </div>
+                              </ArcherElement>
+                            ))}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
+                    )}
+                  </div>
+                )
               )
-            )
-          })}
-        </div>
-
-        {showRunButtons && (
-          <div className="flex h-10  gap-3 border-t border-t-white pl-5 ">
-            <button
-              type="button"
-              className="cursor-pointer"
-              onClick={handleRun}
-            >
-              Run
-            </button>
-            <button onClick={handleReset}>Reset</button>
-            <button>Step</button>
+            })}
           </div>
-        )}
         </div>
       </div>
 

@@ -39,7 +39,7 @@ export interface State {
   step: number
   negate: number
   height?: number | null
-  error?: RunnerError
+  error?: RunnerError | null
 }
 
 export interface Operation {
