@@ -243,7 +243,7 @@ class LanguageExecutor {
         case TokenTypes.CRYPTO:
           if (this.negate === 0) {
             opResolves = opFunctions[element.value](this.stack)
-            if (opResolves?.value) this.stack.push(opResolves.value)
+            if (opResolves?.value !== null) this.stack.push(opResolves.value)
           }
           addToState = {
             stack: [...currentStack],

@@ -73,7 +73,9 @@ const OpRunner = ({
 
   const handleHeightChange = (event) => {
     handleReset()
-    setHeight(parseInt(event.target.value))
+    setHeight(
+      isNaN(parseInt(event.target.value)) ? 0 : parseInt(event.target.value)
+    )
     setStartedTyping(true)
   }
 
@@ -100,6 +102,18 @@ const OpRunner = ({
 
   const handleTryAgain = () => {
     setSuccess(0)
+  }
+
+  const colorizeText = (stackItem: string) => {
+    const regex = /(SIG|HASH256|PUBKEY)/g
+
+    const coloredText = stackItem.replace(regex, (match) => {
+      if (match.match('SIG|HASH256|PUBKEY').length === 1) {
+        return `<span class="text-green">${match}</span>`
+      }
+    })
+
+    return coloredText
   }
 
   let error = null
@@ -216,17 +230,17 @@ const OpRunner = ({
                 stack.negate === 0 && (
                   <div
                     key={`Overall-container${index}`}
-                    className="flex w-full max-w-[164px] flex-col"
+                    className="flex w-full flex-col"
                   >
                     <div
                       className={clsx(
-                        'mx-auto my-[5px] w-full max-w-[164px] rounded-[3px] border border-none bg-black/20 py-1  text-center font-space-mono',
+                        'mx-auto my-[5px] w-full rounded-[3px] border border-none bg-black/20 px-3 py-1 text-center font-space-mono text-[13px]',
                         {
-                          ' text-[#EF960B]':
+                          'text-[#EF960B]':
                             stack.operation.tokenType === 'conditional',
-                          ' text-[#3DCFEF]':
+                          'text-[#3DCFEF]':
                             stack.operation.tokenType !== 'conditional',
-                          ' text-[#F3241D]': stack?.error?.message,
+                          'text-[#F3241D]': stack?.error?.message,
                         }
                       )}
                     >
@@ -236,7 +250,7 @@ const OpRunner = ({
                     {stack && (
                       <div
                         key={`Container${index}`}
-                        className="flex h-full max-h-[204px] min-w-[164px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                        className="flex h-full max-h-[204px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
                       >
                         <div
                           key={index}
@@ -250,7 +264,7 @@ const OpRunner = ({
                               <div
                                 key={`item${i}`}
                                 className={clsx(
-                                  'my-[5px] w-[140px] rounded-[3px] px-3 py-1',
+                                  'my-[5px] min-w-[140px] text-nowrap rounded-[3px] px-3 py-1 text-[13px]',
                                   {
                                     'bg-red/35':
                                       index + 1 === stackHistory.length &&
@@ -267,10 +281,14 @@ const OpRunner = ({
                                   }
                                 )}
                               >
-                                {JSON.stringify(
-                                  !isNaN(parseFloat(item)) && isFinite(item)
-                                    ? parseInt(item)
-                                    : item
+                                {!isNaN(parseFloat(item)) && isFinite(item) ? (
+                                  parseInt(item)
+                                ) : (
+                                  <span
+                                    dangerouslySetInnerHTML={{
+                                      __html: colorizeText(item.toString()),
+                                    }}
+                                  />
                                 )}
                               </div>
                             ))}
