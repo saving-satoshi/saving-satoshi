@@ -8,12 +8,12 @@ import { getData } from 'api/data'
 import { countLines, detectLanguage, Language } from 'lib/SavedCode'
 
 export const metadata = {
-  title: 'chapter_six.put_it_together_one.title',
-  navigation_title: 'chapter_six.put_it_together_five.nav_title',
+  title: 'chapter_six.put_it_together_five.hard.title',
+  navigation_title: 'chapter_six.put_it_together_five.hard.nav_title',
   key: 'CH6PUT5_HARD',
 }
 
-export default function DeriveMessage7({ lang }) {
+export default function PutItTogether5Hard({ lang }) {
   const t = useTranslations(lang)
 
   const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
@@ -150,9 +150,9 @@ const public_key_yirutads = ec.keyFromPublic(wit_key_ttefkgdk);
 console.log(public_key_yirutads.verify(hashed_message_bytes_aieoprds, wit_sig_okdakljl) && 'true');
 console.log("KILL")
   `,
-    rangesToCollapse: [
+    rangeToNotCollapse: [
       {
-        start: countLines(prevData.data),
+        start: countLines(prevData.data) + 1,
         end: countLines(prevData.data) + 22,
       },
     ],
@@ -161,6 +161,7 @@ console.log("KILL")
       args: [],
     },
     defaultCode: `${prevData.data.slice(0, -2)}
+
   sign_input(index, priv, pub, sighash=1) {
     // Represent in DER format. The byte representations of r and s have
     // length rounded up (255 bits becomes 32 bytes and 256 bits becomes 33 bytes).
@@ -195,12 +196,6 @@ console.log("KILL")
         return [false, "can't find a return in both of the methods"]
       }
     },
-    constraints: [
-      {
-        range: [1, 1, countLines(prevData.data.slice(0, -2)) + 22, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -308,9 +303,9 @@ verifying_key_zjkdhfxd = VerifyingKey.from_string(wit_key_ttefkgdk, curve=SECP25
 print(verifying_key_zjkdhfxd.verify_digest(wit_sig_okdakljl[:-1], hashed_message_bytes_aieoprds, ecdsa.util.sigdecode_der) and 'true')
 print("KILL")
 `,
-    rangesToCollapse: [
+    rangeToNotCollapse: [
       {
-        start: countLines(prevData.data) + 1,
+        start: countLines(prevData.data) + 2,
         end: countLines(prevData.data) + 11,
       },
     ],
@@ -319,6 +314,7 @@ print("KILL")
       args: [],
     },
     defaultCode: `${prevData.data}
+
     def sign_input(self, index, priv, pub, sighash=1):
         def encode_der(r, s):
             # Represent in DER format. Thebyte representations of r and s have length rounded up
@@ -341,12 +337,6 @@ print("KILL")
         return [false, "can't find a return in both of the methods"]
       }
     },
-    constraints: [
-      {
-        range: [1, 1, countLines(prevData.data.slice(0, -2)) + 12, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {
@@ -366,25 +356,25 @@ print("KILL")
         lang={lang}
         config={config}
         lessonKey={metadata.key}
-        successMessage={t('chapter_six.put_it_together_five.success')}
+        successMessage={t('chapter_six.put_it_together_five.hard.success')}
         saveData
       >
         <LessonInfo>
-          <Title>{t('chapter_six.put_it_together_five.heading')}</Title>
+          <Title>{t('chapter_six.put_it_together_five.hard.heading')}</Title>
 
           <Text className="mt-2 text-lg md:text-[22px]">
-            {t('chapter_six.put_it_together_five.paragraph_one')}
+            {t('chapter_six.put_it_together_five.hard.paragraph_one')}
           </Text>
           <Text className="mt-2 text-lg md:text-[22px]">
-            {t('chapter_six.put_it_together_five.paragraph_two')}
-          </Text>
-
-          <Text className="mt-2 text-lg md:text-[22px]">
-            {t('chapter_six.put_it_together_five.paragraph_three')}
+            {t('chapter_six.put_it_together_five.hard.paragraph_two')}
           </Text>
 
           <Text className="mt-2 text-lg md:text-[22px]">
-            {t('chapter_six.put_it_together_five.paragraph_four')}
+            {t('chapter_six.put_it_together_five.hard.paragraph_three')}
+          </Text>
+
+          <Text className="mt-2 text-lg md:text-[22px]">
+            {t('chapter_six.put_it_together_five.hard.paragraph_four')}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>
