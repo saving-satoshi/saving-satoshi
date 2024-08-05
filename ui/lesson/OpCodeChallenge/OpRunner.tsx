@@ -265,7 +265,7 @@ const OpRunner = ({
                     {stack && (
                       <div
                         key={`Container${index}`}
-                        className="flex h-full max-h-[204px] w-fit min-w-[160px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                        className="flex h-full max-h-[204px] min-w-[160px] flex-col self-stretch overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
                       >
                         <div
                           key={index}
