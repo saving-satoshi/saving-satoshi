@@ -72,7 +72,7 @@ export const opFunctions: { [key: string]: Function } = {
     }
     const a = parseInt(stack.pop() as never)
     const b = parseInt(stack.pop() as never)
-    if (typeof (a + b) !== 'number') {
+    if (typeof (a + b) !== 'number' || isNaN(a + b)) {
       return {
         value: null,
         error: 'OP_ADD requires 2 numbers to add together',

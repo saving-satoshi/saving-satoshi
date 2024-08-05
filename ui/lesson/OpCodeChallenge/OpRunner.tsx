@@ -3,7 +3,13 @@ import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
 import _ from 'lodash'
 import { StatusBar } from 'ui/common'
-import { MainState, OpRunnerTypes, StackType, T } from './runnerTypes'
+import {
+  MainState,
+  OpRunnerTypes,
+  StackType,
+  T,
+  RunnerError,
+} from './runnerTypes'
 
 const OpRunner = ({
   success,
@@ -43,7 +49,11 @@ const OpRunner = ({
       height
     )
     setStackHistory(runnerState?.state || [])
-    checkSuccessState(runnerState?.tokens || [], runnerState?.stack ?? [])
+    checkSuccessState(
+      runnerState?.tokens || [],
+      runnerState?.stack ?? [],
+      runnerState.state.find((item) => item.error && item.error.message)?.error
+    )
   }
 
   useEffect(() => {
@@ -79,14 +89,22 @@ const OpRunner = ({
     setStartedTyping(true)
   }
 
-  const checkSuccessState = (tokens: T, stack: StackType) => {
+  const checkSuccessState = (
+    tokens: T,
+    stack: StackType,
+    error: RunnerError
+  ) => {
     const filterToStringArray = tokens.map((token) => token.value)
     const containsEveryScript = answerScript.every((token) =>
       filterToStringArray.includes(token)
     )
 
     const doesStackValidate = () => {
-      if (stack?.length === 1 && (stack[0] === 1 || stack[0] === true)) {
+      if (
+        stack?.length === 1 &&
+        (stack[0] === 1 || stack[0] === true) &&
+        !error?.message
+      ) {
         return true
       }
       return false
@@ -200,7 +218,7 @@ const OpRunner = ({
                   OP_CODES
                 </div>
 
-                <div className="flex h-full max-h-[204px] min-w-[164px] flex-col rounded-b-[10px] bg-black/20  p-2.5">
+                <div className="flex h-full max-h-[204px] min-w-[160px] flex-col rounded-b-[10px] bg-black/20  p-2.5">
                   <div
                     className="my-auto resize-none break-all border-none bg-transparent font-space-mono text-white/50 focus:outline-none"
                     style={{ whiteSpace: 'pre-wrap' }}
@@ -226,11 +244,11 @@ const OpRunner = ({
                 stack.negate === 0 && (
                   <div
                     key={`Overall-container${index}`}
-                    className="flex w-full flex-col"
+                    className="flex flex-col"
                   >
                     <div
                       className={clsx(
-                        'mx-auto my-[5px] w-full rounded-[3px] border border-none bg-black/20 px-3 py-1 text-center font-space-mono text-[13px]',
+                        'my-[5px] w-full rounded-[3px] border border-none bg-black/20 px-3 py-1 text-center font-space-mono text-[13px]',
                         {
                           'text-[#EF960B]':
                             stack.operation.tokenType === 'conditional',
@@ -246,7 +264,7 @@ const OpRunner = ({
                     {stack && (
                       <div
                         key={`Container${index}`}
-                        className="flex h-full max-h-[204px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                        className="flex h-full max-h-[204px] w-fit min-w-[160px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
                       >
                         <div
                           key={index}
@@ -260,15 +278,19 @@ const OpRunner = ({
                               <div
                                 key={`item${i}`}
                                 className={clsx(
-                                  'my-[5px] min-w-[140px] text-nowrap rounded-[3px] px-3 py-1 text-[13px]',
+                                  'my-[5px] text-nowrap rounded-[3px] px-3 py-1 text-[13px]',
                                   {
                                     'bg-red/35':
                                       index + 1 === stackHistory.length &&
-                                      stack.stack[0] === false,
+                                      (stack.stack.length !== 1 ||
+                                        stack.stack[0] === false ||
+                                        stack.error?.message),
                                     'bg-green/35':
                                       index + 1 === stackHistory.length &&
+                                      stack.stack.length === 1 &&
                                       (stack.stack[0] === true ||
-                                        stack.stack[0] === 1),
+                                        stack.stack[0] === 1) &&
+                                      !stack.error?.message,
                                     'bg-white/15':
                                       index + 1 !== stackHistory.length ||
                                       (index + 1 === stackHistory.length &&

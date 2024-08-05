@@ -115,6 +115,8 @@ class LanguageExecutor {
       const currentStack = this.stack
       const currentState = this.state[index - 1]
       const currentNegate = this.negate
+      const unRecognizedDataTypeRegex =
+        /^(?!\d+$)(?!Hash256)(?!SIG)(?!PUBKEY).*/
       let error: RunnerError | null
       let addToState: State
       let opResolves: any
@@ -311,10 +313,6 @@ class LanguageExecutor {
           break
 
         default:
-          error = {
-            type: 'unknown',
-            message: `Error: Unknown opcode ${element.type}`,
-          }
           addToState = {
             stack: [...currentStack],
             operation: {
@@ -325,21 +323,34 @@ class LanguageExecutor {
             },
             negate: currentNegate,
             step: index,
-            error: error,
+            error: {
+              type: 'unknown',
+              message: `Error: Unknown opcode ${element.type}`,
+            },
           }
           this.state.push(addToState)
           break
       }
-      if (addToState?.error?.message) {
-        index = this.tokens.length - 1
+      if (
+        this.state[0].stack.some((stackItem) =>
+          unRecognizedDataTypeRegex.test(stackItem)
+        )
+      ) {
+        addToState.error = {
+          type: 'unknown',
+          message: 'STACK_ERR: Unrecognized data type',
+        }
       }
       if (index === this.tokens.length - 1) {
         if (this.conditionalState.length !== 0) {
-          error = {
+          addToState.error = {
             type: 'unknown',
             message: 'SCRIPT_ERR: Unbalanced conditional',
           }
         }
+      }
+      if (error?.message) {
+        index = this.tokens.length - 1
       }
     }
   }
