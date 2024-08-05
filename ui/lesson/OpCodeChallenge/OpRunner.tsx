@@ -289,12 +289,14 @@ const OpRunner = ({
                                     'bg-green/35':
                                       index + 1 === stackHistory.length &&
                                       stack.stack.length === 1 &&
+                                      stack.stack.length === 1 &&
                                       (stack.stack[0] === true ||
                                         stack.stack[0] === 1) &&
                                       !stack.error?.message,
                                     'bg-white/15':
                                       index + 1 !== stackHistory.length ||
                                       (index + 1 === stackHistory.length &&
+                                        stack.stack.length === 1 &&
                                         stack.stack[0] !== true &&
                                         stack.stack[0] !== false),
                                   }

@@ -348,6 +348,13 @@ class LanguageExecutor {
             message: 'SCRIPT_ERR: Unbalanced conditional',
           }
         }
+        if (this.state[this.state.length - 1].stack.length !== 1) {
+          addToState.error = {
+            type: 'unknown',
+            message:
+              'Stack_ERR: Stack should finish with only one item on the stack',
+          }
+        }
       }
       if (addToState.error?.message) {
         index = this.tokens.length - 1
