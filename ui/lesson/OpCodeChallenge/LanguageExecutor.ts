@@ -349,7 +349,7 @@ class LanguageExecutor {
           }
         }
       }
-      if (error?.message) {
+      if (addToState.error?.message) {
         index = this.tokens.length - 1
       }
     }
