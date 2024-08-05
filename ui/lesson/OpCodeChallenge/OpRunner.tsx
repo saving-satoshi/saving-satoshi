@@ -50,9 +50,10 @@ const OpRunner = ({
     )
     setStackHistory(runnerState?.state || [])
     checkSuccessState(
-      runnerState?.tokens || [],
+      runnerState?.tokens ?? [],
       runnerState?.stack ?? [],
-      runnerState.state.find((item) => item.error && item.error.message)?.error
+      runnerState?.state.find((item) => item.error && item.error.message)
+        ?.error ?? { type: 'error', message: null }
     )
   }
 
