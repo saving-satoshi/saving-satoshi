@@ -136,7 +136,7 @@ const OpRunner = ({
   return (
     <div className="flex grow flex-col text-white md:w-[50vw]">
       <div className="flex h-[calc(100vh-70px-67px)] grow flex-col text-white">
-        <div className="flex flex-col gap-1 border-b border-b-white px-5 py-4">
+        <div className="flex h-[25vh] flex-col gap-1 border-b border-b-white px-5 py-4">
           <p className="font-space-mono text-lg font-bold capitalize ">
             Your Script
           </p>
@@ -265,7 +265,7 @@ const OpRunner = ({
                     {stack && (
                       <div
                         key={`Container${index}`}
-                        className="flex h-full max-h-[204px] min-w-[160px] flex-col self-stretch overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                        className="flex max-h-[405px] min-h-[204px] min-w-[160px] flex-col self-stretch overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
                       >
                         <div
                           key={index}
@@ -303,7 +303,7 @@ const OpRunner = ({
                                 )}
                               >
                                 {!isNaN(parseFloat(item)) && isFinite(item) ? (
-                                  parseInt(item)
+                                  item
                                 ) : (
                                   <span
                                     dangerouslySetInnerHTML={{

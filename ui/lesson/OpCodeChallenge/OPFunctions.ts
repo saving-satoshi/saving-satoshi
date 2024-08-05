@@ -70,12 +70,17 @@ export const opFunctions: { [key: string]: Function } = {
         error: 'OP_ADD requires 2 items on the stack',
       }
     }
-    const a = parseInt(stack.pop() as never)
-    const b = parseInt(stack.pop() as never)
-    if (typeof (a + b) !== 'number' || isNaN(a + b)) {
+    const a = Number(stack.pop())
+    const b = Number(stack.pop())
+    if (
+      typeof (a + b) !== 'number' ||
+      isNaN(a + b) ||
+      !Number.isInteger(a) ||
+      !Number.isInteger(b)
+    ) {
       return {
         value: null,
-        error: 'OP_ADD requires 2 numbers to add together',
+        error: 'OP_ADD requires 2 integers to add together',
       }
     }
     if (a == 0 && b == 0) {
