@@ -108,10 +108,7 @@ const OpRunner = ({
     const regex = /(SIG|HASH256|PUBKEY)/g
 
     return stackItem.replace(regex, (match) => {
-      if (match.match('SIG|HASH256|PUBKEY').length === 1) {
-        return `<span class="text-green">${match}</span>`
-      }
-      return stackItem
+      return `<span class="text-green">${match}</span>`
     })
   }
 
