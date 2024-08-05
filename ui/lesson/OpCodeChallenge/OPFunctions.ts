@@ -224,8 +224,8 @@ export const opFunctions: { [key: string]: Function } = {
         error: 'OP_CHECKSIG requires 2 items on the stack',
       }
     }
-    const key = getKey(stack.pop())?.value.toUpperCase()
-    const sig = getSig(stack.pop())?.value.toUpperCase()
+    const key = getKey(stack.pop())?.value?.toUpperCase()
+    const sig = getSig(stack.pop())?.value?.toUpperCase()
     return {
       value: key === sig,
       error: null,
