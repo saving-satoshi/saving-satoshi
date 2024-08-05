@@ -11,12 +11,12 @@ import { useAtomValue } from 'jotai'
 import { DifficultyLevel, syncedCourseProgressAtom } from 'state/progressState'
 
 export const metadata = {
-  title: 'chapter_six.put_it_together_four.title',
-  navigation_title: 'chapter_six.put_it_together_four.nav_title',
+  title: 'chapter_six.put_it_together_four.hard.title',
+  navigation_title: 'chapter_six.put_it_together_four.hard.nav_title',
   key: 'CH6PUT4_HARD',
 }
 
-export default function PutItTogether4({ lang }) {
+export default function PutItTogetherFourHard({ lang }) {
   const t = useTranslations(lang)
   const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
   const [isLoading, setIsLoading] = useState(true)
@@ -26,10 +26,10 @@ export default function PutItTogether4({ lang }) {
     chapterDifficulty = courseProgress.chapters[5].selectedDifficulty
   }
   const getPrevLessonData = async () => {
-    const data = await getData(`CH6PUT3_${chapterDifficulty.toString()}`)
+    const data = await getData(`CH6PUT3_HARD`)
     if (data) {
       setPrevData({
-        lesson_id: `CH6PUT3_${chapterDifficulty.toString()}`,
+        lesson_id: `CH6PUT3_HARD`,
         data: data?.code?.getDecoded(),
       })
     }
@@ -143,9 +143,9 @@ const hashed_message_bytes_ahuhfxmw = tx_eagmcued.digest(0);
 const signature_weiucmwa = {r: r.toString(16), s: s.toString(16)};
 console.log(private_key_faxwmufa.verify(hashed_message_bytes_ahuhfxmw, signature_weiucmwa) && 'true')
 console.log("KILL")`,
-    rangesToCollapse: [
+    rangeToNotCollapse: [
       {
-        start: countLines(prevData.data) + 2,
+        start: countLines(prevData.data) + 3,
         end: countLines(prevData.data) + 39,
       },
     ],
@@ -156,6 +156,7 @@ console.log("KILL")`,
     defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js');
 const {randomBytes} = require('crypto');
 ${prevData.data.slice(0, -2)}
+
   compute_input_signature(index, key) {
     assert(typeof key === 'bigint');
     assert(Number.isInteger(index));
@@ -204,12 +205,6 @@ ${prevData.data.slice(0, -2)}
         return [false, "can't find a return in both of the methods"]
       }
     },
-    constraints: [
-      {
-        range: [1, 1, countLines(prevData.data.slice(0, -2)) + 37, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const python = {
@@ -317,7 +312,7 @@ hashed_message_bytes_ywienvsd = tx_eagmcued.digest(0)
 verifying_key_dojssdfo = VerifyingKey.from_string(compressed_pub_agfwuebb, curve=SECP256k1)
 print(verifying_key_dojssdfo.verify_digest(sig_bytes_ayeqncas, hashed_message_bytes_ywienvsd) and 'true')
 print("KILL")`,
-    rangesToCollapse: [
+    rangeToNotCollapse: [
       {
         start: countLines(prevData.data) + 4,
         end: countLines(prevData.data) + 16,
@@ -355,12 +350,6 @@ ${prevData.data}
         return [false, "can't find a return in both of the methods"]
       }
     },
-    constraints: [
-      {
-        range: [1, 1, countLines(prevData.data) + 15, 1],
-        allowMultiline: true,
-      },
-    ],
   }
 
   const config: EditorConfig = {
@@ -381,18 +370,18 @@ ${prevData.data}
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_six.put_it_together_four.success')}
+        successMessage={t('chapter_six.put_it_together_four.hard.success')}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
-          <Title>{t('chapter_six.put_it_together_four.heading')}</Title>
+          <Title>{t('chapter_six.put_it_together_four.hard.heading')}</Title>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_four.paragraph_one')}
+            {t('chapter_six.put_it_together_four.hard.paragraph_one')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_four.paragraph_two')}
+            {t('chapter_six.put_it_together_four.hard.paragraph_two')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_six.put_it_together_four.paragraph_three')}
+            {t('chapter_six.put_it_together_four.hard.paragraph_three')}
           </Text>
         </LessonInfo>
       </ScriptingChallenge>

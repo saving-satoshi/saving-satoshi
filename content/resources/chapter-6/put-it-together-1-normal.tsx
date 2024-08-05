@@ -156,7 +156,7 @@ const config: EditorConfig = {
   },
 }
 
-export default function PutItTogetherResources({ lang }) {
+export default function PutItTogetherResourcesOneNormal({ lang }) {
   const t = useTranslations(lang)
   const [currentLanguage] = useAtom(currentLanguageAtom)
   const initialStateCode =

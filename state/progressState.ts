@@ -249,17 +249,17 @@ export const defaultProgressState: CourseProgress = {
               completed: false,
             },
             {
-              id: 'CH6PUT4',
+              id: 'CH6PUT4_HARD',
               path: '/chapter-6/put-it-together-4-hard',
               completed: false,
             },
             {
-              id: 'CH6PUT5',
+              id: 'CH6PUT5_HARD',
               path: '/chapter-6/put-it-together-5-hard',
               completed: false,
             },
             {
-              id: 'CH6PUT6',
+              id: 'CH6PUT6_HARD',
               path: '/chapter-6/put-it-together-6-hard',
               completed: false,
             },
