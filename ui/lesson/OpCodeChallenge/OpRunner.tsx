@@ -104,16 +104,15 @@ const OpRunner = ({
     setSuccess(0)
   }
 
-  const colorizeText = (stackItem: string) => {
+  const colorizeText = (stackItem: string): string => {
     const regex = /(SIG|HASH256|PUBKEY)/g
 
-    const coloredText = stackItem.replace(regex, (match) => {
+    return stackItem.replace(regex, (match) => {
       if (match.match('SIG|HASH256|PUBKEY').length === 1) {
         return `<span class="text-green">${match}</span>`
       }
+      return stackItem
     })
-
-    return coloredText
   }
 
   let error = null
