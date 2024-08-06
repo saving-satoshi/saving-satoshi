@@ -9,6 +9,7 @@ import ScriptingChallenge from './ScriptingChallenge'
 import HashChallenge from './HashChallenge'
 import HashrateChallenge from './HashrateChallenge'
 import DoubleInputChallenge from './DoubleInputChallenge'
+import OpCodeChallenge from './OpCodeChallenge'
 
 export {
   Lesson,
@@ -23,4 +24,5 @@ export {
   ScriptingChallenge,
   HashChallenge,
   HashrateChallenge,
+  OpCodeChallenge,
 }

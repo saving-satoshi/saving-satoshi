@@ -63,7 +63,9 @@ export default function Tab({
 
   const lessonId = pathName.split('/').pop()
 
-  const href = `${routes.chaptersUrl}/${slug}/${challenge.lessonId}`
+  const href = `${routes.chaptersUrl}/${slug}/${challenge.lessonId}${
+    isDevelopment ? '?dev=true' : ''
+  }`
 
   const navTitle = t(
     lessons[slug][challenge.lessonId].metadata.navigation_title

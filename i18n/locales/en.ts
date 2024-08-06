@@ -2322,35 +2322,219 @@ const translations = {
       paragraph_three:
         '—Don’t panic, you tell yourself. Think. What kind of trap can you set?”',
     },
-    split_one: {
-      title: 'Scripts',
+    intro_three: {
+      title: 'Intro',
+      nav_title: 'Setting the trap',
+      paragraph_one:
+        '—You receive a strange text as you arrive home and plop onto your AI foam mattress. It’s from a number you don’t recognize, But it is once again signed by Satoshi Nakamoto.',
+      paragraph_two:
+        '—SATOSHI NAKAMOTO: “You need to get out of there. Vanderpoole has put together a goon squad and is on his way back to your house. Our infrared sensors are going crazy. They might want to steal your bitcoin! Or worse!”',
+      paragraph_three:
+        '—Don’t panic, you tell yourself. Think. What kind of trap can you set?”',
+    },
+    opcodes_one: {
+      title: 'OpCodes',
+      nav_title: 'Bitcoin Script',
+      heading: 'Bitcoin Script',
+      paragraph_one:
+        "We mentioned Bitcoin script back in chapter 6 but we didn't dwell on it because the coins you were spending were locked by a simple mechanism: a single signature and an implied script that evaluated that signature with a public key. Now things are going to get more interesting.",
+      paragraph_two:
+        'There are two important parts to spending a Bitcoin output: A script and a stack.',
+      paragraph_three: "We'll explore the two concepts at a high level first.",
+    },
+    opcodes_two: {
+      title: 'OpCodes',
+      nav_title: 'Bitcoin Script',
+      heading: 'The stack',
+      paragraph_one:
+        "Think of a stack of books [IMAGE!]. If you want to add a book, you have to place it on top of the stack, there's nowhere else for it to go. If you want to read a book, the only one you can access is the one on top of the stack. Even if you want more than one you have start at the top of the stack and work your way down. In computing terms, a stack is like an array of data items with two operations:",
+      paragraph_two:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_PUSH</span> Add an item to the "top" of the stack.',
+      paragraph_three:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_POP</span> Remove the "top" item from the stack for processing.',
+      subheading_one: 'Example:',
+      stack_list_one:
+        'Here is a stack: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">[]</span>',
+      stack_list_two:
+        'Push the number 1: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">[1]</span>',
+      stack_list_three:
+        'Push the number 2: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">[1, 2]</span>',
+      stack_list_four:
+        'Pop the top item off the stack: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">[1]</span>',
+      paragraph_four:
+        'Notice that the first item pushed on to the stack will be the last item popped off the stack, so it will be the last item processed by the script. For this reason the stack has an "upside down" or "backwards" feel to it, and the first thing you see on the stack will likely be the solution required at the end of script processing.',
+      paragraph_five:
+        'When spending a bitcoin transaction output, the elements required by the spender are provided in the witness of the spending transaction input (see chapter 6!) and those elements get pushed on to the stack before any script processing begins. We will refer to those items as the INITIAL STACK. They are important because they are literally the data that unlocks the script and allows the spender to spend coins!',
+    },
+    opcodes_three: {
+      title: 'OpCodes',
+      nav_title: 'Bitcoin Script',
+      heading: 'The stack',
+      paragraph_one:
+        'Script is a linear series of commands that are executed one by one, manipulating items on the stack. When the end of the script has been reached, there must be EXACTLY ONE NON-ZERO (NON-FALSE) ITEM remaining on the stack, or the entire operation is invalid and so is your Bitcoin transaction. There are over 100 commands in the Bitcoin script language, called "opcodes". We are only going to use a handful of them for this challenge.  ',
+      paragraph_two:
+        "Let's demonstrate an example where we lock up a Bitcoin with the math problem 1 + 2 = ?. Whoever knows the answer to this math problem can spend the coins.",
+      paragraph_three: 'The script would look like this:',
+      paragraph_four:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_1 OP_2 OP_ADD OP_EQUAL</span>',
+      paragraph_five:
+        'This is script will be hashed and bech32-encoded into an address where someone can send coins.',
+    },
+    opcodes_four: {
+      title: 'OpCodes',
+      nav_title: 'Bitcoin Script',
+      heading: 'The stack',
+      paragraph_one:
+        "The stack solution would look like this: [3]. This is what the spending transaction would need in the witness of its input spending these coins. Let's step through it:",
+      table_one: {
+        headings: {
+          item_one: 'Step',
+          item_two: 'Stack',
+          item_three: 'Script Execution',
+        },
+      },
+      subheading_one: 'Explanation',
+      stack_list_one:
+        'init: the funding transaction output and spending transaction input are brought together.',
+      stack_list_two:
+        'step 1: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_1</span>pushes "1" onto the stack.',
+      stack_list_three:
+        'step 2: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_2</span>pushes "2" onto the stack.',
+      stack_list_four:
+        'step 3: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ADD</span>pops two items off the stack, adds them together, and pushes the sum back to the stack.',
+      stack_list_five:
+        'step 4: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_EQUAL</span>pops two items off the stack, compares them, and pushes a boolean result back to the stack.',
+      paragraph_two:
+        'Now we have reached the end of the script and there is only a single TRUE item left on the stack - the coins are spent!',
+      paragraph_three:
+        "Hopefully it's obvious that if we started this example with a 4 on the stack, we would not be able to spend the coins. For these challenges we are going to use a very limited set of opcodes, which we will introduce by category",
+    },
+    opcodes_five: {
+      title: 'OpCodes',
       nav_title: 'Arithmetic',
       heading: 'Basic Arithmetic',
       paragraph_one:
         'Bitcoin script can do simple math operations. You could lock coins using simple math but then anyone who can do math could spend the coins! In other words, do not try this on mainnet.',
       subheading_one:
         'Opcodes that push integers or arbitrary data to the stack',
-      opconstants_list_one:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_0</span>: Pushes the number 0 on to the stack.',
-      opconstants_list_two:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_1</span>: Pushes the number 1 on to the stack.',
-      opconstants_list_three:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_2</span>: Pushes the number 2 on to the stack.',
-      opconstants_list_four:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_3</span>: Pushes the number 3 on to the stack.',
-      opconstants_list_five:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_DUP</span>: Pushes a duplicate of the top stack item on to the stack.',
-      opconstants_list_six:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_PUSH</span>: Pushes the following script value on to the stack. Example values include SIG(alice), PUBKEY(alice), HASH256(secret), secret. Lowercase strings represent real-world data and the other opcodes in this interpreter will process them as if they are actual keys, signatures, hash digests and preimages.',
+      opconstants_list_one_heading:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_0</span>',
+      opconstants_list_one_paragraph: 'Pushes the number 0 on to the stack.',
+      opconstants_list_two_heading:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_1</span>',
+      opconstants_list_two_paragraph: 'Pushes the number 1 on to the stack.',
+      opconstants_list_three_heading:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_2</span>',
+      opconstants_list_three_paragraph: 'Pushes the number 2 on to the stack.',
+      opconstants_list_four_heading:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_3</span>',
+      opconstants_list_four_paragraph: 'Pushes the number 3 on to the stack.',
+      opconstants_list_five_heading:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_DUP</span>',
+      opconstants_list_five_paragraph:
+        'Pushes a duplicate of the top stack item on to the stack.',
+      opconstants_list_six_heading:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_PUSH</span>',
+      opconstants_list_six_paragraph:
+        'Pushes the following script value on to the stack. Example values include SIG(alice), PUBKEY(alice), HASH256(secret), secret. Lowercase strings represent real-world data and the other opcodes in this interpreter will process them as if they are actual keys, signatures, hash digests and preimages.',
       subheading_two: 'Opcodes that do arithmetic',
-      oparithmetic_list_one:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ADD</span>: Pops two items off the stack, adds them together, pushes their sum back to the stack.',
-      oparithmetic_list_two:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_EQUAL</span>: Pops two items off the stack, compares their equality, pushes a boolean back to the stack.',
-      oparithmetic_list_three:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_EQUALVERIFY</span>: Like OP_EQUAL but throws an error and halts script execution immediately if the two items are not equal.',
+      oparithmetic_list_one_heading:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_ADD</span>',
+      oparithmetic_list_one_paragraph:
+        'Pops two items off the stack, adds them together, pushes their sum back to the stack.',
+      oparithmetic_list_two_heading:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_EQUAL</span>',
+      oparithmetic_list_two_paragraph:
+        'Pops two items off the stack, compares their equality, pushes a boolean back to the stack.',
+      oparithmetic_list_three_heading:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_EQUALVERIFY</span>',
+      oparithmetic_list_three_paragraph:
+        'Like OP_EQUAL but throws an error and halts script execution immediately if the two items are not equal.',
+      paragraph_two: 'Provide the initial stack to spend from the script.',
+    },
+    opcodes_six: {
+      title: 'OpCodes',
+      nav_title: 'Simple Cryptography',
+      heading: 'Simple Cryptography',
+      paragraph_one:
+        'We\'ve explored "pay to public key hash" in previous chapters. This is the Bitcoin script that was written explicitly in millions of transaction outputs before segregated witness came along and abbreviated it. Coins are locked by the hash of a public key. The spender must reveal the public key that matches that hash, and then provide a signature verified by that public key.',
+      subheading_one: 'Opcodes that do simple cryptography',
+      opcryptography_list_one_heading:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_HASH256</span>',
+      opcryptography_list_one_paragraph:
+        'Pops one item off the stack, computes the double-SHA256 digest and pushes that digest back to the stack. In our exercise this operation is symbolized using strings. Example: The script OP_1 OP_HASH256 produces the stack [HASH256(1)]',
+      opcryptography_list_two_heading:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_CHECKSIG</span>',
+      opcryptography_list_two_paragraph:
+        'Pops two items off the stack. The first item it pops must be a public key in the format PUBKEY(...). The second item must be a signature in the format SIG(...). If the strings inside the parentheses in both items are equal we consider that a valid ECDSA signature and push TRUE back to the stack, otherwise FALSE',
+      paragraph_two: 'Provide the initial stack to spend from the script.',
+    },
+    opcodes_seven: {
+      title: 'OpCodes',
+      nav_title: 'Multisig',
+      heading: 'Multisig',
+      paragraph_one:
+        'Multi-signature policies provide a list of public keys and a number of signatures required for a valid spend. It can be described as "m-of-n" meaning "m number of signatures are required from this list of n public keys". The public keys and the m and n values are typically included in the locking script and the spender only needs to provide the right number of signatures.',
       paragraph_two:
-        'Provide the initial stack to spend from this script: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1">OP_ADD OP_3 OP_EQUAL</span>',
+        'Holocat appears with a pre-recorded message from Satoshi Nakamoto!',
+      paragraph_three:
+        'Hi. I accidentally wrote a bug when I implemented <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn\'t used at all. UMMMMmmmmmm... WHOOPSIE! Sorry. That code is consensus-critical so every <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_CHECKMULTISIG</span> operation in Bitcoin\'s past, present, and future will be forced to include a "dummy" element. Don\'t forget it! Or you won\'t be able to spend your multisig coins.',
+    },
+    opcodes_eight: {
+      title: 'OpCodes',
+      nav_title: 'Multisig',
+      heading: 'Multisig',
+      subheading_one:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1">OP_CHECKMULTISIG</span>',
+      subheading_two:
+        'Processes m-of-n multi-signature by following this algorithm.',
+      multisig_list_one:
+        'Pop a single integer off the stack. This is the <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">n</span> value.',
+      multisig_list_two:
+        'Pop <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">n</span> number of items off the stack, these are all expected to be public keys of the format <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">PUBKEY(...)</span>',
+      multisig_list_three:
+        'Pop a single integer off the stack. This is the <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">m</span> value.',
+      multisig_list_four:
+        'Pop <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">m</span> number of items off the stack, these are all expected to be signatures of the format <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">SIG(...)</span>',
+      multisig_list_five:
+        'Pop an extra element off the stack for absolutely no reason at all.',
+      multisig_list_six:
+        'Iterate through each public key: Verify the key against the stack-topmost signature. If it is valid, remove both the key and the signature and continue with the next public key. If it is not valid, remove the public key only and continue to the next public key (which will begin by checking against that same topmost signature)',
+      multisig_list_seven:
+        'If all public keys have been tested and there are any signatures remaining, the operation fails.',
+      multisig_list_eight:
+        'Once all signatures have been removed the operation can finish early with success, even if more public keys are remaining.',
+      paragraph_one:
+        'Note that m <= n. There may be more public keys than signatures but never more signatures than public keys. Also note that the keys and signatures MUST be in the same order, even if some keys are not used to sign.',
+      paragraph_two: 'Provide the initial stack to spend from the script.',
+    },
+    opcodes_nine: {
+      title: 'OpCodes',
+      nav_title: 'Time Locks',
+      heading: 'Time Locks',
+      paragraph_one:
+        "Way back in the last century a document entitled BIP 65 proposed a new opcode to Bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an OP_DROP as well.. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immedeatly with an error.",
+      subheading_one: 'Opcodes that do block timelocks',
+      optimelock_list_one_heading:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_DROP</span>',
+      optimelock_list_one_paragraph: 'Pops one item off the stack, ignores it.',
+      optimelock_list_two_heading:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_CHECKLOCKTIMEVERIFY</span>',
+      optimelock_list_two_paragraph:
+        'Reads (does not pop) the top stack item and interprets it as a block height. If the height argument consumed by the opcode is not at least equal to the NEXT block height, the operation is invalid.',
+      paragraph_two: 'Provide the initial stack to spend from the script.',
+    },
+    opcodes_ten: {
+      title: 'OpCodes',
+      nav_title: 'Flow Control',
+      heading: 'Conditionals',
+      paragraph_one:
+        'Just like any other good programming language, Bitcoin script has logic branches! The path through the branches is typically chosen by the spender to pick which combination of authentication conditions they need to satisfy,',
+      paragraph_two:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_IF</span> <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ELSE</span> <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ENDIF</span> Logic branches.',
+      paragraph_three:
+        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_IF</span> pops one value off the stack and evaluates it as a boolean. If it is true, code execution continues up to <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ELSE</span> then skips to <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ENDIF</span>, otherwise it skips to <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ELSE</span> and continues executing to <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ENDIF</span>. Logic branches may be nested but every <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_IF</span> must be paired with an <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ENDIF</span> to close each branch, otherwise a the interpreter will throw an error and the script will fail.',
+      paragraph_four: 'Provide the initial stack to spend from the script.',
     },
     outro_one: {
       title: 'Outro',

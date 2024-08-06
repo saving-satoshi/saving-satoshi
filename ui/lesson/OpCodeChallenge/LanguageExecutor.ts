@@ -84,6 +84,7 @@ class LanguageExecutor {
       return langExecutor
     }
   }
+
   constructor(tokens: T, initialStack: string[], height?: number) {
     this.tokens = tokens
     this.state = []
@@ -107,13 +108,15 @@ class LanguageExecutor {
     }
   }
 
-  execute() {
+  async execute() {
     if (!this.tokens) return this.state
     for (let index = 0; index < this.tokens.length; index++) {
       const element = this.tokens[index]
       const currentStack = this.stack
       const currentState = this.state[index - 1]
       const currentNegate = this.negate
+      const unRecognizedDataTypeRegex =
+        /^(?!\d+$)(?!Hash256)(?!SIG)(?!PUBKEY).*/
       let error: RunnerError | null
       let addToState: State
       let opResolves: any
@@ -140,7 +143,7 @@ class LanguageExecutor {
         case TokenTypes.ARITHMETIC:
           if (this.negate === 0) {
             opResolves = opFunctions[element.value](this.stack)
-            if (opResolves.value) {
+            if (opResolves.value !== null) {
               this.stack.push(opResolves.value)
             }
           }
@@ -156,7 +159,7 @@ class LanguageExecutor {
             negate: currentNegate,
             error: {
               type: element.value,
-              message: opResolves.error,
+              message: opResolves?.error,
             },
           }
           this.state.push(addToState)
@@ -185,7 +188,7 @@ class LanguageExecutor {
             negate: currentNegate,
             error: {
               type: element.value,
-              message: opResolves.error,
+              message: opResolves?.error,
             },
           }
           this.state.push(addToState)
@@ -208,7 +211,7 @@ class LanguageExecutor {
             step: index,
             error: {
               type: element.value,
-              message: opResolves.error,
+              message: opResolves?.error,
             },
           }
           this.state.push(addToState)
@@ -232,7 +235,7 @@ class LanguageExecutor {
             step: index,
             error: {
               type: element.value,
-              message: opResolves.error,
+              message: opResolves?.error,
             },
           }
           this.negate = opResolves?.value
@@ -242,7 +245,7 @@ class LanguageExecutor {
         case TokenTypes.CRYPTO:
           if (this.negate === 0) {
             opResolves = opFunctions[element.value](this.stack)
-            if (opResolves?.value) this.stack.push(opResolves.value)
+            if (opResolves?.value !== null) this.stack.push(opResolves.value)
           }
           addToState = {
             stack: [...currentStack],
@@ -281,7 +284,7 @@ class LanguageExecutor {
             step: index,
             error: {
               type: element.value,
-              message: opResolves.error,
+              message: opResolves?.error,
             },
           }
           this.state.push(addToState)
@@ -310,10 +313,6 @@ class LanguageExecutor {
           break
 
         default:
-          error = {
-            type: 'unknown',
-            message: `Error: Unknown opcode ${element.type}`,
-          }
           addToState = {
             stack: [...currentStack],
             operation: {
@@ -324,16 +323,41 @@ class LanguageExecutor {
             },
             negate: currentNegate,
             step: index,
-            error: error,
+            error: {
+              type: 'unknown',
+              message: `Error: Unknown opcode ${element.type}`,
+            },
           }
           this.state.push(addToState)
           break
       }
-
+      if (
+        this.state[0].stack.some((stackItem) =>
+          unRecognizedDataTypeRegex.test(stackItem)
+        )
+      ) {
+        addToState.error = {
+          type: 'unknown',
+          message: 'STACK_ERR: Unrecognized data type',
+        }
+      }
       if (index === this.tokens.length - 1) {
         if (this.conditionalState.length !== 0) {
-          throw new Error('SCRIPT_ERR: Unbalanced conditional')
+          addToState.error = {
+            type: 'unknown',
+            message: 'SCRIPT_ERR: Unbalanced conditional',
+          }
         }
+        if (this.state[this.state.length - 1].stack.length !== 1) {
+          addToState.error = {
+            type: 'unknown',
+            message:
+              'Stack_ERR: Stack should finish with only one item on the stack',
+          }
+        }
+      }
+      if (addToState.error?.message) {
+        index = this.tokens.length - 1
       }
     }
   }

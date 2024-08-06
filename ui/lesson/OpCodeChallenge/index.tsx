@@ -1,3 +1,5 @@
+'use client'
+
 import { useDynamicHeight, useMediaQuery } from 'hooks'
 import React, { useEffect, useState } from 'react'
 import { LessonDirection } from 'types'
@@ -20,7 +22,15 @@ const tabData = [
   },
 ]
 
-const OpRunnerLesson = ({ children, ...rest }: OpRunnerTypes) => {
+export default function OpCodeChallenge({
+  children,
+  answerScript,
+  prePopulate,
+  showRunButtons,
+  readOnly,
+  success,
+  setSuccess,
+}: OpRunnerTypes) {
   const [hydrated, setHydrated] = useState(false)
 
   useDynamicHeight()
@@ -42,11 +52,16 @@ const OpRunnerLesson = ({ children, ...rest }: OpRunnerTypes) => {
       >
         {children}
         <div className="height-minus-nav flex border-white/25 md:max-w-[50vw] md:border-l">
-          <OpRunner {...rest} />
+          <OpRunner
+            answerScript={answerScript}
+            prePopulate={prePopulate}
+            showRunButtons={showRunButtons}
+            readOnly={readOnly}
+            success={success}
+            setSuccess={setSuccess}
+          />
         </div>
       </Lesson>
     )
   )
 }
-
-export default OpRunnerLesson

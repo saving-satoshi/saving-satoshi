@@ -2,24 +2,42 @@ import { StackType, T, TokenTypes } from './runnerTypes'
 
 const getKey = (keyData) => {
   if (!keyData) {
-    throw new Error('Missing key')
+    return {
+      value: null,
+      error: 'Missing key',
+    }
   }
   const keyMatch = /PUBKEY\((.*?)\)/.exec(keyData)
   if (!keyMatch || keyMatch.length !== 2) {
-    throw new Error(`Invalid public key: ${keyData}`)
+    return {
+      value: null,
+      error: `Invalid public key: ${keyData}`,
+    }
   }
-  return keyMatch[1]
+  return {
+    value: keyMatch[1],
+    error: null,
+  }
 }
 
 const getSig = (sigData) => {
   if (!sigData) {
-    throw new Error('Missing sig')
+    return {
+      value: null,
+      error: 'Missing sig',
+    }
   }
   const sigMatch = /SIG\((.*?)\)/.exec(sigData)
   if (!sigMatch || sigMatch.length !== 2) {
-    throw new Error(`Invalid signature: ${sigData}`)
+    return {
+      value: null,
+      error: `Invalid signature: ${sigData}`,
+    }
   }
-  return sigMatch[1]
+  return {
+    value: sigMatch[1],
+    error: null,
+  }
 }
 
 export const opFunctions: { [key: string]: Function } = {
@@ -52,16 +70,27 @@ export const opFunctions: { [key: string]: Function } = {
         error: 'OP_ADD requires 2 items on the stack',
       }
     }
-    const a = parseInt(stack.pop() as never)
-    const b = parseInt(stack.pop() as never)
-    if (isNaN(a + b)) {
+    const a = Number(stack.pop())
+    const b = Number(stack.pop())
+    if (
+      typeof (a + b) !== 'number' ||
+      isNaN(a + b) ||
+      !Number.isInteger(a) ||
+      !Number.isInteger(b)
+    ) {
       return {
         value: null,
-        error: 'OP_ADD requires 2 numbers to add together',
+        error: 'OP_ADD requires 2 integers to add together',
+      }
+    }
+    if (a == 0 && b == 0) {
+      return {
+        value: 0,
+        error: null,
       }
     }
     return {
-      value: a + b,
+      value: Number(a + b),
       error: null,
     }
   },
@@ -80,7 +109,13 @@ export const opFunctions: { [key: string]: Function } = {
     if (stack?.length < 1) {
       return {
         value: null,
-        error: 'OP_CHECKLOCKTIMEVERIFY requires 1 item on the stack',
+        error: 'OP_CHECKLOCKTIMEVERIFY: requires 1 item on the stack',
+      }
+    }
+    if (isNaN(height)) {
+      return {
+        value: null,
+        error: 'OP_CHECKLOCKTIMEVERIFY: height should be a valid number',
       }
     }
     const a = parseInt(stack[stack?.length - 1] as string)
@@ -194,8 +229,8 @@ export const opFunctions: { [key: string]: Function } = {
         error: 'OP_CHECKSIG requires 2 items on the stack',
       }
     }
-    const key = getKey(stack.pop())
-    const sig = getSig(stack.pop())
+    const key = getKey(stack.pop())?.value?.toUpperCase()
+    const sig = getSig(stack.pop())?.value?.toUpperCase()
     return {
       value: key === sig,
       error: null,
@@ -211,7 +246,7 @@ export const opFunctions: { [key: string]: Function } = {
     }
 
     const maybeN = stack.pop() ?? ''
-    const n = typeof maybeN === 'string' && parseInt(maybeN)
+    const n = typeof maybeN === 'number' && maybeN
     if (!n) {
       return {
         value: null,
@@ -231,7 +266,7 @@ export const opFunctions: { [key: string]: Function } = {
     }
 
     const maybeM = stack.pop() ?? ''
-    const m = typeof maybeM === 'string' && parseInt(maybeM)
+    const m = typeof maybeM === 'number' && maybeM
     if (!m) {
       return {
         value: null,
@@ -265,7 +300,10 @@ export const opFunctions: { [key: string]: Function } = {
     while (keys.length) {
       const key = keys.pop() || ''
       const sig = sigs[sigs.length - 1]
-      if (getKey(key) === getSig(sig)) {
+      if (
+        getKey(key)?.value === getSig(sig)?.value &&
+        getKey(key)?.value !== null
+      ) {
         sigs.pop()
       }
       if (sigs.length === 0) {
