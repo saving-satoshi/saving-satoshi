@@ -120,7 +120,10 @@ const OpRunner = ({
       },
       step: -1, // Use -1 to indicate this is the initial state
       negate: 0,
-      error: null,
+      error: {
+        type: '',
+        message: null,
+      },
     }
 
     setStackHistory([initialState])
@@ -185,7 +188,10 @@ const OpRunner = ({
       },
       step: -1,
       negate: 0,
-      error: null,
+      error: {
+        type: '',
+        message: null,
+      },
     }
 
     setStackHistory(initialStackArray.length > 0 ? [initialState] : [])
@@ -206,6 +212,8 @@ const OpRunner = ({
     if (startedTyping) {
       const timeoutId = setTimeout(() => {
         initializeExecutor()
+        handleRun()
+        setStartedTyping(false)
       }, 1000)
 
       return () => clearTimeout(timeoutId)

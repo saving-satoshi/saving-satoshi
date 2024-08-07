@@ -95,11 +95,18 @@ export const opFunctions: { [key: string]: Function } = {
     }
   },
   OP_PUSH: (stack: StackType, tokens: T, index: number) => {
+    const unRecognizedDataTypeRegex = /^(?!\d+$)(?!Hash256)(?!SIG)(?!PUBKEY).*/
     if (!stack) return null
     if (!tokens[index + 1]?.value) {
       return {
         value: null,
-        error: 'OP_PUSH needs a value to push to the stack',
+        error: 'OP_PUSH: needs a value to push to the stack',
+      }
+    }
+    if (unRecognizedDataTypeRegex.test(tokens[index + 1].value)) {
+      return {
+        value: null,
+        error: 'OP_PUSH: unrecognized data type',
       }
     }
     return { value: tokens[index + 1].value, error: null }
