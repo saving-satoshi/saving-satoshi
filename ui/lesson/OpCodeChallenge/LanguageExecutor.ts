@@ -103,12 +103,188 @@ class LanguageExecutor {
         },
         step: 0,
         negate: 0,
+        error: {
+          type: '',
+          message: null,
+        },
       })
       this.stack.push(...initialStack)
     }
   }
 
-  async execute() {
+  //THIS COULD CAUSE AN ERROR BY DEFAULTING TO 0
+  public currentIndex: number = 0
+
+  executeStep(): State | null {
+    if (this.currentIndex >= this.tokens.length) {
+      return null // End of script
+    }
+
+    const element = this.tokens[this.currentIndex]
+    const state = this.executeToken(element)
+    this.currentIndex++
+    if (state.error?.message) {
+      this.currentIndex = this.tokens.length - 1
+    }
+    return state
+  }
+
+  private executeToken(element: T[number]): State {
+    const currentStack = [...this.stack]
+    const currentNegate = this.negate
+    let opResolves: any
+    let error: RunnerError | null | undefined = null
+
+    switch (element.type) {
+      case TokenTypes.CONSTANT:
+        if (this.negate === 0) {
+          this.stack.push(element.resolves)
+        }
+        break
+
+      case TokenTypes.ARITHMETIC:
+        if (this.negate === 0) {
+          opResolves = opFunctions[element.value](this.stack)
+          if (opResolves.value !== null) {
+            this.stack.push(opResolves.value)
+          }
+        }
+        error = opResolves?.error
+          ? { type: element.value, message: opResolves.error }
+          : null
+        break
+
+      case TokenTypes.DATA_PUSH:
+        if (this.negate === 0) {
+          opResolves = opFunctions[element.value](
+            this.stack,
+            this.tokens,
+            this.currentIndex
+          )
+          if (opResolves.value) {
+            this.stack.push(opResolves.value)
+          }
+        }
+        error = opResolves?.error
+          ? { type: element.value, message: opResolves.error }
+          : null
+        this.currentIndex++
+        break
+
+      case TokenTypes.LOCK_TIME:
+        if (this.negate === 0) {
+          opResolves = opFunctions[element.value](this.stack, this.height)
+        }
+        error = opResolves?.error
+          ? { type: element.value, message: opResolves.error }
+          : null
+        break
+
+      case TokenTypes.CONDITIONAL:
+        opResolves = opFunctions[element.value](
+          this.stack,
+          this.conditionalState,
+          this.negate
+        )
+        this.negate = opResolves?.value
+        error = opResolves?.error
+          ? { type: element.value, message: opResolves.error }
+          : null
+        break
+
+      case TokenTypes.CRYPTO:
+        if (this.negate === 0) {
+          opResolves = opFunctions[element.value](this.stack)
+          if (opResolves?.value !== null) this.stack.push(opResolves.value)
+        }
+        error = opResolves?.error
+          ? { type: element.value, message: opResolves.error }
+          : null
+        break
+
+      case TokenTypes.BITWISE:
+        if (this.negate === 0) {
+          opResolves = opFunctions[element.value](this.stack)
+          if (opResolves?.value !== null) {
+            this.stack.push(opResolves.value)
+          }
+        }
+        error = opResolves?.error
+          ? { type: element.value, message: opResolves.error }
+          : null
+        break
+
+      case TokenTypes.STACK:
+        if (this.negate === 0) {
+          opResolves = opFunctions[element.value](this.stack)
+          if (opResolves?.value) {
+            this.stack.push(opResolves.value)
+          }
+        }
+        error = opResolves?.error
+          ? { type: element.value, message: opResolves.error }
+          : null
+        break
+
+      default:
+        error = {
+          type: 'unknown',
+          message: `SCRIPT_ERR: Unknown opcode ${element.type}`,
+        }
+        break
+    }
+
+    /*if (
+      this.state[0].stack.some((stackItem) =>
+        unRecognizedDataTypeRegex.test(stackItem)
+      )
+    ) {
+      error = {
+        type: 'unknown',
+        message: 'STACK_ERR: Unrecognized data type',
+      }
+    }*/
+
+    return {
+      stack: [...this.stack],
+      operation: {
+        tokenType: element.type,
+        resolves: element.resolves,
+        value: element.value,
+        type: element.type,
+      },
+      negate: this.negate,
+      step: this.currentIndex,
+      error: error ?? undefined,
+    }
+  }
+
+  execute() {
+    this.state = []
+    let state: State | null
+    while ((state = this.executeStep()) !== null) {
+      this.state.push(state)
+    }
+
+    if (this.currentIndex >= this.tokens.length - 1) {
+      if (this.conditionalState.length !== 0) {
+        this.state[this.tokens.length - 1].error = {
+          type: 'unknown',
+          message: 'SCRIPT_ERR: Unbalanced conditional',
+        }
+      }
+      if (this.state[this.state.length - 1].stack.length !== 1) {
+        this.state[this.tokens.length - 1].error = {
+          type: 'unknown',
+          message:
+            'STACK_ERR: Stack should finish with only one item on the stack',
+        }
+      }
+    }
+  }
+}
+
+/*async execute() {
     if (!this.tokens) return this.state
     for (let index = 0; index < this.tokens.length; index++) {
       const element = this.tokens[index]
@@ -116,7 +292,7 @@ class LanguageExecutor {
       const currentState = this.state[index - 1]
       const currentNegate = this.negate
       const unRecognizedDataTypeRegex =
-        /^(?!\d+$)(?!Hash256)(?!SIG)(?!PUBKEY).*/
+        /^(?!\d+$)(?!Hash256)(?!SIG)(?!PUBKEY).
       let error: RunnerError | null
       let addToState: State
       let opResolves: any
@@ -360,7 +536,6 @@ class LanguageExecutor {
         index = this.tokens.length - 1
       }
     }
-  }
-}
+  }*/
 
 export default LanguageExecutor

@@ -2,6 +2,7 @@
 
 import { useDynamicHeight, useMediaQuery } from 'hooks'
 import React, { useEffect, useState } from 'react'
+import { ArrowsProvider } from 'state/ArrowsContext'
 import { LessonDirection } from 'types'
 import Lesson from '../Lesson'
 import OpRunner from './OpRunner'
@@ -52,14 +53,16 @@ export default function OpCodeChallenge({
       >
         {children}
         <div className="height-minus-nav flex border-white/25 md:max-w-[50vw] md:border-l">
-          <OpRunner
-            answerScript={answerScript}
-            prePopulate={prePopulate}
-            showRunButtons={showRunButtons}
-            readOnly={readOnly}
-            success={success}
-            setSuccess={setSuccess}
-          />
+          <ArrowsProvider>
+            <OpRunner
+              answerScript={answerScript}
+              prePopulate={prePopulate}
+              showRunButtons={showRunButtons}
+              readOnly={readOnly}
+              success={success}
+              setSuccess={setSuccess}
+            />
+          </ArrowsProvider>
         </div>
       </Lesson>
     )

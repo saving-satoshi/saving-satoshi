@@ -35,7 +35,7 @@ export default function OpCodes10({ lang }) {
         ]}
         prePopulate
         showRunButtons
-        readOnly
+        //readOnly
         success={success}
         setSuccess={setSuccess}
       >

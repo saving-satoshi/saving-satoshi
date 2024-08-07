@@ -10,6 +10,71 @@ import {
   T,
   RunnerError,
 } from './runnerTypes'
+import { ArcherElement } from 'react-archer'
+import { RelationType } from 'react-archer/lib/types'
+import { useArrows } from 'state/ArrowsContext'
+import useHorizontalScroll from 'hooks/useHorizontalScroll'
+import { sleep } from 'utils'
+
+const arrowLineStyles = {
+  startMarker: true,
+  endMarker: false,
+  strokeColor: '#3DCFEF',
+  strokeWidth: 1.25,
+}
+
+const getRelationsSourceForOperation = (
+  operation: string,
+  currentIndex: number
+): RelationType[] => {
+  switch (operation) {
+    case 'OP_EQUAL':
+    case 'OP_ADD':
+    case 'OP_SUB':
+    case 'OP_MUL':
+    case 'OP_DIV':
+      return [
+        {
+          targetId: `item${currentIndex}-0`,
+          sourceAnchor: 'left',
+          targetAnchor: 'right',
+          style: arrowLineStyles,
+        },
+        {
+          targetId: `item${currentIndex}-1`,
+          sourceAnchor: 'left',
+          targetAnchor: 'right',
+          style: arrowLineStyles,
+        },
+      ]
+    case 'OP_DUP':
+      return [
+        {
+          targetId: `item${currentIndex}-0`,
+          sourceAnchor: 'left',
+          targetAnchor: 'right',
+          style: arrowLineStyles,
+        },
+      ]
+    default:
+      return []
+  }
+}
+
+const getRelationsTargetForOperations = (operation: string): Number[] => {
+  switch (operation) {
+    case 'OP_EQUAL':
+    case 'OP_ADD':
+    case 'OP_SUB':
+    case 'OP_MUL':
+    case 'OP_DIV':
+      return [0]
+    case 'OP_DUP':
+      return [0, 1]
+    default:
+      return []
+  }
+}
 
 const OpRunner = ({
   success,
@@ -29,8 +94,141 @@ const OpRunner = ({
   const [height, setHeight] = useState<number>(0)
   const [stackHistory, setStackHistory] = useState<MainState | []>([])
   const [startedTyping, setStartedTyping] = useState(false)
+  const { ref: arrowContainerRef } = useArrows()
+  const scrollPosition = useHorizontalScroll(scrollRef)
 
-  React.useEffect(() => {
+  const [executor, setExecutor] = useState<LanguageExecutor | null>(null)
+
+  const initializeExecutor = () => {
+    const initialStackArray = initialStack
+      .split(' ')
+      .filter((item) => item.trim())
+    const tokens = LanguageExecutor.parsableInputToTokens(
+      LanguageExecutor.rawInputToParsableInput(script)
+    )
+    const newExecutor = new LanguageExecutor(tokens, initialStackArray, height)
+    setExecutor(newExecutor)
+
+    // Create an initial state to represent the initial stack
+    const initialState = {
+      stack: initialStackArray,
+      operation: {
+        tokenType: null,
+        resolves: null,
+        value: 'INITIAL_STACK',
+        type: '',
+      },
+      step: -1, // Use -1 to indicate this is the initial state
+      negate: 0,
+      error: null,
+    }
+
+    setStackHistory([initialState])
+  }
+
+  const handleStep = async () => {
+    while (executor.tokens.length - 1 >= executor.currentIndex) {
+      if (executor && executor.tokens.length - 1 >= executor.currentIndex) {
+        const state = executor.executeStep()
+        if (state) {
+          setStackHistory((prev) => [...prev, state])
+          checkSuccessState(executor.tokens, state, state.stack)
+        }
+        if (state.negate === 0) {
+          await sleep(600)
+        }
+      } else if (
+        !executor &&
+        executor.tokens.length - 1 > executor.currentIndex
+      ) {
+        initializeExecutor()
+      }
+    }
+
+    /*if (executor && executor.tokens.length - 1 >= executor.currentIndex) {
+      const state = executor.executeStep()
+      if (state) {
+        setStackHistory((prev) => [...prev, state])
+        checkSuccessState(executor.tokens, state, state.stack)
+      }
+    } else if (!executor && executor.tokens.length - 1 > executor.currentIndex) {
+      initializeExecutor()
+    }*/
+  }
+
+  const handleRun = () => {
+    if (executor) {
+      executor.execute()
+      // Preserve the initial state and add the execution states
+      setStackHistory((prev) => [prev[0], ...executor.state])
+      checkSuccessState(executor.tokens, executor.state, executor.stack)
+    } else {
+      initializeExecutor()
+    }
+  }
+
+  const handleReset = () => {
+    setExecutor(null)
+    initializeExecutor()
+
+    // Preserve the initial stack state
+    const initialStackArray = initialStack
+      .split(' ')
+      .filter((item) => item.trim())
+    const initialState = {
+      stack: initialStackArray,
+      operation: {
+        tokenType: null,
+        resolves: null,
+        value: 'INITIAL_STACK',
+        type: '',
+      },
+      step: -1,
+      negate: 0,
+      error: null,
+    }
+
+    setStackHistory(initialStackArray.length > 0 ? [initialState] : [])
+
+    if (success !== true) {
+      setSuccess(0)
+    }
+  }
+
+  useEffect(() => {
+    // if user scrolls horizontally, refresh the arrows position
+    if (arrowContainerRef?.current) {
+      arrowContainerRef.current.refreshScreen()
+    }
+  }, [arrowContainerRef, scrollPosition])
+
+  useEffect(() => {
+    if (startedTyping) {
+      const timeoutId = setTimeout(() => {
+        initializeExecutor()
+      }, 1000)
+
+      return () => clearTimeout(timeoutId)
+    }
+  }, [script, initialStack, height])
+
+  const [relations, setRelations] = useState<RelationType[]>([])
+
+  useEffect(() => {
+    if (stackHistory.length > 1) {
+      const newRelations = stackHistory
+        .slice(1)
+        .flatMap((stack, index) =>
+          getRelationsSourceForOperation(stack?.operation?.value ?? '', index)
+        )
+      setRelations(newRelations)
+    }
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollRef.current.scrollWidth
+    }
+  }, [stackHistory])
+
+  /*React.useEffect(() => {
     if (startedTyping) {
       const timeoutId = setTimeout(() => {
         handleRun()
@@ -68,7 +266,7 @@ const OpRunner = ({
     if (success !== true) {
       setSuccess(0)
     }
-  }
+  }*/
 
   const handleScriptChange = (event) => {
     setScript(event.target.value.toUpperCase())
@@ -92,6 +290,7 @@ const OpRunner = ({
 
   const checkSuccessState = (
     tokens: T,
+    state: MainState,
     stack: StackType,
     error: RunnerError
   ) => {
@@ -103,7 +302,9 @@ const OpRunner = ({
     const doesStackValidate = () => {
       if (
         stack?.length === 1 &&
-        (stack[0] === 1 || stack[0] === true) &&
+        state[state.length - 1] &&
+        (state[state.length - 1].stack[0] == 1 ||
+          state[state.length - 1].stack[0] === true) &&
         !error?.message
       ) {
         return true
@@ -185,18 +386,24 @@ const OpRunner = ({
             />
           </div>
         </div>
-        <div className="flex grow flex-col  px-5 ">
+        <div className="flex grow flex-col px-5 ">
           <div className="flex w-full flex-row justify-between py-3">
             <p className="font-mono text-lg font-bold">Execution stack</p>
 
             <div className="flex flex-row gap-[10px]">
-              <button className={btnClassName} onClick={handleRun}>
+              <button
+                type="button"
+                className={btnClassName}
+                onClick={handleRun}
+                disabled={stackHistory.length === 0}
+              >
                 Run
               </button>
               <button
                 type="button"
                 className={btnClassName}
-                onClick={handleRun}
+                onClick={handleStep}
+                disabled={stackHistory.length === 0}
               >
                 Step
               </button>
@@ -204,6 +411,7 @@ const OpRunner = ({
                 type="button"
                 className={btnClassName}
                 onClick={handleReset}
+                disabled={stackHistory.length === 0}
               >
                 Reset
               </button>
@@ -234,7 +442,7 @@ const OpRunner = ({
               </div>
             )}
 
-            {stackHistory.map((stack, index) => {
+            {stackHistory.map((stack, opCodeIndex) => {
               if (error) {
                 return null
               }
@@ -244,7 +452,7 @@ const OpRunner = ({
               return (
                 stack.negate === 0 && (
                   <div
-                    key={`Overall-container${index}`}
+                    key={`Overall-container${opCodeIndex}`}
                     className="flex flex-col"
                   >
                     <div
@@ -264,11 +472,11 @@ const OpRunner = ({
 
                     {stack && (
                       <div
-                        key={`Container${index}`}
+                        key={`Container${opCodeIndex}`}
                         className="flex max-h-[405px] min-h-[204px] min-w-[160px] flex-col self-stretch overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
                       >
                         <div
-                          key={index}
+                          key={opCodeIndex}
                           className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
                           style={{ whiteSpace: 'pre-wrap' }}
                         >
@@ -276,42 +484,66 @@ const OpRunner = ({
                             ?.slice()
                             .reverse()
                             .map((item, i) => (
-                              <div
-                                key={`item${i}`}
-                                className={clsx(
-                                  'my-[5px] text-nowrap rounded-[3px] px-3 py-1 text-[13px]',
-                                  {
-                                    'bg-red/35':
-                                      index + 1 === stackHistory.length &&
-                                      (stack.stack.length !== 1 ||
-                                        stack.stack[0] === false ||
-                                        stack.error?.message),
-                                    'bg-green/35':
-                                      index + 1 === stackHistory.length &&
-                                      stack.stack.length === 1 &&
-                                      stack.stack.length === 1 &&
-                                      (stack.stack[0] === true ||
-                                        stack.stack[0] === 1) &&
-                                      !stack.error?.message,
-                                    'bg-white/15':
-                                      index + 1 !== stackHistory.length ||
-                                      (index + 1 === stackHistory.length &&
-                                        stack.stack.length === 1 &&
-                                        stack.stack[0] !== true &&
-                                        stack.stack[0] !== false),
-                                  }
-                                )}
+                              <ArcherElement
+                                id={`item${opCodeIndex}-${i}`}
+                                key={`item${opCodeIndex}-${i}`}
+                                relations={
+                                  (getRelationsTargetForOperations(
+                                    stack.operation.value
+                                  )?.includes(i) &&
+                                    relations.filter((r) =>
+                                      r.targetId.includes(
+                                        `item${opCodeIndex - 1}-`
+                                      )
+                                    )) ||
+                                  []
+                                }
                               >
-                                {!isNaN(parseFloat(item)) && isFinite(item) ? (
-                                  item
-                                ) : (
-                                  <span
-                                    dangerouslySetInnerHTML={{
-                                      __html: colorizeText(item.toString()),
-                                    }}
-                                  />
-                                )}
-                              </div>
+                                <div
+                                  key={`item${i}`}
+                                  id={`stackItem${i}`}
+                                  className={clsx(
+                                    'my-[5px] text-nowrap rounded-[3px] px-3 py-1 text-[13px]',
+                                    {
+                                      'bg-red/35':
+                                        opCodeIndex ===
+                                          executor.tokens.length &&
+                                        (stack.stack.length !== 1 ||
+                                          stack.stack[0] === false ||
+                                          stack.error?.message),
+                                      'bg-green/35':
+                                        opCodeIndex ===
+                                          executor.tokens.length &&
+                                        stack.stack.length === 1 &&
+                                        stack.stack.length === 1 &&
+                                        (stack.stack[0] === true ||
+                                          stack.stack[0] == 1) &&
+                                        !stack.error?.message,
+                                      'bg-white/15':
+                                        opCodeIndex !==
+                                          executor.tokens.length ||
+                                        (opCodeIndex ===
+                                          executor.tokens.length &&
+                                          stack.stack.length === 1 &&
+                                          (stack.stack[0] !== true ||
+                                            stack.stack[0] != 1) &&
+                                          stack.stack[0] !== false &&
+                                          stack.stack[0] != 1),
+                                    }
+                                  )}
+                                >
+                                  {!isNaN(parseFloat(item)) &&
+                                  isFinite(item) ? (
+                                    item
+                                  ) : (
+                                    <span
+                                      dangerouslySetInnerHTML={{
+                                        __html: colorizeText(item.toString()),
+                                      }}
+                                    />
+                                  )}
+                                </div>
+                              </ArcherElement>
                             ))}
                         </div>
                       </div>
