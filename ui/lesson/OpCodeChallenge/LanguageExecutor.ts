@@ -129,7 +129,7 @@ class LanguageExecutor {
   private executeToken(element: T[number]): State {
     const currentStack = [...this.stack]
     const currentNegate = this.negate
-    const unRecognizedDataTypeRegex = /^(?!\d+$)(?!Hash256)(?!SIG)(?!PUBKEY).*/
+    const unRecognizedDataTypeRegex = /^(?!\d+$)(?!HASH256)(?!SIG)(?!PUBKEY).*/
     let opResolves: any
     let error: RunnerError = { type: '', message: null }
 

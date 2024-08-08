@@ -17,14 +17,13 @@ export const ArrowsProvider: React.FC<ArrowsContextProviderProps> = ({
   const ref = useRef<ArcherContainerRef>(null)
 
   return (
-    <ArrowsContext.Provider value={{ ref }}>
-      <ArcherContainer
-        ref={ref}
-        //noCurves
-      >
-        {children}
-      </ArcherContainer>
-    </ArrowsContext.Provider>
+    <div className="w-full">
+      <ArrowsContext.Provider value={{ ref }}>
+        <ArcherContainer ref={ref} noCurves>
+          {children}
+        </ArcherContainer>
+      </ArrowsContext.Provider>
+    </div>
   )
 }
 

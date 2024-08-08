@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef, useCallback } from 'react'
 import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
 import _ from 'lodash'
-import { StatusBar } from 'ui/common'
+import { StatusBar, useLessonContext } from 'ui'
+import { EditorRange, LessonView } from 'types'
 import {
   MainState,
   OpRunnerTypes,
@@ -13,7 +14,7 @@ import {
 import { ArcherElement } from 'react-archer'
 import { RelationType } from 'react-archer/lib/types'
 import { useArrows } from 'state/ArrowsContext'
-import useHorizontalScroll from 'hooks/useHorizontalScroll'
+import { useHorizontalScroll, useMediaQuery } from 'hooks'
 import { sleep } from 'utils'
 
 const arrowLineStyles = {
@@ -33,6 +34,7 @@ const getRelationsSourceForOperation = (
     case 'OP_SUB':
     case 'OP_MUL':
     case 'OP_DIV':
+    case 'OP_CHECKSIG':
       return [
         {
           targetId: `item${currentIndex}-0`,
@@ -48,9 +50,56 @@ const getRelationsSourceForOperation = (
         },
       ]
     case 'OP_DUP':
+    case 'OP_HASH256':
       return [
         {
           targetId: `item${currentIndex}-0`,
+          sourceAnchor: 'left',
+          targetAnchor: 'right',
+          style: arrowLineStyles,
+        },
+      ]
+    // Only works with a 2 of 2
+    case 'OP_CHECKMULTISIG':
+      return [
+        {
+          targetId: `item${currentIndex}-0`,
+          sourceAnchor: 'left',
+          targetAnchor: 'right',
+          style: arrowLineStyles,
+        },
+        {
+          targetId: `item${currentIndex}-1`,
+          sourceAnchor: 'left',
+          targetAnchor: 'right',
+          style: arrowLineStyles,
+        },
+        {
+          targetId: `item${currentIndex}-2`,
+          sourceAnchor: 'left',
+          targetAnchor: 'right',
+          style: arrowLineStyles,
+        },
+        {
+          targetId: `item${currentIndex}-3`,
+          sourceAnchor: 'left',
+          targetAnchor: 'right',
+          style: arrowLineStyles,
+        },
+        {
+          targetId: `item${currentIndex}-4`,
+          sourceAnchor: 'left',
+          targetAnchor: 'right',
+          style: arrowLineStyles,
+        },
+        {
+          targetId: `item${currentIndex}-5`,
+          sourceAnchor: 'left',
+          targetAnchor: 'right',
+          style: arrowLineStyles,
+        },
+        {
+          targetId: `item${currentIndex}-6`,
           sourceAnchor: 'left',
           targetAnchor: 'right',
           style: arrowLineStyles,
@@ -68,6 +117,9 @@ const getRelationsTargetForOperations = (operation: string): Number[] => {
     case 'OP_SUB':
     case 'OP_MUL':
     case 'OP_DIV':
+    case 'OP_HASH256':
+    case 'OP_CHECKSIG':
+    case 'OP_CHECKMULTISIG':
       return [0]
     case 'OP_DUP':
       return [0, 1]
@@ -90,6 +142,8 @@ const OpRunner = ({
   const [script, setScript] = useState(
     prePopulate ? answerScript.join(' ') : ''
   )
+  const { activeView } = useLessonContext()
+  const isActive = activeView === LessonView.Code
   const [initialStack, setInitialStack] = useState('')
   const [height, setHeight] = useState<number>(0)
   const [stackHistory, setStackHistory] = useState<MainState | []>([])
@@ -130,21 +184,20 @@ const OpRunner = ({
   }
 
   const handleStep = async () => {
-    while (executor.tokens.length - 1 >= executor.currentIndex) {
-      if (executor && executor.tokens.length - 1 >= executor.currentIndex) {
-        const state = executor.executeStep()
-        if (state) {
-          setStackHistory((prev) => [...prev, state])
-          checkSuccessState(executor.tokens, state, state.stack)
+    if (executor !== null) {
+      while (executor.tokens.length - 1 >= executor.currentIndex) {
+        if (executor && executor.tokens.length - 1 >= executor.currentIndex) {
+          const state = executor.executeStep()
+          if (state) {
+            setStackHistory((prev) => [...prev, state])
+            checkSuccessState(executor.tokens, executor.state, state.stack)
+            if (state.negate === 0) {
+              await sleep(600)
+            }
+          }
+        } else if (!executor) {
+          initializeExecutor()
         }
-        if (state.negate === 0) {
-          await sleep(600)
-        }
-      } else if (
-        !executor &&
-        executor.tokens.length - 1 > executor.currentIndex
-      ) {
-        initializeExecutor()
       }
     }
 
@@ -213,7 +266,6 @@ const OpRunner = ({
       const timeoutId = setTimeout(() => {
         initializeExecutor()
         handleRun()
-        setStartedTyping(false)
       }, 1000)
 
       return () => clearTimeout(timeoutId)
@@ -296,16 +348,12 @@ const OpRunner = ({
     setStartedTyping(true)
   }
 
-  const checkSuccessState = (
-    tokens: T,
-    state: MainState,
-    stack: StackType,
-    error: RunnerError
-  ) => {
+  const checkSuccessState = (tokens: T, state: MainState, stack: StackType) => {
     const filterToStringArray = tokens.map((token) => token.value)
     const containsEveryScript = answerScript.every((token) =>
       filterToStringArray.includes(token)
     )
+    const errorMessage = (error) => !!error.error?.message
 
     const doesStackValidate = () => {
       if (
@@ -313,7 +361,7 @@ const OpRunner = ({
         state[state.length - 1] &&
         (state[state.length - 1].stack[0] == 1 ||
           state[state.length - 1].stack[0] === true) &&
-        !error?.message
+        !state.some(errorMessage)
       ) {
         return true
       }
@@ -343,7 +391,12 @@ const OpRunner = ({
   let error = null
 
   return (
-    <div className="flex grow flex-col text-white md:w-[50vw]">
+    <div
+      className={clsx('grow flex-col text-white md:w-[50vw]', {
+        'hidden md:flex': !isActive,
+        flex: isActive,
+      })}
+    >
       <div className="flex h-[calc(100vh-70px-67px)] grow flex-col text-white">
         <div className="flex h-[25vh] flex-col gap-1 border-b border-b-white px-5 py-4">
           <p className="font-space-mono text-lg font-bold capitalize ">
@@ -461,6 +514,7 @@ const OpRunner = ({
                 stack.negate === 0 && (
                   <div
                     key={`Overall-container${opCodeIndex}`}
+                    id={`Overall-container${opCodeIndex}`}
                     className="flex flex-col"
                   >
                     <div
@@ -508,35 +562,32 @@ const OpRunner = ({
                                 }
                               >
                                 <div
-                                  key={`item${i}`}
+                                  key={`stackItem${i}`}
                                   id={`stackItem${i}`}
                                   className={clsx(
                                     'my-[5px] text-nowrap rounded-[3px] px-3 py-1 text-[13px]',
                                     {
                                       'bg-red/35':
-                                        opCodeIndex ===
-                                          executor.tokens.length &&
+                                        opCodeIndex + 1 ===
+                                          stackHistory.length &&
                                         (stack.stack.length !== 1 ||
                                           stack.stack[0] === false ||
                                           stack.error?.message),
                                       'bg-green/35':
-                                        opCodeIndex ===
-                                          executor.tokens.length &&
+                                        opCodeIndex + 1 ===
+                                          stackHistory.length &&
                                         stack.stack.length === 1 &&
                                         stack.stack.length === 1 &&
                                         (stack.stack[0] === true ||
                                           stack.stack[0] == 1) &&
                                         !stack.error?.message,
                                       'bg-white/15':
-                                        opCodeIndex !==
-                                          executor.tokens.length ||
-                                        (opCodeIndex ===
-                                          executor.tokens.length &&
+                                        opCodeIndex + 1 !==
+                                          stackHistory.length ||
+                                        opCodeIndex === 0 ||
+                                        (opCodeIndex === stackHistory.length &&
                                           stack.stack.length === 1 &&
-                                          (stack.stack[0] !== true ||
-                                            stack.stack[0] != 1) &&
-                                          stack.stack[0] !== false &&
-                                          stack.stack[0] != 1),
+                                          Number(stack.stack[0]) > 1),
                                     }
                                   )}
                                 >
