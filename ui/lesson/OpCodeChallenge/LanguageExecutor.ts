@@ -275,7 +275,7 @@ class LanguageExecutor {
       this.state.push(state)
     }
 
-    if (this.currentIndex >= this.tokens.length - 1) {
+    if (this.state.length > 0 && this.currentIndex >= this.tokens.length - 1) {
       if (this.conditionalState.length !== 0) {
         this.state[this.state.length - 1].error = {
           type: 'unknown',
