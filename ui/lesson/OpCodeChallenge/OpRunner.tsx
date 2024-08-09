@@ -191,7 +191,7 @@ const OpRunner = ({
           const state = executor.executeStep()
           if (state) {
             setStackHistory((prev) => [...prev, state])
-            checkSuccessState(executor.tokens, state?.state, state?.stack)
+            checkSuccessState(executor.tokens, state, state?.stack)
             if (state.negate === 0) {
               await sleep(600)
             }
