@@ -6,6 +6,7 @@ import { StatusBar, useLessonContext } from 'ui'
 import { EditorRange, LessonView } from 'types'
 import {
   MainState,
+  State,
   OpRunnerTypes,
   StackType,
   T,
@@ -334,28 +335,44 @@ const OpRunner = ({
     setStartedTyping(true)
   }
 
-  const checkSuccessState = (tokens: T, state: MainState, stack: StackType) => {
+  const checkSuccessState = (
+    tokens: T,
+    state: MainState | State,
+    stack: StackType
+  ) => {
     const filterToStringArray = tokens.map((token) => token.value)
     const containsEveryScript = answerScript.every((token) =>
       filterToStringArray.includes(token)
     )
     const errorMessage = (error) => !!error.error?.message
 
-    const doesStackValidate = () => {
-      if (
-        stack?.length === 1 &&
-        !!state &&
-        state[state.length - 1] &&
-        (state[state.length - 1]?.stack[0] == 1 ||
-          state[state.length - 1]?.stack[0] === true) &&
-        !state?.some(errorMessage)
-      ) {
-        return true
+    const doesStackValidate = (
+      state: MainState | State,
+      stack: StackType
+    ): boolean => {
+      if (Array.isArray(state)) {
+        if (
+          stack?.length === 1 &&
+          !!state[0] &&
+          (state[state.length - 1]?.stack[0] === 1 ||
+            state[state.length - 1]?.stack[0] === true) &&
+          !state.some((s) => s.stack.some(errorMessage))
+        ) {
+          return true
+        }
+      } else {
+        if (
+          stack?.length === 1 &&
+          (state.stack[0] === 1 || state.stack[0] === true) &&
+          !state.stack.some(errorMessage)
+        ) {
+          return true
+        }
       }
       return false
     }
 
-    if (containsEveryScript && doesStackValidate()) {
+    if (containsEveryScript && doesStackValidate(state, stack)) {
       setSuccess(true)
     } else if (success !== true) {
       setSuccess(2)
@@ -379,7 +396,7 @@ const OpRunner = ({
   const isFinalToken = () => {
     let length = executor?.tokens.length ?? undefined
     executor?.tokens.forEach((PUSH) => {
-      if (PUSH.value === 'OP_PUSH') {
+      if (PUSH.value === 'OP_PUSH' && length !== undefined) {
         length--
       }
     })
