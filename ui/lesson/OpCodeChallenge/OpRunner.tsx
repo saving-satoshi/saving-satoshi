@@ -184,13 +184,14 @@ const OpRunner = ({
   }
 
   const handleStep = async () => {
+    initializeExecutor()
     if (executor !== null) {
       while (executor.tokens.length - 1 >= executor.currentIndex) {
         if (executor && executor.tokens.length - 1 >= executor.currentIndex) {
           const state = executor.executeStep()
           if (state) {
             setStackHistory((prev) => [...prev, state])
-            checkSuccessState(executor.tokens, executor.state, state.stack)
+            checkSuccessState(executor.tokens, state.state, state.stack)
             if (state.negate === 0) {
               await sleep(600)
             }
@@ -200,26 +201,15 @@ const OpRunner = ({
         }
       }
     }
-
-    /*if (executor && executor.tokens.length - 1 >= executor.currentIndex) {
-      const state = executor.executeStep()
-      if (state) {
-        setStackHistory((prev) => [...prev, state])
-        checkSuccessState(executor.tokens, state, state.stack)
-      }
-    } else if (!executor && executor.tokens.length - 1 > executor.currentIndex) {
-      initializeExecutor()
-    }*/
   }
 
   const handleRun = () => {
+    initializeExecutor()
     if (executor) {
       executor.execute()
       // Preserve the initial state and add the execution states
       setStackHistory((prev) => [prev[0], ...executor.state])
       checkSuccessState(executor.tokens, executor.state, executor.stack)
-    } else {
-      initializeExecutor()
     }
   }
 
@@ -247,7 +237,7 @@ const OpRunner = ({
       },
     }
 
-    setStackHistory(initialStackArray.length > 0 ? [initialState] : [])
+    setStackHistory([])
 
     if (success !== true) {
       setSuccess(0)
@@ -264,7 +254,6 @@ const OpRunner = ({
   useEffect(() => {
     if (startedTyping) {
       const timeoutId = setTimeout(() => {
-        initializeExecutor()
         handleRun()
       }, 1000)
 
@@ -330,18 +319,15 @@ const OpRunner = ({
 
   const handleScriptChange = (event) => {
     setScript(event.target.value.toUpperCase())
-    handleReset()
     setStartedTyping(true)
   }
 
   const handleInitialStackChange = (event) => {
-    handleReset()
     setInitialStack(event.target.value.toUpperCase())
     setStartedTyping(true)
   }
 
   const handleHeightChange = (event) => {
-    handleReset()
     setHeight(
       isNaN(parseInt(event.target.value)) ? 0 : parseInt(event.target.value)
     )
@@ -358,15 +344,17 @@ const OpRunner = ({
     const doesStackValidate = () => {
       if (
         stack?.length === 1 &&
+        !!state &&
         state[state.length - 1] &&
-        (state[state.length - 1].stack[0] == 1 ||
-          state[state.length - 1].stack[0] === true) &&
-        !state.some(errorMessage)
+        (state[state.length - 1]?.stack[0] == 1 ||
+          state[state.length - 1]?.stack[0] === true) &&
+        !state?.some(errorMessage)
       ) {
         return true
       }
       return false
     }
+
     if (containsEveryScript && doesStackValidate()) {
       setSuccess(true)
     } else if (success !== true) {
@@ -386,6 +374,17 @@ const OpRunner = ({
     return stackItem.replace(regex, (match) => {
       return `<span class="text-green">${match}</span>`
     })
+  }
+
+  const isFinalToken = () => {
+    let length = executor?.tokens.length ?? undefined
+    executor?.tokens.forEach((PUSH) => {
+      if (PUSH.value === 'OP_PUSH') {
+        length--
+      }
+    })
+
+    return length
   }
 
   let error = null
@@ -456,7 +455,7 @@ const OpRunner = ({
                 type="button"
                 className={btnClassName}
                 onClick={handleRun}
-                disabled={stackHistory.length === 0}
+                disabled={stackHistory.length > 0}
               >
                 Run
               </button>
@@ -464,7 +463,7 @@ const OpRunner = ({
                 type="button"
                 className={btnClassName}
                 onClick={handleStep}
-                disabled={stackHistory.length === 0}
+                disabled={stackHistory.length > 0}
               >
                 Step
               </button>
@@ -493,7 +492,7 @@ const OpRunner = ({
                     className="my-auto resize-none break-all border-none bg-transparent font-space-mono text-white/50 focus:outline-none"
                     style={{ whiteSpace: 'pre-wrap' }}
                   >
-                    <div className="break-word text-center">
+                    <div className="text-center text-[13px]">
                       {
                         'The resulting \n stack will be \n visualized \n here...'
                       }
@@ -568,22 +567,22 @@ const OpRunner = ({
                                     'my-[5px] text-nowrap rounded-[3px] px-3 py-1 text-[13px]',
                                     {
                                       'bg-red/35':
-                                        opCodeIndex + 1 ===
-                                          stackHistory.length &&
-                                        (stack.stack.length !== 1 ||
-                                          stack.stack[0] === false ||
-                                          stack.error?.message),
+                                        stack.error.message !== null ||
+                                        (opCodeIndex === isFinalToken() &&
+                                          (stack.stack.length !== 1 ||
+                                            stack.stack[0] === false ||
+                                            stack.error?.message)),
                                       'bg-green/35':
-                                        opCodeIndex + 1 ===
-                                          stackHistory.length &&
+                                        stack.error.message === null &&
+                                        opCodeIndex === isFinalToken() &&
                                         stack.stack.length === 1 &&
                                         stack.stack.length === 1 &&
                                         (stack.stack[0] === true ||
                                           stack.stack[0] == 1) &&
                                         !stack.error?.message,
                                       'bg-white/15':
-                                        opCodeIndex + 1 !==
-                                          stackHistory.length ||
+                                        (stack.error.message === null &&
+                                          opCodeIndex !== isFinalToken()) ||
                                         opCodeIndex === 0 ||
                                         (opCodeIndex === stackHistory.length &&
                                           stack.stack.length === 1 &&
