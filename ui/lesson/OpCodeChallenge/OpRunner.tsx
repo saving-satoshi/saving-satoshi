@@ -1,20 +1,14 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
 import _ from 'lodash'
 import { StatusBar, useLessonContext } from 'ui'
-import { EditorRange, LessonView } from 'types'
-import {
-  MainState,
-  OpRunnerTypes,
-  StackType,
-  T,
-  RunnerError,
-} from './runnerTypes'
+import { LessonView } from 'types'
+import { MainState, OpRunnerTypes, StackType, T } from './runnerTypes'
 import { ArcherElement } from 'react-archer'
 import { RelationType } from 'react-archer/lib/types'
 import { useArrows } from 'state/ArrowsContext'
-import { useHorizontalScroll, useMediaQuery } from 'hooks'
+import { useHorizontalScroll } from 'hooks'
 import { sleep } from 'utils'
 
 const arrowLineStyles = {
@@ -161,7 +155,6 @@ const OpRunner = ({
       LanguageExecutor.rawInputToParsableInput(script)
     )
     const newExecutor = new LanguageExecutor(tokens, initialStackArray, height)
-    setExecutor(newExecutor)
 
     // Create an initial state to represent the initial stack
     const initialState = {
@@ -180,7 +173,9 @@ const OpRunner = ({
       },
     }
 
+    setExecutor(newExecutor)
     setStackHistory([initialState])
+    setStartedTyping(true)
   }
 
   const handleStep = async () => {
@@ -203,14 +198,20 @@ const OpRunner = ({
     }
   }
 
+  const executeStepWithDelay = async () => {
+    if (executor && executor.tokens.length > executor.currentIndex) {
+      const state = executor.executeStep()
+      if (state) {
+        setStackHistory((prev) => [...prev, state])
+        checkSuccessState(executor.tokens, state, state?.stack)
+        await sleep(500)
+        executeStepWithDelay()
+      }
+    }
+  }
+
   const handleRun = () => {
     initializeExecutor()
-    if (executor) {
-      executor.execute()
-      // Preserve the initial state and add the execution states
-      setStackHistory((prev) => [prev[0], ...executor.state])
-      checkSuccessState(executor.tokens, executor.state, executor.stack)
-    }
   }
 
   const handleReset = () => {
@@ -261,6 +262,20 @@ const OpRunner = ({
     }
   }, [script, initialStack, height])
 
+  // useEffect(() => {
+  //   if (executor && startedTyping) {
+  //     executor.execute()
+  //     setStackHistory((prev) => [prev[0], ...executor.state])
+  //     checkSuccessState(executor.tokens, executor.state, executor.stack)
+  //   }
+  // }, [executor, startedTyping])
+
+  useEffect(() => {
+    if (executor && startedTyping) {
+      executeStepWithDelay()
+    }
+  }, [executor, startedTyping])
+
   const [relations, setRelations] = useState<RelationType[]>([])
 
   useEffect(() => {
@@ -276,46 +291,6 @@ const OpRunner = ({
       scrollRef.current.scrollLeft = scrollRef.current.scrollWidth
     }
   }, [stackHistory])
-
-  /*React.useEffect(() => {
-    if (startedTyping) {
-      const timeoutId = setTimeout(() => {
-        handleRun()
-      }, 1000)
-
-      return () => clearTimeout(timeoutId)
-    }
-  }, [script, initialStack, height])
-
-  const handleRun = () => {
-    const initialStackArray = initialStack.split(' ')
-
-    const runnerState = LanguageExecutor.RunCode(
-      script,
-      initialStackArray,
-      height
-    )
-    setStackHistory(runnerState?.state || [])
-    checkSuccessState(
-      runnerState?.tokens ?? [],
-      runnerState?.stack ?? [],
-      runnerState?.state.find((item) => item.error && item.error.message)
-        ?.error ?? { type: 'error', message: null }
-    )
-  }
-
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft = scrollRef.current.scrollWidth
-    }
-  }, [stackHistory])
-
-  const handleReset = () => {
-    setStackHistory([])
-    if (success !== true) {
-      setSuccess(0)
-    }
-  }*/
 
   const handleScriptChange = (event) => {
     setScript(event.target.value.toUpperCase())
