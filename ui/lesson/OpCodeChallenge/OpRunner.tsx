@@ -4,7 +4,7 @@ import LanguageExecutor from './LanguageExecutor'
 import _ from 'lodash'
 import { StatusBar, useLessonContext } from 'ui'
 import { LessonView } from 'types'
-import { MainState, OpRunnerTypes, StackType, T } from './runnerTypes'
+import { MainState, OpRunnerTypes, StackType, State, T } from './runnerTypes'
 import { ArcherElement } from 'react-archer'
 import { RelationType } from 'react-archer/lib/types'
 import { useArrows } from 'state/ArrowsContext'
@@ -214,8 +214,8 @@ const OpRunner = ({
   }
 
   const handleReset = () => {
-    setExecutor(null)
-    initializeExecutor()
+    // setExecutor(null)
+    // initializeExecutor()
 
     // Preserve the initial stack state
     const initialStackArray = initialStack
@@ -293,25 +293,18 @@ const OpRunner = ({
     setStartedTyping(true)
   }
 
-  const checkSuccessState = (tokens: T, state, stack: StackType) => {
+  const checkSuccessState = (tokens: T, state: State, stack: StackType) => {
     const filterToStringArray = tokens.map((token) => token.value)
     const containsEveryScript = answerScript.every((token) =>
       filterToStringArray.includes(token)
     )
-    const errorMessage = (error) => !!error.error?.message
 
     const doesStackValidate = () => {
-      if (
-        stack?.length === 1 &&
-        !!state &&
-        state[state.length - 1] &&
-        (state[state.length - 1]?.stack[0] == 1 ||
-          state[state.length - 1]?.stack[0] === true) &&
-        !state?.some(errorMessage)
-      ) {
-        return true
-      }
-      return false
+      return (
+        stack.length === 1 &&
+        (stack[0] === 1 || stack[0] === true) &&
+        !state?.error?.message
+      )
     }
 
     if (containsEveryScript && doesStackValidate()) {
