@@ -128,7 +128,6 @@ const OpRunner = ({
   answerScript,
   readOnly,
   prePopulate,
-  showRunButtons,
 }: Omit<OpRunnerTypes, 'children'>) => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const btnClassName =
@@ -222,21 +221,6 @@ const OpRunner = ({
     const initialStackArray = initialStack
       .split(' ')
       .filter((item) => item.trim())
-    const initialState = {
-      stack: initialStackArray,
-      operation: {
-        tokenType: null,
-        resolves: null,
-        value: 'INITIAL_STACK',
-        type: '',
-      },
-      step: -1,
-      negate: 0,
-      error: {
-        type: '',
-        message: null,
-      },
-    }
 
     setStackHistory([])
 
