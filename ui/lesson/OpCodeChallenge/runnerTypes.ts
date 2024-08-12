@@ -12,6 +12,7 @@ export interface OpRunnerTypes {
 }
 
 export enum TokenTypes {
+  INITIAL_STACK = 'initial-stack',
   CONSTANT = 'constant',
   ARITHMETIC = 'arithmetic',
   DATA_PUSH = 'data-push',

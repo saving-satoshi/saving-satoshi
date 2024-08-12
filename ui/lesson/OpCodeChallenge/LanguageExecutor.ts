@@ -92,24 +92,7 @@ class LanguageExecutor {
     this.height = height ?? 0
     this.conditionalState = []
     this.negate = 0
-    if (initialStack.length !== 0) {
-      this.state.push({
-        stack: initialStack,
-        operation: {
-          tokenType: null,
-          resolves: null,
-          value: 'INITIAL_STACK',
-          type: '',
-        },
-        step: 0,
-        negate: 0,
-        error: {
-          type: '',
-          message: null,
-        },
-      })
-      this.stack.push(...initialStack)
-    }
+    this.stack.push(...initialStack)
   }
 
   //THIS COULD CAUSE AN ERROR BY DEFAULTING TO 0
@@ -134,7 +117,6 @@ class LanguageExecutor {
     let error: RunnerError = { type: '', message: null }
 
     if (
-      this.state.length === 0 &&
       currentStack.some(
         (stackItem) =>
           typeof stackItem === 'string' &&
@@ -148,6 +130,16 @@ class LanguageExecutor {
     }
 
     switch (element.type) {
+      case TokenTypes.INITIAL_STACK:
+        opResolves = opFunctions[element.value](this.stack)
+        if (opResolves.value !== null) {
+          this.stack.push(opResolves.value)
+        }
+        error = opResolves?.error
+          ? { type: element.value, message: opResolves.error }
+          : error
+        break
+
       case TokenTypes.CONSTANT:
         if (this.negate === 0) {
           this.stack.push(element.resolves)
@@ -255,7 +247,7 @@ class LanguageExecutor {
     }
 
     return {
-      stack: [...this.stack],
+      stack: error ? [...this.stack] : null,
       operation: {
         tokenType: element.type,
         resolves: element.resolves,

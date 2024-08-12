@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react'
+'use-client'
+
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
 import _ from 'lodash'
@@ -139,8 +141,8 @@ const OpRunner = ({
   const isActive = activeView === LessonView.Code
   const [initialStack, setInitialStack] = useState('')
   const [height, setHeight] = useState<number>(0)
-  const [running, setRunning] = useState(false)
-  const [stackHistory, setStackHistory] = useState<MainState | []>([])
+  const [lastSuccessState, setLastSuccessState] = useState(null)
+  const [stateHistory, setStateHistory] = useState<MainState | []>([])
   const [startedTyping, setStartedTyping] = useState(false)
   const { ref: arrowContainerRef } = useArrows()
   const scrollPosition = useHorizontalScroll(scrollRef)
@@ -152,29 +154,13 @@ const OpRunner = ({
       .split(' ')
       .filter((item) => item.trim())
     const tokens = LanguageExecutor.parsableInputToTokens(
-      LanguageExecutor.rawInputToParsableInput(script)
+      LanguageExecutor.rawInputToParsableInput(`INITIAL_STACK ${script}`)
     )
     const newExecutor = new LanguageExecutor(tokens, initialStackArray, height)
 
     // Create an initial state to represent the initial stack
-    const initialState = {
-      stack: initialStackArray,
-      operation: {
-        tokenType: null,
-        resolves: null,
-        value: 'INITIAL_STACK',
-        type: '',
-      },
-      step: -1, // Use -1 to indicate this is the initial state
-      negate: 0,
-      error: {
-        type: '',
-        message: null,
-      },
-    }
-
     setExecutor(newExecutor)
-    setStackHistory([initialState])
+    setStateHistory([])
     setStartedTyping(true)
   }
 
@@ -182,9 +168,17 @@ const OpRunner = ({
     if (executor && executor.tokens.length > executor.currentIndex) {
       const state = executor.executeStep()
       if (state) {
-        setStackHistory((prev) => [...prev, state])
-        checkSuccessState(executor.tokens, state, state?.stack)
-        if (state.negate === 0 && !running) {
+        setStateHistory((prev) => {
+          const newStateHistory = [...prev, state]
+          const successState = checkSuccessState(
+            executor.tokens,
+            newStateHistory,
+            state?.stack
+          )
+          setLastSuccessState(successState)
+          return newStateHistory
+        })
+        if (state.negate === 0) {
           await sleep(delay)
         }
         executeStepWithDelay(delay)
@@ -196,7 +190,7 @@ const OpRunner = ({
     initializeExecutor()
   }
 
-  const handleReset = () => {
+  /*const handleReset = () => {
     //setStartedTyping(false)
     //setExecutor(null)
     // initializeExecutor()
@@ -211,7 +205,7 @@ const OpRunner = ({
     if (success !== true) {
       setSuccess(0)
     }
-  }
+  }*/
 
   useEffect(() => {
     // if user scrolls horizontally, refresh the arrows position
@@ -239,8 +233,8 @@ const OpRunner = ({
   const [relations, setRelations] = useState<RelationType[]>([])
 
   useEffect(() => {
-    if (stackHistory.length > 1) {
-      const newRelations = stackHistory
+    if (stateHistory.length > 1) {
+      const newRelations = stateHistory
         .slice(1)
         .flatMap((stack, index) =>
           getRelationsSourceForOperation(stack?.operation?.value ?? '', index)
@@ -250,7 +244,7 @@ const OpRunner = ({
     if (scrollRef.current) {
       scrollRef.current.scrollLeft = scrollRef.current.scrollWidth
     }
-  }, [stackHistory])
+  }, [stateHistory])
 
   const handleScriptChange = (event) => {
     setScript(event.target.value.toUpperCase())
@@ -277,21 +271,36 @@ const OpRunner = ({
 
     const doesStackValidate = () => {
       return (
-        state.step === tokens.length - 1 &&
+        state.length === tokens.length - 1 &&
         stack.length === 1 &&
         (stack[0] === 1 || stack[0] === true) &&
-        !state?.error?.message
+        !state.some((error) => error?.error?.message)
+      )
+    }
+
+    const isStackCorrectSoFar = () => {
+      return (
+        state.length !== tokens.length - 1 &&
+        !state.some((error) => error?.error?.message)
       )
     }
 
     if (containsEveryScript && doesStackValidate()) {
-      setSuccess(true)
+      return true
+    } else if (success !== true && isStackCorrectSoFar()) {
+      return 1
     } else if (success !== true) {
-      setSuccess(2)
+      return 2
     } else {
-      setSuccess(success)
+      return success
     }
   }
+
+  useEffect(() => {
+    if (lastSuccessState !== null) {
+      setSuccess(lastSuccessState)
+    }
+  }, [lastSuccessState])
 
   const handleTryAgain = () => {
     setSuccess(0)
@@ -313,7 +322,8 @@ const OpRunner = ({
       }
     })
 
-    return length
+    // Additional - 1 for the Initial Stack
+    return length - 1
   }
 
   let error = null
@@ -368,7 +378,7 @@ const OpRunner = ({
             <input
               title="Enter any number above 1."
               onChange={handleHeightChange}
-              className="flex-grow border-none bg-transparent text-lg focus:outline-none"
+              className="flex-grow border-none bg-transparent text-lg [appearance:textfield] focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               placeholder="6930001"
               type="number"
               min="1"
@@ -383,7 +393,7 @@ const OpRunner = ({
             ref={scrollRef}
             className="mb-auto flex h-full w-full flex-row gap-2.5 overflow-scroll py-2"
           >
-            {stackHistory.length === 0 && (
+            {stateHistory.length === 0 && (
               <div className="flex w-full max-w-[164px] flex-col">
                 <div className="my-[5px] w-full rounded-[3px] bg-black/20 px-3 py-1 text-center font-space-mono text-white/50">
                   OP_CODES
@@ -404,7 +414,7 @@ const OpRunner = ({
               </div>
             )}
 
-            {stackHistory.map((stack, opCodeIndex) => {
+            {stateHistory.map((stack, opCodeIndex) => {
               if (error) {
                 return null
               }
@@ -486,7 +496,7 @@ const OpRunner = ({
                                         (stack.error.message === null &&
                                           opCodeIndex !== isFinalToken()) ||
                                         opCodeIndex === 0 ||
-                                        (opCodeIndex === stackHistory.length &&
+                                        (opCodeIndex === stateHistory.length &&
                                           stack.stack.length === 1 &&
                                           Number(stack.stack[0]) > 1),
                                     }
@@ -521,6 +531,7 @@ const OpRunner = ({
         className="h-14 min-h-14 grow"
         errorMessage={error || ''}
         success={success}
+        hints
       />
     </div>
   )

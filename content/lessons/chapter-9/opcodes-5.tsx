@@ -24,7 +24,7 @@ export default function OpCodes5({ lang }) {
         answerScript={['OP_ADD', 'OP_3', 'OP_EQUAL']}
         prePopulate
         showRunButtons
-        readOnly
+        //readOnly
         success={success}
         setSuccess={setSuccess}
       >
