@@ -191,23 +191,6 @@ const OpRunner = ({
     initializeExecutor()
   }
 
-  /*const handleReset = () => {
-    //setStartedTyping(false)
-    //setExecutor(null)
-    // initializeExecutor()
-
-    // Preserve the initial stack state
-    const initialStackArray = initialStack
-      .split(' ')
-      .filter((item) => item.trim())
-
-    setStackHistory([])
-
-    if (success !== true) {
-      setSuccess(0)
-    }
-  }*/
-
   useEffect(() => {
     // if user scrolls horizontally, refresh the arrows position
     if (arrowContainerRef?.current) {
@@ -272,7 +255,6 @@ const OpRunner = ({
       }
     })
 
-    // Additional - 1 for the Initial Stack
     return length
   }
 
