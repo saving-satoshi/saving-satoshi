@@ -45,7 +45,11 @@ const getSig = (sigData) => {
 export const opFunctions: { [key: string]: Function } = {
   INITIAL_STACK: (stack: StackType) => {
     if (!stack) return null
-    if (stack.some((regex) => unRecognizedDataTypeRegex.test(regex))) {
+    if (
+      stack?.some(
+        (item) => !!item && unRecognizedDataTypeRegex.test(item.toString())
+      )
+    ) {
       return {
         value: null,
         error: 'INITIAL_STACK: unrecognized data type',

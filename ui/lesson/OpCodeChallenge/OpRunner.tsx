@@ -1,10 +1,9 @@
-'use-client'
-
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
 import _ from 'lodash'
 import { StatusBar, useLessonContext } from 'ui'
+import { SuccessNumbers } from 'ui/common/StatusBar'
 import { LessonView } from 'types'
 import { MainState, OpRunnerTypes, StackType, State, T } from './runnerTypes'
 import { ArcherElement } from 'react-archer'
@@ -141,7 +140,9 @@ const OpRunner = ({
   const isActive = activeView === LessonView.Code
   const [initialStack, setInitialStack] = useState('')
   const [height, setHeight] = useState<number>(0)
-  const [lastSuccessState, setLastSuccessState] = useState(null)
+  const [lastSuccessState, setLastSuccessState] = useState<
+    SuccessNumbers | boolean
+  >(0)
   const [stateHistory, setStateHistory] = useState<MainState | []>([])
   const [startedTyping, setStartedTyping] = useState(false)
   const { ref: arrowContainerRef } = useArrows()
@@ -263,7 +264,7 @@ const OpRunner = ({
     setStartedTyping(true)
   }
 
-  const checkSuccessState = (tokens: T, state: State, stack: StackType) => {
+  const checkSuccessState = (tokens: T, state: State[], stack: StackType) => {
     const filterToStringArray = tokens.map((token) => token.value)
     const containsEveryScript = answerScript.every((token) =>
       filterToStringArray.includes(token)
@@ -323,7 +324,10 @@ const OpRunner = ({
     })
 
     // Additional - 1 for the Initial Stack
-    return length - 1
+    if (length) {
+      length -= 1
+    }
+    return length
   }
 
   let error = null
