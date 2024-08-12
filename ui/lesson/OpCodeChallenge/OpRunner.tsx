@@ -264,6 +264,18 @@ const OpRunner = ({
     setStartedTyping(true)
   }
 
+  const isFinalToken = () => {
+    let length = executor?.tokens.length ?? undefined
+    executor?.tokens.forEach((PUSH) => {
+      if (PUSH.value === 'OP_PUSH' && length !== undefined) {
+        length--
+      }
+    })
+
+    // Additional - 1 for the Initial Stack
+    return length
+  }
+
   const checkSuccessState = (tokens: T, state: State[], stack: StackType) => {
     const filterToStringArray = tokens.map((token) => token.value)
     const containsEveryScript = answerScript.every((token) =>
@@ -272,7 +284,7 @@ const OpRunner = ({
 
     const doesStackValidate = () => {
       return (
-        state.length === tokens.length - 1 &&
+        state.length === isFinalToken() &&
         stack.length === 1 &&
         (stack[0] === 1 || stack[0] === true) &&
         !state.some((error) => error?.error?.message)
@@ -281,7 +293,7 @@ const OpRunner = ({
 
     const isStackCorrectSoFar = () => {
       return (
-        state.length !== tokens.length - 1 &&
+        state.length !== isFinalToken() &&
         !state.some((error) => error?.error?.message)
       )
     }
@@ -313,21 +325,6 @@ const OpRunner = ({
     return stackItem.replace(regex, (match) => {
       return `<span class="text-green">${match}</span>`
     })
-  }
-
-  const isFinalToken = () => {
-    let length = executor?.tokens.length ?? undefined
-    executor?.tokens.forEach((PUSH) => {
-      if (PUSH.value === 'OP_PUSH' && length !== undefined) {
-        length--
-      }
-    })
-
-    // Additional - 1 for the Initial Stack
-    if (length) {
-      length -= 1
-    }
-    return length
   }
 
   let error = null
@@ -484,13 +481,13 @@ const OpRunner = ({
                                     {
                                       'bg-red/35':
                                         stack.error.message !== null ||
-                                        (opCodeIndex === isFinalToken() &&
+                                        (opCodeIndex === isFinalToken() - 1 &&
                                           (stack.stack.length !== 1 ||
                                             stack.stack[0] === false ||
                                             stack.error?.message)),
                                       'bg-green/35':
                                         stack.error.message === null &&
-                                        opCodeIndex === isFinalToken() &&
+                                        opCodeIndex === isFinalToken() - 1 &&
                                         stack.stack.length === 1 &&
                                         stack.stack.length === 1 &&
                                         (stack.stack[0] === true ||
@@ -498,7 +495,7 @@ const OpRunner = ({
                                         !stack.error?.message,
                                       'bg-white/15':
                                         (stack.error.message === null &&
-                                          opCodeIndex !== isFinalToken()) ||
+                                          opCodeIndex !== isFinalToken() - 1) ||
                                         opCodeIndex === 0 ||
                                         (opCodeIndex === stateHistory.length &&
                                           stack.stack.length === 1 &&
