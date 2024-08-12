@@ -265,9 +265,9 @@ const OpRunner = ({
   }
 
   const isFinalToken = () => {
-    let length = executor?.tokens.length ?? undefined
+    let length = executor?.tokens.length ?? 0
     executor?.tokens.forEach((PUSH) => {
-      if (PUSH.value === 'OP_PUSH' && length !== undefined) {
+      if (PUSH.value === 'OP_PUSH' && length !== 0) {
         length--
       }
     })
