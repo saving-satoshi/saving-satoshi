@@ -196,13 +196,7 @@ const OpRunner = ({
     initializeExecutor()
   }
 
-  const handleRun = () => {
-    initializeExecutor()
-    setRunning(true)
-  }
-
   const handleReset = () => {
-    setRunning(false)
     //setStartedTyping(false)
     //setExecutor(null)
     // initializeExecutor()
@@ -259,19 +253,16 @@ const OpRunner = ({
   }, [stackHistory])
 
   const handleScriptChange = (event) => {
-    setRunning(false)
     setScript(event.target.value.toUpperCase())
     setStartedTyping(true)
   }
 
   const handleInitialStackChange = (event) => {
-    setRunning(false)
     setInitialStack(event.target.value.toUpperCase())
     setStartedTyping(true)
   }
 
   const handleHeightChange = (event) => {
-    setRunning(false)
     setHeight(
       isNaN(parseInt(event.target.value)) ? 0 : parseInt(event.target.value)
     )
@@ -387,33 +378,6 @@ const OpRunner = ({
         <div className="flex grow flex-col px-5 ">
           <div className="flex w-full flex-row justify-between py-3">
             <p className="font-mono text-lg font-bold">Execution stack</p>
-
-            <div className="flex flex-row gap-[10px]">
-              <button
-                type="button"
-                className={btnClassName}
-                onClick={handleRun}
-                disabled={stackHistory.length > 0}
-              >
-                Run
-              </button>
-              <button
-                type="button"
-                className={btnClassName}
-                onClick={handleStep}
-                disabled={stackHistory.length > 0}
-              >
-                Step
-              </button>
-              <button
-                type="button"
-                className={btnClassName}
-                onClick={handleReset}
-                disabled={stackHistory.length === 0}
-              >
-                Reset
-              </button>
-            </div>
           </div>
           <div
             ref={scrollRef}
