@@ -139,6 +139,7 @@ const OpRunner = ({
   const isActive = activeView === LessonView.Code
   const [initialStack, setInitialStack] = useState('')
   const [height, setHeight] = useState<number>(0)
+  const [running, setRunning] = useState(false)
   const [stackHistory, setStackHistory] = useState<MainState | []>([])
   const [startedTyping, setStartedTyping] = useState(false)
   const { ref: arrowContainerRef } = useArrows()
@@ -177,44 +178,33 @@ const OpRunner = ({
     setStartedTyping(true)
   }
 
-  const handleStep = async () => {
-    initializeExecutor()
-    if (executor !== null) {
-      while (executor.tokens.length - 1 >= executor.currentIndex) {
-        if (executor && executor.tokens.length - 1 >= executor.currentIndex) {
-          const state = executor.executeStep()
-          if (state) {
-            setStackHistory((prev) => [...prev, state])
-            checkSuccessState(executor.tokens, state, state?.stack)
-            if (state.negate === 0) {
-              await sleep(600)
-            }
-          }
-        } else if (!executor) {
-          initializeExecutor()
-        }
-      }
-    }
-  }
-
-  const executeStepWithDelay = async () => {
+  const executeStepWithDelay = async (delay: number) => {
     if (executor && executor.tokens.length > executor.currentIndex) {
       const state = executor.executeStep()
       if (state) {
         setStackHistory((prev) => [...prev, state])
         checkSuccessState(executor.tokens, state, state?.stack)
-        await sleep(500)
-        executeStepWithDelay()
+        if (state.negate === 0 && !running) {
+          await sleep(delay)
+        }
+        executeStepWithDelay(delay)
       }
     }
   }
 
-  const handleRun = () => {
+  const handleStep = () => {
     initializeExecutor()
   }
 
+  const handleRun = () => {
+    initializeExecutor()
+    setRunning(true)
+  }
+
   const handleReset = () => {
-    // setExecutor(null)
+    setRunning(false)
+    //setStartedTyping(false)
+    //setExecutor(null)
     // initializeExecutor()
 
     // Preserve the initial stack state
@@ -239,24 +229,16 @@ const OpRunner = ({
   useEffect(() => {
     if (startedTyping) {
       const timeoutId = setTimeout(() => {
-        handleRun()
+        handleStep()
       }, 1000)
 
       return () => clearTimeout(timeoutId)
     }
   }, [script, initialStack, height])
 
-  // useEffect(() => {
-  //   if (executor && startedTyping) {
-  //     executor.execute()
-  //     setStackHistory((prev) => [prev[0], ...executor.state])
-  //     checkSuccessState(executor.tokens, executor.state, executor.stack)
-  //   }
-  // }, [executor, startedTyping])
-
   useEffect(() => {
     if (executor && startedTyping) {
-      executeStepWithDelay()
+      executeStepWithDelay(500)
     }
   }, [executor, startedTyping])
 
@@ -277,16 +259,19 @@ const OpRunner = ({
   }, [stackHistory])
 
   const handleScriptChange = (event) => {
+    setRunning(false)
     setScript(event.target.value.toUpperCase())
     setStartedTyping(true)
   }
 
   const handleInitialStackChange = (event) => {
+    setRunning(false)
     setInitialStack(event.target.value.toUpperCase())
     setStartedTyping(true)
   }
 
   const handleHeightChange = (event) => {
+    setRunning(false)
     setHeight(
       isNaN(parseInt(event.target.value)) ? 0 : parseInt(event.target.value)
     )
@@ -301,6 +286,7 @@ const OpRunner = ({
 
     const doesStackValidate = () => {
       return (
+        state.step === tokens.length - 1 &&
         stack.length === 1 &&
         (stack[0] === 1 || stack[0] === true) &&
         !state?.error?.message
