@@ -247,7 +247,7 @@ class LanguageExecutor {
     }
 
     return {
-      stack: error ? [...this.stack] : null,
+      stack: [...this.stack],
       operation: {
         tokenType: element.type,
         resolves: element.resolves,
