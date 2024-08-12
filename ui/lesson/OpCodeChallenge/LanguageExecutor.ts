@@ -92,272 +92,194 @@ class LanguageExecutor {
     this.height = height ?? 0
     this.conditionalState = []
     this.negate = 0
-    if (initialStack.length !== 0) {
-      this.state.push({
-        stack: initialStack,
-        operation: {
-          tokenType: null,
-          resolves: null,
-          value: 'INITIAL_STACK',
-          type: '',
-        },
-        step: 0,
-        negate: 0,
-      })
-      this.stack.push(...initialStack)
+    this.stack.push(...initialStack)
+  }
+
+  //THIS COULD CAUSE AN ERROR BY DEFAULTING TO 0
+  public currentIndex: number = 0
+
+  executeStep(): State | null {
+    if (this.currentIndex >= this.tokens.length) {
+      return null // End of script
+    }
+
+    const element = this.tokens[this.currentIndex]
+    const state = this.executeToken(element)
+    this.currentIndex++
+    return state
+  }
+
+  private executeToken(element: T[number]): State {
+    const currentStack = [...this.stack]
+    const currentNegate = this.negate
+    const unRecognizedDataTypeRegex = /^(?!\d+$)(?!HASH256)(?!SIG)(?!PUBKEY).*/
+    let opResolves: any
+    let error: RunnerError = { type: '', message: null }
+
+    if (
+      currentStack.some(
+        (stackItem) =>
+          typeof stackItem === 'string' &&
+          unRecognizedDataTypeRegex.test(stackItem)
+      )
+    ) {
+      error = {
+        type: 'unknown',
+        message: 'STACK_ERR: Unrecognized data type',
+      }
+    }
+
+    switch (element.type) {
+      case TokenTypes.INITIAL_STACK:
+        opResolves = opFunctions[element.value](this.stack)
+        if (opResolves.value !== null) {
+          this.stack.push(opResolves.value)
+        }
+        error = opResolves?.error
+          ? { type: element.value, message: opResolves.error }
+          : error
+        break
+
+      case TokenTypes.CONSTANT:
+        if (this.negate === 0) {
+          this.stack.push(element.resolves)
+        }
+        error = { type: element.value, message: null }
+        break
+
+      case TokenTypes.ARITHMETIC:
+        if (this.negate === 0) {
+          opResolves = opFunctions[element.value](this.stack)
+          if (opResolves.value !== null) {
+            this.stack.push(opResolves.value)
+          }
+        }
+        error =
+          opResolves?.error && !error?.message
+            ? { type: element.value, message: opResolves.error }
+            : error
+        break
+
+      case TokenTypes.DATA_PUSH:
+        if (this.negate === 0) {
+          opResolves = opFunctions[element.value](
+            this.stack,
+            this.tokens,
+            this.currentIndex
+          )
+          if (opResolves.value) {
+            this.stack.push(opResolves.value)
+          }
+        }
+        error =
+          opResolves?.error && !error?.message
+            ? { type: element.value, message: opResolves.error }
+            : error
+        this.currentIndex++
+        break
+
+      case TokenTypes.LOCK_TIME:
+        if (this.negate === 0) {
+          opResolves = opFunctions[element.value](this.stack, this.height)
+        }
+        error =
+          opResolves?.error && !error?.message
+            ? { type: element.value, message: opResolves.error }
+            : error
+        break
+
+      case TokenTypes.CONDITIONAL:
+        opResolves = opFunctions[element.value](
+          this.stack,
+          this.conditionalState,
+          this.negate
+        )
+        this.negate = opResolves?.value
+        error =
+          opResolves?.error && !error?.message
+            ? { type: element.value, message: opResolves.error }
+            : error
+        break
+
+      case TokenTypes.CRYPTO:
+        if (this.negate === 0) {
+          opResolves = opFunctions[element.value](this.stack)
+          if (opResolves?.value !== null) this.stack.push(opResolves.value)
+        }
+        error =
+          opResolves?.error && !error?.message
+            ? { type: element.value, message: opResolves.error }
+            : error
+        break
+
+      case TokenTypes.BITWISE:
+        if (this.negate === 0) {
+          opResolves = opFunctions[element.value](this.stack)
+          if (opResolves?.value !== null) {
+            this.stack.push(opResolves.value)
+          }
+        }
+        error =
+          opResolves?.error && !error?.message
+            ? { type: element.value, message: opResolves.error }
+            : error
+        break
+
+      case TokenTypes.STACK:
+        if (this.negate === 0) {
+          opResolves = opFunctions[element.value](this.stack)
+          if (opResolves?.value) {
+            this.stack.push(opResolves.value)
+          }
+        }
+        error =
+          opResolves?.error && !error?.message
+            ? { type: element.value, message: opResolves.error }
+            : error
+        break
+
+      default:
+        error = {
+          type: 'unknown',
+          message: `SCRIPT_ERR: Unknown opcode ${element.type}`,
+        }
+        break
+    }
+
+    return {
+      stack: [...this.stack],
+      operation: {
+        tokenType: element.type,
+        resolves: element.resolves,
+        value: element.value,
+        type: element.type,
+      },
+      negate: this.negate,
+      step: this.currentIndex,
+      error: error,
     }
   }
 
-  async execute() {
-    if (!this.tokens) return this.state
-    for (let index = 0; index < this.tokens.length; index++) {
-      const element = this.tokens[index]
-      const currentStack = this.stack
-      const currentState = this.state[index - 1]
-      const currentNegate = this.negate
-      const unRecognizedDataTypeRegex =
-        /^(?!\d+$)(?!Hash256)(?!SIG)(?!PUBKEY).*/
-      let error: RunnerError | null
-      let addToState: State
-      let opResolves: any
+  execute() {
+    this.state = []
+    let state: State | null
+    while ((state = this.executeStep()) !== null) {
+      this.state.push(state)
+    }
 
-      switch (element.type) {
-        case TokenTypes.CONSTANT:
-          if (this.negate === 0) {
-            this.stack.push(element.resolves)
-          }
-          addToState = {
-            stack: [...currentStack],
-            operation: {
-              tokenType: TokenTypes.CONSTANT,
-              resolves: element.resolves,
-              value: element.value,
-              type: element.type,
-            },
-            negate: currentNegate,
-            step: index,
-          }
-          this.state.push(addToState)
-          break
-
-        case TokenTypes.ARITHMETIC:
-          if (this.negate === 0) {
-            opResolves = opFunctions[element.value](this.stack)
-            if (opResolves.value !== null) {
-              this.stack.push(opResolves.value)
-            }
-          }
-          addToState = {
-            stack: [...currentStack],
-            operation: {
-              tokenType: TokenTypes.CONSTANT,
-              resolves: element.resolves,
-              value: element.value,
-              type: element.type,
-            },
-            step: index,
-            negate: currentNegate,
-            error: {
-              type: element.value,
-              message: opResolves?.error,
-            },
-          }
-          this.state.push(addToState)
-          break
-
-        case TokenTypes.DATA_PUSH:
-          if (this.negate === 0) {
-            opResolves = opFunctions[element.value](
-              this.stack,
-              this.tokens,
-              index
-            )
-            if (opResolves.value) {
-              this.stack.push(opResolves.value)
-            }
-          }
-          addToState = {
-            stack: [...currentStack],
-            operation: {
-              tokenType: TokenTypes.DATA_PUSH,
-              resolves: element.resolves,
-              value: element.value,
-              type: element.type,
-            },
-            step: index,
-            negate: currentNegate,
-            error: {
-              type: element.value,
-              message: opResolves?.error,
-            },
-          }
-          this.state.push(addToState)
-          index++
-          break
-
-        case TokenTypes.LOCK_TIME:
-          if (this.negate === 0) {
-            opResolves = opFunctions[element.value](this.stack, this.height)
-          }
-          addToState = {
-            stack: [...currentStack],
-            operation: {
-              tokenType: TokenTypes.LOCK_TIME,
-              resolves: element.resolves,
-              value: element.value,
-              type: element.type,
-            },
-            negate: currentNegate,
-            step: index,
-            error: {
-              type: element.value,
-              message: opResolves?.error,
-            },
-          }
-          this.state.push(addToState)
-          break
-
-        case TokenTypes.CONDITIONAL:
-          opResolves = opFunctions[element.value](
-            this.stack,
-            this.conditionalState,
-            this.negate
-          )
-          addToState = {
-            stack: [...currentStack],
-            operation: {
-              tokenType: TokenTypes.CONDITIONAL,
-              resolves: element.resolves,
-              value: element.value,
-              type: element.type,
-            },
-            negate: opResolves?.value,
-            step: index,
-            error: {
-              type: element.value,
-              message: opResolves?.error,
-            },
-          }
-          this.negate = opResolves?.value
-          this.state.push(addToState)
-          break
-
-        case TokenTypes.CRYPTO:
-          if (this.negate === 0) {
-            opResolves = opFunctions[element.value](this.stack)
-            if (opResolves?.value !== null) this.stack.push(opResolves.value)
-          }
-          addToState = {
-            stack: [...currentStack],
-            operation: {
-              tokenType: TokenTypes.CRYPTO,
-              resolves: element.resolves,
-              value: element.value,
-              type: element.type,
-            },
-            negate: currentNegate,
-            step: index,
-            error: {
-              type: element.value,
-              message: opResolves.error,
-            },
-          }
-          this.state.push(addToState)
-          break
-
-        case TokenTypes.BITWISE:
-          if (this.negate === 0) {
-            opResolves = opFunctions[element.value](this.stack)
-            if (opResolves?.value !== null) {
-              this.stack.push(opResolves.value)
-            }
-          }
-          addToState = {
-            stack: [...currentStack],
-            operation: {
-              tokenType: TokenTypes.BITWISE,
-              resolves: element.resolves,
-              value: element.value,
-              type: element.type,
-            },
-            negate: currentNegate,
-            step: index,
-            error: {
-              type: element.value,
-              message: opResolves?.error,
-            },
-          }
-          this.state.push(addToState)
-          break
-
-        case TokenTypes.STACK:
-          if (this.negate === 0) {
-            opResolves = opFunctions[element.value](this.stack)
-            if (opResolves?.value) {
-              this.stack.push(opResolves.value)
-            }
-          }
-          addToState = {
-            stack: [...currentStack],
-            operation: {
-              tokenType: TokenTypes.STACK,
-              resolves: element.resolves,
-              value: element.value,
-              type: element.type,
-            },
-            negate: currentNegate,
-            step: index,
-            error: opResolves?.value,
-          }
-          this.state.push(addToState)
-          break
-
-        default:
-          addToState = {
-            stack: [...currentStack],
-            operation: {
-              tokenType: TokenTypes.CONSTANT,
-              resolves: element.value,
-              value: element.value,
-              type: element.type,
-            },
-            negate: currentNegate,
-            step: index,
-            error: {
-              type: 'unknown',
-              message: `Error: Unknown opcode ${element.type}`,
-            },
-          }
-          this.state.push(addToState)
-          break
-      }
-      if (
-        this.state[0].stack.some((stackItem) =>
-          unRecognizedDataTypeRegex.test(stackItem)
-        )
-      ) {
-        addToState.error = {
+    if (this.state.length > 0 && this.currentIndex >= this.tokens.length - 1) {
+      if (this.conditionalState.length !== 0) {
+        this.state[this.state.length - 1].error = {
           type: 'unknown',
-          message: 'STACK_ERR: Unrecognized data type',
+          message: 'SCRIPT_ERR: Unbalanced conditional',
         }
       }
-      if (index === this.tokens.length - 1) {
-        if (this.conditionalState.length !== 0) {
-          addToState.error = {
-            type: 'unknown',
-            message: 'SCRIPT_ERR: Unbalanced conditional',
-          }
+      if (this.state[this.state.length - 1].stack.length !== 1) {
+        this.state[this.state.length - 1].error = {
+          type: 'unknown',
+          message:
+            'STACK_ERR: Stack should finish with only one item on the stack',
         }
-        if (this.state[this.state.length - 1].stack.length !== 1) {
-          addToState.error = {
-            type: 'unknown',
-            message:
-              'Stack_ERR: Stack should finish with only one item on the stack',
-          }
-        }
-      }
-      if (addToState.error?.message) {
-        index = this.tokens.length - 1
       }
     }
   }

@@ -1,5 +1,7 @@
 import { StackType, T, TokenTypes } from './runnerTypes'
 
+const unRecognizedDataTypeRegex = /^(?!\d+$)(?!HASH256)(?!SIG)(?!PUBKEY).*/
+
 const getKey = (keyData) => {
   if (!keyData) {
     return {
@@ -41,6 +43,23 @@ const getSig = (sigData) => {
 }
 
 export const opFunctions: { [key: string]: Function } = {
+  INITIAL_STACK: (stack: StackType) => {
+    if (!stack) return null
+    if (
+      stack?.some(
+        (item) => !!item && unRecognizedDataTypeRegex.test(item.toString())
+      )
+    ) {
+      return {
+        value: null,
+        error: 'INITIAL_STACK: unrecognized data type',
+      }
+    }
+    return {
+      value: null,
+      error: null,
+    }
+  },
   OP_0: () => 0,
   OP_FALSE: () => 0,
   OP_1NEGATE: () => -1,
@@ -99,7 +118,13 @@ export const opFunctions: { [key: string]: Function } = {
     if (!tokens[index + 1]?.value) {
       return {
         value: null,
-        error: 'OP_PUSH needs a value to push to the stack',
+        error: 'OP_PUSH: needs a value to push to the stack',
+      }
+    }
+    if (unRecognizedDataTypeRegex.test(tokens[index + 1].value)) {
+      return {
+        value: null,
+        error: 'OP_PUSH: unrecognized data type',
       }
     }
     return { value: tokens[index + 1].value, error: null }
@@ -411,6 +436,7 @@ interface OpToken {
 }
 
 export const OpCodeTypes = {
+  INITIAL_STACK: 'initial-stack',
   OP_0: 'constant',
   OP_FALSE: 'constant',
   OP_1NEGATE: 'constant',
