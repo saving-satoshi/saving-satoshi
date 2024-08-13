@@ -333,6 +333,8 @@ const OpRunner = ({
 
   const handleTryAgain = () => {
     setSuccess(0)
+    setStep(1)
+    setHeight(height - 1)
   }
 
   const colorizeText = (stackItem: string): string => {
