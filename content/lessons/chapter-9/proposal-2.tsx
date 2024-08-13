@@ -1,30 +1,58 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { Introduction, Text } from 'ui'
+import { LessonInfo, Text, Title, OpCodeChallenge } from 'ui'
+import { useEffect, useState } from 'react'
+import { SuccessNumbers } from 'ui/common/StatusBar'
 
 export const metadata = {
-  title: 'chapter_nine.intro_two.title',
-  navigation_title: 'chapter_nine.intro_two.nav_title',
-  image: '/assets/images/chapter-9-intro-2.jpg',
-  theme: 'bg-[#401d4e]',
+  title: 'chapter_nine.opcodes_five.title',
+  navigation_title: 'chapter_nine.opcodes_five.nav_title',
   key: 'CH9PRP2',
 }
 
-export default function Proposal2({ lang }) {
+export default function OpCodes5({ lang }) {
   const t = useTranslations(lang)
-
+  const [hydrated, setHydrated] = useState(false)
+  const [success, setSuccess] = useState<boolean | SuccessNumbers>(0)
+  useEffect(() => {
+    setHydrated(true)
+  }, [])
   return (
-    <Introduction lang={lang} imagePosition="object-center">
-      <Text className="text-lg md:text-xl">
-        {t('chapter_nine.intro_two.paragraph_one')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_nine.intro_two.paragraph_two')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_nine.intro_two.paragraph_three')}
-      </Text>
-    </Introduction>
+    hydrated && (
+      <OpCodeChallenge
+        answerScript={[
+          'OP_IF',
+          'OP_PUSH',
+          'PUBKEY(VANDERPOOLE)',
+          'OP_ELSE',
+          'OP_PUSH',
+          '6930300',
+          'OP_CHECKLOCKTIMEVERIFY',
+          'OP_DROP',
+          'OP_PUSH',
+          'PUBKEY(ME)',
+          'OP_ENDIF',
+          'OP_CHECKSIG',
+        ]}
+        advanceChallenge
+        showRunButtons
+        success={success}
+        setSuccess={setSuccess}
+      >
+        <LessonInfo>
+          <Title>{t('chapter_nine.proposal_one.heading')}</Title>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_nine.proposal_one.paragraph_one')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl font-bold text-white">
+            {t('chapter_nine.proposal_one.paragraph_two')}
+          </Text>
+          <Text className="mt-4 font-nunito text-xl text-white">
+            {t('chapter_nine.opcodes_five.paragraph_two')}
+          </Text>
+        </LessonInfo>
+      </OpCodeChallenge>
+    )
   )
 }

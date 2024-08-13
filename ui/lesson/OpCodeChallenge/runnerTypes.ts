@@ -3,12 +3,15 @@ import { SuccessNumbers } from 'ui/common/StatusBar'
 
 export interface OpRunnerTypes {
   answerScript: string[]
+  initialHeight?: number
   success: boolean | SuccessNumbers
   setSuccess: Dispatch<SetStateAction<number | boolean>>
   children?: React.ReactNode
   readOnly?: boolean
   prePopulate?: boolean
   showRunButtons?: boolean
+  advanceChallenge?: boolean
+  initialStackSuccess?: string
 }
 
 export enum TokenTypes {

@@ -22,6 +22,7 @@ const translations = {
     error_message: 'Hm... that is not quite right yet...',
     in_progress_message: 'Looking good so far...',
     success_message: 'Nicely done!',
+    next_step_message: 'Looks good now change your stack',
     next: 'Next',
   },
   ///ABOUT PAGE
@@ -2535,6 +2536,13 @@ const translations = {
       paragraph_three:
         '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_IF</span> pops one value off the stack and evaluates it as a boolean. If it is true, code execution continues up to <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ELSE</span> then skips to <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ENDIF</span>, otherwise it skips to <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ELSE</span> and continues executing to <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ENDIF</span>. Logic branches may be nested but every <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_IF</span> must be paired with an <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ENDIF</span> to close each branch, otherwise a the interpreter will throw an error and the script will fail.',
       paragraph_four: 'Provide the initial stack to spend from the script.',
+    },
+    proposal_one: {
+      title: 'Advance Challenge 1',
+      nav_title: 'Advance Challenge 1',
+      heading: 'Advance Challenge 1',
+      paragraph_one: `The first thing Vanderpoole suggests is a 2-of-2 multisig. All funds that get donated will be split by you and him 50/50, which will be managed by you both signing all spending transactions from the donation address, so you will have to agree on all "withdraws"`,
+      paragraph_two: `Vanderpoole hands you his public key, it's PUBKEY(vanderpoole) (yours is PUBKEY(me)).`,
     },
     outro_one: {
       title: 'Outro',
