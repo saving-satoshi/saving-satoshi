@@ -27,6 +27,10 @@ export default function OpCodeChallenge({
   readOnly,
   success,
   setSuccess,
+  advancedChallenge,
+  initialHeight,
+  initialStackSuccess,
+  nextStepMessage,
 }: OpRunnerTypes) {
   const [hydrated, setHydrated] = useState(false)
 
@@ -53,11 +57,13 @@ export default function OpCodeChallenge({
           <ArrowsProvider>
             <OpRunner
               answerScript={answerScript}
-              prePopulate={prePopulate}
               showRunButtons={showRunButtons}
-              readOnly={readOnly}
+              initialStackSuccess={initialStackSuccess}
               success={success}
+              initialHeight={initialHeight}
+              advancedChallenge={advancedChallenge}
               setSuccess={setSuccess}
+              nextStepMessage={nextStepMessage}
             />
           </ArrowsProvider>
         </div>

@@ -129,6 +129,10 @@ const OpRunner = ({
   answerScript,
   readOnly,
   prePopulate,
+  advancedChallenge,
+  initialHeight,
+  initialStackSuccess,
+  nextStepMessage,
 }: Omit<OpRunnerTypes, 'children'>) => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const btnClassName =
@@ -139,7 +143,8 @@ const OpRunner = ({
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
   const [initialStack, setInitialStack] = useState('')
-  const [height, setHeight] = useState<number>(0)
+  const [step, setStep] = useState<number>(1)
+  const [height, setHeight] = useState<number>(initialHeight ?? NaN)
   const [lastSuccessState, setLastSuccessState] = useState<
     SuccessNumbers | boolean
   >(0)
@@ -199,7 +204,10 @@ const OpRunner = ({
   }, [arrowContainerRef, scrollPosition])
 
   useEffect(() => {
-    if (startedTyping) {
+    if (
+      (startedTyping && !advancedChallenge && initialStack) ||
+      (startedTyping && advancedChallenge && initialStack)
+    ) {
       const timeoutId = setTimeout(() => {
         handleStep()
       }, 1000)
@@ -231,8 +239,10 @@ const OpRunner = ({
   }, [stateHistory])
 
   const handleScriptChange = (event) => {
-    setScript(event.target.value.toUpperCase())
-    setStartedTyping(true)
+    if (advancedChallenge && step === 1) {
+      setScript(event.target.value.toUpperCase())
+      setStartedTyping(true)
+    }
   }
 
   const handleInitialStackChange = (event) => {
@@ -241,10 +251,12 @@ const OpRunner = ({
   }
 
   const handleHeightChange = (event) => {
-    setHeight(
-      isNaN(parseInt(event.target.value)) ? 0 : parseInt(event.target.value)
-    )
-    setStartedTyping(true)
+    if (!initialHeight) {
+      setHeight(
+        isNaN(parseInt(event.target.value)) ? 0 : parseInt(event.target.value)
+      )
+      setStartedTyping(true)
+    }
   }
 
   const isFinalToken = () => {
@@ -280,8 +292,33 @@ const OpRunner = ({
       )
     }
 
-    if (containsEveryScript && doesStackValidate()) {
+    if (
+      (containsEveryScript && doesStackValidate() && !advancedChallenge) ||
+      (containsEveryScript &&
+        doesStackValidate() &&
+        advancedChallenge &&
+        step === 2 &&
+        initialStack === initialStackSuccess)
+    ) {
       return true
+    } else if (
+      containsEveryScript &&
+      doesStackValidate() &&
+      advancedChallenge &&
+      step == 1
+    ) {
+      setStep(2)
+      setHeight(height + 1)
+      setInitialStack('')
+      return 6
+    } else if (
+      containsEveryScript &&
+      doesStackValidate() &&
+      advancedChallenge &&
+      step == 2 &&
+      initialStack !== initialStackSuccess
+    ) {
+      return 3
     } else if (success !== true && isStackCorrectSoFar()) {
       return 1
     } else if (success !== true) {
@@ -299,6 +336,9 @@ const OpRunner = ({
 
   const handleTryAgain = () => {
     setSuccess(0)
+    setStep(1)
+    setHeight(height - 1)
+    setStateHistory([])
   }
 
   const colorizeText = (stackItem: string): string => {
@@ -345,6 +385,7 @@ const OpRunner = ({
             <input
               title="Add text or numbers seperated by spaces."
               onChange={handleInitialStackChange}
+              value={initialStack}
               className="flex-grow border-none bg-transparent font-space-mono text-lg uppercase focus:outline-none"
               type="text"
               placeholder="0xA 10..."
@@ -361,6 +402,7 @@ const OpRunner = ({
             <input
               title="Enter any number above 1."
               onChange={handleHeightChange}
+              value={height}
               className="flex-grow border-none bg-transparent text-lg [appearance:textfield] focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               placeholder="6930001"
               type="number"
@@ -515,6 +557,7 @@ const OpRunner = ({
         errorMessage={error || ''}
         success={success}
         hints
+        nextStepMessage={nextStepMessage}
       />
     </div>
   )

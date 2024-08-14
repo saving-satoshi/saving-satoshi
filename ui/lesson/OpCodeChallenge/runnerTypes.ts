@@ -9,6 +9,10 @@ export interface OpRunnerTypes {
   readOnly?: boolean
   prePopulate?: boolean
   showRunButtons?: boolean
+  advancedChallenge?: boolean
+  initialHeight?: number
+  initialStackSuccess?: string
+  nextStepMessage?: string
 }
 
 export enum TokenTypes {

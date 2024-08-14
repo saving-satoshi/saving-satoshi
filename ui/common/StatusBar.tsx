@@ -12,15 +12,17 @@ export enum Status {
   Poor,
   Good,
   Success,
+  NextStep, // Step on Advance Challenge in OpRunner
 }
 
-export type SuccessNumbers = 0 | 1 | 2 | 3 | 4 | 5
+export type SuccessNumbers = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
 export default function StatusBar({
   success,
   beginMessage,
   successMessage,
   inProgressMessage,
+  nextStepMessage,
   errorMessage,
   full,
   hints,
@@ -33,6 +35,7 @@ export default function StatusBar({
   successMessage?: string
   inProgressMessage?: string
   errorMessage?: string
+  nextStepMessage?: string
   full?: boolean
   hints?: boolean | null
   alwaysShow?: boolean
@@ -68,6 +71,9 @@ export default function StatusBar({
 
     if (success === 5) {
       return Status.Success
+    }
+    if (success === 6) {
+      return Status.NextStep
     }
 
     if (success === true) {
@@ -124,6 +130,8 @@ export default function StatusBar({
         return errorMessage || t(`status_bar.error_message`)
       case Status.InProgress:
         return inProgressMessage || t('status_bar.in_progress_message')
+      case Status.NextStep:
+        return nextStepMessage || t('status_bar.next_step_message')
       default:
         return ''
     }
@@ -168,7 +176,9 @@ export default function StatusBar({
             onClick={handleSubmit}
             classes={clsx('md:text-2xl', {
               hidden: !(
-                getStatus() === Status.Poor || getStatus() === Status.Good
+                getStatus() === Status.Poor ||
+                getStatus() === Status.Good ||
+                getStatus() == Status.NextStep
               ),
             })}
           >
