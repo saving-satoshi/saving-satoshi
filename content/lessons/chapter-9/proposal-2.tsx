@@ -22,25 +22,16 @@ export default function Proposal2({ lang }) {
     hydrated && (
       <OpCodeChallenge
         answerScript={[
-          'OP_IF',
+          'OP_2',
           'OP_PUSH',
           'PUBKEY(VANDERPOOLE)',
-          'OP_ELSE',
-          'OP_PUSH',
-          '6930300',
-          'OP_CHECKLOCKTIMEVERIFY',
-          'OP_DROP',
           'OP_PUSH',
           'PUBKEY(ME)',
-          'OP_ENDIF',
-          'OP_CHECKSIG',
+          'OP_2',
+          'OP_CHECKMULTISIG',
         ]}
-        advancedChallenge
-        showRunButtons
         success={success}
         setSuccess={setSuccess}
-        initialHeight={6930299}
-        initialStackSuccess="SIG(ME) 0"
       >
         <LessonInfo>
           <Title>{t('chapter_nine.proposal_two.heading')}</Title>

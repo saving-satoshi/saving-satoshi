@@ -23,7 +23,6 @@ export default function OpCodes5({ lang }) {
       <OpCodeChallenge
         answerScript={['OP_ADD', 'OP_3', 'OP_EQUAL']}
         prePopulate
-        showRunButtons
         readOnly
         success={success}
         setSuccess={setSuccess}

@@ -31,7 +31,6 @@ export default function OpCodes9({ lang }) {
           'OP_CHECKSIG',
         ]}
         prePopulate
-        showRunButtons
         readOnly
         success={success}
         setSuccess={setSuccess}

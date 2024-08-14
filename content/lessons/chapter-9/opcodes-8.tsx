@@ -31,7 +31,6 @@ export default function OpCodes8({ lang }) {
           'OP_CHECKMULTISIG',
         ]}
         prePopulate
-        showRunButtons
         readOnly
         success={success}
         setSuccess={setSuccess}

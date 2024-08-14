@@ -239,7 +239,7 @@ const OpRunner = ({
   }, [stateHistory])
 
   const handleScriptChange = (event) => {
-    if (advancedChallenge && step === 1) {
+    if (!advancedChallenge || (advancedChallenge && step === 1)) {
       setScript(event.target.value.toUpperCase())
       setStartedTyping(true)
     }
