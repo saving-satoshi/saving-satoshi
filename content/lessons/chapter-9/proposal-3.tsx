@@ -36,7 +36,6 @@ export default function Proposal3({ lang }) {
           'OP_CHECKSIG',
         ]}
         advancedChallenge
-        showRunButtons
         success={success}
         setSuccess={setSuccess}
         initialHeight={6930299}
