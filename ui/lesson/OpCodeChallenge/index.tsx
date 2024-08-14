@@ -27,7 +27,7 @@ export default function OpCodeChallenge({
   readOnly,
   success,
   setSuccess,
-  advanceChallenge,
+  advancedChallenge,
   initialHeight,
   initialStackSuccess,
 }: OpRunnerTypes) {
@@ -60,7 +60,7 @@ export default function OpCodeChallenge({
               initialStackSuccess={initialStackSuccess}
               success={success}
               initialHeight={initialHeight}
-              advanceChallenge={advanceChallenge}
+              advancedChallenge={advancedChallenge}
               setSuccess={setSuccess}
             />
           </ArrowsProvider>

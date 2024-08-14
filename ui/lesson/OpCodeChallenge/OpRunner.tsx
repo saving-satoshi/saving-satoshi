@@ -129,7 +129,7 @@ const OpRunner = ({
   answerScript,
   readOnly,
   prePopulate,
-  advanceChallenge,
+  advancedChallenge,
   initialHeight,
   initialStackSuccess,
 }: Omit<OpRunnerTypes, 'children'>) => {
@@ -204,8 +204,8 @@ const OpRunner = ({
 
   useEffect(() => {
     if (
-      (startedTyping && !advanceChallenge && initialStack) ||
-      (startedTyping && advanceChallenge && initialStack)
+      (startedTyping && !advancedChallenge && initialStack) ||
+      (startedTyping && advancedChallenge && initialStack)
     ) {
       const timeoutId = setTimeout(() => {
         handleStep()
@@ -238,7 +238,7 @@ const OpRunner = ({
   }, [stateHistory])
 
   const handleScriptChange = (event) => {
-    if (advanceChallenge && step === 1) {
+    if (advancedChallenge && step === 1) {
       setScript(event.target.value.toUpperCase())
       setStartedTyping(true)
     }
@@ -292,10 +292,10 @@ const OpRunner = ({
     }
 
     if (
-      (containsEveryScript && doesStackValidate() && !advanceChallenge) ||
+      (containsEveryScript && doesStackValidate() && !advancedChallenge) ||
       (containsEveryScript &&
         doesStackValidate() &&
-        advanceChallenge &&
+        advancedChallenge &&
         step === 2 &&
         initialStack === initialStackSuccess)
     ) {
@@ -303,7 +303,7 @@ const OpRunner = ({
     } else if (
       containsEveryScript &&
       doesStackValidate() &&
-      advanceChallenge &&
+      advancedChallenge &&
       step == 1
     ) {
       setStep(2)
@@ -313,7 +313,7 @@ const OpRunner = ({
     } else if (
       containsEveryScript &&
       doesStackValidate() &&
-      advanceChallenge &&
+      advancedChallenge &&
       step == 2 &&
       initialStack !== initialStackSuccess
     ) {

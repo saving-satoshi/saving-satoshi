@@ -9,7 +9,7 @@ export interface OpRunnerTypes {
   readOnly?: boolean
   prePopulate?: boolean
   showRunButtons?: boolean
-  advanceChallenge?: boolean
+  advancedChallenge?: boolean
   initialHeight?: number
   initialStackSuccess?: string
 }

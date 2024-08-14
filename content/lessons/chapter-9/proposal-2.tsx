@@ -35,7 +35,7 @@ export default function Proposal2({ lang }) {
           'OP_ENDIF',
           'OP_CHECKSIG',
         ]}
-        advanceChallenge
+        advancedChallenge
         showRunButtons
         success={success}
         setSuccess={setSuccess}
