@@ -132,6 +132,7 @@ const OpRunner = ({
   advancedChallenge,
   initialHeight,
   initialStackSuccess,
+  nextStepMessage,
 }: Omit<OpRunnerTypes, 'children'>) => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const btnClassName =
@@ -556,6 +557,7 @@ const OpRunner = ({
         errorMessage={error || ''}
         success={success}
         hints
+        nextStepMessage={nextStepMessage}
       />
     </div>
   )

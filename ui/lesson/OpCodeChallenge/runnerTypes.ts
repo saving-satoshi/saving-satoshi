@@ -12,6 +12,7 @@ export interface OpRunnerTypes {
   advancedChallenge?: boolean
   initialHeight?: number
   initialStackSuccess?: string
+  nextStepMessage?: string
 }
 
 export enum TokenTypes {

@@ -30,6 +30,7 @@ export default function OpCodeChallenge({
   advancedChallenge,
   initialHeight,
   initialStackSuccess,
+  nextStepMessage,
 }: OpRunnerTypes) {
   const [hydrated, setHydrated] = useState(false)
 
@@ -62,6 +63,7 @@ export default function OpCodeChallenge({
               initialHeight={initialHeight}
               advancedChallenge={advancedChallenge}
               setSuccess={setSuccess}
+              nextStepMessage={nextStepMessage}
             />
           </ArrowsProvider>
         </div>
