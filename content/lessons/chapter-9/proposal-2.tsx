@@ -6,12 +6,12 @@ import { useEffect, useState } from 'react'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 
 export const metadata = {
-  title: 'chapter_nine.opcodes_five.title',
-  navigation_title: 'chapter_nine.opcodes_five.nav_title',
+  title: 'chapter_nine.proposal_two.title',
+  navigation_title: 'chapter_nine.proposal_two.nav_title',
   key: 'CH9PRP2',
 }
 
-export default function OpCodes5({ lang }) {
+export default function Proposal2({ lang }) {
   const t = useTranslations(lang)
   const [hydrated, setHydrated] = useState(false)
   const [success, setSuccess] = useState<boolean | SuccessNumbers>(0)
@@ -39,17 +39,19 @@ export default function OpCodes5({ lang }) {
         showRunButtons
         success={success}
         setSuccess={setSuccess}
+        initialHeight={6930299}
+        initialStackSuccess="SIG(ME) 0"
       >
         <LessonInfo>
-          <Title>{t('chapter_nine.proposal_one.heading')}</Title>
+          <Title>{t('chapter_nine.proposal_two.heading')}</Title>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_nine.proposal_one.paragraph_one')}
+            {t('chapter_nine.proposal_two.paragraph_one')}
           </Text>
           <Text className="mt-4 font-nunito text-xl font-bold text-white">
-            {t('chapter_nine.proposal_one.paragraph_two')}
+            {t('chapter_nine.proposal_two.paragraph_two')}
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
-            {t('chapter_nine.opcodes_five.paragraph_two')}
+            {t('chapter_nine.proposal_two.paragraph_three')}
           </Text>
         </LessonInfo>
       </OpCodeChallenge>

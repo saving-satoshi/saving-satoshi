@@ -11,7 +11,7 @@ export const metadata = {
   key: 'CH9PRP1',
 }
 
-export default function Proposal2({ lang }) {
+export default function Proposal1({ lang }) {
   const t = useTranslations(lang)
 
   return (

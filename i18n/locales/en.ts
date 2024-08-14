@@ -22,7 +22,7 @@ const translations = {
     error_message: 'Hm... that is not quite right yet...',
     in_progress_message: 'Looking good so far...',
     success_message: 'Nicely done!',
-    next_step_message: 'Looks good now change your stack',
+    next_step_message: 'Looks good now lets move on to the next step.',
     next: 'Next',
   },
   ///ABOUT PAGE
@@ -2543,6 +2543,15 @@ const translations = {
       heading: 'Advance Challenge 1',
       paragraph_one: `The first thing Vanderpoole suggests is a 2-of-2 multisig. All funds that get donated will be split by you and him 50/50, which will be managed by you both signing all spending transactions from the donation address, so you will have to agree on all "withdraws"`,
       paragraph_two: `Vanderpoole hands you his public key, it's PUBKEY(vanderpoole) (yours is PUBKEY(me)).`,
+    },
+    proposal_two: {
+      title: 'Advance Challenge 1',
+      nav_title: 'Advance Challenge 1',
+      heading: 'Advance Challenge 1',
+      paragraph_one: `The first thing Vanderpoole suggests is a 2-of-2 multisig. All funds that get donated will be split by you and him 50/50, which will be managed by you both signing all spending transactions from the donation address, so you will have to agree on all "withdraws"`,
+      paragraph_two: `Vanderpoole hands you his public key, it's PUBKEY(vanderpoole) (yours is PUBKEY(me)).`,
+      paragraph_three: 'Provide the initial stack to spend from the script.',
+      next_step_message: 'Looks good now lets try with your own signature.',
     },
     outro_one: {
       title: 'Outro',

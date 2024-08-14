@@ -143,7 +143,7 @@ const OpRunner = ({
   const isActive = activeView === LessonView.Code
   const [initialStack, setInitialStack] = useState('')
   const [step, setStep] = useState<number>(1)
-  const [height, setHeight] = useState<number>(initialHeight ?? 0)
+  const [height, setHeight] = useState<number>(initialHeight ?? NaN)
   const [lastSuccessState, setLastSuccessState] = useState<
     SuccessNumbers | boolean
   >(0)
@@ -238,8 +238,10 @@ const OpRunner = ({
   }, [stateHistory])
 
   const handleScriptChange = (event) => {
-    setScript(event.target.value.toUpperCase())
-    setStartedTyping(true)
+    if (advanceChallenge && step === 1) {
+      setScript(event.target.value.toUpperCase())
+      setStartedTyping(true)
+    }
   }
 
   const handleInitialStackChange = (event) => {
@@ -335,6 +337,7 @@ const OpRunner = ({
     setSuccess(0)
     setStep(1)
     setHeight(height - 1)
+    setStateHistory([])
   }
 
   const colorizeText = (stackItem: string): string => {
@@ -365,7 +368,7 @@ const OpRunner = ({
             onChange={handleScriptChange}
             autoComplete="off"
             value={script}
-            readOnly={readOnly || (advanceChallenge && step === 2)}
+            readOnly={readOnly}
             placeholder="OP_CODES..."
             autoCapitalize="none"
             spellCheck="false"
@@ -398,11 +401,11 @@ const OpRunner = ({
             <input
               title="Enter any number above 1."
               onChange={handleHeightChange}
+              value={height}
               className="flex-grow border-none bg-transparent text-lg [appearance:textfield] focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               placeholder="6930001"
               type="number"
               min="1"
-              value={height}
             />
           </div>
         </div>
