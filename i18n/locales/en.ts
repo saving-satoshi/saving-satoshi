@@ -17,14 +17,6 @@ const translations = {
     poweroff: 'Back to chapter selection',
     loading: 'Loading',
   },
-  status_bar: {
-    begin_message: 'Complete the challenge above to continue...',
-    error_message: 'Hm... that is not quite right yet...',
-    in_progress_message: 'Looking good so far...',
-    success_message: 'Nicely done!',
-    next_step_message: 'Looks good now lets move on to the next step.',
-    next: 'Next',
-  },
   ///ABOUT PAGE
   about: {
     title: 'About',
@@ -2545,22 +2537,37 @@ const translations = {
       paragraph_two: `For each contract proposal you discuss, provide a Bitcoin script and one valid spending stack.`,
     },
     proposal_two: {
-      title: 'Advance Challenge 1',
-      nav_title: 'Advance Challenge 1',
-      heading: 'Advance Challenge 1',
+      title: 'Advanced Challenge 1',
+      nav_title: 'Advanced Challenge 1',
+      heading: 'Advanced Challenge 1',
       paragraph_one: `The first thing Vanderpoole suggests is a 2-of-2 multisig. All funds that get donated will be split by you and him 50/50, which will be managed by you both signing all spending transactions from the donation address, so you will have to agree on all "withdraws"`,
       paragraph_two: `Vanderpoole hands you his public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
       paragraph_three: 'Provide the initial stack to spend from the script.',
-      next_step_message: 'Looks good now lets try with your own signature.',
+      next_step_message: 'Looks good! Now lets try with your own signature.',
     },
     proposal_three: {
-      title: 'Advance Challenge 2',
-      nav_title: 'Advance Challenge 2',
-      heading: 'Advance Challenge 2',
+      title: 'Advanced Challenge 2',
+      nav_title: 'Advanced Challenge 2',
+      heading: 'Advanced Challenge 2',
       paragraph_one: `Wait a minute, that doesn't make sense -- you don't want to deal with him forever! The new deal is, you get all donations for the next two hours while you are still on TV. After that, he can have whatever else trickles in. You take a look at The Bitcoin Block Clock on the wall in the studio and agree that block height 6930300 will be probably be mined in about two hours`,
       paragraph_two: `Remember Vanderpoole's public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
       paragraph_three: 'Provide the initial stack to spend from the script.',
-      next_step_message: 'Looks good now lets try with your own signature.',
+      next_step_message: 'Looks good! Now lets try with your own signature.',
+    },
+    proposal_four: {
+      title: 'Advanced Challenge 3',
+      nav_title: 'Advanced Challenge 3',
+      heading: 'Advanced Challenge 3',
+      paragraph_one:
+        "Vanderpoole changes his mind again. He doesn't like that deal because of the unknowns. He decides he wants the first 1.0 BTC of total donations, and then you can spend the rest after that.",
+      paragraph_two:
+        'There is no way to check a total balance across multiple UTXOs in Bitcoin script so you agree on an unbiased third-party oracle: Deborah Chunk! She will monitor the total donation amount on the blockchain and once they add up to at least 1.0 BTC she will announce, live on TV, the preimage to a hash value you will commit to in the script.',
+      paragraph_three:
+        'She generates a secure random nonce in private, then hands you the hash digest: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">HASH256(0XFD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one satoshi one second earlier!',
+      paragraph_four: `Remember Vanderpoole's public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
+      paragraph_five: 'Provide the initial stack to spend from the script.',
+      next_step_message:
+        "Let's see if we used our signature with the preimage correctly.",
     },
     outro_one: {
       title: 'Outro',
@@ -2659,6 +2666,20 @@ const translations = {
   disclaimer: {
     description:
       'We’re excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>',
+  },
+
+  opcode: {
+    reset: 'Reset',
+  },
+
+  status_bar: {
+    begin_message: 'Complete the challenge above to continue...',
+    error_message: 'Hm... that is not quite right yet...',
+    in_progress_message: 'Looking good so far...',
+    success_message: 'Nicely done!',
+    next_step_message: 'Looks good now lets move on to the next step.',
+    try_again: 'Try again',
+    next: 'Next',
   },
 
   hasher: {

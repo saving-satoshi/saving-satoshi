@@ -1,6 +1,7 @@
 import { StackType, T, TokenTypes } from './runnerTypes'
 
-const unRecognizedDataTypeRegex = /^(?!\d+$)(?!HASH256)(?!SIG)(?!PUBKEY).*/
+const unRecognizedDataTypeRegex =
+  /^(?!\d+$)(?!HASH256)(?!SIG)(?!PUBKEY)(?!0X).*/
 
 const getKey = (keyData) => {
   if (!keyData) {

@@ -23,6 +23,7 @@ export default function StatusBar({
   successMessage,
   inProgressMessage,
   nextStepMessage,
+  nextStepButton,
   errorMessage,
   full,
   hints,
@@ -36,6 +37,7 @@ export default function StatusBar({
   inProgressMessage?: string
   errorMessage?: string
   nextStepMessage?: string
+  nextStepButton?: string
   full?: boolean
   hints?: boolean | null
   alwaysShow?: boolean
@@ -182,7 +184,7 @@ export default function StatusBar({
               ),
             })}
           >
-            Try again
+            {nextStepButton || t('status_bar.try_again')}
           </Button>
 
           <Button
