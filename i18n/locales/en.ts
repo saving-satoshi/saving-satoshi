@@ -2538,11 +2538,11 @@ const translations = {
       paragraph_four: 'Provide the initial stack to spend from the script.',
     },
     proposal_one: {
-      title: 'Advance Challenge 1',
-      nav_title: 'Advance Challenge 1',
-      heading: 'Advance Challenge 1',
-      paragraph_one: `The first thing Vanderpoole suggests is a 2-of-2 multisig. All funds that get donated will be split by you and him 50/50, which will be managed by you both signing all spending transactions from the donation address, so you will have to agree on all "withdraws"`,
-      paragraph_two: `Vanderpoole hands you his public key, it's PUBKEY(vanderpoole) (yours is PUBKEY(me)).`,
+      title: 'Advanced',
+      nav_title: 'Back to The Story',
+      heading: 'Back to The Story!',
+      paragraph_one: `Nice Work! We've gone over most of the basic opcodes you will need when building the scripts for basic transactions. Now let's put them to the test in some scenarios.`,
+      paragraph_two: `For each contract proposal you discuss, provide a Bitcoin script and one valid spending stack.`,
     },
     proposal_two: {
       title: 'Advance Challenge 1',

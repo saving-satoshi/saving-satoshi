@@ -8,7 +8,6 @@ export interface OpRunnerTypes {
   children?: React.ReactNode
   readOnly?: boolean
   prePopulate?: boolean
-  showRunButtons?: boolean
   advancedChallenge?: boolean
   initialHeight?: number
   initialStackSuccess?: string

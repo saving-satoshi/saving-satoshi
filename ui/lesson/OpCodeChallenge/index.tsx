@@ -23,7 +23,6 @@ export default function OpCodeChallenge({
   children,
   answerScript,
   prePopulate,
-  showRunButtons,
   readOnly,
   success,
   setSuccess,
@@ -57,7 +56,8 @@ export default function OpCodeChallenge({
           <ArrowsProvider>
             <OpRunner
               answerScript={answerScript}
-              showRunButtons={showRunButtons}
+              readOnly={readOnly}
+              prePopulate={prePopulate}
               initialStackSuccess={initialStackSuccess}
               success={success}
               initialHeight={initialHeight}

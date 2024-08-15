@@ -34,7 +34,6 @@ export default function OpCodes10({ lang }) {
           'OP_ENDIF',
         ]}
         prePopulate
-        showRunButtons
         readOnly
         success={success}
         setSuccess={setSuccess}
