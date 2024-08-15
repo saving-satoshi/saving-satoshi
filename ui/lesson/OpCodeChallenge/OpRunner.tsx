@@ -153,7 +153,9 @@ const OpRunner = ({
   const isActive = activeView === LessonView.Code
   const [initialStack, setInitialStack] = useState('')
   const [step, setStep] = useState<number>(1)
-  const [height, setHeight] = useState<number | string>(initialHeight ?? '')
+  const [height, setHeight] = useState<number | undefined>(
+    initialHeight ?? undefined
+  )
   const [lastSuccessState, setLastSuccessState] = useState<
     SuccessNumbers | boolean
   >(0)
