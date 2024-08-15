@@ -11,12 +11,19 @@ import { RelationType } from 'react-archer/lib/types'
 import { useArrows } from 'state/ArrowsContext'
 import { useHorizontalScroll } from 'hooks'
 import { sleep } from 'utils'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const arrowLineStyles = {
   startMarker: true,
   endMarker: false,
   strokeColor: '#3DCFEF',
   strokeWidth: 1.25,
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: -100 },
+  visible: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -100 },
 }
 
 const getRelationsSourceForOperation = (
@@ -154,6 +161,16 @@ const OpRunner = ({
   const scrollPosition = useHorizontalScroll(scrollRef)
 
   const [executor, setExecutor] = useState<LanguageExecutor | null>(null)
+
+  const redrawArrows = useCallback(() => {
+    if (arrowContainerRef?.current) {
+      arrowContainerRef.current.refreshScreen()
+    }
+  }, [arrowContainerRef])
+
+  const handleAnimationComplete = useCallback(() => {
+    redrawArrows()
+  }, [redrawArrows])
 
   const initializeExecutor = () => {
     const initialStackArray = initialStack
@@ -438,115 +455,131 @@ const OpRunner = ({
                 </div>
               </div>
             )}
-
-            {stateHistory.map((stack, opCodeIndex) => {
-              if (error) {
-                return null
-              }
-              if (stack?.error) {
-                error = stack.error?.message
-              }
-              return (
-                stack.negate === 0 && (
-                  <div
-                    key={`Overall-container${opCodeIndex}`}
-                    id={`Overall-container${opCodeIndex}`}
-                    className="flex flex-col"
-                  >
-                    <div
-                      className={clsx(
-                        'my-[5px] w-full rounded-[3px] border border-none bg-black/20 px-3 py-1 text-center font-space-mono text-[13px]',
-                        {
-                          'text-[#EF960B]':
-                            stack.operation.tokenType === 'conditional',
-                          'text-[#3DCFEF]':
-                            stack.operation.tokenType !== 'conditional',
-                          'text-[#F3241D]': stack?.error?.message,
-                        }
-                      )}
+            <AnimatePresence>
+              {stateHistory.map((stack, opCodeIndex) => {
+                if (error) {
+                  return null
+                }
+                if (stack?.error) {
+                  error = stack.error?.message
+                }
+                return (
+                  stack.negate === 0 && (
+                    <motion.div
+                      key={`Overall-container${opCodeIndex}`}
+                      id={`Overall-container${opCodeIndex}`}
+                      className="flex flex-col"
+                      variants={cardVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      transition={{ duration: 0.3, delay: opCodeIndex * 0.1 }}
+                      onUpdate={handleAnimationComplete}
                     >
-                      {stack.operation.value}
-                    </div>
-
-                    {stack && (
                       <div
-                        key={`Container${opCodeIndex}`}
-                        className="flex max-h-[405px] min-h-[204px] min-w-[160px] flex-col self-stretch overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                        className={clsx(
+                          'my-[5px] w-full rounded-[3px] border border-none bg-black/20 px-3 py-1 text-center font-space-mono text-[13px]',
+                          {
+                            'text-[#EF960B]':
+                              stack.operation.tokenType === 'conditional',
+                            'text-[#3DCFEF]':
+                              stack.operation.tokenType !== 'conditional',
+                            'text-[#F3241D]': stack?.error?.message,
+                          }
+                        )}
                       >
-                        <div
-                          key={opCodeIndex}
-                          className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
-                          style={{ whiteSpace: 'pre-wrap' }}
-                        >
-                          {stack?.stack
-                            ?.slice()
-                            .reverse()
-                            .map((item, i) => (
-                              <ArcherElement
-                                id={`item${opCodeIndex}-${i}`}
-                                key={`item${opCodeIndex}-${i}`}
-                                relations={
-                                  (getRelationsTargetForOperations(
-                                    stack.operation.value
-                                  )?.includes(i) &&
-                                    relations.filter((r) =>
-                                      r.targetId.includes(
-                                        `item${opCodeIndex - 1}-`
-                                      )
-                                    )) ||
-                                  []
-                                }
-                              >
-                                <div
-                                  key={`stackItem${i}`}
-                                  id={`stackItem${i}`}
-                                  className={clsx(
-                                    'my-[5px] text-nowrap rounded-[3px] px-3 py-1 text-[13px]',
-                                    {
-                                      'bg-red/35':
-                                        stack.error.message !== null ||
-                                        (opCodeIndex === isFinalToken() - 1 &&
-                                          (stack.stack.length !== 1 ||
-                                            stack.stack[0] === false ||
-                                            stack.error?.message)),
-                                      'bg-green/35':
-                                        stack.error.message === null &&
-                                        opCodeIndex === isFinalToken() - 1 &&
-                                        stack.stack.length === 1 &&
-                                        stack.stack.length === 1 &&
-                                        (stack.stack[0] === true ||
-                                          stack.stack[0] == 1) &&
-                                        !stack.error?.message,
-                                      'bg-white/15':
-                                        (stack.error.message === null &&
-                                          opCodeIndex !== isFinalToken() - 1) ||
-                                        opCodeIndex === 0 ||
-                                        (opCodeIndex === stateHistory.length &&
-                                          stack.stack.length === 1 &&
-                                          Number(stack.stack[0]) > 1),
-                                    }
-                                  )}
-                                >
-                                  {!isNaN(parseFloat(item)) &&
-                                  isFinite(item) ? (
-                                    item
-                                  ) : (
-                                    <span
-                                      dangerouslySetInnerHTML={{
-                                        __html: colorizeText(item.toString()),
-                                      }}
-                                    />
-                                  )}
-                                </div>
-                              </ArcherElement>
-                            ))}
-                        </div>
+                        {stack.operation.value}
                       </div>
-                    )}
-                  </div>
+
+                      {stack && (
+                        <div
+                          key={`Container${opCodeIndex}`}
+                          className="flex max-h-[405px] min-h-[204px] min-w-[160px] flex-col self-stretch overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                        >
+                          <div
+                            key={opCodeIndex}
+                            className="mt-auto resize-none break-all border-none bg-transparent font-space-mono text-white focus:outline-none"
+                            style={{ whiteSpace: 'pre-wrap' }}
+                          >
+                            {stack?.stack
+                              ?.slice()
+                              .reverse()
+                              .map((item, i) => (
+                                <ArcherElement
+                                  id={`item${opCodeIndex}-${i}`}
+                                  key={`item${opCodeIndex}-${i}`}
+                                  relations={
+                                    (getRelationsTargetForOperations(
+                                      stack.operation.value
+                                    )?.includes(i) &&
+                                      relations.filter((r) =>
+                                        r.targetId.includes(
+                                          `item${opCodeIndex - 1}-`
+                                        )
+                                      )) ||
+                                    []
+                                  }
+                                >
+                                  <motion.div
+                                    key={`stackItem${i}`}
+                                    id={`stackItem${i}`}
+                                    className={clsx(
+                                      'my-[5px] text-nowrap rounded-[3px] px-3 py-1 text-[13px]',
+                                      {
+                                        'bg-red/35':
+                                          stack.error.message !== null ||
+                                          (opCodeIndex === isFinalToken() - 1 &&
+                                            (stack.stack.length !== 1 ||
+                                              stack.stack[0] === false ||
+                                              stack.error?.message)),
+                                        'bg-green/35':
+                                          stack.error.message === null &&
+                                          opCodeIndex === isFinalToken() - 1 &&
+                                          stack.stack.length === 1 &&
+                                          stack.stack.length === 1 &&
+                                          (stack.stack[0] === true ||
+                                            stack.stack[0] == 1) &&
+                                          !stack.error?.message,
+                                        'bg-white/15':
+                                          (stack.error.message === null &&
+                                            opCodeIndex !==
+                                              isFinalToken() - 1) ||
+                                          opCodeIndex === 0 ||
+                                          (opCodeIndex ===
+                                            stateHistory.length &&
+                                            stack.stack.length === 1 &&
+                                            Number(stack.stack[0]) > 1),
+                                      }
+                                    )}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{
+                                      duration: 0.2,
+                                      delay: i * 0.05,
+                                    }}
+                                    onUpdate={handleAnimationComplete}
+                                  >
+                                    {!isNaN(parseFloat(item)) &&
+                                    isFinite(item) ? (
+                                      item
+                                    ) : (
+                                      <span
+                                        dangerouslySetInnerHTML={{
+                                          __html: colorizeText(item.toString()),
+                                        }}
+                                      />
+                                    )}
+                                  </motion.div>
+                                </ArcherElement>
+                              ))}
+                          </div>
+                        </div>
+                      )}
+                    </motion.div>
+                  )
                 )
-              )
-            })}
+              })}
+            </AnimatePresence>
           </div>
         </div>
       </div>
