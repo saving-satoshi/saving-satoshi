@@ -1,7 +1,9 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { Introduction, Text, Title } from 'ui'
+import { ChapterIntro } from 'ui'
+import { Button } from 'shared'
+import { useProceed } from 'hooks'
 
 export const metadata = {
   title: 'chapter_nine.proposal_one.title',
@@ -11,17 +13,25 @@ export const metadata = {
 }
 
 export default function Proposal1({ lang }) {
+  const proceed = useProceed()
   const t = useTranslations(lang)
 
   return (
-    <Introduction lang={lang} imagePosition="object-center">
-      <Title>{t('chapter_nine.proposal_one.heading')}</Title>
-      <Text className="mt-4 text-lg md:text-xl">
+    <ChapterIntro
+      className="my-8"
+      heading={t('chapter_nine.proposal_one.heading')}
+    >
+      <p className="mt-2 text-lg md:text-xl">
         {t('chapter_nine.proposal_one.paragraph_one')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
+      </p>
+
+      <p className="mt-8 text-lg md:text-xl">
         {t('chapter_nine.proposal_one.paragraph_two')}
-      </Text>
-    </Introduction>
+      </p>
+
+      <Button onClick={proceed} classes="mt-10 max-md:w-full">
+        {t('shared.next')}
+      </Button>
+    </ChapterIntro>
   )
 }
