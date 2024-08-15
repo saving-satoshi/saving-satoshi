@@ -60,7 +60,7 @@ console.log("KILL")
   // output #1 value (40 BTC or 4,000,000,000 satoshis):
   msg += "00286bee00000000"
 
-  // output #1 scriptPubKey (Satoshi's oen public key again, for change):
+  // output #1 scriptPubKey (Satoshi's own public key again, for change):
   msg += "43410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6"
   msg += "909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656"
   msg += "b412a3ac"
@@ -130,7 +130,7 @@ print("KILL")
     # output #1 value (40 BTC or 4,000,000,000 satoshis):
     msg += "00286bee00000000"
 
-    # output #1 scriptPubKey (Satoshi's oen public key again, for change):
+    # output #1 scriptPubKey (Satoshi's own public key again, for change):
     msg += "43410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6"
     msg += "909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656"
     msg += "b412a3ac"
