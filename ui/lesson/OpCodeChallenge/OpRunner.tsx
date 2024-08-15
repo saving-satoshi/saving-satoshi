@@ -329,7 +329,7 @@ const OpRunner = ({
       step == 1
     ) {
       setStep(2)
-      initialHeight && setHeight(height + 1)
+      initialHeight && height && setHeight(height + 1)
       setInitialStack('')
       return 6
     } else if (
@@ -358,7 +358,7 @@ const OpRunner = ({
   const handleTryAgain = () => {
     setSuccess(0)
     setStep(1)
-    setHeight(height - 1)
+    initialHeight && height && setHeight(height - 1)
     setStateHistory([])
   }
 
