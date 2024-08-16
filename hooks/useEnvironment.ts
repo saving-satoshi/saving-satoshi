@@ -7,6 +7,6 @@ export default function useEnvironment() {
   const devParam = searchParams?.get('dev') || ''
 
   return {
-    isDevelopment: devParam === 'true',
+    isDevelopment: process.env.NODE_ENV !== 'production' && devParam === 'true',
   }
 }
