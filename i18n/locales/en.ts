@@ -312,13 +312,13 @@ const translations = {
       title: 'Zeroes',
       nav_title: 'The computer hums to life',
       paragraph_one:
-        'Either by chance, or because Holocat actually knew what he was doing, the computer turns the random letters and numbers he stepped on turn into... more random letters and numbers?',
+        'Either by chance, or because Holocat actually knew what she was doing, the computer turns the random letters and numbers she stepped on turn into... more random letters and numbers?',
       list_one: '> QX23Y6VGECTUKSNIEUTUB[P[pihof',
       list_two:
         '> 1c31d1d9fb848a505fc0cdbea848ff1bdd46a9ed4d639d413d3a93035194eedf',
       paragraph_two: 'The monitor displays "INCORRECT HASH. TRY AGAIN."',
       paragraph_three:
-        'Of course whatever gibberish Holocat typed was wrong. He’s just a holographic cat!',
+        'Of course whatever gibberish Holocat typed was wrong. She’s just a holographic cat!',
       paragraph_four: 'What happens if you type something different?',
     },
 
@@ -467,7 +467,7 @@ const translations = {
       paragraph_thirteen:
         'Remember, this was just a simulation, each block is supposed to take 10 minutes on average.',
       paragraph_fourteen:
-        'Also, if we were really mining on the current mainnet it would take many orders of maginitude more computing power to mine these blocks.',
+        'Also, if we were really mining on the current mainnet it would take many orders of magnitude more computing power to mine these blocks.',
       progress_bar_title: 'Blocks found',
       progress_bar_one: 'Nonce',
       progress_bar_two: 'Hashes per second',
@@ -951,7 +951,7 @@ const translations = {
       paragraph_one:
         '—VANDERPOOLE: “I didn’t have the courage. There have always been rumors about my family’s history, ones that I could easily put to rest. But I wasn’t ready for that much publicity. After all, I live a humble, secluded life on a private island/dude ranch/castle.”',
       paragraph_two:
-        '—VANDERPOOLE: “But now that bitcoin’s future is on the line, I knew I had to tell the world. I can only say I’m sorry for not coming forth sooner. The CD-ROM also contains Satoshi’s Nakamoto’s revised plans for bitcoin. He always regretted the 21 million supply limit. Even though I plan to fulfill my grandfather’s dream of hard forking bitcoin in favor of perpetual bitcoin issuance.”',
+        '—VANDERPOOLE: “But now that bitcoin’s future is on the line, I knew I had to tell the world. I can only say I’m sorry for not coming forth sooner. The CD-ROM also contains Satoshi’s Nakamoto’s revised plans for bitcoin. He always regretted the 21 million supply limit. Even though I plan to fulfill my great-grandfather’s dream of hard forking bitcoin in favor of perpetual bitcoin issuance.”',
     },
     intro_three: {
       nav_title: 'A message from Satoshi',
@@ -1324,7 +1324,7 @@ const translations = {
       paragraph_one:
         "Mike Ramen needs 1 BTC to book his flight to Vanderpoole's private island. You decide to send him 1 BTC from your chapter 3 mining rewards, which have been sent by the mining pool to the address you created in chapter 4.",
       paragraph_two:
-        'You open you Bitcoin full node and execute a command to see where your money is in the blockchain.',
+        'You open your Bitcoin full node and execute a command to see where your money is in the blockchain.',
       paragraph_three:
         'This is an unspent transaction output (aka "UTXO"). You might recognize your compressed public key hash and address from chapter 4. The amount looks right, too: 1.61 BTC.',
     },
