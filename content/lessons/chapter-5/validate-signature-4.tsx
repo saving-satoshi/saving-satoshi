@@ -108,7 +108,7 @@ function verify_keys(keys) {
     ) {
       return [
         true,
-        'The signature is valid for this public key Vanderpoole used this public key, this was not satoshi!',
+        'The signature is valid for this public key Vanderpoole used this public key, this was not Satoshi!',
       ]
     }
     if (answer === 'true') {
@@ -194,7 +194,7 @@ def verify_keys(keys):
     ) {
       return [
         true,
-        'The signature is valid for this public key Vanderpoole used this public key, this was not satoshi!',
+        'The signature is valid for this public key Vanderpoole used this public key, this was not Satoshi!',
       ]
     }
     if (answer === 'True') {
