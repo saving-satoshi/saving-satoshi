@@ -1,6 +1,7 @@
 import { StackType, T, TokenTypes } from './runnerTypes'
 
-const unRecognizedDataTypeRegex = /^(?!\d+$)(?!HASH256)(?!SIG)(?!PUBKEY).*/
+const unRecognizedDataTypeRegex =
+  /^(?!\d+$)(?!HASH256)(?!SIG)(?!PUBKEY)(?!\b[A-F0-9]+\b).*/
 
 const getKey = (keyData) => {
   if (!keyData) {
@@ -52,7 +53,9 @@ export const opFunctions: { [key: string]: Function } = {
     ) {
       return {
         value: null,
-        error: 'INITIAL_STACK: unrecognized data type',
+        error: `INITIAL_STACK: unrecognized data type: ${stack
+          .join(' ')
+          .match(unRecognizedDataTypeRegex)}`,
       }
     }
     return {

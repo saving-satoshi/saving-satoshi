@@ -9,7 +9,7 @@ import { MainState, OpRunnerTypes, StackType, State, T } from './runnerTypes'
 import { ArcherElement } from 'react-archer'
 import { RelationType } from 'react-archer/lib/types'
 import { useArrows } from 'state/ArrowsContext'
-import { useHorizontalScroll } from 'hooks'
+import { useHorizontalScroll, useLang, useTranslations } from 'hooks'
 import { sleep } from 'utils'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -141,6 +141,8 @@ const OpRunner = ({
   initialStackSuccess,
   nextStepMessage,
 }: Omit<OpRunnerTypes, 'children'>) => {
+  const lang = useLang()
+  const t = useTranslations(lang)
   const scrollRef = useRef<HTMLDivElement>(null)
   const btnClassName =
     'bg-black/10 py-[3px] px-2.5 rounded-[3px] text-white font-space-mono disabled:opacity-25'
@@ -151,7 +153,9 @@ const OpRunner = ({
   const isActive = activeView === LessonView.Code
   const [initialStack, setInitialStack] = useState('')
   const [step, setStep] = useState<number>(1)
-  const [height, setHeight] = useState<number>(initialHeight ?? NaN)
+  const [height, setHeight] = useState<number | undefined>(
+    initialHeight ?? undefined
+  )
   const [lastSuccessState, setLastSuccessState] = useState<
     SuccessNumbers | boolean
   >(0)
@@ -325,7 +329,7 @@ const OpRunner = ({
       step == 1
     ) {
       setStep(2)
-      setHeight(height + 1)
+      initialHeight && height && setHeight(height + 1)
       setInitialStack('')
       return 6
     } else if (
@@ -354,7 +358,7 @@ const OpRunner = ({
   const handleTryAgain = () => {
     setSuccess(0)
     setStep(1)
-    setHeight(height - 1)
+    initialHeight && height && setHeight(height - 1)
     setStateHistory([])
   }
 
@@ -591,6 +595,7 @@ const OpRunner = ({
         success={success}
         hints
         nextStepMessage={nextStepMessage}
+        nextStepButton={nextStepMessage ? t('opcode.reset') : undefined}
       />
     </div>
   )

@@ -112,7 +112,8 @@ class LanguageExecutor {
   private executeToken(element: T[number]): State {
     const currentStack = [...this.stack]
     const currentNegate = this.negate
-    const unRecognizedDataTypeRegex = /^(?!\d+$)(?!HASH256)(?!SIG)(?!PUBKEY).*/
+    const unRecognizedDataTypeRegex =
+      /^(?!\d+$)(?!HASH256)(?!SIG)(?!PUBKEY)(?!\b[A-F0-9]+\b).*/
     let opResolves: any
     let error: RunnerError = { type: '', message: null }
 
@@ -125,7 +126,9 @@ class LanguageExecutor {
     ) {
       error = {
         type: 'unknown',
-        message: 'STACK_ERR: Unrecognized data type',
+        message: `STACK_ERR: Unrecognized data type: ${currentStack
+          .join(' ')
+          .match(unRecognizedDataTypeRegex)}`,
       }
     }
 
