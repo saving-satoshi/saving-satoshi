@@ -2563,7 +2563,7 @@ const translations = {
       paragraph_two:
         'There is no way to check a total balance across multiple UTXOs in Bitcoin script so you agree on an unbiased third-party oracle: Deborah Chunk! She will monitor the total donation amount on the blockchain and once they add up to at least 1.0 BTC she will announce, live on TV, the preimage to a hash value you will commit to in the script.',
       paragraph_three:
-        'She generates a secure random nonce in private, then hands you the hash digest: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">HASH256(0XFD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one satoshi one second earlier!',
+        'She generates a secure random nonce in private, then hands you the hash digest: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">HASH256(FD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one satoshi one second earlier!',
       paragraph_four: `Remember Vanderpoole's public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
       paragraph_five: 'Provide the initial stack to spend from the script.',
       next_step_message:

@@ -28,7 +28,7 @@ export default function Proposal4({ lang }) {
           'OP_ELSE',
           'OP_HASH256',
           'OP_PUSH',
-          'HASH256(0XFD3771E8)',
+          'HASH256(FD3771E8)',
           'OP_EQUALVERIFY',
           'OP_PUSH',
           'PUBKEY(ME)',
@@ -38,7 +38,7 @@ export default function Proposal4({ lang }) {
         advancedChallenge
         success={success}
         setSuccess={setSuccess}
-        initialStackSuccess="SIG(ME) 0XFD3771E8 0"
+        initialStackSuccess="SIG(ME) FD3771E8 0"
         nextStepMessage={t('chapter_nine.proposal_four.next_step_message')}
       >
         <LessonInfo>
