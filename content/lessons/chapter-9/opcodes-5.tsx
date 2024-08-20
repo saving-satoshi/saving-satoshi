@@ -21,7 +21,7 @@ export default function OpCodes5({ lang }) {
   return (
     hydrated && (
       <OpCodeChallenge
-        answerScript={['OP_ADD', 'OP_3', 'OP_EQUAL']}
+        answerScript={['OP_3', 'OP_ADD', 'OP_EQUAL']}
         prePopulate
         readOnly
         success={success}

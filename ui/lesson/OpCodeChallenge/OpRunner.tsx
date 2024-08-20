@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react'
 import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
 import _ from 'lodash'
-import { StatusBar, useLessonContext } from 'ui'
+import { StatusBar, useLessonContext, ScratchDnD } from 'ui'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 import { LessonView } from 'types'
 import { MainState, OpRunnerTypes, StackType, State, T } from './runnerTypes'
@@ -266,6 +266,13 @@ const OpRunner = ({
     }
   }
 
+  const handleDnDData = (data) => {
+    if (!advancedChallenge || (advancedChallenge && step === 1)) {
+      setScript(data.join(' ').toUpperCase())
+      setStartedTyping(true)
+    }
+  }
+
   const handleInitialStackChange = (event) => {
     setInitialStack(event.target.value.toUpperCase())
     setStartedTyping(true)
@@ -384,7 +391,7 @@ const OpRunner = ({
           <p className="font-space-mono text-lg font-bold capitalize ">
             Your Script
           </p>
-          <textarea
+          {/*<textarea
             title="Add OP_CODES seperated by spaces."
             className="overflow-wrap-normal w-full resize-none break-all border-none bg-transparent font-space-mono text-lg uppercase text-white focus:outline-none"
             onChange={handleScriptChange}
@@ -395,7 +402,8 @@ const OpRunner = ({
             autoCapitalize="none"
             spellCheck="false"
             rows={4}
-          />
+          />*/}
+          <ScratchDnD items={answerScript} onItemsUpdate={handleDnDData} />
         </div>
 
         <div className="flex flex-col flex-wrap border-b border-b-white">
@@ -433,7 +441,7 @@ const OpRunner = ({
         </div>
         <div className="flex grow flex-col px-5 ">
           <div className="flex w-full flex-row justify-between py-3">
-            <p className="font-mono text-lg font-bold">Execution stack</p>
+            <p className="font-mono text-lg font-bold">Execution Stack</p>
           </div>
           <div
             ref={scrollRef}
