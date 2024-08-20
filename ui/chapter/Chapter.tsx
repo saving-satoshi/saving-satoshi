@@ -220,10 +220,7 @@ export default function Chapter({ children, metadata, lang }) {
                         chapter.metadata.lessons.length === 0 ||
                         isLoading ||
                         !display ||
-                        (!isLoading &&
-                          position !== 1 &&
-                          !account &&
-                          !isAccountLoading)
+                        (!account && position !== 1)
                       }
                       classes={clsx('w-full', {
                         hidden:
