@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 
 export default function Button({
   href,
@@ -26,7 +25,6 @@ export default function Button({
   full?: boolean
   round?: boolean
 }) {
-  const router = useRouter()
   const isLink = href !== undefined
   let className = `inline-block justify-center px-12 text-center font-nunito font-bold transition duration-150 ease-in-out ${
     full ? 'w-full' : 'md:w-auto'
@@ -103,10 +101,6 @@ export default function Button({
 
   if (round) {
     className += ' rounded'
-  }
-  // Prefetch the URL when the component loads
-  if (href && !disabled && !external) {
-    router.prefetch(href)
   }
 
   if (isLink) {
