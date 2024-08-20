@@ -7,6 +7,12 @@ export default function useEnvironment() {
   const devParam = searchParams?.get('dev') || ''
 
   return {
-    isDevelopment: process.env.NODE_ENV !== 'production' && devParam === 'true',
+    isDevelopment:
+      // Check if we're not in production
+      process.env.NODE_ENV !== 'production'
+        ? // If not in production, check if devParam is 'true'
+          devParam === 'true'
+        : // If in production, check if devParam matches the secret
+          devParam === process.env.DEV_MODE_SECRET,
   }
 }
