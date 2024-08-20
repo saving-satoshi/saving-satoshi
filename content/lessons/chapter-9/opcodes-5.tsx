@@ -20,6 +20,7 @@ export default function OpCodes5({ lang }) {
   }, [])
   console.log(
     process.env.DEV_MODE_SECRET,
+    process.env.NODE_ENV,
     process.env.NODE_ENV !== 'production'
   )
   return (
