@@ -18,6 +18,10 @@ export default function OpCodes5({ lang }) {
   useEffect(() => {
     setHydrated(true)
   }, [])
+  console.log(
+    process.env.DEV_MODE_SECRET,
+    process.env.NODE_ENV !== 'production'
+  )
   return (
     hydrated && (
       <OpCodeChallenge
