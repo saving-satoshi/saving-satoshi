@@ -9,7 +9,8 @@ export default function useEnvironment() {
   return {
     isDevelopment:
       // Check if we're not in production
-      process.env.NODE_ENV !== 'production'
+      process.env.NODE_ENV !== 'production' &&
+      window?.location.host !== 'savingsatoshi.com'
         ? // If not in production, check if devParam is 'true'
           devParam === 'true'
         : // If in production, check if devParam matches the secret
