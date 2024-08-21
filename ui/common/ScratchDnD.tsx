@@ -159,7 +159,7 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                         {(provided, snapshot) => (
                           <div
                             className={clsx(
-                              'arrow-box relative mx-1.5 flex h-[28px] items-center bg-gray-500 p-1',
+                              'arrow-box relative mx-1.5 flex h-[28px] select-none items-center bg-gray-500 p-1',
                               {
                                 'pointer-events-none': prePopulate,
                               }
@@ -175,7 +175,7 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                       </Draggable>
                     ))
                   ) : (
-                    <div className="arrow-box-25 relative mx-1.5 flex h-[28px] items-center bg-gray-500/25 p-1 text-white/25">
+                    <div className="arrow-box-25 relative mx-1.5 flex h-[28px] select-none items-center bg-gray-500/25 p-1 text-white/25">
                       OP_CODES...
                     </div>
                   )}
@@ -186,10 +186,14 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
           )
         })}
       </div>
-      <Droppable droppableId="ITEMS" isDropDisabled={true}>
+      <Droppable
+        droppableId="ITEMS"
+        isDropDisabled={true}
+        direction="horizontal"
+      >
         {(provided, snapshot) => (
           <ul
-            className="flex h-full flex-col flex-wrap overflow-auto px-1 font-space-mono text-sm"
+            className="flex h-full flex-row flex-wrap overflow-auto px-1 font-space-mono text-sm"
             ref={provided.innerRef}
           >
             {ITEMS.map((item, index) => (
@@ -198,7 +202,7 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                   <Fragment>
                     <div
                       className={clsx(
-                        'relative mx-1.5 my-0.5 flex h-[28px] w-fit items-center p-1',
+                        'relative mx-1.5 my-0.5 flex h-[28px] w-fit select-none items-center p-1',
                         {
                           'arrow-box-25 pointer-events-none bg-gray-500/25 text-white/25':
                             prePopulate,
@@ -213,9 +217,9 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                       {item.content}
                     </div>
                     {snapshot.isDragging && (
-                      <span className="arrow-box relative my-0.5 flex h-[28px] w-fit items-center bg-gray-500 p-1">
+                      <div className="arrow-box relative mx-1.5 my-0.5 flex h-[28px] w-fit select-none items-center bg-gray-500 p-1">
                         {item.content}
-                      </span>
+                      </div>
                     )}
                   </Fragment>
                 )}
