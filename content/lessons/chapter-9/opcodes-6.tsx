@@ -21,6 +21,7 @@ export default function OpCodes6({ lang }) {
   return (
     hydrated && (
       <OpCodeChallenge
+        lang={lang}
         answerScript={[
           'OP_DUP',
           'OP_HASH256',
