@@ -576,7 +576,11 @@ const OpRunner = ({
           </div>
         </div>
       </div>
-      <OpCodeRunner handleRun={handleStep} success={lastSuccessState} />
+      <OpCodeRunner
+        lang="en"
+        handleRun={handleStep}
+        success={lastSuccessState}
+      />
     </div>
   )
 }
