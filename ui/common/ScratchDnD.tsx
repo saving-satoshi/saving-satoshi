@@ -3,6 +3,8 @@
 import { Fragment, useState, useEffect } from 'react'
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd'
 import { v4 as uuid } from 'uuid'
+import clsx from 'clsx'
+import { OpCodeArray } from '../lesson/OpCodeChallenge/OpFunctions'
 
 type ItemType = {
   id: string
@@ -50,12 +52,21 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   return result
 }
 
-const ScratchDnD = ({ items, onItemsUpdate }) => {
-  const [state, setState] = useState<StateType>({
-    [uuid()]: [],
-  })
+const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
+  const initialState = prePopulate
+    ? {
+        [uuid()]: items.map((item) => ({
+          id: uuid(),
+          content: item,
+        })),
+      }
+    : {
+        [uuid()]: [],
+      }
 
-  const ITEMS = items.map((item) => ({
+  const [state, setState] = useState<StateType>(initialState)
+
+  const ITEMS = OpCodeArray.map((item) => ({
     id: uuid(),
     content: item,
   }))
@@ -129,13 +140,13 @@ const ScratchDnD = ({ items, onItemsUpdate }) => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="mb-14">
+      <div className="mb-2">
         {Object.keys(state).map((list, i) => {
           return (
             <Droppable key={list} droppableId={list} direction="horizontal">
               {(provided, snapshot) => (
                 <ul
-                  className="flex flex-row font-space-mono text-lg"
+                  className="flex flex-row overflow-auto px-1 pb-4 font-space-mono text-sm"
                   ref={provided.innerRef}
                 >
                   {state[list].length ? (
@@ -147,7 +158,12 @@ const ScratchDnD = ({ items, onItemsUpdate }) => {
                       >
                         {(provided, snapshot) => (
                           <div
-                            className="arrow-box relative mx-2.5 flex h-[58px] items-center bg-gray-500 p-1"
+                            className={clsx(
+                              'arrow-box relative mx-1.5 flex h-[28px] items-center bg-gray-500 p-1',
+                              {
+                                'pointer-events-none': prePopulate,
+                              }
+                            )}
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
@@ -159,7 +175,7 @@ const ScratchDnD = ({ items, onItemsUpdate }) => {
                       </Draggable>
                     ))
                   ) : (
-                    <div className="arrow-box-25 relative mx-2.5 flex h-[58px] items-center bg-gray-500/25 p-1 text-white/25">
+                    <div className="arrow-box-25 relative mx-1.5 flex h-[28px] items-center bg-gray-500/25 p-1 text-white/25">
                       OP_CODES...
                     </div>
                   )}
@@ -170,14 +186,10 @@ const ScratchDnD = ({ items, onItemsUpdate }) => {
           )
         })}
       </div>
-      <Droppable
-        droppableId="ITEMS"
-        isDropDisabled={true}
-        direction="horizontal"
-      >
+      <Droppable droppableId="ITEMS" isDropDisabled={true}>
         {(provided, snapshot) => (
           <ul
-            className="flex flex-row font-space-mono text-lg"
+            className="flex h-full flex-col flex-wrap overflow-auto px-1 font-space-mono text-sm"
             ref={provided.innerRef}
           >
             {ITEMS.map((item, index) => (
@@ -185,7 +197,14 @@ const ScratchDnD = ({ items, onItemsUpdate }) => {
                 {(provided, snapshot) => (
                   <Fragment>
                     <div
-                      className="arrow-box relative mx-2.5 flex h-[58px] items-center bg-gray-500 p-1"
+                      className={clsx(
+                        'relative mx-1.5 my-0.5 flex h-[28px] w-fit items-center p-1',
+                        {
+                          'arrow-box-25 pointer-events-none bg-gray-500/25 text-white/25':
+                            prePopulate,
+                          'arrow-box bg-gray-500': !prePopulate,
+                        }
+                      )}
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
@@ -194,7 +213,7 @@ const ScratchDnD = ({ items, onItemsUpdate }) => {
                       {item.content}
                     </div>
                     {snapshot.isDragging && (
-                      <span className="arrow-box relative mx-2.5 flex h-[58px] items-center bg-gray-500 p-1">
+                      <span className="arrow-box relative my-0.5 flex h-[28px] w-fit items-center bg-gray-500 p-1">
                         {item.content}
                       </span>
                     )}

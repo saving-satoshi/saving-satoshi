@@ -1,4 +1,4 @@
-import { OpCodeTypes, opFunctions } from './OPFunctions'
+import { OpCodeTypes, opFunctions } from './OpFunctions'
 import {
   MainState,
   StackType,
