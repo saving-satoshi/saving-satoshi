@@ -385,3 +385,25 @@ input:checked + .slider:before {
   border-width: 29px 0 29px 20px;
   border-color: #6a717f #6a717f #6a717f transparent;
 }
+
+.arrow-box-25::before,
+.arrow-box-25::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.arrow-box-25::before {
+  @apply top-1/2 left-full transform -translate-y-1/2;
+  border-width: 29px 0 29px 20px;
+  border-color: transparent transparent transparent #6a717f40;
+}
+
+.arrow-box-25::after {
+  @apply top-1/2 -left-4 transform -translate-y-1/2;
+  border-width: 29px 0 29px 20px;
+  border-color: #6a717f40 #6a717f40 #6a717f40 transparent;
+}
+

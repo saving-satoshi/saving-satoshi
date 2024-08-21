@@ -25,8 +25,6 @@ const reorder = (list, startIndex, endIndex) => {
  * Moves an item from one list to another list.
  */
 const copy = (source, destination, droppableSource, droppableDestination) => {
-  console.log('==> dest', destination)
-
   const sourceClone = Array.from(source)
   const destClone = Array.from(destination)
   const item = sourceClone[droppableSource.index]
@@ -65,7 +63,19 @@ const ScratchDnD = ({ items, onItemsUpdate }) => {
   const onDragEnd = (result) => {
     const { source, destination } = result
 
-    if (!destination) {
+    if (!destination && source.droppableId in state) {
+      // Handle the deletion of the item
+      setState((prevState) => {
+        const newSourceList = Array.from(prevState[source.droppableId])
+        newSourceList.splice(source.index, 1)
+
+        return {
+          ...prevState,
+          [source.droppableId]: newSourceList,
+        }
+      })
+      return
+    } else if (!destination) {
       return
     }
 
@@ -121,7 +131,6 @@ const ScratchDnD = ({ items, onItemsUpdate }) => {
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="mb-14">
         {Object.keys(state).map((list, i) => {
-          console.log('==> list', list)
           return (
             <Droppable key={list} droppableId={list} direction="horizontal">
               {(provided, snapshot) => (
@@ -138,7 +147,7 @@ const ScratchDnD = ({ items, onItemsUpdate }) => {
                       >
                         {(provided, snapshot) => (
                           <div
-                            className="arrow-box relative mx-4 flex h-[58px] items-center bg-gray-500 p-1"
+                            className="arrow-box relative mx-2.5 flex h-[58px] items-center bg-gray-500 p-1"
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
@@ -150,7 +159,9 @@ const ScratchDnD = ({ items, onItemsUpdate }) => {
                       </Draggable>
                     ))
                   ) : (
-                    <div className="flex p-1 text-white/50">OP_CODES...</div>
+                    <div className="arrow-box-25 relative mx-2.5 flex h-[58px] items-center bg-gray-500/25 p-1 text-white/25">
+                      OP_CODES...
+                    </div>
                   )}
                   {provided.placeholder}
                 </ul>
@@ -174,7 +185,7 @@ const ScratchDnD = ({ items, onItemsUpdate }) => {
                 {(provided, snapshot) => (
                   <Fragment>
                     <div
-                      className="arrow-box relative mx-4 flex h-[58px] items-center bg-gray-500 p-1"
+                      className="arrow-box relative mx-2.5 flex h-[58px] items-center bg-gray-500 p-1"
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
@@ -183,7 +194,7 @@ const ScratchDnD = ({ items, onItemsUpdate }) => {
                       {item.content}
                     </div>
                     {snapshot.isDragging && (
-                      <span className="arrow-box relative mx-4 flex h-[58px] items-center bg-gray-500 p-1">
+                      <span className="arrow-box relative mx-2.5 flex h-[58px] items-center bg-gray-500 p-1">
                         {item.content}
                       </span>
                     )}
