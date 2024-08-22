@@ -2340,7 +2340,7 @@ const translations = {
       nav_title: 'Bitcoin Script',
       heading: 'The stack',
       paragraph_one:
-        "Think of a stack of books [IMAGE!]. If you want to add a book, you have to place it on top of the stack, there's nowhere else for it to go. If you want to read a book, the only one you can access is the one on top of the stack. Even if you want more than one you have start at the top of the stack and work your way down. In computing terms, a stack is like an array of data items with two operations:",
+        "Think of a stack of books 📚. If you want to add a book, you have to place it on top of the stack, there's nowhere else for it to go. If you want to read a book, the only one you can access is the one on top of the stack. Even if you want more than one you have start at the top of the stack and work your way down. In computing terms, a stack is like an array of data items with two operations:",
       paragraph_two:
         '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_PUSH</span> Add an item to the "top" of the stack.',
       paragraph_three:
@@ -2506,7 +2506,7 @@ const translations = {
       nav_title: 'Time Locks',
       heading: 'Time Locks',
       paragraph_one:
-        "Way back in the last century a document entitled BIP 65 proposed a new opcode to Bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an OP_DROP as well.. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immedeatly with an error.",
+        "Way back in the last century a document entitled BIP 65 proposed a new opcode to Bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an OP_DROP as well.. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.",
       subheading_one: 'Opcodes that do block timelocks',
       optimelock_list_one_heading:
         '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_DROP</span>',
