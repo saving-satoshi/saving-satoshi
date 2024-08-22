@@ -9,6 +9,12 @@ import { OpCodeTypes } from '../lesson/OpCodeChallenge/OpFunctions'
 type ItemType = {
   id: number
   content: string
+  category: string
+}
+
+interface Group {
+  heading: string
+  items: ItemType[]
 }
 
 type StateType = {
@@ -130,12 +136,15 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
     }
   }
 
-  const groupedItems = ITEMS.reduce((groups, item) => {
+  const groupedItems = ITEMS.reduce<Group[]>((groups, item) => {
     const group = groups.find((g) => g.heading === item.category)
     if (group) {
       group.items.push(item)
     } else {
-      groups.push({ heading: item.category, items: [item] })
+      groups.push({
+        heading: item.category,
+        items: [item],
+      })
     }
     return groups
   }, [])
@@ -164,7 +173,7 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                     state[list].map((item, index) => (
                       <Draggable
                         key={item.id}
-                        draggableId={item.id}
+                        draggableId={item.content}
                         index={index}
                       >
                         {(provided, snapshot) => (
