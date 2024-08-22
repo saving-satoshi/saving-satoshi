@@ -2,7 +2,6 @@
 
 import { useMediaQuery, useTranslations } from 'hooks'
 import { HolocatQuestion, TextImage } from 'ui'
-import Lottie from 'react-lottie'
 import Animation1 from 'public/assets/animations/Animation1.json'
 import focusellipse from 'public/assets/images/focus-ellipse.png'
 import Circle from 'shared/icons/Circle'
@@ -11,12 +10,15 @@ import { useEffect, useState } from 'react'
 import { sleep } from 'utils'
 import Image from 'next/image'
 import { chapters } from 'content/chapters'
+import dynamic from 'next/dynamic'
 
 export const metadata = {
   title: 'chapter_four.public_key_two.title',
   navigation_title: 'chapter_four.public_key_two.nav_title',
   key: 'CH4PKY2',
 }
+
+const Lottie = dynamic(() => import('react-lottie'), { ssr: false })
 
 export default function PublicKey2({ lang }) {
   const t = useTranslations(lang)
@@ -93,6 +95,7 @@ export default function PublicKey2({ lang }) {
             <hr className="relative left-[100px] top-[-111px] w-[300px] rotate-90 opacity-25 xl:left-[200px] xl:top-[-211px] xl:w-[600px]" />
             <div className="relative left-[25px] top-[-261px] xl:left-[50] xl:top-[-512px]">
               <Lottie
+                //@ts-ignore
                 options={options}
                 height={lottieScreen[0]}
                 width={lottieScreen[1]}

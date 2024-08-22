@@ -30,6 +30,7 @@ export default function StatusBar({
   alwaysShow,
   handleTryAgain,
   className,
+  textClass,
 }: {
   success: boolean | SuccessNumbers | null
   beginMessage?: string
@@ -43,6 +44,7 @@ export default function StatusBar({
   alwaysShow?: boolean
   handleTryAgain?: (pressed: boolean) => void
   className?: string
+  textClass?: string
 }) {
   const lang = useLang()
   const t = useTranslations(lang)
@@ -159,10 +161,16 @@ export default function StatusBar({
       )}
     >
       <div className="flex flex-col items-stretch justify-between max-md:gap-4 md:h-14 md:flex-row">
-        <div className="flex items-center align-middle transition duration-150 ease-in-out md:px-5">
+        <div
+          className={clsx(
+            'flex items-center align-middle transition duration-150 ease-in-out md:px-5',
+            textClass
+          )}
+        >
           <div
             className={clsx(
               'font-nunito text-[21px] transition duration-150 ease-in-out',
+              textClass,
               {
                 'text-white opacity-50': getStatus() === Status.Begin,
                 'text-white': getStatus() !== Status.Error,

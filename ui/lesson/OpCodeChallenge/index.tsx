@@ -21,6 +21,7 @@ const tabData = [
 
 export default function OpCodeChallenge({
   children,
+  lang,
   answerScript,
   prePopulate,
   readOnly,
@@ -55,6 +56,7 @@ export default function OpCodeChallenge({
         <div className="height-minus-nav flex border-white/25 md:max-w-[50vw] md:border-l">
           <ArrowsProvider>
             <OpRunner
+              lang={lang}
               answerScript={answerScript}
               readOnly={readOnly}
               prePopulate={prePopulate}

@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from 'react'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 
 export interface OpRunnerTypes {
+  lang: any
   answerScript: string[]
   success: boolean | SuccessNumbers
   setSuccess: Dispatch<SetStateAction<number | boolean>>
