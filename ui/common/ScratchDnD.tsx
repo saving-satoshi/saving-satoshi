@@ -1,19 +1,21 @@
 'use client'
 
-import { Fragment, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd'
 import { v4 as uuid } from 'uuid'
 import clsx from 'clsx'
-import { OpCodeArray } from '../lesson/OpCodeChallenge/OpFunctions'
+import { OpCodeTypes } from '../lesson/OpCodeChallenge/OpFunctions'
 
 type ItemType = {
-  id: string
+  id: number
   content: string
 }
 
 type StateType = {
   [key: string]: ItemType[]
 }
+
+const disabledOpCodes = ['INITIAL_STACK']
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -55,8 +57,8 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
   const initialState = prePopulate
     ? {
-        [uuid()]: items.map((item) => ({
-          id: uuid(),
+        [uuid()]: items.map((item, index) => ({
+          id: index,
           content: item,
         })),
       }
@@ -66,10 +68,13 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
 
   const [state, setState] = useState<StateType>(initialState)
 
-  const ITEMS = OpCodeArray.map((item) => ({
-    id: uuid(),
-    content: item,
-  }))
+  const ITEMS = Object.keys(OpCodeTypes)
+    .filter((key) => !disabledOpCodes.includes(key))
+    .map((item, index) => ({
+      id: index,
+      content: item,
+      category: OpCodeTypes[item],
+    }))
 
   const onDragEnd = (result) => {
     const { source, destination } = result
@@ -125,9 +130,15 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
     }
   }
 
-  const addList = (e) => {
-    setState({ [uuid()]: [] })
-  }
+  const groupedItems = ITEMS.reduce((groups, item) => {
+    const group = groups.find((g) => g.heading === item.category)
+    if (group) {
+      group.items.push(item)
+    } else {
+      groups.push({ heading: item.category, items: [item] })
+    }
+    return groups
+  }, [])
 
   useEffect(() => {
     const updatedItems = Object.values(state).flatMap((arr) =>
@@ -193,14 +204,19 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
       >
         {(provided, snapshot) => (
           <ul
-            className="flex h-full flex-row flex-wrap overflow-auto px-1 font-space-mono text-sm"
+            dir="rtl"
+            className="block overflow-y-auto px-1 font-space-mono text-sm"
             ref={provided.innerRef}
           >
+            {/*<div
+              className="flex flex-row-reverse flex-wrap pl-1"
+            >
             {ITEMS.map((item, index) => (
               <Draggable key={item.id} draggableId={item.id} index={index}>
                 {(provided, snapshot) => (
-                  <Fragment>
+                  <>
                     <div
+                      id={item.id}
                       className={clsx(
                         'relative mx-1.5 my-0.5 flex h-[28px] w-fit select-none items-center p-1',
                         {
@@ -221,9 +237,52 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                         {item.content}
                       </div>
                     )}
-                  </Fragment>
+                  </>
                 )}
               </Draggable>
+            ))}
+            </div>*/}
+            {groupedItems.map((group, groupIndex) => (
+              <div key={groupIndex} className="flex flex-row-reverse">
+                <h2 className="mb-2 min-w-[160px] text-left text-xl font-semibold">
+                  {group.heading}
+                </h2>
+                <div className="flex w-full flex-row-reverse overflow-x-auto pl-1">
+                  {group.items.map((item, index) => (
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.content}
+                      index={item.id}
+                    >
+                      {(provided, snapshot) => (
+                        <>
+                          <div
+                            className={clsx(
+                              'relative mx-1.5 my-0.5 flex h-[28px] w-fit select-none items-center p-1',
+                              {
+                                'arrow-box-25 pointer-events-none bg-gray-500/25 text-white/25':
+                                  prePopulate,
+                                'arrow-box bg-gray-500': !prePopulate,
+                              }
+                            )}
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            style={provided.draggableProps.style}
+                          >
+                            {item.content}
+                          </div>
+                          {snapshot.isDragging && (
+                            <div className="arrow-box relative mx-1.5 my-0.5 flex h-[28px] w-fit select-none items-center bg-gray-500 p-1">
+                              {item.content}
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </Draggable>
+                  ))}
+                </div>
+              </div>
             ))}
             {provided.placeholder}
           </ul>
