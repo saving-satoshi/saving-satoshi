@@ -387,8 +387,8 @@ const OpRunner = ({
       })}
     >
       <div className="flex h-[calc(100vh-70px-67px)] grow flex-col text-white">
-        <div className="flex h-[25vh] flex-col gap-1 border-b border-b-white px-5 py-4">
-          <p className="font-space-mono text-lg font-bold capitalize ">
+        <div className="flex h-[25vh] flex-col gap-1 border-b border-b-white py-4 pl-2.5 pr-5">
+          <p className="pl-2.5 font-space-mono text-lg font-bold capitalize">
             Your Script
           </p>
           {/*<textarea

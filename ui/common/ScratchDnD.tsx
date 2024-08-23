@@ -64,7 +64,8 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
   const initialState = prePopulate
     ? {
         [uuid()]: items.map((item, index) => ({
-          id: index,
+          id: uuid(),
+          index: index,
           content: item,
         })),
       }
@@ -77,7 +78,8 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
   const ITEMS = Object.keys(OpCodeTypes)
     .filter((key) => !disabledOpCodes.includes(key))
     .map((item, index) => ({
-      id: index,
+      id: uuid(),
+      index: index,
       content: item,
       category: OpCodeTypes[item],
     }))
@@ -160,7 +162,7 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="mb-2">
+      <div className="mb-2 pl-2.5">
         {Object.keys(state).map((list, i) => {
           return (
             <Droppable key={list} droppableId={list} direction="horizontal">
@@ -173,11 +175,12 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                     state[list].map((item, index) => (
                       <Draggable
                         key={item.id}
-                        draggableId={item.content}
+                        draggableId={item.id}
                         index={index}
                       >
                         {(provided, snapshot) => (
                           <div
+                            id={index}
                             className={clsx(
                               'arrow-box relative mx-1.5 flex h-[28px] select-none items-center bg-gray-500 p-1',
                               {
@@ -214,14 +217,14 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
         {(provided, snapshot) => (
           <ul
             dir="rtl"
-            className="block overflow-y-auto px-1 font-space-mono text-sm"
+            className="block overflow-y-auto pl-2.5 font-space-mono text-sm"
             ref={provided.innerRef}
           >
             {/*<div
               className="flex flex-row-reverse flex-wrap pl-1"
             >
             {ITEMS.map((item, index) => (
-              <Draggable key={item.id} draggableId={item.id} index={index}>
+              <Draggable key={item.id} draggableId={item.id} index={item.index}>
                 {(provided, snapshot) => (
                   <>
                     <div
@@ -260,12 +263,13 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                   {group.items.map((item, index) => (
                     <Draggable
                       key={item.id}
-                      draggableId={item.content}
-                      index={item.id}
+                      draggableId={item.id}
+                      index={item.index}
                     >
                       {(provided, snapshot) => (
                         <>
                           <div
+                            id={index}
                             className={clsx(
                               'relative mx-1.5 my-0.5 flex h-[28px] w-fit select-none items-center p-1',
                               {
