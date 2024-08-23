@@ -578,6 +578,8 @@ const OpRunner = ({
       </div>
       <OpCodeRunner
         lang="en"
+        errorMessage={error || ''}
+        handleTryAgain={handleTryAgain}
         handleRun={handleStep}
         success={lastSuccessState}
       />
