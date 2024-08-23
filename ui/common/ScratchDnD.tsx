@@ -7,7 +7,8 @@ import clsx from 'clsx'
 import { OpCodeTypes } from '../lesson/OpCodeChallenge/OpFunctions'
 
 type ItemType = {
-  id: number
+  id: string
+  index: number
   content: string
   category: string
 }
