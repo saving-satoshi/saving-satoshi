@@ -175,7 +175,7 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                     state[list].map((item, index) => (
                       <Draggable
                         key={item.id}
-                        draggableId={item.id}
+                        draggableId={item.id.toString()}
                         index={index}
                       >
                         {(provided, snapshot) => (
@@ -263,7 +263,7 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                   {group.items.map((item, index) => (
                     <Draggable
                       key={item.id}
-                      draggableId={item.id}
+                      draggableId={item.id.toString()}
                       index={item.index}
                     >
                       {(provided, snapshot) => (
