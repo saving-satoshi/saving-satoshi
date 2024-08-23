@@ -180,7 +180,6 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                       >
                         {(provided, snapshot) => (
                           <div
-                            id={index}
                             className={clsx(
                               'arrow-box relative mx-1.5 flex h-[28px] select-none items-center bg-gray-500 p-1',
                               {
@@ -269,7 +268,6 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                       {(provided, snapshot) => (
                         <>
                           <div
-                            id={index}
                             className={clsx(
                               'relative mx-1.5 my-0.5 flex h-[28px] w-fit select-none items-center p-1',
                               {
