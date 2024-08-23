@@ -62,6 +62,17 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 }
 
 const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
+  const [opPushValues, setOpPushValues] = useState<{ [key: string]: string }>(
+    {}
+  )
+
+  const handleOpPushChange = (id: string, value: string) => {
+    setOpPushValues((prev) => ({
+      ...prev,
+      [id]: value.toUpperCase(),
+    }))
+  }
+
   const initialState = prePopulate
     ? {
         [uuid()]: items.map((item, index) => ({
@@ -154,12 +165,22 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
 
   useEffect(() => {
     const updatedItems = Object.values(state).flatMap((arr) =>
-      arr.map((item) => item.content)
+      arr.map((item) => item)
     )
+
+    const processedItems = updatedItems.flatMap((item) => {
+      if (item.content === 'OP_PUSH') {
+        const pushValueContent = opPushValues[item.id] || '' // Get the corresponding opPushValue
+        return [item.content, pushValueContent] // OP_PUSH followed by its value
+      } else {
+        return [item.content] // Non-OP_PUSH items
+      }
+    })
+
     if (onItemsUpdate) {
-      onItemsUpdate(updatedItems) // Pass data to parent component
+      onItemsUpdate(processedItems) // Pass data to parent component
     }
-  }, [state, onItemsUpdate])
+  }, [state, onItemsUpdate, opPushValues])
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -181,6 +202,7 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                       >
                         {(provided, snapshot) => (
                           <div
+                            id={item.id}
                             className={clsx(
                               'arrow-box relative mx-1.5 flex h-[28px] select-none items-center bg-gray-500 p-1',
                               {
@@ -193,6 +215,18 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                             style={provided.draggableProps.style}
                           >
                             {item.content}
+                            {item.content === 'OP_PUSH' && (
+                              <input
+                                key={item.id}
+                                id={item.id}
+                                className="mx-1 w-[150px] rounded bg-gray-400 px-1"
+                                type="text"
+                                value={opPushValues[item.id] || ''}
+                                onChange={(e) =>
+                                  handleOpPushChange(item.id, e.target.value)
+                                }
+                              />
+                            )}
                           </div>
                         )}
                       </Draggable>
@@ -269,6 +303,7 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                       {(provided, snapshot) => (
                         <>
                           <div
+                            id={item.id}
                             className={clsx(
                               'relative mx-1.5 my-0.5 flex h-[28px] w-fit select-none items-center p-1',
                               {
@@ -282,6 +317,18 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                             {...provided.dragHandleProps}
                             style={provided.draggableProps.style}
                           >
+                            {item.content === 'OP_PUSH' && (
+                              <input
+                                key={item.id}
+                                id={item.id}
+                                className="mx-1 w-[150px] rounded bg-gray-400 px-1"
+                                type="text"
+                                value={opPushValues[item.id] || ''}
+                                onChange={(e) =>
+                                  handleOpPushChange(item.id, e.target.value)
+                                }
+                              />
+                            )}
                             {item.content}
                           </div>
                           {snapshot.isDragging && (
