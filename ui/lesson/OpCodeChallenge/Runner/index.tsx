@@ -39,7 +39,7 @@ export default function OpCodeRunner({
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const hasResult = useRef(false)
   const isActive = activeView !== LessonView.Info
-  const [isTryAgain, setIsTryAgain] = useState<boolean | null>(null)
+  // const [isTryAgain, setIsTryAgain] = useState<boolean | null>(null)
   const [hasherState, setHasherState] = useState<HasherState>(
     HasherState.Waiting
   )
@@ -99,7 +99,9 @@ export default function OpCodeRunner({
         <StatusBar
           handleTryAgain={handleTryAgain}
           errorMessage={errorMessage || ''}
-          className="h-14 min-h-14 grow bg-transparent p-0 "
+          className={clsx('h-14 min-h-14 grow border-t-0  px-2', {
+            'bg-transparent': !success,
+          })}
           textClass="text-lg !p-0"
           success={success}
           hints
