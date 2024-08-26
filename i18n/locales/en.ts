@@ -1428,7 +1428,7 @@ const translations = {
         heading: 'Finish the implementation of Class Input',
         paragraph_one: 'It should have the following method:',
         paragraph_two:
-          'The First two arguments are the transaction ID and the index of the output of that transaction you want to spend from.',
+          'The first two arguments are the transaction ID and the index of the output of that transaction you want to spend from.',
         paragraph_three:
           'Eventually we will pass in the txid and vout values you got above from listunspent. Note that hashes in Bitcoin are little-endian, which means that you will need to reverse the byte order of the txid string!',
         paragraph_four:
