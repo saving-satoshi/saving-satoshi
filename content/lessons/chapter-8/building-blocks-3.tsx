@@ -5,7 +5,6 @@ import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 
 export const metadata = {
   title: 'chapter_eight.building_blocks_three.title',
@@ -23,11 +22,11 @@ console.log("KILL")`,
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: `const Bitcoinrpc = require('@savingsatoshi/bitcoin_rpcjs')
-const Bitcoin = new Bitcoinrpc()
+    defaultCode: `const Bitcoinrpc = require('@savingsatoshi/bitcoin_rpcjs');
+const Bitcoin = new Bitcoinrpc();
 // https://github.com/saving-satoshi/bitcoin_rpcjs/blob/master/bitcoin_rpc.js
 
-console.log(Bitcoin.rpc())
+console.log(Bitcoin.rpc());
 `,
     validate: async (answer: string) => {
       if (answer) {
@@ -86,7 +85,7 @@ print(Bitcoin.rpc())
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-8', 'building-blocks-3')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_eight.building_blocks_three.success')}
       onSelectLanguage={handleSelectLanguage}
     >

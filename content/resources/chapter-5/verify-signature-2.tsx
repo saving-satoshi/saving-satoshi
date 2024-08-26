@@ -21,12 +21,13 @@ const javascriptChallenge = {
     args: [],
   },
   defaultCode: `function msg_to_integer(msg) {
-  // Given a hex string to sign, convert that string to bytes,
-  // double-SHA256 the bytes and then return a BigInt() from the 32-byte digest.
+  // Given a hex string to sign, convert that string to a buffer of bytes.
   const bytes = Buffer.from(msg, 'hex');
-  const single_hash = Hash('sha256').update(bytes).digest();
-  const double_hash = Hash('sha256').update(single_hash).digest();
-  return BigInt('0x' + double_hash.toString('hex'));
+  // Then double-SHA256 the bytes.
+  const single_hash = sha256Hash(bytes);
+  const double_hash = sha256Hash(single_hash).digest();
+  // Return a BigInt() from the 32-byte digest.
+  return BigInt(double_hash);
 }`,
   validate: async (answer) => {
     return [true, undefined]
@@ -47,9 +48,10 @@ const pythonChallenge = {
   },
   defaultCode: `def msg_to_integer(msg):
     # Given a hex string to sign, convert that string to bytes,
-    # double-SHA256 the bytes and then return an integer from the 32-byte digest.
-    single_hash = hashlib.new('sha256', bytes.fromhex(msg)).digest()
-    double_hash = hashlib.new('sha256', single_hash).digest()
+    # double-SHA256 the bytes.
+    single_hash = sha256_hash(msg)
+    double_hash = sha256_hash(single_hash)
+    # Turn the bytes back into an integer from the 32-byte big-endian digest.
     return int.from_bytes(double_hash, "big")`,
   validate: async (answer) => {
     return [true, undefined]
@@ -110,72 +112,31 @@ export default function VerifySignatureResourcesTwo({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_five.resources.verify_signature.eliptic_curve_heading')}
-          </Text>
-          <Text>
             {t(
-              'chapter_five.resources.verify_signature.eliptic_curve_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.public_private_key_heading'
+              'chapter_five.resources.verify_signature_two.signature_verification_heading'
             )}
           </Text>
           <Text>
             {t(
-              'chapter_five.resources.verify_signature.public_private_key_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.signature_verification_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.signature_verification_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.finite_field_arithmetic_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.finite_field_arithmetic_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_five.resources.verify_signature.ge_and_fe_heading')}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.ge_and_fe_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.modular_inverse_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.modular_inverse_paragraph_one'
+              'chapter_five.resources.verify_signature_two.signature_verification_paragraph_one'
             )}
           </Text>
         </>
       }
+      tipsResources={
+        <ul className="list-inside list-disc font-nunito text-white">
+          <li>{t('chapter_five.resources.verify_signature_two.tip_one')}</li>
+        </ul>
+      }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.pseudo_solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
               onChange={challengeToggleSwitch}
             />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
+            <Text>{t('help_page.pseudo_confirm')}</Text>
           </div>
           {challengeIsToggled && (
             <div className="border border-white/25">
@@ -188,7 +149,7 @@ export default function VerifySignatureResourcesTwo({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`160px`}
+                  height={`220px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

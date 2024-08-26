@@ -4,6 +4,8 @@ import ChallengeListItem from './ChallengeListItem'
 import { lessons } from 'content'
 import { useLang, useTranslations } from 'hooks'
 import clsx from 'clsx'
+import { getLessonKey, syncedCourseProgressAtom } from 'state/progressState'
+import { useAtomValue } from 'jotai'
 
 export default function ChallengeList({
   intros,
@@ -22,18 +24,46 @@ export default function ChallengeList({
 }) {
   const lang = useLang()
   const t = useTranslations(lang)
+  const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const currentChapter = courseProgress.chapters.find(
+    (chapter) => chapter.id === parseInt(chapterId.split('-')[1])
+  )
 
-  const introsData = intros.map((introId: string) => {
+  const filterForDifficulty = (lessonId: string) => {
+    // If the lesson has no difficulty, return everything
+    if (!currentChapter?.hasDifficulty) {
+      return true
+    }
+
+    const lessonsForSelectedDifficulty = currentChapter.difficulties.find(
+      (difficulty) => difficulty.level === currentChapter.selectedDifficulty
+    )?.lessons
+
+    // If the lesson ID is present in the currently selected difficulty, include it
+    if (
+      lessonsForSelectedDifficulty?.some(
+        (lesson) => lesson.id === getLessonKey(chapterId, lessonId)
+      )
+    ) {
+      return true
+    }
+    // Otherwise, exclude it
+    return false
+  }
+
+  const introsData = intros.filter(filterForDifficulty).map((introId) => {
     const { title, navigation_title } = lessons[chapterId][introId].metadata
 
     return { introId, title, navigation_title }
   })
 
-  const lessonsData = lessonStrings.map((lessonId: string) => {
-    const { title, navigation_title } = lessons[chapterId][lessonId].metadata
+  const lessonsData = lessonStrings
+    .filter(filterForDifficulty)
+    .map((lessonId) => {
+      const { title, navigation_title } = lessons[chapterId][lessonId].metadata
 
-    return { lessonId, title, navigation_title }
-  })
+      return { lessonId, title, navigation_title }
+    })
 
   let groupedLessonData = {}
 
@@ -48,17 +78,19 @@ export default function ChallengeList({
     groupedLessonData[key].push(value)
   })
 
-  const outrosData = outros.map((outroId: string) => {
+  const outrosData = outros.filter(filterForDifficulty).map((outroId) => {
     const { title, navigation_title } = lessons[chapterId][outroId].metadata
 
     return { outroId, title, navigation_title }
   })
 
-  const challengesData = challenges.map((lessonId: string) => {
-    const { title } = lessons[chapterId][lessonId].metadata
+  const challengesData = challenges
+    .filter(filterForDifficulty)
+    .map((lessonId) => {
+      const { title } = lessons[chapterId][lessonId].metadata
 
-    return { lessonId, title }
-  })
+      return { lessonId, title }
+    })
 
   return (
     <div

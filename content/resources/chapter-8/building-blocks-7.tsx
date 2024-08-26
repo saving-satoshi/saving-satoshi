@@ -27,7 +27,7 @@ const javascriptChallenge = {
     fee += getTxFee(block["txs"][i]);
   }
 
-  return subsidy + fee === block["txs"][0]["outputs"][0]["value"]
+  return subsidy + fee === block["txs"][0]["outputs"][0]["value"];
 }`,
   validate: async (answer) => {
     return [true, undefined]

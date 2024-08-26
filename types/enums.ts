@@ -22,3 +22,9 @@ export enum LoadingState {
   Failed = 1,
   Success = 2,
 }
+
+export enum Difficulty {
+  NORMAL = 'normal',
+  HARD = 'hard',
+  NOT_SELECTED = 'not_selected',
+}

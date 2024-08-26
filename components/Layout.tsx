@@ -4,12 +4,12 @@ import AccountModal from 'components/Modals/Account'
 import SignInModal from 'components/Modals/SignIn'
 import SignUpModal from 'components/Modals/SignUp'
 import HelpModal from 'components/Modals/Help'
-import { useAtom } from 'jotai'
+import { useAtom, useSetAtom } from 'jotai'
 import { useEffect } from 'react'
 import { useAuthFunctions } from 'state/AuthFunctions'
 import { useFeatureFunctions } from 'state/FeatureFunctions'
 import { useModalFunctions } from 'state/ModalFunctions'
-import { useProgressFunctions } from 'state/ProgressFunctions'
+import { loadProgressAtom } from 'state/progressState'
 import { Modal, modalsAtom } from 'state/state'
 
 export default function Layout({ children }: { children?: React.ReactNode }) {
@@ -17,13 +17,16 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
   const { close } = useModalFunctions()
   const { check } = useAuthFunctions()
   const { init: initFeatures } = useFeatureFunctions()
-  const { init: initProgress } = useProgressFunctions()
+  const loadProgress = useSetAtom(loadProgressAtom)
 
   // Check if the user is authenticated
   useEffect(() => {
-    check()
-    initFeatures()
-    initProgress()
+    const initialDataLoad = async () => {
+      await check()
+      await initFeatures()
+      await loadProgress()
+    }
+    initialDataLoad()
   }, [])
 
   return (

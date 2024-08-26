@@ -24,33 +24,41 @@ const javascript = {
     `function assembleBlock(mempool) {
   // This block constructor opportunistically includes transactions with unconfirmed parents.
   // If a transaction has unconfirmed parents, but those parents are all already included in the block, then it is valid for inclusion.
-  const block = [];
-  let block_weight = 0;
-  for (const tx of mempool) {
-      tx.feerate = parseFloat(tx.fee) / parseFloat(tx.weight);
-  }
-  // Construct dictionary for fast lookup
-  const txs = new Map([...mempool.map(tx => [tx.txid, tx])].sort((a, b) => b[1].feerate - a[1].feerate));
+
+  initialize empty list block
+  initialize block_weight to 0
+
+  // Calculate the fee rate for each transaction
+  for each transaction in mempool:
+    transaction.feerate = transaction.fee / transaction.weight
+
+  // Create a dictionary for fast lookup and sort transactions by fee rate in descending order
+  initialize dictionary txs with transactions from mempool sorted by feerate in descending order
+
   while (true) {
-    let added = false;
-    for (const tx of txs.values()) {
-      // Opportunistically include txs with unconfirmed parents if their parents
-      if (tx.parents.some(parent_tx => txs.has(parent_tx))) {
+    initialize added to false
+
+    for (each transaction in txs) {
+      // Opportunistically include txs with unconfirmed parents if their parents can be included
+      if (txs.has(transaction.parents)) {
         continue;
       }
-      if (block_weight + tx.weight > MAX_BLOCK_WEIGHT) {
-        // Transaction won't fit in block
+
+      // Check if the transaction fits in the block
+      if (block_weight + transaction.weight > MAX_BLOCK_WEIGHT) {
         continue;
       }
-      block.push(txs.get(tx.txid).txid);
-      block_weight += tx.weight;
-      txs.delete(tx.txid);
-      added = true;
-      break;
+
+      // Add transaction to block
+      add transaction.txid to block
+      increment block_weight by transaction.weight
+      remove transaction from txs
+      set added to true
+      break // exit the for loop
     }
-    if (!added) {
-      // Couldn't add any more transactions.
-      break;
+      // If no transaction was added in this iteration, exit the while loop
+    if (added is false) {
+      break
     }
   }
   return block;
@@ -75,26 +83,41 @@ const python = {
 
     If a transaction has unconfirmed parents, but those parents are all already
     included in the block, then it is valid for inclusion."""
-    block = []
-    block_weight = 0
-    for tx in mempool:
-        tx.feerate = float(tx.fee) / float(tx.weight)
-    # Construct dictionary for fast lookup
-    txs = OrderedDict(sorted([(tx.txid, tx) for tx in mempool], key=lambda x: x[1].feerate, reverse=True))
-    while True:
-        for tx in txs.values():
-            # Opportunistically include txs with unconfirmed parents if their parents
-            if any([parent_tx in txs for parent_tx in tx.parents]):
+    initialize block as an empty list
+    initialize block_weight to 0
+
+    # Calculate feerate for each transaction in mempool
+    for each tx in mempool:
+        set tx.feerate to tx.fee divided by tx.weight
+
+    # Construct a dictionary of transactions sorted by feerate in descending order
+    create txs as an ordered dictionary sorted by feerate in descending order
+    for each tx in mempool:
+        add (tx.txid, tx) to txs
+
+    # Loop until no more transactions can be added
+    while true:
+        transaction_added = false
+        for each tx in txs:
+            # Opportunistically include txs with unconfirmed parents if their parents can be included
+            if any parent of tx is in txs:
                 continue
+
+            # Check if adding the transaction would exceed the maximum block weight
             if block_weight + tx.weight > MAX_BLOCK_WEIGHT:
-                # Transaction won't fit in block
                 continue
-            block.append(txs.pop(tx.txid).txid)
-            block_weight += tx.weight
+
+            # Add the transaction to the block
+            add tx.txid to block
+            increment block_weight by tx.weight
+            remove tx from txs
+            transaction_added = true
             break
-        else:
-            # Couldn't add any more transactions.
+
+        # If no transactions were added in the last iteration, exit the loop
+        if not transaction_added:
             break
+
     return block`,
   ],
   validate: async (answer) => {
@@ -148,16 +171,54 @@ export default function MempoolTransactionResourcesOne({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={<></>}
+      readingResources={
+        <>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t(
+              'chapter_seven.resources.mempool_transaction_one.bytes_v_weight_heading'
+            )}
+          </Text>
+          <Text>
+            {t(
+              'chapter_seven.resources.mempool_transaction_one.bytes_v_weight_paragraph_one'
+            )}
+          </Text>
+          <Text className="mt-[25px] text-lg font-semibold">
+            {t(
+              'chapter_seven.resources.mempool_transaction_one.bytes_v_weight_subheading_bytes'
+            )}
+          </Text>
+          <Text>
+            {t(
+              'chapter_seven.resources.mempool_transaction_one.bytes_v_weight_paragraph_two'
+            )}
+          </Text>
+          <Text className="mt-[25px] text-lg font-semibold">
+            {t(
+              'chapter_seven.resources.mempool_transaction_one.bytes_v_weight_subheading_wu'
+            )}
+          </Text>
+          <Text>
+            {t(
+              'chapter_seven.resources.mempool_transaction_one.bytes_v_weight_paragraph_three'
+            )}
+          </Text>
+          <Text className="mt-[25px]">
+            {t(
+              'chapter_seven.resources.mempool_transaction_one.bytes_v_weight_paragraph_four'
+            )}
+          </Text>
+        </>
+      }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.pseudo_solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
               onChange={challengeToggleSwitch}
             />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
+            <Text>{t('help_page.pseudo_confirm')}</Text>
           </div>
           {challengeIsToggled && (
             <div className="border border-white/25">
@@ -170,7 +231,7 @@ export default function MempoolTransactionResourcesOne({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`710px`}
+                  height={`910px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

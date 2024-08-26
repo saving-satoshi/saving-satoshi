@@ -89,7 +89,7 @@ export default function Pool1({ lang }) {
             width={35}
             height={35}
           />
-          <Title>HoloCat Pool</Title>
+          <Title>Holocat Pool</Title>
         </div>
         <div className="fade-in grid w-full grid-cols-2">
           {players.map((profile, i) => (

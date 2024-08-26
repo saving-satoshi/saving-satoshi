@@ -12,27 +12,20 @@ import HelpButton from '../HelpButton'
 import Icon from 'shared/Icon'
 import { usePathData } from 'hooks'
 import { navbarThemeSelector } from 'lib/themeSelector'
-import { getChapterKey, getCurrentLessonKey, keys } from 'lib/progress'
-import { useAtom } from 'jotai'
+import { useAtom, useAtomValue } from 'jotai'
 import { accountAtom } from 'state/state'
+import { currentChapterAtom } from 'state/progressState'
 
 export default function NavbarDesktop({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
   const lang = useLang()
   const t = useTranslations(lang)
   const { slug, lesson: lessonId } = params
-  const { chapterId } = usePathData()
-  const [account] = useAtom(accountAtom)
-
-  const chapterLessons = lessons?.[chapterId]
-  const lesson = chapterLessons?.[lessonId]?.metadata ?? null
-  const currentLessonKey = getCurrentLessonKey(lesson?.key ?? keys[0], account)
-
-  const chapterKey = getChapterKey(currentLessonKey)
+  const currentChapter = useAtomValue(currentChapterAtom)
 
   const theme = navbarThemeSelector(lessons, lessonId, chapters, slug)
 
-  const chapterResources = resources[chapterId]
+  const chapterResources = resources[slug]
 
   const Resources = chapterResources?.default[lessonId]?.default
 
@@ -43,7 +36,7 @@ export default function NavbarDesktop({ params }) {
           <Link
             title={t('shared.poweroff')}
             className="group flex items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
-            href={`${chaptersUrl}#${chapterKey}`}
+            href={`${chaptersUrl}#chapter-${currentChapter}`}
           >
             <Icon
               icon="powerOff"

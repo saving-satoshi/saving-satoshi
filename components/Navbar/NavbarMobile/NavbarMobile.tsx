@@ -17,9 +17,9 @@ import Link from 'next/link'
 import HelpButton from '../HelpButton'
 import Icon from 'shared/Icon'
 import { navbarThemeSelector } from 'lib/themeSelector'
-import { getChapterKey, getCurrentLessonKey, keys } from 'lib/progress'
-import { useAtom } from 'jotai'
+import { useAtom, useAtomValue } from 'jotai'
 import { accountAtom } from 'state/state'
+import { currentChapterAtom } from 'state/progressState'
 
 export default function NavbarMobile({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
@@ -28,14 +28,11 @@ export default function NavbarMobile({ params }) {
   const { chapterId } = usePathData()
   const { slug, lesson: lessonId } = params
   const [account] = useAtom(accountAtom)
-
+  const currentChapter = useAtomValue(currentChapterAtom)
   const [isOpen, setIsOpen] = useState(false)
 
   const chapterLessons = lessons?.[chapterId]
   const lesson = chapterLessons?.[lessonId]?.metadata ?? null
-  const currentLessonKey = getCurrentLessonKey(lesson?.key ?? keys[0], account)
-
-  const chapterKey = getChapterKey(currentLessonKey)
 
   const theme = !isOpen
     ? navbarThemeSelector(lessons, lessonId, chapters, slug)
@@ -84,7 +81,7 @@ export default function NavbarMobile({ params }) {
           <Link
             title={t('shared.back')}
             className="group flex items-center border-r border-white/25 p-4 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
-            href={`${chaptersUrl}#${chapterKey}`}
+            href={`${chaptersUrl}#chapter-${currentChapter}`}
           >
             <Icon
               icon="powerOff"

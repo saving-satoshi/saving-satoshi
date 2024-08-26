@@ -1,18 +1,18 @@
-import { defaultProgressContext } from 'state/state'
+import { defaultProgressState } from 'state/progressState'
+import { CourseProgress } from 'types'
 
-export default async function getProgressLocal(): Promise<string> {
+export default async function getProgressLocal(): Promise<CourseProgress> {
   try {
-    const progress = localStorage.getItem('SavingSatoshiProgress')
+    const localStorageProgress = localStorage.getItem('SavingSatoshiProgress')
 
-    if (!progress) {
+    if (!localStorageProgress) {
       throw new Error('Could not read progress from LocalStorage')
+    } else {
+      const res = JSON.parse(localStorageProgress)
+      return res
     }
-
-    const res = progress.replace(/['"]/g, '')
-
-    return res
   } catch (errors) {
     console.error(errors)
-    return defaultProgressContext.progress
+    return defaultProgressState
   }
 }

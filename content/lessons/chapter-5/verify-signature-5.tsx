@@ -2,12 +2,11 @@
 
 import { useMediaQuery, useTranslations } from 'hooks'
 import { useAtom } from 'jotai'
-import { getLessonKey } from 'lib/progress'
 import { getLanguageString } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { currentLanguageAtom } from 'state/state'
 import { EditorConfig } from 'types'
-import { LessonInfo, ScriptingChallenge, Text } from 'ui'
+import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
 
 export const metadata = {
   title: 'chapter_five.verify_signature_five.title',
@@ -207,14 +206,12 @@ export default function VerifySignature5({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
-      lessonKey={getLessonKey('chapter-5', 'verify-signature-5')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_five.verify_signature_five.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>
-        <Text className="font-nunito text-xl text-white">
-          {t('chapter_five.verify_signature_five.heading')}
-        </Text>
+        <Title>{t('chapter_five.verify_signature_five.heading')}</Title>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t(`chapter_five.verify_signature_five.paragraph_one`)}
         </Text>

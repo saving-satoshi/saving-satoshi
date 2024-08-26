@@ -1,36 +1,30 @@
 'use client'
 
-import { getNextLessonKey, isLessonUnlocked, getChapterKey } from 'lib/progress'
 import { useRouter } from 'next/navigation'
-import { usePathData, useLocalizedRoutes } from 'hooks'
-import { lessons } from 'content'
-import { useAtom } from 'jotai'
-import { accountAtom, progressAtom } from 'state/state'
-import { useProgressFunctions } from 'state/ProgressFunctions'
+import { useLocalizedRoutes, usePathData } from 'hooks'
+import { useAtomValue } from 'jotai'
+import {
+  currentChapterAtom,
+  syncedCourseProgressAtom,
+} from 'state/progressState'
 
 export default function useSaveAndReturn() {
   const { chaptersUrl } = useLocalizedRoutes()
   const router = useRouter()
-  const [account] = useAtom(accountAtom)
-  const [progress] = useAtom(progressAtom)
-  const { saveProgress, saveProgressLocal } = useProgressFunctions()
-
-  const { chapterId, lessonId } = usePathData()
-  const chapterLessons = lessons?.[chapterId]
-  const lesson = chapterLessons?.[lessonId]?.metadata ?? null
-  const currentLessonKey = lesson?.key ?? 'CH1INT1'
+  const { chapterId } = usePathData()
+  const chapterIdAtom = useAtomValue(currentChapterAtom)
+  const courseProgress = useAtomValue(syncedCourseProgressAtom)
 
   const saveAndReturn = async () => {
-    const nextLessonKey = getNextLessonKey(currentLessonKey, account)
-    const chapterKey = getChapterKey(nextLessonKey)
-
-    if (progress && !isLessonUnlocked(progress, nextLessonKey)) {
-      if (account) {
-        await saveProgress(nextLessonKey)
-      }
-      await saveProgressLocal(nextLessonKey)
-    }
-    router.push(`${chaptersUrl}#${chapterKey}`)
+    //needs to have different behavior from logging in vs a continue button as the progress is updated at different points of the render
+    router.push(
+      `${chaptersUrl}#chapter-${
+        courseProgress.chapters.find((chapter) => !chapter.completed)?.id !==
+        Number(chapterId?.substring(chapterId?.length - 1))
+          ? courseProgress.chapters.find((chapter) => !chapter.completed)?.id
+          : chapterIdAtom + 1
+      }`
+    )
   }
 
   return saveAndReturn

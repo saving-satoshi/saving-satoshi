@@ -5,7 +5,6 @@ import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { accountAtom, currentLanguageAtom } from 'state/state'
@@ -34,8 +33,8 @@ console.log("KILL")`,
       name: 'getBlockHeight',
       args: ['height'],
     },
-    defaultCode: `const Bitcoinrpc = require('@savingsatoshi/bitcoin_rpcjs')
-const Bitcoin = new Bitcoinrpc()
+    defaultCode: `const Bitcoinrpc = require('@savingsatoshi/bitcoin_rpcjs');
+const Bitcoin = new Bitcoinrpc();
 
 const CODE_CHALLENGE_2_HEIGHT = 6929996;
 let txCount = Infinity;
@@ -105,7 +104,7 @@ def get_block_height(height):
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-8', 'building-blocks-4')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_eight.building_blocks_four.success')}
       onSelectLanguage={handleSelectLanguage}
     >

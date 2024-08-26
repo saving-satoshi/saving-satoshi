@@ -20,18 +20,7 @@ const javascriptChallenge = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `// Message digest from step 5:
-const msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19n;
-
-// Signature values from step 6:
-const sig_r = 0x4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41n;
-const sig_s = 0x181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09n;
-
-// Public key values from step 7:
-const pubkey_x = 0x11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cn;
-const pubkey_y = 0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3n;
-
-function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
+  defaultCode: `function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
   // Verify an ECDSA signature given a public key and a message.
   // All input values will be 32-byte BigInt()'s.
   // Start by creating a curve point representation of the public key
@@ -68,15 +57,16 @@ function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
 
     return x1;
   }
+  const sig_s_inverted = invert(sig_s);
   // Implement ECDSA!
   //   u1 = m / s mod n
-  //   u2 = r / s mod n
-  //   R = G * u1 + A * u2
-  //   r == x(R) mod n
-  const sig_s_inverted = invert(sig_s);
   const u1 = (msg * sig_s_inverted) % ORDER;
+  //   u2 = r / s mod n
   const u2 = (sig_r * sig_s_inverted) % ORDER;
+	// Calculate R = u1 * G + u2 * public key
+  // We need to use the appropriate methods for point multiplication and addition
   const R = (secp256k1.G.mul(u1)).add(key.mul(u2));
+	// Verify if the x-coordinate of R modulo ORDER is equal to sig_r
   return R.x.equals(new FE(sig_r));
 }`,
   validate: async (answer) => {
@@ -100,18 +90,7 @@ const pythonChallenge = {
     name: 'verify',
     args: [],
   },
-  defaultCode: `# Message digest from step 5:
-msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19
-
-# Signature values from step 6:
-sig_r = 0x4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41
-sig_s = 0x181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09
-
-# Public key values from step 7:
-pubkey_x = 0x11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5c
-pubkey_y = 0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3
-
-def verify(sig_r, sig_s, pubkey_x, pubkey_y, msg):
+  defaultCode: `def verify(sig_r, sig_s, pubkey_x, pubkey_y, msg):
 	# Verify an ECDSA signature given a public key and a message.
 	# All input values will be 32-byte integers.
 	# Start by creating a curve point representation of the public key
@@ -129,7 +108,10 @@ def verify(sig_r, sig_s, pubkey_x, pubkey_y, msg):
 	sig_s_inverted = pow(sig_s, -1, GE.ORDER)
 
 	# Calculate u1 and u2
+  # Implement ECDSA!
+  # u1 = m / s mod n
 	u1 = (msg * sig_s_inverted) % GE.ORDER
+  # u2 = r / s mod n
 	u2 = (sig_r * sig_s_inverted) % GE.ORDER
 
 	# Calculate R = u1 * G + u2 * public key
@@ -199,72 +181,46 @@ export default function VerifySignatureResourcesFive({ lang }) {
       readingResources={
         <>
           <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_five.resources.verify_signature.eliptic_curve_heading')}
+            {t(
+              'chapter_five.resources.verify_signature_five.finite_field_arithmetic_heading'
+            )}
           </Text>
           <Text>
             {t(
-              'chapter_five.resources.verify_signature.eliptic_curve_paragraph_one'
+              'chapter_five.resources.verify_signature_five.finite_field_arithmetic_paragraph_one'
             )}
           </Text>
           <Text className="mt-[25px] text-xl font-bold">
             {t(
-              'chapter_five.resources.verify_signature.public_private_key_heading'
+              'chapter_five.resources.verify_signature_five.ge_and_fe_heading'
             )}
           </Text>
           <Text>
             {t(
-              'chapter_five.resources.verify_signature.public_private_key_paragraph_one'
+              'chapter_five.resources.verify_signature_five.ge_and_fe_paragraph_one'
             )}
           </Text>
           <Text className="mt-[25px] text-xl font-bold">
             {t(
-              'chapter_five.resources.verify_signature.signature_verification_heading'
+              'chapter_five.resources.verify_signature_five.modular_inverse_heading'
             )}
           </Text>
           <Text>
             {t(
-              'chapter_five.resources.verify_signature.signature_verification_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.finite_field_arithmetic_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.finite_field_arithmetic_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t('chapter_five.resources.verify_signature.ge_and_fe_heading')}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.ge_and_fe_paragraph_one'
-            )}
-          </Text>
-          <Text className="mt-[25px] text-xl font-bold">
-            {t(
-              'chapter_five.resources.verify_signature.modular_inverse_heading'
-            )}
-          </Text>
-          <Text>
-            {t(
-              'chapter_five.resources.verify_signature.modular_inverse_paragraph_one'
+              'chapter_five.resources.verify_signature_five.modular_inverse_paragraph_one'
             )}
           </Text>
         </>
       }
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.pseudo_solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
               onChange={challengeToggleSwitch}
             />
-            <Text>{t('help_page.spoilers_confirm')}</Text>
+            <Text>{t('help_page.pseudo_confirm')}</Text>
           </div>
           {challengeIsToggled && (
             <div className="border border-white/25">
@@ -277,7 +233,7 @@ export default function VerifySignatureResourcesFive({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`1130px`}
+                  height={`940px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

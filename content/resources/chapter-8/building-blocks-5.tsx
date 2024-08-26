@@ -21,10 +21,10 @@ const javascriptChallenge = {
     args: [],
   },
   defaultCode: `const getBlockTxFee = () => {
-    let block = Bitcoin.rpc("getblock", BLOCK_HASH)
+    let block = Bitcoin.rpc("getblock", BLOCK_HASH);
     for (const tx of block["txs"]) {
-      if(tx["txid"] === TX_HASH){
-        return getTxFee(tx)
+      if (tx["txid"] === TX_HASH){
+        return getTxFee(tx);
     }
   }
 }
@@ -32,14 +32,14 @@ const javascriptChallenge = {
 // Now let's find the miner's fee for this transaction.
 // with the transaction from above determine the fee paid to miners
 const getTxFee = (tx) =>{
-  let fee = 0
+  let fee = 0;
   for (const input of tx["inputs"]) {
-        fee+=input["value"]
+        fee+=input["value"];
   }
   for (const ouput of tx["outputs"]) {
-      fee-=ouput["value"]
+      fee-=ouput["value"];
   }
-  return fee
+  return fee;
 }`,
   validate: async (answer) => {
     return [true, undefined]

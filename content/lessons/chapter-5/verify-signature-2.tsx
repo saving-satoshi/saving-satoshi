@@ -2,12 +2,11 @@
 
 import { useMediaQuery, useTranslations } from 'hooks'
 import { useAtom } from 'jotai'
-import { getLessonKey } from 'lib/progress'
 import { getLanguageString } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { currentLanguageAtom } from 'state/state'
 import { EditorConfig } from 'types'
-import { LessonInfo, ScriptingChallenge, Text } from 'ui'
+import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
 
 export const metadata = {
   title: 'chapter_five.verify_signature_two.title',
@@ -34,7 +33,7 @@ console.log("KILL")
   defaultCode: `const {Hash} = require('crypto');
 
 function msg_to_integer(msg) {
-  // Given a hex string to sign, convert that string to bytes,
+  // Given a hex string to sign, convert that string to a Buffer of bytes,
   // double-SHA256 the bytes and then return a BigInt() from the 32-byte digest.
 
 }
@@ -59,7 +58,6 @@ print("KILL")
   },
   defaultCode: `# Import from python standard libraries
 import hashlib
-import base64
 
 def msg_to_integer(msg):
     # Given a hex string to sign, convert that string to bytes,
@@ -108,19 +106,17 @@ export default function VerifySignature2({ lang }) {
     <ScriptingChallenge
       lang={lang}
       config={config}
-      lessonKey={getLessonKey('chapter-5', 'verify-signature-2')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_five.verify_signature_two.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>
-        <Text className="font-nunito text-xl text-white">
-          {t('chapter_five.verify_signature_two.heading')}
-        </Text>
+        <Title>{t('chapter_five.verify_signature_two.heading')}</Title>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t(`chapter_five.verify_signature_two.paragraph_one`)}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_five.verify_signature_two.${language}.paragraph_two`)}
+          {t(`chapter_five.verify_signature_two.paragraph_two`)}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t(`chapter_five.verify_signature_two.paragraph_three`)}

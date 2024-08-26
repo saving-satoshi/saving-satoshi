@@ -2,14 +2,19 @@
 
 import { ScriptingChallenge, LessonInfo, CodeExample, Title, Table } from 'ui'
 import Image from 'next/image'
-import { EditorConfig } from 'types'
+import { ChapterWithDifficulties, EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useEffect, useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getData } from 'api/data'
-import { countLines } from '../chapter-6/put-it-together-3'
-import { detectLanguage, Language, organizeImports } from 'lib/SavedCode'
+import {
+  countLines,
+  detectLanguage,
+  Language,
+  organizeImports,
+} from 'lib/SavedCode'
+import { useAtomValue } from 'jotai'
+import { syncedCourseProgressAtom } from 'state/progressState'
 
 export const metadata = {
   title: 'chapter_eight.building_blocks_eight.title',
@@ -26,12 +31,17 @@ export default function BuildingBlocks8({ lang }) {
     detectLanguage(combinedCode) === Language.JavaScript
       ? combinedCode.substring(combinedCode.indexOf('const getTxFee'))
       : combinedCode.substring(combinedCode.indexOf('def get_tx_fee(tx):'))
+  const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const chapter6 = courseProgress.chapters[5] as ChapterWithDifficulties
+  const completedChapter6 = chapter6.difficulties.find(
+    (difficulty) => difficulty.completed
+  )
   const getPrevLessonData = async () => {
     const data = await getData('CH8BBK7')
 
     if (data) {
       setPrevData({
-        lesson_id: 'CH6PUT1',
+        lesson_id: `CH6PUT1_${completedChapter6?.level.toString()}`,
         data: data?.code?.getDecoded(),
       })
     }
@@ -68,8 +78,8 @@ console.log("KILL")`,
       name: 'showtime',
       args: [''],
     },
-    defaultCode: `const Bitcoinrpc = require('@savingsatoshi/bitcoin_rpcjs')
-const Bitcoin = new Bitcoinrpc()
+    defaultCode: `const Bitcoinrpc = require('@savingsatoshi/bitcoin_rpcjs');
+const Bitcoin = new Bitcoinrpc();
 
 ${cleanedCombinedCode}
 
@@ -158,7 +168,7 @@ def showtime():
         lang={lang}
         config={config}
         saveData
-        lessonKey={getLessonKey('chapter-8', 'building-blocks-8')}
+        lessonKey={metadata.key}
         successMessage={t('chapter_eight.building_blocks_eight.success')}
         onSelectLanguage={handleSelectLanguage}
       >

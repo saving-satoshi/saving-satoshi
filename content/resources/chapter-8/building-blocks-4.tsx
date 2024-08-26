@@ -34,7 +34,7 @@ const javascriptChallenge = {
       answer = bhash;
     }
   }
-  return answer
+  return answer;
   }`,
   validate: async (answer) => {
     if (answer !== 'True') {

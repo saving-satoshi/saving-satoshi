@@ -5,7 +5,6 @@ import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { accountAtom, currentLanguageAtom } from 'state/state'
@@ -40,7 +39,7 @@ console.log("KILL")`,
 // Return that curve point (also known as a group element)
 // which will be an instance of secp256k1.GE
 // See the library source code for the exact definition
-// https://github.com/saving-satoshi/challenges/blob/master/chapter4/javascript/lib/secp256k1.js
+// https://github.com/saving-satoshi/secp256k1js/blob/main/secp256k1.js
 const G = secp256k1.G
 
 function privateKeyToPublicKey(privateKey) {
@@ -86,7 +85,7 @@ print("KILL")`,
 # Return that curve point (also known as a group element)
 # which will be an instance of secp256k1.GE
 # See the library source code for the exact definition
-# https://github.com/saving-satoshi/challenges/blob/master/chapter4/python/lib/secp256k1.py
+# https://github.com/saving-satoshi/secp256k1py/blob/main/secp256k1py/secp256k1.py
 G = SECP256K1.FAST_G
 
 def privatekey_to_publickey(private_key):
@@ -134,7 +133,7 @@ def privatekey_to_publickey(private_key):
       lang={lang}
       config={config}
       saveData
-      lessonKey={getLessonKey('chapter-4', 'public-key-3')}
+      lessonKey={metadata.key}
       successMessage={t('chapter_four.public_key_three.success')}
       onSelectLanguage={handleSelectLanguage}
     >

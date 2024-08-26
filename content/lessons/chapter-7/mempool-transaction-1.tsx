@@ -12,7 +12,6 @@ import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
 import { useState } from 'react'
-import { getLessonKey } from 'lib/progress'
 import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { accountAtom, currentLanguageAtom } from 'state/state'
@@ -368,7 +367,7 @@ def run():
     <ScriptingChallenge
       lang={lang}
       config={config}
-      lessonKey={getLessonKey('chapter-7', 'mempool-transaction-1')}
+      lessonKey={metadata.key}
       poorMessage={t('chapter_seven.mempool_transaction_one.poor')}
       goodMessage={t('chapter_seven.mempool_transaction_one.good')}
       successMessage={t('chapter_seven.mempool_transaction_one.success')}
@@ -378,7 +377,7 @@ def run():
       <LessonInfo>
         <Title>{t('chapter_seven.mempool_transaction_one.heading')}</Title>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_seven.mempool_transaction_one.paragraph_one')}
+          {t(`chapter_seven.mempool_transaction_one.${language}.paragraph_one`)}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_seven.mempool_transaction_one.paragraph_two.a')}

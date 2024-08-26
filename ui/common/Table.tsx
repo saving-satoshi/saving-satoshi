@@ -4,10 +4,12 @@ export default function Table({
   headings,
   rows,
   footer,
+  wide,
 }: {
   headings: string[] | React.ReactNode[]
   rows: string[][] | React.ReactNode[][]
   footer?: React.ReactNode
+  wide?: { column: number[] }
 }) {
   return (
     <table className="mt-2 flex flex-col items-start font-nunito">
@@ -17,9 +19,18 @@ export default function Table({
             <th
               key={index}
               className={clsx({
-                'w-full': index === 0,
-                'w-1/3': index > 0 && index < headings.length - 1,
-                'w-1/6': index === headings.length - 1,
+                'w-full':
+                  (index === 0 && !wide) ||
+                  wide?.column.find((column) => column === index + 1),
+                'w-1/2': headings.length === 2, // only two columns in the table
+                'w-1/3':
+                  (index > 0 &&
+                    index < headings.length - 1 &&
+                    headings.length > 2 &&
+                    !wide) ||
+                  !wide?.column.find((column) => column === index + 1),
+                'w-1/6':
+                  index === headings.length - 1 && headings.length > 2 && !wide,
               })}
             >
               {heading}
@@ -40,9 +51,20 @@ export default function Table({
               <td
                 key={index}
                 className={clsx({
-                  'w-full': index === 0,
-                  'w-1/3': index > 0 && index < headings.length - 1,
-                  'w-1/6': index === headings.length - 1,
+                  'w-full':
+                    (index === 0 && !wide) ||
+                    wide?.column.find((column) => column === index + 1),
+                  'w-1/2': headings.length === 2, // only two columns in the table
+                  'w-1/3':
+                    (index > 0 &&
+                      index < headings.length - 1 &&
+                      headings.length > 2 &&
+                      !wide) ||
+                    wide?.column.find((column) => column !== index + 1),
+                  'w-1/6':
+                    index === headings.length - 1 &&
+                    headings.length > 2 &&
+                    !wide,
                 })}
               >
                 {item}
