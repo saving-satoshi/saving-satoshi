@@ -219,9 +219,10 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                               <input
                                 key={item.id}
                                 id={item.id}
-                                className="mx-1 w-[150px] rounded bg-gray-400 px-1"
+                                className="mx-1 w-[150px] rounded bg-gray-400 px-1 text-left placeholder:text-white/50"
                                 type="text"
                                 value={opPushValues[item.id] || ''}
+                                placeholder="PUSH_DATA"
                                 onChange={(e) =>
                                   handleOpPushChange(item.id, e.target.value)
                                 }
@@ -321,12 +322,9 @@ const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
                               <input
                                 key={item.id}
                                 id={item.id}
-                                className="mx-1 w-[150px] rounded bg-gray-400 px-1"
+                                className="pointer-events-none mx-1 w-[150px] rounded bg-gray-400 px-1 text-left placeholder:text-white/50"
                                 type="text"
-                                value={opPushValues[item.id] || ''}
-                                onChange={(e) =>
-                                  handleOpPushChange(item.id, e.target.value)
-                                }
+                                placeholder="PUSH_DATA"
                               />
                             )}
                             {item.content}
