@@ -375,13 +375,13 @@ input:checked + .slider:before {
 }
 
 .arrow-box::before {
-  @apply top-1/2 left-full transform -translate-y-1/2;
+  @apply left-full top-1/2 -translate-y-1/2 transform;
   border-width: 14px 0 14px 10px;
   border-color: transparent transparent transparent #6a717f;
 }
 
 .arrow-box::after {
-  @apply top-1/2 -left-2 transform -translate-y-1/2;
+  @apply -left-2 top-1/2 -translate-y-1/2 transform;
   border-width: 14px 0 14px 10px;
   border-color: #6a717f #6a717f #6a717f transparent;
 }
@@ -396,13 +396,13 @@ input:checked + .slider:before {
 }
 
 .arrow-box-25::before {
-  @apply top-1/2 left-full transform -translate-y-1/2;
+  @apply left-full top-1/2 -translate-y-1/2 transform;
   border-width: 14px 0 14px 10px;
   border-color: transparent transparent transparent #6a717f40;
 }
 
 .arrow-box-25::after {
-  @apply top-1/2 -left-2 transform -translate-y-1/2;
+  @apply -left-2 top-1/2 -translate-y-1/2 transform;
   border-width: 14px 0 14px 10px;
   border-color: #6a717f40 #6a717f40 #6a717f40 transparent;
 }
