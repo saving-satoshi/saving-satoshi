@@ -329,7 +329,7 @@ export default class ScratchDnd extends Component<
                                 <input
                                   key={item.id}
                                   id={item.id}
-                                  className="mx-1 w-[150px] bg-gray-400 px-1 placeholder:text-white/50"
+                                  className="mx-1 w-auto grow bg-gray-400 px-1 placeholder:text-white/50"
                                   placeholder="PUSH_DATA"
                                   type="text"
                                   value={this.state.opPushValues[item.id] || ''}
@@ -401,7 +401,12 @@ export default class ScratchDnd extends Component<
                                 <input
                                   key={item.id}
                                   id={item.id}
-                                  className="pointer-events-none mx-1 w-[150px] cursor-text bg-gray-400 px-1 text-left placeholder:text-white/50"
+                                  className={clsx(
+                                    'pointer-events-none mx-1 w-auto cursor-text bg-gray-400 px-1 text-left placeholder:text-white/50',
+                                    {
+                                      'opacity-50': this.props.prePopulate,
+                                    }
+                                  )}
                                   type="text"
                                   placeholder="PUSH_DATA"
                                 />
@@ -424,7 +429,12 @@ export default class ScratchDnd extends Component<
                                   <input
                                     key={item.id}
                                     id={item.id}
-                                    className="pointer-events-none mx-1 w-[150px] cursor-text bg-gray-400 px-1 text-left placeholder:text-white/50"
+                                    className={clsx(
+                                      'pointer-events-none mx-1 w-auto cursor-text bg-gray-400 px-1 text-left placeholder:text-white/50',
+                                      {
+                                        'opacity-50': this.props.prePopulate,
+                                      }
+                                    )}
                                     type="text"
                                     placeholder="PUSH_DATA"
                                   />
