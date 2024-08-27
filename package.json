@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.2.32",
-    "@hello-pangea/dnd": "^16.6.0",
     "@monaco-editor/react": "^4.6.0",
     "@noble/secp256k1": "^2.0.0",
     "accept-language": "^3.0.18",
@@ -38,11 +37,13 @@
     "nostr-tools": "^1.14.2",
     "react": "18.2.0",
     "react-archer": "^4.4.0",
+    "react-beautiful-dnd": "10.0.4",
     "react-dom": "18.2.0",
     "react-lottie": "^1.2.3",
     "react-monaco-editor": "^0.52.0",
     "react-transition-group": "^4.4.5",
     "sjcl": "^1.0.8",
+    "styled-components": "^6.1.12",
     "use-local-storage-state": "^18.1.2",
     "uuid": "^10.0.0"
   },

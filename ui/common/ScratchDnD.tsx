@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd'
+import { Component, useState, useEffect } from 'react'
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { v4 as uuid } from 'uuid'
 import clsx from 'clsx'
+import styled from 'styled-components'
 import { OpCodeTypes } from '../lesson/OpCodeChallenge/OpFunctions'
 
 type ItemType = {
@@ -24,7 +25,6 @@ type StateType = {
 
 const disabledOpCodes = ['INITIAL_STACK']
 
-// a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list)
   const [removed] = result.splice(startIndex, 1)
@@ -32,18 +32,13 @@ const reorder = (list, startIndex, endIndex) => {
 
   return result
 }
-/**
- * Moves an item from one list to another list.
- */
+
 const copy = (source, destination, droppableSource, droppableDestination) => {
   const sourceClone = Array.from(source)
   const destClone = Array.from(destination)
   const item = sourceClone[droppableSource.index]
 
-  destClone.splice(droppableDestination.index, 0, {
-    ...(item as any),
-    id: uuid(),
-  })
+  destClone.splice(droppableDestination.index, 0, { ...item, id: uuid() })
   return destClone
 }
 
@@ -61,292 +56,327 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   return result
 }
 
-const ScratchDnD = ({ items, prePopulate, onItemsUpdate }) => {
-  const [opPushValues, setOpPushValues] = useState<{ [key: string]: string }>(
-    {}
-  )
+const remove = (source, droppableSource) => {
+  const sourceClone = Array.from(source)
+  sourceClone.splice(droppableSource.index, 1)
+  return sourceClone
+}
 
-  const handleOpPushChange = (id: string, value: string) => {
-    setOpPushValues((prev) => ({
-      ...prev,
-      [id]: value.toUpperCase(),
+const Item = styled.div`
+  display: flex;
+  user-select: none;
+  padding: 0.5rem;
+  margin: 0 0.5rem 0.5rem 0.25rem;
+  align-items: flex-center;
+  align-content: flex-start;
+  line-height: 1.5;
+`
+
+const Clone = styled(Item)`
+  + div {
+    display: none !important;
+  }
+`
+
+const List = styled.div`
+  border: 1px
+  padding: 0.5rem 0.5rem 0;
+  border-radius: 3px;
+  flex: 0 0 150px;
+  font-family: sans-serif;
+`
+
+const Kiosk = styled(List)`
+  display: block;
+  overflow-y: auto;
+  padding-left: 0.625rem;
+`
+
+const Notice = styled.div`
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  padding: 0.5rem;
+  margin: 0 0.5rem 0.5rem;
+  border: 1px solid transparent;
+  line-height: 1.5;
+  color: #aaa;
+`
+
+const ITEMS = Object.keys(OpCodeTypes)
+  .filter((key) => !disabledOpCodes.includes(key))
+  .map((item, index) => ({
+    id: uuid(),
+    index: index,
+    content: item,
+    category: OpCodeTypes[item],
+  }))
+
+const groupedItems = ITEMS.reduce((groups, item) => {
+  const group = groups.find((g) => g.heading === item.category)
+  if (group) {
+    group.items.push(item)
+  } else {
+    groups.push({
+      heading: item.category,
+      items: [item],
+    })
+  }
+  return groups
+}, [])
+
+export default class ScratchDnd extends Component {
+  state = {
+    dynamicState: {
+      [uuid()]: [],
+    },
+    opPushValues: {},
+  }
+
+  handleOpPushChange = (id, value) => {
+    this.setState((prevState) => ({
+      opPushValues: {
+        ...prevState.opPushValues,
+        [id]: value.toUpperCase(),
+      },
     }))
   }
 
-  const initialState = prePopulate
-    ? {
-        [uuid()]: items.map((item, index) => ({
-          id: uuid(),
-          index: index,
-          content: item,
-        })),
-      }
-    : {
-        [uuid()]: [],
-      }
-
-  const [state, setState] = useState<StateType>(initialState)
-
-  const ITEMS = Object.keys(OpCodeTypes)
-    .filter((key) => !disabledOpCodes.includes(key))
-    .map((item, index) => ({
-      id: uuid(),
-      index: index,
-      content: item,
-      category: OpCodeTypes[item],
-    }))
-
-  const onDragEnd = (result) => {
+  onDragEnd = (result) => {
     const { source, destination } = result
 
-    if (!destination && source.droppableId in state) {
-      // Handle the deletion of the item
-      setState((prevState) => {
-        const newSourceList = Array.from(prevState[source.droppableId])
-        newSourceList.splice(source.index, 1)
+    if (!destination) {
+      if (source.droppableId !== 'ITEMS') {
+        const newState = { ...this.state.dynamicState }
+        const newSourceList = remove(newState[source.droppableId], source)
 
-        return {
-          ...prevState,
-          [source.droppableId]: newSourceList,
-        }
-      })
-      return
-    } else if (!destination) {
+        this.setState({
+          dynamicState: {
+            ...newState,
+            [source.droppableId]: newSourceList,
+          },
+        })
+      }
       return
     }
 
     switch (source.droppableId) {
       case destination.droppableId:
-        setState((prevState) => ({
-          ...prevState,
-          [destination.droppableId]: reorder(
-            prevState[source.droppableId],
-            source.index,
-            destination.index
-          ),
-        }))
+        this.setState({
+          dynamicState: {
+            ...this.state.dynamicState,
+            [destination.droppableId]: reorder(
+              this.state.dynamicState[source.droppableId],
+              source.index,
+              destination.index
+            ),
+          },
+        })
         break
       case 'ITEMS':
-        setState((prevState) => ({
-          ...prevState,
-          [destination.droppableId]: copy(
-            ITEMS,
-            prevState[destination.droppableId],
+        this.setState({
+          dynamicState: {
+            ...this.state.dynamicState,
+            [destination.droppableId]: copy(
+              ITEMS,
+              this.state.dynamicState[destination.droppableId],
+              source,
+              destination
+            ),
+          },
+        })
+        break
+      default:
+        this.setState({
+          dynamicState: move(
+            this.state.dynamicState[source.droppableId],
+            this.state.dynamicState[destination.droppableId],
             source,
             destination
           ),
-        }))
-        break
-      default:
-        setState((prevState) =>
-          move(
-            prevState[source.droppableId],
-            prevState[destination.droppableId],
-            source,
-            destination
-          )
-        )
+        })
         break
     }
   }
 
-  const groupedItems = ITEMS.reduce<Group[]>((groups, item) => {
-    const group = groups.find((g) => g.heading === item.category)
-    if (group) {
-      group.items.push(item)
-    } else {
-      groups.push({
-        heading: item.category,
-        items: [item],
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.state !== this.state.dynamicState ||
+      prevProps.opPushValues !== this.state.opPushValues
+    ) {
+      const updatedItems = Object.values(this.state.dynamicState).flatMap(
+        (arr) => arr.map((item) => item)
+      )
+
+      const processedItems = updatedItems.flatMap((item) => {
+        if (item.content === 'OP_PUSH') {
+          const pushValueContent = this.state.opPushValues[item.id] || ''
+          return [item.content, pushValueContent]
+        } else {
+          return [item.content]
+        }
       })
-    }
-    return groups
-  }, [])
 
-  useEffect(() => {
-    const updatedItems = Object.values(state).flatMap((arr) =>
-      arr.map((item) => item)
-    )
-
-    const processedItems = updatedItems.flatMap((item) => {
-      if (item.content === 'OP_PUSH') {
-        const pushValueContent = opPushValues[item.id] || '' // Get the corresponding opPushValue
-        return [item.content, pushValueContent] // OP_PUSH followed by its value
-      } else {
-        return [item.content] // Non-OP_PUSH items
+      if (this.props.onItemsUpdate) {
+        this.props.onItemsUpdate(processedItems)
       }
-    })
-
-    if (onItemsUpdate) {
-      onItemsUpdate(processedItems) // Pass data to parent component
     }
-  }, [state, onItemsUpdate, opPushValues])
+  }
 
-  return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <div className="mb-2 pl-2.5">
-        {Object.keys(state).map((list, i) => {
-          return (
-            <Droppable key={list} droppableId={list} direction="horizontal">
-              {(provided, snapshot) => (
-                <ul
-                  className="flex flex-row overflow-auto px-1 pb-4 font-space-mono text-sm"
-                  ref={provided.innerRef}
+  render() {
+    return (
+      <DragDropContext onDragEnd={this.onDragEnd}>
+        <div className="mb-2 pl-2.5">
+          {Object.keys(this.state.dynamicState).map((list, i) => {
+            return (
+              <Droppable key={list} droppableId={list} direction="horizontal">
+                {(provided, snapshot) => (
+                  <div
+                    className="flex flex-row overflow-auto px-1 font-space-mono text-sm"
+                    ref={provided.innerRef}
+                  >
+                    {this.state.dynamicState[list].length ? (
+                      this.state.dynamicState[list].map((item, index) => (
+                        <Draggable
+                          key={item.id}
+                          draggableId={item.id.toString()}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <Item
+                              id={item.id}
+                              className={clsx(
+                                'arrow-box relative mx-1.5 flex h-[28px] select-none items-center bg-gray-500 p-1 text-sm font-normal',
+                                {
+                                  'pointer-events-none': this.props.prePopulate,
+                                }
+                              )}
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              style={provided.draggableProps.style}
+                            >
+                              {item.content}
+                              {item.content === 'OP_PUSH' && (
+                                <input
+                                  key={item.id}
+                                  id={item.id}
+                                  className="mx-1 w-[150px] bg-gray-400 px-1 placeholder:text-white/50"
+                                  placeholder="PUSH_DATA"
+                                  type="text"
+                                  value={this.state.opPushValues[item.id] || ''}
+                                  onChange={(e) =>
+                                    this.handleOpPushChange(
+                                      item.id,
+                                      e.target.value
+                                    )
+                                  }
+                                />
+                              )}
+                            </Item>
+                          )}
+                        </Draggable>
+                      ))
+                    ) : (
+                      <Notice className="arrow-box-25 relative mx-1.5 flex h-[28px] select-none items-center bg-gray-500/25 p-1 text-white/25">
+                        OP_CODES...
+                      </Notice>
+                    )}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            )
+          })}
+        </div>
+        <Droppable
+          droppableId="ITEMS"
+          isDropDisabled={true}
+          direction="horizontal"
+        >
+          {(provided, snapshot) => (
+            <Kiosk dir="rtl" ref={provided.innerRef}>
+              {groupedItems.map((group, groupIndex) => (
+                <div
+                  key={groupIndex}
+                  className="flex flex-row-reverse font-space-mono"
                 >
-                  {state[list].length ? (
-                    state[list].map((item, index) => (
+                  <h2 className="mb-2 min-w-[160px] text-left text-xl font-semibold">
+                    {group.heading}
+                  </h2>
+                  <div className="flex w-full flex-row-reverse overflow-x-auto pl-1">
+                    {group.items.map((item, index) => (
                       <Draggable
                         key={item.id}
                         draggableId={item.id.toString()}
-                        index={index}
+                        index={item.index}
                       >
                         {(provided, snapshot) => (
-                          <div
-                            id={item.id}
-                            className={clsx(
-                              'arrow-box relative mx-1.5 flex h-[28px] select-none items-center bg-gray-500 p-1',
-                              {
-                                'pointer-events-none': prePopulate,
-                              }
-                            )}
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            style={provided.draggableProps.style}
-                          >
-                            {item.content}
-                            {item.content === 'OP_PUSH' && (
-                              <input
-                                key={item.id}
-                                id={item.id}
-                                className="mx-1 w-[150px] rounded bg-gray-400 px-1 text-left placeholder:text-white/50"
-                                type="text"
-                                value={opPushValues[item.id] || ''}
-                                placeholder="PUSH_DATA"
-                                onChange={(e) =>
-                                  handleOpPushChange(item.id, e.target.value)
+                          <>
+                            <Item
+                              id={item.id}
+                              className={clsx(
+                                'arrow-box relative mx-1.5 flex h-[28px] select-none items-center bg-gray-500 p-1 text-sm font-normal',
+                                {
+                                  'arrow-box-25 pointer-events-none bg-gray-500/25 text-white/25':
+                                    this.props.prePopulate,
+                                  'arrow-box bg-gray-500':
+                                    !this.props.prePopulate,
                                 }
-                              />
+                              )}
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              style={provided.draggableProps.style}
+                            >
+                              {item.content === 'OP_PUSH' && (
+                                <input
+                                  key={item.id}
+                                  id={item.id}
+                                  className="pointer-events-none mx-1 w-[150px] cursor-text bg-gray-400 px-1 text-left placeholder:text-white/50"
+                                  type="text"
+                                  placeholder="PUSH_DATA"
+                                />
+                              )}
+                              {item.content}
+                            </Item>
+                            {snapshot.isDragging && (
+                              <Clone
+                                className={clsx(
+                                  'arrow-box relative mx-1.5 flex h-[28px] select-none items-center bg-gray-500 p-1 text-sm font-normal',
+                                  {
+                                    'arrow-box-25 pointer-events-none bg-gray-500/25 text-white/25':
+                                      this.props.prePopulate,
+                                    'arrow-box bg-gray-500':
+                                      !this.props.prePopulate,
+                                  }
+                                )}
+                              >
+                                {item.content === 'OP_PUSH' && (
+                                  <input
+                                    key={item.id}
+                                    id={item.id}
+                                    className="pointer-events-none mx-1 w-[150px] cursor-text bg-gray-400 px-1 text-left placeholder:text-white/50"
+                                    type="text"
+                                    placeholder="PUSH_DATA"
+                                  />
+                                )}
+                                {item.content}
+                              </Clone>
                             )}
-                          </div>
+                          </>
                         )}
                       </Draggable>
-                    ))
-                  ) : (
-                    <div className="arrow-box-25 relative mx-1.5 flex h-[28px] select-none items-center bg-gray-500/25 p-1 text-white/25">
-                      OP_CODES...
-                    </div>
-                  )}
-                  {provided.placeholder}
-                </ul>
-              )}
-            </Droppable>
-          )
-        })}
-      </div>
-      <Droppable
-        droppableId="ITEMS"
-        isDropDisabled={true}
-        direction="horizontal"
-      >
-        {(provided, snapshot) => (
-          <ul
-            dir="rtl"
-            className="block overflow-y-auto pl-2.5 font-space-mono text-sm"
-            ref={provided.innerRef}
-          >
-            {/*<div
-              className="flex flex-row-reverse flex-wrap pl-1"
-            >
-            {ITEMS.map((item, index) => (
-              <Draggable key={item.id} draggableId={item.id} index={item.index}>
-                {(provided, snapshot) => (
-                  <>
-                    <div
-                      id={item.id}
-                      className={clsx(
-                        'relative mx-1.5 my-0.5 flex h-[28px] w-fit select-none items-center p-1',
-                        {
-                          'arrow-box-25 pointer-events-none bg-gray-500/25 text-white/25':
-                            prePopulate,
-                          'arrow-box bg-gray-500': !prePopulate,
-                        }
-                      )}
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      style={provided.draggableProps.style}
-                    >
-                      {item.content}
-                    </div>
-                    {snapshot.isDragging && (
-                      <div className="arrow-box relative mx-1.5 my-0.5 flex h-[28px] w-fit select-none items-center bg-gray-500 p-1">
-                        {item.content}
-                      </div>
-                    )}
-                  </>
-                )}
-              </Draggable>
-            ))}
-            </div>*/}
-            {groupedItems.map((group, groupIndex) => (
-              <div key={groupIndex} className="flex flex-row-reverse">
-                <h2 className="mb-2 min-w-[160px] text-left text-xl font-semibold">
-                  {group.heading}
-                </h2>
-                <div className="flex w-full flex-row-reverse overflow-x-auto pl-1">
-                  {group.items.map((item, index) => (
-                    <Draggable
-                      key={item.id}
-                      draggableId={item.id.toString()}
-                      index={item.index}
-                    >
-                      {(provided, snapshot) => (
-                        <>
-                          <div
-                            id={item.id}
-                            className={clsx(
-                              'relative mx-1.5 my-0.5 flex h-[28px] w-fit select-none items-center p-1',
-                              {
-                                'arrow-box-25 pointer-events-none bg-gray-500/25 text-white/25':
-                                  prePopulate,
-                                'arrow-box bg-gray-500': !prePopulate,
-                              }
-                            )}
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            style={provided.draggableProps.style}
-                          >
-                            {item.content === 'OP_PUSH' && (
-                              <input
-                                key={item.id}
-                                id={item.id}
-                                className="pointer-events-none mx-1 w-[150px] rounded bg-gray-400 px-1 text-left placeholder:text-white/50"
-                                type="text"
-                                placeholder="PUSH_DATA"
-                              />
-                            )}
-                            {item.content}
-                          </div>
-                          {snapshot.isDragging && (
-                            <div className="arrow-box relative mx-1.5 my-0.5 flex h-[28px] w-fit select-none items-center bg-gray-500 p-1">
-                              {item.content}
-                            </div>
-                          )}
-                        </>
-                      )}
-                    </Draggable>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-            {provided.placeholder}
-          </ul>
-        )}
-      </Droppable>
-    </DragDropContext>
-  )
+              ))}
+              {provided.placeholder}
+            </Kiosk>
+          )}
+        </Droppable>
+      </DragDropContext>
+    )
+  }
 }
-
-export default ScratchDnD
