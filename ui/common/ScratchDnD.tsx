@@ -1,7 +1,13 @@
 'use client'
 
 import { Component, useState, useEffect } from 'react'
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
+import {
+  DragDropContext,
+  Draggable,
+  Droppable,
+  DropResult,
+  DraggableLocation,
+} from 'react-beautiful-dnd'
 import { v4 as uuid } from 'uuid'
 import clsx from 'clsx'
 import styled from 'styled-components'
@@ -23,9 +29,13 @@ type StateType = {
   [key: string]: ItemType[]
 }
 
-const disabledOpCodes = ['INITIAL_STACK']
+const disabledOpCodes: string[] = ['INITIAL_STACK']
 
-const reorder = (list, startIndex, endIndex) => {
+const reorder = (
+  list: ItemType[],
+  startIndex: number,
+  endIndex: number
+): ItemType[] => {
   const result = Array.from(list)
   const [removed] = result.splice(startIndex, 1)
   result.splice(endIndex, 0, removed)
@@ -33,7 +43,12 @@ const reorder = (list, startIndex, endIndex) => {
   return result
 }
 
-const copy = (source, destination, droppableSource, droppableDestination) => {
+const copy = (
+  source: ItemType[],
+  destination: ItemType[],
+  droppableSource: DraggableLocation,
+  droppableDestination: DraggableLocation
+): ItemType[] => {
   const sourceClone = Array.from(source)
   const destClone = Array.from(destination)
   const item = sourceClone[droppableSource.index]
@@ -42,21 +57,29 @@ const copy = (source, destination, droppableSource, droppableDestination) => {
   return destClone
 }
 
-const move = (source, destination, droppableSource, droppableDestination) => {
+const move = (
+  source: ItemType[],
+  destination: ItemType[],
+  droppableSource: DraggableLocation,
+  droppableDestination: DraggableLocation
+): StateType => {
   const sourceClone = Array.from(source)
   const destClone = Array.from(destination)
   const [removed] = sourceClone.splice(droppableSource.index, 1)
 
   destClone.splice(droppableDestination.index, 0, removed)
 
-  const result = {}
+  const result: StateType = {}
   result[droppableSource.droppableId] = sourceClone
   result[droppableDestination.droppableId] = destClone
 
   return result
 }
 
-const remove = (source, droppableSource) => {
+const remove = (
+  source: ItemType[],
+  droppableSource: DraggableLocation
+): ItemType[] => {
   const sourceClone = Array.from(source)
   sourceClone.splice(droppableSource.index, 1)
   return sourceClone
@@ -104,7 +127,7 @@ const Notice = styled.div`
   color: #aaa;
 `
 
-const ITEMS = Object.keys(OpCodeTypes)
+const ITEMS: ItemType[] = Object.keys(OpCodeTypes)
   .filter((key) => !disabledOpCodes.includes(key))
   .map((item, index) => ({
     id: uuid(),
@@ -113,28 +136,44 @@ const ITEMS = Object.keys(OpCodeTypes)
     category: OpCodeTypes[item],
   }))
 
-const groupedItems = ITEMS.reduce((groups, item) => {
-  const group = groups.find((g) => g.heading === item.category)
-  if (group) {
-    group.items.push(item)
-  } else {
-    groups.push({
-      heading: item.category,
-      items: [item],
-    })
-  }
-  return groups
-}, [])
+const groupedItems: Group[] = ITEMS.reduce(
+  (groups: Group[], item: ItemType) => {
+    const group = groups.find((g) => g.heading === item.category)
+    if (group) {
+      group.items.push(item)
+    } else {
+      groups.push({
+        heading: item.category,
+        items: [item],
+      })
+    }
+    return groups
+  },
+  []
+)
 
-export default class ScratchDnd extends Component {
-  state = {
+interface ScratchDndProps {
+  prePopulate?: boolean
+  onItemsUpdate?: (items: string[]) => void
+}
+
+interface ScratchDndState {
+  dynamicState: StateType
+  opPushValues: { [key: string]: string }
+}
+
+export default class ScratchDnd extends Component<
+  ScratchDndProps,
+  ScratchDndState
+> {
+  state: ScratchDndState = {
     dynamicState: {
       [uuid()]: [],
     },
     opPushValues: {},
   }
 
-  handleOpPushChange = (id, value) => {
+  handleOpPushChange = (id: string, value: string) => {
     this.setState((prevState) => ({
       opPushValues: {
         ...prevState.opPushValues,
@@ -143,7 +182,7 @@ export default class ScratchDnd extends Component {
     }))
   }
 
-  onDragEnd = (result) => {
+  onDragEnd = (result: DropResult) => {
     const { source, destination } = result
 
     if (!destination) {
