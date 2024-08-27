@@ -403,7 +403,11 @@ const OpRunner = ({
             spellCheck="false"
             rows={4}
           />*/}
-          <ScratchDnD prePopulate={prePopulate} onItemsUpdate={handleDnDData} />
+          <ScratchDnD
+            items={answerScript}
+            prePopulate={prePopulate}
+            onItemsUpdate={handleDnDData}
+          />
         </div>
 
         <div className="flex flex-col flex-wrap border-b border-b-white">

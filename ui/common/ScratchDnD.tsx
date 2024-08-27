@@ -153,6 +153,7 @@ const groupedItems: Group[] = ITEMS.reduce(
 )
 
 interface ScratchDndProps {
+  items?: string[]
   prePopulate?: boolean
   onItemsUpdate?: (items: string[]) => void
 }
@@ -166,11 +167,38 @@ export default class ScratchDnd extends Component<
   ScratchDndProps,
   ScratchDndState
 > {
-  state: ScratchDndState = {
-    dynamicState: {
-      [uuid()]: [],
-    },
-    opPushValues: {},
+  constructor(props: ScratchDndProps) {
+    super(props)
+
+    let opPushValues: { [key: string]: string } = {}
+
+    const initialStateItems: ItemType[] = []
+    if (props.prePopulate && props.items) {
+      for (let i = 0; i < props.items.length; i++) {
+        const item = props.items[i]
+        const id = uuid()
+
+        if (item === 'OP_PUSH' && props.items[i + 1]) {
+          // Add the following item to opPushValues and skip it in the state
+          opPushValues[id] = props.items[i + 1].toUpperCase()
+          i++ // Skip the next item
+        }
+
+        initialStateItems.push({
+          id,
+          index: initialStateItems.length,
+          content: item,
+          category: '', // Adjust the category if needed
+        })
+      }
+    }
+
+    this.state = {
+      dynamicState: {
+        [uuid()]: initialStateItems,
+      },
+      opPushValues,
+    }
   }
 
   handleOpPushChange = (id: string, value: string) => {
