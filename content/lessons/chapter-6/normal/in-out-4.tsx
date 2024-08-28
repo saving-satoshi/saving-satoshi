@@ -17,7 +17,7 @@ import PlainEditorWrapper from 'ui/lesson/ScriptingChallenge/PlainEditorWrapper'
 export const metadata = {
   title: 'chapter_six.in_out_four.normal.title',
   navigation_title: 'chapter_six.in_out_four.normal.nav_title',
-  key: 'CH6INO4',
+  key: 'CH6INO4_NORMAL',
 }
 
 export default function InOut4({ lang }) {
