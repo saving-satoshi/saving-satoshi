@@ -37,13 +37,6 @@ export default function OpCodeRunner({
 
   useEffect(() => {
     setHasherState(success)
-    console.log(
-      'success',
-      success,
-      'hasherState',
-      hasherState !== 0,
-      hasherState
-    )
   }, [success])
 
   return (
