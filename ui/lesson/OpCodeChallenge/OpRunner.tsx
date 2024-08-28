@@ -249,15 +249,11 @@ const OpRunner = ({
     }
   }, [stateHistory])
 
-  const handleScriptChange = (event) => {
-    setStartedTyping(true)
-    if (!advancedChallenge || (advancedChallenge && step === 1)) {
-      setScript(event.target.value.toUpperCase())
-    }
-  }
-
-  const handleDnDData = (data) => {
-    if (!advancedChallenge || (advancedChallenge && step === 1)) {
+  const handleDnDScript = (data) => {
+    if (
+      (script !== data.join(' ').toUpperCase() && !advancedChallenge) ||
+      (advancedChallenge && step === 1)
+    ) {
       setScript(data.join(' ').toUpperCase())
       setStartedTyping(true)
     }
@@ -367,6 +363,8 @@ const OpRunner = ({
     })
   }
 
+  console.log(stateHistory, startedTyping)
+
   let error = null
   return (
     <div
@@ -383,11 +381,11 @@ const OpRunner = ({
           <ScratchDnD
             items={answerScript}
             prePopulate={prePopulate}
-            onItemsUpdate={handleDnDData}
+            onItemsUpdate={handleDnDScript}
           />
         </div>
 
-        <div className="flex h-[30vh] flex-col border-b border-b-white">
+        <div className="flex flex-col border-b border-b-white">
           <div className="flex flex-col border-b border-b-white px-5 py-4">
             <p className="font-space-mono text-lg font-bold capitalize">
               Initial stack
@@ -488,7 +486,7 @@ const OpRunner = ({
                       {stack && (
                         <div
                           key={`Container${opCodeIndex}`}
-                          className="flex h-full min-h-32 min-w-[160px] flex-col self-stretch overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                          className="flex max-h-[405px] min-h-52 min-w-[160px] flex-col self-stretch overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
                         >
                           <div
                             key={opCodeIndex}
