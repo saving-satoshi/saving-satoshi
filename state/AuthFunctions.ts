@@ -5,9 +5,13 @@ import { SAVING_SATOSHI_TOKEN } from 'config/keys'
 import { defaultProgressState, syncedCourseProgressAtom } from './progressState'
 import { getProgress } from 'api/progress'
 import { mergeProgressState } from './progressState'
+import { useRouter } from 'next/navigation'
+import { useLocalizedRoutes } from 'hooks'
 
 export const useAuthFunctions = () => {
   const setAccount = useSetAtom(accountAtom)
+  const router = useRouter()
+  const routes = useLocalizedRoutes()
   const setAuthIsLoading = useSetAtom(isAuthLoadingAtom)
   const setCourseProgress = useSetAtom(syncedCourseProgressAtom)
   const attemptLogin = async (privateKey: string) => {
@@ -36,8 +40,10 @@ export const useAuthFunctions = () => {
   }
 
   const attemptLogout = async () => {
+    router.push(routes.chaptersUrl, { scroll: true })
     await logout()
     localStorage.clear()
+    setCourseProgress(defaultProgressState)
     setAccount(undefined)
   }
 
