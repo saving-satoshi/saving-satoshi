@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
+import { useLessonContext } from 'ui'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 import { LessonView } from 'types'
 import { MainState, OpRunnerTypes, StackType, State, T } from './runnerTypes'
