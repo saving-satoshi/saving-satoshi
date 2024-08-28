@@ -3,6 +3,8 @@ import { accountAtom, isAuthLoadingAtom } from './state'
 import { login, getSession, logout } from 'api/auth'
 import { SAVING_SATOSHI_TOKEN } from 'config/keys'
 import { defaultProgressState, syncedCourseProgressAtom } from './progressState'
+import { getProgress } from 'api/progress'
+import { mergeProgressState } from './progressState'
 
 export const useAuthFunctions = () => {
   const setAccount = useSetAtom(accountAtom)
@@ -20,6 +22,10 @@ export const useAuthFunctions = () => {
       const account = await getSession()
       setAccount(account)
 
+      // Load progress for the logged-in account
+      const progress = await getProgress()
+      setCourseProgress(mergeProgressState(defaultProgressState, progress))
+
       return true
     } catch (ex) {
       console.error(ex)
@@ -32,8 +38,6 @@ export const useAuthFunctions = () => {
   const attemptLogout = async () => {
     await logout()
     localStorage.clear()
-    localStorage.removeItem('SavingSatoshiProgress')
-    setCourseProgress(defaultProgressState)
     setAccount(undefined)
   }
 
