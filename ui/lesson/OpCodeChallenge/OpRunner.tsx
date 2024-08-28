@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
-import { StatusBar, useLessonContext } from 'ui'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 import { LessonView } from 'types'
 import { MainState, OpRunnerTypes, StackType, State, T } from './runnerTypes'
@@ -13,6 +12,7 @@ import { sleep } from 'utils'
 import { motion, AnimatePresence } from 'framer-motion'
 import OpCodeRunner from './Runner'
 import Icon from 'shared/Icon'
+import { Loader } from 'shared'
 
 const arrowLineStyles = {
   startMarker: true,
@@ -367,7 +367,7 @@ const OpRunner = ({
         flex: isActive,
       })}
     >
-      <div className="flex h-[calc(100vh-70px-56px)] grow flex-col text-white">
+      <div className="flex h-[calc(100vh-70px-67px)] grow flex-col text-white">
         <div className="flex h-[25vh] flex-col gap-1 border-b border-b-white px-5 py-4">
           <p className="font-space-mono text-lg font-bold capitalize ">
             Your Script
@@ -419,7 +419,7 @@ const OpRunner = ({
             />
           </div>
         </div>
-        <div className="flex h-[calc(45vh-56px)] flex-col px-5">
+        <div className="flex grow flex-col px-5">
           <div className="flex w-full flex-row justify-between pt-3">
             <p className="font-mono text-lg font-bold">Execution stack</p>
           </div>
