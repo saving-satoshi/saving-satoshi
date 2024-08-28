@@ -26,7 +26,6 @@ export default function OpCodeRunner({
   const t = useTranslations(lang)
   const { activeView } = useLessonContext()
   const isActive = activeView !== LessonView.Info
-  // const [isTryAgain, setIsTryAgain] = useState<boolean | null>(null)
   const [hasherState, setHasherState] = useState<HasherState>(
     HasherState.Waiting
   )
