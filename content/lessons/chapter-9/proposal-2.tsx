@@ -21,6 +21,7 @@ export default function Proposal2({ lang }) {
   return (
     hydrated && (
       <OpCodeChallenge
+        lang={lang}
         answerScript={[
           'OP_2',
           'OP_PUSH',
