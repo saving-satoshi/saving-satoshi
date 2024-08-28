@@ -21,6 +21,7 @@ export default function OpCodes10({ lang }) {
   return (
     hydrated && (
       <OpCodeChallenge
+        lang={lang}
         answerScript={[
           'OP_ADD',
           'OP_IF',

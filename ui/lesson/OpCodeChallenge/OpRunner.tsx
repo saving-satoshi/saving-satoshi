@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
-import _ from 'lodash'
-import { StatusBar, useLessonContext, ScratchDnD } from 'ui'
+import { useLessonContext, ScratchDnD } from 'ui'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 import { LessonView } from 'types'
 import { MainState, OpRunnerTypes, StackType, State, T } from './runnerTypes'
@@ -12,6 +11,9 @@ import { useArrows } from 'state/ArrowsContext'
 import { useHorizontalScroll, useLang, useTranslations } from 'hooks'
 import { sleep } from 'utils'
 import { motion, AnimatePresence } from 'framer-motion'
+import OpCodeRunner from './Runner'
+import Icon from 'shared/Icon'
+import { Loader } from 'shared'
 
 const arrowLineStyles = {
   startMarker: true,
@@ -188,7 +190,7 @@ const OpRunner = ({
     // Create an initial state to represent the initial stack
     setExecutor(newExecutor)
     setStateHistory([])
-    setStartedTyping(true)
+    setStartedTyping(false)
   }
 
   const executeStepWithDelay = async (delay: number) => {
@@ -214,6 +216,7 @@ const OpRunner = ({
   }
 
   const handleStep = () => {
+    setStartedTyping(false)
     initializeExecutor()
   }
 
@@ -225,23 +228,10 @@ const OpRunner = ({
   }, [arrowContainerRef, scrollPosition])
 
   useEffect(() => {
-    if (
-      (startedTyping && !advancedChallenge && initialStack) ||
-      (startedTyping && advancedChallenge && initialStack)
-    ) {
-      const timeoutId = setTimeout(() => {
-        handleStep()
-      }, 1000)
-
-      return () => clearTimeout(timeoutId)
-    }
-  }, [script, initialStack, height])
-
-  useEffect(() => {
-    if (executor && startedTyping) {
+    if (executor) {
       executeStepWithDelay(500)
     }
-  }, [executor, startedTyping])
+  }, [executor])
 
   const [relations, setRelations] = useState<RelationType[]>([])
 
@@ -260,9 +250,9 @@ const OpRunner = ({
   }, [stateHistory])
 
   const handleScriptChange = (event) => {
+    setStartedTyping(true)
     if (!advancedChallenge || (advancedChallenge && step === 1)) {
       setScript(event.target.value.toUpperCase())
-      setStartedTyping(true)
     }
   }
 
@@ -328,7 +318,7 @@ const OpRunner = ({
         step === 2 &&
         initialStack === initialStackSuccess)
     ) {
-      return true
+      return 5
     } else if (
       containsEveryScript &&
       doesStackValidate() &&
@@ -378,7 +368,6 @@ const OpRunner = ({
   }
 
   let error = null
-
   return (
     <div
       className={clsx('grow flex-col text-white md:w-[50vw]', {
@@ -391,18 +380,6 @@ const OpRunner = ({
           <p className="pl-2.5 font-space-mono text-lg font-bold capitalize">
             Your Script
           </p>
-          {/*<textarea
-            title="Add OP_CODES seperated by spaces."
-            className="overflow-wrap-normal w-full resize-none break-all border-none bg-transparent font-space-mono text-lg uppercase text-white focus:outline-none"
-            onChange={handleScriptChange}
-            autoComplete="off"
-            value={script}
-            readOnly={readOnly}
-            placeholder="OP_CODES..."
-            autoCapitalize="none"
-            spellCheck="false"
-            rows={4}
-          />*/}
           <ScratchDnD
             items={answerScript}
             prePopulate={prePopulate}
@@ -410,13 +387,13 @@ const OpRunner = ({
           />
         </div>
 
-        <div className="flex flex-col flex-wrap border-b border-b-white">
+        <div className="flex h-[30vh] flex-col border-b border-b-white">
           <div className="flex flex-col border-b border-b-white px-5 py-4">
             <p className="font-space-mono text-lg font-bold capitalize">
               Initial stack
             </p>
             <input
-              title="Add text or numbers seperated by spaces."
+              title="Add text or numbers separated by spaces."
               onChange={handleInitialStackChange}
               value={initialStack}
               className="flex-grow border-none bg-transparent font-space-mono text-lg uppercase focus:outline-none"
@@ -443,15 +420,15 @@ const OpRunner = ({
             />
           </div>
         </div>
-        <div className="flex grow flex-col px-5 ">
-          <div className="flex w-full flex-row justify-between py-3">
-            <p className="font-mono text-lg font-bold">Execution Stack</p>
+        <div className="flex grow flex-col px-5">
+          <div className="flex w-full flex-row justify-between pt-3">
+            <p className="font-mono text-lg font-bold">Execution stack</p>
           </div>
           <div
             ref={scrollRef}
             className="mb-auto flex h-full w-full flex-row gap-2.5 overflow-scroll py-2"
           >
-            {stateHistory.length === 0 && (
+            {(stateHistory.length === 0 || startedTyping) && (
               <div className="flex w-full max-w-[164px] flex-col">
                 <div className="my-[5px] w-full rounded-[3px] bg-black/20 px-3 py-1 text-center font-space-mono text-white/50">
                   OP_CODES
@@ -480,7 +457,8 @@ const OpRunner = ({
                   error = stack.error?.message
                 }
                 return (
-                  stack.negate === 0 && (
+                  stack.negate === 0 &&
+                  !startedTyping && (
                     <motion.div
                       key={`Overall-container${opCodeIndex}`}
                       id={`Overall-container${opCodeIndex}`}
@@ -510,7 +488,7 @@ const OpRunner = ({
                       {stack && (
                         <div
                           key={`Container${opCodeIndex}`}
-                          className="flex max-h-[405px] min-h-[204px] min-w-[160px] flex-col self-stretch overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                          className="flex h-full min-h-32 min-w-[160px] flex-col self-stretch overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
                         >
                           <div
                             key={opCodeIndex}
@@ -599,15 +577,12 @@ const OpRunner = ({
           </div>
         </div>
       </div>
-
-      <StatusBar
-        handleTryAgain={handleTryAgain}
-        className="h-14 min-h-14 grow"
+      <OpCodeRunner
+        lang="en"
         errorMessage={error || ''}
-        success={success}
-        hints
-        nextStepMessage={nextStepMessage}
-        nextStepButton={nextStepMessage ? t('opcode.reset') : undefined}
+        handleTryAgain={handleTryAgain}
+        handleRun={handleStep}
+        success={lastSuccessState}
       />
     </div>
   )

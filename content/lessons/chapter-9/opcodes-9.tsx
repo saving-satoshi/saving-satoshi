@@ -21,6 +21,7 @@ export default function OpCodes9({ lang }) {
   return (
     hydrated && (
       <OpCodeChallenge
+        lang={lang}
         answerScript={[
           'OP_PUSH',
           '6930010',
