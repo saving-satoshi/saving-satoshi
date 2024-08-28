@@ -26,9 +26,9 @@ export default function OpCodeRunner({
   const t = useTranslations(lang)
   const { activeView } = useLessonContext()
   const isActive = activeView !== LessonView.Info
-  const [hasherState, setHasherState] = useState<HasherState>(
-    HasherState.Waiting
-  )
+  const [hasherState, setHasherState] = useState<
+    SuccessNumbers | boolean | null
+  >(0)
   const isSmallScreen = useMediaQuery({ width: 767 })
 
   const handleRunClick = () => {
