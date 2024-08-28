@@ -40,7 +40,6 @@ export default function SignIn({
       const loginSuccess = await attemptLogin(privateKey.toLowerCase())
       if (loginSuccess) {
         setPrivateKey('')
-        console.log('loading progress')
         await loadProgress()
         setHasAccount(true)
       } else {
