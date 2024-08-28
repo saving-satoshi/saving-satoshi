@@ -39,6 +39,8 @@ export default function OpCodeRunner({
     setHasherState(success)
   }, [success])
 
+  console.log(success)
+
   return (
     <div className="flex ">
       <div
@@ -64,7 +66,10 @@ export default function OpCodeRunner({
           )}
           onClick={handleRunClick}
         >
-          {((hasherState === 0 || hasherState === 2 || hasherState === 6) && (
+          {((hasherState === 0 ||
+            hasherState === 2 ||
+            hasherState === 3 ||
+            hasherState === 6) && (
             <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-white px-2 py-1.5">
               <Icon
                 icon="play"

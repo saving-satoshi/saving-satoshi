@@ -252,7 +252,9 @@ const OpRunner = ({
   const handleDnDScript = (data) => {
     if (
       (script !== data.join(' ').toUpperCase() && !advancedChallenge) ||
-      (advancedChallenge && step === 1)
+      (script !== data.join(' ').toUpperCase() &&
+        advancedChallenge &&
+        step === 1)
     ) {
       setScript(data.join(' ').toUpperCase())
       setStartedTyping(true)
@@ -363,8 +365,6 @@ const OpRunner = ({
     })
   }
 
-  console.log(stateHistory, startedTyping)
-
   let error = null
   return (
     <div
@@ -380,7 +380,7 @@ const OpRunner = ({
           </p>
           <ScratchDnD
             items={answerScript}
-            prePopulate={prePopulate}
+            prePopulate={prePopulate || step === 2}
             onItemsUpdate={handleDnDScript}
           />
         </div>
