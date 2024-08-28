@@ -734,7 +734,7 @@ export const nextLessonPathAtom = atom((get) => {
   return nextLesson ? nextLesson.path : null
 })
 
-function mergeProgressState(
+export function mergeProgressState(
   defaultState: CourseProgress,
   backendState: CourseProgress
 ): CourseProgress {
