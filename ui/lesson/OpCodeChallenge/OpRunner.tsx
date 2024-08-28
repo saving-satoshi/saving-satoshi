@@ -310,7 +310,7 @@ const OpRunner = ({
         step === 2 &&
         initialStack === initialStackSuccess)
     ) {
-      return true
+      return 5
     } else if (
       containsEveryScript &&
       doesStackValidate() &&
@@ -392,7 +392,7 @@ const OpRunner = ({
               Initial stack
             </p>
             <input
-              title="Add text or numbers seperated by spaces."
+              title="Add text or numbers separated by spaces."
               onChange={handleInitialStackChange}
               value={initialStack}
               className="flex-grow border-none bg-transparent font-space-mono text-lg uppercase focus:outline-none"
@@ -578,6 +578,8 @@ const OpRunner = ({
       </div>
       <OpCodeRunner
         lang="en"
+        errorMessage={error || ''}
+        handleTryAgain={handleTryAgain}
         handleRun={handleStep}
         success={lastSuccessState}
       />

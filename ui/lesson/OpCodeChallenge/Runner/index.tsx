@@ -2,18 +2,14 @@
 
 import clsx from 'clsx'
 import { useMediaQuery, useTranslations } from 'hooks'
-import { useEffect, useRef, useState } from 'react'
-import Convert from 'ansi-to-html'
-
+import { useRef, useState } from 'react'
 import { Loader } from 'shared'
 import Icon from 'shared/Icon'
 
-import { EditorConfig, LessonView, StoredLessonData } from 'types'
+import { LessonView } from 'types'
 import { useLessonContext, StatusBar } from 'ui'
-import { useDynamicHeight } from 'hooks'
-import { Base64String } from 'types/classes'
 import { HasherState } from 'ui/lesson/ScriptingChallenge/Runner/Hasher'
-import { SuccessNumbers } from 'ui/common/StatusBar'
+import { StatusBarType, SuccessNumbers } from 'ui/common/StatusBar'
 
 enum State {
   Idle = 'idle',
@@ -23,23 +19,25 @@ enum State {
   Complete = 'complete',
 }
 
+export interface OpCodeRunnerType extends StatusBarType {
+  lang: string
+  handleRun: () => void
+}
+
 export default function OpCodeRunner({
   lang,
   handleRun,
+  handleTryAgain,
   success,
-}: {
-  lang: string
-  handleRun: () => void
-  success: boolean | SuccessNumbers
-}) {
+  nextStepMessage,
+  errorMessage,
+}: OpCodeRunnerType) {
   const t = useTranslations(lang)
   const [state, setState] = useState<State>(State.Idle)
   const { activeView } = useLessonContext()
   const [loading, setLoading] = useState<boolean>(false)
-  const [isRunning, setIsRunning] = useState<boolean>(false)
-  const hasResult = useRef(false)
   const isActive = activeView !== LessonView.Info
-  const [isTryAgain, setIsTryAgain] = useState<boolean | null>(null)
+  // const [isTryAgain, setIsTryAgain] = useState<boolean | null>(null)
   const [hasherState, setHasherState] = useState<HasherState>(
     HasherState.Waiting
   )
@@ -64,14 +62,16 @@ export default function OpCodeRunner({
         )}
       >
         <button
-          disabled={loading || isRunning}
+          disabled={loading}
           className={clsx(
             'flex h-full items-center justify-start gap-3 p-0 px-4 font-mono text-white',
-            {}
+            {
+              hidden: success == true || success === 5,
+            }
           )}
           onClick={handleRun}
         >
-          {!isRunning && (
+          {success !== true && success !== 5 && (
             <>
               <div
                 className={clsx(
@@ -89,18 +89,18 @@ export default function OpCodeRunner({
               </div>
             </>
           )}
-          {isRunning && (
-            <>
-              <Loader className="h-6 w-6 text-white" />
-              <span>Running...</span>
-            </>
-          )}
         </button>
         <StatusBar
-          handleTryAgain={() => {}}
-          className="h-14 min-h-14 grow bg-transparent p-0 "
+          handleTryAgain={handleTryAgain}
+          errorMessage={errorMessage || ''}
+          className={clsx('h-14 min-h-14 grow border-t-0  px-2', {
+            '!bg-transparent': success !== true && success !== 5,
+          })}
           textClass="text-lg !p-0"
           success={success}
+          hints
+          nextStepMessage={nextStepMessage}
+          nextStepButton={nextStepMessage ? t('opcode.reset') : undefined}
         />
       </div>
     </div>

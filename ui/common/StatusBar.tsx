@@ -16,7 +16,21 @@ export enum Status {
 }
 
 export type SuccessNumbers = 0 | 1 | 2 | 3 | 4 | 5 | 6
-
+export interface StatusBarType {
+  success: boolean | SuccessNumbers | null
+  beginMessage?: string
+  successMessage?: string
+  inProgressMessage?: string
+  errorMessage?: string
+  nextStepMessage?: string
+  nextStepButton?: string
+  full?: boolean
+  hints?: boolean | null
+  alwaysShow?: boolean
+  handleTryAgain?: (pressed: boolean) => void
+  className?: string
+  textClass?: string
+}
 export default function StatusBar({
   success,
   beginMessage,
@@ -31,21 +45,7 @@ export default function StatusBar({
   handleTryAgain,
   className,
   textClass,
-}: {
-  success: boolean | SuccessNumbers | null
-  beginMessage?: string
-  successMessage?: string
-  inProgressMessage?: string
-  errorMessage?: string
-  nextStepMessage?: string
-  nextStepButton?: string
-  full?: boolean
-  hints?: boolean | null
-  alwaysShow?: boolean
-  handleTryAgain?: (pressed: boolean) => void
-  className?: string
-  textClass?: string
-}) {
+}: StatusBarType) {
   const lang = useLang()
   const t = useTranslations(lang)
   const { activeView } = useLessonContext()
