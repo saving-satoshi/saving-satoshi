@@ -2297,38 +2297,26 @@ const translations = {
     paragraph_two: `Just then, Vanderpoole himself walks into the studio! He starts complaining that you have ruined his business and slandered his good family name.`,
     intro_one: {
       title: 'Intro',
-      nav_title: 'The ride home',
+      nav_title: 'Threats',
       paragraph_one:
-        '—HOLOCAT: “Well, you did it. And here I thought that you were just another dumb human on a mission to get yourself killed. Do you mind if I crash at your place for a while? I don’t exactly love it on the servers: too many 1s and 0s and strange programs talking about a mystery in the woods.”',
+        'Everyone is celebrating your success. You are smiling, the crew is smiling, Deborah Chunk is smiling. But there is one man on set who is not happy. A tall grey-haired man standing by the wall. The crowd parts and you see him face to face, for the first time: Vanderpoole! He is there!',
       paragraph_two:
-        '—On your Budgetcopter ride home, you unwind and marvel at everything that has happened and with miners free to continue doing their jobs, how they will continue happening. By locking in one ten-minute block at a time, tonight was 131 years in the making.',
-      paragraph_three:
-        '—Except for… who was that mysterious hacker or hackers going by Satoshi Nakamoto? And how do they know so much about Vanderpoole and especially BitRey?',
+        'He starts shouting at you. You have ruined his business and slandered his good family name. He threatens to sue you in court with all his might for the rest of your days.',
     },
     intro_two: {
       title: 'Intro',
-      nav_title: 'Setting the trap',
+      nav_title: 'Coming to terms',
       paragraph_one:
-        '—You receive a strange text as you arrive home and plop onto your AI foam mattress. It’s from a number you don’t recognize, But it is once again signed by Satoshi Nakamoto.',
+        'Just then, a TV network producer walks in and tells you and Deborah that viewers are calling in from all around the world that want to support your cause! You have lots of fans now and they all want to donate Bitcoin to you! Deborah asks if you could provide a wallet address that they can broadcast on the air.',
       paragraph_two:
-        '—SATOSHI NAKAMOTO: “You need to get out of there. Vanderpoole has put together a goon squad and is on his way back to your house. Our infrared sensors are going crazy. They might want to steal your bitcoin! Or worse!”',
+        'This makes Vanderpoole even more furious. He demands that you split the incoming donations with him or he will carry out his threat of endless lawsuits. Satisfy him, however, and he will leave you alone.',
       paragraph_three:
-        '—Don’t panic, you tell yourself. Think. What kind of trap can you set?”',
-    },
-    intro_three: {
-      title: 'Intro',
-      nav_title: 'Setting the trap',
-      paragraph_one:
-        '—You receive a strange text as you arrive home and plop onto your AI foam mattress. It’s from a number you don’t recognize, But it is once again signed by Satoshi Nakamoto.',
-      paragraph_two:
-        '—SATOSHI NAKAMOTO: “You need to get out of there. Vanderpoole has put together a goon squad and is on his way back to your house. Our infrared sensors are going crazy. They might want to steal your bitcoin! Or worse!”',
-      paragraph_three:
-        '—Don’t panic, you tell yourself. Think. What kind of trap can you set?”',
+        'Your task is to create a Bitcoin script contract with this untrustable counterparty, and make sure you (and Vanderpoole) can spend from it how and when you agree to.',
     },
     opcodes_one: {
       title: 'OpCodes',
-      nav_title: 'Bitcoin Script',
-      heading: 'Bitcoin Script',
+      nav_title: 'Bitcoin script',
+      heading: 'Bitcoin script',
       paragraph_one:
         "We mentioned Bitcoin script back in chapter 6 but we didn't dwell on it because the coins you were spending were locked by a simple mechanism: a single signature and an implied script that evaluated that signature with a public key. Now things are going to get more interesting.",
       paragraph_two:
@@ -2337,7 +2325,7 @@ const translations = {
     },
     opcodes_two: {
       title: 'OpCodes',
-      nav_title: 'Bitcoin Script',
+      nav_title: 'Bitcoin stack',
       heading: 'The stack',
       paragraph_one:
         "Think of a stack of books 📚. If you want to add a book, you have to place it on top of the stack, there's nowhere else for it to go. If you want to read a book, the only one you can access is the one on top of the stack. Even if you want more than one you have start at the top of the stack and work your way down. In computing terms, a stack is like an array of data items with two operations:",
@@ -2361,8 +2349,8 @@ const translations = {
     },
     opcodes_three: {
       title: 'OpCodes',
-      nav_title: 'Bitcoin Script',
-      heading: 'The stack',
+      nav_title: 'OpCodes',
+      heading: 'OpCodes',
       paragraph_one:
         'Script is a linear series of commands that are executed one by one, manipulating items on the stack. When the end of the script has been reached, there must be EXACTLY ONE NON-ZERO (NON-FALSE) ITEM remaining on the stack, or the entire operation is invalid and so is your Bitcoin transaction. There are over 100 commands in the Bitcoin script language, called "opcodes". We are only going to use a handful of them for this challenge.  ',
       paragraph_two:
@@ -2375,8 +2363,8 @@ const translations = {
     },
     opcodes_four: {
       title: 'OpCodes',
-      nav_title: 'Bitcoin Script',
-      heading: 'The stack',
+      nav_title: 'The stack solution',
+      heading: 'The stack solution',
       paragraph_one:
         "The stack solution would look like this: [3]. This is what the spending transaction would need in the witness of its input spending these coins. Let's step through it:",
       table_one: {
@@ -2404,7 +2392,7 @@ const translations = {
     },
     opcodes_five: {
       title: 'OpCodes',
-      nav_title: 'Arithmetic',
+      nav_title: 'Compute basic arithmetic',
       heading: 'Basic Arithmetic',
       paragraph_one:
         'Bitcoin script can do simple math operations. You could lock coins using simple math but then anyone who can do math could spend the coins! In other words, do not try this on mainnet.',
@@ -2447,7 +2435,7 @@ const translations = {
     },
     opcodes_six: {
       title: 'OpCodes',
-      nav_title: 'Simple Cryptography',
+      nav_title: 'Decode with cryptography',
       heading: 'Simple Cryptography',
       paragraph_one:
         'We\'ve explored "pay to public key hash" in previous chapters. This is the Bitcoin script that was written explicitly in millions of transaction outputs before segregated witness came along and abbreviated it. Coins are locked by the hash of a public key. The spender must reveal the public key that matches that hash, and then provide a signature verified by that public key.',
@@ -2475,11 +2463,10 @@ const translations = {
     },
     opcodes_eight: {
       title: 'OpCodes',
-      nav_title: 'Multisig',
-      heading: 'Multisig',
-      subheading_one:
+      nav_title: 'Sign with multiple keys',
+      heading:
         '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1">OP_CHECKMULTISIG</span>',
-      subheading_two:
+      subheading_one:
         'Processes m-of-n multi-signature by following this algorithm.',
       multisig_list_one:
         'Pop a single integer off the stack. This is the <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">n</span> value.',
@@ -2503,10 +2490,10 @@ const translations = {
     },
     opcodes_nine: {
       title: 'OpCodes',
-      nav_title: 'Time Locks',
+      nav_title: 'Wait to unlock',
       heading: 'Time Locks',
       paragraph_one:
-        "Way back in the last century a document entitled BIP 65 proposed a new opcode to Bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an OP_DROP as well.. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.",
+        "Way back in the last century a document entitled BIP 65 proposed a new opcode to Bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className=\"text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base\">OP_DROP</span> as well.. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.",
       subheading_one: 'Opcodes that do block timelocks',
       optimelock_list_one_heading:
         '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_DROP</span>',
@@ -2519,7 +2506,7 @@ const translations = {
     },
     opcodes_ten: {
       title: 'OpCodes',
-      nav_title: 'Flow Control',
+      nav_title: 'Build some logic',
       heading: 'Conditionals',
       paragraph_one:
         'Just like any other good programming language, Bitcoin script has logic branches! The path through the branches is typically chosen by the spender to pick which combination of authentication conditions they need to satisfy,',
@@ -2538,7 +2525,7 @@ const translations = {
     },
     proposal_two: {
       title: 'Advanced Challenge 1',
-      nav_title: 'Advanced Challenge 1',
+      nav_title: 'Sign cooperatively',
       heading: 'Advanced Challenge 1',
       paragraph_one: `The first thing Vanderpoole suggests is a 2-of-2 multisig. All funds that get donated will be split by you and him 50/50, which will be managed by you both signing all spending transactions from the donation address, so you will have to agree on all "withdraws"`,
       paragraph_two: `Vanderpoole hands you his public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
@@ -2547,7 +2534,7 @@ const translations = {
     },
     proposal_three: {
       title: 'Advanced Challenge 2',
-      nav_title: 'Advanced Challenge 2',
+      nav_title: 'Make him wait',
       heading: 'Advanced Challenge 2',
       paragraph_one: `Wait a minute, that doesn't make sense -- you don't want to deal with him forever! The new deal is, you get all donations for the next two hours while you are still on TV. After that, he can have whatever else trickles in. You take a look at The Bitcoin Block Clock on the wall in the studio and agree that block height 6930300 will be probably be mined in about two hours`,
       paragraph_two: `Remember Vanderpoole's public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
@@ -2556,7 +2543,7 @@ const translations = {
     },
     proposal_four: {
       title: 'Advanced Challenge 3',
-      nav_title: 'Advanced Challenge 3',
+      nav_title: 'Work with an oracle',
       heading: 'Advanced Challenge 3',
       paragraph_one:
         "Vanderpoole changes his mind again. He doesn't like that deal because of the unknowns. He decides he wants the first 1.0 BTC of total donations, and then you can spend the rest after that.",
