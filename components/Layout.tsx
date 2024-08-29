@@ -27,6 +27,7 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
       await loadProgress()
     }
     initialDataLoad()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

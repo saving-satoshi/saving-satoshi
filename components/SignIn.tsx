@@ -67,6 +67,7 @@ export default function SignIn({
       setLoading(false)
       typeof onSignIn === 'function' && onSignIn()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPending])
 
   function handleCreateClick() {
