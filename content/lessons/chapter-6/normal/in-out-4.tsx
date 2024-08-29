@@ -166,6 +166,7 @@ class Input:
     setLanguage(language)
   }
 
+  // Tooltip #1
   const [tooltipVisible, setTooltipVisible] = useState(false)
 
   const handleMouseEnter = () => {
@@ -176,6 +177,16 @@ class Input:
     setTooltipVisible(false)
   }
 
+  // Tooltip #2
+  const [tooltipVisible2, setTooltipVisible2] = useState(false)
+
+  const handleMouseEnter2 = () => {
+    setTooltipVisible2(true)
+  }
+
+  const handleMouseLeave2 = () => {
+    setTooltipVisible2(false)
+  }
   return (
     <PlainEditorWrapper
       fixedCode={''}
@@ -188,58 +199,102 @@ class Input:
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_six.in_out_four.normal.paragraph_one')}
         </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_six.in_out_four.normal.paragraph_two')}
+        </Text>
         <CodeExample
           className="mt-4 text-wrap font-space-mono"
           code={`from_output(txid: str, vout: int, value: int, scriptcode: bytes)`}
           language="shell"
         />
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.normal.paragraph_two')}
+          {t('chapter_six.in_out_four.normal.paragraph_three')}
         </Text>
+        <Text className="ml-5 mt-4 font-nunito text-xl text-white">
+          {t('chapter_six.in_out_four.normal.paragraph_four')}
+        </Text>
+        <Text className="ml-5 mt-4 font-nunito text-xl text-white">
+          {t('chapter_six.in_out_four.normal.paragraph_five')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_six.in_out_four.normal.paragraph_six')}
+        </Text>
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_six.in_out_four.normal.paragraph_seven')}
+        </Text>
+        <hr className="my-6 h-[1px] w-full opacity-25" />
 
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.normal.paragraph_three.a')}
+          {t('chapter_six.in_out_four.normal.paragraph_eight.a')}
           <a
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            href={t('chapter_six.in_out_four.normal.paragraph_three.b.href')}
+            href={t('chapter_six.in_out_four.normal.paragraph_eight.b.href')}
             target="_blank"
             className="inline text-lg italic hover:underline md:text-xl"
           >
-            {t('chapter_six.in_out_four.normal.paragraph_three.b.text')}
+            {t('chapter_six.in_out_four.normal.paragraph_eight.b.text')}
             <HolocatQuestion
               theme={chapters['chapter-6'].metadata.theme}
               inline
               id="tx-order"
               question={t(
-                'chapter_six.in_out_four.normal.paragraph_three.b.question'
+                'chapter_six.in_out_four.normal.paragraph_eight.b.question'
               )}
-              href={t('chapter_six.in_out_four.normal.paragraph_three.b.href')}
+              href={t('chapter_six.in_out_four.normal.paragraph_eight.b.href')}
               visible={tooltipVisible}
             />
           </a>
-          {t('chapter_six.in_out_four.normal.paragraph_three.c')}
-        </Text>
-        <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.normal.paragraph_four')}
+          {t('chapter_six.in_out_four.normal.paragraph_eight.c')}
         </Text>
 
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t('chapter_six.in_out_four.normal.paragraph_five')}
+          {t('chapter_six.in_out_four.normal.paragraph_nine')}
         </Text>
 
-        <div className="mt-4">
-          <Title>{t('chapter_six.in_out_four.normal.heading_two')}</Title>
-        </div>
-        <Table headings={tableHeading} rows={outputRows} />
+        <hr className="my-6 h-[1px] w-full opacity-25" />
+
+        <Text className="mt-4 font-nunito text-xl text-white">
+          {t('chapter_six.in_out_four.normal.paragraph_ten')}
+        </Text>
 
         <div className="mt-4">
           <Title>{t('chapter_six.in_out_four.normal.heading_three')}</Title>
         </div>
+        <Table headings={tableHeading} rows={outputRows} />
+
+        <div className="mt-4">
+          <Title>{t('chapter_six.in_out_four.normal.heading_four')}</Title>
+        </div>
+
         <Table headings={tableHeading} rows={inputRows} />
-        <Text className="font-nunito text-2xl font-bold text-white">
-          {t('chapter_six.in_out_four.normal.paragraph_six')}
-        </Text>
+
+        <p className="mt-4">
+          <Text className="font-nunito text-xl font-bold italic text-white">
+            {t('chapter_six.in_out_four.normal.paragraph_eleven.a')}
+            <a
+              onMouseEnter={handleMouseEnter2}
+              onMouseLeave={handleMouseLeave2}
+              href={t('chapter_six.in_out_four.normal.paragraph_eleven.b.href')}
+              target="_blank"
+              className="inline font-nunito text-xl font-bold italic hover:underline md:text-xl"
+            >
+              {t('chapter_six.in_out_four.normal.paragraph_eleven.b.text')}
+              <HolocatQuestion
+                theme={chapters['chapter-6'].metadata.theme}
+                inline
+                id="endianness"
+                question={t(
+                  'chapter_six.in_out_four.normal.paragraph_eleven.b.question'
+                )}
+                href={t(
+                  'chapter_six.in_out_four.normal.paragraph_eleven.b.href'
+                )}
+                visible={tooltipVisible2}
+              />
+            </a>
+          </Text>
+        </p>
       </LessonInfo>
     </PlainEditorWrapper>
   )
