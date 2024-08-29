@@ -1,6 +1,5 @@
 import * as Intro1 from './intro-1'
 import * as Intro2 from './intro-2'
-import * as Intro3 from './intro-3'
 import * as Outro1 from './outro-1'
 import * as OpCodes1 from './opcodes-1'
 import * as OpCodes2 from './opcodes-2'
@@ -20,7 +19,6 @@ import * as Proposal4 from './proposal-4'
 const Chapter9 = {
   'intro-1': Intro1,
   'intro-2': Intro2,
-  'intro-3': Intro3,
   'opcodes-1': OpCodes1,
   'opcodes-2': OpCodes2,
   'opcodes-3': OpCodes3,

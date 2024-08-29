@@ -38,10 +38,10 @@ export default function OpCodes8({ lang }) {
       >
         <LessonInfo>
           <Text className="font-nunito text-xl font-bold text-white">
-            {t('chapter_nine.opcodes_eight.subheading_one')}
+            {t('chapter_nine.opcodes_eight.heading')}
           </Text>
           <Text className="mt-4 font-nunito text-lg font-bold text-white">
-            {t('chapter_nine.opcodes_eight.subheading_two')}
+            {t('chapter_nine.opcodes_eight.subheading_one')}
           </Text>
           <ol className="ml-4 list-disc font-nunito">
             <li>{t('chapter_nine.opcodes_eight.multisig_list_one')}</li>
