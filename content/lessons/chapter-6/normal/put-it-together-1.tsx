@@ -383,7 +383,7 @@ class Transaction:
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_six.put_it_together_two.success')}
+        successMessage={t('chapter_six.put_it_together_one.normal.success')}
       >
         <LessonInfo>
           <Text className="font-nunito text-2xl font-bold text-white">

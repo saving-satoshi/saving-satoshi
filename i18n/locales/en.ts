@@ -1424,7 +1424,7 @@ const translations = {
       },
       hard: {
         title: 'The ins and outs',
-        nav_title: 'The input class',
+        nav_title: 'Build the input class',
         heading: 'Finish the implementation of Class Input',
         paragraph_one: 'It should have the following method:',
         paragraph_two:
@@ -1742,7 +1742,7 @@ const translations = {
       },
       hard: {
         title: 'Putting it all together',
-        nav_title: 'Build the witness class',
+        nav_title: 'Serialize the transaction',
         heading: 'Finish the implementation of Class Transaction',
         paragraph_one:
           'It should have global properties locktime and version as well as an array of inputs, outputs and witness stacks.',
@@ -1890,7 +1890,7 @@ const translations = {
       },
       hard: {
         title: 'Putting it all together',
-        nav_title: 'Sign the transaction',
+        nav_title: 'Build the transaction digest',
         heading: 'Transaction digest',
         paragraph_one:
           'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
