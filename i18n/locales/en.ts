@@ -1817,7 +1817,7 @@ const translations = {
         paragraph_one:
           'To complete our transaction we will need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that outputs the entire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
         paragraph_two:
-          'Our script should create and sign a Transaction object. It will have one input (the UTXO we identified in <span className="underline">Populate the Input</span>) and two outputs:',
+          'Our script should create and sign a Transaction object. It will have one input (the UTXO we identified in <span className="underline">The input class</span>) and two outputs:',
         paragraph_three:
           'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
         paragraph_four:
