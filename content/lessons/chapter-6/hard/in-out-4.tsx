@@ -230,7 +230,7 @@ class Input:
           {t('chapter_six.in_out_four.hard.paragraph_one')}
         </Text>
         <CodeExample
-          className="mt-4 font-space-mono"
+          className="mt-4 whitespace-break-spaces font-space-mono"
           code={`from_output(txid: str, vout: int, value: int, scriptcode: bytes)`}
           language="shell"
         />
