@@ -374,7 +374,7 @@ const OpRunner = ({
       })}
     >
       <div className="flex h-[calc(100vh-70px-67px)] grow flex-col text-white">
-        <div className="flex h-[25vh] flex-col gap-1 border-b border-b-white py-4 pl-2.5 pr-5">
+        <div className="flex h-[40vh] flex-col gap-1 border-b border-b-white py-4 pl-2.5 pr-5">
           <p className="pl-2.5 font-space-mono text-lg font-bold capitalize">
             Your Script
           </p>
@@ -398,9 +398,6 @@ const OpRunner = ({
               type="text"
               placeholder="0xA 10..."
             />
-            <p className="mt-2 font-space-mono text-base text-orange">
-              Add text or numbers separated by spaces.
-            </p>
           </div>
 
           <div className="flex flex-col px-5 py-4">

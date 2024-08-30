@@ -20,7 +20,7 @@ export default function Icon({
 
   return (
     <div className={clsx(className, 'min-h-2 min-w-2')}>
-      <IconComponent className="h-full w-full" title={title} />
+      <IconComponent className={className} title={title} />
     </div>
   )
 }
