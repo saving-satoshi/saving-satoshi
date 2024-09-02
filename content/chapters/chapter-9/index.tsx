@@ -17,7 +17,7 @@ export const metadata = {
   slug: 'chapter-9',
   title: `chapter_nine.title`,
   image: '/assets/images/chapter-9-cover.jpg',
-  intros: ['intro-1', 'intro-2', 'intro-3'],
+  intros: ['intro-1', 'intro-2'],
   lessons: [
     'opcodes-1',
     'opcodes-2',
