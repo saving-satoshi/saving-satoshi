@@ -39,8 +39,6 @@ export default function OpCodeRunner({
     setHasherState(success)
   }, [success])
 
-  console.log(success)
-
   return (
     <div className="flex ">
       <div
