@@ -365,48 +365,6 @@ input:checked + .slider:before {
   transform: translateX(20px);
 }
 
-.arrow-box::before,
-.arrow-box::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-style: solid;
-}
-
-.arrow-box::before {
-  @apply left-full top-1/2 -translate-y-1/2 transform;
-  border-width: 14px 0 14px 10px;
-  border-color: transparent transparent transparent #6a717f;
-}
-
-.arrow-box::after {
-  @apply -left-2 top-1/2 -translate-y-1/2 transform;
-  border-width: 14px 0 14px 10px;
-  border-color: #6a717f #6a717f #6a717f transparent;
-}
-
-.arrow-box-25::before,
-.arrow-box-25::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-style: solid;
-}
-
-.arrow-box-25::before {
-  @apply left-full top-1/2 -translate-y-1/2 transform;
-  border-width: 14px 0 14px 10px;
-  border-color: transparent transparent transparent #6a717f40;
-}
-
-.arrow-box-25::after {
-  @apply -left-2 top-1/2 -translate-y-1/2 transform;
-  border-width: 14px 0 14px 10px;
-  border-color: #6a717f40 #6a717f40 #6a717f40 transparent;
-}
-
 .dnd-item {
   display: flex;
   user-select: none;
