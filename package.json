@@ -43,7 +43,6 @@
     "react-monaco-editor": "^0.52.0",
     "react-transition-group": "^4.4.5",
     "sjcl": "^1.0.8",
-    "styled-components": "^6.1.12",
     "use-local-storage-state": "^18.1.2",
     "uuid": "^10.0.0"
   },

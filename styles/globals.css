@@ -407,6 +407,13 @@ input:checked + .slider:before {
   border-color: #6a717f40 #6a717f40 #6a717f40 transparent;
 }
 
+.dnd-item {
+  display: flex;
+  user-select: none;
+  align-items: flex-center;
+  align-content: flex-start;
+}
+
 .clone + div {
   display: none !important;
 }
