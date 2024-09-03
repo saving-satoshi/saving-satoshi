@@ -8,7 +8,7 @@ import {
   DropResult,
   DraggableLocation,
 } from 'react-beautiful-dnd'
-const uuid = () => `id-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+import { uuid } from 'utils'
 import clsx from 'clsx'
 import Icon from 'shared/Icon'
 import { OpCodeTypes } from '../lesson/OpCodeChallenge/OpFunctions'
