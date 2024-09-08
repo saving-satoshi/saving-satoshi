@@ -1,6 +1,5 @@
 import * as OpcodesFive from './opcodes-5'
 import * as OpcodesSix from './opcodes-6'
-import * as OpcodesSeven from './opcodes-7'
 import * as OpcodesEight from './opcodes-8'
 import * as OpcodesNine from './opcodes-9'
 import * as OpcodesTen from './opcodes-10'
@@ -11,7 +10,6 @@ import * as ProposalFour from './proposal-4'
 const Chapter9 = {
   'opcodes-5': OpcodesFive,
   'opcodes-6': OpcodesSix,
-  'opcodes-7': OpcodesSeven,
   'opcodes-8': OpcodesEight,
   'opcodes-9': OpcodesNine,
   'opcodes-10': OpcodesTen,

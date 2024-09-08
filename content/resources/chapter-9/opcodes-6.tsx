@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'hooks'
 import { useState } from 'react'
-import { Text, ResourcePage, ToggleSwitch } from 'ui'
+import { Text, ResourcePage, ToggleSwitch, CodeExample } from 'ui'
 
 export default function OpcodesSix({ lang }) {
   const t = useTranslations(lang)
@@ -18,7 +18,7 @@ export default function OpcodesSix({ lang }) {
       readingResources={<></>}
       codeResources={
         <>
-          <Text>{t('help_page.solution_one')}</Text>
+          <Text>{t('help_page.solution')}</Text>
           <div className="flex flex-row items-center gap-2">
             <ToggleSwitch
               checked={challengeIsToggled}
@@ -26,6 +26,16 @@ export default function OpcodesSix({ lang }) {
             />
             <Text>{t('help_page.spoilers_confirm')}</Text>
           </div>
+          {challengeIsToggled && (
+            <div className="text-white ">
+              <CodeExample
+                className="max-w-3xl text-wrap"
+                text
+                language="bash"
+                code={t('chapter_nine.resources.opcodes_six.spoiler')}
+              />
+            </div>
+          )}
         </>
       }
     />
