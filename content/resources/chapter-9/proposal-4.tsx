@@ -26,6 +26,16 @@ export default function ProposalFour({ lang }) {
             />
             <Text>{t('help_page.spoilers_confirm')}</Text>
           </div>
+          {challengeIsToggled && (
+            <div className="text-white ">
+              <CodeExample
+                className="max-w-3xl text-wrap"
+                text
+                language="bash"
+                code={t('chapter_nine.resources.proposal_four.spoiler')}
+              />
+            </div>
+          )}
         </>
       }
     />
