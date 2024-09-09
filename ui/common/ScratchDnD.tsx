@@ -160,7 +160,7 @@ export default class ScratchDnd extends Component<
   }
 
   handleOpPushChange = (id: string, value: string) => {
-    const input = event.target
+    const input = event?.target
     const caretPosition = input.selectionStart
 
     this.setState(
