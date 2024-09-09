@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'hooks'
 import { useState } from 'react'
-import { Text, ResourcePage, ToggleSwitch } from 'ui'
+import { Text, ResourcePage, ToggleSwitch, CodeExample } from 'ui'
 
 export default function ProposalFour({ lang }) {
   const t = useTranslations(lang)
