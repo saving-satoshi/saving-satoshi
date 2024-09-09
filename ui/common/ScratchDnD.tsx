@@ -160,12 +160,20 @@ export default class ScratchDnd extends Component<
   }
 
   handleOpPushChange = (id: string, value: string) => {
-    this.setState((prevState) => ({
-      opPushValues: {
-        ...prevState.opPushValues,
-        [id]: value.toUpperCase(),
-      },
-    }))
+    const input = event.target
+    const caretPosition = input.selectionStart
+
+    this.setState(
+      (prevState) => ({
+        opPushValues: {
+          ...prevState.opPushValues,
+          [id]: value.toUpperCase(),
+        },
+      }),
+      () => {
+        input.setSelectionRange(caretPosition, caretPosition)
+      }
+    )
   }
 
   onDragEnd = (result: DropResult) => {

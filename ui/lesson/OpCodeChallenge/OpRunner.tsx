@@ -146,6 +146,8 @@ const OpRunner = ({
   const lang = useLang()
   const t = useTranslations(lang)
   const scrollRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const caretPositionRef = useRef(0)
   const btnClassName =
     'bg-black/10 py-[3px] px-2.5 rounded-[3px] text-white font-space-mono disabled:opacity-25'
   const [script, setScript] = useState(
@@ -262,9 +264,20 @@ const OpRunner = ({
   }
 
   const handleInitialStackChange = (event) => {
-    setInitialStack(event.target.value.toUpperCase())
+    const input = event.target
+    caretPositionRef.current = input.selectionStart
+    setInitialStack(input.value.toUpperCase())
     setStartedTyping(true)
   }
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.setSelectionRange(
+        caretPositionRef.current,
+        caretPositionRef.current
+      )
+    }
+  }, [initialStack])
 
   const handleHeightChange = (event) => {
     if (!initialHeight) {
@@ -394,6 +407,7 @@ const OpRunner = ({
               title="Add text or numbers separated by spaces."
               onChange={handleInitialStackChange}
               value={initialStack}
+              ref={inputRef}
               className="flex-grow border-none bg-transparent font-space-mono text-lg uppercase focus:outline-none"
               type="text"
               placeholder="0xA 10..."
