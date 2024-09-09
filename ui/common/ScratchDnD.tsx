@@ -159,9 +159,13 @@ export default class ScratchDnd extends Component<
     }
   }
 
-  handleOpPushChange = (id: string, value: string) => {
+  handleOpPushChange = (
+    id: string,
+    value: string,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const input = event?.target
-    const caretPosition = input.selectionStart
+    const caretPosition = input?.selectionStart
 
     this.setState(
       (prevState) => ({
@@ -314,7 +318,8 @@ export default class ScratchDnd extends Component<
                                   onChange={(e) =>
                                     this.handleOpPushChange(
                                       item.id,
-                                      e.target.value
+                                      e.target.value,
+                                      e
                                     )
                                   }
                                 />
