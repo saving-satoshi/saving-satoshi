@@ -374,8 +374,8 @@ const OpRunner = ({
       })}
     >
       <div className="flex h-[calc(100vh-70px-67px)] grow flex-col text-white">
-        <div className="flex h-[40vh] flex-col gap-1 border-b border-b-white py-4 pl-2.5 pr-5">
-          <p className="pl-2.5 font-space-mono text-lg font-bold capitalize">
+        <div className="flex h-[40vh] flex-col gap-1 border-b border-b-white py-4 pl-4 pr-5">
+          <p className="pl-1 font-space-mono text-lg font-bold capitalize">
             Your Script
           </p>
           <ScratchDnD
@@ -421,7 +421,7 @@ const OpRunner = ({
           </div>
           <div
             ref={scrollRef}
-            className="mb-auto flex h-full w-full flex-row gap-2.5 overflow-scroll py-2"
+            className="mb-auto flex h-full w-full flex-row gap-2.5 overflow-auto py-2"
           >
             {(stateHistory.length === 0 || startedTyping) && (
               <div className="flex w-full max-w-[164px] flex-col">
@@ -429,7 +429,7 @@ const OpRunner = ({
                   OP_CODES
                 </div>
 
-                <div className="flex h-full max-h-[204px] min-w-[160px] flex-col rounded-b-[10px] bg-black/20  p-2.5">
+                <div className="flex h-52 min-w-[160px] flex-col rounded-b-[10px] bg-black/20  p-2.5">
                   <div
                     className="my-auto resize-none break-all border-none bg-transparent font-space-mono text-white/50 focus:outline-none"
                     style={{ whiteSpace: 'pre-wrap' }}
@@ -483,7 +483,7 @@ const OpRunner = ({
                       {stack && (
                         <div
                           key={`Container${opCodeIndex}`}
-                          className="flex max-h-[405px] min-h-52 min-w-[160px] flex-col self-stretch overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                          className="flex max-h-72 min-h-52 min-w-[160px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
                         >
                           <div
                             key={opCodeIndex}

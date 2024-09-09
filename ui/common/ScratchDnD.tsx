@@ -258,11 +258,11 @@ export default class ScratchDnd extends Component<
               {(provided, snapshot) => (
                 <div
                   className={clsx(
-                    'flex h-9 w-full flex-row whitespace-nowrap px-1 pb-1 font-space-mono text-sm',
+                    'flex h-12 w-full flex-row whitespace-nowrap pb-4 pl-1.5 font-space-mono text-sm',
                     {
                       'overflow-hidden':
                         this.state.dynamicState[list].length === 0,
-                      'overflow-x-auto':
+                      'overflow-x-auto overflow-y-hidden':
                         this.state.dynamicState[list].length > 0,
                     }
                   )}
@@ -279,7 +279,7 @@ export default class ScratchDnd extends Component<
                           <div
                             id={item.id}
                             className={clsx(
-                              'dnd-item relative -mx-[0.125rem] flex h-[28px] select-none items-center text-sm font-normal',
+                              'dnd-item relative -mx-0.5 flex h-[28px] select-none items-center text-sm font-normal',
                               {
                                 'pointer-events-none': this.props.prePopulate,
                               }
@@ -321,7 +321,7 @@ export default class ScratchDnd extends Component<
                       </Draggable>
                     ))
                   ) : (
-                    <div className="relative flex h-[28px] min-w-full select-none content-center items-start justify-start overflow-hidden px-1 text-white/50">
+                    <div className="relative flex h-[28px] min-w-full select-none content-center items-start justify-start overflow-hidden text-white/50">
                       Drag OP_CODES here to build your script...
                     </div>
                   )}
@@ -338,7 +338,7 @@ export default class ScratchDnd extends Component<
         >
           {(provided, snapshot) => (
             <div
-              className="block overflow-y-auto pl-[0.625rem]"
+              className="block overflow-y-auto pl-1"
               dir="rtl"
               ref={provided.innerRef}
             >
@@ -347,7 +347,7 @@ export default class ScratchDnd extends Component<
                   key={groupIndex}
                   className="mb-2 flex flex-row-reverse font-space-mono"
                 >
-                  <h2 className="min-w-[160px] text-left text-xl font-semibold">
+                  <h2 className="min-w-[160px] select-none text-left text-xl font-semibold">
                     {group.heading}
                   </h2>
                   <div className="flex w-full flex-row-reverse flex-wrap overflow-x-auto pl-1">
@@ -366,7 +366,7 @@ export default class ScratchDnd extends Component<
                                 {
                                   'pointer-events-none text-white/25':
                                     this.props.prePopulate,
-                                  '-mx-[0.125rem]': snapshot.isDragging,
+                                  '-mx-05': snapshot.isDragging,
                                 }
                               )}
                               ref={provided.innerRef}
