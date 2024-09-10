@@ -154,7 +154,7 @@ const OpRunner = ({
     prePopulate ? answerScript.join(' ') : ''
   )
   const { activeView } = useLessonContext()
-  const isActive = activeView === LessonView.Code
+  const isActive = activeView !== LessonView.Info
   const [initialStack, setInitialStack] = useState('')
   const [step, setStep] = useState<number>(1)
   const [height, setHeight] = useState<number | undefined>(
@@ -380,14 +380,17 @@ const OpRunner = ({
 
   let error = null
   return (
-    <div
-      className={clsx('grow flex-col text-white md:w-[50vw]', {
-        'hidden md:flex': !isActive,
-        flex: isActive,
-      })}
-    >
-      <div className="flex h-[calc(100vh-70px-67px)] grow flex-col text-white">
-        <div className="flex h-[40vh] flex-col gap-1 border-b border-b-white py-4 pl-4 pr-5">
+    <div className="grow flex-col text-white md:w-[50vw]">
+      <div className="flex h-[calc(100vh-70px-56px-48px)] grow flex-col text-white md:h-[calc(100vh-70px-56px)]">
+        <div
+          className={clsx(
+            'flex h-[40vh] flex-col gap-1 border-b border-b-white py-4 pl-4 pr-5',
+            {
+              'hidden md:flex': activeView === LessonView.Execute || !isActive,
+              flex: isActive,
+            }
+          )}
+        >
           <p className="pl-1 font-space-mono text-lg font-bold capitalize">
             Your Script
           </p>
@@ -398,7 +401,12 @@ const OpRunner = ({
           />
         </div>
 
-        <div className="flex flex-col border-b border-b-white">
+        <div
+          className={clsx('flex-col border-b border-b-white', {
+            'hidden md:flex': activeView === LessonView.Execute || !isActive,
+            flex: isActive,
+          })}
+        >
           <div className="flex flex-col border-b border-b-white px-5 py-4">
             <p className="font-space-mono text-lg font-bold capitalize">
               Initial stack
@@ -429,7 +437,12 @@ const OpRunner = ({
             />
           </div>
         </div>
-        <div className="flex grow flex-col px-5">
+        <div
+          className={clsx('grow flex-col px-5', {
+            'hidden md:flex': activeView !== LessonView.Execute,
+            flex: activeView === LessonView.Execute,
+          })}
+        >
           <div className="flex w-full flex-row justify-between pt-3">
             <p className="font-mono text-lg font-bold">Execution stack</p>
           </div>

@@ -45,9 +45,7 @@ export default function OpCodeRunner({
         className={clsx(
           'flex h-14 min-h-14 w-full items-start border-t border-white border-opacity-30 bg-black/20',
           {
-            'hidden md:flex':
-              !isSmallScreen && activeView !== LessonView.Execute,
-            hidden: activeView === 'info',
+            'hidden md:flex': activeView === LessonView.Info || !isActive,
             flex: isActive,
           }
         )}

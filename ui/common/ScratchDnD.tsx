@@ -270,7 +270,7 @@ export default class ScratchDnd extends Component<
               {(provided, snapshot) => (
                 <div
                   className={clsx(
-                    'flex h-12 w-full flex-row whitespace-nowrap pb-4 pl-1.5 font-space-mono text-sm',
+                    'flex h-full w-full flex-row whitespace-nowrap pb-1 pl-1.5 font-space-mono text-sm md:h-12',
                     {
                       'overflow-hidden':
                         this.state.dynamicState[list].length === 0,
@@ -360,7 +360,7 @@ export default class ScratchDnd extends Component<
                   key={groupIndex}
                   className="mb-2 flex flex-row-reverse font-space-mono"
                 >
-                  <h2 className="min-w-[160px] select-none text-left text-xl font-semibold">
+                  <h2 className="min-w-fit select-none text-left text-xl font-semibold md:min-w-[160px]">
                     {group.heading}
                   </h2>
                   <div className="flex w-full flex-row-reverse flex-wrap overflow-x-auto pl-1">
