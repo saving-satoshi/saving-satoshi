@@ -2563,6 +2563,38 @@ const translations = {
       paragraph_one:
         "Nice, you were able to come to an agreement that seems to make everyone happy. Let's go ahead and broadcast this transaction to set it in stone.",
     },
+
+    resources: {
+      opcodes_five: {
+        spoiler: `Put in two integers that give the sum of 3 in the initial stack`,
+      },
+      opcodes_six: {
+        spoiler: `The script checks a signature against a hashed public key. Put a signature key first then a public key`,
+      },
+      opcodes_eight: {
+        spoiler: `It's a multisig script requiring two signatures, and the first value on the stack is a placeholder for a quirk in the CHECKMULTISIG operation.`,
+      },
+      opcodes_nine: {
+        spoiler: ` The script locks spending until a specific block height and then verifies the signature in the initial stack.`,
+      },
+      opcodes_ten: {
+        spoiler: `The sum of the first two values on the intial stack is false, so the script follows the OP_ELSE branch.`,
+      },
+      proposal_two: {
+        spoiler: `Script Hint: This multisig arrangement needs both participants to sign. The script specifies that two signatures are required and includes both public keys.
+Stack Hint: To satisfy the script, you need to provide both signatures. The 0 on the stack accounts for a specific behavior of the CHECKMULTISIG operation.`,
+      },
+      proposal_three: {
+        spoiler: `Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, Vanderpoole can spend; after the block, you can.
+        
+Stack Hint: To spend before the specified block, Vanderpoole uses his signature. After the block, you use your signature and need to provide a 0 because the script has moved past the locktime verification.`,
+      },
+      proposal_four: {
+        spoiler: `Script Hint: The script allows spending under two conditions: before the secret has been revealed or after. Before the block, Vanderpoole can spend; after the block, you both can.
+        
+Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signature. After the secret is revealed, you use your signature, a hash of the secret, and provide a 0 because the script has moved past the unrevealed verification.`,
+      },
+    },
   },
 
   chapter_ten: {
