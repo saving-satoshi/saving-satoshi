@@ -381,10 +381,10 @@ const OpRunner = ({
   let error = null
   return (
     <div className="grow flex-col text-white md:w-[50vw]">
-      <div className="flex h-[calc(100vh-70px-56px-48px)] grow flex-col text-white md:h-[calc(100vh-70px-56px)]">
+      <div className="flex h-[calc(100dvh-70px-56px-48px)] grow flex-col text-white md:h-[calc(100dvh-70px-56px)]">
         <div
           className={clsx(
-            'flex h-[40vh] flex-col gap-1 border-b border-b-white/25',
+            'flex h-[40dvh] flex-col gap-1 border-b border-b-white/25',
             {
               'hidden md:flex': activeView === LessonView.Execute || !isActive,
               flex: isActive,
