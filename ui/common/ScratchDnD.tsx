@@ -266,82 +266,89 @@ export default class ScratchDnd extends Component<
       <DragDropContext onDragEnd={this.onDragEnd}>
         {Object.keys(this.state.dynamicState).map((list, i) => {
           return (
-            <Droppable key={list} droppableId={list} direction="horizontal">
-              {(provided, snapshot) => (
-                <div
-                  className={clsx(
-                    'flex h-full w-full flex-row whitespace-nowrap pb-1 pl-1.5 font-space-mono text-sm md:h-12',
-                    {
-                      'overflow-hidden':
-                        this.state.dynamicState[list].length === 0,
-                      'overflow-x-auto overflow-y-hidden':
-                        this.state.dynamicState[list].length > 0,
-                    }
-                  )}
-                  ref={provided.innerRef}
-                >
-                  {this.state.dynamicState[list].length ? (
-                    this.state.dynamicState[list].map((item, index) => (
-                      <Draggable
-                        key={item.id}
-                        draggableId={item.id.toString()}
-                        index={index}
-                      >
-                        {(provided, snapshot) => (
-                          <div
-                            id={item.id}
-                            className={clsx(
-                              'dnd-item relative -mx-0.5 flex h-[28px] select-none items-center text-sm font-normal',
-                              {
-                                'pointer-events-none': this.props.prePopulate,
-                              }
-                            )}
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            style={provided.draggableProps.style}
-                          >
-                            <Icon
-                              icon="scratchCaretFemale"
-                              className="h-[28px] object-contain text-gray-500"
-                            />
-                            <span className="-ml-[0.08rem] -mr-[0.07rem] flex h-[28px] items-center whitespace-nowrap border-x border-gray-500 bg-gray-500 px-1">
-                              {item.content}
-                              {item.content === 'OP_PUSH' && (
-                                <input
-                                  key={item.id}
-                                  id={item.id}
-                                  className="mx-1 h-5 w-auto grow bg-gray-400 px-1 placeholder:text-white/50"
-                                  placeholder="PUSH_DATA"
-                                  type="text"
-                                  value={this.state.opPushValues[item.id] || ''}
-                                  onChange={(e) =>
-                                    this.handleOpPushChange(
-                                      item.id,
-                                      e.target.value,
-                                      e
-                                    )
-                                  }
-                                />
+            <div className="border-b border-white/25 px-5 py-5">
+              <p className="font-space-mono text-lg font-bold capitalize">
+                Your Script
+              </p>
+              <Droppable key={list} droppableId={list} direction="horizontal">
+                {(provided, snapshot) => (
+                  <div
+                    className={clsx(
+                      'flex h-7 w-full flex-row whitespace-nowrap font-space-mono text-sm',
+                      {
+                        'overflow-hidden':
+                          this.state.dynamicState[list].length === 0,
+                        'overflow-x-auto overflow-y-hidden':
+                          this.state.dynamicState[list].length > 0,
+                      }
+                    )}
+                    ref={provided.innerRef}
+                  >
+                    {this.state.dynamicState[list].length ? (
+                      this.state.dynamicState[list].map((item, index) => (
+                        <Draggable
+                          key={item.id}
+                          draggableId={item.id.toString()}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <div
+                              id={item.id}
+                              className={clsx(
+                                'dnd-item relative -mx-0.5 flex h-[28px] select-none items-center text-sm font-normal',
+                                {
+                                  'pointer-events-none': this.props.prePopulate,
+                                }
                               )}
-                            </span>
-                            <Icon
-                              icon="scratchCaretMale"
-                              className="h-[28px] object-contain text-gray-500"
-                            />
-                          </div>
-                        )}
-                      </Draggable>
-                    ))
-                  ) : (
-                    <div className="relative flex h-[28px] min-w-full select-none content-center items-start justify-start overflow-hidden text-white/50">
-                      Drag OP_CODES here to build your script...
-                    </div>
-                  )}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              style={provided.draggableProps.style}
+                            >
+                              <span
+                                className={clsx(
+                                  'mx-1 flex h-[28px] items-center whitespace-nowrap bg-black/30',
+                                  {
+                                    'px-1': item.content !== 'OP_PUSH',
+                                    'pl-1': item.content === 'OP_PUSH',
+                                  }
+                                )}
+                              >
+                                {item.content}
+                                {item.content === 'OP_PUSH' && (
+                                  <input
+                                    key={item.id}
+                                    id={item.id}
+                                    className="mx-1 h-5 w-auto grow bg-white/20 px-1 placeholder:text-white/50"
+                                    placeholder="PUSH_DATA"
+                                    type="text"
+                                    value={
+                                      this.state.opPushValues[item.id] || ''
+                                    }
+                                    onChange={(e) =>
+                                      this.handleOpPushChange(
+                                        item.id,
+                                        e.target.value,
+                                        e
+                                      )
+                                    }
+                                  />
+                                )}
+                              </span>
+                            </div>
+                          )}
+                        </Draggable>
+                      ))
+                    ) : (
+                      <div className="relative flex h-[28px] min-w-full select-none content-center items-start justify-start overflow-hidden text-white/50">
+                        Drag OP_CODES here to build your script...
+                      </div>
+                    )}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </div>
           )
         })}
         <Droppable
@@ -351,7 +358,7 @@ export default class ScratchDnd extends Component<
         >
           {(provided, snapshot) => (
             <div
-              className="block overflow-y-auto pl-1"
+              className="block overflow-y-auto bg-black/10 px-5 py-2.5"
               dir="rtl"
               ref={provided.innerRef}
             >
@@ -375,7 +382,7 @@ export default class ScratchDnd extends Component<
                             <div
                               id={item.id}
                               className={clsx(
-                                'dnd-item relative mx-0.5 my-0.5 flex h-[28px] select-none items-center text-sm font-normal',
+                                'dnd-item relative m-0.5 flex h-[28px] select-none items-center rounded-sm bg-black/30 text-sm font-normal',
                                 {
                                   'pointer-events-none text-white/25':
                                     this.props.prePopulate,
@@ -387,17 +394,18 @@ export default class ScratchDnd extends Component<
                               {...provided.dragHandleProps}
                               style={provided.draggableProps.style}
                             >
-                              <Icon
-                                icon="scratchCaretMale"
-                                className="h-[28px] object-contain text-gray-500"
-                              />
-                              <span className="-ml-[0.08rem] -mr-[0.07rem] flex h-[28px] items-center bg-gray-500 px-1">
+                              <span
+                                className={clsx('flex h-[28px] items-center', {
+                                  'px-1.5': item.content !== 'OP_PUSH',
+                                  'pl-1.5': item.content === 'OP_PUSH',
+                                })}
+                              >
                                 {item.content === 'OP_PUSH' && (
                                   <input
                                     key={item.id}
                                     id={item.id}
                                     className={clsx(
-                                      'pointer-events-none mx-1 w-auto cursor-text bg-gray-400 px-1 text-left placeholder:text-white/50',
+                                      'pointer-events-none mx-1 w-auto cursor-text rounded-sm bg-white/20 px-1 text-left placeholder:text-white/50',
                                       {
                                         'opacity-50': this.props.prePopulate,
                                       }
@@ -408,34 +416,34 @@ export default class ScratchDnd extends Component<
                                 )}
                                 {item.content}
                               </span>
-                              <Icon
-                                icon="scratchCaretFemale"
-                                className="h-[28px] object-contain text-gray-500"
-                              />
                             </div>
                             {snapshot.isDragging && (
                               <div className="clone">
                                 <div
                                   className={clsx(
-                                    'dnd-item relative mx-0.5 my-0.5 flex h-[28px] select-none items-center text-sm font-normal',
+                                    'relative m-0.5 flex h-[28px] select-none items-center rounded-sm bg-black/30 text-sm font-normal',
                                     {
-                                      'pointer-events-none bg-gray-500/25 text-white/25':
+                                      'bg-black30/25 pointer-events-none text-white/25':
                                         this.props.prePopulate,
                                       '': !this.props.prePopulate,
                                     }
                                   )}
                                 >
-                                  <Icon
-                                    icon="scratchCaretMale"
-                                    className="h-[28px] object-contain text-gray-500"
-                                  />
-                                  <span className="-ml-[0.08rem] -mr-[0.07rem] flex h-[28px] items-center bg-gray-500 px-1">
+                                  <span
+                                    className={clsx(
+                                      'flex h-[28px] items-center',
+                                      {
+                                        'px-1.5': item.content !== 'OP_PUSH',
+                                        'pl-1.5': item.content === 'OP_PUSH',
+                                      }
+                                    )}
+                                  >
                                     {item.content === 'OP_PUSH' && (
                                       <input
                                         key={item.id}
                                         id={item.id}
                                         className={clsx(
-                                          'pointer-events-none mx-1 h-5 w-auto cursor-text bg-gray-400 px-1 text-left placeholder:text-white/50',
+                                          'pointer-events-none mx-1 h-5 w-auto cursor-text rounded-sm bg-white/20 px-1 text-left placeholder:text-white/50',
                                           {
                                             'opacity-50':
                                               this.props.prePopulate,
@@ -447,10 +455,6 @@ export default class ScratchDnd extends Component<
                                     )}
                                     {item.content}
                                   </span>
-                                  <Icon
-                                    icon="scratchCaretFemale"
-                                    className="h-[28px] object-contain text-gray-500"
-                                  />
                                 </div>
                               </div>
                             )}

@@ -384,16 +384,13 @@ const OpRunner = ({
       <div className="flex h-[calc(100vh-70px-56px-48px)] grow flex-col text-white md:h-[calc(100vh-70px-56px)]">
         <div
           className={clsx(
-            'flex h-[40vh] flex-col gap-1 border-b border-b-white py-4 pl-4 pr-5',
+            'flex h-[40vh] flex-col gap-1 border-b border-b-white/25',
             {
               'hidden md:flex': activeView === LessonView.Execute || !isActive,
               flex: isActive,
             }
           )}
         >
-          <p className="pl-1 font-space-mono text-lg font-bold capitalize">
-            Your Script
-          </p>
           <ScratchDnD
             items={answerScript}
             prePopulate={prePopulate || step === 2}
@@ -402,12 +399,12 @@ const OpRunner = ({
         </div>
 
         <div
-          className={clsx('flex-col border-b border-b-white', {
+          className={clsx('flex-col border-b border-b-white/25', {
             'hidden md:flex': activeView === LessonView.Execute || !isActive,
             flex: isActive,
           })}
         >
-          <div className="flex flex-col border-b border-b-white px-5 py-4">
+          <div className="flex flex-col border-b border-b-white/25 px-5 py-4">
             <p className="font-space-mono text-lg font-bold capitalize">
               Initial stack
             </p>
@@ -438,7 +435,7 @@ const OpRunner = ({
           </div>
         </div>
         <div
-          className={clsx('grow flex-col px-5', {
+          className={clsx('h-full flex-col bg-black/10 px-5', {
             'hidden md:flex': activeView !== LessonView.Execute,
             flex: activeView === LessonView.Execute,
           })}
@@ -456,7 +453,7 @@ const OpRunner = ({
                   OP_CODES
                 </div>
 
-                <div className="flex h-52 min-w-[160px] flex-col rounded-b-[10px] bg-black/20  p-2.5">
+                <div className="flex h-1/2 min-w-[160px]  flex-col rounded-b-[10px] bg-black/20 p-2.5 md:h-[calc(48dvh-70px-56px-88px-88px)]">
                   <div
                     className="my-auto resize-none break-all border-none bg-transparent font-space-mono text-white/50 focus:outline-none"
                     style={{ whiteSpace: 'pre-wrap' }}
@@ -510,7 +507,7 @@ const OpRunner = ({
                       {stack && (
                         <div
                           key={`Container${opCodeIndex}`}
-                          className="flex max-h-72 min-h-52 min-w-[160px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                          className="flex h-full min-w-[160px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5 md:max-h-[calc(48dvh-70px-56px-88px-88px)]"
                         >
                           <div
                             key={opCodeIndex}

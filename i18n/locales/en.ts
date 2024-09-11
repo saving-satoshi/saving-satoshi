@@ -2656,6 +2656,7 @@ const translations = {
   },
 
   opcode: {
+    run: 'Run the Script',
     reset: 'Reset',
   },
 

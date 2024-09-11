@@ -79,6 +79,7 @@ export default function OpCodeRunner({
           )}
         </button>
         <StatusBar
+          beginMessage={t('opcode.run')}
           handleTryAgain={handleTryAgain}
           errorMessage={errorMessage || ''}
           className={clsx('h-14 min-h-14 grow border-t-0  px-2', {
@@ -88,7 +89,7 @@ export default function OpCodeRunner({
           success={success}
           hints
           nextStepMessage={nextStepMessage}
-          nextStepButton={nextStepMessage ? t('opcode.reset') : undefined}
+          nextStepButton={t('opcode.reset')}
         />
       </div>
     </div>
