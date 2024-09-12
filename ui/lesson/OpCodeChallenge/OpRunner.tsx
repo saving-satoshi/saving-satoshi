@@ -565,6 +565,11 @@ const OpRunner = ({
                                             stateHistory.length &&
                                             stack.stack.length === 1 &&
                                             Number(stack.stack[0]) > 1),
+                                        'border border-[#3DCFEF]':
+                                          i === 0 &&
+                                          stack.operation.tokenType.match(
+                                            /constant|data-push/
+                                          ),
                                       }
                                     )}
                                     initial={{ opacity: 0, scale: 0.8 }}
