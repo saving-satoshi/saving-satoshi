@@ -384,7 +384,7 @@ const OpRunner = ({
       <div className="flex h-[calc(100dvh-70px-56px-48px)] grow flex-col text-white md:h-[calc(100dvh-70px-56px)]">
         <div
           className={clsx(
-            'flex h-[40dvh] flex-col gap-1 border-b border-b-white/25',
+            'flex h-[calc(100dvh-70px-48px-178px-40px-56px)] flex-col gap-1 border-b border-b-white/25 md:h-[calc(100dvh-70px-178px-30dvh-56px)]',
             {
               'hidden md:flex': activeView === LessonView.Execute || !isActive,
               flex: isActive,
@@ -435,10 +435,13 @@ const OpRunner = ({
           </div>
         </div>
         <div
-          className={clsx('h-full flex-col bg-black/10 px-5', {
-            'hidden md:flex': activeView !== LessonView.Execute,
-            flex: activeView === LessonView.Execute,
-          })}
+          className={clsx(
+            'h-full min-h-[calc(25dvh)] flex-col bg-black/10 px-5',
+            {
+              'hidden md:flex': activeView !== LessonView.Execute,
+              flex: activeView === LessonView.Execute,
+            }
+          )}
         >
           <div className="flex w-full flex-row justify-between pt-3">
             <p className="font-mono text-lg font-bold">Execution stack</p>
@@ -453,7 +456,7 @@ const OpRunner = ({
                   OP_CODES
                 </div>
 
-                <div className="flex h-1/2 min-w-[160px]  flex-col rounded-b-[10px] bg-black/20 p-2.5 md:h-[calc(48dvh-70px-56px-88px-88px)]">
+                <div className="flex h-1/2 min-w-[160px]  flex-col rounded-b-[10px] bg-black/20 p-2.5 md:h-[calc(25dvh-40px)] md:max-h-64">
                   <div
                     className="my-auto resize-none break-all border-none bg-transparent font-space-mono text-white/50 focus:outline-none"
                     style={{ whiteSpace: 'pre-wrap' }}
@@ -507,7 +510,7 @@ const OpRunner = ({
                       {stack && (
                         <div
                           key={`Container${opCodeIndex}`}
-                          className="flex h-full min-w-[160px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5 md:max-h-[calc(48dvh-70px-56px-88px-88px)]"
+                          className="flex h-full min-w-[160px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5 md:h-[calc(25dvh-40px)] md:max-h-64"
                         >
                           <div
                             key={opCodeIndex}

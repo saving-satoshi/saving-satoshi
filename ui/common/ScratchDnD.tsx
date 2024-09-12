@@ -266,7 +266,7 @@ export default class ScratchDnd extends Component<
       <DragDropContext onDragEnd={this.onDragEnd}>
         {Object.keys(this.state.dynamicState).map((list, i) => {
           return (
-            <div className="border-b border-white/25 px-5 py-5">
+            <div className="border-b border-white/25 px-5 pt-5">
               <p className="font-space-mono text-lg font-bold capitalize">
                 Your Script
               </p>
@@ -274,7 +274,7 @@ export default class ScratchDnd extends Component<
                 {(provided, snapshot) => (
                   <div
                     className={clsx(
-                      'flex h-7 w-full flex-row whitespace-nowrap font-space-mono text-sm',
+                      'flex h-12 w-full flex-row whitespace-nowrap font-space-mono text-sm',
                       {
                         'overflow-hidden':
                           this.state.dynamicState[list].length === 0,
@@ -358,7 +358,7 @@ export default class ScratchDnd extends Component<
         >
           {(provided, snapshot) => (
             <div
-              className="block overflow-y-auto bg-black/10 px-5 py-2.5"
+              className="max-md:self stretch block overflow-y-auto bg-black/10 px-5 py-2.5 max-md:flex max-md:flex-grow max-md:flex-col"
               dir="rtl"
               ref={provided.innerRef}
             >
