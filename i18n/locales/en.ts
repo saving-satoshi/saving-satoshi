@@ -2599,6 +2599,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
 
   chapter_ten: {
     title: '10 billion connections',
+    paragraph_one: `The ON-AIR light in the TV studio goes dark. Stagehands shut off their hover-cameras and start filing out after a long day. Mike Ramen puts his hand on your shoulder and says "Great work today! Now let's celebrate. I know a bar across the street that accepts Bitcoin -- and what better way to honor Satoshi's vision of digital cash for the internet than exchanging some for beer!"`,
   },
 
   ///CHALLENGE PAGE
