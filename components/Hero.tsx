@@ -2,6 +2,7 @@
 
 import { Button } from 'shared'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
+import clsx from 'clsx'
 import Image from 'next/image'
 import { accountAtom } from 'state/state'
 import { useAtom, useAtomValue } from 'jotai'
@@ -16,47 +17,39 @@ export default function Hero() {
   const [account] = useAtom(accountAtom)
   const currentChapter = useAtomValue(currentChapterAtom)
 
-  const [imageMedia, setImageMedia] = useState('/assets/images/main-image.jpg')
-
-  const updateMedia = () => {
-    let result = '/assets/images/main-image.jpg'
-
-    if (typeof window !== 'undefined') {
-      const aspectRatio = window.innerWidth / window.innerHeight
-
-      if (aspectRatio < 0.6) {
-        result = '/assets/images/main-image-mobile-tall.jpg'
-      } else if (aspectRatio < 1) {
-        result = '/assets/images/main-image-mobile.jpg'
-      } else if (aspectRatio < 1.4) {
-        result = '/assets/images/main-image-tablet.jpg'
-      } else if (aspectRatio >= 2) {
-        result = '/assets/images/main-image-wide.jpg'
-      }
-    }
-
-    setImageMedia(result)
-  }
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    updateMedia()
-    window.addEventListener('resize', updateMedia)
-    return () => window.removeEventListener('resize', updateMedia)
-  })
+    setLoading(false)
+  }, [])
 
   return (
-    <div className="flex h-full grow items-end justify-center">
-      <Image
-        src={imageMedia}
-        alt="Saving Satoshi"
-        fill
-        quality={100}
-        loading="eager"
-        priority
-        className="-z-20 h-full w-full object-cover"
-        objectPosition="50% 34%"
-      />
-      <div className="flex w-screen flex-col justify-center bg-gradient-to-b from-transparent to-[#00000080] px-5 pt-5 font-cbrush text-white md:p-10">
+    <div className="absolute flex h-full grow items-end justify-center">
+      <picture className="hero-image-position absolute -z-20 h-full w-full object-cover">
+        <source
+          srcSet="/assets/images/main-image-mobile-tall.jpg"
+          media="(max-aspect-ratio: 3/5)"
+        />
+        <source
+          srcSet="/assets/images/main-image-mobile.jpg"
+          media="(max-aspect-ratio: 1)"
+        />
+        <source
+          srcSet="/assets/images/main-image-tablet.jpg"
+          media="(max-aspect-ratio: 13/10)"
+        />
+        <source
+          srcSet="/assets/images/main-image-wide.jpg"
+          media="(min-aspect-ratio: 2)"
+        />
+        <img
+          loading="eager"
+          src="/assets/images/main-image.jpg"
+          alt="Saving Satoshi Landing image"
+          className="hero-image-position absolute -z-20 h-full w-full object-cover"
+        />
+      </picture>
+      <div className="mb-11 flex w-screen flex-col justify-center bg-gradient-to-b from-transparent to-[#00000080] px-5 pt-5 font-cbrush text-white md:p-10">
         <p className="px-8 pt-2 text-center font-nunito text-2xl sm:text-3xl md:pt-5 lg:text-4xl">
           {t('hero.description')}
         </p>
