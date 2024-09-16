@@ -1908,7 +1908,7 @@ const translations = {
         paragraph_five:
           'For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
         paragraph_six:
-          'The raw transaction has preimage is the serialization of:',
+          'The raw transaction has a preimage that is the serialization of:',
         headings: {
           item_one: 'Description',
           item_two: 'Name',
@@ -1975,7 +1975,7 @@ const translations = {
             item_four: '4',
           },
           row_ten: {
-            item_one: 'Signature hassh type, we will use 1 to indicate "ALL',
+            item_one: 'Signature hash type, we will use 1 to indicate "ALL',
             item_two: 'sighash',
             item_three: 'int',
             item_four: '4',
