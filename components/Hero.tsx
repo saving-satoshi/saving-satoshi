@@ -2,8 +2,6 @@
 
 import { Button } from 'shared'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
-import clsx from 'clsx'
-import Image from 'next/image'
 import { accountAtom } from 'state/state'
 import { useAtom, useAtomValue } from 'jotai'
 import { currentChapterAtom } from 'state/progressState'
@@ -16,12 +14,6 @@ export default function Hero() {
   const t = useTranslations(lang)
   const [account] = useAtom(accountAtom)
   const currentChapter = useAtomValue(currentChapterAtom)
-
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    setLoading(false)
-  }, [])
 
   return (
     <div className="absolute flex h-full grow items-end justify-center">
