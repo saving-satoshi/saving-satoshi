@@ -37,7 +37,7 @@ export default function Hero() {
   } = getImgProps({ ...common, src: '/assets/images/main-image-wide.jpg' })
 
   return (
-    <div className="absolute flex h-full grow items-end justify-center">
+    <div className="flex h-full grow items-end justify-center">
       <picture className="hero-image-position absolute -z-20 h-full w-full object-cover">
         <source media="(max-aspect-ratio: 3/5)" srcSet={tall} />
         <source media="(max-aspect-ratio: 1)" srcSet={mobile} />
@@ -50,7 +50,7 @@ export default function Hero() {
           className="hero-image-position absolute -z-20 h-full w-full object-cover"
         />
       </picture>
-      <div className="mb-11 flex w-screen flex-col justify-center bg-gradient-to-b from-transparent to-[#00000080] px-5 pt-5 font-cbrush text-white md:p-10">
+      <div className="fixed bottom-0 mb-16 flex w-screen flex-col justify-center bg-gradient-to-b from-transparent to-[#00000080] px-5 pt-5 font-cbrush text-white md:p-10">
         <p className="px-8 pt-2 text-center font-nunito text-2xl sm:text-3xl md:pt-5 lg:text-4xl">
           {t('hero.description')}
         </p>
