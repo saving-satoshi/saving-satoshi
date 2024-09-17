@@ -1343,22 +1343,36 @@ const translations = {
         nav_title: 'The input class',
         heading: 'Looking at the Input class implementation',
         paragraph_one:
-          'Bitcoin transaction inputs always point to existing, unspent transaction outputs. Therefore, our Input class has a method <span className="text-green"> from_output() </span> which is used to construct an Input by passing in the output description:',
+          'Here we have code for two classes: an <span className="font-bold">Input</span> class and an <span className="font-bold">Outpoint</span> class.',
         paragraph_two:
-          'The first two arguments are the transaction ID and the index of the output of that transaction you want to spend from. Eventually we will pass in the txid and vout values you got above from listunspent. ',
-        paragraph_three: {
-          a: 'Hashes in Bitcoin are ',
+          'Inputs come from unspent transaction outputs. If you provide the description of an output to the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method, it will create an instance of the Input class:',
+        paragraph_three: 'The first two arguments are:',
+        paragraph_four:
+          '1. <span className="font-bold">txid: </span>the ID of the transaction that created the output, and',
+        paragraph_five:
+          '2. <span className="font-bold">vout: </span>the index of the output in the transaction\'s entire list of outputs',
+        paragraph_six:
+          'Together, these two pieces of information make up an <span className="font-bold">Outpoint</span>. Eventually we will pass in the txid and vout values that came from executing the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">listunspent</span> command in the previous exercise. ',
+        heading_two: 'A note on endianness',
+        paragraph_seven:
+          "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, we will just store that data as an empty byte array, we won't need it until later.",
+        paragraph_eight: {
+          a: 'When we see a Bitcoin hash as a hexadecimal string, the data is actually',
           b: {
             text: ' reversed ',
             question: 'Why do we reverse hashes in bitcoin?',
             href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin',
           },
-          c: ' when we see them as hexadecimal strings. When we accept hashes as strings from a user we must reverse the byte order before storing or transmitting them as raw bytes. This is why we reverse the byte order of the txid argument that is passed in here.',
+          c: '. This ordering of bytes is called ',
+          d: {
+            text: 'endianness',
+            question: 'What is endianness?',
+            href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520endianness%253F',
+          },
+          e: '. When we write code to accept a hash in string format from a user, the byte order must be reversed before storing or transmitting the data as raw bytes. You can see an example of this in the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method where it handles the txid argument.',
         },
-        paragraph_four:
-          "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, we will just store that data as an empty byte array, we won't need it until later.",
-        paragraph_five: `We also need a <span className="text-green"> serialize() </span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:`,
-        heading_two: 'Outpoint',
+        paragraph_nine: `We also need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:`,
+        heading_three: 'Outpoint',
         table_one: {
           heading: {
             one: 'Description',
@@ -1383,7 +1397,7 @@ const translations = {
             },
           },
         },
-        heading_three: 'Input',
+        heading_four: 'Input',
         table_two: {
           row_one: {
             column: {
@@ -1418,7 +1432,7 @@ const translations = {
             },
           },
         },
-        paragraph_six:
+        paragraph_ten:
           'And remember: integers in Bitcoin are serialized little-endian!',
         success: 'The Input class looks good. Great Work!',
       },
