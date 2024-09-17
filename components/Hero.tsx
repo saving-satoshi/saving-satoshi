@@ -2,6 +2,7 @@
 
 import { Button } from 'shared'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
+import { unstable_getImgProps as getImgProps } from 'next/image'
 import { accountAtom } from 'state/state'
 import { useAtom, useAtomValue } from 'jotai'
 import { currentChapterAtom } from 'state/progressState'
@@ -15,29 +16,36 @@ export default function Hero() {
   const [account] = useAtom(accountAtom)
   const currentChapter = useAtomValue(currentChapterAtom)
 
+  const common = { alt: 'Saving Satoshi Hero', fill: true }
+  const {
+    props: { srcSet: tall },
+  } = getImgProps({
+    ...common,
+    src: '/assets/images/main-image-mobile-tall.jpg',
+  })
+  const {
+    props: { srcSet: mobile },
+  } = getImgProps({ ...common, src: '/assets/images/main-image-mobile.jpg' })
+  const {
+    props: { srcSet: tablet },
+  } = getImgProps({ ...common, src: '/assets/images/main-image-tablet.jpg' })
+  const {
+    props: { srcSet: desktop, ...rest },
+  } = getImgProps({ ...common, src: '/assets/images/main-image.jpg' })
+  const {
+    props: { srcSet: wide },
+  } = getImgProps({ ...common, src: '/assets/images/main-image-wide.jpg' })
+
   return (
     <div className="absolute flex h-full grow items-end justify-center">
       <picture className="hero-image-position absolute -z-20 h-full w-full object-cover">
-        <source
-          srcSet="/assets/images/main-image-mobile-tall.jpg"
-          media="(max-aspect-ratio: 3/5)"
-        />
-        <source
-          srcSet="/assets/images/main-image-mobile.jpg"
-          media="(max-aspect-ratio: 1)"
-        />
-        <source
-          srcSet="/assets/images/main-image-tablet.jpg"
-          media="(max-aspect-ratio: 13/10)"
-        />
-        <source
-          srcSet="/assets/images/main-image-wide.jpg"
-          media="(min-aspect-ratio: 2)"
-        />
+        <source media="(max-aspect-ratio: 3/5)" srcSet={tall} />
+        <source media="(max-aspect-ratio: 1)" srcSet={mobile} />
+        <source media="(max-aspect-ratio: 13/10)" srcSet={tablet} />
+        <source media="(min-aspect-ratio: 2)" srcSet={wide} />
         <img
           loading="eager"
-          src="/assets/images/main-image.jpg"
-          alt="Saving Satoshi Landing image"
+          srcSet={desktop}
           className="hero-image-position absolute -z-20 h-full w-full object-cover"
         />
       </picture>

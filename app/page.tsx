@@ -16,7 +16,7 @@ export default function Home() {
         <Topbar />
       </div>
       <Hero />
-      <Footer className="absolute bottom-0 w-full bg-back" />
+      <Footer className="fixed bottom-0 w-full bg-back" />
     </div>
   )
 }
