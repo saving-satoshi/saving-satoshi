@@ -266,7 +266,7 @@ export default class ScratchDnd extends Component<
       <DragDropContext onDragEnd={this.onDragEnd}>
         {Object.keys(this.state.dynamicState).map((list, i) => {
           return (
-            <div className="border-b border-white/25 px-5 pt-5">
+            <div key={i} className="border-b border-white/25 px-5 pt-5">
               <p className="font-space-mono text-lg font-bold capitalize">
                 Your Script
               </p>
