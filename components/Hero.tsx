@@ -46,6 +46,7 @@ export default function Hero() {
         <img
           loading="eager"
           srcSet={desktop}
+          alt="Saving Satoshi Hero"
           className="hero-image-position absolute -z-20 h-full w-full object-cover"
         />
       </picture>
