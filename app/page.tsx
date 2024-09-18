@@ -12,11 +12,11 @@ export default function Home() {
   return (
     <div className="flex h-screen w-screen flex-col">
       <Umami />{' '}
-      <div className="bg-gradient-to-b from-[#00000060] via-[#00000020] to-transparent pb-28">
+      <div className="bg-gradient-to-b from-[#00000080] to-transparent pb-28">
         <Topbar />
       </div>
       <Hero />
-      <Footer className="bg-back" />
+      <Footer className="fixed bottom-0 w-full bg-back" />
     </div>
   )
 }
