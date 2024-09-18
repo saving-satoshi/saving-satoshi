@@ -405,9 +405,7 @@ const OpRunner = ({
           })}
         >
           <div className="flex flex-col border-b border-b-white/25 px-5 py-4">
-            <p className="font-space-mono text-lg font-bold capitalize">
-              Initial stack
-            </p>
+            <p className="font-space-mono text-lg font-bold">Initial stack</p>
             <input
               title="Add text or numbers separated by spaces."
               onChange={handleInitialStackChange}
@@ -420,8 +418,8 @@ const OpRunner = ({
           </div>
 
           <div className="flex flex-col px-5 py-4">
-            <p className="font-space-mono text-lg font-bold capitalize">
-              Next Block Height
+            <p className="font-space-mono text-lg font-bold">
+              Next block height
             </p>
             <input
               title="Enter any number above 1."
@@ -453,7 +451,7 @@ const OpRunner = ({
             {(stateHistory.length === 0 || startedTyping) && (
               <div className="flex w-full max-w-[164px] flex-col">
                 <div className="my-[5px] w-full rounded-[3px] bg-black/20 px-3 py-1 text-center font-space-mono text-white/50">
-                  OP_CODES
+                  OP_CODE
                 </div>
 
                 <div className="flex h-1/2 min-w-[160px]  flex-col rounded-b-[10px] bg-black/20 p-2.5 md:h-[calc(25dvh-40px)] md:max-h-64">

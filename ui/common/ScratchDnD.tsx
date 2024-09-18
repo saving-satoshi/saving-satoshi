@@ -267,9 +267,7 @@ export default class ScratchDnd extends Component<
         {Object.keys(this.state.dynamicState).map((list, i) => {
           return (
             <div key={i} className="border-b border-white/25 px-5 pt-5">
-              <p className="font-space-mono text-lg font-bold capitalize">
-                Your Script
-              </p>
+              <p className="font-space-mono text-lg font-bold">Your script</p>
               <Droppable key={list} droppableId={list} direction="horizontal">
                 {(provided, snapshot) => (
                   <div
@@ -295,7 +293,7 @@ export default class ScratchDnd extends Component<
                             <div
                               id={item.id}
                               className={clsx(
-                                'dnd-item relative -mx-0.5 flex h-[28px] select-none items-center text-sm font-normal',
+                                'relative m-0.5 flex h-[28px] select-none items-center rounded-sm bg-black/30 text-sm font-normal text-[#3DCFEF]',
                                 {
                                   'pointer-events-none': this.props.prePopulate,
                                 }
@@ -307,10 +305,10 @@ export default class ScratchDnd extends Component<
                             >
                               <span
                                 className={clsx(
-                                  'mx-1 flex h-[28px] items-center whitespace-nowrap bg-black/30',
+                                  'flex h-[28px] items-center whitespace-nowrap',
                                   {
-                                    'px-1': item.content !== 'OP_PUSH',
-                                    'pl-1': item.content === 'OP_PUSH',
+                                    'px-1.5': item.content !== 'OP_PUSH',
+                                    'pl-1.5': item.content === 'OP_PUSH',
                                   }
                                 )}
                               >
@@ -319,7 +317,7 @@ export default class ScratchDnd extends Component<
                                   <input
                                     key={item.id}
                                     id={item.id}
-                                    className="mx-1 h-5 w-auto grow bg-white/20 px-1 placeholder:text-white/50"
+                                    className="mx-1 h-5 w-auto grow bg-white/20 px-1 text-[#3DCFEF] caret-[#3DCFEF99] placeholder:text-[#3DCFEF99]"
                                     placeholder="PUSH_DATA"
                                     type="text"
                                     value={
@@ -340,7 +338,7 @@ export default class ScratchDnd extends Component<
                         </Draggable>
                       ))
                     ) : (
-                      <div className="relative flex h-[28px] min-w-full select-none content-center items-start justify-start overflow-hidden text-white/50">
+                      <div className="relative mt-1.5 flex h-[28px] min-w-full select-none content-center items-start justify-start overflow-hidden text-white/50">
                         Drag OP_CODES here to build your script...
                       </div>
                     )}
@@ -367,7 +365,7 @@ export default class ScratchDnd extends Component<
                   key={groupIndex}
                   className="mb-2 flex flex-row-reverse font-space-mono"
                 >
-                  <h2 className="min-w-fit select-none text-left text-xl font-semibold md:min-w-[160px]">
+                  <h2 className="min-w-fit select-none text-left text-lg font-semibold md:min-w-[160px]">
                     {group.heading}
                   </h2>
                   <div className="flex w-full flex-row-reverse flex-wrap overflow-x-auto pl-1">
@@ -382,11 +380,10 @@ export default class ScratchDnd extends Component<
                             <div
                               id={item.id}
                               className={clsx(
-                                'dnd-item relative m-0.5 flex h-[28px] select-none items-center rounded-sm bg-black/30 text-sm font-normal',
+                                'relative m-0.5 flex h-[28px] select-none items-center rounded-sm bg-black/30 text-sm font-normal text-[#3DCFEF]',
                                 {
                                   'pointer-events-none text-white/25':
                                     this.props.prePopulate,
-                                  '-mx-05': snapshot.isDragging,
                                 }
                               )}
                               ref={provided.innerRef}
@@ -405,9 +402,10 @@ export default class ScratchDnd extends Component<
                                     key={item.id}
                                     id={item.id}
                                     className={clsx(
-                                      'pointer-events-none mx-1 w-auto cursor-text rounded-sm bg-white/20 px-1 text-left placeholder:text-white/50',
+                                      'pointer-events-none mx-1 w-auto cursor-text rounded-sm bg-white/20 px-1 text-left placeholder:text-[#3DCFEF99]',
                                       {
-                                        'opacity-50': this.props.prePopulate,
+                                        'opacity-50 placeholder:text-white/25':
+                                          this.props.prePopulate,
                                       }
                                     )}
                                     type="text"
@@ -421,11 +419,10 @@ export default class ScratchDnd extends Component<
                               <div className="clone">
                                 <div
                                   className={clsx(
-                                    'relative m-0.5 flex h-[28px] select-none items-center rounded-sm bg-black/30 text-sm font-normal',
+                                    'relative m-0.5 flex h-[28px] select-none items-center rounded-sm bg-black/30 text-sm font-normal text-[#3DCFEF]',
                                     {
                                       'bg-black30/25 pointer-events-none text-white/25':
                                         this.props.prePopulate,
-                                      '': !this.props.prePopulate,
                                     }
                                   )}
                                 >
@@ -443,7 +440,7 @@ export default class ScratchDnd extends Component<
                                         key={item.id}
                                         id={item.id}
                                         className={clsx(
-                                          'pointer-events-none mx-1 h-5 w-auto cursor-text rounded-sm bg-white/20 px-1 text-left placeholder:text-white/50',
+                                          'pointer-events-none mx-1 h-5 w-auto cursor-text rounded-sm bg-white/20 px-1 text-left placeholder:text-[#3DCFEF99]',
                                           {
                                             'opacity-50':
                                               this.props.prePopulate,
