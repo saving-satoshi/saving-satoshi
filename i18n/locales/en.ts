@@ -1908,7 +1908,7 @@ const translations = {
         paragraph_five:
           'For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
         paragraph_six:
-          'The raw transaction has preimage is the serialization of:',
+          'The raw transaction has a preimage that is the serialization of:',
         headings: {
           item_one: 'Description',
           item_two: 'Name',
@@ -1975,7 +1975,7 @@ const translations = {
             item_four: '4',
           },
           row_ten: {
-            item_one: 'Signature hassh type, we will use 1 to indicate "ALL',
+            item_one: 'Signature hash type, we will use 1 to indicate "ALL',
             item_two: 'sighash',
             item_three: 'int',
             item_four: '4',
@@ -2599,6 +2599,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
 
   chapter_ten: {
     title: '10 billion connections',
+    paragraph_one: `The ON-AIR light in the TV studio goes dark. Stagehands shut off their hover-cameras and start filing out after a long day. Mike Ramen puts his hand on your shoulder and says "Great work today! Now let's celebrate. I know a bar across the street that accepts Bitcoin -- and what better way to honor Satoshi's vision of digital cash for the internet than exchanging some for beer!"`,
   },
 
   ///CHALLENGE PAGE

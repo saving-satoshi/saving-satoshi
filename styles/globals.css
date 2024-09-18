@@ -368,3 +368,7 @@ input:checked + .slider:before {
 .clone + div {
   display: none !important;
 }
+
+.hero-image-position {
+  object-position: 50% 34%;
+}

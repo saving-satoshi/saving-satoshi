@@ -26,6 +26,7 @@ export default function ProposalThree({ lang }) {
             />
             <Text>{t('help_page.spoilers_confirm')}</Text>
           </div>
+
           {challengeIsToggled && (
             <div className="text-white ">
               <CodeExample
