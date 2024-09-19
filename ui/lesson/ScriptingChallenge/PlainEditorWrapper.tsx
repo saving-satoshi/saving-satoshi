@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { PlainEditorConfig, LessonDirection } from 'types'
+import { PlainEditorConfig, LessonDirection, LessonView } from 'types'
 import { Lesson, LessonTabs, StatusBar } from 'ui'
 import {
   useMediaQuery,
@@ -49,6 +49,7 @@ export default function PlainEditorWrapper({
   const [code, setCode] = useState(
     config?.languages[language].defaultCode?.toString()
   )
+  const [activeView, setActiveView] = useState(LessonView.Info)
 
   useDynamicHeight()
   const isSmallScreen = useMediaQuery({ width: 767 })
@@ -59,6 +60,10 @@ export default function PlainEditorWrapper({
       onSelectLanguage(value)
       setCode(config.languages[value].defaultCode?.toString())
     }
+  }
+
+  const handleViewChange = (view) => {
+    setActiveView(view)
   }
 
   useEffect(() => {
@@ -75,6 +80,7 @@ export default function PlainEditorWrapper({
         direction={
           isSmallScreen ? LessonDirection.Vertical : LessonDirection.Horizontal
         }
+        onViewChange={handleViewChange}
       >
         <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
         {children}
@@ -82,6 +88,7 @@ export default function PlainEditorWrapper({
           className={clsx('', {
             'code-editor grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l':
               config,
+            hidden: activeView === LessonView.Info,
           })}
         >
           {language && config && (
