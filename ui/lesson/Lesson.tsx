@@ -6,7 +6,7 @@ import { LessonDirection, LessonContextType, LessonView } from 'types'
 interface LessonProps {
   direction: LessonDirection
   onViewChange?: (view: LessonView) => void
-  children?: ReactNode
+  children?: React.ReactNode
 }
 
 const LessonContext = createContext<LessonContextType>({
