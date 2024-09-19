@@ -295,7 +295,7 @@ export default class ScratchDnd extends Component<
                             <div
                               id={item.id}
                               className={clsx(
-                                'relative mr-0.5 flex h-[25px] select-none items-center rounded-sm bg-black/30 text-[13px] font-normal text-[#3DCFEF]',
+                                'relative mr-[5px] flex h-[25px] select-none items-center rounded-sm bg-black/30 text-[13px] font-normal text-[#3DCFEF]',
                                 {
                                   'pointer-events-none': this.props.prePopulate,
                                 }
@@ -382,7 +382,7 @@ export default class ScratchDnd extends Component<
                             <div
                               id={item.id}
                               className={clsx(
-                                'relative mr-0.5 flex h-[25px] select-none items-center rounded-sm bg-black/30 text-[13px] font-normal text-[#3DCFEF]',
+                                'relative mr-[5px] flex h-[25px] select-none items-center rounded-sm bg-black/30 text-[13px] font-normal text-[#3DCFEF]',
                                 {
                                   'pointer-events-none text-white/25':
                                     this.props.prePopulate,
@@ -421,7 +421,7 @@ export default class ScratchDnd extends Component<
                               <div className="clone">
                                 <div
                                   className={clsx(
-                                    'relative mr-0.5 flex h-[25px] select-none items-center rounded-sm bg-black/30 text-[13px] font-normal text-[#3DCFEF]',
+                                    'relative mr-[5px] flex h-[25px] select-none items-center rounded-sm bg-black/30 text-[13px] font-normal text-[#3DCFEF]',
                                     {
                                       'bg-black30/25 pointer-events-none text-white/25':
                                         this.props.prePopulate,
