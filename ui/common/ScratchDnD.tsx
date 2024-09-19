@@ -367,7 +367,7 @@ export default class ScratchDnd extends Component<
                   key={groupIndex}
                   className="mb-2 flex flex-row-reverse font-space-mono"
                 >
-                  <h2 className="min-w-fit select-none text-left text-[13px] font-semibold md:min-w-[160px]">
+                  <h2 className="w-fit min-w-[100px] select-none text-left text-[13px] font-semibold">
                     {group.heading}
                   </h2>
                   <div className="flex w-full flex-row-reverse flex-wrap gap-y-2 overflow-x-auto pl-1">
