@@ -96,7 +96,7 @@ export default function TabGroup({ isOpen, clicked, params }) {
     <div className="mx-4 flex h-full flex-col items-stretch font-nunito">
       <ul
         className={clsx(
-          'grid w-full items-start py-2',
+          'grid w-full items-start py-4',
           'duration-800 transform transition ease-in-out',
           {
             '-translate-x-[110%]': !isOpen,

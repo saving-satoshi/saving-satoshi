@@ -210,22 +210,22 @@ div.react-terminal-active-input {
 }
 
 .code-editor {
-  height: calc(100vh - 70px - 40px - 48px);
+  height: calc(100dvh - 70px - 40px - 48px);
 }
 .read-only-editor-button {
-  height: calc(100vh - 70px - 56px);
+  height: calc(100dvh - 70px - 56px);
 }
 .read-only-editor {
-  height: calc(100vh - 70px);
+  height: calc(100dvh - 70px);
 }
 @media (min-width: 768px) {
   .code-editor {
     display: grid;
-    height: calc(100vh - 70px);
+    height: calc(100dvh - 70px);
     grid-template-rows: 40px auto 204px 56px;
   }
   .read-only-editor-button {
-    height: calc(100vh - 70px - 40px - 56px);
+    height: calc(100dvh - 70px - 40px - 56px);
   }
 }
 
@@ -268,7 +268,11 @@ div.react-terminal-active-input {
 }
 
 .height-minus-nav {
-  height: calc(100vh - 70px);
+  height: calc(100dvh - 70px);
+}
+
+.max-height-minus-nav {
+  max-height: calc(100dvh - 70px);
 }
 
 .solo-1-bg {
@@ -309,7 +313,7 @@ div.react-terminal-active-input {
 }
 
 .tooltip-height {
-  max-height: calc(100vh - 127px);
+  max-height: calc(100dvh - 127px);
 }
 
 .toggle-switch {
