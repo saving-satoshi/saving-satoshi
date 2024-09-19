@@ -45,9 +45,7 @@ export default function OpCodeRunner({
         className={clsx(
           'flex h-14 min-h-14 w-full items-start border-t border-white border-opacity-30 bg-black/20',
           {
-            'hidden md:flex':
-              !isSmallScreen && activeView !== LessonView.Execute,
-            hidden: activeView === 'info',
+            'hidden md:flex': activeView === LessonView.Info || !isActive,
             flex: isActive,
           }
         )}
@@ -64,7 +62,10 @@ export default function OpCodeRunner({
           )}
           onClick={handleRunClick}
         >
-          {((hasherState === 0 || hasherState === 2 || hasherState === 6) && (
+          {((hasherState === 0 ||
+            hasherState === 2 ||
+            hasherState === 3 ||
+            hasherState === 6) && (
             <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-white px-2 py-1.5">
               <Icon
                 icon="play"
@@ -78,16 +79,18 @@ export default function OpCodeRunner({
           )}
         </button>
         <StatusBar
+          beginMessage={t('opcode.run')}
           handleTryAgain={handleTryAgain}
           errorMessage={errorMessage || ''}
-          className={clsx('h-14 min-h-14 grow border-t-0  px-2', {
+          className={clsx('h-14 min-h-14 grow border-t-0', {
             '!bg-transparent': success !== true && success !== 5,
+            'pl-4': success === true || success === 5,
           })}
           textClass="text-lg !p-0"
           success={success}
           hints
           nextStepMessage={nextStepMessage}
-          nextStepButton={nextStepMessage ? t('opcode.reset') : undefined}
+          nextStepButton={t('opcode.reset')}
         />
       </div>
     </div>

@@ -145,7 +145,7 @@ export default function StatusBar({
     <div
       className={clsx(
         className,
-        'border-t border-white/25 transition-all max-md:bottom-0 max-md:px-4 max-md:py-8',
+        'border-t border-white/25 pl-4 transition-all',
         {
           'w-screen': full,
           'w-full': !full,
@@ -154,13 +154,10 @@ export default function StatusBar({
           'bg-black/20':
             getStatus() !== Status.Success || getStatus() !== Status.Good,
           block: getStatus() === Status.Success || (Status.Good && isActive),
-          'hidden md:block':
-            getStatus() !== Status.Success ||
-            (Status.Good && !isActive && !alwaysShow),
         }
       )}
     >
-      <div className="flex flex-col items-stretch justify-between max-md:gap-4 md:h-14 md:flex-row">
+      <div className="flex h-14 flex-row items-stretch justify-between max-md:gap-4">
         <div
           className={clsx(
             'flex items-center align-middle transition duration-150 ease-in-out md:px-5',

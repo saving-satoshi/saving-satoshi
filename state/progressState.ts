@@ -363,6 +363,66 @@ export const defaultProgressState: CourseProgress = {
       completed: false,
       hasDifficulty: false,
     },
+    {
+      id: 10,
+      lessons: [
+        { id: 'CH10INT1', path: '/chapter-10/intro-1', completed: false },
+        { id: 'CH10INT2', path: '/chapter-10/intro-2', completed: false },
+        {
+          id: 'CH10OAC1',
+          path: '/chapter-10/opening-a-channel-1',
+          completed: false,
+        },
+        {
+          id: 'CH10OAC2',
+          path: '/chapter-10/opening-a-channel-2',
+          completed: false,
+        },
+        {
+          id: 'CH10OAC3',
+          path: '/chapter-10/opening-a-channel-3',
+          completed: false,
+        },
+        {
+          id: 'CH10OAC4',
+          path: '/chapter-10/opening-a-channel-4',
+          completed: false,
+        },
+        {
+          id: 'CH10OAC5',
+          path: '/chapter-10/opening-a-channel-5',
+          completed: false,
+        },
+        {
+          id: 'CH10MAP1',
+          path: '/chapter-10/making-a-payment-1',
+          completed: false,
+        },
+        {
+          id: 'CH10MAP2',
+          path: '/chapter-10/making-a-payment-2',
+          completed: false,
+        },
+        {
+          id: 'CH10MAP3',
+          path: '/chapter-10/making-a-payment-3',
+          completed: false,
+        },
+        {
+          id: 'CH10MAP4',
+          path: '/chapter-10/making-a-payment-4',
+          completed: false,
+        },
+        {
+          id: 'CH10MAP5',
+          path: '/chapter-10/making-a-payment-5',
+          completed: false,
+        },
+        { id: 'CH10OUT1', path: '/chapter-10/outro-1', completed: false },
+      ],
+      completed: false,
+      hasDifficulty: false,
+    },
   ],
   currentChapter: 1,
   currentLesson: 'CH1INT1',

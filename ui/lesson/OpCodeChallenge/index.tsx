@@ -17,6 +17,10 @@ const tabData = [
     id: 'code',
     text: 'Code',
   },
+  {
+    id: 'execute',
+    text: 'Execute',
+  },
 ]
 
 export default function OpCodeChallenge({
@@ -53,7 +57,7 @@ export default function OpCodeChallenge({
       >
         <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
         {children}
-        <div className="height-minus-nav flex border-white/25 md:max-w-[50vw] md:border-l">
+        <div className="flex h-[calc(100vh-70px-48px)] border-white/25 md:h-[calc(100vh-70px)] md:max-w-[50vw] md:border-l">
           <ArrowsProvider>
             <OpRunner
               lang={lang}

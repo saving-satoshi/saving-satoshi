@@ -18,6 +18,7 @@ export default function OpCodes5({ lang }) {
   useEffect(() => {
     setHydrated(true)
   }, [])
+
   return (
     hydrated && (
       <OpCodeChallenge
