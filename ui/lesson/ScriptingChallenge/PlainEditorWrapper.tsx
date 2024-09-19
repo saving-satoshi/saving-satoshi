@@ -86,9 +86,9 @@ export default function PlainEditorWrapper({
         {children}
         <div
           className={clsx('', {
-            'code-editor grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l':
+            'grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l':
               config,
-            hidden: activeView === LessonView.Info,
+            'h-[150px]': activeView === LessonView.Info,
           })}
         >
           {language && config && (
@@ -105,7 +105,7 @@ export default function PlainEditorWrapper({
             code={!!config && code ? code : fixedCode}
           />
           {button && (
-            <div className="h-14 min-h-14 grow border-t border-white/25 transition-all max-md:bottom-0 max-md:px-4 max-md:py-8">
+            <div className="h-14 min-h-14 grow border-l border-t border-white/25 transition-all max-md:bottom-0 max-md:px-4 max-md:py-8">
               <div className="flex flex-col items-stretch justify-between max-md:gap-4 md:h-14 md:flex-row">
                 <div className="flex items-center align-middle transition duration-150 ease-in-out md:px-5">
                   <div className="font-nunito text-[21px] text-white opacity-50 transition duration-150 ease-in-out">
