@@ -98,13 +98,13 @@ export default function Editor({
 
   const isSmallScreen = useMediaQuery({ width: 767 })
   const headerHeight = 70
-  const mobileMenuHeight = 56
-  const languageTabsHeight = 48
+  const mobileTabsHeight = 48
+  const languageTabsHeight = 40
   const terminalHeight = 204
-  const runnerHeight = 67
+  const runnerHeight = 56
 
   const totalHeight = isSmallScreen
-    ? headerHeight + mobileMenuHeight + languageTabsHeight
+    ? headerHeight + mobileTabsHeight + languageTabsHeight + runnerHeight
     : headerHeight + languageTabsHeight + terminalHeight + runnerHeight
 
   useEffect(() => {

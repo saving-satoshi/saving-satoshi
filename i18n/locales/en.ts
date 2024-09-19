@@ -514,7 +514,7 @@ const translations = {
         tip_two:
           'Think about how you would create a function to keep running until that answer is equal to a specific value',
         tip_three:
-          'Remember to log your answer with <span className="p-1 font-mono bg-[#00000033] m-1">console.log()</span> or <span className="p-1 font-mono bg-[#00000033] m-1">print()</span>. It is the only way our IDE will try to validate your answer.',
+          'Remember to log your answer with <span className="p-1 font-mono bg-[#0000004D] m-1">console.log()</span> or <span className="p-1 font-mono bg-[#0000004D] m-1">print()</span>. It is the only way our IDE will try to validate your answer.',
       },
       mining_one: {
         mining_heading: 'Mining',
@@ -890,7 +890,7 @@ const translations = {
         discrete_log_paragraph:
           'A mathematical system where you can, for example, multiply but cannot divide. A simple metaphor for this is looking at a clock. Three hours past 11 o’clock is 2 o’clock. So we could say “11+3=2”. However if wanted to perform “2-x=11” and solve for x, you would have infinite possible answers (3, 15, 27, 39...). More on <Link href="https://en.wikipedia.org/wiki/Discrete_logarithm" className="underline">wikipedia</Link>.',
         tip_one:
-          'Multiplication with elliptic curve points is not the same as the kind of multiplication you are used to, the one with regular numbers. So how do you perform multiplication? Notice that the generator point, <span className="p-1 font-mono bg-[#00000033] m-1">G</span> is of the type <span className="p-1 font-mono bg-[#00000033] m-1">secp256k1.GE</span>. Have a look at that class to see what methods you can invoke on it.',
+          'Multiplication with elliptic curve points is not the same as the kind of multiplication you are used to, the one with regular numbers. So how do you perform multiplication? Notice that the generator point, <span className="p-1 font-mono bg-[#0000004D] m-1">G</span> is of the type <span className="p-1 font-mono bg-[#0000004D] m-1">secp256k1.GE</span>. Have a look at that class to see what methods you can invoke on it.',
         tip_two:
           'While the private key is accepted in hex format, it needs to be converted to a number (BigInt if you’re using JS) before multiplying with the generator point.',
       },
@@ -1100,7 +1100,7 @@ const translations = {
       paragraph_two:
         'The ECDSA signature verification algorithm is explained <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">here</Link> and <Link className="underline" href="https://www.secg.org/sec1-v2.pdf#page=52" target="_blank">here</Link>.',
       paragraph_three:
-        'We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">verify()</span> that should only return True if everything is valid!',
+        'We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> that should only return True if everything is valid!',
       paragraph_four:
         "We know Satoshi's signature is valid, it has been checked by every Bitcoin full node since 2010! If your program does not return True something is wrong.",
       python: {
@@ -1111,7 +1111,7 @@ const translations = {
       },
       javascript: {
         paragraph_five_part_one:
-          'We have provided a helper function <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">invert()</span>',
+          'We have provided a helper function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">invert()</span>',
         paragraph_five_part_two:
           'which you will need in lieu of a JavaScript native modular exponentiation function.',
       },
@@ -1129,7 +1129,7 @@ const translations = {
         highlighted: 'double SHA-256 hash',
         question: 'Why do we double hash in Bitcoin?',
         post_link:
-          'that blob of data, and convert that hash into an integer. Complete the function <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">encode_message()</span>. It should return a 32-byte hex value.',
+          'that blob of data, and convert that hash into an integer. Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">encode_message()</span>. It should return a 32-byte hex value.',
       },
       success: 'Nicely Done',
     },
@@ -1141,7 +1141,7 @@ const translations = {
       javascript: {
         paragraph_two: {
           post_link:
-            'Complete the function <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">decode_sig()</span>.',
+            'Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">decode_sig()</span>.',
           return:
             'It should return an array with the [r, s] values as BigInts.',
         },
@@ -1158,7 +1158,7 @@ const translations = {
       title: 'Validate the signature',
       nav_title: 'See if Vanderpoole was lying',
       heading: 'So, is Vanderpoole a liar?!',
-      paragraph_one: `Let's gather all the necessary components for the program and verify if Vanderpoole's signature actually originated from the private key linked to Satoshi's public key! Please fill in the missing parameters needed to execute the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base"> verify()</span> function using the provided code.`,
+      paragraph_one: `Let's gather all the necessary components for the program and verify if Vanderpoole's signature actually originated from the private key linked to Satoshi's public key! Please fill in the missing parameters needed to execute the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm"> verify()</span> function using the provided code.`,
       paragraph_two:
         'Then we can run the program to see if Vanderpoole was lying. Drumroll please...',
       success:
@@ -1229,7 +1229,7 @@ const translations = {
       },
       verify_signature_two: {
         tip_one:
-          'JavaScript hint: You can convert a hex string to a buffer of bytes using <span className="p-1 font-mono bg-[#00000033] m-1">Buffer.from(someString, \'hex\');</span>',
+          'JavaScript hint: You can convert a hex string to a buffer of bytes using <span className="p-1 font-mono bg-[#0000004D] m-1">Buffer.from(someString, \'hex\');</span>',
         signature_verification_heading: 'Signature Verification',
         signature_verification_paragraph_one:
           'Signature verification is a mathematical algorithm in which one party provides a piece of data (the signature) that could only be generated if that party knows a secret number (the private key). Verification involves comparing the signature, the public key, and a given message. If the algorithm outputs a TRUE boolean, then the signature is considered authentic.',
@@ -1434,7 +1434,7 @@ const translations = {
         paragraph_four:
           "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6.",
         paragraph_five:
-          'We also need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that returns a byte array according to the specification:',
+          'We also need a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method that returns a byte array according to the specification:',
         heading_two: 'Outpoint',
         table_one: {
           heading: {
@@ -1503,9 +1503,9 @@ const translations = {
       nav_title: 'Build the output class',
       heading: 'Finish the implementation of the Output class',
       paragraph_one:
-        'Like the Input class, it needs a method <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_options()</span> that will construct an Output object from user-provided data:',
+        'Like the Input class, it needs a method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">from_options()</span> that will construct an Output object from user-provided data:',
       paragraph_two: `It accepts a Bitcoin address as a string (like the address from Mike Ramen) and a value as an integer. The value is expressed as a number of satoshis! Remember, 1 BTC = 100000000 satoshis. You will need to use our bech32 library again to decode the address into version and data components.
-        The class also needs a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span>  method that returns a byte array according to the specification:`,
+        The class also needs a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span>  method that returns a byte array according to the specification:`,
       heading_two: 'Output',
       table: {
         heading: {
@@ -1567,7 +1567,7 @@ const translations = {
         paragraph_one:
           'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
         paragraph_two:
-          'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">digest(input_index)</span> that computes the 32-byte message for signing an input.',
+          'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest(input_index)</span> that computes the 32-byte message for signing an input.',
         list_heading: 'Some notes:',
         list_one: '"Double SHA-256" or dSHA256 = sha256(sha256(data))',
         list_two:
@@ -1665,7 +1665,7 @@ const translations = {
         paragraph_one:
           'It should have the following method, which accepts a byte array and adds that item to the witness stack.',
         paragraph_two:
-          'It will also need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that returns the serialized witness stack.',
+          'It will also need a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method that returns the serialized witness stack.',
         subheading_one: 'Witness stack',
         headings: {
           item_one: 'Description',
@@ -1720,18 +1720,18 @@ const translations = {
           '• <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">Standards for Efficient Cryptography 1 (SEC 1)</Link>: Page 44, Section 4.1.3',
         heading_one: 'Step 1',
         paragraph_five:
-          'In the Transaction class, there is a method, <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">compute_input_signature(index, key)</span> that accepts the index number of an input and a private key (a 32-byte integer, or BigInt in JavaScript). Finish this method so it computes the message digest for the chosen input. Use the <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">digest()</span> method from our last step, then return an ECDSA signature in the form of two 32-byte integers: <span className="italic">r</span> and <span className="italic">s</span>.',
+          'In the Transaction class, there is a method, <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">compute_input_signature(index, key)</span> that accepts the index number of an input and a private key (a 32-byte integer, or BigInt in JavaScript). Finish this method so it computes the message digest for the chosen input. Use the <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">digest()</span> method from our last step, then return an ECDSA signature in the form of two 32-byte integers: <span className="italic">r</span> and <span className="italic">s</span>.',
         heading_two: 'Step 2',
         paragraph_six:
-          'For the signing algorithm, the Bitcoin protocol requires one more thing. The <span className="italic">s</span> value needs to be "low", meaning less than the order of the curve divided by 2. Add this check to <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">compute_input_signature()</span>.',
+          'For the signing algorithm, the Bitcoin protocol requires one more thing. The <span className="italic">s</span> value needs to be "low", meaning less than the order of the curve divided by 2. Add this check to <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">compute_input_signature()</span>.',
         paragraph_seven:
           'See <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link> to learn more.',
         heading_three: 'Step 3',
         paragraph_eight:
-          'Complete the method <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1">sign_input(index, key)</span> so that it calls <span className="text-green p-1 text-base font-mono bg-[#00000033] m-1"> compute_input_signature(index, key)</span>. When handling the return value, <span className="italic">r</span> and <span className="italic">s</span> need to be encoded with an algorithm called DER which we have implemented for you.',
+          'Complete the method <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, key)</span> so that it calls <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>. When handling the return value, <span className="italic">r</span> and <span className="italic">s</span> need to be encoded with an algorithm called DER which we have implemented for you.',
         heading_four: 'Step 4',
         paragraph_nine:
-          'Bitcoin requires an extra byte appended to the end of the DER-signature. This byte represents the "sighash type". For now we’ll always use the byte <span className="p-1 text-base font-mono bg-[#00000033] m-1">0x01</span> for this, indicating "SIGHASH ALL".',
+          'Bitcoin requires an extra byte appended to the end of the DER-signature. This byte represents the "sighash type". For now we’ll always use the byte <span className="p-1 text-base font-mono bg-[#0000004D] m-1">0x01</span> for this, indicating "SIGHASH ALL".',
         heading_five: 'Step 5',
         paragraph_ten:
           'The last step is to create a Witness object with two stack items: the DER encoded signature blob we just made, and your compressed public key. Push the signature first, followed by the public key.',
@@ -1747,7 +1747,7 @@ const translations = {
         paragraph_one:
           'It should have global properties locktime and version as well as an array of inputs, outputs and witness stacks.',
         paragraph_two:
-          'It will need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that outputs the enitire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
+          'It will need a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method that outputs the enitire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
         headings: {
           item_one: 'Description',
           item_two: 'Name',
@@ -1815,7 +1815,7 @@ const translations = {
         nav_title: 'Sign the transaction',
         heading: 'Finish the implementation of Class Transaction',
         paragraph_one:
-          'To complete our transaction we will need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that outputs the entire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
+          'To complete our transaction we will need a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method that outputs the entire transaction as bytes formatted for broadcast on the Bitcoin p2p network.',
         paragraph_two:
           'Our script should create and sign a Transaction object. It will have one input (the UTXO we identified in <span className="underline">The input class</span>) and two outputs:',
         paragraph_three:
@@ -1895,7 +1895,7 @@ const translations = {
         paragraph_one:
           'In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
         paragraph_two:
-          'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">digest(input_index)</span> that computes the 32-byte message for signing an input.',
+          'Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest(input_index)</span> that computes the 32-byte message for signing an input.',
         list_heading: 'Some notes:',
         list_one: '"Double SHA-256" or dSHA256 = sha256(sha256(data))',
         list_two:
@@ -1991,7 +1991,7 @@ const translations = {
         title: 'Putting it all together',
         heading: 'Signing!',
         nav_title: 'Sign the transaction',
-        paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">compute_input_signature(index: int, key: int)</span> to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">digest()</span> method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
+        paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index: int, key: int)</span> to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest()</span> method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
         paragraph_two:
           'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
         paragraph_three:
@@ -2005,7 +2005,7 @@ const translations = {
         heading: 'Populate the Witness',
         nav_title: 'Populate the Witness',
         paragraph_one:
-          'Finish the method <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">sign_input(index: int, key: int)</span> that calls our step 7 method <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.',
+          'Finish the method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> that calls our step 7 method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.',
         paragraph_two:
           'Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this indicating "SIGHASH ALL".',
         paragraph_three:
@@ -2027,7 +2027,7 @@ const translations = {
         paragraph_three:
           'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 61,000,000 to 60,999,000 satoshis.',
         paragraph_four:
-          'Finally our work is done. Your script should end by returning the result of the transaction <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method. This is a valid signed Bitcoin transaction and we can broadcast it to the network to send Mike Ramen the money he needs!',
+          'Finally our work is done. Your script should end by returning the result of the transaction <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method. This is a valid signed Bitcoin transaction and we can broadcast it to the network to send Mike Ramen the money he needs!',
         bullet_one:
           'Mike Ramen gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
         bullet_two:
@@ -2210,8 +2210,8 @@ const translations = {
       title: 'Building Blocks',
       nav_title: `Explore the Bitcoin API`,
       heading: 'The Bitcoin API',
-      paragraph_one: `To answer these questions, you'll need to interact with a Bitcoin full node, via its JSON-RPC API. We've imported a library for you called <span className="p-1 font-mono bg-[#00000033] m-1">bitcoin_rpc</span> which handles the secure HTTP connection from your script to the full node, executes your commands, and returns the responses. Your full node is \"pruning\" so it only has access to the last 300 blocks, but that should be enough to include the entire timespan of Vanderpoole's recent muckery.`,
-      paragraph_two: `Let's start by getting familiar with the API. The library has one function that accepts one required argument, <span className="p-1 font-mono bg-[#00000033] m-1">method</span> (a string) and one optional argument, <span className="p-1 font-mono bg-[#00000033] m-1">params</span> (either a string or a number):`,
+      paragraph_one: `To answer these questions, you'll need to interact with a Bitcoin full node, via its JSON-RPC API. We've imported a library for you called <span className="p-1 font-mono bg-[#0000004D] m-1">bitcoin_rpc</span> which handles the secure HTTP connection from your script to the full node, executes your commands, and returns the responses. Your full node is \"pruning\" so it only has access to the last 300 blocks, but that should be enough to include the entire timespan of Vanderpoole's recent muckery.`,
+      paragraph_two: `Let's start by getting familiar with the API. The library has one function that accepts one required argument, <span className="p-1 font-mono bg-[#0000004D] m-1">method</span> (a string) and one optional argument, <span className="p-1 font-mono bg-[#0000004D] m-1">params</span> (either a string or a number):`,
       paragraph_three:
         'The API also has a convenient "help" method! Ask it for help to learn more about the available commands, then pass the challenge by printing the current network difficulty.',
       success: "Nice work exploring the API! Let's move on.",
@@ -2221,7 +2221,7 @@ const translations = {
       nav_title: `Find the Smallest Transaction Block`,
       heading: `Block Data`,
       paragraph_one: `Each Bitcoin full node has a database. That's where blocks are stored and indexed by their hash. The full node keeps track of which blocks are candidates at each height in the chain with a second index that maps height -> [block hashes].`,
-      paragraph_two: `The JSON-RPC API returns block data as JSON objects that include a property<span className="p-1 font-mono bg-[#00000033] m-1">txs</span>which is an array of transaction objects.`,
+      paragraph_two: `The JSON-RPC API returns block data as JSON objects that include a property<span className="p-1 font-mono bg-[#0000004D] m-1">txs</span>which is an array of transaction objects.`,
       paragraph_three: `Retrieve all the block candidates at height 6929996 and print the hash of the block with the fewest transactions in it.`,
       success: `Nicely Done`,
     },
@@ -2330,18 +2330,18 @@ const translations = {
       paragraph_one:
         "Think of a stack of books 📚. If you want to add a book, you have to place it on top of the stack, there's nowhere else for it to go. If you want to read a book, the only one you can access is the one on top of the stack. Even if you want more than one you have start at the top of the stack and work your way down. In computing terms, a stack is like an array of data items with two operations:",
       paragraph_two:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_PUSH</span> Add an item to the "top" of the stack.',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_PUSH</span> Add an item to the "top" of the stack.',
       paragraph_three:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_POP</span> Remove the "top" item from the stack for processing.',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_POP</span> Remove the "top" item from the stack for processing.',
       subheading_one: 'Example:',
       stack_list_one:
-        'Here is a stack: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">[]</span>',
+        'Here is a stack: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[]</span>',
       stack_list_two:
-        'Push the number 1: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">[1]</span>',
+        'Push the number 1: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1]</span>',
       stack_list_three:
-        'Push the number 2: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">[1, 2]</span>',
+        'Push the number 2: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1, 2]</span>',
       stack_list_four:
-        'Pop the top item off the stack: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">[1]</span>',
+        'Pop the top item off the stack: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1]</span>',
       paragraph_four:
         'Notice that the first item pushed on to the stack will be the last item popped off the stack, so it will be the last item processed by the script. For this reason the stack has an "upside down" or "backwards" feel to it, and the first thing you see on the stack will likely be the solution required at the end of script processing.',
       paragraph_five:
@@ -2357,7 +2357,7 @@ const translations = {
         "Let's demonstrate an example where we lock up a Bitcoin with the math problem 1 + 2 = ?. Whoever knows the answer to this math problem can spend the coins.",
       paragraph_three: 'The script would look like this:',
       paragraph_four:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_1 OP_2 OP_ADD OP_EQUAL</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1 OP_2 OP_ADD OP_EQUAL</span>',
       paragraph_five:
         'This is script will be hashed and bech32-encoded into an address where someone can send coins.',
     },
@@ -2378,13 +2378,13 @@ const translations = {
       stack_list_one:
         'init: the funding transaction output and spending transaction input are brought together.',
       stack_list_two:
-        'step 1: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_1</span>pushes "1" onto the stack.',
+        'step 1: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1</span>pushes "1" onto the stack.',
       stack_list_three:
-        'step 2: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_2</span>pushes "2" onto the stack.',
+        'step 2: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_2</span>pushes "2" onto the stack.',
       stack_list_four:
-        'step 3: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ADD</span>pops two items off the stack, adds them together, and pushes the sum back to the stack.',
+        'step 3: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ADD</span>pops two items off the stack, adds them together, and pushes the sum back to the stack.',
       stack_list_five:
-        'step 4: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_EQUAL</span>pops two items off the stack, compares them, and pushes a boolean result back to the stack.',
+        'step 4: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_EQUAL</span>pops two items off the stack, compares them, and pushes a boolean result back to the stack.',
       paragraph_two:
         'Now we have reached the end of the script and there is only a single TRUE item left on the stack - the coins are spent!',
       paragraph_three:
@@ -2399,36 +2399,36 @@ const translations = {
       subheading_one:
         'Opcodes that push integers or arbitrary data to the stack',
       opconstants_list_one_heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_0</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_0</span>',
       opconstants_list_one_paragraph: 'Pushes the number 0 on to the stack.',
       opconstants_list_two_heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_1</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1</span>',
       opconstants_list_two_paragraph: 'Pushes the number 1 on to the stack.',
       opconstants_list_three_heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_2</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_2</span>',
       opconstants_list_three_paragraph: 'Pushes the number 2 on to the stack.',
       opconstants_list_four_heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_3</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_3</span>',
       opconstants_list_four_paragraph: 'Pushes the number 3 on to the stack.',
       opconstants_list_five_heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_DUP</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DUP</span>',
       opconstants_list_five_paragraph:
         'Pushes a duplicate of the top stack item on to the stack.',
       opconstants_list_six_heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_PUSH</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_PUSH</span>',
       opconstants_list_six_paragraph:
         'Pushes the following script value on to the stack. Example values include SIG(alice), PUBKEY(alice), HASH256(secret), secret. Lowercase strings represent real-world data and the other opcodes in this interpreter will process them as if they are actual keys, signatures, hash digests and preimages.',
       subheading_two: 'Opcodes that do arithmetic',
       oparithmetic_list_one_heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_ADD</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ADD</span>',
       oparithmetic_list_one_paragraph:
         'Pops two items off the stack, adds them together, pushes their sum back to the stack.',
       oparithmetic_list_two_heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_EQUAL</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_EQUAL</span>',
       oparithmetic_list_two_paragraph:
         'Pops two items off the stack, compares their equality, pushes a boolean back to the stack.',
       oparithmetic_list_three_heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_EQUALVERIFY</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_EQUALVERIFY</span>',
       oparithmetic_list_three_paragraph:
         'Like OP_EQUAL but throws an error and halts script execution immediately if the two items are not equal.',
       paragraph_two: 'Provide the initial stack to spend from the script.',
@@ -2441,11 +2441,11 @@ const translations = {
         'We\'ve explored "pay to public key hash" in previous chapters. This is the Bitcoin script that was written explicitly in millions of transaction outputs before segregated witness came along and abbreviated it. Coins are locked by the hash of a public key. The spender must reveal the public key that matches that hash, and then provide a signature verified by that public key.',
       subheading_one: 'Opcodes that do simple cryptography',
       opcryptography_list_one_heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_HASH256</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm h-fit">OP_HASH256</span>',
       opcryptography_list_one_paragraph:
         'Pops one item off the stack, computes the double-SHA256 digest and pushes that digest back to the stack. In our exercise this operation is symbolized using strings. Example: The script OP_1 OP_HASH256 produces the stack [HASH256(1)]',
       opcryptography_list_two_heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_CHECKSIG</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm h-fit">OP_CHECKSIG</span>',
       opcryptography_list_two_paragraph:
         'Pops two items off the stack. The first item it pops must be a public key in the format PUBKEY(...). The second item must be a signature in the format SIG(...). If the strings inside the parentheses in both items are equal we consider that a valid ECDSA signature and push TRUE back to the stack, otherwise FALSE',
       paragraph_two: 'Provide the initial stack to spend from the script.',
@@ -2459,23 +2459,23 @@ const translations = {
       paragraph_two:
         'Holocat appears with a pre-recorded message from Satoshi Nakamoto!',
       paragraph_three:
-        'Hi. I accidentally wrote a bug when I implemented <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn\'t used at all. UMMMMmmmmmm... WHOOPSIE! Sorry. That code is consensus-critical so every <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_CHECKMULTISIG</span> operation in Bitcoin\'s past, present, and future will be forced to include a "dummy" element. Don\'t forget it! Or you won\'t be able to spend your multisig coins.',
+        'Hi. I accidentally wrote a bug when I implemented <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn\'t used at all. UMMMMmmmmmm... WHOOPSIE! Sorry. That code is consensus-critical so every <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> operation in Bitcoin\'s past, present, and future will be forced to include a "dummy" element. Don\'t forget it! Or you won\'t be able to spend your multisig coins.',
     },
     opcodes_eight: {
       title: 'OpCodes',
       nav_title: 'Sign with multiple keys',
       heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1">OP_CHECKMULTISIG</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-1">OP_CHECKMULTISIG</span>',
       subheading_one:
         'Processes m-of-n multi-signature by following this algorithm.',
       multisig_list_one:
-        'Pop a single integer off the stack. This is the <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">n</span> value.',
+        'Pop a single integer off the stack. This is the <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span> value.',
       multisig_list_two:
-        'Pop <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">n</span> number of items off the stack, these are all expected to be public keys of the format <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">PUBKEY(...)</span>',
+        'Pop <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span> number of items off the stack, these are all expected to be public keys of the format <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">PUBKEY(...)</span>',
       multisig_list_three:
-        'Pop a single integer off the stack. This is the <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">m</span> value.',
+        'Pop a single integer off the stack. This is the <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">m</span> value.',
       multisig_list_four:
-        'Pop <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">m</span> number of items off the stack, these are all expected to be signatures of the format <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">SIG(...)</span>',
+        'Pop <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">m</span> number of items off the stack, these are all expected to be signatures of the format <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">SIG(...)</span>',
       multisig_list_five:
         'Pop an extra element off the stack for absolutely no reason at all.',
       multisig_list_six:
@@ -2493,13 +2493,13 @@ const translations = {
       nav_title: 'Wait to unlock',
       heading: 'Time Locks',
       paragraph_one:
-        "Way back in the last century a document entitled BIP 65 proposed a new opcode to Bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className=\"text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base\">OP_DROP</span> as well.. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.",
+        "Way back in the last century a document entitled BIP 65 proposed a new opcode to Bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className=\"flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm\">OP_DROP</span> as well.. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.",
       subheading_one: 'Opcodes that do block timelocks',
       optimelock_list_one_heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_DROP</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span>',
       optimelock_list_one_paragraph: 'Pops one item off the stack, ignores it.',
       optimelock_list_two_heading:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base h-fit">OP_CHECKLOCKTIMEVERIFY</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKLOCKTIMEVERIFY</span>',
       optimelock_list_two_paragraph:
         'Reads (does not pop) the top stack item and interprets it as a block height. If the height argument consumed by the opcode is not at least equal to the NEXT block height, the operation is invalid.',
       paragraph_two: 'Provide the initial stack to spend from the script.',
@@ -2511,9 +2511,9 @@ const translations = {
       paragraph_one:
         'Just like any other good programming language, Bitcoin script has logic branches! The path through the branches is typically chosen by the spender to pick which combination of authentication conditions they need to satisfy,',
       paragraph_two:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_IF</span> <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ELSE</span> <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ENDIF</span> Logic branches.',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span> Logic branches.',
       paragraph_three:
-        '<span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_IF</span> pops one value off the stack and evaluates it as a boolean. If it is true, code execution continues up to <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ELSE</span> then skips to <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ENDIF</span>, otherwise it skips to <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ELSE</span> and continues executing to <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ENDIF</span>. Logic branches may be nested but every <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_IF</span> must be paired with an <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">OP_ENDIF</span> to close each branch, otherwise a the interpreter will throw an error and the script will fail.',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> pops one value off the stack and evaluates it as a boolean. If it is true, code execution continues up to <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> then skips to <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span>, otherwise it skips to <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> and continues executing to <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span>. Logic branches may be nested but every <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> must be paired with an <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span> to close each branch, otherwise a the interpreter will throw an error and the script will fail.',
       paragraph_four: 'Provide the initial stack to spend from the script.',
     },
     proposal_one: {
@@ -2550,7 +2550,7 @@ const translations = {
       paragraph_two:
         'There is no way to check a total balance across multiple UTXOs in Bitcoin script so you agree on an unbiased third-party oracle: Deborah Chunk! She will monitor the total donation amount on the blockchain and once they add up to at least 1.0 BTC she will announce, live on TV, the preimage to a hash value you will commit to in the script.',
       paragraph_three:
-        'She generates a secure random nonce in private, then hands you the hash digest: <span className="text-[#3DCFEF] p-1 font-mono bg-[#00000033] m-1 text-base">HASH256(FD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one satoshi one second earlier!',
+        'She generates a secure random nonce in private, then hands you the hash digest: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">HASH256(FD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one satoshi one second earlier!',
       paragraph_four: `Remember Vanderpoole's public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
       paragraph_five: 'Provide the initial stack to spend from the script.',
       next_step_message:
@@ -2586,12 +2586,12 @@ Stack Hint: To satisfy the script, you need to provide both signatures. The 0 on
       },
       proposal_three: {
         spoiler: `Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, Vanderpoole can spend; after the block, you can.
-        
+
 Stack Hint: To spend before the specified block, Vanderpoole uses his signature. After the block, you use your signature and need to provide a 0 because the script has moved past the locktime verification.`,
       },
       proposal_four: {
         spoiler: `Script Hint: The script allows spending under two conditions: before the secret has been revealed or after. Before the block, Vanderpoole can spend; after the block, you both can.
-        
+
 Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signature. After the secret is revealed, you use your signature, a hash of the secret, and provide a 0 because the script has moved past the unrevealed verification.`,
       },
     },
@@ -2689,6 +2689,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
   },
 
   opcode: {
+    run: 'Run the Script',
     reset: 'Reset',
   },
 

@@ -17,6 +17,8 @@ export const metadata = {
   slug: 'chapter-9',
   title: `chapter_nine.title`,
   image: '/assets/images/chapter-9-cover.jpg',
+  theme: 'bg-gradient-to-tl from-[#3074be] to-[#726a65]',
+  secondaryTheme: 'bg-[#517092]',
   intros: ['intro-1', 'intro-2'],
   lessons: [
     'opcodes-1',
