@@ -84,6 +84,7 @@ export default function OpCodeRunner({
           errorMessage={errorMessage || ''}
           className={clsx('h-14 min-h-14 grow border-t-0', {
             '!bg-transparent': success !== true && success !== 5,
+            'pl-4': success === true || success === 5,
           })}
           textClass="text-lg !p-0"
           success={success}

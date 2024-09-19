@@ -399,7 +399,7 @@ const OpRunner = ({
         </div>
 
         <div
-          className={clsx('flex-col border-b border-b-white/25', {
+          className={clsx('flex-col', {
             'hidden md:flex': activeView === LessonView.Execute || !isActive,
             flex: isActive,
           })}
@@ -419,7 +419,7 @@ const OpRunner = ({
             />
           </div>
 
-          <div className="flex flex-col px-5 py-[15px]">
+          <div className="flex flex-col border-b border-b-white/25 px-5 py-[15px]">
             <p className="font-space-mono text-[15px] font-bold">
               Next block height
             </p>
@@ -436,19 +436,19 @@ const OpRunner = ({
         </div>
         <div
           className={clsx(
-            'h-full min-h-[calc(25dvh)] flex-col bg-black/10 px-5',
+            'h-full min-h-[calc(25dvh)] flex-col gap-y-2.5 bg-black/10 px-5 py-[15px]',
             {
               'hidden md:flex': activeView !== LessonView.Execute,
               flex: activeView === LessonView.Execute,
             }
           )}
         >
-          <div className="flex w-full flex-row justify-between pt-3">
+          <div className="flex w-full flex-row justify-between">
             <p className="font-mono text-[15px] font-bold">Execution stack</p>
           </div>
           <div
             ref={scrollRef}
-            className="mb-auto flex h-full w-full flex-row gap-2.5 overflow-auto py-2"
+            className="mb-auto flex h-full w-full flex-row gap-2.5 overflow-auto"
           >
             {(stateHistory.length === 0 || startedTyping) && (
               <div className="flex w-full max-w-[164px] flex-col gap-y-2.5">

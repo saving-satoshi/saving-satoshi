@@ -358,7 +358,7 @@ export default class ScratchDnd extends Component<
         >
           {(provided, snapshot) => (
             <div
-              className="max-md:self stretch block overflow-y-auto bg-black/10 px-5 py-2.5 max-md:flex max-md:flex-grow max-md:flex-col"
+              className="max-md:self stretch block overflow-y-auto bg-black/10 px-5 py-[15px] max-md:flex max-md:flex-grow max-md:flex-col"
               dir="rtl"
               ref={provided.innerRef}
             >
