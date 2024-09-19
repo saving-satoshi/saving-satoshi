@@ -10,7 +10,7 @@
   --terminal-bg: rgba(61, 207, 239, 0.25);
   --incorrect-answer: #ef960b;
   --input-text: #6e7d92;
-  --dynamic-height: 100vh;
+  --dynamic-height: 100dvh;
   --CH3SOL1-bg: #411e4f;
   --CH3SOL1-gradient-start: #3c1843;
   --CH3SOL1-gradient-stop: #45235a;
@@ -210,7 +210,7 @@ div.react-terminal-active-input {
 }
 
 .code-editor {
-  height: calc(100vh - 70px - 56px);
+  height: calc(100vh - 70px - 40px - 48px);
 }
 .read-only-editor-button {
   height: calc(100vh - 70px - 56px);
