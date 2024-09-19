@@ -358,7 +358,7 @@ export default class ScratchDnd extends Component<
         >
           {(provided, snapshot) => (
             <div
-              className="flex h-full flex-col gap-y-2 overflow-y-auto bg-black/10 px-5 py-[15px]"
+              className="flex h-full flex-col gap-y-2.5 overflow-y-auto bg-black/10 px-5 py-[15px]"
               dir="rtl"
               ref={provided.innerRef}
             >
@@ -370,7 +370,7 @@ export default class ScratchDnd extends Component<
                   <h2 className="w-fit min-w-[100px] select-none text-left text-[13px] font-semibold">
                     {group.heading}
                   </h2>
-                  <div className="flex w-full flex-row-reverse flex-wrap gap-y-2 overflow-x-auto pl-1">
+                  <div className="flex w-full flex-row-reverse flex-wrap gap-y-2.5 overflow-x-auto pl-1">
                     {group.items.map((item, index) => (
                       <Draggable
                         key={item.id}
