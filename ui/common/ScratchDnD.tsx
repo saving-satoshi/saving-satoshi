@@ -358,14 +358,14 @@ export default class ScratchDnd extends Component<
         >
           {(provided, snapshot) => (
             <div
-              className="max-md:self stretch block overflow-y-auto bg-black/10 px-5 py-[15px] max-md:flex max-md:flex-grow max-md:flex-col"
+              className="flex h-full flex-col gap-y-2 overflow-y-auto bg-black/10 px-5 py-[15px]"
               dir="rtl"
               ref={provided.innerRef}
             >
               {groupedItems.map((group, groupIndex) => (
                 <div
                   key={groupIndex}
-                  className="mb-2 flex flex-row-reverse font-space-mono"
+                  className="flex flex-row-reverse font-space-mono"
                 >
                   <h2 className="w-fit min-w-[100px] select-none text-left text-[13px] font-semibold">
                     {group.heading}
