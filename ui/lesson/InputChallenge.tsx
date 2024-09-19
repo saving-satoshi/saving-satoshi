@@ -73,7 +73,7 @@ export default function InputChallenge({
   }, [answer, userInput])
 
   return (
-    <Lesson direction={direction} onViewChange={() => null}>
+    <Lesson direction={direction}>
       <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
 
       {children}

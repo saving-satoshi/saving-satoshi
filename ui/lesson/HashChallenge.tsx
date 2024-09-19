@@ -113,7 +113,7 @@ export default function HashChallenge({
   }, [answer, userInput, input.length, answerHint, success])
 
   return (
-    <Lesson direction={LessonDirection.Vertical} onViewChange={() => null}>
+    <Lesson direction={LessonDirection.Vertical}>
       <div className="flex w-full justify-start md:grow md:justify-center">
         <div className="flex max-w-[1280px] items-start justify-center px-4 py-8 font-space-mono text-white md:w-9/12 md:items-center lg:w-9/12">
           <div className="flex w-full flex-col">
