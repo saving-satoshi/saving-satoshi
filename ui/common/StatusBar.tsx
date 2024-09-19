@@ -145,7 +145,7 @@ export default function StatusBar({
     <div
       className={clsx(
         className,
-        'border-t border-white/25 transition-all max-md:px-4',
+        'border-t border-white/25 pl-4 transition-all',
         {
           'w-screen': full,
           'w-full': !full,
