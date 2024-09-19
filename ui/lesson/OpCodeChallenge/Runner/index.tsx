@@ -82,7 +82,7 @@ export default function OpCodeRunner({
           beginMessage={t('opcode.run')}
           handleTryAgain={handleTryAgain}
           errorMessage={errorMessage || ''}
-          className={clsx('h-14 min-h-14 grow border-t-0 pl-4', {
+          className={clsx('h-14 min-h-14 grow border-t-0', {
             '!bg-transparent': success !== true && success !== 5,
           })}
           textClass="text-lg !p-0"

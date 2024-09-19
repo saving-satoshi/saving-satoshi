@@ -266,13 +266,15 @@ export default class ScratchDnd extends Component<
       <DragDropContext onDragEnd={this.onDragEnd}>
         {Object.keys(this.state.dynamicState).map((list, i) => {
           return (
-            <div key={i} className="border-b border-white/25 px-5 pt-5">
-              <p className="font-space-mono text-lg font-bold">Your script</p>
+            <div key={i} className="border-b border-white/25 px-5 py-[15px]">
+              <p className="font-space-mono text-[15px] font-bold">
+                Your script
+              </p>
               <Droppable key={list} droppableId={list} direction="horizontal">
                 {(provided, snapshot) => (
                   <div
                     className={clsx(
-                      'flex h-12 w-full flex-row whitespace-nowrap font-space-mono text-sm',
+                      'flex w-full flex-row whitespace-nowrap font-space-mono',
                       {
                         'overflow-hidden':
                           this.state.dynamicState[list].length === 0,
@@ -293,7 +295,7 @@ export default class ScratchDnd extends Component<
                             <div
                               id={item.id}
                               className={clsx(
-                                'relative m-0.5 flex h-[28px] select-none items-center rounded-sm bg-black/30 text-sm font-normal text-[#3DCFEF]',
+                                'relative mr-0.5 flex h-[25px] select-none items-center rounded-sm bg-black/30 text-[13px] font-normal text-[#3DCFEF]',
                                 {
                                   'pointer-events-none': this.props.prePopulate,
                                 }
@@ -305,7 +307,7 @@ export default class ScratchDnd extends Component<
                             >
                               <span
                                 className={clsx(
-                                  'flex h-[28px] items-center whitespace-nowrap',
+                                  'flex items-center whitespace-nowrap',
                                   {
                                     'px-1.5': item.content !== 'OP_PUSH',
                                     'pl-1.5': item.content === 'OP_PUSH',
@@ -338,7 +340,7 @@ export default class ScratchDnd extends Component<
                         </Draggable>
                       ))
                     ) : (
-                      <div className="relative mt-1.5 flex h-[28px] min-w-full select-none content-center items-start justify-start overflow-hidden text-white/50">
+                      <div className="relative flex h-[25px] min-w-full select-none content-center items-center justify-start overflow-hidden text-[15px] text-white/50">
                         Drag OP_CODES here to build your script...
                       </div>
                     )}
@@ -365,10 +367,10 @@ export default class ScratchDnd extends Component<
                   key={groupIndex}
                   className="mb-2 flex flex-row-reverse font-space-mono"
                 >
-                  <h2 className="min-w-fit select-none text-left text-lg font-semibold md:min-w-[160px]">
+                  <h2 className="min-w-fit select-none text-left text-[13px] font-semibold md:min-w-[160px]">
                     {group.heading}
                   </h2>
-                  <div className="flex w-full flex-row-reverse flex-wrap overflow-x-auto pl-1">
+                  <div className="flex w-full flex-row-reverse flex-wrap gap-y-2 overflow-x-auto pl-1">
                     {group.items.map((item, index) => (
                       <Draggable
                         key={item.id}
@@ -380,7 +382,7 @@ export default class ScratchDnd extends Component<
                             <div
                               id={item.id}
                               className={clsx(
-                                'relative m-0.5 flex h-[28px] select-none items-center rounded-sm bg-black/30 text-sm font-normal text-[#3DCFEF]',
+                                'relative mr-0.5 flex h-[25px] select-none items-center rounded-sm bg-black/30 text-[13px] font-normal text-[#3DCFEF]',
                                 {
                                   'pointer-events-none text-white/25':
                                     this.props.prePopulate,
@@ -392,7 +394,7 @@ export default class ScratchDnd extends Component<
                               style={provided.draggableProps.style}
                             >
                               <span
-                                className={clsx('flex h-[28px] items-center', {
+                                className={clsx('flex items-center', {
                                   'px-1.5': item.content !== 'OP_PUSH',
                                   'pl-1.5': item.content === 'OP_PUSH',
                                 })}
@@ -419,7 +421,7 @@ export default class ScratchDnd extends Component<
                               <div className="clone">
                                 <div
                                   className={clsx(
-                                    'relative m-0.5 flex h-[28px] select-none items-center rounded-sm bg-black/30 text-sm font-normal text-[#3DCFEF]',
+                                    'relative mr-0.5 flex h-[25px] select-none items-center rounded-sm bg-black/30 text-[13px] font-normal text-[#3DCFEF]',
                                     {
                                       'bg-black30/25 pointer-events-none text-white/25':
                                         this.props.prePopulate,
@@ -427,13 +429,10 @@ export default class ScratchDnd extends Component<
                                   )}
                                 >
                                   <span
-                                    className={clsx(
-                                      'flex h-[28px] items-center',
-                                      {
-                                        'px-1.5': item.content !== 'OP_PUSH',
-                                        'pl-1.5': item.content === 'OP_PUSH',
-                                      }
-                                    )}
+                                    className={clsx('flex items-center', {
+                                      'px-1.5': item.content !== 'OP_PUSH',
+                                      'pl-1.5': item.content === 'OP_PUSH',
+                                    })}
                                   >
                                     {item.content === 'OP_PUSH' && (
                                       <input
