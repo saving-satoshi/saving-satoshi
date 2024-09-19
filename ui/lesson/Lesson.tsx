@@ -11,15 +11,18 @@ const LessonContext = createContext<LessonContextType>({
 
 export const useLessonContext = () => useContext(LessonContext)
 
-export default function Lesson(props) {
+export default function Lesson({ direction, onViewChange, ...props }) {
   const [activeView, setActiveView] = useState(LessonView.Info)
 
-  const direction = props.direction || LessonDirection.Vertical
+  const handleSetActiveView = (view) => {
+    setActiveView(view)
+    onViewChange && onViewChange(view) // Call parent's function if it exists
+  }
 
   const context = {
     direction,
     activeView,
-    setActiveView,
+    setActiveView: handleSetActiveView,
   }
 
   return (
