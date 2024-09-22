@@ -2600,6 +2600,13 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
   chapter_ten: {
     title: '10 billion connections',
     paragraph_one: `The ON-AIR light in the TV studio goes dark. Stagehands shut off their hover-cameras and start filing out after a long day. Mike Ramen puts his hand on your shoulder and says "Great work today! Now let's celebrate. I know a bar across the street that accepts Bitcoin -- and what better way to honor Satoshi's vision of digital cash for the internet than exchanging some for beer!"`,
+    intro_one: {
+      title: 'Intro',
+      nav_title: 'Intro',
+      paragraph_one: `But something is different now. After your worldwide TV appearance, the rate of transactions on the Bitcoin network has shot up, filling up blocks and increasing fees for miners. That's a good thing for a sustainable network of course, but it wouldn't feel quite right if you had to pay a $5 fee just to buy a $10 beer.`,
+      paragraph_two: `The bar is called The Public Key Pub. The owner and bartender, Laszlo, welcomes you and Mike in with a big smile. Mike and Laszlo pull out their solar-powered mini cyber pads and tap a few holo-buttons each, then Laszlo pours a beer and hands it to Mike. As Mike raises the glass to you he says "no miner fees for off-chain payments! I bought this beer without confirming a transaction on the blockchain!" What?! How?!`,
+      paragraph_three: `Laszlo says "You're smart enough to debug mining software and validate blocks, I bet you can figure out how to send Bitcoin off-chain. I'll just guide you a little bit. We will set up a payment channel between you and me so you can buy some drinks."`,
+    },
   },
 
   ///CHALLENGE PAGE
