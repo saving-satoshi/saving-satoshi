@@ -544,6 +544,8 @@ const OpRunner = ({
                                       {
                                         'bg-red/35':
                                           stack.error.message !== null ||
+                                          (stack.stack[0] !== 1 &&
+                                            stack.stack[0] !== true) ||
                                           (opCodeIndex === isFinalToken() - 1 &&
                                             (stack.stack.length !== 1 ||
                                               stack.stack[0] === false ||
