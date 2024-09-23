@@ -88,7 +88,7 @@ const translations = {
 
   ///CHAPTERS TITLE PAGE
   chapter_one: {
-    title: 'Secrets in plain sight',
+    title: 'Secrets in Plain Sight',
     paragraph_one:
       'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. The world awaits the last block. Then, suddenly, the network grinds to a halt.',
 
@@ -97,8 +97,8 @@ const translations = {
       title: 'Intro',
       nav_title: 'Miner protest',
       paragraph_one: `Moments later, your Hover Screen activates.`,
-      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
-      paragraph_three: `—Vanderpoole: “Yes I do, Deborah. Like my daddy and his daddy before him. The Vanderpooles have been mining since Block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. We cannot survive on fees alone.”`,
+      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the well-dressed CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
+      paragraph_three: `—Vanderpoole: “Let’s start from the top. Yes, I am, Deborah, and yes, I do. The Vanderpooles—my well-dressed daddy and his well-dressed daddy before him—have been mining since block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. Miners cannot survive on fees alone.”`,
       start: 'Continue',
     },
 
@@ -106,11 +106,11 @@ const translations = {
       title: 'Genesis',
       nav_title: "Satoshi's holocat",
       paragraph_one:
-        'You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
+        'On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
       paragraph_two:
         '—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto',
       paragraph_three:
-        '—Satoshi? The Satoshi? No, it couldn’t be. They’ve been presumed dead for over a century.',
+        '—Satoshi? The Satoshi? From the white paper? No, it couldn’t be. They’ve been presumed dead for over a century.',
       paragraph_four: 'Haven’t they?',
       paragraph_five:
         'Holocat: “You better get to work. I can help, but you have to start meow.”',
@@ -161,7 +161,7 @@ const translations = {
       nav_title: 'Your first success',
       subtitle: 'Congrats! You completed the first challenge!',
       paragraph_one:
-        'You found the secret message Satoshi Nakamoto embedded in the genesis block. It’s time to expand on what you just learned. Decode an important clue about the story in the next challenge.',
+        'You found the secret message Satoshi Nakamoto embedded in the genesis block. It’s time to expand on what you just learned. Decode a vital clue about the story in the next challenge.',
     },
 
     transacting_one: {
@@ -209,16 +209,16 @@ const translations = {
 
     outro_one: {
       title: 'Outro',
-      nav_title: 'Off to the address',
+      nav_title: 'Adventure calls',
       paragraph_one:
-        'You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to the address.',
+        'You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to District 21.',
       paragraph_two:
         'Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.',
       button_text: 'Complete chapter 1',
     },
 
     outro_two: {
-      title: 'You did it!!!',
+      title: 'You did it!',
       nav_title: 'Chapter complete',
       description:
         'Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go?',
@@ -264,22 +264,22 @@ const translations = {
   },
 
   chapter_two: {
-    title: 'Hashing out a plan',
+    title: 'Hashing Out a Plan',
     paragraph_one:
-      'The coordinates Satoshi gave take you to an abandoned warehouse.',
+      'The coordinates Satoshi gave you don’t disappoint, unfortunately: it’s a warehouse, and a scary, deserted one to boot.',
     paragraph_two:
-      'You circle the warehouse in your Budgetcopter no less than three times. Your Budgetcopter’s heat detector picks up nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.',
+      'You circle the warehouse in your Budgetcopter no less than three times. Yeah, sigh, you’re probably gonna have to go in there. Your Budgetcopter’s Budget Heat Detector detects nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.',
 
     intro_one: {
       title: 'Intro',
       nav_title: 'The warehouse',
       paragraph_one:
-        'HOLOCAT: “Boy, what a dump. This place had better store some sardines or dried fish. I’d even settle for some e-nip."',
+        '—HOLOCAT: “Boy, what a dump. This place had better have some e-anchovies stored somewhere. I’d even settle for some CyberKibble.."',
       paragraph_two:
         'You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.',
       paragraph_three: {
-        a: 'HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family ASIC miners. In bitcoin’s early days, miners would use general purpose computers to mine bitcoin. But early on miners realized they could use machines with a special type of chip called an Application-Specific Integrated Circuit, or ',
-        b: ' for short. These chips do only one thing, mine bitcoin, their narrow focus increases their efficiency and allows miners to spend less energy to mine, giving them an edge. Can you believe that people mined with their laptops at one point?"',
+        a: '—HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family ASIC miners. In bitcoin’s early days, miners would use general purpose computers to mine bitcoin. But after a few years, miners realized they could use machines with a special chip called an Application-Specific Integrated Circuit, or ',
+        b: ' for short. These chips do only one thing: mine bitcoin. Their narrow focus increases their efficiency and allows miners to spend less energy on mining, giving them an edge. Can you believe that people mined with their laptops at one point?"',
       },
       paragraph_four:
         'This explains all the machines in the Vanderpoole family collection.',
@@ -295,22 +295,22 @@ const translations = {
       nav_title: 'Turning on the computer',
       paragraph_one:
         'In the corner, a dim, barely working computer monitor with a note stuck to it sits blinking. The note says “Turn them on, stupid."',
-      paragraph_two: 'HOLOCAT: “How rude.”',
+      paragraph_two: `—HOLOCAT: “How rude. Wow; a mechanical keyboard. I've heard about these things. Supposedly, they were so loud that they cost users their hearing, and were banned.”`,
       paragraph_three:
-        "Wow a mechanical keyboard, I've heard about these legendary devices. Supposedly they were so loud that everyone lost their hearing and they were banned. Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.",
+        'Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.',
     },
 
     hashing_one: {
       title: 'Zeroes',
       nav_title: 'The computer hums to life',
       paragraph_one:
-        'Either by chance, or because Holocat actually knew what she was doing, the computer turns the random letters and numbers she stepped on turn into... more random letters and numbers?',
+        'Either by chance, or because Holocat actually knew what she was doing, the random letters and numbers she stepped on turn into... more random letters and numbers?',
       list_one: '> QX23Y6VGECTUKSNIEUTUB[P[pihof',
       list_two:
         '> 1c31d1d9fb848a505fc0cdbea848ff1bdd46a9ed4d639d413d3a93035194eedf',
       paragraph_two: 'The monitor displays "INCORRECT HASH. TRY AGAIN."',
       paragraph_three:
-        'Of course whatever gibberish Holocat typed was wrong. She’s just a holographic cat!',
+        'Of course whatever gibberish Holocat typed was wrong. She’s just a sassy holographic cat!',
       paragraph_four: 'What happens if you type something different?',
     },
 
@@ -330,7 +330,7 @@ const translations = {
       list_one:
         'Just like fingerprints, hashes are unique. Barring some exceptional circumstances, the hashes for two different things should never be the same.',
       list_two:
-        'Hash functions are one way streets. You can’t reverse engineer a hash and figure out the data used to make it.',
+        'Hash functions are one way streets. You can’t reverse engineer a hash to figure out the data used to make it.',
       list_three:
         'Hashes are extremely reliable in the sense that they are deterministic. This means you can hash the same piece of data over and over again and you’ll always get the same result.',
       paragraph_one: {
@@ -384,11 +384,11 @@ const translations = {
       paragraph_one:
         'OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.',
       paragraph_two:
-        'Miners gather all the information they want to put in a block such as the previous block header hash, a hash of transactions to be included in block (including the coinbase transaction), time, and combine it with a random number called a nonce (which stands for “number only used once”). They send all of this into the hash function to create something called the block hash.',
+        'Miners gather all the information they want to put in a block such as the previous block header hash, a hash of transactions to be included in block (including the coinbase transaction), time, and combine it with a random number called a nonce (number only used once). They send all of this into the hash function to create something called the block hash.',
       paragraph_three:
-        'When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data by 1 in the 32-bit field. But since miners are so powerful now and difficulty is so high, they cycle through this pretty quickly and normally don’t find a solution below the',
+        'When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data in the 32-bit field by 1. However, as miners become more powerful and efficient, the difficulty rises. Soon, it became so high that it was common to exhaust all possibilities for the 32-bit field without finding a single solution below the',
       paragraph_four:
-        'So what miners need to do is change other parts of the block header, such as the time or transactions included in the block.',
+        'To address this, miners started to change other parts of the block header, such as the time or transactions included in the block.',
       paragraph_five:
         'The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.',
       paragraph_six:
@@ -433,7 +433,7 @@ const translations = {
       heading_four: 'Let’s get to 100 blocks',
       heading_five: 'You did it!',
       paragraph_one:
-        'Right now, the Bitcoin network requires blocks to have a hash with ten leading zeros. Let’s get to it!',
+        'Right now, the bitcoin network requires blocks to have a hash with ten leading zeros. Let’s get to it!',
       paragraph_two:
         'For this simple simulation, we’ll just assume that every block contains 3,500 transactions and 0.061 BTC in rewards and fees.',
       paragraph_two_one: 'See if you can turn on the miners.',
@@ -473,8 +473,8 @@ const translations = {
       nav_title: 'Chapter complete',
       heading: 'Great Job!',
       paragraph_one:
-        'The machines roar to life. Everything seems to be working. A map appears on the computer that shows the locations of other warehouses filled with ASICs that have come online across the world. Looks like they were activated when you completed the mining challenge!',
-      paragraph_two: 'HOLOCAT: “Look, there’s a message.”',
+        'The machines roar to life. Everything seems to be working. A map appears on the old monitor that shows the locations of other warehouses filled with ASICs that have come online across the world. Looks like they were activated when you completed the mining challenge!',
+      paragraph_two: '—HOLOCAT: “Look, there’s a message.”',
       paragraph_three:
         '“Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto',
       paragraph_four: 'Him again?',
