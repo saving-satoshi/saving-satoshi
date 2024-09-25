@@ -531,18 +531,21 @@ const translations = {
   chapter_three: {
     title: 'The 51% Attack',
     paragraph_one:
-      'You enter the address of a block explorer and see blocks are back to ten minute intervals. Somehow, Holocat sleeps through the noise of the machines.',
-    paragraph_two:
-      '—However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking Holocat. It’s not a coincidence.',
+      'You enter the address of a block explorer and see that blocks are back to ten minute intervals. Somehow, Holocat sleeps through the noise from all the ASICs.',
+    paragraph_two: 'Cats. What can you do?',
+    paragraph_three:
+      'However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking Holocat.',
+    paragraph_four: 'It’s not a coincidence.',
+
     intro_one: {
       title: 'Intro',
       nav_title: 'Hashing it out',
       paragraph_one:
-        '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is under a 51% attack! Vanderpoole used a virus to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the Bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply.” – Satoshi Nakamoto',
+        '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is being targeted with a 51% attack! Vanderpoole used a backdoor on the standard ASIC firmware to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply. Do something, dingdong!”',
       paragraph_two:
-        '—The old computer coughs a little, then produces a wad of data in something called a “spreadsheet”: contact info for some of the largest bitcoin pool operators and a patch to the virus that is letting BitRey control them. Send the file to them so they can regain control of their machines and join your fight against BitRey.',
+        'The old computer coughs a cloud of dust, then produces a wad of data called a “spreadsheet” that contains contact info for some of the largest bitcoin pool operators, as well as a patch to the virus that is letting BitRey control miners. Send the file to the pool operators so that they can regain control of their machines fight BitRey.',
       paragraph_three:
-        'HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”',
+        '—HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”',
     },
 
     solo_one: {
@@ -550,11 +553,11 @@ const translations = {
       nav_title: 'Mining alone',
       step_zero_heading: 'Let’s give it a try',
       step_zero_paragraph_one:
-        'While you’re waiting for the pool operators you reached out to, you decide to fend off BitRey by yourself. Here’s how your hash rate stacks up. How do you think this will go?',
+        'While you’re waiting for the pool operators you reached out to, you decide to see if BitRey can be fended off alone. Here’s how your hash rate stacks up. How do you think this will go?',
       step_one_heading: 'We’re off to the races',
       step_one_paragraph_one:
-        'We’re now mining 100 blocks to see how many you and BitRey will mine.',
-      step_two_heading: 'That did not go too well!',
+        'We’re now mining 100 blocks to see how many you stack up against BitRey.',
+      step_two_heading: `That didn't go well!`,
       step_two_paragraph_one:
         'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s see if we can defeat BitRey for the next 100 blocks with the other pool operators. Bitcoin has been running for over a century and it’s not going down without a fight.',
     },
@@ -563,10 +566,9 @@ const translations = {
       title: 'Pool vs. BitRey',
       nav_title: 'Finding friends',
       waiting_screen_heading: 'We need support!',
-      waiting_screen_paragraph_one:
-        'Your miners in the warehouse alone don’t stand a chance. If you combine your hashing power with other pools, you might be able to hold the line against the assault.',
+      waiting_screen_paragraph_one: `Your miners in the warehouse don’t stand a chance. If you combine your hash power with other miners, you might be able to hold the line against BitRey's assault.`,
       waiting_screen_paragraph_two:
-        'Let’s wait until the others join your pool, which Holocat insists gets named after her, so we can combine forces.',
+        'Let’s wait until the others join your cause so we can combine forces.',
       waiting_button: 'Waiting...',
       continue_button: "Let's go",
     },
@@ -576,7 +578,7 @@ const translations = {
       nav_title: 'Mining together',
       step_zero_heading: 'Here we go',
       step_zero_paragraph_one:
-        'When you combine your hashrate with the other pool operators, can you stand up against BitRey?',
+        'By combining your hashrate with the other pool operators, can you stand up to BitRey?',
       step_two_heading: 'Another defeat!',
       step_two_paragraph_one:
         'Something is wrong. Only Hash Hoppers found blocks. Why do you think that might be?',
@@ -620,7 +622,7 @@ const translations = {
         'Let’s see if we stand a chance against BitRey now with our improved strategy of dividing the nonce space.',
       step_two_heading: 'You did it!',
       step_two_paragraph_one:
-        'Together you and the other pool operators were able to hold back BitRey’s attempt to overtake the network.',
+        'Together you and the other pool operators held back BitRey’s attempt to overtake the network.',
     },
 
     split_one: {
@@ -669,7 +671,7 @@ const translations = {
       nav_title: 'Chapter complete',
       heading: 'Take that, Vanderpoole! ',
       paragraph_one:
-        'Great work! You and your collaborators were able to fend off Vanderpoole’s 51% attack by pooling your resources together. Empty blocks are no longer being submitted and it looks like he’s given up.',
+        'Great work! You and the other operators were able to fend off Vanderpoole’s 51% attack by pooling your resources. Empty blocks are no longer being submitted and it looks like he’s given up.',
       paragraph_two:
         'It’s time to reap your rewards! Go to the next chapter to withdraw your bitcoin.',
     },
@@ -713,21 +715,21 @@ const translations = {
   },
 
   chapter_four: {
-    title: 'Claiming your 1.61 bitcoin',
+    title: 'Claiming Your 1.61 Bitcoin',
     paragraph_one:
-      'Phew, that was close! You are still shaking from your battle against BitRey, yet relieved that you and your friends won.',
+      'Phew, that was close! You are shaking from your battle with BitRey, but you are relieved that you won.',
     paragraph_two:
-      'As you settle at your desk, you take a deep breath and drift off to replay the day’s events. Your hands keep themselves busy playing with the mysterious envelope, as you wonder who sent it. ',
+      'As you settle at your desk, you take a deep breath, drift off, and replay the day’s events in your head. ',
 
     intro_one: {
       title: 'Intro',
       nav_title: 'Securing the bag',
       paragraph_one:
-        'HOLOCAT: “One of us better sleep. You need to get home and start contacting the mining pools. They’ll want to know more about it than the world will.”',
+        '—HOLOCAT: “One of us better sleep. You need to start contacting the mining pools. They’ll want to know even more than the world will.”',
       paragraph_two:
-        'As you settle at your TMY92-P Hover Desk, you replay the day’s events. Vanderpoole. BitRey. The revelation that mining pools never agreed to shut down in protest. Could it all be true? Was this all staged? And how much longer are you supposed to look after this cat?',
+        'As you settle at your ButtLift Hover Desk, you replay the day’s events. Vanderpoole. BitRey. The revelation that miners never agreed to shut down in protest. Could it all be true? Was this all staged? And how much longer are you supposed to look after this cat? (In the distance, something meows.)',
       paragraph_three:
-        'Whatever happens next, you will most likely need some funds. You realize that you never claimed the mining rewards from your competition with BitRey. You decide to withdraw them to help pay for your flight back home.',
+        'Whatever happens next, you will need funds. Wait a second! You never claimed the mining rewards from your competition with BitRey! You decide to withdraw them.',
     },
 
     public_key_one: {
@@ -876,7 +878,7 @@ const translations = {
       heading: 'Success!',
       paragraph_one: 'You created your very own bitcoin wallet!',
       paragraph_two:
-        'You withdraw the bitcoin from the mining pool into the wallet you just created. You are now fully funded and ready for whatever Vanderpoole and BitRey may throw at you next.',
+        'You withdraw the bitcoin from the mining pool into the wallet you just created. You are now fully funded and ready for whatever Vanderpoole and BitRey throw at you next.',
     },
     resources: {
       public_key_three: {
@@ -922,36 +924,39 @@ const translations = {
   },
 
   chapter_five: {
-    title: 'Will the real Satoshi please stand up',
+    title: 'Will the Real Satoshi Please Stand Up',
     paragraph_one:
-      'It’s late, and you’re getting sleepy, but as you shut your eyes for a moment, a double dose of bad news arrives. 1) Vanderpoole is back on TV. 2) He is claiming to be the great-grandson of Satoshi Nakamoto. He also looks sleep-deprived.',
+      'It’s late, and you’re tired, but as you shut your eyes for a moment, a double dose of bad news arrives. 1) Vanderpoole is back on TV. 2) He is claiming to be the great-grandson of Satoshi Nakamoto. He looks sleep-deprived.',
     intro_one: {
       title: 'Intro',
       nav_title: 'Don’t trust, verify',
       paragraph_one:
         '—DEBORAH CHUNK: “Mr. Vanderpoole. You recently made a staggering claim on anti-social media that you are the great-grandson of Satoshi Nakamoto. Is that correct? Is this true?”',
       paragraph_two:
-        '—VANDERPOOLE: “It darn tootin’ is, Deborah. I have known this for a long time. You see, my family passed a CD-ROM down for generations. It contains the private keys to my great-grandfather’s enormous trove of bitcoin. So when I speak for miners, know that I also speak for Satoshi Nakamoto.”',
+        '—VANDERPOOLE: “It darn tootin’ is, Deborah. I have harbored this secret for a long, long time. You see, my family has passed an inconspicuous looking CD-ROM down for generations. To keep it secret, we labeled it <span className="italic">Creed – My Own Prison</span>. It contains the private keys to my great-grandfather Satoshi Nakamoto’s enormous bitcoin trove. So when I speak for miners, know that I also speak for Satoshi Nakamoto.”',
       paragraph_three:
         '—DEBORAH CHUNK: “Is there any way we can verify that you actually own the private keys to Satoshi Nakamoto’s bitcoin?”',
       paragraph_four:
         '—VANDERPOOLE: “Indeed there is. It is a simple matter of public key cryptography.”',
-      paragraph_five: '—DEBORAH CHUNK: But why wait so long to reveal this?',
+      paragraph_five:
+        '—DEBORAH CHUNK: But why wait so long to make this earth-shattering disclosure?',
     },
     intro_two: {
       nav_title: "Vanderpoole's bold claim",
       paragraph_one:
-        '—VANDERPOOLE: “I didn’t have the courage. There have always been rumors about my family’s history, ones that I could easily put to rest. But I wasn’t ready for that much publicity. After all, I live a humble, secluded life on a private island/dude ranch/castle.”',
+        '—VANDERPOOLE: “I didn’t have the courage. There have always been rumors about my family’s history, ones that I could have easily confirmed. But I wasn’t ready for that much publicity. After all, I live a humble, secluded life in a 14th century castle on a dude ranch on my favorite of all my private islands, doing 5–6 interviews like this one from my hot tub every week.”',
       paragraph_two:
-        '—VANDERPOOLE: “But now that bitcoin’s future is on the line, I knew I had to tell the world. I can only say I’m sorry for not coming forth sooner. The CD-ROM also contains Satoshi’s Nakamoto’s revised plans for bitcoin. He always regretted the 21 million supply limit. Even though I plan to fulfill my great-grandfather’s dream of hard forking bitcoin in favor of perpetual bitcoin issuance.”',
+        '—VANDERPOOLE: “But now that bitcoin’s future is on the line, I knew it was time to face the music, specifically, the music from Creed’s debut album, My Own Prison.” *Vanderpoole hums the melody from the 20th century album’s namesake song*',
+      paragraph_three:
+        '—VANDERPOOLE: "I can only say that I’m sorry for not coming forth sooner because the CD-ROM also contains Satoshi’s Nakamoto’s revised plans for bitcoin. You see, my great-grandfather always regretted limiting the supply of bitcoin to 21 million coins, which is why I plan to fulfill my great-grandfather’s dream of hard forking bitcoin in favor of perpetual bitcoin issuance."',
     },
     intro_three: {
       nav_title: 'A message from Satoshi',
       paragraph_one:
-        '—Your TXM4H-A Hover Screen chirps to life. You have a new message.',
+        'Your TXM4H-A Hover Screen chirps to life. You have a new message.',
       paragraph_two: '—HOLOCAT: Don’t forget to boop my nose.',
-      paragraph_three:
-        'SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message with the private keys.” - Satoshi',
+      paragraph_three: 'You boop her nose',
+      paragraph_four: `—SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message using that wallet's private keys.”`,
     },
     derive_message_one: {
       title: 'Derive the message',
@@ -975,8 +980,7 @@ const translations = {
     derive_message_three: {
       nav_title: "Find Satoshi's signature",
       heading: 'Let’s start with finding Satoshi’s signature',
-      paragraph_one:
-        'Hal Finney <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">claimed</Link> Satoshi sent him the first Bitcoin transaction ever, confirmed in block #170. That transaction can be found on a <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">block explorer here</Link>. In the scriptSig of input #0 there is a chunk of data following pushbytes... Find it and paste it below.',
+      paragraph_one: `Block #170 contains the <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">first bitcoin transaction</link> made from Satoshi to Hal Finney. That transaction only has <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">one input</Link>. Retrieve the scriptSig from that input. It contains Satoshi's signature!`,
       placeholder: 'Paste the data here',
       success:
         'Nicely done! This is actually Satoshi’s signature, authorizing the transfer of his bitcoin to Hal Finney.',
@@ -995,8 +999,7 @@ const translations = {
     },
     derive_message_five: {
       nav_title: 'Verifiying the signature next',
-      paragraph_one:
-        'So Satoshi created a transaction (in block #9) that sent 50 BTC to his public key. Then he used his private key to create a signature (in block #170) that transferred 10 of those BTC to Hal Finney’s public key.',
+      paragraph_one: `In the previous exercise we saw Satoshi got 50 BTC for mining block #9. He used that as input for his transaction to Hal Finney (in block #170), sending 10 BTC to Hal Finney’s public key and returning 40 BTC back to himself as change. Satoshi's private key was used to create a signature authorizing the transfer of those funds.`,
       paragraph_two:
         'Next we need to learn how to verify a signature. But something is still missing... what is the message Satoshi signed to authorize the transaction for Hal?',
     },
@@ -1062,10 +1065,17 @@ const translations = {
         'The serialized transaction data we compiled in the last step is actually too long to sign or verify with ECDSA.',
       paragraph_two:
         'Do we know any way to compress large chunks of data into more consistent, manageable pieces? We sure do: hashing.',
-      paragraph_three:
-        'The Bitcoin protocol uses a double SHA256 digest to compress a transaction into a signable message.',
+      paragraph_three: {
+        a: 'The Bitcoin protocol uses a ',
+        b: ' to compress a transaction into a signable message.',
+      },
       paragraph_four:
         'Once we have a 32-byte hash, that data is re-interpreted as an integer. Yes, a 32-byte integer (that is a truly enormous number)!',
+      tooltip_one: {
+        question: 'Why does everything in bitcoin use double hash (HASH256)?',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520does%2520everything%2520in%2520bitcoin%2520use%2520double%2520hash%2520%28HASH256%29%253F',
+        highlighted: 'double SHA256 digest',
+      },
       success: 'Nicely done!',
     },
     verify_signature_three: {
@@ -1182,7 +1192,7 @@ const translations = {
       nav_title: 'Chapter complete',
       heading: 'Vanderpoole lied!',
       paragraph_one:
-        "You didn't trust, you verified.<br>In doing so you discovered the whole story about his family was a fabrication, and you proved it to the whole world. This casts a big shadow on his credibility, and the credibility of his company.",
+        "You learned one of the most important lessons in bitcoin. You didn't trust, you verified.<br><br>In doing so, you discovered that Vanderpoole didn’t use Satoshi’s keys to sign the message, casting a big shadow on his family story, on his credibility, and the credibility of BitRey.<br><br>Now if only you could get that song out of your head.",
     },
     resources: {
       derive_message_three: {

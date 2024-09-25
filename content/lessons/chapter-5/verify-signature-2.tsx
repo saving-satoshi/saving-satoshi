@@ -6,7 +6,14 @@ import { getLanguageString } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { currentLanguageAtom } from 'state/state'
 import { EditorConfig } from 'types'
-import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
+import {
+  LessonInfo,
+  HolocatQuestion,
+  ScriptingChallenge,
+  Text,
+  Title,
+} from 'ui'
+import { chapters } from 'content/chapters'
 
 export const metadata = {
   title: 'chapter_five.verify_signature_two.title',
@@ -88,6 +95,15 @@ export default function VerifySignature2({ lang }) {
   const [currentLanguage] = useAtom(currentLanguageAtom)
   const [objectPosition, setObjectPosition] = useState<string | undefined>()
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  const [tooltipVisible, setTooltipVisible] = useState(false)
+
+  const handleMouseEnter = () => {
+    setTooltipVisible(true)
+  }
+
+  const handleMouseLeave = () => {
+    setTooltipVisible(false)
+  }
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
@@ -119,7 +135,27 @@ export default function VerifySignature2({ lang }) {
           {t(`chapter_five.verify_signature_two.paragraph_two`)}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
-          {t(`chapter_five.verify_signature_two.paragraph_three`)}
+          {t(`chapter_five.verify_signature_two.paragraph_three.a`)}{' '}
+          <a
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            href={t('chapter_five.verify_signature_two.tooltip_one.link')}
+            target="_blank"
+            className="inline text-lg italic underline md:text-xl"
+          >
+            {t('chapter_five.verify_signature_two.tooltip_one.highlighted')}{' '}
+            <HolocatQuestion
+              theme={chapters['chapter-5'].metadata.theme}
+              inline
+              id="sighash-type-flag"
+              question={t(
+                'chapter_five.verify_signature_two.tooltip_one.question'
+              )}
+              href={t('chapter_five.derive_message_seven.tooltip_one.link')}
+              visible={tooltipVisible}
+            />
+          </a>
+          {t(`chapter_five.verify_signature_two.paragraph_three.b`)}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t(`chapter_five.verify_signature_two.paragraph_four`)}
