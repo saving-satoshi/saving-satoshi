@@ -24,6 +24,9 @@ export default function BuildingBlocks2({ lang }) {
       <Text className="mt-2 text-lg md:text-xl">
         {t('chapter_eight.building_blocks_two.paragraph_three')}
       </Text>
+      <Text className="mt-2 text-lg md:text-xl">
+        {t('chapter_eight.building_blocks_two.paragraph_four')}
+      </Text>
     </Introduction>
   )
 }
