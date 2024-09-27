@@ -327,7 +327,8 @@ const OpRunner = ({
         doesStackValidate() &&
         advancedChallenge &&
         step === 2 &&
-        initialStack === initialStackSuccess)
+        initialStack.replace(/ /g, '') ===
+          initialStackSuccess.replace(/ /g, ''))
     ) {
       return 5
     } else if (
@@ -345,7 +346,7 @@ const OpRunner = ({
       doesStackValidate() &&
       advancedChallenge &&
       step == 2 &&
-      initialStack !== initialStackSuccess
+      initialStack.replace(/ /g, '') !== initialStackSuccess.replace(/ /g, '')
     ) {
       return 3
     } else if (success !== true && isStackCorrectSoFar()) {

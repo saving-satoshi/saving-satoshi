@@ -10,7 +10,7 @@ const getKey = (keyData) => {
       error: 'Missing key',
     }
   }
-  const keyMatch = /PUBKEY\((.*?)\)/.exec(keyData)
+  const keyMatch = /PUBKEY\((.*?)\)(?![^ ]+)/.exec(keyData)
   if (!keyMatch || keyMatch.length !== 2) {
     return {
       value: null,
@@ -30,7 +30,7 @@ const getSig = (sigData) => {
       error: 'Missing sig',
     }
   }
-  const sigMatch = /SIG\((.*?)\)/.exec(sigData)
+  const sigMatch = /SIG\((.*?)\)(?![^ ]+)/.exec(sigData)
   if (!sigMatch || sigMatch.length !== 2) {
     return {
       value: null,
