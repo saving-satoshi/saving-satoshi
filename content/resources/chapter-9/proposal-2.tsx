@@ -15,7 +15,21 @@ export default function ProposalTwo({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={<></>}
+      readingResources={
+        <>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_nine.resources.proposal_two.making_script_heading')}
+          </Text>
+          <Text>
+            {t('chapter_nine.resources.proposal_two.making_script_paragraph')}
+          </Text>
+        </>
+      }
+      tipsResources={
+        <>
+          <Text>{t('chapter_nine.resources.proposal_two.tip')}</Text>
+        </>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution')}</Text>

@@ -15,7 +15,16 @@ export default function OpcodesFive({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={<></>}
+      readingResources={
+        <>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_nine.resources.opcodes_five.arithmetic_heading')}
+          </Text>
+          <Text>
+            {t('chapter_nine.resources.opcodes_five.arithmetic_paragraph')}
+          </Text>
+        </>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution')}</Text>
