@@ -34,7 +34,7 @@ export default function OpCodeChallenge({
   setSuccess,
   advancedChallenge,
   initialHeight,
-  initialStackSuccess,
+  initialStackScript,
   nextStepMessage,
 }: OpRunnerTypes) {
   const [activeView, setActiveView] = useState(LessonView.Info)
@@ -69,7 +69,7 @@ export default function OpCodeChallenge({
             answerScript={answerScript}
             readOnly={readOnly}
             prePopulate={prePopulate}
-            initialStackSuccess={initialStackSuccess}
+            initialStackScript={initialStackScript}
             success={success}
             initialHeight={initialHeight}
             advancedChallenge={advancedChallenge}
