@@ -162,7 +162,7 @@ export default function StatusBar({
         >
           <div
             className={clsx(
-              'font-nunito text-lg transition duration-150 ease-in-out md:text-[21px]',
+              'font-nunito text-lg leading-6 transition duration-150 ease-in-out md:text-[21px]',
               textClass,
               {
                 'text-white opacity-50': getStatus() === Status.Begin,
