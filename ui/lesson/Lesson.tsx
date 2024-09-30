@@ -3,6 +3,12 @@
 import { createContext, useContext, useState } from 'react'
 import { LessonDirection, LessonContextType, LessonView } from 'types'
 
+interface LessonProps {
+  direction: LessonDirection
+  onViewChange?: (view: LessonView) => void
+  children?: React.ReactNode
+}
+
 const LessonContext = createContext<LessonContextType>({
   direction: LessonDirection.Horizontal,
   activeView: LessonView.Info,
@@ -11,15 +17,22 @@ const LessonContext = createContext<LessonContextType>({
 
 export const useLessonContext = () => useContext(LessonContext)
 
-export default function Lesson(props) {
+export default function Lesson({
+  direction,
+  onViewChange,
+  ...props
+}: LessonProps) {
   const [activeView, setActiveView] = useState(LessonView.Info)
 
-  const direction = props.direction || LessonDirection.Vertical
+  const handleSetActiveView = (view: LessonView) => {
+    setActiveView(view)
+    onViewChange?.(view)
+  }
 
   const context = {
     direction,
     activeView,
-    setActiveView,
+    setActiveView: handleSetActiveView,
   }
 
   return (
