@@ -43,6 +43,8 @@ export default function NavbarDesktop({ params }) {
               className="h-[30px] w-[30px] opacity-75 transition duration-100 ease-in-out group-hover:opacity-100"
             />
           </Link>
+        </div>
+        <div className="flex overflow-x-hidden">
           <Address />
         </div>
         <nav className="flex items-center">

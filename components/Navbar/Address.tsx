@@ -44,7 +44,7 @@ export default function Address() {
   const isChapterCompletePage = lessonId === lastLessonId
 
   return (
-    <div className="flex flex-col justify-center overflow-hidden px-5 text-sm font-medium">
+    <div className="flex flex-col justify-center overflow-x-hidden px-5 text-sm font-medium">
       {pathName && (
         <>
           {chapter && (
