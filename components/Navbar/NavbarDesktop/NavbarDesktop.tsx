@@ -44,7 +44,7 @@ export default function NavbarDesktop({ params }) {
             />
           </Link>
         </div>
-        <div className="flex overflow-x-hidden">
+        <div className="flex w-full overflow-x-hidden">
           <Address />
         </div>
         <nav className="flex items-center">
