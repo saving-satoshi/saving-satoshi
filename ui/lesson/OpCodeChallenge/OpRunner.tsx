@@ -140,7 +140,7 @@ const OpRunner = ({
   prePopulate,
   advancedChallenge,
   initialHeight,
-  initialStackSuccess,
+  initialStackScript,
   nextStepMessage,
 }: Omit<OpRunnerTypes, 'children'>) => {
   const lang = useLang()
@@ -301,6 +301,7 @@ const OpRunner = ({
 
   const checkSuccessState = (tokens: T, state: State[], stack: StackType) => {
     const filterToStringArray = tokens.map((token) => token.value)
+    const filterInitialStackToStringArray = initialStack.split(' ')
     const containsEveryScript = answerScript.every((token) =>
       filterToStringArray.includes(token)
     )
@@ -327,8 +328,9 @@ const OpRunner = ({
         doesStackValidate() &&
         advancedChallenge &&
         step === 2 &&
-        initialStack.replace(/ /g, '') ===
-          initialStackSuccess?.replace(/ /g, ''))
+        initialStackScript?.every((token) =>
+          filterInitialStackToStringArray.includes(token)
+        ))
     ) {
       return 5
     } else if (
@@ -346,7 +348,9 @@ const OpRunner = ({
       doesStackValidate() &&
       advancedChallenge &&
       step == 2 &&
-      initialStack.replace(/ /g, '') !== initialStackSuccess?.replace(/ /g, '')
+      !initialStackScript?.every((token) =>
+        filterInitialStackToStringArray.includes(token)
+      )
     ) {
       return 3
     } else if (success !== true && isStackCorrectSoFar()) {
