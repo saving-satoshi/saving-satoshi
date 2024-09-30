@@ -12,7 +12,7 @@ export default function LessonInfo({
   const { activeView, direction } = useLessonContext()
   const isActive = activeView === LessonView.Info
 
-  if (direction === LessonDirection.Horizontal && isActive) {
+  if (direction === LessonDirection.Horizontal || isActive) {
     return (
       <div className="max-w-full grow justify-center overflow-y-auto text-white sm:max-h-[calc(100vh-70px)] md:max-w-[50%] md:basis-1/3">
         <div
