@@ -11,7 +11,7 @@ export interface OpRunnerTypes {
   prePopulate?: boolean
   advancedChallenge?: boolean
   initialHeight?: number
-  initialStackSuccess?: string
+  initialStackScript?: string[]
   nextStepMessage?: string
 }
 

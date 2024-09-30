@@ -33,7 +33,7 @@ export default function OpCodeChallenge({
   setSuccess,
   advancedChallenge,
   initialHeight,
-  initialStackSuccess,
+  initialStackScript,
   nextStepMessage,
 }: OpRunnerTypes) {
   const [hydrated, setHydrated] = useState(false)
@@ -64,7 +64,7 @@ export default function OpCodeChallenge({
               answerScript={answerScript}
               readOnly={readOnly}
               prePopulate={prePopulate}
-              initialStackSuccess={initialStackSuccess}
+              initialStackScript={initialStackScript}
               success={success}
               initialHeight={initialHeight}
               advancedChallenge={advancedChallenge}
