@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import { Button } from 'shared'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { unstable_getImgProps as getImgProps } from 'next/image'
@@ -54,28 +55,44 @@ export default function Hero() {
         <p className="px-8 pt-2 text-center font-nunito text-2xl sm:text-3xl md:pt-5 lg:text-4xl">
           {t('hero.description')}
         </p>
-        <div className="grid grid-cols-1 justify-center pb-8 pt-6 md:grid-cols-2 md:space-x-5 md:pt-8">
-          <div className="flex items-center justify-center md:justify-end">
+        <div
+          className={clsx(
+            'grid grid-cols-1 justify-center pb-8 pt-6 md:space-x-5 md:pt-8',
+            {
+              'md:grid-cols-1': account,
+              'md:grid-cols-2': !account,
+            }
+          )}
+        >
+          <div
+            className={clsx('flex items-center justify-center', {
+              'md:justify-end': !account,
+            })}
+          >
             <Button
-              classes="text-xl md:!w-64 w-full"
+              classes={
+                account ? 'text-xl md:!w-96 w-full' : 'text-xl md:!w-64 w-full'
+              }
               href={
                 account
                   ? `${chaptersUrl}#chapter-${currentChapter}`
                   : chaptersUrl
               }
             >
-              {t('hero.start_journey')}
+              {account ? t('shared.next') : t('hero.start_journey')}
             </Button>
           </div>
-          <div className="flex justify-center pt-5 md:justify-start md:pt-0">
-            <Button
-              classes="text-xl md:!w-64 w-full"
-              href={aboutUrl}
-              style="outline"
-            >
-              {t('hero.tell_more')}
-            </Button>
-          </div>
+          {!account && (
+            <div className="flex justify-center pt-5 md:justify-start md:pt-0">
+              <Button
+                classes="text-xl md:!w-64 w-full"
+                href={aboutUrl}
+                style="outline"
+              >
+                {t('hero.tell_more')}
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
