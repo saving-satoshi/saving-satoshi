@@ -161,9 +161,9 @@ export default function Chapter({ children, metadata, lang }) {
             <div className="flex grow py-2 lg:grow-0">
               <div
                 aria-hidden={activeTab !== 'info'}
-                className={clsx('-mr-[100%] block w-full', {
-                  visible: activeTab === 'info',
-                  invisible: activeTab !== 'info',
+                className={clsx('-mr-[100%] w-full', {
+                  block: activeTab === 'info',
+                  hidden: activeTab !== 'info',
                 })}
               >
                 <div className="font-nunito md:mt-6">
@@ -260,9 +260,9 @@ export default function Chapter({ children, metadata, lang }) {
               </div>
               <div
                 aria-hidden={activeTab !== 'challenges'}
-                className={clsx('-mr-[100%] block w-full', {
-                  visible: activeTab === 'challenges',
-                  invisible: activeTab !== 'challenges',
+                className={clsx('-mr-[100%] w-full', {
+                  block: activeTab === 'challenges',
+                  hidden: activeTab !== 'challenges',
                 })}
               >
                 <ChallengeList
