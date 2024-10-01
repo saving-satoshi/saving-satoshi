@@ -143,30 +143,26 @@ export default function StatusBar({
 
   return (
     <div
-      className={clsx(
-        className,
-        'border-t border-white/25 pl-4 transition-all',
-        {
-          'w-screen': full,
-          'w-full': !full,
-          'bg-green/15':
-            getStatus() === Status.Success || getStatus() === Status.Good,
-          'bg-black/20':
-            getStatus() !== Status.Success || getStatus() !== Status.Good,
-          block: getStatus() === Status.Success || (Status.Good && isActive),
-        }
-      )}
+      className={clsx(className, 'border-t border-white/25 transition-all', {
+        'w-screen': full,
+        'w-full': !full,
+        'bg-green/15':
+          getStatus() === Status.Success || getStatus() === Status.Good,
+        'bg-black/20':
+          getStatus() !== Status.Success || getStatus() !== Status.Good,
+        block: getStatus() === Status.Success || (Status.Good && isActive),
+      })}
     >
-      <div className="flex h-14 flex-row items-stretch justify-between max-md:gap-4">
+      <div className="flex h-14 flex-row items-stretch justify-between">
         <div
           className={clsx(
-            'flex items-center align-middle transition duration-150 ease-in-out md:px-5',
+            'flex items-center align-middle transition duration-150 ease-in-out max-md:pl-5 md:px-5',
             textClass
           )}
         >
           <div
             className={clsx(
-              'font-nunito text-[21px] transition duration-150 ease-in-out',
+              'font-nunito text-lg leading-6 transition duration-150 ease-in-out md:text-[21px]',
               textClass,
               {
                 'text-white opacity-50': getStatus() === Status.Begin,

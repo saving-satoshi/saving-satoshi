@@ -44,11 +44,11 @@ export default function Address() {
   const isChapterCompletePage = lessonId === lastLessonId
 
   return (
-    <div className="flex flex-col justify-center px-5 text-sm font-medium">
+    <div className="flex flex-col justify-center overflow-x-hidden px-5 text-sm font-medium">
       {pathName && (
         <>
           {chapter && (
-            <span className="overflow-x-hidden text-ellipsis px-0.5 align-sub text-lg leading-tight text-white/50">
+            <span className="truncate px-0.5 align-sub text-lg leading-tight text-white/50">
               <span>
                 {t('navbar.chapter')} {chapter.position + 1}
               </span>
@@ -64,17 +64,15 @@ export default function Address() {
               </>
             </span>
           )}
-          <div className="inline">
-            <span className="overflow-x-hidden text-ellipsis px-0.5 align-super text-2xl leading-tight text-white">
-              {t(
-                isChapterCompletePage
-                  ? 'navbar.chapter_complete'
-                  : lesson
-                  ? lesson.navigation_title
-                  : 'navbar.intro'
-              )}
-            </span>
-          </div>
+          <span className="truncate px-0.5 align-super text-2xl leading-tight text-white">
+            {t(
+              isChapterCompletePage
+                ? 'navbar.chapter_complete'
+                : lesson
+                ? lesson.navigation_title
+                : 'navbar.intro'
+            )}
+          </span>
         </>
       )}
     </div>
