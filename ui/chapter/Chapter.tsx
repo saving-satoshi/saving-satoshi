@@ -133,7 +133,7 @@ export default function Chapter({ children, metadata, lang }) {
           { 'lg:order-1': isEven, 'lg:order-2': !isEven }
         )}
       >
-        <div className="ml-3.5 mr-3.5 w-full content-center justify-items-start px-1">
+        <div className="ml-3.5 mr-3.5 w-full content-start px-1">
           <h2 className="mt-6 text-left font-nunito text-xl font-bold text-white text-opacity-75 md:text-3xl">
             {t('shared.chapter')} {position}
           </h2>
