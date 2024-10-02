@@ -50,6 +50,9 @@ module.exports = {
         25: '0.25',
         75: '0.75',
       },
+      screens: {
+        short: { raw: '(max-height: 772px) and (min-width: 768px)' },
+      },
       fontFamily: {
         cbrush: ['var(--cbrush-font)'],
         'space-mono': [

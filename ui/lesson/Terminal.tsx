@@ -104,7 +104,7 @@ export default function Terminal({ success, lines, onChange }) {
             className="react-terminal-wrapper react-terminal-light relative box-border w-full rounded text-lg "
             onClick={autoFocus}
           >
-            <div className="react-terminal flex h-[600px] flex-col overflow-auto">
+            <div className="react-terminal flex h-[calc(100dvh-70px-57px-20px)] flex-col overflow-auto">
               {lines.map((line, index) => (
                 <span
                   key={index}

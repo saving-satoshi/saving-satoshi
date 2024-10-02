@@ -43,7 +43,7 @@ export default function LessonPrompt({
             {label}
           </h2>
 
-          <div className="w-full pt-8">
+          <div className="w-full pt-8 short:pt-0">
             <Input
               onChange={onChange}
               answer={answer}
