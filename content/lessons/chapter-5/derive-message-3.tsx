@@ -20,14 +20,14 @@ export default function DeriveMessage3({ lang }) {
       precedingText="OP_PUSHBYTES_71"
       successMessage={t('chapter_five.derive_message_three.success')}
       hints
-      inputClassNames="text-[18px] md:text-[24px] lg:text-[30px]"
+      inputClassNames="text-[18px] md:text-[24px] lg:text-[30px] short:text-[24px]"
     >
       <LessonInfo className="md:self-center">
-        <Text className="mt-2 text-center text-xl font-bold md:text-2xl">
+        <Text className="mt-2 text-center text-xl font-bold md:text-2xl short:text-lg">
           {t('chapter_five.derive_message_three.heading')}
         </Text>
 
-        <Text className="mt-2 text-center text-lg md:text-xl">
+        <Text className="mt-2 text-center text-lg md:text-xl short:text-base">
           {t('chapter_five.derive_message_three.paragraph_one')}
         </Text>
       </LessonInfo>

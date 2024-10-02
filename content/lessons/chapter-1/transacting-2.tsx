@@ -20,28 +20,30 @@ export default function Transacting2({ lang }) {
       pattern={/[a-z0-9]+/gi}
       precedingText="OP_RETURN OP_PUSHBYTES_33"
       hints
-      inputClassNames="text-[18px] md:text-[24px] lg:text-[30px]"
+      inputClassNames="text-[18px] md:text-[24px] lg:text-[30px] short:text-[24px]"
     >
       <LessonInfo className="md:self-center">
-        <Title>{t('chapter_one.transacting_two.heading')}</Title>
+        <Title className="short:text-lg">
+          {t('chapter_one.transacting_two.heading')}
+        </Title>
 
-        <Text className="mt-2 text-lg">
+        <Text className="mt-2 text-lg short:text-base">
           {t('chapter_one.transacting_two.paragraph_one')}
         </Text>
 
-        <Text className="mt-2 text-lg">
+        <Text className="mt-2 text-lg short:text-base">
           {t('chapter_one.transacting_two.paragraph_two')}
         </Text>
 
-        <Text className="mt-2 text-lg">
+        <Text className="mt-2 text-lg short:text-base">
           {t('chapter_one.transacting_two.paragraph_three')}
         </Text>
 
-        <Text className="mt-2 text-lg">
+        <Text className="mt-2 text-lg short:text-base">
           {t('chapter_one.transacting_two.paragraph_four')}
         </Text>
 
-        <Text className="mt-2 text-lg">
+        <Text className="mt-2 text-lg short:text-base">
           {t('chapter_one.transacting_two.paragraph_five')}
         </Text>
       </LessonInfo>

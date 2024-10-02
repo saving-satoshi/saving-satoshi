@@ -52,7 +52,7 @@ module.exports = {
       },
       screens: {
         slim: { raw: '(min-width: 556px)' },
-        short: { raw: '(max-height: 772px) and (min-width: 768px)' },
+        short: { raw: '(max-height: 825px) and (min-width: 768px)' },
       },
       fontFamily: {
         cbrush: ['var(--cbrush-font)'],
