@@ -8,6 +8,7 @@ const metadata = {
     maximumScale: 1,
   },
   title: 'Saving Satoshi',
+  metadataBase: new URL('https://savingsatoshi.com/'),
   description:
     'Explore the mysteries of Satoshi and learn about bitcoin along the way.',
   ...openGraph,
