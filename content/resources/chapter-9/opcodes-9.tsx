@@ -15,7 +15,21 @@ export default function OpcodesNine({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={<></>}
+      readingResources={
+        <>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_nine.resources.opcodes_nine.timelock_heading')}
+          </Text>
+          <p className="inline">
+            <span className="font-nunito text-white">
+              {t('chapter_nine.resources.opcodes_nine.timelock_paragraph')}
+            </span>{' '}
+            <span className="font-nunito text-white">
+              {t('chapter_nine.resources.opcodes_nine.timelock_link')}
+            </span>
+          </p>
+        </>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution')}</Text>

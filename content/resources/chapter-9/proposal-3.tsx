@@ -15,7 +15,11 @@ export default function ProposalThree({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={<></>}
+      tipsResources={
+        <>
+          <Text>{t('chapter_nine.resources.proposal_three.tip')}</Text>
+        </>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution')}</Text>

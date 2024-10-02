@@ -15,7 +15,16 @@ export default function OpcodesEight({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={<></>}
+      readingResources={
+        <>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_nine.resources.opcodes_eight.multisig_heading')}
+          </Text>
+          <Text>
+            {t('chapter_nine.resources.opcodes_eight.multisig_paragraph')}
+          </Text>
+        </>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution')}</Text>

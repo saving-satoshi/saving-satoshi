@@ -2349,18 +2349,18 @@ const translations = {
       paragraph_one:
         "Think of a stack of books 📚. If you want to add a book, you have to place it on top of the stack, there's nowhere else for it to go. If you want to read a book, the only one you can access is the one on top of the stack. Even if you want more than one you have start at the top of the stack and work your way down. In computing terms, a stack is like an array of data items with two operations:",
       paragraph_two:
-        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_PUSH</span> Add an item to the "top" of the stack.',
+        '<span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_PUSH</span> Add an item to the "top" of the stack.',
       paragraph_three:
-        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_POP</span> Remove the "top" item from the stack for processing.',
+        '<span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_POP</span> Remove the "top" item from the stack for processing.',
       subheading_one: 'Example:',
       stack_list_one:
-        'Here is a stack: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[]</span>',
+        'Here is a stack: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[]</span>',
       stack_list_two:
-        'Push the number 1: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1]</span>',
+        'Push the number 1: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1]</span>',
       stack_list_three:
-        'Push the number 2: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1, 2]</span>',
+        'Push the number 2: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1, 2]</span>',
       stack_list_four:
-        'Pop the top item off the stack: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1]</span>',
+        'Pop the top item off the stack: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1]</span>',
       paragraph_four:
         'Notice that the first item pushed on to the stack will be the last item popped off the stack, so it will be the last item processed by the script. For this reason the stack has an "upside down" or "backwards" feel to it, and the first thing you see on the stack will likely be the solution required at the end of script processing.',
       paragraph_five:
@@ -2397,13 +2397,13 @@ const translations = {
       stack_list_one:
         'init: the funding transaction output and spending transaction input are brought together.',
       stack_list_two:
-        'step 1: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1</span>pushes "1" onto the stack.',
+        'step 1: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1</span>pushes "1" onto the stack.',
       stack_list_three:
-        'step 2: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_2</span>pushes "2" onto the stack.',
+        'step 2: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_2</span>pushes "2" onto the stack.',
       stack_list_four:
-        'step 3: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ADD</span>pops two items off the stack, adds them together, and pushes the sum back to the stack.',
+        'step 3: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ADD</span>pops two items off the stack, adds them together, and pushes the sum back to the stack.',
       stack_list_five:
-        'step 4: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_EQUAL</span>pops two items off the stack, compares them, and pushes a boolean result back to the stack.',
+        'step 4: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_EQUAL</span>pops two items off the stack, compares them, and pushes a boolean result back to the stack.',
       paragraph_two:
         'Now we have reached the end of the script and there is only a single TRUE item left on the stack - the coins are spent!',
       paragraph_three:
@@ -2478,23 +2478,23 @@ const translations = {
       paragraph_two:
         'Holocat appears with a pre-recorded message from Satoshi Nakamoto!',
       paragraph_three:
-        'Hi. I accidentally wrote a bug when I implemented <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn\'t used at all. UMMMMmmmmmm... WHOOPSIE! Sorry. That code is consensus-critical so every <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> operation in bitcoin\'s past, present, and future will be forced to include a "dummy" element. Don\'t forget it! Or you won\'t be able to spend your multisig coins.',
+        'Hi. I accidentally wrote a bug when I implemented <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn\'t used at all. UMMMMmmmmmm... WHOOPSIE! Sorry. That code is consensus-critical so every <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> operation in bitcoin\'s past, present, and future will be forced to include a "dummy" element. Don\'t forget it! Or you won\'t be able to spend your multisig coins.',
     },
     opcodes_eight: {
       title: 'OpCodes',
       nav_title: 'Sign with multiple keys',
       heading:
-        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-1">OP_CHECKMULTISIG</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-1">OP_CHECKMULTISIG</span>',
       subheading_one:
         'Processes m-of-n multi-signature by following this algorithm.',
       multisig_list_one:
-        'Pop a single integer off the stack. This is the <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span> value.',
+        'Pop a single integer off the stack. This is the <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span> value.',
       multisig_list_two:
-        'Pop <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span> number of items off the stack, these are all expected to be public keys of the format <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">PUBKEY(...)</span>',
+        'Pop <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span> number of items off the stack, these are all expected to be public keys of the format <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">PUBKEY(...)</span>',
       multisig_list_three:
-        'Pop a single integer off the stack. This is the <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">m</span> value.',
+        'Pop a single integer off the stack. This is the <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">m</span> value.',
       multisig_list_four:
-        'Pop <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">m</span> number of items off the stack, these are all expected to be signatures of the format <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">SIG(...)</span>',
+        'Pop <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">m</span> number of items off the stack, these are all expected to be signatures of the format <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">SIG(...)</span>',
       multisig_list_five:
         'Pop an extra element off the stack for absolutely no reason at all.',
       multisig_list_six:
@@ -2512,7 +2512,7 @@ const translations = {
       nav_title: 'Wait to unlock',
       heading: 'Time Locks',
       paragraph_one:
-        "Way back in the last century a document entitled BIP 65 proposed a new opcode to bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className=\"flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm\">OP_DROP</span> as well.. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.",
+        "Way back in the last century a document entitled BIP 65 proposed a new opcode to bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className=\"text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm\">OP_DROP</span> as well.. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.",
       subheading_one: 'Opcodes that do block timelocks',
       optimelock_list_one_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span>',
@@ -2530,9 +2530,9 @@ const translations = {
       paragraph_one:
         'Just like any other good programming language, bitcoin script has logic branches! The path through the branches is typically chosen by the spender to pick which combination of authentication conditions they need to satisfy,',
       paragraph_two:
-        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span> Logic branches.',
+        '<span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span> Logic branches.',
       paragraph_three:
-        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> pops one value off the stack and evaluates it as a boolean. If it is true, code execution continues up to <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> then skips to <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span>, otherwise it skips to <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> and continues executing to <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span>. Logic branches may be nested but every <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> must be paired with an <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span> to close each branch, otherwise a the interpreter will throw an error and the script will fail.',
+        '<span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> pops one value off the stack and evaluates it as a boolean. If it is true, code execution continues up to <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> then skips to <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span>, otherwise it skips to <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> and continues executing to <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span>. Logic branches may be nested but every <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> must be paired with an <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span> to close each branch, otherwise a the interpreter will throw an error and the script will fail.',
       paragraph_four: 'Provide the initial stack to spend from the script.',
     },
     proposal_one: {
@@ -2569,7 +2569,7 @@ const translations = {
       paragraph_two:
         'There is no way to check a total balance across multiple UTXOs in bitcoin script so you agree on an unbiased third-party oracle: Deborah Chunk! She will monitor the total donation amount on the blockchain and once they add up to at least 1.0 BTC she will announce, live on TV, the preimage to a hash value you will commit to in the script.',
       paragraph_three:
-        'She generates a secure random nonce in private, then hands you the hash digest: <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">HASH256(FD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one satoshi one second earlier!',
+        'She generates a secure random nonce in private, then hands you the hash digest: <span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">HASH256(FD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one satoshi one second earlier!',
       paragraph_four: `Remember Vanderpoole's public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
       paragraph_five: 'Provide the initial stack to spend from the script.',
       next_step_message:
@@ -2585,30 +2585,53 @@ const translations = {
 
     resources: {
       opcodes_five: {
+        arithmetic_heading: 'Arithmetic opcodes',
+        arithmetic_paragraph:
+          'In bitcoin script arithmetic operations like in math take in some inputs to conduct math operations on. In actual bitcoin script the inputs are limited to signed 32-bit integers but the output may overflow.',
         spoiler: `Put in two integers that give the sum of 3 in the initial stack`,
       },
       opcodes_six: {
+        cryptography_heading: 'Cryptographic opcodes',
+        cryptography_paragraph:
+          'These opcodes are important in everyday transactions as they ensure the outputs can only be spent with the signature of the owner of that utxo. Note that there are no formal categories of opcodes and that they are only organzied by their hex code representation.',
         spoiler: `The script checks a signature against a hashed public key. Put a signature key first then a public key`,
       },
       opcodes_eight: {
+        multisig_heading: 'Multisig opcodes',
+        multisig_paragraph:
+          '<span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> has a notable bug that requires the stack to include another unused value on the top of the stack unrelated to the actual multisig.',
         spoiler: `It's a multisig script requiring two signatures, and the first value on the stack is a placeholder for a quirk in the CHECKMULTISIG operation.`,
       },
       opcodes_nine: {
+        timelock_heading: 'Timelock opcodes',
+        timelock_paragraph:
+          'Bitcoin script can read the current block height allowing transactions to be locked based on bitcoin blocks in the future. the exact semantics of the actual <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKLOCKTIMEVERIFY</span> can be found',
+        timelock_link:
+          '<Link target="_blank" href="https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki" className="underline">here</Link>.',
         spoiler: ` The script locks spending until a specific block height and then verifies the signature in the initial stack.`,
       },
       opcodes_ten: {
+        conditionals_heading: 'Opcode logic',
+        conditionals_paragraph:
+          'Conditional opcodes allow for some basic programming logic branches.  While the conditional logic allows for a broad range of additional possibilities in bitcoin script, it is still limited in comparison to a traditional programming language.',
         spoiler: `The sum of the first two values on the intial stack is false, so the script follows the OP_ELSE branch.`,
       },
       proposal_two: {
+        making_script_heading: 'Making script',
+        making_script_paragraph:
+          'Remember that scripts can only be validated if the finish with a single truthy value on the stack. some versions allow any truthy value but our script editor only allows for values equal to 1 or true.',
+        tip: 'Don\'t forget about the bug in <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> that requires the extra unused value on the stack!',
         spoiler: `Script Hint: This multisig arrangement needs both participants to sign. The script specifies that two signatures are required and includes both public keys.
 Stack Hint: To satisfy the script, you need to provide both signatures. The 0 on the stack accounts for a specific behavior of the CHECKMULTISIG operation.`,
       },
       proposal_three: {
+        tip: "Let's think about combining a conditional with some timelock to separate Vanderpoole's signature from yours.",
         spoiler: `Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, Vanderpoole can spend; after the block, you can.
 
 Stack Hint: To spend before the specified block, Vanderpoole uses his signature. After the block, you use your signature and need to provide a 0 because the script has moved past the locktime verification.`,
       },
       proposal_four: {
+        tip: 'The preimage will be revealed after an unknown amount of time so no need for using timelocks.',
         spoiler: `Script Hint: The script allows spending under two conditions: before the secret has been revealed or after. Before the block, Vanderpoole can spend; after the block, you both can.
 
 Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signature. After the secret is revealed, you use your signature, a hash of the secret, and provide a 0 because the script has moved past the unrevealed verification.`,

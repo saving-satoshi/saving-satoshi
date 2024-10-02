@@ -15,7 +15,11 @@ export default function ProposalFour({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={<></>}
+      tipsResources={
+        <>
+          <Text>{t('chapter_nine.resources.proposal_four.tip')}</Text>
+        </>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>
