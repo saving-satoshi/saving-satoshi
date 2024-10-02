@@ -22,7 +22,7 @@ export default function Genesis2({ lang }) {
       inputClassNames="text-[18px] md:text-[24px] lg:text-[30px] short:text-[24px]"
     >
       <LessonInfo className="md:self-center short:max-w-[90dvw]">
-        <Title className="short:text-base">
+        <Title className="short:text-lg">
           {t('chapter_one.genesis_two.heading')}
         </Title>
 
