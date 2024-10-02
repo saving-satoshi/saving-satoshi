@@ -102,7 +102,23 @@ export default function BuildingBlocksResourcesThree({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={<></>}
+      readingResources={
+        <>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_eight.resources.building_blocks_three.rpc_heading')}
+          </Text>
+          <Text>
+            {t(
+              'chapter_eight.resources.building_blocks_three.rpc_paragraph_one'
+            )}
+          </Text>
+          <Text className="mt-[25px]">
+            {t(
+              'chapter_eight.resources.building_blocks_three.rpc_paragraph_two'
+            )}
+          </Text>
+        </>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>
