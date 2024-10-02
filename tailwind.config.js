@@ -51,6 +51,7 @@ module.exports = {
         75: '0.75',
       },
       screens: {
+        slim: { raw: '(min-width: 556px)' },
         short: { raw: '(max-height: 772px) and (min-width: 768px)' },
       },
       fontFamily: {
