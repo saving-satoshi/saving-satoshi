@@ -1,7 +1,8 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { Introduction, Text } from 'ui'
+import { Introduction, LessonInfo, Text } from 'ui'
+import TransactionChallenge from 'ui/lesson/TransactionsChallenge'
 
 export const metadata = {
   title: 'chapter_nine.intro_two.title',
@@ -15,16 +16,21 @@ export default function Intro2({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <Introduction lang={lang} imagePosition="object-center">
-      <Text className="text-lg md:text-xl">
-        {t('chapter_nine.intro_two.paragraph_one')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_nine.intro_two.paragraph_two')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_nine.intro_two.paragraph_three')}
-      </Text>
-    </Introduction>
+    <TransactionChallenge currentTransactionTab="commitment(You)">
+      <LessonInfo>
+        <Text className="text-lg font-bold md:text-xl">
+          {t('chapter_ten.intro_two.heading_one')}
+        </Text>
+        <Text className="mt-4 text-lg md:text-xl">
+          {t('chapter_ten.intro_two.paragraph_one')}
+        </Text>
+        <Text className="mt-4 text-lg md:text-xl">
+          {t('chapter_ten.intro_two.paragraph_two')}
+        </Text>
+        <Text className="mt-4 text-lg md:text-xl">
+          {t('chapter_ten.intro_two.paragraph_three')}
+        </Text>
+      </LessonInfo>
+    </TransactionChallenge>
   )
 }
