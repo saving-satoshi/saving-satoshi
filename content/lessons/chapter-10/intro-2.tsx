@@ -16,7 +16,10 @@ export default function Intro2({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <TransactionChallenge currentTransactionTab="commitment(You)">
+    <TransactionChallenge
+      progressKey={metadata.key}
+      currentTransactionTab="commitment(Lazlo)"
+    >
       <LessonInfo>
         <Text className="text-lg font-bold md:text-xl">
           {t('chapter_ten.intro_two.heading_one')}

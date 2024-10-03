@@ -19,7 +19,7 @@ export default function Tab({
     <button
       onClick={() => onSelect(tabData.id)}
       className={clsx(
-        'border border-y-0 border-l-0 border-r border-white/25 px-4 text-center font-nunito  text-lg font-bold capitalize text-white',
+        'border border-y-0 border-l-0 border-r border-white/25 px-4 text-center font-nunito  text-base font-semibold capitalize text-white',
         {
           'text-opacity-75 transition duration-150 ease-in-out hover:text-opacity-50':
             !isActive,

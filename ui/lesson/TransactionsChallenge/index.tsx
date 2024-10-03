@@ -12,16 +12,21 @@ import { LessonDirection } from 'types'
 import { StatusBar, Text } from 'ui/common'
 import { transactionTabs } from 'utils/data'
 import Lesson from '../Lesson'
+import OutputScript from './OutputScript'
 import Tabs from './Tabs'
 
 interface ITransactionProps {
   children: React.ReactNode
   currentTransactionTab: string
+  progressKey: string
+  prefilled?: boolean
 }
 
 const TransactionChallenge: FC<ITransactionProps> = ({
   children,
   currentTransactionTab,
+  progressKey,
+  prefilled,
 }) => {
   const isSmallScreen = useMediaQuery({ width: 767 })
   const [activeView, setActiveView] = useState(currentTransactionTab)
@@ -30,13 +35,17 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   const allTabsData = Object.entries(transactionTabs)
   const allTabsFiltered = allTabs
     .filter((tab, i) => {
-      if (currentTransactionTab === 'payment') {
-        return i <= 1
+      if (tab === 'payment') {
+        if (currentTransactionTab === 'payment') {
+          return true
+        } else {
+          return false
+        }
       }
-      if (currentTransactionTab === tab) {
-        return i <= i
-      }
-      if (tab.includes('refund')) {
+      if (
+        tab.includes('refund') &&
+        allTabs.indexOf(currentTransactionTab) > 2
+      ) {
         if (!currentTransactionTab.includes('refund')) {
           return tab === 'refund_2'
         } else {
@@ -57,7 +66,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
       {children}
       <div className="flex h-[calc(100vh-70px-48px)] w-full flex-shrink-0 flex-col justify-between border-white/25 md:h-[calc(100vh-70px)] md:max-w-[50vw] md:border-l">
         <div className="flex flex-col gap-4 ">
-          <div className="h-full min-h-[65px] w-full border-b border-white/25 ">
+          <div className=" min-h-[65px] w-full border-b border-white/25 ">
             <Tabs
               items={allTabsFiltered}
               classes={'h-full max-w-[max-content] capitalize'}
@@ -69,8 +78,11 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           {allTabsData.map(
             (tabData) =>
               tabData[0] === activeView && (
-                <>
-                  <div className="flex flex-col px-[30px] pt-[30px]  font-space-mono ">
+                <div
+                  key={tabData[0]}
+                  className="flex h-full max-h-[calc(100vh-207px)] flex-col gap-4 overflow-scroll"
+                >
+                  <div className="flex  flex-col px-[30px] pt-[30px]  font-space-mono ">
                     <Text className=" font-space-mono text-base leading-[22.22px] tracking-[2%]">
                       {tabData[1].description}
                     </Text>
@@ -94,32 +106,29 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                       )}
 
                       {tabData[1]?.input && <ArrowRightLarge />}
-
                       <div className="flex w-full flex-col gap-4">
-                        <div className="flex flex-col gap-4 rounded-md bg-black/20 p-4 text-lg">
-                          <Text>Output 0</Text>
-
-                          <div className="flex flex-col">
-                            <Text>Sats</Text>
-                            <input
-                              placeholder="Enter Sats"
-                              className="bg-transparent text-white outline-none"
-                            />
-                          </div>
-
-                          <div className="flex w-full flex-col">
-                            <div className="flex w-full items-center justify-between">
-                              <Text>Script</Text>
-                              <a className="cursor-pointer">
-                                <HyperLink />{' '}
-                              </a>
-                            </div>
-                            <textarea
-                              placeholder="Enter Script"
-                              className="resize-none bg-transparent text-white outline-none"
-                            />
-                          </div>
-                        </div>
+                        {tabData[1].output_0 && (
+                          <OutputScript
+                            output="output 0"
+                            tab={tabData[0]}
+                            prefilled={prefilled}
+                            currentTransactionTab={currentTransactionTab}
+                            sats={tabData[1].output_0.sats || ''}
+                            script={tabData[1].output_0.script || ''}
+                            progressKey={progressKey}
+                          />
+                        )}
+                        {tabData[1].output_1 && (
+                          <OutputScript
+                            output="output 1"
+                            tab={tabData[0]}
+                            prefilled={prefilled}
+                            currentTransactionTab={currentTransactionTab}
+                            sats={tabData[1].output_1.sats || ''}
+                            script={tabData[1].output_1.script || ''}
+                            progressKey={progressKey}
+                          />
+                        )}
                       </div>
                     </div>
                   </div>
@@ -153,7 +162,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                       </Button>
                     </div>
                   </div>
-                </>
+                </div>
               )
           )}
         </div>
