@@ -117,17 +117,17 @@ export default function HashrateChallenge({
         verticalProfiles={verticalProfiles}
         className={profileContainerClassName || ''}
       >
-        <div className="flex  max-h-[69px] w-full max-w-[800px] flex-col gap-[10px] pr-[15px] text-white md:pr-[20px]">
+        <div className="flex max-h-[69px] w-full max-w-[800px] flex-col gap-[10px] pr-[15px] text-white md:pr-[20px]">
           <div className="flex items-center justify-between gap-[10px] self-stretch">
             <span
               className={clsx(
-                'my-[2px] h-[25px] min-w-[75px] text-left font-nunito text-[18px] font-semibold text-white',
+                'my-[2px] h-[25px] min-w-[75px] text-left font-space-mono text-[18px] font-semibold text-white',
                 {
                   'opacity-25': protagonistsTotal === 0,
                 }
               )}
             >
-              {protagonistsTotal} blocks
+              {protagonistsTotal} <span className="font-nunito">blocks</span>
             </span>
             {step < 2 && (
               <div>
@@ -145,13 +145,13 @@ export default function HashrateChallenge({
 
             <span
               className={clsx(
-                'my-[2px] h-[25px] min-w-[75px] text-right font-nunito text-[18px] font-semibold text-white',
+                'my-[2px] h-[25px] min-w-[75px] text-right font-space-mono text-[18px] font-semibold text-white',
                 {
                   'opacity-25': antagonistsTotal === 0,
                 }
               )}
             >
-              {antagonistsTotal} blocks
+              {antagonistsTotal} <span className="font-nunito">blocks</span>
             </span>
           </div>
           <ContributionBar

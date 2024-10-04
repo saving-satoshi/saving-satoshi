@@ -297,7 +297,7 @@ export default function Split2({ lang }) {
                     %
                   </BoxDisplayer>
                 )}
-                <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
+                <span className="fade-in font-space-mono text-[15px] font-normal text-white text-opacity-25">
                   <div
                     className={clsx({
                       'text-white/25': step === 0 || profile.hashes === 0,
