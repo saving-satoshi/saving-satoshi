@@ -7,7 +7,6 @@ export default function Chapter9({ lang }) {
   return (
     <Chapter metadata={metadata} lang={lang}>
       <Text>{t('chapter_nine.paragraph_one')}</Text>
-      <Text className="mt-4">{t('chapter_nine.paragraph_one')}</Text>
     </Chapter>
   )
 }
