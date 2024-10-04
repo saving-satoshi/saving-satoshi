@@ -133,7 +133,7 @@ export default function Chapter({ children, metadata, lang }) {
           { 'lg:order-1': isEven, 'lg:order-2': !isEven }
         )}
       >
-        <div className="ml-3.5 mr-3.5 w-full content-center justify-items-start px-1">
+        <div className="ml-3.5 mr-3.5 w-full content-start px-1">
           <h2 className="mt-6 text-left font-nunito text-xl font-bold text-white text-opacity-75 md:text-3xl">
             {t('shared.chapter')} {position}
           </h2>
@@ -161,9 +161,9 @@ export default function Chapter({ children, metadata, lang }) {
             <div className="flex grow py-2 lg:grow-0">
               <div
                 aria-hidden={activeTab !== 'info'}
-                className={clsx('-mr-[100%] block w-full', {
-                  visible: activeTab === 'info',
-                  invisible: activeTab !== 'info',
+                className={clsx('-mr-[100%] w-full', {
+                  block: activeTab === 'info',
+                  hidden: activeTab !== 'info',
                 })}
               >
                 <div className="font-nunito md:mt-6">
@@ -260,9 +260,9 @@ export default function Chapter({ children, metadata, lang }) {
               </div>
               <div
                 aria-hidden={activeTab !== 'challenges'}
-                className={clsx('-mr-[100%] block w-full', {
-                  visible: activeTab === 'challenges',
-                  invisible: activeTab !== 'challenges',
+                className={clsx('-mr-[100%] w-full', {
+                  block: activeTab === 'challenges',
+                  hidden: activeTab !== 'challenges',
                 })}
               >
                 <ChallengeList
