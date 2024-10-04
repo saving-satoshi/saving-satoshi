@@ -2308,6 +2308,14 @@ const translations = {
       paragraph_one:
         "You found the longest chain and proved it to everyone! You are one step closer to discrediting Vanderpoole. Needless to say he didn't answer anymore of Ms. Chunk's questions.",
     },
+    resources: {
+      building_blocks_three: {
+        rpc_heading: 'RPC commands',
+        rpc_paragraph_one:
+          'RPC commands are an interface of commands that allow a client to make requests to a program creating an interaction between the client and the server. These requests are sent',
+        rpc_paragraph_two: '',
+      },
+    },
   },
 
   chapter_nine: {

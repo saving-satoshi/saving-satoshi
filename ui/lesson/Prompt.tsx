@@ -33,10 +33,14 @@ export default function LessonPrompt({
   return (
     <div className="flex w-full grow justify-center md:bg-[#00000026]">
       <div
-        className={clsx('grow font-space-mono text-white', className, {
-          'hidden md:flex': !isActive,
-          flex: isActive,
-        })}
+        className={clsx(
+          'grow justify-center font-space-mono text-white',
+          className,
+          {
+            'hidden md:flex': !isActive,
+            flex: isActive,
+          }
+        )}
       >
         <div className="flex flex-col justify-center">
           <h2 className="text-left text-xl font-bold md:text-center">
