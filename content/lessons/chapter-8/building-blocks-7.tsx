@@ -126,7 +126,7 @@ candidates = Bitcoin.rpc("getblocksbyheight", HEIGHT)
 
 for bhash in candidates:
   block = Bitcoin.rpc("getblock", bhash)
-  if no state["blocks_by_hash"][bhash]["valid"] and validate_block(block):
+  if not state["blocks_by_hash"][bhash]["valid"] and validate_block(block):
     print("Looks like some invalid blocks are getting through. Try again!")
     print("KILL")
   if state["blocks_by_hash"][bhash]["valid"] and validate_block(block):
