@@ -3,15 +3,16 @@ import { useMediaQuery } from 'hooks'
 import { useAtom } from 'jotai'
 import React, { FC, useState } from 'react'
 import { Button } from 'shared'
-import Arrow from 'shared/icons/Arrow'
-import ArrowLeftIcon from 'shared/icons/ArrowLeft'
 import ArrowRightLarge from 'shared/icons/ArrowRightLarge'
 import HyperLink from 'shared/icons/Hyperlink'
+import SignatureButton from 'shared/SignatureButton'
 import { accountAtom } from 'state/state'
 import { LessonDirection } from 'types'
 import { StatusBar, Text } from 'ui/common'
+import { SuccessNumbers } from 'ui/common/StatusBar'
 import { transactionTabs } from 'utils/data'
 import Lesson from '../Lesson'
+import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
 import OutputScript from './OutputScript'
 import Tabs from './Tabs'
 
@@ -20,6 +21,7 @@ interface ITransactionProps {
   currentTransactionTab: string
   progressKey: string
   prefilled?: boolean
+  answerScript: Record<'output_0' | 'output_1', string[]>
 }
 
 const TransactionChallenge: FC<ITransactionProps> = ({
@@ -27,12 +29,24 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   currentTransactionTab,
   progressKey,
   prefilled,
+  answerScript,
 }) => {
   const isSmallScreen = useMediaQuery({ width: 767 })
   const [activeView, setActiveView] = useState(currentTransactionTab)
   const [account] = useAtom(accountAtom)
   const allTabs = Object.keys(transactionTabs)
   const allTabsData = Object.entries(transactionTabs)
+  const [validating, setValidating] = useState<boolean>(false)
+  const [validateScript1, setValidateScript1] = useState<SuccessNumbers>(0)
+  const [validateScript2, setValidateScript2] = useState<SuccessNumbers>(0)
+  const handleLazloSign = () => {
+    setValidating(true)
+  }
+
+  const handleYouSign = () => {
+    setValidating(true)
+  }
+
   const allTabsFiltered = allTabs
     .filter((tab, i) => {
       if (tab === 'payment') {
@@ -82,7 +96,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                   key={tabData[0]}
                   className="flex h-full max-h-[calc(100vh-207px)] flex-col gap-4 overflow-scroll"
                 >
-                  <div className="flex  flex-col px-[30px] pt-[30px]  font-space-mono ">
+                  <div className="flex  flex-col px-6 pt-6  font-space-mono ">
                     <Text className=" font-space-mono text-base leading-[22.22px] tracking-[2%]">
                       {tabData[1].description}
                     </Text>
@@ -90,7 +104,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                       {tabData[1]?.input && (
                         <div className="flex flex-col gap-4 rounded-md bg-black/20 p-4 text-lg">
                           <div className="flex flex-col gap-1">
-                            <Text>
+                            <Text className="text-nowrap ">
                               {tabData[0] === 'deposit' ||
                               tabData[0] === 'payment'
                                 ? 'Deposit'
@@ -109,6 +123,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                       <div className="flex w-full flex-col gap-4">
                         {tabData[1].output_0 && (
                           <OutputScript
+                            key={'output_0'}
                             output="output 0"
                             tab={tabData[0]}
                             prefilled={prefilled}
@@ -116,17 +131,26 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             sats={tabData[1].output_0.sats || ''}
                             script={tabData[1].output_0.script || ''}
                             progressKey={progressKey}
+                            answerScript={answerScript}
+                            setValidateScript={setValidateScript1}
+                            validating={validating}
+                            setValidating={setValidating}
                           />
                         )}
                         {tabData[1].output_1 && (
                           <OutputScript
+                            key={'output_1'}
                             output="output 1"
                             tab={tabData[0]}
+                            setValidateScript={setValidateScript2}
                             prefilled={prefilled}
                             currentTransactionTab={currentTransactionTab}
                             sats={tabData[1].output_1.sats || ''}
                             script={tabData[1].output_1.script || ''}
                             progressKey={progressKey}
+                            answerScript={answerScript}
+                            validating={validating}
+                            setValidating={setValidating}
                           />
                         )}
                       </div>
@@ -141,17 +165,28 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                         <div className="flex items-center gap-2.5">
                           <Avatar avatar={account?.avatar} />
                           <Text> You</Text>
-                          <Button classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1">
+                          <SignatureButton
+                            onClick={handleYouSign}
+                            classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                          >
                             Sign
-                          </Button>
+                          </SignatureButton>
                         </div>
 
                         <div className="flex items-center gap-2.5">
                           <Avatar avatar={account?.avatar} />
                           <Text>Laszlo</Text>
-                          <Button classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1">
+                          <SignatureButton
+                            onClick={handleLazloSign}
+                            signature={
+                              tabData[1]
+                                ? tabData[1]?.signatures?.laszlo
+                                : 'not-signed'
+                            }
+                            classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                          >
                             Sign
-                          </Button>
+                          </SignatureButton>
                         </div>
                       </div>
                     </div>
@@ -166,7 +201,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
               )
           )}
         </div>
-        <StatusBar success={0} />
+        <StatusBar success={validateScript2 || validateScript1} />
       </div>
     </Lesson>
   )

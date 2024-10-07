@@ -17,8 +17,12 @@ export default function Intro2({ lang }) {
 
   return (
     <TransactionChallenge
+      answerScript={{
+        output_0: ['OP_PUSH'],
+        output_1: ['OP_PUSH'],
+      }}
       progressKey={metadata.key}
-      currentTransactionTab="commitment(Lazlo)"
+      currentTransactionTab="commitment(You)"
     >
       <LessonInfo>
         <Text className="text-lg font-bold md:text-xl">

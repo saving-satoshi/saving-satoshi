@@ -4,6 +4,7 @@ type TabDetails = {
   input?: Details
   output_0: Details
   output_1?: Details
+  signatures?: Record<string, 'pending' | 'signed' | 'not-signed'>
 }
 
 type Details = {
@@ -12,6 +13,10 @@ type Details = {
 }
 export const transactionTabs: TransactionData = {
   deposit: {
+    signatures: {
+      you: 'signed',
+      lazlo: 'pending',
+    },
     description:
       'This is an output of 100,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.',
     output_0: {
@@ -21,6 +26,10 @@ export const transactionTabs: TransactionData = {
   },
   payment: {
     description: 'This is your off-chain payment to Laszlo.',
+    signatures: {
+      you: 'signed',
+      lazlo: 'pending',
+    },
     input: {
       sats: '100,000',
     },
@@ -35,6 +44,10 @@ export const transactionTabs: TransactionData = {
   },
   'multi-sig': {
     description: 'This is the multi-sig transaction between you and Laszlo.',
+    signatures: {
+      you: 'signed',
+      lazlo: 'pending',
+    },
     input: {
       sats: '100,000',
     },
@@ -47,6 +60,10 @@ export const transactionTabs: TransactionData = {
   refund: {
     description:
       'This transaction ensures funds are not lost if Laszlo disappears.',
+    signatures: {
+      you: 'signed',
+      lazlo: 'pending',
+    },
     input: {
       sats: '100,000',
     },
@@ -58,6 +75,10 @@ export const transactionTabs: TransactionData = {
   refund_1: {
     description:
       'This transaction ensures funds are not lost if Laszlo disappears. It also ensures that you will not broadcast it after paying for your beer.',
+    signatures: {
+      you: 'signed',
+      lazlo: 'pending',
+    },
     input: {
       sats: '100,000',
     },
@@ -70,6 +91,10 @@ export const transactionTabs: TransactionData = {
   refund_2: {
     description:
       'This transaction ensures funds are not lost if you or Bob disappear.',
+    signatures: {
+      you: 'signed',
+      lazlo: 'pending',
+    },
     input: {
       sats: '100,000',
     },
@@ -82,6 +107,10 @@ export const transactionTabs: TransactionData = {
   'commitment(You)': {
     description:
       'This transaction updates the sat distribution you and Laszlo agreed on.',
+    signatures: {
+      you: 'signed',
+      lazlo: 'pending',
+    },
     input: {
       sats: '100,000',
     },
@@ -97,6 +126,10 @@ export const transactionTabs: TransactionData = {
   },
   'commitment(Lazlo)': {
     description: 'This is Laszlo’s version of the commitment transaction.',
+    signatures: {
+      you: 'signed',
+      lazlo: 'pending',
+    },
     input: {
       sats: '100,000',
     },
