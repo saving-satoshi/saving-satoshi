@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState, useRef } from 'react'
 import HyperLink from 'shared/icons/Hyperlink'
 import { Text } from 'ui/common'
 import { SuccessNumbers } from 'ui/common/StatusBar'
@@ -30,6 +30,8 @@ const OutputScript: FC<IOutput> = ({
   answerScript,
   setValidateScript,
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null)
+  const caretPositionRef = useRef(0)
   const objectOutput = output === 'output 0' ? 'output_0' : 'output_1'
   const [satsInput, setSatsInput] = useState<string>('')
   const [executor, setExecutor] = useState<LanguageExecutor | null>(null)
@@ -38,6 +40,8 @@ const OutputScript: FC<IOutput> = ({
     setSatsInput(event.target.value.toUpperCase())
   }
   const handleScriptChange = (event) => {
+    const input = event.target
+    caretPositionRef.current = input.selectionStart
     setScriptInput(event.target.value.toUpperCase())
   }
 
@@ -104,6 +108,15 @@ const OutputScript: FC<IOutput> = ({
     }
   }, [validating])
 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.setSelectionRange(
+        caretPositionRef.current,
+        caretPositionRef.current
+      )
+    }
+  }, [scriptInput])
+
   return (
     <div className="flex flex-col gap-4 rounded-md bg-black/20 p-4 text-lg">
       <Text className="capitalize">{output}</Text>
@@ -136,6 +149,7 @@ const OutputScript: FC<IOutput> = ({
           placeholder="Enter Script"
           value={scriptInput}
           onChange={handleScriptChange}
+          ref={inputRef}
           className="resize-none bg-transparent text-white outline-none"
           defaultValue={
             prefilled
