@@ -21,6 +21,7 @@ interface ITransactionProps {
   currentTransactionTab: string
   progressKey: string
   prefilled?: boolean
+  initialStack: Record<'output_0' | 'output_1', string[]>
   answerScript: Record<'output_0' | 'output_1', string[]>
 }
 
@@ -41,6 +42,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   progressKey,
   prefilled,
   answerScript,
+  initialStack,
 }) => {
   const isSmallScreen = useMediaQuery({ width: 767 })
   const [activeView, setActiveView] = useState(currentTransactionTab)
@@ -141,6 +143,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                         {tabData[1].output_0 && (
                           <OutputScript
                             key={'output_0'}
+                            initialStack={initialStack}
                             output="output 0"
                             tab={tabData[0]}
                             prefilled={prefilled}
@@ -157,6 +160,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                         {tabData[1].output_1 && (
                           <OutputScript
                             key={'output_1'}
+                            initialStack={initialStack}
                             output="output 1"
                             tab={tabData[0]}
                             setValidateScript={setValidateScript2}

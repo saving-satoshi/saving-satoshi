@@ -13,6 +13,7 @@ interface IOutput {
   progressKey: string
   tab: string
   validating: boolean
+  initialStack: Record<'output_0' | 'output_1', string[]>
   answerScript: Record<'output_0' | 'output_1', string[]>
   setValidateScript: React.Dispatch<React.SetStateAction<SuccessNumbers>>
   setValidating: React.Dispatch<React.SetStateAction<boolean>>
@@ -29,6 +30,7 @@ const OutputScript: FC<IOutput> = ({
   setValidating,
   answerScript,
   setValidateScript,
+  initialStack,
 }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const caretPositionRef = useRef(0)
@@ -44,20 +46,37 @@ const OutputScript: FC<IOutput> = ({
       ? Buffer.from(script, 'base64').toString('utf-8')
       : ''
   )
+  const initializeExecutor = async () => {
+    const initialStackArray = initialStack[objectOutput].filter((item) =>
+      item.trim()
+    )
+    const tokens = LanguageExecutor.parsableInputToTokens(
+      LanguageExecutor.rawInputToParsableInput(`INITIAL_STACK ${scriptInput}`)
+    )
+    const newExecutor = new LanguageExecutor(tokens, initialStackArray)
+    newExecutor.execute()
+    // Create an initial state to represent the initial stack
+    setExecutor(newExecutor)
+  }
 
   const handleSatsChange = (event) => {
     setSatsInput(event.target.value.toUpperCase())
   }
+
+  const executeScriptAsync = async () => {
+    await initializeExecutor()
+    console.log(executor, 'execute')
+    setValidateScript(checkChallengeSuccess())
+  }
+
+  console.log(executor, 'outside')
   const handleScriptChange = (event) => {
     const input = event.target
     caretPositionRef.current = input.selectionStart
     setScriptInput(event.target.value.toUpperCase())
   }
 
-  //console.log(executor)
-
   const checkChallengeSuccess = () => {
-    setExecutor(LanguageExecutor.RunCode(scriptInput))
     const filterToStringArray = scriptInput.split(' ').filter((op) => op.trim())
     const containsEveryScript1 = () => {
       if (output == 'output 0') {
@@ -115,10 +134,8 @@ const OutputScript: FC<IOutput> = ({
   }
 
   useEffect(() => {
-    if (validating) {
-      setValidateScript(checkChallengeSuccess())
-      setValidating(false)
-    }
+    executeScriptAsync()
+    setValidating(false)
   }, [validating])
 
   useEffect(() => {

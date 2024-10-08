@@ -17,6 +17,10 @@ export default function Intro2({ lang }) {
 
   return (
     <TransactionChallenge
+      initialStack={{
+        output_0: ['SIG(LASZLO)'],
+        output_1: ['SIG(YOU)'],
+      }}
       answerScript={{
         output_0: ['OP_PUSH'],
         output_1: ['OP_PUSH'],
