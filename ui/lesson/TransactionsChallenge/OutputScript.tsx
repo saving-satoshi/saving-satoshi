@@ -76,8 +76,10 @@ const OutputScript: FC<IOutput> = ({
   }
 
   const executeScriptAsync = async () => {
-    await initializeExecutor()
-    setValidateScript(checkChallengeSuccess())
+    if (currentTransactionTab === tab) {
+      await initializeExecutor()
+      setValidateScript(checkChallengeSuccess())
+    }
   }
 
   const handleScriptChange = (event) => {
@@ -170,6 +172,7 @@ const OutputScript: FC<IOutput> = ({
         </div>
         <textarea
           placeholder="Enter Script"
+          spellcheck="false"
           value={
             prefilled
               ? Buffer.from(script || '', 'base64').toString('utf-8')
