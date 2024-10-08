@@ -33,9 +33,18 @@ const OutputScript: FC<IOutput> = ({
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const caretPositionRef = useRef(0)
   const objectOutput = output === 'output 0' ? 'output_0' : 'output_1'
-  const [satsInput, setSatsInput] = useState<string>('')
+  const [satsInput, setSatsInput] = useState<string>(
+    prefilled || currentTransactionTab !== tab
+      ? Buffer.from(script, 'base64').toString('utf-8')
+      : ''
+  )
   const [executor, setExecutor] = useState<LanguageExecutor | null>(null)
-  const [scriptInput, setScriptInput] = useState<string>('')
+  const [scriptInput, setScriptInput] = useState<string>(
+    prefilled || currentTransactionTab !== tab
+      ? Buffer.from(script, 'base64').toString('utf-8')
+      : ''
+  )
+
   const handleSatsChange = (event) => {
     setSatsInput(event.target.value.toUpperCase())
   }
@@ -45,7 +54,7 @@ const OutputScript: FC<IOutput> = ({
     setScriptInput(event.target.value.toUpperCase())
   }
 
-  console.log(executor)
+  //console.log(executor)
 
   const checkChallengeSuccess = () => {
     setExecutor(LanguageExecutor.RunCode(scriptInput))
@@ -151,13 +160,6 @@ const OutputScript: FC<IOutput> = ({
           onChange={handleScriptChange}
           ref={textAreaRef}
           className="resize-none bg-transparent text-white outline-none"
-          defaultValue={
-            prefilled
-              ? Buffer.from(script || '', 'base64').toString('utf-8')
-              : currentTransactionTab !== tab
-              ? Buffer.from(script || '', 'base64').toString('utf-8')
-              : ''
-          }
           readOnly={currentTransactionTab !== tab || prefilled}
         />
       </div>
