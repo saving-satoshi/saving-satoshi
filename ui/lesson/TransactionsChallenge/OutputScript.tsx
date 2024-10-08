@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState, useRef } from 'react'
 import HyperLink from 'shared/icons/Hyperlink'
 import { Text } from 'ui/common'
 import { SuccessNumbers } from 'ui/common/StatusBar'
+import { sleep } from 'utils'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
 
 interface IOutput {
@@ -13,8 +14,11 @@ interface IOutput {
   progressKey: string
   tab: string
   validating: boolean
+  validateScript0: SuccessNumbers
+  validateScript1: SuccessNumbers
   initialStack: Record<'output_0' | 'output_1', string[]>
   answerScript: Record<'output_0' | 'output_1', string[]>
+  setErrorMessage: React.Dispatch<React.SetStateAction<string>>
   setValidateScript: React.Dispatch<React.SetStateAction<SuccessNumbers>>
   setValidating: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -27,10 +31,13 @@ const OutputScript: FC<IOutput> = ({
   script,
   tab,
   validating,
+  validateScript0,
+  validateScript1,
   setValidating,
   answerScript,
   setValidateScript,
   initialStack,
+  setErrorMessage,
 }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const caretPositionRef = useRef(0)
@@ -47,6 +54,7 @@ const OutputScript: FC<IOutput> = ({
       : ''
   )
   const initializeExecutor = async () => {
+    setErrorMessage('')
     const initialStackArray = initialStack[objectOutput].filter((item) =>
       item.trim()
     )
@@ -57,6 +65,10 @@ const OutputScript: FC<IOutput> = ({
     newExecutor.execute()
     // Create an initial state to represent the initial stack
     setExecutor(newExecutor)
+    let error = newExecutor.state.filter((stack) => stack.error?.message)
+    if (error.length > 0) {
+      setErrorMessage(`${output} : ${error[0].error?.message || ''}`)
+    }
   }
 
   const handleSatsChange = (event) => {
@@ -65,11 +77,9 @@ const OutputScript: FC<IOutput> = ({
 
   const executeScriptAsync = async () => {
     await initializeExecutor()
-    console.log(executor, 'execute')
     setValidateScript(checkChallengeSuccess())
   }
 
-  console.log(executor, 'outside')
   const handleScriptChange = (event) => {
     const input = event.target
     caretPositionRef.current = input.selectionStart
@@ -78,24 +88,15 @@ const OutputScript: FC<IOutput> = ({
 
   const checkChallengeSuccess = () => {
     const filterToStringArray = scriptInput.split(' ').filter((op) => op.trim())
-    const containsEveryScript1 = () => {
-      if (output == 'output 0') {
-        return answerScript.output_0.every((token) =>
-          filterToStringArray.includes(token)
-        )
-      }
+
+    const containsEveryScript = () => {
+      return answerScript[objectOutput].every((token) =>
+        filterToStringArray.includes(token)
+      )
     }
 
     const hasCorrectSats = () => {
       return satsInput === sats
-    }
-
-    const containsEveryScript2 = () => {
-      if (output == 'output 1') {
-        return answerScript.output_1.every((token) =>
-          filterToStringArray.includes(token)
-        )
-      }
     }
 
     const isFinalToken = () => {
@@ -117,19 +118,11 @@ const OutputScript: FC<IOutput> = ({
         !executor.state.some((error) => error?.error?.message)
       )
     }
-
-    if (output === 'output 0') {
-      if (containsEveryScript1() && doesStackValidate() && hasCorrectSats()) {
-        return 5
-      } else {
-        return 2
-      }
+    if (!scriptInput) return 0
+    if (containsEveryScript() && doesStackValidate() && hasCorrectSats()) {
+      return 5
     } else {
-      if (containsEveryScript2() && doesStackValidate() && hasCorrectSats()) {
-        return 5
-      } else {
-        return 2
-      }
+      return 2
     }
   }
 

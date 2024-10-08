@@ -1,37 +1,29 @@
 import { useState } from 'react'
+import { SuccessNumbers } from 'ui/common/StatusBar'
 import { Signatures } from 'ui/lesson/TransactionsChallenge'
 import WhiteCheck from './icons/WhiteCheck'
 import Loader from './Loader'
 
 export default function SignatureButton({
-  href,
   children,
-  title,
   style,
   size,
   disabled,
   classes,
   onClick,
-  full,
-  round,
-  signature,
+  returnSuccess,
 }: {
-  href?: string
   children: any
-  title?: string
   style?: string
   size?: string
   disabled?: boolean
-  external?: boolean
   classes?: string
   onClick?: any
-  full?: boolean
-  round?: boolean
-  signature?: Signatures
+  returnSuccess: SuccessNumbers
 }) {
   let className = `inline-block justify-center px-12 text-center font-nunito font-bold transition duration-150 ease-in-out ${
-    full ? 'w-full' : 'md:w-auto'
-  } ${signature === 'signed' && '!bg-transparent '}`
+    returnSuccess === 5 && '!bg-transparent '
+  }`
 
   // Apply visual style classes
   if (style == 'outline') {
@@ -102,21 +94,17 @@ export default function SignatureButton({
     className += ' ' + classes
   }
 
-  if (round) {
-    className += ' rounded'
-  }
-
   const [isLoading, setIsLoading] = useState(false)
+
   return (
     <button
       onClick={() => {
         setIsLoading(true)
-        setTimeout(() => setIsLoading(false), 2000)
+        setTimeout(() => setIsLoading(false), 1000)
         onClick()
       }}
       className={className}
       disabled={disabled}
-      title={title}
     >
       <>
         {isLoading && (
@@ -124,7 +112,7 @@ export default function SignatureButton({
             <Loader className="h-6 w-6 text-black" />
           </>
         )}
-        {!isLoading && (signature == 'signed' ? <WhiteCheck /> : children)}
+        {!isLoading && (returnSuccess === 5 ? <WhiteCheck /> : children)}
       </>
     </button>
   )

@@ -4,12 +4,12 @@ import { useAtom } from 'jotai'
 import React, { FC, useState } from 'react'
 import { Button } from 'shared'
 import ArrowRightLarge from 'shared/icons/ArrowRightLarge'
-import HyperLink from 'shared/icons/Hyperlink'
 import SignatureButton from 'shared/SignatureButton'
 import { accountAtom } from 'state/state'
 import { LessonDirection } from 'types'
 import { StatusBar, Text, Tooltip } from 'ui/common'
 import { SuccessNumbers } from 'ui/common/StatusBar'
+import { sleep } from 'utils'
 import { transactionTabs } from 'utils/data'
 import Lesson from '../Lesson'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
@@ -50,23 +50,16 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   const allTabs = Object.keys(transactionTabs)
   const allTabsData = Object.entries(transactionTabs)
   const [validating, setValidating] = useState<boolean>(false)
+  const [errorMessage0, setErrorMessage0] = useState('')
+  const [errorMessage1, setErrorMessage1] = useState('')
   const [signatures, setSignatures] = useState<OutputSignatures>({
     you: 'not-signed',
     laszlo: 'not-signed',
   })
+  const [validateScript0, setValidateScript0] = useState<SuccessNumbers>(0)
   const [validateScript1, setValidateScript1] = useState<SuccessNumbers>(0)
-  const [validateScript2, setValidateScript2] = useState<SuccessNumbers>(0)
   const handleLazloSign = () => {
-    setValidating(true)
     setSignatures((prev) => ({ ...prev, laszlo: 'pending' }))
-  }
-
-  const handleYouSign = () => {
-    setValidating(true)
-    if (validateScript1 === 5 && validateScript2 === 5) {
-      setSignatures((prev) => ({ ...prev, you: 'signed' }))
-      handleLazloSign()
-    }
   }
 
   const allTabsFiltered = allTabs
@@ -93,6 +86,28 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     })
     .map((tab) => ({ id: tab, text: tab }))
 
+  const returnSuccess = () => {
+    if (answerScript.output_1) {
+      if (validateScript1 === 5 && validateScript0 === 5) {
+        return 5
+      } else if (validateScript0 === 2 || validateScript1 === 2) {
+        return 2
+      } else {
+        return 0
+      }
+    } else {
+      return validateScript0
+    }
+  }
+
+  const handleYouSign = async () => {
+    await sleep(1000)
+    setValidating(true)
+    if (returnSuccess() === 5) {
+      setSignatures((prev) => ({ ...prev, you: 'signed' }))
+      handleLazloSign()
+    }
+  }
   return (
     <Lesson
       direction={
@@ -152,9 +167,12 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             script={tabData[1].output_0.script || ''}
                             progressKey={progressKey}
                             answerScript={answerScript}
-                            setValidateScript={setValidateScript1}
+                            validateScript0={validateScript0}
+                            validateScript1={validateScript1}
+                            setValidateScript={setValidateScript0}
                             validating={validating}
                             setValidating={setValidating}
+                            setErrorMessage={setErrorMessage0}
                           />
                         )}
                         {tabData[1].output_1 && (
@@ -163,7 +181,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             initialStack={initialStack}
                             output="output 1"
                             tab={tabData[0]}
-                            setValidateScript={setValidateScript2}
+                            setValidateScript={setValidateScript1}
                             prefilled={prefilled}
                             currentTransactionTab={currentTransactionTab}
                             sats={tabData[1].output_1.sats || ''}
@@ -171,7 +189,10 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             progressKey={progressKey}
                             answerScript={answerScript}
                             validating={validating}
+                            validateScript0={validateScript0}
+                            validateScript1={validateScript1}
                             setValidating={setValidating}
+                            setErrorMessage={setErrorMessage1}
                           />
                         )}
                       </div>
@@ -187,7 +208,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             <Avatar avatar={account?.avatar} />
                             <Text> You</Text>
                             <SignatureButton
-                              signature={signatures.you}
+                              returnSuccess={returnSuccess()}
                               disabled={signatures.you === 'signed'}
                               onClick={handleYouSign}
                               classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
@@ -201,8 +222,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             <Text>Laszlo</Text>
                             <SignatureButton
                               disabled={true}
-                              onClick={handleLazloSign}
-                              signature={signatures.laszlo}
+                              returnSuccess={returnSuccess()}
                               classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
                             >
                               Sign
@@ -235,7 +255,10 @@ const TransactionChallenge: FC<ITransactionProps> = ({
               )
           )}
         </div>
-        <StatusBar success={validateScript2 || validateScript1} />
+        <StatusBar
+          errorMessage={errorMessage1 || errorMessage0}
+          success={returnSuccess()}
+        />
       </div>
     </Lesson>
   )
