@@ -69,7 +69,7 @@ export default function Pool2({ lang }) {
       value: 0,
     },
     {
-      username: 'Hash Hoppers',
+      username: 'Hashrate Hoppers',
       avatar: '/assets/avatars/hash-hoppers.jpg',
       hashpower: 7911,
       hashes: protagonistHash[3],
