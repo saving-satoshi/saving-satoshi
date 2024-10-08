@@ -172,7 +172,7 @@ const OutputScript: FC<IOutput> = ({
         </div>
         <textarea
           placeholder="Enter Script"
-          spellcheck="false"
+          spellCheck="false"
           value={
             prefilled
               ? Buffer.from(script || '', 'base64').toString('utf-8')
