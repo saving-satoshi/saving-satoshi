@@ -8,7 +8,7 @@ import HyperLink from 'shared/icons/Hyperlink'
 import SignatureButton from 'shared/SignatureButton'
 import { accountAtom } from 'state/state'
 import { LessonDirection } from 'types'
-import { StatusBar, Text } from 'ui/common'
+import { StatusBar, Text, Tooltip } from 'ui/common'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 import { transactionTabs } from 'utils/data'
 import Lesson from '../Lesson'
@@ -24,6 +24,17 @@ interface ITransactionProps {
   answerScript: Record<'output_0' | 'output_1', string[]>
 }
 
+export type Signatures = 'pending' | 'signed' | 'not-signed' | 'rejected'
+export type OutputSuccess = {
+  0: SuccessNumbers
+  1: SuccessNumbers
+}
+
+export type OutputSignatures = {
+  you: Signatures
+  laszlo: Signatures
+}
+
 const TransactionChallenge: FC<ITransactionProps> = ({
   children,
   currentTransactionTab,
@@ -37,14 +48,23 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   const allTabs = Object.keys(transactionTabs)
   const allTabsData = Object.entries(transactionTabs)
   const [validating, setValidating] = useState<boolean>(false)
+  const [signatures, setSignatures] = useState<OutputSignatures>({
+    you: 'not-signed',
+    laszlo: 'not-signed',
+  })
   const [validateScript1, setValidateScript1] = useState<SuccessNumbers>(0)
   const [validateScript2, setValidateScript2] = useState<SuccessNumbers>(0)
   const handleLazloSign = () => {
     setValidating(true)
+    setSignatures((prev) => ({ ...prev, laszlo: 'pending' }))
   }
 
   const handleYouSign = () => {
     setValidating(true)
+    if (validateScript1 === 5 && validateScript2 === 5) {
+      setSignatures((prev) => ({ ...prev, you: 'signed' }))
+      handleLazloSign()
+    }
   }
 
   const allTabsFiltered = allTabs
@@ -92,11 +112,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           {allTabsData.map(
             (tabData) =>
               tabData[0] === activeView && (
-                <div
-                  key={tabData[0]}
-                  className="flex h-full max-h-[calc(100vh-207px)] flex-col gap-4 overflow-auto"
-                >
-                  <div className="flex  flex-col px-6 pt-6  font-space-mono ">
+                <div key={tabData[0]} className="flex h-full flex-col gap-4 ">
+                  <div className="flex h-full max-h-[calc(100vh-407px)] flex-col  overflow-auto px-6 pt-6  font-space-mono ">
                     <Text className=" font-space-mono text-base leading-[22.22px] tracking-[2%]">
                       {tabData[1].description}
                     </Text>
@@ -157,46 +174,59 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                     </div>
                   </div>
                   {/*  */}
+                  {currentTransactionTab === tabData[0] && (
+                    <div className="flex flex-col gap-4 px-[30px] py-[15px] ">
+                      <div className="flex flex-col">
+                        <Text>Signatures</Text>
+                        <div className="flex  gap-10">
+                          <div className="flex items-center gap-2.5">
+                            <Avatar avatar={account?.avatar} />
+                            <Text> You</Text>
+                            <SignatureButton
+                              signature={signatures.you}
+                              disabled={signatures.you === 'signed'}
+                              onClick={handleYouSign}
+                              classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                            >
+                              Sign
+                            </SignatureButton>
+                          </div>
 
-                  <div className="flex flex-col gap-4 px-[30px] pt-[30px] ">
-                    <div className="flex flex-col">
-                      <Text>Signatures</Text>
-                      <div className="flex  gap-10">
-                        <div className="flex items-center gap-2.5">
-                          <Avatar avatar={account?.avatar} />
-                          <Text> You</Text>
-                          <SignatureButton
-                            onClick={handleYouSign}
-                            classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
-                          >
-                            Sign
-                          </SignatureButton>
-                        </div>
-
-                        <div className="flex items-center gap-2.5">
-                          <Avatar avatar={account?.avatar} />
-                          <Text>Laszlo</Text>
-                          <SignatureButton
-                            onClick={handleLazloSign}
-                            signature={
-                              tabData[1]
-                                ? tabData[1]?.signatures?.laszlo
-                                : 'not-signed'
-                            }
-                            classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
-                          >
-                            Sign
-                          </SignatureButton>
+                          <div className="flex items-center gap-2.5">
+                            <Avatar avatar={account?.avatar} />
+                            <Text>Laszlo</Text>
+                            <SignatureButton
+                              disabled={true}
+                              onClick={handleLazloSign}
+                              signature={signatures.laszlo}
+                              classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                            >
+                              Sign
+                            </SignatureButton>
+                          </div>
                         </div>
                       </div>
+                      <div className="flex flex-col">
+                        <Text>Options</Text>
+                        <Tooltip
+                          id="broadcast-button"
+                          position="top"
+                          theme="bg-[#00000026]"
+                          offset={10}
+                          parentClassName="max-w-[max-content] "
+                          className="max-w-[100px] cursor-pointer "
+                          content={`Broadcasting this ${tabData[0]} will close the channel`}
+                        >
+                          <Button
+                            disabled={true}
+                            classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                          >
+                            Broadcast Transaction
+                          </Button>
+                        </Tooltip>
+                      </div>
                     </div>
-                    <div className="flex flex-col">
-                      <Text>Options</Text>
-                      <Button classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1">
-                        Send revocation_key
-                      </Button>
-                    </div>
-                  </div>
+                  )}
                 </div>
               )
           )}

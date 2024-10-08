@@ -160,7 +160,13 @@ const OutputScript: FC<IOutput> = ({
         </div>
         <textarea
           placeholder="Enter Script"
-          value={scriptInput}
+          value={
+            prefilled
+              ? Buffer.from(script || '', 'base64').toString('utf-8')
+              : currentTransactionTab !== tab
+              ? Buffer.from(script || '', 'base64').toString('utf-8')
+              : scriptInput
+          }
           onChange={handleScriptChange}
           ref={textAreaRef}
           className="resize-none bg-transparent text-white outline-none"

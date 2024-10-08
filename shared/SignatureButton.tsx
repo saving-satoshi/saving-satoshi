@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Signatures } from 'ui/lesson/TransactionsChallenge'
+import WhiteCheck from './icons/WhiteCheck'
 import Loader from './Loader'
 
 export default function SignatureButton({
@@ -12,6 +14,7 @@ export default function SignatureButton({
   onClick,
   full,
   round,
+  signature,
 }: {
   href?: string
   children: any
@@ -24,11 +27,11 @@ export default function SignatureButton({
   onClick?: any
   full?: boolean
   round?: boolean
-  signature?: 'pending' | 'signed' | 'not-signed'
+  signature?: Signatures
 }) {
   let className = `inline-block justify-center px-12 text-center font-nunito font-bold transition duration-150 ease-in-out ${
     full ? 'w-full' : 'md:w-auto'
-  }`
+  } ${signature === 'signed' && '!bg-transparent '}`
 
   // Apply visual style classes
   if (style == 'outline') {
@@ -121,7 +124,7 @@ export default function SignatureButton({
             <Loader className="h-6 w-6 text-black" />
           </>
         )}
-        {!isLoading && children}
+        {!isLoading && (signature == 'signed' ? <WhiteCheck /> : children)}
       </>
     </button>
   )
