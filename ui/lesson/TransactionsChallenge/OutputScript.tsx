@@ -30,7 +30,7 @@ const OutputScript: FC<IOutput> = ({
   answerScript,
   setValidateScript,
 }) => {
-  const inputRef = useRef<HTMLInputElement>(null)
+  const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const caretPositionRef = useRef(0)
   const objectOutput = output === 'output 0' ? 'output_0' : 'output_1'
   const [satsInput, setSatsInput] = useState<string>('')
@@ -109,8 +109,8 @@ const OutputScript: FC<IOutput> = ({
   }, [validating])
 
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.setSelectionRange(
+    if (textAreaRef.current) {
+      textAreaRef.current.setSelectionRange(
         caretPositionRef.current,
         caretPositionRef.current
       )
@@ -149,7 +149,7 @@ const OutputScript: FC<IOutput> = ({
           placeholder="Enter Script"
           value={scriptInput}
           onChange={handleScriptChange}
-          ref={inputRef}
+          ref={textAreaRef}
           className="resize-none bg-transparent text-white outline-none"
           defaultValue={
             prefilled
