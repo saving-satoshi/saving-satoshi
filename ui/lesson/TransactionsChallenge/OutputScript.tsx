@@ -67,6 +67,10 @@ const OutputScript: FC<IOutput> = ({
       }
     }
 
+    const hasCorrectSats = () => {
+      return satsInput === sats
+    }
+
     const containsEveryScript2 = () => {
       if (output == 'output 1') {
         return answerScript.output_1.every((token) =>
@@ -96,13 +100,13 @@ const OutputScript: FC<IOutput> = ({
     }
 
     if (output === 'output 0') {
-      if (containsEveryScript1() && doesStackValidate()) {
+      if (containsEveryScript1() && doesStackValidate() && hasCorrectSats()) {
         return 5
       } else {
         return 2
       }
     } else {
-      if (containsEveryScript2() && doesStackValidate()) {
+      if (containsEveryScript2() && doesStackValidate() && hasCorrectSats()) {
         return 5
       } else {
         return 2
