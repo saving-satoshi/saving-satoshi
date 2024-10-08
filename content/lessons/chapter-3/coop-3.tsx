@@ -82,7 +82,7 @@ export default function Coop3({ lang }) {
       value: Math.min(protagonistsBlockAmount[2], outcome.protagonists[3]),
     },
     {
-      username: 'Hash Hoppers',
+      username: 'Hashrate Hoppers',
       avatar: '/assets/avatars/hash-hoppers.jpg',
       hashpower: 7911,
       hashes: protagonistHash[3],

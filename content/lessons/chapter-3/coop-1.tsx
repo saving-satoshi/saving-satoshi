@@ -38,7 +38,7 @@ export default function Coop1({ lang }) {
       avatar: '/assets/avatars/coin-crunchers.jpg',
     },
     {
-      username: 'Hash Hoppers',
+      username: 'Hashrate Hoppers',
       avatar: '/assets/avatars/hash-hoppers.jpg',
     },
   ]
