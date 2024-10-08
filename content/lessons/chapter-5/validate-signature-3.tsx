@@ -31,7 +31,7 @@ console.log("KILL")
   defaultCode: `const { Hash } = require('crypto')
 const secp256k1 = require('@savingsatoshi/secp256k1js')
 // View the library source code
-// https://github.com/saving-satoshi/challenges/blob/master/chapter4/javascript/lib/secp256k1.js
+// https://github.com/saving-satoshi/secp256k1js/blob/main/secp256k1.js
 
 const GE = secp256k1.GE
 const FE = secp256k1.FE
@@ -149,7 +149,7 @@ print("KILL")
 import hashlib
 import secp256k1py.secp256k1 as SECP256K1
 # View the library source code
-# https://github.com/saving-satoshi/challenges/blob/master/chapter4/python/lib/secp256k1.py
+# https://github.com/saving-satoshi/secp256k1py/blob/main/secp256k1py/secp256k1.py
 
 GE = SECP256K1.GE
 G = SECP256K1.G
@@ -191,11 +191,11 @@ def decode_sig(base64_sig):
 def verify(sig_r, sig_s, key, msg):
   if r == 0 or r >= GE.ORDER:
     print("FALSE - invalid r value")
-    return false
+    return False
 
   if s == 0 or s >= GE.ORDER:
     print("FALSE - invalid s value")
-    return false
+    return False
   # Calculate the inverse of sig_s modulo ORDER
   sig_s_inverted = pow(sig_s, -1, GE.ORDER)
 
