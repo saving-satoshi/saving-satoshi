@@ -12,6 +12,7 @@ export default function SignatureButton({
   classes,
   onClick,
   returnSuccess,
+  laszloWillNotSign,
 }: {
   children: any
   style?: string
@@ -20,6 +21,7 @@ export default function SignatureButton({
   classes?: string
   onClick?: any
   returnSuccess: SuccessNumbers
+  laszloWillNotSign?: boolean
 }) {
   let className = `inline-block justify-center px-12 text-center font-nunito font-bold transition duration-150 ease-in-out ${
     returnSuccess === 5 && '!bg-transparent '
@@ -53,17 +55,7 @@ export default function SignatureButton({
     } else {
       className += ' text-green hover:bg-green/25'
     }
-  } else if (style == 'faded') {
-    // White Background with opacity,
-    className += ' bg-white/25'
-
-    if (disabled) {
-      className += ' text-[#543160]'
-    } else {
-      className += ' text-[#543160] hover:bg-white/75'
-    }
   } else {
-    // Filled white background, dark text
     className += ''
 
     if (disabled) {
@@ -78,17 +70,6 @@ export default function SignatureButton({
     className += ' pointer-events-none'
   }
 
-  // Apply size classes
-  if (size == 'small') {
-    className += ' text-xl py-2.5'
-  } else if (size == 'tiny') {
-    className += ' text-sm py-2'
-  } else if (size == 'big') {
-    className += ' text-2xl py-4'
-  } else {
-    className += ' text-2xl py-2.5'
-  }
-
   // Append custom classe, useful for layout like margins
   if (classes) {
     className += ' ' + classes
@@ -96,6 +77,16 @@ export default function SignatureButton({
 
   const [isLoading, setIsLoading] = useState(false)
 
+  if (laszloWillNotSign && returnSuccess === 5) {
+    return (
+      <button
+        disabled
+        className="cursor-not-allowed rounded-[3px] border border-white/15 px-2.5 py-[3px]  font-space-mono font-bold text-white opacity-50"
+      >
+        Pending
+      </button>
+    )
+  }
   return (
     <button
       onClick={() => {

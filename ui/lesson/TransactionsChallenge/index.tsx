@@ -23,6 +23,7 @@ interface ITransactionProps {
   prefilled?: boolean
   initialStack: Record<'output_0' | 'output_1', string[]>
   answerScript: Record<'output_0' | 'output_1', string[]>
+  laszloWillNotSign?: boolean
 }
 
 export type Signatures = 'pending' | 'signed' | 'not-signed' | 'rejected'
@@ -43,6 +44,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   prefilled,
   answerScript,
   initialStack,
+  laszloWillNotSign,
 }) => {
   const isSmallScreen = useMediaQuery({ width: 767 })
   const [activeView, setActiveView] = useState(currentTransactionTab)
@@ -223,6 +225,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             <SignatureButton
                               disabled={true}
                               returnSuccess={returnSuccess()}
+                              laszloWillNotSign={laszloWillNotSign}
                               classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
                             >
                               Sign

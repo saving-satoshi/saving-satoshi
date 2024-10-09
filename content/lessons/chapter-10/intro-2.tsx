@@ -27,6 +27,7 @@ export default function Intro2({ lang }) {
       }}
       progressKey={metadata.key}
       currentTransactionTab="commitment(You)"
+      laszloWillNotSign
     >
       <LessonInfo>
         <Text className="text-lg font-bold md:text-xl">
