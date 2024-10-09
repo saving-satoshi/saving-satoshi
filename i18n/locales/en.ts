@@ -2649,6 +2649,17 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_two: `The bar is called The Public Key Pub. The owner and bartender, Laszlo, welcomes you and Mike in with a big smile. Mike and Laszlo pull out their solar-powered mini cyber pads and tap a few holo-buttons each, then Laszlo pours a beer and hands it to Mike. As Mike raises the glass to you he says "no miner fees for off-chain payments! I bought this beer without confirming a transaction on the blockchain!" What?! How?!`,
       paragraph_three: `Laszlo says "You're smart enough to debug mining software and validate blocks, I bet you can figure out how to send bitcoin off-chain. I'll just guide you a little bit. We will set up a payment channel between you and me so you can buy some drinks."`,
     },
+    intro_two: {
+      title: 'Initial funds',
+      nav_title: 'Initial Funds',
+      heading_one: 'The initial funds',
+      paragraph_one:
+        'You have a confirmed UTXO in the blockchain for 100000 satoshis. Seems pretty simple to make an off-chain payment, right?',
+      paragraph_two:
+        'Your UTXO is output 0 of some transaction you were sent in the past. You will spend that UTXO in input 0 of the transaction you are about to create',
+      paragraph_three:
+        'Note how the tabs now represent transactions instead of code languages. You will interact with multiple transactions as you go through this chapter.',
+    },
   },
 
   ///CHALLENGE PAGE

@@ -1,7 +1,8 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { Introduction, Text } from 'ui'
+import { LessonInfo, Text } from 'ui'
+import TransactionChallenge from 'ui/lesson/TransactionsChallenge'
 
 export const metadata = {
   title: 'chapter_nine.intro_two.title',
@@ -15,16 +16,36 @@ export default function Intro2({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <Introduction lang={lang} imagePosition="object-center">
-      <Text className="text-lg md:text-xl">
-        {t('chapter_nine.intro_two.paragraph_one')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_nine.intro_two.paragraph_two')}
-      </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_nine.intro_two.paragraph_three')}
-      </Text>
-    </Introduction>
+    <TransactionChallenge
+      initialStack={{
+        output_0: ['SIG(YOU)'],
+        output_1: [],
+      }}
+      answerScript={{
+        output_0: ['OP_PUSH'],
+        output_1: [],
+      }}
+      progressKey={metadata.key}
+      currentTransactionTab="deposit"
+      laszloWillNotSign
+      prefilled
+      noSignature
+      alwaysShowButton
+    >
+      <LessonInfo>
+        <Text className="text-lg font-bold md:text-xl">
+          {t('chapter_ten.intro_two.heading_one')}
+        </Text>
+        <Text className="mt-4 text-lg md:text-xl">
+          {t('chapter_ten.intro_two.paragraph_one')}
+        </Text>
+        <Text className="mt-4 text-lg md:text-xl">
+          {t('chapter_ten.intro_two.paragraph_two')}
+        </Text>
+        <Text className="mt-4 text-lg md:text-xl">
+          {t('chapter_ten.intro_two.paragraph_three')}
+        </Text>
+      </LessonInfo>
+    </TransactionChallenge>
   )
 }
