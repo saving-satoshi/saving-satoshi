@@ -1,5 +1,5 @@
 import Avatar from 'components/Avatar'
-import { useMediaQuery } from 'hooks'
+import { useLang, useMediaQuery, useProceed, useTranslations } from 'hooks'
 import { useAtom } from 'jotai'
 import React, { FC, useState } from 'react'
 import { Button } from 'shared'
@@ -24,6 +24,8 @@ interface ITransactionProps {
   initialStack: Record<'output_0' | 'output_1', string[]>
   answerScript: Record<'output_0' | 'output_1', string[]>
   laszloWillNotSign?: boolean
+  noSignature?: boolean
+  alwaysShowButton?: boolean
 }
 
 export type Signatures = 'pending' | 'signed' | 'not-signed' | 'rejected'
@@ -45,7 +47,12 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   answerScript,
   initialStack,
   laszloWillNotSign,
+  noSignature,
+  alwaysShowButton,
 }) => {
+  const lang = useLang()
+  const t = useTranslations(lang)
+  const proceed = useProceed()
   const isSmallScreen = useMediaQuery({ width: 767 })
   const [activeView, setActiveView] = useState(currentTransactionTab)
   const [account] = useAtom(accountAtom)
@@ -89,7 +96,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     .map((tab) => ({ id: tab, text: tab }))
 
   const returnSuccess = () => {
-    if (answerScript.output_1) {
+    if (answerScript?.output_1.length > 0) {
       if (validateScript1 === 5 && validateScript0 === 5) {
         return 5
       } else if (validateScript0 === 2 || validateScript1 === 2) {
@@ -118,7 +125,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     >
       {children}
       <div className="flex h-[calc(100vh-70px-48px)] w-full flex-shrink-0 flex-col justify-between border-white/25 md:h-[calc(100vh-70px)] md:max-w-[50vw] md:border-l">
-        <div className="flex flex-col gap-4 ">
+        <div className="flex h-full flex-col gap-4 ">
           <div className=" min-h-[65px] w-full border-b border-white/25 ">
             <Tabs
               items={allTabsFiltered}
@@ -201,7 +208,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                     </div>
                   </div>
                   {/*  */}
-                  {currentTransactionTab === tabData[0] && (
+                  {currentTransactionTab === tabData[0] && !noSignature && (
                     <div className="flex flex-col gap-4 px-[30px] py-[15px] ">
                       <div className="flex flex-col">
                         <Text>Signatures</Text>
@@ -258,10 +265,25 @@ const TransactionChallenge: FC<ITransactionProps> = ({
               )
           )}
         </div>
-        <StatusBar
-          errorMessage={errorMessage1 || errorMessage0}
-          success={returnSuccess()}
-        />
+        {alwaysShowButton ? (
+          <div className="h-14 min-h-14 grow border-l border-t border-white/25 transition-all max-md:bottom-0 max-md:px-4 max-md:py-8">
+            <div className="flex flex-col items-stretch justify-between max-md:gap-4 md:h-14 md:flex-row">
+              <div className="flex items-center align-middle transition duration-150 ease-in-out md:px-5">
+                <div className="font-nunito text-[21px] text-white opacity-50 transition duration-150 ease-in-out">
+                  {t('Lets move on to the first challenge!')}
+                </div>
+              </div>
+              <Button onClick={proceed} classes="md:text-2xl">
+                {t('shared.next')}
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <StatusBar
+            errorMessage={errorMessage1 || errorMessage0}
+            success={returnSuccess()}
+          />
+        )}
       </div>
     </Lesson>
   )

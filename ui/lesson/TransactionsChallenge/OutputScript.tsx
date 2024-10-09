@@ -31,8 +31,6 @@ const OutputScript: FC<IOutput> = ({
   script,
   tab,
   validating,
-  validateScript0,
-  validateScript1,
   setValidating,
   answerScript,
   setValidateScript,

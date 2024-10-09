@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { Introduction, LessonInfo, Text } from 'ui'
+import { LessonInfo, Text } from 'ui'
 import TransactionChallenge from 'ui/lesson/TransactionsChallenge'
 
 export const metadata = {
@@ -18,16 +18,19 @@ export default function Intro2({ lang }) {
   return (
     <TransactionChallenge
       initialStack={{
-        output_0: ['SIG(LASZLO)'],
-        output_1: ['SIG(YOU)'],
+        output_0: ['SIG(YOU)'],
+        output_1: [],
       }}
       answerScript={{
         output_0: ['OP_PUSH'],
-        output_1: ['OP_PUSH'],
+        output_1: [],
       }}
       progressKey={metadata.key}
-      currentTransactionTab="commitment(You)"
+      currentTransactionTab="deposit"
       laszloWillNotSign
+      prefilled
+      noSignature
+      alwaysShowButton
     >
       <LessonInfo>
         <Text className="text-lg font-bold md:text-xl">
