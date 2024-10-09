@@ -2310,10 +2310,37 @@ const translations = {
     },
     resources: {
       building_blocks_three: {
+        tip: 'Try this command first to give you an idea of what commands are available.',
         rpc_heading: 'RPC commands',
         rpc_paragraph_one:
-          'RPC commands are an interface of commands that allow a client to make requests to a program creating an interaction between the client and the server. These requests are sent',
-        rpc_paragraph_two: '',
+          'RPC commands are an interface of commands that allow a client to make requests to a program creating an interaction between the client and the server. These requests are sent from the client or requester along with any parameters that the client needs to modify their request.',
+      },
+      building_blocks_four: {
+        block_data_heading: 'Block data',
+        block_data_paragraph_one:
+          'At its core bitcoin is a ledger, a list, of all the transactions ever sent since its inception. Each transaction is organized by block and each block is organized in order from the genesis block.',
+      },
+      building_blocks_five: {
+        transaction_data_heading: 'Transaction data',
+        transaction_data_paragraph_one:
+          'Each transaction contains its own subset of information to distinguish itself from other transactions and to make it clear how much bitcoin is transferred and what inputs and outputs are being used.',
+      },
+      building_blocks_six: {
+        block_subsidy_heading: 'Block subsidy',
+        block_subsidy_paragraph_one:
+          'The block subsidy is the amount of bitcoin released into circulation from the coinbase of each new block. As there are only ~21 million total bitcoins able to be created there must be some diminishing euqation to allow for a coinbase subisdy that reaches the 21 million amount. The equation below visualizes what exists in bitcoin.',
+        block_subsidy_paragraph_two:
+          'What does this equation do? Well we know that the coinbase reward of the genesis block was 50 bitcoin and this is indicated with the numerator of the fraction on the right side of the equation. The denominator is the part of our equation that indicates by how much the reward will be decreased each halving, in this case 2, or by half. We also know that bitcoin is only aware of individual blocks as a chronological system so we make each halving 210,000 blocks long. Lastly we want to make each halving double each time so we want to double the amount the subsidy is halved by each halving so we raise 2 to the power of the current halving `i` to the final halving epoch 32 iterations in the future.',
+      },
+      building_blocks_seven: {
+        validating_heading: 'Validating blocks',
+        validating_paragraph_one:
+          'Validating a block is incredibly important to the strength of the network as each block is built on transactions of previous blocks, if any block is discovered to be invalid in the past it can cause huge ramifications as a large chain of blocks comes into question with a previously invlaid block.',
+      },
+      building_blocks_eight: {
+        showtime_heading: 'Validating the chain',
+        showtime_paragraph_one:
+          'Validating the blockchain in Bitcoin is crucial for maintaining the integrity and security of the entire network. Each transaction must be verified by miners to ensure that it is legitimate and follows the consensus rules established by the network. This validation process prevents double-spending and fraud, allowing users to trust the system without needing a central authority. Moreover, it enhances transparency, as all validated transactions are recorded on a public ledger, enabling anyone to audit the history of transactions.',
       },
     },
   },

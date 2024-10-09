@@ -181,7 +181,20 @@ export default function BuildingBlocksResources({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={<></>}
+      readingResources={
+        <>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t(
+              'chapter_eight.resources.building_blocks_eight.showtime_heading'
+            )}
+          </Text>
+          <Text>
+            {t(
+              'chapter_eight.resources.building_blocks_eight.showtime_paragraph_one'
+            )}
+          </Text>
+        </>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>
