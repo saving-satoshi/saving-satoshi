@@ -40,7 +40,8 @@ export const useAuthFunctions = () => {
   }
 
   const attemptLogout = async () => {
-    router.push(routes.chaptersUrl, { scroll: true })
+    window.location.pathname !== '/' &&
+      router.push(routes.chaptersUrl, { scroll: true })
     await logout()
     localStorage.clear()
     setCourseProgress(defaultProgressState)
