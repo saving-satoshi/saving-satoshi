@@ -33,7 +33,7 @@ export default function TextImageDisplay({
   return (
     <div className="flex grow">
       <div className="lg:flex lg:grow">
-        <div className="relative h-[375px] overflow-hidden lg:order-last lg:flex lg:h-full lg:shrink lg:basis-1/2 lg:border-l lg:border-white/25">
+        <div className="relative h-[375px] lg:order-last lg:flex lg:h-full lg:shrink lg:basis-1/2 lg:border-l lg:border-white/25">
           {typeof imageSrc === 'string' ? (
             <Image
               src={imageSrc}
@@ -45,7 +45,7 @@ export default function TextImageDisplay({
             imageSrc
           )}
         </div>
-        <div className="flex shrink basis-1/2">
+        <div className="flex shrink basis-1/2 overflow-y-auto">
           <div className="flex flex-col gap-10 px-[15px] py-11 lg:px-10">
             <div className="intro text-white">
               <div className="font-nunito text-xl">{children}</div>

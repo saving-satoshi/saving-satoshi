@@ -58,7 +58,7 @@ export default function Hasher({
         </h2>
         <span
           className={clsx(
-            'flex h-full w-full resize-none self-center overflow-hidden bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:w-[758px] md:text-center md:text-[24px] md:tracking-[5px] lg:w-[858px] lg:text-[30px]',
+            'flex h-full w-full resize-none justify-center overflow-hidden bg-transparent text-left font-space-mono text-[18px] leading-[180%] tracking-[1px] outline-none md:w-[758px] md:text-center md:text-[24px] md:tracking-[5px] lg:w-[858px] lg:text-[30px]',
             {
               'text-white': typeof answer === 'number' && input !== '',
               'text-white/50': input === '' || typeof answer === 'string',

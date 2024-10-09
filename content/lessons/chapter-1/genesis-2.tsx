@@ -19,20 +19,22 @@ export default function Genesis2({ lang }) {
       label={t('chapter_one.genesis_two.placeholder')}
       pattern={/[a-z0-9]+/gi}
       hints
-      inputClassNames="text-[18px] md:text-[24px] lg:text-[30px]"
+      inputClassNames="text-[18px] md:text-[24px] lg:text-[30px] short:text-[24px]"
     >
-      <LessonInfo className="md:self-center">
-        <Title>{t('chapter_one.genesis_two.heading')}</Title>
+      <LessonInfo className="md:self-center short:max-w-[90dvw]">
+        <Title className="short:text-lg">
+          {t('chapter_one.genesis_two.heading')}
+        </Title>
 
-        <Text className="mt-2 text-lg md:text-xl">
+        <Text className="mt-2 text-lg md:text-xl short:text-base">
           {t('chapter_one.genesis_two.paragraph_one')}
         </Text>
 
-        <Text className="mt-2 text-lg md:text-xl">
+        <Text className="mt-2 text-lg md:text-xl short:text-base">
           {t('chapter_one.genesis_two.paragraph_two')}
         </Text>
 
-        <Text className="mt-2 text-lg md:text-xl">
+        <Text className="mt-2 text-lg md:text-xl short:text-base">
           {t('chapter_one.genesis_two.paragraph_three')}
         </Text>
 

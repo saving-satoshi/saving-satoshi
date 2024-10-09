@@ -7,7 +7,7 @@ import { Loader } from 'shared'
 import MonacoEditor from '@monaco-editor/react'
 
 import { EditorConfig } from 'types'
-import { Text, ResourcePage, ToggleSwitch } from 'ui'
+import { Text, ResourcePage, ToggleSwitch, CodeExample } from 'ui'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
 import { getLanguageString } from 'lib/SavedCode'
@@ -102,7 +102,29 @@ export default function BuildingBlocksResourcesThree({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={<></>}
+      readingResources={
+        <>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_eight.resources.building_blocks_three.rpc_heading')}
+          </Text>
+          <Text>
+            {t(
+              'chapter_eight.resources.building_blocks_three.rpc_paragraph_one'
+            )}
+          </Text>
+        </>
+      }
+      tipsResources={
+        <>
+          <Text>{t('chapter_eight.resources.building_blocks_three.tip')}</Text>
+          <CodeExample
+            className="text-wrap"
+            text
+            language="bash"
+            code="console.log(Bitcoin.rpc('help'));"
+          />
+        </>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>

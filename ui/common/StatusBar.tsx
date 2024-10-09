@@ -156,7 +156,7 @@ export default function StatusBar({
       <div className="flex h-14 flex-row items-stretch justify-between">
         <div
           className={clsx(
-            'flex items-center align-middle transition duration-150 ease-in-out max-md:pl-5 md:px-5',
+            'max-md:pl-5 flex items-center align-middle transition duration-150 ease-in-out md:px-5',
             textClass
           )}
         >

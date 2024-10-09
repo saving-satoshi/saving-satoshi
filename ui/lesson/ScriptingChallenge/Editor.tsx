@@ -101,7 +101,7 @@ export default function Editor({
   const mobileTabsHeight = 48
   const languageTabsHeight = 40
   const terminalHeight = 204
-  const runnerHeight = 206
+  const runnerHeight = 56
 
   const totalHeight = isSmallScreen
     ? headerHeight + mobileTabsHeight + languageTabsHeight + runnerHeight

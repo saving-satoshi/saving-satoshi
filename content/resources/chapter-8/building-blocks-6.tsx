@@ -3,11 +3,11 @@
 import { useTranslations } from 'hooks'
 import { useState } from 'react'
 import { Loader } from 'shared'
-
 import MonacoEditor from '@monaco-editor/react'
 
 import { EditorConfig } from 'types'
 import { Text, ResourcePage, ToggleSwitch } from 'ui'
+import Icon from 'shared/Icon'
 import LanguageTabs from 'ui/lesson/ScriptingChallenge/LanguageTabs'
 import { readOnlyOptions } from 'ui/lesson/ScriptingChallenge/config'
 import { getLanguageString } from 'lib/SavedCode'
@@ -114,7 +114,28 @@ export default function BuildingBlocksResourcesSix({ lang }) {
   return (
     <ResourcePage
       lang={lang}
-      readingResources={<></>}
+      readingResources={
+        <>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t(
+              'chapter_eight.resources.building_blocks_six.block_subsidy_heading'
+            )}
+          </Text>
+          <Text>
+            {t(
+              'chapter_eight.resources.building_blocks_six.block_subsidy_paragraph_one'
+            )}
+          </Text>
+          <div className="mt-[25px] flex justify-center">
+            <Icon className="h-full" icon="subsidy" />
+          </div>
+          <Text className="mt-[25px]">
+            {t(
+              'chapter_eight.resources.building_blocks_six.block_subsidy_paragraph_two'
+            )}
+          </Text>
+        </>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution_one')}</Text>
