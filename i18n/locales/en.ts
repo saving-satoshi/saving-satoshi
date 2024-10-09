@@ -2134,7 +2134,7 @@ const translations = {
       bullet_two:
         'The coinbase transaction, and the weight it contributes to the block, can be ignored.',
       paragraph_four:
-        'You can view the entire raw mempool JSON file <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link>.',
+        'You can view the entire raw mempool JSON file <Link href="https://github.com/saving-satoshi/resources/blob/main/chapter-7/mempool.json" target="_blank" className="underline">here</Link>.',
       paragraph_five:
         'Or browse an excerpt of the file in this table for some basic patterns:',
       headings: {
@@ -2147,7 +2147,7 @@ const translations = {
       },
       table_one: {
         footer:
-          'View the json file  <Link href="https://raw.githubusercontent.com/saving-satoshi/challenges/master/chapter7/javascript/mempool.json" target="_blank" className="underline">here</Link> for the rest of the transaction data',
+          'View the json file  <Link href="https://github.com/saving-satoshi/resources/blob/main/chapter-7/mempool.json" target="_blank" className="underline">here</Link> for the rest of the transaction data',
       },
       poor: "It's a valid block, but can you do better? Try to collect more fees.",
       good: "It's a valid block, but you are not quite getting the most fees yet. Keep working, or continue, your choice.",
