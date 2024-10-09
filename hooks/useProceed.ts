@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { useLocalizedRoutes, usePathData } from 'hooks'
 import useEnvironment from './useEnvironment'
@@ -32,21 +33,51 @@ export default function useProceed() {
   const markLessonAsComplete = useSetAtom(markLessonAsCompleteAtom)
   const currentLesson = getLessonById(currentLessonId, courseProgress)
 
-  const Proceed = () => {
-    let route
+  const route = React.useMemo(() => {
     if (
       (isDevelopment || currentLesson?.completed) &&
       nextLessonUsingCurrentRoute
     ) {
-      route =
+      return (
         routes.chaptersUrl + nextLessonUsingCurrentRoute?.path + queryParams
+      )
+    } else {
+      return routes.chaptersUrl + nextLessonPath + queryParams
+    }
+  }, [
+    isDevelopment,
+    currentLesson,
+    nextLessonUsingCurrentRoute,
+    routes.chaptersUrl,
+    nextLessonPath,
+    queryParams,
+  ])
+
+  React.useEffect(() => {
+    console.log('prefetching', route)
+    router.prefetch(route)
+  }, [route, router])
+
+  const Proceed = React.useCallback(() => {
+    if (
+      (isDevelopment || currentLesson?.completed) &&
+      nextLessonUsingCurrentRoute
+    ) {
       markLessonAsComplete(currentLessonId)
     } else {
-      route = routes.chaptersUrl + nextLessonPath + queryParams
       progressToNextLesson()
     }
     router.push(route, { scroll: true })
-  }
+  }, [
+    isDevelopment,
+    currentLesson,
+    nextLessonUsingCurrentRoute,
+    markLessonAsComplete,
+    currentLessonId,
+    progressToNextLesson,
+    router,
+    route,
+  ])
 
   return Proceed
 }
