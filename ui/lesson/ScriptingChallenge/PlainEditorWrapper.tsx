@@ -105,8 +105,8 @@ export default function PlainEditorWrapper({
             code={!!config && code ? code : fixedCode}
           />
           {button && (
-            <div className="h-14 min-h-14 grow border-l border-t border-white/25 transition-all max-md:bottom-0 max-md:px-4 max-md:py-8">
-              <div className="flex flex-col items-stretch justify-between max-md:gap-4 md:h-14 md:flex-row">
+            <div className="max-md:bottom-0 max-md:px-4 max-md:py-8 h-14 min-h-14 grow border-l border-t border-white/25 transition-all">
+              <div className="max-md:gap-4 flex flex-col items-stretch justify-between md:h-14 md:flex-row">
                 <div className="flex items-center align-middle transition duration-150 ease-in-out md:px-5">
                   <div className="font-nunito text-[21px] text-white opacity-50 transition duration-150 ease-in-out">
                     {t('Lets move on to the first challenge!')}
