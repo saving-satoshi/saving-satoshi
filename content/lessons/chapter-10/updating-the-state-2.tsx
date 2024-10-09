@@ -8,10 +8,10 @@ import { useProceed } from 'hooks'
 export const metadata = {
   title: 'chapter_nine.opcodes_one.title',
   navigation_title: 'chapter_nine.opcodes_one.nav_title',
-  key: 'CH10OUT1',
+  key: 'CH10UTS2',
 }
 
-export default function Outro1({ lang }) {
+export default function UpdatingtheState2({ lang }) {
   const proceed = useProceed()
   const t = useTranslations(lang)
 
