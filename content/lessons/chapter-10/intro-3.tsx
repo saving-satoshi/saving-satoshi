@@ -8,10 +8,10 @@ export const metadata = {
   navigation_title: 'chapter_ten.intro_one.nav_title',
   image: '/assets/images/chapter-10-intro-1.jpg',
   theme: 'bg-[#401d4e]',
-  key: 'CH10MAP4',
+  key: 'CH10INT3',
 }
 
-export default function MakingAPayment4({ lang }) {
+export default function Intro3({ lang }) {
   const t = useTranslations(lang)
 
   return (

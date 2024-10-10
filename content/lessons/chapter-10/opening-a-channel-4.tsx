@@ -1,39 +1,51 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { ChapterIntro } from 'ui'
-import { Button } from 'shared'
-import { useProceed } from 'hooks'
+import { LessonInfo, Text } from 'ui'
+import TransactionChallenge from 'ui/lesson/TransactionsChallenge'
 
 export const metadata = {
-  title: 'chapter_nine.opcodes_one.title',
-  navigation_title: 'chapter_nine.opcodes_one.nav_title',
+  title: 'chapter_nine.intro_two.title',
+  navigation_title: 'chapter_nine.intro_two.nav_title',
+  image: '/assets/images/chapter-9-intro-2.jpg',
+  theme: 'bg-[#401d4e]',
   key: 'CH10OAC4',
 }
 
 export default function OpeningAChannel4({ lang }) {
-  const proceed = useProceed()
   const t = useTranslations(lang)
 
   return (
-    <ChapterIntro
-      className="my-8"
-      heading={t('chapter_nine.opcodes_one.heading')}
+    <TransactionChallenge
+      initialStack={{
+        output_0: ['SIG(YOU)'],
+        output_1: [],
+      }}
+      answerScript={{
+        output_0: ['OP_PUSH'],
+        output_1: [],
+      }}
+      progressKey={metadata.key}
+      currentTransactionTab="deposit"
+      laszloWillNotSign
+      prefilled
+      noSignature
+      alwaysShowButton
     >
-      <p className="mt-2 text-lg md:text-xl">
-        {t('chapter_nine.opcodes_one.paragraph_one')}
-      </p>
-
-      <p className="mt-8 text-lg md:text-xl">
-        {t('chapter_nine.opcodes_one.paragraph_two')}
-      </p>
-
-      <p className="mt-8 text-lg md:text-xl">
-        {t('chapter_nine.opcodes_one.paragraph_three')}
-      </p>
-      <Button onClick={proceed} classes="mt-10 max-md:w-full">
-        {t('shared.next')}
-      </Button>
-    </ChapterIntro>
+      <LessonInfo>
+        <Text className="text-lg font-bold md:text-xl">
+          {t('chapter_ten.intro_two.heading_one')}
+        </Text>
+        <Text className="mt-4 text-lg md:text-xl">
+          {t('chapter_ten.intro_two.paragraph_one')}
+        </Text>
+        <Text className="mt-4 text-lg md:text-xl">
+          {t('chapter_ten.intro_two.paragraph_two')}
+        </Text>
+        <Text className="mt-4 text-lg md:text-xl">
+          {t('chapter_ten.intro_two.paragraph_three')}
+        </Text>
+      </LessonInfo>
+    </TransactionChallenge>
   )
 }

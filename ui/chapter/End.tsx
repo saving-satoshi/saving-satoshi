@@ -1,6 +1,6 @@
 'use client'
 
-import { useSaveAndReturn, usePathData } from 'hooks'
+import { useSaveAndReturn, useProceed, usePathData } from 'hooks'
 import { lessons } from 'content'
 import { useEffect, useState } from 'react'
 import DesktopEnd from './DesktopEnd'
@@ -26,6 +26,8 @@ export default function End({
   direction,
   theme,
   gradientTheme,
+  saveAndProceed,
+  sharing = true,
 }: {
   children: any
   className?: string
@@ -34,10 +36,13 @@ export default function End({
   direction: 'left' | 'right'
   theme: string
   gradientTheme: string
+  saveAndProceed?: boolean
+  sharing?: boolean
 }) {
   const { open } = useModalFunctions()
   const [account] = useAtom(accountAtom)
   const saveAndReturn = useSaveAndReturn()
+  const proceed = useProceed()
   const { chapterId, lessonId } = usePathData()
   const markLessonAsComplete = useSetAtom(markLessonAsCompleteAtom)
 
@@ -76,9 +81,10 @@ export default function End({
           direction={direction}
           theme={theme}
           account={account}
-          onClick={handleClick}
+          onClick={saveAndProceed ? proceed : handleClick}
           currentLessonKey={currentLessonKey}
           className={className}
+          sharing={sharing}
         >
           {children}
         </DesktopEnd>
@@ -89,9 +95,10 @@ export default function End({
           lang={lang}
           theme={theme}
           account={account}
-          onClick={handleClick}
+          onClick={saveAndProceed ? proceed : handleClick}
           currentLessonKey={currentLessonKey}
           gradientTheme={gradientTheme}
+          sharing={sharing}
         >
           {children}
         </MobileEnd>

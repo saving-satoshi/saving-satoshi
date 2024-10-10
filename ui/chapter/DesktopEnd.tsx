@@ -28,6 +28,7 @@ export default function DesktopEnd({
   account,
   onClick,
   currentLessonKey,
+  sharing,
 }: {
   children: any
   className?: string
@@ -38,6 +39,7 @@ export default function DesktopEnd({
   account: any
   onClick: any
   currentLessonKey: any
+  sharing: boolean
 }) {
   const t = useTranslations(lang)
   const { chapterId } = usePathData()
@@ -119,7 +121,7 @@ export default function DesktopEnd({
                 {t('chapter_one.end.feedback')}
               </Button>
             )}
-            {typeof window.nostr !== 'undefined' && (
+            {typeof window.nostr !== 'undefined' && sharing && (
               <Button
                 onClick={handleShare}
                 disabled={shared || shareText === t('social.sharing')}
@@ -132,17 +134,19 @@ export default function DesktopEnd({
                 </div>
               </Button>
             )}
-            <Button
-              style="outline"
-              size="small"
-              external
-              href={`https://twitter.com/intent/post?original_referer=https%3A%2F%2Fsavingsatoshi.com%2F&text=${twitterContent}`}
-            >
-              <div className="flex flex-row justify-center gap-4">
-                <TwitterIcon className="h-6 w-6" />
-                {t('social.twitter_share')}
-              </div>
-            </Button>
+            {sharing && (
+              <Button
+                style="outline"
+                size="small"
+                external
+                href={`https://twitter.com/intent/post?original_referer=https%3A%2F%2Fsavingsatoshi.com%2F&text=${twitterContent}`}
+              >
+                <div className="flex flex-row justify-center gap-4">
+                  <TwitterIcon className="h-6 w-6" />
+                  {t('social.twitter_share')}
+                </div>
+              </Button>
+            )}
           </div>
         </div>
       </div>

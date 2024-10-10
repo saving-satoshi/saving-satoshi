@@ -25,6 +25,7 @@ export default function MobileEnd({
   onClick,
   currentLessonKey,
   gradientTheme,
+  sharing,
 }: {
   children: any
   image: string
@@ -34,6 +35,7 @@ export default function MobileEnd({
   onClick: any
   currentLessonKey: any
   gradientTheme: string
+  sharing: boolean
 }) {
   const t = useTranslations(lang)
   const { chapterId, lessonId } = usePathData()
@@ -168,32 +170,36 @@ export default function MobileEnd({
               {t('chapter_one.end.feedback')}
             </Button>
           )}
-          <>
-            <Button
-              onClick={handleAmberRequest}
-              disabled={
-                shared || eventParam !== '' || shareText === t('social.sharing')
-              }
-              style="outline"
-              size="small"
-            >
-              <div className="flex flex-row justify-center gap-4">
-                <NostrIcon className="h-7 w-7" fill="white" />
-                {shareText}
-              </div>
-            </Button>
-            <Button
-              style="outline"
-              size="small"
-              external
-              href={`https://twitter.com/intent/post?original_referer=https%3A%2F%2Fsavingsatoshi.com%2F&text=${twitterContent}`}
-            >
-              <div className="flex flex-row justify-center gap-4">
-                <TwitterIcon className="h-6 w-6" />
-                {t('social.twitter_share')}
-              </div>
-            </Button>
-          </>
+          {sharing && (
+            <>
+              <Button
+                onClick={handleAmberRequest}
+                disabled={
+                  shared ||
+                  eventParam !== '' ||
+                  shareText === t('social.sharing')
+                }
+                style="outline"
+                size="small"
+              >
+                <div className="flex flex-row justify-center gap-4">
+                  <NostrIcon className="h-7 w-7" fill="white" />
+                  {shareText}
+                </div>
+              </Button>
+              <Button
+                style="outline"
+                size="small"
+                external
+                href={`https://twitter.com/intent/post?original_referer=https%3A%2F%2Fsavingsatoshi.com%2F&text=${twitterContent}`}
+              >
+                <div className="flex flex-row justify-center gap-4">
+                  <TwitterIcon className="h-6 w-6" />
+                  {t('social.twitter_share')}
+                </div>
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </div>

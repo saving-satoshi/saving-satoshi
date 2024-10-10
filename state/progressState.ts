@@ -368,6 +368,7 @@ export const defaultProgressState: CourseProgress = {
       lessons: [
         { id: 'CH10INT1', path: '/chapter-10/intro-1', completed: false },
         { id: 'CH10INT2', path: '/chapter-10/intro-2', completed: false },
+        { id: 'CH10INT3', path: '/chapter-10/intro-3', completed: false },
         {
           id: 'CH10OAC1',
           path: '/chapter-10/opening-a-channel-1',
@@ -391,6 +392,36 @@ export const defaultProgressState: CourseProgress = {
         {
           id: 'CH10OAC5',
           path: '/chapter-10/opening-a-channel-5',
+          completed: false,
+        },
+        {
+          id: 'CH10UTS1',
+          path: '/chapter-10/updating-the-state-1',
+          completed: false,
+        },
+        {
+          id: 'CH10UTS2',
+          path: '/chapter-10/updating-the-state-2',
+          completed: false,
+        },
+        {
+          id: 'CH10UTS3',
+          path: '/chapter-10/updating-the-state-3',
+          completed: false,
+        },
+        {
+          id: 'CH10UTS4',
+          path: '/chapter-10/updating-the-state-4',
+          completed: false,
+        },
+        {
+          id: 'CH10UTS5',
+          path: '/chapter-10/updating-the-state-5',
+          completed: false,
+        },
+        {
+          id: 'CH10UTS6',
+          path: '/chapter-10/updating-the-state-6',
           completed: false,
         },
         {
@@ -418,7 +449,27 @@ export const defaultProgressState: CourseProgress = {
           path: '/chapter-10/making-a-payment-5',
           completed: false,
         },
+        {
+          id: 'CH10MAP6',
+          path: '/chapter-10/making-a-payment-6',
+          completed: false,
+        },
+        {
+          id: 'CH10MAP7',
+          path: '/chapter-10/making-a-payment-7',
+          completed: false,
+        },
+        {
+          id: 'CH10MAP8',
+          path: '/chapter-10/making-a-payment-8',
+          completed: false,
+        },
         { id: 'CH10OUT1', path: '/chapter-10/outro-1', completed: false },
+        { id: 'CH10OUT2', path: '/chapter-10/outro-2', completed: false },
+        { id: 'CH10OUT3', path: '/chapter-10/outro-3', completed: false },
+        { id: 'CH10OUT4', path: '/chapter-10/outro-4', completed: false },
+        { id: 'CH10OUT5', path: '/chapter-10/outro-5', completed: false },
+        { id: 'CH10OUT6', path: '/chapter-10/outro-6', completed: false },
       ],
       completed: false,
       hasDifficulty: false,

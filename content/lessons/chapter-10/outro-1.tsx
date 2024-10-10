@@ -1,15 +1,13 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { ChapterEnd } from 'ui'
+import { Introduction, Text } from 'ui'
 
 export const metadata = {
-  title: 'chapter_nine.outro_one.title',
-  navigation_title: 'chapter_nine.outro_one.nav_title',
-  image: '/assets/images/chapter-9-outro.jpg',
-  theme: 'bg-transparent/40',
-  secondaryTheme: 'bg-[#886038]',
-  gradientTheme: 'from-[#886038] via-[#886038BF]',
+  title: 'chapter_ten.intro_one.title',
+  navigation_title: 'chapter_ten.intro_one.nav_title',
+  image: '/assets/images/chapter-10-intro-1.jpg',
+  theme: 'bg-[#401d4e]',
   key: 'CH10OUT1',
 }
 
@@ -17,19 +15,16 @@ export default function Outro1({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <ChapterEnd
-      image={metadata.image}
-      direction="left"
-      lang={lang}
-      theme={metadata.secondaryTheme}
-      gradientTheme={metadata.gradientTheme}
-    >
-      <h1 className="text-5xl font-bold text-white">
-        {t('chapter_nine.outro_one.heading')}
-      </h1>
-      <p className="mt-4 font-nunito text-2xl text-white">
-        {t('chapter_nine.outro_one.paragraph_one')}
-      </p>
-    </ChapterEnd>
+    <Introduction lang={lang} imagePosition="object-center">
+      <Text className="text-lg md:text-xl">
+        {t('chapter_ten.intro_one.paragraph_one')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('chapter_ten.intro_one.paragraph_two')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('chapter_ten.intro_one.paragraph_three')}
+      </Text>
+    </Introduction>
   )
 }
