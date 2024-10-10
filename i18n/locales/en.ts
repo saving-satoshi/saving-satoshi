@@ -638,7 +638,7 @@ const translations = {
       list_one: 'fees for all the transactions in the block',
       list_two: 'the block subsidy',
       paragraph_four:
-        'You and your miner friends have earned a total of 6.1 bitcoin and are looking for a good way to split it up. It should be divided based on how much work each of you put in.',
+        'You and your miner friends have earned a total of 7.41 bitcoin and are looking for a good way to split it up. It should be divided based on how much work each of you put in.',
       paragraph_five:
         'Mining pools solve this by tracking how many partial solutions each miner has generated. A pool assigns each miner a minimum difficulty (lower than the block difficulty) based on their hash power. Every few seconds a miner finds one of those easier solutions and notifies the pool. The pool then tracks all the submitted shares and splits up the block rewards accordingly.',
       paragraph_six: 'Let’s take a look at this in action.',
@@ -664,7 +664,7 @@ const translations = {
         'Now this number will work. Miners report these solutions to easier problems regularly to pools. That allows pools to measure fairly accurately how much work each miner has provided.',
       step_six_heading: 'Splitting the rewards',
       step_six_paragraph:
-        'Now we can take the rewards of 6.1 bitcoin and split them up according to the percentage of partial solutions of each pool. Congratulations!',
+        'Now we can take the rewards of 7.41 bitcoin and split them up according to the percentage of partial solutions of each pool. Congratulations!',
     },
 
     outro_one: {
