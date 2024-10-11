@@ -50,7 +50,7 @@ export default function Hero() {
           className="hero-image-position absolute -z-20 h-full w-full object-cover"
         />
       </picture>
-      <div className="fixed bottom-0 mb-16 flex w-screen flex-col justify-center bg-gradient-to-b from-transparent to-[#00000080] px-5 pt-5 font-cbrush text-white min-[556px]:mb-11 md:p-10">
+      <div className="fixed bottom-0 mb-16 flex w-screen flex-col justify-center bg-gradient-to-b from-transparent to-[#00000080] px-5 pt-5 font-cbrush text-white md:p-10 slim:mb-11">
         <p className="px-8 pt-2 text-center font-nunito text-2xl sm:text-3xl md:pt-5 lg:text-4xl">
           {t('hero.description')}
         </p>
