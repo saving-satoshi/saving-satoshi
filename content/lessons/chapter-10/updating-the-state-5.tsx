@@ -9,10 +9,10 @@ export const metadata = {
   navigation_title: 'chapter_nine.intro_two.nav_title',
   image: '/assets/images/chapter-9-intro-2.jpg',
   theme: 'bg-[#401d4e]',
-  key: 'CH10OAC1',
+  key: 'CH10UTS5',
 }
 
-export default function OpeningAChannel1({ lang }) {
+export default function UpdatingTheState5({ lang }) {
   const t = useTranslations(lang)
 
   return (

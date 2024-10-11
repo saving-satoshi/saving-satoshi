@@ -1,39 +1,30 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { ChapterIntro } from 'ui'
-import { Button } from 'shared'
-import { useProceed } from 'hooks'
+import { Introduction, Text } from 'ui'
 
 export const metadata = {
-  title: 'chapter_nine.opcodes_one.title',
-  navigation_title: 'chapter_nine.opcodes_one.nav_title',
+  title: 'chapter_ten.intro_one.title',
+  navigation_title: 'chapter_ten.intro_one.nav_title',
+  image: '/assets/images/chapter-10-intro-1.jpg',
+  theme: 'bg-[#401d4e]',
   key: 'CH10MAP3',
 }
 
 export default function MakingAPayment3({ lang }) {
-  const proceed = useProceed()
   const t = useTranslations(lang)
 
   return (
-    <ChapterIntro
-      className="my-8"
-      heading={t('chapter_nine.opcodes_one.heading')}
-    >
-      <p className="mt-2 text-lg md:text-xl">
-        {t('chapter_nine.opcodes_one.paragraph_one')}
-      </p>
-
-      <p className="mt-8 text-lg md:text-xl">
-        {t('chapter_nine.opcodes_one.paragraph_two')}
-      </p>
-
-      <p className="mt-8 text-lg md:text-xl">
-        {t('chapter_nine.opcodes_one.paragraph_three')}
-      </p>
-      <Button onClick={proceed} classes="mt-10 max-md:w-full">
-        {t('shared.next')}
-      </Button>
-    </ChapterIntro>
+    <Introduction lang={lang} imagePosition="object-center">
+      <Text className="text-lg md:text-xl">
+        {t('chapter_ten.intro_one.paragraph_one')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('chapter_ten.intro_one.paragraph_two')}
+      </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('chapter_ten.intro_one.paragraph_three')}
+      </Text>
+    </Introduction>
   )
 }
