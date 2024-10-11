@@ -2606,10 +2606,17 @@ const translations = {
         "Vanderpoole changes his mind again. He doesn't like that deal because of the unknowns. He decides he wants the Lil Bits foundation to get the first 1.0 BTC of total donations, and you can spend the rest afterward.",
       paragraph_two:
         'There is no way to check a total balance across multiple UTXOs in bitcoin script so you agree on an unbiased third-party oracle: Deborah Chunk! She will monitor the total donation amount on the blockchain and once they add up to at least 1.0 BTC she will announce, live on TV, the preimage to a hash value you will commit to in the script.',
-      paragraph_three:
-        'She generates a secure random nonce in private, then hands you the hash digest: <span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">HASH256(FD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one satoshi one second earlier!',
+      paragraph_three: {
+        a: 'She generates a secure random nonce in private, then hands you the hash digest: <span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">HASH256(FD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one ',
+        b: ' one second earlier!',
+      },
       paragraph_four: `Remember Vanderpoole's public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
       paragraph_five: 'Provide the initial stack to spend from the script.',
+      tooltip_one: {
+        question: 'What is a satoshi?',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520a%2520satoshi%253F',
+        highlighted: 'satoshi',
+      },
       next_step_message:
         "Let's see if we used our signature with the preimage correctly.",
     },
