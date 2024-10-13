@@ -4,7 +4,7 @@ import { useTranslations } from 'hooks'
 import { Introduction, Text } from 'ui'
 
 export const metadata = {
-  title: 'chapter_ten.intro_one.title',
+  title: 'chapter_ten.making_a_payment.title',
   navigation_title: 'chapter_ten.intro_one.nav_title',
   image: '/assets/images/chapter-10-intro-1.jpg',
   theme: 'bg-[#401d4e]',

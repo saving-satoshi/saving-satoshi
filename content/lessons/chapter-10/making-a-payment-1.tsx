@@ -6,8 +6,8 @@ import { Button } from 'shared'
 import { useProceed } from 'hooks'
 
 export const metadata = {
-  title: 'chapter_nine.opcodes_one.title',
-  navigation_title: 'chapter_nine.opcodes_one.nav_title',
+  title: 'chapter_ten.opcodes_one.title',
+  navigation_title: 'chapter_ten.opcodes_one.nav_title',
   key: 'CH10MAP1',
 }
 

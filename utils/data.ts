@@ -21,7 +21,7 @@ export const transactionTabs: TransactionData = {
       'This is an output of 100,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.',
     output_0: {
       sats: '100,000',
-      script: `T1BfUFVTSCBQVUJLRVkoWW91KSBPUF9DSEVDS1NJRw==`, // Intro 2
+      script: `T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==`,
     },
   },
   payment: {
@@ -35,11 +35,11 @@ export const transactionTabs: TransactionData = {
     },
     output_0: {
       sats: '1000',
-      script: 'T1BfUFVTSCBQVUJLRVkoTGFzemxvKSBPUF9DSEVDS1NJRw==',
+      script: 'T1BfUFVTSCBQVUJLRVkoTEFTWkxPKSBPUF9DSEVDS1NJRw==',
     },
     output_1: {
       sats: '99000',
-      script: 'T1BfUFVTSCBQVUJLRVkoWW91KSBPUF9DSEVDS1NJRw==',
+      script: 'T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==',
     },
   },
   'multi-sig': {

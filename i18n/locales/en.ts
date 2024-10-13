@@ -2680,20 +2680,55 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     intro_one: {
       title: 'Intro',
       nav_title: 'Intro',
-      paragraph_one: `But something is different now. After your worldwide TV appearance, the rate of transactions on the bitcoin network has shot up, filling up blocks and increasing fees for miners. That's a good thing for a sustainable network of course, but it wouldn't feel quite right if you had to pay a $5 fee just to buy a $10 beer.`,
-      paragraph_two: `The bar is called The Public Key Pub. The owner and bartender, Laszlo, welcomes you and Mike in with a big smile. Mike and Laszlo pull out their solar-powered mini cyber pads and tap a few holo-buttons each, then Laszlo pours a beer and hands it to Mike. As Mike raises the glass to you he says "no miner fees for off-chain payments! I bought this beer without confirming a transaction on the blockchain!" What?! How?!`,
-      paragraph_three: `Laszlo says "You're smart enough to debug mining software and validate blocks, I bet you can figure out how to send bitcoin off-chain. I'll just guide you a little bit. We will set up a payment channel between you and me so you can buy some drinks."`,
+      paragraph_one: `“You did it! You pulled it off!” she exclaims as you high-five and head for the door. You step outside. Everything is as it used to be. But something feels different. A ziptaxi deposits its passengers and zooms off. Someone buys dinner from a halal cart. A child exits a store with her holodog and a carton of milk. These are regular scenes, but you see how important money is to the world you live in.`,
+      paragraph_two: `“Why are you just standing there?” Mika 3000’s question snaps you out of your dream state.`,
+      paragraph_three: `“Have you ever thought about money? Like, how does bitcoin work?” you stammer.`,
+      paragraph_four: `“Did Vanderpoole knock you in the head? You just saved the world. Are you in shock or something?”`,
+      paragraph_five: `“Let’s get something to drink,” you request and insist at the same time.`,
     },
     intro_two: {
-      title: 'Initial funds',
-      nav_title: 'Initial Funds',
+      title: 'Intro',
+      nav_title: 'Intro',
+      paragraph_one: `You step into a bar called The Public Key Pub. The bartender, a friendly guy with the name tag Laszlo, welcomes you and Mika 3000 in with a big smile.`,
+      paragraph_two: '“I’m in the mood for pizza,” Mika 3000 tells Laszlo.',
+      paragraph_three:
+        '“You and my great-great-grandad both,” Lalzo smiles while tapping a neon “KITCHEN CLOSED AFTER 10 PM” sign.',
+      paragraph_four:
+        '“Seriously, you’re descended from THE Laszlo?” Mika 3000 yells.',
+      paragraph_five: `“That’s so cool. Well, pizza with a Laszlo would have been perfect, but I’ll settle for a [DRINK CHOICE].”`,
+    },
+    intro_three: {
+      title: 'Intro',
+      nav_title: 'Intro',
+      paragraph_one: `Mika 3000 and Laszlo pull out their solar-powered ePhone 114s and start tapping buttons. Laszlo pours a beer and hands it to Mika 3000. She raises the glass to you and says, "Your little stunt back there did a number on miner fees. Good thing we’ve got off-chain payments.”`,
+      paragraph_two: `You must have seen a million bitcoin payments in your life. But you’ve never really thought about it. That couple getting out of the robotaxi, the halal cart, the kid with her holodog, this beer. Of course, these aren’t on-chain payments. But how?`,
+      paragraph_three: `“You’ve got that glazed-over look again,” Mika 3000 whispers.`,
+      paragraph_four: `“I feel silly saying this, but how… how do we pay for stuff?”`,
+      paragraph_five: `Laszlo and Mika 3000 exchange looks and smile. "You're smart enough to debug mining software and validate blocks; I bet you can figure out how to send bitcoin off-chain.”`,
+      paragraph_six: `“I'll guide you a little bit,” Lazslo says. ”I’ll set up a payment channel between you and me so we can buy some drinks."`,
+    },
+    opening_a_channel_one: {
+      title: 'The initial funds',
+      nav_title: 'The initial funds',
       heading_one: 'The initial funds',
       paragraph_one:
-        'You have a confirmed UTXO in the blockchain for 100000 satoshis. Seems pretty simple to make an off-chain payment, right?',
-      paragraph_two:
-        'Your UTXO is output 0 of some transaction you were sent in the past. You will spend that UTXO in input 0 of the transaction you are about to create',
-      paragraph_three:
-        'Note how the tabs now represent transactions instead of code languages. You will interact with multiple transactions as you go through this chapter.',
+        'You have a confirmed UTXO in the blockchain for 100,000 satoshis. It seems pretty simple to make an off-chain payment, right?',
+    },
+    opening_a_channel_two: {
+      title: 'The off-chain transaction',
+      nav_title: 'The off-chain transaction',
+      heading_one: 'The off-chain transaction',
+      paragraph_one:
+        "Let's create a valid Bitcoin transaction but instead of sending it to the network, we'll just send it directly to Laszlo! Laszlo should trade you a beer for this transaction because he knows he effectively has the money even though the transaction is not broadcasted or confirmed.",
+      paragraph_two: "Remember it's the year 2140! Beers cost 0.0001000 BTC.",
+      heading_two: 'Hints',
+      off_chain_list_one:
+        'Fill in the two output amounts, 1000 satoshis for Laszlo and the rest for your change',
+      off_chain_list_two: 'Write the two output scripts',
+      off_chain_list_three: 'Sign the input by clicking "sign"',
+      // off_chain_list_four:'Send it to Laszlo by clicking "send to bob"',
+      hint_one: `Laszlo spends output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO)</span>`,
+      hint_two: `You spend output 1 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU)</span>`,
     },
   },
 
