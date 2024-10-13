@@ -2730,6 +2730,29 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       hint_one: `Laszlo spends output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO)</span>`,
       hint_two: `You spend output 1 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU)</span>`,
     },
+    opening_a_channel_three: {
+      title: 'Off-Chain Payment Trust Issue',
+      nav_title: 'Off-Chain Payment Trust Issue',
+      paragraph_one: `Laszlo says "waaaaaait a minute, that doesn't make any sense -- you can still spend that output at any time. You could drink your beer and then return all the money to yourself without me getting anything!`,
+      paragraph_two: `If you want to spend money off-chain with me, I need a guarantee you can't move the money by yourself ON chain."`,
+    },
+    opening_a_channel_four: {
+      title: 'Multisig',
+      nav_title: 'Multisig',
+      heading_one: 'Multisig',
+      paragraph_one: `This game will have to start with a 2-of-2 multisig, confirmed on the blockchain. Once we have that, however, we can figure out a way to make that single on-chain transaction work harder. To do more with less.`,
+      multisig_one: 'Fill in the output amount and the output script',
+      multisig_two: 'Sign the input by clicking "Sign"',
+      heading_two: 'Hints',
+      hint_one_a: `You and Laszlo want to work together in the future to spend output 0 with <br/> `,
+      hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(Laszlo) SIG(You) </span>`,
+    },
+    opening_a_channel_five: {
+      title: 'Refund Protection in Multi-Sig',
+      nav_title: 'Refund Protection in Multi-Sig',
+      paragraph_one: `Laszlo says, "OK, thanks, this is a good start. But what if I walk away from the table and you never see me again? I could broadcast this transaction, and your 100,000 satoshis would be stuck in a 2-key multi-sig from which you could never recover`,
+      paragraph_two: `Do yourself a favor; before signing this, make a refund transaction to know you can recover your money."`,
+    },
   },
 
   ///CHALLENGE PAGE
