@@ -5,9 +5,8 @@ import { LessonInfo, Text } from 'ui'
 import TransactionChallenge from 'ui/lesson/TransactionsChallenge'
 
 export const metadata = {
-  title: 'chapter_nine.intro_two.title',
-  navigation_title: 'chapter_nine.intro_two.nav_title',
-  image: '/assets/images/chapter-9-intro-2.jpg',
+  title: 'chapter_ten.updating_the_state_five.title',
+  navigation_title: 'chapter_ten.updating_the_state_five.nav_title',
   theme: 'bg-[#401d4e]',
   key: 'CH10UTS5',
 }
@@ -26,25 +25,24 @@ export default function UpdatingTheState5({ lang }) {
         output_1: [],
       }}
       progressKey={metadata.key}
-      currentTransactionTab="deposit"
+      currentTransactionTab="refund_2"
       laszloWillNotSign
-      prefilled
-      noSignature
-      alwaysShowButton
     >
       <LessonInfo>
         <Text className="text-lg font-bold md:text-xl">
-          {t('chapter_ten.intro_two.heading_one')}
+          {t('chapter_ten.updating_the_state_five.heading_one')}
         </Text>
-        <Text className="mt-4 text-lg md:text-xl">
-          {t('chapter_ten.intro_two.paragraph_one')}
+        <ul className="ml-4 mt-4 list-disc  font-nunito text-xl">
+          <li>{t('chapter_ten.updating_the_state_five.time_lock_list_one')}</li>
+          <li>{t('chapter_ten.updating_the_state_five.time_lock_list_two')}</li>
+        </ul>
+        <Text className="mt-4 text-lg font-bold md:text-xl">
+          {t('chapter_ten.updating_the_state_five.heading_two')}
         </Text>
-        <Text className="mt-4 text-lg md:text-xl">
-          {t('chapter_ten.intro_two.paragraph_two')}
-        </Text>
-        <Text className="mt-4 text-lg md:text-xl">
-          {t('chapter_ten.intro_two.paragraph_three')}
-        </Text>
+        <ul className="ml-4 mt-4 list-disc  font-nunito text-xl">
+          <li>{t('chapter_ten.updating_the_state_five.hint_one')}</li>
+          <li>{t('chapter_ten.updating_the_state_five.hint_two')}</li>
+        </ul>
       </LessonInfo>
     </TransactionChallenge>
   )

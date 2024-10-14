@@ -2753,6 +2753,72 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_one: `Laszlo says, "OK, thanks, this is a good start. But what if I walk away from the table and you never see me again? I could broadcast this transaction, and your 100,000 satoshis would be stuck in a 2-key multi-sig from which you could never recover`,
       paragraph_two: `Do yourself a favor; before signing this, make a refund transaction to know you can recover your money."`,
     },
+    updating_the_state_one: {
+      title: 'The refund',
+      nav_title: 'The refund',
+      heading_one: 'The refund',
+      paragraph_one: `A second button appears: [Spend this output] which starts another TX template on the same screen, with an arrow from the first TX output to this TX input.`,
+      refund_list_one: `Fill in the output amount and the output script`,
+      refund_list_two: `Send it to Laszlo by clicking "Send to Laszlo" so he can sign it`,
+      refund_list_three: `Don't sign it yourself yet! Let's see what Laszlo thinks, first`,
+      heading_two: 'Hints',
+      hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(You) </span>`,
+    },
+    updating_the_state_two: {
+      title: 'Revoking Refunds to Secure Payment in Multi-Sig',
+      nav_title: 'Revoking Refunds to Secure Payment in Multi-Sig',
+      paragraph_one: `Laszlo says, "OK, nice, I'll sign this and send it back to you, and then you can sign that funding transaction.`,
+      paragraph_two: `Hey, wait a minute, though. If I sign this, we're back where we started: You can broadcast this transaction even after I give you a beer, and I won't get paid`,
+      paragraph_three:
+        'Before I sign this, I need a guarantee that your full refund transaction can be revoked.',
+      paragraph_four: `Once you actually pay me for the beer, you shouldn't be able to broadcast that. And if you DO try to broadcast the revoked transaction, I get to keep ALL 100000 satoshis!"`,
+    },
+    updating_the_state_three: {
+      title: 'The revocation',
+      nav_title: 'The revocation',
+      heading_one: 'The revocation',
+      paragraph_one: `You can make the output to yourself revocable by Laszlo by adding an extra condition to the 100000 satoshi output. The logic branch should allow Laszlo to spend the output with his own key AND a new private key that you generate. To revoke the transaction, you will just give Laszlo the new private key. It's a very unusual thing to do! But since it puts 100000 satoshis at stake, it proves to Laszlo you will NOT broadcast it after revoking it.`,
+      paragraph_two: `You generate a new key pair: a private key revocation_you_1 and PUBKEY(revocation_you_1). You will generate a new key pair like this every time you want to update the state of the payment channel`,
+      revocation_list_one: `Add an IF condition to the script so Laszlo can spend the output ONLY if he ALSO has the revocation key (you will continue keeping the key secret until it is time to revoke!)`,
+      revocation_list_two: `Send it to Laszlo by clicking "Send to Laszlo" so he can sign it`,
+      revocation_list_three: `Don't sign it yourself yet!`,
+      heading_two: `Hints`,
+      paragraph_three: `Output 0 is spent by EITHER:`,
+      hint_one: `You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(You) 1 </span>`,
+      hint_two: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(revocation_you_1) SIG(Laszlo) 0 </span>`,
+    },
+    updating_the_state_four: {
+      title: 'The Race to Revoke',
+      nav_title: 'The Race to Revoke',
+      paragraph_one:
+        'Laszlo says, "Well, this is better, but it just occurred to me that even if I have the revocation key, it will still be a race between you and me to spend this output',
+      paragraph_two:
+        'I need a decent head start so I have a chance to notice you cheated me. Then I can sweep the bitcoin with the revocation key before you get your full refund."',
+    },
+    updating_the_state_five: {
+      title: 'The time lock',
+      nav_title: 'The time lock',
+      heading_one: 'The time lock',
+      time_lock_list_one:
+        'Add a 700 block delay before you can spend the output',
+      time_lock_list_two:
+        'Send it to Laszlo by clicking "Sign" so he can sign it',
+      time_lock_list_three: "Don't sign it yourself yet!",
+      heading_two: 'Hints',
+      paragraph_one: 'Output 0 is spent by EITHER:',
+      hint_one:
+        'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(You) 1 </span> ',
+      hint_two:
+        'Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(revocation_you_1) SIG(Laszlo) 0 </span> ',
+    },
+    updating_the_state_six: {
+      title: 'Channel Open with Laszlo',
+      nav_title: 'Channel Open with Laszlo',
+      paragraph_one:
+        'This time, when you click Send to Laszlo, he smiles and applauds! He signs the child transaction ([X] Laszlo). Now you can sign the parent transaction and send it to the blockchain: THE CHANNEL IS OPEN',
+      paragraph_two:
+        "You've gotten Laszlo to agree to let you buy drinks from him off-chain and have opened up a channel to do so",
+    },
   },
 
   ///CHALLENGE PAGE

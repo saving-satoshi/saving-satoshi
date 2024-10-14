@@ -171,6 +171,7 @@ const OutputScript: FC<IOutput> = ({
         <textarea
           placeholder="Enter Script"
           spellCheck="false"
+          rows={3}
           value={
             prefilled
               ? Buffer.from(script || '', 'base64').toString('utf-8')
@@ -180,7 +181,7 @@ const OutputScript: FC<IOutput> = ({
           }
           onChange={handleScriptChange}
           ref={textAreaRef}
-          className="resize-none bg-transparent text-white outline-none"
+          className="h-auto resize-none bg-transparent text-white outline-none"
           readOnly={currentTransactionTab !== tab || prefilled}
         />
       </div>
