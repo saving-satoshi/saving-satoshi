@@ -38,6 +38,7 @@ export default function TextImageDisplay({
             <Image
               src={imageSrc}
               alt={t(imageAlt)}
+              quality={92}
               fill
               className={clsx('relative object-cover', objectPosition)}
             />

@@ -289,6 +289,7 @@ export default function Chapter({ children, metadata, lang }) {
           alt={chapter.metadata.title}
           width={600}
           height={600}
+          quality={92}
           className="h-full w-full object-cover"
           loading={
             chapter.metadata.title === 'chapter_one.title' ? 'eager' : 'lazy'
