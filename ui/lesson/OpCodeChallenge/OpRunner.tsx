@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import clsx from 'clsx'
 import LanguageExecutor from './LanguageExecutor'
-import _ from 'lodash'
-import { StatusBar, useLessonContext } from 'ui'
+import { useLessonContext, ScratchDnD } from 'ui'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 import { LessonView } from 'types'
 import { MainState, OpRunnerTypes, StackType, State, T } from './runnerTypes'
@@ -12,6 +11,9 @@ import { useArrows } from 'state/ArrowsContext'
 import { useHorizontalScroll, useLang, useTranslations } from 'hooks'
 import { sleep } from 'utils'
 import { motion, AnimatePresence } from 'framer-motion'
+import OpCodeRunner from './Runner'
+import Icon from 'shared/Icon'
+import { Loader } from 'shared'
 
 const arrowLineStyles = {
   startMarker: true,
@@ -138,19 +140,21 @@ const OpRunner = ({
   prePopulate,
   advancedChallenge,
   initialHeight,
-  initialStackSuccess,
+  initialStackScript,
   nextStepMessage,
 }: Omit<OpRunnerTypes, 'children'>) => {
   const lang = useLang()
   const t = useTranslations(lang)
   const scrollRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const caretPositionRef = useRef(0)
   const btnClassName =
     'bg-black/10 py-[3px] px-2.5 rounded-[3px] text-white font-space-mono disabled:opacity-25'
   const [script, setScript] = useState(
     prePopulate ? answerScript.join(' ') : ''
   )
   const { activeView } = useLessonContext()
-  const isActive = activeView === LessonView.Code
+  const isActive = activeView !== LessonView.Info
   const [initialStack, setInitialStack] = useState('')
   const [step, setStep] = useState<number>(1)
   const [height, setHeight] = useState<number | undefined>(
@@ -188,7 +192,7 @@ const OpRunner = ({
     // Create an initial state to represent the initial stack
     setExecutor(newExecutor)
     setStateHistory([])
-    setStartedTyping(true)
+    setStartedTyping(false)
   }
 
   const executeStepWithDelay = async (delay: number) => {
@@ -214,6 +218,7 @@ const OpRunner = ({
   }
 
   const handleStep = () => {
+    setStartedTyping(false)
     initializeExecutor()
   }
 
@@ -225,23 +230,10 @@ const OpRunner = ({
   }, [arrowContainerRef, scrollPosition])
 
   useEffect(() => {
-    if (
-      (startedTyping && !advancedChallenge && initialStack) ||
-      (startedTyping && advancedChallenge && initialStack)
-    ) {
-      const timeoutId = setTimeout(() => {
-        handleStep()
-      }, 1000)
-
-      return () => clearTimeout(timeoutId)
-    }
-  }, [script, initialStack, height])
-
-  useEffect(() => {
-    if (executor && startedTyping) {
+    if (executor) {
       executeStepWithDelay(500)
     }
-  }, [executor, startedTyping])
+  }, [executor])
 
   const [relations, setRelations] = useState<RelationType[]>([])
 
@@ -259,17 +251,33 @@ const OpRunner = ({
     }
   }, [stateHistory])
 
-  const handleScriptChange = (event) => {
-    if (!advancedChallenge || (advancedChallenge && step === 1)) {
-      setScript(event.target.value.toUpperCase())
+  const handleDnDScript = (data) => {
+    if (
+      (script !== data.join(' ').toUpperCase() && !advancedChallenge) ||
+      (script !== data.join(' ').toUpperCase() &&
+        advancedChallenge &&
+        step === 1)
+    ) {
+      setScript(data.join(' ').toUpperCase())
       setStartedTyping(true)
     }
   }
 
   const handleInitialStackChange = (event) => {
-    setInitialStack(event.target.value.toUpperCase())
+    const input = event.target
+    caretPositionRef.current = input.selectionStart
+    setInitialStack(input.value.toUpperCase())
     setStartedTyping(true)
   }
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.setSelectionRange(
+        caretPositionRef.current,
+        caretPositionRef.current
+      )
+    }
+  }, [initialStack])
 
   const handleHeightChange = (event) => {
     if (!initialHeight) {
@@ -293,6 +301,7 @@ const OpRunner = ({
 
   const checkSuccessState = (tokens: T, state: State[], stack: StackType) => {
     const filterToStringArray = tokens.map((token) => token.value)
+    const filterInitialStackToStringArray = initialStack.split(' ')
     const containsEveryScript = answerScript.every((token) =>
       filterToStringArray.includes(token)
     )
@@ -319,9 +328,11 @@ const OpRunner = ({
         doesStackValidate() &&
         advancedChallenge &&
         step === 2 &&
-        initialStack === initialStackSuccess)
+        initialStackScript?.every((token) =>
+          filterInitialStackToStringArray.includes(token)
+        ))
     ) {
-      return true
+      return 5
     } else if (
       containsEveryScript &&
       doesStackValidate() &&
@@ -337,7 +348,9 @@ const OpRunner = ({
       doesStackValidate() &&
       advancedChallenge &&
       step == 2 &&
-      initialStack !== initialStackSuccess
+      !initialStackScript?.every((token) =>
+        filterInitialStackToStringArray.includes(token)
+      )
     ) {
       return 3
     } else if (success !== true && isStackCorrectSoFar()) {
@@ -371,81 +384,84 @@ const OpRunner = ({
   }
 
   let error = null
-
   return (
-    <div
-      className={clsx('grow flex-col text-white md:w-[50vw]', {
-        'hidden md:flex': !isActive,
-        flex: isActive,
-      })}
-    >
-      <div className="flex h-[calc(100vh-70px-67px)] grow flex-col text-white">
-        <div className="flex h-[25vh] flex-col gap-1 border-b border-b-white px-5 py-4">
-          <p className="font-space-mono text-lg font-bold capitalize ">
-            Your Script
-          </p>
-          <textarea
-            title="Add OP_CODES seperated by spaces."
-            className="overflow-wrap-normal w-full resize-none break-all border-none bg-transparent font-space-mono text-lg uppercase text-white focus:outline-none"
-            onChange={handleScriptChange}
-            autoComplete="off"
-            value={script}
-            readOnly={readOnly}
-            placeholder="OP_CODES..."
-            autoCapitalize="none"
-            spellCheck="false"
-            rows={4}
+    <div className="grow flex-col text-white md:w-[50vw]">
+      <div className="flex h-[calc(100dvh-70px-56px-48px)] grow flex-col text-white md:h-[calc(100dvh-70px-56px)]">
+        <div
+          className={clsx(
+            'flex h-[calc(100dvh-70px-48px-156px-56px)] flex-col border-b border-b-white/25 md:h-[calc(100dvh-70px-156px-32.5dvh-56px)]',
+            {
+              'hidden md:flex': activeView === LessonView.Execute || !isActive,
+              flex: isActive,
+            }
+          )}
+        >
+          <ScratchDnD
+            items={answerScript}
+            prePopulate={prePopulate || step === 2}
+            onItemsUpdate={handleDnDScript}
           />
         </div>
 
-        <div className="flex flex-col flex-wrap border-b border-b-white">
-          <div className="flex flex-col border-b border-b-white px-5 py-4">
-            <p className="font-space-mono text-lg font-bold capitalize">
+        <div
+          className={clsx('flex-col', {
+            'hidden md:flex': activeView === LessonView.Execute || !isActive,
+            flex: isActive,
+          })}
+        >
+          <div className="flex flex-col border-b border-b-white/25 px-5 py-[15px]">
+            <p className="font-space-mono text-[15px] font-bold">
               Initial stack
             </p>
             <input
-              title="Add text or numbers seperated by spaces."
+              title="Add text or numbers separated by spaces."
               onChange={handleInitialStackChange}
               value={initialStack}
-              className="flex-grow border-none bg-transparent font-space-mono text-lg uppercase focus:outline-none"
+              ref={inputRef}
+              className="h-[25px] flex-grow border-none bg-transparent font-space-mono text-[15px] uppercase placeholder:text-white/50 focus:outline-none"
               type="text"
               placeholder="0xA 10..."
             />
-            <p className="mt-2 font-space-mono text-base text-orange">
-              Add text or numbers separated by spaces.
-            </p>
           </div>
 
-          <div className="flex flex-col px-5 py-4">
-            <p className="font-space-mono text-lg font-bold capitalize">
-              Next Block Height
+          <div className="flex flex-col border-b border-b-white/25 px-5 py-[15px]">
+            <p className="font-space-mono text-[15px] font-bold">
+              Next block height
             </p>
             <input
               title="Enter any number above 1."
               onChange={handleHeightChange}
               value={height}
-              className="flex-grow border-none bg-transparent text-lg [appearance:textfield] focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+              className="h-[25px] flex-grow border-none bg-transparent font-space-mono text-[15px] [appearance:textfield] placeholder:text-white/50 focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               placeholder="6930001"
               type="number"
               min="1"
             />
           </div>
         </div>
-        <div className="flex grow flex-col px-5 ">
-          <div className="flex w-full flex-row justify-between py-3">
-            <p className="font-mono text-lg font-bold">Execution stack</p>
+        <div
+          className={clsx(
+            'h-full min-h-[calc(25dvh)] flex-col gap-y-2.5 bg-black/10 px-5 py-[15px]',
+            {
+              'hidden md:flex': activeView !== LessonView.Execute,
+              flex: activeView === LessonView.Execute,
+            }
+          )}
+        >
+          <div className="flex w-full flex-row justify-between">
+            <p className="font-mono text-[15px] font-bold">Execution stack</p>
           </div>
           <div
             ref={scrollRef}
-            className="mb-auto flex h-full w-full flex-row gap-2.5 overflow-scroll py-2"
+            className="mb-auto flex h-full w-full flex-row gap-2.5 overflow-auto"
           >
-            {stateHistory.length === 0 && (
-              <div className="flex w-full max-w-[164px] flex-col">
-                <div className="my-[5px] w-full rounded-[3px] bg-black/20 px-3 py-1 text-center font-space-mono text-white/50">
-                  OP_CODES
+            {(stateHistory.length === 0 || startedTyping) && (
+              <div className="flex w-full max-w-[164px] flex-col gap-y-2.5">
+                <div className="w-full rounded-[3px] bg-black/20 px-3 py-1 text-center font-space-mono text-sm text-white/50">
+                  OP_CODE
                 </div>
 
-                <div className="flex h-full max-h-[204px] min-w-[160px] flex-col rounded-b-[10px] bg-black/20  p-2.5">
+                <div className="flex h-1/2 min-w-[160px]  flex-col rounded-b-[10px] bg-black/20 p-2.5 md:h-[calc(25dvh-40px)] md:max-h-64">
                   <div
                     className="my-auto resize-none break-all border-none bg-transparent font-space-mono text-white/50 focus:outline-none"
                     style={{ whiteSpace: 'pre-wrap' }}
@@ -468,11 +484,12 @@ const OpRunner = ({
                   error = stack.error?.message
                 }
                 return (
-                  stack.negate === 0 && (
+                  stack.negate === 0 &&
+                  !startedTyping && (
                     <motion.div
                       key={`Overall-container${opCodeIndex}`}
                       id={`Overall-container${opCodeIndex}`}
-                      className="flex flex-col"
+                      className="flex flex-col gap-y-2.5"
                       variants={cardVariants}
                       initial="hidden"
                       animate="visible"
@@ -482,7 +499,7 @@ const OpRunner = ({
                     >
                       <div
                         className={clsx(
-                          'my-[5px] w-full rounded-[3px] border border-none bg-black/20 px-3 py-1 text-center font-space-mono text-[13px]',
+                          'w-full rounded-[3px] border border-none bg-black/20 px-3 py-1 text-center font-space-mono text-[13px]',
                           {
                             'text-[#EF960B]':
                               stack.operation.tokenType === 'conditional',
@@ -498,7 +515,7 @@ const OpRunner = ({
                       {stack && (
                         <div
                           key={`Container${opCodeIndex}`}
-                          className="flex max-h-[405px] min-h-[204px] min-w-[160px] flex-col self-stretch overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5"
+                          className="flex h-full min-w-[160px] flex-col overflow-y-auto rounded-b-[10px] bg-black bg-opacity-20 p-2.5 md:h-[calc(25dvh-40px)] md:max-h-64"
                         >
                           <div
                             key={opCodeIndex}
@@ -532,6 +549,8 @@ const OpRunner = ({
                                       {
                                         'bg-red/35':
                                           stack.error.message !== null ||
+                                          (stack.stack[0] !== 1 &&
+                                            stack.stack[0] !== true) ||
                                           (opCodeIndex === isFinalToken() - 1 &&
                                             (stack.stack.length !== 1 ||
                                               stack.stack[0] === false ||
@@ -553,6 +572,11 @@ const OpRunner = ({
                                             stateHistory.length &&
                                             stack.stack.length === 1 &&
                                             Number(stack.stack[0]) > 1),
+                                        'border border-[#3DCFEF]':
+                                          i === 0 &&
+                                          stack.operation.tokenType.match(
+                                            /constant|data-push/
+                                          ),
                                       }
                                     )}
                                     initial={{ opacity: 0, scale: 0.8 }}
@@ -587,15 +611,12 @@ const OpRunner = ({
           </div>
         </div>
       </div>
-
-      <StatusBar
-        handleTryAgain={handleTryAgain}
-        className="h-14 min-h-14 grow"
+      <OpCodeRunner
+        lang="en"
         errorMessage={error || ''}
-        success={success}
-        hints
-        nextStepMessage={nextStepMessage}
-        nextStepButton={nextStepMessage ? t('opcode.reset') : undefined}
+        handleTryAgain={handleTryAgain}
+        handleRun={handleStep}
+        success={lastSuccessState}
       />
     </div>
   )

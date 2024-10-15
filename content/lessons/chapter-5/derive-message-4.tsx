@@ -20,20 +20,20 @@ export default function DeriveMessage4({ lang }) {
       precedingText="OP_PUSHBYTES_65"
       successMessage={t('chapter_five.derive_message_four.success')}
       hints
-      inputClassNames="text-[18px] md:text-[24px] lg:text-[30px]"
+      inputClassNames="text-[18px] md:text-[24px] lg:text-[30px] short:text-[24px]"
     >
       <LessonInfo className="md:self-center">
-        <Text className="mt-2 text-center text-xl font-bold md:text-2xl">
+        <Text className="mt-2 text-center text-xl font-bold md:text-2xl short:text-lg">
           {t('chapter_five.derive_message_four.heading')}
         </Text>
 
-        <Text className="mt-2 text-center text-lg md:text-xl">
+        <Text className="mt-2 text-center text-lg md:text-xl short:text-base">
           {t('chapter_five.derive_message_four.paragraph_one')}
         </Text>
-        <Text className="mt-2 text-center text-lg md:text-xl">
+        <Text className="mt-2 text-center text-lg md:text-xl short:text-base">
           {t('chapter_five.derive_message_four.paragraph_two')}
         </Text>
-        <Text className="mt-2 text-center text-lg md:text-xl">
+        <Text className="mt-2 text-center text-lg md:text-xl short:text-base">
           {t('chapter_five.derive_message_four.paragraph_three')}
         </Text>
       </LessonInfo>

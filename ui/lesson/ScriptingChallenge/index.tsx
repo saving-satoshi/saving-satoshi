@@ -5,7 +5,12 @@ import { useEffect, useState } from 'react'
 import LanguageTabs from './LanguageTabs'
 import Editor from './Editor'
 import Runner from './Runner'
-import { EditorConfig, LessonDirection, StoredLessonData } from 'types'
+import {
+  EditorConfig,
+  LessonDirection,
+  StoredLessonData,
+  LessonView,
+} from 'types'
 import { Lesson, LessonTabs } from 'ui'
 import { useMediaQuery, useDynamicHeight, useTranslations } from 'hooks'
 import { setData } from 'api/data'
@@ -67,6 +72,7 @@ export default function ScriptingChallenge({
   const t = useTranslations(lang)
   const [account] = useAtom(accountAtom)
   const [currentLanguage, setCurrentLanguage] = useAtom(currentLanguageAtom)
+  const [activeView, setActiveView] = useState(LessonView.Info)
   const [code, setCode] = useState(
     config.languages[getLanguageString(currentLanguage)].defaultCode?.toString()
   )
@@ -125,8 +131,13 @@ export default function ScriptingChallenge({
       )
     )
   }
+
   const handleTryAgain = () => {
     setChallengeSuccess(false)
+  }
+
+  const handleViewChange = (view) => {
+    setActiveView(view)
   }
 
   const handleRunnerValidate = async (data: StoredLessonData) => {
@@ -201,11 +212,19 @@ export default function ScriptingChallenge({
         direction={
           isSmallScreen ? LessonDirection.Vertical : LessonDirection.Horizontal
         }
+        onViewChange={handleViewChange}
       >
         <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
         {children}
 
-        <div className="code-editor grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l">
+        <div
+          className={clsx(
+            'code-editor grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l',
+            {
+              hidden: activeView === LessonView.Info,
+            }
+          )}
+        >
           <LanguageTabs
             languageLocked={!onSelectLanguage}
             languages={config.languages}

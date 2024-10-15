@@ -21,6 +21,7 @@ export default function Proposal4({ lang }) {
   return (
     hydrated && (
       <OpCodeChallenge
+        lang={lang}
         answerScript={[
           'OP_IF',
           'OP_PUSH',
@@ -38,7 +39,7 @@ export default function Proposal4({ lang }) {
         advancedChallenge
         success={success}
         setSuccess={setSuccess}
-        initialStackSuccess="SIG(ME) FD3771E8 0"
+        initialStackScript={['SIG(ME)', 'FD3771E8', '0']}
         nextStepMessage={t('chapter_nine.proposal_four.next_step_message')}
       >
         <LessonInfo>

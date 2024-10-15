@@ -32,7 +32,7 @@ export default function Modal({
     >
       <div
         className={clsx(
-          'h-full w-screen transform overflow-hidden py-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:max-h-[90%] sm:rounded-lg sm:pt-5',
+          'h-full w-screen transform overflow-y-scroll py-5 pt-10 font-nunito text-white shadow-lg outline-none sm:absolute sm:max-h-[90%] sm:rounded-lg sm:pt-5',
           theme,
           {
             'px-5 sm:h-fit sm:w-[550px]': !wide,

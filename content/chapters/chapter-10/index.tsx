@@ -6,19 +6,7 @@ export default function Chapter10({ lang }) {
 
   return (
     <Chapter metadata={metadata} lang={lang}>
-      <Text>
-        Trust has been reestablished and more and more of the miners that were
-        attacked are coming back online. The halving passes, and the fee market
-        is stable.
-      </Text>
-
-      <Text>
-        There’s just one last question: what to do with all this bitcoin? You
-        don’t really need it. What matters to you is the network. We are all
-        Satoshi. You decide to release the bitcoin back into the world, starting
-        with donating to charities. How can you do that as efficiently as
-        possible?
-      </Text>
+      <Text>{t('chapter_ten.paragraph_one')}</Text>
     </Chapter>
   )
 }
@@ -27,9 +15,33 @@ export const metadata = {
   position: 9,
   slug: 'chapter-10',
   title: `chapter_ten.title`,
-  image: '/assets/images/chapter-10-cover.jpg',
-  intros: [],
-  lessons: [],
-  outros: [],
-  challenges: [],
+  image: '/assets/images/chapter-9-cover.jpg',
+  intros: ['intro-1', 'intro-2', 'intro-3'],
+  lessons: [
+    'opening-a-channel-1',
+    'opening-a-channel-2',
+    'opening-a-channel-3',
+    'opening-a-channel-4',
+    'opening-a-channel-5',
+    'updating-the-state-1',
+    'updating-the-state-2',
+    'updating-the-state-3',
+    'updating-the-state-4',
+    'updating-the-state-5',
+    'updating-the-state-6',
+    'making-a-payment-1',
+    'making-a-payment-2',
+    'making-a-payment-3',
+    'making-a-payment-4',
+    'making-a-payment-5',
+    'making-a-payment-6',
+    'making-a-payment-7',
+    'making-a-payment-8',
+  ],
+  outros: ['outro-1', 'outro-2', 'outro-3', 'outro-4', 'outro-5', 'outro-6'],
+  challenges: [
+    'opening-a-channel-1',
+    'updating-the-state-1',
+    'making-a-payment-1',
+  ],
 }

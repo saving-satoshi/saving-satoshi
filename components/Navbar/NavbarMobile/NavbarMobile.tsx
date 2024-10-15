@@ -90,7 +90,7 @@ export default function NavbarMobile({ params }) {
           </Link>
         </div>
         <div
-          className={clsx('flex', 'items-stretch', {
+          className={clsx('flex overflow-x-hidden', {
             'bg-black': isOpen,
             'bg-opacity-20': isOpen,
           })}

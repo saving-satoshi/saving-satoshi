@@ -94,6 +94,10 @@ export default function Page({ params }) {
     return (
       <Portal id="head">
         <title>{`${title} - Saving Satoshi`}</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1 maximum-scale=1"
+        />
       </Portal>
     )
   }

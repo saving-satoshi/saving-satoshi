@@ -77,13 +77,12 @@ ${
 
 // Insert checksum and metadata, encode using bech32 and return a string
 // See the library source code for the exact API.
-// https://github.com/saving-satoshi/challenges/blob/master/chapter4/javascript/lib/bech32.js
+// https://github.com/saving-satoshi/bech32js/blob/main/bech32.js
 function hashToAddress(hash) {
 
 }
 `,
     validate: async (answer) => {
-      console.log(Buffer.from(dataObject, 'hex'), answer)
       if (!answer.startsWith('tb')) {
         return [
           false,
@@ -124,7 +123,7 @@ ${
 
 # Insert checksum and metadata, encode using bech32 and return a string
 # See the library source code for the exact API.
-# https://github.com/saving-satoshi/challenges/blob/master/chapter4/python/lib/bech32.py
+# https://github.com/saving-satoshi/bech32py/blob/main/bech32py/bech32.py
 def hash_to_address(hash):
 `,
     validate: async (answer) => {

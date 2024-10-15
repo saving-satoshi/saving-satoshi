@@ -34,15 +34,13 @@ export default function useProceed() {
 
   const Proceed = () => {
     let route
-    if (
-      (isDevelopment || currentLesson?.completed) &&
-      nextLessonUsingCurrentRoute
-    ) {
+    if (!currentLesson?.completed && nextLessonUsingCurrentRoute) {
       route =
         routes.chaptersUrl + nextLessonUsingCurrentRoute?.path + queryParams
       markLessonAsComplete(currentLessonId)
     } else {
-      route = routes.chaptersUrl + nextLessonPath + queryParams
+      route =
+        routes.chaptersUrl + nextLessonUsingCurrentRoute?.path + queryParams
       progressToNextLesson()
     }
     router.push(route, { scroll: true })

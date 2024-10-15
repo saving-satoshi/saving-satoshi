@@ -41,6 +41,7 @@ export default function Split2({ lang }) {
 
   const TOTAL_BLOCKS = 100
   const BLOCK_RATIO = 40
+  const TOTAL_REWARD = 7.41 // The total reward for mining this block
 
   const PROTAGONISTS = [
     {
@@ -192,13 +193,14 @@ export default function Split2({ lang }) {
                 value={
                   step === 6
                     ? (
-                        (profile.value /
-                          (PROTAGONISTS[0].value +
-                            PROTAGONISTS[1].value +
-                            PROTAGONISTS[2].value +
-                            PROTAGONISTS[3].value)) *
-                        6.1
-                      ).toFixed(2)
+                        (profile.hashes / // This miners partial shares
+                          (PROTAGONISTS[0].hashes + // Divided by the sum of all the partial shares
+                            PROTAGONISTS[1].hashes +
+                            PROTAGONISTS[2].hashes +
+                            PROTAGONISTS[3].hashes)) *
+                        TOTAL_REWARD
+                      ) // total amount of rewards to be divided
+                        .toFixed(2)
                     : i + 1
                 }
               />
@@ -297,7 +299,7 @@ export default function Split2({ lang }) {
                     %
                   </BoxDisplayer>
                 )}
-                <span className="fade-in font-nunito text-[15px] font-bold text-white text-opacity-25">
+                <span className="fade-in font-space-mono text-[15px] font-normal text-white text-opacity-25">
                   <div
                     className={clsx({
                       'text-white/25': step === 0 || profile.hashes === 0,

@@ -10,7 +10,7 @@ const getKey = (keyData) => {
       error: 'Missing key',
     }
   }
-  const keyMatch = /PUBKEY\((.*?)\)/.exec(keyData)
+  const keyMatch = /PUBKEY\((.*?)\)(?![^ ]+)/.exec(keyData)
   if (!keyMatch || keyMatch.length !== 2) {
     return {
       value: null,
@@ -30,7 +30,7 @@ const getSig = (sigData) => {
       error: 'Missing sig',
     }
   }
-  const sigMatch = /SIG\((.*?)\)/.exec(sigData)
+  const sigMatch = /SIG\((.*?)\)(?![^ ]+)/.exec(sigData)
   if (!sigMatch || sigMatch.length !== 2) {
     return {
       value: null,
@@ -440,11 +440,11 @@ interface OpToken {
 
 export const OpCodeTypes = {
   INITIAL_STACK: 'initial-stack',
-  OP_0: 'constant',
-  OP_FALSE: 'constant',
-  OP_1NEGATE: 'constant',
-  OP_1: 'constant',
   OP_TRUE: 'constant',
+  OP_FALSE: 'constant',
+  OP_0: 'constant',
+  OP_1: 'constant',
+  OP_1NEGATE: 'constant',
   OP_2: 'constant',
   OP_3: 'constant',
   OP_4: 'constant',
@@ -483,3 +483,9 @@ export const OpCodeTypes = {
   OP_VERIFY: 'stack',
   OP_NOP: 'stack',
 }
+
+const disabledOpCodes = ['INITIAL_STACK']
+
+export const OpCodeArray = Object.keys(OpCodeTypes).filter(
+  (key) => !disabledOpCodes.includes(key)
+)
