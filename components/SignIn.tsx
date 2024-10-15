@@ -8,7 +8,11 @@ import { useModalFunctions } from 'state/ModalFunctions'
 import Avatar from './Avatar'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { useRouter } from 'next/navigation'
-import { currentLessonPathAtom, loadProgressAtom } from 'state/progressState'
+import {
+  currentLessonPathAtom,
+  loadProgressAtom,
+  syncedCourseProgressAtom,
+} from 'state/progressState'
 
 export default function SignIn({
   lang,
@@ -30,6 +34,7 @@ export default function SignIn({
   const [privateKey, setPrivateKey] = useState<string>('')
   const [hasAccount, setHasAccount] = useState<boolean>()
   const [isPending, startTransition] = useTransition()
+  const courseProgress = useAtomValue(syncedCourseProgressAtom)
   const currentLessonPath = useAtomValue(currentLessonPathAtom)
   const loadProgress = useSetAtom(loadProgressAtom)
 
@@ -55,7 +60,13 @@ export default function SignIn({
 
   const handleRedirect = async () => {
     startTransition(() => {
-      router.push(`${routes.chaptersUrl + currentLessonPath}`)
+      router.push(
+        `${routes.chaptersUrl}${
+          !!currentLessonPath
+            ? currentLessonPath
+            : '#chapter-' + courseProgress?.currentChapter
+        }`
+      )
     })
   }
 
