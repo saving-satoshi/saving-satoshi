@@ -28,7 +28,7 @@ export const useFeatureFunctions = () => {
 
   const isFeatureEnabled = (name: string) => {
     // TODO reset this to false
-    return true
+    //return true
     return !!features[name]
   }
 

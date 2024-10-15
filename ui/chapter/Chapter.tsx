@@ -77,11 +77,13 @@ export default function Chapter({ children, metadata, lang }) {
     [metadata.position, currentChapter]
   )
 
+  const position = metadata.position + 1
   const display = useMemo(
     () =>
       metadata.slug === 'chapter-1' ||
       isDevelopment ||
-      (isEnabled && isUnlocked && !isLoading),
+      (isEnabled && isUnlocked && !isLoading) ||
+      courseProgress?.chapters[position - 1]?.completed,
     [metadata.slug, isDevelopment, isEnabled, isUnlocked, isLoading]
   )
 
@@ -90,7 +92,6 @@ export default function Chapter({ children, metadata, lang }) {
   const routes = useLocalizedRoutes()
   const t = useTranslations(lang)
   const chapter = chapters[metadata.slug]
-  const position = metadata.position + 1
   const isEven = useMemo(() => position % 2 === 0, [position])
   const queryParams = isDevelopment ? '?dev=true' : ''
   const tabData = useMemo(
@@ -169,7 +170,9 @@ export default function Chapter({ children, metadata, lang }) {
                 <div className="font-nunito md:mt-6">
                   {(chapter.metadata.lessons.length > 0 &&
                     display &&
-                    (position === 1 || (account && display)) && (
+                    (position === 1 ||
+                      (account && display) ||
+                      courseProgress?.chapters[position - 1]?.completed) && (
                       <div className="text-lg text-white">{children}</div>
                     )) ||
                     (isLoading && !display && (
@@ -181,7 +184,7 @@ export default function Chapter({ children, metadata, lang }) {
                         {t('shared.loading')}...
                       </div>
                     )) ||
-                    (!isEnabled && !isLoading && !display && (
+                    (!isEnabled && !isLoading && (
                       <div className="flex font-nunito text-lg text-white">
                         <Icon
                           icon="lock"
@@ -189,7 +192,28 @@ export default function Chapter({ children, metadata, lang }) {
                         />
                         {t('chapter.coming_soon')}
                       </div>
-                    )) || (
+                    )) ||
+                    (!courseProgress?.chapters[position - 1]?.completed &&
+                      account &&
+                      !isLoading && (
+                        <div className="flex font-nunito text-lg text-white">
+                          <Icon
+                            icon="lock"
+                            className="my-auto mr-2 h-3 w-3 justify-center"
+                          />
+                          {t('chapter.chapter_locked_one')} {position - 1}{' '}
+                          {t('chapter.chapter_locked_two')}&nbsp;
+                          {/*!account && (
+                          <button
+                            onClick={() => handleClick(Modal.SignIn)}
+                            className="underline"
+                          >
+                            {t('modal_signin.login')}
+                          </button>
+                        )*/}
+                        </div>
+                      )) ||
+                    (!account && (
                       <div className="flex font-nunito text-lg text-white">
                         <Icon
                           icon="lock"
@@ -197,16 +221,14 @@ export default function Chapter({ children, metadata, lang }) {
                         />
                         {t('chapter.chapter_locked_one')} {position - 1}{' '}
                         {t('chapter.chapter_locked_two')}&nbsp;
-                        {!account && (
-                          <button
-                            onClick={() => handleClick(Modal.SignIn)}
-                            className="underline"
-                          >
-                            {t('modal_signin.login')}
-                          </button>
-                        )}
+                        <button
+                          onClick={() => handleClick(Modal.SignIn)}
+                          className="underline"
+                        >
+                          {t('modal_signin.login')}
+                        </button>
                       </div>
-                    )}
+                    ))}
                   <div className="flex pt-8 md:w-full">
                     <Button
                       href={

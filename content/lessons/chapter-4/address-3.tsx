@@ -83,7 +83,6 @@ function hashToAddress(hash) {
 }
 `,
     validate: async (answer) => {
-      console.log(Buffer.from(dataObject, 'hex'), answer)
       if (!answer.startsWith('tb')) {
         return [
           false,
