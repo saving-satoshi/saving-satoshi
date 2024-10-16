@@ -14,7 +14,7 @@ export default function Intro({
   return (
     <div
       className={clsx(
-        'grid w-full grid-cols-1 justify-center justify-items-center md:my-auto',
+        'grid w-full grid-cols-1 justify-center justify-items-center md:my-auto md:py-8',
         className
       )}
     >
