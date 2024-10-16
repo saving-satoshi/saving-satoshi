@@ -2578,27 +2578,28 @@ const translations = {
       paragraph_two: `For each contract proposal you discuss, provide a bitcoin script and one valid spending stack.`,
     },
     proposal_two: {
-      title: 'Advanced Challenge: 2 of 2 multisig',
+      title: '2 of 2 multisig',
+    ```
       nav_title: 'Sign cooperatively',
-      heading: 'Advanced Challenge: 2 of 2 multisig',
+      heading: '2 of 2 multisig',
       paragraph_one: `The first thing Vanderpoole suggests is a 2-of-2 multisig. All funds that get donated will be split by you and him 50/50, which will be managed by you both signing all spending transactions from the donation address, so you will have to agree on all "withdraws"`,
       paragraph_two: `Vanderpoole hands you his public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
       paragraph_three: 'Provide the initial stack to spend from the script.',
       next_step_message: 'Looks good! Now lets try with your own signature.',
     },
     proposal_three: {
-      title: 'Advanced Challenge: Condtional Time locked Transaction',
+      title: 'Conditional time locked transaction',
       nav_title: 'Make him wait',
-      heading: 'Advanced Challenge: Condtional Time locked Transaction',
+      heading: 'Conditional time locked transaction',
       paragraph_one: `Wait a minute, that doesn't make sense -- you don't want to deal with him forever! The new deal is, you get all donations for the next two hours while you are still on TV. After that, he can have whatever else trickles in. You take a look at The Bitcoin Block Clock on the wall in the studio and agree that block height 6930300 will be probably be mined in about two hours`,
       paragraph_two: `Remember Vanderpoole's public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
       paragraph_three: 'Provide the initial stack to spend from the script.',
       next_step_message: 'Looks good! Now lets try with your own signature.',
     },
     proposal_four: {
-      title: 'Advanced Challenge: Conditional Hash Locked Transaction',
+      title: 'Secret preimage locked transaction',
       nav_title: 'Work with an oracle',
-      heading: 'Advanced Challenge: Conditional Hash Locked Transaction',
+      heading: 'Secret preimage locked transaction',
       paragraph_one:
         "Vanderpoole changes his mind again. He doesn't like that deal because of the unknowns. He decides he wants the first 1.0 BTC of total donations, and then you can spend the rest after that.",
       paragraph_two:
