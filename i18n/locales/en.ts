@@ -2579,7 +2579,6 @@ const translations = {
     },
     proposal_two: {
       title: '2 of 2 multisig',
-    ```
       nav_title: 'Sign cooperatively',
       heading: '2 of 2 multisig',
       paragraph_one: `The first thing Vanderpoole suggests is a 2-of-2 multisig. All funds that get donated will be split by you and him 50/50, which will be managed by you both signing all spending transactions from the donation address, so you will have to agree on all "withdraws"`,
