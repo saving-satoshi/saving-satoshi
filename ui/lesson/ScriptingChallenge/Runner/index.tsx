@@ -75,7 +75,7 @@ export default function Runner({
   setErrors: (errors: string[]) => void
 }) {
   const t = useTranslations(lang)
-  const { activeView } = useLessonContext()
+  const { activeView, setActiveView } = useLessonContext()
   const terminalRef = useRef()
 
   const [state, setState] = useState<State>(State.Idle)
@@ -117,6 +117,7 @@ export default function Runner({
   }
 
   const handleRun = async () => {
+    setActiveView(LessonView.Execute)
     hasResult.current = false
     try {
       success = false
