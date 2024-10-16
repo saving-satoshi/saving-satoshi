@@ -17,11 +17,19 @@ export default function UpdatingTheState5({ lang }) {
   return (
     <TransactionChallenge
       initialStack={{
-        output_0: ['SIG(YOU)'],
+        output_0: ['0', 'SIG(REVOCATION_YOU_1)', 'SIG(LASZLO)', '0'],
         output_1: [],
       }}
       answerScript={{
-        output_0: ['OP_PUSH'],
+        output_0: [
+          'OP_IF',
+          'OP_PUSH',
+          'OP_CHECKSEQUENCEVERIFY',
+          '700',
+          'PUBKEY(REVOCATION_YOU_1)',
+          'OP_ELSE',
+          'OP_CHECKMULTISIG',
+        ],
         output_1: [],
       }}
       progressKey={metadata.key}

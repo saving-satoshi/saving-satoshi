@@ -5,9 +5,8 @@ import { LessonInfo, Text } from 'ui'
 import TransactionChallenge from 'ui/lesson/TransactionsChallenge'
 
 export const metadata = {
-  title: 'chapter_nine.intro_two.title',
-  navigation_title: 'chapter_nine.intro_two.nav_title',
-  image: '/assets/images/chapter-9-intro-2.jpg',
+  title: 'chapter_ten.making_a_payment_two.title',
+  navigation_title: 'chapter_ten.making_a_payment_two.nav_title',
   theme: 'bg-[#401d4e]',
   key: 'CH10MAP2',
 }

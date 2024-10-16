@@ -2819,6 +2819,29 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_two:
         "You've gotten Laszlo to agree to let you buy drinks from him off-chain and have opened up a channel to do so",
     },
+    making_a_payment_one: {
+      title: 'Making a payment',
+      nav_title: 'Making a payment',
+      heading_one: 'Making a payment',
+      paragraph_one: "Let's recap:",
+      list_one:
+        'You sent 100000 satoshis to a 2-of-2 multisig output between you and Laszlo',
+      list_two: 'You have, offline, a transaction that spends that output.',
+      list_three: 'That offline output enables EITHER',
+      list_three_sub_one: 'You to get all your money back after 700 blocks',
+      list_three_sub_two:
+        'Laszlo gets all the money if he gets the private key revocation_you_1 from you',
+      list_four:
+        'Laszlo has already signed it, and you can sign it whenever you want to broadcast it.',
+      list_five:
+        'Once Laszlo signed the offline child transaction, you were safe to sign and broadcast the parent transaction',
+      paragraph_two:
+        'The confirmed transaction that funded the multisig output is called the funding transaction. Confirming it in the blockchain means your channel is now OPEN.',
+      paragraph_three:
+        "The offline transaction that spends that output is called a commitment transaction. Confirming it in the blockchain would CLOSE the channel. The first commitment transaction is your full refund, because you haven't made any payments to Laszlo yet.",
+      paragraph_four:
+        'While the channel is OPEN, you and Laszlo can make offline payments to each other, back and forth, by negotiating new commitment transactions and revoking old ones. As you buy more drinks, your "refund" amount will go down and Laszlo’s outputs amounts will go up.',
+    },
   },
 
   ///CHALLENGE PAGE

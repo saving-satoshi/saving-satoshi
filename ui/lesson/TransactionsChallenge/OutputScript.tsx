@@ -68,7 +68,6 @@ const OutputScript: FC<IOutput> = ({
       setErrorMessage(`${output} : ${error[0].error?.message || ''}`)
     }
   }
-
   const handleSatsChange = (event) => {
     setSatsInput(event.target.value.toUpperCase())
   }

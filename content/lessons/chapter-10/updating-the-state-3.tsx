@@ -17,20 +17,12 @@ export default function UpdatingTheState3({ lang }) {
   return (
     <TransactionChallenge
       initialStack={{
-        output_0: [
-          '0',
-          'SIG(REVOCATION_YOU_1)',
-          'SIG(LASZLO)',
-          '0',
-          'SIG(YOU)',
-          '1',
-        ],
+        output_0: ['0', 'SIG(REVOCATION_YOU_1)', 'SIG(LASZLO)', '0'],
         output_1: [],
       }}
       answerScript={{
         output_0: [
           'OP_IF',
-          'PUBKEY(YOU)',
           'OP_PUSH',
           'OP_CHECKSIG',
           'OP_ELSE',
@@ -42,7 +34,6 @@ export default function UpdatingTheState3({ lang }) {
       }}
       progressKey={metadata.key}
       currentTransactionTab="refund_1"
-      laszloWillNotSign
     >
       <LessonInfo>
         <Text className="text-lg font-bold md:text-xl">
