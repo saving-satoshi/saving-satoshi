@@ -23,6 +23,7 @@ export default function MakingAPayment2({ lang }) {
         },
         output_1: { 0: ['SIG(Laszlo)'] },
       }}
+      nSequenceTime={700}
       answerScript={{
         output_0: [
           'OP_IF',

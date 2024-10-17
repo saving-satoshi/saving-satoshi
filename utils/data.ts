@@ -124,7 +124,7 @@ export const transactionTabs: TransactionData = {
       script: 'T1BfUFVTSCBQVUJLRVkoTGFzemxvKSBPUF9DSEVDS1NJRw==',
     },
   },
-  'commitment(Lazlo)': {
+  'commitment(Laszlo)': {
     description: 'This is Laszlo’s version of the commitment transaction.',
     signatures: {
       you: 'signed',
@@ -134,11 +134,11 @@ export const transactionTabs: TransactionData = {
       sats: '100,000',
     },
     output_0: {
-      sats: '1000',
+      sats: '2000',
       script: `T1BfSUbigKhPUF9QVVNIIDcwMCBPUF9DSEVDS1NFUVVFTkNFVkVSSUZZIE9QX0RST1DigKhPUF9QVVNIIFBVQktFWShMYXN6bG8pIE9QX0NIRUNLU0lH4oCoT1BfRUxTReKAqE9QXzIgT1BfUFVTSCBQVUJLRVkocmV2b2NhdGlvbl9sYXN6bG9fMSkgT1BfUFVTSCBQVUJLRVkoWW91KSBPUF8yIE9QX0NIRUNLTVVMVElTSUfigKhPUF9FTkRJRg==`,
     },
     output_1: {
-      sats: '99000',
+      sats: '98000',
       script: 'T1BfUFVTSCBQVUJLRVkoWW91KSBPUF9DSEVDS1NJRw==',
     },
   },

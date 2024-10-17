@@ -8,7 +8,6 @@ import * as MakingAPayment4 from './making-a-payment-4'
 import * as MakingAPayment5 from './making-a-payment-5'
 import * as MakingAPayment6 from './making-a-payment-6'
 import * as MakingAPayment7 from './making-a-payment-7'
-import * as MakingAPayment8 from './making-a-payment-8'
 import * as OpeningAChannel1 from './opening-a-channel-1'
 import * as OpeningAChannel2 from './opening-a-channel-2'
 import * as OpeningAChannel3 from './opening-a-channel-3'
@@ -43,7 +42,6 @@ const Chapter10 = {
   'making-a-payment-5': MakingAPayment5,
   'making-a-payment-6': MakingAPayment6,
   'making-a-payment-7': MakingAPayment7,
-  'making-a-payment-8': MakingAPayment8,
   'updating-the-state-1': UpdatingTheState1,
   'updating-the-state-2': UpdatingTheState2,
   'updating-the-state-3': UpdatingTheState3,

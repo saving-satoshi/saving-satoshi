@@ -70,7 +70,7 @@ const OutputScript: FC<IOutput> = ({
     const newExecutor = new LanguageExecutor(
       tokens,
       initialStackArray || [],
-      0,
+      height,
       nSequenceTime
     )
     newExecutor.execute()
@@ -147,7 +147,11 @@ const OutputScript: FC<IOutput> = ({
       )
     }
     if (!scriptInput) return 0
-
+    console.log(
+      doesStackValidate(passes[0]),
+      doesStackValidate(passes[1]),
+      passes
+    )
     if (initialStack[objectOutput][1]) {
       if (
         containsEveryScript() &&
