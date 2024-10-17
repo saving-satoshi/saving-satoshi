@@ -17,7 +17,7 @@ export default function Hero() {
   const [account] = useAtom(accountAtom)
   const currentChapter = useAtomValue(currentChapterAtom)
 
-  const common = { alt: 'Saving Satoshi Hero', fill: true }
+  const common = { alt: 'Saving Satoshi Hero', fill: true, quality: 92 }
   const {
     props: { srcSet: tall },
   } = getImgProps({
