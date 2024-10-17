@@ -2842,6 +2842,107 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_four:
         'While the channel is OPEN, you and Laszlo can make offline payments to each other, back and forth, by negotiating new commitment transactions and revoking old ones. As you buy more drinks, your "refund" amount will go down and Laszlo’s outputs amounts will go up.',
     },
+    making_a_payment_two: {
+      title: 'Buy a beer!',
+      nav_title: 'Buy a beer!',
+      heading_one: 'Buy a beer!',
+      paragraph_one: `ow it's finally time to send bitcoin off-chain to Laszlo. We will "simply" add a 1,000 satoshi output for him in an updated commitment transaction. We will also need to promise never to broadcast the old commitment transaction, which didn't pay Laszlo anything. That is guaranteed when we send him the revocation key for that old commitment transaction, which we'll do next.`,
+      paragraph_two: `You'll need to generate another revocation key for this new state in case you want to repeat the cycle (revoke THIS transaction for another new commitment where Laszlo gets paid for a second beer) it is a party after all!`,
+      paragraph_three: `You generate a private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> revocation_you_2 </span>`,
+      list_one: `Deduct 1000 satoshis from your output`,
+      list_two: `Add 1000 satoshis to the second output and fill in the script for Laszlo`,
+      list_three: `Send it to Laszlo by clicking "Send to Laszlo" so he can sign it`,
+      list_four: `Don't sign it yourself yet!`,
+      heading_two: `Hints`,
+      paragraph_four: `Output 0 is spent by EITHER:`,
+      hint_one:
+        'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">SIG(You) 1 </span>',
+      hint_two: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(revocation_you_2) SIG(Laszlo) 0 </span>`,
+      paragraph_five: `Output 1 is spent by Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(Laszlo) </span>`,
+    },
+    making_a_payment_three: {
+      title: `Laszlo's Blockchain Dilemma`,
+      nav_title: `Laszlo's Blockchain Dilemma`,
+      paragraph_one: `Laszlo looks at this transaction for a second and grabs a glass from behind the bar but doesn't pour the bee`,
+      paragraph_two: `He says, "OK, wait. If you don't sign this transaction, I have nothing. You could disappear with this beer, and I wouldn't be able to confirm anything on the chain. Maybe you should sign it first, then send it to me so we both have a copy?"`,
+    },
+    making_a_payment_four: {
+      title: `Holocat's Trustless Warning`,
+      nav_title: `Holocat's Trustless Warning`,
+      paragraph_one: `That's when Holocat materializes on the table, standing up on her hind legs with her front paws outstretched, and meows, "Hang on, you can't give Laszlo your signature for this transaction! Next time you make a payment, you'll give him the revocation key revocation_you_2. He'll have everything he needs to steal all 100,000 satoshis!"`,
+      paragraph_two: `Things are getting a bit messy now. Laszlo does need something before he can give you a beer with confidence that he will get paid for it. But he can't have your transaction because then he'll end up accessing all your money! Laszlo is a great guy, and his bar is one of the best in the city, but it would still be nice if we didn't have to trust him.`,
+    },
+    making_a_payment_five: {
+      title: `Asymmetry`,
+      nav_title: `Asymmetry`,
+      heading_one: `Asymmetry`,
+      paragraph_one: `So we know we want Laszlo to sign the first transaction but we don't want him to have our signature on it. We'll need to construct a second transaction for him that DOES have our signature on it, but without any possibility of him just spending all the money unfairly.`,
+      paragraph_two: `And if Laszlo is going to have his own commitment transaction, then don't we also want that transaction to be revocable?! Yes in fact, Laszlo's commitment transaction will be a mirror-image of yours. The revocable time lock script will use Laszlo's first revocation key PUBKEY(revocation_bob_1) and the large refund output will just directly to you without any fuss.`,
+      list_one: `Fill in the amounts and output scripts for Laszlo's commitment transaction`,
+      list_two: `Sign it and send it to Laszlo, who will then sign your commitment transaction and send that back to you`,
+      heading_two: 'Hints',
+      paragraph_three: 'Output 0 is spent by EITHER:',
+      hint_one:
+        'Laszlo, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">SIG(LASZLO) 1 </span>',
+      hint_two: `You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_LASZLO_1) SIG(YOU) 0 </span>`,
+      paragraph_four: `Output 1 is spent by You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) </span>`,
+    },
+    making_a_payment_six: {
+      title: `Complete the payment`,
+      nav_title: `Complete the payment`,
+      heading_one: `Complete the payment`,
+      paragraph_one: "Let's do another quick recap.",
+      list_one: 'A 2 of 2 output is confirmed on the blockchain',
+      paragraph_two:
+        'There are several off-chain transactions that spend that output:',
+      paragraph_three: 'You have these transactions:',
+      paragraph_four: 'Commitment 1 (You):',
+      commitment_1_you: {
+        list_one: 'Input 0: signed by Laszlo',
+        list_two:
+          'Output 0: 100000 satoshis to you after 700 blocks or Laszlo with revocation_you_1',
+      },
+      commitment_2_you: {
+        list_one: 'Input 0: signed by Laszlo',
+        list_two:
+          'Output 0: 99000 satoshis to you after 700 blocks or Laszlo with revocation_you_2',
+        list_three: 'Output 1: 1000 satoshis to Laszlo',
+      },
+      paragraph_five: 'Commitment 2 (You):',
+      paragraph_six: 'Laszlo has this transaction:',
+      paragraph_seven: 'Commitment 2 (Laszlo):',
+      commitment_2_laszlo: {
+        list_one: 'Input 0: signed by You',
+        list_two:
+          'Output 0: 1000 satoshis to Laszlo after 700 blocks or You with revocation_laszlo_1',
+        list_three: 'Output 1: 99000 satoshis to You',
+      },
+      paragraph_eight:
+        "All three of these transactions are signed and valid, but Laszlo hasn't handed you a beer yet. Why not? Only one thing left to do...",
+    },
+    making_a_payment_seven: {
+      title: `🍺 Ahhhhhhh, nice.`,
+      nav_title: `Ahhhhhhh, nice.`,
+      paragraph_one: '🍺 Ahhhhhhh, nice.',
+    },
+    making_a_payment_eight: {
+      title: `Make another payment`,
+      nav_title: `Make another payment`,
+      heading_one: `Make another payment`,
+      paragraph_one: `The night is still young, and you're not flying your Budgetcopter home. Got time for another beer? Now that you and Laszlo have your asymmetrical transactions and a flow worked out with revocation keys, let's run the protocol a few more times.`,
+      paragraph_two: `The two transactions representing the current state are on the screen, where you have paid Laszlo 1,000 satoshis. Send another 1,000 satoshi payment to Laszlo.`,
+      list_one: 'Update the amounts and output scripts',
+      list_two: "Sign Laszlo's transaction and send it to him",
+      list_three: `Laszlo will revoke his last state by sending you  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_LASZLO_1 </span>`,
+      list_four: 'Send your transaction to Laszlo so he can sign it',
+      list_five: `Once you have Laszlo's signature, send him your  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_YOU_1 </span> `,
+      paragraph_three: 'Enjoy 🍺',
+      heading_two: 'Hints',
+      paragraph_four: 'Output 0 is spent by EITHER:',
+      hint_one: `You, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) 1 </span>`,
+      hint_two: `Laszlo:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_YOU_3) SIG(LASZLO) 0 </span> `,
+      paragraph_five: `Output 1 is spent by Laszlo <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO) </span> `,
+    },
   },
 
   ///CHALLENGE PAGE

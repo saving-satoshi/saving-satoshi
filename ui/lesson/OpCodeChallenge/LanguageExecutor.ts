@@ -147,7 +147,7 @@ class LanguageExecutor {
         if (this.negate === 0) {
           this.stack.push(element.resolves)
         }
-        error = { type: element.value, message: null }
+        error = { type: '', message: null }
         break
 
       case TokenTypes.ARITHMETIC:

@@ -21,13 +21,17 @@ interface ITransactionProps {
   currentTransactionTab: string
   progressKey: string
   prefilled?: boolean
-  initialStack: Record<'output_0' | 'output_1', string[]>
+  initialStack: Record<'output_0' | 'output_1', SpendingConditions>
   answerScript: Record<'output_0' | 'output_1', string[]>
   laszloWillNotSign?: boolean
   noSignature?: boolean
   alwaysShowButton?: boolean
 }
 
+export type SpendingConditions = {
+  0: string[]
+  1?: string[]
+}
 export type Signatures = 'pending' | 'signed' | 'not-signed' | 'rejected'
 export type OutputSuccess = {
   0: SuccessNumbers

@@ -17,8 +17,8 @@ export default function OpeningAChannel4({ lang }) {
   return (
     <TransactionChallenge
       initialStack={{
-        output_0: ['0', 'SIG(LASZLO)', 'SIG(YOU)'],
-        output_1: [],
+        output_0: { 0: ['0', 'SIG(LASZLO)', 'SIG(YOU)'] },
+        output_1: { 0: [] },
       }}
       answerScript={{
         output_0: [

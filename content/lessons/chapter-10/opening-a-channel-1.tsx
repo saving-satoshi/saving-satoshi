@@ -17,8 +17,8 @@ export default function OpeningAChannel1({ lang }) {
   return (
     <TransactionChallenge
       initialStack={{
-        output_0: ['SIG(YOU)'],
-        output_1: [],
+        output_0: { 0: ['SIG(YOU)'] },
+        output_1: { 0: [] },
       }}
       answerScript={{
         output_0: ['OP_PUSH'],

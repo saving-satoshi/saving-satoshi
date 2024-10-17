@@ -17,8 +17,8 @@ export default function OpeningAChannel2({ lang }) {
   return (
     <TransactionChallenge
       initialStack={{
-        output_0: ['SIG(LASZLO)'],
-        output_1: ['SIG(YOU)'],
+        output_0: { 0: ['SIG(LASZLO)'] },
+        output_1: { 0: ['SIG(YOU)'] },
       }}
       answerScript={{
         output_0: ['OP_PUSH', 'PUBKEY(LASZLO)', 'OP_CHECKSIG'],

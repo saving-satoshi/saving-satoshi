@@ -17,8 +17,11 @@ export default function UpdatingTheState3({ lang }) {
   return (
     <TransactionChallenge
       initialStack={{
-        output_0: ['0', 'SIG(REVOCATION_YOU_1)', 'SIG(LASZLO)', '0'],
-        output_1: [],
+        output_0: {
+          0: ['0', 'SIG(REVOCATION_YOU_1)', 'SIG(LASZLO)', '0'],
+          1: ['SIG(YOU)', '1'],
+        },
+        output_1: { 0: [] },
       }}
       answerScript={{
         output_0: [
