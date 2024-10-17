@@ -36,7 +36,6 @@ export const metadata = {
     'making-a-payment-5',
     'making-a-payment-6',
     'making-a-payment-7',
-    'making-a-payment-8',
   ],
   outros: ['outro-1', 'outro-2', 'outro-3', 'outro-4', 'outro-5', 'outro-6'],
   challenges: [

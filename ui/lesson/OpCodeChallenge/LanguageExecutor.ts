@@ -12,6 +12,7 @@ class LanguageExecutor {
   tokens: T
   stack: StackType
   height?: number | null
+  nSequenceTime?: number | null
   conditionalState: Array<boolean>
   negate: number
   // initial state
@@ -27,6 +28,7 @@ class LanguageExecutor {
       step: 0,
       negate: 0,
       height: null,
+      nSequenceTime: null,
       error: {
         type: '',
         message: null,
@@ -59,7 +61,8 @@ class LanguageExecutor {
   public static RunCode(
     script: string,
     initialStack?: string[],
-    height?: number
+    height?: number,
+    nSequenceTime?: number
   ): LanguageExecutor | null {
     const parsableInput = this.rawInputToParsableInput(script)
     const filteredStack = initialStack?.filter((arg) => {
@@ -72,24 +75,36 @@ class LanguageExecutor {
       const langExecutor = new LanguageExecutor(
         tokens,
         filteredStack ?? [],
-        height
+        height,
+        nSequenceTime
       )
       langExecutor.execute()
 
       return langExecutor
     } catch (err) {
-      const langExecutor = new LanguageExecutor([], filteredStack ?? [], height)
+      const langExecutor = new LanguageExecutor(
+        [],
+        filteredStack ?? [],
+        height,
+        nSequenceTime
+      )
       langExecutor.execute()
 
       return langExecutor
     }
   }
 
-  constructor(tokens: T, initialStack: string[], height?: number) {
+  constructor(
+    tokens: T,
+    initialStack: string[],
+    height?: number,
+    nSequenceTime?: number
+  ) {
     this.tokens = tokens
     this.state = []
     this.stack = []
     this.height = height ?? 0
+    this.nSequenceTime = nSequenceTime ?? 0
     this.conditionalState = []
     this.negate = 0
     this.stack.push(...initialStack)
@@ -147,7 +162,7 @@ class LanguageExecutor {
         if (this.negate === 0) {
           this.stack.push(element.resolves)
         }
-        error = { type: element.value, message: null }
+        error = { type: '', message: null }
         break
 
       case TokenTypes.ARITHMETIC:
@@ -183,7 +198,11 @@ class LanguageExecutor {
 
       case TokenTypes.LOCK_TIME:
         if (this.negate === 0) {
-          opResolves = opFunctions[element.value](this.stack, this.height)
+          opResolves = opFunctions[element.value](
+            this.stack,
+            this.height,
+            this.nSequenceTime
+          )
         }
         error =
           opResolves?.error && !error?.message

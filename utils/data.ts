@@ -21,7 +21,7 @@ export const transactionTabs: TransactionData = {
       'This is an output of 100,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.',
     output_0: {
       sats: '100,000',
-      script: `T1BfUFVTSCBQVUJLRVkoWW91KSBPUF9DSEVDS1NJRw==`, // Intro 2
+      script: `T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==`,
     },
   },
   payment: {
@@ -35,11 +35,11 @@ export const transactionTabs: TransactionData = {
     },
     output_0: {
       sats: '1000',
-      script: 'T1BfUFVTSCBQVUJLRVkoTGFzemxvKSBPUF9DSEVDS1NJRw==',
+      script: 'T1BfUFVTSCBQVUJLRVkoTEFTWkxPKSBPUF9DSEVDS1NJRw==',
     },
     output_1: {
       sats: '99000',
-      script: 'T1BfUFVTSCBQVUJLRVkoWW91KSBPUF9DSEVDS1NJRw==',
+      script: 'T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==',
     },
   },
   'multi-sig': {
@@ -124,7 +124,7 @@ export const transactionTabs: TransactionData = {
       script: 'T1BfUFVTSCBQVUJLRVkoTGFzemxvKSBPUF9DSEVDS1NJRw==',
     },
   },
-  'commitment(Lazlo)': {
+  'commitment(Laszlo)': {
     description: 'This is Laszlo’s version of the commitment transaction.',
     signatures: {
       you: 'signed',
@@ -134,11 +134,11 @@ export const transactionTabs: TransactionData = {
       sats: '100,000',
     },
     output_0: {
-      sats: '1000',
+      sats: '2000',
       script: `T1BfSUbigKhPUF9QVVNIIDcwMCBPUF9DSEVDS1NFUVVFTkNFVkVSSUZZIE9QX0RST1DigKhPUF9QVVNIIFBVQktFWShMYXN6bG8pIE9QX0NIRUNLU0lH4oCoT1BfRUxTReKAqE9QXzIgT1BfUFVTSCBQVUJLRVkocmV2b2NhdGlvbl9sYXN6bG9fMSkgT1BfUFVTSCBQVUJLRVkoWW91KSBPUF8yIE9QX0NIRUNLTVVMVElTSUfigKhPUF9FTkRJRg==`,
     },
     output_1: {
-      sats: '99000',
+      sats: '98000',
       script: 'T1BfUFVTSCBQVUJLRVkoWW91KSBPUF9DSEVDS1NJRw==',
     },
   },

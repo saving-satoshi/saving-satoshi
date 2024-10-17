@@ -5,9 +5,8 @@ import { LessonInfo, Text } from 'ui'
 import TransactionChallenge from 'ui/lesson/TransactionsChallenge'
 
 export const metadata = {
-  title: 'chapter_nine.intro_two.title',
-  navigation_title: 'chapter_nine.intro_two.nav_title',
-  image: '/assets/images/chapter-9-intro-2.jpg',
+  title: 'chapter_ten.opening_a_channel_four.title',
+  navigation_title: 'chapter_ten.opening_a_channel_four.nav_title',
   theme: 'bg-[#401d4e]',
   key: 'CH10OAC4',
 }
@@ -18,33 +17,42 @@ export default function OpeningAChannel4({ lang }) {
   return (
     <TransactionChallenge
       initialStack={{
-        output_0: ['SIG(YOU)'],
-        output_1: [],
+        output_0: { 0: ['0', 'SIG(LASZLO)', 'SIG(YOU)'] },
+        output_1: { 0: [] },
       }}
       answerScript={{
-        output_0: ['OP_PUSH'],
+        output_0: [
+          'OP_PUSH',
+          'PUBKEY(LASZLO)',
+          'PUBKEY(YOU)',
+          'OP_CHECKMULTISIG',
+        ],
         output_1: [],
       }}
       progressKey={metadata.key}
-      currentTransactionTab="deposit"
+      currentTransactionTab="multi-sig"
       laszloWillNotSign
-      prefilled
-      noSignature
-      alwaysShowButton
     >
       <LessonInfo>
         <Text className="text-lg font-bold md:text-xl">
-          {t('chapter_ten.intro_two.heading_one')}
+          {t('chapter_ten.opening_a_channel_four.heading_one')}
         </Text>
         <Text className="mt-4 text-lg md:text-xl">
-          {t('chapter_ten.intro_two.paragraph_one')}
+          {t('chapter_ten.opening_a_channel_four.paragraph_one')}
         </Text>
-        <Text className="mt-4 text-lg md:text-xl">
-          {t('chapter_ten.intro_two.paragraph_two')}
+        <ul className="ml-4 list-disc  font-nunito text-lg">
+          <li>{t('chapter_ten.opening_a_channel_four.multisig_one')}</li>
+          <li>{t('chapter_ten.opening_a_channel_four.multisig_two')}</li>
+        </ul>
+        <Text className="mt-4 text-lg font-bold md:text-xl">
+          {t('chapter_ten.opening_a_channel_four.heading_two')}
         </Text>
-        <Text className="mt-4 text-lg md:text-xl">
-          {t('chapter_ten.intro_two.paragraph_three')}
-        </Text>
+        <ul className="ml-4 list-disc  font-nunito text-lg">
+          <li>
+            {t('chapter_ten.opening_a_channel_four.hint_one_a')}
+            {t('chapter_ten.opening_a_channel_four.hint_one_b')}
+          </li>
+        </ul>
       </LessonInfo>
     </TransactionChallenge>
   )

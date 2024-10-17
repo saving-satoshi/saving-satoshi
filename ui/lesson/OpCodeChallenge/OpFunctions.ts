@@ -132,6 +132,34 @@ export const opFunctions: { [key: string]: Function } = {
     }
     return { value: tokens[index + 1].value, error: null }
   },
+  OP_CHECKSEQUENCEVERIFY: (
+    stack: StackType,
+    height: number,
+    nSequenceTime: number
+  ) => {
+    if (!stack) return null
+    if (stack?.length < 1) {
+      return {
+        value: null,
+        error: 'OP_CHECKSEQUENCEVERIFY: requires 1 item on the stack',
+      }
+    }
+    if (isNaN(nSequenceTime)) {
+      return {
+        value: null,
+        error: 'OP_CHECKSEQUENCEVERIFY: nSequence should be a valid number',
+      }
+    }
+    const a = parseInt(stack[stack?.length - 1] as string)
+    const nSequence = nSequenceTime
+    if (a > nSequence) {
+      return {
+        value: null,
+        error: 'OP_CHECKSEQUENCEVERIFY: transaction is not valid yet',
+      }
+    }
+    return { value: null, error: null }
+  },
   OP_CHECKLOCKTIMEVERIFY: (stack: StackType, height: number) => {
     if (!stack) return null
     if (stack?.length < 1) {
@@ -466,6 +494,7 @@ export const OpCodeTypes = {
   OP_PUSH: 'data-push',
 
   OP_CHECKLOCKTIMEVERIFY: 'lock-time',
+  OP_CHECKSEQUENCEVERIFY: 'lock-time',
 
   OP_IF: 'conditional',
   OP_ELSE: 'conditional',

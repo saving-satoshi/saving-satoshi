@@ -459,11 +459,6 @@ export const defaultProgressState: CourseProgress = {
           path: '/chapter-10/making-a-payment-7',
           completed: false,
         },
-        {
-          id: 'CH10MAP8',
-          path: '/chapter-10/making-a-payment-8',
-          completed: false,
-        },
         { id: 'CH10OUT1', path: '/chapter-10/outro-1', completed: false },
         { id: 'CH10OUT2', path: '/chapter-10/outro-2', completed: false },
         { id: 'CH10OUT3', path: '/chapter-10/outro-3', completed: false },
