@@ -7,7 +7,6 @@ export const metadata = {
   title: 'chapter_ten.updating_the_state_six.title',
   navigation_title: 'chapter_ten.updating_the_state_six.nav_title',
   image: '/assets/images/chapter-10-opening-a-channel-3.jpg',
-  theme: 'bg-[#401d4e]',
   key: 'CH10UTS6',
 }
 

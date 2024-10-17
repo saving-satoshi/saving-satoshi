@@ -7,7 +7,6 @@ import TransactionChallenge from 'ui/lesson/TransactionsChallenge'
 export const metadata = {
   title: 'chapter_ten.making_a_payment_five.title',
   navigation_title: 'chapter_ten.making_a_payment_five.nav_title',
-  theme: 'bg-[#401d4e]',
   key: 'CH10MAP5',
 }
 
