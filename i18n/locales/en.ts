@@ -2676,36 +2676,42 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
 
   chapter_ten: {
     title: '10 billion connections',
-    paragraph_one: `The ON-AIR light in the TV studio goes dark. Stagehands shut off their hover-cameras and start filing out after a long day. Mike Ramen puts his hand on your shoulder and says "Great work today! Now let's celebrate. I know a bar across the street that accepts bitcoin -- and what better way to honor Satoshi's vision of digital cash for the internet than exchanging some for beer!"`,
+    paragraph_one: `The TV studio’s ON-AIR light goes dark. Stagehands shut off their 3D cameras and file out after a long and eventful day. Mika 3000 is there waiting for you.`,
     intro_one: {
       title: 'Intro',
-      nav_title: 'Intro',
-      paragraph_one: `“You did it! You pulled it off!” she exclaims as you high-five and head for the door. You step outside. Everything is as it used to be. But something feels different. A ziptaxi deposits its passengers and zooms off. Someone buys dinner from a halal cart. A child exits a store with her holodog and a carton of milk. These are regular scenes, but you see how important money is to the world you live in.`,
-      paragraph_two: `“Why are you just standing there?” Mika 3000’s question snaps you out of your dream state.`,
-      paragraph_three: `“Have you ever thought about money? Like, how does bitcoin work?” you stammer.`,
-      paragraph_four: `“Did Vanderpoole knock you in the head? You just saved the world. Are you in shock or something?”`,
-      paragraph_five: `“Let’s get something to drink,” you request and insist at the same time.`,
+      nav_title: 'Laszlo',
+      paragraph_one: `—MIKA 3000: “You did it! You really pulled it off! Let’s grab something to drink and celebrate.”`,
+      paragraph_two: `You walk to a nearby bar called The Public Key Pub. The bartender, a friendly guy with the name tag Laszlo, welcomes you both.`,
+      paragraph_three: `—MIKA 3000: “I don’t know why but I could totally go for a calzone.”`,
+      paragraph_four: `—LASZLO: “We don’t have those, but my great-great-grandad made sure that the pizza here is the best. Some would say 10,000 bitcoin good.”`,
+      paragraph_five: {
+        a: `—MIKA 3000: “10 thousand bitcoin? Wait… are you named Laszlo because you’re descended from `,
+        b: `?"`,
+      },
+      paragraph_six: `—LASZLO: “The one and only.”`,
+      tooltip_one: {
+        question: 'What is the significance of Laszlo and pizza day?',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520the%2520significance%2520of%2520Laszlo%2520and%2520pizza%2520day%253F',
+        highlighted: 'THE Laszlo',
+      },
     },
     intro_two: {
       title: 'Intro',
-      nav_title: 'Intro',
-      paragraph_one: `You step into a bar called The Public Key Pub. The bartender, a friendly guy with the name tag Laszlo, welcomes you and Mika 3000 in with a big smile.`,
-      paragraph_two: '“I’m in the mood for pizza,” Mika 3000 tells Laszlo.',
+      nav_title: 'Ordering from the bar',
+      paragraph_one:
+        '—MIKA 3000: “That is so cool. As long as it isn’t 10,000 bitcoin, we’ll take one of those pizzas and a couple of Lightning Lemonades. Shame about the calzones, though.”',
+      paragraph_two:
+        'Mika 3000 and Laszlo pull out their solar-powered ePhone Infinities and start tapping buttons.',
       paragraph_three:
-        '“You and my great-great-grandad both,” Lalzo smiles while tapping a neon “KITCHEN CLOSED AFTER 10 PM” sign.',
-      paragraph_four:
-        '“Seriously, you’re descended from THE Laszlo?” Mika 3000 yells.',
-      paragraph_five: `“That’s so cool. Well, pizza with a Laszlo would have been perfect, but I’ll settle for a [DRINK CHOICE].”`,
+        '—MIKA 3000: “Uh oh. Your little stunt back there did a number on miner fees. The bitcoin network is experiencing a surge in activity and transaction fees are through the roof! We’re going to have to pay for this off-chain.”',
     },
     intro_three: {
       title: 'Intro',
-      nav_title: 'Intro',
-      paragraph_one: `Mika 3000 and Laszlo pull out their solar-powered ePhone 114s and start tapping buttons. Laszlo pours a beer and hands it to Mika 3000. She raises the glass to you and says, "Your little stunt back there did a number on miner fees. Good thing we’ve got off-chain payments.”`,
-      paragraph_two: `You must have seen a million bitcoin payments in your life. But you’ve never really thought about it. That couple getting out of the robotaxi, the halal cart, the kid with her holodog, this beer. Of course, these aren’t on-chain payments. But how?`,
-      paragraph_three: `“You’ve got that glazed-over look again,” Mika 3000 whispers.`,
-      paragraph_four: `“I feel silly saying this, but how… how do we pay for stuff?”`,
-      paragraph_five: `Laszlo and Mika 3000 exchange looks and smile. "You're smart enough to debug mining software and validate blocks; I bet you can figure out how to send bitcoin off-chain.”`,
-      paragraph_six: `“I'll guide you a little bit,” Lazslo says. ”I’ll set up a payment channel between you and me so we can buy some drinks."`,
+      nav_title: 'Off-chain transactions',
+      paragraph_one: `Since “Satoshi” initially reached out, you’ve only had to work with on-chain transactions. That’s how you claimed your mining rewards and how you transferred funds to Mika 3000. However, these on-chain transactions aren’t ideal for frequent, everyday use because block space is limited and miner fees can vary.`,
+      paragraph_two: `How is it then, that people are able to use bitcoin daily in a way that is scalable? The answer is off-chain payments, something you have probably seen a million times: An orange cab ejecting its passengers and zooming off, someone buying dinner from a halal cart, a kid exiting a store with her holodog and a carton of digimilk. And so on. Money’s use cases are nearly infinite.`,
+      paragraph_three: `While bitcoin isn’t designed to handle this much activity on its own, with off-chain payments, it can.`,
+      paragraph_four: `—YOU: “That’s not a problem at all, Mika 3000. I can handle it. I’ll prove it by using an off-chain payment to purchase a beer from Laszlo.”`,
     },
     opening_a_channel_one: {
       title: 'The initial funds',
@@ -2720,7 +2726,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       heading_one: 'The off-chain transaction',
       paragraph_one:
         "Let's create a valid Bitcoin transaction but instead of sending it to the network, we'll just send it directly to Laszlo! Laszlo should trade you a beer for this transaction because he knows he effectively has the money even though the transaction is not broadcasted or confirmed.",
-      paragraph_two: "Remember it's the year 2140! Beers cost 0.0001000 BTC.",
+      paragraph_two:
+        "Remember it's the year 2140! A SHA-256 Stout cost 0.0001000 BTC.",
       heading_two: 'Hints',
       off_chain_list_one:
         'Fill in the two output amounts, 1000 satoshis for Laszlo and the rest for your change',
@@ -2733,7 +2740,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     opening_a_channel_three: {
       title: 'Off-Chain Payment Trust Issue',
       nav_title: 'Off-Chain Payment Trust Issue',
-      paragraph_one: `Laszlo says "waaaaaait a minute, that doesn't make any sense -- you can still spend that output at any time. You could drink your beer and then return all the money to yourself without me getting anything!`,
+      paragraph_one: `—LASZLO: "Wait a minute, that doesn't make any sense–you can still spend that output at any time. You could drink your beer and then return all the money to yourself without me getting anything!`,
       paragraph_two: `If you want to spend money off-chain with me, I need a guarantee you can't move the money by yourself ON chain."`,
     },
     opening_a_channel_four: {
@@ -2750,7 +2757,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     opening_a_channel_five: {
       title: 'Refund Protection in Multi-Sig',
       nav_title: 'Refund Protection in Multi-Sig',
-      paragraph_one: `Laszlo says, "OK, thanks, this is a good start. But what if I walk away from the table and you never see me again? I could broadcast this transaction, and your 100,000 satoshis would be stuck in a 2-key multi-sig from which you could never recover`,
+      paragraph_one: `—LASZLO:  "OK, thanks, this is a good start. But what if I walk away from the table and you never see me again? I could broadcast this transaction, and your 100,000 satoshis would be stuck in a 2-key multi-sig from which you could never recover.`,
       paragraph_two: `Do yourself a favor; before signing this, make a refund transaction to know you can recover your money."`,
     },
     updating_the_state_one: {
@@ -2767,7 +2774,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     updating_the_state_two: {
       title: 'Revoking Refunds to Secure Payment in Multi-Sig',
       nav_title: 'Revoking Refunds to Secure Payment in Multi-Sig',
-      paragraph_one: `Laszlo says, "OK, nice, I'll sign this and send it back to you, and then you can sign that funding transaction.`,
+      paragraph_one: `—LASZLO: "OK, nice, I'll sign this and send it back to you, and then you can sign that funding transaction.`,
       paragraph_two: `Hey, wait a minute, though. If I sign this, we're back where we started: You can broadcast this transaction even after I give you a beer, and I won't get paid`,
       paragraph_three:
         'Before I sign this, I need a guarantee that your full refund transaction can be revoked.',
@@ -2791,7 +2798,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       title: 'The Race to Revoke',
       nav_title: 'The Race to Revoke',
       paragraph_one:
-        'Laszlo says, "Well, this is better, but it just occurred to me that even if I have the revocation key, it will still be a race between you and me to spend this output',
+        '—LASZLO: "Well, this is better, but it just occurred to me that even if I have the revocation key, it will still be a race between you and me to spend this output',
       paragraph_two:
         'I need a decent head start so I have a chance to notice you cheated me. Then I can sweep the bitcoin with the revocation key before you get your full refund."',
     },
@@ -2817,7 +2824,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_one:
         'This time, when you click Send to Laszlo, he smiles and applauds! He signs the child transaction ([X] Laszlo). Now you can sign the parent transaction and send it to the blockchain: THE CHANNEL IS OPEN',
       paragraph_two:
-        "You've gotten Laszlo to agree to let you buy drinks from him off-chain and have opened up a channel to do so",
+        "You've gotten Laszlo to agree to let you buy drinks from him off-chain and have opened up a channel to do so!",
     },
     making_a_payment_one: {
       title: 'Making a payment',
@@ -2863,14 +2870,15 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     making_a_payment_three: {
       title: `Laszlo's Blockchain Dilemma`,
       nav_title: `Laszlo's Blockchain Dilemma`,
-      paragraph_one: `Laszlo looks at this transaction for a second and grabs a glass from behind the bar but doesn't pour the bee`,
-      paragraph_two: `He says, "OK, wait. If you don't sign this transaction, I have nothing. You could disappear with this beer, and I wouldn't be able to confirm anything on the chain. Maybe you should sign it first, then send it to me so we both have a copy?"`,
+      paragraph_one: `Laszlo looks at this transaction for a second and grabs a glass from behind the bar but doesn't pour the beer`,
+      paragraph_two: `—LASZLO: "Wait. If you don't sign this transaction, I have nothing. You could disappear with this beer, and I wouldn't be able to confirm anything on the chain. Maybe you should sign it first, then send it to me so we both have a copy?"`,
     },
     making_a_payment_four: {
       title: `Holocat's Trustless Warning`,
       nav_title: `Holocat's Trustless Warning`,
-      paragraph_one: `That's when Holocat materializes on the table, standing up on her hind legs with her front paws outstretched, and meows, "Hang on, you can't give Laszlo your signature for this transaction! Next time you make a payment, you'll give him the revocation key revocation_you_2. He'll have everything he needs to steal all 100,000 satoshis!"`,
-      paragraph_two: `Things are getting a bit messy now. Laszlo does need something before he can give you a beer with confidence that he will get paid for it. But he can't have your transaction because then he'll end up accessing all your money! Laszlo is a great guy, and his bar is one of the best in the city, but it would still be nice if we didn't have to trust him.`,
+      paragraph_one: `That's when Holocat materializes on the table, standing up on her hind legs with her front paws outstretched, and meows.`,
+      paragraph_two: `—HOLOCAT: "Hang on, you can't give Laszlo your signature for this transaction! Next time you make a payment, you'll give him the revocation key revocation_you_2. He'll have everything he needs to steal all 100,000 satoshis!"`,
+      paragraph_three: `Things are getting a bit messy now. Laszlo does need something before he can give you a beer with confidence that he will get paid for it. But he can't have your transaction because then he'll end up accessing all your money! Laszlo is a great guy, and his bar is one of the best in the city, but it would still be nice if we didn't have to trust him.`,
     },
     making_a_payment_five: {
       title: `Asymmetry`,
@@ -2936,7 +2944,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       list_three: `Laszlo will revoke his last state by sending you  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_LASZLO_1 </span>`,
       list_four: 'Send your transaction to Laszlo so he can sign it',
       list_five: `Once you have Laszlo's signature, send him your  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_YOU_1 </span> `,
-      paragraph_three: 'Enjoy 🍺',
+      paragraph_three: `You can do this all night long! Well. Until your 100,000 satoshis have all been sent to Laszlo anyway. Don't forget to drink some water! They have nachos and holodogs too.`,
       heading_two: 'Hints',
       paragraph_four: 'Output 0 is spent by EITHER:',
       hint_one: `You, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) 1 </span>`,
