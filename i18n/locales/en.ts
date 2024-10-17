@@ -2953,6 +2953,44 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       hint_two: `Laszlo:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_YOU_3) SIG(LASZLO) 0 </span> `,
       paragraph_five: `Output 1 is spent by Laszlo <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO) </span> `,
     },
+
+    outro_one: {
+      title: 'Outro',
+      nav_title: 'Outro 1',
+      paragraph_one:
+        'You can do this all night long! Well. Until your 100,000 satoshis have all been sent to Laszlo anyway',
+      paragraph_two: "Don't forget to drink some water!",
+    },
+
+    outro_two: {
+      title: 'Outro',
+      nav_title: 'Outro 2',
+      paragraph_one: `After a long day, you pay for your drinks and head home,. but as you open the door to your 3D printed house, you—oh, crap! It’s Vanderpoole again! Is this really happening or did you have one too many Mempool Margaritas? Despite a small cadre of holocats flanking him on every side, he isn’t looking for a fight`,
+      paragraph_two: `—VANDERPOOLE: “We don’t really know one another, even though, as my grandpappy used to say, the fates of strangers are often intertwined.. I need you to hear me. All of the Satoshi Nakamoto stuff was me trying to save my family’s business. You can’t imagine how much mining meant to us. I guess I wasn’t ready for change and wanted to keep things more or less the same.”`,
+    },
+
+    outro_three: {
+      title: 'Outro',
+      nav_title: 'Outro 3',
+      paragraph_one: `You ask why the name mattered so much to him.`,
+      paragraph_two: `—VANDERPOOLE: “It’s the only name in bitcoin bigger than Bitrey and Vanderpoole. Someone using the name Satoshi Nakamoto once told me that bitcoin had moved far beyond its creator’s control over a century ago. This is why, to salvage the Vanderpoole name, I tried to claim a more prominent name. You can’t understand the thrill of minting new coins. It was magic to me then; it is magic to me now.”`,
+      paragraph_three: `—VANDERPOOLE: "I realize now that even if I were Satoshi’s great-grandson, bitcoin isn’t defined by leaders. It’s defined by its community. Not even Satoshi could change what bitcoin has become. That has always been what made bitcoin great and why the millions of other coins made in bitcoin’s image never lasted.”`,
+    },
+
+    outro_four: {
+      title: 'Outro',
+      nav_title: 'Outro 4',
+      paragraph_one: `Vanderpoole picks up your holocat, and it begins to pur. People are complicated, and no one knows that better than cats, holo or otherwise`,
+      paragraph_two: `—HOLOCAT: “You’re not a villain, Mr. Vanderpoole. But you maybe, just maybe, might have cared too much.”`,
+      paragraph_three: `—VANDERPOOLE: Ain’t that the truth.`,
+    },
+
+    outro_five: {
+      title: 'You did it!!!',
+      nav_title: 'You did it!!!',
+      heading_one: 'You did it!!!',
+      paragraph_one: `Like Satoshi, you were a nobody, but your ideas had merit, so people followed you. Satoshi is gone, but his spirit and ideas live on. Armed with your newfound bitcoin dev coding skills, a healthy dose of humility, and some good old-fashioned persistence, you can leave an enduring mark on this elegant system that has united the world under permissionless, censorship-resistant money for more than 100 years. New adventures await you in the code and the open market of ideas. bitcoin only survives because people like you contribute what theycan. That’s why we are all Satoshi.`,
+    },
   },
 
   ///CHALLENGE PAGE

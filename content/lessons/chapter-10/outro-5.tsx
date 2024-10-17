@@ -27,10 +27,10 @@ export default function Outro5({ lang }) {
       sharing={false}
     >
       <h1 className="text-5xl font-bold text-white">
-        {t('chapter_nine.outro_one.heading')}
+        {t('chapter_ten.outro_five.heading_one')}
       </h1>
       <p className="mt-4 font-nunito text-2xl text-white">
-        {t('chapter_nine.outro_one.paragraph_one')}
+        {t('chapter_ten.outro_five.paragraph_one')}
       </p>
     </ChapterEnd>
   )
