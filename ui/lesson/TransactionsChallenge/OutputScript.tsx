@@ -19,6 +19,8 @@ interface IOutput {
   validateScript0: SuccessNumbers
   validateScript1: SuccessNumbers
   initialStack: Record<'output_0' | 'output_1', SpendingConditions>
+  height?: number
+  nSequenceTime?: number
   answerScript: Record<'output_0' | 'output_1', string[]>
   setErrorMessage: React.Dispatch<React.SetStateAction<string>>
   setValidateScript: React.Dispatch<React.SetStateAction<SuccessNumbers>>
@@ -37,6 +39,8 @@ const OutputScript: FC<IOutput> = ({
   answerScript,
   setValidateScript,
   initialStack,
+  height,
+  nSequenceTime,
   setErrorMessage,
 }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
@@ -63,7 +67,12 @@ const OutputScript: FC<IOutput> = ({
     const tokens = LanguageExecutor.parsableInputToTokens(
       LanguageExecutor.rawInputToParsableInput(`INITIAL_STACK ${scriptInput}`)
     )
-    const newExecutor = new LanguageExecutor(tokens, initialStackArray || [])
+    const newExecutor = new LanguageExecutor(
+      tokens,
+      initialStackArray || [],
+      0,
+      nSequenceTime
+    )
     newExecutor.execute()
     if (
       initialStack[objectOutput][1] &&

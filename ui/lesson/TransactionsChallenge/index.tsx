@@ -22,6 +22,8 @@ interface ITransactionProps {
   progressKey: string
   prefilled?: boolean
   initialStack: Record<'output_0' | 'output_1', SpendingConditions>
+  height?: number
+  nSequenceTime?: number
   answerScript: Record<'output_0' | 'output_1', string[]>
   laszloWillNotSign?: boolean
   noSignature?: boolean
@@ -50,6 +52,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   prefilled,
   answerScript,
   initialStack,
+  height,
+  nSequenceTime,
   laszloWillNotSign,
   noSignature,
   alwaysShowButton,
@@ -172,6 +176,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                           <OutputScript
                             key={'output_0'}
                             initialStack={initialStack}
+                            height={height}
+                            nSequenceTime={nSequenceTime}
                             output="output 0"
                             tab={tabData[0]}
                             prefilled={prefilled}
@@ -192,6 +198,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                           <OutputScript
                             key={'output_1'}
                             initialStack={initialStack}
+                            height={height}
+                            nSequenceTime={nSequenceTime}
                             output="output 1"
                             tab={tabData[0]}
                             setValidateScript={setValidateScript1}
