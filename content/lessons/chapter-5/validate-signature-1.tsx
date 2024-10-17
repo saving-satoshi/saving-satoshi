@@ -42,8 +42,6 @@ function encode_message(text){
   validate: async (answer: string) => {
     const correctAnswer =
       '73a16290e005b119b9ce0ceea52949f0bd4f925e808b5a54c631702d3fea1242'
-    console.log(typeof answer, typeof correctAnswer)
-    console.log(answer, correctAnswer, answer === correctAnswer)
     if (answer) {
       if (answer == correctAnswer) {
         return [true, 'Nicely Done ']

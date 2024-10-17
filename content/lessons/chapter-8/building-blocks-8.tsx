@@ -41,7 +41,7 @@ export default function BuildingBlocks8({ lang }) {
 
     if (data) {
       setPrevData({
-        lesson_id: `CH6PUT1_${completedChapter6?.level.toString()}`,
+        lesson_id: `CH8BBK7`,
         data: data?.code?.getDecoded(),
       })
     }
