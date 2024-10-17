@@ -11,7 +11,7 @@ export const metadata = {
   key: 'CH10MAP6',
 }
 
-export default function MakingAPayment7({ lang }) {
+export default function MakingAPayment6({ lang }) {
   const t = useTranslations(lang)
 
   return (
