@@ -2184,7 +2184,7 @@ const translations = {
       title: 'Intro',
       nav_title: `Vanderpoole's Deception`,
       paragraph_one: `—DEBORAH CHUNK: “These documents expose the alleged lies of Thomas Vanderpoole in a way that is certainly historic, scandalous even. The first thing people will most want to know is whether you acted alone. The second is where you got your information.”`,
-      paragraph_two: `You tell her about Holocat and Holocat only. You lie and say the information was delivered directly to you and Mika 3000 by someone claiming to be Satoshi Nakamoto, who you suspect is actually a hacker collective. This last point causes Thomas Vanderpoole to call directly into the show.`,
+      paragraph_two: `You tell her about Holocat and Holocat only. You say the information was delivered directly to you and Mika 3000 by someone claiming to be Satoshi Nakamoto, who you suspect is actually a hacker collective. This last point causes Thomas Vanderpoole to call directly into the show.`,
     },
     intro_two: {
       title: `Intro`,
@@ -2292,7 +2292,7 @@ const translations = {
       heading_one: 'Showtime!',
       paragraph_one: `The cameras are rolling, two billion humans worldwide are tuned in to the live stream. Only a few minutes remain until the next commercial break. Deborah Chunk is sweating. Somehow, Holocat is also sweating. Somewhere on the other end of the call, Vanderpoole must be sweating, too. This is your moment.`,
       paragraph_two: `Starting with the valid block just before the one you found at height 6929851, find the longest chain of valid blocks you can. Store the chain as an array of block hashes. While you're at it, maintain an array of every invalid block you find as well, just to show the world how hard Vanderpoole tried to break bitcoin. It doesn't matter what order these invalid block hashes are in, but your valid chain MUST start with the hash of block 6929850 followed by one block hash at each height all the way up to the chain tip.`,
-      paragraph_three: `Vanderpoole is sneaky! He mined valid blocks on top of invalid blocks, and invalid blocks on top of short valid blocks! It's a maze, a minefield, out there. You may need to keep track of several valid branches as you traverse the tree. There will be valid blocks with valid parents that are not in the longest chain! In the end, there will be only one valid leaf with a greater height than all the others.`,
+      paragraph_three: `Vanderpoole is sneaky! He mined valid blocks on top of invalid blocks, and invalid blocks on top of short chains of valid blocks! It's a maze, a minefield, out there. You may need to keep track of several valid branches as you traverse the tree. There will be valid blocks with valid parents that are not in the longest chain! In the end, there will be only one valid leaf with a greater height than all the others.`,
       paragraph_four: `Remember: Block objects returned by the JSON API have a property "prev" which identifies that block's parent by its hash:`,
       heading_two: `A block is ONLY valid if:`,
       paragraph_five: `Its coinbase output value is equal to the expected block subsidy plus the total transaction fees in the block.`,
@@ -2306,7 +2306,7 @@ const translations = {
       nav_title: 'Chapter complete',
       heading: "We're doing it live!",
       paragraph_one:
-        "You found the longest chain and proved it to everyone! You are one step closer to discrediting Vanderpoole. Needless to say he didn't answer anymore of Ms. Chunk's questions.",
+        "You found the longest chain and proved it to everyone! The list of invalid blocks you found is impressively long. Vanderpoole went to great lengths to try to get people to accept his blocks containing subsidies, but he couldn’t do anything to change the rules of bitcoin. As we observed, just because a block is part of a chain, it does not necessarily mean that it is valid. Now, you are one step closer to discrediting Vanderpoole. Needless to say, he didn't answer the remainder of Ms. Chunk's questions.",
     },
     resources: {
       building_blocks_three: {
@@ -2347,25 +2347,28 @@ const translations = {
 
   chapter_nine: {
     title: `Don't trust, verify.`,
-    paragraph_one: `You demonstrated Vanderpoole’s invalid blocks and proved the most work chain, just in time. Its commercial break.`,
-    paragraph_two: `Just then, Vanderpoole himself walks into the studio! He starts complaining that you have ruined his business and slandered his good family name.`,
+    paragraph_one: `Just in time, you proved to the world that Vanderpoole has been attempting to confuse the bitcoin network with invalid blocks. As a commercial break airs, the studio’s television crew prepares for the next segment.`,
     intro_one: {
       title: 'Intro',
       nav_title: 'Threats',
       paragraph_one:
-        'Everyone is celebrating your success. You are smiling, the crew is smiling, Deborah Chunk is smiling. But there is one man on set who is not happy. A tall grey-haired man standing by the wall. The crowd parts and you see him face to face, for the first time: Vanderpoole! He is there!',
+        'Everyone is celebrating; everyone is smiling. But there is one man on set who isn’t happy: a tall, well-dressed, gray-haired man who you recognize immediately. The crowd parts, and you see him face to face for the first time: Vanderpoole!',
       paragraph_two:
-        'He starts shouting at you. You have ruined his business and slandered his good family name. He threatens to sue you in court with all his might for the rest of your days.',
+        'His fists are clenched. You have ruined his business and exposed his family’s long con. The first thing out of his mouth is a threat to sue you every day for the rest of your life "times infinity".',
     },
     intro_two: {
       title: 'Intro',
       nav_title: 'Coming to terms',
       paragraph_one:
-        'Just then, a TV network producer walks in and tells you and Deborah that viewers are calling in from all around the world that want to support your cause! You have lots of fans now and they all want to donate bitcoin to you! Deborah asks if you could provide a wallet address that they can broadcast on the air.',
+        'As Vanderpoole rants, a producer walks in and tells you that viewers from around the world want to support your cause by donating bitcoin and calzones to you for... some reason! Deborah asks you to provide their viewership with a wallet address.',
       paragraph_two:
-        'This makes Vanderpoole even more furious. He demands that you split the incoming donations with him or he will carry out his threat of endless lawsuits. Satisfy him, however, and he will leave you alone.',
+        'This makes Vanderpoole even more furious. He demands that you split the incoming donations with him, or he’ll drown you in even more lawsuits, as if there can be more than infinity lawsuits.',
       paragraph_three:
-        'Your task is to create a bitcoin script contract with this untrustable counterparty, and make sure you (and Vanderpoole) can spend from it how and when you agree to.',
+        'Sharing donations with Vanderpoole doesn’t make much sense. The money is coming from people that want to thank you for exposing Vanderpoole’s efforts to undermine bitcoin. It dawns on you that this demand is more about him losing than wanting money. For a moment, you even start to feel bad for him. He’s backed himself into a corner with no way out.',
+      paragraph_four:
+        'As if she could read your mind, Deborah Chunk steps in. She asks if there is a charity Vanderpoole would like to see a portion of the donations go to. To your surprise, he enthusiastically names the Lil Bits Foundation, a non-profit dedicated to helping children.',
+      paragraph_five:
+        'Vanderpoole’s complexion calms from radish red to beet purple. You start creating a bitcoin script contract between you and Vanderpoole. He is responsible for getting the funds to the Lil Bits Foundation. This script contract is what you will use to derive the donation address. It will treat Vanderpoole as an untrustable counterparty and ensure you both can spend from it how and when you agree.',
     },
     opcodes_one: {
       title: 'OpCodes',
@@ -2382,7 +2385,7 @@ const translations = {
       nav_title: 'Bitcoin stack',
       heading: 'The stack',
       paragraph_one:
-        "Think of a stack of books 📚. If you want to add a book, you have to place it on top of the stack, there's nowhere else for it to go. If you want to read a book, the only one you can access is the one on top of the stack. Even if you want more than one you have start at the top of the stack and work your way down. In computing terms, a stack is like an array of data items with two operations:",
+        "Think of a stack of books 📚. If you want to add a book, you have to place it on top of the stack. There's nowhere else for it to go. If you want to read a book, the only one you can access is the one on top of the stack. Even if you want more than one you have start at the top of the stack and work your way down. In computing terms, a stack is like an array of data items with two operations:",
       paragraph_two:
         '<span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_PUSH</span> Add an item to the "top" of the stack.',
       paragraph_three:
@@ -2399,16 +2402,16 @@ const translations = {
       paragraph_four:
         'Notice that the first item pushed on to the stack will be the last item popped off the stack, so it will be the last item processed by the script. For this reason the stack has an "upside down" or "backwards" feel to it, and the first thing you see on the stack will likely be the solution required at the end of script processing.',
       paragraph_five:
-        'When spending a bitcoin transaction output, the elements required by the spender are provided in the witness of the spending transaction input (see chapter 6!) and those elements get pushed on to the stack before any script processing begins. We will refer to those items as the INITIAL STACK. They are important because they are literally the data that unlocks the script and allows the spender to spend coins!',
+        "When spending a bitcoin transaction output, the elements required by the spender are provided in the witness section of the spending transaction's input (see chapter 6) and those elements get pushed on to the stack before any script processing begins. We will refer to those items as the INITIAL STACK. They are important because they are literally the data that unlocks a script and allows coins to be spent!",
     },
     opcodes_three: {
       title: 'OpCodes',
       nav_title: 'OpCodes',
       heading: 'OpCodes',
       paragraph_one:
-        'Script is a linear series of commands that are executed one by one, manipulating items on the stack. When the end of the script has been reached, there must be EXACTLY ONE NON-ZERO (NON-FALSE) ITEM remaining on the stack, or the entire operation is invalid and so is your bitcoin transaction. There are over 100 commands in the bitcoin script language, called "opcodes". We are only going to use a handful of them for this challenge.  ',
+        'Script is a linear series of commands that are executed one by one, manipulating items on the stack. When the end of the script is reached, there must be EXACTLY ONE NON-ZERO (NON-FALSE) ITEM remaining on the stack, or the entire operation is invalid and so is your bitcoin transaction. There are over 100 commands in the bitcoin script language, called "opcodes". We are only going to use a handful of them for this challenge.  ',
       paragraph_two:
-        "Let's demonstrate an example where we lock up a bitcoin with the math problem 1 + 2 = ?. Whoever knows the answer to this math problem can spend the coins.",
+        "Let's demonstrate an example where we lock up a bitcoin with the math problem 1 + 2 = ? Whoever knows the answer to this math problem can spend the coins.",
       paragraph_three: 'The script would look like this:',
       paragraph_four:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1 OP_2 OP_ADD OP_EQUAL</span>',
@@ -2420,7 +2423,7 @@ const translations = {
       nav_title: 'The stack solution',
       heading: 'The stack solution',
       paragraph_one:
-        "The stack solution would look like this: [3]. This is what the spending transaction would need in the witness of its input spending these coins. Let's step through it:",
+        "The stack solution would look like this and the spending transaction needs to contain all these elements. They go in the witness section of the input that is trying to spend these coins. Let's step through it:",
       table_one: {
         headings: {
           item_one: 'Step',
@@ -2442,7 +2445,7 @@ const translations = {
       paragraph_two:
         'Now we have reached the end of the script and there is only a single TRUE item left on the stack - the coins are spent!',
       paragraph_three:
-        "Hopefully it's obvious that if we started this example with a 4 on the stack, we would not be able to spend the coins. For these challenges we are going to use a very limited set of opcodes, which we will introduce by category",
+        'If we started this example with a 4 on the stack, we would not be able to spend the coins because the OP_EQUAL would evaluate to FALSE. For these challenges we are going to use a very limited set of opcodes, which we will introduce by category.',
     },
     opcodes_five: {
       title: 'OpCodes',
@@ -2513,7 +2516,7 @@ const translations = {
       paragraph_two:
         'Holocat appears with a pre-recorded message from Satoshi Nakamoto!',
       paragraph_three:
-        'Hi. I accidentally wrote a bug when I implemented <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn\'t used at all. UMMMMmmmmmm... WHOOPSIE! Sorry. That code is consensus-critical so every <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> operation in bitcoin\'s past, present, and future will be forced to include a "dummy" element. Don\'t forget it! Or you won\'t be able to spend your multisig coins.',
+        'Hi. I accidentally wrote a bug when I implemented <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn\'t used at all. So, uh, whoops. Sorry. That code is consensus-critical so every <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> operation in bitcoin\'s past, present, and future will be forced to include a "dummy" element. Don\'t forget it or you won\'t be able to spend your multisig coins!',
     },
     opcodes_eight: {
       title: 'OpCodes',
@@ -2537,7 +2540,7 @@ const translations = {
       multisig_list_seven:
         'If all public keys have been tested and there are any signatures remaining, the operation fails.',
       multisig_list_eight:
-        'Once all signatures have been removed the operation can finish early with success, even if more public keys are remaining.',
+        'Once all signatures have been removed the operation can finish early with success, even if more public keys remain.',
       paragraph_one:
         'Note that m <= n. There may be more public keys than signatures but never more signatures than public keys. Also note that the keys and signatures MUST be in the same order, even if some keys are not used to sign.',
       paragraph_two: 'Provide the initial stack to spend from the script.',
@@ -2547,7 +2550,7 @@ const translations = {
       nav_title: 'Wait to unlock',
       heading: 'Time Locks',
       paragraph_one:
-        "Way back in the last century a document entitled BIP 65 proposed a new opcode to bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className=\"text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm\">OP_DROP</span> as well.. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.",
+        "Way back in the last century a document entitled BIP 65 proposed a new opcode to bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className=\"text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm\">OP_DROP</span> as well. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.",
       subheading_one: 'Opcodes that do block timelocks',
       optimelock_list_one_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span>',
@@ -2574,14 +2577,14 @@ const translations = {
       title: 'Advanced',
       nav_title: 'Back to The Story',
       heading: 'Back to The Story!',
-      paragraph_one: `Nice Work! We've gone over most of the basic opcodes you will need when building the scripts for basic transactions. Now let's put them to the test in some scenarios.`,
+      paragraph_one: `Nice Work! We've gone over most of the opcodes you will need when building scripts for basic transactions. Now let's put them to the test.`,
       paragraph_two: `For each contract proposal you discuss, provide a bitcoin script and one valid spending stack.`,
     },
     proposal_two: {
       title: '2 of 2 multisig',
       nav_title: 'Sign cooperatively',
       heading: '2 of 2 multisig',
-      paragraph_one: `The first thing Vanderpoole suggests is a 2-of-2 multisig. All funds that get donated will be split by you and him 50/50, which will be managed by you both signing all spending transactions from the donation address, so you will have to agree on all "withdraws"`,
+      paragraph_one: `The first thing Vanderpoole suggests is a 2-of-2 multisig. All donations will be split between you and the Lil Bits Foundation 50/50. This will be managed by you both, with each of you signing all spending transactions from the donation address. This means you will have to agree on all withdrawals from the donation address.`,
       paragraph_two: `Vanderpoole hands you his public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
       paragraph_three: 'Provide the initial stack to spend from the script.',
       next_step_message: 'Looks good! Now lets try with your own signature.',
@@ -2590,8 +2593,8 @@ const translations = {
       title: 'Conditional time locked transaction',
       nav_title: 'Make him wait',
       heading: 'Conditional time locked transaction',
-      paragraph_one: `Wait a minute, that doesn't make sense -- you don't want to deal with him forever! The new deal is, you get all donations for the next two hours while you are still on TV. After that, he can have whatever else trickles in. You take a look at The Bitcoin Block Clock on the wall in the studio and agree that block height 6930300 will be probably be mined in about two hours`,
-      paragraph_two: `Remember Vanderpoole's public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
+      paragraph_one: `Wait a minute, that doesn't make sense—you don't want to deal with him forever! The new deal is you get all donations for the next two hours while you are still on TV. The Lil Bits Foundation gets anything that comes in afterwards. You look at the bitcoin block block on the wall in the studio and agree that block height 6930300 will probably be mined in about two hours.`,
+      paragraph_two: `Remember Vanderpoole's public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
       paragraph_three: 'Provide the initial stack to spend from the script.',
       next_step_message: 'Looks good! Now lets try with your own signature.',
     },
@@ -2600,22 +2603,29 @@ const translations = {
       nav_title: 'Work with an oracle',
       heading: 'Secret preimage locked transaction',
       paragraph_one:
-        "Vanderpoole changes his mind again. He doesn't like that deal because of the unknowns. He decides he wants the first 1.0 BTC of total donations, and then you can spend the rest after that.",
+        "Vanderpoole changes his mind again. He doesn't like that deal because of the unknowns. He decides he wants the Lil Bits foundation to get the first 1.0 BTC of total donations, and you can spend the rest afterward.",
       paragraph_two:
         'There is no way to check a total balance across multiple UTXOs in bitcoin script so you agree on an unbiased third-party oracle: Deborah Chunk! She will monitor the total donation amount on the blockchain and once they add up to at least 1.0 BTC she will announce, live on TV, the preimage to a hash value you will commit to in the script.',
-      paragraph_three:
-        'She generates a secure random nonce in private, then hands you the hash digest: <span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">HASH256(FD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one satoshi one second earlier!',
-      paragraph_four: `Remember Vanderpoole's public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
+      paragraph_three: {
+        a: 'She generates a secure random nonce in private, then hands you the hash digest: <span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">HASH256(FD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one ',
+        b: ' one second earlier!',
+      },
+      paragraph_four: `Remember Vanderpoole's public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
       paragraph_five: 'Provide the initial stack to spend from the script.',
+      tooltip_one: {
+        question: 'What is a satoshi?',
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520a%2520satoshi%253F',
+        highlighted: 'satoshi',
+      },
       next_step_message:
         "Let's see if we used our signature with the preimage correctly.",
     },
     outro_one: {
       title: 'Outro',
       nav_title: 'Chapter Complete',
-      heading: 'Coming to terms',
+      heading: 'Way to go!',
       paragraph_one:
-        "Nice, you were able to come to an agreement that seems to make everyone happy. Let's go ahead and broadcast this transaction to set it in stone.",
+        "The donations have now been distributed to you and the Lil Bits Foundation and many viewers thank you for shining a light on Vanderpoole’s actions. While the decentralized nature of bitcoin makes it difficult to overtake the network, it doesn’t stop people like him from trying. You're relieved the truth is finally out, especially after all the effort it took to get here.",
     },
 
     resources: {
