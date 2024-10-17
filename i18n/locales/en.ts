@@ -98,7 +98,7 @@ const translations = {
       title: 'Intro',
       nav_title: 'Miner protest',
       paragraph_one: `Moments later, your Hover Screen activates.`,
-      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the well-dressed CEO of BitRey, you run one of the largest bitcoin mining pools in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
+      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the well-dressed CEO of BitRey, you run, by far, the largest bitcoin mining pool in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
       paragraph_three: `—Vanderpoole: “Let’s start from the top. Yes, I am, Deborah, and yes, I do. The Vanderpooles—my well-dressed daddy and his well-dressed daddy before him—have been mining since block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. Miners cannot survive on fees alone.”`,
       start: 'Continue',
     },
@@ -279,7 +279,7 @@ const translations = {
       paragraph_two:
         'You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.',
       paragraph_three: {
-        a: '—HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family ASIC miners. In bitcoin’s early days, miners would use general purpose computers to mine bitcoin. But after a few years, miners realized they could use machines with a special chip called an Application-Specific Integrated Circuit, or ',
+        a: '—HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family mining devices. In bitcoin’s early days, miners would use general purpose computers to mine bitcoin. But after a few years, miners realized they could use machines with a special chip called an Application-Specific Integrated Circuit, or ',
         b: ' for short. These chips do only one thing: mine bitcoin. Their narrow focus increases their efficiency and allows miners to spend less energy on mining, giving them an edge. Can you believe that people mined with their laptops at one point?"',
       },
       paragraph_four:
@@ -474,7 +474,7 @@ const translations = {
       nav_title: 'Chapter complete',
       heading: 'Great Job!',
       paragraph_one:
-        'The machines roar to life. Everything seems to be working. A map appears on the old monitor that shows the locations of other warehouses filled with ASICs that have come online across the world. Looks like they were activated when you completed the mining challenge!',
+        'The machines roar to life. Everything seems to be working. A map appears on the old monitor that shows the locations of other warehouses filled with old Vanderpoole family mining devices that have come online across the world. Looks like they were activated when you completed the mining challenge!',
       paragraph_two: '—HOLOCAT: “Look, there’s a message.”',
       paragraph_three:
         '“Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto',
@@ -525,7 +525,7 @@ const translations = {
         difficulty_paragraph:
           'The mining difficulty is what allows the block to remain at an average of 10 minutes between each new block.',
         spoiler:
-          'Nothing to spoil! Just go ahead and read through this lesson. There will be more opportunities to show off your   mining knowledge in future lessons!',
+          'Nothing to spoil! Just go ahead and read through this lesson. There will be more opportunities to show off your  mining knowledge in future lessons!',
       },
     },
   },
@@ -542,25 +542,25 @@ const translations = {
       title: 'Intro',
       nav_title: 'Hashing it out',
       paragraph_one:
-        '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is being targeted with a 51% attack! Vanderpoole used a backdoor on the standard ASIC firmware to bend existing mining pools to his goals. He’s using them to mine empty blocks to hold the bitcoin ecosystem hostage and force people to support increasing bitcoin’s supply. Do something, dingdong!”',
+        '—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is being hit with a 51% attack right now! After you brought those mining devices online, Vanderpoole turned BitRey’s ASICs back on and is mining empty blocks. The problem is it’s not just his machines. He used a backdoor on the standard ASIC firmware to infect existing miners with a virus that prevents them from mining anything but empty blocks. He’s trying to hold the bitcoin ecosystem hostage and force people to support the idea of increasing bitcoin’s supply. Do something, dingdong!”',
       paragraph_two:
-        'The old computer coughs a cloud of dust, then produces a wad of data called a “spreadsheet” that contains contact info for some of the largest bitcoin pool operators, as well as a patch to the virus that is letting BitRey control miners. Send the file to the pool operators so that they can regain control of their machines fight BitRey.',
+        'The old computer coughs up a cloud of dust, then produces a wad of data called a “spreadsheet” that contains contact info for some of the largest bitcoin miners, as well as a patch for the virus. The sooner you can get the patch to other miners, the sooner they can regain control of their machines and join your fight against BitRey.',
       paragraph_three:
         '—HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”',
     },
 
     solo_one: {
-      title: 'You vs. Bitrey',
+      title: 'You vs. BitRey',
       nav_title: 'Mining alone',
       step_zero_heading: 'Let’s give it a try',
       step_zero_paragraph_one:
-        'While you’re waiting for the pool operators you reached out to, you decide to see if BitRey can be fended off alone. Here’s how your hash rate stacks up. How do you think this will go?',
+        'While you’re waiting for the miners you reached out to, you decide to see if BitRey can be fended off alone. Maybe you can put an end to the empty blocks without any help. Here’s how your hash rate stacks up. How do you think this will go?',
       step_one_heading: 'We’re off to the races',
       step_one_paragraph_one:
         'We’re now mining 100 blocks to see how many you stack up against BitRey.',
       step_two_heading: `That didn't go well!`,
       step_two_paragraph_one:
-        'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled pools. Let’s see if we can defeat BitRey for the next 100 blocks with the other pool operators. Bitcoin has been running for over a century and it’s not going down without a fight.',
+        'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled miners. Let’s see if we can defeat BitRey for the next 100 blocks with the other miners. Bitcoin has been running for over a century and it’s not going down without a fight.',
     },
 
     pool_one: {
@@ -579,10 +579,10 @@ const translations = {
       nav_title: 'Mining together',
       step_zero_heading: 'Here we go',
       step_zero_paragraph_one:
-        'By combining your hashrate with the other pool operators, can you stand up to BitRey?',
+        'By pooling your hashrate with the other miners, can you stand up to BitRey?',
       step_two_heading: 'Another defeat!',
       step_two_paragraph_one:
-        'Something is wrong. Only Hash Hoppers found blocks. Why do you think that might be?',
+        'Something is wrong. Only Hashrate Hoppers found blocks. Why do you think that might be?',
     },
 
     coop_one: {
@@ -590,7 +590,7 @@ const translations = {
       nav_title: 'Something went wrong',
       heading: 'Something is not quite right yet.',
       paragraph_one:
-        'Hash Hoppers, the one with the most hash power, is finding all your blocks but others find nothing.',
+        'Hashrate Hoppers, the one with the most hash power, is finding all your blocks but others find nothing.',
       paragraph_two:
         'The problem is that everyone is checking the same nonces while they’re mining. How can you better coordinate?',
       paragraph_three:
@@ -623,7 +623,7 @@ const translations = {
         'Let’s see if we stand a chance against BitRey now with our improved strategy of dividing the nonce space.',
       step_two_heading: 'You did it!',
       step_two_paragraph_one:
-        'Together you and the other pool operators held back BitRey’s attempt to overtake the network.',
+        'Together you and the other miners held back BitRey’s attempt to overtake the network.',
     },
 
     split_one: {
@@ -672,7 +672,7 @@ const translations = {
       nav_title: 'Chapter complete',
       heading: 'Take that, Vanderpoole! ',
       paragraph_one:
-        'Great work! You and the other operators were able to fend off Vanderpoole’s 51% attack by pooling your resources. Empty blocks are no longer being submitted and it looks like he’s given up.',
+        'Great work! You and the other miners were able to fend off Vanderpoole’s 51% attack by pooling your resources. Empty blocks are no longer being submitted and it looks like he’s given up.',
       paragraph_two:
         'It’s time to reap your rewards! Go to the next chapter to withdraw your bitcoin.',
     },
@@ -726,7 +726,7 @@ const translations = {
       title: 'Intro',
       nav_title: 'Securing the bag',
       paragraph_one:
-        '—HOLOCAT: “One of us better sleep. You need to start contacting the mining pools. They’ll want to know even more than the world will.”',
+        '—HOLOCAT: “One of us better sleep. You need to start contacting the rest of the miners. They’ll want to know even more than the world will.”',
       paragraph_two:
         'As you settle at your ButtLift Hover Desk, you replay the day’s events. Vanderpoole. BitRey. The revelation that miners never agreed to shut down in protest. Could it all be true? Was this all staged? And how much longer are you supposed to look after this cat? (In the distance, something meows.)',
       paragraph_three:
@@ -2098,7 +2098,7 @@ const translations = {
     intro_three: {
       nav_title: 'Correcting the software',
       paragraph_one:
-        "But you can't just leave the crippled mining code on Vanderpoole's server to keep infecting all the mining pools. You have to fix it! As you read through the code, Holocat shows you a mempool display and it is filling up with unconfirmed transactions. The sooner this code gets fixed, the better.",
+        "But you can't just leave the crippled mining code on Vanderpoole's server. It will keep infecting miners. You have to fix it! As you read through the code, Holocat shows you a mempool display that is filling with unconfirmed transactions. The sooner this code gets fixed, the better.",
     },
     mempool_transaction_one: {
       title: 'Building blocks',
