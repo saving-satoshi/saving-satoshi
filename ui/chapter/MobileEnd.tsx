@@ -26,6 +26,7 @@ export default function MobileEnd({
   currentLessonKey,
   gradientTheme,
   sharing,
+  saveAndProceed,
 }: {
   children: any
   image: string
@@ -36,6 +37,7 @@ export default function MobileEnd({
   currentLessonKey: any
   gradientTheme: string
   sharing: boolean
+  saveAndProceed: boolean
 }) {
   const t = useTranslations(lang)
   const { chapterId, lessonId } = usePathData()
@@ -157,8 +159,8 @@ export default function MobileEnd({
         <div className="max-w-[500px]">{children}</div>
         <div className="mt-4 flex w-full max-w-[500px] flex-col gap-4 xl:w-2/3">
           <Button onClick={onClick} size="small">
-            {(!account && t('chapter_one.end.save')) ||
-              (account && t('shared.next'))}
+            {(!account && !saveAndProceed && t('chapter_one.end.save')) ||
+              t('shared.next')}
           </Button>
           {isThisLastLesson && (
             <Button

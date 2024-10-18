@@ -7,7 +7,8 @@ export const metadata = {
   title: 'chapter_ten.intro_two.title',
   navigation_title: 'chapter_ten.intro_two.nav_title',
   image: '/assets/images/chapter-10-intro-1.jpg',
-  theme: 'bg-[#401d4e]',
+  theme: 'bg-gradient-to-tl from-[#c41486] to-[#58a4b2]',
+  secondaryTheme: 'bg-[#c41486]',
   key: 'CH10INT2',
 }
 
