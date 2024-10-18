@@ -7,7 +7,6 @@ export const metadata = {
   title: 'chapter_ten.outro_two.title',
   navigation_title: 'chapter_ten.outro_two.nav_title',
   image: '/assets/images/chapter-10-outro-2.jpg',
-  theme: 'bg-[#401d4e]',
   key: 'CH10OUT2',
 }
 

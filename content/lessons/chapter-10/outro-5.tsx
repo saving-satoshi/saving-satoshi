@@ -4,9 +4,9 @@ import { useTranslations } from 'hooks'
 import { ChapterEnd } from 'ui'
 
 export const metadata = {
-  title: 'chapter_nine.outro_one.title',
-  navigation_title: 'chapter_nine.outro_one.nav_title',
-  image: '/assets/images/chapter-9-outro.jpg',
+  title: 'chapter_ten.outro_five.title',
+  navigation_title: 'chapter_ten.outro_five.nav_title',
+  image: '/assets/images/chapter-10-outro-5.jpg',
   theme: 'bg-transparent/40',
   secondaryTheme: 'bg-[#886038]',
   gradientTheme: 'from-[#886038] via-[#886038BF]',

@@ -13,6 +13,7 @@ const translations = {
     coming_soon: 'Coming soon',
     start_chapter: 'Start chapter',
     back: 'Back',
+    end: 'End',
     close: 'Close',
     poweroff: 'Back to chapter selection',
     loading: 'Loading',
@@ -2688,8 +2689,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     title: '10 billion connections',
     paragraph_one: `The ON-AIR light in the TV studio goes dark. Stagehands shut off their hover-cameras and start filing out after a long day. Mike Ramen puts his hand on your shoulder and says "Great work today! Now let's celebrate. I know a bar across the street that accepts bitcoin -- and what better way to honor Satoshi's vision of digital cash for the internet than exchanging some for beer!"`,
     intro_one: {
-      title: 'Intro',
-      nav_title: 'Intro',
+      title: 'Celebration',
+      nav_title: 'Celebration',
       paragraph_one: `“You did it! You pulled it off!” she exclaims as you high-five and head for the door. You step outside. Everything is as it used to be. But something feels different. A ziptaxi deposits its passengers and zooms off. Someone buys dinner from a halal cart. A child exits a store with her holodog and a carton of milk. These are regular scenes, but you see how important money is to the world you live in.`,
       paragraph_two: `“Why are you just standing there?” Mika 3000’s question snaps you out of your dream state.`,
       paragraph_three: `“Have you ever thought about money? Like, how does bitcoin work?” you stammer.`,
@@ -2697,8 +2698,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_five: `“Let’s get something to drink,” you request and insist at the same time.`,
     },
     intro_two: {
-      title: 'Intro',
-      nav_title: 'Intro',
+      title: 'Getting drinks',
+      nav_title: 'Getting drinks',
       paragraph_one: `You step into a bar called The Public Key Pub. The bartender, a friendly guy with the name tag Laszlo, welcomes you and Mika 3000 in with a big smile.`,
       paragraph_two: '“I’m in the mood for pizza,” Mika 3000 tells Laszlo.',
       paragraph_three:
@@ -2708,8 +2709,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_five: `“That’s so cool. Well, pizza with a Laszlo would have been perfect, but I’ll settle for a [DRINK CHOICE].”`,
     },
     intro_three: {
-      title: 'Intro',
-      nav_title: 'Intro',
+      title: 'Off-chain?',
+      nav_title: 'Off-chain?',
       paragraph_one: `Mika 3000 and Laszlo pull out their solar-powered ePhone 114s and start tapping buttons. Laszlo pours a beer and hands it to Mika 3000. She raises the glass to you and says, "Your little stunt back there did a number on miner fees. Good thing we’ve got off-chain payments.”`,
       paragraph_two: `You must have seen a million bitcoin payments in your life. But you’ve never really thought about it. That couple getting out of the robotaxi, the halal cart, the kid with her holodog, this beer. Of course, these aren’t on-chain payments. But how?`,
       paragraph_three: `“You’ve got that glazed-over look again,” Mika 3000 whispers.`,
@@ -2775,8 +2776,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(You) </span>`,
     },
     updating_the_state_two: {
-      title: 'Revoking Refunds to Secure Payment in Multi-Sig',
-      nav_title: 'Revoking Refunds to Secure Payment in Multi-Sig',
+      title: 'Securing Payments',
+      nav_title: 'Securing Payments',
       paragraph_one: `Laszlo says, "OK, nice, I'll sign this and send it back to you, and then you can sign that funding transaction.`,
       paragraph_two: `Hey, wait a minute, though. If I sign this, we're back where we started: You can broadcast this transaction even after I give you a beer, and I won't get paid`,
       paragraph_three:
@@ -2956,7 +2957,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
 
     outro_one: {
       title: 'Outro',
-      nav_title: 'Outro 1',
+      nav_title: 'Going all night',
       paragraph_one:
         'You can do this all night long! Well. Until your 100,000 satoshis have all been sent to Laszlo anyway',
       paragraph_two: "Don't forget to drink some water!",
@@ -2964,14 +2965,14 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
 
     outro_two: {
       title: 'Outro',
-      nav_title: 'Outro 2',
+      nav_title: 'Heading home',
       paragraph_one: `After a long day, you pay for your drinks and head home,. but as you open the door to your 3D printed house, you—oh, crap! It’s Vanderpoole again! Is this really happening or did you have one too many Mempool Margaritas? Despite a small cadre of holocats flanking him on every side, he isn’t looking for a fight`,
       paragraph_two: `—VANDERPOOLE: “We don’t really know one another, even though, as my grandpappy used to say, the fates of strangers are often intertwined.. I need you to hear me. All of the Satoshi Nakamoto stuff was me trying to save my family’s business. You can’t imagine how much mining meant to us. I guess I wasn’t ready for change and wanted to keep things more or less the same.”`,
     },
 
     outro_three: {
       title: 'Outro',
-      nav_title: 'Outro 3',
+      nav_title: 'Bitcoin community',
       paragraph_one: `You ask why the name mattered so much to him.`,
       paragraph_two: `—VANDERPOOLE: “It’s the only name in bitcoin bigger than Bitrey and Vanderpoole. Someone using the name Satoshi Nakamoto once told me that bitcoin had moved far beyond its creator’s control over a century ago. This is why, to salvage the Vanderpoole name, I tried to claim a more prominent name. You can’t understand the thrill of minting new coins. It was magic to me then; it is magic to me now.”`,
       paragraph_three: `—VANDERPOOLE: "I realize now that even if I were Satoshi’s great-grandson, bitcoin isn’t defined by leaders. It’s defined by its community. Not even Satoshi could change what bitcoin has become. That has always been what made bitcoin great and why the millions of other coins made in bitcoin’s image never lasted.”`,
@@ -2979,7 +2980,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
 
     outro_four: {
       title: 'Outro',
-      nav_title: 'Outro 4',
+      nav_title: "Vanderpoole's villainy",
       paragraph_one: `Vanderpoole picks up your holocat, and it begins to pur. People are complicated, and no one knows that better than cats, holo or otherwise`,
       paragraph_two: `—HOLOCAT: “You’re not a villain, Mr. Vanderpoole. But you maybe, just maybe, might have cared too much.”`,
       paragraph_three: `—VANDERPOOLE: Ain’t that the truth.`,
@@ -2990,6 +2991,11 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       nav_title: 'You did it!!!',
       heading_one: 'You did it!!!',
       paragraph_one: `Like Satoshi, you were a nobody, but your ideas had merit, so people followed you. Satoshi is gone, but his spirit and ideas live on. Armed with your newfound bitcoin dev coding skills, a healthy dose of humility, and some good old-fashioned persistence, you can leave an enduring mark on this elegant system that has united the world under permissionless, censorship-resistant money for more than 100 years. New adventures await you in the code and the open market of ideas. bitcoin only survives because people like you contribute what theycan. That’s why we are all Satoshi.`,
+    },
+
+    outro_six: {
+      title: 'Beyond Saving Satoshi',
+      nav_title: 'Moving beyond Saving Satoshi',
     },
   },
 
