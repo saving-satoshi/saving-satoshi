@@ -257,7 +257,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                         <Tooltip
                           id="broadcast-button"
                           position="top"
-                          theme="bg-[#00000026]"
+                          theme="bg-[#5c4d4b]"
                           offset={10}
                           parentClassName="max-w-[max-content] "
                           className="max-w-[100px] cursor-pointer "
