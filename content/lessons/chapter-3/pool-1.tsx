@@ -42,7 +42,7 @@ export default function Pool1({ lang }) {
       display: false,
     },
     {
-      username: 'Hash Hoppers',
+      username: 'Hashrate Hoppers',
       avatar: '/assets/avatars/hash-hoppers.jpg',
       display: false,
     },
