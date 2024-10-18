@@ -26,7 +26,7 @@ export default function End({
   direction,
   theme,
   gradientTheme,
-  saveAndProceed,
+  saveAndProceed = false,
   sharing = true,
 }: {
   children: any
