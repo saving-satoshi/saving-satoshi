@@ -26,6 +26,7 @@ export default function OpeningAChannel2({ lang }) {
       progressKey={metadata.key}
       currentTransactionTab="payment"
       laszloWillNotSign
+      laszloHidden
     >
       <LessonInfo>
         <Text className="text-lg font-bold md:text-xl">
@@ -42,6 +43,7 @@ export default function OpeningAChannel2({ lang }) {
           <li>{t('chapter_ten.opening_a_channel_two.off_chain_list_one')}</li>
           <li>{t('chapter_ten.opening_a_channel_two.off_chain_list_two')}</li>
           <li>{t('chapter_ten.opening_a_channel_two.off_chain_list_three')}</li>
+          <li>{t('chapter_ten.opening_a_channel_two.off_chain_list_four')}</li>
         </ul>
         <Text className="mt-4 text-lg font-bold md:text-xl">
           {t('chapter_ten.opening_a_channel_two.heading_two')}

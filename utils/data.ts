@@ -43,7 +43,8 @@ export const transactionTabs: TransactionData = {
     },
   },
   'multi-sig': {
-    description: 'This is the multi-sig transaction between you and Laszlo.',
+    description:
+      'This transaction will fund a multisig output between you and Laszlo.',
     signatures: {
       you: 'signed',
       lazlo: 'pending',
@@ -74,7 +75,7 @@ export const transactionTabs: TransactionData = {
   },
   refund_1: {
     description:
-      'This transaction ensures funds are not lost if Laszlo disappears. It also ensures that you will not broadcast it after paying for your beer.',
+      'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer.',
     signatures: {
       you: 'signed',
       lazlo: 'pending',
@@ -90,7 +91,7 @@ export const transactionTabs: TransactionData = {
   },
   refund_2: {
     description:
-      'This transaction ensures funds are not lost if you or Bob disappear.',
+      'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer, AND gives him a few days to notice if you do.',
     signatures: {
       you: 'signed',
       lazlo: 'pending',

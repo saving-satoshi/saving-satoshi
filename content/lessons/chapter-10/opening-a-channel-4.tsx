@@ -31,6 +31,7 @@ export default function OpeningAChannel4({ lang }) {
       progressKey={metadata.key}
       currentTransactionTab="multi-sig"
       laszloWillNotSign
+      laszloHidden
     >
       <LessonInfo>
         <Text className="text-lg font-bold md:text-xl">
