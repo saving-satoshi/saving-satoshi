@@ -25,6 +25,7 @@ interface IOutput {
   setErrorMessage: React.Dispatch<React.SetStateAction<string>>
   setValidateScript: React.Dispatch<React.SetStateAction<SuccessNumbers>>
   setValidating: React.Dispatch<React.SetStateAction<boolean>>
+  onScriptEmpty: () => void
 }
 const OutputScript: FC<IOutput> = ({
   prefilled,
@@ -42,6 +43,7 @@ const OutputScript: FC<IOutput> = ({
   height,
   nSequenceTime,
   setErrorMessage,
+  onScriptEmpty,
 }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const caretPositionRef = useRef(0)
@@ -58,6 +60,12 @@ const OutputScript: FC<IOutput> = ({
       ? Buffer.from(script, 'base64').toString('utf-8')
       : ''
   )
+
+  if (scriptInput === '') {
+    onScriptEmpty(true)
+  } else if (scriptInput !== '') {
+    onScriptEmpty(false)
+  }
 
   const initializeExecutor = async (x: 0 | 1) => {
     setErrorMessage('')
@@ -183,6 +191,8 @@ const OutputScript: FC<IOutput> = ({
       )
     }
   }, [scriptInput])
+
+  console.log(passes)
 
   return (
     <div className="flex flex-col gap-4 rounded-md bg-black/20 p-4 text-lg">

@@ -28,6 +28,7 @@ interface ITransactionProps {
   laszloWillNotSign?: boolean
   noSignature?: boolean
   alwaysShowButton?: boolean
+  laszloHidden?: boolean
 }
 
 export type SpendingConditions = {
@@ -57,6 +58,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   laszloWillNotSign,
   noSignature,
   alwaysShowButton,
+  laszloHidden = false,
 }) => {
   const lang = useLang()
   const t = useTranslations(lang)
@@ -73,6 +75,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     you: 'not-signed',
     laszlo: 'not-signed',
   })
+  const [disableSign, setDisableSign] = useState<boolean>(true)
   const [validateScript0, setValidateScript0] = useState<SuccessNumbers>(0)
   const [validateScript1, setValidateScript1] = useState<SuccessNumbers>(0)
   const handleLazloSign = () => {
@@ -125,6 +128,15 @@ const TransactionChallenge: FC<ITransactionProps> = ({
       handleLazloSign()
     }
   }
+
+  const handleScriptEmpty = (scriptEmpty) => {
+    if (scriptEmpty) {
+      setDisableSign(true)
+    } else {
+      setDisableSign(false)
+    }
+  }
+
   return (
     <Lesson
       direction={
@@ -193,6 +205,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             validating={validating}
                             setValidating={setValidating}
                             setErrorMessage={setErrorMessage0}
+                            onScriptEmpty={handleScriptEmpty}
                           />
                         )}
                         {tabData[1].output_1 && (
@@ -215,6 +228,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             validateScript1={validateScript1}
                             setValidating={setValidating}
                             setErrorMessage={setErrorMessage1}
+                            onScriptEmpty={handleScriptEmpty}
                           />
                         )}
                       </div>
@@ -234,28 +248,37 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                               disabled={signatures.you === 'signed'}
                               onClick={handleYouSign}
                               classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                              disabled={disableSign}
                             >
                               Sign
                             </SignatureButton>
                           </div>
 
-                          <div className="flex items-center gap-2.5">
-                            <Avatar avatar={account?.avatar} />
-                            <Text>Laszlo</Text>
-                            <SignatureButton
-                              disabled={true}
-                              returnSuccess={returnSuccess()}
-                              laszloWillNotSign={laszloWillNotSign}
-                              classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
-                            >
-                              Sign
-                            </SignatureButton>
-                          </div>
+                          {!laszloHidden && (
+                            <div className="flex items-center gap-2.5">
+                              <Avatar avatar={account?.avatar} />
+                              <Text>Laszlo</Text>
+                              <SignatureButton
+                                disabled={true}
+                                returnSuccess={returnSuccess()}
+                                laszloWillNotSign={laszloWillNotSign}
+                                classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                              >
+                                Sign
+                              </SignatureButton>
+                            </div>
+                          )}
                         </div>
                       </div>
                       <div className="flex flex-col">
                         <Text>Options</Text>
-                        <Tooltip
+                        <Button
+                          classes="max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                          disabled
+                        >
+                          Broadcast Transaction
+                        </Button>
+                        {/*<Tooltip
                           id="broadcast-button"
                           position="top"
                           theme="bg-[#5c4d4b]"
@@ -270,7 +293,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                           >
                             Broadcast Transaction
                           </Button>
-                        </Tooltip>
+                        </Tooltip>*/}
                       </div>
                     </div>
                   )}
