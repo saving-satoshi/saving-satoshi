@@ -20,7 +20,7 @@ export default function MakingAPayment2({ lang }) {
           0: ['0', 'SIG(REVOCATION_YOU_2)', 'SIG(LASZLO)', '0'],
           1: ['SIG(YOU)', '1'],
         },
-        output_1: { 0: ['SIG(Laszlo)'] },
+        output_1: { 0: ['SIG(LASZLO)'] },
       }}
       nSequenceTime={700}
       answerScript={{

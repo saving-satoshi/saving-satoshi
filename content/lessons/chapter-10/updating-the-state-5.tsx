@@ -18,10 +18,11 @@ export default function UpdatingTheState5({ lang }) {
       initialStack={{
         output_0: {
           0: ['0', 'SIG(REVOCATION_YOU_1)', 'SIG(LASZLO)', '0'],
-          1: ['SIG(YOU) 1'],
+          1: ['SIG(YOU)', '1'],
         },
         output_1: { 0: [] },
       }}
+      nSequenceTime={700}
       answerScript={{
         output_0: [
           'OP_IF',

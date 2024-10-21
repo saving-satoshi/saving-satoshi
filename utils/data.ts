@@ -18,9 +18,9 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     description:
-      'This is an output of 100,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.',
+      'This is an output of 101,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.',
     output_0: {
-      sats: '100,000',
+      sats: '101,000',
       script: `T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==`,
     },
   },
@@ -31,7 +31,7 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '1000',
@@ -43,13 +43,14 @@ export const transactionTabs: TransactionData = {
     },
   },
   'multi-sig': {
-    description: 'This is the multi-sig transaction between you and Laszlo.',
+    description:
+      'This transaction will fund a multisig output between you and Laszlo.',
     signatures: {
       you: 'signed',
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '100000',
@@ -65,7 +66,7 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '100000',
@@ -74,13 +75,13 @@ export const transactionTabs: TransactionData = {
   },
   refund_1: {
     description:
-      'This transaction ensures funds are not lost if Laszlo disappears. It also ensures that you will not broadcast it after paying for your beer.',
+      'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer.',
     signatures: {
       you: 'signed',
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '100000',
@@ -90,13 +91,13 @@ export const transactionTabs: TransactionData = {
   },
   refund_2: {
     description:
-      'This transaction ensures funds are not lost if you or Bob disappear.',
+      'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer, AND gives him a few days to notice if you do.',
     signatures: {
       you: 'signed',
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '100000',
@@ -112,7 +113,7 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '99000',
@@ -131,7 +132,7 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '2000',
