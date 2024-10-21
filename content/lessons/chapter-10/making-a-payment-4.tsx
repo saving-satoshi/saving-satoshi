@@ -22,6 +22,9 @@ export default function MakingAPayment4({ lang }) {
       <Text className="mt-4 text-lg md:text-xl">
         {t('chapter_ten.making_a_payment_four.paragraph_two')}
       </Text>
+      <Text className="mt-4 text-lg md:text-xl">
+        {t('chapter_ten.making_a_payment_four.paragraph_three')}
+      </Text>
     </Introduction>
   )
 }

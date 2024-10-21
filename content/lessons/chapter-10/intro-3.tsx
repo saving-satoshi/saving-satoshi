@@ -27,9 +27,6 @@ export default function Intro3({ lang }) {
       <Text className="mt-4 text-lg md:text-xl">
         {t('chapter_ten.intro_three.paragraph_four')}
       </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_ten.intro_three.paragraph_five')}
-      </Text>
     </Introduction>
   )
 }
