@@ -17,6 +17,7 @@ const translations = {
     close: 'Close',
     poweroff: 'Back to chapter selection',
     loading: 'Loading',
+    bitcoin_dev_project: 'Bitcoin Dev Project',
   },
   ///ABOUT PAGE
   about: {
@@ -2918,12 +2919,12 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
         'There are several off-chain transactions that spend that output:',
       paragraph_three: 'You have these transactions:',
       paragraph_four: 'Commitment 1 (You):',
-      commitment_1_you: {
+      commitment_one_you: {
         list_one: 'Input 0: signed by Laszlo',
         list_two:
           'Output 0: 100000 satoshis to you after 700 blocks or Laszlo with revocation_you_1',
       },
-      commitment_2_you: {
+      commitment_two_you: {
         list_one: 'Input 0: signed by Laszlo',
         list_two:
           'Output 0: 99000 satoshis to you after 700 blocks or Laszlo with revocation_you_2',
@@ -2932,7 +2933,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_five: 'Commitment 2 (You):',
       paragraph_six: 'Laszlo has this transaction:',
       paragraph_seven: 'Commitment 2 (Laszlo):',
-      commitment_2_laszlo: {
+      commitment_two_laszlo: {
         list_one: 'Input 0: signed by You',
         list_two:
           'Output 0: 1000 satoshis to Laszlo after 700 blocks or You with revocation_laszlo_1',
@@ -2998,7 +2999,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     },
 
     outro_five: {
-      title: 'You did it!!!',
+      title: 'Outro',
       nav_title: 'You did it!!!',
       heading_one: 'You did it!!!',
       paragraph_one: `Like Satoshi, you were a nobody, but your ideas had merit, so people followed you. Satoshi is gone, but his spirit and ideas live on. Armed with your newfound bitcoin dev coding skills, a healthy dose of humility, and some good old-fashioned persistence, you can leave an enduring mark on this elegant system that has united the world under permissionless, censorship-resistant money for more than 100 years. New adventures await you in the code and the open market of ideas. bitcoin only survives because people like you contribute what theycan. That’s why we are all Satoshi.`,
@@ -3007,6 +3008,14 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     outro_six: {
       title: 'Beyond Saving Satoshi',
       nav_title: 'Moving beyond Saving Satoshi',
+      heading: 'Bitcoin still needs your help...',
+      paragraph_one:
+        'Although 2140 may seem distant, Bitcoin’s mission remains timeless: to create money that is fair, open, and honest. However, achieving this vision will require everyone’s efforts—including yours.',
+      paragraph_two:
+        'You’ve shown that you understand bitcoin. Now is the perfect time to turn that knowledge into action by contributing to one of the most important technologies ever.',
+      paragraph_three:
+        'The <Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> is here to guide future generations of open-source contributors. Becoming a present day bitcoin hero today is just one click away.',
+      paragraph_four: 'We are all Satoshi.',
     },
   },
 
