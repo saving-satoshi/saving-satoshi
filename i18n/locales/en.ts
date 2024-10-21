@@ -2977,14 +2977,14 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     outro_two: {
       title: 'Outro',
       nav_title: 'Heading home',
-      paragraph_one: `After a long day, you pay for your drinks and head home,. but as you open the door to your 3D printed house, you—oh, crap! It’s Vanderpoole again! Is this really happening or did you have one too many Mempool Margaritas? Despite a small cadre of holocats flanking him on every side, he isn’t looking for a fight`,
-      paragraph_two: `—VANDERPOOLE: “We don’t really know one another, even though, as my grandpappy used to say, the fates of strangers are often intertwined.. I need you to hear me. All of the Satoshi Nakamoto stuff was me trying to save my family’s business. You can’t imagine how much mining meant to us. I guess I wasn’t ready for change and wanted to keep things more or less the same.”`,
+      paragraph_one: `After a long and strange day, you pay for your drinks and head home. But as you open the door to your 3D printed bungalow, you—oh, crap! It’s Vanderpoole again! Is this really happening or did you have one too many Mempool Margaritas? Despite a small cadre of holocats flanking him on every side, he isn’t looking for a fight.`,
+      paragraph_two: `—VANDERPOOLE: “We don’t really know one another, even though, as my grandpappy used to say, the fates of strangers are often intertwined. I need you to hear me. All of the Satoshi Nakamoto stuff was me trying to save my family’s business. You can’t imagine how much mining meant to us. I guess I wasn’t ready for change and wanted to keep things more or less the same.”`,
     },
 
     outro_three: {
       title: 'Outro',
       nav_title: 'Bitcoin community',
-      paragraph_one: `You ask why the name mattered so much to him.`,
+      paragraph_one: `You ask why the name Satoshi Nakamoto mattered so much to him.`,
       paragraph_two: `—VANDERPOOLE: “It’s the only name in bitcoin bigger than Bitrey and Vanderpoole. Someone using the name Satoshi Nakamoto once told me that bitcoin had moved far beyond its creator’s control over a century ago. This is why, to salvage the Vanderpoole name, I tried to claim a more prominent name. You can’t understand the thrill of minting new coins. It was magic to me then; it is magic to me now.”`,
       paragraph_three: `—VANDERPOOLE: "I realize now that even if I were Satoshi’s great-grandson, bitcoin isn’t defined by leaders. It’s defined by its community. Not even Satoshi could change what bitcoin has become. That has always been what made bitcoin great and why the millions of other coins made in bitcoin’s image never lasted.”`,
     },
