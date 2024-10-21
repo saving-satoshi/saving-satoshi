@@ -18,9 +18,9 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     description:
-      'This is an output of 100,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.',
+      'This is an output of 101,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.',
     output_0: {
-      sats: '100,000',
+      sats: '101,000',
       script: `T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==`,
     },
   },
@@ -31,7 +31,7 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '1000',
@@ -49,7 +49,7 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '100000',
@@ -65,7 +65,7 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '100000',
@@ -80,7 +80,7 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '100000',
@@ -96,7 +96,7 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '100000',
@@ -112,7 +112,7 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '99000',
@@ -131,7 +131,7 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '2000',
