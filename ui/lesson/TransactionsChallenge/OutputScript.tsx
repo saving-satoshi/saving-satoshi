@@ -25,7 +25,7 @@ interface IOutput {
   setErrorMessage: React.Dispatch<React.SetStateAction<string>>
   setValidateScript: React.Dispatch<React.SetStateAction<SuccessNumbers>>
   setValidating: React.Dispatch<React.SetStateAction<boolean>>
-  onScriptEmpty: () => void
+  onScriptEmpty: (scriptInput) => void
 }
 const OutputScript: FC<IOutput> = ({
   prefilled,
@@ -191,8 +191,6 @@ const OutputScript: FC<IOutput> = ({
       )
     }
   }, [scriptInput])
-
-  console.log(passes)
 
   return (
     <div className="flex flex-col gap-4 rounded-md bg-black/20 p-4 text-lg">

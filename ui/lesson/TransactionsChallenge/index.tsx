@@ -245,10 +245,11 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             <Text> You</Text>
                             <SignatureButton
                               returnSuccess={returnSuccess()}
-                              disabled={signatures.you === 'signed'}
                               onClick={handleYouSign}
                               classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
-                              disabled={disableSign}
+                              disabled={
+                                signatures.you === 'signed' || disableSign
+                              }
                             >
                               Sign
                             </SignatureButton>
