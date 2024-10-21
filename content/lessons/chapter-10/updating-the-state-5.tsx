@@ -38,7 +38,6 @@ export default function UpdatingTheState5({ lang }) {
       progressKey={metadata.key}
       currentTransactionTab="refund_2"
       laszloWillNotSign
-      laszloHidden
     >
       <LessonInfo>
         <Text className="text-lg font-bold md:text-xl">
