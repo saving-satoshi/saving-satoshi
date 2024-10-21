@@ -122,7 +122,10 @@ const OutputScript: FC<IOutput> = ({
   }
 
   const checkChallengeSuccess = () => {
-    const filterToStringArray = scriptInput.split(' ').filter((op) => op.trim())
+    const filterToStringArray = scriptInput
+      .replace(/\n/g, ' ')
+      .split(' ')
+      .filter((op) => op.trim())
 
     const containsEveryScript = () => {
       return answerScript[objectOutput].every((token) =>

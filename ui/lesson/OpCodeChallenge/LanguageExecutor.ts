@@ -37,7 +37,7 @@ class LanguageExecutor {
   ]
 
   public static rawInputToParsableInput(input: string): Array<string | number> {
-    const tokens = input.split(' ')
+    const tokens = input.replace(/\n/g, ' ').split(' ')
     const filteredTokens = tokens.filter((arg) => arg.trim())
     return filteredTokens
   }
