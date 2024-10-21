@@ -118,37 +118,3 @@ export default function MakingAPayment6({ lang }) {
     </TransactionChallenge>
   )
 }
-/*
-*
-      title: `Complete the payment`,
-      nav_title: `Complete the payment`,
-      heading_one: `Complete the payment`,
-      paragraph_one: "Let's do another quick recap.",
-      list_one: 'A 2 of 2 output is confirmed on the blockchain',
-      paragraph_two:
-        'There are several off-chain transactions that spend that output:',
-      paragraph_three: 'You have these transactions:',
-      paragraph_four: 'Commitment 1 (You):',
-      commitment_1_you: {
-        list_one: 'Input 0: signed by Laszlo',
-        list_two:
-          'Output 0: 100000 satoshis to you after 700 blocks or Laszlo with revocation_you_1',
-      },
-      commitment_2_you: {
-        list_one: 'Input 0: signed by Laszlo',
-        list_two:
-          'Output 0: 99000 satoshis to you after 700 blocks or Laszlo with revocation_you_2',
-        list_three: 'Output 1: 1000 satoshis to Laszlo',
-      },
-      paragraph_five: 'Commitment 2 (You):',
-      paragraph_six: 'Laszlo has this transaction:',
-      paragraph_seven: 'Commitment 2 (Laszlo):',
-      commitment_2_laszlo: {
-        list_one: 'Input 0: signed by You',
-        list_two:
-          'Output 0: 1000 satoshis to Laszlo after 700 blocks or You with revocation_laszlo_1',
-        list_three: 'Output 1: 99000 satoshis to You',
-      },
-      paragraph_eight:
-        "All three of these transactions are signed and valid, but Laszlo hasn't handed you a beer yet. Why not? Only one thing left to do...",
-*/
