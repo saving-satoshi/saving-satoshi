@@ -20,7 +20,6 @@ export default function MakingAPayment6({ lang }) {
         output_1: { 0: ['SIG(YOU)'] },
       }}
       nSequenceTime={700}
-      prefilled
       answerScript={{
         output_0: [
           'OP_IF',
