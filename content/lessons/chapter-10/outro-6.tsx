@@ -16,23 +16,24 @@ export default function Outro6({ lang }) {
   const t = useTranslations(lang)
 
   return (
-    <ChapterIntro
-      className="my-8"
-      heading={t('chapter_nine.opcodes_one.heading')}
-    >
+    <ChapterIntro className="my-8" heading={t('chapter_ten.outro_six.heading')}>
       <p className="mt-2 text-lg md:text-xl">
-        {t('chapter_nine.opcodes_one.paragraph_one')}
+        {t('chapter_ten.outro_six.paragraph_one')}
       </p>
 
       <p className="mt-8 text-lg md:text-xl">
-        {t('chapter_nine.opcodes_one.paragraph_two')}
+        {t('chapter_ten.outro_six.paragraph_two')}
       </p>
 
       <p className="mt-8 text-lg md:text-xl">
-        {t('chapter_nine.opcodes_one.paragraph_three')}
+        {t('chapter_ten.outro_six.paragraph_three')}
       </p>
-      <Button onClick={saveAndReturn} classes="mt-10 max-md:w-full">
-        {t('shared.end')}
+
+      <p className="mt-8 text-lg md:text-xl">
+        {t('chapter_ten.outro_six.paragraph_four')}
+      </p>
+      <Button href="https://bitcoindevs.xyz/" classes="mt-10 max-md:w-full">
+        {t('shared.bitcoin_dev_project')}
       </Button>
     </ChapterIntro>
   )
