@@ -164,7 +164,6 @@ export default function Runner({
             const wsRemovedRegex =
               /\[system\] Image [0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12} removed\./
             payload = payload.trim()
-            console.log(hasResult.current === false)
             if (hasResult.current === false && wsRemovedRegex.test(payload)) {
               sendTerminal('clear')
               sendTerminal('print', t('runner.result'))
