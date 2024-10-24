@@ -165,11 +165,12 @@ export default function Runner({
               /\[system\] Image [0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12} removed\./
             payload = payload.trim()
             if (!hasResult && wsRemovedRegex.test(payload)) {
-              setIsRunning(false)
               sendTerminal('clear')
               sendTerminal('print', t('runner.result'))
               sendTerminal('error', payload)
               setHasherState(HasherState.Error)
+              setIsRunning(false)
+              setState(State.Error)
               ws?.close()
             }
             break
