@@ -21,7 +21,7 @@ const javascript = {
     args: ['nonce'],
   },
   defaultCode: [
-    `function findHash(nonce) {
+    `function findHashFromNonce(nonce) {
   let hash = '';
 
   // while the hash does not start with 5 zeroes we want the prgram to repeat
@@ -48,7 +48,7 @@ const python = {
     args: ['nonce'],
   },
   defaultCode: [
-    `def find_hash(nonce):
+    `def find_hash_from_nonce(nonce):
     # Lets initialize the hash here as an empty string
     hash = ''
 

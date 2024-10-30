@@ -45,12 +45,12 @@ export default function Scripting2({ lang }) {
     },
     defaultCode: `const crypto = require('crypto')
 
-  // Create a program that finds a sha256 hash starting with 5 zeroes.
-  // To submit your answer, return it from the function.
+// Create a program that finds a sha256 hash starting with 5 zeroes.
+// To submit your answer, return it from the function.
 
-  function findHashFromNonce(nonce) {
-    // Type your code here
-  }
+function findHashFromNonce(nonce) {
+  // Type your code here
+}
   `,
     validate: async (answer) => {
       if (answer.startsWith('00000')) {
