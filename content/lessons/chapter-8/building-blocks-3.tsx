@@ -31,7 +31,7 @@ console.log(Bitcoin.rpc());
     validate: async (answer: string) => {
       if (answer) {
         if (answer === '3007592928481984.23') {
-          return [true, '']
+          return [true, t('chapter_eight.building_blocks_three.success')]
         } else {
           return [null, '']
         }
@@ -57,7 +57,7 @@ print(Bitcoin.rpc())
     validate: async (answer) => {
       if (answer) {
         if (answer === '3007592928481984.23') {
-          return [true, '']
+          return [true, t('chapter_eight.building_blocks_three.success')]
         } else {
           return [null, '']
         }
@@ -86,7 +86,6 @@ print(Bitcoin.rpc())
       config={config}
       saveData
       lessonKey={metadata.key}
-      successMessage={t('chapter_eight.building_blocks_three.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>

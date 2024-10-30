@@ -97,7 +97,7 @@ function hashToAddress(hash) {
         ]
       }
 
-      return [true, undefined]
+      return [true, t('chapter_four.address_three.success')]
     },
   }
 
@@ -141,7 +141,7 @@ def hash_to_address(hash):
         ]
       }
 
-      return [true, undefined]
+      return [true, t('chapter_four.address_three.success')]
     },
   }
 
@@ -166,7 +166,6 @@ def hash_to_address(hash):
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_four.address_three.success')}
         onSelectLanguage={handleSelectLanguage}
       >
         <LessonInfo>

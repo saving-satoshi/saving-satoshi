@@ -18,16 +18,21 @@ export const metadata = {
 const vpSig =
   'H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k='
 
-const javascript = {
-  program: `
+export default function Scripting2({ lang }) {
+  const t = useTranslations(lang)
+  const [currentLanguage] = useAtom(currentLanguageAtom)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+
+  const javascript = {
+    program: `
 console.log(decode_sig("${vpSig}").toString());
 console.log("KILL");
 `,
-  defaultFunction: {
-    name: 'decodeSig',
-    args: [],
-  },
-  defaultCode: `// Vanderpoole's signature
+    defaultFunction: {
+      name: 'decodeSig',
+      args: [],
+    },
+    defaultCode: `// Vanderpoole's signature
 const vpSig = "H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k="
 
 function decode_sig(vpSig) {
@@ -36,31 +41,31 @@ function decode_sig(vpSig) {
 
 }
 `,
-  validate: async (answer) => {
-    if (
-      answer !==
-      '63239744615459417534795088953002824328865520877888079618399827727977035042153,28508663025799969786676261677335521233963265910413171955666154169583931328457'
-    ) {
-      return [
-        false,
-        'Be sure to return the r and s values in the correct order.',
-      ]
-    }
+    validate: async (answer) => {
+      if (
+        answer !==
+        '63239744615459417534795088953002824328865520877888079618399827727977035042153,28508663025799969786676261677335521233963265910413171955666154169583931328457'
+      ) {
+        return [
+          false,
+          'Be sure to return the r and s values in the correct order.',
+        ]
+      }
 
-    return [true, undefined]
-  },
-}
+      return [true, t('chapter_five.validate_signature_two.success')]
+    },
+  }
 
-const python = {
-  program: `
+  const python = {
+    program: `
 print(decode_sig("${vpSig}"))
 print("KILL")
 `,
-  defaultFunction: {
-    name: 'decode_sig',
-    args: [],
-  },
-  defaultCode: `import base64
+    defaultFunction: {
+      name: 'decode_sig',
+      args: [],
+    },
+    defaultCode: `import base64
 
 # Vanderpoole's signature
 vp_sig = "H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k="
@@ -69,33 +74,28 @@ def decode_sig(vp_sig):
     # Decode a base64-encoded signature string into its ECDSA signature elements r and s, returned as a tuple of integers.
     # Remember to throw away the first byte of metadata from the signature string!
 `,
-  validate: async (answer) => {
-    if (
-      answer !==
-      '(63239744615459417534795088953002824328865520877888079618399827727977035042153, 28508663025799969786676261677335521233963265910413171955666154169583931328457)'
-    ) {
-      return [
-        false,
-        'Be sure to return the r and s values in the correct order.',
-      ]
-    }
+    validate: async (answer) => {
+      if (
+        answer !==
+        '(63239744615459417534795088953002824328865520877888079618399827727977035042153, 28508663025799969786676261677335521233963265910413171955666154169583931328457)'
+      ) {
+        return [
+          false,
+          'Be sure to return the r and s values in the correct order.',
+        ]
+      }
 
-    return [true, undefined]
-  },
-}
+      return [true, t('chapter_five.validate_signature_two.success')]
+    },
+  }
 
-const config: EditorConfig = {
-  defaultLanguage: 'javascript',
-  languages: {
-    javascript,
-    python,
-  },
-}
-
-export default function Scripting2({ lang }) {
-  const t = useTranslations(lang)
-  const [currentLanguage] = useAtom(currentLanguageAtom)
-  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  const config: EditorConfig = {
+    defaultLanguage: 'javascript',
+    languages: {
+      javascript,
+      python,
+    },
+  }
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
@@ -106,7 +106,6 @@ export default function Scripting2({ lang }) {
       lang={lang}
       config={config}
       lessonKey={metadata.key}
-      successMessage=""
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>

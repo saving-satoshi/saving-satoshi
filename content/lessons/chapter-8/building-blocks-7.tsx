@@ -105,7 +105,7 @@ function validateBlock(block) {
           answer ===
           '88fd124d747cde1d8494d589ec6b82ce11356dd869823dfec8e84b111a72bc87'
         ) {
-          return [true, '']
+          return [true, t('chapter_eight.building_blocks_seven.success')]
         } else {
           return [false, 'recheck your methods']
         }
@@ -157,7 +157,7 @@ def validate_block(block):
           answer ===
           '88fd124d747cde1d8494d589ec6b82ce11356dd869823dfec8e84b111a72bc87'
         ) {
-          return [true, '']
+          return [true, t('chapter_eight.building_blocks_seven.success')]
         } else {
           return [false, 'recheck your methods']
         }
@@ -209,7 +209,6 @@ for (const bhash of candidates) {
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_eight.building_blocks_seven.success')}
         onSelectLanguage={handleSelectLanguage}
       >
         <LessonInfo>

@@ -14,15 +14,21 @@ export const metadata = {
   key: 'CH5VFS5',
 }
 
-const javascript = {
-  program: `console.log(verify(sig_r, sig_s, pubkey_x, pubkey_y, msg));
+export default function VerifySignature5({ lang }) {
+  const t = useTranslations(lang)
+  const [currentLanguage] = useAtom(currentLanguageAtom)
+  const [objectPosition, setObjectPosition] = useState<string | undefined>()
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+
+  const javascript = {
+    program: `console.log(verify(sig_r, sig_s, pubkey_x, pubkey_y, msg));
 console.log("KILL")
 `,
-  defaultFunction: {
-    name: 'verify',
-    args: [],
-  },
-  defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js')
+    defaultFunction: {
+      name: 'verify',
+      args: [],
+    },
+    defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js')
 // View the library source code
 // https://github.com/saving-satoshi/secp256k1js/blob/main/secp256k1.js
 
@@ -97,28 +103,28 @@ function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
 
 }
 `,
-  validate: async (answer) => {
-    // for some reason the answer is coming through with a lot of ansi characters included
-    // so we will need to strip them before doing the comparison.
-    const cleanedAnswer = answer.replace(/\u001b\[[0-9;]*m/g, '')
-    if (cleanedAnswer !== 'true') {
-      return [false, 'Signature is not valid']
-    }
+    validate: async (answer) => {
+      // for some reason the answer is coming through with a lot of ansi characters included
+      // so we will need to strip them before doing the comparison.
+      const cleanedAnswer = answer.replace(/\u001b\[[0-9;]*m/g, '')
+      if (cleanedAnswer !== 'true') {
+        return [false, 'Signature is not valid']
+      }
 
-    return [true, undefined]
-  },
-}
+      return [true, t('chapter_five.verify_signature_five.success')]
+    },
+  }
 
-const python = {
-  program: `
+  const python = {
+    program: `
 print(verify(sig_r, sig_s, pubkey_x, pubkey_y, msg));
 print("KILL")
 `,
-  defaultFunction: {
-    name: 'verify',
-    args: [],
-  },
-  defaultCode: `import secp256k1py.secp256k1 as SECP256K1
+    defaultFunction: {
+      name: 'verify',
+      args: [],
+    },
+    defaultCode: `import secp256k1py.secp256k1 as SECP256K1
 # View the library source code
 # https://github.com/saving-satoshi/secp256k1py/blob/main/secp256k1py/secp256k1.py
 
@@ -165,28 +171,22 @@ def verify(sig_r, sig_s, pubkey_x, pubkey_y, msg):
     #   Use the python's built-in pow() function to invert s and turn division into multiplication!
     # YOUR CODE HERE!
 `,
-  validate: async (answer) => {
-    if (answer !== 'True') {
-      return [false, 'Signature is not valid']
-    }
+    validate: async (answer) => {
+      if (answer !== 'True') {
+        return [false, 'Signature is not valid']
+      }
 
-    return [true, undefined]
-  },
-}
+      return [true, t('chapter_five.verify_signature_five.success')]
+    },
+  }
 
-const config: EditorConfig = {
-  defaultLanguage: 'javascript',
-  languages: {
-    javascript,
-    python,
-  },
-}
-
-export default function VerifySignature5({ lang }) {
-  const t = useTranslations(lang)
-  const [currentLanguage] = useAtom(currentLanguageAtom)
-  const [objectPosition, setObjectPosition] = useState<string | undefined>()
-  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  const config: EditorConfig = {
+    defaultLanguage: 'javascript',
+    languages: {
+      javascript,
+      python,
+    },
+  }
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
@@ -207,7 +207,6 @@ export default function VerifySignature5({ lang }) {
       lang={lang}
       config={config}
       lessonKey={metadata.key}
-      successMessage={t('chapter_five.verify_signature_five.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>

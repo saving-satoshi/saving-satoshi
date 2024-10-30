@@ -49,7 +49,7 @@ const getBlockHeight = (height) => {
         answer ===
         'b09090d61e5eea3e23e9b428de2d9660c8b5e345ec3bb39eea8df9bc80813171'
       ) {
-        return [true, 'Nicely Done ']
+        return [true, t('chapter_eight.building_blocks_four.success')]
       } else {
         return [false, 'Incorrect']
       }
@@ -79,7 +79,7 @@ def get_block_height(height):
         answer ===
         'b09090d61e5eea3e23e9b428de2d9660c8b5e345ec3bb39eea8df9bc80813171'
       ) {
-        return [true, 'Nicely Done ']
+        return [true, t('chapter_eight.building_blocks_four.success')]
       } else {
         return [false, 'Incorrect']
       }
@@ -105,7 +105,6 @@ def get_block_height(height):
       config={config}
       saveData
       lessonKey={metadata.key}
-      successMessage={t('chapter_eight.building_blocks_four.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>

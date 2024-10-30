@@ -188,7 +188,7 @@ console.log("KILL")
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, '']
+          return [true, t('chapter_six.put_it_together_five.hard.success')]
         } else {
           return [false, 'recheck your methods']
         }
@@ -329,7 +329,7 @@ print("KILL")
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, '']
+          return [true, t('chapter_six.put_it_together_five.hard.success')]
         } else {
           return [false, 'recheck your methods']
         }
@@ -356,7 +356,6 @@ print("KILL")
         lang={lang}
         config={config}
         lessonKey={metadata.key}
-        successMessage={t('chapter_six.put_it_together_five.hard.success')}
         saveData
       >
         <LessonInfo>

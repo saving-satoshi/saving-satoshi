@@ -52,7 +52,6 @@ export default function ScriptingChallenge({
   editorOptions,
   poorMessage,
   goodMessage,
-  successMessage,
   saveData,
   onSelectLanguage,
   loadingSavedCode,
@@ -64,7 +63,6 @@ export default function ScriptingChallenge({
   config: EditorConfig
   poorMessage?: string
   goodMessage?: string
-  successMessage: string
   saveData?: boolean
   onSelectLanguage?: (language: string) => void
   loadingSavedCode?: boolean
