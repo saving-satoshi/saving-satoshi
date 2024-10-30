@@ -1169,6 +1169,7 @@ const translations = {
           return: 'It should return a tuple with the (r, s) values.',
         },
       },
+      success: 'Nicely Done',
     },
     validate_signature_three: {
       title: 'Validate the signature',
