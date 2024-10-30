@@ -21,13 +21,20 @@ interface ITransactionProps {
   currentTransactionTab: string
   progressKey: string
   prefilled?: boolean
-  initialStack: Record<'output_0' | 'output_1', string[]>
+  initialStack: Record<'output_0' | 'output_1', SpendingConditions>
+  height?: number
+  nSequenceTime?: number
   answerScript: Record<'output_0' | 'output_1', string[]>
   laszloWillNotSign?: boolean
   noSignature?: boolean
   alwaysShowButton?: boolean
+  laszloHidden?: boolean
 }
 
+export type SpendingConditions = {
+  0: string[]
+  1?: string[]
+}
 export type Signatures = 'pending' | 'signed' | 'not-signed' | 'rejected'
 export type OutputSuccess = {
   0: SuccessNumbers
@@ -46,9 +53,12 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   prefilled,
   answerScript,
   initialStack,
+  height,
+  nSequenceTime,
   laszloWillNotSign,
   noSignature,
   alwaysShowButton,
+  laszloHidden = false,
 }) => {
   const lang = useLang()
   const t = useTranslations(lang)
@@ -65,6 +75,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     you: 'not-signed',
     laszlo: 'not-signed',
   })
+  const [disableSign, setDisableSign] = useState<boolean>(true)
   const [validateScript0, setValidateScript0] = useState<SuccessNumbers>(0)
   const [validateScript1, setValidateScript1] = useState<SuccessNumbers>(0)
   const handleLazloSign = () => {
@@ -93,7 +104,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
 
       return i <= allTabs.indexOf(currentTransactionTab) ?? allTabs.length
     })
-    .map((tab) => ({ id: tab, text: tab }))
+    .map((tab) => ({ id: tab, text: tab.includes('refund') ? 'refund' : tab }))
 
   const returnSuccess = () => {
     if (answerScript?.output_1.length > 0) {
@@ -117,6 +128,15 @@ const TransactionChallenge: FC<ITransactionProps> = ({
       handleLazloSign()
     }
   }
+
+  const handleScriptEmpty = (scriptEmpty) => {
+    if (scriptEmpty) {
+      setDisableSign(true)
+    } else {
+      setDisableSign(false)
+    }
+  }
+
   return (
     <Lesson
       direction={
@@ -149,7 +169,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                           <div className="flex flex-col gap-1">
                             <Text className="text-nowrap ">
                               {tabData[0] === 'deposit' ||
-                              tabData[0] === 'payment'
+                              tabData[0] === 'payment' ||
+                              tabData[0] === 'multi-sig'
                                 ? 'Deposit'
                                 : 'Multi-sig'}
                             </Text>
@@ -168,6 +189,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                           <OutputScript
                             key={'output_0'}
                             initialStack={initialStack}
+                            height={height}
+                            nSequenceTime={nSequenceTime}
                             output="output 0"
                             tab={tabData[0]}
                             prefilled={prefilled}
@@ -182,12 +205,15 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             validating={validating}
                             setValidating={setValidating}
                             setErrorMessage={setErrorMessage0}
+                            onScriptEmpty={handleScriptEmpty}
                           />
                         )}
                         {tabData[1].output_1 && (
                           <OutputScript
                             key={'output_1'}
                             initialStack={initialStack}
+                            height={height}
+                            nSequenceTime={nSequenceTime}
                             output="output 1"
                             tab={tabData[0]}
                             setValidateScript={setValidateScript1}
@@ -202,6 +228,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             validateScript1={validateScript1}
                             setValidating={setValidating}
                             setErrorMessage={setErrorMessage1}
+                            onScriptEmpty={handleScriptEmpty}
                           />
                         )}
                       </div>
@@ -218,34 +245,44 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             <Text> You</Text>
                             <SignatureButton
                               returnSuccess={returnSuccess()}
-                              disabled={signatures.you === 'signed'}
                               onClick={handleYouSign}
                               classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                              disabled={
+                                signatures.you === 'signed' || disableSign
+                              }
                             >
                               Sign
                             </SignatureButton>
                           </div>
 
-                          <div className="flex items-center gap-2.5">
-                            <Avatar avatar={account?.avatar} />
-                            <Text>Laszlo</Text>
-                            <SignatureButton
-                              disabled={true}
-                              returnSuccess={returnSuccess()}
-                              laszloWillNotSign={laszloWillNotSign}
-                              classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
-                            >
-                              Sign
-                            </SignatureButton>
-                          </div>
+                          {!laszloHidden && (
+                            <div className="flex items-center gap-2.5">
+                              <Avatar avatar={account?.avatar} />
+                              <Text>Laszlo</Text>
+                              <SignatureButton
+                                disabled={true}
+                                returnSuccess={returnSuccess()}
+                                laszloWillNotSign={laszloWillNotSign}
+                                classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                              >
+                                Sign
+                              </SignatureButton>
+                            </div>
+                          )}
                         </div>
                       </div>
                       <div className="flex flex-col">
                         <Text>Options</Text>
-                        <Tooltip
+                        <Button
+                          classes="max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                          disabled
+                        >
+                          Broadcast Transaction
+                        </Button>
+                        {/*<Tooltip
                           id="broadcast-button"
                           position="top"
-                          theme="bg-[#00000026]"
+                          theme="bg-[#5c4d4b]"
                           offset={10}
                           parentClassName="max-w-[max-content] "
                           className="max-w-[100px] cursor-pointer "
@@ -257,7 +294,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                           >
                             Broadcast Transaction
                           </Button>
-                        </Tooltip>
+                        </Tooltip>*/}
                       </div>
                     </div>
                   )}
@@ -266,8 +303,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           )}
         </div>
         {alwaysShowButton ? (
-          <div className="h-14 min-h-14 grow border-l border-t border-white/25 transition-all max-md:bottom-0 max-md:px-4 max-md:py-8">
-            <div className="flex flex-col items-stretch justify-between max-md:gap-4 md:h-14 md:flex-row">
+          <div className="max-md:bottom-0 max-md:px-4 max-md:py-8 h-14 min-h-14 grow border-l border-t border-white/25 transition-all">
+            <div className="max-md:gap-4 flex flex-col items-stretch justify-between md:h-14 md:flex-row">
               <div className="flex items-center align-middle transition duration-150 ease-in-out md:px-5">
                 <div className="font-nunito text-[21px] text-white opacity-50 transition duration-150 ease-in-out">
                   {t('Lets move on to the first challenge!')}

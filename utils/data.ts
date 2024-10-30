@@ -18,10 +18,10 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     description:
-      'This is an output of 100,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.',
+      'This is an output of 101,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.',
     output_0: {
-      sats: '100,000',
-      script: `T1BfUFVTSCBQVUJLRVkoWW91KSBPUF9DSEVDS1NJRw==`, // Intro 2
+      sats: '101,000',
+      script: `T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==`,
     },
   },
   payment: {
@@ -31,25 +31,26 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '1000',
-      script: 'T1BfUFVTSCBQVUJLRVkoTGFzemxvKSBPUF9DSEVDS1NJRw==',
+      script: 'T1BfUFVTSCBQVUJLRVkoTEFTWkxPKSBPUF9DSEVDS1NJRw==',
     },
     output_1: {
       sats: '99000',
-      script: 'T1BfUFVTSCBQVUJLRVkoWW91KSBPUF9DSEVDS1NJRw==',
+      script: 'T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==',
     },
   },
   'multi-sig': {
-    description: 'This is the multi-sig transaction between you and Laszlo.',
+    description:
+      'This transaction will fund a multisig output between you and Laszlo.',
     signatures: {
       you: 'signed',
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '100000',
@@ -65,7 +66,7 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '100000',
@@ -74,13 +75,13 @@ export const transactionTabs: TransactionData = {
   },
   refund_1: {
     description:
-      'This transaction ensures funds are not lost if Laszlo disappears. It also ensures that you will not broadcast it after paying for your beer.',
+      'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer.',
     signatures: {
       you: 'signed',
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '100000',
@@ -90,13 +91,13 @@ export const transactionTabs: TransactionData = {
   },
   refund_2: {
     description:
-      'This transaction ensures funds are not lost if you or Bob disappear.',
+      'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer, AND gives him a few days to notice if you do.',
     signatures: {
       you: 'signed',
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '100000',
@@ -112,34 +113,34 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '99000',
       script:
-        'T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKFlvdSkgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKHJldm9jYXRpb25feW91XzIpIE9QX1BVU0ggUFVCS0VZKExhc3psbykgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG',
+        'T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fWU9VXzIpIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG',
     },
     output_1: {
       sats: '1000',
-      script: 'T1BfUFVTSCBQVUJLRVkoTGFzemxvKSBPUF9DSEVDS1NJRw==',
+      script: 'T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==',
     },
   },
-  'commitment(Lazlo)': {
+  'commitment(Laszlo)': {
     description: 'This is Laszlo’s version of the commitment transaction.',
     signatures: {
       you: 'signed',
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
-      sats: '1000',
-      script: `T1BfSUbigKhPUF9QVVNIIDcwMCBPUF9DSEVDS1NFUVVFTkNFVkVSSUZZIE9QX0RST1DigKhPUF9QVVNIIFBVQktFWShMYXN6bG8pIE9QX0NIRUNLU0lH4oCoT1BfRUxTReKAqE9QXzIgT1BfUFVTSCBQVUJLRVkocmV2b2NhdGlvbl9sYXN6bG9fMSkgT1BfUFVTSCBQVUJLRVkoWW91KSBPUF8yIE9QX0NIRUNLTVVMVElTSUfigKhPUF9FTkRJRg==`,
+      sats: '2000',
+      script: `T1BfSUYg4oCoT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIOKAqE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfQ0hFQ0tTSUfigKggT1BfRUxTReKAqCBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fTEFTWkxPXzEpIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfMiBPUF9DSEVDS01VTFRJU0lHIOKAqE9QX0VORElG`,
     },
     output_1: {
-      sats: '99000',
-      script: 'T1BfUFVTSCBQVUJLRVkoWW91KSBPUF9DSEVDS1NJRw==',
+      sats: '98000',
+      script: 'T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==',
     },
   },
 }

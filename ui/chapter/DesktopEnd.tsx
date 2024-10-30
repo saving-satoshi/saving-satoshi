@@ -29,6 +29,7 @@ export default function DesktopEnd({
   onClick,
   currentLessonKey,
   sharing,
+  saveAndProceed,
 }: {
   children: any
   className?: string
@@ -40,6 +41,7 @@ export default function DesktopEnd({
   onClick: any
   currentLessonKey: any
   sharing: boolean
+  saveAndProceed: boolean
 }) {
   const t = useTranslations(lang)
   const { chapterId } = usePathData()
@@ -108,8 +110,8 @@ export default function DesktopEnd({
           {children}
           <div className="mt-4 flex w-full flex-col gap-4 xl:w-2/3">
             <Button onClick={onClick} size="small">
-              {(!account && t('chapter_one.end.save')) ||
-                (account && t('shared.next'))}
+              {(!account && !saveAndProceed && t('chapter_one.end.save')) ||
+                t('shared.next')}
             </Button>
             {isThisLastLesson && (
               <Button

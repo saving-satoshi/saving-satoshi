@@ -24,7 +24,7 @@ export default function OpCodeRunner({
   errorMessage,
 }: OpCodeRunnerType) {
   const t = useTranslations(lang)
-  const { activeView } = useLessonContext()
+  const { activeView, setActiveView } = useLessonContext()
   const isActive = activeView !== LessonView.Info
   const [hasherState, setHasherState] = useState<
     SuccessNumbers | boolean | null
@@ -32,6 +32,7 @@ export default function OpCodeRunner({
   const isSmallScreen = useMediaQuery({ width: 767 })
 
   const handleRunClick = () => {
+    setActiveView(LessonView.Execute)
     handleRun()
   }
 

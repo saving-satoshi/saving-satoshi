@@ -25,7 +25,7 @@ export default function OpCodes8({ lang }) {
         answerScript={[
           'OP_2',
           'OP_PUSH',
-          'PUBKEY(MIKERAMEN)',
+          'PUBKEY(MIKA3000)',
           'OP_PUSH',
           'PUBKEY(DEBORAHCHUNK)',
           'OP_2',

@@ -57,7 +57,7 @@ export default function Address() {
                 <span>
                   {challengeIndex >= 0
                     ? t(challengeTitles[challengeIndex].title)
-                    : isChapterCompletePage
+                    : lessonId.startsWith('outro')
                     ? 'Outro'
                     : 'Intro'}
                 </span>
@@ -65,13 +65,7 @@ export default function Address() {
             </span>
           )}
           <span className="truncate px-0.5 align-super text-2xl leading-tight text-white">
-            {t(
-              isChapterCompletePage
-                ? 'navbar.chapter_complete'
-                : lesson
-                ? lesson.navigation_title
-                : 'navbar.intro'
-            )}
+            {t(lesson ? lesson.navigation_title : 'navbar.intro')}
           </span>
         </>
       )}

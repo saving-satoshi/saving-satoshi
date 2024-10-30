@@ -75,7 +75,7 @@ export default function Runner({
   setErrors: (errors: string[]) => void
 }) {
   const t = useTranslations(lang)
-  const { activeView } = useLessonContext()
+  const { activeView, setActiveView } = useLessonContext()
   const terminalRef = useRef()
 
   const [state, setState] = useState<State>(State.Idle)
@@ -117,6 +117,7 @@ export default function Runner({
   }
 
   const handleRun = async () => {
+    setActiveView(LessonView.Execute)
     hasResult.current = false
     try {
       success = false
@@ -134,7 +135,11 @@ export default function Runner({
       }
 
       ws = new WebSocket(wsEndpoint)
-      ws.onopen = () => send('repl', { code: `${code}\n${program}`, language })
+      ws.onopen = () =>
+        send('repl', {
+          code: Buffer.from(`${code}\n${program}`).toString('base64'),
+          language,
+        })
       ws.onmessage = async (e) => {
         let { type, payload } = JSON.parse(e.data)
         switch (type) {
@@ -163,7 +168,7 @@ export default function Runner({
             const wsRemovedRegex =
               /\[system\] Image [0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12} removed\./
             payload = payload.trim()
-            if (wsRemovedRegex.test(payload)) {
+            if (hasResult.current === false && wsRemovedRegex.test(payload)) {
               sendTerminal('clear')
               sendTerminal('print', t('runner.result'))
               sendTerminal('error', payload)

@@ -26,7 +26,7 @@ export default function End({
   direction,
   theme,
   gradientTheme,
-  saveAndProceed,
+  saveAndProceed = false,
   sharing = true,
 }: {
   children: any
@@ -85,6 +85,7 @@ export default function End({
           currentLessonKey={currentLessonKey}
           className={className}
           sharing={sharing}
+          saveAndProceed={saveAndProceed}
         >
           {children}
         </DesktopEnd>
@@ -99,6 +100,7 @@ export default function End({
           currentLessonKey={currentLessonKey}
           gradientTheme={gradientTheme}
           sharing={sharing}
+          saveAndProceed={saveAndProceed}
         >
           {children}
         </MobileEnd>
