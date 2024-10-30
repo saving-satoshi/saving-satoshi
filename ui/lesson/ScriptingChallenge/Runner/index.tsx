@@ -135,7 +135,11 @@ export default function Runner({
       }
 
       ws = new WebSocket(wsEndpoint)
-      ws.onopen = () => send('repl', { code: `${code}\n${program}`, language })
+      ws.onopen = () =>
+        send('repl', {
+          code: Buffer.from(`${code}\n${program}`).toString('base64'),
+          language,
+        })
       ws.onmessage = async (e) => {
         let { type, payload } = JSON.parse(e.data)
         switch (type) {
