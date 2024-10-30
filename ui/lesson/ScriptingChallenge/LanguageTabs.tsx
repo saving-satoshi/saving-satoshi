@@ -27,6 +27,10 @@ export default function LanguageTabs({
   const isActive = activeView === LessonView.Code
   const pathData = usePathData()
 
+  const handleClick = (value) => {
+    onChange(value)
+  }
+
   return (
     <div
       className={clsx(
@@ -45,7 +49,7 @@ export default function LanguageTabs({
             (languageLocked && meta.value !== value && (
               <button
                 key={i}
-                onClick={() => onChange(meta.value)}
+                onMouseDown={() => handleClick(meta.value)}
                 className={clsx(
                   'flex h-full items-center justify-center border-r border-white border-opacity-30',
                   {
@@ -80,7 +84,7 @@ export default function LanguageTabs({
             )) || (
               <button
                 key={i}
-                onClick={() => onChange(meta.value)}
+                onMouseDown={() => handleClick(meta.value)}
                 className={clsx(
                   'flex h-full items-center justify-center border-r border-white border-opacity-30',
                   {
