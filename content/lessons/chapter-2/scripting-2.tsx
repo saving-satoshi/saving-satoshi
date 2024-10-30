@@ -33,12 +33,12 @@ export default function Scripting2({ lang }) {
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
-  const min = 1;
-  const max = 100000000;
-  const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-  const testHash = findHashFromNonce(randomNumber)
-  console.log(testHash.toString())
-  console.log("KILL")`,
+const min = 1;
+const max = 100000000;
+const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+const testHash = findHashFromNonce(randomNumber)
+console.log(testHash.toString())
+console.log("KILL")`,
     defaultFunction: {
       name: 'findHash',
       args: ['nonce'],
