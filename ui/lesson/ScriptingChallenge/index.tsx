@@ -255,7 +255,6 @@ export default function ScriptingChallenge({
             handleTryAgain={handleTryAgain}
             poorMessage={poorMessage ?? ''}
             goodMessage={goodMessage ?? ''}
-            successMessage={successMessage}
           />
         </div>
       </Lesson>
