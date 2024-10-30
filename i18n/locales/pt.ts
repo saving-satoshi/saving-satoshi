@@ -114,7 +114,7 @@ const translations = {
         '—"O Bitcoin não está morrendo, mas precisa de sua ajuda. Não se esqueça do gato." - Satoshi Nakamoto',
       paragraph_three:
         '—Satoshi? O Satoshi? Do "white paper"? Não, não pode ser. Eles estão supostamente mortos há mais de um século.',
-      paragraph_four: 'Não é mesmo?',
+      paragraph_four: 'Será mesmo?',
       paragraph_five:
         'Holocat: "É melhor você começar a trabalhar. Eu posso ajudar, mas você tem que começar já, miau!".',
     },
@@ -156,7 +156,7 @@ const translations = {
         'Copie e cole o comando abaixo no Terminal, no bloco de código, e pressione "Enter".',
       terminal_challenge_lines: `Digite seus comandos aqui e pressione Enter...\n A variável $scriptSigHex já está definida para você.\n\n var $scriptSigHex = '04fff...e6b73'`,
       waiting_for_input: 'Aguardando que você escreva e execute o script...',
-      success: `Excelente trabalho! A mensagem decodificada faz referência à primeira página do <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> de 3 de janeiro de 2009, o mesmo dia em que Satoshi minerou o bloco genesis. Que legal isso! Essa mensagem também nos dá uma ideia de sua motivação para criar o bitcoin.\n\n Vamos continuar`,
+      success: `Excelente trabalho! A mensagem decodificada faz referência à primeira página do <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> de 3 de janeiro de 2009, o mesmo dia em que Satoshi minerou o bloco genesis. Legal! Essa mensagem também nos dá uma ideia de sua motivação para criar o bitcoin.\n\n Vamos continuar`,
     },
 
     genesis_four: {
@@ -172,7 +172,7 @@ const translations = {
       nav_title: 'O que há em uma transação',
       heading: 'O que há em uma transação?',
       paragraph_one:
-        'Dois componentes principais de uma transação são as entradas(Inputs) e as saídas(Outputs). No exercício anterior, decodificamos uma mensagem secreta encontrada dentro de uma entrada da transação. Desta vez, decodificaremos uma mensagem que pertence a uma saída.',
+        'Dois componentes principais de uma transação são os Inputs(entradas) e os Outputs(saídas). No exercício anterior, decodificamos uma mensagem secreta encontrada dentro de uma entrada da transação. Desta vez, decodificaremos uma mensagem que pertence a uma saída.',
       paragraph_two:
         'Para a transação a seguir, identificaremos uma saída de tipo OP_RETURN.',
     },
@@ -205,7 +205,7 @@ const translations = {
       terminal_challenge_success:
         'É isso mesmo! Bom trabalho.\n\n Como você pode ver, a pista é um endereço. Vá até ele.\n\n Seu próximo desafio o aguarda.',
       terminal_challenge_lines:
-        'Digite seus comandos aqui e pressione Enter...\n\n Comando:\n echo $scriptPubKeyBytes | xxd -r -p\n\n Observe que $scriptPubKeyBytes não está definido para você desta vez. Você precisará substituir essa variável no código pelo valor que encontrou na página anterior',
+        'Digite seus comandos aqui e pressione Enter...\n\n Comando:\n echo $scriptPubKeyBytes | xxd -r -p\n\n Saiba que $scriptPubKeyBytes não está definido para você desta vez. Você precisará substituir essa variável no código pelo valor que encontrou na página anterior',
       terminal_challenge_error:
         'Quase! Lembre-se de que a variável $scriptPubKeyBytes não está definida para você desta vez.',
     },
@@ -216,7 +216,7 @@ const translations = {
       paragraph_one:
         'Você corre para a garagem, entra no velho Budgetcopter do seu pai, digita as coordenadas e vai para o Distrito 21.',
       paragraph_two:
-        'Apesar das alergias a gatos tão intensas que se aplicam até mesmo a hologramas, o holocat aparece. Você se opõe, mas gatos serão gatos.',
+        'Apesar das alergias a gatos tão intensas que se aplicam até mesmo a hologramas, o holocat aparece. Você se opõe, mas gatos são gatos.',
       button_text: 'Completar capítulo 1',
     },
 
@@ -269,9 +269,9 @@ const translations = {
   chapter_two: {
     title: 'Elaborando um plano',
     paragraph_one:
-      'As coordenadas que Satoshi lhe deu não decepcionam, mas infelizmente: é um armazém, além de assustador e deserto.',
+      'As coordenadas que Satoshi lhe deu não decepcionam, mas infelizmente: é um armazém, e além de assustador é deserto.',
     paragraph_two:
-      'Você circunda o depósito em seu Budgetcopter pelo menos três vezes. Sim, respira fundo, você provavelmente terá que entrar lá. O detector de calor do seu Budgetcopter não detecta nada além de escuridão. Se alguém sabe que esse lugar existe, faz muito tempo que não o visita, a não ser em sua memória.',
+      'Você circunda o depósito em seu Budgetcopter pelo menos três vezes. Sim (respira fundo), você provavelmente terá que entrar lá. O detector de calor do seu Budgetcopter não detecta nada além de escuridão. Se alguém sabe que esse lugar existe, faz muito tempo que não o visita, a não ser em sua memória.',
 
     intro_one: {
       title: 'Introdução',
@@ -285,7 +285,7 @@ const translations = {
         b: ' para abreviar. Esses chips fazem apenas uma coisa: mineram bitcoin. Seu foco restrito aumenta sua eficiência e permite que os mineradores gastem menos energia na mineração, o que lhes dá uma vantagem. Dá para acreditar que um dia, as pessoas mineravam com seus laptops?"',
       },
       paragraph_four:
-        'Isso explica todas as máquinas da coleção da família Vanderpoole.',
+        'Isso explica todas estas máquinas da coleção da família Vanderpoole.',
       tooltip_one: {
         question: 'O que é uma mineradora ASIC?',
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520an%2520ASIC%2520miner%253F',
@@ -323,7 +323,8 @@ const translations = {
       heading: 'Insira qualquer coisa',
       return_hash: 'Abaixo, você verá sua entrada convertida em um hash',
       progress_message: 'Continue...',
-      success_message: 'Muito bem, bom trabalho na brincadeira. Vamos em frente.',
+      success_message:
+        'Muito bem, bom trabalho na brincadeira. Vamos em frente.',
     },
 
     hashing_three: {
@@ -337,10 +338,11 @@ const translations = {
       list_three:
         'Os hashes são extremamente confiáveis no sentido de que são determinísticos. Isso significa que você pode fazer o hash do mesmo dado várias vezes e sempre obterá o mesmo resultado.',
       paragraph_one: {
-        a: 'A função usada aqui é chamada',
+        a: 'A função usada aqui é chamada ',
         b: 'uma opção muito popular.',
       },
-      paragraph_two: 'Agora, vamos ver se você consegue encontrar um hash específico.',
+      paragraph_two:
+        'Agora, vamos ver se você consegue encontrar um hash específico.',
       paragraph_three:
         'Encontre um hash que comece com um zero ("0"). Continue digitando coisas diferentes abaixo até encontrar o hash que desejamos.',
       tooltip_one: {
@@ -410,7 +412,7 @@ const translations = {
         'Muito bem, é hora de escrever e executar seu próprio código. Escreva um script que gere um hash sha256 que comece com cinco zeros ("00000..."). Seu código deve chamar repetidamente a função sha256 com entradas diferentes até que a saída atenda a esse requisito. Você deve tentar incrementar um número inteiro dentro de um loop para obter entradas diferentes. Na criptografia, esse número pode ser chamado de "nonce" ou "número usado uma vez".',
       python: {
         paragraph_two:
-          'Quando encontrar um nonce com um hash que comece com cinco zeros, retorne o hash para o console. Estamos usando a biblioteca hashlib em python para ajudá-lo a criar essa função. Você pode usar os seguintes recursos externos para ajudá-lo a escrever essa função, se necessário:',
+          'Quando encontrar um nonce com um hash que comece com cinco zeros, retorne o hash para o console. Estamos usando a biblioteca hashlib em Python para ajudá-lo a criar essa função. Você pode usar os seguintes recursos externos para ajudá-lo a escrever essa função, se necessário:',
         list_one:
           '<Link href="https://docs.python.org/3/library/hashlib.html" target="_blank" className="underline">documentação da hashlib</Link>',
         list_two:
@@ -430,7 +432,8 @@ const translations = {
     mining_one: {
       title: 'Para a mina!',
       nav_title: 'Blocos de mineração',
-      heading_one: 'Agora que sabemos como a mineração funciona, vamos vê-la em ação',
+      heading_one:
+        'Agora que sabemos como a mineração funciona, vamos vê-la em ação',
       heading_two: 'Você está minerando agora',
       heading_three: 'Bom trabalho!',
       heading_four: 'Vamos chegar a 100 blocos',
@@ -596,7 +599,7 @@ const translations = {
       paragraph_two:
         'O problema é que todos estão verificando os mesmos nonces enquanto estão minerando. Como você pode os coordenar melhor?',
       paragraph_three:
-        ' Você decide colocar um identificador exclusivo no "extraNonce" ao preparar os dados do bloco para cada um de vocês para evitar esforços duplicados.',
+        ' Você decide colocar um identificador exclusivo no "extraNonce" ao preparar os dados do bloco, para cada um de vocês evitar esforços duplicados.',
     },
 
     coop_two: {
@@ -607,14 +610,16 @@ const translations = {
         'Para o protocolo do pool(piscina) de mineração Stratum (não o protocolo bitcoin), a transação coinbase também tem algo chamado "extra nonce". Ao fornecer aos mineradores os dados do bloco, os pools de mineração dividem o nonce extra em duas partes: "extranonce1" e "extranonce2".',
       paragraph_two:
         'Dividir o nonce extra em duas partes tem várias vantagens:',
-      list_one: 'Isso evita que os participantes do pool façam o mesmo trabalho.',
+      list_one:
+        'Isso evita que os participantes do pool façam o mesmo trabalho.',
       list_two:
         'Ele permite que o pool envie a mesma lista de transações a todos os mineradores que estão se agrupando. Isso significa que os mineradores só precisam atualizar "extranonce2" e não alterar as transações incluídas no bloco.',
       list_three:
         'O "extranonce1" permite que os pools identifiquem e determinem a contribuição das ações, pois cada minerador recebe seu próprio "extranonce1".',
       paragraph_three:
         ' Os mineradores que contribuem para um pool atualizam o "extranonce2" e percorrem o nonce no cabeçalho do bloco. Se não encontrarem uma solução, eles repetem o processo com um "extranonce2" diferente até encontrarem.',
-      paragraph_four: 'Vamos tentar novamente dividir o trabalho usando esse método.',
+      paragraph_four:
+        'Vamos tentar novamente dividir o trabalho usando esse método.',
     },
 
     coop_three: {
@@ -631,7 +636,7 @@ const translations = {
     split_one: {
       title: 'Dividindo as recompensas',
       nav_title: 'Dividindo em partes justa',
-      heading: 'Muito bem feito.',
+      heading: 'Muito bem.',
       paragraph_one:
         'Você não apenas defendeu a rede contra o BitRey, mas também ganhou bitcoin como recompensa!',
       paragraph_two:
@@ -728,7 +733,7 @@ const translations = {
       title: 'Introdução',
       nav_title: 'Protegendo a bolsa',
       paragraph_one:
-        '—HOLOCAT: "É melhor um de nós dormir. Você precisa começar a entrar em contato com o restante dos mineiradores. Eles vão querer saber ainda mais do que o mundo."',
+        '—HOLOCAT: "É melhor um de nós dormir. Você precisa começar a entrar em contato com o restante dos mineiradores. Eles vão querer saber o que aconteceu, mais do que o resto do mundo."',
       paragraph_two:
         'Ao se acomodar em sua mesa Hover Desk da ButtLift, você relembra os eventos do dia. Vanderpoole. BitRey. A revelação de que os mineiradores nunca concordaram em fechar as portas em protesto. Será que tudo isso é verdade? Será que tudo isso foi encenado? E por quanto tempo mais você deve cuidar desse gato? (Ao longe, algo mia.)',
       paragraph_three:
@@ -780,13 +785,14 @@ const translations = {
         'As operações matemáticas em uma curva elíptica são semelhantes à adição. Portanto, a repetição dessas operações é semelhante à multiplicação. Usamos o símbolo * para descrever o algoritmo, em que `k` é a chave privada e `P` é a chave pública correspondente:',
       python: {
         paragraph_three:
-          'Conclua a função <span className="text-green">privatekey_to_publickey()</span> que aceita uma chave privada como uma string codificada em hexadecimal e retorna a chave pública correspondente como um objeto GE (Group Element).',
+          'Conclua a função <span className="text-green">privatekey_to_publickey()</span> que aceita uma chave privada como uma string codificada em hexadecimal e retorna a chave pública correspondente como um objeto tipo GE (Group Element).',
       },
       javascript: {
         paragraph_three:
-          'Conclua a função <span className="text-green">privateKeyToPublicKey()</span> que aceita uma chave privada como uma string codificada em hexadecimal e retorna a chave pública correspondente como um objeto GE (Group Element).',
+          'Conclua a função <span className="text-green">privateKeyToPublicKey()</span> que aceita uma chave privada como uma string codificada em hexadecimal e retorna a chave pública correspondente como um objeto tipo GE (Group Element).',
       },
-      paragraph_four: 'Aqui estão algumas dicas de conversão de tipos para você começar:',
+      paragraph_four:
+        'Aqui estão algumas dicas de conversão de tipos para você começar:',
       success:
         'Bom trabalho! Essa chave pública é bem longa. Vamos tentar compactá-la!',
     },
@@ -811,9 +817,10 @@ const translations = {
       paragraph_one:
         'E aí está! Sua chave pública compactada! Há muitas coisas interessantes que podemos fazer com ela, inclusive gerar endereços para nossa carteira. Aprenderemos sobre isso no próximo desafio.',
       paragraph_two:
-        'Observe que a geração de uma chave pública é uma via de mão única. Não é possível descobrir a chave privada usada para gerar uma chave pública, a menos que você resolva um problema matemático notoriamente difícil chamado',
+        'Observe que a geração de uma chave pública é uma via de mão única. Não é possível descobrir a chave privada usada para gerar uma chave pública, a menos que você resolva um problema matemático notoriamente difícil chamado ',
       tooltip_one: {
-        question: 'Como o problema de logaritimo discreto é relevante para o bitcoin?',
+        question:
+          'Como o problema de logaritimo discreto é relevante para o bitcoin?',
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520the%2520discrete%2520log%2520problem%2520relevant%2520to%2520bitcoin%253F',
         highlighted: 'problema de logaritmo discreto',
       },
@@ -844,13 +851,13 @@ const translations = {
       paragraph_one:
         'Há vários tipos de endereços de bitcoin. No exercício anterior, criamos um hash de chave pública compactado de 20 bytes. Agora, gostaríamos de codificar esse hash em um endereço Pay-to-Witness-Public-Key-Hash(p2wpkh)(Pague-para-hash-de-chave-publica-testemunha) na rede Testnet.',
       paragraph_two:
-        'Primeiro, precisamos acrescentar o número `0` da versão da testemunha ao hash. Esses 21 bytes resultantes são conhecidos como o <span className="font-bold">programa da testemunha</span>.',
+        'Primeiro, precisamos acrescentar o número `0` da versão da testemunha ao hash. Esses 21 bytes resultantes são conhecidos como o <span className="font-bold">programa testemunha</span>.',
       paragraph_three:
         'Em seguida, o programa testemunha é codificado em um formato amigável para humanos chamado <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>. Isso acrescenta um prefixo legível por humanos e uma checksum (soma de verificação) aos dados.',
       paragraph_four: 'O prefixo é determinado pela rede:',
       table_heading: {
         item_one: 'Rede',
-        item_two: 'Prefixo legível para humanos',
+        item_two: 'Prefixo legível',
       },
       table_rows: {
         key_one: 'Rede principal',
@@ -872,7 +879,8 @@ const translations = {
         '<Link href="https://github.com/saving-satoshi/bech32js/blob/main/bech32.js" target="_blank" className="underline">JavaScript: @savingsatoshi/bech32js</Link>\n',
       paragraph_eight_python:
         '<Link href="https://github.com/saving-satoshi/bech32py/blob/main/bech32py/bech32.py" target="_blank" className="underline">Python: savingsatoshi_bech32py</Link>',
-      success: 'Agora você tem um endereço para o qual o bitcoin extraído pode ser enviado.',
+      success:
+        'Agora você tem um endereço para o qual o bitcoin extraído pode ser enviado.',
     },
 
     outro_one: {
@@ -915,7 +923,8 @@ const translations = {
           'Certifique-se de que esteja executando os algoritmos de hash na ordem correta!',
       },
       address_three: {
-        wpkh_heading: 'Endereço Hash da Chave Pública Testemunha (Witness Public Key Hash - wpkh)',
+        wpkh_heading:
+          'Endereço Hash da Chave Pública Testemunha (Witness Public Key Hash - wpkh)',
         wpkh_paragraph:
           'Um endereço de bitcoin é uma sequência de caracteres criada para ser manuseada pelos usuários. É curto, fácil de copiar e colar e tem algum tipo de soma de verificação (checksum) incorporada para garantir que seja sempre copiado corretamente. Ela codifica com segurança um script de saída(Output) de Bitcoin a partir do qual o destinatário pode gastar. Há vários tipos de scripts de saída e vários mecanismos de codificação. Neste desafio, codificamos uma chave pública compactada com o bech32 para criar o que é chamado de endereço hash de chave pública testemunha.',
         network_heading: 'Mainnet, Testnet, Signet e Regtest',
@@ -931,8 +940,7 @@ const translations = {
     paragraph_one:
       'É tarde e você está cansado, mas quando fecha os olhos por um momento, recebe uma dose dupla de más notícias.',
     paragraph_two: '1) Vanderpoole está de volta à TV.',
-    paragraph_three:
-      '2) Ele afirma ser o bisneto de Satoshi Nakamoto.',
+    paragraph_three: '2) Ele afirma ser o bisneto de Satoshi Nakamoto.',
     paragraph_four: 'Ele parece que dorme mal.',
     intro_one: {
       title: 'Introdução',
@@ -963,12 +971,14 @@ const translations = {
         'Sua tela Hover do TXM4H-A começa a funcionar. Você tem uma nova mensagem.',
       paragraph_two: '—HOLOCAT: Não se esqueça de dar um tapinha no meu nariz.',
       paragraph_three: 'Você toca no nariz dela',
-      paragraph_four: '—SATOSHI NAKAMOTO: "Vanderpoole não é quem ele diz ser. Você pode denunciá-lo. Peça a ele para provar a propriedade do bitcoin de Satoshi assinando uma mensagem usando as chaves privadas da carteira."',
+      paragraph_four:
+        '—SATOSHI NAKAMOTO: "Vanderpoole não é quem ele diz ser. Você pode denunciá-lo. Peça a ele para provar a propriedade do bitcoin de Satoshi assinando uma mensagem usando as chaves privadas da carteira."',
     },
     derive_message_one: {
       title: 'Derivar a mensagem',
       nav_title: 'A mensagem em questão',
-      heading: 'Vanderpoole diz que assinou uma mensagem com as chaves de Satoshi:',
+      heading:
+        'Vanderpoole diz que assinou uma mensagem com as chaves de Satoshi:',
       code_one: `-----BEGIN BITCOIN SIGNED MESSAGE-----\n \n Eu sou Vanderpoole e tenho o controle da chave privada que Satoshi usou para assinar a primeira transação de bitcoin confirmada no bloco nº 170. Esta mensagem é assinada com a mesma chave privada.\n \n -----BEGIN BITCOIN SIGNATURE-----\n \n`,
       code_two:
         '<span className="break-all"> H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k= </span>',
@@ -1006,7 +1016,8 @@ const translations = {
     },
     derive_message_five: {
       nav_title: 'Verificação da assinatura a seguir',
-      paragraph_one: 'No exercício anterior, vimos que Satoshi recebeu 50 BTC pela mineração do bloco nº 9. Ele usou esse valor como entrada para sua transação com Hal Finney (no bloco nº 170), enviando 10 BTC para a chave pública de Hal Finney e devolvendo 40 BTC para si mesmo como troco. A chave privada de Satoshi foi usada para criar uma assinatura autorizando a transferência desses fundos.',
+      paragraph_one:
+        'No exercício anterior, vimos que Satoshi recebeu 50 BTC pela mineração do bloco nº 9. Ele usou esse valor como entrada para sua transação com Hal Finney (no bloco nº 170), enviando 10 BTC para a chave pública de Hal Finney e devolvendo 40 BTC para si mesmo como troco. A chave privada de Satoshi foi usada para criar uma assinatura autorizando a transferência desses fundos.',
       paragraph_two:
         'Em seguida, precisamos aprender a verificar uma assinatura. Mas ainda está faltando algo... qual é a mensagem que Satoshi assinou para autorizar a transação para Hal?',
     },
@@ -1027,7 +1038,8 @@ const translations = {
       success_message_line_four: 'hash do tx de onde veio a entrada nº 0:',
       success_message_line_five:
         'índice da entrada nº 0 na transação de financiamento:',
-      success_message_line_six: 'scriptSig para autorizar a entrada de gastos nº 0:',
+      success_message_line_six:
+        'scriptSig para autorizar a entrada de gastos nº 0:',
       success_message_line_seven: 'sequência de entrada nº 0:',
       success_message_line_eight: 'número de saídas:',
       success_message_line_nine:
@@ -1269,7 +1281,8 @@ const translations = {
         finite_field_arithmetic_heading: 'Aritmética de campo finito',
         finite_field_arithmetic_paragraph_one:
           'Esse tipo de aritmética, usado no ECDSA, envolve números em um intervalo ou campo fixo. Operações como adição, subtração, multiplicação e localização de inversos modulares são realizadas com relação ao tamanho desse campo. Isso é essencial para os cálculos da curva elíptica na criptografia do bitcoin.',
-        ge_and_fe_heading: 'Elementos de Grupo e Elementos de Campo (Group Elements (GE) and Field Elements (FE))',
+        ge_and_fe_heading:
+          'Elementos de Grupo e Elementos de Campo (Group Elements (GE) and Field Elements (FE))',
         ge_and_fe_paragraph_one:
           'No contexto da criptografia de curva elíptica, um elemento de grupo normalmente representa um ponto na curva elíptica. No desafio, GE refere-se a esse ponto com coordenadas x e y específicas. FE representa um elemento do campo finito, usado para cálculos dentro das restrições do campo.',
         modular_inverse_heading: 'Inverso modular',
@@ -1589,7 +1602,8 @@ const translations = {
           'é a quantidade de satoshis na saída que está sendo gasta. Nós o adicionamos à nossa classe Input na etapa 2 e apenas o salvamos lá dentro da classe até agora.',
         list_three:
           'scriptcode é o script de bitcoin que está sendo avaliado. Também adicionamos isso à nossa classe Input na etapa 2.',
-        list_four: 'todos os números inteiros são codificados como little-endian!',
+        list_four:
+          'todos os números inteiros são codificados como little-endian!',
         paragraph_three:
           'Falaremos mais sobre isso na próxima seção, mas para gastar com seu endereço pay-to-witness-public-key-hash (P2WPKH) (Pague-para-hash-de-chave-publica-testemunha), seu código de script seria:',
         paragraph_four: '...que decodifica para o seguinte script de bitcoin.',
@@ -1645,7 +1659,8 @@ const translations = {
             item_four: '8',
           },
           row_seven: {
-            item_one: 'O valor da sequência da única entrada que está sendo assinada',
+            item_one:
+              'O valor da sequência da única entrada que está sendo assinada',
             item_two: 'sequência',
             item_three: 'int',
             item_four: '4',
@@ -1663,7 +1678,8 @@ const translations = {
             item_four: '4',
           },
           row_ten: {
-            item_one: 'Tipo de hash de assinatura, usaremos 1 para indicar "ALL"',
+            item_one:
+              'Tipo de hash de assinatura, usaremos 1 para indicar "ALL"',
             item_two: 'sighash',
             item_three: 'int',
             item_four: '4',
@@ -1972,7 +1988,8 @@ const translations = {
             item_four: '8',
           },
           row_seven: {
-            item_one: 'O valor da sequência da única entrada que está sendo assinada',
+            item_one:
+              'O valor da sequência da única entrada que está sendo assinada',
             item_two: 'sequência',
             item_three: 'int',
             item_four: '8',
@@ -1990,7 +2007,8 @@ const translations = {
             item_four: '4',
           },
           row_ten: {
-            item_one: 'Tipo de hash de assinatura, usaremos 1 para indicar "ALL',
+            item_one:
+              'Tipo de hash de assinatura, usaremos 1 para indicar "ALL',
             item_two: 'sighash',
             item_three: 'int',
             item_four: '4',
@@ -2011,7 +2029,8 @@ const translations = {
           'Consulte <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">esta página</Link> para obter informações sobre o algoritmo de assinatura ECDSA. Além disso, <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">este PDF</Link> (página 44, seção 4.1.3).',
         paragraph_three:
           'O protocolo bitcoin exige uma etapa extra no algoritmo de assinatura, que requer que o valor s seja "baixo", ou seja, menor que a ordem da curva dividida por 2. Saiba mais sobre isso em <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
-        success: 'O método compute_input_signature() parece correto. Excelente trabalho!',
+        success:
+          'O método compute_input_signature() parece correto. Excelente trabalho!',
       },
     },
     put_it_together_five: {
@@ -2589,7 +2608,8 @@ const translations = {
       paragraph_one: `A primeira coisa que Vanderpoole sugere é um multisig 2 de 2. Todas as doações serão divididas entre você e a Lil Bits Foundation em 50/50. Isso será gerenciado por ambos, com cada um de vocês assinando todas as transações de gastos do endereço de doação. Isso significa que você terá de concordar com todas as retiradas do endereço de doação.`,
       paragraph_two: `Vanderpoole lhe entrega a chave pública dele, que é PUBKEY(vanderpoole) e a sua é PUBKEY(me).`,
       paragraph_three: 'Forneça a pilha inicial para gastar com o script.',
-      next_step_message: 'Parece bom! Agora vamos tentar com sua própria assinatura.',
+      next_step_message:
+        'Parece bom! Agora vamos tentar com sua própria assinatura.',
     },
     proposal_three: {
       title: 'Transação condicional com bloqueio de tempo',
@@ -2598,7 +2618,8 @@ const translations = {
       paragraph_one: `Espere um minuto, isso não faz sentido - você não quer lidar com ele para sempre! O novo acordo é que você receberá todas as doações pelas próximas duas horas enquanto ainda estiver na TV. A Lil Bits Foundation fica com tudo o que entrar depois disso. Vocês olham para o bloco de bitcoin na parede do estúdio e concordam que o bloco de altura 6930300 provavelmente será minerado em cerca de duas horas.`,
       paragraph_two: `Lembre-se de que a chave pública de Vanderpoole é PUBKEY(vanderpoole) e a sua é PUBKEY(me).`,
       paragraph_three: 'Forneça a pilha inicial para gastar com o script.',
-      next_step_message: 'Parece bom! Agora vamos tentar com sua própria assinatura.',
+      next_step_message:
+        'Parece bom! Agora vamos tentar com sua própria assinatura.',
     },
     proposal_four: {
       title: 'Transação secreta com pré-imagem bloqueada',
@@ -2849,7 +2870,8 @@ Dica da pilha: Para gastar antes de o segredo ser revelado, Vanderpoole usa sua 
         'Você enviou 100.000 satoshis para uma saída multisig 2 de 2 entre você e Laszlo',
       list_two: 'Você tem, off-line, uma transação que gasta essa saída.',
       list_three: 'Essa saída off-line permite QUALQUER UM',
-      list_three_sub_one: 'Você receberá todo o seu dinheiro de volta após 700 blocos',
+      list_three_sub_one:
+        'Você receberá todo o seu dinheiro de volta após 700 blocos',
       list_three_sub_two:
         'Laszlo receberá todo o dinheiro se obtiver de você a chave privada de revocação revocation_you_1',
       list_four:
@@ -3102,7 +3124,7 @@ Dica da pilha: Para gastar antes de o segredo ser revelado, Vanderpoole usa sua 
 
   disclaimer: {
     description:
-      'Estamos ansiosos para que você mergulhe de cabeça. Observe que alguns desafios exigem experiência básica em programação (há dicas disponíveis). Experimente e compartilhe seu <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>',
+      'Estamos ansiosos para que você mergulhe de cabeça. Saiba que alguns desafios exigem experiência básica em programação (há dicas disponíveis). Experimente e compartilhe seu <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>',
   },
 
   opcode: {
