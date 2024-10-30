@@ -36,7 +36,7 @@ export default function Scripting2({ lang }) {
   const min = 1;
   const max = 100000000;
   const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-  const testHash = findHash(randomNumber)
+  const testHash = findHashFromNonce(randomNumber)
   console.log(testHash.toString())
   console.log("KILL")`,
     defaultFunction: {
@@ -91,7 +91,7 @@ import random
 min_value = 1
 max_value = 100000000
 random_number = random.randint(min_value, max_value)
-test_hash = find_hash(random_number)
+test_hash = find_hash_from_nonce(random_number)
 print(str(test_hash))
 print("KILL")`,
     defaultFunction: {
