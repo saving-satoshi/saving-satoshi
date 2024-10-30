@@ -1,5 +1,6 @@
 'use client'
 
+import crypto from 'crypto'
 import HelpSuggestion from 'components/HelpSuggestion'
 import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
