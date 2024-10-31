@@ -210,7 +210,7 @@ function run() {
           answer.startsWith('Total fees:') &&
           Number(answer.split(' ')[2]) >= 65000001
         ) {
-          return [5, '']
+          return [5, t('chapter_seven.mempool_transaction_one.success')]
         } else {
           return [false, 'Invalid block, keep working!']
         }
@@ -322,7 +322,7 @@ def run():
           answer.startsWith('Total fees:') &&
           Number(answer.split(' ')[2]) >= 65000001
         ) {
-          return [5, '']
+          return [5, t('chapter_seven.mempool_transaction_one.success')]
         } else {
           return [false, 'Invalid block, keep working!']
         }
@@ -370,7 +370,6 @@ def run():
       lessonKey={metadata.key}
       poorMessage={t('chapter_seven.mempool_transaction_one.poor')}
       goodMessage={t('chapter_seven.mempool_transaction_one.good')}
-      successMessage={t('chapter_seven.mempool_transaction_one.success')}
       onSelectLanguage={handleSelectLanguage}
       saveData
     >

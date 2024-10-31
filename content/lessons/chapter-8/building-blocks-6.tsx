@@ -41,7 +41,7 @@ console.log("KILL")`,
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, '']
+          return [true, t('chapter_eight.building_blocks_six.success')]
         } else {
           return [false, 'recheck your methods']
         }
@@ -65,7 +65,7 @@ print("KILL")`,
     validate: async (answer) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, '']
+          return [true, t('chapter_eight.building_blocks_six.success')]
         } else {
           return [false, 'recheck your methods']
         }
@@ -94,7 +94,6 @@ print("KILL")`,
       config={config}
       saveData
       lessonKey={metadata.key}
-      successMessage={t('chapter_eight.building_blocks_six.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>

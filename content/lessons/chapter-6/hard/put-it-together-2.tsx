@@ -163,7 +163,7 @@ console.log(tx_dluitpjd.serialize().toString('hex')==='020000000001018e74531c451
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, 'Nicely done']
+          return [true, t('chapter_six.put_it_together_two.hard.success')]
         }
         return [false, 'Not a valid hex value']
       }
@@ -291,7 +291,7 @@ class Transaction:
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, 'Nicely Done ']
+          return [true, t('chapter_six.put_it_together_two.hard.success')]
         }
         return [false, 'Not a valid hex value']
       }
@@ -316,7 +316,6 @@ class Transaction:
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_six.put_it_together_two.hard.success')}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
           <Text className="font-nunito text-2xl font-bold text-white">

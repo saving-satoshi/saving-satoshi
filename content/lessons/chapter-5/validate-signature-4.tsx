@@ -14,21 +14,26 @@ export const metadata = {
   key: 'CH5VLS4',
 }
 
-const javascript = {
-  program: `console.log(verify_keys(keys).toString());
+export default function ValidateSignature4({ lang }) {
+  const t = useTranslations(lang)
+  const [currentLanguage] = useAtom(currentLanguageAtom)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+
+  const javascript = {
+    program: `console.log(verify_keys(keys).toString());
 console.log("KILL")
 `,
-  defaultFunction: {
-    name: 'verify',
-    args: [],
-  },
-  rangeToNotCollapse: [
-    {
-      start: 70,
-      end: 72,
+    defaultFunction: {
+      name: 'verify',
+      args: [],
     },
-  ],
-  defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js')
+    rangeToNotCollapse: [
+      {
+        start: 70,
+        end: 72,
+      },
+    ],
+    defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js')
 // View the library source code
 // https://github.com/saving-satoshi/secp256k1js/blob/main/secp256k1.js
 
@@ -101,42 +106,39 @@ function verify_keys(keys) {
   // YOUR CODE HERE
 }
 `,
-  validate: async (answer) => {
-    if (
-      answer ===
-      '049d57ded01d3a7652a957cf86fd4c3d2a76e76e83d3c965e1dca45f1ee06630636b8bcbc3df3fbc9669efa2ccd5d7fa5a89fe1c0045684189f01ea915b8a746a6'
-    ) {
-      return [
-        true,
-        'The signature is valid for this public key Vanderpoole used this public key, this was not Satoshi!',
-      ]
-    }
-    if (answer === 'true') {
-      return [
-        false,
-        'Make sure you are returning the public key Vanderpoole used and not a boolean value',
-      ]
-    }
-    return [false, 'That is not quite right, try again.']
-  },
-}
+    validate: async (answer) => {
+      if (
+        answer ===
+        '049d57ded01d3a7652a957cf86fd4c3d2a76e76e83d3c965e1dca45f1ee06630636b8bcbc3df3fbc9669efa2ccd5d7fa5a89fe1c0045684189f01ea915b8a746a6'
+      ) {
+        return [true, t('chapter_five.validate_signature_four.success')]
+      }
+      if (answer === 'true') {
+        return [
+          false,
+          'Make sure you are returning the public key Vanderpoole used and not a boolean value',
+        ]
+      }
+      return [false, 'That is not quite right, try again.']
+    },
+  }
 
-const python = {
-  program: `
+  const python = {
+    program: `
 print(verify_keys(keys));
 print("KILL")
 `,
-  defaultFunction: {
-    name: 'verify',
-    args: [],
-  },
-  rangeToNotCollapse: [
-    {
-      start: 49,
-      end: 51,
+    defaultFunction: {
+      name: 'verify',
+      args: [],
     },
-  ],
-  defaultCode: `import secp256k1py.secp256k1 as SECP256K1
+    rangeToNotCollapse: [
+      {
+        start: 49,
+        end: 51,
+      },
+    ],
+    defaultCode: `import secp256k1py.secp256k1 as SECP256K1
 # View the library source code
 # https://github.com/saving-satoshi/secp256k1py/blob/main/secp256k1py/secp256k1.py
 
@@ -187,38 +189,30 @@ def verify(r, s, key, msg):
 def verify_keys(keys):
     # YOUR CODE HERE
 `,
-  validate: async (answer) => {
-    if (
-      answer ===
-      '049d57ded01d3a7652a957cf86fd4c3d2a76e76e83d3c965e1dca45f1ee06630636b8bcbc3df3fbc9669efa2ccd5d7fa5a89fe1c0045684189f01ea915b8a746a6'
-    ) {
-      return [
-        true,
-        'The signature is valid for this public key Vanderpoole used this public key, this was not Satoshi!',
-      ]
-    }
-    if (answer === 'True') {
-      return [
-        false,
-        'Make sure you are returning the public key Vanderpoole used and not a boolean value',
-      ]
-    }
-    return [false, 'That is not quite right, try again.']
-  },
-}
+    validate: async (answer) => {
+      if (
+        answer ===
+        '049d57ded01d3a7652a957cf86fd4c3d2a76e76e83d3c965e1dca45f1ee06630636b8bcbc3df3fbc9669efa2ccd5d7fa5a89fe1c0045684189f01ea915b8a746a6'
+      ) {
+        return [true, t('chapter_five.validate_signature_four.success')]
+      }
+      if (answer === 'True') {
+        return [
+          false,
+          'Make sure you are returning the public key Vanderpoole used and not a boolean value',
+        ]
+      }
+      return [false, 'That is not quite right, try again.']
+    },
+  }
 
-const config: EditorConfig = {
-  defaultLanguage: 'javascript',
-  languages: {
-    javascript,
-    python,
-  },
-}
-
-export default function ValidateSignature4({ lang }) {
-  const t = useTranslations(lang)
-  const [currentLanguage] = useAtom(currentLanguageAtom)
-  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  const config: EditorConfig = {
+    defaultLanguage: 'javascript',
+    languages: {
+      javascript,
+      python,
+    },
+  }
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
@@ -229,7 +223,6 @@ export default function ValidateSignature4({ lang }) {
       lang={lang}
       config={config}
       lessonKey={metadata.key}
-      successMessage={t('chapter_five.validate_signature_four.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>

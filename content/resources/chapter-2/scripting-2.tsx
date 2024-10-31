@@ -21,20 +21,21 @@ const javascript = {
     args: ['nonce'],
   },
   defaultCode: [
-    `function findHash(nonce) {
+    `function findHashFromNonce(nonce) {
   let hash = '';
 
   // while the hash does not start with 5 zeroes we want the prgram to repeat
   while (hash.substring(0, 5) !== '00000') {
     // Hash the nonce using the crypto library and then increment the nonce
     hash = crypto.createHash('sha256').update(nonce.toString()).digest('hex');
-
+    if(hash.startsWith('00000')) {
+      return nonce
+    }
     nonce++;
   }
-  return hash
 }`,
   ],
-  validate: async (answer) => {
+  validate: async () => {
     return [true, undefined]
   },
   constraints: [],
@@ -47,7 +48,7 @@ const python = {
     args: ['nonce'],
   },
   defaultCode: [
-    `def find_hash(nonce):
+    `def find_hash_from_nonce(nonce):
     # Lets initialize the hash here as an empty string
     hash = ''
 
@@ -55,10 +56,12 @@ const python = {
     while hash[0:5] != '00000':
         # Hash the nonce using the crypto library and then increment the nonce
         hash = sha256(str(nonce).encode()).digest().hex()
+        if (hash[0:5] == '00000'):
+            return nonce
         nonce += 1
-    return hash`,
+`,
   ],
-  validate: async (answer) => {
+  validate: async () => {
     return [true, undefined]
   },
   constraints: [],
@@ -156,7 +159,7 @@ export default function ScriptingResourcesTwo({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`235px`}
+                  height={`250px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

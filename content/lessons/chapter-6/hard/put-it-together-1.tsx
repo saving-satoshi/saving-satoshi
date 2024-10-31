@@ -59,7 +59,7 @@ export default function PutItTogetherOneHard({ lang }) {
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, 'Nicely Done']
+          return [true, t('chapter_six.put_it_together_one.hard.success')]
         }
         return [
           false,
@@ -96,7 +96,7 @@ class Witness:
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, 'Nicely Done ']
+          return [true, t('chapter_six.put_it_together_one.hard.success')]
         }
         return [false, 'Not a valid hex value']
       }
@@ -121,7 +121,6 @@ class Witness:
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_six.put_it_together_one.hard.success')}
       >
         <LessonInfo>
           <Text className="font-nunito text-2xl font-bold text-white">
