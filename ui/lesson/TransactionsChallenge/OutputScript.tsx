@@ -26,6 +26,10 @@ interface IOutput {
   setValidateScript: React.Dispatch<React.SetStateAction<SuccessNumbers>>
   setValidating: React.Dispatch<React.SetStateAction<boolean>>
   onScriptEmpty: (scriptInput) => void
+  scriptInput: { output_0: string; output_1: string }
+  setScriptInput: React.Dispatch<
+    React.SetStateAction<{ output_0: string; output_1: string }>
+  >
 }
 const OutputScript: FC<IOutput> = ({
   prefilled,
@@ -44,26 +48,24 @@ const OutputScript: FC<IOutput> = ({
   nSequenceTime,
   setErrorMessage,
   onScriptEmpty,
+  scriptInput,
+  setScriptInput,
 }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const caretPositionRef = useRef(0)
   const [passes, setPasses] = useState<MainState[]>([])
   const objectOutput = output === 'output 0' ? 'output_0' : 'output_1'
+  const currentScriptInput = scriptInput[objectOutput]
   const [satsInput, setSatsInput] = useState<string>(
     prefilled || currentTransactionTab !== tab
       ? Buffer.from(script, 'base64').toString('utf-8')
       : ''
   )
   const [executor, setExecutor] = useState<LanguageExecutor | null>(null)
-  const [scriptInput, setScriptInput] = useState<string>(
-    prefilled || currentTransactionTab !== tab
-      ? Buffer.from(script, 'base64').toString('utf-8')
-      : ''
-  )
 
-  if (scriptInput === '') {
+  if (scriptInput[objectOutput] === '') {
     onScriptEmpty(true)
-  } else if (scriptInput !== '') {
+  } else if (scriptInput[objectOutput] !== '') {
     onScriptEmpty(false)
   }
 
@@ -73,7 +75,9 @@ const OutputScript: FC<IOutput> = ({
       item.trim()
     )
     const tokens = LanguageExecutor.parsableInputToTokens(
-      LanguageExecutor.rawInputToParsableInput(`INITIAL_STACK ${scriptInput}`)
+      LanguageExecutor.rawInputToParsableInput(
+        `INITIAL_STACK ${scriptInput[objectOutput]}`
+      )
     )
     const newExecutor = new LanguageExecutor(
       tokens,
@@ -81,9 +85,11 @@ const OutputScript: FC<IOutput> = ({
       height,
       nSequenceTime
     )
-    newExecutor.execute()
+    if (validating) {
+      newExecutor.execute()
+    }
     if (
-      initialStack[objectOutput][1] &&
+      initialStack['output_0'][1] &&
       newExecutor.state.length > 1 &&
       validating
     ) {
@@ -118,11 +124,14 @@ const OutputScript: FC<IOutput> = ({
   const handleScriptChange = (event) => {
     const input = event.target
     caretPositionRef.current = input.selectionStart
-    setScriptInput(event.target.value.toUpperCase())
+    setScriptInput((prev) => ({
+      ...prev,
+      [objectOutput]: event.target.value.toUpperCase(),
+    }))
   }
 
   const checkChallengeSuccess = () => {
-    const filterToStringArray = scriptInput
+    const filterToStringArray = scriptInput[objectOutput]
       .replace(/\n/g, ' ')
       .split(' ')
       .filter((op) => op.trim())
@@ -157,12 +166,22 @@ const OutputScript: FC<IOutput> = ({
         !executor.some((error) => error?.error?.message)
       )
     }
-    if (!scriptInput) return 0
-    if (initialStack[objectOutput][1]) {
+
+    console.log(
+      doesStackValidate(passes[0]),
+      doesStackValidate(passes[1]),
+      hasCorrectSats(),
+      containsEveryScript(),
+      objectOutput
+    )
+
+    console.log(passes, scriptInput, objectOutput)
+    if (!scriptInput[objectOutput] || !validating) return 0
+    if (initialStack['output_0'][1]) {
       if (
         containsEveryScript() &&
         doesStackValidate(passes[0]) &&
-        doesStackValidate(passes[1]) &&
+        doesStackValidate(passes[1] || passes[0]) &&
         hasCorrectSats() &&
         passes.length > 0
       ) {
@@ -180,11 +199,17 @@ const OutputScript: FC<IOutput> = ({
       return 2
     }
   }
+  // console.log( passes[0], passes[1], objectOutput == "output_1"? executor?.state : undefined , objectOutput)
+  useEffect(() => {
+    if (validating) {
+      executeScriptAsync()
+      setValidating(false)
+    }
+  }, [validating])
 
   useEffect(() => {
     executeScriptAsync()
-    setValidating(false)
-  }, [validating])
+  }, [currentTransactionTab])
 
   useEffect(() => {
     if (textAreaRef.current) {
@@ -193,7 +218,7 @@ const OutputScript: FC<IOutput> = ({
         caretPositionRef.current
       )
     }
-  }, [scriptInput])
+  }, [currentScriptInput])
 
   return (
     <div className="flex flex-col gap-4 rounded-md bg-black/20 p-4 text-lg">
@@ -232,7 +257,7 @@ const OutputScript: FC<IOutput> = ({
               ? Buffer.from(script || '', 'base64').toString('utf-8')
               : currentTransactionTab !== tab
               ? Buffer.from(script || '', 'base64').toString('utf-8')
-              : scriptInput
+              : scriptInput[objectOutput]
           }
           onChange={handleScriptChange}
           ref={textAreaRef}
