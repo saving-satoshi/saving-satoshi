@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState, useRef } from 'react'
 import HyperLink from 'shared/icons/Hyperlink'
 import { Text } from 'ui/common'
 import { SuccessNumbers } from 'ui/common/StatusBar'
-import { sleep } from 'utils'
 import { SpendingConditions } from '.'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
 import { MainState } from '../OpCodeChallenge/runnerTypes'
@@ -26,6 +25,10 @@ interface IOutput {
   setValidateScript: React.Dispatch<React.SetStateAction<SuccessNumbers>>
   setValidating: React.Dispatch<React.SetStateAction<boolean>>
   onScriptEmpty: (scriptInput) => void
+  satsInput: { output_0: string; output_1: string }
+  setSatsInput: React.Dispatch<
+    React.SetStateAction<{ output_0: string; output_1: string }>
+  >
   scriptInput: { output_0: string; output_1: string }
   setScriptInput: React.Dispatch<
     React.SetStateAction<{ output_0: string; output_1: string }>
@@ -48,6 +51,8 @@ const OutputScript: FC<IOutput> = ({
   nSequenceTime,
   setErrorMessage,
   onScriptEmpty,
+  satsInput,
+  setSatsInput,
   scriptInput,
   setScriptInput,
 }) => {
@@ -55,19 +60,9 @@ const OutputScript: FC<IOutput> = ({
   const caretPositionRef = useRef(0)
   const [passes, setPasses] = useState<MainState[]>([])
   const objectOutput = output === 'output 0' ? 'output_0' : 'output_1'
+  const currentSatsInput = satsInput[objectOutput]
   const currentScriptInput = scriptInput[objectOutput]
-  const [satsInput, setSatsInput] = useState<string>(
-    prefilled || currentTransactionTab !== tab
-      ? Buffer.from(script, 'base64').toString('utf-8')
-      : ''
-  )
   const [executor, setExecutor] = useState<LanguageExecutor | null>(null)
-
-  if (scriptInput[objectOutput] === '') {
-    onScriptEmpty(true)
-  } else if (scriptInput[objectOutput] !== '') {
-    onScriptEmpty(false)
-  }
 
   const initializeExecutor = async (x: 0 | 1) => {
     setErrorMessage('')
@@ -103,7 +98,10 @@ const OutputScript: FC<IOutput> = ({
     }
   }
   const handleSatsChange = (event) => {
-    setSatsInput(event.target.value.toUpperCase())
+    setSatsInput((prev) => ({
+      ...prev,
+      [objectOutput]: event.target.value,
+    }))
   }
 
   const executeScriptAsync = async () => {
@@ -143,7 +141,7 @@ const OutputScript: FC<IOutput> = ({
     }
 
     const hasCorrectSats = () => {
-      return satsInput === sats
+      return satsInput[objectOutput] === sats
     }
 
     const isFinalToken = () => {
@@ -211,7 +209,15 @@ const OutputScript: FC<IOutput> = ({
         caretPositionRef.current
       )
     }
-  }, [currentScriptInput])
+  }, [currentScriptInput, currentSatsInput])
+
+  useEffect(() => {
+    if (scriptInput[objectOutput] === '') {
+      onScriptEmpty(true)
+    } else {
+      onScriptEmpty(false)
+    }
+  }, [scriptInput[objectOutput], onScriptEmpty])
 
   return (
     <div className="flex flex-col gap-4 rounded-md bg-black/20 p-4 text-lg">
@@ -224,7 +230,11 @@ const OutputScript: FC<IOutput> = ({
           className="bg-transparent text-white outline-none"
           onChange={handleSatsChange}
           defaultValue={
-            prefilled ? sats : currentTransactionTab !== tab ? sats : ''
+            prefilled
+              ? sats
+              : currentTransactionTab !== tab
+              ? sats
+              : satsInput[objectOutput]
           }
           readOnly={currentTransactionTab !== tab || prefilled}
         />

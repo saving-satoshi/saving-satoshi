@@ -12,7 +12,6 @@ import { SuccessNumbers } from 'ui/common/StatusBar'
 import { sleep } from 'utils'
 import { transactionTabs } from 'utils/data'
 import Lesson from '../Lesson'
-import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
 import OutputScript from './OutputScript'
 import Tabs from './Tabs'
 
@@ -79,6 +78,13 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   const [validateScript0, setValidateScript0] = useState<SuccessNumbers>(0)
   const [validateScript1, setValidateScript1] = useState<SuccessNumbers>(0)
 
+  const [satsInput, setSatsInput] = useState<{
+    output_0: string
+    output_1: string
+  }>({
+    output_0: '',
+    output_1: '',
+  })
   const [scriptInput, setScriptInput] = useState<{
     output_0: string
     output_1: string
@@ -144,6 +150,12 @@ const TransactionChallenge: FC<ITransactionProps> = ({
       setDisableSign(false)
     }
   }
+
+  console.log(
+    signatures.you === 'signed' || disableSign,
+    signatures.you === 'signed',
+    disableSign
+  )
 
   return (
     <Lesson
@@ -214,6 +226,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             setValidating={setValidating}
                             setErrorMessage={setErrorMessage0}
                             onScriptEmpty={handleScriptEmpty}
+                            satsInput={satsInput}
+                            setSatsInput={setSatsInput}
                             scriptInput={scriptInput}
                             setScriptInput={setScriptInput}
                           />
@@ -239,6 +253,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             setValidating={setValidating}
                             setErrorMessage={setErrorMessage1}
                             onScriptEmpty={handleScriptEmpty}
+                            satsInput={satsInput}
+                            setSatsInput={setSatsInput}
                             scriptInput={scriptInput}
                             setScriptInput={setScriptInput}
                           />
@@ -246,7 +262,6 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                       </div>
                     </div>
                   </div>
-                  {/*  */}
                   {currentTransactionTab === tabData[0] && !noSignature && (
                     <div className="flex flex-col gap-4 px-[30px] py-[15px] ">
                       <div className="flex flex-col">
