@@ -78,6 +78,14 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   const [disableSign, setDisableSign] = useState<boolean>(true)
   const [validateScript0, setValidateScript0] = useState<SuccessNumbers>(0)
   const [validateScript1, setValidateScript1] = useState<SuccessNumbers>(0)
+
+  const [scriptInput, setScriptInput] = useState<{
+    output_0: string
+    output_1: string
+  }>({
+    output_0: '',
+    output_1: '',
+  })
   const handleLazloSign = () => {
     setSignatures((prev) => ({ ...prev, laszlo: 'pending' }))
   }
@@ -206,6 +214,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             setValidating={setValidating}
                             setErrorMessage={setErrorMessage0}
                             onScriptEmpty={handleScriptEmpty}
+                            scriptInput={scriptInput}
+                            setScriptInput={setScriptInput}
                           />
                         )}
                         {tabData[1].output_1 && (
@@ -229,6 +239,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             setValidating={setValidating}
                             setErrorMessage={setErrorMessage1}
                             onScriptEmpty={handleScriptEmpty}
+                            scriptInput={scriptInput}
+                            setScriptInput={setScriptInput}
                           />
                         )}
                       </div>
@@ -279,22 +291,6 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                         >
                           Broadcast Transaction
                         </Button>
-                        {/*<Tooltip
-                          id="broadcast-button"
-                          position="top"
-                          theme="bg-[#5c4d4b]"
-                          offset={10}
-                          parentClassName="max-w-[max-content] "
-                          className="max-w-[100px] cursor-pointer "
-                          content={`Broadcasting this ${tabData[0]} will close the channel`}
-                        >
-                          <Button
-                            disabled={true}
-                            classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
-                          >
-                            Broadcast Transaction
-                          </Button>
-                        </Tooltip>*/}
                       </div>
                     </div>
                   )}
