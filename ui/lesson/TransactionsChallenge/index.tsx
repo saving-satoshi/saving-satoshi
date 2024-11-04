@@ -12,7 +12,6 @@ import { SuccessNumbers } from 'ui/common/StatusBar'
 import { sleep } from 'utils'
 import { transactionTabs } from 'utils/data'
 import Lesson from '../Lesson'
-import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
 import OutputScript from './OutputScript'
 import Tabs from './Tabs'
 
@@ -84,6 +83,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
 
   const allTabsFiltered = allTabs
     .filter((tab, i) => {
+      console.log('hit filter', tab)
       if (tab === 'payment') {
         return currentTransactionTab === 'payment'
       }
@@ -106,6 +106,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           currentTransactionTab === 'commitment_you' ||
           currentTransactionTab === 'commitment_laszlo'
         ) {
+          console.log('hit you')
           return tab === 'commitment_you'
         } else if (
           currentTransactionTab === 'commitment_you_1' ||
@@ -118,6 +119,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
       // Handle commitment_laszlo and commitment_laszlo_1 based on current tab
       if (tab.includes('commitment_laszlo')) {
         if (currentTransactionTab === 'commitment_laszlo') {
+          console.log('hit laszlo')
           return tab === 'commitment_laszlo'
         } else if (
           currentTransactionTab === 'commitment_you_1' ||
@@ -140,6 +142,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
         ? 'commitment(Laszlo)'
         : tab,
     }))
+
+  console.log(currentTransactionTab, allTabsFiltered)
 
   const returnSuccess = () => {
     if (answerScript?.output_1.length > 0) {
