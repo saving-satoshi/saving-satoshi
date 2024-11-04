@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState, useRef } from 'react'
 import HyperLink from 'shared/icons/Hyperlink'
 import { Text } from 'ui/common'
 import { SuccessNumbers } from 'ui/common/StatusBar'
-import { SpendingConditions } from '.'
+import { SignatureType, SpendingConditions } from '.'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
 import { MainState, T } from '../OpCodeChallenge/runnerTypes'
 
@@ -15,14 +15,14 @@ interface IOutput {
   progressKey: string
   tab: string
   validating: boolean
-  validateScript0: SuccessNumbers
-  validateScript1: SuccessNumbers
+  validateScript0: SignatureType
+  validateScript1: SignatureType
   initialStack: Record<'output_0' | 'output_1', SpendingConditions>
   height?: number
   nSequenceTime?: number
   answerScript: Record<'output_0' | 'output_1', string[]>
   setErrorMessage: React.Dispatch<React.SetStateAction<string>>
-  setValidateScript: React.Dispatch<React.SetStateAction<SuccessNumbers>>
+  setValidateScript: React.Dispatch<React.SetStateAction<SignatureType>>
   setValidating: React.Dispatch<React.SetStateAction<boolean>>
   onScriptEmpty: (scriptInput) => void
   satsInput: { output_0: string; output_1: string }
@@ -64,12 +64,6 @@ const OutputScript: FC<IOutput> = ({
   const currentScriptInput = scriptInput[objectOutput]
   const [executor, setExecutor] = useState<LanguageExecutor | null>(null)
 
-  if (scriptInput[objectOutput] === '') {
-    onScriptEmpty(true)
-  } else if (scriptInput[objectOutput] !== '') {
-    onScriptEmpty(false)
-  }
-
   const initializeExecutor = async (x: 0 | 1) => {
     setErrorMessage('')
     const initialStackArray = initialStack[objectOutput][x]?.filter((item) =>
@@ -94,7 +88,7 @@ const OutputScript: FC<IOutput> = ({
       newExecutor.state.length > 1 &&
       validating
     ) {
-      setPasses((prev) => [...prev, newExecutor.state])
+      // setPasses((prev) => [...prev, newExecutor.state])
     }
     // Create an initial state to represent the initial stack
     setExecutor(newExecutor)
@@ -103,6 +97,7 @@ const OutputScript: FC<IOutput> = ({
       setErrorMessage(`${output} : ${error[0].error?.message || ''}`)
     }
   }
+
   const handleSatsChange = (event) => {
     setSatsInput((prev) => ({
       ...prev,
@@ -111,6 +106,11 @@ const OutputScript: FC<IOutput> = ({
   }
 
   const executeScriptAsync = async () => {
+    const scriptInputString = scriptInput[objectOutput]
+    // .replace(/\n/g, ' ')
+    // .split(' ')
+    // .filter((op) => op.trim())
+
     const scriptInputArray = scriptInput[objectOutput]
       .replace(/\n/g, ' ')
       .split(' ')
@@ -119,19 +119,39 @@ const OutputScript: FC<IOutput> = ({
       setPasses([])
       if (initialStack[objectOutput][1]) {
         for (let x = 0 as 0 | 1; x < 2; x++) {
-          await initializeExecutor(x)
+          setValidateScript((prev) => ({
+            ...prev,
+            [`signature_${x}`]: checkChallengeSuccess(
+              [
+                LanguageExecutor.RunCode(
+                  scriptInputString,
+                  initialStack[objectOutput][x],
+                  height,
+                  nSequenceTime
+                )?.state || [],
+              ],
+              scriptInputArray
+            ),
+          }))
         }
       } else {
-        await initializeExecutor(0)
+        setValidateScript((prev) => ({
+          ...prev,
+          signature_0: checkChallengeSuccess(
+            [
+              LanguageExecutor.RunCode(
+                scriptInputString,
+                initialStack[objectOutput][0],
+                height,
+                nSequenceTime
+              )?.state || [],
+            ],
+            scriptInputArray
+          ),
+        }))
       }
-      console.log(executor, executor?.state)
       const isPasses = passes.length > 0
-      setValidateScript(
-        checkChallengeSuccess(
-          isPasses ? passes : [executor?.state || []],
-          scriptInputArray
-        )
-      )
+      // [LanguageExecutor.RunCode(tokens.map(token =>  token.value).join(" "), initialStack[objectOutput][x], height, nSequenceTime)?.state || []]
     }
   }
 
@@ -142,17 +162,6 @@ const OutputScript: FC<IOutput> = ({
       ...prev,
       [objectOutput]: event.target.value.toUpperCase(),
     }))
-  }
-
-  const isFinalToken = () => {
-    let length = executor?.tokens.length ?? 0
-    executor?.tokens.forEach((PUSH) => {
-      if (PUSH.value === 'OP_PUSH' && length !== 0) {
-        length--
-      }
-    })
-
-    return length
   }
 
   const checkChallengeSuccess = (
@@ -170,24 +179,20 @@ const OutputScript: FC<IOutput> = ({
     const doesStackValidate = (executor: MainState) => {
       let executorStack = executor?.[executor.length - 1]?.stack || []
       return (
-        executor?.length === isFinalToken() &&
         executorStack.length === 1 &&
         (executorStack[0] === 1 || executorStack[0] === true) &&
         !executor.some((error) => error?.error?.message)
       )
     }
 
-    console.log(
-      containsEveryScript(),
-      doesStackValidate(runnerState[0]),
-      runnerState
-    )
     if (!scriptInput[objectOutput] || !validating) return 0
     if (initialStack['output_0'][1]) {
+      const isRunnerState1 =
+        runnerState[1] !== undefined ? runnerState[1] : runnerState[0]
       if (
         containsEveryScript() &&
         doesStackValidate(runnerState[0]) &&
-        doesStackValidate(runnerState[1] || runnerState[0]) &&
+        doesStackValidate(isRunnerState1) &&
         hasCorrectSats() &&
         runnerState.length > 0
       ) {
@@ -205,20 +210,13 @@ const OutputScript: FC<IOutput> = ({
       return 2
     }
   }
-  // console.log( passes[0], passes[1], objectOutput == "output_1"? executor?.state : undefined , objectOutput)
+
   useEffect(() => {
     if (validating) {
       executeScriptAsync()
       setValidating(false)
     }
   }, [validating])
-
-  useEffect(() => {
-    const test = async () => {
-      await initializeExecutor(objectOutput === 'output_0' ? 0 : 1)
-    }
-    test()
-  }, [currentTransactionTab])
 
   useEffect(() => {
     if (textAreaRef.current) {

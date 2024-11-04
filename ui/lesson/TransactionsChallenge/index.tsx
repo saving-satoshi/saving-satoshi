@@ -29,7 +29,11 @@ interface ITransactionProps {
   alwaysShowButton?: boolean
   laszloHidden?: boolean
 }
-
+export type OutputType = Record<'output_0' | 'output_1', string[]>
+export type SignatureType = Record<
+  'signature_0' | 'signature_1',
+  SuccessNumbers
+>
 export type SpendingConditions = {
   0: string[]
   1?: string[]
@@ -75,8 +79,15 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     laszlo: 'not-signed',
   })
   const [disableSign, setDisableSign] = useState<boolean>(true)
-  const [validateScript0, setValidateScript0] = useState<SuccessNumbers>(0)
-  const [validateScript1, setValidateScript1] = useState<SuccessNumbers>(0)
+  const [validateScript0, setValidateScript0] = useState<SignatureType>({
+    signature_0: 0,
+    signature_1: 0,
+  })
+
+  const [validateScript1, setValidateScript1] = useState<SignatureType>({
+    signature_0: 0,
+    signature_1: 0,
+  })
 
   const [satsInput, setSatsInput] = useState<{
     output_0: string
@@ -156,16 +167,48 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     }))
 
   const returnSuccess = () => {
-    if (answerScript?.output_1.length > 0) {
-      if (validateScript1 === 5 && validateScript0 === 5) {
-        return 5
-      } else if (validateScript0 === 2 || validateScript1 === 2) {
-        return 2
+    if (validateScript0.signature_0 === 0 && validateScript1.signature_0 === 0)
+      return 0
+    if (initialStack.output_0?.[1]) {
+      if (
+        validateScript0.signature_0 === 5 &&
+        validateScript0.signature_1 === 5
+      ) {
+        if (
+          answerScript.output_1.length > 0 &&
+          validateScript1.signature_0 === 5
+        ) {
+          return 5
+        } else if (answerScript.output_0.length === 0) {
+          return 5
+        } else {
+          return 2
+        }
       } else {
-        return 0
+        if (validateScript0.signature_0 === 5) {
+          return 5
+        } else {
+          return 2
+        }
       }
     } else {
-      return validateScript0
+      if (answerScript?.output_1.length > 0) {
+        if (
+          validateScript1.signature_0 === 5 &&
+          validateScript0.signature_0 === 5
+        ) {
+          return 5
+        } else if (
+          validateScript0.signature_0 === 2 ||
+          validateScript1.signature_0 === 2
+        ) {
+          return 2
+        } else {
+          return 0
+        }
+      } else {
+        return validateScript0.signature_0
+      }
     }
   }
 
