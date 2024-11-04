@@ -158,16 +158,13 @@ const OutputScript: FC<IOutput> = ({
       )
     }
     if (!scriptInput) return 0
-    if (initialStack[objectOutput][1]) {
+    if (initialStack['output_0'][1]) {
       if (
-        (containsEveryScript() &&
-          doesStackValidate(passes[0]) &&
-          hasCorrectSats() &&
-          passes.length > 0) ||
-        (containsEveryScript() &&
-          doesStackValidate(passes[1]) &&
-          hasCorrectSats() &&
-          passes.length > 0)
+        containsEveryScript() &&
+        doesStackValidate(passes[0]) &&
+        doesStackValidate(passes[1] || passes[0]) &&
+        hasCorrectSats() &&
+        passes.length > 0
       ) {
         return 5
       } else {
