@@ -2,10 +2,9 @@ import React, { FC, useEffect, useState, useRef } from 'react'
 import HyperLink from 'shared/icons/Hyperlink'
 import { Text } from 'ui/common'
 import { SuccessNumbers } from 'ui/common/StatusBar'
-import { sleep } from 'utils'
 import { SpendingConditions } from '.'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
-import { MainState } from '../OpCodeChallenge/runnerTypes'
+import { MainState, T } from '../OpCodeChallenge/runnerTypes'
 
 interface IOutput {
   prefilled?: boolean
@@ -26,6 +25,10 @@ interface IOutput {
   setValidateScript: React.Dispatch<React.SetStateAction<SuccessNumbers>>
   setValidating: React.Dispatch<React.SetStateAction<boolean>>
   onScriptEmpty: (scriptInput) => void
+  satsInput: { output_0: string; output_1: string }
+  setSatsInput: React.Dispatch<
+    React.SetStateAction<{ output_0: string; output_1: string }>
+  >
   scriptInput: { output_0: string; output_1: string }
   setScriptInput: React.Dispatch<
     React.SetStateAction<{ output_0: string; output_1: string }>
@@ -48,6 +51,8 @@ const OutputScript: FC<IOutput> = ({
   nSequenceTime,
   setErrorMessage,
   onScriptEmpty,
+  satsInput,
+  setSatsInput,
   scriptInput,
   setScriptInput,
 }) => {
@@ -55,12 +60,8 @@ const OutputScript: FC<IOutput> = ({
   const caretPositionRef = useRef(0)
   const [passes, setPasses] = useState<MainState[]>([])
   const objectOutput = output === 'output 0' ? 'output_0' : 'output_1'
+  const currentSatsInput = satsInput[objectOutput]
   const currentScriptInput = scriptInput[objectOutput]
-  const [satsInput, setSatsInput] = useState<string>(
-    prefilled || currentTransactionTab !== tab
-      ? Buffer.from(script, 'base64').toString('utf-8')
-      : ''
-  )
   const [executor, setExecutor] = useState<LanguageExecutor | null>(null)
 
   if (scriptInput[objectOutput] === '') {
@@ -103,10 +104,17 @@ const OutputScript: FC<IOutput> = ({
     }
   }
   const handleSatsChange = (event) => {
-    setSatsInput(event.target.value.toUpperCase())
+    setSatsInput((prev) => ({
+      ...prev,
+      [objectOutput]: event.target.value,
+    }))
   }
 
   const executeScriptAsync = async () => {
+    const scriptInputArray = scriptInput[objectOutput]
+      .replace(/\n/g, ' ')
+      .split(' ')
+      .filter((op) => op.trim())
     if (currentTransactionTab === tab) {
       setPasses([])
       if (initialStack[objectOutput][1]) {
@@ -116,8 +124,14 @@ const OutputScript: FC<IOutput> = ({
       } else {
         await initializeExecutor(0)
       }
-
-      setValidateScript(checkChallengeSuccess())
+      console.log(executor, executor?.state)
+      const isPasses = passes.length > 0
+      setValidateScript(
+        checkChallengeSuccess(
+          isPasses ? passes : [executor?.state || []],
+          scriptInputArray
+        )
+      )
     }
   }
 
@@ -130,31 +144,27 @@ const OutputScript: FC<IOutput> = ({
     }))
   }
 
-  const checkChallengeSuccess = () => {
-    const filterToStringArray = scriptInput[objectOutput]
-      .replace(/\n/g, ' ')
-      .split(' ')
-      .filter((op) => op.trim())
+  const isFinalToken = () => {
+    let length = executor?.tokens.length ?? 0
+    executor?.tokens.forEach((PUSH) => {
+      if (PUSH.value === 'OP_PUSH' && length !== 0) {
+        length--
+      }
+    })
 
+    return length
+  }
+
+  const checkChallengeSuccess = (
+    runnerState: MainState[],
+    tokens: string[]
+  ) => {
     const containsEveryScript = () => {
-      return answerScript[objectOutput].every((token) =>
-        filterToStringArray.includes(token)
-      )
+      return answerScript[objectOutput].every((token) => tokens.includes(token))
     }
 
     const hasCorrectSats = () => {
-      return satsInput === sats
-    }
-
-    const isFinalToken = () => {
-      let length = executor?.tokens.length ?? 0
-      executor?.tokens.forEach((PUSH) => {
-        if (PUSH.value === 'OP_PUSH' && length !== 0) {
-          length--
-        }
-      })
-
-      return length
+      return satsInput[objectOutput] === sats
     }
 
     const doesStackValidate = (executor: MainState) => {
@@ -168,22 +178,18 @@ const OutputScript: FC<IOutput> = ({
     }
 
     console.log(
-      doesStackValidate(passes[0]),
-      doesStackValidate(passes[1]),
-      hasCorrectSats(),
       containsEveryScript(),
-      objectOutput
+      doesStackValidate(runnerState[0]),
+      runnerState
     )
-
-    console.log(passes, scriptInput, objectOutput)
     if (!scriptInput[objectOutput] || !validating) return 0
     if (initialStack['output_0'][1]) {
       if (
         containsEveryScript() &&
-        doesStackValidate(passes[0]) &&
-        doesStackValidate(passes[1] || passes[0]) &&
+        doesStackValidate(runnerState[0]) &&
+        doesStackValidate(runnerState[1] || runnerState[0]) &&
         hasCorrectSats() &&
-        passes.length > 0
+        runnerState.length > 0
       ) {
         return 5
       } else {
@@ -191,7 +197,7 @@ const OutputScript: FC<IOutput> = ({
       }
     } else if (
       containsEveryScript() &&
-      doesStackValidate(executor?.state || []) &&
+      doesStackValidate(runnerState[0]) &&
       hasCorrectSats()
     ) {
       return 5
@@ -208,7 +214,10 @@ const OutputScript: FC<IOutput> = ({
   }, [validating])
 
   useEffect(() => {
-    executeScriptAsync()
+    const test = async () => {
+      await initializeExecutor(objectOutput === 'output_0' ? 0 : 1)
+    }
+    test()
   }, [currentTransactionTab])
 
   useEffect(() => {
@@ -218,7 +227,15 @@ const OutputScript: FC<IOutput> = ({
         caretPositionRef.current
       )
     }
-  }, [currentScriptInput])
+  }, [currentScriptInput, currentSatsInput])
+
+  useEffect(() => {
+    if (scriptInput[objectOutput] === '') {
+      onScriptEmpty(true)
+    } else {
+      onScriptEmpty(false)
+    }
+  }, [scriptInput[objectOutput], onScriptEmpty])
 
   return (
     <div className="flex flex-col gap-4 rounded-md bg-black/20 p-4 text-lg">
@@ -231,7 +248,11 @@ const OutputScript: FC<IOutput> = ({
           className="bg-transparent text-white outline-none"
           onChange={handleSatsChange}
           defaultValue={
-            prefilled ? sats : currentTransactionTab !== tab ? sats : ''
+            prefilled
+              ? sats
+              : currentTransactionTab !== tab
+              ? sats
+              : satsInput[objectOutput]
           }
           readOnly={currentTransactionTab !== tab || prefilled}
         />

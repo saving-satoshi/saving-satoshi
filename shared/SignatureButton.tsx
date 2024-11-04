@@ -14,7 +14,6 @@ export default function SignatureButton({
 }: {
   children: any
   style?: string
-  size?: string
   disabled?: boolean
   classes?: string
   onClick?: any
