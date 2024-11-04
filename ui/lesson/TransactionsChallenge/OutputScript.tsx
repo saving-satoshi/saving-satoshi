@@ -4,7 +4,7 @@ import { Text } from 'ui/common'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 import { SpendingConditions } from '.'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
-import { MainState } from '../OpCodeChallenge/runnerTypes'
+import { MainState, T } from '../OpCodeChallenge/runnerTypes'
 
 interface IOutput {
   prefilled?: boolean
@@ -64,6 +64,12 @@ const OutputScript: FC<IOutput> = ({
   const currentScriptInput = scriptInput[objectOutput]
   const [executor, setExecutor] = useState<LanguageExecutor | null>(null)
 
+  if (scriptInput[objectOutput] === '') {
+    onScriptEmpty(true)
+  } else if (scriptInput[objectOutput] !== '') {
+    onScriptEmpty(false)
+  }
+
   const initializeExecutor = async (x: 0 | 1) => {
     setErrorMessage('')
     const initialStackArray = initialStack[objectOutput][x]?.filter((item) =>
@@ -84,7 +90,7 @@ const OutputScript: FC<IOutput> = ({
       newExecutor.execute()
     }
     if (
-      initialStack[objectOutput][1] &&
+      initialStack['output_0'][1] &&
       newExecutor.state.length > 1 &&
       validating
     ) {
@@ -105,6 +111,10 @@ const OutputScript: FC<IOutput> = ({
   }
 
   const executeScriptAsync = async () => {
+    const scriptInputArray = scriptInput[objectOutput]
+      .replace(/\n/g, ' ')
+      .split(' ')
+      .filter((op) => op.trim())
     if (currentTransactionTab === tab) {
       setPasses([])
       if (initialStack[objectOutput][1]) {
@@ -114,8 +124,14 @@ const OutputScript: FC<IOutput> = ({
       } else {
         await initializeExecutor(0)
       }
-
-      setValidateScript(checkChallengeSuccess())
+      console.log(executor, executor?.state)
+      const isPasses = passes.length > 0
+      setValidateScript(
+        checkChallengeSuccess(
+          isPasses ? passes : [executor?.state || []],
+          scriptInputArray
+        )
+      )
     }
   }
 
@@ -128,31 +144,27 @@ const OutputScript: FC<IOutput> = ({
     }))
   }
 
-  const checkChallengeSuccess = () => {
-    const filterToStringArray = scriptInput[objectOutput]
-      .replace(/\n/g, ' ')
-      .split(' ')
-      .filter((op) => op.trim())
+  const isFinalToken = () => {
+    let length = executor?.tokens.length ?? 0
+    executor?.tokens.forEach((PUSH) => {
+      if (PUSH.value === 'OP_PUSH' && length !== 0) {
+        length--
+      }
+    })
 
+    return length
+  }
+
+  const checkChallengeSuccess = (
+    runnerState: MainState[],
+    tokens: string[]
+  ) => {
     const containsEveryScript = () => {
-      return answerScript[objectOutput].every((token) =>
-        filterToStringArray.includes(token)
-      )
+      return answerScript[objectOutput].every((token) => tokens.includes(token))
     }
 
     const hasCorrectSats = () => {
       return satsInput[objectOutput] === sats
-    }
-
-    const isFinalToken = () => {
-      let length = executor?.tokens.length ?? 0
-      executor?.tokens.forEach((PUSH) => {
-        if (PUSH.value === 'OP_PUSH' && length !== 0) {
-          length--
-        }
-      })
-
-      return length
     }
 
     const doesStackValidate = (executor: MainState) => {
@@ -166,19 +178,18 @@ const OutputScript: FC<IOutput> = ({
     }
 
     console.log(
-      doesStackValidate(passes[0]),
-      doesStackValidate(passes[1]),
-      hasCorrectSats(),
-      containsEveryScript()
+      containsEveryScript(),
+      doesStackValidate(runnerState[0]),
+      runnerState
     )
     if (!scriptInput[objectOutput] || !validating) return 0
-    if (initialStack[objectOutput][1]) {
+    if (initialStack['output_0'][1]) {
       if (
         containsEveryScript() &&
-        doesStackValidate(passes[0]) &&
-        doesStackValidate(passes[1]) &&
+        doesStackValidate(runnerState[0]) &&
+        doesStackValidate(runnerState[1] || runnerState[0]) &&
         hasCorrectSats() &&
-        passes.length > 0
+        runnerState.length > 0
       ) {
         return 5
       } else {
@@ -186,7 +197,7 @@ const OutputScript: FC<IOutput> = ({
       }
     } else if (
       containsEveryScript() &&
-      doesStackValidate(executor?.state || []) &&
+      doesStackValidate(runnerState[0]) &&
       hasCorrectSats()
     ) {
       return 5
@@ -201,6 +212,13 @@ const OutputScript: FC<IOutput> = ({
       setValidating(false)
     }
   }, [validating])
+
+  useEffect(() => {
+    const test = async () => {
+      await initializeExecutor(objectOutput === 'output_0' ? 0 : 1)
+    }
+    test()
+  }, [currentTransactionTab])
 
   useEffect(() => {
     if (textAreaRef.current) {

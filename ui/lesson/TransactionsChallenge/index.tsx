@@ -186,12 +186,6 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     }
   }
 
-  console.log(
-    signatures.you === 'signed' || disableSign,
-    signatures.you === 'signed',
-    disableSign
-  )
-
   return (
     <Lesson
       direction={
