@@ -20,6 +20,8 @@ export default function SignatureButton({
   returnSuccess: SuccessNumbers
   laszloWillNotSign?: boolean
 }) {
+  const [isLoading, setIsLoading] = useState(false)
+
   let className = `inline-block justify-center px-12 text-center font-nunito font-bold transition duration-150 ease-in-out ${
     returnSuccess === 5 && '!bg-transparent '
   }`
@@ -63,7 +65,7 @@ export default function SignatureButton({
   }
 
   // Disable clicking
-  if (disabled) {
+  if (disabled || returnSuccess === 5 || isLoading) {
     className += ' pointer-events-none'
   }
 
@@ -71,8 +73,6 @@ export default function SignatureButton({
   if (classes) {
     className += ' ' + classes
   }
-
-  const [isLoading, setIsLoading] = useState(false)
 
   if (laszloWillNotSign && returnSuccess === 5) {
     return (
