@@ -85,12 +85,10 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   const allTabsFiltered = allTabs
     .filter((tab, i) => {
       if (tab === 'payment') {
-        if (currentTransactionTab === 'payment') {
-          return true
-        } else {
-          return false
-        }
+        return currentTransactionTab === 'payment'
       }
+
+      // Handle refund tabs
       if (
         tab.includes('refund') &&
         allTabs.indexOf(currentTransactionTab) > 2
@@ -102,9 +100,46 @@ const TransactionChallenge: FC<ITransactionProps> = ({
         }
       }
 
+      // Handle commitment_you and commitment_you_1 based on current tab
+      if (tab.includes('commitment_you')) {
+        if (
+          currentTransactionTab === 'commitment_you' ||
+          currentTransactionTab === 'commitment_laszlo'
+        ) {
+          return tab === 'commitment_you'
+        } else if (
+          currentTransactionTab === 'commitment_you_1' ||
+          currentTransactionTab === 'commitment_laszlo_1'
+        ) {
+          return tab === 'commitment_you_1'
+        }
+      }
+
+      // Handle commitment_laszlo and commitment_laszlo_1 based on current tab
+      if (tab.includes('commitment_laszlo')) {
+        if (currentTransactionTab === 'commitment_laszlo') {
+          return tab === 'commitment_laszlo'
+        } else if (
+          currentTransactionTab === 'commitment_you_1' ||
+          currentTransactionTab === 'commitment_laszlo_1'
+        ) {
+          return tab === 'commitment_laszlo_1'
+        }
+      }
+
+      // Default case
       return i <= allTabs.indexOf(currentTransactionTab) ?? allTabs.length
     })
-    .map((tab) => ({ id: tab, text: tab.includes('refund') ? 'refund' : tab }))
+    .map((tab) => ({
+      id: tab,
+      text: tab.includes('refund')
+        ? 'refund'
+        : tab.includes('commitment_you')
+        ? 'commitment(You)'
+        : tab.includes('commitment_laszlo')
+        ? 'commitment(Laszlo)'
+        : tab,
+    }))
 
   const returnSuccess = () => {
     if (answerScript?.output_1.length > 0) {
