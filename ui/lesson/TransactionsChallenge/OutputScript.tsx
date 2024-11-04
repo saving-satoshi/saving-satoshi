@@ -83,7 +83,7 @@ const OutputScript: FC<IOutput> = ({
     )
     newExecutor.execute()
     if (
-      initialStack['output_0'][1] &&
+      initialStack[objectOutput][1] &&
       newExecutor.state.length > 1 &&
       validating
     ) {
@@ -158,11 +158,11 @@ const OutputScript: FC<IOutput> = ({
       )
     }
     if (!scriptInput) return 0
-    if (initialStack['output_0'][1]) {
+    if (initialStack[objectOutput][1]) {
       if (
         containsEveryScript() &&
         doesStackValidate(passes[0]) &&
-        doesStackValidate(passes[1] || passes[0]) &&
+        doesStackValidate(passes[1]) &&
         hasCorrectSats() &&
         passes.length > 0
       ) {
@@ -220,7 +220,7 @@ const OutputScript: FC<IOutput> = ({
             href={`https://script.savingsatoshi.com/?lesson=${progressKey}`}
             className="cursor-pointer"
           >
-            <HyperLink />
+            <HyperLink />{' '}
           </a>
         </div>
         <textarea
