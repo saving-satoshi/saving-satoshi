@@ -7,6 +7,7 @@ import * as Chapter6 from './chapter-6'
 import * as Chapter7 from './chapter-7'
 import * as Chapter8 from './chapter-8'
 import * as Chapter9 from './chapter-9'
+import * as Chapter10 from './chapter-10'
 
 export const resources = {
   'chapter-1': Chapter1,
@@ -18,4 +19,5 @@ export const resources = {
   'chapter-7': Chapter7,
   'chapter-8': Chapter8,
   'chapter-9': Chapter9,
+  'chapter-10': Chapter10,
 }

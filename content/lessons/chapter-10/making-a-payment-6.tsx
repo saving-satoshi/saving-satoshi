@@ -37,7 +37,7 @@ export default function MakingAPayment6({ lang }) {
         output_1: ['OP_PUSH', 'PUBKEY(YOU)', 'OP_CHECKSIG'],
       }}
       progressKey={metadata.key}
-      currentTransactionTab="commitment(You)"
+      currentTransactionTab="commitment_laszlo"
       prefilled
       noSignature
       alwaysShowButton
