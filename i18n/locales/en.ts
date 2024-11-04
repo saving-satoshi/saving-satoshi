@@ -3018,12 +3018,10 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_four: 'We are all Satoshi.',
     },
     resources: {
-      laszlo_sig: "Laszlo's Signature",
-      your_sig: 'Your Signature',
-      multisig: 'Multi-sig Signatures',
+      output_zero_sig: 'Output 0 Signature',
+      output_one_sig: 'Output 1 Signature',
       sats_distribution:
         'Remember that Laszlo should only be receiving enough sats for the beer. Also we need to set aside some sats for the fees incase our channel closes!',
-      opening_a_channel_two: {},
     },
   },
 

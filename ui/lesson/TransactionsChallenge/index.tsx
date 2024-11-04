@@ -12,7 +12,6 @@ import { SuccessNumbers } from 'ui/common/StatusBar'
 import { sleep } from 'utils'
 import { transactionTabs } from 'utils/data'
 import Lesson from '../Lesson'
-import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
 import OutputScript from './OutputScript'
 import Tabs from './Tabs'
 
