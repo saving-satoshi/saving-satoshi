@@ -53,7 +53,7 @@ const getTxFee = (tx) => {
 `,
     validate: async (answer) => {
       if (answer === '700') {
-        return [true, 'Nicely Done']
+        return [true, t('chapter_eight.building_blocks_five.success')]
       } else {
         return [false, 'Incorrect']
       }
@@ -91,7 +91,7 @@ def get_tx_fee(tx):
 `,
     validate: async (answer: string) => {
       if (answer === '700') {
-        return [true, 'Nicely Done ']
+        return [true, t('chapter_eight.building_blocks_five.success')]
       } else {
         return [false, 'Incorrect']
       }
@@ -117,7 +117,6 @@ def get_tx_fee(tx):
       config={config}
       saveData
       lessonKey={metadata.key}
-      successMessage={t('chapter_eight.building_blocks_five.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo className="overflow-y-scroll sm:max-h-[calc(100vh-70px)]">

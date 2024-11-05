@@ -119,7 +119,7 @@ console.log(tx.serialize().toString('hex'));`,
       if (answer.slice(-8) !== '00000000') {
         return [false, 'Nope! Try again.']
       }
-      return [true, 'Nicely Done']
+      return [true, t('chapter_six.put_it_together_six.hard.success')]
     },
   }
 
@@ -172,7 +172,7 @@ print(tx.serialize().hex())`,
       if (answer.slice(-8) !== '00000000') {
         return [false, 'Nope! Try again.']
       }
-      return [true, 'Nicely Done']
+      return [true, t('chapter_six.put_it_together_six.hard.success')]
     },
   }
 
@@ -195,7 +195,6 @@ print(tx.serialize().hex())`,
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_six.put_it_together_six.hard.success')}
         loadingSavedCode={isLoading}
       >
         <LessonInfo>

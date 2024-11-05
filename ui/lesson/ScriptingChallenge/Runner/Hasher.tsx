@@ -17,7 +17,6 @@ export default function Hasher({
   language,
   state,
   config,
-  successMessage,
   validationError,
   value,
 }: {
@@ -25,7 +24,6 @@ export default function Hasher({
   language: string
   state: HasherState
   config: EditorConfig
-  successMessage: string
   validationError?: string
   value: any
 }) {
@@ -112,9 +110,6 @@ export default function Hasher({
             <span className="text-sm">
               Check the Console tab for more information
             </span>
-          )}
-          {state === HasherState.Success && (
-            <span className="text-sm">{successMessage}</span>
           )}
           {state !== HasherState.Error &&
             state !== HasherState.Success &&

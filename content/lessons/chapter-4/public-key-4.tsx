@@ -92,7 +92,7 @@ function compressPublicKey(publicKey) {
       if (answer !== compressPublicKey(dataObject)) {
         return [false, 'Ensure you are using your own key object']
       }
-      return [true, undefined]
+      return [true, t('chapter_four.public_key_four.success')]
     },
   }
 
@@ -131,7 +131,7 @@ def compress_publickey(public_key):
       if (answer !== compressPublicKey(dataObject)) {
         return [false, 'Ensure you are using your own key object']
       }
-      return [true, undefined]
+      return [true, t('chapter_four.public_key_four.success')]
     },
   }
 
@@ -152,7 +152,6 @@ def compress_publickey(public_key):
         config={config}
         lessonKey={metadata.key}
         saveData
-        successMessage={t('chapter_four.public_key_four.success')}
         onSelectLanguage={handleSelectLanguage}
       >
         <LessonInfo>

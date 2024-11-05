@@ -58,7 +58,6 @@ export default function Runner({
   lang,
   poorMessage,
   goodMessage,
-  successMessage,
   setErrors,
 }: {
   language: string
@@ -71,7 +70,6 @@ export default function Runner({
   lang: string
   poorMessage: string
   goodMessage: string
-  successMessage: string
   setErrors: (errors: string[]) => void
 }) {
   const t = useTranslations(lang)
@@ -135,7 +133,11 @@ export default function Runner({
       }
 
       ws = new WebSocket(wsEndpoint)
-      ws.onopen = () => send('repl', { code: `${code}\n${program}`, language })
+      ws.onopen = () =>
+        send('repl', {
+          code: Buffer.from(`${code}\n${program}`).toString('base64'),
+          language,
+        })
       ws.onmessage = async (e) => {
         let { type, payload } = JSON.parse(e.data)
         switch (type) {
@@ -184,15 +186,15 @@ export default function Runner({
             }
             sendTerminal('print', payload)
 
-            const [res, err] = await onValidate({
+            const [res, msg] = await onValidate({
               code: new Base64String(`${code}\n${program}`),
               answer: payload,
             })
             if (!res || res === 2) {
               setIsRunning(false)
               setHasherState(HasherState.Error)
-              if (err) {
-                sendTerminal('error', err)
+              if (msg) {
+                sendTerminal('error', msg)
               }
               break
             }
@@ -217,7 +219,7 @@ export default function Runner({
             setIsRunning(false)
             setHasherState(HasherState.Success)
             sendTerminal('success', t('runner.evaluation'))
-            sendTerminal('success', successMessage)
+            sendTerminal('success', msg)
             ws?.close()
             break
           }

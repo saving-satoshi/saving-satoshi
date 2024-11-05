@@ -90,7 +90,7 @@ const showtime = () => {
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, '']
+          return [true, t('chapter_eight.building_blocks_eight.success')]
         } else {
           return [false, 'recheck your methods']
         }
@@ -131,7 +131,7 @@ def showtime():
     validate: async (answer) => {
       if (answer) {
         if (answer === 'True') {
-          return [true, '']
+          return [true, t('chapter_eight.building_blocks_eight.success')]
         } else {
           return [false, 'Recheck your methods']
         }
@@ -169,7 +169,6 @@ def showtime():
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_eight.building_blocks_eight.success')}
         onSelectLanguage={handleSelectLanguage}
       >
         <LessonInfo>

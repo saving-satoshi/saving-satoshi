@@ -61,7 +61,7 @@ function privateKeyToPublicKey(privateKey) {
 
         // Check if both hashes match the correct pattern
         if (hash1.match(correctPattern) && hash2.match(correctPattern)) {
-          return [true, 'Nicely Done ']
+          return [true, t('chapter_four.public_key_three.success')]
         } else {
           return [false, 'Try multiplying with the G constant']
         }
@@ -105,7 +105,7 @@ def privatekey_to_publickey(private_key):
 
         // Check if both hashes match the correct pattern
         if (hash1.match(correctPattern) && hash2.match(correctPattern)) {
-          return [true, 'Nicely Done']
+          return [true, t('chapter_four.public_key_three.success')]
         } else {
           return [false, 'Try multiplying with the G constant']
         }
@@ -134,7 +134,6 @@ def privatekey_to_publickey(private_key):
       config={config}
       saveData
       lessonKey={metadata.key}
-      successMessage={t('chapter_four.public_key_three.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>
