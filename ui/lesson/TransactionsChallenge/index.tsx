@@ -360,7 +360,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
 
                           {!laszloHidden && (
                             <div className="flex items-center gap-2.5">
-                              <Avatar avatar={account?.avatar} />
+                              <Avatar avatar={'/assets/avatars/laszlo.jpg'} />
                               <Text>Laszlo</Text>
                               <SignatureButton
                                 disabled={true}
