@@ -12,8 +12,6 @@ import { useHorizontalScroll, useLang, useTranslations } from 'hooks'
 import { sleep } from 'utils'
 import { motion, AnimatePresence } from 'framer-motion'
 import OpCodeRunner from './Runner'
-import Icon from 'shared/Icon'
-import { Loader } from 'shared'
 
 const arrowLineStyles = {
   startMarker: true,

@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState, useRef } from 'react'
 import HyperLink from 'shared/icons/Hyperlink'
 import { Text } from 'ui/common'
-import { SuccessNumbers } from 'ui/common/StatusBar'
 import { SignatureType, SpendingConditions } from '.'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
 import { MainState, T } from '../OpCodeChallenge/runnerTypes'
@@ -58,65 +57,18 @@ const OutputScript: FC<IOutput> = ({
 }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const caretPositionRef = useRef(0)
-  const [passes, setPasses] = useState<MainState[]>([])
   const objectOutput = output === 'output 0' ? 'output_0' : 'output_1'
   const currentSatsInput = satsInput[objectOutput]
   const currentScriptInput = scriptInput[objectOutput]
-  const [executor, setExecutor] = useState<LanguageExecutor | null>(null)
-
-  const initializeExecutor = async (x: 0 | 1) => {
-    setErrorMessage('')
-    const initialStackArray = initialStack[objectOutput][x]?.filter((item) =>
-      item.trim()
-    )
-    const tokens = LanguageExecutor.parsableInputToTokens(
-      LanguageExecutor.rawInputToParsableInput(
-        `INITIAL_STACK ${scriptInput[objectOutput]}`
-      )
-    )
-    const newExecutor = new LanguageExecutor(
-      tokens,
-      initialStackArray || [],
-      height,
-      nSequenceTime
-    )
-    if (validating) {
-      newExecutor.execute()
-    }
-    if (
-      initialStack['output_0'][1] &&
-      newExecutor.state.length > 1 &&
-      validating
-    ) {
-      // setPasses((prev) => [...prev, newExecutor.state])
-    }
-    // Create an initial state to represent the initial stack
-    setExecutor(newExecutor)
-    let error = newExecutor.state.filter((stack) => stack.error?.message)
-    if (error.length > 0) {
-      setErrorMessage(`${output} : ${error[0].error?.message || ''}`)
-    }
-  }
-
-  const handleSatsChange = (event) => {
-    setSatsInput((prev) => ({
-      ...prev,
-      [objectOutput]: event.target.value,
-    }))
-  }
 
   const executeScriptAsync = async () => {
     const scriptInputString = scriptInput[objectOutput]
-    // .replace(/\n/g, ' ')
-    // .split(' ')
-    // .filter((op) => op.trim())
 
     const scriptInputArray = scriptInput[objectOutput]
       .replace(/\n/g, ' ')
       .split(' ')
       .filter((op) => op.trim())
     if (currentTransactionTab === tab) {
-      setPasses([])
       if (initialStack[objectOutput][1]) {
         for (let x = 0 as 0 | 1; x < 2; x++) {
           setValidateScript((prev) => ({
@@ -150,8 +102,20 @@ const OutputScript: FC<IOutput> = ({
           ),
         }))
       }
-      const isPasses = passes.length > 0
-      // [LanguageExecutor.RunCode(tokens.map(token =>  token.value).join(" "), initialStack[objectOutput][x], height, nSequenceTime)?.state || []]
+    }
+    const getErrorMessage = (index) => {
+      return LanguageExecutor.RunCode(
+        scriptInput[objectOutput],
+        initialStack[objectOutput][index],
+        height,
+        nSequenceTime
+      )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
+    }
+    const errorMessage0 = getErrorMessage(0)
+    const errorMessage1 = getErrorMessage(1)
+
+    if (errorMessage0 || errorMessage1) {
+      setErrorMessage(errorMessage1 || errorMessage1 || '')
     }
   }
 
@@ -164,6 +128,13 @@ const OutputScript: FC<IOutput> = ({
     }))
   }
 
+  const handleSatsChange = (event) => {
+    setSatsInput((prev) => ({
+      ...prev,
+      [objectOutput]: event.target.value,
+    }))
+  }
+
   const checkChallengeSuccess = (
     runnerState: MainState[],
     tokens: string[]
@@ -173,6 +144,9 @@ const OutputScript: FC<IOutput> = ({
     }
 
     const hasCorrectSats = () => {
+      if (satsInput[objectOutput] !== sats) {
+        setErrorMessage('Make sure the sats are distributed correctly')
+      }
       return satsInput[objectOutput] === sats
     }
 
