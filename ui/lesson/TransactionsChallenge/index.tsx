@@ -79,12 +79,12 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     laszlo: 'not-signed',
   })
   const [disableSign, setDisableSign] = useState<boolean>(true)
-  const [validateScript0, setValidateScript0] = useState<SignatureType>({
+  const [validateOutput0, setValidateOutput0] = useState<SignatureType>({
     signature_0: 0,
     signature_1: 0,
   })
 
-  const [validateScript1, setValidateScript1] = useState<SignatureType>({
+  const [validateOutput1, setValidateOutput1] = useState<SignatureType>({
     signature_0: 0,
     signature_1: 0,
   })
@@ -167,25 +167,29 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     }))
 
   const returnSuccess = () => {
-    if (validateScript0.signature_0 === 0 && validateScript1.signature_0 === 0)
+    if (
+      validateOutput0.signature_0 === 0 &&
+      validateOutput1.signature_0 === 0
+    ) {
       return 0
+    }
     if (initialStack.output_0?.[1]) {
       if (
-        validateScript0.signature_0 === 5 &&
-        validateScript0.signature_1 === 5
+        validateOutput0.signature_0 === 5 &&
+        validateOutput0.signature_1 !== 2
       ) {
         if (
           answerScript.output_1.length > 0 &&
-          validateScript1.signature_0 === 5
+          validateOutput1.signature_0 === 5
         ) {
           return 5
         } else if (answerScript.output_0.length === 0) {
           return 5
         } else {
-          return 2
+          return 5
         }
       } else {
-        if (validateScript0.signature_0 === 5) {
+        if (validateOutput0.signature_1 === 5) {
           return 5
         } else {
           return 2
@@ -194,20 +198,20 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     } else {
       if (answerScript?.output_1.length > 0) {
         if (
-          validateScript1.signature_0 === 5 &&
-          validateScript0.signature_0 === 5
+          validateOutput1.signature_0 === 5 &&
+          validateOutput0.signature_0 === 5
         ) {
           return 5
         } else if (
-          validateScript0.signature_0 === 2 ||
-          validateScript1.signature_0 === 2
+          validateOutput0.signature_0 === 2 ||
+          validateOutput1.signature_0 === 2
         ) {
           return 2
         } else {
           return 0
         }
       } else {
-        return validateScript0.signature_0
+        return validateOutput0.signature_0
       }
     }
   }
@@ -291,9 +295,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             script={tabData[1].output_0.script || ''}
                             progressKey={progressKey}
                             answerScript={answerScript}
-                            validateScript0={validateScript0}
-                            validateScript1={validateScript1}
-                            setValidateScript={setValidateScript0}
+                            validateScript0={validateOutput0}
+                            validateScript1={validateOutput1}
+                            setValidateScript={setValidateOutput0}
                             validating={validating}
                             setValidating={setValidating}
                             setErrorMessage={setErrorMessage0}
@@ -312,7 +316,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             nSequenceTime={nSequenceTime}
                             output="output 1"
                             tab={tabData[0]}
-                            setValidateScript={setValidateScript1}
+                            setValidateScript={setValidateOutput1}
                             prefilled={prefilled}
                             currentTransactionTab={currentTransactionTab}
                             sats={tabData[1].output_1.sats || ''}
@@ -320,8 +324,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             progressKey={progressKey}
                             answerScript={answerScript}
                             validating={validating}
-                            validateScript0={validateScript0}
-                            validateScript1={validateScript1}
+                            validateScript0={validateOutput0}
+                            validateScript1={validateOutput1}
                             setValidating={setValidating}
                             setErrorMessage={setErrorMessage1}
                             onScriptEmpty={handleScriptEmpty}
