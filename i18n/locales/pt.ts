@@ -889,7 +889,7 @@ const translations = {
       heading: 'Sucesso!',
       paragraph_one: 'Você criou sua própria carteira de bitcoin!',
       paragraph_two:
-        'Você retira o bitcoin do pool de mineração para a carteira que acabou de criar. Agora, você está totalmente financiado e pronto para o que quer que Vanderpoole e BitRey te atacarem.',
+        'E retirou o bitcoin do pool de mineração para essa carteira que acabou de criar. Agora, está totalmente financiado e pronto para o que quer que Vanderpoole e BitRey tentarem.',
     },
     resources: {
       public_key_three: {
@@ -941,7 +941,7 @@ const translations = {
       'É tarde e você está cansado, mas quando fecha os olhos por um momento, recebe uma dose dupla de más notícias.',
     paragraph_two: '1) Vanderpoole está de volta à TV.',
     paragraph_three: '2) Ele afirma ser o bisneto de Satoshi Nakamoto.',
-    paragraph_four: 'Ele parece que dorme mal.',
+    paragraph_four: 'E está com cara de quem dorme mal.',
     intro_one: {
       title: 'Introdução',
       nav_title: 'Não confie, verifique',
@@ -975,7 +975,7 @@ const translations = {
         '—SATOSHI NAKAMOTO: "Vanderpoole não é quem ele diz ser. Você pode denunciá-lo. Peça a ele para provar a propriedade do bitcoin de Satoshi assinando uma mensagem usando as chaves privadas da carteira."',
     },
     derive_message_one: {
-      title: 'Derivar a mensagem',
+      title: 'Derivando a mensagem',
       nav_title: 'A mensagem em questão',
       heading:
         'Vanderpoole diz que assinou uma mensagem com as chaves de Satoshi:',
@@ -995,7 +995,7 @@ const translations = {
         'Vanderpoole forneceu uma assinatura e uma mensagem. Onde está a chave pública?',
     },
     derive_message_three: {
-      nav_title: 'Localizar a assinatura de Satoshi',
+      nav_title: 'Localizando a assinatura de Satoshi',
       heading: 'Vamos começar encontrando a assinatura de Satoshi',
       paragraph_one: `O bloco nº 170 contém o <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">primeira transação de bitcoin</link> feita de Satoshi para Hal Finney. Essa transação tem apenas <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">uma entrada</Link>. Recupere o scriptSig dessa entrada. Ele contém a assinatura de Satoshi!`,
       placeholder: 'Cole os dados aqui',
@@ -1003,7 +1003,7 @@ const translations = {
         'Muito bem feito! Esta é, na verdade, a assinatura de Satoshi, autorizando a transferência de seu bitcoin para Hal Finney.',
     },
     derive_message_four: {
-      nav_title: 'Localizar a chave pública de Satoshi',
+      nav_title: 'Localizando a chave pública de Satoshi',
       heading: 'Então, onde está sua chave pública?',
       paragraph_one:
         'Na verdade, ela é armazenada junto com o bitcoin gerado por Satoshi no bloco de mineração nº 9.',
@@ -1022,14 +1022,14 @@ const translations = {
         'Em seguida, precisamos aprender a verificar uma assinatura. Mas ainda está faltando algo... qual é a mensagem que Satoshi assinou para autorizar a transação para Hal?',
     },
     derive_message_six: {
-      nav_title: 'Derive a mensagem',
+      nav_title: 'Derivando a mensagem',
       heading: 'Derive a mensagem da transação',
       paragraph_one:
         'Deve ficar claro, apenas olhando a página do block explorer, que uma transação de bitcoin tem muitas partes diferentes. Algumas partes são apenas pequenos números e outras partes são pedaços maiores de dados. O protocolo bitcoin tem um algoritmo muito específico para criar mensagens a partir de transações, de modo que essas mensagens podem ser assinadas por chaves privadas.',
       paragraph_two:
-        'Resumiremos o processo descrito <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG" target="_blank" className="underline">aqui</Link>. Ele usa convenientemente o <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">exatamente essa mesma transação do bloco nº 170</Link> como exemplo.',
+        'Resumiremos o processo descrito <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG" target="_blank" className="underline">aqui</Link>. Ele usa convenientemente <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">essa mesma transação do bloco nº 170</Link> como exemplo.',
       paragraph_three:
-        'Para começar, precisamos dos bytes brutos que compõem a transação completa. <Link href="https://blockstream.info/api/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16/hex" target="_blank" className="underline">Nosso explorador de blocos</Link> pode nos ajudar com isso. Use o ponto de extremidade da API "hex" e cole todo o bloco de dados.',
+        'Para começar, precisamos dos bytes brutos que compõem a transação completa. <Link href="https://blockstream.info/api/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16/hex" target="_blank" className="underline">Nosso explorador de blocos</Link> pode nos ajudar com isso. Use o ponto da API "hex" e cole todo o bloco de dados.',
       input_challenge_label: 'Colar o blob da transação',
       success_message_line_one:
         'Esta é a transação bruta com cada componente rotulado:',
@@ -1070,7 +1070,7 @@ const translations = {
       success: 'Legal! Você construiu uma mensagem para assinar.',
     },
     verify_signature_one: {
-      title: 'Verifique a assinatura',
+      title: 'Verificando a assinatura',
       nav_title: 'Verificação da assinatura',
       heading: 'Finalmente temos uma mensagem!',
       paragraph_one:
@@ -1078,8 +1078,8 @@ const translations = {
     },
     verify_signature_two: {
       title: 'Verifique a assinatura',
-      nav_title: 'Fazer o hash da mensagem',
-      heading: 'Fazer o hash do resumo da transação',
+      nav_title: 'Faça o hash da mensagem',
+      heading: 'Faça o hash do resumo da transação',
       paragraph_one:
         'Os dados de transação serializados que compilamos na última etapa são, na verdade, muito longos para serem assinados ou verificados com o ECDSA.',
       paragraph_two:
@@ -1098,7 +1098,7 @@ const translations = {
       success: 'Muito bem feito!',
     },
     verify_signature_three: {
-      nav_title: 'Decodifique a assinatura',
+      nav_title: 'Decodificando a assinatura',
       heading: 'Decodifique a Assinatura',
       label_one: 'Cole o valor R',
       label_two: 'Cole o valor S',
@@ -1110,7 +1110,7 @@ const translations = {
         '# Assinatura de Satoshi, a partir da entrada scriptSig da transação para Hal Finney (bloco 170)',
     },
     verify_signature_four: {
-      nav_title: 'Decodifique a chave pública',
+      nav_title: 'Decodificando a chave pública',
       heading: 'Decodifique a chave pública',
       label_one: 'Cole a coordenada x',
       label_two: 'Cole a coordenada y',
@@ -1121,7 +1121,7 @@ const translations = {
     },
     verify_signature_five: {
       title: 'Verifique a assinatura',
-      nav_title: 'Teste a assinatura',
+      nav_title: 'Testando a assinatura',
       heading: 'Verifique a assinatura!',
       success: 'Você conseguiu! Você verificou a assinatura de Satoshi!',
       paragraph_one:
@@ -1146,8 +1146,8 @@ const translations = {
       },
     },
     validate_signature_one: {
-      title: 'Valide a assinatura',
-      nav_title: 'Preparar a mensagem',
+      title: 'Validando a assinatura',
+      nav_title: 'Preparando a mensagem',
       heading: 'Prepare a mensagem de Vanderpoole para verificação',
       paragraph_one:
         'Vanderpoole usou um <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">protocolo de assinatura de mensagem de bitcoin</Link> para sua façanha. O cálculo usa o mesmo algoritmo que já definimos, mas a preparação dos dados é um pouco diferente.',
@@ -1163,7 +1163,7 @@ const translations = {
       success: 'Muito bem feito',
     },
     validate_signature_two: {
-      nav_title: 'Prepare a assinatura',
+      nav_title: 'Preparando a assinatura',
       heading: 'Prepare a assinatura de Vanderpoole para verificação',
       paragraph_one:
         'O protocolo de assinatura de mensagens de bitcoin usado por Vanderpoole especifica a base64 para a assinatura. Precisamos decodificar essa string base64 em uma sequência de 65 bytes. Por enquanto, podemos desconsiderar o primeiro byte de metadados. O restante dos dados são os valores r e s de 32 bytes que aprendemos na etapa 6.',
@@ -1189,7 +1189,7 @@ const translations = {
       heading: 'Então, Vanderpoole é um mentiroso?',
       paragraph_one: `Vamos reunir todos os componentes necessários para o programa e verificar se a assinatura de Vanderpoole realmente se originou da chave privada vinculada à chave pública de Satoshi! Preencha os parâmetros ausentes necessários para executar a função <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm"> verify()</span> usando o código fornecido.`,
       paragraph_two:
-        'Depois, podemos executar o programa para ver se Vanderpoole estava mentindo. Rufem os tambores, por favor...',
+        'Depois, podemos executar o programa para ver se Vanderpoole estava mentindo. Rufem os tambores...',
       success:
         'Essa mensagem indica que a assinatura não se originou da chave pública de Satoshi, pois a verificação falhou.',
     },
@@ -1332,15 +1332,15 @@ const translations = {
       paragraph_one:
         '—HOLOCAT: "Dificilmente é a única coisa que faz você parecer estúpido ultimamente."',
       paragraph_two:
-        '—SATOSHI NAKAMOTO: "O Bitcoin foi muito além do controle de seu criador há muitos anos. Não importaria se Vanderpoole ou eu fôssemos Satoshi, ou um de seus descendentes. O Bitcoin é definido por sua comunidade e não pode ser cooptado por um único indivíduo ou entidade - inclusive Satoshi. Provar isso é a verdadeira batalha. Espero que não se importe, mas pedi ao seu excêntrico amigo repórter freelancer para entrar em contato."',
+        '—SATOSHI NAKAMOTO: "O Bitcoin foi muito além do controle de seu criador há muitos anos. Não importaria se Vanderpoole ou eu fôssemos Satoshi, ou um de seus descendentes. O Bitcoin é definido por sua comunidade e não pode ser cooptado por um único indivíduo ou entidade - inclusive Satoshi. Provar isso é a verdadeira batalha. Espero que não se importe, mas pedi á sua excêntrica amiga repórter freelancer para entrar em contato."',
       paragraph_three: '—Ele o quê?',
       paragraph_four: '—Ding.',
       paragraph_five: '—HOLOCAT: Não se esqueça de me dar um "boop" no nariz.',
       paragraph_six: `—MIKA 3000: "Você tem coragem, mas a coragem não é suficiente. O que você descobriu é apenas o começo. Há mais nessa história, mas precisamos visitar a ilha particular de Vanderpoole para saber com certeza o que é. Isso vai custar muito caro, então eu poderia usar sua ajuda para retirar fundos da carteira multisig que você me ajudou a configurar. Você ainda tem uma das minhas chaves, certo?"`,
     },
     in_out_one: {
-      title: 'As entradas e saídas',
-      nav_title: 'O UTXO não gasto',
+      title: 'Entradas e Saídas',
+      nav_title: 'A UTXO não gasta',
       paragraph_one:
         'Mika 3000 precisa de 1 BTC para comprar equipamentos para sua viagem à ilha particular de Vanderpoole. Você decide enviar a ela 1 BTC de suas recompensas de mineração do capítulo 3, que foram enviadas pelo pool de mineração para o endereço que você criou no capítulo 4.',
       paragraph_two:
@@ -1349,7 +1349,7 @@ const translations = {
         'Essa é uma saída de transação não gasta (também conhecida como "UTXO"). Talvez você reconheça o hash e o endereço de sua chave pública compactada do capítulo 4. O valor também parece correto: 1,61 BTC.',
     },
     in_out_two: {
-      title: 'As entradas e saídas',
+      title: 'Entradas e Saídas',
       nav_title: 'O endereço de recebimento',
       paragraph_one:
         'Mika 3000 fornece um endereço para o qual você deve enviar sua contribuição de 1 BTC:',
@@ -1358,26 +1358,26 @@ const translations = {
       paragraph_three: `Precisamos criar e assinar uma transação que envie um de seus 1,61 BTC para esse endereço. Vimos a estrutura de transação da Satoshi no capítulo 5, mas a sua será um pouco diferente. Atualmente, há métodos mais novos para criar transações. Usaremos um protocolo chamado Segregated Witness, que define a versão da transação como 2.`,
     },
     in_out_three: {
-      title: 'As entradas e saídas',
+      title: 'Entradas e Saídas',
       nav_title: 'Etapas da transação',
       paragraph_one:
-        'As transações Segregated Witness(Testemunha Segregada) funcionam exatamente como suas predecessoras legadas. Existem alguns valores globais, como versão e tempo de bloqueio. Há um conjunto de entradas (UTXOs que queremos gastar) e um conjunto de saídas (novos UTXOs que queremos criar, para que outras pessoas gastem no futuro). Haverá também uma matriz de testemunhas, uma para cada entrada. É para lá que irão as assinaturas e os scripts, em vez do scriptSig.',
+        'As transações Segregated Witness(Testemunha Segregada) funcionam exatamente como suas predecessoras legadas. Existem alguns valores globais, como versão e tempo de bloqueio. Há um conjunto de entradas (UTXOs que queremos gastar) e um conjunto de saídas (novos UTXOs que queremos criar, para que outras pessoas gastem no futuro). Haverá também um array de testemunhas, uma para cada entrada. É para lá que irão as assinaturas e os scripts, em vez do scriptSig.',
       paragraph_two:
         'As serializações de mensagens para todos esses componentes estão documentadas <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">aqui</Link> e <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline">aqui</Link>.',
     },
     in_out_four: {
       normal: {
-        title: 'As entradas e saídas',
-        nav_title: 'A classe de entrada',
+        title: 'Entradas e Saídas',
+        nav_title: 'A classe Entrada',
         heading: 'Observando a implementação da classe Input(Entrada)',
         paragraph_one:
           'As entradas de transações de Bitcoin sempre apontam para saídas de transações existentes e não gastas. Portanto, nossa classe Input tem um método <span className="text-green"> from_output() </span> que é usado para construir uma Input passando a descrição da saída:',
         paragraph_two:
           'Os dois primeiros argumentos são o ID da transação e o índice da saída da transação da qual você deseja gastar. Eventualmente, passaremos os valores txid e vout que você obteve acima em listunspent.',
         paragraph_three: {
-          a: 'Os hashes no bitcoin são',
+          a: 'Os hashes no bitcoin são ',
           b: {
-            text: ' revertidos',
+            text: 'invertidos',
             question: 'Por que invertemos os hashes no bitcoin?',
             href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin',
           },
@@ -1404,8 +1404,8 @@ const translations = {
           },
           row_two: {
             column: {
-              one: 'Posição do Saída que está sendo gasta no array de saídas da transação',
-              two: 'índice',
+              one: 'Posição da Saída que está sendo gasta no array de Saídas da transação',
+              two: 'index',
               three: 'int',
               four: '4',
             },
@@ -1416,7 +1416,7 @@ const translations = {
           row_one: {
             column: {
               one: 'txid e índice de saída que está sendo gasta',
-              two: 'ponto de saída',
+              two: 'outpoint',
               three: 'bytes',
               four: '36',
             },
@@ -1424,7 +1424,7 @@ const translations = {
           row_two: {
             column: {
               one: 'Comprimento do ScriptSig (sempre 0 para Segregated Witness)',
-              two: 'comprimento',
+              two: 'length',
               three: 'int',
               four: '1',
             },
@@ -1440,7 +1440,7 @@ const translations = {
           row_four: {
             column: {
               one: 'O valor padrão é 0xffffffff, mas pode ser usado para timelocks relativos',
-              two: 'sequência',
+              two: 'sequence',
               three: 'int',
               four: '4',
             },
@@ -1451,7 +1451,7 @@ const translations = {
         success: 'A classe Input parece boa. Excelente trabalho!',
       },
       hard: {
-        title: 'As entradas e saídas',
+        title: 'Entradas e Saídas',
         nav_title: 'Criar a classe Entrada',
         heading: 'Concluir a implementação da classe Input',
         paragraph_one: 'Ele deve ter o seguinte método:',
@@ -1482,7 +1482,7 @@ const translations = {
           row_two: {
             column: {
               one: 'Posição da saída que está sendo gasta no array de saídas da transação',
-              two: 'índice',
+              two: 'index',
               three: 'int',
               four: '4',
             },
@@ -1493,7 +1493,7 @@ const translations = {
           row_one: {
             column: {
               one: 'txid e índice da saída que está sendo gasto',
-              two: 'ponto de saída',
+              two: 'outpoint',
               three: 'bytes',
               four: '36',
             },
@@ -1501,7 +1501,7 @@ const translations = {
           row_two: {
             column: {
               one: 'Comprimento do ScriptSig (sempre 0 para Segregated Witness)',
-              two: 'comprimento',
+              two: 'length',
               three: 'int',
               four: '1',
             },
@@ -1517,7 +1517,7 @@ const translations = {
           row_four: {
             column: {
               one: 'O valor padrão é 0xffffffff, mas pode ser usado para timelocks relativos',
-              two: 'sequência',
+              two: 'sequence',
               three: 'int',
               four: '4',
             },
@@ -1527,8 +1527,8 @@ const translations = {
       },
     },
     in_out_five: {
-      title: 'As entradas e saídas',
-      nav_title: 'Criar a classe Saída',
+      title: 'Entradas e Saídas',
+      nav_title: 'Criando a classe Saída',
       heading: 'Concluir a implementação da classe Output',
       paragraph_one:
         'Como a classe Input, ela precisa de um método <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">from_options()</span> que construirá um objeto Output a partir de dados fornecidos pelo usuário:',
@@ -1545,15 +1545,15 @@ const translations = {
         row_one: {
           column: {
             one: 'Número de satoshis sendo enviados.',
-            two: 'valor',
+            two: 'value',
             three: 'bytes',
             four: '8',
           },
         },
         row_two: {
           column: {
-            one: 'Duração total do script a seguir (o "programa testemunha")."',
-            two: 'comprimento',
+            one: 'Duração total do script a seguir (o "programa testemunha", SegWit).',
+            two: 'length',
             three: 'int',
             four: '1',
           },
@@ -1561,15 +1561,15 @@ const translations = {
         row_three: {
           column: {
             one: 'A versão de testemunha segregada. Derivada do endereço bech32.',
-            two: 'versão',
+            two: 'version',
             three: 'int',
             four: '1',
           },
         },
         row_four: {
           column: {
-            one: 'Comprimento dos seguintes dados do programa de testemunhas.',
-            two: 'comprimento',
+            one: 'Comprimento dos dados seguintes do programa de testemunhas.',
+            two: '',
             three: 'int',
             four: '1',
           },
@@ -1577,7 +1577,7 @@ const translations = {
         row_five: {
           column: {
             one: 'O componente de dados derivado do endereço bech32.',
-            two: 'índice',
+            two: 'index',
             three: 'bytes',
             four: '(var)',
           },
@@ -1590,7 +1590,7 @@ const translations = {
     put_it_together_one: {
       normal: {
         title: 'Juntando tudo',
-        nav_title: 'Crie o resumo da transação',
+        nav_title: 'Criando o resumo da transação',
         heading: 'Resumo da transação',
         paragraph_one:
           'No capítulo 5, aprendemos que, para assinar uma transação, primeiro precisamos reorganizar e fazer o hash de seus dados em uma mensagem, que se torna uma das entradas do nosso algoritmo de assinatura. Como agora estamos usando a testemunha segregada(segwit), também precisamos implementar, atualizado, o algoritmo de resumo de transação que está especificado no <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
@@ -1599,11 +1599,11 @@ const translations = {
         list_heading: 'Algumas observações:',
         list_one: '"Double SHA-256" ou dSHA256 = sha256(sha256(data))',
         list_two:
-          'é a quantidade de satoshis na saída que está sendo gasta. Nós o adicionamos à nossa classe Input na etapa 2 e apenas o salvamos lá dentro da classe até agora.',
+          '"value" é a quantidade de satoshis na saída que está sendo gasta. Nós o adicionamos à nossa classe Input na etapa 2 e apenas o salvamos lá dentro da classe até agora.',
         list_three:
-          'scriptcode é o script de bitcoin que está sendo avaliado. Também adicionamos isso à nossa classe Input na etapa 2.',
+          'Scriptcode é o script de bitcoin que está sendo avaliado. Também adicionamos isso à nossa classe Input na etapa 2.',
         list_four:
-          'todos os números inteiros são codificados como little-endian!',
+          'Todos os números inteiros são codificados como little-endian!',
         paragraph_three:
           'Falaremos mais sobre isso na próxima seção, mas para gastar com seu endereço pay-to-witness-public-key-hash (P2WPKH) (Pague-para-hash-de-chave-publica-testemunha), seu código de script seria:',
         paragraph_four: '...que decodifica para o seguinte script de bitcoin.',
@@ -1620,7 +1620,7 @@ const translations = {
         table: {
           row_one: {
             item_one: 'Versão da transação, o padrão é 2',
-            item_two: 'versão',
+            item_two: 'version',
             item_three: 'int',
             item_four: '4',
           },
@@ -1634,46 +1634,46 @@ const translations = {
           row_three: {
             item_one:
               'O dSHA256 de todos os valores de sequência de todas as entradas, serializado',
-            item_two: 'sequências',
+            item_two: 'sequences',
             item_three: 'bytes',
             item_four: '32',
           },
           row_four: {
             item_one:
               'O ponto de saída serializado da única entrada que está sendo assinada',
-            item_two: 'ponto de saída',
+            item_two: 'outpoint',
             item_three: 'bytes',
             item_four: '36',
           },
           row_five: {
             item_one: 'O script de saída que está sendo gasto',
-            item_two: 'código de script',
+            item_two: 'scriptcode',
             item_three: 'bytes',
             item_four: '(var)',
           },
           row_six: {
             item_one:
               'O valor em satoshis que está sendo gasto pela única entrada que está sendo assinada',
-            item_two: 'valor',
+            item_two: 'value',
             item_three: 'int',
             item_four: '8',
           },
           row_seven: {
             item_one:
               'O valor da sequência da única entrada que está sendo assinada',
-            item_two: 'sequência',
+            item_two: 'sequence',
             item_three: 'int',
             item_four: '4',
           },
           row_eight: {
             item_one: 'O dSHA256 de todas as saídas, serializado',
-            item_two: 'saídas',
+            item_two: 'outputs',
             item_three: 'bytes',
             item_four: '32',
           },
           row_nine: {
             item_one: 'Tempo de bloqueio da transação, padrão 0',
-            item_two: 'tempo de bloqueio',
+            item_two: 'locktime',
             item_three: 'int',
             item_four: '4',
           },
@@ -1691,7 +1691,7 @@ const translations = {
       },
       hard: {
         title: 'Juntando tudo',
-        nav_title: 'Criar a classe Testemunha',
+        nav_title: 'Criando a classe Testemunha',
         heading: 'Concluir a implementação da classe Witness',
         paragraph_one:
           'Ele deve ter o seguinte método, que aceita um array de bytes e adiciona esse item à pilha de testemunhas.',
@@ -1707,13 +1707,13 @@ const translations = {
         table_one: {
           row_one: {
             item_one: 'O número de itens na pilha de testemunhas',
-            item_two: 'contagem',
+            item_two: 'count',
             item_three: 'int',
             item_four: '1',
           },
           row_two: {
             item_one: 'Itens de pilha serializados',
-            item_two: 'itens',
+            item_two: 'items',
             item_three: '(itens)',
             item_four: '(var)',
           },
@@ -1721,14 +1721,14 @@ const translations = {
         subheading_two: 'Item da pilha de testemunhas',
         table_two: {
           row_one: {
-            item_one: 'Comprimento total do seguinte item da pilha',
-            item_two: 'comprimento',
+            item_one: 'Comprimento total do item seguinte da pilha',
+            item_two: 'length',
             item_three: 'int',
             item_four: '1',
           },
           row_two: {
             item_one: 'Os bytes brutos do item da pilha',
-            item_two: 'dados',
+            item_two: 'data',
             item_three: 'bytes',
             item_four: '(var)',
           },
@@ -1739,7 +1739,7 @@ const translations = {
     put_it_together_two: {
       normal: {
         title: 'Juntando tudo',
-        nav_title: 'Criar a classe Testemunhas',
+        nav_title: 'Criando a classe Testemunhas',
         heading: 'Assine e preencha a Testemunha!',
         paragraph_one:
           'No último capítulo, escrevemos alguns códigos importantes de verificação de assinatura ECDSA. Agora, para criar uma assinatura válida, pegaremos esse código e o reorganizaremos um pouco.',
@@ -1773,7 +1773,7 @@ const translations = {
       },
       hard: {
         title: 'Juntando tudo',
-        nav_title: 'Serializar a transação',
+        nav_title: 'Serializando a transação',
         heading: 'Concluir a implementação da classe Transaction',
         paragraph_one:
           'Ele deve ter propriedades globais de locktime e versão, bem como um array de entradas, saídas e pilhas de testemunhas.',
@@ -1788,55 +1788,55 @@ const translations = {
         table: {
           row_one: {
             item_one: 'Atualmente 2',
-            item_two: 'versão',
+            item_two: 'version',
             item_three: 'int',
             item_four: '4',
           },
           row_two: {
             item_one: 'Deve ser exatamente 0x0001 para testemunha segregada',
-            item_two: 'bandeiras',
+            item_two: 'flags',
             item_three: 'bytes',
             item_four: '2',
           },
           row_three: {
             item_one: 'O número de entradas',
-            item_two: 'contagem',
+            item_two: 'count',
             item_three: 'int',
             item_four: '1',
           },
           row_four: {
             item_one: 'Todas as entradas de transação, serializadas',
-            item_two: 'entradas',
+            item_two: 'inputs',
             item_three: 'Inputs[]',
             item_four: '(var)',
           },
           row_five: {
             item_one: 'O número de saídas',
-            item_two: 'contagem',
+            item_two: 'count',
             item_three: 'int',
             item_four: '1',
           },
           row_six: {
             item_one: 'Todas as saídas de transação, serializadas',
-            item_two: 'saídas',
+            item_two: 'outputs',
             item_three: 'Outputs[]',
             item_four: '(var)',
           },
           row_seven: {
             item_one: 'Todas as pilhas de testemunhas, serializadas',
-            item_two: 'testemunha',
+            item_two: 'witness',
             item_three: 'Witnesses[]',
             item_four: '(var)',
           },
           row_eight: {
             item_one: 'A configuração em 0 indica finalidade',
-            item_two: 'tempo de bloqueio',
+            item_two: 'locktime',
             item_three: 'int',
             item_four: '4',
           },
         },
         paragraph_three:
-          'Observe que não há valor de "contagem" para as testemunhas. Isso ocorre porque o número de pilhas de testemunhas deve ser sempre exatamente igual ao número de entradas.',
+          'Observe que não há valor de "count" para as testemunhas. Isso ocorre porque o número de pilhas de testemunhas deve ser sempre exatamente igual ao número de entradas.',
         success: 'O método serialize() parece correto. Ótimo trabalho!',
       },
     },
@@ -1921,7 +1921,7 @@ const translations = {
       },
       hard: {
         title: 'Juntando tudo',
-        nav_title: 'Criar o resumo da transação',
+        nav_title: 'Criando o resumo da transação',
         heading: 'Resumo da transação',
         paragraph_one:
           'No capítulo 5, aprendemos que, para assinar uma transação, primeiro precisamos reorganizar e fazer o hash de seus dados em uma mensagem, que se torna uma das entradas brutas do nosso algoritmo de assinatura. Como agora estamos usando a testemunha segregada, também precisamos implementar o algoritmo de resumo de transação atualizado que está especificado no <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
@@ -1930,9 +1930,9 @@ const translations = {
         list_heading: 'Algumas observações:',
         list_one: '"Double SHA-256" ou dSHA256 = sha256(sha256(data))',
         list_two:
-          'é a quantidade de satoshis na saída que está sendo gasta. Nós o adicionamos à nossa classe Input na etapa 2 e apenas o salvamos lá dentro da classe até agora.',
+          '"value "é a quantidade de satoshis na saída que está sendo gasta. Nós o adicionamos à nossa classe Input na etapa 2 e apenas o salvamos lá dentro da classe até agora.',
         list_three:
-          'scriptcode é o script de bitcoin que está sendo avaliado. Também adicionamos isso à nossa classe Input na etapa 2.',
+          'Scriptcode é o script de bitcoin que está sendo avaliado. Também adicionamos isso à nossa classe Input na etapa 2.',
         paragraph_three:
           'Vamos nos aprofundar mais nisso na próxima seção, mas para gastar com seu endereço pay-to-witness-public-key-hash, seu código de script seria:',
         paragraph_four: '...que decodifica para o seguinte script de bitcoin.',
@@ -1949,7 +1949,7 @@ const translations = {
         table: {
           row_one: {
             item_one: 'Versão da transação, padrão 2',
-            item_two: 'versão',
+            item_two: 'version',
             item_three: 'int',
             item_four: '4',
           },
@@ -1963,14 +1963,14 @@ const translations = {
           row_three: {
             item_one:
               'O dSHA256 de todos os valores de sequência de todas as entradas, serializado',
-            item_two: 'sequências',
+            item_two: 'sequences',
             item_three: 'bytes',
             item_four: '32',
           },
           row_four: {
             item_one:
               'O ponto de saída serializado da única entrada que está sendo assinada',
-            item_two: 'ponto de saída',
+            item_two: 'outpoint',
             item_three: 'bytes',
             item_four: '36',
           },
@@ -1983,20 +1983,20 @@ const translations = {
           row_six: {
             item_one:
               'O valor em satoshis que está sendo gasto pela única entrada que está sendo assinada',
-            item_two: 'valor',
+            item_two: 'value',
             item_three: 'int',
             item_four: '8',
           },
           row_seven: {
             item_one:
               'O valor da sequência da única entrada que está sendo assinada',
-            item_two: 'sequência',
+            item_two: 'sequence',
             item_three: 'int',
             item_four: '8',
           },
           row_eight: {
             item_one: 'O dSHA256 de todas as saídas, serializado',
-            item_two: 'saídas',
+            item_two: 'outputs',
             item_three: 'bytes',
             item_four: '32',
           },
@@ -2023,7 +2023,7 @@ const translations = {
       hard: {
         title: 'Juntando tudo',
         heading: 'Assinando!',
-        nav_title: 'Assine a transação',
+        nav_title: 'Assinando a transação',
         paragraph_one: `Escrevemos o código de verificação de assinatura ECDSA no último capítulo, agora precisamos reorganizá-lo um pouco para criar uma assinatura válida. Adicione um método chamado <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index: int, key: int)</span> à sua classe Transaction que aceita um índice de entrada e uma chave privada (um inteiro de 32 bytes!). Ele deve calcular o resumo da mensagem para a entrada escolhida usando o método <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest()</span> da etapa 6 e retornar uma assinatura ECDSA na forma de dois inteiros de 32 bytes r e s.`,
         paragraph_two:
           'Consulte <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">esta página</Link> para obter informações sobre o algoritmo de assinatura ECDSA. Além disso, <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">este PDF</Link> (página 44, seção 4.1.3).',
@@ -2134,9 +2134,9 @@ const translations = {
           'Esse é o código que você encontra no servidor do Vanderpoole. Ele importa o mempool atual de um arquivo JSON e armazena todas as transações não confirmadas na memória como instâncias da classe MempoolTransaction. A função que Vanderpoole desativou é <span className="text-green">assembleBlock()</span>. Se você executar o código como Vanderpoole o deixou, verá o problema imediatamente.',
       },
       paragraph_two: {
-        a: 'Você precisa corrigir a função de montagem de blocos não apenas para criar blocos válidos, mas também para maximizar as taxas no bloco, de modo que os mineradores possam obter o maior lucro possível de acordo com as regras de consenso. As regras de consenso mais importantes às quais você precisará prestar atenção restringem o total de',
+        a: 'Você precisa corrigir a função de montagem de blocos não apenas para criar blocos válidos, mas também para maximizar as taxas no bloco, de modo que os mineradores possam obter o maior lucro possível de acordo com as regras de consenso. As regras de consenso mais importantes às quais você precisará prestar atenção restringem o total de ',
         b: {
-          text: 'peso da transação',
+          text: 'peso das transações',
           href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520weighted%2520units',
           question: 'O que são unidades ponderadas?',
         },
@@ -2222,7 +2222,7 @@ const translations = {
       title: 'Blocos de construção',
       nav_title: 'Localizando a ponta da corrente',
       paragraph_one: {
-        a: 'Você sabe que Vanderpoole tem tentado confundir as pessoas ao minerar blocos que geram mais bitcoins do que o permitido, inflacionando o suprimento de dinheiro. Esses blocos são inválidos porque violam regras de protocolo codificadas, mas ainda assim podem enganar algumas pessoas que executam softwares com bugs ou mal-intencionados, ou',
+        a: 'Você sabe que Vanderpoole tem tentado confundir as pessoas ao minerar blocos que geram mais bitcoins do que o permitido, inflacionando o suprimento de dinheiro. Esses blocos são inválidos porque violam regras de protocolo codificadas, mas ainda assim podem enganar algumas pessoas que executam softwares com bugs ou mal-intencionados, ou ',
         b: {
           text: 'clientes leves(light clients)',
           href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520light%2520clients%253F',
@@ -2267,7 +2267,7 @@ const translations = {
     },
     building_blocks_five: {
       title: 'Blocos de construção',
-      nav_title: `Obter a taxa de transação`,
+      nav_title: `Obtenha a taxa de transação`,
       heading: `Dados de transação`,
       paragraph_one: `Os objetos de transação confirmados em um bloco são objetos JSON que incluem arrays de "entradas" e "saídas". Ambos arrays são listas de UTXOs, também conhecidas como "moedas". Os objetos de moeda têm uma propriedade "value" representada em satoshis.`,
       paragraph_two: `O array "inputs" são as moedas gastas (destruídas) pela transação e o array "outputs" são as moedas criadas pela transação. Você deve se lembrar do Capítulo 6 que as transações sempre pagam uma taxa para incentivar os mineradores a incluí-las em um bloco. Essa taxa é exatamente a diferença de valor entre os valores totais de entrada e saída de uma transação.`,
@@ -2282,7 +2282,7 @@ const translations = {
       nav_title: 'Determine o subsídio',
       heading: 'A transação Coinbase',
       paragraph_one:
-        'A primeira transação em cada bloco é chamada de coinbase. Ela também pode ser chamada de "0ª" transação (referindo-se a txs[0]) e tem algumas propriedades muito especiais. Em primeiro lugar, ela não tem entradas! Isso ocorre porque ela não gasta nenhuma moeda existente. Em segundo lugar, seu valor de saída é estritamente definido pelo protocolo (apesar do que Vanderpoole possa dizer!). Esse é o mecanismo pelo qual os mineradores coletam as taxas das transações e geram novas moedas.',
+        'A primeira transação em cada bloco é chamada de coinbase. Ela também pode ser chamada de transação "0ª" (referindo-se a txs[0]) e tem algumas propriedades muito especiais. Em primeiro lugar, ela não tem entradas! Isso ocorre porque ela não gasta nenhuma moeda existente. Em segundo lugar, seu valor de saída é estritamente definido pelo protocolo (apesar do que Vanderpoole possa dizer!). Esse é o mecanismo pelo qual os mineradores coletam as taxas das transações e geram novas moedas.',
       paragraph_two:
         'É bastante fácil entender como as taxas totais de transação em um bloco são somadas, mas de onde vem o valor do subsídio do bloco? Como cada participante da rede bitcoin determina exatamente quanto os novos mineradores de bitcoin podem gerar em um determinado momento?',
       paragraph_three:
@@ -2393,8 +2393,8 @@ const translations = {
     },
     opcodes_one: {
       title: 'Códigos de operação',
-      nav_title: 'Bitcoin script',
-      heading: 'Bitcoin script',
+      nav_title: 'Bitcoin Script',
+      heading: 'Bitcoin cript',
       paragraph_one:
         'Mencionamos o script de bitcoin no capítulo 6, mas não nos aprofundamos nele porque as moedas que você estava gastando eram bloqueadas por um mecanismo simples: uma única assinatura e um script implícito que avaliava essa assinatura com uma chave pública. Agora as coisas ficarão mais interessantes.',
       paragraph_two:
@@ -2495,7 +2495,7 @@ const translations = {
       opconstants_list_six_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_PUSH</span>',
       opconstants_list_six_paragraph:
-        'Empurra o seguinte valor de script para a pilha. Os valores de exemplo incluem SIG(alice), PUBKEY(alice), HASH256(secret), secret. As strings em minúsculas representam dados do mundo real e os outros códigos operacionais desse interpretador os processarão como se fossem chaves, assinaturas, resumos de hash e pré-imagens reais.',
+        'Empurra o seguinte valor de script para a pilha. Os valores de exemplo incluem os segredos SIG(alice), PUBKEY(alice), HASH256(secret). As strings em minúsculas representam dados do mundo real e os outros códigos operacionais desse interpretador os processarão como se fossem chaves, assinaturas, resumos de hash e pré-imagens reais.',
       subheading_two: 'Opcodes que fazem aritmética',
       oparithmetic_list_one_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ADD</span>',
@@ -2623,14 +2623,14 @@ const translations = {
     },
     proposal_four: {
       title: 'Transação secreta com pré-imagem bloqueada',
-      nav_title: 'Trabalhar com um oráculo',
+      nav_title: 'Trabalhe com um oráculo',
       heading: 'Transação secreta com pré-imagem bloqueada',
       paragraph_one:
         'Vanderpoole muda de ideia novamente. Ele não gosta desse acordo por causa das incógnitas. Ele decide que quer que a fundação Lil Bits receba o primeiro 1,0 BTC do total de doações e que você possa gastar o restante depois disso.',
       paragraph_two:
         'Não há como verificar um saldo total em vários UTXOs no script de bitcoin para que você concorde com um oráculo imparcial de terceiros: Deborah Chunk! Ela monitorará o valor total das doações no blockchain e, assim que elas somarem pelo menos 1,0 BTC, ela anunciará, ao vivo na TV, a pré-imagem de um valor de hash com o qual você se comprometerá no script.',
       paragraph_three: {
-        a: 'Ela gera um nonce aleatório seguro em particular e, em seguida, entrega a você o resumo do hash: <span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">HASH256(FD3771E8)</span>. Você pode gastar todas as moedas que receber quando ela revelar esse segredo, e nenhuma delas',
+        a: 'Ela gera um nonce aleatório seguro em particular e, em seguida, entrega a você o resumo do hash: <span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">HASH256(FD3771E8)</span>. Você pode gastar todas as moedas que receber quando ela revelar esse segredo, e nenhum ',
         b: ' um segundo antes!',
       },
       paragraph_four: `Lembre-se de que a chave pública de Vanderpoole é PUBKEY(vanderpoole) e a sua é PUBKEY(me).`,
@@ -2700,7 +2700,7 @@ Dica da pilha: Para gastar antes do bloco especificado, Vanderpoole usa sua assi
       },
       proposal_four: {
         tip: 'A pré-imagem será revelada após um período de tempo desconhecido, portanto, não há necessidade de usar relógios de ponto.',
-        spoiler: `Dica de roteiro: O roteiro permite gastar em duas condições: antes ou depois de o segredo ser revelado. Antes do bloqueio, Vanderpoole pode gastar; depois do bloqueio, vocês dois podem.
+        spoiler: `Dica de script: O script permite gastar em duas condições: antes ou depois de o segredo ser revelado. Antes do bloqueio, Vanderpoole pode gastar; depois do bloqueio, vocês dois podem.
 
 Dica da pilha: Para gastar antes de o segredo ser revelado, Vanderpoole usa sua assinatura. Depois que o segredo é revelado, você usa sua assinatura, um hash do segredo e fornece um 0 porque o script passou da verificação não revelada.`,
       },
@@ -2799,7 +2799,7 @@ Dica da pilha: Para gastar antes de o segredo ser revelado, Vanderpoole usa sua 
       title: 'O reembolso',
       nav_title: 'O reembolso',
       heading_one: 'O reembolso',
-      paragraph_one: `Uma nova guia é exibida: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Reembolso</span> que inicia outro modelo de TX na mesma tela, com uma seta da saída <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multi-Sig</span> para essa entrada de TX.`,
+      paragraph_one: `Uma nova guia é exibida: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Refund</span> que inicia outro modelo de TX na mesma tela, com uma seta da saída <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multi-Sig</span> para essa entrada de TX.`,
       refund_list_one: `Preencha o valor da saída e o script de saída`,
       refund_list_two: `Envie-a para Laszlo clicando em "Assinar" para que ele nos diga se vai assiná-la.`,
       refund_list_three: `Não assine você mesmo ainda! Vamos ver o que Laszlo acha, primeiro`,
@@ -2965,9 +2965,9 @@ Dica da pilha: Para gastar antes de o segredo ser revelado, Vanderpoole usa sua 
         'Todas essas três transações estão assinadas e são válidas, mas Laszlo ainda não lhe entregou uma cerveja. Por que não? Só resta uma coisa a fazer...',
     },
     making_a_payment_seven: {
-      title: `🍺 Ahhhhhhh, legal.`,
-      nav_title: `Ahhhhhhh, legal.`,
-      paragraph_one: `🍺 Ahhhhhhh, legal.`,
+      title: `🍺 Ahhhhhhh, daora.`,
+      nav_title: `Ahhhhhhh, daora.`,
+      paragraph_one: `🍺 Ahhhhhhh, daora.`,
     },
     making_a_payment_eight: {
       title: `Efetue outro pagamento`,
