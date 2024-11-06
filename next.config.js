@@ -5,6 +5,9 @@ const nextConfig = {
   images: {
     domains: ['saving-satoshi.s3.amazonaws.com', 'placekitten.com'],
   },
+  eslint: {
+    dirs: ['app', 'components', 'content', 'ui', 'utils'],
+  },
   webpack(config) {
     config.module.rules.push(
       {
