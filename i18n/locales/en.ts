@@ -3056,6 +3056,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     chapter_complete: 'Chapter complete',
     challenge: 'Challenge',
     help_tooltip: 'Need help?',
+    your_language: 'Your Language',
   },
 
   modal_signin: {

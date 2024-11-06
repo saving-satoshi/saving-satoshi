@@ -3,9 +3,9 @@
 import Icon from 'shared/Icon'
 import { i18n } from 'i18n/config'
 import locales from 'i18n/locales'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, use } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { usePathData } from 'hooks'
+import { useLang, usePathData, useTranslations } from 'hooks'
 import clsx from 'clsx'
 import Link from 'next/link'
 
@@ -43,6 +43,7 @@ export default function LangSwitch() {
   }
 
   const { lang } = usePathData()
+  const t = useTranslations(lang)
 
   const handleLanguageClick = (language) => {
     setIsOpen(false)
@@ -103,7 +104,7 @@ export default function LangSwitch() {
               }
               target="_blank"
             >
-              Your Language
+              {t('navbar.your_language')}
             </Link>
           </div>
         </div>

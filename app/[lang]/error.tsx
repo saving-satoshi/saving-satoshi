@@ -26,7 +26,7 @@ export default function Error({
       <Topbar />
       <Image
         src="/assets/images/error-page_cat.jpg"
-        alt="page not found"
+        alt="something went wrong"
         width={250}
         height={250}
         className="flex self-center rounded-full"
