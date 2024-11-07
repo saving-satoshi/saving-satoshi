@@ -105,7 +105,7 @@ export const transactionTabs: TransactionData = {
         'T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKFlvdSkgT1BfQ0hFQ0tTSUfigKhPUF9FTFNF4oCoICBPUF8yIE9QX1BVU0ggUFVCS0VZKHJldm9jYXRpb25feW91XzEpIE9QX1BVU0ggUFVCS0VZKExhc3psbykgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG',
     },
   },
-  'commitment(You)': {
+  commitment_you: {
     description:
       'This transaction updates the sat distribution you and Laszlo agreed on.',
     signatures: {
@@ -122,10 +122,48 @@ export const transactionTabs: TransactionData = {
     },
     output_1: {
       sats: '1000',
+      script: 'T1BfUFVTSCBQVUJLRVkoTEFTWkxPKSBPUF9DSEVDS1NJRw==',
+    },
+  },
+  commitment_you_1: {
+    description: 'This is Laszlo’s version of the commitment transaction.',
+    signatures: {
+      you: 'signed',
+      lazlo: 'pending',
+    },
+    input: {
+      sats: '101,000',
+    },
+    output_0: {
+      sats: '98000',
+      script: `T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fWU9VXzMpIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG`,
+    },
+    output_1: {
+      sats: '2000',
+      script: 'T1BfUFVTSCBQVUJLRVkoTEFTWkxPKSBPUF9DSEVDS1NJRw==',
+    },
+  },
+  commitment_laszlo: {
+    description:
+      'This transaction updates the sat distribution you and Laszlo agreed on.',
+    signatures: {
+      you: 'signed',
+      lazlo: 'pending',
+    },
+    input: {
+      sats: '101,000',
+    },
+    output_0: {
+      sats: '1000',
+      script:
+        'T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fTEFTWkxPXzEpIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG',
+    },
+    output_1: {
+      sats: '99000',
       script: 'T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==',
     },
   },
-  'commitment(Laszlo)': {
+  commitment_laszlo_1: {
     description: 'This is Laszlo’s version of the commitment transaction.',
     signatures: {
       you: 'signed',
@@ -136,7 +174,7 @@ export const transactionTabs: TransactionData = {
     },
     output_0: {
       sats: '2000',
-      script: `T1BfSUYg4oCoT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIOKAqE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfQ0hFQ0tTSUfigKggT1BfRUxTReKAqCBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fTEFTWkxPXzEpIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfMiBPUF9DSEVDS01VTFRJU0lHIOKAqE9QX0VORElG`,
+      script: `T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fWU9VXzMpIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG`,
     },
     output_1: {
       sats: '98000',

@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import { SuccessNumbers } from 'ui/common/StatusBar'
-import { Signatures } from 'ui/lesson/TransactionsChallenge'
 import WhiteCheck from './icons/WhiteCheck'
 import Loader from './Loader'
 
 export default function SignatureButton({
   children,
   style,
-  size,
   disabled,
   classes,
   onClick,
@@ -16,13 +14,14 @@ export default function SignatureButton({
 }: {
   children: any
   style?: string
-  size?: string
   disabled?: boolean
   classes?: string
   onClick?: any
   returnSuccess: SuccessNumbers
   laszloWillNotSign?: boolean
 }) {
+  const [isLoading, setIsLoading] = useState(false)
+
   let className = `inline-block justify-center px-12 text-center font-nunito font-bold transition duration-150 ease-in-out ${
     returnSuccess === 5 && '!bg-transparent '
   }`
@@ -58,7 +57,7 @@ export default function SignatureButton({
   } else {
     className += ''
 
-    if (disabled) {
+    if (disabled || returnSuccess === 5) {
       className += ' bg-white text-back opacity-50'
     } else {
       className += ' bg-white text-back hover:bg-white/75'
@@ -66,7 +65,7 @@ export default function SignatureButton({
   }
 
   // Disable clicking
-  if (disabled) {
+  if (disabled || returnSuccess === 5 || isLoading) {
     className += ' pointer-events-none'
   }
 
@@ -74,8 +73,6 @@ export default function SignatureButton({
   if (classes) {
     className += ' ' + classes
   }
-
-  const [isLoading, setIsLoading] = useState(false)
 
   if (laszloWillNotSign && returnSuccess === 5) {
     return (
@@ -95,7 +92,7 @@ export default function SignatureButton({
         onClick()
       }}
       className={className}
-      disabled={disabled}
+      disabled={disabled || returnSuccess === 5}
     >
       <>
         {isLoading && (

@@ -12,7 +12,6 @@ import { SuccessNumbers } from 'ui/common/StatusBar'
 import { sleep } from 'utils'
 import { transactionTabs } from 'utils/data'
 import Lesson from '../Lesson'
-import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
 import OutputScript from './OutputScript'
 import Tabs from './Tabs'
 
@@ -30,7 +29,11 @@ interface ITransactionProps {
   alwaysShowButton?: boolean
   laszloHidden?: boolean
 }
-
+export type OutputType = Record<'output_0' | 'output_1', string[]>
+export type SignatureType = Record<
+  'signature_0' | 'signature_1',
+  SuccessNumbers
+>
 export type SpendingConditions = {
   0: string[]
   1?: string[]
@@ -76,8 +79,30 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     laszlo: 'not-signed',
   })
   const [disableSign, setDisableSign] = useState<boolean>(true)
-  const [validateScript0, setValidateScript0] = useState<SuccessNumbers>(0)
-  const [validateScript1, setValidateScript1] = useState<SuccessNumbers>(0)
+  const [validateOutput0, setValidateOutput0] = useState<SignatureType>({
+    signature_0: 0,
+    signature_1: 0,
+  })
+
+  const [validateOutput1, setValidateOutput1] = useState<SignatureType>({
+    signature_0: 0,
+    signature_1: 0,
+  })
+
+  const [satsInput, setSatsInput] = useState<{
+    output_0: string
+    output_1: string
+  }>({
+    output_0: '',
+    output_1: '',
+  })
+  const [scriptInput, setScriptInput] = useState<{
+    output_0: string
+    output_1: string
+  }>({
+    output_0: '',
+    output_1: '',
+  })
   const handleLazloSign = () => {
     setSignatures((prev) => ({ ...prev, laszlo: 'pending' }))
   }
@@ -85,12 +110,10 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   const allTabsFiltered = allTabs
     .filter((tab, i) => {
       if (tab === 'payment') {
-        if (currentTransactionTab === 'payment') {
-          return true
-        } else {
-          return false
-        }
+        return currentTransactionTab === 'payment'
       }
+
+      // Handle refund tabs
       if (
         tab.includes('refund') &&
         allTabs.indexOf(currentTransactionTab) > 2
@@ -102,21 +125,94 @@ const TransactionChallenge: FC<ITransactionProps> = ({
         }
       }
 
+      // Handle commitment_you and commitment_you_1 based on current tab
+      if (tab.includes('commitment_you')) {
+        if (
+          currentTransactionTab === 'commitment_you' ||
+          currentTransactionTab === 'commitment_laszlo'
+        ) {
+          return tab === 'commitment_you'
+        } else if (
+          currentTransactionTab === 'commitment_you_1' ||
+          currentTransactionTab === 'commitment_laszlo_1'
+        ) {
+          return tab === 'commitment_you_1'
+        }
+      }
+
+      // Handle commitment_laszlo and commitment_laszlo_1 based on current tab
+      if (tab.includes('commitment_laszlo')) {
+        if (currentTransactionTab === 'commitment_laszlo') {
+          return tab === 'commitment_laszlo'
+        } else if (
+          currentTransactionTab === 'commitment_you_1' ||
+          currentTransactionTab === 'commitment_laszlo_1'
+        ) {
+          return tab === 'commitment_laszlo_1'
+        }
+      }
+
+      // Default case
       return i <= allTabs.indexOf(currentTransactionTab) ?? allTabs.length
     })
-    .map((tab) => ({ id: tab, text: tab.includes('refund') ? 'refund' : tab }))
+    .map((tab) => ({
+      id: tab,
+      text: tab.includes('refund')
+        ? 'refund'
+        : tab.includes('commitment_you')
+        ? 'commitment(You)'
+        : tab.includes('commitment_laszlo')
+        ? 'commitment(Laszlo)'
+        : tab,
+    }))
 
   const returnSuccess = () => {
-    if (answerScript?.output_1.length > 0) {
-      if (validateScript1 === 5 && validateScript0 === 5) {
-        return 5
-      } else if (validateScript0 === 2 || validateScript1 === 2) {
-        return 2
+    if (
+      validateOutput0.signature_0 === 0 &&
+      validateOutput1.signature_0 === 0
+    ) {
+      return 0
+    }
+    if (initialStack.output_0?.[1]) {
+      if (
+        validateOutput0.signature_0 === 5 &&
+        validateOutput0.signature_1 !== 2
+      ) {
+        if (
+          answerScript.output_1.length > 0 &&
+          validateOutput1.signature_0 === 5
+        ) {
+          return 5
+        } else if (answerScript.output_0.length === 0) {
+          return 5
+        } else {
+          return 5
+        }
       } else {
-        return 0
+        if (validateOutput0.signature_1 === 5) {
+          return 5
+        } else {
+          return 2
+        }
       }
     } else {
-      return validateScript0
+      if (answerScript?.output_1.length > 0) {
+        if (
+          validateOutput1.signature_0 === 5 &&
+          validateOutput0.signature_0 === 5
+        ) {
+          return 5
+        } else if (
+          validateOutput0.signature_0 === 2 ||
+          validateOutput1.signature_0 === 2
+        ) {
+          return 2
+        } else {
+          return 0
+        }
+      } else {
+        return validateOutput0.signature_0
+      }
     }
   }
 
@@ -199,13 +295,17 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             script={tabData[1].output_0.script || ''}
                             progressKey={progressKey}
                             answerScript={answerScript}
-                            validateScript0={validateScript0}
-                            validateScript1={validateScript1}
-                            setValidateScript={setValidateScript0}
+                            validateScript0={validateOutput0}
+                            validateScript1={validateOutput1}
+                            setValidateScript={setValidateOutput0}
                             validating={validating}
                             setValidating={setValidating}
                             setErrorMessage={setErrorMessage0}
                             onScriptEmpty={handleScriptEmpty}
+                            satsInput={satsInput}
+                            setSatsInput={setSatsInput}
+                            scriptInput={scriptInput}
+                            setScriptInput={setScriptInput}
                           />
                         )}
                         {tabData[1].output_1 && (
@@ -216,7 +316,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             nSequenceTime={nSequenceTime}
                             output="output 1"
                             tab={tabData[0]}
-                            setValidateScript={setValidateScript1}
+                            setValidateScript={setValidateOutput1}
                             prefilled={prefilled}
                             currentTransactionTab={currentTransactionTab}
                             sats={tabData[1].output_1.sats || ''}
@@ -224,17 +324,20 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             progressKey={progressKey}
                             answerScript={answerScript}
                             validating={validating}
-                            validateScript0={validateScript0}
-                            validateScript1={validateScript1}
+                            validateScript0={validateOutput0}
+                            validateScript1={validateOutput1}
                             setValidating={setValidating}
                             setErrorMessage={setErrorMessage1}
                             onScriptEmpty={handleScriptEmpty}
+                            satsInput={satsInput}
+                            setSatsInput={setSatsInput}
+                            scriptInput={scriptInput}
+                            setScriptInput={setScriptInput}
                           />
                         )}
                       </div>
                     </div>
                   </div>
-                  {/*  */}
                   {currentTransactionTab === tabData[0] && !noSignature && (
                     <div className="flex flex-col gap-4 px-[30px] py-[15px] ">
                       <div className="flex flex-col">
@@ -257,7 +360,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
 
                           {!laszloHidden && (
                             <div className="flex items-center gap-2.5">
-                              <Avatar avatar={account?.avatar} />
+                              <Avatar avatar={'/assets/avatars/laszlo.jpg'} />
                               <Text>Laszlo</Text>
                               <SignatureButton
                                 disabled={true}
@@ -279,22 +382,6 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                         >
                           Broadcast Transaction
                         </Button>
-                        {/*<Tooltip
-                          id="broadcast-button"
-                          position="top"
-                          theme="bg-[#5c4d4b]"
-                          offset={10}
-                          parentClassName="max-w-[max-content] "
-                          className="max-w-[100px] cursor-pointer "
-                          content={`Broadcasting this ${tabData[0]} will close the channel`}
-                        >
-                          <Button
-                            disabled={true}
-                            classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
-                          >
-                            Broadcast Transaction
-                          </Button>
-                        </Tooltip>*/}
                       </div>
                     </div>
                   )}

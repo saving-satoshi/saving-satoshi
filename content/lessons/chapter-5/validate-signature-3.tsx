@@ -14,21 +14,26 @@ export const metadata = {
   key: 'CH5VLS3',
 }
 
-const javascript = {
-  program: `console.log(verify(r, s, keyGE, msg).toString());
+export default function ValidateSignature3({ lang }) {
+  const t = useTranslations(lang)
+  const [currentLanguage] = useAtom(currentLanguageAtom)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+
+  const javascript = {
+    program: `console.log(verify(r, s, keyGE, msg).toString());
 console.log("KILL")
 `,
-  defaultFunction: {
-    name: 'verify',
-    args: [],
-  },
-  rangesToCollapse: [
-    {
-      start: 90,
-      end: 95,
+    defaultFunction: {
+      name: 'verify',
+      args: [],
     },
-  ],
-  defaultCode: `const { Hash } = require('crypto')
+    rangesToCollapse: [
+      {
+        start: 90,
+        end: 95,
+      },
+    ],
+    defaultCode: `const { Hash } = require('crypto')
 const secp256k1 = require('@savingsatoshi/secp256k1js')
 // View the library source code
 // https://github.com/saving-satoshi/secp256k1js/blob/main/secp256k1.js
@@ -123,29 +128,29 @@ const [r, s] =
 const msg =
 const keyGE =
 `,
-  validate: async (answer) => {
-    if (answer === 'false') {
-      return [true, 'The signature is invalid']
-    }
-    return [false, 'Check your methods']
-  },
-}
+    validate: async (answer) => {
+      if (answer === 'false') {
+        return [true, t('chapter_five.validate_signature_three.success')]
+      }
+      return [false, 'Check your methods']
+    },
+  }
 
-const python = {
-  program: `print(verify(r, s, key_ge, msg))
+  const python = {
+    program: `print(verify(r, s, key_ge, msg))
 print("KILL")
 `,
-  defaultFunction: {
-    name: 'verify',
-    args: [],
-  },
-  rangesToCollapse: [
-    {
-      start: 68,
-      end: 73,
+    defaultFunction: {
+      name: 'verify',
+      args: [],
     },
-  ],
-  defaultCode: `import base64
+    rangesToCollapse: [
+      {
+        start: 68,
+        end: 73,
+      },
+    ],
+    defaultCode: `import base64
 import hashlib
 import secp256k1py.secp256k1 as SECP256K1
 # View the library source code
@@ -218,26 +223,21 @@ r, s =
 msg =
 key_ge =
 `,
-  validate: async (answer) => {
-    if (answer === 'False') {
-      return [true, 'The signature is invalid']
-    }
-    return [false, 'Check your methods']
-  },
-}
+    validate: async (answer) => {
+      if (answer === 'False') {
+        return [true, t('chapter_five.validate_signature_three.success')]
+      }
+      return [false, 'Check your methods']
+    },
+  }
 
-const config: EditorConfig = {
-  defaultLanguage: 'javascript',
-  languages: {
-    javascript,
-    python,
-  },
-}
-
-export default function ValidateSignature3({ lang }) {
-  const t = useTranslations(lang)
-  const [currentLanguage] = useAtom(currentLanguageAtom)
-  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  const config: EditorConfig = {
+    defaultLanguage: 'javascript',
+    languages: {
+      javascript,
+      python,
+    },
+  }
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
@@ -248,7 +248,6 @@ export default function ValidateSignature3({ lang }) {
       lang={lang}
       config={config}
       lessonKey={metadata.key}
-      successMessage={t('chapter_five.validate_signature_three.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>

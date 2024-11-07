@@ -197,7 +197,7 @@ class Transaction {
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, 'Nicely done']
+          return [true, t('chapter_six.put_it_together_one.normal.success')]
         }
         return [false, 'Not a valid hex value']
       }
@@ -358,7 +358,7 @@ class Transaction:
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, 'Nicely Done ']
+          return [true, t('chapter_six.put_it_together_one.normal.success')]
         }
         return [false, 'Not a valid hex value']
       }
@@ -383,7 +383,6 @@ class Transaction:
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_six.put_it_together_one.normal.success')}
       >
         <LessonInfo>
           <Text className="font-nunito text-2xl font-bold text-white">

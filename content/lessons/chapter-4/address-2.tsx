@@ -81,7 +81,7 @@ function hashCompressed(compressedPublicKey) {
           'Ensure you are using the correct compressed key and it is being decoded',
         ]
       }
-      return [true, undefined]
+      return [true, t('chapter_four.address_two.success')]
     },
   }
 
@@ -127,7 +127,7 @@ def hash_compressed(compressed_public_key):
           'Ensure you are using the correct compressed key and it is being decoded',
         ]
       }
-      return [true, undefined]
+      return [true, t('chapter_four.address_two.success')]
     },
   }
 
@@ -152,7 +152,6 @@ def hash_compressed(compressed_public_key):
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_four.address_two.success')}
         onSelectLanguage={handleSelectLanguage}
       >
         <LessonInfo>

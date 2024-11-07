@@ -39,7 +39,7 @@ export default function MakingAPayment2({ lang }) {
         output_1: ['OP_PUSH', 'PUBKEY(LASZLO)', 'OP_CHECKSIG'],
       }}
       progressKey={metadata.key}
-      currentTransactionTab="commitment(You)"
+      currentTransactionTab="commitment_you"
     >
       <LessonInfo>
         <Text className="text-lg font-bold md:text-xl">

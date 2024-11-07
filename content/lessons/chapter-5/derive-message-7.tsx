@@ -16,16 +16,22 @@ export const metadata = {
   key: 'CH5DRM7',
 }
 
-const javascript = {
-  program: `
+export default function DeriveMessage7({ lang }) {
+  const t = useTranslations(lang)
+  const [currentLanguage] = useAtom(currentLanguageAtom)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  const [tooltipVisible, setTooltipVisible] = useState(false)
+
+  const javascript = {
+    program: `
 console.log(createTxMessage())
 console.log("KILL")
 `,
-  defaultFunction: {
-    name: 'createTxMessage',
-    args: [],
-  },
-  defaultCode: `function createTxMessage() {
+    defaultFunction: {
+      name: 'createTxMessage',
+      args: [],
+    },
+    defaultCode: `function createTxMessage() {
   let msg = ""
 
   // version:
@@ -74,28 +80,31 @@ console.log("KILL")
   return msg
 }
 `,
-  validate: async (answer) => {
-    if (
-      answer !==
-      '0100000001c997a5e56e104102fa209c6a852dd90660a20b2d9c352423edce25857fcd37040000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3acffffffff0200ca9a3b00000000434104ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302fa28414e7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e6cd84cac00286bee0000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3ac0000000001000000'
-    ) {
-      return [false, 'Be sure you filled in both the output and sig hash flag.']
-    }
+    validate: async (answer) => {
+      if (
+        answer !==
+        '0100000001c997a5e56e104102fa209c6a852dd90660a20b2d9c352423edce25857fcd37040000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3acffffffff0200ca9a3b00000000434104ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302fa28414e7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e6cd84cac00286bee0000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3ac0000000001000000'
+      ) {
+        return [
+          false,
+          'Be sure you filled in both the output and sig hash flag.',
+        ]
+      }
 
-    return [true, undefined]
-  },
-}
+      return [true, t('chapter_five.derive_message_seven.success')]
+    },
+  }
 
-const python = {
-  program: `
+  const python = {
+    program: `
 print(create_tx_message())
 print("KILL")
 `,
-  defaultFunction: {
-    name: 'create_tx_message',
-    args: [],
-  },
-  defaultCode: `def create_tx_message():
+    defaultFunction: {
+      name: 'create_tx_message',
+      args: [],
+    },
+    defaultCode: `def create_tx_message():
     msg = ""
 
     # version:
@@ -143,31 +152,28 @@ print("KILL")
 
     return msg
 `,
-  validate: async (answer) => {
-    if (
-      answer !==
-      '0100000001c997a5e56e104102fa209c6a852dd90660a20b2d9c352423edce25857fcd37040000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3acffffffff0200ca9a3b00000000434104ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302fa28414e7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e6cd84cac00286bee0000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3ac0000000001000000'
-    ) {
-      return [false, 'Be sure you filled in both the output and sig hash flag.']
-    }
+    validate: async (answer) => {
+      if (
+        answer !==
+        '0100000001c997a5e56e104102fa209c6a852dd90660a20b2d9c352423edce25857fcd37040000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3acffffffff0200ca9a3b00000000434104ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302fa28414e7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e6cd84cac00286bee0000000043410411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3ac0000000001000000'
+      ) {
+        return [
+          false,
+          'Be sure you filled in both the output and sig hash flag.',
+        ]
+      }
 
-    return [true, undefined]
-  },
-}
+      return [true, t('chapter_five.derive_message_seven.success')]
+    },
+  }
 
-const config: EditorConfig = {
-  defaultLanguage: 'javascript',
-  languages: {
-    javascript,
-    python,
-  },
-}
-
-export default function DeriveMessage7({ lang }) {
-  const t = useTranslations(lang)
-  const [currentLanguage] = useAtom(currentLanguageAtom)
-  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
-  const [tooltipVisible, setTooltipVisible] = useState(false)
+  const config: EditorConfig = {
+    defaultLanguage: 'javascript',
+    languages: {
+      javascript,
+      python,
+    },
+  }
 
   const handleMouseEnter = () => {
     setTooltipVisible(true)
@@ -186,7 +192,6 @@ export default function DeriveMessage7({ lang }) {
       lang={lang}
       config={config}
       lessonKey={metadata.key}
-      successMessage={t('chapter_five.derive_message_seven.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>

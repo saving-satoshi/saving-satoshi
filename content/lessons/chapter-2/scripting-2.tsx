@@ -1,5 +1,6 @@
 'use client'
 
+import crypto from 'crypto'
 import HelpSuggestion from 'components/HelpSuggestion'
 import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
@@ -16,108 +17,133 @@ export const metadata = {
   key: 'CH2SCR2',
 }
 
-const javascript = {
-  program: `//BEGIN VALIDATION BLOCK
+export default function Scripting2({ lang }) {
+  const t = useTranslations(lang)
+  const [currentLanguage] = useAtom(currentLanguageAtom)
+  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+  const [displayAnswer, setDisplayAnswer] = useState('')
+
+  const handleSelectLanguage = (language: string) => {
+    setLanguage(language)
+  }
+
+  const validationTest = (nonce) => {
+    return crypto.createHash('sha256').update(nonce.toString()).digest('hex')
+  }
+
+  const javascript = {
+    program: `//BEGIN VALIDATION BLOCK
 const min = 1;
 const max = 100000000;
 const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-const testHash = findHash(randomNumber)
-console.log((findHash(1000000) === '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3' && findHash(0) !== '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3') ? testHash : 'test-failed')
+const testHash = findHashFromNonce(randomNumber)
+console.log(testHash.toString())
 console.log("KILL")`,
-  defaultFunction: {
-    name: 'findHash',
-    args: ['nonce'],
-  },
-  defaultCode: `const crypto = require('crypto')
+    defaultFunction: {
+      name: 'findHash',
+      args: ['nonce'],
+    },
+    defaultCode: `const crypto = require('crypto')
 
 // Create a program that finds a sha256 hash starting with 5 zeroes.
 // To submit your answer, return it from the function.
 
-function findHash(nonce) {
+function findHashFromNonce(nonce) {
   // Type your code here
 }
-`,
-  validate: async (answer) => {
-    if (answer === 'test-failed') {
-      return [
-        false,
-        'Be sure you are using the nonce param in your function as a random starting nonce will be used to test',
-      ]
-    }
+  `,
+    validate: async (answer) => {
+      if (answer.startsWith('00000')) {
+        return [
+          false,
+          'Be sure you are returning the nonce and not the hash from your function.',
+        ]
+      }
 
-    if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
-    }
+      if (
+        !validationTest(answer).startsWith('00000') &&
+        (validationTest(answer - 1).startsWith('00000') ||
+          validationTest(answer + 1).startsWith('00000'))
+      ) {
+        return [
+          false,
+          'Make sure that you are returning your nonce before you increment it again.',
+        ]
+      }
 
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
-    }
+      if (!validationTest(answer).startsWith('00000')) {
+        return [false, 'Hash must start with 5 zeroes.']
+      }
 
-    return [true, undefined]
-  },
-}
+      if (validationTest(answer).length !== 64) {
+        return [false, 'Hash must be 64 characters long.']
+      }
 
-const python = {
-  program: `# BEGIN VALIDATION BLOCK
+      setDisplayAnswer(validationTest(answer))
+      return [true, `That's it! Your nonce hashes to ${validationTest(answer)}`]
+    },
+  }
+
+  const python = {
+    program: `# BEGIN VALIDATION BLOCK
 import random
 
 min_value = 1
 max_value = 100000000
 random_number = random.randint(min_value, max_value)
-test_hash = find_hash(random_number)
-if find_hash(1000000) != '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3':
-    print('test-failed')
-elif find_hash(1000000) == '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3' and find_hash(0) != '000001f8479faf79c1a58152ffc6b027a93f6ae6b27dc19ef986b2c9e7cad3b3':
-    print(test_hash)
-else:
-    print('error')
+test_hash = find_hash_from_nonce(random_number)
+print(str(test_hash))
 print("KILL")`,
-  defaultFunction: {
-    name: 'find_hash',
-    args: ['nonce'],
-  },
-  defaultCode: `from hashlib import sha256
+    defaultFunction: {
+      name: 'find_hash',
+      args: ['nonce'],
+    },
+    defaultCode: `from hashlib import sha256
 
 # Create a program that finds a sha256 hash starting with 5 zeroes.
 # To submit your answer, return it from the function.
 
-def find_hash(nonce):
+def find_hash_from_nonce(nonce):
     # Type your code here
 `,
-  validate: async (answer) => {
-    if (answer === 'test-failed' || answer === 'error') {
-      return [
-        false,
-        'Be sure you are using the nonce param in your function as a random starting nonce will be used to test',
-      ]
-    }
-    if (!answer.startsWith('00000')) {
-      return [false, 'Hash must start with 5 zeroes.']
-    }
+    validate: async (answer) => {
+      if (answer.startsWith('00000')) {
+        return [
+          false,
+          'Be sure you are returning the nonce and not the hash from your function.',
+        ]
+      }
 
-    if (answer.length !== 64) {
-      return [false, 'Hash must be 64 characters long']
-    }
+      if (
+        !validationTest(answer).startsWith('00000') &&
+        (validationTest(answer - 1).startsWith('00000') ||
+          validationTest(answer + 1).startsWith('00000'))
+      ) {
+        return [
+          false,
+          'Make sure that you are returning your nonce before you increment it again.',
+        ]
+      }
 
-    return [true, undefined]
-  },
-}
+      if (!validationTest(answer).startsWith('00000')) {
+        return [false, 'Hash must start with 5 zeroes.']
+      }
 
-const config: EditorConfig = {
-  defaultLanguage: 'javascript',
-  languages: {
-    javascript,
-    python,
-  },
-}
+      if (validationTest(answer).length !== 64) {
+        return [false, 'Hash must be 64 characters long.']
+      }
 
-export default function Scripting2({ lang }) {
-  const t = useTranslations(lang)
-  const [currentLanguage] = useAtom(currentLanguageAtom)
-  const [language, setLanguage] = useState(getLanguageString(currentLanguage))
+      setDisplayAnswer(validationTest(answer))
+      return [true, `That's it! Your nonce hashes to ${validationTest(answer)}`]
+    },
+  }
 
-  const handleSelectLanguage = (language: string) => {
-    setLanguage(language)
+  const config: EditorConfig = {
+    defaultLanguage: 'javascript',
+    languages: {
+      javascript,
+      python,
+    },
   }
 
   return (
@@ -125,7 +151,6 @@ export default function Scripting2({ lang }) {
       lang={lang}
       config={config}
       lessonKey={metadata.key}
-      successMessage={t('chapter_two.scripting_two.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>

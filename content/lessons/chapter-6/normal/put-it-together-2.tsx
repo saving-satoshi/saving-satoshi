@@ -255,7 +255,7 @@ ${combinedCode.slice(0, -2)}
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, '']
+          return [true, t('chapter_six.put_it_together_two.normal.success')]
         } else {
           return [false, 'recheck your methods']
         }
@@ -405,7 +405,7 @@ ${combinedCode}
     validate: async (answer) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, '']
+          return [true, t('chapter_six.put_it_together_two.normal.success')]
         } else {
           return [false, 'recheck your methods']
         }
@@ -433,7 +433,6 @@ ${combinedCode}
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_six.put_it_together_two.normal.success')}
         loadingSavedCode={isLoading}
       >
         <LessonInfo>

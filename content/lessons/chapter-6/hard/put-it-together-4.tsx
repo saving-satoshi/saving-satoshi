@@ -197,7 +197,7 @@ ${prevData.data.slice(0, -2)}
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, '']
+          return [true, t('chapter_six.put_it_together_four.hard.success')]
         } else {
           return [false, 'recheck your methods']
         }
@@ -342,7 +342,7 @@ ${prevData.data}
     validate: async (answer) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, '']
+          return [true, t('chapter_six.put_it_together_four.hard.success')]
         } else {
           return [false, 'recheck your methods']
         }
@@ -370,7 +370,6 @@ ${prevData.data}
         config={config}
         saveData
         lessonKey={metadata.key}
-        successMessage={t('chapter_six.put_it_together_four.hard.success')}
       >
         <LessonInfo className="overflow-y-scroll  sm:max-h-[calc(100vh-70px)]">
           <Title>{t('chapter_six.put_it_together_four.hard.heading')}</Title>

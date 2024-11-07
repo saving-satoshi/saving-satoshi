@@ -410,7 +410,7 @@ const translations = {
         'Alright, time to write and run your own code. Write a script that generates a sha256 hash that begins with five zeroes ("00000..."). Your code should repeatedly call the sha256 function with different input until the output satisfies this requirement. You should try incrementing an integer inside a loop to get different inputs. In cryptography this number may referred to as a "nonce" or "number used once".',
       python: {
         paragraph_two:
-          'When you find a nonce with a hash that begins with five zeroes, return the hash to the console. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
+          'When you find a nonce with a hash that begins with five zeroes, return the nonce from the function. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
         list_one:
           '<Link href="https://docs.python.org/3/library/hashlib.html" target="_blank" className="underline">hashlib documentation</Link>',
         list_two:
@@ -418,13 +418,12 @@ const translations = {
       },
       javascript: {
         paragraph_two:
-          'When you find a nonce with a hash that begins with five zeroes, return the hash to the console. We are using the crypto library in JavaScript to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
+          'When you find a nonce with a hash that begins with five zeroes, return the nonce from the function. We are using the crypto library in JavaScript to help you along in creating this function, you can use the following external resources to help you write this function if needed:',
         list_one:
           '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" target="_blank" className="underline">crypto documentation</Link>',
         list_two:
           '<Link href="https://www.educative.io/answers/what-is-node-cryptocreatehashalgorithm-options" target="_blank" className="underline">Tutorial JavaScript function</Link>',
       },
-      success: 'Five zeroes! That’s it!',
     },
 
     mining_one: {
@@ -1170,6 +1169,7 @@ const translations = {
           return: 'It should return a tuple with the (r, s) values.',
         },
       },
+      success: 'Nicely Done',
     },
     validate_signature_three: {
       title: 'Validate the signature',
@@ -2869,7 +2869,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       heading_one: 'Buy a beer!',
       paragraph_one: `ow it's finally time to send bitcoin off-chain to Laszlo. We will "simply" add a 1,000 satoshi output for him in an updated commitment transaction. We will also need to promise never to broadcast the old commitment transaction, which didn't pay Laszlo anything. That is guaranteed when we send him the revocation key for that old commitment transaction, which we'll do next.`,
       paragraph_two: `You'll need to generate another revocation key for this new state in case you want to repeat the cycle (revoke THIS transaction for another new commitment where Laszlo gets paid for a second beer) it is a party after all!`,
-      paragraph_three: `You generate a private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> revocation_you_2 </span>`,
+      paragraph_three: `You generate a private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">revocation_you_2</span>`,
       list_one: `Deduct 1000 satoshis from your output`,
       list_two: `Add 1000 satoshis to the second output and fill in the script for Laszlo`,
       list_three: `Send it to Laszlo by clicking "Send to Laszlo" so he can sign it`,
@@ -2877,9 +2877,9 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       heading_two: `Hints`,
       paragraph_four: `Output 0 is spent by EITHER:`,
       hint_one:
-        'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">SIG(You) 1 </span>',
-      hint_two: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(revocation_you_2) SIG(Laszlo) 0 </span>`,
-      paragraph_five: `Output 1 is spent by Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(Laszlo) </span>`,
+        'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">SIG(YOU) 1 </span>',
+      hint_two: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_YOU_2) SIG(LASZLO) 0 </span>`,
+      paragraph_five: `Output 1 is spent by Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO) </span>`,
     },
     making_a_payment_three: {
       title: `Laszlo's Blockchain Dilemma`,
@@ -3016,6 +3016,12 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_three:
         'The <Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> is here to guide future generations of open-source contributors. Becoming a present day bitcoin hero today is just one click away.',
       paragraph_four: 'We are all Satoshi.',
+    },
+    resources: {
+      output_zero_sig: 'Output 0 Signature',
+      output_one_sig: 'Output 1 Signature',
+      sats_distribution:
+        'Remember that Laszlo should only be receiving enough sats for the beer. Also we need to set aside some sats for the fees incase our channel closes!',
     },
   },
 

@@ -95,7 +95,7 @@ class Output {
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, '']
+          return [true, t('chapter_six.in_out_five.success')]
         } else {
           return [false, 'recheck your methods']
         }
@@ -142,7 +142,7 @@ class Output:
     validate: async (answer) => {
       if (answer) {
         if (answer === 'true') {
-          return [true, '']
+          return [true, t('chapter_six.in_out_five.success')]
         } else {
           return [false, 'recheck your methods']
         }
@@ -171,7 +171,6 @@ class Output:
       config={config}
       saveData
       lessonKey={metadata.key}
-      successMessage={t('chapter_six.in_out_five.success')}
       onSelectLanguage={handleSelectLanguage}
     >
       <LessonInfo>

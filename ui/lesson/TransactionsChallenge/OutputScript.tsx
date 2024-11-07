@@ -1,11 +1,9 @@
 import React, { FC, useEffect, useState, useRef } from 'react'
 import HyperLink from 'shared/icons/Hyperlink'
 import { Text } from 'ui/common'
-import { SuccessNumbers } from 'ui/common/StatusBar'
-import { sleep } from 'utils'
-import { SpendingConditions } from '.'
+import { SignatureType, SpendingConditions } from '.'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
-import { MainState } from '../OpCodeChallenge/runnerTypes'
+import { MainState, T } from '../OpCodeChallenge/runnerTypes'
 
 interface IOutput {
   prefilled?: boolean
@@ -16,16 +14,24 @@ interface IOutput {
   progressKey: string
   tab: string
   validating: boolean
-  validateScript0: SuccessNumbers
-  validateScript1: SuccessNumbers
+  validateScript0: SignatureType
+  validateScript1: SignatureType
   initialStack: Record<'output_0' | 'output_1', SpendingConditions>
   height?: number
   nSequenceTime?: number
   answerScript: Record<'output_0' | 'output_1', string[]>
   setErrorMessage: React.Dispatch<React.SetStateAction<string>>
-  setValidateScript: React.Dispatch<React.SetStateAction<SuccessNumbers>>
+  setValidateScript: React.Dispatch<React.SetStateAction<SignatureType>>
   setValidating: React.Dispatch<React.SetStateAction<boolean>>
   onScriptEmpty: (scriptInput) => void
+  satsInput: { output_0: string; output_1: string }
+  setSatsInput: React.Dispatch<
+    React.SetStateAction<{ output_0: string; output_1: string }>
+  >
+  scriptInput: { output_0: string; output_1: string }
+  setScriptInput: React.Dispatch<
+    React.SetStateAction<{ output_0: string; output_1: string }>
+  >
 }
 const OutputScript: FC<IOutput> = ({
   prefilled,
@@ -44,127 +50,125 @@ const OutputScript: FC<IOutput> = ({
   nSequenceTime,
   setErrorMessage,
   onScriptEmpty,
+  satsInput,
+  setSatsInput,
+  scriptInput,
+  setScriptInput,
 }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const caretPositionRef = useRef(0)
-  const [passes, setPasses] = useState<MainState[]>([])
   const objectOutput = output === 'output 0' ? 'output_0' : 'output_1'
-  const [satsInput, setSatsInput] = useState<string>(
-    prefilled || currentTransactionTab !== tab
-      ? Buffer.from(script, 'base64').toString('utf-8')
-      : ''
-  )
-  const [executor, setExecutor] = useState<LanguageExecutor | null>(null)
-  const [scriptInput, setScriptInput] = useState<string>(
-    prefilled || currentTransactionTab !== tab
-      ? Buffer.from(script, 'base64').toString('utf-8')
-      : ''
-  )
-
-  if (scriptInput === '') {
-    onScriptEmpty(true)
-  } else if (scriptInput !== '') {
-    onScriptEmpty(false)
-  }
-
-  const initializeExecutor = async (x: 0 | 1) => {
-    setErrorMessage('')
-    const initialStackArray = initialStack[objectOutput][x]?.filter((item) =>
-      item.trim()
-    )
-    const tokens = LanguageExecutor.parsableInputToTokens(
-      LanguageExecutor.rawInputToParsableInput(`INITIAL_STACK ${scriptInput}`)
-    )
-    const newExecutor = new LanguageExecutor(
-      tokens,
-      initialStackArray || [],
-      height,
-      nSequenceTime
-    )
-    newExecutor.execute()
-    if (
-      initialStack[objectOutput][1] &&
-      newExecutor.state.length > 1 &&
-      validating
-    ) {
-      setPasses((prev) => [...prev, newExecutor.state])
-    }
-    // Create an initial state to represent the initial stack
-    setExecutor(newExecutor)
-    let error = newExecutor.state.filter((stack) => stack.error?.message)
-    if (error.length > 0) {
-      setErrorMessage(`${output} : ${error[0].error?.message || ''}`)
-    }
-  }
-  const handleSatsChange = (event) => {
-    setSatsInput(event.target.value.toUpperCase())
-  }
+  const currentSatsInput = satsInput[objectOutput]
+  const currentScriptInput = scriptInput[objectOutput]
 
   const executeScriptAsync = async () => {
+    const scriptInputString = scriptInput[objectOutput]
+
+    const scriptInputArray = scriptInput[objectOutput]
+      .replace(/\n/g, ' ')
+      .split(' ')
+      .filter((op) => op.trim())
     if (currentTransactionTab === tab) {
-      setPasses([])
       if (initialStack[objectOutput][1]) {
         for (let x = 0 as 0 | 1; x < 2; x++) {
-          await initializeExecutor(x)
+          setValidateScript((prev) => ({
+            ...prev,
+            [`signature_${x}`]: checkChallengeSuccess(
+              [
+                LanguageExecutor.RunCode(
+                  scriptInputString,
+                  initialStack[objectOutput][x],
+                  height,
+                  nSequenceTime
+                )?.state || [],
+              ],
+              scriptInputArray
+            ),
+          }))
         }
       } else {
-        await initializeExecutor(0)
+        setValidateScript((prev) => ({
+          ...prev,
+          signature_0: checkChallengeSuccess(
+            [
+              LanguageExecutor.RunCode(
+                scriptInputString,
+                initialStack[objectOutput][0],
+                height,
+                nSequenceTime
+              )?.state || [],
+            ],
+            scriptInputArray
+          ),
+        }))
       }
+    }
+    const getErrorMessage = (index) => {
+      return LanguageExecutor.RunCode(
+        scriptInput[objectOutput],
+        initialStack[objectOutput][index],
+        height,
+        nSequenceTime
+      )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
+    }
+    const errorMessage0 = getErrorMessage(0)
+    const errorMessage1 = getErrorMessage(1)
 
-      setValidateScript(checkChallengeSuccess())
+    if (errorMessage0 || errorMessage1) {
+      setErrorMessage(errorMessage1 || errorMessage1 || '')
     }
   }
 
   const handleScriptChange = (event) => {
     const input = event.target
     caretPositionRef.current = input.selectionStart
-    setScriptInput(event.target.value.toUpperCase())
+    setScriptInput((prev) => ({
+      ...prev,
+      [objectOutput]: event.target.value.toUpperCase(),
+    }))
   }
 
-  const checkChallengeSuccess = () => {
-    const filterToStringArray = scriptInput
-      .replace(/\n/g, ' ')
-      .split(' ')
-      .filter((op) => op.trim())
+  const handleSatsChange = (event) => {
+    setSatsInput((prev) => ({
+      ...prev,
+      [objectOutput]: event.target.value,
+    }))
+  }
 
+  const checkChallengeSuccess = (
+    runnerState: MainState[],
+    tokens: string[]
+  ) => {
     const containsEveryScript = () => {
-      return answerScript[objectOutput].every((token) =>
-        filterToStringArray.includes(token)
-      )
+      return answerScript[objectOutput].every((token) => tokens.includes(token))
     }
 
     const hasCorrectSats = () => {
-      return satsInput === sats
-    }
-
-    const isFinalToken = () => {
-      let length = executor?.tokens.length ?? 0
-      executor?.tokens.forEach((PUSH) => {
-        if (PUSH.value === 'OP_PUSH' && length !== 0) {
-          length--
-        }
-      })
-
-      return length
+      if (satsInput[objectOutput] !== sats) {
+        setErrorMessage('Make sure the sats are distributed correctly')
+      }
+      return satsInput[objectOutput] === sats
     }
 
     const doesStackValidate = (executor: MainState) => {
       let executorStack = executor?.[executor.length - 1]?.stack || []
       return (
-        executor?.length === isFinalToken() &&
         executorStack.length === 1 &&
         (executorStack[0] === 1 || executorStack[0] === true) &&
         !executor.some((error) => error?.error?.message)
       )
     }
-    if (!scriptInput) return 0
-    if (initialStack[objectOutput][1]) {
+
+    if (!scriptInput[objectOutput] || !validating) return 0
+    if (initialStack['output_0'][1]) {
+      const isRunnerState1 =
+        runnerState[1] !== undefined ? runnerState[1] : runnerState[0]
       if (
         containsEveryScript() &&
-        doesStackValidate(passes[0]) &&
-        doesStackValidate(passes[1]) &&
+        doesStackValidate(runnerState[0]) &&
+        doesStackValidate(isRunnerState1) &&
         hasCorrectSats() &&
-        passes.length > 0
+        runnerState.length > 0
       ) {
         return 5
       } else {
@@ -172,7 +176,7 @@ const OutputScript: FC<IOutput> = ({
       }
     } else if (
       containsEveryScript() &&
-      doesStackValidate(executor?.state || []) &&
+      doesStackValidate(runnerState[0]) &&
       hasCorrectSats()
     ) {
       return 5
@@ -182,8 +186,10 @@ const OutputScript: FC<IOutput> = ({
   }
 
   useEffect(() => {
-    executeScriptAsync()
-    setValidating(false)
+    if (validating) {
+      executeScriptAsync()
+      setValidating(false)
+    }
   }, [validating])
 
   useEffect(() => {
@@ -193,7 +199,15 @@ const OutputScript: FC<IOutput> = ({
         caretPositionRef.current
       )
     }
-  }, [scriptInput])
+  }, [currentScriptInput, currentSatsInput])
+
+  useEffect(() => {
+    if (scriptInput[objectOutput] === '') {
+      onScriptEmpty(true)
+    } else {
+      onScriptEmpty(false)
+    }
+  }, [scriptInput[objectOutput], onScriptEmpty])
 
   return (
     <div className="flex flex-col gap-4 rounded-md bg-black/20 p-4 text-lg">
@@ -206,7 +220,11 @@ const OutputScript: FC<IOutput> = ({
           className="bg-transparent text-white outline-none"
           onChange={handleSatsChange}
           defaultValue={
-            prefilled ? sats : currentTransactionTab !== tab ? sats : ''
+            prefilled
+              ? sats
+              : currentTransactionTab !== tab
+              ? sats
+              : satsInput[objectOutput]
           }
           readOnly={currentTransactionTab !== tab || prefilled}
         />
@@ -232,7 +250,7 @@ const OutputScript: FC<IOutput> = ({
               ? Buffer.from(script || '', 'base64').toString('utf-8')
               : currentTransactionTab !== tab
               ? Buffer.from(script || '', 'base64').toString('utf-8')
-              : scriptInput
+              : scriptInput[objectOutput]
           }
           onChange={handleScriptChange}
           ref={textAreaRef}
