@@ -1,12 +1,7 @@
 {
+  "plugins": ["local-rules"],
   "extends": ["next/core-web-vitals", "prettier"],
-  "settings": {
-    "next": {
-      "rootDir": "./"
-    }
-  },
-  "plugins": ["intl"],
   "rules": {
-    "intl/no-bare-text": ["warn"]
+    "local-rules/no-bare-strings": "warn"
   }
 }
