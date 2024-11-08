@@ -199,7 +199,7 @@ const OutputScript: FC<IOutput> = ({
         caretPositionRef.current
       )
     }
-  }, [currentScriptInput, currentSatsInput])
+  }, [currentScriptInput])
 
   useEffect(() => {
     if (scriptInput[objectOutput] === '') {
