@@ -6,7 +6,7 @@ import { Introduction, Text } from 'ui'
 export const metadata = {
   title: 'chapter_ten.making_a_payment_three.title',
   navigation_title: 'chapter_ten.making_a_payment_three.nav_title',
-  image: '/assets/images/chapter-10-opening-a-channel-3.jpg',
+  image: '/assets/images/chapter-10-making-a-payment-3.jpg',
   key: 'CH10MAP3',
 }
 

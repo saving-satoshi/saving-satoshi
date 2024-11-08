@@ -15,7 +15,7 @@ export const metadata = {
   position: 9,
   slug: 'chapter-10',
   title: `chapter_ten.title`,
-  image: '/assets/images/chapter-9-cover.jpg',
+  image: '/assets/images/chapter-10-cover.jpg',
   theme: 'bg-gradient-to-tl from-[#885D48] to-[#313D4E]',
   secondaryTheme: 'bg-[#5c4d4b]',
   intros: ['intro-1', 'intro-2', 'intro-3'],

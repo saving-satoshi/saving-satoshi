@@ -6,9 +6,7 @@ import { Introduction, Text } from 'ui'
 export const metadata = {
   title: 'chapter_ten.intro_two.title',
   navigation_title: 'chapter_ten.intro_two.nav_title',
-  image: '/assets/images/chapter-10-intro-1.jpg',
-  theme: 'bg-gradient-to-tl from-[#c41486] to-[#58a4b2]',
-  secondaryTheme: 'bg-[#c41486]',
+  image: '/assets/images/chapter-10-intro-2.jpg',
   key: 'CH10INT2',
 }
 
