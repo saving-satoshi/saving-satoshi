@@ -44,7 +44,7 @@ export default function UpdatingTheState3({ lang }) {
         <Text className="mt-4 text-lg md:text-xl">
           {t('chapter_ten.updating_the_state_three.paragraph_one')}
         </Text>
-        <ul className="ml-4 mt-4 list-disc  font-nunito text-xl">
+        <ul className="ml-4 mt-4 list-decimal font-nunito text-xl">
           <li>
             {t('chapter_ten.updating_the_state_three.revocation_list_one')}
           </li>

@@ -2739,14 +2739,15 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_one:
         "Let's create a valid Bitcoin transaction but instead of sending it to the network, we'll just send it directly to Laszlo! Laszlo should trade you a beer for this transaction because he knows he effectively has the money even though the transaction is not broadcasted or confirmed.",
       paragraph_two:
-        "Remember it's the year 2140! A SHA-256 Stout cost 0.0001000 BTC.",
+        "Remember it's the year 2140! A SHA-256 Stout cost 0.00010000 BTC.",
       heading_two: 'Hints',
       off_chain_list_one:
         'Fill in the two output amounts, 1000 satoshis for Laszlo and the rest for your change.',
       off_chain_list_two:
-        '<span className="font-bold">NB</span>: To get the money Laszlo will need to broadcast this transaction to the network and account for fees. Let\'s set aside 1000 sats for miner fees.',
+        "To get the money Laszlo will need to broadcast this transaction to the network and account for fees. Let's set aside 1000 sats for miner fees.",
       off_chain_list_three: 'Write the two output scripts',
-      off_chain_list_four: 'Sign the input by clicking "sign"',
+      off_chain_list_four:
+        'Sign the input by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign</span>',
       // off_chain_list_four:'Send it to Laszlo by clicking "send to bob"',
       hint_one: `Laszlo spends output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO)</span>`,
       hint_two: `You spend output 1 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU)</span>`,
@@ -2801,7 +2802,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_one: `You can make the output to yourself revocable by Laszlo by adding an extra condition to the 100000 satoshi output. The logic branch should allow Laszlo to spend the output with his own key AND a new private key that you generate. To revoke the transaction, you will just give Laszlo the new private key. It's a very unusual thing to do! But since it puts 100000 satoshis at stake, it proves to Laszlo you will NOT broadcast it after revoking it.`,
       paragraph_two: `You generate a new key pair: a private key revocation_you_1 and PUBKEY(REVOCATION_YOU_1). You will generate a new key pair like this every time you want to update the state of the payment channel`,
       revocation_list_one: `Add an IF condition to the script so Laszlo can spend the output ONLY if he ALSO has the revocation key (you will continue keeping the key secret until it is time to revoke!)`,
-      revocation_list_two: `Send it to Laszlo by clicking "Send to Laszlo" so he can sign it`,
+      revocation_list_two: `Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> so he can sign it`,
       revocation_list_three: `Don't sign it yourself yet!`,
       heading_two: `Hints`,
       paragraph_three: `Output 0 is spent by EITHER:`,
@@ -2823,7 +2824,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       time_lock_list_one:
         'Add a 700 block delay before you can spend the output',
       time_lock_list_two:
-        'Send it to Laszlo by clicking "Sign" so he can sign it',
+        'Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign</span> so he can sign it',
       time_lock_list_three: "Don't sign it yourself yet!",
       heading_two: 'Hints',
       paragraph_one: 'Output 0 is spent by EITHER:',
@@ -2836,7 +2837,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       title: 'Channel Open with Laszlo',
       nav_title: 'Channel Open with Laszlo',
       paragraph_one:
-        'This time, when you click Send to Laszlo, he smiles and applauds! He signs the child transaction ([X] Laszlo). Now you can sign the parent transaction and send it to the blockchain: THE CHANNEL IS OPEN',
+        'This time, when you click Send to Laszlo, he smiles and applauds! He signs the child transaction (<span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">[X] Laszlo</span>). Now you can sign the parent transaction and send it to the blockchain: THE CHANNEL IS OPEN.',
       paragraph_two:
         "You've gotten Laszlo to agree to let you buy drinks from him off-chain and have opened up a channel to do so!",
     },
@@ -2867,7 +2868,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       title: 'Buy a beer!',
       nav_title: 'Buy a beer!',
       heading_one: 'Buy a beer!',
-      paragraph_one: `ow it's finally time to send bitcoin off-chain to Laszlo. We will "simply" add a 1,000 satoshi output for him in an updated commitment transaction. We will also need to promise never to broadcast the old commitment transaction, which didn't pay Laszlo anything. That is guaranteed when we send him the revocation key for that old commitment transaction, which we'll do next.`,
+      paragraph_one: `Now it's finally time to send bitcoin off-chain to Laszlo. We will "simply" add a 1,000 satoshi output for him in an updated commitment transaction. We will also need to promise never to broadcast the old commitment transaction, which didn't pay Laszlo anything. That is guaranteed when we send him the revocation key for that old commitment transaction, which we'll do next.`,
       paragraph_two: `You'll need to generate another revocation key for this new state in case you want to repeat the cycle (revoke THIS transaction for another new commitment where Laszlo gets paid for a second beer) it is a party after all!`,
       paragraph_three: `You generate a private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">revocation_you_2</span>`,
       list_one: `Deduct 1000 satoshis from your output`,
@@ -2891,7 +2892,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       title: `Holocat's Trustless Warning`,
       nav_title: `Holocat's Trustless Warning`,
       paragraph_one: `That's when Holocat materializes on the table, standing up on her hind legs with her front paws outstretched, and meows.`,
-      paragraph_two: `—HOLOCAT: "Hang on, you can't give Laszlo your signature for this transaction! Next time you make a payment, you'll give him the revocation key revocation_you_2. He'll have everything he needs to steal all 100,000 satoshis!"`,
+      paragraph_two: `—HOLOCAT: "Hang on, you can't give Laszlo your signature for this transaction! Next time you make a payment, you'll give him the revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">revocation_you_2</span>. He'll have everything he needs to steal all 100,000 satoshis!"`,
       paragraph_three: `Things are getting a bit messy now. Laszlo does need something before he can give you a beer with confidence that he will get paid for it. But he can't have your transaction because then he'll end up accessing all your money! Laszlo is a great guy, and his bar is one of the best in the city, but it would still be nice if we didn't have to trust him.`,
     },
     making_a_payment_five: {
@@ -2899,7 +2900,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       nav_title: `Asymmetry`,
       heading_one: `Asymmetry`,
       paragraph_one: `So we know we want Laszlo to sign the first transaction but we don't want him to have our signature on it. We'll need to construct a second transaction for him that DOES have our signature on it, but without any possibility of him just spending all the money unfairly.`,
-      paragraph_two: `And if Laszlo is going to have his own commitment transaction, then don't we also want that transaction to be revocable?! Yes in fact, Laszlo's commitment transaction will be a mirror-image of yours. The revocable time lock script will use Laszlo's first revocation key PUBKEY(revocation_bob_1) and the large refund output will just directly to you without any fuss.`,
+      paragraph_two: `And if Laszlo is going to have his own commitment transaction, then don't we also want that transaction to be revocable?! Yes in fact, Laszlo's commitment transaction will be a mirror-image of yours. The revocable time lock script will use Laszlo's first revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_LASZLO_1)</span> and the large refund output will just directly to you without any fuss.`,
       list_one: `Fill in the amounts and output scripts for Laszlo's commitment transaction`,
       list_two: `Sign it and send it to Laszlo, who will then sign your commitment transaction and send that back to you`,
       heading_two: 'Hints',
@@ -2922,12 +2923,12 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       commitment_one_you: {
         list_one: 'Input 0: signed by Laszlo',
         list_two:
-          'Output 0: 100000 satoshis to you after 700 blocks or Laszlo with revocation_you_1',
+          'Output 0: 100000 satoshis to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>',
       },
       commitment_two_you: {
         list_one: 'Input 0: signed by Laszlo',
         list_two:
-          'Output 0: 99000 satoshis to you after 700 blocks or Laszlo with revocation_you_2',
+          'Output 0: 99000 satoshis to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>',
         list_three: 'Output 1: 1000 satoshis to Laszlo',
       },
       paragraph_five: 'Commitment 2 (You):',
@@ -2936,7 +2937,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       commitment_two_laszlo: {
         list_one: 'Input 0: signed by You',
         list_two:
-          'Output 0: 1000 satoshis to Laszlo after 700 blocks or You with revocation_laszlo_1',
+          'Output 0: 1000 satoshis to Laszlo after 700 blocks or You with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_LASZLO_1</span>',
         list_three: 'Output 1: 99000 satoshis to You',
       },
       paragraph_eight:
