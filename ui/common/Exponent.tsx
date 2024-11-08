@@ -21,7 +21,7 @@ export default function Exponent({
         : (hashes / 10 ** (hashes.toString().length - 2)).toFixed(2)}
       {hashes > 0 && step !== 0 && (
         <span className="fade-in text-white/50">
-          *10
+          &times;10
           <sup>{(hashes * 10000).toString().length + 6}</sup>
         </span>
       )}

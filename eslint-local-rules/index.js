@@ -4,76 +4,6 @@
  */
 'use strict'
 
-const DEFAULT_ALLOWLIST = [
-  '&lpar;', // (
-  '&rpar;', // )
-  '&comma;', // ,
-  '&period;', // .
-  '&amp;', // &
-  '&AMP;', // &
-  '&plus;', // +
-  '&minus;', // -
-  '&equals;', // =
-  '&ast;', // *
-  '&midast;', // *
-  '&sol;', // /
-  '&num;', // #
-  '&percnt;', // %
-  '&excl;', // !
-  '&quest;', // ?
-  '&colon;', // :
-  '&lsqb;', // [
-  '&lbrack;', // [
-  '&rsqb;', // ]
-  '&rbrack;', // ]
-  '&lcub;', // {
-  '&lbrace;', // {
-  '&rcub;', // }
-  '&rbrace;', // }
-  '&lt;', // <
-  '&lowbar;',
-  '&LT;', // <
-  '&gt;', // >
-  '&GT;', // >
-  '&bull;', // •
-  '&bullet;', // •
-  '&mdash;', // —
-  '&ndash;', // –
-  '&nbsp;', // non-breaking space
-  '&Tab;',
-  '&NewLine;',
-  '&verbar;', // |
-  '&vert;', // |
-  '&VerticalLine;', // |
-  '(',
-  ')',
-  ',',
-  '.',
-  '&',
-  '+',
-  '-',
-  '=',
-  '*',
-  '/',
-  '#',
-  '%',
-  '!',
-  '?',
-  ':',
-  '[',
-  ']',
-  '{',
-  '}',
-  '<',
-  '>',
-  '•',
-  '—',
-  '_',
-  ' ',
-  '|',
-  '…',
-]
-
 //------------------------------------------------------------------------------
 // Rule Definition
 //------------------------------------------------------------------------------
@@ -88,8 +18,8 @@ module.exports = {
         category: 'Best Practices',
         recommended: true,
       },
-      fixable: null, // or "code" or "whitespace"
-      schema: [], // If needed, define your schema here
+      fixable: null,
+      schema: [],
     },
 
     create: function (context) {
@@ -97,11 +27,15 @@ module.exports = {
         JSXText: (node) => {
           const text = node.raw.trim()
 
-          if (DEFAULT_ALLOWLIST.includes(text)) {
-            return
-          }
-
-          if (/^\d+\.?$/.test(text) || /^[0-9a-fA-F]+$/.test(text)) {
+          // Skip strings that do not contain translateable strings
+          if (
+            text.match(/^(&#[0-9a-zA-Z]+;)+$/) ||
+            text.match(/^\d+\.$/) ||
+            text.match(/^[0-9a-fA-F\s]+$/) ||
+            text.match(/^&[a-zA-Z]+;\d+$/) ||
+            text.match(/^[a-zA-Z]\^\d+ ?= ?[a-zA-Z]\^\d+ ?\+ ?\d+$/) ||
+            text.match(/^[-!#$%&()*+,./:;<=>?@[\]^_`{|}~…•— ]$/)
+          ) {
             return
           }
 
