@@ -38,7 +38,6 @@ export default function UpdatingTheState1({ lang }) {
           <li>{t('chapter_ten.updating_the_state_one.refund_list_one')}</li>
           <li>{t('chapter_ten.updating_the_state_one.refund_list_two')}</li>
         </ul>
-
         <Text className="mt-4 text-lg font-bold md:text-xl">
           {t('chapter_ten.updating_the_state_one.heading_two')}
         </Text>
