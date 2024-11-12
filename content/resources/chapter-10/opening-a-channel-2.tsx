@@ -16,7 +16,12 @@ export default function OpeningAChannelTwo({ lang }) {
     <ResourcePage
       lang={lang}
       readingResources={<></>}
-      tipsResources={<>{t('chapter_ten.resources.sats_distribution')}</>}
+      tipsResources={
+        <ul className="list-inside list-disc font-nunito text-white">
+          <li>{t('chapter_ten.resources.sats_distribution')}</li>
+          <li>{t('chapter_ten.resources.output_script')}</li>
+        </ul>
+      }
       codeResources={
         <>
           <Text>{t('help_page.solution')}</Text>
