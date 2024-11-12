@@ -178,13 +178,15 @@ export default function Runner({
             break
           }
           case 'output': {
+            console.log('received output', payload)
             payload = payload.trim()
             if (hasResult.current === false) {
               sendTerminal('clear')
               sendTerminal('print', t('runner.result'))
               hasResult.current = true
+              sendTerminal('print', payload)
+              ws?.close()
             }
-            sendTerminal('print', payload)
 
             const [res, msg] = await onValidate({
               code: new Base64String(`${code}\n${program}`),
