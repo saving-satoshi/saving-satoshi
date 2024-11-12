@@ -28,7 +28,7 @@ export default function MakingAPayment1({ lang }) {
         <li>{t('chapter_ten.making_a_payment_one.list_two')}</li>
         <li>{t('chapter_ten.making_a_payment_one.list_three')}</li>
 
-        <ul className="ml-4 list-disc  font-nunito text-lg">
+        <ul className="ml-4 list-decimal font-nunito text-lg">
           <li>{t('chapter_ten.making_a_payment_one.list_three_sub_one')}</li>
           <li>{t('chapter_ten.making_a_payment_one.list_three_sub_two')}</li>
         </ul>
