@@ -254,7 +254,7 @@ const OutputScript: FC<IOutput> = ({
           }
           onChange={handleScriptChange}
           ref={textAreaRef}
-          className="h-auto resize-none bg-transparent text-white outline-none"
+          className="bg-transparent text-white outline-none"
           readOnly={currentTransactionTab !== tab || prefilled}
         />
       </div>
