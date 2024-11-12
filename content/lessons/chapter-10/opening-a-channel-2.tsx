@@ -39,7 +39,7 @@ export default function OpeningAChannel2({ lang }) {
           {t('chapter_ten.opening_a_channel_two.paragraph_two')}
         </Text>
 
-        <ul className="ml-4 list-disc  font-nunito text-lg">
+        <ul className="ml-4 list-disc font-nunito text-lg md:text-xl">
           <li>{t('chapter_ten.opening_a_channel_two.off_chain_list_one')}</li>
           <li>{t('chapter_ten.opening_a_channel_two.off_chain_list_two')}</li>
           <li>{t('chapter_ten.opening_a_channel_two.off_chain_list_three')}</li>
