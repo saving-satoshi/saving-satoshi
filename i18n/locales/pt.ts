@@ -2760,7 +2760,7 @@ Dica da pilha: Para gastar antes de o segredo ser revelado, Vanderpoole usa sua 
       paragraph_one:
         'Vamos criar uma transação válida de Bitcoin, mas em vez de enviá-la para a rede, vamos enviá-la diretamente para Laszlo! Laszlo deve trocar uma cerveja com você por essa transação, pois ele sabe que efetivamente tem o dinheiro, embora a transação não seja transmitida ou confirmada.',
       paragraph_two:
-        'Lembre-se de que estamos no ano 2140! Uma Stout SHA-256 custa 0,0001000 BTC.',
+        'Lembre-se de que estamos no ano 2139! Uma Stout SHA-256 custa 0,0001000 BTC.',
       heading_two: 'Dicas',
       off_chain_list_one:
         'Preencha os dois valores de saída, 1000 satoshis para Laszlo e o restante para seu troco.',
@@ -3032,7 +3032,7 @@ Dica da pilha: Para gastar antes de o segredo ser revelado, Vanderpoole usa sua 
       nav_title: 'Indo além do Saving Satoshi',
       heading: 'O Bitcoin ainda precisa de sua ajuda...',
       paragraph_one:
-        'Embora 2140 possa parecer distante, a missão do Bitcoin permanece atemporal: criar dinheiro que seja justo, aberto e honesto. Entretanto, para alcançar essa visão, serão necessários os esforços de todos, inclusive os seus.',
+        'Embora 2139 possa parecer distante, a missão do Bitcoin permanece atemporal: criar dinheiro que seja justo, aberto e honesto. Entretanto, para alcançar essa visão, serão necessários os esforços de todos, inclusive os seus.',
       paragraph_two:
         'Você já demonstrou que entende de bitcoin. Agora é o momento perfeito para transformar esse conhecimento em ação, contribuindo para uma das tecnologias mais importantes de todos os tempos.',
       paragraph_three:
