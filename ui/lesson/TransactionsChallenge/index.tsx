@@ -8,7 +8,7 @@ import ArrowRightLarge from 'shared/icons/ArrowRightLarge'
 import SignatureButton from 'shared/SignatureButton'
 import { accountAtom } from 'state/state'
 import { LessonDirection, LessonView } from 'types'
-import { StatusBar, Text, LessonTabs } from 'ui'
+import { StatusBar, Text, LessonTabs, Tooltip } from 'ui'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 import { sleep } from 'utils'
 import { transactionTabs } from 'utils/data'
@@ -406,12 +406,28 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                       </div>
                       <div className="flex flex-col">
                         <Text>Options</Text>
-                        <Button
+                        {/*<Button
                           classes="max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
                           disabled
                         >
                           Broadcast Transaction
-                        </Button>
+                        </Button>*/}
+                        <Tooltip
+                          id="broadcast-button"
+                          position="top"
+                          theme="bg-[#5c4d4b]"
+                          offset={10}
+                          parentClassName="max-w-[max-content]"
+                          className="max-w-[100px] cursor-not-allowed"
+                          content={`Broadcasting this ${tabData[0]} will close the channel`}
+                        >
+                          <Button
+                            disabled={true}
+                            classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                          >
+                            Broadcast Transaction
+                          </Button>
+                        </Tooltip>
                       </div>
                     </div>
                   )}
@@ -424,7 +440,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
             <div className="max-md:gap-4 flex flex-col items-stretch justify-between md:h-14 md:flex-row">
               <div className="flex items-center align-middle transition duration-150 ease-in-out md:px-5">
                 <div className="font-nunito text-[21px] text-white opacity-50 transition duration-150 ease-in-out">
-                  {t('Lets move on to the last challenge!')}
+                  {currentTransactionTab === 'deposit'
+                    ? t('status_bar.skip_challenge_first')
+                    : t('status_bar.skip_challenge_last')}
                 </div>
               </div>
               <Button onClick={proceed} classes="md:text-2xl">

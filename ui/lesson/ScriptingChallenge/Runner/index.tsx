@@ -178,7 +178,6 @@ export default function Runner({
             break
           }
           case 'output': {
-            console.log('received output', payload)
             payload = payload.trim()
             if (hasResult.current === false) {
               sendTerminal('clear')

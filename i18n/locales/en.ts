@@ -3125,6 +3125,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     next_step_message: 'Looks good now lets move on to the next step.',
     try_again: 'Try again',
     next: 'Next',
+    skip_challenge_first: "Let's move on to the first challenge!",
+    skip_challenge_last: "Let's move on to the last challenge!",
   },
 
   hasher: {

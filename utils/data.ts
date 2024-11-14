@@ -50,12 +50,12 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '100,000',
+      sats: '101,000',
     },
     output_0: {
       sats: '100000',
       script:
-        'T1BfMiBPUF9QVVNIIFBVQktFWShMYXN6bG8pIE9QX1BVU0ggUFVCS0VZKFlvdSkgT1BfMiBPUF9DSEVDS01VTFRJU0lH',
+        'T1BfMiBPUF9QVVNIIFBVQktFWShMQVNaTE8pIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfMiBPUF9DSEVDS01VTFRJU0lH',
     },
   },
   refund: {
