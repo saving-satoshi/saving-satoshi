@@ -289,6 +289,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                       {tabData[1]?.input && (
                         <div className="flex w-full flex-row justify-around gap-4 rounded-md bg-black/20 p-4 text-lg md:w-fit md:flex-col">
                           <div className="flex flex-col gap-1">
+                            <Text>Input 0</Text>
                             <Text className="text-nowrap ">
                               {tabData[0] === 'deposit' ||
                               tabData[0] === 'payment' ||
@@ -296,7 +297,6 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                                 ? 'Deposit'
                                 : 'Multi-sig'}
                             </Text>
-                            <Text>Input 0</Text>
                           </div>
                           <div className="flex flex-col gap-1">
                             <Text>Sats</Text>
