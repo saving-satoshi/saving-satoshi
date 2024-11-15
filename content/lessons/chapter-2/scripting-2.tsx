@@ -35,7 +35,7 @@ export default function Scripting2({ lang }) {
 const min = 1;
 const max = 100000000;
 const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-const testHash = findHashFromNonce(randomNumber) ?? "Be sure you function returns a value."
+const testHash = findHashFromNonce(randomNumber) ?? "Be sure your function returns a value."
 console.log(testHash.toString())
 console.log("KILL")`,
     defaultFunction: {
@@ -90,7 +90,10 @@ min_value = 1
 max_value = 100000000
 random_number = random.randint(min_value, max_value)
 test_hash = find_hash_from_nonce(random_number)
+if test_hash is not None:
 print(str(test_hash))
+else:
+print("Be sure your function returns a value.")
 print("KILL")`,
     defaultFunction: {
       name: 'find_hash',
@@ -131,7 +134,6 @@ def find_hash_from_nonce(nonce):
         return [false, 'Hash must be 64 characters long.']
       }
 
-      setDisplayAnswer(validationTest(answer))
       return [true, `That's it! Your nonce hashes to ${validationTest(answer)}`]
     },
   }
