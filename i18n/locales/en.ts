@@ -2753,7 +2753,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_one:
         "Let's create a valid Bitcoin transaction but instead of sending it to the network, we'll just send it directly to Laszlo! Laszlo should trade you a beer for this transaction because he knows he effectively has the money even though the transaction is not broadcasted or confirmed.",
       paragraph_two:
-        "Remember it's the year 2140! A SHA-256 Stout cost 0.00010000 BTC.",
+        "Remember it's the year 2140! A SHA-256 Stout cost 0.00001000 BTC.",
       heading_two: 'Hints',
       off_chain_list_one:
         'Fill in the two output amounts, 1000 satoshis for Laszlo and the rest for your change.',
@@ -2780,8 +2780,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       multisig_one: 'Fill in the output amount and the output script',
       multisig_two: 'Sign the input by clicking "Sign"',
       heading_two: 'Hints',
-      hint_one_a: `You and Laszlo want to work together in the future to spend output 0 with <br/> `,
-      hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(LASZLO) SIG(YOU) </span>`,
+      hint_one: `You and Laszlo want to work together in the future to spend output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">0 SIG(LASZLO) SIG(YOU)</span>`,
     },
     opening_a_channel_five: {
       title: 'Refund Protection in Multisig',
