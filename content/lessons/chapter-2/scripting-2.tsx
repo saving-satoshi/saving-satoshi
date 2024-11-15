@@ -21,7 +21,6 @@ export default function Scripting2({ lang }) {
   const t = useTranslations(lang)
   const [currentLanguage] = useAtom(currentLanguageAtom)
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
-  const [displayAnswer, setDisplayAnswer] = useState('')
 
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
@@ -36,7 +35,7 @@ export default function Scripting2({ lang }) {
 const min = 1;
 const max = 100000000;
 const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-const testHash = findHashFromNonce(randomNumber)
+const testHash = findHashFromNonce(randomNumber) ?? "Be sure you function returns a value."
 console.log(testHash.toString())
 console.log("KILL")`,
     defaultFunction: {
@@ -79,7 +78,6 @@ function findHashFromNonce(nonce) {
         return [false, 'Hash must be 64 characters long.']
       }
 
-      setDisplayAnswer(validationTest(answer))
       return [true, `That's it! Your nonce hashes to ${validationTest(answer)}`]
     },
   }
