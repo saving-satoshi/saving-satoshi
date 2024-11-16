@@ -293,9 +293,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             <Text className="text-nowrap ">
                               {tabData[0] === 'deposit' ||
                               tabData[0] === 'payment' ||
-                              tabData[0] === 'multisig'
+                              tabData[0] === 'multi-sig'
                                 ? 'Deposit'
-                                : 'Multisig'}
+                                : 'Multi-sig'}
                             </Text>
                           </div>
                           <div className="flex flex-col gap-1">

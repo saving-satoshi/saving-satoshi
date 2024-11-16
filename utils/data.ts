@@ -42,7 +42,7 @@ export const transactionTabs: TransactionData = {
       script: 'T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==',
     },
   },
-  multisig: {
+  'multi-sig': {
     description:
       'This transaction will fund a multisig output between you and Laszlo.',
     signatures: {
