@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import Avatar from 'components/Avatar'
 import { useLang, useMediaQuery, useProceed, useTranslations } from 'hooks'
 import { useAtom } from 'jotai'
@@ -6,8 +7,8 @@ import { Button } from 'shared'
 import ArrowRightLarge from 'shared/icons/ArrowRightLarge'
 import SignatureButton from 'shared/SignatureButton'
 import { accountAtom } from 'state/state'
-import { LessonDirection } from 'types'
-import { StatusBar, Text, Tooltip } from 'ui/common'
+import { LessonDirection, LessonView } from 'types'
+import { StatusBar, Text, LessonTabs, Tooltip } from 'ui'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 import { sleep } from 'utils'
 import { transactionTabs } from 'utils/data'
@@ -49,6 +50,17 @@ export type OutputSignatures = {
   laszlo: Signatures
 }
 
+const tabData = [
+  {
+    id: 'info',
+    text: 'Info',
+  },
+  {
+    id: 'code',
+    text: 'Code',
+  },
+]
+
 const TransactionChallenge: FC<ITransactionProps> = ({
   children,
   currentTransactionTab,
@@ -68,6 +80,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   const proceed = useProceed()
   const isSmallScreen = useMediaQuery({ width: 767 })
   const [activeView, setActiveView] = useState(currentTransactionTab)
+  const [activePageView, setActivePageView] = useState(LessonView.Info)
   const [account] = useAtom(accountAtom)
   const allTabs = Object.keys(transactionTabs)
   const allTabsData = Object.entries(transactionTabs)
@@ -233,16 +246,29 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     }
   }
 
+  const handlePageViewChange = (view) => {
+    setActivePageView(view)
+  }
+
   return (
     <Lesson
       direction={
         isSmallScreen ? LessonDirection.Vertical : LessonDirection.Horizontal
       }
+      onViewChange={handlePageViewChange}
     >
+      <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
       {children}
-      <div className="flex h-[calc(100vh-70px-48px)] w-full flex-shrink-0 flex-col justify-between border-white/25 md:h-[calc(100vh-70px)] md:max-w-[50vw] md:border-l">
+      <div
+        className={clsx(
+          'flex h-[calc(100vh-70px-48px)] w-full flex-shrink-0 flex-col justify-between border-white/25 md:h-[calc(100vh-70px)] md:max-w-[50vw] md:border-l',
+          {
+            'hidden md:flex': activePageView === LessonView.Info,
+          }
+        )}
+      >
         <div className="flex h-full flex-col gap-4 ">
-          <div className=" min-h-[65px] w-full border-b border-white/25 ">
+          <div className="min-h-[65px] w-full overflow-x-auto border-y border-white/25 md:border-t-0">
             <Tabs
               items={allTabsFiltered}
               classes={'h-full max-w-[max-content] capitalize'}
@@ -255,14 +281,15 @@ const TransactionChallenge: FC<ITransactionProps> = ({
             (tabData) =>
               tabData[0] === activeView && (
                 <div key={tabData[0]} className="flex h-full flex-col gap-4 ">
-                  <div className="flex h-full max-h-[calc(100vh-407px)] flex-col  overflow-auto px-6 pt-6  font-space-mono ">
+                  <div className="flex h-full max-h-[calc(100vh-447px-47px)] flex-col overflow-auto px-6 pt-6 font-space-mono md:max-h-[calc(100vh-407px)] ">
                     <Text className=" font-space-mono text-base leading-[22.22px] tracking-[2%]">
                       {tabData[1].description}
                     </Text>
-                    <div className="flex items-start gap-[15px] py-4">
+                    <div className="flex flex-col items-center gap-[15px] overflow-auto py-4 md:flex-row md:items-start">
                       {tabData[1]?.input && (
-                        <div className="flex flex-col gap-4 rounded-md bg-black/20 p-4 text-lg">
+                        <div className="flex w-full flex-row justify-around gap-4 rounded-md bg-black/20 p-4 text-lg md:w-fit md:flex-col">
                           <div className="flex flex-col gap-1">
+                            <Text>Input 0</Text>
                             <Text className="text-nowrap ">
                               {tabData[0] === 'deposit' ||
                               tabData[0] === 'payment' ||
@@ -270,16 +297,17 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                                 ? 'Deposit'
                                 : 'Multi-sig'}
                             </Text>
-                            <Text>Input 0</Text>
                           </div>
-                          <div className="flex flex-col gap-1  ">
+                          <div className="flex flex-col gap-1">
                             <Text>Sats</Text>
                             <Text>{tabData[1].input?.sats}</Text>
                           </div>
                         </div>
                       )}
 
-                      {tabData[1]?.input && <ArrowRightLarge />}
+                      <div className="rotate-90 md:flex md:h-44 md:rotate-0 md:items-center">
+                        {tabData[1]?.input && <ArrowRightLarge />}
+                      </div>
                       <div className="flex w-full flex-col gap-4">
                         {tabData[1].output_0 && (
                           <OutputScript
@@ -342,9 +370,11 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                     <div className="flex flex-col gap-4 px-[30px] py-[15px] ">
                       <div className="flex flex-col">
                         <Text>Signatures</Text>
-                        <div className="flex  gap-10">
+                        <div className="flex flex-col gap-2 md:flex-row md:gap-10">
                           <div className="flex items-center gap-2.5">
-                            <Avatar avatar={account?.avatar} />
+                            <div className="h-[30px] w-[30px]">
+                              <Avatar avatar={account?.avatar} />
+                            </div>
                             <Text> You</Text>
                             <SignatureButton
                               returnSuccess={returnSuccess()}
@@ -376,12 +406,28 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                       </div>
                       <div className="flex flex-col">
                         <Text>Options</Text>
-                        <Button
+                        {/*<Button
                           classes="max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
                           disabled
                         >
                           Broadcast Transaction
-                        </Button>
+                        </Button>*/}
+                        <Tooltip
+                          id="broadcast-button"
+                          position="top"
+                          theme="bg-[#5c4d4b]"
+                          offset={10}
+                          parentClassName="max-w-[max-content]"
+                          className="max-w-[100px] cursor-not-allowed"
+                          content={`Broadcasting this ${tabData[0]} will close the channel`}
+                        >
+                          <Button
+                            disabled={true}
+                            classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                          >
+                            Broadcast Transaction
+                          </Button>
+                        </Tooltip>
                       </div>
                     </div>
                   )}
@@ -394,7 +440,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
             <div className="max-md:gap-4 flex flex-col items-stretch justify-between md:h-14 md:flex-row">
               <div className="flex items-center align-middle transition duration-150 ease-in-out md:px-5">
                 <div className="font-nunito text-[21px] text-white opacity-50 transition duration-150 ease-in-out">
-                  {t('Lets move on to the first challenge!')}
+                  {currentTransactionTab === 'deposit'
+                    ? t('status_bar.skip_challenge_first')
+                    : t('status_bar.skip_challenge_last')}
                 </div>
               </div>
               <Button onClick={proceed} classes="md:text-2xl">

@@ -1,9 +1,9 @@
-import React, { FC, useEffect, useState, useRef } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import HyperLink from 'shared/icons/Hyperlink'
 import { Text } from 'ui/common'
 import { SignatureType, SpendingConditions } from '.'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
-import { MainState, T } from '../OpCodeChallenge/runnerTypes'
+import { MainState } from '../OpCodeChallenge/runnerTypes'
 
 interface IOutput {
   prefilled?: boolean
@@ -58,7 +58,6 @@ const OutputScript: FC<IOutput> = ({
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const caretPositionRef = useRef(0)
   const objectOutput = output === 'output 0' ? 'output_0' : 'output_1'
-  const currentSatsInput = satsInput[objectOutput]
   const currentScriptInput = scriptInput[objectOutput]
 
   const executeScriptAsync = async () => {
@@ -217,8 +216,9 @@ const OutputScript: FC<IOutput> = ({
         <Text>Sats</Text>
         <input
           placeholder="Enter Sats"
-          className="bg-transparent text-white outline-none"
+          className="bg-transparent text-white outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
           onChange={handleSatsChange}
+          pattern="[0-9]+([\.,][0-9]+)?"
           defaultValue={
             prefilled
               ? sats
@@ -254,7 +254,7 @@ const OutputScript: FC<IOutput> = ({
           }
           onChange={handleScriptChange}
           ref={textAreaRef}
-          className="h-auto resize-none bg-transparent text-white outline-none"
+          className="min-h-8 resize-y bg-transparent text-white outline-none"
           readOnly={currentTransactionTab !== tab || prefilled}
         />
       </div>

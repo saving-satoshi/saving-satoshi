@@ -183,8 +183,9 @@ export default function Runner({
               sendTerminal('clear')
               sendTerminal('print', t('runner.result'))
               hasResult.current = true
+              sendTerminal('print', payload)
+              ws?.close()
             }
-            sendTerminal('print', payload)
 
             const [res, msg] = await onValidate({
               code: new Base64String(`${code}\n${program}`),

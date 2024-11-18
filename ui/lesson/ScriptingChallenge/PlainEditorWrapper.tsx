@@ -109,7 +109,7 @@ export default function PlainEditorWrapper({
               <div className="max-md:gap-4 flex flex-col items-stretch justify-between md:h-14 md:flex-row">
                 <div className="flex items-center align-middle transition duration-150 ease-in-out md:px-5">
                   <div className="font-nunito text-[21px] text-white opacity-50 transition duration-150 ease-in-out">
-                    {t('Lets move on to the first challenge!')}
+                    {t('status_bar.skip_challenge_first')}
                   </div>
                 </div>
                 <Button onClick={proceed} classes="md:text-2xl">

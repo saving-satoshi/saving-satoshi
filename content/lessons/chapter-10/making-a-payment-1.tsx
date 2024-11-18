@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { ChapterIntro, Text } from 'ui'
+import { ChapterIntro } from 'ui'
 import { Button } from 'shared'
 import { useProceed } from 'hooks'
 

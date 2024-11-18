@@ -42,7 +42,7 @@ export const transactionTabs: TransactionData = {
       script: 'T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==',
     },
   },
-  'multi-sig': {
+  multisig: {
     description:
       'This transaction will fund a multisig output between you and Laszlo.',
     signatures: {
@@ -55,7 +55,7 @@ export const transactionTabs: TransactionData = {
     output_0: {
       sats: '100000',
       script:
-        'T1BfMiBPUF9QVVNIIFBVQktFWShMYXN6bG8pIE9QX1BVU0ggUFVCS0VZKFlvdSkgT1BfMiBPUF9DSEVDS01VTFRJU0lH',
+        'T1BfMiBPUF9QVVNIIFBVQktFWShMQVNaTE8pIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfMiBPUF9DSEVDS01VTFRJU0lH',
     },
   },
   refund: {
@@ -66,10 +66,10 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '101,000',
+      sats: '100,000',
     },
     output_0: {
-      sats: '100000',
+      sats: '99000',
       script: 'T1BfUFVTSCBQVUJLRVkoWW91KSBPUF9DSEVDS1NJRw==',
     },
   },
@@ -81,10 +81,10 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '101,000',
+      sats: '100,000',
     },
     output_0: {
-      sats: '100000',
+      sats: '99000',
       script:
         'T1BfSUYgT1BfUFVTSCBQVUJLRVkoWW91KSBPUF9DSEVDS1NJR+KAqE9QX0VMU0UgT1BfMiBPUF9QVVNIIFBVQktFWShyZXZvY2F0aW9uX3lvdV8xKSBPUF9QVVNIIFBVQktFWShMYXN6bG8pIE9QXzIgT1BfQ0hFQ0tNVUxUSVNJR+KAqE9QX0VORElG',
     },
@@ -97,10 +97,10 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '101,000',
+      sats: '100,000',
     },
     output_0: {
-      sats: '100000',
+      sats: '99000',
       script:
         'T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKFlvdSkgT1BfQ0hFQ0tTSUfigKhPUF9FTFNF4oCoICBPUF8yIE9QX1BVU0ggUFVCS0VZKHJldm9jYXRpb25feW91XzEpIE9QX1BVU0ggUFVCS0VZKExhc3psbykgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG',
     },
@@ -113,10 +113,10 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '101,000',
+      sats: '100,000',
     },
     output_0: {
-      sats: '99000',
+      sats: '98000',
       script:
         'T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fWU9VXzIpIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG',
     },
@@ -132,10 +132,10 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '101,000',
+      sats: '100,000',
     },
     output_0: {
-      sats: '98000',
+      sats: '97000',
       script: `T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fWU9VXzMpIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG`,
     },
     output_1: {
@@ -151,7 +151,7 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '101,000',
+      sats: '100,000',
     },
     output_0: {
       sats: '1000',
@@ -159,7 +159,7 @@ export const transactionTabs: TransactionData = {
         'T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fTEFTWkxPXzEpIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG',
     },
     output_1: {
-      sats: '99000',
+      sats: '98000',
       script: 'T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==',
     },
   },
@@ -170,14 +170,14 @@ export const transactionTabs: TransactionData = {
       lazlo: 'pending',
     },
     input: {
-      sats: '101,000',
+      sats: '100,000',
     },
     output_0: {
       sats: '2000',
       script: `T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fWU9VXzMpIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG`,
     },
     output_1: {
-      sats: '98000',
+      sats: '97000',
       script: 'T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==',
     },
   },

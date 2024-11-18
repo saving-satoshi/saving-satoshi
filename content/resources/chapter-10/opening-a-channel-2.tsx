@@ -29,7 +29,7 @@ export default function OpeningAChannelTwo({ lang }) {
           </div>
           {challengeIsToggled && (
             <div className="text-white ">
-              <Text>{t('chapter_ten.resources.ouput_zero_sig')}</Text>
+              <Text>{t('chapter_ten.resources.output_zero_sig')}</Text>
               <CodeExample
                 className="max-w-3xl text-wrap"
                 copy

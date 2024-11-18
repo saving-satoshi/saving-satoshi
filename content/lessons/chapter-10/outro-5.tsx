@@ -24,7 +24,6 @@ export default function Outro5({ lang }) {
       theme={metadata.secondaryTheme}
       gradientTheme={metadata.gradientTheme}
       saveAndProceed
-      sharing={false}
     >
       <h1 className="text-5xl font-bold text-white">
         {t('chapter_ten.outro_five.heading_one')}
