@@ -282,7 +282,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
               tabData[0] === activeView && (
                 <div
                   key={tabData[0]}
-                  className="flex h-[calc(100vh-70px-56px-65px-48px)] flex-col gap-4 overflow-y-auto md:h-[calc(100vh-70px-56px-65px)] short:h-[calc(100vh-70px-56px-65px)]"
+                  className="flex h-[calc(100vh-70px-56px-65px-48px)] flex-col gap-4 overflow-y-auto md:h-[calc(100vh-70px-56px-65px)]"
                 >
                   <div className="px-6 pt-6 font-space-mono">
                     <Text className="font-space-mono text-base leading-[22.22px] tracking-[2%]">
