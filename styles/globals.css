@@ -209,6 +209,16 @@ div.react-terminal-active-input {
   @apply font-mono text-xs text-white;
 }
 
+.challenge-container {
+  height: calc(100dvh - 70px - 48px - 56px)
+}
+
+@media (min-width: 768px) {
+  .challenge-container {
+    height: calc(100dvh - 70px)
+  }
+}
+
 .code-editor {
   height: calc(100dvh - 70px - 40px - 48px);
 }
@@ -230,12 +240,12 @@ div.react-terminal-active-input {
 }
 
 .transaction-challenge-container {
-  max-height: calc(100dvh - 70px - 56px - 65px)
+  max-height: calc(100dvh - 70px - 56px - 65px - 48px)
 }
 
 @media (min-width: 768px) {
   .transaction-challenge-container {
-    max-height: calc(100dvh - 70px - 56px - 65px - 48px)
+    max-height: calc(100dvh - 70px - 56px - 65px)
   }
 }
 

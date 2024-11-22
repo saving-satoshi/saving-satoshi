@@ -261,7 +261,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
       {children}
       <div
         className={clsx(
-          'flex h-[calc(100vh-70px-48px)] w-full flex-shrink-0 flex-col justify-between border-white/25 md:h-[calc(100vh-70px)] md:max-w-[50vw] md:border-l',
+          'challenge-container flex w-full flex-shrink-0 flex-col justify-between border-white/25 md:max-w-[50vw] md:border-l',
           {
             'hidden md:flex': activePageView === LessonView.Info,
           }
@@ -282,7 +282,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
               tabData[0] === activeView && (
                 <div
                   key={tabData[0]}
-                  className="flex h-[calc(100vh-70px-56px-65px-48px)] flex-col gap-4 overflow-y-auto md:h-[calc(100vh-70px-56px-65px)]"
+                  className="transaction-challenge-container flex flex-col gap-4 overflow-y-auto"
                 >
                   <div className="px-6 pt-6 font-space-mono">
                     <Text className="font-space-mono text-base leading-[22.22px] tracking-[2%]">
