@@ -21,10 +21,12 @@ interface ITransactionProps {
   currentTransactionTab: string
   progressKey: string
   prefilled?: boolean
+  prefilledEditable?: boolean
   initialStack: Record<'output_0' | 'output_1', SpendingConditions>
   height?: number
   nSequenceTime?: number
   answerScript: Record<'output_0' | 'output_1', string[]>
+  answerSats?: Record<'output_0' | 'output_1', string>
   laszloWillNotSign?: boolean
   noSignature?: boolean
   alwaysShowButton?: boolean
@@ -66,7 +68,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   currentTransactionTab,
   progressKey,
   prefilled,
+  prefilledEditable,
   answerScript,
+  answerSats,
   initialStack,
   height,
   nSequenceTime,
@@ -138,46 +142,10 @@ const TransactionChallenge: FC<ITransactionProps> = ({
         }
       }
 
-      // Handle commitment_you and commitment_you_1 based on current tab
-      if (tab.includes('commitment_you')) {
-        if (
-          currentTransactionTab === 'commitment_you' ||
-          currentTransactionTab === 'commitment_laszlo'
-        ) {
-          return tab === 'commitment_you'
-        } else if (
-          currentTransactionTab === 'commitment_you_1' ||
-          currentTransactionTab === 'commitment_laszlo_1'
-        ) {
-          return tab === 'commitment_you_1'
-        }
-      }
-
-      // Handle commitment_laszlo and commitment_laszlo_1 based on current tab
-      if (tab.includes('commitment_laszlo')) {
-        if (currentTransactionTab === 'commitment_laszlo') {
-          return tab === 'commitment_laszlo'
-        } else if (
-          currentTransactionTab === 'commitment_you_1' ||
-          currentTransactionTab === 'commitment_laszlo_1'
-        ) {
-          return tab === 'commitment_laszlo_1'
-        }
-      }
-
       // Default case
       return i <= allTabs.indexOf(currentTransactionTab) ?? allTabs.length
     })
-    .map((tab) => ({
-      id: tab,
-      text: tab.includes('refund')
-        ? 'refund'
-        : tab.includes('commitment_you')
-        ? 'commitment(You)'
-        : tab.includes('commitment_laszlo')
-        ? 'commitment(Laszlo)'
-        : tab,
-    }))
+    .map((tab) => ({ id: tab, text: tab.includes('refund') ? 'refund' : tab }))
 
   const returnSuccess = () => {
     if (
@@ -321,7 +289,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             output="output 0"
                             tab={tabData[0]}
                             prefilled={prefilled}
+                            prefilledEditable={prefilledEditable}
                             currentTransactionTab={currentTransactionTab}
+                            answerSats={answerSats}
                             sats={tabData[1].output_0.sats || ''}
                             script={tabData[1].output_0.script || ''}
                             progressKey={progressKey}
@@ -349,7 +319,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             tab={tabData[0]}
                             setValidateScript={setValidateOutput1}
                             prefilled={prefilled}
+                            prefilledEditable={prefilledEditable}
                             currentTransactionTab={currentTransactionTab}
+                            answerSats={answerSats}
                             sats={tabData[1].output_1.sats || ''}
                             script={tabData[1].output_1.script || ''}
                             progressKey={progressKey}

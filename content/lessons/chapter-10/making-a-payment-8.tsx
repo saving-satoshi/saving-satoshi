@@ -21,6 +21,7 @@ export default function MakingAPayment8({ lang }) {
   return (
     hydrated && (
       <TransactionChallenge
+        prefilledEditable
         initialStack={{
           output_0: {
             0: ['SIG(LASZLO)', '1'],
@@ -29,6 +30,7 @@ export default function MakingAPayment8({ lang }) {
           output_1: { 0: ['SIG(YOU)'] },
         }}
         nSequenceTime={700}
+        answerSats={{ output_0: '2000', output_1: '97000' }}
         answerScript={{
           output_0: [
             'OP_IF',
@@ -46,7 +48,7 @@ export default function MakingAPayment8({ lang }) {
           output_1: ['OP_PUSH', 'PUBKEY(YOU)', 'OP_CHECKSIG'],
         }}
         progressKey={metadata.key}
-        currentTransactionTab="commitment_laszlo_1"
+        currentTransactionTab="commitment_laszlo"
       >
         <LessonInfo>
           <Text className="text-lg font-bold md:text-xl">

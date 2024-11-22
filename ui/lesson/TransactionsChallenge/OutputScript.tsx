@@ -7,8 +7,10 @@ import { MainState } from '../OpCodeChallenge/runnerTypes'
 
 interface IOutput {
   prefilled?: boolean
+  prefilledEditable?: boolean
   output: 'output 0' | 'output 1'
   currentTransactionTab: string
+  answerSats?: Record<'output_0' | 'output_1', string>
   sats: string
   script: string
   progressKey: string
@@ -35,9 +37,11 @@ interface IOutput {
 }
 const OutputScript: FC<IOutput> = ({
   prefilled,
+  prefilledEditable,
   progressKey,
   output,
   currentTransactionTab,
+  answerSats,
   sats,
   script,
   tab,
@@ -156,7 +160,13 @@ const OutputScript: FC<IOutput> = ({
     }
 
     const hasCorrectSats = () => {
-      if (satsInput[objectOutput] !== sats) {
+      if (answerSats) {
+        if (satsInput[objectOutput] !== answerSats[objectOutput]) {
+          setErrorMessage('Make sure the sats are distributed correctly')
+        }
+        return satsInput[objectOutput] === answerSats[objectOutput]
+      }
+      if (satsInput[objectOutput] !== sats[objectOutput]) {
         setErrorMessage('Make sure the sats are distributed correctly')
       }
       return satsInput[objectOutput] === sats
@@ -221,6 +231,19 @@ const OutputScript: FC<IOutput> = ({
     }
   }, [scriptInput[objectOutput], onScriptEmpty])
 
+  useEffect(() => {
+    if (prefilledEditable) {
+      setSatsInput((prev) => ({
+        ...prev,
+        [objectOutput]: sats,
+      }))
+      setScriptInput((prev) => ({
+        ...prev,
+        [objectOutput]: Buffer.from(script || '', 'base64').toString('utf-8'),
+      }))
+    }
+  }, [prefilledEditable])
+
   return (
     <div className="flex flex-col gap-4 rounded-md bg-black/20 p-4 text-lg">
       <Text className="capitalize">{output}</Text>
@@ -233,7 +256,7 @@ const OutputScript: FC<IOutput> = ({
           onChange={handleSatsChange}
           pattern="[0-9]+([\.,][0-9]+)?"
           defaultValue={
-            prefilled
+            prefilled || prefilledEditable
               ? sats
               : currentTransactionTab !== tab
               ? sats
@@ -258,8 +281,8 @@ const OutputScript: FC<IOutput> = ({
           placeholder="Enter Script"
           spellCheck="false"
           rows={3}
-          value={
-            prefilled
+          defaultValue={
+            prefilled || prefilledEditable
               ? Buffer.from(script || '', 'base64').toString('utf-8')
               : currentTransactionTab !== tab
               ? Buffer.from(script || '', 'base64').toString('utf-8')
