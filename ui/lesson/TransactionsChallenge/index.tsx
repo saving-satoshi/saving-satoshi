@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import Avatar from 'components/Avatar'
 import { useLang, useMediaQuery, useProceed, useTranslations } from 'hooks'
 import { useAtom } from 'jotai'
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Button } from 'shared'
 import ArrowRightLarge from 'shared/icons/ArrowRightLarge'
 import SignatureButton from 'shared/SignatureButton'
@@ -19,6 +19,7 @@ import Tabs from './Tabs'
 interface ITransactionProps {
   children: React.ReactNode
   currentTransactionTab: string
+  nextTransactionTab?: string
   progressKey: string
   prefilled?: boolean
   prefilledEditable?: boolean
@@ -27,6 +28,7 @@ interface ITransactionProps {
   nSequenceTime?: number
   answerScript: Record<'output_0' | 'output_1', string[]>
   answerSats?: Record<'output_0' | 'output_1', string>
+  answerSatsMirrored?: Record<'output_0' | 'output_1', string>
   laszloWillNotSign?: boolean
   noSignature?: boolean
   alwaysShowButton?: boolean
@@ -63,14 +65,41 @@ const tabData = [
   },
 ]
 
+const initialStackStepTwo = {
+  output_0: {
+    0: ['SIG(YOU)', '1'],
+    1: ['0', 'SIG(REVOCATION_YOU_3)', 'SIG(LASZLO)', '0'],
+  },
+  output_1: { 0: ['SIG(LASZLO)'] },
+}
+
+const answerScriptStepTwo = {
+  output_0: [
+    'OP_IF',
+    'OP_PUSH',
+    'PUBKEY(REVOCATION_YOU_3)',
+    'OP_CHECKSEQUENCEVERIFY',
+    'OP_DROP',
+    'PUBKEY(YOU)',
+    'PUBKEY(LASZLO)',
+    'OP_CHECKSIG',
+    'OP_ELSE',
+    'OP_ENDIF',
+    'OP_CHECKMULTISIG',
+  ],
+  output_1: ['OP_PUSH', 'PUBKEY(LASZLO)', 'OP_CHECKSIG'],
+}
+
 const TransactionChallenge: FC<ITransactionProps> = ({
   children,
   currentTransactionTab,
+  nextTransactionTab,
   progressKey,
   prefilled,
   prefilledEditable,
   answerScript,
   answerSats,
+  answerSatsMirrored,
   initialStack,
   height,
   nSequenceTime,
@@ -83,12 +112,14 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   const t = useTranslations(lang)
   const proceed = useProceed()
   const isSmallScreen = useMediaQuery({ width: 767 })
+  const [step, setStep] = useState(0)
   const [activeView, setActiveView] = useState(currentTransactionTab)
   const [activePageView, setActivePageView] = useState(LessonView.Info)
   const [account] = useAtom(accountAtom)
   const allTabs = Object.keys(transactionTabs)
   const allTabsData = Object.entries(transactionTabs)
   const [validating, setValidating] = useState<boolean>(false)
+  const [success, setSuccess] = useState<SuccessNumbers>(0)
   const [errorMessage0, setErrorMessage0] = useState('')
   const [errorMessage1, setErrorMessage1] = useState('')
   const [signatures, setSignatures] = useState<OutputSignatures>({
@@ -163,6 +194,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           answerScript.output_1.length > 0 &&
           validateOutput1.signature_0 === 5
         ) {
+          //if (prefilledEditable) {
+          //  return 6
+          //}
           return 5
         } else if (answerScript.output_0.length === 0) {
           return 5
@@ -217,6 +251,25 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   const handlePageViewChange = (view) => {
     setActivePageView(view)
   }
+
+  const finalSuccess = () => {
+    if (step === 0 && prefilled) {
+      return 6
+    } else {
+      return success
+    }
+  }
+
+  useEffect(() => {
+    if (nextTransactionTab && step === 1) {
+      setActiveView(nextTransactionTab)
+    }
+  }, [step])
+
+  useEffect(() => {
+    setSuccess(returnSuccess())
+    if (step === 0 && success === 6) setStep(1)
+  }, [returnSuccess])
 
   return (
     <Lesson
@@ -283,19 +336,26 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                         {tabData[1].output_0 && (
                           <OutputScript
                             key={'output_0'}
-                            initialStack={initialStack}
+                            initialStack={
+                              step === 0 ? initialStack : initialStackStepTwo
+                            }
                             height={height}
                             nSequenceTime={nSequenceTime}
                             output="output 0"
                             tab={tabData[0]}
                             prefilled={prefilled}
                             prefilledEditable={prefilledEditable}
+                            step={step}
                             currentTransactionTab={currentTransactionTab}
+                            nextTransactionTab={nextTransactionTab}
                             answerSats={answerSats}
+                            answerSatsMirrored={answerSatsMirrored}
                             sats={tabData[1].output_0.sats || ''}
                             script={tabData[1].output_0.script || ''}
                             progressKey={progressKey}
-                            answerScript={answerScript}
+                            answerScript={
+                              step === 0 ? answerScript : answerScriptStepTwo
+                            }
                             validateScript0={validateOutput0}
                             validateScript1={validateOutput1}
                             setValidateScript={setValidateOutput0}
@@ -312,7 +372,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                         {tabData[1].output_1 && (
                           <OutputScript
                             key={'output_1'}
-                            initialStack={initialStack}
+                            initialStack={
+                              step === 0 ? initialStack : initialStackStepTwo
+                            }
                             height={height}
                             nSequenceTime={nSequenceTime}
                             output="output 1"
@@ -320,12 +382,17 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             setValidateScript={setValidateOutput1}
                             prefilled={prefilled}
                             prefilledEditable={prefilledEditable}
+                            step={step}
                             currentTransactionTab={currentTransactionTab}
+                            nextTransactionTab={nextTransactionTab}
                             answerSats={answerSats}
+                            answerSatsMirrored={answerSatsMirrored}
                             sats={tabData[1].output_1.sats || ''}
                             script={tabData[1].output_1.script || ''}
                             progressKey={progressKey}
-                            answerScript={answerScript}
+                            answerScript={
+                              step === 0 ? answerScript : answerScriptStepTwo
+                            }
                             validating={validating}
                             validateScript0={validateOutput0}
                             validateScript1={validateOutput1}
@@ -341,7 +408,12 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                       </div>
                     </div>
                   </div>
-                  {currentTransactionTab === tabData[0] && !noSignature && (
+                  {((step === 0 &&
+                    currentTransactionTab === tabData[0] &&
+                    !noSignature) ||
+                    (step === 1 &&
+                      nextTransactionTab === tabData[0] &&
+                      !noSignature)) && (
                     <div className="flex flex-col gap-4 px-[30px] py-[15px]">
                       <div className="flex flex-col">
                         <Text>Signatures</Text>
@@ -352,7 +424,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             </div>
                             <Text> You</Text>
                             <SignatureButton
-                              returnSuccess={returnSuccess()}
+                              returnSuccess={success}
                               onClick={handleYouSign}
                               classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
                               disabled={
@@ -369,7 +441,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                               <Text>Laszlo</Text>
                               <SignatureButton
                                 disabled={true}
-                                returnSuccess={returnSuccess()}
+                                returnSuccess={success}
                                 laszloWillNotSign={laszloWillNotSign}
                                 classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
                               >
@@ -428,7 +500,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
         ) : (
           <StatusBar
             errorMessage={errorMessage1 || errorMessage0}
-            success={returnSuccess()}
+            nextStepMessage={`Nice! Let\'s update your commitment!`}
+            success={finalSuccess()}
           />
         )}
       </div>

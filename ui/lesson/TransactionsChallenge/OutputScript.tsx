@@ -4,13 +4,17 @@ import { Text } from 'ui/common'
 import { SignatureType, SpendingConditions } from '.'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
 import { MainState } from '../OpCodeChallenge/runnerTypes'
+import { finalAnswerOutput } from 'utils/data'
 
 interface IOutput {
   prefilled?: boolean
   prefilledEditable?: boolean
   output: 'output 0' | 'output 1'
+  step: number
   currentTransactionTab: string
+  nextTransactionTab?: string
   answerSats?: Record<'output_0' | 'output_1', string>
+  answerSatsMirrored?: Record<'output_0' | 'output_1', string>
   sats: string
   script: string
   progressKey: string
@@ -40,8 +44,11 @@ const OutputScript: FC<IOutput> = ({
   prefilledEditable,
   progressKey,
   output,
+  step,
   currentTransactionTab,
+  nextTransactionTab,
   answerSats,
+  answerSatsMirrored,
   sats,
   script,
   tab,
@@ -105,7 +112,42 @@ const OutputScript: FC<IOutput> = ({
           ),
         }))
       }
+    } else if (step === 1 && nextTransactionTab === tab) {
+      if (initialStack[objectOutput][1]) {
+        for (let x = 0 as 0 | 1; x < 2; x++) {
+          setValidateScript((prev) => ({
+            ...prev,
+            [`signature_${x}`]: checkChallengeSuccess(
+              [
+                LanguageExecutor.RunCode(
+                  scriptInputString,
+                  initialStack[objectOutput][x],
+                  height,
+                  nSequenceTime
+                )?.state || [],
+              ],
+              scriptInputArray
+            ),
+          }))
+        }
+      } else {
+        setValidateScript((prev) => ({
+          ...prev,
+          signature_0: checkChallengeSuccess(
+            [
+              LanguageExecutor.RunCode(
+                scriptInputString,
+                initialStack[objectOutput][0],
+                height,
+                nSequenceTime
+              )?.state || [],
+            ],
+            scriptInputArray
+          ),
+        }))
+      }
     }
+
     const getErrorMessageOutputZero = (index: number) => {
       return LanguageExecutor.RunCode(
         scriptInput['output_0'],
@@ -160,11 +202,18 @@ const OutputScript: FC<IOutput> = ({
     }
 
     const hasCorrectSats = () => {
-      if (answerSats) {
-        if (satsInput[objectOutput] !== answerSats[objectOutput]) {
+      if (answerSats && answerSatsMirrored) {
+        const isCorrect =
+          (step === 0 &&
+            satsInput[objectOutput] === answerSats[objectOutput]) ||
+          (step === 1 &&
+            satsInput[objectOutput] === answerSatsMirrored[objectOutput])
+
+        if (!isCorrect) {
           setErrorMessage('Make sure the sats are distributed correctly')
         }
-        return satsInput[objectOutput] === answerSats[objectOutput]
+
+        return isCorrect
       }
       if (satsInput[objectOutput] !== sats[objectOutput]) {
         setErrorMessage('Make sure the sats are distributed correctly')
@@ -205,6 +254,30 @@ const OutputScript: FC<IOutput> = ({
     } else {
       return 2
     }
+  }
+  const getDefaultSats = () => {
+    if (step === 0 && prefilledEditable) {
+      if (tab === nextTransactionTab) {
+        return sats
+      }
+      if (tab === currentTransactionTab) {
+        return sats
+      }
+    }
+    if (step === 1 && answerSats && prefilledEditable) {
+      if (tab === currentTransactionTab) {
+        return answerSats[objectOutput]
+      }
+      if (tab === nextTransactionTab) {
+        return sats
+      }
+    }
+    if (!prefilledEditable && currentTransactionTab === tab && !prefilled) {
+      return satsInput[objectOutput]
+    } else if (!prefilledEditable && currentTransactionTab !== tab) {
+      return sats
+    }
+    return sats
   }
 
   useEffect(() => {
@@ -255,14 +328,16 @@ const OutputScript: FC<IOutput> = ({
           className="bg-transparent text-white outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
           onChange={handleSatsChange}
           pattern="[0-9]+([\.,][0-9]+)?"
-          defaultValue={
-            prefilled || prefilledEditable
-              ? sats
-              : currentTransactionTab !== tab
-              ? sats
-              : satsInput[objectOutput]
+          defaultValue={getDefaultSats()}
+          readOnly={
+            (prefilledEditable &&
+              !(
+                (nextTransactionTab === tab && step === 1) ||
+                (currentTransactionTab === tab && step === 0)
+              )) ||
+            (!prefilledEditable && currentTransactionTab !== tab) ||
+            !!prefilled
           }
-          readOnly={currentTransactionTab !== tab || prefilled}
         />
       </div>
 
@@ -274,7 +349,7 @@ const OutputScript: FC<IOutput> = ({
             href={`https://script.savingsatoshi.com/?lesson=${progressKey}`}
             className="cursor-pointer"
           >
-            <HyperLink />{' '}
+            <HyperLink />
           </a>
         </div>
         <textarea
@@ -282,16 +357,32 @@ const OutputScript: FC<IOutput> = ({
           spellCheck="false"
           rows={3}
           defaultValue={
-            prefilled || prefilledEditable
+            prefilled || (prefilledEditable && step === 0)
               ? Buffer.from(script || '', 'base64').toString('utf-8')
               : currentTransactionTab !== tab
               ? Buffer.from(script || '', 'base64').toString('utf-8')
+              : prefilledEditable &&
+                step === 1 &&
+                nextTransactionTab !== tab &&
+                answerSats
+              ? Buffer.from(
+                  finalAnswerOutput[objectOutput] || '',
+                  'base64'
+                ).toString('utf-8')
               : scriptInput[objectOutput]
           }
           onChange={handleScriptChange}
           ref={textAreaRef}
           className="min-h-8 resize-y bg-transparent text-white outline-none"
-          readOnly={currentTransactionTab !== tab || prefilled}
+          readOnly={
+            (prefilledEditable &&
+              !(
+                (nextTransactionTab === tab && step === 1) ||
+                (currentTransactionTab === tab && step === 0)
+              )) ||
+            (!prefilledEditable && currentTransactionTab !== tab) ||
+            !!prefilled
+          }
         />
       </div>
     </div>

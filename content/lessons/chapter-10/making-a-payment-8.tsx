@@ -31,6 +31,7 @@ export default function MakingAPayment8({ lang }) {
         }}
         nSequenceTime={700}
         answerSats={{ output_0: '2000', output_1: '97000' }}
+        answerSatsMirrored={{ output_0: '97000', output_1: '2000' }}
         answerScript={{
           output_0: [
             'OP_IF',
@@ -49,6 +50,7 @@ export default function MakingAPayment8({ lang }) {
         }}
         progressKey={metadata.key}
         currentTransactionTab="commitment_laszlo"
+        nextTransactionTab="commitment_you"
       >
         <LessonInfo>
           <Text className="text-lg font-bold md:text-xl">
