@@ -2975,9 +2975,9 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_three: 'Enjoy 🍺',
       heading_two: 'Hints',
       paragraph_four: 'Output 0 is spent by EITHER:',
-      hint_one: `You, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) 1 </span>`,
-      hint_two: `Laszlo:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_YOU_3) SIG(LASZLO) 0 </span> `,
-      paragraph_five: `Output 1 is spent by Laszlo <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO) </span> `,
+      hint_one: `You, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO) 1 </span>`,
+      hint_two: `Laszlo:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_LASZLO_2) SIG(YOU) 0 </span> `,
+      paragraph_five: `Output 1 is spent by Laszlo <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) </span> `,
     },
 
     outro_one: {

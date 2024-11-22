@@ -23,8 +23,8 @@ export default function MakingAPayment8({ lang }) {
       <TransactionChallenge
         initialStack={{
           output_0: {
-            0: ['SIG(YOU)', '1'],
-            1: ['0', 'SIG(REVOCATION_YOU_3)', 'SIG(LASZLO)', '0'],
+            0: ['SIG(LASZLO)', '1'],
+            1: ['0', 'SIG(REVOCATION_LASZLO_2)', 'SIG(YOU)', '0'],
           },
           output_1: { 0: ['SIG(YOU)'] },
         }}
@@ -33,7 +33,7 @@ export default function MakingAPayment8({ lang }) {
           output_0: [
             'OP_IF',
             'OP_PUSH',
-            'PUBKEY(REVOCATION_YOU_3)',
+            'PUBKEY(REVOCATION_LASZLO_2)',
             'OP_CHECKSEQUENCEVERIFY',
             'OP_DROP',
             'PUBKEY(YOU)',

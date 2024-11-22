@@ -102,19 +102,32 @@ const OutputScript: FC<IOutput> = ({
         }))
       }
     }
-    const getErrorMessage = (index) => {
+    const getErrorMessageOutputZero = (index: number) => {
       return LanguageExecutor.RunCode(
-        scriptInput[objectOutput],
-        initialStack[objectOutput][index],
+        scriptInput['output_0'],
+        initialStack['output_0'][index],
         height,
         nSequenceTime
       )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
     }
-    const errorMessage0 = getErrorMessage(0)
-    const errorMessage1 = getErrorMessage(1)
+    const getErrorMessageOutputOne = (index: number) => {
+      return LanguageExecutor.RunCode(
+        scriptInput['output_1'],
+        initialStack['output_1'][index],
+        height,
+        nSequenceTime
+      )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
+    }
+    const errorMessageOutput0 =
+      getErrorMessageOutputZero(0) || getErrorMessageOutputZero(1)
+    const errorMessageOutput1 = getErrorMessageOutputOne(0)
 
-    if (errorMessage0 || errorMessage1) {
-      setErrorMessage(errorMessage1 || errorMessage1 || '')
+    if (errorMessageOutput0) {
+      setErrorMessage(`Output 0: ${errorMessageOutput0}`)
+    } else if (errorMessageOutput1) {
+      setErrorMessage(`Output 1: ${errorMessageOutput1}`)
+    } else {
+      setErrorMessage('')
     }
   }
 
@@ -212,8 +225,8 @@ const OutputScript: FC<IOutput> = ({
     <div className="flex flex-col gap-4 rounded-md bg-black/20 p-4 text-lg">
       <Text className="capitalize">{output}</Text>
 
-      <div className="flex flex-col">
-        <Text>Sats</Text>
+      <div className="flex w-fit flex-col">
+        <Text className="w-fit">Sats</Text>
         <input
           placeholder="Enter Sats"
           className="bg-transparent text-white outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
@@ -230,8 +243,8 @@ const OutputScript: FC<IOutput> = ({
         />
       </div>
 
-      <div className="flex w-full flex-col">
-        <div className="flex w-full items-center justify-between">
+      <div className="flex flex-col">
+        <div className="flex items-center justify-between">
           <Text>Script</Text>
           <a
             target={'_blank'}
