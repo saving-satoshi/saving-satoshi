@@ -229,6 +229,16 @@ div.react-terminal-active-input {
   }
 }
 
+.transaction-challenge-container {
+  max-height: calc(100dvh - 70px - 56px - 65px)
+}
+
+@media (min-width: 768px) {
+  .transaction-challenge-container {
+    max-height: calc(100dvh - 70px - 56px - 65px - 48px)
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
