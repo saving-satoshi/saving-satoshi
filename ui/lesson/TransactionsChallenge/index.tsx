@@ -267,7 +267,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           }
         )}
       >
-        <div className="flex h-full flex-col gap-4 ">
+        <div className="flex h-full flex-col">
           <div className="min-h-[65px] w-full overflow-x-auto border-y border-white/25 md:border-t-0">
             <Tabs
               items={allTabsFiltered}
@@ -280,12 +280,15 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           {allTabsData.map(
             (tabData) =>
               tabData[0] === activeView && (
-                <div key={tabData[0]} className="flex h-full flex-col gap-4 ">
-                  <div className="flex h-full max-h-[calc(100vh-447px-47px)] flex-col overflow-auto px-6 pt-6 font-space-mono md:max-h-[calc(100vh-407px)] ">
-                    <Text className=" font-space-mono text-base leading-[22.22px] tracking-[2%]">
+                <div
+                  key={tabData[0]}
+                  className="flex h-[calc(100vh-70px-56px-65px-48px)] flex-col gap-4 overflow-y-auto md:h-[calc(100vh-70px-56px-65px)]"
+                >
+                  <div className="px-6 pt-6 font-space-mono">
+                    <Text className="font-space-mono text-base leading-[22.22px] tracking-[2%]">
                       {tabData[1].description}
                     </Text>
-                    <div className="flex flex-col items-center gap-[15px] overflow-auto py-4 md:flex-row md:items-start">
+                    <div className="flex flex-col items-center gap-[15px] py-4 md:flex-row md:items-start">
                       {tabData[1]?.input && (
                         <div className="flex w-full flex-row justify-around gap-4 rounded-md bg-black/20 p-4 text-lg md:w-fit md:flex-col">
                           <div className="flex flex-col gap-1">
@@ -308,7 +311,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                       <div className="rotate-90 md:flex md:h-44 md:rotate-0 md:items-center">
                         {tabData[1]?.input && <ArrowRightLarge />}
                       </div>
-                      <div className="flex w-full flex-col gap-4">
+                      <div className="flex w-full min-w-0 flex-col gap-4">
                         {tabData[1].output_0 && (
                           <OutputScript
                             key={'output_0'}
@@ -367,7 +370,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                     </div>
                   </div>
                   {currentTransactionTab === tabData[0] && !noSignature && (
-                    <div className="flex flex-col gap-4 px-[30px] py-[15px] ">
+                    <div className="flex flex-col gap-4 px-[30px] py-[15px]">
                       <div className="flex flex-col">
                         <Text>Signatures</Text>
                         <div className="flex flex-col gap-2 md:flex-row md:gap-10">
