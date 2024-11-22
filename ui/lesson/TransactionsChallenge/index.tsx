@@ -194,9 +194,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           answerScript.output_1.length > 0 &&
           validateOutput1.signature_0 === 5
         ) {
-          //if (prefilledEditable) {
-          //  return 6
-          //}
+          if (prefilledEditable && step === 0) {
+            return 6
+          }
           return 5
         } else if (answerScript.output_0.length === 0) {
           return 5
@@ -233,15 +233,21 @@ const TransactionChallenge: FC<ITransactionProps> = ({
 
   const handleYouSign = async () => {
     await sleep(1000)
-    setValidating(true)
-    if (returnSuccess() === 5) {
+    if (
+      (prefilledEditable &&
+        step === 1 &&
+        returnSuccess() === 5 &&
+        validating) ||
+      (!prefilledEditable && returnSuccess() === 5)
+    ) {
       setSignatures((prev) => ({ ...prev, you: 'signed' }))
       handleLazloSign()
     }
+    setValidating(true)
   }
 
-  const handleScriptEmpty = (scriptEmpty) => {
-    if (scriptEmpty) {
+  const handleScriptEmpty = (scriptEmpty: boolean) => {
+    if (scriptEmpty && step === 0) {
       setDisableSign(true)
     } else {
       setDisableSign(false)
@@ -252,14 +258,6 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     setActivePageView(view)
   }
 
-  const finalSuccess = () => {
-    if (step === 0 && prefilled) {
-      return 6
-    } else {
-      return success
-    }
-  }
-
   useEffect(() => {
     if (nextTransactionTab && step === 1) {
       setActiveView(nextTransactionTab)
@@ -267,9 +265,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   }, [step])
 
   useEffect(() => {
+    if (step === 0 && returnSuccess() === 6) setStep(1)
     setSuccess(returnSuccess())
-    if (step === 0 && success === 6) setStep(1)
-  }, [returnSuccess])
+  }, [validating])
 
   return (
     <Lesson
@@ -428,7 +426,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                               onClick={handleYouSign}
                               classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
                               disabled={
-                                signatures.you === 'signed' || disableSign
+                                signatures.you === 'signed' ||
+                                disableSign ||
+                                validating
                               }
                             >
                               Sign
@@ -501,7 +501,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           <StatusBar
             errorMessage={errorMessage1 || errorMessage0}
             nextStepMessage={`Nice! Let\'s update your commitment!`}
-            success={finalSuccess()}
+            success={success}
           />
         )}
       </div>
