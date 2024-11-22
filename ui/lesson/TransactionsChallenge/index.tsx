@@ -200,7 +200,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           return 5
         } else if (answerScript.output_0.length === 0) {
           return 5
-        } else {
+        } else if (validateOutput1.signature_0 === 5) {
           return 5
         }
       } else {
@@ -268,6 +268,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     if (step === 0 && returnSuccess() === 6) setStep(1)
     setSuccess(returnSuccess())
   }, [validating])
+
+  console.log(validateOutput0, validateOutput1)
 
   return (
     <Lesson

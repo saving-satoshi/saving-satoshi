@@ -215,7 +215,7 @@ const OutputScript: FC<IOutput> = ({
 
         return isCorrect
       }
-      if (satsInput[objectOutput] !== sats[objectOutput]) {
+      if (satsInput[objectOutput] !== sats) {
         setErrorMessage('Make sure the sats are distributed correctly')
       }
       return satsInput[objectOutput] === sats
