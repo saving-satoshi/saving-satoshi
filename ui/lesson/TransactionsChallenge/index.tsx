@@ -311,7 +311,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                       <div className="rotate-90 md:flex md:h-44 md:rotate-0 md:items-center">
                         {tabData[1]?.input && <ArrowRightLarge />}
                       </div>
-                      <div className="flex w-full flex-col gap-4">
+                      <div className="flex w-full min-w-0 flex-col gap-4">
                         {tabData[1].output_0 && (
                           <OutputScript
                             key={'output_0'}
