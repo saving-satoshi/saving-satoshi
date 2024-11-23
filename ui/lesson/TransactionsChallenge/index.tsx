@@ -178,7 +178,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     })
     .map((tab) => ({ id: tab, text: tab.includes('refund') ? 'refund' : tab }))
 
-  const returnSuccess = () => {
+  const returnSuccess = (): SuccessNumbers => {
     if (
       validateOutput0.signature_0 === 0 &&
       validateOutput1.signature_0 === 0
@@ -229,6 +229,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
         return validateOutput0.signature_0
       }
     }
+    return 2
   }
 
   const handleYouSign = async () => {
