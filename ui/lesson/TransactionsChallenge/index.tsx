@@ -387,7 +387,11 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                                 signatures.you === 'signed' || disableSign
                               }
                             >
-                              Sign
+                              {!/^(deposit|multisig|payment)$/.test(
+                                currentTransactionTab
+                              )
+                                ? 'Send to Laszlo'
+                                : 'Sign'}
                             </SignatureButton>
                           </div>
 
