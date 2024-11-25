@@ -1,7 +1,9 @@
 'use client'
 
 import { useTranslations } from 'hooks'
+import { useState } from 'react'
 import { LessonInfo, Text } from 'ui'
+import { SuccessNumbers } from 'ui/common/StatusBar'
 import TransactionChallenge from 'ui/lesson/TransactionsChallenge'
 
 export const metadata = {
@@ -12,9 +14,12 @@ export const metadata = {
 
 export default function OpeningAChannel1({ lang }) {
   const t = useTranslations(lang)
+  const [success, setSuccess] = useState<SuccessNumbers>(0)
 
   return (
     <TransactionChallenge
+      success={success}
+      setSuccess={setSuccess}
       initialStack={{
         output_0: { 0: ['SIG(YOU)'] },
         output_1: { 0: [] },

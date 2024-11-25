@@ -4,6 +4,7 @@ import { useTranslations } from 'hooks'
 import { LessonInfo, Text } from 'ui'
 import TransactionChallenge from 'ui/lesson/TransactionsChallenge'
 import { useEffect, useState } from 'react'
+import { SuccessNumbers } from 'ui/common/StatusBar'
 
 export const metadata = {
   title: 'chapter_ten.making_a_payment_five.title',
@@ -14,6 +15,7 @@ export const metadata = {
 export default function MakingAPayment5({ lang }) {
   const t = useTranslations(lang)
   const [hydrated, setHydrated] = useState(false)
+  const [success, setSuccess] = useState<SuccessNumbers>(0)
   useEffect(() => {
     setHydrated(true)
   }, [])
@@ -21,6 +23,8 @@ export default function MakingAPayment5({ lang }) {
   return (
     hydrated && (
       <TransactionChallenge
+        success={success}
+        setSuccess={setSuccess}
         initialStack={{
           output_0: {
             0: ['SIG(LASZLO)', '1'],
@@ -64,7 +68,7 @@ export default function MakingAPayment5({ lang }) {
             <li>{t('chapter_ten.making_a_payment_five.list_two')}</li>
           </ul>
 
-          <Text className="text-lg font-bold md:text-xl">
+          <Text className="mt-8 text-lg font-bold md:text-xl">
             {t('chapter_ten.making_a_payment_five.heading_two')}
           </Text>
 

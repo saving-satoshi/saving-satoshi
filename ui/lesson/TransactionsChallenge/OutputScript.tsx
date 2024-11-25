@@ -280,6 +280,21 @@ const OutputScript: FC<IOutput> = ({
     return sats
   }
 
+  const getDefaultScript = () => {
+    return prefilled || (prefilledEditable && step === 0)
+      ? Buffer.from(script || '', 'base64').toString('utf-8')
+      : currentTransactionTab !== tab
+      ? Buffer.from(script || '', 'base64').toString('utf-8')
+      : prefilledEditable &&
+        step === 1 &&
+        nextTransactionTab !== tab &&
+        answerSats
+      ? Buffer.from(finalAnswerOutput[objectOutput] || '', 'base64').toString(
+          'utf-8'
+        )
+      : scriptInput[objectOutput]
+  }
+
   useEffect(() => {
     if (validating) {
       executeScriptAsync()
@@ -326,9 +341,9 @@ const OutputScript: FC<IOutput> = ({
         <input
           placeholder="Enter Sats"
           className="bg-transparent text-white outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          value={satsInput[objectOutput]}
           onChange={handleSatsChange}
           pattern="[0-9]+([\.,][0-9]+)?"
-          defaultValue={getDefaultSats()}
           readOnly={
             (prefilledEditable &&
               !(
@@ -356,21 +371,7 @@ const OutputScript: FC<IOutput> = ({
           placeholder="Enter Script"
           spellCheck="false"
           rows={3}
-          defaultValue={
-            prefilled || (prefilledEditable && step === 0)
-              ? Buffer.from(script || '', 'base64').toString('utf-8')
-              : currentTransactionTab !== tab
-              ? Buffer.from(script || '', 'base64').toString('utf-8')
-              : prefilledEditable &&
-                step === 1 &&
-                nextTransactionTab !== tab &&
-                answerSats
-              ? Buffer.from(
-                  finalAnswerOutput[objectOutput] || '',
-                  'base64'
-                ).toString('utf-8')
-              : scriptInput[objectOutput]
-          }
+          value={scriptInput[objectOutput]}
           onChange={handleScriptChange}
           ref={textAreaRef}
           className="min-h-8 resize-y bg-transparent text-white outline-none"

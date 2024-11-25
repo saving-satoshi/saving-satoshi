@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import Avatar from 'components/Avatar'
 import { useLang, useMediaQuery, useProceed, useTranslations } from 'hooks'
 import { useAtom } from 'jotai'
-import React, { FC, useEffect, useState } from 'react'
+import React, { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import { Button } from 'shared'
 import ArrowRightLarge from 'shared/icons/ArrowRightLarge'
 import SignatureButton from 'shared/SignatureButton'
@@ -24,6 +24,8 @@ interface ITransactionProps {
   prefilled?: boolean
   prefilledEditable?: boolean
   initialStack: Record<'output_0' | 'output_1', SpendingConditions>
+  success: SuccessNumbers
+  setSuccess: Dispatch<SetStateAction<SuccessNumbers>>
   height?: number
   nSequenceTime?: number
   answerScript: Record<'output_0' | 'output_1', string[]>
@@ -101,6 +103,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   answerSats,
   answerSatsMirrored,
   initialStack,
+  success,
+  setSuccess,
   height,
   nSequenceTime,
   laszloWillNotSign,
@@ -119,7 +123,6 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   const allTabs = Object.keys(transactionTabs)
   const allTabsData = Object.entries(transactionTabs)
   const [validating, setValidating] = useState<boolean>(false)
-  const [success, setSuccess] = useState<SuccessNumbers>(0)
   const [errorMessage0, setErrorMessage0] = useState('')
   const [errorMessage1, setErrorMessage1] = useState('')
   const [signatures, setSignatures] = useState<OutputSignatures>({
@@ -151,8 +154,23 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     output_0: '',
     output_1: '',
   })
+
   const handleLazloSign = () => {
     setSignatures((prev) => ({ ...prev, laszlo: 'pending' }))
+  }
+
+  const handleTryAgain = () => {
+    setValidateOutput0({
+      signature_0: 0,
+      signature_1: 0,
+    })
+    setValidateOutput1({
+      signature_0: 0,
+      signature_1: 0,
+    })
+    setSuccess(0)
+    setStep(0)
+    setActiveView(currentTransactionTab)
   }
 
   const allTabsFiltered = allTabs
@@ -269,8 +287,6 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     if (step === 0 && returnSuccess() === 6) setStep(1)
     setSuccess(returnSuccess())
   }, [validating])
-
-  console.log(validateOutput0, validateOutput1)
 
   return (
     <Lesson
@@ -503,6 +519,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
         ) : (
           <StatusBar
             errorMessage={errorMessage1 || errorMessage0}
+            handleTryAgain={handleTryAgain}
             nextStepMessage={`Nice! Let\'s update your commitment!`}
             success={success}
           />
