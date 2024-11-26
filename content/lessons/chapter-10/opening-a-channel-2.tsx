@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useTranslations } from 'hooks'
 import { LessonInfo, Text } from 'ui'
 import TransactionChallenge from 'ui/lesson/TransactionsChallenge'
+import { SuccessNumbers } from 'ui/common/StatusBar'
 
 export const metadata = {
   title: 'chapter_ten.opening_a_channel_two.title',
@@ -14,6 +15,7 @@ export const metadata = {
 export default function OpeningAChannel2({ lang }) {
   const t = useTranslations(lang)
   const [hydrated, setHydrated] = useState(false)
+  const [success, setSuccess] = useState<SuccessNumbers>(0)
   useEffect(() => {
     setHydrated(true)
   }, [])
@@ -21,6 +23,8 @@ export default function OpeningAChannel2({ lang }) {
   return (
     hydrated && (
       <TransactionChallenge
+        success={success}
+        setSuccess={setSuccess}
         initialStack={{
           output_0: { 0: ['SIG(LASZLO)'] },
           output_1: { 0: ['SIG(YOU)'] },

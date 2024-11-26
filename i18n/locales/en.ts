@@ -2763,8 +2763,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
         'Sign the input by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign</span>',
       // off_chain_list_four:'Send it to Laszlo by clicking "send to bob"',
       heading_three: 'Hints',
-      hint_one: `Laszlo spends output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO)</span>`,
-      hint_two: `You spend output 1 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU)</span>`,
+      hint_one: `Laszlo spends output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO)</span>`,
+      hint_two: `You spend output 1 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU)</span>`,
       hint_three: `These signatures are not part of the output script`,
     },
     opening_a_channel_three: {
@@ -2783,8 +2783,9 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       multisig_two: 'Sign the input by clicking "Sign"',
       heading_three: 'Hints',
       hint_one_a: `You and Laszlo want to work together in the future to spend output 0 with <br/> `,
-      hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(LASZLO) SIG(YOU) </span>`,
+      hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(LASZLO) SIG(YOU) </span>`,
       hint_two: `Don't forget to set aside miner fees`,
+
     },
     opening_a_channel_five: {
       title: 'Refund protection in multisig',
@@ -2801,7 +2802,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       refund_list_two: `Send it to Laszlo by clicking "Sign" then he can tell us if he will sign it.`,
       refund_list_three: `Don't sign it yourself yet! Let's see what Laszlo thinks, first`,
       heading_two: 'Hints',
-      hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) </span>`,
+      hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span>`,
     },
     updating_the_state_two: {
       title: 'Securing payments',
@@ -2823,8 +2824,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       revocation_list_three: `Don't sign it yourself yet!`,
       heading_two: `Hints`,
       paragraph_three: `Output 0 is spent by EITHER:`,
-      hint_one: `You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) 1 </span>`,
-      hint_two: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span>`,
+      hint_one: `You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>`,
+      hint_two: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span>`,
     },
     updating_the_state_four: {
       title: 'The Race to Revoke',
@@ -2846,9 +2847,9 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       heading_two: 'Hints',
       paragraph_one: 'Output 0 is spent by EITHER:',
       hint_one:
-        'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) 1 </span> ',
+        'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span> ',
       hint_two:
-        'Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span> ',
+        'Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span> ',
     },
     updating_the_state_six: {
       title: 'Channel Open with Laszlo',
@@ -2895,9 +2896,9 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       heading_two: `Hints`,
       paragraph_four: `Output 0 is spent by EITHER:`,
       hint_one:
-        'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">SIG(YOU) 1 </span>',
-      hint_two: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_YOU_2) SIG(LASZLO) 0 </span>`,
-      paragraph_five: `Output 1 is spent by Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO) </span>`,
+        'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU) 1 </span>',
+      hint_two: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_2) SIG(LASZLO) 0 </span>`,
+      paragraph_five: `Output 1 is spent by Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span>`,
     },
     making_a_payment_three: {
       title: `Laszlo's Blockchain Dilemma`,
@@ -2923,9 +2924,9 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       heading_two: 'Hints',
       paragraph_three: 'Output 0 is spent by EITHER:',
       hint_one:
-        'Laszlo, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">SIG(LASZLO) 1 </span>',
-      hint_two: `You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_LASZLO_1) SIG(YOU) 0 </span>`,
-      paragraph_four: `Output 1 is spent by You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) </span>`,
+        'Laszlo, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(LASZLO) 1 </span>',
+      hint_two: `You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_1) SIG(YOU) 0 </span>`,
+      paragraph_four: `Output 1 is spent by You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span>`,
     },
     making_a_payment_six: {
       title: `Complete the payment`,
@@ -2940,12 +2941,12 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       commitment_one_you: {
         list_one: 'Input 0: signed by Laszlo',
         list_two:
-          'Output 0: 100000 satoshis to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>',
+          'Output 0: 100000 satoshis to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">REVOCATION_YOU_1</span>',
       },
       commitment_two_you: {
         list_one: 'Input 0: signed by Laszlo',
         list_two:
-          'Output 0: 99000 satoshis to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>',
+          'Output 0: 99000 satoshis to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">REVOCATION_YOU_2</span>',
         list_three: 'Output 1: 1000 satoshis to Laszlo',
       },
       paragraph_five: 'Commitment 2 (You):',
@@ -2954,7 +2955,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       commitment_two_laszlo: {
         list_one: 'Input 0: signed by You',
         list_two:
-          'Output 0: 1000 satoshis to Laszlo after 700 blocks or You with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_LASZLO_1</span>',
+          'Output 0: 1000 satoshis to Laszlo after 700 blocks or You with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">REVOCATION_LASZLO_1</span>',
         list_three: 'Output 1: 99000 satoshis to You',
       },
       paragraph_eight:
@@ -2973,15 +2974,22 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_two: `The two transactions representing the current state are on the screen, where you have paid Laszlo 1,000 satoshis. Send another 1,000 satoshi payment to Laszlo.`,
       list_one: 'Update the amounts and output scripts',
       list_two: "Sign Laszlo's transaction and send it to him",
-      list_three: `Laszlo will revoke his last state by sending you  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_LASZLO_1 </span>`,
+      list_three: `Laszlo will revoke his last state by sending you <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">REVOCATION_LASZLO_2</span>`,
       list_four: 'Send your transaction to Laszlo so he can sign it',
-      list_five: `Once you have Laszlo's signature, send him your  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_YOU_1 </span> `,
+      list_five: `Once you have Laszlo's signature, send him your <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">REVOCATION_YOU_3</span> `,
       paragraph_three: 'Enjoy 🍺',
       heading_two: 'Hints',
       paragraph_four: 'Output 0 is spent by EITHER:',
-      hint_one: `You, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) 1 </span>`,
-      hint_two: `Laszlo:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_YOU_3) SIG(LASZLO) 0 </span> `,
-      paragraph_five: `Output 1 is spent by Laszlo <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO) </span> `,
+      step_one: {
+        hint_one: `Laszlo, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) 1 </span>`,
+        hint_two: `You:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_2) SIG(YOU) 0 </span> `,
+        hint_three: `Output 1 is spent by You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span> `,
+      },
+      step_two: {
+        hint_one: `You, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>`,
+        hint_two: `Laszlo:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_3) SIG(LASZLO) 0 </span> `,
+        hint_three: `Output 1 is spent by Laszlo <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span> `,
+      },
     },
 
     outro_one: {
@@ -3039,9 +3047,9 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       output_zero_sig: 'Output 0 Signature',
       output_one_sig: 'Output 1 Signature',
       sats_distribution:
-        'Laszlo should receive enough sats for the beer, and is not responsible for miner fees.',
+        'Laszlo should receive enough sats for the beer, and is not responsible for the 1000 sat miner fees.',
       output_script:
-        'The locking script on the output should not contain any signatures (i.e. <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base">OP_PUSH SIG()</span>). If this is part of your script, simply remove it.',
+        'The locking script on the output should not contain any signatures (i.e. <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base whitespace-nowrap">OP_PUSH SIG()</span>). If this is part of your script, simply remove it.',
     },
   },
 
@@ -3076,6 +3084,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     chapter_complete: 'Chapter complete',
     challenge: 'Challenge',
     help_tooltip: 'Need help?',
+    your_language: 'Your Language',
   },
 
   modal_signin: {

@@ -2981,6 +2981,11 @@ eslint-plugin-jsx-a11y@^6.7.1:
     object.entries "^1.1.7"
     object.fromentries "^2.0.7"
 
+eslint-plugin-local-rules@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-local-rules/-/eslint-plugin-local-rules-3.0.2.tgz#84c02ea1d604ecb00970779ad27f00738ff361ae"
+  integrity sha512-IWME7GIYHXogTkFsToLdBCQVJ0U4kbSuVyDT+nKoR4UgtnVrrVeNWuAZkdEu1nxkvi9nsPccGehEEF6dgA28IQ==
+
 "eslint-plugin-react-hooks@^4.5.0 || 5.0.0-canary-7118f5dd7-20230705":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.6.0.tgz#4c3e697ad95b77e93f8646aaa1630c1ba607edd3"

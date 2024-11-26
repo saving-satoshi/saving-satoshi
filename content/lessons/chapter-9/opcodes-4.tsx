@@ -22,31 +22,31 @@ export default function OpCodes4({ lang }) {
   ]
 
   const inputRows = [
-    ['(init)', <span>OP_1 OP_2 OP_ADD OP_EQUAL</span>, '[3]'],
+    ['(init)', <span key="index-0">OP_1 OP_2 OP_ADD OP_EQUAL</span>, '[3]'],
     [
       '1',
-      <span>
+      <span key="index-2">
         <span className="text-white">[OP_1]</span> OP_2 OP_ADD OP_EQUAL
       </span>,
       '[3,1]',
     ],
     [
       '2',
-      <span>
+      <span key="index-3">
         OP_1 <span className="text-white">[OP_2]</span> OP_ADD OP_EQUAL
       </span>,
       '[3,1,2]',
     ],
     [
       '3',
-      <span>
+      <span key="index-4">
         OP_1 OP_2 <span className="text-white">[OP_ADD]</span> OP_EQUAL
       </span>,
       '[3,3]',
     ],
     [
       '4',
-      <span>
+      <span key="index-5">
         OP_1 OP_2 OP_ADD <span className="text-white">[OP_EQUAL]</span>
       </span>,
       '[True]',

@@ -49,7 +49,7 @@ export default function DeriveMessage6({ lang }) {
             {t('chapter_five.verify_signature_four.paragraph_two')}
           </p>
           <p className="max-w-[900px] break-all px-[15px] py-[10px] text-left font-space-mono text-base md:text-lg">
-            pubkey = """
+            pubkey = &#34;&#34;&#34;
             <span className={clsx({ 'text-[#28B123]': step >= 1 })}>04</span>
             <span className={clsx({ 'text-[#3DCFEF]': step >= 1 })}>
               11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5c
@@ -57,7 +57,7 @@ export default function DeriveMessage6({ lang }) {
             <span className={clsx({ 'text-[#D06AF4]': step === 2 })}>
               b2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3
             </span>
-            """
+            &#34;&#34;&#34;
           </p>
         </div>
       </LessonInfo>
