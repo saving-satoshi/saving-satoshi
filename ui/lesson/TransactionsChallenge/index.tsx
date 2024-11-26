@@ -450,7 +450,11 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                                 validating
                               }
                             >
-                              Sign
+                              {!/^(deposit|multisig|payment)$/.test(
+                                currentTransactionTab
+                              )
+                                ? 'Send to Laszlo'
+                                : 'Sign'}
                             </SignatureButton>
                           </div>
 
