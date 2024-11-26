@@ -61,7 +61,7 @@ export default function OpeningAChannel4({ lang }) {
           <Text className="mt-4 text-lg font-bold md:text-xl">
             {t('chapter_ten.opening_a_channel_four.heading_two')}
           </Text>
-          <ul className="ml-4 list-disc  font-nunito text-lg">
+          <ul className="ml-4 list-disc font-nunito text-lg">
             <li key={1}>{t('chapter_ten.opening_a_channel_four.hint_one')}</li>
           </ul>
         </LessonInfo>
