@@ -35,7 +35,7 @@ export default function MakingAPaymentEight({ lang }) {
                 copy
                 text
                 language="bash"
-                code="OP_IF OP_PUSH 700 OP_CHECKSEQUENCEVERIFY OP_DROP OP_PUSH PUBKEY(YOU) OP_CHECKSIG OP_ELSE OP_2 OP_PUSH PUBKEY(REVOCATION_YOU_3) OP_PUSH PUBKEY(LASZLO) OP_2 OP_CHECKMULTISIG OP_ENDIF"
+                code="OP_IF OP_PUSH 700 OP_CHECKSEQUENCEVERIFY OP_DROP OP_PUSH PUBKEY(LASZLO) OP_CHECKSIG OP_ELSE OP_2 OP_PUSH PUBKEY(REVOCATION_LASZLO_2) OP_PUSH PUBKEY(YOU) OP_2 OP_CHECKMULTISIG OP_ENDIF"
               />
               <Text className="mt-2">
                 {t('chapter_ten.resources.output_one_sig')}

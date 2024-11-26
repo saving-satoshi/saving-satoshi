@@ -4,6 +4,7 @@ import { useTranslations } from 'hooks'
 import { LessonInfo, Text } from 'ui'
 import TransactionChallenge from 'ui/lesson/TransactionsChallenge'
 import { useEffect, useState } from 'react'
+import { SuccessNumbers } from 'ui/common/StatusBar'
 
 export const metadata = {
   title: 'chapter_ten.updating_the_state_three.title',
@@ -14,6 +15,7 @@ export const metadata = {
 export default function UpdatingTheState3({ lang }) {
   const t = useTranslations(lang)
   const [hydrated, setHydrated] = useState(false)
+  const [success, setSuccess] = useState<SuccessNumbers>(0)
   useEffect(() => {
     setHydrated(true)
   }, [])
@@ -21,6 +23,8 @@ export default function UpdatingTheState3({ lang }) {
   return (
     hydrated && (
       <TransactionChallenge
+        success={success}
+        setSuccess={setSuccess}
         initialStack={{
           output_0: {
             0: ['0', 'SIG(REVOCATION_YOU_1)', 'SIG(LASZLO)', '0'],
