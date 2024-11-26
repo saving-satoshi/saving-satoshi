@@ -3035,7 +3035,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       output_zero_sig: 'Output 0 Signature',
       output_one_sig: 'Output 1 Signature',
       sats_distribution:
-        'Remember that Laszlo should only be receiving enough sats for the beer. Also we need to set aside some sats for the fees incase our channel closes!',
+        'Remember that Laszlo should only be receiving enough sats for the beer. Also we need to set aside 1,000 sats for the fees incase our channel closes!',
     },
   },
 
