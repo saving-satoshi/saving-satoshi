@@ -2797,10 +2797,11 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       nav_title: 'The refund',
       heading_one: 'The refund',
       paragraph_one: `A new tab appears on your ePhone Infinity: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Refund</span> which starts another TX template on the same screen, with an arrow from the <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multisig</span> output to this TX input.`,
+      heading_two: 'Instructions',
       refund_list_one: `Fill in the output amount and the output script`,
       refund_list_two: `Send it to Laszlo by clicking "Sign" then he can tell us if he will sign it.`,
       refund_list_three: `Don't sign it yourself yet! Let's see what Laszlo thinks, first`,
-      heading_two: 'Hints',
+      heading_three: 'Hints',
       hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span>`,
     },
     updating_the_state_two: {

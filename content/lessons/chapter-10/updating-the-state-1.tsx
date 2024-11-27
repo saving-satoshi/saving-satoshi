@@ -54,7 +54,7 @@ export default function UpdatingTheState1({ lang }) {
             <li>{t('chapter_ten.updating_the_state_one.refund_list_two')}</li>
           </ul>
           <Text className="mt-4 text-lg font-bold md:text-xl">
-            {t('chapter_ten.updating_the_state_one.heading_two')}
+            {t('chapter_ten.updating_the_state_one.heading_three')}
           </Text>
           <ul className="ml-4 list-disc  font-nunito text-lg">
             <li>{t('chapter_ten.updating_the_state_one.hint_one')}</li>
