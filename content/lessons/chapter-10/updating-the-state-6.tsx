@@ -18,9 +18,6 @@ export default function UpdatingTheState6({ lang }) {
       <Text className="text-lg md:text-xl">
         {t('chapter_ten.updating_the_state_six.paragraph_one')}
       </Text>
-      <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_ten.updating_the_state_six.paragraph_two')}
-      </Text>
     </Introduction>
   )
 }

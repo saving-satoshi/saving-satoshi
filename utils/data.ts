@@ -91,7 +91,7 @@ export const transactionTabs: TransactionData = {
   },
   refund_2: {
     description:
-      'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer, AND gives him a few days to notice if you do.',
+      'This transaction ensures funds are not lost if Laszlo disappears. It also prevents you from claiming the funds immediately after paying for your beer. If you try to take a full refund, including the 1,000 satoshis used to pay for the beer, the 700 block delay gives Laszlo a few days to notice.',
     signatures: {
       you: 'signed',
       lazlo: 'pending',

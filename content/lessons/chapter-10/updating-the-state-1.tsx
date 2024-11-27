@@ -44,6 +44,11 @@ export default function UpdatingTheState1({ lang }) {
           <Text className="mt-4 text-lg md:text-xl">
             {t('chapter_ten.updating_the_state_one.paragraph_one')}
           </Text>
+          <hr className="my-4 h-[1px] w-full opacity-25" />
+
+          <Text className="mt-4 text-lg font-bold md:text-xl">
+            {t('chapter_ten.updating_the_state_one.heading_two')}
+          </Text>
           <ul className="ml-4 list-disc  font-nunito text-lg">
             <li>{t('chapter_ten.updating_the_state_one.refund_list_one')}</li>
             <li>{t('chapter_ten.updating_the_state_one.refund_list_two')}</li>

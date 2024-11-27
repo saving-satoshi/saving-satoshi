@@ -55,6 +55,14 @@ export default function UpdatingTheState3({ lang }) {
           <Text className="mt-4 text-lg md:text-xl">
             {t('chapter_ten.updating_the_state_three.paragraph_one')}
           </Text>
+          <Text className="mt-4 text-lg md:text-xl">
+            {t('chapter_ten.updating_the_state_three.paragraph_two')}
+          </Text>
+          <hr className="my-4 h-[1px] w-full opacity-25" />
+
+          <Text className="mt-4 text-lg font-bold md:text-xl">
+            {t('chapter_ten.updating_the_state_three.heading_two')}
+          </Text>
           <ul className="ml-4 mt-4 list-decimal font-nunito text-xl">
             <li>
               {t('chapter_ten.updating_the_state_three.revocation_list_one')}
@@ -64,7 +72,7 @@ export default function UpdatingTheState3({ lang }) {
             </li>
           </ul>
           <Text className="mt-4 text-lg font-bold md:text-xl">
-            {t('chapter_ten.updating_the_state_three.heading_two')}
+            {t('chapter_ten.updating_the_state_three.heading_three')}
           </Text>
           <ul className="ml-4  list-disc font-nunito text-xl">
             <li>{t('chapter_ten.updating_the_state_three.hint_one')}</li>
