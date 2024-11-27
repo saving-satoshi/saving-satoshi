@@ -102,12 +102,11 @@ export const transactionTabs: TransactionData = {
     output_0: {
       sats: '99000',
       script:
-        'T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKFlvdSkgT1BfQ0hFQ0tTSUfigKhPUF9FTFNF4oCoICBPUF8yIE9QX1BVU0ggUFVCS0VZKHJldm9jYXRpb25feW91XzEpIE9QX1BVU0ggUFVCS0VZKExhc3psbykgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG',
+        'T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfQ0hFQ0tTSUcg4oCoT1BfRUxTReKAqCBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fWU9VXzEpIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG',
     },
   },
   commitment_you: {
-    description:
-      'This transaction updates the sat distribution you and Laszlo agreed on.',
+    description: 'This is your version of the commitment transaction.',
     signatures: {
       you: 'signed',
       lazlo: 'pending',
@@ -126,8 +125,7 @@ export const transactionTabs: TransactionData = {
     },
   },
   commitment_laszlo: {
-    description:
-      'This transaction updates the sat distribution you and Laszlo agreed on.',
+    description: 'This is Laszlo’s version of the commitment transaction.',
     signatures: {
       you: 'signed',
       lazlo: 'pending',

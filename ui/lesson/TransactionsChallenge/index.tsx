@@ -203,7 +203,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     ) {
       return 0
     }
-    if (initialStack.output_0?.[1]) {
+    if (initialStack.output_0?.[1] && initialStack.output_0?.[1].length > 0) {
       if (
         validateOutput0.signature_0 === 5 &&
         validateOutput0.signature_1 !== 2
@@ -216,7 +216,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
             return 6
           }
           return 5
-        } else if (answerScript.output_0.length === 0) {
+        } else if (answerScript.output_1.length === 0) {
           return 5
         } else if (validateOutput1.signature_0 === 5) {
           return 5
@@ -439,7 +439,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             <div className="h-[30px] w-[30px]">
                               <Avatar avatar={account?.avatar} />
                             </div>
-                            <Text> You</Text>
+                            <Text>You</Text>
                             <SignatureButton
                               returnSuccess={success}
                               onClick={handleYouSign}
@@ -476,15 +476,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                       </div>
                       <div className="flex flex-col">
                         <Text>Options</Text>
-                        {/*<Button
-                          classes="max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
-                          disabled
-                        >
-                          Broadcast Transaction
-                        </Button>*/}
                         <Tooltip
                           id="broadcast-button"
-                          position="top"
+                          position="bottom"
                           theme="bg-[#5c4d4b]"
                           offset={10}
                           parentClassName="max-w-[max-content]"
