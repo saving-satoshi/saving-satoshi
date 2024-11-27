@@ -341,7 +341,7 @@ const OutputScript: FC<IOutput> = ({
         <input
           placeholder="Enter Sats"
           className="bg-transparent text-white outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-          value={satsInput[objectOutput]}
+          defaultValue={getDefaultSats()}
           onChange={handleSatsChange}
           pattern="[0-9]+([\.,][0-9]+)?"
           readOnly={
@@ -371,7 +371,7 @@ const OutputScript: FC<IOutput> = ({
           placeholder="Enter Script"
           spellCheck="false"
           rows={3}
-          value={scriptInput[objectOutput]}
+          defaultValue={getDefaultScript()}
           onChange={handleScriptChange}
           ref={textAreaRef}
           className="min-h-8 resize-y bg-transparent text-white outline-none"

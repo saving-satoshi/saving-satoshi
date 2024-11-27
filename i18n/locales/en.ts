@@ -2854,7 +2854,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       title: 'Channel Open with Laszlo',
       nav_title: 'Channel Open with Laszlo',
       paragraph_one:
-        'This time, when you click Send to Laszlo, he smiles and applauds! He signs the child transaction (<span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">[X] Laszlo</span>). Now you can sign the parent transaction and send it to the blockchain: THE CHANNEL IS OPEN.',
+        'This time, when you click Send to Laszlo, he smiles and applauds! He signs the child transaction (<span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base break-keep whitspace-nowrap">[X] Laszlo</span>). Now you can sign the parent transaction and send it to the blockchain: THE CHANNEL IS OPEN.',
       paragraph_two:
         "You've gotten Laszlo to agree to let you buy drinks from him off-chain and have opened up a channel to do so!",
     },
@@ -2887,7 +2887,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       heading_one: 'Buy a beer!',
       paragraph_one: `Now it's finally time to send bitcoin off-chain to Laszlo. We will "simply" add a 1,000 satoshi output for him in an updated commitment transaction. We will also need to promise never to broadcast the old commitment transaction, which didn't pay Laszlo anything. That is guaranteed when we send him the revocation key for that old commitment transaction, which we'll do next.`,
       paragraph_two: `You'll need to generate another revocation key for this new state in case you want to repeat the cycle (revoke THIS transaction for another new commitment where Laszlo gets paid for a second beer) it is a party after all!`,
-      paragraph_three: `You generate a private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">revocation_you_2</span>`,
+      paragraph_three: `You generate a private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>`,
       list_one: `Deduct 1000 satoshis from your output`,
       list_two: `Add 1000 satoshis to the second output and fill in the script for Laszlo`,
       list_three: `Send it to Laszlo by clicking "Send to Laszlo" so he can sign it`,
@@ -2909,7 +2909,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       title: `Holocat's Trustless Warning`,
       nav_title: `Holocat's Trustless Warning`,
       paragraph_one: `That's when Holocat materializes on the table, standing up on her hind legs with her front paws outstretched, and meows.`,
-      paragraph_two: `—HOLOCAT: "Hang on, you can't give Laszlo your signature for this transaction! Next time you make a payment, you'll give him the revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">revocation_you_2</span>. He'll have everything he needs to steal all 100,000 satoshis!"`,
+      paragraph_two: `—HOLOCAT: "Hang on, you can't give Laszlo your signature for this transaction! Next time you make a payment, you'll give him the revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>. He'll have everything he needs to steal all 100,000 satoshis!"`,
       paragraph_three: `Things are getting a bit messy now. Laszlo does need something before he can give you a beer with confidence that he will get paid for it. But he can't have your transaction because then he'll end up accessing all your money! Laszlo is a great guy, and his bar is one of the best in the city, but it would still be nice if we didn't have to trust him.`,
     },
     making_a_payment_five: {
@@ -2917,7 +2917,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       nav_title: `Asymmetry`,
       heading_one: `Asymmetry`,
       paragraph_one: `So we know we want Laszlo to sign the first transaction but we don't want him to have our signature on it. We'll need to construct a second transaction for him that DOES have our signature on it, but without any possibility of him just spending all the money unfairly.`,
-      paragraph_two: `And if Laszlo is going to have his own commitment transaction, then don't we also want that transaction to be revocable?! Yes in fact, Laszlo's commitment transaction will be a mirror-image of yours. The revocable time lock script will use Laszlo's first revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_LASZLO_1)</span> and the large refund output will just directly to you without any fuss.`,
+      paragraph_two: `And if Laszlo is going to have his own commitment transaction, then don't we also want that transaction to be revocable?! Yes in fact, Laszlo's commitment transaction will be a mirror-image of yours. The revocable time lock script will use Laszlo's first revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_LASZLO_1)</span> and the large refund output will just pay directly to you without any fuss.`,
       list_one: `Fill in the amounts and output scripts for Laszlo's commitment transaction`,
       list_two: `Sign it and send it to Laszlo, who will then sign your commitment transaction and send that back to you`,
       heading_two: 'Hints',
@@ -2934,7 +2934,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_one: "Let's do another quick recap.",
       list_one: 'A 2 of 2 output is confirmed on the blockchain',
       paragraph_two:
-        'There are several off-chain transactions that spend that output:',
+        'There are several off-chain transactions that spend multisig channel open output:',
       paragraph_three: 'You have these transactions:',
       paragraph_four: 'Commitment 1 (You):',
       commitment_one_you: {
