@@ -2785,7 +2785,6 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       hint_one_a: `You and Laszlo want to work together in the future to spend output 0 with <br/> `,
       hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(LASZLO) SIG(YOU) </span>`,
       hint_two: `Don't forget to set aside miner fees`,
-
     },
     opening_a_channel_five: {
       title: 'Refund protection in multisig',
@@ -3047,9 +3046,11 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       output_zero_sig: 'Output 0 Signature',
       output_one_sig: 'Output 1 Signature',
       sats_distribution:
-        'Laszlo should receive enough sats for the beer, and is not responsible for the 1000 sat miner fees.',
+        'Laszlo should receive enough sats for the beer, and is not responsible for the 1,000 sat miner fees. The fee comes out of your change.',
       output_script:
         'The locking script on the output should not contain any signatures (i.e. <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base whitespace-nowrap">OP_PUSH SIG()</span>). If this is part of your script, simply remove it.',
+      miner_fees_basic: `Don't forget to set aside 1,000 sats for miner fees.`,
+      miner_fees: `Don't forget to set aside 1,000 sats from your change for miner fees.`,
     },
   },
 

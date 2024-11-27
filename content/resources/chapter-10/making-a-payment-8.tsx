@@ -16,7 +16,7 @@ export default function MakingAPaymentEight({ lang }) {
     <ResourcePage
       lang={lang}
       readingResources={<></>}
-      tipsResources={<>{t('chapter_ten.resources.sats_distribution')}</>}
+      tipsResources={<>{t('chapter_ten.resources.miner_fees')}</>}
       codeResources={
         <>
           <Text>{t('help_page.solution')}</Text>
