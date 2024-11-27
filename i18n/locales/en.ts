@@ -2528,7 +2528,7 @@ const translations = {
       nav_title: 'Multisig',
       heading: 'Multisig',
       paragraph_one:
-        'Multi-signature policies provide a list of public keys and a number of signatures required for a valid spend. It can be described as "m-of-n" meaning "m number of signatures are required from this list of n public keys". The public keys and the m and n values are typically included in the locking script and the spender only needs to provide the right number of signatures.',
+        'Multisignature policies provide a list of public keys and a number of signatures required for a valid spend. It can be described as "m-of-n" meaning "m number of signatures are required from this list of n public keys". The public keys and the m and n values are typically included in the locking script and the spender only needs to provide the right number of signatures.',
       paragraph_two:
         'Holocat appears with a pre-recorded message from Satoshi Nakamoto!',
       paragraph_three:
@@ -2540,7 +2540,7 @@ const translations = {
       heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-1">OP_CHECKMULTISIG</span>',
       subheading_one:
-        'Processes m-of-n multi-signature by following this algorithm.',
+        'Processes m-of-n multisignature by following this algorithm.',
       multisig_list_one:
         'Pop a single integer off the stack. This is the <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span> value.',
       multisig_list_two:
@@ -2751,48 +2751,52 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       nav_title: 'The off-chain transaction',
       heading_one: 'The off-chain transaction',
       paragraph_one:
-        "Let's create a valid Bitcoin transaction but instead of sending it to the network, we'll just send it directly to Laszlo! Laszlo should trade you a beer for this transaction because he knows he effectively has the money even though the transaction is not broadcasted or confirmed.",
-      paragraph_two:
-        "Remember it's the year 2140! A SHA-256 Stout cost 0.00001000 BTC.",
-      heading_two: 'Hints',
+        "Let's create a valid bitcoin transaction but instead of broadcasting it out to the network, we'll give it directly to Laszlo. In return, he should provide you with a beer because he can broadcast the transaction anytime he wants. Once it's confirmed and mined into a block, the money is his.",
+      paragraph_two: `Remember it's the year 2140! A <span className="italic">SHA-256 Stout</span> costs 0.00001000 BTC.`,
+      heading_two: 'Instructions',
       off_chain_list_one:
-        'Fill in the two output amounts, 1000 satoshis for Laszlo and the rest for your change.',
+        'Fill in the two output amounts: 1000 satoshis to Laszlo in the first output, and the rest to yourself as change in the second output.',
       off_chain_list_two:
-        "To get the money Laszlo will need to broadcast this transaction to the network and account for fees. Let's set aside 1000 sats for miner fees.",
+        "To get the money, Laszlo will need to broadcast this transaction to the network, and that requires a miner fee. Let's set aside 1000 sats to pay that fee. Update the amount in your change output to account for this.",
       off_chain_list_three: 'Write the two output scripts',
       off_chain_list_four:
         'Sign the input by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign</span>',
       // off_chain_list_four:'Send it to Laszlo by clicking "send to bob"',
-      hint_one: `Laszlo spends output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(LASZLO)</span>`,
-      hint_two: `You spend output 1 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU)</span>`,
+      heading_three: 'Hints',
+      hint_one: `Laszlo spends output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO)</span>`,
+      hint_two: `You spend output 1 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU)</span>`,
+      hint_three: `These signatures are not part of the output script`,
     },
     opening_a_channel_three: {
-      title: 'Off-Chain Payment Trust Issue',
-      nav_title: 'Off-Chain Payment Trust Issue',
-      paragraph_one: `—LASZLO: "Wait a minute, that doesn't make any sense–you can still spend that output at any time. You could drink your beer and then return all the money to yourself without me getting anything!`,
-      paragraph_two: `If you want to spend money off-chain with me, I need a guarantee you can't move the money by yourself ON chain."`,
+      title: 'Off-chain payment trust issue',
+      nav_title: 'Off-chain payment trust issue',
+      paragraph_one: `—LASZLO: "Wait a minute, that doesn't make any sense–as long as I don't broadcast the transaction you can still spend those 101,000 sats. You could drink your beer, spend the money on something else, and I would get nothing!`,
+      paragraph_two: `If we're going to transact off-chain, I need a guarantee that the same money you are using to pay me off-chain, cannot be moved by yourself on-chain."`,
     },
     opening_a_channel_four: {
       title: 'Multisig',
       nav_title: 'Multisig',
       heading_one: 'Multisig',
-      paragraph_one: `This game will have to start with a 2-of-2 multisig, confirmed on the blockchain. Once we have that we can figure out a way to make that single on-chain transaction work harder. To do more with less.`,
+      paragraph_one: `Before paying Laszlo, let's first get the funds into a 2-of-2 multisig, confirmed on the blockchain. Then we can figure out a way to make that single on-chain transaction work harder—to do more with less.`,
+      heading_two: 'Instructions',
       multisig_one: 'Fill in the output amount and the output script',
       multisig_two: 'Sign the input by clicking "Sign"',
-      heading_two: 'Hints',
-      hint_one: `You and Laszlo want to work together in the future to spend output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">0 SIG(LASZLO) SIG(YOU)</span>`,
+      heading_three: 'Hints',
+      hint_one_a: `You and Laszlo want to work together in the future to spend output 0 with <br/> `,
+      hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(LASZLO) SIG(YOU) </span>`,
+      hint_two: `Don't forget to set aside miner fees`,
     },
     opening_a_channel_five: {
-      title: 'Refund Protection in Multisig',
-      nav_title: 'Refund Protection in Multisig',
-      paragraph_one: `—LASZLO:  "OK, thanks, this is a good start. But what if I walk away from the table and you never see me again? I could broadcast this transaction, and your 100,000 satoshis would be stuck in a 2-key multisig from which you could never recover.`,
+      title: 'Refund protection in multisig',
+      nav_title: 'Refund protection in multisig',
+      paragraph_one: `—LASZLO:  "OK, thanks. This is a good start. But what if I walk away from the table and you never see me again? I could broadcast this transaction, and your 100,000 satoshis would be stuck in a 2-key multisig from which you could never recover.`,
       paragraph_two: `Do yourself a favor; before signing this, make a refund transaction to know you can recover your money."`,
     },
     updating_the_state_one: {
       title: 'The refund',
       nav_title: 'The refund',
       heading_one: 'The refund',
-      paragraph_one: `A new tab appears: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Refund</span> which starts another TX template on the same screen, with an arrow from the <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multi-Sig</span> output to this TX input.`,
+      paragraph_one: `A new tab appears on your ePhone Infinity: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Refund</span> which starts another TX template on the same screen, with an arrow from the <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multisig</span> output to this TX input.`,
       refund_list_one: `Fill in the output amount and the output script`,
       refund_list_two: `Send it to Laszlo by clicking "Sign" then he can tell us if he will sign it.`,
       refund_list_three: `Don't sign it yourself yet! Let's see what Laszlo thinks, first`,
@@ -3042,7 +3046,11 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       output_zero_sig: 'Output 0 Signature',
       output_one_sig: 'Output 1 Signature',
       sats_distribution:
-        'Remember that Laszlo should only be receiving enough sats for the beer. Also we need to set aside 1,000 sats for the fees incase our channel closes!',
+        'Laszlo should receive enough sats for the beer, and is not responsible for the 1,000 sat miner fees. The fee comes out of your change.',
+      output_script:
+        'The locking script on the output should not contain any signatures (i.e. <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base whitespace-nowrap">OP_PUSH SIG()</span>). If this is part of your script, simply remove it.',
+      miner_fees_basic: `Don't forget to set aside 1,000 sats for miner fees.`,
+      miner_fees: `Don't forget to set aside 1,000 sats from your change for miner fees.`,
     },
   },
 

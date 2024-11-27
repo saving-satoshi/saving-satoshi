@@ -49,6 +49,10 @@ export default function OpeningAChannel2({ lang }) {
             {t('chapter_ten.opening_a_channel_two.paragraph_two')}
           </Text>
 
+          <hr className="my-4 h-[1px] w-full opacity-25" />
+          <Text className="text-lg font-bold md:text-xl">
+            {t('chapter_ten.opening_a_channel_two.heading_two')}
+          </Text>
           <ul className="ml-4 list-disc font-nunito text-lg md:text-xl">
             <li>{t('chapter_ten.opening_a_channel_two.off_chain_list_one')}</li>
             <li>{t('chapter_ten.opening_a_channel_two.off_chain_list_two')}</li>
@@ -59,12 +63,14 @@ export default function OpeningAChannel2({ lang }) {
               {t('chapter_ten.opening_a_channel_two.off_chain_list_four')}
             </li>
           </ul>
+
           <Text className="mt-4 text-lg font-bold md:text-xl">
-            {t('chapter_ten.opening_a_channel_two.heading_two')}
+            {t('chapter_ten.opening_a_channel_two.heading_three')}
           </Text>
-          <ul className="ml-4 list-disc  font-nunito text-lg">
+          <ul className="ml-4 list-disc font-nunito text-lg md:text-xl">
             <li>{t('chapter_ten.opening_a_channel_two.hint_one')}</li>
             <li>{t('chapter_ten.opening_a_channel_two.hint_two')}</li>
+            <li>{t('chapter_ten.opening_a_channel_two.hint_three')}</li>
           </ul>
         </LessonInfo>
       </TransactionChallenge>
