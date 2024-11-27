@@ -194,8 +194,14 @@ const TransactionChallenge: FC<ITransactionProps> = ({
       // Default case
       return i <= allTabs.indexOf(currentTransactionTab) ?? allTabs.length
     })
-    .map((tab) => ({ id: tab, text: tab.includes('refund') ? 'refund' : tab }))
+    .map((tab) => {
+      // Render the first "commitment_you" as "commitment"
+      if (progressKey === 'CH10MAP2' && tab === 'commitment_you') {
+        return { id: tab, text: 'commitment' }
+      }
 
+      return { id: tab, text: tab.includes('refund') ? 'refund' : tab }
+    })
   const returnSuccess = (): SuccessNumbers => {
     if (
       validateOutput0.signature_0 === 0 &&
