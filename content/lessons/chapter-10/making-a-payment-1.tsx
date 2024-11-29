@@ -23,12 +23,12 @@ export default function MakingAPayment1({ lang }) {
       <p className="mt-2 text-lg md:text-xl">
         {t('chapter_ten.making_a_payment_one.paragraph_one')}
       </p>
-      <ul className="ml-4 mt-4 list-disc  font-nunito text-lg">
+      <ul className="ml-4 mt-4 list-disc  font-nunito text-xl">
         <li>{t('chapter_ten.making_a_payment_one.list_one')}</li>
         <li>{t('chapter_ten.making_a_payment_one.list_two')}</li>
         <li>{t('chapter_ten.making_a_payment_one.list_three')}</li>
 
-        <ul className="ml-4 list-decimal font-nunito text-lg">
+        <ul className="ml-4 list-decimal font-nunito text-xl">
           <li>{t('chapter_ten.making_a_payment_one.list_three_sub_one')}</li>
           <li>{t('chapter_ten.making_a_payment_one.list_three_sub_two')}</li>
         </ul>

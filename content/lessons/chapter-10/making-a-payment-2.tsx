@@ -61,8 +61,10 @@ export default function MakingAPayment2({ lang }) {
           <Text className="mt-4 text-lg md:text-xl">
             {t('chapter_ten.making_a_payment_two.paragraph_two')}
           </Text>
-          <Text className="mt-4 text-lg md:text-xl">
-            {t('chapter_ten.making_a_payment_two.paragraph_three')}
+
+          <hr className="my-4 h-[1px] w-full opacity-25" />
+          <Text className="text-lg font-bold md:text-xl">
+            {t('chapter_ten.opening_a_channel_two.heading_two')}
           </Text>
           <ul className="ml-4 mt-4 list-disc  font-nunito text-xl">
             <li>{t('chapter_ten.making_a_payment_two.list_one')}</li>
@@ -71,17 +73,17 @@ export default function MakingAPayment2({ lang }) {
           </ul>
 
           <Text className="mt-4 text-lg font-bold md:text-xl">
-            {t('chapter_ten.making_a_payment_two.heading_two')}
+            {t('chapter_ten.making_a_payment_two.heading_three')}
           </Text>
           <Text className="mt-4 text-lg md:text-xl">
-            {t('chapter_ten.making_a_payment_two.paragraph_four')}
+            {t('chapter_ten.making_a_payment_two.paragraph_three')}
           </Text>
           <ul className="ml-4 mt-4 list-disc  font-nunito text-xl">
             <li>{t('chapter_ten.making_a_payment_two.hint_one')}</li>
             <li>{t('chapter_ten.making_a_payment_two.hint_two')}</li>
           </ul>
           <Text className="mt-4 text-lg md:text-xl">
-            {t('chapter_ten.making_a_payment_two.paragraph_five')}
+            {t('chapter_ten.making_a_payment_two.paragraph_four')}
           </Text>
         </LessonInfo>
       </TransactionChallenge>

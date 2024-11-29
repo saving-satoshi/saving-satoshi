@@ -76,7 +76,11 @@ export default function MakingAPayment8({ lang }) {
           <Text className="mt-4 text-lg md:text-xl">
             {t('chapter_ten.making_a_payment_eight.paragraph_two')}
           </Text>
+          <hr className="my-4 h-[1px] w-full opacity-25" />
 
+          <Text className="mt-4 text-lg font-bold md:text-xl">
+            {t('chapter_ten.making_a_payment_eight.heading_two')}
+          </Text>
           <ul className="ml-4 mt-4 list-disc  font-nunito text-xl">
             <li>{t('chapter_ten.making_a_payment_eight.list_one')}</li>
             <li>{t('chapter_ten.making_a_payment_eight.list_two')}</li>
@@ -90,13 +94,16 @@ export default function MakingAPayment8({ lang }) {
           </Text>
 
           <Text className="mt-8 text-lg font-bold md:text-xl">
-            {t('chapter_ten.making_a_payment_eight.heading_two')}
+            {t('chapter_ten.making_a_payment_eight.heading_three')}
           </Text>
           <Text className="mt-4 text-lg md:text-xl">
             {t('chapter_ten.making_a_payment_eight.paragraph_four')}
           </Text>
 
-          <ul className="ml-4 mt-4 list-disc font-nunito text-xl">
+          <Text className="mt-4 text-lg md:text-xl">
+            {t('chapter_ten.making_a_payment_eight.paragraph_five')}
+          </Text>
+          <ul className="ml-14 mt-4 list-disc font-nunito text-xl">
             <li>
               {t(
                 `chapter_ten.making_a_payment_eight.step_${
