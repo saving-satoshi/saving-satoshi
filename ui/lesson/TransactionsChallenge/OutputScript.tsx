@@ -255,45 +255,6 @@ const OutputScript: FC<IOutput> = ({
       return 2
     }
   }
-  const getDefaultSats = () => {
-    if (step === 0 && prefilledEditable) {
-      if (tab === nextTransactionTab) {
-        return sats
-      }
-      if (tab === currentTransactionTab) {
-        return sats
-      }
-    }
-    if (step === 1 && answerSats && prefilledEditable) {
-      if (tab === currentTransactionTab) {
-        return answerSats[objectOutput]
-      }
-      if (tab === nextTransactionTab) {
-        return sats
-      }
-    }
-    if (!prefilledEditable && currentTransactionTab === tab && !prefilled) {
-      return satsInput[objectOutput]
-    } else if (!prefilledEditable && currentTransactionTab !== tab) {
-      return sats
-    }
-    return sats
-  }
-
-  const getDefaultScript = () => {
-    return prefilled || (prefilledEditable && step === 0)
-      ? Buffer.from(script || '', 'base64').toString('utf-8')
-      : currentTransactionTab !== tab
-      ? Buffer.from(script || '', 'base64').toString('utf-8')
-      : prefilledEditable &&
-        step === 1 &&
-        nextTransactionTab !== tab &&
-        answerSats
-      ? Buffer.from(finalAnswerOutput[objectOutput] || '', 'base64').toString(
-          'utf-8'
-        )
-      : scriptInput[objectOutput]
-  }
 
   useEffect(() => {
     if (validating) {
@@ -341,7 +302,15 @@ const OutputScript: FC<IOutput> = ({
         <input
           placeholder="Enter Sats"
           className="bg-transparent text-white outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-          defaultValue={getDefaultSats()}
+          value={
+            prefilled
+              ? sats
+              : currentTransactionTab !== tab && !prefilledEditable
+              ? sats
+              : prefilledEditable && currentTransactionTab === tab && step === 1
+              ? answerSatsMirrored && answerSatsMirrored[objectOutput]
+              : satsInput[objectOutput]
+          }
           onChange={handleSatsChange}
           pattern="[0-9]+([\.,][0-9]+)?"
           readOnly={
@@ -371,7 +340,18 @@ const OutputScript: FC<IOutput> = ({
           placeholder="Enter Script"
           spellCheck="false"
           rows={3}
-          defaultValue={getDefaultScript()}
+          value={
+            prefilled
+              ? Buffer.from(script || '', 'base64').toString('utf-8')
+              : currentTransactionTab !== tab && !prefilledEditable
+              ? Buffer.from(script || '', 'base64').toString('utf-8')
+              : prefilledEditable && currentTransactionTab === tab && step === 1
+              ? Buffer.from(
+                  finalAnswerOutput[objectOutput] || '',
+                  'base64'
+                ).toString('utf-8')
+              : scriptInput[objectOutput]
+          }
           onChange={handleScriptChange}
           ref={textAreaRef}
           className="min-h-8 resize-y bg-transparent text-white outline-none"
