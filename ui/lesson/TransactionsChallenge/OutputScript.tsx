@@ -346,7 +346,10 @@ const OutputScript: FC<IOutput> = ({
               : currentTransactionTab !== tab && !prefilledEditable
               ? Buffer.from(script || '', 'base64').toString('utf-8')
               : prefilledEditable && currentTransactionTab === tab && step === 1
-              ? finalAnswerOutput[objectOutput]
+              ? Buffer.from(
+                  finalAnswerOutput[objectOutput] || '',
+                  'base64'
+                ).toString('utf-8')
               : scriptInput[objectOutput]
           }
           onChange={handleScriptChange}
