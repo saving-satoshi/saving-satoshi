@@ -255,45 +255,6 @@ const OutputScript: FC<IOutput> = ({
       return 2
     }
   }
-  const getDefaultSats = () => {
-    if (step === 0 && prefilledEditable) {
-      if (tab === nextTransactionTab) {
-        return sats
-      }
-      if (tab === currentTransactionTab) {
-        return sats
-      }
-    }
-    if (step === 1 && answerSats && prefilledEditable) {
-      if (tab === currentTransactionTab) {
-        return answerSats[objectOutput]
-      }
-      if (tab === nextTransactionTab) {
-        return sats
-      }
-    }
-    if (!prefilledEditable && currentTransactionTab === tab && !prefilled) {
-      return satsInput[objectOutput]
-    } else if (!prefilledEditable && currentTransactionTab !== tab) {
-      return sats
-    }
-    return sats
-  }
-
-  const getDefaultScript = () => {
-    return prefilled || (prefilledEditable && step === 0)
-      ? Buffer.from(script || '', 'base64').toString('utf-8')
-      : currentTransactionTab !== tab
-      ? Buffer.from(script || '', 'base64').toString('utf-8')
-      : prefilledEditable &&
-        step === 1 &&
-        nextTransactionTab !== tab &&
-        answerSats
-      ? Buffer.from(finalAnswerOutput[objectOutput] || '', 'base64').toString(
-          'utf-8'
-        )
-      : scriptInput[objectOutput]
-  }
 
   useEffect(() => {
     if (validating) {
