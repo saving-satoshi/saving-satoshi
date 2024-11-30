@@ -23,7 +23,8 @@ export default function HashFrequency({
           {(hashPower / 100).toFixed(2)}
           {!disabled && (
             <span className="fade-in text-white/50">
-              *10<sup>1{hashPower.toString().length === 4 ? '5' : '6'}</sup>
+              &times;10
+              <sup>1{hashPower.toString().length === 4 ? '5' : '6'}</sup>
             </span>
           )}
         </span>
@@ -32,7 +33,7 @@ export default function HashFrequency({
         <span>
           {(43993 / 100).toFixed(2)}
           <span className="text-white/50">
-            *10<sup>1{hashPower.toString().length === 4 ? '5' : '6'}</sup>
+            &times;10<sup>1{hashPower.toString().length === 4 ? '5' : '6'}</sup>
           </span>
         </span>
       )}

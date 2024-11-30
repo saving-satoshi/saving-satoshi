@@ -1358,22 +1358,30 @@ const translations = {
         nav_title: 'The input class',
         heading: 'Looking at the Input class implementation',
         paragraph_one:
-          'Bitcoin transaction inputs always point to existing, unspent transaction outputs. Therefore, our Input class has a method <span className="text-green"> from_output() </span> which is used to construct an Input by passing in the output description:',
+          'Here we have code for two classes: an <span className="font-bold">Input</span> class and an <span className="font-bold">Outpoint</span> (not "output"!) class.',
         paragraph_two:
-          'The first two arguments are the transaction ID and the index of the output of that transaction you want to spend from. Eventually we will pass in the txid and vout values you got above from listunspent. ',
-        paragraph_three: {
-          a: 'Hashes in bitcoin are ',
+          'Inputs come from unspent transaction outputs. If you provide the description of an output to the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method, it will create an instance of the Input class:',
+        paragraph_three: 'The first two arguments are:',
+        paragraph_four:
+          '1. <span className="font-bold">txid: </span>the ID of the transaction that created the output, and',
+        paragraph_five:
+          '2. <span className="font-bold">vout: </span>the index of the output in the transaction\'s entire list of outputs',
+        paragraph_six:
+          'Together, these two pieces of information make up an <span className="font-bold">Outpoint</span>. Eventually we will pass in the txid and vout values that came from executing the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">listunspent</span> command in the previous exercise. ',
+        paragraph_seven:
+          "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. That data is not needed until later so let's temporarily use an empty byte array.",
+        paragraph_eight: {
+          a: 'Hashes in bitcoin are',
           b: {
-            text: ' reversed ',
+            text: ' reversed',
             question: 'Why do we reverse hashes in bitcoin?',
             href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin',
           },
-          c: ' when we see them as hexadecimal strings. When we accept hashes as strings from a user we must reverse the byte order before storing or transmitting them as raw bytes. This is why we reverse the byte order of the txid argument that is passed in here.',
+          c: `, but only when presented to or entered by a user. When a hash is provided in hexadecimal format, the byte order must be reversed before storing or transmitting the data as raw bytes.`,
         },
-        paragraph_four:
-          "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, we will just store that data as an empty byte array, we won't need it until later.",
-        paragraph_five: `We also need a <span className="text-green"> serialize() </span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:`,
-        heading_two: 'Outpoint',
+        paragraph_nine: `You can see an example of this in the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method where it handles the txid argument.`,
+        paragraph_ten: `We also need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:`,
+        heading_three: 'Outpoint',
         table_one: {
           heading: {
             one: 'Description',
@@ -1398,7 +1406,7 @@ const translations = {
             },
           },
         },
-        heading_three: 'Input',
+        heading_four: 'Input',
         table_two: {
           row_one: {
             column: {
@@ -1433,8 +1441,14 @@ const translations = {
             },
           },
         },
-        paragraph_six:
-          'And remember: integers in bitcoin are serialized little-endian!',
+        paragraph_eleven: {
+          a: 'Remember: integers in bitcoin are serialized ',
+          b: {
+            text: 'little-endian',
+            question: 'What is endianness?',
+            href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520endianness%253F',
+          },
+        },
         success: 'The Input class looks good. Great Work!',
       },
       hard: {
@@ -2514,7 +2528,7 @@ const translations = {
       nav_title: 'Multisig',
       heading: 'Multisig',
       paragraph_one:
-        'Multi-signature policies provide a list of public keys and a number of signatures required for a valid spend. It can be described as "m-of-n" meaning "m number of signatures are required from this list of n public keys". The public keys and the m and n values are typically included in the locking script and the spender only needs to provide the right number of signatures.',
+        'Multisignature policies provide a list of public keys and a number of signatures required for a valid spend. It can be described as "m-of-n" meaning "m number of signatures are required from this list of n public keys". The public keys and the m and n values are typically included in the locking script and the spender only needs to provide the right number of signatures.',
       paragraph_two:
         'Holocat appears with a pre-recorded message from Satoshi Nakamoto!',
       paragraph_three:
@@ -2526,7 +2540,7 @@ const translations = {
       heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-1">OP_CHECKMULTISIG</span>',
       subheading_one:
-        'Processes m-of-n multi-signature by following this algorithm.',
+        'Processes m-of-n multisignature by following this algorithm.',
       multisig_list_one:
         'Pop a single integer off the stack. This is the <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span> value.',
       multisig_list_two:
@@ -2737,84 +2751,90 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       nav_title: 'The off-chain transaction',
       heading_one: 'The off-chain transaction',
       paragraph_one:
-        "Let's create a valid Bitcoin transaction but instead of sending it to the network, we'll just send it directly to Laszlo! Laszlo should trade you a beer for this transaction because he knows he effectively has the money even though the transaction is not broadcasted or confirmed.",
-      paragraph_two:
-        "Remember it's the year 2140! A SHA-256 Stout cost 0.0001000 BTC.",
-      heading_two: 'Hints',
+        "Let's create a valid bitcoin transaction but instead of broadcasting it out to the network, we'll give it directly to Laszlo. In return, he should provide you with a beer because he can broadcast the transaction anytime he wants. Once it's confirmed and mined into a block, the money is his.",
+      paragraph_two: `Remember it's the year 2140! A <span className="italic">SHA-256 Stout</span> costs 0.00001000 BTC.`,
+      heading_two: 'Instructions',
       off_chain_list_one:
-        'Fill in the two output amounts, 1000 satoshis for Laszlo and the rest for your change.',
+        'Fill in the two output amounts: 1000 satoshis to Laszlo in the first output, and the rest to yourself as change in the second output.',
       off_chain_list_two:
-        '<span className="font-bold">NB</span>: To get the money Laszlo will need to broadcast this transaction to the network and account for fees. Let\'s set aside 1000 sats for miner fees.',
+        "To get the money, Laszlo will need to broadcast this transaction to the network, and that requires a miner fee. Let's set aside 1000 sats to pay that fee. Update the amount in your change output to account for this.",
       off_chain_list_three: 'Write the two output scripts',
-      off_chain_list_four: 'Sign the input by clicking "sign"',
+      off_chain_list_four:
+        'Sign the input by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign</span>',
       // off_chain_list_four:'Send it to Laszlo by clicking "send to bob"',
-      hint_one: `Laszlo spends output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO)</span>`,
-      hint_two: `You spend output 1 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU)</span>`,
+      heading_three: 'Hints',
+      hint_one: `Laszlo spends output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO)</span>`,
+      hint_two: `You spend output 1 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU)</span>`,
+      hint_three: `These signatures are not part of the output script`,
     },
     opening_a_channel_three: {
-      title: 'Off-Chain Payment Trust Issue',
-      nav_title: 'Off-Chain Payment Trust Issue',
-      paragraph_one: `—LASZLO: "Wait a minute, that doesn't make any sense–you can still spend that output at any time. You could drink your beer and then return all the money to yourself without me getting anything!`,
-      paragraph_two: `If you want to spend money off-chain with me, I need a guarantee you can't move the money by yourself ON chain."`,
+      title: 'Off-chain payment trust issue',
+      nav_title: 'Off-chain payment trust issue',
+      paragraph_one: `—LASZLO: "Wait a minute, that doesn't make any sense–as long as I don't broadcast the transaction you can still spend those 101,000 sats. You could drink your beer, spend the money on something else, and I would get nothing!`,
+      paragraph_two: `If we're going to transact off-chain, I need a guarantee that the same money you are using to pay me off-chain cannot be moved by yourself on-chain."`,
     },
     opening_a_channel_four: {
       title: 'Multisig',
       nav_title: 'Multisig',
       heading_one: 'Multisig',
-      paragraph_one: `This game will have to start with a 2-of-2 multisig, confirmed on the blockchain. Once we have that we can figure out a way to make that single on-chain transaction work harder. To do more with less.`,
+      paragraph_one: `Before paying Laszlo, let's first get the funds into a 2-of-2 multisig, confirmed on the blockchain. Then we can figure out a way to make that single on-chain transaction work harder—to do more with less.`,
+      heading_two: 'Instructions',
       multisig_one: 'Fill in the output amount and the output script',
       multisig_two: 'Sign the input by clicking "Sign"',
-      heading_two: 'Hints',
+      heading_three: 'Hints',
       hint_one_a: `You and Laszlo want to work together in the future to spend output 0 with <br/> `,
-      hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(LASZLO) SIG(YOU) </span>`,
+      hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(LASZLO) SIG(YOU) </span>`,
+      hint_two: `Don't forget to set aside miner fees`,
     },
     opening_a_channel_five: {
-      title: 'Refund Protection in Multisig',
-      nav_title: 'Refund Protection in Multisig',
-      paragraph_one: `—LASZLO:  "OK, thanks, this is a good start. But what if I walk away from the table and you never see me again? I could broadcast this transaction, and your 100,000 satoshis would be stuck in a 2-key multisig from which you could never recover.`,
+      title: 'Refund protection in multisig',
+      nav_title: 'Refund protection in multisig',
+      paragraph_one: `—LASZLO:  "OK, thanks. This is a good start. But what if I walk away from the table and you never see me again? I could broadcast this transaction, and your 100,000 satoshis would be stuck in a 2-key multisig from which you could never recover.`,
       paragraph_two: `Do yourself a favor; before signing this, make a refund transaction to know you can recover your money."`,
     },
     updating_the_state_one: {
       title: 'The refund',
       nav_title: 'The refund',
       heading_one: 'The refund',
-      paragraph_one: `A new tab appears: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Refund</span> which starts another TX template on the same screen, with an arrow from the <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multi-Sig</span> output to this TX input.`,
+      paragraph_one: `A new tab appears on your ePhone Infinity: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Refund</span> which starts another TX template on the same screen, with an arrow from the <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multisig</span> output to this TX input.`,
+      heading_two: 'Instructions',
       refund_list_one: `Fill in the output amount and the output script`,
       refund_list_two: `Send it to Laszlo by clicking "Sign" then he can tell us if he will sign it.`,
       refund_list_three: `Don't sign it yourself yet! Let's see what Laszlo thinks, first`,
-      heading_two: 'Hints',
-      hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) </span>`,
+      heading_three: 'Hints',
+      hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span>`,
     },
     updating_the_state_two: {
       title: 'Securing payments',
       nav_title: 'Securing payments',
-      paragraph_one: `—LASZLO: "OK, nice, I'll sign this and send it back to you, and then you can sign that funding transaction.`,
-      paragraph_two: `Hey, wait a minute, though. If I sign this, we're back where we started: You can broadcast this transaction even after I give you a beer, and I won't get paid`,
+      paragraph_one: `—LASZLO: "OK, nice. I'll sign this and send it back to you, and then you can sign that funding transaction for the 2-of-2 multisig.`,
+      paragraph_two: `Hey... wait a minute. If I sign this, we're back where we started: You can broadcast this transaction even after I give you a beer, and I won't get my money.`,
       paragraph_three:
-        'Before I sign this, I need a guarantee that your full refund transaction can be revoked.',
-      paragraph_four: `Once you actually pay me for the beer, you shouldn't be able to broadcast that. And if you DO try to broadcast the revoked transaction, I get to keep ALL 100000 satoshis!"`,
+        'Before I sign this, I need a guarantee that this refund transaction can be revoked.',
+      paragraph_four: `Once you actually pay me for the beer, you shouldn't be able to broadcast this refund transaction. And if you DO try to broadcast it after it has been revoked, I get to keep <span className="italic">all</span> 100,000 satoshis!"`,
     },
     updating_the_state_three: {
       title: 'The revocation',
       nav_title: 'The revocation',
       heading_one: 'The revocation',
-      paragraph_one: `You can make the output to yourself revocable by Laszlo by adding an extra condition to the 100000 satoshi output. The logic branch should allow Laszlo to spend the output with his own key AND a new private key that you generate. To revoke the transaction, you will just give Laszlo the new private key. It's a very unusual thing to do! But since it puts 100000 satoshis at stake, it proves to Laszlo you will NOT broadcast it after revoking it.`,
-      paragraph_two: `You generate a new key pair: a private key revocation_you_1 and PUBKEY(REVOCATION_YOU_1). You will generate a new key pair like this every time you want to update the state of the payment channel`,
+      paragraph_one: `You can make the 100,000 satoshi output to yourself revocable by Laszlo if you add an extra condition to it. The logic branch should allow Laszlo to spend the output with his own key AND a new private key that you generate. To revoke the transaction, you give Laszlo the new private key. It's a very unusual thing to do, but it puts 100,000 satoshis at stake, and allows Laszlo to sweep the funds if you try to broadcast the transaction after revoking it.`,
+      paragraph_two: `You generate a new key pair: a private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span> and <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_YOU_1)</span>. You will generate a new key pair like this every time you want to update the state of the payment channel.`,
+      heading_two: `Instructions`,
       revocation_list_one: `Add an IF condition to the script so Laszlo can spend the output ONLY if he ALSO has the revocation key (you will continue keeping the key secret until it is time to revoke!)`,
-      revocation_list_two: `Send it to Laszlo by clicking "Send to Laszlo" so he can sign it`,
+      revocation_list_two: `Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> so he can sign it`,
       revocation_list_three: `Don't sign it yourself yet!`,
-      heading_two: `Hints`,
+      heading_three: `Hints`,
       paragraph_three: `Output 0 is spent by EITHER:`,
-      hint_one: `You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) 1 </span>`,
-      hint_two: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span>`,
+      hint_one: `The initial stack if you claim the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>`,
+      hint_two: `The initial stack if Laszlo claims the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span>`,
     },
     updating_the_state_four: {
       title: 'The Race to Revoke',
-      nav_title: 'The Race to Revoke',
+      nav_title: 'The race to revoke',
       paragraph_one:
-        '—LASZLO: "Well, this is better, but it just occurred to me that even if I have the revocation key, it will still be a race between you and me to spend this output',
+        '—LASZLO: "Well, this is better, but it just occurred to me that even if I have the revocation key, it will still be a race between you and me to spend this output.',
       paragraph_two:
-        'I need a decent head start so I have a chance to notice you cheated me. Then I can sweep the bitcoin with the revocation key before you get your full refund."',
+        'I need a decent head start so I have a chance to notice if you cheated me. Then I can sweep the bitcoin with the revocation key before you take a full refund."',
     },
     updating_the_state_five: {
       title: 'The time lock',
@@ -2823,22 +2843,20 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       time_lock_list_one:
         'Add a 700 block delay before you can spend the output',
       time_lock_list_two:
-        'Send it to Laszlo by clicking "Sign" so he can sign it',
+        'Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign</span> so he can sign it',
       time_lock_list_three: "Don't sign it yourself yet!",
       heading_two: 'Hints',
       paragraph_one: 'Output 0 is spent by EITHER:',
       hint_one:
-        'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) 1 </span> ',
+        'The initial stack if you claim the funds after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span> ',
       hint_two:
-        'Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span> ',
+        'The initial stack if Laszlo claims the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span> ',
     },
     updating_the_state_six: {
-      title: 'Channel Open with Laszlo',
-      nav_title: 'Channel Open with Laszlo',
+      title: 'Channel open with Laszlo',
+      nav_title: 'Channel open with Laszlo',
       paragraph_one:
-        'This time, when you click Send to Laszlo, he smiles and applauds! He signs the child transaction ([X] Laszlo). Now you can sign the parent transaction and send it to the blockchain: THE CHANNEL IS OPEN',
-      paragraph_two:
-        "You've gotten Laszlo to agree to let you buy drinks from him off-chain and have opened up a channel to do so!",
+        'This time, when you give the transaction to Laszlo, he smiles and applauds! He signs the refund (child) transaction and now you can sign and broadcast the parent transaction that deposits the funds to the 2-of-2 multisig. The payment channel is now open!',
     },
     making_a_payment_one: {
       title: 'Making a payment',
@@ -2846,101 +2864,111 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       heading_one: 'Making a payment',
       paragraph_one: "Let's recap:",
       list_one:
-        'You sent 100000 satoshis to a 2-of-2 multisig output between you and Laszlo',
-      list_two: 'You have, offline, a transaction that spends that output.',
-      list_three: 'That offline output enables EITHER',
-      list_three_sub_one: 'You to get all your money back after 700 blocks',
+        'You sent 100,000 satoshis to a 2-of-2 multisig output between you and Laszlo.',
+      list_two:
+        'You have, offline, a refund transaction that spends that output.',
+      list_three:
+        'That refund transaction specifies two options for how the funds can be spent:',
+      list_three_sub_one:
+        'You to get all 100,000 satoshis back after 700 blocks, or',
       list_three_sub_two:
-        'Laszlo gets all the money if he gets the private key revocation_you_1 from you',
+        'Laszlo gets all the money if he gets the private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span> from you',
       list_four:
-        'Laszlo has already signed it, and you can sign it whenever you want to broadcast it.',
+        'Laszlo has already signed this refund transaction, and you can sign it whenever you want to broadcast it.',
       list_five:
-        'Once Laszlo signed the offline child transaction, you were safe to sign and broadcast the parent transaction',
+        'Once Laszlo signed this refund (child) transaction, you were safe to sign and broadcast the parent transaction that sends the funds to the 2-of-2 multisig.',
       paragraph_two:
-        'The confirmed transaction that funded the multisig output is called the funding transaction. Confirming it in the blockchain means your channel is now OPEN.',
-      paragraph_three:
-        "The offline transaction that spends that output is called a commitment transaction. Confirming it in the blockchain would CLOSE the channel. The first commitment transaction is your full refund, because you haven't made any payments to Laszlo yet.",
+        'The transaction that funded the multisig output is called the <span className="font-bold">funding transaction</span>. Confirming it on the blockchain <span className="font-bold">opens</span> the payment channel.',
+      paragraph_three: `The offline refund transaction that spends the output of the funding transaction is called the <span className="font-bold">commitment transaction</span>. Confirming it on the blockchain would <span className="font-bold">close</span> the channel. The first commitment transaction is your full refund because you haven't made any payments to Laszlo yet.`,
       paragraph_four:
-        'While the channel is OPEN, you and Laszlo can make offline payments to each other, back and forth, by negotiating new commitment transactions and revoking old ones. As you buy more drinks, your "refund" amount will go down and Laszlo’s outputs amounts will go up.',
+        'While the channel is open, you and Laszlo can make offline payments to each other, back and forth, by negotiating new commitment transactions and revoking old ones. As you buy more drinks, your "refund" amount will go down and Laszlo’s portion of the original 100,000 satoshis locked in the multisig goes up.',
     },
     making_a_payment_two: {
       title: 'Buy a beer!',
       nav_title: 'Buy a beer!',
       heading_one: 'Buy a beer!',
-      paragraph_one: `ow it's finally time to send bitcoin off-chain to Laszlo. We will "simply" add a 1,000 satoshi output for him in an updated commitment transaction. We will also need to promise never to broadcast the old commitment transaction, which didn't pay Laszlo anything. That is guaranteed when we send him the revocation key for that old commitment transaction, which we'll do next.`,
-      paragraph_two: `You'll need to generate another revocation key for this new state in case you want to repeat the cycle (revoke THIS transaction for another new commitment where Laszlo gets paid for a second beer) it is a party after all!`,
-      paragraph_three: `You generate a private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">revocation_you_2</span>`,
-      list_one: `Deduct 1000 satoshis from your output`,
+      paragraph_one: `Now it's finally time to send bitcoin off-chain to Laszlo. We will "simply" add a 1,000 satoshi output for him in an updated commitment transaction. We will also need to promise never to broadcast the old commitment transaction, which doesn't allocate any money to Laszlo. That is guaranteed when we send him the revocation key for the now old commitment transaction, which we'll do next.`,
+      paragraph_two: `You generate another revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span> for this new state. If you wanted to repeat the cycle and buy a second drink, you would revoke <span className="font-bold">this</span> transaction for another new commitment where Laszlo gets paid for a second beer. It is a party after all!`,
+      heading_two: `Instructions`,
+      list_one: `Deduct 1,000 satoshis from your output`,
       list_two: `Add 1000 satoshis to the second output and fill in the script for Laszlo`,
       list_three: `Send it to Laszlo by clicking "Send to Laszlo" so he can sign it`,
       list_four: `Don't sign it yourself yet!`,
-      heading_two: `Hints`,
-      paragraph_four: `Output 0 is spent by EITHER:`,
+      heading_three: `Hints`,
+      paragraph_three: `Output 0 is spent by either:`,
       hint_one:
-        'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">SIG(YOU) 1 </span>',
-      hint_two: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_YOU_2) SIG(LASZLO) 0 </span>`,
-      paragraph_five: `Output 1 is spent by Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO) </span>`,
+        'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU) 1 </span>',
+      hint_two: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_2) SIG(LASZLO) 0 </span>`,
+      paragraph_four: `Output 1 is spent by Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span>`,
     },
     making_a_payment_three: {
-      title: `Laszlo's Blockchain Dilemma`,
-      nav_title: `Laszlo's Blockchain Dilemma`,
-      paragraph_one: `Laszlo looks at this transaction for a second and grabs a glass from behind the bar but doesn't pour the beer`,
+      title: `Laszlo's blockchain dilemma`,
+      nav_title: `Laszlo's blockchain dilemma`,
+      paragraph_one: `Laszlo looks at this transaction for a second and grabs a glass from behind the bar but doesn't pour the beer.`,
       paragraph_two: `—LASZLO: "Wait. If you don't sign this transaction, I have nothing. You could disappear with this beer, and I wouldn't be able to confirm anything on the chain. Maybe you should sign it first, then send it to me so we both have a copy?"`,
     },
     making_a_payment_four: {
-      title: `Holocat's Trustless Warning`,
-      nav_title: `Holocat's Trustless Warning`,
+      title: `Holocat's trustless warning`,
+      nav_title: `Holocat's trustless warning`,
       paragraph_one: `That's when Holocat materializes on the table, standing up on her hind legs with her front paws outstretched, and meows.`,
-      paragraph_two: `—HOLOCAT: "Hang on, you can't give Laszlo your signature for this transaction! Next time you make a payment, you'll give him the revocation key revocation_you_2. He'll have everything he needs to steal all 100,000 satoshis!"`,
-      paragraph_three: `Things are getting a bit messy now. Laszlo does need something before he can give you a beer with confidence that he will get paid for it. But he can't have your transaction because then he'll end up accessing all your money! Laszlo is a great guy, and his bar is one of the best in the city, but it would still be nice if we didn't have to trust him.`,
+      paragraph_two: `—HOLOCAT: "Hang on, you can't give Laszlo your signature for this transaction! Next time you make a payment, you'll give him the revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>. He'll have everything he needs to steal all 100,000 satoshis!"`,
+      paragraph_three: `Things are getting a bit messy. Before he gives you a beer, Laszlo needs something to ensure he will get paid. But he can't have your transaction because then he'll have access to all your money! Laszlo is a great guy, and his bar is one of the best in the city, but it would be nice if we didn't have to trust him.`,
     },
     making_a_payment_five: {
       title: `Asymmetry`,
       nav_title: `Asymmetry`,
       heading_one: `Asymmetry`,
-      paragraph_one: `So we know we want Laszlo to sign the first transaction but we don't want him to have our signature on it. We'll need to construct a second transaction for him that DOES have our signature on it, but without any possibility of him just spending all the money unfairly.`,
-      paragraph_two: `And if Laszlo is going to have his own commitment transaction, then don't we also want that transaction to be revocable?! Yes in fact, Laszlo's commitment transaction will be a mirror-image of yours. The revocable time lock script will use Laszlo's first revocation key PUBKEY(revocation_bob_1) and the large refund output will just directly to you without any fuss.`,
+      paragraph_one: `We know we want Laszlo to sign the first transaction but we don't want him to have our signature on it. We'll need to construct a second transaction for him that <span className="font-bold">does</span> have our signature on it, but without any possibility of him spending all the money unfairly.`,
+      paragraph_two: `If Laszlo is going to have his own commitment transaction, then don't we also want that transaction to be revocable? Yes! In fact, Laszlo's commitment transaction will be a mirror-image of yours. The revocable time lock script will use Laszlo's first revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_LASZLO_1)</span> and the large refund output will go directly to you without any fuss.`,
+      heading_two: `Instructions`,
       list_one: `Fill in the amounts and output scripts for Laszlo's commitment transaction`,
       list_two: `Sign it and send it to Laszlo, who will then sign your commitment transaction and send that back to you`,
-      heading_two: 'Hints',
-      paragraph_three: 'Output 0 is spent by EITHER:',
+      heading_three: 'Hints',
+      paragraph_three: 'Output 0 is spent by either:',
       hint_one:
-        'Laszlo, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">SIG(LASZLO) 1 </span>',
-      hint_two: `You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_LASZLO_1) SIG(YOU) 0 </span>`,
-      paragraph_four: `Output 1 is spent by You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) </span>`,
+        'Laszlo, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(LASZLO) 1 </span>',
+      hint_two: `You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_1) SIG(YOU) 0 </span>`,
+      paragraph_four: `Output 1 is spent by You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span>`,
     },
     making_a_payment_six: {
       title: `Complete the payment`,
       nav_title: `Complete the payment`,
       heading_one: `Complete the payment`,
-      paragraph_one: "Let's do another quick recap.",
+      paragraph_one: "Let's do another recap.",
       list_one: 'A 2 of 2 output is confirmed on the blockchain',
       paragraph_two:
-        'There are several off-chain transactions that spend that output:',
-      paragraph_three: 'You have these transactions:',
-      paragraph_four: 'Commitment 1 (You):',
+        'There are several off-chain transactions that spend the 100,000 satoshi (sat) output locked in the 2-of-2 multisig:',
+      paragraph_three: 'You will end up with these transactions:',
+      paragraph_four: 'Commitment 1 (You)',
       commitment_one_you: {
-        list_one: 'Input 0: signed by Laszlo',
+        list_one:
+          '<span className="font-semibold">Input 0:</span> signed by Laszlo',
         list_two:
-          'Output 0: 100000 satoshis to you after 700 blocks or Laszlo with revocation_you_1',
+          '<span className="font-semibold">Output 0:</span> 99,000 sats to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>',
+        list_three: `<span className="font-semibold">Miner fees:</span> 1,000 sats`,
       },
       commitment_two_you: {
-        list_one: 'Input 0: signed by Laszlo',
+        list_one:
+          '<span className="font-semibold">Input 0:</span> signed by Laszlo',
         list_two:
-          'Output 0: 99000 satoshis to you after 700 blocks or Laszlo with revocation_you_2',
-        list_three: 'Output 1: 1000 satoshis to Laszlo',
+          '<span className="font-semibold">Output 0:</span> 98,000 sats to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>',
+        list_three:
+          '<span className="font-semibold">Output 1:</span> 1,000 sats to Laszlo',
+        list_four: `<span className="font-semibold">Miner fees:</span> 1,000 sats`,
       },
-      paragraph_five: 'Commitment 2 (You):',
-      paragraph_six: 'Laszlo has this transaction:',
-      paragraph_seven: 'Commitment 2 (Laszlo):',
+      paragraph_five: 'Commitment 2 (You)',
+      paragraph_six: 'Laszlo will end up with this transaction:',
+      paragraph_seven: 'Commitment 2 (Laszlo)',
       commitment_two_laszlo: {
-        list_one: 'Input 0: signed by You',
+        list_one:
+          '<span className="font-semibold">Input 0:</span> signed by you',
         list_two:
-          'Output 0: 1000 satoshis to Laszlo after 700 blocks or You with revocation_laszlo_1',
-        list_three: 'Output 1: 99000 satoshis to You',
+          '<span className="font-semibold">Output 0:</span> 1,000 sats to Laszlo after 700 blocks or you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_LASZLO_1</span>',
+        list_three:
+          '<span className="font-semibold">Output 1:</span> 98,000 sats to you',
+        list_four: `<span className="font-semibold">Miner fees:</span> 1,000 sats`,
       },
-      paragraph_eight:
-        "All three of these transactions are signed and valid, but Laszlo hasn't handed you a beer yet. Why not? Only one thing left to do...",
+      paragraph_eight: `All three of these transactions are signed and valid, but Laszlo hasn't handed you a beer yet. Why not? Only one thing left to do, send Laszlo your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>!`,
     },
     making_a_payment_seven: {
       title: `🍺 Ahhhhhhh, nice.`,
@@ -2951,19 +2979,28 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       title: `Make another payment`,
       nav_title: `Make another payment`,
       heading_one: `Make another payment`,
-      paragraph_one: `The night is still young, and you're not flying your Budgetcopter home. Got time for another beer? Now that you and Laszlo have your asymmetrical transactions and a flow worked out with revocation keys, let's run the protocol a few more times.`,
-      paragraph_two: `The two transactions representing the current state are on the screen, where you have paid Laszlo 1,000 satoshis. Send another 1,000 satoshi payment to Laszlo.`,
-      list_one: 'Update the amounts and output scripts',
+      paragraph_one: `The night is still young, and you're not flying your Budgetcopter home. Got time for another beer? Now that you and Laszlo have your asymmetric transactions and a flow worked out with revocation keys, let's run the protocol again.`,
+      paragraph_two: `The two commitment transactions representing the current state where you have paid Laszlo 1,000 sats for a beer are on your ePhone Infinity screen.`,
+      heading_two: `Instructions`,
+      list_one: `Update the amounts and output scripts for Laszlo's new commitment transaction`,
       list_two: "Sign Laszlo's transaction and send it to him",
-      list_three: `Laszlo will revoke his last state by sending you  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_LASZLO_1 </span>`,
+      list_three: `Update your commitment transaction: Laszlo will revoke his last state by sending you <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">REVOCATION_LASZLO_1</span>. Update the amounts and output scripts in your commitment transaction.`,
       list_four: 'Send your transaction to Laszlo so he can sign it',
-      list_five: `Once you have Laszlo's signature, send him your  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_YOU_1 </span> `,
+      list_five: `Once you have Laszlo's signature, send him your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_YOU_2 </span> `,
       paragraph_three: 'Enjoy 🍺',
-      heading_two: 'Hints',
-      paragraph_four: 'Output 0 is spent by EITHER:',
-      hint_one: `You, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(YOU) 1 </span>`,
-      hint_two: `Laszlo:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> 0 SIG(REVOCATION_YOU_3) SIG(LASZLO) 0 </span> `,
-      paragraph_five: `Output 1 is spent by Laszlo <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> SIG(LASZLO) </span> `,
+      heading_three: 'Hints',
+      paragraph_four: `Don't forget to set aside 1,000 sats for miner fees`,
+      paragraph_five: 'Output 0 is spent by either:',
+      step_one: {
+        hint_one: `Laszlo, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) 1 </span>`,
+        hint_two: `You:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_2) SIG(YOU) 0 </span> `,
+        hint_three: `Output 1 is spent by You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span> `,
+      },
+      step_two: {
+        hint_one: `You, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>`,
+        hint_two: `Laszlo:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_3) SIG(LASZLO) 0 </span> `,
+        hint_three: `Output 1 is spent by Laszlo <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span> `,
+      },
     },
 
     outro_one: {
@@ -3010,7 +3047,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       nav_title: 'Moving beyond Saving Satoshi',
       heading: 'Bitcoin still needs your help...',
       paragraph_one:
-        'Although 2140 may seem distant, Bitcoin’s mission remains timeless: to create money that is fair, open, and honest. However, achieving this vision will require everyone’s efforts—including yours.',
+        'Although 2139 may seem distant, Bitcoin’s mission remains timeless: to create money that is fair, open, and honest. However, achieving this vision will require everyone’s efforts—including yours.',
       paragraph_two:
         'You’ve shown that you understand bitcoin. Now is the perfect time to turn that knowledge into action by contributing to one of the most important technologies ever.',
       paragraph_three:
@@ -3021,7 +3058,11 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       output_zero_sig: 'Output 0 Signature',
       output_one_sig: 'Output 1 Signature',
       sats_distribution:
-        'Remember that Laszlo should only be receiving enough sats for the beer. Also we need to set aside some sats for the fees incase our channel closes!',
+        'Laszlo should receive enough sats for the beer, and is not responsible for the 1,000 sat miner fees. The fee comes out of your change.',
+      output_script:
+        'The locking script on the output should not contain any signatures (i.e. <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base whitespace-nowrap">OP_PUSH SIG()</span>). If this is part of your script, simply remove it.',
+      miner_fees_basic: `Don't forget to set aside 1,000 sats for miner fees.`,
+      miner_fees: `Don't forget to set aside 1,000 sats from your change for miner fees.`,
     },
   },
 
@@ -3056,6 +3097,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     chapter_complete: 'Chapter complete',
     challenge: 'Challenge',
     help_tooltip: 'Need help?',
+    your_language: 'Your Language',
   },
 
   modal_signin: {
@@ -3124,6 +3166,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     next_step_message: 'Looks good now lets move on to the next step.',
     try_again: 'Try again',
     next: 'Next',
+    skip_challenge_first: "Let's move on to the first challenge!",
+    skip_challenge_last: "Let's move on to the last challenge!",
   },
 
   hasher: {

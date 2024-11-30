@@ -16,7 +16,7 @@ export default function OpeningAChannelFour({ lang }) {
     <ResourcePage
       lang={lang}
       readingResources={<></>}
-      tipsResources={<>{t('chapter_ten.resources.sats_distribution')}</>}
+      tipsResources={<>{t('chapter_ten.resources.miner_fees_basic')}</>}
       codeResources={
         <>
           <Text>{t('help_page.solution')}</Text>

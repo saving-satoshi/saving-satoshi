@@ -32,7 +32,7 @@ export default function TextImageDisplay({
 
   return (
     <div className="flex grow">
-      <div className="lg:flex lg:grow">
+      <div className="w-full lg:flex lg:grow">
         <div className="relative h-[375px] lg:order-last lg:flex lg:h-full lg:shrink lg:basis-1/2 lg:border-l lg:border-white/25">
           {typeof imageSrc === 'string' ? (
             <Image

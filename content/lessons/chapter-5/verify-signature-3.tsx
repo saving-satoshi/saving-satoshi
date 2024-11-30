@@ -53,7 +53,7 @@ export default function DeriveMessage6({ lang }) {
             {t('chapter_five.verify_signature_three.paragraph_three')}
           </p>
           <p className="max-w-[900px] break-all px-[15px] py-[10px] text-left font-space-mono text-base md:text-lg">
-            sig_der = """
+            sig_der = &#34;&#34;&#34;
             <span className={clsx({ 'text-[#28B123]': step >= 1 })}>3044</span>
             <span className={clsx({ 'text-[#EF960B]': step >= 1 })}>0220</span>
             <span className={clsx({ 'text-[#3DCFEF]': step >= 1 })}>
@@ -63,7 +63,7 @@ export default function DeriveMessage6({ lang }) {
             <span className={clsx({ 'text-[#D06AF4]': step === 2 })}>
               181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09
             </span>
-            """
+            &#34;&#34;&#34;
           </p>
         </div>
       </LessonInfo>

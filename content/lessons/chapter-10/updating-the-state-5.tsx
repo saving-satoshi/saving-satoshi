@@ -3,6 +3,8 @@
 import { useTranslations } from 'hooks'
 import { LessonInfo, Text } from 'ui'
 import TransactionChallenge from 'ui/lesson/TransactionsChallenge'
+import { useEffect, useState } from 'react'
+import { SuccessNumbers } from 'ui/common/StatusBar'
 
 export const metadata = {
   title: 'chapter_ten.updating_the_state_five.title',
@@ -12,49 +14,62 @@ export const metadata = {
 
 export default function UpdatingTheState5({ lang }) {
   const t = useTranslations(lang)
+  const [hydrated, setHydrated] = useState(false)
+  const [success, setSuccess] = useState<SuccessNumbers>(0)
+  useEffect(() => {
+    setHydrated(true)
+  }, [])
 
   return (
-    <TransactionChallenge
-      initialStack={{
-        output_0: {
-          0: ['0', 'SIG(REVOCATION_YOU_1)', 'SIG(LASZLO)', '0'],
-          1: ['SIG(YOU)', '1'],
-        },
-        output_1: { 0: [] },
-      }}
-      nSequenceTime={700}
-      answerScript={{
-        output_0: [
-          'OP_IF',
-          'OP_PUSH',
-          'OP_CHECKSEQUENCEVERIFY',
-          '700',
-          'PUBKEY(REVOCATION_YOU_1)',
-          'OP_ELSE',
-          'OP_CHECKMULTISIG',
-        ],
-        output_1: [],
-      }}
-      progressKey={metadata.key}
-      currentTransactionTab="refund_2"
-      laszloWillNotSign
-    >
-      <LessonInfo>
-        <Text className="text-lg font-bold md:text-xl">
-          {t('chapter_ten.updating_the_state_five.heading_one')}
-        </Text>
-        <ul className="ml-4 mt-4 list-disc  font-nunito text-xl">
-          <li>{t('chapter_ten.updating_the_state_five.time_lock_list_one')}</li>
-          <li>{t('chapter_ten.updating_the_state_five.time_lock_list_two')}</li>
-        </ul>
-        <Text className="mt-4 text-lg font-bold md:text-xl">
-          {t('chapter_ten.updating_the_state_five.heading_two')}
-        </Text>
-        <ul className="ml-4 mt-4 list-disc  font-nunito text-xl">
-          <li>{t('chapter_ten.updating_the_state_five.hint_one')}</li>
-          <li>{t('chapter_ten.updating_the_state_five.hint_two')}</li>
-        </ul>
-      </LessonInfo>
-    </TransactionChallenge>
+    hydrated && (
+      <TransactionChallenge
+        success={success}
+        setSuccess={setSuccess}
+        initialStack={{
+          output_0: {
+            0: ['0', 'SIG(REVOCATION_YOU_1)', 'SIG(LASZLO)', '0'],
+            1: ['SIG(YOU)', '1'],
+          },
+          output_1: { 0: [] },
+        }}
+        nSequenceTime={700}
+        answerScript={{
+          output_0: [
+            'OP_IF',
+            'OP_PUSH',
+            'OP_CHECKSEQUENCEVERIFY',
+            '700',
+            'PUBKEY(REVOCATION_YOU_1)',
+            'OP_ELSE',
+            'OP_CHECKMULTISIG',
+          ],
+          output_1: [],
+        }}
+        progressKey={metadata.key}
+        currentTransactionTab="refund_2"
+        laszloWillNotSign
+      >
+        <LessonInfo>
+          <Text className="text-lg font-bold md:text-xl">
+            {t('chapter_ten.updating_the_state_five.heading_one')}
+          </Text>
+          <ul className="ml-4 mt-4 list-disc  font-nunito text-xl">
+            <li>
+              {t('chapter_ten.updating_the_state_five.time_lock_list_one')}
+            </li>
+            <li>
+              {t('chapter_ten.updating_the_state_five.time_lock_list_two')}
+            </li>
+          </ul>
+          <Text className="mt-4 text-lg font-bold md:text-xl">
+            {t('chapter_ten.updating_the_state_five.heading_two')}
+          </Text>
+          <ul className="ml-4 mt-4 list-disc  font-nunito text-xl">
+            <li>{t('chapter_ten.updating_the_state_five.hint_one')}</li>
+            <li>{t('chapter_ten.updating_the_state_five.hint_two')}</li>
+          </ul>
+        </LessonInfo>
+      </TransactionChallenge>
+    )
   )
 }

@@ -1,14 +1,20 @@
-import React, { FC, useEffect, useState, useRef } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import HyperLink from 'shared/icons/Hyperlink'
 import { Text } from 'ui/common'
 import { SignatureType, SpendingConditions } from '.'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
-import { MainState, T } from '../OpCodeChallenge/runnerTypes'
+import { MainState } from '../OpCodeChallenge/runnerTypes'
+import { finalAnswerOutput } from 'utils/data'
 
 interface IOutput {
   prefilled?: boolean
+  prefilledEditable?: boolean
   output: 'output 0' | 'output 1'
+  step: number
   currentTransactionTab: string
+  nextTransactionTab?: string
+  answerSats?: Record<'output_0' | 'output_1', string>
+  answerSatsMirrored?: Record<'output_0' | 'output_1', string>
   sats: string
   script: string
   progressKey: string
@@ -35,9 +41,14 @@ interface IOutput {
 }
 const OutputScript: FC<IOutput> = ({
   prefilled,
+  prefilledEditable,
   progressKey,
   output,
+  step,
   currentTransactionTab,
+  nextTransactionTab,
+  answerSats,
+  answerSatsMirrored,
   sats,
   script,
   tab,
@@ -58,7 +69,6 @@ const OutputScript: FC<IOutput> = ({
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const caretPositionRef = useRef(0)
   const objectOutput = output === 'output 0' ? 'output_0' : 'output_1'
-  const currentSatsInput = satsInput[objectOutput]
   const currentScriptInput = scriptInput[objectOutput]
 
   const executeScriptAsync = async () => {
@@ -102,20 +112,68 @@ const OutputScript: FC<IOutput> = ({
           ),
         }))
       }
+    } else if (step === 1 && nextTransactionTab === tab) {
+      if (initialStack[objectOutput][1]) {
+        for (let x = 0 as 0 | 1; x < 2; x++) {
+          setValidateScript((prev) => ({
+            ...prev,
+            [`signature_${x}`]: checkChallengeSuccess(
+              [
+                LanguageExecutor.RunCode(
+                  scriptInputString,
+                  initialStack[objectOutput][x],
+                  height,
+                  nSequenceTime
+                )?.state || [],
+              ],
+              scriptInputArray
+            ),
+          }))
+        }
+      } else {
+        setValidateScript((prev) => ({
+          ...prev,
+          signature_0: checkChallengeSuccess(
+            [
+              LanguageExecutor.RunCode(
+                scriptInputString,
+                initialStack[objectOutput][0],
+                height,
+                nSequenceTime
+              )?.state || [],
+            ],
+            scriptInputArray
+          ),
+        }))
+      }
     }
-    const getErrorMessage = (index) => {
+
+    const getErrorMessageOutputZero = (index: number) => {
       return LanguageExecutor.RunCode(
-        scriptInput[objectOutput],
-        initialStack[objectOutput][index],
+        scriptInput['output_0'],
+        initialStack['output_0'][index],
         height,
         nSequenceTime
       )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
     }
-    const errorMessage0 = getErrorMessage(0)
-    const errorMessage1 = getErrorMessage(1)
+    const getErrorMessageOutputOne = (index: number) => {
+      return LanguageExecutor.RunCode(
+        scriptInput['output_1'],
+        initialStack['output_1'][index],
+        height,
+        nSequenceTime
+      )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
+    }
+    const errorMessageOutput0 =
+      getErrorMessageOutputZero(0) || getErrorMessageOutputZero(1)
+    const errorMessageOutput1 = getErrorMessageOutputOne(0)
 
-    if (errorMessage0 || errorMessage1) {
-      setErrorMessage(errorMessage1 || errorMessage1 || '')
+    if (errorMessageOutput0) {
+      setErrorMessage(`Output 0: ${errorMessageOutput0}`)
+    } else if (errorMessageOutput1) {
+      setErrorMessage(`Output 1: ${errorMessageOutput1}`)
+    } else {
+      setErrorMessage('')
     }
   }
 
@@ -144,6 +202,19 @@ const OutputScript: FC<IOutput> = ({
     }
 
     const hasCorrectSats = () => {
+      if (answerSats && answerSatsMirrored) {
+        const isCorrect =
+          (step === 0 &&
+            satsInput[objectOutput] === answerSats[objectOutput]) ||
+          (step === 1 &&
+            satsInput[objectOutput] === answerSatsMirrored[objectOutput])
+
+        if (!isCorrect) {
+          setErrorMessage('Make sure the sats are distributed correctly')
+        }
+
+        return isCorrect
+      }
       if (satsInput[objectOutput] !== sats) {
         setErrorMessage('Make sure the sats are distributed correctly')
       }
@@ -199,7 +270,7 @@ const OutputScript: FC<IOutput> = ({
         caretPositionRef.current
       )
     }
-  }, [currentScriptInput, currentSatsInput])
+  }, [currentScriptInput])
 
   useEffect(() => {
     if (scriptInput[objectOutput] === '') {
@@ -209,36 +280,60 @@ const OutputScript: FC<IOutput> = ({
     }
   }, [scriptInput[objectOutput], onScriptEmpty])
 
+  useEffect(() => {
+    if (prefilledEditable) {
+      setSatsInput((prev) => ({
+        ...prev,
+        [objectOutput]: sats,
+      }))
+      setScriptInput((prev) => ({
+        ...prev,
+        [objectOutput]: Buffer.from(script || '', 'base64').toString('utf-8'),
+      }))
+    }
+  }, [prefilledEditable])
+
   return (
     <div className="flex flex-col gap-4 rounded-md bg-black/20 p-4 text-lg">
       <Text className="capitalize">{output}</Text>
 
-      <div className="flex flex-col">
-        <Text>Sats</Text>
+      <div className="flex w-fit flex-col">
+        <Text className="w-fit">Sats</Text>
         <input
           placeholder="Enter Sats"
-          className="bg-transparent text-white outline-none"
-          onChange={handleSatsChange}
-          defaultValue={
+          className="bg-transparent text-white outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          value={
             prefilled
               ? sats
-              : currentTransactionTab !== tab
+              : currentTransactionTab !== tab && !prefilledEditable
               ? sats
+              : prefilledEditable && currentTransactionTab === tab && step === 1
+              ? answerSatsMirrored && answerSatsMirrored[objectOutput]
               : satsInput[objectOutput]
           }
-          readOnly={currentTransactionTab !== tab || prefilled}
+          onChange={handleSatsChange}
+          pattern="[0-9]+([\.,][0-9]+)?"
+          readOnly={
+            (prefilledEditable &&
+              !(
+                (nextTransactionTab === tab && step === 1) ||
+                (currentTransactionTab === tab && step === 0)
+              )) ||
+            (!prefilledEditable && currentTransactionTab !== tab) ||
+            !!prefilled
+          }
         />
       </div>
 
-      <div className="flex w-full flex-col">
-        <div className="flex w-full items-center justify-between">
+      <div className="flex flex-col">
+        <div className="flex items-center justify-between">
           <Text>Script</Text>
           <a
             target={'_blank'}
             href={`https://script.savingsatoshi.com/?lesson=${progressKey}`}
             className="cursor-pointer"
           >
-            <HyperLink />{' '}
+            <HyperLink />
           </a>
         </div>
         <textarea
@@ -248,14 +343,27 @@ const OutputScript: FC<IOutput> = ({
           value={
             prefilled
               ? Buffer.from(script || '', 'base64').toString('utf-8')
-              : currentTransactionTab !== tab
+              : currentTransactionTab !== tab && !prefilledEditable
               ? Buffer.from(script || '', 'base64').toString('utf-8')
+              : prefilledEditable && currentTransactionTab === tab && step === 1
+              ? Buffer.from(
+                  finalAnswerOutput[objectOutput] || '',
+                  'base64'
+                ).toString('utf-8')
               : scriptInput[objectOutput]
           }
           onChange={handleScriptChange}
           ref={textAreaRef}
-          className="h-auto resize-none bg-transparent text-white outline-none"
-          readOnly={currentTransactionTab !== tab || prefilled}
+          className="min-h-8 resize-y bg-transparent text-white outline-none"
+          readOnly={
+            (prefilledEditable &&
+              !(
+                (nextTransactionTab === tab && step === 1) ||
+                (currentTransactionTab === tab && step === 0)
+              )) ||
+            (!prefilledEditable && currentTransactionTab !== tab) ||
+            !!prefilled
+          }
         />
       </div>
     </div>

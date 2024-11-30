@@ -165,11 +165,13 @@ export default function Runner({
           case 'debug': {
             const wsRemovedRegex =
               /\[system\] Image [0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12} removed\./
-            payload = payload.trim()
             if (hasResult.current === false && wsRemovedRegex.test(payload)) {
               sendTerminal('clear')
               sendTerminal('print', t('runner.result'))
-              sendTerminal('error', payload)
+              sendTerminal(
+                'error',
+                'Repl timed out without a response. Please try again.'
+              )
               setHasherState(HasherState.Error)
               setIsRunning(false)
               setState(State.Error)
@@ -183,8 +185,9 @@ export default function Runner({
               sendTerminal('clear')
               sendTerminal('print', t('runner.result'))
               hasResult.current = true
+              sendTerminal('print', payload)
+              ws?.close()
             }
-            sendTerminal('print', payload)
 
             const [res, msg] = await onValidate({
               code: new Base64String(`${code}\n${program}`),

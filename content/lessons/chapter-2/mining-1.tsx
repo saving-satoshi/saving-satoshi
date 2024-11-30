@@ -346,7 +346,7 @@ export default function Mining1({ lang }) {
               <div className="mt-2 break-all border border-dashed border-white p-2.5 font-space-mono text-[15px] font-normal">
                 0000 0000 00
                 <span className="break-keep text-white text-opacity-50">
-                  72 947e 2f22 250f ac0d dd88 2fcb f37c f6e2 340a 4112 9b6r 23a2
+                  72 947e 2f22 250f ac0d dd88 2fcb f37c f6e2 340a 4112 9b6f 23a2
                   823a
                 </span>
               </div>

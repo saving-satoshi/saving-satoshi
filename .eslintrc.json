@@ -1,3 +1,7 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"]
+  "plugins": ["local-rules"],
+  "extends": ["next/core-web-vitals", "prettier"],
+  "rules": {
+    "local-rules/no-bare-strings": "warn"
+  }
 }

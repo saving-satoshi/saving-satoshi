@@ -14,7 +14,7 @@ import { Text } from 'ui'
 import { useState } from 'react'
 import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
-import { accountAtom, currentLanguageAtom } from 'state/state'
+import { currentLanguageAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_seven.mempool_transaction_one.title',
@@ -43,16 +43,14 @@ export default function MempoolTransaction1({ lang }) {
     </>,
     t('chapter_seven.mempool_transaction_one.headings.item_four'),
   ]
-  // txid
-  // fee
-  // weight
-  // [ancestors]
   const inputRows = [
     [
       'b27f86d3',
       '43430',
       '2020',
-      <span className="inline-block w-[72px]">&nbsp;</span>,
+      <span key="space-0" className="inline-block w-[72px]">
+        &nbsp;
+      </span>,
     ],
     [
       'c27b4d2e',
@@ -91,13 +89,13 @@ export default function MempoolTransaction1({ lang }) {
       'd7066e71',
       '16416',
       '1152',
-      <span className="inline-block w-[72px]">&nbsp;</span>,
+      <span key="space-7" className="inline-block w-[72px]">
+        &nbsp;
+      </span>,
     ],
     ['88016f17', '15200', '1600', '5e518bbe'],
     ['8fa820d5', '20221', '1108', <>38a62dcc</>],
   ]
-
-  const [account] = useAtom(accountAtom)
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
