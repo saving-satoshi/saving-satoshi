@@ -7,8 +7,6 @@ import { unstable_getImgProps as getImgProps } from 'next/image'
 import { accountAtom } from 'state/state'
 import { useAtom, useAtomValue } from 'jotai'
 import { currentChapterAtom } from 'state/progressState'
-import { useMediaQuery } from 'hooks'
-import { useState, useEffect } from 'react'
 
 export default function Hero() {
   const { chaptersUrl, aboutUrl } = useLocalizedRoutes()
@@ -31,7 +29,7 @@ export default function Hero() {
     props: { srcSet: tablet },
   } = getImgProps({ ...common, src: '/assets/images/main-image-tablet.jpg' })
   const {
-    props: { srcSet: desktop, ...rest },
+    props: { srcSet: desktop },
   } = getImgProps({ ...common, src: '/assets/images/main-image.jpg' })
   const {
     props: { srcSet: wide },
