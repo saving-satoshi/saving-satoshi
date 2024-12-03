@@ -7,9 +7,6 @@ import { unstable_getImgProps as getImgProps } from 'next/image'
 import { accountAtom } from 'state/state'
 import { useAtom, useAtomValue } from 'jotai'
 import { currentChapterAtom } from 'state/progressState'
-import { useMediaQuery } from 'hooks'
-import { useState, useEffect } from 'react'
-import Icon from 'shared/Icon'
 import Boss from 'shared/Boss'
 
 export default function Hero() {
