@@ -1,4 +1,4 @@
-import { Caveat_Brush, Space_Mono, Nunito } from 'next/font/google'
+import { Caveat_Brush, Space_Mono, Nunito, Audiowide } from 'next/font/google'
 
 const cbrush = Caveat_Brush({
   weight: '400',
@@ -24,6 +24,14 @@ const nunito = Nunito({
   subsets: ['latin'],
 })
 
+const audiowide = Audiowide({
+  weight: '400',
+  variable: '--audiowide-font',
+  preload: true,
+  display: 'swap',
+  subsets: ['latin'],
+})
+
 export default function Fonts() {
   return (
     <style
@@ -33,6 +41,7 @@ export default function Fonts() {
             --cbrush-font: ${cbrush.style.fontFamily};
             --space-mono-font: ${smono.style.fontFamily};
             --nunito-font: ${nunito.style.fontFamily};
+            --audiowide-font: ${audiowide.style.fontFamily};
           }`,
       }}
     ></style>
