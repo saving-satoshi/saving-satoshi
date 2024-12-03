@@ -396,3 +396,41 @@ input:checked + .slider:before {
 .hero-image-position {
   object-position: 50% 34%;
 }
+
+.boss-bg-wrapper {
+  position: relative;
+  width: 223px;
+  height: 74px;
+  overflow: hidden;
+}
+
+.boss-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 2s ease-out 100ms;
+}
+
+.top-bg {
+  background: linear-gradient(to right, #93EFFFBA, #93EFFF00);
+  z-index: 2;
+  opacity: 1;
+}
+
+.bottom-bg {
+  background: linear-gradient(to left, #93EFFFBA, #93EFFF00);
+  z-index: 1;
+  opacity: 0;
+}
+
+.boss-bg-wrapper:hover .top-bg {
+  opacity: 0;
+}
+
+.boss-bg-wrapper:hover .bottom-bg {
+  opacity: 1;
+}
+
+
