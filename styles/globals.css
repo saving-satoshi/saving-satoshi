@@ -422,6 +422,7 @@ input:checked + .slider:before {
 .bottom-bg {
   background: linear-gradient(to left, #93EFFFBA, #93EFFF00);
   z-index: 1;
+  visibility: hidden;
   opacity: 0;
 }
 
@@ -430,6 +431,7 @@ input:checked + .slider:before {
 }
 
 .boss-bg-wrapper:hover .bottom-bg {
+  visibility: visible;
   opacity: 1;
 }
 
