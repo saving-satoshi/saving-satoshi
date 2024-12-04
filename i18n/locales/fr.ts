@@ -3072,11 +3072,11 @@ const translations = {
   },
 
   chapter: {
-    chapter_locked_one: 'Complete Chapter',
-    chapter_locked_two: 'to unlock.',
-    coming_soon: 'Coming soon. Hang tight.',
+    chapter_locked_one: 'Complete le Chapitre',
+    chapter_locked_two: 'pour déverouiller.',
+    coming_soon: 'Prochainement. Patience !',
     description:
-      'Explore the mysteries of Satoshi and learn about bitcoin along the way.',
+      'Découvre les mystères de Satoshi et apprend bitcoin en chemin.',
   },
 
   hero: {
@@ -3087,147 +3087,148 @@ const translations = {
   },
 
   footer: {
-    paragraph_one: 'An open-source production by the bitcoin community.',
-    link: 'Check the code',
+    paragraph_one: 'Une production open-source per la communauté bitcoin.',
+    link: 'Jètes un œil au code',
   },
 
   navbar: {
     intro: 'Intro',
-    chapter: 'Chapter',
-    chapter_complete: 'Chapter complete',
+    chapter: 'Chapitre',
+    chapter_complete: 'Chapitre completé',
     challenge: 'Challenge',
-    help_tooltip: 'Need help?',
-    your_language: 'Your Language',
+    help_tooltip: "Besoin d'aide?",
+    your_language: 'Ta Langue de choix',
   },
 
   modal_signin: {
-    heading: 'Sign in',
+    heading: 'Connecte toi',
     pre_signin_paragraph_one:
-      'Enter your private key below to restore your account and progress.',
+      'Entre ta clé privée ci-dessous pour restaurer ton compte et tes progrès.',
     post_signin_paragraph_one:
-      'Nice to see you return to save Satoshi! You can go directly to your last lesson from here.',
-    prompt: 'Enter your private key',
-    confirm: 'Sign in',
-    create_account: 'Don’t have an account?',
-    login: 'Log in',
-    welcome_back: 'Welcome back!',
-    progress_redirect: 'Take me to where I left off',
+      'Content de te voir revenir pour sauver Satoshi ! Tu peux accéder directement à ta dernière leçon depuis ici.',
+    prompt: 'Entre ta clé privée',
+    confirm: 'Connecte toi',
+    create_account: 'Pas de compte?',
+    login: 'Connecte toi',
+    welcome_back: 'Beinvenue!',
+    progress_redirect: "Repars d'où je me suis arrêté",
   },
 
   modal_logout: {
-    heading: 'You are logged in',
+    heading: 'Tu es connecté',
     paragraph_one:
-      'Your session will remain active until you sign out using the button below.',
-    private_key: 'Your private key',
-    signout: 'Sign out',
+      "Ta session restera active jusqu'à ce que tu te déconnectes en utilisant le bouton ci-dessous.",
+    private_key: 'Ta clé privée',
+    signout: 'Deconnection',
   },
 
   modal_signup: {
-    heading: 'Save your progress',
+    heading: 'Sauvegarde ton progrés',
     paragraph_one:
-      'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.',
-    subheading_one: 'Choose an avatar',
-    subheading_two: 'Back up your private key',
+      'Copie et sauvegarde un code simple pour sauvegarder et restorer ton progrès dans ce navigateur. Si tu as déjà un code, restore ton progrès ici.',
+    subheading_one: 'Choisi un avatar',
+    subheading_two: 'Sauvegarde ta clé privée',
     generate:
-      'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
-    confirm: 'Done',
+      "Paré/e? Code copié et sauvé? Sois sur/e de bien la sauvegarder, il n'est pas récuperable si tu le perds.",
+    confirm: 'Terminé',
     acknowledged:
-      'I acknowledge I have saved this private key and know that I will need it for challenges in the future.',
+      'Je confirme avoir sauvegardé cette clé privée et je comprends en avoir besoin pour les challenges à venir.',
   },
 
   difficulty_selection: {
-    NORMAL: 'Enable hard mode to increase the difficulty of the challenges.',
-    HARD: 'Disable hard mode to decrease the difficulty of the challenges.',
+    NORMAL: 'Active mode hard pour augmenter la difficulté des challenges.',
+    HARD: 'Désactive mode hard pour réduire la difficulté des challenges.',
   },
 
   social: {
-    twitter_share: 'Share via X',
-    nostr_share: 'Share via nostr',
-    sharing: 'Sharing...',
-    shared: 'Shared!',
-    share_error: 'Failed to share',
+    twitter_share: 'Partager via X',
+    nostr_share: 'Partager via nostr',
+    sharing: 'Partage...',
+    shared: 'Partagé!',
+    share_error: 'Echec du partage',
   },
 
   disclaimer: {
     description:
-      'We’re excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>',
+      'Nous sommes impatients que tu commences. Note que certains défis nécessitent des compétences de base en programmation (des astuces sont disponibles). Essaye et partage tes  <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">retours</Link>.',
   },
 
   opcode: {
-    run: 'Run the Script',
+    run: 'Lance le Script',
     reset: 'Reset',
   },
 
   status_bar: {
-    begin_message: 'Complete the challenge above to continue...',
-    error_message: 'Hm... that is not quite right yet...',
-    in_progress_message: 'Looking good so far...',
-    success_message: 'Nicely done!',
-    next_step_message: 'Looks good now lets move on to the next step.',
-    try_again: 'Try again',
-    next: 'Next',
-    skip_challenge_first: "Let's move on to the first challenge!",
-    skip_challenge_last: "Let's move on to the last challenge!",
+    begin_message: 'Complete le challenge ci-dessus pour continuer...',
+    error_message: "Hm... c'est pas encore correct...",
+    in_progress_message: 'Semble bien jusque là...',
+    success_message: 'Bien joué!',
+    next_step_message: "C'est bon, passons à l'étape suivante.",
+    try_again: 'Essaie encore',
+    next: 'Suivant',
+    skip_challenge_first: 'Avançons au premier challenge!',
+    skip_challenge_last: 'Avançons au dernier challenge!',
   },
 
   hasher: {
-    placeholder: 'Type here...',
-    return_hash: 'Below you will see your input converted to a hash',
+    placeholder: 'Tape ici...',
+    return_hash: 'Ci-dessous tu trouveras ta saisie convertie en hash',
   },
 
   hashrate: {
-    start: 'Start',
-    running: 'Running',
-    blocks_found: 'Blocks found',
-    hashrate: 'Hashrate',
-    partial_solutions: 'Partial solutions',
+    start: 'Commencer',
+    running: 'En exécution',
+    blocks_found: 'Blocks trouvés',
+    hashrate: 'Taux de Hashing',
+    partial_solutions: 'Solutions Partielles',
   },
 
   runner: {
-    run: 'Run the script',
-    running: 'Running',
+    run: 'Lancer le script',
+    running: 'En exécution',
     pause: 'Pause',
-    result: 'Result',
-    computing: 'Computing...',
+    result: 'Résultat',
+    computing: 'Calcul en cours...',
     evaluation: 'Evaluation',
-    script_output: 'Script output',
-    waiting: 'Waiting for your input above...',
-    poor: "This is valid code but it's not quite what we are looking for. Try again.",
-    good: 'Good job, its not quite perfect but still considered correct. Keep working or continue, your choice.',
-    success: 'Great work your code looks great!',
+    script_output: 'Sortie du Script',
+    waiting: 'En attente de ta saisie ci-dessus...',
+    poor: "Ce code est valide mais ce n'est pas exactement ce qu'on cherche. Essaie encore.",
+    good: "Boen joué, ce n'est pas complètement parfait mais est quand même considéré correct. Améliore ou continue, c'est ton choix.",
+    success: 'Bon travail, ton code est excellent!',
     language_tabs: {
-      locked: "Language disabled since you've started this chapter in",
-      reset: 'Reset the terminal',
+      locked:
+        'La langue est désactivée puisque que tu as commencé ce chapitre en',
+      reset: 'Reset le terminal',
     },
   },
   notfound: {
-    first: 'Hmm...where are we?',
-    second: 'It’s not quite clear where or what this place is.',
-    third: 'We might have gotten lost in space (or time).',
-    back_safety: 'Back to safety',
+    first: 'Hmm...on est où?',
+    second: "C'est pas super clair quel genre d'endroit c'est",
+    third: "On a du se perdre dans l'espace (ou le temps).",
+    back_safety: 'De retour sain et sauf',
   },
   error: {
-    first: 'Something is wrong!',
-    second: 'Holocat may have chewed on some cables again. Bad cat!',
-    reload: 'Retry',
+    first: 'Quelque chose ne va pas!',
+    second: 'Holochat a du machouillé les cables encore. Méchant chat!',
+    reload: 'Réesayer',
   },
   help_page: {
-    main_heading: 'Learning Resources',
+    main_heading: "Resources d'apprentissage.",
     main_subheading:
-      'What helpful info and resources can we provide for further learning?',
-    tips_heading: 'Tips',
+      'Quelles informations et ressources utiles pouvons-nous fournir pour un apprentissage supplémentaire?',
+    tips_heading: 'Conseils',
     tips_subheading:
-      'What specific tips can/do we want to give learners if they are stuck?',
-    spoilers_heading: 'Spoilers',
-    spoilers_confirm: 'Yes, I want to see the solution',
-    pseudo_confirm: 'Yes, I want to see the pseudocode',
-    solution: 'Solution to this challenge',
-    pseudo_solution: 'Pseudocode solution to this challenge',
-    solution_one: 'Solution to part one of this challenge',
+      "Quels conseils spécifiques pouvons/souhaitons-nous donner aux étudiants s'ils sont bloqués?",
+    spoilers_heading: 'Révéler la solution',
+    spoilers_confirm: 'Oui, je veux voir la solution',
+    pseudo_confirm: 'Oui, je veux voir le pseudocode',
+    solution: 'Solution à ce challenge',
+    pseudo_solution: 'Solution Pseudocode à ce challenge',
+    solution_one: 'Solution à la première partie de ce challenge',
     feedback:
-      'Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
+      'Tes retours sont précieux et nous aident à améliorer notre travail. Merci de nous faire part de test commentaires en utilisant <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">ce lien</a>. ',
     help_suggestion:
-      'If you\'re ever stuck, press the "?" button in the top-right corner. It provides helpful resources and tips.',
+      'Si jamais tu es bloqué, appuie sur le bouton « ? » dans le coin supérieur droit. Il fournit des ressources et des conseils utiles',
   },
 }
 export default translations
