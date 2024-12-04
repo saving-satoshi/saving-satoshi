@@ -18,7 +18,7 @@ export default function Intro({
         className
       )}
     >
-      <div className="flex w-full max-w-screen-lg  px-6 text-white lg:px-0">
+      <div className="flex w-full max-w-screen-lg justify-center px-6 text-white lg:px-0">
         <div className="px-1 font-nunito">
           {heading && <Title>{heading}</Title>}
           {children}
