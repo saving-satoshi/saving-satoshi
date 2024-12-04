@@ -2780,7 +2780,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_one: `Before paying Laszlo, let's first get the funds into a 2-of-2 multisig, confirmed on the blockchain. Then we can figure out a way to make that single on-chain transaction work harder—to do more with less.`,
       heading_two: 'Instructions',
       multisig_one: 'Fill in the output amount and the output script',
-      multisig_two: 'Sign the input by clicking "Sign"',
+      multisig_two:
+        'Sign the input by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign and Broadcast</span>',
       heading_three: 'Hints',
       hint_one_a: `You and Laszlo want to work together in the future to spend output 0 with <br/> `,
       hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(LASZLO) SIG(YOU) </span>`,
@@ -2799,10 +2800,10 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_one: `A new tab appears on your ePhone Infinity: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Refund</span> which starts another TX template on the same screen, with an arrow from the <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multisig</span> output to this TX input.`,
       heading_two: 'Instructions',
       refund_list_one: `Fill in the output amount and the output script`,
-      refund_list_two: `Send it to Laszlo by clicking "Sign" then he can tell us if he will sign it.`,
+      refund_list_two: `Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> then he can tell us if he will sign it.`,
       refund_list_three: `Don't sign it yourself yet! Let's see what Laszlo thinks, first`,
       heading_three: 'Hints',
-      hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span>`,
+      hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU)</span>`,
     },
     updating_the_state_two: {
       title: 'Securing payments',
@@ -2843,14 +2844,14 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       time_lock_list_one:
         'Add a 700 block delay before you can spend the output',
       time_lock_list_two:
-        'Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign</span> so he can sign it',
+        'Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> so he can sign it',
       time_lock_list_three: "Don't sign it yourself yet!",
       heading_two: 'Hints',
       paragraph_one: 'Output 0 is spent by EITHER:',
       hint_one:
-        'The initial stack if you claim the funds after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span> ',
+        'The initial stack if you claim the funds after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU) 1</span> ',
       hint_two:
-        'The initial stack if Laszlo claims the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span> ',
+        'The initial stack if Laszlo claims the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span> ',
     },
     updating_the_state_six: {
       title: 'Channel open with Laszlo',
@@ -2870,7 +2871,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       list_three:
         'That refund transaction specifies two options for how the funds can be spent:',
       list_three_sub_one:
-        'You to get all 100,000 satoshis back after 700 blocks, or',
+        'You to get all 99,000 satoshis back accounting for fees after 700 blocks, or',
       list_three_sub_two:
         'Laszlo gets all the money if he gets the private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span> from you',
       list_four:
@@ -2969,6 +2970,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
         list_four: `<span className="font-semibold">Miner fees:</span> 1,000 sats`,
       },
       paragraph_eight: `All three of these transactions are signed and valid, but Laszlo hasn't handed you a beer yet. Why not? Only one thing left to do, send Laszlo your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>!`,
+      success_bar: 'Send REVOCATION_YOU_1 to Laszlo',
     },
     making_a_payment_seven: {
       title: `🍺 Ahhhhhhh, nice.`,
@@ -3053,6 +3055,25 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_three:
         'The <Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> is here to guide future generations of open-source contributors. Becoming a present day bitcoin hero today is just one click away.',
       paragraph_four: 'We are all Satoshi.',
+    },
+    tab_data: {
+      signed: 'signed',
+      pending: 'pending',
+      deposit:
+        'This is an output of 101,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.',
+      payment: 'This is your off-chain payment to Laszlo.',
+      multisig:
+        'This transaction will fund a multisig output between you and Laszlo.',
+      refund:
+        'This transaction ensures funds are not lost if Laszlo disappears.',
+      refund_1:
+        'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer.',
+      refund_2:
+        'This transaction ensures funds are not lost if Laszlo disappears. It also prevents you from claiming the funds immediately after paying for your beer. If you try to take a full refund, including the 1,000 satoshis used to pay for the beer, the 700 block delay gives Laszlo a few days to notice.',
+      commitment_you:
+        'This is the second commitment transaction for this payment channel, that pays Laszlo 1,000 sats',
+      commitment_laszlo:
+        'This is Laszlo’s version of the commitment transaction.',
     },
     resources: {
       output_zero_sig: 'Output 0 Signature',
@@ -3164,7 +3185,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     in_progress_message: 'Looking good so far...',
     success_message: 'Nicely done!',
     next_step_message: 'Looks good now lets move on to the next step.',
-    try_again: 'Try again',
+    try_again: "I'm Stuck",
     next: 'Next',
     skip_challenge_first: "Let's move on to the first challenge!",
     skip_challenge_last: "Let's move on to the last challenge!",
