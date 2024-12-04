@@ -9,6 +9,7 @@ import { useAtom, useAtomValue } from 'jotai'
 import { currentChapterAtom } from 'state/progressState'
 import Boss from 'shared/Boss'
 
+
 export default function Hero() {
   const { chaptersUrl, aboutUrl } = useLocalizedRoutes()
   const lang = useLang()
@@ -30,7 +31,7 @@ export default function Hero() {
     props: { srcSet: tablet },
   } = getImgProps({ ...common, src: '/assets/images/main-image-tablet.jpg' })
   const {
-    props: { srcSet: desktop, ...rest },
+    props: { srcSet: desktop },
   } = getImgProps({ ...common, src: '/assets/images/main-image.jpg' })
   const {
     props: { srcSet: wide },
