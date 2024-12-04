@@ -177,10 +177,10 @@ export default function StatusBar({
         <div className="flex gap-[5px]">
           <Tooltip
             id="broadcast-button"
-            theme="bg-[#5c4d4b]"
+            theme="bg-black/20"
             offset={10}
             parentClassName="max-w-[max-content]"
-            className="max-w-[100px] cursor-not-allowed"
+            className="max-w-[100px]"
             content="Reset the page to the beginning"
           >
             <Button
