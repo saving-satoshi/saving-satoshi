@@ -4,6 +4,7 @@ import nl from './nl'
 import hi from './hi'
 import de from './de'
 import pt from './pt'
+import fr from './fr'
 
 const locales = {
   en,
@@ -12,6 +13,7 @@ const locales = {
   hi,
   de,
   pt,
+  fr,
 }
 
 export default locales
