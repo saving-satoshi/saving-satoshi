@@ -2,8 +2,10 @@ import clsx from 'clsx'
 import { Button } from 'shared'
 import { LessonView } from 'types'
 import { useLessonContext, Tooltip } from 'ui'
-import { useLang, useProceed, useTranslations } from 'hooks'
+import { useLang, usePathData, useProceed, useTranslations } from 'hooks'
 import Icon from 'shared/Icon'
+import { lessons, chapters } from 'content'
+import { currentLessonAtom } from 'state/progressState'
 
 export enum Status {
   Begin,
@@ -51,6 +53,14 @@ export default function StatusBar({
   const { activeView } = useLessonContext()
   const isActive = activeView !== LessonView.Info
   const proceed = useProceed()
+  const { chapterId, lessonId } = usePathData()
+
+  const theme =
+    lessons[chapterId]?.[lessonId]?.metadata.secondaryTheme ??
+    lessons[chapterId]?.[lessonId]?.metadata.theme ??
+    chapters[chapterId]?.metadata.secondaryTheme ??
+    chapters[chapterId]?.metadata.theme ??
+    'bg-back'
 
   const getStatus = () => {
     if (success === null || success === 0) {
@@ -177,7 +187,7 @@ export default function StatusBar({
         <div className="flex gap-[5px]">
           <Tooltip
             id="broadcast-button"
-            theme="bg-black/20"
+            theme={theme}
             offset={10}
             parentClassName="max-w-[max-content]"
             className="max-w-[100px]"
