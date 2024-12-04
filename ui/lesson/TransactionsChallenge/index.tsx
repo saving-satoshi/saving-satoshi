@@ -204,6 +204,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
 
       return { id: tab, text: tab.includes('refund') ? 'refund' : tab }
     })
+
   const returnSuccess = (): SuccessNumbers => {
     if (
       validateOutput0.signature_0 === 0 &&
@@ -211,11 +212,16 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     ) {
       return 0
     }
+    if (
+      validateOutput0.signature_0 === 2 ||
+      validateOutput0.signature_1 === 2 ||
+      validateOutput1.signature_0 === 2 ||
+      validateOutput1.signature_1 === 2
+    ) {
+      return 2
+    }
     if (initialStack.output_0?.[1] && initialStack.output_0?.[1].length > 0) {
-      if (
-        validateOutput0.signature_0 === 5 &&
-        validateOutput0.signature_1 !== 2
-      ) {
+      if (validateOutput0.signature_0 === 5) {
         if (
           answerScript.output_1.length > 0 &&
           validateOutput1.signature_0 === 5
@@ -243,11 +249,6 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           validateOutput0.signature_0 === 5
         ) {
           return 5
-        } else if (
-          validateOutput0.signature_0 === 2 ||
-          validateOutput1.signature_0 === 2
-        ) {
-          return 2
         } else {
           return 0
         }
