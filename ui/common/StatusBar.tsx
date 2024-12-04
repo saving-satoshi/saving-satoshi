@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { Button } from 'shared'
 import { LessonView } from 'types'
-import { useLessonContext } from 'ui'
+import { useLessonContext, Tooltip } from 'ui'
 import { useLang, useProceed, useTranslations } from 'hooks'
 import Icon from 'shared/Icon'
 
@@ -175,18 +175,27 @@ export default function StatusBar({
           </div>
         </div>
         <div className="flex gap-[5px]">
-          <Button
-            onClick={handleSubmit}
-            classes={clsx('md:text-2xl', {
-              hidden: !(
-                getStatus() === Status.Poor ||
-                getStatus() === Status.Good ||
-                getStatus() == Status.NextStep
-              ),
-            })}
+          <Tooltip
+            id="broadcast-button"
+            theme="bg-[#5c4d4b]"
+            offset={10}
+            parentClassName="max-w-[max-content]"
+            className="max-w-[100px] cursor-not-allowed"
+            content="Reset the page to the beginning"
           >
-            {nextStepButton || t('status_bar.try_again')}
-          </Button>
+            <Button
+              onClick={handleSubmit}
+              classes={clsx('md:text-2xl', {
+                hidden: !(
+                  getStatus() === Status.Poor ||
+                  getStatus() === Status.Good ||
+                  getStatus() == Status.NextStep
+                ),
+              })}
+            >
+              {nextStepButton || t('status_bar.try_again')}
+            </Button>
+          </Tooltip>
 
           <Button
             onClick={proceed}
