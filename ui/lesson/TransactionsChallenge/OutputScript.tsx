@@ -4,7 +4,12 @@ import { Text } from 'ui/common'
 import { SignatureType, SpendingConditions } from '.'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
 import { MainState } from '../OpCodeChallenge/runnerTypes'
-import { finalAnswerOutput } from 'utils/data'
+
+const finalAnswerOutput = {
+  output_0:
+    'T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fTEFTWkxPXzIpIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG',
+  output_1: 'T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==',
+}
 
 interface IOutput {
   prefilled?: boolean
