@@ -154,20 +154,24 @@ const OutputScript: FC<IOutput> = ({
     }
 
     const getErrorMessageOutputZero = (index: number) => {
-      return LanguageExecutor.RunCode(
-        scriptInput['output_0'],
-        initialStack['output_0'][index],
-        height,
-        nSequenceTime
-      )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
+      if (initialStack[objectOutput][index]?.length > 0) {
+        return LanguageExecutor.RunCode(
+          scriptInput['output_0'],
+          initialStack['output_0'][index],
+          height,
+          nSequenceTime
+        )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
+      }
     }
     const getErrorMessageOutputOne = (index: number) => {
-      return LanguageExecutor.RunCode(
-        scriptInput['output_1'],
-        initialStack['output_1'][index],
-        height,
-        nSequenceTime
-      )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
+      if (initialStack[objectOutput][index]?.length > 0) {
+        return LanguageExecutor.RunCode(
+          scriptInput['output_1'],
+          initialStack['output_1'][index],
+          height,
+          nSequenceTime
+        )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
+      }
     }
     const errorMessageOutput0 =
       getErrorMessageOutputZero(0) || getErrorMessageOutputZero(1)
