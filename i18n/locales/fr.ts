@@ -26,7 +26,7 @@ const translations = {
     subtitle:
       "L'année est 2139. Le dernier bitcoin sera miné dans deux semaines. Depuis des mois, un compteur décompte à Satoshi Square.",
     intro:
-      "Le monde attend le dernier block. Puis, soudainement, le réseau se fige completement.<br><br>Tu reçois un holochat de quelqu'un utilisant le nom Satoshi Nakamoto. (Comme n'importe quel autre e-hologram, mais celui-ci a la forme d'un chat). Tu ouvres le holochat en pressant son museau, curieux de savoir ce qu'il a à dire...",
+      "Le monde attend le dernier bloc. Puis, soudainement, Le réseau s'arrête net.<br><br>Tu reçois un holochat de quelqu'un utilisant le nom Satoshi Nakamoto. (Comme n'importe quel autre e-hologram, mais celui-ci a la forme d'un chat). Tu ouvres le holochat en pressant son museau, curieux de savoir ce qu'il a à dire...",
 
     project: {
       title: 'Construit avec fun',
@@ -90,43 +90,43 @@ const translations = {
 
   ///CHAPTERS TITLE PAGE
   chapter_one: {
-    title: 'Secrets in Plain Sight',
+    title: 'Secrets à découvert',
     paragraph_one:
-      'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. Up until this point, every block has had some kind of bitcoin reward, a subsidy. This is the only way new bitcoins come into existence but soon, it’s about to change. After over one hundred years, the issuance schedule for bitcoin is coming to an end. The world awaits for the last block with a subsidy to be mined. It’s a historical event. The end of an era.',
-    paragraph_two: 'Suddenly, the network grinds to a halt.',
+      "L'année est 2139. Le dernier bitcoin sera extrait dans deux semaines. Depuis des mois, un compte à rebours s'affiche sur l'écran de Satoshi Square. Jusqu'à présent, chaque bloc a eu une sorte de récompense en bitcoin, une subvention. C'est la seule façon dont de nouveaux bitcoins voient le jour, mais cela va bientôt changer. Après plus de cent ans, le calendrier d'émission du bitcoin touche à sa fin. Le monde attend que le dernier bloc avec une subvention soit extrait. C'est un événement historique. La fin d'une ère.",
+    paragraph_two: "Soudainement, Le réseau s'arrête net.",
 
     ///CHAPTER 1
     intro_one: {
       title: 'Intro',
-      nav_title: 'Miner protest',
-      paragraph_one: `Moments later, your Hover Screen activates.`,
-      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the well-dressed CEO of BitRey, you run, by far, the largest bitcoin mining pool in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
-      paragraph_three: `—Vanderpoole: “Let’s start from the top. Yes, I am, Deborah, and yes, I do. The Vanderpooles—my well-dressed daddy and his well-dressed daddy before him—have been mining since block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. Miners cannot survive on fees alone.”`,
+      nav_title: 'Protestation du Mineur',
+      paragraph_one: `Un peu plus tard, ton écran s'active.`,
+      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. En tant que PDG élégant de BitRey, vous opérez ce qui est de loin le plus gros pool de minage bitcoin au monde. Vous fabriquez également des machines de minage de Bitcoin. Que se passe-t-il ? Le Bitcoin est-il en train de mourir ?”`,
+      paragraph_three: `—Vanderpoole: “Commençons par le commencement. Oui, je suis PDG, Deborah, et oui, je fais l'effort de rester élégant. Les Vanderpooles—mon père était bien habillé et son père avant lui également bien habillé—font du minage depuis le bloc 21 000. C’est pourquoi je peux dire en toute confiance que les mineurs à travers le monde causent ces retards en éteignant leurs machines. C’est une protestation. Personne ne veut que le Bitcoin cesse d’être émis à 21 millions. Les mineurs ne peuvent pas survivre uniquement avec les frais de transactions."`,
       start: 'Continue',
     },
 
     intro_two: {
       title: 'Genesis',
-      nav_title: "Satoshi's holocat",
+      nav_title: 'Holochat de Satoshi',
       paragraph_one:
-        'On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
+        "Sur ta Everything Watch, tu reçois un holochat de marque WhiskerWare de quelqu'un utilisant le nom de Satoshi Nakamoto. (C'est comme n'importe quel autre e-hologramme, mais celui-ci a la forme d'un chat.) Vous ouvrez l'holocat en tapotant son nez.",
       paragraph_two:
-        '—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto',
+        "—“Le Bitcoin n'est pas en train de mourir, mais il a besoin de votre aide. N'oubliez pas le chat.” – Satoshi Nakamoto",
       paragraph_three:
-        '—Satoshi? The Satoshi? From the white paper? No, it couldn’t be. They’ve been presumed dead for over a century.',
-      paragraph_four: 'Haven’t they?',
+        "—Satoshi? The Satoshi? Celui du livre blanc ? Non, ça ne se peut pas. Il est supposé être mort depuis plus d'un siècle.",
+      paragraph_four: "N'est-il pas?",
       paragraph_five:
-        'Holocat: “You better get to work. I can help, but you have to start meow.”',
+        'Holochat: “Tu ferais bien de te mettre au boulot. Je peux aider, mais tu dois commencer par miauler.”',
     },
 
     genesis_one: {
       title: 'Genesis',
-      nav_title: 'Genesis Secret',
-      heading: 'Your first challenge',
+      nav_title: 'Secret Genesis',
+      heading: 'Ton premier challenge',
       paragraph_one:
-        'Bitcoin is censorship-resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
+        "Le Bitcoin est de l'argent résistant à la censure. N'importe qui peut envoyer de l'argent en diffusant une transaction sur le réseau. Après la diffusion, les transactions sont regroupées en blocs par les mineurs. Les mineurs sont en compétition contre d'autres mineurs pour le privilège de construire sur la chaîne. C'est ce qui permet à Bitcoin de rester décentralisé.",
       paragraph_two:
-        'Satoshi Nakamoto, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left the world a secret message in the very first bitcoin transaction that was ever made. Your first challenge is to find and decode it.',
+        "Satoshi Nakamoto, l'inventeur pseudonyme du Bitcoin, a également miné le premier bloc de Bitcoin. Il a laissé au monde un message secret dans la toute première transaction de Bitcoin jamais réalisée. Votre premier défi est de le trouver et de le décoder.",
     },
 
     genesis_two: {
