@@ -63,6 +63,7 @@ module.exports = {
           },
         ],
         nunito: ['var(--nunito-font)'],
+        audiowide: ['var(--audiowide-font)'],
       },
       backdropBlur: {
         '4xl': '75px',

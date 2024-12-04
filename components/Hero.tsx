@@ -7,6 +7,8 @@ import { unstable_getImgProps as getImgProps } from 'next/image'
 import { accountAtom } from 'state/state'
 import { useAtom, useAtomValue } from 'jotai'
 import { currentChapterAtom } from 'state/progressState'
+import Boss from 'shared/Boss'
+
 
 export default function Hero() {
   const { chaptersUrl, aboutUrl } = useLocalizedRoutes()
@@ -50,6 +52,7 @@ export default function Hero() {
         />
       </picture>
       <div className="fixed bottom-0 mb-16 flex w-screen flex-col justify-center bg-gradient-to-b from-transparent to-[#00000080] px-5 pt-5 font-cbrush text-white md:p-10 slim:mb-11">
+        <Boss />
         <p className="px-8 pt-2 text-center font-nunito text-2xl sm:text-3xl md:pt-5 lg:text-4xl">
           {t('hero.description')}
         </p>
