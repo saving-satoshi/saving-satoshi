@@ -1,6 +1,8 @@
 import React, { FC, useEffect, useRef } from 'react'
 import HyperLink from 'shared/icons/Hyperlink'
+import { TransactionData } from 'types'
 import { Text } from 'ui/common'
+import transactionTabs from 'utils/data.json'
 import { SignatureType, SpendingConditions } from '.'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
 import { MainState } from '../OpCodeChallenge/runnerTypes'
@@ -13,7 +15,7 @@ const finalAnswerOutput = {
 
 interface IOutput {
   prefilled?: boolean
-  prefilledEditable?: boolean
+  prefilledEditable?: boolean | string
   output: 'output 0' | 'output 1'
   step: number
   currentTransactionTab: string
@@ -75,6 +77,13 @@ const OutputScript: FC<IOutput> = ({
   const caretPositionRef = useRef(0)
   const objectOutput = output === 'output 0' ? 'output_0' : 'output_1'
   const currentScriptInput = scriptInput[objectOutput]
+  const tabJSON: TransactionData = transactionTabs
+  const allTabsData = Object.entries(tabJSON)
+  const prefillData =
+    typeof prefilledEditable === 'string' &&
+    allTabsData
+      .map((tabData) => tabData[0] === prefilledEditable && tabData)
+      .filter((data) => typeof data !== 'boolean')[0]
 
   const executeScriptAsync = async () => {
     const scriptInputString = scriptInput[objectOutput]
@@ -187,6 +196,7 @@ const OutputScript: FC<IOutput> = ({
   }
 
   const handleScriptChange = (event) => {
+    console.log(event.target.value)
     const input = event.target
     caretPositionRef.current = input.selectionStart
     setScriptInput((prev) => ({
@@ -297,7 +307,12 @@ const OutputScript: FC<IOutput> = ({
       }))
       setScriptInput((prev) => ({
         ...prev,
-        [objectOutput]: Buffer.from(script || '', 'base64').toString('utf-8'),
+        [objectOutput]: Buffer.from(
+          typeof prefilledEditable === 'boolean'
+            ? script
+            : prefillData[1][objectOutput].script || '',
+          'base64'
+        ).toString('utf-8'),
       }))
     }
   }, [prefilledEditable])
@@ -316,7 +331,9 @@ const OutputScript: FC<IOutput> = ({
               ? sats
               : currentTransactionTab !== tab && !prefilledEditable
               ? sats
-              : prefilledEditable && currentTransactionTab === tab && step === 1
+              : typeof prefilledEditable === 'boolean' &&
+                currentTransactionTab === tab &&
+                step === 1
               ? answerSatsMirrored && answerSatsMirrored[objectOutput]
               : satsInput[objectOutput]
           }
@@ -354,7 +371,9 @@ const OutputScript: FC<IOutput> = ({
               ? Buffer.from(script || '', 'base64').toString('utf-8')
               : currentTransactionTab !== tab && !prefilledEditable
               ? Buffer.from(script || '', 'base64').toString('utf-8')
-              : prefilledEditable && currentTransactionTab === tab && step === 1
+              : typeof prefilledEditable === 'boolean' &&
+                currentTransactionTab === tab &&
+                step === 1
               ? Buffer.from(
                   finalAnswerOutput[objectOutput] || '',
                   'base64'
@@ -365,7 +384,7 @@ const OutputScript: FC<IOutput> = ({
           ref={textAreaRef}
           className="min-h-8 resize-y bg-transparent text-white outline-none"
           readOnly={
-            (prefilledEditable &&
+            (typeof prefilledEditable === 'boolean' &&
               !(
                 (nextTransactionTab === tab && step === 1) ||
                 (currentTransactionTab === tab && step === 0)

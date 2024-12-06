@@ -3064,7 +3064,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       payment: 'This is your off-chain payment to Laszlo.',
       multisig:
         'This transaction will fund a multisig output between you and Laszlo.',
-      refund:
+      refund_0:
         'This transaction ensures funds are not lost if Laszlo disappears.',
       refund_1:
         'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer.',
