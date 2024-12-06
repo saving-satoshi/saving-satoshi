@@ -308,8 +308,6 @@ export default function Runner({
     }
   }, [])
 
-  console.log(!isSmallScreen, activeView !== LessonView.Execute, hasherState)
-
   return (
     <>
       {loading && (
