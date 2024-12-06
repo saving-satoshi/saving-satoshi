@@ -417,7 +417,7 @@ export default function Runner({
       {hasherState === HasherState.Success && (
         <StatusBar
           handleTryAgain={onTryAgain}
-          className="h-14 min-h-14 grow"
+          className="h-14 min-h-14"
           success={success}
         />
       )}

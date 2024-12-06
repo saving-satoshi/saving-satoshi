@@ -41,6 +41,10 @@ function Terminal({ className }: { className?: string }, ref) {
                     font-weight: 700;
                     margin-top: 15px;
                   }
+                  .output .success:nth-child(4) {
+                    color: white;
+                    word-break: break-all;
+                  }
                   .log {
                     white-space: preserve;
                     word-break: break-all;
