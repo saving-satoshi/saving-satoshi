@@ -231,6 +231,18 @@ export default function Runner({
               ws?.close()
             }
 
+            if (hasResult.current === false) {
+              sendTerminal('clear')
+              sendTerminal('print', t('runner.result'))
+              sendTerminal(
+                'error',
+                'Repl timed out without a response. Please try again.'
+              )
+              setHasherState(HasherState.Error)
+              setIsRunning(false)
+              setState(State.Error)
+              ws?.close()
+            }
             if (!success) {
               setIsRunning(false)
               setHasherState(HasherState.Waiting)
@@ -296,8 +308,10 @@ export default function Runner({
     }
   }, [])
 
+  console.log(!isSmallScreen, activeView !== LessonView.Execute, hasherState)
+
   return (
-    <>
+    <div className="">
       {loading && (
         <div
           className={clsx(
@@ -313,11 +327,8 @@ export default function Runner({
       )}
 
       <div
-        className={clsx({
-          'hidden md:flex':
-            !isSmallScreen ||
-            (activeView !== LessonView.Execute &&
-              hasherState !== HasherState.Success),
+        className={clsx('mb-auto md:flex md:flex-grow', {
+          hidden: isSmallScreen && activeView !== LessonView.Execute,
         })}
       >
         {state === State.Idle && (
@@ -351,7 +362,7 @@ export default function Runner({
 
       <div
         className={clsx(
-          'flex h-14 min-h-14 w-full items-start border-t border-white border-opacity-30',
+          'mt-auto flex h-14 min-h-14 w-full items-start border-t border-white border-opacity-30',
           {
             'hidden md:flex':
               !isSmallScreen &&
@@ -403,10 +414,10 @@ export default function Runner({
       {hasherState === HasherState.Success && (
         <StatusBar
           handleTryAgain={onTryAgain}
-          className="h-14 min-h-14 grow"
+          className="mt-auto h-14 min-h-14 grow"
           success={success}
         />
       )}
-    </>
+    </div>
   )
 }
