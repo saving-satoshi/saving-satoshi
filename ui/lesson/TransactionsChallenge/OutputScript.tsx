@@ -196,7 +196,6 @@ const OutputScript: FC<IOutput> = ({
   }
 
   const handleScriptChange = (event) => {
-    console.log(event.target.value)
     const input = event.target
     caretPositionRef.current = input.selectionStart
     setScriptInput((prev) => ({
