@@ -328,7 +328,10 @@ export default function Runner({
 
       <div
         className={clsx({
-          'hidden md:flex': isSmallScreen && activeView !== LessonView.Execute,
+          'hidden md:flex':
+            !isSmallScreen ||
+            (activeView !== LessonView.Execute &&
+              hasherState !== HasherState.Running),
         })}
       >
         {state === State.Idle && (
@@ -362,7 +365,7 @@ export default function Runner({
 
       <div
         className={clsx(
-          'mt-auto flex h-14 min-h-14 w-full items-start border-t border-white border-opacity-30',
+          'flex h-14 min-h-14 w-full items-start border-t border-white border-opacity-30',
           {
             'hidden md:flex':
               !isSmallScreen &&
