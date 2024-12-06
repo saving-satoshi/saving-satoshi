@@ -217,7 +217,7 @@ export default function ScriptingChallenge({
 
         <div
           className={clsx(
-            'code-editor grow border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l',
+            'code-editor flex grow flex-col justify-between border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l',
             {
               hidden: activeView === LessonView.Info,
             }
@@ -230,7 +230,12 @@ export default function ScriptingChallenge({
             onChange={handleSetLanguage}
             onRefresh={handleRefresh}
           />
-          <div className={clsx({ 'pointer-events-none': challengeSuccess })}>
+          <div
+            className={clsx({
+              'pointer-events-none': challengeSuccess,
+              hidden: isSmallScreen && activeView === LessonView.Execute,
+            })}
+          >
             <Editor
               language={language}
               value={code}
