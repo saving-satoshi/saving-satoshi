@@ -1,4 +1,3 @@
-import { Language } from 'lib/SavedCode'
 import { EditorRange, LessonDirection, LessonView } from 'types'
 
 export interface ChapterContextType {}
@@ -7,6 +6,24 @@ export interface LessonContextType {
   direction: LessonDirection
   activeView: LessonView
   setActiveView: (view: LessonView) => void
+}
+
+export interface TabDetails {
+  description: string
+  input?: Details
+  output_0: Details
+  output_1?: Details
+  signatures?: Signatures
+}
+
+interface Details {
+  sats: string
+  script?: string
+}
+
+interface Signatures {
+  you: string
+  laszlo: string
 }
 
 export interface EditorFunction {

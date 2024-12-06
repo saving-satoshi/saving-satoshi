@@ -7,11 +7,11 @@ import { Button } from 'shared'
 import ArrowRightLarge from 'shared/icons/ArrowRightLarge'
 import SignatureButton from 'shared/SignatureButton'
 import { accountAtom } from 'state/state'
-import { LessonDirection, LessonView } from 'types'
+import { LessonDirection, LessonView, TransactionData } from 'types'
 import { StatusBar, Text, LessonTabs, Tooltip } from 'ui'
 import { SuccessNumbers } from 'ui/common/StatusBar'
 import { sleep } from 'utils'
-import { transactionTabs } from 'utils/data'
+import transactionTabs from 'utils/data.json'
 import Lesson from '../Lesson'
 import OutputScript from './OutputScript'
 import Tabs from './Tabs'
@@ -22,7 +22,7 @@ interface ITransactionProps {
   nextTransactionTab?: string
   progressKey: string
   prefilled?: boolean
-  prefilledEditable?: boolean
+  prefilledEditable?: boolean | string
   initialStack: Record<'output_0' | 'output_1', SpendingConditions>
   success: SuccessNumbers
   setSuccess: Dispatch<SetStateAction<SuccessNumbers>>
@@ -56,7 +56,7 @@ export type OutputSignatures = {
   laszlo: Signatures
 }
 
-const tabData = [
+const lessonTabData = [
   {
     id: 'info',
     text: 'Info',
@@ -120,8 +120,6 @@ const TransactionChallenge: FC<ITransactionProps> = ({
   const [activeView, setActiveView] = useState(currentTransactionTab)
   const [activePageView, setActivePageView] = useState(LessonView.Info)
   const [account] = useAtom(accountAtom)
-  const allTabs = Object.keys(transactionTabs)
-  const allTabsData = Object.entries(transactionTabs)
   const [validating, setValidating] = useState<boolean>(false)
   const [errorMessage0, setErrorMessage0] = useState('')
   const [errorMessage1, setErrorMessage1] = useState('')
@@ -154,6 +152,10 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     output_0: '',
     output_1: '',
   })
+
+  const tabJSON: TransactionData = transactionTabs
+  const allTabs = Object.keys(tabJSON)
+  const allTabsData = Object.entries(tabJSON)
 
   const handleLazloSign = () => {
     setSignatures((prev) => ({ ...prev, laszlo: 'pending' }))
@@ -202,6 +204,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
 
       return { id: tab, text: tab.includes('refund') ? 'refund' : tab }
     })
+
   const returnSuccess = (): SuccessNumbers => {
     if (
       validateOutput0.signature_0 === 0 &&
@@ -209,16 +212,21 @@ const TransactionChallenge: FC<ITransactionProps> = ({
     ) {
       return 0
     }
+    if (
+      validateOutput0.signature_0 === 2 ||
+      validateOutput0.signature_1 === 2 ||
+      validateOutput1.signature_0 === 2 ||
+      validateOutput1.signature_1 === 2
+    ) {
+      return 2
+    }
     if (initialStack.output_0?.[1] && initialStack.output_0?.[1].length > 0) {
-      if (
-        validateOutput0.signature_0 === 5 &&
-        validateOutput0.signature_1 !== 2
-      ) {
+      if (validateOutput0.signature_0 === 5) {
         if (
           answerScript.output_1.length > 0 &&
           validateOutput1.signature_0 === 5
         ) {
-          if (prefilledEditable && step === 0) {
+          if (typeof prefilledEditable === 'boolean' && step === 0) {
             return 6
           }
           return 5
@@ -241,11 +249,6 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           validateOutput0.signature_0 === 5
         ) {
           return 5
-        } else if (
-          validateOutput0.signature_0 === 2 ||
-          validateOutput1.signature_0 === 2
-        ) {
-          return 2
         } else {
           return 0
         }
@@ -301,7 +304,11 @@ const TransactionChallenge: FC<ITransactionProps> = ({
       }
       onViewChange={handlePageViewChange}
     >
-      <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
+      <LessonTabs
+        items={lessonTabData}
+        classes="px-4 py-2 w-full"
+        stretch={true}
+      />
       {children}
       <div
         className={clsx(
@@ -330,7 +337,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                 >
                   <div className="px-6 pt-6 font-space-mono">
                     <Text className="font-space-mono text-base leading-[22.22px] tracking-[2%]">
-                      {tabData[1].description}
+                      {t(tabData[1].description)}
                     </Text>
                     <div className="flex flex-col items-center gap-[15px] py-4 md:flex-row md:items-start">
                       {tabData[1]?.input && (
@@ -460,6 +467,8 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                                 currentTransactionTab
                               )
                                 ? 'Send to Laszlo'
+                                : /^(multisig)$/.test(currentTransactionTab)
+                                ? 'Sign and Broadcast'
                                 : 'Sign'}
                             </SignatureButton>
                           </div>
@@ -480,25 +489,27 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                           )}
                         </div>
                       </div>
-                      <div className="flex flex-col">
-                        <Text>Options</Text>
-                        <Tooltip
-                          id="broadcast-button"
-                          position="bottom"
-                          theme="bg-[#5c4d4b]"
-                          offset={10}
-                          parentClassName="max-w-[max-content]"
-                          className="max-w-[100px] cursor-not-allowed"
-                          content={`Broadcasting this ${tabData[0]} will close the channel`}
-                        >
-                          <Button
-                            disabled={true}
-                            classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                      {!/^(multisig)$/.test(currentTransactionTab) && (
+                        <div className="flex flex-col">
+                          <Text>Options</Text>
+                          <Tooltip
+                            id="broadcast-button"
+                            position="bottom"
+                            theme="bg-[#5c4d4b]"
+                            offset={10}
+                            parentClassName="max-w-[max-content]"
+                            className="max-w-[100px] cursor-not-allowed"
+                            content={`Broadcasting this ${tabData[0]} will close the channel`}
                           >
-                            Broadcast Transaction
-                          </Button>
-                        </Tooltip>
-                      </div>
+                            <Button
+                              disabled={true}
+                              classes="max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                            >
+                              Broadcast Transaction
+                            </Button>
+                          </Tooltip>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -512,7 +523,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                 <div className="font-nunito text-[21px] text-white opacity-50 transition duration-150 ease-in-out">
                   {currentTransactionTab === 'deposit'
                     ? t('status_bar.skip_challenge_first')
-                    : t('status_bar.skip_challenge_last')}
+                    : t('chapter_ten.making_a_payment_six.success_bar')}
                 </div>
               </div>
               <Button onClick={proceed} classes="md:text-2xl">

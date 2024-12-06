@@ -1,0 +1,123 @@
+{
+  "deposit": {
+    "signatures": {
+      "you": "chapter_ten.tab_data.signed",
+      "laszlo": "chapter_ten.tab_data.pending"
+    },
+    "description": "chapter_ten.tab_data.deposit",
+    "output_0": {
+      "sats": "101000",
+      "script": "T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw=="
+    }
+  },
+  "payment": {
+    "description": "chapter_ten.tab_data.payment",
+    "signatures": {
+      "you": "chapter_ten.tab_data.signed",
+      "laszlo": "chapter_ten.tab_data.pending"
+    },
+    "input": {
+      "sats": "101,000"
+    },
+    "output_0": {
+      "sats": "1000",
+      "script": "T1BfUFVTSCBQVUJLRVkoTEFTWkxPKSBPUF9DSEVDS1NJRw=="
+    },
+    "output_1": {
+      "sats": "99000",
+      "script": "T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw=="
+    }
+  },
+  "multisig": {
+    "description": "chapter_ten.tab_data.multisig",
+    "signatures": {
+      "you": "chapter_ten.tab_data.signed",
+      "laszlo": "chapter_ten.tab_data.pending"
+    },
+    "input": {
+      "sats": "101,000"
+    },
+    "output_0": {
+      "sats": "100000",
+      "script": "T1BfMiBPUF9QVVNIIFBVQktFWShMQVNaTE8pIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfMiBPUF9DSEVDS01VTFRJU0lH"
+    }
+  },
+  "refund": {
+    "description": "chapter_ten.tab_data.refund_0",
+    "signatures": {
+      "you": "chapter_ten.tab_data.signed",
+      "laszlo": "chapter_ten.tab_data.pending"
+    },
+    "input": {
+      "sats": "100,000"
+    },
+    "output_0": {
+      "sats": "99000",
+      "script": "T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw=="
+    }
+  },
+  "refund_1": {
+    "description": "chapter_ten.tab_data.refund_1",
+    "signatures": {
+      "you": "chapter_ten.tab_data.signed",
+      "laszlo": "chapter_ten.tab_data.pending"
+    },
+    "input": {
+      "sats": "100,000"
+    },
+    "output_0": {
+      "sats": "99000",
+      "script": "T1BfSUYgT1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRyBPUF9FTFNFIE9QXzIgT1BfUFVTSCBQVUJLRVkoUkVWT0NBVElPTl9ZT1VfMSkgT1BfUFVTSCBQVUJLRVkoTEFTWkxPKSBPUF8yIE9QX0NIRUNLTVVMVElTSUcgT1BfRU5ESUY="
+    }
+  },
+  "refund_2": {
+    "description": "chapter_ten.tab_data.refund_2",
+    "signatures": {
+      "you": "chapter_ten.tab_data.signed",
+      "laszlo": "chapter_ten.tab_data.pending"
+    },
+    "input": {
+      "sats": "100,000"
+    },
+    "output_0": {
+      "sats": "99000",
+      "script": "T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fWU9VXzEpIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG"
+    }
+  },
+  "commitment_you": {
+    "description": "chapter_ten.tab_data.commitment_you",
+    "signatures": {
+      "you": "chapter_ten.tab_data.signed",
+      "laszlo": "chapter_ten.tab_data.pending"
+    },
+    "input": {
+      "sats": "100,000"
+    },
+    "output_0": {
+      "sats": "98000",
+      "script": "T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fWU9VXzIpIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG"
+    },
+    "output_1": {
+      "sats": "1000",
+      "script": "T1BfUFVTSCBQVUJLRVkoTEFTWkxPKSBPUF9DSEVDS1NJRw=="
+    }
+  },
+  "commitment_laszlo": {
+    "description": "chapter_ten.tab_data.commitment_laszlo",
+    "signatures": {
+      "you": "chapter_ten.tab_data.signed",
+      "laszlo": "chapter_ten.tab_data.pending"
+    },
+    "input": {
+      "sats": "100,000"
+    },
+    "output_0": {
+      "sats": "1000",
+      "script": "T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fTEFTWkxPXzEpIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG"
+    },
+    "output_1": {
+      "sats": "98000",
+      "script": "T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw=="
+    }
+  }
+}

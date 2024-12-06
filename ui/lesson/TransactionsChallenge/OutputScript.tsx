@@ -1,14 +1,21 @@
 import React, { FC, useEffect, useRef } from 'react'
 import HyperLink from 'shared/icons/Hyperlink'
+import { TransactionData } from 'types'
 import { Text } from 'ui/common'
+import transactionTabs from 'utils/data.json'
 import { SignatureType, SpendingConditions } from '.'
 import LanguageExecutor from '../OpCodeChallenge/LanguageExecutor'
 import { MainState } from '../OpCodeChallenge/runnerTypes'
-import { finalAnswerOutput } from 'utils/data'
+
+const finalAnswerOutput = {
+  output_0:
+    'T1BfSUYgT1BfUFVTSCA3MDAgT1BfQ0hFQ0tTRVFVRU5DRVZFUklGWSBPUF9EUk9QIE9QX1BVU0ggUFVCS0VZKExBU1pMTykgT1BfQ0hFQ0tTSUcgT1BfRUxTRSBPUF8yIE9QX1BVU0ggUFVCS0VZKFJFVk9DQVRJT05fTEFTWkxPXzIpIE9QX1BVU0ggUFVCS0VZKFlPVSkgT1BfMiBPUF9DSEVDS01VTFRJU0lHIE9QX0VORElG',
+  output_1: 'T1BfUFVTSCBQVUJLRVkoWU9VKSBPUF9DSEVDS1NJRw==',
+}
 
 interface IOutput {
   prefilled?: boolean
-  prefilledEditable?: boolean
+  prefilledEditable?: boolean | string
   output: 'output 0' | 'output 1'
   step: number
   currentTransactionTab: string
@@ -70,6 +77,13 @@ const OutputScript: FC<IOutput> = ({
   const caretPositionRef = useRef(0)
   const objectOutput = output === 'output 0' ? 'output_0' : 'output_1'
   const currentScriptInput = scriptInput[objectOutput]
+  const tabJSON: TransactionData = transactionTabs
+  const allTabsData = Object.entries(tabJSON)
+  const prefillData =
+    typeof prefilledEditable === 'string' &&
+    allTabsData
+      .map((tabData) => tabData[0] === prefilledEditable && tabData)
+      .filter((data) => typeof data !== 'boolean')[0]
 
   const executeScriptAsync = async () => {
     const scriptInputString = scriptInput[objectOutput]
@@ -149,20 +163,24 @@ const OutputScript: FC<IOutput> = ({
     }
 
     const getErrorMessageOutputZero = (index: number) => {
-      return LanguageExecutor.RunCode(
-        scriptInput['output_0'],
-        initialStack['output_0'][index],
-        height,
-        nSequenceTime
-      )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
+      if (initialStack[objectOutput][index]?.length > 0) {
+        return LanguageExecutor.RunCode(
+          scriptInput['output_0'],
+          initialStack['output_0'][index],
+          height,
+          nSequenceTime
+        )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
+      }
     }
     const getErrorMessageOutputOne = (index: number) => {
-      return LanguageExecutor.RunCode(
-        scriptInput['output_1'],
-        initialStack['output_1'][index],
-        height,
-        nSequenceTime
-      )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
+      if (initialStack[objectOutput][index]?.length > 0) {
+        return LanguageExecutor.RunCode(
+          scriptInput['output_1'],
+          initialStack['output_1'][index],
+          height,
+          nSequenceTime
+        )?.state.filter((stack) => stack.error?.message)[0]?.error?.message
+      }
     }
     const errorMessageOutput0 =
       getErrorMessageOutputZero(0) || getErrorMessageOutputZero(1)
@@ -288,7 +306,12 @@ const OutputScript: FC<IOutput> = ({
       }))
       setScriptInput((prev) => ({
         ...prev,
-        [objectOutput]: Buffer.from(script || '', 'base64').toString('utf-8'),
+        [objectOutput]: Buffer.from(
+          typeof prefilledEditable === 'boolean'
+            ? script
+            : prefillData[1][objectOutput].script || '',
+          'base64'
+        ).toString('utf-8'),
       }))
     }
   }, [prefilledEditable])
@@ -307,7 +330,9 @@ const OutputScript: FC<IOutput> = ({
               ? sats
               : currentTransactionTab !== tab && !prefilledEditable
               ? sats
-              : prefilledEditable && currentTransactionTab === tab && step === 1
+              : typeof prefilledEditable === 'boolean' &&
+                currentTransactionTab === tab &&
+                step === 1
               ? answerSatsMirrored && answerSatsMirrored[objectOutput]
               : satsInput[objectOutput]
           }
@@ -345,7 +370,9 @@ const OutputScript: FC<IOutput> = ({
               ? Buffer.from(script || '', 'base64').toString('utf-8')
               : currentTransactionTab !== tab && !prefilledEditable
               ? Buffer.from(script || '', 'base64').toString('utf-8')
-              : prefilledEditable && currentTransactionTab === tab && step === 1
+              : typeof prefilledEditable === 'boolean' &&
+                currentTransactionTab === tab &&
+                step === 1
               ? Buffer.from(
                   finalAnswerOutput[objectOutput] || '',
                   'base64'
@@ -356,7 +383,7 @@ const OutputScript: FC<IOutput> = ({
           ref={textAreaRef}
           className="min-h-8 resize-y bg-transparent text-white outline-none"
           readOnly={
-            (prefilledEditable &&
+            (typeof prefilledEditable === 'boolean' &&
               !(
                 (nextTransactionTab === tab && step === 1) ||
                 (currentTransactionTab === tab && step === 0)

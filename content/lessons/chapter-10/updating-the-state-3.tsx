@@ -45,6 +45,7 @@ export default function UpdatingTheState3({ lang }) {
           output_1: [],
         }}
         progressKey={metadata.key}
+        prefilledEditable="refund"
         currentTransactionTab="refund_1"
         laszloWillNotSign
       >
