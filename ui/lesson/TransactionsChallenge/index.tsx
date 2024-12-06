@@ -22,7 +22,7 @@ interface ITransactionProps {
   nextTransactionTab?: string
   progressKey: string
   prefilled?: boolean
-  prefilledEditable?: boolean
+  prefilledEditable?: boolean | string
   initialStack: Record<'output_0' | 'output_1', SpendingConditions>
   success: SuccessNumbers
   setSuccess: Dispatch<SetStateAction<SuccessNumbers>>
@@ -226,7 +226,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           answerScript.output_1.length > 0 &&
           validateOutput1.signature_0 === 5
         ) {
-          if (prefilledEditable && step === 0) {
+          if (typeof prefilledEditable === 'boolean' && step === 0) {
             return 6
           }
           return 5
