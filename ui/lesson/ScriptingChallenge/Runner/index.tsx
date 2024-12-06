@@ -311,7 +311,7 @@ export default function Runner({
   console.log(!isSmallScreen, activeView !== LessonView.Execute, hasherState)
 
   return (
-    <div className="">
+    <>
       {loading && (
         <div
           className={clsx(
@@ -327,8 +327,8 @@ export default function Runner({
       )}
 
       <div
-        className={clsx('mb-auto md:flex md:flex-grow', {
-          hidden: isSmallScreen && activeView !== LessonView.Execute,
+        className={clsx({
+          'hidden md:flex': isSmallScreen && activeView !== LessonView.Execute,
         })}
       >
         {state === State.Idle && (
@@ -414,10 +414,10 @@ export default function Runner({
       {hasherState === HasherState.Success && (
         <StatusBar
           handleTryAgain={onTryAgain}
-          className="mt-auto h-14 min-h-14 grow"
+          className="h-14 min-h-14 grow"
           success={success}
         />
       )}
-    </div>
+    </>
   )
 }
