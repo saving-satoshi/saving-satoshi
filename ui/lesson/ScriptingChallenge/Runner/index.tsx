@@ -417,6 +417,8 @@ export default function Runner({
           handleTryAgain={onTryAgain}
           className="h-14 min-h-14"
           success={success}
+          nextStepButton={t('status_bar.try_again')}
+          tooltipDisabled
         />
       )}
     </>
