@@ -91,9 +91,9 @@ max_value = 100000000
 random_number = random.randint(min_value, max_value)
 test_hash = find_hash_from_nonce(random_number)
 if test_hash is not None:
-print(str(test_hash))
+    print(str(test_hash))
 else:
-print("Be sure your function returns a value.")
+    print("Be sure your function returns a value.")
 print("KILL")`,
     defaultFunction: {
       name: 'find_hash',
