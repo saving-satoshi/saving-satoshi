@@ -1589,6 +1589,7 @@ const translations = {
       success: 'The Output class looks good. Great Work!',
     },
     put_it_together_one: {
+      title: 'Putting it all together',
       normal: {
         title: 'Putting it all together',
         nav_title: 'Build the transaction digest',
@@ -3185,7 +3186,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     in_progress_message: 'Looking good so far...',
     success_message: 'Nicely done!',
     next_step_message: 'Looks good now lets move on to the next step.',
-    try_again: "I'm Stuck",
+    im_stuck: "I'm Stuck",
+    try_again: 'Try Again',
     next: 'Next',
     skip_challenge_first: "Let's move on to the first challenge!",
     skip_challenge_last: "Let's move on to the last challenge!",

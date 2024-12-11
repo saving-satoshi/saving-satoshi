@@ -26,6 +26,7 @@ export interface StatusBarType {
   errorMessage?: string
   nextStepMessage?: string
   nextStepButton?: string
+  tooltipDisabled?: boolean
   full?: boolean
   hints?: boolean | null
   alwaysShow?: boolean
@@ -40,6 +41,7 @@ export default function StatusBar({
   inProgressMessage,
   nextStepMessage,
   nextStepButton,
+  tooltipDisabled,
   errorMessage,
   full,
   hints,
@@ -191,11 +193,12 @@ export default function StatusBar({
             offset={10}
             parentClassName="max-w-[max-content]"
             className="max-w-[100px]"
+            disabled={tooltipDisabled}
             content="Reset the page to the beginning"
           >
             <Button
               onClick={handleSubmit}
-              classes={clsx('md:text-2xl', {
+              classes={clsx('h-full md:text-2xl', {
                 hidden: !(
                   getStatus() === Status.Poor ||
                   getStatus() === Status.Good ||
