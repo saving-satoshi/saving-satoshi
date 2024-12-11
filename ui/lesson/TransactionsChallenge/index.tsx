@@ -535,6 +535,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
           <StatusBar
             errorMessage={errorMessage1 || errorMessage0}
             handleTryAgain={handleTryAgain}
+            nextStepButton={t('status_bar.im_stuck')}
             nextStepMessage={`Nice! Let\'s update your commitment!`}
             success={success}
           />
