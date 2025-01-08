@@ -32,6 +32,35 @@ html {
   scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+  height: 8px;
+}
+
+::-webkit-scrollbar:hover {
+  background: #3d3d3d;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lightestgrey);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888888;
+  border-radius: 5px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #676767;
+  border: 0;
+}
+
+::-webkit-scrollbar-thumb:horiontal:active {
+  background: #676767;
+}
+
 .fix-grow-issue [data-nextjs-scroll-focus-boundary] {
   flex-grow: 1;
   display: flex;
@@ -210,12 +239,12 @@ div.react-terminal-active-input {
 }
 
 .challenge-container {
-  height: calc(100dvh - 70px - 48px - 56px)
+  height: calc(100dvh - 70px - 48px - 56px);
 }
 
 @media (min-width: 768px) {
   .challenge-container {
-    height: calc(100dvh - 70px)
+    height: calc(100dvh - 70px);
   }
 }
 
@@ -240,12 +269,12 @@ div.react-terminal-active-input {
 }
 
 .transaction-challenge-container {
-  max-height: calc(100dvh - 70px - 56px - 65px - 48px)
+  max-height: calc(100dvh - 70px - 56px - 65px - 48px);
 }
 
 @media (min-width: 768px) {
   .transaction-challenge-container {
-    max-height: calc(100dvh - 70px - 56px - 65px)
+    max-height: calc(100dvh - 70px - 56px - 65px);
   }
 }
 

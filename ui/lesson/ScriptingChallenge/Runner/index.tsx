@@ -231,6 +231,18 @@ export default function Runner({
               ws?.close()
             }
 
+            if (hasResult.current === false) {
+              sendTerminal('clear')
+              sendTerminal('print', t('runner.result'))
+              sendTerminal(
+                'error',
+                'Repl timed out without a response. Please try again.'
+              )
+              setHasherState(HasherState.Error)
+              setIsRunning(false)
+              setState(State.Error)
+              ws?.close()
+            }
             if (!success) {
               setIsRunning(false)
               setHasherState(HasherState.Waiting)
@@ -317,7 +329,7 @@ export default function Runner({
           'hidden md:flex':
             !isSmallScreen ||
             (activeView !== LessonView.Execute &&
-              hasherState !== HasherState.Success),
+              hasherState !== HasherState.Running),
         })}
       >
         {state === State.Idle && (
@@ -403,8 +415,10 @@ export default function Runner({
       {hasherState === HasherState.Success && (
         <StatusBar
           handleTryAgain={onTryAgain}
-          className="h-14 min-h-14 grow"
+          className="h-14 min-h-14"
           success={success}
+          nextStepButton={t('status_bar.try_again')}
+          tooltipDisabled
         />
       )}
     </>

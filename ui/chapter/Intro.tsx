@@ -19,7 +19,7 @@ export default function Intro({
       )}
     >
       <div className="flex w-full max-w-screen-lg justify-center px-6 text-white lg:px-0">
-        <div className="content-center justify-items-center px-1 font-nunito">
+        <div className="px-1 font-nunito">
           {heading && <Title>{heading}</Title>}
           {children}
         </div>

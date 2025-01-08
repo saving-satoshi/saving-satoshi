@@ -1,9 +1,11 @@
 import clsx from 'clsx'
 import { Button } from 'shared'
 import { LessonView } from 'types'
-import { useLessonContext } from 'ui'
-import { useLang, useProceed, useTranslations } from 'hooks'
+import { useLessonContext, Tooltip } from 'ui'
+import { useLang, usePathData, useProceed, useTranslations } from 'hooks'
 import Icon from 'shared/Icon'
+import { lessons, chapters } from 'content'
+import { currentLessonAtom } from 'state/progressState'
 
 export enum Status {
   Begin,
@@ -24,6 +26,7 @@ export interface StatusBarType {
   errorMessage?: string
   nextStepMessage?: string
   nextStepButton?: string
+  tooltipDisabled?: boolean
   full?: boolean
   hints?: boolean | null
   alwaysShow?: boolean
@@ -38,6 +41,7 @@ export default function StatusBar({
   inProgressMessage,
   nextStepMessage,
   nextStepButton,
+  tooltipDisabled,
   errorMessage,
   full,
   hints,
@@ -51,6 +55,14 @@ export default function StatusBar({
   const { activeView } = useLessonContext()
   const isActive = activeView !== LessonView.Info
   const proceed = useProceed()
+  const { chapterId, lessonId } = usePathData()
+
+  const theme =
+    lessons[chapterId]?.[lessonId]?.metadata.secondaryTheme ??
+    lessons[chapterId]?.[lessonId]?.metadata.theme ??
+    chapters[chapterId]?.metadata.secondaryTheme ??
+    chapters[chapterId]?.metadata.theme ??
+    'bg-back'
 
   const getStatus = () => {
     if (success === null || success === 0) {
@@ -175,18 +187,28 @@ export default function StatusBar({
           </div>
         </div>
         <div className="flex gap-[5px]">
-          <Button
-            onClick={handleSubmit}
-            classes={clsx('md:text-2xl', {
-              hidden: !(
-                getStatus() === Status.Poor ||
-                getStatus() === Status.Good ||
-                getStatus() == Status.NextStep
-              ),
-            })}
+          <Tooltip
+            id="broadcast-button"
+            theme={theme}
+            offset={10}
+            parentClassName="max-w-[max-content]"
+            className="max-w-[100px]"
+            disabled={tooltipDisabled}
+            content="Reset the page to the beginning"
           >
-            {nextStepButton || t('status_bar.try_again')}
-          </Button>
+            <Button
+              onClick={handleSubmit}
+              classes={clsx('h-full md:text-2xl', {
+                hidden: !(
+                  getStatus() === Status.Poor ||
+                  getStatus() === Status.Good ||
+                  getStatus() == Status.NextStep
+                ),
+              })}
+            >
+              {nextStepButton || t('status_bar.try_again')}
+            </Button>
+          </Tooltip>
 
           <Button
             onClick={proceed}
