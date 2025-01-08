@@ -26,7 +26,7 @@ const translations = {
     subtitle:
       "L'année est 2139. Le dernier bitcoin sera miné dans deux semaines. Depuis des mois, un compteur décompte à Satoshi Square.",
     intro:
-      "Le monde attend le dernier block. Puis, soudainement, le réseau se fige completement.<br><br>Tu reçois un holochat de quelqu'un utilisant le nom Satoshi Nakamoto. (Comme n'importe quel autre e-hologram, mais celui-ci a la forme d'un chat). Tu ouvres le holochat en pressant son museau, curieux de savoir ce qu'il a à dire...",
+      "Le monde attend le dernier bloc. Puis, soudainement, Le réseau s'arrête net.<br><br>Tu reçois un holochat de quelqu'un utilisant le nom Satoshi Nakamoto. (Comme n'importe quel autre e-hologram, mais celui-ci a la forme d'un chat). Tu ouvres le holochat en pressant son museau, curieux de savoir ce qu'il a à dire...",
 
     project: {
       title: 'Construit avec fun',
@@ -90,178 +90,178 @@ const translations = {
 
   ///CHAPTERS TITLE PAGE
   chapter_one: {
-    title: 'Secrets in Plain Sight',
+    title: 'Secrets à découvert',
     paragraph_one:
-      'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. Up until this point, every block has had some kind of bitcoin reward, a subsidy. This is the only way new bitcoins come into existence but soon, it’s about to change. After over one hundred years, the issuance schedule for bitcoin is coming to an end. The world awaits for the last block with a subsidy to be mined. It’s a historical event. The end of an era.',
-    paragraph_two: 'Suddenly, the network grinds to a halt.',
+      "L'année est 2139. Le dernier bitcoin sera extrait dans deux semaines. Depuis des mois, un compte à rebours s'affiche sur l'écran de Satoshi Square. Jusqu'à présent, chaque bloc a eu une sorte de récompense en bitcoin, une subvention. C'est la seule façon dont de nouveaux bitcoins voient le jour, mais cela va bientôt changer. Après plus de cent ans, le calendrier d'émission du bitcoin touche à sa fin. Le monde attend que le dernier bloc avec une subvention soit extrait. C'est un événement historique. La fin d'une ère.",
+    paragraph_two: "Soudainement, Le réseau s'arrête net.",
 
     ///CHAPTER 1
     intro_one: {
       title: 'Intro',
-      nav_title: 'Miner protest',
-      paragraph_one: `Moments later, your Hover Screen activates.`,
-      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the well-dressed CEO of BitRey, you run, by far, the largest bitcoin mining pool in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
-      paragraph_three: `—Vanderpoole: “Let’s start from the top. Yes, I am, Deborah, and yes, I do. The Vanderpooles—my well-dressed daddy and his well-dressed daddy before him—have been mining since block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. Miners cannot survive on fees alone.”`,
+      nav_title: 'Protestation du Mineur',
+      paragraph_one: `Un peu plus tard, ton écran s'active.`,
+      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. En tant que PDG élégant de BitRey, vous opérez ce qui est de loin le plus gros pool de minage bitcoin au monde. Vous fabriquez également des machines de minage de Bitcoin. Que se passe-t-il ? Le Bitcoin est-il en train de mourir ?”`,
+      paragraph_three: `—Vanderpoole: “Commençons par le commencement. Oui, je suis PDG, Deborah, et oui, je fais l'effort de rester élégant. Les Vanderpooles—mon père était bien habillé et son père avant lui également bien habillé—font du minage depuis le bloc 21 000. C’est pourquoi je peux dire en toute confiance que les mineurs à travers le monde causent ces retards en éteignant leurs machines. C’est une protestation. Personne ne veut que le Bitcoin cesse d’être émis à 21 millions. Les mineurs ne peuvent pas survivre uniquement avec les frais de transactions."`,
       start: 'Continue',
     },
 
     intro_two: {
-      title: 'Genesis',
-      nav_title: "Satoshi's holocat",
+      title: 'Genèse',
+      nav_title: 'Holochat de Satoshi',
       paragraph_one:
-        'On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
+        "Sur ta Everything Watch, tu reçois un holochat de marque WhiskerWare de quelqu'un utilisant le nom de Satoshi Nakamoto. (C'est comme n'importe quel autre e-hologramme, mais celui-ci a la forme d'un chat.) Vous ouvrez l'holocat en tapotant son nez.",
       paragraph_two:
-        '—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto',
+        "—“Le Bitcoin n'est pas en train de mourir, mais il a besoin de votre aide. N'oubliez pas le chat.” – Satoshi Nakamoto",
       paragraph_three:
-        '—Satoshi? The Satoshi? From the white paper? No, it couldn’t be. They’ve been presumed dead for over a century.',
-      paragraph_four: 'Haven’t they?',
+        "—Satoshi? The Satoshi? Celui du livre blanc ? Non, ça ne se peut pas. Il est supposé être mort depuis plus d'un siècle.",
+      paragraph_four: "N'est-il pas?",
       paragraph_five:
-        'Holocat: “You better get to work. I can help, but you have to start meow.”',
+        'Holochat: “Tu ferais bien de te mettre au boulot. Je peux aider, mais tu dois commencer par miauler.”',
     },
 
     genesis_one: {
-      title: 'Genesis',
-      nav_title: 'Genesis Secret',
-      heading: 'Your first challenge',
+      title: 'Genèse',
+      nav_title: 'Secret de la Genèse',
+      heading: 'Ton premier challenge',
       paragraph_one:
-        'Bitcoin is censorship-resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
+        "Le Bitcoin est de l'argent résistant à la censure. N'importe qui peut envoyer de l'argent en diffusant une transaction sur le réseau. Après la diffusion, les transactions sont regroupées en blocs par les mineurs. Les mineurs sont en compétition contre d'autres mineurs pour le privilège de construire sur la chaîne. C'est ce qui permet à Bitcoin de rester décentralisé.",
       paragraph_two:
-        'Satoshi Nakamoto, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left the world a secret message in the very first bitcoin transaction that was ever made. Your first challenge is to find and decode it.',
+        "Satoshi Nakamoto, l'inventeur pseudonyme du Bitcoin, a également miné le premier bloc de Bitcoin. Il a laissé au monde un message secret dans la toute première transaction de Bitcoin jamais réalisée. Votre premier défi est de le trouver et de le décoder.",
     },
 
     genesis_two: {
-      title: 'Genesis',
-      nav_title: 'Find the message',
-      heading: 'Find the hidden message',
+      title: 'Genèse',
+      nav_title: 'Trouve le message',
+      heading: 'Trouve le message caché',
       paragraph_one:
-        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+        'Trouvons le tout premier bloc dans la blockchain Bitcoin. Clique le bouton ci-dessous pour ouvrir <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">un explorateur de blocs</Tooltip>, exactement au bloc 0, qui est appelé le genesis block (bloc de genèse)',
       paragraph_two:
-        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. The value next to it is an encoded message.',
-      paragraph_three: 'Copy that value and paste it in the code block.',
+        'Fais défiler vers le bas et dévoile les détails de la seule transaction stockée dans ce bloc. Trouvez la partie appelée \'Coinbase\'. Ensuite, cherche le label \'SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)\'. La valeur à côté est un message codé.',
+      paragraph_three: 'Copie cette valeur et colle la dans le bloc de code.',
       tooltip_block_explorer:
-        'A <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
+        'Le <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> est un outil utile pour rapidement voir des informations sur les transactions bitcoin.',
       tooltip_hex:
-        'Short for hexadecimal, a numeral system that represents numbers using a base of 16.',
-      view_block_0: 'View Block 0',
-      placeholder: 'Paste the value you found here',
+        'Hexadecimal en court, un système numérique qui représente les nombres en utilisant une base de 16.',
+      view_block_0: 'Voir Bloc 0',
+      placeholder: 'Colle la valeur que tu as trouvé ici',
     },
 
     genesis_three: {
-      title: 'Genesis',
-      nav_title: 'Decode the message',
-      heading: "Let's decode the message",
+      title: 'Genèse',
+      nav_title: 'Decode le message',
+      heading: 'Décodons le message',
       paragraph_one:
-        'The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.',
+        'Le message que tu as trouvé fut encodé dans un format appelé HEX. Nous allons maintenant exécuter une commande pour le convertir en ASCII afin de pouvoir le lire.',
       paragraph_two:
-        'Copy and paste the command below into the Terminal in the code block and press “Enter”.',
-      terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'`,
-      waiting_for_input: 'Waiting for you to write and run the script...',
-      success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.`,
+        'Copie et colle la commande ci-dessous dans le Terminal dans le bloc code et presse "Entrée".',
+      terminal_challenge_lines: `Entre tes commandes ici et presse Entrée...\n La variable $scriptSigHex est déjà définie pour toi.\n\n var $scriptSigHex = '04fff...e6b73'`,
+      waiting_for_input: 'En attente. Ecris et exécute le script...',
+      success: `Bon travail! Le message décodé réfère à la première page de <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> du 3 Janvier 2009, le même jour durant lequel Satoshi a miné le bloc de genèse. Super cool, pas vrai?! Le message nous donne aussi une indication de ce qu'il l'a motivé à créer bitcoin.\n\n Continuons.`,
     },
 
     genesis_four: {
-      title: 'Genesis',
-      nav_title: 'Your first success',
-      subtitle: 'Congrats! You completed the first challenge!',
+      title: 'Genèse',
+      nav_title: 'Ton premier succés',
+      subtitle: 'Félicitations! Tu as complété ton premier challenge!',
       paragraph_one:
-        'You found the secret message Satoshi Nakamoto embedded in the genesis block. It’s time to expand on what you just learned. Decode a vital clue about the story in the next challenge.',
+        "Tu as trouvé le message secret que Satoshi Nakamoto a intégré dans le bloc genèse. Il est temps d'aller plus loin dans ce que tu viens d'apprendre. Décode un indice crucial sur l'histoire dans le prochain défi.",
     },
 
     transacting_one: {
-      title: 'Transacting',
-      nav_title: "What's in a transaction",
-      heading: 'What’s in a transaction?',
+      title: 'Effectuer des transactions',
+      nav_title: "Qu'est ce qu'une transaction",
+      heading: "Qu'y-a-t-il dans un transaction?",
       paragraph_one:
-        'Two main components of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
+        "Les deux principaux composants d'une transaction sont les entrées et les sorties. Dans l'exercice précédent, nous avons décodé un message secret trouvé dans une entrée de transaction. Cette fois, nous allons décoder un message qui appartient à la partie sortie.",
       paragraph_two:
-        'For the following transaction, we’re going to identify the output of type OP_RETURN.',
+        'Dans la transaction suivante, nous allons identifier la sortie de type OP_RETURN.',
     },
 
     transacting_two: {
-      title: 'Transacting',
-      nav_title: 'Find the OP_RETURN',
+      title: 'Effectuer des transactions',
+      nav_title: 'Trouve lee OP_RETURN',
       heading: 'OP_RETURN',
       paragraph_one:
-        'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
+        "Il existe une autre façon de cacher des messages secrets dans les transactions. Bitcoin dispose d'un type de code spécial appelé OP_RETURN qui permet aux utilisateurs d'attacher des messages aux sorties de transactions. Voyons si nous pouvons en trouver un.",
       paragraph_two:
-        '1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">here</Link> to look at a specific transaction.',
+        '1. Clique <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">here</Link> pour voir les détails d\'une transaction particulière.',
       paragraph_three:
-        '2. Open up the details and find the part that is of type “OP_RETURN”.',
+        '2. Ouvre les détails et trouve la partie de type “OP_RETURN”.',
       paragraph_four:
-        '3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSHBYTES_33" part? These are called opcodes. We’re actually interested in what comes after them.',
+        "3. Localise maintenant le champ “SCRIPTPUBKEY (ASM)”. Tu vois la partie “OP_RETURN OP_PUSHBYTES_33\"? C'est ce qu'on appele opcodes. Ce qui nous intéresse vient après eux.",
       paragraph_five:
-        '4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_33” and paste it in the code block. ',
-      input_challenge_label: 'Enter the OP_RETURN type',
+        '4. Copie la longue séquence de chiffres qui vient après “OP_RETURN OP_PUSHBYTES_33” et colle le dans le bloc code. ',
+      input_challenge_label: 'Saisi le type OP_RETURN',
     },
 
     transacting_three: {
-      title: 'Transacting',
-      nav_title: 'Decode the OP_RETURN',
-      heading: 'Another secret message',
+      title: 'Effectuer des transactions',
+      nav_title: 'Décode le OP_RETURN',
+      heading: 'Un autre message secret',
       paragraph_one:
-        'We’ve identified the part of the transaction output that holds the message.',
+        'Nous avons identifié la partie de la sortie de la transaction qui contient le message.',
       paragraph_two:
-        'All that’s left now is to decode it, just like we did in the previous exercise. You can look up the transaction again <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">here</Link>.',
+        'Tout ce qui nous reste à faire maintenant est de la décoder, comme dans l\'exercice précédent. Tu peux voir la transaction une fois de plus <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">ici</Link>.',
       terminal_challenge_success:
-        'That’s correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n Your next challenge awaits you.',
+        "C'est correct! Bon travail.\n\n Comme tu peux le voir, l'indice est une adresse. Suis la.\n\n Ton prochain défi t'attend.",
       terminal_challenge_lines:
-        'Enter your commands here and press Enter...\n\n Command: \n echo $scriptPubKeyBytes | xxd -r -p \n\n Note that $scriptPubKeyBytes is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous page',
+        "Entre tes commandes ici et presse Entrée...\n\n Commande: \n echo $scriptPubKeyBytes | xxd -r -p \n\n Note que $scriptPubKeyBytes n'est pas défini pour toi cette fois-ci. Tu devras remplacer la variable dans le code avec la valeur que tu as trouvé à la page précédente",
       terminal_challenge_error:
-        'Almost! Remember that the variable $scriptPubKeyBytes is not set for you this time.',
+        "C'est presque ça! Rappele toi que la variable $scriptPubKeyBytes n'est pas définie pour toi cette fois-ci.",
     },
 
     outro_one: {
       title: 'Outro',
-      nav_title: 'Adventure calls',
+      nav_title: "L'aventure t'appele",
       paragraph_one:
-        'You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to District 21.',
+        'Tu descends en trombe à ton garage, tu montes dans le vieux Budgetcopter de ton père, entre les coordonnées, et tu es en chemin vers le District 21.',
       paragraph_two:
-        'Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.',
-      button_text: 'Complete chapter 1',
+        'Malgré des allergies aux chats intense qui affecte même les hologrammes, the holochat te suit. Tu protestes, mais un chat reste un chat.',
+      button_text: 'Complete chapitre 1',
     },
 
     outro_two: {
-      title: 'You did it!',
-      nav_title: 'Chapter complete',
+      title: "Tu l'as fait!",
+      nav_title: 'Chapitre terminé',
       description:
-        'Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go?',
+        "Génial. Tu as terminé ton premier chapitre dans lequel tu as appris beaucoup de choses sur les hashes et transactions. Comment ça s'est passé?",
     },
 
     end: {
-      save: 'Save my progress',
-      next: 'Continue without saving',
-      feedback: 'Share your feedback',
+      save: 'Sauvegarde mon progrés',
+      next: 'Continue sans sauvegarder',
+      feedback: "Partage ton retour d'expérience",
     },
     resources: {
       genesis_two: {
         scriptsig_heading: 'ScriptSig',
         scriptsig_paragraph:
-          "The 'scriptSig' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The 'scriptSig' is the data that goes into the input's scriptSig field.",
+          "Le 'scriptSig' est un script que tu fournis comme partie de l'entrée dans ta nouvelle transaction. C'est essentiellement ton script de dévérouillage, qui prouve que tu as l'autorisation de dépenser le bitcoin du UTXO référencé. Le 'scriptSig' est la donnée qui va dans le champ scriptSig dans la donnée d'entrée.",
         block_explorer_heading: 'Block Explorer',
         block_explorer_paragraph:
-          'A block explorer is a crucial tool for navigating and understanding blockchain networks. It acts as a user-friendly interface to inspect and analyze the data stored on a blockchain. With a block explorer, users can explore transaction histories, view account balances, and track the progress of individual blocks and transactions.',
-        tip: 'Look for the scriptSig(Hex) category nested in coinbase input after expanding the transaction within the block.',
+          "Le block explorer est un outil important pour naviguer et comprendre les réseaux blockchain. C'est une interface intuitive pour inspecter et analyser les données stockées dans la blockchain. Avec un exporateur de blocs, les utilisateurs pour explorer l'historiques des transactions, voir les soldes de comptes, et suivre le progrés de blocs et transactions individuelles.",
+        tip: "Regarde la categorie scriptSig(Hex) incluse dans l'entrée coinbase aprés avoir déplié les details de transaction dans le bloc.",
       },
       genesis_three: {
-        bash_heading: 'Bash Commands',
+        bash_heading: 'Commandes Bash',
         bash_paragraph:
-          'We are using some basic bash command and options to reverse the compression Satoshi did on the text put into the genesis block.',
-        tip: "The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.",
+          'Nous utilisons des commandes et options bash de base pour renverser la compression que Satoshi a appliqué sur le texte présent dans le bloc genèse.',
+        tip: "La commande 'xxd' converti un fichier en hex et ajouter l'argument '-r' renverses cela, permettant au hex d'être traduit en texte intelligible. L'argument '-p' affiche alors le résultat à l'écran pour te permettre de le lire.",
       },
       transacting_two: {
         transactions_heading: 'Transactions',
         transactions_paragraph:
-          "A transaction in the world of cryptocurrencies is akin to a single atomic payment, where it involves the process of destroying existing coins and creating new ones. When someone initiates a cryptocurrency transaction, they're essentially instructing the blockchain to transfer a specific amount of coins from one digital wallet to another. To achieve this, the transaction consumes the sender's existing coins and generates new ones for the recipient, effectively updating the ownership ledger.",
-        bitcoin_script_heading: 'Bitcoin Script',
+          "Une transaction dans le monde des cryptomonnaies est comparable à un paiement atomique unique, où elle implique le processus de destruction de pièces existantes et de création de nouvelles. Lorsqu'une personne initie une transaction en cryptomonnaie, elle donne essentiellement l'instruction à la blockchain de transférer une quantité spécifique de pièces d'un portefeuille numérique à un autre. Pour ce faire, la transaction consomme les pièces existantes de l'expéditeur et en génère de nouvelles pour le destinataire, mettant ainsi à jour le registre de propriété.",
+        bitcoin_script_heading: 'Script Bitcoin',
         bitcoin_script_paragraph:
-          'Bitcoin Script is a simple, stack-based programming language used in bitcoin transactions to define the conditions under which bitcoins can be spent. It consists of various opcodes (short for operation codes) that specify what operations should be performed on the data within the script.',
-        tip: 'Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33 bytes long (66 characters total) in the OP_Return of the transaction',
+          'Bitcoin Script est un langage de programmation simple, basé sur le concept de pile (stack), utilisé dans les transactions Bitcoin pour définir les conditions dans lesquelles des bitcoins peuvent être dépensés. Il se compose de différents opcodes (abréviation de "operation codes") qui spécifient les opérations à effectuer sur les données à l\'intérieur du script.',
+        tip: 'Etant donné le Op_Code: OP_Pushbytes_33 on cherche une séqunce de texte longue de 33 octets (66 caractères au total) dans le OP_Return de la transaction',
       },
       transacting_three: {
-        secrets_heading: 'Secrets In Bitcoin',
+        secrets_heading: 'Secrets dans Bitcoin',
         secrets_paragraph:
-          'As we saw from the previous challenge, secrets embedded into bitcoin scripts has been a part of its history since the genesis block. Whether used to simply store some information in the blockchain, to pass information through bitcoin script to give some value external to bitcoin, or to pass messages to others, people have been storing things in the blockchain other than inputs and outputs since the beginning.',
-        tip: "When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string",
+          "Comme nous l'avons vu dans le défi précédent, les secrets intégrés dans les scripts Bitcoin font partie de son histoire depuis le bloc de genèse . Qu'ils soient utilisés pour simplement stocker des informations dans la blockchain, pour transmettre des informations via le script Bitcoin afin de donner de la valeur à quelque chose d'externe à Bitcoin, ou pour envoyer des messages à d'autres, les gens stockent dans la blockchain d'autres éléments que des entrées et des sorties depuis le début.",
+        tip: "Quand tu décode la séquence de texte avec la commande 'xxd', souviens toi que nous n'utilisons pas une variable cette fois-ci, on a besoin de la séquence de texte entière",
       },
     },
   },
