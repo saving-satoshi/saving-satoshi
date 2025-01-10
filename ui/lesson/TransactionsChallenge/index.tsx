@@ -200,6 +200,18 @@ const TransactionChallenge: FC<ITransactionProps> = ({
         return { id: tab, text: 'commitment' }
       }
 
+      // Start calling the refund tab "initial commitment" now that the player
+      // has learned about commitment transactions
+      const postCommitmentLessons = new Set([
+        'CH10MAP2',
+        'CH10MAP5',
+        'CH10MAP6',
+        'CH10MAP8',
+      ])
+      if (postCommitmentLessons.has(progressKey) && tab === 'refund_2') {
+        return { id: tab, text: 'initial commitment' }
+      }
+
       return { id: tab, text: tab.includes('refund') ? 'refund' : tab }
     })
   const returnSuccess = (): SuccessNumbers => {
