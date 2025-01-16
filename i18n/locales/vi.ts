@@ -25,34 +25,40 @@ const translations = {
     mobile_title: 'Về nội dung', //What it’s about
     subtitle:
         'Đây là năm 2139. Đồng Bitcoin cuối cùng sẽ được khai thác sau hai tuần nữa. Trong nhiều tháng, một chiếc đồng hồ đếm ngược đã xuất hiện tại Quảng trường Satoshi.',
+    //The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square.
     intro:
         'Cả thế giới đang chờ đợi khối dữ liệu cuối cùng. Bỗng nhiên, mạng lưới ngừng hoạt động.<br><br>Bạn nhận được một holocat từ một người tự xưng là Satoshi Nakamoto. (Giống như bất kỳ holocat nào khác, nhưng con này có hình dạng như một con mèo). Bạn mở holocat bằng cách chạm nhẹ vào mũi của nó, tò mò muốn nghe nó nói gì...',
-
+    //The world awaits the last block. Then, suddenly, the network grinds to a halt.<br><br>You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat). You open the holocat by booping its nose curious to hear what it has to say...
     project: {
-        title: 'Được tạo ra bằng niềm vui và đam mê',
+        title: 'Được tạo ra bằng niềm vui và đam mê', //Built with fun
         paragraph_one:
             'Saving Satoshi là điểm tiếp xúc đầu tiên nhẹ nhàng dành cho các lập trình viên tò mò về phát triển bitcoin. Saving Satoshi có các thử thách kết hợp giữa lý thuyết và kỹ thuật lập trình, nhưng các thử thách này nên thực hiện được đối với bất kỳ ai có kỹ năng lập trình cơ bản. Dự án này miễn phí và mã nguồn mở (FOSS) và tất cả các tác phẩm nghệ thuật đều được tạo ra bằng các công cụ văn bản thành hình ảnh như Midjourney.',
+      //Saving Satoshi is a light-hearted first point of contact for coders who are curious about bitcoin development. Saving Satoshi has a mix of technical text and code-based challenges, but the challenges should be doable for anyone with basic coding skills. The project is free and open source (FOSS) and all the art has been generated using text-to-image tools like Midjourney.
         paragraph_two:
             'Dự án này đang được phát triển liên tục và áp dụng phương pháp tiếp cận lặp để tích hợp phản hồi khi chúng tôi phát hành các chương mới. Hiện tại có mười chương được lập bản đồ. Tuy nhiên, có thể thêm nhiều chương hơn khi dự án tiếp tục phát triển.',
+      //This project is in continuous development and takes an iterative approach to incorporate feedback as we release new chapters. There are currently ten chapters mapped out. However more may be added as the project continues to grow.
     },
 
    contributing: {
-      title: 'Cách đóng góp',
+      title: 'Cách đóng góp',//How to contribute
       paragraph_one:
           'Chúng tôi là một dự án mã nguồn mở, vì vậy tất cả các cánh cửa đều rộng mở để bạn giúp định hình nó.',
-    
+    //We’re an open-source project, so all doors are open for you to help shape it.
       feedback: {
-        title: 'Phản hồi',
+        title: 'Phản hồi',//Feedback
         paragraph_one:
             'Một cách tuyệt vời để đóng góp là trải nghiệm Chương 1 và cung cấp cho chúng tôi bất kỳ phản hồi nào về trải nghiệm tổng thể của bạn khi sử dụng <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer"> biểu mẫu này </a>.',
+        //A great way to contribute is to go through Chapter 1 and give us any feedback on the overall experience you might have using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this form</a>.
       },
 
       contribute: {
-        title: 'Đóng góp',
+        title: 'Đóng góp',//Contribute
         paragraph_one:
             'Mọi đề xuất đều được hoan nghênh, bao gồm thay đổi nội dung, cơ chế trò chơi - thực sự là bất cứ điều gì. Chúng tôi cũng luôn tìm kiếm sự trợ giúp để xem xét và <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">kiểm tra chất lượng (QA) các thay đổi mã</a>. Đối với các cải tiến mã, bạn có thể trực tiếp mở một vấn đề hoặc gửi yêu cầu kéo trên GitHub.',
+        //All suggestions are welcome, including content changes, game mechanics – really anything. We are also always looking for help reviewing and <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">QA-ing code changes</a>. For code improvements, you can directly open an issue or submit a pull request on GitHub.
         paragraph_two:
             'Nếu bạn muốn tham gia vào thiết kế, cốt truyện hoặc bất kỳ điều gì khác, hãy tham gia cùng chúng tôi trong kênh #saving-satoshi trên <a href="https://discord.gg/DC8Dys4G3h" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Cho biết bạn muốn đóng góp như thế nào và chúng tôi sẽ giúp bạn đi đúng hướng.',
+        //If you want to get involved with design, story, or anything else, join us in the #saving-satoshi channel in the <a href="https://discord.gg/DC8Dys4G3h" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Mention how you’d like to contribute and we’ll help point you in the right direction.
       },
     },
 
@@ -68,22 +74,28 @@ const translations = {
 privacy: {
   title: 'Cam kết bảo mật của chúng tôi', // Our commitment to privacy
   paragraph_one:
-      'Tại Saving Satoshi, chúng tôi cam kết sâu sắc đảm bảo quyền riêng tư và bảo mật của người dùng. Chúng tôi tin tưởng vào tính minh bạch và muốn bạn hiểu cách và lý do tại sao chúng tôi theo dõi hoạt động sử dụng ứng dụng. Để đạt được điều này, chúng tôi sử dụng một công cụ mạnh mẽ có tên <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.', // At Saving Satoshi, we are deeply committed to ensuring the privacy and security of our users. We believe in transparency and want you to understand how and why we track app usage. To achieve this, we use a powerful tool called <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.
+      'Tại Saving Satoshi, chúng tôi cam kết sâu sắc đảm bảo quyền riêng tư và bảo mật của người dùng. Chúng tôi tin tưởng vào tính minh bạch và muốn bạn hiểu cách và lý do tại sao chúng tôi theo dõi hoạt động sử dụng ứng dụng. Để đạt được điều này, chúng tôi sử dụng một công cụ mạnh mẽ có tên <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.', 
+  // At Saving Satoshi, we are deeply committed to ensuring the privacy and security of our users. We believe in transparency and want you to understand how and why we track app usage. To achieve this, we use a powerful tool called <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.
   sub_heading_one: 'Umami là gì?', // What is Umami?
   paragraph_two:
-      'Umami là một nền tảng phân tích nguồn mở giúp chúng tôi thu thập những thông tin chi tiết cần thiết về cách bạn sử dụng ứng dụng của chúng tôi. Nó cho phép chúng tôi đưa ra các quyết định dựa trên dữ liệu và liên tục cải thiện sản phẩm để đáp ứng tốt hơn nhu cầu của bạn. Bạn có thể xem bảng điều khiển Umami <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">ở đây</Link>.', // Umami is an open-source analytics platform that helps us gather essential insights about how you use our app. It allows us to make data-driven decisions and continuously enhance our product to better meet your needs. You can view the Umami dashboard <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">here</Link>.
+      'Umami là một nền tảng phân tích nguồn mở giúp chúng tôi thu thập những thông tin chi tiết cần thiết về cách bạn sử dụng ứng dụng của chúng tôi. Nó cho phép chúng tôi đưa ra các quyết định dựa trên dữ liệu và liên tục cải thiện sản phẩm để đáp ứng tốt hơn nhu cầu của bạn. Bạn có thể xem bảng điều khiển Umami <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">ở đây</Link>.', 
+  // Umami is an open-source analytics platform that helps us gather essential insights about how you use our app. It allows us to make data-driven decisions and continuously enhance our product to better meet your needs. You can view the Umami dashboard <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">here</Link>.
   sub_heading_two: 'Chúng tôi thu thập dữ liệu gì?', // What Data Do We Collect?
   paragraph_three:
-      'Hãy yên tâm, chúng tôi chỉ thu thập dữ liệu phi cá nhân và ẩn danh, chẳng hạn như:', // Rest assured, we only collect non-personal and anonymized data, such as:
+      'Hãy yên tâm, chúng tôi chỉ thu thập dữ liệu phi cá nhân và ẩn danh, chẳng hạn như:', 
+  // Rest assured, we only collect non-personal and anonymized data, such as:
   list_item_one_title: 'Cải tiến sản phẩm:', // Product Improvement:
   list_item_one_text:
-      'Chúng tôi sử dụng dữ liệu để xác định các lĩnh vực ứng dụng của chúng tôi có thể được cải thiện. Bằng cách hiểu cách bạn sử dụng ứng dụng của chúng tôi, chúng tôi có thể làm cho nó hiệu quả hơn, thân thiện với người dùng và an toàn hơn.', // We use the data to identify areas where our app can be improved. By understanding how you use our app, we can make it more efficient, user-friendly, and secure.
+      'Chúng tôi sử dụng dữ liệu để xác định các lĩnh vực ứng dụng của chúng tôi có thể được cải thiện. Bằng cách hiểu cách bạn sử dụng ứng dụng của chúng tôi, chúng tôi có thể làm cho nó hiệu quả hơn, thân thiện với người dùng và an toàn hơn.', 
+  // We use the data to identify areas where our app can be improved. By understanding how you use our app, we can make it more efficient, user-friendly, and secure.
   list_item_two_title: 'Khả năng tương thích:', // Compatibility:
   list_item_two_text:
-      'Hiểu các thiết bị và nền tảng bạn sử dụng cho phép chúng tôi tối ưu hóa ứng dụng của mình cho các cấu hình khác nhau, đảm bảo nó hoạt động liền mạch cho bạn.', // Understanding the devices and platforms you use allows us to optimize our app for various configurations, ensuring it works seamlessly for you.
+      'Hiểu các thiết bị và nền tảng bạn sử dụng cho phép chúng tôi tối ưu hóa ứng dụng của mình cho các cấu hình khác nhau, đảm bảo nó hoạt động liền mạch cho bạn.', 
+  // Understanding the devices and platforms you use allows us to optimize our app for various configurations, ensuring it works seamlessly for you.
   sub_heading_three: 'Quyền riêng tư của bạn rất quan trọng', // Your Privacy Matters
   paragraph_four:
-      'Chúng tôi muốn nhấn mạnh rằng quyền riêng tư của bạn là vô cùng quan trọng đối với chúng tôi. Chúng tôi không thu thập bất kỳ thông tin nhận dạng cá nhân nào và dữ liệu chúng tôi thu thập chỉ được sử dụng cho mục đích cải thiện ứng dụng của chúng tôi. Dữ liệu của bạn không bao giờ được chia sẻ hoặc bán cho bên thứ ba.', // We want to emphasize that your privacy is of utmost importance to us. We do not collect any personally identifiable information, and the data we gather is used solely for the purpose of improving our app. Your data is never shared or sold to third parties.
+      'Chúng tôi muốn nhấn mạnh rằng quyền riêng tư của bạn là vô cùng quan trọng đối với chúng tôi. Chúng tôi không thu thập bất kỳ thông tin nhận dạng cá nhân nào và dữ liệu chúng tôi thu thập chỉ được sử dụng cho mục đích cải thiện ứng dụng của chúng tôi. Dữ liệu của bạn không bao giờ được chia sẻ hoặc bán cho bên thứ ba.', 
+  // We want to emphasize that your privacy is of utmost importance to us. We do not collect any personally identifiable information, and the data we gather is used solely for the purpose of improving our app. Your data is never shared or sold to third parties.
   paragraph_five:
       "Nếu bạn có bất kỳ lo ngại hoặc câu hỏi nào về các hoạt động thu thập dữ liệu hoặc chính sách bảo mật của chúng tôi, xin đừng ngần ngại liên hệ với chúng tôi. Chúng tôi cam kết cung cấp cho bạn trải nghiệm minh bạch và an toàn khi sử dụng ứng dụng của chúng tôi.",
     },
@@ -91,108 +103,135 @@ privacy: {
 
   ///CHAPTERS TITLE PAGE
   chapter_one: {
-    title: 'Secrets in Plain Sight',
+    title: 'Những Bí Mật Ngầm', // Secrets in Plain Sight
     paragraph_one:
-      'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. Up until this point, every block has had some kind of bitcoin reward, a subsidy. This is the only way new bitcoins come into existence but soon, it’s about to change. After over one hundred years, the issuance schedule for bitcoin is coming to an end. The world awaits for the last block with a subsidy to be mined. It’s a historical event. The end of an era.',
-    paragraph_two: 'Suddenly, the network grinds to a halt.',
-
+        'Năm 2139. Bitcoin cuối cùng sẽ được khai thác sau hai tuần nữa. Trong nhiều tháng, một chiếc đồng hồ đếm ngược đã xuất hiện tại Quảng trường Satoshi. Cho đến thời điểm này, mỗi khối đều có một phần thưởng bitcoin nào đó, một khoản trợ cấp. Đây là cách duy nhất để bitcoin mới xuất hiện nhưng sớm thôi, mọi thứ sắp thay đổi. Sau hơn một trăm năm, lịch trình phát hành bitcoin sắp kết thúc. Thế giới đang chờ đợi khối cuối cùng có trợ cấp được khai thác. Đó là một sự kiện lịch sử. Kết thúc của một kỷ nguyên.', 
+    // The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. Up until this point, every block has had some kind of bitcoin reward, a subsidy. This is the only way new bitcoins come into existence but soon, it’s about to change. After over one hundred years, the issuance schedule for bitcoin is coming to an end. The world awaits for the last block with a subsidy to be mined. It’s a historical event. The end of an era.
+    paragraph_two: 'Bỗng nhiên, mạng lưới ngừng hoạt động.', // Suddenly, the network grinds to a halt.
     ///CHAPTER 1
     intro_one: {
-      title: 'Intro',
-      nav_title: 'Miner protest',
-      paragraph_one: `Moments later, your Hover Screen activates.`,
-      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the well-dressed CEO of BitRey, you run, by far, the largest bitcoin mining pool in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
-      paragraph_three: `—Vanderpoole: “Let’s start from the top. Yes, I am, Deborah, and yes, I do. The Vanderpooles—my well-dressed daddy and his well-dressed daddy before him—have been mining since block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. Miners cannot survive on fees alone.”`,
-      start: 'Continue',
+      title: 'Giới thiệu', // Intro
+      nav_title: 'Cuộc biểu tình của thợ mỏ', // Miner protest
+      paragraph_one: `Một lát sau, Màn hình Bay của bạn được kích hoạt.`, // Moments later, your Hover Screen activates.
+      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. Là Giám đốc điều hành ăn mặc lịch sự của BitRey, ông điều hành, cho đến nay, hồ bơi khai thác bitcoin lớn nhất thế giới. Ông cũng sản xuất máy khai thác bitcoin. Điều gì đang xảy ra? Bitcoin có đang chết không?”`, 
+      // —Deborah Chunk: “Thomas Vanderpoole. As the well-dressed CEO of BitRey, you run, by far, the largest bitcoin mining pool in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”
+      paragraph_three: `—Vanderpoole: “Hãy bắt đầu từ đầu. Vâng, tôi là Deborah, và vâng, tôi làm. Gia đình Vanderpoole - cha tôi ăn mặc lịch sự và cha của ông ấy trước đó - đã khai thác kể từ khối 21.000. Đó là lý do tại sao tôi có thể tự tin nói rằng những người thợ mỏ trên toàn thế giới đang gây ra những sự chậm trễ này bằng cách tắt máy của họ. Đây là một cuộc biểu tình. Không ai muốn bitcoin ngừng được phát hành ở mức 21 triệu. Thợ mỏ không thể sống sót chỉ với phí giao dịch.”`, 
+      // —Vanderpoole: “Let’s start from the top. Yes, I am, Deborah, and yes, I do. The Vanderpooles—my well-dressed daddy and his well-dressed daddy before him—have been mining since block 21,000. That is why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. Miners cannot survive on fees alone.”
+      start: 'Tiếp tục', // Continue
     },
 
     intro_two: {
-      title: 'Genesis',
-      nav_title: "Satoshi's holocat",
+      title: 'Genesis', // Genesis
+      nav_title: "Holocat của Satoshi", // Satoshi's holocat
       paragraph_one:
-        'On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
+          'Trên Đồng hồ Tất cả trong Một của bạn, bạn nhận được một holocat nhãn hiệu WhiskerWare từ một người tự xưng là Satoshi Nakamoto. (Giống như bất kỳ holocat nào khác, nhưng con này có hình dạng như một con mèo.) Bạn mở holocat bằng cách chạm nhẹ vào mũi của nó.', 
+      // On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.
       paragraph_two:
-        '—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto',
+          '—“Bitcoin không phải đang chết, nhưng nó cần sự giúp đỡ của bạn. Đừng quên chú mèo.” – Satoshi Nakamoto', 
+      // —“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto
       paragraph_three:
-        '—Satoshi? The Satoshi? From the white paper? No, it couldn’t be. They’ve been presumed dead for over a century.',
-      paragraph_four: 'Haven’t they?',
+          '—Satoshi? Satoshi đó? Từ bài báo trắng? Không, không thể. Họ đã được cho là đã chết trong hơn một thế kỷ.', 
+      // —Satoshi? The Satoshi? From the white paper? No, it couldn’t be. They’ve been presumed dead for over a century.
+      paragraph_four: 'Phải không?', // Haven’t they?
       paragraph_five:
-        'Holocat: “You better get to work. I can help, but you have to start meow.”',
+          'Holocat: “Bạn tốt hơn nên bắt tay vào làm việc. Tôi có thể giúp đỡ, nhưng bạn phải bắt đầu meo.”', 
+      // Holocat: “You better get to work. I can help, but you have to start meow.”
     },
 
     genesis_one: {
-      title: 'Genesis',
-      nav_title: 'Genesis Secret',
-      heading: 'Your first challenge',
+      title: 'Genesis', // Genesis
+      nav_title: 'Bí mật của Genesis', // Genesis Secret
+      heading: 'Thử thách đầu tiên của bạn', // Your first challenge
       paragraph_one:
-        'Bitcoin is censorship-resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
+          'Bitcoin là tiền tệ kháng kiểm duyệt. Bất kỳ ai cũng có thể gửi tiền bằng cách phát sóng giao dịch tới mạng lưới. Sau khi phát sóng, các giao dịch được đóng gói thành các khối bởi những người thợ mỏ. Những người thợ mỏ cạnh tranh với những người thợ mỏ khác để giành được đặc quyền xây dựng trên chuỗi. Đây là điều giữ cho bitcoin phi tập trung.', 
+      // Bitcoin is censorship-resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.
       paragraph_two:
-        'Satoshi Nakamoto, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left the world a secret message in the very first bitcoin transaction that was ever made. Your first challenge is to find and decode it.',
+          'Satoshi Nakamoto, nhà phát minh ẩn danh của bitcoin, cũng đã khai thác khối bitcoin đầu tiên. Ông đã để lại cho thế giới một thông điệp bí mật trong chính giao dịch bitcoin đầu tiên từng được thực hiện. Thử thách đầu tiên của bạn là tìm và giải mã nó.', 
+      // Satoshi Nakamoto, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left the world a secret message in the very first bitcoin transaction that was ever made. Your first challenge is to find and decode it.
     },
 
     genesis_two: {
-      title: 'Genesis',
-      nav_title: 'Find the message',
-      heading: 'Find the hidden message',
+      title: 'Genesis', // Genesis
+      nav_title: 'Tìm thông điệp', // Find the message
+      heading: 'Tìm thông điệp ẩn', // Find the hidden message
       paragraph_one:
-        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+          'Hãy tìm khối đầu tiên trong chuỗi khối bitcoin. Nhấp vào nút bên dưới để mở một <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">trình khám phá khối</Tooltip> chính xác ở khối 0, được gọi là khối genesis.', 
+      // Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.
       paragraph_two:
-        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. The value next to it is an encoded message.',
-      paragraph_three: 'Copy that value and paste it in the code block.',
+          'Cuộn xuống và mở rộng chi tiết về một giao dịch được lưu trữ trong khối này. Tìm đầu vào có tên “Coinbase”. Bây giờ hãy tìm nhãn “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. Giá trị bên cạnh nó là một thông điệp được mã hóa.', 
+      // Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. The value next to it is an encoded message.
+      paragraph_three:
+          'Sao chép giá trị đó và dán nó vào khối mã.', // Copy that value and paste it in the code block.
       tooltip_block_explorer:
-        'A <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
+          'Một <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">trình khám phá khối</a> là một công cụ hữu ích để nhanh chóng tra cứu thông tin về các giao dịch bitcoin.', 
+      // A <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.
       tooltip_hex:
-        'Short for hexadecimal, a numeral system that represents numbers using a base of 16.',
-      view_block_0: 'View Block 0',
-      placeholder: 'Paste the value you found here',
+          'Được viết tắt là hexadecimal, một hệ thống số đại diện cho các số sử dụng cơ số 16.', 
+      // Short for hexadecimal, a numeral system that represents numbers using a base of 16.
+      view_block_0: 'Xem Khối 0', // View Block 0
+      placeholder: 'Dán giá trị bạn tìm thấy ở đây', // Paste the value you found here
     },
 
     genesis_three: {
-      title: 'Genesis',
-      nav_title: 'Decode the message',
-      heading: "Let's decode the message",
+      title: 'Genesis', // Genesis
+      nav_title: 'Giải mã thông điệp', // Decode the message
+      heading: "Hãy giải mã thông điệp", // Let's decode the message
       paragraph_one:
-        'The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.',
+          'Thông điệp bạn tìm thấy được mã hóa theo định dạng HEX. Bây giờ chúng ta sẽ chạy một lệnh để chuyển đổi nó thành ASCII, thứ mà chúng ta có thể đọc được.', 
+      // The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.
       paragraph_two:
-        'Copy and paste the command below into the Terminal in the code block and press “Enter”.',
-      terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'`,
-      waiting_for_input: 'Waiting for you to write and run the script...',
-      success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.`,
+          'Sao chép và dán lệnh bên dưới vào Terminal trong khối mã và nhấn “Enter”.', 
+      // Copy and paste the command below into the Terminal in the code block and press “Enter”.
+      terminal_challenge_lines:
+      `Nhập lệnh của bạn ở đây và nhấn Enter...\n Biến $scriptSigHex đã được định nghĩa sẵn cho bạn.\n\n var $scriptSigHex = '04fff...e6b73'` , 
+      // Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'
+      waiting_for_input: 'Đang chờ bạn viết và chạy script...', // Waiting for you to write and run the script...
+      success:
+      `Tuyệt vời! Thông điệp được giải mã tham chiếu đến trang nhất của <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> từ ngày 3 tháng 1 năm 2009, cùng ngày Satoshi khai thác khối genesis. Thật tuyệt vời phải không ?! Thông điệp này cũng cung cấp cho chúng tôi một số hiểu biết sâu sắc về động lực sáng tạo bitcoin của anh ấy.\n\n
+      Tiếp tục nào!`, // Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.
     },
 
     genesis_four: {
-      title: 'Genesis',
-      nav_title: 'Your first success',
-      subtitle: 'Congrats! You completed the first challenge!',
+      title: 'Genesis', // Genesis
+      nav_title: 'Thành công đầu tiên của bạn', // Your first success
+      subtitle: 'Chúc mừng! Bạn đã hoàn thành thử thách đầu tiên!', // Congrats! You completed the first challenge!
       paragraph_one:
-        'You found the secret message Satoshi Nakamoto embedded in the genesis block. It’s time to expand on what you just learned. Decode a vital clue about the story in the next challenge.',
+          'Bạn đã tìm thấy thông điệp bí mật mà Satoshi Nakamoto đã nhúng vào khối genesis. Đã đến lúc mở rộng những gì bạn vừa học được. Giải mã một manh mối quan trọng về câu chuyện trong thử thách tiếp theo.', 
+      // You found the secret message Satoshi Nakamoto embedded in the genesis block. It’s time to expand on what you just learned. Decode a vital clue about the story in the next challenge.
     },
 
     transacting_one: {
-      title: 'Transacting',
-      nav_title: "What's in a transaction",
-      heading: 'What’s in a transaction?',
+      title: 'Giao dịch', // Transacting
+      nav_title: "Nội dung của một giao dịch", // What's in a transaction
+      heading: 'Nội dung của một giao dịch là gì?', // What’s in a transaction?
       paragraph_one:
-        'Two main components of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
+          'Hai thành phần chính của một giao dịch là đầu vào và đầu ra. Trong bài tập trước, chúng ta đã giải mã một thông điệp bí mật được tìm thấy bên trong đầu vào của giao dịch. Lần này, chúng ta sẽ giải mã một thông điệp thuộc phần đầu ra.', 
+      // Two main components of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.
       paragraph_two:
-        'For the following transaction, we’re going to identify the output of type OP_RETURN.',
+          'Đối với giao dịch sau đây, chúng ta sẽ xác định đầu ra loại OP_RETURN.', 
+      // For the following transaction, we’re going to identify the output of type OP_RETURN.
     },
 
     transacting_two: {
-      title: 'Transacting',
-      nav_title: 'Find the OP_RETURN',
-      heading: 'OP_RETURN',
+      title: 'Giao dịch', // Transacting
+      nav_title: 'Tìm OP_RETURN', // Find the OP_RETURN
+      heading: 'OP_RETURN', // OP_RETURN
       paragraph_one:
-        'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
+          'Có một cách khác để ẩn các thông điệp bí mật trong các giao dịch. Bitcoin có một loại mã đặc biệt gọi là OP_RETURN cho phép người dùng đính kèm thông điệp vào đầu ra của giao dịch. Hãy xem chúng ta có thể tìm thấy một cái nào không.', 
+      // There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.
       paragraph_two:
-        '1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">here</Link> to look at a specific transaction.',
+          '1. Nhấp vào <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">đây</Link> để xem một giao dịch cụ thể.', 
+      // 1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">here</Link> to look at a specific transaction.
       paragraph_three:
-        '2. Open up the details and find the part that is of type “OP_RETURN”.',
+          '2. Mở chi tiết và tìm phần thuộc loại “OP_RETURN”.', 
+      // 2. Open up the details and find the part that is of type “OP_RETURN”.
       paragraph_four:
-        '3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSHBYTES_33" part? These are called opcodes. We’re actually interested in what comes after them.',
+          '3. Bây giờ hãy xác định vị trí của trường “SCRIPTPUBKEY (ASM)”. Thấy phần “OP_RETURN OP_PUSHBYTES_33” không? Đây được gọi là opcode. Thực ra chúng tôi quan tâm đến những gì xảy ra sau chúng.', 
+      // 3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSHBYTES_33" part? These are called opcodes. We’re actually interested in what comes after them.
       paragraph_five:
-        '4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_33” and paste it in the code block. ',
-      input_challenge_label: 'Enter the OP_RETURN type',
+          '4. Sao chép chuỗi số dài sau “OP_RETURN OP_PUSHBYTES_33” và dán nó vào khối mã.', 
+      // 4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_33” and paste it in the code block. 
+      input_challenge_label: 'Nhập loại OP_RETURN', // Enter the OP_RETURN type
     },
 
     transacting_three: {
