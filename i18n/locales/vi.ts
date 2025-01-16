@@ -235,73 +235,91 @@ privacy: {
     },
 
     transacting_three: {
-      title: 'Transacting',
-      nav_title: 'Decode the OP_RETURN',
-      heading: 'Another secret message',
+      title: 'Giao dịch', // Transacting
+      nav_title: 'Giải mã OP_RETURN', // Decode the OP_RETURN
+      heading: 'Một thông điệp bí mật khác', // Another secret message
       paragraph_one:
-        'We’ve identified the part of the transaction output that holds the message.',
+          'Chúng tôi đã xác định được phần đầu ra của giao dịch chứa tin nhắn.', 
+      // We’ve identified the part of the transaction output that holds the message.
       paragraph_two:
-        'All that’s left now is to decode it, just like we did in the previous exercise. You can look up the transaction again <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">here</Link>.',
+          'Bây giờ chỉ còn việc giải mã nó, giống như chúng ta đã làm trong bài tập trước. Bạn có thể xem lại giao dịch <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">ở đây</Link>.', 
+      // All that’s left now is to decode it, just like we did in the previous exercise. You can look up the transaction again <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">here</Link>.
       terminal_challenge_success:
-        'That’s correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n Your next challenge awaits you.',
+          'Đúng rồi! Tuyệt vời!\n\n Như bạn thấy, manh mối là một địa chỉ. Đi đến đó.\n\n Thử thách tiếp theo đang chờ bạn.',
+      // That’s correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n Your next challenge awaits you.
       terminal_challenge_lines:
-        'Enter your commands here and press Enter...\n\n Command: \n echo $scriptPubKeyBytes | xxd -r -p \n\n Note that $scriptPubKeyBytes is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous page',
+      `Nhập lệnh của bạn ở đây và nhấn Enter...\n\n Lệnh: \n echo $scriptPubKeyBytes | xxd -r -p \n\n Lưu ý rằng $scriptPubKeyBytes không được định nghĩa sẵn cho bạn lần này. Bạn sẽ cần thay thế biến này trong mã bằng giá trị bạn tìm thấy ở trang trước`, 
+      // Enter your commands here and press Enter...\n\n Command: \n echo $scriptPubKeyBytes | xxd -r -p \n\n Note that $scriptPubKeyBytes is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous page
       terminal_challenge_error:
-        'Almost! Remember that the variable $scriptPubKeyBytes is not set for you this time.',
+          'Hầu như! Hãy nhớ rằng biến $scriptPubKeyBytes không được đặt cho bạn lần này.', 
+      // Almost! Remember that the variable $scriptPubKeyBytes is not set for you this time.
     },
 
     outro_one: {
-      title: 'Outro',
-      nav_title: 'Adventure calls',
+      title: 'Outro', // Outro
+      nav_title: 'Cuộc phiêu lưu đang gọi', // Adventure calls
       paragraph_one:
-        'You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to District 21.',
+          'Bạn chạy xuống tầng hầm, bước vào chiếc Budgetcopter cũ của bố mình, nhập tọa độ và tiến đến Quận 21.', 
+      // You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to District 21.
       paragraph_two:
-        'Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.',
-      button_text: 'Complete chapter 1',
+          'Mặc dù bị dị ứng mèo nghiêm trọng đến mức thậm chí còn áp dụng cả đối với holocat, nhưng holocat vẫn đi cùng. Bạn phản đối, nhưng mèo vẫn là mèo.', 
+      // Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.
+      button_text: 'Hoàn thành chương 1', // Complete chapter 1
     },
 
     outro_two: {
-      title: 'You did it!',
-      nav_title: 'Chapter complete',
+      title: 'Bạn đã làm được!', // You did it!
+      nav_title: 'Chương hoàn thành', // Chapter complete
       description:
-        'Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go?',
+          'Tuyệt vời. Bạn đã hoàn thành chương đầu tiên và học được rất nhiều về băm và giao dịch. Nó diễn ra như thế nào?', 
+            // Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go?
     },
 
     end: {
-      save: 'Save my progress',
-      next: 'Continue without saving',
-      feedback: 'Share your feedback',
+      save: 'Lưu tiến độ của tôi', // Save my progress
+      next: 'Tiếp tục mà không lưu', // Continue without saving
+      feedback: 'Chia sẻ phản hồi của bạn', // Share your feedback
     },
     resources: {
       genesis_two: {
-        scriptsig_heading: 'ScriptSig',
+        scriptsig_heading: 'ScriptSig', // ScriptSig
         scriptsig_paragraph:
-          "The 'scriptSig' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The 'scriptSig' is the data that goes into the input's scriptSig field.",
-        block_explorer_heading: 'Block Explorer',
+            "‘scriptSig’ là một script mà bạn cung cấp như một phần của đầu vào trong giao dịch mới của mình. Về bản chất, nó là script mở khóa của bạn, chứng minh rằng bạn có thẩm quyền chi tiêu bitcoin từ UTXO được tham chiếu. ‘scriptSig’ là dữ liệu đi vào trường scriptSig của đầu vào.", 
+        // The 'scriptSig' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The 'scriptSig' is the data that goes into the input's scriptSig field.
+        block_explorer_heading: 'Trình khám phá khối', // Block Explorer
         block_explorer_paragraph:
-          'A block explorer is a crucial tool for navigating and understanding blockchain networks. It acts as a user-friendly interface to inspect and analyze the data stored on a blockchain. With a block explorer, users can explore transaction histories, view account balances, and track the progress of individual blocks and transactions.',
-        tip: 'Look for the scriptSig(Hex) category nested in coinbase input after expanding the transaction within the block.',
+            'Trình khám phá khối là một công cụ quan trọng để điều hướng và hiểu các mạng lưới blockchain. Nó hoạt động như một giao diện thân thiện với người dùng để kiểm tra và phân tích dữ liệu được lưu trữ trên một blockchain. Với trình khám phá khối, người dùng có thể khám phá lịch sử giao dịch, xem số dư tài khoản và theo dõi tiến trình của từng khối và giao dịch.', 
+        // A block explorer is a crucial tool for navigating and understanding blockchain networks. It acts as a user-friendly interface to inspect and analyze the data stored on a blockchain. With a block explorer, users can explore transaction histories, view account balances, and track the progress of individual blocks and transactions.
+        tip: 'Tìm kiếm danh mục scriptSig(Hex) được lồng trong đầu vào coinbase sau khi mở rộng giao dịch bên trong khối.', 
+        // Look for the scriptSig(Hex) category nested in coinbase input after expanding the transaction within the block.
       },
       genesis_three: {
-        bash_heading: 'Bash Commands',
+        bash_heading: 'Lệnh Bash', // Bash Commands
         bash_paragraph:
-          'We are using some basic bash command and options to reverse the compression Satoshi did on the text put into the genesis block.',
-        tip: "The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.",
+            'Chúng tôi đang sử dụng một số lệnh và tùy chọn bash cơ bản để đảo ngược quá trình nén mà Satoshi đã thực hiện trên văn bản được đưa vào khối genesis.', 
+                // We are using some basic bash command and options to reverse the compression Satoshi did on the text put into the genesis block.
+        tip: "Lệnh 'xxd' chuyển đổi một tệp thành hex và thêm thẻ '-r' đảo ngược nó cho phép dịch hex thành văn bản. Thẻ '-p' sau đó in nó ra bảng điều khiển cho phép bạn đọc đầu ra.", 
+                // The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.
       },
       transacting_two: {
-        transactions_heading: 'Transactions',
+        transactions_heading: 'Giao dịch', // Transactions
         transactions_paragraph:
-          "A transaction in the world of cryptocurrencies is akin to a single atomic payment, where it involves the process of destroying existing coins and creating new ones. When someone initiates a cryptocurrency transaction, they're essentially instructing the blockchain to transfer a specific amount of coins from one digital wallet to another. To achieve this, the transaction consumes the sender's existing coins and generates new ones for the recipient, effectively updating the ownership ledger.",
-        bitcoin_script_heading: 'Bitcoin Script',
+            "Một giao dịch trong thế giới tiền điện tử giống như một thanh toán nguyên tử đơn lẻ, trong đó nó liên quan đến quá trình tiêu hủy các đồng tiền hiện có và tạo ra các đồng tiền mới. Khi ai đó khởi tạo một giao dịch tiền điện tử, về cơ bản họ đang hướng dẫn blockchain chuyển một số lượng tiền cụ thể từ ví điện tử này sang ví điện tử khác. Để đạt được điều này, giao dịch sẽ tiêu thụ các đồng tiền hiện có của người gửi và tạo ra các đồng tiền mới cho người nhận, do đó cập nhật sổ cái quyền sở hữu.", 
+        // A transaction in the world of cryptocurrencies is akin to a single atomic payment, where it involves the process of destroying existing coins and creating new ones. When someone initiates a cryptocurrency transaction, they're essentially instructing the blockchain to transfer a specific amount of coins from one digital wallet to another. To achieve this, the transaction consumes the sender's existing coins and generates new ones for the recipient, effectively updating the ownership ledger.
+        bitcoin_script_heading: 'Bitcoin Script', // Bitcoin Script
         bitcoin_script_paragraph:
-          'Bitcoin Script is a simple, stack-based programming language used in bitcoin transactions to define the conditions under which bitcoins can be spent. It consists of various opcodes (short for operation codes) that specify what operations should be performed on the data within the script.',
-        tip: 'Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33 bytes long (66 characters total) in the OP_Return of the transaction',
+            'Bitcoin Script là một ngôn ngữ lập trình dựa trên ngăn xếp đơn giản được sử dụng trong các giao dịch bitcoin để xác định các điều kiện mà bitcoin có thể được chi tiêu. Nó bao gồm các opcode (viết tắt của mã hoạt động) khác nhau chỉ định các hoạt động nào nên được thực hiện trên dữ liệu trong script.', 
+        // Bitcoin Script is a simple, stack-based programming language used in bitcoin transactions to define the conditions under which bitcoins can be spent. It consists of various opcodes (short for operation codes) that specify what operations should be performed on the data within the script.
+        tip: 'Với Op_Code: OP_Pushbytes_33 chúng ta đang tìm kiếm một chuỗi dài 33 byte (tổng cộng 66 ký tự) trong OP_Return của giao dịch', 
+                // Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33 bytes long (66 characters total) in the OP_Return of the transaction
       },
       transacting_three: {
-        secrets_heading: 'Secrets In Bitcoin',
+        secrets_heading: 'Những Bí Mật Trong Bitcoin', // Secrets In Bitcoin
         secrets_paragraph:
-          'As we saw from the previous challenge, secrets embedded into bitcoin scripts has been a part of its history since the genesis block. Whether used to simply store some information in the blockchain, to pass information through bitcoin script to give some value external to bitcoin, or to pass messages to others, people have been storing things in the blockchain other than inputs and outputs since the beginning.',
-        tip: "When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string",
+            'Như chúng ta đã thấy từ thử thách trước, các bí mật được nhúng vào các script bitcoin đã là một phần của lịch sử của nó kể từ khối genesis. Cho dù chỉ để lưu trữ một số thông tin trong blockchain, để truyền thông tin thông qua script bitcoin để cung cấp một số giá trị bên ngoài bitcoin, hay để truyền thông điệp cho người khác, mọi người đã lưu trữ mọi thứ trong blockchain ngoài đầu vào và đầu ra kể từ khi bắt đầu.', 
+                // As we saw from the previous challenge, secrets embedded into bitcoin scripts has been a part of its history since the genesis block. Whether used to simply store some information in the blockchain, to pass information through bitcoin script to give some value external to bitcoin, or to pass messages to others, people have been storing things in the blockchain other than inputs and outputs since the beginning.
+        tip: "Khi giải mã chuỗi bằng lệnh 'xxd', hãy nhớ rằng chúng ta không sử dụng biến lần này, chúng ta cần nhập toàn bộ chuỗi", 
+                // When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string.
       },
     },
   },
