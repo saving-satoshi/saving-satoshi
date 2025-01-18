@@ -497,10 +497,8 @@ privacy: {
       hashing_four: {
         power_of_random_heading: 'Sức mạnh của ngẫu nhiên', // The Power of Random
         power_of_random_paragraph:
-            "Giống như một kịch bản hoàn toàn ngẫu nhiên, về mặt xác suất, hàm băm SHA-256 hoàn toàn ngẫu nhiên đối với mỗi lần bổ sung dữ liệu mới. Nếu bạn băm cuốn tiểu thuyết 'Chiến tranh và Hòa bình', sau đó chỉ cần thêm một chữ cái nữa vào văn bản gốc, nó sẽ tạo ra một băm hoàn toàn khác. Mỗi ký tự mới thay đổi băm theo một cách hoàn toàn ngẫu nhiên. Với 16 ký tự có thể có trong hệ thập lục phân (0-9 và a-f), khả năng tìm thấy một băm bắt đầu bằng '0' là bao nhiêu?", 
-        // Like a perfectly random scenario, probability-wise the SHA-256 hash function is completely random for each addition of new data. If you hashed the novel 'War and Peace', then added just one extra letter to the original text, it would result in a completely different hash. Each new character changes the hash in a completely random manner. Considering that there are 16 possible characters in a hexadecimal system (0-9 and a-f), how likely is it to find a hash starting with '0'?
-        tip: "Bạn có thể tính toán không? Dựa trên 16 ký tự có thể có cho mỗi chữ số, bạn nghĩ khả năng tìm thấy một băm bắt đầu bằng '00' là bao nhiêu? Còn '000' thì sao?", 
-        // Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with '00' is? How about '000'?
+            "Giống như một kịch bản hoàn toàn ngẫu nhiên, về mặt xác suất, hàm băm SHA-256 hoàn toàn ngẫu nhiên đối với mỗi lần bổ sung dữ liệu mới. Nếu bạn băm cuốn tiểu thuyết 'Chiến tranh và Hòa bình', sau đó chỉ cần thêm một chữ cái nữa vào văn bản gốc, nó sẽ tạo ra một băm hoàn toàn khác. Mỗi ký tự mới thay đổi băm theo một cách hoàn toàn ngẫu nhiên. Với 16 ký tự có thể có trong hệ thập lục phân (0-9 và a-f), khả năng tìm thấy một băm bắt đầu bằng '0' là bao nhiêu?",         // Like a perfectly random scenario, probability-wise the SHA-256 hash function is completely random for each addition of new data. If you hashed the novel 'War and Peace', then added just one extra letter to the original text, it would result in a completely different hash. Each new character changes the hash in a completely random manner. Considering that there are 16 possible characters in a hexadecimal system (0-9 and a-f), how likely is it to find a hash starting with '0'?
+        tip: "Bạn có thể tính toán không? Dựa trên 16 ký tự có thể có cho mỗi chữ số, bạn nghĩ khả năng tìm thấy một băm bắt đầu bằng '00' là bao nhiêu? Còn '000' thì sao?",         // Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with '00' is? How about '000'?
         spoiler: "Thử nhập thứ gì đó bắt đầu bằng chữ cái 's'.", // Try something starting with the letter 's'.
       },
       hashing_six: {
@@ -552,14 +550,11 @@ privacy: {
       title: 'Giới thiệu', // Intro
       nav_title: 'Xử lý nó', // Hashing it out
       paragraph_one:
-          '—SATOSHI NAKAMOTO: “Này, bạn! Đúng vậy, bạn! Nhớ tôi chứ? Bitcoin hiện đang bị tấn công 51%! Sau khi bạn đưa các thiết bị khai thác trực tuyến, Vanderpoole đã bật lại các ASIC của BitRey và đang khai thác các khối trống. Vấn đề là không chỉ có máy móc của anh ta. Anh ta đã sử dụng một cửa hậu trên firmware ASIC tiêu chuẩn để lây nhiễm virus cho các máy đào hiện có, ngăn chặn chúng khai thác bất cứ thứ gì ngoài các khối trống. Anh ta đang cố gắng bắt cóc hệ sinh thái bitcoin và buộc mọi người ủng hộ ý tưởng tăng nguồn cung bitcoin. Hãy làm gì đó, đồ ngốc!”', 
-      // —SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is being hit with a 51% attack right now! After you brought those mining devices online, Vanderpoole turned BitRey’s ASICs back on and is mining empty blocks. The problem is it’s not just his machines. He used a backdoor on the standard ASIC firmware to infect existing miners with a virus that prevents them from mining anything but empty blocks. He’s trying to hold the bitcoin ecosystem hostage and force people to support the idea of increasing bitcoin’s supply. Do something, dingdong!”
+          '—SATOSHI NAKAMOTO: “Này, bạn! Đúng vậy, bạn! Nhớ tôi chứ? Bitcoin hiện đang bị tấn công 51%! Sau khi bạn đưa các thiết bị khai thác trực tuyến, Vanderpoole đã bật lại các ASIC của BitRey và đang khai thác các khối trống. Vấn đề là không chỉ có máy móc của anh ta. Anh ta đã sử dụng một cửa hậu trên firmware ASIC tiêu chuẩn để lây nhiễm virus cho các máy đào hiện có, ngăn chặn chúng khai thác bất cứ thứ gì ngoài các khối trống. Anh ta đang cố gắng bắt cóc hệ sinh thái bitcoin và buộc mọi người ủng hộ ý tưởng tăng nguồn cung bitcoin. Hãy làm gì đó, đồ ngốc!”',       // —SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is being hit with a 51% attack right now! After you brought those mining devices online, Vanderpoole turned BitRey’s ASICs back on and is mining empty blocks. The problem is it’s not just his machines. He used a backdoor on the standard ASIC firmware to infect existing miners with a virus that prevents them from mining anything but empty blocks. He’s trying to hold the bitcoin ecosystem hostage and force people to support the idea of increasing bitcoin’s supply. Do something, dingdong!”
       paragraph_two:
-          'Máy tính cũ khạc ra một đám bụi, sau đó tạo ra một tập dữ liệu được gọi là "bảng tính" chứa thông tin liên hệ của một số thợ đào bitcoin lớn nhất, cũng như bản vá cho virus. Bạn càng sớm có thể gửi bản vá cho các thợ mỏ khác, họ càng sớm có thể giành lại quyền kiểm soát máy móc của mình và tham gia cuộc chiến chống lại BitRey.', 
-      // The old computer coughs up a cloud of dust, then produces a wad of data called a “spreadsheet” that contains contact info for some of the largest bitcoin miners, as well as a patch for the virus. The sooner you can get the patch to other miners, the sooner they can regain control of their machines and join your fight against BitRey.
+          'Máy tính cũ khạc ra một đám bụi, sau đó tạo ra một tập dữ liệu được gọi là "bảng tính" chứa thông tin liên hệ của một số thợ đào bitcoin lớn nhất, cũng như bản vá cho virus. Bạn càng sớm có thể gửi bản vá cho các thợ mỏ khác, họ càng sớm có thể giành lại quyền kiểm soát máy móc của mình và tham gia cuộc chiến chống lại BitRey.',       // The old computer coughs up a cloud of dust, then produces a wad of data called a “spreadsheet” that contains contact info for some of the largest bitcoin miners, as well as a patch for the virus. The sooner you can get the patch to other miners, the sooner they can regain control of their machines and join your fight against BitRey.
       paragraph_three:
-          '—HOLOCAT: “Chúng ta có nhiều việc phải làm hơn. Ồ, bạn làm. Tôi sẽ chạy qua tường và dọa chuột.”', 
-            // —HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”
+          '—HOLOCAT: “Chúng ta có nhiều việc phải làm hơn. Ồ, bạn làm. Tôi sẽ chạy qua tường và dọa chuột.”',             // —HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”
     },
 
     solo_one: {
@@ -1256,202 +1251,208 @@ privacy: {
           'Locktime: Chiều cao khối trước đó mà giao dịch này không hợp lệ để xác nhận.', // Locktime: A block height before which this transaction is not valid for confirmation.
       },
       derive_message_seven: {
-        sighash_type_flag_heading: 'SigHash Type Flag',
+        sighash_type_flag_heading: 'Cờ loại SigHash', // SigHash Type Flag
         sighash_type_flag_paragraph_one:
-          'SigHash flags are a mechanism in bitcoin that define which parts of a transaction are included in the hash that is signed by a private key. Essentially, they determine the scope of commitment by the signer to specific parts of the transaction data. The SigHash flag is a single byte appended to each signature and can vary between inputs within the same transaction. There are several types of SigHash flags you can learn about <Link href="https://river.com/learn/terms/s/sighash-flag" target="_blank" className="underline">here</Link>.',
+          'Cờ SigHash là một cơ chế trong Bitcoin xác định phần nào của giao dịch được bao gồm trong hash được ký bởi khóa riêng. Về bản chất, chúng xác định phạm vi cam kết của người ký đối với các phần cụ thể của dữ liệu giao dịch. Cờ SigHash là một byte duy nhất được thêm vào mỗi chữ ký và có thể thay đổi giữa các đầu vào trong cùng một giao dịch. Có một số loại cờ SigHash mà bạn có thể tìm hiểu thêm <Link href="https://river.com/learn/terms/s/sighash-flag" target="_blank" className="underline">ở đây</Link>.', // SigHash flags are a mechanism in bitcoin that define which parts of a transaction are included in the hash that is signed by a private key. Essentially, they determine the scope of commitment by the signer to specific parts of the transaction data. The SigHash flag is a single byte appended to each signature and can vary between inputs within the same transaction. There are several types of SigHash flags you can learn about <Link href="https://river.com/learn/terms/s/sighash-flag" target="_blank" className="underline">here</Link>.
       },
       verify_signature_two: {
         tip_one:
-          'JavaScript hint: You can convert a hex string to a buffer of bytes using <span className="p-1 font-mono bg-[#0000004D] m-1">Buffer.from(someString, \'hex\');</span>',
-        signature_verification_heading: 'Signature Verification',
+          'Gợi ý JavaScript: Bạn có thể chuyển đổi một chuỗi hex thành một bộ đệm byte bằng cách sử dụng <span className="p-1 font-mono bg-[#0000004D] m-1">Buffer.from(someString, \'hex\');</span>', // JavaScript hint: You can convert a hex string to a buffer of bytes using <span className="p-1 font-mono bg-[#0000004D] m-1">Buffer.from(someString, \'hex\');</span>        
+        signature_verification_heading: 'Xác minh chữ ký', // Signature Verification
         signature_verification_paragraph_one:
-          'Signature verification is a mathematical algorithm in which one party provides a piece of data (the signature) that could only be generated if that party knows a secret number (the private key). Verification involves comparing the signature, the public key, and a given message. If the algorithm outputs a TRUE boolean, then the signature is considered authentic.',
+          'Xác minh chữ ký là một thuật toán toán học trong đó một bên cung cấp một phần dữ liệu (chữ ký) chỉ có thể được tạo ra nếu bên đó biết một số bí mật (khóa riêng tư). Xác minh liên quan đến việc so sánh chữ ký, khóa công khai và một thông điệp nhất định. Nếu thuật toán đưa ra một giá trị boolean TRUE, thì chữ ký được coi là xác thực.', // Signature verification is a mathematical algorithm in which one party provides a piece of data (the signature) that could only be generated if that party knows a secret number (the private key). Verification involves comparing the signature, the public key, and a given message. If the algorithm outputs a TRUE boolean, then the signature is considered authentic.
       },
       verify_signature_three: {
-        signature_encoding_heading: 'Signature Encoding',
+        signature_encoding_heading: 'Mã hóa chữ ký', // Signature Encoding
         signature_encoding_paragraph_one:
-          'A (DER) signature or Distinguished Encoding Rules is simply a format used to encode an ECDSA signature in bitcoin. An ECDSA signature is generated using a private key and a hash of the signed message. It consists of two 32-byte numbers (r,s). It has multiple components you can learn more about <Link href="https://technicaldifficulties.io/2020/07/22/bip-66-unpacking-der-signatures/" target="_blank" className="underline">here</Link>.',
+          'Chữ ký (DER) hoặc Quy tắc mã hóa phân biệt (Distinguished Encoding Rules) đơn giản là một định dạng được sử dụng để mã hóa chữ ký ECDSA trong Bitcoin. Chữ ký ECDSA được tạo bằng khóa riêng và băm của thông báo được ký. Nó bao gồm hai số 32 byte (r, s). Nó có nhiều thành phần mà bạn có thể tìm hiểu thêm <Link href="https://technicaldifficulties.io/2020/07/22/bip-66-unpacking-der-signatures/" target="_blank" className="underline">ở đây</Link>.', // A (DER) signature or Distinguished Encoding Rules is simply a format used to encode an ECDSA signature in bitcoin. An ECDSA signature is generated using a private key and a hash of the signed message. It consists of two 32-byte numbers (r,s). It has multiple components you can learn more about <Link href="https://technicaldifficulties.io/2020/07/22/bip-66-unpacking-der-signatures/" target="_blank" className="underline">here</Link>.
       },
       verify_signature_four: {
-        eliptic_curve_heading:
-          'Elliptic Curve Digital Signature Algorithm (ECDSA)',
+        eliptic_curve_heading: 'Thuật toán chữ ký số đường cong Elliptic (ECDSA)', // Elliptic Curve Digital Signature Algorithm (ECDSA)
         eliptic_curve_paragraph_one:
-          "ECDSA is a cryptographic algorithm used by bitcoin to ensure that funds can only be spent by their rightful owners. A public key is derived from a private key through elliptic curve multiplication, which is computationally straightforward. However, reversing this process to derive the private key from the public key is computationally unfeasible. This one-way function is a cornerstone of Bitcoin's security.",
-        public_private_key_heading: 'Public and Private Keys',
+          "ECDSA là một thuật toán mật mã được Bitcoin sử dụng để đảm bảo rằng tiền chỉ có thể được chi tiêu bởi chủ sở hữu hợp pháp của chúng. Khóa công khai được suy ra từ khóa riêng thông qua phép nhân đường cong elliptic, điều này khá đơn giản về mặt tính toán. Tuy nhiên, đảo ngược quá trình này để suy ra khóa riêng từ khóa công khai là không khả thi về mặt tính toán. Hàm một chiều này là nền tảng của bảo mật Bitcoin.", // ECDSA is a cryptographic algorithm used by bitcoin to ensure that funds can only be spent by their rightful owners. A public key is derived from a private key through elliptic curve multiplication, which is computationally straightforward. However, reversing this process to derive the private key from the public key is computationally unfeasible. This one-way function is a cornerstone of Bitcoin's security.
+        
+        public_private_key_heading: 'Khóa công khai và khóa riêng', // Public and Private Keys
         public_private_key_paragraph_one:
-          'In bitcoin, a pair of keys is used to ensure secure transactions. The private key, kept secret, is used to sign transactions and prove ownership of a bitcoin address. The public key, derived from the private key, can be shared and is used to verify that a signature is made by the private key holder, without revealing the private key.',
+          'Trong Bitcoin, một cặp khóa được sử dụng để đảm bảo giao dịch an toàn. Khóa riêng, được giữ bí mật, được sử dụng để ký giao dịch và chứng minh quyền sở hữu của một địa chỉ Bitcoin. Khóa công khai, được suy ra từ khóa riêng, có thể được chia sẻ và được sử dụng để xác minh rằng chữ ký được thực hiện bởi chủ sở hữu khóa riêng, mà không tiết lộ khóa riêng.', // In bitcoin, a pair of keys is used to ensure secure transactions. The private key, kept secret, is used to sign transactions and prove ownership of a bitcoin address. The public key, derived from the private key, can be shared and is used to verify that a signature is made by the private key holder, without revealing the private key.
       },
       verify_signature_five: {
-        finite_field_arithmetic_heading: 'Finite Field Arithmetic',
+        finite_field_arithmetic_heading: 'Số học trường hữu hạn', // Finite Field Arithmetic
         finite_field_arithmetic_paragraph_one:
-          "This type of arithmetic, used in ECDSA, involves numbers within a fixed range or field. Operations such as addition, subtraction, multiplication, and finding modular inverses are performed with respect to the size of this field. This is essential for the elliptic curve calculations in bitcoin's cryptography.",
-        ge_and_fe_heading: 'Group Elements (GE) and Field Elements (FE)',
+          "Loại số học này, được sử dụng trong ECDSA, liên quan đến các số trong một phạm vi hoặc trường cố định. Các phép toán như cộng, trừ, nhân và tìm nghịch đảo modulo được thực hiện theo kích thước của trường này. Điều này rất cần thiết cho các phép tính đường cong elliptic trong mật mã học Bitcoin.", // This type of arithmetic, used in ECDSA, involves numbers within a fixed range or field. Operations such as addition, subtraction, multiplication, and finding modular inverses are performed with respect to the size of this field. This is essential for the elliptic curve calculations in bitcoin's cryptography.
+        ge_and_fe_heading: 'Phần tử nhóm (GE) và Phần tử trường (FE)', // Group Elements (GE) and Field Elements (FE)
         ge_and_fe_paragraph_one:
-          "In the context of elliptic curve cryptography, a group element typically represents a point on the elliptic curve. In the challenge, GE refers to such a point with specific x and y coordinates. FE represents an element of the finite field, used for calculations within the field's constraints.",
-        modular_inverse_heading: 'Modular Inverse',
+          "Trong ngữ cảnh của mật mã học đường cong elliptic, một phần tử nhóm thường đại diện cho một điểm trên đường cong elliptic. Trong thử thách, GE đề cập đến một điểm như vậy với tọa độ x và y cụ thể. FE đại diện cho một phần tử của trường hữu hạn, được sử dụng cho các phép tính trong các ràng buộc của trường.", // In the context of elliptic curve cryptography, a group element typically represents a point on the elliptic curve. In the challenge, GE refers to such a point with specific x and y coordinates. FE represents an element of the finite field, used for calculations within the field's constraints.
+        modular_inverse_heading: 'Nghịch đảo modulo', // Modular Inverse
         modular_inverse_paragraph_one:
-          "The modular inverse of a number a modulo m is a number b such that (a * b) % m = 1. Finding the modular inverse is a critical step in ECDSA signature verification. It's used in the calculation of u1 and u2 during the verification process.",
+          "Nghịch đảo modulo của một số a modulo m là một số b sao cho (a * b) % m = 1. Tìm nghịch đảo modulo là một bước quan trọng trong việc xác minh chữ ký ECDSA. Nó được sử dụng trong việc tính toán u1 và u2 trong quá trình xác minh.", // The modular inverse of a number a modulo m is a number b such that (a * b) % m = 1. Finding the modular inverse is a critical step in ECDSA signature verification. It's used in the calculation of u1 and u2 during the verification process.
       },
       validate_signature_one: {
-        message_verification_heading: 'Importance of Message Verification',
+        message_verification_heading: 'Tầm quan trọng của việc xác minh thông điệp', // Importance of Message Verification
         message_verification_paragraph_one:
-          'Message verification enhances the security of communications within the bitcoin ecosystem. It allows parties to verify the authenticity and integrity of messages, which is valuable in situations where trust and verification are essential, such as in peer-to-peer transactions or communication between parties in a smart contract. Furthermore, message verification serves as a foundation for various applications, including identity verification and the attestation of ownership of a particular bitcoin address. It adds a layer of cryptographic assurance, reinforcing the trustless and decentralized nature of the bitcoin network.',
+          'Xác minh thông điệp nâng cao tính bảo mật của giao tiếp trong hệ sinh thái Bitcoin. Nó cho phép các bên xác minh tính xác thực và tính toàn vẹn của các thông điệp, điều này rất có giá trị trong các tình huống mà sự tin tưởng và xác minh là điều cần thiết, chẳng hạn như trong các giao dịch ngang hàng hoặc giao tiếp giữa các bên trong một hợp đồng thông minh. Hơn nữa, xác minh thông điệp đóng vai trò nền tảng cho nhiều ứng dụng khác nhau, bao gồm xác minh danh tính và chứng nhận quyền sở hữu của một địa chỉ Bitcoin cụ thể. Nó bổ sung một lớp đảm bảo mật mã, củng cố bản chất phi tin cậy và phi tập trung của mạng lưới Bitcoin.', // Message verification enhances the security of communications within the bitcoin ecosystem. It allows parties to verify the authenticity and integrity of messages, which is valuable in situations where trust and verification are essential, such as in peer-to-peer transactions or communication between parties in a smart contract. Furthermore, message verification serves as a foundation for various applications, including identity verification and the attestation of ownership of a particular bitcoin address. It adds a layer of cryptographic assurance, reinforcing the trustless and decentralized nature of the bitcoin network.
       },
       validate_signature_two: {
-        base64_encoding_heading: 'Base64 Encoding',
+        base64_encoding_heading: 'Mã hóa Base64', // Base64 Encoding
         base64_encoding_paragraph_one:
-          "Base64 is a basic byte to text encoding scheme that just allows for the data to be convereted to bytes which can then be used in buffers or from bytes to text in such a way that it avoids any problems with url paths and query params. This differs from the base58 encoding scheme in that it still includes the similar characters (zero, uppercase 'O', uppercase 'I', and lowercase 'l') that may otherwise be confusing to a user when trying to copy or dictate the encoded message.",
+          "Base64 là một lược đồ mã hóa byte sang văn bản cơ bản chỉ cho phép dữ liệu được chuyển đổi thành byte, sau đó có thể được sử dụng trong bộ đệm hoặc từ byte sang văn bản theo cách tránh mọi sự cố với đường dẫn url và tham số truy vấn. Điều này khác với lược đồ mã hóa base58 ở chỗ nó vẫn bao gồm các ký tự tương tự (số không, chữ hoa 'O', chữ hoa 'I' và chữ thường 'l') có thể gây nhầm lẫn cho người dùng khi cố gắng sao chép hoặc đọc thông báo được mã hóa.", // Base64 is a basic byte to text encoding scheme that just allows for the data to be convereted to bytes which can then be used in buffers or from bytes to text in such a way that it avoids any problems with url paths and query params. This differs from the base58 encoding scheme in that it still includes the similar characters (zero, uppercase 'O', uppercase 'I', and lowercase 'l') that may otherwise be confusing to a user when trying to copy or dictate the encoded message.
       },
       validate_signature_three: {
-        signing_and_ownership_heading: 'Message Signing and Ownership',
+        signing_and_ownership_heading: 'Ký và sở hữu', // Message Signing and Ownership
         signing_and_ownership_paragraph_one:
-          "Based on bitcoin's psuedo-anonymity we are limited in what we are able to definitively prove because the owner of a key can refuse to sign a message or sign a message with an incorrect key on purpose. The only thing we can prove is that the key that creates an invalid signature is not one that matches a key that can sign a message.",
+          "Dựa trên tính ẩn danh giả của Bitcoin, chúng ta bị hạn chế trong những gì chúng ta có thể chứng minh một cách dứt khoát bởi vì chủ sở hữu của một khóa có thể từ chối ký một thông điệp hoặc ký một thông điệp bằng một khóa không chính xác một cách cố ý. Điều duy nhất chúng ta có thể chứng minh là khóa tạo ra chữ ký không hợp lệ không phải là khóa khớp với khóa có thể ký một thông điệp.", // Based on bitcoin's psuedo-anonymity we are limited in what we are able to definitively prove because the owner of a key can refuse to sign a message or sign a message with an incorrect key on purpose. The only thing we can prove is that the key that creates an invalid signature is not one that matches a key that can sign a message.
       },
       validate_signature_four: {
-        one_for_one_heading: 'One for One',
+        one_for_one_heading: 'Một-một', // One for One
         one_for_one_paragraph_one:
-          'To ensure the reliability and security of ECDSA, a signature created by a private key can only be verified by the corresponding public key. If different private keys could produce the same public key or signature, it would undermine the security and reliability of ECDSA. Through this we can know that the public key that was able to sign this message has ownership of this bitcoin.',
+          'Để đảm bảo độ tin cậy và bảo mật của ECDSA, một chữ ký được tạo bởi một khóa riêng chỉ có thể được xác minh bởi khóa công khai tương ứng. Nếu các khóa riêng khác nhau có thể tạo ra cùng một khóa công khai hoặc chữ ký, điều đó sẽ làm suy yếu bảo mật và độ tin cậy của ECDSA. Thông qua điều này, chúng ta có thể biết rằng khóa công khai có thể ký vào thông điệp này có quyền sở hữu Bitcoin này.', // To ensure the reliability and security of ECDSA, a signature created by a private key can only be verified by the corresponding public key. If different private keys could produce the same public key or signature, it would undermine the security and reliability of ECDSA. Through this we can know that the public key that was able to sign this message has ownership of this bitcoin.
       },
     },
   },
 
   chapter_six: {
-    title: `The Keyholder`,
+    title: `Người giữ chìa khóa`, // The Keyholder
     paragraph_one:
-      'Ahhh! Vanderpoole is out to get you for exposing his fraudulent claims. But despite the fact that the holocat is out of the bag, plenty of scared people continue to cling to the myth that Vanderpoole created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.',
+      'Ahhh! Vanderpoole đang tìm cách trả thù bạn vì đã vạch trần những tuyên bố gian lận của anh ta. Nhưng mặc dù sự thật đã được phơi bày, nhiều người vẫn sợ hãi tiếp tục bám víu vào huyền thoại mà Vanderpoole đã tạo ra xung quanh bản thân, gia đình và tổ tiên giả định của họ. Thời kỳ này đáng sợ, và mọi người cần một người hùng. Thật không may, đối với nhiều người, anh ta là người tốt nhất mà họ có.', // Ahhh! Vanderpoole is out to get you for exposing his fraudulent claims. But despite the fact that the holocat is out of the bag, plenty of scared people continue to cling to the myth that Vanderpoole created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.
     intro_one: {
-      title: 'Intro',
-      nav_title: 'Was that really Satoshi',
+      title: 'Giới thiệu', // Intro
+      nav_title: 'Có phải đó thực sự là Satoshi không?', // Was that really Satoshi
       paragraph_one:
-        '—SATOSHI NAKAMOTO: ”Well done. Now the world can see for itself that Vanderpoole is a fraud. Even if some don’t believe it yet, they will before our work is done.”',
+        '—SATOSHI NAKAMOTO: ”Làm tốt. Giờ thì cả thế giới có thể tự mình thấy rằng Vanderpoole là một kẻ lừa đảo. Ngay cả khi một số người vẫn chưa tin, họ sẽ tin trước khi công việc của chúng ta hoàn thành.”', // —SATOSHI NAKAMOTO: ”Well done. Now the world can see for itself that Vanderpoole is a fraud. Even if some don’t believe it yet, they will before our work is done.”
       paragraph_two:
-        'You pause for a moment and realize that every message up to this point has been signed “Satoshi Nakamoto.” You had just assumed that this was a pseudonym used by someone who adheres to bitcoin’s core principles. Surely, they couldn’t be the real Satoshi Nakamoto. But, you finally decide, it’s worth asking.',
+        'Bạn dừng lại một lúc và nhận ra rằng mọi tin nhắn cho đến thời điểm này đều được ký “Satoshi Nakamoto”. Bạn đã luôn cho rằng đây là bút danh được sử dụng bởi ai đó tôn trọng các nguyên tắc cốt lõi của Bitcoin. Chắc chắn, họ không thể là Satoshi Nakamoto thực sự. Nhưng cuối cùng, bạn quyết định, việc hỏi cũng đáng.', // You pause for a moment and realize that every message up to this point has been signed “Satoshi Nakamoto.” You had just assumed that this was a pseudonym used by someone who adheres to bitcoin’s core principles. Surely, they couldn’t be the real Satoshi Nakamoto. But, finally, you decide, it’s worth asking.
       paragraph_three:
-        '—”This might make me sound stupid, but are you the real Satoshi?”',
+        '—”Điều này có thể khiến tôi trông thật ngu ngốc, nhưng liệu ông có phải là Satoshi thực sự không?”', // —”This might make me sound stupid, but are you the real Satoshi?”
     },
     intro_two: {
-      title: 'Intro',
-      nav_title: 'Paying Mika 3000',
+      title: 'Giới thiệu', // Intro
+      nav_title: 'Trả cho Mika 3000', // Paying Mika 3000
       paragraph_one:
-        '—HOLOCAT: “Hardly the only thing to make you sound stupid lately.”',
+        '—HOLOCAT: “Hầu như không có gì khiến bạn trông ngu ngốc hơn gần đây.”', // —HOLOCAT: “Hardly the only thing to make you sound stupid lately.”
       paragraph_two:
-        '—SATOSHI NAKAMOTO: “Bitcoin moved far beyond its creator’s control many years ago. It would not matter if Vanderpoole or I were Satoshi, or one of their descendants. Bitcoin is defined by its community and cannot be co-opted by a single individual or entity—including Satoshi. Proving this is the real battle. I hope you don’t mind, but I asked your eccentric freelance reporter friend to reach out.”',
-      paragraph_three: '—He what?',
-      paragraph_four: '—Ding.',
-      paragraph_five: '—HOLOCAT: Don’t forget to boop me.',
-      paragraph_six: `—MIKA 3000: “You’ve got guts, but guts aren't enough. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to know for sure what "more" means. This will cost a lot, so I could use your help pulling funds off the multisig wallet that you helped me set up. You’ve still got one of my keys, right?”`,
+        '—SATOSHI NAKAMOTO: “Bitcoin đã vượt xa tầm kiểm soát của người tạo ra nó nhiều năm trước. Cho dù Vanderpoole hay tôi có phải là Satoshi, hay một trong những hậu duệ của họ thì cũng không quan trọng. Bitcoin được định nghĩa bởi cộng đồng của nó và không thể bị một cá nhân hoặc thực thể nào đó chiếm đoạt - kể cả Satoshi. Chứng minh điều này là trận chiến thực sự. Tôi hy vọng bạn không phiền, nhưng tôi đã nhờ người bạn phóng viên tự do lập dị của bạn liên hệ.”', // —SATOSHI NAKAMOTO: “Bitcoin moved far beyond its creator’s control many years ago. It would not matter if Vanderpoole or I were Satoshi, or one of their descendants. Bitcoin is defined by its community and cannot be co-opted by a single individual or entity—including Satoshi. Proving this is the real battle. I hope you don’t mind, but I asked your eccentric freelance reporter friend to reach out.”
+      paragraph_three:
+        '—Anh ta làm gì?', // —He what?
+      paragraph_four:
+        '—Ting.', // —Ding.
+      paragraph_five:
+        '—HOLOCAT: Đừng quên bấm vào tôi.', // —HOLOCAT: Don’t forget to boop me.
+      paragraph_six:
+        `—MIKA 3000: “Bạn rất dũng cảm, nhưng dũng cảm thôi là chưa đủ. Những gì bạn phát hiện chỉ mới là sự khởi đầu. Câu chuyện này còn nhiều điều hơn thế, nhưng chúng ta cần đến thăm hòn đảo riêng của Vanderpoole để biết chắc chắn "nhiều hơn" nghĩa là gì. Điều này sẽ tốn rất nhiều tiền, vì vậy tôi có thể sử dụng sự giúp đỡ của bạn để rút tiền từ ví đa chữ ký mà bạn đã giúp tôi thiết lập. Bạn vẫn còn một trong những khóa của tôi, phải không?”`, // —MIKA 3000: “You’ve got guts, but guts aren't enough. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to know for sure what "more" means. This will cost a lot, so I could use your help pulling funds off the multisig wallet that you helped me set up. You’ve got a key, right?”
     },
     in_out_one: {
-      title: 'The ins and outs',
-      nav_title: 'The unspent UTXO',
+      title: 'Nội tình', // The ins and outs
+      nav_title: 'Giao dịch chưa chi tiêu (UTXO)', // The unspent UTXO
       paragraph_one:
-        "Mika 3000 needs 1 BTC to buy gear for her trip to Vanderpoole's private island. You decide to send her 1 BTC from your chapter 3 mining rewards, which have been sent by the mining pool to the address you created in chapter 4.",
+        "Mika 3000 cần 1 BTC để mua đồ dùng cho chuyến đi đến hòn đảo riêng của Vanderpoole. Bạn quyết định gửi cho cô ấy 1 BTC từ phần thưởng khai thác mỏ chương 3 của mình, phần thưởng đã được gửi bởi nhóm khai thác mỏ đến địa chỉ mà bạn đã tạo trong chương 4.", // Mika 3000 needs 1 BTC to buy gear for her trip to Vanderpoole's private island. You decide to send her 1 BTC from your chapter 3 mining rewards, which have been sent by the mining pool to the address you created in chapter 4.
       paragraph_two:
-        'You open your bitcoin full node and execute a command to see where your money is in the blockchain.',
+        'Bạn mở nút đầy đủ Bitcoin của mình và thực thi một lệnh để xem tiền của mình ở đâu trong blockchain.', // You open your bitcoin full node and execute a command to see where your money is in the blockchain.
       paragraph_three:
-        'This is an unspent transaction output (aka "UTXO"). You might recognize your compressed public key hash and address from chapter 4. The amount looks right, too: 1.61 BTC.',
+        'Đây là đầu ra giao dịch chưa chi tiêu (UTXO). Bạn có thể nhận ra hash khóa công khai được nén và địa chỉ của mình từ chương 4. Số tiền cũng có vẻ chính xác: 1.61 BTC.', // This is an unspent transaction output (aka "UTXO"). You might recognize your compressed public key hash and address from chapter 4. The amount looks right, too: 1.61 BTC.
     },
     in_out_two: {
-      title: 'The ins and outs',
-      nav_title: 'The receiving address',
+      title: 'Nội tình', // The ins and outs
+      nav_title: 'Địa chỉ nhận', // The receiving address
       paragraph_one:
-        'Mika 3000 gives you an address to send your 1 BTC contribution to:',
+        'Mika 3000 cung cấp cho bạn một địa chỉ để gửi 1 BTC đóng góp của bạn:', // Mika 3000 gives you an address to send your 1 BTC contribution to:
       paragraph_two:
-        'Hm, that address looks a lot longer than yours! I wonder why...',
-      paragraph_three: `We need to create and sign a transaction that sends one of your 1.61 BTC to this address. We looked at Satoshi's transaction structure in chapter 5 but yours will be a bit different. Today, there are newer methods for creating transactions. We'll be using a protocol called Segregated Witness which sets the transaction version to 2.`,
+        'Hm, địa chỉ đó trông dài hơn địa chỉ của bạn nhiều! Tôi tự hỏi tại sao...', // Hm, that address looks a lot longer than yours! I wonder why...
+      paragraph_three:
+        `Chúng ta cần tạo và ký một giao dịch gửi một trong 1.61 BTC của bạn đến địa chỉ này. Chúng ta đã xem cấu trúc giao dịch của Satoshi trong chương 5 nhưng giao dịch của bạn sẽ hơi khác. Ngày nay, có những phương pháp mới hơn để tạo giao dịch. Chúng tôi sẽ sử dụng một giao thức gọi là Segregated Witness, đặt phiên bản giao dịch thành 2.`, // We need to create and sign a transaction that sends one of your 1.61 BTC to this address. We looked at Satoshi's transaction structure in chapter 5 but yours will be a bit different. Today, there are newer methods for creating transactions. We'll be using a protocol called Segregated Witness which sets the transaction version to 2.
     },
     in_out_three: {
-      title: 'The ins and outs',
-      nav_title: 'Transaction steps',
+      title: 'Nội tình', // The ins and outs
+      nav_title: 'Các bước giao dịch', // Transaction steps
       paragraph_one:
-        'Segregated Witness transactions work just like their legacy predecessors. There are a few global values like version and locktime. There is an array of inputs (UTXOs we want to spend) and an array of outputs (new UTXOs we want to create, for other people to spend in the future). There will also be an array of witnesses, one for each input. That is where signatures and scripts will go instead of the scriptSig.',
+        'Các giao dịch Segregated Witness hoạt động giống như các giao dịch cũ trước đây. Có một vài giá trị toàn cầu như phiên bản và thời gian khóa. Có một mảng đầu vào (UTXO mà chúng tôi muốn chi tiêu) và một mảng đầu ra (UTXO mới mà chúng tôi muốn tạo, để những người khác chi tiêu trong tương lai). Ngoài ra còn có một mảng các chứng nhân, mỗi chứng nhân cho một đầu vào. Đó là nơi chữ ký và tập lệnh sẽ đi vào thay vì scriptSig.', // Segregated Witness transactions work just like their legacy predecessors. There are a few global values like version and locktime. There is an array of inputs (UTXOs we want to spend) and an array of outputs (new UTXOs we want to create, for other people to spend in the future). There will also be an array of witnesses, one for each input. That is where signatures and scripts will go instead of the scriptSig.
       paragraph_two:
-        'The message serializations for all these components is documented <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">here</Link>  and <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline" >here</Link>.',
+        'Việc tuần tự hóa thông điệp cho tất cả các thành phần này được ghi nhận <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">ở đây</Link> và <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline">ở đây</Link>.', // The message serializations for all these components is documented <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">here</Link>  and <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline" >here</Link>.
     },
     in_out_four: {
       normal: {
-        title: 'The ins and outs',
-        nav_title: 'The input class',
-        heading: 'Looking at the Input class implementation',
+        title: 'Nội tình', // The ins and outs
+        nav_title: 'Lớp đầu vào', // The input class
+        heading: 'Xem xét triển khai lớp Input', // Looking at the Input class implementation
         paragraph_one:
-          'Here we have code for two classes: an <span className="font-bold">Input</span> class and an <span className="font-bold">Outpoint</span> (not "output"!) class.',
+          'Ở đây chúng ta có mã cho hai lớp: lớp <span className="font-bold">Input</span> và lớp <span className="font-bold">Outpoint</span> (không phải "output"!).', // Here we have code for two classes: an <span className="font-bold">Input</span> class and an <span className="font-bold">Outpoint</span> (not "output"!) class.
         paragraph_two:
-          'Inputs come from unspent transaction outputs. If you provide the description of an output to the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method, it will create an instance of the Input class:',
-        paragraph_three: 'The first two arguments are:',
+          'Đầu vào đến từ các đầu ra giao dịch chưa chi tiêu. Nếu bạn cung cấp mô tả của một đầu ra cho phương thức <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span>, nó sẽ tạo ra một thể hiện của lớp Input:', // Inputs come from unspent transaction outputs. If you provide the description of an output to the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method, it will create an instance of the Input class:
+        paragraph_three:
+          'Hai đối số đầu tiên là:', // The first two arguments are:
         paragraph_four:
-          '1. <span className="font-bold">txid: </span>the ID of the transaction that created the output, and',
+          '1. <span className="font-bold">txid: </span>ID của giao dịch đã tạo ra đầu ra, và', // 1. <span className="font-bold">txid: </span>the ID of the transaction that created the output, and
         paragraph_five:
-          '2. <span className="font-bold">vout: </span>the index of the output in the transaction\'s entire list of outputs',
+          '2. <span className="font-bold">vout: </span>chỉ mục của đầu ra trong toàn bộ danh sách đầu ra của giao dịch', // 2. <span className="font-bold">vout: </span>the index of the output in the transaction's entire list of outputs
         paragraph_six:
-          'Together, these two pieces of information make up an <span className="font-bold">Outpoint</span>. Eventually we will pass in the txid and vout values that came from executing the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">listunspent</span> command in the previous exercise. ',
+          'Cùng nhau, hai thông tin này tạo thành một <span className="font-bold">Outpoint</span>. Cuối cùng, chúng tôi sẽ chuyển các giá trị txid và vout đã nhận được từ việc thực thi lệnh <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">listunspent</span> trong bài tập trước.', // Together, these two pieces of information make up an <span className="font-bold">Outpoint</span>. Eventually we will pass in the txid and vout values that came from executing the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">listunspent</span> command in the previous exercise. 
         paragraph_seven:
-          "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. That data is not needed until later so let's temporarily use an empty byte array.",
+          "Hai đối số thứ hai là giá trị của đầu ra mà chúng tôi muốn chi tiêu (tính bằng satoshi) và một thứ gọi là scriptcode. Dữ liệu đó không cần thiết cho đến sau này nên hãy tạm thời sử dụng một mảng byte trống.", // "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. That data is not needed until later so let's temporarily use an empty byte array."
         paragraph_eight: {
-          a: 'Hashes in bitcoin are',
+          a: 'Hashes trong Bitcoin là', // Hashes in bitcoin are
           b: {
-            text: ' reversed',
-            question: 'Why do we reverse hashes in bitcoin?',
+            text: ' được đảo ngược', // reversed
+            question: 'Tại sao chúng ta đảo ngược hashes trong Bitcoin?', // Why do we reverse hashes in bitcoin?
             href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin',
           },
-          c: `, but only when presented to or entered by a user. When a hash is provided in hexadecimal format, the byte order must be reversed before storing or transmitting the data as raw bytes.`,
+          c: `, nhưng chỉ khi được trình bày hoặc nhập bởi người dùng. Khi một hash được cung cấp ở định dạng thập lục phân, thứ tự byte phải được đảo ngược trước khi lưu trữ hoặc truyền dữ liệu dưới dạng byte thô.`, // , but only when presented to or entered by a user. When a hash is provided in hexadecimal format, the byte order must be reversed before storing or transmitting the data as raw bytes.
         },
-        paragraph_nine: `You can see an example of this in the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method where it handles the txid argument.`,
-        paragraph_ten: `We also need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:`,
-        heading_three: 'Outpoint',
+        paragraph_nine: `Bạn có thể thấy một ví dụ về điều này trong phương thức <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> nơi nó xử lý đối số txid.`, // You can see an example of this in the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method where it handles the txid argument.
+        paragraph_ten: `Chúng ta cũng cần một phương thức <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> trả về một mảng byte theo thông số kỹ thuật. Đây là cách giao dịch thực sự được gửi giữa các nút trên mạng và cách nó được thể hiện trong một khối:`, // We also need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:
+        heading_three: 'Outpoint', // Outpoint
         table_one: {
           heading: {
-            one: 'Description',
-            two: 'Name',
-            three: 'Type',
-            four: 'Size',
+            one: 'Mô tả', // Description
+            two: 'Tên', // Name
+            three: 'Kiểu', // Type
+            four: 'Kích thước', // Size
           },
           row_one: {
             column: {
-              one: 'Hash of transaction being spent from',
-              two: 'txid',
-              three: 'bytes',
-              four: '32',
+              one: 'Hash của giao dịch đang được chi tiêu từ', // Hash of transaction being spent from
+              two: 'txid', // txid
+              three: 'bytes', // bytes
+              four: '32', // 32
             },
           },
           row_two: {
             column: {
-              one: "Position of output being spent in the transaction's output array",
-              two: 'index',
-              three: 'int',
-              four: '4',
+              one: "Vị trí của đầu ra đang được chi tiêu trong mảng đầu ra của giao dịch", // Position of output being spent in the transaction's output array
+              two: 'index', // index
+              three: 'int', // int
+              four: '4', 
             },
           },
         },
-        heading_four: 'Input',
+        heading_four: 'Đầu vào', // Input
         table_two: {
           row_one: {
             column: {
-              one: 'txid and output index being spent from',
-              two: 'outpoint',
-              three: 'bytes',
+              one: 'txid và chỉ mục đầu ra đang được chi tiêu từ', // txid and output index being spent from
+              two: 'outpoint', // outpoint
+              three: 'bytes', // bytes
               four: '36',
             },
           },
           row_two: {
             column: {
-              one: 'ScriptSig length (always 0 for Segregated Witness)',
-              two: 'length',
-              three: 'int',
+              one: 'Độ dài ScriptSig (luôn bằng 0 cho Segregated Witness)', // ScriptSig length (always 0 for Segregated Witness)
+              two: 'length', // length
+              three: 'int', // int
               four: '1',
             },
           },
           row_three: {
             column: {
-              one: 'Always empty for Segregated Witness',
-              two: 'script',
-              three: 'bytes',
+              one: 'Luôn trống cho Segregated Witness', // Always empty for Segregated Witness
+              two: 'script', // script
+              three: 'bytes', // bytes
               four: '0',
             },
           },
           row_four: {
             column: {
-              one: 'Default value is 0xffffffff but can be used for relative timelocks',
-              two: 'sequence',
+              one: 'Giá trị mặc định là 0xffffffff nhưng có thể được sử dụng cho khóa thời gian tương đối', // Default value is 0xffffffff but can be used for relative timelocks
+              two: 'sequence', // sequence
               three: 'int',
               four: '4',
             },
