@@ -936,318 +936,322 @@ privacy: {
   },
 
   chapter_five: {
-    title: 'Will the Real Satoshi Please Stand Up',
+    title: 'Liệu Satoshi thật sự có đứng lên?', // Will the Real Satoshi Please Stand Up
     paragraph_one:
-      'It’s late, and you’re tired, but as you shut your eyes for a moment, a double dose of bad news arrives.',
-    paragraph_two: '1) Vanderpoole is back on TV.',
+      'Đã khuya và bạn cảm thấy mệt mỏi, nhưng khi bạn nhắm mắt lại một lúc, một liều tin xấu kép ập đến.', // It’s late, and you’re tired, but as you shut your eyes for a moment, a double dose of bad news arrives.
+    paragraph_two: '1) Vanderpoole đã trở lại trên TV.', // 1) Vanderpoole is back on TV.
     paragraph_three:
-      '2) He is claiming to be the great-grandson of Satoshi Nakamoto.',
-    paragraph_four: 'He looks sleep-deprived.',
+      '2) Anh ta tuyên bố mình là chắt của Satoshi Nakamoto.', // 2) He is claiming to be the great-grandson of Satoshi Nakamoto.
+    paragraph_four: 'Anh ta trông có vẻ thiếu ngủ.', // He looks sleep-deprived.
     intro_one: {
-      title: 'Intro',
-      nav_title: 'Don’t trust, verify',
+      title: 'Giới thiệu', // Intro
+      nav_title: 'Đừng tin tưởng, hãy xác minh', // Don’t trust, verify
       paragraph_one:
-        '—DEBORAH CHUNK: “Mr. Vanderpoole. You recently made a staggering claim on anti-social media that you are the great-grandson of Satoshi Nakamoto. Is that correct? Is this true?”',
+        '—DEBORAH CHUNK: “Ông Vanderpoole. Gần đây, ông đã đưa ra một tuyên bố đáng kinh ngạc trên mạng xã hội rằng ông là chắt của Satoshi Nakamoto. Điều đó có đúng không? Điều này có đúng không?”', // —DEBORAH CHUNK: “Mr. Vanderpoole. You recently made a staggering claim on anti-social media that you are the great-grandson of Satoshi Nakamoto. Is that correct? Is this true?”
       paragraph_two:
-        '—VANDERPOOLE: “It darn tootin’ is, Deborah. I have harbored this secret for a long, long time. You see, my family has passed an inconspicuous looking CD-ROM down for generations. To keep it secret, we labeled it <span className="italic">Creed – My Own Prison</span>. It contains the private keys to my great-grandfather Satoshi Nakamoto’s enormous bitcoin trove. So when I speak for miners, know that I also speak for Satoshi Nakamoto.”',
+        '—VANDERPOOLE: “Chắc chắn rồi, Deborah. Tôi đã giữ bí mật này trong một thời gian rất dài. Bạn thấy đấy, gia đình tôi đã truyền lại một đĩa CD-ROM trông không nổi bật qua nhiều thế hệ. Để giữ bí mật, chúng tôi dán nhãn cho nó là <span className="italic">Creed – My Own Prison</span>. Nó chứa các khóa riêng tư cho kho lưu trữ bitcoin khổng lồ của ông cố của tôi, Satoshi Nakamoto. Vì vậy, khi tôi phát biểu thay cho các thợ mỏ, hãy biết rằng tôi cũng phát biểu thay cho Satoshi Nakamoto.”', // —VANDERPOOLE: “It darn tootin’ is, Deborah. I have harbored this secret for a long, long time. You see, my family has passed an inconspicuous looking CD-ROM down for generations. To keep it secret, we labeled it <span className="italic">Creed – My Own Prison</span>. It contains the private keys to my great-grandfather Satoshi Nakamoto’s enormous bitcoin trove. So when I speak for miners, know that I speak for Satoshi Nakamoto.”
       paragraph_three:
-        '—DEBORAH CHUNK: “Is there any way we can verify that you actually own the private keys to Satoshi Nakamoto’s bitcoin?”',
+        '—DEBORAH CHUNK: “Có cách nào để chúng tôi xác minh rằng ông thực sự sở hữu các khóa riêng tư của bitcoin của Satoshi Nakamoto không?”', // —DEBORAH CHUNK: “Is there any way we can verify that you actually own the private keys to Satoshi Nakamoto’s bitcoin?”
       paragraph_four:
-        '—VANDERPOOLE: “Indeed there is. It is a simple matter of public key cryptography.”',
+        '—VANDERPOOLE: “Thực sự là có. Đó là một vấn đề đơn giản của mật mã khóa công khai.”', // —VANDERPOOLE: “Indeed there is. It is a simple matter of public key cryptography.”
       paragraph_five:
-        '—DEBORAH CHUNK: But why wait so long to make this earth-shattering disclosure?',
+        '—DEBORAH CHUNK: Nhưng tại sao lại đợi lâu như vậy mới tiết lộ điều gây chấn động trái đất này?', // —DEBORAH CHUNK: But why wait so long to make this earth-shattering disclosure?
     },
     intro_two: {
-      nav_title: "Vanderpoole's bold claim",
+      nav_title: 'Lời tuyên bố táo bạo của Vanderpoole', // Vanderpoole's bold claim
       paragraph_one:
-        '—VANDERPOOLE: “I didn’t have the courage. There have always been rumors about my family’s history, ones that I could have easily confirmed. But I wasn’t ready for that much publicity. After all, I live a humble, secluded life in a 14th century castle on a dude ranch on my favorite of all my private islands, doing 5–6 interviews like this one from my hot tub every week.”',
+        '—VANDERPOOLE: “Tôi không có đủ can đảm. Luôn có những tin đồn về lịch sử gia đình tôi, những tin đồn mà tôi có thể dễ dàng xác nhận. Nhưng tôi không sẵn sàng cho sự công khai quá mức như vậy. Sau tất cả, tôi sống một cuộc sống khiêm tốn, ẩn dật trong một lâu đài thế kỷ 14 trên một trang trại dành riêng cho những người đàn ông trên hòn đảo riêng yêu thích nhất của tôi, thực hiện 5–6 cuộc phỏng vấn như thế này từ bồn tắm nước nóng của tôi mỗi tuần.”', // —VANDERPOOLE: “I didn’t have the courage. There have always been rumors about my family’s history, ones that I could easily confirmed. But I wasn’t ready for that much publicity. After all, I live a humble, secluded life in a 14th century castle on a dude ranch on my favorite of all my private islands, doing 5–6 interviews like this one from my hot tub every week.”
       paragraph_two:
-        '—VANDERPOOLE: “But now that bitcoin’s future is on the line, I knew it was time to face the music, specifically, the music from Creed’s debut album, My Own Prison.” *Vanderpoole hums the melody from the 20th century album’s namesake song*',
+        '—VANDERPOOLE: “Nhưng bây giờ khi tương lai của bitcoin đang bị đe dọa, tôi biết đã đến lúc phải đối mặt với sự thật, cụ thể là âm nhạc từ album đầu tay của Creed, My Own Prison.” *Vanderpoole hát nhẩm giai điệu của bài hát cùng tên trong album thế kỷ 20*', // —VANDERPOOLE: “But now that bitcoin’s future is on the line, I knew it was time to face the music, specifically, the music from Creed’s debut album, My Own Prison.” *Vanderpoole hums the melody from the 20th century album’s namesake song*
       paragraph_three:
-        '—VANDERPOOLE: "I can only say that I’m sorry for not coming forth sooner because the CD-ROM also contains Satoshi’s Nakamoto’s revised plans for bitcoin. You see, my great-grandfather always regretted limiting the supply of bitcoin to 21 million coins, which is why I plan to fulfill my great-grandfather’s dream of hard forking bitcoin in favor of perpetual bitcoin issuance."',
+        '—VANDERPOOLE: "Tôi chỉ có thể nói rằng tôi rất tiếc vì đã không xuất hiện sớm hơn vì CD-ROM cũng chứa các kế hoạch sửa đổi bitcoin của Satoshi Nakamoto. Bạn thấy đấy, ông cố của tôi luôn hối tiếc vì đã giới hạn nguồn cung bitcoin ở mức 21 triệu đồng xu, đó là lý do tại sao tôi dự định thực hiện giấc mơ của ông cố tôi về việc hard fork bitcoin để ủng hộ việc phát hành bitcoin vĩnh viễn."', // —VANDERPOOLE: "I can only say that I’m sorry for not coming forth sooner because the CD-ROM also contains Satoshi Nakamoto’s revised plans for bitcoin. You see, my great-grandfather always regretted limiting the supply of bitcoin to 21 million coins, which is why I plan to fulfill my great-grandfather’s dream of hard forking bitcoin in favor of perpetual bitcoin issuance."
     },
     intro_three: {
-      nav_title: 'A message from Satoshi',
+      nav_title: 'Một thông điệp từ Satoshi', // A message from Satoshi
       paragraph_one:
-        'Your TXM4H-A Hover Screen chirps to life. You have a new message.',
-      paragraph_two: '—HOLOCAT: Don’t forget to boop my nose.',
-      paragraph_three: 'You boop her nose',
-      paragraph_four: `—SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message using that wallet's private keys.”`,
+        'Màn hình Hover TXM4H-A của bạn kêu lên. Bạn có một tin nhắn mới.', // Your TXM4H-A Hover Screen chirps to life. You have a new message.
+      paragraph_two: '—HOLOCAT: Đừng quên chọc mũi tôi.', // —HOLOCAT: Don’t forget to boop my nose.
+      paragraph_three: 'Bạn chọc mũi cô ấy', // You boop her nose
+      paragraph_four:
+        '—SATOSHI NAKAMOTO: “Vanderpoole không phải là người mà anh ta tự nhận mình là. Bạn có thể vạch trần anh ta. Yêu cầu anh ta chứng minh quyền sở hữu bitcoin của Satoshi bằng cách ký một tin nhắn bằng cách sử dụng các khóa riêng tư của ví đó.”', // —SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message using that wallet's private keys.”
     },
     derive_message_one: {
-      title: 'Derive the message',
-      nav_title: 'The message in question',
-      heading: 'Vanderpoole says he signed a message with Satoshi’s keys:',
-      code_one: `-----BEGIN BITCOIN SIGNED MESSAGE----- \n \n I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever bitcoin transaction confirmed in block #170. This message is signed with the same private key. \n \n -----BEGIN BITCOIN SIGNATURE----- \n \n`,
+      title: 'Truy xuất thông điệp', // Derive the message
+      nav_title: 'Thông điệp được đề cập', // The message in question
+      heading: 'Vanderpoole nói rằng anh ta đã ký một thông điệp bằng các khóa của Satoshi:', // Vanderpoole says he signed a message with Satoshi’s keys:
+      code_one: `-----BEGIN BITCOIN SIGNED MESSAGE----- \n \n Tôi là Vanderpoole và tôi kiểm soát khóa riêng tư mà Satoshi đã sử dụng để ký giao dịch bitcoin đầu tiên được xác nhận trong khối #170. Thông điệp này được ký bằng cùng một khóa riêng tư. \n \n -----BEGIN BITCOIN SIGNATURE----- \n \n`, // -----BEGIN BITCOIN SIGNED MESSAGE----- \n \n I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever bitcoin transaction confirmed in block #170. This message is signed with the same private key. \n \n -----BEGIN BITCOIN SIGNATURE----- \n \n
       code_two:
-        '<span className="break-all"> H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k= </span>',
+        '<span className="break-all"> H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k= </span>', 
       code_three: '\n \n-----END BITCOIN SIGNATURE-----',
-      paragraph_two: 'What does this even mean?',
+      paragraph_two: 'Điều này có nghĩa là gì?', // What does this even mean?
     },
     derive_message_two: {
-      nav_title: 'Finding the public key',
+      nav_title: 'Tìm khóa công khai', // Finding the public key
       paragraph_one:
-        'We learned in chapter 4 that private keys are huge random numbers kept secret by whomever generated them. We can use Elliptic Curve math to derive a public key from that private key.',
+        'Chúng ta đã học trong chương 4 rằng khóa riêng tư là những số ngẫu nhiên khổng lồ được giữ bí mật bởi bất kỳ ai đã tạo ra chúng. Chúng ta có thể sử dụng toán học Đường cong Elliptic để suy ra khóa công khai từ khóa riêng tư đó.', // We learned in chapter 4 that private keys are huge random numbers kept secret by whomever generated them. We can use Elliptic Curve math to derive a public key from that private key.
       paragraph_two:
-        'The public key can be shared as a unique identifier and the private key is used to prove a person has control of that identifier. That proof is called a SIGNATURE. To create a signature you need a message and a private key. Anyone can verify the signature with a copy of the message and the corresponding public key.',
+        'Khóa công khai có thể được chia sẻ như một trình định danh duy nhất và khóa riêng tư được sử dụng để chứng minh rằng một người có quyền kiểm soát trình định danh đó. Bằng chứng đó được gọi là CHỮ KÝ. Để tạo chữ ký, bạn cần một thông điệp và một khóa riêng tư. Bất kỳ ai cũng có thể xác minh chữ ký bằng một bản sao của thông điệp và khóa công khai tương ứng.', // The public key can be shared as a unique identifier and the private key is used to prove that a person has control of that identifier. That proof is called a SIGNATURE. To create a signature, you need a message and a private key. Anyone can verify the signature with a copy of the message and the corresponding public key.
       paragraph_three:
-        'Vanderpoole has provided a signature and a message. Where is the public key?',
+        'Vanderpoole đã cung cấp một chữ ký và một thông điệp. Khóa công khai ở đâu?', // Vanderpoole has provided a signature and a message. Where is the public key?
     },
     derive_message_three: {
-      nav_title: "Find Satoshi's signature",
-      heading: 'Let’s start with finding Satoshi’s signature',
-      paragraph_one: `Block #170 contains the <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">first bitcoin transaction</link> made from Satoshi to Hal Finney. That transaction only has <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">one input</Link>. Retrieve the scriptSig from that input. It contains Satoshi's signature!`,
-      placeholder: 'Paste the data here',
+      nav_title: "Tìm chữ ký của Satoshi", // Find Satoshi's signature
+      heading: 'Hãy bắt đầu bằng việc tìm chữ ký của Satoshi', // Let’s start with finding Satoshi’s signature
+      paragraph_one:
+        `Khối #170 chứa <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">giao dịch bitcoin đầu tiên</link> được thực hiện từ Satoshi đến Hal Finney. Giao dịch đó chỉ có <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">một đầu vào</link>. Lấy scriptSig từ đầu vào đó. Nó chứa chữ ký của Satoshi!`, // Block #170 contains the <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">first bitcoin transaction</link> made from Satoshi to Hal Finney. That transaction only has <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">one input</link>. Retrieve the scriptSig from that input. It contains Satoshi's signature!
+      placeholder: 'Dán dữ liệu vào đây', // Paste the data here
       success:
-        'Nicely done! This is actually Satoshi’s signature, authorizing the transfer of his bitcoin to Hal Finney.',
+        'Tuyệt vời! Đây thực sự là chữ ký của Satoshi, cho phép chuyển bitcoin của anh ấy cho Hal Finney.', // Nicely done! This is actually Satoshi’s signature, authorizing the transfer of his bitcoin to Hal Finney.
     },
     derive_message_four: {
-      nav_title: "Find Satoshi's public key",
-      heading: 'So where is his public key?',
+      nav_title: "Tìm khóa công khai của Satoshi", // Find Satoshi's public key
+      heading: 'Vậy khóa công khai của anh ấy ở đâu?', // So where is his public key?
       paragraph_one:
-        'It’s actually stored along with the bitcoin Satoshi generated by mining block #9.',
+        'Nó thực sự được lưu trữ cùng với bitcoin mà Satoshi tạo ra bằng cách khai thác khối #9.', // It’s actually stored along with the bitcoin Satoshi generated by mining block #9.
       paragraph_two:
-        '<Link href="https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand" target="_blank" className="underline">Follow the link</Link> to the source transaction at the top of the input #0 section. This is the transaction Satoshi created by mining block #9. The transaction creates 50 BTC and locks them under control of... a public key! Find the data beginning with 0411... in the scriptPubKey.',
+        '<Link href="https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand" target="_blank" className="underline">Theo liên kết</Link> đến giao dịch nguồn ở đầu phần đầu vào # 0. Đây là giao dịch Satoshi tạo ra bằng cách khai thác khối # 9. Giao dịch tạo 50 BTC và khóa chúng dưới quyền kiểm soát của ... một khóa công khai! Tìm dữ liệu bắt đầu bằng 0411 ... trong scriptPubKey.', // <Link href="https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand" target="_blank" className="underline">Follow the link</Link> to the source transaction at the top of the input #0 section. This is the transaction Satoshi created by mining block #9. The transaction creates 50 BTC and locks them under control of... a public key! Find the data beginning with 0411... in the scriptPubKey.
       paragraph_three:
-        'The public key lives between the script commands OP_PUSHBYTES and OP_CHECKSIG. Paste it below:',
-      placeholder: 'Paste the data here',
-      success: 'That’s it!',
+        'Khóa công khai nằm giữa các lệnh script OP_PUSHBYTES và OP_CHECKSIG. Dán nó bên dưới:', // The public key lives between the script commands OP_PUSHBYTES and OP_CHECKSIG. Paste it below:
+      placeholder: 'Dán dữ liệu vào đây', // Paste the data here
+      success: 'Đó là nó!', // That’s it!
     },
     derive_message_five: {
-      nav_title: 'Verifiying the signature next',
-      paragraph_one: `In the previous exercise we saw Satoshi got 50 BTC for mining block #9. He used that as input for his transaction to Hal Finney (in block #170), sending 10 BTC to Hal Finney’s public key and returning 40 BTC back to himself as change. Satoshi's private key was used to create a signature authorizing the transfer of those funds.`,
+      nav_title: 'Xác minh chữ ký tiếp theo', // Verifiying the signature next
+      paragraph_one:
+        `Trong bài tập trước, chúng ta đã thấy Satoshi nhận được 50 BTC cho việc khai thác khối #9. Anh ta đã sử dụng điều đó làm đầu vào cho giao dịch của mình đến Hal Finney (trong khối #170), gửi 10 BTC đến khóa công khai của Hal Finney và trả lại 40 BTC cho chính mình làm tiền thừa. Khóa riêng tư của Satoshi đã được sử dụng để tạo một chữ ký ủy quyền chuyển giao các quỹ đó.`, // In the previous exercise, we saw Satoshi got 50 BTC for mining block #9. He used that as input for his transaction to Hal Finney (in block #170), sending 10 BTC to Hal Finney’s public key and returning 40 BTC back to himself as change. Satoshi's private key was used to create a signature authorizing the transfer of those funds.
       paragraph_two:
-        'Next we need to learn how to verify a signature. But something is still missing... what is the message Satoshi signed to authorize the transaction for Hal?',
+        'Tiếp theo, chúng ta cần tìm hiểu cách xác minh chữ ký. Nhưng vẫn còn thiếu một thứ gì đó ... thông điệp mà Satoshi đã ký để ủy quyền cho giao dịch cho Hal là gì?', // Next we need to learn how to verify a signature. But something is still missing... what is the message Satoshi signed to authorize the transaction for Hal?
     },
     derive_message_six: {
-      nav_title: 'Derive the message',
-      heading: 'Derive the message from the transaction',
+      nav_title: 'Truy xuất thông điệp', // Derive the message
+      heading: 'Truy xuất thông điệp từ giao dịch', // Derive the message from the transaction
       paragraph_one:
-        'It should be clear by just looking at the block explorer web page that a bitcoin transaction has many different parts. Some parts are just small numbers and some parts are larger chunks of data. The bitcoin protocol has a very specific algorithm for creating messages from transactions, so those messages can be signed by private keys.',
+        'Chỉ cần nhìn vào trang web của trình khám phá khối, bạn có thể thấy rằng một giao dịch bitcoin có nhiều phần khác nhau. Một số phần chỉ là các số nhỏ và một số phần là các khối dữ liệu lớn hơn. Giao thức bitcoin có một thuật toán rất cụ thể để tạo thông báo từ các giao dịch, vì vậy các thông báo đó có thể được ký bởi khóa riêng tư.', // It should be clear by just looking at the block explorer web page that a bitcoin transaction has many different parts. Some parts are just small numbers and some parts are larger chunks of data. The bitcoin protocol has a very specific algorithm for creating messages from transactions, so those messages can be signed by private keys.
       paragraph_two:
-        'We will summarize the process outlined <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG" target="_blank" className="underline">here</Link>. It conveniently uses <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">this exact same transaction from block #170</Link> as an example.',
+        'Chúng tôi sẽ tóm tắt quy trình được nêu <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG" target="_blank" className="underline">ở đây</Link>. Nó thuận tiện sử dụng <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">chính xác giao dịch này từ khối #170</Link> làm ví dụ.', // We will summarize the process outlined <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG" target="_blank" className="underline">here</Link>. It conveniently uses <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">this exact same transaction from block #170</Link> as an example.
       paragraph_three:
-        'To begin, we need the raw bytes that make up the complete transaction. <Link href="https://blockstream.info/api/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16/hex" target="_blank" className="underline">Our block explorer</Link> can help with this. Use the "hex" API endpoint and paste the entire blob of data.',
-      input_challenge_label: 'Paste the transaction blob',
+        'Để bắt đầu, chúng ta cần các byte thô tạo nên toàn bộ giao dịch. <Link href="https://blockstream.info/api/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16/hex" target="_blank" className="underline">Trình khám phá khối của chúng tôi</Link> có thể giúp ích cho việc này. Sử dụng điểm cuối API "hex" và dán toàn bộ khối dữ liệu.', // To begin, we need the raw bytes that make up the complete transaction. <Link href="https://blockstream.info/api/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16/hex" target="_blank" className="underline">Our block explorer</Link> can help with this. Use the "hex" API endpoint and paste the entire blob of data.
+      input_challenge_label: 'Dán khối giao dịch', // Paste the transaction blob
       success_message_line_one:
-        'This is the raw transaction with each component labeled:',
-      success_message_line_two: 'version:',
-      success_message_line_three: 'number of inputs:',
-      success_message_line_four: 'hash of the tx that input #0 came from:',
+        'Đây là giao dịch thô với từng thành phần được dán nhãn:', // This is the raw transaction with each component labeled:
+      success_message_line_two: 'phiên bản:', // version:
+      success_message_line_three: 'số lượng đầu vào:', // number of inputs:
+      success_message_line_four: 'băm của tx mà đầu vào # 0 đến từ:', // hash of the tx that input #0 came from:
       success_message_line_five:
-        'index of input #0 in the funding transaction:',
-      success_message_line_six: 'scriptSig to authorize spending input #0:',
-      success_message_line_seven: 'input #0 sequence:',
-      success_message_line_eight: 'number of outputs:',
+        'chỉ mục của đầu vào # 0 trong giao dịch tài trợ:', // index of input #0 in the funding transaction:
+      success_message_line_six: 'scriptSig để cho phép chi tiêu đầu vào # 0:', // scriptSig to authorize spending input #0:
+      success_message_line_seven: 'chuỗi đầu vào # 0:', // input #0 sequence:
+      success_message_line_eight: 'số lượng đầu ra:', // number of outputs:
       success_message_line_nine:
-        'output #0 value (10 BTC or 1,000,000,000 satoshis):',
+        'giá trị đầu ra # 0 (10 BTC hoặc 1.000.000.000 satoshi):', // output #0 value (10 BTC or 1,000,000,000 satoshis):
       success_message_line_ten:
-        'output #0 scriptPubKey (Hal Finney’s public key plus OP_CHECKSIG):',
+        'scriptPubKey đầu ra # 0 (khóa công khai của Hal Finney cộng với OP_CHECKSIG):', // output #0 scriptPubKey (Hal Finney’s public key plus OP_CHECKSIG):
       success_message_line_eleven:
-        'outut #1 value (40 BTC or 4,000,000,000 satoshis):',
+        'giá trị đầu ra # 1 (40 BTC hoặc 4.000.000.000 satoshi):', // outut #1 value (40 BTC or 4,000,000,000 satoshis):
       success_message_line_twelve:
-        'output #1 scriptPubKey (Satoshi’s own public key again, for change):',
-      success_message_line_thirteen: 'locktime:',
+        'scriptPubKey đầu ra # 1 (khóa công khai của chính Satoshi, để đổi lại):', // output #1 scriptPubKey (Satoshi’s own public key again, for change):
+      success_message_line_thirteen: 'thời gian khóa:', // locktime:
     },
     derive_message_seven: {
-      nav_title: 'Build the message to sign',
+      nav_title: 'Xây dựng thông điệp để ký', // Build the message to sign
       paragraph_one:
-        "It's impossible to sign a message containing it's own signature, so the scriptSig needs to be removed. In the bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.",
+        "Không thể ký một thông báo chứa chữ ký của chính nó, vì vậy scriptSig cần phải được xóa. Trong giao thức bitcoin, nó thực sự được thay thế bằng scriptPubKey của đầu ra giao dịch mà chúng ta đang chi tiêu.", // It’s impossible to sign a message containing it’s own signature, so the scriptSig needs to be removed. In the bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.
       paragraph_two:
-        'We already found the scriptPubKey in the previous step, you can paste that in the first blank.',
+        'Chúng tôi đã tìm thấy scriptPubKey trong bước trước, bạn có thể dán nó vào khoảng trống đầu tiên.', // We already found the scriptPubKey in the previous step, you can paste that in the first blank.
       paragraph_three: {
-        a: 'The last thing we need for our transaction message is a',
-        b: '. We\'ll cover this more in the next chapter but for now we\'ll just add the value <span className="font-bold">01000000</span> to the end of the message.',
+        a: 'Điều cuối cùng chúng ta cần cho thông điệp giao dịch của chúng ta là một', // The last thing we need for our transaction message is a
+        b: '. Chúng tôi sẽ đề cập đến điều này nhiều hơn trong chương tiếp theo nhưng bây giờ chúng tôi chỉ cần thêm giá trị <span className="font-bold">01000000</span> vào cuối thông báo.', // . We'll cover this more in the next chapter but for now we'll just add the value <span className="font-bold">01000000</span> to the end of the message.
       },
       tooltip_one: {
-        question: 'What are sighash flags?',
+        question: 'Cờ sighash là gì?', // What are sighash flags?
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F',
-        highlighted: 'sighash type flag',
+        highlighted: 'loại cờ sighash', // sighash type flag
       },
-      success: "Nice! You've constructed a message to sign.",
+      success: "Tuyệt! Bạn đã xây dựng một thông điệp để ký.", // Nice! You've constructed a message to sign.
     },
     verify_signature_one: {
-      title: 'Verify the signature',
-      nav_title: 'Verifying the signature',
-      heading: 'Finally we have a message!',
+      title: 'Xác minh chữ ký', // Verify the signature
+      nav_title: 'Xác minh chữ ký', // Verifying the signature
+      heading: 'Cuối cùng chúng ta cũng có một thông điệp!', // Finally we have a message!
       paragraph_one:
-        'We also have a signature we know Satoshi created with his own private keys, and we have his public key. Let’s learn how to verify the signature and then we can try to verify Vanderpoole’s signature.',
+        'Chúng tôi cũng có một chữ ký mà chúng tôi biết Satoshi đã tạo bằng các khóa riêng tư của mình và chúng tôi có khóa công khai của anh ấy. Chúng ta hãy tìm hiểu cách xác minh chữ ký và sau đó chúng ta có thể thử xác minh chữ ký của Vanderpoole.', // We also have a signature we know Satoshi created with his own private keys, and we have his public key. Let’s learn how to verify the signature and then we can try to verify Vanderpoole’s signature.
     },
     verify_signature_two: {
-      title: 'Verify the signature',
-      nav_title: 'Hash the message',
-      heading: 'Hash the transaction digest',
+      title: 'Xác minh chữ ký', // Verify the signature
+      nav_title: 'Băm tóm tắt giao dịch', // Hash the message
+      heading: 'Băm tóm tắt giao dịch', // Hash the transaction digest
       paragraph_one:
-        'The serialized transaction data we compiled in the last step is actually too long to sign or verify with ECDSA.',
+        'Dữ liệu giao dịch được nối tiếp mà chúng tôi đã biên soạn trong bước cuối cùng thực sự quá dài để ký hoặc xác minh bằng ECDSA.', // The serialized transaction data we compiled in the last step is actually too long to sign or verify with ECDSA.
       paragraph_two:
-        'Do we know any way to compress large chunks of data into more consistent, manageable pieces? We sure do: hashing.',
+        'Chúng ta có biết cách nào để nén các khối dữ liệu lớn thành các phần nhỏ hơn, dễ quản lý hơn không? Chắc chắn rồi: băm.', // Do we know any way to compress large chunks of data into more consistent, manageable pieces? We sure do: hashing.
       paragraph_three: {
-        a: 'The bitcoin protocol uses a ',
-        b: ' to compress a transaction into a signable message.',
+        a: 'Giao thức bitcoin sử dụng một ', // The bitcoin protocol uses a
+        b: ' để nén một giao dịch thành một thông báo có thể ký.', // to compress a transaction into a signable message.
       },
       paragraph_four:
-        'Once we have a 32-byte hash, that data is re-interpreted as an integer. Yes, a 32-byte integer (that is a truly enormous number)!',
+        'Khi chúng ta có một băm 32 byte, dữ liệu đó được tái diễn giải thành một số nguyên. Vâng, một số nguyên 32 byte (đó là một số thực sự khổng lồ)!', // Once we have a 32-byte hash, that data is re-interpreted as an integer. Yes, a 32-byte integer (that is a truly enormous number)!
       tooltip_one: {
-        question: 'Why does everything in bitcoin use double hash (HASH256)?',
-        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520does%2520everything%2520in%2520bitcoin%2520use%2520double%2520hash%2520%28HASH256%29%253F',
-        highlighted: 'double SHA256 digest',
+        question: 'Tại sao mọi thứ trong bitcoin đều sử dụng băm kép (HASH256)?', // Why does everything in bitcoin use double hash (HASH256)?
+        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520does%2520everything%2520in%Bitcoin%2520use%2520double%2520hash%2520%28HASH256%29%253F',
+        highlighted: 'tóm tắt SHA256 kép', // double SHA256 digest
       },
-      success: 'Nicely done!',
+      success: 'Làm tốt!', // Nicely done!
     },
     verify_signature_three: {
-      nav_title: 'Decode the signature',
-      heading: 'Decode the Signature',
-      label_one: 'Paste the R value',
-      label_two: 'Paste the S value',
+      nav_title: 'Giải mã chữ ký', // Decode the signature
+      heading: 'Giải mã Chữ ký', // Decode the Signature
+      label_one: 'Dán giá trị R', // Paste the R value
+      label_two: 'Dán giá trị S', // Paste the S value
       paragraph_one:
-        "Satoshi's signature is encoded in a system called DER which is a subset of ASN.1.",
+          "Chữ ký của Satoshi được mã hóa trong một hệ thống gọi là DER, là một tập con của ASN.1.", // Satoshi's signature is encoded in a system called DER which is a subset of ASN.1.
       paragraph_two:
-        'There are two 32-byte numbers we need to extract. They are referred to as R and S respectively and are each prefixed by the bytes 0220 in the DER sequence. Instead of fully decoding the DER blob, just look for the prefixes and paste the R and S values.',
+          'Chúng ta cần trích xuất hai số 32 byte. Chúng được gọi tương ứng là R và S và mỗi số đều được thêm tiền tố 0220 trong chuỗi DER. Thay vì giải mã hoàn toàn khối DER, chỉ cần tìm các tiền tố và dán các giá trị R và S.', // There are two 32-byte numbers we need to extract. They are referred to as R and S respectively and are each prefixed by the bytes 0220 in the DER sequence. Instead of fully decoding the DER blob, just look for the prefixes and paste the R and S values.
       paragraph_three:
-        "# Satoshi's signature, from the input scriptSig of the tx to Hal Finney (block 170)",
+          "# Chữ ký của Satoshi, từ scriptSig đầu vào của giao dịch đến Hal Finney (khối 170)", // # Satoshi's signature, from the input scriptSig of the tx to Hal Finney (block 170)
     },
     verify_signature_four: {
-      nav_title: 'Decode the public key',
-      heading: 'Decode the Public Key',
-      label_one: 'Paste the x coordinate',
-      label_two: 'Paste the y coordinate',
+      nav_title: 'Giải mã khóa công khai', // Decode the public key
+      heading: 'Giải mã Khóa công khai', // Decode the Public Key
+      label_one: 'Dán tọa độ x', // Paste the x coordinate
+      label_two: 'Dán tọa độ y', // Paste the y coordinate
       paragraph_one:
-        'We learned in chapter 4 that public keys are really points in the ECDSA curve, meaning they have an x and y value. The first byte 04 means "uncompressed" (as opposed to 02 and 03 like we learned in chapter 4). Remove that first byte and the remaining data are 32-byte x and y coordinates. Copy and paste again.',
+          'Chúng ta đã học ở chương 4 rằng các khóa công khai thực sự là các điểm trên đường cong ECDSA, nghĩa là chúng có giá trị x và y. Byte đầu tiên 04 có nghĩa là "không nén" (trái ngược với 02 và 03 như chúng ta đã học ở chương 4). Xóa byte đầu tiên đó và dữ liệu còn lại là tọa độ x và y 32 byte. Sao chép và dán lại.', // We learned in chapter 4 that public keys are really points in the ECDSA curve, meaning they have an x and y value. The first byte 04 means "uncompressed" (as opposed to 02 and 03 like we learned in chapter 4). Remove that first byte and the remaining data are 32-byte x and y coordinates. Copy and paste again.
       paragraph_two:
-        "# Satoshi's public key, from the block 9 coinbase output scriptPubKey",
+          "# Khóa công khai của Satoshi, từ scriptPubKey đầu ra của coinbase khối 9", // # Satoshi's public key, from the block 9 coinbase output scriptPubKey
     },
     verify_signature_five: {
-      title: 'Verify the signature',
-      nav_title: 'Test the signature',
-      heading: 'Verify the signature!',
-      success: "You've done it! You've verified Satoshi's signature!",
+      title: 'Kiểm tra chữ ký', // Verify the signature
+      nav_title: 'Kiểm tra chữ ký', // Test the signature
+      heading: 'Xác minh chữ ký!', // Verify the signature!
+      success: "Bạn đã làm được! Bạn đã xác minh được chữ ký của Satoshi!", // You've done it! You've verified Satoshi's signature!
       paragraph_one:
-        'At this point we have everything we need to do some ECDSA math.',
+          'Lúc này, chúng ta đã có mọi thứ cần thiết để thực hiện một số phép toán ECDSA.', // At this point we have everything we need to do some ECDSA math.
       paragraph_two:
-        'The ECDSA signature verification algorithm is explained <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">here</Link> and <Link className="underline" href="https://www.secg.org/sec1-v2.pdf#page=52" target="_blank">here</Link>.',
+          'Thuật toán xác minh chữ ký ECDSA được giải thích <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">ở đây</Link> và <Link className="underline" href="https://www.secg.org/sec1-v2.pdf#page=52" target="_blank">ở đây</Link>.', // The ECDSA signature verification algorithm is explained <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">here</Link> and <Link className="underline" href="https://www.secg.org/sec1-v2.pdf#page=52" target="_blank">here</Link>.
       paragraph_three:
-        'We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> that should only return True if everything is valid!',
+          'Chúng tôi đã tạo một đối tượng Phần tử Nhóm từ các phần tử X và Y của khóa công khai cho bạn. Bạn cần hoàn thành việc triển khai hàm xác minh chữ ký ECDSA <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> chỉ nên trả về True nếu mọi thứ hợp lệ!', // We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> that should only return True if everything is valid!
       paragraph_four:
-        "We know Satoshi's signature is valid, it has been checked by every bitcoin full node since 2010! If your program does not return True something is wrong.",
+          "Chúng tôi biết chữ ký của Satoshi là hợp lệ, nó đã được mọi nút đầy đủ Bitcoin kiểm tra kể từ năm 2010! Nếu chương trình của bạn không trả về True, nghĩa là có gì đó không ổn.", // We know Satoshi's signature is valid, it has been checked by every bitcoin full node since 2010! If your program does not return True something is wrong.
       python: {
         paragraph_five_part_one:
-          'Hint: the <span className="text-green">pow()</span>',
+          'Gợi ý: phương thức <span className="text-green">pow()</span>', // Hint: the <span className="text-green">pow()</span> method
         paragraph_five_part_two:
-          'method can accept negative exponents and a modulus as arguments. More on the <Link className="underline" href="https://docs.python.org/3/library/functions.html#pow" target="_blank">documentation</Link>.',
+          'có thể chấp nhận các số mũ âm và một modulo làm đối số. Xem thêm về <Link className="underline" href="https://docs.python.org/3/library/functions.html#pow" target="_blank">tài liệu</Link>.', // can accept negative exponents and a modulus as arguments. More on the <Link className="underline" href="https://docs.python.org/3/library/functions.html#pow" target="_blank">documentation</Link>.
       },
       javascript: {
         paragraph_five_part_one:
-          'We have provided a helper function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">invert()</span>',
+          'Chúng tôi đã cung cấp một hàm trợ giúp <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">invert()</span>', // We have provided a helper function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">invert()</span>
         paragraph_five_part_two:
-          'which you will need in lieu of a JavaScript native modular exponentiation function.',
+          'mà bạn sẽ cần thay cho hàm lũy thừa mô đun gốc của JavaScript.', // which you will need in lieu of a JavaScript native modular exponentiation function.
       },
     },
     validate_signature_one: {
-      title: 'Validate the signature',
-      nav_title: 'Prepare the message',
-      heading: "Prepare Vanderpoole's message for verification",
+      title: 'Xác thực chữ ký', // Validate the signature
+      nav_title: 'Chuẩn bị thông điệp', // Prepare the message
+      heading: "Chuẩn bị thông điệp của Vanderpoole để xác minh", // Prepare Vanderpoole's message for verification
       paragraph_one:
-        'Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we\'ve already defined, but the preparation of the data is a bit different.',
+        'Vanderpoole đã sử dụng <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">giao thức ký tin nhắn Bitcoin</Link> cho trò chơi khăm của mình. Phép tính sử dụng cùng một thuật toán mà chúng ta đã định nghĩa, nhưng việc chuẩn bị dữ liệu hơi khác một chút.', // Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we've already defined, but the preparation of the data is a bit different.
       paragraph_two:
-        'First, we need to encode his message into an array of bytes corresponding to the following template:',
+        'Đầu tiên, chúng ta cần mã hóa thông điệp của anh ấy thành một mảng byte tương ứng với mẫu sau:', // First, we need to encode his message into an array of bytes corresponding to the following template:
       paragraph_three: {
-        pre_link: 'Then we will',
-        highlighted: 'double SHA-256 hash',
-        question: 'Why do we double hash in bitcoin?',
+        pre_link: 'Sau đó, chúng ta sẽ', // Then we will
+        highlighted: 'hash kép SHA-256', // double SHA-256 hash
+        question: 'Tại sao chúng ta lại hash kép trong Bitcoin?', // Why do we double hash in bitcoin?
         post_link:
-          'that blob of data, and convert that hash into an integer. Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">encode_message()</span>. It should return a 32-byte hex value.',
+          'khối dữ liệu đó, và chuyển đổi hash đó thành một số nguyên. Hoàn thành hàm <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">encode_message()</span>. Nó nên trả về một giá trị hex 32 byte.', // that blob of data, and convert that hash into an integer. Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">encode_message()</span>. It should return a 32-byte hex value.
       },
-      success: 'Nicely Done',
+      success: 'Làm tốt', // Nicely Done
     },
     validate_signature_two: {
-      nav_title: 'Prepare the signature',
-      heading: 'Prepare Vanderpoole’s signature for verification',
+      nav_title: 'Chuẩn bị chữ ký', // Prepare the signature
+      heading: 'Chuẩn bị chữ ký của Vanderpoole để xác minh', // Prepare Vanderpoole’s signature for verification
       paragraph_one:
-        'The bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.',
+        'Giao thức ký tin nhắn Bitcoin mà Vanderpoole đã sử dụng chỉ định base64 cho chữ ký. Chúng ta cần giải mã chuỗi base64 đó thành một chuỗi 65 byte. Hiện tại, chúng ta có thể bỏ qua byte siêu dữ liệu đầu tiên. Phần còn lại của dữ liệu là các giá trị r và s 32 byte mà chúng ta đã học ở bước 6.', // The bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.
       javascript: {
         paragraph_two: {
           post_link:
-            'Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">decode_sig()</span>.',
+            'Hoàn thành hàm <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">decode_sig()</span>.', // Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">decode_sig()</span>.
           return:
-            'It should return an array with the [r, s] values as BigInts.',
+            'Nó nên trả về một mảng với các giá trị [r, s] dưới dạng BigInt.', // It should return an array with the [r, s] values as BigInts.
         },
       },
       python: {
         paragraph_two: {
           post_link:
-            'Complete the function <span className=" text-green">decode_sig()</span>.',
-          return: 'It should return a tuple with the (r, s) values.',
+            'Hoàn thành hàm <span className=" text-green">decode_sig()</span>.', // Complete the function <span className=" text-green">decode_sig()</span>.
+          return: 'Nó nên trả về một bộ dữ liệu (tuple) với các giá trị (r, s).', // It should return a tuple with the (r, s) values.
         },
       },
-      success: 'Nicely Done',
+      success: 'Làm tốt', // Nicely Done
     },
     validate_signature_three: {
-      title: 'Validate the signature',
-      nav_title: 'See if Vanderpoole was lying',
-      heading: 'So, is Vanderpoole a liar?!',
-      paragraph_one: `Let's gather all the necessary components for the program and verify if Vanderpoole's signature actually originated from the private key linked to Satoshi's public key! Please fill in the missing parameters needed to execute the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm"> verify()</span> function using the provided code.`,
+      title: 'Xác thực chữ ký', // Validate the signature
+      nav_title: 'Xem Vanderpoole có nói dối không', // See if Vanderpoole was lying
+      heading: 'Vậy, Vanderpoole có nói dối không?!', // So, is Vanderpoole a liar?!
+      paragraph_one:
+        `Hãy thu thập tất cả các thành phần cần thiết cho chương trình và xác minh xem chữ ký của Vanderpoole thực sự có bắt nguồn từ khóa công khai của Satoshi không! Vui lòng điền vào các tham số còn thiếu cần thiết để thực thi hàm <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> bằng cách sử dụng mã được cung cấp.`, // Let's gather all the necessary components for the program and verify if Vanderpoole's signature actually originated from the private key linked to Satoshi's public key! Please fill in the missing parameters needed to execute the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> function using the provided code.
       paragraph_two:
-        'Then we can run the program to see if Vanderpoole was lying. Drumroll please...',
+        'Sau đó, chúng ta có thể chạy chương trình để xem Vanderpoole có nói dối không. Trống giòn! ...', // Then we can run the program to see if Vanderpoole was lying. Drumroll please...
       success:
-        "This message indicates that the signature did not originate from Satoshi's public key, as the verification failed.",
+        "Thông báo này cho biết chữ ký không bắt nguồn từ khóa công khai của Satoshi, vì quá trình xác minh đã thất bại.", // This message indicates that the signature did not originate from Satoshi's public key, as the verification failed.
     },
     validate_signature_four: {
-      title: 'Validate the signature',
-      nav_title: 'Find the correct key',
-      heading: 'How did Vanderpoole even create that signature?',
+      title: 'Xác thực chữ ký', // Validate the signature
+      nav_title: 'Tìm khóa chính xác', // Find the correct key
+      heading: 'Làm thế nào mà Vanderpoole thậm chí tạo ra chữ ký đó?', // How did Vanderpoole even create that signature?
       paragraph_one:
-        'Holocat chimes in and says a defector in BitRey has sent us a list of public keys Vanderpoole commonly uses, maybe he used one of these keys to sign the message.',
+        'Holocat chen vào và nói rằng một kẻ đào ngũ ở BitRey đã gửi cho chúng tôi một danh sách các khóa công khai mà Vanderpoole thường sử dụng, có thể anh ta đã sử dụng một trong những khóa này để ký vào tin nhắn.', // Holocat chimes in and says a defector in BitRey has sent us a list of public keys Vanderpoole commonly uses, maybe he used one of these keys to sign the message.
       paragraph_two:
-        'Please provide the key that successfully completes the verification process, allowing us to identify the public key Vanderpoole used to sign this message.',
+        'Vui lòng cung cấp khóa thành công trong quá trình xác minh, cho phép chúng tôi xác định khóa công khai mà Vanderpoole đã sử dụng để ký vào tin nhắn này.', // Please provide the key that successfully completes the verification process, allowing us to identify the public key Vanderpoole used to sign this message.
       paragraph_three:
-        "Let's see if you can verify Vanderpoole's message and signature using one of THESE keys?",
+        "Hãy xem bạn có thể xác minh tin nhắn và chữ ký của Vanderpoole bằng một trong NHỮNG khóa NÀY không?", // "Let's see if you can verify Vanderpoole's message and signature using one of THESE keys?"
       success:
-        "The signature is valid for this public key of Vanderpoole's, this was not Satoshi!",
+        "Chữ ký hợp lệ cho khóa công khai này của Vanderpoole, đây không phải là Satoshi!", // The signature is valid for this public key of Vanderpoole's, this was not Satoshi!
     },
     outro_one: {
-      title: 'Outro',
-      nav_title: 'Chapter complete',
-      heading: 'Vanderpoole lied!',
+      title: 'Kết luận', // Outro
+      nav_title: 'Hoàn thành chương', // Chapter complete
+      heading: 'Vanderpoole đã nói dối!', // Vanderpoole lied!
       paragraph_one:
-        "You learned one of the most important lessons in bitcoin. You didn't trust, you verified.<br><br>In doing so, you discovered that Vanderpoole didn’t use Satoshi’s keys to sign the message, casting a big shadow on his family story, on his credibility, and the credibility of BitRey.<br><br>Now if only you could get that song out of your head.",
+        "Bạn đã học được một trong những bài học quan trọng nhất trong Bitcoin. Bạn không tin tưởng, bạn đã xác minh.<br><br>Bằng cách đó, bạn đã phát hiện ra rằng Vanderpoole đã không sử dụng khóa của Satoshi để ký vào tin nhắn, tạo ra một bóng đen lớn cho câu chuyện gia đình của anh ta, cho độ tin cậy của anh ta và độ tin cậy của BitRey.<br><br>Bây giờ nếu chỉ có thể bạn có thể gạt được bài hát đó ra khỏi đầu.", // You learned one of the most important lessons in bitcoin. You didn't trust, you verified.<br><br>In doing so, you discovered that Vanderpoole didn’t use Satoshi’s keys to sign the message, casting a big shadow on his family story, on his credibility, and the credibility of BitRey.<br><br>Now if only you could get that song out of your head.
     },
     resources: {
       derive_message_three: {
-        op_pushdata_heading: 'OP_PUSHDATA',
+        op_pushdata_heading: 'OP_PUSHDATA', // OP_PUSHDATA
         op_pushdata_paragraph_one:
-          'OP_PUSHDATA in bitcoin script plays a crucial role in facilitating the insertion of arbitrary pieces of data into the blockchain. It is actually a whole category of opcodes that allow for the inclusion of data elements of varying sizes, making Bitcoin’s scripting language more versatile. This opcode is particularly significant in enabling the implementation of various smart contract functionalities and custom transaction types. Given that we know this is supposed to push 71 bytes of data onto the stack, can you work out how this opcode might be represented in hex? You can read more about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.',
+          'OP_PUSHDATA đóng một vai trò quan trọng trong script Bitcoin để tạo điều kiện đưa các phần dữ liệu tùy ý vào blockchain. Nó thực sự là một whole category of opcodes cho phép bao gồm các yếu tố dữ liệu có kích thước khác nhau, làm cho ngôn ngữ kịch bản của Bitcoin linh hoạt hơn. Mã opcode này đặc biệt quan trọng trong việc cho phép triển khai các chức năng hợp đồng thông minh khác nhau và các loại giao dịch tùy chỉnh. Vì chúng ta biết đây là opcode để đưa 71 byte dữ liệu lên stack, bạn có thể tìm ra cách opcode này có thể được biểu diễn ở dạng hex không? Bạn có thể đọc thêm về một số OP_CODE này và hơn thế nữa <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">ở đây</Link>.', // OP_PUSHDATA in bitcoin script plays a crucial role in facilitating the insertion of arbitrary pieces of data into the blockchain. It is actually a whole category of opcodes that allow for the inclusion of data elements of varying sizes, making Bitcoin’s scripting language more versatile. This opcode is particularly significant in enabling the implementation of various smart contract functionalities and custom transaction types. Given that we know this is supposed to push 71 bytes of data onto the stack, can you work out how this opcode might be represented in hex? You can read more about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.
       },
       derive_message_four: {
-        op_checksig_heading: 'OP_CHECKSIG',
+        op_checksig_heading: 'OP_CHECKSIG', // OP_CHECKSIG
         op_checksig_paragraph_one:
-          'OP_CHECKSIG in bitcoin script is critically important to ensuring that the correct private key is able to spend a given transaction. In almost every bitcoin script there will be an OP_CHECKSIG to ensure that the person attempting to spend the bitcoin is able to do so with the given key. You can read about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.',
+          'OP_CHECKSIG đóng vai trò quan trọng trong script Bitcoin để đảm bảo khóa riêng tư chính xác có thể chi tiêu một giao dịch nhất định. Trong hầu hết mọi script Bitcoin sẽ có một OP_CHECKSIG để đảm bảo rằng người đang cố gắng chi tiêu Bitcoin có thể làm như vậy với khóa được cung cấp. Bạn có thể đọc thêm về một số OP_CODE này và hơn thế nữa <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">ở đây</Link>.', // OP_CHECKSIG in bitcoin script is critically important to ensuring that the correct private key is able to spend a given transaction. In almost every bitcoin script there will be an OP_CHECKSIG to ensure that the person attempting to spend the bitcoin is able to do so with the given key. You can read about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.
       },
       derive_message_six: {
-        transaction_parts_heading: 'Transaction Parts',
+        transaction_parts_heading: 'Phần của giao dịch', // Transaction Parts
         transaction_parts_one:
-          'Version: This version indicates how the the transaction will be organized.',
+          'Phiên bản: Phiên bản này chỉ ra cách thức tổ chức giao dịch.', // Version: This version indicates how the the transaction will be organized.
         transaction_parts_two:
-          'Number of inputs: The number of inputs in this transaction.',
+          'Số lượng đầu vào: Số lượng đầu vào trong giao dịch này.', // Number of inputs: The number of inputs in this transaction.
         transaction_parts_three:
-          'Input #0 TXID: This is the hash of the transaction that input #0 spends from.',
+          'TXID đầu vào #0: Đây là hash của giao dịch mà đầu vào #0 chi tiêu từ đó.', // Input #0 TXID: This is the hash of the transaction that input #0 spends from.
         transaction_parts_four:
-          'Input #0 index: This is the output index of the transaction identified by the above TXID that provides a source of funds.',
+          'Chỉ mục đầu vào #0: Đây là chỉ mục đầu ra của giao dịch được xác định bởi TXID ở trên, cung cấp nguồn tiền.', // Input #0 index: This is the output index of the transaction identified by the above TXID that provides a source of funds.
         transaction_parts_five:
-          'Scriptsig: This is the data that authorizes the spending of the output specified above. Typically consists of signatures.',
+          'Scriptsig: Đây là dữ liệu ủy quyền chi tiêu đầu ra được chỉ định ở trên. Thông thường bao gồm các chữ ký.', // Scriptsig: This is the data that authorizes the spending of the output specified above. Typically consists of signatures.
         transaction_parts_six:
-          'Input #0 sequence: This is the sequence number for the spending input.',
+          'Chuỗi đầu vào #0: Đây là số chuỗi cho đầu vào chi tiêu.', // Input #0 sequence: This is the sequence number for the spending input.
         transaction_parts_seven:
-          'Number of outputs: This indicates how many outputs the tx has.',
+          'Số lượng đầu ra: Điều này cho biết giao dịch có bao nhiêu đầu ra.', // Number of outputs: This indicates how many outputs the tx has.
         transaction_parts_eight:
-          'Output #0 value: This is the amount that is spent by the first output, expressed as a little-endian integer.',
+          'Giá trị đầu ra #0: Đây là số tiền được chi tiêu bởi đầu ra đầu tiên, được biểu thị dưới dạng số nguyên little-endian.', // Output #0 value: This is the amount that is spent by the first output, expressed as a little-endian integer.
         transaction_parts_nine:
-          'Output #0 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.',
+          'ScriptPubKey đầu ra #0: Đây là script xác định những gì cần thiết để chi tiêu tiền. Thông thường bao gồm khóa công khai và các opcode khác tạo thành một thử thách.', // Output #0 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.
         transaction_parts_ten:
-          'Output #1 value: This is the amount that is spent by the second output, expressed as a little-endian integer.',
+          'Giá trị đầu ra #1: Đây là số tiền được chi tiêu bởi đầu ra thứ hai, được biểu thị dưới dạng số nguyên little-endian.', // Output #1 value: This is the amount that is spent by the second output, expressed as a little-endian integer.
         transaction_parts_eleven:
-          'Output #1 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.',
+          'ScriptPubKey đầu ra #1: Đây là script xác định những gì cần thiết để chi tiêu tiền. Thông thường bao gồm khóa công khai và các opcode khác tạo thành một thử thách.', // Output #1 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.
         transaction_parts_twelve:
-          'Locktime: A block height before which this transaction is not valid for confirmation.',
+          'Locktime: Chiều cao khối trước đó mà giao dịch này không hợp lệ để xác nhận.', // Locktime: A block height before which this transaction is not valid for confirmation.
       },
       derive_message_seven: {
         sighash_type_flag_heading: 'SigHash Type Flag',
