@@ -27,6 +27,7 @@ const translations = {
         'Đây là năm 2139. Đồng Bitcoin cuối cùng sẽ được khai thác trong hai tuần nữa. Nhiều tháng qua tại Quảng trường Satoshi, có một chiếc đồng hồ đếm ngược thời gian cho sự kiện này đã xuất hiện.', //The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square.
     intro:
         'Cả thế giới đang chờ đợi khối dữ liệu này. Bỗng nhiên, mạng lưới Bitcoin ngừng hoạt động.<br><br>Bạn nhận được một con mèo điện tử từ một người tự xưng là Satoshi Nakamoto. (Giống như bất kỳ holocat nào khác, nhưng con này có hình dạng như một con mèo). Bạn mở holocat bằng cách chạm nhẹ vào mũi của nó, tò mò muốn nghe nó nói gì...',  //The world awaits the last block. Then, suddenly, the network grinds to a halt.<br><br>You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat). You open the holocat by booping its nose curious to hear what it has to say...
+    
     project: {
         title: 'Được tạo ra bằng niềm vui và đam mê', //Built with fun
         paragraph_one:
@@ -38,17 +39,18 @@ const translations = {
    contributing: {
       title: 'Cách đóng góp',//How to contribute
       paragraph_one:
-          'Chúng tôi là một dự án mã nguồn mở, vì vậy tất cả các cánh cửa đều rộng mở để bạn giúp định hình nó.',    //We’re an open-source project, so all doors are open for you to help shape it.
-      feedback: {
+          'Đây là một dự án mã nguồn mở, vì vậy chúng tôi rộng mở tất cả các cánh cửa để bạn có thể giúp định hình và phát triển dự án.',    //We’re an open-source project, so all doors are open for you to help shape it.
+      
+     feedback: {
         title: 'Phản hồi',//Feedback
         paragraph_one:
-            'Một cách tuyệt vời để đóng góp là trải nghiệm Chương 1 và cung cấp cho chúng tôi bất kỳ phản hồi nào về trải nghiệm tổng thể của bạn khi sử dụng <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer"> biểu mẫu này </a>.',        //A great way to contribute is to go through Chapter 1 and give us any feedback on the overall experience you might have using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this form</a>.
+            'Cách tuyệt vời nhất để đóng góp là trải nghiệm Chương 1 và cho chúng tôi ý kiến tổng thể về trải nghiệm của bạn <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer"> qua mẫu đơn này </a>.',        //A great way to contribute is to go through Chapter 1 and give us any feedback on the overall experience you might have using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this form</a>.
       },
 
       contribute: {
         title: 'Đóng góp',//Contribute
         paragraph_one:
-            'Mọi đề xuất về bất cứ điều gì ví dụ như thay đổi nội dung hoặc cơ chế trò chơi đều được hoan nghênh. Chúng tôi luôn hoan nghênh những hỗ trợ đánh giá và <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">kiểm tra chất lượng (QA) các thay đổi trong mã lập trình</a>. Đối với các cải tiến về mã lập trình, bạn có thể trực tiếp gửi vấn đề hoặc yêu cầu lấy mã mới trên GitHub.',        //All suggestions are welcome, including content changes, game mechanics – really anything. We are also always looking for help reviewing and <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">QA-ing code changes</a>. For code improvements, you can directly open an issue or submit a pull request on GitHub.
+            'Mọi đề xuất về bất cứ điều gì đều được hoan nghênh ví dụ như thay đổi nội dung hoặc cơ chế hoạt động. Chúng tôi luôn hoan nghênh những hỗ trợ đánh giá và <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">kiểm tra chất lượng (QA) các thay đổi trong mã lập trình</a>. Đối với các cải tiến về mã lập trình, bạn có thể trực tiếp gửi vấn đề hoặc yêu cầu lấy mã mới trên GitHub.',        //All suggestions are welcome, including content changes, game mechanics – really anything. We are also always looking for help reviewing and <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">QA-ing code changes</a>. For code improvements, you can directly open an issue or submit a pull request on GitHub.
         paragraph_two:
             'Nếu bạn muốn tham gia vào thiết kế, cốt truyện hoặc bất kỳ điều gì khác, hãy tham gia cùng chúng tôi trong kênh #saving-satoshi trên <a href="https://discord.gg/DC8Dys4G3h" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Cho biết bạn muốn đóng góp như thế nào và chúng tôi sẽ giúp bạn đi đúng hướng.',        //If you want to get involved with design, story, or anything else, join us in the #saving-satoshi channel in the <a href="https://discord.gg/DC8Dys4G3h" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Mention how you’d like to contribute and we’ll help point you in the right direction.
       },
@@ -62,28 +64,27 @@ const translations = {
     },
 
     satoshi_needs_you: 'Nhanh lên nào, Satoshi cần bạn.', // Now be quick, Satoshi needs you.
-
 privacy: {
-  title: 'Cam kết bảo mật của chúng tôi', // Our commitment to privacy
+  title: 'Chúng tôi cam kết bảo mật', // Our commitment to privacy
   paragraph_one:
-      'Tại Saving Satoshi, chúng tôi cam kết sâu sắc đảm bảo quyền riêng tư và bảo mật của người dùng. Chúng tôi tin tưởng vào tính minh bạch và muốn bạn hiểu cách và lý do tại sao chúng tôi theo dõi hoạt động sử dụng ứng dụng. Để đạt được điều này, chúng tôi sử dụng một công cụ mạnh mẽ có tên <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.',   // At Saving Satoshi, we are deeply committed to ensuring the privacy and security of our users. We believe in transparency and want you to understand how and why we track app usage. To achieve this, we use a powerful tool called <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.
+      'Trong dự án Saving Satoshi, chúng tôi cam kết nghiêm ngặt quyền riêng tư và bảo mật của người tham gia. Chúng tôi tin vào sự minh bạch và mong muốn bạn hiểu cách thức và lý do tại sao các thông tin hoạt động khi sử dụng ứng dụng này được kiểm soát. Để đạt được điều này, chúng tôi sử dụng một công cụ có tên là<Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.',   // At Saving Satoshi, we are deeply committed to ensuring the privacy and security of our users. We believe in transparency and want you to understand how and why we track app usage. To achieve this, we use a powerful tool called <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.
   sub_heading_one: 'Umami là gì?', // What is Umami?
   paragraph_two:
-      'Umami là một nền tảng phân tích nguồn mở giúp chúng tôi thu thập những thông tin chi tiết cần thiết về cách bạn sử dụng ứng dụng của chúng tôi. Nó cho phép chúng tôi đưa ra các quyết định dựa trên dữ liệu và liên tục cải thiện sản phẩm để đáp ứng tốt hơn nhu cầu của bạn. Bạn có thể xem bảng điều khiển Umami <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">ở đây</Link>.',   // Umami is an open-source analytics platform that helps us gather essential insights about how you use our app. It allows us to make data-driven decisions and continuously enhance our product to better meet your needs. You can view the Umami dashboard <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">here</Link>.
+      'Umami là một nền tảng phân tích mã nguồn mở giúp thu thập những thông tin cần thiết về cách bạn sử dụng ứng dụng của chúng tôi. Cho phép chúng tôi đưa ra các quyết định dựa trên dữ liệu và liên tục cải thiện ứng dụng để đáp ứng tốt hơn nhu cầu của bạn. Bạn có thể xem bảng điều khiển Umami <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">ở đây</Link>.',   // Umami is an open-source analytics platform that helps us gather essential insights about how you use our app. It allows us to make data-driven decisions and continuously enhance our product to better meet your needs. You can view the Umami dashboard <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">here</Link>.
   sub_heading_two: 'Chúng tôi thu thập dữ liệu gì?', // What Data Do We Collect?
   paragraph_three:
-      'Hãy yên tâm, chúng tôi chỉ thu thập dữ liệu phi cá nhân và ẩn danh, chẳng hạn như:',   // Rest assured, we only collect non-personal and anonymized data, such as:
+      'Bạn hãy yên tâm, chúng tôi chỉ thu thập dữ liệu phi cá nhân và ẩn danh, chẳng hạn như:',   // Rest assured, we only collect non-personal and anonymized data, such as:
   list_item_one_title: 'Cải tiến sản phẩm:', // Product Improvement:
   list_item_one_text:
-      'Chúng tôi sử dụng dữ liệu để xác định các lĩnh vực ứng dụng của chúng tôi có thể được cải thiện. Bằng cách hiểu cách bạn sử dụng ứng dụng của chúng tôi, chúng tôi có thể làm cho nó hiệu quả hơn, thân thiện với người dùng và an toàn hơn.',   // We use the data to identify areas where our app can be improved. By understanding how you use our app, we can make it more efficient, user-friendly, and secure.
+      'Chúng tôi sử dụng dữ liệu để xác định các phần trong ứng dụng có thể được cải thiện hay không. Bằng cách hiểu người dùng sử dụng ứng dụng như thế nào, chúng tôi có thể làm cho nó hiệu quả, thân thiện với người dùng và an toàn hơn.',   // We use the data to identify areas where our app can be improved. By understanding how you use our app, we can make it more efficient, user-friendly, and secure.
   list_item_two_title: 'Khả năng tương thích:', // Compatibility:
   list_item_two_text:
-      'Hiểu các thiết bị và nền tảng bạn sử dụng cho phép chúng tôi tối ưu hóa ứng dụng của mình cho các cấu hình khác nhau, đảm bảo nó hoạt động liền mạch cho bạn.',   // Understanding the devices and platforms you use allows us to optimize our app for various configurations, ensuring it works seamlessly for you.
-  sub_heading_three: 'Quyền riêng tư của bạn rất quan trọng', // Your Privacy Matters
+      'Hiểu các thiết bị và nền tảng người dùng sử dụng cho phép chúng tôi tối ưu hóa ứng dụng với các cấu hình khác nhau, đảm bảo hoạt động liền mạch cho người dùng.',   // Understanding the devices and platforms you use allows us to optimize our app for various configurations, ensuring it works seamlessly for you.
+  sub_heading_three: 'Bảo mật quyền riêng tư của bạn rất quan trọng', // Your Privacy Matters
   paragraph_four:
-      'Chúng tôi muốn nhấn mạnh rằng quyền riêng tư của bạn là vô cùng quan trọng đối với chúng tôi. Chúng tôi không thu thập bất kỳ thông tin nhận dạng cá nhân nào và dữ liệu chúng tôi thu thập chỉ được sử dụng cho mục đích cải thiện ứng dụng của chúng tôi. Dữ liệu của bạn không bao giờ được chia sẻ hoặc bán cho bên thứ ba.',   // We want to emphasize that your privacy is of utmost importance to us. We do not collect any personally identifiable information, and the data we gather is used solely for the purpose of improving our app. Your data is never shared or sold to third parties.
+      'Chúng tôi muốn nhấn mạnh rằng quyền riêng tư của bạn là vô cùng quan trọng đối với chúng tôi. Chúng tôi không thu thập bất kỳ thông tin nhận dạng cá nhân nào và dữ liệu chúng tôi thu thập chỉ được sử dụng cho mục đích cải thiện ứng dụng. Dữ liệu của bạn không bao giờ được chia sẻ hoặc bán cho bên thứ ba.',   // We want to emphasize that your privacy is of utmost importance to us. We do not collect any personally identifiable information, and the data we gather is used solely for the purpose of improving our app. Your data is never shared or sold to third parties.
   paragraph_five:
-      "Nếu bạn có bất kỳ lo ngại hoặc câu hỏi nào về các hoạt động thu thập dữ liệu hoặc chính sách bảo mật của chúng tôi, xin đừng ngần ngại liên hệ với chúng tôi. Chúng tôi cam kết cung cấp cho bạn trải nghiệm minh bạch và an toàn khi sử dụng ứng dụng của chúng tôi.",
+      "Nếu bạn có bất kỳ lo ngại hoặc câu hỏi nào về các hoạt động thu thập dữ liệu hoặc chính sách bảo mật của chúng tôi, xin đừng ngần ngại liên hệ với chúng tôi. Chúng tôi cam kết cung cấp cho bạn trải nghiệm an toàn và minh bạch khi sử dụng ứng dụng của chúng tôi.",
     },
   },
 
@@ -93,6 +94,7 @@ privacy: {
     paragraph_one:
         'Năm 2139. Bitcoin cuối cùng sẽ được khai thác sau hai tuần nữa. Trong nhiều tháng, một chiếc đồng hồ đếm ngược đã xuất hiện tại Quảng trường Satoshi. Cho đến thời điểm này, mỗi khối đều có một phần thưởng bitcoin nào đó, một khoản trợ cấp. Đây là cách duy nhất để bitcoin mới xuất hiện nhưng sớm thôi, mọi thứ sắp thay đổi. Sau hơn một trăm năm, lịch trình phát hành bitcoin sắp kết thúc. Thế giới đang chờ đợi khối cuối cùng có trợ cấp được khai thác. Đó là một sự kiện lịch sử. Kết thúc của một kỷ nguyên.',     // The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. Up until this point, every block has had some kind of bitcoin reward, a subsidy. This is the only way new bitcoins come into existence but soon, it’s about to change. After over one hundred years, the issuance schedule for bitcoin is coming to an end. The world awaits for the last block with a subsidy to be mined. It’s a historical event. The end of an era.
     paragraph_two: 'Bỗng nhiên, mạng lưới ngừng hoạt động.', // Suddenly, the network grinds to a halt.
+    
     ///CHAPTER 1
     intro_one: {
       title: 'Giới thiệu', // Intro
