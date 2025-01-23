@@ -2032,106 +2032,106 @@ privacy: {
     },
     put_it_together_five: {
       hard: {
-        title: 'Putting it all together',
-        heading: 'Populate the Witness',
-        nav_title: 'Populate the Witness',
+        title: 'Kết hợp tất cả', // Putting it all together
+        heading: 'Điền vào Witness', // Populate the Witness
+        nav_title: 'Điền vào Witness', // Populate the Witness
         paragraph_one:
-          'Finish the method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> that calls our step 7 method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.',
+          'Hoàn thành phương thức <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> gọi phương thức bước 7 của chúng tôi <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> và xử lý giá trị trả về của nó. Các số r và s cần được mã hóa bằng thuật toán gọi là DER mà chúng tôi đã triển khai cho bạn.', // Finish the method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> that calls our step 7 method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.
         paragraph_two:
-          'Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this indicating "SIGHASH ALL".',
+          'Bitcoin yêu cầu thêm một byte được nối vào cuối chữ ký DER, đại diện cho "loại sighash". Hiện tại, chúng tôi sẽ luôn sử dụng byte 0x01 cho việc này, biểu thị "SIGHASH ALL".', // Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this indicating "SIGHASH ALL".
         paragraph_three:
-          'Once we have that signature blob we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.',
+          'Sau khi chúng ta có khối chữ ký đó, chúng ta cần tạo một đối tượng Witness với hai mục ngăn xếp: khối chữ ký đã mã hóa DER và khóa công khai nén của bạn. Đẩy chữ ký trước, tiếp theo là khóa công khai.', // Once we have that signature blob, we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.
         paragraph_four:
-          'The witness stack object can then be appended to the witnesses array of the transaction object.',
-        success: 'The sign_input() method looks good. Great Work!',
+          'Đối tượng ngăn xếp witness có thể được thêm vào mảng các witness của đối tượng giao dịch.', // The witness stack object can then be appended to the witnesses array of the transaction object.
+        success: 'Phương thức sign_input() trông ổn. Làm tốt!', // The sign_input() method looks good. Great Work!
       },
     },
     put_it_together_six: {
       hard: {
-        title: 'Putting it all together',
-        heading: 'Put it All Together',
-        nav_title: 'Put it All Together!',
+        title: 'Kết hợp tất cả', // Putting it all together
+        heading: 'Kết hợp tất cả!', // Put it All Together
+        nav_title: 'Kết hợp tất cả!', // Put it All Together!
         paragraph_one:
-          'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
+          'Chúng tôi biết đầu vào của mình, chúng tôi biết đầu ra của mình. Chúng tôi đã sẵn sàng để xây dựng và ký một giao dịch chưa? Chưa hẳn. Chúng tôi có đầu vào 1.61 BTC và đầu ra 1 BTC ... điều gì sẽ xảy ra với 0.61 BTC còn lại? Hầu hết số tiền đó sẽ là "tiền thừa" và chúng tôi cần gửi lại số tiền đó về địa chỉ của chính mình!', // We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!
         paragraph_two:
-          'Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in step 1) and two outputs:',
+          'Viết một script tạo và ký một đối tượng Transaction. Nó sẽ có một đầu vào (UTXO mà chúng tôi đã xác định ở bước 1) và hai đầu ra:', // Write a script that creates and signs a Transaction object. It will have one input (the UTXO we identified in step 1) and two outputs:
         paragraph_three:
-          'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 61,000,000 to 60,999,000 satoshis.',
+          'Nhưng đợi đã! Chúng tôi cần bao gồm một "phí". Chúng tôi sẽ cắt giảm một phần nhỏ trong số tiền thừa của chúng tôi từ 61.000.000 xuống còn 60.999.000 satoshi để khuyến khích các nhóm khai thác mỏ đưa giao dịch của chúng tôi vào một khối.', // But wait! We need to include a "fee". We'll shave off a tiny piece of our change output from 61,000,000 to 60,999,000 satoshis to incentivize the mining pools to include our transaction in a block.
         paragraph_four:
-          'Finally our work is done. Your script should end by returning the result of the transaction <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method. This is a valid signed bitcoin transaction and we can broadcast it to the network to send Mika 3000 the money he needs!',
+          'Cuối cùng, công việc của chúng tôi đã hoàn thành. Script của bạn sẽ kết thúc bằng cách trả về kết quả của phương thức tuần tự hóa giao dịch <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span>. Đây là một giao dịch Bitcoin đã được ký hợp lệ và chúng tôi có thể phát sóng nó trên mạng để gửi cho Mika 3000 số tiền cô ấy cần!', // Finally our work is done. Your script should end by returning the result of the transaction <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method. This is a valid signed bitcoin transaction and we can broadcast it to the network to send Mika 3000 the money she needs!
         bullet_one:
-          'Mika 3000 gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
+          'Mika 3000 nhận được 100.000.000 satoshi vào bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj', // Mika 3000 gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj
         bullet_two:
-          'You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
-        success: "You've done it! You've built a transaction!",
+          'Bạn nhận lại 61.000.000 vào địa chỉ của mình bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs', // You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs
+        success: "Bạn đã làm được! Bạn đã xây dựng một giao dịch!", // You've done it! You've built a transaction!
       },
     },
     outro_one: {
-      title: 'Outro',
-      nav_title: 'Chapter complete',
-      heading: 'You did it!',
+      title: 'Kết luận', // Outro
+      nav_title: 'Hoàn thành chương', // Chapter complete
+      heading: 'Bạn đã làm được!', // You did it!
       paragraph_one:
-        "You successfully built a transaction from scratch to pay Mika 3000 for her help. Now that we are done here let's see what we can find on Vanderpoole's island.",
+        "Bạn đã thành công trong việc xây dựng một giao dịch từ đầu để trả cho Mika 3000 vì sự giúp đỡ của cô ấy. Bây giờ khi chúng ta đã hoàn thành ở đây, hãy xem những gì chúng ta có thể tìm thấy trên đảo của Vanderpoole.", // You successfully built a transaction from scratch to pay Mika 3000 for her help. Now that we are done here let's see what we can find on Vanderpoole's island.
     },
     resources: {
       in_out: {
-        input_class_heading: 'Input Class',
-        input_class_paragraph_one: 'Placeholder Resources',
-        output_class_heading: 'Output Class',
-        output_class_paragraph_one: 'Placeholder Resources',
+        input_class_heading: 'Lớp Input', // Input Class
+        input_class_paragraph_one: 'Tài nguyên Placeholder', // Placeholder Resources
+        output_class_heading: 'Lớp Output', // Output Class
+        output_class_paragraph_one: 'Tài nguyên Placeholder', // Placeholder Resources
       },
       put_it_together: {
-        building_a_transaction_heading: 'Building a Transaction',
-        building_a_transaction_paragraph_one: 'Placeholder Resources',
+        building_a_transaction_heading: 'Xây dựng một giao dịch', // Building a Transaction
+        building_a_transaction_paragraph_one: 'Tài nguyên Placeholder', // Placeholder Resources
       },
     },
   },
   chapter_seven: {
-    title: `Offense is the Best Defense`,
+    title: `Tấn công là phòng thủ tốt nhất`, // Offense is the Best Defense
     paragraph_one:
-      'You and Mika 3000 reach Vanderpoole’s private island first via plane and parachute, then via dune buggy, and then via rowboat that rows itself.',
+      'Bạn và Mika 3000 đến hòn đảo riêng của Vanderpoole trước tiên bằng máy bay và dù nhảy, sau đó bằng xe buggy và sau đó bằng thuyền chèo tự chèo.', // You and Mika 3000 reach Vanderpoole’s private island first via plane and parachute, then via dune buggy, and then via rowboat that rows itself.
     intro_one: {
-      title: 'Intro',
-      nav_title: 'Infiltrating the compound',
+      title: 'Giới thiệu', // Intro
+      nav_title: 'Xâm nhập vào khu phức hợp', // Infiltrating the compound
       paragraph_one:
-        'You ask your compatriots whether they are worried about Vanderpoole’s army of security drones.',
+        'Bạn hỏi những người bạn đồng hành của mình liệu họ có lo lắng về đội quân máy bay không người lái của Vanderpoole không.', // You ask your compatriots whether they are worried about Vanderpoole’s army of security drones.
       paragraph_two:
-        '—HOLOCAT: “Give me 15 minutes. They’re basically birds, and I’m a cat. They don’t stand a chance.”',
+        '—HOLOCAT: “Cho tôi 15 phút. Chúng cơ bản giống như chim, và tôi là một con mèo. Chúng không có cơ hội nào.”', // —HOLOCAT: “Give me 15 minutes. They’re basically birds, and I’m a cat. They don’t stand a chance.”
       paragraph_three:
-        'Holocat extends her claws and deals with Vanderpoole’s drone army pounce by pounce. Mika 3000 hands you a black turtleneck sweater, gloves, and a pair of night vision goggles.',
+        'Holocat giơ móng vuốt của mình và đối phó với đội quân máy bay không người lái của Vanderpoole bằng cách nhảy vọt. Mika 3000 đưa cho bạn một chiếc áo len cổ lọ màu đen, găng tay và một cặp kính nhìn đêm.', // Holocat extends her claws and deals with Vanderpoole’s drone army pounce by pounce. Mika 3000 hands you a black turtleneck sweater, gloves, and a pair of night vision goggles.
       paragraph_four:
-        '—MIKA 3000: “You can’t do espionage in a Hawaiian shirt. What were you thinking? This isn’t another abandoned warehouse; this is a fortress. Here, I almost forgot. Take this grappling hook.”',
+        '—MIKA 3000: “Bạn không thể làm gián điệp trong một chiếc áo sơ mi Hawaii. Bạn đang nghĩ gì vậy? Đây không phải là một nhà kho bỏ hoang; đây là một pháo đài. Đây, suýt nữa thì tôi quên mất. Lấy móc bám này.”', // —MIKA 3000: “You can’t do espionage in a Hawaiian shirt. What were you thinking? This isn’t another abandoned warehouse; this is a fortress. Here, I almost forgot. Take this grappling hook.”
       paragraph_five:
-        'Wondering what you’ve gotten yourself into, you and Mika 3000 scale the castle walls of Vanderpoole’s primary residence. To your surprise, his home overflows with pro-bitcoin art, books, and paper magazines. He is, or rather was, a true bitcoiner. A collection of miners dating back 125 years sit preserved in glass display cases. That’s when you see it: Vanderpoole’s workshop.',
+        'Tự hỏi mình đã dính vào chuyện gì, bạn và Mika 3000 leo lên tường thành của dinh thự chính của Vanderpoole. Đến ngạc nhiên, ngôi nhà của anh ta tràn ngập nghệ thuật, sách và tạp chí giấy ủng hộ Bitcoin. Anh ta là, hoặc đúng hơn là đã từng là, một người hâm mộ Bitcoin thực thụ. Một bộ sưu tập các máy đào mỏ có niên đại 125 năm tuổi được bảo quản trong tủ kính trưng bày. Đó là lúc bạn nhìn thấy nó: xưởng làm việc của Vanderpoole.', // Wondering what you’ve gotten yourself into, you and Mika 3000 scale the castle walls of Vanderpoole’s primary residence. To your surprise, his home overflows with pro-bitcoin art, books, and paper magazines. He is, or rather was, a true bitcoiner. A collection of miners dating back 125 years sit preserved in glass display cases. That’s when you see it: Vanderpoole’s workshop.
     },
     intro_two: {
-      nav_title: 'The control room',
+      nav_title: 'Phòng điều khiển', // The control room
       paragraph_one:
-        'The gigantic room is a mess, though its layout is methodical. Remember when miners were clogging up the bitcoin network with empty blocks? Inside open notebooks, you find Vanderpoole’s designs for the backdoor that he used sketched out in detail. You were right: It was all a lie, yet one told not by a conniving villain but by a desperate believer in bitcoin whose company could no longer compete. To preserve his legacy, Vanderpoole infected the miners with a virus.',
+        'Căn phòng khổng lồ này rất lộn xộn, mặc dù bố cục của nó có phương pháp. Bạn nhớ lại khi các thợ đào làm tắc nghẽn mạng Bitcoin bằng các khối trống không? Bên trong những cuốn sổ tay mở, bạn tìm thấy thiết kế của Vanderpoole cho cửa hậu mà anh ta đã sử dụng được phác thảo chi tiết. Bạn đã đúng: Tất cả đều là dối trá, nhưng không phải do một tên phản diện xảo quyệt mà do một người tin tưởng tuyệt đối vào Bitcoin, công ty của người đó không thể cạnh tranh nữa. Để bảo tồn di sản của mình, Vanderpoole đã lây nhiễm cho các thợ đào một loại virus.', // The gigantic room is a mess, though its layout is methodical. Remember when miners were clogging up the bitcoin network with empty blocks? Inside open notebooks, you find Vanderpoole’s designs for the backdoor that he used sketched out in detail. You were right: It was all a lie, yet one told not by a conniving villain but by a desperate believer in bitcoin whose company could no longer compete. To preserve his legacy, Vanderpoole infected the miners with a virus.
       paragraph_two:
-        'The virus replaces a section of the code used by all miners, regardless if they are part of a pool or not. It is the block building logic, the algorithm that assembles transactions into a block template. The template is still passed on to legitimate hashing code for proof-of-work. Templates are combined with zillions of different nonces while searching for a valid hash, but by the time one is found, the damage–the absence of any transactions in the block template, has been done.',
+        'Virus này thay thế một phần của mã được sử dụng bởi tất cả các thợ đào, bất kể họ có thuộc về một nhóm khai thác hay không. Đó là logic xây dựng khối, thuật toán lắp ráp các giao dịch thành một mẫu khối. Mẫu vẫn được chuyển tiếp đến mã băm hợp pháp để xác minh công việc. Các mẫu được kết hợp với hàng triệu nonce khác nhau trong khi tìm kiếm một hash hợp lệ, nhưng khi tìm thấy một hash, thiệt hại - sự vắng mặt của bất kỳ giao dịch nào trong mẫu khối, đã được thực hiện.', // The virus replaces a section of the code used by all miners, regardless if they are part of a pool or not. It is the block building logic, the algorithm that assembles transactions into a block template. The template is still passed on to legitimate hashing code for proof-of-work. Templates are combined with zillions of different nonces while searching for a valid hash, but by the time one is found, the damage–the absence of any transactions in the block template, has been done.
       paragraph_three:
-        '—HOLOCAT: “What a loss. His family was once great. It’s so sad to see the Vanderpoole’s come to this.”',
+        '—HOLOCAT: “Thật là một tổn thất. Gia đình của ông ấy từng rất vĩ đại. Thật buồn khi thấy gia tộc Vanderpoole rơi vào tình cảnh này.”', // —HOLOCAT: “What a loss. His family was once great. It’s so sad to see the Vanderpoole’s come to this.”
     },
     intro_three: {
-      nav_title: 'Correcting the software',
+      nav_title: 'Sửa chữa phần mềm', // Correcting the software
       paragraph_one:
-        "But you can't just leave the crippled mining code on Vanderpoole's server. It will keep infecting miners. You have to fix it! As you read through the code, Holocat shows you a mempool display that is filling with unconfirmed transactions. The sooner this code gets fixed, the better.",
+        "Nhưng bạn không thể chỉ để mã khai thác bị tàn tật trên máy chủ của Vanderpoole. Nó sẽ tiếp tục lây nhiễm cho các thợ đào. Bạn phải sửa chữa nó! Khi bạn đọc qua mã, Holocat cho bạn xem màn hình hiển thị mempool đang tràn ngập các giao dịch chưa được xác nhận. Càng sớm sửa chữa mã này thì càng tốt.", // But you can't just leave the crippled mining code on Vanderpoole's server. It will keep infecting miners. You have to fix it! As you read through the code, Holocat shows you a mempool display that is filling with unconfirmed transactions. The sooner this code gets fixed, the better.
     },
     mempool_transaction_one: {
-      title: 'Building blocks',
-      nav_title: 'Assemble a block',
-      heading: 'Code Challenge',
+      title: 'Khối xây dựng', // Building blocks
+      nav_title: 'Lắp ráp một khối', // Assemble a block
+      heading: 'Thử thách mã', // Code Challenge
       python: {
         paragraph_one:
-          'This is the code you find on Vanderpoole\'s server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assemble_block()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.',
+          'Đây là mã bạn tìm thấy trên máy chủ của Vanderpoole. Nó nhập mempool hiện tại từ tệp JSON và lưu trữ tất cả các giao dịch chưa được xác nhận trong bộ nhớ dưới dạng các trường hợp của lớp MempoolTransaction. Hàm mà Vanderpoole đã làm hỏng là <span className="text-green">assemble_block()</span>. Nếu bạn chạy mã như cách Vanderpoole đã để lại, bạn sẽ thấy vấn đề ngay lập tức.', // This is the code you find on Vanderpoole's server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assemble_block()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.
       },
       javascript: {
         paragraph_one:
-          'This is the code you find on Vanderpoole\'s server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assembleBlock()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.',
+          'Đây là mã bạn tìm thấy trên máy chủ của Vanderpoole. Nó nhập mempool hiện tại từ tệp JSON và lưu trữ tất cả các giao dịch chưa được xác nhận trong bộ nhớ dưới dạng các trường hợp của lớp MempoolTransaction. Hàm mà Vanderpoole đã làm hỏng là <span className="text-green">assembleBlock()</span>. Nếu bạn chạy mã như cách Vanderpoole đã để lại, bạn sẽ thấy vấn đề ngay lập tức.', // This is the code you find on Vanderpoole's server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assembleBlock()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.
       },
       paragraph_two: {
-        a: 'You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules. The most critical consensus rules you will need to pay attention to restrict the total ',
+        a: 'Bạn cần sửa chữa hàm lắp ráp khối không chỉ để xây dựng các khối hợp lệ mà còn tối đa hóa phí trong khối, để các thợ đào có thể kiếm được nhiều lợi nhuận nhất có thể theo các quy tắc đồng thuận. Các quy tắc đồng thuận quan trọng nhất mà bạn cần chú ý để hạn chế tổng ', // You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules. The most critical consensus rules you will need to pay attention to restrict the total
         b: {
           text: 'transaction weight ',
           href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520weighted%2520units',
@@ -2146,15 +2146,15 @@ privacy: {
         e: ' in the block.',
       },
       paragraph_three:
-        'You can make the following assumptions to complete your mission:',
+        'Bạn có thể đưa ra các giả định sau để hoàn thành nhiệm vụ của mình:', // You can make the following assumptions to complete your mission:
       bullet_one:
-        'All transactions in the mempool have already been verified as valid.',
+        'Tất cả các giao dịch trong mempool đã được xác minh là hợp lệ.', // All transactions in the mempool have already been verified as valid.
       bullet_two:
-        'The coinbase transaction, and the weight it contributes to the block, can be ignored.',
+        'Có thể bỏ qua giao dịch coinbase và trọng lượng của nó đóng góp vào khối.', // The coinbase transaction, and the weight it contributes to the block, can be ignored.
       paragraph_four:
-        'You can view the entire raw mempool JSON file <Link href="https://github.com/saving-satoshi/resources/blob/main/chapter-7/mempool.json" target="_blank" className="underline">here</Link>.',
+        'Bạn có thể xem toàn bộ tệp JSON mempool thô <Link href="https://github.com/saving-satoshi/resources/blob/main/chapter-7/mempool.json" target="_blank" className="underline">ở đây</Link>.', // You can view the entire raw mempool JSON file <Link href="https://github.com/saving-satoshi/resources/blob/main/chapter-7/mempool.json" target="_blank" className="underline">here</Link>.
       paragraph_five:
-        'Or browse an excerpt of the file in this table for some basic patterns:',
+        'Hoặc duyệt một phần tệp trong bảng này để biết một số mẫu cơ bản:', // Or browse an excerpt of the file in this table for some basic patterns:
       headings: {
         item_one: 'Transaction ID',
         item_two: 'Fee',
@@ -2167,57 +2167,57 @@ privacy: {
         footer:
           'View the json file  <Link href="https://github.com/saving-satoshi/resources/blob/main/chapter-7/mempool.json" target="_blank" className="underline">here</Link> for the rest of the transaction data',
       },
-      poor: "It's a valid block, but can you do better? Try to collect more fees.",
-      good: "It's a valid block, but you are not quite getting the most fees yet. Keep working, or continue, your choice.",
-      success: "It's a valid block, and you optimized fees. Nice!",
+      poor: "Đây là một khối hợp lệ, nhưng bạn có thể làm tốt hơn không? Thử thu thập thêm phí.", // Poor: "It's a valid block, but can you do better? Try to collect more fees."
+      good: "Đây là một khối hợp lệ, nhưng bạn chưa thu được nhiều phí nhất. Tiếp tục làm việc hoặc tiếp tục, tùy bạn chọn.", // Good: "It's a valid block, but you are not quite getting the most fees yet. Keep working, or continue, your choice."
+      success: "Đây là một khối hợp lệ và bạn đã tối ưu hóa phí. Tuyệt vời!", // Success: "It's a valid block, and you optimized fees. Nice!"
     },
     outro_one: {
-      title: 'Outro',
-      nav_title: 'Chapter complete',
-      heading: 'You did it!',
+      title: 'Kết luận', // Outro
+      nav_title: 'Hoàn thành chương', // Chapter complete
+      heading: 'Bạn đã làm được!', // You did it!
       paragraph_one:
-        'You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.',
+        'Bạn trốn thoát khỏi khu phức hợp và trở về nhà. Các nhà đầu tư bán cổ phiếu BitRey hàng loạt khi câu chuyện được tiết lộ, khiến giá trị tài sản ròng của Vanderpoole sụt giảm mạnh.', // You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.
     },
     resources: {
       mempool_transaction_one: {
-        bytes_v_weight_heading: 'Bytes vs Weight Units',
+        bytes_v_weight_heading: 'Các đơn vị Byte so với Trọng số', // Bytes vs Weight Units
         bytes_v_weight_paragraph_one:
-          'In bitcoin block construction, "weight units" (WU) and "bytes" are two different metrics used to measure the size of transactions and blocks.',
-        bytes_v_weight_subheading_bytes: 'Bytes',
+          'Trong việc xây dựng khối Bitcoin, "đơn vị trọng số" (WU) và "byte" là hai số liệu khác nhau được sử dụng để đo kích thước của các giao dịch và khối.', // In bitcoin block construction, "weight units" (WU) and "bytes" are two different metrics used to measure the size of transactions and blocks.
+        bytes_v_weight_subheading_bytes: 'Byte', // Bytes
         bytes_v_weight_paragraph_two:
-          'Bytes refer to the raw size of a transaction or block in terms of actual data. It is the literal size of the transaction data when it is serialized (converted into a format that can be stored or transmitted). Before the implementation of Segregated Witness (SegWit), the block size was limited to 1 megabyte (1 MB), measured in bytes.',
-        bytes_v_weight_subheading_wu: 'Weighted Units',
+          'Byte đề cập đến kích thước thô của một giao dịch hoặc khối theo thuật ngữ dữ liệu thực tế. Đó là kích thước theo nghĩa đen của dữ liệu giao dịch khi nó được tuần tự hóa (chuyển đổi thành định dạng có thể lưu trữ hoặc truyền). Trước khi triển khai Segregated Witness (SegWit), kích thước khối được giới hạn ở 1 megabyte (1 MB), được đo bằng byte.', // Bytes refer to the raw size of a transaction or block in terms of actual data. It is the literal size of the transaction data when it is serialized (converted into a format that can be stored or transmitted). Before the implementation of Segregated Witness (SegWit), the block size was limited to 1 megabyte (1 MB), measured in bytes.
+        bytes_v_weight_subheading_wu: 'Đơn vị Trọng số', // Weighted Units
         bytes_v_weight_paragraph_three:
-          'Weighted units are a more complex metric introduced with SegWit in Bitcoin Improvement Proposal 141 <Link href="https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#user-content-Other_consensus_critical_limits" target="_blank" className="undeline">BIP 141</Link>. This system aims to more fairly allocate block space by considering the impact of witness data separately.',
+          'Đơn vị trọng số là một số liệu phức tạp hơn được giới thiệu với SegWit trong Bitcoin Improvement Proposal 141 <Link href="https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#user-content-Other_consensus_critical_limits" target="_blank" className="underline">BIP 141</Link>. Hệ thống này nhằm mục đích phân bổ dung lượng khối công bằng hơn bằng cách xem xét tác động của dữ liệu chứng thực riêng biệt.', // Weighted units are a more complex metric introduced with SegWit in Bitcoin Improvement Proposal 141 <Link href="https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#user-content-Other_consensus_critical_limits" target="_blank" className="undeline">BIP 141</Link>. This system aims to more fairly allocate block space by considering the impact of witness data separately.
         bytes_v_weight_paragraph_four:
-          'In our lesson here its just important to note we are using weight units to calculate the maximum block size and the same for each tx so make sure your block does not exceed the maximum size of 4000000 weight units.',
+          'Trong bài học này, điều quan trọng cần lưu ý là chúng tôi đang sử dụng các đơn vị trọng số để tính toán kích thước khối tối đa và tương tự cho mỗi giao dịch, vì vậy hãy đảm bảo khối của bạn không vượt quá kích thước tối đa là 4.000.000 đơn vị trọng số.', // In our lesson here its just important to note we are using weight units to calculate the maximum block size and the same for each tx so make sure your block does not exceed the maximum size of 4000000 weight units.
       },
     },
   },
 
   chapter_eight: {
-    title: 'Twenty-One Million',
-    paragraph_one: `Thanks to your investigation, people really want to hear from you, so you boop Holocat’s nose, revealing an invitation from Deborah Chunk, who invites you to appear in person at the offices of LARGE BIG NEWS Studios. Getting the story out is important, so you once again hop into your Budgetcopter.`,
+    title: 'Hai mươi mốt triệu', // Twenty-One Million
+    paragraph_one: `Nhờ cuộc điều tra của bạn, mọi người thực sự muốn nghe từ bạn, vì vậy bạn nhấn mũi Holocat, tiết lộ một lời mời từ Deborah Chunk, người mời bạn xuất hiện trực tiếp tại văn phòng của LARGE BIG NEWS Studios. Việc đưa câu chuyện ra ngoài là rất quan trọng, vì vậy bạn một lần nữa nhảy lên Budgetcopter của mình.`, // Thanks to your investigation, people really want to hear from you, so you boop Holocat’s nose, revealing an invitation from Deborah Chunk, who invites you to appear in person at the offices of LARGE BIG NEWS Studios. Getting the story out is important, so you once again hop into your Budgetcopter.
     intro_one: {
-      title: 'Intro',
-      nav_title: `Vanderpoole's Deception`,
-      paragraph_one: `—DEBORAH CHUNK: “These documents expose the alleged lies of Thomas Vanderpoole in a way that is certainly historic, scandalous even. The first thing people will most want to know is whether you acted alone. The second is where you got your information.”`,
-      paragraph_two: `You tell her about Holocat and Holocat only. You say the information was delivered directly to you and Mika 3000 by someone claiming to be Satoshi Nakamoto, who you suspect is actually a hacker collective. This last point causes Thomas Vanderpoole to call directly into the show.`,
+      title: 'Giới thiệu', // Intro
+      nav_title: `Sự lừa dối của Vanderpoole`, // Vanderpoole's Deception
+      paragraph_one: `—DEBORAH CHUNK: “Những tài liệu này đã vạch trần những lời nói dối bị cáo buộc của Thomas Vanderpoole theo một cách chắc chắn mang tính lịch sử, thậm chí là tai tiếng. Điều đầu tiên mà mọi người sẽ muốn biết nhất là liệu bạn có hành động một mình hay không. Câu thứ hai là bạn đã lấy thông tin từ đâu.”`, // —DEBORAH CHUNK: “These documents expose the alleged lies of Thomas Vanderpoole in a way that is certainly historic, scandalous even. The first thing people will most want to know is whether you acted alone. The second is where you got your information.”
+      paragraph_two: `Bạn kể cho cô ấy về Holocat và chỉ có Holocat. Bạn nói rằng thông tin đã được chuyển trực tiếp cho bạn và Mika 3000 bởi một người tự xưng là Satoshi Nakamoto, người mà bạn nghi ngờ thực sự là một tập thể hacker. Điểm cuối cùng này khiến Thomas Vanderpoole gọi trực tiếp vào chương trình.`, // You tell her about Holocat and only Holocat. You say that the information was delivered directly to you and Mika 3000 by someone claiming to be Satoshi Nakamoto, who you suspect is actually a hacker collective. This last point causes Thomas Vanderpoole to call directly into the show.
     },
     intro_two: {
-      title: `Intro`,
-      nav_title: ` Vanderpoole's Anger`,
-      paragraph_one: `—THOMAS VANDERPOOLE: “My family is Satoshi Nakamoto! Do you see what this hootenanny just said? He just admitted to working with hackers, a collective that only uses the name Satoshi Nakamoto to claim a legacy that is rightfully mine. This scoundrel is lying to undermine the protests of bitcoiners who are rightfully upset about the elimination of block rewards!”`,
-      paragraph_two: `Vanderpoole continues to hurl two century-old insults at you. He calls you a varmint, a rapscallion, a yellow belly, a greenhorn, and more. You almost feel bad for him. His family was undeniably important to bitcoin’s history, even if his claims about Satoshi Nakamoto are transparently fake.`,
+      title: 'Giới thiệu', // Intro
+      nav_title: `Sự tức giận của Vanderpoole`, // Vanderpoole's Anger
+      paragraph_one: `—THOMAS VANDERPOOLE: “Gia đình tôi là Satoshi Nakamoto! Bạn có thấy những gì tên lừa đảo này vừa nói không? Anh ta vừa thừa nhận đã làm việc với những hacker, một tập thể chỉ sử dụng tên Satoshi Nakamoto để đòi hỏi một di sản vốn thuộc về gia đình tôi. Kẻ lưu manh này đang nói dối để phá hoại các cuộc biểu tình của những người ủng hộ Bitcoin đang vô cùng tức giận về việc loại bỏ phần thưởng khối!”`, // —THOMAS VANDERPOOLE: “My family is Satoshi Nakamoto! Do you see what this hootenanny just said? He just admitted to working with hackers, a collective that only uses the name Satoshi Nakamoto to claim a legacy that is rightfully mine. This scoundrel is lying to undermine the protests of bitcoiners who are rightfully upset about the elimination of block rewards!”
+      paragraph_two: `Vanderpoole tiếp tục ném vào bạn những lời lăng mạ có từ hai thế kỷ trước. Anh ta gọi bạn là một kẻ lừa đảo, một tên lừa đảo, một kẻ nhát gan, một kẻ ngớ ngẩn và nhiều hơn nữa. Bạn gần như cảm thấy tội nghiệp cho anh ta. Gia đình của anh ta chắc chắn quan trọng đối với lịch sử của Bitcoin, ngay cả khi những tuyên bố của anh ta về Satoshi Nakamoto là giả mạo một cách rõ ràng.`, // Vanderpoole continues to hurl two century-old insults at you. He calls you a varmint, a rapscallion, a yellow belly, a greenhorn, and more. You almost feel bad for him. His family was undeniably important to bitcoin’s history, even if his claims about Satoshi Nakamoto are transparently fake.
     },
     intro_three: {
-      intro: `Intro`,
-      nav_title: `Allegations Against Vanderpoole`,
-      paragraph_one: `—DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Can you prove that you played no part in alleged tampering? Mysterious hacker and his holocat, can you prove Vanderpoole attempted this crime against bitcoin?”`,
+      intro: `Giới thiệu`, // Intro
+      nav_title: `Những cáo buộc chống lại Vanderpoole`, // Allegations Against Vanderpoole
+      paragraph_one: `—DEBORAH CHUNK: “Ông Vanderpoole, nếu tôi có thể. Mọi người đang bối rối và không chắc chắn liệu nguồn cung Bitcoin có bị can thiệp hay không. Ông có thể chứng minh rằng mình không đóng bất kỳ vai trò nào trong việc can thiệp bị cáo buộc không? Hacker bí ẩn và con mèo hoang của anh ta, bạn có thể chứng minh Vanderpoole đã cố gắng thực hiện tội ác này chống lại Bitcoin không?”`, // —DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Can you prove that you played no part in alleged tampering? Mysterious hacker and his holocat, can you prove Vanderpoole attempted this crime against bitcoin?”
     },
     building_blocks_one: {
-      title: 'Building blocks',
-      nav_title: 'Finding the chain tip',
+      title: 'Khối xây dựng', // Building blocks
+      nav_title: 'Tìm đầu chuỗi', // Finding the chain tip
       paragraph_one: {
         a: 'You know that Vanderpoole has been trying to confuse people by mining blocks that generate more bitcoin than they are allowed to, ultimately inflating the money supply. These blocks are invalid because they break hard-coded protocol rules, but they might still fool some people running buggy or malicious software, or ',
         b: {
@@ -2227,221 +2227,221 @@ privacy: {
         },
         c: ' that do not fully verify network data.',
       },
-      paragraph_two: `You also know that somewhere on the network is a chain of valid blocks from the genesis block to today's "chain tip", where every transaction and block follows the rules. This chain is the only <span className="italic">real</span> chain, the only chain that matters, and the only chain where bitcoin's supply of 21 million original bitcoins is intact.`,
+      paragraph_two: `Bạn cũng biết rằng ở đâu đó trên mạng là một chuỗi các khối hợp lệ từ khối khởi tạo đến "đầu chuỗi" ngày hôm nay, trong đó mọi giao dịch và khối đều tuân theo các quy tắc. Chuỗi này là chuỗi <span className="italic">thực sự</span> duy nhất, chuỗi duy nhất quan trọng và là chuỗi duy nhất mà nguồn cung 21 triệu Bitcoin gốc của Bitcoin vẫn còn nguyên vẹn.`, // You also know that somewhere on the network is a chain of valid blocks from the genesis block to today's "chain tip", where every transaction and block follows the rules. This chain is the only <span className="italic">real</span> chain, the only chain that matters, and the only chain where bitcoin's supply of 21 million original bitcoins is intact.
       paragraph_three:
-        "Now, on live TV in front of the entire world, you need to find the longest valid blockchain and verify the coin supply's integrity. While you're at it, you'll also be able to prove that Vanderpoole has turned the bitcoin network into an invalid block minefield.",
+        "Bây giờ, trên sóng truyền hình trực tiếp trước toàn thế giới, bạn cần tìm blockchain hợp lệ dài nhất và xác minh tính toàn vẹn của nguồn cung tiền xu. Trong khi bạn đang ở đó, bạn cũng sẽ có thể chứng minh rằng Vanderpoole đã biến mạng lưới Bitcoin thành một bãi mìn khối không hợp lệ.", // Now, on live TV in front of the entire world, you need to find the longest valid blockchain and verify the coin supply's integrity. While you're at it, you'll also be able to prove that Vanderpoole has turned the bitcoin network into an invalid block minefield.
     },
     building_blocks_two: {
-      title: 'Building blocks',
-      nav_title: 'A bitcoin block tree',
+      title: 'Khối xây dựng', // Building blocks
+      nav_title: 'Cây khối Bitcoin', // A bitcoin block tree
       paragraph_one:
-        "Every block has exactly one preceding block, but could have more than one next block. Because of this, bitcoin blocks form more of a tree than a chain. Some of the branches are dead-ends and, as you must prove, some of the branches are invalid because of Vanderpoole's shenanigans.",
+        "Mỗi khối chỉ có chính xác một khối trước đó, nhưng có thể có nhiều hơn một khối tiếp theo. Vì lý do này, các khối Bitcoin tạo thành nhiều hơn một chuỗi. Một số nhánh là điểm chết và, như bạn phải chứng minh, một số nhánh không hợp lệ do những trò hề của Vanderpoole.", // Every block has exactly one preceding block, but could have more than one next block. Because of this, bitcoin blocks form more of a tree than a chain. Some of the branches are dead-ends and, as you must prove, some of the branches are invalid because of Vanderpoole’s shenanigans.
       paragraph_two:
-        "Somewhere in this maze is a path from the genesis block to today's most recent block. You have to find it and tell Deborah Chunk which block is on the tip of the tree's most valid chain... before the next commercial break. Ahhh!",
+        "Ở đâu đó trong mê cung này là một con đường từ khối khởi tạo đến khối gần đây nhất của ngày hôm nay. Bạn phải tìm thấy nó và nói cho Deborah Chunk khối nào nằm ở đầu của chuỗi hợp lệ nhất ... trước giờ nghỉ thương mại. Á!", // Somewhere in this maze is a path from the genesis block to today's most recent block. You have to find it and tell Deborah Chunk which block is on the tip of the tree's most valid chain... before the next commercial break. Ahhh!
       paragraph_three:
-        'This artistic interpretation of bitcoin’s blockchain “tree” shows how every block has exactly one parent, but could have more than one child. Each block is labeled with its hash, and the hash of its parent (<span className="p-1 font-mono m-0.5 text-sm">prev</span>).',
+        'Hình minh họa nghệ thuật này về "cây" blockchain của Bitcoin cho thấy cách mỗi khối chỉ có một cha mẹ duy nhất, nhưng có thể có nhiều hơn một con. Mỗi khối được gắn nhãn bằng hash của nó và hash của cha mẹ của nó (<span className="p-1 font-mono m-0.5 text-sm">prev</span>).', // This artistic interpretation of bitcoin’s blockchain “tree” shows how each block has exactly one parent, but could have more than one child. Each block is labeled with its hash, and the hash of its parent (<span className="p-1 font-mono m-0.5 text-sm">prev</span>).
       paragraph_four:
-        'Some of these blocks are red because they are invalid. The longest path of blocks starting from the genesis block is colored green and represents the “most work” or “most valid” chain. Transactions in these blocks are the only truly “confirmed” transactions. Other valid blocks, the blue ones, don’t have as many descendants as the “most work” chain. They terminate in what are called <span className="italic">stale tips</span>.',
+        'Một số khối này có màu đỏ vì chúng không hợp lệ. Đường dẫn dài nhất của các khối bắt đầu từ khối khởi tạo được tô màu xanh lục và đại diện cho chuỗi "công việc nhiều nhất" hoặc "hợp lệ nhất". Các giao dịch trong các khối này là các giao dịch duy nhất thực sự "được xác nhận". Các khối hợp lệ khác, màu xanh lam, không có nhiều hậu duệ như chuỗi "công việc nhiều nhất". Chúng kết thúc bằng những gì được gọi là <span className="italic">mẹo cũ</span>.', // Some of these blocks are red because they are invalid. The longest path of blocks starting from the genesis block is colored green and represents the “most work” or “most valid” chain. Transactions in these blocks are the only truly “confirmed” transactions. Other valid blocks, the blue ones, don’t have as many descendants as the “most work” chain. They terminate in what are called <span className="italic">stale tips</span>.
     },
     building_blocks_three: {
-      title: 'Building Blocks',
-      nav_title: `Explore the Bitcoin API`,
-      heading: 'The Bitcoin API',
-      paragraph_one: `To answer these questions, you'll need to interact with a bitcoin full node, via its JSON-RPC API. We've imported a library for you called <span className="p-1 font-mono bg-[#0000004D] m-1">bitcoin_rpc</span> which handles the secure HTTP connection from your script to the full node, executes your commands, and returns the responses. Your full node is \"pruning\" so it only has access to the last 300 blocks, but that should be enough to include the entire timespan of Vanderpoole's recent muckery.`,
-      paragraph_two: `Let's start by getting familiar with the API. The library has one function that accepts one required argument, <span className="p-1 font-mono bg-[#0000004D] m-1">method</span> (a string) and one optional argument, <span className="p-1 font-mono bg-[#0000004D] m-1">params</span> (either a string or a number):`,
+      title: 'Khối xây dựng', // Building Blocks
+      nav_title: `Khám phá API Bitcoin`, // Explore the Bitcoin API
+      heading: 'API Bitcoin', // The Bitcoin API
+      paragraph_one: `Để trả lời những câu hỏi này, bạn sẽ cần tương tác với một nút đầy đủ Bitcoin, thông qua API JSON-RPC của nó. Chúng tôi đã nhập một thư viện cho bạn có tên là <span className="p-1 font-mono bg-[#0000004D] m-1">bitcoin_rpc</span> xử lý kết nối HTTP an toàn từ script của bạn đến nút đầy đủ, thực thi các lệnh của bạn và trả về phản hồi. Nút đầy đủ của bạn đang "cắt tỉa" nên nó chỉ có quyền truy cập vào 300 khối cuối cùng, nhưng điều đó có thể đủ để bao gồm toàn bộ khoảng thời gian lộn xộn gần đây của Vanderpoole.`, // To answer these questions, you'll need to interact with a bitcoin full node, via its JSON-RPC API. We've imported a library for you called <span className="p-1 font-mono bg-[#0000004D] m-1">bitcoin_rpc</span> which handles the secure HTTP connection from your script to the full node, executes your commands, and returns the responses. Your full node is "pruning" so it only has access to the last 300 blocks, but that should be enough to include the entire timespan of Vanderpoole's recent muckery.
+      paragraph_two: `Hãy bắt đầu bằng cách làm quen với API. Thư viện có một hàm chấp nhận một đối số bắt buộc, <span className="p-1 font-mono bg-[#0000004D] m-1">method</span> (một chuỗi) và một đối số tùy chọn, <span className="p-1 font-mono bg-[#0000004D] m-1">params</span> (một chuỗi hoặc một số):`, // Let's start by getting familiar with the API. The library has one function that accepts one required argument, <span className="p-1 font-mono bg-[#0000004D] m-1">method</span> (a string) and one optional argument, <span className="p-1 font-mono bg-[#0000004D] m-1">params</span> (either a string or a number):
       paragraph_three:
-        'The API also has a convenient "help" method! Ask it for help to learn more about the available commands, then pass the challenge by printing the current network difficulty.',
-      success: "Nice work exploring the API! Let's move on.",
+        'API cũng có một phương thức "help" thuận tiện! Yêu cầu trợ giúp để tìm hiểu thêm về các lệnh có sẵn, sau đó chuyển qua thử thách bằng cách in độ khó hiện tại của mạng.', // The API also has a convenient "help" method! Ask it for help to learn more about the available commands, then pass the challenge by printing the current network difficulty.
+      success: "Làm tốt khi khám phá API! Chúng ta hãy tiếp tục.", // Nice work exploring the API! Let's move on.
     },
     building_blocks_four: {
-      title: 'Building Blocks',
-      nav_title: `Find the Smallest Transaction Block`,
-      heading: `Block Data`,
-      paragraph_one: `Each bitcoin full node has a database. That's where blocks are stored and indexed by their hash. The full node keeps track of which blocks are candidates at each height in the chain with a second index that maps height -> [block hashes].`,
-      paragraph_two: `The JSON-RPC API returns block data as JSON objects that include a property<span className="p-1 font-mono bg-[#0000004D] m-1">txs</span>which is an array of transaction objects.`,
-      paragraph_three: `Retrieve all the block candidates at height 6929996 and print the hash of the block with the fewest transactions in it.`,
-      success: `Nicely Done`,
+      title: 'Khối xây dựng', // Building Blocks
+      nav_title: `Tìm khối giao dịch nhỏ nhất`, // Find the Smallest Transaction Block
+      heading: 'Dữ liệu khối', // Block Data
+      paragraph_one: `Mỗi nút đầy đủ Bitcoin đều có một cơ sở dữ liệu. Đó là nơi lưu trữ và lập chỉ mục các khối theo băm của chúng. Nút đầy đủ theo dõi các khối nào là ứng viên ở mỗi độ cao trong chuỗi với một chỉ mục thứ hai ánh xạ chiều cao -> [băm khối].`, // Each bitcoin full node has a database. That's where blocks are stored and indexed by their hash. The full node keeps track of which blocks are candidates at each height in the chain with a second index that maps height -> [block hashes].
+      paragraph_two: `API JSON-RPC trả về dữ liệu khối dưới dạng các đối tượng JSON bao gồm một thuộc tính <span className="p-1 font-mono bg-[#0000004D] m-1">txs</span> là một mảng các đối tượng giao dịch.`, // The JSON-RPC API returns block data as JSON objects that include a property <span className="p-1 font-mono bg-[#0000004D] m-1">txs</span> which is an array of transaction objects.
+      paragraph_three: `Truy xuất tất cả các ứng viên khối ở độ cao 6929996 và in băm của khối có ít giao dịch nhất trong số đó.`, // Retrieve all the block candidates at height 6929996 and print the hash of the block with the fewest transactions in it.
+      success: `Làm tốt`, // Nicely Done
     },
     building_blocks_five: {
-      title: 'Building Blocks',
-      nav_title: `Get the Transaction Fee`,
-      heading: `Transaction Data`,
-      paragraph_one: `The transaction objects confirmed in a block are JSON objects that include arrays of "inputs" and "outputs". Both of these arrays are lists of UTXOs, also known as "coins". Coin objects have a "value" property represented in satoshis.`,
-      paragraph_two: `The "inputs" array is the coins spent (destroyed) by the transaction and the "outputs" array is the coins created by the transaction. You may recall from Chapter 6 that transactions always pay a fee to incentivize miners to include them in a block. That fee is exactly the difference in value between the total input and total output values of a transaction.`,
-      paragraph_three: `In other words, the miner gets to keep whatever bitcoin that was sent in to the transaction but not sent back out to the transaction recipients.`,
-      paragraph_four: `There is a transaction with the txid:`,
-      paragraph_five: `in a block with the hash:`,
-      paragraph_six: `Print that transaction's fee in satoshis.`,
-      success: `Nicely Done`,
+      title: 'Khối xây dựng', // Building Blocks
+      nav_title: `Lấy phí giao dịch`, // Get the Transaction Fee
+      heading: 'Dữ liệu giao dịch', // Transaction Data
+      paragraph_one: `Các đối tượng giao dịch được xác nhận trong một khối là các đối tượng JSON bao gồm các mảng "đầu vào" và "đầu ra". Cả hai mảng này đều là danh sách UTXO, còn được gọi là "đồng xu". Đối tượng đồng xu có thuộc tính "giá trị" được biểu thị bằng satoshi.`, // The transaction objects confirmed in a block are JSON objects that include arrays of "inputs" and "outputs". Both of these arrays are lists of UTXOs, also known as "coins". Coin objects have a "value" property represented in satoshis.
+      paragraph_two: `Mảng "đầu vào" là các đồng xu được chi tiêu (bị phá hủy) bởi giao dịch và mảng "đầu ra" là các đồng xu được tạo ra bởi giao dịch. Bạn có thể nhớ lại từ Chương 6 rằng các giao dịch luôn trả một khoản phí để khuyến khích các thợ đào đưa chúng vào một khối. Khoản phí đó chính xác là sự khác biệt về giá trị giữa tổng giá trị đầu vào và tổng giá trị đầu ra của một giao dịch.`, // The "inputs" array is the coins spent (destroyed) by the transaction and the "outputs" array is the coins created by the transaction. You may recall from Chapter 6 that transactions always pay a fee to incentivize miners to include them in a block. That fee is exactly the difference in value between the total input and total output values of a transaction.
+      paragraph_three: `Nói cách khác, thợ đào được giữ bất kỳ Bitcoin nào đã được gửi vào giao dịch nhưng không được gửi lại cho người nhận giao dịch.`, // In other words, the miner gets to keep whatever bitcoin that was sent in to the transaction but not sent back out to the transaction recipients.
+      paragraph_four: `Có một giao dịch với txid:`, // There is a transaction with the txid:
+      paragraph_five: `trong một khối có băm:`, // in a block with the hash:
+      paragraph_six: `In phí của giao dịch đó theo đơn vị satoshi.`, // Print that transaction's fee in satoshis.
+      success: `Làm tốt`, // Nicely Done
     },
     building_blocks_six: {
-      title: 'Building Blocks',
-      nav_title: 'Determine the subsidy',
-      heading: 'The Coinbase Transaction',
+      title: 'Khối xây dựng', // Building Blocks
+      nav_title: 'Xác định khoản trợ cấp', // Determine the subsidy
+      heading: 'Giao dịch Coinbase', // The Coinbase Transaction
       paragraph_one:
-        'The first transaction in every block is called the coinbase. It may also be referred to as the "0th" transaction (referring to txs[0]) and it has a few very special properties. First of all, it has no inputs! This is because it does not spend any existing coins. Second, its output value is strictly defined by the protocol (despite what Vanderpoole might say!). This is the mechanism by which miners both collect fees from transactions, and generate new coins.',
+        'Giao dịch đầu tiên trong mỗi khối được gọi là coinbase. Nó cũng có thể được gọi là giao dịch "0" (tham chiếu đến txs[0]) và nó có một số thuộc tính rất đặc biệt. Đầu tiên, nó không có đầu vào! Điều này là do nó không chi tiêu bất kỳ đồng xu nào hiện có. Thứ hai, giá trị đầu ra của nó được xác định nghiêm ngặt bởi giao thức (bất kể Vanderpoole có thể nói gì!). Đây là cơ chế mà các thợ đào vừa thu thập phí từ các giao dịch, vừa tạo ra các đồng xu mới.', // The first transaction in every block is called the coinbase. It may also be referred to as the "0th" transaction (referring to txs[0]) and it has a few very special properties. First of all, it has no inputs! This is because it does not spend any existing coins. Second, its output value is strictly defined by the protocol (despite what Vanderpoole might say!). This is the mechanism by which miners both collect fees from transactions, and generate new coins.
       paragraph_two:
-        "It's fairly easy to understand how total transaction fees in a block are summed up, but where does that block subsidy value come from? How does every participant in the bitcoin network determine exactly how much new bitcoin miners are allowed to generate at any given time?",
+        "Khá dễ hiểu cách tính tổng phí giao dịch trong một khối, nhưng giá trị trợ cấp khối đó đến từ đâu? Làm thế nào để mọi người tham gia vào mạng Bitcoin xác định chính xác số lượng Bitcoin mới mà các thợ đào được phép tạo ra tại bất kỳ thời điểm nào?", // It's fairly easy to understand how total transaction fees in a block are summed up, but where does that block subsidy value come from? How does every participant in the bitcoin network determine exactly how much new bitcoin miners are allowed to generate at any given time?
       paragraph_three:
-        'This is the algorithm written by Satoshi Nakamoto that has remained an immutable core property of the bitcoin system since the beginning:',
+        'Đây là thuật toán do Satoshi Nakamoto viết, vẫn là một thuộc tính cốt lõi bất biến của hệ thống Bitcoin kể từ khi bắt đầu:', // This is the algorithm written by Satoshi Nakamoto that has remained an immutable core property of the bitcoin system since the beginning:
       list_one:
-        'Starting with the block #1 mined in 2009, the block subsidy is 50 BTC (or 5,000,000,000 satoshis)',
-      list_two: 'Every 210,000 blocks that value is cut in half.',
+        'Bắt đầu với khối #1 được khai thác vào năm 2009, trợ cấp khối là 50 BTC (hoặc 5.000.000.000 satoshi)', // Starting with the block #1 mined in 2009, the block subsidy is 50 BTC (or 5,000,000,000 satoshis)
+      list_two: 'Cứ sau 210.000 khối, giá trị đó giảm một nửa.', // Every 210,000 blocks that value is cut in half.
       paragraph_four:
-        'At block height 209,999 the subsidy was 50 BTC. In the very next block at height 210,000 the subsidy was 25 BTC, and so on. After 63 "halvings" the subsidy will be one single satoshi. The last halving will drop the subsidy to zero.',
-      paragraph_five: 'AND THAT LAST HALVING WAS YESTERDAY!',
+        'Ở độ cao khối 209.999, trợ cấp là 50 BTC. Trong khối tiếp theo ngay lập tức ở độ cao 210.000, trợ cấp là 25 BTC, v.v. Sau 63 lần "giảm một nửa", trợ cấp sẽ chỉ còn một satoshi duy nhất. Việc giảm một nửa cuối cùng sẽ giảm trợ cấp xuống còn không.', // At block height 209,999 the subsidy was 50 BTC. In the very next block at height 210,000 the subsidy was 25 BTC, and so on. After 63 "halvings" the subsidy will be one single satoshi. The last halving will drop the subsidy to zero.
+      paragraph_five: 'VÀ VIỆC GIẢM MỘT NỬA CUỐI CÙNG ĐÃ XẢY RA HÔM QUA!', // AND THAT LAST HALVING WAS YESTERDAY!
       paragraph_six:
-        'Finish the implementation of the following function that accepts a block height as an argument and returns the value of the subsidy in satoshis.',
-      success: 'The get_subsidy function looks great. Nice work!',
+        'Hoàn thành việc triển khai hàm sau, chấp nhận độ cao khối làm đối số và trả về giá trị của trợ cấp theo đơn vị satoshi.', // Finish the implementation of the following function that accepts a block height as an argument and returns the value of the subsidy in satoshis.
+      success: 'Hàm get_subsidy trông ổn. Làm tốt!', // The get_subsidy function looks great. Nice work!
     },
     building_blocks_seven: {
-      title: 'Building Blocks',
-      nav_title: 'Get the Valid Block',
-      heading: 'That Pernicious Scallywag!',
-      paragraph_one: `There are four block candidates at height 6929851. Only one of them is a valid block, the other three were mined by Vanderpoole's cartel in reckless attempts to inflate the bitcoin money supply.`,
-      paragraph_two: `Using the block subsidy function you wrote in the previous challenge and the JSON-RPC API, write a function to check the validity of a block candidate. Do this by checking if the coinbase output is correct. Your function should return true if the block is valid.`,
-      paragraph_three: `Here's how your code will be used to find the one valid block at height 6929851:`,
-      success: 'The validate block function looks great. Nice work!',
+      title: 'Khối xây dựng', // Building Blocks
+      nav_title: `Tìm khối hợp lệ`, // Get the Valid Block
+      heading: 'Kẻ lừa đảo độc ác!', // That Pernicious Scallywag!
+      paragraph_one: `Có bốn ứng viên khối ở độ cao 6929851. Chỉ có một trong số chúng là một khối hợp lệ, ba khối còn lại đã được khai thác bởi băng nhóm của Vanderpoole trong những nỗ lực liều lĩnh để thổi phồng nguồn cung tiền Bitcoin.`, // There are four block candidates at height 6929851. Only one of them is a valid block, the other three were mined by Vanderpoole's cartel in reckless attempts to inflate the bitcoin money supply.
+      paragraph_two: `Sử dụng hàm trợ cấp khối mà bạn đã viết trong thử thách trước và API JSON-RPC, hãy viết một hàm để kiểm tra tính hợp lệ của một ứng viên khối. Làm điều này bằng cách kiểm tra xem đầu ra coinbase có chính xác không. Hàm của bạn sẽ trả về true nếu khối hợp lệ.`, // Using the block subsidy function you wrote in the previous challenge and the JSON-RPC API, write a function to check the validity of a block candidate. Do this by checking if the coinbase output is correct. Your function should return true if the block is valid.
+      paragraph_three: `Đây là cách mã của bạn sẽ được sử dụng để tìm khối hợp lệ duy nhất ở độ cao 6929851:`, // Here's how your code will be used to find the one valid block at height 6929851:
+      success: 'Hàm khối xác thực trông ổn. Làm tốt!', // The validate block function looks great. Nice work!
     },
 
     building_blocks_eight: {
-      title: 'Building Blocks',
-      nav_title: 'Showtime!',
-      heading_one: 'Showtime!',
-      paragraph_one: `The cameras are rolling, two billion humans worldwide are tuned in to the live stream. Only a few minutes remain until the next commercial break. Deborah Chunk is sweating. Somehow, Holocat is also sweating. Somewhere on the other end of the call, Vanderpoole must be sweating, too. This is your moment.`,
-      paragraph_two: `Starting with the valid block just before the one you found at height 6929851, find the longest chain of valid blocks you can. Store the chain as an array of block hashes. While you're at it, maintain an array of every invalid block you find as well, just to show the world how hard Vanderpoole tried to break bitcoin. It doesn't matter what order these invalid block hashes are in, but your valid chain MUST start with the hash of block 6929850 followed by one block hash at each height all the way up to the chain tip.`,
-      paragraph_three: `Vanderpoole is sneaky! He mined valid blocks on top of invalid blocks, and invalid blocks on top of short chains of valid blocks! It's a maze, a minefield, out there. You may need to keep track of several valid branches as you traverse the tree. There will be valid blocks with valid parents that are not in the longest chain! In the end, there will be only one valid leaf with a greater height than all the others.`,
-      paragraph_four: `Remember: Block objects returned by the JSON API have a property "prev" which identifies that block's parent by its hash:`,
-      heading_two: `A block is ONLY valid if:`,
-      paragraph_five: `Its coinbase output value is equal to the expected block subsidy plus the total transaction fees in the block.`,
-      heading_three: `AND`,
-      paragraph_six: `The block is a child of another VALID block. This is ensures a VALID CHAIN.`,
-      paragraph_seven: `Return a JSON object with two arrays labeled "valid" and "invalid":`,
-      success: 'The showtime function looks great. Nice work!',
+      title: 'Khối xây dựng', // Building Blocks
+      nav_title: 'Giờ diễn!', // Showtime!
+      heading_one: 'Giờ diễn!', // Showtime!
+      paragraph_one: `Các camera đang quay, hai tỷ người trên toàn thế giới đang theo dõi trực tiếp. Chỉ còn vài phút nữa là đến giờ nghỉ thương mại. Deborah Chunk đang đổ mồ hôi. Bằng cách nào đó, Holocat cũng đang đổ mồ hôi. Ở đâu đó bên kia cuộc gọi, Vanderpoole chắc hẳn cũng đang đổ mồ hôi. Đây là khoảnh khắc của bạn.`, // The cameras are rolling, two billion humans worldwide are tuned in to the live stream. Only a few minutes remain until the next commercial break. Deborah Chunk is sweating. Somehow, Holocat is also sweating. Somewhere on the other end of the call, Vanderpoole must be sweating, too. This is your moment.
+      paragraph_two: `Bắt đầu từ khối hợp lệ ngay trước khối mà bạn đã tìm thấy ở độ cao 6929851, tìm chuỗi khối hợp lệ dài nhất có thể. Lưu trữ chuỗi dưới dạng một mảng các băm khối. Trong khi bạn đang ở đó, hãy duy trì một mảng của mọi khối không hợp lệ mà bạn tìm thấy, chỉ để cho thế giới thấy Vanderpoole đã cố gắng phá vỡ Bitcoin như thế nào. Thứ tự của các băm khối không hợp lệ này không quan trọng, nhưng chuỗi hợp lệ của bạn PHẢI bắt đầu bằng băm của khối 6929850 theo sau là một băm khối ở mỗi độ cao cho đến đầu chuỗi.`, // Starting with the valid block just before the one you found at height 6929851, find the longest chain of valid blocks you can. Store the chain as an array of block hashes. While you're at it, maintain an array of every invalid block you find as well, just to show the world how hard Vanderpoole tried to break bitcoin. It doesn't matter what order these invalid block hashes are in, but your valid chain MUST start with the hash of block 6929850 followed by one block hash at each height all the way up to the chain tip.
+      paragraph_three: `Vanderpoole rất xảo quyệt! Anh ta đã khai thác các khối hợp lệ trên các khối không hợp lệ và các khối không hợp lệ trên các chuỗi ngắn các khối hợp lệ! Đó là một mê cung, một bãi mìn, ở ngoài đó. Bạn có thể cần theo dõi một số nhánh hợp lệ khi bạn duyệt qua cây. Sẽ có các khối hợp lệ với các khối cha mẹ hợp lệ không nằm trong chuỗi dài nhất! Cuối cùng, sẽ chỉ có một lá hợp lệ với độ cao lớn hơn tất cả các lá khác.`, // Vanderpoole is sneaky! He mined valid blocks on top of invalid blocks, and invalid blocks on top of short chains of valid blocks! It's a maze, a minefield, out there. You may need to keep track of several valid branches as you traverse the tree. There will be valid blocks with valid parents that are not in the longest chain! In the end, there will be only one valid leaf with a greater height than all the others.
+      paragraph_four: `Hãy nhớ rằng: Các đối tượng khối được trả về bởi API JSON có một thuộc tính "prev" xác định cha mẹ của khối đó bằng băm của nó:`, // Remember: Block objects returned by the JSON API have a property "prev" which identifies that block's parent by its hash:
+      heading_two: `Một khối CHỈ hợp lệ nếu:`, // A block is ONLY valid if:
+      paragraph_five: `Giá trị đầu ra coinbase của nó bằng với trợ cấp khối dự kiến ​​cộng với tổng phí giao dịch trong khối.`, // Its coinbase output value is equal to the expected block subsidy plus the total transaction fees in the block.
+      heading_three: `VÀ`, // AND
+      paragraph_six: `Khối là con của một khối HỢP LỆ khác. Điều này đảm bảo một CHUỖI HỢP LỆ.`, // The block is a child of another VALID block. This ensures a VALID CHAIN.
+      paragraph_seven: `Trả về một đối tượng JSON với hai mảng được gắn nhãn "hợp lệ" và "không hợp lệ":`, // Return a JSON object with two arrays labeled "valid" and "invalid":
+      success: 'Hàm thời gian biểu trông ổn. Làm tốt!', // The showtime function looks great. Nice work!
     },
     outro_one: {
-      title: 'Outro',
-      nav_title: 'Chapter complete',
-      heading: "We're doing it live!",
+      title: 'Kết luận', // Outro
+      nav_title: 'Hoàn thành chương', // Chapter complete
+      heading: 'Chúng ta đang làm trực tiếp!', // We're doing it live!
       paragraph_one:
-        "You found the longest chain and proved it to everyone! The list of invalid blocks you found is impressively long. Vanderpoole went to great lengths to try to get people to accept his blocks containing subsidies, but he couldn’t do anything to change the rules of bitcoin. As we observed, just because a block is part of a chain, it does not necessarily mean that it is valid. Now, you are one step closer to discrediting Vanderpoole. Needless to say, he didn't answer the remainder of Ms. Chunk's questions.",
+        "Bạn đã tìm thấy chuỗi dài nhất và chứng minh điều đó cho mọi người thấy! Danh sách các khối không hợp lệ mà bạn tìm thấy rất ấn tượng. Vanderpoole đã rất nỗ lực để khiến mọi người chấp nhận các khối của anh ta chứa trợ cấp, nhưng anh ta không thể làm gì để thay đổi các quy tắc của Bitcoin. Như chúng ta đã quan sát thấy, chỉ vì một khối là một phần của một chuỗi, điều đó không nhất thiết có nghĩa là nó hợp lệ. Bây giờ, bạn đã tiến gần hơn một bước để bôi nhọ danh dự của Vanderpoole. Không cần phải nói, anh ta đã không trả lời phần còn lại của câu hỏi của bà Chunk.", // You found the longest chain and proved it to everyone! The list of invalid blocks you found is impressively long. Vanderpoole went to great lengths to try to get people to accept his blocks containing subsidies, but he couldn't do anything to change the rules of bitcoin. As we observed, just because a block is part of a chain, it does not necessarily mean that it is valid. Now, you are one step closer to discrediting Vanderpoole. Needless to say, he didn't answer the remainder of Ms. Chunk's questions.
     },
     resources: {
       building_blocks_three: {
-        tip: 'Try this command first to give you an idea of what commands are available.',
-        rpc_heading: 'RPC commands',
+        tip: 'Hãy thử lệnh này trước để có ý tưởng về các lệnh khả dụng.', // Try this command first to give you an idea of what commands are available.
+        rpc_heading: 'Lệnh RPC', // RPC commands
         rpc_paragraph_one:
-          'RPC commands are an interface of commands that allow a client to make requests to a program creating an interaction between the client and the server. These requests are sent from the client or requester along with any parameters that the client needs to modify their request.',
+          'Lệnh RPC là một giao diện các lệnh cho phép một client thực hiện các yêu cầu tới một chương trình tạo ra tương tác giữa client và máy chủ. Những yêu cầu này được gửi từ phía client hoặc người yêu cầu cùng với bất kỳ tham số nào mà client cần để sửa đổi yêu cầu của mình.', // RPC commands are an interface of commands that allow a client to make requests to a program creating an interaction between the client and the server. These requests are sent from the client or requester along with any parameters that the client needs to modify their request.
       },
       building_blocks_four: {
-        block_data_heading: 'Block data',
+        block_data_heading: 'Dữ liệu khối', // Block data
         block_data_paragraph_one:
-          'At its core bitcoin is a ledger, a list, of all the transactions ever sent since its inception. Each transaction is organized by block and each block is organized in order from the genesis block.',
+          'Ở cốt lõi của nó, Bitcoin là một sổ cái, một danh sách, của tất cả các giao dịch từng được gửi kể từ khi bắt đầu. Mỗi giao dịch được sắp xếp theo khối và mỗi khối được sắp xếp theo thứ tự từ khối khởi tạo.', // At its core bitcoin is a ledger, a list, of all the transactions ever sent since its inception. Each transaction is organized by block and each block is organized in order from the genesis block.
       },
       building_blocks_five: {
-        transaction_data_heading: 'Transaction data',
+        transaction_data_heading: 'Dữ liệu giao dịch', // Transaction data
         transaction_data_paragraph_one:
-          'Each transaction contains its own subset of information to distinguish itself from other transactions and to make it clear how much bitcoin is transferred and what inputs and outputs are being used.',
+          'Mỗi giao dịch chứa một tập hợp con thông tin riêng để phân biệt nó với các giao dịch khác và để làm rõ số lượng Bitcoin được chuyển và đầu vào và đầu ra nào đang được sử dụng.', // Each transaction contains its own subset of information to distinguish itself from other transactions and to make it clear how much bitcoin is transferred and what inputs and outputs are being used.
       },
       building_blocks_six: {
-        block_subsidy_heading: 'Block subsidy',
+        block_subsidy_heading: 'Trợ cấp khối', // Block subsidy
         block_subsidy_paragraph_one:
-          'The block subsidy is the amount of bitcoin released into circulation from the coinbase of each new block. As there are only ~21 million total bitcoins able to be created there must be some diminishing euqation to allow for a coinbase subisdy that reaches the 21 million amount. The equation below visualizes what exists in bitcoin.',
+          'Trợ cấp khối là số lượng Bitcoin được phát hành vào lưu thông từ coinbase của mỗi khối mới. Vì chỉ có khoảng 21 triệu Bitcoin có thể được tạo ra nên phải có một phương trình giảm dần để cho phép trợ cấp coinbase đạt đến số lượng 21 triệu. Phương trình dưới đây trực quan hóa những gì tồn tại trong Bitcoin.', // The block subsidy is the amount of bitcoin released into circulation from the coinbase of each new block. As there are only ~21 million total bitcoins able to be created there must be some diminishing euqation to allow for a coinbase subisdy that reaches the 21 million amount. The equation below visualizes what exists in bitcoin.
         block_subsidy_paragraph_two:
-          'What does this equation do? Well we know that the coinbase reward of the genesis block was 50 bitcoin and this is indicated with the numerator of the fraction on the right side of the equation. The denominator is the part of our equation that indicates by how much the reward will be decreased each halving, in this case 2, or by half. We also know that bitcoin is only aware of individual blocks as a chronological system so we make each halving 210,000 blocks long. Lastly we want to make each halving double each time so we want to double the amount the subsidy is halved by each halving so we raise 2 to the power of the current halving `i` to the final halving epoch 32 iterations in the future.',
+          'Phương trình này hoạt động như thế nào? Chúng ta biết rằng phần thưởng coinbase của khối khởi tạo là 50 Bitcoin và điều này được biểu thị bằng tử số của phân số ở phía bên phải của phương trình. Mẫu số là phần của phương trình của chúng tôi chỉ ra mức giảm thưởng sẽ giảm bao nhiêu trong mỗi lần giảm một nửa, trong trường hợp này là 2 hoặc bằng một nửa. Chúng ta cũng biết rằng Bitcoin chỉ nhận thức được các khối riêng lẻ như một hệ thống thời gian nên chúng ta tạo ra mỗi lần giảm một nửa là 210.000 khối. Cuối cùng, chúng tôi muốn mỗi lần giảm một nửa sẽ tăng gấp đôi mỗi lần, vì vậy chúng tôi muốn nhân đôi số lần giảm một nửa của trợ cấp trong mỗi lần giảm một nửa, vì vậy chúng tôi nâng 2 lên lũy thừa của lần giảm một nửa hiện tại `i` lên thời đại giảm một nửa cuối cùng 32 lần trong tương lai.', // What does this equation do? Well we know that the coinbase reward of the genesis block was 50 bitcoin and this indicated with the numerator of the fraction on the right side of the equation. The denominator is the part of our equation that indicates by how much the reward will be decreased each halving, in this case 2, or by half. We also know that bitcoin is only aware of individual blocks as a chronological system so we make each halving 210,000 blocks long. Lastly we want to make each halving double each time so we want to double the amount the subsidy is halved by each halving so we raise 2 to the power of the current halving `i` to the final halving epoch 32 iterations in the future.
       },
       building_blocks_seven: {
-        validating_heading: 'Validating blocks',
+        validating_heading: 'Xác thực khối', // Validating blocks
         validating_paragraph_one:
-          'Validating a block is incredibly important to the strength of the network as each block is built on transactions of previous blocks, if any block is discovered to be invalid in the past it can cause huge ramifications as a large chain of blocks comes into question with a previously invlaid block.',
+          'Xác thực một khối vô cùng quan trọng đối với sức mạnh của mạng lưới vì mỗi khối được xây dựng trên các giao dịch của các khối trước đó, nếu bất kỳ khối nào bị phát hiện là không hợp lệ trong quá khứ, nó có thể gây ra hậu quả nghiêm trọng khi một chuỗi lớn các khối bị đặt câu hỏi với một khối trước đó không hợp lệ.', // Validating a block is incredibly important to the strength of the network as each block is built on transactions of previous blocks, if any block is discovered to be invalid in the past it can cause huge ramifications as a large chain of blocks comes into question with a previously invlaid block.
       },
       building_blocks_eight: {
-        showtime_heading: 'Validating the chain',
+        showtime_heading: 'Xác thực chuỗi', // Validating the chain
         showtime_paragraph_one:
-          'Validating the blockchain in Bitcoin is crucial for maintaining the integrity and security of the entire network. Each transaction must be verified by miners to ensure that it is legitimate and follows the consensus rules established by the network. This validation process prevents double-spending and fraud, allowing users to trust the system without needing a central authority. Moreover, it enhances transparency, as all validated transactions are recorded on a public ledger, enabling anyone to audit the history of transactions.',
+          'Xác thực blockchain trong Bitcoin rất quan trọng để duy trì tính toàn vẹn và bảo mật của toàn bộ mạng lưới. Mỗi giao dịch phải được xác thực bởi các thợ đào để đảm bảo rằng giao dịch đó hợp pháp và tuân theo các quy tắc đồng thuận do mạng lưới thiết lập. Quy trình xác thực này ngăn chặn việc chi tiêu gấp đôi và gian lận, cho phép người dùng tin tưởng vào hệ thống mà không cần đến cơ quan quản lý trung tâm. Hơn nữa, nó tăng cường tính minh bạch, vì tất cả các giao dịch được xác thực đều được ghi lại trên một sổ cái công khai, cho phép bất kỳ ai cũng kiểm toán lịch sử giao dịch.', // Validating the blockchain in Bitcoin is crucial for maintaining the integrity and security of the entire network. Each transaction must be verified by miners to ensure that it is legitimate and follows the consensus rules established by the network. This validation process prevents double-spending and fraud, allowing users to trust the system without needing a central authority. Moreover, it enhances transparency, as all validated transactions are recorded on a public ledger, enabling anyone to audit the history of transactions.
       },
     },
   },
 
   chapter_nine: {
-    title: `Don't trust, verify.`,
-    paragraph_one: `Just in time, you proved to the world that Vanderpoole has been attempting to confuse the bitcoin network with invalid blocks. As a commercial break airs, the studio’s television crew prepares for the next segment.`,
+    title: `Đừng tin tưởng, hãy xác minh.`, // Don't trust, verify.
+    paragraph_one: `Vừa đúng lúc, bạn đã chứng minh cho cả thế giới thấy rằng Vanderpoole đã cố gắng làm rối loạn mạng lưới Bitcoin bằng các khối không hợp lệ. Khi một đoạn quảng cáo phát sóng, tổ quay phim của studio chuẩn bị cho phân đoạn tiếp theo.`, // Just in time, you proved to the world that Vanderpoole has been attempting to confuse the bitcoin network with invalid blocks. As a commercial break airs, the studio’s television crew prepares for the next segment.
     intro_one: {
-      title: 'Intro',
-      nav_title: 'Threats',
+      title: 'Giới thiệu', // Intro
+      nav_title: 'Mối đe dọa', // Threats
       paragraph_one:
-        'Everyone is celebrating; everyone is smiling. But there is one man on set who isn’t happy: a tall, well-dressed, gray-haired man who you recognize immediately. The crowd parts, and you see him face to face for the first time: Vanderpoole!',
+        'Mọi người đang ăn mừng; tất cả mọi người đều đang cười. Nhưng có một người đàn ông trên trường quay không vui: một người đàn ông cao lớn, ăn mặc lịch sự, tóc hoa râm mà bạn nhận ra ngay lập tức. Đám đông tách ra và bạn nhìn thấy anh ta mặt đối mặt lần đầu tiên: Vanderpoole!', // Everyone is celebrating; everyone is smiling. But there is one man on set who isn’t happy: a tall, well-dressed, gray-haired man who you recognize immediately. The crowd parts, and you see him face to face for the first time: Vanderpoole!
       paragraph_two:
-        'His fists are clenched. You have ruined his business and exposed his family’s long con. The first thing out of his mouth is a threat to sue you every day for the rest of your life "times infinity".',
+        'Hai tay anh ta nắm chặt. Bạn đã phá hủy công việc kinh doanh của anh ta và vạch trần trò lừa đảo lâu đời của gia đình anh ta. Điều đầu tiên anh ta thốt ra là lời đe dọa sẽ kiện bạn mỗi ngày trong suốt quãng đời còn lại của bạn "nhân vô cực".', // His fists are clenched. You have ruined his business and exposed his family’s long con. The first thing out of his mouth is a threat to sue you every day for the rest of your life "times infinity".
     },
     intro_two: {
-      title: 'Intro',
-      nav_title: 'Coming to terms',
+      title: 'Giới thiệu', // Intro
+      nav_title: 'Đón nhận', // Coming to terms
       paragraph_one:
-        'As Vanderpoole rants, a producer walks in and tells you that viewers from around the world want to support your cause by donating bitcoin and calzones to you for... some reason! Deborah asks you to provide their viewership with a wallet address.',
+        'Khi Vanderpoole đang phát biểu, một nhà sản xuất bước vào và nói với bạn rằng người xem từ khắp nơi trên thế giới muốn ủng hộ sự nghiệp của bạn bằng cách quyên góp bitcoin và calzone cho bạn ... vì một số lý do! Deborah yêu cầu bạn cung cấp cho người xem của họ địa chỉ ví của bạn.', // As Vanderpoole rants, a producer walks in and tells you that viewers from around the world want to support your cause by donating bitcoin and calzones to you for... some reason! Deborah asks you to provide their viewership with a wallet address.
       paragraph_two:
-        'This makes Vanderpoole even more furious. He demands that you split the incoming donations with him, or he’ll drown you in even more lawsuits, as if there can be more than infinity lawsuits.',
+        'Điều này khiến Vanderpoole càng tức giận hơn. Anh ta yêu cầu bạn chia sẻ các khoản quyên góp với anh ta, nếu không anh ta sẽ kiện bạn nhiều hơn nữa, như thể có thể có nhiều hơn vô hạn vụ kiện.', // This makes Vanderpoole even more furious. He demands that you split the incoming donations with him, or he’ll drown you in even more lawsuits, as if there can be more than infinity lawsuits.
       paragraph_three:
-        'Sharing donations with Vanderpoole doesn’t make much sense. The money is coming from people that want to thank you for exposing Vanderpoole’s efforts to undermine bitcoin. It dawns on you that this demand is more about him losing than wanting money. For a moment, you even start to feel bad for him. He’s backed himself into a corner with no way out.',
+        'Việc chia sẻ khoản quyên góp với Vanderpoole không có nhiều ý nghĩa. Tiền đang đến từ những người muốn cảm ơn bạn vì đã vạch trần những nỗ lực phá hoại Bitcoin của Vanderpoole. Bạn chợt nhận ra rằng yêu cầu này của anh ta xuất phát từ việc anh ta thua cuộc hơn là muốn có tiền. Đôi lúc, bạn thậm chí còn bắt đầu cảm thấy tội nghiệp cho anh ta. Anh ta đã tự đưa mình vào chân tường mà không có lối thoát.', // Sharing donations with Vanderpoole doesn’t make much sense. The money is coming from people that want to thank you for exposing Vanderpoole’s efforts to undermine bitcoin. It dawns on you that this demand is more about him losing than wanting money. For a moment, you even start to feel bad for him. He’s backed himself into a corner with no way out.
       paragraph_four:
-        'As if she could read your mind, Deborah Chunk steps in. She asks if there is a charity Vanderpoole would like to see a portion of the donations go to. To your surprise, he enthusiastically names the Lil Bits Foundation, a non-profit dedicated to helping children.',
+        'Như thể đọc được suy nghĩ của bạn, Deborah Chunk xen vào. Cô ấy hỏi liệu có tổ chức từ thiện nào mà Vanderpoole muốn một phần tiền quyên góp được chuyển đến không. Đến ngạc nhiên của bạn, anh ta nhiệt tình đặt tên cho Quỹ Lil Bits, một tổ chức phi lợi nhuận dành cho trẻ em.', // As if she could read your mind, Deborah Chunk steps in. She asks if there is a charity Vanderpoole would like to see a portion of the donations go to. To your surprise, he enthusiastically names the Lil Bits Foundation, a non-profit dedicated to helping children.
       paragraph_five:
-        'Vanderpoole’s complexion calms from radish red to beet purple. You start creating a bitcoin script contract between you and Vanderpoole. He is responsible for getting the funds to the Lil Bits Foundation. This script contract is what you will use to derive the donation address. It will treat Vanderpoole as an untrustable counterparty and ensure you both can spend from it how and when you agree.',
+        'Khuôn mặt của Vanderpoole dịu lại từ màu đỏ củ cải xuống màu tím củ dền. Bạn bắt đầu tạo một hợp đồng script Bitcoin giữa bạn và Vanderpoole. Anh ta chịu trách nhiệm chuyển tiền cho Quỹ Lil Bits. Hợp đồng script này là những gì bạn sẽ sử dụng để tạo địa chỉ quyên góp. Nó sẽ coi Vanderpoole như một đối tác không đáng tin cậy và đảm bảo cả hai bạn đều có thể chi tiêu từ đó theo cách và thời điểm bạn đồng ý.', // Vanderpoole’s complexion calms from radish red to beet purple. You start creating a bitcoin script contract between you and Vanderpoole. He is responsible for getting the funds to the Lil Bits Foundation. This script contract is what you will use to derive the donation address. It will treat Vanderpoole as an untrustable counterparty and ensure you both can spend from it how and when you agree.
     },
     opcodes_one: {
-      title: 'OpCodes',
-      nav_title: 'Bitcoin script',
-      heading: 'Bitcoin script',
+      title: 'OpCodes', // OpCodes
+      nav_title: 'Script Bitcoin', // Bitcoin script
+      heading: 'Script Bitcoin', // Bitcoin script
       paragraph_one:
-        "We mentioned bitcoin script back in chapter 6 but we didn't dwell on it because the coins you were spending were locked by a simple mechanism: a single signature and an implied script that evaluated that signature with a public key. Now things are going to get more interesting.",
+        "Chúng tôi đã đề cập đến script Bitcoin trong chương 6 nhưng chúng tôi không đề cập đến nó vì các đồng xu mà bạn đã chi tiêu đã bị khóa bằng một cơ chế đơn giản: một chữ ký duy nhất và một script ngầm định đã đánh giá chữ ký đó với một khóa công khai. Bây giờ mọi thứ sẽ trở nên thú vị hơn.", // We mentioned bitcoin script back in chapter 6 but we didn't dwell on it because the coins you were spending were locked by a simple mechanism: a single signature and an implied script that evaluated that signature with a public key. Now things are going to get more interesting.
       paragraph_two:
-        'There are two important parts to spending a bitcoin output: A script and a stack.',
-      paragraph_three: "We'll explore the two concepts at a high level first.",
+        'Có hai phần quan trọng để chi tiêu một đầu ra Bitcoin: Một script và một ngăn xếp.', // There are two important parts to spending a bitcoin output: A script and a stack.
+      paragraph_three: "Chúng ta sẽ khám phá hai khái niệm ở cấp độ cao trước.", // We'll explore the two concepts at a high level first.
     },
     opcodes_two: {
-      title: 'OpCodes',
-      nav_title: 'Bitcoin stack',
-      heading: 'The stack',
+      title: 'OpCodes', // OpCodes
+      nav_title: 'Ngăn xếp Bitcoin', // Bitcoin stack
+      heading: 'Ngăn xếp', // The stack
       paragraph_one:
-        "Think of a stack of books 📚. If you want to add a book, you have to place it on top of the stack. There's nowhere else for it to go. If you want to read a book, the only one you can access is the one on top of the stack. Even if you want more than one you have start at the top of the stack and work your way down. In computing terms, a stack is like an array of data items with two operations:",
+        "Hãy nghĩ về một chồng sách 📚. Nếu bạn muốn thêm một cuốn sách, bạn phải đặt nó lên trên cùng của chồng sách. Không có nơi nào khác cho nó đi. Nếu bạn muốn đọc một cuốn sách, cuốn sách duy nhất bạn có thể truy cập là cuốn sách nằm trên cùng của chồng sách. Ngay cả khi bạn muốn nhiều hơn một cuốn sách, bạn cũng phải bắt đầu từ đầu chồng sách và làm việc theo cách của bạn xuống. Theo thuật ngữ máy tính, một ngăn xếp giống như một mảng các mục dữ liệu với hai thao tác:", // Think of a stack of books 📚. If you want to add a book, you have to place it on top of the stack. There's nowhere else for it to go. If you want to read a book, the only one you can access is the one on top of the stack. Even if you want more than one you have start at the top of the stack and work your way down. In computing terms, a stack is like an array of data items with two operations:
       paragraph_two:
-        '<span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_PUSH</span> Add an item to the "top" of the stack.',
+        '<span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_PUSH</span> Thêm một mục vào "đầu" của ngăn xếp.', // <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_PUSH</span> Add an item to the "top" of the stack.
       paragraph_three:
-        '<span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_POP</span> Remove the "top" item from the stack for processing.',
-      subheading_one: 'Example:',
+        '<span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_POP</span> Xóa mục "đầu" khỏi ngăn xếp để xử lý.', // <span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_POP</span> Remove the "top" item from the stack for processing.
+      subheading_one: 'Ví dụ:', // Example:
       stack_list_one:
-        'Here is a stack: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[]</span>',
+        'Đây là một ngăn xếp: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[]</span>', // Here is a stack: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[]</span>
       stack_list_two:
-        'Push the number 1: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1]</span>',
+        'Đẩy số 1: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1]</span>', // Push the number 1: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1]</span>
       stack_list_three:
-        'Push the number 2: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1, 2]</span>',
+        'Đẩy số 2: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1, 2]</span>', // Push the number 2: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1, 2]</span>
       stack_list_four:
-        'Pop the top item off the stack: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1]</span>',
+        'Bỏ mục trên cùng khỏi ngăn xếp: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1]</span>', // Pop the top item off the stack: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">[1]</span>
       paragraph_four:
-        'Notice that the first item pushed on to the stack will be the last item popped off the stack, so it will be the last item processed by the script. For this reason the stack has an "upside down" or "backwards" feel to it, and the first thing you see on the stack will likely be the solution required at the end of script processing.',
+        'Lưu ý rằng mục đầu tiên được đẩy vào ngăn xếp sẽ là mục cuối cùng được bật ra khỏi ngăn xếp, do đó nó sẽ là mục cuối cùng được xử lý bởi script. Vì lý do này, ngăn xếp có cảm giác "lộn ngược" hoặc "lùi lại" và điều đầu tiên bạn nhìn thấy trên ngăn xếp có thể là giải pháp được yêu cầu vào cuối quá trình xử lý script.', // Notice that the first item pushed on to the stack will be the last item popped off the stack, so it will be the last item processed by the script. For this reason the stack has an "upside down" or "backwards" feel to it, and the first thing you see on the stack will likely be the solution required at the end of script processing.
       paragraph_five:
-        "When spending a bitcoin transaction output, the elements required by the spender are provided in the witness section of the spending transaction's input (see chapter 6) and those elements get pushed on to the stack before any script processing begins. We will refer to those items as the INITIAL STACK. They are important because they are literally the data that unlocks a script and allows coins to be spent!",
+        "Khi chi tiêu một đầu ra giao dịch Bitcoin, các yếu tố được yêu cầu bởi người chi tiêu được cung cấp trong phần chứng thực của đầu vào giao dịch chi tiêu (xem chương 6) và các yếu tố đó được đẩy vào ngăn xếp trước khi bất kỳ quá trình xử lý script nào bắt đầu. Chúng tôi sẽ gọi các mục đó là NGĂN XẾP BAN ĐẦU. Chúng rất quan trọng bởi vì chúng chính là dữ liệu mở khóa một script và cho phép chi tiêu tiền xu!", // When spending a bitcoin transaction output, the elements required by the spender are provided in the witness section of the spending transaction's input (see chapter 6) and those elements get pushed on to the stack before any script processing begins. We will refer to those items as the INITIAL STACK. They are important because they are literally the data that unlocks a script and allows coins to be spent!
     },
     opcodes_three: {
-      title: 'OpCodes',
-      nav_title: 'OpCodes',
-      heading: 'OpCodes',
+      title: 'OpCodes', // OpCodes
+      nav_title: 'OpCodes', // OpCodes
+      heading: 'OpCodes', // OpCodes
       paragraph_one:
-        'Script is a linear series of commands that are executed one by one, manipulating items on the stack. When the end of the script is reached, there must be EXACTLY ONE NON-ZERO (NON-FALSE) ITEM remaining on the stack, or the entire operation is invalid and so is your bitcoin transaction. There are over 100 commands in the bitcoin script language, called "opcodes". We are only going to use a handful of them for this challenge.  ',
+        'Script là một chuỗi tuyến tính các lệnh được thực thi từng cái một, thao tác các mục trên ngăn xếp. Khi kết thúc script, PHẢI CHỈ CÒN ĐÚNG MỘT MỤC KHÔNG KHÔNG (KHÔNG SAI) còn lại trên ngăn xếp, nếu không toàn bộ thao tác sẽ không hợp lệ và giao dịch Bitcoin của bạn cũng vậy. Có hơn 100 lệnh trong ngôn ngữ script Bitcoin, được gọi là "opcode". Chúng ta chỉ sử dụng một số ít trong số chúng cho thử thách này.  ', // Script is a linear series of commands that are executed one by one, manipulating items on the stack. When the end of the script is reached, there must be EXACTLY ONE NON-ZERO (NON-FALSE) ITEM remaining on the stack, or the entire operation is invalid and so is your bitcoin transaction. There are over 100 commands in the bitcoin script language, called "opcodes". We are only going to use a handful of them for this challenge.  
       paragraph_two:
-        "Let's demonstrate an example where we lock up a bitcoin with the math problem 1 + 2 = ? Whoever knows the answer to this math problem can spend the coins.",
-      paragraph_three: 'The script would look like this:',
+        "Hãy minh họa một ví dụ trong đó chúng tôi khóa một Bitcoin với bài toán toán học 1 + 2 = ?. Bất cứ ai biết câu trả lời cho bài toán toán học này đều có thể chi tiêu các đồng xu.", // Let's demonstrate an example where we lock up a bitcoin with the math problem 1 + 2 = ?. Whoever knows the answer to this math problem can spend the coins.
+      paragraph_three: 'Script sẽ trông như thế này:', // The script would look like this:
       paragraph_four:
-        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1 OP_2 OP_ADD OP_EQUAL</span>',
+        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1 OP_2 OP_ADD OP_EQUAL</span>', // <span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1 OP_2 OP_ADD OP_EQUAL</span>
       paragraph_five:
-        'This is script will be hashed and bech32-encoded into an address where someone can send coins.',
+        'Script này sẽ được băm và được mã hóa bech32 thành một địa chỉ mà ai đó có thể gửi tiền đến.', // This script will be hashed and bech32-encoded into an address where someone can send coins.
     },
     opcodes_four: {
-      title: 'OpCodes',
-      nav_title: 'The stack solution',
-      heading: 'The stack solution',
+      title: 'OpCodes', // OpCodes
+      nav_title: 'Giải pháp ngăn xếp', // The stack solution
+      heading: 'Giải pháp ngăn xếp', // The stack solution
       paragraph_one:
-        "The stack solution would look like this and the spending transaction needs to contain all these elements. They go in the witness section of the input that is trying to spend these coins. Let's step through it:",
+        "Giải pháp ngăn xếp sẽ trông như thế này và giao dịch chi tiêu cần chứa tất cả các yếu tố này. Chúng đi vào phần chứng thực của đầu vào đang cố gắng chi tiêu những đồng xu này. Hãy cùng bước qua nó:", // The stack solution would look like this and the spending transaction needs to contain all these elements. They go in the witness section of the input that is trying to spend these coins. Let's step through it:
       table_one: {
         headings: {
           item_one: 'Step',
@@ -2449,271 +2449,274 @@ privacy: {
           item_three: 'Script Execution',
         },
       },
-      subheading_one: 'Explanation',
+      subheading_one: 'Giải thích', // Explanation
       stack_list_one:
-        'init: the funding transaction output and spending transaction input are brought together.',
+        'khởi tạo: đầu ra giao dịch tài trợ và đầu vào giao dịch chi tiêu được đưa lại với nhau.', // init: the funding transaction output and spending transaction input are brought together.
       stack_list_two:
-        'step 1: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1</span>pushes "1" onto the stack.',
+        'bước 1: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1</span> đẩy "1" vào ngăn xếp.', // step 1: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1</span>pushes "1" onto the stack.
       stack_list_three:
-        'step 2: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_2</span>pushes "2" onto the stack.',
+        'bước 2: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_2</span> đẩy "2" vào ngăn xếp.', // step 2: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_2</span>pushes "2" onto the stack.
       stack_list_four:
-        'step 3: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ADD</span>pops two items off the stack, adds them together, and pushes the sum back to the stack.',
+        'bước 3: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ADD</span> bật hai mục khỏi ngăn xếp, cộng chúng lại với nhau và đẩy tổng trở lại ngăn xếp.', // step 3: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ADD</span>pops two items off the stack, adds them together, and pushes the sum back to the stack.
       stack_list_five:
-        'step 4: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_EQUAL</span>pops two items off the stack, compares them, and pushes a boolean result back to the stack.',
+        'bước 4: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_EQUAL</span> bật hai mục khỏi ngăn xếp, so sánh chúng và đẩy kết quả boolean trở lại ngăn xếp.', // step 4: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_EQUAL</span>pops two items off the stack, compares them, and pushes a boolean result back to the stack.
       paragraph_two:
-        'Now we have reached the end of the script and there is only a single TRUE item left on the stack - the coins are spent!',
+        'Bây giờ chúng ta đã đến cuối script và chỉ còn một mục ĐÚNG duy nhất còn lại trên ngăn xếp - các đồng xu đã được chi tiêu!', // Now we have reached the end of the script and there is only a single TRUE item left on the stack - the coins are spent!
       paragraph_three:
-        'If we started this example with a 4 on the stack, we would not be able to spend the coins because the OP_EQUAL would evaluate to FALSE. For these challenges we are going to use a very limited set of opcodes, which we will introduce by category.',
+        'Nếu chúng ta bắt đầu ví dụ này với số 4 trên ngăn xếp, chúng ta sẽ không thể chi tiêu các đồng xu vì OP_EQUAL sẽ đánh giá là FALSE. Đối với những thử thách này, chúng tôi sẽ sử dụng một tập hợp rất hạn chế các opcode, mà chúng tôi sẽ giới thiệu theo từng danh mục.', // If we started this example with a 4 on the stack, we would not be able to spend the coins because the OP_EQUAL would evaluate to FALSE. For these challenges we are going to use a very limited set of opcodes, which we will introduce by category.
     },
     opcodes_five: {
-      title: 'OpCodes',
-      nav_title: 'Compute basic arithmetic',
-      heading: 'Basic Arithmetic',
+      title: 'OpCodes', // OpCodes
+      nav_title: 'Tính toán số học cơ bản', // Compute basic arithmetic
+      heading: 'Số học cơ bản', // Basic Arithmetic
       paragraph_one:
-        'Bitcoin script can do simple math operations. You could lock coins using simple math but then anyone who can do math could spend the coins! In other words, do not try this on mainnet.',
+        'Script Bitcoin có thể thực hiện các phép toán số học đơn giản. Bạn có thể khóa các đồng xu bằng cách sử dụng toán học đơn giản nhưng sau đó bất kỳ ai cũng có thể thực hiện toán học và chi tiêu các đồng xu! Nói cách khác, đừng thử điều này trên mainnet.', // Bitcoin script can do simple math operations. You could lock coins using simple math but then anyone who can do math could spend the coins! In other words, do not try this on mainnet.
       subheading_one:
-        'Opcodes that push integers or arbitrary data to the stack',
+        'Các opcode đẩy số nguyên hoặc dữ liệu tùy ý vào ngăn xếp', // Opcodes that push integers or arbitrary data to the stack
       opconstants_list_one_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_0</span>',
-      opconstants_list_one_paragraph: 'Pushes the number 0 on to the stack.',
+      opconstants_list_one_paragraph: 'Đẩy số 0 vào ngăn xếp.', // Pushes the number 0 on to the stack.
       opconstants_list_two_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1</span>',
-      opconstants_list_two_paragraph: 'Pushes the number 1 on to the stack.',
+      opconstants_list_two_paragraph: 'Đẩy số 1 vào ngăn xếp.', // Pushes the number 1 on to the stack.
       opconstants_list_three_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_2</span>',
-      opconstants_list_three_paragraph: 'Pushes the number 2 on to the stack.',
+      opconstants_list_three_paragraph: 'Đẩy số 2 vào ngăn xếp.', // Pushes the number 2 on to the stack.
       opconstants_list_four_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_3</span>',
-      opconstants_list_four_paragraph: 'Pushes the number 3 on to the stack.',
+      opconstants_list_four_paragraph: 'Đẩy số 3 vào ngăn xếp.', // Pushes the number 3 on to the stack.
       opconstants_list_five_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DUP</span>',
       opconstants_list_five_paragraph:
-        'Pushes a duplicate of the top stack item on to the stack.',
+        'Đẩy một bản sao của mục trên cùng của ngăn xếp vào ngăn xếp.', // Pushes a duplicate of the top stack item on to the stack.
       opconstants_list_six_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_PUSH</span>',
       opconstants_list_six_paragraph:
-        'Pushes the following script value on to the stack. Example values include SIG(alice), PUBKEY(alice), HASH256(secret), secret. Lowercase strings represent real-world data and the other opcodes in this interpreter will process them as if they are actual keys, signatures, hash digests and preimages.',
-      subheading_two: 'Opcodes that do arithmetic',
+        'Đẩy giá trị script sau vào ngăn xếp. Ví dụ về giá trị bao gồm SIG(alice), PUBKEY(alice), HASH256(secret), secret. Chuỗi chữ thường đại diện cho dữ liệu thực tế và các opcode khác trong trình thông dịch này sẽ xử lý chúng như thể chúng là các khóa, chữ ký, tóm tắt băm và hình ảnh tiền thân thực tế.', // Pushes the following script value on to the stack. Example values include SIG(alice), PUBKEY(alice), HASH256(secret), secret. Lowercase strings represent real-world data and the other opcodes in this interpreter will process them as if they are actual keys, signatures, hash digests and preimages.
+      subheading_two: 'Các opcode thực hiện số học', // Opcodes that do arithmetic
       oparithmetic_list_one_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ADD</span>',
       oparithmetic_list_one_paragraph:
-        'Pops two items off the stack, adds them together, pushes their sum back to the stack.',
+        'Bỏ hai mục khỏi ngăn xếp, cộng chúng lại với nhau, đẩy tổng của chúng trở lại ngăn xếp.', // Pops two items off the stack, adds them together, pushes their sum back to the stack.
       oparithmetic_list_two_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_EQUAL</span>',
       oparithmetic_list_two_paragraph:
-        'Pops two items off the stack, compares their equality, pushes a boolean back to the stack.',
+        'Bỏ hai mục khỏi ngăn xếp, so sánh sự bằng nhau của chúng, đẩy một giá trị boolean trở lại ngăn xếp.', // Pops two items off the stack, compares their equality, pushes a boolean back to the stack.
       oparithmetic_list_three_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_EQUALVERIFY</span>',
       oparithmetic_list_three_paragraph:
-        'Like OP_EQUAL but throws an error and halts script execution immediately if the two items are not equal.',
-      paragraph_two: 'Provide the initial stack to spend from the script.',
+        'Giống như OP_EQUAL nhưng ném ra lỗi và dừng ngay lập tức việc thực thi script nếu hai mục không bằng nhau.', // Like OP_EQUAL but throws an error and halts script execution immediately if the two items are not equal.
+      paragraph_two: 'Cung cấp ngăn xếp ban đầu để chi tiêu từ script.', // Provide the initial stack to spend from the script.
     },
     opcodes_six: {
-      title: 'OpCodes',
-      nav_title: 'Decode with cryptography',
-      heading: 'Simple Cryptography',
+      title: 'OpCodes', // OpCodes
+      nav_title: 'Giải mã bằng mật mã học', // Decode with cryptography
+      heading: 'Mật mã học đơn giản', // Simple Cryptography
       paragraph_one:
-        'We\'ve explored "pay to public key hash" in previous chapters. This is the bitcoin script that was written explicitly in millions of transaction outputs before segregated witness came along and abbreviated it. Coins are locked by the hash of a public key. The spender must reveal the public key that matches that hash, and then provide a signature verified by that public key.',
-      subheading_one: 'Opcodes that do simple cryptography',
+        'Chúng tôi đã khám phá "thanh toán cho băm khóa công khai" trong các chương trước. Đây là script Bitcoin được viết rõ ràng trong hàng triệu đầu ra giao dịch trước khi chứng kiến ​​tách biệt xuất hiện và rút gọn nó. Đồng xu bị khóa bởi băm của một khóa công khai. Người chi tiêu phải tiết lộ khóa công khai khớp với băm đó và sau đó cung cấp chữ ký được xác minh bởi khóa công khai đó.', // We've explored "pay to public key hash" in previous chapters. This is the bitcoin script that was written explicitly in millions of transaction outputs before segregated witness came along and abbreviated it. Coins are locked by the hash of a public key. The spender must reveal the public key that matches that hash, and then provide a signature verified by that public key.
+      subheading_one: 'Các opcode thực hiện mật mã học đơn giản', // Opcodes that do simple cryptography
       opcryptography_list_one_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm h-fit">OP_HASH256</span>',
       opcryptography_list_one_paragraph:
-        'Pops one item off the stack, computes the double-SHA256 digest and pushes that digest back to the stack. In our exercise this operation is symbolized using strings. Example: The script OP_1 OP_HASH256 produces the stack [HASH256(1)]',
+        'Bỏ một mục khỏi ngăn xếp, tính toán tóm tắt băm kép-SHA256 và đẩy tóm tắt băm đó trở lại ngăn xếp. Trong bài tập của chúng tôi, thao tác này được biểu thị bằng cách sử dụng chuỗi. Ví dụ: Script OP_1 OP_HASH256 tạo ra ngăn xếp [HASH256(1)]', // Pops one item off the stack, computes the double-SHA256 digest and pushes that digest back to the stack. In our exercise this operation is symbolized using strings. Example: The script OP_1 OP_HASH256 produces the stack [HASH256(1)]
       opcryptography_list_two_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm h-fit">OP_CHECKSIG</span>',
       opcryptography_list_two_paragraph:
-        'Pops two items off the stack. The first item it pops must be a public key in the format PUBKEY(...). The second item must be a signature in the format SIG(...). If the strings inside the parentheses in both items are equal we consider that a valid ECDSA signature and push TRUE back to the stack, otherwise FALSE',
-      paragraph_two: 'Provide the initial stack to spend from the script.',
+        'Bỏ hai mục khỏi ngăn xếp. Mục đầu tiên nó bật ra phải là một khóa công khai ở định dạng PUBKEY (...). Mục thứ hai phải là một chữ ký ở định dạng SIG (...). Nếu các chuỗi bên trong dấu ngoặc đơn trong cả hai mục đều bằng nhau, chúng tôi coi đó là một chữ ký ECDSA hợp lệ và đẩy TRUE trở lại ngăn xếp, nếu không thì FALSE', // Pops two items off the stack. The first item it pops must be a public key in the format PUBKEY(...). The second item must be a signature in the format SIG(...). If the strings inside the parentheses in both items are equal we consider that a valid ECDSA signature and push TRUE back to the stack, otherwise FALSE
+      paragraph_two: 'Cung cấp ngăn xếp ban đầu để chi tiêu từ script.', // Provide the initial stack to spend from the script.
     },
     opcodes_seven: {
-      title: 'OpCodes',
-      nav_title: 'Multisig',
-      heading: 'Multisig',
+      title: 'OpCodes', // OpCodes
+      nav_title: 'Multisig', // Multisig
+      heading: 'Multisig', // Multisig
       paragraph_one:
-        'Multisignature policies provide a list of public keys and a number of signatures required for a valid spend. It can be described as "m-of-n" meaning "m number of signatures are required from this list of n public keys". The public keys and the m and n values are typically included in the locking script and the spender only needs to provide the right number of signatures.',
+        'Chính sách chữ ký đa phương cung cấp một danh sách các khóa công khai và số lượng chữ ký bắt buộc đối với một chi tiêu hợp lệ. Nó có thể được mô tả là "m-trong-n" có nghĩa là "m số lượng chữ ký được yêu cầu từ danh sách n khóa công khai này". Các khóa công khai và các giá trị m và n thường được bao gồm trong script khóa và người chi tiêu chỉ cần cung cấp đúng số lượng chữ ký.', // Multisignature policies provide a list of public keys and a number of signatures required for a valid spend. It can be described as "m-of-n" meaning "m number of signatures are required from this list of n public keys". The public keys and the m and n values are typically included in the locking script and the spender only needs to provide the right number of signatures.
       paragraph_two:
-        'Holocat appears with a pre-recorded message from Satoshi Nakamoto!',
+        'Holocat xuất hiện với một tin nhắn được ghi âm trước từ Satoshi Nakamoto!', // Holocat appears with a pre-recorded message from Satoshi Nakamoto!
       paragraph_three:
-        'Hi. I accidentally wrote a bug when I implemented <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn\'t used at all. So, uh, whoops. Sorry. That code is consensus-critical so every <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> operation in bitcoin\'s past, present, and future will be forced to include a "dummy" element. Don\'t forget it or you won\'t be able to spend your multisig coins!',
+        'Xin chào. Tôi đã vô tình viết một lỗi khi triển khai <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span>. Nó bật một mục bổ sung khỏi ngăn xếp mà không được sử dụng chút nào. Vì vậy, ừm, ồ. Xin lỗi. Mã đó là quan trọng đối với sự đồng thuận nên mọi hoạt động <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> trong quá khứ, hiện tại và tương lai của Bitcoin sẽ bị buộc phải bao gồm một "mục giả". Đừng quên nó nếu không bạn sẽ không thể chi tiêu tiền xu đa chữ ký của mình!', // Hi. I accidentally wrote a bug when I implemented <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn't used at all. So, uh, whoops. Sorry. That code is consensus-critical so every <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> operation in bitcoin's past, present, and future will be forced to include a "dummy" element. Don't forget it or you won't be able to spend your multisig coins!
     },
     opcodes_eight: {
-      title: 'OpCodes',
-      nav_title: 'Sign with multiple keys',
+      title: 'OpCodes', // OpCodes
+      nav_title: 'Ký bằng nhiều khóa', // Sign with multiple keys
       heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-1">OP_CHECKMULTISIG</span>',
       subheading_one:
-        'Processes m-of-n multisignature by following this algorithm.',
+        'Xử lý chữ ký đa phương m-trong-n bằng cách làm theo thuật toán này.', // Processes m-of-n multisignature by following this algorithm.
       multisig_list_one:
-        'Pop a single integer off the stack. This is the <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span> value.',
+        'Bỏ một số nguyên duy nhất khỏi ngăn xếp. Đây là giá trị <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span>.', // Pop a single integer off the stack. This is the <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span> value.
       multisig_list_two:
-        'Pop <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span> number of items off the stack, these are all expected to be public keys of the format <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">PUBKEY(...)</span>',
+        'Bỏ <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span> số mục khỏi ngăn xếp, tất cả đều được mong đợi là các khóa công khai ở định dạng <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">PUBKEY(...)</span>', // Pop <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">n</span> number of items off the stack, these are all expected to be public keys of the format <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">PUBKEY(...)</span>
       multisig_list_three:
-        'Pop a single integer off the stack. This is the <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">m</span> value.',
+        'Bỏ một số nguyên duy nhất khỏi ngăn xếp. Đây là giá trị <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">m</span>.', // Pop a single integer off the stack. This is the <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">m</span> value.
       multisig_list_four:
-        'Pop <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">m</span> number of items off the stack, these are all expected to be signatures of the format <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">SIG(...)</span>',
+        'Bỏ <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">m</span> số mục khỏi ngăn xếp, tất cả đều được mong đợi là các chữ ký ở định dạng <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">SIG(...)</span>', // Pop <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">m</span> number of items off the stack, these are all expected to be signatures of the format <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">SIG(...)</span>
       multisig_list_five:
-        'Pop an extra element off the stack for absolutely no reason at all.',
+        'Bỏ một mục bổ sung khỏi ngăn xếp vì hoàn toàn không có lý do gì cả.', // Pop an extra element off the stack for absolutely no reason at all.
       multisig_list_six:
-        'Iterate through each public key: Verify the key against the stack-topmost signature. If it is valid, remove both the key and the signature and continue with the next public key. If it is not valid, remove the public key only and continue to the next public key (which will begin by checking against that same topmost signature)',
+        'Lặp lại từng khóa công khai: Xác minh khóa với chữ ký trên cùng của ngăn xếp. Nếu hợp lệ, hãy xóa cả khóa và chữ ký và tiếp tục với khóa công khai tiếp theo. Nếu không hợp lệ, chỉ xóa khóa công khai và tiếp tục với khóa công khai tiếp theo (sẽ bắt đầu bằng cách kiểm tra với chữ ký trên cùng đó)', // Iterate through each public key: Verify the key against the stack-topmost signature. If it is valid, remove both the key and the signature and continue with the next public key. If it is not valid, remove the public key only and continue to the next public key (which will begin by checking against that same topmost signature)
       multisig_list_seven:
-        'If all public keys have been tested and there are any signatures remaining, the operation fails.',
+        'Nếu tất cả các khóa công khai đã được kiểm tra và vẫn còn chữ ký nào đó, thao tác sẽ thất bại.', // If all public keys have been tested and there are any signatures remaining, the operation fails.
       multisig_list_eight:
-        'Once all signatures have been removed the operation can finish early with success, even if more public keys remain.',
+        'Sau khi tất cả các chữ ký đã được xóa, thao tác có thể kết thúc sớm với thành công, ngay cả khi vẫn còn nhiều khóa công khai.', // Once all signatures have been removed the operation can finish early with success, even if more public keys remain.
       paragraph_one:
-        'Note that m <= n. There may be more public keys than signatures but never more signatures than public keys. Also note that the keys and signatures MUST be in the same order, even if some keys are not used to sign.',
-      paragraph_two: 'Provide the initial stack to spend from the script.',
+        'Lưu ý rằng m <= n. Có thể có nhiều khóa công khai hơn chữ ký nhưng không bao giờ có nhiều chữ ký hơn khóa công khai. Ngoài ra, hãy lưu ý rằng các khóa và chữ ký PHẢI theo cùng một thứ tự, ngay cả khi một số khóa không được sử dụng để ký.', // Note that m <= n. There may be more public keys than signatures but never more signatures than public keys. Also note that the keys and signatures MUST be in the same order, even if some keys are not used to sign.
+      paragraph_two: 'Cung cấp ngăn xếp ban đầu để chi tiêu từ script.', // Provide the initial stack to spend from the script.
     },
     opcodes_nine: {
-      title: 'OpCodes',
-      nav_title: 'Wait to unlock',
-      heading: 'Time Locks',
+      title: 'OpCodes', // OpCodes
+      nav_title: 'Chờ đợi để mở khóa', // Wait to unlock
+      heading: 'Khóa thời gian', // Time Locks
       paragraph_one:
-        "Way back in the last century a document entitled BIP 65 proposed a new opcode to bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className=\"text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm\">OP_DROP</span> as well. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.",
-      subheading_one: 'Opcodes that do block timelocks',
+        "Cách trở lại thế kỷ trước, một tài liệu có tiêu đề BIP 65 đã đề xuất một opcode mới cho Bitcoin, cuối cùng đã được thêm vào các quy tắc đồng thuận. Nó được sử dụng để yêu cầu rằng nLocktime của một giao dịch phải ở mức hoặc cao hơn một giá trị được chỉ định bởi script. Các quy tắc đồng thuận của Bitcoin đã cấm bao gồm một giao dịch trong một khối nếu chiều cao của khối đó lớn hơn nLocktime của giao dịch. Nói cách khác, opcode này khiến một giao dịch không thể chi tiêu cho đến khi blockchain đạt đến một độ cao nhất định vào một thời điểm nào đó trong tương lai. Vì nó đã được thêm vào với một nhánh mềm, nó KHÔNG thực sự bật bất kỳ mục nào ra khỏi ngăn xếp, có nghĩa là hầu hết các lần sử dụng cũng sẽ yêu cầu một <span className=\"text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm\">OP_DROP</span> cũng vậy. Nếu opcode xác định rằng quá sớm để bao gồm giao dịch này trong một khối, việc thực thi script sẽ dừng lại ngay lập tức với lỗi.", // Way back in the last century a document entitled BIP 65 proposed a new opcode to bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className=\"text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm\">OP_DROP</span> as well. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.
+      subheading_one: 'Các opcode thực hiện khóa thời gian khối', // Opcodes that do block timelocks
       optimelock_list_one_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span>',
-      optimelock_list_one_paragraph: 'Pops one item off the stack, ignores it.',
+      optimelock_list_one_paragraph: 'Bỏ một mục khỏi ngăn xếp, bỏ qua nó.', // Pops one item off the stack, ignores it.
       optimelock_list_two_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKLOCKTIMEVERIFY</span>',
       optimelock_list_two_paragraph:
-        'Reads (does not pop) the top stack item and interprets it as a block height. If the height argument consumed by the opcode is not at least equal to the NEXT block height, the operation is invalid.',
-      paragraph_two: 'Provide the initial stack to spend from the script.',
+        'Đọc (không bật) mục trên cùng của ngăn xếp và hiểu nó như một độ cao khối. Nếu đối số chiều cao được sử dụng bởi opcode không ít nhất bằng với chiều cao khối TIẾP THEO, thì thao tác sẽ không hợp lệ.', // Reads (does not pop) the top stack item and interprets it as a block height. If the height argument consumed by the opcode is not at least equal to the NEXT block height, the operation is invalid.
+      paragraph_two: 'Cung cấp ngăn xếp ban đầu để chi tiêu từ script.', // Provide the initial stack to spend from the script.
     },
     opcodes_ten: {
-      title: 'OpCodes',
-      nav_title: 'Build some logic',
-      heading: 'Conditionals',
+      title: 'OpCodes', // OpCodes
+      nav_title: 'Xây dựng logic', // Build some logic
+      heading: 'Điều kiện', // Conditionals
       paragraph_one:
-        'Just like any other good programming language, bitcoin script has logic branches! The path through the branches is typically chosen by the spender to pick which combination of authentication conditions they need to satisfy,',
+        'Giống như bất kỳ ngôn ngữ lập trình tốt nào khác, script Bitcoin cũng có các nhánh logic! Đường dẫn qua các nhánh thường được người chi tiêu chọn để chọn kết hợp điều kiện xác thực mà họ cần thỏa mãn,', // Just like any other good programming language, bitcoin script has logic branches! The path through the branches is typically chosen by the spender to pick which combination of authentication conditions they need to satisfy,
       paragraph_two:
-        '<span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span> Logic branches.',
+        '<span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span> Các nhánh logic.', // <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span> Logic branches.
       paragraph_three:
-        '<span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> pops one value off the stack and evaluates it as a boolean. If it is true, code execution continues up to <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> then skips to <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span>, otherwise it skips to <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> and continues executing to <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span>. Logic branches may be nested but every <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> must be paired with an <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span> to close each branch, otherwise a the interpreter will throw an error and the script will fail.',
-      paragraph_four: 'Provide the initial stack to spend from the script.',
+        '<span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> bật một giá trị khỏi ngăn xếp và đánh giá nó dưới dạng boolean. Nếu đúng, việc thực thi mã sẽ tiếp tục lên đến <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> sau đó bỏ qua đến <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span>, nếu không, nó sẽ bỏ qua đến <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> và tiếp tục thực thi đến <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span>. Các nhánh logic có thể được lồng nhau nhưng mỗi <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> phải được ghép nối với một <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span> để đóng mỗi nhánh, nếu không trình thông dịch sẽ ném ra lỗi và script sẽ thất bại.', // <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> pops one value off the stack and evaluates it as a boolean. If it is true, code execution continues up to <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> then skips to <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span>, otherwise it skips to <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ELSE</span> and continues executing to <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span>. Logic branches may be nested but every <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_IF</span> must be paired with an <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ENDIF</span> to close each branch, otherwise a the interpreter will throw an error and the script will fail.
+      paragraph_four: 'Cung cấp ngăn xếp ban đầu để chi tiêu từ script.', // Provide the initial stack to spend from the script.
     },
     proposal_one: {
-      title: 'Advanced',
-      nav_title: 'Back to The Story',
-      heading: 'Back to The Story!',
-      paragraph_one: `Nice Work! We've gone over most of the opcodes you will need when building scripts for basic transactions. Now let's put them to the test.`,
-      paragraph_two: `For each contract proposal you discuss, provide a bitcoin script and one valid spending stack.`,
+      title: 'Nâng cao', // Advanced
+      nav_title: 'Trở lại Câu chuyện', // Back to The Story
+      heading: 'Trở lại Câu chuyện!', // Back to The Story!
+      paragraph_one: `Làm tốt! Chúng tôi đã xem xét hầu hết các opcode mà bạn sẽ cần khi xây dựng script cho các giao dịch cơ bản. Bây giờ hãy đưa chúng vào thử nghiệm.`, // Nice Work! We've gone over most of the opcodes you will need when building scripts for basic transactions. Now let's put them to the test.
+      paragraph_two: `Đối với mỗi đề xuất hợp đồng mà bạn thảo luận, hãy cung cấp một script Bitcoin và một ngăn xếp chi tiêu hợp lệ.`, // For each contract proposal you discuss, provide a bitcoin script and one valid spending stack.
     },
     proposal_two: {
-      title: '2 of 2 multisig',
-      nav_title: 'Sign cooperatively',
-      heading: '2 of 2 multisig',
-      paragraph_one: `The first thing Vanderpoole suggests is a 2-of-2 multisig. All donations will be split between you and the Lil Bits Foundation 50/50. This will be managed by you both, with each of you signing all spending transactions from the donation address. This means you will have to agree on all withdrawals from the donation address.`,
-      paragraph_two: `Vanderpoole hands you his public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
-      paragraph_three: 'Provide the initial stack to spend from the script.',
-      next_step_message: 'Looks good! Now lets try with your own signature.',
+      title: '2 of 2 multisig', // 2 of 2 multisig
+      nav_title: 'Sign cooperatively', // Sign cooperatively
+      heading: '2 of 2 multisig', // 2 of 2 multisig
+      paragraph_one: `The first thing Vanderpoole suggests is a 2-of-2 multisig. All donations will be split between you and the Lil Bits Foundation 50/50. This will be managed by you both, with each of you signing all spending transactions from the donation address. This means you will have to agree on all withdrawals from the donation address.`, // The first thing Vanderpoole suggests is a 2-of-2 multisig. All donations will be split between you and the Lil Bits Foundation 50/50. This will be managed by you both, with each of you signing all spending transactions from the donation address. This means you will have to agree on all withdrawals from the donation address.
+      paragraph_two: `Vanderpoole hands you his public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`, // Vanderpoole hands you his public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).
+      paragraph_three: 'Provide the initial stack to spend from the script.', // Provide the initial stack to spend from the script.
+      next_step_message: 'Looks good! Now lets try with your own signature.', // Looks good! Now lets try with your own signature.
     },
     proposal_three: {
-      title: 'Conditional time locked transaction',
-      nav_title: 'Make him wait',
-      heading: 'Conditional time locked transaction',
-      paragraph_one: `Wait a minute, that doesn't make sense—you don't want to deal with him forever! The new deal is you get all donations for the next two hours while you are still on TV. The Lil Bits Foundation gets anything that comes in afterwards. You look at the bitcoin block block on the wall in the studio and agree that block height 6930300 will probably be mined in about two hours.`,
-      paragraph_two: `Remember Vanderpoole's public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
-      paragraph_three: 'Provide the initial stack to spend from the script.',
-      next_step_message: 'Looks good! Now lets try with your own signature.',
+      title: 'Conditional time locked transaction', // Conditional time locked transaction
+      nav_title: 'Làm cho anh ta chờ đợi', // Make him wait
+      heading: 'Giao dịch bị khóa thời gian có điều kiện', // Conditional time locked transaction
+      paragraph_one: `Chờ một chút, điều đó không có ý nghĩa gì - bạn không muốn phải đối phó với anh ta mãi mãi! Thỏa thuận mới là bạn nhận được tất cả các khoản quyên góp trong hai giờ tiếp theo trong khi bạn vẫn đang ở trên TV. Quỹ Lil Bits nhận được bất cứ điều gì đến sau đó. Bạn nhìn vào khối Bitcoin trên tường trong studio và đồng ý rằng chiều cao khối 6930300 có thể sẽ được khai thác trong khoảng hai giờ.`, // Wait a minute, that doesn't make sense—you don't want to deal with him forever! The new deal is you get all donations for the next two hours while you are still on TV. The Lil Bits Foundation gets anything that comes in afterwards. You look at the bitcoin block block on the wall in the studio and agree that block height 6930300 will probably be mined in about two hours.
+      paragraph_two: `Hãy nhớ rằng khóa công khai của Vanderpoole là PUBKEY(vanderpoole) và của bạn là PUBKEY(me).`, // Remember Vanderpoole's public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).
+      paragraph_three: 'Cung cấp ngăn xếp ban đầu để chi tiêu từ script.', // Provide the initial stack to spend from the script.
+      next_step_message: 'Looks good! Now lets try with your own signature.', // Looks good! Now lets try with your own signature.
     },
     proposal_four: {
-      title: 'Secret preimage locked transaction',
-      nav_title: 'Work with an oracle',
-      heading: 'Secret preimage locked transaction',
+      title: 'Secret preimage locked transaction', // Secret preimage locked transaction
+      nav_title: 'Làm việc với một oracle', // Work with an oracle
+      heading: 'Giao dịch bị khóa tiền ảnh bí mật', // Secret preimage locked transaction
       paragraph_one:
-        "Vanderpoole changes his mind again. He doesn't like that deal because of the unknowns. He decides he wants the Lil Bits foundation to get the first 1.0 BTC of total donations, and you can spend the rest afterward.",
+        "Vanderpoole thay đổi ý kiến ​​của mình một lần nữa. Anh ta không thích thỏa thuận đó vì những điều không chắc chắn. Anh ta quyết định rằng Quỹ Lil Bits sẽ nhận được 1.0 BTC đầu tiên của tổng số tiền quyên góp và bạn có thể chi tiêu phần còn lại sau đó.", // Vanderpoole changes his mind again. He doesn't like that deal because of the unknowns. He decides that the Lil Bits Foundation will get the first 1.0 BTC of total donations, and you can spend the rest afterward.
       paragraph_two:
-        'There is no way to check a total balance across multiple UTXOs in bitcoin script so you agree on an unbiased third-party oracle: Deborah Chunk! She will monitor the total donation amount on the blockchain and once they add up to at least 1.0 BTC she will announce, live on TV, the preimage to a hash value you will commit to in the script.',
+        'Không có cách nào để kiểm tra tổng số dư trên nhiều UTXO trong script Bitcoin nên bạn đồng ý với một oracle trung lập thứ ba: Deborah Chunk! Cô ấy sẽ theo dõi tổng số tiền quyên góp trên blockchain và khi chúng cộng lại thành ít nhất 1.0 BTC, cô ấy sẽ thông báo trực tiếp trên TV về tiền ảnh của một giá trị băm mà bạn sẽ cam kết trong script.', // There is no way to check a total balance across multiple UTXOs in bitcoin script so you agree on an unbiased third-party oracle: Deborah Chunk! She will monitor the total donation amount on the blockchain and once they add up to at least 1.0 BTC she will announce, live on TV, the preimage to a hash value you will commit to in the script.
       paragraph_three: {
-        a: 'She generates a secure random nonce in private, then hands you the hash digest: <span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">HASH256(FD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one ',
-        b: ' one second earlier!',
+        a: 'Cô ấy tạo ra một nonce ngẫu nhiên an toàn trong bí mật, sau đó đưa cho bạn tóm tắt băm: <span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">HASH256(FD3771E8)</span>. Bạn có thể chi tiêu tất cả các đồng xu bạn nhận được khi cô ấy tiết lộ bí mật này và không một ', // She generates a secure random nonce in private, then hands you the hash digest: <span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">HASH256(FD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one 
+        b: ' một giây nào trước đó!' // one second earlier!
       },
-      paragraph_four: `Remember Vanderpoole's public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
-      paragraph_five: 'Provide the initial stack to spend from the script.',
+      paragraph_four: `Hãy nhớ rằng khóa công khai của Vanderpoole là PUBKEY(vanderpoole) và của bạn là PUBKEY(me).`, // Remember Vanderpoole's public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).
+      paragraph_five: 'Cung cấp ngăn xếp ban đầu để chi tiêu từ script.', // Provide the initial stack to spend from the script.
       tooltip_one: {
         question: 'What is a satoshi?',
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520a%2520satoshi%253F',
         highlighted: 'satoshi',
       },
-      next_step_message:
-        "Let's see if we used our signature with the preimage correctly.",
+      next_step_message: "Hãy xem liệu chúng ta có sử dụng chữ ký của mình với tiền ảnh chính xác không.", // Let's see if we used our signature with the preimage correctly.
     },
     outro_one: {
-      title: 'Outro',
-      nav_title: 'Chapter Complete',
-      heading: 'Way to go!',
+      title: 'Kết luận', // Outro
+      nav_title: 'Hoàn thành chương', // Chapter Complete
+      heading: 'Làm tốt!', // Way to go!
       paragraph_one:
-        "The donations have now been distributed to you and the Lil Bits Foundation and many viewers thank you for shining a light on Vanderpoole’s actions. While the decentralized nature of bitcoin makes it difficult to overtake the network, it doesn’t stop people like him from trying. You're relieved the truth is finally out, especially after all the effort it took to get here.",
+        "Các khoản quyên góp hiện đã được phân phối cho bạn và Quỹ Lil Bits và nhiều người xem cảm ơn bạn đã soi sáng hành động của Vanderpoole. Mặc dù bản chất phi tập trung của Bitcoin khiến việc chiếm đoạt mạng lưới trở nên khó khăn nhưng nó không ngăn cản những người như anh ta cố gắng. Bạn cảm thấy nhẹ nhõm vì sự thật cuối cùng đã được phơi bày, đặc biệt là sau tất cả những nỗ lực để đến được đây.", // The donations have now been distributed to you and the Lil Bits Foundation and many viewers thank you for shining a light on Vanderpoole’s actions. While the decentralized nature of bitcoin makes it difficult to overtake the network, it doesn’t stop people like him from trying. You're relieved the truth is finally out, especially after all the effort it took to get here.
     },
 
     resources: {
       opcodes_five: {
-        arithmetic_heading: 'Arithmetic opcodes',
+        arithmetic_heading: 'Các opcode số học', // Arithmetic opcodes
         arithmetic_paragraph:
-          'In bitcoin script arithmetic operations like in math take in some inputs to conduct math operations on. In actual bitcoin script the inputs are limited to signed 32-bit integers but the output may overflow.',
-        spoiler: `Put in two integers that give the sum of 3 in the initial stack`,
+          'Trong script Bitcoin, các phép toán số học giống như trong toán học lấy một số đầu vào để thực hiện các phép toán số học. Trong script Bitcoin thực tế, các đầu vào bị giới hạn ở các số nguyên 32 bit có dấu nhưng đầu ra có thể tràn.', // In bitcoin script arithmetic operations like in math take in some inputs to conduct math operations on. In actual bitcoin script the inputs are limited to signed 32-bit integers but the output may overflow.
+        spoiler: `Đặt hai số nguyên có tổng là 3 vào ngăn xếp ban đầu` // Put in two integers that give the sum of 3 in the initial stack
       },
       opcodes_six: {
-        cryptography_heading: 'Cryptographic opcodes',
+        cryptography_heading: 'Các opcode mật mã', // Cryptographic opcodes
         cryptography_paragraph:
-          'These opcodes are important in everyday transactions as they ensure the outputs can only be spent with the signature of the owner of that utxo. Note that there are no formal categories of opcodes and that they are only organzied by their hex code representation.',
-        spoiler: `The script checks a signature against a hashed public key. Put a signature key first then a public key`,
+          'Những opcode này rất quan trọng trong các giao dịch hàng ngày vì chúng đảm bảo rằng các đầu ra chỉ có thể được chi tiêu bằng chữ ký của chủ sở hữu của utxo đó. Lưu ý rằng không có danh mục chính thức nào của opcode và chúng chỉ được sắp xếp theo biểu diễn mã hex của chúng.', // These opcodes are important in everyday transactions as they ensure that the outputs can only be spent with the signature of the owner of that utxo. Note that there are no formal categories of opcodes and that they are only organzied by their hex code representation.
+        spoiler: `Script kiểm tra chữ ký so với khóa công khai đã băm. Đặt một khóa chữ ký trước, sau đó là một khóa công khai` // The script checks a signature against a hashed public key. Put a signature key first then a public key
       },
       opcodes_eight: {
-        multisig_heading: 'Multisig opcodes',
+        multisig_heading: 'Các opcode đa chữ ký', // Multisig opcodes
         multisig_paragraph:
-          '<span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> has a notable bug that requires the stack to include another unused value on the top of the stack unrelated to the actual multisig.',
-        spoiler: `It's a multisig script requiring two signatures, and the first value on the stack is a placeholder for a quirk in the CHECKMULTISIG operation.`,
+          '<span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> có một lỗi đáng chú ý yêu cầu ngăn xếp bao gồm một giá trị khác không được sử dụng ở đầu ngăn xếp không liên quan đến đa chữ ký thực tế.', // <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> has a notable bug that requires the stack to include another unused value on the top of the stack unrelated to the actual multisig.
+        spoiler: `Đó là một script đa chữ ký yêu cầu hai chữ ký và giá trị đầu tiên trên ngăn xếp là một giá trị giữ chỗ cho một lỗi kỳ lạ trong hoạt động CHECKMULTISIG.` // It's a multisig script requiring two signatures, and the first value on the stack is a placeholder for a quirk in the CHECKMULTISIG operation.
       },
       opcodes_nine: {
-        timelock_heading: 'Timelock opcodes',
+        timelock_heading: 'Các opcode khóa thời gian', // Timelock opcodes
         timelock_paragraph:
-          'Bitcoin script can read the current block height allowing transactions to be locked based on bitcoin blocks in the future. the exact semantics of the actual <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKLOCKTIMEVERIFY</span> can be found',
+          'Script Bitcoin có thể đọc chiều cao khối hiện tại cho phép các giao dịch bị khóa dựa trên các khối Bitcoin trong tương lai. Ngữ nghĩa chính xác của <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKLOCKTIMEVERIFY</span> thực tế có thể được tìm thấy', // Bitcoin script can read the current block height allowing transactions to be locked based on bitcoin blocks in the future. the exact semantics of the actual <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKLOCKTIMEVERIFY</span> can be found
         timelock_link:
-          '<Link target="_blank" href="https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki" className="underline">here</Link>.',
-        spoiler: ` The script locks spending until a specific block height and then verifies the signature in the initial stack.`,
+          '<Link target="_blank" href="https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki" className="underline">ở đây</Link>.', // here
+        spoiler: `Script khóa chi tiêu cho đến một chiều cao khối cụ thể và sau đó xác minh chữ ký trong ngăn xếp ban đầu.` // The script locks spending until a specific block height and then verifies the signature in the initial stack.
       },
       opcodes_ten: {
-        conditionals_heading: 'Opcode logic',
+        conditionals_heading: 'Logic opcode', // Opcode logic
         conditionals_paragraph:
-          'Conditional opcodes allow for some basic programming logic branches.  While the conditional logic allows for a broad range of additional possibilities in bitcoin script, it is still limited in comparison to a traditional programming language.',
-        spoiler: `The sum of the first two values on the intial stack is false, so the script follows the OP_ELSE branch.`,
+          'Các opcode điều kiện cho phép một số nhánh logic lập trình cơ bản. Mặc dù logic điều kiện cho phép một loạt các khả năng bổ sung trong script Bitcoin, nhưng nó vẫn bị giới hạn so với ngôn ngữ lập trình truyền thống.', // Conditional opcodes allow for some basic programming logic branches.  While the conditional logic allows for a broad range of additional possibilities in bitcoin script, it is still limited in comparison to a traditional programming language.
+        spoiler: `Tổng của hai giá trị đầu tiên trên ngăn xếp ban đầu là sai, vì vậy script theo nhánh OP_ELSE.` // The sum of the first two values on the intial stack is false, so the script follows the OP_ELSE branch.
       },
       proposal_two: {
-        making_script_heading: 'Making script',
+        making_script_heading: 'Tạo script', // Making script
         making_script_paragraph:
-          'Remember that scripts can only be validated if the finish with a single truthy value on the stack. some versions allow any truthy value but our script editor only allows for values equal to 1 or true.',
-        tip: 'Don\'t forget about the bug in <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> that requires the extra unused value on the stack!',
-        spoiler: `Script Hint: This multisig arrangement needs both participants to sign. The script specifies that two signatures are required and includes both public keys.
-Stack Hint: To satisfy the script, you need to provide both signatures. The 0 on the stack accounts for a specific behavior of the CHECKMULTISIG operation.`,
+          'Hãy nhớ rằng các script chỉ có thể được xác thực nếu kết thúc với một giá trị đúng duy nhất trên ngăn xếp. một số phiên bản cho phép bất kỳ giá trị đúng nào nhưng trình chỉnh sửa script của chúng tôi chỉ cho phép các giá trị bằng 1 hoặc true.', // Remember that scripts can only be validated if the finish with a single truthy value on the stack. some versions allow any truthy value but our script editor only allows for values equal to 1 or true.
+        tip: 'Đừng quên lỗi trong <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> yêu cầu giá trị không sử dụng bổ sung trên ngăn xếp!', // Don't forget about the bug in <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> that requires the extra unused value on the stack!
+        spoiler: `Gợi ý Script: Thỏa thuận đa chữ ký này yêu cầu cả hai bên tham gia ký. Script chỉ định rằng hai chữ ký là bắt buộc và bao gồm cả hai khóa công khai. 
+Gợi ý ngăn xếp: Để thỏa mãn script, bạn cần cung cấp cả hai chữ ký. Số 0 trên ngăn xếp giải thích cho một hành vi cụ thể của hoạt động CHECKMULTISIG.`, 
+        // Script Hint: This multisig arrangement needs both participants to sign. The script specifies that two signatures are required and includes both public keys.
+// Stack Hint: To satisfy the script, you need to provide both signatures. The 0 on the stack accounts for a specific behavior of the CHECKMULTISIG operation.
       },
       proposal_three: {
-        tip: "Let's think about combining a conditional with some timelock to separate Vanderpoole's signature from yours.",
-        spoiler: `Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, Vanderpoole can spend; after the block, you can.
-
-Stack Hint: To spend before the specified block, Vanderpoole uses his signature. After the block, you use your signature and need to provide a 0 because the script has moved past the locktime verification.`,
+        tip: "Hãy suy nghĩ về việc kết hợp một điều kiện với một số khóa thời gian để tách chữ ký của Vanderpoole khỏi chữ ký của bạn.", // Let's think about combining a conditional with some timelock to separate Vanderpoole's signature from yours.
+        spoiler: `Gợi ý Script: Script cho phép chi tiêu theo hai điều kiện: trước khối 6930300 hoặc sau đó. Trước khối, Vanderpoole có thể chi tiêu; sau khối, bạn có thể.
+Gợi ý ngăn xếp: Để chi tiêu trước khối được chỉ định, Vanderpoole sử dụng chữ ký của mình. Sau khối, bạn sử dụng chữ ký của mình và cần cung cấp 0 vì script đã vượt qua xác minh khóa thời gian.`,
+                // Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, Vanderpoole can spend; after the block, you can.
+//Stack Hint: To spend before the specified block, Vanderpoole uses his signature. After the block, you use your signature and need to provide a 0 because the script has moved past the locktime verification.
       },
       proposal_four: {
-        tip: 'The preimage will be revealed after an unknown amount of time so no need for using timelocks.',
-        spoiler: `Script Hint: The script allows spending under two conditions: before the secret has been revealed or after. Before the block, Vanderpoole can spend; after the block, you both can.
-
-Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signature. After the secret is revealed, you use your signature, a hash of the secret, and provide a 0 because the script has moved past the unrevealed verification.`,
+        tip: 'Tiền ảnh sẽ được tiết lộ sau một khoảng thời gian không xác định nên không cần sử dụng khóa thời gian.', // The preimage will be revealed after an unknown amount of time so no need for using timelocks.
+        spoiler: `Gợi ý Script: Script cho phép chi tiêu theo hai điều kiện: trước khi bí mật được tiết lộ hoặc sau đó. Trước khối, Vanderpoole có thể chi tiêu; sau khối, cả hai bạn đều có thể.
+Gợi ý ngăn xếp: Để chi tiêu trước khi bí mật được tiết lộ, Vanderpoole sử dụng chữ ký của mình. Sau khi bí mật được tiết lộ, bạn sử dụng chữ ký của mình, băm của bí mật và cung cấp 0 vì script đã vượt qua xác minh chưa tiết lộ.`,
+                // Script Hint: The script allows spending under two conditions: before the secret has been revealed or after. Before the block, Vanderpoole can spend; after the block, you both can.
+//Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signature. After the secret is revealed, you use your signature, a hash of the secret, and provide a 0 because the script has moved past the unrevealed verification.
       },
     },
   },
 
   chapter_ten: {
-    title: '10 billion connections',
-    paragraph_one: `The TV studio’s ON-AIR light goes dark. Stagehands shut off their 3D cameras and file out after a long and eventful day. Mika 3000 is there waiting for you.`,
+    title: '10 tỷ kết nối', // title: '10 billion connections'
+    paragraph_one: `Đèn ON-AIR của trường quay tắt. Các nhân viên sân khấu tắt máy ảnh 3D của họ và tản ra sau một ngày dài và nhiều sự kiện. Mika 3000 đang ở đó chờ bạn.`, // paragraph_one: `The TV studio’s ON-AIR light goes dark. Stagehands shut off their 3D cameras and file out after a long and eventful day. Mika 3000 is there waiting for you.`
     intro_one: {
-      title: 'Celebration',
-      nav_title: 'Celebration',
-      paragraph_one: `—MIKA 3000: “You did it! You really pulled it off! Let’s grab something to drink and celebrate.”`,
-      paragraph_two: `You walk to a nearby bar called The Public Key Pub. The bartender, a friendly guy with the name tag Laszlo, welcomes you both.`,
-      paragraph_three: `—MIKA 3000: “I don’t know why but I could totally go for a calzone.”`,
-      paragraph_four: `—LASZLO: “We don’t have those, but my great-great-grandad made sure that the pizza here is the best. Some would say 10,000 bitcoin good.”`,
+      title: 'Lễ kỷ niệm', // title: 'Celebration'
+      nav_title: 'Lễ kỷ niệm', // nav_title: 'Celebration'
+      paragraph_one: `—MIKA 3000: “Bạn đã làm được rồi! Bạn thực sự đã làm được! Hãy cùng nhau uống gì đó và ăn mừng.”`, // paragraph_one: `—MIKA 3000: “You did it! You really pulled it off! Let’s grab something to drink and celebrate.”`
+      paragraph_two: `Bạn đi đến một quán bar gần đó tên là The Public Key Pub. Người pha chế, một anh chàng thân thiện với thẻ tên Laszlo, chào đón cả hai bạn.`, // paragraph_two: `You walk to a nearby bar called The Public Key Pub. The bartender, a friendly guy with the name tag Laszlo, welcomes you both.`
+      paragraph_three: `—MIKA 3000: “Tôi không biết tại sao nhưng tôi hoàn toàn có thể ăn một chiếc calzone.”`, // paragraph_three: `—MIKA 3000: “I don’t know why but I could totally go for a calzone.”`
+      paragraph_four: `—LASZLO: “Chúng tôi không có những thứ đó, nhưng ông cố của tôi đã đảm bảo rằng pizza ở đây là ngon nhất. Một số người nói rằng nó đáng giá 10.000 bitcoin.”`, // paragraph_four: `—LASZLO: “We don’t have those, but my great-great-grandad made sure that the pizza here is the best. Some would say 10,000 bitcoin good.”`
       paragraph_five: {
-        a: `—MIKA 3000: “10 thousand bitcoin? Wait… are you named Laszlo because you’re descended from `,
+        a: `—MIKA 3000: “10 nghìn bitcoin? Chờ đã… bạn có tên là Laszlo vì bạn là hậu duệ của `, // a: `—MIKA 3000: “10 thousand bitcoin? Wait… are you named Laszlo because you’re descended from `
         b: `?"`,
       },
       paragraph_six: `—LASZLO: “The one and only.”`,
@@ -2724,257 +2727,257 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       },
     },
     intro_two: {
-      title: 'Getting drinks',
-      nav_title: 'Getting drinks',
+      title: 'Lấy đồ uống', // title: 'Getting drinks'
+      nav_title: 'Lấy đồ uống', // nav_title: 'Getting drinks'
       paragraph_one:
-        '—MIKA 3000: “That is so cool. As long as it isn’t 10,000 bitcoin, we’ll take one of those pizzas and a couple of Lightning Lemonades. Shame about the calzones, though.”',
+        '—MIKA 3000: “Điều đó thật tuyệt vời. Miễn là nó không phải là 10.000 bitcoin, chúng tôi sẽ lấy một trong những chiếc pizza đó và một vài loại Lemonade Lightning. Tuy nhiên, thật đáng tiếc về calzones.”', //  '—MIKA 3000: “That is so cool. As long as it isn’t 10,000 bitcoin, we’ll take one of those pizzas and a couple of Lightning Lemonades. Shame about the calzones, though.”'
       paragraph_two:
-        'Mika 3000 and Laszlo pull out their solar-powered ePhone Infinities and start tapping buttons.',
+        'Mika 3000 và Laszlo rút ra ePhone Infinities chạy bằng năng lượng mặt trời của họ và bắt đầu nhấn nút.', //   'Mika 3000 and Laszlo pull out their solar-powered ePhone Infinities and start tapping buttons.'
       paragraph_three:
-        '—MIKA 3000: “Uh oh. Your little stunt back there did a number on miner fees. The bitcoin network is experiencing a surge in activity and transaction fees are through the roof! We’re going to have to pay for this off-chain.”',
+        '—MIKA 3000: “Uh oh. Chiêu trò nhỏ của bạn ở phía sau đã gây ra một số vấn đề về phí khai thác. Mạng lưới bitcoin đang trải qua sự gia tăng hoạt động và phí giao dịch đang tăng vọt! Chúng ta sẽ phải trả tiền cho điều này ngoại tuyến.”', //   '—MIKA 3000: “Uh oh. Your little stunt back there did a number on miner fees. The bitcoin network is experiencing a surge in activity and transaction fees are through the roof! We’re going to have to pay for this off-chain.”'
     },
     intro_three: {
-      title: 'Off-chain?',
-      nav_title: 'Off-chain?',
-      paragraph_one: `Since “Satoshi” initially reached out, you’ve only had to work with on-chain transactions. That’s how you claimed your mining rewards and how you transferred funds to Mika 3000. However, these on-chain transactions aren’t ideal for frequent, everyday use because block space is limited and miner fees can vary.`,
-      paragraph_two: `How is it then, that people are able to use bitcoin daily in a way that is scalable? The answer is off-chain payments, something you have probably seen a million times: An orange cab ejecting its passengers and zooming off, someone buying dinner from a halal cart, a kid exiting a store with her holodog and a carton of digimilk. And so on. Money’s use cases are nearly infinite.`,
-      paragraph_three: `While bitcoin isn’t designed to handle this much activity on its own, with off-chain payments, it can.`,
-      paragraph_four: `—YOU: “That’s not a problem at all, Mika 3000. I can handle it. I’ll prove it by using an off-chain payment to purchase a beer from Laszlo.”`,
+      title: 'Ngoại tuyến?', // title: 'Off-chain?'
+      nav_title: 'Ngoại tuyến?', // nav_title: 'Off-chain?'
+      paragraph_one: `Kể từ khi “Satoshi” lần đầu tiên tiếp cận, bạn chỉ phải làm việc với các giao dịch trên chuỗi. Đó là cách bạn yêu cầu phần thưởng khai thác và cách bạn chuyển tiền cho Mika 3000. Tuy nhiên, các giao dịch trên chuỗi này không lý tưởng cho việc sử dụng hàng ngày thường xuyên vì không gian khối bị hạn chế và phí khai thác có thể thay đổi.`, // paragraph_one: `Since “Satoshi” initially reached out, you’ve only had to work with on-chain transactions. That’s how you claimed your mining rewards and how you transferred funds to Mika 3000. However, these on-chain transactions aren’t ideal for frequent, everyday use because block space is limited and miner fees can vary.`
+      paragraph_two: `Vậy thì làm thế nào mà mọi người có thể sử dụng bitcoin hàng ngày theo cách có thể mở rộng? Câu trả lời là thanh toán ngoại tuyến, điều mà bạn có thể đã thấy hàng triệu lần: Một chiếc taxi màu cam đẩy hành khách ra và phóng đi, ai đó mua bữa tối từ một chiếc xe đẩy halal, một đứa trẻ bước ra khỏi cửa hàng với holodog và một hộp sữa digimilk. Và vân vân. Các trường hợp sử dụng tiền gần như vô hạn.`, // paragraph_two: `How is it then, that people are able to use bitcoin daily in a way that is scalable? The answer is off-chain payments, something you have probably seen a million times: An orange cab ejecting its passengers and zooming off, someone buying dinner from a halal cart, a kid exiting a store with her holodog and a carton of digimilk. And so on. Money’s use cases are nearly infinite.`
+      paragraph_three: `Mặc dù bitcoin không được thiết kế để xử lý nhiều hoạt động như vậy một mình, nhưng với các khoản thanh toán ngoại tuyến, nó có thể.`, // paragraph_three: `While bitcoin isn’t designed to handle this much activity on its own, with off-chain payments, it can.`
+      paragraph_four: `—BẠN: “Đó không phải là vấn đề gì cả, Mika 3000. Tôi có thể xử lý nó. Tôi sẽ chứng minh điều đó bằng cách sử dụng một khoản thanh toán ngoại tuyến để mua một ly bia từ Laszlo.”`, // paragraph_four: `—YOU: “That’s not a problem at all, Mika 3000. I can handle it. I’ll prove it by using an off-chain payment to purchase a beer from Laszlo.”`
     },
     opening_a_channel_one: {
-      title: 'The initial funds',
-      nav_title: 'The initial funds',
-      heading_one: 'The initial funds',
+      title: 'Số tiền ban đầu', // title: 'The initial funds'
+      nav_title: 'Số tiền ban đầu', // nav_title: 'The initial funds'
+      heading_one: 'Số tiền ban đầu', // heading_one: 'The initial funds'
       paragraph_one:
-        'You have a confirmed UTXO in the blockchain for 101,000 satoshis. It seems pretty simple to make an off-chain payment, right?',
+          'Bạn có một UTXO được xác nhận trong blockchain cho 101.000 satoshi. Có vẻ như rất đơn giản để thực hiện một khoản thanh toán ngoại tuyến, phải không?', //  'You have a confirmed UTXO in the blockchain for 101,000 satoshis. It seems pretty simple to make an off-chain payment, right?'
     },
     opening_a_channel_two: {
-      title: 'The off-chain transaction',
-      nav_title: 'The off-chain transaction',
-      heading_one: 'The off-chain transaction',
+      title: 'Giao dịch ngoại tuyến', // title: 'The off-chain transaction'
+      nav_title: 'Giao dịch ngoại tuyến', // nav_title: 'The off-chain transaction'
+      heading_one: 'Giao dịch ngoại tuyến', // heading_one: 'The off-chain transaction'
       paragraph_one:
-        "Let's create a valid bitcoin transaction but instead of broadcasting it out to the network, we'll give it directly to Laszlo. In return, he should provide you with a beer because he can broadcast the transaction anytime he wants. Once it's confirmed and mined into a block, the money is his.",
-      paragraph_two: `Remember it's the year 2140! A <span className="italic">SHA-256 Stout</span> costs 0.00001000 BTC.`,
-      heading_two: 'Instructions',
+          "Hãy tạo một giao dịch bitcoin hợp lệ nhưng thay vì phát sóng nó ra mạng, chúng ta sẽ gửi trực tiếp cho Laszlo. Đổi lại, anh ấy sẽ cung cấp cho bạn một ly bia vì anh ấy có thể phát sóng giao dịch bất cứ lúc nào anh ấy muốn. Một khi nó được xác nhận và khai thác thành một khối, tiền sẽ thuộc về anh ấy.", // "Let's create a valid bitcoin transaction but instead of broadcasting it out to the network, we'll give it directly to Laszlo. In return, he should provide you with a beer because he can broadcast the transaction anytime he wants. Once it's confirmed and mined into a block, the money is his."
+      paragraph_two: `Hãy nhớ rằng năm 2140! Một <span className="italic">SHA-256 Stout</span> có giá 0.00001000 BTC.`, // paragraph_two: `Remember it's the year 2140! A <span className="italic">SHA-256 Stout</span> costs 0.00001000 BTC.`
+      heading_two: 'Hướng dẫn', // heading_two: 'Instructions'
       off_chain_list_one:
-        'Fill in the two output amounts: 1000 satoshis to Laszlo in the first output, and the rest to yourself as change in the second output.',
+          'Điền vào hai số tiền đầu ra: 1000 satoshi cho Laszlo ở đầu ra thứ nhất và phần còn lại cho bạn làm tiền thừa ở đầu ra thứ hai.', // 'Fill in the two output amounts: 1000 satoshis to Laszlo in the first output, and the rest to yourself as change in the second output.'
       off_chain_list_two:
-        "To get the money, Laszlo will need to broadcast this transaction to the network, and that requires a miner fee. Let's set aside 1000 sats to pay that fee. Update the amount in your change output to account for this.",
-      off_chain_list_three: 'Write the two output scripts',
+          "Để lấy tiền, Laszlo sẽ cần phát sóng giao dịch này lên mạng và điều đó yêu cầu một khoản phí khai thác. Hãy dành riêng 1000 sats để trả phí đó. Cập nhật số tiền trong đầu ra tiền thừa của bạn để tính đến điều này.", // "To get the money, Laszlo will need to broadcast this transaction to the network, and that requires a miner fee. Let's set aside 1000 sats to pay that fee. Update the amount in your change output to account for this."
+      off_chain_list_three: 'Viết hai script đầu ra', // off_chain_list_three: 'Write the two output scripts'
       off_chain_list_four:
-        'Sign the input by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign</span>',
-      // off_chain_list_four:'Send it to Laszlo by clicking "send to bob"',
-      heading_three: 'Hints',
-      hint_one: `Laszlo spends output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO)</span>`,
-      hint_two: `You spend output 1 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU)</span>`,
-      hint_three: `These signatures are not part of the output script`,
+          'Ký đầu vào bằng cách nhấp vào <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Ký</span>', // 'Sign the input by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign</span>'
+            // off_chain_list_four:'Send it to Laszlo by clicking "send to bob"',
+      heading_three: 'Gợi ý', // heading_three: 'Hints'
+      hint_one: `Laszlo chi tiêu đầu ra 0 với <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO)</span>`, // hint_one: `Laszlo spends output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO)</span>`
+      hint_two: `Bạn chi tiêu đầu ra 1 với <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU)</span>`, // hint_two: `You spend output 1 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU)</span>`
+      hint_three: `Những chữ ký này không phải là một phần của script đầu ra`, // hint_three: `These signatures are not part of the output script`
     },
     opening_a_channel_three: {
-      title: 'Off-chain payment trust issue',
-      nav_title: 'Off-chain payment trust issue',
-      paragraph_one: `—LASZLO: "Wait a minute, that doesn't make any sense–as long as I don't broadcast the transaction you can still spend those 101,000 sats. You could drink your beer, spend the money on something else, and I would get nothing!`,
-      paragraph_two: `If we're going to transact off-chain, I need a guarantee that the same money you are using to pay me off-chain cannot be moved by yourself on-chain."`,
+      title: 'Vấn đề tin tưởng thanh toán ngoại tuyến', // title: 'Off-chain payment trust issue'
+      nav_title: 'Vấn đề tin tưởng thanh toán ngoại tuyến', // nav_title: 'Off-chain payment trust issue'
+      paragraph_one: `—LASZLO: "Chờ một chút, điều đó không có ý nghĩa gì cả - miễn là tôi không phát sóng giao dịch, bạn vẫn có thể chi tiêu 101.000 satoshi đó. Bạn có thể uống bia của mình, tiêu tiền vào việc khác và tôi sẽ không nhận được gì!`, // paragraph_one: `—LASZLO: "Wait a minute, that doesn't make any sense–as long as I don't broadcast the transaction you can still spend those 101,000 sats. You could drink your beer, spend the money on something else, and I would get nothing!`
+      paragraph_two: `Nếu chúng ta định giao dịch ngoại tuyến, tôi cần một sự đảm bảo rằng cùng một số tiền bạn đang sử dụng để thanh toán ngoại tuyến cho tôi không thể được di chuyển bởi chính bạn trên chuỗi."`, // paragraph_two: `If we're going to transact off-chain, I need a guarantee that the same money you are using to pay me off-chain cannot be moved by yourself on-chain."`
     },
     opening_a_channel_four: {
-      title: 'Multisig',
-      nav_title: 'Multisig',
-      heading_one: 'Multisig',
-      paragraph_one: `Before paying Laszlo, let's first get the funds into a 2-of-2 multisig, confirmed on the blockchain. Then we can figure out a way to make that single on-chain transaction work harder—to do more with less.`,
-      heading_two: 'Instructions',
-      multisig_one: 'Fill in the output amount and the output script',
+      title: 'Multisig', // title: 'Multisig'
+      nav_title: 'Multisig', // nav_title: 'Multisig'
+      heading_one: 'Multisig', // heading_one: 'Multisig'
+      paragraph_one: `Trước khi trả tiền cho Laszlo, trước tiên hãy đưa tiền vào một đa chữ ký 2 trên 2, được xác nhận trên blockchain. Sau đó, chúng ta có thể tìm ra một cách để giao dịch đơn lẻ trên chuỗi đó hoạt động hiệu quả hơn - để làm được nhiều hơn với ít hơn.`, // paragraph_one: `Before paying Laszlo, let's first get the funds into a 2-of-2 multisig, confirmed on the blockchain. Then we can figure out a way to make that single on-chain transaction work harder—to do more with less.`
+      heading_two: 'Hướng dẫn', // heading_two: 'Instructions'
+      multisig_one: 'Điền số tiền đầu ra và script đầu ra', // multisig_one: 'Fill in the output amount and the output script'
       multisig_two:
-        'Sign the input by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign and Broadcast</span>',
-      heading_three: 'Hints',
-      hint_one_a: `You and Laszlo want to work together in the future to spend output 0 with <br/> `,
-      hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(LASZLO) SIG(YOU) </span>`,
-      hint_two: `Don't forget to set aside miner fees`,
+          'Ký đầu vào bằng cách nhấp vào <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Ký và Phát sóng</span>', // 'Sign the input by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign and Broadcast</span>'
+      heading_three: 'Gợi ý', // heading_three: 'Hints'
+      hint_one_a: `Bạn và Laszlo muốn làm việc cùng nhau trong tương lai để chi tiêu đầu ra 0 với <br/> `, // hint_one_a: `You and Laszlo want to work together in the future to spend output 0 with <br/> `
+      hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(LASZLO) SIG(YOU) </span>`, // hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(LASZLO) SIG(YOU) </span>`
+      hint_two: `Đừng quên dành riêng phí khai thác`, // hint_two: `Don't forget to set aside miner fees`
     },
     opening_a_channel_five: {
-      title: 'Refund protection in multisig',
-      nav_title: 'Refund protection in multisig',
-      paragraph_one: `—LASZLO:  "OK, thanks. This is a good start. But what if I walk away from the table and you never see me again? I could broadcast this transaction, and your 100,000 satoshis would be stuck in a 2-key multisig from which you could never recover.`,
-      paragraph_two: `Do yourself a favor; before signing this, make a refund transaction to know you can recover your money."`,
+      title: 'Bảo vệ hoàn trả trong đa chữ ký', // title: 'Refund protection in multisig'
+      nav_title: 'Bảo vệ hoàn trả trong đa chữ ký', // nav_title: 'Refund protection in multisig'
+      paragraph_one: `—LASZLO:  "Được rồi, cảm ơn. Đây là một khởi đầu tốt. Nhưng nếu tôi rời khỏi bàn và bạn không bao giờ nhìn thấy tôi nữa thì sao? Tôi có thể phát sóng giao dịch này, và 100.000 satoshi của bạn sẽ bị mắc kẹt trong một đa chữ ký 2 khóa mà bạn không bao giờ có thể khôi phục.`, // paragraph_one: `—LASZLO:  "OK, thanks. This is a good start. But what if I walk away from the table and you never see me again? I could broadcast this transaction, and your 100,000 satoshis would be stuck in a 2-key multisig from which you could never recover.`
+      paragraph_two: `Hãy tự giúp mình một việc; trước khi ký vào này, hãy thực hiện một giao dịch hoàn trả để biết rằng bạn có thể lấy lại tiền của mình."`, // paragraph_two: `Do yourself a favor; before signing this, make a transaction to know you can recover your money."`
     },
     updating_the_state_one: {
-      title: 'The refund',
-      nav_title: 'The refund',
-      heading_one: 'The refund',
-      paragraph_one: `A new tab appears on your ePhone Infinity: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Refund</span> which starts another TX template on the same screen, with an arrow from the <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multisig</span> output to this TX input.`,
-      heading_two: 'Instructions',
-      refund_list_one: `Fill in the output amount and the output script`,
-      refund_list_two: `Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> then he can tell us if he will sign it.`,
-      refund_list_three: `Don't sign it yourself yet! Let's see what Laszlo thinks, first`,
-      heading_three: 'Hints',
-      hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU)</span>`,
+      title: 'Hoàn trả', // title: 'The refund'
+      nav_title: 'Hoàn trả', // nav_title: 'The refund'
+      heading_one: 'Hoàn trả', // heading_one: 'The refund'
+      paragraph_one: `Một tab mới xuất hiện trên ePhone Infinity của bạn: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Hoàn trả</span> bắt đầu một mẫu TX khác trên cùng một màn hình, với một mũi tên từ đầu ra <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multisig</span> đến đầu vào TX này.`, // paragraph_one: `A new tab appears on your ePhone Infinity: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Refund</span> which starts another TX template on the same screen, with an arrow from the <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multisig</span> output to this TX input.`
+      heading_two: 'Hướng dẫn', // heading_two: 'Instructions'
+      refund_list_one: `Điền số tiền đầu ra và script đầu ra`, // refund_list_one: `Fill in the output amount and the output script`
+      refund_list_two: `Gửi nó cho Laszlo bằng cách nhấp vào <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Gửi cho Laszlo</span> sau đó anh ấy có thể cho chúng tôi biết liệu anh ấy có ký hay không.`, // refund_list_two: `Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> then he can tell us if he will sign it.`
+      refund_list_three: `Đừng tự ký nó! Hãy xem Laszlo nghĩ gì trước`, // refund_list_three: `Don't sign it yourself yet! Let's see what Laszlo thinks, first`
+      heading_three: 'Gợi ý', // heading_three: 'Hints'
+      hint_one: `Đầu ra 0 được chi tiêu bởi bạn với <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU)</span>`, // hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU)</span>`
     },
     updating_the_state_two: {
-      title: 'Securing payments',
-      nav_title: 'Securing payments',
-      paragraph_one: `—LASZLO: "OK, nice. I'll sign this and send it back to you, and then you can sign that funding transaction for the 2-of-2 multisig.`,
-      paragraph_two: `Hey... wait a minute. If I sign this, we're back where we started: You can broadcast this transaction even after I give you a beer, and I won't get my money.`,
+      title: 'Bảo mật thanh toán', // title: 'Securing payments'
+      nav_title: 'Bảo mật thanh toán', // nav_title: 'Securing payments'
+      paragraph_one: `—LASZLO: "Được rồi, tốt. Tôi sẽ ký vào này và gửi lại cho bạn, và sau đó bạn có thể ký giao dịch tài trợ cho đa chữ ký 2 trên 2.`, // paragraph_one: `—LASZLO: "OK, nice. I'll sign this and send it back to you, and then you can sign that funding transaction for the 2-of-2 multisig.`
+      paragraph_two: `Chờ đã... đợi một chút. Nếu tôi ký vào này, chúng ta sẽ quay lại điểm xuất phát: Bạn có thể phát sóng giao dịch này ngay cả sau khi tôi đưa cho bạn một ly bia, và tôi sẽ không nhận được tiền của mình.`, // paragraph_two: `Hey... wait a minute. If I sign this, we're back where we started: You can broadcast this transaction even after I give you a beer, and I won't get my money.`
       paragraph_three:
-        'Before I sign this, I need a guarantee that this refund transaction can be revoked.',
-      paragraph_four: `Once you actually pay me for the beer, you shouldn't be able to broadcast this refund transaction. And if you DO try to broadcast it after it has been revoked, I get to keep <span className="italic">all</span> 100,000 satoshis!"`,
+          'Trước khi tôi ký vào này, tôi cần một sự đảm bảo rằng giao dịch hoàn trả này có thể bị thu hồi.', //  'Before I sign this, I need a guarantee that this refund transaction can be revoked.'
+      paragraph_four: `Một khi bạn thực sự trả tiền cho tôi cho ly bia, bạn không nên phát sóng giao dịch hoàn trả này. Và nếu bạn <span className="italic">cố gắng</span> phát sóng nó sau khi nó đã bị thu hồi, tôi sẽ giữ <span className="italic">tất cả</span> 100.000 satoshi!"`, // paragraph_four: `Once you actually pay me for the beer, you shouldn't be able to broadcast this refund transaction. And if you DO try to broadcast it after it has been revoked, I get to keep <span className="italic">all</span> 100,000 satoshis!"`
     },
     updating_the_state_three: {
-      title: 'The revocation',
-      nav_title: 'The revocation',
-      heading_one: 'The revocation',
-      paragraph_one: `You can make the 100,000 satoshi output to yourself revocable by Laszlo if you add an extra condition to it. The logic branch should allow Laszlo to spend the output with his own key AND a new private key that you generate. To revoke the transaction, you give Laszlo the new private key. It's a very unusual thing to do, but it puts 100,000 satoshis at stake, and allows Laszlo to sweep the funds if you try to broadcast the transaction after revoking it.`,
-      paragraph_two: `You generate a new key pair: a private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span> and <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_YOU_1)</span>. You will generate a new key pair like this every time you want to update the state of the payment channel.`,
-      heading_two: `Instructions`,
-      revocation_list_one: `Add an IF condition to the script so Laszlo can spend the output ONLY if he ALSO has the revocation key (you will continue keeping the key secret until it is time to revoke!)`,
-      revocation_list_two: `Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> so he can sign it`,
-      revocation_list_three: `Don't sign it yourself yet!`,
-      heading_three: `Hints`,
-      paragraph_three: `Output 0 is spent by EITHER:`,
-      hint_one: `The initial stack if you claim the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>`,
-      hint_two: `The initial stack if Laszlo claims the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span>`,
+      title: 'Sự thu hồi', // title: 'The revocation'
+      nav_title: 'Sự thu hồi', // nav_title: 'The revocation'
+      heading_one: 'Sự thu hồi', // heading_one: 'The revocation'
+      paragraph_one: `Bạn có thể khiến đầu ra 100.000 satoshi của mình có thể bị Laszlo thu hồi nếu bạn thêm một điều kiện bổ sung vào đó. Nhánh logic sẽ cho phép Laszlo chi tiêu đầu ra với khóa riêng của anh ta VÀ một khóa riêng tư mới mà bạn tạo ra. Để thu hồi giao dịch, bạn sẽ cung cấp cho Laszlo khóa riêng tư mới. Đây là một việc rất bất thường, nhưng nó đặt cược 100.000 satoshi và cho phép Laszlo quét sạch tiền nếu bạn cố gắng phát sóng giao dịch sau khi thu hồi nó.`, // paragraph_one: `You can make the 100,000 satoshi output to yourself revocable by Laszlo if you add an extra condition to it. The logic branch should allow Laszlo to spend the output with his own key AND a new private key that you generate. To revoke the transaction, you give Laszlo the new private key. It's a very unusual thing to do, but it puts 100,000 satoshis at stake, and allows Laszlo to sweep the funds if you try to broadcast the transaction after revoking it.`
+      paragraph_two: `Bạn tạo một cặp khóa mới: khóa riêng <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span> và <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_YOU_1)</span>. Bạn sẽ tạo một cặp khóa mới như thế này mỗi khi bạn muốn cập nhật trạng thái của kênh thanh toán.`, // paragraph_two: `You generate a new key pair: a private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span> and <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_YOU_1)</span>. You will generate a new key pair like this every time you want to update the state of the payment channel.`
+      heading_two: `Hướng dẫn`, // heading_two: `Instructions`
+      revocation_list_one: `Thêm điều kiện IF vào script để Laszlo chỉ có thể chi tiêu đầu ra NẾU anh ta CŨNG có khóa thu hồi (bạn sẽ tiếp tục giữ bí mật khóa này cho đến khi đến lúc thu hồi!)`, // revocation_list_one: `Add an IF condition to the script so Laszlo can spend the output ONLY if he ALSO has the revocation key (you will continue keeping the key secret until it is time to revoke!)`
+      revocation_list_two: `Gửi nó cho Laszlo bằng cách nhấp vào <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Gửi cho Laszlo</span> để anh ấy có thể ký`, // revocation_list_two: `Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> so he can sign it`
+      revocation_list_three: `Đừng tự ký nó!`, // revocation_list_three: `Don't sign it yourself yet!`
+      heading_three: 'Gợi ý', // heading_three: 'Hints'
+      paragraph_three: 'Đầu ra 0 được chi tiêu bởi EITHER:', // paragraph_three: 'Output 0 is spent by EITHER:'
+      hint_one: `Stack ban đầu nếu bạn yêu cầu tiền: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>`, // hint_one: `The initial stack if you claim the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>`
+      hint_two: `Stack ban đầu nếu Laszlo yêu cầu tiền: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span>`, // hint_two: `The initial stack if Laszlo claims the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span>`
     },
     updating_the_state_four: {
-      title: 'The Race to Revoke',
-      nav_title: 'The race to revoke',
+      title: 'Cuộc đua để thu hồi', // title: 'The Race to Revoke'
+      nav_title: 'Cuộc đua để thu hồi', // nav_title: 'The Race to Revoke'
       paragraph_one:
-        '—LASZLO: "Well, this is better, but it just occurred to me that even if I have the revocation key, it will still be a race between you and me to spend this output.',
+          '—LASZLO: "Chà, điều này tốt hơn, nhưng tôi chợt nhận ra rằng ngay cả khi tôi có khóa thu hồi, nó vẫn sẽ là một cuộc đua giữa bạn và tôi để chi tiêu đầu ra này."', // '—LASZLO: "Well, this is better, but it just occurred to me that even if I have the revocation key, it will still be a race between you and me to spend this output.'
       paragraph_two:
-        'I need a decent head start so I have a chance to notice if you cheated me. Then I can sweep the bitcoin with the revocation key before you take a full refund."',
+          'Tôi cần một sự khởi đầu tốt để có cơ hội nhận thấy nếu bạn đã lừa dối tôi. Sau đó, tôi có thể quét sạch bitcoin bằng khóa thu hồi trước khi bạn yêu cầu hoàn trả đầy đủ."', // 'I need a decent head start so I have a chance to notice if you cheated me. Then I can sweep the bitcoin with the revocation key before you take a full refund."'
     },
     updating_the_state_five: {
-      title: 'The time lock',
-      nav_title: 'The time lock',
-      heading_one: 'The time lock',
+      title: 'Khóa thời gian', // title: 'The time lock'
+      nav_title: 'Khóa thời gian', // nav_title: 'The time lock'
+      heading_one: 'Khóa thời gian', // heading_one: 'The time lock'
       time_lock_list_one:
-        'Add a 700 block delay before you can spend the output',
+          'Thêm độ trễ 700 khối trước khi bạn có thể chi tiêu đầu ra', // 'Add a 700 block delay before you can spend the output'
       time_lock_list_two:
-        'Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> so he can sign it',
-      time_lock_list_three: "Don't sign it yourself yet!",
-      heading_two: 'Hints',
-      paragraph_one: 'Output 0 is spent by EITHER:',
+          'Gửi nó cho Laszlo bằng cách nhấp vào <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Gửi cho Laszlo</span> để anh ấy có thể ký', // 'Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> so he can sign it'
+      time_lock_list_three: "Đừng tự ký nó!", // time_lock_list_three: "Don't sign it yourself yet!"
+      heading_two: 'Gợi ý', // heading_two: 'Hints'
+      paragraph_one: 'Đầu ra 0 được chi tiêu bởi EITHER:', // paragraph_one: 'Output 0 is spent by EITHER:'
       hint_one:
-        'The initial stack if you claim the funds after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU) 1</span> ',
+          'Stack ban đầu nếu bạn yêu cầu tiền sau 700 khối: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU) 1 </span> ', //  'The initial stack if you claim the funds after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU) 1 </span> '
       hint_two:
-        'The initial stack if Laszlo claims the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span> ',
+          'Stack ban đầu nếu Laszlo yêu cầu tiền: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span> ', //  'The initial stack if Laszlo claims the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span> '
     },
     updating_the_state_six: {
-      title: 'Channel open with Laszlo',
-      nav_title: 'Channel open with Laszlo',
+      title: 'Kênh mở với Laszlo', // title: 'Channel open with Laszlo'
+      nav_title: 'Kênh mở với Laszlo', // nav_title: 'Channel open with Laszlo'
       paragraph_one:
-        'This time, when you give the transaction to Laszlo, he smiles and applauds! He signs the refund (child) transaction and now you can sign and broadcast the parent transaction that deposits the funds to the 2-of-2 multisig. The payment channel is now open!',
+          'Lần này, khi bạn đưa giao dịch cho Laszlo, anh ấy mỉm cười và vỗ tay! Anh ấy đã ký giao dịch hoàn trả (con) và bây giờ bạn có thể ký và phát sóng giao dịch cha gửi tiền đến đầu ra đa chữ ký 2 trên 2. Kênh thanh toán hiện đã mở!', // 'This time, when you give the transaction to Laszlo, he smiles and applauds! He signs the refund (child) transaction and now you can sign and broadcast the parent transaction that deposits the funds to the 2-of-2 multisig. The payment channel is now open!'
     },
     making_a_payment_one: {
-      title: 'Making a payment',
-      nav_title: 'Making a payment',
-      heading_one: 'Making a payment',
-      paragraph_one: "Let's recap:",
+      title: 'Thực hiện thanh toán', // title: 'Making a payment'
+      nav_title: 'Thực hiện thanh toán', // nav_title: 'Making a payment'
+      heading_one: 'Thực hiện thanh toán', // heading_one: 'Making a payment'
+      paragraph_one: "Hãy cùng tóm tắt lại:", // paragraph_one: "Let's recap:"
       list_one:
-        'You sent 100,000 satoshis to a 2-of-2 multisig output between you and Laszlo.',
+          'Bạn đã gửi 100.000 satoshi đến đầu ra đa chữ ký 2 trên 2 giữa bạn và Laszlo.', //  'You sent 100,000 satoshis to a 2-of-2 multisig output between you and Laszlo.'
       list_two:
-        'You have, offline, a refund transaction that spends that output.',
+          'Bạn có, ngoại tuyến, một giao dịch hoàn trả chi tiêu đầu ra đó.', // 'You have, offline, a refund transaction that spends that output.'
       list_three:
-        'That refund transaction specifies two options for how the funds can be spent:',
+          'Giao dịch hoàn trả đó chỉ định hai tùy chọn về cách chi tiêu quỹ:', // 'That refund transaction specifies two options for how the funds can be spent:'
       list_three_sub_one:
-        'You to get all 99,000 satoshis back accounting for fees after 700 blocks, or',
+          'Bạn lấy lại tất cả 99.000 satoshi để tính phí sau 700 khối, hoặc', //  'You to get all 99,000 satoshis back accounting for fees after 700 blocks, or'
       list_three_sub_two:
-        'Laszlo gets all the money if he gets the private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span> from you',
+          'Laszlo nhận được tất cả tiền nếu anh ta lấy được khóa riêng tư <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span> từ bạn', //  'Laszlo gets all the money if he gets the private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span> from you'
       list_four:
-        'Laszlo has already signed this refund transaction, and you can sign it whenever you want to broadcast it.',
+          'Laszlo đã ký giao dịch hoàn trả này và bạn có thể ký nó bất cứ khi nào bạn muốn phát sóng nó.', //  'Laszlo has already signed this refund transaction, and you can sign it whenever you want to broadcast it.'
       list_five:
-        'Once Laszlo signed this refund (child) transaction, you were safe to sign and broadcast the parent transaction that sends the funds to the 2-of-2 multisig.',
+          'Sau khi Laszlo ký giao dịch hoàn trả (con) này, bạn đã an toàn để ký và phát sóng giao dịch cha gửi tiền đến đầu ra đa chữ ký 2 trên 2.', //  'Once Laszlo signed this refund (child) transaction, you were safe to sign and broadcast the parent transaction that sends the funds to the 2-of-2 multisig.'
       paragraph_two:
-        'The transaction that funded the multisig output is called the <span className="font-bold">funding transaction</span>. Confirming it on the blockchain <span className="font-bold">opens</span> the payment channel.',
-      paragraph_three: `The offline refund transaction that spends the output of the funding transaction is called the <span className="font-bold">commitment transaction</span>. Confirming it on the blockchain would <span className="font-bold">close</span> the channel. The first commitment transaction is your full refund because you haven't made any payments to Laszlo yet.`,
+          'Giao dịch đã cấp vốn cho đầu ra đa chữ ký được gọi là <span className="font-bold">giao dịch tài trợ</span>. Xác nhận nó trên blockchain <span className="font-bold">mở</span> kênh thanh toán.', // 'The transaction that funded the multisig output is called the <span className="font-bold">funding transaction</span>. Confirming it on the blockchain <span className="font-bold">opens</span> the payment channel.'
+      paragraph_three: `Giao dịch hoàn trả ngoại tuyến chi tiêu đầu ra của giao dịch tài trợ được gọi là <span className="font-bold">giao dịch cam kết</span>. Xác nhận nó trên blockchain sẽ <span className="font-bold">đóng</span> kênh. Giao dịch cam kết đầu tiên là khoản hoàn trả đầy đủ của bạn vì bạn chưa thực hiện bất kỳ khoản thanh toán nào cho Laszlo.`, // paragraph_three: `The offline refund transaction that spends the output of the funding transaction is called the <span className="font-bold">commitment transaction</span>. Confirming it on the blockchain would <span className="font-bold">close</span> the channel. The first commitment transaction is your full refund because you haven't made any payments to Laszlo yet.`
       paragraph_four:
-        'While the channel is open, you and Laszlo can make offline payments to each other, back and forth, by negotiating new commitment transactions and revoking old ones. As you buy more drinks, your "refund" amount will go down and Laszlo’s portion of the original 100,000 satoshis locked in the multisig goes up.',
+          'Trong khi kênh đang mở, bạn và Laszlo có thể thực hiện các khoản thanh toán ngoại tuyến cho nhau, qua lại, bằng cách đàm phán các giao dịch cam kết mới và thu hồi các giao dịch cũ. Khi bạn mua thêm đồ uống, số tiền "hoàn trả" của bạn sẽ giảm xuống và phần của Laszlo trong số 100.000 satoshi ban đầu bị khóa trong đa chữ ký sẽ tăng lên.', // 'While the channel is open, you and Laszlo can make offline payments to each other, back and forth, by negotiating new commitment transactions and revoking old ones. As you buy more drinks, your "refund" amount will go down and Laszlo’s portion of the original 100,000 satoshis locked in the multisig goes up.'
     },
     making_a_payment_two: {
-      title: 'Buy a beer!',
-      nav_title: 'Buy a beer!',
-      heading_one: 'Buy a beer!',
-      paragraph_one: `Now it's finally time to send bitcoin off-chain to Laszlo. We will "simply" add a 1,000 satoshi output for him in an updated commitment transaction. We will also need to promise never to broadcast the old commitment transaction, which doesn't allocate any money to Laszlo. That is guaranteed when we send him the revocation key for the now old commitment transaction, which we'll do next.`,
-      paragraph_two: `You generate another revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span> for this new state. If you wanted to repeat the cycle and buy a second drink, you would revoke <span className="font-bold">this</span> transaction for another new commitment where Laszlo gets paid for a second beer. It is a party after all!`,
-      heading_two: `Instructions`,
-      list_one: `Deduct 1,000 satoshis from your output`,
-      list_two: `Add 1000 satoshis to the second output and fill in the script for Laszlo`,
-      list_three: `Send it to Laszlo by clicking "Send to Laszlo" so he can sign it`,
-      list_four: `Don't sign it yourself yet!`,
-      heading_three: `Hints`,
-      paragraph_three: `Output 0 is spent by either:`,
-      hint_one: `The 'Refund' tab is now known as 'Initial Commitment'. You can use it to see the script you wrote for the previous state.`,
+      title: 'Mua một ly bia!', // title: 'Buy a beer!'
+      nav_title: 'Mua một ly bia!', // nav_title: 'Buy a beer!'
+      heading_one: 'Mua một ly bia!', // heading_one: 'Buy a beer!'
+      paragraph_one: `Bây giờ cuối cùng cũng đã đến lúc gửi bitcoin ngoại tuyến cho Laszlo. Chúng ta sẽ "đơn giản" thêm một đầu ra 1.000 satoshi cho anh ấy trong một giao dịch cam kết được cập nhật. Chúng tôi cũng sẽ cần phải hứa sẽ không bao giờ phát sóng giao dịch cam kết cũ, giao dịch này không phân bổ bất kỳ khoản tiền nào cho Laszlo. Điều đó được đảm bảo khi chúng tôi gửi cho anh ấy khóa thu hồi cho giao dịch cam kết cũ hiện tại, điều này sẽ được thực hiện tiếp theo.`, // paragraph_one: `Now it's finally time to send bitcoin off-chain to Laszlo. We will "simply" add a 1,000 satoshi output for him in an updated commitment transaction. We will also need to promise never to broadcast the old commitment transaction, which doesn't allocate any money to Laszlo. That is guaranteed when we send him the revocation key for the now old commitment transaction, which we'll do next.`
+      paragraph_two: `Bạn tạo một khóa thu hồi khác, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span> cho trạng thái mới này. Nếu bạn muốn lặp lại chu kỳ và mua một ly thứ hai, bạn sẽ thu hồi <span className="font-bold">giao dịch này</span> cho một cam kết mới khác, trong đó Laszlo được trả tiền cho một ly bia thứ hai. Dù sao thì cũng là một bữa tiệc!`, // paragraph_two: `You generate another revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span> for this new state. If you wanted to repeat the cycle and buy a second drink, you would revoke <span className="font-bold">this</span> transaction for another new commitment where Laszlo gets paid for a second beer. It is a party after all!`
+      heading_two: `Hướng dẫn`, // heading_two: `Instructions`
+      list_one: `Khấu trừ 1.000 satoshi khỏi đầu ra của bạn`, // list_one: `Deduct 1,000 satoshis from your output`
+      list_two: `Thêm 1000 satoshi vào đầu ra thứ hai và điền vào script cho Laszlo`, // list_two: `Add 1000 satoshis to the second output and fill in the script for Laszlo`
+      list_three: `Gửi nó cho Laszlo bằng cách nhấp vào "Gửi cho Laszlo" để anh ấy có thể ký`, // list_three: `Send it to Laszlo by clicking "Send to Laszlo" so he can sign it`
+      list_four: `Đừng tự ký nó!`, // list_four: `Don't sign it yourself yet!`
+      heading_three: 'Gợi ý', // heading_three: 'Hints'
+      paragraph_three: 'Đầu ra 0 được chi tiêu bởi:', // paragraph_three: 'Output 0 is spent by either:'
+      hint_one: `Tab 'Hoàn trả' bây giờ được gọi là 'Cam kết ban đầu'. Bạn có thể sử dụng nó để xem script bạn đã viết cho trạng thái trước đó.`, // hint_one: `The 'Refund' tab is now known as 'Initial Commitment'. You can use it to see the script you wrote for the previous state.`
       hint_two:
-        'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU) 1 </span>',
-      hint_three: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_2) SIG(LASZLO) 0 </span>`,
-      paragraph_four: `Output 1 is spent by Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span>`,
+          'Bạn, sau 700 khối: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU) 1 </span>', //  'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU) 1 </span>'
+      hint_three: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_2) SIG(LASZLO) 0 </span>`, // hint_three: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_2) SIG(LASZLO) 0 </span>`
+      paragraph_four: `Đầu ra 1 được Laszlo chi tiêu: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span>`, // paragraph_four: `Output 1 is spent by Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span>`
     },
     making_a_payment_three: {
-      title: `Laszlo's blockchain dilemma`,
-      nav_title: `Laszlo's blockchain dilemma`,
-      paragraph_one: `Laszlo looks at this transaction for a second and grabs a glass from behind the bar but doesn't pour the beer.`,
-      paragraph_two: `—LASZLO: "Wait. If you don't sign this transaction, I have nothing. You could disappear with this beer, and I wouldn't be able to confirm anything on the chain. Maybe you should sign it first, then send it to me so we both have a copy?"`,
+      title: `Mâu thuẫn blockchain của Laszlo`, // title: `Laszlo's blockchain dilemma`
+      nav_title: `Mâu thuẫn blockchain của Laszlo`, // nav_title: `Laszlo's blockchain dilemma`
+      paragraph_one: `Laszlo nhìn giao dịch này trong giây lát và lấy một chiếc ly từ phía sau quầy bar nhưng không rót bia.`, // paragraph_one: `Laszlo looks at this transaction for a second and grabs a glass from behind the bar but doesn't pour the beer.`
+      paragraph_two: `—LASZLO: "Chờ đã. Nếu bạn không ký giao dịch này, tôi sẽ không có gì cả. Bạn có thể biến mất cùng với ly bia này, và tôi sẽ không thể xác nhận bất cứ điều gì trên chuỗi. Có lẽ bạn nên ký nó trước, sau đó gửi cho tôi để cả hai chúng ta đều có một bản sao?"`, // paragraph_two: `—LASZLO: "Wait. If you don't sign this transaction, I have nothing. You could disappear with this beer, and I wouldn't be able to confirm anything on the chain. Maybe you should sign it first, then send it to me so we both have a copy?"`
     },
     making_a_payment_four: {
-      title: `Holocat's trustless warning`,
-      nav_title: `Holocat's trustless warning`,
-      paragraph_one: `That's when Holocat materializes on the table, standing up on her hind legs with her front paws outstretched, and meows.`,
-      paragraph_two: `—HOLOCAT: "Hang on, you can't give Laszlo your signature for this transaction! Next time you make a payment, you'll give him the revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>. He'll have everything he needs to steal all 100,000 satoshis!"`,
-      paragraph_three: `Things are getting a bit messy. Before he gives you a beer, Laszlo needs something to ensure he will get paid. But he can't have your transaction because then he'll have access to all your money! Laszlo is a great guy, and his bar is one of the best in the city, but it would be nice if we didn't have to trust him.`,
+      title: `Cảnh báo không tin tưởng của Holocat`, // title: `Holocat's trustless warning`
+      nav_title: `Cảnh báo không tin tưởng của Holocat`, // nav_title: `Holocat's trustless warning`
+      paragraph_one: `Đó là lúc Holocat xuất hiện trên bàn, đứng thẳng bằng hai chân sau với hai chân trước dang rộng và kêu meo meo.`, // paragraph_one: `That's when Holocat materializes on the table, standing up on her hind legs with her front paws outstretched, and meows.`
+      paragraph_two: `—HOLOCAT: "Chờ đã, bạn không thể đưa chữ ký của mình cho Laszlo cho giao dịch này! Lần tới khi bạn thực hiện thanh toán, bạn sẽ đưa cho anh ấy khóa thu hồi <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>. Anh ấy sẽ có mọi thứ cần thiết để đánh cắp tất cả 100.000 satoshi!"`, // paragraph_two: `—HOLOCAT: "Hang on, you can't give Laszlo your signature for this transaction! Next time you make a payment, you'll give him the revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>. He'll have everything he needs to steal all 100,000 satoshis!"`
+      paragraph_three: `Mọi thứ đang trở nên hơi lộn xộn. Trước khi anh ấy đưa cho bạn một ly bia, Laszlo cần một thứ gì đó để đảm bảo rằng anh ấy sẽ được trả tiền. Nhưng anh ấy không thể có giao dịch của bạn vì khi đó anh ấy sẽ có quyền truy cập vào tất cả tiền của bạn! Laszlo là một người tuyệt vời, và quán bar của anh ấy là một trong những quán bar tốt nhất thành phố, nhưng sẽ tốt hơn nếu chúng ta không phải tin tưởng anh ấy.`, // paragraph_three: `Things are getting a bit messy. Before he gives you a beer, Laszlo needs something to ensure he will get paid. But he can't have your transaction because then he'll have access to all your money! Laszlo is a great guy, and his bar is one of the best in the city, but it would be nice if we didn't have to trust him.`
     },
     making_a_payment_five: {
-      title: `Asymmetry`,
-      nav_title: `Asymmetry`,
-      heading_one: `Asymmetry`,
-      paragraph_one: `We know we want Laszlo to sign the first transaction but we don't want him to have our signature on it. We'll need to construct a second transaction for him that <span className="font-bold">does</span> have our signature on it, but without any possibility of him spending all the money unfairly.`,
-      paragraph_two: `If Laszlo is going to have his own commitment transaction, then don't we also want that transaction to be revocable? Yes! In fact, Laszlo's commitment transaction will be a mirror-image of yours. The revocable time lock script will use Laszlo's first revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_LASZLO_1)</span> and the large refund output will go directly to you without any fuss.`,
-      heading_two: `Instructions`,
-      list_one: `Fill in the amounts and output scripts for Laszlo's commitment transaction`,
-      list_two: `Sign it and send it to Laszlo, who will then sign your commitment transaction and send that back to you`,
-      heading_three: 'Hints',
-      hint_one: `You can switch to the 'Commitment_you' tab to see the script you wrote for your commitment transaction.`,
-      paragraph_three: 'Output 0 is spent by either:',
+      title: `Tính bất đối xứng`, // title: `Asymmetry`
+      nav_title: `Tính bất đối xứng`, // nav_title: `Asymmetry`
+      heading_one: `Tính bất đối xứng`, // heading_one: `Asymmetry`
+      paragraph_one: `Chúng ta biết rằng chúng ta muốn Laszlo ký giao dịch đầu tiên nhưng chúng ta không muốn anh ta có chữ ký của chúng ta trên đó. Chúng ta sẽ cần phải xây dựng một giao dịch thứ hai cho anh ta có <span className="font-bold">chứa</span> chữ ký của chúng ta, nhưng không có khả năng anh ta chi tiêu tất cả tiền một cách bất công.`, // paragraph_one: `We know we want Laszlo to sign the first transaction but we don't want him to have our signature on it. We'll need to construct a second transaction for him that <span className="font-bold">does</span> have our signature on it, but without any possibility of him spending all the money unfairly.`
+      paragraph_two: `Nếu Laszlo sẽ có giao dịch cam kết của riêng mình, thì chúng ta cũng không muốn giao dịch đó có thể thu hồi sao? Đúng vậy! Trên thực tế, giao dịch cam kết của Laszlo sẽ là một bản sao gương của bạn. Script khóa thời gian có thể thu hồi sẽ sử dụng khóa thu hồi đầu tiên của Laszlo <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_LASZLO_1)</span> và đầu ra hoàn tiền lớn sẽ trực tiếp chuyển cho bạn mà không gặp bất kỳ rắc rối nào.`, // paragraph_two: `If Laszlo is going to have his own commitment transaction, then don't we also want that transaction to be revocable? Yes! In fact, Laszlo's commitment transaction will be a mirror-image of yours. The revocable time lock script will use Laszlo's first revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_LASZLO_1)</span> and the large refund output will go directly to you without any fuss.`
+      heading_two: `Hướng dẫn`, // heading_two: `Instructions`
+      list_one: `Điền số tiền và các script đầu ra cho giao dịch cam kết của Laszlo`, // list_one: `Fill in the amounts and output scripts for Laszlo's commitment transaction`
+      list_two: `Ký nó và gửi nó cho Laszlo, người sau đó sẽ ký giao dịch cam kết của bạn và gửi lại cho bạn`, // list_two: `Sign it and send it to Laszlo, who will then sign your commitment transaction and send that back to you`
+      heading_three: 'Gợi ý', // heading_three: 'Hints'
+      hint_one: `Bạn có thể chuyển sang tab 'Commitment_you' để xem script bạn đã viết cho giao dịch cam kết của mình.`, // hint_one: `You can switch to the 'Commitment_you' tab to see the script you wrote for your commitment transaction.`
+      paragraph_three: 'Đầu ra 0 được chi tiêu bởi:', // paragraph_three: 'Output 0 is spent by either:'
       hint_two:
-        'Laszlo, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(LASZLO) 1 </span>',
-      hint_three: `You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_1) SIG(YOU) 0 </span>`,
-      paragraph_four: `Output 1 is spent by You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span>`,
+          'Laszlo, sau 700 khối: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(LASZLO) 1 </span>', // 'Laszlo, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(LASZLO) 1 </span>'
+      hint_three: `Bạn <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_1) SIG(YOU) 0 </span>`, // hint_three: `You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_1) SIG(YOU) 0 </span>`
+      paragraph_four: `Đầu ra 1 được bạn chi tiêu: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span>`, // paragraph_four: `Output 1 is spent by You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span>`
     },
     making_a_payment_six: {
-      title: `Complete the payment`,
-      nav_title: `Complete the payment`,
-      heading_one: `Complete the payment`,
-      paragraph_one: "Let's do another recap.",
-      list_one: 'A 2 of 2 output is confirmed on the blockchain',
+      title: `Hoàn thành thanh toán`, // title: `Complete the payment`
+      nav_title: `Hoàn thành thanh toán`, // nav_title: `Complete the payment`
+      heading_one: `Hoàn thành thanh toán`, // heading_one: `Complete the payment`
+      paragraph_one: "Hãy cùng tóm tắt lại.", // paragraph_one: "Let's do another recap."
+      list_one: 'Đầu ra 2 trên 2 được xác nhận trên blockchain', // list_one: 'A 2 of 2 output is confirmed on the blockchain'
       paragraph_two:
-        'There are several off-chain transactions that spend the 100,000 satoshi (sat) output locked in the 2-of-2 multisig:',
-      paragraph_three: 'You will end up with these transactions:',
-      paragraph_four: 'Commitment 1 (You)',
+          'Có một số giao dịch ngoại tuyến chi tiêu đầu ra 100.000 satoshi (sat) bị khóa trong đa chữ ký 2 trên 2:', // 'There are several off-chain transactions that spend the 100,000 satoshi (sat) output locked in the 2-of-2 multisig:'
+      paragraph_three: 'Bạn sẽ kết thúc với những giao dịch này:', // paragraph_three: 'You will end up with these transactions:'
+      paragraph_four: 'Cam kết 1 (Bạn)', // paragraph_four: 'Commitment 1 (You)'
       commitment_one_you: {
         list_one:
-          '<span className="font-semibold">Input 0:</span> signed by Laszlo',
+            '<span className="font-semibold">Đầu vào 0:</span> được ký bởi Laszlo', //'<span className="font-semibold">Input 0:</span> signed by Laszlo'
         list_two:
-          '<span className="font-semibold">Output 0:</span> 99,000 sats to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>',
-        list_three: `<span className="font-semibold">Miner fees:</span> 1,000 sats`,
+            '<span className="font-semibold">Đầu ra 0:</span> 99.000 sats cho bạn sau 700 khối hoặc Laszlo với <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>', // '<span className="font-semibold">Output 0:</span> 99,000 sats to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>'
+        list_three: `<span className="font-semibold">Phí khai thác:</span> 1.000 sats`, // list_three: `<span className="font-semibold">Miner fees:</span> 1,000 sats`
       },
       commitment_two_you: {
         list_one:
-          '<span className="font-semibold">Input 0:</span> signed by Laszlo',
+            '<span className="font-semibold">Đầu vào 0:</span> được ký bởi Laszlo', // '<span className="font-semibold">Input 0:</span> signed by Laszlo'
         list_two:
-          '<span className="font-semibold">Output 0:</span> 98,000 sats to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>',
+            '<span className="font-semibold">Đầu ra 0:</span> 98.000 sats cho bạn sau 700 khối hoặc Laszlo với <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>', // '<span className="font-semibold">Output 0:</span> 98,000 sats to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>'
         list_three:
-          '<span className="font-semibold">Output 1:</span> 1,000 sats to Laszlo',
-        list_four: `<span className="font-semibold">Miner fees:</span> 1,000 sats`,
+            '<span className="font-semibold">Đầu ra 1:</span> 1.000 sats cho Laszlo', // '<span className="font-semibold">Output 1:</span> 1,000 sats to Laszlo'
+        list_four: `<span className="font-semibold">Phí khai thác:</span> 1.000 sats`, // list_four: `<span className="font-semibold">Miner fees:</span> 1,000 sats`
       },
-      paragraph_five: 'Commitment 2 (You)',
-      paragraph_six: 'Laszlo will end up with this transaction:',
-      paragraph_seven: 'Commitment 2 (Laszlo)',
+      paragraph_five: 'Cam kết 2 (Bạn)', // paragraph_five: 'Commitment 2 (You)'
+      paragraph_six: 'Laszlo sẽ kết thúc với giao dịch này:', // paragraph_six: 'Laszlo will end up with this transaction:'
+      paragraph_seven: 'Cam kết 2 (Laszlo)', // paragraph_seven: 'Commitment 2 (Laszlo)'
       commitment_two_laszlo: {
-        list_one:
-          '<span className="font-semibold">Input 0:</span> signed by you',
-        list_two:
-          '<span className="font-semibold">Output 0:</span> 1,000 sats to Laszlo after 700 blocks or you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_LASZLO_1</span>',
-        list_three:
-          '<span className="font-semibold">Output 1:</span> 98,000 sats to you',
-        list_four: `<span className="font-semibold">Miner fees:</span> 1,000 sats`,
+          list_one:
+              '<span className="font-semibold">Đầu vào 0:</span> được ký bởi bạn', // '<span className="font-semibold">Input 0:</span> signed by you'
+          list_two:
+              '<span className="font-semibold">Đầu ra 0:</span> 1.000 sats cho Laszlo sau 700 khối hoặc bạn với <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_LASZLO_1</span>', // '<span className="font-semibold">Output 0:</span> 1,000 sats to Laszlo after 700 blocks or you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_LASZLO_1</span>'
+          list_three:
+              '<span className="font-semibold">Đầu ra 1:</span> 98.000 sats cho bạn', // '<span className="font-semibold">Output 1:</span> 98,000 sats to you'
+          list_four: `<span className="font-semibold">Phí khai thác:</span> 1.000 sats`, // list_four: `<span className="font-semibold">Miner fees:</span> 1,000 sats`
       },
-      paragraph_eight: `All three of these transactions are signed and valid, but Laszlo hasn't handed you a beer yet. Why not? Only one thing left to do, send Laszlo your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>!`,
-      success_bar: 'Send REVOCATION_YOU_1 to Laszlo',
+      paragraph_eight: `Tất cả ba giao dịch này đều đã được ký và hợp lệ, nhưng Laszlo vẫn chưa đưa cho bạn một ly bia. Tại sao không? Chỉ còn một việc nữa phải làm, gửi cho Laszlo khóa thu hồi trước đó của bạn, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>!`, // paragraph_eight: `All three of these transactions are signed and valid, but Laszlo hasn't handed you a beer yet. Why not? Only one thing left to do, send Laszlo your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>!`
+      success_bar: 'Gửi REVOCATION_YOU_1 cho Laszlo', // success_bar: 'Send REVOCATION_YOU_1 to Laszlo'
     },
     making_a_payment_seven: {
       title: `🍺 Ahhhhhhh, nice.`,
@@ -2982,278 +2985,278 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_one: '🍺 Ahhhhhhh, nice.',
     },
     making_a_payment_eight: {
-      title: `Make another payment`,
-      nav_title: `Make another payment`,
-      heading_one: `Make another payment`,
-      paragraph_one: `The night is still young, and you're not flying your Budgetcopter home. Got time for another beer? Now that you and Laszlo have your asymmetric transactions and a flow worked out with revocation keys, let's run the protocol again.`,
-      paragraph_two: `The two commitment transactions representing the current state where you have paid Laszlo 1,000 sats for a beer are on your ePhone Infinity screen.`,
-      heading_two: `Instructions`,
-      list_one: `Update the amounts and output scripts for Laszlo's new commitment transaction`,
-      list_two: "Sign Laszlo's transaction and send it to him",
-      list_three: `Update your commitment transaction: Laszlo will revoke his last state by sending you <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">REVOCATION_LASZLO_1</span>. Update the amounts and output scripts in your commitment transaction.`,
-      list_four: 'Send your transaction to Laszlo so he can sign it',
-      list_five: `Once you have Laszlo's signature, send him your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_YOU_2 </span> `,
-      paragraph_three: 'Enjoy 🍺',
-      heading_three: 'Hints',
-      paragraph_four: `Don't forget to set aside 1,000 sats for miner fees`,
-      paragraph_five: 'Output 0 is spent by either:',
+      title: `Thực hiện một khoản thanh toán khác`, // title: `Make another payment`
+      nav_title: `Thực hiện một khoản thanh toán khác`, // nav_title: `Make another payment`
+      heading_one: `Thực hiện một khoản thanh toán khác`, // heading_one: `Make another payment`
+      paragraph_one: `Đêm vẫn còn dài và bạn không bay về nhà bằng Budgetcopter của mình. Có thời gian cho một ly bia nữa không? Bây giờ bạn và Laszlo đã có các giao dịch bất đối xứng và một luồng hoạt động được thực hiện với các khóa thu hồi, hãy chạy lại giao thức.`, // paragraph_one: `The night is still young, and you're not flying your Budgetcopter home. Got time for another beer? Now that you and Laszlo have your asymmetric transactions and a flow worked out with revocation keys, let's run the protocol again.`
+      paragraph_two: `Hai giao dịch cam kết đại diện cho trạng thái hiện tại, nơi bạn đã trả cho Laszlo 1.000 sats cho một ly bia, nằm trên màn hình ePhone Infinity của bạn.`, // paragraph_two: `The two commitment transactions representing the current state where you have paid Laszlo 1,000 sats for a beer are on your ePhone Infinity screen.`
+      heading_two: `Hướng dẫn`, // heading_two: `Instructions`
+      list_one: `Cập nhật số tiền và các script đầu ra cho giao dịch cam kết mới của Laszlo`, // list_one: `Update the amounts and output scripts for Laszlo's new commitment transaction`
+      list_two: "Ký giao dịch của Laszlo và gửi cho anh ấy", // list_two: "Sign Laszlo's transaction and send it to him"
+      list_three: `Cập nhật giao dịch cam kết của bạn: Laszlo sẽ thu hồi trạng thái cuối cùng của mình bằng cách gửi cho bạn <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">REVOCATION_LASZLO_1</span>. Cập nhật số tiền và các script đầu ra trong giao dịch cam kết của bạn.`, // list_three: `Update your commitment transaction: Laszlo will revoke his last state by sending you <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">REVOCATION_LASZLO_1</span>. Update the amounts and output scripts in your commitment transaction.`
+      list_four: 'Gửi giao dịch của bạn cho Laszlo để anh ấy có thể ký', // list_four: 'Send your transaction to Laszlo so he can sign it'
+      list_five: `Sau khi bạn có chữ ký của Laszlo, hãy gửi cho anh ấy khóa thu hồi trước đó của bạn, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_YOU_2 </span> `, // list_five: `Once you have Laszlo's signature, send him your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_YOU_2 </span> `
+      paragraph_three: 'Thưởng thức 🍺', // paragraph_three: 'Enjoy 🍺'
+      heading_three: 'Gợi ý', // heading_three: 'Hints'
+      paragraph_four: `Đừng quên dành riêng 1.000 sats cho phí khai thác`, // paragraph_four: `Don't forget to set aside 1,000 sats for miner fees`
+      paragraph_five: 'Đầu ra 0 được chi tiêu bởi:', // paragraph_five: 'Output 0 is spent by either:'
       step_one: {
-        hint_one: `Laszlo, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) 1 </span>`,
-        hint_two: `You:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_2) SIG(YOU) 0 </span> `,
-        hint_three: `Output 1 is spent by You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span> `,
+        hint_one: `Laszlo, sau 700 khối:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) 1 </span>`, // hint_one: `Laszlo, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) 1 </span>`
+        hint_two: `Bạn:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_2) SIG(YOU) 0 </span> `, // hint_two: `You:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_2) SIG(YOU) 0 </span> `
+        hint_three: `Đầu ra 1 được bạn chi tiêu <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span> `, // hint_three: `Output 1 is spent by You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span> `
       },
       step_two: {
-        hint_one: `You, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>`,
-        hint_two: `Laszlo:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_3) SIG(LASZLO) 0 </span> `,
-        hint_three: `Output 1 is spent by Laszlo <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span> `,
+        hint_one: `Bạn, sau 700 khối:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>`, // hint_one: `You, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>`
+        hint_two: `Laszlo:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_3) SIG(LASZLO) 0 </span> `, // hint_two: `Laszlo:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_3) SIG(LASZLO) 0 </span> `
+        hint_three: `Đầu ra 1 được Laszlo chi tiêu <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span> `, // hint_three: `Output 1 is spent by Laszlo <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span> `
       },
     },
 
     outro_one: {
-      title: 'Outro',
-      nav_title: 'Going all night',
+      title: 'Kết luận', // title: 'Outro'
+      nav_title: 'Thâu đêm suốt sáng', // nav_title: 'Going all night'
       paragraph_one:
-        'You can do this all night long! Well, until your 100,000 satoshis have all been sent to Laszlo anyway',
+          'Bạn có thể làm điều này cả đêm! Chà, cho đến khi tất cả 100.000 satoshi của bạn đều được gửi đến Laszlo', // 'You can do this all night long! Well, until your 100,000 satoshis have all been sent to Laszlo anyway'
       paragraph_two:
-        "Don't forget to drink some water! They have holodogs and nachos too.",
+          "Đừng quên uống một chút nước! Họ cũng có holodogs và nachos.", // "Don't forget to drink some water! They have holodogs and nachos too."
     },
 
     outro_two: {
-      title: 'Outro',
-      nav_title: 'Heading home',
-      paragraph_one: `After a long and strange day, you pay for your drinks and head home. But as you open the door to your 3D printed bungalow, you—oh, crap! It’s Vanderpoole again! Is this really happening or did you have one too many Mempool Margaritas? Despite a small cadre of holocats flanking him on every side, he isn’t looking for a fight.`,
-      paragraph_two: `—VANDERPOOLE: “We don’t really know one another, even though, as my grandpappy used to say, the fates of strangers are often intertwined. I need you to hear me. All of the Satoshi Nakamoto stuff was me trying to save my family’s business. You can’t imagine how much mining meant to us. I guess I wasn’t ready for change and wanted to keep things more or less the same.”`,
+      title: 'Kết luận', // title: 'Outro'
+      nav_title: 'Trở về nhà', // nav_title: 'Heading home'
+      paragraph_one: `Sau một ngày dài và kỳ lạ, bạn trả tiền đồ uống và trở về nhà. Nhưng khi bạn mở cửa căn nhà gỗ 3D của mình, bạn - ôi trời! Đó là Vanderpoole một lần nữa! Điều này có thực sự xảy ra hay bạn đã uống quá nhiều Mempool Margaritas? Mặc dù có một nhóm nhỏ các holocat bao quanh ông ta ở mọi phía, nhưng ông ta không hề tìm kiếm một cuộc chiến.`, // paragraph_one: `After a long and strange day, you pay for your drinks and head home. But as you open the door to your 3D printed bungalow, you—oh, crap! It’s Vanderpoole again! Is this really happening or did you have one too many Mempool Margaritas? Despite a small cadre of holocats flanking him on every side, he isn’t looking for a fight.`
+      paragraph_two: `—VANDERPOOLE: “Chúng ta không thực sự biết nhau, mặc dù, như ông nội tôi thường nói, số phận của người lạ thường gắn liền với nhau. Tôi cần bạn nghe tôi nói. Tất cả những chuyện về Satoshi Nakamoto đều là tôi cố gắng cứu công việc kinh doanh của gia đình mình. Bạn không thể tưởng tượng được việc khai thác có ý nghĩa như thế nào đối với chúng tôi. Tôi đoán là tôi chưa sẵn sàng cho sự thay đổi và muốn giữ mọi thứ ít nhiều như cũ.”`, // paragraph_two: `—VANDERPOOLE: “We don’t really know one another, even though, as my grandpappy used to say, the fates of strangers are often intertwined. I need you to hear me. All of the Satoshi Nakamoto stuff was me trying to save my family’s business. You can’t imagine how much mining meant to us. I guess I wasn’t ready for change and wanted to keep things more or less the same.”`
     },
 
     outro_three: {
-      title: 'Outro',
-      nav_title: 'Bitcoin community',
-      paragraph_one: `You ask why the name Satoshi Nakamoto mattered so much to him.`,
-      paragraph_two: `—VANDERPOOLE: “It’s the only name in bitcoin bigger than Bitrey and Vanderpoole. Someone using the name Satoshi Nakamoto once told me that bitcoin had moved far beyond its creator’s control over a century ago. This is why, to salvage the Vanderpoole name, I tried to claim a more prominent name. You can’t understand the thrill of minting new coins. It was magic to me then; it is magic to me now.”`,
-      paragraph_three: `—VANDERPOOLE: "I realize now that even if I were Satoshi’s great-grandson, bitcoin isn’t defined by leaders. It’s defined by its community. Not even Satoshi could change what bitcoin has become. That has always been what made bitcoin great and why the millions of other coins made in bitcoin’s image never lasted.”`,
+      title: 'Kết luận', // title: 'Outro'
+      nav_title: 'Cộng đồng bitcoin', // nav_title: 'Bitcoin community'
+      paragraph_one: `Bạn hỏi tại sao cái tên Satoshi Nakamoto lại quan trọng với ông ấy như vậy.`, // paragraph_one: `You ask why the name Satoshi Nakamoto mattered so much to him.`
+      paragraph_two: `—VANDERPOOLE: “Đó là cái tên duy nhất trong bitcoin lớn hơn Bitrey và Vanderpoole. Có một người sử dụng tên Satoshi Nakamoto đã từng nói với tôi rằng bitcoin đã vượt xa tầm kiểm soát của người tạo ra nó hơn một thế kỷ trước. Đây là lý do tại sao, để cứu vãn tên tuổi Vanderpoole, tôi đã cố gắng đòi hỏi một cái tên nổi bật hơn. Bạn không thể hiểu được cảm giác hồi hộp khi tạo ra những đồng coin mới. Đó là điều kỳ diệu đối với tôi lúc đó; nó vẫn là điều kỳ diệu đối với tôi bây giờ.”`, // paragraph_two: `—VANDERPOOLE: “It’s the only name in bitcoin bigger than Bitrey and Vanderpoole. Someone using the name Satoshi Nakamoto once told me that bitcoin had moved far beyond its creator’s control over a century ago. This is why, to salvage the Vanderpoole name, I tried to claim a more prominent name. You can’t understand the thrill of minting new coins. It was magic to me then; it is magic to me now.”`
+      paragraph_three: `—VANDERPOOLE: "Tôi nhận ra rằng ngay cả khi tôi là cháu đời thứ của Satoshi, bitcoin cũng không được định nghĩa bởi các nhà lãnh đạo. Nó được định nghĩa bởi cộng đồng của nó. Ngay cả Satoshi cũng không thể thay đổi những gì bitcoin đã trở thành. Đó luôn là điều làm nên sự vĩ đại của bitcoin và lý do tại sao hàng triệu đồng coin khác được tạo ra theo hình ảnh của bitcoin không bao giờ tồn tại lâu dài.”`, // paragraph_three: `—VANDERPOOLE: "I realize now that even if I were Satoshi’s great-grandson, bitcoin isn’t defined by leaders. It’s defined by its community. Not even Satoshi could change what bitcoin has become. That has always been what made bitcoin great and why the millions of other coins made in bitcoin’s image never lasted.”`
     },
 
     outro_four: {
-      title: 'Outro',
-      nav_title: "Vanderpoole's villainy",
-      paragraph_one: `Vanderpoole picks up your holocat, and it begins to pur. People are complicated, and no one knows that better than cats, holo or otherwise`,
-      paragraph_two: `—HOLOCAT: “You’re not a villain, Mr. Vanderpoole. But you maybe, just maybe, might have cared too much.”`,
-      paragraph_three: `—VANDERPOOLE: Ain’t that the truth.`,
+      title: 'Kết luận', // title: 'Outro'
+      nav_title: "Sự phản diện của Vanderpoole", // nav_title: "Vanderpoole's villainy"
+      paragraph_one: `Vanderpoole nhặt chiếc holocat của bạn lên, và nó bắt đầu kêu gừ gừ. Con người thật phức tạp, và không ai hiểu điều đó hơn mèo, dù là mèo thật hay ảo.`, // paragraph_one: `Vanderpoole picks up your holocat, and it begins to pur. People are complicated, and no one knows that better than cats, holo or otherwise`
+      paragraph_two: `—HOLOCAT: “Ông không phải là một nhân vật phản diện, ngài Vanderpoole. Nhưng có thể, chỉ có thể, ông đã quan tâm quá nhiều.”`, // paragraph_two: `—HOLOCAT: “You’re not a villain, Mr. Vanderpoole. But you maybe, just maybe, might have cared too much.”`
+      paragraph_three: `—VANDERPOOLE: Đúng là sự thật.`, // paragraph_three: `—VANDERPOOLE: Ain’t that the truth.`
     },
 
     outro_five: {
-      title: 'Outro',
-      nav_title: 'You did it!!!',
-      heading_one: 'You did it!!!',
-      paragraph_one: `Like Satoshi, you were a nobody, but your ideas had merit, so people followed you. Satoshi is gone, but his spirit and ideas live on. Armed with your newfound bitcoin dev coding skills, a healthy dose of humility, and some good old-fashioned persistence, you can leave an enduring mark on this elegant system that has united the world under permissionless, censorship-resistant money for more than 100 years. New adventures await you in the code and the open market of ideas. bitcoin only survives because people like you contribute what theycan. That’s why we are all Satoshi.`,
+      title: 'Kết luận', // title: 'Outro'
+      nav_title: 'Bạn đã làm được!!!', // nav_title: 'You did it!!!'
+      heading_one: 'Bạn đã làm được!!!', // heading_one: 'You did it!!!'
+      paragraph_one: `Giống như Satoshi, bạn cũng là một người vô danh, nhưng ý tưởng của bạn có giá trị nên mọi người đã theo bạn. Satoshi đã ra đi, nhưng tinh thần và ý tưởng của ông vẫn còn sống mãi. Với những kỹ năng lập trình bitcoin dev mới tìm thấy, một liều khiêm tốn lành mạnh và sự kiên trì tốt đẹp, bạn có thể để lại dấu ấn lâu đời trên hệ thống thanh lịch này, đã thống nhất thế giới dưới một loại tiền tệ không cần sự cho phép, chống kiểm duyệt trong hơn 100 năm. Những cuộc phiêu lưu mới đang chờ đón bạn trong mã nguồn và thị trường ý tưởng mở. bitcoin chỉ tồn tại vì những người như bạn đóng góp những gì họ có thể. Đó là lý do tại sao tất cả chúng ta đều là Satoshi.`, // paragraph_one: `Like Satoshi, you were a nobody, but your ideas had merit, so people followed you. Satoshi is gone, but his spirit and ideas live on. Armed with your newfound bitcoin dev coding skills, a healthy dose of humility, and some good old-fashioned persistence, you can leave an enduring mark on this elegant system that has united the world under permissionless, censorship-resistant money for more than 100 years. New adventures await you in the code and the open market of ideas. bitcoin only survives because people like you contribute what theycan. That’s why we are all Satoshi.`
     },
 
     outro_six: {
-      title: 'Beyond Saving Satoshi',
-      nav_title: 'Moving beyond Saving Satoshi',
-      heading: 'Bitcoin still needs your help...',
+      title: 'Vượt ra ngoài Cứu Satoshi', // title: 'Beyond Saving Satoshi'
+      nav_title: 'Vượt ra ngoài Cứu Satoshi', // nav_title: 'Moving beyond Saving Satoshi'
+      heading: 'Bitcoin vẫn cần sự giúp đỡ của bạn...', // heading: 'Bitcoin still needs your help...'
       paragraph_one:
-        'Although 2139 may seem distant, Bitcoin’s mission remains timeless: to create money that is fair, open, and honest. However, achieving this vision will require everyone’s efforts—including yours.',
+          'Mặc dù năm 2139 có vẻ xa vời, sứ mệnh của Bitcoin vẫn tồn tại mãi mãi: tạo ra đồng tiền công bằng, cởi mở và trung thực. Tuy nhiên, để đạt được tầm nhìn này sẽ cần đến nỗ lực của mọi người, bao gồm cả bạn.', //  'Although 2139 may seem distant, Bitcoin’s mission remains timeless: to create money that is fair, open, and honest. However, achieving this vision will require everyone’s efforts—including yours.'
       paragraph_two:
-        'You’ve shown that you understand bitcoin. Now is the perfect time to turn that knowledge into action by contributing to one of the most important technologies ever.',
+          'Bạn đã chứng tỏ rằng bạn hiểu về bitcoin. Bây giờ là thời điểm hoàn hảo để biến kiến ​​thức đó thành hành động bằng cách đóng góp vào một trong những công nghệ quan trọng nhất từ ​​trước đến nay.', //   'You’ve shown that you understand bitcoin. Now is the perfect time to turn that knowledge into action by contributing to one of the most important technologies ever.'
       paragraph_three:
-        'The <Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> is here to guide future generations of open-source contributors. Becoming a present day bitcoin hero today is just one click away.',
-      paragraph_four: 'We are all Satoshi.',
+          'Dự án <Link className="underline" href="https://bitcoindevs.xyz/">Phát triển Bitcoin</Link> ở đây để hướng dẫn các thế hệ tương lai của những người đóng góp mã nguồn mở. Trở thành anh hùng bitcoin ngày nay chỉ với một cú nhấp chuột.', //  'The <Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> is here to guide future generations of open-source contributors. Becoming a present day bitcoin hero today is just one click away.'
+      paragraph_four: 'Chúng ta đều là Satoshi.', // paragraph_four: 'We are all Satoshi.'
     },
     tab_data: {
-      signed: 'signed',
-      pending: 'pending',
-      deposit:
-        'This is an output of 101,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.',
-      payment: 'This is your off-chain payment to Laszlo.',
-      multisig:
-        'This transaction will fund a multisig output between you and Laszlo.',
-      refund_0:
-        'This transaction ensures funds are not lost if Laszlo disappears.',
-      refund_1:
-        'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer.',
-      refund_2:
-        'This transaction ensures funds are not lost if Laszlo disappears. It also prevents you from claiming the funds immediately after paying for your beer. If you try to take a full refund, including the 1,000 satoshis used to pay for the beer, the 700 block delay gives Laszlo a few days to notice.',
-      commitment_you:
-        'This is the second commitment transaction for this payment channel, that pays Laszlo 1,000 sats',
-      commitment_laszlo:
-        'This is Laszlo’s version of the commitment transaction.',
+      signed: 'đã ký', // signed: 'signed'
+    pending: 'đang chờ xử lý', // pending: 'pending'
+    deposit:
+        'Đây là một đầu ra 101.000 sats trong ví của bạn mà bạn sẽ sử dụng cho các khoản thanh toán ngoại tuyến với Laszlo.', //  'This is an output of 101,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.'
+    payment: 'Đây là khoản thanh toán ngoại tuyến của bạn cho Laszlo.', // payment: 'This is your off-chain payment to Laszlo.'
+    multisig:
+        'Giao dịch này sẽ tài trợ cho đầu ra đa chữ ký giữa bạn và Laszlo.', // 'This transaction will fund a multisig output between you and Laszlo.'
+    refund_0:
+        'Giao dịch này đảm bảo rằng tiền không bị mất nếu Laszlo biến mất.', //  'This transaction ensures funds are not lost if Laszlo disappears.'
+    refund_1:
+        'Giao dịch này đảm bảo rằng tiền không bị mất nếu Laszlo biến mất. Nó cũng đảm bảo với Laszlo rằng bạn sẽ không phát sóng nó sau khi trả tiền bia.', //'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer.'
+    refund_2:
+        'Giao dịch này đảm bảo rằng tiền không bị mất nếu Laszlo biến mất. Nó cũng ngăn bạn yêu cầu hoàn tiền đầy đủ ngay lập tức sau khi trả tiền bia. Nếu bạn cố gắng lấy lại toàn bộ khoản hoàn tiền, bao gồm cả 1.000 satoshi đã sử dụng để trả tiền bia, thì thời gian trễ 700 khối sẽ cho Laszlo vài ngày để nhận thấy.', // 'This transaction ensures funds are not lost if Laszlo disappears. It also prevents you from claiming the funds immediately after paying for your beer. If you try to take a full refund, including the 1,000 satoshis used to pay for the beer, the 700 block delay gives Laszlo a few days to notice.'
+    commitment_you:
+        'Đây là giao dịch cam kết thứ hai cho kênh thanh toán này, trả cho Laszlo 1.000 sats', // 'This is the second commitment transaction for this payment channel, that pays Laszlo 1,000 sats'
+    commitment_laszlo:
+        'Đây là phiên bản giao dịch cam kết của Laszlo.', //   'This is Laszlo’s version of the commitment transaction.'
     },
     resources: {
-      output_zero_sig: 'Output 0 Signature',
-      output_one_sig: 'Output 1 Signature',
-      sats_distribution:
-        'Laszlo should receive enough sats for the beer, and is not responsible for the 1,000 sat miner fees. The fee comes out of your change.',
-      output_script:
-        'The locking script on the output should not contain any signatures (i.e. <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base whitespace-nowrap">OP_PUSH SIG()</span>). If this is part of your script, simply remove it.',
-      miner_fees_basic: `Don't forget to set aside 1,000 sats for miner fees.`,
-      miner_fees: `Don't forget to set aside 1,000 sats from your change for miner fees.`,
+      output_zero_sig: 'Chữ ký Đầu ra 0', // output_zero_sig: 'Output 0 Signature'
+    output_one_sig: 'Chữ ký Đầu ra 1', // output_one_sig: 'Output 1 Signature'
+    sats_distribution:
+        'Laszlo nên nhận đủ số sats cho bia và không chịu trách nhiệm về phí khai thác 1.000 sat. Phí được trừ vào tiền thừa của bạn.', // sats_distribution: 'Laszlo should receive enough sats for the beer, and is not responsible for the 1,000 sat miner fees. The fee comes out of your change.'
+    output_script:
+        'Script khóa trên đầu ra không nên chứa bất kỳ chữ ký nào (tức là <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base whitespace-nowrap">OP_PUSH SIG()</span>). Nếu đây là một phần của script của bạn, chỉ cần xóa nó đi.', // output_script: 'The locking script on the output should not contain any signatures (i.e. <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base whitespace-nowrap">OP_PUSH SIG()</span>). If this is part of your script, simply remove it.'
+    miner_fees_basic: `Đừng quên dành riêng 1.000 sats cho phí khai thác.`, // miner_fees_basic: `Don't forget to set aside 1,000 sats for miner fees.`
+    miner_fees: `Đừng quên dành riêng 1.000 sats từ tiền thừa của bạn cho phí khai thác.`, // miner_fees: `Don't forget to set aside 1,000 sats from your change for miner fees.`
     },
   },
 
   ///CHALLENGE PAGE
   challenge_list: {
-    coming_soon: 'Coming soon. Hang tight.',
+    coming_soon: 'Sắp ra mắt. Chờ chút.', // coming_soon: 'Coming soon. Hang tight.'
   },
 
   chapter: {
-    chapter_locked_one: 'Complete Chapter',
-    chapter_locked_two: 'to unlock.',
-    coming_soon: 'Coming soon. Hang tight.',
+    chapter_locked_one: 'Hoàn thành Chương', // chapter_locked_one: 'Complete Chapter'
+    chapter_locked_two: 'để mở khóa.', // chapter_locked_two: 'to unlock.'
+    coming_soon: 'Sắp ra mắt. Chờ chút.', // coming_soon: 'Coming soon. Hang tight.'
     description:
-      'Explore the mysteries of Satoshi and learn about bitcoin along the way.',
+        'Khám phá những bí ẩn của Satoshi và tìm hiểu về bitcoin trên đường đi.', // description:  'Explore the mysteries of Satoshi and learn about bitcoin along the way.'
   },
 
   hero: {
-    title: 'Saving Satoshi',
-    description: 'Code your way through the mysteries of bitcoin.',
-    start_journey: 'Start',
-    tell_more: 'Tell me more',
+    title: 'Cứu Satoshi', // title: 'Saving Satoshi'
+    description: 'Mã hóa con đường của bạn thông qua những bí ẩn của bitcoin.', // description: 'Code your way through the mysteries of bitcoin.'
+    start_journey: 'Bắt đầu', // start_journey: 'Start'
+    tell_more: 'Cho tôi biết thêm', // tell_more: 'Tell me more'
   },
 
   footer: {
-    paragraph_one: 'An open-source production by the bitcoin community.',
-    link: 'Check the code',
+    paragraph_one: 'Một sản phẩm mã nguồn mở do cộng đồng bitcoin sản xuất.', // paragraph_one: 'An open-source production by the bitcoin community.'
+    link: 'Kiểm tra mã', // link: 'Check the code'
   },
 
   navbar: {
-    intro: 'Intro',
-    chapter: 'Chapter',
-    chapter_complete: 'Chapter complete',
-    challenge: 'Challenge',
-    help_tooltip: 'Need help?',
-    your_language: 'Your Language',
+    intro: 'Giới thiệu', // intro: 'Intro'
+    chapter: 'Chương', // chapter: 'Chapter'
+    chapter_complete: 'Chương hoàn thành', // chapter_complete: 'Chapter complete'
+    challenge: 'Thử thách', // challenge: 'Challenge'
+    help_tooltip: 'Cần trợ giúp?', // help_tooltip: 'Need help?'
+    your_language: 'Ngôn ngữ của bạn', // your_language: 'Your Language'
   },
 
   modal_signin: {
-    heading: 'Sign in',
+    heading: 'Đăng nhập', // heading: 'Sign in'
     pre_signin_paragraph_one:
-      'Enter your private key below to restore your account and progress.',
+        'Nhập khóa riêng tư của bạn bên dưới để khôi phục tài khoản và tiến trình của bạn.', // pre_signin_paragraph_one: 'Enter your private key below to restore your account and progress.'
     post_signin_paragraph_one:
-      'Nice to see you return to save Satoshi! You can go directly to your last lesson from here.',
-    prompt: 'Enter your private key',
-    confirm: 'Sign in',
-    create_account: 'Don’t have an account?',
-    login: 'Log in',
-    welcome_back: 'Welcome back!',
-    progress_redirect: 'Take me to where I left off',
+        'Rất vui được gặp lại bạn để cứu Satoshi! Bạn có thể trực tiếp đến bài học cuối cùng của mình từ đây.', // post_signin_paragraph_one:  'Nice to see you return to save Satoshi! You can go directly to your last lesson from here.'
+    prompt: 'Nhập khóa riêng tư của bạn', // prompt: 'Enter your private key'
+    confirm: 'Đăng nhập', // confirm: 'Sign in'
+    create_account: 'Bạn chưa có tài khoản?', // create_account: 'Don’t have an account?'
+    login: 'Đăng nhập', // login: 'Log in'
+    welcome_back: 'Chào mừng quay trở lại!', // welcome_back: 'Welcome back!'
+    progress_redirect: 'Đưa tôi đến nơi tôi đã dừng lại', // progress_redirect: 'Take me to where I left off'
   },
 
   modal_logout: {
-    heading: 'You are logged in',
+    heading: 'Bạn đã đăng nhập', // heading: 'You are logged in'
     paragraph_one:
-      'Your session will remain active until you sign out using the button below.',
-    private_key: 'Your private key',
-    signout: 'Sign out',
+        'Phiên của bạn sẽ vẫn hoạt động cho đến khi bạn đăng xuất bằng nút bên dưới.', // paragraph_one: 'Your session will remain active until you sign out using the button below.'
+    private_key: 'Khóa riêng tư của bạn', // private_key: 'Your private key'
+    signout: 'Đăng xuất', // signout: 'Sign out'
   },
 
   modal_signup: {
-    heading: 'Save your progress',
+    heading: 'Lưu tiến trình của bạn', // heading: 'Save your progress'
     paragraph_one:
-      'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.',
-    subheading_one: 'Choose an avatar',
-    subheading_two: 'Back up your private key',
+        'Sao chép và lưu trữ một mã đơn giản để lưu và tải tiến trình của bạn trong trình duyệt này. Nếu bạn đã có mã, hãy tải tiến trình của bạn ở đây.', // paragraph_one:'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.'
+    subheading_one: 'Chọn một hình đại diện', // subheading_one: 'Choose an avatar'
+    subheading_two: 'Sao lưu khóa riêng tư của bạn', // subheading_two: 'Back up your private key'
     generate:
-      'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
-    confirm: 'Done',
+        'Đã sẵn sàng? Mã đã được sao chép và sao lưu? Hãy chắc chắn rằng bạn đã làm như vậy, vì nó không thể được khôi phục nếu bạn bị mất.', // generate:'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.'
+    confirm: 'Hoàn thành', // confirm: 'Done'
     acknowledged:
-      'I acknowledge I have saved this private key and know that I will need it for challenges in the future.',
+        'Tôi xác nhận rằng tôi đã lưu khóa riêng tư này và biết rằng tôi sẽ cần nó cho các thử thách trong tương lai.', // acknowledged:'I acknowledge I have saved this private key and know that I will need it for challenges in the future.'
   },
 
   difficulty_selection: {
-    NORMAL: 'Enable hard mode to increase the difficulty of the challenges.',
-    HARD: 'Disable hard mode to decrease the difficulty of the challenges.',
+    NORMAL: 'Bật chế độ khó để tăng độ khó của thử thách.', // NORMAL: 'Enable hard mode to increase the difficulty of the challenges.'
+    HARD: 'Tắt chế độ khó để giảm độ khó của thử thách.', // HARD: 'Disable hard mode to decrease the difficulty of the challenges.'
   },
 
   social: {
-    twitter_share: 'Share via X',
-    nostr_share: 'Share via nostr',
-    sharing: 'Sharing...',
-    shared: 'Shared!',
-    share_error: 'Failed to share',
+    twitter_share: 'Chia sẻ qua X', // twitter_share: 'Share via X'
+    nostr_share: 'Chia sẻ qua nostr', // nostr_share: 'Share via nostr'
+    sharing: 'Đang chia sẻ...', // sharing: 'Sharing...'
+    shared: 'Đã chia sẻ!', // shared: 'Shared!'
+    share_error: 'Chia sẻ thất bại', // share_error: 'Failed to share'
   },
 
   disclaimer: {
     description:
-      'We’re excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>',
+      'Chúng tôi rất vui mừng vì bạn đã tham gia. Lưu ý rằng một số thử thách yêu cầu kiến ​​thức lập trình cơ bản (có sẵn các mẹo). Hãy thử và chia sẻ <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">phản hồi</Link> của bạn.', //We’re excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>'
   },
 
   opcode: {
-    run: 'Run the Script',
-    reset: 'Reset',
+    run: 'Chạy Script', // run: 'Run the Script'
+    reset: 'Đặt lại', // reset: 'Reset'
   },
 
   status_bar: {
-    begin_message: 'Complete the challenge above to continue...',
-    error_message: 'Hm... that is not quite right yet...',
-    in_progress_message: 'Looking good so far...',
-    success_message: 'Nicely done!',
-    next_step_message: 'Looks good now lets move on to the next step.',
-    im_stuck: "I'm Stuck",
-    try_again: 'Try Again',
-    next: 'Next',
-    skip_challenge_first: "Let's move on to the first challenge!",
-    skip_challenge_last: "Let's move on to the last challenge!",
+    begin_message: 'Hoàn thành thử thách ở trên để tiếp tục...', // begin_message: 'Complete the challenge above to continue...'
+    error_message: 'Hm... điều đó chưa hoàn toàn chính xác...', // error_message: 'Hm... that is not quite right yet...'
+    in_progress_message: 'Đang tiến triển tốt...', // in_progress_message: 'Looking good so far...'
+    success_message: 'Làm tốt!', // success_message: 'Nicely done!'
+    next_step_message: 'Trông có vẻ ổn rồi, bây giờ chúng ta hãy chuyển sang bước tiếp theo.', // next_step_message: 'Looks good now lets move on to the next step.'
+    im_stuck: "Tôi bị mắc kẹt", // im_stuck: "I'm Stuck"
+    try_again: 'Thử lại', // try_again: 'Try Again'
+    next: 'Tiếp theo', // next: 'Next'
+    skip_challenge_first: "Hãy chuyển sang thử thách đầu tiên!", // skip_challenge_first: "Let's move on to the first challenge!"
+    skip_challenge_last: "Hãy chuyển sang thử thách cuối cùng!", // skip_challenge_last: "Let's move on to the last challenge!"
   },
 
   hasher: {
-    placeholder: 'Type here...',
-    return_hash: 'Below you will see your input converted to a hash',
+    placeholder: 'Nhập ở đây...', // placeholder: 'Type here...'
+    return_hash: 'Dưới đây bạn sẽ thấy đầu vào của bạn được chuyển đổi thành một hàm băm', // return_hash: 'Below you will see your input converted to a hash'
   },
 
   hashrate: {
-    start: 'Start',
-    running: 'Running',
-    blocks_found: 'Blocks found',
-    hashrate: 'Hashrate',
-    partial_solutions: 'Partial solutions',
+    start: 'Bắt đầu', // start
+    running: 'Đang chạy', // running
+    blocks_found: 'Khối tìm thấy', // blocks_found
+    hashrate: 'Tốc độ băm', // hashrate
+    partial_solutions: 'Giải pháp một phần', // partial_solutions
   },
 
   runner: {
-    run: 'Run the script',
-    running: 'Running',
-    pause: 'Pause',
-    result: 'Result',
-    computing: 'Computing...',
-    evaluation: 'Evaluation',
-    script_output: 'Script output',
-    waiting: 'Waiting for your input above...',
-    poor: "This is valid code but it's not quite what we are looking for. Try again.",
-    good: 'Good job, its not quite perfect but still considered correct. Keep working or continue, your choice.',
-    success: 'Great work your code looks great!',
+    run: 'Chạy script', // Run the script
+    running: 'Đang chạy', // Running
+    pause: 'Tạm dừng', // Pause
+    result: 'Kết quả', // Result
+    computing: 'Đang tính toán...', // Computing...
+    evaluation: 'Đánh giá', // Evaluation
+    script_output: 'Đầu ra script', // Script output
+    waiting: 'Đang chờ đầu vào của bạn ở trên...', // Waiting for your input above...
+    poor: "Đây là mã hợp lệ nhưng không hoàn toàn là những gì chúng tôi đang tìm kiếm. Hãy thử lại.", // This is valid code but it's not quite what we are looking for. Try again.
+    good: 'Làm tốt, nó không hoàn toàn hoàn hảo nhưng vẫn được coi là chính xác. Tiếp tục làm việc hoặc tiếp tục, tùy bạn.', // Good job, its not quite perfect but still considered correct. Keep working or continue, your choice.
+    success: 'Tuyệt vời, mã của bạn trông tuyệt vời!', // Great work your code looks great!
     language_tabs: {
-      locked: "Language disabled since you've started this chapter in",
-      reset: 'Reset the terminal',
+      locked: "Ngôn ngữ bị vô hiệu hóa kể từ khi bạn bắt đầu chương này trong", // Language disabled since you've started this chapter in
+      reset: 'Đặt lại thiết bị đầu cuối', // Reset the terminal
     },
   },
   notfound: {
-    first: 'Hmm...where are we?',
-    second: 'It’s not quite clear where or what this place is.',
-    third: 'We might have gotten lost in space (or time).',
-    back_safety: 'Back to safety',
+    first: 'Hmm...chúng ta đang ở đâu?', // Hmm...where are we?
+    second: 'Không rõ ràng lắm nơi này là đâu hay cái gì.', // It’s not quite clear where or what this place is.
+    third: 'Có thể chúng ta đã lạc trong không gian (hoặc thời gian).', // We might have gotten lost in space (or time).
+    back_safety: 'Trở lại an toàn', // Back to safety
   },
   error: {
-    first: 'Something is wrong!',
-    second: 'Holocat may have chewed on some cables again. Bad cat!',
-    reload: 'Retry',
+    first: 'Có điều gì đó không ổn!', // Something is wrong!
+    second: 'Holocat có thể đã gặm nhấm một số dây cáp một lần nữa. Con mèo xấu xa!', // Holocat may have chewed on some cables again. Bad cat!
+    reload: 'Thử lại', // Retry
   },
   help_page: {
-    main_heading: 'Learning Resources',
+    main_heading: 'Tài nguyên học tập', // Learning Resources
     main_subheading:
-      'What helpful info and resources can we provide for further learning?',
-    tips_heading: 'Tips',
+      'Chúng tôi có thể cung cấp những thông tin và tài nguyên hữu ích nào để học tập thêm?', // What helpful info and resources can we provide for further learning?
+    tips_heading: 'Mẹo', // Tips
     tips_subheading:
-      'What specific tips can/do we want to give learners if they are stuck?',
-    spoilers_heading: 'Spoilers',
-    spoilers_confirm: 'Yes, I want to see the solution',
-    pseudo_confirm: 'Yes, I want to see the pseudocode',
-    solution: 'Solution to this challenge',
-    pseudo_solution: 'Pseudocode solution to this challenge',
-    solution_one: 'Solution to part one of this challenge',
+      'Chúng tôi muốn cung cấp cho người học những mẹo cụ thể nào nếu họ gặp khó khăn?', // What specific tips can/do we want to give learners if they are stuck?
+    spoilers_heading: 'Giải đáp', // Spoilers
+    spoilers_confirm: 'Có, tôi muốn xem giải pháp', // Yes, I want to see the solution
+    pseudo_confirm: 'Có, tôi muốn xem mã giả', // Yes, I want to see the pseudocode
+    solution: 'Giải pháp cho thử thách này', // Solution to this challenge
+    pseudo_solution: 'Giải pháp mã giả cho thử thách này', // Pseudocode solution to this challenge
+    solution_one: 'Giải pháp cho phần một của thử thách này', // Solution to part one of this challenge
     feedback:
-      'Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
+      'Phản hồi của bạn rất có giá trị và giúp chúng tôi cải thiện công việc của mình hơn nữa, vui lòng cung cấp phản hồi bằng cách sử dụng <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">liên kết này</a>.', // Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>.
     help_suggestion:
-      'If you\'re ever stuck, press the "?" button in the top-right corner. It provides helpful resources and tips.',
+      'Nếu bạn gặp khó khăn, hãy nhấn nút "?" ở góc trên cùng bên phải. Nó cung cấp các tài nguyên và mẹo hữu ích.', // If you're ever stuck, press the "?" button in the top-right corner. It provides helpful resources and tips.
   },
 }
 export default translations
