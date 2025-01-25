@@ -106,7 +106,7 @@ privacy: {
     },
 
     intro_two: {
-      title: 'Genesis', // Genesis
+      title: 'Khối đầu tiên', // Genesis
       nav_title: "Con mèo điện tín 3D của Satoshi", // Satoshi's holocat
       paragraph_one:
           'Trên chiếc đồng hồ đa năng, bạn nhận được một Con mèo điện 3D nhãn hiệu WhiskerWare từ một người tự xưng là Satoshi Nakamoto. (Giống như bất kỳ một điện tín 3D khác, nhưng lần này có hình dạng như một con mèo.) Bạn mở con mèo điện tín 3D bằng cách chạm nhẹ vào mũi của nó.',       // On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.
@@ -120,54 +120,54 @@ privacy: {
     },
 
     genesis_one: {
-      title: 'Genesis', // Genesis
-      nav_title: 'Bí mật của Genesis', // Genesis Secret
+      title: 'Khối đầu tiên', // Genesis
+      nav_title: 'Bí mật trong khối đầu tiên', // Genesis Secret
       heading: 'Thử thách đầu tiên của bạn', // Your first challenge
       paragraph_one:
-          'Bitcoin là tiền tệ kháng kiểm duyệt. Bất kỳ ai cũng có thể gửi tiền bằng cách phát sóng giao dịch tới mạng lưới. Sau khi phát sóng, các giao dịch được đóng gói thành các khối bởi những người thợ đào. Những người thợ đào cạnh tranh với những người thợ đào khác để giành được đặc quyền xây dựng trên chuỗi. Đây là điều giữ cho bitcoin phi tập trung.',       // Bitcoin is censorship-resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.
+          'Bitcoin là tiền mã hóa tự do. Bất kỳ người nào cũng có thể gửi tiền bằng cách liên kết giao dịch với mạng lưới. Sau khi gửi giao dịch, các giao dịch được đóng gói thành các khối dữ liệu bởi thợ đào. Những thợ đào trong mạng lưới cạnh tranh với nhau để giành quyền tạo khối dữ liệu trên chuỗi. Đây là cơ chế phi tập trung giữ cho mạng bitcoin hoạt động tự do.', // Bitcoin is censorship-resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.
       paragraph_two:
-          'Satoshi Nakamoto, nhà phát minh ẩn danh của bitcoin, cũng đã khai thác khối bitcoin đầu tiên. Ông đã để lại cho thế giới một thông điệp bí mật trong chính giao dịch bitcoin đầu tiên từng được thực hiện. Thử thách đầu tiên của bạn là tìm và giải mã nó.',       // Satoshi Nakamoto, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left the world a secret message in the very first bitcoin transaction that was ever made. Your first challenge is to find and decode it.
+          'Satoshi Nakamoto, nhà kiến tạo ẩn danh của bitcoin, đã khai thác khối bitcoin đầu tiên. Ông đã để lại cho thế giới một thông điệp bí mật ngay trong chính giao dịch bitcoin đầu tiên khi thực hiện giao dịch này. Thử thách đầu tiên của bạn là tìm và giải mã bí mật này.',       // Satoshi Nakamoto, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left the world a secret message in the very first bitcoin transaction that was ever made. Your first challenge is to find and decode it.
     },
 
     genesis_two: {
-      title: 'Genesis', // Genesis
+      title: 'Khối đầu tiên', // Genesis
       nav_title: 'Tìm thông điệp', // Find the message
-      heading: 'Tìm thông điệp ẩn', // Find the hidden message
+      heading: 'Tìm thông điệp bí mật', // Find the hidden message
       paragraph_one:
-          'Hãy tìm khối đầu tiên trong chuỗi khối bitcoin. Nhấp vào nút bên dưới để mở một <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">trình khám phá khối</Tooltip> chính xác ở khối 0, được gọi là khối genesis.',       // Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.
+          'Hãy tìm khối đầu tiên trong chuỗi khối bitcoin. Nhấp vào nút bên dưới để mở một <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">trình khám phá khối</Tooltip> chính xác ở khối 0, được gọi là khối đầu tiên.',       // Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.
       paragraph_two:
-          'Cuộn xuống và mở rộng chi tiết về một giao dịch được lưu trữ trong khối này. Tìm đầu vào có tên “Coinbase”. Bây giờ hãy tìm nhãn “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. Giá trị bên cạnh nó là một thông điệp được mã hóa.',       // Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. The value next to it is an encoded message.
+          'Kéo xuống và mở rộng chi tiết về một giao dịch được lưu trữ trong khối này. Tìm đầu vào có tên “Coinbase”. Bây giờ hãy tìm tiêu đề “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. Giá trị bên cạnh tiêu đề này là thông điệp mã hóa.',       // Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. The value next to it is an encoded message.
       paragraph_three:
-          'Sao chép giá trị đó và dán nó vào khối mã.', // Copy that value and paste it in the code block.
+          'Sao chép giá trị mã hóa đó và dán vào khối mã hóa.', // Copy that value and paste it in the code block.
       tooltip_block_explorer:
-          'Một <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">trình khám phá khối</a> là một công cụ hữu ích để nhanh chóng tra cứu thông tin về các giao dịch bitcoin.',       // A <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.
+          'Một <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">trình duyệt chuỗi khối</a> là một công cụ hữu ích để tra cứu nhanh thông tin về các giao dịch bitcoin.',       // A <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.
       tooltip_hex:
-          'Được viết tắt là hexadecimal, một hệ thống số đại diện cho các số sử dụng cơ số 16.',       // Short for hexadecimal, a numeral system that represents numbers using a base of 16.
+          'Hexadecimal là hệ thập lục phân, một hệ thống số đại diện cho các số sử dụng cơ số 16.',       // Short for hexadecimal, a numeral system that represents numbers using a base of 16.
       view_block_0: 'Xem Khối 0', // View Block 0
       placeholder: 'Dán giá trị bạn tìm thấy ở đây', // Paste the value you found here
     },
 
     genesis_three: {
-      title: 'Genesis', // Genesis
+      title: 'Khối đầu tiên', // Genesis
       nav_title: 'Giải mã thông điệp', // Decode the message
       heading: "Hãy giải mã thông điệp", // Let's decode the message
       paragraph_one:
           'Thông điệp bạn tìm thấy được mã hóa theo định dạng HEX. Bây giờ chúng ta sẽ chạy một lệnh để chuyển đổi nó thành ASCII, thứ mà chúng ta có thể đọc được.',       // The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.
       paragraph_two:
-          'Sao chép và dán lệnh bên dưới vào Terminal trong khối mã và nhấn “Enter”.',       // Copy and paste the command below into the Terminal in the code block and press “Enter”.
+          'Sao chép và dán lệnh bên dưới vào Terminal trong khối mã hóa và nhấn “Enter”.',       // Copy and paste the command below into the Terminal in the code block and press “Enter”.
       terminal_challenge_lines:
       `Nhập lệnh của bạn ở đây và nhấn Enter...\n Biến $scriptSigHex đã được định nghĩa sẵn cho bạn.\n\n var $scriptSigHex = '04fff...e6b73'` ,       // Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'
       waiting_for_input: 'Đang chờ bạn viết và chạy script...', // Waiting for you to write and run the script...
       success:
-      `Tuyệt vời! Thông điệp được giải mã tham chiếu đến trang nhất của <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> từ ngày 3 tháng 1 năm 2009, cùng ngày Satoshi khai thác khối genesis. Thật tuyệt vời phải không ?! Thông điệp này cũng cung cấp cho chúng tôi một số hiểu biết sâu sắc về động lực sáng tạo bitcoin của anh ấy.\n\n Tiếp tục nào!`, // Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.
+      `Làm tốt lắm! Thông điệp được giải mã tham chiếu trong trang nhất của <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> từ ngày 3 tháng 1 năm 2009, cùng ngày Satoshi khai thác khối genesis. Thật tuyệt vời phải không ?! Thông điệp này cũng cung cấp cho chúng tôi một số hiểu biết sâu sắc về động lực tạo ra bitcoin của ông ấy.\n\n Hãy tiếp tục nào!`, // Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.
     },
 
     genesis_four: {
-      title: 'Genesis', // Genesis
+      title: 'Khối đầu tiên', // Genesis
       nav_title: 'Thành công đầu tiên của bạn', // Your first success
       subtitle: 'Chúc mừng! Bạn đã hoàn thành thử thách đầu tiên!', // Congrats! You completed the first challenge!
       paragraph_one:
-          'Bạn đã tìm thấy thông điệp bí mật mà Satoshi Nakamoto đã nhúng vào khối genesis. Đã đến lúc mở rộng những gì bạn vừa học được. Giải mã một manh mối quan trọng về câu chuyện trong thử thách tiếp theo.',       // You found the secret message Satoshi Nakamoto embedded in the genesis block. It’s time to expand on what you just learned. Decode a vital clue about the story in the next challenge.
+          'Bạn đã tìm thấy thông điệp bí mật mà Satoshi Nakamoto đã mã hóa trong khối đầu tiên. Đã đến lúc phát huy những gì bạn vừa học được. Giải mã một manh mối quan trọng của câu chuyện trong thử thách tiếp theo.',       // You found the secret message Satoshi Nakamoto embedded in the genesis block. It’s time to expand on what you just learned. Decode a vital clue about the story in the next challenge.
     },
 
     transacting_one: {
