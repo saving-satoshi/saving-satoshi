@@ -39,7 +39,7 @@ const translations = {
    contributing: {
       title: 'Cách đóng góp',//How to contribute
       paragraph_one:
-          'Đây là một dự án mã nguồn mở, vì vậy chúng tôi rộng mở tất cả các cánh cửa để bạn có thể giúp định hình và phát triển dự án.',    //We’re an open-source project, so all doors are open for you to help shape it.
+          'Chương trình nàynày là một dự án mã nguồn mở, vì vậy chúng tôi rộng mở tất cả các cánh cửa để bạn có thể giúp định hình và phát triển dự án.',    //We’re an open-source project, so all doors are open for you to help shape it.
       
      feedback: {
         title: 'Phản hồi',//Feedback
@@ -172,28 +172,28 @@ privacy: {
 
     transacting_one: {
       title: 'Giao dịch', // Transacting
-      nav_title: "Nội dung của một giao dịch", // What's in a transaction
-      heading: 'Nội dung của một giao dịch là gì?', // What’s in a transaction?
+      nav_title: "Các cấu thành của một giao dịch", // What's in a transaction
+      heading: 'Các thành phần của một giao dịch là gì?', // What’s in a transaction?
       paragraph_one:
-          'Hai thành phần chính của một giao dịch là đầu vào và đầu ra. Trong bài tập trước, chúng ta đã giải mã một thông điệp bí mật được tìm thấy bên trong đầu vào của giao dịch. Lần này, chúng ta sẽ giải mã một thông điệp thuộc phần đầu ra.',       // Two main components of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.
+          'Hai thành phần chính của một giao dịch là đầu vào và đầu ra. Trong bài thực hành trước, chúng ta đã giải mã một thông điệp bí mật tìm thấy bên trong đầu vào của giao dịch. Lần này, chúng ta sẽ giải mã một thông điệp thuộc phần đầu ra.',       // Two main components of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.
       paragraph_two:
-          'Đối với giao dịch sau đây, chúng ta sẽ xác định đầu ra loại OP_RETURN.',       // For the following transaction, we’re going to identify the output of type OP_RETURN.
+          'Đối với giao dịch sau đây, chúng ta sẽ xác định đầu ra loại OP_RETURN.', // For the following transaction, we’re going to identify the output of type OP_RETURN.
     },
 
     transacting_two: {
       title: 'Giao dịch', // Transacting
       nav_title: 'Tìm OP_RETURN', // Find the OP_RETURN
-      heading: 'OP_RETURN', // OP_RETURN
+      heading: 'OP_RETURN',
       paragraph_one:
-          'Có một cách khác để ẩn các thông điệp bí mật trong các giao dịch. Bitcoin có một loại mã đặc biệt gọi là OP_RETURN cho phép người dùng đính kèm thông điệp vào đầu ra của giao dịch. Hãy xem chúng ta có thể tìm thấy một cái nào không.',       // There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.
+          'Có một cách khác để ẩn các thông điệp bí mật trong các giao dịch. Bitcoin có một loại lệnh mã hóa đặc biệt gọi là OP_RETURN cho phép người dùng đính kèm thông điệp vào đầu ra của giao dịch. Hãy xem chúng ta có thể tìm thấy cái lệnh mã hóa nào không.', // There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.
       paragraph_two:
-          '1. Nhấp vào <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">đây</Link> để xem một giao dịch cụ thể.',       // 1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">here</Link> to look at a specific transaction.
+          '1. Nhấn vào <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">đây</Link> để xem chi tiết một giao dịch cụ thể.', // 1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">here</Link> to look at a specific transaction.
       paragraph_three:
-          '2. Mở chi tiết và tìm phần thuộc loại “OP_RETURN”.',       // 2. Open up the details and find the part that is of type “OP_RETURN”.
+          '2. Mở thông tin chi tiết và tìm phần thông tin thuộc loại “OP_RETURN”.', // 2. Open up the details and find the part that is of type “OP_RETURN”.
       paragraph_four:
-          '3. Bây giờ hãy xác định vị trí của trường “SCRIPTPUBKEY (ASM)”. Thấy phần “OP_RETURN OP_PUSHBYTES_33” không? Đây được gọi là opcode. Thực ra chúng tôi quan tâm đến những gì xảy ra sau chúng.',       // 3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSHBYTES_33" part? These are called opcodes. We’re actually interested in what comes after them.
+          '3. Tiếp đến, bạn xác định vị trí trường “SCRIPTPUBKEY (ASM)”. Bạn thấy phần thông tin “OP_RETURN OP_PUSHBYTES_33” không? Đây được gọi là opcode. Chúng ta quan tâm đến phần thông tin phía sau các lệnh mã hóa này.', // 3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSHBYTES_33" part? These are called opcodes. We’re actually interested in what comes after them.
       paragraph_five:
-          '4. Sao chép chuỗi số dài sau “OP_RETURN OP_PUSHBYTES_33” và dán nó vào khối mã.',       // 4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_33” and paste it in the code block. 
+          '4. Sao chép chuỗi số dài phía sau “OP_RETURN OP_PUSHBYTES_33” và dán nó vào khối mã hóa.', // 4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_33” and paste it in the code block. 
       input_challenge_label: 'Nhập loại OP_RETURN', // Enter the OP_RETURN type
     },
 
@@ -202,42 +202,42 @@ privacy: {
       nav_title: 'Giải mã OP_RETURN', // Decode the OP_RETURN
       heading: 'Một thông điệp bí mật khác', // Another secret message
       paragraph_one:
-          'Chúng tôi đã xác định được phần đầu ra của giao dịch chứa tin nhắn.',       // We’ve identified the part of the transaction output that holds the message.
+          'Chúng ta đã xác định được phần đầu ra của giao dịch chứa thông điệp.', // We’ve identified the part of the transaction output that holds the message.
       paragraph_two:
-          'Bây giờ chỉ còn việc giải mã nó, giống như chúng ta đã làm trong bài tập trước. Bạn có thể xem lại giao dịch <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">ở đây</Link>.',       // All that’s left now is to decode it, just like we did in the previous exercise. You can look up the transaction again <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">here</Link>.
+          'Bây giờ chỉ còn việc giải mã nó, giống như đã làm trong bài thực hành trước. Bạn có thể xem lại thông tin của giao dịch <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">ở đây</Link>.',       // All that’s left now is to decode it, just like we did in the previous exercise. You can look up the transaction again <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">here</Link>.
       terminal_challenge_success:
-          'Đúng rồi! Tuyệt vời!\n\n Như bạn thấy, manh mối là một địa chỉ. Đi đến đó.\n\n Thử thách tiếp theo đang chờ bạn.',      // That’s correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n Your next challenge awaits you.
+          'Đúng rồi! Làm được lắm!\n\n Như bạn thấy, manh mối là một địa chỉ. Hãy đi đến đó.\n\n Thử thách tiếp theo đang chờ bạn.', // That’s correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n Your next challenge awaits you.
       terminal_challenge_lines:
-          'Nhập lệnh của bạn ở đây và nhấn Enter...\n\n Lệnh: \n echo $scriptPubKeyBytes | xxd -r -p \n\n Lưu ý rằng $scriptPubKeyBytes không được định nghĩa sẵn cho bạn lần này. Bạn sẽ cần thay thế biến này trong mã bằng giá trị bạn tìm thấy ở trang trước',       // Enter your commands here and press Enter...\n\n Command: \n echo $scriptPubKeyBytes | xxd -r -p \n\n Note that $scriptPubKeyBytes is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous page
+          'Viết câu lệnh mã hóa của bạn ở đây và nhấn Enter...\n\n Lệnh: \n echo $scriptPubKeyBytes | xxd -r -p \n\n Lưu ý rằng $scriptPubKeyBytes sẽ không được định nghĩa sẵn cho bạn lần này. Bạn cần thay thế biến số này trong câu lệnh mã hóa với giá trị đã tìm thấy ở phần thực hành trước',       // Enter your commands here and press Enter...\n\n Command: \n echo $scriptPubKeyBytes | xxd -r -p \n\n Note that $scriptPubKeyBytes is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous page
       terminal_challenge_error:
-          'Hầu như! Hãy nhớ rằng biến $scriptPubKeyBytes không được đặt cho bạn lần này.',       // Almost! Remember that the variable $scriptPubKeyBytes is not set for you this time.
+          'Sắp được rồi! Nhớ rằng biến $scriptPubKeyBytes không được đặt cho bạn lần này.', // Almost! Remember that the variable $scriptPubKeyBytes is not set for you this time.
     },
 
     outro_one: {
-      title: 'Outro', // Outro
-      nav_title: 'Cuộc phiêu lưu đang gọi', // Adventure calls
+      title: 'Kết quả', // Outro
+      nav_title: 'Cuộc phiêu lưu đang vẫy gọi', // Adventure calls
       paragraph_one:
-          'Bạn chạy xuống tầng hầm, bước vào chiếc Budgetcopter cũ của bố mình, nhập tọa độ và tiến đến Quận 21.',       // You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to District 21.
+          'Bạn chạy xuống tầng hầm, bước vào chiếc xe cà tàng cũ của cha mình, nhập tọa độ và tiến đến Quận 21.',  // You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to District 21.
       paragraph_two:
-          'Mặc dù bị dị ứng mèo nghiêm trọng đến mức thậm chí còn áp dụng cả đối với Con mèo điện 3D, nhưng Con mèo điện 3D vẫn đi cùng. Bạn phản đối, nhưng mèo vẫn là mèo.',       // Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.
-      button_text: 'Hoàn thành chương 1', // Complete chapter 1
+          'Mặc dù bị dị ứng với mèo, nghiêm trọng đến mức thậm chí xảy ra đối với con mèo điện tín 3D, nhưng con mèo vẫn đi theo cùng. Bạn kịch liệt phản đối, nhưng mèo vẫn là mèo.', // Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.
+      button_text: 'Hoàn tất chương 1', // Complete chapter 1
     },
 
     outro_two: {
-      title: 'Bạn đã làm được!', // You did it!
-      nav_title: 'Chương hoàn thành', // Chapter complete
+      title: 'Bạn đã thành công!', // You did it!
+      nav_title: 'Chương đã hoàn tất', // Chapter complete
       description:
-          'Tuyệt vời. Bạn đã hoàn thành chương đầu tiên và học được rất nhiều về băm và giao dịch. Nó diễn ra như thế nào?',             // Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go?
+          'Tuyệt vời. Bạn đã hoàn thành chương đầu tiên với nhiều kiến thức về mã hóa và giao dịch. Bạn cảm thấy như thế nào?', // Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go?
     },
 
     end: {
-      save: 'Lưu tiến độ của tôi', // Save my progress
-      next: 'Tiếp tục mà không lưu', // Continue without saving
-      feedback: 'Chia sẻ phản hồi của bạn', // Share your feedback
+      save: 'Lưu lại tiến độ', // Save my progress
+      next: 'Tiếp tục và không lưu lại', // Continue without saving
+      feedback: 'Phản hồi của bạn', // Share your feedback
     },
     resources: {
       genesis_two: {
-        scriptsig_heading: 'ScriptSig', // ScriptSig
+        scriptsig_heading: 'ScriptSig',
         scriptsig_paragraph:
             "‘scriptSig’ là một script mà bạn cung cấp như một phần của đầu vào trong giao dịch mới của mình. Về bản chất, nó là script mở khóa của bạn, chứng minh rằng bạn có thẩm quyền chi tiêu bitcoin từ UTXO được tham chiếu. ‘scriptSig’ là dữ liệu đi vào trường scriptSig của đầu vào.",         // The 'scriptSig' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The 'scriptSig' is the data that goes into the input's scriptSig field.
         block_explorer_heading: 'Trình khám phá khối', // Block Explorer
