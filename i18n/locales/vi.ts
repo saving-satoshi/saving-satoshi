@@ -272,23 +272,23 @@ privacy: {
   chapter_two: {
     title: 'Lập Kế Hoạch', // Hashing Out a Plan
     paragraph_one:
-        'Tọa độ mà Satoshi cung cấp cho bạn không gây thất vọng, thật không may: đó là một nhà kho, và là một nhà kho đáng sợ, hoang vắng.', // The coordinates Satoshi gave you don’t disappoint, unfortunately: it’s a warehouse, and a scary, deserted one to boot.
+        'Tọa độ do Satoshi cung cấp không làm bạn thất vọng, không may thay, đó là một nhà kho bỏ hoang - một nhà kho đáng sợ.', // The coordinates Satoshi gave you don’t disappoint, unfortunately: it’s a warehouse, and a scary, deserted one to boot.
     paragraph_two:
-        'Bạn bay vòng quanh nhà kho bằng Budgetcopter của mình không dưới ba lần. Vâng, thở dài, có lẽ bạn sẽ phải vào đó. Máy dò nhiệt Budget Heat Detector của Budgetcopter không phát hiện gì ngoài bóng tối. Nếu ai đó biết nơi này tồn tại, thì đã rất lâu kể từ lần cuối họ đến thăm nó bằng bất cứ thứ gì khác ngoài ký ức của họ.',         // You circle the warehouse in your Budgetcopter no less than three times. Yeah, sigh, you’re probably gonna have to go in there. Your Budgetcopter’s Budget Heat Detector detects nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.
+        'Bạn lượn vòng quanh nhà kho bằng chiếc xe cà tàng không dưới ba lần. Nhưng, thở dài, có lẽ bạn sẽ phải vào trong rồi. Máy dò nhiệt lượng trong xe không phát hiện gì ngoài bóng tối. Nếu có ai đó biết sự tồn tại nơi này, thì lần cuối họ đến thăm nó chắc đã rất lâu và chắc những người đó cũng đã lên thiên đàng hết rồi.',   // You circle the warehouse in your Budgetcopter no less than three times. Yeah, sigh, you’re probably gonna have to go in there. Your Budgetcopter’s Budget Heat Detector detects nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.
 
     intro_one: {
       title: 'Giới thiệu', // Intro
       nav_title: 'Nhà kho', // The warehouse
       paragraph_one:
-          '—HOLOCAT: “Trời ơi, thật là một bãi rác. Tốt hơn hết là nơi này nên có một số e-anchovies được lưu trữ ở đâu đó. Tôi thậm chí còn chấp nhận một số CyberKibble.."',       // —HOLOCAT: “Boy, what a dump. This place had better have some e-anchovies stored somewhere. I’d even settle for some CyberKibble.."
+          '—HOLOCAT: “Trời! đúng là một bãi rác. Tốt nhất là chỗ này có cất giấu e-anchovies ở đâu đó. Tôi có thể miễn cưỡng chấp nhận một số CyberKibble.."',       // —HOLOCAT: “Boy, what a dump. This place had better have some e-anchovies stored somewhere. I’d even settle for some CyberKibble.."
       paragraph_two:
-          'Bạn hạ cánh, ổn định bản thân và tìm kiếm một điểm vào. Chà, cái cửa sổ vỡ đó sẽ hữu ích. Bạn lấy một viên gạch đập vỡ phần còn lại của cửa sổ và nhảy vào trong. Tòa nhà chứa đầy hàng nghìn máy đào bitcoin cũ kỹ, được bảo quản tốt.',             // You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.
+          'Bạn hạ cánh, lấy can đảm để tìm kiếm một điểm vào. Chà, cái cửa sổ vỡ đó sẽ có ích. Bạn lấy một viên gạch đập vỡ phần còn lại của cửa sổ và nhảy vào trong. Tòa nhà chứa đầy hàng nghìn máy đào bitcoin cũ kỹ, nhưng được bảo quản tốt.', // You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.
       paragraph_three: {
-        a: '—HOLOCAT: “Đây không phải là nhà kho; đây là một bảo tàng. Tôi nghĩ đây là những thiết bị đào cũ của gia đình Vanderpoole. Vào thời kỳ đầu của bitcoin, thợ đào sẽ sử dụng máy tính thông dụng để đào bitcoin. Nhưng sau vài năm, thợ đào nhận ra rằng họ có thể sử dụng máy móc với một loại chip đặc biệt gọi là Mạch tích hợp dành cho ứng dụng cụ thể, hoặc ',         // —HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family mining devices. In bitcoin’s early days, miners would use general purpose computers to mine bitcoin. But after a few years, miners realized they could use machines with a special chip called an Application-Specific Integrated Circuit, or 
-        b: 'ASIC, để ngắn gọn. Các chip này chỉ thực hiện một việc: đào bitcoin. Tính năng tập trung hạn hẹp của chúng làm tăng hiệu quả và cho phép thợ đào sử dụng ít năng lượng hơn vào việc đào, mang lại cho họ lợi thế. Bạn có tin rằng mọi người đã từng đào bằng máy tính xách tay của họ không?"',         //  for short. These chips do only one thing: mine bitcoin. Their narrow focus increases their efficiency and allows miners to spend less energy on mining, giving them an edge. Can you believe that people mined with their laptops at one point?"
+        a: '—HOLOCAT: “Đây không phải là nhà kho; mà đây là một bảo tàng. Tôi nghĩ đây là những thiết bị đào cũ của gia đình Vanderpoole. Vào thuở sơ khai của bitcoin, thợ đào sẽ sử dụng máy tính thông dụng để đào bitcoin. Nhưng chỉ sau vài năm, họ nhận ra rằng có thể sử dụng máy móc với một loại chip đặc biệt gọi là mạch tích hợp dành cho ứng dụng cụ thể, hoặc gọi là ',  // —HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family mining devices. In bitcoin’s early days, miners would use general purpose computers to mine bitcoin. But after a few years, miners realized they could use machines with a special chip called an Application-Specific Integrated Circuit, or 
+        b: 'ASIC, cho ngắn gọn. Các con chip này chỉ thực hiện một việc: đào bitcoin. Tính năng tập trung hạn hẹp của chúng làm tăng hiệu quả và cho phép thợ đào sử dụng ít năng lượng hơn vào việc đào, mang lại cho họ lợi thế. Bạn có tin rằng mọi người đã từng đào bằng máy tính xách tay của họ không?"',  //  for short. These chips do only one thing: mine bitcoin. Their narrow focus increases their efficiency and allows miners to spend less energy on mining, giving them an edge. Can you believe that people mined with their laptops at one point?"
       },
       paragraph_four:
-        'Điều này giải thích tất cả các máy móc trong bộ sưu tập của gia đình Vanderpoole.',       // This explains all the machines in the Vanderpoole family collection.
+        'Điều này giải thích tất cả các máy móc trong bộ sưu tập của gia đình Vanderpoole.',  // This explains all the machines in the Vanderpoole family collection.
       tooltip_one: {
         question: 'Máy đào ASIC là gì?',//'What is an ASIC miner?'
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520an%2520ASIC%2520miner%253F',
@@ -300,11 +300,11 @@ privacy: {
       title: 'Lập Kế Hoạch', // Hashing Out a Plan
       nav_title: 'Bật máy tính', // Turning on the computer
       paragraph_one:
-          'Ở góc phòng, một màn hình máy tính mờ nhạt, hầu như không hoạt động với một mẩu giấy dán trên đó đang nhấp nháy. Tờ giấy ghi rằng “Bật chúng lên, đồ ngốc.”',             // In the corner, a dim, barely working computer monitor with a note stuck to it sits blinking. The note says “Turn them on, stupid."
+          'Ở góc phòng, một màn hình máy tính mờ nhạt, hầu như không hoạt động với một mẩu giấy dán trên đó đang nhấp nháy. Tờ giấy ghi rằng “Bật chúng lên, đồ ngốc.”',  // In the corner, a dim, barely working computer monitor with a note stuck to it sits blinking. The note says “Turn them on, stupid."
       paragraph_two:
-          '—HOLOCAT: “Thật là thô lỗ. Ồ, một bàn phím cơ. Tôi đã nghe nói về những thứ này. Giả sử rằng chúng ồn đến mức khiến người dùng bị điếc và bị cấm.”',             // —HOLOCAT: “How rude. Wow; a mechanical keyboard. I’ve heard about these things. Supposedly, they were so loud that they cost users their hearing, and were banned.”
+          '—HOLOCAT: “Thật là thô lỗ. Ồ, một bàn phím cơ. Tôi đã nghe nói về những thứ này. Giả sử rằng chúng ồn đến mức khiến người dùng bị điếc và bị cấm.”', // —HOLOCAT: “How rude. Wow; a mechanical keyboard. I’ve heard about these things. Supposedly, they were so loud that they cost users their hearing, and were banned.”
       paragraph_three:
-          'Holocat nhảy lên bàn phím và đi qua đi lại trên đó, chỉ cho bạn những phím cần nhấn.',             // Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.
+          'Holocat nhảy lên bàn phím và đi qua đi lại trên đó, chỉ cho bạn những phím cần nhấn.',  // Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.
     },
 
     hashing_one: {
