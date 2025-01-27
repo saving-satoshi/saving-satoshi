@@ -106,21 +106,21 @@ privacy: {
     },
 
     intro_two: {
-      title: 'Khối đầu tiên', // Genesis
+      title: 'Khối khởi tạo đầu tiên', // Genesis
       nav_title: "Con mèo điện tín 3D của Satoshi", // Satoshi's holocat
       paragraph_one:
           'Trên chiếc đồng hồ đa năng, bạn nhận được một Con mèo điện 3D nhãn hiệu WhiskerWare từ một người tự xưng là Satoshi Nakamoto. (Giống như bất kỳ một điện tín 3D khác, nhưng lần này có hình dạng như một con mèo.) Bạn mở con mèo điện tín 3D bằng cách chạm nhẹ vào mũi của nó.',       // On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.
       paragraph_two:
-          '—“Bitcoin không phải đang chết, nhưng Bitcoin cần sự giúp đỡ của bạn. Đừng quên con mèo.” – Satoshi Nakamoto',       // —“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto
+          '—“Bitcoin không phải đang chết, nhưng Bitcoin cần sự giúp đỡ của bạn. Đừng quên con mèo.” – Satoshi Nakamoto',  // —“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto
       paragraph_three:
-          '—Satoshi? Satoshi đó? Từ bài cáo bạch? Không, không thể nào. Mấy người đó đã được coi là đã mất tích (/chết) hơn một thế kỷ trước.',       // —Satoshi? The Satoshi? From the white paper? No, it couldn’t be. They’ve been presumed dead for over a century.
+          '—Satoshi? Satoshi đó? Từ bài cáo bạch? Không, không thể nào. Mấy người đó đã được coi là đã mất tích (hay chết) hơn một thế kỷ trước.', // —Satoshi? The Satoshi? From the white paper? No, it couldn’t be. They’ve been presumed dead for over a century.
       paragraph_four: 'Phải không?', // Haven’t they?
       paragraph_five:
-          'Holocat: “Tốt hơn hết là nên bắt tay vào làm việc. Tôi có thể giúp, nhưng bạn phải nói meo.”',       // Holocat: “You better get to work. I can help, but you have to start meow.”
+          'Holocat: “Tốt hơn hết là nên bắt tay vào làm việc. Tôi có thể giúp, nhưng bạn phải nói meo.”', // Holocat: “You better get to work. I can help, but you have to start meow.”
     },
 
     genesis_one: {
-      title: 'Khối đầu tiên', // Genesis
+      title: 'Khối khởi tạo đầu tiên', // Genesis
       nav_title: 'Bí mật trong khối đầu tiên', // Genesis Secret
       heading: 'Thử thách đầu tiên của bạn', // Your first challenge
       paragraph_one:
@@ -130,7 +130,7 @@ privacy: {
     },
 
     genesis_two: {
-      title: 'Khối đầu tiên', // Genesis
+      title: 'Khối khởi tạo đầu tiên', // Genesis
       nav_title: 'Tìm thông điệp', // Find the message
       heading: 'Tìm thông điệp bí mật', // Find the hidden message
       paragraph_one:
@@ -148,22 +148,22 @@ privacy: {
     },
 
     genesis_three: {
-      title: 'Khối đầu tiên', // Genesis
+      title: 'Khối khởi tạo đầu tiên', // Genesis
       nav_title: 'Giải mã thông điệp', // Decode the message
       heading: "Hãy giải mã thông điệp", // Let's decode the message
       paragraph_one:
-          'Thông điệp bạn tìm thấy được mã hóa theo định dạng HEX. Bây giờ chúng ta sẽ chạy một lệnh để chuyển đổi nó thành ASCII, thứ mà chúng ta có thể đọc được.',       // The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.
+          'Thông điệp bạn tìm thấy được mã hóa theo định dạng HEX. Bây giờ chúng ta sẽ chạy một lệnh để chuyển đổi nó thành ASCII, thứ mà chúng ta có thể đọc được.', // The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.
       paragraph_two:
-          'Sao chép và dán lệnh bên dưới vào Terminal trong khối mã hóa và nhấn “Enter”.',       // Copy and paste the command below into the Terminal in the code block and press “Enter”.
+          'Sao chép và dán lệnh bên dưới vào Terminal trong khối mã hóa và nhấn “Enter”.',  // Copy and paste the command below into the Terminal in the code block and press “Enter”.
       terminal_challenge_lines:
-      `Nhập lệnh của bạn ở đây và nhấn Enter...\n Biến $scriptSigHex đã được định nghĩa sẵn cho bạn.\n\n var $scriptSigHex = '04fff...e6b73'` ,       // Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'
+          `Nhập lệnh của bạn ở đây và nhấn Enter...\n Biến $scriptSigHex đã được định nghĩa sẵn cho bạn.\n\n var $scriptSigHex = '04fff...e6b73'` ,  // Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'
       waiting_for_input: 'Đang chờ bạn viết và chạy script...', // Waiting for you to write and run the script...
       success:
-      `Làm tốt lắm! Thông điệp được giải mã tham chiếu trong trang nhất của <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> từ ngày 3 tháng 1 năm 2009, cùng ngày Satoshi khai thác khối genesis. Thật tuyệt vời phải không ?! Thông điệp này cũng cung cấp cho chúng tôi một số hiểu biết sâu sắc về động lực tạo ra bitcoin của ông ấy.\n\n Hãy tiếp tục nào!`, // Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.
+          `Làm tốt lắm! Thông điệp được giải mã tham chiếu trong trang nhất của <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> từ ngày 3 tháng 1 năm 2009, cùng ngày Satoshi khai thác khối genesis. Thật tuyệt vời phải không ?! Thông điệp này cũng cung cấp cho chúng tôi một số hiểu biết sâu sắc về động lực tạo ra bitcoin của ông ấy.\n\n Hãy tiếp tục nào!`, // Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.
     },
 
     genesis_four: {
-      title: 'Khối đầu tiên', // Genesis
+      title: 'Khối khởi tạo đầu tiên', // Genesis
       nav_title: 'Thành công đầu tiên của bạn', // Your first success
       subtitle: 'Chúc mừng! Bạn đã hoàn thành thử thách đầu tiên!', // Congrats! You completed the first challenge!
       paragraph_one:
@@ -274,7 +274,7 @@ privacy: {
     paragraph_one:
         'Tọa độ mà Satoshi cung cấp cho bạn không gây thất vọng, thật không may: đó là một nhà kho, và là một nhà kho đáng sợ, hoang vắng.', // The coordinates Satoshi gave you don’t disappoint, unfortunately: it’s a warehouse, and a scary, deserted one to boot.
     paragraph_two:
-        'Bạn bay vòng quanh nhà kho bằng Budgetcopter của mình không dưới ba lần. Vâng, thở dài, có lẽ bạn sẽ phải vào đó. Máy dò nhiệt Budget Heat Detector của Budgetcopter không phát hiện gì ngoài bóng tối. Nếu ai đó biết nơi này tồn tại, thì đã rất lâu kể từ lần cuối họ đến thăm nó bằng bất cứ thứ gì khác ngoài ký ức của họ.',         // You circle the warehouse in your Budgetcopter no less than three times. Yeah, sigh, you’re probably gonna have to go in there. Your Budgetcopter’s Budget Heat Detector detects nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.
+        'Bạn bay vòng quanh nhà kho bằng Budgetcopter của mình không dưới ba lần. Vâng, thở dài, có lẽ bạn sẽ phải vào đó. Máy dò nhiệt Budget Heat Detector của Budgetcopter không phát hiện gì ngoài bóng tối. Nếu ai đó biết nơi này tồn tại, thì đã rất lâu kể từ lần cuối họ đến thăm nó bằng bất cứ ký tự gì khác ngoài ký ức của họ.',         // You circle the warehouse in your Budgetcopter no less than three times. Yeah, sigh, you’re probably gonna have to go in there. Your Budgetcopter’s Budget Heat Detector detects nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.
 
     intro_one: {
       title: 'Giới thiệu', // Intro
@@ -309,7 +309,7 @@ privacy: {
 
     hashing_one: {
       title: 'Các số không', // Zeroes
-      nav_title: 'Máy tính phát ra tiếng ồn', // The computer hums to life
+      nav_title: 'Máy tính sống lại', // The computer hums to life
       paragraph_one:
           'Hoặc do may mắn, hoặc vì con mèo thực sự biết mình đang làm gì, những chữ cái và số ngẫu nhiên mà cô ấy bước lên biến thành ... nhiều chữ cái và số ngẫu nhiên hơn?',       // Either by chance, or because Holocat actually knew what she was doing, the random letters and numbers she stepped on turn into... more random letters and numbers?
       list_one: '> QX23Y6VGECTUKSNIEUTUB[P[pihof', 
@@ -356,9 +356,9 @@ privacy: {
 
     hashing_four: {
       title: 'Các số không', // Zeroes
-      nav_title: 'Tìm một mã hóa có số không', // Find a hash with a zero
+      nav_title: 'Tìm một chuỗi số mã hóa có số không đầu tiên', // Find a hash with a zero
       heading:
-          'Nhập bất cứ thứ gì cho đến khi bạn tìm thấy một mã hóa bắt đầu bằng số không (“0”)', // Enter anything until you find a hash that starts with a zero (“0”)
+          'Nhập bất cứ ký tự gì cho đến khi bạn tìm thấy một chuỗi số mã hóa bắt đầu bằng số không (“0”)', // Enter anything until you find a hash that starts with a zero (“0”)
       hint_prompt:
           'Cần <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip">gợi ý</Tooltip>?',             // Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip">hint</Tooltip>?
       hint_tooltip:
@@ -367,17 +367,17 @@ privacy: {
 
     hashing_five: {
       title: 'Các số không', // Zeroes
-      nav_title: 'Tăng nhiệt', // Turning up the heat
+      nav_title: 'Tăng tốc', // Turning up the heat
       heading: 'Không quá khó!', // That wasn’t too hard!
       paragraph_one:
-          'Hãy làm cho nó khó hơn một chút. Hãy thử tìm một mã hóa bắt đầu bằng hai số không ("00").',             // Let’s make it a bit more tricky. Try to find a hash that starts with two zeroes ("00").
+          'Hãy làm cho nó khó hơn một chút. Hãy thử tìm một chuỗi số mã hóa bắt đầu bằng hai số không ("00").',  // Let’s make it a bit more tricky. Try to find a hash that starts with two zeroes ("00").
     },
 
     hashing_six: {
       title: 'Các số không', // Zeroes
       nav_title: 'Tìm một mã hóa có hai số không', // Find a hash with two zeroes
       heading:
-          'Nhập bất cứ thứ gì cho đến khi bạn tìm thấy một mã hóa bắt đầu bằng hai số không (“00”)', // Enter anything until you find a hash that starts with two zeroes (“00”)
+          'Nhập bất cứ ký tự gì cho đến khi bạn tìm thấy một mã hóa bắt đầu bằng hai số không (“00”)', // Enter anything until you find a hash that starts with two zeroes (“00”)
       hint_prompt:
           'Cần <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">gợi ý</Tooltip>?',             // Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">hint</Tooltip>?
       hint_tooltip:
@@ -550,7 +550,7 @@ privacy: {
       title: 'Giới thiệu', // Intro
       nav_title: 'Xử lý nó', // Hashing it out
       paragraph_one:
-          '—SATOSHI NAKAMOTO: “Này, bạn! Đúng vậy, bạn! Nhớ tôi chứ? Bitcoin hiện đang bị tấn công 51%! Sau khi bạn đưa các thiết bị khai thác trực tuyến, Vanderpoole đã bật lại các ASIC của BitRey và đang khai thác các khối trống. Vấn đề là không chỉ có máy móc của anh ta. Anh ta đã sử dụng một cửa hậu trên firmware ASIC tiêu chuẩn để lây nhiễm virus cho các máy đào hiện có, ngăn chặn chúng khai thác bất cứ thứ gì ngoài các khối trống. Anh ta đang cố gắng bắt cóc hệ sinh thái bitcoin và buộc mọi người ủng hộ ý tưởng tăng nguồn cung bitcoin. Hãy làm gì đó, đồ ngốc!”',       // —SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is being hit with a 51% attack right now! After you brought those mining devices online, Vanderpoole turned BitRey’s ASICs back on and is mining empty blocks. The problem is it’s not just his machines. He used a backdoor on the standard ASIC firmware to infect existing miners with a virus that prevents them from mining anything but empty blocks. He’s trying to hold the bitcoin ecosystem hostage and force people to support the idea of increasing bitcoin’s supply. Do something, dingdong!”
+          '—SATOSHI NAKAMOTO: “Này, bạn! Đúng vậy, bạn! Nhớ tôi chứ? Bitcoin hiện đang bị tấn công 51%! Sau khi bạn đưa các thiết bị khai thác trực tuyến, Vanderpoole đã bật lại các ASIC của BitRey và đang khai thác các khối trống. Vấn đề là không chỉ có máy móc của anh ta. Anh ta đã sử dụng một cửa hậu trên firmware ASIC tiêu chuẩn để lây nhiễm virus cho các máy đào hiện có, ngăn chặn chúng khai thác bất cứ ký tự gì ngoài các khối trống. Anh ta đang cố gắng bắt cóc hệ sinh thái bitcoin và buộc mọi người ủng hộ ý tưởng tăng nguồn cung bitcoin. Hãy làm gì đó, đồ ngốc!”',       // —SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is being hit with a 51% attack right now! After you brought those mining devices online, Vanderpoole turned BitRey’s ASICs back on and is mining empty blocks. The problem is it’s not just his machines. He used a backdoor on the standard ASIC firmware to infect existing miners with a virus that prevents them from mining anything but empty blocks. He’s trying to hold the bitcoin ecosystem hostage and force people to support the idea of increasing bitcoin’s supply. Do something, dingdong!”
       paragraph_two:
           'Máy tính cũ khạc ra một đám bụi, sau đó tạo ra một tập dữ liệu được gọi là "bảng tính" chứa thông tin liên hệ của một số thợ đào bitcoin lớn nhất, cũng như bản vá cho virus. Bạn càng sớm có thể gửi bản vá cho các thợ đào khác, họ càng sớm có thể giành lại quyền kiểm soát máy móc của mình và tham gia cuộc chiến chống lại BitRey.',       // The old computer coughs up a cloud of dust, then produces a wad of data called a “spreadsheet” that contains contact info for some of the largest bitcoin miners, as well as a patch for the virus. The sooner you can get the patch to other miners, the sooner they can regain control of their machines and join your fight against BitRey.
       paragraph_three:
