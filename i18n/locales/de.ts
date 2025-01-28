@@ -25,7 +25,7 @@ const translations = {
     subtitle:
       'Wir schreiben das Jahr 2139. In zwei Wochen wird der letzte Bitcoin geschürft. Seit Monaten tickt auf dem Satoshi Square eine Uhr herunter.',
     intro:
-      'Die Welt wartet auf den letzten Block. Dann kommt das Netzwerk plötzlich zum Stillstand.<br><br>Sie erhalten ein Holocat von jemandem mit dem Namen Satoshi Nakamoto. (Es ist wie jedes andere E-Hologramm, aber dieses hat die Form einer Katze). Sie öffnen das Holocat, indem Sie neugierig auf seine Nase klopfen, um zu hören, was es zu sagen hat ...',
+      'Die Welt wartet auf den letzten Block. Dann kommt das Netzwerk plötzlich zum Stillstand.<br><br>Sie erhalten ein Holokatze von jemandem mit dem Namen Satoshi Nakamoto. (Es ist wie jedes andere E-Hologramm, aber dieses hat die Form einer Katze). Sie öffnen das Holokatze, indem Sie neugierig auf seine Nase klopfen, um zu hören, was es zu sagen hat ...',
     project: {
       title: 'Mit Spaß gebaut',
       paragraph_one:
@@ -97,16 +97,16 @@ const translations = {
     },
     intro_two: {
       title: 'Genesis',
-      nav_title: 'Satoshis Holocaust',
+      nav_title: 'Satoshis Holokatze',
       paragraph_one:
-        'Auf Ihrer Everything Watch erhalten Sie einen Holocat der Marke WhiskerWare von jemandem mit dem Namen Satoshi Nakamoto. (Er ist wie jedes andere E-Hologramm, aber dieses hat die Form einer Katze.) Sie öffnen den Holocat, indem Sie auf seine Nase stupsen.',
+        'Auf Ihrer Everything Watch erhalten Sie einen Holokatze der Marke WhiskerWare von jemandem mit dem Namen Satoshi Nakamoto. (Er ist wie jedes andere E-Hologramm, aber dieses hat die Form einer Katze.) Sie öffnen den —Holokatze, indem Sie auf seine Nase stupsen.',
       paragraph_two:
         '— „Bitcoin stirbt nicht, aber es braucht Ihre Hilfe. Vergessen Sie die Katze nicht.“ – Satoshi Nakamoto',
       paragraph_three:
         '—Satoshi? Die Satoshi? Aus dem Whitepaper? Nein, das kann nicht sein. Sie gelten seit über einem Jahrhundert als tot.',
       paragraph_four: 'Haben sie nicht?',
       paragraph_five:
-        'Holocat: „Mach dich lieber an die Arbeit. Ich kann helfen, aber du musst anfangen zu miauen.“',
+        'Holokatze: „Mach dich lieber an die Arbeit. Ich kann helfen, aber du musst anfangen zu miauen.“',
     },
     genesis_one: {
       title: 'Genesis',
@@ -202,7 +202,7 @@ const translations = {
       paragraph_one:
         'Sie rennen hinunter zu Ihrer Garage, steigen in den alten Budgetcopter Ihres Vaters, geben die Koordinaten ein und machen sich auf den Weg zu Distrikt 21.',
       paragraph_two:
-        'Trotz Katzenallergien, die so stark sind, dass sie sogar auf Hologramme zutreffen, kommt der Holocat. Sie wenden ein, aber Katzen sind eben Katzen.',
+        'Trotz Katzenallergien, die so stark sind, dass sie sogar auf Hologramme zutreffen, kommt der Holokatze. Sie wenden ein, aber Katzen sind eben Katzen.',
       button_text: 'Schließe Kapitel 1 ab.',
     },
     outro_two: {
@@ -259,11 +259,11 @@ const translations = {
       title: 'Einleitung',
       nav_title: 'Das Lager',
       paragraph_one:
-        '—HOLOCAT: „Junge, was für ein Drecksloch. Hier sollte es besser irgendwo ein paar E-Sardellen geben. Ich würde mich sogar mit etwas CyberKibble zufrieden geben.“',
+        '—HOLOKATZE: „Junge, was für ein Drecksloch. Hier sollte es besser irgendwo ein paar E-Sardellen geben. Ich würde mich sogar mit etwas CyberKibble zufrieden geben.“',
       paragraph_two:
         'Sie landen, halten sich fest und suchen nach einem Einstiegspunkt. Das zerbrochene Fenster sollte den Zweck erfüllen. Sie schlagen mit einem Ziegelstein die Überreste des Fensters heraus und springen hinein. Das Gebäude ist mit Tausenden staubiger, gut erhaltener Bitcoin-Miner gefüllt.',
       paragraph_three: {
-        a: '—HOLOCAT: „Das ist kein Lagerhaus, das ist ein Museum. Ich glaube, das sind alte Mining-Geräte der Familie Vanderpoole. In den frühen Tagen von Bitcoin nutzten die Miner Allzweckcomputer, um Bitcoin zu minen. Aber nach ein paar Jahren erkannten die Miner, dass sie Maschinen mit einem speziellen Chip, einem sogenannten anwendungsspezifischen integrierten Schaltkreis, verwenden konnten, oder',
+        a: '—HOLOKATZE: „Das ist kein Lagerhaus, das ist ein Museum. Ich glaube, das sind alte Mining-Geräte der Familie Vanderpoole. In den frühen Tagen von Bitcoin nutzten die Miner Allzweckcomputer, um Bitcoin zu minen. Aber nach ein paar Jahren erkannten die Miner, dass sie Maschinen mit einem speziellen Chip, einem sogenannten anwendungsspezifischen integrierten Schaltkreis, verwenden konnten, oder',
         b: 'kurz gesagt. Diese Chips machen nur eines: Bitcoin schürfen. Ihr enger Fokus erhöht ihre Effizienz und ermöglicht es den Minern, weniger Energie für das Schürfen aufzuwenden, was ihnen einen Vorteil verschafft. Können Sie glauben, dass die Leute irgendwann einmal mit ihren Laptops geschürft haben?"',
       },
       paragraph_four:
@@ -280,22 +280,22 @@ const translations = {
       paragraph_one:
         'In der Ecke blinkt ein dunkler, kaum funktionierender Computermonitor, an dem eine Notiz klebt. Auf der Notiz steht: „Mach sie an, Dummkopf.“',
       paragraph_two:
-        '—HOLOCAT: „Wie unhöflich. Wow, eine mechanische Tastatur. Ich habe von diesen Dingern gehört. Angeblich waren sie so laut, dass sie den Benutzern ihr Gehör kosteten, und wurden deshalb verboten.“',
+        '—HOLOKATZE: „Wie unhöflich. Wow, eine mechanische Tastatur. Ich habe von diesen Dingern gehört. Angeblich waren sie so laut, dass sie den Benutzern ihr Gehör kosteten, und wurden deshalb verboten.“',
       paragraph_three:
-        'Holocat springt auf die Tastatur, läuft darüber und zeigt Ihnen, welche Tasten Sie drücken müssen.',
+        'Holokatze springt auf die Tastatur, läuft darüber und zeigt Ihnen, welche Tasten Sie drücken müssen.',
     },
     hashing_one: {
       title: 'Nullen',
       nav_title: 'Der Computer erwacht zum Leben',
       paragraph_one:
-        'Entweder durch Zufall oder weil Holocat wirklich wusste, was sie tat, verwandelten sich die zufälligen Buchstaben und Zahlen, auf die sie trat, in ... noch mehr zufällige Buchstaben und Zahlen?',
+        'Entweder durch Zufall oder weil Holokatze wirklich wusste, was sie tat, verwandelten sich die zufälligen Buchstaben und Zahlen, auf die sie trat, in ... noch mehr zufällige Buchstaben und Zahlen?',
       list_one: '> QX23Y6VGECTUKSNIEUTUB[P[pihof',
       list_two:
         '> 1c31d1d9fb848a505fc0cdbea848ff1bdd46a9ed4d639d413d3a93035194eedf',
       paragraph_two:
         'Auf dem Monitor wird „FALSCHES HASH. VERSUCHEN SIE ES ERNEUT.“ angezeigt.',
       paragraph_three:
-        'Natürlich war das Kauderwelsch, das Holocat eingetippt hat, falsch. Sie ist nur eine freche holografische Katze!',
+        'Natürlich war das Kauderwelsch, das Holokatze eingetippt hat, falsch. Sie ist nur eine freche holografische Katze!',
       paragraph_four: 'Was passiert, wenn Sie etwas anderes eingeben?',
     },
     hashing_two: {
@@ -453,7 +453,7 @@ const translations = {
       heading: 'Gut gemacht!',
       paragraph_one:
         'Die Maschinen erwachen zum Leben. Alles scheint zu funktionieren. Auf dem alten Monitor erscheint eine Karte, die die Standorte anderer Lagerhäuser zeigt, die mit alten Bergbaugeräten der Familie Vanderpoole gefüllt sind, die weltweit online gegangen sind. Sieht so aus, als wären sie aktiviert worden, als Sie die Bergbau-Herausforderung abgeschlossen haben!',
-      paragraph_two: '—HOLOCAT: „Schau, da ist eine Nachricht.“',
+      paragraph_two: '—HOLOKATZE: „Schau, da ist eine Nachricht.“',
       paragraph_three:
         '„Gute Arbeit. Dies wird Bitcoin helfen, wieder alle zehn Minuten einen Block zu erreichen.“ – Satoshi Nakamoto',
       paragraph_four: 'Er schon wieder?',
@@ -510,10 +510,10 @@ const translations = {
   chapter_three: {
     title: 'Der 51%-Angriff',
     paragraph_one:
-      'Sie geben die Adresse eines Block-Explorers ein und sehen, dass die Blöcke wieder im Zehn-Minuten-Takt vorliegen. Irgendwie schläft Holocat trotz des Lärms aller ASICs.',
+      'Sie geben die Adresse eines Block-Explorers ein und sehen, dass die Blöcke wieder im Zehn-Minuten-Takt vorliegen. Irgendwie schläft Holokatze trotz des Lärms aller ASICs.',
     paragraph_two: 'Katzen. Was kann man tun?',
     paragraph_three:
-      'Allerdings stimmt etwas nicht. Die Blöcke sind leer und Transaktionen werden nicht verarbeitet. Haben Sie einen Fehler gemacht? Könnte das ein Zufall sein? Eine weitere Meldung erscheint auf dem Computerbildschirm und weckt Holocat.',
+      'Allerdings stimmt etwas nicht. Die Blöcke sind leer und Transaktionen werden nicht verarbeitet. Haben Sie einen Fehler gemacht? Könnte das ein Zufall sein? Eine weitere Meldung erscheint auf dem Computerbildschirm und weckt Holokatze.',
     paragraph_four: 'Das ist kein Zufall.',
     intro_one: {
       title: 'Einleitung',
@@ -523,7 +523,7 @@ const translations = {
       paragraph_two:
         'Der alte Computer stößt eine Staubwolke aus und produziert dann einen Datenhaufen, eine sogenannte „Tabelle“, die Kontaktinformationen einiger der größten Bitcoin-Miner sowie einen Patch für den Virus enthält. Je schneller Sie den Patch an andere Miner weitergeben können, desto schneller können diese die Kontrolle über ihre Maschinen zurückerlangen und sich Ihrem Kampf gegen BitRey anschließen.',
       paragraph_three:
-        '—HOLOCAT: „Wir haben noch mehr zu tun. Also, du hast noch mehr zu tun. Ich werde durch Wände rennen und Mäuse erschrecken.“',
+        '—HOLOKATZE: „Wir haben noch mehr zu tun. Also, du hast noch mehr zu tun. Ich werde durch Wände rennen und Mäuse erschrecken.“',
     },
     solo_one: {
       title: 'Sie gegen BitRey',
@@ -695,7 +695,7 @@ const translations = {
       title: 'Einleitung',
       nav_title: 'Sichern der Tasche',
       paragraph_one:
-        '—HOLOCAT: „Einer von uns sollte besser schlafen. Du musst anfangen, den Rest der Bergleute zu kontaktieren. Sie werden noch mehr wissen wollen als die ganze Welt.“',
+        '—HOLOKATZE: „Einer von uns sollte besser schlafen. Du musst anfangen, den Rest der Bergleute zu kontaktieren. Sie werden noch mehr wissen wollen als die ganze Welt.“',
       paragraph_two:
         'Während Sie sich an Ihrem ButtLift Hover Desk niederlassen, gehen Sie die Ereignisse des Tages noch einmal durch. Vanderpoole. BitRey. Die Enthüllung, dass die Bergleute nie einer Protestschließung zugestimmt haben. Könnte das alles wahr sein? War das alles inszeniert? Und wie lange sollen Sie sich noch um diese Katze kümmern? (In der Ferne miaut etwas.)',
       paragraph_three:
@@ -921,7 +921,7 @@ const translations = {
       nav_title: 'Eine Nachricht von Satoshi',
       paragraph_one:
         'Ihr TXM4H-A Hover-Bildschirm erwacht zum Leben. Sie haben eine neue Nachricht.',
-      paragraph_two: '—HOLOCAT: Vergiss nicht, mir auf die Nase zu hauen.',
+      paragraph_two: '—HOLOKATZE: Vergiss nicht, mir auf die Nase zu hauen.',
       paragraph_three: 'Du schnippst ihr auf die Nase',
       paragraph_four:
         '—SATOSHI NAKAMOTO: „Vanderpoole ist nicht der, für den er sich ausgibt. Sie können ihn entlarven. Fordern Sie ihn auf, den Besitz von Satoshis Bitcoin zu beweisen, indem er eine Nachricht mit den privaten Schlüsseln dieser Wallet signiert.“',
@@ -1155,7 +1155,7 @@ const translations = {
       nav_title: 'Den richtigen Schlüssel finden',
       heading: 'Wie hat Vanderpoole diese Signatur überhaupt erstellt?',
       paragraph_one:
-        'Holocat mischt sich ein und sagt, ein Überläufer von BitRey habe uns eine Liste mit öffentlichen Schlüsseln geschickt, die Vanderpoole häufig verwendet. Vielleicht habe er einen dieser Schlüssel zum Signieren der Nachricht verwendet.',
+        'Holokatze mischt sich ein und sagt, ein Überläufer von BitRey habe uns eine Liste mit öffentlichen Schlüsseln geschickt, die Vanderpoole häufig verwendet. Vielleicht habe er einen dieser Schlüssel zum Signieren der Nachricht verwendet.',
       paragraph_two:
         'Bitte geben Sie den Schlüssel ein, der den Überprüfungsprozess erfolgreich abschließt und es uns ermöglicht, den öffentlichen Schlüssel zu identifizieren, den Vanderpoole zum Signieren dieser Nachricht verwendet hat.',
       paragraph_three:
@@ -1271,7 +1271,7 @@ const translations = {
   chapter_six: {
     title: 'Der Schlüsselhalter',
     paragraph_one:
-      'Ahhh! Vanderpoole hat es auf Sie abgesehen, weil Sie seine betrügerischen Behauptungen aufgedeckt haben. Doch obwohl der Holocaust nun aus dem Sack ist, halten viele verängstigte Menschen weiterhin an dem Mythos fest, den Vanderpoole um sich selbst, seine Familie und ihre angebliche Abstammung geschaffen hat. Die Zeiten sind beängstigend und die Menschen brauchen einen Helden. Leider ist er für viele der Beste, den sie haben.',
+      'Ahhh! Vanderpoole hat es auf Sie abgesehen, weil Sie seine betrügerischen Behauptungen aufgedeckt haben. Doch obwohl der Holokatze nun aus dem Sack ist, halten viele verängstigte Menschen weiterhin an dem Mythos fest, den Vanderpoole um sich selbst, seine Familie und ihre angebliche Abstammung geschaffen hat. Die Zeiten sind beängstigend und die Menschen brauchen einen Helden. Leider ist er für viele der Beste, den sie haben.',
     intro_one: {
       title: 'Einleitung',
       nav_title: 'War das wirklich Satoshi',
@@ -1286,12 +1286,12 @@ const translations = {
       title: 'Einleitung',
       nav_title: 'Mika 3000 bezahlen',
       paragraph_one:
-        '—HOLOCAT: „Das ist kaum das Einzige, was dich in letzter Zeit dumm klingen lässt.“',
+        '—HOLOKATZE: „Das ist kaum das Einzige, was dich in letzter Zeit dumm klingen lässt.“',
       paragraph_two:
         '—SATOSHI NAKAMOTO: „Bitcoin hat sich vor vielen Jahren der Kontrolle seines Schöpfers entzogen. Es wäre egal, ob Vanderpoole oder ich Satoshi oder einer ihrer Nachkommen wären. Bitcoin wird von seiner Community definiert und kann nicht von einer einzelnen Person oder Entität – einschließlich Satoshi – vereinnahmt werden. Dies zu beweisen, ist der wahre Kampf. Ich hoffe, es macht Ihnen nichts aus, aber ich habe Ihren exzentrischen Freund, den freiberuflichen Reporter, gebeten, sich bei mir zu melden.“',
       paragraph_three: '—Er was?',
       paragraph_four: '—Ding.',
-      paragraph_five: '—HOLOCAT: Vergiss nicht, mich anzustupsen.',
+      paragraph_five: '—HOLOKATZE: Vergiss nicht, mich anzustupsen.',
       paragraph_six:
         '—MIKA 3000: „Du hast Mumm, aber Mumm allein reicht nicht. Was du entdeckt hast, ist nur der Anfang. Es steckt noch mehr hinter dieser Geschichte, aber wir müssen Vanderpooles Privatinsel besuchen, um sicher zu wissen, was „mehr“ bedeutet. Das wird viel kosten, also könnte ich deine Hilfe gebrauchen, um Geld von der Multisig-Wallet abzuheben, die du mir beim Einrichten geholfen hast. Du hast noch einen meiner Schlüssel, oder?“',
     },
@@ -2059,9 +2059,9 @@ const translations = {
       paragraph_one:
         'Sie fragen Ihre Landsleute, ob sie über Vanderpooles Armee von Sicherheitsdrohnen besorgt sind.',
       paragraph_two:
-        '—HOLOCAT: „Geben Sie mir 15 Minuten. Im Grunde sind sie Vögel und ich bin eine Katze. Sie haben keine Chance.“',
+        '—HOLOKATZE: „Geben Sie mir 15 Minuten. Im Grunde sind sie Vögel und ich bin eine Katze. Sie haben keine Chance.“',
       paragraph_three:
-        'Holocat fährt ihre Krallen aus und erledigt Vanderpooles Drohnenarmee Schlag für Schlag. Mika 3000 reicht Ihnen einen schwarzen Rollkragenpullover, Handschuhe und eine Nachtsichtbrille.',
+        'Holokatze fährt ihre Krallen aus und erledigt Vanderpooles Drohnenarmee Schlag für Schlag. Mika 3000 reicht Ihnen einen schwarzen Rollkragenpullover, Handschuhe und eine Nachtsichtbrille.',
       paragraph_four:
         '—MIKA 3000: „In einem Hawaiihemd kann man keine Spionage betreiben. Was hast du dir dabei gedacht? Das ist kein weiteres verlassenes Lagerhaus, das ist eine Festung. Hier, das hätte ich fast vergessen. Nimm diesen Enterhaken.“',
       paragraph_five:
@@ -2074,12 +2074,12 @@ const translations = {
       paragraph_two:
         'Der Virus ersetzt einen Teil des Codes, der von allen Minern verwendet wird, unabhängig davon, ob sie Teil eines Pools sind oder nicht. Es handelt sich dabei um die Blockaufbaulogik, den Algorithmus, der Transaktionen in einer Blockvorlage zusammenfügt. Die Vorlage wird weiterhin an legitimen Hashing-Code zum Nachweis der Arbeit weitergegeben. Auf der Suche nach einem gültigen Hash werden Vorlagen mit Abermillionen verschiedener Nonces kombiniert, aber bis einer gefunden wird, ist der Schaden – das Fehlen jeglicher Transaktionen in der Blockvorlage – bereits angerichtet.',
       paragraph_three:
-        '—HOLOCAT: „Was für ein Verlust. Seine Familie war einst großartig. Es ist so traurig, dass es mit den Vanderpooles so weit gekommen ist.“',
+        '—HOLOKATZE: „Was für ein Verlust. Seine Familie war einst großartig. Es ist so traurig, dass es mit den Vanderpooles so weit gekommen ist.“',
     },
     intro_three: {
       nav_title: 'Korrektur der Software',
       paragraph_one:
-        'Aber Sie können den beschädigten Mining-Code nicht einfach auf Vanderpooles Server belassen. Er wird weiterhin Miner infizieren. Sie müssen ihn reparieren! Während Sie den Code durchlesen, zeigt Ihnen Holocat eine Mempool-Anzeige, die sich mit unbestätigten Transaktionen füllt. Je schneller dieser Code repariert wird, desto besser.',
+        'Aber Sie können den beschädigten Mining-Code nicht einfach auf Vanderpooles Server belassen. Er wird weiterhin Miner infizieren. Sie müssen ihn reparieren! Während Sie den Code durchlesen, zeigt Ihnen Holokatze eine Mempool-Anzeige, die sich mit unbestätigten Transaktionen füllt. Je schneller dieser Code repariert wird, desto besser.',
     },
     mempool_transaction_one: {
       title: 'Bausteine',
@@ -2162,14 +2162,14 @@ const translations = {
   chapter_eight: {
     title: 'Einundzwanzig Millionen',
     paragraph_one:
-      'Dank Ihrer Recherchen wollen die Leute unbedingt etwas von Ihnen hören. Sie schnippst Holocat an die Nase und enthüllen eine Einladung von Deborah Chunk, die Sie einlädt, persönlich in den Büros von LARGE BIG NEWS Studios zu erscheinen. Die Story muss an die Öffentlichkeit gelangen, also steigen Sie erneut in Ihren Budgetcopter.',
+      'Dank Ihrer Recherchen wollen die Leute unbedingt etwas von Ihnen hören. Sie schnippst Holokatze an die Nase und enthüllen eine Einladung von Deborah Chunk, die Sie einlädt, persönlich in den Büros von LARGE BIG NEWS Studios zu erscheinen. Die Story muss an die Öffentlichkeit gelangen, also steigen Sie erneut in Ihren Budgetcopter.',
     intro_one: {
       title: 'Einleitung',
       nav_title: 'Vanderpooles Täuschung',
       paragraph_one:
         '—DEBORAH CHUNK: „Diese Dokumente enthüllen die angeblichen Lügen von Thomas Vanderpoole auf eine Weise, die sicherlich historisch, ja sogar skandalös ist. Das Erste, was die Leute wissen wollen, ist, ob Sie allein gehandelt haben. Das Zweite ist, woher Sie Ihre Informationen haben.“',
       paragraph_two:
-        'Sie erzählen ihr von Holocat und nur von Holocat. Sie sagen, die Informationen seien direkt an Sie und Mika 3000 von jemandem übermittelt worden, der behauptet, Satoshi Nakamoto zu sein, und von dem Sie vermuten, dass es sich in Wirklichkeit um ein Hackerkollektiv handelt. Dieser letzte Punkt veranlasst Thomas Vanderpoole, direkt in der Show anzurufen.',
+        'Sie erzählen ihr von Holokatze und nur von Holokatze. Sie sagen, die Informationen seien direkt an Sie und Mika 3000 von jemandem übermittelt worden, der behauptet, Satoshi Nakamoto zu sein, und von dem Sie vermuten, dass es sich in Wirklichkeit um ein Hackerkollektiv handelt. Dieser letzte Punkt veranlasst Thomas Vanderpoole, direkt in der Show anzurufen.',
     },
     intro_two: {
       title: 'Einleitung',
@@ -2183,7 +2183,7 @@ const translations = {
       intro: 'Einleitung',
       nav_title: 'Vorwürfe gegen Vanderpoole',
       paragraph_one:
-        '—DEBORAH CHUNK: „Mr. Vanderpoole, wenn ich darf. Die Leute sind verwirrt und unsicher, ob die Bitcoin-Versorgung manipuliert wurde. Können Sie beweisen, dass Sie an der angeblichen Manipulation nicht beteiligt waren? Mysteriöser Hacker und sein Holocat, können Sie beweisen, dass Vanderpoole dieses Verbrechen gegen Bitcoin versucht hat?“',
+        '—DEBORAH CHUNK: „Mr. Vanderpoole, wenn ich darf. Die Leute sind verwirrt und unsicher, ob die Bitcoin-Versorgung manipuliert wurde. Können Sie beweisen, dass Sie an der angeblichen Manipulation nicht beteiligt waren? Mysteriöser Hacker und sein Holokatze, können Sie beweisen, dass Vanderpoole dieses Verbrechen gegen Bitcoin versucht hat?“',
     },
     building_blocks_one: {
       title: 'Bausteine',
@@ -2292,7 +2292,7 @@ const translations = {
       nav_title: 'Show Time!',
       heading_one: 'Show Time!',
       paragraph_one:
-        'Die Kameras laufen, zwei Milliarden Menschen weltweit verfolgen den Livestream. Nur noch wenige Minuten bis zur nächsten Werbepause. Deborah Chunk schwitzt. Irgendwie schwitzt auch Holocat. Irgendwo am anderen Ende der Leitung muss auch Vanderpoole schwitzen. Das ist Ihr Moment.',
+        'Die Kameras laufen, zwei Milliarden Menschen weltweit verfolgen den Livestream. Nur noch wenige Minuten bis zur nächsten Werbepause. Deborah Chunk schwitzt. Irgendwie schwitzt auch Holokatze. Irgendwo am anderen Ende der Leitung muss auch Vanderpoole schwitzen. Das ist Ihr Moment.',
       paragraph_two:
         'Suchen Sie, beginnend mit dem gültigen Block direkt vor dem, den Sie auf Höhe 6929851 gefunden haben, die längste Kette gültiger Blöcke, die Sie finden können. Speichern Sie die Kette als Array von Block-Hashes. Pflegen Sie, wenn Sie schon dabei sind, auch ein Array aller ungültigen Blöcke, die Sie finden, nur um der Welt zu zeigen, wie sehr Vanderpoole versucht hat, Bitcoin zu knacken. Die Reihenfolge dieser ungültigen Block-Hashes ist egal, aber Ihre gültige Kette MUSS mit dem Hash von Block 6929850 beginnen, gefolgt von einem Block-Hash auf jeder Höhe bis hinauf zur Kettenspitze.',
       paragraph_three:
@@ -2525,7 +2525,7 @@ const translations = {
       paragraph_one:
         'Richtlinien für mehrere Signaturen stellen eine Liste öffentlicher Schlüssel und eine Anzahl von Signaturen bereit, die für eine gültige Ausgabe erforderlich sind. Sie können als „m-von-n“ beschrieben werden, was bedeutet, dass „m Signaturen aus dieser Liste von n öffentlichen Schlüsseln erforderlich sind“. Die öffentlichen Schlüssel und die m- und n-Werte sind normalerweise im Sperrskript enthalten und der Ausgeber muss nur die richtige Anzahl von Signaturen bereitstellen.',
       paragraph_two:
-        'Holocat erscheint mit einer aufgezeichneten Nachricht von Satoshi Nakamoto!',
+        'Holokatze erscheint mit einer aufgezeichneten Nachricht von Satoshi Nakamoto!',
       paragraph_three:
         'Hallo. Ich habe versehentlich einen Fehler geschrieben, als ich <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> implementiert habe. Es entfernt ein zusätzliches Element vom Stapel, das überhaupt nicht verwendet wird. Also, äh, ups. Entschuldigung. Dieser Code ist konsenskritisch, daher wird jede <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span>-Operation in der Vergangenheit, Gegenwart und Zukunft von Bitcoin gezwungen sein, ein „Dummy“-Element einzuschließen. Vergessen Sie es nicht, sonst können Sie Ihre Multisig-Münzen nicht ausgeben!',
     },
@@ -2957,12 +2957,12 @@ const translations = {
         '—LASZLO: „Warte. Wenn du diese Transaktion nicht unterschreibst, habe ich nichts. Du könntest mit diesem Bier verschwinden und ich könnte nichts in der Kette bestätigen. Vielleicht solltest du es zuerst unterschreiben und es mir dann schicken, damit wir beide eine Kopie haben?“',
     },
     making_a_payment_four: {
-      title: 'Holocats Warnung vor Vertrauenslosigkeit',
-      nav_title: 'Holocats Warnung vor Vertrauenslosigkeit',
+      title: 'Holokatze Warnung vor Vertrauenslosigkeit',
+      nav_title: 'Holokatze Warnung vor Vertrauenslosigkeit',
       paragraph_one:
-        'In diesem Moment materialisiert Holocat auf dem Tisch, stellt sich mit ausgestreckten Vorderpfoten auf die Hinterbeine und miaut.',
+        'In diesem Moment materialisiert Holokatze auf dem Tisch, stellt sich mit ausgestreckten Vorderpfoten auf die Hinterbeine und miaut.',
       paragraph_two:
-        '—HOLOCAT: „Moment mal, du kannst Laszlo deine Unterschrift für diese Transaktion nicht geben! Wenn du das nächste Mal eine Zahlung tätigst, gibst du ihm den Widerrufsschlüssel revocation_you_2. Dann hat er alles, was er braucht, um alle 100.000 Satoshis zu stehlen!“',
+        '—HOLOKATZE: „Moment mal, du kannst Laszlo deine Unterschrift für diese Transaktion nicht geben! Wenn du das nächste Mal eine Zahlung tätigst, gibst du ihm den Widerrufsschlüssel revocation_you_2. Dann hat er alles, was er braucht, um alle 100.000 Satoshis zu stehlen!“',
       paragraph_three:
         'Jetzt wird es etwas komplizierter. Laszlo braucht etwas, bevor er Ihnen ein Bier geben kann und sicher sein kann, dass er dafür bezahlt wird. Aber er kann Ihre Transaktion nicht haben, weil er dann auf Ihr gesamtes Geld zugreifen würde! Laszlo ist ein toller Typ und seine Bar ist eine der besten der Stadt, aber es wäre trotzdem schön, wenn wir ihm nicht vertrauen müssten.',
     },
@@ -3064,7 +3064,7 @@ const translations = {
       title: 'Andere',
       nav_title: 'Auf dem Weg nach Hause',
       paragraph_one:
-        'Nach einem langen und seltsamen Tag bezahlen Sie Ihre Getränke und machen sich auf den Heimweg. Doch als Sie die Tür zu Ihrem 3D-gedruckten Bungalow öffnen, stellen Sie fest: oh Mist! Schon wieder Vanderpoole! Passiert das wirklich oder haben Sie eine Mempool-Margarita zu viel getrunken? Obwohl ihn von allen Seiten eine kleine Gruppe von Holocats flankiert, ist er nicht auf Streit aus.',
+        'Nach einem langen und seltsamen Tag bezahlen Sie Ihre Getränke und machen sich auf den Heimweg. Doch als Sie die Tür zu Ihrem 3D-gedruckten Bungalow öffnen, stellen Sie fest: oh Mist! Schon wieder Vanderpoole! Passiert das wirklich oder haben Sie eine Mempool-Margarita zu viel getrunken? Obwohl ihn von allen Seiten eine kleine Gruppe von Holokatze flankiert, ist er nicht auf Streit aus.',
       paragraph_two:
         '—VANDERPOOLE: „Wir kennen uns nicht wirklich, obwohl, wie mein Großvater immer sagte, die Schicksale von Fremden oft miteinander verflochten sind. Du musst mir zuhören. Bei all dem Satoshi Nakamoto-Zeug habe ich versucht, das Geschäft meiner Familie zu retten. Du kannst dir nicht vorstellen, wie viel uns das Mining bedeutet hat. Ich schätze, ich war nicht bereit für Veränderungen und wollte, dass alles mehr oder weniger so bleibt, wie es ist.“',
     },
@@ -3084,7 +3084,7 @@ const translations = {
       paragraph_one:
         'Vanderpoole nimmt deine Holokatze in die Hand und sie beginnt zu schnurren. Menschen sind kompliziert und niemand weiß das besser als Katzen, ob Holo oder nicht.',
       paragraph_two:
-        '—HOLOCAT: „Sie sind kein Bösewicht, Mr. Vanderpoole. Aber vielleicht, nur vielleicht, haben Sie sich zu viele Gedanken darüber gemacht.“',
+        '—HOLOKATZE: „Sie sind kein Bösewicht, Mr. Vanderpoole. Aber vielleicht, nur vielleicht, haben Sie sich zu viele Gedanken darüber gemacht.“',
       paragraph_three: '—VANDERPOOLE: Das ist die Wahrheit.',
     },
     outro_five: {
@@ -3240,7 +3240,7 @@ const translations = {
   error: {
     first: 'Irgendwas stimmt nicht!',
     second:
-      'Holocat hat vielleicht wieder an einigen Kabeln gekaut. Böse Katze!',
+      'Holokatze hat vielleicht wieder an einigen Kabeln gekaut. Böse Katze!',
     reload: 'Wiederholen',
   },
   help_page: {
