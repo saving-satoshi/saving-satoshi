@@ -57,7 +57,7 @@ const translations = {
     },
 
     contributors: {
-      title: 'Hãy thưởng thức!', // Enjoy!
+      title: 'Trải nghiệm vui vẻ nhé!', // Enjoy!
       contributions_by: 'Những đóng góp bởi', // Contributions by
       many_more:
           'và <a href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" target="_blank" rel="noreferrer">nhiều người khác</a>.', // and many more
@@ -106,7 +106,7 @@ privacy: {
     },
 
     intro_two: {
-      title: 'Khối khởi tạo đầu tiên', // Genesis
+      title: 'Khối dữ liệu khởi tạo', // Genesis
       nav_title: "Con mèo điện tín 3D của Satoshi", // Satoshi's holocat
       paragraph_one:
           'Trên chiếc đồng hồ đa năng, bạn nhận được một Con mèo điện 3D nhãn hiệu WhiskerWare từ một người tự xưng là Satoshi Nakamoto. (Giống như bất kỳ một điện tín 3D khác, nhưng lần này có hình dạng như một con mèo.) Bạn mở con mèo điện tín 3D bằng cách chạm nhẹ vào mũi của nó.',       // On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.
@@ -120,7 +120,7 @@ privacy: {
     },
 
     genesis_one: {
-      title: 'Khối khởi tạo đầu tiên', // Genesis
+      title: 'Khối dữ liệu khởi tạo', // Genesis
       nav_title: 'Bí mật trong khối đầu tiên', // Genesis Secret
       heading: 'Thử thách đầu tiên của bạn', // Your first challenge
       paragraph_one:
@@ -130,7 +130,7 @@ privacy: {
     },
 
     genesis_two: {
-      title: 'Khối khởi tạo đầu tiên', // Genesis
+      title: 'Khối dữ liệu khởi tạo', // Genesis
       nav_title: 'Tìm thông điệp', // Find the message
       heading: 'Tìm thông điệp bí mật', // Find the hidden message
       paragraph_one:
@@ -148,7 +148,7 @@ privacy: {
     },
 
     genesis_three: {
-      title: 'Khối khởi tạo đầu tiên', // Genesis
+      title: 'Khối dữ liệu khởi tạo', // Genesis
       nav_title: 'Giải mã thông điệp', // Decode the message
       heading: "Hãy giải mã thông điệp", // Let's decode the message
       paragraph_one:
@@ -163,7 +163,7 @@ privacy: {
     },
 
     genesis_four: {
-      title: 'Khối khởi tạo đầu tiên', // Genesis
+      title: 'Khối dữ liệu khởi tạo', // Genesis
       nav_title: 'Thành công đầu tiên của bạn', // Your first success
       subtitle: 'Chúc mừng! Bạn đã hoàn thành thử thách đầu tiên!', // Congrats! You completed the first challenge!
       paragraph_one:
@@ -214,7 +214,7 @@ privacy: {
     },
 
     outro_one: {
-      title: 'Kết quả', // Outro
+      title: 'Phần ra', // Outro
       nav_title: 'Cuộc phiêu lưu đang vẫy gọi', // Adventure calls
       paragraph_one:
           'Bạn chạy xuống tầng hầm, bước vào chiếc xe cà tàng cũ của cha mình, nhập tọa độ và tiến đến Quận 21.',  // You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to District 21.
@@ -231,7 +231,7 @@ privacy: {
     },
 
     end: {
-      save: 'Lưu lại tiến độ', // Save my progress
+      save: 'Lưu tiến độ', // Save my progress
       next: 'Tiếp tục và không lưu lại', // Continue without saving
       feedback: 'Phản hồi của bạn', // Share your feedback
     },
@@ -285,7 +285,7 @@ privacy: {
           'Bạn hạ cánh, ổn định bản thân và tìm kiếm một điểm vào. Chà, cái cửa sổ vỡ đó sẽ hữu ích. Bạn lấy một viên gạch đập vỡ phần còn lại của cửa sổ và nhảy vào trong. Tòa nhà chứa đầy hàng nghìn máy đào bitcoin cũ kỹ, được bảo quản tốt.',             // You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.
       paragraph_three: {
         a: '—HOLOCAT: “Đây không phải là nhà kho; đây là một bảo tàng. Tôi nghĩ đây là những thiết bị đào cũ của gia đình Vanderpoole. Vào thời kỳ đầu của bitcoin, thợ đào sẽ sử dụng máy tính thông dụng để đào bitcoin. Nhưng sau vài năm, thợ đào nhận ra rằng họ có thể sử dụng máy móc với một loại chip đặc biệt gọi là Mạch tích hợp dành cho ứng dụng cụ thể, hoặc ',         // —HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family mining devices. In bitcoin’s early days, miners would use general purpose computers to mine bitcoin. But after a few years, miners realized they could use machines with a special chip called an Application-Specific Integrated Circuit, or 
-        b: 'ASIC, để ngắn gọn. Các chip này chỉ thực hiện một việc: đào bitcoin. Tính năng tập trung hạn hẹp của chúng làm tăng hiệu quả và cho phép thợ đào sử dụng ít năng lượng hơn vào việc đào, mang lại cho họ lợi thế. Bạn có tin rằng mọi người đã từng đào bằng máy tính xách tay của họ không?"',         //  for short. These chips do only one thing: mine bitcoin. Their narrow focus increases their efficiency and allows miners to spend less energy on mining, giving them an edge. Can you believe that people mined with their laptops at one point?"
+        b: 'ASIC, cho ngắn gọn. Các chip này chỉ thực hiện một việc: đào bitcoin. Tính năng tập trung hạn hẹp của chúng làm tăng hiệu quả và cho phép thợ đào sử dụng ít năng lượng hơn vào việc đào, mang lại cho họ lợi thế. Bạn có tin rằng mọi người đã từng đào bằng máy tính xách tay của họ không?"',         //  for short. These chips do only one thing: mine bitcoin. Their narrow focus increases their efficiency and allows miners to spend less energy on mining, giving them an edge. Can you believe that people mined with their laptops at one point?"
       },
       paragraph_four:
         'Điều này giải thích tất cả các máy móc trong bộ sưu tập của gia đình Vanderpoole.',       // This explains all the machines in the Vanderpoole family collection.
@@ -300,55 +300,55 @@ privacy: {
       title: 'Lập Kế Hoạch', // Hashing Out a Plan
       nav_title: 'Bật máy tính', // Turning on the computer
       paragraph_one:
-          'Ở góc phòng, một màn hình máy tính mờ nhạt, hầu như không hoạt động với một mẩu giấy dán trên đó đang nhấp nháy. Tờ giấy ghi rằng “Bật chúng lên, đồ ngốc.”',             // In the corner, a dim, barely working computer monitor with a note stuck to it sits blinking. The note says “Turn them on, stupid."
+          'Ở góc phòng, một máy tính hầu như không hoạt động, màn hình nhấp nháy mờ nhạt với một mẩu giấy dán. Tờ giấy ghi rằng “Bật lên đi, đồ đần.”', // In the corner, a dim, barely working computer monitor with a note stuck to it sits blinking. The note says “Turn them on, stupid."
       paragraph_two:
-          '—HOLOCAT: “Thật là thô lỗ. Ồ, một bàn phím cơ. Tôi đã nghe nói về những thứ này. Giả sử rằng chúng ồn đến mức khiến người dùng bị điếc và bị cấm.”',             // —HOLOCAT: “How rude. Wow; a mechanical keyboard. I’ve heard about these things. Supposedly, they were so loud that they cost users their hearing, and were banned.”
+          '—HOLOCAT: “Thô lỗ thật. Ồ, một bàn phím cơ. Tôi đã nghe nói về thứ này rồi. Hình như chúng ồn đến mức khiến người dùng bị điếc cho nên bị cấm.”', // —HOLOCAT: “How rude. Wow; a mechanical keyboard. I’ve heard about these things. Supposedly, they were so loud that they cost users their hearing, and were banned.”
       paragraph_three:
-          'Con mèo nhảy lên bàn phím và đi qua đi lại, chỉ cho bạn những phím cần nhấn.',             // Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.
+          'Con mèo nhảy lên bàn phím và đi qua đi lại, chỉ cho bạn những phím cần nhấn.', // Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.
     },
 
     hashing_one: {
       title: 'Các số không', // Zeroes
       nav_title: 'Máy tính sống lại', // The computer hums to life
       paragraph_one:
-          'Hoặc do may mắn, hoặc vì con mèo thực sự biết mình đang làm gì, những chữ cái và số ngẫu nhiên mà cô ấy bước lên biến thành ... nhiều chữ cái và số ngẫu nhiên hơn?',       // Either by chance, or because Holocat actually knew what she was doing, the random letters and numbers she stepped on turn into... more random letters and numbers?
+          'Do may mắn, hoặc vì con mèo biết nó đang làm gì, những chữ cái và số ngẫu nhiên mà nó bước lên biến thành ... nhiều chữ cái và số ngẫu nhiên hơn?',       // Either by chance, or because Holocat actually knew what she was doing, the random letters and numbers she stepped on turn into... more random letters and numbers?
       list_one: '> QX23Y6VGECTUKSNIEUTUB[P[pihof', 
       list_two:
           '> 1c31d1d9fb848a505fc0cdbea848ff1bdd46a9ed4d639d413d3a93035194eedf', 
-      paragraph_two: 'Màn hình hiển thị "HASH KHÔNG ĐÚNG. HÃY THỬ LẠI."',       // The monitor displays "INCORRECT HASH. TRY AGAIN."
+      paragraph_two: 'Màn hình hiển thị "CHUỖI MÃ HÓA KHÔNG ĐÚNG. HÃY THỬ LẠI."',  // The monitor displays "INCORRECT HASH. TRY AGAIN."
       paragraph_three:
-          'Tất nhiên bất cứ điều gì vô nghĩa mà Holocat nhập vào đều sai. Cô ấy chỉ là một con mèo đồ họa kiêu ngạo!',       // Of course whatever gibberish Holocat typed was wrong. She’s just a sassy holographic cat!
-      paragraph_four: 'Điều gì sẽ xảy ra nếu bạn nhập thứ gì đó khác?', // What happens if you type something different?
+          'Thì ra bất cứ ký tự gì mà con mèo nhập vào đều sai. Cuối cùng nó chỉ là một con mèo điện tín kiêu ngạo!',  // Of course whatever gibberish Holocat typed was wrong. She’s just a sassy holographic cat!
+      paragraph_four: 'Điều gì sẽ xảy ra nếu bạn nhập những ký tự khác?', // What happens if you type something different?
     },
 
     hashing_two: {
       title: 'Các số không', // Zeroes
       nav_title: 'Thử mã hóa một cái gì đó', // Try to hash something
-      heading: 'Nhập bất cứ thứ gì', // Enter Anything
-      return_hash: 'Dưới đây bạn sẽ thấy đầu vào của bạn được chuyển đổi thành một mã hóa', // Below you will see your input converted to a hash
+      heading: 'Nhập bất kỳ ký tự nào', // Enter Anything
+      return_hash: 'Dưới đây bạn sẽ thấy đầu vào của bạn được chuyển đổi thành một chuỗi mã hóa', // Below you will see your input converted to a hash
       progress_message: 'Tiếp tục...', // Keep going...
       success_message: 'Tốt rồi, làm tốt lắm. Hãy tiếp tục.', // Alright, nice work playing around. Let’s move on.
     },
 
     hashing_three: {
       title: 'Các số không', // Zeroes
-      nav_title: 'Sức mạnh của SHA256', // The power of SHA256
-      heading: 'Bạn có nhận thấy điều gì đặc biệt về các mã hóa không?', // Did you notice anything special about the hashes?
+      nav_title: 'Sức mạnh của hàm mã hóa SHA256', // The power of SHA256
+      heading: 'Bạn có thấy điều gì đặc biệt về các só mã hóa không?', // Did you notice anything special about the hashes?
       list_one:
-          'Giống như dấu vân tay, các mã hóa là duy nhất. Ngoại trừ một số trường hợp đặc biệt, các mã hóa cho hai thứ khác nhau không bao giờ nên giống nhau.',       // Just like fingerprints, hashes are unique. Barring some exceptional circumstances, the hashes for two different things should never be the same.
+          'Giống như dấu vân tay, các số mã hóa điều khác biệt và độc nhất. Trừ một số trường hợp rắt đặc biệt, thường các số mã hóa của hai chuỗi ký tự khác nhau không bao giờ giống nhau.',  // Just like fingerprints, hashes are unique. Barring some exceptional circumstances, the hashes for two different things should never be the same.
       list_two:
-          'Các hàm mã hóa là đường một chiều. Bạn không thể kỹ thuật đảo ngược một mã hóa để tìm ra dữ liệu được sử dụng để tạo ra nó.',       // Hash functions are one way streets. You can’t reverse engineer a hash to figure out the data used to make it.
+          'Các hàm mã hóa là hàm một chiều. Bạn không thể đảo ngược kỹ thuật một hàm mã hóa để tìm ra dữ liệu đầu vào được sử dụng để tạo ra số mã hóa đó.', // Hash functions are one way streets. You can’t reverse engineer a hash to figure out the data used to make it.
       list_three:
-          'Các mã hóa cực kỳ đáng tin cậy theo nghĩa là chúng mang tính xác định. Điều này có nghĩa là bạn có thể mã hóa cùng một phần dữ liệu nhiều lần và bạn sẽ luôn nhận được kết quả giống nhau.',       // Hashes are extremely reliable in the sense that they are deterministic. This means you can hash the same piece of data over and over again and you’ll always get the same result.
+          'các số mã hóa cực kỳ đáng tin cậy mang định tính xác định. Có nghĩa là bạn sẽ luôn nhận được một kết quả giống nhau khi mã hóa cùng một dữ liệu nhiều lần.',   // Hashes are extremely reliable in the sense that they are deterministic. This means you can hash the same piece of data over and over again and you’ll always get the same result.
       paragraph_one: {
-          a: 'Hàm được sử dụng ở đây được gọi là ', // The function used here is called 
-          b: 'một lựa chọn rất phổ biến.', // a very popular choice.
+          a: 'Hàm được sử dụng được gọi là ', // The function used here is called 
+          b: 'một lựa chọn phổ thông.', // a very popular choice.
       },
-      paragraph_two: 'Bây giờ, hãy xem bạn có thể tìm thấy một mã hóa cụ thể không.', // Now, let’s see if you can find a specific hash.
+      paragraph_two: 'Bây giờ, hãy xem bạn có thể tìm thấy một số mã hóa cụ thể không nhé.', // Now, let’s see if you can find a specific hash.
       paragraph_three:
-          'Tìm một mã hóa bắt đầu bằng số không (“0”). Tiếp tục nhập các thứ khác nhau bên dưới cho đến khi bạn tìm thấy một mã hóa mà chúng ta muốn.',             // Find a hash that starts with a zero (“0”). Keep typing different things below until you find a hash that we want.
+          'Tìm một số mã hóa bắt đầu bằng số không (“0”). Tiếp tục nhập các ký tự khác nhau bên dưới cho đến khi bạn tìm thấy một số mã hóa mà chúng ta muốn.',             // Find a hash that starts with a zero (“0”). Keep typing different things below until you find a hash that we want.
       tooltip_one: {
-        question: 'SHA-256 được sử dụng như thế nào trong bitcoin?', // How is SHA-256 used in bitcoin?
+        question: 'Hàm SHA-256 được sử dụng như thế nào trong bitcoin?', // How is SHA-256 used in bitcoin?
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520SHA-256%2520used%2520in%2520bitcoin%253F',
         highlighted: 'SHA-256',
       },
@@ -356,7 +356,7 @@ privacy: {
 
     hashing_four: {
       title: 'Các số không', // Zeroes
-      nav_title: 'Tìm một chuỗi số mã hóa có số không đầu tiên', // Find a hash with a zero
+      nav_title: 'Tìm một chuỗi số mã hóa bắt đầu bàng số không', // Find a hash with a zero
       heading:
           'Nhập bất cứ ký tự gì cho đến khi bạn tìm thấy một chuỗi số mã hóa bắt đầu bằng số không (“0”)', // Enter anything until you find a hash that starts with a zero (“0”)
       hint_prompt:
@@ -367,17 +367,17 @@ privacy: {
 
     hashing_five: {
       title: 'Các số không', // Zeroes
-      nav_title: 'Tăng tốc', // Turning up the heat
-      heading: 'Không quá khó!', // That wasn’t too hard!
+      nav_title: 'Tăng tốc nào', // Turning up the heat
+      heading: 'Không khó nhỉ!', // That wasn’t too hard!
       paragraph_one:
           'Hãy làm cho nó khó hơn một chút. Hãy thử tìm một chuỗi số mã hóa bắt đầu bằng hai số không ("00").',  // Let’s make it a bit more tricky. Try to find a hash that starts with two zeroes ("00").
     },
 
     hashing_six: {
       title: 'Các số không', // Zeroes
-      nav_title: 'Tìm một mã hóa có hai số không', // Find a hash with two zeroes
+      nav_title: 'Tìm một số mã hóa có hai số không', // Find a hash with two zeroes
       heading:
-          'Nhập bất cứ ký tự gì cho đến khi bạn tìm thấy một mã hóa bắt đầu bằng hai số không (“00”)', // Enter anything until you find a hash that starts with two zeroes (“00”)
+          'Nhập bất cứ ký tự gì cho đến khi bạn tìm thấy một số mã hóa bắt đầu bằng hai số không (“00”)', // Enter anything until you find a hash that starts with two zeroes (“00”)
       hint_prompt:
           'Cần <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">gợi ý</Tooltip>?',             // Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">hint</Tooltip>?
       hint_tooltip:
@@ -386,10 +386,10 @@ privacy: {
 
     scripting_one: {
       title: 'Tự động hóa', // Automation
-      nav_title: 'Mã hóa con số tìm một lần (nonce)', // Hashing the nonce
+      nav_title: 'Mã hóa con số chỉ sử dụng 1 lần (nonce)', // Hashing the nonce
       heading: 'Hãy để máy tính làm điều này cho chúng ta.', // Let’s make the computer do this for us.
       paragraph_one:
-          'OK, điều đó có lẽ đã mất nhiều thời gian hơn bạn nghĩ. Bây giờ hãy tưởng tượng tìm một mã hóa bắt đầu bằng năm hoặc mười số không. Đây là thử thách mà mạng lưới bitcoin đặt ra cho thợ đào khi họ muốn gửi các khối mới với các giao dịch.',       // OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.
+          'OK, có lẽ đã mất nhiều thời gian hơn bạn nghĩ. Bây giờ hãy tưởng tượng tìm một số mã hóa bắt đầu bằng năm hoặc mười số không. Đây là thử thách mà mạng lưới bitcoin đặt ra cho thợ đào khi họ muốn gửi các khối dữ liệu với các giao dịch mới.',       // OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.
       paragraph_two:
           'thợ đào thu thập tất cả thông tin họ muốn đưa vào một khối như mã hóa tiêu đề khối trước, mã hóa của các giao dịch được bao gồm trong khối (bao gồm cả giao dịch coinbase), thời gian và kết hợp nó với một số ngẫu nhiên được gọi là nonce (số chỉ được sử dụng một lần). Họ gửi tất cả những thứ này vào hàm mã hóa để tạo ra thứ gọi là mã hóa khối.',       // Miners gather all the information they want to put in a block such as the previous block header hash, a hash of transactions to be included in block (including the coinbase transaction), time, and combine it with a random number called a nonce (number only used once). They send all of this into the hash function to create something called the block hash.
       paragraph_three:
@@ -397,9 +397,9 @@ privacy: {
       paragraph_four:
           'Để giải quyết vấn đề này, thợ đào bắt đầu thay đổi các phần khác của tiêu đề khối, chẳng hạn như thời gian hoặc các giao dịch được bao gồm trong khối.',       // To address this, miners started to change other parts of the block header, such as the time or transactions included in the block.
       paragraph_five:
-          'Mạng lưới bitcoin có một cài đặt độ khó và chỉ chấp nhận các mã hóa khối bắt đầu bằng một số lượng số không nhất định. Chúng ta gọi đây là “độ khó” và nó được điều chỉnh sau mỗi 2016 khối.',       // The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.
+          'Mạng lưới bitcoin có một cài đặt độ khó và chỉ chấp nhận các số mã hóa khối bắt đầu bằng một số lượng số không nhất định. Chúng ta gọi đây là “độ khó” và nó được điều chỉnh sau mỗi 2016 khối.',       // The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.
       paragraph_six:
-          'Đối với thử thách tiếp theo, hãy viết một script tìm thấy một mã hóa bắt đầu bằng năm số không (00000).', // For the next challenge, write a script that finds a hash that starts with five zeroes (00000).
+          'Đối với thử thách tiếp theo, hãy viết một script tìm thấy một số mã hóa bắt đầu bằng năm số không (00000).', // For the next challenge, write a script that finds a hash that starts with five zeroes (00000).
       tooltip_one: {
         question: 'Độ khó mục tiêu là gì?', // What is target difficulty?
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520is%2520target%2520difficulty%253F',
@@ -411,7 +411,7 @@ privacy: {
       title: 'Tự động hóa', // Automation
       nav_title: 'Xây dựng hàm mã hóa', // Build a hash function
       paragraph_one:
-          'Được rồi, đã đến lúc viết và chạy mã của riêng bạn. Viết một script tạo ra một mã hóa sha256 bắt đầu bằng năm số không ("00000..."). Mã của bạn nên lặp đi lặp lại việc gọi hàm sha256 với các đầu vào khác nhau cho đến khi đầu ra đáp ứng yêu cầu này. Bạn nên thử tăng một số nguyên trong một vòng lặp để có được các đầu vào khác nhau. Trong mật mã học, số này có thể được gọi là "nonce" hoặc "số chỉ được sử dụng một lần".',             // Alright, time to write and run your own code. Write a script that generates a sha256 hash that begins with five zeroes ("00000..."). Your code should repeatedly call the sha256 function with different inputs until the output satisfies this requirement. You should try incrementing an integer inside a loop to get different inputs. In cryptography this number may referred to as a "nonce" or "number used once".
+          'Được rồi, đã đến lúc viết và chạy mã của riêng bạn. Viết một script tạo ra một số mã hóa sha256 bắt đầu bằng năm số không ("00000..."). Mã của bạn nên lặp đi lặp lại việc gọi hàm sha256 với các đầu vào khác nhau cho đến khi đầu ra đáp ứng yêu cầu này. Bạn nên thử tăng một số nguyên trong một vòng lặp để có được các đầu vào khác nhau. Trong mật mã học, số này có thể được gọi là "nonce" hoặc "số chỉ được sử dụng một lần".',             // Alright, time to write and run your own code. Write a script that generates a sha256 hash that begins with five zeroes ("00000..."). Your code should repeatedly call the sha256 function with different inputs until the output satisfies this requirement. You should try incrementing an integer inside a loop to get different inputs. In cryptography this number may referred to as a "nonce" or "number used once".
       python: {
         paragraph_two:
           'Khi bạn tìm thấy một nonce với mã hóa bắt đầu bằng năm số không, hãy trả về nonce từ hàm. Chúng tôi đang sử dụng thư viện hashlib trong python để giúp bạn tạo hàm này, bạn có thể sử dụng các tài nguyên bên ngoài sau để giúp bạn viết hàm này nếu cần:',         // When you find a nonce with a hash that begins with five zeroes, return the nonce from the function. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:
@@ -444,9 +444,9 @@ privacy: {
           'Đối với mô phỏng đơn giản này, chúng ta sẽ giả sử rằng mỗi khối chứa 3.500 giao dịch và 0,061 BTC tiền thưởng và phí.',       // For this simple simulation, we’ll just assume that every block contains 3,500 transactions and 0.061 BTC in rewards and fees.
       paragraph_two_one: 'Xem bạn có thể bật các máy đào không.', // See if you can turn on the miners.
       paragraph_three:
-          'Mã bạn đã viết trong bài học trước để tính toán các mã hóa lặp đi lặp lại đang chạy.',       // The code you wrote in the previous lesson to compute hashes over and over again is running.
+          'Mã bạn đã viết trong bài học trước để tính toán các số mã hóa lặp đi lặp lại đang chạy.',       // The code you wrote in the previous lesson to compute hashes over and over again is running.
       paragraph_four:
-          'Nó sẽ dừng lại khi tìm thấy một mã hóa có mười số không hàng đầu.', // It will stop once it’s found a hash with ten leading zeroes.
+          'Nó sẽ dừng lại khi tìm thấy một số mã hóa có mười số không hàng đầu.', // It will stop once it’s found a hash with ten leading zeroes.
       paragraph_five:
           'Xem trường nonce tăng dần? Đó là số lượng mã hóa mà bạn đã thử cho đến nay!',       // See the nonce field incrementing? That’s how many hashes you have tried so far!
       paragraph_six: 'Với nonce sau:', // With the following nonce:
@@ -491,14 +491,14 @@ privacy: {
         hash_functions_heading: 'Hàm mã hóa', // Hash Functions
         hash_functions_paragraph:
             'Hàm mã hóa là bất kỳ hàm nào có thể được sử dụng để ánh xạ dữ liệu có kích thước tùy ý thành các giá trị có kích thước cố định. Các giá trị được trả về bởi hàm mã hóa được gọi là giá trị mã hóa, mã mã hóa, tóm tắt hoặc đơn giản là mã hóa. Các giá trị thường được sử dụng để lập chỉ mục cho một bảng có kích thước cố định được gọi là bảng mã hóa. Việc sử dụng hàm mã hóa để lập chỉ mục cho bảng mã hóa được gọi là mã hóa hoặc định địa chỉ lưu trữ phân tán.',         // A hash function is any function that can be used to map data of arbitrary size to fixed-size values. The values returned by a hash function are called hash values, hash codes, digests, or simply hashes. The values are usually used to index a fixed-size table called a hash table. Use of a hash function to index a hash table is called hashing or scatter storage addressing.
-        tip: 'Cứ tiếp tục nhập! Bởi vì thuật toán SHA-256 bất kỳ đầu vào mới nào cũng sẽ tạo ra một mã hóa hoàn toàn ngẫu nhiên ngay cả khi các đầu vào rất giống nhau',         // Just keep typing! Because of the SHA-256 algorithm any new input will result in a completely random hash even if the inputs are very similar
+        tip: 'Cứ tiếp tục nhập! Bởi vì thuật toán SHA-256 bất kỳ đầu vào mới nào cũng sẽ tạo ra một số mã hóa hoàn toàn ngẫu nhiên ngay cả khi các đầu vào rất giống nhau',         // Just keep typing! Because of the SHA-256 algorithm any new input will result in a completely random hash even if the inputs are very similar
         spoiler: 'Thử nhập thứ gì đó có 8 ký tự.', // Try something with 8 characters.
       },
       hashing_four: {
         power_of_random_heading: 'Sức mạnh của ngẫu nhiên', // The Power of Random
         power_of_random_paragraph:
-            "Giống như một kịch bản hoàn toàn ngẫu nhiên, về mặt xác suất, hàm mã hóa SHA-256 hoàn toàn ngẫu nhiên đối với mỗi lần bổ sung dữ liệu mới. Nếu bạn mã hóa cuốn tiểu thuyết 'Chiến tranh và Hòa bình', sau đó chỉ cần thêm một chữ cái nữa vào văn bản gốc, nó sẽ tạo ra một mã hóa hoàn toàn khác. Mỗi ký tự mới thay đổi mã hóa theo một cách hoàn toàn ngẫu nhiên. Với 16 ký tự có thể có trong hệ thập lục phân (0-9 và a-f), khả năng tìm thấy một mã hóa bắt đầu bằng '0' là bao nhiêu?",         // Like a perfectly random scenario, probability-wise the SHA-256 hash function is completely random for each addition of new data. If you hashed the novel 'War and Peace', then added just one extra letter to the original text, it would result in a completely different hash. Each new character changes the hash in a completely random manner. Considering that there are 16 possible characters in a hexadecimal system (0-9 and a-f), how likely is it to find a hash starting with '0'?
-        tip: "Bạn có thể tính toán không? Dựa trên 16 ký tự có thể có cho mỗi chữ số, bạn nghĩ khả năng tìm thấy một mã hóa bắt đầu bằng '00' là bao nhiêu? Còn '000' thì sao?",         // Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with '00' is? How about '000'?
+            "Giống như một kịch bản hoàn toàn ngẫu nhiên, về mặt xác suất, hàm mã hóa SHA-256 hoàn toàn ngẫu nhiên đối với mỗi lần bổ sung dữ liệu mới. Nếu bạn mã hóa cuốn tiểu thuyết 'Chiến tranh và Hòa bình', sau đó chỉ cần thêm một chữ cái nữa vào văn bản gốc, nó sẽ tạo ra một số mã hóa hoàn toàn khác. Mỗi ký tự mới thay đổi mã hóa theo một cách hoàn toàn ngẫu nhiên. Với 16 ký tự có thể có trong hệ thập lục phân (0-9 và a-f), khả năng tìm thấy một số mã hóa bắt đầu bằng '0' là bao nhiêu?",         // Like a perfectly random scenario, probability-wise the SHA-256 hash function is completely random for each addition of new data. If you hashed the novel 'War and Peace', then added just one extra letter to the original text, it would result in a completely different hash. Each new character changes the hash in a completely random manner. Considering that there are 16 possible characters in a hexadecimal system (0-9 and a-f), how likely is it to find a hash starting with '0'?
+        tip: "Bạn có thể tính toán không? Dựa trên 16 ký tự có thể có cho mỗi chữ số, bạn nghĩ khả năng tìm thấy một số mã hóa bắt đầu bằng '00' là bao nhiêu? Còn '000' thì sao?",         // Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with '00' is? How about '000'?
         spoiler: "Thử nhập thứ gì đó bắt đầu bằng chữ cái 's'.", // Try something starting with the letter 's'.
       },
       hashing_six: {
@@ -507,7 +507,7 @@ privacy: {
             "SHA-256 trả về một giá trị mã hóa 256 bit (64 ký tự), là một biểu diễn duy nhất của dữ liệu đầu vào. Nó thuộc họ các hàm mã hóa dựa trên cấu trúc Merkle–Damgård, một phương pháp để xây dựng các hàm mã hóa từ các hàm nén đơn giản hơn. Trong cấu trúc này, thông điệp đầu vào được chia thành các khối có kích thước cố định và một cơ chế liên kết lặp lại xử lý các khối này, kết hợp đầu ra của mỗi khối với kết quả của khối trước đó. Quá trình này tiếp tục cho đến khi toàn bộ thông điệp được xử lý, tạo ra giá trị mã hóa cuối cùng. Các thuộc tính bảo mật mạnh mẽ và khả năng kháng va chạm của SHA-256 làm cho nó trở thành nền tảng của tính toàn vẹn dữ liệu và xác thực trong mật mã học hiện đại.",         // SHA-256 returns a 256-bit (64-characters) hash value, which is a unique representation of the input data. It belongs to the family of hash functions based on the Merkle–Damgård construction, a method for building hash functions from simpler compression functions. In this construction, the input message is divided into fixed-size blocks, and a chaining mechanism iteratively processes these blocks, combining each block's output with the result of the previous block. This process continues until the entire message is processed, producing the final hash value. SHA-256's robust security properties and collision resistance make it a cornerstone of data integrity and authentication in modern cryptography.
         tip: 'Không có mẹo thực sự trong bài học này, khi bạn tiếp tục trong Saving Satoshi, chúng tôi sẽ ít hỗ trợ bạn hơn và để bạn tự tìm ra giải pháp.',         // No real tips in this lesson, as you continue in Saving Satoshi we will hold your hand less and less and let you find the solution on your own.
         spoiler:
-            "Biết rằng mỗi ký tự mới tính toán lại một mã hóa hoàn toàn ngẫu nhiên, bạn có thể tiếp tục thêm các ký tự mới cho đến khi bạn bắt đầu bằng '00' hoặc nhiều hơn ... hoặc thử từ 'trigonometry'.",         // Knowing that each new character recalculates a completely random hash you could keep adding new characters until you start with '00' or more... or try the word trigonometry.
+            "Biết rằng mỗi ký tự mới tính toán lại một số mã hóa hoàn toàn ngẫu nhiên, bạn có thể tiếp tục thêm các ký tự mới cho đến khi bạn bắt đầu bằng '00' hoặc nhiều hơn ... hoặc thử từ 'trigonometry'.",         // Knowing that each new character recalculates a completely random hash you could keep adding new characters until you start with '00' or more... or try the word trigonometry.
       },
       scripting_one: {
         hash_libraries_heading: 'Thư viện mã hóa', // Hash Libraries
@@ -848,7 +848,7 @@ privacy: {
       title: 'Địa chỉ', // Address
       nav_title: 'Lấy địa chỉ P2WPKH', // Get a P2WPKH address
       paragraph_one:
-          'Có nhiều loại địa chỉ bitcoin khác nhau. Trong bài tập trước, chúng tôi đã tạo một mã hóa khóa công khai được nén 20 byte. Bây giờ, chúng tôi muốn mã hóa mã hóa đó thành địa chỉ Pay-to-Witness-Public-Key-Hash (p2wpkh) trên mạng Testnet.', // There are multiple types of bitcoin addresses. In the previous exercise, we created a 20-byte compressed public key hash. Now, we would like to encode that hash into a Pay-to-Witness-Public-Key-Hash (p2wpkh) address on the Testnet network.
+          'Có nhiều loại địa chỉ bitcoin khác nhau. Trong bài tập trước, chúng tôi đã tạo một số mã hóa khóa công khai được nén 20 byte. Bây giờ, chúng tôi muốn mã hóa mã hóa đó thành địa chỉ Pay-to-Witness-Public-Key-Hash (p2wpkh) trên mạng Testnet.', // There are multiple types of bitcoin addresses. In the previous exercise, we created a 20-byte compressed public key hash. Now, we would like to encode that hash into a Pay-to-Witness-Public-Key-Hash (p2wpkh) address on the Testnet network.
       paragraph_two:
           'Đầu tiên, chúng ta cần thêm một số phiên bản chứng nhân là `0` vào mã hóa. 21 byte kết quả này được gọi là <span className="font-bold">chương trình chứng nhân</span>.', // First we need to append a witness version number of `0` to the hash. These resulting 21 bytes are known as the <span className="font-bold">witness program</span>.
       paragraph_three:
@@ -1086,7 +1086,7 @@ privacy: {
         b: ' để nén một giao dịch thành một thông báo có thể ký.', // to compress a transaction into a signable message.
       },
       paragraph_four:
-        'Khi chúng ta có một mã hóa 32 byte, dữ liệu đó được tái diễn giải thành một số nguyên. Vâng, một số nguyên 32 byte (đó là một số thực sự khổng lồ)!', // Once we have a 32-byte hash, that data is re-interpreted as an integer. Yes, a 32-byte integer (that is a truly enormous number)!
+        'Khi chúng ta có một số mã hóa 32 byte, dữ liệu đó được tái diễn giải thành một số nguyên. Vâng, một số nguyên 32 byte (đó là một số thực sự khổng lồ)!', // Once we have a 32-byte hash, that data is re-interpreted as an integer. Yes, a 32-byte integer (that is a truly enormous number)!
       tooltip_one: {
         question: 'Tại sao mọi thứ trong bitcoin đều sử dụng mã hóa kép (HASH256)?', // Why does everything in bitcoin use double hash (HASH256)?
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520does%2520everything%2520in%Bitcoin%2520use%2520double%2520hash%2520%28HASH256%29%253F',
@@ -2309,7 +2309,7 @@ privacy: {
       nav_title: 'Giờ diễn!', // Showtime!
       heading_one: 'Giờ diễn!', // Showtime!
       paragraph_one: `Các camera đang quay, hai tỷ người trên toàn thế giới đang theo dõi trực tiếp. Chỉ còn vài phút nữa là đến giờ nghỉ thương mại. Deborah Chunk đang đổ mồ hôi. Bằng cách nào đó, Holocat cũng đang đổ mồ hôi. Ở đâu đó bên kia cuộc gọi, Vanderpoole chắc hẳn cũng đang đổ mồ hôi. Đây là khoảnh khắc của bạn.`, // The cameras are rolling, two billion humans worldwide are tuned in to the live stream. Only a few minutes remain until the next commercial break. Deborah Chunk is sweating. Somehow, Holocat is also sweating. Somewhere on the other end of the call, Vanderpoole must be sweating, too. This is your moment.
-      paragraph_two: `Bắt đầu từ khối hợp lệ ngay trước khối mà bạn đã tìm thấy ở độ cao 6929851, tìm chuỗi khối hợp lệ dài nhất có thể. Lưu trữ chuỗi dưới dạng một mảng các mã hóa khối. Trong khi bạn đang ở đó, hãy duy trì một mảng của mọi khối không hợp lệ mà bạn tìm thấy, chỉ để cho thế giới thấy Vanderpoole đã cố gắng phá vỡ Bitcoin như thế nào. Thứ tự của các mã hóa khối không hợp lệ này không quan trọng, nhưng chuỗi hợp lệ của bạn PHẢI bắt đầu bằng mã hóa của khối 6929850 theo sau là một mã hóa khối ở mỗi độ cao cho đến đầu chuỗi.`, // Starting with the valid block just before the one you found at height 6929851, find the longest chain of valid blocks you can. Store the chain as an array of block hashes. While you're at it, maintain an array of every invalid block you find as well, just to show the world how hard Vanderpoole tried to break bitcoin. It doesn't matter what order these invalid block hashes are in, but your valid chain MUST start with the hash of block 6929850 followed by one block hash at each height all the way up to the chain tip.
+      paragraph_two: `Bắt đầu từ khối hợp lệ ngay trước khối mà bạn đã tìm thấy ở độ cao 6929851, tìm chuỗi khối hợp lệ dài nhất có thể. Lưu trữ chuỗi dưới dạng một mảng các số mã hóa khối. Trong khi bạn đang ở đó, hãy duy trì một mảng của mọi khối không hợp lệ mà bạn tìm thấy, chỉ để cho thế giới thấy Vanderpoole đã cố gắng phá vỡ Bitcoin như thế nào. Thứ tự của các số mã hóa khối không hợp lệ này không quan trọng, nhưng chuỗi hợp lệ của bạn PHẢI bắt đầu bằng mã hóa của khối 6929850 theo sau là một số mã hóa khối ở mỗi độ cao cho đến đầu chuỗi.`, // Starting with the valid block just before the one you found at height 6929851, find the longest chain of valid blocks you can. Store the chain as an array of block hashes. While you're at it, maintain an array of every invalid block you find as well, just to show the world how hard Vanderpoole tried to break bitcoin. It doesn't matter what order these invalid block hashes are in, but your valid chain MUST start with the hash of block 6929850 followed by one block hash at each height all the way up to the chain tip.
       paragraph_three: `Vanderpoole rất xảo quyệt! Anh ta đã khai thác các khối hợp lệ trên các khối không hợp lệ và các khối không hợp lệ trên các chuỗi ngắn các khối hợp lệ! Đó là một mê cung, một bãi mìn, ở ngoài đó. Bạn có thể cần theo dõi một số nhánh hợp lệ khi bạn duyệt qua cây. Sẽ có các khối hợp lệ với các khối cha mẹ hợp lệ không nằm trong chuỗi dài nhất! Cuối cùng, sẽ chỉ có một lá hợp lệ với độ cao lớn hơn tất cả các lá khác.`, // Vanderpoole is sneaky! He mined valid blocks on top of invalid blocks, and invalid blocks on top of short chains of valid blocks! It's a maze, a minefield, out there. You may need to keep track of several valid branches as you traverse the tree. There will be valid blocks with valid parents that are not in the longest chain! In the end, there will be only one valid leaf with a greater height than all the others.
       paragraph_four: `Hãy nhớ rằng: Các đối tượng khối được trả về bởi API JSON có một thuộc tính "prev" xác định cha mẹ của khối đó bằng mã hóa của nó:`, // Remember: Block objects returned by the JSON API have a property "prev" which identifies that block's parent by its hash:
       heading_two: `Một khối CHỈ hợp lệ nếu:`, // A block is ONLY valid if:
@@ -3216,7 +3216,7 @@ Gợi ý ngăn xếp: Để chi tiêu trước khi bí mật được tiết l�
     run: 'Chạy script', // Run the script
     running: 'Đang chạy', // Running
     pause: 'Tạm dừng', // Pause
-    result: 'Kết quả', // Result
+    result: 'Phần ra', // Result
     computing: 'Đang tính toán...', // Computing...
     evaluation: 'Đánh giá', // Evaluation
     script_output: 'Đầu ra script', // Script output
