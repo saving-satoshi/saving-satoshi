@@ -449,20 +449,20 @@ const translations = {
       paragraph_six: 'Với nonce sau:', // With the following nonce:
       paragraph_seven: 'Kết quả chuỗi mã hóa là:', // The resulting hash is:
       paragraph_eight:
-          'Nó có mười số không hàng đầu mà tất cả các khối mới đều yêu cầu. Hãy khai thác thêm một vài khối nữa.',       // It has the ten leading zeros that all new blocks require. Let’s mine a few more blocks.
-      paragraph_eight_one: 'Bật lại các máy đào.', // Turn the miners back on.
+          'Nó có mười số không hàng đầu thỏa yêu cầu để tạo các khối mới. Hãy khai thác thêm vài khối nữa.',  // It has the ten leading zeros that all new blocks require. Let’s mine a few more blocks.
+      paragraph_eight_one: 'Khởi động lại các máy đào.', // Turn the miners back on.
       paragraph_nine:
-          'Điều này có thể mất một chút thời gian. Nhưng điều này cho bạn thấy việc khai thác khối và xác nhận giao dịch khó như thế nào.',       // This might take some time. But this shows you how hard it is to mine blocks and confirm transactions.
+          'Có thể mất thêm một chút thời gian. Nhưng việc này cho bạn thấy việc khai thác khối dữ liệu và xác nhận giao dịch khó như thế nào.', // This might take some time. But this shows you how hard it is to mine blocks and confirm transactions.
       paragraph_ten:
           'Wow! Điều đó đã tiêu tốn khá nhiều sức mạnh tính toán để thực hiện tất cả các phép mã hóa đó. Chỉ cần nhìn vào số lượng nonce đã thử! Nó thực sự hữu ích khi có sự gia tăng sức mạnh mã hóa tức là số lượng mã hóa mà máy tính của bạn có thể thử trong một giây.', // Wow! That took quite a bit of computing power to do all that hashing. Just look how many nonces were tried! It really helped to have that boost in hash power i.e. the number of hashes your computer can try in a second.
       paragraph_eleven:
-          'Như dự đoán, vì mỗi khối chứa 3.500 giao dịch nên tổng cộng 350.000 giao dịch đã được xác nhận bởi 100 khối đã khai thác.',       // As expected, since each block contains 3,500 transactions, a total of 350,000 transactions have been confirmed by the 100 blocks that were mined.
+          'Theo dự đoán, vì mỗi khối chứa 3.500 giao dịch nên tổng cộng 350.000 giao dịch đã được xác nhận bởi 100 khối đã khai thác.', // As expected, since each block contains 3,500 transactions, a total of 350,000 transactions have been confirmed by the 100 blocks that were mined.
       paragraph_twelve:
-          'Và có vẻ như bạn đã thu được một phần thưởng đáng kể cho tất cả công việc khai thác này! Ngoài phần thưởng khối, số lượng bitcoin mà mạng lưới thưởng cho mỗi khối, bạn cũng đã có thể thu được thêm thu nhập dưới dạng phí giao dịch.', // And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. 
+          'Và dường như bạn đã thu được một phần thưởng đáng kể cho tất cả công việc khai thác này! Ngoài phần thưởng khối, số lượng bitcoin mà mạng lưới thưởng cho mỗi khối, bạn cũng đã có thể thu được thêm thu nhập dưới dạng phí giao dịch.', // And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. 
       paragraph_thirteen:
-          'Hãy nhớ rằng, đây chỉ là một mô phỏng, mỗi khối được cho là mất trung bình 10 phút.',       // Remember, this was just a simulation, each block is supposed to take 10 minutes on average.
+          'Hãy nhớ rằng, đây chỉ là một mô phỏng, mỗi khối được cho là mất trung bình 10 phút.', // Remember, this was just a simulation, each block is supposed to take 10 minutes on average.
       paragraph_fourteen:
-          'Ngoài ra, nếu chúng ta thực sự khai thác trên mainnet hiện tại, sẽ cần nhiều thứ tự lớn hơn về sức mạnh tính toán để khai thác các khối này.',       // Also, if we were really mining on the current mainnet it would take many orders of magnitude more computing power to mine these blocks.
+          'Ngoài ra, nếu chúng ta thực sự khai thác trên mainnet hiện tại, sẽ cần nhiều thứ tự lớn hơn về sức mạnh tính toán để khai thác các khối này.', // Also, if we were really mining on the current mainnet it would take many orders of magnitude more computing power to mine these blocks.
       progress_bar_title: 'Khối đã tìm thấy', // Blocks found
       progress_bar_one: 'Nonce', // Nonce
       progress_bar_two: 'Mã hóa mỗi giây', // Hashes per second
