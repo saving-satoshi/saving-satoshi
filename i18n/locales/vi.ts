@@ -452,23 +452,23 @@ const translations = {
           'Nó có mười số không hàng đầu thỏa yêu cầu để tạo các khối mới. Hãy khai thác thêm vài khối nữa.',  // It has the ten leading zeros that all new blocks require. Let’s mine a few more blocks.
       paragraph_eight_one: 'Khởi động lại các máy đào.', // Turn the miners back on.
       paragraph_nine:
-          'Có thể mất thêm một chút thời gian. Nhưng việc này cho bạn thấy việc khai thác khối dữ liệu và xác nhận giao dịch khó như thế nào.', // This might take some time. But this shows you how hard it is to mine blocks and confirm transactions.
+          'Có thể mất thêm chút thời gian. Nhưng việc này cho bạn thấy việc khai thác khối dữ liệu và xác nhận giao dịch khó như thế nào.', // This might take some time. But this shows you how hard it is to mine blocks and confirm transactions.
       paragraph_ten:
           'Wow! Điều đó đã tiêu tốn khá nhiều sức mạnh tính toán để thực hiện tất cả các phép mã hóa đó. Chỉ cần nhìn vào số lượng nonce đã thử! Nó thực sự hữu ích khi có sự gia tăng sức mạnh mã hóa tức là số lượng mã hóa mà máy tính của bạn có thể thử trong một giây.', // Wow! That took quite a bit of computing power to do all that hashing. Just look how many nonces were tried! It really helped to have that boost in hash power i.e. the number of hashes your computer can try in a second.
       paragraph_eleven:
           'Theo dự đoán, vì mỗi khối chứa 3.500 giao dịch nên tổng cộng 350.000 giao dịch đã được xác nhận bởi 100 khối đã khai thác.', // As expected, since each block contains 3,500 transactions, a total of 350,000 transactions have been confirmed by the 100 blocks that were mined.
       paragraph_twelve:
-          'Và dường như bạn đã thu được một phần thưởng đáng kể cho tất cả công việc khai thác này! Ngoài phần thưởng khối, số lượng bitcoin mà mạng lưới thưởng cho mỗi khối, bạn cũng đã có thể thu được thêm thu nhập dưới dạng phí giao dịch.', // And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. 
+          'Và bạn đã thu được một phần thưởng đáng kể cho việc khai thác các khối này! Ngoài phần thưởng, số lượng bitcoin mà mạng lưới thưởng cho mỗi khối, bạn cũng đã có thêm thu nhập dưới dạng phí giao dịch.', // And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. 
       paragraph_thirteen:
-          'Hãy nhớ rằng, đây chỉ là một mô phỏng, mỗi khối được cho là mất trung bình 10 phút.', // Remember, this was just a simulation, each block is supposed to take 10 minutes on average.
+          'Nhưng nhớ rằng, đây chỉ là một mô phỏng, nên trung bình mỗi khối được tạo và được xác nhận cho là mất 10 phút.', // Remember, this was just a simulation, each block is supposed to take 10 minutes on average.
       paragraph_fourteen:
-          'Ngoài ra, nếu chúng ta thực sự khai thác trên mainnet hiện tại, sẽ cần nhiều thứ tự lớn hơn về sức mạnh tính toán để khai thác các khối này.', // Also, if we were really mining on the current mainnet it would take many orders of magnitude more computing power to mine these blocks.
-      progress_bar_title: 'Khối đã tìm thấy', // Blocks found
+          'Bên cạnh đó, nếu thực sự khai thác trên mạng lưới chính (mainnet) hiện tại, sẽ cần sức mạnh tính toán lớn hơn với cấp số nhân để khai thác các khối này.', // Also, if we were really mining on the current mainnet it would take many orders of magnitude more computing power to mine these blocks.
+      progress_bar_title: 'Các khối đã tìm được', // Blocks found
       progress_bar_one: 'Nonce', // Nonce
-      progress_bar_two: 'Mã hóa mỗi giây', // Hashes per second
-      progress_bar_three: 'Giao dịch đã xác nhận', // Transactions confirmed
+      progress_bar_two: 'Các số mã hóa mỗi giây', // Hashes per second
+      progress_bar_three: 'Các giao dịch đã xác nhận', // Transactions confirmed
       progress_bar_four: 'Bitcoin kiếm được', // Bitcoin earned
-      button_hash: 'Tăng sức mạnh mã hóa x10', // 10x hash power, please
+      button_hash: 'Tăng sức mạnh mã hóa lên gấp 10 (x10)', // 10x hash power, please
       ten_x_hint: 'Nhấn nút x100 để tăng tốc độ mã hóa!', // Tap the 100x button to speed up the hashing!
     },
     outro_one: {
@@ -476,12 +476,12 @@ const translations = {
       nav_title: 'Chương hoàn thành', // Chapter complete
       heading: 'Tuyệt vời!', // Great Job!
       paragraph_one:
-          'Những chiếc máy ầm ầm nổ máy. Mọi thứ dường như đang hoạt động. Một bản đồ xuất hiện trên màn hình cũ cho thấy vị trí của các nhà kho khác chứa đầy các thiết bị khai thác của gia đình Vanderpoole cũ đã được đưa trực tuyến trên toàn thế giới. Có vẻ như chúng đã được kích hoạt khi bạn hoàn thành thử thách khai thác!',       // The machines roar to life. Everything seems to be working. A map appears on the old monitor that shows the locations of other warehouses filled with old Vanderpoole family mining devices that have come online across the world. Looks like they were activated when you completed the mining challenge!
+          'Những chiếc máy nổ ầm ầm. Mọi thứ dường như đang hoạt động lại. Một bản đồ xuất hiện trên màn hình cũ kỹ cho thấy vị trí của các nhà kho khác chứa đầy các thiết bị khai thác của gia đình Vanderpoole cũ đã được đưa trực tuyến trên toàn thế giới. Có vẻ như chúng đã được kích hoạt khi bạn hoàn thành thử thách khai thác!',  // The machines roar to life. Everything seems to be working. A map appears on the old monitor that shows the locations of other warehouses filled with old Vanderpoole family mining devices that have come online across the world. Looks like they were activated when you completed the mining challenge!
       paragraph_two:
           '—HOLOCAT: “Nhìn kìa, có một tin nhắn.”', // —HOLOCAT: “Look, there’s a message.”
       paragraph_three:
-          '“Làm tốt. Điều này sẽ giúp bitcoin trở lại một khối mỗi mười phút.” – Satoshi Nakamoto',       // “Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto
-      paragraph_four: 'Ông ấy lại đây?', // Him again?
+          '“Làm tốt lắm. Việc này sẽ giúp bitcoin trở lại một khối mỗi mười phút.” – Satoshi Nakamoto',   // “Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto
+      paragraph_four: 'Lại là ông ta?', // Him again?
     },
     resources: {
       hashing_two: {
