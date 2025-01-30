@@ -64,29 +64,29 @@ const translations = {
     },
 
     satoshi_needs_you: 'Nhanh nào, Satoshi cần bạn.', // Now be quick, Satoshi needs you.
-privacy: {
-  title: 'Cam kết bảo mật', // Our commitment to privacy
-  paragraph_one:
-      'Trong dự án Saving Satoshi, chúng tôi cam kết nghiêm ngặt quyền riêng tư và bảo mật của người tham gia. Chúng tôi tin vào sự minh bạch và mong muốn bạn hiểu cách thức và lý do tại sao các thông tin hoạt động khi sử dụng ứng dụng này được kiểm soát. Để đạt được điều này, chúng tôi sử dụng một công cụ có tên là<Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.',   // At Saving Satoshi, we are deeply committed to ensuring the privacy and security of our users. We believe in transparency and want you to understand how and why we track app usage. To achieve this, we use a powerful tool called <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.
-  sub_heading_one: 'Umami là gì?', // What is Umami?
-  paragraph_two:
-      'Umami là một nền tảng phân tích mã nguồn mở giúp thu thập những thông tin cần thiết về cách bạn sử dụng ứng dụng của chúng tôi. Cho phép chúng tôi đưa ra các quyết định dựa trên dữ liệu và liên tục cải thiện ứng dụng để đáp ứng tốt hơn nhu cầu của bạn. Bạn có thể xem bảng điều khiển Umami <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">ở đây</Link>.',   // Umami is an open-source analytics platform that helps us gather essential insights about how you use our app. It allows us to make data-driven decisions and continuously enhance our product to better meet your needs. You can view the Umami dashboard <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">here</Link>.
-  sub_heading_two: 'Chúng tôi thu thập dữ liệu gì?', // What Data Do We Collect?
-  paragraph_three:
-      'Bạn hãy yên tâm, chúng tôi chỉ thu thập dữ liệu phi cá nhân và ẩn danh, chẳng hạn như:',   // Rest assured, we only collect non-personal and anonymized data, such as:
-  list_item_one_title: 'Cải tiến sản phẩm:', // Product Improvement:
-  list_item_one_text:
-      'Chúng tôi sử dụng dữ liệu để xác định các phần trong ứng dụng có thể được cải thiện hay không. Bằng cách hiểu người dùng sử dụng ứng dụng như thế nào, chúng tôi có thể làm cho nó hiệu quả, thân thiện với người dùng và an toàn hơn.',   // We use the data to identify areas where our app can be improved. By understanding how you use our app, we can make it more efficient, user-friendly, and secure.
-  list_item_two_title: 'Khả năng tương thích:', // Compatibility:
-  list_item_two_text:
-      'Hiểu các thiết bị và nền tảng người dùng sử dụng cho phép chúng tôi tối ưu hóa ứng dụng với các cấu hình khác nhau, đảm bảo hoạt động liền mạch cho người dùng.',   // Understanding the devices and platforms you use allows us to optimize our app for various configurations, ensuring it works seamlessly for you.
-  sub_heading_three: 'Bảo mật quyền riêng tư của bạn rất quan trọng', // Your Privacy Matters
-  paragraph_four:
-      'Chúng tôi muốn nhấn mạnh rằng quyền riêng tư của bạn là vô cùng quan trọng đối với chúng tôi. Chúng tôi không thu thập bất kỳ thông tin nhận dạng cá nhân nào và dữ liệu chúng tôi thu thập chỉ được sử dụng cho mục đích cải thiện ứng dụng. Dữ liệu của bạn không bao giờ được chia sẻ hoặc bán cho bên thứ ba.',   // We want to emphasize that your privacy is of utmost importance to us. We do not collect any personally identifiable information, and the data we gather is used solely for the purpose of improving our app. Your data is never shared or sold to third parties.
-  paragraph_five:
-      "Nếu bạn có bất kỳ lo ngại hoặc câu hỏi nào về các hoạt động thu thập dữ liệu hoặc chính sách bảo mật của chúng tôi, xin đừng ngần ngại liên hệ với chúng tôi. Chúng tôi cam kết cung cấp cho bạn trải nghiệm an toàn và minh bạch khi sử dụng ứng dụng của chúng tôi.",
-    },
-  },
+    privacy: {
+      title: 'Cam kết bảo mật', // Our commitment to privacy
+      paragraph_one:
+          'Trong dự án Saving Satoshi, chúng tôi cam kết nghiêm ngặt quyền riêng tư và bảo mật của người tham gia. Chúng tôi tin vào sự minh bạch và mong muốn bạn hiểu cách thức và lý do tại sao các thông tin hoạt động khi sử dụng ứng dụng này được kiểm soát. Để đạt được điều này, chúng tôi sử dụng một công cụ có tên là<Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.',   // At Saving Satoshi, we are deeply committed to ensuring the privacy and security of our users. We believe in transparency and want you to understand how and why we track app usage. To achieve this, we use a powerful tool called <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.
+      sub_heading_one: 'Umami là gì?', // What is Umami?
+      paragraph_two:
+          'Umami là một nền tảng phân tích mã nguồn mở giúp thu thập những thông tin cần thiết về cách bạn sử dụng ứng dụng của chúng tôi. Cho phép chúng tôi đưa ra các quyết định dựa trên dữ liệu và liên tục cải thiện ứng dụng để đáp ứng tốt hơn nhu cầu của bạn. Bạn có thể xem bảng điều khiển Umami <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">ở đây</Link>.',   // Umami is an open-source analytics platform that helps us gather essential insights about how you use our app. It allows us to make data-driven decisions and continuously enhance our product to better meet your needs. You can view the Umami dashboard <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">here</Link>.
+      sub_heading_two: 'Chúng tôi thu thập dữ liệu gì?', // What Data Do We Collect?
+      paragraph_three:
+          'Bạn hãy yên tâm, chúng tôi chỉ thu thập dữ liệu phi cá nhân và ẩn danh, chẳng hạn như:',   // Rest assured, we only collect non-personal and anonymized data, such as:
+      list_item_one_title: 'Cải tiến sản phẩm:', // Product Improvement:
+      list_item_one_text:
+          'Chúng tôi sử dụng dữ liệu để xác định các phần trong ứng dụng có thể được cải thiện hay không. Bằng cách hiểu người dùng sử dụng ứng dụng như thế nào, chúng tôi có thể làm cho nó hiệu quả, thân thiện với người dùng và an toàn hơn.',   // We use the data to identify areas where our app can be improved. By understanding how you use our app, we can make it more efficient, user-friendly, and secure.
+      list_item_two_title: 'Khả năng tương thích:', // Compatibility:
+      list_item_two_text:
+          'Hiểu các thiết bị và nền tảng người dùng sử dụng cho phép chúng tôi tối ưu hóa ứng dụng với các cấu hình khác nhau, đảm bảo hoạt động liền mạch cho người dùng.',   // Understanding the devices and platforms you use allows us to optimize our app for various configurations, ensuring it works seamlessly for you.
+      sub_heading_three: 'Bảo mật quyền riêng tư của bạn rất quan trọng', // Your Privacy Matters
+      paragraph_four:
+          'Chúng tôi muốn nhấn mạnh rằng quyền riêng tư của bạn là vô cùng quan trọng đối với chúng tôi. Chúng tôi không thu thập bất kỳ thông tin nhận dạng cá nhân nào và dữ liệu chúng tôi thu thập chỉ được sử dụng cho mục đích cải thiện ứng dụng. Dữ liệu của bạn không bao giờ được chia sẻ hoặc bán cho bên thứ ba.',   // We want to emphasize that your privacy is of utmost importance to us. We do not collect any personally identifiable information, and the data we gather is used solely for the purpose of improving our app. Your data is never shared or sold to third parties.
+      paragraph_five:
+          "Nếu bạn có bất kỳ lo ngại hoặc câu hỏi nào về các hoạt động thu thập dữ liệu hoặc chính sách bảo mật của chúng tôi, xin đừng ngần ngại liên hệ với chúng tôi. Chúng tôi cam kết cung cấp cho bạn trải nghiệm an toàn và minh bạch khi sử dụng ứng dụng của chúng tôi.",
+        },
+      },
 
   ///CHAPTERS TITLE PAGE
   chapter_one: {
@@ -142,7 +142,7 @@ privacy: {
       tooltip_block_explorer:
           'Một <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">trình duyệt chuỗi khối</a> là một công cụ hữu ích để tra cứu nhanh thông tin về các giao dịch bitcoin.',       // A <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.
       tooltip_hex:
-          'Hexadecimal là hệ thập lục phân, một hệ thống số đại diện cho các số sử dụng cơ số 16.',       // Short for hexadecimal, a numeral system that represents numbers using a base of 16.
+          'Hexadecimal là hệ thập lục phân, một hệ thống số đại diện cho các số sử dụng cơ số 16.',  // Short for hexadecimal, a numeral system that represents numbers using a base of 16.
       view_block_0: 'Xem Khối 0', // View Block 0
       placeholder: 'Dán giá trị bạn tìm thấy ở đây', // Paste the value you found here
     },
@@ -155,11 +155,9 @@ privacy: {
           'Thông điệp bạn tìm thấy được mã hóa theo định dạng HEX. Bây giờ chúng ta sẽ chạy một lệnh để chuyển đổi nó thành ASCII, thứ mà chúng ta có thể đọc được.', // The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.
       paragraph_two:
           'Sao chép và dán lệnh bên dưới vào Terminal trong khối mã hóa và nhấn “Enter”.',  // Copy and paste the command below into the Terminal in the code block and press “Enter”.
-      terminal_challenge_lines:
-          `Nhập lệnh của bạn ở đây và nhấn Enter...\n Biến $scriptSigHex đã được định nghĩa sẵn cho bạn.\n\n var $scriptSigHex = '04fff...e6b73'` ,  // Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'
+      terminal_challenge_lines: `Nhập lệnh của bạn ở đây và nhấn Enter...\n Biến $scriptSigHex đã được định nghĩa sẵn cho bạn.\n\n var $scriptSigHex = '04fff...e6b73'` ,  // Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'
       waiting_for_input: 'Đang chờ bạn viết và chạy script...', // Waiting for you to write and run the script...
-      success:
-          `Làm tốt lắm! Thông điệp được giải mã tham chiếu trong trang nhất của <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> từ ngày 3 tháng 1 năm 2009, cùng ngày Satoshi khai thác khối genesis. Thật tuyệt vời phải không ?! Thông điệp này cũng cung cấp cho chúng tôi một số hiểu biết sâu sắc về động lực tạo ra bitcoin của ông ấy.\n\n Hãy tiếp tục nào!`, // Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.
+      success: `Làm tốt lắm! Thông điệp được giải mã tham chiếu trong trang nhất của <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> từ ngày 3 tháng 1 năm 2009, cùng ngày Satoshi khai thác khối genesis. Thật tuyệt vời phải không ?! Thông điệp này cũng cung cấp cho chúng tôi một số hiểu biết sâu sắc về động lực tạo ra bitcoin của ông ấy.\n\n Hãy tiếp tục nào!`, // Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.
     },
 
     genesis_four: {
@@ -301,8 +299,7 @@ privacy: {
       nav_title: 'Bật máy tính', // Turning on the computer
       paragraph_one:
           'Ở góc phòng, một máy tính hầu như không hoạt động, màn hình nhấp nháy mờ nhạt với một mẩu giấy dán. Tờ giấy ghi rằng “Bật lên đi, đồ đần.”', // In the corner, a dim, barely working computer monitor with a note stuck to it sits blinking. The note says “Turn them on, stupid."
-      paragraph_two:
-          '—HOLOCAT: “Thô lỗ thật. Ồ, một bàn phím cơ. Tôi đã nghe nói về thứ này rồi. Hình như chúng ồn đến mức khiến người dùng bị điếc cho nên bị cấm.”', // —HOLOCAT: “How rude. Wow; a mechanical keyboard. I’ve heard about these things. Supposedly, they were so loud that they cost users their hearing, and were banned.”
+      paragraph_two: '—HOLOCAT: “Thô lỗ thật. Ồ, một bàn phím cơ. Tôi đã nghe nói về thứ này rồi. Hình như chúng ồn đến mức khiến người dùng bị điếc cho nên bị cấm.”', // —HOLOCAT: “How rude. Wow; a mechanical keyboard. I’ve heard about these things. Supposedly, they were so loud that they cost users their hearing, and were banned.”
       paragraph_three:
           'Con mèo nhảy lên bàn phím và đi qua đi lại, chỉ cho bạn những phím cần nhấn.', // Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.
     },
@@ -379,9 +376,9 @@ privacy: {
       heading:
           'Nhập bất cứ ký tự gì cho đến khi bạn tìm thấy một số mã hóa bắt đầu bằng hai số không (“00”)', // Enter anything until you find a hash that starts with two zeroes (“00”)
       hint_prompt:
-          'Cần <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">gợi ý</Tooltip>?',             // Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">hint</Tooltip>?
+          'Cần <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">gợi ý</Tooltip>?', // Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">hint</Tooltip>?
       hint_tooltip:
-          '<span className="text-m whitespace-nowrap leading-none text-white/50">Thử nhập:</span> <span className="whitespace-nowrap text-white">trigonometry</span>',             // <span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">trigonometry</span>
+          '<span className="text-m whitespace-nowrap leading-none text-white/50">Thử nhập:</span> <span className="whitespace-nowrap text-white">trigonometry</span>',  // <span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">trigonometry</span>
     },
 
     scripting_one: {
@@ -389,32 +386,32 @@ privacy: {
       nav_title: 'Mã hóa con số chỉ sử dụng 1 lần (nonce)', // Hashing the nonce
       heading: 'Hãy để máy tính làm điều này cho chúng ta.', // Let’s make the computer do this for us.
       paragraph_one:
-          'OK, có lẽ đã mất nhiều thời gian hơn bạn nghĩ. Bây giờ hãy tưởng tượng tìm một số mã hóa bắt đầu bằng năm hoặc mười số không. Đây là thử thách mà mạng lưới bitcoin đặt ra cho thợ đào khi họ muốn gửi các khối dữ liệu với các giao dịch mới.',       // OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.
+          'OK, có lẽ mất nhiều thời gian hơn bạn nghĩ. Bây giờ hãy tưởng tượng tìm một chuỗi số mã hóa bắt đầu bằng năm hoặc mười số không. Đây là thử thách mà mạng lưới bitcoin đặt ra cho thợ đào khi họ muốn gửi các khối dữ liệu lưu trữ các giao dịch mới.',       // OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.
       paragraph_two:
-          'thợ đào thu thập tất cả thông tin họ muốn đưa vào một khối như mã hóa tiêu đề khối trước, mã hóa của các giao dịch được bao gồm trong khối (bao gồm cả giao dịch coinbase), thời gian và kết hợp nó với một số ngẫu nhiên được gọi là nonce (số chỉ được sử dụng một lần). Họ gửi tất cả những thứ này vào hàm mã hóa để tạo ra thứ gọi là mã hóa khối.',       // Miners gather all the information they want to put in a block such as the previous block header hash, a hash of transactions to be included in block (including the coinbase transaction), time, and combine it with a random number called a nonce (number only used once). They send all of this into the hash function to create something called the block hash.
+          'thợ đào thu thập tất cả thông tin mà họ muốn đưa vào một khối dữ liệu ví dụ như tiêu đề được mã hóa của khối dữ liệu đứng trước, số mã hóa của các giao dịch được chứa trong khối (bao gồm cả giao dịch trên sàn coinbase), và kết hợp của mốc thời gian với một số ngẫu nhiên được gọi là nonce (số chỉ được sử dụng một lần). Sau đó gửi tất cả những dữ liệu này vào hàm mã hóa để tạo ra mã hóa khối.',  // Miners gather all the information they want to put in a block such as the previous block header hash, a hash of transactions to be included in block (including the coinbase transaction), time, and combine it with a random number called a nonce (number only used once). They send all of this into the hash function to create something called the block hash.
       paragraph_three:
-          'Khi bitcoin mới ra mắt, thợ đào sẽ lặp qua nonce trong tiêu đề khối bằng cách tăng dữ liệu trong trường 32 bit lên 1. Tuy nhiên, khi thợ đào trở nên mạnh mẽ và hiệu quả hơn, độ khó tăng lên. Chẳng mấy chốc, nó trở nên quá cao đến mức phổ biến là cạn kiệt tất cả các khả năng cho trường 32 bit mà không tìm thấy một giải pháp duy nhất nào dưới',       // When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data in the 32-bit field by 1. However, as miners become more powerful and efficient, the difficulty rises. Soon, it became so high that it was common to exhaust all possibilities for the 32-bit field without finding a single solution below the
+          'Khi bitcoin mới ra đời, thợ đào sẽ sử dụng xoay vòng số nonce trong tiêu đề khối bằng cách tăng dữ liệu trong trường 32 bit lên 1. Nhưng khi các máy đào trở nên hiện đại và hiệu quả hơn, độ khó sẽ tăng lên. Độ khó chẳng mấy chốc sẽ trở nên quá cao, đến mức thông thường nó sẽ vắt kiệt tất cả các khả năng tìm thấy một số nonce độc nhất trong trường 32 bit bên dưới',  // When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data in the 32-bit field by 1. However, as miners become more powerful and efficient, the difficulty rises. Soon, it became so high that it was common to exhaust all possibilities for the 32-bit field without finding a single solution below the
       paragraph_four:
-          'Để giải quyết vấn đề này, thợ đào bắt đầu thay đổi các phần khác của tiêu đề khối, chẳng hạn như thời gian hoặc các giao dịch được bao gồm trong khối.',       // To address this, miners started to change other parts of the block header, such as the time or transactions included in the block.
+          'Để giải quyết vấn đề này, thợ đào bắt đầu thay đổi các phần khác của tiêu đề khối, chẳng hạn như mốc thời gian hoặc các giao dịch được chứa trong khối.',  // To address this, miners started to change other parts of the block header, such as the time or transactions included in the block.
       paragraph_five:
-          'Mạng lưới bitcoin có một cài đặt độ khó và chỉ chấp nhận các số mã hóa khối bắt đầu bằng một số lượng số không nhất định. Chúng ta gọi đây là “độ khó” và nó được điều chỉnh sau mỗi 2016 khối.',       // The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.
+          'Mạng lưới bitcoin đã được cài đặt độ khó bên trong và chỉ chấp nhận các chuỗi số mã hóa khối bắt đầu bằng một lượng số không nhất định. Chúng ta gọi đây là “độ khó” và độ khó sẽ được điều chỉnh sau mỗi 2016 khối.', // The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.
       paragraph_six:
-          'Đối với thử thách tiếp theo, hãy viết một script tìm thấy một số mã hóa bắt đầu bằng năm số không (00000).', // For the next challenge, write a script that finds a hash that starts with five zeroes (00000).
+          'Trong thử thách tiếp theo, hãy viết một lệnh (script) để tìm một số mã hóa bắt đầu bằng năm số không (00000).', // For the next challenge, write a script that finds a hash that starts with five zeroes (00000).
       tooltip_one: {
         question: 'Độ khó mục tiêu là gì?', // What is target difficulty?
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520is%2520target%2520difficulty%253F',
-        highlighted: 'target difficulty',
+        highlighted: 'độ khó mục tiêu', // target difficulty
       },
     },
 
     scripting_two: {
       title: 'Tự động hóa', // Automation
-      nav_title: 'Xây dựng hàm mã hóa', // Build a hash function
+      nav_title: 'Tạo lệnh mã hóa', // Build a hash function
       paragraph_one:
-          'Được rồi, đã đến lúc viết và chạy mã của riêng bạn. Viết một script tạo ra một số mã hóa sha256 bắt đầu bằng năm số không ("00000..."). Mã của bạn nên lặp đi lặp lại việc gọi hàm sha256 với các đầu vào khác nhau cho đến khi đầu ra đáp ứng yêu cầu này. Bạn nên thử tăng một số nguyên trong một vòng lặp để có được các đầu vào khác nhau. Trong mật mã học, số này có thể được gọi là "nonce" hoặc "số chỉ được sử dụng một lần".',             // Alright, time to write and run your own code. Write a script that generates a sha256 hash that begins with five zeroes ("00000..."). Your code should repeatedly call the sha256 function with different inputs until the output satisfies this requirement. You should try incrementing an integer inside a loop to get different inputs. In cryptography this number may referred to as a "nonce" or "number used once".
+          'Bây giờ, đã đến lúc viết và chạy các lệnh mã của bạn. Viết một lệnh (script) tạo ra một chuỗi số mã hóa sha256 bắt đầu bằng năm số không ("00000..."). Lệnh của bạn nên có vòng lặp trong việc gọi hàm mã hóa sha256 cho các đầu vào khác nhau cho đến khi đầu ra đáp ứng yêu cầu. Bạn nên thử tăng một số nguyên trong một vòng lặp để có được các đầu vào khác nhau. Trong mật mã học, số này có thể được gọi là "nonce" hoặc "số chỉ được sử dụng một lần".',             // Alright, time to write and run your own code. Write a script that generates a sha256 hash that begins with five zeroes ("00000..."). Your code should repeatedly call the sha256 function with different inputs until the output satisfies this requirement. You should try incrementing an integer inside a loop to get different inputs. In cryptography this number may referred to as a "nonce" or "number used once".
       python: {
         paragraph_two:
-          'Khi bạn tìm thấy một nonce với mã hóa bắt đầu bằng năm số không, hãy trả về nonce từ hàm. Chúng tôi đang sử dụng thư viện hashlib trong python để giúp bạn tạo hàm này, bạn có thể sử dụng các tài nguyên bên ngoài sau để giúp bạn viết hàm này nếu cần:',         // When you find a nonce with a hash that begins with five zeroes, return the nonce from the function. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:
+          'Khi bạn tìm thấy một nonce với chuỗi mã hóa bắt đầu bằng năm số không, sau đó dùng lệnh để trả về nonce. Chúng ta sử dụng thư viện hashlib trong python để giúp tạo hàm này, bạn có thể sử dụng các tài nguyên khác bên ngoài sau để giúp viết lệnh này nếu cần:', // When you find a nonce with a hash that begins with five zeroes, return the nonce from the function. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:
         list_one:
           '<Link href="https://docs.python.org/3/library/hashlib.html" target="_blank" className="underline">hashlib documentation</Link>',
         list_two:
@@ -422,7 +419,7 @@ privacy: {
       },
       javascript: {
         paragraph_two:
-          'Khi bạn tìm thấy một nonce với mã hóa bắt đầu bằng năm số không, hãy trả về nonce từ hàm. Chúng tôi đang sử dụng thư viện crypto trong JavaScript để giúp bạn tạo hàm này, bạn có thể sử dụng các tài nguyên bên ngoài sau để giúp bạn viết hàm này nếu cần:',         // When you find a nonce with a hash that begins with five zeroes, return the nonce from the function. We are using the crypto library in JavaScript to help you along in creating this function, you can use the following external resources to help you write this function if needed:
+          'Khi bạn tìm thấy một nonce với chuỗi mã hóa bắt đầu bằng năm số không, dùng lệnh để trả về nonce đó. Chúng ta sử dụng thư viện crypto trong JavaScript để giúp bạn tạo hàm này, bạn có thể sử dụng các tài nguyên khác bên ngoài sau để giúp viết lệnh này nếu cần:',         // When you find a nonce with a hash that begins with five zeroes, return the nonce from the function. We are using the crypto library in JavaScript to help you along in creating this function, you can use the following external resources to help you write this function if needed:
         list_one:
           '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" target="_blank" className="underline">crypto documentation</Link>',
         list_two:
@@ -432,25 +429,25 @@ privacy: {
 
     mining_one: {
       title: 'Vào mỏ', // Into the mine
-      nav_title: 'Khai thác khối dữ liệu', // Mining blocks
-      heading_one: 'Bây giờ chúng ta đã biết cách khai thác hoạt động như thế nào, hãy xem nó hoạt động', // Now that we know how mining works, let’s see it in action
-      heading_two: 'Bạn đang khai thác', // You’re mining now
-      heading_three: 'Làm tốt!', // Nice work!
-      heading_four: 'Hãy đến 100 khối', // Let’s get to 100 blocks
-      heading_five: 'Bạn đã làm được!', // You did it!
+      nav_title: 'Khai thác các khối dữ liệu', // Mining blocks
+      heading_one: 'Chúng ta đã biết cách khai thác, bây giờ hãy xem nó hoạt động như thế nào', // Now that we know how mining works, let’s see it in action
+      heading_two: 'Bạn đang khai thác (đào)', // You’re mining now
+      heading_three: 'Làm tốt lắm!', // Nice work!
+      heading_four: 'Hãy đào 100 khối', // Let’s get to 100 blocks
+      heading_five: 'Bạn đã làm được rồi đó!', // You did it!
       paragraph_one:
-          'Hiện tại, mạng lưới bitcoin yêu cầu các khối phải có mã hóa với mười số không hàng đầu. Hãy bắt đầu thôi!',       // Right now, the bitcoin network requires blocks to have a hash with ten leading zeroes. Let’s get to it!
+          'Hiện tại, mạng lưới bitcoin yêu cầu các khối phải có mã hóa với mười số không hàng đầu. Hãy bắt đầu thôi!', // Right now, the bitcoin network requires blocks to have a hash with ten leading zeroes. Let’s get to it!
       paragraph_two:
-          'Đối với mô phỏng đơn giản này, chúng ta sẽ giả sử rằng mỗi khối chứa 3.500 giao dịch và 0,061 BTC tiền thưởng và phí.',       // For this simple simulation, we’ll just assume that every block contains 3,500 transactions and 0.061 BTC in rewards and fees.
-      paragraph_two_one: 'Xem bạn có thể bật các máy đào không.', // See if you can turn on the miners.
+          'Đối với mô phỏng đơn giản này, chúng ta sẽ giả sử rằng mỗi khối chứa 3.500 giao dịch, có tiền thưởng (0,061 BTC) và phí giao dịch.', // For this simple simulation, we’ll just assume that every block contains 3,500 transactions and 0.061 BTC in rewards and fees.
+      paragraph_two_one: 'Xem bạn có thể khởi động được các máy đào không.', // See if you can turn on the miners.
       paragraph_three:
-          'Mã bạn đã viết trong bài học trước để tính toán các số mã hóa lặp đi lặp lại đang chạy.',       // The code you wrote in the previous lesson to compute hashes over and over again is running.
+          'Vòng lặp tính toán các chuỗi số mã hóa mà bạn đã viết lệnh mã hóa ở bài học trước đang thực thi.', // The code you wrote in the previous lesson to compute hashes over and over again is running.
       paragraph_four:
           'Nó sẽ dừng lại khi tìm thấy một số mã hóa có mười số không hàng đầu.', // It will stop once it’s found a hash with ten leading zeroes.
       paragraph_five:
-          'Xem trường nonce tăng dần? Đó là số lượng mã hóa mà bạn đã thử cho đến nay!',       // See the nonce field incrementing? That’s how many hashes you have tried so far!
+          'Thấy trường nonce tăng dần không? Đó là số lượng chuỗi số mã hóa mà bạn đã thử cho đến giờ!', // See the nonce field incrementing? That’s how many hashes you have tried so far!
       paragraph_six: 'Với nonce sau:', // With the following nonce:
-      paragraph_seven: 'Mã hóa kết quả là:', // The resulting hash is:
+      paragraph_seven: 'Kết quả chuỗi mã hóa là:', // The resulting hash is:
       paragraph_eight:
           'Nó có mười số không hàng đầu mà tất cả các khối mới đều yêu cầu. Hãy khai thác thêm một vài khối nữa.',       // It has the ten leading zeros that all new blocks require. Let’s mine a few more blocks.
       paragraph_eight_one: 'Bật lại các máy đào.', // Turn the miners back on.
@@ -2054,7 +2051,7 @@ privacy: {
         paragraph_one:
           'Chúng tôi biết đầu vào của mình, chúng tôi biết đầu ra của mình. Chúng tôi đã sẵn sàng để xây dựng và ký một giao dịch chưa? Chưa hẳn. Chúng tôi có đầu vào 1.61 BTC và đầu ra 1 BTC ... điều gì sẽ xảy ra với 0.61 BTC còn lại? Hầu hết số tiền đó sẽ là "tiền thừa" và chúng tôi cần gửi lại số tiền đó về địa chỉ của chính mình!', // We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!
         paragraph_two:
-          'Viết một script tạo và ký một đối tượng Transaction. Nó sẽ có một đầu vào (UTXO mà chúng tôi đã xác định ở bước 1) và hai đầu ra:', // Write a script that creates and signs a Transaction object. It will have one input (the UTXO we identified in step 1) and two outputs:
+          'Viết một lệnh (script) tạo và ký một đối tượng Transaction. Nó sẽ có một đầu vào (UTXO mà chúng tôi đã xác định ở bước 1) và hai đầu ra:', // Write a script that creates and signs a Transaction object. It will have one input (the UTXO we identified in step 1) and two outputs:
         paragraph_three:
           'Nhưng đợi đã! Chúng tôi cần bao gồm một "phí". Chúng tôi sẽ cắt giảm một phần nhỏ trong số tiền thừa của chúng tôi từ 61.000.000 xuống còn 60.999.000 satoshi để khuyến khích các nhóm khai thác mỏ đưa giao dịch của chúng tôi vào một khối.', // But wait! We need to include a "fee". We'll shave off a tiny piece of our change output from 61,000,000 to 60,999,000 satoshis to incentivize the mining pools to include our transaction in a block.
         paragraph_four:
@@ -2393,7 +2390,7 @@ privacy: {
       nav_title: 'Script Bitcoin', // Bitcoin script
       heading: 'Script Bitcoin', // Bitcoin script
       paragraph_one:
-        "Chúng tôi đã đề cập đến script Bitcoin trong chương 6 nhưng chúng tôi không đề cập đến nó vì các đồng xu mà bạn đã chi tiêu đã bị khóa bằng một cơ chế đơn giản: một chữ ký duy nhất và một script ngầm định đã đánh giá chữ ký đó với một khóa công khai. Bây giờ mọi thứ sẽ trở nên thú vị hơn.", // We mentioned bitcoin script back in chapter 6 but we didn't dwell on it because the coins you were spending were locked by a simple mechanism: a single signature and an implied script that evaluated that signature with a public key. Now things are going to get more interesting.
+        "Chúng tôi đã đề cập đến script Bitcoin trong chương 6 nhưng chúng tôi không đề cập đến nó vì các đồng xu mà bạn đã chi tiêu đã bị khóa bằng một cơ chế đơn giản: một chữ ký duy nhất và một lệnh (script) ngầm định đã đánh giá chữ ký đó với một khóa công khai. Bây giờ mọi thứ sẽ trở nên thú vị hơn.", // We mentioned bitcoin script back in chapter 6 but we didn't dwell on it because the coins you were spending were locked by a simple mechanism: a single signature and an implied script that evaluated that signature with a public key. Now things are going to get more interesting.
       paragraph_two:
         'Có hai phần quan trọng để chi tiêu một đầu ra Bitcoin: Một script và một ngăn xếp.', // There are two important parts to spending a bitcoin output: A script and a stack.
       paragraph_three: "Chúng ta sẽ khám phá hai khái niệm ở cấp độ cao trước.", // We'll explore the two concepts at a high level first.
@@ -2420,7 +2417,7 @@ privacy: {
       paragraph_four:
         'Lưu ý rằng mục đầu tiên được đẩy vào ngăn xếp sẽ là mục cuối cùng được bật ra khỏi ngăn xếp, do đó nó sẽ là mục cuối cùng được xử lý bởi script. Vì lý do này, ngăn xếp có cảm giác "lộn ngược" hoặc "lùi lại" và điều đầu tiên bạn nhìn thấy trên ngăn xếp có thể là giải pháp được yêu cầu vào cuối quá trình xử lý script.', // Notice that the first item pushed on to the stack will be the last item popped off the stack, so it will be the last item processed by the script. For this reason the stack has an "upside down" or "backwards" feel to it, and the first thing you see on the stack will likely be the solution required at the end of script processing.
       paragraph_five:
-        "Khi chi tiêu một đầu ra giao dịch Bitcoin, các yếu tố được yêu cầu bởi người chi tiêu được cung cấp trong phần chứng thực của đầu vào giao dịch chi tiêu (xem chương 6) và các yếu tố đó được đẩy vào ngăn xếp trước khi bất kỳ quá trình xử lý script nào bắt đầu. Chúng tôi sẽ gọi các mục đó là NGĂN XẾP BAN ĐẦU. Chúng rất quan trọng bởi vì chúng chính là dữ liệu mở khóa một script và cho phép chi tiêu tiền xu!", // When spending a bitcoin transaction output, the elements required by the spender are provided in the witness section of the spending transaction's input (see chapter 6) and those elements get pushed on to the stack before any script processing begins. We will refer to those items as the INITIAL STACK. They are important because they are literally the data that unlocks a script and allows coins to be spent!
+        "Khi chi tiêu một đầu ra giao dịch Bitcoin, các yếu tố được yêu cầu bởi người chi tiêu được cung cấp trong phần chứng thực của đầu vào giao dịch chi tiêu (xem chương 6) và các yếu tố đó được đẩy vào ngăn xếp trước khi bất kỳ quá trình xử lý script nào bắt đầu. Chúng tôi sẽ gọi các mục đó là NGĂN XẾP BAN ĐẦU. Chúng rất quan trọng bởi vì chúng chính là dữ liệu mở khóa một lệnh (script) và cho phép chi tiêu tiền xu!", // When spending a bitcoin transaction output, the elements required by the spender are provided in the witness section of the spending transaction's input (see chapter 6) and those elements get pushed on to the stack before any script processing begins. We will refer to those items as the INITIAL STACK. They are important because they are literally the data that unlocks a script and allows coins to be spent!
     },
     opcodes_three: {
       title: 'OpCodes', // OpCodes
@@ -2596,7 +2593,7 @@ privacy: {
       nav_title: 'Trở lại Câu chuyện', // Back to The Story
       heading: 'Trở lại Câu chuyện!', // Back to The Story!
       paragraph_one: `Làm tốt! Chúng tôi đã xem xét hầu hết các opcode mà bạn sẽ cần khi xây dựng script cho các giao dịch cơ bản. Bây giờ hãy đưa chúng vào thử nghiệm.`, // Nice Work! We've gone over most of the opcodes you will need when building scripts for basic transactions. Now let's put them to the test.
-      paragraph_two: `Đối với mỗi đề xuất hợp đồng mà bạn thảo luận, hãy cung cấp một script Bitcoin và một ngăn xếp chi tiêu hợp lệ.`, // For each contract proposal you discuss, provide a bitcoin script and one valid spending stack.
+      paragraph_two: `Đối với mỗi đề xuất hợp đồng mà bạn thảo luận, hãy cung cấp một lệnh (script) Bitcoin và một ngăn xếp chi tiêu hợp lệ.`, // For each contract proposal you discuss, provide a bitcoin script and one valid spending stack.
     },
     proposal_two: {
       title: '2 of 2 multisig', // 2 of 2 multisig
@@ -2662,7 +2659,7 @@ privacy: {
         multisig_heading: 'Các opcode đa chữ ký', // Multisig opcodes
         multisig_paragraph:
           '<span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> có một lỗi đáng chú ý yêu cầu ngăn xếp bao gồm một giá trị khác không được sử dụng ở đầu ngăn xếp không liên quan đến đa chữ ký thực tế.', // <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> has a notable bug that requires the stack to include another unused value on the top of the stack unrelated to the actual multisig.
-        spoiler: `Đó là một script đa chữ ký yêu cầu hai chữ ký và giá trị đầu tiên trên ngăn xếp là một giá trị giữ chỗ cho một lỗi kỳ lạ trong hoạt động CHECKMULTISIG.` // It's a multisig script requiring two signatures, and the first value on the stack is a placeholder for a quirk in the CHECKMULTISIG operation.
+        spoiler: `Đó là một lệnh (script) đa chữ ký yêu cầu hai chữ ký và giá trị đầu tiên trên ngăn xếp là một giá trị giữ chỗ cho một lỗi kỳ lạ trong hoạt động CHECKMULTISIG.` // It's a multisig script requiring two signatures, and the first value on the stack is a placeholder for a quirk in the CHECKMULTISIG operation.
       },
       opcodes_nine: {
         timelock_heading: 'Các opcode khóa thời gian', // Timelock opcodes
