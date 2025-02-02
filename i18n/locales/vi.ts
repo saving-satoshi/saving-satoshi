@@ -628,34 +628,34 @@ const translations = {
           'Xem liệu chúng ta có thể chống lại BitRey không với cải thiện mới trong chiến lược chia sẻ nonce của chúng ta.', // Let’s see if we stand a chance against BitRey now with our improved strategy of dividing the nonce space.
       step_two_heading: 'Bạn đã thành công rồi!', // You did it!
       step_two_paragraph_one:
-          'Cùng nhau, bạn và các máy(thợ) đào khác đã ngăn chặn được nỗ lực chiếm lĩnh mạng lưới của BitRey.',       // Together you and the other miners held back BitRey’s attempt to overtake the network.
+          'Cùng nhau, bạn và các thợ đào khác đã ngăn chặn được nỗ lực chiếm lĩnh mạng lưới của BitRey.',       // Together you and the other miners held back BitRey’s attempt to overtake the network.
     },
 
     split_one: {
-      title: 'Chia sẻ phần thưởng', // Splitting Rewards
-      nav_title: 'Chia sẻ công bằng', // Splitting the fair share
-      heading: 'Làm tốt!', // Nicely done.
+      title: 'Chia phần thưởng', // Splitting Rewards
+      nav_title: 'Phân chia công bằng', // Splitting the fair share
+      heading: 'Làm tốt lắm!', // Nicely done.
       paragraph_one:
-          'Bạn không chỉ bảo vệ mạng lưới khỏi BitRey mà còn kiếm được bitcoin làm phần thưởng!',       // Not only did you defend the network against BitRey, you also earned bitcoin as a reward!
+          'Bạn không chỉ bảo vệ mạng lưới Bitcoin khỏi BitRey mà còn được thưởng bitcoin!', // Not only did you defend the network against BitRey, you also earned bitcoin as a reward!
       paragraph_two:
-          'Đối với mỗi khối được khai thác(đào) khối, máy(thợ) đào nhận được phần thưởng bằng bitcoin. Nếu nhiều người hơn một người đã làm việc trên khối, nhóm máy(thợ) đào (pool khai thác(đào) khối) sẽ nhận được một phần thưởng để chia sẻ.',       // For every block that is mined, the miner gets a reward in bitcoin. If more than one person worked on the block, the group of miners (mining pool) gets a reward to share.
+          'Đối với mỗi khối được khai thác(đào), thợ đào sẽ nhận được phần thưởng bằng bitcoin. Nếu nhiều người cùng khai thác 1 khối, nhóm thợ đào(pool) sẽ chia sẻ phần thưởng đó.', // For every block that is mined, the miner gets a reward in bitcoin. If more than one person worked on the block, the group of miners (mining pool) gets a reward to share.
       paragraph_three: 'Phần thưởng này bao gồm hai thứ:', // This reward is made up of two things:
       list_one: 'phí cho tất cả các giao dịch trong khối', // fees for all the transactions in the block
       list_two: 'trợ cấp khối', // the block subsidy
       paragraph_four:
-          'Bạn và những người bạn máy(thợ) đào của mình đã kiếm được tổng cộng 7,41 bitcoin và đang tìm kiếm một cách tốt để chia sẻ nó. Nó nên được chia dựa trên lượng công việc mà mỗi người đã thực hiện.',       // You and your miner friends have earned a total of 7.41 bitcoin and are looking for a good way to split it up. It should be divided based on how much work each of you put in.
+          'Bạn và những người bạn (thợ đào) của mình đã kiếm được tổng cộng 7,41 bitcoin và đang tìm kiếm cách tốt và hợp lý nhất để chia phần thưởng này. Nó nên được chia dựa trên lượng công việc mà mỗi người đã thực hiện.',       // You and your miner friends have earned a total of 7.41 bitcoin and are looking for a good way to split it up. It should be divided based on how much work each of you put in.
       paragraph_five:
-          'Các pool khai thác(đào) khối giải quyết vấn đề này bằng cách theo dõi số lượng giải pháp một phần mà mỗi máy(thợ) đào đã tạo ra. Một pool gán cho mỗi máy(thợ) đào một độ khó tối thiểu (thấp hơn độ khó của khối) dựa trên sức mạnh mã hóa của họ. Cứ sau vài giây, một máy(thợ) đào sẽ tìm thấy một trong những giải pháp dễ dàng hơn đó và thông báo cho pool. Sau đó, pool theo dõi tất cả các cổ phần đã gửi và chia phần thưởng khối tương ứng.',       // Mining pools solve this problem by tracking how many partial solutions each miner has generated. A pool assigns each miner a minimum difficulty (lower than the block difficulty) based on their hash power. Every few seconds a miner finds one of those easier solutions and notifies the pool. The pool then tracks all the submitted shares and splits up the block rewards accordingly.
-      paragraph_six: 'Hãy cùng xem điều này trong hành động.', // Let’s take a look at this in action.
+          'Các pool khai thác khối giải quyết vấn đề này bằng cách theo dõi số lượng phần trăm giải pháp cung cấp tạo ra trên mỗi thợ đào. Một pool gán cho mỗi thợ(máy) đào một độ khó tối thiểu (thấp hơn độ khó của khối) dựa trên sức mạnh mã hóa của họ. Cứ sau vài giây, một máy(thợ) đào sẽ dễ dàng tìm thấy một trong những giải pháp đó hơn và thông báo cho pool. Sau đó, pool theo dõi tất cả các phần của giải pháp đã gửi và chia phần thưởng tương ứng.', // Mining pools solve this problem by tracking how many partial solutions each miner has generated. A pool assigns each miner a minimum difficulty (lower than the block difficulty) based on their hash power. Every few seconds a miner finds one of those easier solutions and notifies the pool. The pool then tracks all the submitted shares and splits up the block rewards accordingly.
+      paragraph_six: 'Hãy cùng xem điều này qua hành động nhé.', // Let’s take a look at this in action.
     },
 
     split_two: {
       title: 'Chia sẻ phần thưởng', // Splitting Rewards
-      nav_title: 'Tính toán phần thưởng', // Calculating rewards
-      step_zero_heading: 'Hãy xem xét lại nỗ lực của mọi người', // Let’s review everyone’s efforts
+      nav_title: 'Tính toán số phần thưởng', // Calculating rewards
+      step_zero_heading: 'Hãy xem lại nỗ lực của mọi người', // Let’s review everyone’s efforts
       step_zero_paragraph:
-          'Chúng tôi sẽ chạy lại trận chiến. Lần này chúng ta chỉ tập trung vào pool của chúng tôi, cụ thể là số lượng giải pháp một phần mà mỗi máy(thợ) đào tìm thấy.',       // We will re-run the battle. This time we will only focus on the number of partial solutions each miner found.
-      step_two_heading: 'Hãy tính toán', // Let’s do the math
+          'Chúng ta sẽ lập lại trận chiến này. Lần này chỉ tập trung vào pool của chúng ta, cụ thể là số lượng phần trăm giải pháp của mỗi máy(thợ) đào tìm thấy.', // We will re-run the battle. This time we will only focus on the number of partial solutions each miner found.
+      step_two_heading: 'Hãy tính toán nào', // Let’s do the math
       step_two_paragraph:
           'Hãy xem xét các con số ở trên và xem liệu bạn có thể tìm ra một cách công bằng để chia sẻ phần thưởng. Bạn đã tìm ra chưa? Hãy cùng xem xét từng bước.',       // Take a look at the numbers above and see if you can find a fair way to split up the rewards. Figured it out? Let’s go over it step by step.
       step_three_heading: 'Tỷ lệ phần trăm sức mạnh mã hóa', // Hash rate percentage
