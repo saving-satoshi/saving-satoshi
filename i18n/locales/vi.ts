@@ -429,7 +429,7 @@ const translations = {
 
     mining_one: {
       title: 'Vào mỏ', // Into the mine
-      nav_title: 'Khai thác (đào) các khối dữ liệu', // Mining blocks
+      nav_title: 'Khai thác(đào) các khối dữ liệu', // Mining blocks
       heading_one: 'Chúng ta đã biết cách khai thác(đào) khối, bây giờ hãy xem nó hoạt động như thế nào', // Now that we know how mining works, let’s see it in action
       heading_two: 'Bạn đang khai thác(đào) khối (đào)', // You’re mining now
       heading_three: 'Làm tốt lắm!', // Nice work!
@@ -499,7 +499,7 @@ const translations = {
         spoiler: "Thử nhập thứ gì đó bắt đầu bằng chữ cái 's'.", // Try something starting with the letter 's'.
       },
       hashing_six: {
-        collision_resistance_heading: 'SHA256 và sự kháng cự', // SHA256 and collision resistance
+        collision_resistance_heading: 'SHA256 và khả năng chống lặp dữ liệu', // SHA256 and collision resistance
         collision_resistance_paragraph:
             "SHA-256 trả về một giá trị mã hóa 256 bit (64 ký tự), là một biểu diễn duy nhất của dữ liệu đầu vào. Nó thuộc họ các hàm mã hóa dựa trên cấu trúc Merkle–Damgård, một phương pháp để xây dựng các hàm mã hóa từ các hàm nén đơn giản hơn. Trong cấu trúc này, thông điệp đầu vào được chia thành các khối có kích thước cố định và một cơ chế liên kết tuần hoàn xử lý các khối này, kết hợp đầu ra của mỗi khối với kết quả của khối trước đó. Quá trình này tiếp tục cho đến khi toàn bộ thông điệp được xử lý, tạo ra giá trị mã hóa cuối cùng. Các thuộc tính bảo mật cao và khả năng kháng cự của SHA-256 trở thành nền móng của tính toàn vẹn dữ liệu và tính xác thực trong mật mã học hiện đại.",         // SHA-256 returns a 256-bit (64-characters) hash value, which is a unique representation of the input data. It belongs to the family of hash functions based on the Merkle–Damgård construction, a method for building hash functions from simpler compression functions. In this construction, the input message is divided into fixed-size blocks, and a chaining mechanism iteratively processes these blocks, combining each block's output with the result of the previous block. This process continues until the entire message is processed, producing the final hash value. SHA-256's robust security properties and collision resistance make it a cornerstone of data integrity and authentication in modern cryptography.
         tip: 'Không có gợi ý trong bài học này, từ nay khi bạn tiếp tục chương trình Saving Satoshi, chúng tôi sẽ ít hỗ trợ hơn để bạn tự tìm ra giải pháp cho vấn đề trong bài học.', // No real tips in this lesson, as you continue in Saving Satoshi we will hold your hand less and less and let you find the solution on your own.
@@ -521,9 +521,9 @@ const translations = {
             'Nhớ ghi lại câu trả lời của bạn bằng <span className="p-1 font-mono bg-[#0000004D] m-1">console.log()</span> hoặc <span className="p-1 font-mono bg-[#0000004D] m-1">print()</span>. Đây là cách duy nhất chương trình (IDE) của chúng tôi xác thực câu trả lời của bạn.', //Remember to log your answer with <span className="p-1 font-mono bg-[#0000004D] m-1">console.log()</span> or <span className="p-1 font-mono bg-[#0000004D] m-1">print()</span>. It is the only way our IDE will try to validate your answer.
       },
       mining_one: {
-        mining_heading: 'Khai thác (đào)', // Mining
+        mining_heading: 'Khai thác(đào)', // Mining
         mining_paragraph:
-            "Khai thác (đào) là nơi tất cả các khái niệm này kết hợp lại. Khai thác (đào) Bitcoin là quá trình tạo ra bitcoin mới và thêm các giao dịch vào chuỗi khối dữ liệu Bitcoin (Bitcoin blockchain). máy(thợ) đào cạnh tranh với nhau để giải các câu đố toán học phức tạp bằng cách tìm ra một 'nonce' duy nhất, và hợp lệ trong mỗi khối giao dịch. Quá trình kiểm chứng bằng công việc  (proof-of-work) này đòi hỏi sức mạnh tính toán và năng lượng đáng kể, sử dụng năng lượng này để xác thực các giao dịch một cách bảo mật an toàn và phi tập trung (không qua trung gian). máy(thợ) đào thành công trong quy trình được thưởng bằng chính bitcoin mới được khai thác(đào) khối cộng thêm phí trả từ người tham gia giao dịch, đồng thời máy(thợ) đào đóng một vai trò quan trọng trong việc duy trì tính toàn vẹn của mạng lưới bitcoin.", // Mining is where these concepts all come together. Bitcoin mining is the process by which new bitcoins are created and transactions are added to the blockchain. Miners compete to solve complex mathematical puzzles by finding a unique, valid 'nonce' in each block of transactions. This proof-of-work process demands significant computational power and energy, making it a secure and decentralized way to validate transactions. Successful miners are rewarded with newly minted bitcoins and transaction fees, and they play a critical role in maintaining the integrity of the bitcoin network.
+            "Khai thác(đào) là nơi tất cả các khái niệm này kết hợp lại. Khai thác(đào) Bitcoin là quá trình tạo ra bitcoin mới và thêm các giao dịch vào chuỗi khối dữ liệu Bitcoin (Bitcoin blockchain). máy(thợ) đào cạnh tranh với nhau để giải các câu đố toán học phức tạp bằng cách tìm ra một 'nonce' duy nhất, và hợp lệ trong mỗi khối giao dịch. Quá trình kiểm chứng bằng công việc  (proof-of-work) này đòi hỏi sức mạnh tính toán và năng lượng đáng kể, sử dụng năng lượng này để xác thực các giao dịch một cách bảo mật an toàn và phi tập trung (không qua trung gian). máy(thợ) đào thành công trong quy trình được thưởng bằng chính bitcoin mới được khai thác(đào) khối cộng thêm phí trả từ người tham gia giao dịch, đồng thời máy(thợ) đào đóng một vai trò quan trọng trong việc duy trì tính toàn vẹn của mạng lưới bitcoin.", // Mining is where these concepts all come together. Bitcoin mining is the process by which new bitcoins are created and transactions are added to the blockchain. Miners compete to solve complex mathematical puzzles by finding a unique, valid 'nonce' in each block of transactions. This proof-of-work process demands significant computational power and energy, making it a secure and decentralized way to validate transactions. Successful miners are rewarded with newly minted bitcoins and transaction fees, and they play a critical role in maintaining the integrity of the bitcoin network.
         difficulty_heading: 'Độ khó', // Difficulty
         difficulty_paragraph:
             'Độ khó trong khai thác(đào) khối là yếu tố duy trì công suất trung bình khai thác(đào) khối (dữ liệu) ở mức 10 phút một khối mới.', // The mining difficulty is what allows the block to remain at an average of 10 minutes between each new block.
@@ -650,21 +650,21 @@ const translations = {
     },
 
     split_two: {
-      title: 'Chia sẻ phần thưởng', // Splitting Rewards
+      title: 'Chia phần thưởng', // Splitting Rewards
       nav_title: 'Tính toán số phần thưởng', // Calculating rewards
-      step_zero_heading: 'Hãy xem lại nỗ lực của mọi người', // Let’s review everyone’s efforts
+      step_zero_heading: 'Hãy xem lại công sức nỗ lực của mọi người tham gia', // Let’s review everyone’s efforts
       step_zero_paragraph:
-          'Chúng ta sẽ lập lại trận chiến này. Lần này chỉ tập trung vào pool của chúng ta, cụ thể là số lượng phần trăm giải pháp của mỗi máy(thợ) đào tìm thấy.', // We will re-run the battle. This time we will only focus on the number of partial solutions each miner found.
-      step_two_heading: 'Hãy tính toán nào', // Let’s do the math
+          'Chúng ta xem lại trận chiến này. Lần này chỉ tập trung vào pool của chúng ta, cụ thể là số phần trăm giải pháp mã hóa được tìm thấy tương ứng của mỗi máy(thợ) đào.', // We will re-run the battle. This time we will only focus on the number of partial solutions each miner found.
+      step_two_heading: 'Hãy làm phép tính nào', // Let’s do the math
       step_two_paragraph:
-          'Hãy xem xét các con số ở trên và xem liệu bạn có thể tìm ra một cách công bằng để chia sẻ phần thưởng. Bạn đã tìm ra chưa? Hãy cùng xem xét từng bước.',       // Take a look at the numbers above and see if you can find a fair way to split up the rewards. Figured it out? Let’s go over it step by step.
-      step_three_heading: 'Tỷ lệ phần trăm sức mạnh mã hóa', // Hash rate percentage
+          'Hãy đánh giá các số liệu ở trên và xem liệu bạn có thể tìm ra một cách công bằng để chia phần thưởng. Bạn đã tìm ra chưa? Cùng xem xét qua từng bước.',  // Take a look at the numbers above and see if you can find a fair way to split up the rewards. Figured it out? Let’s go over it step by step.
+      step_three_heading: 'Tỷ lệ (phần trăm) sức mạnh mã hóa', // Hash rate percentage
       step_three_paragraph:
-          'Như bạn đã biết, đây đại diện cho lượng công việc mà mỗi máy(thợ) đào đã đóng góp để tìm kiếm các khối. Nhưng pool khai thác(đào) khối không có cách nào để biết hoặc đo lường số này, vì máy(thợ) đào chỉ chuyển tiếp các giải pháp thành công.',       // As you know, this represents the amount of work every miner has chipped in to find blocks. But the mining pool has no way of knowing or measuring this number, since miners only forward successful solutions.
-      step_four_heading: 'Tỷ lệ phần trăm khối được tìm thấy', // Block found percentage
+          'Như bạn đã biết, đây đại diện cho lượng công việc mà mỗi máy(thợ) đào đã đóng góp để tìm kiếm các khối. Nhưng mỏ khai thác(pool) khối không có cách nào để biết hoặc đo lường số này, vì máy(thợ) đào chỉ chuyển tiếp các giải pháp thành công.',       // As you know, this represents the amount of work every miner has chipped in to find blocks. But the mining pool has no way of knowing or measuring this number, since miners only forward successful solutions.
+      step_four_heading: 'Tỷ lệ (phần trăm) khối được tìm thấy', // Block found percentage
       step_four_paragraph:
           'Khả năng tìm thấy một khối rất thấp vì nó có rất nhiều liên quan đến may mắn. Đặc biệt trong các kịch bản với một số máy(thợ) đào cực kỳ mạnh, các máy(thợ) đào thực sự nhỏ có thể đóng góp công việc nhưng không bao giờ tìm thấy bất kỳ khối nào.',       // The chance of finding a block is very low since it has a lot to do with luck. Especially in scenarios with some extremely powerful miners, the really small miners may contribute work but never find any blocks. 
-      step_five_heading: 'Tỷ lệ phần trăm giải pháp một phần', // Partial solution percentage
+      step_five_heading: 'Tỷ lệ (phần trăm) giải pháp một phần', // Partial solution percentage
       step_five_paragraph:
           'Bây giờ con số này sẽ hoạt động. Các máy(thợ) đào báo cáo các giải pháp này cho các vấn đề dễ dàng hơn thường xuyên cho các pool. Điều đó cho phép các pool đo lường khá chính xác lượng công việc mà mỗi máy(thợ) đào đã cung cấp.',       // Now this number will work. Miners report these solutions to easier problems regularly to pools. That allows pools to measure fairly accurately how much work each miner has provided.
       step_six_heading: 'Chia sẻ phần thưởng', // Splitting the rewards
