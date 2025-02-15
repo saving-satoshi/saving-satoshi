@@ -593,7 +593,7 @@ const translations = {
     coop_one: {
       title: 'Liên minh chống lại BitRey', // Coop vs. BitRey
       nav_title: 'Có điều gì đó không ổn', // Something went wrong
-      heading: 'Có điều gì đó không ổn.', // Something is not quite right yet.
+      heading: 'Có điều gì đó không đúng.', // Something is not quite right yet.
       paragraph_one:
           'Hashrate Hoppers, người có sức mạnh mã hóa lớn nhất, đang khai thác tất cả các khối nhưng những người khác thì không.',  // Hashrate Hoppers, the one with the most hash power, is finding all your blocks but others find nothing.
       paragraph_two:
@@ -660,26 +660,26 @@ const translations = {
           'Hãy đánh giá các số liệu ở trên và xem liệu bạn có thể tìm ra một cách công bằng để chia phần thưởng. Bạn đã tìm ra chưa? Cùng xem xét qua từng bước.',  // Take a look at the numbers above and see if you can find a fair way to split up the rewards. Figured it out? Let’s go over it step by step.
       step_three_heading: 'Tỷ lệ (phần trăm) sức mạnh mã hóa', // Hash rate percentage
       step_three_paragraph:
-          'Như bạn đã biết, đây đại diện cho lượng công việc mà mỗi máy(thợ) đào đã đóng góp để tìm kiếm các khối. Nhưng mỏ khai thác(pool) khối không có cách nào để biết hoặc đo lường số này, vì máy(thợ) đào chỉ chuyển tiếp các giải pháp thành công.',       // As you know, this represents the amount of work every miner has chipped in to find blocks. But the mining pool has no way of knowing or measuring this number, since miners only forward successful solutions.
+          'Như đã biết, đây đại diện cho lượng công việc mà mỗi máy(thợ) đào đã đóng góp để tìm ra các khối. Nhưng mỏ khai thác(pool) khối không có cách nào để biết hoặc đo lường số này, vì máy(thợ) đào chỉ chuyển tiếp các giải pháp thành công.',       // As you know, this represents the amount of work every miner has chipped in to find blocks. But the mining pool has no way of knowing or measuring this number, since miners only forward successful solutions.
       step_four_heading: 'Tỷ lệ (phần trăm) khối được tìm thấy', // Block found percentage
       step_four_paragraph:
-          'Khả năng tìm thấy một khối rất thấp vì nó có rất nhiều liên quan đến may mắn. Đặc biệt trong các kịch bản với một số máy(thợ) đào cực kỳ mạnh, các máy(thợ) đào thực sự nhỏ có thể đóng góp công việc nhưng không bao giờ tìm thấy bất kỳ khối nào.',       // The chance of finding a block is very low since it has a lot to do with luck. Especially in scenarios with some extremely powerful miners, the really small miners may contribute work but never find any blocks. 
-      step_five_heading: 'Tỷ lệ (phần trăm) giải pháp một phần', // Partial solution percentage
+          'Khả năng tìm thấy một khối rất thấp vì có rất nhiều yếu tố liên quan đến may mắn. Đặc biệt trong các kịch bản với một số máy(thợ) đào cực kỳ mạnh, các máy(thợ) đào thực sự nhỏ có thể đóng góp công việc nhưng không bao giờ tìm thấy bất kỳ khối nào.',       // The chance of finding a block is very low since it has a lot to do with luck. Especially in scenarios with some extremely powerful miners, the really small miners may contribute work but never find any blocks. 
+      step_five_heading: 'Tỷ lệ (phần trăm) một phần giải pháp', // Partial solution percentage
       step_five_paragraph:
-          'Bây giờ con số này sẽ hoạt động. Các máy(thợ) đào báo cáo các giải pháp này cho các vấn đề dễ dàng hơn thường xuyên cho các pool. Điều đó cho phép các pool đo lường khá chính xác lượng công việc mà mỗi máy(thợ) đào đã cung cấp.',       // Now this number will work. Miners report these solutions to easier problems regularly to pools. That allows pools to measure fairly accurately how much work each miner has provided.
+          'Bây giờ con số này sẽ hoạt động. Các máy(thợ) đào báo cáo các giải pháp mã hóa dễ dàng và thường xuyên hơn cho các mỏ(pool). Điều đó cho phép các mỏ(pool) đo lường khá chính xác lượng kết quả công việc của mỗi máy(thợ) đào đã cung cấp.', // Now this number will work. Miners report these solutions to easier problems regularly to pools. That allows pools to measure fairly accurately how much work each miner has provided.
       step_six_heading: 'Chia sẻ phần thưởng', // Splitting the rewards
       step_six_paragraph:
-          'Bây giờ chúng ta có thể lấy phần thưởng 7,41 bitcoin và chia chúng theo tỷ lệ phần trăm các giải pháp một phần của mỗi pool. Chúc mừng!',       // Now we can take the rewards of 7.41 bitcoin and split them up according to the percentage of partial solutions of each pool. Congratulations!
+          'Bây giờ chúng ta có thể lấy phần thưởng 7,41 bitcoin và chia theo tỷ lệ (phần trăm) một phần giải pháp của mỗi mỏ(pool). Xin chúc mừng!',// Now we can take the rewards of 7.41 bitcoin and split them up according to the percentage of partial solutions of each pool. Congratulations!
     },
 
     outro_one: {
       title: 'Phần kết ', // Outro
-      nav_title: 'Chương hoàn thành', // Chapter complete
+      nav_title: 'Hoàn thành chương', // Chapter complete
       heading: 'Hạ gục Vanderpoole!', // Take that, Vanderpoole! 
       paragraph_one:
-          'Tuyệt vời! Bạn và các máy(thợ) đào khác đã có thể đẩy lùi cuộc tấn công 51% của Vanderpoole bằng cách hợp lực tài nguyên của mình. Các khối trống không còn được gửi nữa và có vẻ như ông ta đã từ bỏ.',       // Great work! You and the other miners were able to fend off Vanderpoole’s 51% attack by pooling your resources. Empty blocks are no longer being submitted and it looks like he’s given up.
+          'Tuyệt vời! Bạn và các máy(thợ) đào khác đã có thể đẩy lùi cuộc tấn công 51% của Vanderpoole bằng cách hợp lực tài nguyên của mình. Các khối trống không còn được gửi nữa và có vẻ như ông ta đã từ bỏ âm mưumưu.', // Great work! You and the other miners were able to fend off Vanderpoole’s 51% attack by pooling your resources. Empty blocks are no longer being submitted and it looks like he’s given up.
       paragraph_two:
-          'Đã đến lúc gặt hái phần thưởng của bạn! Chuyển đến chương tiếp theo để rút bitcoin của bạn.',       // It’s time to reap your rewards! Go to the next chapter to withdraw your bitcoin.
+          'Đã đến lúc gặt hái phần thưởng của bạn! Chuyển sang chương tiếp theo để rút bitcoin của bạn.', // It’s time to reap your rewards! Go to the next chapter to withdraw your bitcoin.
     },
     resources: {
       solo: {
@@ -688,9 +688,9 @@ const translations = {
             "Tốc độ mã hóa của một máy(thợ) đào riêng lẻ đề cập đến sức mạnh tính toán mà họ đóng góp cho quá trình khai thác(đào) khối mạng lưới bitcoin. Đó là tốc độ mà phần cứng khai thác(đào) khối của họ có thể thực hiện các phép tính toán cần thiết để cố gắng khai thác(đào) khối các khối mới. Tốc độ mã hóa của một máy(thợ) đào riêng lẻ thường được đo bằng số mã hóa mỗi giây hoặc ở quy mô terahash, một nghìn tỷ mã hóa mỗi giây (TH/s), tùy thuộc vào quy mô hoạt động khai thác(đào) khối của họ và khả năng của phần cứng khai thác(đào) khối của họ.",         // An individual miner's hashrate refers to the computational power they contribute to the bitcoin network's mining process. It is the rate at which their mining hardware can perform the necessary mathematical calculations to attempt to mine new blocks. The hashrate of an individual miner is typically measured in hashes per second, or at scale in terahashes, one-trillion hashes per second (TH/s), depending on the scale of their mining operation and the capabilities of their mining hardware.
       },
       pool: {
-        pool_heading: 'Pool khai thác(đào) khối', // Mining Pool
+        pool_heading: 'Mỏ(pool) khai thác khối', // Mining Pool
         pool_paragraph:
-            'Pool khai thác(đào) khối đóng một vai trò quan trọng trong việc khai thác(đào) khối tiền mã hóa, mang lại một số lợi ích chính cho các máy(thợ) đào cá nhân. Bằng cách tập hợp sức mạnh tính toán và tài nguyên của nhiều người tham gia, các pool khai thác(đào) khối tăng cường cơ hội khai thác(đào) khối thành công các khối mới, dẫn đến thu nhập dự đoán và nhất quán hơn. Chúng cũng cung cấp một nền tảng cho các máy(thợ) đào để truy cập vào thiết bị khai thác(đào) khối tiên tiến và hỗ trợ chuyên gia, giảm bớt rào cản gia nhập và san bằng sân chơi. Hơn nữa, các pool khai thác(đào) khối giúp phân phối phần thưởng hiệu quả, đảm bảo rằng các máy(thợ) đào nhận được phần thưởng công bằng cho những đóng góp của họ, làm cho việc khai thác(đào) khối tiền mã hóa trở nên dễ tiếp cận, ổn định và mang lại lợi nhuận tài chính cho một cộng đồng người tham gia rộng lớn hơn.',         // A mining pool plays a pivotal role in cryptocurrency mining, offering several key benefits to individual miners. By pooling together the computational power and resources of many participants, mining pools enhance the chances of successfully mining new blocks, resulting in more predictable and consistent earnings. They also provide a platform for miners to access advanced mining equipment and expert support, reducing barriers to entry and leveling the playing field. Furthermore, mining pools help distribute rewards efficiently, ensuring that miners receive their fair share for their contributions, making cryptocurrency mining accessible, stable, and financially rewarding for a broader community of participants.
+            'Mỏ(pool) khai thác khối đóng một vai trò quan trọng trong việc khai thác(đào) khối tiền mã hóa, mang lại một số lợi ích chính cho các máy(thợ) đào cá nhân. Bằng cách tập hợp sức mạnh tính toán và tài nguyên của nhiều người tham gia, các pool khai thác(đào) khối tăng cường cơ hội khai thác(đào) khối thành công các khối mới, dẫn đến thu nhập dự đoán và nhất quán hơn. Chúng cũng cung cấp một nền tảng cho các máy(thợ) đào để truy cập vào thiết bị khai thác(đào) khối tiên tiến và hỗ trợ chuyên gia, giảm bớt rào cản gia nhập và san bằng sân chơi. Hơn nữa, các pool khai thác(đào) khối giúp phân phối phần thưởng hiệu quả, đảm bảo rằng các máy(thợ) đào nhận được phần thưởng công bằng cho những đóng góp của họ, làm cho việc khai thác(đào) khối tiền mã hóa trở nên dễ tiếp cận, ổn định và mang lại lợi nhuận tài chính cho một cộng đồng người tham gia rộng lớn hơn.',         // A mining pool plays a pivotal role in cryptocurrency mining, offering several key benefits to individual miners. By pooling together the computational power and resources of many participants, mining pools enhance the chances of successfully mining new blocks, resulting in more predictable and consistent earnings. They also provide a platform for miners to access advanced mining equipment and expert support, reducing barriers to entry and leveling the playing field. Furthermore, mining pools help distribute rewards efficiently, ensuring that miners receive their fair share for their contributions, making cryptocurrency mining accessible, stable, and financially rewarding for a broader community of participants.
       },
       coop: {
         distribution_heading: 'Phân phối công việc', // Job Distribution
