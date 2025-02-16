@@ -599,7 +599,7 @@ const translations = {
          'Ôi trời, chúng ta không có đủ sức mạnh mã hóa để cạnh tranh với BitRey và các máy(thợ) đào bị nhiễm virus. Hãy xem liệu chúng ta có thể đánh bại BitRey trong 100 khối tiếp theo kết hợp cùng với các máy(thợ) đào khác hay không. Mạng Bitcoin đã hoạt động được hơn một thế kỷ và sẽ không dễ bị ngừng lại khi bị tấn côngcông.', // Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled miners. Let’s see if we can defeat BitRey for the next 100 blocks with the other miners. Bitcoin has been running for over a century and it’s not going down without a fight.
     },
 
-    pool_one: {
+    mỏ_one: {
       title: 'Mỏ khai thác(pool) chống lại BitRey', // Pool vs. BitRey
       nav_title: 'Tìm kiếm đồng minh', // Finding friends
       waiting_screen_heading: 'Chúng ta cần sự hỗ trợ!', // We need support!
@@ -610,7 +610,7 @@ const translations = {
       continue_button: "Đi nào", // Let’s go
     },
 
-    pool_two: {
+    mỏ_two: {
       title: 'Mỏ khai thác(pool) chống lại BitRey', // Pool vs. BitRey
       nav_title: 'Khai thác(đào) cùng nhau', // Mining together
       step_zero_heading: 'Bắt đầu', // Here we go
@@ -1128,11 +1128,11 @@ const translations = {
       label_one: 'Dán giá trị R', // Paste the R value
       label_two: 'Dán giá trị S', // Paste the S value
       paragraph_one:
-          "Chữ ký của Satoshi được mã hóa trong một hệ thống gọi là DER, là một tập con của ASN.1.", // Satoshi's signature is encoded in a system called DER which is a subset of ASN.1.
+   "Chữ ký của Satoshi được mã hóa trong một hệ thống gọi là DER, là một tập con của ASN.1.", // Satoshi's signature is encoded in a system called DER which is a subset of ASN.1.
       paragraph_two:
-          'Chúng ta cần trích xuất hai số 32 byte. Chúng được gọi tương ứng là R và S và mỗi số đều được thêm tiền tố 0220 trong chuỗi DER. Thay vì giải mã hoàn toàn khối DER, chỉ cần tìm các tiền tố và dán các giá trị R và S.', // There are two 32-byte numbers we need to extract. They are referred to as R and S respectively and are each prefixed by the bytes 0220 in the DER sequence. Instead of fully decoding the DER blob, just look for the prefixes and paste the R and S values.
+   'Chúng ta cần trích xuất hai số 32 byte. Chúng được gọi tương ứng là R và S và mỗi số đều được thêm tiền tố 0220 trong chuỗi DER. Thay vì giải mã hoàn toàn khối DER, chỉ cần tìm các tiền tố và dán các giá trị R và S.', // There are two 32-byte numbers we need to extract. They are referred to as R and S respectively and are each prefixed by the bytes 0220 in the DER sequence. Instead of fully decoding the DER blob, just look for the prefixes and paste the R and S values.
       paragraph_three:
-          "# Chữ ký của Satoshi, từ scriptSig đầu vào của giao dịch đến Hal Finney (khối 170)", // # Satoshi's signature, from the input scriptSig of the tx to Hal Finney (block 170)
+   "# Chữ ký của Satoshi, từ scriptSig đầu vào của giao dịch đến Hal Finney (khối 170)", // # Satoshi's signature, from the input scriptSig of the tx to Hal Finney (block 170)
     },
     verify_signature_four: {
       nav_title: 'Giải mã khóa chung', // Decode the public key
@@ -3102,7 +3102,7 @@ const translations = {
     refund_0:
        'Giao dịch này đảm bảo rằng tiền không bị mất nếu Laszlo biến mất.', //  'This transaction ensures funds are not lost if Laszlo disappears.'
     refund_1:
-        'Giao dịch này đảm bảo rằng tiền không bị mất nếu Laszlo biến mất. Nó cũng đảm bảo với Laszlo rằng bạn sẽ không phát sóng nó sau khi trả tiền bia.', //'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer.'
+ 'Giao dịch này đảm bảo rằng tiền không bị mất nếu Laszlo biến mất. Nó cũng đảm bảo với Laszlo rằng bạn sẽ không phát sóng nó sau khi trả tiền bia.', //'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer.'
     refund_2:
        'Giao dịch này đảm bảo rằng tiền không bị mất nếu Laszlo biến mất. Nó cũng ngăn bạn yêu cầu hoàn tiền đầy đủ ngay lập tức sau khi trả tiền bia. Nếu bạn cố gắng lấy lại toàn bộ khoản hoàn tiền, bao gồm cả 1.000 satoshi đã sử dụng để trả tiền bia, thì thời gian trễ 700 khối sẽ cho Laszlo vài ngày để nhận thấy.', // 'This transaction ensures funds are not lost if Laszlo disappears. It also prevents you from claiming the funds immediately after paying for your beer. If you try to take a full refund, including the 1,000 satoshis used to pay for the beer, the 700 block delay gives Laszlo a few days to notice.'
     commitment_you:
