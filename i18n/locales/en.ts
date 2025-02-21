@@ -2738,7 +2738,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_one: `Since “Satoshi” initially reached out, you’ve only had to work with on-chain transactions. That’s how you claimed your mining rewards and how you transferred funds to Mika 3000. However, these on-chain transactions aren’t ideal for frequent, everyday use because block space is limited and miner fees can vary.`,
       paragraph_two: `How is it then, that people are able to use bitcoin daily in a way that is scalable? The answer is off-chain payments, something you have probably seen a million times: An orange cab ejecting its passengers and zooming off, someone buying dinner from a halal cart, a kid exiting a store with her holodog and a carton of digimilk. And so on. Money’s use cases are nearly infinite.`,
       paragraph_three: `While bitcoin isn’t designed to handle this much activity on its own, with off-chain payments, it can.`,
-      paragraph_four: `—YOU: “That’s not a problem at all, Mika 3000. I can handle it. I’ll prove it by using an off-chain payment to purchase a beer from Laszlo.”`,
+      paragraph_four: `—YOU: “That’s not a problem at all, Mika 3000. I can handle it. I’ll prove it by using an off-chain payment to purchase a Lightning Lemonade from Laszlo.”`,
     },
     opening_a_channel_one: {
       title: 'The initial funds',
@@ -2752,8 +2752,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       nav_title: 'The off-chain transaction',
       heading_one: 'The off-chain transaction',
       paragraph_one:
-        "Let's create a valid bitcoin transaction but instead of broadcasting it out to the network, we'll give it directly to Laszlo. In return, he should provide you with a beer because he can broadcast the transaction anytime he wants. Once it's confirmed and mined into a block, the money is his.",
-      paragraph_two: `Remember it's the year 2140! A <span className="italic">SHA-256 Stout</span> costs 0.00001000 BTC.`,
+        "Let's create a valid bitcoin transaction but instead of broadcasting it out to the network, we'll give it directly to Laszlo. In return, he should provide you with a Lightning Lemonade because he can broadcast the transaction anytime he wants. Once it's confirmed and mined into a block, the money is his.",
+      paragraph_two: `Remember it's the year 2140! A Lightning Lemonade costs 0.00001000 BTC.`,
       heading_two: 'Instructions',
       off_chain_list_one:
         'Fill in the two output amounts: 1000 satoshis to Laszlo in the first output, and the rest to yourself as change in the second output.',
@@ -2771,7 +2771,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     opening_a_channel_three: {
       title: 'Off-chain payment trust issue',
       nav_title: 'Off-chain payment trust issue',
-      paragraph_one: `—LASZLO: "Wait a minute, that doesn't make any sense–as long as I don't broadcast the transaction you can still spend those 101,000 sats. You could drink your beer, spend the money on something else, and I would get nothing!`,
+      paragraph_one: `—LASZLO: "Wait a minute, that doesn't make any sense–as long as I don't broadcast the transaction you can still spend those 101,000 sats. You could drink your Lightning Lemonade, spend the money on something else, and I would get nothing!`,
       paragraph_two: `If we're going to transact off-chain, I need a guarantee that the same money you are using to pay me off-chain cannot be moved by yourself on-chain."`,
     },
     opening_a_channel_four: {
@@ -2810,10 +2810,10 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       title: 'Securing payments',
       nav_title: 'Securing payments',
       paragraph_one: `—LASZLO: "OK, nice. I'll sign this and send it back to you, and then you can sign that funding transaction for the 2-of-2 multisig.`,
-      paragraph_two: `Hey... wait a minute. If I sign this, we're back where we started: You can broadcast this transaction even after I give you a beer, and I won't get my money.`,
+      paragraph_two: `Hey... wait a minute. If I sign this, we're back where we started: You can broadcast this transaction even after I give you a Lightning Lemonade, and I won't get my money.`,
       paragraph_three:
         'Before I sign this, I need a guarantee that this refund transaction can be revoked.',
-      paragraph_four: `Once you actually pay me for the beer, you shouldn't be able to broadcast this refund transaction. And if you DO try to broadcast it after it has been revoked, I get to keep <span className="italic">all</span> 100,000 satoshis!"`,
+      paragraph_four: `Once you actually pay me for the Lightning Lemonade, you shouldn't be able to broadcast this refund transaction. And if you DO try to broadcast it after it has been revoked, I get to keep <span className="italic">all</span> 100,000 satoshis!"`,
     },
     updating_the_state_three: {
       title: 'The revocation',
@@ -2886,11 +2886,11 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
         'While the channel is open, you and Laszlo can make offline payments to each other, back and forth, by negotiating new commitment transactions and revoking old ones. As you buy more drinks, your "refund" amount will go down and Laszlo’s portion of the original 100,000 satoshis locked in the multisig goes up.',
     },
     making_a_payment_two: {
-      title: 'Buy a beer!',
-      nav_title: 'Buy a beer!',
-      heading_one: 'Buy a beer!',
+      title: 'Buy a Lightning Lemonade!',
+      nav_title: 'Buy a Lightning Lemonade!',
+      heading_one: 'Buy a Lightning Lemonade!',
       paragraph_one: `Now it's finally time to send bitcoin off-chain to Laszlo. We will "simply" add a 1,000 satoshi output for him in an updated commitment transaction. We will also need to promise never to broadcast the old commitment transaction, which doesn't allocate any money to Laszlo. That is guaranteed when we send him the revocation key for the now old commitment transaction, which we'll do next.`,
-      paragraph_two: `You generate another revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span> for this new state. If you wanted to repeat the cycle and buy a second drink, you would revoke <span className="font-bold">this</span> transaction for another new commitment where Laszlo gets paid for a second beer. It is a party after all!`,
+      paragraph_two: `You generate another revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span> for this new state. If you wanted to repeat the cycle and buy a second drink, you would revoke <span className="font-bold">this</span> transaction for another new commitment where Laszlo gets paid for a second Lightning Lemonade. It is a party after all!`,
       heading_two: `Instructions`,
       list_one: `Deduct 1,000 satoshis from your output`,
       list_two: `Add 1000 satoshis to the second output and fill in the script for Laszlo`,
@@ -2907,15 +2907,15 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     making_a_payment_three: {
       title: `Laszlo's blockchain dilemma`,
       nav_title: `Laszlo's blockchain dilemma`,
-      paragraph_one: `Laszlo looks at this transaction for a second and grabs a glass from behind the bar but doesn't pour the beer.`,
-      paragraph_two: `—LASZLO: "Wait. If you don't sign this transaction, I have nothing. You could disappear with this beer, and I wouldn't be able to confirm anything on the chain. Maybe you should sign it first, then send it to me so we both have a copy?"`,
+      paragraph_one: `Laszlo looks at this transaction for a second and grabs a glass from behind the bar but doesn't pour the Lightning Lemonade.`,
+      paragraph_two: `—LASZLO: "Wait. If you don't sign this transaction, I have nothing. You could disappear with this Lightning Lemonade, and I wouldn't be able to confirm anything on the chain. Maybe you should sign it first, then send it to me so we both have a copy?"`,
     },
     making_a_payment_four: {
       title: `Holocat's trustless warning`,
       nav_title: `Holocat's trustless warning`,
       paragraph_one: `That's when Holocat materializes on the table, standing up on her hind legs with her front paws outstretched, and meows.`,
       paragraph_two: `—HOLOCAT: "Hang on, you can't give Laszlo your signature for this transaction! Next time you make a payment, you'll give him the revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>. He'll have everything he needs to steal all 100,000 satoshis!"`,
-      paragraph_three: `Things are getting a bit messy. Before he gives you a beer, Laszlo needs something to ensure he will get paid. But he can't have your transaction because then he'll have access to all your money! Laszlo is a great guy, and his bar is one of the best in the city, but it would be nice if we didn't have to trust him.`,
+      paragraph_three: `Things are getting a bit messy. Before he gives you a Lightning Lemonade, Laszlo needs something to ensure he will get paid. But he can't have your transaction because then he'll have access to all your money! Laszlo is a great guy, and his bar is one of the best in the city, but it would be nice if we didn't have to trust him.`,
     },
     making_a_payment_five: {
       title: `Asymmetry`,
@@ -2972,27 +2972,27 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
           '<span className="font-semibold">Output 1:</span> 98,000 sats to you',
         list_four: `<span className="font-semibold">Miner fees:</span> 1,000 sats`,
       },
-      paragraph_eight: `All three of these transactions are signed and valid, but Laszlo hasn't handed you a beer yet. Why not? Only one thing left to do, send Laszlo your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>!`,
+      paragraph_eight: `All three of these transactions are signed and valid, but Laszlo hasn't handed you a Lightning Lemonade yet. Why not? Only one thing left to do, send Laszlo your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>!`,
       success_bar: 'Send REVOCATION_YOU_1 to Laszlo',
     },
     making_a_payment_seven: {
-      title: `🍺 Ahhhhhhh, nice.`,
+      title: `🍋🍹 Ahhhhhhh, nice.`,
       nav_title: `Ahhhhhhh, nice.`,
-      paragraph_one: '🍺 Ahhhhhhh, nice.',
+      paragraph_one: '🍋🍹 Ahhhhhhh, nice.',
     },
     making_a_payment_eight: {
       title: `Make another payment`,
       nav_title: `Make another payment`,
       heading_one: `Make another payment`,
-      paragraph_one: `The night is still young, and you're not flying your Budgetcopter home. Got time for another beer? Now that you and Laszlo have your asymmetric transactions and a flow worked out with revocation keys, let's run the protocol again.`,
-      paragraph_two: `The two commitment transactions representing the current state where you have paid Laszlo 1,000 sats for a beer are on your ePhone Infinity screen.`,
+      paragraph_one: `The night is still young, and you're not flying your Budgetcopter home. Got time for another Lightning Lemonade? Now that you and Laszlo have your asymmetric transactions and a flow worked out with revocation keys, let's run the protocol again.`,
+      paragraph_two: `The two commitment transactions representing the current state where you have paid Laszlo 1,000 sats for a Lightning Lemonade are on your ePhone Infinity screen.`,
       heading_two: `Instructions`,
       list_one: `Update the amounts and output scripts for Laszlo's new commitment transaction`,
       list_two: "Sign Laszlo's transaction and send it to him",
       list_three: `Update your commitment transaction: Laszlo will revoke his last state by sending you <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">REVOCATION_LASZLO_1</span>. Update the amounts and output scripts in your commitment transaction.`,
       list_four: 'Send your transaction to Laszlo so he can sign it',
       list_five: `Once you have Laszlo's signature, send him your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_YOU_2 </span> `,
-      paragraph_three: 'Enjoy 🍺',
+      paragraph_three: 'Enjoy 🍋🍹',
       heading_three: 'Hints',
       paragraph_four: `Don't forget to set aside 1,000 sats for miner fees`,
       paragraph_five: 'Output 0 is spent by either:',
@@ -3070,9 +3070,9 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       refund_0:
         'This transaction ensures funds are not lost if Laszlo disappears.',
       refund_1:
-        'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer.',
+        'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your Lightning Lemonade.',
       refund_2:
-        'This transaction ensures funds are not lost if Laszlo disappears. It also prevents you from claiming the funds immediately after paying for your beer. If you try to take a full refund, including the 1,000 satoshis used to pay for the beer, the 700 block delay gives Laszlo a few days to notice.',
+        'This transaction ensures funds are not lost if Laszlo disappears. It also prevents you from claiming the funds immediately after paying for your Lightning Lemonade. If you try to take a full refund, including the 1,000 satoshis used to pay for the Lightning Lemonade, the 700 block delay gives Laszlo a few days to notice.',
       commitment_you:
         'This is the second commitment transaction for this payment channel, that pays Laszlo 1,000 sats',
       commitment_laszlo:
@@ -3082,7 +3082,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       output_zero_sig: 'Output 0 Signature',
       output_one_sig: 'Output 1 Signature',
       sats_distribution:
-        'Laszlo should receive enough sats for the beer, and is not responsible for the 1,000 sat miner fees. The fee comes out of your change.',
+        'Laszlo should receive enough sats for the Lightning Lemonade, and is not responsible for the 1,000 sat miner fees. The fee comes out of your change.',
       output_script:
         'The locking script on the output should not contain any signatures (i.e. <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base whitespace-nowrap">OP_PUSH SIG()</span>). If this is part of your script, simply remove it.',
       miner_fees_basic: `Don't forget to set aside 1,000 sats for miner fees.`,
