@@ -22,18 +22,45 @@ const translations = {
   ///ABOUT PAGE
   about: {
     title: 'About',
-    mobile_title: 'What it’s about',
+    mobile_title: 'All about Saving Satoshi',
     subtitle:
       'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square.',
     intro:
-      'The world awaits the last block. Then, suddenly, the network grinds to a halt.<br><br>You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat). You open the holocat by booping its nose curious to hear what it has to say...',
+      'As the world waits for this historic event, the network suddenly grinds to a halt.<br><br>On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
 
     project: {
-      title: 'Built with fun',
+      title: 'Bitcoin is serious, but learning about it doesn’t have to be ',
       paragraph_one:
-        'Saving Satoshi is a light-hearted first point of contact for coders who are curious about bitcoin development. Saving Satoshi has a mix of technical text and code-based challenges, but the challenges should be doable for anyone with basic coding skills. The project is free and open source (FOSS) and all the art has been generated using text-to-image tools like Midjourney.',
+        'Saving Satoshi is a light-hearted, interactive role-playing game (RPG) about bitcoin tech. It combines fun, innovative challenges with storytelling and game mechanics to create a gentle entry point to bitcoin development.',
       paragraph_two:
-        'This project is in continuous development and takes an iterative approach to incorporate feedback as we release new chapters. There are currently ten chapters mapped out. However more may be added as the project continues to grow.',
+        'It’s built with fun for curious coders and anyone that wants to learn how bitcoin <span className="italic">really</span> works. It’s for those that have seen the magic of bitcoin open source software (₿OSS) and are are looking for ways to start contributing.',
+      paragraph_three:
+        'Each chapter is filled with code-based lesson content, simulations, and programming exercises to make learning the esoteric details of bitcoin tech more enjoyable.',
+      paragraph_four:
+        'With simple, straightforward examples, players build solid foundations before layering on the complexity. Through an immersive UX, rich visuals, and seamless interactions, learners are taken on a journey through a variety of topics including:',
+      chapter_topics: {
+        list_one:
+          'Finding and decoding the secret message in the genesis block',
+        list_two: 'Hash functions and proof-of-work',
+        list_three: 'The dynamics of pooled mining',
+        list_four:
+          'The basics of elliptic curve cryptography and how to derive an address from public-private key pairs',
+        list_five: 'ECDSA message signing and verification',
+        list_six: 'Building a transaction from scratch',
+        list_seven: 'Assembling transactions to construct a block template',
+        list_eight:
+          'Using the Bitcoin Core RPC API and calculating the block subsidy',
+        list_nine: 'Bitcoin Script',
+        list_ten: 'How the Lightning network works',
+      },
+      paragraph_five:
+        'But it’s not just about the curriculum. We believe bitcoin education can be just as creative and unique as the technology itself. That’s why the game touches on many other fascinating elements of bitcoin like culture, history, and design.',
+      paragraph_six:
+        'To us, bitcoin is a positive force in the world. This project is built by a passionate group of contributors under the highest standards, and it’s 100% free and open source (FOSS). To learn more about how Saving Satoshi was made, see our <Link href="https://bitcoin.design/guide/case-studies/saving-satoshi" className="underline" target="_blank">case study</Link> in the Bitcoin Design Guide.',
+      paragraph_seven:
+        'From playing the game, to running a workshop, to code contributions, there are many ways to join the Saving Satoshi community. We’d be delighted to have you. To get in touch, follow <Link href="https://github.com/saving-satoshi/saving-satoshi" className="underline" target="_blank">Saving Satoshi on GitHub</Link> and join the <Link href="https://discord.gg/eBGRaCSjg5" className="underline" target="_blank">#saving-satoshi channel</Link> on the Bitcoin Design Community Discord.',
+      paragraph_eight:
+        'You can also connect with us on <Link href="https://x.com/savingsatoshi" className="underline" target="_blank">X</Link>, <Link href="https://njump.me/npub1vy6wcgw6jhhtcmpawvlnsfx7g8qt8r40z7qlks9zwa4ed57vm5eqx527hr" className="underline" target="_blank">nostr</Link>, and <Link href="https://bsky.app/profile/bitcoindevs.bsky.social" className="underline" target="_blank">Bluesky</Link>. We love shout outs and hearing from our users!',
     },
 
     contributing: {
@@ -44,26 +71,18 @@ const translations = {
       feedback: {
         title: 'Feedback',
         paragraph_one:
-          'A great way to contribute is to go through Chapter 1 and give us any feedback on the overall experience you might have using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this form</a>.',
+          'We’re all ears! We love hearing what went well, what didn’t go well, and where there is room for improvement. You can use <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this form</a> to submit feedback.',
       },
 
       contribute: {
         title: 'Contribute',
         paragraph_one:
-          'All suggestions are welcome, including content changes, game mechanics – really anything. We are also always looking for help reviewing and <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">QA-ing code changes</a>. For code improvements, you can directly open an issue or submit a pull request on GitHub.',
+          'All suggestions are welcome. We are also always looking for help reviewing and QA-ing code changes. For code improvements, you can directly open an issue or submit a pull request on <a href="https://github.com/saving-satoshi/saving-satoshi" target="_blank" rel="noreferrer">GitHub</a>.',
         paragraph_two:
-          'If you want to get involved with design, story, or anything else, join us in the #saving-satoshi channel in the <a href="https://discord.gg/DC8Dys4G3h" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Mention how you’d like to contribute and we’ll help point you in the right direction.',
+          'If you want to get involved with design, story, or anything else, join us in the #saving-satoshi channel in the <a href="https://discord.gg/B9WURkwF" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Mention how you’d like to contribute and we’ll help point you in the right direction.',
       },
     },
 
-    contributors: {
-      title: 'Enjoy!',
-      contributions_by: 'Contributions by',
-      many_more:
-        'and <a href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" target="_blank" rel="noreferrer">many more</a>.',
-    },
-
-    satoshi_needs_you: 'Now be quick, Satoshi needs you.',
     privacy: {
       title: 'Our commitment to privacy',
       paragraph_one:
@@ -86,6 +105,20 @@ const translations = {
       paragraph_five:
         "If you have any concerns or questions about our data collection practices or privacy policies, please don't hesitate to contact us. We are committed to providing you with a transparent and secure experience while using our app.",
     },
+
+    contributors: {
+      title: 'Enjoy!',
+      paragraph_one:
+        'Saving Satoshi would not be possible without the many people that have come together over the last few years to build it. It takes a village!',
+      paragraph_two:
+        'The core team is comprised of <Link href="https://adamjonas.com/" className="underline" target="_blank">Adam Jonas</Link>, <Link href="https://www.germanysbestkeptsecret.com/" className="underline" target="_blank">Christoph Ono</Link> (design lead), <Link href="https://satsie.dev/" className="underline" target="_blank">Satsie</Link>, <Link href="https://github.com/benalleng" className="underline" target="_blank">BenAllenG</Link> (engineering lead), <Link href="https://github.com/pinheadmz" className="underline" target="_blank">Matthew Zipkin</Link> (lesson content lead), <Link href="https://x.com/TuedonTuoyo" className="underline" target="_blank">Tuedon Tuoyo</Link>, <Link href="https://www.artassoiants.com/" className="underline" target="_blank">Art Assoiants</Link> (product manager), and 4 mysterious cats that <Link href="https://spiral.xyz/" className="underline" target="_blank">Spiral</Link> let us borrow to write the story.',
+      paragraph_three:
+        'We have also had a number of contributors play key roles at various points. This includes, but is not limited to, <Link href="https://x.com/ecurrencyhodler" className="underline" target="_blank">ecurrencyhodler</Link>, <Link href="https://www.jtwoodhouse.com/" className="underline" target="_blank">JT Woodhouse</Link>, <Link href="https://x.com/_Jsms_" className="underline" target="_blank">JSMS</Link>, <Link href="https://github.com/afterburn" className="underline" target="_blank">Kevin Karsopawiro</Link>, <Link href="https://github.com/daviroo" className="underline" target="_blank">daviroo</Link>, <Link href="https://github.com/nully0x" className="underline" target="_blank">nully0x</Link>, <Link href="https://github.com/vinayaksh42" className="underline" target="_blank">Vinayak Sharma</Link>, <Link href="https://github.com/shaavan" className="underline" target="_blank">Shashwat Vangani</Link>, <Link href="https://github.com/aureleoules" className="underline" target="_blank">Aurèle Oulès</Link>, and <Link href="https://github.com/sabakhilji" className="underline" target="_blank">sabakhilji</Link>.',
+      paragraph_four:
+        'A full list of code contributors can be found on <Link href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" className="underline" target="_blank">GitHub</Link>.',
+    },
+
+    satoshi_needs_you: 'Now be quick, Satoshi needs you.',
   },
 
   ///CHAPTERS TITLE PAGE
