@@ -1,300 +1,267 @@
 const translations = {
   shared: {
-    next: 'Continue',
-    start: 'Start',
-    copy: 'Copy',
+    next: 'Continuer',
+    start: 'Démarrer',
+    copy: 'Copier',
     info: 'Info',
-    copy_acknowledged: 'Copied!',
-    about: 'About',
-    chapter: 'Chapter',
-    chapters: 'Chapters',
+    copy_acknowledged: 'Copié!',
+    about: 'A propos',
+    chapter: 'Chapitre',
+    chapters: 'Chapitres',
     challenge: 'Challenge',
     challenges: 'Challenges',
-    coming_soon: 'Coming soon',
-    start_chapter: 'Start chapter',
-    back: 'Back',
-    end: 'End',
-    close: 'Close',
-    poweroff: 'Back to chapter selection',
-    loading: 'Loading',
+    coming_soon: 'Prochainement',
+    start_chapter: 'Démarrer chapitre',
+    back: 'Retour',
+    end: 'Terminer',
+    close: 'Fermer',
+    poweroff: 'Retour à la selection chapitre',
+    loading: 'Chargement',
     bitcoin_dev_project: 'Bitcoin Dev Project',
   },
   ///ABOUT PAGE
   about: {
-    title: 'About',
-    mobile_title: 'All about Saving Satoshi',
+    title: 'A propos',
+    mobile_title: 'De quoi on parle?',
     subtitle:
-      'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square.',
+      "L'année est 2139. Le dernier bitcoin sera miné dans deux semaines. Depuis des mois, un compteur décompte à Satoshi Square.",
     intro:
-      'As the world waits for this historic event, the network suddenly grinds to a halt.<br><br>On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
+      "Le monde attend le dernier bloc. Puis, soudainement, Le réseau s'arrête net.<br><br>Tu reçois un holochat de quelqu'un utilisant le nom Satoshi Nakamoto. (Comme n'importe quel autre e-hologram, mais celui-ci a la forme d'un chat). Tu ouvres le holochat en pressant son museau, curieux de savoir ce qu'il a à dire...",
 
     project: {
-      title: 'Bitcoin is serious, but learning about it doesn’t have to be ',
+      title: 'Construit avec fun',
       paragraph_one:
-        'Saving Satoshi is a light-hearted, interactive role-playing game (RPG) about bitcoin tech. It combines fun, innovative challenges with storytelling and game mechanics to create a gentle entry point to bitcoin development.',
+        "Saving Satoshi est un premier point de contact léger pour les codeurs curieux du développement de Bitcoin. Saving Satoshi mélange texte technique et défis basés sur du code, mais les défis devraient être accessibles à toute personne ayant des compétences de base en programmation. Le projet est gratuit et open source (FOSS) et toutes les illustrations ont été générées à l'aide d'outils de génération d'images à partir de texte, tels que Midjourney.",
       paragraph_two:
-        'It’s built with fun for curious coders and anyone that wants to learn how bitcoin <span className="italic">really</span> works. It’s for those that have seen the magic of bitcoin open source software (₿OSS) and are are looking for ways to start contributing.',
-      paragraph_three:
-        'Each chapter is filled with code-based lesson content, simulations, and programming exercises to make learning the esoteric details of bitcoin tech more enjoyable.',
-      paragraph_four:
-        'With simple, straightforward examples, players build solid foundations before layering on the complexity. Through an immersive UX, rich visuals, and seamless interactions, learners are taken on a journey through a variety of topics including:',
-      chapter_topics: {
-        list_one:
-          'Finding and decoding the secret message in the genesis block',
-        list_two: 'Hash functions and proof-of-work',
-        list_three: 'The dynamics of pooled mining',
-        list_four:
-          'The basics of elliptic curve cryptography and how to derive an address from public-private key pairs',
-        list_five: 'ECDSA message signing and verification',
-        list_six: 'Building a transaction from scratch',
-        list_seven: 'Assembling transactions to construct a block template',
-        list_eight:
-          'Using the Bitcoin Core RPC API and calculating the block subsidy',
-        list_nine: 'Bitcoin Script',
-        list_ten: 'How the Lightning network works',
-      },
-      paragraph_five:
-        'But it’s not just about the curriculum. We believe bitcoin education can be just as creative and unique as the technology itself. That’s why the game touches on many other fascinating elements of bitcoin like culture, history, and design.',
-      paragraph_six:
-        'To us, bitcoin is a positive force in the world. This project is built by a passionate group of contributors under the highest standards, and it’s 100% free and open source (FOSS). To learn more about how Saving Satoshi was made, see our <Link href="https://bitcoin.design/guide/case-studies/saving-satoshi" className="underline" target="_blank">case study</Link> in the Bitcoin Design Guide.',
-      paragraph_seven:
-        'From playing the game, to running a workshop, to code contributions, there are many ways to join the Saving Satoshi community. We’d be delighted to have you. To get in touch, follow <Link href="https://github.com/saving-satoshi/saving-satoshi" className="underline" target="_blank">Saving Satoshi on GitHub</Link> and join the <Link href="https://discord.gg/eBGRaCSjg5" className="underline" target="_blank">#saving-satoshi channel</Link> on the Bitcoin Design Community Discord.',
-      paragraph_eight:
-        'You can also connect with us on <Link href="https://x.com/savingsatoshi" className="underline" target="_blank">X</Link>, <Link href="https://njump.me/npub1vy6wcgw6jhhtcmpawvlnsfx7g8qt8r40z7qlks9zwa4ed57vm5eqx527hr" className="underline" target="_blank">nostr</Link>, and <Link href="https://bsky.app/profile/bitcoindevs.bsky.social" className="underline" target="_blank">Bluesky</Link>. We love shout outs and hearing from our users!',
+        'Ce projet est en développement continu et adopte une approche itérative pour intégrer les retours au fur et à mesure que nous publions de nouveaux chapitres. Il y a actuellement dix chapitres planifiés. Cependant, des chapitres supplémentaires pourraient être ajoutés à mesure que le projet continue de se développer.',
     },
 
     contributing: {
-      title: 'How to contribute',
+      title: 'Comment contribuer',
       paragraph_one:
-        'We’re an open-source project, so all doors are open for you to help shape it.',
+        'Nous sommes un projet open-source, donc toutes les portes sont ouvertes pour que tu aides à le faconner.',
 
       feedback: {
-        title: 'Feedback',
+        title: 'Commentaires, suggestions',
         paragraph_one:
-          'We’re all ears! We love hearing what went well, what didn’t go well, and where there is room for improvement. You can use <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this form</a> to submit feedback.',
+          'Une excellente manière de contribuer est de parcourir le Chapitre 1 et de nous donner tes retours sur ton expérience en utilisant <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">ce formulaire</a>.',
       },
 
       contribute: {
-        title: 'Contribute',
+        title: 'Contribuer',
         paragraph_one:
-          'All suggestions are welcome. We are also always looking for help reviewing and QA-ing code changes. For code improvements, you can directly open an issue or submit a pull request on <a href="https://github.com/saving-satoshi/saving-satoshi" target="_blank" rel="noreferrer">GitHub</a>.',
+          'Toutes les suggestions sont les bienvenues, y compris les modifications de contenu, les mécaniques de jeu – vraiment tout. Nous cherchons également toujours de l\'aide pour la révision et tester <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">les modifications de code</a>. Pour les améliorations de code, tu peux ouvrir  directement un problème ou soumettre une pull request sur GitHub."',
         paragraph_two:
-          'If you want to get involved with design, story, or anything else, join us in the #saving-satoshi channel in the <a href="https://discord.gg/B9WURkwF" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Mention how you’d like to contribute and we’ll help point you in the right direction.',
+          'Si tu souhaites participer au design, l\'histoire ou tout autre domaine, rejoins-nous dans la channel #saving-satoshi dans le <a href="https://discord.gg/DC8Dys4G3h" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Dis nous comment tu souhaites contribuer et on t\'aiguillera.',
       },
     },
 
-    privacy: {
-      title: 'Our commitment to privacy',
-      paragraph_one:
-        'At Saving Satoshi, we are deeply committed to ensuring the privacy and security of our users. We believe in transparency and want you to understand how and why we track app usage. To achieve this, we use a powerful tool called <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.',
-      sub_heading_one: 'What is Umami?',
-      paragraph_two:
-        'Umami is an open-source analytics platform that helps us gather essential insights about how you use our app. It allows us to make data-driven decisions and continuously enhance our product to better meet your needs.  You can view the Umami dashboard <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">here</Link>.',
-      sub_heading_two: 'What Data Do We Collect?',
-      paragraph_three:
-        'Rest assured, we only collect non-personal and anonymized data, such as:',
-      list_item_one_title: 'Product Improvement:',
-      list_item_one_text:
-        'We use the data to identify areas where our app can be improved. By understanding how you use our app, we can make it more efficient, user-friendly, and secure.',
-      list_item_two_title: 'Compatibility:',
-      list_item_two_text:
-        'Understanding the devices and platforms you use allows us to optimize our app for various configurations, ensuring it works seamlessly for you.',
-      sub_heading_three: 'Your Privacy Matters',
-      paragraph_four:
-        'We want to emphasize that your privacy is of utmost importance to us. We do not collect any personally identifiable information, and the data we gather is used solely for the purpose of improving our app. Your data is never shared or sold to third parties.',
-      paragraph_five:
-        "If you have any concerns or questions about our data collection practices or privacy policies, please don't hesitate to contact us. We are committed to providing you with a transparent and secure experience while using our app.",
-    },
-
     contributors: {
-      title: 'Enjoy!',
-      paragraph_one:
-        'Saving Satoshi would not be possible without the many people that have come together over the last few years to build it. It takes a village!',
-      paragraph_two:
-        'The core team is comprised of <Link href="https://adamjonas.com/" className="underline" target="_blank">Adam Jonas</Link>, <Link href="https://www.germanysbestkeptsecret.com/" className="underline" target="_blank">Christoph Ono</Link> (design lead), <Link href="https://satsie.dev/" className="underline" target="_blank">Satsie</Link>, <Link href="https://github.com/benalleng" className="underline" target="_blank">BenAllenG</Link> (engineering lead), <Link href="https://github.com/pinheadmz" className="underline" target="_blank">Matthew Zipkin</Link> (lesson content lead), <Link href="https://x.com/TuedonTuoyo" className="underline" target="_blank">Tuedon Tuoyo</Link>, <Link href="https://www.artassoiants.com/" className="underline" target="_blank">Art Assoiants</Link> (product manager), and 4 mysterious cats that <Link href="https://spiral.xyz/" className="underline" target="_blank">Spiral</Link> let us borrow to write the story.',
-      paragraph_three:
-        'We have also had a number of contributors play key roles at various points. This includes, but is not limited to, <Link href="https://x.com/ecurrencyhodler" className="underline" target="_blank">ecurrencyhodler</Link>, <Link href="https://www.jtwoodhouse.com/" className="underline" target="_blank">JT Woodhouse</Link>, <Link href="https://x.com/_Jsms_" className="underline" target="_blank">JSMS</Link>, <Link href="https://github.com/afterburn" className="underline" target="_blank">Kevin Karsopawiro</Link>, <Link href="https://github.com/daviroo" className="underline" target="_blank">daviroo</Link>, <Link href="https://github.com/nully0x" className="underline" target="_blank">nully0x</Link>, <Link href="https://github.com/vinayaksh42" className="underline" target="_blank">Vinayak Sharma</Link>, <Link href="https://github.com/shaavan" className="underline" target="_blank">Shashwat Vangani</Link>, <Link href="https://github.com/aureleoules" className="underline" target="_blank">Aurèle Oulès</Link>, and <Link href="https://github.com/sabakhilji" className="underline" target="_blank">sabakhilji</Link>.',
-      paragraph_four:
-        'A full list of code contributors can be found on <Link href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" className="underline" target="_blank">GitHub</Link>.',
+      title: 'Amuses toi bien!',
+      contributions_by: 'Contributions par',
+      many_more:
+        'et <a href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" target="_blank" rel="noreferrer">bien d\'autre</a>.',
     },
 
-    satoshi_needs_you: 'Now be quick, Satoshi needs you.',
+    satoshi_needs_you: 'Il est temps, Satoshi a besoin de toi.',
+    privacy: {
+      title: 'Notre engagement vis-à-vis de tes données personnelles',
+      paragraph_one:
+        'A Saving Satoshi, Nous sommes très engagés à garantir la confidentialité et la sécurité de nos utilisateurs. Nous croyons en la transparence et souhaitons que tu comprennes comment et pourquoi nous suivons l\'utilisation de l\'application. Pour ce faire, nous utilisons un outil puissant appelé <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.',
+      sub_heading_one: "Qu'est-ce qu'est Umami?",
+      paragraph_two:
+        'Umami est une plateforme d\'analyse open-source qui nous aide à recueillir des informations essentielles sur la manière dont tu utilises notre application. Elle nous permet de prendre des décisions basées sur les données et d\'améliorer continuellement notre produit pour mieux répondre à tes besoins. Tu peux consulter le tableau de bord Umami <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">here</Link>.',
+      sub_heading_two: 'Quelle(s) donnée(s) collectons nous?',
+      paragraph_three:
+        'Rassures toi, nous collections seulement des données non personelles et anonymisées, telles que:',
+      list_item_one_title: 'Amélioration Produit:',
+      list_item_one_text:
+        'Nous utilisons les données pour identifier les domaines dans lesquels notre application peut être améliorée. En comprenant comment tu utilises notre application, nous pouvons la rendre plus efficace, conviviale et sécurisée.',
+      list_item_two_title: 'Compatibilité:',
+      list_item_two_text:
+        "Comprendre les appareils et les plateformes que tu utilises nous permet d'optimiser notre application pour différentes configurations, garantissant ainsi qu'elle fonctionne parfaitement pour toi.",
+      sub_heading_three: 'Tes données personnelles sont importantes',
+      paragraph_four:
+        "Nous tenons à souligner que la confidentialité de tes données est notre priorité absolue. Nous ne collectons aucune information personnellement identifiable, et les données que nous recueillons sont utilisées uniquement dans le but d'améliorer notre application. Tes données ne sont jamais partagées ni vendues à des tiers.",
+      paragraph_five:
+        "Si tu as des préoccupations ou des questions concernant nos pratiques de collecte de données ou nos politiques de confidentialité, n'hésites pas à nous contacter. Nous nous engageons à vous offrir une expérience transparente et sécurisée lors de l'utilisation de notre application.",
+    },
   },
 
   ///CHAPTERS TITLE PAGE
   chapter_one: {
-    title: 'Secrets in Plain Sight',
+    title: 'Secrets à découvert',
     paragraph_one:
-      'The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. Up until this point, every block has had some kind of bitcoin reward, a subsidy. This is the only way new bitcoins come into existence but soon, it’s about to change. After over one hundred years, the issuance schedule for bitcoin is coming to an end. The world awaits for the last block with a subsidy to be mined. It’s a historical event. The end of an era.',
-    paragraph_two: 'Suddenly, the network grinds to a halt.',
+      "L'année est 2139. Le dernier bitcoin sera extrait dans deux semaines. Depuis des mois, un compte à rebours s'affiche sur l'écran de Satoshi Square. Jusqu'à présent, chaque bloc a eu une sorte de récompense en bitcoin, une subvention. C'est la seule façon dont de nouveaux bitcoins voient le jour, mais cela va bientôt changer. Après plus de cent ans, le calendrier d'émission du bitcoin touche à sa fin. Le monde attend que le dernier bloc avec une subvention soit extrait. C'est un événement historique. La fin d'une ère.",
+    paragraph_two: "Soudainement, Le réseau s'arrête net.",
 
     ///CHAPTER 1
     intro_one: {
       title: 'Intro',
-      nav_title: 'Miner protest',
-      paragraph_one: `Moments later, your Hover Screen activates.`,
-      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the well-dressed CEO of BitRey, you run, by far, the largest bitcoin mining pool in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
-      paragraph_three: `—Vanderpoole: “Let’s start from the top. Yes, I am, Deborah, and yes, I do. The Vanderpooles—my well-dressed daddy and his well-dressed daddy before him—have been mining since block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. Miners cannot survive on fees alone.”`,
+      nav_title: 'Protestation du Mineur',
+      paragraph_one: `Un peu plus tard, ton écran s'active.`,
+      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. En tant que PDG élégant de BitRey, vous opérez ce qui est de loin le plus gros pool de minage bitcoin au monde. Vous fabriquez également des machines de minage de Bitcoin. Que se passe-t-il ? Le Bitcoin est-il en train de mourir ?”`,
+      paragraph_three: `—Vanderpoole: “Commençons par le commencement. Oui, je suis PDG, Deborah, et oui, je fais l'effort de rester élégant. Les Vanderpooles—mon père était bien habillé et son père avant lui également bien habillé—font du minage depuis le bloc 21 000. C’est pourquoi je peux dire en toute confiance que les mineurs à travers le monde causent ces retards en éteignant leurs machines. C’est une protestation. Personne ne veut que le Bitcoin cesse d’être émis à 21 millions. Les mineurs ne peuvent pas survivre uniquement avec les frais de transactions."`,
       start: 'Continue',
     },
 
     intro_two: {
-      title: 'Genesis',
-      nav_title: "Satoshi's holocat",
+      title: 'Genèse',
+      nav_title: 'Holochat de Satoshi',
       paragraph_one:
-        'On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
+        "Sur ta Everything Watch, tu reçois un holochat de marque WhiskerWare de quelqu'un utilisant le nom de Satoshi Nakamoto. (C'est comme n'importe quel autre e-hologramme, mais celui-ci a la forme d'un chat.) Vous ouvrez l'holocat en tapotant son nez.",
       paragraph_two:
-        '—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto',
+        "—“Le Bitcoin n'est pas en train de mourir, mais il a besoin de votre aide. N'oubliez pas le chat.” – Satoshi Nakamoto",
       paragraph_three:
-        '—Satoshi? The Satoshi? From the white paper? No, it couldn’t be. They’ve been presumed dead for over a century.',
-      paragraph_four: 'Haven’t they?',
+        "—Satoshi? The Satoshi? Celui du livre blanc ? Non, ça ne se peut pas. Il est supposé être mort depuis plus d'un siècle.",
+      paragraph_four: "N'est-il pas?",
       paragraph_five:
-        'Holocat: “You better get to work. I can help, but you have to start meow.”',
+        'Holochat: “Tu ferais bien de te mettre au boulot. Je peux aider, mais tu dois commencer par miauler.”',
     },
 
     genesis_one: {
-      title: 'Genesis',
-      nav_title: 'Genesis Secret',
-      heading: 'Your first challenge',
+      title: 'Genèse',
+      nav_title: 'Secret de la Genèse',
+      heading: 'Ton premier challenge',
       paragraph_one:
-        'Bitcoin is censorship-resistant money. Anybody can send money by broadcasting a transaction to the network. After broadcast, transactions are packaged up into blocks by miners. Miners compete against other miners for the privilege of building on the chain. This is what keeps bitcoin decentralized.',
+        "Le Bitcoin est de l'argent résistant à la censure. N'importe qui peut envoyer de l'argent en diffusant une transaction sur le réseau. Après la diffusion, les transactions sont regroupées en blocs par les mineurs. Les mineurs sont en compétition contre d'autres mineurs pour le privilège de construire sur la chaîne. C'est ce qui permet à Bitcoin de rester décentralisé.",
       paragraph_two:
-        'Satoshi Nakamoto, the pseudonymous inventor of bitcoin, also mined the first bitcoin block. He left the world a secret message in the very first bitcoin transaction that was ever made. Your first challenge is to find and decode it.',
+        "Satoshi Nakamoto, l'inventeur pseudonyme du Bitcoin, a également miné le premier bloc de Bitcoin. Il a laissé au monde un message secret dans la toute première transaction de Bitcoin jamais réalisée. Votre premier défi est de le trouver et de le décoder.",
     },
 
     genesis_two: {
-      title: 'Genesis',
-      nav_title: 'Find the message',
-      heading: 'Find the hidden message',
+      title: 'Genèse',
+      nav_title: 'Trouve le message',
+      heading: 'Trouve le message caché',
       paragraph_one:
-        'Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.',
+        'Trouvons le tout premier bloc dans la blockchain Bitcoin. Clique le bouton ci-dessous pour ouvrir <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">un explorateur de blocs</Tooltip>, exactement au bloc 0, qui est appelé le genesis block (bloc de genèse)',
       paragraph_two:
-        'Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. The value next to it is an encoded message.',
-      paragraph_three: 'Copy that value and paste it in the code block.',
+        'Fais défiler vers le bas et dévoile les détails de la seule transaction stockée dans ce bloc. Trouvez la partie appelée \'Coinbase\'. Ensuite, cherche le label \'SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)\'. La valeur à côté est un message codé.',
+      paragraph_three: 'Copie cette valeur et colle la dans le bloc de code.',
       tooltip_block_explorer:
-        'A <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.',
+        'Le <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> est un outil utile pour rapidement voir des informations sur les transactions bitcoin.',
       tooltip_hex:
-        'Short for hexadecimal, a numeral system that represents numbers using a base of 16.',
-      view_block_0: 'View Block 0',
-      placeholder: 'Paste the value you found here',
+        'Hexadecimal en court, un système numérique qui représente les nombres en utilisant une base de 16.',
+      view_block_0: 'Voir Bloc 0',
+      placeholder: 'Colle la valeur que tu as trouvé ici',
     },
 
     genesis_three: {
-      title: 'Genesis',
-      nav_title: 'Decode the message',
-      heading: "Let's decode the message",
+      title: 'Genèse',
+      nav_title: 'Decode le message',
+      heading: 'Décodons le message',
       paragraph_one:
-        'The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.',
+        'Le message que tu as trouvé fut encodé dans un format appelé HEX. Nous allons maintenant exécuter une commande pour le convertir en ASCII afin de pouvoir le lire.',
       paragraph_two:
-        'Copy and paste the command below into the Terminal in the code block and press “Enter”.',
-      terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'`,
-      waiting_for_input: 'Waiting for you to write and run the script...',
-      success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.`,
+        'Copie et colle la commande ci-dessous dans le Terminal dans le bloc code et presse "Entrée".',
+      terminal_challenge_lines: `Entre tes commandes ici et presse Entrée...\n La variable $scriptSigHex est déjà définie pour toi.\n\n var $scriptSigHex = '04fff...e6b73'`,
+      waiting_for_input: 'En attente. Ecris et exécute le script...',
+      success: `Bon travail! Le message décodé réfère à la première page de <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> du 3 Janvier 2009, le même jour durant lequel Satoshi a miné le bloc de genèse. Super cool, pas vrai?! Le message nous donne aussi une indication de ce qu'il l'a motivé à créer bitcoin.\n\n Continuons.`,
     },
 
     genesis_four: {
-      title: 'Genesis',
-      nav_title: 'Your first success',
-      subtitle: 'Congrats! You completed the first challenge!',
+      title: 'Genèse',
+      nav_title: 'Ton premier succés',
+      subtitle: 'Félicitations! Tu as complété ton premier challenge!',
       paragraph_one:
-        'You found the secret message Satoshi Nakamoto embedded in the genesis block. It’s time to expand on what you just learned. Decode a vital clue about the story in the next challenge.',
+        "Tu as trouvé le message secret que Satoshi Nakamoto a intégré dans le bloc genèse. Il est temps d'aller plus loin dans ce que tu viens d'apprendre. Décode un indice crucial sur l'histoire dans le prochain défi.",
     },
 
     transacting_one: {
-      title: 'Transacting',
-      nav_title: "What's in a transaction",
-      heading: 'What’s in a transaction?',
+      title: 'Effectuer des transactions',
+      nav_title: "Qu'est ce qu'une transaction",
+      heading: "Qu'y-a-t-il dans un transaction?",
       paragraph_one:
-        'Two main components of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
+        "Les deux principaux composants d'une transaction sont les entrées et les sorties. Dans l'exercice précédent, nous avons décodé un message secret trouvé dans une entrée de transaction. Cette fois, nous allons décoder un message qui appartient à la partie sortie.",
       paragraph_two:
-        'For the following transaction, we’re going to identify the output of type OP_RETURN.',
+        'Dans la transaction suivante, nous allons identifier la sortie de type OP_RETURN.',
     },
 
     transacting_two: {
-      title: 'Transacting',
-      nav_title: 'Find the OP_RETURN',
+      title: 'Effectuer des transactions',
+      nav_title: 'Trouve lee OP_RETURN',
       heading: 'OP_RETURN',
       paragraph_one:
-        'There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.',
+        "Il existe une autre façon de cacher des messages secrets dans les transactions. Bitcoin dispose d'un type de code spécial appelé OP_RETURN qui permet aux utilisateurs d'attacher des messages aux sorties de transactions. Voyons si nous pouvons en trouver un.",
       paragraph_two:
-        '1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">here</Link> to look at a specific transaction.',
+        '1. Clique <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">here</Link> pour voir les détails d\'une transaction particulière.',
       paragraph_three:
-        '2. Open up the details and find the part that is of type “OP_RETURN”.',
+        '2. Ouvre les détails et trouve la partie de type “OP_RETURN”.',
       paragraph_four:
-        '3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSHBYTES_33" part? These are called opcodes. We’re actually interested in what comes after them.',
+        "3. Localise maintenant le champ “SCRIPTPUBKEY (ASM)”. Tu vois la partie “OP_RETURN OP_PUSHBYTES_33\"? C'est ce qu'on appele opcodes. Ce qui nous intéresse vient après eux.",
       paragraph_five:
-        '4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_33” and paste it in the code block. ',
-      input_challenge_label: 'Enter the OP_RETURN type',
+        '4. Copie la longue séquence de chiffres qui vient après “OP_RETURN OP_PUSHBYTES_33” et colle le dans le bloc code. ',
+      input_challenge_label: 'Saisi le type OP_RETURN',
     },
 
     transacting_three: {
-      title: 'Transacting',
-      nav_title: 'Decode the OP_RETURN',
-      heading: 'Another secret message',
+      title: 'Effectuer des transactions',
+      nav_title: 'Décode le OP_RETURN',
+      heading: 'Un autre message secret',
       paragraph_one:
-        'We’ve identified the part of the transaction output that holds the message.',
+        'Nous avons identifié la partie de la sortie de la transaction qui contient le message.',
       paragraph_two:
-        'All that’s left now is to decode it, just like we did in the previous exercise. You can look up the transaction again <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">here</Link>.',
+        'Tout ce qui nous reste à faire maintenant est de la décoder, comme dans l\'exercice précédent. Tu peux voir la transaction une fois de plus <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">ici</Link>.',
       terminal_challenge_success:
-        'That’s correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n Your next challenge awaits you.',
+        "C'est correct! Bon travail.\n\n Comme tu peux le voir, l'indice est une adresse. Suis la.\n\n Ton prochain défi t'attend.",
       terminal_challenge_lines:
-        'Enter your commands here and press Enter...\n\n Command: \n echo $scriptPubKeyBytes | xxd -r -p \n\n Note that $scriptPubKeyBytes is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous page',
+        "Entre tes commandes ici et presse Entrée...\n\n Commande: \n echo $scriptPubKeyBytes | xxd -r -p \n\n Note que $scriptPubKeyBytes n'est pas défini pour toi cette fois-ci. Tu devras remplacer la variable dans le code avec la valeur que tu as trouvé à la page précédente",
       terminal_challenge_error:
-        'Almost! Remember that the variable $scriptPubKeyBytes is not set for you this time.',
+        "C'est presque ça! Rappele toi que la variable $scriptPubKeyBytes n'est pas définie pour toi cette fois-ci.",
     },
 
     outro_one: {
       title: 'Outro',
-      nav_title: 'Adventure calls',
+      nav_title: "L'aventure t'appele",
       paragraph_one:
-        'You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to District 21.',
+        'Tu descends en trombe à ton garage, tu montes dans le vieux Budgetcopter de ton père, entre les coordonnées, et tu es en chemin vers le District 21.',
       paragraph_two:
-        'Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.',
-      button_text: 'Complete chapter 1',
+        'Malgré des allergies aux chats intense qui affecte même les hologrammes, the holochat te suit. Tu protestes, mais un chat reste un chat.',
+      button_text: 'Complete chapitre 1',
     },
 
     outro_two: {
-      title: 'You did it!',
-      nav_title: 'Chapter complete',
+      title: "Tu l'as fait!",
+      nav_title: 'Chapitre terminé',
       description:
-        'Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go?',
+        "Génial. Tu as terminé ton premier chapitre dans lequel tu as appris beaucoup de choses sur les hashes et transactions. Comment ça s'est passé?",
     },
 
     end: {
-      save: 'Save my progress',
-      next: 'Continue without saving',
-      feedback: 'Share your feedback',
+      save: 'Sauvegarde mon progrés',
+      next: 'Continue sans sauvegarder',
+      feedback: "Partage ton retour d'expérience",
     },
     resources: {
       genesis_two: {
         scriptsig_heading: 'ScriptSig',
         scriptsig_paragraph:
-          "The 'scriptSig' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The 'scriptSig' is the data that goes into the input's scriptSig field.",
+          "Le 'scriptSig' est un script que tu fournis comme partie de l'entrée dans ta nouvelle transaction. C'est essentiellement ton script de dévérouillage, qui prouve que tu as l'autorisation de dépenser le bitcoin du UTXO référencé. Le 'scriptSig' est la donnée qui va dans le champ scriptSig dans la donnée d'entrée.",
         block_explorer_heading: 'Block Explorer',
         block_explorer_paragraph:
-          'A block explorer is a crucial tool for navigating and understanding blockchain networks. It acts as a user-friendly interface to inspect and analyze the data stored on a blockchain. With a block explorer, users can explore transaction histories, view account balances, and track the progress of individual blocks and transactions.',
-        tip: 'Look for the scriptSig(Hex) category nested in coinbase input after expanding the transaction within the block.',
+          "Le block explorer est un outil important pour naviguer et comprendre les réseaux blockchain. C'est une interface intuitive pour inspecter et analyser les données stockées dans la blockchain. Avec un exporateur de blocs, les utilisateurs pour explorer l'historiques des transactions, voir les soldes de comptes, et suivre le progrés de blocs et transactions individuelles.",
+        tip: "Regarde la categorie scriptSig(Hex) incluse dans l'entrée coinbase aprés avoir déplié les details de transaction dans le bloc.",
       },
       genesis_three: {
-        bash_heading: 'Bash Commands',
+        bash_heading: 'Commandes Bash',
         bash_paragraph:
-          'We are using some basic bash command and options to reverse the compression Satoshi did on the text put into the genesis block.',
-        tip: "The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.",
+          'Nous utilisons des commandes et options bash de base pour renverser la compression que Satoshi a appliqué sur le texte présent dans le bloc genèse.',
+        tip: "La commande 'xxd' converti un fichier en hex et ajouter l'argument '-r' renverses cela, permettant au hex d'être traduit en texte intelligible. L'argument '-p' affiche alors le résultat à l'écran pour te permettre de le lire.",
       },
       transacting_two: {
         transactions_heading: 'Transactions',
         transactions_paragraph:
-          "A transaction in the world of cryptocurrencies is akin to a single atomic payment, where it involves the process of destroying existing coins and creating new ones. When someone initiates a cryptocurrency transaction, they're essentially instructing the blockchain to transfer a specific amount of coins from one digital wallet to another. To achieve this, the transaction consumes the sender's existing coins and generates new ones for the recipient, effectively updating the ownership ledger.",
-        bitcoin_script_heading: 'Bitcoin Script',
+          "Une transaction dans le monde des cryptomonnaies est comparable à un paiement atomique unique, où elle implique le processus de destruction de pièces existantes et de création de nouvelles. Lorsqu'une personne initie une transaction en cryptomonnaie, elle donne essentiellement l'instruction à la blockchain de transférer une quantité spécifique de pièces d'un portefeuille numérique à un autre. Pour ce faire, la transaction consomme les pièces existantes de l'expéditeur et en génère de nouvelles pour le destinataire, mettant ainsi à jour le registre de propriété.",
+        bitcoin_script_heading: 'Script Bitcoin',
         bitcoin_script_paragraph:
-          'Bitcoin Script is a simple, stack-based programming language used in bitcoin transactions to define the conditions under which bitcoins can be spent. It consists of various opcodes (short for operation codes) that specify what operations should be performed on the data within the script.',
-        tip: 'Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33 bytes long (66 characters total) in the OP_Return of the transaction',
+          'Bitcoin Script est un langage de programmation simple, basé sur le concept de pile (stack), utilisé dans les transactions Bitcoin pour définir les conditions dans lesquelles des bitcoins peuvent être dépensés. Il se compose de différents opcodes (abréviation de "operation codes") qui spécifient les opérations à effectuer sur les données à l\'intérieur du script.',
+        tip: 'Etant donné le Op_Code: OP_Pushbytes_33 on cherche une séqunce de texte longue de 33 octets (66 caractères au total) dans le OP_Return de la transaction',
       },
       transacting_three: {
-        secrets_heading: 'Secrets In Bitcoin',
+        secrets_heading: 'Secrets dans Bitcoin',
         secrets_paragraph:
-          'As we saw from the previous challenge, secrets embedded into bitcoin scripts has been a part of its history since the genesis block. Whether used to simply store some information in the blockchain, to pass information through bitcoin script to give some value external to bitcoin, or to pass messages to others, people have been storing things in the blockchain other than inputs and outputs since the beginning.',
-        tip: "When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string",
+          "Comme nous l'avons vu dans le défi précédent, les secrets intégrés dans les scripts Bitcoin font partie de son histoire depuis le bloc de genèse . Qu'ils soient utilisés pour simplement stocker des informations dans la blockchain, pour transmettre des informations via le script Bitcoin afin de donner de la valeur à quelque chose d'externe à Bitcoin, ou pour envoyer des messages à d'autres, les gens stockent dans la blockchain d'autres éléments que des entrées et des sorties depuis le début.",
+        tip: "Quand tu décode la séquence de texte avec la commande 'xxd', souviens toi que nous n'utilisons pas une variable cette fois-ci, on a besoin de la séquence de texte entière",
       },
     },
   },
@@ -1567,7 +1534,7 @@ const translations = {
       paragraph_one:
         'Like the Input class, it needs a method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">from_options()</span> that will construct an Output object from user-provided data:',
       paragraph_two: `It accepts a bitcoin address as a string (like the address from Mika 3000) and a value as an integer. The value is expressed as a number of satoshis! Remember, 1 BTC = 100000000 satoshis. You will need to use our bech32 library again to decode the address into version and data components.
-        The class also needs a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span>  method that returns a byte array according to the specification:`,
+          The class also needs a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span>  method that returns a byte array according to the specification:`,
       heading_two: 'Output',
       table: {
         heading: {
@@ -1622,7 +1589,6 @@ const translations = {
       success: 'The Output class looks good. Great Work!',
     },
     put_it_together_one: {
-      title: 'Putting it all together',
       normal: {
         title: 'Putting it all together',
         nav_title: 'Build the transaction digest',
@@ -2717,19 +2683,19 @@ const translations = {
           'Remember that scripts can only be validated if the finish with a single truthy value on the stack. some versions allow any truthy value but our script editor only allows for values equal to 1 or true.',
         tip: 'Don\'t forget about the bug in <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> that requires the extra unused value on the stack!',
         spoiler: `Script Hint: This multisig arrangement needs both participants to sign. The script specifies that two signatures are required and includes both public keys.
-Stack Hint: To satisfy the script, you need to provide both signatures. The 0 on the stack accounts for a specific behavior of the CHECKMULTISIG operation.`,
+  Stack Hint: To satisfy the script, you need to provide both signatures. The 0 on the stack accounts for a specific behavior of the CHECKMULTISIG operation.`,
       },
       proposal_three: {
         tip: "Let's think about combining a conditional with some timelock to separate Vanderpoole's signature from yours.",
         spoiler: `Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, Vanderpoole can spend; after the block, you can.
-
-Stack Hint: To spend before the specified block, Vanderpoole uses his signature. After the block, you use your signature and need to provide a 0 because the script has moved past the locktime verification.`,
+  
+  Stack Hint: To spend before the specified block, Vanderpoole uses his signature. After the block, you use your signature and need to provide a 0 because the script has moved past the locktime verification.`,
       },
       proposal_four: {
         tip: 'The preimage will be revealed after an unknown amount of time so no need for using timelocks.',
         spoiler: `Script Hint: The script allows spending under two conditions: before the secret has been revealed or after. Before the block, Vanderpoole can spend; after the block, you both can.
-
-Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signature. After the secret is revealed, you use your signature, a hash of the secret, and provide a 0 because the script has moved past the unrevealed verification.`,
+  
+  Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signature. After the secret is revealed, you use your signature, a hash of the secret, and provide a 0 because the script has moved past the unrevealed verification.`,
       },
     },
   },
@@ -2786,7 +2752,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       heading_one: 'The off-chain transaction',
       paragraph_one:
         "Let's create a valid bitcoin transaction but instead of broadcasting it out to the network, we'll give it directly to Laszlo. In return, he should provide you with a Lightning Lemonade because he can broadcast the transaction anytime he wants. Once it's confirmed and mined into a block, the money is his.",
-      paragraph_two: `Remember it's the year 2140! A Lightning Lemonade costs 0.00001000 BTC.`,
+      paragraph_two: `Remember it's the year 2140! A Lighting Lemonade costs 0.00001000 BTC.`,
       heading_two: 'Instructions',
       off_chain_list_one:
         'Fill in the two output amounts: 1000 satoshis to Laszlo in the first output, and the rest to yourself as change in the second output.',
@@ -2814,8 +2780,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_one: `Before paying Laszlo, let's first get the funds into a 2-of-2 multisig, confirmed on the blockchain. Then we can figure out a way to make that single on-chain transaction work harder—to do more with less.`,
       heading_two: 'Instructions',
       multisig_one: 'Fill in the output amount and the output script',
-      multisig_two:
-        'Sign the input by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign and Broadcast</span>',
+      multisig_two: 'Sign the input by clicking "Sign"',
       heading_three: 'Hints',
       hint_one_a: `You and Laszlo want to work together in the future to spend output 0 with <br/> `,
       hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(LASZLO) SIG(YOU) </span>`,
@@ -2834,10 +2799,10 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_one: `A new tab appears on your ePhone Infinity: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Refund</span> which starts another TX template on the same screen, with an arrow from the <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multisig</span> output to this TX input.`,
       heading_two: 'Instructions',
       refund_list_one: `Fill in the output amount and the output script`,
-      refund_list_two: `Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> then he can tell us if he will sign it.`,
+      refund_list_two: `Send it to Laszlo by clicking "Sign" then he can tell us if he will sign it.`,
       refund_list_three: `Don't sign it yourself yet! Let's see what Laszlo thinks, first`,
       heading_three: 'Hints',
-      hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU)</span>`,
+      hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span>`,
     },
     updating_the_state_two: {
       title: 'Securing payments',
@@ -2878,14 +2843,14 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       time_lock_list_one:
         'Add a 700 block delay before you can spend the output',
       time_lock_list_two:
-        'Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> so he can sign it',
+        'Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign</span> so he can sign it',
       time_lock_list_three: "Don't sign it yourself yet!",
       heading_two: 'Hints',
       paragraph_one: 'Output 0 is spent by EITHER:',
       hint_one:
-        'The initial stack if you claim the funds after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU) 1</span> ',
+        'The initial stack if you claim the funds after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span> ',
       hint_two:
-        'The initial stack if Laszlo claims the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span> ',
+        'The initial stack if Laszlo claims the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span> ',
     },
     updating_the_state_six: {
       title: 'Channel open with Laszlo',
@@ -2905,7 +2870,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       list_three:
         'That refund transaction specifies two options for how the funds can be spent:',
       list_three_sub_one:
-        'You to get all 99,000 satoshis back accounting for fees after 700 blocks, or',
+        'You to get all 100,000 satoshis back after 700 blocks, or',
       list_three_sub_two:
         'Laszlo gets all the money if he gets the private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span> from you',
       list_four:
@@ -2931,10 +2896,9 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       list_four: `Don't sign it yourself yet!`,
       heading_three: `Hints`,
       paragraph_three: `Output 0 is spent by either:`,
-      hint_one: `The 'Refund' tab is now known as 'Initial Commitment'. You can use it to see the script you wrote for the previous state.`,
-      hint_two:
+      hint_one:
         'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU) 1 </span>',
-      hint_three: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_2) SIG(LASZLO) 0 </span>`,
+      hint_two: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_2) SIG(LASZLO) 0 </span>`,
       paragraph_four: `Output 1 is spent by Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span>`,
     },
     making_a_payment_three: {
@@ -2960,11 +2924,10 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       list_one: `Fill in the amounts and output scripts for Laszlo's commitment transaction`,
       list_two: `Sign it and send it to Laszlo, who will then sign your commitment transaction and send that back to you`,
       heading_three: 'Hints',
-      hint_one: `You can switch to the 'Commitment_you' tab to see the script you wrote for your commitment transaction.`,
       paragraph_three: 'Output 0 is spent by either:',
-      hint_two:
+      hint_one:
         'Laszlo, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(LASZLO) 1 </span>',
-      hint_three: `You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_1) SIG(YOU) 0 </span>`,
+      hint_two: `You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_1) SIG(YOU) 0 </span>`,
       paragraph_four: `Output 1 is spent by You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span>`,
     },
     making_a_payment_six: {
@@ -3006,7 +2969,6 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
         list_four: `<span className="font-semibold">Miner fees:</span> 1,000 sats`,
       },
       paragraph_eight: `All three of these transactions are signed and valid, but Laszlo hasn't handed you a Lightning Lemonade yet. Why not? Only one thing left to do, send Laszlo your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>!`,
-      success_bar: 'Send REVOCATION_YOU_1 to Laszlo',
     },
     making_a_payment_seven: {
       title: `🍋🍹 Ahhhhhhh, nice.`,
@@ -3092,25 +3054,6 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
         'The <Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> is here to guide future generations of open-source contributors. Becoming a present day bitcoin hero today is just one click away.',
       paragraph_four: 'We are all Satoshi.',
     },
-    tab_data: {
-      signed: 'signed',
-      pending: 'pending',
-      deposit:
-        'This is an output of 101,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.',
-      payment: 'This is your off-chain payment to Laszlo.',
-      multisig:
-        'This transaction will fund a multisig output between you and Laszlo.',
-      refund_0:
-        'This transaction ensures funds are not lost if Laszlo disappears.',
-      refund_1:
-        'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your Lightning Lemonade.',
-      refund_2:
-        'This transaction ensures funds are not lost if Laszlo disappears. It also prevents you from claiming the funds immediately after paying for your Lightning Lemonade. If you try to take a full refund, including the 1,000 satoshis used to pay for the Lightning Lemonade, the 700 block delay gives Laszlo a few days to notice.',
-      commitment_you:
-        'This is the second commitment transaction for this payment channel, that pays Laszlo 1,000 sats',
-      commitment_laszlo:
-        'This is Laszlo’s version of the commitment transaction.',
-    },
     resources: {
       output_zero_sig: 'Output 0 Signature',
       output_one_sig: 'Output 1 Signature',
@@ -3125,167 +3068,167 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
 
   ///CHALLENGE PAGE
   challenge_list: {
-    coming_soon: 'Coming soon. Hang tight.',
+    coming_soon: 'Prochainement. Patience !',
   },
 
   chapter: {
-    chapter_locked_one: 'Complete Chapter',
-    chapter_locked_two: 'to unlock.',
-    coming_soon: 'Coming soon. Hang tight.',
+    chapter_locked_one: 'Complete le Chapitre',
+    chapter_locked_two: 'pour déverouiller.',
+    coming_soon: 'Prochainement. Patience !',
     description:
-      'Explore the mysteries of Satoshi and learn about bitcoin along the way.',
+      'Découvre les mystères de Satoshi et apprend bitcoin en chemin.',
   },
 
   hero: {
-    title: 'Saving Satoshi',
-    description: 'Code your way through the mysteries of bitcoin.',
-    start_journey: 'Start',
-    tell_more: 'Tell me more',
+    title: 'Sauver Satoshi',
+    description: 'Code ton chemin au travers des mystères de bitcoin.',
+    start_journey: 'Démarrer',
+    tell_more: 'En savoir plus',
   },
 
   footer: {
-    paragraph_one: 'An open-source production by the bitcoin community.',
-    link: 'Check the code',
+    paragraph_one: 'Une production open-source per la communauté bitcoin.',
+    link: 'Jètes un œil au code',
   },
 
   navbar: {
     intro: 'Intro',
-    chapter: 'Chapter',
-    chapter_complete: 'Chapter complete',
+    chapter: 'Chapitre',
+    chapter_complete: 'Chapitre completé',
     challenge: 'Challenge',
-    help_tooltip: 'Need help?',
-    your_language: 'Your Language',
+    help_tooltip: "Besoin d'aide?",
+    your_language: 'Ta Langue de choix',
   },
 
   modal_signin: {
-    heading: 'Sign in',
+    heading: 'Connecte toi',
     pre_signin_paragraph_one:
-      'Enter your private key below to restore your account and progress.',
+      'Entre ta clé privée ci-dessous pour restaurer ton compte et tes progrès.',
     post_signin_paragraph_one:
-      'Nice to see you return to save Satoshi! You can go directly to your last lesson from here.',
-    prompt: 'Enter your private key',
-    confirm: 'Sign in',
-    create_account: 'Don’t have an account?',
-    login: 'Log in',
-    welcome_back: 'Welcome back!',
-    progress_redirect: 'Take me to where I left off',
+      'Content de te voir revenir pour sauver Satoshi ! Tu peux accéder directement à ta dernière leçon depuis ici.',
+    prompt: 'Entre ta clé privée',
+    confirm: 'Connecte toi',
+    create_account: 'Pas de compte?',
+    login: 'Connecte toi',
+    welcome_back: 'Beinvenue!',
+    progress_redirect: "Repars d'où je me suis arrêté",
   },
 
   modal_logout: {
-    heading: 'You are logged in',
+    heading: 'Tu es connecté',
     paragraph_one:
-      'Your session will remain active until you sign out using the button below.',
-    private_key: 'Your private key',
-    signout: 'Sign out',
+      "Ta session restera active jusqu'à ce que tu te déconnectes en utilisant le bouton ci-dessous.",
+    private_key: 'Ta clé privée',
+    signout: 'Deconnection',
   },
 
   modal_signup: {
-    heading: 'Save your progress',
+    heading: 'Sauvegarde ton progrés',
     paragraph_one:
-      'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.',
-    subheading_one: 'Choose an avatar',
-    subheading_two: 'Back up your private key',
+      'Copie et sauvegarde un code simple pour sauvegarder et restorer ton progrès dans ce navigateur. Si tu as déjà un code, restore ton progrès ici.',
+    subheading_one: 'Choisi un avatar',
+    subheading_two: 'Sauvegarde ta clé privée',
     generate:
-      'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.',
-    confirm: 'Done',
+      "Paré/e? Code copié et sauvé? Sois sur/e de bien la sauvegarder, il n'est pas récuperable si tu le perds.",
+    confirm: 'Terminé',
     acknowledged:
-      'I acknowledge I have saved this private key and know that I will need it for challenges in the future.',
+      'Je confirme avoir sauvegardé cette clé privée et je comprends en avoir besoin pour les challenges à venir.',
   },
 
   difficulty_selection: {
-    NORMAL: 'Enable hard mode to increase the difficulty of the challenges.',
-    HARD: 'Disable hard mode to decrease the difficulty of the challenges.',
+    NORMAL: 'Active mode hard pour augmenter la difficulté des challenges.',
+    HARD: 'Désactive mode hard pour réduire la difficulté des challenges.',
   },
 
   social: {
-    twitter_share: 'Share via X',
-    nostr_share: 'Share via nostr',
-    sharing: 'Sharing...',
-    shared: 'Shared!',
-    share_error: 'Failed to share',
+    twitter_share: 'Partager via X',
+    nostr_share: 'Partager via nostr',
+    sharing: 'Partage...',
+    shared: 'Partagé!',
+    share_error: 'Echec du partage',
   },
 
   disclaimer: {
     description:
-      'We’re excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>',
+      'Nous sommes impatients que tu commences. Note que certains défis nécessitent des compétences de base en programmation (des astuces sont disponibles). Essaye et partage tes  <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">retours</Link>.',
   },
 
   opcode: {
-    run: 'Run the Script',
+    run: 'Lance le Script',
     reset: 'Reset',
   },
 
   status_bar: {
-    begin_message: 'Complete the challenge above to continue...',
-    error_message: 'Hm... that is not quite right yet...',
-    in_progress_message: 'Looking good so far...',
-    success_message: 'Nicely done!',
-    next_step_message: 'Looks good now lets move on to the next step.',
-    im_stuck: "I'm Stuck",
-    try_again: 'Try Again',
-    next: 'Next',
-    skip_challenge_first: "Let's move on to the first challenge!",
-    skip_challenge_last: "Let's move on to the last challenge!",
+    begin_message: 'Complete le challenge ci-dessus pour continuer...',
+    error_message: "Hm... c'est pas encore correct...",
+    in_progress_message: 'Semble bien jusque là...',
+    success_message: 'Bien joué!',
+    next_step_message: "C'est bon, passons à l'étape suivante.",
+    try_again: 'Essaie encore',
+    next: 'Suivant',
+    skip_challenge_first: 'Avançons au premier challenge!',
+    skip_challenge_last: 'Avançons au dernier challenge!',
   },
 
   hasher: {
-    placeholder: 'Type here...',
-    return_hash: 'Below you will see your input converted to a hash',
+    placeholder: 'Tape ici...',
+    return_hash: 'Ci-dessous tu trouveras ta saisie convertie en hash',
   },
 
   hashrate: {
-    start: 'Start',
-    running: 'Running',
-    blocks_found: 'Blocks found',
-    hashrate: 'Hashrate',
-    partial_solutions: 'Partial solutions',
+    start: 'Commencer',
+    running: 'En exécution',
+    blocks_found: 'Blocks trouvés',
+    hashrate: 'Taux de Hashing',
+    partial_solutions: 'Solutions Partielles',
   },
 
   runner: {
-    run: 'Run the script',
-    running: 'Running',
+    run: 'Lancer le script',
+    running: 'En exécution',
     pause: 'Pause',
-    result: 'Result',
-    computing: 'Computing...',
+    result: 'Résultat',
+    computing: 'Calcul en cours...',
     evaluation: 'Evaluation',
-    script_output: 'Script output',
-    waiting: 'Waiting for your input above...',
-    poor: "This is valid code but it's not quite what we are looking for. Try again.",
-    good: 'Good job, its not quite perfect but still considered correct. Keep working or continue, your choice.',
-    success: 'Great work your code looks great!',
+    script_output: 'Sortie du Script',
+    waiting: 'En attente de ta saisie ci-dessus...',
+    poor: "Ce code est valide mais ce n'est pas exactement ce qu'on cherche. Essaie encore.",
+    good: "Boen joué, ce n'est pas complètement parfait mais est quand même considéré correct. Améliore ou continue, c'est ton choix.",
+    success: 'Bon travail, ton code est excellent!',
     language_tabs: {
-      locked: "Language disabled since you've started this chapter in",
-      reset: 'Reset the terminal',
+      locked:
+        'La langue est désactivée puisque que tu as commencé ce chapitre en',
+      reset: 'Reset le terminal',
     },
   },
   notfound: {
-    first: 'Hmm...where are we?',
-    second: 'It’s not quite clear where or what this place is.',
-    third: 'We might have gotten lost in space (or time).',
-    back_safety: 'Back to safety',
+    first: 'Hmm...on est où?',
+    second: "C'est pas super clair quel genre d'endroit c'est",
+    third: "On a du se perdre dans l'espace (ou le temps).",
+    back_safety: 'De retour sain et sauf',
   },
   error: {
-    first: 'Something is wrong!',
-    second: 'Holocat may have chewed on some cables again. Bad cat!',
-    reload: 'Retry',
+    first: 'Quelque chose ne va pas!',
+    second: 'Holochat a du machouillé les cables encore. Méchant chat!',
+    reload: 'Réesayer',
   },
   help_page: {
-    main_heading: 'Learning Resources',
+    main_heading: "Resources d'apprentissage.",
     main_subheading:
-      'What helpful info and resources can we provide for further learning?',
-    tips_heading: 'Tips',
+      'Quelles informations et ressources utiles pouvons-nous fournir pour un apprentissage supplémentaire?',
+    tips_heading: 'Conseils',
     tips_subheading:
-      'What specific tips can/do we want to give learners if they are stuck?',
-    spoilers_heading: 'Spoilers',
-    spoilers_confirm: 'Yes, I want to see the solution',
-    pseudo_confirm: 'Yes, I want to see the pseudocode',
-    solution: 'Solution to this challenge',
-    pseudo_solution: 'Pseudocode solution to this challenge',
-    solution_one: 'Solution to part one of this challenge',
+      "Quels conseils spécifiques pouvons/souhaitons-nous donner aux étudiants s'ils sont bloqués?",
+    spoilers_heading: 'Révéler la solution',
+    spoilers_confirm: 'Oui, je veux voir la solution',
+    pseudo_confirm: 'Oui, je veux voir le pseudocode',
+    solution: 'Solution à ce challenge',
+    pseudo_solution: 'Solution Pseudocode à ce challenge',
+    solution_one: 'Solution à la première partie de ce challenge',
     feedback:
-      'Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
+      'Tes retours sont précieux et nous aident à améliorer notre travail. Merci de nous faire part de test commentaires en utilisant <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">ce lien</a>. ',
     help_suggestion:
-      'If you\'re ever stuck, press the "?" button in the top-right corner. It provides helpful resources and tips.',
+      'Si jamais tu es bloqué, appuie sur le bouton « ? » dans le coin supérieur droit. Il fournit des ressources et des conseils utiles',
   },
 }
 export default translations

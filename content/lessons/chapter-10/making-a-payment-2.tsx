@@ -76,11 +76,14 @@ export default function MakingAPayment2({ lang }) {
             {t('chapter_ten.making_a_payment_two.heading_three')}
           </Text>
           <Text className="mt-4 text-lg md:text-xl">
+            {t('chapter_ten.making_a_payment_two.hint_one')}
+          </Text>
+          <Text className="mt-4 text-lg md:text-xl">
             {t('chapter_ten.making_a_payment_two.paragraph_three')}
           </Text>
           <ul className="ml-4 mt-4 list-disc  font-nunito text-xl">
-            <li>{t('chapter_ten.making_a_payment_two.hint_one')}</li>
             <li>{t('chapter_ten.making_a_payment_two.hint_two')}</li>
+            <li>{t('chapter_ten.making_a_payment_two.hint_three')}</li>
           </ul>
           <Text className="mt-4 text-lg md:text-xl">
             {t('chapter_ten.making_a_payment_two.paragraph_four')}
