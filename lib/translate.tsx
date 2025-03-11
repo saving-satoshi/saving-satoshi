@@ -35,7 +35,7 @@ export function t(key: string | undefined, lang: string) {
 
   if (!translation) {
     // If the translation is unavailable in the locale we just make english the default.
-    translation = get(translations, `en.${key}`) || ''
+    translation = get(translations, `en.${key}`) || key
   }
 
   if (
