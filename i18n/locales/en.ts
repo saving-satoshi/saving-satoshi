@@ -103,7 +103,7 @@ const translations = {
       paragraph_four:
         'We want to emphasize that your privacy is of utmost importance to us. We do not collect any personally identifiable information, and the data we gather is used solely for the purpose of improving our app. Your data is never shared or sold to third parties.',
       paragraph_five:
-        "If you have any concerns or questions about our data collection practices or privacy policies, please don't hesitate to contact us. We are committed to providing you with a transparent and secure experience while using our app.",
+        'If you have any concerns or questions about our data collection practices or privacy policies, please don´t hesitate to contact us. We are committed to providing you with a transparent and secure experience while using our app.',
     },
 
     contributors: {
@@ -132,15 +132,17 @@ const translations = {
     intro_one: {
       title: 'Intro',
       nav_title: 'Miner protest',
-      paragraph_one: `Moments later, your Hover Screen activates.`,
-      paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the well-dressed CEO of BitRey, you run, by far, the largest bitcoin mining pool in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
-      paragraph_three: `—Vanderpoole: “Let’s start from the top. Yes, I am, Deborah, and yes, I do. The Vanderpooles—my well-dressed daddy and his well-dressed daddy before him—have been mining since block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. Miners cannot survive on fees alone.”`,
+      paragraph_one: 'Moments later, your Hover Screen activates.',
+      paragraph_two:
+        '—Deborah Chunk: “Thomas Vanderpoole. As the well-dressed CEO of BitRey, you run, by far, the largest bitcoin mining pool in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”',
+      paragraph_three:
+        '—Vanderpoole: “Let’s start from the top. Yes, I am, Deborah, and yes, I do. The Vanderpooles—my well-dressed daddy and his well-dressed daddy before him—have been mining since block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. Miners cannot survive on fees alone.”',
       start: 'Continue',
     },
 
     intro_two: {
       title: 'Genesis',
-      nav_title: "Satoshi's holocat",
+      nav_title: 'Satoshi´s holocat',
       paragraph_one:
         'On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.',
       paragraph_two:
@@ -182,14 +184,15 @@ const translations = {
     genesis_three: {
       title: 'Genesis',
       nav_title: 'Decode the message',
-      heading: "Let's decode the message",
+      heading: 'Let´s decode the message',
       paragraph_one:
         'The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.',
       paragraph_two:
         'Copy and paste the command below into the Terminal in the code block and press “Enter”.',
-      terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'`,
+      terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = \'04fff...e6b73\'`,
       waiting_for_input: 'Waiting for you to write and run the script...',
-      success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.`,
+      success:
+        'Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let´s keep going.',
     },
 
     genesis_four: {
@@ -202,7 +205,7 @@ const translations = {
 
     transacting_one: {
       title: 'Transacting',
-      nav_title: "What's in a transaction",
+      nav_title: 'What´s in a transaction',
       heading: 'What’s in a transaction?',
       paragraph_one:
         'Two main components of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.',
@@ -268,8 +271,7 @@ const translations = {
     resources: {
       genesis_two: {
         scriptsig_heading: 'ScriptSig',
-        scriptsig_paragraph:
-          "The 'scriptSig' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The 'scriptSig' is the data that goes into the input's scriptSig field.",
+        scriptsig_paragraph: `The \'scriptSig\' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The \'scriptSig\' is the data that goes into the input´s scriptSig field.`,
         block_explorer_heading: 'Block Explorer',
         block_explorer_paragraph:
           'A block explorer is a crucial tool for navigating and understanding blockchain networks. It acts as a user-friendly interface to inspect and analyze the data stored on a blockchain. With a block explorer, users can explore transaction histories, view account balances, and track the progress of individual blocks and transactions.',
@@ -279,12 +281,12 @@ const translations = {
         bash_heading: 'Bash Commands',
         bash_paragraph:
           'We are using some basic bash command and options to reverse the compression Satoshi did on the text put into the genesis block.',
-        tip: "The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.",
+        tip: `The \'xxd\' command turns a file into hex and adding the \'-r\' tag reverses it allowing hex to be translated into text. The \'-p\' tag then prints it to the console allowing you to read the output.`,
       },
       transacting_two: {
         transactions_heading: 'Transactions',
         transactions_paragraph:
-          "A transaction in the world of cryptocurrencies is akin to a single atomic payment, where it involves the process of destroying existing coins and creating new ones. When someone initiates a cryptocurrency transaction, they're essentially instructing the blockchain to transfer a specific amount of coins from one digital wallet to another. To achieve this, the transaction consumes the sender's existing coins and generates new ones for the recipient, effectively updating the ownership ledger.",
+          'A transaction in the world of cryptocurrencies is akin to a single atomic payment, where it involves the process of destroying existing coins and creating new ones. When someone initiates a cryptocurrency transaction, they´re essentially instructing the blockchain to transfer a specific amount of coins from one digital wallet to another. To achieve this, the transaction consumes the sender´s existing coins and generates new ones for the recipient, effectively updating the ownership ledger.',
         bitcoin_script_heading: 'Bitcoin Script',
         bitcoin_script_paragraph:
           'Bitcoin Script is a simple, stack-based programming language used in bitcoin transactions to define the conditions under which bitcoins can be spent. It consists of various opcodes (short for operation codes) that specify what operations should be performed on the data within the script.',
@@ -294,7 +296,7 @@ const translations = {
         secrets_heading: 'Secrets In Bitcoin',
         secrets_paragraph:
           'As we saw from the previous challenge, secrets embedded into bitcoin scripts has been a part of its history since the genesis block. Whether used to simply store some information in the blockchain, to pass information through bitcoin script to give some value external to bitcoin, or to pass messages to others, people have been storing things in the blockchain other than inputs and outputs since the beginning.',
-        tip: "When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string",
+        tip: `When decoding the string with the \'xxd\' command, remember that we are not using a variable this time, we need to input the entire string`,
       },
     },
   },
@@ -331,7 +333,8 @@ const translations = {
       nav_title: 'Turning on the computer',
       paragraph_one:
         'In the corner, a dim, barely working computer monitor with a note stuck to it sits blinking. The note says “Turn them on, stupid."',
-      paragraph_two: `—HOLOCAT: “How rude. Wow; a mechanical keyboard. I've heard about these things. Supposedly, they were so loud that they cost users their hearing, and were banned.”`,
+      paragraph_two:
+        '—HOLOCAT: “How rude. Wow; a mechanical keyboard. I´ve heard about these things. Supposedly, they were so loud that they cost users their hearing, and were banned.”',
       paragraph_three:
         'Holocat jumps onto the keyboard and walks across it, showing you what keys to hit.',
     },
@@ -524,18 +527,15 @@ const translations = {
       },
       hashing_four: {
         power_of_random_heading: 'The Power of Random',
-        power_of_random_paragraph:
-          "Like a perfectly random scenario, probability-wise the SHA-256 hash function is completely random for each addition of new data. If you hashed the novel 'War and Peace', then added just one extra letter to the original text, it would result in a completely different hash. Each new character changes the hash in a completely random manner. Considering that there are 16 possible characters in a hexadecimal system (0-9 and a-f), how likely is it to find a hash starting with '0'?",
-        tip: "Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with '00' is? How about '000'?",
-        spoiler: "Try something starting with the letter 's'.",
+        power_of_random_paragraph: `Like a perfectly random scenario, probability-wise the SHA-256 hash function is completely random for each addition of new data. If you hashed the novel \'War and Peace\', then added just one extra letter to the original text, it would result in a completely different hash. Each new character changes the hash in a completely random manner. Considering that there are 16 possible characters in a hexadecimal system (0-9 and a-f), how likely is it to find a hash starting with \'0\'?`,
+        tip: `Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with \'00\' is? How about \'000\'?`,
+        spoiler: `Try something starting with the letter \'s\'.`,
       },
       hashing_six: {
         collision_resistance_heading: 'SHA256 and collision resistance',
-        collision_resistance_paragraph:
-          "SHA-256 returns a 256-bit (64-characters) hash value, which is a unique representation of the input data. It belongs to the family of hash functions based on the Merkle–Damgård construction, a method for building hash functions from simpler compression functions. In this construction, the input message is divided into fixed-size blocks, and a chaining mechanism iteratively processes these blocks, combining each block's output with the result of the previous block. This process continues until the entire message is processed, producing the final hash value. SHA-256's robust security properties and collision resistance make it a cornerstone of data integrity and authentication in modern cryptography.",
+        collision_resistance_paragraph: `SHA-256 returns a 256-bit (64-characters) hash value, which is a unique representation of the input data. It belongs to the family of hash functions based on the Merkle–Damgård construction, a method for building hash functions from simpler compression functions. In this construction, the input message is divided into fixed-size blocks, and a chaining mechanism iteratively processes these blocks, combining each block´s output with the result of the previous block. This process continues until the entire message is processed, producing the final hash value. SHA-256\'s robust security properties and collision resistance make it a cornerstone of data integrity and authentication in modern cryptography.`,
         tip: 'No real tips in this lesson, as you continue in Saving Satoshi you will find that we hold your hand less and less and let you find the solution on your own.',
-        spoiler:
-          "Knowing that each new character recalculates a completely random hash you could keep adding new characters until you start with '00' or more... or try the word trigonometry.",
+        spoiler: `Knowing that each new character recalculates a completely random hash you could keep adding new characters until you start with \'00\' or more... or try the word trigonometry.`,
       },
       scripting_one: {
         hash_libraries_heading: 'Hash Functions',
@@ -543,7 +543,7 @@ const translations = {
           'The crypto library in Node.js and the hashlib library in python are the code libraries that implement the algorithms we will use into useful tools for developers. These libraries are thoroughly vetted to ensure their accuracy and security as many people rely on them to secure valuable and important systems.',
         nonce_heading: 'Nonce',
         nonce_paragraph:
-          "A nonce, short for (number used once) is a random or semi-random number that is employed in various cryptographic and computational processes. Its primary purpose is to introduce unpredictability and ensure that a particular operation or calculation can't be easily repeated or predicted. The nonce is critical to the security of bitcoin mining but we will learn more about that later...",
+          'A nonce, short for (number used once) is a random or semi-random number that is employed in various cryptographic and computational processes. Its primary purpose is to introduce unpredictability and ensure that a particular operation or calculation can´t be easily repeated or predicted. The nonce is critical to the security of bitcoin mining but we will learn more about that later...',
         tip_one:
           'Ensure you are properly decoding the inputs. The hashing algorithms often return objects decoded in bytes, but we want to be able to read it in hex format!',
         tip_two:
@@ -553,8 +553,7 @@ const translations = {
       },
       mining_one: {
         mining_heading: 'Mining',
-        mining_paragraph:
-          "Mining is where these concepts all come together. Bitcoin mining is the process by which new bitcoins are created and transactions are added to the blockchain. Miners compete to solve complex mathematical puzzles by finding a unique, valid 'nonce' in each block of transactions. This proof-of-work process demands significant computational power and energy, making it a secure and decentralized way to validate transactions. Successful miners are rewarded with newly minted bitcoins and transaction fees, and they play a critical role in maintaining the integrity of the bitcoin network.",
+        mining_paragraph: `Mining is where these concepts all come together. Bitcoin mining is the process by which new bitcoins are created and transactions are added to the blockchain. Miners compete to solve complex mathematical puzzles by finding a unique, valid \'nonce\' in each block of transactions. This proof-of-work process demands significant computational power and energy, making it a secure and decentralized way to validate transactions. Successful miners are rewarded with newly minted bitcoins and transaction fees, and they play a critical role in maintaining the integrity of the bitcoin network.`,
         difficulty_heading: 'Difficulty',
         difficulty_paragraph:
           'The mining difficulty is what allows the block to remain at an average of 10 minutes between each new block.',
@@ -592,7 +591,7 @@ const translations = {
       step_one_heading: 'We’re off to the races',
       step_one_paragraph_one:
         'We’re now mining 100 blocks to see how many you stack up against BitRey.',
-      step_two_heading: `That didn't go well!`,
+      step_two_heading: 'That didn´t go well!',
       step_two_paragraph_one:
         'Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled miners. Let’s see if we can defeat BitRey for the next 100 blocks with the other miners. Bitcoin has been running for over a century and it’s not going down without a fight.',
     },
@@ -601,11 +600,12 @@ const translations = {
       title: 'Pool vs. BitRey',
       nav_title: 'Finding friends',
       waiting_screen_heading: 'We need support!',
-      waiting_screen_paragraph_one: `Your miners in the warehouse don’t stand a chance. If you combine your hash power with other miners, you might be able to hold the line against BitRey's assault.`,
+      waiting_screen_paragraph_one:
+        'Your miners in the warehouse don’t stand a chance. If you combine your hash power with other miners, you might be able to hold the line against BitRey´s assault.',
       waiting_screen_paragraph_two:
         'Let’s wait until the others join your cause so we can combine forces.',
       waiting_button: 'Waiting...',
-      continue_button: "Let's go",
+      continue_button: 'Let´s go',
     },
 
     pool_two: {
@@ -714,7 +714,7 @@ const translations = {
       solo: {
         hashrate_heading: 'Mining Hashrate',
         hashrate_paragraph:
-          "An individual miner's hashrate refers to the computational power they contribute to the bitcoin network's mining process. It is the rate at which their mining hardware can perform the necessary mathematical calculations to attempt to mine new blocks. The hashrate of an individual miner is typically measured in hashes per second, or at scale in terahashes, one-trillion hashes per second (TH/s), depending on the scale of their mining operation and the capabilities of their mining hardware.",
+          'An individual miner´s hashrate refers to the computational power they contribute to the bitcoin network´s mining process. It is the rate at which their mining hardware can perform the necessary mathematical calculations to attempt to mine new blocks. The hashrate of an individual miner is typically measured in hashes per second, or at scale in terahashes, one-trillion hashes per second (TH/s), depending on the scale of their mining operation and the capabilities of their mining hardware.',
       },
       pool: {
         pool_heading: 'Mining Pool',
@@ -723,11 +723,9 @@ const translations = {
       },
       coop: {
         distribution_heading: 'Job Distribution',
-        distribution_paragraph:
-          "Mining pools take precautions to ensure that their participants do not mine the same nonce for the same block. This is important because, in the bitcoin mining process, miners compete to find a nonce that results in a valid block. If two miners in the same pool were to work on the same nonce simultaneously, it would be inefficient, and only one would receive the block reward. To prevent this, mining pools use a process called 'work assignment' or 'job distribution' to allocate work efficiently. Mining pools distribute work to individual miners or participants. When a new block needs to be mined, the pool's server (or pool operator) creates a unique 'job' for the miners. This job includes all the information needed to mine the block, such as the current list of unconfirmed transactions, the previous block's header, and the target difficulty.",
+        distribution_paragraph: `Mining pools take precautions to ensure that their participants do not mine the same nonce for the same block. This is important because, in the bitcoin mining process, miners compete to find a nonce that results in a valid block. If two miners in the same pool were to work on the same nonce simultaneously, it would be inefficient, and only one would receive the block reward. To prevent this, mining pools use a process called \'work assignment\' or \'job distribution\' to allocate work efficiently. Mining pools distribute work to individual miners or participants. When a new block needs to be mined, the pool´s server (or pool operator) creates a unique \'job\' for the miners. This job includes all the information needed to mine the block, such as the current list of unconfirmed transactions, the previous block´s header, and the target difficulty.`,
         shares_heading: 'Submitting Shares',
-        shares_paragraph:
-          "Miners work on these assigned jobs and continuously attempt to find the correct nonce. When a miner believes they have a solution, they submit what's called a 'share' to the pool server. This share demonstrates that the miner is actively working on solving the problem. Shares are much easier to find than the actual solution, but they serve as proof of the miner's efforts.",
+        shares_paragraph: `Miners work on these assigned jobs and continuously attempt to find the correct nonce. When a miner believes they have a solution, they submit what´s called a \'share\' to the pool server. This share demonstrates that the miner is actively working on solving the problem. Shares are much easier to find than the actual solution, but they serve as proof of the miner´s efforts.`,
       },
       split: {
         payout_heading: 'Payout Schemes',
@@ -735,16 +733,16 @@ const translations = {
           'A mining pool can choose to distrubute the block rewards in several ways the differ in some subtle but key ways:',
         pps_heading: 'Pay-Per-Share (PPS)',
         pps_paragraph:
-          "In PPS, miners receive a fixed payout for each valid share they submit, regardless of whether the pool successfully mines a block or not. This system provides miners with a steady and predictable income, making it a preferred choice for those who value consistency in their earnings. PPS minimizes the variance in rewards, as miners are compensated for their work on a per-share basis, offering a reliable source of income in the world of volatile cryptocurrency mining. However, PPS may deduct a fee from the miner's earnings if the pool doesn't successfully mine a block. This fee is meant to cover operational costs and mitigate the risk for the pool operator in case no blocks are mined within a certain timeframe. In traditional PPS, miners receive a reduced payout when the pool faces difficulties.",
+          'In PPS, miners receive a fixed payout for each valid share they submit, regardless of whether the pool successfully mines a block or not. This system provides miners with a steady and predictable income, making it a preferred choice for those who value consistency in their earnings. PPS minimizes the variance in rewards, as miners are compensated for their work on a per-share basis, offering a reliable source of income in the world of volatile cryptocurrency mining. However, PPS may deduct a fee from the miner´s earnings if the pool doesn´t successfully mine a block. This fee is meant to cover operational costs and mitigate the risk for the pool operator in case no blocks are mined within a certain timeframe. In traditional PPS, miners receive a reduced payout when the pool faces difficulties.',
         pplns_heading: 'Pay-Per-Last-N-Shares (PPLNS)',
         pplns_paragraph:
-          "PPLNS takes into account a miner's contribution over a specific window of the last N shares. Miners are paid based on the number and difficulty of shares they've submitted within that window. PPLNS encourages miners to stay active in the pool, as it rewards consistent participation and helps to reduce the risk of pool-hopping strategies. Miners receive payouts when the pool successfully mines a block, and the rewards are distributed proportionally to their recent contributions, providing a fair and performance-driven approach to earning in the mining ecosystem.",
+          'PPLNS takes into account a miner´s contribution over a specific window of the last N shares. Miners are paid based on the number and difficulty of shares they´ve submitted within that window. PPLNS encourages miners to stay active in the pool, as it rewards consistent participation and helps to reduce the risk of pool-hopping strategies. Miners receive payouts when the pool successfully mines a block, and the rewards are distributed proportionally to their recent contributions, providing a fair and performance-driven approach to earning in the mining ecosystem.',
         pps_plus_heading: 'Pay Per Share + (PPS+)',
         pps_plus_paragraph:
-          "PPS+ offers miners a fixed payment for each share they contribute to the pool's mining efforts. However, PPS+ typically includes an additional bonus or premium as an incentive to miners who contribute to the pool's stability and reliability. This bonus is designed to encourage miners to stay active in the pool and foster long-term participation. PPS+ provides miners with a consistent and predictable income, while the added bonus makes it an attractive option for those seeking both reliability and extra rewards in the world of cryptocurrency mining.",
+          'PPS+ offers miners a fixed payment for each share they contribute to the pool´s mining efforts. However, PPS+ typically includes an additional bonus or premium as an incentive to miners who contribute to the pool´s stability and reliability. This bonus is designed to encourage miners to stay active in the pool and foster long-term participation. PPS+ provides miners with a consistent and predictable income, while the added bonus makes it an attractive option for those seeking both reliability and extra rewards in the world of cryptocurrency mining.',
         fpps_heading: 'Full Pay Per Share (FPPS)',
         fpps_paragraph:
-          "In Full PPS, miners receive a fixed payout for every share they submit to the pool, irrespective of whether the pool successfully mines a block or not. This approach provides miners with a steady and predictable income, making it an attractive choice for those who value reliability in their earnings. Unlike traditional PPS, Full PPS ensures that miners receive their full payout for their contributed work, without any potential deductions, even if the pool faces occasional difficulties. It's a stable and straightforward method that appeals to miners seeking consistent income in the world of cryptocurrency mining.",
+          'In Full PPS, miners receive a fixed payout for every share they submit to the pool, irrespective of whether the pool successfully mines a block or not. This approach provides miners with a steady and predictable income, making it an attractive choice for those who value reliability in their earnings. Unlike traditional PPS, Full PPS ensures that miners receive their full payout for their contributed work, without any potential deductions, even if the pool faces occasional difficulties. It´s a stable and straightforward method that appeals to miners seeking consistent income in the world of cryptocurrency mining.',
       },
     },
   },
@@ -776,7 +774,7 @@ const translations = {
       list_one: ' Private key',
       list_two: 'Public key',
       paragraph_two:
-        "But wait, you don’t even have a wallet! You might be wondering where you can buy one. While you can purchase hardware to build certain kinds of wallets, you can actually just make one with your computer or mobile device. Let's do it!",
+        'But wait, you don’t even have a wallet! You might be wondering where you can buy one. While you can purchase hardware to build certain kinds of wallets, you can actually just make one with your computer or mobile device. Let´s do it!',
       paragraph_three:
         'If you signed up for an account at any point, you got something called a personal code. In cryptography, this is called a “private key” and it is often part of a pair:',
       paragraph_four:
@@ -892,8 +890,7 @@ const translations = {
         key_three: 'Regtest',
         value_three: 'bcrt',
       },
-      paragraph_five:
-        "Since we're making a Testnet address, we will be using the 'tb' prefix.",
+      paragraph_five: `Since we´re making a Testnet address, we will be using the \'tb\' prefix.`,
       paragraph_six:
         'After the data has been encoded to bech32, we are left with a bitcoin address!',
       paragraph_seven:
@@ -981,7 +978,7 @@ const translations = {
         '—DEBORAH CHUNK: But why wait so long to make this earth-shattering disclosure?',
     },
     intro_two: {
-      nav_title: "Vanderpoole's bold claim",
+      nav_title: 'Vanderpoole´s bold claim',
       paragraph_one:
         '—VANDERPOOLE: “I didn’t have the courage. There have always been rumors about my family’s history, ones that I could have easily confirmed. But I wasn’t ready for that much publicity. After all, I live a humble, secluded life in a 14th century castle on a dude ranch on my favorite of all my private islands, doing 5–6 interviews like this one from my hot tub every week.”',
       paragraph_two:
@@ -995,13 +992,15 @@ const translations = {
         'Your TXM4H-A Hover Screen chirps to life. You have a new message.',
       paragraph_two: '—HOLOCAT: Don’t forget to boop my nose.',
       paragraph_three: 'You boop her nose',
-      paragraph_four: `—SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message using that wallet's private keys.”`,
+      paragraph_four:
+        '—SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message using that wallet´s private keys.”',
     },
     derive_message_one: {
       title: 'Derive the message',
       nav_title: 'The message in question',
       heading: 'Vanderpoole says he signed a message with Satoshi’s keys:',
-      code_one: `-----BEGIN BITCOIN SIGNED MESSAGE----- \n \n I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever bitcoin transaction confirmed in block #170. This message is signed with the same private key. \n \n -----BEGIN BITCOIN SIGNATURE----- \n \n`,
+      code_one:
+        '-----BEGIN BITCOIN SIGNED MESSAGE----- \n \n I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever bitcoin transaction confirmed in block #170. This message is signed with the same private key. \n \n -----BEGIN BITCOIN SIGNATURE----- \n \n',
       code_two:
         '<span className="break-all"> H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k= </span>',
       code_three: '\n \n-----END BITCOIN SIGNATURE-----',
@@ -1017,15 +1016,16 @@ const translations = {
         'Vanderpoole has provided a signature and a message. Where is the public key?',
     },
     derive_message_three: {
-      nav_title: "Find Satoshi's signature",
+      nav_title: 'Find Satoshi´s signature',
       heading: 'Let’s start with finding Satoshi’s signature',
-      paragraph_one: `Block #170 contains the <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">first bitcoin transaction</link> made from Satoshi to Hal Finney. That transaction only has <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">one input</Link>. Retrieve the scriptSig from that input. It contains Satoshi's signature!`,
+      paragraph_one:
+        'Block #170 contains the <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">first bitcoin transaction</link> made from Satoshi to Hal Finney. That transaction only has <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">one input</Link>. Retrieve the scriptSig from that input. It contains Satoshi´s signature!',
       placeholder: 'Paste the data here',
       success:
         'Nicely done! This is actually Satoshi’s signature, authorizing the transfer of his bitcoin to Hal Finney.',
     },
     derive_message_four: {
-      nav_title: "Find Satoshi's public key",
+      nav_title: 'Find Satoshi´s public key',
       heading: 'So where is his public key?',
       paragraph_one:
         'It’s actually stored along with the bitcoin Satoshi generated by mining block #9.',
@@ -1038,7 +1038,8 @@ const translations = {
     },
     derive_message_five: {
       nav_title: 'Verifiying the signature next',
-      paragraph_one: `In the previous exercise we saw Satoshi got 50 BTC for mining block #9. He used that as input for his transaction to Hal Finney (in block #170), sending 10 BTC to Hal Finney’s public key and returning 40 BTC back to himself as change. Satoshi's private key was used to create a signature authorizing the transfer of those funds.`,
+      paragraph_one:
+        'In the previous exercise we saw Satoshi got 50 BTC for mining block #9. He used that as input for his transaction to Hal Finney (in block #170), sending 10 BTC to Hal Finney’s public key and returning 40 BTC back to himself as change. Satoshi´s private key was used to create a signature authorizing the transfer of those funds.',
       paragraph_two:
         'Next we need to learn how to verify a signature. But something is still missing... what is the message Satoshi signed to authorize the transaction for Hal?',
     },
@@ -1075,19 +1076,19 @@ const translations = {
     derive_message_seven: {
       nav_title: 'Build the message to sign',
       paragraph_one:
-        "It's impossible to sign a message containing it's own signature, so the scriptSig needs to be removed. In the bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.",
+        'It´s impossible to sign a message containing it´s own signature, so the scriptSig needs to be removed. In the bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.',
       paragraph_two:
         'We already found the scriptPubKey in the previous step, you can paste that in the first blank.',
       paragraph_three: {
         a: 'The last thing we need for our transaction message is a',
-        b: '. We\'ll cover this more in the next chapter but for now we\'ll just add the value <span className="font-bold">01000000</span> to the end of the message.',
+        b: `. We\\'ll cover this more in the next chapter but for now we\\'ll just add the value <span className="font-bold">01000000</span> to the end of the message.`,
       },
       tooltip_one: {
         question: 'What are sighash flags?',
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F',
         highlighted: 'sighash type flag',
       },
-      success: "Nice! You've constructed a message to sign.",
+      success: 'Nice! You´ve constructed a message to sign.',
     },
     verify_signature_one: {
       title: 'Verify the signature',
@@ -1123,11 +1124,11 @@ const translations = {
       label_one: 'Paste the R value',
       label_two: 'Paste the S value',
       paragraph_one:
-        "Satoshi's signature is encoded in a system called DER which is a subset of ASN.1.",
+        'Satoshi´s signature is encoded in a system called DER which is a subset of ASN.1.',
       paragraph_two:
         'There are two 32-byte numbers we need to extract. They are referred to as R and S respectively and are each prefixed by the bytes 0220 in the DER sequence. Instead of fully decoding the DER blob, just look for the prefixes and paste the R and S values.',
       paragraph_three:
-        "# Satoshi's signature, from the input scriptSig of the tx to Hal Finney (block 170)",
+        '# Satoshi´s signature, from the input scriptSig of the tx to Hal Finney (block 170)',
     },
     verify_signature_four: {
       nav_title: 'Decode the public key',
@@ -1137,13 +1138,13 @@ const translations = {
       paragraph_one:
         'We learned in chapter 4 that public keys are really points in the ECDSA curve, meaning they have an x and y value. The first byte 04 means "uncompressed" (as opposed to 02 and 03 like we learned in chapter 4). Remove that first byte and the remaining data are 32-byte x and y coordinates. Copy and paste again.',
       paragraph_two:
-        "# Satoshi's public key, from the block 9 coinbase output scriptPubKey",
+        '# Satoshi´s public key, from the block 9 coinbase output scriptPubKey',
     },
     verify_signature_five: {
       title: 'Verify the signature',
       nav_title: 'Test the signature',
       heading: 'Verify the signature!',
-      success: "You've done it! You've verified Satoshi's signature!",
+      success: 'You´ve done it! You´ve verified Satoshi´s signature!',
       paragraph_one:
         'At this point we have everything we need to do some ECDSA math.',
       paragraph_two:
@@ -1151,7 +1152,7 @@ const translations = {
       paragraph_three:
         'We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> that should only return True if everything is valid!',
       paragraph_four:
-        "We know Satoshi's signature is valid, it has been checked by every bitcoin full node since 2010! If your program does not return True something is wrong.",
+        'We know Satoshi´s signature is valid, it has been checked by every bitcoin full node since 2010! If your program does not return True something is wrong.',
       python: {
         paragraph_five_part_one:
           'Hint: the <span className="text-green">pow()</span>',
@@ -1168,9 +1169,8 @@ const translations = {
     validate_signature_one: {
       title: 'Validate the signature',
       nav_title: 'Prepare the message',
-      heading: "Prepare Vanderpoole's message for verification",
-      paragraph_one:
-        'Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we\'ve already defined, but the preparation of the data is a bit different.',
+      heading: 'Prepare Vanderpoole´s message for verification',
+      paragraph_one: `Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we\\'ve already defined, but the preparation of the data is a bit different.`,
       paragraph_two:
         'First, we need to encode his message into an array of bytes corresponding to the following template:',
       paragraph_three: {
@@ -1208,11 +1208,12 @@ const translations = {
       title: 'Validate the signature',
       nav_title: 'See if Vanderpoole was lying',
       heading: 'So, is Vanderpoole a liar?!',
-      paragraph_one: `Let's gather all the necessary components for the program and verify if Vanderpoole's signature actually originated from the private key linked to Satoshi's public key! Please fill in the missing parameters needed to execute the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm"> verify()</span> function using the provided code.`,
+      paragraph_one:
+        'Let´s gather all the necessary components for the program and verify if Vanderpoole´s signature actually originated from the private key linked to Satoshi´s public key! Please fill in the missing parameters needed to execute the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm"> verify()</span> function using the provided code.',
       paragraph_two:
         'Then we can run the program to see if Vanderpoole was lying. Drumroll please...',
       success:
-        "This message indicates that the signature did not originate from Satoshi's public key, as the verification failed.",
+        'This message indicates that the signature did not originate from Satoshi´s public key, as the verification failed.',
     },
     validate_signature_four: {
       title: 'Validate the signature',
@@ -1223,16 +1224,16 @@ const translations = {
       paragraph_two:
         'Please provide the key that successfully completes the verification process, allowing us to identify the public key Vanderpoole used to sign this message.',
       paragraph_three:
-        "Let's see if you can verify Vanderpoole's message and signature using one of THESE keys?",
+        'Let´s see if you can verify Vanderpoole´s message and signature using one of THESE keys?',
       success:
-        "The signature is valid for this public key of Vanderpoole's, this was not Satoshi!",
+        'The signature is valid for this public key of Vanderpoole´s, this was not Satoshi!',
     },
     outro_one: {
       title: 'Outro',
       nav_title: 'Chapter complete',
       heading: 'Vanderpoole lied!',
       paragraph_one:
-        "You learned one of the most important lessons in bitcoin. You didn't trust, you verified.<br><br>In doing so, you discovered that Vanderpoole didn’t use Satoshi’s keys to sign the message, casting a big shadow on his family story, on his credibility, and the credibility of BitRey.<br><br>Now if only you could get that song out of your head.",
+        'You learned one of the most important lessons in bitcoin. You didn´t trust, you verified.<br><br>In doing so, you discovered that Vanderpoole didn’t use Satoshi’s keys to sign the message, casting a big shadow on his family story, on his credibility, and the credibility of BitRey.<br><br>Now if only you could get that song out of your head.',
     },
     resources: {
       derive_message_three: {
@@ -1278,8 +1279,7 @@ const translations = {
           'SigHash flags are a mechanism in bitcoin that define which parts of a transaction are included in the hash that is signed by a private key. Essentially, they determine the scope of commitment by the signer to specific parts of the transaction data. The SigHash flag is a single byte appended to each signature and can vary between inputs within the same transaction. There are several types of SigHash flags you can learn about <Link href="https://river.com/learn/terms/s/sighash-flag" target="_blank" className="underline">here</Link>.',
       },
       verify_signature_two: {
-        tip_one:
-          'JavaScript hint: You can convert a hex string to a buffer of bytes using <span className="p-1 font-mono bg-[#0000004D] m-1">Buffer.from(someString, \'hex\');</span>',
+        tip_one: `JavaScript hint: You can convert a hex string to a buffer of bytes using <span className="p-1 font-mono bg-[#0000004D] m-1">Buffer.from(someString, \\'hex\\');</span>`,
         signature_verification_heading: 'Signature Verification',
         signature_verification_paragraph_one:
           'Signature verification is a mathematical algorithm in which one party provides a piece of data (the signature) that could only be generated if that party knows a secret number (the private key). Verification involves comparing the signature, the public key, and a given message. If the algorithm outputs a TRUE boolean, then the signature is considered authentic.',
@@ -1293,7 +1293,7 @@ const translations = {
         eliptic_curve_heading:
           'Elliptic Curve Digital Signature Algorithm (ECDSA)',
         eliptic_curve_paragraph_one:
-          "ECDSA is a cryptographic algorithm used by bitcoin to ensure that funds can only be spent by their rightful owners. A public key is derived from a private key through elliptic curve multiplication, which is computationally straightforward. However, reversing this process to derive the private key from the public key is computationally unfeasible. This one-way function is a cornerstone of Bitcoin's security.",
+          'ECDSA is a cryptographic algorithm used by bitcoin to ensure that funds can only be spent by their rightful owners. A public key is derived from a private key through elliptic curve multiplication, which is computationally straightforward. However, reversing this process to derive the private key from the public key is computationally unfeasible. This one-way function is a cornerstone of Bitcoin´s security.',
         public_private_key_heading: 'Public and Private Keys',
         public_private_key_paragraph_one:
           'In bitcoin, a pair of keys is used to ensure secure transactions. The private key, kept secret, is used to sign transactions and prove ownership of a bitcoin address. The public key, derived from the private key, can be shared and is used to verify that a signature is made by the private key holder, without revealing the private key.',
@@ -1301,13 +1301,13 @@ const translations = {
       verify_signature_five: {
         finite_field_arithmetic_heading: 'Finite Field Arithmetic',
         finite_field_arithmetic_paragraph_one:
-          "This type of arithmetic, used in ECDSA, involves numbers within a fixed range or field. Operations such as addition, subtraction, multiplication, and finding modular inverses are performed with respect to the size of this field. This is essential for the elliptic curve calculations in bitcoin's cryptography.",
+          'This type of arithmetic, used in ECDSA, involves numbers within a fixed range or field. Operations such as addition, subtraction, multiplication, and finding modular inverses are performed with respect to the size of this field. This is essential for the elliptic curve calculations in bitcoin´s cryptography.',
         ge_and_fe_heading: 'Group Elements (GE) and Field Elements (FE)',
         ge_and_fe_paragraph_one:
-          "In the context of elliptic curve cryptography, a group element typically represents a point on the elliptic curve. In the challenge, GE refers to such a point with specific x and y coordinates. FE represents an element of the finite field, used for calculations within the field's constraints.",
+          'In the context of elliptic curve cryptography, a group element typically represents a point on the elliptic curve. In the challenge, GE refers to such a point with specific x and y coordinates. FE represents an element of the finite field, used for calculations within the field´s constraints.',
         modular_inverse_heading: 'Modular Inverse',
         modular_inverse_paragraph_one:
-          "The modular inverse of a number a modulo m is a number b such that (a * b) % m = 1. Finding the modular inverse is a critical step in ECDSA signature verification. It's used in the calculation of u1 and u2 during the verification process.",
+          'The modular inverse of a number a modulo m is a number b such that (a * b) % m = 1. Finding the modular inverse is a critical step in ECDSA signature verification. It´s used in the calculation of u1 and u2 during the verification process.',
       },
       validate_signature_one: {
         message_verification_heading: 'Importance of Message Verification',
@@ -1316,13 +1316,12 @@ const translations = {
       },
       validate_signature_two: {
         base64_encoding_heading: 'Base64 Encoding',
-        base64_encoding_paragraph_one:
-          "Base64 is a basic byte to text encoding scheme that just allows for the data to be convereted to bytes which can then be used in buffers or from bytes to text in such a way that it avoids any problems with url paths and query params. This differs from the base58 encoding scheme in that it still includes the similar characters (zero, uppercase 'O', uppercase 'I', and lowercase 'l') that may otherwise be confusing to a user when trying to copy or dictate the encoded message.",
+        base64_encoding_paragraph_one: `Base64 is a basic byte to text encoding scheme that just allows for the data to be convereted to bytes which can then be used in buffers or from bytes to text in such a way that it avoids any problems with url paths and query params. This differs from the base58 encoding scheme in that it still includes the similar characters (zero, uppercase \'O\', uppercase \'I\', and lowercase \'l\') that may otherwise be confusing to a user when trying to copy or dictate the encoded message.`,
       },
       validate_signature_three: {
         signing_and_ownership_heading: 'Message Signing and Ownership',
         signing_and_ownership_paragraph_one:
-          "Based on bitcoin's psuedo-anonymity we are limited in what we are able to definitively prove because the owner of a key can refuse to sign a message or sign a message with an incorrect key on purpose. The only thing we can prove is that the key that creates an invalid signature is not one that matches a key that can sign a message.",
+          'Based on bitcoin´s psuedo-anonymity we are limited in what we are able to definitively prove because the owner of a key can refuse to sign a message or sign a message with an incorrect key on purpose. The only thing we can prove is that the key that creates an invalid signature is not one that matches a key that can sign a message.',
       },
       validate_signature_four: {
         one_for_one_heading: 'One for One',
@@ -1333,7 +1332,7 @@ const translations = {
   },
 
   chapter_six: {
-    title: `The Keyholder`,
+    title: 'The Keyholder',
     paragraph_one:
       'Ahhh! Vanderpoole is out to get you for exposing his fraudulent claims. But despite the fact that the holocat is out of the bag, plenty of scared people continue to cling to the myth that Vanderpoole created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.',
     intro_one: {
@@ -1356,13 +1355,14 @@ const translations = {
       paragraph_three: '—He what?',
       paragraph_four: '—Ding.',
       paragraph_five: '—HOLOCAT: Don’t forget to boop me.',
-      paragraph_six: `—MIKA 3000: “You’ve got guts, but guts aren't enough. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to know for sure what "more" means. This will cost a lot, so I could use your help pulling funds off the multisig wallet that you helped me set up. You’ve still got one of my keys, right?”`,
+      paragraph_six:
+        '—MIKA 3000: “You’ve got guts, but guts aren´t enough. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to know for sure what "more" means. This will cost a lot, so I could use your help pulling funds off the multisig wallet that you helped me set up. You’ve still got one of my keys, right?”',
     },
     in_out_one: {
       title: 'The ins and outs',
       nav_title: 'The unspent UTXO',
       paragraph_one:
-        "Mika 3000 needs 1 BTC to buy gear for her trip to Vanderpoole's private island. You decide to send her 1 BTC from your chapter 3 mining rewards, which have been sent by the mining pool to the address you created in chapter 4.",
+        'Mika 3000 needs 1 BTC to buy gear for her trip to Vanderpoole´s private island. You decide to send her 1 BTC from your chapter 3 mining rewards, which have been sent by the mining pool to the address you created in chapter 4.',
       paragraph_two:
         'You open your bitcoin full node and execute a command to see where your money is in the blockchain.',
       paragraph_three:
@@ -1375,7 +1375,8 @@ const translations = {
         'Mika 3000 gives you an address to send your 1 BTC contribution to:',
       paragraph_two:
         'Hm, that address looks a lot longer than yours! I wonder why...',
-      paragraph_three: `We need to create and sign a transaction that sends one of your 1.61 BTC to this address. We looked at Satoshi's transaction structure in chapter 5 but yours will be a bit different. Today, there are newer methods for creating transactions. We'll be using a protocol called Segregated Witness which sets the transaction version to 2.`,
+      paragraph_three:
+        'We need to create and sign a transaction that sends one of your 1.61 BTC to this address. We looked at Satoshi´s transaction structure in chapter 5 but yours will be a bit different. Today, there are newer methods for creating transactions. We´ll be using a protocol called Segregated Witness which sets the transaction version to 2.',
     },
     in_out_three: {
       title: 'The ins and outs',
@@ -1397,12 +1398,11 @@ const translations = {
         paragraph_three: 'The first two arguments are:',
         paragraph_four:
           '1. <span className="font-bold">txid: </span>the ID of the transaction that created the output, and',
-        paragraph_five:
-          '2. <span className="font-bold">vout: </span>the index of the output in the transaction\'s entire list of outputs',
+        paragraph_five: `2. <span className="font-bold">vout: </span>the index of the output in the transaction\\'s entire list of outputs`,
         paragraph_six:
           'Together, these two pieces of information make up an <span className="font-bold">Outpoint</span>. Eventually we will pass in the txid and vout values that came from executing the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">listunspent</span> command in the previous exercise. ',
         paragraph_seven:
-          "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. That data is not needed until later so let's temporarily use an empty byte array.",
+          'The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. That data is not needed until later so let´s temporarily use an empty byte array.',
         paragraph_eight: {
           a: 'Hashes in bitcoin are',
           b: {
@@ -1410,10 +1410,12 @@ const translations = {
             question: 'Why do we reverse hashes in bitcoin?',
             href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin',
           },
-          c: `, but only when presented to or entered by a user. When a hash is provided in hexadecimal format, the byte order must be reversed before storing or transmitting the data as raw bytes.`,
+          c: ', but only when presented to or entered by a user. When a hash is provided in hexadecimal format, the byte order must be reversed before storing or transmitting the data as raw bytes.',
         },
-        paragraph_nine: `You can see an example of this in the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method where it handles the txid argument.`,
-        paragraph_ten: `We also need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:`,
+        paragraph_nine:
+          'You can see an example of this in the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method where it handles the txid argument.',
+        paragraph_ten:
+          'We also need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:',
         heading_three: 'Outpoint',
         table_one: {
           heading: {
@@ -1432,7 +1434,7 @@ const translations = {
           },
           row_two: {
             column: {
-              one: "Position of output being spent in the transaction's output array",
+              one: 'Position of output being spent in the transaction´s output array',
               two: 'index',
               three: 'int',
               four: '4',
@@ -1494,7 +1496,7 @@ const translations = {
         paragraph_three:
           'Eventually we will pass in the txid and vout values you got above from listunspent. Note that hashes in bitcoin are little-endian, which means that you will need to reverse the byte order of the txid string!',
         paragraph_four:
-          "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6.",
+          'The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won´t need them until step 6.',
         paragraph_five:
           'We also need a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method that returns a byte array according to the specification:',
         heading_two: 'Outpoint',
@@ -1515,7 +1517,7 @@ const translations = {
           },
           row_two: {
             column: {
-              one: "Position of output being spent in the transaction's output array",
+              one: 'Position of output being spent in the transaction´s output array',
               two: 'index',
               three: 'int',
               four: '4',
@@ -1618,7 +1620,7 @@ const translations = {
         },
       },
       paragraph_three:
-        "Don't forget: integers in bitcoin are serialized little-endian!",
+        'Don´t forget: integers in bitcoin are serialized little-endian!',
       success: 'The Output class looks good. Great Work!',
     },
     put_it_together_one: {
@@ -1639,7 +1641,7 @@ const translations = {
           'scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in step 2.',
         list_four: 'all integers are encoded as little-endian!',
         paragraph_three:
-          "We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:",
+          'We´ll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:',
         paragraph_four: '...which decodes to the following bitcoin script.',
         paragraph_five:
           'For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
@@ -1776,7 +1778,7 @@ const translations = {
         paragraph_one:
           'In the last chapter, we wrote some important ECDSA signature verification code. Now, in order to create a valid signature, we are going to take that code and rearrange it a bit.',
         paragraph_two:
-          "In this exercise we'll be implementing some of the math behind the ECDSA signing algorithm. For more information on how that works, check out these resources:",
+          'In this exercise we´ll be implementing some of the math behind the ECDSA signing algorithm. For more information on how that works, check out these resources:',
         paragraph_three:
           '• The Wikipedia page for <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">Elliptic Curve Digital Signature Algorithm</Link>',
         paragraph_four:
@@ -1799,7 +1801,7 @@ const translations = {
         paragraph_ten:
           'The last step is to create a Witness object with two stack items: the DER encoded signature blob we just made, and your compressed public key. Push the signature first, followed by the public key.',
         paragraph_eleven:
-          "Append the witness stack object to the transaction object's array of witnesses.",
+          'Append the witness stack object to the transaction object´s array of witnesses.',
         success:
           'The compute_input_signature() and sign_input() methods look good. Great Work!',
       },
@@ -1885,8 +1887,7 @@ const translations = {
           'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
         paragraph_four:
           'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.',
-        paragraph_five:
-          'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 61,000,000 to 60,999,000 satoshis.',
+        paragraph_five: `But wait! We need to include a "fee". We\\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\\'s reduce our change from 61,000,000 to 60,999,000 satoshis.`,
         paragraph_six:
           'Finally our work is done. Your script should end by returning the result of the transaction serialize() method. This is a valid signed bitcoin transaction and we can broadcast it to the network to send Mika 3000 the money she needs!',
         headings: {
@@ -1949,7 +1950,7 @@ const translations = {
           'Mika 3000 gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
         bullet_two:
           'You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
-        success: "You've done it! You've built a transaction!",
+        success: 'You´ve done it! You´ve built a transaction!',
       },
       hard: {
         title: 'Putting it all together',
@@ -1966,7 +1967,7 @@ const translations = {
         list_three:
           'scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in step 2.',
         paragraph_three:
-          "We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash address, your scriptcode would be:",
+          'We´ll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash address, your scriptcode would be:',
         paragraph_four: '...which decodes to the following bitcoin script.',
         paragraph_five:
           'For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.',
@@ -2054,7 +2055,8 @@ const translations = {
         title: 'Putting it all together',
         heading: 'Signing!',
         nav_title: 'Sign the transaction',
-        paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index: int, key: int)</span> to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest()</span> method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
+        paragraph_one:
+          'We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index: int, key: int)</span> to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest()</span> method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.',
         paragraph_two:
           'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
         paragraph_three:
@@ -2087,15 +2089,14 @@ const translations = {
           'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
         paragraph_two:
           'Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in step 1) and two outputs:',
-        paragraph_three:
-          'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 61,000,000 to 60,999,000 satoshis.',
+        paragraph_three: `But wait! We need to include a "fee". We\\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\\'s reduce our change from 61,000,000 to 60,999,000 satoshis.`,
         paragraph_four:
           'Finally our work is done. Your script should end by returning the result of the transaction <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method. This is a valid signed bitcoin transaction and we can broadcast it to the network to send Mika 3000 the money he needs!',
         bullet_one:
           'Mika 3000 gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
         bullet_two:
           'You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
-        success: "You've done it! You've built a transaction!",
+        success: 'You´ve done it! You´ve built a transaction!',
       },
     },
     outro_one: {
@@ -2103,7 +2104,7 @@ const translations = {
       nav_title: 'Chapter complete',
       heading: 'You did it!',
       paragraph_one:
-        "You successfully built a transaction from scratch to pay Mika 3000 for her help. Now that we are done here let's see what we can find on Vanderpoole's island.",
+        'You successfully built a transaction from scratch to pay Mika 3000 for her help. Now that we are done here let´s see what we can find on Vanderpoole´s island.',
     },
     resources: {
       in_out: {
@@ -2119,7 +2120,7 @@ const translations = {
     },
   },
   chapter_seven: {
-    title: `Offense is the Best Defense`,
+    title: 'Offense is the Best Defense',
     paragraph_one:
       'You and Mika 3000 reach Vanderpoole’s private island first via plane and parachute, then via dune buggy, and then via rowboat that rows itself.',
     intro_one: {
@@ -2148,19 +2149,17 @@ const translations = {
     intro_three: {
       nav_title: 'Correcting the software',
       paragraph_one:
-        "But you can't just leave the crippled mining code on Vanderpoole's server. It will keep infecting miners. You have to fix it! As you read through the code, Holocat shows you a mempool display that is filling with unconfirmed transactions. The sooner this code gets fixed, the better.",
+        'But you can´t just leave the crippled mining code on Vanderpoole´s server. It will keep infecting miners. You have to fix it! As you read through the code, Holocat shows you a mempool display that is filling with unconfirmed transactions. The sooner this code gets fixed, the better.',
     },
     mempool_transaction_one: {
       title: 'Building blocks',
       nav_title: 'Assemble a block',
       heading: 'Code Challenge',
       python: {
-        paragraph_one:
-          'This is the code you find on Vanderpoole\'s server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assemble_block()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.',
+        paragraph_one: `This is the code you find on Vanderpoole\\'s server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assemble_block()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.`,
       },
       javascript: {
-        paragraph_one:
-          'This is the code you find on Vanderpoole\'s server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assembleBlock()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.',
+        paragraph_one: `This is the code you find on Vanderpoole\\'s server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assembleBlock()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.`,
       },
       paragraph_two: {
         a: 'You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules. The most critical consensus rules you will need to pay attention to restrict the total ',
@@ -2199,9 +2198,9 @@ const translations = {
         footer:
           'View the json file  <Link href="https://github.com/saving-satoshi/resources/blob/main/chapter-7/mempool.json" target="_blank" className="underline">here</Link> for the rest of the transaction data',
       },
-      poor: "It's a valid block, but can you do better? Try to collect more fees.",
-      good: "It's a valid block, but you are not quite getting the most fees yet. Keep working, or continue, your choice.",
-      success: "It's a valid block, and you optimized fees. Nice!",
+      poor: 'It´s a valid block, but can you do better? Try to collect more fees.',
+      good: 'It´s a valid block, but you are not quite getting the most fees yet. Keep working, or continue, your choice.',
+      success: 'It´s a valid block, and you optimized fees. Nice!',
     },
     outro_one: {
       title: 'Outro',
@@ -2229,23 +2228,29 @@ const translations = {
 
   chapter_eight: {
     title: 'Twenty-One Million',
-    paragraph_one: `Thanks to your investigation, people really want to hear from you, so you boop Holocat’s nose, revealing an invitation from Deborah Chunk, who invites you to appear in person at the offices of LARGE BIG NEWS Studios. Getting the story out is important, so you once again hop into your Budgetcopter.`,
+    paragraph_one:
+      'Thanks to your investigation, people really want to hear from you, so you boop Holocat’s nose, revealing an invitation from Deborah Chunk, who invites you to appear in person at the offices of LARGE BIG NEWS Studios. Getting the story out is important, so you once again hop into your Budgetcopter.',
     intro_one: {
       title: 'Intro',
-      nav_title: `Vanderpoole's Deception`,
-      paragraph_one: `—DEBORAH CHUNK: “These documents expose the alleged lies of Thomas Vanderpoole in a way that is certainly historic, scandalous even. The first thing people will most want to know is whether you acted alone. The second is where you got your information.”`,
-      paragraph_two: `You tell her about Holocat and Holocat only. You say the information was delivered directly to you and Mika 3000 by someone claiming to be Satoshi Nakamoto, who you suspect is actually a hacker collective. This last point causes Thomas Vanderpoole to call directly into the show.`,
+      nav_title: 'Vanderpoole´s Deception',
+      paragraph_one:
+        '—DEBORAH CHUNK: “These documents expose the alleged lies of Thomas Vanderpoole in a way that is certainly historic, scandalous even. The first thing people will most want to know is whether you acted alone. The second is where you got your information.”',
+      paragraph_two:
+        'You tell her about Holocat and Holocat only. You say the information was delivered directly to you and Mika 3000 by someone claiming to be Satoshi Nakamoto, who you suspect is actually a hacker collective. This last point causes Thomas Vanderpoole to call directly into the show.',
     },
     intro_two: {
-      title: `Intro`,
-      nav_title: ` Vanderpoole's Anger`,
-      paragraph_one: `—THOMAS VANDERPOOLE: “My family is Satoshi Nakamoto! Do you see what this hootenanny just said? He just admitted to working with hackers, a collective that only uses the name Satoshi Nakamoto to claim a legacy that is rightfully mine. This scoundrel is lying to undermine the protests of bitcoiners who are rightfully upset about the elimination of block rewards!”`,
-      paragraph_two: `Vanderpoole continues to hurl two century-old insults at you. He calls you a varmint, a rapscallion, a yellow belly, a greenhorn, and more. You almost feel bad for him. His family was undeniably important to bitcoin’s history, even if his claims about Satoshi Nakamoto are transparently fake.`,
+      title: 'Intro',
+      nav_title: ' Vanderpoole´s Anger',
+      paragraph_one:
+        '—THOMAS VANDERPOOLE: “My family is Satoshi Nakamoto! Do you see what this hootenanny just said? He just admitted to working with hackers, a collective that only uses the name Satoshi Nakamoto to claim a legacy that is rightfully mine. This scoundrel is lying to undermine the protests of bitcoiners who are rightfully upset about the elimination of block rewards!”',
+      paragraph_two:
+        'Vanderpoole continues to hurl two century-old insults at you. He calls you a varmint, a rapscallion, a yellow belly, a greenhorn, and more. You almost feel bad for him. His family was undeniably important to bitcoin’s history, even if his claims about Satoshi Nakamoto are transparently fake.',
     },
     intro_three: {
-      intro: `Intro`,
-      nav_title: `Allegations Against Vanderpoole`,
-      paragraph_one: `—DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Can you prove that you played no part in alleged tampering? Mysterious hacker and his holocat, can you prove Vanderpoole attempted this crime against bitcoin?”`,
+      intro: 'Intro',
+      nav_title: 'Allegations Against Vanderpoole',
+      paragraph_one:
+        '—DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Can you prove that you played no part in alleged tampering? Mysterious hacker and his holocat, can you prove Vanderpoole attempted this crime against bitcoin?”',
     },
     building_blocks_one: {
       title: 'Building blocks',
@@ -2259,17 +2264,18 @@ const translations = {
         },
         c: ' that do not fully verify network data.',
       },
-      paragraph_two: `You also know that somewhere on the network is a chain of valid blocks from the genesis block to today's "chain tip", where every transaction and block follows the rules. This chain is the only <span className="italic">real</span> chain, the only chain that matters, and the only chain where bitcoin's supply of 21 million original bitcoins is intact.`,
+      paragraph_two:
+        'You also know that somewhere on the network is a chain of valid blocks from the genesis block to today´s "chain tip", where every transaction and block follows the rules. This chain is the only <span className="italic">real</span> chain, the only chain that matters, and the only chain where bitcoin´s supply of 21 million original bitcoins is intact.',
       paragraph_three:
-        "Now, on live TV in front of the entire world, you need to find the longest valid blockchain and verify the coin supply's integrity. While you're at it, you'll also be able to prove that Vanderpoole has turned the bitcoin network into an invalid block minefield.",
+        'Now, on live TV in front of the entire world, you need to find the longest valid blockchain and verify the coin supply´s integrity. While you´re at it, you´ll also be able to prove that Vanderpoole has turned the bitcoin network into an invalid block minefield.',
     },
     building_blocks_two: {
       title: 'Building blocks',
       nav_title: 'A bitcoin block tree',
       paragraph_one:
-        "Every block has exactly one preceding block, but could have more than one next block. Because of this, bitcoin blocks form more of a tree than a chain. Some of the branches are dead-ends and, as you must prove, some of the branches are invalid because of Vanderpoole's shenanigans.",
+        'Every block has exactly one preceding block, but could have more than one next block. Because of this, bitcoin blocks form more of a tree than a chain. Some of the branches are dead-ends and, as you must prove, some of the branches are invalid because of Vanderpoole´s shenanigans.',
       paragraph_two:
-        "Somewhere in this maze is a path from the genesis block to today's most recent block. You have to find it and tell Deborah Chunk which block is on the tip of the tree's most valid chain... before the next commercial break. Ahhh!",
+        'Somewhere in this maze is a path from the genesis block to today´s most recent block. You have to find it and tell Deborah Chunk which block is on the tip of the tree´s most valid chain... before the next commercial break. Ahhh!',
       paragraph_three:
         'This artistic interpretation of bitcoin’s blockchain “tree” shows how every block has exactly one parent, but could have more than one child. Each block is labeled with its hash, and the hash of its parent (<span className="p-1 font-mono m-0.5 text-sm">prev</span>).',
       paragraph_four:
@@ -2277,34 +2283,42 @@ const translations = {
     },
     building_blocks_three: {
       title: 'Building Blocks',
-      nav_title: `Explore the Bitcoin API`,
+      nav_title: 'Explore the Bitcoin API',
       heading: 'The Bitcoin API',
-      paragraph_one: `To answer these questions, you'll need to interact with a bitcoin full node, via its JSON-RPC API. We've imported a library for you called <span className="p-1 font-mono bg-[#0000004D] m-1">bitcoin_rpc</span> which handles the secure HTTP connection from your script to the full node, executes your commands, and returns the responses. Your full node is \"pruning\" so it only has access to the last 300 blocks, but that should be enough to include the entire timespan of Vanderpoole's recent muckery.`,
-      paragraph_two: `Let's start by getting familiar with the API. The library has one function that accepts one required argument, <span className="p-1 font-mono bg-[#0000004D] m-1">method</span> (a string) and one optional argument, <span className="p-1 font-mono bg-[#0000004D] m-1">params</span> (either a string or a number):`,
+      paragraph_one:
+        'To answer these questions, you´ll need to interact with a bitcoin full node, via its JSON-RPC API. We´ve imported a library for you called <span className="p-1 font-mono bg-[#0000004D] m-1">bitcoin_rpc</span> which handles the secure HTTP connection from your script to the full node, executes your commands, and returns the responses. Your full node is "pruning" so it only has access to the last 300 blocks, but that should be enough to include the entire timespan of Vanderpoole´s recent muckery.',
+      paragraph_two:
+        'Let´s start by getting familiar with the API. The library has one function that accepts one required argument, <span className="p-1 font-mono bg-[#0000004D] m-1">method</span> (a string) and one optional argument, <span className="p-1 font-mono bg-[#0000004D] m-1">params</span> (either a string or a number):',
       paragraph_three:
         'The API also has a convenient "help" method! Ask it for help to learn more about the available commands, then pass the challenge by printing the current network difficulty.',
-      success: "Nice work exploring the API! Let's move on.",
+      success: 'Nice work exploring the API! Let´s move on.',
     },
     building_blocks_four: {
       title: 'Building Blocks',
-      nav_title: `Find the Smallest Transaction Block`,
-      heading: `Block Data`,
-      paragraph_one: `Each bitcoin full node has a database. That's where blocks are stored and indexed by their hash. The full node keeps track of which blocks are candidates at each height in the chain with a second index that maps height -> [block hashes].`,
-      paragraph_two: `The JSON-RPC API returns block data as JSON objects that include a property<span className="p-1 font-mono bg-[#0000004D] m-1">txs</span>which is an array of transaction objects.`,
-      paragraph_three: `Retrieve all the block candidates at height 6929996 and print the hash of the block with the fewest transactions in it.`,
-      success: `Nicely Done`,
+      nav_title: 'Find the Smallest Transaction Block',
+      heading: 'Block Data',
+      paragraph_one:
+        'Each bitcoin full node has a database. That´s where blocks are stored and indexed by their hash. The full node keeps track of which blocks are candidates at each height in the chain with a second index that maps height -> [block hashes].',
+      paragraph_two:
+        'The JSON-RPC API returns block data as JSON objects that include a property<span className="p-1 font-mono bg-[#0000004D] m-1">txs</span>which is an array of transaction objects.',
+      paragraph_three:
+        'Retrieve all the block candidates at height 6929996 and print the hash of the block with the fewest transactions in it.',
+      success: 'Nicely Done',
     },
     building_blocks_five: {
       title: 'Building Blocks',
-      nav_title: `Get the Transaction Fee`,
-      heading: `Transaction Data`,
-      paragraph_one: `The transaction objects confirmed in a block are JSON objects that include arrays of "inputs" and "outputs". Both of these arrays are lists of UTXOs, also known as "coins". Coin objects have a "value" property represented in satoshis.`,
-      paragraph_two: `The "inputs" array is the coins spent (destroyed) by the transaction and the "outputs" array is the coins created by the transaction. You may recall from Chapter 6 that transactions always pay a fee to incentivize miners to include them in a block. That fee is exactly the difference in value between the total input and total output values of a transaction.`,
-      paragraph_three: `In other words, the miner gets to keep whatever bitcoin that was sent in to the transaction but not sent back out to the transaction recipients.`,
-      paragraph_four: `There is a transaction with the txid:`,
-      paragraph_five: `in a block with the hash:`,
-      paragraph_six: `Print that transaction's fee in satoshis.`,
-      success: `Nicely Done`,
+      nav_title: 'Get the Transaction Fee',
+      heading: 'Transaction Data',
+      paragraph_one:
+        'The transaction objects confirmed in a block are JSON objects that include arrays of "inputs" and "outputs". Both of these arrays are lists of UTXOs, also known as "coins". Coin objects have a "value" property represented in satoshis.',
+      paragraph_two:
+        'The "inputs" array is the coins spent (destroyed) by the transaction and the "outputs" array is the coins created by the transaction. You may recall from Chapter 6 that transactions always pay a fee to incentivize miners to include them in a block. That fee is exactly the difference in value between the total input and total output values of a transaction.',
+      paragraph_three:
+        'In other words, the miner gets to keep whatever bitcoin that was sent in to the transaction but not sent back out to the transaction recipients.',
+      paragraph_four: 'There is a transaction with the txid:',
+      paragraph_five: 'in a block with the hash:',
+      paragraph_six: 'Print that transaction´s fee in satoshis.',
+      success: 'Nicely Done',
     },
     building_blocks_six: {
       title: 'Building Blocks',
@@ -2313,7 +2327,7 @@ const translations = {
       paragraph_one:
         'The first transaction in every block is called the coinbase. It may also be referred to as the "0th" transaction (referring to txs[0]) and it has a few very special properties. First of all, it has no inputs! This is because it does not spend any existing coins. Second, its output value is strictly defined by the protocol (despite what Vanderpoole might say!). This is the mechanism by which miners both collect fees from transactions, and generate new coins.',
       paragraph_two:
-        "It's fairly easy to understand how total transaction fees in a block are summed up, but where does that block subsidy value come from? How does every participant in the bitcoin network determine exactly how much new bitcoin miners are allowed to generate at any given time?",
+        'It´s fairly easy to understand how total transaction fees in a block are summed up, but where does that block subsidy value come from? How does every participant in the bitcoin network determine exactly how much new bitcoin miners are allowed to generate at any given time?',
       paragraph_three:
         'This is the algorithm written by Satoshi Nakamoto that has remained an immutable core property of the bitcoin system since the beginning:',
       list_one:
@@ -2330,9 +2344,12 @@ const translations = {
       title: 'Building Blocks',
       nav_title: 'Get the Valid Block',
       heading: 'That Pernicious Scallywag!',
-      paragraph_one: `There are four block candidates at height 6929851. Only one of them is a valid block, the other three were mined by Vanderpoole's cartel in reckless attempts to inflate the bitcoin money supply.`,
-      paragraph_two: `Using the block subsidy function you wrote in the previous challenge and the JSON-RPC API, write a function to check the validity of a block candidate. Do this by checking if the coinbase output is correct. Your function should return true if the block is valid.`,
-      paragraph_three: `Here's how your code will be used to find the one valid block at height 6929851:`,
+      paragraph_one:
+        'There are four block candidates at height 6929851. Only one of them is a valid block, the other three were mined by Vanderpoole´s cartel in reckless attempts to inflate the bitcoin money supply.',
+      paragraph_two:
+        'Using the block subsidy function you wrote in the previous challenge and the JSON-RPC API, write a function to check the validity of a block candidate. Do this by checking if the coinbase output is correct. Your function should return true if the block is valid.',
+      paragraph_three:
+        'Here´s how your code will be used to find the one valid block at height 6929851:',
       success: 'The validate block function looks great. Nice work!',
     },
 
@@ -2340,23 +2357,30 @@ const translations = {
       title: 'Building Blocks',
       nav_title: 'Showtime!',
       heading_one: 'Showtime!',
-      paragraph_one: `The cameras are rolling, two billion humans worldwide are tuned in to the live stream. Only a few minutes remain until the next commercial break. Deborah Chunk is sweating. Somehow, Holocat is also sweating. Somewhere on the other end of the call, Vanderpoole must be sweating, too. This is your moment.`,
-      paragraph_two: `Starting with the valid block just before the one you found at height 6929851, find the longest chain of valid blocks you can. Store the chain as an array of block hashes. While you're at it, maintain an array of every invalid block you find as well, just to show the world how hard Vanderpoole tried to break bitcoin. It doesn't matter what order these invalid block hashes are in, but your valid chain MUST start with the hash of block 6929850 followed by one block hash at each height all the way up to the chain tip.`,
-      paragraph_three: `Vanderpoole is sneaky! He mined valid blocks on top of invalid blocks, and invalid blocks on top of short chains of valid blocks! It's a maze, a minefield, out there. You may need to keep track of several valid branches as you traverse the tree. There will be valid blocks with valid parents that are not in the longest chain! In the end, there will be only one valid leaf with a greater height than all the others.`,
-      paragraph_four: `Remember: Block objects returned by the JSON API have a property "prev" which identifies that block's parent by its hash:`,
-      heading_two: `A block is ONLY valid if:`,
-      paragraph_five: `Its coinbase output value is equal to the expected block subsidy plus the total transaction fees in the block.`,
-      heading_three: `AND`,
-      paragraph_six: `The block is a child of another VALID block. This is ensures a VALID CHAIN.`,
-      paragraph_seven: `Return a JSON object with two arrays labeled "valid" and "invalid":`,
+      paragraph_one:
+        'The cameras are rolling, two billion humans worldwide are tuned in to the live stream. Only a few minutes remain until the next commercial break. Deborah Chunk is sweating. Somehow, Holocat is also sweating. Somewhere on the other end of the call, Vanderpoole must be sweating, too. This is your moment.',
+      paragraph_two:
+        'Starting with the valid block just before the one you found at height 6929851, find the longest chain of valid blocks you can. Store the chain as an array of block hashes. While you´re at it, maintain an array of every invalid block you find as well, just to show the world how hard Vanderpoole tried to break bitcoin. It doesn´t matter what order these invalid block hashes are in, but your valid chain MUST start with the hash of block 6929850 followed by one block hash at each height all the way up to the chain tip.',
+      paragraph_three:
+        'Vanderpoole is sneaky! He mined valid blocks on top of invalid blocks, and invalid blocks on top of short chains of valid blocks! It´s a maze, a minefield, out there. You may need to keep track of several valid branches as you traverse the tree. There will be valid blocks with valid parents that are not in the longest chain! In the end, there will be only one valid leaf with a greater height than all the others.',
+      paragraph_four:
+        'Remember: Block objects returned by the JSON API have a property "prev" which identifies that block´s parent by its hash:',
+      heading_two: 'A block is ONLY valid if:',
+      paragraph_five:
+        'Its coinbase output value is equal to the expected block subsidy plus the total transaction fees in the block.',
+      heading_three: 'AND',
+      paragraph_six:
+        'The block is a child of another VALID block. This is ensures a VALID CHAIN.',
+      paragraph_seven:
+        'Return a JSON object with two arrays labeled "valid" and "invalid":',
       success: 'The showtime function looks great. Nice work!',
     },
     outro_one: {
       title: 'Outro',
       nav_title: 'Chapter complete',
-      heading: "We're doing it live!",
+      heading: 'We´re doing it live!',
       paragraph_one:
-        "You found the longest chain and proved it to everyone! The list of invalid blocks you found is impressively long. Vanderpoole went to great lengths to try to get people to accept his blocks containing subsidies, but he couldn’t do anything to change the rules of bitcoin. As we observed, just because a block is part of a chain, it does not necessarily mean that it is valid. Now, you are one step closer to discrediting Vanderpoole. Needless to say, he didn't answer the remainder of Ms. Chunk's questions.",
+        'You found the longest chain and proved it to everyone! The list of invalid blocks you found is impressively long. Vanderpoole went to great lengths to try to get people to accept his blocks containing subsidies, but he couldn’t do anything to change the rules of bitcoin. As we observed, just because a block is part of a chain, it does not necessarily mean that it is valid. Now, you are one step closer to discrediting Vanderpoole. Needless to say, he didn´t answer the remainder of Ms. Chunk´s questions.',
     },
     resources: {
       building_blocks_three: {
@@ -2396,8 +2420,9 @@ const translations = {
   },
 
   chapter_nine: {
-    title: `Don't trust, verify.`,
-    paragraph_one: `Just in time, you proved to the world that Vanderpoole has been attempting to confuse the bitcoin network with invalid blocks. As a commercial break airs, the studio’s television crew prepares for the next segment.`,
+    title: 'Don´t trust, verify.',
+    paragraph_one:
+      'Just in time, you proved to the world that Vanderpoole has been attempting to confuse the bitcoin network with invalid blocks. As a commercial break airs, the studio’s television crew prepares for the next segment.',
     intro_one: {
       title: 'Intro',
       nav_title: 'Threats',
@@ -2425,17 +2450,17 @@ const translations = {
       nav_title: 'Bitcoin script',
       heading: 'Bitcoin script',
       paragraph_one:
-        "We mentioned bitcoin script back in chapter 6 but we didn't dwell on it because the coins you were spending were locked by a simple mechanism: a single signature and an implied script that evaluated that signature with a public key. Now things are going to get more interesting.",
+        'We mentioned bitcoin script back in chapter 6 but we didn´t dwell on it because the coins you were spending were locked by a simple mechanism: a single signature and an implied script that evaluated that signature with a public key. Now things are going to get more interesting.',
       paragraph_two:
         'There are two important parts to spending a bitcoin output: A script and a stack.',
-      paragraph_three: "We'll explore the two concepts at a high level first.",
+      paragraph_three: 'We´ll explore the two concepts at a high level first.',
     },
     opcodes_two: {
       title: 'OpCodes',
       nav_title: 'Bitcoin stack',
       heading: 'The stack',
       paragraph_one:
-        "Think of a stack of books 📚. If you want to add a book, you have to place it on top of the stack. There's nowhere else for it to go. If you want to read a book, the only one you can access is the one on top of the stack. Even if you want more than one you have start at the top of the stack and work your way down. In computing terms, a stack is like an array of data items with two operations:",
+        'Think of a stack of books 📚. If you want to add a book, you have to place it on top of the stack. There´s nowhere else for it to go. If you want to read a book, the only one you can access is the one on top of the stack. Even if you want more than one you have start at the top of the stack and work your way down. In computing terms, a stack is like an array of data items with two operations:',
       paragraph_two:
         '<span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_PUSH</span> Add an item to the "top" of the stack.',
       paragraph_three:
@@ -2452,7 +2477,7 @@ const translations = {
       paragraph_four:
         'Notice that the first item pushed on to the stack will be the last item popped off the stack, so it will be the last item processed by the script. For this reason the stack has an "upside down" or "backwards" feel to it, and the first thing you see on the stack will likely be the solution required at the end of script processing.',
       paragraph_five:
-        "When spending a bitcoin transaction output, the elements required by the spender are provided in the witness section of the spending transaction's input (see chapter 6) and those elements get pushed on to the stack before any script processing begins. We will refer to those items as the INITIAL STACK. They are important because they are literally the data that unlocks a script and allows coins to be spent!",
+        'When spending a bitcoin transaction output, the elements required by the spender are provided in the witness section of the spending transaction´s input (see chapter 6) and those elements get pushed on to the stack before any script processing begins. We will refer to those items as the INITIAL STACK. They are important because they are literally the data that unlocks a script and allows coins to be spent!',
     },
     opcodes_three: {
       title: 'OpCodes',
@@ -2461,7 +2486,7 @@ const translations = {
       paragraph_one:
         'Script is a linear series of commands that are executed one by one, manipulating items on the stack. When the end of the script is reached, there must be EXACTLY ONE NON-ZERO (NON-FALSE) ITEM remaining on the stack, or the entire operation is invalid and so is your bitcoin transaction. There are over 100 commands in the bitcoin script language, called "opcodes". We are only going to use a handful of them for this challenge.  ',
       paragraph_two:
-        "Let's demonstrate an example where we lock up a bitcoin with the math problem 1 + 2 = ? Whoever knows the answer to this math problem can spend the coins.",
+        'Let´s demonstrate an example where we lock up a bitcoin with the math problem 1 + 2 = ? Whoever knows the answer to this math problem can spend the coins.',
       paragraph_three: 'The script would look like this:',
       paragraph_four:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1 OP_2 OP_ADD OP_EQUAL</span>',
@@ -2473,7 +2498,7 @@ const translations = {
       nav_title: 'The stack solution',
       heading: 'The stack solution',
       paragraph_one:
-        "The stack solution would look like this and the spending transaction needs to contain all these elements. They go in the witness section of the input that is trying to spend these coins. Let's step through it:",
+        'The stack solution would look like this and the spending transaction needs to contain all these elements. They go in the witness section of the input that is trying to spend these coins. Let´s step through it:',
       table_one: {
         headings: {
           item_one: 'Step',
@@ -2544,8 +2569,7 @@ const translations = {
       title: 'OpCodes',
       nav_title: 'Decode with cryptography',
       heading: 'Simple Cryptography',
-      paragraph_one:
-        'We\'ve explored "pay to public key hash" in previous chapters. This is the bitcoin script that was written explicitly in millions of transaction outputs before segregated witness came along and abbreviated it. Coins are locked by the hash of a public key. The spender must reveal the public key that matches that hash, and then provide a signature verified by that public key.',
+      paragraph_one: `We\\'ve explored "pay to public key hash" in previous chapters. This is the bitcoin script that was written explicitly in millions of transaction outputs before segregated witness came along and abbreviated it. Coins are locked by the hash of a public key. The spender must reveal the public key that matches that hash, and then provide a signature verified by that public key.`,
       subheading_one: 'Opcodes that do simple cryptography',
       opcryptography_list_one_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm h-fit">OP_HASH256</span>',
@@ -2565,8 +2589,7 @@ const translations = {
         'Multisignature policies provide a list of public keys and a number of signatures required for a valid spend. It can be described as "m-of-n" meaning "m number of signatures are required from this list of n public keys". The public keys and the m and n values are typically included in the locking script and the spender only needs to provide the right number of signatures.',
       paragraph_two:
         'Holocat appears with a pre-recorded message from Satoshi Nakamoto!',
-      paragraph_three:
-        'Hi. I accidentally wrote a bug when I implemented <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn\'t used at all. So, uh, whoops. Sorry. That code is consensus-critical so every <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> operation in bitcoin\'s past, present, and future will be forced to include a "dummy" element. Don\'t forget it or you won\'t be able to spend your multisig coins!',
+      paragraph_three: `Hi. I accidentally wrote a bug when I implemented <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn\\'t used at all. So, uh, whoops. Sorry. That code is consensus-critical so every <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> operation in bitcoin\\'s past, present, and future will be forced to include a "dummy" element. Don\\'t forget it or you won\\'t be able to spend your multisig coins!`,
     },
     opcodes_eight: {
       title: 'OpCodes',
@@ -2600,7 +2623,7 @@ const translations = {
       nav_title: 'Wait to unlock',
       heading: 'Time Locks',
       paragraph_one:
-        "Way back in the last century a document entitled BIP 65 proposed a new opcode to bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className=\"text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm\">OP_DROP</span> as well. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.",
+        'Way back in the last century a document entitled BIP 65 proposed a new opcode to bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin´s consensus rules already prohibit including a transaction in a block if that block´s height is greater than the transaction´s nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span> as well. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.',
       subheading_one: 'Opcodes that do block timelocks',
       optimelock_list_one_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span>',
@@ -2627,15 +2650,19 @@ const translations = {
       title: 'Advanced',
       nav_title: 'Back to The Story',
       heading: 'Back to The Story!',
-      paragraph_one: `Nice Work! We've gone over most of the opcodes you will need when building scripts for basic transactions. Now let's put them to the test.`,
-      paragraph_two: `For each contract proposal you discuss, provide a bitcoin script and one valid spending stack.`,
+      paragraph_one:
+        'Nice Work! We´ve gone over most of the opcodes you will need when building scripts for basic transactions. Now let´s put them to the test.',
+      paragraph_two:
+        'For each contract proposal you discuss, provide a bitcoin script and one valid spending stack.',
     },
     proposal_two: {
       title: '2 of 2 multisig',
       nav_title: 'Sign cooperatively',
       heading: '2 of 2 multisig',
-      paragraph_one: `The first thing Vanderpoole suggests is a 2-of-2 multisig. All donations will be split between you and the Lil Bits Foundation 50/50. This will be managed by you both, with each of you signing all spending transactions from the donation address. This means you will have to agree on all withdrawals from the donation address.`,
-      paragraph_two: `Vanderpoole hands you his public key, it's PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
+      paragraph_one:
+        'The first thing Vanderpoole suggests is a 2-of-2 multisig. All donations will be split between you and the Lil Bits Foundation 50/50. This will be managed by you both, with each of you signing all spending transactions from the donation address. This means you will have to agree on all withdrawals from the donation address.',
+      paragraph_two:
+        'Vanderpoole hands you his public key, it´s PUBKEY(vanderpoole) and yours is PUBKEY(me).',
       paragraph_three: 'Provide the initial stack to spend from the script.',
       next_step_message: 'Looks good! Now lets try with your own signature.',
     },
@@ -2643,8 +2670,10 @@ const translations = {
       title: 'Conditional time locked transaction',
       nav_title: 'Make him wait',
       heading: 'Conditional time locked transaction',
-      paragraph_one: `Wait a minute, that doesn't make sense—you don't want to deal with him forever! The new deal is you get all donations for the next two hours while you are still on TV. The Lil Bits Foundation gets anything that comes in afterwards. You look at the bitcoin block block on the wall in the studio and agree that block height 6930300 will probably be mined in about two hours.`,
-      paragraph_two: `Remember Vanderpoole's public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
+      paragraph_one:
+        'Wait a minute, that doesn´t make sense—you don´t want to deal with him forever! The new deal is you get all donations for the next two hours while you are still on TV. The Lil Bits Foundation gets anything that comes in afterwards. You look at the bitcoin block block on the wall in the studio and agree that block height 6930300 will probably be mined in about two hours.',
+      paragraph_two:
+        'Remember Vanderpoole´s public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).',
       paragraph_three: 'Provide the initial stack to spend from the script.',
       next_step_message: 'Looks good! Now lets try with your own signature.',
     },
@@ -2653,14 +2682,15 @@ const translations = {
       nav_title: 'Work with an oracle',
       heading: 'Secret preimage locked transaction',
       paragraph_one:
-        "Vanderpoole changes his mind again. He doesn't like that deal because of the unknowns. He decides he wants the Lil Bits foundation to get the first 1.0 BTC of total donations, and you can spend the rest afterward.",
+        'Vanderpoole changes his mind again. He doesn´t like that deal because of the unknowns. He decides he wants the Lil Bits foundation to get the first 1.0 BTC of total donations, and you can spend the rest afterward.',
       paragraph_two:
         'There is no way to check a total balance across multiple UTXOs in bitcoin script so you agree on an unbiased third-party oracle: Deborah Chunk! She will monitor the total donation amount on the blockchain and once they add up to at least 1.0 BTC she will announce, live on TV, the preimage to a hash value you will commit to in the script.',
       paragraph_three: {
         a: 'She generates a secure random nonce in private, then hands you the hash digest: <span className="text-[#3DCFEF] w-fit rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">HASH256(FD3771E8)</span>. You can spend all the coins you receive once she reveals this secret, and not one ',
         b: ' one second earlier!',
       },
-      paragraph_four: `Remember Vanderpoole's public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
+      paragraph_four:
+        'Remember Vanderpoole´s public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).',
       paragraph_five: 'Provide the initial stack to spend from the script.',
       tooltip_one: {
         question: 'What is a satoshi?',
@@ -2668,14 +2698,14 @@ const translations = {
         highlighted: 'satoshi',
       },
       next_step_message:
-        "Let's see if we used our signature with the preimage correctly.",
+        'Let´s see if we used our signature with the preimage correctly.',
     },
     outro_one: {
       title: 'Outro',
       nav_title: 'Chapter Complete',
       heading: 'Way to go!',
       paragraph_one:
-        "The donations have now been distributed to you and the Lil Bits Foundation and many viewers thank you for shining a light on Vanderpoole’s actions. While the decentralized nature of bitcoin makes it difficult to overtake the network, it doesn’t stop people like him from trying. You're relieved the truth is finally out, especially after all the effort it took to get here.",
+        'The donations have now been distributed to you and the Lil Bits Foundation and many viewers thank you for shining a light on Vanderpoole’s actions. While the decentralized nature of bitcoin makes it difficult to overtake the network, it doesn’t stop people like him from trying. You´re relieved the truth is finally out, especially after all the effort it took to get here.',
     },
 
     resources: {
@@ -2683,19 +2713,22 @@ const translations = {
         arithmetic_heading: 'Arithmetic opcodes',
         arithmetic_paragraph:
           'In bitcoin script arithmetic operations like in math take in some inputs to conduct math operations on. In actual bitcoin script the inputs are limited to signed 32-bit integers but the output may overflow.',
-        spoiler: `Put in two integers that give the sum of 3 in the initial stack`,
+        spoiler:
+          'Put in two integers that give the sum of 3 in the initial stack',
       },
       opcodes_six: {
         cryptography_heading: 'Cryptographic opcodes',
         cryptography_paragraph:
           'These opcodes are important in everyday transactions as they ensure the outputs can only be spent with the signature of the owner of that utxo. Note that there are no formal categories of opcodes and that they are only organzied by their hex code representation.',
-        spoiler: `The script checks a signature against a hashed public key. Put a signature key first then a public key`,
+        spoiler:
+          'The script checks a signature against a hashed public key. Put a signature key first then a public key',
       },
       opcodes_eight: {
         multisig_heading: 'Multisig opcodes',
         multisig_paragraph:
           '<span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> has a notable bug that requires the stack to include another unused value on the top of the stack unrelated to the actual multisig.',
-        spoiler: `It's a multisig script requiring two signatures, and the first value on the stack is a placeholder for a quirk in the CHECKMULTISIG operation.`,
+        spoiler:
+          'It´s a multisig script requiring two signatures, and the first value on the stack is a placeholder for a quirk in the CHECKMULTISIG operation.',
       },
       opcodes_nine: {
         timelock_heading: 'Timelock opcodes',
@@ -2703,24 +2736,26 @@ const translations = {
           'Bitcoin script can read the current block height allowing transactions to be locked based on bitcoin blocks in the future. the exact semantics of the actual <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKLOCKTIMEVERIFY</span> can be found',
         timelock_link:
           '<Link target="_blank" href="https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki" className="underline">here</Link>.',
-        spoiler: ` The script locks spending until a specific block height and then verifies the signature in the initial stack.`,
+        spoiler:
+          ' The script locks spending until a specific block height and then verifies the signature in the initial stack.',
       },
       opcodes_ten: {
         conditionals_heading: 'Opcode logic',
         conditionals_paragraph:
           'Conditional opcodes allow for some basic programming logic branches.  While the conditional logic allows for a broad range of additional possibilities in bitcoin script, it is still limited in comparison to a traditional programming language.',
-        spoiler: `The sum of the first two values on the intial stack is false, so the script follows the OP_ELSE branch.`,
+        spoiler:
+          'The sum of the first two values on the intial stack is false, so the script follows the OP_ELSE branch.',
       },
       proposal_two: {
         making_script_heading: 'Making script',
         making_script_paragraph:
           'Remember that scripts can only be validated if the finish with a single truthy value on the stack. some versions allow any truthy value but our script editor only allows for values equal to 1 or true.',
-        tip: 'Don\'t forget about the bug in <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> that requires the extra unused value on the stack!',
+        tip: `Don\\'t forget about the bug in <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> that requires the extra unused value on the stack!`,
         spoiler: `Script Hint: This multisig arrangement needs both participants to sign. The script specifies that two signatures are required and includes both public keys.
 Stack Hint: To satisfy the script, you need to provide both signatures. The 0 on the stack accounts for a specific behavior of the CHECKMULTISIG operation.`,
       },
       proposal_three: {
-        tip: "Let's think about combining a conditional with some timelock to separate Vanderpoole's signature from yours.",
+        tip: 'Let´s think about combining a conditional with some timelock to separate Vanderpoole´s signature from yours.',
         spoiler: `Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, Vanderpoole can spend; after the block, you can.
 
 Stack Hint: To spend before the specified block, Vanderpoole uses his signature. After the block, you use your signature and need to provide a 0 because the script has moved past the locktime verification.`,
@@ -2736,19 +2771,24 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
 
   chapter_ten: {
     title: '10 billion connections',
-    paragraph_one: `The TV studio’s ON-AIR light goes dark. Stagehands shut off their 3D cameras and file out after a long and eventful day. Mika 3000 is there waiting for you.`,
+    paragraph_one:
+      'The TV studio’s ON-AIR light goes dark. Stagehands shut off their 3D cameras and file out after a long and eventful day. Mika 3000 is there waiting for you.',
     intro_one: {
       title: 'Celebration',
       nav_title: 'Celebration',
-      paragraph_one: `—MIKA 3000: “You did it! You really pulled it off! Let’s grab something to drink and celebrate.”`,
-      paragraph_two: `You walk to a nearby bar called The Public Key Pub. The bartender, a friendly guy with the name tag Laszlo, welcomes you both.`,
-      paragraph_three: `—MIKA 3000: “I don’t know why but I could totally go for a calzone.”`,
-      paragraph_four: `—LASZLO: “We don’t have those, but my great-great-grandad made sure that the pizza here is the best. Some would say 10,000 bitcoin good.”`,
+      paragraph_one:
+        '—MIKA 3000: “You did it! You really pulled it off! Let’s grab something to drink and celebrate.”',
+      paragraph_two:
+        'You walk to a nearby bar called The Public Key Pub. The bartender, a friendly guy with the name tag Laszlo, welcomes you both.',
+      paragraph_three:
+        '—MIKA 3000: “I don’t know why but I could totally go for a calzone.”',
+      paragraph_four:
+        '—LASZLO: “We don’t have those, but my great-great-grandad made sure that the pizza here is the best. Some would say 10,000 bitcoin good.”',
       paragraph_five: {
-        a: `—MIKA 3000: “10 thousand bitcoin? Wait… are you named Laszlo because you’re descended from `,
-        b: `?"`,
+        a: '—MIKA 3000: “10 thousand bitcoin? Wait… are you named Laszlo because you’re descended from ',
+        b: '?"',
       },
-      paragraph_six: `—LASZLO: “The one and only.”`,
+      paragraph_six: '—LASZLO: “The one and only.”',
       tooltip_one: {
         question: 'What is the significance of Laszlo and pizza day?',
         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520the%2520significance%2520of%2520Laszlo%2520and%2520pizza%2520day%253F',
@@ -2768,10 +2808,14 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     intro_three: {
       title: 'Off-chain?',
       nav_title: 'Off-chain?',
-      paragraph_one: `Since “Satoshi” initially reached out, you’ve only had to work with on-chain transactions. That’s how you claimed your mining rewards and how you transferred funds to Mika 3000. However, these on-chain transactions aren’t ideal for frequent, everyday use because block space is limited and miner fees can vary.`,
-      paragraph_two: `How is it then, that people are able to use bitcoin daily in a way that is scalable? The answer is off-chain payments, something you have probably seen a million times: An orange cab ejecting its passengers and zooming off, someone buying dinner from a halal cart, a kid exiting a store with her holodog and a carton of digimilk. And so on. Money’s use cases are nearly infinite.`,
-      paragraph_three: `While bitcoin isn’t designed to handle this much activity on its own, with off-chain payments, it can.`,
-      paragraph_four: `—YOU: “That’s not a problem at all, Mika 3000. I can handle it. I’ll prove it by using an off-chain payment to purchase a Lightning Lemonade from Laszlo.”`,
+      paragraph_one:
+        'Since “Satoshi” initially reached out, you’ve only had to work with on-chain transactions. That’s how you claimed your mining rewards and how you transferred funds to Mika 3000. However, these on-chain transactions aren’t ideal for frequent, everyday use because block space is limited and miner fees can vary.',
+      paragraph_two:
+        'How is it then, that people are able to use bitcoin daily in a way that is scalable? The answer is off-chain payments, something you have probably seen a million times: An orange cab ejecting its passengers and zooming off, someone buying dinner from a halal cart, a kid exiting a store with her holodog and a carton of digimilk. And so on. Money’s use cases are nearly infinite.',
+      paragraph_three:
+        'While bitcoin isn’t designed to handle this much activity on its own, with off-chain payments, it can.',
+      paragraph_four:
+        '—YOU: “That’s not a problem at all, Mika 3000. I can handle it. I’ll prove it by using an off-chain payment to purchase a Lightning Lemonade from Laszlo.”',
     },
     opening_a_channel_one: {
       title: 'The initial funds',
@@ -2785,83 +2829,106 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       nav_title: 'The off-chain transaction',
       heading_one: 'The off-chain transaction',
       paragraph_one:
-        "Let's create a valid bitcoin transaction but instead of broadcasting it out to the network, we'll give it directly to Laszlo. In return, he should provide you with a Lightning Lemonade because he can broadcast the transaction anytime he wants. Once it's confirmed and mined into a block, the money is his.",
-      paragraph_two: `Remember it's the year 2140! A Lightning Lemonade costs 0.00001000 BTC.`,
+        'Let´s create a valid bitcoin transaction but instead of broadcasting it out to the network, we´ll give it directly to Laszlo. In return, he should provide you with a Lightning Lemonade because he can broadcast the transaction anytime he wants. Once it´s confirmed and mined into a block, the money is his.',
+      paragraph_two:
+        'Remember it´s the year 2140! A Lightning Lemonade costs 0.00001000 BTC.',
       heading_two: 'Instructions',
       off_chain_list_one:
         'Fill in the two output amounts: 1000 satoshis to Laszlo in the first output, and the rest to yourself as change in the second output.',
       off_chain_list_two:
-        "To get the money, Laszlo will need to broadcast this transaction to the network, and that requires a miner fee. Let's set aside 1000 sats to pay that fee. Update the amount in your change output to account for this.",
+        'To get the money, Laszlo will need to broadcast this transaction to the network, and that requires a miner fee. Let´s set aside 1000 sats to pay that fee. Update the amount in your change output to account for this.',
       off_chain_list_three: 'Write the two output scripts',
       off_chain_list_four:
         'Sign the input by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign</span>',
-      // off_chain_list_four:'Send it to Laszlo by clicking "send to bob"',
+      // off_chain_list_four: 'Send it to Laszlo by clicking "send to bob"',
       heading_three: 'Hints',
-      hint_one: `Laszlo spends output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO)</span>`,
-      hint_two: `You spend output 1 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU)</span>`,
-      hint_three: `These signatures are not part of the output script`,
+      hint_one:
+        'Laszlo spends output 0 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO)</span>',
+      hint_two:
+        'You spend output 1 with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU)</span>',
+      hint_three: 'These signatures are not part of the output script',
     },
     opening_a_channel_three: {
       title: 'Off-chain payment trust issue',
       nav_title: 'Off-chain payment trust issue',
-      paragraph_one: `—LASZLO: "Wait a minute, that doesn't make any sense–as long as I don't broadcast the transaction you can still spend those 101,000 sats. You could drink your Lightning Lemonade, spend the money on something else, and I would get nothing!`,
-      paragraph_two: `If we're going to transact off-chain, I need a guarantee that the same money you are using to pay me off-chain cannot be moved by yourself on-chain."`,
+      paragraph_one:
+        '—LASZLO: "Wait a minute, that doesn´t make any sense–as long as I don´t broadcast the transaction you can still spend those 101,000 sats. You could drink your Lightning Lemonade, spend the money on something else, and I would get nothing!',
+      paragraph_two:
+        'If we´re going to transact off-chain, I need a guarantee that the same money you are using to pay me off-chain cannot be moved by yourself on-chain."',
     },
     opening_a_channel_four: {
       title: 'Multisig',
       nav_title: 'Multisig',
       heading_one: 'Multisig',
-      paragraph_one: `Before paying Laszlo, let's first get the funds into a 2-of-2 multisig, confirmed on the blockchain. Then we can figure out a way to make that single on-chain transaction work harder—to do more with less.`,
+      paragraph_one:
+        'Before paying Laszlo, let´s first get the funds into a 2-of-2 multisig, confirmed on the blockchain. Then we can figure out a way to make that single on-chain transaction work harder—to do more with less.',
       heading_two: 'Instructions',
       multisig_one: 'Fill in the output amount and the output script',
       multisig_two:
         'Sign the input by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign and Broadcast</span>',
       heading_three: 'Hints',
-      hint_one_a: `You and Laszlo want to work together in the future to spend output 0 with <br/> `,
-      hint_one_b: `<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(LASZLO) SIG(YOU) </span>`,
-      hint_two: `Don't forget to set aside miner fees`,
+      hint_one_a:
+        'You and Laszlo want to work together in the future to spend output 0 with <br/> ',
+      hint_one_b:
+        '<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(LASZLO) SIG(YOU) </span>',
+      hint_two: 'Don´t forget to set aside miner fees',
     },
     opening_a_channel_five: {
       title: 'Refund protection in multisig',
       nav_title: 'Refund protection in multisig',
-      paragraph_one: `—LASZLO:  "OK, thanks. This is a good start. But what if I walk away from the table and you never see me again? I could broadcast this transaction, and your 100,000 satoshis would be stuck in a 2-key multisig from which you could never recover.`,
-      paragraph_two: `Do yourself a favor; before signing this, make a refund transaction to know you can recover your money."`,
+      paragraph_one:
+        '—LASZLO:  "OK, thanks. This is a good start. But what if I walk away from the table and you never see me again? I could broadcast this transaction, and your 100,000 satoshis would be stuck in a 2-key multisig from which you could never recover.',
+      paragraph_two:
+        'Do yourself a favor; before signing this, make a refund transaction to know you can recover your money."',
     },
     updating_the_state_one: {
       title: 'The refund',
       nav_title: 'The refund',
       heading_one: 'The refund',
-      paragraph_one: `A new tab appears on your ePhone Infinity: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Refund</span> which starts another TX template on the same screen, with an arrow from the <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multisig</span> output to this TX input.`,
+      paragraph_one:
+        'A new tab appears on your ePhone Infinity: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Refund</span> which starts another TX template on the same screen, with an arrow from the <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">Multisig</span> output to this TX input.',
       heading_two: 'Instructions',
-      refund_list_one: `Fill in the output amount and the output script`,
-      refund_list_two: `Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> then he can tell us if he will sign it.`,
-      refund_list_three: `Don't sign it yourself yet! Let's see what Laszlo thinks, first`,
+      refund_list_one: 'Fill in the output amount and the output script',
+      refund_list_two:
+        'Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> then he can tell us if he will sign it.',
+      refund_list_three:
+        'Don´t sign it yourself yet! Let´s see what Laszlo thinks, first',
       heading_three: 'Hints',
-      hint_one: `Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU)</span>`,
+      hint_one:
+        'Output 0 is spent by you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU)</span>',
     },
     updating_the_state_two: {
       title: 'Securing payments',
       nav_title: 'Securing payments',
-      paragraph_one: `—LASZLO: "OK, nice. I'll sign this and send it back to you, and then you can sign that funding transaction for the 2-of-2 multisig.`,
-      paragraph_two: `Hey... wait a minute. If I sign this, we're back where we started: You can broadcast this transaction even after I give you a Lightning Lemonade, and I won't get my money.`,
+      paragraph_one:
+        '—LASZLO: "OK, nice. I´ll sign this and send it back to you, and then you can sign that funding transaction for the 2-of-2 multisig.',
+      paragraph_two:
+        'Hey... wait a minute. If I sign this, we´re back where we started: You can broadcast this transaction even after I give you a Lightning Lemonade, and I won´t get my money.',
       paragraph_three:
         'Before I sign this, I need a guarantee that this refund transaction can be revoked.',
-      paragraph_four: `Once you actually pay me for the Lightning Lemonade, you shouldn't be able to broadcast this refund transaction. And if you DO try to broadcast it after it has been revoked, I get to keep <span className="italic">all</span> 100,000 satoshis!"`,
+      paragraph_four:
+        'Once you actually pay me for the Lightning Lemonade, you shouldn´t be able to broadcast this refund transaction. And if you DO try to broadcast it after it has been revoked, I get to keep <span className="italic">all</span> 100,000 satoshis!"',
     },
     updating_the_state_three: {
       title: 'The revocation',
       nav_title: 'The revocation',
       heading_one: 'The revocation',
-      paragraph_one: `You can make the 100,000 satoshi output to yourself revocable by Laszlo if you add an extra condition to it. The logic branch should allow Laszlo to spend the output with his own key AND a new private key that you generate. To revoke the transaction, you give Laszlo the new private key. It's a very unusual thing to do, but it puts 100,000 satoshis at stake, and allows Laszlo to sweep the funds if you try to broadcast the transaction after revoking it.`,
-      paragraph_two: `You generate a new key pair: a private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span> and <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_YOU_1)</span>. You will generate a new key pair like this every time you want to update the state of the payment channel.`,
-      heading_two: `Instructions`,
-      revocation_list_one: `Add an IF condition to the script so Laszlo can spend the output ONLY if he ALSO has the revocation key (you will continue keeping the key secret until it is time to revoke!)`,
-      revocation_list_two: `Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> so he can sign it`,
-      revocation_list_three: `Don't sign it yourself yet!`,
-      heading_three: `Hints`,
-      paragraph_three: `Output 0 is spent by EITHER:`,
-      hint_one: `The initial stack if you claim the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>`,
-      hint_two: `The initial stack if Laszlo claims the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span>`,
+      paragraph_one:
+        'You can make the 100,000 satoshi output to yourself revocable by Laszlo if you add an extra condition to it. The logic branch should allow Laszlo to spend the output with his own key AND a new private key that you generate. To revoke the transaction, you give Laszlo the new private key. It´s a very unusual thing to do, but it puts 100,000 satoshis at stake, and allows Laszlo to sweep the funds if you try to broadcast the transaction after revoking it.',
+      paragraph_two:
+        'You generate a new key pair: a private key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span> and <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_YOU_1)</span>. You will generate a new key pair like this every time you want to update the state of the payment channel.',
+      heading_two: 'Instructions',
+      revocation_list_one:
+        'Add an IF condition to the script so Laszlo can spend the output ONLY if he ALSO has the revocation key (you will continue keeping the key secret until it is time to revoke!)',
+      revocation_list_two:
+        'Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> so he can sign it',
+      revocation_list_three: 'Don´t sign it yourself yet!',
+      heading_three: 'Hints',
+      paragraph_three: 'Output 0 is spent by EITHER:',
+      hint_one:
+        'The initial stack if you claim the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>',
+      hint_two:
+        'The initial stack if Laszlo claims the funds: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_1) SIG(LASZLO) 0 </span>',
     },
     updating_the_state_four: {
       title: 'The Race to Revoke',
@@ -2879,7 +2946,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
         'Add a 700 block delay before you can spend the output',
       time_lock_list_two:
         'Send it to Laszlo by clicking <span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Send to Laszlo</span> so he can sign it',
-      time_lock_list_three: "Don't sign it yourself yet!",
+      time_lock_list_three: 'Don´t sign it yourself yet!',
       heading_two: 'Hints',
       paragraph_one: 'Output 0 is spent by EITHER:',
       hint_one:
@@ -2897,7 +2964,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       title: 'Making a payment',
       nav_title: 'Making a payment',
       heading_one: 'Making a payment',
-      paragraph_one: "Let's recap:",
+      paragraph_one: 'Let´s recap:',
       list_one:
         'You sent 100,000 satoshis to a 2-of-2 multisig output between you and Laszlo.',
       list_two:
@@ -2914,7 +2981,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
         'Once Laszlo signed this refund (child) transaction, you were safe to sign and broadcast the parent transaction that sends the funds to the 2-of-2 multisig.',
       paragraph_two:
         'The transaction that funded the multisig output is called the <span className="font-bold">funding transaction</span>. Confirming it on the blockchain <span className="font-bold">opens</span> the payment channel.',
-      paragraph_three: `The offline refund transaction that spends the output of the funding transaction is called the <span className="font-bold">commitment transaction</span>. Confirming it on the blockchain would <span className="font-bold">close</span> the channel. The first commitment transaction is your full refund because you haven't made any payments to Laszlo yet.`,
+      paragraph_three:
+        'The offline refund transaction that spends the output of the funding transaction is called the <span className="font-bold">commitment transaction</span>. Confirming it on the blockchain would <span className="font-bold">close</span> the channel. The first commitment transaction is your full refund because you haven´t made any payments to Laszlo yet.',
       paragraph_four:
         'While the channel is open, you and Laszlo can make offline payments to each other, back and forth, by negotiating new commitment transactions and revoking old ones. As you buy more drinks, your "refund" amount will go down and Laszlo’s portion of the original 100,000 satoshis locked in the multisig goes up.',
     },
@@ -2922,56 +2990,73 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       title: 'Buy a Lightning Lemonade!',
       nav_title: 'Buy a Lightning Lemonade!',
       heading_one: 'Buy a Lightning Lemonade!',
-      paragraph_one: `Now it's finally time to send bitcoin off-chain to Laszlo. We will "simply" add a 1,000 satoshi output for him in an updated commitment transaction. We will also need to promise never to broadcast the old commitment transaction, which doesn't allocate any money to Laszlo. That is guaranteed when we send him the revocation key for the now old commitment transaction, which we'll do next.`,
-      paragraph_two: `You generate another revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span> for this new state. If you wanted to repeat the cycle and buy a second drink, you would revoke <span className="font-bold">this</span> transaction for another new commitment where Laszlo gets paid for a second Lightning Lemonade. It is a party after all!`,
-      heading_two: `Instructions`,
-      list_one: `Deduct 1,000 satoshis from your output`,
-      list_two: `Add 1000 satoshis to the second output and fill in the script for Laszlo`,
-      list_three: `Send it to Laszlo by clicking "Send to Laszlo" so he can sign it`,
-      list_four: `Don't sign it yourself yet!`,
-      heading_three: `Hints`,
-      paragraph_three: `Output 0 is spent by either:`,
-      hint_one: `The 'Refund' tab is now known as 'Initial Commitment'. You can use it to see the script you wrote for the previous state.`,
+      paragraph_one:
+        'Now it´s finally time to send bitcoin off-chain to Laszlo. We will "simply" add a 1,000 satoshi output for him in an updated commitment transaction. We will also need to promise never to broadcast the old commitment transaction, which doesn´t allocate any money to Laszlo. That is guaranteed when we send him the revocation key for the now old commitment transaction, which we´ll do next.',
+      paragraph_two:
+        'You generate another revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span> for this new state. If you wanted to repeat the cycle and buy a second drink, you would revoke <span className="font-bold">this</span> transaction for another new commitment where Laszlo gets paid for a second Lightning Lemonade. It is a party after all!',
+      heading_two: 'Instructions',
+      list_one: 'Deduct 1,000 satoshis from your output',
+      list_two:
+        'Add 1000 satoshis to the second output and fill in the script for Laszlo',
+      list_three:
+        'Send it to Laszlo by clicking "Send to Laszlo" so he can sign it',
+      list_four: 'Don´t sign it yourself yet!',
+      heading_three: 'Hints',
+      paragraph_three: 'Output 0 is spent by either:',
+      hint_one: `The \'Refund\' tab is now known as \'Initial Commitment\'. You can use it to see the script you wrote for the previous state.`,
       hint_two:
         'You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU) 1 </span>',
-      hint_three: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_2) SIG(LASZLO) 0 </span>`,
-      paragraph_four: `Output 1 is spent by Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span>`,
+      hint_three:
+        'Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_2) SIG(LASZLO) 0 </span>',
+      paragraph_four:
+        'Output 1 is spent by Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span>',
     },
     making_a_payment_three: {
-      title: `Laszlo's blockchain dilemma`,
-      nav_title: `Laszlo's blockchain dilemma`,
-      paragraph_one: `Laszlo looks at this transaction for a second and grabs a glass from behind the bar but doesn't pour the Lightning Lemonade.`,
-      paragraph_two: `—LASZLO: "Wait. If you don't sign this transaction, I have nothing. You could disappear with this Lightning Lemonade, and I wouldn't be able to confirm anything on the chain. Maybe you should sign it first, then send it to me so we both have a copy?"`,
+      title: 'Laszlo´s blockchain dilemma',
+      nav_title: 'Laszlo´s blockchain dilemma',
+      paragraph_one:
+        'Laszlo looks at this transaction for a second and grabs a glass from behind the bar but doesn´t pour the Lightning Lemonade.',
+      paragraph_two:
+        '—LASZLO: "Wait. If you don´t sign this transaction, I have nothing. You could disappear with this Lightning Lemonade, and I wouldn´t be able to confirm anything on the chain. Maybe you should sign it first, then send it to me so we both have a copy?"',
     },
     making_a_payment_four: {
-      title: `Holocat's trustless warning`,
-      nav_title: `Holocat's trustless warning`,
-      paragraph_one: `That's when Holocat materializes on the table, standing up on her hind legs with her front paws outstretched, and meows.`,
-      paragraph_two: `—HOLOCAT: "Hang on, you can't give Laszlo your signature for this transaction! Next time you make a payment, you'll give him the revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>. He'll have everything he needs to steal all 100,000 satoshis!"`,
-      paragraph_three: `Things are getting a bit messy. Before he gives you a Lightning Lemonade, Laszlo needs something to ensure he will get paid. But he can't have your transaction because then he'll have access to all your money! Laszlo is a great guy, and his bar is one of the best in the city, but it would be nice if we didn't have to trust him.`,
+      title: 'Holocat´s trustless warning',
+      nav_title: 'Holocat´s trustless warning',
+      paragraph_one:
+        'That´s when Holocat materializes on the table, standing up on her hind legs with her front paws outstretched, and meows.',
+      paragraph_two:
+        '—HOLOCAT: "Hang on, you can´t give Laszlo your signature for this transaction! Next time you make a payment, you´ll give him the revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>. He´ll have everything he needs to steal all 100,000 satoshis!"',
+      paragraph_three:
+        'Things are getting a bit messy. Before he gives you a Lightning Lemonade, Laszlo needs something to ensure he will get paid. But he can´t have your transaction because then he´ll have access to all your money! Laszlo is a great guy, and his bar is one of the best in the city, but it would be nice if we didn´t have to trust him.',
     },
     making_a_payment_five: {
-      title: `Asymmetry`,
-      nav_title: `Asymmetry`,
-      heading_one: `Asymmetry`,
-      paragraph_one: `We know we want Laszlo to sign the first transaction but we don't want him to have our signature on it. We'll need to construct a second transaction for him that <span className="font-bold">does</span> have our signature on it, but without any possibility of him spending all the money unfairly.`,
-      paragraph_two: `If Laszlo is going to have his own commitment transaction, then don't we also want that transaction to be revocable? Yes! In fact, Laszlo's commitment transaction will be a mirror-image of yours. The revocable time lock script will use Laszlo's first revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_LASZLO_1)</span> and the large refund output will go directly to you without any fuss.`,
-      heading_two: `Instructions`,
-      list_one: `Fill in the amounts and output scripts for Laszlo's commitment transaction`,
-      list_two: `Sign it and send it to Laszlo, who will then sign your commitment transaction and send that back to you`,
+      title: 'Asymmetry',
+      nav_title: 'Asymmetry',
+      heading_one: 'Asymmetry',
+      paragraph_one:
+        'We know we want Laszlo to sign the first transaction but we don´t want him to have our signature on it. We´ll need to construct a second transaction for him that <span className="font-bold">does</span> have our signature on it, but without any possibility of him spending all the money unfairly.',
+      paragraph_two:
+        'If Laszlo is going to have his own commitment transaction, then don´t we also want that transaction to be revocable? Yes! In fact, Laszlo´s commitment transaction will be a mirror-image of yours. The revocable time lock script will use Laszlo´s first revocation key <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">PUBKEY(REVOCATION_LASZLO_1)</span> and the large refund output will go directly to you without any fuss.',
+      heading_two: 'Instructions',
+      list_one:
+        'Fill in the amounts and output scripts for Laszlo´s commitment transaction',
+      list_two:
+        'Sign it and send it to Laszlo, who will then sign your commitment transaction and send that back to you',
       heading_three: 'Hints',
-      hint_one: `You can switch to the 'Commitment_you' tab to see the script you wrote for your commitment transaction.`,
+      hint_one: `You can switch to the \'Commitment_you\' tab to see the script you wrote for your commitment transaction.`,
       paragraph_three: 'Output 0 is spent by either:',
       hint_two:
         'Laszlo, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(LASZLO) 1 </span>',
-      hint_three: `You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_1) SIG(YOU) 0 </span>`,
-      paragraph_four: `Output 1 is spent by You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span>`,
+      hint_three:
+        'You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_1) SIG(YOU) 0 </span>',
+      paragraph_four:
+        'Output 1 is spent by You: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span>',
     },
     making_a_payment_six: {
-      title: `Complete the payment`,
-      nav_title: `Complete the payment`,
-      heading_one: `Complete the payment`,
-      paragraph_one: "Let's do another recap.",
+      title: 'Complete the payment',
+      nav_title: 'Complete the payment',
+      heading_one: 'Complete the payment',
+      paragraph_one: 'Let´s do another recap.',
       list_one: 'A 2 of 2 output is confirmed on the blockchain',
       paragraph_two:
         'There are several off-chain transactions that spend the 100,000 satoshi (sat) output locked in the 2-of-2 multisig:',
@@ -2982,7 +3067,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
           '<span className="font-semibold">Input 0:</span> signed by Laszlo',
         list_two:
           '<span className="font-semibold">Output 0:</span> 99,000 sats to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>',
-        list_three: `<span className="font-semibold">Miner fees:</span> 1,000 sats`,
+        list_three:
+          '<span className="font-semibold">Miner fees:</span> 1,000 sats',
       },
       commitment_two_you: {
         list_one:
@@ -2991,7 +3077,8 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
           '<span className="font-semibold">Output 0:</span> 98,000 sats to you after 700 blocks or Laszlo with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_2</span>',
         list_three:
           '<span className="font-semibold">Output 1:</span> 1,000 sats to Laszlo',
-        list_four: `<span className="font-semibold">Miner fees:</span> 1,000 sats`,
+        list_four:
+          '<span className="font-semibold">Miner fees:</span> 1,000 sats',
       },
       paragraph_five: 'Commitment 2 (You)',
       paragraph_six: 'Laszlo will end up with this transaction:',
@@ -3003,41 +3090,54 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
           '<span className="font-semibold">Output 0:</span> 1,000 sats to Laszlo after 700 blocks or you with <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_LASZLO_1</span>',
         list_three:
           '<span className="font-semibold">Output 1:</span> 98,000 sats to you',
-        list_four: `<span className="font-semibold">Miner fees:</span> 1,000 sats`,
+        list_four:
+          '<span className="font-semibold">Miner fees:</span> 1,000 sats',
       },
-      paragraph_eight: `All three of these transactions are signed and valid, but Laszlo hasn't handed you a Lightning Lemonade yet. Why not? Only one thing left to do, send Laszlo your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>!`,
+      paragraph_eight:
+        'All three of these transactions are signed and valid, but Laszlo hasn´t handed you a Lightning Lemonade yet. Why not? Only one thing left to do, send Laszlo your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base">REVOCATION_YOU_1</span>!',
       success_bar: 'Send REVOCATION_YOU_1 to Laszlo',
     },
     making_a_payment_seven: {
-      title: `🍋🍹 Ahhhhhhh, nice.`,
-      nav_title: `Ahhhhhhh, nice.`,
+      title: '🍋🍹 Ahhhhhhh, nice.',
+      nav_title: 'Ahhhhhhh, nice.',
       paragraph_one: '🍋🍹 Ahhhhhhh, nice.',
     },
     making_a_payment_eight: {
-      title: `Make another payment`,
-      nav_title: `Make another payment`,
-      heading_one: `Make another payment`,
-      paragraph_one: `The night is still young, and you're not flying your Budgetcopter home. Got time for another Lightning Lemonade? Now that you and Laszlo have your asymmetric transactions and a flow worked out with revocation keys, let's run the protocol again.`,
-      paragraph_two: `The two commitment transactions representing the current state where you have paid Laszlo 1,000 sats for a Lightning Lemonade are on your ePhone Infinity screen.`,
-      heading_two: `Instructions`,
-      list_one: `Update the amounts and output scripts for Laszlo's new commitment transaction`,
-      list_two: "Sign Laszlo's transaction and send it to him",
-      list_three: `Update your commitment transaction: Laszlo will revoke his last state by sending you <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">REVOCATION_LASZLO_1</span>. Update the amounts and output scripts in your commitment transaction.`,
+      title: 'Make another payment',
+      nav_title: 'Make another payment',
+      heading_one: 'Make another payment',
+      paragraph_one:
+        'The night is still young, and you´re not flying your Budgetcopter home. Got time for another Lightning Lemonade? Now that you and Laszlo have your asymmetric transactions and a flow worked out with revocation keys, let´s run the protocol again.',
+      paragraph_two:
+        'The two commitment transactions representing the current state where you have paid Laszlo 1,000 sats for a Lightning Lemonade are on your ePhone Infinity screen.',
+      heading_two: 'Instructions',
+      list_one:
+        'Update the amounts and output scripts for Laszlo´s new commitment transaction',
+      list_two: 'Sign Laszlo´s transaction and send it to him',
+      list_three:
+        'Update your commitment transaction: Laszlo will revoke his last state by sending you <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">REVOCATION_LASZLO_1</span>. Update the amounts and output scripts in your commitment transaction.',
       list_four: 'Send your transaction to Laszlo so he can sign it',
-      list_five: `Once you have Laszlo's signature, send him your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_YOU_2 </span> `,
+      list_five:
+        'Once you have Laszlo´s signature, send him your previous revocation key, <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base"> REVOCATION_YOU_2 </span> ',
       paragraph_three: 'Enjoy 🍋🍹',
       heading_three: 'Hints',
-      paragraph_four: `Don't forget to set aside 1,000 sats for miner fees`,
+      paragraph_four: 'Don´t forget to set aside 1,000 sats for miner fees',
       paragraph_five: 'Output 0 is spent by either:',
       step_one: {
-        hint_one: `Laszlo, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) 1 </span>`,
-        hint_two: `You:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_2) SIG(YOU) 0 </span> `,
-        hint_three: `Output 1 is spent by You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span> `,
+        hint_one:
+          'Laszlo, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) 1 </span>',
+        hint_two:
+          'You:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_2) SIG(YOU) 0 </span> ',
+        hint_three:
+          'Output 1 is spent by You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) </span> ',
       },
       step_two: {
-        hint_one: `You, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>`,
-        hint_two: `Laszlo:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_3) SIG(LASZLO) 0 </span> `,
-        hint_three: `Output 1 is spent by Laszlo <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span> `,
+        hint_one:
+          'You, after 700 blocks:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(YOU) 1 </span>',
+        hint_two:
+          'Laszlo:  <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_3) SIG(LASZLO) 0 </span> ',
+        hint_three:
+          'Output 1 is spent by Laszlo <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span> ',
       },
     },
 
@@ -3047,37 +3147,45 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_one:
         'You can do this all night long! Well, until your 100,000 satoshis have all been sent to Laszlo anyway',
       paragraph_two:
-        "Don't forget to drink some water! They have holodogs and nachos too.",
+        'Don´t forget to drink some water! They have holodogs and nachos too.',
     },
 
     outro_two: {
       title: 'Outro',
       nav_title: 'Heading home',
-      paragraph_one: `After a long and strange day, you pay for your drinks and head home. But as you open the door to your 3D printed bungalow, you—oh, crap! It’s Vanderpoole again! Is this really happening or did you have one too many Mempool Margaritas? Despite a small cadre of holocats flanking him on every side, he isn’t looking for a fight.`,
-      paragraph_two: `—VANDERPOOLE: “We don’t really know one another, even though, as my grandpappy used to say, the fates of strangers are often intertwined. I need you to hear me. All of the Satoshi Nakamoto stuff was me trying to save my family’s business. You can’t imagine how much mining meant to us. I guess I wasn’t ready for change and wanted to keep things more or less the same.”`,
+      paragraph_one:
+        'After a long and strange day, you pay for your drinks and head home. But as you open the door to your 3D printed bungalow, you—oh, crap! It’s Vanderpoole again! Is this really happening or did you have one too many Mempool Margaritas? Despite a small cadre of holocats flanking him on every side, he isn’t looking for a fight.',
+      paragraph_two:
+        '—VANDERPOOLE: “We don’t really know one another, even though, as my grandpappy used to say, the fates of strangers are often intertwined. I need you to hear me. All of the Satoshi Nakamoto stuff was me trying to save my family’s business. You can’t imagine how much mining meant to us. I guess I wasn’t ready for change and wanted to keep things more or less the same.”',
     },
 
     outro_three: {
       title: 'Outro',
       nav_title: 'Bitcoin community',
-      paragraph_one: `You ask why the name Satoshi Nakamoto mattered so much to him.`,
-      paragraph_two: `—VANDERPOOLE: “It’s the only name in bitcoin bigger than Bitrey and Vanderpoole. Someone using the name Satoshi Nakamoto once told me that bitcoin had moved far beyond its creator’s control over a century ago. This is why, to salvage the Vanderpoole name, I tried to claim a more prominent name. You can’t understand the thrill of minting new coins. It was magic to me then; it is magic to me now.”`,
-      paragraph_three: `—VANDERPOOLE: "I realize now that even if I were Satoshi’s great-grandson, bitcoin isn’t defined by leaders. It’s defined by its community. Not even Satoshi could change what bitcoin has become. That has always been what made bitcoin great and why the millions of other coins made in bitcoin’s image never lasted.”`,
+      paragraph_one:
+        'You ask why the name Satoshi Nakamoto mattered so much to him.',
+      paragraph_two:
+        '—VANDERPOOLE: “It’s the only name in bitcoin bigger than Bitrey and Vanderpoole. Someone using the name Satoshi Nakamoto once told me that bitcoin had moved far beyond its creator’s control over a century ago. This is why, to salvage the Vanderpoole name, I tried to claim a more prominent name. You can’t understand the thrill of minting new coins. It was magic to me then; it is magic to me now.”',
+      paragraph_three:
+        '—VANDERPOOLE: "I realize now that even if I were Satoshi’s great-grandson, bitcoin isn’t defined by leaders. It’s defined by its community. Not even Satoshi could change what bitcoin has become. That has always been what made bitcoin great and why the millions of other coins made in bitcoin’s image never lasted.”',
     },
 
     outro_four: {
       title: 'Outro',
-      nav_title: "Vanderpoole's villainy",
-      paragraph_one: `Vanderpoole picks up your holocat, and it begins to pur. People are complicated, and no one knows that better than cats, holo or otherwise`,
-      paragraph_two: `—HOLOCAT: “You’re not a villain, Mr. Vanderpoole. But you maybe, just maybe, might have cared too much.”`,
-      paragraph_three: `—VANDERPOOLE: Ain’t that the truth.`,
+      nav_title: 'Vanderpoole´s villainy',
+      paragraph_one:
+        'Vanderpoole picks up your holocat, and it begins to pur. People are complicated, and no one knows that better than cats, holo or otherwise',
+      paragraph_two:
+        '—HOLOCAT: “You’re not a villain, Mr. Vanderpoole. But you maybe, just maybe, might have cared too much.”',
+      paragraph_three: '—VANDERPOOLE: Ain’t that the truth.',
     },
 
     outro_five: {
       title: 'Outro',
       nav_title: 'You did it!!!',
       heading_one: 'You did it!!!',
-      paragraph_one: `Like Satoshi, you were a nobody, but your ideas had merit, so people followed you. Satoshi is gone, but his spirit and ideas live on. Armed with your newfound bitcoin dev coding skills, a healthy dose of humility, and some good old-fashioned persistence, you can leave an enduring mark on this elegant system that has united the world under permissionless, censorship-resistant money for more than 100 years. New adventures await you in the code and the open market of ideas. bitcoin only survives because people like you contribute what theycan. That’s why we are all Satoshi.`,
+      paragraph_one:
+        'Like Satoshi, you were a nobody, but your ideas had merit, so people followed you. Satoshi is gone, but his spirit and ideas live on. Armed with your newfound bitcoin dev coding skills, a healthy dose of humility, and some good old-fashioned persistence, you can leave an enduring mark on this elegant system that has united the world under permissionless, censorship-resistant money for more than 100 years. New adventures await you in the code and the open market of ideas. bitcoin only survives because people like you contribute what theycan. That’s why we are all Satoshi.',
     },
 
     outro_six: {
@@ -3118,8 +3226,9 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
         'Laszlo should receive enough sats for the Lightning Lemonade, and is not responsible for the 1,000 sat miner fees. The fee comes out of your change.',
       output_script:
         'The locking script on the output should not contain any signatures (i.e. <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base whitespace-nowrap">OP_PUSH SIG()</span>). If this is part of your script, simply remove it.',
-      miner_fees_basic: `Don't forget to set aside 1,000 sats for miner fees.`,
-      miner_fees: `Don't forget to set aside 1,000 sats from your change for miner fees.`,
+      miner_fees_basic: 'Don´t forget to set aside 1,000 sats for miner fees.',
+      miner_fees:
+        'Don´t forget to set aside 1,000 sats from your change for miner fees.',
     },
   },
 
@@ -3221,11 +3330,11 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     in_progress_message: 'Looking good so far...',
     success_message: 'Nicely done!',
     next_step_message: 'Looks good now lets move on to the next step.',
-    im_stuck: "I'm Stuck",
+    im_stuck: 'I´m Stuck',
     try_again: 'Try Again',
     next: 'Next',
-    skip_challenge_first: "Let's move on to the first challenge!",
-    skip_challenge_last: "Let's move on to the last challenge!",
+    skip_challenge_first: 'Let´s move on to the first challenge!',
+    skip_challenge_last: 'Let´s move on to the last challenge!',
   },
 
   hasher: {
@@ -3250,11 +3359,11 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     evaluation: 'Evaluation',
     script_output: 'Script output',
     waiting: 'Waiting for your input above...',
-    poor: "This is valid code but it's not quite what we are looking for. Try again.",
+    poor: 'This is valid code but it´s not quite what we are looking for. Try again.',
     good: 'Good job, its not quite perfect but still considered correct. Keep working or continue, your choice.',
     success: 'Great work your code looks great!',
     language_tabs: {
-      locked: "Language disabled since you've started this chapter in",
+      locked: 'Language disabled since you´ve started this chapter in',
       reset: 'Reset the terminal',
     },
   },
@@ -3284,8 +3393,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     solution_one: 'Solution to part one of this challenge',
     feedback:
       'Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
-    help_suggestion:
-      'If you\'re ever stuck, press the "?" button in the top-right corner. It provides helpful resources and tips.',
+    help_suggestion: `If you\\'re ever stuck, press the "?" button in the top-right corner. It provides helpful resources and tips.`,
   },
 }
 export default translations
