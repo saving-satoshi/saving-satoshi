@@ -1081,7 +1081,7 @@ const translations = {
         'We already found the scriptPubKey in the previous step, you can paste that in the first blank.',
       paragraph_three: {
         a: 'The last thing we need for our transaction message is a',
-        b: `. We\\'ll cover this more in the next chapter but for now we\\'ll just add the value <span className="font-bold">01000000</span> to the end of the message.`,
+        b: `. We´ll cover this more in the next chapter but for now we´ll just add the value <span className="font-bold">01000000</span> to the end of the message.`,
       },
       tooltip_one: {
         question: 'What are sighash flags?',
@@ -1170,7 +1170,7 @@ const translations = {
       title: 'Validate the signature',
       nav_title: 'Prepare the message',
       heading: 'Prepare Vanderpoole´s message for verification',
-      paragraph_one: `Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we\\'ve already defined, but the preparation of the data is a bit different.`,
+      paragraph_one: `Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we´ve already defined, but the preparation of the data is a bit different.`,
       paragraph_two:
         'First, we need to encode his message into an array of bytes corresponding to the following template:',
       paragraph_three: {
@@ -1279,7 +1279,7 @@ const translations = {
           'SigHash flags are a mechanism in bitcoin that define which parts of a transaction are included in the hash that is signed by a private key. Essentially, they determine the scope of commitment by the signer to specific parts of the transaction data. The SigHash flag is a single byte appended to each signature and can vary between inputs within the same transaction. There are several types of SigHash flags you can learn about <Link href="https://river.com/learn/terms/s/sighash-flag" target="_blank" className="underline">here</Link>.',
       },
       verify_signature_two: {
-        tip_one: `JavaScript hint: You can convert a hex string to a buffer of bytes using <span className="p-1 font-mono bg-[#0000004D] m-1">Buffer.from(someString, \\'hex\\');</span>`,
+        tip_one: `JavaScript hint: You can convert a hex string to a buffer of bytes using <span className="p-1 font-mono bg-[#0000004D] m-1">Buffer.from(someString, 'hex');</span>`,
         signature_verification_heading: 'Signature Verification',
         signature_verification_paragraph_one:
           'Signature verification is a mathematical algorithm in which one party provides a piece of data (the signature) that could only be generated if that party knows a secret number (the private key). Verification involves comparing the signature, the public key, and a given message. If the algorithm outputs a TRUE boolean, then the signature is considered authentic.',
@@ -1398,7 +1398,7 @@ const translations = {
         paragraph_three: 'The first two arguments are:',
         paragraph_four:
           '1. <span className="font-bold">txid: </span>the ID of the transaction that created the output, and',
-        paragraph_five: `2. <span className="font-bold">vout: </span>the index of the output in the transaction\\'s entire list of outputs`,
+        paragraph_five: `2. <span className="font-bold">vout: </span>the index of the output in the transaction´s entire list of outputs`,
         paragraph_six:
           'Together, these two pieces of information make up an <span className="font-bold">Outpoint</span>. Eventually we will pass in the txid and vout values that came from executing the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">listunspent</span> command in the previous exercise. ',
         paragraph_seven:
@@ -1887,7 +1887,7 @@ const translations = {
           'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
         paragraph_four:
           'Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.',
-        paragraph_five: `But wait! We need to include a "fee". We\\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\\'s reduce our change from 61,000,000 to 60,999,000 satoshis.`,
+        paragraph_five: `But wait! We need to include a "fee". We´ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let´s reduce our change from 61,000,000 to 60,999,000 satoshis.`,
         paragraph_six:
           'Finally our work is done. Your script should end by returning the result of the transaction serialize() method. This is a valid signed bitcoin transaction and we can broadcast it to the network to send Mika 3000 the money she needs!',
         headings: {
@@ -2089,7 +2089,7 @@ const translations = {
           'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
         paragraph_two:
           'Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in step 1) and two outputs:',
-        paragraph_three: `But wait! We need to include a "fee". We\\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\\'s reduce our change from 61,000,000 to 60,999,000 satoshis.`,
+        paragraph_three: `But wait! We need to include a "fee". We´ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let´s reduce our change from 61,000,000 to 60,999,000 satoshis.`,
         paragraph_four:
           'Finally our work is done. Your script should end by returning the result of the transaction <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method. This is a valid signed bitcoin transaction and we can broadcast it to the network to send Mika 3000 the money he needs!',
         bullet_one:
@@ -2156,10 +2156,10 @@ const translations = {
       nav_title: 'Assemble a block',
       heading: 'Code Challenge',
       python: {
-        paragraph_one: `This is the code you find on Vanderpoole\\'s server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assemble_block()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.`,
+        paragraph_one: `This is the code you find on Vanderpoole´s server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assemble_block()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.`,
       },
       javascript: {
-        paragraph_one: `This is the code you find on Vanderpoole\\'s server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assembleBlock()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.`,
+        paragraph_one: `This is the code you find on Vanderpoole´s server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assembleBlock()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.`,
       },
       paragraph_two: {
         a: 'You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules. The most critical consensus rules you will need to pay attention to restrict the total ',
@@ -2569,7 +2569,7 @@ const translations = {
       title: 'OpCodes',
       nav_title: 'Decode with cryptography',
       heading: 'Simple Cryptography',
-      paragraph_one: `We\\'ve explored "pay to public key hash" in previous chapters. This is the bitcoin script that was written explicitly in millions of transaction outputs before segregated witness came along and abbreviated it. Coins are locked by the hash of a public key. The spender must reveal the public key that matches that hash, and then provide a signature verified by that public key.`,
+      paragraph_one: `We´ve explored "pay to public key hash" in previous chapters. This is the bitcoin script that was written explicitly in millions of transaction outputs before segregated witness came along and abbreviated it. Coins are locked by the hash of a public key. The spender must reveal the public key that matches that hash, and then provide a signature verified by that public key.`,
       subheading_one: 'Opcodes that do simple cryptography',
       opcryptography_list_one_heading:
         '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm h-fit">OP_HASH256</span>',
@@ -2589,7 +2589,7 @@ const translations = {
         'Multisignature policies provide a list of public keys and a number of signatures required for a valid spend. It can be described as "m-of-n" meaning "m number of signatures are required from this list of n public keys". The public keys and the m and n values are typically included in the locking script and the spender only needs to provide the right number of signatures.',
       paragraph_two:
         'Holocat appears with a pre-recorded message from Satoshi Nakamoto!',
-      paragraph_three: `Hi. I accidentally wrote a bug when I implemented <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn\\'t used at all. So, uh, whoops. Sorry. That code is consensus-critical so every <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> operation in bitcoin\\'s past, present, and future will be forced to include a "dummy" element. Don\\'t forget it or you won\\'t be able to spend your multisig coins!`,
+      paragraph_three: `Hi. I accidentally wrote a bug when I implemented <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span>. It pops an extra item off the stack that isn´t used at all. So, uh, whoops. Sorry. That code is consensus-critical so every <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> operation in bitcoin´s past, present, and future will be forced to include a "dummy" element. Don´t forget it or you won´t be able to spend your multisig coins!`,
     },
     opcodes_eight: {
       title: 'OpCodes',
@@ -2750,7 +2750,7 @@ const translations = {
         making_script_heading: 'Making script',
         making_script_paragraph:
           'Remember that scripts can only be validated if the finish with a single truthy value on the stack. some versions allow any truthy value but our script editor only allows for values equal to 1 or true.',
-        tip: `Don\\'t forget about the bug in <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> that requires the extra unused value on the stack!`,
+        tip: `Don´t forget about the bug in <span className="text-[#3DCFEF] rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> that requires the extra unused value on the stack!`,
         spoiler: `Script Hint: This multisig arrangement needs both participants to sign. The script specifies that two signatures are required and includes both public keys.
 Stack Hint: To satisfy the script, you need to provide both signatures. The 0 on the stack accounts for a specific behavior of the CHECKMULTISIG operation.`,
       },
@@ -3393,7 +3393,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     solution_one: 'Solution to part one of this challenge',
     feedback:
       'Your feedback is valuable and helps us in enhancing our work more, please give us feedback using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this link</a>. ',
-    help_suggestion: `If you\\'re ever stuck, press the "?" button in the top-right corner. It provides helpful resources and tips.`,
+    help_suggestion: `If you´re ever stuck, press the "?" button in the top-right corner. It provides helpful resources and tips.`,
   },
 }
 export default translations
