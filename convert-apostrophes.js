@@ -51,7 +51,7 @@ content = content.replace(
   /(\w+):\s*(["'`])((?:\\[\s\S]|(?!\2)[\s\S])*?)\2/g,
   function (match, key, quote, value) {
     // Replace any backticks within the value with single quotes
-    let processedValue = value.replace(/´/g, "'")
+    let processedValue = value.replace(/’/g, "'")
 
     // Use backticks for all string definitions
     return key + ': `' + processedValue + '`'

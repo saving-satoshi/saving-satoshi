@@ -24,12 +24,12 @@ const translations = {
     title: `About`,
     mobile_title: `All about Saving Satoshi`,
     subtitle: `The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square.`,
-    intro: `As the world waits for this historic event, the network suddenly grinds to a halt.<br><br>On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.`,
+    intro: `As the world waits for this historic event, the network suddenly grinds to a halt.<br><br>On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It's like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.`,
 
     project: {
-      title: `Bitcoin is serious, but learning about it doesn’t have to be `,
+      title: `Bitcoin is serious, but learning about it doesn't have to be `,
       paragraph_one: `Saving Satoshi is a light-hearted, interactive role-playing game (RPG) about bitcoin tech. It combines fun, innovative challenges with storytelling and game mechanics to create a gentle entry point to bitcoin development.`,
-      paragraph_two: `It’s built with fun for curious coders and anyone that wants to learn how bitcoin <span className="italic">really</span> works. It’s for those that have seen the magic of bitcoin open source software (₿OSS) and are are looking for ways to start contributing.`,
+      paragraph_two: `It's built with fun for curious coders and anyone that wants to learn how bitcoin <span className="italic">really</span> works. It's for those that have seen the magic of bitcoin open source software (₿OSS) and are are looking for ways to start contributing.`,
       paragraph_three: `Each chapter is filled with code-based lesson content, simulations, and programming exercises to make learning the esoteric details of bitcoin tech more enjoyable.`,
       paragraph_four: `With simple, straightforward examples, players build solid foundations before layering on the complexity. Through an immersive UX, rich visuals, and seamless interactions, learners are taken on a journey through a variety of topics including:`,
       chapter_topics: {
@@ -44,25 +44,25 @@ const translations = {
         list_nine: `Bitcoin Script`,
         list_ten: `How the Lightning network works`,
       },
-      paragraph_five: `But it’s not just about the curriculum. We believe bitcoin education can be just as creative and unique as the technology itself. That’s why the game touches on many other fascinating elements of bitcoin like culture, history, and design.`,
-      paragraph_six: `To us, bitcoin is a positive force in the world. This project is built by a passionate group of contributors under the highest standards, and it’s 100% free and open source (FOSS). To learn more about how Saving Satoshi was made, see our <Link href="https://bitcoin.design/guide/case-studies/saving-satoshi" className="underline" target="_blank">case study</Link> in the Bitcoin Design Guide.`,
-      paragraph_seven: `From playing the game, to running a workshop, to code contributions, there are many ways to join the Saving Satoshi community. We’d be delighted to have you. To get in touch, follow <Link href="https://github.com/saving-satoshi/saving-satoshi" className="underline" target="_blank">Saving Satoshi on GitHub</Link> and join the <Link href="https://discord.gg/eBGRaCSjg5" className="underline" target="_blank">#saving-satoshi channel</Link> on the Bitcoin Design Community Discord.`,
+      paragraph_five: `But it's not just about the curriculum. We believe bitcoin education can be just as creative and unique as the technology itself. That's why the game touches on many other fascinating elements of bitcoin like culture, history, and design.`,
+      paragraph_six: `To us, bitcoin is a positive force in the world. This project is built by a passionate group of contributors under the highest standards, and it's 100% free and open source (FOSS). To learn more about how Saving Satoshi was made, see our <Link href="https://bitcoin.design/guide/case-studies/saving-satoshi" className="underline" target="_blank">case study</Link> in the Bitcoin Design Guide.`,
+      paragraph_seven: `From playing the game, to running a workshop, to code contributions, there are many ways to join the Saving Satoshi community. We'd be delighted to have you. To get in touch, follow <Link href="https://github.com/saving-satoshi/saving-satoshi" className="underline" target="_blank">Saving Satoshi on GitHub</Link> and join the <Link href="https://discord.gg/eBGRaCSjg5" className="underline" target="_blank">#saving-satoshi channel</Link> on the Bitcoin Design Community Discord.`,
       paragraph_eight: `You can also connect with us on <Link href="https://x.com/savingsatoshi" className="underline" target="_blank">X</Link>, <Link href="https://njump.me/npub1vy6wcgw6jhhtcmpawvlnsfx7g8qt8r40z7qlks9zwa4ed57vm5eqx527hr" className="underline" target="_blank">nostr</Link>, and <Link href="https://bsky.app/profile/bitcoindevs.bsky.social" className="underline" target="_blank">Bluesky</Link>. We love shout outs and hearing from our users!`,
     },
 
     contributing: {
       title: `How to contribute`,
-      paragraph_one: `We’re an open-source project, so all doors are open for you to help shape it.`,
+      paragraph_one: `We're an open-source project, so all doors are open for you to help shape it.`,
 
       feedback: {
         title: `Feedback`,
-        paragraph_one: `We’re all ears! We love hearing what went well, what didn’t go well, and where there is room for improvement. You can use <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this form</a> to submit feedback.`,
+        paragraph_one: `We're all ears! We love hearing what went well, what didn't go well, and where there is room for improvement. You can use <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this form</a> to submit feedback.`,
       },
 
       contribute: {
         title: `Contribute`,
         paragraph_one: `All suggestions are welcome. We are also always looking for help reviewing and QA-ing code changes. For code improvements, you can directly open an issue or submit a pull request on <a href="https://github.com/saving-satoshi/saving-satoshi" target="_blank" rel="noreferrer">GitHub</a>.`,
-        paragraph_two: `If you want to get involved with design, story, or anything else, join us in the #saving-satoshi channel in the <a href="https://discord.gg/B9WURkwF" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Mention how you’d like to contribute and we’ll help point you in the right direction.`,
+        paragraph_two: `If you want to get involved with design, story, or anything else, join us in the #saving-satoshi channel in the <a href="https://discord.gg/B9WURkwF" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Mention how you'd like to contribute and we'll help point you in the right direction.`,
       },
     },
 
@@ -96,7 +96,7 @@ const translations = {
   ///CHAPTERS TITLE PAGE
   chapter_one: {
     title: `Secrets in Plain Sight`,
-    paragraph_one: `The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. Up until this point, every block has had some kind of bitcoin reward, a subsidy. This is the only way new bitcoins come into existence but soon, it’s about to change. After over one hundred years, the issuance schedule for bitcoin is coming to an end. The world awaits for the last block with a subsidy to be mined. It’s a historical event. The end of an era.`,
+    paragraph_one: `The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square. Up until this point, every block has had some kind of bitcoin reward, a subsidy. This is the only way new bitcoins come into existence but soon, it's about to change. After over one hundred years, the issuance schedule for bitcoin is coming to an end. The world awaits for the last block with a subsidy to be mined. It's a historical event. The end of an era.`,
     paragraph_two: `Suddenly, the network grinds to a halt.`,
 
     ///CHAPTER 1
@@ -105,17 +105,17 @@ const translations = {
       nav_title: `Miner protest`,
       paragraph_one: `Moments later, your Hover Screen activates.`,
       paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. As the well-dressed CEO of BitRey, you run, by far, the largest bitcoin mining pool in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”`,
-      paragraph_three: `—Vanderpoole: “Let’s start from the top. Yes, I am, Deborah, and yes, I do. The Vanderpooles—my well-dressed daddy and his well-dressed daddy before him—have been mining since block 21,000. That’s why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. Miners cannot survive on fees alone.”`,
+      paragraph_three: `—Vanderpoole: “Let's start from the top. Yes, I am, Deborah, and yes, I do. The Vanderpooles—my well-dressed daddy and his well-dressed daddy before him—have been mining since block 21,000. That's why I can confidently say that miners across the world are causing these delays by turning off their machines. This is a protest. No one wants bitcoin to stop being issued at 21 million. Miners cannot survive on fees alone.”`,
       start: `Continue`,
     },
 
     intro_two: {
       title: `Genesis`,
       nav_title: `Satoshi's holocat`,
-      paragraph_one: `On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.`,
-      paragraph_two: `—“Bitcoin is not dying, but it needs your help. Don’t forget the cat.” – Satoshi Nakamoto`,
-      paragraph_three: `—Satoshi? The Satoshi? From the white paper? No, it couldn’t be. They’ve been presumed dead for over a century.`,
-      paragraph_four: `Haven’t they?`,
+      paragraph_one: `On your Everything Watch, you receive a WhiskerWare brand holocat from someone using the name Satoshi Nakamoto. (It's like any other e-hologram, but this one is shaped like a cat.) You open the holocat by booping its nose.`,
+      paragraph_two: `—“Bitcoin is not dying, but it needs your help. Don't forget the cat.” – Satoshi Nakamoto`,
+      paragraph_three: `—Satoshi? The Satoshi? From the white paper? No, it couldn't be. They've been presumed dead for over a century.`,
+      paragraph_four: `Haven't they?`,
       paragraph_five: `Holocat: “You better get to work. I can help, but you have to start meow.”`,
     },
 
@@ -131,7 +131,7 @@ const translations = {
       title: `Genesis`,
       nav_title: `Find the message`,
       heading: `Find the hidden message`,
-      paragraph_one: `Let’s find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.`,
+      paragraph_one: `Let's find the very first block in the bitcoin blockchain. Click the button below to open a <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">block explorer</Tooltip>  exactly at block 0, which is called the genesis block.`,
       paragraph_two: `Scroll down and expand the details on the one transaction that is stored in this block. Find the input called “Coinbase”. Now look for the label “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)”. The value next to it is an encoded message.`,
       paragraph_three: `Copy that value and paste it in the code block.`,
       tooltip_block_explorer: `A <a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">block explorer</a> is a useful tool to quickly look up information about bitcoin transactions.`,
@@ -155,25 +155,25 @@ const translations = {
       title: `Genesis`,
       nav_title: `Your first success`,
       subtitle: `Congrats! You completed the first challenge!`,
-      paragraph_one: `You found the secret message Satoshi Nakamoto embedded in the genesis block. It’s time to expand on what you just learned. Decode a vital clue about the story in the next challenge.`,
+      paragraph_one: `You found the secret message Satoshi Nakamoto embedded in the genesis block. It's time to expand on what you just learned. Decode a vital clue about the story in the next challenge.`,
     },
 
     transacting_one: {
       title: `Transacting`,
       nav_title: `What's in a transaction`,
-      heading: `What’s in a transaction?`,
-      paragraph_one: `Two main components of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we’ll decode a message that belongs to the output part.`,
-      paragraph_two: `For the following transaction, we’re going to identify the output of type OP_RETURN.`,
+      heading: `What's in a transaction?`,
+      paragraph_one: `Two main components of a transaction are inputs and outputs. In the previous exercise we decoded a secret message found inside a transaction input. This time we'll decode a message that belongs to the output part.`,
+      paragraph_two: `For the following transaction, we're going to identify the output of type OP_RETURN.`,
     },
 
     transacting_two: {
       title: `Transacting`,
       nav_title: `Find the OP_RETURN`,
       heading: `OP_RETURN`,
-      paragraph_one: `There’s another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let’s see if we can find one.`,
+      paragraph_one: `There's another way to hide secret messages in transactions. Bitcoin has a special type of code called OP_RETURN that allows users to attach messages to transaction outputs. Let's see if we can find one.`,
       paragraph_two: `1. Click <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">here</Link> to look at a specific transaction.`,
       paragraph_three: `2. Open up the details and find the part that is of type “OP_RETURN”.`,
-      paragraph_four: `3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSHBYTES_33" part? These are called opcodes. We’re actually interested in what comes after them.`,
+      paragraph_four: `3. Now locate the “SCRIPTPUBKEY (ASM)” field. See the “OP_RETURN OP_PUSHBYTES_33" part? These are called opcodes. We're actually interested in what comes after them.`,
       paragraph_five: `4. Copy the long string of numbers after “OP_RETURN OP_PUSHBYTES_33” and paste it in the code block. `,
       input_challenge_label: `Enter the OP_RETURN type`,
     },
@@ -182,17 +182,17 @@ const translations = {
       title: `Transacting`,
       nav_title: `Decode the OP_RETURN`,
       heading: `Another secret message`,
-      paragraph_one: `We’ve identified the part of the transaction output that holds the message.`,
-      paragraph_two: `All that’s left now is to decode it, just like we did in the previous exercise. You can look up the transaction again <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">here</Link>.`,
-      terminal_challenge_success: `That’s correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n Your next challenge awaits you.`,
-      terminal_challenge_lines: `Enter your commands here and press Enter...\n\n Command: \n echo $scriptPubKeyBytes | xxd -r -p \n\n Note that $scriptPubKeyBytes is not defined for you this time. You’ll need to replace this variable in the code with the value you found in the previous page`,
+      paragraph_one: `We've identified the part of the transaction output that holds the message.`,
+      paragraph_two: `All that's left now is to decode it, just like we did in the previous exercise. You can look up the transaction again <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">here</Link>.`,
+      terminal_challenge_success: `That's correct! Nice work.\n\n As you can see, the clue is an address. Go to it.\n\n Your next challenge awaits you.`,
+      terminal_challenge_lines: `Enter your commands here and press Enter...\n\n Command: \n echo $scriptPubKeyBytes | xxd -r -p \n\n Note that $scriptPubKeyBytes is not defined for you this time. You'll need to replace this variable in the code with the value you found in the previous page`,
       terminal_challenge_error: `Almost! Remember that the variable $scriptPubKeyBytes is not set for you this time.`,
     },
 
     outro_one: {
       title: `Outro`,
       nav_title: `Adventure calls`,
-      paragraph_one: `You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to District 21.`,
+      paragraph_one: `You run down to your garage, step into your dad's old Budgetcopter, punch in the coordinates, and make your way to District 21.`,
       paragraph_two: `Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.`,
       button_text: `Complete chapter 1`,
     },
@@ -238,16 +238,16 @@ const translations = {
 
   chapter_two: {
     title: `Hashing Out a Plan`,
-    paragraph_one: `The coordinates Satoshi gave you don’t disappoint, unfortunately: it’s a warehouse, and a scary, deserted one to boot.`,
-    paragraph_two: `You circle the warehouse in your Budgetcopter no less than three times. Yeah, sigh, you’re probably gonna have to go in there. Your Budgetcopter’s Budget Heat Detector detects nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.`,
+    paragraph_one: `The coordinates Satoshi gave you don't disappoint, unfortunately: it's a warehouse, and a scary, deserted one to boot.`,
+    paragraph_two: `You circle the warehouse in your Budgetcopter no less than three times. Yeah, sigh, you're probably gonna have to go in there. Your Budgetcopter's Budget Heat Detector detects nothing but darkness. If someone knows that this place exists, it's been a long time since they visited it in anything but their memory.`,
 
     intro_one: {
       title: `Intro`,
       nav_title: `The warehouse`,
-      paragraph_one: `—HOLOCAT: “Boy, what a dump. This place had better have some e-anchovies stored somewhere. I’d even settle for some CyberKibble.."`,
-      paragraph_two: `You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.`,
+      paragraph_one: `—HOLOCAT: “Boy, what a dump. This place had better have some e-anchovies stored somewhere. I'd even settle for some CyberKibble.."`,
+      paragraph_two: `You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what's left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.`,
       paragraph_three: {
-        a: `—HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family mining devices. In bitcoin’s early days, miners would use general purpose computers to mine bitcoin. But after a few years, miners realized they could use machines with a special chip called an Application-Specific Integrated Circuit, or `,
+        a: `—HOLOCAT: “This isn't a warehouse; this is a museum. I think these are old Vanderpoole family mining devices. In bitcoin's early days, miners would use general purpose computers to mine bitcoin. But after a few years, miners realized they could use machines with a special chip called an Application-Specific Integrated Circuit, or `,
         b: ` for short. These chips do only one thing: mine bitcoin. Their narrow focus increases their efficiency and allows miners to spend less energy on mining, giving them an edge. Can you believe that people mined with their laptops at one point?"`,
       },
       paragraph_four: `This explains all the machines in the Vanderpoole family collection.`,
@@ -273,7 +273,7 @@ const translations = {
       list_one: `> QX23Y6VGECTUKSNIEUTUB[P[pihof`,
       list_two: `> 1c31d1d9fb848a505fc0cdbea848ff1bdd46a9ed4d639d413d3a93035194eedf`,
       paragraph_two: `The monitor displays "INCORRECT HASH. TRY AGAIN."`,
-      paragraph_three: `Of course whatever gibberish Holocat typed was wrong. She’s just a sassy holographic cat!`,
+      paragraph_three: `Of course whatever gibberish Holocat typed was wrong. She's just a sassy holographic cat!`,
       paragraph_four: `What happens if you type something different?`,
     },
 
@@ -283,7 +283,7 @@ const translations = {
       heading: `Enter Anything`,
       return_hash: `Below you will see your input converted to a hash`,
       progress_message: `Keep going...`,
-      success_message: `Alright, nice work playing around. Let’s move on.`,
+      success_message: `Alright, nice work playing around. Let's move on.`,
     },
 
     hashing_three: {
@@ -291,13 +291,13 @@ const translations = {
       nav_title: `The power of SHA256`,
       heading: `Did you notice anything special about the hashes?`,
       list_one: `Just like fingerprints, hashes are unique. Barring some exceptional circumstances, the hashes for two different things should never be the same.`,
-      list_two: `Hash functions are one way streets. You can’t reverse engineer a hash to figure out the data used to make it.`,
-      list_three: `Hashes are extremely reliable in the sense that they are deterministic. This means you can hash the same piece of data over and over again and you’ll always get the same result.`,
+      list_two: `Hash functions are one way streets. You can't reverse engineer a hash to figure out the data used to make it.`,
+      list_three: `Hashes are extremely reliable in the sense that they are deterministic. This means you can hash the same piece of data over and over again and you'll always get the same result.`,
       paragraph_one: {
         a: `The function used here is called `,
         b: `a very popular choice.`,
       },
-      paragraph_two: `Now, let’s see if you can find a specific hash.`,
+      paragraph_two: `Now, let's see if you can find a specific hash.`,
       paragraph_three: `Find a hash that starts with a zero (“0”). Keep typing different things below until you find a hash that we want.`,
       tooltip_one: {
         question: `How is SHA-256 used in bitcoin? `,
@@ -317,8 +317,8 @@ const translations = {
     hashing_five: {
       title: `Zeroes`,
       nav_title: `Turning up the heat`,
-      heading: `That wasn’t too hard!`,
-      paragraph_one: `Let’s make it a bit more tricky. Try to find a hash that starts with two zeroes ("00").`,
+      heading: `That wasn't too hard!`,
+      paragraph_one: `Let's make it a bit more tricky. Try to find a hash that starts with two zeroes ("00").`,
     },
 
     hashing_six: {
@@ -332,7 +332,7 @@ const translations = {
     scripting_one: {
       title: `Automation`,
       nav_title: `Hashing the nonce`,
-      heading: `Let’s make the computer do this for us.`,
+      heading: `Let's make the computer do this for us.`,
       paragraph_one: `OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.`,
       paragraph_two: `Miners gather all the information they want to put in a block such as the previous block header hash, a hash of transactions to be included in block (including the coinbase transaction), time, and combine it with a random number called a nonce (number only used once). They send all of this into the hash function to create something called the block hash.`,
       paragraph_three: `When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data in the 32-bit field by 1. However, as miners become more powerful and efficient, the difficulty rises. Soon, it became so high that it was common to exhaust all possibilities for the 32-bit field without finding a single solution below the`,
@@ -365,25 +365,25 @@ const translations = {
     mining_one: {
       title: `Into the mine`,
       nav_title: `Mining blocks`,
-      heading_one: `Now that we know how mining works, let’s see it in action`,
-      heading_two: `You’re mining now`,
+      heading_one: `Now that we know how mining works, let's see it in action`,
+      heading_two: `You're mining now`,
       heading_three: `Nice work!`,
-      heading_four: `Let’s get to 100 blocks`,
+      heading_four: `Let's get to 100 blocks`,
       heading_five: `You did it!`,
-      paragraph_one: `Right now, the bitcoin network requires blocks to have a hash with ten leading zeros. Let’s get to it!`,
-      paragraph_two: `For this simple simulation, we’ll just assume that every block contains 3,500 transactions and 0.061 BTC in rewards and fees.`,
+      paragraph_one: `Right now, the bitcoin network requires blocks to have a hash with ten leading zeros. Let's get to it!`,
+      paragraph_two: `For this simple simulation, we'll just assume that every block contains 3,500 transactions and 0.061 BTC in rewards and fees.`,
       paragraph_two_one: `See if you can turn on the miners.`,
       paragraph_three: `The code you wrote in the previous lesson to compute hashes over and over again is running.`,
-      paragraph_four: `It will stop once it’s found a hash with ten leading zeroes.`,
-      paragraph_five: `See the nonce field incrementing? That’s how many hashes you have tried so far!`,
+      paragraph_four: `It will stop once it's found a hash with ten leading zeroes.`,
+      paragraph_five: `See the nonce field incrementing? That's how many hashes you have tried so far!`,
       paragraph_six: `With the following nonce:`,
       paragraph_seven: `The resulting hash is:`,
-      paragraph_eight: `It has the ten leading zeros that all new blocks require. Let’s mine a few more blocks.`,
+      paragraph_eight: `It has the ten leading zeros that all new blocks require. Let's mine a few more blocks.`,
       paragraph_eight_one: `Turn the miners back on.`,
       paragraph_nine: `This might take some time. But this shows you how hard it is to mine blocks and confirm transactions.`,
       paragraph_ten: `Wow! That took quite a bit of computing power to do all that hashing. Just look how many nonces were tried!  It really helped to have that boost in hash power i.e. the number of hashes your computer can try in a second.`,
       paragraph_eleven: `As expected, since each block contains 3,500 transactions, a total of 350,000 transactions have been confirmed by the 100 blocks that were mined.`,
-      paragraph_twelve: `And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. `,
+      paragraph_twelve: `And it looks like you've collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you've also been able to collect additional income in the form of transaction fees. `,
       paragraph_thirteen: `Remember, this was just a simulation, each block is supposed to take 10 minutes on average.`,
       paragraph_fourteen: `Also, if we were really mining on the current mainnet it would take many orders of magnitude more computing power to mine these blocks.`,
       progress_bar_title: `Blocks found`,
@@ -399,7 +399,7 @@ const translations = {
       nav_title: `Chapter complete`,
       heading: `Great Job!`,
       paragraph_one: `The machines roar to life. Everything seems to be working. A map appears on the old monitor that shows the locations of other warehouses filled with old Vanderpoole family mining devices that have come online across the world. Looks like they were activated when you completed the mining challenge!`,
-      paragraph_two: `—HOLOCAT: “Look, there’s a message.”`,
+      paragraph_two: `—HOLOCAT: “Look, there's a message.”`,
       paragraph_three: `“Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto`,
       paragraph_four: `Him again?`,
     },
@@ -444,34 +444,34 @@ const translations = {
     title: `The 51% Attack`,
     paragraph_one: `You enter the address of a block explorer and see that blocks are back to ten minute intervals. Somehow, Holocat sleeps through the noise from all the ASICs.`,
     paragraph_two: `Cats. What can you do?`,
-    paragraph_three: `However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking Holocat.`,
-    paragraph_four: `It’s not a coincidence.`,
+    paragraph_three: `However, something is off. The blocks are empty, and transactions aren't processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking Holocat.`,
+    paragraph_four: `It's not a coincidence.`,
 
     intro_one: {
       title: `Intro`,
       nav_title: `Hashing it out`,
-      paragraph_one: `—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is being hit with a 51% attack right now! After you brought those mining devices online, Vanderpoole turned BitRey’s ASICs back on and is mining empty blocks. The problem is it’s not just his machines. He used a backdoor on the standard ASIC firmware to infect existing miners with a virus that prevents them from mining anything but empty blocks. He’s trying to hold the bitcoin ecosystem hostage and force people to support the idea of increasing bitcoin’s supply. Do something, dingdong!”`,
+      paragraph_one: `—SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is being hit with a 51% attack right now! After you brought those mining devices online, Vanderpoole turned BitRey's ASICs back on and is mining empty blocks. The problem is it's not just his machines. He used a backdoor on the standard ASIC firmware to infect existing miners with a virus that prevents them from mining anything but empty blocks. He's trying to hold the bitcoin ecosystem hostage and force people to support the idea of increasing bitcoin's supply. Do something, dingdong!”`,
       paragraph_two: `The old computer coughs up a cloud of dust, then produces a wad of data called a “spreadsheet” that contains contact info for some of the largest bitcoin miners, as well as a patch for the virus. The sooner you can get the patch to other miners, the sooner they can regain control of their machines and join your fight against BitRey.`,
-      paragraph_three: `—HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”`,
+      paragraph_three: `—HOLOCAT: “We've got more work to do. Well, you do. I'm gonna run through walls and scare mice.”`,
     },
 
     solo_one: {
       title: `You vs. BitRey`,
       nav_title: `Mining alone`,
-      step_zero_heading: `Let’s give it a try`,
-      step_zero_paragraph_one: `While you’re waiting for the miners you reached out to, you decide to see if BitRey can be fended off alone. Maybe you can put an end to the empty blocks without any help. Here’s how your hash rate stacks up. How do you think this will go?`,
-      step_one_heading: `We’re off to the races`,
-      step_one_paragraph_one: `We’re now mining 100 blocks to see how many you stack up against BitRey.`,
+      step_zero_heading: `Let's give it a try`,
+      step_zero_paragraph_one: `While you're waiting for the miners you reached out to, you decide to see if BitRey can be fended off alone. Maybe you can put an end to the empty blocks without any help. Here's how your hash rate stacks up. How do you think this will go?`,
+      step_one_heading: `We're off to the races`,
+      step_one_paragraph_one: `We're now mining 100 blocks to see how many you stack up against BitRey.`,
       step_two_heading: `That didn't go well!`,
-      step_two_paragraph_one: `Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled miners. Let’s see if we can defeat BitRey for the next 100 blocks with the other miners. Bitcoin has been running for over a century and it’s not going down without a fight.`,
+      step_two_paragraph_one: `Yikes, we just don't have enough hashpower to compete with BitRey and the virus-controlled miners. Let's see if we can defeat BitRey for the next 100 blocks with the other miners. Bitcoin has been running for over a century and it's not going down without a fight.`,
     },
 
     pool_one: {
       title: `Pool vs. BitRey`,
       nav_title: `Finding friends`,
       waiting_screen_heading: `We need support!`,
-      waiting_screen_paragraph_one: `Your miners in the warehouse don’t stand a chance. If you combine your hash power with other miners, you might be able to hold the line against BitRey's assault.`,
-      waiting_screen_paragraph_two: `Let’s wait until the others join your cause so we can combine forces.`,
+      waiting_screen_paragraph_one: `Your miners in the warehouse don't stand a chance. If you combine your hash power with other miners, you might be able to hold the line against BitRey's assault.`,
+      waiting_screen_paragraph_two: `Let's wait until the others join your cause so we can combine forces.`,
       waiting_button: `Waiting...`,
       continue_button: `Let's go`,
     },
@@ -490,7 +490,7 @@ const translations = {
       nav_title: `Something went wrong`,
       heading: `Something is not quite right yet.`,
       paragraph_one: `Hashrate Hoppers, the one with the most hash power, is finding all your blocks but others find nothing.`,
-      paragraph_two: `The problem is that everyone is checking the same nonces while they’re mining. How can you better coordinate?`,
+      paragraph_two: `The problem is that everyone is checking the same nonces while they're mining. How can you better coordinate?`,
       paragraph_three: ` You decide to place a unique identifier in the “extraNonce” when preparing the block data for each of you to prevent duplicate efforts.`,
     },
 
@@ -503,17 +503,17 @@ const translations = {
       list_one: `It prevents pool participants from doing the same work.`,
       list_two: `It allows the pool to send the same transaction list to all miners that are pooling together. That means miners simply have to update “extranonce2” and not change transactions included in the block.`,
       list_three: `The “extranonce1” allows pools to identify and determine share contribution because each miner gets their own “extranonce1”.`,
-      paragraph_three: ` Miners who contribute to a pool update the “extranonce2” and cycle through the nonce in the block header. If they don’t find a solution, they repeat the process with a different “extranonce2” until they do.`,
-      paragraph_four: `Let’s try again splitting the work using this method.`,
+      paragraph_three: ` Miners who contribute to a pool update the “extranonce2” and cycle through the nonce in the block header. If they don't find a solution, they repeat the process with a different “extranonce2” until they do.`,
+      paragraph_four: `Let's try again splitting the work using this method.`,
     },
 
     coop_three: {
       title: `Coop vs. BitRey`,
       nav_title: `Mining with teamwork`,
       step_zero_heading: `One more time...`,
-      step_zero_paragraph_one: `Let’s see if we stand a chance against BitRey now with our improved strategy of dividing the nonce space.`,
+      step_zero_paragraph_one: `Let's see if we stand a chance against BitRey now with our improved strategy of dividing the nonce space.`,
       step_two_heading: `You did it!`,
-      step_two_paragraph_one: `Together you and the other miners held back BitRey’s attempt to overtake the network.`,
+      step_two_paragraph_one: `Together you and the other miners held back BitRey's attempt to overtake the network.`,
     },
 
     split_one: {
@@ -527,16 +527,16 @@ const translations = {
       list_two: `the block subsidy`,
       paragraph_four: `You and your miner friends have earned a total of 7.41 bitcoin and are looking for a good way to split it up. It should be divided based on how much work each of you put in.`,
       paragraph_five: `Mining pools solve this by tracking how many partial solutions each miner has generated. A pool assigns each miner a minimum difficulty (lower than the block difficulty) based on their hash power. Every few seconds a miner finds one of those easier solutions and notifies the pool. The pool then tracks all the submitted shares and splits up the block rewards accordingly.`,
-      paragraph_six: `Let’s take a look at this in action.`,
+      paragraph_six: `Let's take a look at this in action.`,
     },
 
     split_two: {
       title: `Splitting Rewards`,
       nav_title: `Calculating rewards`,
-      step_zero_heading: `Let’s review everyone’s efforts`,
+      step_zero_heading: `Let's review everyone's efforts`,
       step_zero_paragraph: `We will re-run the battle. This time we will only focus on our pool, specifically on the number of partial solutions each miner found.`,
-      step_two_heading: `Let’s do the math`,
-      step_two_paragraph: `Take a look at the numbers above and see if you can find a fair way to split up the rewards. Figured it out? Let’s go over it step by step.`,
+      step_two_heading: `Let's do the math`,
+      step_two_paragraph: `Take a look at the numbers above and see if you can find a fair way to split up the rewards. Figured it out? Let's go over it step by step.`,
       step_three_heading: `Hash rate percentage`,
       step_three_paragraph: `As you know, this represents the amount of work every miner has chipped in to find blocks. But the mining pool has no way of knowing or measuring this number, since miners only forward successful solutions.`,
       step_four_heading: `Block found percentage`,
@@ -551,8 +551,8 @@ const translations = {
       title: `Outro`,
       nav_title: `Chapter complete`,
       heading: `Take that, Vanderpoole! `,
-      paragraph_one: `Great work! You and the other miners were able to fend off Vanderpoole’s 51% attack by pooling your resources. Empty blocks are no longer being submitted and it looks like he’s given up.`,
-      paragraph_two: `It’s time to reap your rewards! Go to the next chapter to withdraw your bitcoin.`,
+      paragraph_one: `Great work! You and the other miners were able to fend off Vanderpoole's 51% attack by pooling your resources. Empty blocks are no longer being submitted and it looks like he's given up.`,
+      paragraph_two: `It's time to reap your rewards! Go to the next chapter to withdraw your bitcoin.`,
     },
     resources: {
       solo: {
@@ -587,13 +587,13 @@ const translations = {
   chapter_four: {
     title: `Claiming Your 1.61 Bitcoin`,
     paragraph_one: `Phew, that was close! You are shaking from your battle with BitRey, but you are relieved that you won.`,
-    paragraph_two: `As you settle at your desk, you take a deep breath, drift off, and replay the day’s events in your head. `,
+    paragraph_two: `As you settle at your desk, you take a deep breath, drift off, and replay the day's events in your head. `,
 
     intro_one: {
       title: `Intro`,
       nav_title: `Securing the bag`,
-      paragraph_one: `—HOLOCAT: “One of us better sleep. You need to start contacting the rest of the miners. They’ll want to know even more than the world will.”`,
-      paragraph_two: `As you settle at your ButtLift Hover Desk, you replay the day’s events. Vanderpoole. BitRey. The revelation that miners never agreed to shut down in protest. Could it all be true? Was this all staged? And how much longer are you supposed to look after this cat? (In the distance, something meows.)`,
+      paragraph_one: `—HOLOCAT: “One of us better sleep. You need to start contacting the rest of the miners. They'll want to know even more than the world will.”`,
+      paragraph_two: `As you settle at your ButtLift Hover Desk, you replay the day's events. Vanderpoole. BitRey. The revelation that miners never agreed to shut down in protest. Could it all be true? Was this all staged? And how much longer are you supposed to look after this cat? (In the distance, something meows.)`,
       paragraph_three: `Whatever happens next, you will need funds. Wait a second! You never claimed the mining rewards from your competition with BitRey! You decide to withdraw them.`,
     },
 
@@ -604,15 +604,15 @@ const translations = {
       paragraph_one: `According to the mining pool, it looks like you have 1.61 bitcoin to claim from all the work you did earlier. `,
       list_one: ` Private key`,
       list_two: `Public key`,
-      paragraph_two: `But wait, you don’t even have a wallet! You might be wondering where you can buy one. While you can purchase hardware to build certain kinds of wallets, you can actually just make one with your computer or mobile device. Let's do it!`,
+      paragraph_two: `But wait, you don't even have a wallet! You might be wondering where you can buy one. While you can purchase hardware to build certain kinds of wallets, you can actually just make one with your computer or mobile device. Let's do it!`,
       paragraph_three: `If you signed up for an account at any point, you got something called a personal code. In cryptography, this is called a “private key” and it is often part of a pair:`,
-      paragraph_four: ` A single key pair is all that’s needed to create a wallet and control the funds within it. When you want to spend bitcoin, you use the private key. When you want to receive bitcoin, you use the public key.`,
+      paragraph_four: ` A single key pair is all that's needed to create a wallet and control the funds within it. When you want to spend bitcoin, you use the private key. When you want to receive bitcoin, you use the public key.`,
     },
 
     public_key_two: {
       title: `Public key`,
       nav_title: `Elliptic curve cryptography`,
-      paragraph_one: `So, we have the private key, it’s the personal code you got when you signed up. How do we generate a public key from it?`,
+      paragraph_one: `So, we have the private key, it's the personal code you got when you signed up. How do we generate a public key from it?`,
       paragraph_two: `To do that, we need to take a peek at a fascinating branch of cryptography called elliptic curves. This is called Elliptic Curve Cryptography, or ECC for short.`,
       paragraph_three: `ECC involves taking certain points on an elliptic curve and performing addition and multiplication on the points.`,
       paragraph_four: `Bitcoin uses a specific curve called secp256k1. In the image, you see a simplified version that is easier to visualize, but follows the same mathematical rules.`,
@@ -627,7 +627,7 @@ const translations = {
     public_key_three: {
       title: `Public key`,
       nav_title: `Calculate the public key`,
-      paragraph_one: `To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point. The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:`,
+      paragraph_one: `To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point. The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it's always the same:`,
       paragraph_two: `Mathematical operations on an elliptic curve are similar to addition. Therefore, repetition of those operations is similar to multiplication. We use the * symbol to describe the algorithm, where 'k' is the private key and 'P is the corresponding public key: `,
       python: {
         paragraph_three: `Complete the function <span className="text-green">privatekey_to_publickey()</span>  which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.`,
@@ -636,7 +636,7 @@ const translations = {
         paragraph_three: `Complete the function <span className="text-green">privateKeyToPublicKey()</span>  which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.`,
       },
       paragraph_four: `Here are some type-conversion hints to get you started:`,
-      success: `Good job! That public key is pretty long. Let’s try to compress it!`,
+      success: `Good job! That public key is pretty long. Let's try to compress it!`,
     },
 
     public_key_four: {
@@ -652,8 +652,8 @@ const translations = {
       title: `Address`,
       nav_title: `A one way street`,
       heading: `Nice work!`,
-      paragraph_one: `And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’ll learn about that in the next challenge.`,
-      paragraph_two: `Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the `,
+      paragraph_one: `And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We'll learn about that in the next challenge.`,
+      paragraph_two: `Note that generating a public key is a one way street. You can't figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the `,
       tooltip_one: {
         question: `How is the discrete log problem relevant to bitcoin?`,
         link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520the%2520discrete%2520log%2520problem%2520relevant%2520to%2520bitcoin%253F`,
@@ -714,13 +714,13 @@ const translations = {
     resources: {
       public_key_three: {
         generator_point_heading: `Generator point`,
-        generator_point_paragraph: `A specific point on the secp256k1 curve. Its value is part of the secp256k1 standard and it’s always the same. This point is not different from other points on the curve, but it is agreed up on as the standard starting point for calculations. No one really knows why this particular point was chosen.`,
+        generator_point_paragraph: `A specific point on the secp256k1 curve. Its value is part of the secp256k1 standard and it's always the same. This point is not different from other points on the curve, but it is agreed up on as the standard starting point for calculations. No one really knows why this particular point was chosen.`,
         elliptic_curve_operations_heading: `Elliptic curve operations`,
         elliptic_curve_operations_paragraph: `Elliptic curves have their own mathematical rules, so simple operations like addition and multiplication work differently. For simplicity and brevity, established symbols are re-used, like using a “*” for operations that are similar to multiplication.`,
         discrete_log_heading: `Discrete logarithm`,
-        discrete_log_paragraph: `A mathematical system where you can, for example, multiply but cannot divide. A simple metaphor for this is looking at a clock. Three hours past 11 o’clock is 2 o’clock. So we could say “11+3=2”. However if wanted to perform “2-x=11” and solve for x, you would have infinite possible answers (3, 15, 27, 39...). More on <Link href="https://en.wikipedia.org/wiki/Discrete_logarithm" className="underline">wikipedia</Link>.`,
+        discrete_log_paragraph: `A mathematical system where you can, for example, multiply but cannot divide. A simple metaphor for this is looking at a clock. Three hours past 11 o'clock is 2 o'clock. So we could say “11+3=2”. However if wanted to perform “2-x=11” and solve for x, you would have infinite possible answers (3, 15, 27, 39...). More on <Link href="https://en.wikipedia.org/wiki/Discrete_logarithm" className="underline">wikipedia</Link>.`,
         tip_one: `Multiplication with elliptic curve points is not the same as the kind of multiplication you are used to, the one with regular numbers. So how do you perform multiplication? Notice that the generator point, <span className="p-1 font-mono bg-[#0000004D] m-1">G</span> is of the type <span className="p-1 font-mono bg-[#0000004D] m-1">secp256k1.GE</span>. Have a look at that class to see what methods you can invoke on it.`,
-        tip_two: `While the private key is accepted in hex format, it needs to be converted to a number (BigInt if you’re using JS) before multiplying with the generator point.`,
+        tip_two: `While the private key is accepted in hex format, it needs to be converted to a number (BigInt if you're using JS) before multiplying with the generator point.`,
       },
       public_key_four: {
         y_coordinate_compression_heading: `Public Key Compression`,
@@ -729,7 +729,7 @@ const translations = {
       },
       address_two: {
         hash_algo_heading: `SHA-256, RIPEMD-160`,
-        hash_algo_paragraph: `Hash functions digest any amount of any kind of data and always return a result of the same size. For SHA256, it’s 32 bytes. For RIPEMD-160, it’s 20 bytes. The output is deterministic (always the same output for the same input) but otherwise, indistinguishable from random. Hash functions effectively reduce data to a small consistent fingerprint.`,
+        hash_algo_paragraph: `Hash functions digest any amount of any kind of data and always return a result of the same size. For SHA256, it's 32 bytes. For RIPEMD-160, it's 20 bytes. The output is deterministic (always the same output for the same input) but otherwise, indistinguishable from random. Hash functions effectively reduce data to a small consistent fingerprint.`,
         tip_one: `When calculating the SHA-256 hash you will need to make sure to hash your compressed key as bytes not hex. If you are using JavaScript, this will require converting the hex string to a buffer.`,
         tip_two: `Make sure you are doing the hashing algorithms in the correct order!`,
       },
@@ -737,7 +737,7 @@ const translations = {
         wpkh_heading: `Witness Public Key Hash (wpkh) address`,
         wpkh_paragraph: `A bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There are several types of output scripts and several encoding mechanisms. In this challenge we encode a compressed public key with bech32 to create what is called a witness public key hash address.`,
         network_heading: `Mainnet, Testnet, Signet, and Regtest`,
-        network_paragraph: `When developing bitcoin software, it is important to test your code before you trust real money with it! One of the simplest ways to test bitcoin software is to use a different blockchain with a new genesis block where the coins don’t matter, mining is free and easy, and everything can be reset at any time. These chains are supported by a unique network of nodes that does not interfere with the real coins and nodes on Mainnet. Testnet and Signet are the names of two such alternate bitcoin blockchains that are maintained in parallel with Mainnet on a global scale. Regtest is a developer mode designed to be run locally with no network connections needed at all.`,
+        network_paragraph: `When developing bitcoin software, it is important to test your code before you trust real money with it! One of the simplest ways to test bitcoin software is to use a different blockchain with a new genesis block where the coins don't matter, mining is free and easy, and everything can be reset at any time. These chains are supported by a unique network of nodes that does not interfere with the real coins and nodes on Mainnet. Testnet and Signet are the names of two such alternate bitcoin blockchains that are maintained in parallel with Mainnet on a global scale. Regtest is a developer mode designed to be run locally with no network connections needed at all.`,
         tip: `Make sure you take a close look at the bech32 library to find the exact methods you can use.`,
       },
     },
@@ -745,36 +745,36 @@ const translations = {
 
   chapter_five: {
     title: `Will the Real Satoshi Please Stand Up`,
-    paragraph_one: `It’s late, and you’re tired, but as you shut your eyes for a moment, a double dose of bad news arrives.`,
+    paragraph_one: `It's late, and you're tired, but as you shut your eyes for a moment, a double dose of bad news arrives.`,
     paragraph_two: `1) Vanderpoole is back on TV.`,
     paragraph_three: `2) He is claiming to be the great-grandson of Satoshi Nakamoto.`,
     paragraph_four: `He looks sleep-deprived.`,
     intro_one: {
       title: `Intro`,
-      nav_title: `Don’t trust, verify`,
+      nav_title: `Don't trust, verify`,
       paragraph_one: `—DEBORAH CHUNK: “Mr. Vanderpoole. You recently made a staggering claim on anti-social media that you are the great-grandson of Satoshi Nakamoto. Is that correct? Is this true?”`,
-      paragraph_two: `—VANDERPOOLE: “It darn tootin’ is, Deborah. I have harbored this secret for a long, long time. You see, my family has passed an inconspicuous looking CD-ROM down for generations. To keep it secret, we labeled it <span className="italic">Creed – My Own Prison</span>. It contains the private keys to my great-grandfather Satoshi Nakamoto’s enormous bitcoin trove. So when I speak for miners, know that I also speak for Satoshi Nakamoto.”`,
-      paragraph_three: `—DEBORAH CHUNK: “Is there any way we can verify that you actually own the private keys to Satoshi Nakamoto’s bitcoin?”`,
+      paragraph_two: `—VANDERPOOLE: “It darn tootin' is, Deborah. I have harbored this secret for a long, long time. You see, my family has passed an inconspicuous looking CD-ROM down for generations. To keep it secret, we labeled it <span className="italic">Creed – My Own Prison</span>. It contains the private keys to my great-grandfather Satoshi Nakamoto's enormous bitcoin trove. So when I speak for miners, know that I also speak for Satoshi Nakamoto.”`,
+      paragraph_three: `—DEBORAH CHUNK: “Is there any way we can verify that you actually own the private keys to Satoshi Nakamoto's bitcoin?”`,
       paragraph_four: `—VANDERPOOLE: “Indeed there is. It is a simple matter of public key cryptography.”`,
       paragraph_five: `—DEBORAH CHUNK: But why wait so long to make this earth-shattering disclosure?`,
     },
     intro_two: {
       nav_title: `Vanderpoole's bold claim`,
-      paragraph_one: `—VANDERPOOLE: “I didn’t have the courage. There have always been rumors about my family’s history, ones that I could have easily confirmed. But I wasn’t ready for that much publicity. After all, I live a humble, secluded life in a 14th century castle on a dude ranch on my favorite of all my private islands, doing 5–6 interviews like this one from my hot tub every week.”`,
-      paragraph_two: `—VANDERPOOLE: “But now that bitcoin’s future is on the line, I knew it was time to face the music, specifically, the music from Creed’s debut album, My Own Prison.” *Vanderpoole hums the melody from the 20th century album’s namesake song*`,
-      paragraph_three: `—VANDERPOOLE: "I can only say that I’m sorry for not coming forth sooner because the CD-ROM also contains Satoshi’s Nakamoto’s revised plans for bitcoin. You see, my great-grandfather always regretted limiting the supply of bitcoin to 21 million coins, which is why I plan to fulfill my great-grandfather’s dream of hard forking bitcoin in favor of perpetual bitcoin issuance."`,
+      paragraph_one: `—VANDERPOOLE: “I didn't have the courage. There have always been rumors about my family's history, ones that I could have easily confirmed. But I wasn't ready for that much publicity. After all, I live a humble, secluded life in a 14th century castle on a dude ranch on my favorite of all my private islands, doing 5–6 interviews like this one from my hot tub every week.”`,
+      paragraph_two: `—VANDERPOOLE: “But now that bitcoin's future is on the line, I knew it was time to face the music, specifically, the music from Creed's debut album, My Own Prison.” *Vanderpoole hums the melody from the 20th century album's namesake song*`,
+      paragraph_three: `—VANDERPOOLE: "I can only say that I'm sorry for not coming forth sooner because the CD-ROM also contains Satoshi's Nakamoto's revised plans for bitcoin. You see, my great-grandfather always regretted limiting the supply of bitcoin to 21 million coins, which is why I plan to fulfill my great-grandfather's dream of hard forking bitcoin in favor of perpetual bitcoin issuance."`,
     },
     intro_three: {
       nav_title: `A message from Satoshi`,
       paragraph_one: `Your TXM4H-A Hover Screen chirps to life. You have a new message.`,
-      paragraph_two: `—HOLOCAT: Don’t forget to boop my nose.`,
+      paragraph_two: `—HOLOCAT: Don't forget to boop my nose.`,
       paragraph_three: `You boop her nose`,
-      paragraph_four: `—SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message using that wallet's private keys.”`,
+      paragraph_four: `—SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi's bitcoin by signing a message using that wallet's private keys.”`,
     },
     derive_message_one: {
       title: `Derive the message`,
       nav_title: `The message in question`,
-      heading: `Vanderpoole says he signed a message with Satoshi’s keys:`,
+      heading: `Vanderpoole says he signed a message with Satoshi's keys:`,
       code_one: `-----BEGIN BITCOIN SIGNED MESSAGE----- \n \n I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever bitcoin transaction confirmed in block #170. This message is signed with the same private key. \n \n -----BEGIN BITCOIN SIGNATURE----- \n \n`,
       code_two: `<span className="break-all"> H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k= </span>`,
       code_three: `\n \n-----END BITCOIN SIGNATURE-----`,
@@ -788,23 +788,23 @@ const translations = {
     },
     derive_message_three: {
       nav_title: `Find Satoshi's signature`,
-      heading: `Let’s start with finding Satoshi’s signature`,
+      heading: `Let's start with finding Satoshi's signature`,
       paragraph_one: `Block #170 contains the <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">first bitcoin transaction</link> made from Satoshi to Hal Finney. That transaction only has <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">one input</Link>. Retrieve the scriptSig from that input. It contains Satoshi's signature!`,
       placeholder: `Paste the data here`,
-      success: `Nicely done! This is actually Satoshi’s signature, authorizing the transfer of his bitcoin to Hal Finney.`,
+      success: `Nicely done! This is actually Satoshi's signature, authorizing the transfer of his bitcoin to Hal Finney.`,
     },
     derive_message_four: {
       nav_title: `Find Satoshi's public key`,
       heading: `So where is his public key?`,
-      paragraph_one: `It’s actually stored along with the bitcoin Satoshi generated by mining block #9.`,
+      paragraph_one: `It's actually stored along with the bitcoin Satoshi generated by mining block #9.`,
       paragraph_two: `<Link href="https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand" target="_blank" className="underline">Follow the link</Link> to the source transaction at the top of the input #0 section. This is the transaction Satoshi created by mining block #9. The transaction creates 50 BTC and locks them under control of... a public key! Find the data beginning with 0411... in the scriptPubKey.`,
       paragraph_three: `The public key lives between the script commands OP_PUSHBYTES and OP_CHECKSIG. Paste it below:`,
       placeholder: `Paste the data here`,
-      success: `That’s it!`,
+      success: `That's it!`,
     },
     derive_message_five: {
       nav_title: `Verifiying the signature next`,
-      paragraph_one: `In the previous exercise we saw Satoshi got 50 BTC for mining block #9. He used that as input for his transaction to Hal Finney (in block #170), sending 10 BTC to Hal Finney’s public key and returning 40 BTC back to himself as change. Satoshi's private key was used to create a signature authorizing the transfer of those funds.`,
+      paragraph_one: `In the previous exercise we saw Satoshi got 50 BTC for mining block #9. He used that as input for his transaction to Hal Finney (in block #170), sending 10 BTC to Hal Finney's public key and returning 40 BTC back to himself as change. Satoshi's private key was used to create a signature authorizing the transfer of those funds.`,
       paragraph_two: `Next we need to learn how to verify a signature. But something is still missing... what is the message Satoshi signed to authorize the transaction for Hal?`,
     },
     derive_message_six: {
@@ -823,9 +823,9 @@ const translations = {
       success_message_line_seven: `input #0 sequence:`,
       success_message_line_eight: `number of outputs:`,
       success_message_line_nine: `output #0 value (10 BTC or 1,000,000,000 satoshis):`,
-      success_message_line_ten: `output #0 scriptPubKey (Hal Finney’s public key plus OP_CHECKSIG):`,
+      success_message_line_ten: `output #0 scriptPubKey (Hal Finney's public key plus OP_CHECKSIG):`,
       success_message_line_eleven: `outut #1 value (40 BTC or 4,000,000,000 satoshis):`,
-      success_message_line_twelve: `output #1 scriptPubKey (Satoshi’s own public key again, for change):`,
+      success_message_line_twelve: `output #1 scriptPubKey (Satoshi's own public key again, for change):`,
       success_message_line_thirteen: `locktime:`,
     },
     derive_message_seven: {
@@ -847,7 +847,7 @@ const translations = {
       title: `Verify the signature`,
       nav_title: `Verifying the signature`,
       heading: `Finally we have a message!`,
-      paragraph_one: `We also have a signature we know Satoshi created with his own private keys, and we have his public key. Let’s learn how to verify the signature and then we can try to verify Vanderpoole’s signature.`,
+      paragraph_one: `We also have a signature we know Satoshi created with his own private keys, and we have his public key. Let's learn how to verify the signature and then we can try to verify Vanderpoole's signature.`,
     },
     verify_signature_two: {
       title: `Verify the signature`,
@@ -918,7 +918,7 @@ const translations = {
     },
     validate_signature_two: {
       nav_title: `Prepare the signature`,
-      heading: `Prepare Vanderpoole’s signature for verification`,
+      heading: `Prepare Vanderpoole's signature for verification`,
       paragraph_one: `The bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.`,
       javascript: {
         paragraph_two: {
@@ -955,12 +955,12 @@ const translations = {
       title: `Outro`,
       nav_title: `Chapter complete`,
       heading: `Vanderpoole lied!`,
-      paragraph_one: `You learned one of the most important lessons in bitcoin. You didn't trust, you verified.<br><br>In doing so, you discovered that Vanderpoole didn’t use Satoshi’s keys to sign the message, casting a big shadow on his family story, on his credibility, and the credibility of BitRey.<br><br>Now if only you could get that song out of your head.`,
+      paragraph_one: `You learned one of the most important lessons in bitcoin. You didn't trust, you verified.<br><br>In doing so, you discovered that Vanderpoole didn't use Satoshi's keys to sign the message, casting a big shadow on his family story, on his credibility, and the credibility of BitRey.<br><br>Now if only you could get that song out of your head.`,
     },
     resources: {
       derive_message_three: {
         op_pushdata_heading: `OP_PUSHDATA`,
-        op_pushdata_paragraph_one: `OP_PUSHDATA in bitcoin script plays a crucial role in facilitating the insertion of arbitrary pieces of data into the blockchain. It is actually a whole category of opcodes that allow for the inclusion of data elements of varying sizes, making Bitcoin’s scripting language more versatile. This opcode is particularly significant in enabling the implementation of various smart contract functionalities and custom transaction types. Given that we know this is supposed to push 71 bytes of data onto the stack, can you work out how this opcode might be represented in hex? You can read more about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.`,
+        op_pushdata_paragraph_one: `OP_PUSHDATA in bitcoin script plays a crucial role in facilitating the insertion of arbitrary pieces of data into the blockchain. It is actually a whole category of opcodes that allow for the inclusion of data elements of varying sizes, making Bitcoin's scripting language more versatile. This opcode is particularly significant in enabling the implementation of various smart contract functionalities and custom transaction types. Given that we know this is supposed to push 71 bytes of data onto the stack, can you work out how this opcode might be represented in hex? You can read more about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.`,
       },
       derive_message_four: {
         op_checksig_heading: `OP_CHECKSIG`,
@@ -1029,23 +1029,23 @@ const translations = {
 
   chapter_six: {
     title: `The Keyholder`,
-    paragraph_one: `Ahhh! Vanderpoole is out to get you for exposing his fraudulent claims. But despite the fact that the holocat is out of the bag, plenty of scared people continue to cling to the myth that Vanderpoole created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.`,
+    paragraph_one: `Ahhh! Vanderpoole is out to get you for exposing his fraudulent claims. But despite the fact that the holocat is out of the bag, plenty of scared people continue to cling to the myth that Vanderpoole created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he's the best they've got.`,
     intro_one: {
       title: `Intro`,
       nav_title: `Was that really Satoshi`,
-      paragraph_one: `—SATOSHI NAKAMOTO: ”Well done. Now the world can see for itself that Vanderpoole is a fraud. Even if some don’t believe it yet, they will before our work is done.”`,
-      paragraph_two: `You pause for a moment and realize that every message up to this point has been signed “Satoshi Nakamoto.” You had just assumed that this was a pseudonym used by someone who adheres to bitcoin’s core principles. Surely, they couldn’t be the real Satoshi Nakamoto. But, you finally decide, it’s worth asking.`,
+      paragraph_one: `—SATOSHI NAKAMOTO: ”Well done. Now the world can see for itself that Vanderpoole is a fraud. Even if some don't believe it yet, they will before our work is done.”`,
+      paragraph_two: `You pause for a moment and realize that every message up to this point has been signed “Satoshi Nakamoto.” You had just assumed that this was a pseudonym used by someone who adheres to bitcoin's core principles. Surely, they couldn't be the real Satoshi Nakamoto. But, you finally decide, it's worth asking.`,
       paragraph_three: `—”This might make me sound stupid, but are you the real Satoshi?”`,
     },
     intro_two: {
       title: `Intro`,
       nav_title: `Paying Mika 3000`,
       paragraph_one: `—HOLOCAT: “Hardly the only thing to make you sound stupid lately.”`,
-      paragraph_two: `—SATOSHI NAKAMOTO: “Bitcoin moved far beyond its creator’s control many years ago. It would not matter if Vanderpoole or I were Satoshi, or one of their descendants. Bitcoin is defined by its community and cannot be co-opted by a single individual or entity—including Satoshi. Proving this is the real battle. I hope you don’t mind, but I asked your eccentric freelance reporter friend to reach out.”`,
+      paragraph_two: `—SATOSHI NAKAMOTO: “Bitcoin moved far beyond its creator's control many years ago. It would not matter if Vanderpoole or I were Satoshi, or one of their descendants. Bitcoin is defined by its community and cannot be co-opted by a single individual or entity—including Satoshi. Proving this is the real battle. I hope you don't mind, but I asked your eccentric freelance reporter friend to reach out.”`,
       paragraph_three: `—He what?`,
       paragraph_four: `—Ding.`,
-      paragraph_five: `—HOLOCAT: Don’t forget to boop me.`,
-      paragraph_six: `—MIKA 3000: “You’ve got guts, but guts aren't enough. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to know for sure what "more" means. This will cost a lot, so I could use your help pulling funds off the multisig wallet that you helped me set up. You’ve still got one of my keys, right?”`,
+      paragraph_five: `—HOLOCAT: Don't forget to boop me.`,
+      paragraph_six: `—MIKA 3000: “You've got guts, but guts aren't enough. What you discovered is just the start. There's more to this story, but we need to visit Vanderpoole's private island to know for sure what "more" means. This will cost a lot, so I could use your help pulling funds off the multisig wallet that you helped me set up. You've still got one of my keys, right?”`,
     },
     in_out_one: {
       title: `The ins and outs`,
@@ -1441,7 +1441,7 @@ const translations = {
         heading_three: `Step 3`,
         paragraph_eight: `Complete the method <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, key)</span> so that it calls <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>. When handling the return value, <span className="italic">r</span> and <span className="italic">s</span> need to be encoded with an algorithm called DER which we have implemented for you.`,
         heading_four: `Step 4`,
-        paragraph_nine: `Bitcoin requires an extra byte appended to the end of the DER-signature. This byte represents the "sighash type". For now we’ll always use the byte <span className="p-1 text-base font-mono bg-[#0000004D] m-1">0x01</span> for this, indicating "SIGHASH ALL".`,
+        paragraph_nine: `Bitcoin requires an extra byte appended to the end of the DER-signature. This byte represents the "sighash type". For now we'll always use the byte <span className="p-1 text-base font-mono bg-[#0000004D] m-1">0x01</span> for this, indicating "SIGHASH ALL".`,
         heading_five: `Step 5`,
         paragraph_ten: `The last step is to create a Witness object with two stack items: the DER encoded signature blob we just made, and your compressed public key. Push the signature first, followed by the public key.`,
         paragraph_eleven: `Append the witness stack object to the transaction object's array of witnesses.`,
@@ -1687,7 +1687,7 @@ const translations = {
         heading: `Populate the Witness`,
         nav_title: `Populate the Witness`,
         paragraph_one: `Finish the method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> that calls our step 7 method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.`,
-        paragraph_two: `Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this indicating "SIGHASH ALL".`,
+        paragraph_two: `Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we'll always use the byte 0x01 for this indicating "SIGHASH ALL".`,
         paragraph_three: `Once we have that signature blob we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.`,
         paragraph_four: `The witness stack object can then be appended to the witnesses array of the transaction object.`,
         success: `The sign_input() method looks good. Great Work!`,
@@ -1728,21 +1728,21 @@ const translations = {
   },
   chapter_seven: {
     title: `Offense is the Best Defense`,
-    paragraph_one: `You and Mika 3000 reach Vanderpoole’s private island first via plane and parachute, then via dune buggy, and then via rowboat that rows itself.`,
+    paragraph_one: `You and Mika 3000 reach Vanderpoole's private island first via plane and parachute, then via dune buggy, and then via rowboat that rows itself.`,
     intro_one: {
       title: `Intro`,
       nav_title: `Infiltrating the compound`,
-      paragraph_one: `You ask your compatriots whether they are worried about Vanderpoole’s army of security drones.`,
-      paragraph_two: `—HOLOCAT: “Give me 15 minutes. They’re basically birds, and I’m a cat. They don’t stand a chance.”`,
-      paragraph_three: `Holocat extends her claws and deals with Vanderpoole’s drone army pounce by pounce. Mika 3000 hands you a black turtleneck sweater, gloves, and a pair of night vision goggles.`,
-      paragraph_four: `—MIKA 3000: “You can’t do espionage in a Hawaiian shirt. What were you thinking? This isn’t another abandoned warehouse; this is a fortress. Here, I almost forgot. Take this grappling hook.”`,
-      paragraph_five: `Wondering what you’ve gotten yourself into, you and Mika 3000 scale the castle walls of Vanderpoole’s primary residence. To your surprise, his home overflows with pro-bitcoin art, books, and paper magazines. He is, or rather was, a true bitcoiner. A collection of miners dating back 125 years sit preserved in glass display cases. That’s when you see it: Vanderpoole’s workshop.`,
+      paragraph_one: `You ask your compatriots whether they are worried about Vanderpoole's army of security drones.`,
+      paragraph_two: `—HOLOCAT: “Give me 15 minutes. They're basically birds, and I'm a cat. They don't stand a chance.”`,
+      paragraph_three: `Holocat extends her claws and deals with Vanderpoole's drone army pounce by pounce. Mika 3000 hands you a black turtleneck sweater, gloves, and a pair of night vision goggles.`,
+      paragraph_four: `—MIKA 3000: “You can't do espionage in a Hawaiian shirt. What were you thinking? This isn't another abandoned warehouse; this is a fortress. Here, I almost forgot. Take this grappling hook.”`,
+      paragraph_five: `Wondering what you've gotten yourself into, you and Mika 3000 scale the castle walls of Vanderpoole's primary residence. To your surprise, his home overflows with pro-bitcoin art, books, and paper magazines. He is, or rather was, a true bitcoiner. A collection of miners dating back 125 years sit preserved in glass display cases. That's when you see it: Vanderpoole's workshop.`,
     },
     intro_two: {
       nav_title: `The control room`,
-      paragraph_one: `The gigantic room is a mess, though its layout is methodical. Remember when miners were clogging up the bitcoin network with empty blocks? Inside open notebooks, you find Vanderpoole’s designs for the backdoor that he used sketched out in detail. You were right: It was all a lie, yet one told not by a conniving villain but by a desperate believer in bitcoin whose company could no longer compete. To preserve his legacy, Vanderpoole infected the miners with a virus.`,
+      paragraph_one: `The gigantic room is a mess, though its layout is methodical. Remember when miners were clogging up the bitcoin network with empty blocks? Inside open notebooks, you find Vanderpoole's designs for the backdoor that he used sketched out in detail. You were right: It was all a lie, yet one told not by a conniving villain but by a desperate believer in bitcoin whose company could no longer compete. To preserve his legacy, Vanderpoole infected the miners with a virus.`,
       paragraph_two: `The virus replaces a section of the code used by all miners, regardless if they are part of a pool or not. It is the block building logic, the algorithm that assembles transactions into a block template. The template is still passed on to legitimate hashing code for proof-of-work. Templates are combined with zillions of different nonces while searching for a valid hash, but by the time one is found, the damage–the absence of any transactions in the block template, has been done.`,
-      paragraph_three: `—HOLOCAT: “What a loss. His family was once great. It’s so sad to see the Vanderpoole’s come to this.”`,
+      paragraph_three: `—HOLOCAT: “What a loss. His family was once great. It's so sad to see the Vanderpoole's come to this.”`,
     },
     intro_three: {
       nav_title: `Correcting the software`,
@@ -1797,7 +1797,7 @@ const translations = {
       title: `Outro`,
       nav_title: `Chapter complete`,
       heading: `You did it!`,
-      paragraph_one: `You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.`,
+      paragraph_one: `You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole's net worth.`,
     },
     resources: {
       mempool_transaction_one: {
@@ -1814,7 +1814,7 @@ const translations = {
 
   chapter_eight: {
     title: `Twenty-One Million`,
-    paragraph_one: `Thanks to your investigation, people really want to hear from you, so you boop Holocat’s nose, revealing an invitation from Deborah Chunk, who invites you to appear in person at the offices of LARGE BIG NEWS Studios. Getting the story out is important, so you once again hop into your Budgetcopter.`,
+    paragraph_one: `Thanks to your investigation, people really want to hear from you, so you boop Holocat's nose, revealing an invitation from Deborah Chunk, who invites you to appear in person at the offices of LARGE BIG NEWS Studios. Getting the story out is important, so you once again hop into your Budgetcopter.`,
     intro_one: {
       title: `Intro`,
       nav_title: `Vanderpoole's Deception`,
@@ -1825,7 +1825,7 @@ const translations = {
       title: `Intro`,
       nav_title: ` Vanderpoole's Anger`,
       paragraph_one: `—THOMAS VANDERPOOLE: “My family is Satoshi Nakamoto! Do you see what this hootenanny just said? He just admitted to working with hackers, a collective that only uses the name Satoshi Nakamoto to claim a legacy that is rightfully mine. This scoundrel is lying to undermine the protests of bitcoiners who are rightfully upset about the elimination of block rewards!”`,
-      paragraph_two: `Vanderpoole continues to hurl two century-old insults at you. He calls you a varmint, a rapscallion, a yellow belly, a greenhorn, and more. You almost feel bad for him. His family was undeniably important to bitcoin’s history, even if his claims about Satoshi Nakamoto are transparently fake.`,
+      paragraph_two: `Vanderpoole continues to hurl two century-old insults at you. He calls you a varmint, a rapscallion, a yellow belly, a greenhorn, and more. You almost feel bad for him. His family was undeniably important to bitcoin's history, even if his claims about Satoshi Nakamoto are transparently fake.`,
     },
     intro_three: {
       intro: `Intro`,
@@ -1852,8 +1852,8 @@ const translations = {
       nav_title: `A bitcoin block tree`,
       paragraph_one: `Every block has exactly one preceding block, but could have more than one next block. Because of this, bitcoin blocks form more of a tree than a chain. Some of the branches are dead-ends and, as you must prove, some of the branches are invalid because of Vanderpoole's shenanigans.`,
       paragraph_two: `Somewhere in this maze is a path from the genesis block to today's most recent block. You have to find it and tell Deborah Chunk which block is on the tip of the tree's most valid chain... before the next commercial break. Ahhh!`,
-      paragraph_three: `This artistic interpretation of bitcoin’s blockchain “tree” shows how every block has exactly one parent, but could have more than one child. Each block is labeled with its hash, and the hash of its parent (<span className="p-1 font-mono m-0.5 text-sm">prev</span>).`,
-      paragraph_four: `Some of these blocks are red because they are invalid. The longest path of blocks starting from the genesis block is colored green and represents the “most work” or “most valid” chain. Transactions in these blocks are the only truly “confirmed” transactions. Other valid blocks, the blue ones, don’t have as many descendants as the “most work” chain. They terminate in what are called <span className="italic">stale tips</span>.`,
+      paragraph_three: `This artistic interpretation of bitcoin's blockchain “tree” shows how every block has exactly one parent, but could have more than one child. Each block is labeled with its hash, and the hash of its parent (<span className="p-1 font-mono m-0.5 text-sm">prev</span>).`,
+      paragraph_four: `Some of these blocks are red because they are invalid. The longest path of blocks starting from the genesis block is colored green and represents the “most work” or “most valid” chain. Transactions in these blocks are the only truly “confirmed” transactions. Other valid blocks, the blue ones, don't have as many descendants as the “most work” chain. They terminate in what are called <span className="italic">stale tips</span>.`,
     },
     building_blocks_three: {
       title: `Building Blocks`,
@@ -1928,7 +1928,7 @@ const translations = {
       title: `Outro`,
       nav_title: `Chapter complete`,
       heading: `We're doing it live!`,
-      paragraph_one: `You found the longest chain and proved it to everyone! The list of invalid blocks you found is impressively long. Vanderpoole went to great lengths to try to get people to accept his blocks containing subsidies, but he couldn’t do anything to change the rules of bitcoin. As we observed, just because a block is part of a chain, it does not necessarily mean that it is valid. Now, you are one step closer to discrediting Vanderpoole. Needless to say, he didn't answer the remainder of Ms. Chunk's questions.`,
+      paragraph_one: `You found the longest chain and proved it to everyone! The list of invalid blocks you found is impressively long. Vanderpoole went to great lengths to try to get people to accept his blocks containing subsidies, but he couldn't do anything to change the rules of bitcoin. As we observed, just because a block is part of a chain, it does not necessarily mean that it is valid. Now, you are one step closer to discrediting Vanderpoole. Needless to say, he didn't answer the remainder of Ms. Chunk's questions.`,
     },
     resources: {
       building_blocks_three: {
@@ -1962,21 +1962,21 @@ const translations = {
 
   chapter_nine: {
     title: `Don't trust, verify.`,
-    paragraph_one: `Just in time, you proved to the world that Vanderpoole has been attempting to confuse the bitcoin network with invalid blocks. As a commercial break airs, the studio’s television crew prepares for the next segment.`,
+    paragraph_one: `Just in time, you proved to the world that Vanderpoole has been attempting to confuse the bitcoin network with invalid blocks. As a commercial break airs, the studio's television crew prepares for the next segment.`,
     intro_one: {
       title: `Intro`,
       nav_title: `Threats`,
-      paragraph_one: `Everyone is celebrating; everyone is smiling. But there is one man on set who isn’t happy: a tall, well-dressed, gray-haired man who you recognize immediately. The crowd parts, and you see him face to face for the first time: Vanderpoole!`,
-      paragraph_two: `His fists are clenched. You have ruined his business and exposed his family’s long con. The first thing out of his mouth is a threat to sue you every day for the rest of your life "times infinity".`,
+      paragraph_one: `Everyone is celebrating; everyone is smiling. But there is one man on set who isn't happy: a tall, well-dressed, gray-haired man who you recognize immediately. The crowd parts, and you see him face to face for the first time: Vanderpoole!`,
+      paragraph_two: `His fists are clenched. You have ruined his business and exposed his family's long con. The first thing out of his mouth is a threat to sue you every day for the rest of your life "times infinity".`,
     },
     intro_two: {
       title: `Intro`,
       nav_title: `Coming to terms`,
       paragraph_one: `As Vanderpoole rants, a producer walks in and tells you that viewers from around the world want to support your cause by donating bitcoin and calzones to you for... some reason! Deborah asks you to provide their viewership with a wallet address.`,
-      paragraph_two: `This makes Vanderpoole even more furious. He demands that you split the incoming donations with him, or he’ll drown you in even more lawsuits, as if there can be more than infinity lawsuits.`,
-      paragraph_three: `Sharing donations with Vanderpoole doesn’t make much sense. The money is coming from people that want to thank you for exposing Vanderpoole’s efforts to undermine bitcoin. It dawns on you that this demand is more about him losing than wanting money. For a moment, you even start to feel bad for him. He’s backed himself into a corner with no way out.`,
+      paragraph_two: `This makes Vanderpoole even more furious. He demands that you split the incoming donations with him, or he'll drown you in even more lawsuits, as if there can be more than infinity lawsuits.`,
+      paragraph_three: `Sharing donations with Vanderpoole doesn't make much sense. The money is coming from people that want to thank you for exposing Vanderpoole's efforts to undermine bitcoin. It dawns on you that this demand is more about him losing than wanting money. For a moment, you even start to feel bad for him. He's backed himself into a corner with no way out.`,
       paragraph_four: `As if she could read your mind, Deborah Chunk steps in. She asks if there is a charity Vanderpoole would like to see a portion of the donations go to. To your surprise, he enthusiastically names the Lil Bits Foundation, a non-profit dedicated to helping children.`,
-      paragraph_five: `Vanderpoole’s complexion calms from radish red to beet purple. You start creating a bitcoin script contract between you and Vanderpoole. He is responsible for getting the funds to the Lil Bits Foundation. This script contract is what you will use to derive the donation address. It will treat Vanderpoole as an untrustable counterparty and ensure you both can spend from it how and when you agree.`,
+      paragraph_five: `Vanderpoole's complexion calms from radish red to beet purple. You start creating a bitcoin script contract between you and Vanderpoole. He is responsible for getting the funds to the Lil Bits Foundation. This script contract is what you will use to derive the donation address. It will treat Vanderpoole as an untrustable counterparty and ensure you both can spend from it how and when you agree.`,
     },
     opcodes_one: {
       title: `OpCodes`,
@@ -2164,7 +2164,7 @@ const translations = {
       title: `Outro`,
       nav_title: `Chapter Complete`,
       heading: `Way to go!`,
-      paragraph_one: `The donations have now been distributed to you and the Lil Bits Foundation and many viewers thank you for shining a light on Vanderpoole’s actions. While the decentralized nature of bitcoin makes it difficult to overtake the network, it doesn’t stop people like him from trying. You're relieved the truth is finally out, especially after all the effort it took to get here.`,
+      paragraph_one: `The donations have now been distributed to you and the Lil Bits Foundation and many viewers thank you for shining a light on Vanderpoole's actions. While the decentralized nature of bitcoin makes it difficult to overtake the network, it doesn't stop people like him from trying. You're relieved the truth is finally out, especially after all the effort it took to get here.`,
     },
 
     resources: {
@@ -2218,16 +2218,16 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
 
   chapter_ten: {
     title: `10 billion connections`,
-    paragraph_one: `The TV studio’s ON-AIR light goes dark. Stagehands shut off their 3D cameras and file out after a long and eventful day. Mika 3000 is there waiting for you.`,
+    paragraph_one: `The TV studio's ON-AIR light goes dark. Stagehands shut off their 3D cameras and file out after a long and eventful day. Mika 3000 is there waiting for you.`,
     intro_one: {
       title: `Celebration`,
       nav_title: `Celebration`,
-      paragraph_one: `—MIKA 3000: “You did it! You really pulled it off! Let’s grab something to drink and celebrate.”`,
+      paragraph_one: `—MIKA 3000: “You did it! You really pulled it off! Let's grab something to drink and celebrate.”`,
       paragraph_two: `You walk to a nearby bar called The Public Key Pub. The bartender, a friendly guy with the name tag Laszlo, welcomes you both.`,
-      paragraph_three: `—MIKA 3000: “I don’t know why but I could totally go for a calzone.”`,
-      paragraph_four: `—LASZLO: “We don’t have those, but my great-great-grandad made sure that the pizza here is the best. Some would say 10,000 bitcoin good.”`,
+      paragraph_three: `—MIKA 3000: “I don't know why but I could totally go for a calzone.”`,
+      paragraph_four: `—LASZLO: “We don't have those, but my great-great-grandad made sure that the pizza here is the best. Some would say 10,000 bitcoin good.”`,
       paragraph_five: {
-        a: `—MIKA 3000: “10 thousand bitcoin? Wait… are you named Laszlo because you’re descended from `,
+        a: `—MIKA 3000: “10 thousand bitcoin? Wait… are you named Laszlo because you're descended from `,
         b: `?"`,
       },
       paragraph_six: `—LASZLO: “The one and only.”`,
@@ -2240,17 +2240,17 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     intro_two: {
       title: `Getting drinks`,
       nav_title: `Getting drinks`,
-      paragraph_one: `—MIKA 3000: “That is so cool. As long as it isn’t 10,000 bitcoin, we’ll take one of those pizzas and a couple of Lightning Lemonades. Shame about the calzones, though.”`,
+      paragraph_one: `—MIKA 3000: “That is so cool. As long as it isn't 10,000 bitcoin, we'll take one of those pizzas and a couple of Lightning Lemonades. Shame about the calzones, though.”`,
       paragraph_two: `Mika 3000 and Laszlo pull out their solar-powered ePhone Infinities and start tapping buttons.`,
-      paragraph_three: `—MIKA 3000: “Uh oh. Your little stunt back there did a number on miner fees. The bitcoin network is experiencing a surge in activity and transaction fees are through the roof! We’re going to have to pay for this off-chain.”`,
+      paragraph_three: `—MIKA 3000: “Uh oh. Your little stunt back there did a number on miner fees. The bitcoin network is experiencing a surge in activity and transaction fees are through the roof! We're going to have to pay for this off-chain.”`,
     },
     intro_three: {
       title: `Off-chain?`,
       nav_title: `Off-chain?`,
-      paragraph_one: `Since “Satoshi” initially reached out, you’ve only had to work with on-chain transactions. That’s how you claimed your mining rewards and how you transferred funds to Mika 3000. However, these on-chain transactions aren’t ideal for frequent, everyday use because block space is limited and miner fees can vary.`,
-      paragraph_two: `How is it then, that people are able to use bitcoin daily in a way that is scalable? The answer is off-chain payments, something you have probably seen a million times: An orange cab ejecting its passengers and zooming off, someone buying dinner from a halal cart, a kid exiting a store with her holodog and a carton of digimilk. And so on. Money’s use cases are nearly infinite.`,
-      paragraph_three: `While bitcoin isn’t designed to handle this much activity on its own, with off-chain payments, it can.`,
-      paragraph_four: `—YOU: “That’s not a problem at all, Mika 3000. I can handle it. I’ll prove it by using an off-chain payment to purchase a Lightning Lemonade from Laszlo.”`,
+      paragraph_one: `Since “Satoshi” initially reached out, you've only had to work with on-chain transactions. That's how you claimed your mining rewards and how you transferred funds to Mika 3000. However, these on-chain transactions aren't ideal for frequent, everyday use because block space is limited and miner fees can vary.`,
+      paragraph_two: `How is it then, that people are able to use bitcoin daily in a way that is scalable? The answer is off-chain payments, something you have probably seen a million times: An orange cab ejecting its passengers and zooming off, someone buying dinner from a halal cart, a kid exiting a store with her holodog and a carton of digimilk. And so on. Money's use cases are nearly infinite.`,
+      paragraph_three: `While bitcoin isn't designed to handle this much activity on its own, with off-chain payments, it can.`,
+      paragraph_four: `—YOU: “That's not a problem at all, Mika 3000. I can handle it. I'll prove it by using an off-chain payment to purchase a Lightning Lemonade from Laszlo.”`,
     },
     opening_a_channel_one: {
       title: `The initial funds`,
@@ -2372,7 +2372,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       list_five: `Once Laszlo signed this refund (child) transaction, you were safe to sign and broadcast the parent transaction that sends the funds to the 2-of-2 multisig.`,
       paragraph_two: `The transaction that funded the multisig output is called the <span className="font-bold">funding transaction</span>. Confirming it on the blockchain <span className="font-bold">opens</span> the payment channel.`,
       paragraph_three: `The offline refund transaction that spends the output of the funding transaction is called the <span className="font-bold">commitment transaction</span>. Confirming it on the blockchain would <span className="font-bold">close</span> the channel. The first commitment transaction is your full refund because you haven't made any payments to Laszlo yet.`,
-      paragraph_four: `While the channel is open, you and Laszlo can make offline payments to each other, back and forth, by negotiating new commitment transactions and revoking old ones. As you buy more drinks, your "refund" amount will go down and Laszlo’s portion of the original 100,000 satoshis locked in the multisig goes up.`,
+      paragraph_four: `While the channel is open, you and Laszlo can make offline payments to each other, back and forth, by negotiating new commitment transactions and revoking old ones. As you buy more drinks, your "refund" amount will go down and Laszlo's portion of the original 100,000 satoshis locked in the multisig goes up.`,
     },
     making_a_payment_two: {
       title: `Buy a Lightning Lemonade!`,
@@ -2496,39 +2496,39 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     outro_two: {
       title: `Outro`,
       nav_title: `Heading home`,
-      paragraph_one: `After a long and strange day, you pay for your drinks and head home. But as you open the door to your 3D printed bungalow, you—oh, crap! It’s Vanderpoole again! Is this really happening or did you have one too many Mempool Margaritas? Despite a small cadre of holocats flanking him on every side, he isn’t looking for a fight.`,
-      paragraph_two: `—VANDERPOOLE: “We don’t really know one another, even though, as my grandpappy used to say, the fates of strangers are often intertwined. I need you to hear me. All of the Satoshi Nakamoto stuff was me trying to save my family’s business. You can’t imagine how much mining meant to us. I guess I wasn’t ready for change and wanted to keep things more or less the same.”`,
+      paragraph_one: `After a long and strange day, you pay for your drinks and head home. But as you open the door to your 3D printed bungalow, you—oh, crap! It's Vanderpoole again! Is this really happening or did you have one too many Mempool Margaritas? Despite a small cadre of holocats flanking him on every side, he isn't looking for a fight.`,
+      paragraph_two: `—VANDERPOOLE: “We don't really know one another, even though, as my grandpappy used to say, the fates of strangers are often intertwined. I need you to hear me. All of the Satoshi Nakamoto stuff was me trying to save my family's business. You can't imagine how much mining meant to us. I guess I wasn't ready for change and wanted to keep things more or less the same.”`,
     },
 
     outro_three: {
       title: `Outro`,
       nav_title: `Bitcoin community`,
       paragraph_one: `You ask why the name Satoshi Nakamoto mattered so much to him.`,
-      paragraph_two: `—VANDERPOOLE: “It’s the only name in bitcoin bigger than Bitrey and Vanderpoole. Someone using the name Satoshi Nakamoto once told me that bitcoin had moved far beyond its creator’s control over a century ago. This is why, to salvage the Vanderpoole name, I tried to claim a more prominent name. You can’t understand the thrill of minting new coins. It was magic to me then; it is magic to me now.”`,
-      paragraph_three: `—VANDERPOOLE: "I realize now that even if I were Satoshi’s great-grandson, bitcoin isn’t defined by leaders. It’s defined by its community. Not even Satoshi could change what bitcoin has become. That has always been what made bitcoin great and why the millions of other coins made in bitcoin’s image never lasted.”`,
+      paragraph_two: `—VANDERPOOLE: “It's the only name in bitcoin bigger than Bitrey and Vanderpoole. Someone using the name Satoshi Nakamoto once told me that bitcoin had moved far beyond its creator's control over a century ago. This is why, to salvage the Vanderpoole name, I tried to claim a more prominent name. You can't understand the thrill of minting new coins. It was magic to me then; it is magic to me now.”`,
+      paragraph_three: `—VANDERPOOLE: "I realize now that even if I were Satoshi's great-grandson, bitcoin isn't defined by leaders. It's defined by its community. Not even Satoshi could change what bitcoin has become. That has always been what made bitcoin great and why the millions of other coins made in bitcoin's image never lasted.”`,
     },
 
     outro_four: {
       title: `Outro`,
       nav_title: `Vanderpoole's villainy`,
       paragraph_one: `Vanderpoole picks up your holocat, and it begins to pur. People are complicated, and no one knows that better than cats, holo or otherwise`,
-      paragraph_two: `—HOLOCAT: “You’re not a villain, Mr. Vanderpoole. But you maybe, just maybe, might have cared too much.”`,
-      paragraph_three: `—VANDERPOOLE: Ain’t that the truth.`,
+      paragraph_two: `—HOLOCAT: “You're not a villain, Mr. Vanderpoole. But you maybe, just maybe, might have cared too much.”`,
+      paragraph_three: `—VANDERPOOLE: Ain't that the truth.`,
     },
 
     outro_five: {
       title: `Outro`,
       nav_title: `You did it!!!`,
       heading_one: `You did it!!!`,
-      paragraph_one: `Like Satoshi, you were a nobody, but your ideas had merit, so people followed you. Satoshi is gone, but his spirit and ideas live on. Armed with your newfound bitcoin dev coding skills, a healthy dose of humility, and some good old-fashioned persistence, you can leave an enduring mark on this elegant system that has united the world under permissionless, censorship-resistant money for more than 100 years. New adventures await you in the code and the open market of ideas. bitcoin only survives because people like you contribute what theycan. That’s why we are all Satoshi.`,
+      paragraph_one: `Like Satoshi, you were a nobody, but your ideas had merit, so people followed you. Satoshi is gone, but his spirit and ideas live on. Armed with your newfound bitcoin dev coding skills, a healthy dose of humility, and some good old-fashioned persistence, you can leave an enduring mark on this elegant system that has united the world under permissionless, censorship-resistant money for more than 100 years. New adventures await you in the code and the open market of ideas. bitcoin only survives because people like you contribute what theycan. That's why we are all Satoshi.`,
     },
 
     outro_six: {
       title: `Beyond Saving Satoshi`,
       nav_title: `Moving beyond Saving Satoshi`,
       heading: `Bitcoin still needs your help...`,
-      paragraph_one: `Although 2139 may seem distant, Bitcoin’s mission remains timeless: to create money that is fair, open, and honest. However, achieving this vision will require everyone’s efforts—including yours.`,
-      paragraph_two: `You’ve shown that you understand bitcoin. Now is the perfect time to turn that knowledge into action by contributing to one of the most important technologies ever.`,
+      paragraph_one: `Although 2139 may seem distant, Bitcoin's mission remains timeless: to create money that is fair, open, and honest. However, achieving this vision will require everyone's efforts—including yours.`,
+      paragraph_two: `You've shown that you understand bitcoin. Now is the perfect time to turn that knowledge into action by contributing to one of the most important technologies ever.`,
       paragraph_three: `The <Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> is here to guide future generations of open-source contributors. Becoming a present day bitcoin hero today is just one click away.`,
       paragraph_four: `We are all Satoshi.`,
     },
@@ -2542,7 +2542,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       refund_1: `This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your Lightning Lemonade.`,
       refund_2: `This transaction ensures funds are not lost if Laszlo disappears. It also prevents you from claiming the funds immediately after paying for your Lightning Lemonade. If you try to take a full refund, including the 1,000 satoshis used to pay for the Lightning Lemonade, the 700 block delay gives Laszlo a few days to notice.`,
       commitment_you: `This is the second commitment transaction for this payment channel, that pays Laszlo 1,000 sats`,
-      commitment_laszlo: `This is Laszlo’s version of the commitment transaction.`,
+      commitment_laszlo: `This is Laszlo's version of the commitment transaction.`,
     },
     resources: {
       output_zero_sig: `Output 0 Signature`,
@@ -2593,7 +2593,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     post_signin_paragraph_one: `Nice to see you return to save Satoshi! You can go directly to your last lesson from here.`,
     prompt: `Enter your private key`,
     confirm: `Sign in`,
-    create_account: `Don’t have an account?`,
+    create_account: `Don't have an account?`,
     login: `Log in`,
     welcome_back: `Welcome back!`,
     progress_redirect: `Take me to where I left off`,
@@ -2611,7 +2611,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     paragraph_one: `Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.`,
     subheading_one: `Choose an avatar`,
     subheading_two: `Back up your private key`,
-    generate: `All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.`,
+    generate: `All set? Code copied and backed-up? Make sure your do, as it can't be recovered if you lose it.`,
     confirm: `Done`,
     acknowledged: `I acknowledge I have saved this private key and know that I will need it for challenges in the future.`,
   },
@@ -2630,7 +2630,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
   },
 
   disclaimer: {
-    description: `We’re excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>`,
+    description: `We're excited for you to dive in. Note that some challenges require basic programming experience (tips are available). Give it a try and share your <Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">feedback</Link>`,
   },
 
   opcode: {
@@ -2683,7 +2683,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
   },
   notfound: {
     first: `Hmm...where are we?`,
-    second: `It’s not quite clear where or what this place is.`,
+    second: `It's not quite clear where or what this place is.`,
     third: `We might have gotten lost in space (or time).`,
     back_safety: `Back to safety`,
   },
