@@ -146,7 +146,7 @@ const translations = {
       heading: `Let's decode the message`,
       paragraph_one: `The message you found was encoded in a format called HEX. Now we will run a command to turn it into ASCII, which we will be able to read.`,
       paragraph_two: `Copy and paste the command below into the Terminal in the code block and press “Enter”.`,
-      terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = \'04fff...e6b73\'`,
+      terminal_challenge_lines: `Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'`,
       waiting_for_input: `Waiting for you to write and run the script...`,
       success: `Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.`,
     },
@@ -211,7 +211,7 @@ const translations = {
     resources: {
       genesis_two: {
         scriptsig_heading: `ScriptSig`,
-        scriptsig_paragraph: `The \'scriptSig\' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The \'scriptSig\' is the data that goes into the input's scriptSig field.`,
+        scriptsig_paragraph: `The 'scriptSig' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The 'scriptSig' is the data that goes into the input's scriptSig field.`,
         block_explorer_heading: `Block Explorer`,
         block_explorer_paragraph: `A block explorer is a crucial tool for navigating and understanding blockchain networks. It acts as a user-friendly interface to inspect and analyze the data stored on a blockchain. With a block explorer, users can explore transaction histories, view account balances, and track the progress of individual blocks and transactions.`,
         tip: `Look for the scriptSig(Hex) category nested in coinbase input after expanding the transaction within the block.`,
@@ -219,7 +219,7 @@ const translations = {
       genesis_three: {
         bash_heading: `Bash Commands`,
         bash_paragraph: `We are using some basic bash command and options to reverse the compression Satoshi did on the text put into the genesis block.`,
-        tip: `The \'xxd\' command turns a file into hex and adding the \'-r\' tag reverses it allowing hex to be translated into text. The \'-p\' tag then prints it to the console allowing you to read the output.`,
+        tip: `The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.`,
       },
       transacting_two: {
         transactions_heading: `Transactions`,
@@ -231,7 +231,7 @@ const translations = {
       transacting_three: {
         secrets_heading: `Secrets In Bitcoin`,
         secrets_paragraph: `As we saw from the previous challenge, secrets embedded into bitcoin scripts has been a part of its history since the genesis block. Whether used to simply store some information in the blockchain, to pass information through bitcoin script to give some value external to bitcoin, or to pass messages to others, people have been storing things in the blockchain other than inputs and outputs since the beginning.`,
-        tip: `When decoding the string with the \'xxd\' command, remember that we are not using a variable this time, we need to input the entire string`,
+        tip: `When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string`,
       },
     },
   },
@@ -412,15 +412,15 @@ const translations = {
       },
       hashing_four: {
         power_of_random_heading: `The Power of Random`,
-        power_of_random_paragraph: `Like a perfectly random scenario, probability-wise the SHA-256 hash function is completely random for each addition of new data. If you hashed the novel \'War and Peace\', then added just one extra letter to the original text, it would result in a completely different hash. Each new character changes the hash in a completely random manner. Considering that there are 16 possible characters in a hexadecimal system (0-9 and a-f), how likely is it to find a hash starting with \'0\'?`,
-        tip: `Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with \'00\' is? How about \'000\'?`,
-        spoiler: `Try something starting with the letter \'s\'.`,
+        power_of_random_paragraph: `Like a perfectly random scenario, probability-wise the SHA-256 hash function is completely random for each addition of new data. If you hashed the novel 'War and Peace', then added just one extra letter to the original text, it would result in a completely different hash. Each new character changes the hash in a completely random manner. Considering that there are 16 possible characters in a hexadecimal system (0-9 and a-f), how likely is it to find a hash starting with '0'?`,
+        tip: `Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with '00' is? How about '000'?`,
+        spoiler: `Try something starting with the letter 's'.`,
       },
       hashing_six: {
         collision_resistance_heading: `SHA256 and collision resistance`,
-        collision_resistance_paragraph: `SHA-256 returns a 256-bit (64-characters) hash value, which is a unique representation of the input data. It belongs to the family of hash functions based on the Merkle–Damgård construction, a method for building hash functions from simpler compression functions. In this construction, the input message is divided into fixed-size blocks, and a chaining mechanism iteratively processes these blocks, combining each block's output with the result of the previous block. This process continues until the entire message is processed, producing the final hash value. SHA-256\'s robust security properties and collision resistance make it a cornerstone of data integrity and authentication in modern cryptography.`,
+        collision_resistance_paragraph: `SHA-256 returns a 256-bit (64-characters) hash value, which is a unique representation of the input data. It belongs to the family of hash functions based on the Merkle–Damgård construction, a method for building hash functions from simpler compression functions. In this construction, the input message is divided into fixed-size blocks, and a chaining mechanism iteratively processes these blocks, combining each block's output with the result of the previous block. This process continues until the entire message is processed, producing the final hash value. SHA-256's robust security properties and collision resistance make it a cornerstone of data integrity and authentication in modern cryptography.`,
         tip: `No real tips in this lesson, as you continue in Saving Satoshi you will find that we hold your hand less and less and let you find the solution on your own.`,
-        spoiler: `Knowing that each new character recalculates a completely random hash you could keep adding new characters until you start with \'00\' or more... or try the word trigonometry.`,
+        spoiler: `Knowing that each new character recalculates a completely random hash you could keep adding new characters until you start with '00' or more... or try the word trigonometry.`,
       },
       scripting_one: {
         hash_libraries_heading: `Hash Functions`,
@@ -433,7 +433,7 @@ const translations = {
       },
       mining_one: {
         mining_heading: `Mining`,
-        mining_paragraph: `Mining is where these concepts all come together. Bitcoin mining is the process by which new bitcoins are created and transactions are added to the blockchain. Miners compete to solve complex mathematical puzzles by finding a unique, valid \'nonce\' in each block of transactions. This proof-of-work process demands significant computational power and energy, making it a secure and decentralized way to validate transactions. Successful miners are rewarded with newly minted bitcoins and transaction fees, and they play a critical role in maintaining the integrity of the bitcoin network.`,
+        mining_paragraph: `Mining is where these concepts all come together. Bitcoin mining is the process by which new bitcoins are created and transactions are added to the blockchain. Miners compete to solve complex mathematical puzzles by finding a unique, valid 'nonce' in each block of transactions. This proof-of-work process demands significant computational power and energy, making it a secure and decentralized way to validate transactions. Successful miners are rewarded with newly minted bitcoins and transaction fees, and they play a critical role in maintaining the integrity of the bitcoin network.`,
         difficulty_heading: `Difficulty`,
         difficulty_paragraph: `The mining difficulty is what allows the block to remain at an average of 10 minutes between each new block.`,
         spoiler: `Nothing to spoil! Just go ahead and read through this lesson. There will be more opportunities to show off your  mining knowledge in future lessons!`,
@@ -565,9 +565,9 @@ const translations = {
       },
       coop: {
         distribution_heading: `Job Distribution`,
-        distribution_paragraph: `Mining pools take precautions to ensure that their participants do not mine the same nonce for the same block. This is important because, in the bitcoin mining process, miners compete to find a nonce that results in a valid block. If two miners in the same pool were to work on the same nonce simultaneously, it would be inefficient, and only one would receive the block reward. To prevent this, mining pools use a process called \'work assignment\' or \'job distribution\' to allocate work efficiently. Mining pools distribute work to individual miners or participants. When a new block needs to be mined, the pool's server (or pool operator) creates a unique \'job\' for the miners. This job includes all the information needed to mine the block, such as the current list of unconfirmed transactions, the previous block's header, and the target difficulty.`,
+        distribution_paragraph: `Mining pools take precautions to ensure that their participants do not mine the same nonce for the same block. This is important because, in the bitcoin mining process, miners compete to find a nonce that results in a valid block. If two miners in the same pool were to work on the same nonce simultaneously, it would be inefficient, and only one would receive the block reward. To prevent this, mining pools use a process called 'work assignment' or 'job distribution' to allocate work efficiently. Mining pools distribute work to individual miners or participants. When a new block needs to be mined, the pool's server (or pool operator) creates a unique 'job' for the miners. This job includes all the information needed to mine the block, such as the current list of unconfirmed transactions, the previous block's header, and the target difficulty.`,
         shares_heading: `Submitting Shares`,
-        shares_paragraph: `Miners work on these assigned jobs and continuously attempt to find the correct nonce. When a miner believes they have a solution, they submit what's called a \'share\' to the pool server. This share demonstrates that the miner is actively working on solving the problem. Shares are much easier to find than the actual solution, but they serve as proof of the miner's efforts.`,
+        shares_paragraph: `Miners work on these assigned jobs and continuously attempt to find the correct nonce. When a miner believes they have a solution, they submit what's called a 'share' to the pool server. This share demonstrates that the miner is actively working on solving the problem. Shares are much easier to find than the actual solution, but they serve as proof of the miner's efforts.`,
       },
       split: {
         payout_heading: `Payout Schemes`,
@@ -695,7 +695,7 @@ const translations = {
         key_three: `Regtest`,
         value_three: `bcrt`,
       },
-      paragraph_five: `Since we're making a Testnet address, we will be using the \'tb\' prefix.`,
+      paragraph_five: `Since we're making a Testnet address, we will be using the 'tb' prefix.`,
       paragraph_six: `After the data has been encoded to bech32, we are left with a bitcoin address!`,
       paragraph_seven: `Complete the function to create a bech32 address from a compressed public key hash. Start by making the witness program, then convert the program to an address by using the bech32 library that has already been imported for you.`,
       paragraph_eight: `You may need to dig into the bech32 library and read the code to find the right functions to use:\n`,
@@ -1014,7 +1014,7 @@ const translations = {
       },
       validate_signature_two: {
         base64_encoding_heading: `Base64 Encoding`,
-        base64_encoding_paragraph_one: `Base64 is a basic byte to text encoding scheme that just allows for the data to be convereted to bytes which can then be used in buffers or from bytes to text in such a way that it avoids any problems with url paths and query params. This differs from the base58 encoding scheme in that it still includes the similar characters (zero, uppercase \'O\', uppercase \'I\', and lowercase \'l\') that may otherwise be confusing to a user when trying to copy or dictate the encoded message.`,
+        base64_encoding_paragraph_one: `Base64 is a basic byte to text encoding scheme that just allows for the data to be convereted to bytes which can then be used in buffers or from bytes to text in such a way that it avoids any problems with url paths and query params. This differs from the base58 encoding scheme in that it still includes the similar characters (zero, uppercase 'O', uppercase 'I', and lowercase 'l') that may otherwise be confusing to a user when trying to copy or dictate the encoded message.`,
       },
       validate_signature_three: {
         signing_and_ownership_heading: `Message Signing and Ownership`,
@@ -2387,7 +2387,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       list_four: `Don't sign it yourself yet!`,
       heading_three: `Hints`,
       paragraph_three: `Output 0 is spent by either:`,
-      hint_one: `The \'Refund\' tab is now known as \'Initial Commitment\'. You can use it to see the script you wrote for the previous state.`,
+      hint_one: `The 'Refund' tab is now known as 'Initial Commitment'. You can use it to see the script you wrote for the previous state.`,
       hint_two: `You, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU) 1 </span>`,
       hint_three: `Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_YOU_2) SIG(LASZLO) 0 </span>`,
       paragraph_four: `Output 1 is spent by Laszlo: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> SIG(LASZLO) </span>`,
@@ -2415,7 +2415,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       list_one: `Fill in the amounts and output scripts for Laszlo's commitment transaction`,
       list_two: `Sign it and send it to Laszlo, who will then sign your commitment transaction and send that back to you`,
       heading_three: `Hints`,
-      hint_one: `You can switch to the \'Commitment_you\' tab to see the script you wrote for your commitment transaction.`,
+      hint_one: `You can switch to the 'Commitment_you' tab to see the script you wrote for your commitment transaction.`,
       paragraph_three: `Output 0 is spent by either:`,
       hint_two: `Laszlo, after 700 blocks: <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(LASZLO) 1 </span>`,
       hint_three: `You <span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap"> 0 SIG(REVOCATION_LASZLO_1) SIG(YOU) 0 </span>`,
