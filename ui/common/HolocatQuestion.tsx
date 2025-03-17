@@ -25,7 +25,7 @@ const HolocatQuestion = ({
       <Tooltip
         id={id}
         theme={theme || ''}
-        content={question}
+        content={<Text className="underline">{question}</Text>} // ✅ Added underline here
         parentClassName="inline-flex align-sub min-h-fit min-w-fit mx-1"
         arrowPosition={arrowPosition}
         visibleOverride={visible}
@@ -41,7 +41,7 @@ const HolocatQuestion = ({
        hover:bg-black/40"
       >
         <Avatar avatar="/assets/avatars/holocat.jpg" size={24} />
-        <Text className="text-lg font-semibold">{question}</Text>
+        <Text className="text-lg font-semibold underline">{question}</Text>
       </a>
     )
   )
