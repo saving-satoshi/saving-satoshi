@@ -35,7 +35,7 @@ export default function BuildingBlocks1({ lang }) {
           onMouseLeave={handleMouseLeaveOne}
           href={t('chapter_eight.building_blocks_one.paragraph_one.b.href')}
           target="_blank"
-          className="inline text-lg italic hover:underline md:text-xl"
+          className="inline text-lg italic underline md:text-xl"
         >
           {t('chapter_eight.building_blocks_one.paragraph_one.b.text')}
           <HolocatQuestion

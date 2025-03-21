@@ -63,7 +63,7 @@ export default function Address1({ lang }) {
             onMouseLeave={handleMouseLeave}
             href={t('chapter_four.address_one.tooltip_one.link')}
             target="_blank"
-            className="inline text-lg italic hover:underline md:text-xl"
+            className="inline text-lg italic underline md:text-xl" // Ensuring all links are underlined
           >
             {t('chapter_four.address_one.tooltip_one.highlighted')}
             <HolocatQuestion
