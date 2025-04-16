@@ -146,7 +146,7 @@ console.log('KILL')
       name: 'put-it-together-1',
       args: ['args'],
     },
-    defaultCode: `const {Hash} = require('crypto');
+    defaultCode: `const {createHash} = require('crypto');
 
 class Transaction {
   constructor() {
