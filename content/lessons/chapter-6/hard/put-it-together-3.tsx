@@ -158,7 +158,7 @@ console.log('KILL')
       name: 'put-it-together-3-hard',
       args: ['args'],
     },
-    defaultCode: `const {Hash} = require('crypto');
+    defaultCode: `const {createHash} = require('crypto');
 
 ${prevData.data.slice(0, -2)}
   digest(input_index) {

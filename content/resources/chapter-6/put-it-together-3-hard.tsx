@@ -22,7 +22,7 @@ const javascriptChallenge = {
   },
   defaultCode: `  digest(input_index) {
     const dsha256 = (data) => {
-      return Hash('sha256').update(Hash('sha256').update(data).digest()).digest();
+      return createHash('sha256').update(createHash('sha256').update(data).digest()).digest();
     };
 
     // Start with an empty 4-byte Buffer
