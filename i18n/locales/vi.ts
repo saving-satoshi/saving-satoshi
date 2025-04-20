@@ -246,9 +246,9 @@ const translations = {
       title: 'Phần ra', // Outro
       nav_title: 'Cuộc phiêu lưu đang vẫy gọi', // Adventure calls
       paragraph_one:
-   'Bạn chạy xuống tầng hầm, bước vào chiếc xe cà tàng cũ của cha mình, nhập tọa độ và tiến đến Quận 21.',  // You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to District 21.
+         'Bạn chạy xuống tầng hầm, bước vào chiếc xe cà tàng cũ của cha mình, nhập tọa độ và tiến đến Quận 21.',  // You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to District 21.
       paragraph_two:
-   'Mặc dù bị dị ứng với mèo, nghiêm trọng đến mức thậm chí xảy ra đối với con mèo điện tín 3D, nhưng con mèo vẫn đi theo cùng. Bạn kịch liệt phản đối, nhưng mèo vẫn là mèo.', // Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.
+         'Mặc dù bị dị ứng với mèo, nghiêm trọng đến mức thậm chí xảy ra đối với con mèo điện tín 3D, nhưng con mèo vẫn đi theo cùng. Bạn kịch liệt phản đối, nhưng mèo vẫn là mèo.', // Despite cat allergies so intense that they apply even to holograms, the holocat comes along. You object, but cats will be cats.
       button_text: 'Hoàn tất chương 1', // Complete chapter 1
     },
 
@@ -256,7 +256,7 @@ const translations = {
       title: 'Bạn đã thành công!', // You did it!
       nav_title: 'Chương đã hoàn tất', // Chapter complete
       description:
-   'Tuyệt vời. Bạn đã hoàn thành chương đầu tiên với nhiều kiến thức về mã hóa và giao dịch. Bạn cảm thấy như thế nào?', // Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go?
+         'Tuyệt vời. Bạn đã hoàn thành chương đầu tiên với nhiều kiến thức về mã hóa và giao dịch. Bạn cảm thấy như thế nào?', // Amazing. You completed the first chapter and learned a lot about hashes and transactions. How did it go?
     },
 
     end: {
@@ -266,34 +266,34 @@ const translations = {
     },
     resources: {
       genesis_two: {
- scriptsig_heading: 'ScriptSig',
- scriptsig_paragraph:
-     "‘scriptSig’ là một lệnh mã hóa được sử dụng để trong việc cấu thành phần đầu vào của một giao dịch mới. Thực chất, đó là lệnh mở khóa của bạn, chứng minh rằng bạn có quyền chi tiêu bitcoin từ tham chiếu UTXO. ‘scriptSig’ là phần dữ liệu được nhập trong trường scriptSig của phần đầu vào.", // The 'scriptSig' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The 'scriptSig' is the data that goes into the input's scriptSig field.
- block_explorer_heading: 'Trình duyệt chuỗi khối dữ liệu', // Block Explorer
- block_explorer_paragraph:
-     'Trình duyệt chuỗi khối dữ liệu là một công cụ quan trọng để tìm kiếm và hiểu các thông tin động trên mạng lưới Bitcoin blockchain. Với giao diện thân thiện, người dùng sử dụng để kiểm tra và phân tích dữ liệu được lưu trữ trên bitcoin blockchain. Trình duyệt giúp người dùng tìm hiểu lịch sử giao dịch, xem số dư tài khoản và theo dõi tiến trình hình thành của từng khối dữ liệu và giao dịch.', // A block explorer is a crucial tool for navigating and understanding blockchain networks. It acts as a user-friendly interface to inspect and analyze the data stored on a blockchain. With a block explorer, users can explore transaction histories, view account balances, and track the progress of individual blocks and transactions.
- tip: 'Tìm danh mục câu lệnh scriptSig(Hex) được lồng trong phần đầu vào coinbase sau khi tra cứu thông tin giao dịch bên trong khối dữ liệu.', // Look for the scriptSig(Hex) category nested in coinbase input after expanding the transaction within the block.
+       scriptsig_heading: 'ScriptSig',
+       scriptsig_paragraph:
+           "‘scriptSig’ là một lệnh mã hóa được sử dụng để trong việc cấu thành phần đầu vào của một giao dịch mới. Thực chất, đó là lệnh mở khóa của bạn, chứng minh rằng bạn có quyền chi tiêu bitcoin từ tham chiếu UTXO. ‘scriptSig’ là phần dữ liệu được nhập trong trường scriptSig của phần đầu vào.", // The 'scriptSig' is a script that you provide as part of the input in your new transaction. It is essentially your unlocking script, which proves that you have the authority to spend the bitcoin from the referenced UTXO. The 'scriptSig' is the data that goes into the input's scriptSig field.
+       block_explorer_heading: 'Trình duyệt chuỗi khối dữ liệu', // Block Explorer
+       block_explorer_paragraph:
+           'Trình duyệt chuỗi khối dữ liệu là một công cụ quan trọng để tìm kiếm và hiểu các thông tin động trên mạng lưới Bitcoin blockchain. Với giao diện thân thiện, người dùng sử dụng để kiểm tra và phân tích dữ liệu được lưu trữ trên bitcoin blockchain. Trình duyệt giúp người dùng tìm hiểu lịch sử giao dịch, xem số dư tài khoản và theo dõi tiến trình hình thành của từng khối dữ liệu và giao dịch.', // A block explorer is a crucial tool for navigating and understanding blockchain networks. It acts as a user-friendly interface to inspect and analyze the data stored on a blockchain. With a block explorer, users can explore transaction histories, view account balances, and track the progress of individual blocks and transactions.
+       tip: 'Tìm danh mục câu lệnh scriptSig(Hex) được lồng trong phần đầu vào coinbase sau khi tra cứu thông tin giao dịch bên trong khối dữ liệu.', // Look for the scriptSig(Hex) category nested in coinbase input after expanding the transaction within the block.
       },
       genesis_three: {
- bash_heading: 'Các câu lệnh Bash', // Bash Commands
- bash_paragraph:
-     'Chúng ta đang sử dụng một số câu lệnh và tùy chọn bash cơ bản để đảo ngược quá trình mã hóa mà Satoshi đã thực hiện trên văn bản được đưa vào khối dữ liệu đầu tiên.',  // We are using some basic bash command and options to reverse the compression Satoshi did on the text put into the genesis block.
- tip: "Cáu lệnh 'xxd' dùng để chuyển đổi một tập tin thành hex sau đó thêm thẻ '-r' để đảo ngược nó và cho phép dịch hex thành văn bản. Tiếp đó, thẻ '-p' in văn bản ra bảng điều khiển cho phép bạn đọc đầu ra.",  // The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.
+       bash_heading: 'Các câu lệnh Bash', // Bash Commands
+       bash_paragraph:
+           'Chúng ta đang sử dụng một số câu lệnh và tùy chọn bash cơ bản để đảo ngược quá trình mã hóa mà Satoshi đã thực hiện trên văn bản được đưa vào khối dữ liệu đầu tiên.',  // We are using some basic bash command and options to reverse the compression Satoshi did on the text put into the genesis block.
+       tip: "Cáu lệnh 'xxd' dùng để chuyển đổi một tập tin thành hex sau đó thêm thẻ '-r' để đảo ngược nó và cho phép dịch hex thành văn bản. Tiếp đó, thẻ '-p' in văn bản ra bảng điều khiển cho phép bạn đọc đầu ra.",  // The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.
       },
       transacting_two: {
- transactions_heading: 'Các giao dịch', // Transactions
- transactions_paragraph:
-     "Mỗi giao dịch trong thế giới tiền mã hóa giống như một giao dịch thanh toán đơn lẻ, trong quá trình đó, các đồng tiền liên quan hiện có sẽ bị tiêu hủy và các đồng tiền mới sẽ được tạo ra. Khi ai đó khởi tạo một giao dịch tiền mã hóa, về cơ bản họ đang sử dụng dữ liệu chuỗi khối để chuyển một số lượng tiền cụ thể từ ví điện tử này sang ví điện tử khác. Để thực hiện điều này, giao dịch sẽ tiêu thụ các đồng tiền hiện có của người gửi và đồng thời tạo ra các đồng tiền mới cho người nhận, sau đó cập nhật sổ cái quyền sở hữu.", // A transaction in the world of cryptocurrencies is akin to a single atomic payment, where it involves the process of destroying existing coins and creating new ones. When someone initiates a cryptocurrency transaction, they're essentially instructing the blockchain to transfer a specific amount of coins from one digital wallet to another. To achieve this, the transaction consumes the sender's existing coins and generates new ones for the recipient, effectively updating the ownership ledger.
- bitcoin_script_heading: 'Các lệnh lập trình Bitcoin Script', // Bitcoin Script
- bitcoin_script_paragraph:
-     'Bitcoin Script là một ngôn ngữ lập trình đơn giản dựa trên nguyên tắc sắp xếp chồng lặp, được sử dụng trong các giao dịch để xác định các điều kiện mà bitcoin có thể được chi tiêu. Bao gồm các opcode (viết tắt của mã hoạt động) khác nhau chỉ định các hoạt động nào nên được thực hiện trên dữ liệu trong câu lệnh.',  // Bitcoin Script is a simple, stack-based programming language used in bitcoin transactions to define the conditions under which bitcoins can be spent. It consists of various opcodes (short for operation codes) that specify what operations should be performed on the data within the script.
- tip: 'Với Op_Code: OP_Pushbytes_33 có nghĩa là chúng ta đang tìm một chuỗi dài 33 byte (tổng cộng 66 ký tự) trong OP_Return của giao dịch',// Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33 bytes long (66 characters total) in the OP_Return of the transaction
+       transactions_heading: 'Các giao dịch', // Transactions
+       transactions_paragraph:
+           "Mỗi giao dịch trong thế giới tiền mã hóa giống như một giao dịch thanh toán đơn lẻ, trong quá trình đó, các đồng tiền liên quan hiện có sẽ bị tiêu hủy và các đồng tiền mới sẽ được tạo ra. Khi ai đó khởi tạo một giao dịch tiền mã hóa, về cơ bản họ đang sử dụng dữ liệu chuỗi khối để chuyển một số lượng tiền cụ thể từ ví điện tử này sang ví điện tử khác. Để thực hiện điều này, giao dịch sẽ tiêu thụ các đồng tiền hiện có của người gửi và đồng thời tạo ra các đồng tiền mới cho người nhận, sau đó cập nhật sổ cái quyền sở hữu.", // A transaction in the world of cryptocurrencies is akin to a single atomic payment, where it involves the process of destroying existing coins and creating new ones. When someone initiates a cryptocurrency transaction, they're essentially instructing the blockchain to transfer a specific amount of coins from one digital wallet to another. To achieve this, the transaction consumes the sender's existing coins and generates new ones for the recipient, effectively updating the ownership ledger.
+       bitcoin_script_heading: 'Các lệnh lập trình Bitcoin Script', // Bitcoin Script
+       bitcoin_script_paragraph:
+           'Bitcoin Script là một ngôn ngữ lập trình đơn giản dựa trên nguyên tắc sắp xếp chồng lặp, được sử dụng trong các giao dịch để xác định các điều kiện mà bitcoin có thể được chi tiêu. Bao gồm các opcode (viết tắt của mã hoạt động) khác nhau chỉ định các hoạt động nào nên được thực hiện trên dữ liệu trong câu lệnh.',  // Bitcoin Script is a simple, stack-based programming language used in bitcoin transactions to define the conditions under which bitcoins can be spent. It consists of various opcodes (short for operation codes) that specify what operations should be performed on the data within the script.
+       tip: 'Với Op_Code: OP_Pushbytes_33 có nghĩa là chúng ta đang tìm một chuỗi dài 33 byte (tổng cộng 66 ký tự) trong OP_Return của giao dịch',// Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33 bytes long (66 characters total) in the OP_Return of the transaction
       },
       transacting_three: {
- secrets_heading: 'Những Bí Mật Trong Bitcoin', // Secrets In Bitcoin
- secrets_paragraph:
-     'Như đã thấy từ thử thách trước, các bí mật được lồng vào các lệnh mã hóa bitcoin đã trở thành một phần của lịch sử bitcoin kể từ khối đầu tiên. Có thể mục đích chỉ để lưu trữ một số thông tin trong dữ liệu chuỗi khối, hay để chuyển thông tin thông qua bitcoin script nhằm tạo một số giá trị khác ngoài bitcoin, hay để gửi thông điệp cho người khác, mọi người đã lưu trữ đủ loại dữ liệu trong chuỗi khối dữ liệu trong đầu vào và đầu ra ngay từ thuở sơ khai.',   // As we saw from the previous challenge, secrets embedded into bitcoin scripts has been a part of its history since the genesis block. Whether used to simply store some information in the blockchain, to pass information through bitcoin script to give some value external to bitcoin, or to pass messages to others, people have been storing things in the blockchain other than inputs and outputs since the beginning.
- tip: "Khi giải mã chuỗi thông tin bằng lệnh 'xxd', nhớ rằng lần này chúng ta không sử dụng một biến số, mà chúng ta phải nhập toàn bộ chuỗi thông tin", // When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string.
+       secrets_heading: 'Những Bí Mật Trong Bitcoin', // Secrets In Bitcoin
+       secrets_paragraph:
+           'Như đã thấy từ thử thách trước, các bí mật được lồng vào các lệnh mã hóa bitcoin đã trở thành một phần của lịch sử bitcoin kể từ khối đầu tiên. Có thể mục đích chỉ để lưu trữ một số thông tin trong dữ liệu chuỗi khối, hay để chuyển thông tin thông qua bitcoin script nhằm tạo một số giá trị khác ngoài bitcoin, hay để gửi thông điệp cho người khác, mọi người đã lưu trữ đủ loại dữ liệu trong chuỗi khối dữ liệu trong đầu vào và đầu ra ngay từ thuở sơ khai.',   // As we saw from the previous challenge, secrets embedded into bitcoin scripts has been a part of its history since the genesis block. Whether used to simply store some information in the blockchain, to pass information through bitcoin script to give some value external to bitcoin, or to pass messages to others, people have been storing things in the blockchain other than inputs and outputs since the beginning.
+       tip: "Khi giải mã chuỗi thông tin bằng lệnh 'xxd', nhớ rằng lần này chúng ta không sử dụng một biến số, mà chúng ta phải nhập toàn bộ chuỗi thông tin", // When decoding the string with the 'xxd' command, remember that we are not using a variable this time, we need to input the entire string.
       },
     },
   },
@@ -301,27 +301,27 @@ const translations = {
   chapter_two: {
     title: 'Lập Kế Hoạch', // Hashing Out a Plan
     paragraph_one:
- 'Tọa độ mà Satoshi cung cấp cho bạn không gây thất vọng, thật không may: đó là một nhà kho, và là một nhà kho đáng sợ, hoang vắng.', // The coordinates Satoshi gave you don’t disappoint, unfortunately: it’s a warehouse, and a scary, deserted one to boot.
+       'Tọa độ mà Satoshi cung cấp cho bạn không gây thất vọng, thật không may: đó là một nhà kho, và là một nhà kho đáng sợ, hoang vắng.', // The coordinates Satoshi gave you don’t disappoint, unfortunately: it’s a warehouse, and a scary, deserted one to boot.
     paragraph_two:
- 'Bạn bay vòng quanh nhà kho bằng Budgetcopter của mình không dưới ba lần. Vâng, thở dài, có lẽ bạn sẽ phải vào đó. Máy dò nhiệt Budget Heat Detector của Budgetcopter không phát hiện gì ngoài bóng tối. Nếu ai đó biết nơi này tồn tại, thì đã rất lâu kể từ lần cuối họ đến thăm nó bằng bất cứ ký tự gì khác ngoài ký ức của họ.',  // You circle the warehouse in your Budgetcopter no less than three times. Yeah, sigh, you’re probably gonna have to go in there. Your Budgetcopter’s Budget Heat Detector detects nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.
+       'Bạn bay vòng quanh nhà kho bằng Budgetcopter của mình không dưới ba lần. Vâng, thở dài, có lẽ bạn sẽ phải vào đó. Máy dò nhiệt Budget Heat Detector của Budgetcopter không phát hiện gì ngoài bóng tối. Nếu ai đó biết nơi này tồn tại, thì đã rất lâu kể từ lần cuối họ đến thăm nó bằng bất cứ ký tự gì khác ngoài ký ức của họ.',  // You circle the warehouse in your Budgetcopter no less than three times. Yeah, sigh, you’re probably gonna have to go in there. Your Budgetcopter’s Budget Heat Detector detects nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.
 
     intro_one: {
       title: 'Phần mở đầu', // Intro
       nav_title: 'Nhà kho', // The warehouse
       paragraph_one:
-   '—HOLOCAT: “Trời ơi, thật là một bãi rác. Tốt hơn hết là nơi này nên có một số e-anchovies được lưu trữ ở đâu đó. Tôi thậm chí còn chấp nhận một số CyberKibble.."',// —HOLOCAT: “Boy, what a dump. This place had better have some e-anchovies stored somewhere. I’d even settle for some CyberKibble.."
+         '—HOLOCAT: “Trời ơi, thật là một bãi rác. Tốt hơn hết là nơi này nên có một số e-anchovies được lưu trữ ở đâu đó. Tôi thậm chí còn chấp nhận một số CyberKibble.."',// —HOLOCAT: “Boy, what a dump. This place had better have some e-anchovies stored somewhere. I’d even settle for some CyberKibble.."
       paragraph_two:
-   'Bạn hạ cánh, ổn định bản thân và tìm kiếm một điểm vào. Chà, cái cửa sổ vỡ đó sẽ hữu ích. Bạn lấy một viên gạch đập vỡ phần còn lại của cửa sổ và nhảy vào trong. Tòa nhà chứa đầy hàng nghìn máy đào bitcoin cũ kỹ, được bảo quản tốt.',      // You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.
+         'Bạn hạ cánh, ổn định bản thân và tìm kiếm một điểm vào. Chà, cái cửa sổ vỡ đó sẽ hữu ích. Bạn lấy một viên gạch đập vỡ phần còn lại của cửa sổ và nhảy vào trong. Tòa nhà chứa đầy hàng nghìn máy đào bitcoin cũ kỹ, được bảo quản tốt.',      // You land, steady yourself, and search for a point of ingress. There, that broken window should do the trick. You take out what’s left of the window with a brick, and hop inside. The building is filled with thousands of dusty, well-preserved bitcoin miners.
       paragraph_three: {
- a: '—HOLOCAT: “Đây không phải là nhà kho; đây là một bảo tàng. Tôi nghĩ đây là những thiết bị đào cũ của gia đình Vanderpoole. Vào thời kỳ đầu của bitcoin, máy(thợ) đào sẽ sử dụng máy tính thông dụng để đào bitcoin. Nhưng sau vài năm, máy(thợ) đào nhận ra rằng họ có thể sử dụng máy đào với một loại chip đặc biệt gọi là Mạch tích hợp dành cho ứng dụng cụ thể, hoặc ',  // —HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family mining devices. In bitcoin’s early days, miners would use general purpose computers to mine bitcoin. But after a few years, miners realized they could use machines with a special chip called an Application-Specific Integrated Circuit, or 
- b: 'ASIC, cho ngắn gọn. Các chip này chỉ thực hiện một việc: đào bitcoin. Tính năng tập trung hạn hẹp của chúng làm tăng hiệu quả và cho phép máy(thợ) đào sử dụng ít năng lượng hơn vào việc đào, mang lại cho họ lợi thế. Bạn có tin rằng mọi người đã từng đào bằng máy tính xách tay của họ không?"',  //  for short. These chips do only one thing: mine bitcoin. Their narrow focus increases their efficiency and allows miners to spend less energy on mining, giving them an edge. Can you believe that people mined with their laptops at one point?"
+         a: '—HOLOCAT: “Đây không phải là nhà kho; đây là một bảo tàng. Tôi nghĩ đây là những thiết bị đào cũ của gia đình Vanderpoole. Vào thời kỳ đầu của bitcoin, máy(thợ) đào sẽ sử dụng máy tính thông dụng để đào bitcoin. Nhưng sau vài năm, máy(thợ) đào nhận ra rằng họ có thể sử dụng máy đào với một loại chip đặc biệt gọi là Mạch tích hợp dành cho ứng dụng cụ thể, hoặc ',  // —HOLOCAT: “This isn’t a warehouse; this is a museum. I think these are old Vanderpoole family mining devices. In bitcoin’s early days, miners would use general purpose computers to mine bitcoin. But after a few years, miners realized they could use machines with a special chip called an Application-Specific Integrated Circuit, or 
+         b: 'ASIC, cho ngắn gọn. Các chip này chỉ thực hiện một việc: đào bitcoin. Tính năng tập trung hạn hẹp của chúng làm tăng hiệu quả và cho phép máy(thợ) đào sử dụng ít năng lượng hơn vào việc đào, mang lại cho họ lợi thế. Bạn có tin rằng mọi người đã từng đào bằng máy tính xách tay của họ không?"',  //  for short. These chips do only one thing: mine bitcoin. Their narrow focus increases their efficiency and allows miners to spend less energy on mining, giving them an edge. Can you believe that people mined with their laptops at one point?"
       },
       paragraph_four:
- 'Điều này giải thích tất cả các máy đào trong bộ sưu tập của gia đình Vanderpoole.',// This explains all the machines in the Vanderpoole family collection.
+         'Điều này giải thích tất cả các máy đào trong bộ sưu tập của gia đình Vanderpoole.',// This explains all the machines in the Vanderpoole family collection.
       tooltip_one: {
- question: 'Máy đào ASIC là gì?',//'What is an ASIC miner?'
- link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520an%2520ASIC%2520miner%253F',
- highlighted: 'ASIC',
+         question: 'Máy đào ASIC là gì?',//'What is an ASIC miner?'
+         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520an%2520ASIC%2520miner%253F',
+         highlighted: 'ASIC',
       },
     },
 
@@ -329,23 +329,23 @@ const translations = {
       title: 'Lập Kế Hoạch', // Hashing Out a Plan
       nav_title: 'Bật máy tính', // Turning on the computer
       paragraph_one:
-   'Ở góc phòng, một máy tính hầu như không hoạt động, màn hình nhấp nháy mờ nhạt với một mẩu giấy dán. Tờ giấy ghi rằng “Bật lên đi, đồ đần.”', // In the corner, a dim, barely working computer monitor with a note stuck to it sits blinking. The note says “Turn them on, stupid."
+         'Ở góc phòng, một máy tính hầu như không hoạt động, màn hình nhấp nháy mờ nhạt với một mẩu giấy dán. Tờ giấy ghi rằng “Bật lên đi, đồ đần.”', // In the corner, a dim, barely working computer monitor with a note stuck to it sits blinking. The note says “Turn them on, stupid."
       paragraph_two: '—HOLOCAT: “Thô lỗ thật. Ồ, một bàn phím cơ. Tôi đã nghe nói về thứ này rồi. Hình như chúng ồn đến mức khiến người dùng bị điếc cho nên bị cấm.”', // —HOLOCAT: “How rude. Wow; a mechanical keyboard. I’ve heard about these things. Supposedly, they were so loud that they cost users their hearing, and were banned.”
       paragraph_three:
-   'Con mèo nhảy lên bàn phím và đi qua đi lại, chỉ cho bạn những phím cần nhấn.', //con mèo jumps onto the keyboard and walks across it, showing you what keys to hit.
+         'Con mèo nhảy lên bàn phím và đi qua đi lại, chỉ cho bạn những phím cần nhấn.', //con mèo jumps onto the keyboard and walks across it, showing you what keys to hit.
     },
 
     hashing_one: {
       title: 'Các số không', // Zeroes
       nav_title: 'Máy tính sống lại', // The computer hums to life
       paragraph_one:
-   'Do may mắn, hoặc vì con mèo biết nó đang làm gì, những chữ cái và số ngẫu nhiên mà nó bước lên biến thành ... nhiều chữ cái và số ngẫu nhiên hơn?',// Either by chance, or becausecon mèo actually knew what she was doing, the random letters and numbers she stepped on turn into... more random letters and numbers?
+         'Do may mắn, hoặc vì con mèo biết nó đang làm gì, những chữ cái và số ngẫu nhiên mà nó bước lên biến thành ... nhiều chữ cái và số ngẫu nhiên hơn?',// Either by chance, or becausecon mèo actually knew what she was doing, the random letters and numbers she stepped on turn into... more random letters and numbers?
       list_one: '> QX23Y6VGECTUKSNIEUTUB[P[pihof', 
       list_two:
-   '> 1c31d1d9fb848a505fc0cdbea848ff1bdd46a9ed4d639d413d3a93035194eedf', 
+         '> 1c31d1d9fb848a505fc0cdbea848ff1bdd46a9ed4d639d413d3a93035194eedf', 
       paragraph_two: 'Màn hình hiển thị "CHUỖI MÃ HÓA KHÔNG ĐÚNG. HÃY THỬ LẠI."',  // The monitor displays "INCORRECT HASH. TRY AGAIN."
       paragraph_three:
-   'Thì ra bất cứ ký tự gì mà con mèo nhập vào đều sai. Cuối cùng nó chỉ là một con mèo điện tín kiêu ngạo!',  // Of course whatever gibberishcon mèo typed was wrong. She’s just a sassy holographic cat!
+         'Thì ra bất cứ ký tự gì mà con mèo nhập vào đều sai. Cuối cùng nó chỉ là một con mèo điện tín kiêu ngạo!',  // Of course whatever gibberishcon mèo typed was wrong. She’s just a sassy holographic cat!
       paragraph_four: 'Điều gì sẽ xảy ra nếu bạn nhập những ký tự khác?', // What happens if you type something different?
     },
 
@@ -363,22 +363,22 @@ const translations = {
       nav_title: 'Sức mạnh của hàm mã hóa SHA256', // The power of SHA256
       heading: 'Bạn có thấy điều gì đặc biệt về các só mã hóa không?', // Did you notice anything special about the hashes?
       list_one:
-   'Giống như dấu vân tay, các số mã hóa điều khác biệt và độc nhất. Trừ một số trường hợp rắt đặc biệt, thường các số mã hóa của hai chuỗi ký tự khác nhau không bao giờ giống nhau.',  // Just like fingerprints, hashes are unique. Barring some exceptional circumstances, the hashes for two different things should never be the same.
+         'Giống như dấu vân tay, các số mã hóa điều khác biệt và độc nhất. Trừ một số trường hợp rắt đặc biệt, thường các số mã hóa của hai chuỗi ký tự khác nhau không bao giờ giống nhau.',  // Just like fingerprints, hashes are unique. Barring some exceptional circumstances, the hashes for two different things should never be the same.
       list_two:
-   'Các hàm mã hóa là hàm một chiều. Bạn không thể đảo ngược kỹ thuật một hàm mã hóa để tìm ra dữ liệu đầu vào được sử dụng để tạo ra số mã hóa đó.', // Hash functions are one way streets. You can’t reverse engineer a hash to figure out the data used to make it.
+         'Các hàm mã hóa là hàm một chiều. Bạn không thể đảo ngược kỹ thuật một hàm mã hóa để tìm ra dữ liệu đầu vào được sử dụng để tạo ra số mã hóa đó.', // Hash functions are one way streets. You can’t reverse engineer a hash to figure out the data used to make it.
       list_three:
-   'các số mã hóa cực kỳ đáng tin cậy mang định tính xác định. Có nghĩa là bạn sẽ luôn nhận được một kết quả giống nhau khi mã hóa cùng một dữ liệu nhiều lần.',   // Hashes are extremely reliable in the sense that they are deterministic. This means you can hash the same piece of data over and over again and you’ll always get the same result.
+         'các số mã hóa cực kỳ đáng tin cậy mang định tính xác định. Có nghĩa là bạn sẽ luôn nhận được một kết quả giống nhau khi mã hóa cùng một dữ liệu nhiều lần.',   // Hashes are extremely reliable in the sense that they are deterministic. This means you can hash the same piece of data over and over again and you’ll always get the same result.
       paragraph_one: {
-   a: 'Hàm được sử dụng được gọi là ', // The function used here is called 
-   b: 'một lựa chọn phổ thông.', // a very popular choice.
+         a: 'Hàm được sử dụng được gọi là ', // The function used here is called 
+         b: 'một lựa chọn phổ thông.', // a very popular choice.
       },
       paragraph_two: 'Bây giờ, hãy xem bạn có thể tìm thấy một số mã hóa cụ thể không nhé.', // Now, let’s see if you can find a specific hash.
       paragraph_three:
-   'Tìm một số mã hóa bắt đầu bằng số không (“0”). Tiếp tục nhập các ký tự khác nhau bên dưới cho đến khi bạn tìm thấy một số mã hóa mà chúng ta muốn.',      // Find a hash that starts with a zero (“0”). Keep typing different things below until you find a hash that we want.
+         'Tìm một số mã hóa bắt đầu bằng số không (“0”). Tiếp tục nhập các ký tự khác nhau bên dưới cho đến khi bạn tìm thấy một số mã hóa mà chúng ta muốn.',      // Find a hash that starts with a zero (“0”). Keep typing different things below until you find a hash that we want.
       tooltip_one: {
- question: 'Hàm SHA-256 được sử dụng như thế nào trong bitcoin?', // How is SHA-256 used in bitcoin?
- link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520SHA-256%2520used%2520in%2520bitcoin%253F',
- highlighted: 'SHA-256',
+       question: 'Hàm SHA-256 được sử dụng như thế nào trong bitcoin?', // How is SHA-256 used in bitcoin?
+       link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520SHA-256%2520used%2520in%2520bitcoin%253F',
+       highlighted: 'SHA-256',
       },
     },
 
@@ -386,11 +386,11 @@ const translations = {
       title: 'Các số không', // Zeroes
       nav_title: 'Tìm một chuỗi số mã hóa bắt đầu bàng số không', // Find a hash with a zero
       heading:
-   'Nhập bất cứ ký tự gì cho đến khi bạn tìm thấy một chuỗi số mã hóa bắt đầu bằng số không (“0”)', // Enter anything until you find a hash that starts with a zero (“0”)
+         'Nhập bất cứ ký tự gì cho đến khi bạn tìm thấy một chuỗi số mã hóa bắt đầu bằng số không (“0”)', // Enter anything until you find a hash that starts with a zero (“0”)
       hint_prompt:
-   'Cần <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip">gợi ý</Tooltip>?',      // Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip">hint</Tooltip>?
+         'Cần <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip">gợi ý</Tooltip>?',      // Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip">hint</Tooltip>?
       hint_tooltip:
-   '<span className="text-m whitespace-nowrap leading-none text-white/50">Thử nhập:</span> <span className="whitespace-nowrap text-white">popcorn</span>',     // <span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">popcorn</span>
+         '<span className="text-m whitespace-nowrap leading-none text-white/50">Thử nhập:</span> <span className="whitespace-nowrap text-white">popcorn</span>',     // <span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">popcorn</span>
     },
 
     hashing_five: {
@@ -398,18 +398,18 @@ const translations = {
       nav_title: 'Tăng tốc nào', // Turning up the heat
       heading: 'Không khó nhỉ!', // That wasn’t too hard!
       paragraph_one:
-   'Hãy làm cho nó khó hơn một chút. Hãy thử tìm một chuỗi số mã hóa bắt đầu bằng hai số không ("00").',  // Let’s make it a bit more tricky. Try to find a hash that starts with two zeroes ("00").
+         'Hãy làm cho nó khó hơn một chút. Hãy thử tìm một chuỗi số mã hóa bắt đầu bằng hai số không ("00").',  // Let’s make it a bit more tricky. Try to find a hash that starts with two zeroes ("00").
     },
 
     hashing_six: {
       title: 'Các số không', // Zeroes
       nav_title: 'Tìm một số mã hóa có hai số không', // Find a hash with two zeroes
       heading:
-   'Nhập bất cứ ký tự gì cho đến khi bạn tìm thấy một số mã hóa bắt đầu bằng hai số không (“00”)', // Enter anything until you find a hash that starts with two zeroes (“00”)
+         'Nhập bất cứ ký tự gì cho đến khi bạn tìm thấy một số mã hóa bắt đầu bằng hai số không (“00”)', // Enter anything until you find a hash that starts with two zeroes (“00”)
       hint_prompt:
-   'Cần <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">gợi ý</Tooltip>?', // Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">hint</Tooltip>?
+         'Cần <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">gợi ý</Tooltip>?', // Need a <Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">hint</Tooltip>?
       hint_tooltip:
-   '<span className="text-m whitespace-nowrap leading-none text-white/50">Thử nhập:</span> <span className="whitespace-nowrap text-white">trigonometry</span>',  // <span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">trigonometry</span>
+         '<span className="text-m whitespace-nowrap leading-none text-white/50">Thử nhập:</span> <span className="whitespace-nowrap text-white">trigonometry</span>',  // <span className="text-m whitespace-nowrap leading-none text-white/50">Try typing:</span> <span className="whitespace-nowrap text-white">trigonometry</span>
     },
 
     scripting_one: {
@@ -417,21 +417,21 @@ const translations = {
       nav_title: 'Mã hóa con số chỉ sử dụng 1 lần (nonce)', // Hashing the nonce
       heading: 'Hãy để máy tính làm điều này cho chúng ta.', // Let’s make the computer do this for us.
       paragraph_one:
-   'OK, có lẽ mất nhiều thời gian hơn bạn nghĩ. Bây giờ hãy tưởng tượng tìm một chuỗi số mã hóa bắt đầu bằng năm hoặc mười số không. Đây là thử thách mà mạng lưới bitcoin đặt ra cho máy(thợ) đào khi họ muốn gửi các khối dữ liệu lưu trữ các giao dịch mới.',// OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.
+         'OK, có lẽ mất nhiều thời gian hơn bạn nghĩ. Bây giờ hãy tưởng tượng tìm một chuỗi số mã hóa bắt đầu bằng năm hoặc mười số không. Đây là thử thách mà mạng lưới bitcoin đặt ra cho máy(thợ) đào khi họ muốn gửi các khối dữ liệu lưu trữ các giao dịch mới.',// OK, that probably took you a lot longer. Now imagine finding a hash that starts with five or ten zeroes. This is the challenge that the bitcoin network poses to miners when they want to submit new blocks with transactions.
       paragraph_two:
-   'Máy (thợ) đào thu thập tất cả thông tin mà họ muốn đưa vào một khối dữ liệu ví dụ như tiêu đề được mã hóa của khối dữ liệu đứng trước, số mã hóa của các giao dịch được chứa trong khối (bao gồm cả giao dịch trên sàn coinbase), và kết hợp của mốc thời gian với một số ngẫu nhiên được gọi là nonce (số chỉ được sử dụng một lần). Sau đó gửi tất cả những dữ liệu này vào hàm mã hóa để tạo ra mã hóa khối.',  // Miners gather all the information they want to put in a block such as the previous block header hash, a hash of transactions to be included in block (including the coinbase transaction), time, and combine it with a random number called a nonce (number only used once). They send all of this into the hash function to create something called the block hash.
+         'Máy (thợ) đào thu thập tất cả thông tin mà họ muốn đưa vào một khối dữ liệu ví dụ như tiêu đề được mã hóa của khối dữ liệu đứng trước, số mã hóa của các giao dịch được chứa trong khối (bao gồm cả giao dịch trên sàn coinbase), và kết hợp của mốc thời gian với một số ngẫu nhiên được gọi là nonce (số chỉ được sử dụng một lần). Sau đó gửi tất cả những dữ liệu này vào hàm mã hóa để tạo ra mã hóa khối.',  // Miners gather all the information they want to put in a block such as the previous block header hash, a hash of transactions to be included in block (including the coinbase transaction), time, and combine it with a random number called a nonce (number only used once). They send all of this into the hash function to create something called the block hash.
       paragraph_three:
-   'Khi bitcoin mới ra đời, máy(thợ) đào sẽ sử dụng xoay vòng số nonce trong tiêu đề khối bằng cách tăng dữ liệu trong trường 32 bit lên 1. Nhưng khi các máy đào trở nên hiện đại và hiệu quả hơn, độ khó sẽ tăng lên. Độ khó chẳng mấy chốc sẽ trở nên quá cao, đến mức thông thường nó sẽ vắt kiệt tất cả các khả năng tìm thấy một số nonce độc nhất trong trường 32 bit bên dưới',  // When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data in the 32-bit field by 1. However, as miners become more powerful and efficient, the difficulty rises. Soon, it became so high that it was common to exhaust all possibilities for the 32-bit field without finding a single solution below the
+         'Khi bitcoin mới ra đời, máy(thợ) đào sẽ sử dụng xoay vòng số nonce trong tiêu đề khối bằng cách tăng dữ liệu trong trường 32 bit lên 1. Nhưng khi các máy đào trở nên hiện đại và hiệu quả hơn, độ khó sẽ tăng lên. Độ khó chẳng mấy chốc sẽ trở nên quá cao, đến mức thông thường nó sẽ vắt kiệt tất cả các khả năng tìm thấy một số nonce độc nhất trong trường 32 bit bên dưới',  // When bitcoin first launched, miners would cycle through the nonce in the block header by incrementing the data in the 32-bit field by 1. However, as miners become more powerful and efficient, the difficulty rises. Soon, it became so high that it was common to exhaust all possibilities for the 32-bit field without finding a single solution below the
       paragraph_four:
-   'Để giải quyết vấn đề này, máy(thợ) đào bắt đầu thay đổi các phần khác của tiêu đề khối, chẳng hạn như mốc thời gian hoặc các giao dịch được chứa trong khối.',  // To address this, miners started to change other parts of the block header, such as the time or transactions included in the block.
+         'Để giải quyết vấn đề này, máy(thợ) đào bắt đầu thay đổi các phần khác của tiêu đề khối, chẳng hạn như mốc thời gian hoặc các giao dịch được chứa trong khối.',  // To address this, miners started to change other parts of the block header, such as the time or transactions included in the block.
       paragraph_five:
-   'Mạng lưới bitcoin đã được cài đặt độ khó bên trong và chỉ chấp nhận các chuỗi số mã hóa khối bắt đầu bằng một lượng số không nhất định. Chúng ta gọi đây là “độ khó” và độ khó sẽ được điều chỉnh sau mỗi 2016 khối.', // The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.
+         'Mạng lưới bitcoin đã được cài đặt độ khó bên trong và chỉ chấp nhận các chuỗi số mã hóa khối bắt đầu bằng một lượng số không nhất định. Chúng ta gọi đây là “độ khó” và độ khó sẽ được điều chỉnh sau mỗi 2016 khối.', // The bitcoin network has a difficulty setting and only accepts block hashes that start with a certain number of zeroes. We call this the “difficulty” and it is adjusted every 2016 blocks.
       paragraph_six:
-   'Trong thử thách tiếp theo, hãy viết một lệnh (script) để tìm một số mã hóa bắt đầu bằng năm số không (00000).', // For the next challenge, write a script that finds a hash that starts with five zeroes (00000).
+         'Trong thử thách tiếp theo, hãy viết một lệnh (script) để tìm một số mã hóa bắt đầu bằng năm số không (00000).', // For the next challenge, write a script that finds a hash that starts with five zeroes (00000).
       tooltip_one: {
- question: 'Độ khó mục tiêu là gì?', // What is target difficulty?
- link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520is%2520target%2520difficulty%253F',
- highlighted: 'độ khó mục tiêu', // target difficulty
+       question: 'Độ khó mục tiêu là gì?', // What is target difficulty?
+       link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520is%2520target%2520difficulty%253F',
+       highlighted: 'độ khó mục tiêu', // target difficulty
       },
     },
 
