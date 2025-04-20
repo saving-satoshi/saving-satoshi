@@ -21,71 +21,102 @@ const translations = {
   },
   ///ABOUT PAGE
   about: {
-    title: 'Phần mở đầu', //About
-    mobile_title: 'Về nội dung', //What it’s about
+    title: 'Giới thiệu',
+    mobile_title: 'Tất cả về Saving Satoshi',
     subtitle:
- 'Đây là năm 2139. Đồng Bitcoin cuối cùng sẽ được khai thác(đào) khối trong hai tuần nữa. Nhiều tháng qua tại Quảng trường Satoshi, có một chiếc đồng hồ đếm ngược thời gian cho sự kiện này đã xuất hiện.', //The year is 2139. The last bitcoin is two weeks from being mined. For months, a clock has ticked down in Satoshi Square.
+      'Vào năm 2139. Đồng Bitcoin cuối cùng sẽ được khai thác(đào) khối trong hai tuần nữa. Nhiều tháng qua tại Quảng trường Satoshi, một chiếc đồng hồ đếm ngược thời gian đã xuất hiện cho sự kiện này.',
     intro:
- 'Cả thế giới đang chờ đợi phần thưởng cuối cùng này trong chuỗi khối dữ liệu Bitcoin. Bỗng nhiên, mạng lưới Bitcoin ngừng hoạt động.<br><br>Bạn nhận được một con mèo điện tử từ một người tự xưng là Satoshi Nakamoto. (Giống như bất kỳ holocat nào khác, nhưng con này có hình dạng như một con mèo). Bạn mở holocat bằng cách chạm nhẹ vào mũi của nó, tò mò muốn nghe nó nói gì...',  //The world awaits the last block. Then, suddenly, the network grinds to a halt.<br><br>You receive a holocat from someone using the name Satoshi Nakamoto. (It’s like any other e-hologram, but this one is shaped like a cat). You open the holocat by booping its nose curious to hear what it has to say...
-    
+      'Cả thế giới đang chờ đợi phần thưởng cuối cùng này trong chuỗi khối dữ liệu (Blockchain) Bitcoin. Bỗng nhiên, mạng lưới Bitcoin ngừng hoạt động.<br><br>Bạn nhận được một thư tín điện tử từ một người tự xưng là Satoshi Nakamoto. (Giống như bất kỳ hình ảnh ba chiều khác, nhưng hình ảnh này có hình dạng như một con mèo (holocat)). Bạn mở holocat bằng cách chạm nhẹ vào mũi của nó, tò mò muốn nghe nó nói gì.',
+
     project: {
- title: 'Được tạo ra bằng niềm vui và đam mê', //Built with fun
- paragraph_one:
-     'Saving Satoshi là một chương trình nhẹ nhàng dành cho các bạn tò mò về lập trình phát triển bitcoin lần đầu tiên. Saving Satoshi đưa ra các thử thách kết hợp giữa lý thuyết và kỹ thuật lập trình cho bất kỳ ai có kỹ năng lập trình cơ bản. Dự án này là mã nguồn mở (FOSS) và miễn phí; tất cả nghệ thuật trong dự án được tạo ra bằng các công cụ Ai như Midjourney từ nội dung câu chuyện này.',     //Saving Satoshi is a light-hearted first point of contact for coders who are curious about bitcoin development. Saving Satoshi has a mix of technical text and code-based challenges, but the challenges should be doable for anyone with basic coding skills. The project is free and open source (FOSS) and all the art has been generated using text-to-image tools like Midjourney.
- paragraph_two:
-     'Dự án (câu chuyện) này vẫn đang và liên tục được phát triển dựa theo phản hồi từ người dùng qua việc phát hành các chương mới trong Dự án (câu chuyện). Hiện tại có mười chương. Tuy nhiên, có thể thêm các chương mới khi dự án tiếp tục phát triển trong tương lai.',     //This project is in continuous development and takes an iterative approach to incorporate feedback as we release new chapters. There are currently ten chapters mapped out. However more may be added as the project continues to grow.
+      title: 'Bitcoin là nghiêm túc, nhưng học về nó không cần phải như vậy',
+      paragraph_one:
+        'Saving Satoshi là một trò chơi nhập vai nhẹ nhàng về công nghệ bitcoin. Nó kết hợp các thử thách sáng tạo, thú vị với cốt truyện và cơ chế trò chơi để tạo ra một điểm khởi đầu phù hợp cho các bạn tò mò về lập trình cho phát triển bitcoin.',
+      paragraph_two:
+        'Nó được xây dựng với niềm vui cho các lập trình viên tò mò và bất kỳ ai muốn tìm hiểu cách bitcoin <span className="italic">thực sự</span> hoạt động. Nó dành cho những người đã thấy được sự kỳ diệu của phần mềm với mã nguồn mở bitcoin (₿OSS) và đang tìm cách bắt đầu đóng góp.',
+      paragraph_three:
+        'Mỗi chương đều chứa đầy nội dung bài học dựa trên mã, mô phỏng và bài tập lập trình để làm cho việc học các chi tiết bí ẩn của công nghệ bitcoin trở nên thú vị hơn.',
+      paragraph_four:
+        'Với các ví dụ đơn giản, trực tiếp, người chơi xây dựng nền tảng vững chắc trước khi thêm vào sự phức tạp. Thông qua trải nghiệm người dùng nhập vai, hình ảnh phong phú và tương tác liền mạch, người học được đưa vào một hành trình qua nhiều chủ đề khác nhau bao gồm:',
+      chapter_topics: {
+        list_one: 'Tìm và giải mã thông điệp bí mật trong khối genesis',
+        list_two: 'Hàm băm và bằng chứng công việc',
+        list_three: 'Động lực của đào theo nhóm',
+        list_four:
+          'Cơ bản về mật mã đường cong elliptic và cách tạo địa chỉ từ cặp khóa công khai-riêng tư',
+        list_five: 'Ký và xác minh thông điệp ECDSA',
+        list_six: 'Xây dựng giao dịch từ đầu',
+        list_seven: 'Lắp ráp các giao dịch để tạo mẫu khối',
+        list_eight: 'Sử dụng Bitcoin Core RPC API và tính toán trợ cấp khối',
+        list_nine: 'Bitcoin Script',
+        list_ten: 'Cách mạng Lightning hoạt động',
+      },
+      paragraph_five:
+        'Nhưng không chỉ là về chương trình giảng dạy. Chúng tôi tin rằng giáo dục về bitcoin có thể sáng tạo và độc đáo như chính công nghệ. Đó là lý do tại sao trò chơi đề cập đến nhiều yếu tố hấp dẫn khác của bitcoin như văn hóa, lịch sử và thiết kế.',
+      paragraph_six:
+        'Đối với chúng tôi, bitcoin là một lực lượng tích cực trên thế giới. Dự án này được xây dựng bởi một nhóm đóng góp đam mê theo các tiêu chuẩn cao nhất, và nó hoàn toàn miễn phí và mã nguồn mở (FOSS). Để tìm hiểu thêm về cách Saving Satoshi được tạo ra, hãy xem <Link href="https://bitcoin.design/guide/case-studies/saving-satoshi" className="underline" target="_blank">nghiên cứu điển hình</Link> của chúng tôi trong Bitcoin Design Guide.',
+      paragraph_seven:
+        'Từ chơi trò chơi, đến tổ chức hội thảo, đến đóng góp mã, có nhiều cách để tham gia cộng đồng Saving Satoshi. Chúng tôi rất vui mừng được có bạn. Để liên hệ, hãy theo dõi <Link href="https://github.com/saving-satoshi/saving-satoshi" className="underline" target="_blank">Saving Satoshi trên GitHub</Link> và tham gia <Link href="https://discord.gg/eBGRaCSjg5" className="underline" target="_blank">kênh #saving-satoshi</Link> trên Bitcoin Design Community Discord.',
+      paragraph_eight:
+        'Bạn cũng có thể kết nối với chúng tôi trên <Link href="https://x.com/savingsatoshi" className="underline" target="_blank">X</Link>, <Link href="https://njump.me/npub1vy6wcgw6jhhtcmpawvlnsfx7g8qt8r40z7qlks9zwa4ed57vm5eqx527hr" className="underline" target="_blank">nostr</Link>, và <Link href="https://bsky.app/profile/bitcoindevs.bsky.social" className="underline" target="_blank">Bluesky</Link>. Chúng tôi rất thích nghe từ người dùng của mình!',
     },
 
-   contributing: {
-      title: 'Cách đóng góp',//How to contribute
+    contributing: {
+      title: 'Cách đóng góp',
       paragraph_one:
-   'Chương trình nàynày là một dự án mã nguồn mở, vì vậy chúng tôi rộng mở tất cả các cánh cửa để bạn có thể giúp định hình và phát triển dự án.',    //We’re an open-source project, so all doors are open for you to help shape it.
-      
-     feedback: {
- title: 'Phản hồi',//Feedback
- paragraph_one:
-     'Cách tuyệt vời nhất để đóng góp là trải nghiệm Chương 1 và cho chúng tôi ý kiến tổng thể về trải nghiệm của bạn <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer"> qua mẫu đơn này </a>.', //A great way to contribute is to go through Chapter 1 and give us any feedback on the overall experience you might have using <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">this form</a>.
+        'Chương trình này là một dự án mã nguồn mở, vì vậy chúng tôi rộng mở tất cả các cánh cửa để bạn có thể giúp định hình và phát triển dự án.',
+
+      feedback: {
+        title: 'Phản hồi',
+        paragraph_one:
+          'Cách tuyệt vời nhất để đóng góp là trải nghiệm Chương 1 và cho chúng tôi ý kiến tổng thể về trải nghiệm của bạn <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer"> qua mẫu đơn này </a>.',
       },
 
       contribute: {
- title: 'Đóng góp',//Contribute
- paragraph_one:
-     'Mọi đề xuất về bất cứ điều gì đều được hoan nghênh ví dụ như thay đổi nội dung hoặc cơ chế hoạt động. Chúng tôi luôn hoan nghênh những hỗ trợ đánh giá và <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">kiểm tra chất lượng (QA) các thay đổi trong mã lập trình</a>. Đối với các cải tiến về mã lập trình, bạn có thể trực tiếp gửi vấn đề hoặc yêu cầu lấy mã mới trên GitHub.', //All suggestions are welcome, including content changes, game mechanics – really anything. We are also always looking for help reviewing and <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">QA-ing code changes</a>. For code improvements, you can directly open an issue or submit a pull request on GitHub.
- paragraph_two:
-     'Nếu bạn muốn tham gia vào thiết kế, cốt truyện hoặc bất kỳ điều gì khác, hãy tham gia cùng chúng tôi trong kênh #saving-satoshi trên <a href="https://discord.gg/DC8Dys4G3h" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Cho biết bạn muốn đóng góp như thế nào và chúng tôi sẽ giúp bạn đi đúng hướng.', //If you want to get involved with design, story, or anything else, join us in the #saving-satoshi channel in the <a href="https://discord.gg/DC8Dys4G3h" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Mention how you’d like to contribute and we’ll help point you in the right direction.
+        title: 'Đóng góp',
+        paragraph_one:
+          'Mọi đề xuất về bất cứ điều gì đều được hoan nghênh ví dụ như thay đổi nội dung hoặc cơ chế hoạt động. Chúng tôi luôn hoan nghênh những hỗ trợ đánh giá và <a href="https://leaf-singer-0fc.notion.site/How-to-QA-5177e63f65a4406da01bc57d886b5ac2" target="_blank" rel="noreferrer">kiểm tra chất lượng (QA) các thay đổi trong mã lập trình</a>. Đối với các cải tiến về mã lập trình, bạn có thể trực tiếp gửi vấn đề hoặc yêu cầu lấy mã mới trên GitHub.',
+        paragraph_two:
+          'Nếu bạn muốn tham gia vào thiết kế, cốt truyện hoặc bất kỳ điều gì khác, hãy tham gia cùng chúng tôi trong kênh #saving-satoshi trên <a href="https://discord.gg/DC8Dys4G3h" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>. Cho biết bạn muốn đóng góp như thế nào và chúng tôi sẽ giúp bạn đi đúng hướng.',
       },
     },
 
-    contributors: {
-      title: 'Trải nghiệm vui vẻ nhé!', // Enjoy!
-      contributions_by: 'Những đóng góp bởi', // Contributions by
-      many_more:
-   'và <a href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" target="_blank" rel="noreferrer">nhiều người khác</a>.', // and many more
+    privacy: {
+      title: 'Cam kết bảo mật',
+      paragraph_one:
+        'Trong dự án Saving Satoshi, chúng tôi cam kết nghiêm ngặt quyền riêng tư và bảo mật của người tham gia. Chúng tôi tin vào sự minh bạch và mong muốn bạn hiểu cách thức và lý do tại sao các thông tin hoạt động khi sử dụng ứng dụng này được kiểm soát. Để đạt được điều này, chúng tôi sử dụng một công cụ có tên là<Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.',
+      sub_heading_one: 'Umami là gì?',
+      paragraph_two:
+        'Umami là một nền tảng phân tích mã nguồn mở giúp thu thập những thông tin cần thiết về cách bạn sử dụng ứng dụng của chúng tôi. Cho phép chúng tôi đưa ra các quyết định dựa trên dữ liệu và liên tục cải thiện ứng dụng để đáp ứng tốt hơn nhu cầu của bạn. Bạn có thể xem bảng điều khiển Umami <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">ở đây</Link>.',
+      sub_heading_two: 'Chúng tôi thu thập dữ liệu gì?',
+      paragraph_three:
+        'Hãy yên tâm, chúng tôi chỉ thu thập dữ liệu phi cá nhân và ẩn danh, chẳng hạn như:',
+      list_item_one_title: 'Cải thiện sản phẩm:',
+      list_item_one_text:
+        'Chúng tôi sử dụng dữ liệu để xác định các phần trong ứng dụng có thể được cải thiện hay không. Bằng cách hiểu người dùng sử dụng ứng dụng như thế nào, chúng tôi có thể làm cho nó hiệu quả, thân thiện với người dùng và an toàn hơn.',
+      list_item_two_title: 'Khả năng tương thích:',
+      list_item_two_text:
+        'Hiểu các thiết bị và nền tảng người dùng sử dụng cho phép chúng tôi tối ưu hóa ứng dụng với các cấu hình khác nhau, đảm bảo hoạt động liền mạch cho người dùng.',
+      sub_heading_three: 'Bảo mật quyền riêng tư của bạn rất quan trọng',
+      paragraph_four:
+        'Chúng tôi muốn nhấn mạnh rằng quyền riêng tư của bạn là vô cùng quan trọng đối với chúng tôi. Chúng tôi không thu thập bất kỳ thông tin nhận dạng cá nhân nào và dữ liệu chúng tôi thu thập chỉ được sử dụng cho mục đích cải thiện ứng dụng. Dữ liệu của bạn không bao giờ được chia sẻ hoặc bán cho bên thứ ba.',
+      paragraph_five:
+        'Nếu bạn có bất kỳ lo ngại hoặc câu hỏi nào về các hoạt động thu thập dữ liệu hoặc chính sách bảo mật của chúng tôi, xin đừng ngần ngại liên hệ với chúng tôi. Chúng tôi cam kết cung cấp cho bạn trải nghiệm an toàn và minh bạch khi sử dụng ứng dụng của chúng tôi.',
     },
 
-    satoshi_needs_you: 'Nhanh nào, Satoshi cần bạn.', // Now be quick, Satoshi needs you.
-    privacy: {
-      title: 'Cam kết bảo mật', // Our commitment to privacy
+    contributors: {
+      title: 'Chúc bạn trải nghiệm vui vẻ!',
       paragraph_one:
-   'Trong dự án Saving Satoshi, chúng tôi cam kết nghiêm ngặt quyền riêng tư và bảo mật của người tham gia. Chúng tôi tin vào sự minh bạch và mong muốn bạn hiểu cách thức và lý do tại sao các thông tin hoạt động khi sử dụng ứng dụng này được kiểm soát. Để đạt được điều này, chúng tôi sử dụng một công cụ có tên là<Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.',   // At Saving Satoshi, we are deeply committed to ensuring the privacy and security of our users. We believe in transparency and want you to understand how and why we track app usage. To achieve this, we use a powerful tool called <Link href="https://umami.is/" className="underline" target="_blank">Umami</Link>.
-      sub_heading_one: 'Umami là gì?', // What is Umami?
+        'Saving Satoshi sẽ không thể thực hiện được nếu không có nhiều người đã cùng nhau xây dựng nó trong những năm qua. Cần cả một ngôi làng!',
       paragraph_two:
-   'Umami là một nền tảng phân tích mã nguồn mở giúp thu thập những thông tin cần thiết về cách bạn sử dụng ứng dụng của chúng tôi. Cho phép chúng tôi đưa ra các quyết định dựa trên dữ liệu và liên tục cải thiện ứng dụng để đáp ứng tốt hơn nhu cầu của bạn. Bạn có thể xem bảng điều khiển Umami <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">ở đây</Link>.',   // Umami is an open-source analytics platform that helps us gather essential insights about how you use our app. It allows us to make data-driven decisions and continuously enhance our product to better meet your needs. You can view the Umami dashboard <Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">here</Link>.
-      sub_heading_two: 'Chúng tôi thu thập dữ liệu gì?', // What Data Do We Collect?
+        'Nhóm cốt lõi bao gồm <Link href="https://adamjonas.com/" className="underline" target="_blank">Adam Jonas</Link>, <Link href="https://www.germanysbestkeptsecret.com/" className="underline" target="_blank">Christoph Ono</Link> (trưởng nhóm thiết kế), <Link href="https://satsie.dev/" className="underline" target="_blank">Satsie</Link>, <Link href="https://github.com/benalleng" className="underline" target="_blank">BenAllenG</Link> (trưởng nhóm kỹ thuật), <Link href="https://github.com/pinheadmz" className="underline" target="_blank">Matthew Zipkin</Link> (trưởng nhóm nội dung bài học), <Link href="https://x.com/TuedonTuoyo" className="underline" target="_blank">Tuedon Tuoyo</Link>, <Link href="https://www.artassoiants.com/" className="underline" target="_blank">Art Assoiants</Link> (quản lý sản phẩm), và 4 con mèo bí ẩn mà <Link href="https://spiral.xyz/" className="underline" target="_blank">Spiral</Link> cho chúng tôi mượn để viết câu chuyện.',
       paragraph_three:
-   'Bạn hãy yên tâm, chúng tôi chỉ thu thập dữ liệu phi cá nhân và ẩn danh, chẳng hạn như:',   // Rest assured, we only collect non-personal and anonymized data, such as:
-      list_item_one_title: 'Cải tiến sản phẩm:', // Product Improvement:
-      list_item_one_text:
-   'Chúng tôi sử dụng dữ liệu để xác định các phần trong ứng dụng có thể được cải thiện hay không. Bằng cách hiểu người dùng sử dụng ứng dụng như thế nào, chúng tôi có thể làm cho nó hiệu quả, thân thiện với người dùng và an toàn hơn.',   // We use the data to identify areas where our app can be improved. By understanding how you use our app, we can make it more efficient, user-friendly, and secure.
-      list_item_two_title: 'Khả năng tương thích:', // Compatibility:
-      list_item_two_text:
-   'Hiểu các thiết bị và nền tảng người dùng sử dụng cho phép chúng tôi tối ưu hóa ứng dụng với các cấu hình khác nhau, đảm bảo hoạt động liền mạch cho người dùng.',   // Understanding the devices and platforms you use allows us to optimize our app for various configurations, ensuring it works seamlessly for you.
-      sub_heading_three: 'Bảo mật quyền riêng tư của bạn rất quan trọng', // Your Privacy Matters
+        'Chúng tôi cũng đã có một số người đóng góp đóng vai trò quan trọng tại các thời điểm khác nhau. Điều này bao gồm, nhưng không giới hạn, <Link href="https://x.com/ecurrencyhodler" className="underline" target="_blank">ecurrencyhodler</Link>, <Link href="https://www.jtwoodhouse.com/" className="underline" target="_blank">JT Woodhouse</Link>, <Link href="https://x.com/_Jsms_" className="underline" target="_blank">JSMS</Link>, <Link href="https://github.com/afterburn" className="underline" target="_blank">Kevin Karsopawiro</Link>, <Link href="https://github.com/daviroo" className="underline" target="_blank">daviroo</Link>, <Link href="https://github.com/nully0x" className="underline" target="_blank">nully0x</Link>, <Link href="https://github.com/vinayaksh42" className="underline" target="_blank">Vinayak Sharma</Link>, <Link href="https://github.com/shaavan" className="underline" target="_blank">Shashwat Vangani</Link>, <Link href="https://github.com/aureleoules" className="underline" target="_blank">Aurèle Oulès</Link>, và <Link href="https://github.com/sabakhilji" className="underline" target="_blank">sabakhilji</Link>.',
       paragraph_four:
-   'Chúng tôi muốn nhấn mạnh rằng quyền riêng tư của bạn là vô cùng quan trọng đối với chúng tôi. Chúng tôi không thu thập bất kỳ thông tin nhận dạng cá nhân nào và dữ liệu chúng tôi thu thập chỉ được sử dụng cho mục đích cải thiện ứng dụng. Dữ liệu của bạn không bao giờ được chia sẻ hoặc bán cho bên thứ ba.',   // We want to emphasize that your privacy is of utmost importance to us. We do not collect any personally identifiable information, and the data we gather is used solely for the purpose of improving our app. Your data is never shared or sold to third parties.
-      paragraph_five:
-   "Nếu bạn có bất kỳ lo ngại hoặc câu hỏi nào về các hoạt động thu thập dữ liệu hoặc chính sách bảo mật của chúng tôi, xin đừng ngần ngại liên hệ với chúng tôi. Chúng tôi cam kết cung cấp cho bạn trải nghiệm an toàn và minh bạch khi sử dụng ứng dụng của chúng tôi.",
- },
+        'Danh sách đầy đủ các người đóng góp mã có thể được tìm thấy trên <Link href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" className="underline" target="_blank">GitHub</Link>.',
+    },
+
+    satoshi_needs_you: 'Nhanh lên, Satoshi cần bạn.',
       },
 
   ///CHAPTERS TITLE PAGE
