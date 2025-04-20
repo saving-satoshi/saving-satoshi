@@ -439,22 +439,22 @@ const translations = {
       title: 'Tự động hóa', // Automation
       nav_title: 'Tạo lệnh mã hóa', // Build a hash function
       paragraph_one:
-   'Bây giờ, đã đến lúc viết và chạy các lệnh mã của bạn. Viết một lệnh (script) tạo ra một chuỗi số mã hóa sha256 bắt đầu bằng năm số không ("00000..."). Lệnh của bạn nên có vòng lặp trong việc gọi hàm mã hóa sha256 cho các đầu vào khác nhau cho đến khi đầu ra đáp ứng yêu cầu. Bạn nên thử tăng một số nguyên trong một vòng lặp để có được các đầu vào khác nhau. Trong mật mã học, số này có thể được gọi là "nonce" hoặc "số chỉ được sử dụng một lần".',      // Alright, time to write and run your own code. Write a script that generates a sha256 hash that begins with five zeroes ("00000..."). Your code should repeatedly call the sha256 function with different inputs until the output satisfies this requirement. You should try incrementing an integer inside a loop to get different inputs. In cryptography this number may referred to as a "nonce" or "number used once".
+         'Bây giờ, đã đến lúc viết và chạy các lệnh mã của bạn. Viết một lệnh (script) tạo ra một chuỗi số mã hóa sha256 bắt đầu bằng năm số không ("00000..."). Lệnh của bạn nên có vòng lặp trong việc gọi hàm mã hóa sha256 cho các đầu vào khác nhau cho đến khi đầu ra đáp ứng yêu cầu. Bạn nên thử tăng một số nguyên trong một vòng lặp để có được các đầu vào khác nhau. Trong mật mã học, số này có thể được gọi là "nonce" hoặc "số chỉ được sử dụng một lần".',      // Alright, time to write and run your own code. Write a script that generates a sha256 hash that begins with five zeroes ("00000..."). Your code should repeatedly call the sha256 function with different inputs until the output satisfies this requirement. You should try incrementing an integer inside a loop to get different inputs. In cryptography this number may referred to as a "nonce" or "number used once".
       python: {
- paragraph_two:
-   'Khi bạn tìm thấy một nonce với chuỗi mã hóa bắt đầu bằng năm số không, sau đó dùng lệnh để trả về nonce. Chúng ta sử dụng thư viện hashlib trong python để giúp tạo hàm này, bạn có thể sử dụng các tài nguyên khác bên ngoài sau để giúp viết lệnh này nếu cần:', // When you find a nonce with a hash that begins with five zeroes, return the nonce from the function. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:
- list_one:
-   '<Link href="https://docs.python.org/3/library/hashlib.html" target="_blank" className="underline">hashlib documentation</Link>',
- list_two:
-   '<Link href="https://datagy.io/python-sha256/" target="_blank" className="underline">Tutorial python function</Link>',
+       paragraph_two:
+         'Khi bạn tìm thấy một nonce với chuỗi mã hóa bắt đầu bằng năm số không, sau đó dùng lệnh để trả về nonce. Chúng ta sử dụng thư viện hashlib trong python để giúp tạo hàm này, bạn có thể sử dụng các tài nguyên khác bên ngoài sau để giúp viết lệnh này nếu cần:', // When you find a nonce with a hash that begins with five zeroes, return the nonce from the function. We are using the hashlib library in python to help you along in creating this function, you can use the following external resources to help you write this function if needed:
+       list_one:
+         '<Link href="https://docs.python.org/3/library/hashlib.html" target="_blank" className="underline">hashlib documentation</Link>',
+       list_two:
+         '<Link href="https://datagy.io/python-sha256/" target="_blank" className="underline">Tutorial python function</Link>',
       },
       javascript: {
- paragraph_two:
-   'Khi bạn tìm thấy một nonce với chuỗi mã hóa bắt đầu bằng năm số không, dùng lệnh để trả về nonce đó. Chúng ta sử dụng thư viện crypto trong JavaScript để giúp bạn tạo hàm này, bạn có thể sử dụng các tài nguyên khác bên ngoài sau để giúp viết lệnh này nếu cần:',  // When you find a nonce with a hash that begins with five zeroes, return the nonce from the function. We are using the crypto library in JavaScript to help you along in creating this function, you can use the following external resources to help you write this function if needed:
- list_one:
-   '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" target="_blank" className="underline">crypto documentation</Link>',
- list_two:
-   '<Link href="https://www.educative.io/answers/what-is-node-cryptocreatehashalgorithm-options" target="_blank" className="underline">Tutorial JavaScript function</Link>',
+       paragraph_two:
+         'Khi bạn tìm thấy một nonce với chuỗi mã hóa bắt đầu bằng năm số không, dùng lệnh để trả về nonce đó. Chúng ta sử dụng thư viện crypto trong JavaScript để giúp bạn tạo hàm này, bạn có thể sử dụng các tài nguyên khác bên ngoài sau để giúp viết lệnh này nếu cần:',  // When you find a nonce with a hash that begins with five zeroes, return the nonce from the function. We are using the crypto library in JavaScript to help you along in creating this function, you can use the following external resources to help you write this function if needed:
+       list_one:
+         '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" target="_blank" className="underline">crypto documentation</Link>',
+       list_two:
+         '<Link href="https://www.educative.io/answers/what-is-node-cryptocreatehashalgorithm-options" target="_blank" className="underline">Tutorial JavaScript function</Link>',
       },
     },
 
@@ -467,33 +467,33 @@ const translations = {
       heading_four: 'Hãy đào 100 khối', // Let’s get to 100 blocks
       heading_five: 'Bạn đã làm được rồi đó!', // You did it!
       paragraph_one:
-   'Hiện tại, mạng lưới bitcoin yêu cầu các khối phải có mã hóa với mười số không hàng đầu. Hãy bắt đầu thôi!', // Right now, the bitcoin network requires blocks to have a hash with ten leading zeroes. Let’s get to it!
+         'Hiện tại, mạng lưới bitcoin yêu cầu các khối phải có mã hóa với mười số không hàng đầu. Hãy bắt đầu thôi!', // Right now, the bitcoin network requires blocks to have a hash with ten leading zeroes. Let’s get to it!
       paragraph_two:
-   'Đối với mô phỏng đơn giản này, chúng ta sẽ giả sử rằng mỗi khối chứa 3.500 giao dịch, có tiền thưởng (0,061 BTC) và phí giao dịch.', // For this simple simulation, we’ll just assume that every block contains 3,500 transactions and 0.061 BTC in rewards and fees.
+         'Đối với mô phỏng đơn giản này, chúng ta sẽ giả sử rằng mỗi khối chứa 3.500 giao dịch, có tiền thưởng (0,061 BTC) và phí giao dịch.', // For this simple simulation, we’ll just assume that every block contains 3,500 transactions and 0.061 BTC in rewards and fees.
       paragraph_two_one: 'Xem bạn có thể khởi động được các máy đào không.', // See if you can turn on the miners.
       paragraph_three:
-   'Vòng lặp tính toán các chuỗi số mã hóa mà bạn đã viết lệnh mã hóa ở bài học trước đang thực thi.', // The code you wrote in the previous lesson to compute hashes over and over again is running.
+         'Vòng lặp tính toán các chuỗi số mã hóa mà bạn đã viết lệnh mã hóa ở bài học trước đang thực thi.', // The code you wrote in the previous lesson to compute hashes over and over again is running.
       paragraph_four:
-   'Nó sẽ dừng lại khi tìm thấy một số mã hóa có mười số không hàng đầu.', // It will stop once it’s found a hash with ten leading zeroes.
+         'Nó sẽ dừng lại khi tìm thấy một số mã hóa có mười số không hàng đầu.', // It will stop once it’s found a hash with ten leading zeroes.
       paragraph_five:
-   'Thấy trường nonce tăng dần không? Đó là số lượng chuỗi số mã hóa mà bạn đã thử cho đến giờ!', // See the nonce field incrementing? That’s how many hashes you have tried so far!
+         'Thấy trường nonce tăng dần không? Đó là số lượng chuỗi số mã hóa mà bạn đã thử cho đến giờ!', // See the nonce field incrementing? That’s how many hashes you have tried so far!
       paragraph_six: 'Với nonce sau:', // With the following nonce:
       paragraph_seven: 'Kết quả chuỗi mã hóa là:', // The resulting hash is:
       paragraph_eight:
-   'Nó có mười số không hàng đầu thỏa yêu cầu để tạo các khối mới. Hãy khai thác(đào) khối thêm vài khối nữa.',  // It has the ten leading zeros that all new blocks require. Let’s mine a few more blocks.
+         'Nó có mười số không hàng đầu thỏa yêu cầu để tạo các khối mới. Hãy khai thác(đào) khối thêm vài khối nữa.',  // It has the ten leading zeros that all new blocks require. Let’s mine a few more blocks.
       paragraph_eight_one: 'Khởi động lại các máy đào.', // Turn the miners back on.
       paragraph_nine:
-   'Có thể mất thêm chút thời gian. Nhưng việc này cho bạn thấy việc khai thác(đào) khối dữ liệu và xác nhận giao dịch khó như thế nào.', // This might take some time. But this shows you how hard it is to mine blocks and confirm transactions.
+         'Có thể mất thêm chút thời gian. Nhưng việc này cho bạn thấy việc khai thác(đào) khối dữ liệu và xác nhận giao dịch khó như thế nào.', // This might take some time. But this shows you how hard it is to mine blocks and confirm transactions.
       paragraph_ten:
-   'Wow! Điều đó đã tiêu tốn khá nhiều sức mạnh tính toán để thực hiện tất cả các phép mã hóa đó. Chỉ cần nhìn vào số lượng nonce đã thử! Nó thực sự hữu ích khi có sự gia tăng sức mạnh mã hóa tức là số lượng mã hóa mà máy tính của bạn có thể thử trong một giây.', // Wow! That took quite a bit of computing power to do all that hashing. Just look how many nonces were tried! It really helped to have that boost in hash power i.e. the number of hashes your computer can try in a second.
+         'Wow! Điều đó đã tiêu tốn khá nhiều sức mạnh tính toán để thực hiện tất cả các phép mã hóa đó. Chỉ cần nhìn vào số lượng nonce đã thử! Nó thực sự hữu ích khi có sự gia tăng sức mạnh mã hóa tức là số lượng mã hóa mà máy tính của bạn có thể thử trong một giây.', // Wow! That took quite a bit of computing power to do all that hashing. Just look how many nonces were tried! It really helped to have that boost in hash power i.e. the number of hashes your computer can try in a second.
       paragraph_eleven:
-   'Theo dự đoán, vì mỗi khối chứa 3.500 giao dịch nên tổng cộng 350.000 giao dịch đã được xác nhận bởi 100 khối đã khai thác(đào) khối.', // As expected, since each block contains 3,500 transactions, a total of 350,000 transactions have been confirmed by the 100 blocks that were mined.
+         'Theo dự đoán, vì mỗi khối chứa 3.500 giao dịch nên tổng cộng 350.000 giao dịch đã được xác nhận bởi 100 khối đã khai thác(đào) khối.', // As expected, since each block contains 3,500 transactions, a total of 350,000 transactions have been confirmed by the 100 blocks that were mined.
       paragraph_twelve:
-   'Và bạn đã thu được một phần thưởng đáng kể cho việc khai thác(đào) khối các khối này! Ngoài phần thưởng, số lượng bitcoin mà mạng lưới thưởng cho mỗi khối, bạn cũng đã có thêm thu nhập dưới dạng phí giao dịch.', // And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. 
+         'Và bạn đã thu được một phần thưởng đáng kể cho việc khai thác(đào) khối các khối này! Ngoài phần thưởng, số lượng bitcoin mà mạng lưới thưởng cho mỗi khối, bạn cũng đã có thêm thu nhập dưới dạng phí giao dịch.', // And it looks like you’ve collected a nice reward for all this mining! In addition to the block subsidy, the amount of bitcoin the network rewards for each block, you’ve also been able to collect additional income in the form of transaction fees. 
       paragraph_thirteen:
-   'Nhưng nhớ rằng, đây chỉ là một mô phỏng, nên trung bình mỗi khối được tạo và được xác nhận cho là mất 10 phút.', // Remember, this was just a simulation, each block is supposed to take 10 minutes on average.
+         'Nhưng nhớ rằng, đây chỉ là một mô phỏng, nên trung bình mỗi khối được tạo và được xác nhận cho là mất 10 phút.', // Remember, this was just a simulation, each block is supposed to take 10 minutes on average.
       paragraph_fourteen:
-   'Bên cạnh đó, nếu thực sự khai thác(đào) khối trên mạng lưới chính (mainnet) hiện tại, sẽ cần sức mạnh tính toán lớn hơn với cấp số nhân để khai thác(đào) khối các khối này.', // Also, if we were really mining on the current mainnet it would take many orders of magnitude more computing power to mine these blocks.
+         'Bên cạnh đó, nếu thực sự khai thác(đào) khối trên mạng lưới chính (mainnet) hiện tại, sẽ cần sức mạnh tính toán lớn hơn với cấp số nhân để khai thác(đào) khối các khối này.', // Also, if we were really mining on the current mainnet it would take many orders of magnitude more computing power to mine these blocks.
       progress_bar_title: 'Các khối đã tìm được', // Blocks found
       progress_bar_one: 'Nonce', // Nonce
       progress_bar_two: 'Các số mã hóa mỗi giây', // Hashes per second
@@ -507,82 +507,82 @@ const translations = {
       nav_title: 'Chương hoàn thành', // Chapter complete
       heading: 'Tuyệt vời!', // Great Job!
       paragraph_one:
-   'Những chiếc máy hoạt động ầm ĩ. Mọi thứ dường như đang hoạt động lại. Một bản đồ xuất hiện trên màn hình cũ kỹ cho thấy vị trí của các nhà kho khác chứa đầy các thiết bị khai thác(đào) khối của gia đình Vanderpoole cũ đã được đưa trực tuyến trên toàn thế giới. Có vẻ như chúng đã được kích hoạt khi bạn hoàn thành thử thách khai thác(đào) khối!',  // The machines roar to life. Everything seems to be working. A map appears on the old monitor that shows the locations of other warehouses filled with old Vanderpoole family mining devices that have come online across the world. Looks like they were activated when you completed the mining challenge!
+         'Những chiếc máy hoạt động ầm ĩ. Mọi thứ dường như đang hoạt động lại. Một bản đồ xuất hiện trên màn hình cũ kỹ cho thấy vị trí của các nhà kho khác chứa đầy các thiết bị khai thác(đào) khối của gia đình Vanderpoole cũ đã được đưa trực tuyến trên toàn thế giới. Có vẻ như chúng đã được kích hoạt khi bạn hoàn thành thử thách khai thác(đào) khối!',  // The machines roar to life. Everything seems to be working. A map appears on the old monitor that shows the locations of other warehouses filled with old Vanderpoole family mining devices that have come online across the world. Looks like they were activated when you completed the mining challenge!
       paragraph_two:
-   '—HOLOCAT: “Nhìn kìa, có tin nhắn.”', // —HOLOCAT: “Look, there’s a message.”
+         '—HOLOCAT: “Nhìn kìa, có tin nhắn.”', // —HOLOCAT: “Look, there’s a message.”
       paragraph_three:
-   '“Làm tốt lắm. Việc này sẽ giúp bitcoin trở lại quy trình một khối mỗi mười phút.” – Satoshi Nakamoto', // “Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto
+         '“Làm tốt lắm. Việc này sẽ giúp bitcoin trở lại quy trình một khối mỗi mười phút.” – Satoshi Nakamoto', // “Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto
       paragraph_four: 'Lại là ông ta?', // Him again?
     },
     resources: {
       hashing_two: {
- hash_functions_heading: 'Hàm mã hóa', // Hash Functions
- hash_functions_paragraph:
-     'Hàm mã hóa là một lệnh mã hóa bất kỳ được sử dụng để chuyển đổi chuỗi dữ liệu có kích thước tùy ý thành chuỗi giá trị có kích thước cố định. Các kết quả được trả về bởi hàm mã hóa được gọi là giá trị mã hóa, (chuỗi) số mã hóa, hay đơn giản là mã hóa. Các số mã hóa thường được sử dụng để lập chỉ mục cho một bảng có kích thước cố định được gọi là bảng mã hóa. Việc sử dụng hàm mã hóa để lập chỉ mục cho bảng mã hóa được gọi là quy trình mã hóa hoặc quy định địa chỉ lưu trữ phân tán.',  // A hash function is any function that can be used to map data of arbitrary size to fixed-size values. The values returned by a hash function are called hash values, hash codes, digests, or simply hashes. The values are usually used to index a fixed-size table called a hash table. Use of a hash function to index a hash table is called hashing or scatter storage addressing.
- tip: 'Cứ tiếp tục nhập! Vì thuật toán SHA-256 sẽ chuyển đổi bất kỳ dữ liệu đầu vào mới để tạo ra một số mã hóa hoàn toàn ngẫu nhiên ngay cả khi các dữ liệu đầu vào rất giống nhau',  // Just keep typing! Because of the SHA-256 algorithm any new input will result in a completely random hash even if the inputs are very similar
- spoiler: 'Thử nhập chuỗi có 8 ký tự.', // Try something with 8 characters.
+       hash_functions_heading: 'Hàm mã hóa', // Hash Functions
+       hash_functions_paragraph:
+           'Hàm mã hóa là một lệnh mã hóa bất kỳ được sử dụng để chuyển đổi chuỗi dữ liệu có kích thước tùy ý thành chuỗi giá trị có kích thước cố định. Các kết quả được trả về bởi hàm mã hóa được gọi là giá trị mã hóa, (chuỗi) số mã hóa, hay đơn giản là mã hóa. Các số mã hóa thường được sử dụng để lập chỉ mục cho một bảng có kích thước cố định được gọi là bảng mã hóa. Việc sử dụng hàm mã hóa để lập chỉ mục cho bảng mã hóa được gọi là quy trình mã hóa hoặc quy định địa chỉ lưu trữ phân tán.',  // A hash function is any function that can be used to map data of arbitrary size to fixed-size values. The values returned by a hash function are called hash values, hash codes, digests, or simply hashes. The values are usually used to index a fixed-size table called a hash table. Use of a hash function to index a hash table is called hashing or scatter storage addressing.
+       tip: 'Cứ tiếp tục nhập! Vì thuật toán SHA-256 sẽ chuyển đổi bất kỳ dữ liệu đầu vào mới để tạo ra một số mã hóa hoàn toàn ngẫu nhiên ngay cả khi các dữ liệu đầu vào rất giống nhau',  // Just keep typing! Because of the SHA-256 algorithm any new input will result in a completely random hash even if the inputs are very similar
+       spoiler: 'Thử nhập chuỗi có 8 ký tự.', // Try something with 8 characters.
       },
       hashing_four: {
- power_of_random_heading: 'Sức mạnh ngẫu nhiên', // The Power of Random
- power_of_random_paragraph:
-     "Giống như một sự kiện ngẫu nhiên hoàn toàn, về mặt xác suất, hàm mã hóa SHA-256 sẽ cho ra một giá trị hoàn toàn ngẫu nhiên đối với mỗi lần cung cấp dữ liệu đầu vào mới. Nếu bạn mã hóa cuốn tiểu thuyết 'Chiến tranh và Hòa bình', sau đó chỉ cần thêm một chữ cái nữa vào văn bản gốc, nó sẽ tạo ra một số mã hóa hoàn toàn khác. Mỗi ký tự mới thay đổi mã hóa theo một cách hoàn toàn ngẫu nhiên. Vậy với 16 ký tự có thể có trong hệ thập lục phân (0-9 và a-f), khả năng tìm thấy một số mã hóa bắt đầu bằng '0' là bao nhiêu?", // Like a perfectly random scenario, probability-wise the SHA-256 hash function is completely random for each addition of new data. If you hashed the novel 'War and Peace', then added just one extra letter to the original text, it would result in a completely different hash. Each new character changes the hash in a completely random manner. Considering that there are 16 possible characters in a hexadecimal system (0-9 and a-f), how likely is it to find a hash starting with '0'?
- tip: "Bạn tính ra không? Dựa trên 16 ký tự có thể có cho mỗi chữ số, bạn nghĩ khả năng tìm thấy một số mã hóa bắt đầu bằng '00' là bao nhiêu? Còn '000' thì sao?",  // Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with '00' is? How about '000'?
- spoiler: "Thử nhập thứ gì đó bắt đầu bằng chữ cái 's'.", // Try something starting with the letter 's'.
+       power_of_random_heading: 'Sức mạnh ngẫu nhiên', // The Power of Random
+       power_of_random_paragraph:
+           "Giống như một sự kiện ngẫu nhiên hoàn toàn, về mặt xác suất, hàm mã hóa SHA-256 sẽ cho ra một giá trị hoàn toàn ngẫu nhiên đối với mỗi lần cung cấp dữ liệu đầu vào mới. Nếu bạn mã hóa cuốn tiểu thuyết 'Chiến tranh và Hòa bình', sau đó chỉ cần thêm một chữ cái nữa vào văn bản gốc, nó sẽ tạo ra một số mã hóa hoàn toàn khác. Mỗi ký tự mới thay đổi mã hóa theo một cách hoàn toàn ngẫu nhiên. Vậy với 16 ký tự có thể có trong hệ thập lục phân (0-9 và a-f), khả năng tìm thấy một số mã hóa bắt đầu bằng '0' là bao nhiêu?", // Like a perfectly random scenario, probability-wise the SHA-256 hash function is completely random for each addition of new data. If you hashed the novel 'War and Peace', then added just one extra letter to the original text, it would result in a completely different hash. Each new character changes the hash in a completely random manner. Considering that there are 16 possible characters in a hexadecimal system (0-9 and a-f), how likely is it to find a hash starting with '0'?
+       tip: "Bạn tính ra không? Dựa trên 16 ký tự có thể có cho mỗi chữ số, bạn nghĩ khả năng tìm thấy một số mã hóa bắt đầu bằng '00' là bao nhiêu? Còn '000' thì sao?",  // Can you do the math? Based on 16 possible characters per digit, what do you think the likelihood of finding a hash starting with '00' is? How about '000'?
+       spoiler: "Thử nhập thứ gì đó bắt đầu bằng chữ cái 's'.", // Try something starting with the letter 's'.
       },
       hashing_six: {
- collision_resistance_heading: 'SHA256 và khả năng chống lặp dữ liệu', // SHA256 and collision resistance
- collision_resistance_paragraph:
-     "SHA-256 trả về một giá trị mã hóa 256 bit (64 ký tự), là một biểu diễn duy nhất của dữ liệu đầu vào. Nó thuộc họ các hàm mã hóa dựa trên cấu trúc Merkle–Damgård, một phương pháp để xây dựng các hàm mã hóa từ các hàm nén đơn giản hơn. Trong cấu trúc này, thông điệp đầu vào được chia thành các khối có kích thước cố định và một cơ chế liên kết tuần hoàn xử lý các khối này, kết hợp đầu ra của mỗi khối với kết quả của khối trước đó. Quá trình này tiếp tục cho đến khi toàn bộ thông điệp được xử lý, tạo ra giá trị mã hóa cuối cùng. Các thuộc tính bảo mật cao và khả năng kháng cự của SHA-256 trở thành nền móng của tính toàn vẹn dữ liệu và tính xác thực trong mật mã học hiện đại.",  // SHA-256 returns a 256-bit (64-characters) hash value, which is a unique representation of the input data. It belongs to the family of hash functions based on the Merkle–Damgård construction, a method for building hash functions from simpler compression functions. In this construction, the input message is divided into fixed-size blocks, and a chaining mechanism iteratively processes these blocks, combining each block's output with the result of the previous block. This process continues until the entire message is processed, producing the final hash value. SHA-256's robust security properties and collision resistance make it a cornerstone of data integrity and authentication in modern cryptography.
- tip: 'Không có gợi ý trong bài học này, từ nay khi bạn tiếp tục chương trình Saving Satoshi, chúng tôi sẽ ít hỗ trợ hơn để bạn tự tìm ra giải pháp cho vấn đề trong bài học.', // No real tips in this lesson, as you continue in Saving Satoshi we will hold your hand less and less and let you find the solution on your own.
- spoiler:
-     "Biết là mỗi ký tự mới sẽ tính toán lại và cho một số mã hóa hoàn toàn ngẫu nhiên, bạn có thể tiếp tục thêm các ký tự mới cho đến khi bạn bắt đầu bằng '00' hoặc nhiều hơn ... hoặc thử từ 'trigonometry'.", // Knowing that each new character recalculates a completely random hash you could keep adding new characters until you start with '00' or more... or try the word trigonometry.
+       collision_resistance_heading: 'SHA256 và khả năng chống lặp dữ liệu', // SHA256 and collision resistance
+       collision_resistance_paragraph:
+           "SHA-256 trả về một giá trị mã hóa 256 bit (64 ký tự), là một biểu diễn duy nhất của dữ liệu đầu vào. Nó thuộc họ các hàm mã hóa dựa trên cấu trúc Merkle–Damgård, một phương pháp để xây dựng các hàm mã hóa từ các hàm nén đơn giản hơn. Trong cấu trúc này, thông điệp đầu vào được chia thành các khối có kích thước cố định và một cơ chế liên kết tuần hoàn xử lý các khối này, kết hợp đầu ra của mỗi khối với kết quả của khối trước đó. Quá trình này tiếp tục cho đến khi toàn bộ thông điệp được xử lý, tạo ra giá trị mã hóa cuối cùng. Các thuộc tính bảo mật cao và khả năng kháng cự của SHA-256 trở thành nền móng của tính toàn vẹn dữ liệu và tính xác thực trong mật mã học hiện đại.",  // SHA-256 returns a 256-bit (64-characters) hash value, which is a unique representation of the input data. It belongs to the family of hash functions based on the Merkle–Damgård construction, a method for building hash functions from simpler compression functions. In this construction, the input message is divided into fixed-size blocks, and a chaining mechanism iteratively processes these blocks, combining each block's output with the result of the previous block. This process continues until the entire message is processed, producing the final hash value. SHA-256's robust security properties and collision resistance make it a cornerstone of data integrity and authentication in modern cryptography.
+       tip: 'Không có gợi ý trong bài học này, từ nay khi bạn tiếp tục chương trình Saving Satoshi, chúng tôi sẽ ít hỗ trợ hơn để bạn tự tìm ra giải pháp cho vấn đề trong bài học.', // No real tips in this lesson, as you continue in Saving Satoshi we will hold your hand less and less and let you find the solution on your own.
+       spoiler:
+           "Biết là mỗi ký tự mới sẽ tính toán lại và cho một số mã hóa hoàn toàn ngẫu nhiên, bạn có thể tiếp tục thêm các ký tự mới cho đến khi bạn bắt đầu bằng '00' hoặc nhiều hơn ... hoặc thử từ 'trigonometry'.", // Knowing that each new character recalculates a completely random hash you could keep adding new characters until you start with '00' or more... or try the word trigonometry.
       },
       scripting_one: {
- hash_libraries_heading: 'Thư viện mã hóa', // Hash Libraries
- hash_libraries_paragraph:
-     'Thư viện crypto trong Node.js và thư viện hashlib trong python là các thư viện mã hóa thực hiện các thuật toán mà chúng ta sẽ sử dụng để tạo thành các công cụ hữu ích cho lập trình viên. Các thư viện này đã được kiểm tra kỹ lưỡng để đảm bảo độ chính xác và bảo mật vì nhiều người dựa vào chúng để bảo mật các hệ thống có giá trị và quan trọng.',  // The crypto library in Node.js and the hashlib library in python are the code libraries that implement the algorithms we will use into useful tools for developers. These libraries are thoroughly vetted to ensure their accuracy and security as many people rely on them to secure valuable and important systems.
- nonce_heading: 'Nonce', // Nonce
- nonce_paragraph:
-     "Nonce, viết tắt của (số chỉ được sử dụng một lần) là một số ngẫu nhiên hoặc bán ngẫu nhiên được sử dụng trong các quy trình mã hóa và tính toán khác nhau. Mục đích chính của nó là giới thiệu thuộc tính không thể đoán trước và đảm bảo rằng một hoạt động hay tính toán cụ thể không thể dễ dàng lặp lại hoặc dễ dàng dự đoán. Nonce rất quan trọng đối với việc bảo mật trong quy trình khai thác(đào) khối bitcoin nhưng chúng ta sẽ tìm hiểu thêm về điều đó sau...", // "Nonce, short for (number used once) is a random or semi-random number that is employed in various cryptographic and computational processes. Its primary purpose is to introduce unpredictability and ensure that a particular operation or calculation can't be easily repeated or predicted. The nonce is critical to the security of bitcoin mining but we will learn more about that later..."
- tip_one:
-     'Để đảm bảo giải mã chính xác các đầu vào. Các thuật toán mã hóa thường trả về các đối tượng giải mã dưới định dạng byte, nhưng chúng ta muốn có thể đọc nó ở định dạng hex (hệ thập lục phân)!', // Ensure you are properly decoding the inputs. The hashing algorithms often return objects decoded in bytes, but we want to be able to read it in hex format!
- tip_two:
-     'Hãy suy nghĩ về cách tạo một lệnh để tiếp tục chạy cho đến khi tìm được câu trả lời bằng với một giá trị cụ thể', // Think about how you would create a function to keep running until that answer is equal to a specific value
- tip_three:
-     'Nhớ ghi lại câu trả lời của bạn bằng <span className="p-1 font-mono bg-[#0000004D] m-1">console.log()</span> hoặc <span className="p-1 font-mono bg-[#0000004D] m-1">print()</span>. Đây là cách duy nhất chương trình (IDE) của chúng tôi xác thực câu trả lời của bạn.', //Remember to log your answer with <span className="p-1 font-mono bg-[#0000004D] m-1">console.log()</span> or <span className="p-1 font-mono bg-[#0000004D] m-1">print()</span>. It is the only way our IDE will try to validate your answer.
+       hash_libraries_heading: 'Thư viện mã hóa', // Hash Libraries
+       hash_libraries_paragraph:
+           'Thư viện crypto trong Node.js và thư viện hashlib trong python là các thư viện mã hóa thực hiện các thuật toán mà chúng ta sẽ sử dụng để tạo thành các công cụ hữu ích cho lập trình viên. Các thư viện này đã được kiểm tra kỹ lưỡng để đảm bảo độ chính xác và bảo mật vì nhiều người dựa vào chúng để bảo mật các hệ thống có giá trị và quan trọng.',  // The crypto library in Node.js and the hashlib library in python are the code libraries that implement the algorithms we will use into useful tools for developers. These libraries are thoroughly vetted to ensure their accuracy and security as many people rely on them to secure valuable and important systems.
+       nonce_heading: 'Nonce', // Nonce
+       nonce_paragraph:
+           "Nonce, viết tắt của (số chỉ được sử dụng một lần) là một số ngẫu nhiên hoặc bán ngẫu nhiên được sử dụng trong các quy trình mã hóa và tính toán khác nhau. Mục đích chính của nó là giới thiệu thuộc tính không thể đoán trước và đảm bảo rằng một hoạt động hay tính toán cụ thể không thể dễ dàng lặp lại hoặc dễ dàng dự đoán. Nonce rất quan trọng đối với việc bảo mật trong quy trình khai thác(đào) khối bitcoin nhưng chúng ta sẽ tìm hiểu thêm về điều đó sau...", // "Nonce, short for (number used once) is a random or semi-random number that is employed in various cryptographic and computational processes. Its primary purpose is to introduce unpredictability and ensure that a particular operation or calculation can't be easily repeated or predicted. The nonce is critical to the security of bitcoin mining but we will learn more about that later..."
+       tip_one:
+           'Để đảm bảo giải mã chính xác các đầu vào. Các thuật toán mã hóa thường trả về các đối tượng giải mã dưới định dạng byte, nhưng chúng ta muốn có thể đọc nó ở định dạng hex (hệ thập lục phân)!', // Ensure you are properly decoding the inputs. The hashing algorithms often return objects decoded in bytes, but we want to be able to read it in hex format!
+       tip_two:
+           'Hãy suy nghĩ về cách tạo một lệnh để tiếp tục chạy cho đến khi tìm được câu trả lời bằng với một giá trị cụ thể', // Think about how you would create a function to keep running until that answer is equal to a specific value
+       tip_three:
+           'Nhớ ghi lại câu trả lời của bạn bằng <span className="p-1 font-mono bg-[#0000004D] m-1">console.log()</span> hoặc <span className="p-1 font-mono bg-[#0000004D] m-1">print()</span>. Đây là cách duy nhất chương trình (IDE) của chúng tôi xác thực câu trả lời của bạn.', //Remember to log your answer with <span className="p-1 font-mono bg-[#0000004D] m-1">console.log()</span> or <span className="p-1 font-mono bg-[#0000004D] m-1">print()</span>. It is the only way our IDE will try to validate your answer.
       },
       mining_one: {
- mining_heading: 'Khai thác(đào)', // Mining
- mining_paragraph:
-     "Khai thác(đào) là nơi tất cả các khái niệm này kết hợp lại. Khai thác(đào) Bitcoin là quá trình tạo ra bitcoin mới và thêm các giao dịch vào chuỗi khối dữ liệu Bitcoin (Bitcoin blockchain). máy(thợ) đào cạnh tranh với nhau để giải các câu đố toán học phức tạp bằng cách tìm ra một 'nonce' duy nhất, và hợp lệ trong mỗi khối giao dịch. Quá trình kiểm chứng bằng công việc  (proof-of-work) này đòi hỏi sức mạnh tính toán và năng lượng đáng kể, sử dụng năng lượng này để xác thực các giao dịch một cách bảo mật an toàn và phi tập trung (không qua trung gian). máy(thợ) đào thành công trong quy trình được thưởng bằng chính bitcoin mới được khai thác(đào) khối cộng thêm phí trả từ người tham gia giao dịch, đồng thời máy(thợ) đào đóng một vai trò quan trọng trong việc duy trì tính toàn vẹn của mạng lưới bitcoin.", // Mining is where these concepts all come together. Bitcoin mining is the process by which new bitcoins are created and transactions are added to the blockchain. Miners compete to solve complex mathematical puzzles by finding a unique, valid 'nonce' in each block of transactions. This proof-of-work process demands significant computational power and energy, making it a secure and decentralized way to validate transactions. Successful miners are rewarded with newly minted bitcoins and transaction fees, and they play a critical role in maintaining the integrity of the bitcoin network.
- difficulty_heading: 'Độ khó', // Difficulty
- difficulty_paragraph:
-     'Độ khó trong khai thác(đào) khối là yếu tố duy trì công suất trung bình khai thác(đào) khối (dữ liệu) ở mức 10 phút một khối mới.', // The mining difficulty is what allows the block to remain at an average of 10 minutes between each new block.
- spoiler:
-     'Không có bí mật gì! Chỉ cần tiếp tục đọc bài học này. Sẽ có nhiều cơ hội để sử dụng kiến ​​thức của bạn về khai thác(đào) khối trong các bài học mới!', // Nothing to spoil! Just go ahead and read through this lesson. There will be more opportunities to show off your  mining knowledge in future lessons!
+       mining_heading: 'Khai thác(đào)', // Mining
+       mining_paragraph:
+           "Khai thác(đào) là nơi tất cả các khái niệm này kết hợp lại. Khai thác(đào) Bitcoin là quá trình tạo ra bitcoin mới và thêm các giao dịch vào chuỗi khối dữ liệu Bitcoin (Bitcoin blockchain). máy(thợ) đào cạnh tranh với nhau để giải các câu đố toán học phức tạp bằng cách tìm ra một 'nonce' duy nhất, và hợp lệ trong mỗi khối giao dịch. Quá trình kiểm chứng bằng công việc  (proof-of-work) này đòi hỏi sức mạnh tính toán và năng lượng đáng kể, sử dụng năng lượng này để xác thực các giao dịch một cách bảo mật an toàn và phi tập trung (không qua trung gian). máy(thợ) đào thành công trong quy trình được thưởng bằng chính bitcoin mới được khai thác(đào) khối cộng thêm phí trả từ người tham gia giao dịch, đồng thời máy(thợ) đào đóng một vai trò quan trọng trong việc duy trì tính toàn vẹn của mạng lưới bitcoin.", // Mining is where these concepts all come together. Bitcoin mining is the process by which new bitcoins are created and transactions are added to the blockchain. Miners compete to solve complex mathematical puzzles by finding a unique, valid 'nonce' in each block of transactions. This proof-of-work process demands significant computational power and energy, making it a secure and decentralized way to validate transactions. Successful miners are rewarded with newly minted bitcoins and transaction fees, and they play a critical role in maintaining the integrity of the bitcoin network.
+       difficulty_heading: 'Độ khó', // Difficulty
+       difficulty_paragraph:
+           'Độ khó trong khai thác(đào) khối là yếu tố duy trì công suất trung bình khai thác(đào) khối (dữ liệu) ở mức 10 phút một khối mới.', // The mining difficulty is what allows the block to remain at an average of 10 minutes between each new block.
+       spoiler:
+           'Không có bí mật gì! Chỉ cần tiếp tục đọc bài học này. Sẽ có nhiều cơ hội để sử dụng kiến ​​thức của bạn về khai thác(đào) khối trong các bài học mới!', // Nothing to spoil! Just go ahead and read through this lesson. There will be more opportunities to show off your  mining knowledge in future lessons!
       },
     },
   },
   chapter_three: {
     title: 'Khả năng 51% tấn công mạng lưới', // The 51% Attack
     paragraph_one:
- 'Bạn nhập địa chỉ vào trình duyệt chuỗi khối và thấy rằng các khối đã xuất hiện trở lại khoảng thời gian 10 phút. Bằng cách nào đó, con mèo ngủ say sưa bên cạnh mặc cho tiếng ồn từ tất cả các máy đào ASIC.', // You enter the address of a block explorer and see that blocks are back to ten minute intervals. Somehow,con mèo sleeps through the noise from all the ASICs.
+       'Bạn nhập địa chỉ vào trình duyệt chuỗi khối và thấy rằng các khối đã xuất hiện trở lại khoảng thời gian 10 phút. Bằng cách nào đó, con mèo ngủ say sưa bên cạnh mặc cho tiếng ồn từ tất cả các máy đào ASIC.', // You enter the address of a block explorer and see that blocks are back to ten minute intervals. Somehow,con mèo sleeps through the noise from all the ASICs.
     paragraph_two:
- 'Đúng là mèo. Đâu có thể làm gì khác?', // Cats. What can you do?
+       'Đúng là mèo. Đâu có thể làm gì khác?', // Cats. What can you do?
     paragraph_three:
- 'Tuy nhiên, có điều gì đó không ổn. Các khối trống rỗng và các giao dịch không được xử lý. Bạn đã mắc lỗi? Có thể đây là một sự trùng hợp? Một thông báo khác xuất hiện trên màn hình máy tính, đánh thức con mèo.',     // However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking con mèo.
+       'Tuy nhiên, có điều gì đó không ổn. Các khối trống rỗng và các giao dịch không được xử lý. Bạn đã mắc lỗi? Có thể đây là một sự trùng hợp? Một thông báo khác xuất hiện trên màn hình máy tính, đánh thức con mèo.',     // However, something is off. The blocks are empty, and transactions aren’t processing. Did you make a mistake? Could this be a coincidence? Another message pops up on the computer screen, waking con mèo.
     paragraph_four:
- 'Không phải trùng hợp đâu.', // It’s not a coincidence.
+       'Không phải trùng hợp đâu.', // It’s not a coincidence.
 
     intro_one: {
       title: 'Phần mở đầu', // Intro
       nav_title: 'Xử lý mã hóa', // Hashing it out
       paragraph_one:
-   '—SATOSHI NAKAMOTO: “Này, bạn ơi! Đúng rồi, bạn đó! Nhớ tôi chứ? Bitcoin hiện đang bị 51% tấn công! Sau khi bạn đưa các thiết bị khai thác(đào) khối trực tuyến, Vanderpoole đã bật lại các ASIC của BitRey và đang khai thác(đào) khối các khối trống. Vấn đề là không chỉ có máy của ông ta. Ông ta đã sử dụng cửa sau trên phần mềm nhúng tiêu chuẩn của các thiết bị ASIC để truyền nhiễm virus cho các máy đào hiện có, chặn việc khai thác(đào) khối dữ liệu với bất cứ ký tự gì ngoại trừ các khối trống. Ông ta đang cố gắng bắt cóc tống tiền hệ sinh thái bitcoin để buộc mọi người ủng hộ ý tưởng tăng nguồn cung bitcoin. Hãy làm gì đó đi chứ, chàng khờ!”', // —SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is being hit with a 51% attack right now! After you brought those mining devices online, Vanderpoole turned BitRey’s ASICs back on and is mining empty blocks. The problem is it’s not just his machines. He used a backdoor on the standard ASIC firmware to infect existing miners with a virus that prevents them from mining anything but empty blocks. He’s trying to hold the bitcoin ecosystem hostage and force people to support the idea of increasing bitcoin’s supply. Do something, dingdong!”
+         '—SATOSHI NAKAMOTO: “Này, bạn ơi! Đúng rồi, bạn đó! Nhớ tôi chứ? Bitcoin hiện đang bị 51% tấn công! Sau khi bạn đưa các thiết bị khai thác(đào) khối trực tuyến, Vanderpoole đã bật lại các ASIC của BitRey và đang khai thác(đào) khối các khối trống. Vấn đề là không chỉ có máy của ông ta. Ông ta đã sử dụng cửa sau trên phần mềm nhúng tiêu chuẩn của các thiết bị ASIC để truyền nhiễm virus cho các máy đào hiện có, chặn việc khai thác(đào) khối dữ liệu với bất cứ ký tự gì ngoại trừ các khối trống. Ông ta đang cố gắng bắt cóc tống tiền hệ sinh thái bitcoin để buộc mọi người ủng hộ ý tưởng tăng nguồn cung bitcoin. Hãy làm gì đó đi chứ, chàng khờ!”', // —SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is being hit with a 51% attack right now! After you brought those mining devices online, Vanderpoole turned BitRey’s ASICs back on and is mining empty blocks. The problem is it’s not just his machines. He used a backdoor on the standard ASIC firmware to infect existing miners with a virus that prevents them from mining anything but empty blocks. He’s trying to hold the bitcoin ecosystem hostage and force people to support the idea of increasing bitcoin’s supply. Do something, dingdong!”
       paragraph_two:
-   'Máy tính cũ khạc ra một đám bụi, sau đó tạo ra một tập dữ liệu được gọi là "bảng tính" chứa thông tin liên hệ của một số máy(thợ) đào bitcoin lớn nhất, cũng như bản vá cho virus. Bạn có thể gửi bản vá cho các máy(thợ) đào khác càng sớm, họ càng nhanh chóng có thể giành lại quyền kiểm soát máy đào của mình và tham gia cuộc chiến chống lại BitRey.',// The old computer coughs up a cloud of dust, then produces a wad of data called a “spreadsheet” that contains contact info for some of the largest bitcoin miners, as well as a patch for the virus. The sooner you can get the patch to other miners, the sooner they can regain control of their machines and join your fight against BitRey.
+         'Máy tính cũ khạc ra một đám bụi, sau đó tạo ra một tập dữ liệu được gọi là "bảng tính" chứa thông tin liên hệ của một số máy(thợ) đào bitcoin lớn nhất, cũng như bản vá cho virus. Bạn có thể gửi bản vá cho các máy(thợ) đào khác càng sớm, họ càng nhanh chóng có thể giành lại quyền kiểm soát máy đào của mình và tham gia cuộc chiến chống lại BitRey.',// The old computer coughs up a cloud of dust, then produces a wad of data called a “spreadsheet” that contains contact info for some of the largest bitcoin miners, as well as a patch for the virus. The sooner you can get the patch to other miners, the sooner they can regain control of their machines and join your fight against BitRey.
       paragraph_three:
-   '—HOLOCAT: “Chúng ta có nhiều việc phải làm hơn rồi. Ồ, bạn làm đi. Tôi sẽ đi bắt vài con chuột đây.”',  // —HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”
+         '—HOLOCAT: “Chúng ta có nhiều việc phải làm hơn rồi. Ồ, bạn làm đi. Tôi sẽ đi bắt vài con chuột đây.”',  // —HOLOCAT: “We’ve got more work to do. Well, you do. I’m gonna run through walls and scare mice.”
     },
 
     solo_one: {
@@ -590,35 +590,35 @@ const translations = {
       nav_title: 'Khai thác(đào) một mình', // Mining alone
       step_zero_heading: 'Hãy thử xem', // Let’s give it a try
       step_zero_paragraph_one:
-   'Trong khi chờ đợi các máy(thợ) đào mà bạn đã tiếp cận, bạn quyết định xem liệu BitRey có thể bị đánh bại một mình hay không. Có lẽ bạn có thể chấm dứt việc đào các khối trống mà không cần bất kỳ sự trợ giúp nào. Đây là cách xếp hạng mã hóa của bạn. Theo bạn nghĩ, điều này sẽ diễn ra như thế nào?',  // While you’re waiting for the miners you reached out to, you decide to see if BitRey can be fended off alone. Maybe you can put an end to the empty blocks without any help. Here’s how your hash rate stacks up. How do you think this will go?
+         'Trong khi chờ đợi các máy(thợ) đào mà bạn đã tiếp cận, bạn quyết định xem liệu BitRey có thể bị đánh bại một mình hay không. Có lẽ bạn có thể chấm dứt việc đào các khối trống mà không cần bất kỳ sự trợ giúp nào. Đây là cách xếp hạng mã hóa của bạn. Theo bạn nghĩ, điều này sẽ diễn ra như thế nào?',  // While you’re waiting for the miners you reached out to, you decide to see if BitRey can be fended off alone. Maybe you can put an end to the empty blocks without any help. Here’s how your hash rate stacks up. How do you think this will go?
       step_one_heading: 'Chúng ta đang trong cuộc đua rồi', // We’re off to the races
       step_one_paragraph_one:
-   'Hãy khai thác(đào) 100 khối để xem bạn xếp hạng như thế nào so với BitRey.', // We’re now mining 100 blocks to see how many you stack up against BitRey.
+         'Hãy khai thác(đào) 100 khối để xem bạn xếp hạng như thế nào so với BitRey.', // We’re now mining 100 blocks to see how many you stack up against BitRey.
       step_two_heading: 'Tình hình có vẻ không tốt rồi!', // That didn't go well!
       step_two_paragraph_one:
-   'Ôi trời, chúng ta không có đủ sức mạnh mã hóa để cạnh tranh với BitRey và các máy(thợ) đào bị nhiễm virus. Hãy xem liệu chúng ta có thể đánh bại BitRey trong 100 khối tiếp theo kết hợp cùng với các máy(thợ) đào khác hay không. Mạng Bitcoin đã hoạt động được hơn một thế kỷ và sẽ không dễ bị ngừng lại khi bị tấn côngcông.', // Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled miners. Let’s see if we can defeat BitRey for the next 100 blocks with the other miners. Bitcoin has been running for over a century and it’s not going down without a fight.
+         'Ôi trời, chúng ta không có đủ sức mạnh mã hóa để cạnh tranh với BitRey và các máy(thợ) đào bị nhiễm virus. Hãy xem liệu chúng ta có thể đánh bại BitRey trong 100 khối tiếp theo kết hợp cùng với các máy(thợ) đào khác hay không. Mạng Bitcoin đã hoạt động được hơn một thế kỷ và sẽ không dễ bị ngừng lại khi bị tấn côngcông.', // Yikes, we just don’t have enough hashpower to compete with BitRey and the virus-controlled miners. Let’s see if we can defeat BitRey for the next 100 blocks with the other miners. Bitcoin has been running for over a century and it’s not going down without a fight.
     },
 
-    mỏ_one: {
+    pool_one: {
       title: 'Mỏ khai thác(pool) chống lại BitRey', // Pool vs. BitRey
       nav_title: 'Tìm kiếm đồng minh', // Finding friends
       waiting_screen_heading: 'Chúng ta cần sự hỗ trợ!', // We need support!
       waiting_screen_paragraph_one: `Các máy đào của bạn hiện tại trong nhà kho hoàn toàn không có cơ hội chống lại. Nhưng nếu kết hợp sức mạnh mã hóa của mình với các máy(thợ) đào khác, bạn có cơ may giữ vững kế hoạch chống lại cuộc tấn công của BitRey.`,// Your miners in the warehouse don’t stand a chance. If you combine your hash power with other miners, you might be able to hold the line against BitRey's assault.
       waiting_screen_paragraph_two:
-   'Chờ những người khác cùng mục tiêu tham gia vào kế hoạch của bạn để chúng ta có thể kết hợp củng cố lực lượng.', // Let’s wait until the others join your cause so we can combine forces.
+         'Chờ những người khác cùng mục tiêu tham gia vào kế hoạch của bạn để chúng ta có thể kết hợp củng cố lực lượng.', // Let’s wait until the others join your cause so we can combine forces.
       waiting_button: 'Đang chờ...', // Waiting...
       continue_button: "Đi nào", // Let’s go
     },
 
-    mỏ_two: {
+    pool_two: {
       title: 'Mỏ khai thác(pool) chống lại BitRey', // Pool vs. BitRey
       nav_title: 'Khai thác(đào) cùng nhau', // Mining together
       step_zero_heading: 'Bắt đầu', // Here we go
       step_zero_paragraph_one:
-   'Bằng việc kết hợp sức mạnh mã hóa của bạn với các máy(thợ) đào khác, bạn nghĩ có thể chống lại BitRey không?', // By mỏing your hashrate with other miners, can you stand up to BitRey?
+         'Bằng việc kết hợp sức mạnh mã hóa của bạn với các máy(thợ) đào khác, bạn nghĩ có thể chống lại BitRey không?', // By mỏing your hashrate with other miners, can you stand up to BitRey?
       step_two_heading: 'Lại thất bại rồi!', // Another defeat!
       step_two_paragraph_one:
-   'Có điều gì đó không đúng. Chỉ có Hashrate Hoppers tìm thấy khối. Tại sao điều đó có thể xảy ra vậy?', // Something is wrong. Only Hashrate Hoppers found blocks. Why do you think that might be?
+         'Có điều gì đó không đúng. Chỉ có Hashrate Hoppers tìm thấy khối. Tại sao điều đó có thể xảy ra vậy?', // Something is wrong. Only Hashrate Hoppers found blocks. Why do you think that might be?
     },
 
     coop_one: {
@@ -626,11 +626,11 @@ const translations = {
       nav_title: 'Có điều gì đó không ổn', // Something went wrong
       heading: 'Có điều gì đó không đúng.', // Something is not quite right yet.
       paragraph_one:
-   'Hashrate Hoppers, người có sức mạnh mã hóa lớn nhất, đang khai thác tất cả các khối nhưng những người khác thì không.',  // Hashrate Hoppers, the one with the most hash power, is finding all your blocks but others find nothing.
+         'Hashrate Hoppers, người có sức mạnh mã hóa lớn nhất, đang khai thác tất cả các khối nhưng những người khác thì không.',  // Hashrate Hoppers, the one with the most hash power, is finding all your blocks but others find nothing.
       paragraph_two:
-   'Vấn đề là tất cả mọi người đều cùng kiểm tra xác thực một nonce khi họ đang khai thác(đào) khối. Vậy làm thế nào để các đồng minh phối hợp tốt hơn?',  // The problem is that everyone is checking the same nonces while they’re mining. How can you better coordinate?
+         'Vấn đề là tất cả mọi người đều cùng kiểm tra xác thực một nonce khi họ đang khai thác(đào) khối. Vậy làm thế nào để các đồng minh phối hợp tốt hơn?',  // The problem is that everyone is checking the same nonces while they’re mining. How can you better coordinate?
       paragraph_three:
-   'Bạn quyết định đặt một trình duyệt xác định “extraNonce” duy nhất trong khi chuẩn bị dữ liệu khối cho mỗi đồng minh để ngăn chặn các nỗ lực trùng lặp.', // You decide to place a unique identifier in the “extraNonce” when preparing the block data for each of you to prevent duplicate efforts.
+         'Bạn quyết định đặt một trình duyệt xác định “extraNonce” duy nhất trong khi chuẩn bị dữ liệu khối cho mỗi đồng minh để ngăn chặn các nỗ lực trùng lặp.', // You decide to place a unique identifier in the “extraNonce” when preparing the block data for each of you to prevent duplicate efforts.
     },
 
     coop_two: {
@@ -638,16 +638,16 @@ const translations = {
       nav_title: 'ExtraNonce', // The extraNonce
       heading: 'ExtraNonce là gì?', // What is the extraNonce?
       paragraph_one:
-   'Đối với giao thức khai thác(đào) khối Stratum (không phải giao thức bitcoin), giao dịch coinbase cũng có một thứ gọi là “extra nonce”. Khi cung cấp cho máy(thợ) đào dữ liệu khối, các mỏ khai thác(đào) khối chia extra nonce thành hai phần: “extranonce1” và “extranonce2”.',// For the Stratum mining mỏ protocol (not bitcoin protocol), the coinbase transaction also has something called the “extra nonce”. When providing miners with the block data, mining mỏs divide the extra nonce into two parts: “extranonce1” and “extranonce2”.
+         'Đối với giao thức khai thác(đào) khối Stratum (không phải giao thức bitcoin), giao dịch coinbase cũng có một thứ gọi là “extra nonce”. Khi cung cấp cho máy(thợ) đào dữ liệu khối, các mỏ khai thác(đào) khối chia extra nonce thành hai phần: “extranonce1” và “extranonce2”.',// For the Stratum mining mỏ protocol (not bitcoin protocol), the coinbase transaction also has something called the “extra nonce”. When providing miners with the block data, mining mỏs divide the extra nonce into two parts: “extranonce1” and “extranonce2”.
       paragraph_two:
-   'Việc chia extra nonce thành hai phần có một số lợi thế:', // Splitting the extra nonce into two parts has several advantages:
+         'Việc chia extra nonce thành hai phần có một số lợi thế:', // Splitting the extra nonce into two parts has several advantages:
       list_one: 'Nó chặn những người tham gia mỏ thực hiện cùng một công việc.', // It prevents mỏ participants from doing the same work.
       list_two:
-   'Nó cho phép mỏ gửi cùng một danh sách giao dịch cho tất cả các máy(thợ) đào đang cùng khai thác(đào) khối. Điều đó có nghĩa là máy(thợ) đào chỉ cần cập nhật “extranonce2” và không thay đổi các giao dịch được bao gồm trong khối.', // It allows the mỏ to send the same transaction list to all miners that are mỏing together. That means miners simply have to update “extranonce2” and not change transactions included in the block.
+         'Nó cho phép mỏ gửi cùng một danh sách giao dịch cho tất cả các máy(thợ) đào đang cùng khai thác(đào) khối. Điều đó có nghĩa là máy(thợ) đào chỉ cần cập nhật “extranonce2” và không thay đổi các giao dịch được bao gồm trong khối.', // It allows the mỏ to send the same transaction list to all miners that are mỏing together. That means miners simply have to update “extranonce2” and not change transactions included in the block.
       list_three:
-   '“extranonce1” cho phép các mỏ xác minh và quyết định góp cổ phần vì mỗi máy(thợ) đào đều có “extranonce1” riêng của mình.', // The “extranonce1” allows mỏs to identify and determine share contribution because each miner gets their own “extranonce1”.
+         '“extranonce1” cho phép các mỏ xác minh và quyết định góp cổ phần vì mỗi máy(thợ) đào đều có “extranonce1” riêng của mình.', // The “extranonce1” allows mỏs to identify and determine share contribution because each miner gets their own “extranonce1”.
       paragraph_three:
-   'Các máy(thợ) đào đóng góp vào một mỏ cập nhật “extranonce2” và lặp qua nonce trong tiêu đề khối. Nếu họ không tìm thấy giải pháp, họ sẽ lặp lại quy trình với “extranonce2” khác cho đến khi tìm thấy.', // Miners who contribute to a mỏ update the “extranonce2” and cycle through the nonce in the block header. If they don’t find a solution, they repeat the process with a different “extranonce2” until they do.
+         'Các máy(thợ) đào đóng góp vào một mỏ cập nhật “extranonce2” và lặp qua nonce trong tiêu đề khối. Nếu họ không tìm thấy giải pháp, họ sẽ lặp lại quy trình với “extranonce2” khác cho đến khi tìm thấy.', // Miners who contribute to a mỏ update the “extranonce2” and cycle through the nonce in the block header. If they don’t find a solution, they repeat the process with a different “extranonce2” until they do.
       paragraph_four: 'Chúng ta hãy thử lại với cách chia sẻ công việc bằng phương pháp này.', // Let’s try again splitting the work using this method.
     },
 
@@ -656,10 +656,10 @@ const translations = {
       nav_title: 'Khai thác(đào) cùng nhau', // Mining together
       step_zero_heading: 'Thử lại lần nữa nào...', // One more time...
       step_zero_paragraph_one:
-   'Xem liệu chúng ta có thể chống lại BitRey không với cải thiện mới trong chiến lược chia sẻ nonce của chúng ta.', // Let’s see if we stand a chance against BitRey now with our improved strategy of dividing the nonce space.
+         'Xem liệu chúng ta có thể chống lại BitRey không với cải thiện mới trong chiến lược chia sẻ nonce của chúng ta.', // Let’s see if we stand a chance against BitRey now with our improved strategy of dividing the nonce space.
       step_two_heading: 'Bạn đã thành công rồi!', // You did it!
       step_two_paragraph_one:
-   'Cùng nhau, bạn và các thợ đào khác đã ngăn chặn được nỗ lực chiếm lĩnh mạng lưới của BitRey.',// Together you and the other miners held back BitRey’s attempt to overtake the network.
+         'Cùng nhau, bạn và các thợ đào khác đã ngăn chặn được nỗ lực chiếm lĩnh mạng lưới của BitRey.',// Together you and the other miners held back BitRey’s attempt to overtake the network.
     },
 
     split_one: {
@@ -667,16 +667,16 @@ const translations = {
       nav_title: 'Phân chia công bằng', // Splitting the fair share
       heading: 'Làm tốt lắm!', // Nicely done.
       paragraph_one:
-   'Bạn không chỉ bảo vệ mạng lưới Bitcoin khỏi BitRey mà còn được thưởng bitcoin!', // Not only did you defend the network against BitRey, you also earned bitcoin as a reward!
+         'Bạn không chỉ bảo vệ mạng lưới Bitcoin khỏi BitRey mà còn được thưởng bitcoin!', // Not only did you defend the network against BitRey, you also earned bitcoin as a reward!
       paragraph_two:
-   'Đối với mỗi khối được khai thác(đào), thợ đào sẽ nhận được phần thưởng bằng bitcoin. Nếu nhiều người cùng khai thác 1 khối, nhóm thợ đào(pool) sẽ chia sẻ phần thưởng đó.', // For every block that is mined, the miner gets a reward in bitcoin. If more than one person worked on the block, the group of miners (mining mỏ) gets a reward to share.
+         'Đối với mỗi khối được khai thác(đào), thợ đào sẽ nhận được phần thưởng bằng bitcoin. Nếu nhiều người cùng khai thác 1 khối, nhóm thợ đào(pool) sẽ chia sẻ phần thưởng đó.', // For every block that is mined, the miner gets a reward in bitcoin. If more than one person worked on the block, the group of miners (mining mỏ) gets a reward to share.
       paragraph_three: 'Phần thưởng này bao gồm hai thứ:', // This reward is made up of two things:
       list_one: 'phí cho tất cả các giao dịch trong khối', // fees for all the transactions in the block
       list_two: 'trợ cấp khối', // the block subsidy
       paragraph_four:
-   'Bạn và những người bạn (thợ đào) của mình đã kiếm được tổng cộng 7,41 bitcoin và đang tìm kiếm cách tốt và hợp lý nhất để chia phần thưởng này. Nó nên được chia dựa trên lượng công việc mà mỗi người đã thực hiện.',// You and your miner friends have earned a total of 7.41 bitcoin and are looking for a good way to split it up. It should be divided based on how much work each of you put in.
+         'Bạn và những người bạn (thợ đào) của mình đã kiếm được tổng cộng 7,41 bitcoin và đang tìm kiếm cách tốt và hợp lý nhất để chia phần thưởng này. Nó nên được chia dựa trên lượng công việc mà mỗi người đã thực hiện.',// You and your miner friends have earned a total of 7.41 bitcoin and are looking for a good way to split it up. It should be divided based on how much work each of you put in.
       paragraph_five:
-   'Các mỏ khai thác khối giải quyết vấn đề này bằng cách theo dõi số lượng phần trăm giải pháp cung cấp tạo ra trên mỗi thợ đào. Một mỏ gán cho mỗi thợ(máy) đào một độ khó tối thiểu (thấp hơn độ khó của khối) dựa trên sức mạnh mã hóa của họ. Cứ sau vài giây, một máy(thợ) đào sẽ dễ dàng tìm thấy một trong những giải pháp đó hơn và thông báo cho mỏ. Sau đó, mỏ theo dõi tất cả các phần của giải pháp đã gửi và chia phần thưởng tương ứng.', // Mining mỏs solve this problem by tracking how many partial solutions each miner has generated. A mỏ assigns each miner a minimum difficulty (lower than the block difficulty) based on their hash power. Every few seconds a miner finds one of those easier solutions and notifies the mỏ. The mỏ then tracks all the submitted shares and splits up the block rewards accordingly.
+         'Các mỏ khai thác khối giải quyết vấn đề này bằng cách theo dõi số lượng phần trăm giải pháp cung cấp tạo ra trên mỗi thợ đào. Một mỏ gán cho mỗi thợ(máy) đào một độ khó tối thiểu (thấp hơn độ khó của khối) dựa trên sức mạnh mã hóa của họ. Cứ sau vài giây, một máy(thợ) đào sẽ dễ dàng tìm thấy một trong những giải pháp đó hơn và thông báo cho mỏ. Sau đó, mỏ theo dõi tất cả các phần của giải pháp đã gửi và chia phần thưởng tương ứng.', // Mining mỏs solve this problem by tracking how many partial solutions each miner has generated. A mỏ assigns each miner a minimum difficulty (lower than the block difficulty) based on their hash power. Every few seconds a miner finds one of those easier solutions and notifies the mỏ. The mỏ then tracks all the submitted shares and splits up the block rewards accordingly.
       paragraph_six: 'Hãy cùng xem điều này qua hành động nhé.', // Let’s take a look at this in action.
     },
 
@@ -685,22 +685,22 @@ const translations = {
       nav_title: 'Tính toán số phần thưởng', // Calculating rewards
       step_zero_heading: 'Hãy xem lại công sức nỗ lực của mọi người tham gia', // Let’s review everyone’s efforts
       step_zero_paragraph:
-   'Chúng ta xem lại trận chiến này. Lần này chỉ tập trung vào mỏ của chúng ta, cụ thể là số phần trăm giải pháp mã hóa được tìm thấy tương ứng của mỗi máy(thợ) đào.', // We will re-run the battle. This time we will only focus on the number of partial solutions each miner found.
+         'Chúng ta xem lại trận chiến này. Lần này chỉ tập trung vào mỏ của chúng ta, cụ thể là số phần trăm giải pháp mã hóa được tìm thấy tương ứng của mỗi máy(thợ) đào.', // We will re-run the battle. This time we will only focus on the number of partial solutions each miner found.
       step_two_heading: 'Hãy làm phép tính nào', // Let’s do the math
       step_two_paragraph:
-   'Hãy đánh giá các số liệu ở trên và xem liệu bạn có thể tìm ra một cách công bằng để chia phần thưởng. Bạn đã tìm ra chưa? Cùng xem xét qua từng bước.',  // Take a look at the numbers above and see if you can find a fair way to split up the rewards. Figured it out? Let’s go over it step by step.
+         'Hãy đánh giá các số liệu ở trên và xem liệu bạn có thể tìm ra một cách công bằng để chia phần thưởng. Bạn đã tìm ra chưa? Cùng xem xét qua từng bước.',  // Take a look at the numbers above and see if you can find a fair way to split up the rewards. Figured it out? Let’s go over it step by step.
       step_three_heading: 'Tỷ lệ (phần trăm) sức mạnh mã hóa', // Hash rate percentage
       step_three_paragraph:
-   'Như đã biết, đây đại diện cho lượng công việc mà mỗi máy(thợ) đào đã đóng góp để tìm ra các khối. Nhưng mỏ khai thác(pool) khối không có cách nào để biết hoặc đo lường số này, vì máy(thợ) đào chỉ chuyển tiếp các giải pháp thành công.',// As you know, this represents the amount of work every miner has chipped in to find blocks. But the mining mỏ has no way of knowing or measuring this number, since miners only forward successful solutions.
+         'Như đã biết, đây đại diện cho lượng công việc mà mỗi máy(thợ) đào đã đóng góp để tìm ra các khối. Nhưng mỏ khai thác(pool) khối không có cách nào để biết hoặc đo lường số này, vì máy(thợ) đào chỉ chuyển tiếp các giải pháp thành công.',// As you know, this represents the amount of work every miner has chipped in to find blocks. But the mining mỏ has no way of knowing or measuring this number, since miners only forward successful solutions.
       step_four_heading: 'Tỷ lệ (phần trăm) khối được tìm thấy', // Block found percentage
       step_four_paragraph:
-   'Khả năng tìm thấy một khối rất thấp vì có rất nhiều yếu tố liên quan đến may mắn. Đặc biệt trong các kịch bản với một số máy(thợ) đào cực kỳ mạnh, các máy(thợ) đào thực sự nhỏ có thể đóng góp công việc nhưng không bao giờ tìm thấy bất kỳ khối nào.',// The chance of finding a block is very low since it has a lot to do with luck. Especially in scenarios with some extremely powerful miners, the really small miners may contribute work but never find any blocks. 
+         'Khả năng tìm thấy một khối rất thấp vì có rất nhiều yếu tố liên quan đến may mắn. Đặc biệt trong các kịch bản với một số máy(thợ) đào cực kỳ mạnh, các máy(thợ) đào thực sự nhỏ có thể đóng góp công việc nhưng không bao giờ tìm thấy bất kỳ khối nào.',// The chance of finding a block is very low since it has a lot to do with luck. Especially in scenarios with some extremely powerful miners, the really small miners may contribute work but never find any blocks. 
       step_five_heading: 'Tỷ lệ (phần trăm) giải pháp mã hóa', // Partial solution percentage
       step_five_paragraph:
-   'Bây giờ con số này sẽ hoạt động. Các máy(thợ) đào báo cáo các giải pháp mã hóa dễ dàng và thường xuyên hơn cho các mỏ(pool). Điều đó cho phép các mỏ(pool) đo lường khá chính xác lượng kết quả công việc của mỗi máy(thợ) đào đã cung cấp.', // Now this number will work. Miners report these solutions to easier problems regularly to mỏs. That allows mỏs to measure fairly accurately how much work each miner has provided.
+         'Bây giờ con số này sẽ hoạt động. Các máy(thợ) đào báo cáo các giải pháp mã hóa dễ dàng và thường xuyên hơn cho các mỏ(pool). Điều đó cho phép các mỏ(pool) đo lường khá chính xác lượng kết quả công việc của mỗi máy(thợ) đào đã cung cấp.', // Now this number will work. Miners report these solutions to easier problems regularly to mỏs. That allows mỏs to measure fairly accurately how much work each miner has provided.
       step_six_heading: 'Chia phần thưởng', // Splitting the rewards
       step_six_paragraph:
-   'Bây giờ chúng ta có thể lấy phần thưởng 7,41 bitcoin và chia theo tỷ lệ (phần trăm) giải pháp mã hóa của mỗi mỏ(pool). Xin chúc mừng!',// Now we can take the rewards of 7.41 bitcoin and split them up according to the percentage of partial solutions of each mỏ. Congratulations!
+         'Bây giờ chúng ta có thể lấy phần thưởng 7,41 bitcoin và chia theo tỷ lệ (phần trăm) giải pháp mã hóa của mỗi mỏ(pool). Xin chúc mừng!',// Now we can take the rewards of 7.41 bitcoin and split them up according to the percentage of partial solutions of each mỏ. Congratulations!
     },
 
     outro_one: {
@@ -708,46 +708,46 @@ const translations = {
       nav_title: 'Hoàn thành chương', // Chapter complete
       heading: 'Hạ gục Vanderpoole!', // Take that, Vanderpoole! 
       paragraph_one:
-   'Tuyệt vời! Bạn và các máy(thợ) đào khác đã có thể đẩy lùi cuộc tấn công 51% của Vanderpoole bằng cách hợp lực các tài nguyên của mình. Các khối trống đã không còn được gửi nữa và có vẻ như ông ta đã từ bỏ âm mưu.', // Great work! You and the other miners were able to fend off Vanderpoole’s 51% attack by mỏing your resources. Empty blocks are no longer being submitted and it looks like he’s given up.
+         'Tuyệt vời! Bạn và các máy(thợ) đào khác đã có thể đẩy lùi cuộc tấn công 51% của Vanderpoole bằng cách hợp lực các tài nguyên của mình. Các khối trống đã không còn được gửi nữa và có vẻ như ông ta đã từ bỏ âm mưu.', // Great work! You and the other miners were able to fend off Vanderpoole’s 51% attack by mỏing your resources. Empty blocks are no longer being submitted and it looks like he’s given up.
       paragraph_two:
-   'Đã đến lúc gặt hái phần thưởng! Chuyển sang chương tiếp theo để rút bitcoin của bạn.', // It’s time to reap your rewards! Go to the next chapter to withdraw your bitcoin.
+         'Đã đến lúc gặt hái phần thưởng! Chuyển sang chương tiếp theo để rút bitcoin của bạn.', // It’s time to reap your rewards! Go to the next chapter to withdraw your bitcoin.
     },
     resources: {
       solo: {
- hashrate_heading: 'Tốc độ mã hóa của việc khai thác(đào) khối', // Mining Hashrate
- hashrate_paragraph:
-     "Tốc độ mã hóa của một máy(thợ) đào riêng lẻ đề cập đến sức mạnh tính toán mà họ đóng góp cho quá trình khai thác(đào) khối mạng lưới bitcoin. Đó là tốc độ mà phần cứng khai thác(đào) khối của họ có thể thực hiện các phép tính toán cần thiết để cố gắng khai thác(đào) các khối mới. Tốc độ mã hóa của một máy(thợ) đào riêng lẻ thường được đo bằng số mã hóa mỗi giây hoặc ở quy mô terahash, một nghìn tỷ mã hóa mỗi giây (TH/s), tùy thuộc vào quy mô hoạt động khai thác(đào) và khả năng của phần cứng dùng để khai thác(đào) của họ.", // An individual miner's hashrate refers to the computational power they contribute to the bitcoin network's mining process. It is the rate at which their mining hardware can perform the necessary mathematical calculations to attempt to mine new blocks. The hashrate of an individual miner is typically measured in hashes per second, or at scale in terahashes, one-trillion hashes per second (TH/s), depending on the scale of their mining operation and the capabilities of their mining hardware.
+       hashrate_heading: 'Tốc độ mã hóa của việc khai thác(đào) khối', // Mining Hashrate
+       hashrate_paragraph:
+           "Tốc độ mã hóa của một máy(thợ) đào riêng lẻ đề cập đến sức mạnh tính toán mà họ đóng góp cho quá trình khai thác(đào) khối mạng lưới bitcoin. Đó là tốc độ mà phần cứng khai thác(đào) khối của họ có thể thực hiện các phép tính toán cần thiết để cố gắng khai thác(đào) các khối mới. Tốc độ mã hóa của một máy(thợ) đào riêng lẻ thường được đo bằng số mã hóa mỗi giây hoặc ở quy mô terahash, một nghìn tỷ mã hóa mỗi giây (TH/s), tùy thuộc vào quy mô hoạt động khai thác(đào) và khả năng của phần cứng dùng để khai thác(đào) của họ.", // An individual miner's hashrate refers to the computational power they contribute to the bitcoin network's mining process. It is the rate at which their mining hardware can perform the necessary mathematical calculations to attempt to mine new blocks. The hashrate of an individual miner is typically measured in hashes per second, or at scale in terahashes, one-trillion hashes per second (TH/s), depending on the scale of their mining operation and the capabilities of their mining hardware.
       },
-      mỏ: {
- mỏ_heading: 'Mỏ khai thác khối(pool)', // Mining Pool
- mỏ_paragraph:
-     'Mỏ khai thác(pool) đóng một vai trò quan trọng trong việc khai thác(đào) tiền mã hóa, mang lại một số lợi ích chính cho các máy(thợ) đào cá nhân. Bằng cách tập hợp sức mạnh tính toán và tài nguyên của nhiều người tham gia, các mỏ khai thác(pool) tăng cường cơ hội khai thác(đào) thành công các khối mới, dẫn đến thu nhập ổn định và nhất quán hơn. Các mỏ cũng cung cấp một nền tảng cho các máy(thợ) đào để truy cập vào thiết bị khai thác(đào) tiên tiến và hỗ trợ chuyên gia, giảm bớt rào cản gia nhập và san bằng sân chơi. Hơn nữa, các mỏ khai thác(pool) giúp phân phối phần thưởng hiệu quả, đảm bảo rằng các máy(thợ) đào nhận được phần thưởng công bằng cho những đóng góp của họ, làm cho việc khai thác(đào) tiền mã hóa trở nên dễ tiếp cận, ổn định và mang lại lợi nhuận tài chính cho một cộng đồng người tham gia rộng lớn hơn.',  // A mining mỏ plays a pivotal role in cryptocurrency mining, offering several key benefits to individual miners. By mỏing together the computational power and resources of many participants, mining mỏs enhance the chances of successfully mining new blocks, resulting in more predictable and consistent earnings. They also provide a platform for miners to access advanced mining equipment and expert support, reducing barriers to entry and leveling the playing field. Furthermore, mining mỏs help distribute rewards efficiently, ensuring that miners receive their fair share for their contributions, making cryptocurrency mining accessible, stable, and financially rewarding for a broader community of participants.
+      pool: {
+       pool_heading: 'Mỏ khai thác khối(pool)', // Mining Pool
+       pool_paragraph:
+           'Mỏ khai thác(pool) đóng một vai trò quan trọng trong việc khai thác(đào) tiền mã hóa, mang lại một số lợi ích chính cho các máy(thợ) đào cá nhân. Bằng cách tập hợp sức mạnh tính toán và tài nguyên của nhiều người tham gia, các mỏ khai thác(pool) tăng cường cơ hội khai thác(đào) thành công các khối mới, dẫn đến thu nhập ổn định và nhất quán hơn. Các mỏ cũng cung cấp một nền tảng cho các máy(thợ) đào để truy cập vào thiết bị khai thác(đào) tiên tiến và hỗ trợ chuyên gia, giảm bớt rào cản gia nhập và san bằng sân chơi. Hơn nữa, các mỏ khai thác(pool) giúp phân phối phần thưởng hiệu quả, đảm bảo rằng các máy(thợ) đào nhận được phần thưởng công bằng cho những đóng góp của họ, làm cho việc khai thác(đào) tiền mã hóa trở nên dễ tiếp cận, ổn định và mang lại lợi nhuận tài chính cho một cộng đồng người tham gia rộng lớn hơn.',  // A mining mỏ plays a pivotal role in cryptocurrency mining, offering several key benefits to individual miners. By mỏing together the computational power and resources of many participants, mining mỏs enhance the chances of successfully mining new blocks, resulting in more predictable and consistent earnings. They also provide a platform for miners to access advanced mining equipment and expert support, reducing barriers to entry and leveling the playing field. Furthermore, mining mỏs help distribute rewards efficiently, ensuring that miners receive their fair share for their contributions, making cryptocurrency mining accessible, stable, and financially rewarding for a broader community of participants.
       },
       coop: {
- distribution_heading: 'Phân bổ công việc', // Job Distribution
- distribution_paragraph:
-     "Các mỏ khai thác(pool) thực hiện các biện pháp phòng ngừa để đảm bảo rằng những người tham gia của họ không khai thác(đào) cùng một nonce cho cùng một khối. Điều này rất quan trọng bởi vì, trong quá trình khai thác(đào) bitcoin, các máy(thợ) đào cạnh tranh để tìm một nonce hợp lệ trong mỗi khối giao dịch. Nếu hai máy(thợ) đào trong cùng một mỏ làm việc trên cùng một nonce đồng thời, điều đó sẽ không hiệu quả và chỉ một người sẽ nhận được phần thưởng khối. Để ngăn chặn điều này, các mỏ khai thác(pool) sử dụng một quy trình gọi là 'giao việc' hoặc 'phân phối công việc' để phân bổ công việc hiệu quả. Các mỏ khai thác(pool) phân phối công việc cho từng máy(thợ) đào hoặc người tham gia. Khi cần khai thác(đào) một khối mới, máy chủ của mỏ (hoặc nhà điều hành mỏ khai thác) tạo ra một 'công việc' duy nhất cho các máy(thợ) đào. Công việc này bao gồm tất cả thông tin cần thiết để khai thác(đào) khối, chẳng hạn như danh sách giao dịch chưa xác nhận hiện tại, tiêu đề của khối trước đó và độ khó mục tiêu.",   // Mining mỏs take precautions to ensure that their participants do not mine the same nonce for the same block. This is important because, in the bitcoin mining process, miners compete to find a unique, valid 'nonce' in each block of transactions. If two miners in the same mỏ were to work on the same nonce simultaneously, it would be inefficient, and only one would receive the block reward. To prevent this, mining mỏs use a process called 'work assignment' or 'job distribution' to allocate work efficiently. Mining mỏs distribute work to individual miners or participants. When a new block needs to be mined, the mỏ's server (or mỏ operator) creates a unique 'job' for the miners. This job includes all the information needed to mine the block, such as the current list of unconfirmed transactions, the previous block's header, and the target difficulty.
- shares_heading: 'Gửi cổ phần', // Submitting Shares
- shares_paragraph:
-     "Các máy(thợ) đào làm việc trên các công việc được giao và liên tục cố gắng tìm ra nonce chính xác. Khi một máy(thợ) đào tin rằng họ đã có một giải pháp mã hóa, họ gửi cái gọi là 'cổ phần' cho máy chủ mỏ. Cổ phần này chứng minh rằng máy(thợ) đào đang tích cực làm việc để giải quyết vấn đề mã hóa. Cổ phần dễ tìm thấy hơn nhiều so với giải pháp mã hóa trong thực tế, nhưng chúng đóng vai trò là bằng chứng về làm việc của máy(thợ) đào.", // Miners work on these assigned jobs and continuously attempt to find the correct nonce. When a miner believes they have a solution, they submit what's called a 'share' to the mỏ server. This share demonstrates that the miner is actively working on solving the problem. Shares are much easier to find than the actual solution, but they serve as proof of the miner's efforts.
+       distribution_heading: 'Phân bổ công việc', // Job Distribution
+       distribution_paragraph:
+           "Các mỏ khai thác(pool) thực hiện các biện pháp phòng ngừa để đảm bảo rằng những người tham gia của họ không khai thác(đào) cùng một nonce cho cùng một khối. Điều này rất quan trọng bởi vì, trong quá trình khai thác(đào) bitcoin, các máy(thợ) đào cạnh tranh để tìm một nonce hợp lệ trong mỗi khối giao dịch. Nếu hai máy(thợ) đào trong cùng một mỏ làm việc trên cùng một nonce đồng thời, điều đó sẽ không hiệu quả và chỉ một người sẽ nhận được phần thưởng khối. Để ngăn chặn điều này, các mỏ khai thác(pool) sử dụng một quy trình gọi là 'giao việc' hoặc 'phân phối công việc' để phân bổ công việc hiệu quả. Các mỏ khai thác(pool) phân phối công việc cho từng máy(thợ) đào hoặc người tham gia. Khi cần khai thác(đào) một khối mới, máy chủ của mỏ (hoặc nhà điều hành mỏ khai thác) tạo ra một 'công việc' duy nhất cho các máy(thợ) đào. Công việc này bao gồm tất cả thông tin cần thiết để khai thác(đào) khối, chẳng hạn như danh sách giao dịch chưa xác nhận hiện tại, tiêu đề của khối trước đó và độ khó mục tiêu.",   // Mining mỏs take precautions to ensure that their participants do not mine the same nonce for the same block. This is important because, in the bitcoin mining process, miners compete to find a unique, valid 'nonce' in each block of transactions. If two miners in the same mỏ were to work on the same nonce simultaneously, it would be inefficient, and only one would receive the block reward. To prevent this, mining mỏs use a process called 'work assignment' or 'job distribution' to allocate work efficiently. Mining mỏs distribute work to individual miners or participants. When a new block needs to be mined, the mỏ's server (or mỏ operator) creates a unique 'job' for the miners. This job includes all the information needed to mine the block, such as the current list of unconfirmed transactions, the previous block's header, and the target difficulty.
+       shares_heading: 'Gửi cổ phần', // Submitting Shares
+       shares_paragraph:
+           "Các máy(thợ) đào làm việc trên các công việc được giao và liên tục cố gắng tìm ra nonce chính xác. Khi một máy(thợ) đào tin rằng họ đã có một giải pháp mã hóa, họ gửi cái gọi là 'cổ phần' cho máy chủ mỏ. Cổ phần này chứng minh rằng máy(thợ) đào đang tích cực làm việc để giải quyết vấn đề mã hóa. Cổ phần dễ tìm thấy hơn nhiều so với giải pháp mã hóa trong thực tế, nhưng chúng đóng vai trò là bằng chứng về làm việc của máy(thợ) đào.", // Miners work on these assigned jobs and continuously attempt to find the correct nonce. When a miner believes they have a solution, they submit what's called a 'share' to the mỏ server. This share demonstrates that the miner is actively working on solving the problem. Shares are much easier to find than the actual solution, but they serve as proof of the miner's efforts.
       },
       split: {
- title: 'Phương thức thanh toán', // Payout Schemes
- nav_title: 'Chia sẻ công bằng', // Splitting the fair share
- payout_subheading:
-     'Một mỏ khai thác(pool) có thể chọn phân phối phần thưởng khối theo một số cách khác nhau, tuy sự khác biệt không đáng kể nhưng những cách phân bổ quan trọng là:', // A mining mỏ can choose to distrubute the block rewards in several ways the differ in some subtle but key ways:
- pps_heading: 'Trả theo mỗi cổ phần/Pay-Per-Share (PPS)', // Pay-Per-Share (PPS)
- pps_paragraph:
-     "Trong cách PPS này, máy(thợ) đào nhận được khoản thanh toán cố định cho mỗi cổ phần hợp lệ mà họ gửi, bất kể mỏ có khai thác(đào) thành công một khối hay không. Hệ thống này cung cấp cho máy(thợ) đào thu nhập ổn định và dự đoán được, làm cho nó trở thành lựa chọn ưa thích cho những người đánh giá cao tính nhất quán trong thu nhập của họ. PPS giảm thiểu sự biến động trong phần thưởng, vì máy(thợ) đào được đền bù cho công việc của họ trên cơ sở mỗi cổ phần, cung cấp một nguồn thu nhập đáng tin cậy trong thế giới khai thác(đào) tiền mã hóa đầy biến động. Tuy nhiên, PPS có thể khấu trừ một khoản phí từ thu nhập của máy(thợ) đào nếu mỏ không khai thác(đào) thành công một khối. Khoản phí này nhằm trang trải chi phí hoạt động và giảm thiểu rủi ro cho nhà điều hành mỏ trong trường hợp không khối nào được khai thác(đào) khối trong một khoảng thời gian nhất định. Trong cách PPS truyền thống, máy(thợ) đào nhận được khoản thanh toán ít hơn khi mỏ gặp khó khăn.", // In PPS, miners receive a fixed payout for each valid share they submit, regardless of whether the mỏ successfully mines a block or not. This system provides miners with a steady and predictable income, making it a preferred choice for those who value consistency in their earnings. PPS minimizes the variance in rewards, as miners are compensated for their work on a per-share basis, offering a reliable source of income in the world of volatile cryptocurrency mining. However, PPS may deduct a fee from the miner's earnings if the mỏ doesn't successfully mine a block. This fee is meant to cover operational costs and mitigate the risk for the mỏ operator in case no blocks are mined within a certain timeframe. In traditional PPS, miners receive a reduced payout when the mỏ faces difficulties.
- pplns_heading: 'Trả theo N cổ phần cuối cùng/Pay-Per-Last-N-Shares (PPLNS)', // Pay-Per-Last-N-Shares (PPLNS)
- pplns_paragraph:
-     "PPLNS tính đến đóng góp của máy(thợ) đào trong một khoảng thời gian cụ thể của N cổ phần cuối cùng. máy(thợ) đào được trả tiền dựa trên số lượng và độ khó của các cổ phần mà họ đã gửi trong khoảng thời gian đó. PPLNS khuyến khích máy(thợ) hoạt động tích cực trong mỏ, vì nó thưởng cho sự tham gia nhất quán và giúp giảm thiểu rủi ro của các chiêu trò nhảy mỏ. Máy(thợ) nhận được khoản thanh toán khi mỏ khai thác(pool) thành công trong việc tìm ra một khối và phần thưởng được phân phối tỷ lệ thuận với những đóng góp gần nhất của họ, cung cấp một cách tiếp cận công bằng và hiệu quả dựa trên hiệu suất để kiếm tiền trong hệ sinh thái khai thác(đào).", // PPLNS takes into account a miner's contribution over a specific window of the last N shares. Miners are paid based on the number and difficulty of shares they've submitted within that window. PPLNS encourages miners to stay active in the mỏ, as it rewards consistent participation and helps to reduce the risk of mỏ-hopping strategies. Miners receive payouts when the mỏ successfully mines a block, and the rewards are distributed proportionally to their recent contributions, providing a fair and performance-driven approach to earning in the mining ecosystem.
- pps_plus_heading: 'Trả theo mỗi cổ phần + /Pay Per Share + (PPS+)', // Pay Per Share + (PPS+)
- pps_plus_paragraph:
-     "PPS+ cung cấp cho máy(thợ) đào khoản thanh toán cố định cho mỗi cổ phần mà họ nỗ lực đóng góp cho việc khai thác(đào) của mỏ. Tuy nhiên, PPS+ thường bao gồm tiền thưởng hoặc phí bảo hiểm bổ sung như một sự khích lệ cho sự đóng góp của các máy(thợ) vào sự ổn định và độ tin cậy của mỏ. Cách thưởng này được thiết kế để khuyến khích máy(thợ) đào hoạt động tích cực trong mỏ và thúc đẩy sự tham gia lâu dài. PPS+ cung cấp cho máy(thợ) đào thu nhập ổn định và dự đoán được, trong khi phần thưởng bổ sung làm cho cách thức này trở thành một lựa chọn hấp dẫn cho những người tìm kiếm cả độ tin cậy và phần thưởng phụ trội trong thế giới khai thác(đào) tiền mã hóa.", // PPS+ offers miners a fixed payment for each share they contribute to the mỏ's mining efforts. However, PPS+ typically includes an additional bonus or premium as an incentive to miners who contribute to the mỏ's stability and reliability. This bonus is designed to encourage miners to stay active in the mỏ and foster long-term participation. PPS+ provides miners with a consistent and predictable income, while the added bonus makes it an attractive option for those seeking both reliability and extra rewards in the world of cryptocurrency mining.
- fpps_heading: 'Trả đủ theo mỗi cổ phần/Full Pay Per Share (FPPS)', // Full Pay Per Share (FPPS)
- fpps_paragraph:
-     "Trong cách Full PPS, máy(thợ) đào nhận được khoản thanh toán cố định cho mỗi cổ phần mà họ gửi cho mỏ, bất kể mỏ có khai thác(đào) thành công một khối hay không. Phương pháp này cung cấp cho máy(thợ) đào thu nhập ổn định và dự đoán được, đồng thời là một lựa chọn hấp dẫn cho những người đánh giá cao độ tin cậy trong thu nhập của họ. Không giống như PPS truyền thống, Full PPS đảm bảo rằng máy(thợ) đào nhận được khoản thanh toán đầy đủ cho công việc đóng góp của họ, mà không có bất kỳ khoản khấu trừ nào, ngay cả khi mỏ gặp khó khăn. Đây là một phương pháp ổn định và đơn giản phù hợp với các máy(thợ) đào tìm kiếm thu nhập ổn định trong thế giới khai thác(đào) tiền mã hóa.",  // In Full PPS, miners receive a fixed payout for every share they submit to the mỏ, irrespective of whether the mỏ successfully mines a block or not. This approach provides miners with a steady and predictable income, making it an attractive choice for those who value reliability in their earnings. Unlike traditional PPS, Full PPS ensures that miners receive their full payout for their contributed work, without any potential deductions, even if the mỏ faces occasional difficulties. It's a stable and straightforward method that appeals to miners seeking consistent income in the world of cryptocurrency mining.
+       title: 'Phương thức thanh toán', // Payout Schemes
+       nav_title: 'Chia sẻ công bằng', // Splitting the fair share
+       payout_subheading:
+           'Một mỏ khai thác(pool) có thể chọn phân phối phần thưởng khối theo một số cách khác nhau, tuy sự khác biệt không đáng kể nhưng những cách phân bổ quan trọng là:', // A mining mỏ can choose to distrubute the block rewards in several ways the differ in some subtle but key ways:
+       pps_heading: 'Trả theo mỗi cổ phần/Pay-Per-Share (PPS)', // Pay-Per-Share (PPS)
+       pps_paragraph:
+           "Trong cách PPS này, máy(thợ) đào nhận được khoản thanh toán cố định cho mỗi cổ phần hợp lệ mà họ gửi, bất kể mỏ có khai thác(đào) thành công một khối hay không. Hệ thống này cung cấp cho máy(thợ) đào thu nhập ổn định và dự đoán được, làm cho nó trở thành lựa chọn ưa thích cho những người đánh giá cao tính nhất quán trong thu nhập của họ. PPS giảm thiểu sự biến động trong phần thưởng, vì máy(thợ) đào được đền bù cho công việc của họ trên cơ sở mỗi cổ phần, cung cấp một nguồn thu nhập đáng tin cậy trong thế giới khai thác(đào) tiền mã hóa đầy biến động. Tuy nhiên, PPS có thể khấu trừ một khoản phí từ thu nhập của máy(thợ) đào nếu mỏ không khai thác(đào) thành công một khối. Khoản phí này nhằm trang trải chi phí hoạt động và giảm thiểu rủi ro cho nhà điều hành mỏ trong trường hợp không khối nào được khai thác(đào) khối trong một khoảng thời gian nhất định. Trong cách PPS truyền thống, máy(thợ) đào nhận được khoản thanh toán ít hơn khi mỏ gặp khó khăn.", // In PPS, miners receive a fixed payout for each valid share they submit, regardless of whether the mỏ successfully mines a block or not. This system provides miners with a steady and predictable income, making it a preferred choice for those who value consistency in their earnings. PPS minimizes the variance in rewards, as miners are compensated for their work on a per-share basis, offering a reliable source of income in the world of volatile cryptocurrency mining. However, PPS may deduct a fee from the miner's earnings if the mỏ doesn't successfully mine a block. This fee is meant to cover operational costs and mitigate the risk for the mỏ operator in case no blocks are mined within a certain timeframe. In traditional PPS, miners receive a reduced payout when the mỏ faces difficulties.
+       pplns_heading: 'Trả theo N cổ phần cuối cùng/Pay-Per-Last-N-Shares (PPLNS)', // Pay-Per-Last-N-Shares (PPLNS)
+       pplns_paragraph:
+           "PPLNS tính đến đóng góp của máy(thợ) đào trong một khoảng thời gian cụ thể của N cổ phần cuối cùng. máy(thợ) đào được trả tiền dựa trên số lượng và độ khó của các cổ phần mà họ đã gửi trong khoảng thời gian đó. PPLNS khuyến khích máy(thợ) hoạt động tích cực trong mỏ, vì nó thưởng cho sự tham gia nhất quán và giúp giảm thiểu rủi ro của các chiêu trò nhảy mỏ. Máy(thợ) nhận được khoản thanh toán khi mỏ khai thác(pool) thành công trong việc tìm ra một khối và phần thưởng được phân phối tỷ lệ thuận với những đóng góp gần nhất của họ, cung cấp một cách tiếp cận công bằng và hiệu quả dựa trên hiệu suất để kiếm tiền trong hệ sinh thái khai thác(đào).", // PPLNS takes into account a miner's contribution over a specific window of the last N shares. Miners are paid based on the number and difficulty of shares they've submitted within that window. PPLNS encourages miners to stay active in the mỏ, as it rewards consistent participation and helps to reduce the risk of mỏ-hopping strategies. Miners receive payouts when the mỏ successfully mines a block, and the rewards are distributed proportionally to their recent contributions, providing a fair and performance-driven approach to earning in the mining ecosystem.
+       pps_plus_heading: 'Trả theo mỗi cổ phần + /Pay Per Share + (PPS+)', // Pay Per Share + (PPS+)
+       pps_plus_paragraph:
+           "PPS+ cung cấp cho máy(thợ) đào khoản thanh toán cố định cho mỗi cổ phần mà họ nỗ lực đóng góp cho việc khai thác(đào) của mỏ. Tuy nhiên, PPS+ thường bao gồm tiền thưởng hoặc phí bảo hiểm bổ sung như một sự khích lệ cho sự đóng góp của các máy(thợ) vào sự ổn định và độ tin cậy của mỏ. Cách thưởng này được thiết kế để khuyến khích máy(thợ) đào hoạt động tích cực trong mỏ và thúc đẩy sự tham gia lâu dài. PPS+ cung cấp cho máy(thợ) đào thu nhập ổn định và dự đoán được, trong khi phần thưởng bổ sung làm cho cách thức này trở thành một lựa chọn hấp dẫn cho những người tìm kiếm cả độ tin cậy và phần thưởng phụ trội trong thế giới khai thác(đào) tiền mã hóa.", // PPS+ offers miners a fixed payment for each share they contribute to the mỏ's mining efforts. However, PPS+ typically includes an additional bonus or premium as an incentive to miners who contribute to the mỏ's stability and reliability. This bonus is designed to encourage miners to stay active in the mỏ and foster long-term participation. PPS+ provides miners with a consistent and predictable income, while the added bonus makes it an attractive option for those seeking both reliability and extra rewards in the world of cryptocurrency mining.
+       fpps_heading: 'Trả đủ theo mỗi cổ phần/Full Pay Per Share (FPPS)', // Full Pay Per Share (FPPS)
+       fpps_paragraph:
+           "Trong cách Full PPS, máy(thợ) đào nhận được khoản thanh toán cố định cho mỗi cổ phần mà họ gửi cho mỏ, bất kể mỏ có khai thác(đào) thành công một khối hay không. Phương pháp này cung cấp cho máy(thợ) đào thu nhập ổn định và dự đoán được, đồng thời là một lựa chọn hấp dẫn cho những người đánh giá cao độ tin cậy trong thu nhập của họ. Không giống như PPS truyền thống, Full PPS đảm bảo rằng máy(thợ) đào nhận được khoản thanh toán đầy đủ cho công việc đóng góp của họ, mà không có bất kỳ khoản khấu trừ nào, ngay cả khi mỏ gặp khó khăn. Đây là một phương pháp ổn định và đơn giản phù hợp với các máy(thợ) đào tìm kiếm thu nhập ổn định trong thế giới khai thác(đào) tiền mã hóa.",  // In Full PPS, miners receive a fixed payout for every share they submit to the mỏ, irrespective of whether the mỏ successfully mines a block or not. This approach provides miners with a steady and predictable income, making it an attractive choice for those who value reliability in their earnings. Unlike traditional PPS, Full PPS ensures that miners receive their full payout for their contributed work, without any potential deductions, even if the mỏ faces occasional difficulties. It's a stable and straightforward method that appeals to miners seeking consistent income in the world of cryptocurrency mining.
       },
     },
   },
@@ -755,19 +755,19 @@ const translations = {
   chapter_four: {
     title: 'Thu hồi 1.61 Bitcoin của bạn', // Claiming Your 1.61 Bitcoin
     paragraph_one:
- 'Phù, mém chết! Bạn đang run rẩy sau cuộc chiến với BitRey, nhưng cảm thấy nhẹ nhõm vì đã chiến thắng.', // Phew, that was close! You are shaking from your battle with BitRey, but you are relieved that you won.
+       'Phù, mém chết! Bạn đang run rẩy sau cuộc chiến với BitRey, nhưng cảm thấy nhẹ nhõm vì đã chiến thắng.', // Phew, that was close! You are shaking from your battle with BitRey, but you are relieved that you won.
     paragraph_two:
- 'Khi ngồi xuống bàn làm việc, bạn hít một hơi thật sâu, thả mình trôi dạt và tái hiện lại những sự kiện trong ngày trong đầu.',  // As you settle at your desk, you take a deep breath, drift off, and replay the day’s events in your head.
+       'Khi ngồi xuống bàn làm việc, bạn hít một hơi thật sâu, thả mình trôi dạt và tái hiện lại những sự kiện trong ngày trong đầu.',  // As you settle at your desk, you take a deep breath, drift off, and replay the day’s events in your head.
 
     intro_one: {
       title: 'Phần mở đầu', // Intro
       nav_title: 'Bảo vệ thành quả', // Securing the bag
       paragraph_one:
-   '—HOLOCAT: “Một trong hai chúng ta nên ngủ. Bạn nên bắt đầu liên lạc với các máy(thợ) đào còn lại. Họ chắc sẽ thèm muốn biết còn nhiều hơn cả thế giới.”', // —HOLOCAT: “One of us better sleep. You need to start contacting the rest of the miners. They’ll want to know even more than the world will.”
+         '—HOLOCAT: “Một trong hai chúng ta nên ngủ. Bạn nên bắt đầu liên lạc với các máy(thợ) đào còn lại. Họ chắc sẽ thèm muốn biết còn nhiều hơn cả thế giới.”', // —HOLOCAT: “One of us better sleep. You need to start contacting the rest of the miners. They’ll want to know even more than the world will.”
       paragraph_two:
-   'Khi ngồi xuống bàn làm việc lơ lửng không chân, bạn tái hiện lại những sự kiện trong ngày. Vanderpoole. BitRey. Sự tiết lộ rằng các máy(thợ) đào không bao giờ đồng ý ngừng hoạt động để phản đối. Tất cả có thể đều đúng không? Tất cả những điều này có phải đều được dàn dựng không? Và bạn còn phải chăm sóc con mèo này trong bao lâu nữa? (Ở khoảng cách xa, một tiếng mèo kêu.)', // As you settle at your ButtLift Hover Desk, you replay the day’s events. Vanderpoole. BitRey. The revelation that miners never agreed to shut down in protest. Could it all be true? Was this all staged? And how much longer are you supposed to look after this cat? (In the distance, something meows.)
+         'Khi ngồi xuống bàn làm việc lơ lửng không chân, bạn tái hiện lại những sự kiện trong ngày. Vanderpoole. BitRey. Sự tiết lộ rằng các máy(thợ) đào không bao giờ đồng ý ngừng hoạt động để phản đối. Tất cả có thể đều đúng không? Tất cả những điều này có phải đều được dàn dựng không? Và bạn còn phải chăm sóc con mèo này trong bao lâu nữa? (Ở khoảng cách xa, một tiếng mèo kêu.)', // As you settle at your ButtLift Hover Desk, you replay the day’s events. Vanderpoole. BitRey. The revelation that miners never agreed to shut down in protest. Could it all be true? Was this all staged? And how much longer are you supposed to look after this cat? (In the distance, something meows.)
       paragraph_three:
-   'Cho dù bất cứ điều gì xảy ra tiếp theo, bạn cũng sẽ cần tiền. Đợi đã! Bạn chưa bao giờ yêu cầu phần thưởng khai thác(đào) khối từ cuộc thi đấu với BitRey của mình! Bạn quyết định rút chúng.',  // Whatever happens next, you will need funds. Wait a second! You never claimed the mining rewards from your competition with BitRey! You decide to withdraw them.
+         'Cho dù bất cứ điều gì xảy ra tiếp theo, bạn cũng sẽ cần tiền. Đợi đã! Bạn chưa bao giờ yêu cầu phần thưởng khai thác(đào) khối từ cuộc thi đấu với BitRey của mình! Bạn quyết định rút chúng.',  // Whatever happens next, you will need funds. Wait a second! You never claimed the mining rewards from your competition with BitRey! You decide to withdraw them.
     },
 
     public_key_one: {
@@ -775,34 +775,34 @@ const translations = {
       nav_title: 'Các cặp khóa', // Key pairs
       heading: 'Về các cặp khóa', // About key pairs
       paragraph_one:
-   'Theo mỏ khai thác(pool), có vẻ như bạn đã có 1.61 bitcoin từ tất cả công việc bạn đã làm trước đó.', // According to the mining mỏ, it looks like you have 1.61 bitcoin to claim from all the work you did earlier. 
+         'Theo mỏ khai thác(pool), có vẻ như bạn đã có 1.61 bitcoin từ tất cả công việc bạn đã làm trước đó.', // According to the mining mỏ, it looks like you have 1.61 bitcoin to claim from all the work you did earlier. 
       list_one: 'Khóa riêng', // Private key
       list_two: 'Khóa chung', // Public key
       paragraph_two:
-   "Nhưng đợi đã, bạn thậm chí còn không có ví đựng tiền mã hóa! Bạn có thể tự hỏi mình có thể mua ví ở đâu. Mặc dù bạn có thể mua phần cứng để chế tạo một số loại ví, nhưng bạn thực sự có thể chỉ cần tạo một ví bằng máy tính hoặc thiết bị di động của mình. Hãy làm điều đó!",      // But wait, you don’t even have a wallet! You might be wondering where you can buy one. While you can purchase hardware to build certain kinds of wallets, you can actually just make one with your computer or mobile device. Let’s do it!
+         "Nhưng đợi đã, bạn thậm chí còn không có ví đựng tiền mã hóa! Bạn có thể tự hỏi mình có thể mua ví ở đâu. Mặc dù bạn có thể mua phần cứng để chế tạo một số loại ví, nhưng bạn thực sự có thể chỉ cần tạo một ví bằng máy tính hoặc thiết bị di động của mình. Hãy làm điều đó!",      // But wait, you don’t even have a wallet! You might be wondering where you can buy one. While you can purchase hardware to build certain kinds of wallets, you can actually just make one with your computer or mobile device. Let’s do it!
       paragraph_three:
-   'Nếu bạn đã đăng ký tài khoản tại bất kỳ thời điểm nào, bạn đã nhận được thứ gọi là mã cá nhân. Trong mật mã học, đây được gọi là “khóa riêng” và thường là một phần của một cặp:', // If you signed up for an account at any point, you got something called a personal code. In cryptography, this is called a “private key” and it is often part of a pair:
+         'Nếu bạn đã đăng ký tài khoản tại bất kỳ thời điểm nào, bạn đã nhận được thứ gọi là mã cá nhân. Trong mật mã học, đây được gọi là “khóa riêng” và thường là một phần của một cặp:', // If you signed up for an account at any point, you got something called a personal code. In cryptography, this is called a “private key” and it is often part of a pair:
       paragraph_four:
-   'Chỉ cần một cặp khóa duy nhất là tất cả những gì cần thiết để tạo một ví tiền và kiểm soát các quỹ bên trong nó. Khi bạn muốn chi tiêu bitcoin, bạn sử dụng khóa riêng. Khi bạn muốn nhận bitcoin, bạn sử dụng khóa chung.', // A single key pair is all that’s needed to create a wallet and control the funds within it. When you want to spend bitcoin, you use the private key. When you want to receive bitcoin, you use the public key.
+         'Chỉ cần một cặp khóa duy nhất là tất cả những gì cần thiết để tạo một ví tiền và kiểm soát các quỹ bên trong nó. Khi bạn muốn chi tiêu bitcoin, bạn sử dụng khóa riêng. Khi bạn muốn nhận bitcoin, bạn sử dụng khóa chung.', // A single key pair is all that’s needed to create a wallet and control the funds within it. When you want to spend bitcoin, you use the private key. When you want to receive bitcoin, you use the public key.
     },
 
     public_key_two: {
       title: 'Khóa chung', // Public key
       nav_title: 'Đường cong elip trong mật mã học', // Elliptic curve cryptography
       paragraph_one:
-   'Vì vậy, chúng ta có khóa riêng, đó là mã cá nhân bạn nhận được khi đăng ký. Làm thế nào để chúng ta tạo khóa chung từ khóa riêng?',// So, we have the private key, it’s the personal code you got when you signed up. How do we generate a public key from it?
+         'Vì vậy, chúng ta có khóa riêng, đó là mã cá nhân bạn nhận được khi đăng ký. Làm thế nào để chúng ta tạo khóa chung từ khóa riêng?',// So, we have the private key, it’s the personal code you got when you signed up. How do we generate a public key from it?
       paragraph_two:
-   'Để làm được điều đó, chúng ta cần xem qua một nhánh mật mã hấp dẫn được gọi là đường cong elip. Đây được gọi là đường cong elip trong mật mã học, hay ECC cho ngắn gọn.',// To do that, we need to take a peek at a fascinating branch of cryptography called elliptic curves. This is called Elliptic Curve Cryptography, or ECC for short.
+         'Để làm được điều đó, chúng ta cần xem qua một nhánh mật mã hấp dẫn được gọi là đường cong elip. Đây được gọi là đường cong elip trong mật mã học, hay ECC cho ngắn gọn.',// To do that, we need to take a peek at a fascinating branch of cryptography called elliptic curves. This is called Elliptic Curve Cryptography, or ECC for short.
       paragraph_three:
-   'ECC liên quan đến việc lấy các điểm nhất định trên đường cong elip và thực hiện phép cộng và phép nhân trên các điểm đó.',// ECC involves taking certain points on an elliptic curve and performing addition and multiplication on the points.
+         'ECC liên quan đến việc lấy các điểm nhất định trên đường cong elip và thực hiện phép cộng và phép nhân trên các điểm đó.',// ECC involves taking certain points on an elliptic curve and performing addition and multiplication on the points.
       paragraph_four:
-   'Bitcoin sử dụng một đường cong cụ thể được gọi là secp256k1. Trong hình, bạn thấy một phiên bản đơn giản hóa dễ hình dung hơn, nhưng vẫn tuân theo các quy tắc toán học giống nhau.', // Bitcoin uses a specific curve called secp256k1. In the image, you see a simplified version that is easier to visualize, but follows the same mathematical rules.
+         'Bitcoin sử dụng một đường cong cụ thể được gọi là secp256k1. Trong hình, bạn thấy một phiên bản đơn giản hóa dễ hình dung hơn, nhưng vẫn tuân theo các quy tắc toán học giống nhau.', // Bitcoin uses a specific curve called secp256k1. In the image, you see a simplified version that is easier to visualize, but follows the same mathematical rules.
       paragraph_five:
-   'Chúng ta bắt đầu với một điểm cụ thể trên đường cong này, được gọi là', // We start with a specific point on this curve, called the
+         'Chúng ta bắt đầu với một điểm cụ thể trên đường cong này, được gọi là', // We start with a specific point on this curve, called the
       tooltip_one: {
- highlighted: 'Điểm khởi tạo', // Generator Point
- question: 'Điểm khởi tạo là gì?', // What is the Generator Point?
- link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%20is%20the%20Generator%20point%203F',
+       highlighted: 'Điểm khởi tạo', // Generator Point
+       question: 'Điểm khởi tạo là gì?', // What is the Generator Point?
+       link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%20is%20the%20Generator%20point%203F',
       },
     },
 
@@ -810,16 +810,16 @@ const translations = {
       title: 'Khóa chung', // Public key
       nav_title: 'Tính toán khóa chung', // Calculate the public key
       paragraph_one:
-   'Để suy ra khóa chung từ khóa riêng, chúng ta thực hiện một hoạt động đường cong elip lặp đi lặp lại với điểm tạo. Điểm khởi tạo là một điểm cụ thể trên đường cong. Giá trị của nó là một phần của tiêu chuẩn secp256k1 và nó luôn giống nhau:',      // To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point. The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:
+         'Để suy ra khóa chung từ khóa riêng, chúng ta thực hiện một hoạt động đường cong elip lặp đi lặp lại với điểm tạo. Điểm khởi tạo là một điểm cụ thể trên đường cong. Giá trị của nó là một phần của tiêu chuẩn secp256k1 và nó luôn giống nhau:',      // To derive a public key from a private key, we perform an elliptic curve operation repeatedly with the generator point. The generator point is a specific point on the curve. Its value is part of the secp256k1 standard and it’s always the same:
       paragraph_two:
-   'Các phép toán trên đường cong elip tương tự như phép cộng. Do đó, việc lặp lại các phép toán đó tương tự như phép nhân. Chúng ta sử dụng ký hiệu * để mô tả thuật toán, trong đó `k` là khóa riêng và `P` là khóa chung tương ứng:',// Mathematical operations on an elliptic curve are similar to addition. Therefore, repetition of those operations is similar to multiplication. We use the * symbol to describe the algorithm, where `k` is the private key and `P` is the corresponding public key:
+         'Các phép toán trên đường cong elip tương tự như phép cộng. Do đó, việc lặp lại các phép toán đó tương tự như phép nhân. Chúng ta sử dụng ký hiệu * để mô tả thuật toán, trong đó `k` là khóa riêng và `P` là khóa chung tương ứng:',// Mathematical operations on an elliptic curve are similar to addition. Therefore, repetition of those operations is similar to multiplication. We use the * symbol to describe the algorithm, where `k` is the private key and `P` is the corresponding public key:
       python: {
- paragraph_three:
-   'Hoàn thành hàm <span className="text-green">privatekey_to_publickey()</span>  chấp nhận khóa riêng dưới dạng chuỗi được mã hóa hex và trả về khóa chung tương ứng dưới dạng đối tượng GE (Group Element).',  // Complete the function <span className="text-green">privatekey_to_publickey()</span>  which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.
+       paragraph_three:
+         'Hoàn thành hàm <span className="text-green">privatekey_to_publickey()</span>  chấp nhận khóa riêng dưới dạng chuỗi được mã hóa hex và trả về khóa chung tương ứng dưới dạng đối tượng GE (Group Element).',  // Complete the function <span className="text-green">privatekey_to_publickey()</span>  which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.
       },
       javascript: {
- paragraph_three:
-   'Hoàn thành hàm <span className="text-green">privateKeyToPublicKey()</span>  chấp nhận khóa riêng dưới dạng chuỗi được mã hóa hex và trả về khóa chung tương ứng dưới dạng đối tượng GE (Group Element).',  // Complete the function <span className="text-green">privateKeyToPublicKey()</span>  which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.
+       paragraph_three:
+         'Hoàn thành hàm <span className="text-green">privateKeyToPublicKey()</span>  chấp nhận khóa riêng dưới dạng chuỗi được mã hóa hex và trả về khóa chung tương ứng dưới dạng đối tượng GE (Group Element).',  // Complete the function <span className="text-green">privateKeyToPublicKey()</span>  which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.
       },
       paragraph_four: 'Dưới đây là một số gợi ý chuyển đổi kiểu để giúp bạn bắt đầu:',// Here are some type-conversion hints to get you started:
       success: 'Tuyệt vời! Khóa chung đó khá dài. Hãy thử nén nó!'// Good job! That public key is pretty long. Let’s try to compress it!
@@ -829,13 +829,13 @@ const translations = {
       title: 'Khóa chung', // Public key
       nav_title: 'Nén khóa chung', // Compress the public key
       paragraph_one:
-   'Khóa chung có tọa độ x và y với tổng cộng 64 byte. Điều này có thể được nén thành 33 byte bằng cách xóa tọa độ y và thêm vào trước một byte siêu dữ liệu. Byte đó sẽ chỉ ra xem tọa độ Y là chẵn hay lẻ. Vì phương trình đường cong elip chỉ có hai biến, nên khóa chung đầy đủ có thể được tính toán sau đó bởi người xác thực chỉ bằng cách sử dụng x và siêu dữ liệu:',      // The public key has an x and y coordinate for a total of 64 bytes. This can be compressed into 33 bytes by removing the y coordinate and prepending a single byte of metadata. That byte will indicate if the Y coordinate is even or odd. Because the elliptic curve equation only has two variables, the complete public key can be computed later by the verifier using only x and the metadata:
+         'Khóa chung có tọa độ x và y với tổng cộng 64 byte. Điều này có thể được nén thành 33 byte bằng cách xóa tọa độ y và thêm vào trước một byte siêu dữ liệu. Byte đó sẽ chỉ ra xem tọa độ Y là chẵn hay lẻ. Vì phương trình đường cong elip chỉ có hai biến, nên khóa chung đầy đủ có thể được tính toán sau đó bởi người xác thực chỉ bằng cách sử dụng x và siêu dữ liệu:',      // The public key has an x and y coordinate for a total of 64 bytes. This can be compressed into 33 bytes by removing the y coordinate and prepending a single byte of metadata. That byte will indicate if the Y coordinate is even or odd. Because the elliptic curve equation only has two variables, the complete public key can be computed later by the verifier using only x and the metadata:
       paragraph_two_javascript:
-   'Byte siêu dữ liệu phải là `2` nếu y là chẵn và `3` nếu y là lẻ. Hoàn thành hàm <span className="text-green">compressPublicKey()</span> để chấp nhận khóa chung và trả về chuỗi hex 33 byte đại diện cho khóa chung được nén.',      // The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function <span className="text-green">compressPublicKey()</span> to accept a public key and return a 33 byte hex string representing the compressed public key.
+         'Byte siêu dữ liệu phải là `2` nếu y là chẵn và `3` nếu y là lẻ. Hoàn thành hàm <span className="text-green">compressPublicKey()</span> để chấp nhận khóa chung và trả về chuỗi hex 33 byte đại diện cho khóa chung được nén.',      // The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function <span className="text-green">compressPublicKey()</span> to accept a public key and return a 33 byte hex string representing the compressed public key.
       paragraph_two_python:
-   'Byte siêu dữ liệu phải là `2` nếu y là chẵn và `3` nếu y là lẻ. Hoàn thành hàm <span className="text-green">compress_publickey()</span> để chấp nhận khóa chung và trả về chuỗi hex 33 byte đại diện cho khóa chung được nén.',      // The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function <span className="text-green">compress_publickey()</span> to accept a public key and return a 33 byte hex string representing the compressed public key.
+         'Byte siêu dữ liệu phải là `2` nếu y là chẵn và `3` nếu y là lẻ. Hoàn thành hàm <span className="text-green">compress_publickey()</span> để chấp nhận khóa chung và trả về chuỗi hex 33 byte đại diện cho khóa chung được nén.',      // The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function <span className="text-green">compress_publickey()</span> to accept a public key and return a 33 byte hex string representing the compressed public key.
       success:
-   'Xuất sắc. Bây giờ chúng ta có khóa chung được nén của mình. Tiếp theo, chúng ta cần mã hóa nó và mã hóa nó ở định dạng thân thiện với con người.',      // Excellent. Now we have our compressed public key. Next we need to hash it and encode it in a human-friendly format.
+         'Xuất sắc. Bây giờ chúng ta có khóa chung được nén của mình. Tiếp theo, chúng ta cần mã hóa nó và mã hóa nó ở định dạng thân thiện với con người.',      // Excellent. Now we have our compressed public key. Next we need to hash it and encode it in a human-friendly format.
     },
 
     address_one: {
@@ -843,13 +843,13 @@ const translations = {
       nav_title: 'Một chiều', // A one way street
       heading: 'Làm tốt!', // Nice work!
       paragraph_one:
-   'Và ở đó bạn có nó! Khóa chung được nén của bạn! Có rất nhiều điều thú vị mà chúng ta có thể làm với nó, bao gồm cả việc tạo địa chỉ cho ví của chúng tôi. Chúng ta sẽ tìm hiểu về điều đó trong thử thách tiếp theo.',      // And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’ll learn about that in the next challenge.
+         'Và ở đó bạn có nó! Khóa chung được nén của bạn! Có rất nhiều điều thú vị mà chúng ta có thể làm với nó, bao gồm cả việc tạo địa chỉ cho ví của chúng tôi. Chúng ta sẽ tìm hiểu về điều đó trong thử thách tiếp theo.',      // And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’ll learn about that in the next challenge.
       paragraph_two:
-   'Lưu ý rằng việc tạo khóa chung là một chiều. Bạn không thể tìm ra khóa riêng được sử dụng để tạo khóa chung trừ khi bạn giải được một bài toán toán học khét tiếng được gọi là ',      // Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the
+         'Lưu ý rằng việc tạo khóa chung là một chiều. Bạn không thể tìm ra khóa riêng được sử dụng để tạo khóa chung trừ khi bạn giải được một bài toán toán học khét tiếng được gọi là ',      // Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the
       tooltip_one: {
- question: 'Vấn đề logarit rời rạc liên quan đến bitcoin như thế nào?', // How is the discrete log problem relevant to bitcoin?
- link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520the%2520discrete%2520log%2520problem%2520relevant%2520to%2520bitcoin%253F',
- highlighted: 'vấn đề logarit rời rạc' // discrete log problem
+         question: 'Vấn đề logarit rời rạc liên quan đến bitcoin như thế nào?', // How is the discrete log problem relevant to bitcoin?
+         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520the%2520discrete%2520log%2520problem%2520relevant%2520to%2520bitcoin%253F',
+         highlighted: 'vấn đề logarit rời rạc' // discrete log problem
       },
     },
 
@@ -857,18 +857,18 @@ const translations = {
       title: 'Địa chỉ', // Address
       nav_title: 'Mã hóa khóa chung được nén', // Hash the compressed public key
       paragraph_one:
-   'Bạn có nhớ thử thách mã hóa không? Hóa ra bạn có thể tạo địa chỉ bitcoin đơn giản nhất bằng cách mã hóa khóa chung được nén của mình. Bitcoin sử dụng hai thuật toán mã hóa khác nhau cho việc này: SHA-256 và RIPEMD-160.',// Do you remember the hashing challenge? It turns out you can generate the simplest type of bitcoin address by hashing your compressed public key. Bitcoin uses two different hashing algorithms for this: SHA-256 and RIPEMD-160.
+         'Bạn có nhớ thử thách mã hóa không? Hóa ra bạn có thể tạo địa chỉ bitcoin đơn giản nhất bằng cách mã hóa khóa chung được nén của mình. Bitcoin sử dụng hai thuật toán mã hóa khác nhau cho việc này: SHA-256 và RIPEMD-160.',// Do you remember the hashing challenge? It turns out you can generate the simplest type of bitcoin address by hashing your compressed public key. Bitcoin uses two different hashing algorithms for this: SHA-256 and RIPEMD-160.
       paragraph_two: 'Các bước:', // Steps:
       paragraph_three:
-   '<span className="indent-48">1. Thực hiện hàm mã hóa SHA-256 trên khóa chung được nén của bạn.</span>',// <span className="indent-48">1. Perform a SHA-256 hash on your compressed public key.</span>
+         '<span className="indent-48">1. Thực hiện hàm mã hóa SHA-256 trên khóa chung được nén của bạn.</span>',// <span className="indent-48">1. Perform a SHA-256 hash on your compressed public key.</span>
       paragraph_four:
-   '<span className="indent-48">2. Thực hiện hàm mã hóa RIPEMD-160 trên tóm tắt đầu ra SHA-256 đó. Kết quả cuối cùng sẽ là 20 byte được mã hóa dưới dạng chuỗi hex.</span>',// <span className="indent-48">2. Perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be 20 bytes encoded as a hex string.</span>
+         '<span className="indent-48">2. Thực hiện hàm mã hóa RIPEMD-160 trên tóm tắt đầu ra SHA-256 đó. Kết quả cuối cùng sẽ là 20 byte được mã hóa dưới dạng chuỗi hex.</span>',// <span className="indent-48">2. Perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be 20 bytes encoded as a hex string.</span>
       paragraph_five:
-   'Hoàn thành một hàm chấp nhận khóa chung được nén 33 byte dưới dạng chuỗi hex và trả về mã hóa khóa chung 20 byte dưới dạng chuỗi hex.',// Complete a function that accepts a 33-byte compressed public key as a hex string and returns a 20-byte public key hash as a hex string.
+         'Hoàn thành một hàm chấp nhận khóa chung được nén 33 byte dưới dạng chuỗi hex và trả về mã hóa khóa chung 20 byte dưới dạng chuỗi hex.',// Complete a function that accepts a 33-byte compressed public key as a hex string and returns a 20-byte public key hash as a hex string.
       paragraph_six:
-   'Đây là tài liệu cho các thư viện mã hóa hóa mà chúng tôi đã nhập cho bạn:\n'+ // Here is the documentation for the hashing libraries we imported for you:\n'
-   '<Link href="https://nodejs.org/api/crypto.html#class-hash" target="_blank" className="underline">JavaScript: crypto</Link>\n' +
-   '<Link href="https://docs.python.org/3/library/hashlib.html#usage" target="_blank" className="underline">Python: hashlib</Link>', 
+         'Đây là tài liệu cho các thư viện mã hóa hóa mà chúng tôi đã nhập cho bạn:\n'+ // Here is the documentation for the hashing libraries we imported for you:\n'
+         '<Link href="https://nodejs.org/api/crypto.html#class-hash" target="_blank" className="underline">JavaScript: crypto</Link>\n' +
+         '<Link href="https://docs.python.org/3/library/hashlib.html#usage" target="_blank" className="underline">Python: hashlib</Link>', 
       success: 'Tuyệt vời. Thêm một bước nữa và bạn sẽ có địa chỉ ví của mình.', // Great. One more step and you will have your wallet address.
     },
 
@@ -876,36 +876,36 @@ const translations = {
       title: 'Địa chỉ', // Address
       nav_title: 'Lấy địa chỉ P2WPKH', // Get a P2WPKH address
       paragraph_one:
-   'Có nhiều loại địa chỉ bitcoin khác nhau. Trong bài tập trước, chúng tôi đã tạo một số mã hóa khóa chung được nén 20 byte. Bây giờ, chúng tôi muốn mã hóa mã hóa đó thành địa chỉ Pay-to-Witness-Public-Key-Hash (p2wpkh) trên mạng Testnet.', // There are multiple types of bitcoin addresses. In the previous exercise, we created a 20-byte compressed public key hash. Now, we would like to encode that hash into a Pay-to-Witness-Public-Key-Hash (p2wpkh) address on the Testnet network.
+         'Có nhiều loại địa chỉ bitcoin khác nhau. Trong bài tập trước, chúng tôi đã tạo một số mã hóa khóa chung được nén 20 byte. Bây giờ, chúng tôi muốn mã hóa mã hóa đó thành địa chỉ Pay-to-Witness-Public-Key-Hash (p2wpkh) trên mạng Testnet.', // There are multiple types of bitcoin addresses. In the previous exercise, we created a 20-byte compressed public key hash. Now, we would like to encode that hash into a Pay-to-Witness-Public-Key-Hash (p2wpkh) address on the Testnet network.
       paragraph_two:
-   'Đầu tiên, chúng ta cần thêm một số phiên bản chứng nhân là `0` vào mã hóa. 21 byte kết quả này được gọi là <span className="font-bold">chương trình chứng nhân</span>.', // First we need to append a witness version number of `0` to the hash. These resulting 21 bytes are known as the <span className="font-bold">witness program</span>.
+         'Đầu tiên, chúng ta cần thêm một số phiên bản chứng nhân là `0` vào mã hóa. 21 byte kết quả này được gọi là <span className="font-bold">chương trình chứng nhân</span>.', // First we need to append a witness version number of `0` to the hash. These resulting 21 bytes are known as the <span className="font-bold">witness program</span>.
       paragraph_three:
-   'Sau đó, chương trình chứng nhân được mã hóa thành định dạng thân thiện với con người được gọi là <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>. Thực hiện việc này sẽ thêm tiền tố có thể đọc được của con người và kiểm tra tổng hợp vào dữ liệu.', // Then, the witness program is encoded into a human-friendly format called <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>. Doing this appends a human-readable prefix and a checksum to the data.
+         'Sau đó, chương trình chứng nhân được mã hóa thành định dạng thân thiện với con người được gọi là <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>. Thực hiện việc này sẽ thêm tiền tố có thể đọc được của con người và kiểm tra tổng hợp vào dữ liệu.', // Then, the witness program is encoded into a human-friendly format called <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>. Doing this appends a human-readable prefix and a checksum to the data.
       paragraph_four: 'Tiền tố được xác định bởi mạng:', // The prefix is determined by the network:
       table_heading: {
- item_one: 'Mạng', // Network
- item_two: 'Tiền tố có thể đọc được của con người', // Human-Readable Prefix
+       item_one: 'Mạng', // Network
+       item_two: 'Tiền tố có thể đọc được của con người', // Human-Readable Prefix
       },
       table_rows: {
- key_one: 'Mainnet',
- value_one: 'bc',
- key_two: 'Testnet',
- value_two: 'tb',
- key_three: 'Regtest',
- value_three: 'bcrt',
+       key_one: 'Mainnet',
+       value_one: 'bc',
+       key_two: 'Testnet',
+       value_two: 'tb',
+       key_three: 'Regtest',
+       value_three: 'bcrt',
       },
       paragraph_five:
-   "Vì chúng tôi đang tạo địa chỉ Testnet, chúng tôi sẽ sử dụng tiền tố 'tb'.", // Since we're making a Testnet address, we will be using the 'tb' prefix.
+         "Vì chúng tôi đang tạo địa chỉ Testnet, chúng tôi sẽ sử dụng tiền tố 'tb'.", // Since we're making a Testnet address, we will be using the 'tb' prefix.
       paragraph_six:
-   'Sau khi dữ liệu được mã hóa thành bech32, chúng ta còn lại một địa chỉ bitcoin!', // After the data has been encoded to bech32, we are left with a bitcoin address!
+         'Sau khi dữ liệu được mã hóa thành bech32, chúng ta còn lại một địa chỉ bitcoin!', // After the data has been encoded to bech32, we are left with a bitcoin address!
       paragraph_seven:
-   'Hoàn thành hàm để tạo địa chỉ bech32 từ mã hóa khóa chung được nén. Bắt đầu bằng cách tạo chương trình chứng nhân, sau đó chuyển đổi chương trình thành địa chỉ bằng cách sử dụng thư viện bech32 đã được nhập cho bạn.', // Complete the function to create a bech32 address from a compressed public key hash. Start by making the witness program, then convert the program to an address by using the bech32 library that has already been imported for you.
+         'Hoàn thành hàm để tạo địa chỉ bech32 từ mã hóa khóa chung được nén. Bắt đầu bằng cách tạo chương trình chứng nhân, sau đó chuyển đổi chương trình thành địa chỉ bằng cách sử dụng thư viện bech32 đã được nhập cho bạn.', // Complete the function to create a bech32 address from a compressed public key hash. Start by making the witness program, then convert the program to an address by using the bech32 library that has already been imported for you.
       paragraph_eight:
-   'Bạn có thể cần nghiên cứu sâu về thư viện bech32 và đọc mã để tìm các hàm phù hợp để sử dụng:\n', // You may need to dig into the bech32 library and read the code to find the right functions to use:
+         'Bạn có thể cần nghiên cứu sâu về thư viện bech32 và đọc mã để tìm các hàm phù hợp để sử dụng:\n', // You may need to dig into the bech32 library and read the code to find the right functions to use:
       paragraph_eight_javascript:
-   '<Link href="https://github.com/saving-satoshi/bech32js/blob/main/bech32.js" target="_blank" className="underline">JavaScript: @savingsatoshi/bech32js</Link>\n',
+         '<Link href="https://github.com/saving-satoshi/bech32js/blob/main/bech32.js" target="_blank" className="underline">JavaScript: @savingsatoshi/bech32js</Link>\n',
       paragraph_eight_python:
-   '<Link href="https://github.com/saving-satoshi/bech32py/blob/main/bech32py/bech32.py" target="_blank" className="underline">Python: savingsatoshi_bech32py</Link>',
+         '<Link href="https://github.com/saving-satoshi/bech32py/blob/main/bech32py/bech32.py" target="_blank" className="underline">Python: savingsatoshi_bech32py</Link>',
       success: 'Bây giờ bạn đã có một địa chỉ mà bitcoin được khai thác(đào) khối có thể được gửi đến.', // Now you have an address that mined bitcoin can be sent to.
     },
 
@@ -915,47 +915,47 @@ const translations = {
       heading: 'Thành công!', // Success!
       paragraph_one: 'Bạn đã tạo ra ví bitcoin của riêng mình!', // You created your very own bitcoin wallet!
       paragraph_two:
-   'Bạn rút bitcoin từ mỏ khai thác(pool) vào ví mà bạn vừa tạo. Bây giờ bạn đã được tài trợ đầy đủ và sẵn sàng cho bất cứ điều gì mà Vanderpoole và BitRey ném vào bạn tiếp theo.', // You withdraw the bitcoin from the mining mỏ into the wallet you just created. You are now fully funded and ready for whatever Vanderpoole and BitRey throw at you next.
+         'Bạn rút bitcoin từ mỏ khai thác(pool) vào ví mà bạn vừa tạo. Bây giờ bạn đã được tài trợ đầy đủ và sẵn sàng cho bất cứ điều gì mà Vanderpoole và BitRey ném vào bạn tiếp theo.', // You withdraw the bitcoin from the mining mỏ into the wallet you just created. You are now fully funded and ready for whatever Vanderpoole and BitRey throw at you next.
     },
     resources: {
       public_key_three: {
- generator_point_heading: 'Điểm khởi tạo', // Generator point
- generator_point_paragraph:
-   'Một điểm cụ thể trên đường cong secp256k1. Giá trị của nó là một phần của tiêu chuẩn secp256k1 và nó luôn giống nhau. Điểm này không khác gì các điểm khác trên đường cong, nhưng nó được đồng ý là điểm bắt đầu tiêu chuẩn cho các phép tính. Không ai thực sự biết tại sao điểm cụ thể này được chọn.', // A specific point on the secp256k1 curve. Its value is part of the secp256k1 standard and it’s always the same. This point is not different from other points on the curve, but it is agreed up on as the standard starting point for calculations. No one really knows why this particular point was chosen.
- elliptic_curve_operations_heading: 'Các phép toán trên đường cong Elíp', // Elliptic curve operations
- elliptic_curve_operations_paragraph:
-   'Đường cong Elíp có các quy tắc toán học riêng của chúng, vì vậy các phép toán đơn giản như cộng và nhân hoạt động khác nhau. Để đơn giản và ngắn gọn, các ký hiệu đã thiết lập được sử dụng lại, chẳng hạn như sử dụng “*” cho các phép toán tương tự như phép nhân.', // Elliptic curves have their own mathematical rules, so simple operations like addition and multiplication work differently. For simplicity and brevity, established symbols are re-used, like using a “*” for operations that are similar to multiplication.
- discrete_log_heading: 'Thuật toán Logarit rời rạc', // Discrete logarithm
- discrete_log_paragraph:
-   'Một hệ thống toán học mà bạn có thể nhân nhưng không thể chia. Một phép ẩn dụ đơn giản cho điều này là nhìn vào đồng hồ. Ba giờ sau 11 giờ là 2 giờ. Vì vậy, chúng ta có thể nói “11 + 3 = 2”. Tuy nhiên, nếu muốn thực hiện “2-x = 11” và giải cho x, bạn sẽ có vô số câu trả lời khả thi (3, 15, 27, 39 ...). Tìm hiểu thêm trên <Link href="https://en.wikipedia.org/wiki/Discrete_logarithm" className="underline">wikipedia</Link>.', // A mathematical system where you can, for example, multiply but cannot divide. A simple metaphor for this is looking at a clock. Three hours past 11 o’clock is 2 o’clock. So we could say “11+3=2”. However if wanted to perform “2-x=11” and solve for x, you would have infinite possible answers (3, 15, 27, 39...). More on <Link href="https://en.wikipedia.org/wiki/Discrete_logarithm" className="underline">wikipedia</Link>.
- tip_one:
-   'Phép nhân với các điểm trên đường cong Elíp không giống như phép nhân thông thường mà bạn đã quen thuộc, phép nhân với các số thông thường. Vậy làm thế nào để thực hiện phép nhân? Lưu ý rằng điểm tạo, <span className="p-1 font-mono bg-[#0000004D] m-1">G</span>, thuộc kiểu <span className="p-1 font-mono bg-[#0000004D] m-1">secp256k1.GE</span>. Hãy xem lớp đó để xem bạn có thể gọi các phương thức gì trên nó.', // Multiplication with elliptic curve points is not the same as the kind of multiplication you are used to, the one with regular numbers. So how do you perform multiplication? Notice that the generator point, <span className="p-1 font-mono bg-[#0000004D] m-1">G</span> is of the type <span className="p-1 font-mono bg-[#0000004D] m-1">secp256k1.GE</span>. Have a look at that class to see what methods you can invoke on it.
- tip_two:
-   'Mặc dù khóa riêng được chấp nhận ở định dạng hex (hệ thập lục phân), nhưng nó cần được chuyển đổi thành số (BigInt nếu bạn đang sử dụng JS) trước khi nhân với điểm tạo.', // While the private key is accepted in hex format, it needs to be converted to a number (BigInt if you’re using JS) before multiplying with the generator point.
+       generator_point_heading: 'Điểm khởi tạo', // Generator point
+       generator_point_paragraph:
+         'Một điểm cụ thể trên đường cong secp256k1. Giá trị của nó là một phần của tiêu chuẩn secp256k1 và nó luôn giống nhau. Điểm này không khác gì các điểm khác trên đường cong, nhưng nó được đồng ý là điểm bắt đầu tiêu chuẩn cho các phép tính. Không ai thực sự biết tại sao điểm cụ thể này được chọn.', // A specific point on the secp256k1 curve. Its value is part of the secp256k1 standard and it’s always the same. This point is not different from other points on the curve, but it is agreed up on as the standard starting point for calculations. No one really knows why this particular point was chosen.
+       elliptic_curve_operations_heading: 'Các phép toán trên đường cong Elíp', // Elliptic curve operations
+       elliptic_curve_operations_paragraph:
+         'Đường cong Elíp có các quy tắc toán học riêng của chúng, vì vậy các phép toán đơn giản như cộng và nhân hoạt động khác nhau. Để đơn giản và ngắn gọn, các ký hiệu đã thiết lập được sử dụng lại, chẳng hạn như sử dụng “*” cho các phép toán tương tự như phép nhân.', // Elliptic curves have their own mathematical rules, so simple operations like addition and multiplication work differently. For simplicity and brevity, established symbols are re-used, like using a “*” for operations that are similar to multiplication.
+       discrete_log_heading: 'Thuật toán Logarit rời rạc', // Discrete logarithm
+       discrete_log_paragraph:
+         'Một hệ thống toán học mà bạn có thể nhân nhưng không thể chia. Một phép ẩn dụ đơn giản cho điều này là nhìn vào đồng hồ. Ba giờ sau 11 giờ là 2 giờ. Vì vậy, chúng ta có thể nói “11 + 3 = 2”. Tuy nhiên, nếu muốn thực hiện “2-x = 11” và giải cho x, bạn sẽ có vô số câu trả lời khả thi (3, 15, 27, 39 ...). Tìm hiểu thêm trên <Link href="https://en.wikipedia.org/wiki/Discrete_logarithm" className="underline">wikipedia</Link>.', // A mathematical system where you can, for example, multiply but cannot divide. A simple metaphor for this is looking at a clock. Three hours past 11 o’clock is 2 o’clock. So we could say “11+3=2”. However if wanted to perform “2-x=11” and solve for x, you would have infinite possible answers (3, 15, 27, 39...). More on <Link href="https://en.wikipedia.org/wiki/Discrete_logarithm" className="underline">wikipedia</Link>.
+       tip_one:
+         'Phép nhân với các điểm trên đường cong Elíp không giống như phép nhân thông thường mà bạn đã quen thuộc, phép nhân với các số thông thường. Vậy làm thế nào để thực hiện phép nhân? Lưu ý rằng điểm tạo, <span className="p-1 font-mono bg-[#0000004D] m-1">G</span>, thuộc kiểu <span className="p-1 font-mono bg-[#0000004D] m-1">secp256k1.GE</span>. Hãy xem lớp đó để xem bạn có thể gọi các phương thức gì trên nó.', // Multiplication with elliptic curve points is not the same as the kind of multiplication you are used to, the one with regular numbers. So how do you perform multiplication? Notice that the generator point, <span className="p-1 font-mono bg-[#0000004D] m-1">G</span> is of the type <span className="p-1 font-mono bg-[#0000004D] m-1">secp256k1.GE</span>. Have a look at that class to see what methods you can invoke on it.
+       tip_two:
+         'Mặc dù khóa riêng được chấp nhận ở định dạng hex (hệ thập lục phân), nhưng nó cần được chuyển đổi thành số (BigInt nếu bạn đang sử dụng JS) trước khi nhân với điểm tạo.', // While the private key is accepted in hex format, it needs to be converted to a number (BigInt if you’re using JS) before multiplying with the generator point.
       },
       public_key_four: {
- y_coordinate_compression_heading: 'Nén khóa chung', // Y-coordinate compression
- y_coordinate_compression_paragraph:
-   'Khi bạn tính toán phép cộng điểm trên đường cong elliptic, bạn sử dụng tọa độ của hai điểm để tìm tọa độ của điểm thứ ba nằm trên đường cong. Tuy nhiên, thường có hai tọa độ y có thể có cho bất kỳ tọa độ x nào (trừ một số trường hợp đặc biệt). Khi nén khóa chung, bạn chọn một trong những tọa độ y này và chỉ bao gồm tọa độ x cùng với một chỉ báo về tọa độ y nào sẽ được sử dụng, trong trường hợp này, chúng tôi sử dụng siêu dữ liệu được thêm vào trước để chỉ ra tọa độ y.', // When you calculate a point addition on an elliptic curve, you use the coordinates of two points to find the coordinates of a third point that lies on the curve. However, there are usually two possible y-coordinates for any given x-coordinate (except for certain special cases). When compressing a public key, you choose one of these y-coordinates and include only the x-coordinate along with an indicator of which y-coordinate to use, in this case we use the appended metadata to indicate the y-coordinate.
- tip: 'Thử thách này thực sự khá đơn giản, chúng ta chỉ thực sự cố gắng xác định xem tọa độ y là chẵn hay lẻ để chúng ta có thể thêm vào trước siêu dữ liệu đó vào đầu khóa chung của chúng ta.', // This challenge is actually quite simple, we are only really trying to determine whether the y-coordinate is even or odd so that we can prepend that metadata to the front of our public key.
+       y_coordinate_compression_heading: 'Nén khóa chung', // Y-coordinate compression
+       y_coordinate_compression_paragraph:
+         'Khi bạn tính toán phép cộng điểm trên đường cong elliptic, bạn sử dụng tọa độ của hai điểm để tìm tọa độ của điểm thứ ba nằm trên đường cong. Tuy nhiên, thường có hai tọa độ y có thể có cho bất kỳ tọa độ x nào (trừ một số trường hợp đặc biệt). Khi nén khóa chung, bạn chọn một trong những tọa độ y này và chỉ bao gồm tọa độ x cùng với một chỉ báo về tọa độ y nào sẽ được sử dụng, trong trường hợp này, chúng tôi sử dụng siêu dữ liệu được thêm vào trước để chỉ ra tọa độ y.', // When you calculate a point addition on an elliptic curve, you use the coordinates of two points to find the coordinates of a third point that lies on the curve. However, there are usually two possible y-coordinates for any given x-coordinate (except for certain special cases). When compressing a public key, you choose one of these y-coordinates and include only the x-coordinate along with an indicator of which y-coordinate to use, in this case we use the appended metadata to indicate the y-coordinate.
+       tip: 'Thử thách này thực sự khá đơn giản, chúng ta chỉ thực sự cố gắng xác định xem tọa độ y là chẵn hay lẻ để chúng ta có thể thêm vào trước siêu dữ liệu đó vào đầu khóa chung của chúng ta.', // This challenge is actually quite simple, we are only really trying to determine whether the y-coordinate is even or odd so that we can prepend that metadata to the front of our public key.
       },
       address_two: {
- hash_algo_heading: 'Thuật toán mã hóa SHA-256, RIPEMD-160', // SHA-256, RIPEMD-160
- hash_algo_paragraph:
-   'Các hàm mã hóa tóm tắt bất kỳ lượng dữ liệu nào ở bất kỳ loại nào và luôn trả về kết quả có cùng kích thước. Đối với SHA256, đó là 32 byte. Đối với RIPEMD-160, đó là 20 byte. Đầu ra là xác định (luôn có cùng đầu ra cho cùng một đầu vào) nhưng nếu không, không thể phân biệt với ngẫu nhiên. Các hàm mã hóa có hiệu quả giảm dữ liệu thành một dấu vân tay nhỏ nhất quán.', // Hash functions digest any amount of any kind of data and always return a result of the same size. For SHA256, it’s 32 bytes. For RIPEMD-160, it’s 20 bytes. The output is deterministic (always the same output for the same input) but otherwise, indistinguishable from random. Hash functions effectively reduce data to a small consistent fingerprint.
- tip_one:
-   'Khi tính toán mã hóa SHA-256, bạn sẽ cần đảm bảo mã hóa khóa nén của mình dưới dạng byte chứ không phải hex. Nếu bạn đang sử dụng JavaScript, điều này sẽ yêu cầu chuyển đổi chuỗi hex thành bộ đệm.', // When calculating the SHA-256 hash you will need to make sure to hash your compressed key as bytes not hex. If you are using JavaScript, this will require converting the hex string to a buffer.
- tip_two:
-   'Đảm bảo rằng bạn đang thực hiện các thuật toán mã hóa theo thứ tự chính xác!', // Make sure you are doing the hashing algorithms in the correct order!
+       hash_algo_heading: 'Thuật toán mã hóa SHA-256, RIPEMD-160', // SHA-256, RIPEMD-160
+       hash_algo_paragraph:
+         'Các hàm mã hóa tóm tắt bất kỳ lượng dữ liệu nào ở bất kỳ loại nào và luôn trả về kết quả có cùng kích thước. Đối với SHA256, đó là 32 byte. Đối với RIPEMD-160, đó là 20 byte. Đầu ra là xác định (luôn có cùng đầu ra cho cùng một đầu vào) nhưng nếu không, không thể phân biệt với ngẫu nhiên. Các hàm mã hóa có hiệu quả giảm dữ liệu thành một dấu vân tay nhỏ nhất quán.', // Hash functions digest any amount of any kind of data and always return a result of the same size. For SHA256, it’s 32 bytes. For RIPEMD-160, it’s 20 bytes. The output is deterministic (always the same output for the same input) but otherwise, indistinguishable from random. Hash functions effectively reduce data to a small consistent fingerprint.
+       tip_one:
+         'Khi tính toán mã hóa SHA-256, bạn sẽ cần đảm bảo mã hóa khóa nén của mình dưới dạng byte chứ không phải hex. Nếu bạn đang sử dụng JavaScript, điều này sẽ yêu cầu chuyển đổi chuỗi hex thành bộ đệm.', // When calculating the SHA-256 hash you will need to make sure to hash your compressed key as bytes not hex. If you are using JavaScript, this will require converting the hex string to a buffer.
+       tip_two:
+         'Đảm bảo rằng bạn đang thực hiện các thuật toán mã hóa theo thứ tự chính xác!', // Make sure you are doing the hashing algorithms in the correct order!
       },
       address_three: {
- wpkh_heading: 'Chứng nhận Địa chỉ Khóa Công khai/Witness Public Key Hash (wpkh)', // Witness Public Key Hash (wpkh) address
- wpkh_paragraph:
-   'Địa chỉ bitcoin là một chuỗi ký tự được thiết kế cho người dùng để xử lý. Nó ngắn gọn, dễ sao chép và dán và có một số loại kiểm tra tổng hợp tích hợp để đảm bảo rằng nó luôn được sao chép chính xác. Nó mã hóa an toàn một tập lệnh đầu ra Bitcoin mà người nhận có thể chi tiêu từ đó. Có một số loại tập lệnh đầu ra và một số cơ chế mã hóa. Trong thử thách này, chúng tôi mã hóa khóa chung được nén bằng bech32 để tạo ra cái gọi là địa chỉ mã hóa khóa chung chứng nhân.', // A bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There are several types of output scripts and several encoding mechanisms. In this challenge, we encode a compressed public key with bech32 to create what is called a witness public key hash address.
- network_heading: 'Mainnet, Testnet, Signet và Regtest', // Mainnet, Testnet, Signet, and Regtest
- network_paragraph:
-   'Khi phát triển phần mềm bitcoin, điều quan trọng là kiểm tra mã của bạn trước khi bạn tin tưởng tiền thật với nó! Một trong những cách đơn giản nhất để kiểm tra phần mềm bitcoin là sử dụng một blockchain khác với khối khởi tạo mới, nơi tiền không quan trọng, khai thác(đào) khối miễn phí và dễ dàng, và mọi thứ có thể được đặt lại bất kỳ lúc nào. Các chuỗi này được hỗ trợ bởi một mạng lưới các nút duy nhất không can thiệp vào các đồng tiền và nút thực trên Mainnet. Testnet và Signet là tên của hai blockchain bitcoin thay thế như vậy được duy trì song song với Mainnet trên quy mô toàn cầu. Regtest là một chế độ dành cho lập trình viên được thiết kế để chạy cục bộ mà không cần kết nối mạng nào cả.', // When developing bitcoin software, it is important to test your code before you trust real money with it! One of the simplest ways to test bitcoin software is to use a different blockchain with a new genesis block where the coins don’t matter, mining is free and easy, and everything can be reset at any time. These chains are supported by a unique network of nodes that does not interfere with the real coins and nodes on Mainnet. Testnet and Signet are the names of two such alternate bitcoin blockchains that are maintained in parallel with Mainnet on a global scale. Regtest is a developer mode designed to be run locally with no network connections needed at all.
- tip: 'Đảm bảo bạn xem xét kỹ thư viện bech32 để tìm các phương thức chính xác mà bạn có thể sử dụng.', // Make sure you take a close look at the bech32 library to find the exact methods you can use.
+       wpkh_heading: 'Chứng nhận Địa chỉ khóa chung/Witness Public Key Hash (wpkh)', // Witness Public Key Hash (wpkh) address
+       wpkh_paragraph:
+         'Địa chỉ bitcoin là một chuỗi ký tự được thiết kế cho người dùng để xử lý. Nó ngắn gọn, dễ sao chép và dán và có một số loại kiểm tra tổng hợp tích hợp để đảm bảo rằng nó luôn được sao chép chính xác. Nó mã hóa an toàn một tập lệnh đầu ra Bitcoin mà người nhận có thể chi tiêu từ đó. Có một số loại tập lệnh đầu ra và một số cơ chế mã hóa. Trong thử thách này, chúng tôi mã hóa khóa chung được nén bằng bech32 để tạo ra cái gọi là địa chỉ mã hóa khóa chung chứng nhân.', // A bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There are several types of output scripts and several encoding mechanisms. In this challenge, we encode a compressed public key with bech32 to create what is called a witness public key hash address.
+       network_heading: 'Mainnet, Testnet, Signet và Regtest', // Mainnet, Testnet, Signet, and Regtest
+       network_paragraph:
+         'Khi phát triển phần mềm bitcoin, điều quan trọng là kiểm tra mã của bạn trước khi bạn tin tưởng tiền thật với nó! Một trong những cách đơn giản nhất để kiểm tra phần mềm bitcoin là sử dụng một blockchain khác với khối khởi tạo mới, nơi tiền không quan trọng, khai thác(đào) khối miễn phí và dễ dàng, và mọi thứ có thể được đặt lại bất kỳ lúc nào. Các chuỗi này được hỗ trợ bởi một mạng lưới các nút duy nhất không can thiệp vào các đồng tiền và nút thực trên Mainnet. Testnet và Signet là tên của hai blockchain bitcoin thay thế như vậy được duy trì song song với Mainnet trên quy mô toàn cầu. Regtest là một chế độ dành cho lập trình viên được thiết kế để chạy cục bộ mà không cần kết nối mạng nào cả.', // When developing bitcoin software, it is important to test your code before you trust real money with it! One of the simplest ways to test bitcoin software is to use a different blockchain with a new genesis block where the coins don’t matter, mining is free and easy, and everything can be reset at any time. These chains are supported by a unique network of nodes that does not interfere with the real coins and nodes on Mainnet. Testnet and Signet are the names of two such alternate bitcoin blockchains that are maintained in parallel with Mainnet on a global scale. Regtest is a developer mode designed to be run locally with no network connections needed at all.
+       tip: 'Đảm bảo bạn xem xét kỹ thư viện bech32 để tìm các phương thức chính xác mà bạn có thể sử dụng.', // Make sure you take a close look at the bech32 library to find the exact methods you can use.
       },
     },
   },
@@ -972,33 +972,33 @@ const translations = {
       title: 'Phần mở đầu', // Intro
       nav_title: 'Đừng tin tưởng, hãy xác minh', // Don’t trust, verify
       paragraph_one:
- '—DEBORAH CHUNK: “Ông Vanderpoole. Gần đây, ông đã đưa ra một tuyên bố đáng kinh ngạc trên mạng xã hội rằng ông là chắt của Satoshi Nakamoto. Điều đó có đúng không? Điều này có đúng không?”', // —DEBORAH CHUNK: “Mr. Vanderpoole. You recently made a staggering claim on anti-social media that you are the great-grandson of Satoshi Nakamoto. Is that correct? Is this true?”
+          '—DEBORAH CHUNK: “Ông Vanderpoole. Gần đây, ông đã đưa ra một tuyên bố đáng kinh ngạc trên mạng xã hội rằng ông là chắt của Satoshi Nakamoto. Điều đó có đúng không? Điều này có đúng không?”', // —DEBORAH CHUNK: “Mr. Vanderpoole. You recently made a staggering claim on anti-social media that you are the great-grandson of Satoshi Nakamoto. Is that correct? Is this true?”
       paragraph_two:
- '—VANDERPOOLE: “Chắc chắn rồi, Deborah. Tôi đã giữ bí mật này trong một thời gian rất dài. Bạn thấy đấy, gia đình tôi đã truyền lại một đĩa CD-ROM trông không nổi bật qua nhiều thế hệ. Để giữ bí mật, chúng tôi dán nhãn cho nó là <span className="italic">Creed – My Own Prison</span>. Nó chứa các khóa riêng cho kho lưu trữ bitcoin khổng lồ của ông cố của tôi, Satoshi Nakamoto. Vì vậy, khi tôi phát biểu thay cho các máy(thợ) đào, hãy biết rằng tôi cũng phát biểu thay cho Satoshi Nakamoto.”', // —VANDERPOOLE: “It darn tootin’ is, Deborah. I have harbored this secret for a long, long time. You see, my family has passed an inconspicuous looking CD-ROM down for generations. To keep it secret, we labeled it <span className="italic">Creed – My Own Prison</span>. It contains the private keys to my great-grandfather Satoshi Nakamoto’s enormous bitcoin trove. So when I speak for miners, know that I speak for Satoshi Nakamoto.”
+          '—VANDERPOOLE: “Chắc chắn rồi, Deborah. Tôi đã giữ bí mật này trong một thời gian rất dài. Bạn thấy đấy, gia đình tôi đã truyền lại một đĩa CD-ROM trông không nổi bật qua nhiều thế hệ. Để giữ bí mật, chúng tôi dán nhãn cho nó là <span className="italic">Creed – My Own Prison</span>. Nó chứa các khóa riêng cho kho lưu trữ bitcoin khổng lồ của ông cố của tôi, Satoshi Nakamoto. Vì vậy, khi tôi phát biểu thay cho các máy(thợ) đào, hãy biết rằng tôi cũng phát biểu thay cho Satoshi Nakamoto.”', // —VANDERPOOLE: “It darn tootin’ is, Deborah. I have harbored this secret for a long, long time. You see, my family has passed an inconspicuous looking CD-ROM down for generations. To keep it secret, we labeled it <span className="italic">Creed – My Own Prison</span>. It contains the private keys to my great-grandfather Satoshi Nakamoto’s enormous bitcoin trove. So when I speak for miners, know that I speak for Satoshi Nakamoto.”
       paragraph_three:
- '—DEBORAH CHUNK: “Có cách nào để chúng tôi xác minh rằng ông thực sự sở hữu các khóa riêng của bitcoin của Satoshi Nakamoto không?”', // —DEBORAH CHUNK: “Is there any way we can verify that you actually own the private keys to Satoshi Nakamoto’s bitcoin?”
+          '—DEBORAH CHUNK: “Có cách nào để chúng tôi xác minh rằng ông thực sự sở hữu các khóa riêng của bitcoin của Satoshi Nakamoto không?”', // —DEBORAH CHUNK: “Is there any way we can verify that you actually own the private keys to Satoshi Nakamoto’s bitcoin?”
       paragraph_four:
- '—VANDERPOOLE: “Thực sự là có. Đó là một vấn đề đơn giản của mật mã khóa chung.”', // —VANDERPOOLE: “Indeed there is. It is a simple matter of public key cryptography.”
+          '—VANDERPOOLE: “Thực sự là có. Đó là một vấn đề đơn giản của mật mã khóa chung.”', // —VANDERPOOLE: “Indeed there is. It is a simple matter of public key cryptography.”
       paragraph_five:
- '—DEBORAH CHUNK: Nhưng tại sao lại đợi lâu như vậy mới tiết lộ điều gây chấn động trái đất này?', // —DEBORAH CHUNK: But why wait so long to make this earth-shattering disclosure?
+          '—DEBORAH CHUNK: Nhưng tại sao lại đợi lâu như vậy mới tiết lộ điều gây chấn động trái đất này?', // —DEBORAH CHUNK: But why wait so long to make this earth-shattering disclosure?
     },
     intro_two: {
       nav_title: 'Lời tuyên bố táo bạo của Vanderpoole', // Vanderpoole's bold claim
       paragraph_one:
- '—VANDERPOOLE: “Tôi không có đủ can đảm. Luôn có những tin đồn về lịch sử gia đình tôi, những tin đồn mà tôi có thể dễ dàng xác nhận. Nhưng tôi không sẵn sàng cho sự công khai quá mức như vậy. Sau tất cả, tôi sống một cuộc sống khiêm tốn, ẩn dật trong một lâu đài thế kỷ 14 trên một trang trại dành riêng cho những người đàn ông trên hòn đảo riêng yêu thích nhất của tôi, thực hiện 5–6 cuộc phỏng vấn như thế này từ bồn tắm nước nóng của tôi mỗi tuần.”', // —VANDERPOOLE: “I didn’t have the courage. There have always been rumors about my family’s history, ones that I could easily confirmed. But I wasn’t ready for that much publicity. After all, I live a humble, secluded life in a 14th century castle on a dude ranch on my favorite of all my private islands, doing 5–6 interviews like this one from my hot tub every week.”
+         '—VANDERPOOLE: “Tôi không có đủ can đảm. Luôn có những tin đồn về lịch sử gia đình tôi, những tin đồn mà tôi có thể dễ dàng xác nhận. Nhưng tôi không sẵn sàng cho sự công khai quá mức như vậy. Sau tất cả, tôi sống một cuộc sống khiêm tốn, ẩn dật trong một lâu đài thế kỷ 14 trên một trang trại dành riêng cho những người đàn ông trên hòn đảo riêng yêu thích nhất của tôi, thực hiện 5–6 cuộc phỏng vấn như thế này từ bồn tắm nước nóng của tôi mỗi tuần.”', // —VANDERPOOLE: “I didn’t have the courage. There have always been rumors about my family’s history, ones that I could easily confirmed. But I wasn’t ready for that much publicity. After all, I live a humble, secluded life in a 14th century castle on a dude ranch on my favorite of all my private islands, doing 5–6 interviews like this one from my hot tub every week.”
       paragraph_two:
- '—VANDERPOOLE: “Nhưng bây giờ khi tương lai của bitcoin đang bị đe dọa, tôi biết đã đến lúc phải đối mặt với sự thật, cụ thể là âm nhạc từ album đầu tay của Creed, My Own Prison.” *Vanderpoole hát nhẩm giai điệu của bài hát cùng tên trong album thế kỷ 20*', // —VANDERPOOLE: “But now that bitcoin’s future is on the line, I knew it was time to face the music, specifically, the music from Creed’s debut album, My Own Prison.” *Vanderpoole hums the melody from the 20th century album’s namesake song*
+         '—VANDERPOOLE: “Nhưng bây giờ khi tương lai của bitcoin đang bị đe dọa, tôi biết đã đến lúc phải đối mặt với sự thật, cụ thể là âm nhạc từ album đầu tay của Creed, My Own Prison.” *Vanderpoole hát nhẩm giai điệu của bài hát cùng tên trong album thế kỷ 20*', // —VANDERPOOLE: “But now that bitcoin’s future is on the line, I knew it was time to face the music, specifically, the music from Creed’s debut album, My Own Prison.” *Vanderpoole hums the melody from the 20th century album’s namesake song*
       paragraph_three:
- '—VANDERPOOLE: "Tôi chỉ có thể nói rằng tôi rất tiếc vì đã không xuất hiện sớm hơn vì CD-ROM cũng chứa các kế hoạch sửa đổi bitcoin của Satoshi Nakamoto. Bạn thấy đấy, ông cố của tôi luôn hối tiếc vì đã giới hạn nguồn cung bitcoin ở mức 21 triệu đồng xu, đó là lý do tại sao tôi dự định thực hiện giấc mơ của ông cố tôi về việc hard fork bitcoin để ủng hộ việc phát hành bitcoin vĩnh viễn."', // —VANDERPOOLE: "I can only say that I’m sorry for not coming forth sooner because the CD-ROM also contains Satoshi Nakamoto’s revised plans for bitcoin. You see, my great-grandfather always regretted limiting the supply of bitcoin to 21 million coins, which is why I plan to fulfill my great-grandfather’s dream of hard forking bitcoin in favor of perpetual bitcoin issuance."
+         '—VANDERPOOLE: "Tôi chỉ có thể nói rằng tôi rất tiếc vì đã không xuất hiện sớm hơn vì CD-ROM cũng chứa các kế hoạch sửa đổi bitcoin của Satoshi Nakamoto. Bạn thấy đấy, ông cố của tôi luôn hối tiếc vì đã giới hạn nguồn cung bitcoin ở mức 21 triệu đồng xu, đó là lý do tại sao tôi dự định thực hiện giấc mơ của ông cố tôi về việc hard fork bitcoin để ủng hộ việc phát hành bitcoin vĩnh viễn."', // —VANDERPOOLE: "I can only say that I’m sorry for not coming forth sooner because the CD-ROM also contains Satoshi Nakamoto’s revised plans for bitcoin. You see, my great-grandfather always regretted limiting the supply of bitcoin to 21 million coins, which is why I plan to fulfill my great-grandfather’s dream of hard forking bitcoin in favor of perpetual bitcoin issuance."
     },
     intro_three: {
       nav_title: 'Một thông điệp từ Satoshi', // A message from Satoshi
       paragraph_one:
- 'Màn hình Hover TXM4H-A của bạn kêu lên. Bạn có một tin nhắn mới.', // Your TXM4H-A Hover Screen chirps to life. You have a new message.
+         'Màn hình Hover TXM4H-A của bạn kêu lên. Bạn có một tin nhắn mới.', // Your TXM4H-A Hover Screen chirps to life. You have a new message.
       paragraph_two: '—HOLOCAT: Đừng quên chọc mũi tôi.', // —HOLOCAT: Don’t forget to boop my nose.
       paragraph_three: 'Bạn chọc mũi cô ấy', // You boop her nose
       paragraph_four:
- '—SATOSHI NAKAMOTO: “Vanderpoole không phải là người mà ông ta tự nhận mình là. Bạn có thể vạch trần ông ta. Yêu cầu ông ta chứng minh quyền sở hữu bitcoin của Satoshi bằng cách ký một tin nhắn bằng cách sử dụng các khóa riêng của ví đó.”', // —SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message using that wallet's private keys.”
+         '—SATOSHI NAKAMOTO: “Vanderpoole không phải là người mà ông ta tự nhận mình là. Bạn có thể vạch trần ông ta. Yêu cầu ông ta chứng minh quyền sở hữu bitcoin của Satoshi bằng cách ký một tin nhắn bằng cách sử dụng các khóa riêng của ví đó.”', // —SATOSHI NAKAMOTO: “Vanderpoole is not who he claims to be. You can expose him. Ask him to prove ownership of Satoshi’s bitcoin by signing a message using that wallet's private keys.”
     },
     derive_message_one: {
       title: 'Truy xuất thông điệp', // Derive the message
@@ -1006,91 +1006,91 @@ const translations = {
       heading: 'Vanderpoole nói rằng ông ta đã ký một thông điệp bằng các khóa của Satoshi:', // Vanderpoole says he signed a message with Satoshi’s keys:
       code_one: `-----BEGIN BITCOIN SIGNED MESSAGE----- \n \n Tôi là Vanderpoole và tôi kiểm soát khóa riêng mà Satoshi đã sử dụng để ký giao dịch bitcoin đầu tiên được xác nhận trong khối #170. Thông điệp này được ký bằng cùng một khóa riêng. \n \n -----BEGIN BITCOIN SIGNATURE----- \n \n`, // -----BEGIN BITCOIN SIGNED MESSAGE----- \n \n I am Vanderpoole and I have control of the private key Satoshi used to sign the first-ever bitcoin transaction confirmed in block #170. This message is signed with the same private key. \n \n -----BEGIN BITCOIN SIGNATURE----- \n \n
       code_two:
- '<span className="break-all"> H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k= </span>', 
+         '<span className="break-all"> H4vQbVD0pLK7pkzPto8BHourzsBrHMB3Qf5oYVmr741pPwdU2m6FaZZmxh4ScHxFoDelFC9qG0PnAUl5qMFth8k= </span>', 
       code_three: '\n \n-----END BITCOIN SIGNATURE-----',
       paragraph_two: 'Điều này có nghĩa là gì?', // What does this even mean?
     },
     derive_message_two: {
       nav_title: 'Tìm khóa chung', // Finding the public key
       paragraph_one:
- 'Chúng ta đã học trong chương 4 rằng khóa riêng là những số ngẫu nhiên khổng lồ được giữ bí mật bởi bất kỳ ai đã tạo ra chúng. Chúng ta có thể sử dụng toán học Đường cong Elliptic để suy ra khóa chung từ khóa riêng đó.', // We learned in chapter 4 that private keys are huge random numbers kept secret by whomever generated them. We can use Elliptic Curve math to derive a public key from that private key.
+         'Chúng ta đã học trong chương 4 rằng khóa riêng là những số ngẫu nhiên khổng lồ được giữ bí mật bởi bất kỳ ai đã tạo ra chúng. Chúng ta có thể sử dụng toán học Đường cong Elliptic để suy ra khóa chung từ khóa riêng đó.', // We learned in chapter 4 that private keys are huge random numbers kept secret by whomever generated them. We can use Elliptic Curve math to derive a public key from that private key.
       paragraph_two:
- 'Khóa chung có thể được chia sẻ như một trình định danh duy nhất và khóa riêng được sử dụng để chứng minh rằng một người có quyền kiểm soát trình định danh đó. Bằng chứng đó được gọi là CHỮ KÝ. Để tạo chữ ký, bạn cần một thông điệp và một khóa riêng. Bất kỳ ai cũng có thể xác minh chữ ký bằng một bản sao của thông điệp và khóa chung tương ứng.', // The public key can be shared as a unique identifier and the private key is used to prove that a person has control of that identifier. That proof is called a SIGNATURE. To create a signature, you need a message and a private key. Anyone can verify the signature with a copy of the message and the corresponding public key.
+         'Khóa chung có thể được chia sẻ như một trình định danh duy nhất và khóa riêng được sử dụng để chứng minh rằng một người có quyền kiểm soát trình định danh đó. Bằng chứng đó được gọi là CHỮ KÝ. Để tạo chữ ký, bạn cần một thông điệp và một khóa riêng. Bất kỳ ai cũng có thể xác minh chữ ký bằng một bản sao của thông điệp và khóa chung tương ứng.', // The public key can be shared as a unique identifier and the private key is used to prove that a person has control of that identifier. That proof is called a SIGNATURE. To create a signature, you need a message and a private key. Anyone can verify the signature with a copy of the message and the corresponding public key.
       paragraph_three:
- 'Vanderpoole đã cung cấp một chữ ký và một thông điệp. Khóa chung ở đâu?', // Vanderpoole has provided a signature and a message. Where is the public key?
+         'Vanderpoole đã cung cấp một chữ ký và một thông điệp. Khóa chung ở đâu?', // Vanderpoole has provided a signature and a message. Where is the public key?
     },
     derive_message_three: {
       nav_title: "Tìm chữ ký của Satoshi", // Find Satoshi's signature
       heading: 'Hãy bắt đầu bằng việc tìm chữ ký của Satoshi', // Let’s start with finding Satoshi’s signature
       paragraph_one:
- `Khối #170 chứa <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">giao dịch bitcoin đầu tiên</link> được thực hiện từ Satoshi đến Hal Finney. Giao dịch đó chỉ có <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">một đầu vào</link>. Lấy scriptSig từ đầu vào đó. Nó chứa chữ ký của Satoshi!`, // Block #170 contains the <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">first bitcoin transaction</link> made from Satoshi to Hal Finney. That transaction only has <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">one input</link>. Retrieve the scriptSig from that input. It contains Satoshi's signature!
+         `Khối #170 chứa <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">giao dịch bitcoin đầu tiên</link> được thực hiện từ Satoshi đến Hal Finney. Giao dịch đó chỉ có <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">một đầu vào</link>. Lấy scriptSig từ đầu vào đó. Nó chứa chữ ký của Satoshi!`, // Block #170 contains the <link href="https://bitcointalk.org/index.php?topic=155054.0" target="_blank" className="underline">first bitcoin transaction</link> made from Satoshi to Hal Finney. That transaction only has <Link href="https://blockstream.info/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16?expand" target="_blank" className="underline">one input</link>. Retrieve the scriptSig from that input. It contains Satoshi's signature!
       placeholder: 'Dán dữ liệu vào đây', // Paste the data here
       success:
- 'Tuyệt vời! Đây thực sự là chữ ký của Satoshi, cho phép chuyển bitcoin của anh ấy cho Hal Finney.', // Nicely done! This is actually Satoshi’s signature, authorizing the transfer of his bitcoin to Hal Finney.
+         'Tuyệt vời! Đây thực sự là chữ ký của Satoshi, cho phép chuyển bitcoin của anh ấy cho Hal Finney.', // Nicely done! This is actually Satoshi’s signature, authorizing the transfer of his bitcoin to Hal Finney.
     },
     derive_message_four: {
       nav_title: "Tìm khóa chung của Satoshi", // Find Satoshi's public key
       heading: 'Vậy khóa chung của anh ấy ở đâu?', // So where is his public key?
       paragraph_one:
- 'Nó thực sự được lưu trữ cùng với bitcoin mà Satoshi tạo ra bằng cách khai thác(đào) khối #9.', // It’s actually stored along with the bitcoin Satoshi generated by mining block #9.
+         'Nó thực sự được lưu trữ cùng với bitcoin mà Satoshi tạo ra bằng cách khai thác(đào) khối #9.', // It’s actually stored along with the bitcoin Satoshi generated by mining block #9.
       paragraph_two:
- '<Link href="https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand" target="_blank" className="underline">Theo liên kết</Link> đến giao dịch nguồn ở đầu phần đầu vào # 0. Đây là giao dịch Satoshi tạo ra bằng cách khai thác(đào) khối # 9. Giao dịch tạo 50 BTC và khóa chúng dưới quyền kiểm soát của ... một khóa chung! Tìm dữ liệu bắt đầu bằng 0411 ... trong scriptPubKey.', // <Link href="https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand" target="_blank" className="underline">Follow the link</Link> to the source transaction at the top of the input #0 section. This is the transaction Satoshi created by mining block #9. The transaction creates 50 BTC and locks them under control of... a public key! Find the data beginning with 0411... in the scriptPubKey.
+         '<Link href="https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand" target="_blank" className="underline">Theo liên kết</Link> đến giao dịch nguồn ở đầu phần đầu vào # 0. Đây là giao dịch Satoshi tạo ra bằng cách khai thác(đào) khối # 9. Giao dịch tạo 50 BTC và khóa chúng dưới quyền kiểm soát của ... một khóa chung! Tìm dữ liệu bắt đầu bằng 0411 ... trong scriptPubKey.', // <Link href="https://blockstream.info/tx/0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9?output:0&expand" target="_blank" className="underline">Follow the link</Link> to the source transaction at the top of the input #0 section. This is the transaction Satoshi created by mining block #9. The transaction creates 50 BTC and locks them under control of... a public key! Find the data beginning with 0411... in the scriptPubKey.
       paragraph_three:
- 'Khóa chung nằm giữa các lệnh script OP_PUSHBYTES và OP_CHECKSIG. Dán nó bên dưới:', // The public key lives between the script commands OP_PUSHBYTES and OP_CHECKSIG. Paste it below:
+         'Khóa chung nằm giữa các lệnh script OP_PUSHBYTES và OP_CHECKSIG. Dán nó bên dưới:', // The public key lives between the script commands OP_PUSHBYTES and OP_CHECKSIG. Paste it below:
       placeholder: 'Dán dữ liệu vào đây', // Paste the data here
-      success: 'Đó là nó!', // That’s it!
+      success: 'Là nó đó!', // That’s it!
     },
     derive_message_five: {
       nav_title: 'Xác minh chữ ký tiếp theo', // Verifiying the signature next
       paragraph_one:
- `Trong bài tập trước, chúng ta đã thấy Satoshi nhận được 50 BTC cho việc khai thác(đào) khối #9. Ông ta đã sử dụng điều đó làm đầu vào cho giao dịch của mình đến Hal Finney (trong khối #170), gửi 10 BTC đến khóa chung của Hal Finney và trả lại 40 BTC cho chính mình làm tiền thừa. Khóa riêng tư của Satoshi đã được sử dụng để tạo một chữ ký ủy quyền chuyển giao các quỹ đó.`, // In the previous exercise, we saw Satoshi got 50 BTC for mining block #9. He used that as input for his transaction to Hal Finney (in block #170), sending 10 BTC to Hal Finney’s public key and returning 40 BTC back to himself as change. Satoshi's private key was used to create a signature authorizing the transfer of those funds.
+         `Trong bài tập trước, chúng ta đã thấy Satoshi nhận được 50 BTC cho việc khai thác(đào) khối #9. Ông ta đã sử dụng điều đó làm đầu vào cho giao dịch của mình đến Hal Finney (trong khối #170), gửi 10 BTC đến khóa chung của Hal Finney và trả lại 40 BTC cho chính mình làm tiền thừa. Khóa riêng tư của Satoshi đã được sử dụng để tạo một chữ ký ủy quyền chuyển giao các quỹ đó.`, // In the previous exercise, we saw Satoshi got 50 BTC for mining block #9. He used that as input for his transaction to Hal Finney (in block #170), sending 10 BTC to Hal Finney’s public key and returning 40 BTC back to himself as change. Satoshi's private key was used to create a signature authorizing the transfer of those funds.
       paragraph_two:
- 'Tiếp theo, chúng ta cần tìm hiểu cách xác minh chữ ký. Nhưng vẫn còn thiếu một thứ gì đó ... thông điệp mà Satoshi đã ký để ủy quyền cho giao dịch cho Hal là gì?', // Next we need to learn how to verify a signature. But something is still missing... what is the message Satoshi signed to authorize the transaction for Hal?
+         'Tiếp theo, chúng ta cần tìm hiểu cách xác minh chữ ký. Nhưng vẫn còn thiếu một thứ gì đó ... thông điệp mà Satoshi đã ký để ủy quyền cho giao dịch cho Hal là gì?', // Next we need to learn how to verify a signature. But something is still missing... what is the message Satoshi signed to authorize the transaction for Hal?
     },
     derive_message_six: {
       nav_title: 'Truy xuất thông điệp', // Derive the message
       heading: 'Truy xuất thông điệp từ giao dịch', // Derive the message from the transaction
       paragraph_one:
- 'Chỉ cần nhìn vào trang web của trình duyệt chuỗi khối, bạn có thể thấy rằng một giao dịch bitcoin có nhiều phần khác nhau. Một số phần chỉ là các số nhỏ và một số phần là các khối dữ liệu lớn hơn. Giao thức bitcoin có một thuật toán rất cụ thể để tạo thông báo từ các giao dịch, vì vậy các thông báo đó có thể được ký bởi khóa riêng.', // It should be clear by just looking at the block explorer web page that a bitcoin transaction has many different parts. Some parts are just small numbers and some parts are larger chunks of data. The bitcoin protocol has a very specific algorithm for creating messages from transactions, so those messages can be signed by private keys.
+         'Chỉ cần nhìn vào trang web của trình duyệt chuỗi khối, bạn có thể thấy rằng một giao dịch bitcoin có nhiều phần khác nhau. Một số phần chỉ là các số nhỏ và một số phần là các khối dữ liệu lớn hơn. Giao thức bitcoin có một thuật toán rất cụ thể để tạo thông báo từ các giao dịch, vì vậy các thông báo đó có thể được ký bởi khóa riêng.', // It should be clear by just looking at the block explorer web page that a bitcoin transaction has many different parts. Some parts are just small numbers and some parts are larger chunks of data. The bitcoin protocol has a very specific algorithm for creating messages from transactions, so those messages can be signed by private keys.
       paragraph_two:
- 'Chúng tôi sẽ tóm tắt quy trình được nêu <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG" target="_blank" className="underline">ở đây</Link>. Nó thuận tiện sử dụng <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">chính xác giao dịch này từ khối #170</Link> làm ví dụ.', // We will summarize the process outlined <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG" target="_blank" className="underline">here</Link>. It conveniently uses <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">this exact same transaction from block #170</Link> as an example.
+         'Chúng tôi sẽ tóm tắt quy trình được nêu <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG" target="_blank" className="underline">ở đây</Link>. Nó thuận tiện sử dụng <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">chính xác giao dịch này từ khối #170</Link> làm ví dụ.', // We will summarize the process outlined <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG" target="_blank" className="underline">here</Link>. It conveniently uses <Link href="https://en.bitcoin.it/wiki/OP_CHECKSIG#Code_samples_and_raw_dumps" target="_blank" className="underline">this exact same transaction from block #170</Link> as an example.
       paragraph_three:
- 'Để bắt đầu, chúng ta cần các byte thô tạo nên toàn bộ giao dịch. <Link href="https://blockstream.info/api/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16/hex" target="_blank" className="underline">Trình khám phá khối của chúng tôi</Link> có thể giúp ích cho việc này. Sử dụng điểm cuối API "hex" và dán toàn bộ khối dữ liệu.', // To begin, we need the raw bytes that make up the complete transaction. <Link href="https://blockstream.info/api/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16/hex" target="_blank" className="underline">Our block explorer</Link> can help with this. Use the "hex" API endpoint and paste the entire blob of data.
+         'Để bắt đầu, chúng ta cần các byte thô tạo nên toàn bộ giao dịch. <Link href="https://blockstream.info/api/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16/hex" target="_blank" className="underline">Trình khám phá khối của chúng tôi</Link> có thể giúp ích cho việc này. Sử dụng điểm cuối API "hex" và dán toàn bộ khối dữ liệu.', // To begin, we need the raw bytes that make up the complete transaction. <Link href="https://blockstream.info/api/tx/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16/hex" target="_blank" className="underline">Our block explorer</Link> can help with this. Use the "hex" API endpoint and paste the entire blob of data.
       input_challenge_label: 'Dán khối giao dịch', // Paste the transaction blob
       success_message_line_one:
- 'Đây là giao dịch thô với từng thành phần được dán nhãn:', // This is the raw transaction with each component labeled:
+         'Đây là giao dịch thô với từng thành phần được dán nhãn:', // This is the raw transaction with each component labeled:
       success_message_line_two: 'phiên bản:', // version:
       success_message_line_three: 'số lượng đầu vào:', // number of inputs:
       success_message_line_four: 'mã hóa của tx mà đầu vào # 0 đến từ:', // hash of the tx that input #0 came from:
       success_message_line_five:
- 'chỉ mục của đầu vào # 0 trong giao dịch tài trợ:', // index of input #0 in the funding transaction:
+         'chỉ mục của đầu vào # 0 trong giao dịch tài trợ:', // index of input #0 in the funding transaction:
       success_message_line_six: 'scriptSig để cho phép chi tiêu đầu vào # 0:', // scriptSig to authorize spending input #0:
       success_message_line_seven: 'chuỗi đầu vào # 0:', // input #0 sequence:
       success_message_line_eight: 'số lượng đầu ra:', // number of outputs:
       success_message_line_nine:
- 'giá trị đầu ra # 0 (10 BTC hoặc 1.000.000.000 satoshi):', // output #0 value (10 BTC or 1,000,000,000 satoshis):
+         'giá trị đầu ra # 0 (10 BTC hoặc 1.000.000.000 satoshi):', // output #0 value (10 BTC or 1,000,000,000 satoshis):
       success_message_line_ten:
- 'scriptPubKey đầu ra # 0 (khóa chung của Hal Finney cộng với OP_CHECKSIG):', // output #0 scriptPubKey (Hal Finney’s public key plus OP_CHECKSIG):
+         'scriptPubKey đầu ra # 0 (khóa chung của Hal Finney cộng với OP_CHECKSIG):', // output #0 scriptPubKey (Hal Finney’s public key plus OP_CHECKSIG):
       success_message_line_eleven:
- 'giá trị đầu ra # 1 (40 BTC hoặc 4.000.000.000 satoshi):', // outut #1 value (40 BTC or 4,000,000,000 satoshis):
+         'giá trị đầu ra # 1 (40 BTC hoặc 4.000.000.000 satoshi):', // outut #1 value (40 BTC or 4,000,000,000 satoshis):
       success_message_line_twelve:
- 'scriptPubKey đầu ra # 1 (khóa chung của chính Satoshi, để đổi lại):', // output #1 scriptPubKey (Satoshi’s own public key again, for change):
+         'scriptPubKey đầu ra # 1 (khóa chung của chính Satoshi, để đổi lại):', // output #1 scriptPubKey (Satoshi’s own public key again, for change):
       success_message_line_thirteen: 'thời gian khóa:', // locktime:
     },
     derive_message_seven: {
       nav_title: 'Xây dựng thông điệp để ký', // Build the message to sign
       paragraph_one:
- "Không thể ký một thông báo chứa chữ ký của chính nó, vì vậy scriptSig cần phải được xóa. Trong giao thức bitcoin, nó thực sự được thay thế bằng scriptPubKey của đầu ra giao dịch mà chúng ta đang chi tiêu.", // It’s impossible to sign a message containing it’s own signature, so the scriptSig needs to be removed. In the bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.
+         "Không thể ký một thông báo chứa chữ ký của chính nó, vì vậy scriptSig cần phải được xóa. Trong giao thức bitcoin, nó thực sự được thay thế bằng scriptPubKey của đầu ra giao dịch mà chúng ta đang chi tiêu.", // It’s impossible to sign a message containing it’s own signature, so the scriptSig needs to be removed. In the bitcoin protocol it is actually replaced by the scriptPubKey of the transaction output we are spending.
       paragraph_two:
- 'Chúng tôi đã tìm thấy scriptPubKey trong bước trước, bạn có thể dán nó vào khoảng trống đầu tiên.', // We already found the scriptPubKey in the previous step, you can paste that in the first blank.
+         'Chúng tôi đã tìm thấy scriptPubKey trong bước trước, bạn có thể dán nó vào khoảng trống đầu tiên.', // We already found the scriptPubKey in the previous step, you can paste that in the first blank.
       paragraph_three: {
- a: 'Điều cuối cùng chúng ta cần cho thông điệp giao dịch của chúng ta là một', // The last thing we need for our transaction message is a
- b: '. Chúng tôi sẽ đề cập đến điều này nhiều hơn trong chương tiếp theo nhưng bây giờ chúng tôi chỉ cần thêm giá trị <span className="font-bold">01000000</span> vào cuối thông báo.', // . We'll cover this more in the next chapter but for now we'll just add the value <span className="font-bold">01000000</span> to the end of the message.
+         a: 'Điều cuối cùng chúng ta cần cho thông điệp giao dịch của chúng ta là một', // The last thing we need for our transaction message is a
+         b: '. Chúng tôi sẽ đề cập đến điều này nhiều hơn trong chương tiếp theo nhưng bây giờ chúng tôi chỉ cần thêm giá trị <span className="font-bold">01000000</span> vào cuối thông báo.', // . We'll cover this more in the next chapter but for now we'll just add the value <span className="font-bold">01000000</span> to the end of the message.
       },
       tooltip_one: {
- question: 'Cờ sighash là gì?', // What are sighash flags?
- link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F',
- highlighted: 'loại cờ sighash', // sighash type flag
+       question: 'Cờ sighash là gì?', // What are sighash flags?
+       link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F',
+       highlighted: 'loại cờ sighash', // sighash type flag
       },
       success: "Tuyệt! Bạn đã xây dựng một thông điệp để ký.", // Nice! You've constructed a message to sign.
     },
@@ -1099,26 +1099,26 @@ const translations = {
       nav_title: 'Xác minh chữ ký', // Verifying the signature
       heading: 'Cuối cùng chúng ta cũng có một thông điệp!', // Finally we have a message!
       paragraph_one:
- 'Chúng tôi cũng có một chữ ký mà chúng tôi biết Satoshi đã tạo bằng các khóa riêng của mình và chúng tôi có khóa chung của anh ấy. Chúng ta hãy tìm hiểu cách xác minh chữ ký và sau đó chúng ta có thể thử xác minh chữ ký của Vanderpoole.', // We also have a signature we know Satoshi created with his own private keys, and we have his public key. Let’s learn how to verify the signature and then we can try to verify Vanderpoole’s signature.
+         'Chúng tôi cũng có một chữ ký mà chúng tôi biết Satoshi đã tạo bằng các khóa riêng của mình và chúng tôi có khóa chung của anh ấy. Chúng ta hãy tìm hiểu cách xác minh chữ ký và sau đó chúng ta có thể thử xác minh chữ ký của Vanderpoole.', // We also have a signature we know Satoshi created with his own private keys, and we have his public key. Let’s learn how to verify the signature and then we can try to verify Vanderpoole’s signature.
     },
     verify_signature_two: {
       title: 'Xác minh chữ ký', // Verify the signature
       nav_title: 'Mã hóa tóm tắt giao dịch', // Hash the message
       heading: 'Mã hóa tóm tắt giao dịch', // Hash the transaction digest
       paragraph_one:
- 'Dữ liệu giao dịch được nối tiếp mà chúng tôi đã biên soạn trong bước cuối cùng thực sự quá dài để ký hoặc xác minh bằng ECDSA.', // The serialized transaction data we compiled in the last step is actually too long to sign or verify with ECDSA.
+         'Dữ liệu giao dịch được nối tiếp mà chúng tôi đã biên soạn trong bước cuối cùng thực sự quá dài để ký hoặc xác minh bằng ECDSA.', // The serialized transaction data we compiled in the last step is actually too long to sign or verify with ECDSA.
       paragraph_two:
- 'Chúng ta có biết cách nào để nén các khối dữ liệu lớn thành các phần nhỏ hơn, dễ quản lý hơn không? Chắc chắn rồi: mã hóa.', // Do we know any way to compress large chunks of data into more consistent, manageable pieces? We sure do: hashing.
+         'Chúng ta có biết cách nào để nén các khối dữ liệu lớn thành các phần nhỏ hơn, dễ quản lý hơn không? Chắc chắn rồi: mã hóa.', // Do we know any way to compress large chunks of data into more consistent, manageable pieces? We sure do: hashing.
       paragraph_three: {
- a: 'Giao thức bitcoin sử dụng một ', // The bitcoin protocol uses a
- b: ' để nén một giao dịch thành một thông báo có thể ký.', // to compress a transaction into a signable message.
+         a: 'Giao thức bitcoin sử dụng một ', // The bitcoin protocol uses a
+         b: ' để nén một giao dịch thành một thông báo có thể ký.', // to compress a transaction into a signable message.
       },
       paragraph_four:
- 'Khi chúng ta có một số mã hóa 32 byte, dữ liệu đó được tái diễn giải thành một số nguyên. Vâng, một số nguyên 32 byte (đó là một số thực sự khổng lồ)!', // Once we have a 32-byte hash, that data is re-interpreted as an integer. Yes, a 32-byte integer (that is a truly enormous number)!
+         'Khi chúng ta có một số mã hóa 32 byte, dữ liệu đó được tái diễn giải thành một số nguyên. Vâng, một số nguyên 32 byte (đó là một số thực sự khổng lồ)!', // Once we have a 32-byte hash, that data is re-interpreted as an integer. Yes, a 32-byte integer (that is a truly enormous number)!
       tooltip_one: {
- question: 'Tại sao mọi thứ trong bitcoin đều sử dụng mã hóa kép (HASH256)?', // Why does everything in bitcoin use double hash (HASH256)?
- link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520does%2520everything%2520in%Bitcoin%2520use%2520double%2520hash%2520%28HASH256%29%253F',
- highlighted: 'tóm tắt SHA256 kép', // double SHA256 digest
+         question: 'Tại sao mọi thứ trong bitcoin đều sử dụng mã hóa kép (HASH256)?', // Why does everything in bitcoin use double hash (HASH256)?
+         link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520does%2520everything%2520in%Bitcoin%2520use%2520double%2520hash%2520%28HASH256%29%253F',
+         highlighted: 'tóm tắt SHA256 kép', // double SHA256 digest
       },
       success: 'Làm tốt!', // Nicely done!
     },
@@ -1128,11 +1128,11 @@ const translations = {
       label_one: 'Dán giá trị R', // Paste the R value
       label_two: 'Dán giá trị S', // Paste the S value
       paragraph_one:
-   "Chữ ký của Satoshi được mã hóa trong một hệ thống gọi là DER, là một tập con của ASN.1.", // Satoshi's signature is encoded in a system called DER which is a subset of ASN.1.
+          "Chữ ký của Satoshi được mã hóa trong một hệ thống gọi là DER, là một tập con của ASN.1.", // Satoshi's signature is encoded in a system called DER which is a subset of ASN.1.
       paragraph_two:
-   'Chúng ta cần trích xuất hai số 32 byte. Chúng được gọi tương ứng là R và S và mỗi số đều được thêm tiền tố 0220 trong chuỗi DER. Thay vì giải mã hoàn toàn khối DER, chỉ cần tìm các tiền tố và dán các giá trị R và S.', // There are two 32-byte numbers we need to extract. They are referred to as R and S respectively and are each prefixed by the bytes 0220 in the DER sequence. Instead of fully decoding the DER blob, just look for the prefixes and paste the R and S values.
+          'Chúng ta cần trích xuất hai số 32 byte. Chúng được gọi tương ứng là R và S và mỗi số đều được thêm tiền tố 0220 trong chuỗi DER. Thay vì giải mã hoàn toàn khối DER, chỉ cần tìm các tiền tố và dán các giá trị R và S.', // There are two 32-byte numbers we need to extract. They are referred to as R and S respectively and are each prefixed by the bytes 0220 in the DER sequence. Instead of fully decoding the DER blob, just look for the prefixes and paste the R and S values.
       paragraph_three:
-   "# Chữ ký của Satoshi, từ scriptSig đầu vào của giao dịch đến Hal Finney (khối 170)", // # Satoshi's signature, from the input scriptSig of the tx to Hal Finney (block 170)
+          "# Chữ ký của Satoshi, từ scriptSig đầu vào của giao dịch đến Hal Finney (khối 170)", // # Satoshi's signature, from the input scriptSig of the tx to Hal Finney (block 170)
     },
     verify_signature_four: {
       nav_title: 'Giải mã khóa chung', // Decode the public key
@@ -1140,9 +1140,9 @@ const translations = {
       label_one: 'Dán tọa độ x', // Paste the x coordinate
       label_two: 'Dán tọa độ y', // Paste the y coordinate
       paragraph_one:
-   'Chúng ta đã học ở chương 4 rằng các khóa chung thực sự là các điểm trên đường cong ECDSA, nghĩa là chúng có giá trị x và y. Byte đầu tiên 04 có nghĩa là "không nén" (trái ngược với 02 và 03 như chúng ta đã học ở chương 4). Xóa byte đầu tiên đó và dữ liệu còn lại là tọa độ x và y 32 byte. Sao chép và dán lại.', // We learned in chapter 4 that public keys are really points in the ECDSA curve, meaning they have an x and y value. The first byte 04 means "uncompressed" (as opposed to 02 and 03 like we learned in chapter 4). Remove that first byte and the remaining data are 32-byte x and y coordinates. Copy and paste again.
+         'Chúng ta đã học ở chương 4 rằng các khóa chung thực sự là các điểm trên đường cong ECDSA, nghĩa là chúng có giá trị x và y. Byte đầu tiên 04 có nghĩa là "không nén" (trái ngược với 02 và 03 như chúng ta đã học ở chương 4). Xóa byte đầu tiên đó và dữ liệu còn lại là tọa độ x và y 32 byte. Sao chép và dán lại.', // We learned in chapter 4 that public keys are really points in the ECDSA curve, meaning they have an x and y value. The first byte 04 means "uncompressed" (as opposed to 02 and 03 like we learned in chapter 4). Remove that first byte and the remaining data are 32-byte x and y coordinates. Copy and paste again.
       paragraph_two:
-   "# Khóa chung của Satoshi, từ scriptPubKey đầu ra của coinbase khối 9", // # Satoshi's public key, from the block 9 coinbase output scriptPubKey
+         "# Khóa chung của Satoshi, từ scriptPubKey đầu ra của coinbase khối 9", // # Satoshi's public key, from the block 9 coinbase output scriptPubKey
     },
     verify_signature_five: {
       title: 'Kiểm tra chữ ký', // Verify the signature
@@ -1150,24 +1150,24 @@ const translations = {
       heading: 'Xác minh chữ ký!', // Verify the signature!
       success: "Bạn đã làm được! Bạn đã xác minh được chữ ký của Satoshi!", // You've done it! You've verified Satoshi's signature!
       paragraph_one:
-   'Lúc này, chúng ta đã có mọi thứ cần thiết để thực hiện một số phép toán ECDSA.', // At this point we have everything we need to do some ECDSA math.
+         'Lúc này, chúng ta đã có mọi thứ cần thiết để thực hiện một số phép toán ECDSA.', // At this point we have everything we need to do some ECDSA math.
       paragraph_two:
-   'Thuật toán xác minh chữ ký ECDSA được giải thích <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">ở đây</Link> và <Link className="underline" href="https://www.secg.org/sec1-v2.pdf#page=52" target="_blank">ở đây</Link>.', // The ECDSA signature verification algorithm is explained <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">here</Link> and <Link className="underline" href="https://www.secg.org/sec1-v2.pdf#page=52" target="_blank">here</Link>.
+         'Thuật toán xác minh chữ ký ECDSA được giải thích <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">ở đây</Link> và <Link className="underline" href="https://www.secg.org/sec1-v2.pdf#page=52" target="_blank">ở đây</Link>.', // The ECDSA signature verification algorithm is explained <Link className="underline" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_verification_algorithm" target="_blank">here</Link> and <Link className="underline" href="https://www.secg.org/sec1-v2.pdf#page=52" target="_blank">here</Link>.
       paragraph_three:
-   'Chúng tôi đã tạo một đối tượng Phần tử Nhóm từ các phần tử X và Y của khóa chung cho bạn. Bạn cần hoàn thành việc triển khai hàm xác minh chữ ký ECDSA <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> chỉ nên trả về True nếu mọi thứ hợp lệ!', // We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> that should only return True if everything is valid!
+         'Chúng tôi đã tạo một đối tượng Phần tử Nhóm từ các phần tử X và Y của khóa chung cho bạn. Bạn cần hoàn thành việc triển khai hàm xác minh chữ ký ECDSA <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> chỉ nên trả về True nếu mọi thứ hợp lệ!', // We created a Group Element object from the public key X and Y elements for you. You need to finish implementing the ECDSA signature verification function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> that should only return True if everything is valid!
       paragraph_four:
-   "Chúng tôi biết chữ ký của Satoshi là hợp lệ, nó đã được mọi nút đầy đủ Bitcoin kiểm tra kể từ năm 2010! Nếu chương trình của bạn không trả về True, nghĩa là có gì đó không ổn.", // We know Satoshi's signature is valid, it has been checked by every bitcoin full node since 2010! If your program does not return True something is wrong.
+         "Chúng tôi biết chữ ký của Satoshi là hợp lệ, nó đã được mọi nút đầy đủ Bitcoin kiểm tra kể từ năm 2010! Nếu chương trình của bạn không trả về True, nghĩa là có gì đó không ổn.", // We know Satoshi's signature is valid, it has been checked by every bitcoin full node since 2010! If your program does not return True something is wrong.
       python: {
- paragraph_five_part_one:
-   'Gợi ý: phương thức <span className="text-green">pow()</span>', // Hint: the <span className="text-green">pow()</span> method
- paragraph_five_part_two:
-   'có thể chấp nhận các số mũ âm và một modulo làm đối số. Xem thêm về <Link className="underline" href="https://docs.python.org/3/library/functions.html#pow" target="_blank">tài liệu</Link>.', // can accept negative exponents and a modulus as arguments. More on the <Link className="underline" href="https://docs.python.org/3/library/functions.html#pow" target="_blank">documentation</Link>.
+       paragraph_five_part_one:
+         'Gợi ý: phương thức <span className="text-green">pow()</span>', // Hint: the <span className="text-green">pow()</span> method
+       paragraph_five_part_two:
+         'có thể chấp nhận các số mũ âm và một modulo làm đối số. Xem thêm về <Link className="underline" href="https://docs.python.org/3/library/functions.html#pow" target="_blank">tài liệu</Link>.', // can accept negative exponents and a modulus as arguments. More on the <Link className="underline" href="https://docs.python.org/3/library/functions.html#pow" target="_blank">documentation</Link>.
       },
       javascript: {
- paragraph_five_part_one:
-   'Chúng tôi đã cung cấp một hàm trợ giúp <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">invert()</span>', // We have provided a helper function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">invert()</span>
- paragraph_five_part_two:
-   'mà bạn sẽ cần thay cho hàm lũy thừa mô đun gốc của JavaScript.', // which you will need in lieu of a JavaScript native modular exponentiation function.
+       paragraph_five_part_one:
+         'Chúng tôi đã cung cấp một hàm trợ giúp <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">invert()</span>', // We have provided a helper function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">invert()</span>
+       paragraph_five_part_two:
+         'mà bạn sẽ cần thay cho hàm lũy thừa mô đun gốc của JavaScript.', // which you will need in lieu of a JavaScript native modular exponentiation function.
       },
     },
     validate_signature_one: {
@@ -1175,15 +1175,15 @@ const translations = {
       nav_title: 'Chuẩn bị thông điệp', // Prepare the message
       heading: "Chuẩn bị thông điệp của Vanderpoole để xác minh", // Prepare Vanderpoole's message for verification
       paragraph_one:
- 'Vanderpoole đã sử dụng <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">giao thức ký tin nhắn Bitcoin</Link> cho trò chơi khăm của mình. Phép tính sử dụng cùng một thuật toán mà chúng ta đã định nghĩa, nhưng việc chuẩn bị dữ liệu hơi khác một chút.', // Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we've already defined, but the preparation of the data is a bit different.
+         'Vanderpoole đã sử dụng <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">giao thức ký tin nhắn Bitcoin</Link> cho trò chơi khăm của mình. Phép tính sử dụng cùng một thuật toán mà chúng ta đã định nghĩa, nhưng việc chuẩn bị dữ liệu hơi khác một chút.', // Vanderpoole used a <Link href="https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki" target="_blank" className="underline">bitcoin message signing protocol</Link> for his stunt. The computation uses the same algorithm we've already defined, but the preparation of the data is a bit different.
       paragraph_two:
- 'Đầu tiên, chúng ta cần mã hóa thông điệp của anh ấy thành một mảng byte tương ứng với mẫu sau:', // First, we need to encode his message into an array of bytes corresponding to the following template:
+         'Đầu tiên, chúng ta cần mã hóa thông điệp của anh ấy thành một mảng byte tương ứng với mẫu sau:', // First, we need to encode his message into an array of bytes corresponding to the following template:
       paragraph_three: {
- pre_link: 'Sau đó, chúng ta sẽ', // Then we will
- highlighted: 'hash kép SHA-256', // double SHA-256 hash
- question: 'Tại sao chúng ta lại hash kép trong Bitcoin?', // Why do we double hash in bitcoin?
- post_link:
-   'khối dữ liệu đó, và chuyển đổi hash đó thành một số nguyên. Hoàn thành hàm <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">encode_message()</span>. Nó nên trả về một giá trị hex 32 byte.', // that blob of data, and convert that hash into an integer. Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">encode_message()</span>. It should return a 32-byte hex value.
+       pre_link: 'Sau đó, chúng ta sẽ', // Then we will
+       highlighted: 'hash kép SHA-256', // double SHA-256 hash
+       question: 'Tại sao chúng ta lại hash kép trong Bitcoin?', // Why do we double hash in bitcoin?
+       post_link:
+         'khối dữ liệu đó, và chuyển đổi hash đó thành một số nguyên. Hoàn thành hàm <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">encode_message()</span>. Nó nên trả về một giá trị hex 32 byte.', // that blob of data, and convert that hash into an integer. Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">encode_message()</span>. It should return a 32-byte hex value.
       },
       success: 'Làm tốt', // Nicely Done
     },
@@ -1191,20 +1191,20 @@ const translations = {
       nav_title: 'Chuẩn bị chữ ký', // Prepare the signature
       heading: 'Chuẩn bị chữ ký của Vanderpoole để xác minh', // Prepare Vanderpoole’s signature for verification
       paragraph_one:
- 'Giao thức ký tin nhắn Bitcoin mà Vanderpoole đã sử dụng chỉ định base64 cho chữ ký. Chúng ta cần giải mã chuỗi base64 đó thành một chuỗi 65 byte. Hiện tại, chúng ta có thể bỏ qua byte siêu dữ liệu đầu tiên. Phần còn lại của dữ liệu là các giá trị r và s 32 byte mà chúng ta đã học ở bước 6.', // The bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.
+         'Giao thức ký tin nhắn Bitcoin mà Vanderpoole đã sử dụng chỉ định base64 cho chữ ký. Chúng ta cần giải mã chuỗi base64 đó thành một chuỗi 65 byte. Hiện tại, chúng ta có thể bỏ qua byte siêu dữ liệu đầu tiên. Phần còn lại của dữ liệu là các giá trị r và s 32 byte mà chúng ta đã học ở bước 6.', // The bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.
       javascript: {
- paragraph_two: {
-   post_link:
-     'Hoàn thành hàm <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">decode_sig()</span>.', // Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">decode_sig()</span>.
-   return:
-     'Nó nên trả về một mảng với các giá trị [r, s] dưới dạng BigInt.', // It should return an array with the [r, s] values as BigInts.
+       paragraph_two: {
+         post_link:
+           'Hoàn thành hàm <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">decode_sig()</span>.', // Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">decode_sig()</span>.
+         return:
+           'Nó nên trả về một mảng với các giá trị [r, s] dưới dạng BigInt.', // It should return an array with the [r, s] values as BigInts.
  },
       },
       python: {
- paragraph_two: {
-   post_link:
-     'Hoàn thành hàm <span className=" text-green">decode_sig()</span>.', // Complete the function <span className=" text-green">decode_sig()</span>.
-   return: 'Nó nên trả về một bộ dữ liệu (tuple) với các giá trị (r, s).', // It should return a tuple with the (r, s) values.
+       paragraph_two: {
+         post_link:
+           'Hoàn thành hàm <span className=" text-green">decode_sig()</span>.', // Complete the function <span className=" text-green">decode_sig()</span>.
+         return: 'Nó nên trả về một bộ dữ liệu (tuple) với các giá trị (r, s).', // It should return a tuple with the (r, s) values.
  },
       },
       success: 'Làm tốt', // Nicely Done
@@ -1214,126 +1214,126 @@ const translations = {
       nav_title: 'Xem Vanderpoole có nói dối không', // See if Vanderpoole was lying
       heading: 'Vậy, Vanderpoole có nói dối không?!', // So, is Vanderpoole a liar?!
       paragraph_one:
- `Hãy thu thập tất cả các thành phần cần thiết cho chương trình và xác minh xem chữ ký của Vanderpoole thực sự có bắt nguồn từ khóa chung của Satoshi không! Vui lòng điền vào các tham số còn thiếu cần thiết để thực thi hàm <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> bằng cách sử dụng mã được cung cấp.`, // Let's gather all the necessary components for the program and verify if Vanderpoole's signature actually originated from the private key linked to Satoshi's public key! Please fill in the missing parameters needed to execute the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> function using the provided code.
+         `Hãy thu thập tất cả các thành phần cần thiết cho chương trình và xác minh xem chữ ký của Vanderpoole thực sự có bắt nguồn từ khóa chung của Satoshi không! Vui lòng điền vào các tham số còn thiếu cần thiết để thực thi hàm <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> bằng cách sử dụng mã được cung cấp.`, // Let's gather all the necessary components for the program and verify if Vanderpoole's signature actually originated from the private key linked to Satoshi's public key! Please fill in the missing parameters needed to execute the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">verify()</span> function using the provided code.
       paragraph_two:
- 'Sau đó, chúng ta có thể chạy chương trình để xem Vanderpoole có nói dối không. Trống giòn! ...', // Then we can run the program to see if Vanderpoole was lying. Drumroll please...
+         'Sau đó, chúng ta có thể chạy chương trình để xem Vanderpoole có nói dối không. Trống giòn! ...', // Then we can run the program to see if Vanderpoole was lying. Drumroll please...
       success:
- "Thông báo này cho biết chữ ký không bắt nguồn từ khóa chung của Satoshi, vì quá trình xác minh đã thất bại.", // This message indicates that the signature did not originate from Satoshi's public key, as the verification failed.
+         "Thông báo này cho biết chữ ký không bắt nguồn từ khóa chung của Satoshi, vì quá trình xác minh đã thất bại.", // This message indicates that the signature did not originate from Satoshi's public key, as the verification failed.
     },
     validate_signature_four: {
       title: 'Xác thực chữ ký', // Validate the signature
       nav_title: 'Tìm khóa chính xác', // Find the correct key
       heading: 'Làm thế nào mà Vanderpoole thậm chí tạo ra chữ ký đó?', // How did Vanderpoole even create that signature?
       paragraph_one:
- 'Holocat chen vào và nói rằng một kẻ đào ngũ ở BitRey đã gửi cho chúng tôi một danh sách các khóa chung mà Vanderpoole thường sử dụng, có thể ông ta đã sử dụng một trong những khóa này để ký vào tin nhắn.', //con mèo chimes in and says a defector in BitRey has sent us a list of public keys Vanderpoole commonly uses, maybe he used one of these keys to sign the message.
+         'Holocat chen vào và nói rằng một kẻ đào ngũ ở BitRey đã gửi cho chúng tôi một danh sách các khóa chung mà Vanderpoole thường sử dụng, có thể ông ta đã sử dụng một trong những khóa này để ký vào tin nhắn.', //con mèo chimes in and says a defector in BitRey has sent us a list of public keys Vanderpoole commonly uses, maybe he used one of these keys to sign the message.
       paragraph_two:
- 'Vui lòng cung cấp khóa thành công trong quá trình xác minh, cho phép chúng tôi xác định khóa chung mà Vanderpoole đã sử dụng để ký vào tin nhắn này.', // Please provide the key that successfully completes the verification process, allowing us to identify the public key Vanderpoole used to sign this message.
+         'Vui lòng cung cấp khóa thành công trong quá trình xác minh, cho phép chúng tôi xác định khóa chung mà Vanderpoole đã sử dụng để ký vào tin nhắn này.', // Please provide the key that successfully completes the verification process, allowing us to identify the public key Vanderpoole used to sign this message.
       paragraph_three:
- "Hãy xem bạn có thể xác minh tin nhắn và chữ ký của Vanderpoole bằng một trong NHỮNG khóa NÀY không?", // "Let's see if you can verify Vanderpoole's message and signature using one of THESE keys?"
+         "Hãy xem bạn có thể xác minh tin nhắn và chữ ký của Vanderpoole bằng một trong NHỮNG khóa NÀY không?", // "Let's see if you can verify Vanderpoole's message and signature using one of THESE keys?"
       success:
- "Chữ ký hợp lệ cho khóa chung này của Vanderpoole, đây không phải là Satoshi!", // The signature is valid for this public key of Vanderpoole's, this was not Satoshi!
+         "Chữ ký hợp lệ cho khóa chung này của Vanderpoole, đây không phải là Satoshi!", // The signature is valid for this public key of Vanderpoole's, this was not Satoshi!
     },
     outro_one: {
       title: 'Phần kết ', // Outro
       nav_title: 'Hoàn thành chương', // Chapter complete
       heading: 'Vanderpoole đã nói dối!', // Vanderpoole lied!
       paragraph_one:
- "Bạn đã học được một trong những bài học quan trọng nhất trong Bitcoin. Bạn không tin tưởng, bạn đã xác minh.<br><br>Bằng cách đó, bạn đã phát hiện ra rằng Vanderpoole đã không sử dụng khóa của Satoshi để ký vào tin nhắn, tạo ra một bóng đen lớn cho câu chuyện gia đình của ông ta, cho độ tin cậy của ông ta và độ tin cậy của BitRey.<br><br>Bây giờ nếu chỉ có thể bạn có thể gạt được bài hát đó ra khỏi đầu.", // You learned one of the most important lessons in bitcoin. You didn't trust, you verified.<br><br>In doing so, you discovered that Vanderpoole didn’t use Satoshi’s keys to sign the message, casting a big shadow on his family story, on his credibility, and the credibility of BitRey.<br><br>Now if only you could get that song out of your head.
+         "Bạn đã học được một trong những bài học quan trọng nhất trong Bitcoin. Bạn không tin và bạn đã xác minh.<br><br>Bằng cách đó, bạn đã phát hiện ra rằng Vanderpoole đã không sử dụng khóa của Satoshi để ký vào tin nhắn, tạo ra một bóng đen lớn cho câu chuyện gia đình của ông ta, cho độ tin cậy của ông ta và độ tin cậy của BitRey.<br><br>Bây giờ nếu chỉ có thể bạn có thể gạt được bài hát đó ra khỏi đầu.", // You learned one of the most important lessons in bitcoin. You didn't trust, you verified.<br><br>In doing so, you discovered that Vanderpoole didn’t use Satoshi’s keys to sign the message, casting a big shadow on his family story, on his credibility, and the credibility of BitRey.<br><br>Now if only you could get that song out of your head.
     },
     resources: {
       derive_message_three: {
- op_pushdata_heading: 'OP_PUSHDATA', // OP_PUSHDATA
- op_pushdata_paragraph_one:
-   'OP_PUSHDATA đóng một vai trò quan trọng trong script Bitcoin để tạo điều kiện đưa các phần dữ liệu tùy ý vào chuỗi khối dữ liệu Bitcoin (Bitcoin blockchain). Nó thực sự là một whole category of opcodes cho phép bao gồm các yếu tố dữ liệu có kích thước khác nhau, làm cho ngôn ngữ kịch bản của Bitcoin linh hoạt hơn. Mã opcode này đặc biệt quan trọng trong việc cho phép triển khai các chức năng hợp đồng thông minh khác nhau và các loại giao dịch tùy chỉnh. Vì chúng ta biết đây là opcode để đưa 71 byte dữ liệu lên stack, bạn có thể tìm ra cách opcode này có thể được biểu diễn ở dạng hex không? Bạn có thể đọc thêm về một số OP_CODE này và hơn thế nữa <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">ở đây</Link>.', // OP_PUSHDATA in bitcoin script plays a crucial role in facilitating the insertion of arbitrary pieces of data into the blockchain. It is actually a whole category of opcodes that allow for the inclusion of data elements of varying sizes, making Bitcoin’s scripting language more versatile. This opcode is particularly significant in enabling the implementation of various smart contract functionalities and custom transaction types. Given that we know this is supposed to push 71 bytes of data onto the stack, can you work out how this opcode might be represented in hex? You can read more about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.
+       op_pushdata_heading: 'OP_PUSHDATA', // OP_PUSHDATA
+       op_pushdata_paragraph_one:
+         'OP_PUSHDATA đóng một vai trò quan trọng trong script Bitcoin để tạo điều kiện đưa các phần dữ liệu tùy ý vào chuỗi khối dữ liệu Bitcoin (Bitcoin blockchain). Nó thực sự là một whole category of opcodes cho phép bao gồm các yếu tố dữ liệu có kích thước khác nhau, làm cho ngôn ngữ kịch bản của Bitcoin linh hoạt hơn. Mã opcode này đặc biệt quan trọng trong việc cho phép triển khai các chức năng hợp đồng thông minh khác nhau và các loại giao dịch tùy chỉnh. Vì chúng ta biết đây là opcode để đưa 71 byte dữ liệu lên stack, bạn có thể tìm ra cách opcode này có thể được biểu diễn ở dạng hex không? Bạn có thể đọc thêm về một số OP_CODE này và hơn thế nữa <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">ở đây</Link>.', // OP_PUSHDATA in bitcoin script plays a crucial role in facilitating the insertion of arbitrary pieces of data into the blockchain. It is actually a whole category of opcodes that allow for the inclusion of data elements of varying sizes, making Bitcoin’s scripting language more versatile. This opcode is particularly significant in enabling the implementation of various smart contract functionalities and custom transaction types. Given that we know this is supposed to push 71 bytes of data onto the stack, can you work out how this opcode might be represented in hex? You can read more about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.
       },
       derive_message_four: {
- op_checksig_heading: 'OP_CHECKSIG', // OP_CHECKSIG
- op_checksig_paragraph_one:
-   'OP_CHECKSIG đóng vai trò quan trọng trong script Bitcoin để đảm bảo khóa riêng chính xác có thể chi tiêu một giao dịch nhất định. Trong hầu hết mọi script Bitcoin sẽ có một OP_CHECKSIG để đảm bảo rằng người đang cố gắng chi tiêu Bitcoin có thể làm như vậy với khóa được cung cấp. Bạn có thể đọc thêm về một số OP_CODE này và hơn thế nữa <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">ở đây</Link>.', // OP_CHECKSIG in bitcoin script is critically important to ensuring that the correct private key is able to spend a given transaction. In almost every bitcoin script there will be an OP_CHECKSIG to ensure that the person attempting to spend the bitcoin is able to do so with the given key. You can read about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.
+       op_checksig_heading: 'OP_CHECKSIG', // OP_CHECKSIG
+       op_checksig_paragraph_one:
+         'OP_CHECKSIG đóng vai trò quan trọng trong script Bitcoin để đảm bảo khóa riêng chính xác có thể chi tiêu một giao dịch nhất định. Trong hầu hết mọi script Bitcoin sẽ có một OP_CHECKSIG để đảm bảo rằng người đang cố gắng chi tiêu Bitcoin có thể làm như vậy với khóa được cung cấp. Bạn có thể đọc thêm về một số OP_CODE này và hơn thế nữa <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">ở đây</Link>.', // OP_CHECKSIG in bitcoin script is critically important to ensuring that the correct private key is able to spend a given transaction. In almost every bitcoin script there will be an OP_CHECKSIG to ensure that the person attempting to spend the bitcoin is able to do so with the given key. You can read about some of these OP_CODES and more <Link href="https://en.bitcoin.it/wiki/Script#Constants" target="_blank" className="underline">here</Link>.
       },
       derive_message_six: {
- transaction_parts_heading: 'Phần của giao dịch', // Transaction Parts
- transaction_parts_one:
-   'Phiên bản: Phiên bản này chỉ ra cách thức tổ chức giao dịch.', // Version: This version indicates how the the transaction will be organized.
- transaction_parts_two:
-   'Số lượng đầu vào: Số lượng đầu vào trong giao dịch này.', // Number of inputs: The number of inputs in this transaction.
- transaction_parts_three:
-   'TXID đầu vào #0: Đây là hash của giao dịch mà đầu vào #0 chi tiêu từ đó.', // Input #0 TXID: This is the hash of the transaction that input #0 spends from.
- transaction_parts_four:
-   'Chỉ mục đầu vào #0: Đây là chỉ mục đầu ra của giao dịch được xác định bởi TXID ở trên, cung cấp nguồn tiền.', // Input #0 index: This is the output index of the transaction identified by the above TXID that provides a source of funds.
- transaction_parts_five:
-   'Scriptsig: Đây là dữ liệu ủy quyền chi tiêu đầu ra được chỉ định ở trên. Thông thường bao gồm các chữ ký.', // Scriptsig: This is the data that authorizes the spending of the output specified above. Typically consists of signatures.
- transaction_parts_six:
-   'Chuỗi đầu vào #0: Đây là số chuỗi cho đầu vào chi tiêu.', // Input #0 sequence: This is the sequence number for the spending input.
- transaction_parts_seven:
-   'Số lượng đầu ra: Điều này cho biết giao dịch có bao nhiêu đầu ra.', // Number of outputs: This indicates how many outputs the tx has.
- transaction_parts_eight:
-   'Giá trị đầu ra #0: Đây là số tiền được chi tiêu bởi đầu ra đầu tiên, được biểu thị dưới dạng số nguyên little-endian.', // Output #0 value: This is the amount that is spent by the first output, expressed as a little-endian integer.
- transaction_parts_nine:
-   'ScriptPubKey đầu ra #0: Đây là script xác định những gì cần thiết để chi tiêu tiền. Thông thường bao gồm khóa chung và các opcode khác tạo thành một thử thách.', // Output #0 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.
- transaction_parts_ten:
-   'Giá trị đầu ra #1: Đây là số tiền được chi tiêu bởi đầu ra thứ hai, được biểu thị dưới dạng số nguyên little-endian.', // Output #1 value: This is the amount that is spent by the second output, expressed as a little-endian integer.
- transaction_parts_eleven:
-   'ScriptPubKey đầu ra #1: Đây là script xác định những gì cần thiết để chi tiêu tiền. Thông thường bao gồm khóa chung và các opcode khác tạo thành một thử thách.', // Output #1 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.
- transaction_parts_twelve:
-   'Locktime: Chiều cao khối trước đó mà giao dịch này không hợp lệ để xác nhận.', // Locktime: A block height before which this transaction is not valid for confirmation.
+       transaction_parts_heading: 'Phần của giao dịch', // Transaction Parts
+       transaction_parts_one:
+         'Phiên bản: Phiên bản này chỉ ra cách thức tổ chức giao dịch.', // Version: This version indicates how the the transaction will be organized.
+       transaction_parts_two:
+         'Số lượng đầu vào: Số lượng đầu vào trong giao dịch này.', // Number of inputs: The number of inputs in this transaction.
+       transaction_parts_three:
+         'TXID đầu vào #0: Đây là hash của giao dịch mà đầu vào #0 chi tiêu từ đó.', // Input #0 TXID: This is the hash of the transaction that input #0 spends from.
+       transaction_parts_four:
+         'Chỉ mục đầu vào #0: Đây là chỉ mục đầu ra của giao dịch được xác định bởi TXID ở trên, cung cấp nguồn tiền.', // Input #0 index: This is the output index of the transaction identified by the above TXID that provides a source of funds.
+       transaction_parts_five:
+         'Scriptsig: Đây là dữ liệu ủy quyền chi tiêu đầu ra được chỉ định ở trên. Thông thường bao gồm các chữ ký.', // Scriptsig: This is the data that authorizes the spending of the output specified above. Typically consists of signatures.
+       transaction_parts_six:
+         'Chuỗi đầu vào #0: Đây là số chuỗi cho đầu vào chi tiêu.', // Input #0 sequence: This is the sequence number for the spending input.
+       transaction_parts_seven:
+         'Số lượng đầu ra: Điều này cho biết giao dịch có bao nhiêu đầu ra.', // Number of outputs: This indicates how many outputs the tx has.
+       transaction_parts_eight:
+         'Giá trị đầu ra #0: Đây là số tiền được chi tiêu bởi đầu ra đầu tiên, được biểu thị dưới dạng số nguyên little-endian.', // Output #0 value: This is the amount that is spent by the first output, expressed as a little-endian integer.
+       transaction_parts_nine:
+         'ScriptPubKey đầu ra #0: Đây là script xác định những gì cần thiết để chi tiêu tiền. Thông thường bao gồm khóa chung và các opcode khác tạo thành một thử thách.', // Output #0 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.
+       transaction_parts_ten:
+         'Giá trị đầu ra #1: Đây là số tiền được chi tiêu bởi đầu ra thứ hai, được biểu thị dưới dạng số nguyên little-endian.', // Output #1 value: This is the amount that is spent by the second output, expressed as a little-endian integer.
+       transaction_parts_eleven:
+         'ScriptPubKey đầu ra #1: Đây là script xác định những gì cần thiết để chi tiêu tiền. Thông thường bao gồm khóa chung và các opcode khác tạo thành một thử thách.', // Output #1 scriptPubKey: This is the script that determines what is required to spend the funds. Typically consists of a public key and other opcodes that form a challenge.
+       transaction_parts_twelve:
+         'Locktime: Chiều cao khối trước đó mà giao dịch này không hợp lệ để xác nhận.', // Locktime: A block height before which this transaction is not valid for confirmation.
       },
       derive_message_seven: {
- sighash_type_flag_heading: 'Cờ loại SigHash', // SigHash Type Flag
- sighash_type_flag_paragraph_one:
-   'Cờ SigHash là một cơ chế trong Bitcoin xác định phần nào của giao dịch được bao gồm trong hash được ký bởi khóa riêng. Về bản chất, chúng xác định phạm vi cam kết của người ký đối với các phần cụ thể của dữ liệu giao dịch. Cờ SigHash là một byte duy nhất được thêm vào mỗi chữ ký và có thể thay đổi giữa các đầu vào trong cùng một giao dịch. Có một số loại cờ SigHash mà bạn có thể tìm hiểu thêm <Link href="https://river.com/learn/terms/s/sighash-flag" target="_blank" className="underline">ở đây</Link>.', // SigHash flags are a mechanism in bitcoin that define which parts of a transaction are included in the hash that is signed by a private key. Essentially, they determine the scope of commitment by the signer to specific parts of the transaction data. The SigHash flag is a single byte appended to each signature and can vary between inputs within the same transaction. There are several types of SigHash flags you can learn about <Link href="https://river.com/learn/terms/s/sighash-flag" target="_blank" className="underline">here</Link>.
+       sighash_type_flag_heading: 'Cờ loại SigHash', // SigHash Type Flag
+       sighash_type_flag_paragraph_one:
+         'Cờ SigHash là một cơ chế trong Bitcoin xác định phần nào của giao dịch được bao gồm trong hash được ký bởi khóa riêng. Về bản chất, chúng xác định phạm vi cam kết của người ký đối với các phần cụ thể của dữ liệu giao dịch. Cờ SigHash là một byte duy nhất được thêm vào mỗi chữ ký và có thể thay đổi giữa các đầu vào trong cùng một giao dịch. Có một số loại cờ SigHash mà bạn có thể tìm hiểu thêm <Link href="https://river.com/learn/terms/s/sighash-flag" target="_blank" className="underline">ở đây</Link>.', // SigHash flags are a mechanism in bitcoin that define which parts of a transaction are included in the hash that is signed by a private key. Essentially, they determine the scope of commitment by the signer to specific parts of the transaction data. The SigHash flag is a single byte appended to each signature and can vary between inputs within the same transaction. There are several types of SigHash flags you can learn about <Link href="https://river.com/learn/terms/s/sighash-flag" target="_blank" className="underline">here</Link>.
       },
       verify_signature_two: {
- tip_one:
-   'Gợi ý JavaScript: Bạn có thể chuyển đổi một chuỗi hex thành một bộ đệm byte bằng cách sử dụng <span className="p-1 font-mono bg-[#0000004D] m-1">Buffer.from(someString, \'hex\');</span>', // JavaScript hint: You can convert a hex string to a buffer of bytes using <span className="p-1 font-mono bg-[#0000004D] m-1">Buffer.from(someString, \'hex\');</span> 
- signature_verification_heading: 'Xác minh chữ ký', // Signature Verification
- signature_verification_paragraph_one:
-   'Xác minh chữ ký là một thuật toán toán học trong đó một bên cung cấp một phần dữ liệu (chữ ký) chỉ có thể được tạo ra nếu bên đó biết một số bí mật (khóa riêng). Xác minh liên quan đến việc so sánh chữ ký, khóa chung và một thông điệp nhất định. Nếu thuật toán đưa ra một giá trị boolean TRUE, thì chữ ký được coi là xác thực.', // Signature verification is a mathematical algorithm in which one party provides a piece of data (the signature) that could only be generated if that party knows a secret number (the private key). Verification involves comparing the signature, the public key, and a given message. If the algorithm outputs a TRUE boolean, then the signature is considered authentic.
+       tip_one:
+         'Gợi ý JavaScript: Bạn có thể chuyển đổi một chuỗi hex thành một bộ đệm byte bằng cách sử dụng <span className="p-1 font-mono bg-[#0000004D] m-1">Buffer.from(someString, \'hex\');</span>', // JavaScript hint: You can convert a hex string to a buffer of bytes using <span className="p-1 font-mono bg-[#0000004D] m-1">Buffer.from(someString, \'hex\');</span> 
+       signature_verification_heading: 'Xác minh chữ ký', // Signature Verification
+       signature_verification_paragraph_one:
+         'Xác minh chữ ký là một thuật toán toán học trong đó một bên cung cấp một phần dữ liệu (chữ ký) chỉ có thể được tạo ra nếu bên đó biết một số bí mật (khóa riêng). Xác minh liên quan đến việc so sánh chữ ký, khóa chung và một thông điệp nhất định. Nếu thuật toán đưa ra một giá trị boolean TRUE, thì chữ ký được coi là xác thực.', // Signature verification is a mathematical algorithm in which one party provides a piece of data (the signature) that could only be generated if that party knows a secret number (the private key). Verification involves comparing the signature, the public key, and a given message. If the algorithm outputs a TRUE boolean, then the signature is considered authentic.
       },
       verify_signature_three: {
- signature_encoding_heading: 'Mã hóa chữ ký', // Signature Encoding
- signature_encoding_paragraph_one:
-   'Chữ ký (DER) hoặc Quy tắc mã hóa phân biệt (Distinguished Encoding Rules) đơn giản là một định dạng được sử dụng để mã hóa chữ ký ECDSA trong Bitcoin. Chữ ký ECDSA được tạo bằng khóa riêng và mã hóa của thông báo được ký. Nó bao gồm hai số 32 byte (r, s). Nó có nhiều thành phần mà bạn có thể tìm hiểu thêm <Link href="https://technicaldifficulties.io/2020/07/22/bip-66-unpacking-der-signatures/" target="_blank" className="underline">ở đây</Link>.', // A (DER) signature or Distinguished Encoding Rules is simply a format used to encode an ECDSA signature in bitcoin. An ECDSA signature is generated using a private key and a hash of the signed message. It consists of two 32-byte numbers (r,s). It has multiple components you can learn more about <Link href="https://technicaldifficulties.io/2020/07/22/bip-66-unpacking-der-signatures/" target="_blank" className="underline">here</Link>.
+       signature_encoding_heading: 'Mã hóa chữ ký', // Signature Encoding
+       signature_encoding_paragraph_one:
+         'Chữ ký (DER) hoặc Quy tắc mã hóa phân biệt (Distinguished Encoding Rules) đơn giản là một định dạng được sử dụng để mã hóa chữ ký ECDSA trong Bitcoin. Chữ ký ECDSA được tạo bằng khóa riêng và mã hóa của thông báo được ký. Nó bao gồm hai số 32 byte (r, s). Nó có nhiều thành phần mà bạn có thể tìm hiểu thêm <Link href="https://technicaldifficulties.io/2020/07/22/bip-66-unpacking-der-signatures/" target="_blank" className="underline">ở đây</Link>.', // A (DER) signature or Distinguished Encoding Rules is simply a format used to encode an ECDSA signature in bitcoin. An ECDSA signature is generated using a private key and a hash of the signed message. It consists of two 32-byte numbers (r,s). It has multiple components you can learn more about <Link href="https://technicaldifficulties.io/2020/07/22/bip-66-unpacking-der-signatures/" target="_blank" className="underline">here</Link>.
       },
       verify_signature_four: {
- eliptic_curve_heading: 'Thuật toán chữ ký số đường cong Elliptic (ECDSA)', // Elliptic Curve Digital Signature Algorithm (ECDSA)
- eliptic_curve_paragraph_one:
-   "ECDSA là một thuật toán mật mã được Bitcoin sử dụng để đảm bảo rằng tiền chỉ có thể được chi tiêu bởi chủ sở hữu hợp pháp của chúng. Khóa chung được suy ra từ khóa riêng thông qua phép nhân đường cong elliptic, điều này khá đơn giản về mặt tính toán. Tuy nhiên, đảo ngược quá trình này để suy ra khóa riêng khóa chung là không khả thi về mặt tính toán. Hàm một chiều này là nền tảng của bảo mật Bitcoin.", // ECDSA is a cryptographic algorithm used by bitcoin to ensure that funds can only be spent by their rightful owners. A public key is derived from a private key through elliptic curve multiplication, which is computationally straightforward. However, reversing this process to derive the private key from the public key is computationally unfeasible. This one-way function is a cornerstone of Bitcoin's security.
- 
- public_private_key_heading: 'Khóa chung và khóa riêng', // Public and Private Keys
- public_private_key_paragraph_one:
-   'Trong Bitcoin, một cặp khóa được sử dụng để đảm bảo giao dịch an toàn. Khóa riêng, được giữ bí mật, được sử dụng để ký giao dịch và chứng minh quyền sở hữu của một địa chỉ Bitcoin. Khóa chung, được suy ra từ khóa riêng, có thể được chia sẻ và được sử dụng để xác minh rằng chữ ký được thực hiện bởi chủ sở hữu khóa riêng, mà không tiết lộ khóa riêng.', // In bitcoin, a pair of keys is used to ensure secure transactions. The private key, kept secret, is used to sign transactions and prove ownership of a bitcoin address. The public key, derived from the private key, can be shared and is used to verify that a signature is made by the private key holder, without revealing the private key.
+       eliptic_curve_heading: 'Thuật toán chữ ký số đường cong Elliptic (ECDSA)', // Elliptic Curve Digital Signature Algorithm (ECDSA)
+       eliptic_curve_paragraph_one:
+         "ECDSA là một thuật toán mật mã được Bitcoin sử dụng để đảm bảo rằng tiền chỉ có thể được chi tiêu bởi chủ sở hữu hợp pháp của chúng. Khóa chung được suy ra từ khóa riêng thông qua phép nhân đường cong elliptic, điều này khá đơn giản về mặt tính toán. Tuy nhiên, đảo ngược quá trình này để suy ra khóa riêng khóa chung là không khả thi về mặt tính toán. Hàm một chiều này là nền tảng của bảo mật Bitcoin.", // ECDSA is a cryptographic algorithm used by bitcoin to ensure that funds can only be spent by their rightful owners. A public key is derived from a private key through elliptic curve multiplication, which is computationally straightforward. However, reversing this process to derive the private key from the public key is computationally unfeasible. This one-way function is a cornerstone of Bitcoin's security.
+       
+       public_private_key_heading: 'Khóa chung và khóa riêng', // Public and Private Keys
+       public_private_key_paragraph_one:
+         'Trong Bitcoin, một cặp khóa được sử dụng để đảm bảo giao dịch an toàn. Khóa riêng, được giữ bí mật, được sử dụng để ký giao dịch và chứng minh quyền sở hữu của một địa chỉ Bitcoin. Khóa chung, được suy ra từ khóa riêng, có thể được chia sẻ và được sử dụng để xác minh rằng chữ ký được thực hiện bởi chủ sở hữu khóa riêng, mà không tiết lộ khóa riêng.', // In bitcoin, a pair of keys is used to ensure secure transactions. The private key, kept secret, is used to sign transactions and prove ownership of a bitcoin address. The public key, derived from the private key, can be shared and is used to verify that a signature is made by the private key holder, without revealing the private key.
       },
       verify_signature_five: {
- finite_field_arithmetic_heading: 'Số học trường hữu hạn', // Finite Field Arithmetic
- finite_field_arithmetic_paragraph_one:
-   "Loại số học này, được sử dụng trong ECDSA, liên quan đến các số trong một phạm vi hoặc trường cố định. Các phép toán như cộng, trừ, nhân và tìm nghịch đảo modulo được thực hiện theo kích thước của trường này. Điều này rất cần thiết cho các phép tính đường cong elliptic trong mật mã học Bitcoin.", // This type of arithmetic, used in ECDSA, involves numbers within a fixed range or field. Operations such as addition, subtraction, multiplication, and finding modular inverses are performed with respect to the size of this field. This is essential for the elliptic curve calculations in bitcoin's cryptography.
- ge_and_fe_heading: 'Phần tử nhóm (GE) và Phần tử trường (FE)', // Group Elements (GE) and Field Elements (FE)
- ge_and_fe_paragraph_one:
-   "Trong ngữ cảnh của mật mã học đường cong elliptic, một phần tử nhóm thường đại diện cho một điểm trên đường cong elliptic. Trong thử thách, GE đề cập đến một điểm như vậy với tọa độ x và y cụ thể. FE đại diện cho một phần tử của trường hữu hạn, được sử dụng cho các phép tính trong các ràng buộc của trường.", // In the context of elliptic curve cryptography, a group element typically represents a point on the elliptic curve. In the challenge, GE refers to such a point with specific x and y coordinates. FE represents an element of the finite field, used for calculations within the field's constraints.
- modular_inverse_heading: 'Nghịch đảo modulo', // Modular Inverse
- modular_inverse_paragraph_one:
-   "Nghịch đảo modulo của một số a modulo m là một số b sao cho (a * b) % m = 1. Tìm nghịch đảo modulo là một bước quan trọng trong việc xác minh chữ ký ECDSA. Nó được sử dụng trong việc tính toán u1 và u2 trong quá trình xác minh.", // The modular inverse of a number a modulo m is a number b such that (a * b) % m = 1. Finding the modular inverse is a critical step in ECDSA signature verification. It's used in the calculation of u1 and u2 during the verification process.
+       finite_field_arithmetic_heading: 'Số học trường hữu hạn', // Finite Field Arithmetic
+       finite_field_arithmetic_paragraph_one:
+         "Loại số học này, được sử dụng trong ECDSA, liên quan đến các số trong một phạm vi hoặc trường cố định. Các phép toán như cộng, trừ, nhân và tìm nghịch đảo modulo được thực hiện theo kích thước của trường này. Điều này rất cần thiết cho các phép tính đường cong elliptic trong mật mã học Bitcoin.", // This type of arithmetic, used in ECDSA, involves numbers within a fixed range or field. Operations such as addition, subtraction, multiplication, and finding modular inverses are performed with respect to the size of this field. This is essential for the elliptic curve calculations in bitcoin's cryptography.
+       ge_and_fe_heading: 'Phần tử nhóm (GE) và Phần tử trường (FE)', // Group Elements (GE) and Field Elements (FE)
+       ge_and_fe_paragraph_one:
+         "Trong ngữ cảnh của mật mã học đường cong elliptic, một phần tử nhóm thường đại diện cho một điểm trên đường cong elliptic. Trong thử thách, GE đề cập đến một điểm như vậy với tọa độ x và y cụ thể. FE đại diện cho một phần tử của trường hữu hạn, được sử dụng cho các phép tính trong các ràng buộc của trường.", // In the context of elliptic curve cryptography, a group element typically represents a point on the elliptic curve. In the challenge, GE refers to such a point with specific x and y coordinates. FE represents an element of the finite field, used for calculations within the field's constraints.
+       modular_inverse_heading: 'Nghịch đảo modulo', // Modular Inverse
+       modular_inverse_paragraph_one:
+         "Nghịch đảo modulo của một số a modulo m là một số b sao cho (a * b) % m = 1. Tìm nghịch đảo modulo là một bước quan trọng trong việc xác minh chữ ký ECDSA. Nó được sử dụng trong việc tính toán u1 và u2 trong quá trình xác minh.", // The modular inverse of a number a modulo m is a number b such that (a * b) % m = 1. Finding the modular inverse is a critical step in ECDSA signature verification. It's used in the calculation of u1 and u2 during the verification process.
       },
       validate_signature_one: {
- message_verification_heading: 'Tầm quan trọng của việc xác minh thông điệp', // Importance of Message Verification
- message_verification_paragraph_one:
-   'Xác minh thông điệp nâng cao tính bảo mật của giao tiếp trong hệ sinh thái Bitcoin. Nó cho phép các bên xác minh tính xác thực và tính toàn vẹn của các thông điệp, điều này rất có giá trị trong các tình huống mà sự tin tưởng và xác minh là điều cần thiết, chẳng hạn như trong các giao dịch ngang hàng hoặc giao tiếp giữa các bên trong một hợp đồng thông minh. Hơn nữa, xác minh thông điệp đóng vai trò nền tảng cho nhiều ứng dụng khác nhau, bao gồm xác minh danh tính và chứng nhận quyền sở hữu của một địa chỉ Bitcoin cụ thể. Nó bổ sung một lớp đảm bảo mật mã, củng cố bản chất phi tin cậy và phi tập trung (không qua trung gian) của mạng lưới Bitcoin.', // Message verification enhances the security of communications within the bitcoin ecosystem. It allows parties to verify the authenticity and integrity of messages, which is valuable in situations where trust and verification are essential, such as in peer-to-peer transactions or communication between parties in a smart contract. Furthermore, message verification serves as a foundation for various applications, including identity verification and the attestation of ownership of a particular bitcoin address. It adds a layer of cryptographic assurance, reinforcing the trustless and decentralized nature of the bitcoin network.
+       message_verification_heading: 'Tầm quan trọng của việc xác minh thông điệp', // Importance of Message Verification
+       message_verification_paragraph_one:
+         'Xác minh thông điệp nâng cao tính bảo mật của giao tiếp trong hệ sinh thái Bitcoin. Nó cho phép các bên xác minh tính xác thực và tính toàn vẹn của các thông điệp, điều này rất có giá trị trong các tình huống mà sự tin tưởng và xác minh là điều cần thiết, chẳng hạn như trong các giao dịch ngang hàng hoặc giao tiếp giữa các bên trong một hợp đồng thông minh. Hơn nữa, xác minh thông điệp đóng vai trò nền tảng cho nhiều ứng dụng khác nhau, bao gồm xác minh danh tính và chứng nhận quyền sở hữu của một địa chỉ Bitcoin cụ thể. Nó bổ sung một lớp đảm bảo mật mã, củng cố bản chất phi tin cậy và phi tập trung (không qua trung gian) của mạng lưới Bitcoin.', // Message verification enhances the security of communications within the bitcoin ecosystem. It allows parties to verify the authenticity and integrity of messages, which is valuable in situations where trust and verification are essential, such as in peer-to-peer transactions or communication between parties in a smart contract. Furthermore, message verification serves as a foundation for various applications, including identity verification and the attestation of ownership of a particular bitcoin address. It adds a layer of cryptographic assurance, reinforcing the trustless and decentralized nature of the bitcoin network.
       },
       validate_signature_two: {
- base64_encoding_heading: 'Mã hóa Base64', // Base64 Encoding
- base64_encoding_paragraph_one:
-   "Base64 là một lược đồ mã hóa byte sang văn bản cơ bản chỉ cho phép dữ liệu được chuyển đổi thành byte, sau đó có thể được sử dụng trong bộ đệm hoặc từ byte sang văn bản theo cách tránh mọi sự cố với đường dẫn url và tham số truy vấn. Điều này khác với lược đồ mã hóa base58 ở chỗ nó vẫn bao gồm các ký tự tương tự (số không, chữ hoa 'O', chữ hoa 'I' và chữ thường 'l') có thể gây nhầm lẫn cho người dùng khi cố gắng sao chép hoặc đọc thông báo được mã hóa.", // Base64 is a basic byte to text encoding scheme that just allows for the data to be convereted to bytes which can then be used in buffers or from bytes to text in such a way that it avoids any problems with url paths and query params. This differs from the base58 encoding scheme in that it still includes the similar characters (zero, uppercase 'O', uppercase 'I', and lowercase 'l') that may otherwise be confusing to a user when trying to copy or dictate the encoded message.
+       base64_encoding_heading: 'Mã hóa Base64', // Base64 Encoding
+       base64_encoding_paragraph_one:
+         "Base64 là một lược đồ mã hóa byte sang văn bản cơ bản chỉ cho phép dữ liệu được chuyển đổi thành byte, sau đó có thể được sử dụng trong bộ đệm hoặc từ byte sang văn bản theo cách tránh mọi sự cố với đường dẫn url và tham số truy vấn. Điều này khác với lược đồ mã hóa base58 ở chỗ nó vẫn bao gồm các ký tự tương tự (số không, chữ hoa 'O', chữ hoa 'I' và chữ thường 'l') có thể gây nhầm lẫn cho người dùng khi cố gắng sao chép hoặc đọc thông báo được mã hóa.", // Base64 is a basic byte to text encoding scheme that just allows for the data to be convereted to bytes which can then be used in buffers or from bytes to text in such a way that it avoids any problems with url paths and query params. This differs from the base58 encoding scheme in that it still includes the similar characters (zero, uppercase 'O', uppercase 'I', and lowercase 'l') that may otherwise be confusing to a user when trying to copy or dictate the encoded message.
       },
       validate_signature_three: {
- signing_and_ownership_heading: 'Ký và sở hữu', // Message Signing and Ownership
- signing_and_ownership_paragraph_one:
-   "Dựa trên tính ẩn danh giả của Bitcoin, chúng ta bị hạn chế trong những gì chúng ta có thể chứng minh một cách dứt khoát bởi vì chủ sở hữu của một khóa có thể từ chối ký một thông điệp hoặc ký một thông điệp bằng một khóa không chính xác một cách cố ý. Điều duy nhất chúng ta có thể chứng minh là khóa tạo ra chữ ký không hợp lệ không phải là khóa khớp với khóa có thể ký một thông điệp.", // Based on bitcoin's psuedo-anonymity we are limited in what we are able to definitively prove because the owner of a key can refuse to sign a message or sign a message with an incorrect key on purpose. The only thing we can prove is that the key that creates an invalid signature is not one that matches a key that can sign a message.
+       signing_and_ownership_heading: 'Ký và sở hữu', // Message Signing and Ownership
+       signing_and_ownership_paragraph_one:
+         "Dựa trên tính ẩn danh giả của Bitcoin, chúng ta bị hạn chế trong những gì chúng ta có thể chứng minh một cách dứt khoát bởi vì chủ sở hữu của một khóa có thể từ chối ký một thông điệp hoặc ký một thông điệp bằng một khóa không chính xác một cách cố ý. Điều duy nhất chúng ta có thể chứng minh là khóa tạo ra chữ ký không hợp lệ không phải là khóa khớp với khóa có thể ký một thông điệp.", // Based on bitcoin's psuedo-anonymity we are limited in what we are able to definitively prove because the owner of a key can refuse to sign a message or sign a message with an incorrect key on purpose. The only thing we can prove is that the key that creates an invalid signature is not one that matches a key that can sign a message.
       },
       validate_signature_four: {
- one_for_one_heading: 'Một-một', // One for One
- one_for_one_paragraph_one:
-   'Để đảm bảo độ tin cậy và bảo mật của ECDSA, một chữ ký được tạo bởi một khóa riêng chỉ có thể được xác minh bởi khóa chung tương ứng. Nếu các khóa riêng khác nhau có thể tạo ra cùng một khóa chung hoặc chữ ký, điều đó sẽ làm suy yếu bảo mật và độ tin cậy của ECDSA. Thông qua điều này, chúng ta có thể biết rằng khóa chung có thể ký vào thông điệp này có quyền sở hữu Bitcoin này.', // To ensure the reliability and security of ECDSA, a signature created by a private key can only be verified by the corresponding public key. If different private keys could produce the same public key or signature, it would undermine the security and reliability of ECDSA. Through this we can know that the public key that was able to sign this message has ownership of this bitcoin.
+       one_for_one_heading: 'Một-một', // One for One
+       one_for_one_paragraph_one:
+         'Để đảm bảo độ tin cậy và bảo mật của ECDSA, một chữ ký được tạo bởi một khóa riêng chỉ có thể được xác minh bởi khóa chung tương ứng. Nếu các khóa riêng khác nhau có thể tạo ra cùng một khóa chung hoặc chữ ký, điều đó sẽ làm suy yếu bảo mật và độ tin cậy của ECDSA. Thông qua điều này, chúng ta có thể biết rằng khóa chung có thể ký vào thông điệp này có quyền sở hữu Bitcoin này.', // To ensure the reliability and security of ECDSA, a signature created by a private key can only be verified by the corresponding public key. If different private keys could produce the same public key or signature, it would undermine the security and reliability of ECDSA. Through this we can know that the public key that was able to sign this message has ownership of this bitcoin.
       },
     },
   },
@@ -1346,37 +1346,37 @@ const translations = {
       title: 'Phần mở đầu', // Intro
       nav_title: 'Có phải đó thực sự là Satoshi không?', // Was that really Satoshi
       paragraph_one:
- '—SATOSHI NAKAMOTO: ”Làm tốt. Giờ thì cả thế giới có thể tự mình thấy rằng Vanderpoole là một kẻ lừa đảo. Ngay cả khi một số người vẫn chưa tin, họ sẽ tin trước khi công việc của chúng ta hoàn thành.”', // —SATOSHI NAKAMOTO: ”Well done. Now the world can see for itself that Vanderpoole is a fraud. Even if some don’t believe it yet, they will before our work is done.”
+         '—SATOSHI NAKAMOTO: ”Làm tốt. Giờ thì cả thế giới có thể tự mình thấy rằng Vanderpoole là một kẻ lừa đảo. Ngay cả khi một số người vẫn chưa tin, họ sẽ tin trước khi công việc của chúng ta hoàn thành.”', // —SATOSHI NAKAMOTO: ”Well done. Now the world can see for itself that Vanderpoole is a fraud. Even if some don’t believe it yet, they will before our work is done.”
       paragraph_two:
- 'Bạn dừng lại một lúc và nhận ra rằng mọi tin nhắn cho đến thời điểm này đều được ký “Satoshi Nakamoto”. Bạn đã luôn cho rằng đây là bút danh được sử dụng bởi ai đó tôn trọng các nguyên tắc cốt lõi của Bitcoin. Chắc chắn, họ không thể là Satoshi Nakamoto thực sự. Nhưng cuối cùng, bạn quyết định, việc hỏi cũng đáng.', // You pause for a moment and realize that every message up to this point has been signed “Satoshi Nakamoto.” You had just assumed that this was a pseudonym used by someone who adheres to bitcoin’s core principles. Surely, they couldn’t be the real Satoshi Nakamoto. But, finally, you decide, it’s worth asking.
+         'Bạn dừng lại một lúc và nhận ra rằng mọi tin nhắn cho đến thời điểm này đều được ký “Satoshi Nakamoto”. Bạn đã luôn cho rằng đây là bút danh được sử dụng bởi ai đó tôn trọng các nguyên tắc cốt lõi của Bitcoin. Chắc chắn, họ không thể là Satoshi Nakamoto thực sự. Nhưng cuối cùng, bạn quyết định, việc hỏi cũng đáng.', // You pause for a moment and realize that every message up to this point has been signed “Satoshi Nakamoto.” You had just assumed that this was a pseudonym used by someone who adheres to bitcoin’s core principles. Surely, they couldn’t be the real Satoshi Nakamoto. But, finally, you decide, it’s worth asking.
       paragraph_three:
- '—”Điều này có thể khiến tôi trông thật ngu ngốc, nhưng liệu ông có phải là Satoshi thực sự không?”', // —”This might make me sound stupid, but are you the real Satoshi?”
+         '—”Điều này có thể khiến tôi trông thật ngu ngốc, nhưng liệu ông có phải là Satoshi thực sự không?”', // —”This might make me sound stupid, but are you the real Satoshi?”
     },
     intro_two: {
       title: 'Phần mở đầu', // Intro
       nav_title: 'Trả cho Mika 3000', // Paying Mika 3000
       paragraph_one:
- '—HOLOCAT: “Hầu như không có gì khiến bạn trông ngu ngốc hơn gần đây.”', // —HOLOCAT: “Hardly the only thing to make you sound stupid lately.”
+         '—HOLOCAT: “Hầu như không có gì khiến bạn trông ngu ngốc hơn gần đây.”', // —HOLOCAT: “Hardly the only thing to make you sound stupid lately.”
       paragraph_two:
- '—SATOSHI NAKAMOTO: “Bitcoin đã vượt xa tầm kiểm soát của người tạo ra nó nhiều năm trước. Cho dù Vanderpoole hay tôi có phải là Satoshi, hay một trong những hậu duệ của họ thì cũng không quan trọng. Bitcoin được định nghĩa bởi cộng đồng của nó và không thể bị một cá nhân hoặc thực thể nào đó chiếm đoạt - kể cả Satoshi. Chứng minh điều này là trận chiến thực sự. Tôi hy vọng bạn không phiền, nhưng tôi đã nhờ người bạn phóng viên tự do lập dị của bạn liên hệ.”', // —SATOSHI NAKAMOTO: “Bitcoin moved far beyond its creator’s control many years ago. It would not matter if Vanderpoole or I were Satoshi, or one of their descendants. Bitcoin is defined by its community and cannot be co-opted by a single individual or entity—including Satoshi. Proving this is the real battle. I hope you don’t mind, but I asked your eccentric freelance reporter friend to reach out.”
+         '—SATOSHI NAKAMOTO: “Bitcoin đã vượt xa tầm kiểm soát của người tạo ra nó nhiều năm trước. Cho dù Vanderpoole hay tôi có phải là Satoshi, hay một trong những hậu duệ của họ thì cũng không quan trọng. Bitcoin được định nghĩa bởi cộng đồng của nó và không thể bị một cá nhân hoặc thực thể nào đó chiếm đoạt - kể cả Satoshi. Chứng minh điều này là trận chiến thực sự. Tôi hy vọng bạn không phiền, nhưng tôi đã nhờ người bạn phóng viên tự do lập dị của bạn liên hệ.”', // —SATOSHI NAKAMOTO: “Bitcoin moved far beyond its creator’s control many years ago. It would not matter if Vanderpoole or I were Satoshi, or one of their descendants. Bitcoin is defined by its community and cannot be co-opted by a single individual or entity—including Satoshi. Proving this is the real battle. I hope you don’t mind, but I asked your eccentric freelance reporter friend to reach out.”
       paragraph_three:
- '—Ông ta làm gì?', // —He what?
+         '—Ông ta làm gì?', // —He what?
       paragraph_four:
- '—Ting.', // —Ding.
+         '—Ding.', // —Ding.
       paragraph_five:
- '—HOLOCAT: Đừng quên bấm vào tôi.', // —HOLOCAT: Don’t forget to boop me.
+         '—HOLOCAT: Đừng quên bấm vào tôi.', // —HOLOCAT: Don’t forget to boop me.
       paragraph_six:
- `—MIKA 3000: “Bạn rất dũng cảm, nhưng dũng cảm thôi là chưa đủ. Những gì bạn phát hiện chỉ mới là sự khởi đầu. Câu chuyện này còn nhiều điều hơn thế, nhưng chúng ta cần đến thăm hòn đảo riêng của Vanderpoole để biết chắc chắn "nhiều hơn" nghĩa là gì. Điều này sẽ tốn rất nhiều tiền, vì vậy tôi có thể sử dụng sự giúp đỡ của bạn để rút tiền từ ví đa chữ ký mà bạn đã giúp tôi thiết lập. Bạn vẫn còn một trong những khóa của tôi, phải không?”`, // —MIKA 3000: “You’ve got guts, but guts aren't enough. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to know for sure what "more" means. This will cost a lot, so I could use your help pulling funds off the multisig wallet that you helped me set up. You’ve got a key, right?”
+         `—MIKA 3000: “Bạn rất dũng cảm, nhưng dũng cảm thôi là chưa đủ. Những gì bạn phát hiện chỉ mới là sự khởi đầu. Câu chuyện này còn nhiều điều hơn thế, nhưng chúng ta cần đến thăm hòn đảo riêng của Vanderpoole để biết chắc chắn "nhiều hơn" nghĩa là gì. Điều này sẽ tốn rất nhiều tiền, vì vậy tôi có thể sử dụng sự giúp đỡ của bạn để rút tiền từ ví đa chữ ký mà bạn đã giúp tôi thiết lập. Bạn vẫn còn một trong những khóa của tôi, phải không?”`, // —MIKA 3000: “You’ve got guts, but guts aren't enough. What you discovered is just the start. There’s more to this story, but we need to visit Vanderpoole’s private island to know for sure what "more" means. This will cost a lot, so I could use your help pulling funds off the multisig wallet that you helped me set up. You’ve got a key, right?”
     },
     in_out_one: {
       title: 'Nội tình', // The ins and outs
       nav_title: 'Giao dịch chưa chi tiêu (UTXO)', // The unspent UTXO
       paragraph_one:
- "Mika 3000 cần 1 BTC để mua đồ dùng cho chuyến đi đến hòn đảo riêng của Vanderpoole. Bạn quyết định gửi cho cô ấy 1 BTC từ phần thưởng khai thác(đào) khối mỏ chương 3 của mình, phần thưởng đã được gửi bởi nhóm khai thác(đào) khối mỏ đến địa chỉ mà bạn đã tạo trong chương 4.", // Mika 3000 needs 1 BTC to buy gear for her trip to Vanderpoole's private island. You decide to send her 1 BTC from your chapter 3 mining rewards, which have been sent by the mining mỏ to the address you created in chapter 4.
+          "Mika 3000 cần 1 BTC để mua đồ dùng cho chuyến đi đến hòn đảo riêng của Vanderpoole. Bạn quyết định gửi cho cô ấy 1 BTC từ phần thưởng khai thác(đào) khối mỏ chương 3 của mình, phần thưởng đã được gửi bởi nhóm khai thác(đào) khối mỏ đến địa chỉ mà bạn đã tạo trong chương 4.", // Mika 3000 needs 1 BTC to buy gear for her trip to Vanderpoole's private island. You decide to send her 1 BTC from your chapter 3 mining rewards, which have been sent by the mining mỏ to the address you created in chapter 4.
       paragraph_two:
- 'Bạn mở nút đầy đủ Bitcoin của mình và thực thi một lệnh để xem tiền của mình ở đâu trong blockchain.', // You open your bitcoin full node and execute a command to see where your money is in the blockchain.
+         'Bạn mở nút đầy đủ Bitcoin của mình và thực thi một lệnh để xem tiền của mình ở đâu trong blockchain.', // You open your bitcoin full node and execute a command to see where your money is in the blockchain.
       paragraph_three:
- 'Đây là đầu ra giao dịch chưa chi tiêu (UTXO). Bạn có thể nhận ra hash khóa chung được nén và địa chỉ của mình từ chương 4. Số tiền cũng có vẻ chính xác: 1.61 BTC.', // This is an unspent transaction output (aka "UTXO"). You might recognize your compressed public key hash and address from chapter 4. The amount looks right, too: 1.61 BTC.
+         'Đây là đầu ra giao dịch chưa chi tiêu (UTXO). Bạn có thể nhận ra hash khóa chung được nén và địa chỉ của mình từ chương 4. Số tiền cũng có vẻ chính xác: 1.61 BTC.', // This is an unspent transaction output (aka "UTXO"). You might recognize your compressed public key hash and address from chapter 4. The amount looks right, too: 1.61 BTC.
     },
     in_out_two: {
       title: 'Nội tình', // The ins and outs
@@ -3084,39 +3084,39 @@ Gợi ý ngăn xếp: Để chi tiêu trước khi bí mật được tiết l�
       nav_title: 'Vượt ra ngoài Cứu Satoshi', // nav_title: 'Moving beyond Saving Satoshi'
       heading: 'Bitcoin vẫn cần sự giúp đỡ của bạn...', // heading: 'Bitcoin still needs your help...'
       paragraph_one:
-   'Mặc dù năm 2139 có vẻ xa vời, sứ mệnh của Bitcoin vẫn tồn tại mãi mãi: tạo ra đồng tiền công bằng, cởi mở và trung thực. Tuy nhiên, để đạt được tầm nhìn này sẽ cần đến nỗ lực của mọi người, bao gồm cả bạn.', //  'Although 2139 may seem distant, Bitcoin’s mission remains timeless: to create money that is fair, open, and honest. However, achieving this vision will require everyone’s efforts—including yours.'
+         'Mặc dù năm 2139 có vẻ xa vời, sứ mệnh của Bitcoin vẫn tồn tại mãi mãi: tạo ra đồng tiền công bằng, cởi mở và trung thực. Tuy nhiên, để đạt được tầm nhìn này sẽ cần đến nỗ lực của mọi người, bao gồm cả bạn.', //  'Although 2139 may seem distant, Bitcoin’s mission remains timeless: to create money that is fair, open, and honest. However, achieving this vision will require everyone’s efforts—including yours.'
       paragraph_two:
-   'Bạn đã chứng tỏ rằng bạn hiểu về bitcoin. Bây giờ là thời điểm hoàn hảo để biến kiến ​​thức đó thành hành động bằng cách đóng góp vào một trong những công nghệ quan trọng nhất từ ​​trước đến nay.', //   'You’ve shown that you understand bitcoin. Now is the perfect time to turn that knowledge into action by contributing to one of the most important technologies ever.'
+         'Bạn đã chứng tỏ rằng bạn hiểu về bitcoin. Bây giờ là thời điểm hoàn hảo để biến kiến ​​thức đó thành hành động bằng cách đóng góp vào một trong những công nghệ quan trọng nhất từ ​​trước đến nay.', //   'You’ve shown that you understand bitcoin. Now is the perfect time to turn that knowledge into action by contributing to one of the most important technologies ever.'
       paragraph_three:
-   'Dự án <Link className="underline" href="https://bitcoindevs.xyz/">Phát triển Bitcoin</Link> ở đây để hướng dẫn các thế hệ tương lai của những người đóng góp mã nguồn mở. Trở thành anh hùng bitcoin ngày nay chỉ với một cú nhấp chuột.', //  'The <Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> is here to guide future generations of open-source contributors. Becoming a present day bitcoin hero today is just one click away.'
+         'Dự án <Link className="underline" href="https://bitcoindevs.xyz/">Phát triển Bitcoin</Link> ở đây để hướng dẫn các thế hệ tương lai của những người đóng góp mã nguồn mở. Trở thành anh hùng bitcoin ngày nay chỉ với một cú nhấp chuột.', //  'The <Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> is here to guide future generations of open-source contributors. Becoming a present day bitcoin hero today is just one click away.'
       paragraph_four: 'Chúng ta đều là Satoshi.', // paragraph_four: 'We are all Satoshi.'
     },
     tab_data: {
       signed: 'đã ký', // signed: 'signed'
     pending: 'đang chờ xử lý', // pending: 'pending'
     deposit:
- 'Đây là một đầu ra 101.000 sats trong ví của bạn mà bạn sẽ sử dụng cho các khoản thanh toán ngoại tuyến với Laszlo.', //  'This is an output of 101,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.'
+       'Đây là một đầu ra 101.000 sats trong ví của bạn mà bạn sẽ sử dụng cho các khoản thanh toán ngoại tuyến với Laszlo.', //  'This is an output of 101,000 sats in your wallet that you are going to use for your off-chain payments with Laszlo.'
     payment: 'Đây là khoản thanh toán ngoại tuyến của bạn cho Laszlo.', // payment: 'This is your off-chain payment to Laszlo.'
     multisig:
- 'Giao dịch này sẽ tài trợ cho đầu ra đa chữ ký giữa bạn và Laszlo.', // 'This transaction will fund a multisig output between you and Laszlo.'
+       'Giao dịch này sẽ tài trợ cho đầu ra đa chữ ký giữa bạn và Laszlo.', // 'This transaction will fund a multisig output between you and Laszlo.'
     refund_0:
- 'Giao dịch này đảm bảo rằng tiền không bị mất nếu Laszlo biến mất.', //  'This transaction ensures funds are not lost if Laszlo disappears.'
+       'Giao dịch này đảm bảo rằng tiền không bị mất nếu Laszlo biến mất.', //  'This transaction ensures funds are not lost if Laszlo disappears.'
     refund_1:
- 'Giao dịch này đảm bảo rằng tiền không bị mất nếu Laszlo biến mất. Nó cũng đảm bảo với Laszlo rằng bạn sẽ không phát sóng nó sau khi trả tiền bia.', //'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer.'
+        'Giao dịch này đảm bảo rằng tiền không bị mất nếu Laszlo biến mất. Nó cũng đảm bảo với Laszlo rằng bạn sẽ không phát sóng nó sau khi trả tiền bia.', //'This transaction ensures funds are not lost if Laszlo disappears. It also ensures Laszlo that you will not broadcast it after paying for your beer.'
     refund_2:
- 'Giao dịch này đảm bảo rằng tiền không bị mất nếu Laszlo biến mất. Nó cũng ngăn bạn yêu cầu hoàn tiền đầy đủ ngay lập tức sau khi trả tiền bia. Nếu bạn cố gắng lấy lại toàn bộ khoản hoàn tiền, bao gồm cả 1.000 satoshi đã sử dụng để trả tiền bia, thì thời gian trễ 700 khối sẽ cho Laszlo vài ngày để nhận thấy.', // 'This transaction ensures funds are not lost if Laszlo disappears. It also prevents you from claiming the funds immediately after paying for your beer. If you try to take a full refund, including the 1,000 satoshis used to pay for the beer, the 700 block delay gives Laszlo a few days to notice.'
+       'Giao dịch này đảm bảo rằng tiền không bị mất nếu Laszlo biến mất. Nó cũng ngăn bạn yêu cầu hoàn tiền đầy đủ ngay lập tức sau khi trả tiền bia. Nếu bạn cố gắng lấy lại toàn bộ khoản hoàn tiền, bao gồm cả 1.000 satoshi đã sử dụng để trả tiền bia, thì thời gian trễ 700 khối sẽ cho Laszlo vài ngày để nhận thấy.', // 'This transaction ensures funds are not lost if Laszlo disappears. It also prevents you from claiming the funds immediately after paying for your beer. If you try to take a full refund, including the 1,000 satoshis used to pay for the beer, the 700 block delay gives Laszlo a few days to notice.'
     commitment_you:
- 'Đây là giao dịch cam kết thứ hai cho kênh thanh toán này, trả cho Laszlo 1.000 sats', // 'This is the second commitment transaction for this payment channel, that pays Laszlo 1,000 sats'
+       'Đây là giao dịch cam kết thứ hai cho kênh thanh toán này, trả cho Laszlo 1.000 sats', // 'This is the second commitment transaction for this payment channel, that pays Laszlo 1,000 sats'
     commitment_laszlo:
- 'Đây là phiên bản giao dịch cam kết của Laszlo.', //   'This is Laszlo’s version of the commitment transaction.'
+       'Đây là phiên bản giao dịch cam kết của Laszlo.', //   'This is Laszlo’s version of the commitment transaction.'
     },
     resources: {
       output_zero_sig: 'Chữ ký Đầu ra 0', // output_zero_sig: 'Output 0 Signature'
     output_one_sig: 'Chữ ký Đầu ra 1', // output_one_sig: 'Output 1 Signature'
     sats_distribution:
- 'Laszlo nên nhận đủ số sats cho bia và không chịu trách nhiệm về phí khai thác(đào) khối 1.000 sat. Phí được trừ vào tiền thừa của bạn.', // sats_distribution: 'Laszlo should receive enough sats for the beer, and is not responsible for the 1,000 sat miner fees. The fee comes out of your change.'
+       'Laszlo nên nhận đủ số sats cho bia và không chịu trách nhiệm về phí khai thác(đào) khối 1.000 sat. Phí được trừ vào tiền thừa của bạn.', // sats_distribution: 'Laszlo should receive enough sats for the beer, and is not responsible for the 1,000 sat miner fees. The fee comes out of your change.'
     output_script:
- 'Script khóa trên đầu ra không nên chứa bất kỳ chữ ký nào (tức là <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base whitespace-nowrap">OP_PUSH SIG()</span>). Nếu đây là một phần của script của bạn, chỉ cần xóa nó đi.', // output_script: 'The locking script on the output should not contain any signatures (i.e. <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base whitespace-nowrap">OP_PUSH SIG()</span>). If this is part of your script, simply remove it.'
+       'Script khóa trên đầu ra không nên chứa bất kỳ chữ ký nào (tức là <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base whitespace-nowrap">OP_PUSH SIG()</span>). Nếu đây là một phần của script của bạn, chỉ cần xóa nó đi.', // output_script: 'The locking script on the output should not contain any signatures (i.e. <span className="rounded-sm px-1.5 py-1 font-mono bg-[#0000004D] m-1 text-base whitespace-nowrap">OP_PUSH SIG()</span>). If this is part of your script, simply remove it.'
     miner_fees_basic: `Đừng quên dành riêng 1.000 sats cho phí khai thác(đào) khối.`, // miner_fees_basic: `Don't forget to set aside 1,000 sats for miner fees.`
     miner_fees: `Đừng quên dành riêng 1.000 sats từ tiền thừa của bạn cho phí khai thác(đào) khối.`, // miner_fees: `Don't forget to set aside 1,000 sats from your change for miner fees.`
     },
@@ -3132,7 +3132,7 @@ Gợi ý ngăn xếp: Để chi tiêu trước khi bí mật được tiết l�
     chapter_locked_two: 'để mở khóa.', // chapter_locked_two: 'to unlock.'
     coming_soon: 'Sắp ra mắt. Chờ chút.', // coming_soon: 'Coming soon. Hang tight.'
     description:
- 'Khám phá những bí ẩn của Satoshi và tìm hiểu về bitcoin trên đường đi.', // description:  'Explore the mysteries of Satoshi and learn about bitcoin along the way.'
+       'Khám phá những bí ẩn của Satoshi và tìm hiểu về bitcoin trên đường đi.', // description:  'Explore the mysteries of Satoshi and learn about bitcoin along the way.'
   },
 
   hero: {
@@ -3159,9 +3159,9 @@ Gợi ý ngăn xếp: Để chi tiêu trước khi bí mật được tiết l�
   modal_signin: {
     heading: 'Đăng nhập', // heading: 'Sign in'
     pre_signin_paragraph_one:
- 'Nhập khóa riêng của bạn bên dưới để khôi phục tài khoản và tiến trình của bạn.', // pre_signin_paragraph_one: 'Enter your private key below to restore your account and progress.'
+       'Nhập khóa riêng của bạn bên dưới để khôi phục tài khoản và tiến trình của bạn.', // pre_signin_paragraph_one: 'Enter your private key below to restore your account and progress.'
     post_signin_paragraph_one:
- 'Rất vui được gặp lại bạn để cứu Satoshi! Bạn có thể trực tiếp đến bài học cuối cùng của mình từ đây.', // post_signin_paragraph_one:  'Nice to see you return to save Satoshi! You can go directly to your last lesson from here.'
+       'Rất vui được gặp lại bạn để cứu Satoshi! Bạn có thể trực tiếp đến bài học cuối cùng của mình từ đây.', // post_signin_paragraph_one:  'Nice to see you return to save Satoshi! You can go directly to your last lesson from here.'
     prompt: 'Nhập khóa riêng của bạn', // prompt: 'Enter your private key'
     confirm: 'Đăng nhập', // confirm: 'Sign in'
     create_account: 'Bạn chưa có tài khoản?', // create_account: 'Don’t have an account?'
@@ -3173,7 +3173,7 @@ Gợi ý ngăn xếp: Để chi tiêu trước khi bí mật được tiết l�
   modal_logout: {
     heading: 'Bạn đã đăng nhập', // heading: 'You are logged in'
     paragraph_one:
- 'Phiên của bạn sẽ vẫn hoạt động cho đến khi bạn đăng xuất bằng nút bên dưới.', // paragraph_one: 'Your session will remain active until you sign out using the button below.'
+       'Phiên của bạn sẽ vẫn hoạt động cho đến khi bạn đăng xuất bằng nút bên dưới.', // paragraph_one: 'Your session will remain active until you sign out using the button below.'
     private_key: 'Khóa riêng tư của bạn', // private_key: 'Your private key'
     signout: 'Đăng xuất', // signout: 'Sign out'
   },
@@ -3181,14 +3181,14 @@ Gợi ý ngăn xếp: Để chi tiêu trước khi bí mật được tiết l�
   modal_signup: {
     heading: 'Lưu tiến trình của bạn', // heading: 'Save your progress'
     paragraph_one:
- 'Sao chép và lưu trữ một mã đơn giản để lưu và tải tiến trình của bạn trong trình duyệt này. Nếu bạn đã có mã, hãy tải tiến trình của bạn ở đây.', // paragraph_one:'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.'
+       'Sao chép và lưu trữ một mã đơn giản để lưu và tải tiến trình của bạn trong trình duyệt này. Nếu bạn đã có mã, hãy tải tiến trình của bạn ở đây.', // paragraph_one:'Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.'
     subheading_one: 'Chọn một hình đại diện', // subheading_one: 'Choose an avatar'
     subheading_two: 'Sao lưu khóa riêng của bạn', // subheading_two: 'Back up your private key'
     generate:
- 'Đã sẵn sàng? Mã đã được sao chép và sao lưu? Hãy chắc chắn rằng bạn đã làm như vậy, vì nó không thể được khôi phục nếu bạn bị mất.', // generate:'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.'
+       'Đã sẵn sàng? Mã đã được sao chép và sao lưu? Hãy chắc chắn rằng bạn đã làm như vậy, vì nó không thể được khôi phục nếu bạn bị mất.', // generate:'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.'
     confirm: 'Hoàn thành', // confirm: 'Done'
     acknowledged:
- 'Tôi xác nhận rằng tôi đã lưu khóa riêng này và biết rằng tôi sẽ cần nó cho các thử thách trong tương lai.', // acknowledged:'I acknowledge I have saved this private key and know that I will need it for challenges in the future.'
+       'Tôi xác nhận rằng tôi đã lưu khóa riêng này và biết rằng tôi sẽ cần nó cho các thử thách trong tương lai.', // acknowledged:'I acknowledge I have saved this private key and know that I will need it for challenges in the future.'
   },
 
   difficulty_selection: {
