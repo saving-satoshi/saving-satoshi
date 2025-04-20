@@ -1382,50 +1382,50 @@ const translations = {
       title: 'Nội tình', // The ins and outs
       nav_title: 'Địa chỉ nhận', // The receiving address
       paragraph_one:
- 'Mika 3000 cung cấp cho bạn một địa chỉ để gửi 1 BTC đóng góp của bạn:', // Mika 3000 gives you an address to send your 1 BTC contribution to:
+         'Mika 3000 cung cấp cho bạn một địa chỉ để gửi 1 BTC đóng góp của bạn:', // Mika 3000 gives you an address to send your 1 BTC contribution to:
       paragraph_two:
- 'Hm, địa chỉ đó trông dài hơn địa chỉ của bạn nhiều! Tôi tự hỏi tại sao...', // Hm, that address looks a lot longer than yours! I wonder why...
+         'Hm, địa chỉ đó trông dài hơn địa chỉ của bạn nhiều! Tôi tự hỏi tại sao...', // Hm, that address looks a lot longer than yours! I wonder why...
       paragraph_three:
- `Chúng ta cần tạo và ký một giao dịch gửi một trong 1.61 BTC của bạn đến địa chỉ này. Chúng ta đã xem cấu trúc giao dịch của Satoshi trong chương 5 nhưng giao dịch của bạn sẽ hơi khác. Ngày nay, có những phương pháp mới hơn để tạo giao dịch. Chúng tôi sẽ sử dụng một giao thức gọi là Segregated Witness, đặt phiên bản giao dịch thành 2.`, // We need to create and sign a transaction that sends one of your 1.61 BTC to this address. We looked at Satoshi's transaction structure in chapter 5 but yours will be a bit different. Today, there are newer methods for creating transactions. We'll be using a protocol called Segregated Witness which sets the transaction version to 2.
+         `Chúng ta cần tạo và ký một giao dịch gửi một trong 1.61 BTC của bạn đến địa chỉ này. Chúng ta đã xem cấu trúc giao dịch của Satoshi trong chương 5 nhưng giao dịch của bạn sẽ hơi khác. Ngày nay, có những phương pháp mới hơn để tạo giao dịch. Chúng tôi sẽ sử dụng một giao thức gọi là Segregated Witness, đặt phiên bản giao dịch thành 2.`, // We need to create and sign a transaction that sends one of your 1.61 BTC to this address. We looked at Satoshi's transaction structure in chapter 5 but yours will be a bit different. Today, there are newer methods for creating transactions. We'll be using a protocol called Segregated Witness which sets the transaction version to 2.
     },
     in_out_three: {
       title: 'Nội tình', // The ins and outs
       nav_title: 'Các bước giao dịch', // Transaction steps
       paragraph_one:
- 'Các giao dịch Segregated Witness hoạt động giống như các giao dịch cũ trước đây. Có một vài giá trị toàn cầu như phiên bản và thời gian khóa. Có một mảng đầu vào (UTXO mà chúng tôi muốn chi tiêu) và một mảng đầu ra (UTXO mới mà chúng tôi muốn tạo, để những người khác chi tiêu trong tương lai). Ngoài ra còn có một mảng các chứng nhân, mỗi chứng nhân cho một đầu vào. Đó là nơi chữ ký và tập lệnh sẽ đi vào thay vì scriptSig.', // Segregated Witness transactions work just like their legacy predecessors. There are a few global values like version and locktime. There is an array of inputs (UTXOs we want to spend) and an array of outputs (new UTXOs we want to create, for other people to spend in the future). There will also be an array of witnesses, one for each input. That is where signatures and scripts will go instead of the scriptSig.
+         'Các giao dịch Segregated Witness hoạt động giống như các giao dịch cũ trước đây. Có một vài giá trị toàn cầu như phiên bản và thời gian khóa. Có một mảng đầu vào (UTXO mà chúng tôi muốn chi tiêu) và một mảng đầu ra (UTXO mới mà chúng tôi muốn tạo, để những người khác chi tiêu trong tương lai). Ngoài ra còn có một mảng các chứng nhân, mỗi chứng nhân cho một đầu vào. Đó là nơi chữ ký và tập lệnh sẽ đi vào thay vì scriptSig.', // Segregated Witness transactions work just like their legacy predecessors. There are a few global values like version and locktime. There is an array of inputs (UTXOs we want to spend) and an array of outputs (new UTXOs we want to create, for other people to spend in the future). There will also be an array of witnesses, one for each input. That is where signatures and scripts will go instead of the scriptSig.
       paragraph_two:
- 'Việc tuần tự hóa thông điệp cho tất cả các thành phần này được ghi nhận <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">ở đây</Link> và <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline">ở đây</Link>.', // The message serializations for all these components is documented <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">here</Link>  and <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline" >here</Link>.
+         'Việc tuần tự hóa thông điệp cho tất cả các thành phần này được ghi nhận <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">ở đây</Link> và <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline">ở đây</Link>.', // The message serializations for all these components is documented <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">here</Link>  and <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline" >here</Link>.
     },
     in_out_four: {
       normal: {
- title: 'Nội tình', // The ins and outs
- nav_title: 'Lớp đầu vào', // The input class
- heading: 'Xem xét triển khai lớp Input', // Looking at the Input class implementation
- paragraph_one:
-   'Ở đây chúng ta có mã cho hai lớp: lớp <span className="font-bold">Input</span> và lớp <span className="font-bold">Outpoint</span> (không phải "output"!).', // Here we have code for two classes: an <span className="font-bold">Input</span> class and an <span className="font-bold">Outpoint</span> (not "output"!) class.
- paragraph_two:
-   'Đầu vào đến từ các đầu ra giao dịch chưa chi tiêu. Nếu bạn cung cấp mô tả của một đầu ra cho phương thức <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span>, nó sẽ tạo ra một thể hiện của lớp Input:', // Inputs come from unspent transaction outputs. If you provide the description of an output to the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method, it will create an instance of the Input class:
- paragraph_three:
-   'Hai đối số đầu tiên là:', // The first two arguments are:
- paragraph_four:
-   '1. <span className="font-bold">txid: </span>ID của giao dịch đã tạo ra đầu ra, và', // 1. <span className="font-bold">txid: </span>the ID of the transaction that created the output, and
- paragraph_five:
-   '2. <span className="font-bold">vout: </span>chỉ mục của đầu ra trong toàn bộ danh sách đầu ra của giao dịch', // 2. <span className="font-bold">vout: </span>the index of the output in the transaction's entire list of outputs
- paragraph_six:
-   'Cùng nhau, hai thông tin này tạo thành một <span className="font-bold">Outpoint</span>. Cuối cùng, chúng tôi sẽ chuyển các giá trị txid và vout đã nhận được từ việc thực thi lệnh <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">listunspent</span> trong bài tập trước.', // Together, these two pieces of information make up an <span className="font-bold">Outpoint</span>. Eventually we will pass in the txid and vout values that came from executing the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">listunspent</span> command in the previous exercise. 
- paragraph_seven:
-   "Hai đối số thứ hai là giá trị của đầu ra mà chúng tôi muốn chi tiêu (tính bằng satoshi) và một thứ gọi là scriptcode. Dữ liệu đó không cần thiết cho đến sau này nên hãy tạm thời sử dụng một mảng byte trống.", // "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. That data is not needed until later so let's temporarily use an empty byte array."
- paragraph_eight: {
-   a: 'Hashes trong Bitcoin là', // Hashes in bitcoin are
-   b: {
-     text: ' được đảo ngược', // reversed
-     question: 'Tại sao chúng ta đảo ngược hashes trong Bitcoin?', // Why do we reverse hashes in bitcoin?
-     href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin',
-   },
-   c: `, nhưng chỉ khi được trình bày hoặc nhập bởi người dùng. Khi một hash được cung cấp ở định dạng thập lục phân, thứ tự byte phải được đảo ngược trước khi lưu trữ hoặc truyền dữ liệu dưới dạng byte thô.`, // , but only when presented to or entered by a user. When a hash is provided in hexadecimal format, the byte order must be reversed before storing or transmitting the data as raw bytes.
- },
- paragraph_nine: `Bạn có thể thấy một ví dụ về điều này trong phương thức <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> nơi nó xử lý đối số txid.`, // You can see an example of this in the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method where it handles the txid argument.
- paragraph_ten: `Chúng ta cũng cần một phương thức <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> trả về một mảng byte theo thông số kỹ thuật. Đây là cách giao dịch thực sự được gửi giữa các nút trên mạng và cách nó được thể hiện trong một khối:`, // We also need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:
+       title: 'Nội tình', // The ins and outs
+       nav_title: 'Lớp đầu vào', // The input class
+       heading: 'Xem xét triển khai lớp Input', // Looking at the Input class implementation
+       paragraph_one:
+         'Ở đây chúng ta có mã cho hai lớp: lớp <span className="font-bold">Input</span> và lớp <span className="font-bold">Outpoint</span> (không phải "output"!).', // Here we have code for two classes: an <span className="font-bold">Input</span> class and an <span className="font-bold">Outpoint</span> (not "output"!) class.
+       paragraph_two:
+         'Đầu vào đến từ các đầu ra giao dịch chưa chi tiêu. Nếu bạn cung cấp mô tả của một đầu ra cho phương thức <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span>, nó sẽ tạo ra một thể hiện của lớp Input:', // Inputs come from unspent transaction outputs. If you provide the description of an output to the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method, it will create an instance of the Input class:
+       paragraph_three:
+         'Hai đối số đầu tiên là:', // The first two arguments are:
+       paragraph_four:
+         '1. <span className="font-bold">txid: </span>ID của giao dịch đã tạo ra đầu ra, và', // 1. <span className="font-bold">txid: </span>the ID of the transaction that created the output, and
+       paragraph_five:
+         '2. <span className="font-bold">vout: </span>chỉ mục của đầu ra trong toàn bộ danh sách đầu ra của giao dịch', // 2. <span className="font-bold">vout: </span>the index of the output in the transaction's entire list of outputs
+       paragraph_six:
+         'Cùng nhau, hai thông tin này tạo thành một <span className="font-bold">Outpoint</span>. Cuối cùng, chúng tôi sẽ chuyển các giá trị txid và vout đã nhận được từ việc thực thi lệnh <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">listunspent</span> trong bài tập trước.', // Together, these two pieces of information make up an <span className="font-bold">Outpoint</span>. Eventually we will pass in the txid and vout values that came from executing the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">listunspent</span> command in the previous exercise. 
+       paragraph_seven:
+         "Hai đối số thứ hai là giá trị của đầu ra mà chúng tôi muốn chi tiêu (tính bằng satoshi) và một thứ gọi là scriptcode. Dữ liệu đó không cần thiết cho đến sau này nên hãy tạm thời sử dụng một mảng byte trống.", // "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. That data is not needed until later so let's temporarily use an empty byte array."
+       paragraph_eight: {
+         a: 'Hashes trong Bitcoin là', // Hashes in bitcoin are
+         b: {
+           text: ' được đảo ngược', // reversed
+           question: 'Tại sao chúng ta đảo ngược hashes trong Bitcoin?', // Why do we reverse hashes in bitcoin?
+           href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin',
+         },
+         c: `, nhưng chỉ khi được trình bày hoặc nhập bởi người dùng. Khi một hash được cung cấp ở định dạng thập lục phân, thứ tự byte phải được đảo ngược trước khi lưu trữ hoặc truyền dữ liệu dưới dạng byte thô.`, // , but only when presented to or entered by a user. When a hash is provided in hexadecimal format, the byte order must be reversed before storing or transmitting the data as raw bytes.
+       },
+       paragraph_nine: `Bạn có thể thấy một ví dụ về điều này trong phương thức <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> nơi nó xử lý đối số txid.`, // You can see an example of this in the <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span> method where it handles the txid argument.
+       paragraph_ten: `Chúng ta cũng cần một phương thức <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> trả về một mảng byte theo thông số kỹ thuật. Đây là cách giao dịch thực sự được gửi giữa các nút trên mạng và cách nó được thể hiện trong một khối:`, // We also need a <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> method that returns a byte array according to the specification. This is how the transaction is actually sent between nodes on the network, and how it is expressed in a block:
  heading_three: 'Outpoint', // Outpoint
  table_one: {
    heading: {
@@ -1436,18 +1436,18 @@ const translations = {
    },
    row_one: {
      column: {
-one: 'Hash của giao dịch đang được chi tiêu từ', // Hash of transaction being spent from
-two: 'txid', // txid
-three: 'bytes', // bytes
-four: '32', // 32
+      one: 'Hash của giao dịch đang được chi tiêu từ', // Hash of transaction being spent from
+      two: 'txid', // txid
+      three: 'bytes', // bytes
+      four: '32', // 32
      },
    },
    row_two: {
      column: {
-one: "Vị trí của đầu ra đang được chi tiêu trong mảng đầu ra của giao dịch", // Position of output being spent in the transaction's output array
-two: 'index', // index
-three: 'int', // int
-four: '4', 
+      one: "Vị trí của đầu ra đang được chi tiêu trong mảng đầu ra của giao dịch", // Position of output being spent in the transaction's output array
+      two: 'index', // index
+      three: 'int', // int
+      four: '4', 
      },
    },
  },
@@ -1455,34 +1455,34 @@ four: '4',
  table_two: {
    row_one: {
      column: {
-one: 'txid và chỉ mục đầu ra đang được chi tiêu từ', // txid and output index being spent from
-two: 'outpoint', // outpoint
-three: 'bytes', // bytes
-four: '36',
+      one: 'txid và chỉ mục đầu ra đang được chi tiêu từ', // txid and output index being spent from
+      two: 'outpoint', // outpoint
+      three: 'bytes', // bytes
+      four: '36',
      },
    },
    row_two: {
      column: {
-one: 'Độ dài ScriptSig (luôn bằng 0 cho Segregated Witness)', // ScriptSig length (always 0 for Segregated Witness)
-two: 'length', // length
-three: 'int', // int
-four: '1',
+      one: 'Độ dài ScriptSig (luôn bằng 0 cho Segregated Witness)', // ScriptSig length (always 0 for Segregated Witness)
+      two: 'length', // length
+      three: 'int', // int
+      four: '1',
      },
    },
    row_three: {
      column: {
-one: 'Luôn trống cho Segregated Witness', // Always empty for Segregated Witness
-two: 'script', // script
-three: 'bytes', // bytes
-four: '0',
+      one: 'Luôn trống cho Segregated Witness', // Always empty for Segregated Witness
+      two: 'script', // script
+      three: 'bytes', // bytes
+      four: '0',
      },
    },
    row_four: {
      column: {
-one: 'Giá trị mặc định là 0xffffffff nhưng có thể được sử dụng cho khóa thời gian tương đối', // Default value is 0xffffffff but can be used for relative timelocks
-two: 'sequence', // sequence
-three: 'int',
-four: '4',
+      one: 'Giá trị mặc định là 0xffffffff nhưng có thể được sử dụng cho khóa thời gian tương đối', // Default value is 0xffffffff but can be used for relative timelocks
+      two: 'sequence', // sequence
+      three: 'int',
+      four: '4',
      },
    },
  },
@@ -1497,18 +1497,18 @@ four: '4',
  success: 'Lớp Input trông ổn. Làm tốt!', // The Input class looks good. Great Work!
       },
       hard: {
- title: 'Nội tình', // The ins and outs
- nav_title: 'Xây dựng lớp Input', // Build the input class
- heading: 'Hoàn thành việc triển khai Lớp Input', // Finish the implementation of Class Input
- paragraph_one: 'Nó nên có phương thức sau:', // It should have the following method:
- paragraph_two:
-   'Hai đối số đầu tiên là ID giao dịch và chỉ mục của đầu ra của giao dịch đó mà bạn muốn chi tiêu từ đó.', // The First two arguments are the transaction ID and the index of the output of that transaction you want to spend from.
- paragraph_three:
-   'Cuối cùng, chúng ta sẽ chuyển các giá trị txid và vout mà bạn đã nhận được ở trên từ listunspent. Lưu ý rằng các hash trong Bitcoin là little-endian, có nghĩa là bạn sẽ cần phải đảo ngược thứ tự byte của chuỗi txid!', // Eventually we will pass in the txid and vout values you got above from listunspent. Note that hashes in bitcoin are little-endian, which means that you will need to reverse the byte order of the txid string!
- paragraph_four:
-   "Hai đối số thứ hai là giá trị của đầu ra mà chúng tôi muốn chi tiêu (tính bằng satoshi) và một thứ gọi là scriptcode. Đối với bây giờ, chỉ cần lưu trữ những dữ liệu này dưới dạng thuộc tính của lớp Input, chúng tôi sẽ không cần chúng cho đến bước 6.", // "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6."
- paragraph_five:
-   'Chúng ta cũng cần một phương thức <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> trả về một mảng byte theo thông số kỹ thuật:', // We also need a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method that returns a byte array according to the specification:
+       title: 'Nội tình', // The ins and outs
+       nav_title: 'Xây dựng lớp Input', // Build the input class
+       heading: 'Hoàn thành việc triển khai Lớp Input', // Finish the implementation of Class Input
+       paragraph_one: 'Nó nên có phương thức sau:', // It should have the following method:
+       paragraph_two:
+         'Hai đối số đầu tiên là ID giao dịch và chỉ mục của đầu ra của giao dịch đó mà bạn muốn chi tiêu từ đó.', // The First two arguments are the transaction ID and the index of the output of that transaction you want to spend from.
+       paragraph_three:
+         'Cuối cùng, chúng ta sẽ chuyển các giá trị txid và vout mà bạn đã nhận được ở trên từ listunspent. Lưu ý rằng các hash trong Bitcoin là little-endian, có nghĩa là bạn sẽ cần phải đảo ngược thứ tự byte của chuỗi txid!', // Eventually we will pass in the txid and vout values you got above from listunspent. Note that hashes in bitcoin are little-endian, which means that you will need to reverse the byte order of the txid string!
+       paragraph_four:
+         "Hai đối số thứ hai là giá trị của đầu ra mà chúng tôi muốn chi tiêu (tính bằng satoshi) và một thứ gọi là scriptcode. Đối với bây giờ, chỉ cần lưu trữ những dữ liệu này dưới dạng thuộc tính của lớp Input, chúng tôi sẽ không cần chúng cho đến bước 6.", // "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6."
+       paragraph_five:
+         'Chúng ta cũng cần một phương thức <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> trả về một mảng byte theo thông số kỹ thuật:', // We also need a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method that returns a byte array according to the specification:
  heading_two: 'Outpoint', // Outpoint
  table_one: {
    heading: {
@@ -1519,18 +1519,18 @@ four: '4',
    },
    row_one: {
      column: {
-one: 'Hash của giao dịch đang được chi tiêu từ', // Hash of transaction being spent from
-two: 'txid', // txid
-three: 'bytes', // bytes
-four: '32', // 32
+      one: 'Hash của giao dịch đang được chi tiêu từ', // Hash of transaction being spent from
+      two: 'txid', // txid
+      three: 'bytes', // bytes
+      four: '32', // 32
      },
    },
    row_two: {
      column: {
-one: "Vị trí của đầu ra đang được chi tiêu trong mảng đầu ra của giao dịch", // Position of output being spent in the transaction's output array
-two: 'index', // index
-three: 'int', // int
-four: '4',
+      one: "Vị trí của đầu ra đang được chi tiêu trong mảng đầu ra của giao dịch", // Position of output being spent in the transaction's output array
+      two: 'index', // index
+      three: 'int', // int
+      four: '4',
      },
    },
  },
@@ -1538,34 +1538,34 @@ four: '4',
  table_two: {
    row_one: {
      column: {
-one: 'txid và chỉ mục đầu ra đang được chi tiêu từ', // txid and output index being spent from
-two: 'outpoint',
-three: 'bytes',
-four: '36',
+      one: 'txid và chỉ mục đầu ra đang được chi tiêu từ', // txid and output index being spent from
+      two: 'outpoint',
+      three: 'bytes',
+      four: '36',
      },
    },
    row_two: {
      column: {
-one: 'Độ dài ScriptSig (luôn bằng 0 cho Segregated Witness)', // ScriptSig length (always 0 for Segregated Witness)
-two: 'length', // length
-three: 'int',
-four: '1',
+      one: 'Độ dài ScriptSig (luôn bằng 0 cho Segregated Witness)', // ScriptSig length (always 0 for Segregated Witness)
+      two: 'length', // length
+      three: 'int',
+      four: '1',
      },
    },
    row_three: {
      column: {
-one: 'Luôn trống cho Segregated Witness', // Always empty for Segregated Witness
-two: 'script', // script
-three: 'bytes',
-four: '0',
+      one: 'Luôn trống cho Segregated Witness', // Always empty for Segregated Witness
+      two: 'script', // script
+      three: 'bytes',
+      four: '0',
      },
    },
    row_four: {
      column: {
-one: 'Giá trị mặc định là 0xffffffff nhưng có thể được sử dụng cho khóa thời gian tương đối', // Default value is 0xffffffff but can be used for relative timelocks
-two: 'sequence', // sequence
-three: 'int',
-four: '4',
+      one: 'Giá trị mặc định là 0xffffffff nhưng có thể được sử dụng cho khóa thời gian tương đối', // Default value is 0xffffffff but can be used for relative timelocks
+      two: 'sequence', // sequence
+      three: 'int',
+      four: '4',
      },
    },
  },
@@ -1577,10 +1577,10 @@ four: '4',
       nav_title: 'Xây dựng lớp Output', // Build the output class
       heading: 'Hoàn thành việc triển khai Lớp Output', // Finish the implementation of the Output class
       paragraph_one:
- 'Giống như lớp Input, nó cần một phương thức <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">from_options()</span> sẽ tạo một đối tượng Output từ dữ liệu do người dùng cung cấp:', // Like the Input class, it needs a method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">from_options()</span> that will construct an Output object from user-provided data:
+         'Giống như lớp Input, nó cần một phương thức <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">from_options()</span> sẽ tạo một đối tượng Output từ dữ liệu do người dùng cung cấp:', // Like the Input class, it needs a method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">from_options()</span> that will construct an Output object from user-provided data:
       paragraph_two:
- `Nó chấp nhận một địa chỉ Bitcoin dưới dạng chuỗi (như địa chỉ từ Mika 3000) và một giá trị dưới dạng số nguyên. Giá trị được biểu thị bằng số lượng satoshi! Hãy nhớ rằng, 1 BTC = 100000000 satoshi. Bạn sẽ cần sử dụng lại thư viện bech32 của chúng tôi để giải mã địa chỉ thành các thành phần phiên bản và dữ liệu.
- Lớp này cũng cần một phương thức <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span>  trả về một mảng byte theo thông số kỹ thuật:`, // It accepts a bitcoin address as a string (like the address from Mika 3000) and a value as an integer. The value is expressed as a number of satoshis! Remember, 1 BTC = 100000000 satoshis. You will need to use our bech32 library again to decode the address into version and data components. The class also needs a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span>  method that returns a byte array according to the specification:
+         `Nó chấp nhận một địa chỉ Bitcoin dưới dạng chuỗi (như địa chỉ từ Mika 3000) và một giá trị dưới dạng số nguyên. Giá trị được biểu thị bằng số lượng satoshi! Hãy nhớ rằng, 1 BTC = 100000000 satoshi. Bạn sẽ cần sử dụng lại thư viện bech32 của chúng tôi để giải mã địa chỉ thành các thành phần phiên bản và dữ liệu.
+         Lớp này cũng cần một phương thức <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span>  trả về một mảng byte theo thông số kỹ thuật:`, // It accepts a bitcoin address as a string (like the address from Mika 3000) and a value as an integer. The value is expressed as a number of satoshis! Remember, 1 BTC = 100000000 satoshis. You will need to use our bech32 library again to decode the address into version and data components. The class also needs a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span>  method that returns a byte array according to the specification:
       heading_two: 'Đầu ra', // Output
       table: {
  heading: {
@@ -1637,25 +1637,25 @@ four: '4',
     put_it_together_one: {
       title: 'Kết hợp tất cả', // Putting it all together
       normal: {
- title: 'Kết hợp tất cả', // Putting it all together
- nav_title: 'Xây dựng bản tóm tắt giao dịch', // Build the transaction digest
- heading: 'Bản tóm tắt giao dịch', // Transaction digest
- paragraph_one:
-   'Trong chương 5, chúng tôi đã học được rằng để ký một giao dịch, trước tiên chúng tôi cần sắp xếp lại và mã hóa dữ liệu của nó thành một thông báo, thông báo này trở thành một trong các đầu vào thô cho thuật toán ký của chúng tôi. Vì bây giờ chúng tôi đang sử dụng segregated witness, chúng tôi cũng cần triển khai thuật toán bản tóm tắt giao dịch được cập nhật được chỉ định trong <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.', // In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.
- paragraph_two:
-   'Hãy nhớ rằng mỗi đầu vào giao dịch cần có chữ ký riêng và do đó một số thành phần của thuật toán tóm tắt có thể được lưu trữ và sử dụng lại nhưng một số thành phần khác sẽ khác nhau tùy thuộc vào đầu vào nào đang được ký! Hoàn thành phương thức giao dịch <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest(input_index)</span> tính toán thông báo 32 byte để ký một đầu vào.', // Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest(input_index)</span> that computes the 32-byte message for signing an input.
- list_heading: 'Một số lưu ý:', // Some notes:
- list_one: '"Double SHA-256" hay dSHA256 = sha256(sha256(data))', // "Double SHA-256" or dSHA256 = sha256(sha256(data))
- list_two:
-   'value là số lượng satoshi trong đầu ra được chi tiêu. Chúng tôi đã thêm nó vào lớp Input của chúng tôi ở bước 2 và chỉ lưu nó ở đó bên trong lớp cho đến bây giờ.', // value is the amount of the satoshis in the output being spent from. We added it to our Input class back in step 2, and just saved it there inside the class until now.
- list_three:
-   'scriptcode là script Bitcoin thô đang được đánh giá. Chúng tôi cũng đã thêm nó vào lớp Input của chúng tôi ở bước 2.', // scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in step 2.
- list_four: 'tất cả các số nguyên được mã hóa theo little-endian!', // all integers are encoded as little-endian!
- paragraph_three:
-   'Chúng tôi sẽ đi sâu vào vấn đề này hơn trong phần tiếp theo, nhưng để chi tiêu từ địa chỉ pay-to-witness-public-key-hash (P2WPKH) của bạn, scriptcode của bạn sẽ là:', // We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:
- paragraph_four: '...mà giải mã thành script Bitcoin sau đây.', // ...which decodes to the following bitcoin script.
- paragraph_five:
-   'Để biết thêm thông tin về scriptcode, hãy xem <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.', // For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP
+       title: 'Kết hợp tất cả', // Putting it all together
+       nav_title: 'Xây dựng bản tóm tắt giao dịch', // Build the transaction digest
+       heading: 'Bản tóm tắt giao dịch', // Transaction digest
+       paragraph_one:
+         'Trong chương 5, chúng tôi đã học được rằng để ký một giao dịch, trước tiên chúng tôi cần sắp xếp lại và mã hóa dữ liệu của nó thành một thông báo, thông báo này trở thành một trong các đầu vào thô cho thuật toán ký của chúng tôi. Vì bây giờ chúng tôi đang sử dụng segregated witness, chúng tôi cũng cần triển khai thuật toán bản tóm tắt giao dịch được cập nhật được chỉ định trong <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.', // In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.
+       paragraph_two:
+         'Hãy nhớ rằng mỗi đầu vào giao dịch cần có chữ ký riêng và do đó một số thành phần của thuật toán tóm tắt có thể được lưu trữ và sử dụng lại nhưng một số thành phần khác sẽ khác nhau tùy thuộc vào đầu vào nào đang được ký! Hoàn thành phương thức giao dịch <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest(input_index)</span> tính toán thông báo 32 byte để ký một đầu vào.', // Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest(input_index)</span> that computes the 32-byte message for signing an input.
+       list_heading: 'Một số lưu ý:', // Some notes:
+       list_one: '"Double SHA-256" hay dSHA256 = sha256(sha256(data))', // "Double SHA-256" or dSHA256 = sha256(sha256(data))
+       list_two:
+         'value là số lượng satoshi trong đầu ra được chi tiêu. Chúng tôi đã thêm nó vào lớp Input của chúng tôi ở bước 2 và chỉ lưu nó ở đó bên trong lớp cho đến bây giờ.', // value is the amount of the satoshis in the output being spent from. We added it to our Input class back in step 2, and just saved it there inside the class until now.
+       list_three:
+         'scriptcode là script Bitcoin thô đang được đánh giá. Chúng tôi cũng đã thêm nó vào lớp Input của chúng tôi ở bước 2.', // scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in step 2.
+       list_four: 'tất cả các số nguyên được mã hóa theo little-endian!', // all integers are encoded as little-endian!
+       paragraph_three:
+         'Chúng tôi sẽ đi sâu vào vấn đề này hơn trong phần tiếp theo, nhưng để chi tiêu từ địa chỉ pay-to-witness-public-key-hash (P2WPKH) của bạn, scriptcode của bạn sẽ là:', // We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:
+       paragraph_four: '...mà giải mã thành script Bitcoin sau đây.', // ...which decodes to the following bitcoin script.
+       paragraph_five:
+         'Để biết thêm thông tin về scriptcode, hãy xem <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.', // For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP
  headings: {
    item_one: 'Mô tả', // Description
    item_two: 'Name',
@@ -1671,21 +1671,21 @@ four: '4',
    },
    row_two: {
      item_one:
-'The dSHA256 of all outpoints from all inputs, serialized',
+        'The dSHA256 of all outpoints from all inputs, serialized',
      item_two: 'bytes',
      item_three: 'bytes',
      item_four: '32',
    },
    row_three: {
      item_one:
-'The dSHA256 of all sequence values from all inputs, serialized',
+        'The dSHA256 of all sequence values from all inputs, serialized',
      item_two: 'sequences',
      item_three: 'bytes',
      item_four: '32',
    },
    row_four: {
      item_one:
-'The serialized outpoint of the single input being signed ',
+        'The serialized outpoint of the single input being signed ',
      item_two: 'outpoint',
      item_three: 'bytes',
      item_four: '36',
@@ -1781,32 +1781,32 @@ four: '4',
     },
     put_it_together_two: {
       normal: {
- title: 'Kết hợp tất cả', // Putting it all together
- nav_title: 'Xây dựng lớp witness', // Build the witness class
- heading: 'Ký và Điền vào Witness!', // Sign and Populate the Witness!
- paragraph_one:
-   'Trong chương trước, chúng tôi đã viết một số đoạn mã xác minh chữ ký ECDSA quan trọng. Bây giờ, để tạo chữ ký hợp lệ, chúng tôi sẽ lấy đoạn mã đó và sắp xếp lại một chút.', // In the last chapter, we wrote some important ECDSA signature verification code. Now, in order to create a valid signature, we are going to take that code and rearrange it a bit.
- paragraph_two:
-   "Trong bài tập này, chúng tôi sẽ triển khai một số phép toán đằng sau thuật toán ký ECDSA. Để biết thêm thông tin về cách thức hoạt động của nó, hãy kiểm tra các tài nguyên này:", // In this exercise we'll be implementing some of the math behind the ECDSA signing algorithm. For more information on how that works, check out these resources:
- paragraph_three:
-   '• Trang Wikipedia cho <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">Elliptic Curve Digital Signature Algorithm</Link>', // • The Wikipedia page for <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">Elliptic Curve Digital Signature Algorithm</Link>
- paragraph_four:
-   '• <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">Tiêu chuẩn cho Mật mã Hiệu quả 1 (SEC 1)</Link>: Trang 44, Mục 4.1.3', // • <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">Standards for Efficient Cryptography 1 (SEC 1)</Link>: Page 44, Section 4.1.3
- heading_one: 'Bước 1', // Step 1
- paragraph_five:
-   'Trong lớp Transaction, có một phương thức, <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">compute_input_signature(index, key)</span> chấp nhận số thứ tự của đầu vào và khóa riêng (một số nguyên 32 byte hoặc BigInt trong JavaScript). Hoàn thành phương thức này để nó tính toán bản tóm tắt thông báo cho đầu vào được chọn. Sử dụng phương thức <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">digest()</span> từ bước cuối cùng của chúng tôi, sau đó trả về chữ ký ECDSA dưới dạng hai số nguyên 32 byte: <span className="italic">r</span> và <span className="italic">s</span>.', // In the Transaction class, there is a method, <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">compute_input_signature(index, key)</span> that accepts the index number of an input and a private key (a 32-byte integer, or BigInt in JavaScript). Finish this method so it computes the message digest for the chosen input. Use the <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">digest()</span> method from our last step, then return an ECDSA signature in the form of two 32-byte integers: <span className="italic">r</span> and <span className="italic">s</span>.
- heading_two: 'Bước 2', // Step 2
- paragraph_six:
-   'Đối với thuật toán ký, giao thức bitcoin yêu cầu thêm một điều nữa. Giá trị <span className="italic">s</span> cần phải "thấp", nghĩa là nhỏ hơn order của đường cong chia cho 2. Thêm kiểm tra này vào <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">compute_input_signature()</span>.', // For the signing algorithm, the bitcoin protocol requires one more thing. The <span className="italic">s</span> value needs to be "low", meaning less than the order of the curve divided by
+       title: 'Kết hợp tất cả', // Putting it all together
+       nav_title: 'Xây dựng lớp witness', // Build the witness class
+       heading: 'Ký và Điền vào Witness!', // Sign and Populate the Witness!
+       paragraph_one:
+         'Trong chương trước, chúng tôi đã viết một số đoạn mã xác minh chữ ký ECDSA quan trọng. Bây giờ, để tạo chữ ký hợp lệ, chúng tôi sẽ lấy đoạn mã đó và sắp xếp lại một chút.', // In the last chapter, we wrote some important ECDSA signature verification code. Now, in order to create a valid signature, we are going to take that code and rearrange it a bit.
+       paragraph_two:
+         "Trong bài tập này, chúng tôi sẽ triển khai một số phép toán đằng sau thuật toán ký ECDSA. Để biết thêm thông tin về cách thức hoạt động của nó, hãy kiểm tra các tài nguyên này:", // In this exercise we'll be implementing some of the math behind the ECDSA signing algorithm. For more information on how that works, check out these resources:
+       paragraph_three:
+         '• Trang Wikipedia cho <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">Elliptic Curve Digital Signature Algorithm</Link>', // • The Wikipedia page for <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">Elliptic Curve Digital Signature Algorithm</Link>
+       paragraph_four:
+         '• <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">Tiêu chuẩn cho Mật mã Hiệu quả 1 (SEC 1)</Link>: Trang 44, Mục 4.1.3', // • <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">Standards for Efficient Cryptography 1 (SEC 1)</Link>: Page 44, Section 4.1.3
+       heading_one: 'Bước 1', // Step 1
+       paragraph_five:
+         'Trong lớp Transaction, có một phương thức, <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">compute_input_signature(index, key)</span> chấp nhận số thứ tự của đầu vào và khóa riêng (một số nguyên 32 byte hoặc BigInt trong JavaScript). Hoàn thành phương thức này để nó tính toán bản tóm tắt thông báo cho đầu vào được chọn. Sử dụng phương thức <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">digest()</span> từ bước cuối cùng của chúng tôi, sau đó trả về chữ ký ECDSA dưới dạng hai số nguyên 32 byte: <span className="italic">r</span> và <span className="italic">s</span>.', // In the Transaction class, there is a method, <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">compute_input_signature(index, key)</span> that accepts the index number of an input and a private key (a 32-byte integer, or BigInt in JavaScript). Finish this method so it computes the message digest for the chosen input. Use the <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">digest()</span> method from our last step, then return an ECDSA signature in the form of two 32-byte integers: <span className="italic">r</span> and <span className="italic">s</span>.
+       heading_two: 'Bước 2', // Step 2
+       paragraph_six:
+         'Đối với thuật toán ký, giao thức bitcoin yêu cầu thêm một điều nữa. Giá trị <span className="italic">s</span> cần phải "thấp", nghĩa là nhỏ hơn order của đường cong chia cho 2. Thêm kiểm tra này vào <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">compute_input_signature()</span>.', // For the signing algorithm, the bitcoin protocol requires one more thing. The <span className="italic">s</span> value needs to be "low", meaning less than the order of the curve divided by
       },
       hard: {
- title: 'Kết hợp tất cả', // Putting it all together
- nav_title: 'Tuần tự hóa giao dịch', // Serialize the transaction
- heading: 'Hoàn thành việc triển khai Lớp Transaction', // Finish the implementation of Class Transaction
- paragraph_one:
-   'Nó nên có các thuộc tính toàn cục locktime và phiên bản cũng như một mảng đầu vào, đầu ra và ngăn xếp witness.', // It should have global properties locktime and version as well as an array of inputs, outputs and witness stacks.
- paragraph_two:
-   'Nó sẽ cần một phương thức <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> trả về toàn bộ giao dịch dưới dạng byte được định dạng để phát sóng trên mạng ngang hàng Bitcoin.', // It will need a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method that outputs the enitire transaction as bytes formatted for broadcast on the bitcoin p2p network.
+       title: 'Kết hợp tất cả', // Putting it all together
+       nav_title: 'Tuần tự hóa giao dịch', // Serialize the transaction
+       heading: 'Hoàn thành việc triển khai Lớp Transaction', // Finish the implementation of Class Transaction
+       paragraph_one:
+         'Nó nên có các thuộc tính toàn cục locktime và phiên bản cũng như một mảng đầu vào, đầu ra và ngăn xếp witness.', // It should have global properties locktime and version as well as an array of inputs, outputs and witness stacks.
+       paragraph_two:
+         'Nó sẽ cần một phương thức <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> trả về toàn bộ giao dịch dưới dạng byte được định dạng để phát sóng trên mạng ngang hàng Bitcoin.', // It will need a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method that outputs the enitire transaction as bytes formatted for broadcast on the bitcoin p2p network.
  headings: {
    item_one: 'Description',
    item_two: 'Name',
@@ -1870,21 +1870,21 @@ four: '4',
     },
     put_it_together_three: {
       normal: {
- title: 'Kết hợp tất cả', // Putting it all together
- nav_title: 'Ký giao dịch', // Sign the transaction
- heading: 'Hoàn thành việc triển khai Lớp Transaction', // Finish the implementation of Class Transaction
- paragraph_one:
-   'Để hoàn thành giao dịch của chúng tôi, chúng tôi sẽ cần một phương thức <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> xuất ra toàn bộ giao dịch dưới dạng byte được định dạng để phát sóng trên mạng ngang hàng Bitcoin.', // To complete our transaction we will need a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method that outputs the entire transaction as bytes formatted for broadcast on the bitcoin p2p network.
- paragraph_two:
-   'Script của chúng tôi sẽ tạo và ký một đối tượng Transaction. Nó sẽ có một đầu vào (UTXO mà chúng tôi đã xác định trong <span className="underline">Lớp đầu vào</span>) và hai đầu ra:', // Our script will create and sign a Transaction object. It will have one input (the UTXO we identified in <span className="underline">The input class</span>) and two outputs:
- paragraph_three:
-   'Chúng tôi biết đầu vào của mình, chúng tôi biết đầu ra của mình. Chúng tôi đã sẵn sàng để xây dựng và ký một giao dịch chưa? Chưa hẳn. Chúng tôi có đầu vào 1.61 BTC và đầu ra 1 BTC ... điều gì sẽ xảy ra với 0.61 BTC còn lại? Hầu hết số tiền đó sẽ là "tiền thừa" và chúng tôi cần gửi lại số tiền đó về địa chỉ của chính mình!', // We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!
- paragraph_four:
-   'Lưu ý rằng không có giá trị "đếm" nào cho các witness. Đó là bởi vì số lượng ngăn xếp witness phải luôn bằng chính xác với số lượng đầu vào.', // Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.
- paragraph_five:
-   'Nhưng đợi đã! Chúng tôi cần bao gồm một "phí". Chúng tôi sẽ cắt giảm một phần nhỏ trong số tiền thừa của chúng tôi từ 61.000.000 xuống còn 60.999.000 satoshi để khuyến khích các nhóm khai thác(đào) khối mỏ đưa giao dịch của chúng tôi vào một khối.', // But wait! We need to include a "fee". We'll shave off a tiny piece of our change output from 61,000,000 to 60,999,000 satoshis to incentivize the mining mỏs to include our transaction in a block.
- paragraph_six:
-   'Cuối cùng, công việc của chúng tôi đã hoàn thành. Script của bạn sẽ kết thúc bằng cách trả về kết quả của phương thức tuần tự hóa giao dịch. Đây là một giao dịch Bitcoin đã được ký hợp lệ và chúng tôi có thể phát sóng nó trên mạng để gửi cho Mika 3000 số tiền cô ấy cần!', // Finally our work is done. Your script should end by returning the result of the transaction serialize() method. This is a valid signed bitcoin transaction and we can broadcast it to the network to send Mika 3000 the money she needs!
+       title: 'Kết hợp tất cả', // Putting it all together
+       nav_title: 'Ký giao dịch', // Sign the transaction
+       heading: 'Hoàn thành việc triển khai Lớp Transaction', // Finish the implementation of Class Transaction
+       paragraph_one:
+         'Để hoàn thành giao dịch của chúng tôi, chúng tôi sẽ cần một phương thức <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> xuất ra toàn bộ giao dịch dưới dạng byte được định dạng để phát sóng trên mạng ngang hàng Bitcoin.', // To complete our transaction we will need a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method that outputs the entire transaction as bytes formatted for broadcast on the bitcoin p2p network.
+       paragraph_two:
+         'Script của chúng tôi sẽ tạo và ký một đối tượng Transaction. Nó sẽ có một đầu vào (UTXO mà chúng tôi đã xác định trong <span className="underline">Lớp đầu vào</span>) và hai đầu ra:', // Our script will create and sign a Transaction object. It will have one input (the UTXO we identified in <span className="underline">The input class</span>) and two outputs:
+       paragraph_three:
+         'Chúng tôi biết đầu vào của mình, chúng tôi biết đầu ra của mình. Chúng tôi đã sẵn sàng để xây dựng và ký một giao dịch chưa? Chưa hẳn. Chúng tôi có đầu vào 1.61 BTC và đầu ra 1 BTC ... điều gì sẽ xảy ra với 0.61 BTC còn lại? Hầu hết số tiền đó sẽ là "tiền thừa" và chúng tôi cần gửi lại số tiền đó về địa chỉ của chính mình!', // We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!
+       paragraph_four:
+         'Lưu ý rằng không có giá trị "đếm" nào cho các witness. Đó là bởi vì số lượng ngăn xếp witness phải luôn bằng chính xác với số lượng đầu vào.', // Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.
+       paragraph_five:
+         'Nhưng đợi đã! Chúng tôi cần bao gồm một "phí". Chúng tôi sẽ cắt giảm một phần nhỏ trong số tiền thừa của chúng tôi từ 61.000.000 xuống còn 60.999.000 satoshi để khuyến khích các nhóm khai thác(đào) khối mỏ đưa giao dịch của chúng tôi vào một khối.', // But wait! We need to include a "fee". We'll shave off a tiny piece of our change output from 61,000,000 to 60,999,000 satoshis to incentivize the mining mỏs to include our transaction in a block.
+       paragraph_six:
+         'Cuối cùng, công việc của chúng tôi đã hoàn thành. Script của bạn sẽ kết thúc bằng cách trả về kết quả của phương thức tuần tự hóa giao dịch. Đây là một giao dịch Bitcoin đã được ký hợp lệ và chúng tôi có thể phát sóng nó trên mạng để gửi cho Mika 3000 số tiền cô ấy cần!', // Finally our work is done. Your script should end by returning the result of the transaction serialize() method. This is a valid signed bitcoin transaction and we can broadcast it to the network to send Mika 3000 the money she needs!
  headings: {
    item_one: 'Description',
    item_two: 'Name',
@@ -1948,26 +1948,26 @@ four: '4',
  success: "Bạn đã làm được! Bạn đã xây dựng một giao dịch!", // You've done it! You've built a transaction!
       },
       hard: {
- title: 'Kết hợp tất cả', // Putting it all together
- nav_title: 'Xây dựng bản tóm tắt giao dịch', // Build the transaction digest
- heading: 'Bản tóm tắt giao dịch', // Transaction digest
- paragraph_one:
-   'Trong chương 5, chúng tôi đã học được rằng để ký một giao dịch, trước tiên chúng tôi cần sắp xếp lại và mã hóa dữ liệu của nó thành một thông báo, thông báo này trở thành một trong các đầu vào thô cho thuật toán ký của chúng tôi. Vì bây giờ chúng tôi đang sử dụng segregated witness, chúng tôi cũng cần triển khai thuật toán bản tóm tắt giao dịch được cập nhật được chỉ định trong <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.', // In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.
- paragraph_two:
-   'Hãy nhớ rằng mỗi đầu vào giao dịch cần có chữ ký riêng và do đó một số thành phần của thuật toán tóm tắt có thể được lưu trữ và sử dụng lại nhưng một số thành phần khác sẽ khác nhau tùy thuộc vào đầu vào nào đang được ký! Hoàn thành phương thức giao dịch <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest(input_index)</span> tính toán thông báo 32 byte để ký một đầu vào.', // Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest(input_index)</span> that computes the 32-byte message for signing an input.
- list_heading: 'Một số lưu ý:', // Some notes:
- list_one: '"Double SHA-256" hay dSHA256 = sha256(sha256(data))', // "Double SHA-256" or dSHA256 = sha256(sha256(data))
- list_two:
-   'value là số lượng satoshi trong đầu ra được chi tiêu. Chúng tôi đã thêm nó vào lớp Input của chúng tôi ở bước 2 và chỉ lưu nó ở đó bên trong lớp cho đến bây giờ.', // value is the amount of the satoshis in the output being spent from. We added it to our Input class back in step 2, and just saved it there inside the class until now.
- list_three:
-   'scriptcode là script Bitcoin thô đang được đánh giá. Chúng tôi cũng đã thêm nó vào lớp Input của chúng tôi ở bước 2.', // scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in step 2.
- paragraph_three:
-   'Chúng tôi sẽ đi sâu vào vấn đề này hơn trong phần tiếp theo, nhưng để chi tiêu từ địa chỉ pay-to-witness-public-key-hash (P2WPKH) của bạn, scriptcode của bạn sẽ là:', // We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:
- paragraph_four: '...mà giải mã thành script Bitcoin sau đây.', // ...which decodes to the following bitcoin script.
- paragraph_five:
-   'Để biết thêm thông tin về scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.', // For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.
- paragraph_six:
-   'Giao dịch thô có một ảnh tiền thân là phần tuần tự hóa của:', // 'The raw transaction has a preimage that is the serialization of:',
+       title: 'Kết hợp tất cả', // Putting it all together
+       nav_title: 'Xây dựng bản tóm tắt giao dịch', // Build the transaction digest
+       heading: 'Bản tóm tắt giao dịch', // Transaction digest
+       paragraph_one:
+         'Trong chương 5, chúng tôi đã học được rằng để ký một giao dịch, trước tiên chúng tôi cần sắp xếp lại và mã hóa dữ liệu của nó thành một thông báo, thông báo này trở thành một trong các đầu vào thô cho thuật toán ký của chúng tôi. Vì bây giờ chúng tôi đang sử dụng segregated witness, chúng tôi cũng cần triển khai thuật toán bản tóm tắt giao dịch được cập nhật được chỉ định trong <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.', // In chapter 5 we learned that to sign a transaction we first need to rearrange and hash its data into a message, which becomes one of the raw inputs to our signing algorithm. Since we are using segregated witness now, we also need to implement the updated transaction digest algorithm which is specified in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.
+       paragraph_two:
+         'Hãy nhớ rằng mỗi đầu vào giao dịch cần có chữ ký riêng và do đó một số thành phần của thuật toán tóm tắt có thể được lưu trữ và sử dụng lại nhưng một số thành phần khác sẽ khác nhau tùy thuộc vào đầu vào nào đang được ký! Hoàn thành phương thức giao dịch <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest(input_index)</span> tính toán thông báo 32 byte để ký một đầu vào.', // Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest(input_index)</span> that computes the 32-byte message for signing an input.
+       list_heading: 'Một số lưu ý:', // Some notes:
+       list_one: '"Double SHA-256" hay dSHA256 = sha256(sha256(data))', // "Double SHA-256" or dSHA256 = sha256(sha256(data))
+       list_two:
+         'value là số lượng satoshi trong đầu ra được chi tiêu. Chúng tôi đã thêm nó vào lớp Input của chúng tôi ở bước 2 và chỉ lưu nó ở đó bên trong lớp cho đến bây giờ.', // value is the amount of the satoshis in the output being spent from. We added it to our Input class back in step 2, and just saved it there inside the class until now.
+       list_three:
+         'scriptcode là script Bitcoin thô đang được đánh giá. Chúng tôi cũng đã thêm nó vào lớp Input của chúng tôi ở bước 2.', // scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in step 2.
+       paragraph_three:
+         'Chúng tôi sẽ đi sâu vào vấn đề này hơn trong phần tiếp theo, nhưng để chi tiêu từ địa chỉ pay-to-witness-public-key-hash (P2WPKH) của bạn, scriptcode của bạn sẽ là:', // We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:
+       paragraph_four: '...mà giải mã thành script Bitcoin sau đây.', // ...which decodes to the following bitcoin script.
+       paragraph_five:
+         'Để biết thêm thông tin về scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.', // For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.
+       paragraph_six:
+         'Giao dịch thô có một ảnh tiền thân là phần tuần tự hóa của:', // 'The raw transaction has a preimage that is the serialization of:',
  headings: {
    item_one: 'Description',
    item_two: 'Name',
@@ -1983,21 +1983,21 @@ four: '4',
    },
    row_two: {
      item_one:
-'The dSHA256 of all outpoints from all inputs, serialized',
+        'The dSHA256 of all outpoints from all inputs, serialized',
      item_two: 'bytes',
      item_three: 'bytes',
      item_four: '32',
    },
    row_three: {
      item_one:
-'The dSHA256 of all sequence values from all inputs, serialized',
+        'The dSHA256 of all sequence values from all inputs, serialized',
      item_two: 'sequences',
      item_three: 'bytes',
      item_four: '32',
    },
    row_four: {
      item_one:
-'The serialized outpoint of the single input being signed ',
+        'The serialized outpoint of the single input being signed ',
      item_two: 'outpoint',
      item_three: 'bytes',
      item_four: '36',
@@ -2010,7 +2010,7 @@ four: '4',
    },
    row_six: {
      item_one:
-'The value in satoshis being spent by the single input being signed',
+        'The value in satoshis being spent by the single input being signed',
      item_two: 'value',
      item_three: 'int',
      item_four: '8',
@@ -2047,51 +2047,51 @@ four: '4',
     },
     put_it_together_four: {
       hard: {
- title: 'Putting it all together',
- heading: 'Signing!',
- nav_title: 'Sign the transaction',
- paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index: int, key: int)</span> to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest()</span> method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
- paragraph_two:
-   'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
- paragraph_three:
-   'The bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
- success: 'The compute_input_signature() method looks good. Great Work!',
+       title: 'Putting it all together',
+       heading: 'Signing!',
+       nav_title: 'Sign the transaction',
+       paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index: int, key: int)</span> to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest()</span> method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
+       paragraph_two:
+         'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
+       paragraph_three:
+         'The bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
+       success: 'The compute_input_signature() method looks good. Great Work!',
       },
     },
     put_it_together_five: {
       hard: {
- title: 'Kết hợp tất cả', // Putting it all together
- heading: 'Điền vào Witness', // Populate the Witness
- nav_title: 'Điền vào Witness', // Populate the Witness
- paragraph_one:
-   'Hoàn thành phương thức <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> gọi phương thức bước 7 của chúng tôi <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> và xử lý giá trị trả về của nó. Các số r và s cần được mã hóa bằng thuật toán gọi là DER mà chúng tôi đã triển khai cho bạn.', // Finish the method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> that calls our step 7 method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.
- paragraph_two:
-   'Bitcoin yêu cầu thêm một byte được nối vào cuối chữ ký DER, đại diện cho "loại sighash". Hiện tại, chúng tôi sẽ luôn sử dụng byte 0x01 cho việc này, biểu thị "SIGHASH ALL".', // Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this indicating "SIGHASH ALL".
- paragraph_three:
-   'Sau khi chúng ta có khối chữ ký đó, chúng ta cần tạo một đối tượng Witness với hai mục ngăn xếp: khối chữ ký đã mã hóa DER và khóa chung nén của bạn. Đẩy chữ ký trước, tiếp theo là khóa chung.', // Once we have that signature blob, we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.
- paragraph_four:
-   'Đối tượng ngăn xếp witness có thể được thêm vào mảng các witness của đối tượng giao dịch.', // The witness stack object can then be appended to the witnesses array of the transaction object.
- success: 'Phương thức sign_input() trông ổn. Làm tốt!', // The sign_input() method looks good. Great Work!
+       title: 'Kết hợp tất cả', // Putting it all together
+       heading: 'Điền vào Witness', // Populate the Witness
+       nav_title: 'Điền vào Witness', // Populate the Witness
+       paragraph_one:
+         'Hoàn thành phương thức <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> gọi phương thức bước 7 của chúng tôi <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> và xử lý giá trị trả về của nó. Các số r và s cần được mã hóa bằng thuật toán gọi là DER mà chúng tôi đã triển khai cho bạn.', // Finish the method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> that calls our step 7 method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.
+       paragraph_two:
+         'Bitcoin yêu cầu thêm một byte được nối vào cuối chữ ký DER, đại diện cho "loại sighash". Hiện tại, chúng tôi sẽ luôn sử dụng byte 0x01 cho việc này, biểu thị "SIGHASH ALL".', // Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this indicating "SIGHASH ALL".
+       paragraph_three:
+         'Sau khi chúng ta có khối chữ ký đó, chúng ta cần tạo một đối tượng Witness với hai mục ngăn xếp: khối chữ ký đã mã hóa DER và khóa chung nén của bạn. Đẩy chữ ký trước, tiếp theo là khóa chung.', // Once we have that signature blob, we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.
+       paragraph_four:
+         'Đối tượng ngăn xếp witness có thể được thêm vào mảng các witness của đối tượng giao dịch.', // The witness stack object can then be appended to the witnesses array of the transaction object.
+       success: 'Phương thức sign_input() trông ổn. Làm tốt!', // The sign_input() method looks good. Great Work!
       },
     },
     put_it_together_six: {
       hard: {
- title: 'Kết hợp tất cả', // Putting it all together
- heading: 'Kết hợp tất cả!', // Put it All Together
- nav_title: 'Kết hợp tất cả!', // Put it All Together!
- paragraph_one:
-   'Chúng tôi biết đầu vào của mình, chúng tôi biết đầu ra của mình. Chúng tôi đã sẵn sàng để xây dựng và ký một giao dịch chưa? Chưa hẳn. Chúng tôi có đầu vào 1.61 BTC và đầu ra 1 BTC ... điều gì sẽ xảy ra với 0.61 BTC còn lại? Hầu hết số tiền đó sẽ là "tiền thừa" và chúng tôi cần gửi lại số tiền đó về địa chỉ của chính mình!', // We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!
- paragraph_two:
-   'Viết một lệnh (script) tạo và ký một đối tượng Transaction. Nó sẽ có một đầu vào (UTXO mà chúng tôi đã xác định ở bước 1) và hai đầu ra:', // Write a script that creates and signs a Transaction object. It will have one input (the UTXO we identified in step 1) and two outputs:
- paragraph_three:
-   'Nhưng đợi đã! Chúng tôi cần bao gồm một "phí". Chúng tôi sẽ cắt giảm một phần nhỏ trong số tiền thừa của chúng tôi từ 61.000.000 xuống còn 60.999.000 satoshi để khuyến khích các nhóm khai thác(đào) khối mỏ đưa giao dịch của chúng tôi vào một khối.', // But wait! We need to include a "fee". We'll shave off a tiny piece of our change output from 61,000,000 to 60,999,000 satoshis to incentivize the mining mỏs to include our transaction in a block.
- paragraph_four:
-   'Cuối cùng, công việc của chúng tôi đã hoàn thành. Script của bạn sẽ kết thúc bằng cách trả về kết quả của phương thức tuần tự hóa giao dịch <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span>. Đây là một giao dịch Bitcoin đã được ký hợp lệ và chúng tôi có thể phát sóng nó trên mạng để gửi cho Mika 3000 số tiền cô ấy cần!', // Finally our work is done. Your script should end by returning the result of the transaction <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method. This is a valid signed bitcoin transaction and we can broadcast it to the network to send Mika 3000 the money she needs!
- bullet_one:
-   'Mika 3000 nhận được 100.000.000 satoshi vào bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj', // Mika 3000 gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj
- bullet_two:
-   'Bạn nhận lại 61.000.000 vào địa chỉ của mình bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs', // You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs
- success: "Bạn đã làm được! Bạn đã xây dựng một giao dịch!", // You've done it! You've built a transaction!
+       title: 'Kết hợp tất cả', // Putting it all together
+       heading: 'Kết hợp tất cả!', // Put it All Together
+       nav_title: 'Kết hợp tất cả!', // Put it All Together!
+       paragraph_one:
+         'Chúng tôi biết đầu vào của mình, chúng tôi biết đầu ra của mình. Chúng tôi đã sẵn sàng để xây dựng và ký một giao dịch chưa? Chưa hẳn. Chúng tôi có đầu vào 1.61 BTC và đầu ra 1 BTC ... điều gì sẽ xảy ra với 0.61 BTC còn lại? Hầu hết số tiền đó sẽ là "tiền thừa" và chúng tôi cần gửi lại số tiền đó về địa chỉ của chính mình!', // We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!
+       paragraph_two:
+         'Viết một lệnh (script) tạo và ký một đối tượng Transaction. Nó sẽ có một đầu vào (UTXO mà chúng tôi đã xác định ở bước 1) và hai đầu ra:', // Write a script that creates and signs a Transaction object. It will have one input (the UTXO we identified in step 1) and two outputs:
+       paragraph_three:
+         'Nhưng đợi đã! Chúng tôi cần bao gồm một "phí". Chúng tôi sẽ cắt giảm một phần nhỏ trong số tiền thừa của chúng tôi từ 61.000.000 xuống còn 60.999.000 satoshi để khuyến khích các nhóm khai thác(đào) khối mỏ đưa giao dịch của chúng tôi vào một khối.', // But wait! We need to include a "fee". We'll shave off a tiny piece of our change output from 61,000,000 to 60,999,000 satoshis to incentivize the mining mỏs to include our transaction in a block.
+       paragraph_four:
+         'Cuối cùng, công việc của chúng tôi đã hoàn thành. Script của bạn sẽ kết thúc bằng cách trả về kết quả của phương thức tuần tự hóa giao dịch <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span>. Đây là một giao dịch Bitcoin đã được ký hợp lệ và chúng tôi có thể phát sóng nó trên mạng để gửi cho Mika 3000 số tiền cô ấy cần!', // Finally our work is done. Your script should end by returning the result of the transaction <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method. This is a valid signed bitcoin transaction and we can broadcast it to the network to send Mika 3000 the money she needs!
+       bullet_one:
+         'Mika 3000 nhận được 100.000.000 satoshi vào bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj', // Mika 3000 gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj
+       bullet_two:
+         'Bạn nhận lại 61.000.000 vào địa chỉ của mình bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs', // You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs
+       success: "Bạn đã làm được! Bạn đã xây dựng một giao dịch!", // You've done it! You've built a transaction!
       },
     },
     outro_one: {
@@ -2099,18 +2099,18 @@ four: '4',
       nav_title: 'Hoàn thành chương', // Chapter complete
       heading: 'Bạn đã làm được!', // You did it!
       paragraph_one:
- "Bạn đã thành công trong việc xây dựng một giao dịch từ đầu để trả cho Mika 3000 vì sự giúp đỡ của cô ấy. Bây giờ khi chúng ta đã hoàn thành ở đây, hãy xem những gì chúng ta có thể tìm thấy trên đảo của Vanderpoole.", // You successfully built a transaction from scratch to pay Mika 3000 for her help. Now that we are done here let's see what we can find on Vanderpoole's island.
+         "Bạn đã thành công trong việc xây dựng một giao dịch từ đầu để trả cho Mika 3000 vì sự giúp đỡ của cô ấy. Bây giờ khi chúng ta đã hoàn thành ở đây, hãy xem những gì chúng ta có thể tìm thấy trên đảo của Vanderpoole.", // You successfully built a transaction from scratch to pay Mika 3000 for her help. Now that we are done here let's see what we can find on Vanderpoole's island.
     },
     resources: {
       in_out: {
- input_class_heading: 'Lớp Input', // Input Class
- input_class_paragraph_one: 'Tài nguyên Placeholder', // Placeholder Resources
- output_class_heading: 'Lớp Output', // Output Class
- output_class_paragraph_one: 'Tài nguyên Placeholder', // Placeholder Resources
+       input_class_heading: 'Lớp Input', // Input Class
+       input_class_paragraph_one: 'Tài nguyên Placeholder', // Placeholder Resources
+       output_class_heading: 'Lớp Output', // Output Class
+       output_class_paragraph_one: 'Tài nguyên Placeholder', // Placeholder Resources
       },
       put_it_together: {
- building_a_transaction_heading: 'Xây dựng một giao dịch', // Building a Transaction
- building_a_transaction_paragraph_one: 'Tài nguyên Placeholder', // Placeholder Resources
+       building_a_transaction_heading: 'Xây dựng một giao dịch', // Building a Transaction
+       building_a_transaction_paragraph_one: 'Tài nguyên Placeholder', // Placeholder Resources
       },
     },
   },
@@ -2122,74 +2122,74 @@ four: '4',
       title: 'Phần mở đầu', // Intro
       nav_title: 'Xâm nhập vào khu phức hợp', // Infiltrating the compound
       paragraph_one:
- 'Bạn hỏi những người bạn đồng hành của mình liệu họ có lo lắng về đội quân máy bay không người lái của Vanderpoole không.', // You ask your compatriots whether they are worried about Vanderpoole’s army of security drones.
+         'Bạn hỏi những người bạn đồng hành của mình liệu họ có lo lắng về đội quân máy bay không người lái của Vanderpoole không.', // You ask your compatriots whether they are worried about Vanderpoole’s army of security drones.
       paragraph_two:
- '—HOLOCAT: “Cho tôi 15 phút. Chúng cơ bản giống như chim, và tôi là một con mèo. Chúng không có cơ hội nào.”', // —HOLOCAT: “Give me 15 minutes. They’re basically birds, and I’m a cat. They don’t stand a chance.”
+         '—HOLOCAT: “Cho tôi 15 phút. Chúng cơ bản giống như chim, và tôi là một con mèo. Chúng không có cơ hội nào.”', // —HOLOCAT: “Give me 15 minutes. They’re basically birds, and I’m a cat. They don’t stand a chance.”
       paragraph_three:
- 'Holocat giơ móng vuốt của mình và đối phó với đội quân máy bay không người lái của Vanderpoole bằng cách nhảy vọt. Mika 3000 đưa cho bạn một chiếc áo len cổ lọ màu đen, găng tay và một cặp kính nhìn đêm.', //con mèo extends her claws and deals with Vanderpoole’s drone army pounce by pounce. Mika 3000 hands you a black turtleneck sweater, gloves, and a pair of night vision goggles.
+         'Holocat giơ móng vuốt của mình và đối phó với đội quân máy bay không người lái của Vanderpoole bằng cách nhảy vọt. Mika 3000 đưa cho bạn một chiếc áo len cổ lọ màu đen, găng tay và một cặp kính nhìn đêm.', //con mèo extends her claws and deals with Vanderpoole’s drone army pounce by pounce. Mika 3000 hands you a black turtleneck sweater, gloves, and a pair of night vision goggles.
       paragraph_four:
- '—MIKA 3000: “Bạn không thể làm gián điệp trong một chiếc áo sơ mi Hawaii. Bạn đang nghĩ gì vậy? Đây không phải là một nhà kho bỏ hoang; đây là một pháo đài. Đây, suýt nữa thì tôi quên mất. Lấy móc bám này.”', // —MIKA 3000: “You can’t do espionage in a Hawaiian shirt. What were you thinking? This isn’t another abandoned warehouse; this is a fortress. Here, I almost forgot. Take this grappling hook.”
+         '—MIKA 3000: “Bạn không thể làm gián điệp trong một chiếc áo sơ mi Hawaii. Bạn đang nghĩ gì vậy? Đây không phải là một nhà kho bỏ hoang; đây là một pháo đài. Đây, suýt nữa thì tôi quên mất. Lấy móc bám này.”', // —MIKA 3000: “You can’t do espionage in a Hawaiian shirt. What were you thinking? This isn’t another abandoned warehouse; this is a fortress. Here, I almost forgot. Take this grappling hook.”
       paragraph_five:
- 'Tự hỏi mình đã dính vào chuyện gì, bạn và Mika 3000 leo lên tường thành của dinh thự chính của Vanderpoole. Đến ngạc nhiên, ngôi nhà của ông ta tràn ngập nghệ thuật, sách và tạp chí giấy ủng hộ Bitcoin. Ông ta là, hoặc đúng hơn là đã từng là, một người hâm mộ Bitcoin thực thụ. Một bộ sưu tập các máy đào mỏ có niên đại 125 năm tuổi được bảo quản trong tủ kính trưng bày. Đó là lúc bạn nhìn thấy nó: xưởng làm việc của Vanderpoole.', // Wondering what you’ve gotten yourself into, you and Mika 3000 scale the castle walls of Vanderpoole’s primary residence. To your surprise, his home overflows with pro-bitcoin art, books, and paper magazines. He is, or rather was, a true bitcoiner. A collection of miners dating back 125 years sit preserved in glass display cases. That’s when you see it: Vanderpoole’s workshop.
+         'Tự hỏi mình đã dính vào chuyện gì, bạn và Mika 3000 leo lên tường thành của dinh thự chính của Vanderpoole. Đến ngạc nhiên, ngôi nhà của ông ta tràn ngập nghệ thuật, sách và tạp chí giấy ủng hộ Bitcoin. Ông ta là, hoặc đúng hơn là đã từng là, một người hâm mộ Bitcoin thực thụ. Một bộ sưu tập các máy đào mỏ có niên đại 125 năm tuổi được bảo quản trong tủ kính trưng bày. Đó là lúc bạn nhìn thấy nó: xưởng làm việc của Vanderpoole.', // Wondering what you’ve gotten yourself into, you and Mika 3000 scale the castle walls of Vanderpoole’s primary residence. To your surprise, his home overflows with pro-bitcoin art, books, and paper magazines. He is, or rather was, a true bitcoiner. A collection of miners dating back 125 years sit preserved in glass display cases. That’s when you see it: Vanderpoole’s workshop.
     },
     intro_two: {
       nav_title: 'Phòng điều khiển', // The control room
       paragraph_one:
- 'Căn phòng khổng lồ này rất lộn xộn, mặc dù bố cục của nó có phương pháp. Bạn nhớ lại khi các máy(thợ) đào làm tắc nghẽn mạng Bitcoin bằng các khối trống không? Bên trong những cuốn sổ tay mở, bạn tìm thấy thiết kế của Vanderpoole cho cửa hậu mà ông ta đã sử dụng được phác thảo chi tiết. Bạn đã đúng: Tất cả đều là dối trá, nhưng không phải do một tên phản diện xảo quyệt mà do một người tin tưởng tuyệt đối vào Bitcoin, công ty của người đó không thể cạnh tranh nữa. Để bảo tồn di sản của mình, Vanderpoole đã lây nhiễm cho các máy(thợ) đào một loại virus.', // The gigantic room is a mess, though its layout is methodical. Remember when miners were clogging up the bitcoin network with empty blocks? Inside open notebooks, you find Vanderpoole’s designs for the backdoor that he used sketched out in detail. You were right: It was all a lie, yet one told not by a conniving villain but by a desperate believer in bitcoin whose company could no longer compete. To preserve his legacy, Vanderpoole infected the miners with a virus.
+         'Căn phòng khổng lồ này rất lộn xộn, mặc dù bố cục của nó có phương pháp. Bạn nhớ lại khi các máy(thợ) đào làm tắc nghẽn mạng Bitcoin bằng các khối trống không? Bên trong những cuốn sổ tay mở, bạn tìm thấy thiết kế của Vanderpoole cho cửa hậu mà ông ta đã sử dụng được phác thảo chi tiết. Bạn đã đúng: Tất cả đều là dối trá, nhưng không phải do một tên phản diện xảo quyệt mà do một người tin tưởng tuyệt đối vào Bitcoin, công ty của người đó không thể cạnh tranh nữa. Để bảo tồn di sản của mình, Vanderpoole đã lây nhiễm cho các máy(thợ) đào một loại virus.', // The gigantic room is a mess, though its layout is methodical. Remember when miners were clogging up the bitcoin network with empty blocks? Inside open notebooks, you find Vanderpoole’s designs for the backdoor that he used sketched out in detail. You were right: It was all a lie, yet one told not by a conniving villain but by a desperate believer in bitcoin whose company could no longer compete. To preserve his legacy, Vanderpoole infected the miners with a virus.
       paragraph_two:
- 'Virus này thay thế một phần của mã được sử dụng bởi tất cả các máy(thợ) đào, bất kể họ có thuộc về một nhóm khai thác(đào) khối hay không. Đó là logic xây dựng khối, thuật toán lắp ráp các giao dịch thành một mẫu khối. Mẫu vẫn được chuyển tiếp đến mã mã hóa hợp pháp để xác minh công việc. Các mẫu được kết hợp với hàng triệu nonce khác nhau trong khi tìm kiếm một hash hợp lệ, nhưng khi tìm thấy một hash, thiệt hại - sự vắng mặt của bất kỳ giao dịch nào trong mẫu khối, đã được thực hiện.', // The virus replaces a section of the code used by all miners, regardless if they are part of a mỏ or not. It is the block building logic, the algorithm that assembles transactions into a block template. The template is still passed on to legitimate hashing code for proof-of-work. Templates are combined with zillions of different nonces while searching for a valid hash, but by the time one is found, the damage–the absence of any transactions in the block template, has been done.
+         'Virus này thay thế một phần của mã được sử dụng bởi tất cả các máy(thợ) đào, bất kể họ có thuộc về một nhóm khai thác(đào) khối hay không. Đó là logic xây dựng khối, thuật toán lắp ráp các giao dịch thành một mẫu khối. Mẫu vẫn được chuyển tiếp đến mã mã hóa hợp pháp để xác minh công việc. Các mẫu được kết hợp với hàng triệu nonce khác nhau trong khi tìm kiếm một hash hợp lệ, nhưng khi tìm thấy một hash, thiệt hại - sự vắng mặt của bất kỳ giao dịch nào trong mẫu khối, đã được thực hiện.', // The virus replaces a section of the code used by all miners, regardless if they are part of a mỏ or not. It is the block building logic, the algorithm that assembles transactions into a block template. The template is still passed on to legitimate hashing code for proof-of-work. Templates are combined with zillions of different nonces while searching for a valid hash, but by the time one is found, the damage–the absence of any transactions in the block template, has been done.
       paragraph_three:
- '—HOLOCAT: “Thật là một tổn thất. Gia đình của ông ấy từng rất vĩ đại. Thật buồn khi thấy gia tộc Vanderpoole rơi vào tình cảnh này.”', // —HOLOCAT: “What a loss. His family was once great. It’s so sad to see the Vanderpoole’s come to this.”
+         '—HOLOCAT: “Thật là một tổn thất. Gia đình của ông ấy từng rất vĩ đại. Thật buồn khi thấy gia tộc Vanderpoole rơi vào tình cảnh này.”', // —HOLOCAT: “What a loss. His family was once great. It’s so sad to see the Vanderpoole’s come to this.”
     },
     intro_three: {
       nav_title: 'Sửa chữa phần mềm', // Correcting the software
       paragraph_one:
- "Nhưng bạn không thể chỉ để mã khai thác(đào) khối bị tàn tật trên máy chủ của Vanderpoole. Nó sẽ tiếp tục lây nhiễm cho các máy(thợ) đào. Bạn phải sửa chữa nó! Khi bạn đọc qua mã,con mèo cho bạn xem màn hình hiển thị mempool đang tràn ngập các giao dịch chưa được xác nhận. Càng sớm sửa chữa mã này thì càng tốt.", // But you can't just leave the crippled mining code on Vanderpoole's server. It will keep infecting miners. You have to fix it! As you read through the code,con mèo shows you a mempool display that is filling with unconfirmed transactions. The sooner this code gets fixed, the better.
+         "Nhưng bạn không thể chỉ để mã khai thác(đào) khối bị tàn tật trên máy chủ của Vanderpoole. Nó sẽ tiếp tục lây nhiễm cho các máy(thợ) đào. Bạn phải sửa chữa nó! Khi bạn đọc qua mã,con mèo cho bạn xem màn hình hiển thị mempool đang tràn ngập các giao dịch chưa được xác nhận. Càng sớm sửa chữa mã này thì càng tốt.", // But you can't just leave the crippled mining code on Vanderpoole's server. It will keep infecting miners. You have to fix it! As you read through the code,con mèo shows you a mempool display that is filling with unconfirmed transactions. The sooner this code gets fixed, the better.
     },
     mempool_transaction_one: {
       title: 'Khối xây dựng', // Building blocks
       nav_title: 'Lắp ráp một khối', // Assemble a block
       heading: 'Thử thách mã', // Code Challenge
       python: {
- paragraph_one:
-   'Đây là mã bạn tìm thấy trên máy chủ của Vanderpoole. Nó nhập mempool hiện tại từ tệp JSON và lưu trữ tất cả các giao dịch chưa được xác nhận trong bộ nhớ dưới dạng các trường hợp của lớp MempoolTransaction. Hàm mà Vanderpoole đã làm hỏng là <span className="text-green">assemble_block()</span>. Nếu bạn chạy mã như cách Vanderpoole đã để lại, bạn sẽ thấy vấn đề ngay lập tức.', // This is the code you find on Vanderpoole's server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assemble_block()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.
+       paragraph_one:
+         'Đây là mã bạn tìm thấy trên máy chủ của Vanderpoole. Nó nhập mempool hiện tại từ tệp JSON và lưu trữ tất cả các giao dịch chưa được xác nhận trong bộ nhớ dưới dạng các trường hợp của lớp MempoolTransaction. Hàm mà Vanderpoole đã làm hỏng là <span className="text-green">assemble_block()</span>. Nếu bạn chạy mã như cách Vanderpoole đã để lại, bạn sẽ thấy vấn đề ngay lập tức.', // This is the code you find on Vanderpoole's server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assemble_block()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.
       },
       javascript: {
- paragraph_one:
-   'Đây là mã bạn tìm thấy trên máy chủ của Vanderpoole. Nó nhập mempool hiện tại từ tệp JSON và lưu trữ tất cả các giao dịch chưa được xác nhận trong bộ nhớ dưới dạng các trường hợp của lớp MempoolTransaction. Hàm mà Vanderpoole đã làm hỏng là <span className="text-green">assembleBlock()</span>. Nếu bạn chạy mã như cách Vanderpoole đã để lại, bạn sẽ thấy vấn đề ngay lập tức.', // This is the code you find on Vanderpoole's server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assembleBlock()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.
-      },
-      paragraph_two: {
- a: 'Bạn cần sửa chữa hàm lắp ráp khối không chỉ để xây dựng các khối hợp lệ mà còn tối đa hóa phí trong khối, để các máy(thợ) đào có thể kiếm được nhiều lợi nhuận nhất có thể theo các quy tắc đồng thuận. Các quy tắc đồng thuận quan trọng nhất mà bạn cần chú ý để hạn chế tổng ', // You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules. The most critical consensus rules you will need to pay attention to restrict the total
- b: {
-   text: 'transaction weight ',
-   href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520weighted%2520units',
-   question: 'What are weighted units?',
- },
- c: ' and the ',
- d: {
-   text: 'order of transactions ',
-   href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520order%2520do%2520transactions%2520need%2520to%2520be%2520in%2520a%2520block',
-   question: 'What order do transactions need to be in a block?',
- },
- e: ' in the block.',
-      },
+        paragraph_one:
+           'Đây là mã bạn tìm thấy trên máy chủ của Vanderpoole. Nó nhập mempool hiện tại từ tệp JSON và lưu trữ tất cả các giao dịch chưa được xác nhận trong bộ nhớ dưới dạng các trường hợp của lớp MempoolTransaction. Hàm mà Vanderpoole đã làm hỏng là <span className="text-green">assembleBlock()</span>. Nếu bạn chạy mã như cách Vanderpoole đã để lại, bạn sẽ thấy vấn đề ngay lập tức.', // This is the code you find on Vanderpoole's server. It imports the current mempool from a JSON file and stores all the unconfirmed transactions in memory as instances of the MempoolTransaction class. The function that Vanderpoole has crippled is <span className="text-green">assembleBlock()</span>. If you run the code as Vanderpoole left it, you will see the problem right away.
+        },
+        paragraph_two: {
+          a: 'Bạn cần sửa chữa hàm lắp ráp khối không chỉ để xây dựng các khối hợp lệ mà còn tối đa hóa phí trong khối, để các máy(thợ) đào có thể kiếm được nhiều lợi nhuận nhất có thể theo các quy tắc đồng thuận. Các quy tắc đồng thuận quan trọng nhất mà bạn cần chú ý để hạn chế tổng ', // You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules. The most critical consensus rules you will need to pay attention to restrict the total
+          b: {
+           text: 'transaction weight ',
+           href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520weighted%2520units',
+           question: 'What are weighted units?',
+          },
+          c: ' and the ',
+          d: {
+           text: 'order of transactions ',
+           href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520order%2520do%2520transactions%2520need%2520to%2520be%2520in%2520a%2520block',
+           question: 'What order do transactions need to be in a block?',
+          },
+          e: ' in the block.',
+        },
       paragraph_three:
- 'Bạn có thể đưa ra các giả định sau để hoàn thành nhiệm vụ của mình:', // You can make the following assumptions to complete your mission:
+         'Bạn có thể đưa ra các giả định sau để hoàn thành nhiệm vụ của mình:', // You can make the following assumptions to complete your mission:
       bullet_one:
- 'Tất cả các giao dịch trong mempool đã được xác minh là hợp lệ.', // All transactions in the mempool have already been verified as valid.
+         'Tất cả các giao dịch trong mempool đã được xác minh là hợp lệ.', // All transactions in the mempool have already been verified as valid.
       bullet_two:
- 'Có thể bỏ qua giao dịch coinbase và trọng lượng của nó đóng góp vào khối.', // The coinbase transaction, and the weight it contributes to the block, can be ignored.
+         'Có thể bỏ qua giao dịch coinbase và trọng lượng của nó đóng góp vào khối.', // The coinbase transaction, and the weight it contributes to the block, can be ignored.
       paragraph_four:
- 'Bạn có thể xem toàn bộ tệp JSON mempool thô <Link href="https://github.com/saving-satoshi/resources/blob/main/chapter-7/mempool.json" target="_blank" className="underline">ở đây</Link>.', // You can view the entire raw mempool JSON file <Link href="https://github.com/saving-satoshi/resources/blob/main/chapter-7/mempool.json" target="_blank" className="underline">here</Link>.
+         'Bạn có thể xem toàn bộ tệp JSON mempool thô <Link href="https://github.com/saving-satoshi/resources/blob/main/chapter-7/mempool.json" target="_blank" className="underline">ở đây</Link>.', // You can view the entire raw mempool JSON file <Link href="https://github.com/saving-satoshi/resources/blob/main/chapter-7/mempool.json" target="_blank" className="underline">here</Link>.
       paragraph_five:
- 'Hoặc duyệt một phần tệp trong bảng này để biết một số mẫu cơ bản:', // Or browse an excerpt of the file in this table for some basic patterns:
+         'Hoặc duyệt một phần tệp trong bảng này để biết một số mẫu cơ bản:', // Or browse an excerpt of the file in this table for some basic patterns:
       headings: {
- item_one: 'Transaction ID',
- item_two: 'Fee',
- item_two_b: 'Satoshis',
- item_three: 'Weight',
- item_three_b: 'Weight units (WU)',
- item_four: 'Ancestors',
+       item_one: 'Transaction ID',
+       item_two: 'Fee',
+       item_two_b: 'Satoshis',
+       item_three: 'Weight',
+       item_three_b: 'Weight units (WU)',
+       item_four: 'Ancestors',
       },
       table_one: {
  footer:
@@ -2204,21 +2204,21 @@ four: '4',
       nav_title: 'Hoàn thành chương', // Chapter complete
       heading: 'Bạn đã làm được!', // You did it!
       paragraph_one:
- 'Bạn trốn thoát khỏi khu phức hợp và trở về nhà. Các nhà đầu tư bán cổ phiếu BitRey hàng loạt khi câu chuyện được tiết lộ, khiến giá trị tài sản ròng của Vanderpoole sụt giảm mạnh.', // You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.
+         'Bạn trốn thoát khỏi khu phức hợp và trở về nhà. Các nhà đầu tư bán cổ phiếu BitRey hàng loạt khi câu chuyện được tiết lộ, khiến giá trị tài sản ròng của Vanderpoole sụt giảm mạnh.', // You escape the compound and return home. Investors sell their BitRey shares en masse when the story drops, plummeting Vanderpoole’s net worth.
     },
     resources: {
       mempool_transaction_one: {
- bytes_v_weight_heading: 'Các đơn vị Byte so với Trọng số', // Bytes vs Weight Units
- bytes_v_weight_paragraph_one:
-   'Trong việc xây dựng khối Bitcoin, "đơn vị trọng số" (WU) và "byte" là hai số liệu khác nhau được sử dụng để đo kích thước của các giao dịch và khối.', // In bitcoin block construction, "weight units" (WU) and "bytes" are two different metrics used to measure the size of transactions and blocks.
- bytes_v_weight_subheading_bytes: 'Byte', // Bytes
- bytes_v_weight_paragraph_two:
-   'Byte đề cập đến kích thước thô của một giao dịch hoặc khối theo thuật ngữ dữ liệu thực tế. Đó là kích thước theo nghĩa đen của dữ liệu giao dịch khi nó được tuần tự hóa (chuyển đổi thành định dạng có thể lưu trữ hoặc truyền). Trước khi triển khai Segregated Witness (SegWit), kích thước khối được giới hạn ở 1 megabyte (1 MB), được đo bằng byte.', // Bytes refer to the raw size of a transaction or block in terms of actual data. It is the literal size of the transaction data when it is serialized (converted into a format that can be stored or transmitted). Before the implementation of Segregated Witness (SegWit), the block size was limited to 1 megabyte (1 MB), measured in bytes.
- bytes_v_weight_subheading_wu: 'Đơn vị Trọng số', // Weighted Units
- bytes_v_weight_paragraph_three:
-   'Đơn vị trọng số là một số liệu phức tạp hơn được giới thiệu với SegWit trong Bitcoin Improvement Proposal 141 <Link href="https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#user-content-Other_consensus_critical_limits" target="_blank" className="underline">BIP 141</Link>. Hệ thống này nhằm mục đích phân bổ dung lượng khối công bằng hơn bằng cách xem xét tác động của dữ liệu chứng thực riêng biệt.', // Weighted units are a more complex metric introduced with SegWit in Bitcoin Improvement Proposal 141 <Link href="https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#user-content-Other_consensus_critical_limits" target="_blank" className="undeline">BIP 141</Link>. This system aims to more fairly allocate block space by considering the impact of witness data separately.
- bytes_v_weight_paragraph_four:
-   'Trong bài học này, điều quan trọng cần lưu ý là chúng tôi đang sử dụng các đơn vị trọng số để tính toán kích thước khối tối đa và tương tự cho mỗi giao dịch, vì vậy hãy đảm bảo khối của bạn không vượt quá kích thước tối đa là 4.000.000 đơn vị trọng số.', // In our lesson here its just important to note we are using weight units to calculate the maximum block size and the same for each tx so make sure your block does not exceed the maximum size of 4000000 weight units.
+       bytes_v_weight_heading: 'Các đơn vị Byte so với Trọng số', // Bytes vs Weight Units
+       bytes_v_weight_paragraph_one:
+         'Trong việc xây dựng khối Bitcoin, "đơn vị trọng số" (WU) và "byte" là hai số liệu khác nhau được sử dụng để đo kích thước của các giao dịch và khối.', // In bitcoin block construction, "weight units" (WU) and "bytes" are two different metrics used to measure the size of transactions and blocks.
+       bytes_v_weight_subheading_bytes: 'Byte', // Bytes
+       bytes_v_weight_paragraph_two:
+         'Byte đề cập đến kích thước thô của một giao dịch hoặc khối theo thuật ngữ dữ liệu thực tế. Đó là kích thước theo nghĩa đen của dữ liệu giao dịch khi nó được tuần tự hóa (chuyển đổi thành định dạng có thể lưu trữ hoặc truyền). Trước khi triển khai Segregated Witness (SegWit), kích thước khối được giới hạn ở 1 megabyte (1 MB), được đo bằng byte.', // Bytes refer to the raw size of a transaction or block in terms of actual data. It is the literal size of the transaction data when it is serialized (converted into a format that can be stored or transmitted). Before the implementation of Segregated Witness (SegWit), the block size was limited to 1 megabyte (1 MB), measured in bytes.
+       bytes_v_weight_subheading_wu: 'Đơn vị Trọng số', // Weighted Units
+       bytes_v_weight_paragraph_three:
+         'Đơn vị trọng số là một số liệu phức tạp hơn được giới thiệu với SegWit trong Bitcoin Improvement Proposal 141 <Link href="https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#user-content-Other_consensus_critical_limits" target="_blank" className="underline">BIP 141</Link>. Hệ thống này nhằm mục đích phân bổ dung lượng khối công bằng hơn bằng cách xem xét tác động của dữ liệu chứng thực riêng biệt.', // Weighted units are a more complex metric introduced with SegWit in Bitcoin Improvement Proposal 141 <Link href="https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#user-content-Other_consensus_critical_limits" target="_blank" className="undeline">BIP 141</Link>. This system aims to more fairly allocate block space by considering the impact of witness data separately.
+       bytes_v_weight_paragraph_four:
+         'Trong bài học này, điều quan trọng cần lưu ý là chúng tôi đang sử dụng các đơn vị trọng số để tính toán kích thước khối tối đa và tương tự cho mỗi giao dịch, vì vậy hãy đảm bảo khối của bạn không vượt quá kích thước tối đa là 4.000.000 đơn vị trọng số.', // In our lesson here its just important to note we are using weight units to calculate the maximum block size and the same for each tx so make sure your block does not exceed the maximum size of 4000000 weight units.
       },
     },
   },
@@ -2247,29 +2247,29 @@ four: '4',
       title: 'Khối xây dựng', // Building blocks
       nav_title: 'Tìm đầu chuỗi', // Finding the chain tip
       paragraph_one: {
- a: 'You know that Vanderpoole has been trying to confuse people by mining blocks that generate more bitcoin than they are allowed to, ultimately inflating the money supply. These blocks are invalid because they break hard-coded protocol rules, but they might still fool some people running buggy or malicious software, or ',
- b: {
-   text: 'light clients',
-   href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520light%2520clients%253F',
-   question: 'What are light clients?',
- },
- c: ' that do not fully verify network data.',
+         a: 'You know that Vanderpoole has been trying to confuse people by mining blocks that generate more bitcoin than they are allowed to, ultimately inflating the money supply. These blocks are invalid because they break hard-coded protocol rules, but they might still fool some people running buggy or malicious software, or ',
+         b: {
+           text: 'light clients',
+           href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520light%2520clients%253F',
+           question: 'What are light clients?',
+         },
+         c: ' that do not fully verify network data.',
       },
       paragraph_two: `Bạn cũng biết rằng ở đâu đó trên mạng là một chuỗi các khối hợp lệ từ khối khởi tạo đến "đầu chuỗi" ngày hôm nay, trong đó mọi giao dịch và khối đều tuân theo các quy tắc. Chuỗi này là chuỗi <span className="italic">thực sự</span> duy nhất, chuỗi duy nhất quan trọng và là chuỗi duy nhất mà nguồn cung 21 triệu Bitcoin gốc của Bitcoin vẫn còn nguyên vẹn.`, // You also know that somewhere on the network is a chain of valid blocks from the genesis block to today's "chain tip", where every transaction and block follows the rules. This chain is the only <span className="italic">real</span> chain, the only chain that matters, and the only chain where bitcoin's supply of 21 million original bitcoins is intact.
       paragraph_three:
- "Bây giờ, trên sóng truyền hình trực tiếp trước toàn thế giới, bạn cần tìm blockchain hợp lệ dài nhất và xác minh tính toàn vẹn của nguồn cung tiền xu. Trong khi bạn đang ở đó, bạn cũng sẽ có thể chứng minh rằng Vanderpoole đã biến mạng lưới Bitcoin thành một bãi mìn khối không hợp lệ.", // Now, on live TV in front of the entire world, you need to find the longest valid blockchain and verify the coin supply's integrity. While you're at it, you'll also be able to prove that Vanderpoole has turned the bitcoin network into an invalid block minefield.
+         "Bây giờ, trên sóng truyền hình trực tiếp trước toàn thế giới, bạn cần tìm blockchain hợp lệ dài nhất và xác minh tính toàn vẹn của nguồn cung tiền xu. Trong khi bạn đang ở đó, bạn cũng sẽ có thể chứng minh rằng Vanderpoole đã biến mạng lưới Bitcoin thành một bãi mìn khối không hợp lệ.", // Now, on live TV in front of the entire world, you need to find the longest valid blockchain and verify the coin supply's integrity. While you're at it, you'll also be able to prove that Vanderpoole has turned the bitcoin network into an invalid block minefield.
     },
     building_blocks_two: {
       title: 'Khối xây dựng', // Building blocks
       nav_title: 'Cây khối Bitcoin', // A bitcoin block tree
       paragraph_one:
- "Mỗi khối chỉ có chính xác một khối trước đó, nhưng có thể có nhiều hơn một khối tiếp theo. Vì lý do này, các khối Bitcoin tạo thành nhiều hơn một chuỗi. Một số nhánh là điểm chết và, như bạn phải chứng minh, một số nhánh không hợp lệ do những trò hề của Vanderpoole.", // Every block has exactly one preceding block, but could have more than one next block. Because of this, bitcoin blocks form more of a tree than a chain. Some of the branches are dead-ends and, as you must prove, some of the branches are invalid because of Vanderpoole’s shenanigans.
+         "Mỗi khối chỉ có chính xác một khối trước đó, nhưng có thể có nhiều hơn một khối tiếp theo. Vì lý do này, các khối Bitcoin tạo thành nhiều hơn một chuỗi. Một số nhánh là điểm chết và, như bạn phải chứng minh, một số nhánh không hợp lệ do những trò hề của Vanderpoole.", // Every block has exactly one preceding block, but could have more than one next block. Because of this, bitcoin blocks form more of a tree than a chain. Some of the branches are dead-ends and, as you must prove, some of the branches are invalid because of Vanderpoole’s shenanigans.
       paragraph_two:
- "Ở đâu đó trong mê cung này là một con đường từ khối khởi tạo đến khối gần đây nhất của ngày hôm nay. Bạn phải tìm thấy nó và nói cho Deborah Chunk khối nào nằm ở đầu của chuỗi hợp lệ nhất ... trước giờ nghỉ thương mại. Á!", // Somewhere in this maze is a path from the genesis block to today's most recent block. You have to find it and tell Deborah Chunk which block is on the tip of the tree's most valid chain... before the next commercial break. Ahhh!
+         "Ở đâu đó trong mê cung này là một con đường từ khối khởi tạo đến khối gần đây nhất của ngày hôm nay. Bạn phải tìm thấy nó và nói cho Deborah Chunk khối nào nằm ở đầu của chuỗi hợp lệ nhất ... trước giờ nghỉ thương mại. Á!", // Somewhere in this maze is a path from the genesis block to today's most recent block. You have to find it and tell Deborah Chunk which block is on the tip of the tree's most valid chain... before the next commercial break. Ahhh!
       paragraph_three:
- 'Hình minh họa nghệ thuật này về "cây" blockchain của Bitcoin cho thấy cách mỗi khối chỉ có một cha mẹ duy nhất, nhưng có thể có nhiều hơn một con. Mỗi khối được gắn nhãn bằng hash của nó và hash của cha mẹ của nó (<span className="p-1 font-mono m-0.5 text-sm">prev</span>).', // This artistic interpretation of bitcoin’s blockchain “tree” shows how each block has exactly one parent, but could have more than one child. Each block is labeled with its hash, and the hash of its parent (<span className="p-1 font-mono m-0.5 text-sm">prev</span>).
+         'Hình minh họa nghệ thuật này về "cây" blockchain của Bitcoin cho thấy cách mỗi khối chỉ có một cha mẹ duy nhất, nhưng có thể có nhiều hơn một con. Mỗi khối được gắn nhãn bằng hash của nó và hash của cha mẹ của nó (<span className="p-1 font-mono m-0.5 text-sm">prev</span>).', // This artistic interpretation of bitcoin’s blockchain “tree” shows how each block has exactly one parent, but could have more than one child. Each block is labeled with its hash, and the hash of its parent (<span className="p-1 font-mono m-0.5 text-sm">prev</span>).
       paragraph_four:
- 'Một số khối này có màu đỏ vì chúng không hợp lệ. Đường dẫn dài nhất của các khối bắt đầu từ khối khởi tạo được tô màu xanh lục và đại diện cho chuỗi "công việc nhiều nhất" hoặc "hợp lệ nhất". Các giao dịch trong các khối này là các giao dịch duy nhất thực sự "được xác nhận". Các khối hợp lệ khác, màu xanh lam, không có nhiều hậu duệ như chuỗi "công việc nhiều nhất". Chúng kết thúc bằng những gì được gọi là <span className="italic">mẹo cũ</span>.', // Some of these blocks are red because they are invalid. The longest path of blocks starting from the genesis block is colored green and represents the “most work” or “most valid” chain. Transactions in these blocks are the only truly “confirmed” transactions. Other valid blocks, the blue ones, don’t have as many descendants as the “most work” chain. They terminate in what are called <span className="italic">stale tips</span>.
+         'Một số khối này có màu đỏ vì chúng không hợp lệ. Đường dẫn dài nhất của các khối bắt đầu từ khối khởi tạo được tô màu xanh lục và đại diện cho chuỗi "công việc nhiều nhất" hoặc "hợp lệ nhất". Các giao dịch trong các khối này là các giao dịch duy nhất thực sự "được xác nhận". Các khối hợp lệ khác, màu xanh lam, không có nhiều hậu duệ như chuỗi "công việc nhiều nhất". Chúng kết thúc bằng những gì được gọi là <span className="italic">mẹo cũ</span>.', // Some of these blocks are red because they are invalid. The longest path of blocks starting from the genesis block is colored green and represents the “most work” or “most valid” chain. Transactions in these blocks are the only truly “confirmed” transactions. Other valid blocks, the blue ones, don’t have as many descendants as the “most work” chain. They terminate in what are called <span className="italic">stale tips</span>.
     },
     building_blocks_three: {
       title: 'Khối xây dựng', // Building Blocks
