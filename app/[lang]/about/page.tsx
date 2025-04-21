@@ -9,18 +9,6 @@ export const metadata = {
   title: 'About - Saving Satoshi',
 }
 
-const CONTRIBUTORS = [
-  { username: 'adamcjonas', url: 'https://twitter.com/adamcjonas' },
-  { username: 'afterburn', url: 'https://github.com/afterburn' },
-  { username: 'benalleng', url: 'https://github.com/benalleng' },
-  { username: 'ecurrencyhodler', url: 'https://twitter.com/ecurrencyhodler' },
-  { username: 'gbks', url: 'https://twitter.com/gbks' },
-  { username: 'satsie', url: 'https://twitter.com/satsie' },
-  { username: 'shaavan', url: 'https://github.com/shaavan' },
-  { username: 'VEINTIUNO.world', url: 'https://twitter.com/VEINTIUNow' },
-  { username: 'vinayaksh42', url: 'https://github.com/vinayaksh42' },
-]
-
 function Divider() {
   return <div className="my-12 h-[1px] w-full bg-white bg-opacity-25" />
 }
@@ -49,16 +37,36 @@ export default function About({ params }) {
 
           <Divider />
 
-          <h3 className="text-4xl sm:text-5xl">{t('about.project.title')}</h3>
+          <h3 className="mb-8 text-4xl sm:text-5xl">
+            {t('about.project.title')}
+          </h3>
 
           <div className="mt-4 flex flex-col gap-8 font-nunito text-xl">
             <p>{t('about.project.paragraph_one')}</p>
             <p>{t('about.project.paragraph_two')}</p>
+            <p>{t('about.project.paragraph_three')}</p>
+            <p>{t('about.project.paragraph_four')}</p>
+            <ul className="ml-12 list-disc">
+              <li>{t('about.project.chapter_topics.list_one')}</li>
+              <li>{t('about.project.chapter_topics.list_two')}</li>
+              <li>{t('about.project.chapter_topics.list_three')}</li>
+              <li>{t('about.project.chapter_topics.list_four')}</li>
+              <li>{t('about.project.chapter_topics.list_five')}</li>
+              <li>{t('about.project.chapter_topics.list_six')}</li>
+              <li>{t('about.project.chapter_topics.list_seven')}</li>
+              <li>{t('about.project.chapter_topics.list_eight')}</li>
+              <li>{t('about.project.chapter_topics.list_nine')}</li>
+              <li>{t('about.project.chapter_topics.list_ten')}</li>
+            </ul>
+            <p>{t('about.project.paragraph_five')}</p>
+            <p>{t('about.project.paragraph_six')}</p>
+            <p>{t('about.project.paragraph_seven')}</p>
+            <p>{t('about.project.paragraph_eight')}</p>
           </div>
 
           <Divider />
 
-          <h3 className="text-4xl sm:text-5xl">
+          <h3 className="mb-8 text-4xl sm:text-5xl">
             {t('about.contributing.title')}
           </h3>
 
@@ -66,7 +74,7 @@ export default function About({ params }) {
             {t('about.contributing.paragraph_one')}
           </p>
 
-          <h4 className="mt-8 font-nunito text-xl font-semibold">
+          <h4 className="mt-8 text-2xl sm:text-3xl">
             {t('about.contributing.feedback.title')}
           </h4>
 
@@ -74,7 +82,7 @@ export default function About({ params }) {
             {t('about.contributing.feedback.paragraph_one')}
           </p>
 
-          <h4 className="mt-8 font-nunito text-xl font-semibold">
+          <h4 className="mt-8 text-2xl sm:text-3xl">
             {t('about.contributing.contribute.title')}
           </h4>
 
@@ -87,17 +95,20 @@ export default function About({ params }) {
           </p>
 
           <Divider />
-          <h3 className="text-4xl sm:text-5xl">{t('about.privacy.title')}</h3>
+
+          <h3 className="mb-8 text-4xl sm:text-5xl">
+            {t('about.privacy.title')}
+          </h3>
           <p className="mt-4 font-nunito text-xl">
             {t('about.privacy.paragraph_one')}
           </p>
-          <h3 className="mt-4 text-2xl sm:text-3xl">
+          <h3 className="mt-8 text-2xl sm:text-3xl">
             {t('about.privacy.sub_heading_one')}
           </h3>
           <p className="mt-2 font-nunito text-xl">
             {t('about.privacy.paragraph_two')}
           </p>
-          <h3 className="mt-4 text-2xl sm:text-3xl">
+          <h3 className="mt-8 text-2xl sm:text-3xl">
             {t('about.privacy.sub_heading_two')}
           </h3>
           <div className="mt-2 font-nunito text-xl">
@@ -117,7 +128,7 @@ export default function About({ params }) {
               </li>
             </ol>
           </div>
-          <h3 className="mt-4 text-2xl sm:text-3xl">
+          <h3 className="mt-8 text-2xl sm:text-3xl">
             {t('about.privacy.sub_heading_three')}
           </h3>
           <p className="mt-2 font-nunito text-xl">
@@ -128,31 +139,15 @@ export default function About({ params }) {
           </p>
           <Divider />
 
-          <h3 className="text-4xl sm:text-5xl">
+          <h3 className="mb-8 text-4xl sm:text-5xl">
             {t('about.contributors.title')}
           </h3>
 
-          <div className="mt-4 font-nunito text-xl font-semibold">
-            <span>{t('about.contributors.contributions_by')} </span>
-            <span>
-              {CONTRIBUTORS.map((contributor, i) => {
-                return (
-                  <>
-                    <a
-                      key={i}
-                      className="underline"
-                      target="_blank"
-                      rel="noreferrer nofollow"
-                      href={contributor.url}
-                    >
-                      @{contributor.username}
-                    </a>
-                    ,{' '}
-                  </>
-                )
-              })}
-            </span>
-            <span>{t('about.contributors.many_more')}</span>
+          <div className="mt-4 flex flex-col gap-8 font-nunito text-xl font-semibold">
+            <p>{t('about.contributors.paragraph_one')}</p>
+            <p>{t('about.contributors.paragraph_two')}</p>
+            <p>{t('about.contributors.paragraph_three')}</p>
+            <p>{t('about.contributors.paragraph_four')}</p>
           </div>
         </div>
 

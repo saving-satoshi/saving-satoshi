@@ -31,11 +31,11 @@ export function t(key: string | undefined, lang: string) {
     return '{missing_translation_key}'
   }
 
-  const translation = get(translations, `${lang}.${key}`)
+  let translation = get(translations, `${lang}.${key}`)
 
   if (!translation) {
-    // If the translation is unavailable in the locale we just return the key.
-    return key
+    // If the translation is unavailable in the locale we just make english the default.
+    translation = get(translations, `en.${key}`) || key
   }
 
   if (
