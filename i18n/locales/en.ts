@@ -3191,7 +3191,16 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     acknowledged:
       'I acknowledge I have saved this private key and know that I will need it for challenges in the future.',
   },
-
+  modal_popup: {
+    paragraph_one:
+      '- MIKA 3000: "Impressive work building that transaction from scratch. From making your own bitcoin address with a public-private keypair to proving that Vanderpoole’s signature was fraudulent, it’s clear you know your stuff."',
+    paragraph_two:
+      '"Any chance you’d want to chat more about this whole bitcoin open-source software (BOSS) stuff? I know some people at the <Link className="!underline" target="_blank" href="https://bitcoindevs.xyz" /> Bitcoin Dev Project </Link>  I could introduce you to. They are always looking for bright coders like yourself to help build, strengthen, and secure bitcoin to make sure it remains the future of much more than money."',
+    paragraph_three:
+      '<span className="italic">Selecting "Yes" will take you to a calendar where you can book a real life video call with a member of the Bitcoin Dev Project to discuss ways to get more involved with bitcoin open-source software and related career opportunities. This is completely separate from the Saving Satoshi game and declining it will not affect your game progress.</span>',
+    button_text_one: 'Yes Count me in!',
+    button_text_two: 'No, maybe another time',
+  },
   difficulty_selection: {
     NORMAL: 'Enable hard mode to increase the difficulty of the challenges.',
     HARD: 'Disable hard mode to decrease the difficulty of the challenges.',

@@ -11,6 +11,7 @@ export enum Modal {
   SignIn = 'signin',
   SignUp = 'signup',
   Help = 'help',
+  Popup = 'popup',
 }
 
 export const modalsAtom = atom({
@@ -18,6 +19,7 @@ export const modalsAtom = atom({
   [Modal.SignIn]: { open: false, meta: undefined },
   [Modal.SignUp]: { open: false, meta: undefined },
   [Modal.Help]: { open: false, meta: undefined },
+  [Modal.Popup]: { open: false, meta: undefined },
 })
 
 export const accountAtom = atom<any | undefined>(undefined)

@@ -7,6 +7,7 @@ export const useModalFunctions = () => {
   const open = (name: string, meta = {}) => {
     setModals((prevModals) => {
       const newModals = { ...prevModals }
+      console.log(newModals, 'new modals')
       Object.keys(newModals).forEach((modal) => {
         newModals[modal].open = false // Close all other modals
       })

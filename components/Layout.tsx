@@ -11,6 +11,7 @@ import { useFeatureFunctions } from 'state/FeatureFunctions'
 import { useModalFunctions } from 'state/ModalFunctions'
 import { loadProgressAtom } from 'state/progressState'
 import { Modal, modalsAtom } from 'state/state'
+import Popup from './Modals/Popup'
 
 export default function Layout({ children }: { children?: React.ReactNode }) {
   const [modals] = useAtom(modalsAtom)
@@ -46,6 +47,7 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
         onClose={() => close(Modal.Account)}
       />
       <HelpModal state={modals[Modal.Help]} onClose={() => close(Modal.Help)} />
+      <Popup state={modals[Modal.Popup]} onClose={() => close(Modal.Popup)} />
     </>
   )
 }
