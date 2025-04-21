@@ -243,7 +243,7 @@ const translations = {
     },
 
     outro_one: {
-      title: 'Phần ra', // Outro
+      title: 'Phần kết', // Outro
       nav_title: 'Cuộc phiêu lưu đang vẫy gọi', // Adventure calls
       paragraph_one:
          'Bạn chạy xuống tầng hầm, bước vào chiếc xe cà tàng cũ của cha mình, nhập tọa độ và tiến đến Quận 21.',  // You run down to your garage, step into your dad’s old Budgetcopter, punch in the coordinates, and make your way to District 21.
@@ -822,7 +822,7 @@ const translations = {
          'Hoàn thành hàm <span className="text-green">privateKeyToPublicKey()</span>  chấp nhận khóa riêng dưới dạng chuỗi được mã hóa hex và trả về khóa chung tương ứng dưới dạng đối tượng GE (Group Element).',  // Complete the function <span className="text-green">privateKeyToPublicKey()</span>  which accepts a private key as a hex-encoded string and returns the corresponding public key as a GE (Group Element) object.
       },
       paragraph_four: 'Dưới đây là một số gợi ý chuyển đổi kiểu để giúp bạn bắt đầu:',// Here are some type-conversion hints to get you started:
-      success: 'Tuyệt vời! Khóa chung đó khá dài. Hãy thử nén nó!'// Good job! That public key is pretty long. Let’s try to compress it!
+      success: 'Tuyệt vời! Khóa chung đó khá dài. Hãy thử nén nó lại!'// Good job! That public key is pretty long. Let’s try to compress it!
     },
 
     public_key_four: {
@@ -835,7 +835,7 @@ const translations = {
       paragraph_two_python:
          'Byte siêu dữ liệu phải là `2` nếu y là chẵn và `3` nếu y là lẻ. Hoàn thành hàm <span className="text-green">compress_publickey()</span> để chấp nhận khóa chung và trả về chuỗi hex 33 byte đại diện cho khóa chung được nén.',      // The metadata byte should be `2` if y is even and `3` if y is odd. Complete the function <span className="text-green">compress_publickey()</span> to accept a public key and return a 33 byte hex string representing the compressed public key.
       success:
-         'Xuất sắc. Bây giờ chúng ta có khóa chung được nén của mình. Tiếp theo, chúng ta cần mã hóa nó và mã hóa nó ở định dạng thân thiện với con người.',      // Excellent. Now we have our compressed public key. Next we need to hash it and encode it in a human-friendly format.
+         'Xuất sắc. Bây giờ chúng ta có khóa chung được nén lại của mình. Tiếp theo, chúng ta cần mã hóa nó và mã hóa nó ở định dạng thân thiện với con người.',      // Excellent. Now we have our compressed public key. Next we need to hash it and encode it in a human-friendly format.
     },
 
     address_one: {
@@ -843,28 +843,28 @@ const translations = {
       nav_title: 'Một chiều', // A one way street
       heading: 'Làm tốt lắm!', // Nice work!
       paragraph_one:
-         'Và ở đó bạn có nó! Khóa chung được nén của bạn! Có rất nhiều điều thú vị mà chúng ta có thể làm với nó, bao gồm cả việc tạo địa chỉ cho ví của chúng tôi. Chúng ta sẽ tìm hiểu về điều đó trong thử thách tiếp theo.',      // And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’ll learn about that in the next challenge.
+         'Và như vậy đó, bạn đã có khóa chung được nén lại! Có rất nhiều điều thú vị mà chúng ta có thể làm với nó, bao gồm cả việc tạo địa chỉ cho ví. Chúng ta sẽ tìm hiểu về điều đó trong thử thách tiếp theo.',      // And there you have it! Your compressed public key! There are lots of interesting things we can do with it, including generating addresses for our wallet. We’ll learn about that in the next challenge.
       paragraph_two:
          'Lưu ý rằng việc tạo khóa chung là một chiều. Bạn không thể tìm ra khóa riêng được sử dụng để tạo khóa chung trừ khi bạn giải được một bài toán toán học khét tiếng được gọi là ',      // Note that generating a public key is a one way street. You can’t figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the
       tooltip_one: {
-         question: 'Vấn đề logarit rời rạc liên quan đến bitcoin như thế nào?', // How is the discrete log problem relevant to bitcoin?
+         question: 'Bài toán logarit rời rạc liên quan đến bitcoin như thế nào?', // How is the discrete log problem relevant to bitcoin?
          link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520the%2520discrete%2520log%2520problem%2520relevant%2520to%2520bitcoin%253F',
-         highlighted: 'vấn đề logarit rời rạc' // discrete log problem
+         highlighted: 'Bài toán logarit rời rạc' // discrete log problem
       },
     },
 
     address_two: {
       title: 'Địa chỉ', // Address
-      nav_title: 'Mã hóa khóa chung được nén', // Hash the compressed public key
+      nav_title: 'Mã hóa khóa chung đã được nén', // Hash the compressed public key
       paragraph_one:
-         'Bạn có nhớ thử thách mã hóa không? Hóa ra bạn có thể tạo địa chỉ bitcoin đơn giản nhất bằng cách mã hóa khóa chung được nén của mình. Bitcoin sử dụng hai thuật toán mã hóa khác nhau cho việc này: SHA-256 và RIPEMD-160.',// Do you remember the hashing challenge? It turns out you can generate the simplest type of bitcoin address by hashing your compressed public key. Bitcoin uses two different hashing algorithms for this: SHA-256 and RIPEMD-160.
+         'Bạn có nhớ thử thách mã hóa không? Hóa ra bạn có thể tạo địa chỉ bitcoin đơn giản nhất bằng cách mã hóa khóa chung được nén lại của mình. Bitcoin sử dụng hai thuật toán mã hóa khác nhau cho việc này: SHA-256 và RIPEMD-160.',// Do you remember the hashing challenge? It turns out you can generate the simplest type of bitcoin address by hashing your compressed public key. Bitcoin uses two different hashing algorithms for this: SHA-256 and RIPEMD-160.
       paragraph_two: 'Các bước:', // Steps:
       paragraph_three:
-         '<span className="indent-48">1. Thực hiện hàm mã hóa SHA-256 trên khóa chung được nén của bạn.</span>',// <span className="indent-48">1. Perform a SHA-256 hash on your compressed public key.</span>
+         '<span className="indent-48">1. Thực hiện hàm mã hóa SHA-256 trên khóa chung được nén lại của bạn.</span>',// <span className="indent-48">1. Perform a SHA-256 hash on your compressed public key.</span>
       paragraph_four:
          '<span className="indent-48">2. Thực hiện hàm mã hóa RIPEMD-160 trên tóm tắt đầu ra SHA-256 đó. Kết quả cuối cùng sẽ là 20 byte được mã hóa dưới dạng chuỗi hex.</span>',// <span className="indent-48">2. Perform a RIPEMD-160 hash on that SHA-256 output digest. The final result will be 20 bytes encoded as a hex string.</span>
       paragraph_five:
-         'Hoàn thành một hàm chấp nhận khóa chung được nén 33 byte dưới dạng chuỗi hex và trả về mã hóa khóa chung 20 byte dưới dạng chuỗi hex.',// Complete a function that accepts a 33-byte compressed public key as a hex string and returns a 20-byte public key hash as a hex string.
+         'Hoàn thành một hàm chấp nhận khóa chung được nén lại33 byte dưới dạng chuỗi hex và trả về mã hóa khóa chung 20 byte dưới dạng chuỗi hex.',// Complete a function that accepts a 33-byte compressed public key as a hex string and returns a 20-byte public key hash as a hex string.
       paragraph_six:
          'Đây là tài liệu cho các thư viện mã hóa hóa mà chúng tôi đã nhập cho bạn:\n'+ // Here is the documentation for the hashing libraries we imported for you:\n'
          '<Link href="https://nodejs.org/api/crypto.html#class-hash" target="_blank" className="underline">JavaScript: crypto</Link>\n' +
@@ -876,15 +876,15 @@ const translations = {
       title: 'Địa chỉ', // Address
       nav_title: 'Lấy địa chỉ P2WPKH', // Get a P2WPKH address
       paragraph_one:
-         'Có nhiều loại địa chỉ bitcoin khác nhau. Trong bài tập trước, chúng tôi đã tạo một số mã hóa khóa chung được nén 20 byte. Bây giờ, chúng tôi muốn mã hóa mã hóa đó thành địa chỉ Pay-to-Witness-Public-Key-Hash (p2wpkh) trên mạng Testnet.', // There are multiple types of bitcoin addresses. In the previous exercise, we created a 20-byte compressed public key hash. Now, we would like to encode that hash into a Pay-to-Witness-Public-Key-Hash (p2wpkh) address on the Testnet network.
+         'Có nhiều loại địa chỉ bitcoin khác nhau. Trong bài tập trước, chúng tôi đã tạo một số mã hóa khóa chung được nén lại 20 byte. Bây giờ, chúng tôi muốn lập trình mã hóa đó thành địa chỉ Pay-to-Witness-Public-Key-Hash (p2wpkh) trên mạng Testnet.', // There are multiple types of bitcoin addresses. In the previous exercise, we created a 20-byte compressed public key hash. Now, we would like to encode that hash into a Pay-to-Witness-Public-Key-Hash (p2wpkh) address on the Testnet network.
       paragraph_two:
          'Đầu tiên, chúng ta cần thêm một số phiên bản chứng nhân là `0` vào mã hóa. 21 byte kết quả này được gọi là <span className="font-bold">chương trình chứng nhân</span>.', // First we need to append a witness version number of `0` to the hash. These resulting 21 bytes are known as the <span className="font-bold">witness program</span>.
       paragraph_three:
-         'Sau đó, chương trình chứng nhân được mã hóa thành định dạng thân thiện với con người được gọi là <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>. Thực hiện việc này sẽ thêm tiền tố có thể đọc được của con người và kiểm tra tổng hợp vào dữ liệu.', // Then, the witness program is encoded into a human-friendly format called <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>. Doing this appends a human-readable prefix and a checksum to the data.
+         'Sau đó, chương trình chứng nhân được mã hóa thành định dạng thân thiện với con người được gọi là <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>. Để thực hiện việc này, chúng ta sẽ thêm Tiền tố có thể làm con người dễ đọc hơn và kiểm tra tổng hợp vào dữ liệu.', // Then, the witness program is encoded into a human-friendly format called <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>. Doing this appends a human-readable prefix and a checksum to the data.
       paragraph_four: 'Tiền tố được xác định bởi mạng:', // The prefix is determined by the network:
       table_heading: {
        item_one: 'Mạng', // Network
-       item_two: 'Tiền tố có thể đọc được của con người', // Human-Readable Prefix
+       item_two: 'Tiền tố có thể làm con người dễ đọc hơn', // Human-Readable Prefix
       },
       table_rows: {
        key_one: 'Mainnet',
@@ -951,7 +951,7 @@ const translations = {
       address_three: {
        wpkh_heading: 'Chứng nhận Địa chỉ khóa chung/Witness Public Key Hash (wpkh)', // Witness Public Key Hash (wpkh) address
        wpkh_paragraph:
-         'Địa chỉ bitcoin là một chuỗi ký tự được thiết kế cho người dùng để xử lý. Nó ngắn gọn, dễ sao chép và dán và có một số loại kiểm tra tổng hợp tích hợp để đảm bảo rằng nó luôn được sao chép chính xác. Nó mã hóa an toàn một tập lệnh đầu ra Bitcoin mà người nhận có thể chi tiêu từ đó. Có một số loại tập lệnh đầu ra và một số cơ chế mã hóa. Trong thử thách này, chúng tôi mã hóa khóa chung được nén bằng bech32 để tạo ra cái gọi là địa chỉ mã hóa khóa chung chứng nhân.', // A bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There are several types of output scripts and several encoding mechanisms. In this challenge, we encode a compressed public key with bech32 to create what is called a witness public key hash address.
+         'Địa chỉ bitcoin là một chuỗi ký tự được thiết kế cho người dùng để xử lý. Nó ngắn gọn, dễ sao chép và dán và có một số loại kiểm tra tổng hợp tích hợp để đảm bảo rằng nó luôn được sao chép chính xác. Nó mã hóa an toàn một tập lệnh đầu ra Bitcoin mà người nhận có thể chi tiêu từ đó. Có một số loại tập lệnh đầu ra và một số cơ chế mã hóa. Trong thử thách này, chúng tôi mã hóa khóa chung được nén lạibằng bech32 để tạo ra cái gọi là địa chỉ mã hóa khóa chung chứng nhân.', // A bitcoin address is a string of characters that is designed for users to handle. It is short, easy to copy and paste, and has some kind of built-in checksum to ensure that it is always copied correctly. It safely encodes a Bitcoin output script that the recipient can spend from. There are several types of output scripts and several encoding mechanisms. In this challenge, we encode a compressed public key with bech32 to create what is called a witness public key hash address.
        network_heading: 'Mainnet, Testnet, Signet và Regtest', // Mainnet, Testnet, Signet, and Regtest
        network_paragraph:
          'Khi phát triển phần mềm bitcoin, điều quan trọng là kiểm tra mã của bạn trước khi bạn tin tưởng tiền thật với nó! Một trong những cách đơn giản nhất để kiểm tra phần mềm bitcoin là sử dụng một blockchain khác với khối khởi tạo mới, nơi tiền không quan trọng, khai thác(đào) khối miễn phí và dễ dàng, và mọi thứ có thể được đặt lại bất kỳ lúc nào. Các chuỗi này được hỗ trợ bởi một mạng lưới các nút duy nhất không can thiệp vào các đồng tiền và nút thực trên Mainnet. Testnet và Signet là tên của hai blockchain bitcoin thay thế như vậy được duy trì song song với Mainnet trên quy mô toàn cầu. Regtest là một chế độ dành cho lập trình viên được thiết kế để chạy cục bộ mà không cần kết nối mạng nào cả.', // When developing bitcoin software, it is important to test your code before you trust real money with it! One of the simplest ways to test bitcoin software is to use a different blockchain with a new genesis block where the coins don’t matter, mining is free and easy, and everything can be reset at any time. These chains are supported by a unique network of nodes that does not interfere with the real coins and nodes on Mainnet. Testnet and Signet are the names of two such alternate bitcoin blockchains that are maintained in parallel with Mainnet on a global scale. Regtest is a developer mode designed to be run locally with no network connections needed at all.
@@ -1015,7 +1015,7 @@ const translations = {
       paragraph_one:
          'Chúng ta đã học trong chương 4 rằng khóa riêng là những số ngẫu nhiên khổng lồ được giữ bí mật bởi bất kỳ ai đã tạo ra chúng. Chúng ta có thể sử dụng toán học Đường cong Elliptic để suy ra khóa chung từ khóa riêng đó.', // We learned in chapter 4 that private keys are huge random numbers kept secret by whomever generated them. We can use Elliptic Curve math to derive a public key from that private key.
       paragraph_two:
-         'Khóa chung có thể được chia sẻ như một trình định danh duy nhất và khóa riêng được sử dụng để chứng minh rằng một người có quyền kiểm soát trình định danh đó. Bằng chứng đó được gọi là CHỮ KÝ. Để tạo chữ ký, bạn cần một thông điệp và một khóa riêng. Bất kỳ ai cũng có thể xác minh chữ ký bằng một bản sao của thông điệp và khóa chung tương ứng.', // The public key can be shared as a unique identifier and the private key is used to prove that a person has control of that identifier. That proof is called a SIGNATURE. To create a signature, you need a message and a private key. Anyone can verify the signature with a copy of the message and the corresponding public key.
+         'Khóa chung có thể được chia sẻ như một định danh riêng duy nhất và khóa riêng được sử dụng để chứng minh rằng một người có quyền kiểm soát trình định danh đó. Bằng chứng đó được gọi là CHỮ KÝ. Để tạo chữ ký, bạn cần một thông điệp và một khóa riêng. Bất kỳ ai cũng có thể xác minh chữ ký bằng một bản sao của thông điệp và khóa chung tương ứng.', // The public key can be shared as a unique identifier and the private key is used to prove that a person has control of that identifier. That proof is called a SIGNATURE. To create a signature, you need a message and a private key. Anyone can verify the signature with a copy of the message and the corresponding public key.
       paragraph_three:
          'Vanderpoole đã cung cấp một chữ ký và một thông điệp. Khóa chung ở đâu?', // Vanderpoole has provided a signature and a message. Where is the public key?
     },
@@ -1030,7 +1030,7 @@ const translations = {
     },
     derive_message_four: {
       nav_title: "Tìm khóa chung của Satoshi", // Find Satoshi's public key
-      heading: 'Vậy khóa chung của anh ấy ở đâu?', // So where is his public key?
+      heading: 'Vậy khóa chung của ông ấy ở đâu?', // So where is his public key?
       paragraph_one:
          'Nó thực sự được lưu trữ cùng với bitcoin mà Satoshi tạo ra bằng cách khai thác(đào) khối #9.', // It’s actually stored along with the bitcoin Satoshi generated by mining block #9.
       paragraph_two:
@@ -1075,7 +1075,7 @@ const translations = {
          'giá trị đầu ra # 1 (40 BTC hoặc 4.000.000.000 satoshi):', // outut #1 value (40 BTC or 4,000,000,000 satoshis):
       success_message_line_twelve:
          'scriptPubKey đầu ra # 1 (khóa chung của chính Satoshi, để đổi lại):', // output #1 scriptPubKey (Satoshi’s own public key again, for change):
-      success_message_line_thirteen: 'thời gian khóa:', // locktime:
+      success_message_line_thirteen: 'khóa thời gian:', // locktime:
     },
     derive_message_seven: {
       nav_title: 'Xây dựng thông điệp để ký', // Build the message to sign
@@ -1092,7 +1092,7 @@ const translations = {
        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F',
        highlighted: 'loại cờ sighash', // sighash type flag
       },
-      success: "Tuyệt! Bạn đã xây dựng một thông điệp để ký.", // Nice! You've constructed a message to sign.
+      success: "Tuyệt! Bạn đã tạo một thông điệp để ký.", // Nice! You've constructed a message to sign.
     },
     verify_signature_one: {
       title: 'Xác minh chữ ký', // Verify the signature
@@ -1167,7 +1167,7 @@ const translations = {
        paragraph_five_part_one:
          'Chúng tôi đã cung cấp một hàm trợ giúp <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">invert()</span>', // We have provided a helper function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">invert()</span>
        paragraph_five_part_two:
-         'mà bạn sẽ cần thay cho hàm lũy thừa mô đun gốc của JavaScript.', // which you will need in lieu of a JavaScript native modular exponentiation function.
+         'mà bạn sẽ cần thay cho hàm lũy thừa trong phương thức gốc của JavaScript.', // which you will need in lieu of a JavaScript native modular exponentiation function.
       },
     },
     validate_signature_one: {
@@ -1376,7 +1376,7 @@ const translations = {
       paragraph_two:
          'Bạn mở nút đầy đủ Bitcoin của mình và thực thi một lệnh để xem tiền của mình ở đâu trong blockchain.', // You open your bitcoin full node and execute a command to see where your money is in the blockchain.
       paragraph_three:
-         'Đây là đầu ra giao dịch chưa chi tiêu (UTXO). Bạn có thể nhận ra hash khóa chung được nén và địa chỉ của mình từ chương 4. Số tiền cũng có vẻ chính xác: 1.61 BTC.', // This is an unspent transaction output (aka "UTXO"). You might recognize your compressed public key hash and address from chapter 4. The amount looks right, too: 1.61 BTC.
+         'Đây là đầu ra giao dịch chưa chi tiêu (UTXO). Bạn có thể nhận ra hash khóa chung được nén lạivà địa chỉ của mình từ chương 4. Số tiền cũng có vẻ chính xác: 1.61 BTC.', // This is an unspent transaction output (aka "UTXO"). You might recognize your compressed public key hash and address from chapter 4. The amount looks right, too: 1.61 BTC.
     },
     in_out_two: {
       title: 'Đầu vào và đầu ra', // The ins and outs
@@ -1392,7 +1392,7 @@ const translations = {
       title: 'Đầu vào và đầu ra', // The ins and outs
       nav_title: 'Các bước giao dịch', // Transaction steps
       paragraph_one:
-         'Các giao dịch Segregated Witness hoạt động giống như các giao dịch cũ trước đây. Có một vài giá trị toàn cầu như phiên bản và thời gian khóa. Có một mảng đầu vào (UTXO mà chúng tôi muốn chi tiêu) và một mảng đầu ra (UTXO mới mà chúng tôi muốn tạo, để những người khác chi tiêu trong tương lai). Ngoài ra còn có một mảng các chứng nhân, mỗi chứng nhân cho một đầu vào. Đó là nơi chữ ký và tập lệnh sẽ đi vào thay vì scriptSig.', // Segregated Witness transactions work just like their legacy predecessors. There are a few global values like version and locktime. There is an array of inputs (UTXOs we want to spend) and an array of outputs (new UTXOs we want to create, for other people to spend in the future). There will also be an array of witnesses, one for each input. That is where signatures and scripts will go instead of the scriptSig.
+         'Các giao dịch Segregated Witness hoạt động giống như các giao dịch cũ trước đây. Có một vài giá trị toàn cầu như phiên bản và khóa thời gian. Có một mảng đầu vào (UTXO mà chúng tôi muốn chi tiêu) và một mảng đầu ra (UTXO mới mà chúng tôi muốn tạo, để những người khác chi tiêu trong tương lai). Ngoài ra còn có một mảng các chứng nhân, mỗi chứng nhân cho một đầu vào. Đó là nơi chữ ký và tập lệnh sẽ đi vào thay vì scriptSig.', // Segregated Witness transactions work just like their legacy predecessors. There are a few global values like version and locktime. There is an array of inputs (UTXOs we want to spend) and an array of outputs (new UTXOs we want to create, for other people to spend in the future). There will also be an array of witnesses, one for each input. That is where signatures and scripts will go instead of the scriptSig.
       paragraph_two:
          'Việc tuần tự hóa thông điệp cho tất cả các thành phần này được ghi nhận <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">ở đây</Link> và <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline">ở đây</Link>.', // The message serializations for all these components is documented <Link href="https://en.bitcoin.it/wiki/Protocol_documentation#tx" target="_blank" className="underline">here</Link>  and <Link href="https://github.com/bitcoinbook/bitcoinbook/blob/6d1c26e1640ae32b28389d5ae4caf1214c2be7db/ch06_transactions.adoc" target="_black" className="underline" >here</Link>.
     },
@@ -1716,7 +1716,7 @@ const translations = {
      item_four: '32',
    },
    row_nine: {
-     item_one: 'Thời gian khóa giao dịch, mặc định là 0',
+     item_one: 'khóa thời gian giao dịch, mặc định là 0',
      item_two: 'locktime',
      item_three: 'int',
      item_four: '4',
@@ -2028,7 +2028,7 @@ const translations = {
      item_four: '32',
    },
    row_nine: {
-     item_one: 'Thời gian khóa giao dịch, mặc định là 0',
+     item_one: 'khóa thời gian giao dịch, mặc định là 0',
      item_two: 'locktime',
      item_three: 'int',
      item_four: '4',
@@ -3244,7 +3244,7 @@ const translations = {
     run: 'Chạy script', // Run the script
     running: 'Đang chạy', // Running
     pause: 'Tạm dừng', // Pause
-    result: 'Phần ra', // Result
+    result: 'Phần kết', // Result
     computing: 'Đang tính toán...', // Computing...
     evaluation: 'Đánh giá', // Evaluation
     script_output: 'Đầu ra script', // Script output
