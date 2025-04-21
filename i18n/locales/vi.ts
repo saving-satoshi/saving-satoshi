@@ -5,7 +5,7 @@ const translations = {
     copy: 'Sao chép', //Copy
     info: 'Thông tin', //Info
     copy_acknowledged: 'Đã sao chép!', //Copied!
-    about: 'Phần mở đầu', //About
+    about: 'Giới thiệu', //About
     chapter: 'Chương', //Chapter
     chapters: 'Các chương', //Chapters
     challenge: 'Thử thách', //Challenge
@@ -128,7 +128,7 @@ const translations = {
     
     ///CHAPTER 1
     intro_one: {
-      title: 'Phần mở đầu', // Intro
+      title: 'Mở đầu', // Intro
       nav_title: 'Cuộc biểu tình của máy(thợ) đào Bitcoin', // Miner protest
       paragraph_one: `Một lát sau, Màn hình 3D của bạn được kích hoạt.`, // Moments later, your Hover Screen activates.
       paragraph_two: `—Deborah Chunk: “Thomas Vanderpoole. Là Giám đốc điều hành của BitRey, ăn mặc lịch lãm, cho đến nay, ông đã và đang điều hành mỏ khai thác(đào) khối bitcoin lớn nhất thế giới. Ông cũng sản xuất máy khai thác(đào) khối bitcoin. Điều gì đang xảy ra? Bitcoin đang chết?”`,// —Deborah Chunk: “Thomas Vanderpoole. As the well-dressed CEO of BitRey, you run, by far, the largest bitcoin mining mỏ in the world. You also manufacture bitcoin mining machines. What is happening? Is bitcoin dying?”
@@ -306,7 +306,7 @@ const translations = {
        'Bạn bay vòng quanh nhà kho bằng Budgetcopter của mình không dưới ba lần. Vâng, thở dài, có lẽ bạn sẽ phải vào đó. Máy dò nhiệt Budget Heat Detector của Budgetcopter không phát hiện gì ngoài bóng tối. Nếu ai đó biết nơi này tồn tại, thì đã rất lâu kể từ lần cuối họ đến thăm nó bằng bất cứ ký tự gì khác ngoài ký ức của họ.',  // You circle the warehouse in your Budgetcopter no less than three times. Yeah, sigh, you’re probably gonna have to go in there. Your Budgetcopter’s Budget Heat Detector detects nothing but darkness. If someone knows that this place exists, it’s been a long time since they visited it in anything but their memory.
 
     intro_one: {
-      title: 'Phần mở đầu', // Intro
+      title: 'Mở đầu', // Intro
       nav_title: 'Nhà kho', // The warehouse
       paragraph_one:
          '—HOLOCAT: “Trời ơi, thật là một bãi rác. Tốt hơn hết là nơi này nên có một số e-anchovies được lưu trữ ở đâu đó. Tôi thậm chí còn chấp nhận một số CyberKibble.."',// —HOLOCAT: “Boy, what a dump. This place had better have some e-anchovies stored somewhere. I’d even settle for some CyberKibble.."
@@ -575,7 +575,7 @@ const translations = {
        'Không phải trùng hợp đâu.', // It’s not a coincidence.
 
     intro_one: {
-      title: 'Phần mở đầu', // Intro
+      title: 'Mở đầu', // Intro
       nav_title: 'Xử lý mã hóa', // Hashing it out
       paragraph_one:
          '—SATOSHI NAKAMOTO: “Này, bạn ơi! Đúng rồi, bạn đó! Nhớ tôi chứ? Bitcoin hiện đang bị 51% tấn công! Sau khi bạn đưa các thiết bị khai thác(đào) khối trực tuyến, Vanderpoole đã bật lại các ASIC của BitRey và đang khai thác(đào) khối các khối trống. Vấn đề là không chỉ có máy của ông ta. Ông ta đã sử dụng cửa sau trên phần mềm nhúng tiêu chuẩn của các thiết bị ASIC để truyền nhiễm virus cho các máy đào hiện có, chặn việc khai thác(đào) khối dữ liệu với bất cứ ký tự gì ngoại trừ các khối trống. Ông ta đang cố gắng bắt cóc tống tiền hệ sinh thái bitcoin để buộc mọi người ủng hộ ý tưởng tăng nguồn cung bitcoin. Hãy làm gì đó đi chứ, chàng khờ!”', // —SATOSHI NAKAMOTO: “Hey, you! Yeah, you! Remember me? Bitcoin is being hit with a 51% attack right now! After you brought those mining devices online, Vanderpoole turned BitRey’s ASICs back on and is mining empty blocks. The problem is it’s not just his machines. He used a backdoor on the standard ASIC firmware to infect existing miners with a virus that prevents them from mining anything but empty blocks. He’s trying to hold the bitcoin ecosystem hostage and force people to support the idea of increasing bitcoin’s supply. Do something, dingdong!”
@@ -760,7 +760,7 @@ const translations = {
        'Khi ngồi xuống bàn làm việc, bạn hít một hơi thật sâu, thả mình trôi dạt và tái hiện lại những sự kiện trong ngày trong đầu.',  // As you settle at your desk, you take a deep breath, drift off, and replay the day’s events in your head.
 
     intro_one: {
-      title: 'Phần mở đầu', // Intro
+      title: 'Mở đầu', // Intro
       nav_title: 'Bảo vệ thành quả', // Securing the bag
       paragraph_one:
          '—HOLOCAT: “Một trong hai chúng ta nên ngủ. Bạn nên bắt đầu liên lạc với các máy(thợ) đào còn lại. Họ chắc sẽ thèm muốn biết còn nhiều hơn cả thế giới.”', // —HOLOCAT: “One of us better sleep. You need to start contacting the rest of the miners. They’ll want to know even more than the world will.”
@@ -969,7 +969,7 @@ const translations = {
       '2) Ông ta tuyên bố mình là chắt của Satoshi Nakamoto.', // 2) He is claiming to be the great-grandson of Satoshi Nakamoto.
     paragraph_four: 'Ông ta trông có vẻ thiếu ngủ.', // He looks sleep-deprived.
     intro_one: {
-      title: 'Phần mở đầu', // Intro
+      title: 'Mở đầu', // Intro
       nav_title: 'Đừng tin, hãy xác minh', // Don’t trust, verify
       paragraph_one:
           '—DEBORAH CHUNK: “Ông Vanderpoole. Gần đây, ông đã đưa ra một tuyên bố đáng kinh ngạc trên mạng xã hội rằng ông là chắt của Satoshi Nakamoto. Điều đó có đúng không? Điều này có đúng không?”', // —DEBORAH CHUNK: “Mr. Vanderpoole. You recently made a staggering claim on anti-social media that you are the great-grandson of Satoshi Nakamoto. Is that correct? Is this true?”
@@ -1343,7 +1343,7 @@ const translations = {
     paragraph_one:
       'Ahhh! Vanderpoole đang tìm cách trả thù bạn vì đã vạch trần những tuyên bố gian lận của ông ta. Nhưng mặc dù sự thật đã được phơi bày, nhiều người vẫn sợ hãi tiếp tục bám víu vào huyền thoại mà Vanderpoole đã tạo ra xung quanh bản thân, gia đình và tổ tiên giả định của họ. Thời kỳ này đáng sợ, và mọi người cần một người hùng. Thật không may, đối với nhiều người, ông ta là người tốt nhất mà họ có.', // Ahhh! Vanderpoole is out to get you for exposing his fraudulent claims. But despite the fact that the holocat is out of the bag, plenty of scared people continue to cling to the myth that Vanderpoole created around himself, his family, and their supposed ancestry. Times are scary, and people need a hero. Unfortunately, for many, he’s the best they’ve got.
     intro_one: {
-      title: 'Phần mở đầu', // Intro
+      title: 'Mở đầu', // Intro
       nav_title: 'Có phải đó thực sự là Satoshi không?', // Was that really Satoshi
       paragraph_one:
          '—SATOSHI NAKAMOTO: ”Làm tốt lắm. Giờ thì cả thế giới có thể tự mình thấy rằng Vanderpoole là một kẻ lừa đảo. Ngay cả khi một số người vẫn chưa tin, họ sẽ tin trước khi công việc của chúng ta hoàn thành.”', // —SATOSHI NAKAMOTO: ”Well done. Now the world can see for itself that Vanderpoole is a fraud. Even if some don’t believe it yet, they will before our work is done.”
@@ -1353,7 +1353,7 @@ const translations = {
          '—”Điều này có thể khiến tôi trông thật ngu ngốc, nhưng liệu ông có phải là Satoshi thực sự không?”', // —”This might make me sound stupid, but are you the real Satoshi?”
     },
     intro_two: {
-      title: 'Phần mở đầu', // Intro
+      title: 'Mở đầu', // Intro
       nav_title: 'Trả cho Mika 3000', // Paying Mika 3000
       paragraph_one:
          '—HOLOCAT: “Hầu như không có gì khiến bạn trông ngu ngốc hơn gần đây.”', // —HOLOCAT: “Hardly the only thing to make you sound stupid lately.”
@@ -2119,7 +2119,7 @@ const translations = {
     paragraph_one:
       'Bạn và Mika 3000 đến hòn đảo riêng của Vanderpoole trước tiên bằng máy bay và dù nhảy, sau đó bằng xe buggy và sau đó bằng thuyền chèo tự chèo.', // You and Mika 3000 reach Vanderpoole’s private island first via plane and parachute, then via dune buggy, and then via rowboat that rows itself.
     intro_one: {
-      title: 'Phần mở đầu', // Intro
+      title: 'Mở đầu', // Intro
       nav_title: 'Xâm nhập vào khu phức hợp', // Infiltrating the compound
       paragraph_one:
          'Bạn hỏi những người bạn đồng hành của mình liệu họ có lo lắng về đội quân máy bay không người lái của Vanderpoole không.', // You ask your compatriots whether they are worried about Vanderpoole’s army of security drones.
@@ -2227,19 +2227,19 @@ const translations = {
     title: 'Hai mươi mốt triệu', // Twenty-One Million
     paragraph_one: `Nhờ cuộc điều tra của bạn, mọi người thực sự muốn nghe từ bạn, vì vậy bạn nhấn mũi Holocat, tiết lộ một lời mời từ Deborah Chunk, người mời bạn xuất hiện trực tiếp tại văn phòng của LARGE BIG NEWS Studios. Việc đưa câu chuyện ra ngoài là rất quan trọng, vì vậy bạn một lần nữa nhảy lên Budgetcopter của mình.`, // Thanks to your investigation, people really want to hear from you, so you boop Holocat’s nose, revealing an invitation from Deborah Chunk, who invites you to appear in person at the offices of LARGE BIG NEWS Studios. Getting the story out is important, so you once again hop into your Budgetcopter.
     intro_one: {
-      title: 'Phần mở đầu', // Intro
+      title: 'Mở đầu', // Intro
       nav_title: `Sự dối trá của Vanderpoole`, // Vanderpoole's Deception
       paragraph_one: `—DEBORAH CHUNK: “Những tài liệu này đã vạch trần những lời nói dối bị cáo buộc của Thomas Vanderpoole theo một cách chắc chắn mang tính lịch sử, thậm chí là tai tiếng. Điều đầu tiên mà mọi người sẽ muốn biết nhất là liệu bạn có hành động một mình hay không. Câu thứ hai là bạn đã lấy thông tin từ đâu.”`, // —DEBORAH CHUNK: “These documents expose the alleged lies of Thomas Vanderpoole in a way that is certainly historic, scandalous even. The first thing people will most want to know is whether you acted alone. The second is where you got your information.”
       paragraph_two: `Bạn kể cho cô ấy vềcon mèo và chỉ có con mèo. Bạn nói rằng thông tin đã được chuyển trực tiếp cho bạn và Mika 3000 bởi một người tự xưng là Satoshi Nakamoto, người mà bạn nghi ngờ thực sự là một tập thể hacker. Điểm cuối cùng này khiến Thomas Vanderpoole gọi trực tiếp vào chương trình.`, // You tell her aboutcon mèo and only con mèo. You say that the information was delivered directly to you and Mika 3000 by someone claiming to be Satoshi Nakamoto, who you suspect is actually a hacker collective. This last point causes Thomas Vanderpoole to call directly into the show.
     },
     intro_two: {
-      title: 'Phần mở đầu', // Intro
+      title: 'Mở đầu', // Intro
       nav_title: `Sự tức giận của Vanderpoole`, // Vanderpoole's Anger
       paragraph_one: `—THOMAS VANDERPOOLE: “Gia đình tôi là Satoshi Nakamoto! Bạn có thấy những gì tên lừa đảo này vừa nói không? Ông ta vừa thừa nhận đã làm việc với những hacker, một tập thể chỉ sử dụng tên Satoshi Nakamoto để đòi hỏi một di sản vốn thuộc về gia đình tôi. Kẻ lưu manh này đang nói dối để phá hoại các cuộc biểu tình của những người ủng hộ Bitcoin đang vô cùng tức giận về việc loại bỏ phần thưởng khối!”`, // —THOMAS VANDERPOOLE: “My family is Satoshi Nakamoto! Do you see what this hootenanny just said? He just admitted to working with hackers, a collective that only uses the name Satoshi Nakamoto to claim a legacy that is rightfully mine. This scoundrel is lying to undermine the protests of bitcoiners who are rightfully upset about the elimination of block rewards!”
       paragraph_two: `Vanderpoole tiếp tục ném vào bạn những lời lăng mạ có từ hai thế kỷ trước. Ông ta gọi bạn là một kẻ lừa đảo, một tên lừa đảo, một kẻ nhát gan, một kẻ ngớ ngẩn và nhiều hơn nữa. Bạn gần như cảm thấy tội nghiệp cho ông ta. Gia đình của ông ta chắc chắn quan trọng đối với lịch sử của Bitcoin, ngay cả khi những tuyên bố của ông ta về Satoshi Nakamoto là giả mạo một cách rõ ràng.`, // Vanderpoole continues to hurl two century-old insults at you. He calls you a varmint, a rapscallion, a yellow belly, a greenhorn, and more. You almost feel bad for him. His family was undeniably important to bitcoin’s history, even if his claims about Satoshi Nakamoto are transparently fake.
     },
     intro_three: {
-      intro: `Phần mở đầu`, // Intro
+      intro: `Mở đầu`, // Intro
       nav_title: `Những cáo buộc chống lại Vanderpoole`, // Allegations Against Vanderpoole
       paragraph_one: `—DEBORAH CHUNK: “Ông Vanderpoole, nếu tôi có thể. Mọi người đang bối rối và không chắc chắn liệu nguồn cung Bitcoin có bị can thiệp hay không. Ông có thể chứng minh rằng mình không đóng bất kỳ vai trò nào trong việc can thiệp bị cáo buộc không? Hacker bí ẩn và con mèo hoang của ông ta, bạn có thể chứng minh Vanderpoole đã cố gắng thực hiện tội ác này chống lại Bitcoin không?”`, // —DEBORAH CHUNK: “Mr. Vanderpoole, if I may. People are confused and uncertain about whether the bitcoin supply has been tampered with. Can you prove that you played no part in alleged tampering? Mysterious hacker and his holocat, can you prove Vanderpoole attempted this crime against bitcoin?”
     },
@@ -2395,7 +2395,7 @@ const translations = {
     title: `Đừng tin, hãy xác minh.`, // Don't trust, verify.
     paragraph_one: `Vừa đúng lúc, bạn đã chứng minh cho cả thế giới thấy rằng Vanderpoole đã cố gắng làm rối loạn mạng lưới Bitcoin bằng các khối không hợp lệ. Khi một đoạn quảng cáo phát sóng, tổ quay phim của studio chuẩn bị cho phân đoạn tiếp theo.`, // Just in time, you proved to the world that Vanderpoole has been attempting to confuse the bitcoin network with invalid blocks. As a commercial break airs, the studio’s television crew prepares for the next segment.
     intro_one: {
-      title: 'Phần mở đầu', // Intro
+      title: 'Mở đầu', // Intro
       nav_title: 'Mối đe dọa', // Threats
       paragraph_one:
          'Mọi người đang ăn mừng; tất cả mọi người đều đang cười. Nhưng có một người đàn ông trên trường quay không vui: một người đàn ông cao lớn, ăn mặc lịch sự, tóc hoa râm mà bạn nhận ra ngay lập tức. Đám đông tách ra và bạn nhìn thấy ông ta mặt đối mặt lần đầu tiên: Vanderpoole!', // Everyone is celebrating; everyone is smiling. But there is one man on set who isn’t happy: a tall, well-dressed, gray-haired man who you recognize immediately. The crowd parts, and you see him face to face for the first time: Vanderpoole!
@@ -2403,7 +2403,7 @@ const translations = {
          'Hai tay ông ta nắm chặt. Bạn đã phá hủy công việc kinh doanh của ông ta và vạch trần trò lừa đảo lâu đời của gia đình ông ta. Điều đầu tiên ông ta thốt ra là lời đe dọa sẽ kiện bạn mỗi ngày trong suốt quãng đời còn lại của bạn "nhân vô cực".', // His fists are clenched. You have ruined his business and exposed his family’s long con. The first thing out of his mouth is a threat to sue you every day for the rest of your life "times infinity".
     },
     intro_two: {
-      title: 'Phần mở đầu', // Intro
+      title: 'Mở đầu', // Intro
       nav_title: 'Đón nhận', // Coming to terms
       paragraph_one:
          'Khi Vanderpoole đang phát biểu, một nhà sản xuất bước vào và nói với bạn rằng người xem từ khắp nơi trên thế giới muốn ủng hộ sự nghiệp của bạn bằng cách quyên góp bitcoin và calzone cho bạn ... vì một số lý do! Deborah yêu cầu bạn cung cấp cho người xem của họ địa chỉ ví của bạn.', // As Vanderpoole rants, a producer walks in and tells you that viewers from around the world want to support your cause by donating bitcoin and calzones to you for... some reason! Deborah asks you to provide their viewership with a wallet address.
@@ -3148,7 +3148,7 @@ const translations = {
   },
 
   navbar: {
-    intro: 'Phần mở đầu', // intro: 'Intro'
+    intro: 'Mở đầu', // intro: 'Intro'
     chapter: 'Chương', // chapter: 'Chapter'
     chapter_complete: 'Chương hoàn thành', // chapter_complete: 'Chapter complete'
     challenge: 'Thử thách', // challenge: 'Challenge'
@@ -3264,15 +3264,15 @@ const translations = {
     back_safety: 'Trở lại an toàn', // Back to safety
   },
   error: {
-    first: 'Có điều gì đó không ổn!', // Something is wrong!
+    first: 'Có điều gì đó không ổn!', 
     second: 'Holocat có thể đã gặm nhấm một số dây cáp một lần nữa. Con mèo xấu xa!', //con mèo may have chewed on some cables again. Bad cat!
-    reload: 'Thử lại', // Retry
+    reload: 'Thử lại', 
   },
   help_page: {
     main_heading: 'Tài liệu học tập', // Learning Resources
     main_subheading:
       'chúng ta có thể cung cấp những thông tin và tài nguyên hữu ích nào để học tập thêm?', // What helpful info and resources can we provide for further learning?
-    tips_heading: 'Mẹo', // Tips
+    tips_heading: 'Mẹo', 
     tips_subheading:
       'chúng ta muốn cung cấp cho người học những mẹo cụ thể nào nếu họ gặp khó khăn?', // What specific tips can/do we want to give learners if they are stuck?
     spoilers_heading: 'Giải đáp', // Spoilers
