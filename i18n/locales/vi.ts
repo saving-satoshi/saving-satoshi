@@ -1043,7 +1043,7 @@ const translations = {
     derive_message_five: {
       nav_title: 'Xác minh chữ ký tiếp theo', // Verifiying the signature next
       paragraph_one:
-         `Trong bài tập trước, chúng ta đã thấy Satoshi nhận được 50 BTC cho việc khai thác(đào) khối #9. Ông ta đã sử dụng điều đó làm đầu vào cho giao dịch của mình đến Hal Finney (trong khối #170), gửi 10 BTC đến khóa chung của Hal Finney và trả lại 40 BTC cho chính mình làm tiền thừa. Khóa riêng tư của Satoshi đã được sử dụng để tạo một chữ ký ủy quyền chuyển giao các quỹ đó.`, // In the previous exercise, we saw Satoshi got 50 BTC for mining block #9. He used that as input for his transaction to Hal Finney (in block #170), sending 10 BTC to Hal Finney’s public key and returning 40 BTC back to himself as change. Satoshi's private key was used to create a signature authorizing the transfer of those funds.
+         `Trong bài tập trước, chúng ta đã thấy Satoshi nhận được 50 BTC cho việc khai thác(đào) khối #9. Ông ta đã sử dụng điều đó làm đầu vào cho giao dịch của mình đến Hal Finney (trong khối #170), gửi 10 BTC đến khóa chung của Hal Finney và trả lại 40 BTC cho chính mình làm tiền thừa. Khóa riêng của Satoshi đã được sử dụng để tạo một chữ ký ủy quyền chuyển giao các quỹ đó.`, // In the previous exercise, we saw Satoshi got 50 BTC for mining block #9. He used that as input for his transaction to Hal Finney (in block #170), sending 10 BTC to Hal Finney’s public key and returning 40 BTC back to himself as change. Satoshi's private key was used to create a signature authorizing the transfer of those funds.
       paragraph_two:
          'Tiếp theo, chúng ta cần tìm hiểu cách xác minh chữ ký. Nhưng vẫn còn thiếu một thứ gì đó ... thông điệp mà Satoshi đã ký để ủy quyền cho giao dịch cho Hal là gì?', // Next we need to learn how to verify a signature. But something is still missing... what is the message Satoshi signed to authorize the transaction for Hal?
     },
@@ -3008,9 +3008,9 @@ const translations = {
       success_bar: 'Gửi REVOCATION_YOU_1 cho Laszlo', // success_bar: 'Send REVOCATION_YOU_1 to Laszlo'
     },
     making_a_payment_seven: {
-      title: `🍺 Ahhhhhhh, nice.`,
-      nav_title: `Ahhhhhhh, nice.`,
-      paragraph_one: '🍺 Ahhhhhhh, nice.',
+      title: `🍺 Ahhhhhhh, quá đã.`,
+      nav_title: `Ahhhhhhh, quá đã.`,
+      paragraph_one: '🍺 Ahhhhhhh, quá đã.',
     },
     making_a_payment_eight: {
       title: `Thực hiện một khoản thanh toán khác`, // title: `Make another payment`
@@ -3153,7 +3153,7 @@ const translations = {
     chapter_complete: 'Chương hoàn thành', // chapter_complete: 'Chapter complete'
     challenge: 'Thử thách', // challenge: 'Challenge'
     help_tooltip: 'Cần trợ giúp?', // help_tooltip: 'Need help?'
-    your_language: 'Ngôn ngữ của bạn', // your_language: 'Your Language'
+    your_language: 'Ngôn ngữ', // your_language: 'Your Language'
   },
 
   modal_signin: {
@@ -3174,7 +3174,7 @@ const translations = {
     heading: 'Bạn đã đăng nhập', // heading: 'You are logged in'
     paragraph_one:
        'Phiên của bạn sẽ vẫn hoạt động cho đến khi bạn đăng xuất bằng nút bên dưới.', // paragraph_one: 'Your session will remain active until you sign out using the button below.'
-    private_key: 'Khóa riêng tư của bạn', // private_key: 'Your private key'
+    private_key: 'Khóa riêng của bạn', // private_key: 'Your private key'
     signout: 'Đăng xuất', // signout: 'Sign out'
   },
 
@@ -3185,7 +3185,7 @@ const translations = {
     subheading_one: 'Chọn một hình đại diện', // subheading_one: 'Choose an avatar'
     subheading_two: 'Sao lưu khóa riêng của bạn', // subheading_two: 'Back up your private key'
     generate:
-       'Đã sẵn sàng? Mã đã được sao chép và sao lưu? Hãy chắc chắn rằng bạn đã làm như vậy, vì nó không thể được khôi phục nếu bạn bị mất.', // generate:'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.'
+       'Đã sẵn sàng chưa? Mã đã được sao chép và sao lưu? Hãy chắc chắn rằng bạn đã làm như vậy, vì nó không thể được khôi phục nếu bạn bị mất.', // generate:'All set? Code copied and backed-up? Make sure your do, as it can’t be recovered if you lose it.'
     confirm: 'Hoàn thành', // confirm: 'Done'
     acknowledged:
        'Tôi xác nhận rằng tôi đã lưu khóa riêng này và biết rằng tôi sẽ cần nó cho các thử thách trong tương lai.', // acknowledged:'I acknowledge I have saved this private key and know that I will need it for challenges in the future.'
@@ -3269,7 +3269,7 @@ const translations = {
     reload: 'Thử lại', // Retry
   },
   help_page: {
-    main_heading: 'Tài nguyên học tập', // Learning Resources
+    main_heading: 'Tài liệu học tập', // Learning Resources
     main_subheading:
       'Chúng tôi có thể cung cấp những thông tin và tài nguyên hữu ích nào để học tập thêm?', // What helpful info and resources can we provide for further learning?
     tips_heading: 'Mẹo', // Tips
