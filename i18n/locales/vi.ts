@@ -3137,9 +3137,9 @@ const translations = {
 
   hero: {
     title: 'Saving Satoshi', // title: 'Saving Satoshi'
-    description: 'Mã hóa con đường của bạn thông qua những bí ẩn của bitcoin.', // description: 'Code your way through the mysteries of bitcoin.'
+    description: 'Lập trình để khám phá những bí ẩn của bitcoin.', // description: 'Code your way through the mysteries of bitcoin.'
     start_journey: 'Bắt đầu', // start_journey: 'Start'
-    tell_more: 'Cho tôi biết thêm', // tell_more: 'Tell me more'
+    tell_more: 'Thông tin', // tell_more: 'Tell me more'
   },
 
   footer: {
