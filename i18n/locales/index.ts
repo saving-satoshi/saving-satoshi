@@ -5,6 +5,7 @@ import hi from './hi'
 import de from './de'
 import pt from './pt'
 import fr from './fr'
+import vi from './'
 
 const locales = {
   en,
@@ -14,6 +15,7 @@ const locales = {
   de,
   pt,
   fr,
+  vi,
 }
 
 export default locales
