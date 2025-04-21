@@ -1256,7 +1256,7 @@ const translations = {
        transaction_parts_one:
          'Phiên bản: Phiên bản này chỉ ra cách thức tổ chức giao dịch.', // Version: This version indicates how the the transaction will be organized.
        transaction_parts_two:
-         'Số lượng đầu vào: Số lượng đầu vào trong giao dịch này.', // Number of inputs: The number of inputs in this transaction.
+         'Số lượng đầu vào: Số lượng đầu vào trong giao dịch này.', // Number of inputs: Số lượng đầu vào in this transaction.
        transaction_parts_three:
          'TXID đầu vào #0: Đây là hash của giao dịch mà đầu vào #0 chi tiêu từ đó.', // Input #0 TXID: This is the hash of the transaction that input #0 spends from.
        transaction_parts_four:
@@ -1635,9 +1635,9 @@ const translations = {
       success: 'Lớp đầu ra nhìn ổn. Làm tốt lắm!', // The Output class looks good. Great Work!
     },
     put_it_together_one: {
-      title: 'Kết hợp tất cả', // Putting it all together
+      title: 'Kết hợp tất cả', // Kết hợp tất cả
       normal: {
-       title: 'Kết hợp tất cả', // Putting it all together
+       title: 'Kết hợp tất cả', // Kết hợp tất cả
        nav_title: 'Xây dựng bản tóm tắt giao dịch', // Build the transaction digest
        heading: 'Bản tóm tắt giao dịch', // Transaction digest
        paragraph_one:
@@ -1733,7 +1733,7 @@ const translations = {
  success: 'Phương thức digest() nhìn ổn. Làm tốt lắm!', // The digest() method looks good. Great Work!
       },
       hard: {
- title: 'Kết hợp tất cả', // Putting it all together
+ title: 'Kết hợp tất cả', // Kết hợp tất cả
  nav_title: 'Tạo dựng lớp witness', // Build the witness class
  heading: 'Hoàn thành việc triển khai Lớp Witness', // Finish the implementation of Class Witness
  paragraph_one:
@@ -1781,7 +1781,7 @@ const translations = {
     },
     put_it_together_two: {
       normal: {
-       title: 'Kết hợp tất cả', // Putting it all together
+       title: 'Kết hợp tất cả', // Kết hợp tất cả
        nav_title: 'Tạo dựng lớp witness', // Build the witness class
        heading: 'Ký và Điền vào Witness!', // Sign and Populate the Witness!
        paragraph_one:
@@ -1800,7 +1800,7 @@ const translations = {
          'Đối với thuật toán ký, giao thức bitcoin yêu cầu thêm một điều nữa. Giá trị <span className="italic">s</span> cần phải "thấp", nghĩa là nhỏ hơn order của đường cong chia cho 2. Thêm kiểm tra này vào <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">compute_input_signature()</span>.', // For the signing algorithm, the bitcoin protocol requires one more thing. The <span className="italic">s</span> value needs to be "low", meaning less than the order of the curve divided by
       },
       hard: {
-       title: 'Kết hợp tất cả', // Putting it all together
+       title: 'Kết hợp tất cả', // Kết hợp tất cả
        nav_title: 'Tuần tự hóa giao dịch', // Serialize the transaction
        heading: 'Hoàn thành việc triển khai Lớp Transaction', // Finish the implementation of Class Transaction
        paragraph_one:
@@ -1815,62 +1815,62 @@ const translations = {
  },
  table: {
    row_one: {
-     item_one: 'Currently 2',
+     item_one: 'Phiên bản mới nhất là 2',
      item_two: 'phiên bản',
      item_three: 'int',
      item_four: '4',
    },
    row_two: {
-     item_one: 'Must be exactly 0x0001 for segregated witness',
+     item_one: 'Phải chính xác là 0x0001 đối với segregated witness',
      item_two: 'flags',
      item_three: 'bytes',
      item_four: '2',
    },
    row_three: {
-     item_one: 'The number of inputs',
+     item_one: 'Số lượng đầu vào',
      item_two: 'in count',
      item_three: 'int',
      item_four: '1',
    },
    row_four: {
-     item_one: 'All transaction inputs,serialized',
+     item_one: 'Tất cả giao dịch đầu vào, đã được serialize',
      item_two: 'đầu vào',
      item_three: 'Inputs[]',
      item_four: '(var)',
    },
    row_five: {
-     item_one: 'The number of outputs',
+     item_one: 'Số lượng đầu ra',
      item_two: 'out count',
      item_three: 'int',
      item_four: '1',
    },
    row_six: {
-     item_one: 'All transaction outputs,serialized',
+     item_one: 'Tất cả giao dịch đầu ra, đã được serialize',
      item_two: 'đầu ra',
      item_three: 'Outputs[]',
      item_four: '(var)',
    },
    row_seven: {
-     item_one: 'All witness stacks, serialized',
+     item_one: 'Tất cả witness stacks, đã được serialize',
      item_two: 'witness',
      item_three: 'Witnesses[]',
      item_four: '(var)',
    },
    row_eight: {
-     item_one: 'Setting to 0 indicates finality',
+     item_one: 'Đặt giá trị bằng 0 cho sự hoàn tất',
      item_two: 'locktime',
      item_three: 'int',
      item_four: '4',
    },
  },
  paragraph_three:
-   'Lưu ý rằng không có giá trị "đếm" nào cho các witness. Đó là bởi vì số lượngstack witness phải luôn bằng chính xác với số lượng đầu vào.', // Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.
+   'Lưu ý rằng không có giá trị "đếm" nào cho các witness. Đó là bởi vì số lượngstack witness phải luôn bằng chính xác với số lượng đầu vào.', // Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to Số lượng đầu vào.
  success: 'Phương thức serialize() nhìn ổn. Làm tốt lắm!', // The serialize() method looks good. Great Work!
       },
     },
     put_it_together_three: {
       normal: {
-       title: 'Kết hợp tất cả', // Putting it all together
+       title: 'Kết hợp tất cả', // Kết hợp tất cả
        nav_title: 'Ký giao dịch', // Sign the transaction
        heading: 'Hoàn thành việc triển khai Lớp Transaction', // Finish the implementation of Class Transaction
        paragraph_one:
@@ -1880,7 +1880,7 @@ const translations = {
        paragraph_three:
          'Chúng tôi biết đầu vào của mình, chúng tôi biết đầu ra của mình. Chúng tôi đã sẵn sàng để xây dựng và ký một giao dịch chưa? Chưa hẳn. Chúng tôi có đầu vào 1.61 BTC và đầu ra 1 BTC ... điều gì sẽ xảy ra với 0.61 BTC còn lại? Hầu hết số tiền đó sẽ là "tiền thừa" và chúng tôi cần gửi lại số tiền đó về địa chỉ của chính mình!', // We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!
        paragraph_four:
-         'Lưu ý rằng không có giá trị "đếm" nào cho các witness. Đó là bởi vì số lượngstack witness phải luôn bằng chính xác với số lượng đầu vào.', // Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to the number of inputs.
+         'Lưu ý rằng không có giá trị "đếm" nào cho các witness. Đó là bởi vì số lượngstack witness phải luôn bằng chính xác với số lượng đầu vào.', // Notice that there is no "count" value for witnesses. That is because the number of witness stacks must always be exactly equal to Số lượng đầu vào.
        paragraph_five:
          'Nhưng đợi đã! Chúng tôi cần bao gồm một "phí". Chúng tôi sẽ cắt giảm một phần nhỏ trong số tiền thừa của chúng tôi từ 61.000.000 xuống còn 60.999.000 satoshi để khuyến khích các nhóm khai thác(đào) khối mỏ đưa giao dịch của chúng tôi vào một khối.', // But wait! We need to include a "fee". We'll shave off a tiny piece of our change output from 61,000,000 to 60,999,000 satoshis to incentivize the mining mỏs to include our transaction in a block.
        paragraph_six:
@@ -1899,43 +1899,43 @@ const translations = {
      item_four: '4',
    },
    row_two: {
-     item_one: 'Must be exactly 0x0001 for segregated witness',
+     item_one: 'Phải chính xác là 0x0001 đối với segregated witness',
      item_two: 'flags',
      item_three: 'bytes',
      item_four: '2',
    },
    row_three: {
-     item_one: 'The number of inputs',
+     item_one: 'Số lượng đầu vào',
      item_two: 'in count',
      item_three: 'int',
      item_four: '1',
    },
    row_four: {
-     item_one: 'All transaction inputs, serialized',
+     item_one: 'Tất cả giao dịch đầu vào, đã được serialize',
      item_two: 'đầu vào',
      item_three: 'Inputs[]',
      item_four: '(var)',
    },
    row_five: {
-     item_one: 'The number of outputs',
+     item_one: 'Số lượng đầu ra',
      item_two: 'out count',
      item_three: 'int',
      item_four: '1',
    },
    row_six: {
-     item_one: 'All transaction outputs, serialized',
+     item_one: 'Tất cả giao dịch đầu ra, đã được serialize',
      item_two: 'đầu ra',
      item_three: 'Outputs[]',
      item_four: '(var)',
    },
    row_seven: {
-     item_one: 'All witness stacks, serialized',
+     item_one: 'Tất cả witness stacks, đã được serialize',
      item_two: 'witness',
      item_three: 'Witnesses[]',
      item_four: '(var)',
    },
    row_eight: {
-     item_one: 'Setting to 0 indicates finality',
+     item_one: 'Đặt giá trị bằng 0 cho sự hoàn tất',
      item_two: 'locktime',
      item_three: 'int',
      item_four: '4',
@@ -1948,7 +1948,7 @@ const translations = {
  success: "Bạn đã làm được! Bạn đã xây dựng một giao dịch!", // You've done it! You've built a transaction!
       },
       hard: {
-       title: 'Kết hợp tất cả', // Putting it all together
+       title: 'Kết hợp tất cả', // Kết hợp tất cả
        nav_title: 'Xây dựng bản tóm tắt giao dịch', // Build the transaction digest
        heading: 'Bản tóm tắt giao dịch', // Transaction digest
        paragraph_one:
@@ -2034,33 +2034,33 @@ const translations = {
      item_four: '4',
    },
    row_ten: {
-     item_one: 'Signature hash type, we will use 1 to indicate "ALL',
+     item_one: 'Loại mã hóa chữ ký, chúng ta sẽ sử dụng 1 để chỉ báo "ALL"',
      item_two: 'sighash',
      item_three: 'int',
      item_four: '4',
    },
  },
  paragraph_seven:
-   'Finally, the message we sign is the double SHA-256 of all this serialized data.',
- success: 'The digest() method looks good. Great Work!',
+   'Cuối cùng, thông điệp mà chúng ta ký là double SHA-256 của tất cả dữ liệu đã được serialize này.',
+ success: 'Phương thức digest() trông ổn đấy. Làm tốt lắm!',
       },
     },
     put_it_together_four: {
       hard: {
-       title: 'Putting it all together',
-       heading: 'Signing!',
-       nav_title: 'Sign the transaction',
-       paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index: int, key: int)</span> to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest()</span> method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
+       title: 'Kết hợp tất cả',
+       heading: 'Ký kết!',
+       nav_title: 'Ký giao dịch',
+       paragraph_one: `Chúng ta đã viết mã xác minh chữ ký ECDSA ở chương trước, bây giờ chúng ta cần sắp xếp lại điều đó một chút để tạo ra một chữ ký hợp lệ. Thêm một phương thức tên là compute_input_signature(index: int, key: int) vào lớp Transaction của bạn, phương thức này chấp nhận một số chỉ mục đầu vào và một khóa riêng tư (một số nguyên 32 byte!). Nó sẽ tính toán thông điệp băm (message digest) cho đầu vào đã chọn bằng cách sử dụng phương thức digest() từ bước 6 và trả về một chữ ký ECDSA dưới dạng hai số nguyên 32 byte r và s.`,
        paragraph_two:
-         'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
+         'Xem trang (https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) 1  để tìm hiểu về thuật toán ký ECDSA. Ngoài ra, cũng có tệp PDF này (https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3) (Trang 44, Mục 4.1.3).',
        paragraph_three:
-         'The bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.',
-       success: 'The compute_input_signature() method looks good. Great Work!',
+         'Giao thức bitcoin yêu cầu thêm một bước bổ sung vào thuật toán ký, yêu cầu giá trị s phải "thấp", nghĩa là nhỏ hơn bậc của đường cong chia cho 2. Tìm hiểu thêm về điều này tại BIP 146 (https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s).',
+       success: 'Phương thức compute_input_signature() trông ổn đấy. Làm tốt lắm!',
       },
     },
     put_it_together_five: {
       hard: {
-       title: 'Kết hợp tất cả', // Putting it all together
+       title: 'Kết hợp tất cả', // Kết hợp tất cả
        heading: 'Điền vào Witness', // Populate the Witness
        nav_title: 'Điền vào Witness', // Populate the Witness
        paragraph_one:
@@ -2076,7 +2076,7 @@ const translations = {
     },
     put_it_together_six: {
       hard: {
-       title: 'Kết hợp tất cả', // Putting it all together
+       title: 'Kết hợp tất cả', // Kết hợp tất cả
        heading: 'Kết hợp tất cả!', // Put it All Together
        nav_title: 'Kết hợp tất cả!', // Put it All Together!
        paragraph_one:
@@ -2161,17 +2161,17 @@ const translations = {
         paragraph_two: {
           a: 'Bạn cần sửa chữa hàm lắp ráp khối không chỉ để xây dựng các khối hợp lệ mà còn tối đa hóa phí trong khối, để các máy(thợ) đào có thể kiếm được nhiều lợi nhuận nhất có thể theo các quy tắc đồng thuận. Các quy tắc đồng thuận quan trọng nhất mà bạn cần chú ý để hạn chế tổng ', // You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules. The most critical consensus rules you will need to pay attention to restrict the total
           b: {
-           text: 'transaction weight ',
+           text: 'trọng lượng giao dịch ',
            href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520weighted%2520units',
-           question: 'What are weighted units?',
+           question: 'Những đơn vị đo lường trọng lượng là gì?',
           },
-          c: ' and the ',
+          c: ' và các ',
           d: {
-           text: 'order of transactions ',
+           text: ' thứ tự các giao dịch ',
            href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520order%2520do%2520transactions%2520need%2520to%2520be%2520in%2520a%2520block',
-           question: 'What order do transactions need to be in a block?',
+           question: 'Các thứ tự của các giao dịch trong một khối như thế nào?',
           },
-          e: ' in the block.',
+          e: ' trong khối đó.',
         },
       paragraph_three:
          'Bạn có thể đưa ra các giả định sau để hoàn thành nhiệm vụ của mình:', // You can make the following assumptions to complete your mission:
@@ -2185,10 +2185,10 @@ const translations = {
          'Hoặc duyệt một phần tệp trong bảng này để biết một số mẫu cơ bản:', // Or browse an excerpt of the file in this table for some basic patterns:
       headings: {
        item_one: 'Transaction ID',
-       item_two: 'Fee',
+       item_two: 'Phí',
        item_two_b: 'Satoshis',
-       item_three: 'Weight',
-       item_three_b: 'Weight units (WU)',
+       item_three: 'Trọng lượng',
+       item_three_b: 'Đơn vị trọng lượng (WU)',
        item_four: 'Ancestors',
       },
       table_one: {
@@ -2555,8 +2555,8 @@ const translations = {
     },
     opcodes_seven: {
       title: 'OpCodes', // OpCodes
-      nav_title: 'Multisig', // Multisig
-      heading: 'Multisig', // Multisig
+      nav_title: 'Chữ ký đa phương (Multisig)', // Multisig
+      heading: 'Chữ ký đa phương (Multisig)', // Multisig
       paragraph_one:
           'Chính sách chữ ký đa phương cung cấp một danh sách các khóa chung và số lượng chữ ký bắt buộc đối với một chi tiêu hợp lệ. Nó có thể được mô tả là "m-trong-n" có nghĩa là "m số lượng chữ ký được yêu cầu từ danh sách n khóa chung này". Các khóa chung và các giá trị m và n thường được bao gồm trong script khóa và người chi tiêu chỉ cần cung cấp đúng số lượng chữ ký.', // Multisignature policies provide a list of public keys and a number of signatures required for a valid spend. It can be described as "m-of-n" meaning "m number of signatures are required from this list of n public keys". The public keys and the m and n values are typically included in the locking script and the spender only needs to provide the right number of signatures.
       paragraph_two:
@@ -2807,9 +2807,9 @@ const translations = {
       paragraph_two: `Nếu chúng ta định giao dịch ngoại tuyến, tôi cần một sự đảm bảo rằng cùng một số tiền bạn đang sử dụng để thanh toán ngoại tuyến cho tôi không thể được di chuyển bởi chính bạn trên chuỗi."`, // paragraph_two: `If we're going to transact off-chain, I need a guarantee that the same money you are using to pay me off-chain cannot be moved by yourself on-chain."`
     },
     opening_a_channel_four: {
-      title: 'Multisig', // title: 'Multisig'
-      nav_title: 'Multisig', // nav_title: 'Multisig'
-      heading_one: 'Multisig', // heading_one: 'Multisig'
+      title: 'Chữ ký đa phương (Multisig)', // title: 'Chữ ký đa phương (Multisig)'
+      nav_title: 'Chữ ký đa phương (Multisig)', // nav_title: 'Chữ ký đa phương (Multisig)'
+      heading_one: 'Chữ ký đa phương (Multisig)', // heading_one: 'Chữ ký đa phương (Multisig)'
       paragraph_one: `Trước khi trả tiền cho Laszlo, trước tiên hãy đưa tiền vào một đa chữ ký 2 trên 2, được xác nhận trên blockchain. Sau đó, chúng ta có thể tìm ra một cách để giao dịch đơn lẻ trên chuỗi đó hoạt động hiệu quả hơn - để làm được nhiều hơn với ít hơn.`, // paragraph_one: `Before paying Laszlo, let's first get the funds into a 2-of-2 multisig, confirmed on the blockchain. Then we can figure out a way to make that single on-chain transaction work harder—to do more with less.`
       heading_two: 'Hướng dẫn', // heading_two: 'Instructions'
       multisig_one: 'Điền số tiền đầu ra và script đầu ra', // multisig_one: 'Fill in the output amount and the output script'
