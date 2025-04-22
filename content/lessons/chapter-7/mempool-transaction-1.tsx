@@ -385,7 +385,7 @@ def run():
               'chapter_seven.mempool_transaction_one.paragraph_two.b.href'
             )}
             target="_blank"
-            className="inline text-lg italic hover:underline md:text-xl"
+            className="inline text-lg italic underline md:text-xl"
           >
             {t('chapter_seven.mempool_transaction_one.paragraph_two.b.text')}
             <HolocatQuestion
@@ -409,7 +409,7 @@ def run():
               'chapter_seven.mempool_transaction_one.paragraph_two.d.href'
             )}
             target="_blank"
-            className="inline text-lg italic hover:underline md:text-xl"
+            className="inline text-lg italic underline md:text-xl"
           >
             {t('chapter_seven.mempool_transaction_one.paragraph_two.d.text')}
             <HolocatQuestion
