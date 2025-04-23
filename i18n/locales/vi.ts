@@ -188,7 +188,7 @@ const translations = {
          'Sao chép và dán lệnh bên dưới vào Terminal trong khối mã hóa và nhấn “Enter”.',  // Copy and paste the command below into the Terminal in the code block and press “Enter”.
       terminal_challenge_lines: `Nhập lệnh của bạn ở đây và nhấn Enter...\n Biến $scriptSigHex đã được định nghĩa sẵn cho bạn.\n\n var $scriptSigHex = '04fff...e6b73'` ,  // Enter your commands here and press Enter...\n The variable $scriptSigHex is already defined for you.\n\n var $scriptSigHex = '04fff...e6b73'
       waiting_for_input: 'Đang chờ bạn viết và chạy script...', // Waiting for you to write and run the script...
-      success: `Làm tốt lắm lắm! Thông điệp được giải mã tham chiếu trong trang nhất của <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> từ ngày 3 tháng 1 năm 2009, cùng ngày Satoshi khai thác(đào) khối genesis. Thật tuyệt vời phải không ?! Thông điệp này cũng cung cấp cho chúng ta một số hiểu biết sâu sắc về động lực tạo ra bitcoin của ông ấy.\n\n Hãy tiếp tục nào!`, // Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.
+      success: `Làm tốt lắm! Thông điệp được giải mã tham chiếu trong trang nhất của <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> từ ngày 3 tháng 1 năm 2009, cùng ngày Satoshi khai thác(đào) khối genesis. Thật tuyệt vời phải không ?! Thông điệp này cũng cung cấp cho chúng ta một số hiểu biết sâu sắc về động lực tạo ra bitcoin của ông ấy.\n\n Hãy tiếp tục nào!`, // Great work! The decoded message references the front page of <Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link> from January 3,2009, the same day Satoshi mined the genesis block. How cool is that?! This message also gives us some insight into his motivation for creating bitcoin.\n\n Let's keep going.
     },
 
     genesis_four: {
@@ -355,7 +355,7 @@ const translations = {
       heading: 'Nhập bất kỳ ký tự nào', // Enter Anything
       return_hash: 'Dưới đây bạn sẽ thấy đầu vào của bạn được chuyển đổi thành một chuỗi mã hóa', // Below you will see your input converted to a hash
       progress_message: 'Tiếp tục...', // Keep going...
-      success_message: 'Tốt rồi, Làm tốt lắm lắm. Hãy tiếp tục.', // Alright, nice work playing around. Let’s move on.
+      success_message: 'Tốt rồi, Làm tốt lắm. Hãy tiếp tục.', // Alright, nice work playing around. Let’s move on.
     },
 
     hashing_three: {
@@ -463,7 +463,7 @@ const translations = {
       nav_title: 'Khai thác(đào) các khối dữ liệu', // Mining blocks
       heading_one: 'Chúng ta đã biết cách khai thác(đào) khối, bây giờ hãy xem nó hoạt động như thế nào', // Now that we know how mining works, let’s see it in action
       heading_two: 'Bạn đang khai thác(đào) khối (đào)', // You’re mining now
-      heading_three: 'Làm tốt lắm lắm!', // Nice work!
+      heading_three: 'Làm tốt lắm!', // Nice work!
       heading_four: 'Hãy đào 100 khối', // Let’s get to 100 blocks
       heading_five: 'Bạn đã làm được rồi đó!', // You did it!
       paragraph_one:
@@ -511,7 +511,7 @@ const translations = {
       paragraph_two:
          '—HOLOCAT: “Nhìn kìa, có tin nhắn.”', // —HOLOCAT: “Look, there’s a message.”
       paragraph_three:
-         '“Làm tốt lắm lắm. Việc này sẽ giúp bitcoin trở lại quy trình một khối mỗi mười phút.” – Satoshi Nakamoto', // “Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto
+         '“Làm tốt lắm. Việc này sẽ giúp bitcoin trở lại quy trình một khối mỗi mười phút.” – Satoshi Nakamoto', // “Good work. This will help bitcoin get back to one block every ten minutes.” – Satoshi Nakamoto
       paragraph_four: 'Lại là ông ta?', // Him again?
     },
     resources: {
@@ -665,7 +665,7 @@ const translations = {
     split_one: {
       title: 'Chia phần thưởng', // Splitting Rewards
       nav_title: 'Phân chia công bằng', // Splitting the fair share
-      heading: 'Làm tốt lắm lắm!', // Nicely done.
+      heading: 'Làm tốt lắm!', // Nicely done.
       paragraph_one:
          'Bạn không chỉ bảo vệ mạng lưới Bitcoin khỏi BitRey mà còn được thưởng bitcoin!', // Not only did you defend the network against BitRey, you also earned bitcoin as a reward!
       paragraph_two:
