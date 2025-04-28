@@ -216,6 +216,11 @@ export const defaultProgressState: CourseProgress = {
               completed: false,
             },
             { id: 'CH6OUT1', path: '/chapter-6/outro-1', completed: false },
+            {
+              id: 'CH6BAC1',
+              path: '/chapter-6/book-a-call-1',
+              completed: false,
+            },
           ],
           completed: false,
         },
@@ -264,6 +269,11 @@ export const defaultProgressState: CourseProgress = {
               completed: false,
             },
             { id: 'CH6OUT1', path: '/chapter-6/outro-1', completed: false },
+            {
+              id: 'CH6BAC1',
+              path: '/chapter-6/book-a-call-1',
+              completed: false,
+            },
           ],
           completed: false,
         },

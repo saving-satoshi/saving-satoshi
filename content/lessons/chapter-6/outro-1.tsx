@@ -1,9 +1,6 @@
 'use client'
 
 import { useTranslations } from 'hooks'
-import { useEffect } from 'react'
-import { useModalFunctions } from 'state/ModalFunctions'
-import { Modal } from 'state/state'
 import { ChapterEnd } from 'ui'
 
 export const metadata = {
@@ -18,15 +15,13 @@ export const metadata = {
 
 export default function Outro1({ lang }) {
   const t = useTranslations(lang)
-  const { open } = useModalFunctions()
-  useEffect(() => {
-    open(Modal.Popup, metadata.key)
-  }, [])
+
   return (
     <ChapterEnd
       image={metadata.image}
       direction="left"
       lang={lang}
+      saveAndProceed
       theme={metadata.secondaryTheme}
       gradientTheme={metadata.gradientTheme}
     >
