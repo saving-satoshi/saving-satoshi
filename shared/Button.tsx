@@ -112,6 +112,7 @@ export default function Button({
         title={title}
         rel={external ? 'noreferrer nofollow' : undefined}
         target={external ? '_blank' : undefined}
+        onClick={onClick} // if we want to update the button after the external link
       >
         {children}
       </Link>

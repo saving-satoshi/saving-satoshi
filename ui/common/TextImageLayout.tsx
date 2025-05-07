@@ -14,6 +14,7 @@ export default function TextImageDisplay({
   btnText,
   btnEnabled,
   objectPosition = 'object-bottom',
+  noBtn,
 }: {
   children: any
   lang: string
@@ -22,6 +23,7 @@ export default function TextImageDisplay({
   btnText?: string
   btnEnabled: boolean
   objectPosition?: string
+  noBtn?: boolean
 }) {
   const t = useTranslations(lang)
   const proceed = useProceed()
@@ -51,17 +53,19 @@ export default function TextImageDisplay({
             <div className="intro text-white">
               <div className="font-nunito text-xl">{children}</div>
             </div>
-            <div>
-              {btnEnabled ? (
-                <Button onClick={proceed} classes="w-full md:w-auto">
-                  {btnText ? btnText : t('shared.next')}
-                </Button>
-              ) : (
-                <Button classes="w-full md:w-auto" disabled>
-                  {t('shared.coming_soon')}
-                </Button>
-              )}
-            </div>
+            {!noBtn && (
+              <div>
+                {btnEnabled ? (
+                  <Button onClick={proceed} classes="w-full md:w-auto">
+                    {btnText ? btnText : t('shared.next')}
+                  </Button>
+                ) : (
+                  <Button classes="w-full md:w-auto" disabled>
+                    {t('shared.coming_soon')}
+                  </Button>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
