@@ -16,6 +16,7 @@ import * as PutItTogetheer4Hard from './hard/put-it-together-4'
 import * as PutItTogether5Hard from './hard/put-it-together-5'
 import * as PutItTogether6Hard from './hard/put-it-together-6'
 import * as Outro1 from './outro-1'
+import * as BookACall1 from './book-a-call-1'
 
 const Chapter6 = {
   'intro-1': Intro1,
@@ -36,6 +37,7 @@ const Chapter6 = {
   'put-it-together-5-hard': PutItTogether5Hard,
   'put-it-together-6-hard': PutItTogether6Hard,
   'outro-1': Outro1,
+  'book-a-call-1': BookACall1,
 }
 
 export default Chapter6

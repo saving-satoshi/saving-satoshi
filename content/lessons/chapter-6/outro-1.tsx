@@ -21,6 +21,7 @@ export default function Outro1({ lang }) {
       image={metadata.image}
       direction="left"
       lang={lang}
+      saveAndProceed
       theme={metadata.secondaryTheme}
       gradientTheme={metadata.gradientTheme}
     >

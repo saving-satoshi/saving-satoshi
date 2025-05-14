@@ -231,7 +231,7 @@ class Input:
             onMouseLeave={handleMouseLeave}
             href={t('chapter_six.in_out_four.normal.paragraph_eight.b.href')}
             target="_blank"
-            className="inline text-lg italic hover:underline md:text-xl"
+            className="inline text-lg italic underline md:text-xl"
           >
             {t('chapter_six.in_out_four.normal.paragraph_eight.b.text')}
             <HolocatQuestion
@@ -277,7 +277,7 @@ class Input:
               onMouseLeave={handleMouseLeave2}
               href={t('chapter_six.in_out_four.normal.paragraph_eleven.b.href')}
               target="_blank"
-              className="inline font-nunito text-xl font-bold italic hover:underline md:text-xl"
+              className="inline font-nunito text-xl font-bold italic underline md:text-xl"
             >
               {t('chapter_six.in_out_four.normal.paragraph_eleven.b.text')}
               <HolocatQuestion

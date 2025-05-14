@@ -11,10 +11,12 @@ export default function Introduction({
   children,
   lang,
   imagePosition,
+  noBtn = false,
 }: {
   children: ReactNode
   lang: string
   imagePosition?: string
+  noBtn?: boolean
 }) {
   const routes = useLocalizedRoutes()
   const { chapterId, lessonId } = usePathData()
@@ -34,6 +36,7 @@ export default function Introduction({
       imageAlt={intro.metadata.title}
       btnEnabled={chapter.metadata.lessons.length > 0}
       objectPosition={imagePosition}
+      noBtn={noBtn}
     >
       {children}
     </TextImage>
