@@ -95,7 +95,7 @@ export default function Topbar() {
                     ? routes.chaptersUrl
                     : routes.aboutUrl
                 }
-                className="mr-2 text-center font-nunito text-lg text-white text-opacity-75 transition duration-150 ease-in-out hover:text-opacity-100 sm:text-xl"
+                className="mr-2 break-keep text-center font-nunito text-lg text-white text-opacity-75 transition duration-150 ease-in-out hover:text-opacity-100 sm:text-xl"
               >
                 {t(`shared.${item.title}`)}
               </Link>
