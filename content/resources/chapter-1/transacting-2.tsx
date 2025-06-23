@@ -33,6 +33,12 @@ export default function TransactingTwoResources({ lang }) {
               'chapter_one.resources.transacting_two.bitcoin_script_paragraph'
             )}
           </Text>
+          <Text className="mt-[25px] text-xl font-bold">
+            {t('chapter_one.resources.transacting_two.asm_heading')}
+          </Text>
+          <Text>
+            {t('chapter_one.resources.transacting_two.asm_paragraph')}
+          </Text>
         </>
       }
       tipsResources={

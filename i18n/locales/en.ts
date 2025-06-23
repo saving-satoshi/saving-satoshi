@@ -219,13 +219,15 @@ const translations = {
       genesis_three: {
         bash_heading: `Bash Commands`,
         bash_paragraph: `We are using some basic bash command and options to reverse the compression Satoshi did on the text put into the genesis block.`,
-        tip: `The 'xxd' command turns a file into hex and adding the '-r' tag reverses it allowing hex to be translated into text. The '-p' tag then prints it to the console allowing you to read the output.`,
+        tip: `The main feature of the 'xxd' command is the ability to convert a binary file to hex. When used with the '-r' option, it does the reverse and converts a hex dump to binary. For ASCII strings, the binary format is human readable. The '-p' option prints the result to the console in a plain "postscript continuous hexdump" style, allowing you to read the output.`,
       },
       transacting_two: {
         transactions_heading: `Transactions`,
         transactions_paragraph: `A transaction in the world of cryptocurrencies is akin to a single atomic payment, where it involves the process of destroying existing coins and creating new ones. When someone initiates a cryptocurrency transaction, they're essentially instructing the blockchain to transfer a specific amount of coins from one digital wallet to another. To achieve this, the transaction consumes the sender's existing coins and generates new ones for the recipient, effectively updating the ownership ledger.`,
         bitcoin_script_heading: `Bitcoin Script`,
         bitcoin_script_paragraph: `Bitcoin Script is a simple, stack-based programming language used in bitcoin transactions to define the conditions under which bitcoins can be spent. It consists of various opcodes (short for operation codes) that specify what operations should be performed on the data within the script.`,
+        asm_heading: `ASM`,
+        asm_paragraph: `When you see 'ASM' next to a field like scriptSig or scriptPubKey it means the value you are seeing is in "Assembly", a more human readable format for the script instructions.`,
         tip: `Given the Op_Code: OP_Pushbytes_33 we are looking for a string 33 bytes long (66 characters total) in the OP_Return of the transaction`,
       },
       transacting_three: {
