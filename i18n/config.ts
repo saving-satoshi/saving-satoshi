@@ -10,7 +10,7 @@ export const i18n = {
     { locale: 'fr', label: 'Français' },
     { locale: 'vi', label: 'Tiếng Việt' },
     { locale: 'ko', label: '한국어' },
-{ locale: 'ja', label: '日本語' }
+    { locale: 'ja', label: '日本語' }
   ],
 } as const
 
