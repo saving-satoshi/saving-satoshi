@@ -178,5 +178,36 @@ genesis_four: {
   subtitle: `おめでとう！最初のチャレンジをクリアしました！`,
   paragraph_one: `あなたは、サトシ・ナカモトがジェネシスブロックに仕込んだ秘密のメッセージを発見しました。次のチャレンジでは、今回学んだことを踏まえ、物語にとって重要な手がかりを解き明かしましょう。`,
 },
-      
+
+transacting_one: {
+  title: `トランザクション`,
+  nav_title: `トランザクションの中身とは？`,
+  heading: `トランザクションの中身とは？`,
+  paragraph_one: `トランザクションの主な構成要素は「インプット（入力）」と「アウトプット（出力）」の2つです。前のチャレンジでは、トランザクションのインプットに含まれていた秘密のメッセージを解読しました。今回は、アウトプット側に含まれているメッセージを解読していきます。`,
+  paragraph_two: `次のトランザクションでは、「OP_RETURN」というタイプのアウトプットを特定してみましょう。`,
+},
+
+transacting_two: {
+  title: `トランザクション`,
+  nav_title: `OP_RETURNを探せ`,
+  heading: `OP_RETURN`,
+  paragraph_one: `トランザクションに秘密のメッセージを隠す方法は他にもあります。ビットコインには「OP_RETURN」と呼ばれる特殊なコードがあり、これを使ってトランザクションのアウトプットにメッセージを添付することができます。実際に探してみましょう。`,
+  paragraph_two: `1. 特定のトランザクションを確認するには<Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9" target="_blank" className="underline">こちら</Link>をクリックしてください。`,
+  paragraph_three: `2. 詳細を開いて、「OP_RETURN」タイプの部分を探します。`,
+  paragraph_four: `3. 次に「SCRIPTPUBKEY（ASM）」フィールドを見つけてください。「OP_RETURN OP_PUSHBYTES_33」という記述があるはずです。これらは「オペコード」と呼ばれますが、今回はその後に続くデータに注目します。`,
+  paragraph_five: `4. 「OP_RETURN OP_PUSHBYTES_33」の後にある長い数字の文字列をコピーして、コードブロックに貼り付けてください。`,
+  input_challenge_label: `OP_RETURNの値を入力`,
+},
+
+transacting_three: {
+  title: `トランザクション`,
+  nav_title: `OP_RETURNを解読`,
+  heading: `もうひとつの秘密のメッセージ`,
+  paragraph_one: `トランザクションのアウトプットの中にあるメッセージ部分を特定しました。`,
+  paragraph_two: `あとは前のチャレンジと同じように、これを解読するだけです。もう一度このトランザクションを確認したい場合は<Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">こちら</Link>からどうぞ。`,
+  terminal_challenge_success: `正解です！よくできました。\n\n ご覧のとおり、手がかりは「アドレス」でした。そのアドレスを見に行ってみましょう。\n\n 次のチャレンジがあなたを待っています。`,
+  terminal_challenge_lines: `ここにコマンドを入力してEnterを押してください...\n\n コマンド：\n echo $scriptPubKeyBytes | xxd -r -p \n\n ※今回、$scriptPubKeyBytes は定義されていません。前のページでコピーした値を、そのままコマンドに使ってください。`,
+  terminal_challenge_error: `惜しい！今回は $scriptPubKeyBytes という変数はあらかじめ定義されていませんよ。`,
+},
+  
 export default translations
