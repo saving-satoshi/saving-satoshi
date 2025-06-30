@@ -140,6 +140,43 @@ chapter_one: {
     paragraph_five: `ホロキャット：「さあ、今すぐ行動開始ニャ。手伝ってあげるけど、今すぐ始めないとダメにゃん。」`,
   },
 
-  
+  genesis_one: {
+  title: `Genesis`,
+  nav_title: `ジェネシスの秘密`,
+  heading: `最初のチャレンジ`,
+  paragraph_one: `ビットコインは検閲耐性のあるお金です。ネットワークにトランザクションをブロードキャスト（送信）することで、誰でも送金ができます。ブロードキャスト後、トランザクションはマイナーによってブロックにまとめられます。マイナーたちは、チェーン上にブロックを追加する権利を得るために互いに競い合います。この仕組みによって、ビットコインは非中央集権的に保たれているのです。`,
+  paragraph_two: `ビットコインの匿名の発明者、サトシ・ナカモトは、最初のビットコインブロック（ジェネシスブロック）を採掘しました。そしてその最初のトランザクションの中に、世界への秘密のメッセージを残しました。あなたの最初のチャレンジは、それを見つけて解読することです。`,
+},
+
+genesis_two: {
+  title: `Genesis`,
+  nav_title: `メッセージを探せ`,
+  heading: `隠されたメッセージを見つけよう`,
+  paragraph_one: `ビットコインブロックチェーンの最初のブロックを探しましょう。下のボタンをクリックすると、ブロック番号0、いわゆるジェネシスブロックを<Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">ブロックエクスプローラー</Tooltip>で開けます。`,
+  paragraph_two: `下へスクロールし、このブロックに含まれている1つのトランザクションの詳細を展開します。“Coinbase” という入力を探してください。次に “SCRIPTSIG (<Tooltip id="genesis_two_paragraph_two" content="chapter_one.genesis_two.tooltip_hex" theme="bg-[#30435b]">HEX</Tooltip>)” というラベルを見つけましょう。その横に表示されている値が、暗号化されたメッセージです。`,
+  paragraph_three: `その値をコピーして、コードブロックに貼り付けてください。`,
+  tooltip_block_explorer: `<a  href="https://bitcoinops.org/en/topics/block-explorers/" target="_blank" rel="noreferrer">ブロックエクスプローラー</a>は、ビットコインのトランザクション情報をすばやく確認できる便利なツールです。`,
+  tooltip_hex: `16を基数とする数値システムである「hexadecimal」（16進数）の略。`,
+  view_block_0: `ブロック0を表示`,
+  placeholder: `見つけた値をここに貼り付けてください`,
+},
+
+genesis_three: {
+  title: `Genesis`,
+  nav_title: `メッセージを解読せよ`,
+  heading: `メッセージを解読しよう`,
+  paragraph_one: `見つけたメッセージは「HEX」という形式でエンコードされています。これを私たちが読み取れる文字列（ASCII）に変換するコマンドを実行します。`,
+  paragraph_two: `以下のコマンドをコードブロックのターミナルにコピー＆ペーストして、「Enter」キーを押してください。`,
+  terminal_challenge_lines: `ここにコマンドを入力してEnterを押してください...\n 変数 $scriptSigHex はすでに定義されています。\n\n var $scriptSigHex = '04fff...e6b73'`,
+  waiting_for_input: `あなたがスクリプトを書いて実行するのを待っています…`,
+  success: `すばらしい！解読されたメッセージは、<Link href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" className="underline">The Times</Link>紙の2009年1月3日付の一面を引用していました。この日は、サトシがジェネシスブロックを採掘した日でもあります。なんてクールなのでしょう！<br><br>このメッセージから、サトシがビットコインを作ろうとした動機の一端がうかがえます。\n\nさあ、次に進みましょう。`,
+},
+
+genesis_four: {
+  title: `Genesis`,
+  nav_title: `初めての成功`,
+  subtitle: `おめでとう！最初のチャレンジをクリアしました！`,
+  paragraph_one: `あなたは、サトシ・ナカモトがジェネシスブロックに仕込んだ秘密のメッセージを発見しました。次のチャレンジでは、今回学んだことを踏まえ、物語にとって重要な手がかりを解き明かしましょう。`,
+},
       
 export default translations
