@@ -292,5 +292,68 @@ chapter_two: {
     paragraph_two: `―ホロキャット：「なんて失礼ニャ～。あっ、メカニカルキーボードだニャ。聞いたことあるニャン、あまりにうるさくて、ユーザーの聴力を奪うって噂されて、禁止されたらしいニャ」`,
     paragraph_three: `ホロキャットはキーボードの上に飛び乗り、キーの上を歩いて、押すべきキーを教えてくれる。`,
   },
-  
+
+hashing_one: {
+  title: `ゼロ`,
+  nav_title: `コンピュータが唸りを上げて起動する`,
+  paragraph_one: `偶然なのか、それともホロキャットが本当に分かってやっていたのか、彼女が踏んだランダムな文字や数字は……別のランダムな文字や数字に変わっただけ？`,
+  list_one: `> QX23Y6VGECTUKSNIEUTUB[P[pihof`,
+  list_two: `> 1c31d1d9fb848a505fc0cdbea848ff1bdd46a9ed4d639d413d3a93035194eedf`,
+  paragraph_two: `モニターには「ハッシュが間違っています。やり直してください」と表示されている。`,
+  paragraph_three: `当然ながら、ホロキャットが入力したでたらめは正解ではなかった。彼女は生意気なホログラム猫にすぎないのだから！`,
+  paragraph_four: `では、何か別のものを入力するとどうなる？`,
+},
+
+hashing_two: {
+  title: `ゼロ`,
+  nav_title: `何かをハッシュしてみよう`,
+  heading: `何でも入力してみよう`,
+  return_hash: `下に、入力内容がハッシュに変換された結果が表示されます`,
+  progress_message: `続けてみよう…`,
+  success_message: `よし、うまく遊べたね。それじゃ次に進もう。`,
+},
+
+hashing_three: {
+  title: `ゼロ`,
+  nav_title: `SHA256の威力`,
+  heading: `ハッシュについて、何か気づいたことは？`,
+  list_one: `ハッシュは指紋のように一つ一つが異なります。ごくまれな例外を除き、異なるものが同じハッシュになることはありません。`,
+  list_two: `ハッシュ関数は一方通行です。ハッシュから元のデータを逆算することはできません。`,
+  list_three: `ハッシュは非常に信頼性が高く、「決定論的」です。つまり、同じデータを何度ハッシュしても、必ず同じ結果が得られます。`,
+  paragraph_one: {
+    a: `ここで使われている関数は `,
+    b: `という非常に人気のあるものです。`,
+  },
+  paragraph_two: `それでは、特定のハッシュを探してみましょう。`,
+  paragraph_three: `ゼロ（“0”）で始まるハッシュを見つけてください。下にいろいろ入力して、目標のハッシュが出るまで試してみましょう。`,
+  tooltip_one: {
+    question: `SHA-256はビットコインでどのように使われているの？`,
+    link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520SHA-256%2520used%2520in%2520bitcoin%253F`,
+    highlighted: `SHA-256`,
+  },
+},
+
+hashing_four: {
+  title: `ゼロ`,
+  nav_title: `ゼロで始まるハッシュを探す`,
+  heading: `ゼロ（“0”）で始まるハッシュが出るまで何か入力してみよう`,
+  hint_prompt: `<Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_four.hint_tooltip">ヒント</Tooltip>が必要？`,
+  hint_tooltip: `<span className="text-m whitespace-nowrap leading-none text-white/50">試してみて：</span> <span className="whitespace-nowrap text-white">popcorn</span>`,
+},
+
+hashing_five: {
+  title: `ゼロ`,
+  nav_title: `難易度アップ`,
+  heading: `そんなに難しくなかったね！`,
+  paragraph_one: `もう少し難しくしてみよう。今度は、先頭がゼロ2つ（"00"）のハッシュを探してみて。`,
+},
+
+hashing_six: {
+  title: `ゼロ`,
+  nav_title: `ゼロ2つで始まるハッシュを探す`,
+  heading: `ゼロ2つ（“00”）で始まるハッシュが出るまで何か入力してみよう`,
+  hint_prompt: `<Tooltip id="hint_prompt" position="bottom" theme="bg-[#5e212a]" offset="-1" content="chapter_two.hashing_six.hint_tooltip">ヒント</Tooltip>が必要？`,
+  hint_tooltip: `<span className="text-m whitespace-nowrap leading-none text-white/50">試してみて：</span> <span className="whitespace-nowrap text-white">trigonometry</span>`,
+},
+      
 export default translations
