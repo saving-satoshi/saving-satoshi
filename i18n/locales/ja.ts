@@ -1035,6 +1035,53 @@ derive_message_seven: {
   sighash_type_flag_heading: `SigHash タイプフラグ`,
   sighash_type_flag_paragraph_one: `SigHash フラグは、どの部分のトランザクションデータが秘密鍵によって署名されるかを定義するビットコインの仕組みです。簡単に言えば、署名者がどのデータに対してコミットするのか、その範囲を決めるものです。SigHash フラグは各署名に1バイト付加され、同じトランザクション内のインプットごとに異なる場合もあります。いくつかの種類の SigHash フラグについては <Link href="https://river.com/learn/terms/s/sighash-flag" target="_blank" className="underline">こちら</Link>をご覧ください。`,
 },
+verify_signature_two: {
+  tip_one: `JavaScript のヒント：16進文字列をバイト配列に変換するには <span className="p-1 font-mono bg-[#0000004D] m-1">Buffer.from(someString, 'hex');</span> を使います。`,
+  signature_verification_heading: `署名検証`,
+  signature_verification_paragraph_one: `署名検証とは、ある当事者が秘密の数値（秘密鍵）を知っている場合にのみ生成できるデータ（署名）を提供する、数学的アルゴリズムです。検証では、署名・公開鍵・メッセージを照合し、アルゴリズムの結果が TRUE になれば署名は本物と判断されます。`,
+},
 
-          
+verify_signature_three: {
+  signature_encoding_heading: `署名のエンコーディング`,
+  signature_encoding_paragraph_one: `DER（Distinguished Encoding Rules）署名は、ビットコインで ECDSA 署名をエンコードするためのフォーマットです。ECDSA 署名は秘密鍵と署名対象メッセージのハッシュから生成され、32 バイトずつの 2 つの数値（r, s）で構成されます。詳細は <Link href="https://technicaldifficulties.io/2020/07/22/bip-66-unpacking-der-signatures/" target="_blank" className="underline">こちら</Link> を参照してください。`,
+},
+
+verify_signature_four: {
+  eliptic_curve_heading: `楕円曲線電子署名アルゴリズム（ECDSA）`,
+  eliptic_curve_paragraph_one: `ECDSA は、資金が正当な所有者によってのみ使用されることを保証するためにビットコインで採用されている暗号アルゴリズムです。公開鍵は秘密鍵に楕円曲線乗算を施して導出できますが、逆に公開鍵から秘密鍵を導くのは計算的に不可能です。この一方向性がビットコインのセキュリティの要となっています。`,
+  public_private_key_heading: `公開鍵と秘密鍵`,
+  public_private_key_paragraph_one: `ビットコインでは鍵ペアを用いて取引の安全性を確保します。秘密鍵は秘匿され、トランザクションの署名やアドレスの所有証明に使われます。秘密鍵から派生する公開鍵は共有可能で、秘密鍵を明かすことなく、署名が秘密鍵の所有者によって行われたことを検証するために使用されます。`,
+},
+
+verify_signature_five: {
+  finite_field_arithmetic_heading: `有限体演算`,
+  finite_field_arithmetic_paragraph_one: `ECDSA で用いられる演算は、一定範囲内（有限体）の数を対象に行います。加算・減算・乗算・モジュラ逆数の計算などを、体のサイズを法として実行することが、ビットコインの楕円曲線計算に不可欠です。`,
+  ge_and_fe_heading: `群要素（GE）と体要素（FE）`,
+  ge_and_fe_paragraph_one: `楕円曲線暗号では、群要素（GE）は通常曲線上の点を指します。このチャレンジでは GE は特定の x, y 座標を持つ点を意味します。体要素（FE）は有限体の中で使用される数で、体の制約下での演算に用いられます。`,
+  modular_inverse_heading: `モジュラ逆数`,
+  modular_inverse_paragraph_one: `数 a の法 m におけるモジュラ逆数 b とは、(a * b) % m = 1 を満たす数です。モジュラ逆数の計算は ECDSA 署名検証の重要ステップであり、検証過程における u1 と u2 の計算に使われます。`,
+},
+validate_signature_one: {
+  message_verification_heading: `メッセージ検証の重要性`,
+  message_verification_paragraph_one: `メッセージ検証は、ビットコインエコシステム内の通信のセキュリティを高めます。これにより、メッセージの真正性と完全性を検証できるため、ピアツーピア取引やスマートコントラクトにおける当事者間の通信など、信頼と検証が不可欠な場面で役立ちます。さらに、メッセージ検証は、身元確認や特定のビットコインアドレスの所有証明といった様々な応用の基礎となります。暗号学的な保証を追加することで、ビットコインネットワークのトラストレスかつ分散型の性質を強化します。`,
+},
+
+validate_signature_two: {
+  base64_encoding_heading: `Base64 エンコーディング`,
+  base64_encoding_paragraph_one: `Base64 は基本的なバイト → テキストのエンコーディング方式で、バイト列への変換やバイト列からテキストへの変換を行う際に、URL パスやクエリパラメータとの衝突を避けることができます。Base58 と異なり、Base64 ではユーザーがコピーしたり読み上げたりする際に混同しやすい文字（ゼロ、大文字の O、大文字の I、小文字の l）が含まれているため注意が必要です。`,
+},
+
+validate_signature_three: {
+  signing_and_ownership_heading: `メッセージ署名と所有権`,
+  signing_and_ownership_paragraph_one: `ビットコインの擬似的な匿名性により、私たちが証明できる範囲には限りがあります。なぜなら鍵の所有者が署名を拒否したり、意図的に誤った鍵で署名したりすることが可能だからです。したがって、私たちが唯一証明できるのは、無効な署名を生成した鍵は、そのメッセージに正しく署名できる鍵とは一致しないということだけです。`,
+},
+
+validate_signature_four: {
+  one_for_one_heading: `一対一の関係`,
+  one_for_one_paragraph_one: `ECDSA の信頼性とセキュリティを確保するためには、秘密鍵で作成された署名は、対応する公開鍵でのみ検証可能である必要があります。異なる秘密鍵が同じ公開鍵や署名を生成できるようであれば、ECDSA のセキュリティと信頼性は損なわれてしまいます。したがって、メッセージに署名できた公開鍵こそが、そのビットコインを所有していると判断できます。`,
+      },
+    },
+  },
+
+    
 export default translations
