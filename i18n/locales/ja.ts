@@ -295,7 +295,7 @@ chapter_two: {
 
 hashing_one: {
   title: `ゼロ`,
-  nav_title: `コンピュータが唸りを上げて起動する`,
+  nav_title: `コンピュータがうなりを上げて起動する`,
   paragraph_one: `偶然なのか、それともホロキャットが本当に分かってやっていたのか、彼女が踏んだランダムな文字や数字は……別のランダムな文字や数字に変わっただけ？`,
   list_one: `> QX23Y6VGECTUKSNIEUTUB[P[pihof`,
   list_two: `> 1c31d1d9fb848a505fc0cdbea848ff1bdd46a9ed4d639d413d3a93035194eedf`,
@@ -476,7 +476,7 @@ resources: {
 chapter_three: {
   title: `51%攻撃`,
 
-  paragraph_one: `あなたはブロックエクスプローラーのアドレスを入力し、ブロック生成が再び10分間隔に戻っていることを確認します。にもかかわらず、ホロキャットは、大量のASICがうなりを上げているというのにぐっすり眠っています。`,
+  paragraph_one: `あなたはブロックエクスプローラーのアドレスを入力し、ブロック生成が再び10分間隔に戻っていることを確認します。なお、ホロキャットは、大量のASICがうなりを上げているというのにぐっすり眠っています。`,
   paragraph_two: `まったく、ネコってやつは…`,
   paragraph_three: `でも、何かがおかしい。ブロックが空で、トランザクションが処理されていません。何かミスをした？偶然か？——そんな疑問が浮かぶ中、コンピュータの画面に新たなメッセージが表示され、ホロキャットが飛び起きます。`,
   paragraph_four: `偶然なんかじゃない。`,
@@ -622,4 +622,175 @@ resources: {
      },
    },
  },
+
+chapter_four: {
+  title: `1.61BTCを受け取ろう`,
+  paragraph_one: `ふぅ、危なかった！BitReyとの戦いでまだ手が震えているけれど、勝てたことにホッとしている。`,
+  paragraph_two: `デスクに腰を下ろして深呼吸し、少しうとうとしながら今日の出来事を思い返す。`,
+  
+  intro_one: {
+    title: `イントロ`,
+    nav_title: `報酬を確保せよ`,
+    paragraph_one: `ホロキャット：「どちらかは寝たほうがいいニャ。キミは他のマイナーたちに連絡し始めるべきニャ。世界中よりも、彼らがもっと知りたがるはずニャ。」`,
+    paragraph_two: `バットリフト・ホバーデスクに腰を下ろしながら、あなたは今日の出来事を思い返す。ヴァンダープール。BitRey。抗議のためにみんなでマイニングを止めた――そんな話が出てたけど、実は誰もそんな合意なんてしていなかった、という驚きの事実。それは本当だったのか？すべて演出だったのか？それに、いつまでこの猫の世話をしなければならないのか？（遠くで、何かが「ニャー」と鳴いた。）`,
+    paragraph_three: `この先どうなるにせよ、資金は必要だ。…待てよ！BitReyとの対決で獲得したマイニング報酬をまだ受け取っていなかった！今すぐ引き出すことにする。`,
+  },
+
+public_key_one: {
+  title: `公開鍵`,
+  nav_title: `鍵のペア`,
+  heading: `鍵ペアについて`,
+  paragraph_one: `マイニングプールによれば、あなたには以前の作業で得た1.61BTCの受け取り権があるようです。`,
+  list_one: `秘密鍵`,
+  list_two: `公開鍵`,
+  paragraph_two: `でも待って、ウォレットをまだ持っていない！どこで買えばいいんだろう？と思うかもしれません。専用のハードウェアを購入してウォレットを作ることもできますが、実はパソコンやスマホでも簡単に作れます。やってみましょう！`,
+  paragraph_three: `ウォレットを作ると、「個人コード」と呼ばれる情報が生成されます。これは暗号学では「秘密鍵」と呼ばれ、通常は以下のようなペアになっています：`,
+  paragraph_four: `1組の鍵ペアがあれば、ウォレットを作って資金を管理できます。ビットコインを送るときは秘密鍵を使い、受け取るときは公開鍵を使います。`,
+},
+
+public_key_two: {
+  title: `公開鍵`,
+  nav_title: `楕円曲線暗号`,
+  paragraph_one: `秘密鍵（ゲーム内であなたが手にした「個人コード」）が手に入りました。では、そこから公開鍵をどうやって作るのでしょうか？`,
+  paragraph_two: `そのためには「楕円曲線暗号」という興味深い分野を少し覗いてみる必要があります。Elliptic Curve Cryptography、略してECCと呼ばれています。`,
+  paragraph_three: `ECCでは、楕円曲線上の特定の点を使って加算や乗算のような演算を行います。`,
+  paragraph_four: `ビットコインでは「secp256k1」という特定の曲線を使用しています。図には視覚的にわかりやすい簡略版が表示されていますが、同じ数学的ルールに従っています。`,
+  paragraph_five: `まず、この曲線上の特定の点から始めます。これは`,
+  tooltip_one: {
+    highlighted: `生成点（Generator Point）`,
+    question: `生成点って何？`,
+    link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520the%2520Generator%2520point%253F`,
+  },
+},
+
+public_key_three: {
+  title: `公開鍵`,
+  nav_title: `公開鍵の計算`,
+  paragraph_one: `秘密鍵から公開鍵を導き出すには、生成点との楕円曲線演算を繰り返します。生成点はsecp256k1の標準で定められた、曲線上の特定の点で常に同じ値です。`,
+  paragraph_two: `楕円曲線上での演算は加算と似ており、それを繰り返すことで乗算に相当する処理となります。アルゴリズムは次のように表されます。ここで「k」は秘密鍵、「P」は対応する公開鍵です：`,
+
+  python: {
+    paragraph_three: `関数 <span className="text-green">privatekey_to_publickey()</span> を完成させてください。この関数は、16進文字列で与えられた秘密鍵を受け取り、対応する公開鍵（GE＝グループ要素）オブジェクトを返します。`,
+  },
+  javascript: {
+    paragraph_three: `関数 <span className="text-green">privateKeyToPublicKey()</span> を完成させてください。この関数は、16進文字列で与えられた秘密鍵を受け取り、対応する公開鍵（GE＝グループ要素）オブジェクトを返します。`,
+  },
+
+  paragraph_four: `以下に、型変換のヒントをいくつか示します：`,
+  success: `よくできました！公開鍵はけっこう長いですね。次はそれを圧縮してみましょう！`,
+},
+
+public_key_four: {
+  title: `公開鍵`,
+  nav_title: `公開鍵の圧縮`,
+  paragraph_one: `公開鍵は x 座標と y 座標から構成され、合計で64バイトになります。これを33バイトに圧縮するには、y 座標を省略して、代わりに「y が偶数か奇数か」を示す1バイトのメタデータを前に付けます。楕円曲線の方程式は変数が2つしかないため、検証者は後でこのx座標とメタデータから完全な公開鍵を復元できます：`,
+
+  paragraph_two_javascript: `メタデータのバイトは、yが偶数なら「2」、奇数なら「3」とします。関数 <span className="text-green">compressPublicKey()</span> を完成させて、公開鍵を受け取り、33バイトの圧縮された公開鍵（16進文字列）を返してください。`,
+  paragraph_two_python: `メタデータのバイトは、yが偶数なら「2」、奇数なら「3」とします。関数 <span className="text-green">compress_publickey()</span> を完成させて、公開鍵を受け取り、33バイトの圧縮された公開鍵（16進文字列）を返してください。`,
+
+  success: `素晴らしい！これで圧縮された公開鍵ができました。次は、それをハッシュ化して、人間が読みやすい形式に変換していきましょう。`,
+}
+
+address_one: {
+  title: `アドレス`,
+  nav_title: `一方通行の道`,
+  heading: `よくできました！`,
+  paragraph_one: `これで圧縮された公開鍵が完成です！この鍵を使ってウォレット用のアドレスを生成するなど、さまざまなことができます。それについては次のチャレンジで学びましょう。`,
+  paragraph_two: `ただし、公開鍵の生成は「一方通行」の操作であることを覚えておきましょう。つまり、公開鍵から秘密鍵を逆算することはできません。もしやるとすれば、悪名高い、難しい数学の問題――離散対数問題を解かない限り、公開鍵を生成するために使われた秘密鍵を特定することはできません。`,
+  tooltip_one: {
+    question: `離散対数問題はビットコインとどう関係しているの？`,
+    link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520the%2520discrete%2520log%2520problem%2520relevant%2520to%2520bitcoin%253F`,
+    highlighted: `離散対数問題`,
+  },
+},
+
+address_two: {
+  title: `アドレス`,
+  nav_title: `圧縮公開鍵のハッシュ化`,
+  paragraph_one: `ハッシュのチャレンジを覚えていますか？実は、圧縮された公開鍵にハッシュをかけるだけで、最も基本的なビットコインアドレスが生成できます。ビットコインは、このためにSHA-256とRIPEMD-160という、2つの異なるハッシュアルゴリズムを使用しています。`,
+  paragraph_two: `手順：`,
+  paragraph_three: `<span className="indent-48">1. 圧縮公開鍵に SHA-256 をかけます。</span>`,
+  paragraph_four: `<span className="indent-48">2. その出力に RIPEMD-160 をかけます。最終的な出力は、16進数で表された20バイトの文字列になります。</span>`,
+  paragraph_five: `この33バイトの圧縮公開鍵（16進文字列）を受け取り、20バイトの公開鍵ハッシュ（16進文字列）を返す関数を完成させましょう。`,
+  paragraph_six:
+    `以下は、すでにインポート済みのハッシュライブラリのドキュメントです：\n` +
+    '<Link href="https://nodejs.org/api/crypto.html#class-hash" target="_blank" className="underline">JavaScript: crypto</Link>\n' +
+    '<Link href="https://docs.python.org/3/library/hashlib.html#usage" target="_blank" className="underline">Python: hashlib</Link>',
+  success: `素晴らしい！あと一歩でウォレットアドレスが完成します。`,
+},
+
+address_three: {
+  title: `アドレス`,
+  nav_title: `P2WPKHアドレスを作ろう`,
+  paragraph_one: `ビットコインにはいくつかの種類のアドレスがあります。前のステップでは、20バイトの圧縮公開鍵ハッシュを作成しました。今度はそれを、テストネット用の「Pay-to-Witness-Public-Key-Hash（P2WPKH）」アドレスに変換してみましょう。`,
+  paragraph_two: `まず、ハッシュに「witness version 0」を表すバイト（'0'）を先頭に追加します。この21バイトのデータは <span className="font-bold">ウィットネスプログラム</span> と呼ばれます。`,
+  paragraph_three: `次に、このウィットネスプログラムを「bech32」と呼ばれる、人間に読みやすい形式にエンコードします。bech32では、読みやすいプレフィックスとチェックサムが付加されます。`,
+  paragraph_four: `プレフィックスはネットワークによって決まります：`,
+  table_heading: {
+    item_one: `ネットワーク`,
+    item_two: `プレフィックス`,
+  },
+  table_rows: {
+    key_one: `メインネット`,
+    value_one: `bc`,
+    key_two: `テストネット`,
+    value_two: `tb`,
+    key_three: `レグテスト`,
+    value_three: `bcrt`,
+  },
+  paragraph_five: `今回はテストネットのアドレスを作るので、'tb' プレフィックスを使います。`,
+  paragraph_six: `データがbech32形式にエンコードされれば、ビットコインアドレスの完成です！`,
+  paragraph_seven: `圧縮公開鍵ハッシュから bech32 アドレスを作成する関数を完成させましょう。まずウィットネスプログラムを作成し、それを bech32 ライブラリを使ってアドレスに変換してください。`,
+  paragraph_eight: `必要であれば、bech32ライブラリのコードを見て、どの関数を使えばいいか調べてみましょう：`,
+  paragraph_eight_javascript: `<Link href="https://github.com/saving-satoshi/bech32js/blob/main/bech32.js" target="_blank" className="underline">JavaScript: @savingsatoshi/bech32js</Link>\n`,
+  paragraph_eight_python: `<Link href="https://github.com/saving-satoshi/bech32py/blob/main/bech32py/bech32.py" target="_blank" className="underline">Python: savingsatoshi_bech32py</Link>`,
+  success: `これで、マイニングで得たビットコインを受け取れるアドレスができました！`,
+},
+
+outro_one: {
+  title: `アウトロ`,
+  nav_title: `チャプター完了`,
+  heading: `成功！`,
+  paragraph_one: `あなた自身のビットコインウォレットを作成しました！`,
+  paragraph_two: `マイニングプールから、今作成したウォレットにビットコインを引き出しました。これで資金は万全。ヴァンダープールとBitReyが次に何を仕掛けてこようと、準備万端です。`,
+},
+
+resources: {
+  public_key_three: {
+    generator_point_heading: `生成点（Generator point）`,
+    generator_point_paragraph: `secp256k1曲線上の特定の点。その値はsecp256k1の標準に含まれており、常に同じです。この点は他の点と特別に異なるわけではありませんが、計算の標準的な出発点として合意されています。なぜこの点が選ばれたのか、正確な理由は今も明らかではありません。`,
+
+    elliptic_curve_operations_heading: `楕円曲線演算`,
+    elliptic_curve_operations_paragraph: `楕円曲線には独自の数学的ルールがあるため、加算や乗算のような単純な演算も異なる仕組みになります。簡潔さと分かりやすさのために、通常の乗算に似た演算には “*” のような既存の記号が使われます。`,
+
+    discrete_log_heading: `離散対数`,
+    discrete_log_paragraph: `これは、掛け算はできるけれど割り算ができないという数学的な仕組みです。簡単な例えとしては、時計を使った説明があります。たとえば、11時から3時間後は2時になります。「11＋3＝2」と言えますね。しかし「2−x＝11」を解こうとすると、xには無限の解（3、15、27、39...）が存在してしまいます。詳しくは <Link href="https://ja.wikipedia.org/wiki/離散対数問題" className="underline">Wikipedia</Link> を参照してください。`,
+
+    tip_one: `楕円曲線上の点との「掛け算」は、通常の数値の掛け算とは異なります。では、どのように掛け算をすれば良いのでしょう？生成点 <span className="p-1 font-mono bg-[#0000004D] m-1">G</span> は <span className="p-1 font-mono bg-[#0000004D] m-1">secp256k1.GE</span> 型のオブジェクトです。このクラスを調べて、どんなメソッドが使えるか確認してみましょう。`,
+
+    tip_two: `秘密鍵は16進形式で渡されますが、生成点との掛け算を行う前に数値（JavaScriptなら BigInt）に変換する必要があります。`,
+  },
+
+  public_key_four: {
+    y_coordinate_compression_heading: `公開鍵の圧縮`,
+    y_coordinate_compression_paragraph: `楕円曲線上で点の加算を計算する際には、2つの点の座標を使って、曲線上の第3の点の座標を導き出します。しかし、あるx座標に対しては、通常2つの異なるy座標が存在します（いくつかの特例を除く）。公開鍵を圧縮する際には、どちらかのy座標を選び、x座標だけと、それが偶数か奇数かを示すメタデータだけを含めます。このメタデータによって、後で正しいy座標を判別できます。`,
+
+    tip: `今回のチャレンジは実はとてもシンプルです。y座標が偶数か奇数かを判定し、その情報をメタデータとして公開鍵の先頭に付け加えるだけなのです。`,
+  },  
+      address_two: {
+        hash_algo_heading: `SHA-256、RIPEMD-160`,
+        hash_algo_paragraph: `ハッシュ関数は、あらゆる種類・量のデータを入力として受け取り、常に同じサイズの結果を返します。SHA-256 では 32 バイト、RIPEMD-160 では 20 バイトです。出力は決定論的（同じ入力には必ず同じ出力）ですが、それ以外はランダムと区別できません。ハッシュ関数はデータを小さく一貫したフィンガープリント（指紋）へ要約します。`,
+        tip_one: `SHA-256 ハッシュを計算する際は、圧縮公開鍵を 16 進文字列ではなくバイト列としてハッシュしてください。JavaScript を使う場合は、16 進文字列をバッファに変換する必要があります。`,
+        tip_two: `ハッシュアルゴリズムを正しい順序で実行しているか必ず確認しましょう！`,
+      },
+      address_three: {
+        wpkh_heading: `Witness Public Key Hash（wpkh／ウィットネス公開鍵ハッシュ）アドレス`,
+        wpkh_paragraph: `ビットコインアドレスは、ユーザーが扱いやすいように設計された文字列です。短く、コピー＆ペーストしやすく、正確にコピーされたことを確認するためのチェックサムも備えています。アドレスは、受取人が後で使用できるビットコイン出力スクリプトを安全にエンコードしたものです。出力スクリプトには複数の種類があり、エンコード方式もいくつか存在します。このチャレンジでは、圧縮公開鍵を bech32 でエンコードし、Witness Public Key Hashアドレスを作成します。`,
+        network_heading: `メインネット、テストネット、サイネット、レグテスト`,
+        network_paragraph: `ビットコインソフトウェアを開発する際は、実際のお金を扱う前にコードをテストすることが重要です。最も簡単な方法の一つは、新しいジェネシスブロックを持ち、コインに価値がなく、マイニングが無料で簡単、しかもいつでもリセットできる別ブロックチェーンを使うことです。これらのチェーンは、メインネットの実際のコインやノードに干渉しない独立したノードネットワークによって支えられています。Testnet と Signet は、世界規模でメインネットと並行して維持されている代表的な代替ビットコインブロックチェーンです。Regtest は完全にローカルで動作し、ネットワーク接続を必要としない開発者向けモードです。`,
+        tip: `bech32 ライブラリをよく確認し、利用できる正確なメソッドを探してください。`,
+      },
+    },
+  },
+
 export default translations
