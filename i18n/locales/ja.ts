@@ -25,19 +25,13 @@ about: {
   mobile_title: `Saving Satoshi（サトシを救え）とは`,
   subtitle: `2139年。最後のビットコイン採掘まであと2週間。数か月にわたり、サトシ・スクエアではカウントダウンの時計が時を刻んでいる。`,
   intro: `世界がこの歴史的な瞬間を待ちわびる中、ネットワークが突然停止する。<br><br>あなたの時計「Everything Watch」には、「サトシ・ナカモト」と名乗る誰かから、WhiskerWareブランドのホロキャットが届く。（他のeホログラムと似ているが、これは猫の形をしている。）<br>あなたが鼻をちょんと押すと、ホロキャットが現れる。`,
-}
 
 project: {
   title: `ビットコインは奥深いもの。でも、学び方は堅苦しくなくてもいい。`,
-
   paragraph_one: `Saving Satoshi は、ビットコイン技術をテーマにした、気軽に楽しめるインタラクティブ（双方向的）なロールプレイングゲーム（RPG）です。物語仕立てのストーリーとゲーム要素、そしてちょっとユニークな課題を組み合わせて、ビットコイン開発の学びを楽しく始められるようにしています。`,
-
   paragraph_two: `このゲームは、ビットコインが<span className="italic">本当に</span>どう動いているのかを知りたい人や、好奇心旺盛なプログラマーのために、楽しみながら学べるよう設計されています。ビットコインのオープンソースソフトウェア（₿OSS）に魅了され、貢献したいと考えている人にぴったりです。`,
-
   paragraph_three: `各章には、コードを使ったレッスンコンテンツ、シミュレーション、プログラミング演習が含まれており、ビットコイン技術の奥深い仕組みを楽しく学べるよう工夫されています。`,
-
   paragraph_four: `シンプルでわかりやすい例から始まり、段階的に複雑さを積み重ねていきます。臨場感のあるユーザー体験、豊かなビジュアル、そしてシームレスな操作を通じて、プレイヤーは次のようなさまざまなトピックを旅していきます：`,
-
   chapter_topics: {
     list_one: `ジェネシスブロックに隠された秘密のメッセージを探し、解読する`,
     list_two: `ハッシュ関数とプルーフ・オブ・ワーク`,
@@ -50,13 +44,9 @@ project: {
     list_nine: `ビットコインスクリプト`,
     list_ten: `Lightning Networkの仕組み`,
   },
-
   paragraph_five: `でも、このゲームは単なるカリキュラムではありません。ビットコインの教育も、その技術と同じくらい創造的でユニークであるべきだと、私たちは考えています。だからこそ、このゲームでは、文化・歴史・デザインといったビットコインの魅力的な側面にも触れています。`,
-
   paragraph_six: `私たちは、ビットコインは世界にとってポジティブな力だと信じています。このプロジェクトは、情熱的な貢献者たちによって最高の基準で作られており、100％無料・オープンソース（FOSS）です。Saving Satoshi の制作背景についてもっと知りたい方は、<Link href="https://bitcoin.design/guide/case-studies/saving-satoshi" className="underline" target="_blank">Bitcoin Design Guide のケーススタディ</Link>をご覧ください。`,
-
   paragraph_seven: `ゲームをプレイすることから、ワークショップの開催、コードの貢献まで、Saving Satoshi コミュニティに参加する方法はさまざまです。あなたの参加を心から歓迎します。<Link href="https://github.com/saving-satoshi/saving-satoshi" className="underline" target="_blank">GitHub の Saving Satoshi</Link>をフォローしたり、<Link href="https://discord.gg/eBGRaCSjg5" className="underline" target="_blank">Bitcoin Design コミュニティの Discord</Link>内 #saving-satoshi チャンネルに参加して、ぜひご連絡ください。`,
-
   paragraph_eight: `また、<Link href="https://x.com/savingsatoshi" className="underline" target="_blank">X</Link>、<Link href="https://njump.me/npub1vy6wcgw6jhhtcmpawvlnsfx7g8qt8r40z7qlks9zwa4ed57vm5eqx527hr" className="underline" target="_blank">nostr</Link>、<Link href="https://bsky.app/profile/bitcoindevs.bsky.social" className="underline" target="_blank">Bluesky</Link>でもつながることができます。メンションや感想をいただけるととてもうれしいです！`,
 },
 
@@ -72,7 +62,6 @@ contributing: {
   contribute: {
     title: `貢献する`,
     paragraph_one: `どんな提案も大歓迎です。コードのレビューや品質チェック（QA）を手伝ってくれる方も常に募集中です。コードの改善提案があれば、<a href="https://github.com/saving-satoshi/saving-satoshi" target="_blank" rel="noreferrer">GitHub</a>で issue を立てたり、Pull Request を送ったりしてください。`,
-
     paragraph_two: `デザインやストーリー、その他何らかの形で関わりたい方は、<a href="https://discord.gg/B9WURkwF" target="_blank" rel="noreferrer">Bitcoin Design Discord</a>内の #saving-satoshi チャンネルにご参加ください。やりたいことを伝えていただければ、サポートします。`,
   },
 },
@@ -80,33 +69,24 @@ contributing: {
 privacy: {
   title: `プライバシーへの取り組み`,
   paragraph_one: `Saving Satoshi では、ユーザーのプライバシーとセキュリティの確保に全力で取り組んでいます。私たちは透明性を信条としており、アプリの利用状況をどのように、なぜ計測しているのかを知っていただきたいと考えています。そのために、<Link href="https://umami.is/" className="underline" target="_blank">Umami</Link> という強力なツールを使用しています。`,
-
   sub_heading_one: `Umami とは？`,
   paragraph_two: `Umami はオープンソースの解析プラットフォームで、アプリの利用状況を把握するための重要なインサイトを提供してくれます。これにより、データに基づいた判断を行い、アプリをより使いやすく、ユーザーフレンドリーで安全なものへと改善し続けることができます。Umami のダッシュボードは<Link className="underline" href="https://visits.bitcoindevs.xyz/share/zFmD5WIus09mDxEf/Saving%20Satoshi" target="_blank">こちら</Link>で公開しています。`,
-
   sub_heading_two: `収集するデータは？`,
   paragraph_three: `ご安心ください。私たちが収集するのは、個人を特定しない匿名化されたデータのみです。具体的には次のような目的で活用しています：`,
-
   list_item_one_title: `プロダクト改善：`,
   list_item_one_text: `アプリのどこを改良すればよいかを把握し、より効率的で使いやすく、安全なものにするためにデータを利用します。`,
-
   list_item_two_title: `互換性向上：`,
   list_item_two_text: `ユーザーがどのデバイスやプラットフォームを使っているかを理解し、さまざまな環境でアプリがスムーズに動作するように最適化します。`,
-
   sub_heading_three: `あなたのプライバシーが最優先`,
   paragraph_four: `個人を特定できる情報は一切収集せず、データはアプリ改善の目的のみに使用されます。第三者に共有・販売することは決してありません。`,
-
   paragraph_five: `データ収集やプライバシーポリシーについてご不安やご質問がある場合は、いつでもお気軽にご連絡ください。私たちは透明性と安全性をもって、安心してご利用いただける体験を提供します。`,
 },
 
 contributors: {
   title: `ぜひお楽しみください！`,
   paragraph_one: `Saving Satoshi は、過去数年間にわたる、多くの人々の協力なしには実現できませんでした。まさに「村全体」で取り組んできた成果と言えます！`,
-
   paragraph_two: `コアチームは、<Link href="https://adamjonas.com/" className="underline" target="_blank">Adam Jonas</Link>、<Link href="https://www.germanysbestkeptsecret.com/" className="underline" target="_blank">Christoph Ono</Link>（デザインリード）、<Link href="https://satsie.dev/" className="underline" target="_blank">Satsie</Link>、<Link href="https://github.com/benalleng" className="underline" target="_blank">BenAllenG</Link>（エンジニアリングリード）、<Link href="https://github.com/pinheadmz" className="underline" target="_blank">Matthew Zipkin</Link>（レッスンコンテンツリード）、<Link href="https://x.com/TuedonTuoyo" className="underline" target="_blank">Tuedon Tuoyo</Link>、<Link href="https://www.artassoiants.com/" className="underline" target="_blank">Art Assoiants</Link>（プロダクトマネージャー）、そして物語執筆のために <Link href="https://spiral.xyz/" className="underline" target="_blank">Spiral</Link> からお借りした 4 匹の謎めいた猫たちで構成されています。`,
-
   paragraph_three: `そのほかにも、多くの貢献者がさまざまな場面で重要な役割を果たしてくれました。ここでご紹介するのはその一部ですが、 <Link href="https://x.com/ecurrencyhodler" className="underline" target="_blank">ecurrencyhodler</Link>、<Link href="https://www.jtwoodhouse.com/" className="underline" target="_blank">JT Woodhouse</Link>、<Link href="https://x.com/_Jsms_" className="underline" target="_blank">JSMS</Link>、<Link href="https://github.com/afterburn" className="underline" target="_blank">Kevin Karsopawiro</Link>、<Link href="https://github.com/daviroo" className="underline" target="_blank">daviroo</Link>、<Link href="https://github.com/nully0x" className="underline" target="_blank">nully0x</Link>、<Link href="https://github.com/vinayaksh42" className="underline" target="_blank">Vinayak Sharma</Link>、<Link href="https://github.com/shaavan" className="underline" target="_blank">Shashwat Vangani</Link>、<Link href="https://github.com/aureleoules" className="underline" target="_blank">Aurèle Oulès</Link>、<Link href="https://github.com/sabakhilji" className="underline" target="_blank">sabakhilji</Link> などが挙げられます（順不同）。`,
-
   paragraph_four: `コード貢献者の全リストは、<Link href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" className="underline" target="_blank">GitHub</Link> でご覧いただけます。`,
 },
 
@@ -228,7 +208,6 @@ end: {
   next: `保存せずに進む`,
   feedback: `フィードバックを送る`,
 },
-
 resources: {
   genesis_two: {
     scriptsig_heading: `ScriptSig`,
@@ -237,13 +216,11 @@ resources: {
     block_explorer_paragraph: `ブロックエクスプローラーは、ブロックチェーンネットワークを探索し理解するための重要なツールです。使いやすいインターフェースを通じて、ブロックチェーン上のデータを調査・分析できます。トランザクション履歴の確認、残高の閲覧、個々のブロックやトランザクションの進捗を追跡することが可能です。`,
     tip: `ブロック内のトランザクションを展開し、Coinbase入力の中にある「scriptSig(Hex)」カテゴリを探してください。`,
   },
-
   genesis_three: {
     bash_heading: `Bashコマンド`,
     bash_paragraph: `ジェネシスブロックにサトシが埋め込んだテキストの圧縮を元に戻すため、いくつかの基本的なBashコマンドとオプションを使用します。`,
     tip: `'xxd' コマンドの主な機能は、バイナリファイルを16進数に変換することです。'-r' オプションを付けると、逆の変換を行い、16進ダンプをバイナリに変換します。ASCII文字列の場合、このバイナリ形式は人間が読める形になります。'-p' オプションを使うと、プレーンなスタイルで出力が表示され、結果を読みやすくなります。`,
   },
-
   transacting_two: {
     transactions_heading: `トランザクション`,
     transactions_paragraph: `暗号通貨におけるトランザクションとは、ひとまとまりで実行される（途中で分割できない）支払い処理、いわば「原子的な（不可分な）」送金に相当します。ビットコインのようなUTXOベースの通貨では、既存のUTXO（未使用のトランザクション出力）を消費し、新しいUTXOを生成することで処理が行われます。誰かが暗号通貨のトランザクションを開始するということは、特定の量のコインを、あるウォレットから別のウォレットに送るようブロックチェーンに指示することです。ビットコインのようなUTXOベースの通貨では、このとき送信者の既存UTXOが消費され、受信者のために新しいUTXOが生成されることで、所有権台帳が更新されます。`,
@@ -253,7 +230,6 @@ resources: {
     asm_paragraph: `scriptSig や scriptPubKey の隣に「ASM」と表示されている場合、それはその値が「アセンブリ形式」、つまりスクリプト命令のより人間に読みやすい形式であることを意味します。`,
     tip: `Op_Code「OP_Pushbytes_33」がある場合、OP_RETURNの中に33バイト（合計66文字）の文字列があるはずです。`,
   },
-
   transacting_three: {
     secrets_heading: `ビットコインに秘められた秘密`,
     secrets_paragraph: `前のチャレンジで見たように、ビットコインスクリプトに秘密を埋め込む文化は、ジェネシスブロックの時代から存在していました。情報をブロックチェーン上に保存したり、ビットコインの外の価値に関連付けたり、他人にメッセージを伝えたりするために、人々は入出力以外のデータもブロックチェーンに保存してきたのです。`,
@@ -376,13 +352,11 @@ scripting_two: {
   title: `自動化`,
   nav_title: `ハッシュ関数を作る`,
   paragraph_one: `さあ、自分でコードを書いて動かす時です。先頭が5つのゼロ（"00000..."）で始まるSHA256ハッシュを生成するスクリプトを書きましょう。異なる入力でSHA256関数を何度も呼び出して、条件を満たすまで繰り返し試してください。ループ内で整数を増加させて、入力を変えてみるのがいいでしょう。暗号学ではこの数を「ナンス（nonce）」または「一度だけ使う数値」と呼ぶことがあります。`,
-
   python: {
     paragraph_two: `先頭が5つのゼロで始まるハッシュを見つけたら、そのナンスを関数から返してください。ここではPythonのhashlibライブラリを使って関数を作ります。必要であれば、以下の外部リソースも参考にしてください：`,
     list_one: `<Link href="https://docs.python.org/3/library/hashlib.html" target="_blank" className="underline">hashlib ドキュメント</Link>`,
     list_two: `<Link href="https://datagy.io/python-sha256/" target="_blank" className="underline">Python 関数チュートリアル</Link>`,
   },
-
   javascript: {
     paragraph_two: `先頭が5つのゼロで始まるハッシュを見つけたら、そのナンスを関数から返してください。ここではJavaScriptのcryptoライブラリを使って関数を作ります。必要であれば、以下の外部リソースも参考にしてください：`,
     list_one: `<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" target="_blank" className="underline">crypto ドキュメント</Link>`,
@@ -438,21 +412,18 @@ resources: {
     tip: `どんどん入力してみよう！SHA-256アルゴリズムでは、似たような入力でもまったく異なるランダムなハッシュになります。`,
     spoiler: `8文字の単語を試してみて。`,
   },
-
   hashing_four: {
     power_of_random_heading: `ランダムの力`,
     power_of_random_paragraph: `完全にランダムな状況と同じように、SHA-256のハッシュ関数は新しいデータを追加するたびに完全にランダムな結果を返します。たとえば『戦争と平和』をハッシュしてから、たった1文字を追加するだけでも、まったく違うハッシュになります。1文字ごとにハッシュがランダムに変化するのです。16進数では使用される文字は16種類（0〜9とa〜f）なので、ハッシュが「0」で始まる確率はどのくらいでしょうか？`,
     tip: `計算してみよう！1桁ごとに16通りあるなら、「00」で始まる確率は？「000」では？`,
     spoiler: `文字「s」で始まる単語を試してみて。`,
   },
-
   hashing_six: {
     collision_resistance_heading: `SHA256と衝突耐性`,
     collision_resistance_paragraph: `SHA-256は256ビット（64文字）のハッシュ値を返します。これは入力データを一意に表すものです。SHA-256はMerkle–Damgård構造に基づいたハッシュ関数の一種で、これはシンプルな圧縮関数を繰り返し処理してハッシュ関数を構築する方法です。メッセージは固定サイズのブロックに分割され、それぞれのブロックが前の結果と結合されて処理されていき、最終的なハッシュ値が生成されます。この構造によりSHA-256は高いセキュリティ性と衝突耐性を持ち、現代の暗号技術においてデータの整合性や認証の基礎として広く使われています。`,
     tip: `このレッスンでは特にヒントはありません。Saving Satoshiが進むにつれて、少しずつ自分で解く力が求められるようになります。`,
     spoiler: `1文字加えるごとに完全に異なるハッシュができるので、「00」で始まるまで追加し続ける手もあります…あるいは「trigonometry」という単語を試しても。`,
   },
-
   scripting_one: {
     hash_libraries_heading: `ハッシュ関数`,
     hash_libraries_paragraph: `Node.jsのcryptoライブラリや、Pythonのhashlibライブラリは、ハッシュアルゴリズムを実用的なツールとして提供してくれるコードライブラリです。多くの人が大切なシステムの安全性をこれらに依存しているため、これらのライブラリは正確性とセキュリティを確保するために厳しく検証されています。`,
@@ -462,7 +433,6 @@ resources: {
     tip_two: `特定の値になるまで実行し続ける関数をどう作るか考えてみましょう。`,
     tip_three: `答えを必ず <span className="p-1 font-mono bg-[#0000004D] m-1">console.log()</span> または <span className="p-1 font-mono bg-[#0000004D] m-1">print()</span> で表示するようにしてください。これが唯一、IDEがあなたの答えを検証できる方法です。`,
   },
-
   mining_one: {
     mining_heading: `マイニング`,
     mining_paragraph: `マイニングはこれまで学んできたすべての概念が一つに集まる場所です。ビットコインのマイニングとは、新しいビットコインを発行し、トランザクションをブロックチェーンに追加するプロセスです。マイナーたちは各ブロックにおいて、有効で一意な「ナンス」を見つけるという複雑な数学的パズルを解くために競い合います。このプルーフ・オブ・ワークには膨大な計算力とエネルギーが必要ですが、これによって取引の正当性が保証され、ネットワーク全体の分散性と安全性が保たれています。成功したマイナーは新しく発行されたビットコインと、トランザクション手数料を報酬として受け取ります。`,
@@ -474,7 +444,6 @@ resources: {
  },    
 chapter_three: {
   title: `51%攻撃`,
-
   paragraph_one: `あなたはブロックエクスプローラーのアドレスを入力し、ブロック生成が再び10分間隔に戻っていることを確認します。なお、ホロキャットは、大量のASICがうなりを上げているというのにぐっすり眠っています。`,
   paragraph_two: `まったく、ネコってやつは…`,
   paragraph_three: `でも、何かがおかしい。ブロックが空で、トランザクションが処理されていません。何かミスをした？偶然か？——そんな疑問が浮かぶ中、コンピュータの画面に新たなメッセージが表示され、ホロキャットが飛び起きます。`,
@@ -587,7 +556,6 @@ outro_one: {
   paragraph_one: `よくやりました！あなたと仲間のマイナーたちは、リソースをプールしてヴァンダープールの51％攻撃を撃退することに成功しました。もう空のブロックは提出されておらず、どうやら彼は諦めたようです。`,
   paragraph_two: `さあ、報酬を受け取りましょう！次の章でビットコインを引き出してください。`,
 },
-
 resources: {
   solo: {
     hashrate_heading: `マイニングハッシュレート`,
@@ -606,16 +574,12 @@ resources: {
   split: {
     payout_heading: `報酬分配方式`,
     payout_subheading: `マイニングプールは、いくつかの異なる方式で報酬を分配します。それぞれに微妙ながらも重要な違いがあります：`,
-
     pps_heading: `Pay-Per-Share（PPS）`,
     pps_paragraph: `PPS方式では、プールがブロックを実際に発見できたかどうかに関係なく、有効なシェアを提出するたびにマイナーに一定額の報酬が支払われます。これにより収益が安定し、定期的な収入を求めるマイナーに好まれます。変動の激しい仮想通貨マイニングにおいて、PPSは安定した収入源を提供します。ただし、プールがブロックを見つけられない場合は、運営コストやリスク補填のために手数料が差し引かれることがあります。従来のPPSでは、プールが困難な状況にあるとき、マイナーの受け取る報酬が減ることもあります。`,
-
     pplns_heading: `Pay-Per-Last-N-Shares（PPLNS）`,
     pplns_paragraph: `PPLNS方式では、最後の「N個」のシェアの提出に基づいてマイナーの貢献度を評価し、報酬を分配します。この方式は、一貫して活動しているマイナーを優遇するため、プールを転々とする行動（プールホッピング）を抑制する効果があります。ブロックが見つかった時点で、直近に多くのシェアを提出したマイナーに比例して報酬が与えられるため、継続的な参加を促します。`,
-
     pps_plus_heading: `Pay-Per-Share Plus（PPS+）`,
     pps_plus_paragraph: `PPS+方式では、シェア1つごとに固定の報酬が支払われるPPSの仕組みに加えて、プールの安定性や信頼性に貢献するマイナーへ特別ボーナスが付与されることがあります。このボーナスによって、長期的にプールに参加し続けるインセンティブが生まれます。安定した報酬に加えて、追加報酬も期待できることから、信頼性と利益の両立を重視するマイナーにとって魅力的な方式です。`,
-
     fpps_heading: `Full Pay-Per-Share（FPPS）`,
     fpps_paragraph: `FPPS方式では、マイナーが提出したシェア1つごとに、プールがブロックを見つけたかどうかにかかわらず報酬が支払われます。従来のPPSよりも安定性が高く、報酬の減額もありません。プールの状況にかかわらず、マイナーは自分の働きに対してフルに報酬を受け取ることができます。これは、安定した収益を重視するマイナーにとって魅力的な、シンプルで分かりやすい報酬方式です。`,
      },
@@ -667,14 +631,12 @@ public_key_three: {
   nav_title: `公開鍵の計算`,
   paragraph_one: `秘密鍵から公開鍵を導き出すには、生成点との楕円曲線演算を繰り返します。生成点はsecp256k1の標準で定められた、曲線上の特定の点で常に同じ値です。`,
   paragraph_two: `楕円曲線上での演算は加算と似ており、それを繰り返すことで乗算に相当する処理となります。アルゴリズムは次のように表されます。ここで「k」は秘密鍵、「P」は対応する公開鍵です：`,
-
   python: {
     paragraph_three: `関数 <span className="text-green">privatekey_to_publickey()</span> を完成させてください。この関数は、16進文字列で与えられた秘密鍵を受け取り、対応する公開鍵（GE＝グループ要素）オブジェクトを返します。`,
   },
   javascript: {
     paragraph_three: `関数 <span className="text-green">privateKeyToPublicKey()</span> を完成させてください。この関数は、16進文字列で与えられた秘密鍵を受け取り、対応する公開鍵（GE＝グループ要素）オブジェクトを返します。`,
   },
-
   paragraph_four: `以下に、型変換のヒントをいくつか示します：`,
   success: `よくできました！公開鍵はけっこう長いですね。次はそれを圧縮してみましょう！`,
 },
@@ -683,10 +645,8 @@ public_key_four: {
   title: `公開鍵`,
   nav_title: `公開鍵の圧縮`,
   paragraph_one: `公開鍵は x 座標と y 座標から構成され、合計で64バイトになります。これを33バイトに圧縮するには、y 座標を省略して、代わりに「y が偶数か奇数か」を示す1バイトのメタデータを前に付けます。楕円曲線の方程式は変数が2つしかないため、検証者は後でこのx座標とメタデータから完全な公開鍵を復元できます：`,
-
   paragraph_two_javascript: `メタデータのバイトは、yが偶数なら「2」、奇数なら「3」とします。関数 <span className="text-green">compressPublicKey()</span> を完成させて、公開鍵を受け取り、33バイトの圧縮された公開鍵（16進文字列）を返してください。`,
   paragraph_two_python: `メタデータのバイトは、yが偶数なら「2」、奇数なら「3」とします。関数 <span className="text-green">compress_publickey()</span> を完成させて、公開鍵を受け取り、33バイトの圧縮された公開鍵（16進文字列）を返してください。`,
-
   success: `素晴らしい！これで圧縮された公開鍵ができました。次は、それをハッシュ化して、人間が読みやすい形式に変換していきましょう。`,
 }
 
@@ -753,27 +713,20 @@ outro_one: {
   paragraph_one: `あなた自身のビットコインウォレットを作成しました！`,
   paragraph_two: `マイニングプールから、今作成したウォレットにビットコインを引き出しました。これで資金は万全。ヴァンダープールとBitReyが次に何を仕掛けてこようと、準備万端です。`,
 },
-
 resources: {
   public_key_three: {
     generator_point_heading: `生成点（Generator point）`,
     generator_point_paragraph: `secp256k1曲線上の特定の点。その値はsecp256k1の標準に含まれており、常に同じです。この点は他の点と特別に異なるわけではありませんが、計算の標準的な出発点として合意されています。なぜこの点が選ばれたのか、正確な理由は今も明らかではありません。`,
-
     elliptic_curve_operations_heading: `楕円曲線演算`,
     elliptic_curve_operations_paragraph: `楕円曲線には独自の数学的ルールがあるため、加算や乗算のような単純な演算も異なる仕組みになります。簡潔さと分かりやすさのために、通常の乗算に似た演算には “*” のような既存の記号が使われます。`,
-
     discrete_log_heading: `離散対数`,
     discrete_log_paragraph: `これは、掛け算はできるけれど割り算ができないという数学的な仕組みです。簡単な例えとしては、時計を使った説明があります。たとえば、11時から3時間後は2時になります。「11＋3＝2」と言えますね。しかし「2−x＝11」を解こうとすると、xには無限の解（3、15、27、39...）が存在してしまいます。詳しくは <Link href="https://ja.wikipedia.org/wiki/離散対数問題" className="underline">Wikipedia</Link> を参照してください。`,
-
     tip_one: `楕円曲線上の点との「掛け算」は、通常の数値の掛け算とは異なります。では、どのように掛け算をすれば良いのでしょう？生成点 <span className="p-1 font-mono bg-[#0000004D] m-1">G</span> は <span className="p-1 font-mono bg-[#0000004D] m-1">secp256k1.GE</span> 型のオブジェクトです。このクラスを調べて、どんなメソッドが使えるか確認してみましょう。`,
-
     tip_two: `秘密鍵は16進形式で渡されますが、生成点との掛け算を行う前に数値（JavaScriptなら BigInt）に変換する必要があります。`,
   },
-
   public_key_four: {
     y_coordinate_compression_heading: `公開鍵の圧縮`,
     y_coordinate_compression_paragraph: `楕円曲線上で点の加算を計算する際には、2つの点の座標を使って、曲線上の第3の点の座標を導き出します。しかし、あるx座標に対しては、通常2つの異なるy座標が存在します（いくつかの特例を除く）。公開鍵を圧縮する際には、どちらかのy座標を選び、x座標だけと、それが偶数か奇数かを示すメタデータだけを含めます。このメタデータによって、後で正しいy座標を判別できます。`,
-
     tip: `今回のチャレンジは実はとてもシンプルです。y座標が偶数か奇数かを判定し、その情報をメタデータとして公開鍵の先頭に付け加えるだけなのです。`,
   },  
       address_two: {
@@ -1039,19 +992,16 @@ verify_signature_two: {
   signature_verification_heading: `署名検証`,
   signature_verification_paragraph_one: `署名検証とは、ある当事者が秘密の数値（秘密鍵）を知っている場合にのみ生成できるデータ（署名）を提供する、数学的アルゴリズムです。検証では、署名・公開鍵・メッセージを照合し、アルゴリズムの結果が TRUE になれば署名は本物と判断されます。`,
 },
-
 verify_signature_three: {
   signature_encoding_heading: `署名のエンコーディング`,
   signature_encoding_paragraph_one: `DER（Distinguished Encoding Rules）署名は、ビットコインで ECDSA 署名をエンコードするためのフォーマットです。ECDSA 署名は秘密鍵と署名対象メッセージのハッシュから生成され、32 バイトずつの 2 つの数値（r, s）で構成されます。詳細は <Link href="https://technicaldifficulties.io/2020/07/22/bip-66-unpacking-der-signatures/" target="_blank" className="underline">こちら</Link> を参照してください。`,
 },
-
 verify_signature_four: {
   eliptic_curve_heading: `楕円曲線電子署名アルゴリズム（ECDSA）`,
   eliptic_curve_paragraph_one: `ECDSA は、資金が正当な所有者によってのみ使用されることを保証するためにビットコインで採用されている暗号アルゴリズムです。公開鍵は秘密鍵に楕円曲線乗算を施して導出できますが、逆に公開鍵から秘密鍵を導くのは計算的に不可能です。この一方向性がビットコインのセキュリティの要となっています。`,
   public_private_key_heading: `公開鍵と秘密鍵`,
   public_private_key_paragraph_one: `ビットコインでは鍵ペアを用いて取引の安全性を確保します。秘密鍵は秘匿され、トランザクションの署名やアドレスの所有証明に使われます。秘密鍵から派生する公開鍵は共有可能で、秘密鍵を明かすことなく、署名が秘密鍵の所有者によって行われたことを検証するために使用されます。`,
 },
-
 verify_signature_five: {
   finite_field_arithmetic_heading: `有限体演算`,
   finite_field_arithmetic_paragraph_one: `ECDSA で用いられる演算は、一定範囲内（有限体）の数を対象に行います。加算・減算・乗算・モジュラ逆数の計算などを、体のサイズを法として実行することが、ビットコインの楕円曲線計算に不可欠です。`,
@@ -1064,17 +1014,14 @@ validate_signature_one: {
   message_verification_heading: `メッセージ検証の重要性`,
   message_verification_paragraph_one: `メッセージ検証は、ビットコインエコシステム内の通信のセキュリティを高めます。これにより、メッセージの真正性と完全性を検証できるため、ピアツーピア取引やスマートコントラクトにおける当事者間の通信など、信頼と検証が不可欠な場面で役立ちます。さらに、メッセージ検証は、身元確認や特定のビットコインアドレスの所有証明といった様々な応用の基礎となります。暗号学的な保証を追加することで、ビットコインネットワークのトラストレスかつ分散型の性質を強化します。`,
 },
-
 validate_signature_two: {
   base64_encoding_heading: `Base64 エンコーディング`,
   base64_encoding_paragraph_one: `Base64 は基本的なバイト → テキストのエンコーディング方式で、バイト列への変換やバイト列からテキストへの変換を行う際に、URL パスやクエリパラメータとの衝突を避けることができます。Base58 と異なり、Base64 ではユーザーがコピーしたり読み上げたりする際に混同しやすい文字（ゼロ、大文字の O、大文字の I、小文字の l）が含まれているため注意が必要です。`,
 },
-
 validate_signature_three: {
   signing_and_ownership_heading: `メッセージ署名と所有権`,
   signing_and_ownership_paragraph_one: `ビットコインの擬似的な匿名性により、私たちが証明できる範囲には限りがあります。なぜなら鍵の所有者が署名を拒否したり、意図的に誤った鍵で署名したりすることが可能だからです。したがって、私たちが唯一証明できるのは、無効な署名を生成した鍵は、そのメッセージに正しく署名できる鍵とは一致しないということだけです。`,
 },
-
 validate_signature_four: {
   one_for_one_heading: `一対一の関係`,
   one_for_one_paragraph_one: `ECDSA の信頼性とセキュリティを確保するためには、秘密鍵で作成された署名は、対応する公開鍵でのみ検証可能である必要があります。異なる秘密鍵が同じ公開鍵や署名を生成できるようであれば、ECDSA のセキュリティと信頼性は損なわれてしまいます。したがって、メッセージに署名できた公開鍵こそが、そのビットコインを所有していると判断できます。`,
@@ -1085,7 +1032,6 @@ validate_signature_four: {
 chapter_six: {
   title: `鍵の保有者`,
   paragraph_one: `ああっ！ヴァンダープールは、自分の詐欺的な主張を暴露したあなたを捕らえようとしています。ホロキャットが袋から飛び出したにもかかわらず、多くの怯えた人々は、ヴァンダープールが自分自身や家族、その先祖にまつわって作り上げた神話にすがり続けています。時代は不安定で、人々はヒーローを必要としているのです。残念ながら、多くの人にとって彼が唯一の希望なのです。`,
-
   intro_one: {
     title: `イントロ`,
     nav_title: `それって本当にサトシ？`,
@@ -1093,7 +1039,6 @@ chapter_six: {
     paragraph_two: `あなたはふと立ち止まり、これまでのすべてのメッセージが「サトシ・ナカモト」の署名で送られていたことに気づきます。ビットコインの理念に共感する誰かが使っている偽名だろうと、あなたは当然のように思っていました。本物のサトシ・ナカモトなわけがない。でも……ついに、あなたは聞いてみる決心をします。`,
     paragraph_three: `—「こんなこと聞いたらバカにされるかもしれないけど……あなたって、本物のサトシなの？」`,
   },
-
   intro_two: {
     title: `イントロ`,
     nav_title: `ミカ3000への支払い`,
@@ -1111,7 +1056,6 @@ in_out_one: {
   paragraph_two: `あなたはビットコインのフルノードを開き、ブロックチェーン上の自分の資金の所在を確認するためにコマンドを実行します。`,
   paragraph_three: `これが「未使用トランザクション出力（UTXO）」です。チャプター4で見覚えのある圧縮公開鍵ハッシュやアドレスが確認できるかもしれません。金額も正しそうです：1.61 BTC。`,
 },
-
 in_out_two: {
   title: `入出力の基本`,
   nav_title: `送金先アドレス`,
@@ -1119,7 +1063,6 @@ in_out_two: {
   paragraph_two: `あれ？このアドレスは自分のものよりずいぶん長いぞ。なぜだろう…`,
   paragraph_three: `あなたの1.61 BTCのうち1 BTCをこのアドレスに送るトランザクションを作成・署名する必要があります。チャプター5ではサトシのトランザクション構造を見ましたが、今回は少し違います。現在ではより新しいトランザクション形式が存在し、Segregated Witness（SegWit／セグウィット）というプロトコルを使ってトランザクションバージョンを2に設定します。`,
 },
-
 in_out_three: {
   title: `入出力の基本`,
   nav_title: `トランザクションのステップ`,
@@ -1579,8 +1522,6 @@ put_it_together_three: {
     heading: `Transactionクラスの実装を完成させよう`,
     paragraph_one: `トランザクションを完成させるには、ビットコインのP2Pネットワーク上でブロードキャストできる形式でトランザクション全体をバイト列として出力する <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> メソッドが必要です。`,
     paragraph_two: `スクリプトでは、Transactionオブジェクトを作成し、署名を行います。このトランザクションには1つのインプット（<span className="underline">Inputクラス</span>で指定したUTXO）と、2つのアウトプットが含まれます：`,
-    bullet_one: `ミカ3000 に 100,000,000 satoshi（1 BTC）を送る → アドレス: bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj`,
-    bullet_two: `あなた自身に 61,000,000 satoshi（おつり）を戻す → アドレス: bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs`,
     paragraph_three: `インプットとアウトプットは分かっています。では、もうトランザクションを作って署名していいのでしょうか？まだです。1.61 BTC のインプットがあり、1 BTC のアウトプットがあります... 残りの 0.61 BTC はどこへ？これは「おつり」として自分のアドレスに返す必要があります。`,
     paragraph_four: `witnesses には「count」フィールドが存在しないことに注意してください。これは、witnessスタックの数がインプットの数と常に一致していなければならないためです。`,
     paragraph_five: `でも、ちょっと待ってください！「手数料」も必要です。おつりから少しだけ差し引いて、マイニングプールにインセンティブを与え、ブロックに含めてもらいましょう。今回はおつりを 61,000,000 satoshi に設定します。`,
@@ -1877,13 +1818,10 @@ resources: {
   mempool_transaction_one: {
     bytes_v_weight_heading: `バイトとウェイトユニットの違い`,
     bytes_v_weight_paragraph_one: `ビットコインのブロック構築において、「ウェイトユニット（WU）」と「バイト」は、トランザクションやブロックのサイズを測るための異なる指標です。`,
-
     bytes_v_weight_subheading_bytes: `バイト（Bytes）`,
     bytes_v_weight_paragraph_two: `バイトとは、トランザクションやブロックの実際のデータサイズを指します。シリアライズ（保存や転送可能な形式に変換）されたときの、トランザクションデータの実際のサイズです。Segregated Witness（SegWit）導入以前は、ブロックサイズの上限は1メガバイト（1MB）で、このバイト数で計測されていました。`,
-
     bytes_v_weight_subheading_wu: `ウェイトユニット（Weighted Units）`,
     bytes_v_weight_paragraph_three: `ウェイトユニットは、Bitcoin Improvement Proposal 141（<Link href="https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#user-content-Other_consensus_critical_limits" target="_blank" className="undeline">BIP 141</Link>）でSegWitとともに導入された、より複雑な指標です。この仕組みにより、証人（witness）データの影響を分離して評価することで、より公平にブロックスペースを割り当てることができます。`,
-
     bytes_v_weight_paragraph_four: `今回のレッスンでは、最大ブロックサイズの計算にウェイトユニットを使用しているという点が重要です。各トランザクションにも同じ指標を使っているため、あなたの構築するブロックが最大値である4,000,000ウェイトユニットを超えないように注意してください。`,
       },
     },
@@ -1985,6 +1923,7 @@ building_blocks_seven: {
   paragraph_three: `以下のように、あなたのコードを使って、高さ6929851における正当なブロックをひとつ見つけます：`,
   success: `validate_block 関数は完璧です。素晴らしい！`,
 },
+  
 building_blocks_eight: {
   title: `ブロック構築`,
   nav_title: `ショータイム！`,
@@ -2345,6 +2284,7 @@ opening_a_channel_two: {
   off_chain_list_two: `ラズロがビットコインを受け取るには、このトランザクションをネットワークにブロードキャストする必要があり、その際にはマイナー手数料がかかります。1000サトシを手数料として差し引いて、おつりの金額を調整しましょう。`,
   off_chain_list_three: `2つの出力スクリプトを書きましょう`,
   off_chain_list_four: `入力を署名するには、<span className="rounded-sm px-1.5 py-1 h-[28px] bg-[#0000004D] m-0.5 text-base">Sign</span> をクリック`,
+　// off_chain_list_four: `Send it to Laszlo by clicking "send to bob"`,
   heading_three: `ヒント`,
   hint_one: `ラズロは、<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(LASZLO)</span> を使って出力0を使用します`,
   hint_two: `あなたは、<span className="rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-base whitespace-nowrap">SIG(YOU)</span> を使って出力1を使用します`,
@@ -2595,22 +2535,16 @@ outro_five: {
   title: `アウトロ`,
   nav_title: `やり遂げた！！`,
   heading_one: `やり遂げた！！`,
-  paragraph_one: `かつてのサトシのように、あなたも“無名”でした──でも、あなたのアイデアには価値があり、人々はそれに共感しました。サトシはもういませんが、その精神と理念は今も生きています。  
-ビットコイン開発のスキル、健全な謙虚さ、そして古き良き粘り強さを手に入れたあなたは、このエレガントなシステム──パーミッションレスで検閲耐性のあるお金で世界をつないできたこの仕組みに、持続的な足跡を残せる存在です。  
-コードとアイデアの自由市場で、新たな冒険があなたを待っています。  
-ビットコインが生き続けるのは、あなたのような人々が、自分にできる貢献をしているからこそ。  
-だからこそ──私たちは皆、サトシなのです。`,
+  paragraph_one: `かつてのサトシのように、あなたも“無名”でした──でも、あなたのアイデアには価値があり、人々はそれに共感しました。サトシはもういませんが、その精神と理念は今も生きています。ビットコイン開発のスキル、健全な謙虚さ、そして古き良き粘り強さを手に入れたあなたは、このエレガントなシステム──パーミッションレスで検閲耐性のあるお金で世界をつないできたこの仕組みに、持続的な足跡を残せる存在です。コードとアイデアの自由市場で、新たな冒険があなたを待っています。ビットコインが生き続けるのは、あなたのような人々が、自分にできる貢献をしているからこそ。だからこそ──私たちは皆、サトシなのです。`,
 },
 
 outro_six: {
   title: `Saving Satoshiのその先へ`,
   nav_title: `Saving Satoshiを越えて`,
   heading: `ビットコインにはまだ、あなたの力が必要です……`,
-  paragraph_one: `2139年なんて遠い未来に思えるかもしれません。でもビットコインの使命──「公正で、オープンで、誠実な通貨を作ること」は、時代を超えたテーマです。  
-このビジョンを実現するには、あらゆる人の力が必要です。あなたも、もちろんその一人。`,
+  paragraph_one: `2139年なんて遠い未来に思えるかもしれません。でもビットコインの使命──「公正で、オープンで、誠実な通貨を作ること」は、時代を超えたテーマです。このビジョンを実現するには、あらゆる人の力が必要です。あなたも、もちろんその一人。`,
   paragraph_two: `あなたは、ビットコインを理解していることを証明しました。今こそ、その知識を行動に変える絶好のチャンス。人類史上最も重要な技術のひとつに、貢献してみませんか？`,
-  paragraph_three: `<Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> は、次世代のオープンソース開発者を導くためのプロジェクトです。  
-ビットコインのヒーローになるまで、あとワンクリック。`,
+  paragraph_three: `<Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> は、次世代のオープンソース開発者を導くためのプロジェクトです。ビットコインのヒーローになるまで、あとワンクリック。`,
   paragraph_four: `私たちは皆、サトシです。`,
 },
 tab_data: {
@@ -2625,7 +2559,6 @@ tab_data: {
   commitment_you: `これはこのペイメントチャネルにおける2つ目のコミットメントトランザクションで、ラズロに1,000サトシを支払う内容です。`,
   commitment_laszlo: `これはラズロ側のバージョンのコミットメントトランザクションです。`,
 },
-
 resources: {
   output_zero_sig: `出力0の署名`,
   output_one_sig: `出力1の署名`,
@@ -2763,7 +2696,6 @@ runner: {
     reset: `ターミナルをリセット`,
   },
 },
-
 notfound: {
   first: `あれっ…ここはどこ？`,
   second: `この場所がどこで何なのか、はっきりしません。`,
@@ -2775,7 +2707,6 @@ error: {
   second: `ホロキャットがまたケーブルをかじったのかもしれません。いたずらっ子ですね！`,
   reload: `再試行`,
 },
-
 help_page: {
   main_heading: `学習リソース`,
   main_subheading: `さらなる学びのために、どんな情報やリソースを提供できるでしょうか？`,
