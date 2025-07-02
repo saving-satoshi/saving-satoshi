@@ -2635,5 +2635,160 @@ resources: {
   miner_fees: `おつりから1,000サトシをマイナー手数料として確保するのを忘れずに。`,
   },
 },
-        
+
+///CHALLENGE PAGE
+challenge_list: {
+  coming_soon: `近日公開。お楽しみに。`,
+},
+
+chapter: {
+  chapter_locked_one: `このチャプターを`,
+  chapter_locked_two: `完了してロックを解除しましょう。`,
+  coming_soon: `近日公開。お楽しみに。`,
+  description: `サトシの謎を探りながら、ビットコインについて学びましょう。`,
+},
+
+hero: {
+  title: `Saving Satoshi`,
+  description: `ビットコインの謎をコードで解き明かそう。`,
+  start_journey: `はじめる`,
+  tell_more: `もっと詳しく`,
+},
+
+footer: {
+  paragraph_one: `ビットコインコミュニティによるオープンソース制作です。`,
+  link: `コードを確認する`,
+},
+
+navbar: {
+  intro: `イントロ`,
+  chapter: `章`,
+  chapter_complete: `完了`,
+  challenge: `チャレンジ`,
+  help_tooltip: `助けが必要？`,
+  your_language: `言語を選ぶ`,
+},
+
+modal_signin: {
+  heading: `サインイン`,
+  pre_signin_paragraph_one: `以下に復元コードを入力すると、アカウントと進行状況を復元できます。`,
+  post_signin_paragraph_one: `サトシを救うために戻ってきてくれて嬉しいです！ここから前回のレッスンに直接進めます。`,
+  prompt: `復元コードを入力`,
+  confirm: `サインイン`,
+  create_account: `アカウント作成はこちら`,
+  login: `ログイン`,
+  welcome_back: `おかえりなさい！`,
+  progress_redirect: `前回の続きへ進む`,
+},
+
+modal_logout: {
+  heading: `ログイン中です`,
+  paragraph_one: `このセッションは、下のボタンでサインアウトするまで有効です。`,
+  private_key: `あなたの復元コード`,
+  signout: `サインアウト`,
+},
+
+modal_signup: {
+  heading: `進行状況を保存`,
+  paragraph_one: `進行状況を保存・読み込むためのシンプルなコードをコピー＆保管してください。すでにコードをお持ちの場合は、ここで読み込めます。`,
+  subheading_one: `アバターを選ぼう`,
+  subheading_two: `復元コードをバックアップしよう`,
+  generate: `準備はできましたか？このコードは失くすと復元できないため、必ず保存してください。`,
+  confirm: `完了`,
+  acknowledged: `復元コードを保存し、今後のチャレンジで必要になることを理解しました。`,
+},
+
+difficulty_selection: {
+  NORMAL: `ハードモードを有効にすると、チャレンジの難易度が上がります。`,
+  HARD: `ハードモードを無効にすると、チャレンジの難易度が下がります。`,
+},
+
+social: {
+  twitter_share: `Xで共有`,
+  nostr_share: `nostrで共有`,
+  sharing: `共有中…`,
+  shared: `共有しました！`,
+  share_error: `共有に失敗しました`,
+},
+
+disclaimer: {
+  description: `さあ、始めましょう！一部のチャレンジでは基本的なプログラミング知識が必要です（ヒントあり）。ぜひ挑戦して、<Link href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform?usp=sf_link" className="underline">フィードバック</Link>をお寄せください。`,
+},
+
+opcode: {
+  run: `スクリプトを実行`,
+  reset: `リセット`,
+},
+
+status_bar: {
+  begin_message: `上のチャレンジをクリアして先に進もう…`,
+  error_message: `うーん…まだ少し違うようです…`,
+  in_progress_message: `ここまでは順調ですね…`,
+  success_message: `よくできました！`,
+  next_step_message: `バッチリです。次のステップに進みましょう。`,
+  im_stuck: `つまずいた`,
+  try_again: `もう一度試す`,
+  next: `次へ`,
+  skip_challenge_first: `最初のチャレンジに進もう！`,
+  skip_challenge_last: `最後のチャレンジに進もう！`,
+},
+
+hasher: {
+  placeholder: `ここに入力…`,
+  return_hash: `入力した内容が下にハッシュとして表示されます`,
+},
+
+hashrate: {
+  start: `開始`,
+  running: `実行中`,
+  blocks_found: `見つかったブロック数`,
+  hashrate: `ハッシュレート`,
+  partial_solutions: `部分的な解`,
+},
+
+runner: {
+  run: `スクリプトを実行`,
+  running: `実行中`,
+  pause: `一時停止`,
+  result: `結果`,
+  computing: `計算中…`,
+  evaluation: `評価`,
+  script_output: `スクリプトの出力`,
+  waiting: `上に入力されるのを待っています…`,
+  poor: `これは有効なコードですが、求めている内容とは少し違います。もう一度挑戦してみてください。`,
+  good: `よくできています！完璧とは言えませんが、正解として認められます。このまま続けるか、さらに改善するかはあなた次第です。`,
+  success: `素晴らしい！コードは完璧です！`,
+  language_tabs: {
+    locked: `この章を別の言語で始めたため、この言語は使用できません`,
+    reset: `ターミナルをリセット`,
+  },
+},
+
+notfound: {
+  first: `あれっ…ここはどこ？`,
+  second: `この場所がどこで何なのか、はっきりしません。`,
+  third: `宇宙（か時間）に迷い込んでしまったのかもしれません。`,
+  back_safety: `安全な場所に戻る`,
+}
+error: {
+  first: `何かがおかしいようです！`,
+  second: `ホロキャットがまたケーブルをかじったのかもしれません。いたずらっ子ですね！`,
+  reload: `再試行`,
+},
+
+help_page: {
+  main_heading: `学習リソース`,
+  main_subheading: `さらなる学びのために、どんな情報やリソースを提供できるでしょうか？`,
+  tips_heading: `ヒント`,
+  tips_subheading: `行き詰まったときに、どんなヒントを提供したいですか／できますか？`,
+  spoilers_heading: `ネタバレ`,
+  spoilers_confirm: `はい、答えを見たいです`,
+  pseudo_confirm: `はい、擬似コードを見たいです`,
+  solution: `このチャレンジの解答`,
+  pseudo_solution: `このチャレンジの擬似コードによる解答`,
+  solution_one: `このチャレンジの前半部分の解答`,
+  feedback: `フィードバックは非常に貴重です。今後の改善のために、<a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">こちらのリンク</a>からご意見をお寄せください。`,
+  help_suggestion: `もし行き詰まったら、画面右上の「？」ボタンを押してください。役立つリソースやヒントが表示されます。`,
+  },
+}    
 export default translations
