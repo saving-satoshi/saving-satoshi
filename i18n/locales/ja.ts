@@ -648,7 +648,7 @@ public_key_four: {
   paragraph_two_javascript: `メタデータのバイトは、yが偶数なら「2」、奇数なら「3」とします。関数 <span className="text-green">compressPublicKey()</span> を完成させて、公開鍵を受け取り、33バイトの圧縮された公開鍵（16進文字列）を返してください。`,
   paragraph_two_python: `メタデータのバイトは、yが偶数なら「2」、奇数なら「3」とします。関数 <span className="text-green">compress_publickey()</span> を完成させて、公開鍵を受け取り、33バイトの圧縮された公開鍵（16進文字列）を返してください。`,
   success: `素晴らしい！これで圧縮された公開鍵ができました。次は、それをハッシュ化して、人間が読みやすい形式に変換していきましょう。`,
-}
+},
 
 address_one: {
   title: `アドレス`,
@@ -1292,7 +1292,7 @@ in_out_five: {
   },
   paragraph_three: `お忘れなく：ビットコインにおける整数はリトルエンディアン形式でシリアライズされます！`,
   success: `Output クラスはうまく実装できました。素晴らしい！`,
-}
+},
 put_it_together_one: {
   title: `すべてを組み合わせる`,
   normal: {
@@ -2085,7 +2085,7 @@ opcodes_six: {
   opcryptography_list_two_heading: `<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm h-fit">OP_CHECKSIG</span>`,
   opcryptography_list_two_paragraph: `スタックから2つのアイテムをポップします。1つ目は PUBKEY(...) の形式の公開鍵でなければなりません。2つ目は SIG(...) の形式の署名である必要があります。両方のカッコ内の文字列が一致していれば、有効なECDSA署名とみなして TRUE をスタックにプッシュし、そうでなければ FALSE をプッシュします。`,
   paragraph_two: `スクリプトを使ってコインを使用するには、初期スタックを準備してください。`,
-}
+},
 opcodes_seven: {
   title: `オペコード`,
   nav_title: `マルチシグ`,
@@ -2701,7 +2701,7 @@ notfound: {
   second: `この場所がどこで何なのか、はっきりしません。`,
   third: `宇宙（か時間）に迷い込んでしまったのかもしれません。`,
   back_safety: `安全な場所に戻る`,
-}
+},
 error: {
   first: `何かがおかしいようです！`,
   second: `ホロキャットがまたケーブルをかじったのかもしれません。いたずらっ子ですね！`,
