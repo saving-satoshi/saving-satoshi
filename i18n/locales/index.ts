@@ -7,6 +7,7 @@ import pt from './pt'
 import fr from './fr'
 import vi from './vi'
 import ko from './ko'
+import ja from './ja'
 
 const locales = {
   en,
@@ -18,6 +19,7 @@ const locales = {
   fr,
   vi,
   ko,
+  ja,
 }
 
 export default locales
