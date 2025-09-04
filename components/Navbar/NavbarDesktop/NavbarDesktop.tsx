@@ -39,7 +39,7 @@ export default function NavbarDesktop({ params }) {
             href={`${chaptersUrl}#chapter-${currentChapter}`}
           >
             <Icon
-              icon="powerOff"
+              icon="home"
               className="h-[30px] w-[30px] opacity-75 transition duration-100 ease-in-out group-hover:opacity-100"
             />
           </Link>
