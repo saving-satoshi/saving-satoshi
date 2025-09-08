@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { accountAtom, currentLanguageAtom } from 'state/state'
+import Accordion from 'ui/common/Accordion'
 
 export const metadata = {
   title: 'chapter_four.public_key_three.title',
@@ -155,24 +156,33 @@ def privatekey_to_publickey(private_key):
         <Text className="mt-4 font-nunito text-xl text-white">
           {t(`chapter_four.public_key_three.${language}.paragraph_three`)}
         </Text>
-        <Text className="font-nunito text-xl italic text-white">
-          {t('chapter_four.public_key_three.paragraph_four')}
-        </Text>
-        <CodeExample
-          className="mt-4"
-          code={`# Python
+
+        <Accordion
+          title={t('chapter_four.public_key_three.paragraph_three')}
+          defaultOpen={false}
+        >
+          <>
+            <Text className="font-nunito text-xl italic text-white">
+              {t('chapter_four.public_key_three.paragraph_four')}
+            </Text>
+
+            <CodeExample
+              className="mt-4"
+              code={`# Python
 # Hex string to integer
 integer = int(hex_string, 16)`}
-          language="python"
-        />
-        <CodeExample
-          className="mt-4"
-          code={`// JavaScript
+              language="python"
+            />
+            <CodeExample
+              className="mt-4"
+              code={`// JavaScript
 // Hex string to integer
 const integer = BigInt(\`0x\${hexString}\`)
 `}
-          language="javascript"
-        />
+              language="javascript"
+            />
+          </>
+        </Accordion>
       </LessonInfo>
     </ScriptingChallenge>
   )
