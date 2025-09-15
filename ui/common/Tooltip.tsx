@@ -19,6 +19,7 @@ function Tooltip({
   disabled,
   visibleOverride,
   zIndex = 10,
+  contentClass,
 }: {
   children: React.ReactNode
   className?: string
@@ -32,6 +33,7 @@ function Tooltip({
   theme?: string
   disabled?: boolean
   visibleOverride?: boolean
+  contentClass?: string
   zIndex?: number
 }) {
   const targetRef = useRef<HTMLSpanElement>(null)
@@ -119,7 +121,7 @@ function Tooltip({
     <>
       <span
         className={clsx(
-          'tooltip absolute left-[-1px] top-0 max-w-fit border border-white text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
+          'tooltip absolute left-[-1px] top-0 max-w-fit rounded-lg border border-white text-center shadow-lg shadow-black/25 transition-opacity delay-150 ease-in-out',
           theme,
           `z-${zIndex.toString()}`,
           {
@@ -144,7 +146,12 @@ function Tooltip({
           )}
           ref={arrowRef}
         />
-        <span className="tooltip-height block overflow-y-auto px-2.5 py-3.5 font-nunito leading-none text-white">
+        <span
+          className={clsx(
+            'tooltip-height block overflow-y-auto px-2.5 py-3.5 font-nunito leading-none text-white',
+            contentClass
+          )}
+        >
           {typeof content === 'string' ? t(content) : content}
         </span>
       </span>
