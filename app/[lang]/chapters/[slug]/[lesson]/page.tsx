@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 import { chapters, lessons } from 'content'
@@ -18,6 +18,7 @@ import {
   nextLessonAtom,
   getLessonKey,
 } from 'state/progressState'
+import { usePresentFunctions } from 'state/presentPage'
 
 const Portal = ({ children, id }) => {
   const [mounted, setMounted] = useState(false)
@@ -41,6 +42,7 @@ export default function Page({ params }) {
   const chapterId = params.slug
   const chapterLessons = lessons[chapterId]
   const [account] = useAtom(accountAtom)
+  const { presentLesson: setPresentLesson } = usePresentFunctions()
   const [isAccountLoading] = useAtom(isAuthLoadingAtom)
   const isProgressLoading = useAtomValue(isLoadingProgressAtom)
   const currentLesson = useAtomValue(currentLessonComputedAtom)
@@ -66,9 +68,9 @@ export default function Page({ params }) {
           router.replace(route)
           return
         }
-
         router.prefetch(routes.chaptersUrl + nextLesson?.path)
       }
+      setPresentLesson(currentLessonKey)
     }
   }, [
     isDevelopment,
