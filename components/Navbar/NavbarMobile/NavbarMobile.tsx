@@ -16,10 +16,11 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import HelpButton from '../HelpButton'
 import Icon from 'shared/Icon'
-import { navbarThemeSelector } from 'lib/themeSelector'
+import { navbarThemeSelector, themeSelector } from 'lib/themeSelector'
 import { useAtom, useAtomValue } from 'jotai'
 import { accountAtom } from 'state/state'
 import { currentChapterAtom } from 'state/progressState'
+import { Tooltip } from 'ui'
 
 export default function NavbarMobile({ params }) {
   const { chaptersUrl } = useLocalizedRoutes()
@@ -41,6 +42,7 @@ export default function NavbarMobile({ params }) {
       chapters[slug]?.metadata.secondaryTheme ??
       chapters[slug]?.metadata.theme ??
       'bg-back'
+  const chapterTheme = themeSelector(lessons, lessonId, chapters, slug)
 
   const chapterResources = resources[chapterId]
 
@@ -78,16 +80,26 @@ export default function NavbarMobile({ params }) {
     >
       <div className="flex h-[70px] items-stretch border-b border-white/80 text-white">
         <div className="flex">
-          <Link
-            title={t('shared.back')}
-            className="group flex items-center border-r border-white/25 p-4 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
-            href={`${chaptersUrl}#chapter-${currentChapter}`}
+          <Tooltip
+            id="home"
+            position="bottom"
+            offset={12}
+            theme={`${chapterTheme} border-0 border-t-0 border-l-0`}
+            arrowPosition="top-0 left-[-80px]"
+            content={t('shared.home_tooltip')}
+            zIndex={10}
+            contentClass="rounded-lg"
           >
-            <Icon
-              icon="powerOff"
-              className="h-[30px] w-[30px] opacity-75 transition duration-100 ease-in-out group-hover:opacity-100"
-            />
-          </Link>
+            <Link
+              className="group flex items-center border-r border-white/25 p-5 text-sm text-white transition duration-100 ease-in-out hover:bg-black/20"
+              href={`${chaptersUrl}#chapter-${currentChapter}`}
+            >
+              <Icon
+                icon="home"
+                className="h-[30px] w-[30px] opacity-75 transition duration-100 ease-in-out group-hover:opacity-100"
+              />
+            </Link>
+          </Tooltip>
         </div>
         <div
           className={clsx('flex overflow-x-hidden', {

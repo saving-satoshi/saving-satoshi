@@ -48,7 +48,7 @@
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
     "@types/jest": "^29.5.11",
-    "@types/node": "18.11.19",
+    "@types/node": "22.0.0",
     "@types/react": "18.0.25",
     "autoprefixer": "^10.4.13",
     "eslint": "latest",

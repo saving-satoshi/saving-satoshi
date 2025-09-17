@@ -3,7 +3,6 @@
 import { useLang, usePathData, useTranslations } from 'hooks'
 import { Tooltip } from 'ui'
 import { lessons, chapters } from 'content'
-import { navbarThemeSelector } from 'lib/themeSelector'
 import clsx from 'clsx'
 import { Modal } from 'state/state'
 import { useModalFunctions } from 'state/ModalFunctions'
