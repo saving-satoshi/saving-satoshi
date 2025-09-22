@@ -157,7 +157,7 @@ def privatekey_to_publickey(private_key):
           {t(`chapter_four.public_key_three.${language}.paragraph_three`)}
         </Text>
 
-        <Accordion
+        <Accordion className="mt-4"
           title={t('chapter_four.public_key_three.paragraph_three')}
           defaultOpen={false}
         >
