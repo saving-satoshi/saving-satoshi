@@ -58,7 +58,8 @@ export default function NavbarDesktop({ params }) {
           <Address />
         </div>
         <nav className="flex items-center">
-          <TabGroupDesktop params={params} />
+          <TabGroupDesktop params={params} theme={chapterTheme} />
+
           {Resources && (
             <span className="h-full w-[70px] items-stretch hover:bg-black/25">
               <HelpButton lessonId={lessonId} />

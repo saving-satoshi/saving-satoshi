@@ -1,13 +1,16 @@
-import TabDesktop from './TabDesktop'
+import clsx from 'clsx'
 import { chapters, lessons } from 'content'
 import { useAtomValue } from 'jotai'
+import MenuIcon from 'shared/icons/MenuIcon'
 import { getLessonKey, syncedCourseProgressAtom } from 'state/progressState'
 import { ChapterInState } from 'types'
+import NavbarDrawer from './NavbarDrawer'
 
-export default function TabGroup({ params }) {
+export default function TabGroup({ params, theme }) {
   const courseProgress = useAtomValue(syncedCourseProgressAtom)
   const chapterFromState: ChapterInState =
     courseProgress.chapters[params.slug.split('-')[1] - 1]
+
   const { slug } = params
 
   const chapter = chapters[slug]
@@ -102,16 +105,21 @@ export default function TabGroup({ params }) {
     })
 
   return (
-    <div className="flex-l flex h-full items-stretch">
-      <TabDesktop
+    <>
+      <div className={clsx('flex-l flex h-full items-stretch', theme)}>
+        <span className="flex h-full w-[70px] cursor-pointer items-center justify-center hover:bg-black/25">
+          <MenuIcon className="w-[32px]" />
+        </span>
+
+        {/* <TabDesktop
         key={0}
         part="intro"
         index={1}
         challenge={introsData[0]}
         params={params}
         challengeLessons={introsData}
-      />
-      {challenges.map((challenge, index: number) => (
+      /> */}
+        {/* {challenges.map((challenge, index: number) => (
         <TabDesktop
           key={index}
           index={index + 2}
@@ -119,15 +127,17 @@ export default function TabGroup({ params }) {
           params={params}
           challengeLessons={groupedLessonData[challenge.lessonId.split('-')[0]]}
         />
-      ))}
-      <TabDesktop
+      ))} */}
+        {/* <TabDesktop
         key={4}
         part="outro"
         index={challenges.length + 2}
         challenge={outrosData[0]}
         params={params}
         challengeLessons={outrosData}
-      />
-    </div>
+      /> */}
+      </div>
+      <NavbarDrawer theme={theme} />
+    </>
   )
 }
