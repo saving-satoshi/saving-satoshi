@@ -557,6 +557,14 @@ const translations = {
       paragraph_one: `Great work! You and the other miners were able to fend off Vanderpoole's 51% attack by pooling your resources. Empty blocks are no longer being submitted and it looks like he's given up.`,
       paragraph_two: `It's time to reap your rewards! Go to the next chapter to withdraw your bitcoin.`,
     },
+    tabconf_clue_one: {
+      title: `Year 2025`,
+      nav_title: `Tabconf Year 2025`,
+      paragraph_one: `Deep within the abandoned warehouse, your scanner picks up a strange signal. It's a broken piece of this world, a fragmented code radiating a strange quantum signature. You decode it, receiving not a message, but a bug report – an urgent invitation.`,
+      paragraph_two: `Holocat appears, eyes wide. "This is it, the 'glitch.' This bug… it feels deliberate. Like quantum interference."`,
+      paragraph_three: `Holocat instructs, "Repair the broken script. I wonder if this has anything to do with <a target="_blank" href="https://7.tabconf.com/">TABConf</a> , that conference where Capture The Bitcoin is played.”`,
+      paragraph_four: `"Copy the hash..." Holocat urged, "That's our key."`,
+    },
     resources: {
       solo: {
         hashrate_heading: `Mining Hashrate`,

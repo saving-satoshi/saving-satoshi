@@ -72,6 +72,7 @@ export const defaultProgressState: CourseProgress = {
         { id: 'CH3COO3', path: '/chapter-3/coop-3', completed: false },
         { id: 'CH3SPL1', path: '/chapter-3/split-1', completed: false },
         { id: 'CH3SPL2', path: '/chapter-3/split-2', completed: false },
+        { id: 'CH3TCC1', path: '/chapter-3/tabconf-clue-1', completed: false },
         { id: 'CH3OUT1', path: '/chapter-3/outro-1', completed: false },
       ],
       completed: false,
