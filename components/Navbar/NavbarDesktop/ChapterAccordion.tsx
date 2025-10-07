@@ -3,41 +3,45 @@ import { useLang, useTranslations } from 'hooks'
 import React from 'react'
 import DiagonalCross from 'shared/icons/DiagonalCross'
 import LineDash from 'shared/icons/LineDash'
-import {
-  ChapterInState,
-  ChapterInStateAlt,
-  ChapterWithDifficulties,
-  ChapterWithoutDifficulties,
-} from 'types'
+import { ChapterInState } from 'types'
 import { numberToWord } from 'utils/convert-number-to-word'
 import ChapterLesson from './ChapterLesson'
 import { useAtomValue } from 'jotai'
-import { getLessonKey, syncedCourseProgressAtom } from 'state/progressState'
+import {
+  getLessonKey,
+  isChapterInProgress,
+  syncedCourseProgressAtom,
+} from 'state/progressState'
 import { Title } from 'ui'
+import clsx from 'clsx'
+import useEnvironment from 'hooks/useEnvironment'
+import DifficultySelection from 'ui/chapter/DifficultySelection'
 interface IChapterAccordion {
-  completed: boolean
   id: number
-  chapter: ChapterInState
   setCurrentChapter: React.Dispatch<React.SetStateAction<number>>
   currentChapter: number
+  completed: boolean
+  hasDifficulty: boolean
 }
 
 const ChapterAccordion = ({
-  completed,
   id,
   currentChapter: currentChapterId,
   setCurrentChapter,
-  chapter: chapterLesson,
+  completed,
+  hasDifficulty,
 }: IChapterAccordion) => {
   const lang = useLang()
   const t = useTranslations(lang)
-
   const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const { isDevelopment } = useEnvironment()
   const currentChapter = `chapter-${id}`
   const chapter = chapters[currentChapter]
   const isOpen = currentChapterId === id
-  const allLessons = chapterLesson as ChapterInStateAlt
   const chapterFromState: ChapterInState = courseProgress.chapters[id - 1]
+  const chapterIsInProgress = isChapterInProgress(id, courseProgress)
+
+  const isChapterUnlocked = completed || chapterIsInProgress || isDevelopment
 
   const updateCurrentChapter = () => {
     if (isOpen) {
@@ -83,7 +87,6 @@ const ChapterAccordion = ({
       return { lessonId, title }
     })
 
-  console.log(lessonsData)
   const outrosData = chapter.metadata.outros
     .filter((lessonId: string) => {
       if (chapterFromState.hasDifficulty) {
@@ -131,13 +134,15 @@ const ChapterAccordion = ({
       const { title } = lessons[currentChapter][lessonId].metadata
       return { lessonId, title }
     })
-  console.log(challenges, 'challenge')
 
   return currentChapterId === 0 || isOpen ? (
     <div className="flex cursor-pointer flex-col gap-6 px-5">
       <div
-        className="flex items-center justify-between border-b border-b-white/30 py-6"
-        onClick={updateCurrentChapter}
+        className={clsx(
+          'flex items-center justify-between border-b border-b-white/30 py-6',
+          isChapterUnlocked ? 'opacity-100' : 'cursor-not-allowed opacity-50'
+        )}
+        onClick={isChapterUnlocked ? updateCurrentChapter : undefined}
       >
         <div className="flex flex-col font-cbrush">
           <h6 className=" text-[19px] opacity-50">
@@ -147,7 +152,7 @@ const ChapterAccordion = ({
           <p className="text-2xl">{t(`chapter_${numberToWord[id]}.title`)}</p>
         </div>
 
-        <div>
+        <div className={clsx(isChapterUnlocked ? 'block' : 'hidden')}>
           {!isOpen && <DiagonalCross />}
           {isOpen && <LineDash />}
         </div>
@@ -155,6 +160,8 @@ const ChapterAccordion = ({
       {isOpen && (
         <div className="flex flex-col">
           <div>
+            {hasDifficulty && <DifficultySelection chapterId={id} />}
+
             <Title className="">
               <span className="text-white/50">1. </span> {t('navbar.intro')}
             </Title>
@@ -165,6 +172,7 @@ const ChapterAccordion = ({
                   chapterId={id}
                   id={intro.lessonId}
                   title={intro.title}
+                  courseProgress={courseProgress}
                 />
               ))}
           </div>
@@ -183,6 +191,7 @@ const ChapterAccordion = ({
                         chapterId={id}
                         id={lesson.lessonId}
                         title={lesson.title}
+                        courseProgress={courseProgress}
                       />
                     )
                   )}
@@ -201,6 +210,7 @@ const ChapterAccordion = ({
                   chapterId={id}
                   id={outro.lessonId}
                   title={outro.title}
+                  courseProgress={courseProgress}
                 />
               ))}
           </div>

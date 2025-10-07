@@ -432,7 +432,7 @@ const translations = {
         nonce_paragraph: `A nonce, short for (number used once) is a random or semi-random number that is employed in various cryptographic and computational processes. Its primary purpose is to introduce unpredictability and ensure that a particular operation or calculation can't be easily repeated or predicted. The nonce is critical to the security of bitcoin mining but we will learn more about that later...`,
         tip_one: `Ensure you are properly decoding the inputs. The hashing algorithms often return objects decoded in bytes, but we want to be able to read it in hex format!`,
         tip_two: `Think about how you would create a function to keep running until that answer is equal to a specific value`,
-        tip_three: `Remember to log your answer with <span className="p-1 font-mono bg-[#0000004D] m-1">console.log()</span> or <span className="p-1 font-mono bg-[#0000004D] m-1">print()</span>. It is the only way our IDE will try to validate your answer.`,
+        tip_three: `Remember to log your answer with <span className="p-1 font-mono bg-[#0000004D] m-1"></span>. It is the only way our IDE will try to validate your answer.`,
       },
       mining_one: {
         mining_heading: `Mining`,

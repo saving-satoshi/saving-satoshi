@@ -117,12 +117,6 @@ export type ChapterInState =
   | ChapterWithDifficulties
   | ChapterWithoutDifficulties
 
-export type ChapterInStateAlt = ChapterBase & {
-  hasDifficulty: boolean
-  lessons?: LessonInState[]
-  difficulties?: Difficulty[]
-  selectedDifficulty?: DifficultyLevel
-}
 export type CourseProgress = {
   chapters: ChapterInState[]
   currentChapter: number
