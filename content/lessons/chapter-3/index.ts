@@ -8,7 +8,6 @@ import * as Outro1 from './outro-1'
 import * as Coop1 from './coop-1'
 import * as Coop2 from './coop-2'
 import * as Coop3 from './coop-3'
-import * as TabConfClue from './tabconf-clue-1'
 
 const Chapter3 = {
   'intro-1': Intro1,
@@ -21,7 +20,6 @@ const Chapter3 = {
   'coop-1': Coop1,
   'coop-2': Coop2,
   'coop-3': Coop3,
-  'tabconf-clue-1': TabConfClue,
 }
 
 export default Chapter3

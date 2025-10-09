@@ -5,13 +5,13 @@ import { Button } from 'shared'
 import { CodeExample, Introduction, Text } from 'ui'
 
 export const metadata = {
-  title: 'chapter_three.tabconf_clue_one.title',
-  navigation_title: 'chapter_three.tabconf_clue_one.nav_title',
+  title: 'chapter_four.tabconf_clue_one.title',
+  navigation_title: 'chapter_four.tabconf_clue_one.nav_title',
   image: '/assets/images/tabconf-clue-1.webp',
-  key: 'CH3TCC1',
+  key: 'CH4TCC1',
 }
 
-export default function BookACall1({ lang }) {
+export default function TabconfClue1({ lang }) {
   const t = useTranslations(lang)
   const proceed = useProceed()
   return (
@@ -21,16 +21,16 @@ export default function BookACall1({ lang }) {
       noBtn
     >
       <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_three.tabconf_clue_one.paragraph_one')}
+        {t('chapter_four.tabconf_clue_one.paragraph_one')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_three.tabconf_clue_one.paragraph_two')}
+        {t('chapter_four.tabconf_clue_one.paragraph_two')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_three.tabconf_clue_one.paragraph_three')}
+        {t('chapter_four.tabconf_clue_one.paragraph_three')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
-        {t('chapter_three.tabconf_clue_one.paragraph_four')}
+        {t('chapter_four.tabconf_clue_one.paragraph_four')}
       </Text>
       <CodeExample
         className="mt-4 text-wrap font-space-mono text-[#F6A40A]"
