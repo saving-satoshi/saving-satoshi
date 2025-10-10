@@ -31,6 +31,6 @@ export const metadata = {
     'split-1',
     'split-2',
   ],
-  outros: ['tabconf-clue-1', 'outro-1'],
+  outros: ['outro-1'],
   challenges: ['solo-1', 'pool-1', 'coop-1', 'split-1'],
 }
