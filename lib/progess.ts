@@ -32,6 +32,7 @@ export const allLessonOrder = {
   CH3COO3: 30,
   CH3SPL1: 31,
   CH3SPL2: 32,
+  CH3TCC1: 32,
   CH3OUT1: 33,
   CH4INT1: 34,
   CH4PKY1: 35,

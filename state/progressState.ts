@@ -88,6 +88,7 @@ export const defaultProgressState: CourseProgress = {
         { id: 'CH4ADR1', path: '/chapter-4/address-1', completed: false },
         { id: 'CH4ADR2', path: '/chapter-4/address-2', completed: false },
         { id: 'CH4ADR3', path: '/chapter-4/address-3', completed: false },
+        { id: 'CH4TCC1', path: '/chapter-4/tabconf-clue-1', completed: false },
         { id: 'CH4OUT1', path: '/chapter-4/outro-1', completed: false },
       ],
       completed: false,

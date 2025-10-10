@@ -7,6 +7,7 @@ import * as PublicKey4 from './public-key-4'
 import * as Address1 from './address-1'
 import * as Address2 from './address-2'
 import * as Address3 from './address-3'
+import * as TabconfClue1 from './tabconf-clue-1'
 
 const Chapter4 = {
   'intro-1': Intro1,
@@ -18,6 +19,7 @@ const Chapter4 = {
   'address-2': Address2,
   'address-3': Address3,
   'outro-1': Outro1,
+  'tabconf-clue-1': TabconfClue1,
 }
 
 export default Chapter4
