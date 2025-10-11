@@ -28,6 +28,6 @@ export const metadata = {
     'address-2',
     'address-3',
   ],
-  outros: ['outro-1'],
+  outros: ['tabconf-clue-1', 'outro-1'],
   challenges: ['public-key-1', 'address-1'],
 }

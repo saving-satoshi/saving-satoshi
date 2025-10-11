@@ -28,12 +28,28 @@ const translations = {
     intro:
       'O mundo aguarda pelo último bloco. Então, de repente, a rede é interrompida. <br><br>Você recebeu um holocat de alguém usando o nome Satoshi Nakamoto. (É como qualquer outro e-holograma, mas esse tem forma de gato). Você toca no nariz do holocat para abri-lo, curioso para ouvir o que tem a dizer...',
 
-    project: {
-      title: 'Construído com entretenimento.',
-      paragraph_one:
-        'Saving Satoshi (Salvando o Satoshi) é um divertido primeiro ponto de contato para programadores curiosos sobre o desenvolvimento de bitcoin. Saving Satoshi tem uma mistura de textos técnicos e de desafios baseados em código, mas esses desafios devem poder ser feitos por qualquer pessoa com conhecimentos básicos de programação. O projeto é gratuito e de código aberto (FOSS) e toda a arte foi gerada utilizando ferramentas de conversão de texto em imagem como o Midjourney.',
-      paragraph_two:
-        'Este projeto está em contínuo desenvolvimento e adota uma abordagem iterativa para incorporar os feedbacks à medida que lançamos novos capítulos. Atualmente, estão planejados dez capítulos. No entanto, poderão ser acrescentados mais capítulos à medida que o projeto continuar a crescer.',
+  project: {
+      title: 'Bitcoin é sério, mas aprender sobre ele não precisa ser',
+      paragraph_one: `Saving Satoshi é um jogo de RPG interativo e descontraído sobre a tecnologia bitcoin. Ele combina desafios divertidos e inovadores com narrativa e mecânica de jogo para criar um ponto de entrada suave para o desenvolvimento de bitcoin.`,
+      paragraph_two: `Ele é construído com diversão para programadores curiosos e qualquer pessoa que queira aprender como o bitcoin <span className="italic">realmente</span> funciona. É para aqueles que viram a magia do software de código aberto do bitcoin (₿OSS) e estão procurando maneiras de começar a contribuir.`,
+      paragraph_three: `Cada capítulo está repleto de conteúdo de lições baseadas em código, simulações e exercícios de programação para tornar o aprendizado dos detalhes esotéricos da tecnologia bitcoin mais agradável.`,
+      paragraph_four: `Com exemplos simples e diretos, os jogadores constroem bases sólidas antes de adicionar complexidade. Através de uma experiência de usuário imersiva, visuais ricos e interações perfeitas, os alunos são levados a uma jornada por uma variedade de tópicos, incluindo:`,
+      chapter_topics: {
+        list_one: `Encontrar e decodificar a mensagem secreta no bloco de gênese`,
+        list_two: `Funções de hash e prova de trabalho`,
+        list_three: `A dinâmica da mineração em pool`,
+        list_four: `O básico da criptografia de curva elíptica e como derivar um endereço de pares de chaves pública-privada`,
+        list_five: `Assinatura e verificação de mensagens ECDSA`,
+        list_six: `Construindo uma transação do zero`,
+        list_seven: `Montando transações para construir um modelo de bloco`,
+        list_eight: `Usando a API RPC do Bitcoin Core e calculando o subsídio do bloco`,
+        list_nine: `Bitcoin Script`,
+        list_ten: `Como funciona a rede Lightning`,
+      },
+      paragraph_five: `Mas não se trata apenas do currículo. Acreditamos que a educação sobre bitcoin pode ser tão criativa e única quanto a própria tecnologia. É por isso que o jogo aborda muitos outros elementos fascinantes do bitcoin, como cultura, história e design.`,
+      paragraph_six: `Para nós, o bitcoin é uma força positiva no mundo. Este projeto é construído por um grupo apaixonado de contribuidores sob os mais altos padrões, e é 100% gratuito e de código aberto (FOSS). Para saber mais sobre como o Saving Satoshi foi feito, consulte nosso <Link href="https://bitcoin.design/guide/case-studies/saving-satoshi" className="underline" target="_blank">estudo de caso</Link> no Guia de Design do Bitcoin.`,
+      paragraph_seven: `Desde jogar o jogo, até realizar um workshop, até contribuições de código, existem muitas maneiras de se juntar à comunidade Saving Satoshi. Ficaríamos encantados em tê-lo conosco. Para entrar em contato, siga <Link href="https://github.com/saving-satoshi/saving-satoshi" className="underline" target="_blank">Saving Satoshi no GitHub</Link> e junte-se ao <Link href="https://discord.gg/eBGRaCSjg5" className="underline" target="_blank">canal #saving-satoshi</Link> no Discord da Comunidade de Design do Bitcoin.`,
+      paragraph_eight: `Você também pode se conectar conosco no <Link href="https://x.com/savingsatoshi" className="underline" target="_blank">X</Link>, <Link href="https://njump.me/npub1vy6wcgw6jhhtcmpawvlnsfx7g8qt8r40z7qlks9zwa4ed57vm5eqx527hr" className="underline" target="_blank">nostr</Link>, e <Link href="https://bsky.app/profile/bitcoindevs.bsky.social" className="underline" target="_blank">Bluesky</Link>. Adoramos receber mensagens e ouvir nossos usuários!`,
     },
 
     contributing: {

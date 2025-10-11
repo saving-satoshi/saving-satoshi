@@ -40,14 +40,15 @@ export default function Address() {
 
   const challengeName = lessonId?.split('-')[0]
   const challengeIndex = challenges.indexOf(challengeName)
-  const lastLessonId = chapter.outros[chapter.outros.length - 1]
-  const isChapterCompletePage = lessonId === lastLessonId
+
+  // One time code, to be removed after Tabconf
+  const isTabconf = lessonId === 'tabconf-clue-1'
 
   return (
     <div className="flex flex-col justify-center overflow-x-hidden px-5 text-sm font-medium">
       {pathName && (
         <>
-          {chapter && (
+          {chapter && !isTabconf && (
             <span className="truncate px-0.5 align-sub text-lg leading-tight text-white/50">
               <span>
                 {t('navbar.chapter')} {chapter.position + 1}
@@ -62,6 +63,11 @@ export default function Address() {
                     : 'Intro'}
                 </span>
               </>
+            </span>
+          )}
+          {isTabconf && (
+            <span className="truncate px-0.5 align-sub text-lg leading-tight text-white/50">
+              {'Tabconf Challenge'}
             </span>
           )}
           <span className="truncate px-0.5 align-super text-2xl leading-tight text-white">

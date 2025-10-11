@@ -43,6 +43,7 @@ export default function useProceed() {
         routes.chaptersUrl + nextLessonUsingCurrentRoute?.path + queryParams
       progressToNextLesson()
     }
+    console.log(route, nextLessonUsingCurrentRoute?.path)
     router.push(route, { scroll: true })
   }
 

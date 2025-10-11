@@ -3,13 +3,14 @@ import { getProgress, setProgress } from 'api/progress'
 import { lessons } from 'content'
 import { atom } from 'jotai'
 import { atomEffect } from 'jotai-effect'
+import { allLessonOrder } from 'lib/progess'
 import {
   ChapterWithDifficulties,
   ChapterWithoutDifficulties,
   CourseProgress,
   LessonInState,
 } from 'types'
-import { accountAtom, isAuthLoadingAtom } from './state'
+import { accountAtom, isAuthLoadingAtom, presentPageAtom } from './state'
 
 export enum DifficultyLevel {
   NORMAL = 'NORMAL',
@@ -87,6 +88,7 @@ export const defaultProgressState: CourseProgress = {
         { id: 'CH4ADR1', path: '/chapter-4/address-1', completed: false },
         { id: 'CH4ADR2', path: '/chapter-4/address-2', completed: false },
         { id: 'CH4ADR3', path: '/chapter-4/address-3', completed: false },
+        { id: 'CH4TCC1', path: '/chapter-4/tabconf-clue-1', completed: false },
         { id: 'CH4OUT1', path: '/chapter-4/outro-1', completed: false },
       ],
       completed: false,
@@ -728,7 +730,7 @@ export const isChapterInProgress = (
 export const progressToNextLessonAtom = atom(null, (get, set) => {
   const courseProgress = get(syncedCourseProgressAtom)
   const currentLesson = get(currentLessonComputedAtom)
-
+  const presentLesson = get(presentPageAtom)
   if (!currentLesson) {
     // All lessons are complete
     return
@@ -743,7 +745,9 @@ export const progressToNextLessonAtom = atom(null, (get, set) => {
             return {
               ...difficulty,
               lessons: difficulty.lessons.map((lesson) =>
-                lesson.id === currentLesson.id
+                lesson.id === currentLesson.id &&
+                allLessonOrder[presentLesson] ===
+                  allLessonOrder[currentLesson.id]
                   ? { ...lesson, completed: true }
                   : lesson
               ),
@@ -756,7 +760,8 @@ export const progressToNextLessonAtom = atom(null, (get, set) => {
       return {
         ...chapter,
         lessons: chapter.lessons.map((lesson) =>
-          lesson.id === currentLesson.id
+          lesson.id === currentLesson.id &&
+          allLessonOrder[presentLesson] === allLessonOrder[currentLesson.id]
             ? { ...lesson, completed: true }
             : lesson
         ),
@@ -1023,8 +1028,9 @@ export const isLessonUnlockedUsingId = (
 
     for (let i = 0; i < lessons.length; i++) {
       const lesson = lessons[i]
+      const prevLesson = lessons[i - 1]
       if (lesson.id === lessonId) {
-        if (lesson.completed) {
+        if (prevLesson?.completed) {
           return true
         } else if (i === 0) {
           if (chapterIndex === 0) {
@@ -1035,8 +1041,6 @@ export const isLessonUnlockedUsingId = (
             const previousChapter = courseProgress.chapters[chapterIndex - 1]
             return previousChapter.completed
           }
-        } else if (lessons[i - 1].completed) {
-          return true
         }
         return false
       }
