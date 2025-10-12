@@ -1,7 +1,6 @@
 import clsx from 'clsx'
 import { useAtomValue } from 'jotai'
 import React, { useState } from 'react'
-import CloseIcon from 'shared/icons/Close'
 import { syncedCourseProgressAtom } from 'state/progressState'
 import ChapterAccordion from './ChapterAccordion'
 import Icon from 'shared/Icon'
