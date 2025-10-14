@@ -28,7 +28,7 @@ const translations = {
     intro:
       'O mundo aguarda pelo último bloco. Então, de repente, a rede é interrompida. <br><br>Você recebeu um holocat de alguém usando o nome Satoshi Nakamoto. (É como qualquer outro e-holograma, mas esse tem forma de gato). Você toca no nariz do holocat para abri-lo, curioso para ouvir o que tem a dizer...',
 
-  project: {
+    project: {
       title: 'Bitcoin é sério, mas aprender sobre ele não precisa ser',
       paragraph_one: `Saving Satoshi é um jogo de RPG interativo e descontraído sobre a tecnologia bitcoin. Ele combina desafios divertidos e inovadores com narrativa e mecânica de jogo para criar um ponto de entrada suave para o desenvolvimento de bitcoin.`,
       paragraph_two: `Ele é construído com diversão para programadores curiosos e qualquer pessoa que queira aprender como o bitcoin <span className="italic">realmente</span> funciona. É para aqueles que viram a magia do software de código aberto do bitcoin (₿OSS) e estão procurando maneiras de começar a contribuir.`,
@@ -1385,12 +1385,21 @@ const translations = {
       normal: {
         title: 'Entradas e Saídas',
         nav_title: 'A classe Entrada',
-        heading: 'Observando a implementação da classe Input(Entrada)',
+        heading: 'Observando a implementação da classe Input (Entrada)',
         paragraph_one:
-          'As entradas de transações de Bitcoin sempre apontam para saídas de transações existentes e não gastas. Portanto, nossa classe Input tem um método <span className="text-green"> from_output() </span> que é usado para construir uma Input passando a descrição da saída:',
+          'Aqui temos código para duas classes: classe <span className="font-bold">Input</span> e classe <span className="font-bold">Outpoint</span> (não é "output"!).',
         paragraph_two:
-          'Os dois primeiros argumentos são o ID da transação e o índice da saída da transação da qual você deseja gastar. Eventualmente, passaremos os valores txid e vout que você obteve acima em listunspent.',
-        paragraph_three: {
+          'As entradas de transações de Bitcoin sempre apontam para saídas de transações existentes e não gastas. Portanto, nossa classe Input tem um método <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base"> from_output()</span> que é usado para construir uma Input passando a descrição da saída:',
+        paragraph_three: 'Os dois primeiros argumentos são: ',
+        paragraph_four:
+          '1. <span className="font-bold">txid: </span> o ID da transação que criou a saída.',
+        paragraph_five:
+          '2. <span className="font-bold">vout: </span>o índice da saída da transação da qual você deseja gastar.',
+        paragraph_six:
+          'Juntos estes elementos formam um <span className="font-bold">Outpoint</span>. Eventualmente, passaremos os valores txid e vout que você obteve acima em <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">listunspent</span>.',
+        paragraph_seven:
+          'Os últimos dois argumentos são o valor da saída que queremos gastar (em satoshis) e algo chamado scriptcode. Por enquanto, apenas armazenaremos esses dados como uma matriz de bytes vazia, pois não precisaremos deles até mais tarde.',
+        paragraph_eight: {
           a: 'Os hashes no bitcoin são ',
           b: {
             text: 'invertidos',
@@ -1399,10 +1408,11 @@ const translations = {
           },
           c: ' quando os vemos como strings hexadecimais. Quando aceitamos hashes como strings de um usuário, devemos inverter a ordem dos bytes antes de armazená-los ou transmiti-los como bytes brutos. É por isso que invertemos a ordem dos bytes do argumento txid que é passado aqui.',
         },
-        paragraph_four:
-          'Os dois segundos argumentos são o valor da saída que queremos gastar (em satoshis) e algo chamado scriptcode. Por enquanto, apenas armazenaremos esses dados como uma matriz de bytes vazia, pois não precisaremos deles até mais tarde.',
-        paragraph_five: `Também precisamos de um método <span className="text-green"> serialize() </span> que retorne um array de bytes de acordo com a especificação. É assim que a transação é realmente enviada entre os nós da rede e como ela é expressa em um bloco:`,
-        heading_two: 'Outpoint(Ponto de saída)',
+        paragraph_nine:
+          'Você pode ver um exemplo disto no método <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">from_output()</span>, onde ele lida com o argumento txid.',
+        paragraph_ten:
+          'Também precisamos de um método <span className="text-green p-1 font-mono bg-[#00000033] m-1 text-base">serialize()</span> que retorne um array de bytes de acordo com a especificação. É assim que a transação é realmente enviada entre os nós da rede e como ela é expressa em um bloco:',
+        heading_three: 'Outpoint (Ponto de saída)',
         table_one: {
           heading: {
             one: 'Descrição',
@@ -1427,7 +1437,7 @@ const translations = {
             },
           },
         },
-        heading_three: 'Entrada',
+        heading_four: 'Entrada',
         table_two: {
           row_one: {
             column: {
@@ -1462,8 +1472,14 @@ const translations = {
             },
           },
         },
-        paragraph_six:
-          'E lembre-se: os números inteiros no bitcoin são serializados em little-endian!',
+        paragraph_eleven: {
+          a: 'E lembre-se: os números inteiros no bitcoin são serializados em ',
+          b: {
+            text: `little-endian`,
+            question: `What is endianness?`,
+            href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520endianness%253F`,
+          },
+        },
         success: 'A classe Input parece boa. Excelente trabalho!',
       },
       hard: {
