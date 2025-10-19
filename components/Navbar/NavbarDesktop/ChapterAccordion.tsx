@@ -160,8 +160,6 @@ const ChapterAccordion = ({
       {isOpen && (
         <div className="flex flex-col">
           <div>
-            {hasDifficulty && <DifficultySelection chapterId={id} />}
-
             <Title className="">
               <span className="text-white/50">1. </span> {t('navbar.intro')}
             </Title>

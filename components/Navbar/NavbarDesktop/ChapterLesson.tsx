@@ -6,6 +6,7 @@ import React from 'react'
 import Icon from 'shared/Icon'
 import {
   currentChapterAtom,
+  getLessonKey,
   isLessonCompletedUsingLessonName,
 } from 'state/progressState'
 import { CourseProgress } from 'types'
@@ -27,6 +28,7 @@ const ChapterLesson = ({
   const { isDevelopment } = useEnvironment()
   const currentChapter = useAtomValue(currentChapterAtom)
   const { lessonId: lessonName } = usePathData()
+  const lessonKey = getLessonKey(`chapter-${chapterId}`, id)
   const slug = `chapter-${chapterId}`
   const link = `/${lang}/chapters/${slug}/${id}${
     isDevelopment ? '?dev=true' : ''
@@ -38,7 +40,7 @@ const ChapterLesson = ({
     courseProgress
   )
 
-  const currentLesson = id === lessonName && currentChapter === chapterId
+  const currentLesson = courseProgress.currentLesson === lessonKey
 
   return (
     <div className="flex items-center gap-2.5 px-3.5 py-2.5">
@@ -55,9 +57,9 @@ const ChapterLesson = ({
             icon="arrowFacetRight"
             className="w-5 cursor-not-allowed opacity-100"
           />
-          <p className="cursor-not-allowed font-nunito text-[19px] opacity-100">
+          <a href={link} className="font-nunito text-[19px] opacity-75">
             {t(`${navigationTitle}`)}
-          </p>
+          </a>
         </>
       ) : (
         <>

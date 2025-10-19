@@ -12,12 +12,12 @@ export default function TabGroup({ params, theme }) {
   return (
     <>
       <div className={clsx('flex-l flex h-full items-stretch', theme)}>
-        <span
+        <button
           onClick={onClick}
           className="flex h-full w-[70px] cursor-pointer items-center justify-center hover:bg-black/25"
         >
           <Icon icon="menu" className="w-[32px]" />
-        </span>
+        </button>
       </div>
 
       <NavbarDrawer theme={theme} isOpen={isOpen} setIsOpen={setIsOpen} />
