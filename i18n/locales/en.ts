@@ -2604,6 +2604,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
 
   navbar: {
     intro: `Intro`,
+    outro: `Outro`,
     chapter: `Chapter`,
     chapter_complete: `Chapter complete`,
     challenge: `Challenge`,
