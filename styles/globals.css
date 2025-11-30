@@ -428,7 +428,7 @@ input:checked + .slider:before {
 
 .boss-bg-wrapper {
   position: relative;
-  width: 223px;
+  width: 233px;
   height: 74px;
   overflow: hidden;
 }
