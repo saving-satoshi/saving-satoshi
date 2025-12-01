@@ -81,3 +81,4 @@ Let us know [in Discord](https://discord.gg/DC8Dys4G3h) or [GitHub](https://gith
 - Thanks to [joinmarket-webui/jam](https://github.com/joinmarket-webui/jam) for much of the work on this very README and their intellectual work on building a robust and accessible contribution method for internationalization.
 
 - Contributors like you that are adding new languages and making Saving Satoshi what it is!
+
