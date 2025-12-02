@@ -108,6 +108,11 @@ export type ChapterWithoutDifficulties = {
   hasDifficulty: false
 }
 
+export type ChapterBase = {
+  id: number
+  completed: boolean
+}
+
 export type ChapterInState =
   | ChapterWithDifficulties
   | ChapterWithoutDifficulties

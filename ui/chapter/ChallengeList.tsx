@@ -110,8 +110,8 @@ export default function ChallengeList({
               'flex px-[10px] pt-2 text-[15px] font-semibold': lessonPage,
             })}
           >
-            <span className="pr-1 text-white/50">1.</span>
-            Intro
+            <span className="pr-1 text-white/50">{'1.'}</span>
+            {t('navbar.intro')}
           </h2>
           {introsData.map((intro, index) => (
             <ChallengeListItem
@@ -155,7 +155,7 @@ export default function ChallengeList({
             <span className="pr-1 text-white/50">
               {Object.keys(groupedLessonData).length + 2}.
             </span>
-            Outro
+            {t('navbar.outro')}
           </h2>
           {outrosData.map((outro, index) => (
             <ChallengeListItem

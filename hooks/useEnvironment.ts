@@ -14,6 +14,6 @@ export default function useEnvironment() {
         ? // If not in production, check if devParam is 'true'
           devParam === 'true'
         : // If in production, check if devParam matches the secret
-          devParam === process.env.DEV_MODE_SECRET,
+          devParam === process.env.NEXT_PUBLIC_DEV_MODE_SECRET,
   }
 }
