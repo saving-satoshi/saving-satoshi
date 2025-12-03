@@ -32,7 +32,7 @@ const NavbarDrawer = ({ theme, isOpen, setIsOpen }: INavbarDrawer) => {
       <aside
         className={clsx(
           'fixed inset-y-0 right-0 flex w-full max-w-[480px] transition-[z-index]',
-          isOpen ? 'z-20' : 'z-[-10] delay-500'
+          isOpen ? 'z-20' : 'invisible delay-500'
         )}
       >
         <div
