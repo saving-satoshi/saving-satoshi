@@ -8,6 +8,7 @@ import fr from './fr'
 import vi from './vi'
 import ko from './ko'
 import ja from './ja'
+import zh_cn from './zh-cn'
 
 const locales = {
   en,
@@ -20,6 +21,7 @@ const locales = {
   vi,
   ko,
   ja,
+  zh_cn,
 }
 
 export default locales
