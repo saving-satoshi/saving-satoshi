@@ -2053,15 +2053,15 @@ chapter_nine: {
         item_three: `脚本执行`,
       },
     },
+    subheading_one: `解释`,
+    stack_list_one: `初始化：资金交易输出和支出交易输入被组合在一起。`,
+    stack_list_two: `步骤 1: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1</span> 将 "1" 压入堆栈。`,
+    stack_list_three: `步骤 2: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_2</span> 将 "2" 压入堆栈。`,
+    stack_list_four: `步骤 3: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ADD</span> 弹出堆栈顶部两个元素，将它们相加，然后将和压回堆栈。`,
+    stack_list_five: `步骤 4: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_EQUAL</span> 弹出堆栈顶部两个元素，比较它们是否相等，并将布尔结果压回堆栈。`,
+    paragraph_two: `现在脚本已经执行到末尾，堆栈中只剩下一个 TRUE 元素——硬币已被花费！`,
+    paragraph_three: `如果我们在开始这个示例时堆栈上有 4，那么我们将无法花费这些硬币，因为 OP_EQUAL 的结果为 FALSE。在这些练习中，我们将使用非常有限的操作码集合，并按类别进行介绍。`,
   },
-subheading_one: `解释`,
-stack_list_one: `初始化：资金交易输出和支出交易输入被组合在一起。`,
-stack_list_two: `步骤 1: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_1</span> 将 "1" 压入堆栈。`,
-stack_list_three: `步骤 2: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_2</span> 将 "2" 压入堆栈。`,
-stack_list_four: `步骤 3: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_ADD</span> 弹出堆栈顶部两个元素，将它们相加，然后将和压回堆栈。`,
-stack_list_five: `步骤 4: <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_EQUAL</span> 弹出堆栈顶部两个元素，比较它们是否相等，并将布尔结果压回堆栈。`,
-paragraph_two: `现在脚本已经执行到末尾，堆栈中只剩下一个 TRUE 元素——硬币已被花费！`,
-paragraph_three: `如果我们在开始这个示例时堆栈上有 4，那么我们将无法花费这些硬币，因为 OP_EQUAL 的结果为 FALSE。在这些练习中，我们将使用非常有限的操作码集合，并按类别进行介绍。`,
 opcodes_five: {
   title: `操作码`,
   nav_title: `计算基础算术`,
@@ -2109,43 +2109,6 @@ opcodes_seven: {
   paragraph_two: `Holocat 出现，并播放 Satoshi Nakamoto 的预录信息！`,
   paragraph_three: `嗨。我在实现 <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> 时意外写了个 bug。它会额外弹出一个堆栈元素，根本没用。所以，呃，抱歉。该代码是共识关键的，所以比特币历史、现在和未来的每个 <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKMULTISIG</span> 操作都必须包含一个“虚拟”元素。别忘了，否则无法花费你的多签硬币！`,
 },
-
-outro_one: {
-  title: `结尾`,
-  nav_title: `章节完成`,
-  heading: `我们正在现场直播！`,
-  paragraph_one: `你找到了最长链，并向所有人证明了它！你找到的无效区块列表令人印象深刻。Vanderpoole 尽力让人们接受包含奖励的区块，但他无法改变比特币的规则。正如我们观察到的，仅因为一个区块是链的一部分，并不意味着它是有效的。现在，你离揭穿 Vanderpoole 又近了一步。不用说，他没有回答 Chunk 女士剩下的问题。`,
-},
-
-resources: {
-  building_blocks_three: {
-    tip: `先尝试这个命令，以了解可用的命令。`,
-    rpc_heading: `RPC 命令`,
-    rpc_paragraph_one: `RPC 命令是一种接口命令，允许客户端向程序发送请求，在客户端和服务器之间创建交互。这些请求由客户端或请求者发送，并带有客户端需要修改请求的任何参数。`,
-  },
-  building_blocks_four: {
-    block_data_heading: `区块数据`,
-    block_data_paragraph_one: `从本质上讲，比特币是一个账本，一个列表，记录了自诞生以来的所有交易。每笔交易按区块组织，每个区块按从创世区块开始的顺序组织。`,
-  },
-  building_blocks_five: {
-    transaction_data_heading: `交易数据`,
-    transaction_data_paragraph_one: `每笔交易包含自身的一组信息，以区别于其他交易，并清楚地说明转移了多少比特币以及使用了哪些输入和输出。`,
-  },
-  building_blocks_six: {
-    block_subsidy_heading: `区块奖励`,
-    block_subsidy_paragraph_one: `区块奖励是每个新区块的 coinbase 中释放到流通的比特币数量。由于总共只能创建约 2100 万枚比特币，因此必须有一个递减公式来使 coinbase 奖励总量达到 2100 万。下方的公式可视化了比特币中的机制。`,
-    block_subsidy_paragraph_two: `这个公式的作用是什么？我们知道创世区块的 coinbase 奖励是 50 个比特币，这在公式右侧的分子中表示。分母表示每次减半奖励会减少多少，这里为 2，即减半。我们还知道比特币只按时间顺序处理各个区块，因此每次减半为 210,000 个区块。最后，我们希望每次减半的奖励递减翻倍，因此将 2 提到当前减半次数 'i' 的幂，直到最终减半周期 32 次迭代。`,
-  },
-  building_blocks_seven: {
-    validating_heading: `验证区块`,
-    validating_paragraph_one: `验证区块对网络的安全性至关重要，因为每个区块都是基于前一区块的交易构建的。如果发现过去的某个区块无效，可能会导致整条区块链受到质疑，带来巨大的连锁影响。`,
-  },
-  building_blocks_eight: {
-    showtime_heading: `验证区块链`,
-    showtime_paragraph_one: `在比特币中验证区块链对于维护整个网络的完整性和安全性至关重要。每笔交易必须由矿工验证，以确保其合法且遵循网络建立的共识规则。该验证过程防止双重支付和欺诈，使用户无需中央权威即可信任系统。此外，它增强了透明度，因为所有已验证交易都会记录在公共账本中，使任何人都可以审计交易历史。`,
-  },
-},
-
 opcodes_eight: {
   title: `操作码`,
   nav_title: `多重签名签署`,
@@ -2233,7 +2196,6 @@ outro_one: {
   heading: `干得漂亮！`,
   paragraph_one: `捐款已分发给你和 Lil Bits 基金会，许多观众感谢你揭露了 Vanderpoole 的行为。虽然比特币的去中心化特性使得接管网络困难，但这并不能阻止像他这样的人尝试。你终于松了一口气，尤其是在付出如此多努力之后。`,
 },
-
 resources: {
   opcodes_five: {
     arithmetic_heading: `算术操作码`,
@@ -2279,7 +2241,7 @@ resources: {
 堆栈提示：在秘密揭示前支出，Vanderpoole 使用他的签名。秘密揭示后，你使用你的签名、秘密的哈希，并提供一个 0，因为脚本已经通过了未揭示验证。`,
   },
 },
- },
+},
 
 chapter_ten: {
   title: `100亿连接`,
@@ -2771,4 +2733,5 @@ help_page: {
   help_suggestion: `如果你卡住了，请按右上角的 "?" 按钮。它提供有用的资源和提示。`,
 },
 }
+
 export default translations
