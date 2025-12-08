@@ -456,9 +456,9 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                     (step === 1 &&
                       nextTransactionTab === tabData[0] &&
                       !noSignature)) && (
-                    <div className="flex flex-col gap-4 px-[30px] py-[15px]">
+                    <div className="flex flex-col gap-4 px-6 py-4">
                       <div className="flex flex-col">
-                        <Text>Signatures</Text>
+                        <Text className="mb-2">Signatures</Text>
                         <div className="flex flex-col gap-2 md:flex-row md:gap-10">
                           <div className="flex items-center gap-2.5">
                             <div className="h-[30px] w-[30px]">
@@ -468,7 +468,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                             <SignatureButton
                               returnSuccess={success}
                               onClick={handleYouSign}
-                              classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                              classes=" max-w-[max-content] rounded-[3px] px-4 py-2 text-base"
                               disabled={
                                 signatures.you === 'signed' ||
                                 disableSign ||
@@ -493,7 +493,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                                 disabled={true}
                                 returnSuccess={success}
                                 laszloWillNotSign={laszloWillNotSign}
-                                classes=" max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                                classes=" max-w-[max-content] rounded-[3px] px-4 py-2 text-base"
                               >
                                 Sign
                               </SignatureButton>
@@ -503,7 +503,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                       </div>
                       {!/^(multisig)$/.test(currentTransactionTab) && (
                         <div className="flex flex-col">
-                          <Text>Options</Text>
+                          <Text className="mb-2">Options</Text>
                           <Tooltip
                             id="broadcast-button"
                             position="bottom"
@@ -515,7 +515,7 @@ const TransactionChallenge: FC<ITransactionProps> = ({
                           >
                             <Button
                               disabled={true}
-                              classes="max-w-[max-content] rounded-[3px] px-2.5 text-base py-1"
+                              classes="max-w-[max-content] rounded-[3px] px-4 py-2 text-base"
                             >
                               Broadcast Transaction
                             </Button>
