@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import HyperLink from 'shared/icons/Hyperlink'
 import { TransactionData } from 'types'
 import { Text } from 'ui/common'
@@ -75,6 +75,7 @@ const OutputScript: FC<IOutput> = ({
 }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const caretPositionRef = useRef(0)
+  const [satsExceededWarning, setSatsExceededWarning] = useState(false)
   const objectOutput = output === 'output 0' ? 'output_0' : 'output_1'
   const currentScriptInput = scriptInput[objectOutput]
   const tabJSON: TransactionData = transactionTabs
@@ -205,9 +206,23 @@ const OutputScript: FC<IOutput> = ({
   }
 
   const handleSatsChange = (event) => {
+    const value = event.target.value
+    // Only allow numbers
+    if (value !== '' && !/^\d+$/.test(value)) {
+      return
+    }
+    // Enforce maximum value of 101,000
+    const numValue = parseInt(value, 10)
+    if (numValue > 101000) {
+      setSatsExceededWarning(true)
+      setTimeout(() => setSatsExceededWarning(false), 2000)
+      return
+    }
+    // Clear warning if valid
+    setSatsExceededWarning(false)
     setSatsInput((prev) => ({
       ...prev,
-      [objectOutput]: event.target.value,
+      [objectOutput]: value,
     }))
   }
 
@@ -324,7 +339,12 @@ const OutputScript: FC<IOutput> = ({
         <Text className="w-fit">Sats</Text>
         <input
           placeholder="Enter Sats"
-          className="bg-transparent text-white outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          inputMode="numeric"
+          className={`bg-transparent text-white outline-none transition-all [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none ${
+            satsExceededWarning
+              ? 'border-red-500 border-b-2'
+              : 'border-b-2 border-transparent'
+          }`}
           value={
             prefilled
               ? sats
@@ -337,7 +357,7 @@ const OutputScript: FC<IOutput> = ({
               : satsInput[objectOutput]
           }
           onChange={handleSatsChange}
-          pattern="[0-9]+([\.,][0-9]+)?"
+          pattern="[0-9]+"
           readOnly={
             (prefilledEditable &&
               !(
@@ -348,6 +368,11 @@ const OutputScript: FC<IOutput> = ({
             !!prefilled
           }
         />
+        {satsExceededWarning && (
+          <Text className="text-red-500 mt-1 animate-pulse text-xs">
+            Maximum value is 101,000 sats
+          </Text>
+        )}
       </div>
 
       <div className="flex flex-col">
