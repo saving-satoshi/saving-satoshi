@@ -428,7 +428,7 @@ const translations = {
         'Muito bem, é hora de escrever e executar seu próprio código. Escreva um script que gere um hash sha256 que comece com cinco zeros ("00000..."). Seu código deve chamar repetidamente a função sha256 com entradas diferentes até que a saída atenda a esse requisito. Você deve tentar incrementar um número inteiro dentro de um loop para obter entradas diferentes. Na criptografia, esse número pode ser chamado de "nonce" ou "número usado uma vez".',
       python: {
         paragraph_two:
-          'Quando encontrar um nonce com um hash que comece com cinco zeros, retorne o hash para o console. Estamos usando a biblioteca hashlib em Python para ajudá-lo a criar essa função. Você pode usar os seguintes recursos externos para ajudá-lo a escrever essa função, se necessário:',
+          'Quando encontrar um nonce com um hash que comece com cinco zeros, retorne o nonce da função. Estamos usando a biblioteca hashlib em Python para ajudá-lo a criar essa função. Você pode usar os seguintes recursos externos para ajudá-lo a escrever essa função, se necessário:',
         list_one:
           '<Link href="https://docs.python.org/3/library/hashlib.html" target="_blank" className="underline">documentação da hashlib</Link>',
         list_two:
@@ -436,7 +436,7 @@ const translations = {
       },
       javascript: {
         paragraph_two:
-          'Quando encontrar um nonce com um hash que comece com cinco zeros, retorne o hash para o console. Estamos usando a biblioteca de criptografia em JavaScript para ajudá-lo a criar essa função. Você pode usar os seguintes recursos externos para ajudá-lo a escrever essa função, se necessário:',
+          'Quando encontrar um nonce com um hash que comece com cinco zeros, retorne o nonce da função. Estamos usando a biblioteca de criptografia em JavaScript para ajudá-lo a criar essa função. Você pode usar os seguintes recursos externos para ajudá-lo a escrever essa função, se necessário:',
         list_one:
           '<Link href="https://www.geeksforgeeks.org/node-js-crypto-createhash-method/" target="_blank" className="underline">documentação de criptografia</Link>',
         list_two:
