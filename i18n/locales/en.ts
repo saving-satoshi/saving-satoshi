@@ -2553,7 +2553,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       heading: `Bitcoin still needs your help...`,
       paragraph_one: `Although 2139 may seem distant, Bitcoin's mission remains timeless: to create money that is fair, open, and honest. However, achieving this vision will require everyone's efforts—including yours.`,
       paragraph_two: `Your adventures have demonstrated your willingness to defend bitcoin's fundamental principles, but this is just the start of a longer journey. Now is the perfect time to turn your budding knowledge into action though meaningful contribution`,
-      boss_instructions: `If you were brought to Saving Satoshi by the <Link className="underline" href="https://learning.chaincode.com">₿OSS Challenge</Link>, here's your next clue. Using the same private key you have been playing the game with, perform an XOR operation on this hex-encoded secret message.`,
+      boss_instructions: `If you were brought to Saving Satoshi by the <Link className="underline" href="https://learning.chaincode.com">₿OSS Challenge</Link>, here's your next clue. Using the same private key you have been playing the game with, perform an XOR operation on this hex-encoded secret message. If your result looks like gibberish, double-check your work -- the correct answer will open a door.`,
       boss_instructions_two: `<span className="italic">Hint: your private key is also in hex format</span>`,
       paragraph_three: `Ready for more? The <Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> is here to guide future generations of open-source contributors. Becoming a present day bitcoin hero today is just one click away.`,
       paragraph_four: `We are all Satoshi.`,
