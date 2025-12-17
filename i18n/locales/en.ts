@@ -2227,9 +2227,9 @@ Stack Hint: To satisfy the script, you need to provide both signatures. The 0 on
       },
       proposal_three: {
         tip: `Let's think about combining a conditional with some timelock to separate Vanderpoole's signature from yours.`,
-        spoiler: `Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, Vanderpoole can spend; after the block, you can.
+        spoiler: `Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, you can spend; after the block, Vanderpoole can.
 
-Stack Hint: To spend before the specified block, Vanderpoole uses his signature. After the block, you use your signature and need to provide a 0 because the script has moved past the locktime verification.`,
+Stack Hint: To spend before the specified block, you use your signature. After the block, Vanderpoole uses his signature and needs to provide a 0 because the script has moved past the locktime verification.`,
       },
       proposal_four: {
         tip: `The preimage will be revealed after an unknown amount of time so no need for using timelocks.`,
