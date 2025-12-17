@@ -36,7 +36,7 @@ export const metadata = {
     'put-it-together-5-hard',
     'put-it-together-6-hard',
   ],
-  outros: ['outro-1', 'book-a-call-1'],
+  outros: ['outro-1'],
   challenges: [
     'in-out-1',
     'put-it-together-1-normal',
