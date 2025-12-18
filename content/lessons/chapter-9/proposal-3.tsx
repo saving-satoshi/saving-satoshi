@@ -40,7 +40,7 @@ export default function Proposal3({ lang }) {
         success={success}
         setSuccess={setSuccess}
         initialHeight={6930299}
-        initialStackScript={['SIG(ME)', '0']}
+        initialStackScript={['SIG(ME)', '1']}
         nextStepMessage={t('chapter_nine.proposal_three.next_step_message')}
       >
         <LessonInfo>
