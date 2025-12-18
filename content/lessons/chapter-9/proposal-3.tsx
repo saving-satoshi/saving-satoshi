@@ -25,14 +25,14 @@ export default function Proposal3({ lang }) {
         answerScript={[
           'OP_IF',
           'OP_PUSH',
-          'PUBKEY(VANDERPOOLE)',
+          'PUBKEY(ME)',
           'OP_ELSE',
           'OP_PUSH',
           '6930300',
           'OP_CHECKLOCKTIMEVERIFY',
           'OP_DROP',
           'OP_PUSH',
-          'PUBKEY(ME)',
+          'PUBKEY(VANDERPOOLE)',
           'OP_ENDIF',
           'OP_CHECKSIG',
         ]}
