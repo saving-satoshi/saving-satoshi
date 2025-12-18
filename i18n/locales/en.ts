@@ -2160,7 +2160,7 @@ const translations = {
       title: `Conditional time locked transaction`,
       nav_title: `Make him wait`,
       heading: `Conditional time locked transaction`,
-      paragraph_one: `Wait a minute, that doesn't make sense—you don't want to deal with him forever! The new deal is you get all donations for the next two hours while you are still on TV. The Lil Bits Foundation gets anything that comes in afterwards. You look at the bitcoin block block on the wall in the studio and agree that block height 6930300 will probably be mined in about two hours.`,
+      paragraph_one: `Wait a minute, that doesn't make sense—you don't want to deal with him forever! The new deal is you get all donations for the next two hours while you are still on TV. The Lil Bits Foundation gets anything that comes in afterwards. You look at the bitcoin block clock on the wall in the studio and agree that block height 6930300 will probably be mined in about two hours.`,
       paragraph_two: `Remember Vanderpoole's public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
       paragraph_three: `Provide the initial stack to spend from the script.`,
       next_step_message: `Looks good! Now lets try with your own signature.`,
@@ -2227,9 +2227,9 @@ Stack Hint: To satisfy the script, you need to provide both signatures. The 0 on
       },
       proposal_three: {
         tip: `Let's think about combining a conditional with some timelock to separate Vanderpoole's signature from yours.`,
-        spoiler: `Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, Vanderpoole can spend; after the block, you can.
+        spoiler: `Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, you can spend; after the block, Vanderpoole can.
 
-Stack Hint: To spend before the specified block, Vanderpoole uses his signature. After the block, you use your signature and need to provide a 0 because the script has moved past the locktime verification.`,
+Stack Hint: To spend before the specified block, you use your signature. After the block, Vanderpoole uses his signature and needs to provide a 0 because the script has moved past the locktime verification.`,
       },
       proposal_four: {
         tip: `The preimage will be revealed after an unknown amount of time so no need for using timelocks.`,
@@ -2553,7 +2553,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       heading: `Bitcoin still needs your help...`,
       paragraph_one: `Although 2139 may seem distant, Bitcoin's mission remains timeless: to create money that is fair, open, and honest. However, achieving this vision will require everyone's efforts—including yours.`,
       paragraph_two: `Your adventures have demonstrated your willingness to defend bitcoin's fundamental principles, but this is just the start of a longer journey. Now is the perfect time to turn your budding knowledge into action though meaningful contribution`,
-      boss_instructions: `If you were brought to Saving Satoshi by the <Link className="underline" href="https://learning.chaincode.com">₿OSS Challenge</Link>, here's your next clue. Using the same private key you have been playing the game with, perform an XOR operation on this hex-encoded secret message.`,
+      boss_instructions: `If you were brought to Saving Satoshi by the <Link className="underline" href="https://learning.chaincode.com">₿OSS Challenge</Link>, here's your next clue. Using the same private key you have been playing the game with, perform an XOR operation on this hex-encoded secret message. If your result looks like gibberish, double-check your work -- the correct answer will open a door.`,
       boss_instructions_two: `<span className="italic">Hint: your private key is also in hex format</span>`,
       paragraph_three: `Ready for more? The <Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> is here to guide future generations of open-source contributors. Becoming a present day bitcoin hero today is just one click away.`,
       paragraph_four: `We are all Satoshi.`,

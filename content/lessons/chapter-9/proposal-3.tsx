@@ -25,14 +25,14 @@ export default function Proposal3({ lang }) {
         answerScript={[
           'OP_IF',
           'OP_PUSH',
-          'PUBKEY(VANDERPOOLE)',
+          'PUBKEY(ME)',
           'OP_ELSE',
           'OP_PUSH',
           '6930300',
           'OP_CHECKLOCKTIMEVERIFY',
           'OP_DROP',
           'OP_PUSH',
-          'PUBKEY(ME)',
+          'PUBKEY(VANDERPOOLE)',
           'OP_ENDIF',
           'OP_CHECKSIG',
         ]}
@@ -40,7 +40,7 @@ export default function Proposal3({ lang }) {
         success={success}
         setSuccess={setSuccess}
         initialHeight={6930299}
-        initialStackScript={['SIG(ME)', '0']}
+        initialStackScript={['SIG(VANDERPOOLE)', '0']}
         nextStepMessage={t('chapter_nine.proposal_three.next_step_message')}
       >
         <LessonInfo>

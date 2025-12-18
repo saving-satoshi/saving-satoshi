@@ -81,7 +81,6 @@ export const allLessonOrder = {
   CH6PUT5_HARD: 74,
   CH6PUT6_HARD: 75,
   CH6OUT1: 76,
-  CH6BAC1: 77,
   CH7INT1: 78,
   CH7INT2: 79,
   CH7INT3: 80,
