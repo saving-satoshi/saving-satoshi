@@ -81,6 +81,7 @@ export default function Runner({
   const [loading, setLoading] = useState<boolean>(false)
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const hasResult = useRef(false)
+  const outputBuffer = useRef<string[]>([])
   const isActive = activeView !== LessonView.Info
   const [isTryAgain, setIsTryAgain] = useState<boolean | null>(null)
   const [hasherState, setHasherState] = useState<HasherState>(
@@ -117,6 +118,7 @@ export default function Runner({
   const handleRun = async () => {
     setActiveView(LessonView.Execute)
     hasResult.current = false
+    outputBuffer.current = []
     try {
       success = false
       setState(State.Building)
@@ -180,57 +182,16 @@ export default function Runner({
             break
           }
           case 'output': {
+            // Let's accumulate output chunks
             payload = payload.trim()
-            if (hasResult.current === false) {
-              sendTerminal('clear')
-              sendTerminal('print', t('runner.result'))
+            if (payload) {
+              outputBuffer.current.push(payload)
               hasResult.current = true
-              sendTerminal('print', payload)
-              ws?.close()
             }
-
-            const [res, msg] = await onValidate({
-              code: new Base64String(`${code}\n${program}`),
-              answer: payload,
-            })
-            if (!res || res === 2) {
-              setIsRunning(false)
-              setHasherState(HasherState.Error)
-              if (msg) {
-                sendTerminal('error', msg)
-              }
-              break
-            }
-            if (res === 3) {
-              setIsRunning(false)
-              setHasherState(HasherState.Success)
-              success = 3
-              sendTerminal('success', t('runner.evaluation'))
-              sendTerminal('success', poorMessage)
-              break
-            }
-            if (res === 4) {
-              setIsRunning(false)
-              setHasherState(HasherState.Success)
-              success = 4
-              sendTerminal('success', t('runner.evaluation'))
-              sendTerminal('success', goodMessage)
-              break
-            }
-
-            success = true
-            setIsRunning(false)
-            setHasherState(HasherState.Success)
-            sendTerminal('success', t('runner.evaluation'))
-            sendTerminal('success', msg)
-            ws?.close()
+            // we shoulnd't display or close websocket here, we should wait for 'end' message
             break
           }
           case 'end': {
-            if (!success) {
-              ws?.close()
-            }
-
             if (hasResult.current === false) {
               sendTerminal('clear')
               sendTerminal('print', t('runner.result'))
@@ -242,12 +203,54 @@ export default function Runner({
               setIsRunning(false)
               setState(State.Error)
               ws?.close()
+              break
             }
-            if (!success) {
+
+            // we can now display the accumulated output
+            const completeOutput = outputBuffer.current.join('')
+            sendTerminal('clear')
+            sendTerminal('print', t('runner.result'))
+            sendTerminal('print', completeOutput)
+
+            const [res, msg] = await onValidate({
+              code: new Base64String(`${code}\n${program}`),
+              answer: completeOutput,
+            })
+
+            if (!res || res === 2) {
               setIsRunning(false)
-              setHasherState(HasherState.Waiting)
-              setState(State.Complete)
+              setHasherState(HasherState.Error)
+              if (msg) {
+                sendTerminal('error', msg)
+              }
+              ws?.close()
+              break
             }
+            if (res === 3) {
+              setIsRunning(false)
+              setHasherState(HasherState.Success)
+              success = 3
+              sendTerminal('success', t('runner.evaluation'))
+              sendTerminal('success', poorMessage)
+              ws?.close()
+              break
+            }
+            if (res === 4) {
+              setIsRunning(false)
+              setHasherState(HasherState.Success)
+              success = 4
+              sendTerminal('success', t('runner.evaluation'))
+              sendTerminal('success', goodMessage)
+              ws?.close()
+              break
+            }
+
+            success = true
+            setIsRunning(false)
+            setHasherState(HasherState.Success)
+            sendTerminal('success', t('runner.evaluation'))
+            sendTerminal('success', msg)
+            ws?.close()
             break
           }
         }
