@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useTranslations } from 'hooks'
 import { ChapterEnd } from 'ui'
 
@@ -15,6 +16,37 @@ export const metadata = {
 
 export default function Outro1({ lang }) {
   const t = useTranslations(lang)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    import('canvas-confetti').then((mod) => {
+      const confetti = mod.default
+
+      // main burst
+      confetti({
+        particleCount: 250,
+        spread: 180,
+        origin: { y: 0.7 },
+      })
+
+      // left + right follow up
+      setTimeout(() => {
+        confetti({
+          particleCount: 120,
+          angle: 60,
+          spread: 150,
+          origin: { x: 0 },
+        })
+        confetti({
+          particleCount: 120,
+          angle: 120,
+          spread: 150,
+          origin: { x: 1 },
+        })
+      }, 250)
+    })
+  }, [])
 
   return (
     <ChapterEnd
@@ -33,11 +65,9 @@ export default function Outro1({ lang }) {
       <p className="mt-4 font-nunito text-2xl text-white">
         {t('chapter_two.outro_one.paragraph_two')}
       </p>
-
       <p className="mt-4 font-nunito text-2xl text-white">
         {t('chapter_two.outro_one.paragraph_three')}
       </p>
-
       <p className="mt-4 font-nunito text-2xl text-white">
         {t('chapter_two.outro_one.paragraph_four')}
       </p>
