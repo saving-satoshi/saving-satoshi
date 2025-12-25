@@ -2718,8 +2718,8 @@ const translations = {
       },
       proposal_three: {
        tip: "Hãy suy nghĩ về việc kết hợp một điều kiện với một số khóa thời gian để tách chữ ký của Vanderpoole khỏi chữ ký của bạn.", // Let's think about combining a conditional with some timelock to separate Vanderpoole's signature from yours.
-       spoiler: `Gợi ý Script: Script cho phép chi tiêu theo hai điều kiện: trước khối 6930300 hoặc sau đó. Trước khối, Vanderpoole có thể chi tiêu; sau khối, bạn có thể.
-                Gợi ý stack: Để chi tiêu trước khối được chỉ định, Vanderpoole sử dụng chữ ký của mình. Sau khối, bạn sử dụng chữ ký của mình và cần cung cấp 0 vì script đã vượt qua xác minh khóa thời gian.`,
+       spoiler: `Gợi ý Script: Script cho phép chi tiêu theo hai điều kiện: trước khối 6930300 hoặc sau đó. Trước khối, bạn có thể chi tiêu; sau khối, Vanderpoole có thể chi tiêu.
+                Gợi ý stack: Để chi tiêu trước khối được chỉ định, bạn sử dụng chữ ký của mình. Sau khối, Vanderpoole sử dụng chữ ký của mình và cần cung cấp 0 vì script đã vượt qua xác minh khóa thời gian.`,
         // Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, Vanderpoole can spend; after the block, you can.
       //Stack Hint: To spend before the specified block, Vanderpoole uses his signature. After the block, you use your signature and need to provide a 0 because the script has moved past the locktime verification.
       },
