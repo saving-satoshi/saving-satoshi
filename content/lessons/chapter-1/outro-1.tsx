@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'hooks'
 import { TextImage } from 'ui'
+import { useConfetti } from 'hooks/useConfetti'
 
 export const metadata = {
   title: 'chapter_one.outro_one.title',
@@ -13,6 +14,11 @@ export const metadata = {
 
 export default function Outro1({ lang }) {
   const t = useTranslations(lang)
+  const fireConfetti = useConfetti(1.2)
+
+  const handleButtonClick = () => {
+    fireConfetti()
+  }
 
   return (
     <TextImage
@@ -22,6 +28,7 @@ export default function Outro1({ lang }) {
       btnText={t('chapter_one.outro_one.button_text')}
       btnEnabled={true}
       objectPosition="object-left-top"
+      onButtonClick={handleButtonClick} // added
     >
       <p>{t('chapter_one.outro_one.paragraph_one')}</p>
       <p className="pt-6">{t('chapter_one.outro_one.paragraph_two')}</p>
