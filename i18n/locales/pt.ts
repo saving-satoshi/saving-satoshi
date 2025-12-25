@@ -2726,9 +2726,9 @@ Dica de pilha: para atender ao script, você precisa fornecer as duas assinatura
       },
       proposal_three: {
         tip: 'Vamos pensar em combinar uma condicional com algum bloqueio de tempo para separar a assinatura de Vanderpoole da sua.',
-        spoiler: `Dica de script: O script permite gastar em duas condições: antes do bloqueio 6930300 ou depois. Antes do bloqueio, Vanderpoole pode gastar; depois do bloqueio, você pode.
+        spoiler: `Dica de script: O script permite gastar em duas condições: antes do bloqueio 6930300 ou depois. Antes do bloqueio, você pode gastar; depois do bloqueio, Vanderpoole pode gastar.
 
-Dica da pilha: Para gastar antes do bloco especificado, Vanderpoole usa sua assinatura. Após o bloqueio, você usa sua assinatura e precisa fornecer um 0 porque o script passou pela verificação do tempo de bloqueio.`,
+Dica da pilha: Para gastar antes do bloco especificado, você usa sua assinatura. Após o bloqueio, Vanderpoole usa sua assinatura e precisa fornecer um 0 porque o script passou pela verificação do tempo de bloqueio.`,
       },
       proposal_four: {
         tip: 'A pré-imagem será revelada após um período de tempo desconhecido, portanto, não há necessidade de usar relógios de ponto.',
