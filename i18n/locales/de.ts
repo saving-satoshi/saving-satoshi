@@ -713,7 +713,13 @@ const translations = {
         '</a>' +
         '). Der Generatorpunkt ist ein bestimmter Punkt auf der Kurve. Sein Wert ist Teil des secp256k1-Standards und ist immer gleich:',
       paragraph_two:
-        'Die Operation der elliptischen Kurve ähnelt der Addition und daher ähnelt ihre Wiederholung der Multiplikation. Wir nutzen das * Symbol um den Algorithmus zu beschreiben, bei dem `k` der private Schlüssel und `P` der korrespondierende öffentliche Schlüssel ist:',
+        'Die Operation der elliptischen Kurve ähnelt der Addition und daher ähnelt ihre Wiederholung der Multiplikation. Wir nutzen das * Symbol um den Algorithmus zu beschreiben (' +
+        '<a href="https://chat.bitcoinsearch.xyz/?author=holocat&question=How%2520does%2520elliptic%2520curve%2520scalar%2520multiplication%2520work%253F" ' +
+        'target="_blank" rel="noopener noreferrer" class="underline">' +
+        'lerne mehr' +
+        '</a>' +
+        '), bei dem `k` der private Schlüssel und `P` der korrespondierende öffentliche Schlüssel ist:',
+
       paragraph_three:
         'Vervollständige die Funktion, die einen privaten Schlüssel als hexkodierte Zeichenkette akzeptiert und den entsprechenden öffentlichen Schlüssel als GE-Objekt (Group Element) zurückgibt.',
       success:
