@@ -508,18 +508,65 @@ const syncCourseProgressEffectAtom = atomEffect((get, set) => {
     combinedProgressAndAccountAtom
   )
   if (isAuthLoading || !isProgressLoaded) return
+
+  const syncedProgress = syncSharedLessonCompletion(courseProgress)
+
   if (account) {
-    setProgress(courseProgress)
+    setProgress(syncedProgress)
   } else {
-    setProgressLocal(courseProgress)
+    setProgressLocal(syncedProgress)
   }
 })
+
+// function to sync shared lesson completion across difficulties
+function syncSharedLessonCompletion(
+  courseProgress: CourseProgress
+): CourseProgress {
+  const updatedChapters = courseProgress.chapters.map((chapter) => {
+    if (!chapter.hasDifficulty || !chapter.difficulties) {
+      return chapter
+    }
+
+    const allLessonIds = new Set<string>()
+    const completedLessonIds = new Set<string>()
+
+    chapter.difficulties.forEach((difficulty) => {
+      difficulty.lessons.forEach((lesson) => {
+        allLessonIds.add(lesson.id)
+        if (lesson.completed) {
+          completedLessonIds.add(lesson.id)
+        }
+      })
+    })
+
+    const updatedDifficulties = chapter.difficulties.map((difficulty) => ({
+      ...difficulty,
+      lessons: difficulty.lessons.map((lesson) =>
+        completedLessonIds.has(lesson.id)
+          ? { ...lesson, completed: true }
+          : lesson
+      ),
+    }))
+
+    return {
+      ...chapter,
+      difficulties: updatedDifficulties,
+    }
+  })
+
+  return {
+    ...courseProgress,
+    chapters: updatedChapters,
+  }
+}
 
 // Atom to trigger the effect whenever course progress or authentication changes
 export const syncedCourseProgressAtom = atom(
   (get) => {
     get(syncCourseProgressEffectAtom) // This will trigger the effect
-    return get(courseProgressAtom)
+    const courseProgress = get(courseProgressAtom)
+
+    return syncSharedLessonCompletion(courseProgress)
   },
   (get, set, update: Partial<CourseProgress>) => {
     set(courseProgressAtom, (prev) => ({ ...prev, ...update }))
@@ -940,10 +987,20 @@ export const loadProgressAtom = atom(null, async (get, set) => {
     progress = await getProgressLocal()
   }
 
-  set(
-    syncedCourseProgressAtom,
-    mergeProgressState(defaultProgressState, progress)
-  )
+  const mergedProgress = mergeProgressState(defaultProgressState, progress)
+
+  // Apply sync to migrate existing progress data
+  const syncedProgress = syncSharedLessonCompletion(mergedProgress)
+
+  set(syncedCourseProgressAtom, syncedProgress)
+
+  // Save synced progress back to storage to persist the migration
+  if (account) {
+    await setProgress(syncedProgress)
+  } else {
+    await setProgressLocal(syncedProgress)
+  }
+
   set(isProgressLoadedAtom, true)
   set(isLoadingProgressAtom, false)
 })
@@ -1128,7 +1185,6 @@ export const getNextLessonUsingChapterIdAndLessonName = (
     } else {
       nextLessons = nextChapter.lessons || []
     }
-
     if (nextLessons.length > 0) {
       return nextLessons[0]
     }
@@ -1162,22 +1218,35 @@ export const markLessonAsCompleteAtom = atom(
       let updatedLessons: LessonInState[] = []
 
       if (chapter.hasDifficulty) {
-        const difficulty = chapter.difficulties?.find(
+        updatedChapters[i] = {
+          ...chapter,
+          difficulties: chapter.difficulties.map((difficulty) => {
+            const lessonInDifficulty = difficulty.lessons.find(
+              (lesson) => lesson.id === lessonId
+            )
+            if (lessonInDifficulty) {
+              return {
+                ...difficulty,
+                lessons: difficulty.lessons.map((lesson) =>
+                  lesson.id === lessonId
+                    ? { ...lesson, completed: true }
+                    : lesson
+                ),
+              }
+            }
+            return difficulty
+          }),
+        }
+
+        // Update lessons list for finding next lesson
+        const currentDifficulty = chapter.difficulties?.find(
           (d) => d.level === chapter.selectedDifficulty
         )
-        if (difficulty) {
-          lessons = difficulty.lessons
+        if (currentDifficulty) {
+          lessons = currentDifficulty.lessons
           updatedLessons = lessons.map((lesson) =>
             lesson.id === lessonId ? { ...lesson, completed: true } : lesson
           )
-          updatedChapters[i] = {
-            ...chapter,
-            difficulties: chapter.difficulties.map((d) =>
-              d.level === chapter.selectedDifficulty
-                ? { ...d, lessons: updatedLessons }
-                : d
-            ),
-          }
         }
       } else {
         lessons = chapter.lessons || []
