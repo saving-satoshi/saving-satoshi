@@ -629,33 +629,13 @@ const translations = {
     public_key_three: {
       title: `公開鍵`,
       nav_title: `公開鍵の計算`,
-
-      paragraph_one:
-        `秘密鍵から公開鍵を導き出すには、生成点との楕円曲線演算を繰り返します (` +
-        `<a href="https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520is%2520the%2520generator%2520point%2520repeatedly%2520used%2520to%2520derive%2520a%2520public%2520key%2520from%2520a%2520private%2520key%2520in%2520secp256k1%253F" ` +
-        `target="_blank" rel="noopener noreferrer" class="underline">` +
-        `なぜか調べる` +
-        `</a>` +
-        `)。生成点はsecp256k1の標準で定められた、曲線上の特定の点で常に同じ値です。`,
-
-      paragraph_two:
-        `楕円曲線上での演算は加算と似ており、それを繰り返すことで乗算に相当する処理となります。` +
-        `アルゴリズムは次のように表されます (` +
-        `<a href="https://chat.bitcoinsearch.xyz/?author=holocat&question=How%2520does%2520elliptic%2520curve%2520scalar%2520multiplication%2520work%253F" ` +
-        `target="_blank" rel="noopener noreferrer" class="underline">` +
-        `詳しく学ぶ` +
-        `</a>` +
-        `)。ここで「k」は秘密鍵、「P」は対応する公開鍵です：`,
-
+      paragraph_one: `秘密鍵から公開鍵を導き出すには、生成点との楕円曲線演算を繰り返します。生成点はsecp256k1の標準で定められた、曲線上の特定の点で常に同じ値です。`,
+      paragraph_two: `楕円曲線上での演算は加算と似ており、それを繰り返すことで乗算に相当する処理となります。アルゴリズムは次のように表されます。ここで「k」は秘密鍵、「P」は対応する公開鍵です：`,
       python: {
-        paragraph_three:
-          `関数 <span className="text-green">privatekey_to_publickey()</span> を完成させてください。` +
-          `この関数は、16進文字列で与えられた秘密鍵を受け取り、対応する公開鍵（GE＝グループ要素）オブジェクトを返します。`,
+        paragraph_three: `関数 <span className="text-green">privatekey_to_publickey()</span> を完成させてください。この関数は、16進文字列で与えられた秘密鍵を受け取り、対応する公開鍵（GE＝グループ要素）オブジェクトを返します。`,
       },
       javascript: {
-        paragraph_three:
-          `関数 <span className="text-green">privateKeyToPublicKey()</span> を完成させてください。` +
-          `この関数は、16進文字列で与えられた秘密鍵を受け取り、対応する公開鍵（GE＝グループ要素）オブジェクトを返します。`,
+        paragraph_three: `関数 <span className="text-green">privateKeyToPublicKey()</span> を完成させてください。この関数は、16進文字列で与えられた秘密鍵を受け取り、対応する公開鍵（GE＝グループ要素）オブジェクトを返します。`,
       },
       paragraph_four: `以下に、型変換のヒントをいくつか示します：`,
       success: `よくできました！公開鍵はけっこう長いですね。次はそれを圧縮してみましょう！`,
