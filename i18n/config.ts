@@ -11,7 +11,7 @@ export const i18n = {
     { locale: 'vi', label: 'Tiếng Việt' },
     { locale: 'ko', label: '한국어' },
     { locale: 'ja', label: '日本語' },
-    { locale: 'zh-CN', label: '中文' },
+    { locale: 'zh_cn', label: '中文' },
   ],
 } as const
 
