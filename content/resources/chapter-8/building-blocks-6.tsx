@@ -22,7 +22,7 @@ const javascriptChallenge = {
   },
   defaultCode: `const getSubsidy = (height)=> {
   let halvings = BigInt(Math.floor(height / 210000));
-  if (halvings >= 64) {
+  if (halvings >= 33) {
     return 0;
   }
   let subsidy = BigInt(5000000000);
@@ -49,7 +49,7 @@ const pythonChallenge = {
   },
   defaultCode: `def get_subsidy(height):
     halvings = height // 210000
-    if halvings >= 64:
+    if halvings >= 33:
         return 0
     subsidy = 5000000000
     subsidy >>= halvings
