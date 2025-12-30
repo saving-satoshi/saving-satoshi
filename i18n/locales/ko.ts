@@ -1439,7 +1439,7 @@ const translations = {
         paragraph_six: `비트코인 프로토콜은 서명 알고리즘에서 한 가지를 더 요구합니다. 바로, <span className="italic">s</span> 값이 '낮은 값'이어야 한다는 것입니다. 여기서 '낮다'는 건 곡선의 순서를 2로 나눈 값보다 작다는 뜻이에요. 이 조건을 <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">compute_input_signature()</span> 메서드에 추가해보세요.`,
         paragraph_seven: `더 자세한 내용은 <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>을 참고하세요.`,
         heading_three: `3단계`,
-        paragraph_eight: `<span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, key)</span> 메서드를 완성해보세요. 이 메서드는 내부에서 <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>를 를 호출해야 합니다. 반환된 <span className="italic">r</span>과 <span className="italic">s</span>값은 DER이라는 형식으로 인코딩되어야 합니다. 이 DER 인코딩 기능은 우리가 이미 구현해두었습니다.`,
+        paragraph_eight: `<span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, priv, pub, sighash)</span> 메서드를 완성해보세요. 이 메서드는 내부에서 <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>를 를 호출해야 합니다. 반환된 <span className="italic">r</span>과 <span className="italic">s</span>값은 DER이라는 형식으로 인코딩되어야 합니다. 이 DER 인코딩 기능은 우리가 이미 구현해두었습니다.`,
         heading_four: `4단계`,
         paragraph_nine: `비트코인에서는 DER 서명의 끝에 추가로 1바이트가 더 붙어야 합니다. 이 바이트는 '서명 해시 타입(sighash type)'을 나타냅니다. 지금은 항상 <span className="p-1 text-base font-mono bg-[#0000004D] m-1">0x01</span>을 사용하여 "SIGHASH ALL"을 의미하도록 합니다.`,
         heading_five: `5단계`,
