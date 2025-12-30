@@ -33,11 +33,27 @@ const translations = {
       'Die Welt wartet gespannt auf den letzen Block. Dann, plötzlich, kommt das Netzwerk zum Stillstand.<br><br>Du erhälst eine Holokatze von jemandem, der sich Satoshi Nakamoto nennt. (Sie ist wie jedes andere E-Hologram, jedoch in der Form einer Katze). Du öffnest die Nachricht der Holokatze, indem du auf ihre Nase drückst, um zu hören, was sie zu sagen hat.',
 
     project: {
-      title: 'Mit Spaß gebaut',
-      paragraph_one:
-        'Saving Satoshi ist eine unbeschwerte erste Anlaufstelle für Programmierer, die neugierig auf die Bitcoin-Entwicklung sind. Saving Satoshi bietet eine Mischung aus technischen Text- und Code-basierten Herausforderungen, die aber für jeden mit grundlegenden Programmierkenntnissen machbar sein sollten. Das Projekt ist frei und quelloffen (FOSS) und alle Grafiken wurde mit Text-zu-Bild-Tools wie Midjourney erstellt.',
-      paragraph_two:
-        'Dieses Projekt befindet sich in ständiger Entwicklung und verfolgt einen iterativen Ansatz, um Feddback zu berücksichtigen, wenn wir neue Kapitel veröffentlichen. Derzeit sind zehn Kapitel geplant. Es können jedoch noch weitere hinzugefügt werden, wenn das Projekt weiter wächst.',
+      title: `Bitcoin ist ein ernstes Thema, aber das Lernen darüber muss es nicht sein.`,
+      paragraph_one: `Saving Satoshi ist ein lockeres, interaktives Rollenspiel (RPG) über Bitcoin-Technologie. Es kombiniert Spaß, innovative Herausforderungen mit Storytelling und Spielmechaniken, um einen sanften Einstieg in die Bitcoin-Entwicklung zu schaffen.`,
+      paragraph_two: `Es wurde mit viel Spaß für neugierige Programmierer und alle, die lernen möchten, wie Bitcoin <span className="italic">wirklich</span> funktioniert, entwickelt. Es richtet sich an diejenigen, die die Magie der Bitcoin Open Source Software (₿OSS) gesehen haben und nach Möglichkeiten suchen, einen Beitrag zu leisten.`,
+      paragraph_three: `Jedes Kapitel ist gefüllt mit Code-basierten Lektionsinhalten, Simulationen und Programmierübungen, um das Lernen der esoterischen Details der Bitcoin-Technologie angenehmer zu gestalten.`,
+      paragraph_four: `Mit einfachen, unkomplizierten Beispielen bauen Spieler solide Grundlagen auf, bevor die Komplexität hinzugefügt wird. Durch eine immersive Benutzeroberfläche, reichhaltige Visualisierungen und nahtlose Interaktionen werden Lernende auf eine Reise durch eine Vielzahl von Themen mitgenommen, darunter:`,
+      chapter_topics: {
+        list_one: `Die geheime Nachricht im Genesis-Block finden und entschlüsseln`,
+        list_two: `Hash-Funktionen und Proof-of-Work`,
+        list_three: `Die Dynamik des Pool-Minings`,
+        list_four: `Die Grundlagen der elliptischen Kurvenkryptographie und wie man eine Adresse aus öffentlich-privaten Schlüsselpaaren ableitet`,
+        list_five: `ECDSA-Nachrichtensignierung und -Verifizierung`,
+        list_six: `Eine Transaktion von Grund auf erstellen`,
+        list_seven: `Transaktionen zusammenstellen, um eine Block-Vorlage zu konstruieren`,
+        list_eight: `Die Bitcoin Core RPC API verwenden und die Block-Subvention berechnen`,
+        list_nine: `Bitcoin Script`,
+        list_ten: `Wie das Lightning-Netzwerk funktioniert`,
+      },
+      paragraph_five: `Aber es geht nicht nur um den Lehrplan. Wir glauben, dass Bitcoin-Bildung genauso kreativ und einzigartig sein kann wie die Technologie selbst. Deshalb berührt das Spiel viele andere faszinierende Elemente von Bitcoin wie Kultur, Geschichte und Design.`,
+      paragraph_six: `Für uns ist Bitcoin eine positive Kraft in der Welt. Dieses Projekt wird von einer leidenschaftlichen Gruppe von Mitwirkenden nach höchsten Standards erstellt und ist zu 100% kostenlos und quelloffen (FOSS). Um mehr darüber zu erfahren, wie Saving Satoshi entstanden ist, siehe unsere <Link href="https://bitcoin.design/guide/case-studies/saving-satoshi" className="underline" target="_blank">Fallstudie</Link> im Bitcoin Design Guide.`,
+      paragraph_seven: `Vom Spielen des Spiels über die Durchführung eines Workshops bis hin zu Code-Beiträgen gibt es viele Möglichkeiten, der Saving Satoshi Community beizutreten. Wir würden uns freuen, dich dabei zu haben. Um in Kontakt zu treten, folge <Link href="https://github.com/saving-satoshi/saving-satoshi" className="underline" target="_blank">Saving Satoshi auf GitHub</Link> und trete dem <Link href="https://discord.gg/eBGRaCSjg5" className="underline" target="_blank">#saving-satoshi Channel</Link> in der Bitcoin Design Community auf Discord bei.`,
+      paragraph_eight: `Du kannst dich auch mit uns auf <Link href="https://x.com/savingsatoshi" className="underline" target="_blank">X</Link>, <Link href="https://njump.me/npub1vy6wcgw6jhhtcmpawvlnsfx7g8qt8r40z7qlks9zwa4ed57vm5eqx527hr" className="underline" target="_blank">nostr</Link> und <Link href="https://bsky.app/profile/bitcoindevs.bsky.social" className="underline" target="_blank">Bluesky</Link> verbinden. Wir lieben Erwähnungen und freuen uns über Feedback von unseren Nutzern!`,
     },
 
     contributing: {
@@ -61,10 +77,11 @@ const translations = {
     },
 
     contributors: {
-      title: 'Viel Spaß!',
-      contributions_by: 'Mitarbeit von',
-      many_more:
-        'und <a href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" target="_blank" rel="noreferrer">vielen mehr</a>.',
+      title: `Viel Spaß!`,
+      paragraph_one: `Saving Satoshi wäre nicht möglich ohne die vielen Menschen, die in den letzten Jahren zusammengekommen sind, um es zu entwickeln. Es braucht ein ganzes Dorf!`,
+      paragraph_two: `Das Kernteam besteht aus <Link href="https://adamjonas.com/" className="underline" target="_blank">Adam Jonas</Link>, <Link href="https://www.germanysbestkeptsecret.com/" className="underline" target="_blank">Christoph Ono</Link> (Design-Lead), <Link href="https://satsie.dev/" className="underline" target="_blank">Satsie</Link>, <Link href="https://github.com/benalleng" className="underline" target="_blank">BenAllenG</Link> (Engineering-Lead), <Link href="https://github.com/pinheadmz" className="underline" target="_blank">Matthew Zipkin</Link> (Lesson-Content-Lead), <Link href="https://x.com/TuedonTuoyo" className="underline" target="_blank">Tuedon Tuoyo</Link>, <Link href="https://www.artassoiants.com/" className="underline" target="_blank">Art Assoiants</Link> (Product Manager), und 4 mysteriösen Katzen, die uns <Link href="https://spiral.xyz/" className="underline" target="_blank">Spiral</Link> ausgeliehen hat, um die Geschichte zu schreiben.`,
+      paragraph_three: `Wir hatten auch eine Reihe von Mitwirkenden, die zu verschiedenen Zeitpunkten Schlüsselrollen gespielt haben. Dazu gehören unter anderem <Link href="https://x.com/ecurrencyhodler" className="underline" target="_blank">ecurrencyhodler</Link>, <Link href="https://www.jtwoodhouse.com/" className="underline" target="_blank">JT Woodhouse</Link>, <Link href="https://x.com/_Jsms_" className="underline" target="_blank">JSMS</Link>, <Link href="https://github.com/afterburn" className="underline" target="_blank">Kevin Karsopawiro</Link>, <Link href="https://github.com/daviroo" className="underline" target="_blank">daviroo</Link>, <Link href="https://github.com/nully0x" className="underline" target="_blank">nully0x</Link>, <Link href="https://github.com/vinayaksh42" className="underline" target="_blank">Vinayak Sharma</Link>, <Link href="https://github.com/shaavan" className="underline" target="_blank">Shashwat Vangani</Link>, <Link href="https://github.com/aureleoules" className="underline" target="_blank">Aurèle Oulès</Link>, und <Link href="https://github.com/sabakhilji" className="underline" target="_blank">sabakhilji</Link>.`,
+      paragraph_four: `Eine vollständige Liste der Code-Mitwirkenden findet sich auf <Link href="https://github.com/saving-satoshi/saving-satoshi/graphs/contributors" className="underline" target="_blank">GitHub</Link>.`,
     },
 
     satoshi_needs_you: 'Jetzt sei schnell, Satoshi braucht dich.',
@@ -95,8 +112,8 @@ const translations = {
   ///CHAPTERS TITLE PAGE
   chapter_one: {
     title: 'Ein Geheimnis bei Tageslicht',
-    paragraph_one:
-      'Wir schreiben das Jahr 2139. Der letzte Bitcoin wird in zwei Wochen geschürft werden. Seit Monaten tickt die Uhr auf dem Satoshi-Platz herunter. Die Welt wartet auf den letzten Block. Dann, ganz plötzlich, kommt das Netzwerk zum Stillstand.',
+    paragraph_one: `Wir schreiben das Jahr 2139. In zwei Wochen wird der letzte Bitcoin geschürft. Seit Monaten tickt auf dem Satoshi-Platz eine Uhr herunter. Bis zu diesem Zeitpunkt hatte jeder Block eine Art Bitcoin-Belohnung, eine Subvention. Dies ist die einzige Art, wie neue Bitcoins entstehen, aber bald wird sich das ändern. Nach über hundert Jahren nähert sich der Ausgabeplan für Bitcoin seinem Ende. Die Welt wartet auf den letzten Block mit Subvention, der geschürft werden soll. Es ist ein historisches Ereignis. Das Ende einer Ära.`,
+    paragraph_two: `Plötzlich kommt das Netzwerk zum Stillstand.`,
 
     ///CHAPTER 1
     intro_one: {
@@ -131,6 +148,7 @@ const translations = {
 
     genesis_two: {
       title: 'Genesis',
+      nav_title: `Finde die Nachricht`,
       heading: 'Finde die geheime Nachricht',
       paragraph_one:
         'Lass uns den allerersten Block in der Bitcoin-Blockchain finden. Klick auf den unten stehenden Button, um einen <Tooltip id="genesis_two_paragraph_one" content="chapter_one.genesis_two.tooltip_block_explorer" theme="bg-[#30435b]">Blockexplorer</Tooltip> genau an Block 0 zu öffnen - dem sogenannte Genesisblock.',
@@ -227,32 +245,34 @@ const translations = {
       feedback: 'Teile Dein Feedback',
     },
     resources: {
-      genesis: {
+      genesis_two: {
         scriptsig_heading: 'ScriptSig',
-        scriptsig_paragraph:
-          "Das 'scriptSig' ist ein Skript, das Du als Teil des Eingang/Input Teils in Deiner neuen Transaktion bereitstellst. Es ist im Wesentlichen Dein Freischaltungsskript, das beweist, dass Du die Berechtigung hast, die Bitcoin aus der referenzierten UTXO auszugeben. Das 'scriptSig' ist der Teil der Daten, der in das scriptSig Feld der Eingänge/Inputs eigeben wird.",
-        blocks_heading: 'Bitcoin Blocks',
-        blocks_paragraph:
-          "Ein 'Block' in der Blockchain-Technology ist wie ein Kontainer für eine Gruppe von Transaktionen. Er ist ein wesentlicher Bestandteil der Blockchain, da jeder Block auf den vorherigen referenziert. Dieser Verweis sowie ein 'Blockheader', der wichtige Details wie einen Zeitstempel und eine eindeutige Kennung enthält, gewährleisten die Integrität und chronologische Reihenfolge der Daten. Sobald ein Block zur Blockchain hinzugefügt wurde, ist es unglaublich schwierig, ihn zu ändern, was die Sicherheit und Unveränderlichkeit der Daten gewährleistet. Die Größe eines Blocks kann von Blockchain zu Blockchain variieren, und jeder Block muss von den Netzwerkknoten validiert werden, bevor er ein fester Bestandteil der Blockchain wird. Diese Block- und Kettenstruktur ist die Grundlage für die Transparenz und Sicherheit der Blockchain.",
+        scriptsig_paragraph: `Das „scriptSig” ist ein Skript, das du als Teil des Eingangs in deiner neuen Transaktion bereitstellst. Es ist im Wesentlichen dein Freischaltungsskript, das beweist, dass du berechtigt bist, die Bitcoins aus der referenzierten UTXO auszugeben. Das „scriptSig” ist der Teil der Daten, der in das „scriptSig”-Feld der Eingänge/Inputs eingegeben wird.`,
         block_explorer_heading: 'Blockexplorer',
         block_explorer_paragraph:
           'Ein Blockexplorer ist ein essentielles Werkzeug zur Navigation und zum Verständnis des Blockchain-Netzwerks. Er dient als benutzerfreundliche Schnittstelle zur Überprüfung und Analyse der in einer Blockchain gespeicherten Daten. Mit einem Block-Explorer können Nutzer die Transaktionshistorie erkunden, Kontostände einsehen und den Fortschritt einzelner Blöcke und Transaktionen verfolgen. Er sorgt für Transparenz und Rechenschaftspflicht in der Welt der dezentralen Kryptowährungen und erleichtert die Überprüfung und Nachverfolgung von Transaktionen und fördert das Vertrauen in die Blockchain-Technologie.',
-        tip_one:
-          'Suche nach der Kategorie scriptSig(Hex), die im Coinbase-Eingang/Input verschachtelt ist, nachdem Du die Transaktion innerhalb des Blocks erweitert hast.',
-        tip_two:
-          "Der 'xxd' Befehl kodiert Daten nach Hex, wobei der '-r' Zusatz es dir erlaubt den Prozess umzukehren (reverse), was es Dir ermöglicht Hex in lesenbaren Text umzuwandeln. Der '-p' Zusatz druckt (print) es dann in die Konsole, sodass Du die Ausgabe lesen kannst.",
+        tip: 'Suche nach der Kategorie scriptSig(Hex), die im Coinbase-Eingang/Input verschachtelt ist, nachdem Du die Transaktion innerhalb des Blocks erweitert hast.',
       },
-      transacting: {
+      genesis_three: {
+        bash_heading: `Bash-Befehle`,
+        bash_paragraph: `Wir verwenden einige grundlegende Bash-Befehle und -Optionen, um die Komprimierung rückgängig zu machen, die Satoshi auf den Text angewendet hat, der in den Genesis-Block eingefügt wurde.`,
+        tip: `Die Hauptfunktion des 'xxd'-Befehls ist die Fähigkeit, eine Binärdatei in Hex zu konvertieren. Wenn er mit der '-r'-Option verwendet wird, macht er das Gegenteil und konvertiert einen Hex-Dump in Binär. Bei ASCII-Strings ist das Binärformat für Menschen lesbar. Die '-p'-Option gibt das Ergebnis auf der Konsole im schlichten "postscript continuous hexdump"-Stil aus, sodass man die Ausgabe lesen kann.`,
+      },
+      transacting_two: {
         transactions_heading: 'Transaktionen',
         transactions_paragraph:
           'Eine Transaktion in der Welt der Kryptowährungen ist vergleichbar mit einer einzelnen atomaren Zahlung, bei der bestehende Münzen vernichtet und neue geschaffen werden. Wenn jemand eine Kryptowährungstransaktion initiiert, weist er die Blockchain im Wesentlichen an, eine bestimmte Menge an Münzen von einer digitalen Geldbörse auf eine andere zu übertragen. Um dies zu erreichen, verbraucht die Transaktion die vorhandenen Münzen des Absenders und erzeugt neue für den Empfänger, wodurch das Eigentumsbuch effektiv aktualisiert wird.',
         bitcoin_script_heading: 'Bitcoin Skript',
         bitcoin_script_paragraph:
           'Bitcoin Skript ist eine einfache, stapelbasierte Programmiersprache, die bei Bitcoin-Transaktionen verwendet wird, um die Bedingungen festzulegen, unter denen Bitcoins ausgegeben werden können. Sie besteht aus verschiedenen Opcodes (kurz für Operationscodes), die angeben, welche Operationen mit den Daten innerhalb des Skripts durchgeführt werden sollen.',
-        tip_one:
-          'Mit dem Op_Code: OP_Pushbytes_33 suchen wir nach einer 33 Byte langen Zeichenkette (insgesamt 66 Zeichen) im OP_Return der Transaktion',
-        tip_two:
-          "Dekodiere die Zeichenkette mit dem 'xxd' Befehl. Denk daran, dass wir dieses Mal keine Variable verwenden, sondern die ganze Zeichenkette eingeben müssen.",
+        asm_heading: `ASM`,
+        asm_paragraph: `Wenn Sie 'ASM' neben einem Feld wie scriptSig oder scriptPubKey sehen, bedeutet dies, dass der angezeigte Wert in "Assembly" vorliegt, einem besser lesbaren Format für die Skriptanweisungen.`,
+        tip: `Angesichts des Op_Code: OP_Pushbytes_33 suchen wir nach einer Zeichenkette mit einer Länge von 33 Bytes (insgesamt 66 Zeichen) im OP_Return der Transaktion`,
+      },
+      transacting_three: {
+        secrets_heading: `Geheimnisse in Bitcoin`,
+        secrets_paragraph: `Wie wir aus der vorherigen Herausforderung gesehen haben, sind in Bitcoin-Skripte eingebettete Geheimnisse seit dem Genesis-Block Teil seiner Geschichte. Ob sie einfach dazu verwendet werden, Informationen in der Blockchain zu speichern, Informationen über Bitcoin-Skript zu übergeben, um externen Wert zu schaffen, oder um Nachrichten an andere zu senden - Menschen haben seit Beginn Dinge in der Blockchain gespeichert, die über Inputs und Outputs hinausgehen.`,
+        tip: `Beim Dekodieren der Zeichenkette mit dem 'xxd'-Befehl denken Sie daran, dass wir dieses Mal keine Variable verwenden, sondern die gesamte Zeichenkette eingeben müssen`,
       },
     },
   },
@@ -1185,18 +1205,22 @@ const translations = {
   },
 
   modal_signin: {
-    heading: 'Anmelden',
-    paragraph_one:
-      'Gib unten Deinen privaten Schlüssel ein, um Dein Konto und Deinen Fortschritt wiederherzustellen.',
-    prompt: 'Gib deinen privaten Schlüssel ein',
+    heading: `Anmelden`,
+    pre_signin_paragraph_one: `Gib unten Deinen privaten Schlüssel ein, um Dein Konto und Deinen Fortschritt wiederherzustellen.`,
+    post_signin_paragraph_one: `Schön, dich wiederzusehen, um Satoshi zu retten! Du kannst von hier aus direkt zu deiner letzten Lektion gehen.`,
+    prompt: `Gib deinen privaten Schlüssel ein`,
     confirm: 'Anmelden',
     create_account: 'Du hast noch kein Konto?',
+    login: `Anmelden`,
+    welcome_back: `Willkommen zurück!`,
+    progress_redirect: `Bring mich zu dem Punkt, an dem ich aufgehört habe`,
   },
 
   modal_logout: {
     heading: 'Du bist angemeldet',
     paragraph_one:
       'Deine Sitzung bleibt aktiv, bis Du dich über den Button unten abmeldest.',
+    private_key: `Dein privater Schlüssel`,
     signout: 'Abmelden',
   },
 
@@ -1261,16 +1285,12 @@ const translations = {
       'Welche spezifischen Tipps können/ wollen wir den Lernenden geben, wenn sie nicht weiterkommen?',
     spoilers_heading: 'Spoilers',
     spoilers_confirm: 'Ja, ich möchte die Lösung sehen',
-    solution_one: 'Lösung für den ersten Teil dieser Aufgabe',
-    solution_two: 'Lösung für den zweiten Teil dieser Aufgabe',
-    solution_three: 'Lösung für den dritten Teil dieser Aufgabe',
-    solution_four: 'Lösung für den vierten Teil dieser Aufgabe',
-    solution_five: 'Lösung für den fünften Teil dieser Aufgabe',
-    solution_six: 'Lösung für den sechsten Teil dieser Aufgabe',
-    solution_seven: 'Lösung für den siebten Teil dieser Aufgabe',
-    solution_eight: 'Lösung für den achten Teil dieser Aufgabe',
-    solution_nine: 'Lösung für den neunten Teil dieser Aufgabe',
-    solution_ten: 'Lösung für den zehnten Teil dieser Aufgabe',
+    pseudo_confirm: `Ja, ich möchte den Pseudocode sehen`,
+    solution: `Lösung für diese Herausforderung`,
+    pseudo_solution: `Pseudocode-Lösung für diese Herausforderung`,
+    solution_one: `Lösung für den ersten Teil dieser Herausforderung`,
+    feedback: `Ihr Feedback ist wertvoll und hilft uns, unsere Arbeit zu verbessern. Bitte geben Sie uns Feedback über <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1xpNqUYJyvYL5IZDnxy78273pkqzfYW2Hf91H4Do4KHgy9g/viewform" target="_blank" rel="noreferrer">diesen Link</a>. `,
+    help_suggestion: `Wenn Sie einmal nicht weiterkommen, drücken Sie die "?"-Schaltfläche in der oberen rechten Ecke. Sie bietet hilfreiche Ressourcen und Tipps.`,
   },
 }
 export default translations
