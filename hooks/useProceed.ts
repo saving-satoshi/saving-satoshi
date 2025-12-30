@@ -3,12 +3,14 @@
 import { useRouter } from 'next/navigation'
 import { useLocalizedRoutes, usePathData } from 'hooks'
 import useEnvironment from './useEnvironment'
-import { useAtomValue, useSetAtom } from 'jotai'
+import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import {
   getLessonKey,
   getNextLessonUsingChapterIdAndLessonName,
   isLessonCompletedUsingId,
   markLessonAsCompleteAtom,
+  nextLessonPathAtom,
+  progressToNextLessonAtom,
   syncedCourseProgressAtom,
 } from 'state/progressState'
 
@@ -17,7 +19,9 @@ export default function useProceed() {
   const router = useRouter()
   const { isDevelopment } = useEnvironment()
   const routes = useLocalizedRoutes()
-  const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const nextLessonPath = useAtomValue(nextLessonPathAtom)
+  const [courseProgress, setCourseProgress] = useAtom(syncedCourseProgressAtom)
+  const progressToNextLesson = useSetAtom(progressToNextLessonAtom)
   const queryParams = isDevelopment ? '?dev=true' : ''
   const nextLessonUsingCurrentRoute = getNextLessonUsingChapterIdAndLessonName(
     chapterId,
@@ -44,7 +48,7 @@ export default function useProceed() {
         routes.chaptersUrl + nextLessonUsingCurrentRoute?.path + queryParams
       progressToNextLesson()
     }
-
+    console.log(route, nextLessonUsingCurrentRoute?.path)
     router.push(route, { scroll: true })
   }
 
