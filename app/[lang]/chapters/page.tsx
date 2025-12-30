@@ -3,6 +3,7 @@ import Footer from 'components/Footer'
 import Disclaimer from 'components/Disclaimer'
 import { chapters } from 'content'
 import defaultMetadata from 'config/metadata'
+import DeadlineBanner from 'components/DeadlineBanner'
 
 export const metadata = {
   ...defaultMetadata,
@@ -15,7 +16,8 @@ export default async function ChaptersPage({ params }) {
   )
 
   return (
-    <div className="w-full bg-[#2A3B61]">
+    <div className="w-full bg-[#2A3B61] pt-[70px]">
+      <DeadlineBanner />
       <Topbar />
 
       <div className="lg:px-0">
