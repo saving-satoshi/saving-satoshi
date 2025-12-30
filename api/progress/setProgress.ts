@@ -15,7 +15,7 @@ export default async function setProgress(
 
     return res
   } catch (errors) {
-    console.error(errors)
+    console.error('Failed to save progress to backend:', errors)
     return undefined
   }
 }
