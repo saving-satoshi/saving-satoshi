@@ -102,14 +102,14 @@ export default function ScriptingChallenge({
   const isSmallScreen = useMediaQuery({ width: 767 })
 
   const handleSetLanguage = (value) => {
-    if (!challengeSuccess && onSelectLanguage) {
-      setLanguage(value)
-      onSelectLanguage(value)
-      setCurrentLanguage(getLanguageFromString(value))
-      setCode(config.languages[value].defaultCode?.toString())
-      setHiddenRange(config.languages[value].hiddenRange)
-      setConstraints(config.languages[value].constraints)
-    }
+    if (challengeSuccess) return
+
+    onSelectLanguage?.(value)
+    setLanguage(value)
+    setCurrentLanguage(getLanguageFromString(value))
+    setCode(config.languages[value].defaultCode?.toString())
+    setHiddenRange(config.languages[value].hiddenRange)
+    setConstraints(config.languages[value].constraints)
   }
 
   const handleRefresh = () => {
