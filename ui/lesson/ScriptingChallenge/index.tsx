@@ -224,7 +224,7 @@ export default function ScriptingChallenge({
           )}
         >
           <LanguageTabs
-            languageLocked={!onSelectLanguage}
+            languageLocked={false}
             languages={config.languages}
             value={language}
             onChange={handleSetLanguage}
