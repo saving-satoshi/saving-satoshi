@@ -2480,8 +2480,8 @@ const translations = {
       table_one: {
         headings: {
           item_one: 'Etapa',
-          item_two: 'Pilha',
-          item_three: 'Execução de scripts',
+          item_two: 'Execução de scripts',
+          item_three: 'Pilha',
         },
       },
       subheading_one: 'Explicação',
@@ -2649,7 +2649,8 @@ const translations = {
       heading: 'Transação condicional com bloqueio de tempo',
       paragraph_one: `Espere um minuto, isso não faz sentido - você não quer lidar com ele para sempre! O novo acordo é que você receberá todas as doações pelas próximas duas horas enquanto ainda estiver na TV. A Lil Bits Foundation fica com tudo o que entrar depois disso. Vocês olham para o bloco de bitcoin na parede do estúdio e concordam que o bloco de altura 6930300 provavelmente será minerado em cerca de duas horas.`,
       paragraph_two: `Lembre-se de que a chave pública de Vanderpoole é PUBKEY(vanderpoole) e a sua é PUBKEY(me).`,
-      paragraph_three: 'Forneça a pilha inicial para gastar com o script.',
+      paragraph_three:
+        'Primeiro, forneça os valores de entrada (pilha inicial) necessários para você gastar este script.Na próxima etapa, forneça o script que permite que Vanderpoole gaste, e ajuste a altura do bloco conforme necessário.',
       next_step_message:
         'Parece bom! Agora vamos tentar com sua própria assinatura.',
     },
