@@ -2233,7 +2233,7 @@ Stack Hint: To spend before the specified block, you use your signature. After t
       },
       proposal_four: {
         tip: `The preimage will be revealed after an unknown amount of time so no need for using timelocks.`,
-        spoiler: `Script Hint: The script allows spending under two conditions: before the secret has been revealed or after. Before the block, Vanderpoole can spend; after the block, you both can.
+        spoiler: `Script Hint: The script allows spending under two conditions: before the secret has been revealed or after. Before the secret, Vanderpoole can spend; after the secret, you both can.
 
 Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signature. After the secret is revealed, you use your signature, a hash of the secret, and provide a 0 because the script has moved past the unrevealed verification.`,
       },
