@@ -9,11 +9,28 @@ import { getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { accountAtom, currentLanguageAtom } from 'state/state'
 import Accordion from 'ui/common/Accordion'
+import * as secp256k1 from '@noble/secp256k1'
 
 export const metadata = {
   title: 'chapter_four.public_key_three.title',
   navigation_title: 'chapter_four.public_key_three.nav_title',
   key: 'CH4PKY3',
+}
+
+function computePublicKey(privateKeyHex: string) {
+  // remove their private key from ox if it has
+  const cleanKey = privateKeyHex.startsWith('0x')
+    ? privateKeyHex.slice(2)
+    : privateKeyHex
+  if (!cleanKey) {
+    return ''
+  }
+  // get uncompressed public key
+  const publicKeyBytes = secp256k1.getPublicKey(cleanKey, false)
+  // extract x and y coordinates so we can compare them
+  const x = Buffer.from(publicKeyBytes.slice(1, 33)).toString('hex')
+  const y = Buffer.from(publicKeyBytes.slice(33, 65)).toString('hex')
+  return `${x},${y}`
 }
 
 export default function PublicKey3({ lang }) {
@@ -62,6 +79,12 @@ function privateKeyToPublicKey(privateKey) {
 
         // Check if both hashes match the correct pattern
         if (hash1.match(correctPattern) && hash2.match(correctPattern)) {
+          const expectedPublicKey = `(${computePublicKey(
+            privateKey
+          ).toLowerCase()})`
+          if (cleanedAnswer.toLowerCase() !== expectedPublicKey) {
+            return [false, 'Ensure you are multiplying the private key by G']
+          }
           return [true, t('chapter_four.public_key_three.success')]
         } else {
           return [false, 'Try multiplying with the G constant']
@@ -106,6 +129,12 @@ def privatekey_to_publickey(private_key):
 
         // Check if both hashes match the correct pattern
         if (hash1.match(correctPattern) && hash2.match(correctPattern)) {
+          const expectedPublicKey = `(${computePublicKey(
+            privateKey
+          ).toLowerCase()})`
+          if (cleanedAnswer.toLowerCase() !== expectedPublicKey) {
+            return [false, 'Ensure you are multiplying the private key by G']
+          }
           return [true, t('chapter_four.public_key_three.success')]
         } else {
           return [false, 'Try multiplying with the G constant']
@@ -157,7 +186,8 @@ def privatekey_to_publickey(private_key):
           {t(`chapter_four.public_key_three.${language}.paragraph_three`)}
         </Text>
 
-        <Accordion className="mt-4"
+        <Accordion
+          className="mt-4"
           title={t('chapter_four.public_key_three.paragraph_three')}
           defaultOpen={false}
         >

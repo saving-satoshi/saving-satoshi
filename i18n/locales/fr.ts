@@ -1757,7 +1757,7 @@ const translations = {
           'See <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link> to learn more.',
         heading_three: 'Step 3',
         paragraph_eight:
-          'Complete the method <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, key)</span> so that it calls <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>. When handling the return value, <span className="italic">r</span> and <span className="italic">s</span> need to be encoded with an algorithm called DER which we have implemented for you.',
+          'Complete the method <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, priv, pub, sighash)</span> so that it calls <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>. When handling the return value, <span className="italic">r</span> and <span className="italic">s</span> need to be encoded with an algorithm called DER which we have implemented for you.',
         heading_four: 'Step 4',
         paragraph_nine:
           'Bitcoin requires an extra byte appended to the end of the DER-signature. This byte represents the "sighash type". For now we’ll always use the byte <span className="p-1 text-base font-mono bg-[#0000004D] m-1">0x01</span> for this, indicating "SIGHASH ALL".',
@@ -2687,9 +2687,9 @@ const translations = {
       },
       proposal_three: {
         tip: "Let's think about combining a conditional with some timelock to separate Vanderpoole's signature from yours.",
-        spoiler: `Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, Vanderpoole can spend; after the block, you can.
+        spoiler: `Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, you can spend; after the block, Vanderpoole can.
   
-  Stack Hint: To spend before the specified block, Vanderpoole uses his signature. After the block, you use your signature and need to provide a 0 because the script has moved past the locktime verification.`,
+  Stack Hint: To spend before the specified block, you use your signature. After the block, Vanderpoole uses his signature and needs to provide a 0 because the script has moved past the locktime verification.`,
       },
       proposal_four: {
         tip: 'The preimage will be revealed after an unknown amount of time so no need for using timelocks.',

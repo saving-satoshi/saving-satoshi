@@ -18,7 +18,10 @@ const translations = {
     poweroff: `Back to chapter selection`,
     loading: `Loading`,
     bitcoin_dev_project: `Bitcoin Dev Project`,
-    home_tooltip: `Don’t worry, Your progress is safe with us.`,
+    home_tooltip: `Don't worry, Your progress is safe with us.`,
+  },
+  banner: {
+    deadline: `Complete the game by Jan 12 to participate in the <a target="_blank" href="https://bosschallenge.xyz/"> ₿OSS Challenge! </a>`,
   },
   ///ABOUT PAGE
   about: {
@@ -1450,7 +1453,7 @@ const translations = {
         paragraph_six: `For the signing algorithm, the bitcoin protocol requires one more thing. The <span className="italic">s</span> value needs to be "low", meaning less than the order of the curve divided by 2. Add this check to <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">compute_input_signature()</span>.`,
         paragraph_seven: `See <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link> to learn more.`,
         heading_three: `Step 3`,
-        paragraph_eight: `Complete the method <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, key)</span> so that it calls <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>. When handling the return value, <span className="italic">r</span> and <span className="italic">s</span> need to be encoded with an algorithm called DER which we have implemented for you.`,
+        paragraph_eight: `Complete the method <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, priv, pub, sighash)</span> so that it calls <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>. When handling the return value, <span className="italic">r</span> and <span className="italic">s</span> need to be encoded with an algorithm called DER which we have implemented for you.`,
         heading_four: `Step 4`,
         paragraph_nine: `Bitcoin requires an extra byte appended to the end of the DER-signature. This byte represents the "sighash type". For now we'll always use the byte <span className="p-1 text-base font-mono bg-[#0000004D] m-1">0x01</span> for this, indicating "SIGHASH ALL".`,
         heading_five: `Step 5`,

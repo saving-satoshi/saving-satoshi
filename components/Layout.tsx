@@ -19,7 +19,6 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
   const { init: initFeatures } = useFeatureFunctions()
   const loadProgress = useSetAtom(loadProgressAtom)
 
-  // Check if the user is authenticated
   useEffect(() => {
     const initialDataLoad = async () => {
       await check()

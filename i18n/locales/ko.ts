@@ -1439,7 +1439,7 @@ const translations = {
         paragraph_six: `비트코인 프로토콜은 서명 알고리즘에서 한 가지를 더 요구합니다. 바로, <span className="italic">s</span> 값이 '낮은 값'이어야 한다는 것입니다. 여기서 '낮다'는 건 곡선의 순서를 2로 나눈 값보다 작다는 뜻이에요. 이 조건을 <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">compute_input_signature()</span> 메서드에 추가해보세요.`,
         paragraph_seven: `더 자세한 내용은 <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>을 참고하세요.`,
         heading_three: `3단계`,
-        paragraph_eight: `<span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, key)</span> 메서드를 완성해보세요. 이 메서드는 내부에서 <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>를 를 호출해야 합니다. 반환된 <span className="italic">r</span>과 <span className="italic">s</span>값은 DER이라는 형식으로 인코딩되어야 합니다. 이 DER 인코딩 기능은 우리가 이미 구현해두었습니다.`,
+        paragraph_eight: `<span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, priv, pub, sighash)</span> 메서드를 완성해보세요. 이 메서드는 내부에서 <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>를 를 호출해야 합니다. 반환된 <span className="italic">r</span>과 <span className="italic">s</span>값은 DER이라는 형식으로 인코딩되어야 합니다. 이 DER 인코딩 기능은 우리가 이미 구현해두었습니다.`,
         heading_four: `4단계`,
         paragraph_nine: `비트코인에서는 DER 서명의 끝에 추가로 1바이트가 더 붙어야 합니다. 이 바이트는 '서명 해시 타입(sighash type)'을 나타냅니다. 지금은 항상 <span className="p-1 text-base font-mono bg-[#0000004D] m-1">0x01</span>을 사용하여 "SIGHASH ALL"을 의미하도록 합니다.`,
         heading_five: `5단계`,
@@ -2216,9 +2216,9 @@ const translations = {
       },
       proposal_three: {
         tip: `조건문과 타임락을 결합해서 반더풀의 서명과 당신의 서명을 분리해보는 건 어떨까요?`,
-        spoiler: `스크립트 힌트: 이 스크립트는 두 가지 조건 중 하나를 만족하면 코인을 쓸 수 있도록 합니다. 블록 높이 6930300 이전이라면 반더풀이 지출할 수 있고, 이후라면 당신이 지출할 수 있습니다.
+        spoiler: `스크립트 힌트: 이 스크립트는 두 가지 조건 중 하나를 만족하면 코인을 쓸 수 있도록 합니다. 블록 높이 6930300 이전이라면 당신이 지출할 수 있고, 이후라면 반더풀이 지출할 수 있습니다.
   
-  스택 힌트: 지정된 블록 이전에 지출하려면 반더풀의 서명이 필요합니다. 이후라면 당신의 서명을 사용하면 됩니다. 이 경우, 스크립트는 이미 락타임 검증을 통과했으므로 스택에 0을 함께 넣어야 합니다.`,
+  스택 힌트: 지정된 블록 이전에 지출하려면 당신의 서명이 필요합니다. 이후라면 반더풀의 서명을 사용하고, 스크립트가 이미 락타임 검증을 통과했으므로 스택에 0을 함께 넣어야 합니다.`,
       },
       proposal_four: {
         tip: `프리이미지 공개 시점을 알 수 없기 때문에 타임락은 필요하지 않습니다.`,

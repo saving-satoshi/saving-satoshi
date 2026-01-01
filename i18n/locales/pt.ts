@@ -1791,7 +1791,7 @@ const translations = {
           'Consulte <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link> para saber mais.',
         heading_three: 'Etapa 3',
         paragraph_eight:
-          'Complete o método <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, key)</span> para que ele chame <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>. Ao lidar com o valor de retorno, <span className="italic">r</span> e <span className="italic">s</span> precisam ser codificados com um algoritmo chamado DER, que implementamos para você.',
+          'Complete o método <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, priv, pub, sighash)</span> para que ele chame <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>. Ao lidar com o valor de retorno, <span className="italic">r</span> e <span className="italic">s</span> precisam ser codificados com um algoritmo chamado DER, que implementamos para você.',
         heading_four: 'Etapa 4',
         paragraph_nine:
           'O Bitcoin exige um byte extra anexado ao final da assinatura DER. Esse byte representa o "tipo de sighash". Por enquanto, sempre usaremos o byte <span className="p-1 text-base font-mono bg-[#0000004D] m-1">0x01</span> para isso, indicando "SIGHASH ALL".',
@@ -2726,9 +2726,9 @@ Dica de pilha: para atender ao script, você precisa fornecer as duas assinatura
       },
       proposal_three: {
         tip: 'Vamos pensar em combinar uma condicional com algum bloqueio de tempo para separar a assinatura de Vanderpoole da sua.',
-        spoiler: `Dica de script: O script permite gastar em duas condições: antes do bloqueio 6930300 ou depois. Antes do bloqueio, Vanderpoole pode gastar; depois do bloqueio, você pode.
+        spoiler: `Dica de script: O script permite gastar em duas condições: antes do bloqueio 6930300 ou depois. Antes do bloqueio, você pode gastar; depois do bloqueio, Vanderpoole pode gastar.
 
-Dica da pilha: Para gastar antes do bloco especificado, Vanderpoole usa sua assinatura. Após o bloqueio, você usa sua assinatura e precisa fornecer um 0 porque o script passou pela verificação do tempo de bloqueio.`,
+Dica da pilha: Para gastar antes do bloco especificado, você usa sua assinatura. Após o bloqueio, Vanderpoole usa sua assinatura e precisa fornecer um 0 porque o script passou pela verificação do tempo de bloqueio.`,
       },
       proposal_four: {
         tip: 'A pré-imagem será revelada após um período de tempo desconhecido, portanto, não há necessidade de usar relógios de ponto.',
