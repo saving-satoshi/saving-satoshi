@@ -21,7 +21,7 @@ const translations = {
     home_tooltip: `Don't worry, Your progress is safe with us.`,
   },
   banner: {
-    deadline: `Complete the game by Jan 12 to participate in BOSS Challenge!`,
+    deadline: `Complete the game by Jan 12 to participate in the <a target="_blank" href="https://bosschallenge.xyz/"> ₿OSS Challenge! </a>`,
   },
   ///ABOUT PAGE
   about: {
