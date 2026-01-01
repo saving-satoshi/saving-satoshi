@@ -2443,8 +2443,8 @@ const translations = {
       table_one: {
         headings: {
           item_one: 'Step',
-          item_two: 'Stack',
-          item_three: 'Script Execution',
+          item_two: `Script Execution`,
+          item_three: `Stack`,
         },
       },
       subheading_one: 'Explanation',
