@@ -2323,7 +2323,7 @@ const translations = {
         'A partir do bloco nº 1 minerado em 2009, o subsídio do bloco é de 50 BTC (ou 5.000.000.000 satoshis)',
       list_two: 'A cada 210.000 blocos, esse valor é reduzido pela metade.',
       paragraph_four:
-        'Na altura do bloco 209.999, o subsídio era de 50 BTC. No bloco seguinte, na altura de 210.000, o subsídio era de 25 BTC, e assim por diante. Após 63 "halvings", o subsídio será de um único satoshi. A última redução pela metade reduzirá o subsídio a zero.',
+        'Na altura do bloco 209.999, o subsídio era de 50 BTC. No bloco seguinte, na altura de 210.000, o subsídio era de 25 BTC, e assim por diante. Após 32 "halvings", o subsídio será de um único satoshi. A última redução pela metade reduzirá o subsídio a zero.',
       paragraph_five: 'E A ÚLTIMA REDUÇÃO PELA METADE FOI ONTEM!',
       paragraph_six:
         'Conclua a implementação da seguinte função que aceita uma altura de bloco como argumento e retorna o valor do subsídio em satoshis.',
