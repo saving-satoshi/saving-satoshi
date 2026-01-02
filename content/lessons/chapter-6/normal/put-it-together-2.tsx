@@ -11,8 +11,11 @@ import {
   detectLanguage,
   Language,
   organizeImports,
+  getLanguageString,
 } from 'lib/SavedCode'
 import { Loader } from 'shared'
+import { useAtom } from 'jotai'
+import { currentLanguageAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_two.normal.title',
@@ -24,25 +27,50 @@ export default function PutItTogether2({ lang }) {
   const t = useTranslations(lang)
   const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
   const [isLoading, setIsLoading] = useState(true)
-  const [combinedCode, setCombinedCode] = useState('')
 
-  const getPrevLessonData = async () => {
-    const data = await getData('CH6PUT1_NORMAL')
-    if (data) {
-      setPrevData({
-        lesson_id: 'CH6PUT1_NORMAL',
-        data: data?.code?.getDecoded(),
-      })
-    }
-  }
+  const [currentLanguage] = useAtom(currentLanguageAtom)
+  const [startLanguage, setStartLanguage] = useState(
+    getLanguageString(currentLanguage)
+  )
 
   useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
+    const init = async () => {
+      const data = await getData('CH6PUT1_NORMAL')
+      let prevCode = ''
+
+      if (data) {
+        prevCode = data?.code?.getDecoded() || ''
+        setPrevData({
+          lesson_id: 'CH6PUT1_NORMAL',
+          data: prevCode,
+        })
+      }
+
+      const currentJs = localStorage.getItem(`${metadata.key}-javascript`)
+      const currentPy = localStorage.getItem(`${metadata.key}-python`)
+
+      if (currentJs && !currentPy) {
+        setStartLanguage('javascript')
+      } else if (currentPy && !currentJs) {
+        setStartLanguage('python')
+      } else if (currentJs && currentPy) {
+        const detectedJs = detectLanguage(currentJs) === Language.JavaScript
+        setStartLanguage(detectedJs ? 'javascript' : 'python')
+      } else {
+        if (prevCode && detectLanguage(prevCode) === Language.JavaScript) {
+          setStartLanguage('javascript')
+        } else if (prevCode && detectLanguage(prevCode) === Language.Python) {
+          setStartLanguage('python')
+        }
+      }
+
+      setIsLoading(false)
+    }
+
+    init()
   }, [])
 
-  const languageWitness =
-    detectLanguage(prevData.data) === Language.JavaScript
-      ? `class Witness {
+  const jsWitness = `class Witness {
   constructor() {
     this.items = [];
   }
@@ -58,7 +86,8 @@ export default function PutItTogether2({ lang }) {
     return buf;
   }
 }`
-      : `class Witness:
+
+  const pyWitness = `class Witness:
     def __init__(self):
         self.items = []
 
@@ -73,13 +102,166 @@ export default function PutItTogether2({ lang }) {
             r += item
         return r`
 
-  useEffect(() => {
-    if (prevData.data) {
-      setCombinedCode(
-        organizeImports('\n' + languageWitness + '\n' + prevData.data)
-      )
+  const getLanguageCode = (targetLang: Language) => {
+    if (!prevData.data) {
+      return targetLang === Language.JavaScript ? jsWitness : pyWitness
     }
-  }, [prevData.data])
+
+    const detected = detectLanguage(prevData.data)
+
+    if (detected === targetLang) {
+      const witness = targetLang === Language.JavaScript ? jsWitness : pyWitness
+      return organizeImports('\n' + witness + '\n' + prevData.data)
+    }
+
+    return targetLang === Language.JavaScript ? jsWitness : pyWitness
+  }
+
+  const jsCombined = getLanguageCode(Language.JavaScript)
+  const pyCombined = getLanguageCode(Language.Python)
+
+  const findClassEndIndex = (code: string, className: string) => {
+    const classRegex = new RegExp(`class\\s+${className}[^{]*{`)
+    const match = code.match(classRegex)
+
+    if (!match || match.index === undefined) return -1
+
+    const startIndex = match.index + match[0].length - 1
+    let balance = 0
+
+    for (let i = startIndex; i < code.length; i++) {
+      if (code[i] === '{') balance++
+      if (code[i] === '}') balance--
+
+      if (balance === 0) return i
+    }
+    return -1
+  }
+
+  const injectMethodsIntoClass = (
+    code: string,
+    className: string,
+    methods: string
+  ) => {
+    const insertIndex = findClassEndIndex(code, className)
+    if (insertIndex === -1) return code + '\n' + methods
+
+    const before = code.substring(0, insertIndex)
+    const after = code.substring(insertIndex)
+    return `${before}\n${methods}\n${after}`
+  }
+
+  const getInsertionLineNumber = (code: string, className: string) => {
+    const insertIndex = findClassEndIndex(code, className)
+    if (insertIndex === -1) return countLines(code)
+    return countLines(code.substring(0, insertIndex)) + 3
+  }
+
+  const jsMethodsToInject = `
+  // YOUR CODE HERE
+  compute_input_signature(index, key) {
+    assert(typeof key === 'bigint');
+    assert(Number.isInteger(index));
+    // Helper function:
+    // Find modular multiplicative inverse using Extended Euclidean Algorithm
+    function invert(value, modulus = secp256k1.ORDER) {
+      let x0 = 0n;
+      let x1 = 1n;
+      let a = value;
+      let m = modulus;
+
+      while (a > 1n) {
+        const q = a / m;
+        let t = m;
+        m = a % m;
+        a = t;
+        t = x0;
+        x0 = x1 - q * x0;
+        x1 = t;
+      }
+
+      if (x1 < 0n) {
+        x1 += modulus;
+      }
+      return x1;
+    }
+    
+    // Initialize return variables
+    let r = 0n;
+    let s = 0n;
+
+    // The math:
+    //   k = random integer in [1, n-1]
+    //   R = G * k
+    //   r = x(R) mod n
+    //   s = (r * a + m) / k mod n
+    //   Extra Bitcoin rule from BIP 146:
+    //     if s > n / 2 then s = n - s mod n
+    //   return (r, s)
+    // Hints:
+    //   n = the order of the curve secp256k1.ORDER
+    //   a = the private key
+    //   m = the message value returned by digest()
+    //   x(R) = the x-coordinate of the point R
+    //   Use the invert() function above to turn division into multiplication!
+    
+    // YOUR CODE HERE
+
+    return [r, s];
+  }
+
+  // Now sign the input you just returned!
+  sign_input(index, priv, pub, sighash=1) {
+    // Represent in DER format. The byte representations of r and s have
+    // length rounded up (255 bits becomes 32 bytes and 256 bits becomes 33 bytes).
+    // See BIP 66
+    // https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
+    const der_int = (n) => {
+      const bit_length = n.toString(2).length;
+      const byte_length = parseInt((bit_length + 8) / 8);
+      const padded_hex = n.toString(16).padStart(byte_length * 2, '0');
+      return Buffer.from(padded_hex, 'hex');
+    };
+    const encode_der = (r, s) => {
+      const rb = der_int(r);
+      const sb = der_int(s);
+      let buf = Buffer.from([0x30, 4 + rb.length + sb.length, 2, rb.length]);
+      buf = Buffer.concat([buf, rb]);
+      buf = Buffer.concat([buf, Buffer.from([2, sb.length])]);
+      buf = Buffer.concat([buf, sb]);
+      return buf;
+    };
+    
+    // YOUR CODE HERE
+  }`
+
+  // [FIX] Prepare default code carefully to avoid duplicate imports
+  const prepareJsDefaultCode = () => {
+    let code = jsCombined
+    const imports = [
+      "const secp256k1 = require('@savingsatoshi/secp256k1js');",
+      "const {randomBytes} = require('crypto');",
+      "const assert = require('assert');",
+    ]
+
+    const missingImports = imports.filter((imp) => {
+      if (imp.includes('secp256k1js') && code.includes('secp256k1js'))
+        return false
+      if (imp.includes('crypto') && code.includes('crypto')) return false
+      if (imp.includes('assert') && code.includes('assert')) return false
+      return true
+    })
+
+    if (missingImports.length > 0) {
+      code = missingImports.join('\n') + '\n' + code
+    }
+
+    return injectMethodsIntoClass(code, 'Transaction', jsMethodsToInject)
+  }
+
+  const jsDefaultCode = prepareJsDefaultCode()
+  const insertionLineStart = getInsertionLineNumber(jsCombined, 'Transaction')
+  const injectedLineCount = countLines(jsMethodsToInject)
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
@@ -173,85 +355,15 @@ console.log(private_key_faxwmufa.verify(hashed_message_bytes_ahuhfxmw, signature
 console.log("KILL")`,
     rangeToNotCollapse: [
       {
-        start: countLines(combinedCode) + 2,
-        end: countLines(combinedCode) + 62,
+        start: insertionLineStart,
+        end: insertionLineStart + injectedLineCount,
       },
     ],
     defaultFunction: {
       name: 'privateKeyToPublicKey',
       args: ['privateKey'],
     },
-    defaultCode: `const secp256k1 = require('@savingsatoshi/secp256k1js');
-const {randomBytes} = require('crypto');
-${combinedCode.slice(0, -2)}
-// YOUR CODE HERE
-  compute_input_signature(index, key) {
-    assert(typeof key === 'bigint');
-    assert(Number.isInteger(index));
-    // Helper function:
-    // Find modular multiplicative inverse using Extended Euclidean Algorithm
-    function invert(value, modulus = secp256k1.ORDER) {
-      let x0 = 0n;
-      let x1 = 1n;
-      let a = value;
-      let m = modulus;
-
-      while (a > 1n) {
-        const q = a / m;
-        let t = m;
-        m = a % m;
-        a = t;
-        t = x0;
-        x0 = x1 - q * x0;
-        x1 = t;
-      }
-
-      if (x1 < 0n)
-        x1 += modulus;
-        return x1;
-    }
-    // The math:
-    //   k = random integer in [1, n-1]
-    //   R = G * k
-    //   r = x(R) mod n
-    //   s = (r * a + m) / k mod n
-    //   Extra Bitcoin rule from BIP 146:
-    //     if s > n / 2 then s = n - s mod n
-    //   return (r, s)
-    // Hints:
-    //   n = the order of the curve secp256k1.ORDER
-    //   a = the private key
-    //   m = the message value returned by digest()
-    //   x(R) = the x-coordinate of the point R
-    //   Use the invert() function above to turn division into multiplication!
-    // YOUR CODE HERE
-
-    return [r, s];
-  }
-  // Now sign the input you just returned!
-  sign_input(index, priv, pub, sighash=1) {
-    // Represent in DER format. The byte representations of r and s have
-    // length rounded up (255 bits becomes 32 bytes and 256 bits becomes 33 bytes).
-    // See BIP 66
-    // https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
-    const der_int = (n) => {
-      const bit_length = n.toString(2).length;
-      const byte_length = parseInt((bit_length + 8) / 8);
-      const padded_hex = n.toString(16).padStart(byte_length * 2, '0');
-      return Buffer.from(padded_hex, 'hex');
-    };
-    const encode_der = (r, s) => {
-      const rb = der_int(r);
-      const sb = der_int(s);
-      let buf = Buffer.from([0x30, 4 + rb.length + sb.length, 2, rb.length]);
-      buf = Buffer.concat([buf, rb]);
-      buf = Buffer.concat([buf, Buffer.from([2, sb.length])]);
-      buf = Buffer.concat([buf, sb]);
-      return buf;
-    };
-    // YOUR CODE HERE
-  }
-}`,
+    defaultCode: jsDefaultCode,
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
@@ -357,8 +469,8 @@ print(verifying_key_dojssdfo.verify_digest(sig_bytes_ayeqncas, hashed_message_by
 print("KILL")`,
     rangeToNotCollapse: [
       {
-        start: countLines(combinedCode) + 3,
-        end: countLines(combinedCode) + 28,
+        start: countLines(pyCombined) + 3,
+        end: countLines(pyCombined) + 28,
       },
     ],
     defaultFunction: {
@@ -367,7 +479,7 @@ print("KILL")`,
     },
     defaultCode: `from random import randrange
 from secp256k1py import secp256k1
-${combinedCode}
+${pyCombined}
 # YOUR CODE HERE
     def compute_input_signature(self, index: int, key: int):
         # The math:
@@ -416,10 +528,7 @@ ${combinedCode}
   }
 
   const config: EditorConfig = {
-    defaultLanguage:
-      detectLanguage(combinedCode) === Language.JavaScript
-        ? 'javascript'
-        : 'python',
+    defaultLanguage: startLanguage,
     languages: {
       javascript,
       python,
@@ -427,7 +536,7 @@ ${combinedCode}
   }
 
   return (
-    (!isLoading && combinedCode && (
+    (!isLoading && (
       <ScriptingChallenge
         lang={lang}
         config={config}
