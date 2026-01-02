@@ -5,7 +5,15 @@ import { useEffect, useState } from 'react'
 import { useTranslations } from 'hooks'
 import { EditorConfig } from 'types'
 import { getData } from 'api/data'
-import { detectLanguage, Language } from 'lib/SavedCode'
+import {
+  detectLanguage,
+  Language,
+  countLines,
+  getLanguageString,
+} from 'lib/SavedCode'
+import { useAtom } from 'jotai'
+import { currentLanguageAtom } from 'state/state'
+import { Loader } from 'shared'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_two.hard.title',
@@ -17,20 +25,62 @@ export default function PutItTogetherTwoHard({ lang }) {
   const t = useTranslations(lang)
   const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
   const [isLoading, setIsLoading] = useState(true)
-
-  const getPrevLessonData = async () => {
-    const data = await getData('CH6INO4')
-    if (data) {
-      setPrevData({
-        lesson_id: 'CH6INO4',
-        data: data?.code?.getDecoded(),
-      })
-    }
-  }
+  const [currentLanguage] = useAtom(currentLanguageAtom)
+  const [startLanguage, setStartLanguage] = useState(
+    getLanguageString(currentLanguage)
+  )
 
   useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
+    const init = async () => {
+      const data = await getData('CH6INO4')
+      let prevCode = ''
+
+      if (data) {
+        prevCode = data?.code?.getDecoded() || ''
+        setPrevData({
+          lesson_id: 'CH6INO4',
+          data: prevCode,
+        })
+      }
+
+      const currentJs = localStorage.getItem(`${metadata.key}-javascript`)
+      const currentPy = localStorage.getItem(`${metadata.key}-python`)
+
+      if (currentJs && !currentPy) {
+        setStartLanguage('javascript')
+      } else if (currentPy && !currentJs) {
+        setStartLanguage('python')
+      } else if (currentJs && currentPy) {
+        const detectedJs = detectLanguage(currentJs) === Language.JavaScript
+        setStartLanguage(detectedJs ? 'javascript' : 'python')
+      } else {
+        if (prevCode && detectLanguage(prevCode) === Language.JavaScript) {
+          setStartLanguage('javascript')
+        } else if (prevCode && detectLanguage(prevCode) === Language.Python) {
+          setStartLanguage('python')
+        }
+      }
+
+      setIsLoading(false)
+    }
+
+    init()
   }, [])
+
+  const jsDefaultCode = `class Transaction {
+  constructor() {
+    this.version=2;
+    this.flags = Buffer.from('0001', 'hex');
+    this.inputs = [];
+    this.outputs = [];
+    this.witnesses = [];
+    this.locktime = 0;
+  }
+  serialize() {
+    // YOUR CODE HERE
+  }
+}
+`
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
@@ -146,20 +196,13 @@ console.log(tx_dluitpjd.serialize().toString('hex')==='020000000001018e74531c451
       name: 'put-it-together-2-hard',
       args: ['args'],
     },
-    defaultCode: `class Transaction {
-  constructor() {
-    this.version=2;
-    this.flags = Buffer.from('0001', 'hex');
-    this.inputs = [];
-    this.outputs = [];
-    this.witnesses = [];
-    this.locktime = 0;
-  }
-  serialize() {
-    // YOUR CODE HERE
-  }
-}
-`,
+    defaultCode: jsDefaultCode,
+    rangeToNotCollapse: [
+      {
+        start: 1,
+        end: countLines(jsDefaultCode),
+      },
+    ],
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
@@ -170,6 +213,21 @@ console.log(tx_dluitpjd.serialize().toString('hex')==='020000000001018e74531c451
       return [false, 'Please return a value']
     },
   }
+
+  const pyDefaultCode = `from struct import pack
+
+class Transaction:
+    def __init__(self):
+        self.version = 2
+        self.flags = bytes.fromhex("0001")
+        self.inputs = []
+        self.outputs = []
+        self.witnesses = []
+        self.locktime = 0
+
+    def serialize(self):
+        # YOUR CODE HERE
+`
 
   const python = {
     program: `# BEGIN VALIDATION BLOCK
@@ -274,20 +332,13 @@ print("KILL")`,
       name: 'put-it-together-2-hard',
       args: ['args'],
     },
-    defaultCode: `from struct import pack
-
-class Transaction:
-    def __init__(self):
-        self.version = 2
-        self.flags = bytes.fromhex("0001")
-        self.inputs = []
-        self.outputs = []
-        self.witnesses = []
-        self.locktime = 0
-
-    def serialize(self):
-        # YOUR CODE HERE
-`,
+    defaultCode: pyDefaultCode,
+    rangeToNotCollapse: [
+      {
+        start: 1,
+        end: countLines(pyDefaultCode),
+      },
+    ],
     validate: async (answer: string) => {
       if (answer) {
         if (answer === 'true') {
@@ -300,17 +351,15 @@ class Transaction:
   }
 
   const config: EditorConfig = {
-    defaultLanguage:
-      detectLanguage(prevData.data) === Language.JavaScript
-        ? 'javascript'
-        : 'python',
+    defaultLanguage: startLanguage,
     languages: {
       javascript,
       python,
     },
   }
+
   return (
-    !isLoading && (
+    (!isLoading && (
       <ScriptingChallenge
         lang={lang}
         config={config}
@@ -455,6 +504,10 @@ class Transaction:
           </Text>
         </LessonInfo>
       </ScriptingChallenge>
+    )) || (
+      <div className="flex flex-auto items-center">
+        <Loader className="h-12 w-12 text-white" />
+      </div>
     )
   )
 }
