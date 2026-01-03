@@ -87,6 +87,75 @@ export default function ScriptingChallenge({
   const [errors, setErrors] = useState<string[]>([])
   const debouncedCode = useDebounce(code, 500)
 
+  const handleDownload = (format: string) => {
+    if (!code) return
+
+    const ext = language === 'python' ? 'py' : 'js'
+    const filename = `saving-satoshi-${lessonKey}`
+
+    if (format === 'pdf') {
+      // Create a temporary printable window for clean PDF generation
+      const printWindow = window.open('', '', 'height=600,width=800')
+      if (printWindow) {
+        printWindow.document.write(`
+          <html>
+            <head><title>${filename}</title></head>
+            <body style="font-family: monospace; padding: 20px; white-space: pre-wrap;">
+              <h2>${filename}.${ext}</h2>
+              <hr/>
+              <pre>${code.replace(/</g, '&lt;')}</pre>
+            </body>
+          </html>
+        `)
+        printWindow.document.close()
+        printWindow.focus()
+        printWindow.print()
+        printWindow.close()
+      }
+      return
+    }
+
+    let content = code
+    let mimeType = 'text/plain'
+    let fileExt = ext
+
+    switch (format) {
+      case 'source':
+        fileExt = ext
+        break
+      case 'txt':
+        fileExt = 'txt'
+        break
+      case 'md':
+        content = `\`\`\`${language}\n${code}\n\`\`\``
+        fileExt = 'md'
+        break
+      case 'json':
+        content = JSON.stringify(
+          { filename: `${filename}.${ext}`, language, code },
+          null,
+          2
+        )
+        fileExt = 'json'
+        mimeType = 'application/json'
+        break
+      case 'base64':
+        content = btoa(unescape(encodeURIComponent(code)))
+        fileExt = 'b64.txt'
+        break
+    }
+
+    const blob = new Blob([content], { type: mimeType })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `${filename}.${fileExt}`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
   useEffect(() => {
     const savedCode = localStorage.getItem(`${lessonKey}-${language}`)
     if (savedCode) {
@@ -229,6 +298,7 @@ export default function ScriptingChallenge({
             value={language}
             onChange={handleSetLanguage}
             onRefresh={handleRefresh}
+            onDownload={handleDownload}
           />
           <div
             className={clsx({
