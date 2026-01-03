@@ -11,7 +11,6 @@ export default function LanguageTabs({
   value,
   onChange,
   onRefresh,
-  onExport,
   noHide,
   languageLocked,
 }: {
@@ -19,7 +18,6 @@ export default function LanguageTabs({
   value: string
   onChange: (val: string) => void
   onRefresh?: () => void
-  onExport?: () => void
   noHide?: boolean
   languageLocked?: boolean
 }) {
@@ -107,39 +105,6 @@ export default function LanguageTabs({
           )
         })}
       </div>
-      {onExport && (
-        <div className="flex h-full w-10 items-center justify-center border-l border-white border-opacity-30">
-          <Tooltip
-            id={'Export Gist'}
-            theme={
-              !!chapters[pathData.chapterId]?.metadata?.secondaryTheme
-                ? chapters[pathData.chapterId]?.metadata?.secondaryTheme
-                : chapters[pathData.chapterId]?.metadata?.theme
-            }
-            className="flex h-full w-full justify-center no-underline"
-            content={<span>Export to Github</span>}
-          >
-            <div className="hover:cursor-pointer" onClick={onExport}>
-              {/* Simple Upload Icon SVG */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-full w-full object-contain p-2.5 text-white text-opacity-40 hover:text-opacity-100"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
-                />
-              </svg>
-            </div>
-          </Tooltip>
-        </div>
-      )}
-
       {onRefresh && (
         <div className="flex h-full w-10 items-center justify-center border-l border-white border-opacity-30">
           <Tooltip
