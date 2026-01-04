@@ -29,7 +29,7 @@ export default function PublicKey3({ lang }) {
       name: 'encode_message',
       args: ['text'],
     },
-    defaultCode: `const { Hash } = require('crypto');
+    defaultCode: `const crypto = require('crypto');
 // Provided by Vanderpoole
 let text = "I am Vanderpoole and I have control of the private key Satoshi\\n"
 text += "used to sign the first-ever Bitcoin transaction confirmed in block #170.\\n"
