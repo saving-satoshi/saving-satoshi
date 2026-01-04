@@ -20,7 +20,7 @@ export default function IntOut2({ lang }) {
         {t('chapter_six.in_out_two.paragraph_one')}
       </p>
       <CodeExample
-        className="mt-4 font-space-mono"
+        className="mt-4 w-full whitespace-pre-wrap break-all font-space-mono"
         code={`bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj`}
         language="shell"
       />
