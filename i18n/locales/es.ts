@@ -258,9 +258,19 @@ const translations = {
     public_key_three: {
       title: 'Clave pública',
       paragraph_one:
-        'Para derivar una clave pública a partir de una clave privada, realizamos una operación de curva elíptica repetidamente con el punto generador (descubre por qué). El punto generador es un punto específico en la curva. Su valor es parte del estándar secp256k1 y siempre es el mismo:',
+        'Para derivar una clave pública a partir de una clave privada, realizamos una operación de curva elíptica repetidamente con el punto generador (' +
+        '<a href="https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520is%2520the%2520generator%2520point%2520repeatedly%2520used%2520to%2520derive%2520a%2520public%2520key%2520from%2520a%2520private%2520key%2520in%2520secp256k1%253F" ' +
+        'target="_blank" rel="noopener noreferrer" class="underline">' +
+        'descubre por qué' +
+        '</a>' +
+        '). El punto generador es un punto específico en la curva. Su valor es parte del estándar secp256k1 y siempre es el mismo:',
       paragraph_two:
-        'La operación de curva elíptica es similar a la adición y, por lo tanto, su repetición es similar a la multiplicación. Utilizamos el símbolo * para describir el algoritmo (aprende más), donde k es la clave privada y P es la clave pública correspondiente:Mathematical operations on an elliptic curve are similar to addition. Therefore, repetition of those opertaions is similar to multiplication. We use the * symbol to describe the algorithm (learn more), where `k` is the private key and `P` is the corresponding public key:',
+        'La operación de curva elíptica es similar a la adición y, por lo tanto, su repetición es similar a la multiplicación. Utilizamos el símbolo * para describir el algoritmo (' +
+        '<a href="https://chat.bitcoinsearch.xyz/?author=holocat&question=How%2520does%2520elliptic%2520curve%2520scalar%2520multiplication%2520work%253F" ' +
+        'target="_blank" rel="noopener noreferrer" class="underline">' +
+        'aprende más' +
+        '</a>' +
+        '), donde k es la clave privada y P es la clave pública correspondiente:',
       paragraph_three:
         'Completa la función privatekey_to_publickey() de modo que devuelva la clave pública derivada de una clave privada dada.',
     },
