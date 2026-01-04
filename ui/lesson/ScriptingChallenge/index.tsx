@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react'
 import LanguageTabs from './LanguageTabs'
 import Editor from './Editor'
 import Runner from './Runner'
+import GitHubExportModal from 'components/Modals/GithubExportModal'
+import AlertModal from 'components/Modals/AlertModal'
 import {
   EditorConfig,
   LessonDirection,
@@ -20,20 +22,12 @@ import useDebounce from 'hooks/useDebounce'
 import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { accountAtom, currentLanguageAtom } from 'state/state'
+import { verifyToken, exportCode } from 'lib/userGithub'
 
 const tabData = [
-  {
-    id: 'info',
-    text: 'Info',
-  },
-  {
-    id: 'code',
-    text: 'Code',
-  },
-  {
-    id: 'execute',
-    text: 'Execute',
-  },
+  { id: 'info', text: 'Info' },
+  { id: 'code', text: 'Code' },
+  { id: 'execute', text: 'Execute' },
 ]
 
 function trimLastTwoLines(code: string): string {
@@ -87,6 +81,16 @@ export default function ScriptingChallenge({
   const [errors, setErrors] = useState<string[]>([])
   const debouncedCode = useDebounce(code, 500)
 
+  // -- Export & Modal State --
+  const [showGitHubModal, setShowGitHubModal] = useState(false)
+  const [isExporting, setIsExporting] = useState(false)
+  const [alertState, setAlertState] = useState<{
+    active: boolean
+    type: 'success' | 'error'
+    title: string
+    message: string
+  }>({ active: false, type: 'success', title: '', message: '' })
+
   useEffect(() => {
     const savedCode = localStorage.getItem(`${lessonKey}-${language}`)
     if (savedCode) {
@@ -138,11 +142,80 @@ export default function ScriptingChallenge({
     setActiveView(view)
   }
 
+  // --- Export Logic Start ---
+  const handleExportClick = () => {
+    // Reset alert state to clear any previous errors
+    setAlertState((prev) => ({ ...prev, active: false }))
+
+    // Check if token exists
+    const token = window.localStorage.getItem('github_pat')
+    setShowGitHubModal(true)
+  }
+
+  const handleGitHubConfirm = async (token: string, repo?: string) => {
+    window.localStorage.setItem('github_pat', token)
+    setShowGitHubModal(false)
+    performExport(token, repo)
+  }
+
+  const performExport = async (token: string, repo?: string) => {
+    setIsExporting(true)
+    try {
+      const user = await verifyToken(token)
+      if (!user) {
+        throw new Error('Authentication failed. Token invalid.')
+      }
+
+      const fileName = `saving-satoshi-${lessonKey}.${
+        language === 'python' ? 'py' : 'js'
+      }`
+      const description = `Solution for ${lessonKey} (${language})`
+
+      const url = await exportCode(
+        token,
+        user.login,
+        repo,
+        fileName,
+        code || '',
+        description
+      )
+
+      if (url) {
+        window.open(url, '_blank')
+        setAlertState({
+          active: true,
+          type: 'success',
+          title: 'Export Successful',
+          message: `Code successfully exported!`,
+        })
+      }
+    } catch (error: any) {
+      console.error('Export Error:', error)
+
+      // If auth error, clear token
+      if (
+        error.message.includes('Authentication') ||
+        error.message.includes('401')
+      ) {
+        window.localStorage.removeItem('github_pat')
+      }
+
+      setAlertState({
+        active: true,
+        type: 'error',
+        title: 'Export Failed',
+        message: error.message || 'An unknown error occurred.',
+      })
+    } finally {
+      setIsExporting(false)
+    }
+  }
+  // --- Export Logic End ---
+
   const handleRunnerValidate = async (data: StoredLessonData) => {
     const [success, errors] = await config.languages[language].validate(
       data.answer
     )
-    // This code trims all code after the comment BEGIN VALIDATION BLOCK and all code comments so that loaded code is cleaned
     let trimmedCode: string = ''
 
     if (language === 'python') {
@@ -200,9 +273,7 @@ export default function ScriptingChallenge({
     setHydrated(true)
   }, [])
 
-  if (!hydrated) {
-    return null
-  }
+  if (!hydrated) return null
 
   return (
     hydrated && (
@@ -214,6 +285,25 @@ export default function ScriptingChallenge({
       >
         <LessonTabs items={tabData} classes="px-4 py-2 w-full" stretch={true} />
         {children}
+
+        {/* Modals */}
+        <GitHubExportModal
+          active={showGitHubModal}
+          savedToken={
+            typeof window !== 'undefined'
+              ? window.localStorage.getItem('github_pat')
+              : null
+          }
+          onClose={() => setShowGitHubModal(false)}
+          onConfirm={handleGitHubConfirm}
+        />
+        <AlertModal
+          active={alertState.active}
+          type={alertState.type}
+          title={alertState.title}
+          message={alertState.message}
+          onClose={() => setAlertState((prev) => ({ ...prev, active: false }))}
+        />
 
         <div
           className={clsx(
@@ -229,6 +319,7 @@ export default function ScriptingChallenge({
             value={language}
             onChange={handleSetLanguage}
             onRefresh={handleRefresh}
+            onExport={handleExportClick}
           />
           <div
             className={clsx({
