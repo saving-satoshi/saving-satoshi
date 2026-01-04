@@ -2032,8 +2032,8 @@ const translations = {
       table_one: {
         headings: {
           item_one: `단계`,
-          item_two: `스택 상태`,
-          item_three: `스크립트 실행`,
+          item_two: `스크립트 실행`,
+          item_three: `스택 상태`,
         },
       },
       subheading_one: `설명`,
@@ -2151,7 +2151,8 @@ const translations = {
       heading: `조건부 시간 잠금 트랜잭션`,
       paragraph_one: `잠깐만, 가만히 생각해 보니… 그 사람하고 평생 엮이고 싶진 않습니다! 그래서 새 제안을 합니다: 지금부터 2시간 동안 방송이 나가는 동안 들어오는 기부금은 전부 당신이 받고, 이후에 들어오는 기부금은 Lil Bits 재단이 가져가게 됩니다. 스튜디오 벽에 걸린 블록 타이머를 보니, 블록 높이 6930300쯤이 2시간 후에 생성될 것으로 보입니다. 그걸 기준으로 삼기로 합니다.`,
       paragraph_two: `참고로 반더풀의 공개키는 PUBKEY(vanderpoole)이고, 당신의 공개키는 PUBKEY(me)입니다.`,
-      paragraph_three: `이 조건부 트랜잭션에서 코인을 쓰기 위한 초기 스택을 입력해주세요.`,
+      paragraph_three: `먼저, 이 조건부 트랜잭션에서 당신이 코인을 쓰기 위해 필요한 입력 값(초기 스택)을 입력하세요.
+다음 단계에서는 Vanderpoole이 코인을 쓸 수 있도록 하는 스크립트를 제공하고, 블록 높이를 적절히 조정하세요.`,
       next_step_message: `좋습니다! 이번엔 당신 서명으로도 한 번 해봅시다.`,
     },
     proposal_four: {

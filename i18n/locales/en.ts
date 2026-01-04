@@ -2046,8 +2046,8 @@ const translations = {
       table_one: {
         headings: {
           item_one: `Step`,
-          item_two: `Stack`,
-          item_three: `Script Execution`,
+          item_two: `Script Execution`,
+          item_three: `Stack`,
         },
       },
       subheading_one: `Explanation`,
@@ -2165,7 +2165,8 @@ const translations = {
       heading: `Conditional time locked transaction`,
       paragraph_one: `Wait a minute, that doesn't make sense—you don't want to deal with him forever! The new deal is you get all donations for the next two hours while you are still on TV. The Lil Bits Foundation gets anything that comes in afterwards. You look at the bitcoin block clock on the wall in the studio and agree that block height 6930300 will probably be mined in about two hours.`,
       paragraph_two: `Remember Vanderpoole's public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
-      paragraph_three: `Provide the initial stack to spend from the script.`,
+      paragraph_three: `First, provide the input values (initial stack) needed for you to spend this script.
+In the next step, provide the script that allows Vanderpoole to spend it, and adjust the block height accordingly.`,
       next_step_message: `Looks good! Now lets try with your own signature.`,
     },
     proposal_four: {
