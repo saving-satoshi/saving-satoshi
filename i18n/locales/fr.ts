@@ -1034,7 +1034,7 @@ const translations = {
       success_message_line_ten:
         'output #0 scriptPubKey (Hal Finney’s public key plus OP_CHECKSIG):',
       success_message_line_eleven:
-        'outut #1 value (40 BTC or 4,000,000,000 satoshis):',
+        'output #1 value (40 BTC or 4,000,000,000 satoshis):',
       success_message_line_twelve:
         'output #1 scriptPubKey (Satoshi’s own public key again, for change):',
       success_message_line_thirteen: 'locktime:',
