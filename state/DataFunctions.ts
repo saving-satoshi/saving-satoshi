@@ -1,12 +1,7 @@
 import { useSetAtom, useAtom } from 'jotai'
 import { isLoadingDataAtom, dataAtom, currentLanguageAtom } from './state'
 import { getData, setData } from 'api/data'
-import {
-  Language,
-  getLanguageFromString,
-  getLanguageString,
-} from 'lib/SavedCode'
-import { useEffect } from 'react'
+import { Language } from 'lib/SavedCode'
 
 export const useDataFunctions = () => {
   const setIsLoading = useSetAtom(isLoadingDataAtom)
@@ -47,16 +42,7 @@ export const useDataFunctions = () => {
 
   const setCurrentLanguage = (language: Language) => {
     setCurrentLanguageState(language)
-    localStorage.setItem('language', getLanguageString(language))
   }
-
-  // Initialize language from localStorage
-  useEffect(() => {
-    const storedLang = localStorage.getItem('language')
-    if (storedLang) {
-      setCurrentLanguage(getLanguageFromString(storedLang))
-    }
-  }, [])
 
   return {
     loadData,
