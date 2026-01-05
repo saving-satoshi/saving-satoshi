@@ -1791,7 +1791,7 @@ const translations = {
           'Consulte <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link> para saber mais.',
         heading_three: 'Etapa 3',
         paragraph_eight:
-          'Complete o método <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, key)</span> para que ele chame <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>. Ao lidar com o valor de retorno, <span className="italic">r</span> e <span className="italic">s</span> precisam ser codificados com um algoritmo chamado DER, que implementamos para você.',
+          'Complete o método <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, priv, pub, sighash)</span> para que ele chame <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>. Ao lidar com o valor de retorno, <span className="italic">r</span> e <span className="italic">s</span> precisam ser codificados com um algoritmo chamado DER, que implementamos para você.',
         heading_four: 'Etapa 4',
         paragraph_nine:
           'O Bitcoin exige um byte extra anexado ao final da assinatura DER. Esse byte representa o "tipo de sighash". Por enquanto, sempre usaremos o byte <span className="p-1 text-base font-mono bg-[#0000004D] m-1">0x01</span> para isso, indicando "SIGHASH ALL".',

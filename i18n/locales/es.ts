@@ -24,7 +24,7 @@ const translations = {
   about: {
     title: `Info`,
     mobile_title: `De qué se trata`,
-    subtitle: `El año es 2139. Faltan dos semanas para que se extraiga el último bitcoin. Durante meses, un reloj ha hecho tic-tac en el la Plaza Satoshi.`,
+    subtitle: `El año es 2139. Faltan dos semanas para que se extraiga el último bitcoin. Durante meses, un reloj ha hecho tic-tac en la Plaza Satoshi.`,
     intro: `El mundo espera el último bloque. Entonces, de repente, la red se detiene. <br><br>Recibes un holocat (es como cualquier otro e-holograma, pero éste tiene forma de gato) de alguien que usa el nombre de Satoshi Nakamoto. Abres el holocat tocándole la nariz con curiosidad por escuchar lo que tiene que decir...`,
 
     project: {
@@ -130,7 +130,7 @@ const translations = {
       paragraph_one: `Hay otra forma de ocultar mensajes secretos en las transacciones. Bitcoin tiene un tipo especial de código llamado OP_RETURN que permite a los usuarios adjuntar mensajes a las salidas de las transacciones. Veamos si podemos encontrar uno`,
       paragraph_two: `1. Haz clic <Link href="https://blockstream.info/tx/ff9148605a772a51cba39004df5fb042d40515967a3e38ff5294cfd017c452a9?expand" className="underline">aquí</Link> para ver una transacción específica.`,
       paragraph_three: `2. Abre los detalles y busca la parte que es de tipo "OP_RETURN".`,
-      párrafo_cuarto: `3. Ahora encuentra el campo "SCRIPTPUBKEY (ASM)". ¿Ves la parte "OP_RETURN OP_PUSHBYTES_33"? Esto se llama opcodes. En realidad nos interesa lo que viene después de ellos`,
+      paragraph_four: `3. Ahora encuentra el campo "SCRIPTPUBKEY (ASM)". ¿Ves la parte "OP_RETURN OP_PUSHBYTES_33"? Esto se llama opcodes. En realidad nos interesa lo que viene después de ellos`,
       paragraph_five: `4. Copia la larga cadena de números después de "OP_RETURN OP_PUSHBYTES_33" y pégala debajo. `,
       input_challenge_label: `Introduce el tipo de OP_RETURN`,
     },
@@ -381,13 +381,13 @@ const translations = {
     heading: `Carga tu progreso`,
     paragraph_one: `Introduce tu código personal a continuación para restaurar el progreso de tus capítulos y desafíos, así como tu avatar.`,
     clear: `¿Aún no tienes un código?`,
-    prompt: `Introduzca tu código`,
-    confirm: `Cargar mis progreso`,
+    prompt: `Introduce tu código`,
+    confirm: `Cargar mi progreso`,
     paragraph_two: `Lo siento, ese no es el código correcto para el progreso almacenado en este navegador.`,
     paragraph_three: `¿Aún no tienes código o quieres empezar de nuevo?`,
     quit: `Borra el progreso de guardado.`,
     success: `Progreso cargado`,
-    success_message: `Everything is ready to continue with the chapter`,
+    success_message: `Todo está listo para continuar con el capítulo`,
   },
 
   modal_logout: {
@@ -399,7 +399,7 @@ const translations = {
   modal_signup: {
     heading: `¿Quieres guardar tu progreso?`,
     paragraph_one: `Copia y guarda un sencillo código para guardar y cargar tu progreso en cualquier dispositivo y navegador. Si ya tienes un código, carga tu progreso aquí`,
-    subtítulo_uno: `Elige un avatar`,
+    subheading_one: `Elige un avatar`,
     subheading_two: `Haz una copia de seguridad de tu código personal`,
     paragraph_two: `¿Todo listo? ¿Código copiado y copia de seguridad? Asegúrate de hacerlo, ya que no se puede recuperar si lo pierdes`,
     confirm: `He copiado y hecho una copia de seguridad de mi código`,

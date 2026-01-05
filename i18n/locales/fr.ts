@@ -1034,7 +1034,7 @@ const translations = {
       success_message_line_ten:
         'output #0 scriptPubKey (Hal Finney’s public key plus OP_CHECKSIG):',
       success_message_line_eleven:
-        'outut #1 value (40 BTC or 4,000,000,000 satoshis):',
+        'output #1 value (40 BTC or 4,000,000,000 satoshis):',
       success_message_line_twelve:
         'output #1 scriptPubKey (Satoshi’s own public key again, for change):',
       success_message_line_thirteen: 'locktime:',
@@ -1757,7 +1757,7 @@ const translations = {
           'See <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link> to learn more.',
         heading_three: 'Step 3',
         paragraph_eight:
-          'Complete the method <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, key)</span> so that it calls <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>. When handling the return value, <span className="italic">r</span> and <span className="italic">s</span> need to be encoded with an algorithm called DER which we have implemented for you.',
+          'Complete the method <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, priv, pub, sighash)</span> so that it calls <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>. When handling the return value, <span className="italic">r</span> and <span className="italic">s</span> need to be encoded with an algorithm called DER which we have implemented for you.',
         heading_four: 'Step 4',
         paragraph_nine:
           'Bitcoin requires an extra byte appended to the end of the DER-signature. This byte represents the "sighash type". For now we’ll always use the byte <span className="p-1 text-base font-mono bg-[#0000004D] m-1">0x01</span> for this, indicating "SIGHASH ALL".',
