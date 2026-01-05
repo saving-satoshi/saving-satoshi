@@ -1,10 +1,11 @@
 'use client'
 
 import { getData } from 'api/data'
-import { useTranslations } from 'hooks'
+import { usePrevLessonLanguage, useTranslations } from 'hooks'
 import {
   countLines,
   detectLanguage,
+  getLanguageString,
   Language,
   organizeImports,
 } from 'lib/SavedCode'
@@ -30,6 +31,8 @@ export default function PutItTogether3({ lang }) {
   const [prevData, setPrevData] = useState<any>({})
   const [isLoading, setIsLoading] = useState(true)
   const [combinedCode, setCombinedCode] = useState('')
+  const { detectedLanguage } = usePrevLessonLanguage('CH6PUT2_NORMAL')
+  const defaultLanguage = getLanguageString(detectedLanguage)
 
   const getPrevLessonData = async () => {
     const dataMap = {}
@@ -290,10 +293,7 @@ print(tx.serialize().hex())`,
   }
 
   const config: EditorConfig = {
-    defaultLanguage:
-      detectLanguage(combinedCode) === Language.JavaScript
-        ? 'javascript'
-        : 'python',
+    defaultLanguage,
     languages: {
       javascript,
       python,

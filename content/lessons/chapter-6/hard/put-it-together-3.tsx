@@ -1,11 +1,9 @@
 'use client'
 
 import { ScriptingChallenge, Table, Text, LessonInfo, CodeExample } from 'ui'
-import { useEffect, useState } from 'react'
-import { useTranslations } from 'hooks'
+import { useTranslations, usePrevLessonLanguage } from 'hooks'
 import { EditorConfig } from 'types'
-import { getData } from 'api/data'
-import { detectLanguage, Language } from 'lib/SavedCode'
+import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_three.hard.title',
@@ -15,24 +13,10 @@ export const metadata = {
 
 export default function PutItTogetherThreeHard({ lang }) {
   const t = useTranslations(lang)
+  const { prevData, isLoading, detectedLanguage } =
+    usePrevLessonLanguage('CH6PUT2_HARD')
 
-  const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
-  const [isLoading, setIsLoading] = useState(true)
-
-  const getPrevLessonData = async () => {
-    const data = await getData('CH6PUT2_HARD')
-    if (data) {
-      setPrevData({
-        lesson_id: 'CH6PUT2_HARD',
-        data: data?.code?.getDecoded(),
-      })
-    }
-  }
-
-  useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
-  }, [])
-
+  const defaultLanguage = getLanguageString(detectedLanguage)
   function countLines(text: string): number {
     return text.split(/\r\n|\r|\n/).length
   }
@@ -305,10 +289,7 @@ ${prevData.data}
   }
 
   const config: EditorConfig = {
-    defaultLanguage:
-      detectLanguage(prevData.data) === Language.JavaScript
-        ? 'javascript'
-        : 'python',
+    defaultLanguage,
     languages: {
       javascript,
       python,

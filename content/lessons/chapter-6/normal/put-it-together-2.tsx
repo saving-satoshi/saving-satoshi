@@ -2,13 +2,13 @@
 
 import { ScriptingChallenge, LessonInfo, Title } from 'ui'
 import { EditorConfig } from 'types'
-import { useTranslations } from 'hooks'
+import { useTranslations, usePrevLessonLanguage } from 'hooks'
 import { Text } from 'ui'
 import { useEffect, useState } from 'react'
-import { getData } from 'api/data'
 import {
   countLines,
   detectLanguage,
+  getLanguageString,
   Language,
   organizeImports,
 } from 'lib/SavedCode'
@@ -22,23 +22,10 @@ export const metadata = {
 
 export default function PutItTogether2({ lang }) {
   const t = useTranslations(lang)
-  const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
-  const [isLoading, setIsLoading] = useState(true)
+  const { prevData, isLoading, detectedLanguage } =
+    usePrevLessonLanguage('CH6PUT1_NORMAL')
   const [combinedCode, setCombinedCode] = useState('')
-
-  const getPrevLessonData = async () => {
-    const data = await getData('CH6PUT1_NORMAL')
-    if (data) {
-      setPrevData({
-        lesson_id: 'CH6PUT1_NORMAL',
-        data: data?.code?.getDecoded(),
-      })
-    }
-  }
-
-  useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
-  }, [])
+  const defaultLanguage = getLanguageString(detectedLanguage)
 
   const languageWitness =
     detectLanguage(prevData.data) === Language.JavaScript
@@ -416,10 +403,7 @@ ${combinedCode}
   }
 
   const config: EditorConfig = {
-    defaultLanguage:
-      detectLanguage(combinedCode) === Language.JavaScript
-        ? 'javascript'
-        : 'python',
+    defaultLanguage,
     languages: {
       javascript,
       python,
