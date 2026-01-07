@@ -235,6 +235,7 @@ const translations = {
 
     outro_two: {
       title: 'Du hast es geschafft!!!',
+      nav_title: `Kapitel abgeschlossen`,
       description:
         'Überragend. Du hast das erste Kapitel abgeschlossen und eine Menge über Transaktionen gelernt. Wie ist es gelaufen?',
     },
