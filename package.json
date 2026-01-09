@@ -22,6 +22,7 @@
     "accept-language": "^3.0.18",
     "acorn": "^8.8.2",
     "ansi-to-html": "^0.7.2",
+    "canvas-confetti": "^1.9.4",
     "clsx": "^1.2.1",
     "constrained-editor-plugin": "^1.3.0",
     "framer-motion": "^11.3.27",
@@ -47,6 +48,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
+    "@types/canvas-confetti": "^1",
     "@types/jest": "^29.5.11",
     "@types/node": "22.0.0",
     "@types/react": "18.0.25",

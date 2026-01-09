@@ -15,6 +15,7 @@ export default function TextImageDisplay({
   btnEnabled,
   objectPosition = 'object-bottom',
   noBtn,
+  onButtonClick,
 }: {
   children: any
   lang: string
@@ -24,6 +25,7 @@ export default function TextImageDisplay({
   btnEnabled: boolean
   objectPosition?: string
   noBtn?: boolean
+  onButtonClick?: () => void
 }) {
   const t = useTranslations(lang)
   const proceed = useProceed()
@@ -56,7 +58,10 @@ export default function TextImageDisplay({
             {!noBtn && (
               <div>
                 {btnEnabled ? (
-                  <Button onClick={proceed} classes="w-full md:w-auto">
+                  <Button
+                    onClick={() => (proceed(), onButtonClick?.())}
+                    classes="w-full md:w-auto"
+                  >
                     {btnText ? btnText : t('shared.next')}
                   </Button>
                 ) : (
