@@ -2,10 +2,8 @@
 
 import { ScriptingChallenge, LessonInfo, Title, Text } from 'ui'
 import { EditorConfig } from 'types'
-import { useTranslations } from 'hooks'
-import { useEffect, useState } from 'react'
-import { getData } from 'api/data'
-import { countLines, detectLanguage, Language } from 'lib/SavedCode'
+import { useTranslations, usePrevLessonLanguage } from 'hooks'
+import { countLines, getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_five.hard.title',
@@ -15,24 +13,9 @@ export const metadata = {
 
 export default function PutItTogether5Hard({ lang }) {
   const t = useTranslations(lang)
-
-  const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
-  const [isLoading, setIsLoading] = useState(true)
-
-  const getPrevLessonData = async () => {
-    const data = await getData('CH6PUT4_HARD')
-    if (data) {
-      setPrevData({
-        lesson_id: 'CH6PUT4_HARD',
-        data: data?.code?.getDecoded(),
-      })
-    }
-  }
-
-  useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
-  }, [])
-
+  const { prevData, isLoading, detectedLanguage } =
+    usePrevLessonLanguage('CH6PUT4_HARD')
+  const defaultLanguage = getLanguageString(detectedLanguage)
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
 const assert = require('assert');
@@ -340,10 +323,7 @@ print("KILL")
   }
 
   const config: EditorConfig = {
-    defaultLanguage:
-      detectLanguage(prevData.data) === Language.JavaScript
-        ? 'javascript'
-        : 'python',
+    defaultLanguage,
     languages: {
       javascript,
       python,

@@ -1,10 +1,8 @@
 'use client'
 import { ScriptingChallenge, Table, Text, LessonInfo, CodeExample } from 'ui'
-import { useEffect, useState } from 'react'
-import { useTranslations } from 'hooks'
+import { useTranslations, usePrevLessonLanguage } from 'hooks'
 import { EditorConfig } from 'types'
-import { getData } from 'api/data'
-import { detectLanguage, Language } from 'lib/SavedCode'
+import { getLanguageString } from 'lib/SavedCode'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_one.normal.title',
@@ -14,23 +12,8 @@ export const metadata = {
 
 export default function PutItTogether1({ lang }) {
   const t = useTranslations(lang)
-  const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
-  const [isLoading, setIsLoading] = useState(true)
-
-  const getPrevLessonData = async () => {
-    const data = await getData('CH6INO5')
-    if (data) {
-      setPrevData({
-        lesson_id: 'CH6INO5',
-        data: data?.code?.getDecoded(),
-      })
-    }
-  }
-
-  useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
-  }, [])
-
+  const { isLoading, detectedLanguage } = usePrevLessonLanguage('CH6INO5')
+  const defaultLanguage = getLanguageString(detectedLanguage)
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
 const assert = require('assert');
@@ -367,10 +350,7 @@ class Transaction:
   }
 
   const config: EditorConfig = {
-    defaultLanguage:
-      detectLanguage(prevData.data) === Language.JavaScript
-        ? 'javascript'
-        : 'python',
+    defaultLanguage,
     languages: {
       javascript,
       python,

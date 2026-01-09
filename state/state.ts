@@ -1,10 +1,31 @@
 import { atom, createStore } from 'jotai'
-import { Language } from 'lib/SavedCode'
+import { atomWithStorage } from 'jotai/utils'
+import {
+  Language,
+  getLanguageString,
+  getLanguageFromString,
+} from 'lib/SavedCode'
 import { Data } from 'types'
 
 export const isLoadingDataAtom = atom<boolean>(true)
 export const dataAtom = atom<Data[]>([])
-export const currentLanguageAtom = atom<Language>(Language.JavaScript)
+export const currentLanguageAtom = atomWithStorage<Language>(
+  'language',
+  Language.JavaScript,
+  {
+    getItem: (key: string) => {
+      const storedValue = localStorage.getItem(key)
+      if (storedValue === null) return Language.JavaScript
+      return getLanguageFromString(storedValue)
+    },
+    setItem: (key: string, value: Language) => {
+      localStorage.setItem(key, getLanguageString(value))
+    },
+    removeItem: (key: string) => {
+      localStorage.removeItem(key)
+    },
+  }
+)
 
 export enum Modal {
   Account = 'account',
