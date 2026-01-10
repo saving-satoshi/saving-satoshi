@@ -1659,7 +1659,7 @@ const translations = {
             item_one: `The sequence value of the single input being signed`,
             item_two: `sequence`,
             item_three: `int`,
-            item_four: `8`,
+            item_four: `4`,
           },
           row_eight: {
             item_one: `The dSHA256 of all outputs, serialized`,
@@ -2046,8 +2046,8 @@ const translations = {
       table_one: {
         headings: {
           item_one: `Step`,
-          item_two: `Stack`,
-          item_three: `Script Execution`,
+          item_two: `Script Execution`,
+          item_three: `Stack`,
         },
       },
       subheading_one: `Explanation`,
