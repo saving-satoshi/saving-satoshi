@@ -24,6 +24,17 @@ export default function Address1({ lang }) {
   const [isLoading, setIsLoading] = useState(true)
   const [tooltipVisible, setTooltipVisible] = useState(false)
 
+  function useHoverDevice() {
+    const [canHover, setCanHover] = useState(false)
+
+    useEffect(() => {
+      const mq = window.matchMedia('(hover: hover)')
+      setCanHover(mq.matches)
+    }, [])
+
+    return canHover
+  }
+
   const handleMouseEnter = () => {
     setTooltipVisible(true)
   }
@@ -46,17 +57,23 @@ export default function Address1({ lang }) {
     getPrevLessonData().finally(() => setIsLoading(false))
   }, [])
 
+  const canHover = useHoverDevice()
+
   return (
     !isLoading && (
       <ChapterIntro
         className="my-8"
         heading={t('chapter_four.address_one.heading')}
       >
-        <p className="mt-2 text-lg md:text-xl">
+        <p className="mt-2 break-words text-base sm:text-lg md:text-xl">
           {t('chapter_four.address_one.paragraph_one')}
         </p>
-        <CodeExample className="mt-4" code={dataObject} language="shell" />
-        <p className="mt-8 inline-block text-lg md:text-xl">
+        <CodeExample
+          className="mt-4 max-w-full overflow-x-auto whitespace-pre-wrap break-all text-sm sm:text-base md:text-lg"
+          code={dataObject}
+          language="shell"
+        />
+        <p className="mt-8 inline-block break-words text-base sm:text-lg md:text-xl">
           {t('chapter_four.address_one.paragraph_two')}
           <a
             onMouseEnter={handleMouseEnter}
@@ -72,7 +89,7 @@ export default function Address1({ lang }) {
               id="target-difficulty"
               question={t('chapter_four.address_one.tooltip_one.question')}
               href={t('chapter_four.address_one.tooltip_one.link')}
-              visible={tooltipVisible}
+              visible={canHover && tooltipVisible}
             />
           </a>
           .
