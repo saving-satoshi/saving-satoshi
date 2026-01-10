@@ -24,21 +24,21 @@ export default function Outro1({ lang }) {
       theme={metadata.secondaryTheme}
       gradientTheme={metadata.gradientTheme}
     >
-      <h1 className="text-4xl font-bold text-white">
+      <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-4xl font-bold text-white">
         {t('chapter_two.outro_one.heading')}
       </h1>
-      <p className="mt-4 font-nunito text-xl text-white">
+      <p className="mt-4 font-nunito text-base sm:text-lg lg:text-xl text-white">
         {t('chapter_two.outro_one.paragraph_one')}
       </p>
-      <p className="mt-4 font-nunito text-xl text-white">
+      <p className="mt-4 font-nunito text-base sm:text-lg lg:text-xl text-white">
         {t('chapter_two.outro_one.paragraph_two')}
       </p>
 
-      <p className="mt-4 font-nunito text-xl text-white">
+      <p className="mt-4 font-nunito text-base sm:text-lg lg:text-xl text-white">
         {t('chapter_two.outro_one.paragraph_three')}
       </p>
 
-      <p className="mt-4 font-nunito text-xl text-white">
+      <p className="mt-4 font-nunito text-base sm:text-lg lg:text-xl text-white">
         {t('chapter_two.outro_one.paragraph_four')}
       </p>
     </ChapterEnd>
