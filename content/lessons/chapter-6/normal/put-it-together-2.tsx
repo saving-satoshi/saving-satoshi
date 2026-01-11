@@ -216,7 +216,7 @@ ${combinedCode.slice(0, -2)}
     //   r = x(R) mod n
     //   s = (r * a + m) / k mod n
     //   Extra Bitcoin rule from BIP 146:
-    //     if s > n / 2 then s = n - s mod n
+    //     if s > n / 2 then s = n - s
     //   return (r, s)
     // Hints:
     //   n = the order of the curve secp256k1.ORDER
