@@ -25,7 +25,7 @@ getSubsidy(840000) === 312500000) {
 } else if (typeof getSubsidy(839999) === 'bigint') {
   console.log('be sure the subsidy is of type number')
 } else if (getSubsidy(10000000) < 1) {
-  console.log('Remember there is a maximum of 63 halvings, and the subsidy will never be a fraction of a satoshi');
+  console.log('Remember there is a maximum of 33 halvings, and the subsidy will never be a fraction of a satoshi');
 } else {
   console.log('false')
 }

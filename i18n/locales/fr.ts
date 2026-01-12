@@ -1034,7 +1034,7 @@ const translations = {
       success_message_line_ten:
         'output #0 scriptPubKey (Hal Finney’s public key plus OP_CHECKSIG):',
       success_message_line_eleven:
-        'outut #1 value (40 BTC or 4,000,000,000 satoshis):',
+        'output #1 value (40 BTC or 4,000,000,000 satoshis):',
       success_message_line_twelve:
         'output #1 scriptPubKey (Satoshi’s own public key again, for change):',
       success_message_line_thirteen: 'locktime:',
@@ -2286,7 +2286,7 @@ const translations = {
         'Starting with the block #1 mined in 2009, the block subsidy is 50 BTC (or 5,000,000,000 satoshis)',
       list_two: 'Every 210,000 blocks that value is cut in half.',
       paragraph_four:
-        'At block height 209,999 the subsidy was 50 BTC. In the very next block at height 210,000 the subsidy was 25 BTC, and so on. After 63 "halvings" the subsidy will be one single satoshi. The last halving will drop the subsidy to zero.',
+        'At block height 209,999 the subsidy was 50 BTC. In the very next block at height 210,000 the subsidy was 25 BTC, and so on. After 32 "halvings" the subsidy will be one single satoshi. The last halving will drop the subsidy to zero.',
       paragraph_five: 'AND THAT LAST HALVING WAS YESTERDAY!',
       paragraph_six:
         'Finish the implementation of the following function that accepts a block height as an argument and returns the value of the subsidy in satoshis.',
@@ -2443,8 +2443,8 @@ const translations = {
       table_one: {
         headings: {
           item_one: 'Step',
-          item_two: 'Stack',
-          item_three: 'Script Execution',
+          item_two: `Script Execution`,
+          item_three: `Stack`,
         },
       },
       subheading_one: 'Explanation',

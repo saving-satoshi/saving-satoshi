@@ -20,9 +20,7 @@ const translations = {
     bitcoin_dev_project: `Bitcoin Dev Project`,
     home_tooltip: `Don't worry, Your progress is safe with us.`,
   },
-  banner: {
-    deadline: `Complete the game by Jan 12 to participate in the <a target="_blank" href="https://bosschallenge.xyz/"> ₿OSS Challenge! </a>`,
-  },
+
   ///ABOUT PAGE
   about: {
     title: `About`,
@@ -1659,7 +1657,7 @@ const translations = {
             item_one: `The sequence value of the single input being signed`,
             item_two: `sequence`,
             item_three: `int`,
-            item_four: `8`,
+            item_four: `4`,
           },
           row_eight: {
             item_one: `The dSHA256 of all outputs, serialized`,
@@ -1921,7 +1919,7 @@ const translations = {
       paragraph_three: `This is the algorithm written by Satoshi Nakamoto that has remained an immutable core property of the bitcoin system since the beginning:`,
       list_one: `Starting with the block #1 mined in 2009, the block subsidy is 50 BTC (or 5,000,000,000 satoshis)`,
       list_two: `Every 210,000 blocks that value is cut in half.`,
-      paragraph_four: `At block height 209,999 the subsidy was 50 BTC. In the very next block at height 210,000 the subsidy was 25 BTC, and so on. After 63 "halvings" the subsidy will be one single satoshi. The last halving will drop the subsidy to zero.`,
+      paragraph_four: `At block height 209,999 the subsidy was 50 BTC. In the very next block at height 210,000 the subsidy was 25 BTC, and so on. After 32 "halvings" the subsidy will be one single satoshi. The last halving will drop the subsidy to zero.`,
       paragraph_five: `AND THAT LAST HALVING WAS YESTERDAY!`,
       paragraph_six: `Finish the implementation of the following function that accepts a block height as an argument and returns the value of the subsidy in satoshis.`,
       success: `The get_subsidy function looks great. Nice work!`,
@@ -2046,8 +2044,8 @@ const translations = {
       table_one: {
         headings: {
           item_one: `Step`,
-          item_two: `Stack`,
-          item_three: `Script Execution`,
+          item_two: `Script Execution`,
+          item_three: `Stack`,
         },
       },
       subheading_one: `Explanation`,
@@ -2556,8 +2554,6 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       heading: `Bitcoin still needs your help...`,
       paragraph_one: `Although 2139 may seem distant, Bitcoin's mission remains timeless: to create money that is fair, open, and honest. However, achieving this vision will require everyone's efforts—including yours.`,
       paragraph_two: `Your adventures have demonstrated your willingness to defend bitcoin's fundamental principles, but this is just the start of a longer journey. Now is the perfect time to turn your budding knowledge into action though meaningful contribution`,
-      boss_instructions: `If you were brought to Saving Satoshi by the <Link className="underline" href="https://learning.chaincode.com">₿OSS Challenge</Link>, here's your next clue. Using the same private key you have been playing the game with, perform an XOR operation on this hex-encoded secret message. If your result looks like gibberish, double-check your work -- the correct answer will open a door.`,
-      boss_instructions_two: `<span className="italic">Hint: your private key is also in hex format</span>`,
       paragraph_three: `Ready for more? The <Link className="underline" href="https://bitcoindevs.xyz/">Bitcoin Dev Project</Link> is here to guide future generations of open-source contributors. Becoming a present day bitcoin hero today is just one click away.`,
       paragraph_four: `We are all Satoshi.`,
     },
