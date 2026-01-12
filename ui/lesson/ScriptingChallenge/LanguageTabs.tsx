@@ -1,7 +1,10 @@
 import clsx from 'clsx'
+import { useState } from 'react'
 import { chapters } from 'content'
 import { useLang, usePathData, useTranslations } from 'hooks'
 import Icon from 'shared/Icon'
+import Button from 'shared/Button'
+import Modal from 'components/Modals/Modal'
 import { EditorLanguages, LessonView, PlainEditorLanguages } from 'types'
 import { useLessonContext, Tooltip } from 'ui'
 import { languageMeta } from './config'
@@ -26,6 +29,7 @@ export default function LanguageTabs({
   const t = useTranslations(lang)
   const isActive = activeView === LessonView.Code
   const pathData = usePathData()
+  const [showResetConfirm, setShowResetConfirm] = useState(false)
 
   const handleClick = (value) => {
     onChange(value)
@@ -117,7 +121,10 @@ export default function LanguageTabs({
             className="flex h-full w-full justify-center no-underline"
             content={<span>{t('runner.language_tabs.reset')}</span>}
           >
-            <div className="hover:cursor-pointer" onClick={() => onRefresh()}>
+            <div
+              className="hover:cursor-pointer"
+              onClick={() => setShowResetConfirm(true)}
+            >
               <Icon
                 icon="refresh"
                 className="h-full w-full object-contain p-2.5 text-white text-opacity-40"
@@ -126,6 +133,36 @@ export default function LanguageTabs({
           </Tooltip>
         </div>
       )}
+
+      <Modal
+        active={showResetConfirm}
+        onRequestClose={() => setShowResetConfirm(false)}
+      >
+        <h3 className="mb-2 text-xl font-bold">
+          {t('runner.language_tabs.reset_confirm_title')}
+        </h3>
+        <p className="mb-6 text-white/80">
+          {t('runner.language_tabs.reset_confirm_message')}
+        </p>
+        <div className="flex justify-end gap-3">
+          <Button
+            onClick={() => setShowResetConfirm(false)}
+            style="outline"
+            size="small"
+          >
+            {t('runner.language_tabs.reset_confirm_no')}
+          </Button>
+          <Button
+            onClick={() => {
+              onRefresh?.()
+              setShowResetConfirm(false)
+            }}
+            size="small"
+          >
+            {t('runner.language_tabs.reset_confirm_yes')}
+          </Button>
+        </div>
+      </Modal>
     </div>
   )
 }

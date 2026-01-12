@@ -2709,6 +2709,10 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     language_tabs: {
       locked: `Language disabled since you've started this chapter in`,
       reset: `Reset the terminal`,
+      reset_confirm_title: `Are you sure?`,
+      reset_confirm_message: `This will erase any code you have written for this exercise.`,
+      reset_confirm_yes: `Yes, reset`,
+      reset_confirm_no: `Cancel`,
     },
   },
   notfound: {
