@@ -24,16 +24,6 @@ export default function Address1({ lang }) {
   const [isLoading, setIsLoading] = useState(true)
   const [tooltipVisible, setTooltipVisible] = useState(false)
 
-  function useHoverDevice() {
-    const [canHover, setCanHover] = useState(false)
-
-    useEffect(() => {
-      const mq = window.matchMedia('(hover: hover)')
-      setCanHover(mq.matches)
-    }, [])
-
-    return canHover
-  }
 
   const handleMouseEnter = () => {
     setTooltipVisible(true)
@@ -57,7 +47,7 @@ export default function Address1({ lang }) {
     getPrevLessonData().finally(() => setIsLoading(false))
   }, [])
 
-  const canHover = useHoverDevice()
+
 
   return (
     !isLoading && (
@@ -87,7 +77,7 @@ export default function Address1({ lang }) {
               id="target-difficulty"
               question={t('chapter_four.address_one.tooltip_one.question')}
               href={t('chapter_four.address_one.tooltip_one.link')}
-              visible={canHover && tooltipVisible}
+              visible={tooltipVisible}
             />
           </a>
           .
