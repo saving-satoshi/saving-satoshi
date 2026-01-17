@@ -1,12 +1,13 @@
 import clsx from 'clsx'
 import { useState } from 'react'
-import { chapters } from 'content'
+import { chapters, lessons } from 'content'
 import { useLang, usePathData, useTranslations } from 'hooks'
 import Icon from 'shared/Icon'
 import Button from 'shared/Button'
 import Modal from 'components/Modals/Modal'
 import { EditorLanguages, LessonView, PlainEditorLanguages } from 'types'
 import { useLessonContext, Tooltip } from 'ui'
+import { themeSelector } from 'lib/themeSelector'
 import { languageMeta } from './config'
 
 export default function LanguageTabs({
@@ -30,6 +31,13 @@ export default function LanguageTabs({
   const isActive = activeView === LessonView.Code
   const pathData = usePathData()
   const [showResetConfirm, setShowResetConfirm] = useState(false)
+
+  const theme = themeSelector(
+    lessons,
+    pathData.lessonId,
+    chapters,
+    pathData.chapterId
+  )
 
   const handleClick = (value) => {
     onChange(value)
@@ -137,6 +145,7 @@ export default function LanguageTabs({
       <Modal
         active={showResetConfirm}
         onRequestClose={() => setShowResetConfirm(false)}
+        theme={theme}
       >
         <h3 className="mb-2 text-xl font-bold">
           {t('runner.language_tabs.reset_confirm_title')}
