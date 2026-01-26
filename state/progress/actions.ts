@@ -2,6 +2,7 @@ import { getProgressLocal } from 'api/local'
 import { getProgress } from 'api/progress'
 import { atom } from 'jotai'
 import { allLessonOrder } from 'lib/progess'
+import { GuestProgressNormalizer } from 'state/guestProgress'
 import { CourseProgress } from 'types'
 import { accountAtom, isAuthLoadingAtom, presentPageAtom } from '../state'
 import {
@@ -17,6 +18,9 @@ import {
 } from './helpers'
 import { currentLessonComputedAtom } from './selectors'
 import { mergeProgressState } from './utils'
+
+const normalizeLocalProgress = (progress: CourseProgress): CourseProgress =>
+  new GuestProgressNormalizer(progress, defaultProgressState).normalize()
 
 /**
  * Completes the computed current lesson and advances to the next one.
@@ -81,16 +85,20 @@ export const loadProgressAtom = atom(null, async (get, set) => {
   // Turn on loading state for UI.
   set(isLoadingProgressAtom, true)
 
-  let progress: CourseProgress | null = null
+  let progress: CourseProgress | null = defaultProgressState
 
   if (account) {
     // Signed-in users try server progress first.
     progress = await getProgress()
   }
 
-  // Fall back to local storage if no backend progress is available.
-  if (!progress) {
-    progress = await getProgressLocal()
+  // Fall back to local storage if no backend progress is available. Local
+  // progress is client-controlled, so normalize it before it can unlock lessons.
+  if (!progress || !account) {
+    const localProgress = await getProgressLocal()
+    progress = localProgress
+      ? normalizeLocalProgress(localProgress)
+      : defaultProgressState
   }
 
   // Use defaults if neither source returned progress.
