@@ -1698,7 +1698,7 @@ const translations = {
         title: `Putting it all together`,
         heading: `Populate the Witness`,
         nav_title: `Populate the Witness`,
-        paragraph_one: `Finish the method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> that calls our step 7 method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.`,
+        paragraph_one: `Finish the method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index, priv, pub, sighash)</span> that calls our step 7 method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.`,
         paragraph_two: `Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we'll always use the byte 0x01 for this indicating "SIGHASH ALL".`,
         paragraph_three: `Once we have that signature blob we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.`,
         paragraph_four: `The witness stack object can then be appended to the witnesses array of the transaction object.`,
