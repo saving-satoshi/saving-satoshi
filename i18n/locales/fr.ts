@@ -1914,7 +1914,7 @@ const translations = {
         bullet_one:
           'Mika 3000 gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
         bullet_two:
-          'You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
+          'Vous récupérez 61 000 000 à votre adresse (préchargée dans le code)',
         success: "You've done it! You've built a transaction!",
       },
       hard: {
@@ -2060,7 +2060,7 @@ const translations = {
         bullet_one:
           'Mika 3000 gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
         bullet_two:
-          'You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
+          'Vous récupérez 61 000 000 à votre adresse (préchargée dans le code)',
         success: "You've done it! You've built a transaction!",
       },
     },
@@ -2688,13 +2688,13 @@ const translations = {
       proposal_three: {
         tip: "Let's think about combining a conditional with some timelock to separate Vanderpoole's signature from yours.",
         spoiler: `Script Hint: The script allows spending under two conditions: before block 6930300 or after. Before the block, you can spend; after the block, Vanderpoole can.
-  
+
   Stack Hint: To spend before the specified block, you use your signature. After the block, Vanderpoole uses his signature and needs to provide a 0 because the script has moved past the locktime verification.`,
       },
       proposal_four: {
         tip: 'The preimage will be revealed after an unknown amount of time so no need for using timelocks.',
         spoiler: `Script Hint: The script allows spending under two conditions: before the secret has been revealed or after. Before the block, Vanderpoole can spend; after the block, you both can.
-  
+
   Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signature. After the secret is revealed, you use your signature, a hash of the secret, and provide a 0 because the script has moved past the unrevealed verification.`,
       },
     },

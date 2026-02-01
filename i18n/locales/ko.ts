@@ -1581,7 +1581,7 @@ const translations = {
           },
         },
         bullet_one: `미카 3000은 100,000,000 사토시를 주소 bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj로 받습니다.`,
-        bullet_two: `당신은 61,000,000 사토시를 자신의 주소 bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs로 돌려받습니다.`,
+        bullet_two: `당신은 61,000,000 사토시를 자신의 주소(코드에 미리 로드되어 있음)로 돌려받습니다.`,
         success: `해냈어요! 트랜잭션을 완성했습니다!`,
       },
       hard: {
@@ -1703,7 +1703,7 @@ const translations = {
         paragraph_three: `수수료(fee) 까먹지 마세요! 채굴자들이 블록에 포함시켜주도록 하려면, 잔돈에서 약간을 수수료로 내야 해요. 예를 들어, 원래 61,000,000 사토시였던 잔돈을 60,999,000 사토시로 줄이면 됩니다.`,
         paragraph_four: `모든 준비가 끝났어요! 마지막엔 <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> 결과를 반환하면 돼요. 이제 이건 유효하게 서명된 비트코인 트랜잭션이며, 네트워크에 전송해 미카 3000에게 필요한 금액을 보낼 수 있습니다.`,
         bullet_one: `미카 3000은 1 BTC(=100,000,000 사토시)를 주소 bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj로 받아요.`,
-        bullet_two: `당신은 61,000,000 사토시를 자신의 주소 bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs로 돌려 받습니다.`,
+        bullet_two: `당신은 61,000,000 사토시를 자신의 주소(코드에 미리 로드되어 있음)로 돌려 받습니다.`,
         success: `해냈습니다! 드디어 트랜잭션을 완성했어요!`,
       },
     },

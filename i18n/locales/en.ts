@@ -1593,7 +1593,7 @@ const translations = {
           },
         },
         bullet_one: `Mika 3000 gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj`,
-        bullet_two: `You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs`,
+        bullet_two: `You get 61,000,000 back to your address (pre-loaded in the code)`,
         success: `You've done it! You've built a transaction!`,
       },
       hard: {
@@ -1715,7 +1715,7 @@ const translations = {
         paragraph_three: `But wait! We need to include a "fee". We'll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let's reduce our change from 61,000,000 to 60,999,000 satoshis.`,
         paragraph_four: `Finally our work is done. Your script should end by returning the result of the transaction <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method. This is a valid signed bitcoin transaction and we can broadcast it to the network to send Mika 3000 the money he needs!`,
         bullet_one: `Mika 3000 gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj`,
-        bullet_two: `You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs`,
+        bullet_two: `You get 61,000,000 back to your address (pre-loaded in the code)`,
         success: `You've done it! You've built a transaction!`,
       },
     },
