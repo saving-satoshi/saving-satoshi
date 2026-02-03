@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function PutItTogetherTwoHard({ lang }) {
   const t = useTranslations(lang)
-  const { isLoading, detectedLanguage } = usePrevLessonLanguage('CH6INO4')
+  const { isLoading, detectedLanguage } = usePrevLessonLanguage('CH6PUT1_HARD')
   const defaultLanguage = getLanguageString(detectedLanguage)
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
