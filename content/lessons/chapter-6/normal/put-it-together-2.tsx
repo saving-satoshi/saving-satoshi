@@ -240,15 +240,14 @@ ${combinedCode.slice(0, -2)}
   }
 }`,
     validate: async (answer: string) => {
-      if (answer) {
-        if (answer === 'true') {
-          return [true, t('chapter_six.put_it_together_two.normal.success')]
-        } else {
-          return [false, 'recheck your methods']
-        }
-      } else {
-        return [false, "can't find a return in both of the methods"]
+      const success = answer
+        .split('\n')
+        .map((s) => s.trim().toLowerCase())
+        .includes('true')
+      if (success) {
+        return [true, t('chapter_six.put_it_together_two.normal.success')]
       }
+      return [false, 'recheck your methods']
     },
   }
 
@@ -390,15 +389,14 @@ ${combinedCode}
         # YOUR CODE HERE
 `,
     validate: async (answer) => {
-      if (answer) {
-        if (answer === 'true') {
-          return [true, t('chapter_six.put_it_together_two.normal.success')]
-        } else {
-          return [false, 'recheck your methods']
-        }
-      } else {
-        return [false, "can't find a return in both of the methods"]
+      const success = answer
+        .split('\n')
+        .map((s) => s.trim().toLowerCase())
+        .includes('true')
+      if (success) {
+        return [true, t('chapter_six.put_it_together_two.normal.success')]
       }
+      return [false, 'recheck your methods']
     },
   }
 

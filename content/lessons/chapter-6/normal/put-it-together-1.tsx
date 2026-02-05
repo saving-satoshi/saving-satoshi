@@ -178,13 +178,14 @@ class Transaction {
 }
 `,
     validate: async (answer: string) => {
-      if (answer) {
-        if (answer === 'true') {
-          return [true, t('chapter_six.put_it_together_one.normal.success')]
-        }
-        return [false, 'Not a valid hex value']
+      const success = answer
+        .split('\n')
+        .map((s) => s.trim().toLowerCase())
+        .includes('true')
+      if (success) {
+        return [true, t('chapter_six.put_it_together_one.normal.success')]
       }
-      return [false, 'Please return a value']
+      return [false, 'Not a valid hex value']
     },
   }
 
@@ -339,13 +340,14 @@ class Transaction:
 
 `,
     validate: async (answer: string) => {
-      if (answer) {
-        if (answer === 'true') {
-          return [true, t('chapter_six.put_it_together_one.normal.success')]
-        }
-        return [false, 'Not a valid hex value']
+      const success = answer
+        .split('\n')
+        .map((s) => s.trim().toLowerCase())
+        .includes('true')
+      if (success) {
+        return [true, t('chapter_six.put_it_together_one.normal.success')]
       }
-      return [false, 'Return a value']
+      return [false, 'Not a valid hex value']
     },
   }
 

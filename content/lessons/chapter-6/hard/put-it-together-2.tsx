@@ -144,13 +144,14 @@ console.log(tx_dluitpjd.serialize().toString('hex')==='020000000001018e74531c451
 }
 `,
     validate: async (answer: string) => {
-      if (answer) {
-        if (answer === 'true') {
-          return [true, t('chapter_six.put_it_together_two.hard.success')]
-        }
-        return [false, 'Not a valid hex value']
+      const success = answer
+        .split('\n')
+        .map((s) => s.trim().toLowerCase())
+        .includes('true')
+      if (success) {
+        return [true, t('chapter_six.put_it_together_two.hard.success')]
       }
-      return [false, 'Please return a value']
+      return [false, 'Not a valid hex value']
     },
   }
 
@@ -272,13 +273,14 @@ class Transaction:
         # YOUR CODE HERE
 `,
     validate: async (answer: string) => {
-      if (answer) {
-        if (answer === 'true') {
-          return [true, t('chapter_six.put_it_together_two.hard.success')]
-        }
-        return [false, 'Not a valid hex value']
+      const success = answer
+        .split('\n')
+        .map((s) => s.trim().toLowerCase())
+        .includes('true')
+      if (success) {
+        return [true, t('chapter_six.put_it_together_two.hard.success')]
       }
-      return [false, 'Return a value']
+      return [false, 'Not a valid hex value']
     },
   }
 

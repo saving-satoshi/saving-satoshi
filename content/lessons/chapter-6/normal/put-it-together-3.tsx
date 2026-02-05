@@ -164,10 +164,10 @@ class Input:
         r += pack("<I", self.sequence)
         return r
 `) +
-            prevData['CH6INO5'] +
-            '\n' +
-            prevData['CH6PUT2_NORMAL'] +
-            '\n'
+          prevData['CH6INO5'] +
+          '\n' +
+          prevData['CH6PUT2_NORMAL'] +
+          '\n'
         )
       )
     }
@@ -204,12 +204,22 @@ tx.sign_input(0, priv, compressed_pub);
 
 console.log(tx.serialize().toString('hex'));`,
     validate: async (answer: string) => {
+      const txHex = answer
+        .split('\n')
+        .map((s) => s.trim())
+        .find((s) => s.startsWith('02000000') && s.length > 250)
+        ?.toLowerCase()
+
+      if (!txHex) {
+        return [false, 'Could not find a valid transaction hex in the output.']
+      }
+
       if (
-        answer.slice(0, 248) !==
+        txHex.slice(0, 248) !==
         '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd158c5a20300000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
       ) {
         if (
-          answer.slice(0, 248) ===
+          txHex.slice(0, 248) ===
           '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd140c9a20300000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
         ) {
           return [
@@ -219,14 +229,14 @@ console.log(tx.serialize().toString('hex'));`,
         }
         return [false, 'Nope! Try again.']
       }
-      if (answer.slice(250, 252) !== '30') {
+      if (txHex.slice(250, 252) !== '30') {
         return [false, 'Nope! Try again..']
       }
-      const size = (parseInt(answer.slice(248, 250), 16) - 1) * 2
-      if (answer.slice(250 + size, 250 + size + 4) !== '0121') {
+      const size = (parseInt(txHex.slice(248, 250), 16) - 1) * 2
+      if (txHex.slice(250 + size, 250 + size + 4) !== '0121') {
         return [false, 'Nope! Try again...']
       }
-      if (answer.slice(-8) !== '00000000') {
+      if (txHex.slice(-8) !== '00000000') {
         return [false, 'Nope! Try again....']
       }
       return [true, t('chapter_six.put_it_together_three.normal.success')]
@@ -263,12 +273,22 @@ tx.sign_input(0, priv, compressed_pub)
 
 print(tx.serialize().hex())`,
     validate: async (answer: string) => {
+      const txHex = answer
+        .split('\n')
+        .map((s) => s.trim())
+        .find((s) => s.startsWith('02000000') && s.length > 250)
+        ?.toLowerCase()
+
+      if (!txHex) {
+        return [false, 'Could not find a valid transaction hex in the output.']
+      }
+
       if (
-        answer.slice(0, 248) !==
+        txHex.slice(0, 248) !==
         '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd158c5a20300000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
       ) {
         if (
-          answer.slice(0, 248) ===
+          txHex.slice(0, 248) ===
           '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd140c9a20300000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
         ) {
           return [
@@ -278,14 +298,14 @@ print(tx.serialize().hex())`,
         }
         return [false, 'Nope! Try again.']
       }
-      if (answer.slice(250, 252) !== '30') {
+      if (txHex.slice(250, 252) !== '30') {
         return [false, 'Nope! Try again.']
       }
-      const size = (parseInt(answer.slice(248, 250), 16) - 1) * 2
-      if (answer.slice(250 + size, 250 + size + 4) !== '0121') {
+      const size = (parseInt(txHex.slice(248, 250), 16) - 1) * 2
+      if (txHex.slice(250 + size, 250 + size + 4) !== '0121') {
         return [false, 'Nope! Try again.']
       }
-      if (answer.slice(-8) !== '00000000') {
+      if (txHex.slice(-8) !== '00000000') {
         return [false, 'Nope! Try again.']
       }
       return [true, t('chapter_six.put_it_together_three.normal.success')]
