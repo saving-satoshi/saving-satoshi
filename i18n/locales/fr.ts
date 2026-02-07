@@ -1153,7 +1153,7 @@ const translations = {
       nav_title: 'Prepare the signature',
       heading: 'Prepare Vanderpoole’s signature for verification',
       paragraph_one:
-        'The bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.',
+        'The bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in the "Decode the signature" lesson.',
       javascript: {
         paragraph_two: {
           post_link:
@@ -1461,7 +1461,7 @@ const translations = {
         paragraph_three:
           'Eventually we will pass in the txid and vout values you got above from listunspent. Note that hashes in bitcoin are little-endian, which means that you will need to reverse the byte order of the txid string!',
         paragraph_four:
-          "The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6.",
+          'The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won\'t need them until the "Build the transaction digest" lesson.',
         paragraph_five:
           'We also need a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method that returns a byte array according to the specification:',
         heading_two: 'Outpoint',
@@ -1600,9 +1600,9 @@ const translations = {
         list_heading: 'Some notes:',
         list_one: '"Double SHA-256" or dSHA256 = sha256(sha256(data))',
         list_two:
-          'value is the amount of the satoshis in the output being spent from. We added it to our Input class back in step 2, and just saved it there inside the class until now.',
+          'value is the amount of the satoshis in the output being spent from. We added it to our Input class back in the "The input class" lesson, and just saved it there inside the class until now.',
         list_three:
-          'scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in step 2.',
+          'scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in the "The input class" lesson.',
         list_four: 'all integers are encoded as little-endian!',
         paragraph_three:
           "We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:",
@@ -1928,9 +1928,9 @@ const translations = {
         list_heading: 'Some notes:',
         list_one: '"Double SHA-256" or dSHA256 = sha256(sha256(data))',
         list_two:
-          'value is the amount of the satoshis in the output being spent from. We added it to our Input class back in step 2, and just saved it there inside the class until now.',
+          'value is the amount of the satoshis in the output being spent from. We added it to our Input class back in the "Build the input class" lesson, and just saved it there inside the class until now.',
         list_three:
-          'scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in step 2.',
+          'scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in the "Build the input class" lesson.',
         paragraph_three:
           "We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash address, your scriptcode would be:",
         paragraph_four: '...which decodes to the following bitcoin script.',
@@ -2020,7 +2020,7 @@ const translations = {
         title: 'Putting it all together',
         heading: 'Signing!',
         nav_title: 'Sign the transaction',
-        paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index: int, key: int)</span> to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest()</span> method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
+        paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index: int, key: int)</span> to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest()</span> method from the "Build the transaction digest" lesson, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
         paragraph_two:
           'See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).',
         paragraph_three:
@@ -2034,7 +2034,7 @@ const translations = {
         heading: 'Populate the Witness',
         nav_title: 'Populate the Witness',
         paragraph_one:
-          'Finish the method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> that calls our step 7 method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.',
+          'Finish the method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> that calls our method from the "Sign the transaction" lesson <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.',
         paragraph_two:
           'Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we’ll always use the byte 0x01 for this indicating "SIGHASH ALL".',
         paragraph_three:
@@ -2052,7 +2052,7 @@ const translations = {
         paragraph_one:
           'We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!',
         paragraph_two:
-          'Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in step 1) and two outputs:',
+          'Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in the "The unspent UTXO" lesson) and two outputs:',
         paragraph_three:
           'But wait! We need to include a "fee". We\'ll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let\'s reduce our change from 61,000,000 to 60,999,000 satoshis.',
         paragraph_four:
