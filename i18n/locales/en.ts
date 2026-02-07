@@ -924,7 +924,7 @@ const translations = {
         pre_link: `Then we will`,
         highlighted: `double SHA-256 hash`,
         question: `Why do we double hash in bitcoin?`,
-        post_link: `that blob of data, and convert that hash into an integer. Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">encode_message()</span>. It should return a 32-byte hex value.`,
+        post_link: `that blob of data. Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">encode_message()</span>. It should return a 32-byte hex value.`,
       },
       success: `Nicely Done`,
     },
