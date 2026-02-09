@@ -176,6 +176,19 @@ export default function ScriptingChallenge({
     const base64TrimmedCode = new Base64String(trimmedCode)
 
     if (success) {
+      if (account && saveData) {
+        // Save the code to the backend
+        const saveResult = await setData(account.id, lessonKey, {
+          code: base64TrimmedCode,
+          answer: data.answer,
+        })
+
+        // If the code was not saved, return an error
+        if (!saveResult.ok) {
+          return [false, saveResult.message]
+        }
+      }
+
       if (
         typeof success === 'boolean' ||
         success === 3 ||
@@ -183,13 +196,6 @@ export default function ScriptingChallenge({
         success === 5
       ) {
         setChallengeSuccess(true)
-      }
-      if (account) {
-        saveData &&
-          setData(account.id, lessonKey, {
-            code: base64TrimmedCode,
-            answer: data.answer,
-          })
       }
     }
 
