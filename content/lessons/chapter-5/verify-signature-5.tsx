@@ -35,14 +35,14 @@ console.log("KILL")
 const GE = secp256k1.GE
 const FE = secp256k1.FE
 const ORDER = secp256k1.ORDER
-// Message digest from step 5:
+// Message digest from the "Hash the message" lesson:
 const msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19n;
 
-// Signature values from step 6:
+// Signature values from the "Decode the signature" lesson:
 const sig_r = 0x4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41n;
 const sig_s = 0x181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09n;
 
-// Public key values from step 7:
+// Public key values from the "Decode the public key" lesson:
 const pubkey_x = 0x11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cn;
 const pubkey_y = 0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3n;
 
@@ -131,14 +131,14 @@ print("KILL")
 GE = SECP256K1.GE
 G = SECP256K1.G
 
-# Message digest from step 5:
+# Message digest from the "Hash the message" lesson:
 msg = 0x7a05c6145f10101e9d6325494245adf1297d80f8f38d4d576d57cdba220bcb19
 
-# Signature values from step 6:
+# Signature values from the "Decode the signature" lesson:
 sig_r = 0x4e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd41
 sig_s = 0x181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d09
 
-# Public key values from step 7:
+# Public key values from the "Decode the public key" lesson:
 pubkey_x = 0x11db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5c
 pubkey_y = 0xb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3
 

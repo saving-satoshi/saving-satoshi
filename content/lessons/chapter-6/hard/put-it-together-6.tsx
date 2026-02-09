@@ -87,7 +87,7 @@ console.log("KILL")`,
       },
     ],
     defaultCode: `${combinedCode}
-// UTXO from chapter 6 step 1 (mining pool payout)
+// UTXO from the "The unspent UTXO" lesson (mining pool payout)
 const txid = '8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e';
 const vout = 1;
 const value = 161000000;
@@ -98,7 +98,7 @@ const compressed_pub = Buffer.from('038cd0455a2719bf72dc1414ef8f1675cd09dfd24442
 const pubkey_hash = 'b234aee5ee74d7615c075b4fe81fd8ace54137f2';
 const addr = 'bc1qkg62ae0wwntkzhq8td87s87c4nj5zdlj2ga8j7';
 
-// Explained in step 6
+// Explained in the "Build the transaction digest" lesson
 const scriptcode = '1976a914' + pubkey_hash + '88ac';
 
 const tx = new Transaction();
@@ -140,7 +140,7 @@ print("KILL")`,
       args: ['private_key'],
     },
     defaultCode: `${combinedCode}
-# UTXO from chapter 6 step 1 (mining pool payout)
+# UTXO from the "The unspent UTXO" lesson (mining pool payout)
 txid = "8a081631c920636ed71f9de5ca24cb9da316c2653f4dc87c9a1616451c53748e"
 vout = 1
 value = 161000000
@@ -151,7 +151,7 @@ compressed_pub = bytes.fromhex("038cd0455a2719bf72dc1414ef8f1675cd09dfd24442cb32
 pubkey_hash = "b234aee5ee74d7615c075b4fe81fd8ace54137f2"
 addr = "bc1qkg62ae0wwntkzhq8td87s87c4nj5zdlj2ga8j7"
 
-# Explained in step 6
+# Explained in the "Build the transaction digest" lesson
 scriptcode = "1976a914" + pubkey_hash + "88ac"
 
 tx = Transaction()
