@@ -2732,8 +2732,7 @@ Dica da pilha: Para gastar antes do bloco especificado, você usa sua assinatura
       },
       proposal_four: {
         tip: 'A pré-imagem será revelada após um período de tempo desconhecido, portanto, não há necessidade de usar relógios de ponto.',
-        spoiler: `Dica de script: O script permite gastar em duas condições: antes ou depois de o segredo ser revelado. Antes do bloqueio, Vanderpoole pode gastar; depois do bloqueio, vocês dois podem.
-
+        spoiler: `Dica de script: O script permite gastar em duas condições: antes ou depois de o segredo ser revelado. Antes do segredo, Vanderpoole pode gastar; depois do segredo, vocês dois podem.
 Dica da pilha: Para gastar antes de o segredo ser revelado, Vanderpoole usa sua assinatura. Depois que o segredo é revelado, você usa sua assinatura, um hash do segredo e fornece um 0 porque o script passou da verificação não revelada.`,
       },
     },
