@@ -150,13 +150,28 @@ const output_uhmhvgcw = Output.from_options(addr_pqvejvea, valueTwo_jhcermcr);
 const tx_eagmcued = new Transaction();
 tx_eagmcued.inputs.push(input_bauoevbs);
 tx_eagmcued.outputs.push(output_uhmhvgcw);
-const [r, s] = tx_eagmcued.compute_input_signature(0, priv_dsljfohd);
+tx_eagmcued.sign_input(0, priv_dsljfohd, compressed_pub_agfwuebb);
 const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
+const witness_ogyehdag = tx_eagmcued.witnesses[0];
+const witness_shape_valid_ayqszxcg = !!(
+  witness_ogyehdag &&
+  witness_ogyehdag.items.length === 2 &&
+  witness_ogyehdag.items[0].length > 0 &&
+  witness_ogyehdag.items[0][witness_ogyehdag.items[0].length - 1] === 0x01 &&
+  witness_ogyehdag.items[1].equals(compressed_pub_agfwuebb)
+);
+const witness_sig_valid_fjdkslae = witness_shape_valid_ayqszxcg &&
+  ec.keyFromPublic(witness_ogyehdag.items[1]).verify(
+    tx_eagmcued.digest(0),
+    witness_ogyehdag.items[0].slice(0, -1)
+  );
+const [r, s] = tx_eagmcued.compute_input_signature(0, priv_dsljfohd);
 const private_key_faxwmufa = ec.keyFromPrivate(priv_dsljfohd.toString(16), 'hex');
 const hashed_message_bytes_ahuhfxmw = tx_eagmcued.digest(0);
 const signature_weiucmwa = {r: r.toString(16), s: s.toString(16)};
-console.log(private_key_faxwmufa.verify(hashed_message_bytes_ahuhfxmw, signature_weiucmwa) && 'true')
+const compute_sig_valid_gtwklens = private_key_faxwmufa.verify(hashed_message_bytes_ahuhfxmw, signature_weiucmwa);
+console.log(compute_sig_valid_gtwklens && witness_shape_valid_ayqszxcg && witness_sig_valid_fjdkslae && 'true')
 console.log("KILL")`,
     rangeToNotCollapse: [
       {
@@ -333,6 +348,7 @@ output_uhmhvgcw = Output.from_options(addr_pqvejvea, valueTwo_jhcermcr)
 tx_eagmcued = Transaction()
 tx_eagmcued.inputs.append(input_bauoevbs)
 tx_eagmcued.outputs.append(output_uhmhvgcw)
+tx_eagmcued.sign_input(0, priv_dsljfohd, compressed_pub_agfwuebb)
 (r, s) = tx_eagmcued.compute_input_signature(0, priv_dsljfohd)
 import ecdsa
 from ecdsa import VerifyingKey, SECP256k1
@@ -340,7 +356,11 @@ sig_string_oiadhald = f'{r:064x}{s:064x}'
 sig_bytes_ayeqncas = bytes.fromhex(sig_string_oiadhald)
 hashed_message_bytes_ywienvsd = tx_eagmcued.digest(0)
 verifying_key_dojssdfo = VerifyingKey.from_string(compressed_pub_agfwuebb, curve=SECP256k1)
-print(verifying_key_dojssdfo.verify_digest(sig_bytes_ayeqncas, hashed_message_bytes_ywienvsd) and 'true')
+witness_jqkehfas = tx_eagmcued.witnesses[0] if len(tx_eagmcued.witnesses) > 0 else None
+witness_shape_valid_idjiasfg = witness_jqkehfas is not None and len(witness_jqkehfas.items) == 2 and len(witness_jqkehfas.items[0]) > 0 and witness_jqkehfas.items[0][-1] == 1 and witness_jqkehfas.items[1] == compressed_pub_agfwuebb
+witness_sig_valid_ahdusjwe = witness_shape_valid_idjiasfg and VerifyingKey.from_string(witness_jqkehfas.items[1], curve=SECP256k1).verify_digest(witness_jqkehfas.items[0][:-1], hashed_message_bytes_ywienvsd, ecdsa.util.sigdecode_der)
+compute_sig_valid_qwfgieah = verifying_key_dojssdfo.verify_digest(sig_bytes_ayeqncas, hashed_message_bytes_ywienvsd)
+print(compute_sig_valid_qwfgieah and witness_shape_valid_idjiasfg and witness_sig_valid_ahdusjwe and 'true')
 print("KILL")`,
     rangeToNotCollapse: [
       {
