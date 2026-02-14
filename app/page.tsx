@@ -11,8 +11,8 @@ export const metadata = {
 export default function Home() {
   return (
     <div className="flex h-screen w-screen flex-col">
-      <Umami />{' '}
-      <div className="bg-gradient-to-b from-[#00000040] to-transparent pb-28">
+      <Umami />
+      <div className="bg-gradient-to-b from-[#00000040] to-transparent pb-28 pt-[70px]">
         <Topbar />
       </div>
       <Hero />

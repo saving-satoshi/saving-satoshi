@@ -1439,7 +1439,7 @@ const translations = {
         paragraph_six: `비트코인 프로토콜은 서명 알고리즘에서 한 가지를 더 요구합니다. 바로, <span className="italic">s</span> 값이 '낮은 값'이어야 한다는 것입니다. 여기서 '낮다'는 건 곡선의 순서를 2로 나눈 값보다 작다는 뜻이에요. 이 조건을 <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">compute_input_signature()</span> 메서드에 추가해보세요.`,
         paragraph_seven: `더 자세한 내용은 <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>을 참고하세요.`,
         heading_three: `3단계`,
-        paragraph_eight: `<span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, key)</span> 메서드를 완성해보세요. 이 메서드는 내부에서 <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>를 를 호출해야 합니다. 반환된 <span className="italic">r</span>과 <span className="italic">s</span>값은 DER이라는 형식으로 인코딩되어야 합니다. 이 DER 인코딩 기능은 우리가 이미 구현해두었습니다.`,
+        paragraph_eight: `<span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1">sign_input(index, priv, pub, sighash)</span> 메서드를 완성해보세요. 이 메서드는 내부에서 <span className="text-green p-1 text-base font-mono bg-[#0000004D] m-1"> compute_input_signature(index, key)</span>를 를 호출해야 합니다. 반환된 <span className="italic">r</span>과 <span className="italic">s</span>값은 DER이라는 형식으로 인코딩되어야 합니다. 이 DER 인코딩 기능은 우리가 이미 구현해두었습니다.`,
         heading_four: `4단계`,
         paragraph_nine: `비트코인에서는 DER 서명의 끝에 추가로 1바이트가 더 붙어야 합니다. 이 바이트는 '서명 해시 타입(sighash type)'을 나타냅니다. 지금은 항상 <span className="p-1 text-base font-mono bg-[#0000004D] m-1">0x01</span>을 사용하여 "SIGHASH ALL"을 의미하도록 합니다.`,
         heading_five: `5단계`,
@@ -1645,7 +1645,7 @@ const translations = {
             item_one: `The sequence value of the single input being signed`,
             item_two: `sequence`,
             item_three: `int`,
-            item_four: `8`,
+            item_four: `4`,
           },
           row_eight: {
             item_one: `The dSHA256 of all outputs, serialized`,
@@ -1907,7 +1907,7 @@ const translations = {
       paragraph_three: `이건 사토시 나카모토가 설계한 알고리즘입니다. 비트코인 시스템이 시작된 이래로 단 한 번도 바뀌지 않은 핵심 규칙입니다:`,
       list_one: `2009년에 생성된 첫 번째 블록(블록 #1)부터, 보조금은 50 BTC (또는 5,000,000,000 사토시)였습니다.`,
       list_two: `그리고 210,000 블록마다 보조금이 절반으로 줄어듭니다.`,
-      paragraph_four: `예를 들어 블록 높이 209,999에서는 보조금이 50 BTC였고, 바로 다음 블록인 210,000에서는 25 BTC로 줄었습니다. 이런 방식으로 총 63번의 '반감기(halving)'를 거치면 마지막에는 보조금이 단 1사토시가 되고, 마지막 반감기 이후에는 완전히 0이 됩니다.`,
+      paragraph_four: `예를 들어 블록 높이 209,999에서는 보조금이 50 BTC였고, 바로 다음 블록인 210,000에서는 25 BTC로 줄었습니다. 이런 방식으로 총 32번의 '반감기(halving)'를 거치면 마지막에는 보조금이 단 1사토시가 되고, 마지막 반감기 이후에는 완전히 0이 됩니다.`,
       paragraph_five: `그리고 그 마지막 반감기가 바로 어제였습니다!`,
       paragraph_six: `다음 함수를 구현해보세요. 이 함수는 블록 높이를 인자로 받아, 해당 블록의 보조금 값을 사토시 단위로 반환해야 합니다.`,
       success: `get_subsidy 함수가 완벽합니다! 정말 잘하셨습니다!`,
@@ -2216,9 +2216,9 @@ const translations = {
       },
       proposal_three: {
         tip: `조건문과 타임락을 결합해서 반더풀의 서명과 당신의 서명을 분리해보는 건 어떨까요?`,
-        spoiler: `스크립트 힌트: 이 스크립트는 두 가지 조건 중 하나를 만족하면 코인을 쓸 수 있도록 합니다. 블록 높이 6930300 이전이라면 반더풀이 지출할 수 있고, 이후라면 당신이 지출할 수 있습니다.
+        spoiler: `스크립트 힌트: 이 스크립트는 두 가지 조건 중 하나를 만족하면 코인을 쓸 수 있도록 합니다. 블록 높이 6930300 이전이라면 당신이 지출할 수 있고, 이후라면 반더풀이 지출할 수 있습니다.
   
-  스택 힌트: 지정된 블록 이전에 지출하려면 반더풀의 서명이 필요합니다. 이후라면 당신의 서명을 사용하면 됩니다. 이 경우, 스크립트는 이미 락타임 검증을 통과했으므로 스택에 0을 함께 넣어야 합니다.`,
+  스택 힌트: 지정된 블록 이전에 지출하려면 당신의 서명이 필요합니다. 이후라면 반더풀의 서명을 사용하고, 스크립트가 이미 락타임 검증을 통과했으므로 스택에 0을 함께 넣어야 합니다.`,
       },
       proposal_four: {
         tip: `프리이미지 공개 시점을 알 수 없기 때문에 타임락은 필요하지 않습니다.`,

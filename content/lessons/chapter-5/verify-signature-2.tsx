@@ -44,7 +44,7 @@ console.log("KILL")
       name: 'msg_to_integer',
       args: [],
     },
-    defaultCode: `const {Hash} = require('crypto');
+    defaultCode: `const crypto = require('crypto');
 
 function msg_to_integer(msg) {
   // Given a hex string to sign, convert that string to a Buffer of bytes,

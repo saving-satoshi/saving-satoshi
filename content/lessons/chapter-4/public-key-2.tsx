@@ -1,8 +1,8 @@
 'use client'
-
+import dynamic from 'next/dynamic'
 import { useMediaQuery, useTranslations } from 'hooks'
 import { HolocatQuestion, TextImage } from 'ui'
-import Lottie from 'react-lottie'
+const Lottie = dynamic<any>(() => import('react-lottie'), { ssr: false })
 import Animation1 from 'public/assets/animations/Animation1.json'
 import focusellipse from 'public/assets/images/focus-ellipse.png'
 import Circle from 'shared/icons/Circle'

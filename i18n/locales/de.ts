@@ -706,9 +706,20 @@ const translations = {
     public_key_three: {
       title: 'Öffentlicher Schlüssel',
       paragraph_one:
-        'Um einen öffentlichen Schlüssel aus einem privaten Schlüssel abzuleiten, führen wir eine elliptische Kurvenoperation wiederholt mit dem Generatorpunkt durch (<Link href="public-key-3/help" className="underline">Finde heraus weshalb</Link>). Der Generatorpunkt ist ein bestimmter Punkt auf der Kurve. Sein Wert ist Teil des secp256k1-Standards und ist immer gleich:',
+        'Um einen öffentlichen Schlüssel aus einem privaten Schlüssel abzuleiten, führen wir eine elliptische Kurvenoperation wiederholt mit dem Generatorpunkt durch (' +
+        '<a href="https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520is%2520the%2520generator%2520point%2520repeatedly%2520used%2520to%2520derive%2520a%2520public%2520key%2520from%2520a%2520private%2520key%2520in%2520secp256k1%253F" ' +
+        'target="_blank" rel="noopener noreferrer" class="underline">' +
+        'Finde heraus weshalb' +
+        '</a>' +
+        '). Der Generatorpunkt ist ein bestimmter Punkt auf der Kurve. Sein Wert ist Teil des secp256k1-Standards und ist immer gleich:',
       paragraph_two:
-        'Die Operation der elliptischen Kurve ähnelt der Addition und daher ähnelt ihre Wiederholung der Multiplikation. Wir nutzen das * Symbol um den Algorithmus zu beschreiben (<Link href="public-key-3/help" className="underline">lerne mehr</Link>), bei dem `k` der private Schlüssel und `P` der korrespondierende öffentliche Schlüssel ist:',
+        'Die Operation der elliptischen Kurve ähnelt der Addition und daher ähnelt ihre Wiederholung der Multiplikation. Wir nutzen das * Symbol um den Algorithmus zu beschreiben (' +
+        '<a href="https://chat.bitcoinsearch.xyz/?author=holocat&question=How%2520does%2520elliptic%2520curve%2520scalar%2520multiplication%2520work%253F" ' +
+        'target="_blank" rel="noopener noreferrer" class="underline">' +
+        'lerne mehr' +
+        '</a>' +
+        '), bei dem `k` der private Schlüssel und `P` der korrespondierende öffentliche Schlüssel ist:',
+
       paragraph_three:
         'Vervollständige die Funktion, die einen privaten Schlüssel als hexkodierte Zeichenkette akzeptiert und den entsprechenden öffentlichen Schlüssel als GE-Objekt (Group Element) zurückgibt.',
       success:

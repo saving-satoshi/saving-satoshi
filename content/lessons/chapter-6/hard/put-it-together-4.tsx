@@ -2,11 +2,9 @@
 
 import { ScriptingChallenge, LessonInfo, Title } from 'ui'
 import { EditorConfig } from 'types'
-import { useTranslations } from 'hooks'
+import { useTranslations, usePrevLessonLanguage } from 'hooks'
 import { Text } from 'ui'
-import { useEffect, useState } from 'react'
-import { getData } from 'api/data'
-import { countLines, detectLanguage, Language } from 'lib/SavedCode'
+import { countLines, getLanguageString } from 'lib/SavedCode'
 import { useAtomValue } from 'jotai'
 import { DifficultyLevel, syncedCourseProgressAtom } from 'state/progressState'
 
@@ -18,26 +16,15 @@ export const metadata = {
 
 export default function PutItTogetherFourHard({ lang }) {
   const t = useTranslations(lang)
-  const [prevData, setPrevData] = useState<any>({ lesson: '', data: '' })
-  const [isLoading, setIsLoading] = useState(true)
+  const { prevData, isLoading, detectedLanguage } =
+    usePrevLessonLanguage('CH6PUT3_HARD')
+
+  const defaultLanguage = getLanguageString(detectedLanguage)
   const courseProgress = useAtomValue(syncedCourseProgressAtom)
   let chapterDifficulty: DifficultyLevel
   if (courseProgress.chapters[5].hasDifficulty) {
     chapterDifficulty = courseProgress.chapters[5].selectedDifficulty
   }
-  const getPrevLessonData = async () => {
-    const data = await getData(`CH6PUT3_HARD`)
-    if (data) {
-      setPrevData({
-        lesson_id: `CH6PUT3_HARD`,
-        data: data?.code?.getDecoded(),
-      })
-    }
-  }
-
-  useEffect(() => {
-    getPrevLessonData().finally(() => setIsLoading(false))
-  }, [])
 
   const javascript = {
     program: `//BEGIN VALIDATION BLOCK
@@ -353,10 +340,7 @@ ${prevData.data}
   }
 
   const config: EditorConfig = {
-    defaultLanguage:
-      detectLanguage(prevData.data) === Language.JavaScript
-        ? 'javascript'
-        : 'python',
+    defaultLanguage,
     languages: {
       javascript,
       python,

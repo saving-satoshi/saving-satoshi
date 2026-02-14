@@ -1,7 +1,6 @@
 import 'styles/globals.css'
 import Fonts from 'components/Fonts'
 import Layout from 'components/Layout'
-import dynamic from 'next/dynamic'
 
 export default function RootLayout({
   children,

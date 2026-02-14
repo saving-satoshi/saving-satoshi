@@ -15,7 +15,7 @@ export default async function ChaptersPage({ params }) {
   )
 
   return (
-    <div className="w-full bg-[#2A3B61]">
+    <div className="w-full bg-[#2A3B61] pt-[70px]">
       <Topbar />
 
       <div className="lg:px-0">
