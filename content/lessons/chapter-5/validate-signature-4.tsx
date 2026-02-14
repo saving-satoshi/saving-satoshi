@@ -40,10 +40,10 @@ console.log("KILL")
 const GE = secp256k1.GE
 const FE = secp256k1.FE
 const ORDER = secp256k1.ORDER
-// Message digest from step 9:
+// Message digest from the "Prepare the message" lesson:
 const msg_fe = 0x73a16290e005b119b9ce0ceea52949f0bd4f925e808b5a54c631702d3fea1242n
 
-// Signature values from step 10:
+// Signature values from the "Prepare the signature" lesson:
 const sig_r_fe = 0x8bd06d50f4a4b2bba64ccfb68f011e8babcec06b1cc07741fe686159abef8d69n
 const sig_s_fe = 0x3f0754da6e85699666c61e12707c45a037a5142f6a1b43e7014979a8c16d87c9n
 
@@ -144,10 +144,10 @@ print("KILL")
 
 GE = SECP256K1.GE
 G = SECP256K1.G
-# Message digest from step 9:
+# Message digest from the "Prepare the message" lesson:
 msg = 0x73a16290e005b119b9ce0ceea52949f0bd4f925e808b5a54c631702d3fea1242
 
-# Signature values from step 10:
+# Signature values from the "Prepare the signature" lesson:
 sig_r = 0x8bd06d50f4a4b2bba64ccfb68f011e8babcec06b1cc07741fe686159abef8d69
 sig_s = 0x3f0754da6e85699666c61e12707c45a037a5142f6a1b43e7014979a8c16d87c9
 

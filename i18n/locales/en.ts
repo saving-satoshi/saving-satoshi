@@ -685,7 +685,7 @@ const translations = {
       title: `Address`,
       nav_title: `Get a P2WPKH address`,
       paragraph_one: `There are multiple types of bitcoin addresses. In the previous exercise, we created a 20-byte compressed public key hash. Now, we would like to encode that hash into a Pay-to-Witness-Public-Key-Hash (p2wpkh) address on the Testnet network.`,
-      paragraph_two: `First we need to append a witness version number of '0' to the hash. These resulting 21 bytes are known as the <span className="font-bold">witness program</span>.`,
+      paragraph_two: `First, note that for a p2wpkh address the witness version is '0', and the witness program is the 20-byte public key hash from the previous step.`,
       paragraph_three: `Then, the witness program is encoded into a human-friendly format called <Link href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Specification" target="_blank" className="underline">bech32</Link>. Doing this appends a human-readable prefix and a checksum to the data.`,
       paragraph_four: `The prefix is determined by the network:`,
       table_heading: {
@@ -702,7 +702,7 @@ const translations = {
       },
       paragraph_five: `Since we're making a Testnet address, we will be using the 'tb' prefix.`,
       paragraph_six: `After the data has been encoded to bech32, we are left with a bitcoin address!`,
-      paragraph_seven: `Complete the function to create a bech32 address from a compressed public key hash. Start by making the witness program, then convert the program to an address by using the bech32 library that has already been imported for you.`,
+      paragraph_seven: `Complete the function to create a bech32 address from a compressed public key hash. Use the bech32 library that has already been imported for you, with the 'tb' prefix, witness version 0, and the 20-byte hash.`,
       paragraph_eight: `You may need to dig into the bech32 library and read the code to find the right functions to use:\n`,
       paragraph_eight_javascript: `<Link href="https://github.com/saving-satoshi/bech32js/blob/main/bech32.js" target="_blank" className="underline">JavaScript: @savingsatoshi/bech32js</Link>\n`,
       paragraph_eight_python: `<Link href="https://github.com/saving-satoshi/bech32py/blob/main/bech32py/bech32.py" target="_blank" className="underline">Python: savingsatoshi_bech32py</Link>`,
@@ -924,14 +924,14 @@ const translations = {
         pre_link: `Then we will`,
         highlighted: `double SHA-256 hash`,
         question: `Why do we double hash in bitcoin?`,
-        post_link: `that blob of data, and convert that hash into an integer. Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">encode_message()</span>. It should return a 32-byte hex value.`,
+        post_link: `that blob of data. Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">encode_message()</span>. It should return a 32-byte hex value.`,
       },
       success: `Nicely Done`,
     },
     validate_signature_two: {
       nav_title: `Prepare the signature`,
       heading: `Prepare Vanderpoole's signature for verification`,
-      paragraph_one: `The bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in step 6.`,
+      paragraph_one: `The bitcoin message signing protocol Vanderpoole used specifies base64 for the signature. We need to decode that base64 string into a 65 byte sequence. For now, we can disregard the first byte of metadata. The remainder of the data are the 32-byte r and s values we learned about in the "Decode the signature" lesson.`,
       javascript: {
         paragraph_two: {
           post_link: `Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">decode_sig()</span>.`,
@@ -1179,7 +1179,7 @@ const translations = {
         paragraph_one: `It should have the following method:`,
         paragraph_two: `The First two arguments are the transaction ID and the index of the output of that transaction you want to spend from.`,
         paragraph_three: `Eventually we will pass in the txid and vout values you got above from listunspent. Note that hashes in bitcoin are little-endian, which means that you will need to reverse the byte order of the txid string!`,
-        paragraph_four: `The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until step 6.`,
+        paragraph_four: `The second two arguments are the value of the output we want to spend (in satoshis) and something called a scriptcode. For now, just store these data as properties of the Input class, we won't need them until the "Build the transaction digest" lesson.`,
         paragraph_five: `We also need a <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method that returns a byte array according to the specification:`,
         heading_two: `Outpoint`,
         table_one: {
@@ -1313,8 +1313,8 @@ const translations = {
         paragraph_two: `Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest(input_index)</span> that computes the 32-byte message for signing an input.`,
         list_heading: `Some notes:`,
         list_one: `"Double SHA-256" or dSHA256 = sha256(sha256(data))`,
-        list_two: `value is the amount of the satoshis in the output being spent from. We added it to our Input class back in step 2, and just saved it there inside the class until now.`,
-        list_three: `scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in step 2.`,
+        list_two: `value is the amount of the satoshis in the output being spent from. We added it to our Input class back in the "The input class" lesson, and just saved it there inside the class until now.`,
+        list_three: `scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in the "The input class" lesson.`,
         list_four: `all integers are encoded as little-endian!`,
         paragraph_three: `We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash (P2WPKH) address, your scriptcode would be:`,
         paragraph_four: `...which decodes to the following bitcoin script.`,
@@ -1604,8 +1604,8 @@ const translations = {
         paragraph_two: `Remember each transaction input needs its own signature, and so some components of the digest algorithm can be cached and reused but others will be different depending on which input is being signed! Finish the transaction method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest(input_index)</span> that computes the 32-byte message for signing an input.`,
         list_heading: `Some notes:`,
         list_one: `"Double SHA-256" or dSHA256 = sha256(sha256(data))`,
-        list_two: `value is the amount of the satoshis in the output being spent from. We added it to our Input class back in step 2, and just saved it there inside the class until now.`,
-        list_three: `scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in step 2.`,
+        list_two: `value is the amount of the satoshis in the output being spent from. We added it to our Input class back in the "Build the input class" lesson, and just saved it there inside the class until now.`,
+        list_three: `scriptcode is the raw bitcoin script being evaluated. We also added this to our Input class back in the "Build the input class" lesson.`,
         paragraph_three: `We'll dive in to this more in the next section, but to spend from your pay-to-witness-public-key-hash address, your scriptcode would be:`,
         paragraph_four: `...which decodes to the following bitcoin script.`,
         paragraph_five: `For more information about scriptcode see <Link href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" target="_blank" className="underline">BIP 143</Link>.`,
@@ -1687,7 +1687,7 @@ const translations = {
         title: `Putting it all together`,
         heading: `Signing!`,
         nav_title: `Sign the transaction`,
-        paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index: int, key: int)</span> to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest()</span> method from step 6, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
+        paragraph_one: `We wrote the ECDSA signature verification code in the last chapter, now we need to rearrange that a bit to create a valid signature. Add a method called <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index: int, key: int)</span> to your Transaction class that accepts an input index number and a private key (a 32-byte integer!). It should compute the message digest for the chosen input using the <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">digest()</span> method from the "Build the transaction digest" lesson, and return an ECDSA signature in the form of two 32-byte integers r and s.`,
         paragraph_two: `See <Link href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank" className="underline">this page</Link> for the ECDSA signing algorithm. Also <Link href="https://www.secg.org/sec1-v2.pdf#subsubsection.4.1.3" target="_blank" className="underline">this PDF</Link> (Page 44, Section 4.1.3).`,
         paragraph_three: `The bitcoin protocol requires one extra step to the signing algorithm, which requires that the s value is "low", meaning less than the order of the curve divided by 2. Learn more about this in <Link href="https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#low_s" target="_blank" className="underline">BIP 146</Link>.`,
         success: `The compute_input_signature() method looks good. Great Work!`,
@@ -1698,7 +1698,7 @@ const translations = {
         title: `Putting it all together`,
         heading: `Populate the Witness`,
         nav_title: `Populate the Witness`,
-        paragraph_one: `Finish the method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> that calls our step 7 method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.`,
+        paragraph_one: `Finish the method <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">sign_input(index: int, key: int)</span> that calls our method from the "Sign the transaction" lesson <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">compute_input_signature(index, key)</span> and handles its return value. The r and s numbers need to be encoded with an algorithm called DER which we have implemented for you.`,
         paragraph_two: `Bitcoin requires one extra byte appended to the DER-signature which represents the "sighash type". For now we'll always use the byte 0x01 for this indicating "SIGHASH ALL".`,
         paragraph_three: `Once we have that signature blob we need to create a Witness object with two stack items: the signature blob, and your compressed public key. Push the signature first, followed by the public key.`,
         paragraph_four: `The witness stack object can then be appended to the witnesses array of the transaction object.`,
@@ -1711,7 +1711,7 @@ const translations = {
         heading: `Put it All Together`,
         nav_title: `Put it All Together!`,
         paragraph_one: `We know our input, we know our output. Are we ready to build and sign a transaction? Not quite. We have a 1.61 BTC input and a 1 BTC output... what happens to the other 0.61 BTC? Most of that will be "change" and we need to send it back to our own address!`,
-        paragraph_two: `Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in step 1) and two outputs:`,
+        paragraph_two: `Write a script that creates and signs a Transaction object. It should have one input (the UTXO we identified in the "The unspent UTXO" lesson) and two outputs:`,
         paragraph_three: `But wait! We need to include a "fee". We'll shave off a tiny piece of our change output for the mining pools to incentivize them to include our transaction in a block. Let's reduce our change from 61,000,000 to 60,999,000 satoshis.`,
         paragraph_four: `Finally our work is done. Your script should end by returning the result of the transaction <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> method. This is a valid signed bitcoin transaction and we can broadcast it to the network to send Mika 3000 the money he needs!`,
         bullet_one: `Mika 3000 gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj`,
@@ -2234,7 +2234,7 @@ Stack Hint: To spend before the specified block, you use your signature. After t
       },
       proposal_four: {
         tip: `The preimage will be revealed after an unknown amount of time so no need for using timelocks.`,
-        spoiler: `Script Hint: The script allows spending under two conditions: before the secret has been revealed or after. Before the block, Vanderpoole can spend; after the block, you both can.
+        spoiler: `Script Hint: The script allows spending under two conditions: before the secret has been revealed or after. Before the secret, Vanderpoole can spend; after the secret, you both can.
 
 Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signature. After the secret is revealed, you use your signature, a hash of the secret, and provide a 0 because the script has moved past the unrevealed verification.`,
       },
@@ -2705,6 +2705,10 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     language_tabs: {
       locked: `Language disabled since you've started this chapter in`,
       reset: `Reset the terminal`,
+      reset_confirm_title: `Are you sure?`,
+      reset_confirm_message: `This will erase any code you have written for this exercise.`,
+      reset_confirm_yes: `Yes, reset`,
+      reset_confirm_no: `Cancel`,
     },
   },
   notfound: {

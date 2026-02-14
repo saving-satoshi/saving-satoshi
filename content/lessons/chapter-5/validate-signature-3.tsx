@@ -33,7 +33,7 @@ console.log("KILL")
         end: 95,
       },
     ],
-    defaultCode: `const { Hash } = require('crypto')
+    defaultCode: `const crypto = require('crypto')
 const secp256k1 = require('@savingsatoshi/secp256k1js')
 // View the library source code
 // https://github.com/saving-satoshi/secp256k1js/blob/main/secp256k1.js

@@ -1,13 +1,13 @@
 'use client'
 
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useLocalizedRoutes, usePathData } from 'hooks'
 import useEnvironment from './useEnvironment'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import {
-  getLessonById,
   getLessonKey,
   getNextLessonUsingChapterIdAndLessonName,
+  isLessonCompletedUsingId,
   markLessonAsCompleteAtom,
   nextLessonPathAtom,
   progressToNextLessonAtom,
@@ -30,14 +30,19 @@ export default function useProceed() {
   )
   const currentLessonId = getLessonKey(chapterId, lessonName)
   const markLessonAsComplete = useSetAtom(markLessonAsCompleteAtom)
-  const currentLesson = getLessonById(currentLessonId, courseProgress)
+  const isCurrentLessonCompleted = currentLessonId
+    ? isLessonCompletedUsingId(currentLessonId, courseProgress)
+    : false
 
   const Proceed = () => {
+    if (!nextLessonUsingCurrentRoute) return
     let route
-    if (!currentLesson?.completed && nextLessonUsingCurrentRoute) {
+    if (!isCurrentLessonCompleted) {
       route =
         routes.chaptersUrl + nextLessonUsingCurrentRoute?.path + queryParams
-      markLessonAsComplete(currentLessonId)
+      if (currentLessonId) {
+        markLessonAsComplete(currentLessonId)
+      }
     } else {
       route =
         routes.chaptersUrl + nextLessonUsingCurrentRoute?.path + queryParams
