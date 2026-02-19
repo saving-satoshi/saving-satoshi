@@ -2163,8 +2163,8 @@ const translations = {
       heading: `Conditional time locked transaction`,
       paragraph_one: `Wait a minute, that doesn't make sense—you don't want to deal with him forever! The new deal is you get all donations for the next two hours while you are still on TV. The Lil Bits Foundation gets anything that comes in afterwards. You look at the bitcoin block clock on the wall in the studio and agree that block height 6930300 will probably be mined in about two hours.`,
       paragraph_two: `Remember Vanderpoole's public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
-      paragraph_three: `Provide the initial stack to spend from the script.`,
-      next_step_message: `Looks good! Now lets try with your own signature.`,
+      paragraph_three: `Provide two initial stacks in sequence: first, enter the stack you would use to spend yourself. After that succeeds, enter Vanderpoole's stack and run again.`,
+      next_step_message: `Nice first spend. Now enter Vanderpoole's stack.`,
     },
     proposal_four: {
       title: `Secret preimage locked transaction`,
@@ -2177,13 +2177,13 @@ const translations = {
         b: ` one second earlier!`,
       },
       paragraph_four: `Remember Vanderpoole's public key is PUBKEY(vanderpoole) and yours is PUBKEY(me).`,
-      paragraph_five: `Provide the initial stack to spend from the script.`,
+      paragraph_five: `Provide two initial stacks in sequence: first Vanderpoole's spending stack, then your stack with the revealed preimage.`,
       tooltip_one: {
         question: `What is a satoshi?`,
         link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520a%2520satoshi%253F`,
         highlighted: `satoshi`,
       },
-      next_step_message: `Let's see if we used our signature with the preimage correctly.`,
+      next_step_message: `Great first spend. Now enter your stack with the preimage.`,
     },
     outro_one: {
       title: `Outro`,
