@@ -36,3 +36,71 @@ export function getAllChapterLessons(chapter: ChapterInState): LessonInState[] {
   // Regular chapters already include every lesson in a single array.
   return chapter.lessons || []
 }
+
+/**
+ * Returns a new chapter array with the given lesson marked as complete.
+ *
+ * Handles both plain chapters (flat lesson list) and difficulty chapters
+ * (only touches the currently selected track, leaves others alone).
+ * This is a pure function — the original array is never mutated.
+ */
+export function markLessonCompleteInChapters(
+  chapters: ChapterInState[],
+  lessonId: string
+): ChapterInState[] {
+  return chapters.map((chapter) => {
+    if (chapter.hasDifficulty) {
+      return {
+        ...chapter,
+        // Walk each difficulty track, but only flip completion on the selected one.
+        difficulties: chapter.difficulties.map((difficulty) => {
+          if (difficulty.level !== chapter.selectedDifficulty) {
+            return difficulty
+          }
+
+          return {
+            ...difficulty,
+            lessons: difficulty.lessons.map((lesson) =>
+              lesson.id === lessonId ? { ...lesson, completed: true } : lesson
+            ),
+          }
+        }),
+      }
+    }
+
+    // Plain chapter — just map over the single lesson list.
+    return {
+      ...chapter,
+      lessons: (chapter.lessons || []).map((lesson) =>
+        lesson.id === lessonId ? { ...lesson, completed: true } : lesson
+      ),
+    }
+  })
+}
+
+/**
+ * Scans chapters forward to find the first lesson that still needs doing.
+ *
+ * You can pass a `startIndex` to skip earlier chapters (handy when you already
+ * know the user is past them). Returns the lesson and its parent chapter id,
+ * or null if every lesson in the course is complete.
+ *
+ * For difficulty chapters this resolves to the currently selected track,
+ * since that's the only track the user can actually progress through.
+ */
+export function findNextIncompleteLesson(
+  chapters: ChapterInState[],
+  startIndex: number = 0
+): { lesson: LessonInState; chapterId: number } | null {
+  for (let i = startIndex; i < chapters.length; i++) {
+    const chapter = chapters[i]
+    const lessons = getChapterLessons(chapter)
+    const incomplete = lessons.find((lesson) => !lesson.completed)
+
+    if (incomplete) {
+      return { lesson: incomplete, chapterId: chapter.id }
+    }
+  }
+
+  return null
+}
