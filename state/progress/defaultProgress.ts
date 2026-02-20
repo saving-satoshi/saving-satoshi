@@ -1,5 +1,24 @@
-import { CourseProgress, DifficultyLevel } from 'types'
+import { CourseProgress } from 'types'
 
+/**
+ * Difficulty options for chapters that have multiple lesson tracks.
+ *
+ * We reuse this across state, tests, and content types so difficulty values
+ * stay consistent everywhere.
+ */
+export enum DifficultyLevel {
+  NORMAL = 'NORMAL',
+  HARD = 'HARD',
+}
+
+/**
+ * Default progress snapshot used for:
+ * 1. the in-memory initialization value
+ * 2. the merge baseline for persisted backend/local progress
+ *
+ * Keeping this in one place means older saved progress can still be merged
+ * with newly added lessons without a migration step.
+ */
 export const defaultProgressState: CourseProgress = {
   chapters: [
     {
