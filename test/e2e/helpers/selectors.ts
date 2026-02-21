@@ -31,6 +31,10 @@ export function getSuccessText(page: Page): Locator {
   return page.getByText(/success/i)
 }
 
+export function getStartButton(page: Page): Locator {
+  return page.getByRole('button', { name: /start/i })
+}
+
 export function getInputField(page: Page, label?: string): Locator {
   if (label) {
     return page.getByLabel(label)

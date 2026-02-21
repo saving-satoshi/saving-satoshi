@@ -2,6 +2,7 @@ import { test as base } from '@playwright/test'
 import { AuthModal } from '../pages/authModal'
 import {
   HashChallengePage,
+  HashRateChallengePage,
   InputChallengePage,
   ScriptingChallengePage,
   TerminalChallengePage,
@@ -26,6 +27,7 @@ type Fixtures = {
   scriptingChallenge: ScriptingChallengePage
   inputChallenge: InputChallengePage
   hashChallenge: HashChallengePage
+  hashRateChallenge: HashRateChallengePage
   terminalChallenge: TerminalChallengePage
 }
 
@@ -63,6 +65,10 @@ export const test = base.extend<Fixtures>({
 
   hashChallenge: async ({ page }, use) => {
     await use(new HashChallengePage(page))
+  },
+
+  hashRateChallenge: async ({ page }, use) => {
+    await use(new HashRateChallengePage(page))
   },
 
   terminalChallenge: async ({ page }, use) => {
