@@ -4,6 +4,7 @@ import {
   HashChallengePage,
   HashRateChallengePage,
   InputChallengePage,
+  OpCodeChallengePage,
   ScriptingChallengePage,
   TerminalChallengePage,
 } from '../pages/challenges'
@@ -29,6 +30,7 @@ type Fixtures = {
   hashChallenge: HashChallengePage
   hashRateChallenge: HashRateChallengePage
   terminalChallenge: TerminalChallengePage
+  opCodeChallenge: OpCodeChallengePage
 }
 
 /**
@@ -73,6 +75,10 @@ export const test = base.extend<Fixtures>({
 
   terminalChallenge: async ({ page }, use) => {
     await use(new TerminalChallengePage(page))
+  },
+
+  opCodeChallenge: async ({ page }, use) => {
+    await use(new OpCodeChallengePage(page))
   },
 })
 

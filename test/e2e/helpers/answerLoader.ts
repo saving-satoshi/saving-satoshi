@@ -66,5 +66,36 @@ export function hasAnswerFile(
   return fs.existsSync(filePath)
 }
 
+/**
+ * Opcode challenge answer structure (loaded from JSON files).
+ */
+export interface OpcodeAnswer {
+  script: string
+  initialStack: string
+  secondStack?: string
+  nextBlockHeight?: string
+}
+
+/**
+ * Get opcode answer from JSON file.
+ * JSON files are stored as: test/e2e/answers/chapter{N}/{lesson}.json
+ */
+export function getOpcodeAnswer(chapter: number, lesson: string): OpcodeAnswer {
+  const filePath = path.join(ANSWERS_DIR, `chapter${chapter}`, `${lesson}.json`)
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`Opcode answer file not found: ${filePath}`)
+  }
+  const content = fs.readFileSync(filePath, 'utf-8')
+  return JSON.parse(content) as OpcodeAnswer
+}
+
+/**
+ * Check if an opcode answer JSON file exists.
+ */
+export function hasOpcodeAnswer(chapter: number, lesson: string): boolean {
+  const filePath = path.join(ANSWERS_DIR, `chapter${chapter}`, `${lesson}.json`)
+  return fs.existsSync(filePath)
+}
+
 // Re-export spoiler loader for convenience.
 export { getAnswerFromSpoiler, getAnswersFromSpoiler } from './spoilerLoader'
