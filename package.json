@@ -9,7 +9,7 @@
     "lint": "next lint",
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
-    "test": "yarn vitest run",
+    "test": "yarn vitest run ./test/unit/",
     "postinstall": "husky install"
   },
   "lint-staged": {
