@@ -10,6 +10,7 @@
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
     "test": "yarn vitest run ./test/unit/",
+    "e2e": "sh ./scripts/run-e2e.sh",
     "postinstall": "husky install"
   },
   "lint-staged": {
