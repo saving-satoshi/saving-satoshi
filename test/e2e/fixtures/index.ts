@@ -1,8 +1,16 @@
 import { test as base } from '@playwright/test'
 import { AuthModal } from '../pages/authModal'
-import { InputChallengePage, TerminalChallengePage } from '../pages/challenges'
+import {
+  HashChallengePage,
+  InputChallengePage,
+  ScriptingChallengePage,
+  TerminalChallengePage,
+} from '../pages/challenges'
 import { ChaptersPage } from '../pages/chaptersPage'
 import { LessonPage } from '../pages/lessonPage'
+import { AuthHelper } from './auth'
+
+export type Language = 'javascript' | 'python'
 
 /**
  * Fixtures for the E2E tests. This is a union of all the Page Object Models (POMs) used
@@ -11,10 +19,13 @@ import { LessonPage } from '../pages/lessonPage'
  * having to construct them individually.
  */
 type Fixtures = {
+  auth: AuthHelper
   authModal: AuthModal
   lessonPage: LessonPage
   chaptersPage: ChaptersPage
+  scriptingChallenge: ScriptingChallengePage
   inputChallenge: InputChallengePage
+  hashChallenge: HashChallengePage
   terminalChallenge: TerminalChallengePage
 }
 
@@ -22,6 +33,12 @@ type Fixtures = {
  * Extend the base test object with the POMs so that they are available to all tests.
  */
 export const test = base.extend<Fixtures>({
+  // Auth helper - auto-instantiated for each test.
+  auth: async ({ page, request }, use) => {
+    const auth = new AuthHelper(page, request)
+    await use(auth)
+  },
+
   // Auth modal POM for UI-based auth flows.
   authModal: async ({ page }, use) => {
     await use(new AuthModal(page))
@@ -36,8 +53,16 @@ export const test = base.extend<Fixtures>({
     await use(new ChaptersPage(page))
   },
 
+  scriptingChallenge: async ({ page }, use) => {
+    await use(new ScriptingChallengePage(page))
+  },
+
   inputChallenge: async ({ page }, use) => {
     await use(new InputChallengePage(page))
+  },
+
+  hashChallenge: async ({ page }, use) => {
+    await use(new HashChallengePage(page))
   },
 
   terminalChallenge: async ({ page }, use) => {

@@ -8,12 +8,23 @@ import { Locator, Page } from '@playwright/test'
 
 // ─── Semantic Selectors ─────────────────────────────────────────────────────
 
+export function getRunButton(page: Page): Locator {
+  return page.getByRole('button', { name: /run/i })
+}
+
 export function getNextButton(page: Page): Locator {
   return page.getByRole('button', { name: /next/i })
 }
 
 export function getContinueButton(page: Page): Locator {
   return page.getByRole('button', { name: /continue/i })
+}
+
+export function getLanguageTab(
+  page: Page,
+  language: 'javascript' | 'python'
+): Locator {
+  return page.getByRole('button', { name: new RegExp(language, 'i') })
 }
 
 export function getSuccessText(page: Page): Locator {
@@ -47,6 +58,12 @@ export function getSubmitButton(page: Page): Locator {
 // ─── CSS Selectors (fallbacks for components without accessible roles) ──────
 
 /**
+ * Monaco editor doesn't have accessible roles, so we use CSS.
+ */
+export const MONACO_EDITOR = '.monaco-editor'
+export const MONACO_TEXTAREA = '.monaco-editor textarea'
+
+/**
  * Terminal component uses custom styling.
  * Note: Terminal uses a custom textbox, not a native input element.
  */
@@ -57,7 +74,23 @@ export const TERMINAL_WRAPPER = '.react-terminal-wrapper'
  */
 export const SUCCESS_INDICATOR = '[class*="bg-green"], [class*="success"]'
 
+/**
+ * Help modal components.
+ * Note: Help icon and spoiler toggle require special handling:
+ * - Help icon: use page.locator('nav').getByText('?').last()
+ * - Spoiler checkbox: use page.getByRole('checkbox') with JS click (hidden input)
+ */
+export const SPOILER_CODE = 'pre span[class*="language-"]'
+
 // ─── Helper Functions ───────────────────────────────────────────────────────
+
+export function getMonacoEditor(page: Page): Locator {
+  return page.locator(MONACO_EDITOR)
+}
+
+export function getMonacoTextarea(page: Page): Locator {
+  return page.locator(MONACO_TEXTAREA)
+}
 
 export function getTerminal(page: Page): Locator {
   return page.locator(TERMINAL_WRAPPER)
