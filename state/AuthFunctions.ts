@@ -27,8 +27,9 @@ export const useAuthFunctions = () => {
       setAccount(account)
 
       const progress = await getProgress()
-      const finalProgress = progress || defaultProgressState
-      setCourseProgress(mergeProgressState(defaultProgressState, finalProgress))
+      if (progress) {
+        setCourseProgress(mergeProgressState(defaultProgressState, progress))
+      }
 
       return true
     } catch (ex) {
