@@ -503,15 +503,16 @@ const combinedProgressAndAccountAtom = atom((get) => {
 })
 
 // Effect atom to sync course progress using atomEffect
-const syncCourseProgressEffectAtom = atomEffect((get, set) => {
+const syncCourseProgressEffectAtom = atomEffect((get) => {
   const { account, courseProgress, isAuthLoading, isProgressLoaded } = get(
     combinedProgressAndAccountAtom
   )
   if (isAuthLoading || !isProgressLoaded) return
+
+  setProgressLocal(courseProgress)
+
   if (account) {
     setProgress(courseProgress)
-  } else {
-    setProgressLocal(courseProgress)
   }
 })
 
@@ -931,18 +932,21 @@ export const loadProgressAtom = atom(null, async (get, set) => {
 
   set(isLoadingProgressAtom, true)
 
-  let progress = defaultProgressState
+  let progress: CourseProgress | null = null
+
   if (account) {
     progress = await getProgress()
   }
 
-  if (!progress || !account) {
+  if (!progress) {
     progress = await getProgressLocal()
   }
 
+  const finalProgress = progress || defaultProgressState
+
   set(
     syncedCourseProgressAtom,
-    mergeProgressState(defaultProgressState, progress)
+    mergeProgressState(defaultProgressState, finalProgress)
   )
   set(isProgressLoadedAtom, true)
   set(isLoadingProgressAtom, false)

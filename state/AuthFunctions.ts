@@ -26,9 +26,10 @@ export const useAuthFunctions = () => {
       const account = await getSession()
       setAccount(account)
 
-      // Load progress for the logged-in account
       const progress = await getProgress()
-      setCourseProgress(mergeProgressState(defaultProgressState, progress))
+      if (progress) {
+        setCourseProgress(mergeProgressState(defaultProgressState, progress))
+      }
 
       return true
     } catch (ex) {
@@ -43,7 +44,13 @@ export const useAuthFunctions = () => {
     window.location.pathname !== '/' &&
       router.push(routes.chaptersUrl, { scroll: true })
     await logout()
+
+    const progress = localStorage.getItem('SavingSatoshiProgress')
     localStorage.clear()
+    if (progress) {
+      localStorage.setItem('SavingSatoshiProgress', progress)
+    }
+
     setCourseProgress(defaultProgressState)
     setAccount(undefined)
   }
