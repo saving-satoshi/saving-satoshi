@@ -1,4 +1,4 @@
-import { defaultProgressState } from '../../../state/constants'
+import { defaultProgressState } from '../../../state/progress/defaultProgress'
 import {
   ChapterInState,
   ChapterWithDifficulties,
