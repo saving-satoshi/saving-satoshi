@@ -1,9 +1,13 @@
-import { DifficultyLevel } from 'state/progressState'
 import { Base64String } from './classes'
 import { TabDetails } from './interfaces'
 
 export * from './enums'
 export * from './interfaces'
+
+export enum DifficultyLevel {
+  NORMAL = 'NORMAL',
+  HARD = 'HARD',
+}
 
 export type TransactionData = Record<string, TabDetails>
 
