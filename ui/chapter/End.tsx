@@ -8,7 +8,8 @@ import MobileEnd from './MobileEnd'
 import { useAtom, useSetAtom } from 'jotai'
 import { accountAtom, Modal } from 'state/state'
 import { useModalFunctions } from 'state/ModalFunctions'
-import { getLessonKey, markLessonAsCompleteAtom } from 'state/progressState'
+import { markLessonAsCompleteAtom } from 'state/progress/actions'
+import { getLessonKey } from 'state/progress/utils'
 
 declare global {
   interface Window {

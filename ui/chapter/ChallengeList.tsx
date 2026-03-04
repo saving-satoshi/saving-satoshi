@@ -4,7 +4,8 @@ import ChallengeListItem from './ChallengeListItem'
 import { lessons } from 'content'
 import { useLang, useTranslations } from 'hooks'
 import clsx from 'clsx'
-import { getLessonKey, syncedCourseProgressAtom } from 'state/progressState'
+import { syncedCourseProgressAtom } from 'state/progress/atoms'
+import { getLessonKey } from 'state/progress/utils'
 import { useAtomValue } from 'jotai'
 
 export default function ChallengeList({
