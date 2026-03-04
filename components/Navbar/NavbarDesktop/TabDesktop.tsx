@@ -8,13 +8,15 @@ import { lessons, chapters } from 'content'
 import { themeSelector } from 'lib/themeSelector'
 import { useAtom, useAtomValue } from 'jotai'
 import {
-  syncedCourseProgressAtom,
-  isLessonCompletedUsingLessonName,
-  isLessonUnlockedUsingLessonName,
   isLoadingProgressAtom,
+  syncedCourseProgressAtom,
+} from 'state/progress/atoms'
+import {
   getLessonKey,
+  isLessonCompletedUsingLessonName,
   isLessonUnlockedUsingId,
-} from 'state/progressState'
+  isLessonUnlockedUsingLessonName,
+} from 'state/progress/utils'
 import useEnvironment from 'hooks/useEnvironment'
 import { useMemo } from 'react'
 

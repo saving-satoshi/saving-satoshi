@@ -8,11 +8,9 @@ import { useModalFunctions } from 'state/ModalFunctions'
 import Avatar from './Avatar'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { useRouter } from 'next/navigation'
-import {
-  currentLessonPathAtom,
-  loadProgressAtom,
-  syncedCourseProgressAtom,
-} from 'state/progressState'
+import { syncedCourseProgressAtom } from 'state/progress/atoms'
+import { currentLessonPathAtom } from 'state/progress/selectors'
+import { loadProgressAtom } from 'state/progress/actions'
 
 export default function SignIn({
   lang,

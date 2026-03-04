@@ -19,7 +19,7 @@ import Icon from 'shared/Icon'
 import { navbarThemeSelector, themeSelector } from 'lib/themeSelector'
 import { useAtom, useAtomValue } from 'jotai'
 import { accountAtom } from 'state/state'
-import { currentChapterAtom } from 'state/progressState'
+import { currentChapterAtom } from 'state/progress/selectors'
 import { Tooltip } from 'ui'
 
 export default function NavbarMobile({ params }) {

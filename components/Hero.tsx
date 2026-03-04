@@ -6,7 +6,7 @@ import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { unstable_getImgProps as getImgProps } from 'next/image'
 import { accountAtom } from 'state/state'
 import { useAtom, useAtomValue } from 'jotai'
-import { currentChapterAtom } from 'state/progressState'
+import { currentChapterAtom } from 'state/progress/selectors'
 import Boss from 'shared/Boss'
 
 export default function Hero() {
