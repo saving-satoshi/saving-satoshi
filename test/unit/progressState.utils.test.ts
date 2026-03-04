@@ -1,5 +1,5 @@
+import { DifficultyLevel } from 'state/progress/defaultProgress'
 import {
-  DifficultyLevel,
   getLessonById,
   getLessonKey,
   getNextLessonUsingChapterIdAndLessonName,
@@ -10,7 +10,7 @@ import {
   isLessonUnlockedUsingId,
   isLessonUnlockedUsingLessonName,
   mergeProgressState,
-} from 'state/progressState'
+} from 'state/progress/utils'
 import { CourseProgress, LessonInState } from 'types'
 import { describe, expect, it } from 'vitest'
 import { createProgressFixture } from './fixtures/progressFixtures'

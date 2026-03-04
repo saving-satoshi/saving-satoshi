@@ -1,17 +1,19 @@
 import { createStore } from 'jotai'
+import { DifficultyLevel } from 'state/progress/defaultProgress'
+import { courseProgressAtom } from 'state/progress/atoms'
 import {
-  courseProgressAtom,
   currentChapterAtom,
   currentLessonAtom,
   currentLessonComputedAtom,
   currentLessonPathAtom,
-  DifficultyLevel,
-  markLessonAsCompleteAtom,
   nextLessonAtom,
   nextLessonPathAtom,
+} from 'state/progress/selectors'
+import {
+  markLessonAsCompleteAtom,
   progressToNextLessonAtom,
   setChapterDifficultyAtom,
-} from 'state/progressState'
+} from 'state/progress/actions'
 import { presentPageAtom } from 'state/state'
 import { CourseProgress } from 'types'
 import { describe, expect, it } from 'vitest'

@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { createProgressFixture } from './fixtures/progressFixtures'
+import { DifficultyLevel } from 'state/progress/defaultProgress'
 import {
-  DifficultyLevel,
   findNextIncompleteLesson,
   markLessonCompleteInChapters,
-} from 'state/progressState'
+} from 'state/progress/helpers'
 
 describe('markLessonCompleteInChapters', () => {
   it('marks a lesson complete in a plain chapter', () => {
