@@ -1,4 +1,4 @@
-import { DifficultyLevel } from 'state/progressState'
+import { DifficultyLevel } from 'state/progress/defaultProgress'
 import { Base64String } from './classes'
 import { TabDetails } from './interfaces'
 
