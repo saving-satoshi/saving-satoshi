@@ -11,7 +11,7 @@ import Modal from './Modal'
 import { Text, ToggleSwitch } from 'ui'
 import { useAuthFunctions } from 'state/AuthFunctions'
 import { useSetAtom } from 'jotai'
-import { loadProgressAtom } from 'state/progressState'
+import { loadProgressAtom } from 'state/progress/actions'
 
 const avatars = [
   'white spacesuit',

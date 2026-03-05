@@ -1,4 +1,4 @@
-import { DifficultyLevel } from 'state/progressState'
+import { DifficultyLevel } from 'state/progress/defaultProgress'
 import { CourseProgress } from 'types'
 
 export const baseProgressFixture: CourseProgress = {

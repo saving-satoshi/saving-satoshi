@@ -14,7 +14,7 @@ import {
   organizeImports,
 } from 'lib/SavedCode'
 import { useAtomValue } from 'jotai'
-import { syncedCourseProgressAtom } from 'state/progressState'
+import { syncedCourseProgressAtom } from 'state/progress/atoms'
 
 export const metadata = {
   title: 'chapter_eight.building_blocks_eight.title',

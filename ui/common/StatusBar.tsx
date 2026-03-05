@@ -5,7 +5,7 @@ import { useLessonContext, Tooltip } from 'ui'
 import { useLang, usePathData, useProceed, useTranslations } from 'hooks'
 import Icon from 'shared/Icon'
 import { lessons, chapters } from 'content'
-import { currentLessonAtom } from 'state/progressState'
+import { currentLessonAtom } from 'state/progress/selectors'
 
 export enum Status {
   Begin,

@@ -12,7 +12,7 @@ import HelpButton from '../HelpButton'
 import Icon from 'shared/Icon'
 import { navbarThemeSelector, themeSelector } from 'lib/themeSelector'
 import { useAtomValue } from 'jotai'
-import { currentChapterAtom } from 'state/progressState'
+import { currentChapterAtom } from 'state/progress/selectors'
 import { Tooltip } from 'ui'
 
 export default function NavbarDesktop({ params }) {
