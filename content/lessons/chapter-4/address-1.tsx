@@ -24,7 +24,6 @@ export default function Address1({ lang }) {
   const [isLoading, setIsLoading] = useState(true)
   const [tooltipVisible, setTooltipVisible] = useState(false)
 
-
   const handleMouseEnter = () => {
     setTooltipVisible(true)
   }
@@ -47,8 +46,6 @@ export default function Address1({ lang }) {
     getPrevLessonData().finally(() => setIsLoading(false))
   }, [])
 
-
-
   return (
     !isLoading && (
       <ChapterIntro
@@ -58,9 +55,11 @@ export default function Address1({ lang }) {
         <p className="mt-2 break-words text-base sm:text-lg md:text-xl">
           {t('chapter_four.address_one.paragraph_one')}
         </p>
-        <CodeExample
-          className="mt-4 max-w-full overflow-x-auto whitespace-pre-wrap break-all text-sm sm:text-base md:text-lg"code={dataObject}language="shell"/>
-          
+        <CodeBlock
+            className="mt-4 max-w-full overflow-x-auto whitespace-pre-wrap break-all text-sm sm:text-base md:text-lg"
+            code={dataObject}
+            language="shell"
+        />
         <p className="mt-8 inline-block break-words text-base sm:text-lg md:text-xl">
           {t('chapter_four.address_one.paragraph_two')}
           <a
