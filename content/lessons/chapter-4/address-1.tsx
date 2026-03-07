@@ -55,7 +55,7 @@ export default function Address1({ lang }) {
         <p className="mt-2 break-words text-base sm:text-lg md:text-xl">
           {t('chapter_four.address_one.paragraph_one')}
         </p>
-        <CodeBlock
+        <CodeExample
             className="mt-4 max-w-full overflow-x-auto whitespace-pre-wrap break-all text-sm sm:text-base md:text-lg"
             code={dataObject}
             language="shell"
