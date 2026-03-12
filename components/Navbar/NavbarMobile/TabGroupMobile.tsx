@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { syncedCourseProgressAtom } from 'state/progressState'
+import { syncedCourseProgressAtom } from 'state/progress/atoms'
 import { useAtomValue } from 'jotai'
 import { useState } from 'react'
 import ChapterAccordion from '../NavbarDesktop/ChapterAccordion'

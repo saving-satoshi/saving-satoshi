@@ -11,13 +11,17 @@ import useEnvironment from 'hooks/useEnvironment'
 import { useAtom, useAtomValue } from 'jotai'
 import { accountAtom, isAuthLoadingAtom } from 'state/state'
 import {
-  syncedCourseProgressAtom,
-  currentLessonComputedAtom,
-  isLessonUnlockedUsingLessonName,
   isLoadingProgressAtom,
+  syncedCourseProgressAtom,
+} from 'state/progress/atoms'
+import {
+  currentLessonComputedAtom,
   nextLessonAtom,
+} from 'state/progress/selectors'
+import {
   getLessonKey,
-} from 'state/progressState'
+  isLessonUnlockedUsingLessonName,
+} from 'state/progress/utils'
 import { usePresentFunctions } from 'state/presentPage'
 
 const Portal = ({ children, id }) => {

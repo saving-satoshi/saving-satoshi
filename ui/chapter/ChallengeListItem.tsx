@@ -5,11 +5,11 @@ import Icon from 'shared/Icon'
 import { useLang, useLocalizedRoutes, useTranslations } from 'hooks'
 import { usePathname } from 'next/navigation'
 import { useAtomValue } from 'jotai'
+import { syncedCourseProgressAtom } from 'state/progress/atoms'
 import {
-  syncedCourseProgressAtom,
   isLessonCompletedUsingLessonName,
   isLessonUnlockedUsingLessonName,
-} from 'state/progressState'
+} from 'state/progress/utils'
 
 export default function ChallengeItem({
   title,

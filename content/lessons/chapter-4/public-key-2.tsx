@@ -97,6 +97,9 @@ export default function PublicKey2({ lang }) {
                 height={lottieScreen[0]}
                 width={lottieScreen[1]}
                 isStopped={lottiePause}
+                // This empty array is needed to prevent unmount issues causing an
+                // error page to be shown.
+                eventListeners={[]}
               />
               <div
                 className={`${hiddenPoint} relative left-[-97px] top-[-121px] flex items-center justify-center xl:left-[-196px] xl:top-[-246px]`}

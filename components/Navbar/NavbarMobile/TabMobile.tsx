@@ -9,12 +9,12 @@ import Icon from 'shared/Icon'
 
 import { lessons } from 'content'
 import { useAtomValue } from 'jotai'
+import { syncedCourseProgressAtom } from 'state/progress/atoms'
 import {
-  syncedCourseProgressAtom,
   getLessonById,
   getLessonKey,
   isLessonUnlockedUsingLessonName,
-} from 'state/progressState'
+} from 'state/progress/utils'
 import useEnvironment from 'hooks/useEnvironment'
 
 export default function Tab({
