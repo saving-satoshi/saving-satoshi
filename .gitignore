@@ -40,3 +40,10 @@ next-env.d.ts
 .vscode
 .contentlayer
 .idea
+
+# e2e test answers (copied from challenges repo)
+test/e2e/answers/
+
+# e2e test results
+.playwright-cli/
+test-results/

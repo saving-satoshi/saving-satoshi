@@ -6,7 +6,8 @@ import { useTranslations, usePrevLessonLanguage } from 'hooks'
 import { Text } from 'ui'
 import { countLines, getLanguageString } from 'lib/SavedCode'
 import { useAtomValue } from 'jotai'
-import { DifficultyLevel, syncedCourseProgressAtom } from 'state/progressState'
+import { DifficultyLevel } from 'state/progress/defaultProgress'
+import { syncedCourseProgressAtom } from 'state/progress/atoms'
 
 export const metadata = {
   title: 'chapter_six.put_it_together_four.hard.title',

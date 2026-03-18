@@ -52,11 +52,15 @@ export default function Address1({ lang }) {
         className="my-8"
         heading={t('chapter_four.address_one.heading')}
       >
-        <p className="mt-2 text-lg md:text-xl">
+        <p className="mt-2 break-words text-base sm:text-lg md:text-xl">
           {t('chapter_four.address_one.paragraph_one')}
         </p>
-        <CodeExample className="mt-4" code={dataObject} language="shell" />
-        <p className="mt-8 inline-block text-lg md:text-xl">
+        <CodeExample
+            className="mt-4 max-w-full overflow-x-auto whitespace-pre-wrap break-all text-sm sm:text-base md:text-lg"
+            code={dataObject}
+            language="shell"
+        />
+        <p className="mt-8 inline-block break-words text-base sm:text-lg md:text-xl">
           {t('chapter_four.address_one.paragraph_two')}
           <a
             onMouseEnter={handleMouseEnter}

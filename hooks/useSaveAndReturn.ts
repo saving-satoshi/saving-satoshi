@@ -3,10 +3,8 @@
 import { useRouter } from 'next/navigation'
 import { useLocalizedRoutes, usePathData } from 'hooks'
 import { useAtomValue } from 'jotai'
-import {
-  currentChapterAtom,
-  syncedCourseProgressAtom,
-} from 'state/progressState'
+import { syncedCourseProgressAtom } from 'state/progress/atoms'
+import { currentChapterAtom } from 'state/progress/selectors'
 
 export default function useSaveAndReturn() {
   const { chaptersUrl } = useLocalizedRoutes()

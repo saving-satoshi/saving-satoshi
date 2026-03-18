@@ -1165,8 +1165,9 @@ const translations = {
       python: {
         paragraph_two: {
           post_link:
-            'Complete the function <span className=" text-green">decode_sig()</span>.',
-          return: 'It should return a tuple with the (r, s) values.',
+            'Complete the function <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">decode_sig()</span>.',
+          return:
+            'It should return a tuple with the (r, s) values as integers.',
         },
       },
       success: 'Nicely Done',

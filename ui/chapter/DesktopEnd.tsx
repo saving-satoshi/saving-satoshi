@@ -10,7 +10,8 @@ import { RELAY } from './End'
 import TwitterIcon from 'shared/icons/Twitter'
 import NostrIcon from 'shared/icons/Nostr'
 import { useAtomValue } from 'jotai'
-import { syncedCourseProgressAtom, isLastLesson } from 'state/progressState'
+import { syncedCourseProgressAtom } from 'state/progress/atoms'
+import { isLastLesson } from 'state/progress/utils'
 
 declare global {
   interface Window {

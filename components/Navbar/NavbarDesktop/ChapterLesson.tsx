@@ -4,11 +4,11 @@ import useEnvironment from 'hooks/useEnvironment'
 import { useAtomValue } from 'jotai'
 import React from 'react'
 import Icon from 'shared/Icon'
+import { currentChapterAtom } from 'state/progress/selectors'
 import {
-  currentChapterAtom,
   getLessonKey,
   isLessonCompletedUsingLessonName,
-} from 'state/progressState'
+} from 'state/progress/utils'
 import { CourseProgress } from 'types'
 
 interface ChapterLesson {

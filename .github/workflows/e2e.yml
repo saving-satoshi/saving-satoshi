@@ -1,0 +1,99 @@
+name: E2E Tests
+
+on:
+  pull_request:
+  pull_request_target: # Give access to the challenges token for PRs from forks
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    # Use pull_request for same-repo branches, pull_request_target for forks.
+    # This prevents duplicate runs since both events fire for fork PRs.
+    if: |
+      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) ||
+      (github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository)
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Checkout challenges repo (private)
+        uses: actions/checkout@v4
+        with:
+          repository: saving-satoshi/challenges
+          token: ${{ secrets.CHALLENGES_REPO_TOKEN }}
+          path: test/e2e/answers
+          persist-credentials: false
+
+      - name: Clone backend repo (public)
+        run: git clone --depth 1 https://github.com/saving-satoshi/saving-satoshi-backend.git ../saving-satoshi-backend
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+
+      # ─── Backend Setup ───
+      - name: Install backend dependencies
+        working-directory: ../saving-satoshi-backend
+        run: yarn install
+
+      - name: Build Docker base images for REPL
+        run: |
+          docker build -t js-base ../saving-satoshi-backend/src/base_images/javascript
+          docker build -t py-base ../saving-satoshi-backend/src/base_images/python
+
+      - name: Run backend migrations
+        working-directory: ../saving-satoshi-backend
+        run: yarn db:migrate:dev
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5433/postgres
+
+      - name: Start backend server
+        working-directory: ../saving-satoshi-backend
+        run: yarn build && yarn start &
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5433/postgres
+          SECRET: e2e-test-secret
+          WHITELIST: http://localhost:3000
+          MAX_SCRIPT_EXECUTION_TIME: 60000
+          PORT: 8000
+
+      - name: Wait for backend
+        run: |
+          timeout 30 bash -c 'until curl -s http://localhost:8000/v1/status; do sleep 1; done'
+
+      # ─── Frontend Setup ───
+      - name: Install frontend dependencies
+        run: yarn install
+
+      - name: Install Playwright browsers
+        run: npx playwright install --no-shell chromium
+
+      # ─── Run Tests ───
+      - name: Run E2E tests
+        run: npx playwright test ./test/e2e/ --reporter=list
+        env:
+          NEXT_PUBLIC_API_ENDPOINT: http://localhost:8000
+          NEXT_PUBLIC_WS_ENDPOINT: http://localhost:8000
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e2e-test-results
+          path: test-results/
