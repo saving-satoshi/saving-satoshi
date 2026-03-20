@@ -2270,7 +2270,7 @@ const translations = {
       paragraph_three: `In other words, the miner gets to keep whatever bitcoin that was sent in to the transaction but not sent back out to the transaction recipients.`,
       paragraph_four: `There is a transaction with the txid:`,
       paragraph_five: `in a block with the hash:`,
-      paragraph_six: `Print that transaction's fee in satoshis.`,
+      paragraph_six: `Return that transaction's fee in satoshis.`,
       success: `Nicely Done`,
     },
     building_blocks_six: {
