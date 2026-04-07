@@ -259,9 +259,7 @@ div.react-terminal-active-input {
 }
 @media (min-width: 768px) {
   .code-editor {
-    display: grid;
     height: calc(100dvh - 70px);
-    grid-template-rows: 40px auto 204px 56px;
   }
   .read-only-editor-button {
     height: calc(100dvh - 70px - 40px - 56px);
