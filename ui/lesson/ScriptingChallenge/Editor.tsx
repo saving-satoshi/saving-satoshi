@@ -23,6 +23,8 @@ export default function Editor({
   hiddenRange,
   loadingSavedCode,
   rangeToNotCollapse = [],
+  terminalVisible = true,
+  terminalHeight = 204,
 }: {
   language: string
   value?: string
@@ -33,6 +35,8 @@ export default function Editor({
   hiddenRange?: number[]
   loadingSavedCode?: boolean
   rangeToNotCollapse?: EditorRange[]
+  terminalVisible?: boolean
+  terminalHeight?: number
 }) {
   const { activeView } = useLessonContext()
   const isActive = activeView === LessonView.Code
@@ -100,12 +104,12 @@ export default function Editor({
   const headerHeight = 70
   const mobileTabsHeight = 48
   const languageTabsHeight = 40
-  const terminalHeight = 204
+  const resolvedTerminalHeight = terminalVisible ? terminalHeight : 0
   const runnerHeight = 56
 
   const totalHeight = isSmallScreen
     ? headerHeight + mobileTabsHeight + languageTabsHeight + runnerHeight
-    : headerHeight + languageTabsHeight + terminalHeight + runnerHeight
+    : headerHeight + languageTabsHeight + resolvedTerminalHeight + runnerHeight
 
   useEffect(() => {
     hiddenRange && setEditorOptions(createMonacoOptions(hiddenRange[2]))
