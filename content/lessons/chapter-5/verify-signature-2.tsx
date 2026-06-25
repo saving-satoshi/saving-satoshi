@@ -46,7 +46,7 @@ function msg_to_integer(msg) {
 `,
     validate: async (answer) => {
       if (answer !== correctAnswer) {
-        return [false, 'Hash is not valid']
+        return [false, t('validation.hash_not_valid')]
       }
 
       return [true, t('chapter_five.verify_signature_two.success')]
@@ -74,7 +74,7 @@ def msg_to_integer(msg):
       // so we will need to strip them before doing the comparison.
       const cleanedAnswer = answer.replace(/\u001b\[[0-9;]*m/g, '')
       if (cleanedAnswer !== correctAnswer) {
-        return [false, 'Hash is not valid']
+        return [false, t('validation.hash_not_valid')]
       }
 
       return [true, t('chapter_five.verify_signature_two.success')]

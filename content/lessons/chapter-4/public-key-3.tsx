@@ -83,14 +83,14 @@ function privateKeyToPublicKey(privateKey) {
             privateKey
           ).toLowerCase()})`
           if (cleanedAnswer.toLowerCase() !== expectedPublicKey) {
-            return [false, 'Ensure you are multiplying the private key by G']
+            return [false, t('validation.ensure_multiply_by_g')]
           }
           return [true, t('chapter_four.public_key_three.success')]
         } else {
-          return [false, 'Try multiplying with the G constant']
+          return [false, t('validation.try_multiply_g')]
         }
       } else {
-        return [false, 'Try logging out your answer']
+        return [false, t('validation.try_logging_answer')]
       }
     },
   }
@@ -133,14 +133,14 @@ def privatekey_to_publickey(private_key):
             privateKey
           ).toLowerCase()})`
           if (cleanedAnswer.toLowerCase() !== expectedPublicKey) {
-            return [false, 'Ensure you are multiplying the private key by G']
+            return [false, t('validation.ensure_multiply_by_g')]
           }
           return [true, t('chapter_four.public_key_three.success')]
         } else {
-          return [false, 'Try multiplying with the G constant']
+          return [false, t('validation.try_multiply_g')]
         }
       } else {
-        return [false, 'Try logging out your answer']
+        return [false, t('validation.try_logging_answer')]
       }
     },
   }
