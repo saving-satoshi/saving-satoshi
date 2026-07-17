@@ -2637,7 +2637,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     paragraph_one: `Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.`,
     subheading_one: `Choose an avatar`,
     subheading_two: `Back up your private key`,
-    generate: `All set? Code copied and backed-up? Make sure your do, as it can't be recovered if you lose it.`,
+    generate: `All set? Code copied and backed-up? Make sure you do, as it can't be recovered if you lose it.`,
     confirm: `Done`,
     acknowledged: `I acknowledge I have saved this private key and know that I will need it for challenges in the future.`,
   },
