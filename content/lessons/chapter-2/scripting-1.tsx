@@ -39,12 +39,10 @@ export default function Scripting1({ lang }) {
       <Text className="inline text-lg md:text-xl">
         {t('chapter_two.scripting_one.paragraph_three')}{' '}
       </Text>
-      <a
+      <span
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        href={t('chapter_two.scripting_one.tooltip_one.link')}
-        target="_blank"
-        className="inline text-lg underline md:text-xl"
+        className="inline text-lg md:text-xl"
       >
         {t('chapter_two.scripting_one.tooltip_one.highlighted')}{' '}
         <HolocatQuestion
@@ -52,10 +50,9 @@ export default function Scripting1({ lang }) {
           inline
           id="target-difficulty"
           question={t('chapter_two.scripting_one.tooltip_one.question')}
-          href={t('chapter_two.scripting_one.tooltip_one.link')}
           visible={tooltipVisible}
         />
-      </a>
+      </span>
       .
       <Text className="mt-8 text-lg md:text-xl">
         {t('chapter_two.scripting_one.paragraph_four')}

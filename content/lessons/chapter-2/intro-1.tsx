@@ -37,12 +37,10 @@ export default function Intro1({ lang }) {
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
         {t('chapter_two.intro_one.paragraph_three.a')}{' '}
-        <a
+        <span
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          href={t('chapter_two.intro_one.tooltip_one.link')}
-          target="_blank"
-          className="inline text-lg italic underline md:text-xl"
+          className="inline text-lg italic md:text-xl"
         >
           {t('chapter_two.intro_one.tooltip_one.highlighted')}{' '}
           <HolocatQuestion
@@ -50,10 +48,9 @@ export default function Intro1({ lang }) {
             inline
             id="target-difficulty"
             question={t('chapter_two.intro_one.tooltip_one.question')}
-            href={t('chapter_two.intro_one.tooltip_one.link')}
             visible={tooltipVisible}
           />
-        </a>{' '}
+        </span>{' '}
         {t('chapter_two.intro_one.paragraph_three.b')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">

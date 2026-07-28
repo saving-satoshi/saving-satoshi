@@ -12,7 +12,7 @@ const HolocatQuestion = ({
   visible,
 }: {
   id: string
-  href: string
+  href?: string
   question: string
   theme?: string
   inline?: boolean

@@ -30,12 +30,10 @@ export default function BuildingBlocks1({ lang }) {
     <ChapterIntro className="m-auto my-8 max-w-[840px]">
       <p className="mt-4 font-nunito text-xl text-white">
         {t('chapter_eight.building_blocks_one.paragraph_one.a')}
-        <a
+        <span
           onMouseEnter={handleMouseEnterOne}
           onMouseLeave={handleMouseLeaveOne}
-          href={t('chapter_eight.building_blocks_one.paragraph_one.b.href')}
-          target="_blank"
-          className="inline text-lg italic underline md:text-xl"
+          className="inline text-lg italic md:text-xl"
         >
           {t('chapter_eight.building_blocks_one.paragraph_one.b.text')}
           <HolocatQuestion
@@ -45,10 +43,9 @@ export default function BuildingBlocks1({ lang }) {
             question={t(
               'chapter_eight.building_blocks_one.paragraph_one.b.question'
             )}
-            href={t('chapter_eight.building_blocks_one.paragraph_one.b.href')}
             visible={tooltipVisibleOne}
           />
-        </a>
+        </span>
         {t('chapter_eight.building_blocks_one.paragraph_one.c')}
       </p>
       <p className="mt-8 text-lg md:text-xl">

@@ -209,12 +209,10 @@ print("KILL")
         />
         <Text className="my-4 font-nunito text-xl text-white">
           {t(`chapter_five.derive_message_seven.paragraph_three.a`)}{' '}
-          <a
+          <span
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            href={t('chapter_five.derive_message_seven.tooltip_one.link')}
-            target="_blank"
-            className="inline text-lg italic underline md:text-xl"
+            className="inline text-lg italic md:text-xl"
           >
             {t('chapter_five.derive_message_seven.tooltip_one.highlighted')}{' '}
             <HolocatQuestion
@@ -224,10 +222,9 @@ print("KILL")
               question={t(
                 'chapter_five.derive_message_seven.tooltip_one.question'
               )}
-              href={t('chapter_five.derive_message_seven.tooltip_one.link')}
               visible={tooltipVisible}
             />
-          </a>
+          </span>
           {t(`chapter_five.derive_message_seven.paragraph_three.b`)}
         </Text>
         <CodeExample copy language="bash" code="01000000" />

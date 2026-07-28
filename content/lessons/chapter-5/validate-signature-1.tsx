@@ -139,12 +139,10 @@ def encode_message(text):
           <Text className="inline text-lg">
             {t('chapter_five.validate_signature_one.paragraph_three.pre_link')}{' '}
           </Text>
-          <a
+          <span
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            href="https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520do%2520we%2520double%2520hash%2520in%2520bitcoin%253F"
-            target="_blank"
-            className="inline text-lg underline md:text-xl"
+            className="inline text-lg md:text-xl"
           >
             {t(
               'chapter_five.validate_signature_one.paragraph_three.highlighted'
@@ -153,13 +151,12 @@ def encode_message(text):
               id="holocat"
               inline
               theme={chapters['chapter-5'].metadata.theme}
-              href="https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520do%2520we%2520double%2520hash%2520in%2520bitcoin%253F"
               question={t(
                 'chapter_five.validate_signature_one.paragraph_three.question'
               )}
               visible={tooltipVisible}
             />
-          </a>{' '}
+          </span>{' '}
           <Text className="inline text-lg">
             {t(`chapter_five.validate_signature_one.paragraph_three.post_link`)}
           </Text>

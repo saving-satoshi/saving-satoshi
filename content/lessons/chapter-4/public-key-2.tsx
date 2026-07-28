@@ -157,12 +157,10 @@ export default function PublicKey2({ lang }) {
       </p>
       <p className="mt-8 text-lg md:text-xl">
         {t('chapter_four.public_key_two.paragraph_five')}{' '}
-        <a
+        <span
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          href={t('chapter_four.public_key_two.tooltip_one.link')}
-          target="_blank"
-          className="inline text-lg italic underline md:text-xl"
+          className="inline text-lg italic md:text-xl"
         >
           {t('chapter_four.public_key_two.tooltip_one.highlighted')}{' '}
           <HolocatQuestion
@@ -170,10 +168,9 @@ export default function PublicKey2({ lang }) {
             inline
             id="generator-point"
             question={t('chapter_four.public_key_two.tooltip_one.question')}
-            href={t('chapter_four.public_key_two.tooltip_one.link')}
             visible={tooltipVisible}
           />
-        </a>
+        </span>
         .
       </p>
     </TextImage>

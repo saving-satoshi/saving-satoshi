@@ -135,12 +135,10 @@ def msg_to_integer(msg):
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t(`chapter_five.verify_signature_two.paragraph_three.a`)}{' '}
-          <a
+          <span
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            href={t('chapter_five.verify_signature_two.tooltip_one.link')}
-            target="_blank"
-            className="inline text-lg italic underline md:text-xl"
+            className="inline text-lg italic md:text-xl"
           >
             {t('chapter_five.verify_signature_two.tooltip_one.highlighted')}{' '}
             <HolocatQuestion
@@ -150,10 +148,9 @@ def msg_to_integer(msg):
               question={t(
                 'chapter_five.verify_signature_two.tooltip_one.question'
               )}
-              href={t('chapter_five.derive_message_seven.tooltip_one.link')}
               visible={tooltipVisible}
             />
-          </a>
+          </span>
           {t(`chapter_five.verify_signature_two.paragraph_three.b`)}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">

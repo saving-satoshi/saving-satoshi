@@ -63,12 +63,10 @@ export default function Proposal4({ lang }) {
           </Text>
           <Text className="mt-4 font-nunito text-xl text-white">
             {t('chapter_nine.proposal_four.paragraph_three.a')}
-            <a
+            <span
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              href={t('chapter_nine.proposal_four.tooltip_one.link')}
-              target="_blank"
-              className="inline text-lg italic underline md:text-xl"
+              className="inline text-lg italic md:text-xl"
             >
               {t('chapter_nine.proposal_four.tooltip_one.highlighted')}
               <HolocatQuestion
@@ -76,10 +74,9 @@ export default function Proposal4({ lang }) {
                 inline
                 id="satoshi"
                 question={t('chapter_nine.proposal_four.tooltip_one.question')}
-                href={t('chapter_nine.proposal_four.tooltip_one.link')}
                 visible={tooltipVisible}
               />
-            </a>
+            </span>
             {t('chapter_nine.proposal_four.paragraph_three.b')}
           </Text>
           <Text className="mt-4 font-nunito text-xl font-bold text-white">

@@ -378,14 +378,10 @@ def run():
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_seven.mempool_transaction_one.paragraph_two.a')}
-          <a
+          <span
             onMouseEnter={handleMouseEnterOne}
             onMouseLeave={handleMouseLeaveOne}
-            href={t(
-              'chapter_seven.mempool_transaction_one.paragraph_two.b.href'
-            )}
-            target="_blank"
-            className="inline text-lg italic underline md:text-xl"
+            className="inline text-lg italic md:text-xl"
           >
             {t('chapter_seven.mempool_transaction_one.paragraph_two.b.text')}
             <HolocatQuestion
@@ -395,21 +391,14 @@ def run():
               question={t(
                 'chapter_seven.mempool_transaction_one.paragraph_two.b.question'
               )}
-              href={t(
-                'chapter_seven.mempool_transaction_one.paragraph_two.b.href'
-              )}
               visible={tooltipVisibleOne}
             />
-          </a>
+          </span>
           {t('chapter_seven.mempool_transaction_one.paragraph_two.c')}
-          <a
+          <span
             onMouseEnter={handleMouseEnterTwo}
             onMouseLeave={handleMouseLeaveTwo}
-            href={t(
-              'chapter_seven.mempool_transaction_one.paragraph_two.d.href'
-            )}
-            target="_blank"
-            className="inline text-lg italic underline md:text-xl"
+            className="inline text-lg italic md:text-xl"
           >
             {t('chapter_seven.mempool_transaction_one.paragraph_two.d.text')}
             <HolocatQuestion
@@ -419,12 +408,9 @@ def run():
               question={t(
                 'chapter_seven.mempool_transaction_one.paragraph_two.d.question'
               )}
-              href={t(
-                'chapter_seven.mempool_transaction_one.paragraph_two.d.href'
-              )}
               visible={tooltipVisibleTwo}
             />
-          </a>
+          </span>
           {t('chapter_seven.mempool_transaction_one.paragraph_two.e')}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">

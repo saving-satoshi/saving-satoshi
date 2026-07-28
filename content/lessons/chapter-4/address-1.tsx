@@ -56,18 +56,16 @@ export default function Address1({ lang }) {
           {t('chapter_four.address_one.paragraph_one')}
         </p>
         <CodeExample
-            className="mt-4 max-w-full overflow-x-auto whitespace-pre-wrap break-all text-sm sm:text-base md:text-lg"
-            code={dataObject}
-            language="shell"
+          className="mt-4 max-w-full overflow-x-auto whitespace-pre-wrap break-all text-sm sm:text-base md:text-lg"
+          code={dataObject}
+          language="shell"
         />
         <p className="mt-8 inline-block break-words text-base sm:text-lg md:text-xl">
           {t('chapter_four.address_one.paragraph_two')}
-          <a
+          <span
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            href={t('chapter_four.address_one.tooltip_one.link')}
-            target="_blank"
-            className="inline text-lg italic underline md:text-xl" // Ensuring all links are underlined
+            className="inline text-lg italic md:text-xl"
           >
             {t('chapter_four.address_one.tooltip_one.highlighted')}
             <HolocatQuestion
@@ -75,10 +73,9 @@ export default function Address1({ lang }) {
               inline
               id="target-difficulty"
               question={t('chapter_four.address_one.tooltip_one.question')}
-              href={t('chapter_four.address_one.tooltip_one.link')}
               visible={tooltipVisible}
             />
-          </a>
+          </span>
           .
         </p>
 

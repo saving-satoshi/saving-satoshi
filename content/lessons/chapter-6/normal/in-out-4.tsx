@@ -226,12 +226,10 @@ class Input:
 
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_six.in_out_four.normal.paragraph_eight.a')}
-          <a
+          <span
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            href={t('chapter_six.in_out_four.normal.paragraph_eight.b.href')}
-            target="_blank"
-            className="inline text-lg italic underline md:text-xl"
+            className="inline text-lg italic md:text-xl"
           >
             {t('chapter_six.in_out_four.normal.paragraph_eight.b.text')}
             <HolocatQuestion
@@ -241,10 +239,9 @@ class Input:
               question={t(
                 'chapter_six.in_out_four.normal.paragraph_eight.b.question'
               )}
-              href={t('chapter_six.in_out_four.normal.paragraph_eight.b.href')}
               visible={tooltipVisible}
             />
-          </a>
+          </span>
           {t('chapter_six.in_out_four.normal.paragraph_eight.c')}
         </Text>
 
@@ -272,12 +269,10 @@ class Input:
         <p className="mt-4">
           <Text className="font-nunito text-xl font-bold italic text-white">
             {t('chapter_six.in_out_four.normal.paragraph_eleven.a')}
-            <a
+            <span
               onMouseEnter={handleMouseEnter2}
               onMouseLeave={handleMouseLeave2}
-              href={t('chapter_six.in_out_four.normal.paragraph_eleven.b.href')}
-              target="_blank"
-              className="inline font-nunito text-xl font-bold italic underline md:text-xl"
+              className="inline font-nunito text-xl font-bold italic md:text-xl"
             >
               {t('chapter_six.in_out_four.normal.paragraph_eleven.b.text')}
               <HolocatQuestion
@@ -287,12 +282,9 @@ class Input:
                 question={t(
                   'chapter_six.in_out_four.normal.paragraph_eleven.b.question'
                 )}
-                href={t(
-                  'chapter_six.in_out_four.normal.paragraph_eleven.b.href'
-                )}
                 visible={tooltipVisible2}
               />
-            </a>
+            </span>
           </Text>
         </p>
       </LessonInfo>
