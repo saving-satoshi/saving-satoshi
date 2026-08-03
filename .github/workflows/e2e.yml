@@ -38,6 +38,7 @@ jobs:
           token: ${{ secrets.CHALLENGES_REPO_TOKEN }}
           path: test/e2e/answers
           persist-credentials: false
+          allow-unsafe-pr-checkout: true
 
       - name: Clone backend repo (public)
         run: git clone --depth 1 https://github.com/saving-satoshi/saving-satoshi-backend.git ../saving-satoshi-backend
