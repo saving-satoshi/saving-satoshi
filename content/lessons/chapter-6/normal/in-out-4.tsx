@@ -1,17 +1,9 @@
 'use client'
 
-import { chapters } from 'content/chapters'
 import { useTranslations } from 'hooks'
 import { useState } from 'react'
 import { PlainEditorConfig } from 'types'
-import {
-  LessonInfo,
-  CodeExample,
-  Title,
-  Table,
-  Text,
-  HolocatQuestion,
-} from 'ui'
+import { LessonInfo, CodeExample, Title, Table, Text } from 'ui'
 import PlainEditorWrapper from 'ui/lesson/ScriptingChallenge/PlainEditorWrapper'
 
 export const metadata = {
@@ -166,27 +158,6 @@ class Input:
     setLanguage(language)
   }
 
-  // Tooltip #1
-  const [tooltipVisible, setTooltipVisible] = useState(false)
-
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
-  }
-
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
-  }
-
-  // Tooltip #2
-  const [tooltipVisible2, setTooltipVisible2] = useState(false)
-
-  const handleMouseEnter2 = () => {
-    setTooltipVisible2(true)
-  }
-
-  const handleMouseLeave2 = () => {
-    setTooltipVisible2(false)
-  }
   return (
     <PlainEditorWrapper
       fixedCode={''}
@@ -226,22 +197,7 @@ class Input:
 
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_six.in_out_four.normal.paragraph_eight.a')}
-          <span
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="inline text-lg italic md:text-xl"
-          >
-            {t('chapter_six.in_out_four.normal.paragraph_eight.b.text')}
-            <HolocatQuestion
-              theme={chapters['chapter-6'].metadata.theme}
-              inline
-              id="tx-order"
-              question={t(
-                'chapter_six.in_out_four.normal.paragraph_eight.b.question'
-              )}
-              visible={tooltipVisible}
-            />
-          </span>
+          {t('chapter_six.in_out_four.normal.paragraph_eight.b.text')}
           {t('chapter_six.in_out_four.normal.paragraph_eight.c')}
         </Text>
 
@@ -269,22 +225,7 @@ class Input:
         <p className="mt-4">
           <Text className="font-nunito text-xl font-bold italic text-white">
             {t('chapter_six.in_out_four.normal.paragraph_eleven.a')}
-            <span
-              onMouseEnter={handleMouseEnter2}
-              onMouseLeave={handleMouseLeave2}
-              className="inline font-nunito text-xl font-bold italic md:text-xl"
-            >
-              {t('chapter_six.in_out_four.normal.paragraph_eleven.b.text')}
-              <HolocatQuestion
-                theme={chapters['chapter-6'].metadata.theme}
-                inline
-                id="endianness"
-                question={t(
-                  'chapter_six.in_out_four.normal.paragraph_eleven.b.question'
-                )}
-                visible={tooltipVisible2}
-              />
-            </span>
+            {t('chapter_six.in_out_four.normal.paragraph_eleven.b.text')}
           </Text>
         </p>
       </LessonInfo>

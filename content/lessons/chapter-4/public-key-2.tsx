@@ -1,7 +1,7 @@
 'use client'
 import dynamic from 'next/dynamic'
 import { useMediaQuery, useTranslations } from 'hooks'
-import { HolocatQuestion, TextImage } from 'ui'
+import { TextImage } from 'ui'
 const Lottie = dynamic<any>(() => import('react-lottie'), { ssr: false })
 import Animation1 from 'public/assets/animations/Animation1.json'
 import focusellipse from 'public/assets/images/focus-ellipse.png'
@@ -10,7 +10,6 @@ import Arrow from 'shared/icons/Arrow'
 import { useEffect, useState } from 'react'
 import { sleep } from 'utils'
 import Image from 'next/image'
-import { chapters } from 'content/chapters'
 
 export const metadata = {
   title: 'chapter_four.public_key_two.title',
@@ -27,7 +26,6 @@ export default function PublicKey2({ lang }) {
   const [hiddenFocusOne, setHiddenFocusOne] = useState('hidden')
   const [hiddenFocusTwo, setHiddenFocusTwo] = useState('hidden')
   const [hiddenPointText, setHiddenPointText] = useState('hidden')
-  const [tooltipVisible, setTooltipVisible] = useState(false)
 
   const isSmallScreen = useMediaQuery({ width: 1279 })
 
@@ -54,14 +52,6 @@ export default function PublicKey2({ lang }) {
     setHiddenFocusOne('fade-in')
     await sleep(3000)
     setHiddenFocusTwo('')
-  }
-
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
-  }
-
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
   }
 
   useEffect(() => {
@@ -157,21 +147,7 @@ export default function PublicKey2({ lang }) {
       </p>
       <p className="mt-8 text-lg md:text-xl">
         {t('chapter_four.public_key_two.paragraph_five')}{' '}
-        <span
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className="inline text-lg italic md:text-xl"
-        >
-          {t('chapter_four.public_key_two.tooltip_one.highlighted')}{' '}
-          <HolocatQuestion
-            theme={chapters['chapter-4'].metadata.theme}
-            inline
-            id="generator-point"
-            question={t('chapter_four.public_key_two.tooltip_one.question')}
-            visible={tooltipVisible}
-          />
-        </span>
-        .
+        {t('chapter_four.public_key_two.tooltip_one.highlighted')}.
       </p>
     </TextImage>
   )

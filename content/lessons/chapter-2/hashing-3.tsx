@@ -1,10 +1,8 @@
 'use client'
 
 import { useProceed, useTranslations } from 'hooks'
-import { ChapterIntro, HolocatQuestion } from 'ui'
+import { ChapterIntro } from 'ui'
 import { Button } from 'shared'
-import { useState } from 'react'
-import { chapters } from 'content/chapters'
 
 export const metadata = {
   title: 'chapter_two.hashing_three.title',
@@ -15,15 +13,6 @@ export const metadata = {
 export default function Hashing3({ lang }) {
   const proceed = useProceed()
   const t = useTranslations(lang)
-  const [tooltipVisible, setTooltipVisible] = useState(false)
-
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
-  }
-
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
-  }
 
   return (
     <ChapterIntro
@@ -46,20 +35,7 @@ export default function Hashing3({ lang }) {
 
       <p className="mt-8 text-lg md:text-xl">
         {t('chapter_two.hashing_three.paragraph_one.a')}
-        <span
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className="inline text-lg italic md:text-xl"
-        >
-          {t('chapter_two.hashing_three.tooltip_one.highlighted')}{' '}
-          <HolocatQuestion
-            theme={chapters['chapter-2'].metadata.theme}
-            inline
-            id="target-difficulty"
-            question={t('chapter_two.hashing_three.tooltip_one.question')}
-            visible={tooltipVisible}
-          />
-        </span>{' '}
+        {t('chapter_two.hashing_three.tooltip_one.highlighted')}{' '}
         {t('chapter_two.hashing_three.paragraph_one.b')}
       </p>
 

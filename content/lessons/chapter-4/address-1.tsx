@@ -1,13 +1,12 @@
 'use client'
 
 import { useProceed, useTranslations } from 'hooks'
-import { ChapterIntro, CodeExample, HolocatQuestion } from 'ui'
+import { ChapterIntro, CodeExample } from 'ui'
 
 import { Button } from 'shared'
 import { useEffect, useState } from 'react'
 import { getData } from 'api/data'
 import { Data } from 'types'
-import { chapters } from 'content/chapters'
 
 export const metadata = {
   title: 'chapter_four.address_one.title',
@@ -22,15 +21,6 @@ export default function Address1({ lang }) {
   const [prevData, setPrevData] = useState<Data>({ lesson_id: '', data: '' })
   const dataObject = prevData?.data ? prevData?.data : ''
   const [isLoading, setIsLoading] = useState(true)
-  const [tooltipVisible, setTooltipVisible] = useState(false)
-
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
-  }
-
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
-  }
 
   const getPrevLessonData = async () => {
     const data = await getData('CH4PKY4')
@@ -62,21 +52,7 @@ export default function Address1({ lang }) {
         />
         <p className="mt-8 inline-block break-words text-base sm:text-lg md:text-xl">
           {t('chapter_four.address_one.paragraph_two')}
-          <span
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="inline text-lg italic md:text-xl"
-          >
-            {t('chapter_four.address_one.tooltip_one.highlighted')}
-            <HolocatQuestion
-              theme={chapters['chapter-4'].metadata.theme}
-              inline
-              id="target-difficulty"
-              question={t('chapter_four.address_one.tooltip_one.question')}
-              visible={tooltipVisible}
-            />
-          </span>
-          .
+          {t('chapter_four.address_one.tooltip_one.highlighted')}.
         </p>
 
         <Button onClick={proceed} classes="mt-10 max-md:w-full">

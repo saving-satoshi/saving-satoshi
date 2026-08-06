@@ -6,14 +6,7 @@ import { getLanguageString } from 'lib/SavedCode'
 import { useEffect, useState } from 'react'
 import { currentLanguageAtom } from 'state/state'
 import { EditorConfig } from 'types'
-import {
-  LessonInfo,
-  HolocatQuestion,
-  ScriptingChallenge,
-  Text,
-  Title,
-} from 'ui'
-import { chapters } from 'content/chapters'
+import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
 
 export const metadata = {
   title: 'chapter_five.verify_signature_two.title',
@@ -31,7 +24,6 @@ export default function VerifySignature2({ lang }) {
   const [currentLanguage] = useAtom(currentLanguageAtom)
   const [objectPosition, setObjectPosition] = useState<string | undefined>()
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
-  const [tooltipVisible, setTooltipVisible] = useState(false)
 
   // for some reason the answer is coming through with a lot of ansi characters included
   // so we will need to strip them via .toString() before doing the comparison.
@@ -97,14 +89,6 @@ def msg_to_integer(msg):
     },
   }
 
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
-  }
-
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
-  }
-
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
@@ -135,22 +119,7 @@ def msg_to_integer(msg):
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t(`chapter_five.verify_signature_two.paragraph_three.a`)}{' '}
-          <span
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="inline text-lg italic md:text-xl"
-          >
-            {t('chapter_five.verify_signature_two.tooltip_one.highlighted')}{' '}
-            <HolocatQuestion
-              theme={chapters['chapter-5'].metadata.theme}
-              inline
-              id="sighash-type-flag"
-              question={t(
-                'chapter_five.verify_signature_two.tooltip_one.question'
-              )}
-              visible={tooltipVisible}
-            />
-          </span>
+          {t('chapter_five.verify_signature_two.tooltip_one.highlighted')}{' '}
           {t(`chapter_five.verify_signature_two.paragraph_three.b`)}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
