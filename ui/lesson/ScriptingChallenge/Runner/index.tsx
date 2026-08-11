@@ -3,7 +3,6 @@
 import clsx from 'clsx'
 import { useMediaQuery, useTranslations } from 'hooks'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import Convert from 'ansi-to-html'
 
 import { Loader } from 'shared'
 import Icon from 'shared/Icon'
@@ -11,41 +10,10 @@ import { HasherState } from './Hasher'
 import { EditorConfig, LessonView, StoredLessonData } from 'types'
 import { useLessonContext, StatusBar } from 'ui'
 import { useDynamicHeight } from 'hooks'
-import Terminal from './Terminal'
-import { Base64String } from 'types/classes'
-
-enum State {
-  Idle = 'idle',
-  Building = 'building',
-  Running = 'running',
-  Error = 'error',
-  Complete = 'complete',
-}
-
-function escapeHtml(text) {
-  return text
-    .replace(/&/g, '&amp;') // Replace & with &amp;
-    .replace(/</g, '&lt;') // Replace < with &lt;
-    .replace(/>/g, '&gt;') // Replace > with &gt;
-    .replace(/"/g, '&quot;') // Replace " with &quot;
-    .replace(/'/g, '&#039;') // Replace ' with &#039;
-}
-
-const convert = new Convert()
-const wsEndpoint =
-  process.env.NEXT_PUBLIC_WS_ENDPOINT || 'wss://api.savingsatoshi.com'
-
-let ws: WebSocket | undefined = undefined
-
-const send = (action: string, payload: any) => {
-  if (!ws) {
-    throw new Error('WebSocket uninitialized')
-  }
-  ws.send(JSON.stringify({ action, payload }))
-}
-
-let success: boolean | 0 | 1 | 2 | 3 | 4 | 5
-success = false
+import OutputSection from './OutputSection'
+import { DEFAULT_OUTPUT_HEIGHT, RunnerState } from './constants'
+import useOutputResize from './useOutputResize'
+import useRunnerExecution from './useRunnerExecution'
 
 export default function Runner({
   language,
@@ -59,6 +27,11 @@ export default function Runner({
   poorMessage,
   goodMessage,
   setErrors,
+  isOutputCollapsed,
+  terminalHeight,
+  setTerminalHeight,
+  closeOutput,
+  showOutput,
 }: {
   language: string
   code?: string
@@ -71,203 +44,59 @@ export default function Runner({
   poorMessage: string
   goodMessage: string
   setErrors: (errors: string[]) => void
+  isOutputCollapsed: boolean
+  terminalHeight: number
+  setTerminalHeight: React.Dispatch<React.SetStateAction<number>>
+  closeOutput: () => void
+  showOutput: () => void
 }) {
   const t = useTranslations(lang)
   const { activeView, setActiveView } = useLessonContext()
-  const terminalRef = useRef()
+  const terminalRef = useRef<HTMLIFrameElement | null>(null)
 
-  const [state, setState] = useState<State>(State.Idle)
-
-  const [loading, setLoading] = useState<boolean>(false)
-  const [isRunning, setIsRunning] = useState<boolean>(false)
-  const hasResult = useRef(false)
-  const outputBuffer = useRef<string[]>([])
   const isActive = activeView !== LessonView.Info
   const [isTryAgain, setIsTryAgain] = useState<boolean | null>(null)
-  const [hasherState, setHasherState] = useState<HasherState>(
-    HasherState.Waiting
-  )
 
   const isSmallScreen = useMediaQuery({ width: 767 })
+  const { outputPanelHeight, isResizingOutput, handleResizeStart } =
+    useOutputResize({
+      isSmallScreen,
+      terminalHeight,
+      setTerminalHeight,
+    })
 
-  const sendTerminal = (action: string, payload?: any) => {
-    if (!terminalRef.current) {
-      return
-    }
+  const {
+    state,
+    loading,
+    isRunning,
+    success,
+    hasherState,
+    handleRun,
+    resetHasherState,
+  } = useRunnerExecution({
+    terminalRef,
+    language,
+    code,
+    program,
+    onValidate,
+    isOutputCollapsed,
+    showOutput,
+    setErrors,
+    poorMessage,
+    goodMessage,
+    setActiveView,
+    setTerminalHeight,
+    t,
+  })
 
-    if (payload && payload.includes('<GE')) {
-      payload = escapeHtml(payload)
-    }
-
-    if (payload) {
-      payload = convert.toHtml(payload)
-    }
-    // @ts-ignore
-    const win = terminalRef.current.contentWindow
-    win.postMessage(JSON.stringify({ action, payload }), '*')
-  }
+  const canShowOutput = [
+    RunnerState.Running,
+    RunnerState.Error,
+    RunnerState.Complete,
+  ].includes(state)
+  const isErrorState = state === RunnerState.Error
 
   useDynamicHeight([activeView])
-
-  const handleRun = useCallback(async () => {
-    setActiveView(LessonView.Execute)
-    hasResult.current = false
-    outputBuffer.current = []
-    try {
-      success = false
-      setState(State.Building)
-      setErrors([])
-      setIsRunning(true)
-      setHasherState(HasherState.Running)
-
-      sendTerminal('clear')
-      sendTerminal('print', t('runner.result'))
-      sendTerminal('running', t('runner.computing'))
-
-      if (ws) {
-        ws.close()
-      }
-
-      ws = new WebSocket(wsEndpoint)
-      ws.onopen = () =>
-        send('repl', {
-          code: Buffer.from(`${code}\n${program}`).toString('base64'),
-          language,
-        })
-      ws.onmessage = async (e) => {
-        let { type, payload } = JSON.parse(e.data)
-        switch (type) {
-          case 'status': {
-            if (payload === 'running') {
-              setState(State.Running)
-            }
-            break
-          }
-          case 'error': {
-            const error = payload.message.trim()
-            const lines = error.split('\n')
-            sendTerminal('clear')
-            sendTerminal('print', t('runner.result'))
-            lines.forEach((line) =>
-              sendTerminal('error', line.replace(' ', '&nbsp;'))
-            )
-            setHasherState(HasherState.Error)
-            setIsRunning(false)
-            setState(State.Error)
-            ws?.close()
-
-            break
-          }
-          case 'debug': {
-            const wsRemovedRegex =
-              /\[system\] Image [0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12} removed\./
-            if (hasResult.current === false && wsRemovedRegex.test(payload)) {
-              sendTerminal('clear')
-              sendTerminal('print', t('runner.result'))
-              sendTerminal(
-                'error',
-                'Repl timed out without a response. Please try again.'
-              )
-              setHasherState(HasherState.Error)
-              setIsRunning(false)
-              setState(State.Error)
-              ws?.close()
-            }
-            break
-          }
-          case 'output': {
-            // Let's accumulate output chunks
-            payload = payload.trim()
-            if (payload) {
-              outputBuffer.current.push(payload)
-              hasResult.current = true
-            }
-            // we shoulnd't display or close websocket here, we should wait for 'end' message
-            break
-          }
-          case 'end': {
-            if (hasResult.current === false) {
-              sendTerminal('clear')
-              sendTerminal('print', t('runner.result'))
-              sendTerminal(
-                'error',
-                'Repl timed out without a response. Please try again.'
-              )
-              setHasherState(HasherState.Error)
-              setIsRunning(false)
-              setState(State.Error)
-              ws?.close()
-              break
-            }
-
-            // we can now display the accumulated output
-            const completeOutput = outputBuffer.current.join('')
-            sendTerminal('clear')
-            sendTerminal('print', t('runner.result'))
-            sendTerminal('print', completeOutput)
-
-            const [res, msg] = await onValidate({
-              code: new Base64String(`${code}\n${program}`),
-              answer: completeOutput,
-            })
-
-            if (!res || res === 2) {
-              setIsRunning(false)
-              setHasherState(HasherState.Error)
-              if (msg) {
-                sendTerminal('error', msg)
-              }
-              ws?.close()
-              break
-            }
-            if (res === 3) {
-              setIsRunning(false)
-              setHasherState(HasherState.Success)
-              success = 3
-              sendTerminal('success', t('runner.evaluation'))
-              sendTerminal('success', poorMessage)
-              ws?.close()
-              break
-            }
-            if (res === 4) {
-              setIsRunning(false)
-              setHasherState(HasherState.Success)
-              success = 4
-              sendTerminal('success', t('runner.evaluation'))
-              sendTerminal('success', goodMessage)
-              ws?.close()
-              break
-            }
-
-            success = true
-            setIsRunning(false)
-            setHasherState(HasherState.Success)
-            sendTerminal('success', t('runner.evaluation'))
-            sendTerminal('success', msg)
-            ws?.close()
-            break
-          }
-        }
-      }
-
-      ws.onerror = (err) => {
-        setIsRunning(false)
-      }
-    } catch (ex) {
-      console.error(ex)
-      setIsRunning(false)
-    }
-  }, [
-    code,
-    goodMessage,
-    language,
-    onValidate,
-    poorMessage,
-    program,
-    setActiveView,
-    setErrors,
-    t,
-  ])
 
   const handleRunKeyPress = useCallback(
     (event: KeyboardEvent) => {
@@ -278,43 +107,17 @@ export default function Runner({
     [handleRun]
   )
 
-  useEffect(() => {
-    if (ws) {
-      ws.close()
-    }
-
-    sendTerminal('clear')
-  }, [language])
-
   const onTryAgain = () => {
     setIsTryAgain(true)
     handleTryAgain(true)
   }
 
   useEffect(() => {
-    isTryAgain && setHasherState(HasherState.Waiting)
+    if (isTryAgain) {
+      resetHasherState()
+    }
     setIsTryAgain(false)
-  }, [isTryAgain, code])
-
-  useEffect(() => {
-    const handleMessage = (e) => {
-      try {
-        const { action, payload } = JSON.parse(e.data)
-        switch (action) {
-          case 'ready': {
-            sendTerminal('clear')
-            break
-          }
-        }
-      } catch (ex) {}
-    }
-    if (terminalRef.current) {
-      window.addEventListener('message', handleMessage)
-    }
-    return () => {
-      window.removeEventListener('message', handleMessage)
-    }
-  }, [terminalRef])
+  }, [code, isTryAgain, resetHasherState])
 
   useEffect(() => {
     document.addEventListener('keydown', handleRunKeyPress)
@@ -324,8 +127,27 @@ export default function Runner({
     }
   }, [handleRunKeyPress])
 
+  const outputSection = (
+    <OutputSection
+      isOutputCollapsed={isOutputCollapsed}
+      isSmallScreen={isSmallScreen}
+      activeView={activeView}
+      hasherState={hasherState}
+      showIdlePanel={state === RunnerState.Idle}
+      showBuildingPanel={state === RunnerState.Building}
+      showResultPanel={canShowOutput}
+      isErrorState={isErrorState}
+      outputPanelHeight={outputPanelHeight}
+      defaultOutputHeight={DEFAULT_OUTPUT_HEIGHT}
+      isResizingOutput={isResizingOutput}
+      handleResizeStart={handleResizeStart}
+      closeOutput={closeOutput}
+      terminalRef={terminalRef}
+    />
+  )
+
   return (
-    <>
+    <div className="flex min-h-0 w-full flex-col">
       {loading && (
         <div
           className={clsx(
@@ -340,56 +162,21 @@ export default function Runner({
         </div>
       )}
 
-      <div
-        className={clsx({
-          'hidden md:flex':
-            !isSmallScreen ||
-            (activeView !== LessonView.Execute &&
-              hasherState !== HasherState.Running),
-        })}
-      >
-        {state === State.Idle && (
-          <div className="w-full border-t border-white border-opacity-30 bg-black bg-opacity-20 p-4">
-            <div className="font-mono text-xs text-white">Script output</div>
-            <div className="font-mono text-xs text-white text-opacity-60">
-              Waiting for you to run the script...
-            </div>
-          </div>
-        )}
-        {state === State.Building && (
-          <div className="h-full w-full grow border-t border-white border-opacity-30 bg-black bg-opacity-20 p-4">
-            <div className="font-mono text-xs text-white">Starting up</div>
-            <div className="font-mono text-xs text-white text-opacity-60">
-              This will take just a few seconds...
-            </div>
-          </div>
-        )}
-        <Terminal
-          ref={terminalRef}
-          className={clsx({
-            block:
-              [State.Running, State.Error, State.Complete].indexOf(state) !==
-              -1,
-            hidden:
-              [State.Running, State.Error, State.Complete].indexOf(state) ===
-              -1,
-          })}
-        />
-      </div>
+      {outputSection}
 
       <div
         className={clsx(
-          'flex h-14 min-h-14 w-full items-start border-t border-white border-opacity-30',
+          'sticky bottom-0 z-10 h-14 min-h-14 w-full shrink-0 items-start border-t border-white border-opacity-30 bg-black/10',
           {
-            'hidden md:flex':
-              !isSmallScreen &&
-              activeView !== LessonView.Execute &&
-              hasherState !== HasherState.Success,
             hidden:
               hasherState === HasherState.Success ||
               loading ||
-              activeView === 'info',
-            flex: isActive,
+              (isSmallScreen && activeView === LessonView.Info),
+            flex: !(
+              hasherState === HasherState.Success ||
+              loading ||
+              (isSmallScreen && activeView === LessonView.Info)
+            ),
           }
         )}
       >
@@ -423,7 +210,7 @@ export default function Runner({
           {isRunning && (
             <>
               <Loader className="h-6 w-6 text-white" />
-              <span>Running...</span>
+              <span>{t('runner.computing')}</span>
             </>
           )}
         </button>
@@ -437,6 +224,6 @@ export default function Runner({
           tooltipDisabled
         />
       )}
-    </>
+    </div>
   )
 }

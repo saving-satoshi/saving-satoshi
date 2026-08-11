@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import LanguageTabs from './LanguageTabs'
 import Editor from './Editor'
@@ -35,6 +35,8 @@ const tabData = [
     text: 'Execute',
   },
 ]
+
+const DEFAULT_OUTPUT_HEIGHT = 204
 
 function trimLastTwoLines(code: string): string {
   let lines = code.split('\n')
@@ -85,7 +87,21 @@ export default function ScriptingChallenge({
   const [challengeSuccess, setChallengeSuccess] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [errors, setErrors] = useState<string[]>([])
+  const [isOutputCollapsed, setIsOutputCollapsed] = useState(false)
+  const [outputPanelHeight, setOutputPanelHeight] = useState(
+    DEFAULT_OUTPUT_HEIGHT
+  )
   const debouncedCode = useDebounce(code, 500)
+
+  const closeOutput = useCallback(() => {
+    setIsOutputCollapsed(true)
+    setOutputPanelHeight(DEFAULT_OUTPUT_HEIGHT)
+  }, [])
+
+  const showOutput = useCallback(() => {
+    setIsOutputCollapsed(false)
+    setOutputPanelHeight(DEFAULT_OUTPUT_HEIGHT)
+  }, [])
   const hasLoaded = useRef(false)
 
   // Hydrate editor from localStorage before enabling autosave.
@@ -241,7 +257,7 @@ export default function ScriptingChallenge({
 
         <div
           className={clsx(
-            'code-editor flex grow flex-col justify-between border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l',
+            'code-editor flex min-h-0 grow flex-col border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l',
             {
               hidden: activeView === LessonView.Info,
             }
@@ -269,6 +285,8 @@ export default function ScriptingChallenge({
               constraints={constraints}
               loadingSavedCode={loadingSavedCode}
               rangeToNotCollapse={config.languages[language].rangeToNotCollapse}
+              terminalVisible={!isOutputCollapsed}
+              terminalHeight={isOutputCollapsed ? 0 : outputPanelHeight}
               options={editorOptions}
             />
           </div>
@@ -284,6 +302,11 @@ export default function ScriptingChallenge({
             handleTryAgain={handleTryAgain}
             poorMessage={poorMessage ?? ''}
             goodMessage={goodMessage ?? ''}
+            isOutputCollapsed={isOutputCollapsed}
+            terminalHeight={outputPanelHeight}
+            setTerminalHeight={setOutputPanelHeight}
+            closeOutput={closeOutput}
+            showOutput={showOutput}
           />
         </div>
       </Lesson>
