@@ -1,13 +1,6 @@
 'use client'
 
-import { chapters } from 'content/chapters'
-import {
-  ScriptingChallenge,
-  LessonInfo,
-  Title,
-  Table,
-  HolocatQuestion,
-} from 'ui'
+import { ScriptingChallenge, LessonInfo, Title, Table } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { Text } from 'ui'
@@ -342,24 +335,6 @@ def run():
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
-  const [tooltipVisibleOne, setTooltipVisibleOne] = useState(false)
-  const [tooltipVisibleTwo, setTooltipVisibleTwo] = useState(false)
-
-  const handleMouseEnterOne = () => {
-    setTooltipVisibleOne(true)
-  }
-
-  const handleMouseLeaveOne = () => {
-    setTooltipVisibleOne(false)
-  }
-
-  const handleMouseEnterTwo = () => {
-    setTooltipVisibleTwo(true)
-  }
-
-  const handleMouseLeaveTwo = () => {
-    setTooltipVisibleTwo(false)
-  }
 
   return (
     <ScriptingChallenge
@@ -378,53 +353,9 @@ def run():
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
           {t('chapter_seven.mempool_transaction_one.paragraph_two.a')}
-          <a
-            onMouseEnter={handleMouseEnterOne}
-            onMouseLeave={handleMouseLeaveOne}
-            href={t(
-              'chapter_seven.mempool_transaction_one.paragraph_two.b.href'
-            )}
-            target="_blank"
-            className="inline text-lg italic underline md:text-xl"
-          >
-            {t('chapter_seven.mempool_transaction_one.paragraph_two.b.text')}
-            <HolocatQuestion
-              theme={chapters['chapter-7'].metadata.theme}
-              inline
-              id="weight-units"
-              question={t(
-                'chapter_seven.mempool_transaction_one.paragraph_two.b.question'
-              )}
-              href={t(
-                'chapter_seven.mempool_transaction_one.paragraph_two.b.href'
-              )}
-              visible={tooltipVisibleOne}
-            />
-          </a>
+          {t('chapter_seven.mempool_transaction_one.paragraph_two.b.text')}
           {t('chapter_seven.mempool_transaction_one.paragraph_two.c')}
-          <a
-            onMouseEnter={handleMouseEnterTwo}
-            onMouseLeave={handleMouseLeaveTwo}
-            href={t(
-              'chapter_seven.mempool_transaction_one.paragraph_two.d.href'
-            )}
-            target="_blank"
-            className="inline text-lg italic underline md:text-xl"
-          >
-            {t('chapter_seven.mempool_transaction_one.paragraph_two.d.text')}
-            <HolocatQuestion
-              theme={chapters['chapter-7'].metadata.theme}
-              inline
-              id="tx-order"
-              question={t(
-                'chapter_seven.mempool_transaction_one.paragraph_two.d.question'
-              )}
-              href={t(
-                'chapter_seven.mempool_transaction_one.paragraph_two.d.href'
-              )}
-              visible={tooltipVisibleTwo}
-            />
-          </a>
+          {t('chapter_seven.mempool_transaction_one.paragraph_two.d.text')}
           {t('chapter_seven.mempool_transaction_one.paragraph_two.e')}
         </Text>
         <Text className="mt-4 font-nunito text-xl text-white">
