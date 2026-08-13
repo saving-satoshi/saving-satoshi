@@ -110,17 +110,17 @@ console.log(tx.serialize().toString('hex'));`,
         answer.slice(0, 248) !==
         '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd158c5a20300000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
       ) {
-        return [false, 'Nope! Try again.']
+        return [false, t('validation.nope_try_again')]
       }
       if (answer.slice(250, 252) !== '30') {
-        return [false, 'Nope! Try again.']
+        return [false, t('validation.nope_try_again')]
       }
       const size = (parseInt(answer.slice(248, 250), 16) - 1) * 2
       if (answer.slice(250 + size, 250 + size + 4) !== '0121') {
-        return [false, 'Nope! Try again.']
+        return [false, t('validation.nope_try_again')]
       }
       if (answer.slice(-8) !== '00000000') {
-        return [false, 'Nope! Try again.']
+        return [false, t('validation.nope_try_again')]
       }
       return [true, t('chapter_six.put_it_together_six.hard.success')]
     },
@@ -163,17 +163,17 @@ print(tx.serialize().hex())`,
         answer.slice(0, 248) !==
         '020000000001018e74531c4516169a7cc84d3f65c216a39dcb24cae59d1fd76e6320c93116088a0100000000ffffffff0200e1f50500000000220020422e079e04cdec4dd15ccf0b3fd0c742eea8b067bf06c2b489c6efd05abf1fd158c5a20300000000160014b234aee5ee74d7615c075b4fe81fd8ace54137f202'
       ) {
-        return [false, 'Nope! Try again.']
+        return [false, t('validation.nope_try_again')]
       }
       if (answer.slice(250, 252) !== '30') {
-        return [false, 'Nope! Try again.']
+        return [false, t('validation.nope_try_again')]
       }
       const size = (parseInt(answer.slice(248, 250), 16) - 1) * 2
       if (answer.slice(250 + size, 250 + size + 4) !== '0121') {
-        return [false, 'Nope! Try again.']
+        return [false, t('validation.nope_try_again')]
       }
       if (answer.slice(-8) !== '00000000') {
-        return [false, 'Nope! Try again.']
+        return [false, t('validation.nope_try_again')]
       }
       return [true, t('chapter_six.put_it_together_six.hard.success')]
     },

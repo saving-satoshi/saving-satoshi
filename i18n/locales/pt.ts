@@ -1939,7 +1939,7 @@ const translations = {
         bullet_one:
           'Mika 3000 recebe 100.000.000 satoshis para bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
         bullet_two:
-          'Você recebe 61.000.000 de volta em seu endereço bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
+          'Você recebe 61.000.000 de volta em seu endereço (pré-carregado no código)',
         success: 'Você conseguiu! Você criou uma transação!',
       },
       hard: {
@@ -2088,7 +2088,7 @@ const translations = {
         bullet_one:
           'Mika 3000 recebe 100.000.000 satoshis para bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj',
         bullet_two:
-          'Você recebe 61.000.000 de volta em seu endereço bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs',
+          'Você recebe 61.000.000 de volta em seu endereço (pré-carregado no código)',
         success: 'Você conseguiu! Você criou uma transação!',
       },
     },

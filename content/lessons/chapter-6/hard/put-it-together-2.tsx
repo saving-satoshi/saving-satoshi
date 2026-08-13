@@ -148,9 +148,9 @@ console.log(tx_dluitpjd.serialize().toString('hex')==='020000000001018e74531c451
         if (answer === 'true') {
           return [true, t('chapter_six.put_it_together_two.hard.success')]
         }
-        return [false, 'Not a valid hex value']
+        return [false, t('validation.not_valid_hex')]
       }
-      return [false, 'Please return a value']
+      return [false, t('validation.please_return_value')]
     },
   }
 
@@ -276,9 +276,9 @@ class Transaction:
         if (answer === 'true') {
           return [true, t('chapter_six.put_it_together_two.hard.success')]
         }
-        return [false, 'Not a valid hex value']
+        return [false, t('validation.not_valid_hex')]
       }
-      return [false, 'Return a value']
+      return [false, t('validation.return_value')]
     },
   }
 

@@ -92,10 +92,10 @@ const showtime = () => {
         if (answer === 'true') {
           return [true, t('chapter_eight.building_blocks_eight.success')]
         } else {
-          return [false, 'recheck your methods']
+          return [false, t('validation.recheck_your_methods')]
         }
       } else {
-        return [false, 'No output']
+        return [false, t('validation.no_output')]
       }
     },
   }
@@ -133,10 +133,10 @@ def showtime():
         if (answer === 'True') {
           return [true, t('chapter_eight.building_blocks_eight.success')]
         } else {
-          return [false, 'Recheck your methods']
+          return [false, t('validation.recheck_your_methods_caps')]
         }
       } else {
-        return [false, 'No output']
+        return [false, t('validation.no_output')]
       }
     },
   }

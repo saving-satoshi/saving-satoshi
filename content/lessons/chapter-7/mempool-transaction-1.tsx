@@ -179,7 +179,7 @@ function run() {
     validate: async (answer: string) => {
       if (answer) {
         if (answer.startsWith('Too large block!')) {
-          return [false, 'Invalid block, keep working!']
+          return [false, t('validation.invalid_block')]
         }
 
         if (
@@ -203,10 +203,10 @@ function run() {
         ) {
           return [5, t('chapter_seven.mempool_transaction_one.success')]
         } else {
-          return [false, 'Invalid block, keep working!']
+          return [false, t('validation.invalid_block')]
         }
       } else {
-        return [false, "can't find a return in both of the methods"]
+        return [false, t('validation.cant_find_return_both')]
       }
     },
   }
@@ -291,7 +291,7 @@ def run():
     validate: async (answer: string) => {
       if (answer) {
         if (!answer.startsWith('Total fees:')) {
-          return [false, 'Invalid block, keep working!']
+          return [false, t('validation.invalid_block')]
         }
 
         if (
@@ -315,10 +315,10 @@ def run():
         ) {
           return [5, t('chapter_seven.mempool_transaction_one.success')]
         } else {
-          return [false, 'Invalid block, keep working!']
+          return [false, t('validation.invalid_block')]
         }
       } else {
-        return [false, "can't find a return in both of the methods"]
+        return [false, t('validation.cant_find_return_both')]
       }
     },
   }

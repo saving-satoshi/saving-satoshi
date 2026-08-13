@@ -49,9 +49,9 @@ function encode_message(text){
         if (answer == correctAnswer) {
           return [true, t('chapter_five.validate_signature_one.success')]
         }
-        return [false, 'Not a valid hex value']
+        return [false, t('validation.not_valid_hex')]
       }
-      return [false, 'Return a value']
+      return [false, t('validation.return_value')]
     },
   }
 
@@ -84,9 +84,9 @@ def encode_message(text):
         if (answer === correctAnswer) {
           return [true, t('chapter_five.validate_signature_one.success')]
         }
-        return [false, 'Not a valid hex value']
+        return [false, t('validation.not_valid_hex')]
       }
-      return [false, 'Return a value']
+      return [false, t('validation.return_value')]
     },
   }
 

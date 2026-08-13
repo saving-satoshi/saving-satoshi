@@ -1589,7 +1589,7 @@ const translations = {
           },
         },
         bullet_one: `Mika 3000 收到 100,000,000 satoshis 到地址 bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj`,
-        bullet_two: `你收回 61,000,000 satoshis 到地址 bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs`,
+        bullet_two: `你收回 61,000,000 satoshis 到地址 (代码中已预加载)`,
         success: `完成！你已经成功构建了交易！`,
       },
       hard: {
@@ -1711,7 +1711,7 @@ const translations = {
         paragraph_three: `等等！我们还需要包括“手续费”。我们会从找零输出中略微扣除一小部分，以激励矿池将交易包含到区块中。将找零从 61,000,000 减少到 60,999,000 satoshis。`,
         paragraph_four: `最后，工作完成。脚本应返回交易的 <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">序列化()</span> 方法结果。这是一个有效签名的比特币交易，可以广播到网络，将资金发送给 Mika 3000！`,
         bullet_one: `Mika 3000 收到 100,000,000 satoshis 到 bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj`,
-        bullet_two: `你收回 61,000,000 到你的地址 bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs`,
+        bullet_two: `你收回 61,000,000 到你的地址 (代码中已预加载)`,
         success: `完成！你已经构建了一个交易！`,
       },
     },

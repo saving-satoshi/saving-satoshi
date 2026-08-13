@@ -46,12 +46,9 @@ export default function PutItTogetherOneHard({ lang }) {
         if (answer === 'true') {
           return [true, t('chapter_six.put_it_together_one.hard.success')]
         }
-        return [
-          false,
-          'Ensure you are correctly pushing and serializing the data',
-        ]
+        return [false, t('validation.ensure_push_serialize')]
       }
-      return [false, 'Return a value']
+      return [false, t('validation.return_value')]
     },
   }
 
@@ -83,9 +80,9 @@ class Witness:
         if (answer === 'true') {
           return [true, t('chapter_six.put_it_together_one.hard.success')]
         }
-        return [false, 'Not a valid hex value']
+        return [false, t('validation.not_valid_hex')]
       }
-      return [false, 'Return a value']
+      return [false, t('validation.return_value')]
     },
   }
 
