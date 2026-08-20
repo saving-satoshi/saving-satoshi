@@ -257,7 +257,6 @@ const translations = {
       paragraph_four: `This explains all the machines in the Vanderpoole family collection.`,
       tooltip_one: {
         question: `What is an ASIC miner?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520an%2520ASIC%2520miner%253F`,
         highlighted: `ASIC`,
       },
     },
@@ -305,7 +304,6 @@ const translations = {
       paragraph_three: `Find a hash that starts with a zero (“0”). Keep typing different things below until you find a hash that we want.`,
       tooltip_one: {
         question: `How is SHA-256 used in bitcoin? `,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520SHA-256%2520used%2520in%2520bitcoin%253F`,
         highlighted: `SHA-256`,
       },
     },
@@ -345,7 +343,6 @@ const translations = {
       paragraph_six: `For the next challenge, write a script that finds a hash that starts with five zeroes (00000).`,
       tooltip_one: {
         question: `What is target difficulty? `,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520is%2520target%2520difficulty%253F`,
         highlighted: `target difficulty`,
       },
     },
@@ -624,7 +621,6 @@ const translations = {
       tooltip_one: {
         highlighted: `Generator Point`,
         question: `What is the Generator Point?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520the%2520Generator%2520point%253F`,
       },
     },
 
@@ -661,7 +657,6 @@ const translations = {
       paragraph_two: `Note that generating a public key is a one way street. You can't figure out the private key used to generate a public key unless you solve a notoriously difficult math problem called the `,
       tooltip_one: {
         question: `How is the discrete log problem relevant to bitcoin?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520the%2520discrete%2520log%2520problem%2520relevant%2520to%2520bitcoin%253F`,
         highlighted: `discrete log problem `,
       },
     },
@@ -850,7 +845,6 @@ const translations = {
       },
       tooltip_one: {
         question: `What are sighash flags?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F`,
         highlighted: `sighash type flag`,
       },
       success: `Nice! You've constructed a message to sign.`,
@@ -874,7 +868,6 @@ const translations = {
       paragraph_four: `Once we have a 32-byte hash, that data is re-interpreted as an integer. Yes, a 32-byte integer (that is a truly enormous number)!`,
       tooltip_one: {
         question: `Why does everything in bitcoin use double hash (HASH256)?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520does%2520everything%2520in%2520bitcoin%2520use%2520double%2520hash%2520%28HASH256%29%253F`,
         highlighted: `double SHA256 digest`,
       },
       success: `Nicely done!`,
@@ -1096,7 +1089,6 @@ const translations = {
           b: {
             text: ` reversed`,
             question: `Why do we reverse hashes in bitcoin?`,
-            href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin`,
           },
           c: `, but only when presented to or entered by a user. When a hash is provided in hexadecimal format, the byte order must be reversed before storing or transmitting the data as raw bytes.`,
         },
@@ -1167,7 +1159,6 @@ const translations = {
           b: {
             text: `little-endian`,
             question: `What is endianness?`,
-            href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520endianness%253F`,
           },
         },
         success: `The Input class looks good. Great Work!`,
@@ -1787,13 +1778,11 @@ const translations = {
         a: `You need to fix the block assembly function not only to build valid blocks but also maximize the fees in the block, so the miners can earn the most profit possible given the consensus rules. The most critical consensus rules you will need to pay attention to restrict the total `,
         b: {
           text: `transaction weight `,
-          href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520weighted%2520units`,
           question: `What are weighted units?`,
         },
         c: ` and the `,
         d: {
           text: `order of transactions `,
-          href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520order%2520do%2520transactions%2520need%2520to%2520be%2520in%2520a%2520block`,
           question: `What order do transactions need to be in a block?`,
         },
         e: ` in the block.`,
@@ -1864,7 +1853,6 @@ const translations = {
         a: `You know that Vanderpoole has been trying to confuse people by mining blocks that generate more bitcoin than they are allowed to, ultimately inflating the money supply. These blocks are invalid because they break hard-coded protocol rules, but they might still fool some people running buggy or malicious software, or `,
         b: {
           text: `light clients`,
-          href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520light%2520clients%253F`,
           question: `What are light clients?`,
         },
         c: ` that do not fully verify network data.`,
@@ -2180,7 +2168,6 @@ const translations = {
       paragraph_five: `Provide two initial stacks in sequence: first Vanderpoole's spending stack, then your stack with the revealed preimage.`,
       tooltip_one: {
         question: `What is a satoshi?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520a%2520satoshi%253F`,
         highlighted: `satoshi`,
       },
       next_step_message: `Great first spend. Now enter your stack with the preimage.`,
@@ -2258,7 +2245,6 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
       paragraph_six: `—LASZLO: “The one and only.”`,
       tooltip_one: {
         question: `What is the significance of Laszlo and pizza day?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520the%2520significance%2520of%2520Laszlo%2520and%2520pizza%2520day%253F`,
         highlighted: `THE Laszlo`,
       },
     },
@@ -2637,7 +2623,7 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     paragraph_one: `Copy and store a simple code to save and load your progress in this browser. If you already have a code, load your progress here.`,
     subheading_one: `Choose an avatar`,
     subheading_two: `Back up your private key`,
-    generate: `All set? Code copied and backed-up? Make sure your do, as it can't be recovered if you lose it.`,
+    generate: `All set? Code copied and backed-up? Make sure you do, as it can't be recovered if you lose it.`,
     confirm: `Done`,
     acknowledged: `I acknowledge I have saved this private key and know that I will need it for challenges in the future.`,
   },

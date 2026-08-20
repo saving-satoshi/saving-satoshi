@@ -1,10 +1,8 @@
 'use client'
 
 import { useProceed, useTranslations } from 'hooks'
-import { ChapterIntro, Text, HolocatQuestion } from 'ui'
+import { ChapterIntro, Text } from 'ui'
 import { Button } from 'shared'
-import { useState } from 'react'
-import { chapters } from 'content/chapters'
 
 export const metadata = {
   title: 'chapter_two.scripting_one.title',
@@ -15,15 +13,6 @@ export const metadata = {
 export default function Scripting1({ lang }) {
   const t = useTranslations(lang)
   const proceed = useProceed()
-  const [tooltipVisible, setTooltipVisible] = useState(false)
-
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
-  }
-
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
-  }
 
   return (
     <ChapterIntro
@@ -39,24 +28,7 @@ export default function Scripting1({ lang }) {
       <Text className="inline text-lg md:text-xl">
         {t('chapter_two.scripting_one.paragraph_three')}{' '}
       </Text>
-      <a
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        href={t('chapter_two.scripting_one.tooltip_one.link')}
-        target="_blank"
-        className="inline text-lg underline md:text-xl"
-      >
-        {t('chapter_two.scripting_one.tooltip_one.highlighted')}{' '}
-        <HolocatQuestion
-          theme={chapters['chapter-2'].metadata.theme}
-          inline
-          id="target-difficulty"
-          question={t('chapter_two.scripting_one.tooltip_one.question')}
-          href={t('chapter_two.scripting_one.tooltip_one.link')}
-          visible={tooltipVisible}
-        />
-      </a>
-      .
+      {t('chapter_two.scripting_one.tooltip_one.highlighted')}.
       <Text className="mt-8 text-lg md:text-xl">
         {t('chapter_two.scripting_one.paragraph_four')}
       </Text>

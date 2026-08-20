@@ -1,9 +1,7 @@
 'use client'
 
-import { chapters } from 'content/chapters'
 import { useTranslations } from 'hooks'
-import { useState } from 'react'
-import { HolocatQuestion, Introduction, Text } from 'ui'
+import { Introduction, Text } from 'ui'
 
 export const metadata = {
   title: 'chapter_two.intro_one.title',
@@ -14,15 +12,6 @@ export const metadata = {
 
 export default function Intro1({ lang }) {
   const t = useTranslations(lang)
-  const [tooltipVisible, setTooltipVisible] = useState(false)
-
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
-  }
-
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
-  }
 
   return (
     <Introduction lang={lang} imagePosition="object-[61%_67%]">
@@ -37,23 +26,7 @@ export default function Intro1({ lang }) {
       </Text>
       <Text className="mt-4 text-lg md:text-xl">
         {t('chapter_two.intro_one.paragraph_three.a')}{' '}
-        <a
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          href={t('chapter_two.intro_one.tooltip_one.link')}
-          target="_blank"
-          className="inline text-lg italic underline md:text-xl"
-        >
-          {t('chapter_two.intro_one.tooltip_one.highlighted')}{' '}
-          <HolocatQuestion
-            theme={chapters['chapter-2'].metadata.theme}
-            inline
-            id="target-difficulty"
-            question={t('chapter_two.intro_one.tooltip_one.question')}
-            href={t('chapter_two.intro_one.tooltip_one.link')}
-            visible={tooltipVisible}
-          />
-        </a>{' '}
+        {t('chapter_two.intro_one.tooltip_one.highlighted')}{' '}
         {t('chapter_two.intro_one.paragraph_three.b')}
       </Text>
       <Text className="mt-4 text-lg md:text-xl">

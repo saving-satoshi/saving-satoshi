@@ -121,10 +121,7 @@ const translations = {
       tooltip_hex:
         'हेक्साडेसिमल एक संख्या प्रणाली है जो आधार 16 का उपयोग करती है और बिटकॉइन में डेटा को ' +
         'संक्षिप्त रूप से दर्शाने के लिए उपयोग की जाती है। ' +
-        '<a href="https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520hexadecimal%2520encoding%2520and%2520why%2520is%2520it%2520used%2520in%2520Bitcoin%253F" ' +
-        'target="_blank" rel="noreferrer">' +
-        'और जानें' +
-        '</a>',
+        'और जानें',
       view_block_0: 'ब्लॉक 0 देखें',
       placeholder: 'आपको जो वैल्यू मिली है उसे यहां पेस्ट करें',
     },
@@ -133,9 +130,7 @@ const translations = {
       heading: 'आइए संदेश को डिकोड करें',
       paragraph_one:
         'आपको जो संदेश मिला वह हेक्स नामक प्रारूप में एन्कोड किया गया था। अब हम इसे ' +
-        '<a href="https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520ASCII%2520encoding%2520and%2520why%2520is%2520it%2520used%253F" target="_blank" rel="noreferrer" className="underline">' +
         'ASCII' +
-        '</a>' +
         ' में बदलने के लिए एक कमांड चलाएंगे, जिसे हम पढ़ सकेंगे।',
 
       paragraph_two:
@@ -230,7 +225,6 @@ const translations = {
       paragraph_four: `यह Vanderpoole परिवार के संग्रह में मौजूद सभी मशीनों की व्याख्या करता है।`,
       tooltip_one: {
         question: `ASIC माइनर क्या है?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520an%2520ASIC%2520miner%253F`,
         highlighted: `ASIC`,
       },
     },
@@ -277,7 +271,6 @@ const translations = {
       paragraph_three: `ऐसा हैश खोजें जो शून्य (“0”) से शुरू होता हो। नीचे अलग-अलग चीज़ें टाइप करते रहें जब तक कि मनचाहा हैश न मिल जाए।`,
       tooltip_one: {
         question: `बिटकॉइन में SHA-256 का उपयोग कैसे किया जाता है?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520SHA-256%2520used%2520in%2520bitcoin%253F`,
         highlighted: `SHA-256`,
       },
     },
@@ -614,17 +607,11 @@ const translations = {
       title: 'सार्वजनिक कुंजी',
       paragraph_one:
         'निजी कुंजी से सार्वजनिक कुंजी निकालने के लिए, हम जेनरेटर पॉइंट के साथ एक अंडाकृति कर्व क्रिप्टोग्राफी क्रिया को बार-बार प्रायोग करते हैं (' +
-        '<a href="https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520is%2520the%2520generator%2520point%2520repeatedly%2520used%2520to%2520derive%2520a%2520public%2520key%2520from%2520a%2520private%2520key%2520in%2520secp256k1%253F" ' +
-        'target="_blank" rel="noopener noreferrer" class="underline">' +
         'जानिए क्यों' +
-        '</a>' +
         '). जेनरेटर पॉइंट वृत्त पर एक विशिष्ट बिंदु होता है। इसका मूल्य secp256k1 मानक का हिस्सा है और यह हमेशा समान होता है:',
       paragraph_two:
         'अंडाकृति कर्व क्रिप्टोग्राफी क्रिया जोड़ने के तरह होती है और इसलिए इसका दोहराव गुणा करने के तरह होता है। हम एल्गोरिथम को वर्णन करने के लिए * प्रतीक का उपयोग करते हैं (' +
-        '<a href="https://chat.bitcoinsearch.xyz/?author=holocat&question=How%2520does%2520elliptic%2520curve%2520scalar%2520multiplication%2520work%253F" ' +
-        'target="_blank" rel="noopener noreferrer" class="underline">' +
         'और जानें' +
-        '</a>' +
         '), जहाँ k निजी कुंजी है और P संबंधित सार्वजनिक कुंजी है:',
       paragraph_three:
         'फ़ंक्शन privatekey_to_publickey() को पूरा करें ताकि यह एक दिए गए निजी कुंजी से प्राप्त सार्वजनिक कुंजी दे',
@@ -656,7 +643,6 @@ const translations = {
       paragraph_two: `ध्यान दें कि सार्वजनिक कुंजी जनरेट करना एक एकतरफ़ा रास्ता है। आप उस प्राइवेट की का पता नहीं लगा सकते जिसका उपयोग सार्वजनिक कुंजी बनाने में किया गया था, जब तक कि आप एक बेहद कठिन गणितीय समस्या हल न कर लें, जिसे कहा जाता है `,
       tooltip_one: {
         question: `डिस्क्रीट लॉग समस्या बिटकॉइन से कैसे संबंधित है?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520the%2520discrete%2520log%2520problem%2520relevant%2520to%2520bitcoin%253F`,
         highlighted: `डिस्क्रीट लॉग समस्या `,
       },
     },
@@ -844,7 +830,6 @@ const translations = {
       },
       tooltip_one: {
         question: `sighash फ़्लैग्स क्या हैं?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F`,
         highlighted: `sighash प्रकार फ़्लैग`,
       },
       success: `अच्छा! तुमने साइन करने के लिए संदेश बना लिया है।`,
@@ -868,7 +853,6 @@ const translations = {
       paragraph_four: `जब हमारे पास 32-बाइट का हैश आ जाता है, तो उस डेटा को एक पूर्णांक के रूप में पुनः व्याख्यायित किया जाता है। हाँ, एक 32-बाइट का पूर्णांक (जो वास्तव में एक बहुत ही विशाल संख्या है)!`,
       tooltip_one: {
         question: `बिटकॉइन में हर चीज़ डबल हैश (HASH256) का उपयोग क्यों करती है?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520does%2520everything%2520in%2520bitcoin%2520use%2520double%2520hash%2520%28HASH256%29%253F`,
         highlighted: `डबल SHA256 डाइजेस्ट`,
       },
       success: `अच्छा किया!`,
@@ -1089,7 +1073,6 @@ const translations = {
           b: {
             text: ` उलटे (reversed)`,
             question: `हम बिटकॉइन में हैश को क्यों उलटते हैं?`,
-            href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin`,
           },
           c: ` होते हैं, लेकिन केवल तब जब उपयोगकर्ता के सामने प्रस्तुत किए जाते हैं या दर्ज किए जाते हैं। जब एक हैश हेक्साडेसिमल फॉर्मेट में प्रदान किया जाता है, तो रॉ बाइट्स के रूप में डेटा को स्टोर या ट्रांसमिट करने से पहले बाइट ऑर्डर को उलट दिया जाना चाहिए।`,
         },
@@ -1160,7 +1143,6 @@ const translations = {
           b: {
             text: `लिटिल-एंडियन (little-endian)`,
             question: `एंडियननेस (endianness) क्या है?`,
-            href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520endianness%253F`,
           },
           c: ` क्रम में सीरियलाइज किए जाते हैं।`,
         },
@@ -1782,13 +1764,11 @@ const translations = {
         a: `आपको ब्लॉक असेंबली फंक्शन को न केवल वैध ब्लॉक बनाने के लिए ठीक करना है, बल्कि ब्लॉक में मिलने वाली फीस को भी अधिकतम करना है, ताकि माइनर्स सर्वसम्मति नियमों (consensus rules) के तहत अधिक से अधिक लाभ कमा सकें। सबसे महत्वपूर्ण नियम जिन पर आपको ध्यान देना होगा, वे ब्लॉक में कुल `,
         b: {
           text: `ट्रांजैक्शन वेट (transaction weight) `,
-          href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520weighted%2520units`,
           question: `वेटेड यूनिट्स क्या हैं?`,
         },
         c: ` और `,
         d: {
           text: `ट्रांजैक्शन के क्रम `,
-          href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520order%2520do%2520transactions%2520need%2520to%2520be%2520in%2520a%2520block`,
           question: `एक ब्लॉक में ट्रांजैक्शन किस क्रम में होने चाहिए?`,
         },
         e: ` को प्रतिबंधित करते हैं।`,
@@ -1858,7 +1838,6 @@ const translations = {
         a: `आप जानते हैं कि वेंडरपूल उन ब्लॉक्स को माइन करके लोगों को भ्रमित करने की कोशिश कर रहा है जो अनुमति से अधिक बिटकॉइन उत्पन्न करते हैं, जिससे अंततः मुद्रा की आपूर्ति बढ़ जाती है। ये ब्लॉक अमान्य हैं क्योंकि वे हार्ड-कोडेड प्रोटोकॉल नियमों को तोड़ते हैं, लेकिन वे अभी भी छोटी या दुर्भावनापूर्ण सॉफ्टवेयर चलाने वाले कुछ लोगों को मूर्ख बना सकते हैं, या `,
         b: {
           text: `लाइट क्लाइंट्स (light clients) `,
-          href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520light%2520clients%253F`,
           question: `लाइट क्लाइंट्स क्या हैं?`,
         },
         c: ` को, जो नेटवर्क डेटा को पूरी तरह से सत्यापित नहीं करते हैं।`,
@@ -2173,7 +2152,6 @@ const translations = {
       paragraph_five: `स्क्रिप्ट से खर्च करने के लिए प्रारंभिक स्टैक प्रदान करें।`,
       tooltip_one: {
         question: `सतोशी क्या है?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520a%2520satoshi%253F`,
         highlighted: `सतोशी`,
       },
       next_step_message: `आइए देखें कि क्या हमने प्रीइमेज के साथ अपने सिग्नेचर का सही उपयोग किया है।`,
@@ -2248,7 +2226,6 @@ const translations = {
       paragraph_six: `—लास्ज़लो: "वही इकलौता और असली।"`,
       tooltip_one: {
         question: `लास्ज़लो और पिज़्ज़ा डे का क्या महत्व है?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520the%2520significance%2520of%2520Laszlo%2520and%2520pizza%2520day%253F`,
         highlighted: `मशहूर लास्ज़लो`,
       },
     },

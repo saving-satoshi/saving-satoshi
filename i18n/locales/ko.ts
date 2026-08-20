@@ -253,7 +253,6 @@ const translations = {
       paragraph_four: `이제 반더풀 가문이 남긴 이 오래된 채굴기들의 정체가 확실해졌습니다.`,
       tooltip_one: {
         question: `ASIC 채굴기란?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520an%2520ASIC%2520miner%253F`,
         highlighted: `ASIC`,
       },
     },
@@ -301,7 +300,6 @@ const translations = {
       paragraph_three: `0으로 시작하는 해시 값을 찾아보세요. 원하는 결과가 나올 때까지 계속 시도해보면 돼요!`,
       tooltip_one: {
         question: `SHA-256는 비트코인에서 어떻게 쓰일까? `,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520SHA-256%2520used%2520in%2520bitcoin%253F`,
         highlighted: `SHA-256`,
       },
     },
@@ -341,7 +339,6 @@ const translations = {
       paragraph_six: `이번엔 00000(0 다섯 개)으로 시작하는 해시를 찾는 스크립트를 직접 작성해볼 거예요.`,
       tooltip_one: {
         question: `목표 난이도(target difficulty)는 무엇인가요?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520is%2520target%2520difficulty%253F`,
         highlighted: `목표 난이도 (target difficulty)`,
       },
     },
@@ -620,7 +617,6 @@ const translations = {
       tooltip_one: {
         highlighted: `기준점`,
         question: `기준점이란?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520the%2520Generator%2520point%253F`,
       },
     },
 
@@ -656,7 +652,6 @@ const translations = {
       paragraph_two: `공개키를 만드는 건 '단방향'입니다. 공개키를 안다고 해서 개인키를 거꾸로 알아낼 수는 없기 때문이에요. 그걸 하려면 '이산 로그 문제(discrete log problem)'라는 아주 어려운 수학문제를 풀어야 하거든요.`,
       tooltip_one: {
         question: `이산 로그 문제가 비트코인과 어떤 관련이 있을까?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520the%2520discrete%2520log%2520problem%2520relevant%2520to%2520bitcoin%253F`,
         highlighted: `이산 로그 문제`,
       },
     },
@@ -838,7 +833,6 @@ const translations = {
       },
       tooltip_one: {
         question: `sighash flags는 무엇인가요?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F`,
         highlighted: `sighash type flag`,
       },
       success: `좋습니다! 서명할 메시지를 완성했습니다.`,
@@ -862,7 +856,6 @@ const translations = {
       paragraph_four: `32바이트짜리 해시 값을 만들고 나면, 이를 하나의 정수(integer)로 변환합니다. 무려 32바이트짜리 정수이므로 어마어마하게 큰 숫자입니다.`,
       tooltip_one: {
         question: `왜 비트코인에서는 대부분의 데이터를 두 번 해시(double hash) 할까요?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520does%2520everything%2520in%2520bitcoin%2520use%2520double%2520hash%2520%28HASH256%29%253F`,
         highlighted: `double SHA256 digest`,
       },
       success: `잘하셨습니다!`,
@@ -1084,7 +1077,6 @@ const translations = {
           b: {
             text: ` 역순으로 표현됩니다.`,
             question: `왜 비트코인에서는 해시를 역순으로 뒤집을까?`,
-            href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin`,
           },
           c: ` 다만, 사용자에게 보여주거나 입력할 때만 그래요. 해시가 16진수(hex)로 입력되면, 원시 바이트로 저장하거나 전송하기 전에 바이트 순서를 뒤집어야 합니다.`,
         },
@@ -1155,7 +1147,6 @@ const translations = {
           b: {
             text: `little-endian`,
             question: `엔디안(endianness)이란 무엇인가요?`,
-            href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520endianness%253F`,
           },
         },
         success: `Input 클래스 구현이 완벽해요. 정말 잘했어요!`,
@@ -1775,13 +1766,11 @@ const translations = {
         a: `블록을 만들 땐 단순히 유효하기만 하면 안 돼요. 채굴자가 수수료 수익을 최대한 많이 얻을 수 있도록 구성해야 하죠. 그러려면 비트코인의 합의 규칙을 따라야 해요. 그 중 특히 중요한 두 가지 요소가 있어요:`,
         b: {
           text: `트랜잭션 가중치`,
-          href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520weighted%2520units`,
           question: `트랜잭션 가중치가 무엇일까요?`,
         },
         c: ` 그리고 `,
         d: {
           text: `트랜잭션의 정렬 순서`,
-          href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520order%2520do%2520transactions%2520need%2520to%2520be%2520in%2520a%2520block`,
           question: `블록 안에서 트랜잭션은 어떤 순서로 들어가야 할까요?`,
         },
         e: ` 이 두 요소는 블록 안에서 정해진 형식을 따라야 합니다.`,
@@ -1852,7 +1841,6 @@ const translations = {
         a: `당신은 반더풀이 허용된 양을 넘겨 비트코인을 생성한 블록들을 채굴해왔다는 사실을 알고 있습니다. 이는 전체 공급량을 부풀리는 결과를 낳습니다. 이런 블록들은 비트코인 프로토콜에 하드코딩된 규칙을 위반하기 때문에 무효입니다. 그럼에도 불구하고 버그가 있거나 악의적으로 조작된 소프트웨어를 사용하는 일부 사용자들, 또는`,
         b: {
           text: `라이트 클라이언트`,
-          href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520light%2520clients%253F`,
           question: `라이트 클라이언트는 무엇일까?`,
         },
         c: ` 처럼 네트워크 데이터를 완전히 검증하지 않는 사용자들은 여전히 속을 수 있습니다.`,
@@ -2168,7 +2156,6 @@ const translations = {
       paragraph_five: `해당 스크립트에서 코인을 쓰기 위한 초기 스택을 입력하세요.`,
       tooltip_one: {
         question: `사토시란 무엇일까?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520a%2520satoshi%253F`,
         highlighted: `사토시`,
       },
       next_step_message: `서명과 프리이미지를 제대로 섰는지 확인해 봅시다.`,
@@ -2246,7 +2233,6 @@ const translations = {
       paragraph_six: `—라즐로: “그 라즐로 맞아.”`,
       tooltip_one: {
         question: `라즐로와 피자 데이는 왜 중요할까요?`,
-        link: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520the%2520significance%2520of%2520Laszlo%2520and%2520pizza%2520day%253F`,
         highlighted: `라즐로`,
       },
     },
