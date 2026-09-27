@@ -2,7 +2,7 @@
 
 import clsx from 'clsx'
 import { useMediaQuery, useTranslations } from 'hooks'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Convert from 'ansi-to-html'
 
 import { Loader } from 'shared'
@@ -109,13 +109,7 @@ export default function Runner({
 
   useDynamicHeight([activeView])
 
-  const handleRunKeyPress = (event) => {
-    if ((event.altKey || event.metaKey) && event.key === 'Enter') {
-      handleRun()
-    }
-  }
-
-  const handleRun = async () => {
+  const handleRun = useCallback(async () => {
     setActiveView(LessonView.Execute)
     hasResult.current = false
     outputBuffer.current = []
@@ -263,7 +257,26 @@ export default function Runner({
       console.error(ex)
       setIsRunning(false)
     }
-  }
+  }, [
+    code,
+    goodMessage,
+    language,
+    onValidate,
+    poorMessage,
+    program,
+    setActiveView,
+    setErrors,
+    t,
+  ])
+
+  const handleRunKeyPress = useCallback(
+    (event: KeyboardEvent) => {
+      if ((event.altKey || event.metaKey) && event.key === 'Enter') {
+        handleRun()
+      }
+    },
+    [handleRun]
+  )
 
   useEffect(() => {
     if (ws) {
@@ -309,7 +322,7 @@ export default function Runner({
     return () => {
       document.removeEventListener('keydown', handleRunKeyPress)
     }
-  }, [])
+  }, [handleRunKeyPress])
 
   return (
     <>

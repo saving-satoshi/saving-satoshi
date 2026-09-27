@@ -5,7 +5,7 @@ import { useLessonContext, Tooltip } from 'ui'
 import { useLang, usePathData, useProceed, useTranslations } from 'hooks'
 import Icon from 'shared/Icon'
 import { lessons, chapters } from 'content'
-import { currentLessonAtom } from 'state/progressState'
+import { currentLessonAtom } from 'state/progress/selectors'
 
 export enum Status {
   Begin,
@@ -26,6 +26,7 @@ export interface StatusBarType {
   errorMessage?: string
   nextStepMessage?: string
   nextStepButton?: string
+  hideNextStepBtn?: boolean
   tooltipDisabled?: boolean
   full?: boolean
   hints?: boolean | null
@@ -41,6 +42,7 @@ export default function StatusBar({
   inProgressMessage,
   nextStepMessage,
   nextStepButton,
+  hideNextStepBtn,
   tooltipDisabled,
   errorMessage,
   full,
@@ -199,11 +201,13 @@ export default function StatusBar({
             <Button
               onClick={handleSubmit}
               classes={clsx('h-full md:text-2xl', {
-                hidden: !(
-                  getStatus() === Status.Poor ||
-                  getStatus() === Status.Good ||
-                  getStatus() == Status.NextStep
-                ),
+                hidden:
+                  hideNextStepBtn ||
+                  !(
+                    getStatus() === Status.Poor ||
+                    getStatus() === Status.Good ||
+                    getStatus() == Status.NextStep
+                  ),
               })}
             >
               {nextStepButton || t('status_bar.try_again')}

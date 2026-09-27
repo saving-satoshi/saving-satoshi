@@ -7,11 +7,8 @@ import { ChapterInState } from 'types'
 import { numberToWord } from 'utils/convert-number-to-word'
 import ChapterLesson from './ChapterLesson'
 import { useAtomValue } from 'jotai'
-import {
-  getLessonKey,
-  isChapterInProgress,
-  syncedCourseProgressAtom,
-} from 'state/progressState'
+import { syncedCourseProgressAtom } from 'state/progress/atoms'
+import { getLessonKey, isChapterInProgress } from 'state/progress/utils'
 import { Title } from 'ui'
 import clsx from 'clsx'
 import useEnvironment from 'hooks/useEnvironment'

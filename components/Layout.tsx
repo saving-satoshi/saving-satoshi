@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 import { useAuthFunctions } from 'state/AuthFunctions'
 import { useFeatureFunctions } from 'state/FeatureFunctions'
 import { useModalFunctions } from 'state/ModalFunctions'
-import { loadProgressAtom } from 'state/progressState'
+import { loadProgressAtom } from 'state/progress/actions'
 import { Modal, modalsAtom } from 'state/state'
 
 export default function Layout({ children }: { children?: React.ReactNode }) {

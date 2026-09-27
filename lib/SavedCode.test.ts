@@ -1,4 +1,5 @@
 // organizeImports.test.ts
+import { describe, expect, it } from 'vitest'
 import { organizeImports } from './SavedCode'
 
 describe('organizeImports', () => {

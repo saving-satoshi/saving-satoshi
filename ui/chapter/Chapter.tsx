@@ -15,12 +15,14 @@ import { accountAtom, isAuthLoadingAtom, Modal } from 'state/state'
 import { useModalFunctions } from 'state/ModalFunctions'
 import { useFeatureFunctions } from 'state/FeatureFunctions'
 import {
+  isLoadingProgressAtom,
   syncedCourseProgressAtom,
+} from 'state/progress/atoms'
+import {
   currentChapterAtom,
   currentLessonComputedAtom,
-  isLoadingProgressAtom,
-  isChapterInProgress,
-} from 'state/progressState'
+} from 'state/progress/selectors'
+import { isChapterInProgress } from 'state/progress/utils'
 import DifficultySelection from './DifficultySelection'
 
 export default function Chapter({ children, metadata, lang }) {

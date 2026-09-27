@@ -7,7 +7,7 @@ import { useLang, usePathData } from 'hooks'
 import { useAtom } from 'jotai'
 import { chapters, lessons, resources } from 'content'
 import { isAuthLoadingAtom } from 'state/state'
-import { isLoadingProgressAtom } from 'state/progressState'
+import { isLoadingProgressAtom } from 'state/progress/atoms'
 
 export default function HelpModal({ onClose, state }) {
   const lang = useLang()

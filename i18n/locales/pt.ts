@@ -304,7 +304,6 @@ const translations = {
         'Isso explica todas estas máquinas da coleção da família Vanderpoole.',
       tooltip_one: {
         question: 'O que é uma mineradora ASIC?',
-        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520an%2520ASIC%2520miner%253F',
         highlighted: 'ASIC',
       },
     },
@@ -363,7 +362,6 @@ const translations = {
         'Encontre um hash que comece com um zero ("0"). Continue digitando coisas diferentes abaixo até encontrar o hash que desejamos.',
       tooltip_one: {
         question: 'Como o SHA-256 é usado no bitcoin?',
-        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520SHA-256%2520used%2520in%2520bitcoin%253F',
         highlighted: 'SHA-256',
       },
     },
@@ -416,7 +414,6 @@ const translations = {
         'Para o próximo desafio, escreva um script que encontre um hash que comece com cinco zeros (00000).',
       tooltip_one: {
         question: 'Qual é a dificuldade do alvo?',
-        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520is%2520target%2520difficulty%253F',
         highlighted: 'dificuldade do alvo',
       },
     },
@@ -788,7 +785,6 @@ const translations = {
       tooltip_one: {
         highlighted: 'Ponto Gerador',
         question: 'O que é o Ponto Gerador?',
-        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520the%2520Generator%2520point%253F',
       },
     },
 
@@ -837,7 +833,6 @@ const translations = {
       tooltip_one: {
         question:
           'Como o problema de logaritimo discreto é relevante para o bitcoin?',
-        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=how%2520is%2520the%2520discrete%2520log%2520problem%2520relevant%2520to%2520bitcoin%253F',
         highlighted: 'problema de logaritmo discreto',
       },
     },
@@ -1080,7 +1075,6 @@ const translations = {
       },
       tooltip_one: {
         question: 'O que são bandeiras sighash?',
-        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520sighash%2520flags%253F',
         highlighted: 'bandeira com o tipo de sighash',
       },
       success: 'Legal! Você construiu uma mensagem para assinar.',
@@ -1108,7 +1102,6 @@ const translations = {
         'Quando temos um hash de 32 bytes, esses dados são reinterpretados como um número inteiro. Sim, um inteiro de 32 bytes (que é um número realmente enorme)!',
       tooltip_one: {
         question: 'Por que tudo no bitcoin usa hash duplo (HASH256)?',
-        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=Why%2520does%2520everything%2520in%2520bitcoin%2520use%2520double%2520hash%2520%28HASH256%29%253F',
         highlighted: 'resumo duplo SHA256',
       },
       success: 'Muito bem feito!',
@@ -1404,7 +1397,6 @@ const translations = {
           b: {
             text: 'invertidos',
             question: 'Por que invertemos os hashes no bitcoin?',
-            href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=why%2520are%2520hashes%2520reversed%2520in%2520bitcoin',
           },
           c: ' quando os vemos como strings hexadecimais. Quando aceitamos hashes como strings de um usuário, devemos inverter a ordem dos bytes antes de armazená-los ou transmiti-los como bytes brutos. É por isso que invertemos a ordem dos bytes do argumento txid que é passado aqui.',
         },
@@ -1477,7 +1469,6 @@ const translations = {
           b: {
             text: `little-endian`,
             question: `What is endianness?`,
-            href: `https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520endianness%253F`,
           },
         },
         success: 'A classe Input parece boa. Excelente trabalho!',
@@ -2169,13 +2160,11 @@ const translations = {
         a: 'Você precisa corrigir a função de montagem de blocos não apenas para criar blocos válidos, mas também para maximizar as taxas no bloco, de modo que os mineradores possam obter o maior lucro possível de acordo com as regras de consenso. As regras de consenso mais importantes às quais você precisará prestar atenção restringem o total de ',
         b: {
           text: 'peso das transações',
-          href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520weighted%2520units',
           question: 'O que são unidades ponderadas?',
         },
         c: ' e a',
         d: {
           text: 'ordem das transações',
-          href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520order%2520do%2520transactions%2520need%2520to%2520be%2520in%2520a%2520block',
           question: 'Em que ordem as transações precisam estar em um bloco?',
         },
         e: ' no bloco.',
@@ -2257,7 +2246,6 @@ const translations = {
         a: 'Você sabe que Vanderpoole tem tentado confundir as pessoas ao minerar blocos que geram mais bitcoins do que o permitido, inflacionando o suprimento de dinheiro. Esses blocos são inválidos porque violam regras de protocolo codificadas, mas ainda assim podem enganar algumas pessoas que executam softwares com bugs ou mal-intencionados, ou ',
         b: {
           text: 'clientes leves(light clients)',
-          href: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=what%2520are%2520light%2520clients%253F',
           question: 'O que são clientes leves?',
         },
         c: ' que não verificam totalmente os dados da rede.',
@@ -2669,7 +2657,6 @@ const translations = {
       paragraph_five: 'Forneça a pilha inicial para gastar com o script.',
       tooltip_one: {
         question: 'O que é um satoshi?',
-        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520a%2520satoshi%253F',
         highlighted: 'satoshi',
       },
       next_step_message:
@@ -2755,7 +2742,6 @@ Dica da pilha: Para gastar antes de o segredo ser revelado, Vanderpoole usa sua 
       paragraph_six: `—LASZLO: "O único."`,
       tooltip_one: {
         question: 'Qual é o significado de Laszlo e do dia da pizza?',
-        link: 'https://chat.bitcoinsearch.xyz/?author=holocat&question=What%2520is%2520the%2520significance%2520of%2520Laszlo%2520and%2520pizza%2520day%253F',
         highlighted: 'O Laszlo',
       },
     },

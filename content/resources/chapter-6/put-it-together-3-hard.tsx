@@ -133,7 +133,7 @@ const pythonChallenge = {
         # Append the transaction locktime in little endian to the main buffer
         s += pack("<I", self.locktime)
         # Append the sighash flags in little endian to the main buffer
-        s += pack("<I", 1)
+        s += pack("<I", int.from_bytes(self.flags))
 
         # Finally, return the double-SHA256 of the entire main buffer
         return dsha256(s)`,

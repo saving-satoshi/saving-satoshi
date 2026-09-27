@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import LanguageTabs from './LanguageTabs'
 import Editor from './Editor'
@@ -86,17 +86,35 @@ export default function ScriptingChallenge({
   const [hydrated, setHydrated] = useState(false)
   const [errors, setErrors] = useState<string[]>([])
   const debouncedCode = useDebounce(code, 500)
+  const hasLoaded = useRef(false)
 
+  // Hydrate editor from localStorage before enabling autosave.
   useEffect(() => {
     const savedCode = localStorage.getItem(`${lessonKey}-${language}`)
     if (savedCode) {
       setCode(savedCode)
     }
-  }, [])
+    hasLoaded.current = true
+  }, [lessonKey, language])
 
+  // Autosave to localStorage, gated on hydration to prevent overwriting saved drafts.
   useEffect(() => {
-    localStorage.setItem(`${lessonKey}-${language}`, debouncedCode)
+    if (hasLoaded.current) {
+      localStorage.setItem(`${lessonKey}-${language}`, debouncedCode)
+    }
   }, [debouncedCode, lessonKey, language])
+
+  // Sync local language state when the atom hydrates from localStorage.
+  useEffect(() => {
+    const langStr = getLanguageString(currentLanguage)
+    if (langStr !== language && langStr !== 'unknown') {
+      setLanguage(langStr)
+      const savedCode = localStorage.getItem(`${lessonKey}-${langStr}`)
+      setCode(savedCode || config.languages[langStr].defaultCode?.toString())
+      setHiddenRange(config.languages[langStr].hiddenRange)
+      setConstraints(config.languages[langStr].constraints)
+    }
+  }, [currentLanguage, language, lessonKey, config.languages])
 
   useDynamicHeight()
   const isSmallScreen = useMediaQuery({ width: 767 })

@@ -167,6 +167,8 @@ const OpRunner = ({
   const scrollPosition = useHorizontalScroll(scrollRef)
 
   const [executor, setExecutor] = useState<LanguageExecutor | null>(null)
+  const isWaitingForSecondAnswer =
+    advancedChallenge && step === 2 && lastSuccessState !== 5
 
   const redrawArrows = useCallback(() => {
     if (arrowContainerRef?.current) {
@@ -367,6 +369,7 @@ const OpRunner = ({
   }, [lastSuccessState])
 
   const handleTryAgain = () => {
+    setLastSuccessState(0)
     setSuccess(0)
     setStep(1)
     initialHeight && height && setHeight(height - 1)
@@ -448,6 +451,14 @@ const OpRunner = ({
         >
           <div className="flex w-full flex-row justify-between">
             <p className="font-mono text-[15px] font-bold">Execution stack</p>
+            {isWaitingForSecondAnswer && lastSuccessState !== 1 && (
+              <button
+                onClick={handleTryAgain}
+                className={clsx(btnClassName, 'text-[13px]')}
+              >
+                {t('opcode.reset')}
+              </button>
+            )}
           </div>
           <div
             ref={scrollRef}
@@ -615,6 +626,8 @@ const OpRunner = ({
         handleTryAgain={handleTryAgain}
         handleRun={handleStep}
         success={lastSuccessState}
+        nextStepMessage={nextStepMessage}
+        hideNextStepBtn={isWaitingForSecondAnswer}
       />
     </div>
   )

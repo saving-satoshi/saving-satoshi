@@ -1,10 +1,8 @@
 import { useLang, useTranslations } from 'hooks'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { useState } from 'react'
-import {
-  setChapterDifficultyAtom,
-  syncedCourseProgressAtom,
-} from 'state/progressState'
+import { syncedCourseProgressAtom } from 'state/progress/atoms'
+import { setChapterDifficultyAtom } from 'state/progress/actions'
 import { ChapterWithDifficulties } from 'types'
 import { Text, ToggleSwitch } from 'ui/common'
 

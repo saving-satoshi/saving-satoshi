@@ -13,6 +13,7 @@ import { StatusBarType, SuccessNumbers } from 'ui/common/StatusBar'
 export interface OpCodeRunnerType extends StatusBarType {
   lang: string
   handleRun: () => void
+  hideNextStepBtn?: boolean
 }
 
 export default function OpCodeRunner({
@@ -22,6 +23,7 @@ export default function OpCodeRunner({
   success,
   nextStepMessage,
   errorMessage,
+  hideNextStepBtn,
 }: OpCodeRunnerType) {
   const t = useTranslations(lang)
   const { activeView, setActiveView } = useLessonContext()
@@ -92,6 +94,7 @@ export default function OpCodeRunner({
           hints
           nextStepMessage={nextStepMessage}
           nextStepButton={t('opcode.reset')}
+          hideNextStepBtn={hideNextStepBtn}
         />
       </div>
     </div>

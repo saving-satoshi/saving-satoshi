@@ -9,7 +9,7 @@ import { useState } from 'react'
 import { useAtom } from 'jotai'
 import { accountAtom, isAuthLoadingAtom } from 'state/state'
 import { useAuthFunctions } from 'state/AuthFunctions'
-import { isLoadingProgressAtom } from 'state/progressState'
+import { isLoadingProgressAtom } from 'state/progress/atoms'
 
 export default function AccountModal({ onClose, state }) {
   const lang = useLang()

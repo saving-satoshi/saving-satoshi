@@ -1,12 +1,11 @@
 'use client'
 
-import { ScriptingChallenge, LessonInfo, HolocatQuestion } from 'ui'
+import { ScriptingChallenge, LessonInfo } from 'ui'
 import { EditorConfig } from 'types'
 import { useTranslations } from 'hooks'
 import { CodeExample, Text } from 'ui'
 import { useState } from 'react'
 import { getLanguageString } from 'lib/SavedCode'
-import { chapters } from 'content/chapters'
 import { useAtom } from 'jotai'
 import { currentLanguageAtom } from 'state/state'
 
@@ -20,7 +19,6 @@ export default function DeriveMessage7({ lang }) {
   const t = useTranslations(lang)
   const [currentLanguage] = useAtom(currentLanguageAtom)
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
-  const [tooltipVisible, setTooltipVisible] = useState(false)
 
   const javascript = {
     program: `
@@ -175,14 +173,6 @@ print("KILL")
     },
   }
 
-  const handleMouseEnter = () => {
-    setTooltipVisible(true)
-  }
-
-  const handleMouseLeave = () => {
-    setTooltipVisible(false)
-  }
-
   const handleSelectLanguage = (language: string) => {
     setLanguage(language)
   }
@@ -209,25 +199,7 @@ print("KILL")
         />
         <Text className="my-4 font-nunito text-xl text-white">
           {t(`chapter_five.derive_message_seven.paragraph_three.a`)}{' '}
-          <a
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            href={t('chapter_five.derive_message_seven.tooltip_one.link')}
-            target="_blank"
-            className="inline text-lg italic underline md:text-xl"
-          >
-            {t('chapter_five.derive_message_seven.tooltip_one.highlighted')}{' '}
-            <HolocatQuestion
-              theme={chapters['chapter-5'].metadata.theme}
-              inline
-              id="sighash-type-flag"
-              question={t(
-                'chapter_five.derive_message_seven.tooltip_one.question'
-              )}
-              href={t('chapter_five.derive_message_seven.tooltip_one.link')}
-              visible={tooltipVisible}
-            />
-          </a>
+          {t('chapter_five.derive_message_seven.tooltip_one.highlighted')}{' '}
           {t(`chapter_five.derive_message_seven.paragraph_three.b`)}
         </Text>
         <CodeExample copy language="bash" code="01000000" />

@@ -1,12 +1,12 @@
 'use client'
 
-import { useTranslations } from 'hooks'
 import { useState } from 'react'
+import { useTranslations } from 'hooks'
+import { useAtom } from 'jotai'
+import { getLanguageString } from 'lib/SavedCode'
+import { currentLanguageAtom } from 'state/state'
 import { EditorConfig } from 'types'
 import { LessonInfo, ScriptingChallenge, Text, Title } from 'ui'
-import { getLanguageString } from 'lib/SavedCode'
-import { useAtom } from 'jotai'
-import { currentLanguageAtom } from 'state/state'
 
 export const metadata = {
   title: 'chapter_five.validate_signature_four.title',
@@ -20,7 +20,12 @@ export default function ValidateSignature4({ lang }) {
   const [language, setLanguage] = useState(getLanguageString(currentLanguage))
 
   const javascript = {
-    program: `console.log(verify_keys(keys).toString());
+    program: `const expectedKey = "049d57ded01d3a7652a957cf86fd4c3d2a76e76e83d3c965e1dca45f1ee06630636b8bcbc3df3fbc9669efa2ccd5d7fa5a89fe1c0045684189f01ea915b8a746a6";
+const validKeys = keys.slice(0, 5);
+const invalidKeys = keys.filter((key) => key !== expectedKey).slice(0, 5);
+const baselineResult = verify_keys(validKeys);
+const invalidResult = verify_keys(invalidKeys);
+console.log((baselineResult === expectedKey && (invalidResult === undefined || invalidResult === null)).toString());
 console.log("KILL")
 `,
     defaultFunction: {
@@ -107,17 +112,8 @@ function verify_keys(keys) {
 }
 `,
     validate: async (answer) => {
-      if (
-        answer ===
-        '049d57ded01d3a7652a957cf86fd4c3d2a76e76e83d3c965e1dca45f1ee06630636b8bcbc3df3fbc9669efa2ccd5d7fa5a89fe1c0045684189f01ea915b8a746a6'
-      ) {
-        return [true, t('chapter_five.validate_signature_four.success')]
-      }
       if (answer === 'true') {
-        return [
-          false,
-          'Make sure you are returning the public key Vanderpoole used and not a boolean value',
-        ]
+        return [true, t('chapter_five.validate_signature_four.success')]
       }
       return [false, 'That is not quite right, try again.']
     },
@@ -125,7 +121,12 @@ function verify_keys(keys) {
 
   const python = {
     program: `
-print(verify_keys(keys));
+expected_key = "049d57ded01d3a7652a957cf86fd4c3d2a76e76e83d3c965e1dca45f1ee06630636b8bcbc3df3fbc9669efa2ccd5d7fa5a89fe1c0045684189f01ea915b8a746a6"
+valid_keys = keys[:5]
+invalid_keys = [key for key in keys if key != expected_key]
+baseline_result = verify_keys(valid_keys)
+invalid_result = verify_keys(invalid_keys[:5])
+print(baseline_result == expected_key and invalid_result is None)
 print("KILL")
 `,
     defaultFunction: {
@@ -190,17 +191,8 @@ def verify_keys(keys):
     # YOUR CODE HERE
 `,
     validate: async (answer) => {
-      if (
-        answer ===
-        '049d57ded01d3a7652a957cf86fd4c3d2a76e76e83d3c965e1dca45f1ee06630636b8bcbc3df3fbc9669efa2ccd5d7fa5a89fe1c0045684189f01ea915b8a746a6'
-      ) {
-        return [true, t('chapter_five.validate_signature_four.success')]
-      }
       if (answer === 'True') {
-        return [
-          false,
-          'Make sure you are returning the public key Vanderpoole used and not a boolean value',
-        ]
+        return [true, t('chapter_five.validate_signature_four.success')]
       }
       return [false, 'That is not quite right, try again.']
     },

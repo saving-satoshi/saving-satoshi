@@ -14,7 +14,8 @@ import NostrIcon from 'shared/icons/Nostr'
 import TwitterIcon from 'shared/icons/Twitter'
 import { usePublish } from 'nostr-hooks'
 import { useAtomValue } from 'jotai'
-import { syncedCourseProgressAtom, isLastLesson } from 'state/progressState'
+import { syncedCourseProgressAtom } from 'state/progress/atoms'
+import { isLastLesson } from 'state/progress/utils'
 
 export default function MobileEnd({
   image,

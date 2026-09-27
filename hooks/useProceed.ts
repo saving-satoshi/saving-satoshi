@@ -4,15 +4,17 @@ import { useRouter } from 'next/navigation'
 import { useLocalizedRoutes, usePathData } from 'hooks'
 import useEnvironment from './useEnvironment'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
+import { syncedCourseProgressAtom } from 'state/progress/atoms'
+import { nextLessonPathAtom } from 'state/progress/selectors'
+import {
+  markLessonAsCompleteAtom,
+  progressToNextLessonAtom,
+} from 'state/progress/actions'
 import {
   getLessonKey,
   getNextLessonUsingChapterIdAndLessonName,
   isLessonCompletedUsingId,
-  markLessonAsCompleteAtom,
-  nextLessonPathAtom,
-  progressToNextLessonAtom,
-  syncedCourseProgressAtom,
-} from 'state/progressState'
+} from 'state/progress/utils'
 
 export default function useProceed() {
   const { chapterId, lessonId: lessonName } = usePathData()
