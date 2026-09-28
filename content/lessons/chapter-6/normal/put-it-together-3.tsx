@@ -217,14 +217,14 @@ console.log(tx.serialize().toString('hex'));`,
         return [false, t('validation.nope_try_again')]
       }
       if (answer.slice(250, 252) !== '30') {
-        return [false, t('validation.nope_try_again_2')]
+        return [false, t('validation.nope_try_again')]
       }
       const size = (parseInt(answer.slice(248, 250), 16) - 1) * 2
       if (answer.slice(250 + size, 250 + size + 4) !== '0121') {
-        return [false, t('validation.nope_try_again_3')]
+        return [false, t('validation.nope_try_again')]
       }
       if (answer.slice(-8) !== '00000000') {
-        return [false, t('validation.nope_try_again_4')]
+        return [false, t('validation.nope_try_again')]
       }
       return [true, t('chapter_six.put_it_together_three.normal.success')]
     },
