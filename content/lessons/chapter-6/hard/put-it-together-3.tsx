@@ -157,7 +157,7 @@ ${prevData.data.slice(0, -2)}
         }
         return [false, t('validation.not_valid_hex')]
       }
-      return [false, t('validation.please_return_value')]
+      return [false, t('validation.return_value')]
     },
   }
 

@@ -2704,7 +2704,6 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
     signature_not_valid: `Signature is not valid`,
     nope_try_again: `Nope! Try again.`,
     not_valid_hex: `Not a valid hex value`,
-    please_return_value: `Please return a value`,
     return_value: `Return a value`,
     no_output: `No output`,
     incorrect: `Incorrect`,
