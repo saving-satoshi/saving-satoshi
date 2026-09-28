@@ -2699,7 +2699,6 @@ Stack Hint: To spend before the secret is revealed, Vanderpoole uses his signatu
   },
   validation: {
     recheck_your_methods: `recheck your methods`,
-    recheck_your_methods_caps: `Recheck your methods`,
     cant_find_return_both: `can't find a return in both of the methods`,
     cant_find_return: `can't find a return in the function`,
     signature_not_valid: `Signature is not valid`,

@@ -133,7 +133,7 @@ def showtime():
         if (answer === 'True') {
           return [true, t('chapter_eight.building_blocks_eight.success')]
         } else {
-          return [false, t('validation.recheck_your_methods_caps')]
+          return [false, t('validation.recheck_your_methods')]
         }
       } else {
         return [false, t('validation.no_output')]
