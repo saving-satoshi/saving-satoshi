@@ -206,7 +206,7 @@ function run() {
           return [false, t('validation.invalid_block')]
         }
       } else {
-        return [false, t('validation.cant_find_return_both')]
+        return [false, t('validation.cant_find_return')]
       }
     },
   }
@@ -318,7 +318,7 @@ def run():
           return [false, t('validation.invalid_block')]
         }
       } else {
-        return [false, t('validation.cant_find_return_both')]
+        return [false, t('validation.cant_find_return')]
       }
     },
   }

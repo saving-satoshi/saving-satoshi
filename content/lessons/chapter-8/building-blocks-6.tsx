@@ -46,7 +46,7 @@ console.log("KILL")`,
           return [false, t('validation.recheck_your_methods')]
         }
       } else {
-        return [false, t('validation.cant_find_return_both')]
+        return [false, t('validation.cant_find_return')]
       }
     },
   }
