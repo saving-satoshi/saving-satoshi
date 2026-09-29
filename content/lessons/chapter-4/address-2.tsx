@@ -58,10 +58,10 @@ function hashCompressed(compressedPublicKey) {
 `,
     validate: async (answer) => {
       if (answer.startsWith('<Buffer')) {
-        return [false, 'Ensure you are properly decoding your answer']
+        return [false, t('validation.ensure_proper_decoding')]
       }
       if (answer.length !== 40) {
-        return [false, 'Array must be 20 bytes long']
+        return [false, t('validation.array_20_bytes')]
       }
       if (
         answer !==
@@ -104,10 +104,10 @@ def hash_compressed(compressed_public_key):
 `,
     validate: async (answer) => {
       if (answer.startsWith("b'")) {
-        return [false, 'Ensure you are properly decoding your answer']
+        return [false, t('validation.ensure_proper_decoding')]
       }
       if (answer.length !== 40) {
-        return [false, 'Array must be 20 bytes long']
+        return [false, t('validation.array_20_bytes')]
       }
       if (
         answer !==

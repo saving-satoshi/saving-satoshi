@@ -84,13 +84,13 @@ function compressPublicKey(publicKey) {
     validate: async (answer) => {
       const pattern = /^[0-9a-f]{66}$/i
       if (answer.length !== 66) {
-        return [false, "Length isn't valid"]
+        return [false, t('validation.length_not_valid')]
       }
       if (!answer.match(pattern)) {
-        return [false, 'Answer is not a hexadecimal value']
+        return [false, t('validation.not_hex_value')]
       }
       if (answer !== compressPublicKey(dataObject)) {
-        return [false, 'Ensure you are using your own key object']
+        return [false, t('validation.ensure_own_key')]
       }
       return [true, t('chapter_four.public_key_four.success')]
     },
@@ -123,13 +123,13 @@ def compress_publickey(public_key):
     validate: async (answer) => {
       const pattern = /^[0-9a-f]{66}$/i
       if (answer.length !== 66) {
-        return [false, "Length isn't valid"]
+        return [false, t('validation.length_not_valid')]
       }
       if (!answer.match(pattern)) {
-        return [false, 'Answer is not a hexadecimal value']
+        return [false, t('validation.not_hex_value')]
       }
       if (answer !== compressPublicKey(dataObject)) {
-        return [false, 'Ensure you are using your own key object']
+        return [false, t('validation.ensure_own_key')]
       }
       return [true, t('chapter_four.public_key_four.success')]
     },

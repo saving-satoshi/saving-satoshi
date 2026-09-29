@@ -97,10 +97,10 @@ class Output {
         if (answer === 'true') {
           return [true, t('chapter_six.in_out_five.success')]
         } else {
-          return [false, 'recheck your methods']
+          return [false, t('validation.recheck_your_methods')]
         }
       } else {
-        return [false, "can't find a return in both of the methods"]
+        return [false, t('validation.cant_find_return_both')]
       }
     },
   }
@@ -144,10 +144,10 @@ class Output:
         if (answer === 'true') {
           return [true, t('chapter_six.in_out_five.success')]
         } else {
-          return [false, 'recheck your methods']
+          return [false, t('validation.recheck_your_methods')]
         }
       } else {
-        return [false, "can't find a return in both of the methods"]
+        return [false, t('validation.cant_find_return_both')]
       }
     },
   }

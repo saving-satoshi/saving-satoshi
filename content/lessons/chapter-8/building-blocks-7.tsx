@@ -107,10 +107,10 @@ function validateBlock(block) {
         ) {
           return [true, t('chapter_eight.building_blocks_seven.success')]
         } else {
-          return [false, 'recheck your methods']
+          return [false, t('validation.recheck_your_methods')]
         }
       } else {
-        return [false, 'No output']
+        return [false, t('validation.no_output')]
       }
     },
   }
@@ -159,10 +159,10 @@ def validate_block(block):
         ) {
           return [true, t('chapter_eight.building_blocks_seven.success')]
         } else {
-          return [false, 'recheck your methods']
+          return [false, t('validation.recheck_your_methods')]
         }
       } else {
-        return [false, 'No output']
+        return [false, t('validation.no_output')]
       }
     },
   }

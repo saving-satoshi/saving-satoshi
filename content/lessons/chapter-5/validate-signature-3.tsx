@@ -132,7 +132,7 @@ const keyGE =
       if (answer === 'false') {
         return [true, t('chapter_five.validate_signature_three.success')]
       }
-      return [false, 'Check your methods']
+      return [false, t('validation.check_your_methods')]
     },
   }
 
@@ -227,7 +227,7 @@ key_ge =
       if (answer === 'False') {
         return [true, t('chapter_five.validate_signature_three.success')]
       }
-      return [false, 'Check your methods']
+      return [false, t('validation.check_your_methods')]
     },
   }
 

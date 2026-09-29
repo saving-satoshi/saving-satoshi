@@ -51,7 +51,7 @@ const getBlockHeight = (height) => {
       ) {
         return [true, t('chapter_eight.building_blocks_four.success')]
       } else {
-        return [false, 'Incorrect']
+        return [false, t('validation.incorrect')]
       }
     },
   }
@@ -81,7 +81,7 @@ def get_block_height(height):
       ) {
         return [true, t('chapter_eight.building_blocks_four.success')]
       } else {
-        return [false, 'Incorrect']
+        return [false, t('validation.incorrect')]
       }
     },
   }

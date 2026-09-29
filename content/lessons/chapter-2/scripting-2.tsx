@@ -71,11 +71,11 @@ function findHashFromNonce(nonce) {
       }
 
       if (!validationTest(answer).startsWith('00000')) {
-        return [false, 'Hash must start with 5 zeroes.']
+        return [false, t('validation.hash_prefix_invalid')]
       }
 
       if (validationTest(answer).length !== 64) {
-        return [false, 'Hash must be 64 characters long.']
+        return [false, t('validation.hash_length_invalid')]
       }
 
       return [true, `That's it! Your nonce hashes to ${validationTest(answer)}`]
@@ -127,11 +127,11 @@ def find_hash_from_nonce(nonce):
       }
 
       if (!validationTest(answer).startsWith('00000')) {
-        return [false, 'Hash must start with 5 zeroes.']
+        return [false, t('validation.hash_prefix_invalid')]
       }
 
       if (validationTest(answer).length !== 64) {
-        return [false, 'Hash must be 64 characters long.']
+        return [false, t('validation.hash_length_invalid')]
       }
 
       return [true, `That's it! Your nonce hashes to ${validationTest(answer)}`]

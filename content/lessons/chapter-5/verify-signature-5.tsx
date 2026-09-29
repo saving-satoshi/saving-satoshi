@@ -108,7 +108,7 @@ function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
       // so we will need to strip them before doing the comparison.
       const cleanedAnswer = answer.replace(/\u001b\[[0-9;]*m/g, '')
       if (cleanedAnswer !== 'true') {
-        return [false, 'Signature is not valid']
+        return [false, t('validation.signature_not_valid')]
       }
 
       return [true, t('chapter_five.verify_signature_five.success')]
@@ -173,7 +173,7 @@ def verify(sig_r, sig_s, pubkey_x, pubkey_y, msg):
 `,
     validate: async (answer) => {
       if (answer !== 'True') {
-        return [false, 'Signature is not valid']
+        return [false, t('validation.signature_not_valid')]
       }
 
       return [true, t('chapter_five.verify_signature_five.success')]

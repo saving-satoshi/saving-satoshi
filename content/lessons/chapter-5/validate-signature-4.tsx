@@ -115,7 +115,7 @@ function verify_keys(keys) {
       if (answer === 'true') {
         return [true, t('chapter_five.validate_signature_four.success')]
       }
-      return [false, 'That is not quite right, try again.']
+      return [false, t('validation.not_quite_right')]
     },
   }
 
@@ -194,7 +194,7 @@ def verify_keys(keys):
       if (answer === 'True') {
         return [true, t('chapter_five.validate_signature_four.success')]
       }
-      return [false, 'That is not quite right, try again.']
+      return [false, t('validation.not_quite_right')]
     },
   }
 

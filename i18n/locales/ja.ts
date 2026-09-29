@@ -1574,7 +1574,7 @@ const translations = {
           },
         },
         bullet_one: `ミカ3000に 100,000,000 satoshi（1 BTC）を送る → アドレス: bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj`,
-        bullet_two: `あなたに 61,000,000 satoshi（おつり）を返す → アドレス: bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs`,
+        bullet_two: `あなたに 61,000,000 satoshi（おつり）を返す → アドレス: (コードに事前ロード済み)`,
         success: `やりましたね！トランザクションが完成しました！`,
       },
       hard: {
@@ -1696,7 +1696,7 @@ const translations = {
         paragraph_three: `でも、ちょっと待ってください！「手数料」も必要です。おつりから少しだけ差し引いて、マイニングプールにインセンティブを与え、ブロックに含めてもらいましょう。今回はおつりを 61,000,000 satoshi に設定します。`,
         paragraph_four: `ついに完成です。スクリプトの最後では、トランザクションの <span className="text-green p-1 font-mono bg-[#0000004D] m-0.5 text-sm">serialize()</span> メソッドの戻り値を返しましょう。これは有効な署名済みビットコイントランザクションで、ミカ3000 に送金するためにネットワークにブロードキャストできます！`,
         bullet_one: `ミカ3000 に 100,000,000 satoshi（1 BTC）を送る → アドレス: bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj`,
-        bullet_two: `あなたに 61,000,000 satoshi（おつり）を返す → アドレス: bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs`,
+        bullet_two: `あなたに 61,000,000 satoshi（おつり）を返す → アドレス: (コードに事前ロード済み)`,
         success: `やりましたね！トランザクションが完成しました！`,
       },
     },

@@ -1938,7 +1938,7 @@ const translations = {
         bullet_one:
           'Mika 3000 nhận được 100.000.000 satoshi vào bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj', // Mika 3000 gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj
         bullet_two:
-          'Bạn nhận lại 61.000.000 vào địa chỉ của mình bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs', // You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs
+          'Bạn nhận lại 61.000.000 vào địa chỉ của mình (đã tải sẵn trong mã)', // You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs
         success: 'Bạn đã làm được rồi! Bạn đã tạo một giao dịch!', // You've done it! You've built a transaction!
       },
       hard: {
@@ -2087,7 +2087,7 @@ const translations = {
         bullet_one:
           'Mika 3000 nhận được 100.000.000 satoshi vào bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj', // Mika 3000 gets 100,000,000 satoshis to bc1qgghq08syehkym52ueu9nl5x8gth23vr8hurv9dyfcmhaqk4lrlgs28epwj
         bullet_two:
-          'Bạn nhận lại 61.000.000 vào địa chỉ của mình bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs', // You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs
+          'Bạn nhận lại 61.000.000 vào địa chỉ của mình (đã tải sẵn trong mã)', // You get 61,000,000 back to your address bc1qm2dr49zrgf9wc74h5c58wlm3xrnujfuf5g80hs
         success: 'Bạn đã làm được rồi! Bạn đã tạo một giao dịch!', // You've done it! You've built a transaction!
       },
     },

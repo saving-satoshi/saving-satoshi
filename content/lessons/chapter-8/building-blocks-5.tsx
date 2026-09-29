@@ -55,7 +55,7 @@ const getTxFee = (tx) => {
       if (answer === '700') {
         return [true, t('chapter_eight.building_blocks_five.success')]
       } else {
-        return [false, 'Incorrect']
+        return [false, t('validation.incorrect')]
       }
     },
   }
@@ -93,7 +93,7 @@ def get_tx_fee(tx):
       if (answer === '700') {
         return [true, t('chapter_eight.building_blocks_five.success')]
       } else {
-        return [false, 'Incorrect']
+        return [false, t('validation.incorrect')]
       }
     },
   }
