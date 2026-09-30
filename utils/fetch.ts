@@ -28,6 +28,9 @@ export async function get(options: FetchOptions) {
 
     if (json.errors) {
       throw json.errors
+    } else if (res.status >= 400) {
+      const error = { body: json, status: res.status, message: res.statusText }
+      throw error
     }
 
     return json
@@ -62,6 +65,9 @@ export async function post(options: FetchOptions) {
 
     if (json.errors) {
       throw json.errors
+    } else if (res.status >= 400) {
+      const error = { body: json, status: res.status, message: res.statusText }
+      throw error
     }
 
     return json
@@ -96,6 +102,9 @@ export async function put(options: FetchOptions) {
 
     if (json.errors) {
       throw json.errors
+    } else if (res.status >= 400) {
+      const error = { body: json, status: res.status, message: res.statusText }
+      throw error
     }
 
     return json
