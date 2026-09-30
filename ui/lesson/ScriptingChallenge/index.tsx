@@ -20,6 +20,7 @@ import useDebounce from 'hooks/useDebounce'
 import { getLanguageFromString, getLanguageString } from 'lib/SavedCode'
 import { useAtom } from 'jotai'
 import { accountAtom, currentLanguageAtom } from 'state/state'
+import { DEFAULT_OUTPUT_HEIGHT, MIN_OUTPUT_HEIGHT } from './Runner/constants'
 
 const tabData = [
   {
@@ -85,6 +86,62 @@ export default function ScriptingChallenge({
   const [challengeSuccess, setChallengeSuccess] = useState(false)
   const [hydrated, setHydrated] = useState(false)
   const [errors, setErrors] = useState<string[]>([])
+  const [outputPanelHeight, setOutputPanelHeight] = useState(
+    DEFAULT_OUTPUT_HEIGHT
+  )
+  const isSmallScreen = useMediaQuery({ width: 767 })
+  const workspaceRef = useRef<HTMLDivElement>(null)
+  const [availableOutputHeight, setAvailableOutputHeight] = useState(
+    DEFAULT_OUTPUT_HEIGHT
+  )
+
+  useEffect(() => {
+    const workspace = workspaceRef.current
+    if (!workspace || isSmallScreen) return
+
+    const updateHeight = () => {
+      // Reserve the language tabs and the Run/status bar.
+      const tabsHeight =
+        workspace.firstElementChild?.getBoundingClientRect().height ?? 40
+      setAvailableOutputHeight(
+        Math.max(MIN_OUTPUT_HEIGHT, workspace.clientHeight - tabsHeight - 56)
+      )
+    }
+    const observer = new ResizeObserver(updateHeight)
+    observer.observe(workspace)
+    updateHeight()
+    return () => observer.disconnect()
+  }, [hydrated, isSmallScreen])
+
+  useEffect(() => {
+    const workspace = workspaceRef.current
+    if (!workspace || !isSmallScreen || activeView !== LessonView.Execute)
+      return
+
+    const fitExecuteView = () => {
+      const viewport = window.visualViewport
+      const bottom = viewport
+        ? viewport.offsetTop + viewport.height
+        : window.innerHeight
+      workspace.style.height = `${Math.max(
+        0,
+        bottom - workspace.getBoundingClientRect().top
+      )}px`
+      workspace.style.flex = 'none'
+      workspace.style.overflow = 'hidden'
+    }
+    fitExecuteView()
+    window.addEventListener('resize', fitExecuteView)
+    window.visualViewport?.addEventListener('resize', fitExecuteView)
+    return () => {
+      window.removeEventListener('resize', fitExecuteView)
+      window.visualViewport?.removeEventListener('resize', fitExecuteView)
+      workspace.style.removeProperty('height')
+      workspace.style.removeProperty('flex')
+      workspace.style.removeProperty('overflow')
+    }
+  }, [hydrated, isSmallScreen, activeView])
+
   const debouncedCode = useDebounce(code, 500)
   const hasLoaded = useRef(false)
 
@@ -117,7 +174,6 @@ export default function ScriptingChallenge({
   }, [currentLanguage, language, lessonKey, config.languages])
 
   useDynamicHeight()
-  const isSmallScreen = useMediaQuery({ width: 767 })
 
   const handleSetLanguage = (value) => {
     if (!challengeSuccess && onSelectLanguage) {
@@ -240,8 +296,9 @@ export default function ScriptingChallenge({
         {children}
 
         <div
+          ref={workspaceRef}
           className={clsx(
-            'code-editor flex grow flex-col justify-between border-white/25 md:max-w-[50vw] md:basis-1/3 md:border-l',
+            'code-editor isolate flex min-h-0 grow flex-col border-white/25 md:flex md:max-w-[50vw] md:basis-1/3 md:overflow-hidden md:border-l',
             {
               hidden: activeView === LessonView.Info,
             }
@@ -255,7 +312,7 @@ export default function ScriptingChallenge({
             onRefresh={handleRefresh}
           />
           <div
-            className={clsx({
+            className={clsx('min-h-0 flex-1 overflow-hidden', {
               'pointer-events-none': challengeSuccess,
               hidden: isSmallScreen && activeView === LessonView.Execute,
             })}
@@ -284,6 +341,9 @@ export default function ScriptingChallenge({
             handleTryAgain={handleTryAgain}
             poorMessage={poorMessage ?? ''}
             goodMessage={goodMessage ?? ''}
+            availableOutputHeight={availableOutputHeight}
+            terminalHeight={outputPanelHeight}
+            setTerminalHeight={setOutputPanelHeight}
           />
         </div>
       </Lesson>

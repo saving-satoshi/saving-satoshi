@@ -1,6 +1,5 @@
 import React from 'react'
 import clsx from 'clsx'
-import Convert from 'ansi-to-html'
 
 function Terminal({ className }: { className?: string }, ref) {
   return (
@@ -17,7 +16,8 @@ function Terminal({ className }: { className?: string }, ref) {
           `<style>
                   body {
                     padding: 16px;
-                    margin:0;
+                    margin: 0;
+                    overflow-y: auto;
                   }
                   .output {
                     font-family: monospace;
@@ -108,6 +108,9 @@ function Terminal({ className }: { className?: string }, ref) {
                   })
 
                   const send = (action,payload) => window.parent.postMessage(JSON.stringify({action,payload}), '*')
+                  new ResizeObserver(() => {
+                    send('output-height', Math.ceil(output.getBoundingClientRect().height) + 33)
+                  }).observe(output)
                   send('ready')
                 </script>`
         )

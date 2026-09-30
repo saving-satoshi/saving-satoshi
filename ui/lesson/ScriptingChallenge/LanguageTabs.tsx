@@ -46,7 +46,7 @@ export default function LanguageTabs({
   return (
     <div
       className={clsx(
-        'h-10 items-center justify-between border-b border-t border-white border-opacity-30 md:border-t-0',
+        'h-10 shrink-0 items-center justify-between border-b border-t border-white border-opacity-30 md:border-t-0',
         {
           'hidden md:flex': !noHide && !isActive,
           flex: noHide || isActive,

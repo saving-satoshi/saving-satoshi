@@ -100,12 +100,10 @@ export default function Editor({
   const headerHeight = 70
   const mobileTabsHeight = 48
   const languageTabsHeight = 40
-  const terminalHeight = 204
   const runnerHeight = 56
 
-  const totalHeight = isSmallScreen
-    ? headerHeight + mobileTabsHeight + languageTabsHeight + runnerHeight
-    : headerHeight + languageTabsHeight + terminalHeight + runnerHeight
+  const mobileHeightOffset =
+    headerHeight + mobileTabsHeight + languageTabsHeight + runnerHeight
 
   useEffect(() => {
     hiddenRange && setEditorOptions(createMonacoOptions(hiddenRange[2]))
@@ -134,7 +132,7 @@ export default function Editor({
   return (
     <div
       className={clsx(
-        'relative grow bg-[#00000026] font-mono text-sm text-white',
+        'relative h-full min-h-0 grow overflow-hidden bg-[#00000026] font-mono text-sm text-white',
         {
           'hidden md:flex': !isActive,
           flex: isActive,
@@ -144,7 +142,11 @@ export default function Editor({
       <MonacoEditor
         loading={<Loader className="h-10 w-10 text-white" />}
         width={isSmallScreen ? '100vw' : 'calc(100vw / 2)'}
-        height={`calc(var(--dynamic-height) - ${totalHeight}px)`}
+        height={
+          isSmallScreen
+            ? `calc(var(--dynamic-height) - ${mobileHeightOffset}px)`
+            : '100%'
+        }
         language={language}
         theme={'satoshi'}
         value={value}
