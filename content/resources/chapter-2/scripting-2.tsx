@@ -21,16 +21,21 @@ const javascript = {
     args: ['nonce'],
   },
   defaultCode: [
-    `function findHashFromNonce(nonce) {
+    `function hashNonce(nonce) {
+  // Lets initialize the hash here as an empty string
   let hash = '';
 
-  // while the hash does not start with 5 zeroes we want the prgram to repeat
-  while (hash.substring(0, 5) !== '00000') {
-    // Hash the nonce using the crypto library and then increment the nonce
+  // we want the prgram to repeat until it finds a correctly validating hash
+  while (true) {
+    // Generate the SHA-256 hash for the current nonce note that the .update() method only accepts a string or Buffer as an input
     hash = crypto.createHash('sha256').update(nonce.toString()).digest('hex');
-    if(hash.startsWith('00000')) {
-      return nonce
+
+    // Check if the hash starts with '00000'
+    if (hash.startsWith('00000')) {
+      return nonce;
     }
+
+    // Increment the nonce and repeat
     nonce++;
   }
 }`,
@@ -48,18 +53,21 @@ const python = {
     args: ['nonce'],
   },
   defaultCode: [
-    `def find_hash_from_nonce(nonce):
+    `def hash_nonce(nonce):
     # Lets initialize the hash here as an empty string
     hash = ''
 
-    # while the hash does not start with 5 zeroes we want the prgram to repeat
-    while hash[0:5] != '00000':
-        # Hash the nonce using the crypto library and then increment the nonce
-        hash = sha256(str(nonce).encode()).digest().hex()
-        if (hash[0:5] == '00000'):
+    # we want the prgram to repeat until it finds a correctly validating hash
+    while True:
+        # Generate the SHA-256 hash for the current nonce note that the .sha256() method only accepts a string or Buffer as an input
+        hash = hashlib.sha256(str(nonce).encode()).hexdigest()
+
+        # Check if the hash starts with '00000'
+        if hash.startswith('00000'):
             return nonce
-        nonce += 1
-`,
+
+        # Increment the nonce and repeat
+        nonce += 1`,
   ],
   validate: async () => {
     return [true, undefined]
@@ -159,7 +167,7 @@ export default function ScriptingResourcesTwo({ lang }) {
               <div className="relative grow bg-[#00000026] font-mono text-sm text-white">
                 <MonacoEditor
                   loading={<Loader className="h-10 w-10 text-white" />}
-                  height={`250px`}
+                  height={`350px`}
                   value={code}
                   beforeMount={handleBeforeMount}
                   onMount={handleMount}

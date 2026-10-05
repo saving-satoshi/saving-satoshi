@@ -35,7 +35,7 @@ export default function Scripting2({ lang }) {
 const min = 1;
 const max = 100000000;
 const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-const testHash = findHashFromNonce(randomNumber) ?? "Be sure your function returns a value."
+const testHash = hashNonce(randomNumber) ?? "Be sure your function returns a value."
 console.log(testHash.toString())
 console.log("KILL")`,
     defaultFunction: {
@@ -47,10 +47,21 @@ console.log("KILL")`,
 // Create a program that finds a sha256 hash starting with 5 zeroes.
 // To submit your answer, return it from the function.
 
-function findHashFromNonce(nonce) {
+/**
+ * Finds the nonce that produces a SHA-256 hash starting with '00000'.
+ * @param {number} nonce - The starting nonce value.
+ * @returns {number} - The nonce that generates the desired hash.
+ */
+function hashNonce(nonce) {
   // Type your code here
 }
   `,
+    rangeToNotCollapse: [
+      {
+        start: 11,
+        end: 14,
+      },
+    ],
     validate: async (answer) => {
       if (answer.startsWith('00000')) {
         return [
@@ -89,7 +100,7 @@ import random
 min_value = 1
 max_value = 100000000
 random_number = random.randint(min_value, max_value)
-test_hash = find_hash_from_nonce(random_number)
+test_hash = hash_nonce(random_number)
 if test_hash is not None:
     print(str(test_hash))
 else:
@@ -99,14 +110,27 @@ print("KILL")`,
       name: 'find_hash',
       args: ['nonce'],
     },
-    defaultCode: `from hashlib import sha256
+    defaultCode: `import hashlib
 
 # Create a program that finds a sha256 hash starting with 5 zeroes.
 # To submit your answer, return it from the function.
 
-def find_hash_from_nonce(nonce):
+"""
+    Finds the nonce that produces a SHA-256 hash starting with '00000'.
+    Args:
+        nonce (int): The starting nonce value.
+    Returns:
+        int: The nonce that generates the desired hash.
+    """
+def hash_nonce(nonce):
     # Type your code here
 `,
+    rangeToNotCollapse: [
+      {
+        start: 13,
+        end: 15,
+      },
+    ],
     validate: async (answer) => {
       if (answer.startsWith('00000')) {
         return [
