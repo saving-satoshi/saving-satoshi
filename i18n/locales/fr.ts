@@ -2551,20 +2551,16 @@ const translations = {
       paragraph_two: 'Provide the initial stack to spend from the script.',
     },
     opcodes_nine: {
-      title: 'OpCodes',
-      nav_title: 'Wait to unlock',
-      heading: 'Time Locks',
-      paragraph_one:
-        "Way back in the last century a document entitled BIP 65 proposed a new opcode to bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until a the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className=\"text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm\">OP_DROP</span> as well. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.",
-      subheading_one: 'Opcodes that do block timelocks',
-      optimelock_list_one_heading:
-        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span>',
-      optimelock_list_one_paragraph: 'Pops one item off the stack, ignores it.',
-      optimelock_list_two_heading:
-        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKLOCKTIMEVERIFY</span>',
-      optimelock_list_two_paragraph:
-        'Reads (does not pop) the top stack item and interprets it as a block height. If the height argument consumed by the opcode is not at least equal to the NEXT block height, the operation is invalid.',
-      paragraph_two: 'Provide the initial stack to spend from the script.',
+      title: `OpCodes`,
+      nav_title: `Wait to unlock`,
+      heading: `Time Locks`,
+      paragraph_one: `Way back in the last century a document entitled BIP 65 proposed a new opcode to bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block until that block's height is greater than the transaction's nLocktime. In other words, this opcode makes an output unspendable until the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span> as well. If the opcode check fails, script evaluation stops immediately with an error.`,
+      subheading_one: `Opcodes that do block timelocks`,
+      optimelock_list_one_heading: `<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span>`,
+      optimelock_list_one_paragraph: `Pops one item off the stack, ignores it.`,
+      optimelock_list_two_heading: `<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKLOCKTIMEVERIFY</span>`,
+      optimelock_list_two_paragraph: `Reads (does not pop) the top stack item and interprets it as a block height. The nLocktime of the transaction must be greater or equal to the script argument. Otherwise, the operation is invalid. Since a transaction is only final when its nLocktime is less than height of the block that contains it, this effectively forces the spender to wait until the required block height is reached.`,
+      paragraph_two: `Provide the initial stack to spend from the script.`,
     },
     opcodes_ten: {
       title: 'OpCodes',
