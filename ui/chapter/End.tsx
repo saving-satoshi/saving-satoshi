@@ -1,8 +1,8 @@
 'use client'
 
-import { useSaveAndReturn, useProceed, usePathData } from 'hooks'
+import { useSaveAndReturn, useProceed, usePathData, useConfetti } from 'hooks'
 import { lessons } from 'content'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import DesktopEnd from './DesktopEnd'
 import MobileEnd from './MobileEnd'
 import { useAtom, useSetAtom } from 'jotai'
@@ -46,6 +46,8 @@ export default function End({
   const proceed = useProceed()
   const { chapterId, lessonId } = usePathData()
   const markLessonAsComplete = useSetAtom(markLessonAsCompleteAtom)
+  const fireConfetti = useConfetti(1.2)
+  const hasFiredConfetti = useRef(false)
 
   const [isDesktop, setDesktop] = useState(
     typeof window !== 'undefined' && window.innerWidth > 768
@@ -63,6 +65,13 @@ export default function End({
     window.addEventListener('resize', updateMedia)
     return () => window.removeEventListener('resize', updateMedia)
   })
+
+  // Ref guard keeps confetti from firing twice under React Strict Mode
+  useEffect(() => {
+    if (hasFiredConfetti.current) return
+    hasFiredConfetti.current = true
+    fireConfetti()
+  }, [fireConfetti])
 
   const handleClick = () => {
     if (!account) {
