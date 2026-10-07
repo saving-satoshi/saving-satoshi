@@ -2587,20 +2587,16 @@ const translations = {
       paragraph_two: 'Forneça a pilha inicial para gastar com o script.',
     },
     opcodes_nine: {
-      title: 'OpCodes',
-      nav_title: 'Aguarde para desbloquear',
-      heading: 'Time Locks',
-      paragraph_one:
-        'No século passado, um documento intitulado BIP 65 propôs um novo código de operação para o bitcoin que acabou sendo adicionado às regras de consenso. Ele é usado para exigir que o nLocktime de uma transação seja igual ou superior a um valor especificado pelo script. As regras de consenso do Bitcoin já proíbem a inclusão de uma transação em um bloco se a altura desse bloco for maior que o nLocktime da transação. Em outras palavras, esse opcode torna uma transação impossível de ser gasta até que o blockchain atinja uma determinada altura em algum momento no futuro. Como foi adicionado com uma bifurcação suave, ele NÃO retira nada da pilha, o que significa que a maioria dos usos também exigirá um <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span> também. Se o opcode determinar que é muito cedo para incluir essa transação em um bloco, a avaliação do script será interrompida imediatamente com um erro.',
-      subheading_one: 'Opcodes que bloqueiam timelocks',
-      optimelock_list_one_heading:
-        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span>',
-      optimelock_list_one_paragraph: 'Retira um item da pilha e o ignora.',
-      optimelock_list_two_heading:
-        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKLOCKTIMEVERIFY</span>',
-      optimelock_list_two_paragraph:
-        'Lê (não remove) o item superior da pilha e o interpreta como uma altura de bloco. Se o argumento de altura consumido pelo opcode não for pelo menos igual à altura do bloco NEXT, a operação será inválida.',
-      paragraph_two: 'Forneça a pilha inicial para gastar com o script.',
+      title: `OpCodes`,
+      nav_title: `Aguarde para desbloquear`,
+      heading: `Time Locks`,
+      paragraph_one: `No século passado, um documento intitulado BIP 65 propôs um novo opcode para o Bitcoin, que acabou sendo adicionado às regras de consenso. Ele é usado para exigir que o nLocktime de uma transação seja igual ou superior a um valor especificado pelo script. As regras de consenso do Bitcoin já proíbem a inclusão de uma transação em um bloco até que a altura desse bloco seja maior que o nLocktime da transação. Em outras palavras, este opcode torna uma saída impossível de ser gasta até que a blockchain atinja uma certa altura em algum momento no futuro. Como foi adicionado com um soft fork, ele NÃO remove (pop) nada da pilha, o que significa que a maioria dos usos também exigirá um <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span>. Se a verificação do opcode falhar, a avaliação do script para imediatamente com um erro.`,
+      subheading_one: `Opcodes que executam timelocks de bloco`,
+      optimelock_list_one_heading: `<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span>`,
+      optimelock_list_one_paragraph: `Remove (pop) um item da pilha, e o ignora.`,
+      optimelock_list_two_heading: `<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKLOCKTIMEVERIFY</span>`,
+      optimelock_list_two_paragraph: `Lê (não remove) o item do topo da pilha e o interpreta como uma altura de bloco. O nLocktime da transação deve ser maior ou igual ao argumento do script. Caso contrário, a operação é inválida. Como uma transação só é final quando seu nLocktime é menor que a altura do bloco que a contém, isso efetivamente força o gastador a esperar até que a altura do bloco exigida seja atingida.`,
+      paragraph_two: `Forneça a pilha inicial para gastar a partir do script.`,
     },
     opcodes_ten: {
       title: 'OpCodes',
