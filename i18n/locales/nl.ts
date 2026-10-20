@@ -251,6 +251,33 @@ const translations = {
     description:
       'We zijn nog in een vroeg stadium van dit project. Hoofdstuk 1 werkt, de rest is nog in ontwikkeling. Probeer het eens uit en laat ons weten wat je ervan vindt, we zouden graag je feedback horen.',
   },
+  validation: {
+    recheck_your_methods: `controleer je methoden opnieuw`,
+    cant_find_return_both: `kan geen return vinden in beide methoden`,
+    cant_find_return: `kan geen return vinden in de functie`,
+    signature_not_valid: `Handtekening is niet geldig`,
+    nope_try_again: `Nee! Probeer het opnieuw.`,
+    not_valid_hex: `Geen geldige hex-waarde`,
+    return_value: `Retourneer een waarde`,
+    no_output: `Geen uitvoer`,
+    incorrect: `Onjuist`,
+    invalid_block: `Ongeldig block, blijf proberen!`,
+    hash_not_valid: `Hash is niet geldig`,
+    hash_length_invalid: `Hash moet 64 tekens lang zijn.`,
+    hash_prefix_invalid: `Hash moet beginnen met 5 nullen.`,
+    ensure_proper_decoding: `Zorg ervoor dat je je antwoord correct decodeert`,
+    array_20_bytes: `Array moet 20 bytes lang zijn`,
+    not_hex_value: `Antwoord is geen hexadecimale waarde`,
+    ensure_own_key: `Zorg ervoor dat je je eigen sleutelobject gebruikt`,
+    ensure_multiply_by_g: `Zorg ervoor dat je de privésleutel vermenigvuldigt met G`,
+    try_multiply_g: `Probeer te vermenigvuldigen met de constante G`,
+    try_logging_answer: `Probeer je antwoord te loggen`,
+    not_quite_right: `Dat klopt niet helemaal, probeer het opnieuw.`,
+    check_your_methods: `Controleer je methoden`,
+    close_but_reduce_change: `Bijna! Vergeet niet om het wisselgeld te verlagen van 61.000.000 naar 60.999.000 om de miners te betalen.`,
+    ensure_push_serialize: `Zorg ervoor dat je de gegevens correct pusht en serialiseert`,
+    length_not_valid: `Lengte is niet geldig`,
+  },
 }
 
 export default translations
