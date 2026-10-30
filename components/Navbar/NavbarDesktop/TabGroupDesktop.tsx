@@ -20,7 +20,12 @@ export default function TabGroup({ params, theme }) {
         </button>
       </div>
 
-      <NavbarDrawer theme={theme} isOpen={isOpen} setIsOpen={setIsOpen} />
+      <NavbarDrawer
+        theme={theme}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        params={params}
+      />
     </>
   )
 }
