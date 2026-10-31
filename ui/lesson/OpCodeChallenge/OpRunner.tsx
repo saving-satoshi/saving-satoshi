@@ -185,12 +185,14 @@ const OpRunner = ({
       .split(' ')
       .filter((item) => item.trim())
     const tokens = LanguageExecutor.parsableInputToTokens(
-      LanguageExecutor.rawInputToParsableInput(`INITIAL_STACK ${script}`)
+      LanguageExecutor.rawInputToParsableInput(script)
     )
     const newExecutor = new LanguageExecutor(tokens, initialStackArray, height)
 
-    // Create an initial state to represent the initial stack
-    setExecutor(newExecutor)
+    setExecutor(null)
+    requestAnimationFrame(() => {
+      setExecutor(newExecutor)
+    })
     setStateHistory([])
     setStartedTyping(false)
   }
@@ -220,6 +222,7 @@ const OpRunner = ({
   const handleStep = () => {
     setStartedTyping(false)
     initializeExecutor()
+    setStateHistory([])
   }
 
   useEffect(() => {
