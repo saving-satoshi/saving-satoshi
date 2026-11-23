@@ -6,6 +6,25 @@ const defaultHeaders = {
   'Content-Type': 'application/json',
 }
 
+async function handleResponse(res: Response) {
+  let json: any = null
+  try {
+    json = await res.json()
+  } catch {
+    // invalid json
+  }
+
+  if (!res.ok) {
+    throw (
+      json?.errors ?? [
+        { message: res.statusText || `HTTP ${res.status}`, status: res.status },
+      ]
+    )
+  }
+
+  return json
+}
+
 export async function get(options: FetchOptions) {
   try {
     const fetchOptions: any = {
@@ -24,13 +43,7 @@ export async function get(options: FetchOptions) {
     }
 
     const res = await fetch(url(options.url), fetchOptions)
-    const json = await res.json()
-
-    if (json.errors) {
-      throw json.errors
-    }
-
-    return json
+    return handleResponse(res)
   } catch (ex) {
     throw ex
   }
@@ -58,13 +71,7 @@ export async function post(options: FetchOptions) {
     }
 
     const res = await fetch(url(options.url), fetchOptions)
-    const json = await res.json()
-
-    if (json.errors) {
-      throw json.errors
-    }
-
-    return json
+    return handleResponse(res)
   } catch (ex) {
     throw ex
   }
@@ -92,13 +99,7 @@ export async function put(options: FetchOptions) {
     }
 
     const res = await fetch(url(options.url), fetchOptions)
-    const json = await res.json()
-
-    if (json.errors) {
-      throw json.errors
-    }
-
-    return json
+    return handleResponse(res)
   } catch (ex) {
     throw ex
   }
