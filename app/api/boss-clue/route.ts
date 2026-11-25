@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { verifyCompletion } from 'lib/bossClue'
 
 const DIOGENES_ENDPOINT = process.env.DIOGENES_API_ENDPOINT
 const DIOGENES_AUTH = process.env.DIOGENES_AUTH
+
+// our helper methods in 'utils' don't have a cache option, so opt the whole
+// route out of Next's fetch cache (progress must always be read fresh)
+export const dynamic = 'force-dynamic'
 
 // Sends a POST to the Diogenes API. Authenticated call.
 export async function POST(req: NextRequest) {
@@ -23,6 +28,16 @@ export async function POST(req: NextRequest) {
     !/^[0-9a-fA-F]{64}$/.test(private_key)
   ) {
     return NextResponse.json({ error: 'invalid private_key' }, { status: 400 })
+  }
+
+  // Check that the player finished the game
+  try {
+    if (!(await verifyCompletion(private_key))) {
+      return NextResponse.json({ error: 'game not completed' }, { status: 403 })
+    }
+  } catch (e) {
+    console.error('Error verifying game progress in the backend', e)
+    return NextResponse.json({ error: 'upstream unavailable' }, { status: 502 })
   }
 
   // Call the Diogenes API
