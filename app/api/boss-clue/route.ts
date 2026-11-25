@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { verifyCompletion } from 'lib/bossClue'
+import { isBossClueActive, verifyCompletion } from 'lib/bossClue'
 
 const DIOGENES_ENDPOINT = process.env.DIOGENES_API_ENDPOINT
 const DIOGENES_AUTH = process.env.DIOGENES_AUTH
@@ -10,6 +10,11 @@ export const dynamic = 'force-dynamic'
 
 // Sends a POST to the Diogenes API. Authenticated call.
 export async function POST(req: NextRequest) {
+  // When the BOSS clue is switched off, the route should behave like it doesn't exist
+  if (!isBossClueActive()) {
+    return NextResponse.json({ error: 'not found' }, { status: 404 })
+  }
+
   if (!DIOGENES_ENDPOINT || !DIOGENES_AUTH) {
     return NextResponse.json({ error: 'server misconfigured' }, { status: 500 })
   }

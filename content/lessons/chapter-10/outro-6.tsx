@@ -29,7 +29,8 @@ export default function Outro6({ lang }) {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  const [xorInvite, setXorInvite] = useState('')
+  // null = disable the BOSS Challenge section
+  const [xorInvite, setXorInvite] = useState<string | null>(null)
 
   useEffect(() => {
     async function callBOSSBot() {
@@ -44,9 +45,14 @@ export default function Outro6({ lang }) {
             body: JSON.stringify({ private_key: account.private_key }),
           })
 
-          if (res && res.status == 200) {
+          if (res.status == 200) {
             const resJson = await res.json()
             setXorInvite(resJson.data)
+          } else if (res.status == 404) {
+            // BOSS Challenge is disabled and not currently running
+            setXorInvite(null)
+          } else if (res.status == 403) {
+            setXorInvite(t('chapter_ten.outro_six.boss_not_finished'))
           } else {
             setXorInvite(
               'Error generating invite. Please contact a BOSS Challenge administrator.'
@@ -75,29 +81,31 @@ export default function Outro6({ lang }) {
         {t('chapter_ten.outro_six.paragraph_two')}
       </p>
 
-      <div className="mt-8 bg-[#00000033] px-5 py-1">
-        <p className="mt-3 text-lg md:text-xl">
-          {t('chapter_ten.outro_six.boss_instructions')}
-        </p>
+      {xorInvite !== null && (
+        <div className="mt-8 bg-[#00000033] px-5 py-1">
+          <p className="mt-3 text-lg md:text-xl">
+            {t('chapter_ten.outro_six.boss_instructions')}
+          </p>
 
-        <p className="mt-8 text-lg md:text-xl">
-          {t('chapter_ten.outro_six.boss_instructions_two')}
-        </p>
+          <p className="mt-8 text-lg md:text-xl">
+            {t('chapter_ten.outro_six.boss_instructions_two')}
+          </p>
 
-        <pre className="mb-5 mt-8 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
-          <code className="mb-2 whitespace-pre-wrap break-all text-base">
-            {xorInvite}
-          </code>
-          <Button
-            round
-            size="tiny"
-            style="w-full"
-            onClick={() => copy(xorInvite)}
-          >
-            {copied ? t('shared.copy_acknowledged') : t('shared.copy')}
-          </Button>
-        </pre>
-      </div>
+          <pre className="mb-5 mt-8 flex flex-col rounded-md border-2 border-dotted border-white/25 p-4">
+            <code className="mb-2 whitespace-pre-wrap break-all text-base">
+              {xorInvite}
+            </code>
+            <Button
+              round
+              size="tiny"
+              style="w-full"
+              onClick={() => copy(xorInvite)}
+            >
+              {copied ? t('shared.copy_acknowledged') : t('shared.copy')}
+            </Button>
+          </pre>
+        </div>
+      )}
 
       <p className="mt-8 text-lg md:text-xl">
         {t('chapter_ten.outro_six.paragraph_three')}

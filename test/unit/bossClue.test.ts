@@ -1,5 +1,9 @@
 import { NextRequest } from 'next/server'
-import { hasFinishedGame, verifyCompletion } from 'lib/bossClue'
+import {
+  hasFinishedGame,
+  isBossClueActive,
+  verifyCompletion,
+} from 'lib/bossClue'
 import {
   DifficultyLevel,
   defaultProgressState,
@@ -79,6 +83,35 @@ function preTabconfProgress(): CourseProgress {
   ch4.lessons = ch4.lessons.filter((l) => l.id !== 'CH4TCC1')
   return p
 }
+
+describe('isBossClueActive', () => {
+  afterEach(() => {
+    vi.unstubAllEnvs()
+  })
+
+  it('is on when set to "true"', () => {
+    expect(isBossClueActive('true')).toBe(true)
+  })
+
+  it.each([
+    ['unset', undefined],
+    ['empty', ''],
+    ['"false"', 'false'],
+    ['"TRUE" (wrong case)', 'TRUE'],
+    ['"1"', '1'],
+    ['" true" (stray space)', ' true'],
+  ])('is off when %s', (_, value) => {
+    expect(isBossClueActive(value)).toBe(false)
+  })
+
+  it('reads BOSS_CLUE_ENABLED from the environment by default', () => {
+    vi.stubEnv('BOSS_CLUE_ENABLED', 'true')
+    expect(isBossClueActive()).toBe(true)
+
+    vi.stubEnv('BOSS_CLUE_ENABLED', '')
+    expect(isBossClueActive()).toBe(false)
+  })
+})
 
 describe('hasFinishedGame', () => {
   describe('players who finished the game', () => {
@@ -339,9 +372,13 @@ describe('POST /api/boss-clue', () => {
 
   // The route reads its env vars when the module loads, so stub them first
   // and import a fresh copy of the route for each test
-  async function loadRoute(env = { endpoint: DIOGENES_URL, auth: 'secret' }) {
+  async function loadRoute(
+    env = { endpoint: DIOGENES_URL, auth: 'secret' },
+    enabled = 'true'
+  ) {
     vi.stubEnv('DIOGENES_API_ENDPOINT', env.endpoint)
     vi.stubEnv('DIOGENES_AUTH', env.auth)
+    vi.stubEnv('BOSS_CLUE_ENABLED', enabled)
     vi.resetModules()
     return import('app/api/boss-clue/route')
   }
@@ -437,6 +474,31 @@ describe('POST /api/boss-clue', () => {
     expect(res.status).toBe(500)
     expect(mockPost).not.toHaveBeenCalled()
     expect(mockFetch).not.toHaveBeenCalled()
+  })
+
+  it.each([
+    ['turned off', 'false'],
+    ['not set', ''],
+  ])(
+    'returns 404 and calls nothing when the switch is %s',
+    async (_, enabled) => {
+      const { POST } = await loadRoute(undefined, enabled)
+      finishedPlayer()
+
+      const res = await POST(request({ private_key: VALID_KEY }))
+
+      expect(res.status).toBe(404)
+      expect(mockPost).not.toHaveBeenCalled()
+      expect(mockFetch).not.toHaveBeenCalled()
+    }
+  )
+
+  it('checks the on/off switch before the Diogenes config (404, not 500)', async () => {
+    const { POST } = await loadRoute({ endpoint: '', auth: '' }, '')
+
+    const res = await POST(request({ private_key: VALID_KEY }))
+
+    expect(res.status).toBe(404)
   })
 
   it('returns 400 when the body is not JSON', async () => {

@@ -1,6 +1,14 @@
 import { ChapterInState, CourseProgress, LessonInState } from 'types'
 import { get, post } from 'utils'
 
+// The BOSS clue is only available when BOSS_CLUE_ENABLED is exactly "true"
+// Any other value, or leaving it unset, turns it off
+export function isBossClueActive(
+  enabled: string | undefined = process.env.BOSS_CLUE_ENABLED
+): boolean {
+  return enabled === 'true'
+}
+
 // This is the page the user is on so it won't be marked complete
 export const BOSS_CLUE_LESSON_ID = 'CH10OUT6'
 
