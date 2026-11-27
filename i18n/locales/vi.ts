@@ -3250,6 +3250,33 @@ const translations = {
       reset: 'Đặt lại thiết bị đầu cuối', // Reset the terminal
     },
   },
+  validation: {
+    recheck_your_methods: `kiểm tra lại các phương thức của bạn`,
+    cant_find_return_both: `không tìm thấy return trong cả hai phương thức`,
+    cant_find_return: `không tìm thấy return trong hàm`,
+    signature_not_valid: `Chữ ký không hợp lệ`,
+    nope_try_again: `Không đúng! Hãy thử lại.`,
+    not_valid_hex: `Không phải là giá trị hex hợp lệ`,
+    return_value: `Trả về một giá trị`,
+    no_output: `Không có kết quả đầu ra`,
+    incorrect: `Không chính xác`,
+    invalid_block: `Khối không hợp lệ, hãy tiếp tục cố gắng!`,
+    hash_not_valid: `Mã băm không hợp lệ`,
+    hash_length_invalid: `Mã băm phải dài 64 ký tự.`,
+    hash_prefix_invalid: `Mã băm phải bắt đầu bằng 5 số không.`,
+    ensure_proper_decoding: `Đảm bảo bạn đang giải mã câu trả lời của mình đúng cách`,
+    array_20_bytes: `Mảng phải có độ dài 20 byte`,
+    not_hex_value: `Câu trả lời không phải là giá trị thập lục phân (hex)`,
+    ensure_own_key: `Đảm bảo bạn đang sử dụng đối tượng khóa của chính mình`,
+    ensure_multiply_by_g: `Đảm bảo bạn đang nhân khóa riêng với G`,
+    try_multiply_g: `Hãy thử nhân với hằng số G`,
+    try_logging_answer: `Hãy thử in câu trả lời của bạn ra màn hình`,
+    not_quite_right: `Chưa hoàn toàn chính xác, hãy thử lại.`,
+    check_your_methods: `Kiểm tra các phương thức của bạn`,
+    close_but_reduce_change: `Gần đúng rồi! Đừng quên giảm số tiền thừa từ 61.000.000 xuống 60.999.000 để trả phí cho thợ đào.`,
+    ensure_push_serialize: `Đảm bảo bạn đang push và tuần tự hóa dữ liệu đúng cách`,
+    length_not_valid: `Độ dài không hợp lệ`,
+  },
   notfound: {
     first: 'Hmm...chúng ta đang ở đâu?', // Hmm...where are we?
     second: 'Không rõ ràng lắm nơi này là đâu hay cái gì.', // It’s not quite clear where or what this place is.
