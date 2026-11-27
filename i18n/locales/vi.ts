@@ -2585,20 +2585,16 @@ const translations = {
       paragraph_two: 'Cung cấp stack ban đầu để chi tiêu từ script.', // Provide the initial stack to spend from the script.
     },
     opcodes_nine: {
-      title: 'OpCodes', // OpCodes
-      nav_title: 'Chờ đợi để mở khóa', // Wait to unlock
-      heading: 'Khóa thời gian', // Time Locks
-      paragraph_one:
-        'Cách trở lại thế kỷ trước, một tài liệu có tiêu đề BIP 65 đã đề xuất một opcode mới cho Bitcoin, cuối cùng đã được thêm vào các quy tắc đồng thuận. Nó được sử dụng để yêu cầu rằng nLocktime của một giao dịch phải ở mức hoặc cao hơn một giá trị được chỉ định bởi script. Các quy tắc đồng thuận của Bitcoin đã cấm bao gồm một giao dịch trong một khối nếu chiều cao của khối đó lớn hơn nLocktime của giao dịch. Nói cách khác, opcode này khiến một giao dịch không thể chi tiêu cho đến khi blockchain đạt đến một độ cao nhất định vào một thời điểm nào đó trong tương lai. Vì nó đã được thêm vào với một nhánh mềm, nó KHÔNG thực sự bật bất kỳ mục nào ra khỏi stack, có nghĩa là hầu hết các lần sử dụng cũng sẽ yêu cầu một <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span> cũng vậy. Nếu opcode xác định rằng quá sớm để bao gồm giao dịch này trong một khối, việc thực thi script sẽ dừng lại ngay lập tức với lỗi.', // Way back in the last century a document entitled BIP 65 proposed a new opcode to bitcoin which was eventually added to the consensus rules. It is used to require that the nLocktime of a transaction is at or above a value specified by the script. Bitcoin's consensus rules already prohibit including a transaction in a block if that block's height is greater than the transaction's nLocktime. In other words, this opcode makes a transaction unspendable until the blockchain reaches a certain height some time in the future. Because it was added with a soft fork, it does NOT actually pop anything off the stack, meaning most uses will also require an <span className=\"text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm\">OP_DROP</span> as well. If the opcode determines it is too early to include this transaction in a block, script evaluation stops immediately with an error.
-      subheading_one: 'Các opcode thực hiện khóa thời gian khối', // Opcodes that do block timelocks
-      optimelock_list_one_heading:
-        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span>',
-      optimelock_list_one_paragraph: 'Bỏ một mục khỏi stack, bỏ qua nó.', // Pops one item off the stack, ignores it.
-      optimelock_list_two_heading:
-        '<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKLOCKTIMEVERIFY</span>',
-      optimelock_list_two_paragraph:
-        'Đọc (không bật) mục trên cùng của stack và hiểu nó như một độ cao khối. Nếu đối số chiều cao được sử dụng bởi opcode không ít nhất bằng với chiều cao khối TIẾP THEO, thì thao tác sẽ không hợp lệ.', // Reads (does not pop) the top stack item and interprets it as a block height. If the height argument consumed by the opcode is not at least equal to the NEXT block height, the operation is invalid.
-      paragraph_two: 'Cung cấp stack ban đầu để chi tiêu từ script.', // Provide the initial stack to spend from the script.
+      title: `OpCodes`,
+      nav_title: `Chờ để mở khóa`,
+      heading: `Khóa thời gian (Time Locks)`,
+      paragraph_one: `Quay lại thế kỷ trước, một tài liệu có tựa đề BIP 65 đã đề xuất một opcode mới cho bitcoin, cuối cùng đã được thêm vào các quy tắc đồng thuận. Nó được sử dụng để yêu cầu nLocktime của một giao dịch phải bằng hoặc lớn hơn một giá trị do script chỉ định. Các quy tắc đồng thuận của Bitcoin đã cấm đưa một giao dịch vào một khối cho đến khi chiều cao của khối đó lớn hơn nLocktime của giao dịch. Nói cách khác, opcode này làm cho một đầu ra không thể chi tiêu được cho đến khi blockchain đạt đến một chiều cao nhất định trong tương lai. Vì nó được thêm vào bằng một soft fork, nó KHÔNG thực sự đẩy (pop) bất cứ thứ gì ra khỏi ngăn xếp, có nghĩa là hầu hết các cách sử dụng cũng sẽ yêu cầu một <span className="text-[#3DCFEF] rounded-sm px-1.5 py-1 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span>. Nếu kiểm tra opcode thất bại, quá trình đánh giá script sẽ dừng ngay lập tức với một lỗi.`,
+      subheading_one: `Các opcode thực hiện timelock khối`,
+      optimelock_list_one_heading: `<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_DROP</span>`,
+      optimelock_list_one_paragraph: `Lấy (pop) một mục ra khỏi ngăn xếp, và bỏ qua nó.`,
+      optimelock_list_two_heading: `<span className="flex items-center text-[#3DCFEF] w-fit rounded-sm px-1.5 h-[28px] font-mono bg-[#0000004D] m-0.5 text-sm">OP_CHECKLOCKTIMEVERIFY</span>`,
+      optimelock_list_two_paragraph: `Đọc (không lấy ra) mục trên cùng của ngăn xếp và diễn giải nó như một chiều cao khối. nLocktime của giao dịch phải lớn hơn hoặc bằng đối số của script. Nếu không, thao tác sẽ không hợp lệ. Vì một giao dịch chỉ là cuối cùng khi nLocktime của nó nhỏ hơn chiều cao của khối chứa nó, điều này thực sự buộc người chi tiêu phải đợi cho đến khi đạt được chiều cao khối được yêu cầu.`,
+      paragraph_two: `Cung cấp ngăn xếp ban đầu để chi tiêu từ script.`,
     },
     opcodes_ten: {
       title: 'OpCodes', // OpCodes
