@@ -11,6 +11,7 @@ import {
 class LanguageExecutor {
   tokens: T
   stack: StackType
+  stackInitial: string[]
   height?: number | null
   nSequenceTime?: number | null
   conditionalState: Array<boolean>
@@ -63,7 +64,7 @@ class LanguageExecutor {
     initialStack?: string[],
     height?: number,
     nSequenceTime?: number
-  ): LanguageExecutor | null {
+  ): LanguageExecutor {
     const parsableInput = this.rawInputToParsableInput(script)
     const filteredStack = initialStack?.filter((arg) => {
       arg.trim()
@@ -82,15 +83,12 @@ class LanguageExecutor {
 
       return langExecutor
     } catch (err) {
-      const langExecutor = new LanguageExecutor(
+      return new LanguageExecutor(
         [],
         filteredStack ?? [],
         height,
         nSequenceTime
       )
-      langExecutor.execute()
-
-      return langExecutor
     }
   }
 
@@ -102,12 +100,12 @@ class LanguageExecutor {
   ) {
     this.tokens = tokens
     this.state = []
-    this.stack = []
+    this.stackInitial = [...initialStack]
+    this.stack = [...initialStack]
     this.height = height ?? 0
     this.nSequenceTime = nSequenceTime ?? 0
     this.conditionalState = []
     this.negate = 0
-    this.stack.push(...initialStack)
   }
 
   //THIS COULD CAUSE AN ERROR BY DEFAULTING TO 0
@@ -284,6 +282,10 @@ class LanguageExecutor {
 
   execute() {
     this.state = []
+    this.currentIndex = 0
+    this.stack = [...this.stackInitial]
+    this.conditionalState = []
+    this.negate = 0
     let state: State | null
     while ((state = this.executeStep()) !== null) {
       this.state.push(state)
