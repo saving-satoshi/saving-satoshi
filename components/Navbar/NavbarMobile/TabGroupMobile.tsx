@@ -1,12 +1,28 @@
 import clsx from 'clsx'
 import { syncedCourseProgressAtom } from 'state/progress/atoms'
 import { useAtomValue } from 'jotai'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ChapterAccordion from '../NavbarDesktop/ChapterAccordion'
+import { usePathData } from 'hooks'
 
 export default function TabGroup({ isOpen, clicked, params }) {
   const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const { chapterId: pathChapterId } = usePathData()
+
+  const chapterSlug = params?.slug || pathChapterId || ''
+  const activeChapterId = chapterSlug.match(/^chapter-(\d+)$/)
+    ? Number(chapterSlug.match(/^chapter-(\d+)$/)[1])
+    : 0
+
   const [currentChapter, setCurrentChapter] = useState(0)
+
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentChapter(activeChapterId)
+    } else {
+      setCurrentChapter(0)
+    }
+  }, [isOpen, activeChapterId])
 
   return (
     <div className="flex h-full flex-col items-stretch font-nunito">

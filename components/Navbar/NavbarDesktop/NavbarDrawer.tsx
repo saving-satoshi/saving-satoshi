@@ -1,21 +1,37 @@
 import clsx from 'clsx'
 import { useAtomValue } from 'jotai'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { syncedCourseProgressAtom } from 'state/progress/atoms'
 import ChapterAccordion from './ChapterAccordion'
 import Icon from 'shared/Icon'
-import { useLang, useTranslations } from 'hooks'
+import { useLang, usePathData, useTranslations } from 'hooks'
 
 interface INavbarDrawer {
   theme: string
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  params?: any
 }
-const NavbarDrawer = ({ theme, isOpen, setIsOpen }: INavbarDrawer) => {
+const NavbarDrawer = ({ theme, isOpen, setIsOpen, params }: INavbarDrawer) => {
   const lang = useLang()
   const t = useTranslations(lang)
   const courseProgress = useAtomValue(syncedCourseProgressAtom)
+  const { chapterId: pathChapterId } = usePathData()
+
+  const chapterSlug = params?.slug || pathChapterId || ''
+  const activeChapterId = chapterSlug.match(/^chapter-(\d+)$/)
+    ? Number(chapterSlug.match(/^chapter-(\d+)$/)[1])
+    : 0
+
   const [currentChapter, setCurrentChapter] = useState(0)
+
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentChapter(activeChapterId)
+    } else {
+      setCurrentChapter(0)
+    }
+  }, [isOpen, activeChapterId])
 
   const onClick = () => {
     setIsOpen(!isOpen)
