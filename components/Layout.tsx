@@ -4,6 +4,7 @@ import AccountModal from 'components/Modals/Account'
 import SignInModal from 'components/Modals/SignIn'
 import SignUpModal from 'components/Modals/SignUp'
 import HelpModal from 'components/Modals/Help'
+import { ToastContainer } from 'components/ToastContainer'
 import { useAtom, useSetAtom } from 'jotai'
 import { useEffect } from 'react'
 import { useAuthFunctions } from 'state/AuthFunctions'
@@ -45,6 +46,7 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
         onClose={() => close(Modal.Account)}
       />
       <HelpModal state={modals[Modal.Help]} onClose={() => close(Modal.Help)} />
+      <ToastContainer />
     </>
   )
 }
